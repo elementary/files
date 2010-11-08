@@ -27,7 +27,7 @@ namespace Marlin.View.Chrome
 		public ToolButton go_back;
 		public ToolButton go_forward;
 		public ToolButton go_up;
-		public ToolButton refresh;
+		//public ToolButton refresh;
 		public ViewSwitcher view_switcher;
 		public CompactMenu compact_menu;
 		public CompactMenuButton compact_menu_button;

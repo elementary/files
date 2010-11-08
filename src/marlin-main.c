@@ -12,7 +12,6 @@
 
 static void     about (void);
 static void     marlin_view_window_up (MarlinViewWindow *window);
-//static void     marlin_view_window_path_changed (MarlinViewWindow *window, const gchar *path, gpointer data);
 static void     marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data);
 
 static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func) {
@@ -85,6 +84,14 @@ main (int argc, char *argv[])
         //mwcols = marlin_window_columns_new(g_file_new_for_commandline_arg (path), window);
 
         g_signal_emit_by_name (window, "path-changed", g_file_new_for_commandline_arg (path));
+
+      	/*GtkBindingSet *binding_set;
+
+        binding_set = gtk_binding_set_by_class (MARLIN_VIEW_WINDOW_CLASS (window));
+	gtk_binding_entry_add_signal (binding_set, GDK_KEY_BackSpace, 0,
+				      "up", 1,
+				      G_TYPE_BOOLEAN, FALSE);*/
+
 
         gtk_main ();
         g_free (path);	
@@ -166,5 +173,5 @@ marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer
         if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) != NULL)
                 load_dir_async_cancel(slot->directory);
         //slot = gof_window_slot_new(file, GTK_WIDGET (window));
-        mwcols = marlin_window_columns_new(file, window);
+        mwcols = marlin_window_columns_new(file, GTK_WIDGET (window));
 }

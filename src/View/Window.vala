@@ -66,11 +66,6 @@ namespace Marlin.View {
 			}
 		}
 
-                /*public void path_changed_to_gfile{
-                        set{
-                        }
-                }*/
-		
 		public signal void up();
 		public signal void forward();
 		public signal void back();
@@ -147,7 +142,7 @@ namespace Marlin.View {
 			top_menu.go_up.clicked.connect(() => { up(); });
 			top_menu.go_forward.clicked.connect(() => { forward(); });
 			top_menu.go_back.clicked.connect(() => { back(); });
-            top_menu.refresh.clicked.connect(() => { refresh(); });
+            //top_menu.refresh.clicked.connect(() => { refresh(); });
             top_menu.compact_menu.about.activate.connect(() => { show_about(); });
 			
 			menu_bar.go_up.activate.connect(() => { up(); });
@@ -157,13 +152,12 @@ namespace Marlin.View {
             menu_bar.about.activate.connect(() => { show_about(); });
             menu_bar.quit.activate.connect(() => { quit(); });
 
-                        /*unowned Gtk.BindingSet binding_set;
+                        //unowned Gtk.BindingSet binding_set;
 
-                        binding_set = Gtk.BindingSet.by_class (typeof (Window).class_ref ());
-                        Gtk.BindingEntry.add_signal (binding_set,  65288, 
-                        //Gtk.BindingEntry.add_signal (binding_set,  Gdk.KeySyms.i, 
-                                 0, "goo-up", 1);
-                        Signal.connect (this, "goo-up",
+                        //binding_set = Gtk.BindingSet.by_class (typeof (Window).class_ref ());
+                        /*binding_set = Gtk.BindingSet.by_class (this.get_class());
+                        Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("plus"), 0, "show-about", 0);*/
+                        /*Signal.connect (this, "up",
                     (GLib.Callback)up, null);*/
 
 
