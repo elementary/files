@@ -1,0 +1,32 @@
+/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
+/*
+ * Copyright (C) 2010 ammonkey
+ *
+ * This library is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * version 3.0 as published by the Free Software Foundation.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License version 3.0 for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see
+ * <http://www.gnu.org/licenses/>.
+ *
+ * Author: ammonkey <am.monkeyd@gmail.com>
+ */
+
+#ifndef EEL_GLIB_EXTENSIONS_H
+#define EEL_GLIB_EXTENSIONS_H
+
+#include <glib.h>
+#include <gio/gio.h>
+
+void    eel_g_settings_add_auto_boolean (GSettings *settings, const char *key, 
+                                         gboolean *storage);
+gint64  eel_get_system_time (void);
+void    eel_add_weak_pointer (gpointer pointer_location);
+
+#endif /* EEL_GLIB_EXTENSIONS_H */

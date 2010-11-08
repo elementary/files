@@ -1,0 +1,68 @@
+DATADIR = $(datadir)
+
+bin_PROGRAMS = \
+	marlin
+
+marlin_CPPFLAGS = \
+	-I$(top_srcdir) \
+	$(CORE_CFLAGS) \
+	$(NULL)
+
+marlin_VALAFLAGS = \
+	-C \
+	--pkg gtk+-3.0 \
+  	$(NULL)
+
+marlin_LDADD = \
+	$(CORE_LIBS) \
+	$(NULL)
+
+marlin_VALASOURCES = \
+	View/Window.vala 	                \
+        View/Chrome/CompactMenuButton.vala      \
+        View/Chrome/CompactMenu.vala            \
+        View/Chrome/LocationBar.vala            \
+        View/Chrome/MenuBar.vala                \
+        View/Chrome/ModeButton.vala             \
+        View/Chrome/TopMenu.vala                \
+        View/Chrome/ViewSwicher.vala            \
+	$(NULL)
+
+marlin_SOURCES = \
+	$(marlin_VALASOURCES:.vala=.c) 		\
+	marlin-main.c                           \
+        eel-fcts.c                              \
+        eel-i18n.c                              \
+        eel-marshal.c                           \
+        eel-glib-extensions.c                   \
+        marlin-window-columns.c                 \
+        gof-window-slot.c                       \
+        nautilus-marshal-guts.c                 \
+        gof-directory-async.c                   \
+        nautilus-icon-info.c                    \
+        gof-monitor.c                           \
+        gof-file.c                              \
+        fm-directory-view.c                     \
+        exo-tree-view.c                         \
+        fm-list-model.c                         \
+        fm-list-view.c                          \
+        fm-columns-view.c                       \
+        nautilus-cell-renderer-text-ellipsized.c\
+	$(NULL)
+
+BUILT_SOURCES = marlin.vala.stamp
+EXTRA_DIST = \
+	marlin.vala.stamp \
+	$(marlin_VALASOURCES) \
+	$(NULL)
+
+
+marlin.vala.stamp: $(marlin_VALASOURCES)
+	$(AM_V_GEN) $(VALAC) $(marlin_VALAFLAGS) $^
+	touch marlin.vala.stamp
+
+CLEANFILES = \
+	*.stamp \
+	*.vapi \
+	$(marlin_VALASOURCES:.vala=.c) \
+	$(NULL)

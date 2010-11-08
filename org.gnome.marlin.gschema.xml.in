@@ -1,0 +1,39 @@
+<schemalist>
+  <schema id="org.gnome.marlin.preferences" path="/apps/marlin/preferences/">
+    <key name="showall" type="b">
+      <default>false</default>
+      <_summary>Show system users</_summary>
+      <_description>
+        Whether the users-admin tool should show system users in the users list.
+      </_description>
+    </key>
+    <key name="rgba-colormap" type="b">
+      <default>false</default>
+      <_summary>enable rgba window</_summary>
+      <_description>
+        If set to true, it enable rgba, you'll need a gtk engine supporting rgba, like murrine. Compiz can have some problems like drawings shadows ... 
+      </_description>
+    </key>
+    <key name="date-format" type="s">
+      <default>'iso'</default>
+      <_summary>Date Format</_summary>
+      <_description>
+        The format of file dates. Possible values are "locale", "iso", and "informal".
+      </_description>
+    </key>
+    <key name="single-click" type="b">
+      <default>true</default>
+      <_summary>single click</_summary>
+      <_description>
+        Whether the items in the view can be activated with single clicks
+      </_description>
+    </key>
+    <key name="single-click-timeout" type="i">
+      <default>400</default>
+      <summary>single click timeout</summary>
+      <description>
+        The amount of time which the item under the mouse cursor will be selected automatically in single click mode
+      </description>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,48 @@
+/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
+/*
+ * Copyright (C) 2010 ammonkey
+ *
+ * This library is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License
+ * version 3.0 as published by the Free Software Foundation.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License version 3.0 for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see
+ * <http://www.gnu.org/licenses/>.
+ *
+ * Author: ammonkey <am.monkeyd@gmail.com>
+ */
+
+#ifndef MARLIN_VIEW_WINDOW_H
+#define MARLIN_VIEW_WINDOW_H
+
+#define MARLIN_VIEW_TYPE_WINDOW (marlin_view_window_get_type ())
+#define MARLIN_VIEW_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), MARLIN_VIEW_TYPE_WINDOW, MarlinViewWindow))
+#define MARLIN_VIEW_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), MARLIN_VIEW_TYPE_WINDOW, MarlinViewWindowClass))
+#define MARLIN_VIEW_IS_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MARLIN_VIEW_TYPE_WINDOW))
+#define MARLIN_VIEW_IS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), MARLIN_VIEW_TYPE_WINDOW))
+#define MARLIN_VIEW_WINDOW_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), MARLIN_VIEW_TYPE_WINDOW, MarlinViewWindowClass))
+
+typedef struct _MarlinViewWindow MarlinViewWindow;
+typedef struct _MarlinViewWindowClass MarlinViewWindowClass;
+
+MarlinViewWindow* marlin_view_window_new (const gchar* path);
+MarlinViewWindow* marlin_view_window_construct (GType object_type, const gchar* path);
+GType marlin_view_window_get_type (void) G_GNUC_CONST;
+
+#ifndef GOF_WINDOW_SLOT_DEFINED
+#define GOF_WINDOW_SLOT_DEFINED
+typedef struct GOFWindowSlot GOFWindowSlot;
+#endif
+
+typedef struct GOFWindowSlotClass GOFWindowSlotClass;
+
+GOFWindowSlot* marlin_view_window_get_active_slot (MarlinViewWindow* self);
+void marlin_view_window_set_active_slot (MarlinViewWindow* self, GOFWindowSlot* value);
+
+#endif /* MARLIN_VIEW_WINDOW_H */
