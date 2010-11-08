@@ -453,6 +453,8 @@ fm_directory_view_set_active_slot (FMDirectoryView *dview)
 {
         GOFWindowSlot *slot = dview->details->slot;
         //marlin_window_set_active_slot (MARLIN_WINDOW (slot->window), slot);
+        marlin_view_window_set_active_slot (MARLIN_VIEW_WINDOW (slot->window), slot);
+        g_signal_emit_by_name (slot->window, "column-path-changed", slot->location);
 }
 
 #if 0

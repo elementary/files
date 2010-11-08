@@ -76,7 +76,7 @@ namespace Marlin.View {
 		public signal void back();
 		public signal void refresh();
 		public signal void quit();
-		//public signal void path_changed(string path);
+		public signal void column_path_changed(File file);
 		public signal void path_changed(File file);
         public signal void show_about();
 		
@@ -105,6 +105,10 @@ namespace Marlin.View {
                                 can_go_up = (myfile.get_parent() != null);
 				top_menu.location_bar.path = myfile.get_path();
 			});
+                        /* allow the column to change the location path */
+                        column_path_changed.connect((myfile) => {
+				top_menu.location_bar.path = myfile.get_path();
+                        });
 			top_menu.location_bar.path = path;
 		
 		
