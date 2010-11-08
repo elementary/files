@@ -57,6 +57,7 @@ marlin_window_columns_new (GFile *location, GtkWidget *window)
         slot->mwcols = mwcols;
         mwcols->active_slot = slot;
         //marlin_window_set_active_slot (MARLIN_WINDOW (window), slot);
+        marlin_view_window_set_active_slot (MARLIN_VIEW_WINDOW (window), slot);
         
         mwcols->colpane = gtk_hbox_new (FALSE, 0);
         slot->colpane = mwcols->colpane;
@@ -70,7 +71,9 @@ marlin_window_columns_new (GFile *location, GtkWidget *window)
 
         gof_window_column_add(slot, slot->view_box);
 
-        gtk_container_add( GTK_CONTAINER(window), mwcols->view_box);
+        //gtk_container_add( GTK_CONTAINER(window), mwcols->view_box);
+        marlin_view_window_set_content (window, mwcols->view_box);
+
         return mwcols;
 }
 

@@ -160,9 +160,11 @@ static void
 marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data)
 {
         GOFWindowSlot *slot;
+        MarlinWindowColumns *mwcols;
         
         g_return_if_fail (file != NULL);
         if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) != NULL)
                 load_dir_async_cancel(slot->directory);
-        slot = gof_window_slot_new(file, GTK_WIDGET (window));
+        //slot = gof_window_slot_new(file, GTK_WIDGET (window));
+        mwcols = marlin_window_columns_new(file, window);
 }
