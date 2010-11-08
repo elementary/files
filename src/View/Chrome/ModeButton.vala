@@ -38,8 +38,8 @@ namespace Marlin.View.Chrome
 			            |  EventMask.BUTTON_PRESS_MASK
 			            |  EventMask.VISIBILITY_NOTIFY_MASK;
 
-			box = new HBox (true, 3);
-			box.border_width = 3;
+			box = new HBox (true, 0);
+			box.border_width = 2;
 			add (box);
 			box.show ();
 			
@@ -84,7 +84,7 @@ namespace Marlin.View.Chrome
 
 		public void append (Widget widget)
 		{
-			box.pack_start (widget, true, true, 6);
+			box.pack_start (widget, true, true, 5);
 			int index = (int) box.get_children().length() - 2;
 			mode_added (index, widget);
 		}
