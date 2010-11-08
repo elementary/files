@@ -65,13 +65,19 @@ namespace Marlin.View {
 				menu_bar.go_back.sensitive = value;
 			}
 		}
+
+                /*public void path_changed_to_gfile{
+                        set{
+                        }
+                }*/
 		
 		public signal void up();
 		public signal void forward();
 		public signal void back();
 		public signal void refresh();
 		public signal void quit();
-		public signal void path_changed(string path);
+		//public signal void path_changed(string path);
+		public signal void path_changed(File file);
         public signal void show_about();
 		
 //		new Settings Settings;
@@ -93,10 +99,11 @@ namespace Marlin.View {
 			top_menu = new Chrome.TopMenu();//Settings);
 			
 			top_menu.location_bar.activate.connect(() => {
-				path_changed(top_menu.location_bar.path);
+				path_changed(File.new_for_commandline_arg(top_menu.location_bar.path));
 			});
-			path_changed.connect((new_path) => {
-				top_menu.location_bar.path = new_path;
+			path_changed.connect((myfile) => {
+                                can_go_up = (myfile.get_parent() != null);
+				top_menu.location_bar.path = myfile.get_path();
 			});
 			top_menu.location_bar.path = path;
 		

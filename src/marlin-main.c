@@ -12,7 +12,8 @@
 
 static void     about (void);
 static void     marlin_view_window_up (MarlinViewWindow *window);
-static void     marlin_view_window_path_changed (MarlinViewWindow *window, const gchar *path, gpointer data);
+//static void     marlin_view_window_path_changed (MarlinViewWindow *window, const gchar *path, gpointer data);
+static void     marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data);
 
 static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func) {
 	if ((array != NULL) && (destroy_func != NULL)) {
@@ -78,12 +79,12 @@ main (int argc, char *argv[])
 	g_signal_connect (window, "quit", (GCallback) gtk_main_quit, NULL);
 	g_signal_connect (window, "path-changed", (GCallback) marlin_view_window_path_changed, NULL);
 
-        GOFWindowSlot *slot;
+        /*GOFWindowSlot *slot;
         
-        slot = gof_window_slot_new(g_file_new_for_commandline_arg (path), GTK_WIDGET (window));
+        slot = gof_window_slot_new(g_file_new_for_commandline_arg (path), GTK_WIDGET (window));*/
         //mwcols = marlin_window_columns_new(g_file_new_for_commandline_arg (path), window);
 
-        //marlin_view_window_set_content (window, slot->view_box);
+        g_signal_emit_by_name (window, "path-changed", g_file_new_for_commandline_arg (path));
 
         gtk_main ();
         g_free (path);	
@@ -146,19 +147,22 @@ marlin_view_window_up (MarlinViewWindow *window)
 	if (parent == NULL) 
 		return;
 
-        if (slot->mwcols != NULL)
+        /*if (slot->mwcols != NULL)
                 marlin_window_columns_change_location (slot, parent);
         else
-                gof_window_slot_change_location (slot, parent);
+                gof_window_slot_change_location (slot, parent);*/
+        //g_signal_emit_by_name (window, "path-changed", "/home/am/Images");
+        g_signal_emit_by_name (window, "path-changed", parent);
         g_object_unref (parent);
 }
 
 static void
-marlin_view_window_path_changed (MarlinViewWindow *window, const gchar *path, gpointer data)
+marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data)
 {
         GOFWindowSlot *slot;
         
-        g_return_if_fail (path != NULL);
-	//fprintf (stdout, "signal: path_changed(%s)\n", path);
-        slot = gof_window_slot_new(g_file_new_for_commandline_arg (path), GTK_WIDGET (window));
+        g_return_if_fail (file != NULL);
+        if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) != NULL)
+                load_dir_async_cancel(slot->directory);
+        slot = gof_window_slot_new(file, GTK_WIDGET (window));
 }

@@ -480,10 +480,13 @@ fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *locatio
 	}*/
 
 	//directory = gof_directory_async_new(location);
-        if (FM_IS_COLUMNS_VIEW (directory_view))
+        /*if (FM_IS_COLUMNS_VIEW (directory_view))
                 marlin_window_columns_change_location (directory_view->details->slot, location);
         else
-                gof_window_slot_change_location (directory_view->details->slot, location);
+                gof_window_slot_change_location (directory_view->details->slot, location);*/
+        GOFWindowSlot *slot = directory_view->details->slot;
+
+        g_signal_emit_by_name (slot->window, "path-changed", location);
 }
 
 static gboolean
