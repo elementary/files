@@ -12,6 +12,7 @@
 
 static void     about (void);
 static void     marlin_view_window_up (MarlinViewWindow *window);
+//static void     marlin_view_window_back (MarlinViewWindow *window);
 static void     marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data);
 
 static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func) {
@@ -48,7 +49,6 @@ main (int argc, char *argv[])
 	textdomain (GETTEXT_PACKAGE);
 
         /* gsettings parameters */
-        //GSettings  *settings;
         settings = g_settings_new ("org.gnome.marlin.preferences");
         /*gboolean showall = g_settings_get_boolean (settings, "showall");
         printf ("test gsettings showall: %d\n", showall);*/
@@ -59,9 +59,6 @@ main (int argc, char *argv[])
 	gtk_container_set_border_width (GTK_CONTAINER (window), 0);
 	g_signal_connect (window, "destroy", gtk_main_quit, NULL);*/
 	
-        //GOFDirectoryAsync *mydir;
-        //MarlinWindowColumns *mwcols;
-
         if (argc > 1) {
                 path = argv[1];
 	} else {
@@ -72,16 +69,12 @@ main (int argc, char *argv[])
 
         g_signal_connect (window, "show-about", (GCallback) about, NULL);
 	g_signal_connect (window, "up", (GCallback) marlin_view_window_up, NULL);
-	/*g_signal_connect (window, "back", (GCallback) __lambda22__marlin_view_window_back, NULL);
+	/*g_signal_connect (window, "back", (GCallback) marlin_view_window_back, NULL);
 	g_signal_connect (window, "forward", (GCallback) __lambda23__marlin_view_window_forward, NULL);
 	g_signal_connect (window, "refresh", (GCallback) __lambda24__marlin_view_window_refresh, NULL);*/
 	g_signal_connect (window, "quit", (GCallback) gtk_main_quit, NULL);
 	g_signal_connect (window, "path-changed", (GCallback) marlin_view_window_path_changed, NULL);
-
-        /*GOFWindowSlot *slot;
-        
-        slot = gof_window_slot_new(g_file_new_for_commandline_arg (path), GTK_WIDGET (window));*/
-        //mwcols = marlin_window_columns_new(g_file_new_for_commandline_arg (path), window);
+	g_signal_connect (window, "browser-path-changed", (GCallback) marlin_view_window_path_changed, NULL);
 
         g_signal_emit_by_name (window, "path-changed", g_file_new_for_commandline_arg (path));
 
@@ -163,6 +156,13 @@ marlin_view_window_up (MarlinViewWindow *window)
         g_object_unref (parent);
 }
 
+/*
+static void
+marlin_view_window_back (MarlinViewWindow *window)
+{
+        printf ("%s\n", G_STRFUNC);
+}*/
+
 static void
 marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data)
 {
@@ -172,6 +172,6 @@ marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer
         g_return_if_fail (file != NULL);
         if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) != NULL)
                 load_dir_async_cancel(slot->directory);
-        //slot = gof_window_slot_new(file, GTK_WIDGET (window));
-        mwcols = marlin_window_columns_new(file, GTK_WIDGET (window));
+        slot = gof_window_slot_new(file, GTK_WIDGET (window));
+        //mwcols = marlin_window_columns_new(file, GTK_WIDGET (window));
 }

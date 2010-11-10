@@ -11,6 +11,7 @@ marlin_CPPFLAGS = \
 marlin_VALAFLAGS = \
 	-C \
 	--pkg gtk+-3.0 \
+        --pkg gee-1.0 \
   	$(NULL)
 
 marlin_LDADD = \
@@ -19,6 +20,7 @@ marlin_LDADD = \
 
 marlin_VALASOURCES = \
 	View/Window.vala 	                \
+        View/Browser.vala                       \
         View/Chrome/CompactMenuButton.vala      \
         View/Chrome/CompactMenu.vala            \
         View/Chrome/LocationBar.vala            \

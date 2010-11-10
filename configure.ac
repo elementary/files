@@ -62,6 +62,7 @@ PKG_CHECK_MODULES(ALL, [
 	gio-2.0	
         pango			>= pango_minver
 	gtk+-3.0		>= gtk_minver
+        gee-1.0
 ])
 dnl ===========================================================================
 
@@ -132,7 +133,7 @@ fi
 dnl ===========================================================================
 
 dnl core marlin
-CORE_MODULES="glib-2.0 gnome-desktop-3.0 gtk+-3.0 gthread-2.0 gio-2.0 gio-unix-2.0 gconf-2.0 libxml-2.0"
+CORE_MODULES="glib-2.0 gnome-desktop-3.0 gtk+-3.0 gthread-2.0 gio-2.0 gio-unix-2.0 gconf-2.0 libxml-2.0 gee-1.0"
 CORE_CFLAGS="`$PKG_CONFIG --cflags $CORE_MODULES` $x_cflags $WARNING_CFLAGS"
 AC_SUBST(CORE_CFLAGS)
 CORE_LIBS="`$PKG_CONFIG --libs $CORE_MODULES` $x_libs"

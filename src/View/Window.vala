@@ -13,6 +13,7 @@
 
 using Gtk;
 using Cairo;
+using Gee;
 
 namespace Marlin.View {
 	public class Window : Gtk.Window
@@ -22,6 +23,7 @@ namespace Marlin.View {
 		EventBox content_box;
 		Widget content_item;
                 Object active_slot_item;
+                Browser<string> browser;
 		
 		public Widget content{
 			set{
@@ -54,8 +56,8 @@ namespace Marlin.View {
 		
 		public bool can_go_forward{
 			set{
-				top_menu.go_up.sensitive = value;
-				menu_bar.go_up.sensitive = value;
+				top_menu.go_forward.sensitive = value;
+				menu_bar.go_forward.sensitive = value;
 			}
 		}
 		
@@ -67,12 +69,11 @@ namespace Marlin.View {
 		}
 
 		public signal void up();
-		public signal void forward();
-		public signal void back();
 		public signal void refresh();
 		public signal void quit();
 		public signal void column_path_changed(File file);
 		public signal void path_changed(File file);
+		public signal void browser_path_changed(File file);
         public signal void show_about();
 		
 //		new Settings Settings;
@@ -90,15 +91,15 @@ namespace Marlin.View {
 			/*/
             /* Topmenu
             /*/
-			
+                        browser =  new Browser<string> ();	
+
 			top_menu = new Chrome.TopMenu();//Settings);
 			
 			top_menu.location_bar.activate.connect(() => {
 				path_changed(File.new_for_commandline_arg(top_menu.location_bar.path));
 			});
 			path_changed.connect((myfile) => {
-                                can_go_up = (myfile.get_parent() != null);
-				top_menu.location_bar.path = myfile.get_path();
+                                update_location_state(myfile, true);
 			});
                         /* allow the column to change the location path */
                         column_path_changed.connect((myfile) => {
@@ -140,17 +141,18 @@ namespace Marlin.View {
             /*/
 			
 			top_menu.go_up.clicked.connect(() => { up(); });
-			top_menu.go_forward.clicked.connect(() => { forward(); });
-			top_menu.go_back.clicked.connect(() => { back(); });
+			top_menu.go_forward.clicked.connect(() => { go_forward(); });
+			top_menu.go_back.clicked.connect(() => { go_back(); });
             //top_menu.refresh.clicked.connect(() => { refresh(); });
             top_menu.compact_menu.about.activate.connect(() => { show_about(); });
 			
 			menu_bar.go_up.activate.connect(() => { up(); });
-			menu_bar.go_forward.activate.connect(() => { forward(); });
-			menu_bar.go_back.activate.connect(() => { back(); });
+			menu_bar.go_forward.activate.connect(() => { go_forward(); });
+			menu_bar.go_back.activate.connect(() => { go_back(); });
             menu_bar.refresh.activate.connect(() => { refresh(); });
             menu_bar.about.activate.connect(() => { show_about(); });
             menu_bar.quit.activate.connect(() => { quit(); });
+
 
                         //unowned Gtk.BindingSet binding_set;
 
@@ -163,7 +165,7 @@ namespace Marlin.View {
 
             delete_event.connect(() => { quit(); });
 		}
-		
+
 		public void show_menu_bar(bool show)
 		{
 			//Settings.ShowMenuBar = show;
@@ -173,5 +175,30 @@ namespace Marlin.View {
 				menu_bar.hide();
 			}
 		}
+
+                private void go_back()
+                {
+		        var myfile = File.new_for_commandline_arg(browser.go_back());
+                        browser_path_changed(myfile);
+                        update_location_state(myfile, false);
+                }
+		
+                private void go_forward()
+                {
+		        var myfile = File.new_for_commandline_arg(browser.go_forward());
+                        browser_path_changed(myfile);
+                        update_location_state(myfile, false);
+                }
+		
+                private void update_location_state(File myfile, bool save_history)
+                {
+                        can_go_up = (myfile.get_parent() != null);
+			var p = myfile.get_path();
+			top_menu.location_bar.path = p;
+                        if (save_history)
+                                browser.record_uri(p);
+                        can_go_back = browser.can_go_back();
+                        can_go_forward = browser.can_go_forward();
+                }
     }
 }
