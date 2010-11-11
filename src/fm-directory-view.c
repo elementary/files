@@ -79,26 +79,26 @@ static GdkAtom copied_files_atom;
 struct FMDirectoryViewDetails
 {
 	//NautilusWindowInfo *window;
-        GtkWidget *window;
+        //GtkWidget *window;
 	GOFWindowSlot *slot;
-	GOFDirectoryAsync *directory;
+	//GOFDirectoryAsync *directory;
 	//GOFFile *directory_as_file;
 
 	/* whether we are in the active slot */
-	gboolean active;
+	//gboolean active;
 
 	/* loading indicates whether this view has begun loading a directory.
 	 * This flag should need not be set inside subclasses. FMDirectoryView automatically
 	 * sets 'loading' to TRUE before it begins loading a directory's contents and to FALSE
 	 * after it finishes loading the directory and its view.
 	 */
-	gboolean loading;
+	//gboolean loading;
 
 	/* flag to indicate that no file updates should be dispatched to subclasses.
 	 * This is a workaround for bug #87701 that prevents the list view from
 	 * losing focus when the underlying GtkTreeView is updated.
 	 */
-	gboolean show_hidden_files;
+	//gboolean show_hidden_files;
 
 	/*gchar* undo_action_description;
 	gchar* undo_action_label;

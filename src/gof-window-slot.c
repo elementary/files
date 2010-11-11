@@ -179,7 +179,18 @@ gof_window_columns_add_preview (GOFWindowSlot *slot, GFile *location)
         gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
 }
 
-//gof_window_slot_new (GFile *location, GtkWidget *window)
+static void
+gof_window_slot_finalize (GObject *object)
+{
+        printf ("%s\n", G_STRFUNC);
+	GOFWindowSlot *slot = GOF_WINDOW_SLOT (object);
+        
+        //load_dir_async_cancel(slot->directory);
+        g_object_unref(slot->directory);
+        /*g_object_unref(slot->location);*/
+        G_OBJECT_CLASS (parent_class)->finalize (object);
+}
+
 GOFWindowSlot *
 gof_window_slot_new (GFile *location, GObject *ctab)
 {
@@ -187,7 +198,6 @@ gof_window_slot_new (GFile *location, GObject *ctab)
         GOFWindowSlot *slot;
         slot = g_object_new (GOF_TYPE_WINDOW_SLOT, NULL);
         slot->location = location;
-        //slot->window = window;
         slot->ctab = ctab;
         
         slot->directory = gof_directory_async_new(slot->location);
@@ -452,52 +462,6 @@ nautilus_window_slot_add_current_location_to_history_list (NautilusWindowSlot *s
 	}
 }
 #endif
-
-static void
-gof_window_slot_finalize (GObject *object)
-{
-        printf ("%s\n", G_STRFUNC);
-	GOFWindowSlot *slot = GOF_WINDOW_SLOT (object);
-        
-        load_dir_async_cancel(slot->directory);
-        g_object_unref(slot->directory);
-        /*g_object_unref(slot->location);*/
-        G_OBJECT_CLASS (parent_class)->dispose (object);
-
-#if 0
-	GtkWidget *widget;
-
-	if (slot->content_view) {
-		widget = nautilus_view_get_widget (slot->content_view);
-		gtk_widget_destroy (widget);
-		g_object_unref (slot->content_view);
-		slot->content_view = NULL;
-	}
-
-	if (slot->new_content_view) {
-		widget = nautilus_view_get_widget (slot->new_content_view);
-		gtk_widget_destroy (widget);
-		g_object_unref (slot->new_content_view);
-		slot->new_content_view = NULL;
-	}
-
-	nautilus_window_slot_set_viewed_file (slot, NULL);
-	/* TODO? why do we unref here? the file is NULL.
-	 * It was already here before the slot move, though */
-	nautilus_file_unref (slot->viewed_file);
-
-
-	eel_g_list_free_deep (slot->pending_selection);
-	slot->pending_selection = NULL;
-
-	g_free (slot->title);
-	slot->title = NULL;
-
-	g_free (slot->status_text);
-	slot->status_text = NULL;
-#endif
-	//G_OBJECT_CLASS (parent_class)->dispose (object);
-}
 
 GtkWidget *
 gof_window_slot_get_view (GOFWindowSlot *slot)

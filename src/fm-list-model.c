@@ -1369,7 +1369,7 @@ fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter)
 		return;
 	}
 
-        load_dir_async_cancel (file_entry->subdirectory);
+        gof_directory_async_cancel (file_entry->subdirectory);
 	g_hash_table_remove (model->details->directory_reverse_map,
 			     file_entry->subdirectory);
 	file_entry->loaded = 0;

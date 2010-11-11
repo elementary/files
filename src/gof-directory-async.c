@@ -222,7 +222,7 @@ load_dir_async (GOFDirectoryAsync *dir)
 }
 
 void
-load_dir_async_cancel (GOFDirectoryAsync *dir)
+gof_directory_async_cancel (GOFDirectoryAsync *dir)
 {
         g_cancellable_cancel (dir->priv->cancellable);
         g_cancellable_cancel (dir->priv->cancellable);
@@ -303,14 +303,15 @@ gof_directory_async_finalize (GObject *object)
           g_slist_foreach (priv->monitors, (GFunc)g_object_unref, NULL);
           g_slist_free (priv->monitors);
           }*/
+        //load_dir_async_cancel (dir);
         char *uri = g_file_get_uri(dir->priv->_dir);
         printf (">> %s %s\n", G_STRFUNC, uri);
         g_free (uri);
-        g_object_unref (dir->priv->_dir);
-        if (dir->priv->_parent != NULL)
-                g_object_unref (dir->priv->_parent);
         gof_monitor_cancel (dir->priv->monitor);
         g_object_unref (dir->priv->cancellable);
+        g_object_unref (dir->priv->_dir);
+        /*if (dir->priv->_parent != NULL)
+                g_object_unref (dir->priv->_parent);*/
         g_free (dir->priv);
         G_OBJECT_CLASS (gof_directory_async_parent_class)->finalize (object);
 }

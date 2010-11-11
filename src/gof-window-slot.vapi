@@ -20,6 +20,7 @@ namespace GOF {
 		[CCode (cheader_filename = "gof-directory-async.h")]
 		public class Async : GLib.Object {
 			public Async (File f);
+                        public void cancel ();
                         public string get_uri ();
                         public bool has_parent ();
                         public File get_parent ();

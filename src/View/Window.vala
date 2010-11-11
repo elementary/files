@@ -152,7 +152,6 @@ namespace Marlin.View {
 			
 			button.clicked.connect(() => {
 				remove_tab(content);
-                                content.unref();
 			});
 			
 			hbox.show_all();

@@ -38,7 +38,7 @@ marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location)
         MarlinWindowColumns *mwcols = slot->mwcols;
         GtkWidget *window = mwcols->window;
 
-        load_dir_async_cancel(slot->directory);
+        gof_directory_async_cancel(slot->directory);
         gtk_widget_destroy (mwcols->view_box);
         
         mwcols = marlin_window_columns_new (location, window);

@@ -54,20 +54,24 @@ namespace Marlin.View {
 			this.show_all();
 
                         path_changed.connect((myfile) => {
+                                slot.directory.cancel();
                                 slot = new GOF.Window.Slot(myfile, this);
                                 update_location_state(true);
 			});
                         up.connect(() => {
                                 if (slot.directory.has_parent()) {
+                                        slot.directory.cancel();
                                         slot = new GOF.Window.Slot(slot.directory.get_parent(), this);
                                         update_location_state(true);
                                 }
 			});
                         back.connect(() => {
+                                slot.directory.cancel();
                                 slot = new GOF.Window.Slot(File.new_for_commandline_arg(browser.go_back()) , this);
                                 update_location_state(false);
                         });
                         forward.connect(() => {
+                                slot.directory.cancel();
                                 slot = new GOF.Window.Slot(File.new_for_commandline_arg(browser.go_forward()) , this);
                                 update_location_state(false);
                         });
