@@ -13,41 +13,18 @@
 
 using Gtk;
 using Cairo;
-using Gee;
 
 namespace Marlin.View {
 	public class Window : Gtk.Window
 	{
-		Chrome.MenuBar menu_bar;
-		Chrome.TopMenu top_menu;
-		EventBox content_box;
-		Widget content_item;
-                Object active_slot_item;
-                Browser<string> browser;
+		public Chrome.MenuBar menu_bar;
+		public Chrome.TopMenu top_menu;
+		public Notebook tabs;
+                private IconSize isize13;
 		
-		public Widget content{
-			set{
-				content_box.remove(content_item);
-				content_box.add(value);
-				content_item = value;
-				content_item.show();
-                                ((Bin)value).get_child().grab_focus();
-			}
-			get{
-				return content_item;
-			}
-		}
+		public ViewContainer current_tab;
 
-                public Object active_slot{
-                        set{
-                                active_slot_item = value;
-                        }
-                        get{
-                                return active_slot_item;
-                        }
-                }
-		
-		public bool can_go_up{
+                public bool can_go_up{
 			set{
 				top_menu.go_up.sensitive = value;
 				menu_bar.go_up.sensitive = value;
@@ -68,104 +45,139 @@ namespace Marlin.View {
 			}
 		}
 
-		public signal void up();
+		public signal void show_about();		
 		public signal void refresh();
-		public signal void quit();
-		public signal void column_path_changed(File file);
-		public signal void path_changed(File file);
-		public signal void browser_path_changed(File file);
-        public signal void show_about();
+                public signal void viewmode_changed(ViewMode mode);
+        
 		
 //		new Settings Settings;
 		
-		public Window (string path)
+		public Window ()
 		{
 			/*/
-            /* Menubar
-            /*/
+                        /* Menubar
+                        /*/
 
 			menu_bar = new Chrome.MenuBar();
 			
 			add_accel_group(menu_bar.Accels);
 			
 			/*/
-            /* Topmenu
-            /*/
-                        browser =  new Browser<string> ();	
-
-			top_menu = new Chrome.TopMenu();//Settings);
+                        /* Topmenu
+                        /*/
 			
-			top_menu.location_bar.activate.connect(() => {
-				path_changed(File.new_for_commandline_arg(top_menu.location_bar.path));
-			});
-			path_changed.connect((myfile) => {
-                                update_location_state(myfile, true);
-			});
-                        /* allow the column to change the location path */
-                        column_path_changed.connect((myfile) => {
-				top_menu.location_bar.path = myfile.get_path();
-                        });
-			top_menu.location_bar.path = path;
+			top_menu = new Chrome.TopMenu();//Settings);
+			top_menu.location_bar.path = "";
 		
 		
 			/*/
 			/* Contents
-            /* TODO: Implement this
 			/*/
 			
-			content_box = new EventBox();
-			content_item = new Label("Loading..."); 
-			content_box.add(content_item);
+			tabs = new Notebook();
+			tabs.show_border = false;
+			tabs.show_tabs = false;
 			
 			//view = new View();
+                        isize13 = icon_size_register ("13px", 13, 13);
 
 			/*/
-            /* Pack up all the view
-            /*/
+                        /* Pack up all the view
+                        /*/
 			
 			VBox vbox = new VBox(false, 0);
 			vbox.pack_start(menu_bar, false, false, 0);
 			vbox.pack_start(top_menu, false, false, 0);
-			vbox.pack_start(content_box, true, true, 0);
+			vbox.pack_start(tabs, true, true, 0);
 
 			add(vbox);
-            set_default_size(760, 450);
+                        set_default_size(760, 450);
 			set_position(WindowPosition.CENTER);	
 			title = "Marlin";
 			//this.icon = DrawingService.GetIcon("system-file-manager", 32);
 			show_menu_bar(true);
-            show_all();
+                        show_all();
             
-            /*/
-            /* Connect and abstract signals to local ones
-            /*/
-			
-			top_menu.go_up.clicked.connect(() => { up(); });
-			top_menu.go_forward.clicked.connect(() => { go_forward(); });
-			top_menu.go_back.clicked.connect(() => { go_back(); });
-            //top_menu.refresh.clicked.connect(() => { refresh(); });
+                        /*/
+                        /* Connect and abstract signals to local ones
+                        /*/
+		
+			top_menu.go_up.clicked.connect(() => { current_tab.up(); });
+			top_menu.go_forward.clicked.connect(() => { current_tab.forward(); });
+			top_menu.go_back.clicked.connect(() => { current_tab.back(); });
+            top_menu.refresh.clicked.connect(() => { refresh(); });
             top_menu.compact_menu.about.activate.connect(() => { show_about(); });
-			
-			menu_bar.go_up.activate.connect(() => { up(); });
-			menu_bar.go_forward.activate.connect(() => { go_forward(); });
-			menu_bar.go_back.activate.connect(() => { go_back(); });
+            top_menu.view_switcher.viewmode_change.connect((mode) => { viewmode_changed(mode); }); 
+		        menu_bar.new_tab.activate.connect(() => { add_tab(File.new_for_commandline_arg(Environment.get_home_dir())); });	
+			menu_bar.go_up.activate.connect(() => { current_tab.up(); });
+			menu_bar.go_forward.activate.connect(() => { current_tab.forward(); });
+			menu_bar.go_back.activate.connect(() => { current_tab.back(); });
             menu_bar.refresh.activate.connect(() => { refresh(); });
             menu_bar.about.activate.connect(() => { show_about(); });
-            menu_bar.quit.activate.connect(() => { quit(); });
+            menu_bar.quit.activate.connect(() => { main_quit(); });
+			
+            delete_event.connect(() => { main_quit(); });
+            
+            tabs.switch_page.connect((page, offset) => {
+                //stdout.printf ("tab changed: %u\n", offset);
+                current_tab = (ViewContainer) tabs.get_children().nth_data(offset);
+                if (current_tab.slot != null)
+                        current_tab.update_location_state(false);
+            });
 
 
-                        //unowned Gtk.BindingSet binding_set;
-
-                        //binding_set = Gtk.BindingSet.by_class (typeof (Window).class_ref ());
-                        /*binding_set = Gtk.BindingSet.by_class (this.get_class());
-                        Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("plus"), 0, "show-about", 0);*/
-                        /*Signal.connect (this, "up",
-                    (GLib.Callback)up, null);*/
-
-
-            delete_event.connect(() => { quit(); });
 		}
+		
+		
+		
+		//public void add_tab(ViewContainer content){
+		public void add_tab(File location){
+		        ViewContainer content = new View.ViewContainer(this, location);
+			var hbox = new HBox(false, 0);
+			hbox.pack_start(content.label, true, true, 0);
+                        //var image = new Image.from_stock(Stock.CLOSE, IconSize.MENU);
+                        //var image = new Image.from_stock(Stock.CLOSE, IconSize.BUTTON);
+                        /* TODO reduce the size of the tab */
+                        var image = new Image.from_stock(Stock.CLOSE, isize13);
+			var button = new Button();
+			button.set_relief(ReliefStyle.NONE);
+			button.set_focus_on_click(false);
+                        //button.set_name("marlin-tab-close-button");
+			button.add(image);
+			var style = new RcStyle();
+			style.xthickness = 0;
+			style.ythickness = 0;
+			button.modify_style(style);
+			hbox.pack_start(button, false, false, 0);
+			
+			button.clicked.connect(() => {
+				remove_tab(content);
+                                content.unref();
+			});
+			
+			hbox.show_all();
+			
+			tabs.append_page(content, hbox);
+			tabs.child_set (content, "tab-expand", true, null );
 
+			tabs.set_tab_reorderable(content, true);
+			tabs.show_tabs = tabs.get_children().length() > 1;		
+		                        
+                        /* jump to that new tab */
+                        tabs.set_current_page(tabs.get_n_pages()-1); 
+			current_tab = content;
+		}
+		
+		public void remove_tab(ViewContainer view_container){			
+			if(tabs.get_children().length() == 2){
+				tabs.show_tabs = false;
+			}else if(tabs.get_children().length() == 1){
+				return;
+			}
+			
+			tabs.remove(view_container);
+		}
+		
 		public void show_menu_bar(bool show)
 		{
 			//Settings.ShowMenuBar = show;
@@ -175,30 +187,5 @@ namespace Marlin.View {
 				menu_bar.hide();
 			}
 		}
-
-                private void go_back()
-                {
-		        var myfile = File.new_for_commandline_arg(browser.go_back());
-                        browser_path_changed(myfile);
-                        update_location_state(myfile, false);
-                }
-		
-                private void go_forward()
-                {
-		        var myfile = File.new_for_commandline_arg(browser.go_forward());
-                        browser_path_changed(myfile);
-                        update_location_state(myfile, false);
-                }
-		
-                private void update_location_state(File myfile, bool save_history)
-                {
-                        can_go_up = (myfile.get_parent() != null);
-			var p = myfile.get_path();
-			top_menu.location_bar.path = p;
-                        if (save_history)
-                                browser.record_uri(p);
-                        can_go_back = browser.can_go_back();
-                        can_go_forward = browser.can_go_forward();
-                }
     }
 }

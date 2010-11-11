@@ -20,7 +20,9 @@ marlin_LDADD = \
 
 marlin_VALASOURCES = \
 	View/Window.vala 	                \
+        View/ViewContainer.vala                 \
         View/Browser.vala                       \
+        View/ViewMode.vala                      \
         View/Chrome/CompactMenuButton.vala      \
         View/Chrome/CompactMenu.vala            \
         View/Chrome/LocationBar.vala            \
@@ -60,11 +62,10 @@ EXTRA_DIST = \
 
 
 marlin.vala.stamp: $(marlin_VALASOURCES)
-	$(AM_V_GEN) $(VALAC) $(marlin_VALAFLAGS) $^
+	$(AM_V_GEN) $(VALAC) gof-window-slot.vapi $(marlin_VALAFLAGS) $^
 	touch marlin.vala.stamp
 
 CLEANFILES = \
 	*.stamp \
-	*.vapi \
 	$(marlin_VALASOURCES:.vala=.c) \
 	$(NULL)

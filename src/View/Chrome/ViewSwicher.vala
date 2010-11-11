@@ -2,7 +2,7 @@
 //  ViewSwicher.cs
 //  
 //  Author:
-//       mathijshenquet <${AuthorEmail}>
+//       mathijshenquet <mathijs.henquet@gmail.com>
 // 
 //  Copyright (c) 2010 mathijshenquet
 // 
@@ -21,12 +21,14 @@
 
 
 using Gtk;
+using Marlin.View;
 
 namespace Marlin.View.Chrome
 {
 	public class ViewSwitcher : ToolItem
 	{
 		private ModeButton switcher;
+		public signal void viewmode_change(ViewMode mode);
 		
 		//Gdk.Pixbuf iconviewIcon = DrawingService.GetIcon("view-list-icons-symbolic;;view-list-icons", 16);
 		//Gdk.Pixbuf detailsviewIcon = DrawingService.GetIcon("view-list-details-symbolic;;view-list-details", 16);
@@ -38,12 +40,20 @@ namespace Marlin.View.Chrome
 			
 			switcher = new ModeButton();
 			
-			Image modeicons = new Image.from_stock(Stock.ABOUT, IconSize.MENU);
-			switcher.append(modeicons);
-			Image modedetails = new Image.from_stock(Stock.ABOUT, IconSize.MENU);
-			switcher.append(modedetails);
-			Image modecompact = new Image.from_stock(Stock.ABOUT, IconSize.MENU);
-			switcher.append(modecompact);
+			Image list = new Image.from_stock(Stock.ABOUT, IconSize.MENU);
+			switcher.append(list);
+			Image miller = new Image.from_stock(Stock.ABOUT, IconSize.MENU);
+			switcher.append(miller);
+			
+			switcher.mode_changed.connect((mode) => {
+				//You cannot do a switch here, only for int and string
+				if(mode == list){
+					viewmode_change(ViewMode.LIST);
+				}else if(mode == miller){
+					viewmode_change(ViewMode.MILLER);
+				}
+				
+			});
 			
 			switcher.selected = 0;
 			//switcher.ModeChanged += delegate(object sender, ModeButtonEventArgs args) {};

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-valac -C main.vala Window.vala Chrome/CompactMenuButton.vala Chrome/CompactMenu.vala Chrome/LocationBar.vala Chrome/MenuBar.vala Chrome/ModeButton.vala Chrome/TopMenu.vala Chrome/ViewSwicher.vala --pkg gtk+-3.0

@@ -69,13 +69,18 @@ namespace Marlin.View.Chrome {
 				            get_menu_position,
 				            (ev == null) ? 0 : ev.button,
 				            (ev == null) ? get_current_event_time() : ev.time);
-			/*} catch { */
-                        } finally {
-			        // Highlight the parent
-        			if (menu.attach_widget != null)
-	        			menu.attach_widget.set_state(StateType.SELECTED);
-                        }
-                }
+			} catch {
+				menu.popup (null,
+				            null,
+				            null,
+				            (ev == null) ? 0 : ev.button,
+				            (ev == null) ? get_current_event_time() : ev.time);
+			}
+
+			// Highlight the parent
+			if (menu.attach_widget != null)
+				menu.attach_widget.set_state(StateType.SELECTED);
+		}
 		
 		void deactivate_menu ()
 		{

@@ -2,7 +2,7 @@
 //  CompactMenu.cs
 //  
 //  Author:
-//       mathijshenquet <${AuthorEmail}>
+//       mathijshenquet <mathijs.henquet@gmail.com>
 // 
 //  Copyright (c) 2010 mathijshenquet
 // 

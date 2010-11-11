@@ -28,7 +28,7 @@
 struct GOFDirectoryAsyncPrivate {
         //GTimer          *timer;
         GFile           *_dir;
-        //GFile           *_parent;
+        GFile           *_parent;
         //GAsyncResult    *_res;
         GOFMonitor      *monitor;
         //FMListModel     *model;
@@ -246,7 +246,7 @@ GOFDirectoryAsync *gof_directory_async_new(GFile *location)
         //self->priv->_dir = g_file_dup(location);
         self->priv->_dir = location;
         g_object_ref (location);
-        //self->priv->_parent = g_file_get_parent(self->priv->_dir);
+        self->priv->_parent = g_file_get_parent(self->priv->_dir);
 
         //load_dir_async (self);
 
@@ -307,8 +307,8 @@ gof_directory_async_finalize (GObject *object)
         printf (">> %s %s\n", G_STRFUNC, uri);
         g_free (uri);
         g_object_unref (dir->priv->_dir);
-        /*if (dir->priv->_parent != NULL)
-                g_object_unref (dir->priv->_parent);*/
+        if (dir->priv->_parent != NULL)
+                g_object_unref (dir->priv->_parent);
         gof_monitor_cancel (dir->priv->monitor);
         g_object_unref (dir->priv->cancellable);
         g_free (dir->priv);
@@ -352,3 +352,14 @@ gof_directory_async_get_uri (GOFDirectoryAsync *directory)
         return g_file_get_uri(directory->priv->_dir);
 }
 
+gboolean
+gof_directory_async_has_parent(GOFDirectoryAsync *directory)
+{
+        return (directory->priv->_parent != NULL);
+}
+
+GFile *
+gof_directory_async_get_parent(GOFDirectoryAsync *directory)
+{
+        return (directory->priv->_parent);
+}

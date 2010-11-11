@@ -79,11 +79,13 @@ GType                   gof_directory_async_get_type (void);
 //GOFDirectoryAsync       *gof_directory_async_new(gchar *);
 GOFDirectoryAsync       *gof_directory_async_new(GFile *location);
 GOFDirectoryAsync       *gof_directory_async_get_for_file(GOFFile *file);
-GOFDirectoryAsync       *gof_directory_async_get_parent(GOFDirectoryAsync *dir);
+//GOFDirectoryAsync       *gof_directory_async_get_parent(GOFDirectoryAsync *dir);
 //GtkWidget               *get_tree_view(GOFDirectoryAsync *dir);
 void                    load_dir_async (GOFDirectoryAsync *dir);
 void                    load_dir_async_cancel (GOFDirectoryAsync *dir);
 char                    *gof_directory_async_get_uri (GOFDirectoryAsync *directory);
+gboolean                gof_directory_async_has_parent(GOFDirectoryAsync *directory);
+GFile                   *gof_directory_async_get_parent(GOFDirectoryAsync *directory);
 
 /*GOFDirectoryAsync       *gof_directory_ref (GOFDirectoryAsync *directory);
 void                    gof_directory_unref (GOFDirectoryAsync *directory);*/

@@ -6,14 +6,15 @@
 //#include <libintl.h>
 #include "marlin-global-preferences.h" 
 #include "marlin-view-window.h"
+#include "marlin-private.h"
 
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
 
 
 static void     about (void);
-static void     marlin_view_window_up (MarlinViewWindow *window);
+//static void     marlin_view_window_up (MarlinViewWindow *window);
 //static void     marlin_view_window_back (MarlinViewWindow *window);
-static void     marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data);
+//static void     marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data);
 
 static void _vala_array_destroy (gpointer array, gint array_length, GDestroyNotify destroy_func) {
 	if ((array != NULL) && (destroy_func != NULL)) {
@@ -65,18 +66,19 @@ main (int argc, char *argv[])
                 path = g_strdup(g_get_home_dir());
 	}
         
-        window = marlin_view_window_new (path);
+        window = marlin_view_window_new ();
+        marlin_view_window_add_tab (window, g_file_new_for_commandline_arg(path));
 
         g_signal_connect (window, "show-about", (GCallback) about, NULL);
-	g_signal_connect (window, "up", (GCallback) marlin_view_window_up, NULL);
+	/*g_signal_connect (window, "up", (GCallback) marlin_view_window_up, NULL);*/
 	/*g_signal_connect (window, "back", (GCallback) marlin_view_window_back, NULL);
 	g_signal_connect (window, "forward", (GCallback) __lambda23__marlin_view_window_forward, NULL);
 	g_signal_connect (window, "refresh", (GCallback) __lambda24__marlin_view_window_refresh, NULL);*/
-	g_signal_connect (window, "quit", (GCallback) gtk_main_quit, NULL);
-	g_signal_connect (window, "path-changed", (GCallback) marlin_view_window_path_changed, NULL);
-	g_signal_connect (window, "browser-path-changed", (GCallback) marlin_view_window_path_changed, NULL);
+	//g_signal_connect (window, "quit", (GCallback) gtk_main_quit, NULL);
+	//g_signal_connect (window, "path-changed", (GCallback) marlin_view_window_path_changed, NULL);
+	//g_signal_connect (window, "browser-path-changed", (GCallback) marlin_view_window_path_changed, NULL);
 
-        g_signal_emit_by_name (window, "path-changed", g_file_new_for_commandline_arg (path));
+        //g_signal_emit_by_name (window, "path-changed", g_file_new_for_commandline_arg (path));
 
       	/*GtkBindingSet *binding_set;
 
@@ -133,6 +135,8 @@ static void about (void) {
 	_g_object_unref0 (about);
 }
 
+
+#if 0
 static void
 marlin_view_window_up (MarlinViewWindow *window)
 {
@@ -154,7 +158,9 @@ marlin_view_window_up (MarlinViewWindow *window)
         //g_signal_emit_by_name (window, "path-changed", "/home/am/Images");
         g_signal_emit_by_name (window, "path-changed", parent);
         g_object_unref (parent);
+        printf ("!!!!!!!! %s\n", G_STRFUNC);
 }
+#endif
 
 /*
 static void
@@ -163,6 +169,7 @@ marlin_view_window_back (MarlinViewWindow *window)
         printf ("%s\n", G_STRFUNC);
 }*/
 
+#if 0
 static void
 marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data)
 {
@@ -170,8 +177,9 @@ marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer
         MarlinWindowColumns *mwcols;
         
         g_return_if_fail (file != NULL);
-        if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) != NULL)
-                load_dir_async_cancel(slot->directory);
+        /*if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) != NULL)
+                load_dir_async_cancel(slot->directory);*/
         slot = gof_window_slot_new(file, GTK_WIDGET (window));
         //mwcols = marlin_window_columns_new(file, GTK_WIDGET (window));
 }
+#endif

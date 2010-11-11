@@ -64,7 +64,8 @@ struct GOFWindowSlot {
 	char *title;
 	char *status_text;
 
-        GtkWidget *window;
+        //GtkWidget *window;
+        GObject *ctab;
         GOFDirectoryAsync *directory;
 
         MarlinWindowColumns *mwcols;
@@ -107,14 +108,17 @@ struct GOFWindowSlotClass {
 GType   gof_window_slot_get_type (void);
 
 //GOFWindowSlot *gof_window_slot_new (gchar *path);
-GOFWindowSlot   *gof_window_slot_new (GFile *, GtkWidget *);
-GOFWindowSlot   *gof_window_slot_column_new (GFile *location, GtkWidget *window);
-void            gof_window_slot_change_location (GOFWindowSlot *slot, GFile *location);
+//GOFWindowSlot   *gof_window_slot_new (GFile *, GtkWidget *);
+GOFWindowSlot   *gof_window_slot_new (GFile *location, GObject *ctab);
+//GOFWindowSlot   *gof_window_slot_column_new (GFile *location, GtkWidget *window);
+GOFWindowSlot   *gof_window_slot_column_new (GFile *location, GObject *ctab);
+//void            gof_window_slot_change_location (GOFWindowSlot *slot, GFile *location);
 
 void            gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column);
 void            gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location);
 void            gof_window_columns_add_preview (GOFWindowSlot *slot, GFile *location);
 GFile           *gof_window_slot_get_location (GOFWindowSlot *slot);
 char            *gof_window_slot_get_location_uri (GOFWindowSlot *slot);
+GtkWidget       *gof_window_slot_get_view (GOFWindowSlot *slot);
 
 #endif /* GOF_WINDOW_SLOT_H */

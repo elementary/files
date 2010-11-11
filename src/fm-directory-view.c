@@ -113,8 +113,8 @@ typedef struct {
 
 /* forward declarations */
 
-static void     fm_directory_view_class_init                   (FMDirectoryViewClass *klass);
-static void     fm_directory_view_init                         (FMDirectoryView      *view);
+static void     fm_directory_view_class_init    (FMDirectoryViewClass *klass);
+static void     fm_directory_view_init          (FMDirectoryView      *view);
 /*static void     fm_directory_view_create_links_for_files       (FMDirectoryView      *view,
 								GList                *files,
 								GArray               *item_locations);
@@ -426,8 +426,8 @@ fm_directory_view_finalize (GObject *object)
 
 	g_hash_table_destroy (view->details->non_ready_files);*/
 
-        g_object_unref (view->details->slot);
-	view->details->slot = NULL;
+        /*g_object_unref (view->details->slot);
+	view->details->slot = NULL;*/
 
 	g_free (view->details);
 
@@ -453,8 +453,10 @@ fm_directory_view_set_active_slot (FMDirectoryView *dview)
 {
         GOFWindowSlot *slot = dview->details->slot;
         //marlin_window_set_active_slot (MARLIN_WINDOW (slot->window), slot);
-        marlin_view_window_set_active_slot (MARLIN_VIEW_WINDOW (slot->window), slot);
-        g_signal_emit_by_name (slot->window, "column-path-changed", slot->location);
+        /*marlin_view_window_set_active_slot (MARLIN_VIEW_WINDOW (slot->window), slot);
+        g_signal_emit_by_name (slot->window, "column-path-changed", slot->location);*/
+
+        printf ("!!!!!!!!!!! %s\n", G_STRFUNC);
 }
 
 #if 0
@@ -488,7 +490,7 @@ fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *locatio
                 gof_window_slot_change_location (directory_view->details->slot, location);*/
         GOFWindowSlot *slot = directory_view->details->slot;
 
-        g_signal_emit_by_name (slot->window, "path-changed", location);
+        g_signal_emit_by_name (slot->ctab, "path-changed", location);
 }
 
 static gboolean

@@ -33,7 +33,8 @@ namespace Marlin.View.Chrome
 		public MenuItem go_forward;
 		public MenuItem refresh;
 		public MenuItem quit;
-        public MenuItem about;
+		public MenuItem new_tab;
+                public MenuItem about;
 		
 		public MenuBar (/*Settings settings*/)
 		{
@@ -44,6 +45,8 @@ namespace Marlin.View.Chrome
 			
 			Accels = new AccelGroup();
 			
+			new_tab = new MenuItem.with_mnemonic("New _Tab");
+			new_tab.add_accelerator("activate", Accels, Gdk.keyval_from_name("t"), Gdk.ModifierType.CONTROL_MASK, AccelFlags.VISIBLE);
 			quit = new ImageMenuItem.with_mnemonic("_Quit"){
 				image = new Image.from_stock (Stock.QUIT, IconSize.MENU)
 			};
@@ -105,6 +108,7 @@ namespace Marlin.View.Chrome
 			};
 			//about.activate += new EventHandler(Marlin.ShowAbout);
 			
+			FileMenu.append(new_tab);
 			FileMenu.append(quit);
 			gomenu.append(go_back);
 			gomenu.append(go_forward);

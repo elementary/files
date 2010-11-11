@@ -35,8 +35,9 @@ namespace Marlin.View.Chrome
 		public ModeButton ()
 		{
 			events |= EventMask.POINTER_MOTION_MASK
-			            |  EventMask.BUTTON_PRESS_MASK
-			            |  EventMask.VISIBILITY_NOTIFY_MASK;
+			       |  EventMask.BUTTON_PRESS_MASK
+			       |  EventMask.VISIBILITY_NOTIFY_MASK;
+			       //|  EventMask.SCROLL_MASK;
 
 			box = new HBox (true, 0);
 			box.border_width = 2;
@@ -46,6 +47,8 @@ namespace Marlin.View.Chrome
 			visibility_notify_event.connect(on_leave_notify_event);
 			button_press_event.connect(on_button_press_event);
 			motion_notify_event.connect(on_motion_notify_event);
+			scroll_event.connect(on_scroll_event);	
+			
 			draw.connect(on_draw);
 		}
 
@@ -102,7 +105,22 @@ namespace Marlin.View.Chrome
 			this.mode_removed (index, child);
 			this.queue_draw ();
 		}
-
+		
+		protected bool on_scroll_event(EventScroll evnt){
+			switch(evnt.direction){
+				case ScrollDirection.UP:
+					if (selected < box.get_children().length() - 1)
+						selected++;
+					break;
+				case ScrollDirection.DOWN:
+					if (selected > 0)
+						selected--;
+					break;
+			}
+				
+			return true;	
+		}
+		
 		protected bool on_button_press_event(EventButton evnt)
 		{
 			if (_hovered > -1 && _hovered != _selected)
