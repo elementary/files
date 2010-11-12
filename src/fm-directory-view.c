@@ -68,7 +68,7 @@ enum
 
 static guint signals[LAST_SIGNAL];
 
-static GdkAtom copied_files_atom;
+//static GdkAtom copied_files_atom;
 
 //static gboolean show_delete_command_auto_value;
 //static gboolean confirm_trash_auto_value;
@@ -106,11 +106,12 @@ struct FMDirectoryViewDetails
 	gchar* redo_action_label;*/
 };
 
+#if 0
 typedef struct {
 	GOFFile *file;
 	GOFDirectoryAsync *directory;
 } FileAndDirectory;
-
+#endif
 /* forward declarations */
 
 static void     fm_directory_view_class_init    (FMDirectoryViewClass *klass);
@@ -755,7 +756,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
 	EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, zoom_to_level);
 	EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, get_zoom_level);*/
 
-	copied_files_atom = gdk_atom_intern ("x-special/gnome-copied-files", FALSE);
+	//copied_files_atom = gdk_atom_intern ("x-special/gnome-copied-files", FALSE);
 
 	g_object_class_install_property (G_OBJECT_CLASS (klass),
 					 PROP_WINDOW_SLOT,

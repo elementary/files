@@ -11,6 +11,7 @@ namespace GOF {
 			/*public Operation (int a1, int b1);
 			public int addition ();*/
                         public Directory.Async directory;
+                        public File location;
                         public Widget get_view ();
 		}
 	}

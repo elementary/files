@@ -113,6 +113,7 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
         {
                 //GFileInfo *info = f->data;
                 GOFFile *goff = gof_file_new ((GFileInfo *) f->data, dir->priv->_dir);
+                //g_object_unref (goff);
 #if 0
                 const gchar *name = g_file_info_get_name (info);
                 //gchar *size = g_strconcat (g_strdup_printf ("%i", ((gint) g_file_info_get_size (info)) / 1024), "KiB", NULL);
@@ -138,7 +139,6 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
                 nicon = nautilus_icon_info_lookup (goff->icon, 16);
                 GdkPixbuf *pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);*/
 
-
                 if (!goff->is_hidden)
                 {
                         //printf ("%s\n", goff->name);
@@ -161,14 +161,15 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
                 }
         }
 
+        //g_list_foreach (files, (GFunc)g_object_unref, NULL);
+        g_list_free (files);
+
         g_file_enumerator_next_files_async (enumerator, FILES_PER_QUERY,
                                             G_PRIORITY_DEFAULT,
                                             dir->priv->cancellable,
                                             //NULL,
                                             enumerator_files_callback,
                                             dir);
-
-        g_list_free (files);
 }
 
 static void load_dir_async_callback (GObject *source_object, GAsyncResult *res, gpointer user_data) 
@@ -307,7 +308,8 @@ gof_directory_async_finalize (GObject *object)
         char *uri = g_file_get_uri(dir->priv->_dir);
         printf (">> %s %s\n", G_STRFUNC, uri);
         g_free (uri);
-        gof_monitor_cancel (dir->priv->monitor);
+        if (dir->priv->monitor)
+                gof_monitor_cancel (dir->priv->monitor);
         g_object_unref (dir->priv->cancellable);
         g_object_unref (dir->priv->_dir);
         /*if (dir->priv->_parent != NULL)

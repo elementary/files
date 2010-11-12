@@ -100,6 +100,25 @@ namespace Marlin.View {
 				label.label = value;	
 			}
 		}
+
+                public void change_view(int nview){
+                        switch (nview) {
+                        case ViewMode.MILLER:
+                                /*slot.directory.cancel();
+                                stdout.printf("miller\n");
+                                mwcol = new Marlin.Window.Columns(slot.location, this);
+                                slot = mwcol.active_slot;*/
+                                slot.directory.cancel();
+                                stdout.printf("default\n");
+                                slot = new GOF.Window.Slot(slot.location, this);
+                                break;
+                        default:
+                                slot.directory.cancel();
+                                stdout.printf("default\n");
+                                slot = new GOF.Window.Slot(slot.location, this);
+                                break;
+                        }
+                }
 		
                 public void update_location_state(bool save_history)
                 {

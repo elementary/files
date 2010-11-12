@@ -203,6 +203,7 @@ gof_window_slot_new (GFile *location, GObject *ctab)
         slot->directory = gof_directory_async_new(slot->location);
         slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
                                                    "window-slot", slot, NULL));
+        //slot->view_box = gtk_label_new ("test");
         //marlin_window_set_active_slot (MARLIN_WINDOW (window), slot);
         //marlin_view_window_set_active_slot (MARLIN_VIEW_WINDOW (window), slot);
 #if 0

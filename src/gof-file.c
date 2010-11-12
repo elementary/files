@@ -169,8 +169,8 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
         nicon = nautilus_icon_info_lookup (self->icon, 16);
         self->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
         g_object_unref (nicon);
-        
-	return self;
+	
+        return self;
 }
 
 
@@ -196,7 +196,7 @@ static void gof_file_finalize (GObject* obj) {
         g_free(file->format_size);
         _g_object_unref0 (file->icon);
         _g_object_unref0 (file->pix);
-        
+
 	G_OBJECT_CLASS (gof_file_parent_class)->finalize (obj);
 }
 
