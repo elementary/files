@@ -63,7 +63,7 @@ typedef struct {
 	char *title;
 	char *status_text;
 
-        GtkWidget *window;
+        GObject *ctab;
         GOFDirectoryAsync *directory;
 
         GList *slot;
@@ -106,8 +106,7 @@ typedef struct {
 
 GType   marlin_window_columns_get_type (void);
 
-MarlinWindowColumns     *marlin_window_columns_new (GFile *, GtkWidget *);
-//MarlinWindowColumns     *marlin_window_columns_column_new (GFile *location);
+MarlinWindowColumns     *marlin_window_columns_new (GFile *location, GObject *ctab);
 //void                    marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location);
 
 void            marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location);

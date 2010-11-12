@@ -32,6 +32,7 @@ G_DEFINE_TYPE (MarlinWindowColumns, marlin_window_columns, G_TYPE_OBJECT)
 
 #define parent_class marlin_window_columns_parent_class
 
+#if 0
 void
 marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location)
 {
@@ -43,17 +44,18 @@ marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location)
         
         mwcols = marlin_window_columns_new (location, window);
 }
+#endif
 
 MarlinWindowColumns *
-marlin_window_columns_new (GFile *location, GtkWidget *window)
+marlin_window_columns_new (GFile *location, GObject *ctab)
 {
         printf("%s\n", G_STRFUNC);
         MarlinWindowColumns *mwcols;
         mwcols = g_object_new (MARLIN_TYPE_WINDOW_COLUMNS, NULL);
         mwcols->location = location;
-        mwcols->window = window;
+        mwcols->ctab = ctab;
 
-        GOFWindowSlot *slot = gof_window_slot_column_new (location, window);
+        GOFWindowSlot *slot = gof_window_slot_column_new (location, ctab);
         slot->mwcols = mwcols;
         mwcols->active_slot = slot;
         //marlin_window_set_active_slot (MARLIN_WINDOW (window), slot);
@@ -73,6 +75,7 @@ marlin_window_columns_new (GFile *location, GtkWidget *window)
 
         //gtk_container_add( GTK_CONTAINER(window), mwcols->view_box);
         //marlin_view_window_set_content (window, mwcols->view_box);
+        marlin_view_view_container_set_content (ctab, mwcols->view_box);
 
         return mwcols;
 }
@@ -80,7 +83,7 @@ marlin_window_columns_new (GFile *location, GtkWidget *window)
 void
 marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 {
-        GOFWindowSlot *slot = gof_window_slot_column_new (location, mwcols->window);
+        GOFWindowSlot *slot = gof_window_slot_column_new (location, mwcols->ctab);
         slot->mwcols = mwcols;
         slot->colpane = mwcols->active_slot->colpane;
         //mwcols->active_slot = slot;

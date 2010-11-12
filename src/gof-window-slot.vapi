@@ -29,3 +29,17 @@ namespace GOF {
         }
 }
 
+namespace Marlin {
+	[CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
+	namespace Window {
+		[CCode (cheader_filename = "marlin-window-columns.h")]
+		public class Columns : GLib.Object {
+			public Columns (File f, Marlin.View.ViewContainer ctab);
+                        public GOF.Window.Slot active_slot;
+			/*public Operation (int a1, int b1);
+			public int addition ();*/
+                        /*public Directory.Async directory;
+                        public Widget get_view ();*/
+		}
+	}
+}

@@ -47,7 +47,7 @@ namespace Marlin.View {
 
 		public signal void show_about();		
 		public signal void refresh();
-                public signal void viewmode_changed(ViewMode mode);
+                //public signal void viewmode_changed(ViewMode mode);
         
 		
 //		new Settings Settings;
@@ -107,7 +107,7 @@ namespace Marlin.View {
 			top_menu.go_back.clicked.connect(() => { current_tab.back(); });
             top_menu.refresh.clicked.connect(() => { refresh(); });
             top_menu.compact_menu.about.activate.connect(() => { show_about(); });
-            top_menu.view_switcher.viewmode_change.connect((mode) => { viewmode_changed(mode); }); 
+            //top_menu.view_switcher.viewmode_change.connect((mode) => { viewmode_changed(mode); }); 
 		        menu_bar.new_tab.activate.connect(() => { add_tab(File.new_for_commandline_arg(Environment.get_home_dir())); });	
 			menu_bar.go_up.activate.connect(() => { current_tab.up(); });
 			menu_bar.go_forward.activate.connect(() => { current_tab.forward(); });

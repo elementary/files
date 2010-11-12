@@ -28,6 +28,7 @@ namespace Marlin.View {
 		public Gtk.Label label;
 		private Marlin.View.Window? window;
                 public GOF.Window.Slot? slot;
+                public Marlin.Window.Columns? mwcol;
                 Browser<string> browser;
 		
                 public signal void path_changed(File file);
@@ -40,6 +41,8 @@ namespace Marlin.View {
                         window = win;
                         browser =  new Browser<string> ();
                         slot = new GOF.Window.Slot(location, this);
+                        /*mwcol = new Marlin.Window.Columns(location, this);
+                        slot = mwcol.active_slot;*/
                         //content_item = slot.get_view();
 			//label = new Gtk.Label("test");
 			label = new Gtk.Label(slot.directory.get_uri());
