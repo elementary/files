@@ -6,7 +6,7 @@ AC_PREREQ([2.54])
 dnl ===========================================================================
 
 m4_define(glib_minver,                 2.27.0)
-m4_define(gnome_desktop_minver,        2.91.0)
+#m4_define(gnome_desktop_minver,        2.91.0)
 m4_define(pango_minver,                1.1.2)
 m4_define(gtk_minver,                  2.91.0)
 #m4_define(xml_minver,                  2.4.7)
@@ -56,7 +56,6 @@ AC_CHECK_LIB(m, floor)
 
 PKG_CHECK_MODULES(ALL, [
 	glib-2.0		>= glib_minver
-	gnome-desktop-3.0	>= gnome_desktop_minver
 	gthread-2.0
 	gio-unix-2.0		
 	gio-2.0	
@@ -133,7 +132,7 @@ fi
 dnl ===========================================================================
 
 dnl core marlin
-CORE_MODULES="glib-2.0 gnome-desktop-3.0 gtk+-3.0 gthread-2.0 gio-2.0 gio-unix-2.0 gconf-2.0 libxml-2.0 gee-1.0"
+CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gio-unix-2.0 gee-1.0"
 CORE_CFLAGS="`$PKG_CONFIG --cflags $CORE_MODULES` $x_cflags $WARNING_CFLAGS"
 AC_SUBST(CORE_CFLAGS)
 CORE_LIBS="`$PKG_CONFIG --libs $CORE_MODULES` $x_libs"

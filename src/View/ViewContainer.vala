@@ -30,6 +30,7 @@ namespace Marlin.View {
                 public GOF.Window.Slot? slot;
                 public Marlin.Window.Columns? mwcol;
                 Browser<string> browser;
+                public int view_mode = 0;
 		
                 public signal void path_changed(File file);
                 public signal void up();
@@ -57,25 +58,21 @@ namespace Marlin.View {
 			this.show_all();
 
                         path_changed.connect((myfile) => {
-                                slot.directory.cancel();
-                                slot = new GOF.Window.Slot(myfile, this);
+                                change_view(view_mode, myfile);
                                 update_location_state(true);
 			});
                         up.connect(() => {
                                 if (slot.directory.has_parent()) {
-                                        slot.directory.cancel();
-                                        slot = new GOF.Window.Slot(slot.directory.get_parent(), this);
+                                        change_view(view_mode, slot.directory.get_parent());
                                         update_location_state(true);
                                 }
 			});
                         back.connect(() => {
-                                slot.directory.cancel();
-                                slot = new GOF.Window.Slot(File.new_for_commandline_arg(browser.go_back()) , this);
+                                change_view(view_mode, File.new_for_commandline_arg(browser.go_back()));
                                 update_location_state(false);
                         });
                         forward.connect(() => {
-                                slot.directory.cancel();
-                                slot = new GOF.Window.Slot(File.new_for_commandline_arg(browser.go_forward()) , this);
+                                change_view(view_mode, File.new_for_commandline_arg(browser.go_forward()));
                                 update_location_state(false);
                         });
 
@@ -101,21 +98,19 @@ namespace Marlin.View {
 			}
 		}
 
-                public void change_view(int nview){
+                public void change_view(int nview, File? location){
+                        if (location == null)
+                                location = slot.location;
+                        view_mode = nview;
                         switch (nview) {
                         case ViewMode.MILLER:
-                                /*slot.directory.cancel();
-                                stdout.printf("miller\n");
-                                mwcol = new Marlin.Window.Columns(slot.location, this);
-                                slot = mwcol.active_slot;*/
                                 slot.directory.cancel();
-                                stdout.printf("default\n");
-                                slot = new GOF.Window.Slot(slot.location, this);
+                                mwcol = new Marlin.Window.Columns(location, this);
+                                slot = mwcol.active_slot;
                                 break;
                         default:
                                 slot.directory.cancel();
-                                stdout.printf("default\n");
-                                slot = new GOF.Window.Slot(slot.location, this);
+                                slot = new GOF.Window.Slot(location, this);
                                 break;
                         }
                 }
