@@ -366,12 +366,15 @@ create_and_set_up_tree_view (FMColumnsView *view)
         //#endif
         //view->tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (view->details->m_store));
         //view->tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (view->details->customlist));
-        view->tree = GTK_TREE_VIEW (gtk_tree_view_new_with_model (GTK_TREE_MODEL (view->model)));
+        //view->tree = GTK_TREE_VIEW (gtk_tree_view_new_with_model (GTK_TREE_MODEL (view->model)));
+        view->tree = g_object_new (GTK_TYPE_TREE_VIEW, "model", GTK_TREE_MODEL (view->model),
+                                   "headers-visible", FALSE, NULL);
         //view->tree = gtk_tree_view_new();
         //gtk_tree_view_set_rules_hint(GTK_TREE_VIEW (view->tree), TRUE);
         //gtk_tree_view_set_fixed_height_mode (GTK_TREE_VIEW (view->tree), TRUE);
         //gtk_tree_view_set_enable_search (GTK_TREE_VIEW (view->tree), FALSE);
         gtk_tree_view_set_search_column (view->tree, FM_LIST_MODEL_FILENAME);
+        //gtk_tree_view_set_reorderable (view->tree, FALSE);
 
         /*gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(view->details->m_store), 
           GOF_DIR_COL_FILENAME, GTK_SORT_ASCENDING);*/
@@ -398,9 +401,10 @@ create_and_set_up_tree_view (FMColumnsView *view)
         renderer = gtk_cell_renderer_pixbuf_new( ); 
         col = gtk_tree_view_column_new ();
         gtk_tree_view_column_set_sort_column_id  (col, FM_LIST_MODEL_FILENAME);
-        gtk_tree_view_column_set_resizable (col, TRUE);
+        //gtk_tree_view_column_set_resizable (col, TRUE);
         //gtk_tree_view_column_set_title (col, col_title);
         gtk_tree_view_column_set_expand (col, TRUE);
+
         gtk_tree_view_column_pack_start (col, renderer, FALSE);
         gtk_tree_view_column_set_attributes (col,
                                              renderer,
