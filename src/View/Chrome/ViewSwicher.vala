@@ -22,6 +22,7 @@
 
 using Gtk;
 using Marlin.View;
+using Config;
 
 namespace Marlin.View.Chrome
 {
@@ -39,10 +40,11 @@ namespace Marlin.View.Chrome
 			border_width = 5;
 			
 			switcher = new ModeButton();
-			
-			Image list = new Image.from_stock(Stock.ABOUT, IconSize.MENU);
+		
+			//Image list = new Image.from_stock(Stock.ABOUT, IconSize.MENU);
+			Image list = new Image.from_file(Config.PIXMAP_DIR + "view-list-details-symbolic.svg");
 			switcher.append(list);
-			Image miller = new Image.from_stock(Stock.ABOUT, IconSize.MENU);
+			Image miller = new Image.from_file(Config.PIXMAP_DIR + "view-list-column-symbolic.svg");
 			switcher.append(miller);
 			
 			switcher.mode_changed.connect((mode) => {

@@ -149,6 +149,7 @@ dnl ==========================================================================
 AC_CONFIG_FILES([
 Makefile
 src/Makefile
+icons/Makefile
 po/Makefile.in
 ])
 AC_OUTPUT

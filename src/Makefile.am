@@ -6,6 +6,7 @@ bin_PROGRAMS = \
 marlin_CPPFLAGS = \
 	-I$(top_srcdir) \
 	$(CORE_CFLAGS) \
+        -DPIXMAP_DIR=\""$(datadir)/pixmaps/marlin/"\" \
 	$(NULL)
 
 marlin_VALAFLAGS = \

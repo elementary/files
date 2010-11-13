@@ -1,5 +1,6 @@
 SUBDIRS =               \
         src             \
+        icons           \
         $(NULL)
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-update-mimedb
