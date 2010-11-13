@@ -27,6 +27,6 @@ sudo cp /usr/share/vala-0.10/vapi/gee-1.0.vapi /usr/share/vala-0.12/vapi/
 # marlin from bzr
 bzr branch lp:marlin
 cd marlin
-./autogen --prefix=/usr
+./autogen.sh --prefix=/usr
 make && sudo make install
 marlin
