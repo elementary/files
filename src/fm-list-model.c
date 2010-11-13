@@ -1021,7 +1021,6 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
 	}
 	
 	file_entry = g_new0 (FileEntry, 1);
-	//file_entry->file = gof_file_ref (file);
 	file_entry->file = file;
 	file_entry->parent = NULL;
 	file_entry->subdirectory = NULL;
@@ -1054,7 +1053,6 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
 			}
 		}
 	}
-
 	
 	file_entry->ptr = g_sequence_insert_sorted (files, file_entry,
 					    fm_list_model_file_entry_compare_func, model);
@@ -1080,7 +1078,9 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
 						      path, &iter);
 	}
 	gtk_tree_path_free (path);
-	
+        //file_entry_free (file_entry);
+        //g_object_unref(file);
+
 	return TRUE;
 }
 

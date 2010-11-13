@@ -138,7 +138,8 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
                 /*NautilusIconInfo *nicon;
                 nicon = nautilus_icon_info_lookup (goff->icon, 16);
                 GdkPixbuf *pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);*/
-
+                
+                /* TODO: handle hidden files differently */
                 if (!goff->is_hidden)
                 {
                         //printf ("%s\n", goff->name);
@@ -158,7 +159,8 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
                            g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE) 
                            g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY ? 'd' : '-',
                            */
-                }
+                } else
+                        g_object_unref (goff);
         }
 
         //g_list_foreach (files, (GFunc)g_object_unref, NULL);

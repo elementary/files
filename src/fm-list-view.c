@@ -106,6 +106,7 @@ unload_file_timeout (gpointer data)
 			gtk_tree_path_free (path);
 		}
 	}
+        eel_remove_weak_pointer (&unload_data->view);
 
 	g_free (unload_data);
 	return FALSE;

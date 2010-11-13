@@ -1,21 +1,28 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
-/*
- * Copyright (C) 2010 ammonkey
- *
- * This library is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License
- * version 3.0 as published by the Free Software Foundation.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License version 3.0 for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library. If not, see
- * <http://www.gnu.org/licenses/>.
- *
- * Author: ammonkey <am.monkeyd@gmail.com>
+
+/* eel-glib-extensions.c - implementation of new functions that conceptually
+                                belong in glib. Perhaps some of these will be
+                                actually rolled into glib someday.
+
+   Copyright (C) 2000 Eazel, Inc.
+
+   The Gnome Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Library General Public License as
+   published by the Free Software Foundation; either version 2 of the
+   License, or (at your option) any later version.
+
+   The Gnome Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Library General Public License for more details.
+
+   You should have received a copy of the GNU Library General Public
+   License along with the Gnome Library; see the file COPYING.LIB.  If not,
+   write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+   Boston, MA 02111-1307, USA.
+
+   Authors: John Sullivan <sullivan@eazel.com>
+            ammonkey <am.monkeyd@gmail.com>
  */
 
 #include "eel-glib-extensions.h"
@@ -78,5 +85,36 @@ eel_add_weak_pointer (gpointer pointer_location)
 
 	g_object_add_weak_pointer (G_OBJECT (*object_location),
 				   object_location);
+}
+
+/**
+ * eel_remove_weak_pointer
+ *
+ * Removes the weak pointer that was added by eel_add_weak_pointer.
+ * Also nulls out the pointer.
+ *
+ * @pointer_location: Pointer that was passed to eel_add_weak_pointer.
+ **/
+void 
+eel_remove_weak_pointer (gpointer pointer_location)
+{
+	gpointer *object_location;
+
+	g_return_if_fail (pointer_location != NULL);
+
+	object_location = (gpointer *) pointer_location;	
+	if (*object_location == NULL) {
+		/* The object was already destroyed and the reference
+		 * nulled out, nothing to do.
+		 */
+		return;
+	}
+
+	g_return_if_fail (G_IS_OBJECT (*object_location));
+
+	g_object_remove_weak_pointer (G_OBJECT (*object_location),
+				      object_location);
+	
+	*object_location = NULL;
 }
 
