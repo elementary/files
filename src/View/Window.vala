@@ -68,6 +68,10 @@ namespace Marlin.View {
 			
 			top_menu = new Chrome.TopMenu();//Settings);
 			top_menu.location_bar.path = "";
+
+                        top_menu.location_bar.activate.connect(() => {
+				current_tab.path_changed(File.new_for_commandline_arg(top_menu.location_bar.path));
+			});
 		
 		
 			/*/
