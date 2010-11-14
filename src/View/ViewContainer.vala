@@ -40,7 +40,7 @@ namespace Marlin.View {
 		public ViewContainer(Marlin.View.Window win, File location){
             //stdout.printf ("$$$$ ViewContainer new\n");
             window = win;
-            browser =  new Browser<string> ();
+            browser = new Browser<string> ();
             slot = new GOF.Window.Slot(location, this);
             /*mwcol = new Marlin.Window.Columns(location, this);
             slot = mwcol.active_slot;*/

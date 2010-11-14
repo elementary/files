@@ -50,10 +50,11 @@ namespace Marlin.View {
         //public signal void viewmode_changed(ViewMode mode);
         
         
-        new Settings Settings;
+        //new Settings Settings;
         
         public Window ()
-        {
+        {           
+
             /*/
             /* Menubar
             /*/
@@ -86,15 +87,31 @@ namespace Marlin.View {
             isize13 = icon_size_register ("13px", 13, 13);
 
             /*/
-            /* Pack up all the view
+            /* Sidebar
+            /*/
+        
+            var sidebar = new Label("Sidebar");
+            sidebar.set_size_request(200, -1);
+
+            /*/
+            /* Devide main views into sidebars
             /*/
             
-            VBox vbox = new VBox(false, 0);
-            vbox.pack_start(menu_bar, false, false, 0);
-            vbox.pack_start(top_menu, false, false, 0);
-            vbox.pack_start(tabs, true, true, 0);
+            var main_box = new HPaned();
 
-            add(vbox);
+            main_box.pack1(sidebar, false, true);
+            main_box.pack2(tabs, true, false);
+
+            /*/
+            /* Pack up all the view
+            /*/
+
+            VBox window_box = new VBox(false, 0);
+            window_box.pack_start(menu_bar, false, false, 0);
+            window_box.pack_start(top_menu, false, false, 0);
+            window_box.pack_start(main_box, true, true, 0);
+
+            add(window_box);
             set_default_size(760, 450);
             set_position(WindowPosition.CENTER);    
             title = "Marlin";
