@@ -1,17 +1,24 @@
 <schemalist>
   <schema id="org.gnome.marlin.preferences" path="/apps/marlin/preferences/">
-    <key name="showall" type="b">
-      <default>false</default>
-      <_summary>Show system users</_summary>
+    <key name="show-menubar" type="b">
+      <default>true</default>
+      <_summary>Show the menubar</_summary>
       <_description>
-        Whether the users-admin tool should show system users in the users list.
+        Show the menubar
+      </_description>
+    </key>
+    <key name="show-hiddenfiles" type="b">
+      <default>false</default>
+      <_summary>Show hidden files</_summary>
+      <_description>
+        If set to true, hidden files will also be shown (files starting with a "." for example)
       </_description>
     </key>
     <key name="rgba-colormap" type="b">
       <default>false</default>
       <_summary>enable rgba window</_summary>
       <_description>
-        If set to true, it enable rgba, you'll need a gtk engine supporting rgba, like murrine. Compiz can have some problems like drawings shadows ... 
+        If set to true, rgba will be enabled, you'll need a gtk engine supporting rgba, like murrine. Compiz can have some problems like drawings shadows ... 
       </_description>
     </key>
     <key name="date-format" type="s">
@@ -25,7 +32,7 @@
       <default>true</default>
       <_summary>single click</_summary>
       <_description>
-        Whether the items in the view can be activated with single clicks
+        Whether items are activated by single clicks instead of dubble clicks
       </_description>
     </key>
     <key name="single-click-timeout" type="i">

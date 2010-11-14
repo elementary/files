@@ -25,8 +25,8 @@ namespace Marlin.View.Chrome
 {
 	public class CompactMenu : Gtk.Menu
 	{
-		public CheckMenuItem show_menu_bar;
-		public CheckMenuItem show_hidden_items;
+		public CheckMenuItem show_menubar;
+		public CheckMenuItem show_hiddenitems;
 		public ImageMenuItem about;
 		
 		public CompactMenu (/*Settings settings*/)
@@ -35,34 +35,20 @@ namespace Marlin.View.Chrome
 			// Compact Menu
 			//
 			
-			show_menu_bar = new CheckMenuItem.with_mnemonic ("Show _Menubar");
+			show_menubar = new CheckMenuItem.with_mnemonic ("Show _Menubar");
 			//ShowMenuBar.active = settings.ShowMenuBar;
 			
-			show_menu_bar.toggled.connect(() => {
-				//settings.ShowMenuBar = ShowMenuBar.Active;	
-			});
-			/*settings.ShowMenuBarChanged.connect(() => {
-				ShowMenuBar.Active = (bool) e.Value;
-			});*/
-			
-			show_hidden_items = new CheckMenuItem.with_mnemonic ("Show _Hidden Items");
-			//ShowHiddenItems.Active = settings.ShowHiddenItems;
-			
-	        show_hidden_items.toggled.connect( () => {
-				//settings.ShowHiddenItems = ShowHiddenItems.Active;	
-			});
-			/*settings.ShowHiddenItemsChanged.connect( (value) => {
-				ShowHiddenItems.Active = (bool) e.Value;
-			});*/
+			show_hiddenitems = new CheckMenuItem.with_mnemonic ("Show _Hidden Items");
+			//ShowHiddenItems.active = settings.ShowHiddenItems;
 			
 			about = new ImageMenuItem.with_mnemonic ("_About") {
 	    		image = new Image.from_stock (Stock.ABOUT, IconSize.MENU)
 			};
 			about.activate.connect(() => { });
 			
-			append (show_menu_bar);
+			append (show_menubar);
 			append (new SeparatorMenuItem());
-			append (show_hidden_items);
+			append (show_hiddenitems);
 			append (new SeparatorMenuItem());
 			append (about);
 			

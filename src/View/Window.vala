@@ -24,7 +24,7 @@ namespace Marlin.View {
         
         public ViewContainer current_tab;
 
-                public bool can_go_up{
+        public bool can_go_up{
             set{
                 top_menu.go_up.sensitive = value;
                 menu_bar.go_up.sensitive = value;
@@ -57,7 +57,6 @@ namespace Marlin.View {
             /*/
 
             menu_bar = new Chrome.MenuBar();
-            
             add_accel_group(menu_bar.Accels);
             
             /*/
@@ -114,8 +113,13 @@ namespace Marlin.View {
             title = "Marlin";
             //this.icon = DrawingService.GetIcon("system-file-manager", 32);
             show_all();
-            //show_menu_bar(true);
-            show_menu_bar(false);
+
+            Preferences.settings.bind("show-menubar", menu_bar, "visible", 0);
+            Preferences.settings.bind("show-menubar", top_menu.compact_menu.show_menubar, "active", 0);
+            Preferences.settings.bind("show-menubar", menu_bar.show_menubar, "active", 0);
+
+            Preferences.settings.bind("show-hiddenfiles", top_menu.compact_menu.show_hiddenitems, "active", 0);
+            Preferences.settings.bind("show-hiddenfiles", menu_bar.show_hiddenitems, "active", 0);
         
             /*/
             /* Connect and abstract signals to local ones
@@ -195,16 +199,6 @@ namespace Marlin.View {
             }
             
             tabs.remove(view_container);
-        }
-        
-        public void show_menu_bar(bool show)
-        {
-            //Settings.ShowMenuBar = show;
-            if (show) {
-                menu_bar.show();
-            } else {
-                menu_bar.hide();
-            }
         }
     }
 }

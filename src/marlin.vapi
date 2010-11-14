@@ -10,6 +10,11 @@ namespace Config {
         public const string VERSION;*/
 }
 
+[CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
+namespace Preferences {
+        public GLib.Settings settings;
+}
+
 [CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
 namespace GOF {
 	[CCode (cprefix = "GOFWindow", lower_case_cprefix = "gof_window_")]

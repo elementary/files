@@ -34,8 +34,23 @@ namespace Marlin.View.Chrome
 		public MenuItem refresh;
 		public MenuItem quit;
 		public MenuItem new_tab;
-                public MenuItem about;
-		
+        public MenuItem about;
+        public CheckMenuItem show_menubar;
+        public CheckMenuItem show_hiddenitems;
+    
+        private bool _show;
+
+        public bool visible{
+                set { 
+                        _show = value; 
+                        if (value) { this.show(); } else { this.hide(); }
+                }
+                get { 
+                        return _show;
+                }
+        }
+        //public bool show_menubar { get; set; }
+
 		public MenuBar (/*Settings settings*/)
 		{
 			FileMenu = new Menu();
@@ -82,22 +97,13 @@ namespace Marlin.View.Chrome
 	        MenuItem view = new MenuItem.with_mnemonic("_View");
 			view.submenu = viewmenu;
 			
-			CheckMenuItem viewmenubar = new CheckMenuItem.with_mnemonic("_Menubar");
+			show_menubar = new CheckMenuItem.with_mnemonic("_Menubar");
 			//viewmenubar.active = settings.ShowMenuBar;
-			viewmenubar.add_accelerator("activate", Accels, Gdk.keyval_from_name("m"), Gdk.ModifierType.CONTROL_MASK, AccelFlags.VISIBLE);
-	        viewmenubar.toggled.connect(() => {
-				//settings.ShowMenuBar = viewmenubar.active;
-			});
+			show_menubar.add_accelerator("activate", Accels, Gdk.keyval_from_name("m"), Gdk.ModifierType.CONTROL_MASK, AccelFlags.VISIBLE);
 			
-			CheckMenuItem showhiddenbar = new CheckMenuItem.with_mnemonic ("Show _Hidden Items");
+			show_hiddenitems = new CheckMenuItem.with_mnemonic ("Show _Hidden Items");
 			//showhiddenbar.active = settings.ShowHiddenItems;
-			showhiddenbar.add_accelerator("activate", Accels, Gdk.keyval_from_name("h"), Gdk.ModifierType.CONTROL_MASK, AccelFlags.VISIBLE);
-	        showhiddenbar.toggled.connect(() => {
-				//settings.ShowHiddenItems = showhiddenbar.Active;
-			});
-			/*settings.ShowHiddenItemsChanged.format(() => {
-				showhiddenbar.active = (bool) e.Value;
-			});*/
+			show_hiddenitems.add_accelerator("activate", Accels, Gdk.keyval_from_name("h"), Gdk.ModifierType.CONTROL_MASK, AccelFlags.VISIBLE);
 			
 			Menu helpmenu = new Menu();
 			MenuItem help = new MenuItem.with_mnemonic("_Help");
@@ -114,15 +120,17 @@ namespace Marlin.View.Chrome
 			gomenu.append(go_forward);
 			gomenu.append(go_up);
 			gomenu.append(refresh);
-			viewmenu.append(viewmenubar);
+			viewmenu.append(show_menubar);
 //			viewmenu.append();
-			viewmenu.append(showhiddenbar);
+			viewmenu.append(show_hiddenitems);
 			helpmenu.append(about);
 			
 			append(file);
 			append(go);
 			append(view);
 			append(help);
+
+                        //this.notify.connect ((s, p) => stdout.printf ("Property %s changed\n", p.name));
 		}
 	}
 }
