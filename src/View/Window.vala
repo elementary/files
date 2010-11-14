@@ -20,7 +20,7 @@ namespace Marlin.View {
         public Chrome.MenuBar menu_bar;
         public Chrome.TopMenu top_menu;
         public Notebook tabs;
-                private IconSize isize13;
+        private IconSize isize13;
         
         public ViewContainer current_tab;
 

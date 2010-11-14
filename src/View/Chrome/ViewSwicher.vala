@@ -31,6 +31,7 @@ namespace Marlin.View.Chrome
 		//private ModeButton switcher;
 		public ModeButton switcher;
 		public signal void viewmode_change(ViewMode mode);
+        private ViewMode current_mode;
 		
 		//Gdk.Pixbuf iconviewIcon = DrawingService.GetIcon("view-list-icons-symbolic;;view-list-icons", 16);
 		//Gdk.Pixbuf detailsviewIcon = DrawingService.GetIcon("view-list-details-symbolic;;view-list-details", 16);
@@ -55,12 +56,35 @@ namespace Marlin.View.Chrome
 				}else if(mode == miller){
 					viewmode_change(ViewMode.MILLER);
 				}
-				
 			});
+
+            viewmode_change.connect((mode) => {
+                if(mode == current_mode){
+                    return;
+                }
+
+                Widget target;
+                bool found = false;
+
+                if(mode == ViewMode.LIST){
+					target = list;
+                    found = true;
+				}else if(mode == ViewMode.MILLER){
+					target = miller;
+                    found = true;
+				}else{
+                    target = new Image();
+                }
+
+                if(found){
+                    switcher.focus(target);
+                    current_mode = mode;
+                }
+            });
 			
-			switcher.selected = 0;
-			//switcher.ModeChanged += delegate(object sender, ModeButtonEventArgs args) {};
 			switcher.sensitive = true;
+            switcher.focus(list);
+            current_mode = ViewMode.LIST;
 			
 			add (switcher);
 		}

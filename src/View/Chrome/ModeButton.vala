@@ -57,8 +57,8 @@ namespace Marlin.View.Chrome
 				return this._selected;
 			}
 			set {
-				/*if (value < -1 || value >= box.get_children().length)
-					throw new ArgumentOutOfRangeException (); */
+				if (value < -1 || value >= box.get_children().length())
+					return;
 				
 				if (_selected >= 0)
 					box.get_children ().nth_data(_selected).set_state(StateType.NORMAL);
@@ -105,6 +105,22 @@ namespace Marlin.View.Chrome
 			this.mode_removed (index, child);
 			this.queue_draw ();
 		}
+
+        public void focus(Widget widget){
+            var select = box.get_children().index(widget);
+
+            if (select < -1 || select >= box.get_children().length())
+				return;
+			
+			if (_selected >= 0)
+				box.get_children ().nth_data(_selected).set_state(StateType.NORMAL);
+
+			_selected = select;
+			box.get_children().nth_data(_selected).set_state(StateType.SELECTED);
+			queue_draw ();
+
+			Widget selectedItem = select >= 0 ? box.get_children().nth_data(select) : null;
+        }
 		
 		protected bool on_scroll_event(EventScroll evnt){
 			switch(evnt.direction){

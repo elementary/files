@@ -30,7 +30,17 @@ namespace Marlin.View {
         public GOF.Window.Slot? slot;
         public Marlin.Window.Columns? mwcol;
         Browser<string> browser;
-        public int view_mode = 0;
+        private int _view_mode = 0;
+        public int view_mode{
+            set{
+                if(_view_mode != value){
+                    _view_mode = value;
+                }
+            }
+            get{
+                return _view_mode;            
+            }
+        }
 
         public signal void path_changed(File file);
         public signal void up();
