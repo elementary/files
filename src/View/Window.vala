@@ -120,7 +120,7 @@ namespace Marlin.View {
 
             Preferences.settings.bind("show-hiddenfiles", top_menu.compact_menu.show_hiddenitems, "active", 0);
             Preferences.settings.bind("show-hiddenfiles", menu_bar.show_hiddenitems, "active", 0);
-        
+
             /*/
             /* Connect and abstract signals to local ones
             /*/

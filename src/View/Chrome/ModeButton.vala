@@ -225,5 +225,16 @@ namespace Marlin.View.Chrome
 			
 			return true;
 		}
+
+        public void update(int n) {
+				if (_selected >= 0)
+					box.get_children ().nth_data(_selected).set_state(StateType.NORMAL);
+
+				_selected = n;
+				box.get_children().nth_data(_selected).set_state(StateType.SELECTED);
+				queue_draw ();
+
+				Widget selectedItem = n >= 0 ? box.get_children().nth_data(n) : null;
+        }
 	}
 }

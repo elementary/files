@@ -28,7 +28,8 @@ namespace Marlin.View.Chrome
 {
 	public class ViewSwitcher : ToolItem
 	{
-		private ModeButton switcher;
+		//private ModeButton switcher;
+		public ModeButton switcher;
 		public signal void viewmode_change(ViewMode mode);
 		
 		//Gdk.Pixbuf iconviewIcon = DrawingService.GetIcon("view-list-icons-symbolic;;view-list-icons", 16);

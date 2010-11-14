@@ -123,6 +123,7 @@ namespace Marlin.View {
                 browser.record_uri(slot.directory.get_uri());
             window.can_go_back = browser.can_go_back();
             window.can_go_forward = browser.can_go_forward();
+            window.top_menu.view_switcher.switcher.update(view_mode);
         }
 	}
 }
