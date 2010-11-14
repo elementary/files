@@ -27,65 +27,65 @@ namespace Marlin.View {
 		public Gtk.Widget? content_item;
 		public Gtk.Label label;
 		private Marlin.View.Window? window;
-                public GOF.Window.Slot? slot;
-                public Marlin.Window.Columns? mwcol;
-                Browser<string> browser;
-                public int view_mode = 0;
-		
-                public signal void path_changed(File file);
-                public signal void up();
-                public signal void back();
-                public signal void forward();
+        public GOF.Window.Slot? slot;
+        public Marlin.Window.Columns? mwcol;
+        Browser<string> browser;
+        public int view_mode = 0;
+
+        public signal void path_changed(File file);
+        public signal void up();
+        public signal void back();
+        public signal void forward();
 
 		public ViewContainer(Marlin.View.Window win, File location){
-                        //stdout.printf ("$$$$ ViewContainer new\n");
-                        window = win;
-                        browser =  new Browser<string> ();
-                        slot = new GOF.Window.Slot(location, this);
-                        /*mwcol = new Marlin.Window.Columns(location, this);
-                        slot = mwcol.active_slot;*/
-                        //content_item = slot.get_view();
-			//label = new Gtk.Label("test");
-			label = new Gtk.Label(slot.directory.get_uri());
-                        label.set_ellipsize(Pango.EllipsizeMode.END);
-                        label.set_single_line_mode(true);
-                        label.set_alignment(0.0f, 0.5f);
-                        label.set_padding(0, 0);
-                        update_location_state(true);
+            //stdout.printf ("$$$$ ViewContainer new\n");
+            window = win;
+            browser =  new Browser<string> ();
+            slot = new GOF.Window.Slot(location, this);
+            /*mwcol = new Marlin.Window.Columns(location, this);
+            slot = mwcol.active_slot;*/
+            //content_item = slot.get_view();
+            //label = new Gtk.Label("test");
+            label = new Gtk.Label(slot.directory.get_uri());
+            label.set_ellipsize(Pango.EllipsizeMode.END);
+            label.set_single_line_mode(true);
+            label.set_alignment(0.0f, 0.5f);
+            label.set_padding(0, 0);
+            update_location_state(true);
 			
 			//add(content_item);	
 			
 			this.show_all();
 
-                        path_changed.connect((myfile) => {
-                                change_view(view_mode, myfile);
-                                update_location_state(true);
+            path_changed.connect((myfile) => {
+                    change_view(view_mode, myfile);
+                    update_location_state(true);
 			});
-                        up.connect(() => {
-                                if (slot.directory.has_parent()) {
-                                        change_view(view_mode, slot.directory.get_parent());
-                                        update_location_state(true);
-                                }
+            up.connect(() => {
+                    if (slot.directory.has_parent()) {
+                            change_view(view_mode, slot.directory.get_parent());
+                            update_location_state(true);
+                    }
 			});
-                        back.connect(() => {
-                                change_view(view_mode, File.new_for_commandline_arg(browser.go_back()));
-                                update_location_state(false);
-                        });
-                        forward.connect(() => {
-                                change_view(view_mode, File.new_for_commandline_arg(browser.go_forward()));
-                                update_location_state(false);
-                        });
+            back.connect(() => {
+                    change_view(view_mode, File.new_for_commandline_arg(browser.go_back()));
+                    update_location_state(false);
+            });
+            forward.connect(() => {
+                    change_view(view_mode, File.new_for_commandline_arg(browser.go_forward()));
+                    update_location_state(false);
+            });
 
 		}
 
-                public Widget content{
+        public Widget content{
 			set{
-                                if (content_item != null)
-        				remove(content_item);
+                if (content_item != null)
+			    	remove(content_item);
 				add(value);
 				content_item = value;
 				content_item.show();
-                                ((Bin)value).get_child().grab_focus();
+                ((Bin)value).get_child().grab_focus();
 			}
 			get{
 				return content_item;
@@ -98,31 +98,31 @@ namespace Marlin.View {
 			}
 		}
 
-                public void change_view(int nview, File? location){
-                        if (location == null)
-                                location = slot.location;
-                        view_mode = nview;
-                        switch (nview) {
-                        case ViewMode.MILLER:
-                                slot.directory.cancel();
-                                mwcol = new Marlin.Window.Columns(location, this);
-                                slot = mwcol.active_slot;
-                                break;
-                        default:
-                                slot.directory.cancel();
-                                slot = new GOF.Window.Slot(location, this);
-                                break;
-                        }
-                }
-		
-                public void update_location_state(bool save_history)
-                {
-                        window.can_go_up = slot.directory.has_parent();
-			tab_name = window.top_menu.location_bar.path = slot.directory.get_uri();
-                        if (save_history)
-                                browser.record_uri(slot.directory.get_uri());
-                        window.can_go_back = browser.can_go_back();
-                        window.can_go_forward = browser.can_go_forward();
-                }
+        public void change_view(int nview, File? location){
+            if (location == null)
+                location = slot.location;
+            view_mode = nview;
+            switch (nview) {
+            case ViewMode.MILLER:
+                slot.directory.cancel();
+                mwcol = new Marlin.Window.Columns(location, this);
+                slot = mwcol.active_slot;
+                break;
+            default:
+                slot.directory.cancel();
+                slot = new GOF.Window.Slot(location, this);
+                break;
+            }
+        }
+
+        public void update_location_state(bool save_history)
+        {
+            window.can_go_up = slot.directory.has_parent();
+            tab_name = window.top_menu.location_bar.path = slot.directory.get_uri();
+            if (save_history)
+                browser.record_uri(slot.directory.get_uri());
+            window.can_go_back = browser.can_go_back();
+            window.can_go_forward = browser.can_go_forward();
+        }
 	}
 }
