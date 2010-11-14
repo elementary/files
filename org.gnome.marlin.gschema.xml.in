@@ -1,10 +1,10 @@
 <schemalist>
   <schema id="org.gnome.marlin.preferences" path="/apps/marlin/preferences/">
-    <key name="showall" type="b">
-      <default>false</default>
-      <_summary>Show system users</_summary>
+    <key name="show-menubar" type="b">
+      <default>true</default>
+      <_summary>Show the menubar</_summary>
       <_description>
-        Whether the users-admin tool should show system users in the users list.
+        Show the menubar
       </_description>
     </key>
     <key name="rgba-colormap" type="b">

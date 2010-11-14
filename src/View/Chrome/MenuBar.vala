@@ -35,7 +35,20 @@ namespace Marlin.View.Chrome
 		public MenuItem quit;
 		public MenuItem new_tab;
                 public MenuItem about;
-		
+	        
+                private bool _show;
+
+                public bool show_menubar{
+                        set { 
+                                _show = value; 
+                                if (value) { this.show(); } else { this.hide(); }
+                        }
+                        get { 
+                                return _show;
+                        }
+                }
+                //public bool show_menubar { get; set; }
+
 		public MenuBar (/*Settings settings*/)
 		{
 			FileMenu = new Menu();
@@ -123,6 +136,8 @@ namespace Marlin.View.Chrome
 			append(go);
 			append(view);
 			append(help);
+
+                        //this.notify.connect ((s, p) => stdout.printf ("Property %s changed\n", p.name));
 		}
 	}
 }
