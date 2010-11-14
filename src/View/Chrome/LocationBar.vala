@@ -28,7 +28,13 @@ namespace Marlin.View.Chrome
 		
 		public new string path{
 			set{
-				entry.text = value;	
+                var new_path = value;
+
+                if(new_path.has_prefix("file://")){
+                    new_path = new_path.substring(6);
+                }
+
+				entry.text = new_path;
 			}
 			get{
 				return entry.text;
