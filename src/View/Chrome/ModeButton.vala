@@ -39,8 +39,8 @@ namespace Marlin.View.Chrome
 			       |  EventMask.VISIBILITY_NOTIFY_MASK;
 			       //|  EventMask.SCROLL_MASK;
 
-			box = new HBox (true, 0);
-			box.border_width = 2;
+			box = new HBox (true, 1);
+			box.border_width = 0;
 			add (box);
 			box.show ();
 			
@@ -220,7 +220,7 @@ namespace Marlin.View.Chrome
 			}
 			
 			cr.restore();
-			
+
 			propagate_draw (box, cr);
 			
 			return true;

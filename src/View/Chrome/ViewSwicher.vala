@@ -59,6 +59,7 @@ namespace Marlin.View.Chrome
 			
 			switcher.selected = 0;
 			//switcher.ModeChanged += delegate(object sender, ModeButtonEventArgs args) {};
+                        switcher.set_border_width(1);
 			switcher.sensitive = true;
 			
 			add (switcher);

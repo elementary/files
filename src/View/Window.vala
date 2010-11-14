@@ -95,8 +95,9 @@ namespace Marlin.View {
 			set_position(WindowPosition.CENTER);	
 			title = "Marlin";
 			//this.icon = DrawingService.GetIcon("system-file-manager", 32);
-			show_menu_bar(true);
                         show_all();
+			//show_menu_bar(true);
+			show_menu_bar(false);
             
                         /*/
                         /* Connect and abstract signals to local ones
