@@ -63,7 +63,7 @@ EXTRA_DIST = \
 
 
 marlin.vala.stamp: $(marlin_VALASOURCES)
-	$(AM_V_GEN) $(VALAC) gof-window-slot.vapi $(marlin_VALAFLAGS) $^
+	$(AM_V_GEN) $(VALAC) marlin.vapi $(marlin_VALAFLAGS) $^
 	touch marlin.vala.stamp
 
 CLEANFILES = \
