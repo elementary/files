@@ -2,31 +2,26 @@
 # just run this script: bash INSTALL_maverick
 # thx to Jordi Hernandez (Gloobus)
 
-sudo apt-get install build-essential bzr git automake libtool
-sudo apt-get install valac flex bison gnome-common libgee-dev gtk-doc-tools gconf-2.0 gsettings-desktop-schemas dconf-dev dconf-tools gobject-introspection liborbit2-dev libxml2-dev libdbus-1-dev libdbus-glib-1-dev valac libgee-dev gnome-common libpango1.0-dev
-
-# gnome3 ubuntu-desktop PPA
 sudo add-apt-repository ppa:ubuntu-desktop/gnome3-builds
 sudo apt-get update
 sudo apt-get upgrade
 
-# gtk+3 from git
-sudo apt-get install gtk+3
+sudo apt-get install build-essential bzr git automake libtool
+sudo apt-get install gtk+3 gnome-commmon valac libgee-dev flex bison
 
 # vala from git
-sudo apt-get build-dep vala
 git clone git://git.gnome.org/vala
 cd vala
 ./autogen.sh --prefix=/usr
 make && sudo make install
 cd ..
 
-# gee
+# gee vapi file
 sudo cp /usr/share/vala-0.10/vapi/gee-1.0.vapi /usr/share/vala-0.12/vapi/
 
-# marlin from bzr
-bzr branch lp:marlin
-cd marlin
+#bzr branch lp:marlin
+#cd marlin
 ./autogen.sh --prefix=/usr
 make && sudo make install
 marlin
+
