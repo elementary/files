@@ -35,7 +35,7 @@ GType marlin_view_window_get_type (void) G_GNUC_CONST;
 /*MarlinViewWindow* marlin_view_window_new (const gchar* path);
 MarlinViewWindow* marlin_view_window_construct (GType object_type, const gchar* path);
 GType marlin_view_window_get_type (void) G_GNUC_CONST;*/
-MarlinViewWindow* marlin_view_window_new (void);
+MarlinViewWindow* marlin_view_window_new (GSettings *settings);
 MarlinViewWindow* marlin_view_window_construct (GType object_type);
 
 #define MARLIN_VIEW_TYPE_VIEW_CONTAINER (marlin_view_view_container_get_type ())

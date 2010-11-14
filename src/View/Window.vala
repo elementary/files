@@ -49,10 +49,7 @@ namespace Marlin.View {
         public signal void refresh();
         //public signal void viewmode_changed(ViewMode mode);
         
-        
-        //new Settings Settings;
-        
-        public Window ()
+        public Window (GLib.Settings settings)
         {           
 
             /*/
@@ -67,7 +64,7 @@ namespace Marlin.View {
             /* Topmenu
             /*/
             
-            top_menu = new Chrome.TopMenu();//Settings);
+            top_menu = new Chrome.TopMenu();
             top_menu.location_bar.path = "";
 
             top_menu.location_bar.activate.connect(() => {
