@@ -30,17 +30,7 @@ namespace Marlin.View {
         public GOF.Window.Slot? slot;
         public Marlin.Window.Columns? mwcol;
         Browser<string> browser;
-        private int _view_mode = 0;
-        public int view_mode{
-            set{
-                if(_view_mode != value){
-                    _view_mode = value;
-                }
-            }
-            get{
-                return _view_mode;            
-            }
-        }
+        public int view_mode = 0;
 
         public signal void path_changed(File file);
         public signal void up();
@@ -133,7 +123,7 @@ namespace Marlin.View {
                 browser.record_uri(slot.directory.get_uri());
             window.can_go_back = browser.can_go_back();
             window.can_go_forward = browser.can_go_forward();
-            window.top_menu.view_switcher.switcher.update(view_mode);
+            window.top_menu.view_switcher.mode = (ViewMode) view_mode;
         }
 	}
 }

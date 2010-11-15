@@ -107,10 +107,9 @@ namespace Marlin.View.Chrome
 		}
 
         public void focus(Widget widget){
-            var select = box.get_children().index(widget);
+            stdout.printf("Set focus\n");
 
-            if (select < -1 || select >= box.get_children().length())
-				return;
+            int select = box.get_children().index(widget);
 			
 			if (_selected >= 0)
 				box.get_children ().nth_data(_selected).set_state(StateType.NORMAL);
@@ -241,16 +240,5 @@ namespace Marlin.View.Chrome
 			
 			return true;
 		}
-
-        public void update(int n) {
-				if (_selected >= 0)
-					box.get_children ().nth_data(_selected).set_state(StateType.NORMAL);
-
-				_selected = n;
-				box.get_children().nth_data(_selected).set_state(StateType.SELECTED);
-				queue_draw ();
-
-				Widget selectedItem = n >= 0 ? box.get_children().nth_data(n) : null;
-        }
 	}
 }

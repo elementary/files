@@ -28,10 +28,38 @@ namespace Marlin.View.Chrome
 {
 	public class ViewSwitcher : ToolItem
 	{
-		//private ModeButton switcher;
 		public ModeButton switcher;
-		public signal void viewmode_change(ViewMode mode);
-        private ViewMode current_mode;
+		public signal void viewmode_changed(ViewMode mode);
+
+        private ViewMode _mode;
+        public ViewMode mode{
+            set{
+                stdout.printf("Setting Mode\n");
+
+                //if(value == _mode){
+                //    return;
+                //}
+
+                Widget target;
+
+                if(value == ViewMode.LIST){
+				    target = list;
+			    }else if(value == ViewMode.MILLER){
+				    target = miller;
+			    }else{
+                    target = miller;
+                }
+
+                switcher.focus(target);
+                _mode = mode;
+            }
+            private get{
+                return _mode;
+            }
+        }
+
+        private Image list;
+        private Image miller;
 		
 		//Gdk.Pixbuf iconviewIcon = DrawingService.GetIcon("view-list-icons-symbolic;;view-list-icons", 16);
 		//Gdk.Pixbuf detailsviewIcon = DrawingService.GetIcon("view-list-details-symbolic;;view-list-details", 16);
@@ -43,48 +71,22 @@ namespace Marlin.View.Chrome
 			
 			switcher = new ModeButton();
 		
-			//Image list = new Image.from_stock(Stock.ABOUT, IconSize.MENU);
-			Image list = new Image.from_file(Config.PIXMAP_DIR + "view-list-details-symbolic.svg");
+			list = new Image.from_file(Config.PIXMAP_DIR + "view-list-details-symbolic.svg");
 			switcher.append(list);
-			Image miller = new Image.from_file(Config.PIXMAP_DIR + "view-list-column-symbolic.svg");
+			miller = new Image.from_file(Config.PIXMAP_DIR + "view-list-column-symbolic.svg");
 			switcher.append(miller);
 			
 			switcher.mode_changed.connect((mode) => {
 				//You cannot do a switch here, only for int and string
 				if(mode == list){
-					viewmode_change(ViewMode.LIST);
+					viewmode_changed(ViewMode.LIST);
 				}else if(mode == miller){
-					viewmode_change(ViewMode.MILLER);
+					viewmode_changed(ViewMode.MILLER);
 				}
 			});
-
-            viewmode_change.connect((mode) => {
-                if(mode == current_mode){
-                    return;
-                }
-
-                Widget target;
-                bool found = false;
-
-                if(mode == ViewMode.LIST){
-					target = list;
-                    found = true;
-				}else if(mode == ViewMode.MILLER){
-					target = miller;
-                    found = true;
-				}else{
-                    target = new Image();
-                }
-
-                if(found){
-                    switcher.focus(target);
-                    current_mode = mode;
-                }
-            });
 			
 			switcher.sensitive = true;
-            switcher.focus(list);
-            current_mode = ViewMode.LIST;
+            mode = ViewMode.LIST;
 			
 			add (switcher);
 		}

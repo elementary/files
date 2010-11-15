@@ -131,7 +131,7 @@ namespace Marlin.View {
             top_menu.refresh.clicked.connect(() => { refresh(); });
             top_menu.compact_menu.about.activate.connect(() => { show_about(); });
             //top_menu.view_switcher.viewmode_change.connect((mode) => { viewmode_changed(mode); }); 
-            top_menu.view_switcher.viewmode_change.connect((mode) => { 
+            top_menu.view_switcher.viewmode_changed.connect((mode) => { 
                 current_tab.change_view(mode, null);
             }); 
             menu_bar.new_tab.activate.connect(() => { add_tab(File.new_for_commandline_arg(Environment.get_home_dir())); });    
