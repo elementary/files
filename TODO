@@ -1,7 +1,6 @@
 This is a short TODO list.
 
-- close tabs with middle click button and ctrl+w
-- scroll on tab should switch tab
+- close tabs with ctrl+w
 - open in new tab, folder opened with middle click button.
 - add 2 empty sidebars on the left and on the right from the main view. They should be toggable from a shortcut key F9 and ?
 - add popup menu for back/forward arrow toolbar button with the history from the 2 stacks on long click or right click: extend Browser class.

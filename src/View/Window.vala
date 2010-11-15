@@ -196,10 +196,19 @@ namespace Marlin.View {
             button.clicked.connect(() => {
                 remove_tab(content);
             });
-            
+
             hbox.show_all();
+
+            var eventbox = new EventBox();
+            eventbox.add(hbox);
+            eventbox.events |= EventMask.BUTTON_PRESS_MASK;
+            eventbox.button_release_event.connect((click) => {
+                if(click.button == 2){
+                    tabs.remove_page(tabs.get_children().index(content));
+                }
+            });
             
-            tabs.append_page(content, hbox);
+            tabs.append_page(content, eventbox);
             tabs.child_set (content, "tab-expand", true, null );
 
             tabs.set_tab_reorderable(content, true);
