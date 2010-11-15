@@ -36,10 +36,6 @@ namespace Marlin.View.Chrome
             set{
                 stdout.printf("Setting Mode\n");
 
-                //if(value == _mode){
-                //    return;
-                //}
-
                 Widget target;
 
                 if(value == ViewMode.LIST){

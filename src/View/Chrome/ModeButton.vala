@@ -115,10 +115,10 @@ namespace Marlin.View.Chrome
 				box.get_children ().nth_data(_selected).set_state(StateType.NORMAL);
 
 			_selected = select;
-			box.get_children().nth_data(_selected).set_state(StateType.SELECTED);
+			widget.set_state(StateType.SELECTED);
 			queue_draw ();
 
-			Widget selectedItem = select >= 0 ? box.get_children().nth_data(select) : null;
+			Widget selectedItem = widget;
         }
 		
 		protected bool on_scroll_event(EventScroll evnt){
