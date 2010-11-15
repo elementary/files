@@ -12,6 +12,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using Gtk;
+using Gdk;
 using Cairo;
 
 namespace Marlin.View {
@@ -145,14 +146,32 @@ namespace Marlin.View {
             delete_event.connect(() => { main_quit(); });
             
             tabs.switch_page.connect((page, offset) => {
-                //stdout.printf ("tab changed: %u\n", offset);
-                current_tab = (ViewContainer) tabs.get_children().nth_data(offset);
-                if (current_tab.slot != null)
-                    current_tab.update_location_state(false);
+                change_tab(offset);
+            });
+
+            tabs.scroll_event.connect((scroll) => {
+                uint offset = tabs.get_current_page();
+
+                if(scroll.direction == ScrollDirection.UP)
+                    offset++;
+                else if(scroll.direction == ScrollDirection.DOWN)
+                    offset--;
+
+                if(offset<1)
+                    offset = 0;
+                else if(offset>=tabs.get_children().length())
+                    offset = tabs.get_children().length();
+
+                change_tab(offset);                
+                tabs.set_current_page((int) offset);
             });
         }
         
-        
+        public void change_tab(uint offset){
+            current_tab = (ViewContainer) tabs.get_children().nth_data(offset);
+            if (current_tab != null && current_tab.slot != null)
+                current_tab.update_location_state(false);
+        }        
         
         //public void add_tab(ViewContainer content){
         public void add_tab(File location){
