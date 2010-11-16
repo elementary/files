@@ -76,7 +76,7 @@ namespace Marlin.View {
             menu_bar = ui.get_widget("/MenuBar");
  
             /* Topmenu */
-            top_menu = new Chrome.TopMenu();
+            top_menu = new Chrome.TopMenu(this);
             top_menu.location_bar.path = "";
 
             top_menu.location_bar.activate.connect(() => {
@@ -119,11 +119,8 @@ namespace Marlin.View {
 
             Preferences.settings.bind("show-menubar", menu_bar, "visible", 0);
             Preferences.settings.bind("show-menubar", main_actions.get_action("Show Hide Menubar"), "active", 0);
-            Preferences.settings.bind("show-menubar", top_menu.compact_menu.show_menubar, "active", 0);
-            //Preferences.settings.bind("show-menubar", menu_bar.show_menubar, "active", 0);
             Preferences.settings.bind("show-menubar", top_menu.compact_menu_button, "visible", SettingsBindFlags.INVERT_BOOLEAN);
-            Preferences.settings.bind("show-hiddenfiles", top_menu.compact_menu.show_hiddenitems, "active", 0);
-            //Preferences.settings.bind("show-hiddenfiles", menu_bar.show_hiddenitems, "active", 0);
+            Preferences.settings.bind("show-hiddenfiles", main_actions.get_action("Show Hidden Files"), "active", 0);
             Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
             Preferences.settings.bind("show-sidebar", main_actions.get_action("Show Hide Sidebar"), "active", 0);
 
@@ -171,7 +168,8 @@ namespace Marlin.View {
             if (current_tab != null && current_tab.slot != null) {
                 current_tab.update_location_state(false);
                 /* focus the main view */
-                ((Bin)current_tab.slot.get_view()).get_child().grab_focus();
+                /* FIXME not a smart move it's crashing when opening / closing tabs */
+                /*((Bin)current_tab.slot.get_view()).get_child().grab_focus();*/
             }
         }        
         

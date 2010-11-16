@@ -29,7 +29,6 @@ marlin_VALASOURCES = \
     View/Browser.vala                       \
     View/ViewMode.vala                      \
     View/Chrome/CompactMenuButton.vala      \
-    View/Chrome/CompactMenu.vala            \
     View/Chrome/LocationBar.vala            \
     View/Chrome/ModeButton.vala             \
     View/Chrome/TopMenu.vala                \

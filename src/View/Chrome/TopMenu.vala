@@ -29,18 +29,20 @@ namespace Marlin.View.Chrome
         public ToolButton go_up;
         public ToolButton refresh;
         public ViewSwitcher view_switcher;
-        public CompactMenu compact_menu;
+        public Gtk.Menu compact_menu;
         public CompactMenuButton compact_menu_button;
         public LocationBar location_bar;
+        public Window win;
 
-        public TopMenu (/*Settings settings*/)
+        public TopMenu (Window window)
         {
+            win = window;
             go_back = new ToolButton.from_stock(Stock.GO_BACK);
             go_forward = new ToolButton.from_stock(Stock.GO_FORWARD);
             go_up = new ToolButton.from_stock(Stock.GO_UP);
             refresh = new ToolButton.from_stock(Stock.REFRESH);
             location_bar = new LocationBar ();
-            compact_menu = new CompactMenu (/*settings*/);
+            compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             compact_menu_button = new CompactMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
             view_switcher = new ViewSwitcher();
 
