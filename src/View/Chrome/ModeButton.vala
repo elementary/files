@@ -106,9 +106,8 @@ namespace Marlin.View.Chrome
             this.queue_draw ();
         }
 
-        public void focus(Widget widget){
-            stdout.printf("Set focus\n");
-
+        public new void focus(Widget widget){
+            //stdout.printf("Set focus\n");
             int select = box.get_children().index(widget);
 
             if (_selected >= 0)
@@ -117,8 +116,6 @@ namespace Marlin.View.Chrome
             _selected = select;
             widget.set_state(StateType.SELECTED);
             queue_draw ();
-
-            Widget selectedItem = widget;
         }
 
         protected bool on_scroll_event(EventScroll evnt){
