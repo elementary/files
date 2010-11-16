@@ -18,52 +18,64 @@ using Cairo;
 namespace Marlin.View {
     public class Window : Gtk.Window
     {
-        public Chrome.MenuBar menu_bar;
+        public UIManager ui;
+        public Widget menu_bar;
         public Chrome.TopMenu top_menu;
         public Notebook tabs;
         private IconSize isize13;
         
         public ViewContainer current_tab;
 
+        public Gtk.ActionGroup main_actions;
+        public Gtk.AccelGroup accel_group;
+
         public bool can_go_up{
             set{
                 top_menu.go_up.sensitive = value;
-                menu_bar.go_up.sensitive = value;
+                main_actions.get_action("Up").set_sensitive(value);
             }
         }
         
         public bool can_go_forward{
             set{
                 top_menu.go_forward.sensitive = value;
-                menu_bar.go_forward.sensitive = value;
+                main_actions.get_action("Forward").set_sensitive(value);
             }
         }
         
         public bool can_go_back{
             set{
                 top_menu.go_back.sensitive = value;
-                menu_bar.go_back.sensitive = value;
+                main_actions.get_action("Back").set_sensitive(value);
             }
         }
 
-        public signal void show_about();        
-        public signal void refresh();
-        //public signal void viewmode_changed(ViewMode mode);
+        //public signal void refresh();
         
         public Window (GLib.Settings settings)
-        {           
+        {   
+            ui = new UIManager();
 
-            /*/
-            /* Menubar
-            /*/
+            try {
+                ui.add_ui_from_file(Config.UI_DIR + "marlin-ui.xml");
+            } catch (Error e) {
+                stderr.printf ("Error loading UI: %s", e.message);
+            }
 
-            menu_bar = new Chrome.MenuBar();
-            add_accel_group(menu_bar.Accels);
+            main_actions = new Gtk.ActionGroup("MainActionGroup");
+            main_actions.add_actions(main_entries, this);
+            main_actions.add_toggle_actions(main_toggle_entries, this);
+            accel_group = ui.get_accel_group();
+            add_accel_group(accel_group);
             
-            /*/
-            /* Topmenu
-            /*/
-            
+            ui.insert_action_group(main_actions, 0);
+            ui.ensure_update();
+
+
+            /* Menubar */
+            menu_bar = ui.get_widget("/MenuBar");
+ 
+            /* Topmenu */
             top_menu = new Chrome.TopMenu();
             top_menu.location_bar.path = "";
 
@@ -72,10 +84,7 @@ namespace Marlin.View {
             });
         
         
-            /*/
-            /* Contents
-            /*/
-            
+            /* Contents */
             tabs = new Notebook();
             tabs.show_border = false;
             tabs.show_tabs = false;
@@ -83,19 +92,12 @@ namespace Marlin.View {
             //view = new View();
             isize13 = icon_size_register ("13px", 13, 13);
 
-            /*/
-            /* Sidebar
-            /*/
-        
+            /* Sidebar */
             var sidebar = new Label("Sidebar");
-            sidebar.set_size_request(200, -1);
+            sidebar.set_size_request(150, -1);
 
-            /*/
-            /* Devide main views into sidebars
-            /*/
-            
+            /* Devide main views into sidebars */
             var main_box = new HPaned();
-
             main_box.pack1(sidebar, false, true);
             main_box.pack2(tabs, true, false);
 
@@ -116,11 +118,14 @@ namespace Marlin.View {
             show_all();
 
             Preferences.settings.bind("show-menubar", menu_bar, "visible", 0);
+            Preferences.settings.bind("show-menubar", main_actions.get_action("Show Hide Menubar"), "active", 0);
             Preferences.settings.bind("show-menubar", top_menu.compact_menu.show_menubar, "active", 0);
-            Preferences.settings.bind("show-menubar", menu_bar.show_menubar, "active", 0);
-
+            //Preferences.settings.bind("show-menubar", menu_bar.show_menubar, "active", 0);
+            Preferences.settings.bind("show-menubar", top_menu.compact_menu_button, "visible", SettingsBindFlags.INVERT_BOOLEAN);
             Preferences.settings.bind("show-hiddenfiles", top_menu.compact_menu.show_hiddenitems, "active", 0);
-            Preferences.settings.bind("show-hiddenfiles", menu_bar.show_hiddenitems, "active", 0);
+            //Preferences.settings.bind("show-hiddenfiles", menu_bar.show_hiddenitems, "active", 0);
+            Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
+            Preferences.settings.bind("show-sidebar", main_actions.get_action("Show Hide Sidebar"), "active", 0);
 
             /*/
             /* Connect and abstract signals to local ones
@@ -129,19 +134,13 @@ namespace Marlin.View {
             top_menu.go_up.clicked.connect(() => { current_tab.up(); });
             top_menu.go_forward.clicked.connect(() => { current_tab.forward(); });
             top_menu.go_back.clicked.connect(() => { current_tab.back(); });
-            top_menu.refresh.clicked.connect(() => { refresh(); });
-            top_menu.compact_menu.about.activate.connect(() => { show_about(); });
-            //top_menu.view_switcher.viewmode_change.connect((mode) => { viewmode_changed(mode); }); 
+            //top_menu.refresh.clicked.connect(() => { refresh(); });
+            
             top_menu.view_switcher.viewmode_changed.connect((mode) => { 
                 current_tab.change_view(mode, null);
             }); 
-            menu_bar.new_tab.activate.connect(() => { add_tab(File.new_for_commandline_arg(Environment.get_home_dir())); });    
-            menu_bar.go_up.activate.connect(() => { current_tab.up(); });
-            menu_bar.go_forward.activate.connect(() => { current_tab.forward(); });
-            menu_bar.go_back.activate.connect(() => { current_tab.back(); });
-            menu_bar.refresh.activate.connect(() => { refresh(); });
-            menu_bar.about.activate.connect(() => { show_about(); });
-            menu_bar.quit.activate.connect(() => { main_quit(); });
+
+            //menu_bar.refresh.activate.connect(() => { refresh(); });
             
             delete_event.connect(() => { main_quit(); });
             
@@ -173,7 +172,6 @@ namespace Marlin.View {
                 current_tab.update_location_state(false);
         }        
         
-        //public void add_tab(ViewContainer content){
         public void add_tab(File location){
             ViewContainer content = new View.ViewContainer(this, location);
             var hbox = new HBox(false, 0);
@@ -185,7 +183,7 @@ namespace Marlin.View {
             var button = new Button();
             button.set_relief(ReliefStyle.NONE);
             button.set_focus_on_click(false);
-                        //button.set_name("marlin-tab-close-button");
+            //button.set_name("marlin-tab-close-button");
             button.add(image);
             var style = new RcStyle();
             style.xthickness = 0;
@@ -223,10 +221,110 @@ namespace Marlin.View {
             if(tabs.get_children().length() == 2){
                 tabs.show_tabs = false;
             }else if(tabs.get_children().length() == 1){
+                main_quit();
                 return;
             }
             
             tabs.remove(view_container);
         }
+        
+        private void action_new_tab (Gtk.Action action) {
+            add_tab(File.new_for_commandline_arg(Environment.get_home_dir()));
+        }
+
+        private void action_remove_tab (Gtk.Action action) {
+            remove_tab(current_tab);
+        }
+
+        private void action_go_up (Gtk.Action action) {
+            current_tab.up();
+        }
+
+        private void action_go_back (Gtk.Action action) {
+            current_tab.back();
+        }
+
+        private void action_go_forward (Gtk.Action action) {
+            current_tab.forward();
+        }
+        
+        private void action_show_hidden_files (Gtk.Action action) {
+            stdout.printf ("TODO show hidden_files\n");
+        }
+        
+        /*private void action_show_hide_menubar (Gtk.Action action) {
+            stdout.printf ("TODO\n");
+        }
+
+        private void action_show_hide_sidebar (Gtk.Action action) {
+            stdout.printf ("TODO\n");
+        }*/
+
+        protected void show_about() {
+        Gtk.show_about_dialog(this,
+            "program-name", Resources.APP_TITLE,
+            "version", Config.VERSION,
+            "comments", Resources.COMMENTS,
+            "copyright", Resources.COPYRIGHT,
+            "license", Resources.LICENSE,
+            "website", Resources.ELEMENTARY_URL,
+            "website-label",  Resources.ELEMENTARY_LABEL,
+            "authors", Resources.AUTHORS,
+            "artists", Resources.ARTISTS,
+            "logo-icon-name", Resources.ICON_ABOUT_LOGO,
+            "translator-credits", _("translator-credits"),
+            null);
+        }
+
+        const Gtk.ActionEntry[] main_entries = {
+  /* name, stock id, label */  { "File", null, N_("_File") },
+  /* name, stock id, label */  { "Edit", null, N_("_Edit") },
+  /* name, stock id, label */  { "View", null, N_("_View") },
+  /* name, stock id, label */  { "Go", null, N_("_Go") },
+  /* name, stock id, label */  { "Help", null, N_("_Help") },
+  /* name, stock id */         { "New Tab", "tab-new",
+  /* label, accelerator */       N_("New _Tab"), "<control>T",
+  /* tooltip */                  N_("Open another tab for the displayed location"),
+                                 action_new_tab },
+  /* name, stock id */         { "Close", Stock.CLOSE,
+  /* label, accelerator */       N_("_Close"), "<control>W",
+  /* tooltip */                  N_("Close this folder"),
+                                 action_remove_tab },
+                               { "Up", Stock.GO_UP, N_("Open _Parent"),
+                                 "<alt>Up", N_("Open the parent folder"),
+                                 action_go_up },
+                               { "Back", Stock.GO_BACK, N_("_Back"),
+                                 "<alt>Left", N_("Go to the previous visited location"),
+                                 //G_CALLBACK (action_up_callback) },
+                                 action_go_back },
+                               { "Forward", Stock.GO_FORWARD, N_("_Forward"),
+                                 "<alt>Right", N_("Go to the next visited location"),
+                                 action_go_forward },
+  /* name, stock id */         { "About", Stock.ABOUT,
+  /* label, accelerator */       N_("_About"), null,
+  /* tooltip */                  N_("Display credits"),
+                                 show_about }
+
+
+        };
+
+        static const Gtk.ToggleActionEntry main_toggle_entries[] = {
+  /* name, stock id */         { "Show Hidden Files", null,
+  /* label, accelerator */       N_("Show _Hidden Files"), "<control>H",
+  /* tooltip */                  N_("Toggle the display of hidden files in the current window"),
+                                 action_show_hidden_files,
+                                 true },
+  /* name, stock id */         { "Show Hide Menubar", null,
+  /* label, accelerator */       N_("_Menubar"), "F8",
+  /* tooltip */                  N_("Change the visibility of this window's menubar"),
+                                 null,
+  /* is_active */                true }, 
+  /* name, stock id */         { "Show Hide Sidebar", null,
+  /* label, accelerator */       N_("_Side Pane"), "F9",
+  /* tooltip */                  N_("Change the visibility of this window's side pane"),
+                                 null,
+  /* is_active */                true }
+
+        };
     }
 }

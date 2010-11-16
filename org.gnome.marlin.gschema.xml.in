@@ -7,6 +7,13 @@
         Show the menubar
       </_description>
     </key>
+    <key name="show-sidebar" type="b">
+      <default>true</default>
+      <_summary>Show the sidebar</_summary>
+      <_description>
+        Show the sidebar
+      </_description>
+    </key>
     <key name="show-hiddenfiles" type="b">
       <default>false</default>
       <_summary>Show hidden files</_summary>
@@ -36,7 +43,7 @@
       </_description>
     </key>
     <key name="single-click-timeout" type="i">
-      <default>400</default>
+      <default>320</default>
       <summary>single click timeout</summary>
       <description>
         The amount of time which the item under the mouse cursor will be selected automatically in single click mode

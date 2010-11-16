@@ -7,7 +7,7 @@ sudo apt-get update
 sudo apt-get upgrade
 
 sudo apt-get install build-essential bzr git automake libtool
-sudo apt-get install gtk+3 gnome-commmon valac libgee-dev flex bison
+sudo apt-get install gtk+3 gnome-common valac libgee-dev flex bison
 
 # vala from git
 git clone git://git.gnome.org/vala
