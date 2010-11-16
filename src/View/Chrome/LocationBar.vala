@@ -22,36 +22,36 @@ using Gtk;
 
 namespace Marlin.View.Chrome
 {
-	public class LocationBar : ToolItem
-	{
-		private Entry entry;
-		
-		public new string path{
-			set{
+    public class LocationBar : ToolItem
+    {
+        private Entry entry;
+
+        public new string path{
+            set{
                 var new_path = value;
 
                 if(new_path.has_prefix("file://")){
                     new_path = new_path.substring(7);
                 }
 
-				entry.text = new_path;
-			}
-			get{
-				return entry.text;
-			}
-		}
-		
-		public new signal void activate();
-		
-		public LocationBar ()
-		{
-			entry = new Entry ();
-			
-			set_expand(true);
-			add(entry);
-			
-			entry.activate.connect(() => { activate(); });
-		}
-	}
+                entry.text = new_path;
+            }
+            get{
+                return entry.text;
+            }
+        }
+
+        public new signal void activate();
+
+        public LocationBar ()
+        {
+            entry = new Entry ();
+
+            set_expand(true);
+            add(entry);
+
+            entry.activate.connect(() => { activate(); });
+        }
+    }
 }
 

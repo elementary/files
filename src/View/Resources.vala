@@ -7,7 +7,7 @@ namespace Resources {
     
     public const string[] AUTHORS = { 
         "ammonkey <am.monkeyd@gmail.com>",
-		"Mathijs Henquet <mathijs.henquet@gmail.com>",
+        "Mathijs Henquet <mathijs.henquet@gmail.com>",
         null
     };
     

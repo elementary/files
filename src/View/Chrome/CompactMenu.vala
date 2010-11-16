@@ -23,37 +23,37 @@ using Gtk;
 
 namespace Marlin.View.Chrome
 {
-	public class CompactMenu : Gtk.Menu
-	{
-		public CheckMenuItem show_menubar;
-		public CheckMenuItem show_hiddenitems;
-		public ImageMenuItem about;
-		
-		public CompactMenu (/*Settings settings*/)
-		{
-			//
-			// Compact Menu
-			//
-			
-			show_menubar = new CheckMenuItem.with_mnemonic ("Show _Menubar");
-			//ShowMenuBar.active = settings.ShowMenuBar;
-			
-			show_hiddenitems = new CheckMenuItem.with_mnemonic ("Show _Hidden Items");
-			//ShowHiddenItems.active = settings.ShowHiddenItems;
-			
-			about = new ImageMenuItem.with_mnemonic ("_About") {
-	    		image = new Image.from_stock (Stock.ABOUT, IconSize.MENU)
-			};
-			about.activate.connect(() => { });
-			
-			append (show_menubar);
-			append (new SeparatorMenuItem());
-			append (show_hiddenitems);
-			append (new SeparatorMenuItem());
-			append (about);
-			
-			show_all();
-		}
-	}
+    public class CompactMenu : Gtk.Menu
+    {
+        public CheckMenuItem show_menubar;
+        public CheckMenuItem show_hiddenitems;
+        public ImageMenuItem about;
+
+        public CompactMenu (/*Settings settings*/)
+        {
+            //
+            // Compact Menu
+            //
+
+            show_menubar = new CheckMenuItem.with_mnemonic ("Show _Menubar");
+            //ShowMenuBar.active = settings.ShowMenuBar;
+
+            show_hiddenitems = new CheckMenuItem.with_mnemonic ("Show _Hidden Items");
+            //ShowHiddenItems.active = settings.ShowHiddenItems;
+
+            about = new ImageMenuItem.with_mnemonic ("_About") {
+                image = new Image.from_stock (Stock.ABOUT, IconSize.MENU)
+            };
+            about.activate.connect(() => { });
+
+            append (show_menubar);
+            append (new SeparatorMenuItem());
+            append (show_hiddenitems);
+            append (new SeparatorMenuItem());
+            append (about);
+
+            show_all();
+        }
+    }
 }
 

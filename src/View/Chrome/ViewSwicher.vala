@@ -26,10 +26,10 @@ using Config;
 
 namespace Marlin.View.Chrome
 {
-	public class ViewSwitcher : ToolItem
-	{
-		public ModeButton switcher;
-		public signal void viewmode_changed(ViewMode mode);
+    public class ViewSwitcher : ToolItem
+    {
+        public ModeButton switcher;
+        public signal void viewmode_changed(ViewMode mode);
 
         private ViewMode _mode;
         public ViewMode mode{
@@ -39,10 +39,10 @@ namespace Marlin.View.Chrome
                 Widget target;
 
                 if(value == ViewMode.LIST){
-				    target = list;
-			    }else if(value == ViewMode.MILLER){
-				    target = miller;
-			    }else{
+                    target = list;
+                }else if(value == ViewMode.MILLER){
+                    target = miller;
+                }else{
                     target = miller;
                 }
 
@@ -56,36 +56,36 @@ namespace Marlin.View.Chrome
 
         private Image list;
         private Image miller;
-		
-		//Gdk.Pixbuf iconviewIcon = DrawingService.GetIcon("view-list-icons-symbolic;;view-list-icons", 16);
-		//Gdk.Pixbuf detailsviewIcon = DrawingService.GetIcon("view-list-details-symbolic;;view-list-details", 16);
-		//Gdk.Pixbuf compactviewIcon = DrawingService.GetIcon("view-list-compact-symbolic;;view-list-compact", 16);
-		
-		public ViewSwitcher ()
-		{
-			border_width = 6;
-			
-			switcher = new ModeButton();
-		
-			list = new Image.from_file(Config.PIXMAP_DIR + "view-list-details-symbolic.svg");
-			switcher.append(list);
-			miller = new Image.from_file(Config.PIXMAP_DIR + "view-list-column-symbolic.svg");
-			switcher.append(miller);
-			
-			switcher.mode_changed.connect((mode) => {
-				//You cannot do a switch here, only for int and string
-				if(mode == list){
-					viewmode_changed(ViewMode.LIST);
-				}else if(mode == miller){
-					viewmode_changed(ViewMode.MILLER);
-				}
-			});
-			
-			switcher.sensitive = true;
+
+        //Gdk.Pixbuf iconviewIcon = DrawingService.GetIcon("view-list-icons-symbolic;;view-list-icons", 16);
+        //Gdk.Pixbuf detailsviewIcon = DrawingService.GetIcon("view-list-details-symbolic;;view-list-details", 16);
+        //Gdk.Pixbuf compactviewIcon = DrawingService.GetIcon("view-list-compact-symbolic;;view-list-compact", 16);
+
+        public ViewSwitcher ()
+        {
+            border_width = 6;
+
+            switcher = new ModeButton();
+
+            list = new Image.from_file(Config.PIXMAP_DIR + "view-list-details-symbolic.svg");
+            switcher.append(list);
+            miller = new Image.from_file(Config.PIXMAP_DIR + "view-list-column-symbolic.svg");
+            switcher.append(miller);
+
+            switcher.mode_changed.connect((mode) => {
+                                          //You cannot do a switch here, only for int and string
+                                          if(mode == list){
+                                          viewmode_changed(ViewMode.LIST);
+                                          }else if(mode == miller){
+                                          viewmode_changed(ViewMode.MILLER);
+                                          }
+                                          });
+
+            switcher.sensitive = true;
             mode = ViewMode.LIST;
-			
-			add (switcher);
-		}
-	}
+
+            add (switcher);
+        }
+    }
 }
 

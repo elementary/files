@@ -1,7 +1,7 @@
 
 namespace Marlin.View{
-	public enum ViewMode{
-		LIST,
-		MILLER
-	}
+    public enum ViewMode{
+        LIST,
+            MILLER
+    }
 }

@@ -23,10 +23,10 @@
 using Gtk;
 
 namespace Marlin.View {
-	public class ViewContainer : Gtk.EventBox {
-		public Gtk.Widget? content_item;
-		public Gtk.Label label;
-		private Marlin.View.Window? window;
+    public class ViewContainer : Gtk.EventBox {
+        public Gtk.Widget? content_item;
+        public Gtk.Label label;
+        private Marlin.View.Window? window;
         public GOF.Window.Slot? slot;
         public Marlin.Window.Columns? mwcol;
         Browser<string> browser;
@@ -37,13 +37,12 @@ namespace Marlin.View {
         public signal void back();
         public signal void forward();
 
-		public ViewContainer(Marlin.View.Window win, File location){
-            //stdout.printf ("$$$$ ViewContainer new\n");
+        public ViewContainer(Marlin.View.Window win, File location){
             window = win;
             browser = new Browser<string> ();
             slot = new GOF.Window.Slot(location, this);
             /*mwcol = new Marlin.Window.Columns(location, this);
-            slot = mwcol.active_slot;*/
+              slot = mwcol.active_slot;*/
             //content_item = slot.get_view();
             //label = new Gtk.Label("test");
             label = new Gtk.Label(slot.directory.get_uri());
@@ -52,51 +51,51 @@ namespace Marlin.View {
             label.set_alignment(0.0f, 0.5f);
             label.set_padding(0, 0);
             update_location_state(true);
-			
-			//add(content_item);	
-			
-			this.show_all();
+
+            //add(content_item);	
+
+            this.show_all();
 
             path_changed.connect((myfile) => {
-                    change_view(view_mode, myfile);
-                    update_location_state(true);
-			});
+                                 change_view(view_mode, myfile);
+                                 update_location_state(true);
+                                 });
             up.connect(() => {
-                    if (slot.directory.has_parent()) {
-                            change_view(view_mode, slot.directory.get_parent());
-                            update_location_state(true);
-                    }
-			});
+                       if (slot.directory.has_parent()) {
+                       change_view(view_mode, slot.directory.get_parent());
+                       update_location_state(true);
+                       }
+                       });
             back.connect(() => {
-                    change_view(view_mode, File.new_for_commandline_arg(browser.go_back()));
-                    update_location_state(false);
-            });
+                         change_view(view_mode, File.new_for_commandline_arg(browser.go_back()));
+                         update_location_state(false);
+                         });
             forward.connect(() => {
-                    change_view(view_mode, File.new_for_commandline_arg(browser.go_forward()));
-                    update_location_state(false);
-            });
+                            change_view(view_mode, File.new_for_commandline_arg(browser.go_forward()));
+                            update_location_state(false);
+                            });
 
-		}
+        }
 
         public Widget content{
-			set{
+            set{
                 if (content_item != null)
-			    	remove(content_item);
-				add(value);
-				content_item = value;
-				content_item.show();
+                    remove(content_item);
+                add(value);
+                content_item = value;
+                content_item.show();
                 ((Bin)value).get_child().grab_focus();
-			}
-			get{
-				return content_item;
-			}
-		}
-		
-		public string tab_name{
-			set{
-				label.label = value;	
-			}
-		}
+            }
+            get{
+                return content_item;
+            }
+        }
+
+        public string tab_name{
+            set{
+                label.label = value;	
+            }
+        }
 
         public void change_view(int nview, File? location){
             if (location == null)
@@ -125,5 +124,5 @@ namespace Marlin.View {
             window.can_go_forward = browser.can_go_forward();
             window.top_menu.view_switcher.mode = (ViewMode) view_mode;
         }
-	}
+    }
 }

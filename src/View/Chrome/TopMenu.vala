@@ -22,36 +22,36 @@ using Gtk;
 
 namespace Marlin.View.Chrome
 {
-	public class TopMenu : Gtk.Toolbar
-	{
-		public ToolButton go_back;
-		public ToolButton go_forward;
-		public ToolButton go_up;
-		public ToolButton refresh;
-		public ViewSwitcher view_switcher;
-		public CompactMenu compact_menu;
-		public CompactMenuButton compact_menu_button;
-		public LocationBar location_bar;
-		
-		public TopMenu (/*Settings settings*/)
-		{
-			go_back = new ToolButton.from_stock(Stock.GO_BACK);
-			go_forward = new ToolButton.from_stock(Stock.GO_FORWARD);
-			go_up = new ToolButton.from_stock(Stock.GO_UP);
-			refresh = new ToolButton.from_stock(Stock.REFRESH);
-			location_bar = new LocationBar ();
-			compact_menu = new CompactMenu (/*settings*/);
-			compact_menu_button = new CompactMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
-			view_switcher = new ViewSwitcher();
-			
-			insert(go_back, -1);
-			insert(go_forward, -1);
-			insert(go_up, -1);
-			insert(location_bar, -1);
-			//insert(refresh, -1);
-			insert(view_switcher, -1);
-			insert(compact_menu_button, -1);
-		}
-	}
+    public class TopMenu : Gtk.Toolbar
+    {
+        public ToolButton go_back;
+        public ToolButton go_forward;
+        public ToolButton go_up;
+        public ToolButton refresh;
+        public ViewSwitcher view_switcher;
+        public CompactMenu compact_menu;
+        public CompactMenuButton compact_menu_button;
+        public LocationBar location_bar;
+
+        public TopMenu (/*Settings settings*/)
+        {
+            go_back = new ToolButton.from_stock(Stock.GO_BACK);
+            go_forward = new ToolButton.from_stock(Stock.GO_FORWARD);
+            go_up = new ToolButton.from_stock(Stock.GO_UP);
+            refresh = new ToolButton.from_stock(Stock.REFRESH);
+            location_bar = new LocationBar ();
+            compact_menu = new CompactMenu (/*settings*/);
+            compact_menu_button = new CompactMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
+            view_switcher = new ViewSwitcher();
+
+            insert(go_back, -1);
+            insert(go_forward, -1);
+            insert(go_up, -1);
+            insert(location_bar, -1);
+            //insert(refresh, -1);
+            insert(view_switcher, -1);
+            insert(compact_menu_button, -1);
+        }
+    }
 }
 
