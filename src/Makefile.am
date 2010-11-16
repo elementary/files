@@ -38,6 +38,7 @@ marlin_VALASOURCES = \
 marlin_SOURCES = \
     $(marlin_VALASOURCES:.vala=.c) 	    \
     marlin-main.c                           \
+    mysignal.c                              \
     eel-fcts.c                              \
     eel-i18n.c                              \
     eel-marshal.c                           \

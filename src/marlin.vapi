@@ -17,6 +17,8 @@ namespace Preferences {
         public GLib.Settings settings;
 }
 
+public static uint action_new (GLib.Type type, string signal_name);
+
 [CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
 namespace GOF {
 	[CCode (cprefix = "GOFWindow", lower_case_cprefix = "gof_window_")]

@@ -161,8 +161,17 @@ namespace Marlin.View {
                 change_tab(offset);                
                 tabs.set_current_page((int) offset);
             });
+
+            /* Binding Backspace keyboard shortcut */
+            unowned Gtk.BindingSet binding_set;
+
+            binding_set = Gtk.BindingSet.by_class (typeof (Marlin.View.Window).class_ref ());
+            action_new (typeof (Marlin.View.Window), "go_up");
+            Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
+            Signal.connect (this, "go_up",
+                    (GLib.Callback)action_go_up, null);
         }
-        
+
         public void change_tab(uint offset){
             current_tab = (ViewContainer) tabs.get_children().nth_data(offset);
             if (current_tab != null && current_tab.slot != null) {
@@ -237,7 +246,7 @@ namespace Marlin.View {
             remove_tab(current_tab);
         }
 
-        private void action_go_up (Gtk.Action action) {
+        private void action_go_up () {
             current_tab.up();
         }
 
