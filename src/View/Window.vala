@@ -168,8 +168,11 @@ namespace Marlin.View {
         
         public void change_tab(uint offset){
             current_tab = (ViewContainer) tabs.get_children().nth_data(offset);
-            if (current_tab != null && current_tab.slot != null)
+            if (current_tab != null && current_tab.slot != null) {
                 current_tab.update_location_state(false);
+                /* focus the main view */
+                ((Bin)current_tab.slot.get_view()).get_child().grab_focus();
+            }
         }        
         
         public void add_tab(File location){
