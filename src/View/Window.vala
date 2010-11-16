@@ -203,7 +203,7 @@ namespace Marlin.View {
             eventbox.events |= EventMask.BUTTON_PRESS_MASK;
             eventbox.button_release_event.connect((click) => {
                 if(click.button == 2){
-                    tabs.remove_page(tabs.get_children().index(content));
+                    remove_tab(content);
                 }
             });
             
