@@ -246,6 +246,11 @@ namespace Marlin.View {
             remove_tab(current_tab);
         }
 
+        private void action_toolbar_editor_callback (Gtk.Action action) {
+            stdout.printf("TODO: toolbar editor dialog\n");
+            //marlin_toolbar_editor_dialog_show (G_CALLBACK (preferences_respond_callback), window);
+        }
+
         private void action_go_up () {
             current_tab.up();
         }
@@ -312,6 +317,10 @@ namespace Marlin.View {
   /* label, accelerator */       N_("_Close"), "<control>W",
   /* tooltip */                  N_("Close this folder"),
                                  action_remove_tab },
+                               { "ToolbarEditor", Stock.PREFERENCES,
+                                 N_("Customize _Toolbar"),               
+                                 null, N_("Easily edit the toolbar layout"),
+                                 action_toolbar_editor_callback },
                                { "Up", Stock.GO_UP, N_("Open _Parent"),
                                  "<alt>Up", N_("Open the parent folder"),
                                  action_go_up },

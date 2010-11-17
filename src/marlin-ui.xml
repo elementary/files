@@ -16,8 +16,8 @@
                 </placeholder>
 		<separator/>-->
 		<!--<placeholder name="Select Items"/>-->
-		<!--<menuitem name="ToolbarEditor" action="ToolbarEditor"/>
-		<menuitem name="Preferences" action="Preferences"/>-->
+		<menuitem name="ToolbarEditor" action="ToolbarEditor"/>
+		<!--<menuitem name="Preferences" action="Preferences"/>-->
 	</menu>
 	<menu action="View">
 		<!--<menuitem name="Stop" action="Stop"/>
