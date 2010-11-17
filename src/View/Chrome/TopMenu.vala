@@ -24,34 +24,53 @@ namespace Marlin.View.Chrome
 {
     public class TopMenu : Gtk.Toolbar
     {
-        public ToolButton go_back;
-        public ToolButton go_forward;
-        public ToolButton go_up;
-        public ToolButton refresh;
         public ViewSwitcher view_switcher;
         public Gtk.Menu compact_menu;
         public CompactMenuButton compact_menu_button;
         public LocationBar location_bar;
         public Window win;
 
+        private string[]? toolbar_items;
+
         public TopMenu (Window window)
         {
+            Gtk.Widget? titem;
             win = window;
-            go_back = new ToolButton.from_stock(Stock.GO_BACK);
-            go_forward = new ToolButton.from_stock(Stock.GO_FORWARD);
-            go_up = new ToolButton.from_stock(Stock.GO_UP);
-            refresh = new ToolButton.from_stock(Stock.REFRESH);
-            location_bar = new LocationBar ();
+
+            toolbar_items = Preferences.settings.get_strv("toolbar-items");
+            foreach (string name in toolbar_items) { 
+                //stdout.printf("toolbar-item: %s\n", name); 
+                if (strcmp(name, "Separator") == 0)
+                {
+                        Gtk.SeparatorToolItem? sep = new Gtk.SeparatorToolItem ();
+                        sep.set_draw(true);
+                        insert(sep, -1);
+                        continue;
+                }
+                if (strcmp(name, "LocationPathBar") == 0)
+                {
+                    location_bar = new LocationBar ();
+                    insert(location_bar, -1);
+                    continue;
+                }
+                if (strcmp(name, "ViewModeButton") == 0)
+                {
+                    view_switcher = new ViewSwitcher();
+                    insert(view_switcher, -1);
+                    continue;
+                }
+                Gtk.Action? main_action = window.main_actions.get_action(name);
+                if (main_action != null)
+                {
+                    titem = main_action.create_tool_item();
+                    insert((Gtk.ToolItem) titem, -1);
+                }
+
+            }
+
+            /*refresh = new ToolButton.from_stock(Stock.REFRESH);*/
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             compact_menu_button = new CompactMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
-            view_switcher = new ViewSwitcher();
-
-            insert(go_back, -1);
-            insert(go_forward, -1);
-            insert(go_up, -1);
-            insert(location_bar, -1);
-            //insert(refresh, -1);
-            insert(view_switcher, -1);
             insert(compact_menu_button, -1);
         }
     }

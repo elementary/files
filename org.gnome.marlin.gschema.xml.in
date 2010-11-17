@@ -49,5 +49,12 @@
         The amount of time which the item under the mouse cursor will be selected automatically in single click mode
       </description>
     </key>
+    <key name="toolbar-items" type="as">
+      <default>[ 'Back', 'Forward', 'Up', 'LocationPathBar', 'ViewModeButton']</default>
+      <summary>List of actions present in the toolbar</summary>
+      <description>
+        List of actions present in the toolbar
+      </description>
+    </key>
   </schema>
 </schemalist>
