@@ -51,6 +51,14 @@ namespace Marlin.View {
         }
 
         //public signal void refresh();
+
+        protected virtual void action_radio_change_view(){
+            Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
+            assert(action != null);
+            int n = action.get_current_value();
+            //stdout.printf ("action_radio_change_view %d\n", n);
+            current_tab.change_view(n, null);
+        }
         
         public Window (GLib.Settings settings)
         {   
@@ -65,6 +73,8 @@ namespace Marlin.View {
             main_actions = new Gtk.ActionGroup("MainActionGroup");
             main_actions.add_actions(main_entries, this);
             main_actions.add_toggle_actions(main_toggle_entries, this);
+            main_actions.add_radio_actions(view_radio_entries, -1, 
+                                           action_radio_change_view);
             accel_group = ui.get_accel_group();
             add_accel_group(accel_group);
             
@@ -335,6 +345,18 @@ namespace Marlin.View {
                                  null,
   /* is_active */                true }
 
+        };
+        
+        static const Gtk.RadioActionEntry view_radio_entries[] = {
+            /*{ "view-as-icons", null,
+              N_("Icon View"), null, null,
+              0 },*/
+            { "view-as-detailed-list", null,
+              N_("List View"), "<control>1", null,
+              ViewMode.LIST },
+            { "view-as-columns", null,
+              N_("Columns View"), "<control>2", null,
+              ViewMode.MILLER }
         };
     }
 }

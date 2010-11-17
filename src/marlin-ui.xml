@@ -25,9 +25,9 @@
 		<separator/>-->
         <!--<menuitem name="Show Hide Toolbar" action="Show Hide Toolbar"/>-->
 	    <menuitem name="Show Hide Menubar" action="Show Hide Menubar"/>
-    	<menuitem name="Show Hide Sidebar" action="Show Hide Sidebar"/>
-		<separator/>
-    	<menuitem name="Show Hidden Files" action="Show Hidden Files"/>
+            <menuitem name="Show Hide Sidebar" action="Show Hide Sidebar"/>
+            <separator/>
+            <menuitem name="Show Hidden Files" action="Show Hidden Files"/>
 		<!--<placeholder name="View Preferences Placeholder"/>
 		<separator/>
 		<placeholder name="View Items Placeholder"/>
@@ -48,6 +48,11 @@
 			<separator name="Before Short List"/>
 			<placeholder name="Short List"/>
 		</placeholder>-->
+            <separator/>
+            <!--<menuitem action="view-as-icons" />-->
+            <menuitem action="view-as-detailed-list" />
+            <menuitem action="view-as-columns" />
+            <!--<menuitem action="view-as-compact-list" />-->
 	</menu>
 	<menu action="Go">
         <menuitem name="Up" action="Up"/>
