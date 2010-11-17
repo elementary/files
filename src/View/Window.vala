@@ -31,21 +31,18 @@ namespace Marlin.View {
 
         public bool can_go_up{
             set{
-                //top_menu.go_up.sensitive = value;
                 main_actions.get_action("Up").set_sensitive(value);
             }
         }
         
         public bool can_go_forward{
             set{
-                //top_menu.go_forward.sensitive = value;
                 main_actions.get_action("Forward").set_sensitive(value);
             }
         }
         
         public bool can_go_back{
             set{
-                //top_menu.go_back.sensitive = value;
                 main_actions.get_action("Back").set_sensitive(value);
             }
         }
@@ -138,17 +135,10 @@ namespace Marlin.View {
             /* Connect and abstract signals to local ones
             /*/
         
-            /*top_menu.go_up.clicked.connect(() => { current_tab.up(); });
-            top_menu.go_forward.clicked.connect(() => { current_tab.forward(); });
-            top_menu.go_back.clicked.connect(() => { current_tab.back(); });*/
-            //top_menu.refresh.clicked.connect(() => { refresh(); });
-            
             top_menu.view_switcher.viewmode_changed.connect((mode) => { 
                 current_tab.change_view(mode, null);
             }); 
 
-            //menu_bar.refresh.activate.connect(() => { refresh(); });
-            
             delete_event.connect(() => { main_quit(); });
             
             tabs.switch_page.connect((page, offset) => {
