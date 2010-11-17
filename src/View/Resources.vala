@@ -48,4 +48,14 @@ along with Marlin; if not, write to the Free Software Foundation, Inc.,
         
         return scaled_pixbuf;
     }*/
+
+    public const string MARLIN_ICON_HOME = "user-home";
+    public const string MARLIN_ICON_TRASH = "user-trash";
+    public const string MARLIN_ICON_TRASH_FULL = "user-trash-full";
+    public const string MARLIN_ICON_NETWORK = "network-workgroup";
+    public const string MARLIN_ICON_NETWORK_SERVER = "network-server";
+
+    public const string MARLIN_TRASH_URI = "trash:///";
+    public const string MARLIN_NETWORK_URI = "network:///";
+
 }

@@ -280,6 +280,18 @@ namespace Marlin.View {
             stdout.printf ("TODO\n");
         }*/
 
+        private void action_home_callback (Gtk.Action action) {
+                current_tab.path_changed(File.new_for_commandline_arg(Environment.get_home_dir()));
+        }
+
+        private void action_go_to_trash_callback (Gtk.Action action) {
+                current_tab.path_changed(File.new_for_commandline_arg(Resources.MARLIN_TRASH_URI));
+        }
+
+        private void action_go_to_network_callback (Gtk.Action action) {
+                current_tab.path_changed(File.new_for_commandline_arg(Resources.MARLIN_NETWORK_URI));
+        }
+
         protected void show_about() {
         Gtk.show_about_dialog(this,
             "program-name", Resources.APP_TITLE,
@@ -296,7 +308,7 @@ namespace Marlin.View {
             null);
         }
 
-        const Gtk.ActionEntry[] main_entries = {
+        static const Gtk.ActionEntry[] main_entries = {
   /* name, stock id, label */  { "File", null, N_("_File") },
   /* name, stock id, label */  { "Edit", null, N_("_Edit") },
   /* name, stock id, label */  { "View", null, N_("_View") },
@@ -320,6 +332,18 @@ namespace Marlin.View {
                                { "Forward", Stock.GO_FORWARD, N_("_Forward"),
                                  "<alt>Right", N_("Go to the next visited location"),
                                  action_go_forward },
+  /* name, stock id */         { "Home", Resources.MARLIN_ICON_HOME,
+  /* label, accelerator */       N_("_Home Folder"), "<alt>Home",
+  /* tooltip */                  N_("Open your personal folder"),
+                                 action_home_callback },
+  /* name, stock id */         { "Go to Trash", Resources.MARLIN_ICON_TRASH,
+  /* label, accelerator */       N_("_Trash"), null,
+  /* tooltip */                  N_("Open your personal trash folder"),
+                                 action_go_to_trash_callback },
+  /* name, stock id */         { "Go to Network", Resources.MARLIN_ICON_NETWORK,
+  /* label, accelerator */       N_("_Network"), null,
+  /* tooltip */                  N_("Browse bookmarked and local network locations"),
+                                 action_go_to_network_callback },
   /* name, stock id */         { "About", Stock.ABOUT,
   /* label, accelerator */       N_("_About"), null,
   /* tooltip */                  N_("Display credits"),
