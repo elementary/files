@@ -126,7 +126,7 @@ namespace Marlin.View {
 
             Preferences.settings.bind("show-menubar", menu_bar, "visible", 0);
             Preferences.settings.bind("show-menubar", main_actions.get_action("Show Hide Menubar"), "active", 0);
-            Preferences.settings.bind("show-menubar", top_menu.compact_menu_button, "visible", SettingsBindFlags.INVERT_BOOLEAN);
+            //Preferences.settings.bind("show-menubar", top_menu.compact_menu_button, "visible", SettingsBindFlags.INVERT_BOOLEAN);
             Preferences.settings.bind("show-hiddenfiles", main_actions.get_action("Show Hidden Files"), "active", 0);
             Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
             Preferences.settings.bind("show-sidebar", main_actions.get_action("Show Hide Sidebar"), "active", 0);
