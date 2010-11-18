@@ -30,8 +30,6 @@ namespace Marlin.View.Chrome
         public LocationBar? location_bar;
         public Window win;
 
-        //private string[]? toolbar_items;
-
         public TopMenu (Window window)
         {
             win = window;
@@ -42,11 +40,9 @@ namespace Marlin.View.Chrome
         {
             Gtk.Widget? titem;
 
-            //((Gtk.Container)this).foreach (toolitems_destroy);
             @foreach (toolitems_destroy);
             string[]? toolbar_items = Preferences.settings.get_strv("toolbar-items");
             foreach (string name in toolbar_items) { 
-                //stdout.printf("toolbar-item: %s\n", name); 
                 if (strcmp(name, "Separator") == 0)
                 {
                         Gtk.SeparatorToolItem? sep = new Gtk.SeparatorToolItem ();
@@ -79,15 +75,13 @@ namespace Marlin.View.Chrome
             }
 
             /*refresh = new ToolButton.from_stock(Stock.REFRESH);*/
-            /*compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
+            compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             compact_menu_button = new CompactMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
-            insert(compact_menu_button, -1);*/
+            insert(compact_menu_button, -1);
         }
 
         private void toolitems_destroy (Gtk.Widget? w) {
-            stdout.printf("destroy w\n");
             ((Gtk.Container)this).remove (w);
-            //w.destroy();
         }
     }
 }
