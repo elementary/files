@@ -33,16 +33,17 @@ namespace Marlin.View.Chrome
         public ModeButton ()
         {
             events |= EventMask.POINTER_MOTION_MASK
-                |  EventMask.BUTTON_PRESS_MASK
-                |  EventMask.VISIBILITY_NOTIFY_MASK;
-            //|  EventMask.SCROLL_MASK;
+                   |  EventMask.BUTTON_PRESS_MASK
+            //       |  EventMask.VISIBILITY_NOTIFY_MASK
+                   |  EventMask.LEAVE_NOTIFY_MASK; 
+            //       |  EventMask.SCROLL_MASK;
 
             box = new HBox (true, 1);
             box.border_width = 0;
             add (box);
             box.show ();
 
-            visibility_notify_event.connect(on_leave_notify_event);
+            leave_notify_event.connect(on_leave_notify_event);
             button_press_event.connect(on_button_press_event);
             motion_notify_event.connect(on_motion_notify_event);
             scroll_event.connect(on_scroll_event);	
@@ -75,8 +76,11 @@ namespace Marlin.View.Chrome
                 return this._hovered;
             }
             set {
-                /*if (value < -1 || value >= box.get_children().Length)
-                  throw new ArgumentOutOfRangeException (); */
+                if (value < -1 || value >= box.get_children().length())
+                    return;
+
+                if (value == _hovered)
+                    return;
 
                 _hovered = value;
                 queue_draw ();
@@ -138,7 +142,7 @@ namespace Marlin.View.Chrome
             return true;
         }
 
-        protected bool on_leave_notify_event(Event evnt)
+        protected bool on_leave_notify_event()
         {
             _hovered = -1;
             queue_draw ();
