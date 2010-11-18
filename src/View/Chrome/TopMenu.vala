@@ -61,6 +61,11 @@ namespace Marlin.View.Chrome
                     location_bar = new LocationBar ();
                     location_bar.show_all();
                     insert(location_bar, -1);
+                    /* init the path if we got a curent tab with a valid slot 
+                       and a valid directory loaded */
+                    if (win.current_tab != null && win.current_tab.slot != null 
+                        && win.current_tab.slot.directory != null)
+                        location_bar.path = win.current_tab.slot.directory.get_uri();
                     continue;
                 }
                 if (strcmp(name, "ViewModeButton") == 0)
