@@ -114,6 +114,7 @@ namespace Marlin.View {
             tabs = new Notebook();
             tabs.show_border = false;
             tabs.show_tabs = false;
+            tabs.show();
             
             //view = new View();
             isize13 = icon_size_register ("13px", 13, 13);
@@ -124,6 +125,7 @@ namespace Marlin.View {
 
             /* Devide main views into sidebars */
             var main_box = new HPaned();
+            main_box.show();
             main_box.pack1(sidebar, false, true);
             main_box.pack2(tabs, true, false);
 
@@ -132,6 +134,7 @@ namespace Marlin.View {
             /*/
 
             VBox window_box = new VBox(false, 0);
+            window_box.show();
             window_box.pack_start(menu_bar, false, false, 0);
             window_box.pack_start(top_menu, false, false, 0);
             window_box.pack_start(main_box, true, true, 0);
@@ -141,7 +144,7 @@ namespace Marlin.View {
             set_position(WindowPosition.CENTER);    
             title = Resources.APP_TITLE;
             //this.icon = DrawingService.GetIcon("system-file-manager", 32);
-            show_all();
+            show();
 
             Preferences.settings.bind("show-menubar", menu_bar, "visible", 0);
             Preferences.settings.bind("show-menubar", main_actions.get_action("Show Hide Menubar"), "active", 0);
@@ -292,11 +295,16 @@ namespace Marlin.View {
             stdout.printf ("TODO show hidden_files\n");
         }
         
-        /*private void action_show_hide_menubar (Gtk.Action action) {
-            stdout.printf ("TODO\n");
+        private void action_show_hide_menubar (Gtk.Action action) {
+            bool vis = true;
+            menu_bar.get("visible", &vis);
+            if (vis)
+                top_menu.compact_menu_button.hide();
+            else
+                top_menu.compact_menu_button.show_all();
         }
 
-        private void action_show_hide_sidebar (Gtk.Action action) {
+        /*private void action_show_hide_sidebar (Gtk.Action action) {
             stdout.printf ("TODO\n");
         }*/
 
@@ -385,7 +393,7 @@ namespace Marlin.View {
   /* name, stock id */         { "Show Hide Menubar", null,
   /* label, accelerator */       N_("_Menubar"), "F8",
   /* tooltip */                  N_("Change the visibility of this window's menubar"),
-                                 null,
+                                 action_show_hide_menubar,
   /* is_active */                true }, 
   /* name, stock id */         { "Show Hide Sidebar", null,
   /* label, accelerator */       N_("_Side Pane"), "F9",

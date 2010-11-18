@@ -37,6 +37,7 @@ namespace Marlin.View.Chrome
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             compact_menu_button = new CompactMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
             setup_items();
+            show();
         }
 
         public void setup_items ()

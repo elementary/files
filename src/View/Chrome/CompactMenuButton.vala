@@ -29,8 +29,6 @@ namespace Marlin.View.Chrome {
             clicked.connect(on_clicked);
             button_press_event.connect(on_button_press_event);
             mnemonic_activate.connect(on_mnemonic_activate);
-
-            this.show_all ();
         }
 
         protected bool on_button_press_event (Gdk.EventButton ev)
