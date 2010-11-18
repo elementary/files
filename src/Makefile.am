@@ -56,6 +56,7 @@ marlin_SOURCES = \
     fm-list-view.c                          \
     fm-columns-view.c                       \
     nautilus-cell-renderer-text-ellipsized.c\
+    marlin-toolbar-editor.c                 \
     $(NULL)
 
 uidir = $(datadir)/marlin/ui

@@ -18,6 +18,7 @@ namespace Preferences {
 }
 
 public static uint action_new (GLib.Type type, string signal_name);
+public void marlin_toolbar_editor_dialog_show (Marlin.View.Window mvw);
 
 [CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
 namespace GOF {
@@ -62,3 +63,5 @@ namespace Marlin {
 		}
 	}
 }
+
+

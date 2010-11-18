@@ -1,3 +1,12 @@
+// 
+//  Window.vala
+//  
+//  Authors:
+//       Mathijs Henquet <mathijs.henquet@gmail.com>
+//       ammonkey <am.monkeyd@gmail.com>
+// 
+//  Copyright (c) 2010 Mathijs Henquet
+// 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -49,12 +58,19 @@ namespace Marlin.View {
 
         //public signal void refresh();
 
+        public void update_action_radio_view(int n) {
+            Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
+            assert(action != null);
+            action.set_current_value(n);
+        }
+
         protected virtual void action_radio_change_view(){
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
             assert(action != null);
             int n = action.get_current_value();
-            //stdout.printf ("action_radio_change_view %d\n", n);
-            current_tab.change_view(n, null);
+            /* change the view only for view_mode real change */
+            if (n != current_tab.view_mode)
+                current_tab.change_view(n, null);
         }
         
         public Window (GLib.Settings settings)
@@ -84,11 +100,14 @@ namespace Marlin.View {
  
             /* Topmenu */
             top_menu = new Chrome.TopMenu(this);
-            top_menu.location_bar.path = "";
 
-            top_menu.location_bar.activate.connect(() => {
-                current_tab.path_changed(File.new_for_commandline_arg(top_menu.location_bar.path));
-            });
+            if (top_menu.location_bar != null) {
+                top_menu.location_bar.path = "";
+
+                top_menu.location_bar.activate.connect(() => {
+                    current_tab.path_changed(File.new_for_commandline_arg(top_menu.location_bar.path));
+                });
+            }
         
         
             /* Contents */
@@ -120,7 +139,7 @@ namespace Marlin.View {
             add(window_box);
             set_default_size(760, 450);
             set_position(WindowPosition.CENTER);    
-            title = "Marlin";
+            title = Resources.APP_TITLE;
             //this.icon = DrawingService.GetIcon("system-file-manager", 32);
             show_all();
 
@@ -134,11 +153,7 @@ namespace Marlin.View {
             /*/
             /* Connect and abstract signals to local ones
             /*/
-        
-            top_menu.view_switcher.viewmode_changed.connect((mode) => { 
-                current_tab.change_view(mode, null);
-            }); 
-
+       
             delete_event.connect(() => { main_quit(); });
             
             tabs.switch_page.connect((page, offset) => {
@@ -176,6 +191,8 @@ namespace Marlin.View {
             current_tab = (ViewContainer) tabs.get_children().nth_data(offset);
             if (current_tab != null && current_tab.slot != null) {
                 current_tab.update_location_state(false);
+                /* update radio action view state */
+                update_action_radio_view(current_tab.view_mode);
                 /* focus the main view */
                 /* FIXME not a smart move it's crashing when opening / closing tabs */
                 /*((Bin)current_tab.slot.get_view()).get_child().grab_focus();*/
@@ -247,9 +264,16 @@ namespace Marlin.View {
             remove_tab(current_tab);
         }
 
+        public Gtk.ActionGroup get_actiongroup () {
+            return this.main_actions;
+        }
+
+        public void set_toolbar_items () {
+            top_menu.setup_items();
+        }
+
         private void action_toolbar_editor_callback (Gtk.Action action) {
-            stdout.printf("TODO: toolbar editor dialog\n");
-            //marlin_toolbar_editor_dialog_show (G_CALLBACK (preferences_respond_callback), window);
+            marlin_toolbar_editor_dialog_show (this);
         }
 
         private void action_go_up () {

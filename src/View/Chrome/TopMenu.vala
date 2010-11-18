@@ -24,42 +24,52 @@ namespace Marlin.View.Chrome
 {
     public class TopMenu : Gtk.Toolbar
     {
-        public ViewSwitcher view_switcher;
+        public ViewSwitcher? view_switcher;
         public Gtk.Menu compact_menu;
         public CompactMenuButton compact_menu_button;
-        public LocationBar location_bar;
+        public LocationBar? location_bar;
         public Window win;
 
-        private string[]? toolbar_items;
+        //private string[]? toolbar_items;
 
         public TopMenu (Window window)
         {
-            Gtk.Widget? titem;
             win = window;
+            setup_items();
+        }
 
-            toolbar_items = Preferences.settings.get_strv("toolbar-items");
+        public void setup_items ()
+        {
+            Gtk.Widget? titem;
+
+            //((Gtk.Container)this).foreach (toolitems_destroy);
+            @foreach (toolitems_destroy);
+            string[]? toolbar_items = Preferences.settings.get_strv("toolbar-items");
             foreach (string name in toolbar_items) { 
                 //stdout.printf("toolbar-item: %s\n", name); 
                 if (strcmp(name, "Separator") == 0)
                 {
                         Gtk.SeparatorToolItem? sep = new Gtk.SeparatorToolItem ();
                         sep.set_draw(true);
+                        sep.show();
                         insert(sep, -1);
                         continue;
                 }
                 if (strcmp(name, "LocationPathBar") == 0)
                 {
                     location_bar = new LocationBar ();
+                    location_bar.show_all();
                     insert(location_bar, -1);
                     continue;
                 }
                 if (strcmp(name, "ViewModeButton") == 0)
                 {
-                    view_switcher = new ViewSwitcher();
+                    view_switcher = new ViewSwitcher(win.main_actions);
+                    view_switcher.show_all();
                     insert(view_switcher, -1);
                     continue;
                 }
-                Gtk.Action? main_action = window.main_actions.get_action(name);
+                Gtk.Action? main_action = win.main_actions.get_action(name);
                 if (main_action != null)
                 {
                     titem = main_action.create_tool_item();
@@ -69,9 +79,15 @@ namespace Marlin.View.Chrome
             }
 
             /*refresh = new ToolButton.from_stock(Stock.REFRESH);*/
-            compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
+            /*compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             compact_menu_button = new CompactMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
-            insert(compact_menu_button, -1);
+            insert(compact_menu_button, -1);*/
+        }
+
+        private void toolitems_destroy (Gtk.Widget? w) {
+            stdout.printf("destroy w\n");
+            ((Gtk.Container)this).remove (w);
+            //w.destroy();
         }
     }
 }

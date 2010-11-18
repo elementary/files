@@ -15,10 +15,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
 using Gtk;
 using Gdk;
-
 
 namespace Marlin.View.Chrome
 {
@@ -107,7 +105,6 @@ namespace Marlin.View.Chrome
         }
 
         public new void focus(Widget widget){
-            //stdout.printf("Set focus\n");
             int select = box.get_children().index(widget);
 
             if (_selected >= 0)

@@ -37,6 +37,8 @@ MarlinViewWindow* marlin_view_window_construct (GType object_type, const gchar* 
 GType marlin_view_window_get_type (void) G_GNUC_CONST;*/
 MarlinViewWindow* marlin_view_window_new (GSettings *settings);
 MarlinViewWindow* marlin_view_window_construct (GType object_type);
+GtkActionGroup* marlin_view_window_get_actiongroup (MarlinViewWindow *mvw);
+void marlin_view_window_set_toolbar_items (MarlinViewWindow *mvw);
 
 #define MARLIN_VIEW_TYPE_VIEW_CONTAINER (marlin_view_view_container_get_type ())
 #define MARLIN_VIEW_VIEW_CONTAINER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), MARLIN_VIEW_TYPE_VIEW_CONTAINER, MarlinViewViewContainer))

@@ -1,8 +1,9 @@
 //  
 //  ViewSwicher.cs
 //  
-//  Author:
+//  Authors:
 //       mathijshenquet <mathijs.henquet@gmail.com>
+//       ammonkey <am.monkeyd@gmail.com>
 // 
 //  Copyright (c) 2010 mathijshenquet
 // 
@@ -19,7 +20,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
 using Gtk;
 using Marlin.View;
 using Config;
@@ -29,13 +29,10 @@ namespace Marlin.View.Chrome
     public class ViewSwitcher : ToolItem
     {
         public ModeButton switcher;
-        public signal void viewmode_changed(ViewMode mode);
 
         private ViewMode _mode;
         public ViewMode mode{
             set{
-                stdout.printf("Setting Mode\n");
-
                 Widget target;
 
                 if(value == ViewMode.LIST){
@@ -54,6 +51,8 @@ namespace Marlin.View.Chrome
             }
         }
 
+        private Gtk.ActionGroup main_actions;
+
         private Image list;
         private Image miller;
 
@@ -61,8 +60,9 @@ namespace Marlin.View.Chrome
         //Gdk.Pixbuf detailsviewIcon = DrawingService.GetIcon("view-list-details-symbolic;;view-list-details", 16);
         //Gdk.Pixbuf compactviewIcon = DrawingService.GetIcon("view-list-compact-symbolic;;view-list-compact", 16);
 
-        public ViewSwitcher ()
+        public ViewSwitcher (Gtk.ActionGroup action_group)
         {
+            main_actions = action_group;
             border_width = 6;
 
             switcher = new ModeButton();
@@ -73,13 +73,17 @@ namespace Marlin.View.Chrome
             switcher.append(miller);
 
             switcher.mode_changed.connect((mode) => {
-                                          //You cannot do a switch here, only for int and string
-                                          if(mode == list){
-                                          viewmode_changed(ViewMode.LIST);
-                                          }else if(mode == miller){
-                                          viewmode_changed(ViewMode.MILLER);
-                                          }
-                                          });
+                Gtk.Action action;
+
+                //You cannot do a switch here, only for int and string
+                if (mode == list){
+                    action = main_actions.get_action("view-as-detailed-list");
+                    action.activate();
+                } else if (mode == miller){
+                    action = main_actions.get_action("view-as-columns");
+                    action.activate();
+                }
+            });
 
             switcher.sensitive = true;
             mode = ViewMode.LIST;

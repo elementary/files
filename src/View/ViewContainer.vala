@@ -1,14 +1,15 @@
 // 
 //  ViewContainer.vala
 //  
-//  Author:
+//  Authors:
 //       Mathijs Henquet <mathijs.henquet@gmail.com>
+//       ammonkey <am.monkeyd@gmail.com>
 // 
 //  Copyright (c) 2010 Mathijs Henquet
 // 
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation; either version 2 of the License, or
+//  the Free Software Foundation; either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
@@ -101,6 +102,8 @@ namespace Marlin.View {
             if (location == null)
                 location = slot.location;
             view_mode = nview;
+            if (window.top_menu.view_switcher != null)
+                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
             switch (nview) {
             case ViewMode.MILLER:
                 slot.directory.cancel();
@@ -117,12 +120,15 @@ namespace Marlin.View {
         public void update_location_state(bool save_history)
         {
             window.can_go_up = slot.directory.has_parent();
-            tab_name = window.top_menu.location_bar.path = slot.directory.get_uri();
+            tab_name = slot.directory.get_uri();
+            if (window.top_menu.location_bar != null)
+                window.top_menu.location_bar.path = slot.directory.get_uri();
             if (save_history)
                 browser.record_uri(slot.directory.get_uri());
             window.can_go_back = browser.can_go_back();
             window.can_go_forward = browser.can_go_forward();
-            window.top_menu.view_switcher.mode = (ViewMode) view_mode;
+            if (window.top_menu.view_switcher != null)
+                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
         }
     }
 }
