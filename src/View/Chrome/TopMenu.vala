@@ -40,6 +40,8 @@ namespace Marlin.View.Chrome
         {
             Gtk.Widget? titem;
 
+            if (compact_menu != null)
+                compact_menu.destroy();
             @foreach (toolitems_destroy);
             string[]? toolbar_items = Preferences.settings.get_strv("toolbar-items");
             foreach (string name in toolbar_items) { 
