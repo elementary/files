@@ -33,6 +33,9 @@ namespace Marlin.View.Chrome
         public TopMenu (Window window)
         {
             win = window;
+            
+            compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
+            compact_menu_button = new CompactMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
             setup_items();
         }
 
@@ -41,7 +44,7 @@ namespace Marlin.View.Chrome
             Gtk.Widget? titem;
 
             if (compact_menu != null)
-                compact_menu.destroy();
+                compact_menu.ref();
             @foreach (toolitems_destroy);
             string[]? toolbar_items = Preferences.settings.get_strv("toolbar-items");
             foreach (string name in toolbar_items) { 
@@ -77,8 +80,6 @@ namespace Marlin.View.Chrome
             }
 
             /*refresh = new ToolButton.from_stock(Stock.REFRESH);*/
-            compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
-            compact_menu_button = new CompactMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
             insert(compact_menu_button, -1);
         }
 
