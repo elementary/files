@@ -24,6 +24,7 @@
 #include "gof-file.h"
 //#include "fm-list-model.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
+#include "marlin-global-preferences.h"
 
 struct GOFDirectoryAsyncPrivate {
         //GTimer          *timer;
@@ -140,7 +141,7 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
                 GdkPixbuf *pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);*/
                 
                 /* TODO: handle hidden files differently */
-                if (!goff->is_hidden)
+                if (!goff->is_hidden || g_settings_get_boolean(settings, "show-hiddenfiles"))
                 {
                         //printf ("%s\n", goff->name);
                         //fm_list_model_add_file (dir->priv->model, goff, dir);
@@ -159,7 +160,7 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
                            g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE) 
                            g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY ? 'd' : '-',
                            */
-                } else
+                } else 
                         g_object_unref (goff);
         }
 

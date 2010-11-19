@@ -104,17 +104,20 @@ namespace Marlin.View {
             view_mode = nview;
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
+            slot.directory.cancel();
             switch (nview) {
             case ViewMode.MILLER:
-                slot.directory.cancel();
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;
                 break;
             default:
-                slot.directory.cancel();
                 slot = new GOF.Window.Slot(location, this);
                 break;
             }
+        }
+
+        public void reload(){
+                change_view(view_mode, null);
         }
 
         public void update_location_state(bool save_history)
