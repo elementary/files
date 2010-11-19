@@ -29,6 +29,8 @@ namespace Marlin.View.Chrome
     public class ViewSwitcher : ToolItem
     {
         public ModeButton switcher;
+        
+        public signal void view_changed(ViewMode mode);
 
         private ViewMode _mode;
         public ViewMode mode{
@@ -71,20 +73,15 @@ namespace Marlin.View.Chrome
             switcher.append(list);
             miller = new Image.from_file(Config.PIXMAP_DIR + "view-list-column-symbolic.svg");
             switcher.append(miller);
-
+            
             switcher.mode_changed.connect((mode) => {
-                Gtk.Action action;
-
-                //You cannot do a switch here, only for int and string
                 if (mode == list){
-                    action = main_actions.get_action("view-as-detailed-list");
-                    action.activate();
+                    view_changed(ViewMode.LIST);
                 } else if (mode == miller){
-                    action = main_actions.get_action("view-as-columns");
-                    action.activate();
+                    view_changed(ViewMode.MILLER);
                 }
             });
-
+            
             switcher.sensitive = true;
             mode = ViewMode.LIST;
 

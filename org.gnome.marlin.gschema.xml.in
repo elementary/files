@@ -1,4 +1,9 @@
 <schemalist>
+  <enum id="viewmode">
+    <value nick="list" value="0"/>
+    <value nick="miller_columns" value="1"/>
+  </enum>
+
   <schema id="org.gnome.marlin.preferences" path="/apps/marlin/preferences/">
     <key name="show-menubar" type="b">
       <default>true</default>
@@ -44,9 +49,17 @@
     </key>
     <key name="single-click-timeout" type="i">
       <default>320</default>
+      <range min="50" max="1000" />
       <summary>single click timeout</summary>
       <description>
         The amount of time which the item under the mouse cursor will be selected automatically in single click mode
+      </description>
+    </key>
+    <key name="default-viewmode" enum="viewmode">
+      <default>'list'</default>
+      <summary>Default viewmode when browsing</summary>
+      <description>
+        The default viewmode to be used when opening a new tab or window
       </description>
     </key>
     <key name="toolbar-items" type="as">
