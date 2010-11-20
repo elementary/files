@@ -72,6 +72,14 @@ namespace Marlin.View {
             if (n != current_tab.view_mode)
                 current_tab.change_view(n, null);
         }
+
+        protected virtual void action_radio_set_color_changed(){		
+            Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("set-color-clear");
+            assert(action != null);
+            int n = action.get_current_value();
+            
+            print("Color changed: %i\n",n);
+	}
         
         public Window (GLib.Settings settings)
         {   
@@ -88,6 +96,8 @@ namespace Marlin.View {
             main_actions.add_toggle_actions(main_toggle_entries, this);
             main_actions.add_radio_actions(view_radio_entries, -1, 
                                            action_radio_change_view);
+            main_actions.add_radio_actions(color_radio_entries, -1,
+                                           action_radio_set_color_changed);
             accel_group = ui.get_accel_group();
             add_accel_group(accel_group);
             
@@ -360,6 +370,7 @@ namespace Marlin.View {
   /* name, stock id, label */  { "View", null, N_("_View") },
   /* name, stock id, label */  { "Go", null, N_("_Go") },
   /* name, stock id, label */  { "Help", null, N_("_Help") },
+                               { "ColorMenu", null, N_("Set _Color") },
   /* name, stock id */         { "New Tab", "tab-new",
   /* label, accelerator */       N_("New _Tab"), "<control>T",
   /* tooltip */                  N_("Open another tab for the displayed location"),
@@ -432,5 +443,44 @@ namespace Marlin.View {
               N_("Columns View"), "<control>2", null,
               ViewMode.MILLER }
         };
+
+        enum RowColor {
+            NONE,
+            RED,
+            ORANGE,
+            YELLOW,
+            GREEN,
+            BLUE,
+            VIOLET,
+            GRAY
+        }
+
+        static const Gtk.RadioActionEntry color_radio_entries[] = {
+            { "set-color-clear", null,
+              N_("None"), null, null,
+              RowColor.NONE },
+            { "set-color-red", null,
+              N_("Red"), null, null,
+              RowColor.RED },
+            { "set-color-orange", null,
+              N_("Orange"), null, null,
+              RowColor.ORANGE },
+            { "set-color-yellow", null,
+              N_("Yellow"), null, null,
+              RowColor.YELLOW },
+            { "set-color-green", null,
+              N_("Green"), null, null,
+              RowColor.GREEN },
+            { "set-color-blue", null,
+              N_("Blue"), null, null,
+              RowColor.BLUE },
+            { "set-color-violet", null,
+              N_("Violet"), null, null,
+              RowColor.VIOLET },
+            { "set-color-gray", null,
+              N_("Gray"), null, null,
+              RowColor.GRAY }
+        };
+
     }
 }
