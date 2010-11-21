@@ -120,14 +120,15 @@ namespace Marlin.View {
             isize13 = icon_size_register ("15px", 15, 15);
 
             /* Sidebar */
-            var sidebar = new Label("Sidebar");
+            var sidebar = new Label("Sidebar");//new ContextView(this);
             sidebar.set_size_request(150, -1);
 
             /* Devide main views into sidebars */
             var main_box = new HPaned();
             main_box.show();
             main_box.pack1(sidebar, false, true);
-            main_box.pack2(tabs, true, false);
+            main_box.pack2(tabs, true, true);
+            //main_box.set_position(196);
 
             /*/
             /* Pack up all the view

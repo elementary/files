@@ -26,6 +26,7 @@ marlin_VALASOURCES = \
     View/Window.vala 	                    \
     View/Resources.vala	                    \
     View/ViewContainer.vala                 \
+    View/ContextView.vala                   \
     View/Browser.vala                       \
     View/ViewMode.vala                      \
     View/Chrome/CompactMenuButton.vala      \

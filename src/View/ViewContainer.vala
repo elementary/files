@@ -37,6 +37,7 @@ namespace Marlin.View {
         public signal void up();
         public signal void back();
         public signal void forward();
+        public signal void selection_changed(GOF.File gof_file);
 
         public ViewContainer(Marlin.View.Window win, File location){
             window = win;
@@ -75,7 +76,6 @@ namespace Marlin.View {
                             change_view(view_mode, File.new_for_commandline_arg(browser.go_forward()));
                             update_location_state(false);
                             });
-
         }
 
         public Widget content{
