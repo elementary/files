@@ -42,6 +42,8 @@ namespace Marlin.View.Chrome
             box.border_width = 0;
             add (box);
             box.show ();
+            
+            set_size_request(-1, 24);
 
             leave_notify_event.connect(on_leave_notify_event);
             button_press_event.connect(on_button_press_event);
