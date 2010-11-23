@@ -1,5 +1,7 @@
 SUBDIRS =               \
         src             \
+        marlin-daemon   \
+        data            \
         icons           \
         $(NULL)
 
