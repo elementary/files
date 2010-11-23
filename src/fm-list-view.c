@@ -389,12 +389,26 @@ filename_cell_data_func (GtkTreeViewColumn *column,
 			 gpointer          *data)
 {
 	char *text;
+        char *color;
 	//GtkTreePath *path;
 	PangoUnderline underline;
 
 	gtk_tree_model_get (model, iter,
 			    FM_LIST_MODEL_FILENAME, &text,
 			    -1);
+
+	gtk_tree_model_get (model, iter,
+			    FM_LIST_MODEL_COLOR, &color,
+			    -1);
+
+        if (color) {
+            GList *lrenderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT(column));
+            GList *l;
+            for (l=lrenderers; l != NULL; l=l->next)
+                g_object_set(l->data, "cell-background", color, NULL);
+            g_list_free (lrenderers);
+        }
+	g_free (color);
 
 	/*if (click_policy_auto_value == NAUTILUS_CLICK_POLICY_SINGLE) {
 		path = gtk_tree_model_get_path (model, iter);
@@ -417,6 +431,29 @@ filename_cell_data_func (GtkTreeViewColumn *column,
 		      "underline", underline,
 		      NULL);
 	g_free (text);
+}
+
+static void
+color_row_func (GtkTreeViewColumn *column,
+                GtkCellRenderer   *renderer,
+                GtkTreeModel      *model,
+                GtkTreeIter       *iter,
+                gpointer          *data)
+{
+        char *color;
+
+	gtk_tree_model_get (model, iter,
+			    FM_LIST_MODEL_COLOR, &color,
+			    -1);
+
+        if (color) {
+            GList *lrenderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT(column));
+            GList *l;
+            for (l=lrenderers; l != NULL; l=l->next)
+                g_object_set(l->data, "cell-background", color, NULL);
+            g_list_free (lrenderers);
+        }
+	g_free (color);
 }
 
 static void
@@ -484,7 +521,7 @@ create_and_set_up_tree_view (FMListView *view)
                                  G_CALLBACK (subdirectory_unloaded_callback), view, 0);
 
         //for(k=0; k< GOF_DIR_COLS_MAX; k++) {
-        for(k=2; k< FM_LIST_MODEL_NUM_COLUMNS; k++) {
+        for(k=3; k< FM_LIST_MODEL_NUM_COLUMNS; k++) {
                 /*if(k == FM_LIST_MODEL_ICON) {
                         renderer = gtk_cell_renderer_pixbuf_new( ); 
                         col = gtk_tree_view_column_new_with_attributes (NULL, renderer, "pixbuf", k, NULL);
@@ -497,7 +534,7 @@ create_and_set_up_tree_view (FMListView *view)
                         col = gtk_tree_view_column_new ();
                         gtk_tree_view_column_set_sort_column_id  (col,k);
                         gtk_tree_view_column_set_resizable (col, TRUE);
-                        gtk_tree_view_column_set_title (col, col_title[k-2]);
+                        gtk_tree_view_column_set_title (col, col_title[k-3]);
                         gtk_tree_view_column_set_expand (col, TRUE);
                         gtk_tree_view_column_pack_start (col, renderer, FALSE);
                         gtk_tree_view_column_set_attributes (col,
@@ -514,11 +551,22 @@ create_and_set_up_tree_view (FMListView *view)
 								 NULL, NULL);
                 } else {
                         renderer = gtk_cell_renderer_text_new( );
-                        col = gtk_tree_view_column_new_with_attributes(col_title[k-2], renderer, "text", k, NULL);
+                        col = gtk_tree_view_column_new_with_attributes(col_title[k-3], renderer, "text", k, NULL);
                         gtk_tree_view_column_set_sort_column_id  (col,k);
                         gtk_tree_view_column_set_resizable (col, TRUE);
                         //gtk_tree_view_column_set_fixed_width (col, 240);
+                        //amtest
+                        gtk_tree_view_column_set_cell_data_func (col, renderer,
+                                                                 (GtkTreeCellDataFunc) color_row_func,
+                                                                 NULL, NULL);
                 }
+                //g_object_set(renderer, "cell-background", "red", NULL);
+                /*GList *lrenderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT(col));
+                GList *l;
+                for (l=lrenderers; l != NULL; l=l->next)
+                    g_object_set(l->data, "cell-background", "red", NULL);*/
+
+
                 //gtk_tree_view_column_set_sizing (col, GTK_TREE_VIEW_COLUMN_FIXED);
                 gtk_tree_view_append_column(view->tree, col);
         }

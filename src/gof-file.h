@@ -62,6 +62,7 @@ struct _GOFFile {
         GIcon           *icon;
         GdkPixbuf       *pix;
         guint64         modified;
+        const gchar     *color;
 };
 
 struct _GOFFileClass {
