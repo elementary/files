@@ -43,7 +43,9 @@ struct FMListViewDetails {
 /* Wait for the rename to end when activating a file being renamed */
 #define WAIT_FOR_RENAME_ON_ACTIVATE 200
 
-static gchar    *col_title[4] = {_("Filename"), _("Size"), _("Type"), _("Modified")};
+static gchar *col_title[4] = { _("Filename"), _("Size"), _("Type"), _("Modified") };
+
+static gchar *colors[8] = { NULL, _("red"), _("orange"), _("yellow"), _("green"), _("blue"), _("violet"), _("gray") };
 
 //G_DEFINE_TYPE (FMListView, fm_list_view, G_TYPE_OBJECT)
         /*#define GOF_DIRECTORY_ASYNC_GET_PRIVATE(obj) \
@@ -293,6 +295,22 @@ row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 }
 
 static void
+fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
+{
+        FMListView *list_view = FM_LIST_VIEW (view);
+	GList *file_list;
+        GOFFile *file;
+	
+	file_list = fm_list_view_get_selection (list_view);
+        for (; file_list != NULL; file_list=file_list->next)
+        {
+            file = file_list->data;
+            printf("colorize %s %d\n", file->name, ncolor);
+            file->color = colors[ncolor];
+        }
+}
+
+static void
 subdirectory_unloaded_callback (FMListModel *model,
 				GOFDirectoryAsync *directory,
 				gpointer callback_data)
@@ -401,14 +419,14 @@ filename_cell_data_func (GtkTreeViewColumn *column,
 			    FM_LIST_MODEL_COLOR, &color,
 			    -1);
 
-        if (color) {
+        /*if (color) {
             GList *lrenderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT(column));
             GList *l;
             for (l=lrenderers; l != NULL; l=l->next)
                 g_object_set(l->data, "cell-background", color, NULL);
             g_list_free (lrenderers);
         }
-	g_free (color);
+	g_free (color);*/
 
 	/*if (click_policy_auto_value == NAUTILUS_CLICK_POLICY_SINGLE) {
 		path = gtk_tree_model_get_path (model, iter);
@@ -429,6 +447,7 @@ filename_cell_data_func (GtkTreeViewColumn *column,
 	g_object_set (G_OBJECT (renderer),
 		      "text", text,
 		      "underline", underline,
+                      "cell-background", color,
 		      NULL);
 	g_free (text);
 }
@@ -446,13 +465,8 @@ color_row_func (GtkTreeViewColumn *column,
 			    FM_LIST_MODEL_COLOR, &color,
 			    -1);
 
-        if (color) {
-            GList *lrenderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT(column));
-            GList *l;
-            for (l=lrenderers; l != NULL; l=l->next)
-                g_object_set(l->data, "cell-background", color, NULL);
-            g_list_free (lrenderers);
-        }
+        g_object_set(renderer, "cell-background", color, NULL);
+        //g_object_set(renderer, "cell-background-set", FALSE, NULL);
 	g_free (color);
 }
 
@@ -696,7 +710,7 @@ fm_list_view_class_init (FMListViewClass *klass)
         fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
        	fm_directory_view_class->add_file = fm_list_view_add_file;
-
+       	fm_directory_view_class->colorize_selection = fm_list_view_colorize_selected_items;        
         //eel_g_settings_add_auto_boolean (settings, "single-click", &single_click);
         //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }

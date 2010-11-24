@@ -18,7 +18,7 @@
 		<!--<placeholder name="Select Items"/>-->
 		<menuitem name="ToolbarEditor" 	  action="ToolbarEditor"/>
 		<separator/>
-                <menu action="ColorMenu">
+                <!--<menu action="ColorMenu">-->
                     <menuitem action="set-color-clear" />
                     <menuitem action="set-color-red" />
                     <menuitem action="set-color-orange" />
@@ -27,7 +27,7 @@
                     <menuitem action="set-color-blue" />
                     <menuitem action="set-color-violet" />
                     <menuitem action="set-color-gray" />
-                </menu>
+                <!--</menu>-->
 
 		<!--<menuitem name="Preferences" action="Preferences"/>-->
 	</menu>

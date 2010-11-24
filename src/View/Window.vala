@@ -77,8 +77,9 @@ namespace Marlin.View {
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("set-color-clear");
             assert(action != null);
             int n = action.get_current_value();
-            
+           
             print("Color changed: %i\n",n);
+            ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
 	}
         
         public Window (GLib.Settings settings)
@@ -370,7 +371,7 @@ namespace Marlin.View {
   /* name, stock id, label */  { "View", null, N_("_View") },
   /* name, stock id, label */  { "Go", null, N_("_Go") },
   /* name, stock id, label */  { "Help", null, N_("_Help") },
-                               { "ColorMenu", null, N_("Set _Color") },
+/*                               { "ColorMenu", null, N_("Set _Color") },*/
   /* name, stock id */         { "New Tab", "tab-new",
   /* label, accelerator */       N_("New _Tab"), "<control>T",
   /* tooltip */                  N_("Open another tab for the displayed location"),

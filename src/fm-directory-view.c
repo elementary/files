@@ -56,6 +56,7 @@ enum {
 	REMOVE_FILE,
 	TRASH,
 	DELETE,
+        COLORIZE_SELECTION,
 	LAST_SIGNAL
 };
 
@@ -644,6 +645,15 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
 		              NULL, NULL,
 		              nautilus_marshal_VOID__OBJECT_OBJECT,
 		              G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
+        signals[COLORIZE_SELECTION] =
+		g_signal_new ("colorize_selection",
+		              G_TYPE_FROM_CLASS (klass),
+		              G_SIGNAL_RUN_LAST,
+		              G_STRUCT_OFFSET (FMDirectoryViewClass, colorize_selection),
+		              NULL, NULL,
+                              g_cclosure_marshal_VOID__INT,
+		              G_TYPE_NONE, 1, G_TYPE_INT);
+
 	/*signals[BEGIN_FILE_CHANGES] =
 		g_signal_new ("begin_file_changes",
 		              G_TYPE_FROM_CLASS (klass),
@@ -795,3 +805,16 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
 	//klass->trash = real_trash;
 	//klass->delete = real_delete;
 }
+
+void
+fm_directory_view_colorize_selection (FMDirectoryView *view, int color)
+{
+        printf ("%s\n", G_STRFUNC);
+        //g_signal_emit (view, signals[COLORIZE_SELECTION], 0);
+        g_signal_emit (view, signals[COLORIZE_SELECTION], 0, color);
+        /*EEL_CALL_METHOD
+		(FM_DIRECTORY_VIEW_CLASS, view,
+		 colorize_selection, (view));*/
+
+}
+

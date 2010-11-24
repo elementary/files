@@ -78,6 +78,8 @@ struct FMDirectoryViewClass {
 	void    (* add_file) 		 (FMDirectoryView *view, 
 					  GOFFile *file,
 					  GOFDirectoryAsync *directory);
+        void    (* colorize_selection)	 (FMDirectoryView *view, int color); 
+
 #if 0
 	void    (* remove_file)		 (FMDirectoryView *view, 
 					  GOFFile *file,
@@ -353,6 +355,8 @@ void            fm_directory_view_column_add_location (FMDirectoryView *dview, G
 void            fm_directory_view_column_add_preview (FMDirectoryView *dview, GFile *location);
 void            fm_directory_view_set_active_slot (FMDirectoryView *dview);
 void            fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location);
+//void            fm_directory_view_colorize_selection (FMDirectoryView *view);
+void            fm_directory_view_colorize_selection (FMDirectoryView *view, int color);
 
 
 #endif /* FM_DIRECTORY_VIEW_H */
