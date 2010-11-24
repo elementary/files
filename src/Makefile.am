@@ -25,6 +25,7 @@ marlin_LDADD = \
 marlin_VALASOURCES = \
     View/Window.vala 	                    \
     View/Resources.vala	                    \
+    View/DbusTags.vala	                    \
     View/ViewContainer.vala                 \
     View/Browser.vala                       \
     View/ViewMode.vala                      \

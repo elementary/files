@@ -30,6 +30,7 @@
 //#include "gof-directory-async.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
 #include "eel-glib-extensions.h"
+#include "marlin-tags.h"
 
 /*
 struct FMListViewDetails {
@@ -44,8 +45,6 @@ struct FMListViewDetails {
 #define WAIT_FOR_RENAME_ON_ACTIVATE 200
 
 static gchar *col_title[4] = { _("Filename"), _("Size"), _("Type"), _("Modified") };
-
-static gchar *colors[8] = { NULL, _("red"), _("orange"), _("yellow"), _("green"), _("blue"), _("violet"), _("gray") };
 
 //G_DEFINE_TYPE (FMListView, fm_list_view, G_TYPE_OBJECT)
         /*#define GOF_DIRECTORY_ASYNC_GET_PRIVATE(obj) \
@@ -306,7 +305,10 @@ fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
         {
             file = file_list->data;
             printf("colorize %s %d\n", file->name, ncolor);
-            file->color = colors[ncolor];
+            file->color = tags_colors[ncolor];
+            char *uri = g_file_get_uri(file->location);
+            marlin_view_tags_set_color (tags, uri, ncolor, NULL);
+            g_free (uri);
         }
 }
 

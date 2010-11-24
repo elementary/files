@@ -32,10 +32,11 @@
 #include <eel/eel-glib-extensions.h>
 #include <eel/eel-gdk-pixbuf-extensions.h>*/
 #include <gtk/gtk.h>
-#include <glib/gi18n.h>
-//#include <libnautilus-private/nautilus-dnd.h>
 #include <glib.h>
+//#include <glib/gi18n.h>
+//#include <libnautilus-private/nautilus-dnd.h>
 #include "fm-list-model.h"
+#include "marlin-tags.h"
 
 enum {
 	SUBDIRECTORY_UNLOADED,
@@ -1084,6 +1085,11 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
 						      path, &iter);
 	}
 	gtk_tree_path_free (path);
+
+        char *uri = g_file_get_uri(file->location);
+        file->color = tags_colors[marlin_view_tags_get_color (tags, uri, NULL)];
+        g_free (uri);
+
         //file_entry_free (file_entry);
         //g_object_unref(file);
 

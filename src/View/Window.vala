@@ -82,7 +82,7 @@ namespace Marlin.View {
             ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
 	}
         
-        public Window (GLib.Settings settings)
+        public Window ()
         {   
             ui = new UIManager();
 

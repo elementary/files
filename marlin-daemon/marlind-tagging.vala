@@ -101,7 +101,7 @@ public class MarlinTags : Object {
 
     private bool isFileInDB(string uri){
 
-        if(getColor(uri) == -1) 
+        if(getColor(uri) == 0)
             return false;
         else
             return true;
@@ -131,12 +131,12 @@ public class MarlinTags : Object {
 
     public int getColor(string uri)
     {
-        //string uri = file.get_uri();
         string c = "select color from tags where uri='" + uri + "'";
         Statement stmt;
         int rc = 0;
         int col, cols;
-        string txt = "-1";	
+        //string txt = "-1";
+        string txt = "0";
 
         if ((rc = db.prepare_v2 (c, -1, out stmt, null)) == 1) {
             printerr ("[getColor]: SQL error: %d, %s\n", rc, db.errmsg ());
@@ -159,6 +159,7 @@ public class MarlinTags : Object {
                 break;
             }
         } while (rc == Sqlite.ROW);
+        //stdout.printf("[getColor]: %s\n", txt);
 
         return txt.to_int();
     }
@@ -178,7 +179,7 @@ public class MarlinTags : Object {
     }
 
     public bool showTable(string table){
-
+        stdout.printf("showTable\n");
         string consult = "select * from " + table;
         int rc = db.exec (consult, show_table_callback, null);
 

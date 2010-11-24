@@ -57,5 +57,4 @@ along with Marlin; if not, write to the Free Software Foundation, Inc.,
 
     public const string MARLIN_TRASH_URI = "trash:///";
     public const string MARLIN_NETWORK_URI = "network:///";
-
 }
