@@ -99,20 +99,21 @@ public class MarlinTags : Object {
         return true;
     }
 
-    private bool isFileInDB(string uri){
-
-        if(getColor(uri) == 0)
+    private async bool isFileInDB(string uri){
+        if(yield getColor(uri) == 0)
             return false;
         else
             return true;
 
     }
 
-    public bool setColor(string uri, int color){
+    public async bool setColor(string uri, int color){
+        Idle.add (setColor.callback);
+        yield;
         string color_string = "%u".printf(color);//Convert int to string
         string c = "";
 
-        if(isFileInDB(uri)){
+        if(yield isFileInDB(uri)){
             c = "update tags set color = "+color_string+" where uri= '"+uri+"'";
         }
         else{
@@ -125,12 +126,15 @@ public class MarlinTags : Object {
             return false;
         }
         //stdout.printf("[Consult]: %s\n",c);
+        stdout.printf("[setColor]: %s\n", uri);
 
         return true;		
     }
 
-    public int getColor(string uri)
+    public async int getColor(string uri)
     {
+        Idle.add (getColor.callback);
+        yield;
         string c = "select color from tags where uri='" + uri + "'";
         Statement stmt;
         int rc = 0;
@@ -159,7 +163,7 @@ public class MarlinTags : Object {
                 break;
             }
         } while (rc == Sqlite.ROW);
-        //stdout.printf("[getColor]: %s\n", txt);
+        stdout.printf("[getColor]: %s\n", txt);
 
         return txt.to_int();
     }
