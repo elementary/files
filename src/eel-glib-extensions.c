@@ -1,8 +1,6 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
-
 /* eel-glib-extensions.c - implementation of new functions that conceptually
-                                belong in glib. Perhaps some of these will be
-                                actually rolled into glib someday.
+   belong in glib. Perhaps some of these will be
+   actually rolled into glib someday.
 
    Copyright (C) 2000 Eazel, Inc.
 
@@ -22,43 +20,43 @@
    Boston, MA 02111-1307, USA.
 
    Authors: John Sullivan <sullivan@eazel.com>
-            ammonkey <am.monkeyd@gmail.com>
- */
+   ammonkey <am.monkeyd@gmail.com>
+*/
 
 #include "eel-glib-extensions.h"
 #include <sys/time.h>
 
 static void
 update_auto_boolean (GSettings   *settings,
-		     const gchar *key,
-		     gpointer     user_data)
+                     const gchar *key,
+                     gpointer     user_data)
 {
-	int *storage = user_data;
+    int *storage = user_data;
 
-	*storage = g_settings_get_boolean (settings, key);
+    *storage = g_settings_get_boolean (settings, key);
 }
 
 void
 eel_g_settings_add_auto_boolean (GSettings *settings,
-				 const char *key,
-				 gboolean *storage)
+                                 const char *key,
+                                 gboolean *storage)
 {
-	char *signal;
+    char *signal;
 
-	*storage = g_settings_get_boolean (settings, key);
-	signal = g_strconcat ("changed::", key, NULL);
-	g_signal_connect (settings, signal,
-			  G_CALLBACK(update_auto_boolean),
-			  storage);
+    *storage = g_settings_get_boolean (settings, key);
+    signal = g_strconcat ("changed::", key, NULL);
+    g_signal_connect (settings, signal,
+                      G_CALLBACK(update_auto_boolean),
+                      storage);
 }
 
 gint64
 eel_get_system_time (void)
 {
-	struct timeval tmp;
+    struct timeval tmp;
 
-	gettimeofday (&tmp, NULL);
-	return (gint64)tmp.tv_usec + (gint64)tmp.tv_sec * G_GINT64_CONSTANT (1000000);
+    gettimeofday (&tmp, NULL);
+    return (gint64)tmp.tv_usec + (gint64)tmp.tv_sec * G_GINT64_CONSTANT (1000000);
 }
 
 /**
@@ -67,24 +65,24 @@ eel_get_system_time (void)
  * Nulls out a saved reference to an object when the object gets destroyed.
  *
  * @pointer_location: Address of the saved pointer.
- **/
+**/
 void 
 eel_add_weak_pointer (gpointer pointer_location)
 {
-	gpointer *object_location;
+    gpointer *object_location;
 
-	g_return_if_fail (pointer_location != NULL);
+    g_return_if_fail (pointer_location != NULL);
 
-	object_location = (gpointer *) pointer_location;
-	if (*object_location == NULL) {
-		/* The reference is NULL, nothing to do. */
-		return;
-	}
+    object_location = (gpointer *) pointer_location;
+    if (*object_location == NULL) {
+        /* The reference is NULL, nothing to do. */
+        return;
+    }
 
-	g_return_if_fail (G_IS_OBJECT (*object_location));
+    g_return_if_fail (G_IS_OBJECT (*object_location));
 
-	g_object_add_weak_pointer (G_OBJECT (*object_location),
-				   object_location);
+    g_object_add_weak_pointer (G_OBJECT (*object_location),
+                               object_location);
 }
 
 /**
@@ -94,27 +92,27 @@ eel_add_weak_pointer (gpointer pointer_location)
  * Also nulls out the pointer.
  *
  * @pointer_location: Pointer that was passed to eel_add_weak_pointer.
- **/
+**/
 void 
 eel_remove_weak_pointer (gpointer pointer_location)
 {
-	gpointer *object_location;
+    gpointer *object_location;
 
-	g_return_if_fail (pointer_location != NULL);
+    g_return_if_fail (pointer_location != NULL);
 
-	object_location = (gpointer *) pointer_location;	
-	if (*object_location == NULL) {
-		/* The object was already destroyed and the reference
-		 * nulled out, nothing to do.
-		 */
-		return;
-	}
+    object_location = (gpointer *) pointer_location;	
+    if (*object_location == NULL) {
+        /* The object was already destroyed and the reference
+         * nulled out, nothing to do.
+         */
+        return;
+    }
 
-	g_return_if_fail (G_IS_OBJECT (*object_location));
+    g_return_if_fail (G_IS_OBJECT (*object_location));
 
-	g_object_remove_weak_pointer (G_OBJECT (*object_location),
-				      object_location);
-	
-	*object_location = NULL;
+    g_object_remove_weak_pointer (G_OBJECT (*object_location),
+                                  object_location);
+
+    *object_location = NULL;
 }
 

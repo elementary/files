@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
 /*
  * Copyright (C) 2010 ammonkey
  *
@@ -33,8 +32,8 @@ typedef struct _MarlinViewWindowClass MarlinViewWindowClass;
 GType marlin_view_window_get_type (void) G_GNUC_CONST;
 
 /*MarlinViewWindow* marlin_view_window_new (const gchar* path);
-MarlinViewWindow* marlin_view_window_construct (GType object_type, const gchar* path);
-GType marlin_view_window_get_type (void) G_GNUC_CONST;*/
+  MarlinViewWindow* marlin_view_window_construct (GType object_type, const gchar* path);
+  GType marlin_view_window_get_type (void) G_GNUC_CONST;*/
 MarlinViewWindow* marlin_view_window_new ();
 MarlinViewWindow* marlin_view_window_construct (GType object_type);
 GtkActionGroup* marlin_view_window_get_actiongroup (MarlinViewWindow *mvw);
@@ -55,7 +54,7 @@ void marlin_view_window_add_tab (MarlinViewWindow* self, GFile *location);
 MarlinViewViewContainer* marlin_view_view_container_new (GFile *location);
 
 /*GOFWindowSlot* marlin_view_window_get_active_slot (MarlinViewWindow* self);
-void marlin_view_window_set_active_slot (MarlinViewWindow* self, GOFWindowSlot* value);*/
+  void marlin_view_window_set_active_slot (MarlinViewWindow* self, GOFWindowSlot* value);*/
 
 #include "gof-file.h"
 

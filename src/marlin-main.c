@@ -17,61 +17,61 @@
 int
 main (int argc, char *argv[])
 {
-        MarlinViewWindow *window;
-	GtkWidget       *vbox;
-	GtkWidget       *hbox;
-	GtkWidget       *btn;
-	GtkWidget       *entry;
-        gchar           *path;
+    MarlinViewWindow *window;
+    GtkWidget       *vbox;
+    GtkWidget       *hbox;
+    GtkWidget       *btn;
+    GtkWidget       *entry;
+    gchar           *path;
 
-	gtk_init (&argc, &argv);
+    gtk_init (&argc, &argv);
     /* Initialize gettext support */
-	bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	textdomain (GETTEXT_PACKAGE);
+    bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
+    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    textdomain (GETTEXT_PACKAGE);
 
     /* gsettings parameters */
     settings = g_settings_new ("org.gnome.marlin.preferences");
     tags = marlin_view_tags_new ();
     /*gboolean showall = g_settings_get_boolean (settings, "showall");
-    printf ("test gsettings showall: %d\n", showall);*/
+      printf ("test gsettings showall: %d\n", showall);*/
 
-	/*window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_title (GTK_WINDOW (window), "marlin");
-	gtk_window_set_default_size (GTK_WINDOW (window), 600, 300);
-	gtk_container_set_border_width (GTK_CONTAINER (window), 0);
-	g_signal_connect (window, "destroy", gtk_main_quit, NULL);*/
-	
-        if (argc > 1) {
-                path = argv[1];
-	} else {
-                path = g_strdup(g_get_home_dir());
-	}
-        
-        window = marlin_view_window_new ();
-        marlin_view_window_add_tab (window, g_file_new_for_commandline_arg(path));
+    /*window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+      gtk_window_set_title (GTK_WINDOW (window), "marlin");
+      gtk_window_set_default_size (GTK_WINDOW (window), 600, 300);
+      gtk_container_set_border_width (GTK_CONTAINER (window), 0);
+      g_signal_connect (window, "destroy", gtk_main_quit, NULL);*/
 
-	/*g_signal_connect (window, "up", (GCallback) marlin_view_window_up, NULL);*/
-	/*g_signal_connect (window, "back", (GCallback) marlin_view_window_back, NULL);
-	g_signal_connect (window, "forward", (GCallback) __lambda23__marlin_view_window_forward, NULL);
-	g_signal_connect (window, "refresh", (GCallback) __lambda24__marlin_view_window_refresh, NULL);*/
-	//g_signal_connect (window, "quit", (GCallback) gtk_main_quit, NULL);
-	//g_signal_connect (window, "path-changed", (GCallback) marlin_view_window_path_changed, NULL);
-	//g_signal_connect (window, "browser-path-changed", (GCallback) marlin_view_window_path_changed, NULL);
+    if (argc > 1) {
+        path = argv[1];
+    } else {
+        path = g_strdup(g_get_home_dir());
+    }
+
+    window = marlin_view_window_new ();
+    marlin_view_window_add_tab (window, g_file_new_for_commandline_arg(path));
+
+    /*g_signal_connect (window, "up", (GCallback) marlin_view_window_up, NULL);*/
+    /*g_signal_connect (window, "back", (GCallback) marlin_view_window_back, NULL);
+      g_signal_connect (window, "forward", (GCallback) __lambda23__marlin_view_window_forward, NULL);
+      g_signal_connect (window, "refresh", (GCallback) __lambda24__marlin_view_window_refresh, NULL);*/
+    //g_signal_connect (window, "quit", (GCallback) gtk_main_quit, NULL);
+    //g_signal_connect (window, "path-changed", (GCallback) marlin_view_window_path_changed, NULL);
+    //g_signal_connect (window, "browser-path-changed", (GCallback) marlin_view_window_path_changed, NULL);
 
     //g_signal_emit_by_name (window, "path-changed", g_file_new_for_commandline_arg (path));
 
-  	/*GtkBindingSet *binding_set;
+    /*GtkBindingSet *binding_set;
 
-    binding_set = gtk_binding_set_by_class (MARLIN_VIEW_WINDOW_CLASS (window));
-	gtk_binding_entry_add_signal (binding_set, GDK_KEY_BackSpace, 0,
-        "up", 1,
-        G_TYPE_BOOLEAN, FALSE);*/
+      binding_set = gtk_binding_set_by_class (MARLIN_VIEW_WINDOW_CLASS (window));
+      gtk_binding_entry_add_signal (binding_set, GDK_KEY_BackSpace, 0,
+      "up", 1,
+      G_TYPE_BOOLEAN, FALSE);*/
 
 
     gtk_main ();
     g_free (path);	
-	return 0;
+    return 0;
 }
 
 
@@ -79,46 +79,46 @@ main (int argc, char *argv[])
 static void
 marlin_view_window_up (MarlinViewWindow *window)
 {
-        GOFWindowSlot *slot;
-        GFile *parent;
+    GOFWindowSlot *slot;
+    GFile *parent;
 
-        if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) == NULL)
-                return;
-        if (slot->location == NULL) 
-		return;
-        parent = g_file_get_parent (slot->location);
-	if (parent == NULL) 
-		return;
+    if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) == NULL)
+        return;
+    if (slot->location == NULL) 
+        return;
+    parent = g_file_get_parent (slot->location);
+    if (parent == NULL) 
+        return;
 
-        /*if (slot->mwcols != NULL)
-                marlin_window_columns_change_location (slot, parent);
-        else
-                gof_window_slot_change_location (slot, parent);*/
-        //g_signal_emit_by_name (window, "path-changed", "/home/am/Images");
-        g_signal_emit_by_name (window, "path-changed", parent);
-        g_object_unref (parent);
-        printf ("!!!!!!!! %s\n", G_STRFUNC);
+    /*if (slot->mwcols != NULL)
+      marlin_window_columns_change_location (slot, parent);
+      else
+      gof_window_slot_change_location (slot, parent);*/
+    //g_signal_emit_by_name (window, "path-changed", "/home/am/Images");
+    g_signal_emit_by_name (window, "path-changed", parent);
+    g_object_unref (parent);
+    printf ("!!!!!!!! %s\n", G_STRFUNC);
 }
 #endif
 
 /*
-static void
-marlin_view_window_back (MarlinViewWindow *window)
-{
-        printf ("%s\n", G_STRFUNC);
-}*/
+   static void
+   marlin_view_window_back (MarlinViewWindow *window)
+   {
+   printf ("%s\n", G_STRFUNC);
+   }*/
 
 #if 0
 static void
 marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data)
 {
-        GOFWindowSlot *slot;
-        MarlinWindowColumns *mwcols;
-        
-        g_return_if_fail (file != NULL);
-        /*if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) != NULL)
-                load_dir_async_cancel(slot->directory);*/
-        slot = gof_window_slot_new(file, GTK_WIDGET (window));
-        //mwcols = marlin_window_columns_new(file, GTK_WIDGET (window));
+    GOFWindowSlot *slot;
+    MarlinWindowColumns *mwcols;
+
+    g_return_if_fail (file != NULL);
+    /*if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) != NULL)
+      load_dir_async_cancel(slot->directory);*/
+    slot = gof_window_slot_new(file, GTK_WIDGET (window));
+    //mwcols = marlin_window_columns_new(file, GTK_WIDGET (window));
 }
 #endif

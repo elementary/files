@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
 /*
  * Copyright (C) 2010 ammonkey
  *
@@ -30,31 +29,31 @@ G_BEGIN_DECLS
 
 #define FM_TYPE_LIST_VIEW fm_list_view_get_type()
 #define FM_LIST_VIEW(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST ((obj), FM_TYPE_LIST_VIEW, FMListView))
+    (G_TYPE_CHECK_INSTANCE_CAST ((obj), FM_TYPE_LIST_VIEW, FMListView))
 #define FM_LIST_VIEW_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_CAST ((klass), FM_TYPE_LIST_VIEW, FMListViewClass))
+    (G_TYPE_CHECK_CLASS_CAST ((klass), FM_TYPE_LIST_VIEW, FMListViewClass))
 #define FM_IS_LIST_VIEW(obj) \
-  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), FM_TYPE_LIST_VIEW))
+    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), FM_TYPE_LIST_VIEW))
 #define FM_IS_LIST_VIEW_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_TYPE ((klass), FM_TYPE_LIST_VIEW))
+    (G_TYPE_CHECK_CLASS_TYPE ((klass), FM_TYPE_LIST_VIEW))
 #define FM_LIST_VIEW_GET_CLASS(obj) \
-  (G_TYPE_INSTANCE_GET_CLASS ((obj), FM_TYPE_LIST_VIEW, FMListViewClass))
+    (G_TYPE_INSTANCE_GET_CLASS ((obj), FM_TYPE_LIST_VIEW, FMListViewClass))
 
 #define FM_LIST_VIEW_ID "OAFIID:Nautilus_File_Manager_List_View"
 
 typedef struct FMListViewDetails FMListViewDetails;
 
 typedef struct {
-        FMDirectoryViewClass parent_instance;
-        GtkTreeView     *tree;
-       	FMListModel     *model;
-        //GFile           *location;
-        //GOFWindowSlot   *slot;
-       	FMListViewDetails *details;
+    FMDirectoryViewClass parent_instance;
+    GtkTreeView     *tree;
+    FMListModel     *model;
+    //GFile           *location;
+    //GOFWindowSlot   *slot;
+    FMListViewDetails *details;
 } FMListView;
 
 typedef struct {
-        FMDirectoryViewClass parent_class;
+    FMDirectoryViewClass parent_class;
 } FMListViewClass;
 
 GType fm_list_view_get_type (void);

@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
 /*
  * Copyright (C) 2010 ammonkey
  *
@@ -36,82 +35,82 @@
 #define MARLIN_WINDOW_COLUMNS_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), MARLIN_TYPE_WINDOW_COLUMNS, MarlinWindowColumnsClass))
 
 typedef enum {
-	GOF_LOCATION_CHANGE_STANDARD,
-	GOF_LOCATION_CHANGE_BACK,
-	GOF_LOCATION_CHANGE_FORWARD,
-	GOF_LOCATION_CHANGE_RELOAD,
-	GOF_LOCATION_CHANGE_REDIRECT,
-	GOF_LOCATION_CHANGE_FALLBACK
+    GOF_LOCATION_CHANGE_STANDARD,
+    GOF_LOCATION_CHANGE_BACK,
+    GOF_LOCATION_CHANGE_FORWARD,
+    GOF_LOCATION_CHANGE_RELOAD,
+    GOF_LOCATION_CHANGE_REDIRECT,
+    GOF_LOCATION_CHANGE_FALLBACK
 } GOFLocationChangeType;
 
 typedef struct {
-	GObject parent;
+    GObject parent;
 
-	/* content_box contains
- 	 *  1) an event box containing extra_location_widgets
- 	 *  2) the view box for the content view
- 	 */
-	GtkWidget *content_box;
-	/*GtkWidget *extra_location_event_box;
-	GtkWidget *extra_location_widgets;
-	GtkWidget *extra_location_separator;*/
-	GtkWidget *view_box;
-        GtkWidget *colpane;
+    /* content_box contains
+     *  1) an event box containing extra_location_widgets
+     *  2) the view box for the content view
+     */
+    GtkWidget *content_box;
+    /*GtkWidget *extra_location_event_box;
+      GtkWidget *extra_location_widgets;
+      GtkWidget *extra_location_separator;*/
+    GtkWidget *view_box;
+    GtkWidget *colpane;
 
-	/* Current location. */
-	GFile *location;
-	char *title;
-	char *status_text;
+    /* Current location. */
+    GFile *location;
+    char *title;
+    char *status_text;
 
-        GObject *ctab;
-        GOFDirectoryAsync *directory;
+    GObject *ctab;
+    GOFDirectoryAsync *directory;
 
-        GList *slot;
-        GOFWindowSlot *active_slot;
+    GList *slot;
+    GOFWindowSlot *active_slot;
 
-	/*NautilusFile *viewed_file;
-	gboolean viewed_file_seen;
-	gboolean viewed_file_in_trash;*/
+    /*NautilusFile *viewed_file;
+      gboolean viewed_file_seen;
+      gboolean viewed_file_in_trash;*/
 
-	gboolean allow_stop;
+    gboolean allow_stop;
 
-	//NautilusQueryEditor *query_editor;
+    //NautilusQueryEditor *query_editor;
 
-	/* New location. */
-	GOFLocationChangeType location_change_type;
-	/*guint location_change_distance;
-	GFile *pending_location;
-	char *pending_scroll_to;
-	GList *pending_selection;
-	NautilusFile *determine_view_file;
-	GCancellable *mount_cancellable;
-	GError *mount_error;
-	gboolean tried_mount;
+    /* New location. */
+    GOFLocationChangeType location_change_type;
+    /*guint location_change_distance;
+      GFile *pending_location;
+      char *pending_scroll_to;
+      GList *pending_selection;
+      NautilusFile *determine_view_file;
+      GCancellable *mount_cancellable;
+      GError *mount_error;
+      gboolean tried_mount;
 
-	GCancellable *find_mount_cancellable;
+      GCancellable *find_mount_cancellable;
 
-	gboolean visible;*/
+      gboolean visible;*/
 } MarlinWindowColumns;
 
 typedef struct {
-	GObjectClass parent_class;
+    GObjectClass parent_class;
 
-	/* wrapped GOFWindowInfo signals, for overloading */
-	/*void (* active)   (NautilusWindowSlot *slot);
-	void (* inactive) (NautilusWindowSlot *slot);*/
+    /* wrapped GOFWindowInfo signals, for overloading */
+    /*void (* active)   (NautilusWindowSlot *slot);
+      void (* inactive) (NautilusWindowSlot *slot);*/
 
-	//void (* update_query_editor) (NautilusWindowSlot *slot);
+    //void (* update_query_editor) (NautilusWindowSlot *slot);
 } MarlinWindowColumnsClass;
 
 
-GType   marlin_window_columns_get_type (void);
+GType                   marlin_window_columns_get_type (void);
 
 MarlinWindowColumns     *marlin_window_columns_new (GFile *location, GObject *ctab);
 //void                    marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location);
 
-void            marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location);
-GFile           *marlin_window_columns_get_location (MarlinWindowColumns *mwcol);
+void                    marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location);
+GFile                   *marlin_window_columns_get_location (MarlinWindowColumns *mwcol);
 //GOFWindowSlot   *marlin_window_columns_get_active_slot (MarlinWindowColumns *mwcols);
-void            marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location);
+void                    marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location);
 
 #endif /* MARLIN_WINDOW_COLUMNS_H */

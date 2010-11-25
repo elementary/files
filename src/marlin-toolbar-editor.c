@@ -1,14 +1,13 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
 /*
  * Copyright (C) 2009 Enrico Tröger <enrico(dot)troeger(at)uvena(dot)de>
  * Copyright (C) 2010 ammonkey
  *
- * Rhythmibox is free software; you can redistribute it and/or
+ * Marlin is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
  * License, or (at your option) any later version.
  *
- * Rhythmbox is distributed in the hope that it will be useful,
+ * Marlin is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * General Public License for more details.
@@ -162,7 +161,7 @@ static void tb_editor_set_item_values(TBEditorWidget *tbw, const gchar *action_n
     if (action != NULL)
     {
         /*gtk_action_block_activate(action);
-        printf ("blocked %s\n", action_name);*/
+          printf ("blocked %s\n", action_name);*/
         icon = katze_object_get_string(action, "icon-name");
         if (icon == NULL)
         {

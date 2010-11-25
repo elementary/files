@@ -11,13 +11,13 @@ G_BEGIN_DECLS
 
 /* Names for Nautilus's different zoom levels, from tiniest items to largest items */
 typedef enum {
-	NAUTILUS_ZOOM_LEVEL_SMALLEST,
-	NAUTILUS_ZOOM_LEVEL_SMALLER,
-	NAUTILUS_ZOOM_LEVEL_SMALL,
-	NAUTILUS_ZOOM_LEVEL_STANDARD,
-	NAUTILUS_ZOOM_LEVEL_LARGE,
-	NAUTILUS_ZOOM_LEVEL_LARGER,
-	NAUTILUS_ZOOM_LEVEL_LARGEST
+    NAUTILUS_ZOOM_LEVEL_SMALLEST,
+    NAUTILUS_ZOOM_LEVEL_SMALLER,
+    NAUTILUS_ZOOM_LEVEL_SMALL,
+    NAUTILUS_ZOOM_LEVEL_STANDARD,
+    NAUTILUS_ZOOM_LEVEL_LARGE,
+    NAUTILUS_ZOOM_LEVEL_LARGER,
+    NAUTILUS_ZOOM_LEVEL_LARGEST
 } NautilusZoomLevel;
 
 #define NAUTILUS_ZOOM_LEVEL_N_ENTRIES (NAUTILUS_ZOOM_LEVEL_LARGEST + 1)
@@ -55,12 +55,12 @@ GType    nautilus_icon_info_get_type (void) G_GNUC_CONST;
 
 NautilusIconInfo *    nautilus_icon_info_new_for_pixbuf               (GdkPixbuf         *pixbuf);
 NautilusIconInfo *    nautilus_icon_info_lookup                       (GIcon             *icon,
-								       int                size);
+                                                                       int                size);
 
 NautilusIconInfo *    nautilus_icon_info_lookup_from_name             (const char        *name,
-								       int                size);
+                                                                       int                size);
 NautilusIconInfo *    nautilus_icon_info_lookup_from_path             (const char        *path,
-								       int                size);
+                                                                       int                size);
 
 gboolean              nautilus_icon_info_is_fallback                  (NautilusIconInfo  *icon);
 #if 0
@@ -69,15 +69,15 @@ GdkPixbuf *           nautilus_icon_info_get_pixbuf                   (NautilusI
 GdkPixbuf *           nautilus_icon_info_get_pixbuf_nodefault         (NautilusIconInfo  *icon);
 #if 0
 GdkPixbuf *           nautilus_icon_info_get_pixbuf_nodefault_at_size (NautilusIconInfo  *icon,
-								       gsize              forced_size);
+                                                                       gsize              forced_size);
 GdkPixbuf *           nautilus_icon_info_get_pixbuf_at_size           (NautilusIconInfo  *icon,
-								       gsize              forced_size);
+                                                                       gsize              forced_size);
 #endif
 gboolean              nautilus_icon_info_get_embedded_rect            (NautilusIconInfo  *icon,
-								       GdkRectangle      *rectangle);
+                                                                       GdkRectangle      *rectangle);
 gboolean              nautilus_icon_info_get_attach_points            (NautilusIconInfo  *icon,
-								       GdkPoint         **points,
-								       gint              *n_points);
+                                                                       GdkPoint         **points,
+                                                                       gint              *n_points);
 G_CONST_RETURN char  *nautilus_icon_info_get_display_name             (NautilusIconInfo  *icon);
 G_CONST_RETURN char  *nautilus_icon_info_get_used_name                (NautilusIconInfo  *icon);
 

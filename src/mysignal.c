@@ -23,7 +23,7 @@
 
 guint action_new (GType type, const char* signal_name)
 {
-  g_signal_new (signal_name, type, G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, 0, NULL,
-                NULL, g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
+    g_signal_new (signal_name, type, G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, 0, NULL,
+                  NULL, g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 }
 

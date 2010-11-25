@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
 /*
  * Copyright (C) 2010 ammonkey
  *
@@ -43,37 +42,37 @@ typedef struct _GOFFileClass GOFFileClass;
 //typedef struct _GOFFilePrivate GOFFilePrivate;
 
 struct _GOFFile {
-	GObject parent_instance;
-	//GOFFilePrivate * priv;
-	/*gboolean selected;
-	gboolean parent_directory_link;*/
+    GObject parent_instance;
+    //GOFFilePrivate * priv;
+    /*gboolean selected;
+      gboolean parent_directory_link;*/
 
-	GFileInfo       *info;
-        GFile           *location;
-        GFile           *directory;
-        const gchar     *name;
-        const gchar     *ftype;
-        gchar           *utf8_collation_key;
-	guint64         size;
-        gchar           *format_size;
-        GFileType       file_type;
-	gboolean        is_directory;
-	gboolean        is_hidden;
-        GIcon           *icon;
-        GdkPixbuf       *pix;
-        guint64         modified;
-        const gchar     *color;
+    GFileInfo       *info;
+    GFile           *location;
+    GFile           *directory;
+    const gchar     *name;
+    const gchar     *ftype;
+    gchar           *utf8_collation_key;
+    guint64         size;
+    gchar           *format_size;
+    GFileType       file_type;
+    gboolean        is_directory;
+    gboolean        is_hidden;
+    GIcon           *icon;
+    GdkPixbuf       *pix;
+    guint64         modified;
+    const gchar     *color;
 };
 
 struct _GOFFileClass {
-	GObjectClass parent_class;
+    GObjectClass parent_class;
 };
 
 GType gof_file_get_type (void);
 
 //GOFFile*        gof_file_new (GFileInfo* file_info);
 //GOFFile* gof_file_new (GFileInfo* file_info, GFileEnumerator *enumerator);
-GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir);
+GOFFile*        gof_file_new (GFileInfo* file_info, GFile *dir);
 GFileInfo*      gof_file_get_file_info (GOFFile* self);
 gint            gof_file_NameCompareFunc (GOFFile* a, GOFFile* b);
 gint            gof_file_SizeCompareFunc (GOFFile* a, GOFFile* b);

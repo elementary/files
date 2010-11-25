@@ -1,5 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
-
 /* eel-i18n.c:  I18n stuff for Eel.
 
    Copyright (C) 2002 MandrakeSoft.
@@ -35,17 +33,17 @@
 G_CONST_RETURN char *
 _eel_gettext (const char *str)
 {
-	static gboolean _eel_gettext_initialized = FALSE;
+    static gboolean _eel_gettext_initialized = FALSE;
 
-	if (!_eel_gettext_initialized) {
-		bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
+    if (!_eel_gettext_initialized) {
+        bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
 #    ifdef HAVE_BIND_TEXTDOMAIN_CODESET
-		bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 #    endif
-		_eel_gettext_initialized = TRUE;
-	}
+        _eel_gettext_initialized = TRUE;
+    }
 
-	return dgettext (GETTEXT_PACKAGE, str);
+    return dgettext (GETTEXT_PACKAGE, str);
 }
 
 #endif /* ENABLE_NLS */

@@ -1,4 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
 /*
  * Copyright (C) 2010 ammonkey
  *
@@ -35,77 +34,77 @@
 #define GOF_WINDOW_SLOT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GOF_TYPE_WINDOW_SLOT, GOFWindowSlotClass))
 
 /*
-typedef enum {
-	GOF_LOCATION_CHANGE_STANDARD,
-	GOF_LOCATION_CHANGE_BACK,
-	GOF_LOCATION_CHANGE_FORWARD,
-	GOF_LOCATION_CHANGE_RELOAD,
-	GOF_LOCATION_CHANGE_REDIRECT,
-	GOF_LOCATION_CHANGE_FALLBACK
-} GOFLocationChangeType;*/
+   typedef enum {
+   GOF_LOCATION_CHANGE_STANDARD,
+   GOF_LOCATION_CHANGE_BACK,
+   GOF_LOCATION_CHANGE_FORWARD,
+   GOF_LOCATION_CHANGE_RELOAD,
+   GOF_LOCATION_CHANGE_REDIRECT,
+   GOF_LOCATION_CHANGE_FALLBACK
+   } GOFLocationChangeType;*/
 
 struct GOFWindowSlot {
-	GObject parent;
+    GObject parent;
 
-	/* content_box contains
- 	 *  1) an event box containing extra_location_widgets
- 	 *  2) the view box for the content view
- 	 */
-	GtkWidget *content_box;
-	/*GtkWidget *extra_location_event_box;
-	GtkWidget *extra_location_widgets;
-	GtkWidget *extra_location_separator;*/
-	GtkWidget *view_box;
-        GtkWidget *colpane;
-        GtkWidget *hpane;
+    /* content_box contains
+     *  1) an event box containing extra_location_widgets
+     *  2) the view box for the content view
+     */
+    GtkWidget *content_box;
+    /*GtkWidget *extra_location_event_box;
+      GtkWidget *extra_location_widgets;
+      GtkWidget *extra_location_separator;*/
+    GtkWidget *view_box;
+    GtkWidget *colpane;
+    GtkWidget *hpane;
 
-	/* Current location. */
-	GFile *location;
-	char *title;
-	char *status_text;
+    /* Current location. */
+    GFile *location;
+    char *title;
+    char *status_text;
 
-        //GtkWidget *window;
-        GObject *ctab;
-        GOFDirectoryAsync *directory;
+    //GtkWidget *window;
+    GObject *ctab;
+    GOFDirectoryAsync *directory;
 
-        MarlinWindowColumns *mwcols;
+    MarlinWindowColumns *mwcols;
 
-	/*NautilusFile *viewed_file;
-	gboolean viewed_file_seen;
-	gboolean viewed_file_in_trash;*/
+    /*NautilusFile *viewed_file;
+      gboolean viewed_file_seen;
+      gboolean viewed_file_in_trash;*/
 
-	gboolean allow_stop;
+    gboolean allow_stop;
 
-	//NautilusQueryEditor *query_editor;
+    //NautilusQueryEditor *query_editor;
 
-	/* New location. */
-	//GOFLocationChangeType location_change_type;
-	/*guint location_change_distance;
-	GFile *pending_location;
-	char *pending_scroll_to;
-	GList *pending_selection;
-	NautilusFile *determine_view_file;
-	GCancellable *mount_cancellable;
-	GError *mount_error;
-	gboolean tried_mount;
+    /* New location. */
+    //GOFLocationChangeType location_change_type;
+    /*guint location_change_distance;
+      GFile *pending_location;
+      char *pending_scroll_to;
+      GList *pending_selection;
+      NautilusFile *determine_view_file;
+      GCancellable *mount_cancellable;
+      GError *mount_error;
+      gboolean tried_mount;
 
-	GCancellable *find_mount_cancellable;
+      GCancellable *find_mount_cancellable;
 
-	gboolean visible;*/
+      gboolean visible;*/
 };
 
 struct GOFWindowSlotClass {
-	GObjectClass parent_class;
+    GObjectClass parent_class;
 
-	/* wrapped GOFWindowInfo signals, for overloading */
-	/*void (* active)   (NautilusWindowSlot *slot);
-	void (* inactive) (NautilusWindowSlot *slot);*/
+    /* wrapped GOFWindowInfo signals, for overloading */
+    /*void (* active)   (NautilusWindowSlot *slot);
+      void (* inactive) (NautilusWindowSlot *slot);*/
 
-	//void (* update_query_editor) (NautilusWindowSlot *slot);
+    //void (* update_query_editor) (NautilusWindowSlot *slot);
 };
 
 
-GType   gof_window_slot_get_type (void);
+GType           gof_window_slot_get_type (void);
 
 //GOFWindowSlot *gof_window_slot_new (gchar *path);
 //GOFWindowSlot   *gof_window_slot_new (GFile *, GtkWidget *);

@@ -1,5 +1,3 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
-
 /* eel-i18n.h: I18n stuff for Eel.
 
    Copyright (C) 2002 MandrakeSoft
