@@ -32,10 +32,11 @@
 #include <eel/eel-glib-extensions.h>
 #include <eel/eel-gdk-pixbuf-extensions.h>*/
 #include <gtk/gtk.h>
-#include <glib/gi18n.h>
-//#include <libnautilus-private/nautilus-dnd.h>
 #include <glib.h>
+//#include <glib/gi18n.h>
+//#include <libnautilus-private/nautilus-dnd.h>
 #include "fm-list-model.h"
+#include "marlin-tags.h"
 
 enum {
 	SUBDIRECTORY_UNLOADED,
@@ -312,6 +313,12 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
 		g_value_init (value, GDK_TYPE_PIXBUF);
         	if (file != NULL)
 		        g_value_set_object (value, file->pix);
+                break;
+        
+        case FM_LIST_MODEL_COLOR:
+	        g_value_init (value, G_TYPE_STRING);
+        	if (file != NULL)
+                        g_value_set_string(value, file->color);
                 break;
                 
         case FM_LIST_MODEL_FILENAME:
@@ -1078,6 +1085,13 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
 						      path, &iter);
 	}
 	gtk_tree_path_free (path);
+
+        char *uri = g_file_get_uri(file->location);
+        //file->color = tags_colors[marlin_view_tags_get_color (tags, uri, NULL)];
+        //tags_colors[marlin_view_tags_get_color (tags, uri, file, NULL)];
+        marlin_view_tags_get_color (tags, uri, file, NULL);
+        g_free (uri);
+
         //file_entry_free (file_entry);
         //g_object_unref(file);
 

@@ -7,7 +7,7 @@ sudo apt-get update
 sudo apt-get upgrade
 
 sudo apt-get install build-essential bzr git automake libtool
-sudo apt-get install gtk+3 gnome-common valac libgee-dev flex bison
+sudo apt-get install gtk+3 gnome-common valac libgee-dev flex bison libdbus-glib-1-dev
 
 # Since Marlin in gtk3 and gtk2 themes dont work on gtk3 apps, you will also need a theme. You can get the ambiance and radiance themes using these commands:
 

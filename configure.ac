@@ -62,6 +62,8 @@ PKG_CHECK_MODULES(ALL, [
         pango			>= pango_minver
 	gtk+-3.0		>= gtk_minver
         gee-1.0
+        sqlite3
+        dbus-glib-1
 ])
 dnl ===========================================================================
 
@@ -130,6 +132,24 @@ else
 fi
 
 dnl ===========================================================================
+dnl AS_AC_EXPAND(DATADIR, $datadir)
+
+dnl DBUS_SERVICES_DIR="$DATADIR/dbus-1/services"
+dnl AC_SUBST(DBUS_SERVICES_DIR)
+dnl AC_DEFINE_UNQUOTED(DBUS_SERVICES_DIR, "$DBUS_SERVICES_DIR", [Where services dir for DBUS is])
+
+dnl look for dbus service dir
+DBUSSERVICEDIR=`$PKG_CONFIG --variable=session_bus_services_dir dbus-1`
+AC_ARG_WITH([dbus-services],
+        AC_HELP_STRING([--with-dbus-services=DBUS_SERVICES],
+        [specify a directory to store dbus service files.]),
+    [
+                DBUSSERVICEDIR=$withval
+    ]
+)
+AC_SUBST(DBUSSERVICEDIR)
+
+dnl ===========================================================================
 
 dnl core marlin
 CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gio-unix-2.0 gee-1.0"
@@ -137,6 +157,13 @@ CORE_CFLAGS="`$PKG_CONFIG --cflags $CORE_MODULES` $x_cflags $WARNING_CFLAGS"
 AC_SUBST(CORE_CFLAGS)
 CORE_LIBS="`$PKG_CONFIG --libs $CORE_MODULES` $x_libs"
 AC_SUBST(CORE_LIBS)
+
+dnl marlin-daemon
+DAEMON_MODULES="glib-2.0 gio-2.0 sqlite3"
+DAEMON_CFLAGS="`$PKG_CONFIG --cflags $DAEMON_MODULES` $x_cflags $WARNING_CFLAGS"
+AC_SUBST(DAEMON_CFLAGS)
+DAEMON_LIBS="`$PKG_CONFIG --libs $DAEMON_MODULES` $x_libs"
+AC_SUBST(DAEMON_LIBS)
 
 DISABLE_DEPRECATED_CFLAGS="-DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED"
 AC_SUBST(DISABLE_DEPRECATED_CFLAGS)
@@ -149,6 +176,8 @@ dnl ==========================================================================
 AC_CONFIG_FILES([
 Makefile
 src/Makefile
+marlin-daemon/Makefile
+data/Makefile
 icons/Makefile
 po/Makefile.in
 ])

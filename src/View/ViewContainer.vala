@@ -39,7 +39,7 @@ namespace Marlin.View {
         public signal void forward();
         public signal void selection_changed(GOF.File gof_file);
 
-        public ViewContainer(Marlin.View.Window win, File location){
+        public ViewContainer(Marlin.View.Window win, GLib.File location){
             window = win;
             browser = new Browser<string> ();
             slot = new GOF.Window.Slot(location, this);
@@ -98,7 +98,7 @@ namespace Marlin.View {
             }
         }
 
-        public void change_view(int nview, File? location){
+        public void change_view(int nview, GLib.File? location){
             if (location == null)
                 location = slot.location;
             view_mode = nview;

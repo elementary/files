@@ -236,7 +236,6 @@ gof_window_slot_new (GFile *location, GObject *ctab)
         marlin_view_view_container_set_content (ctab, slot->view_box);
         load_dir_async (slot->directory);
 
-
         return slot;
 }
 

@@ -40,6 +40,7 @@ namespace GOF {
 			public int addition ();*/
                         public Directory.Async directory;
                         public GLib.File location;
+                        public Widget view_box;
                         public Widget get_view ();
 		}
 	}
@@ -47,9 +48,10 @@ namespace GOF {
 	[CCode (cprefix = "GOFFile", lower_case_cprefix = "gof_file_", cheader_filename = "gof-file.h")]
 	public class File : GLib.Object {
 	    public File(GLib.FileInfo file_info, GLib.File dir);
-		public GLib.File location;
-        public GLib.Icon icon;
-        public GLib.FileInfo info;
+	    public GLib.File location;
+            public GLib.Icon icon;
+            public GLib.FileInfo info;
+            public string color;
 	}
 
 	[CCode (cprefix = "GOFDirectoryAsync", lower_case_cprefix = "gof_directory_")]
@@ -66,6 +68,16 @@ namespace GOF {
         }
 }
 
+namespace FM {
+	[CCode (cprefix = "FMDirectory", lower_case_cprefix = "fm_directory_")]
+	namespace Directory {
+		[CCode (cheader_filename = "fm-directory-view.h")]
+		public class View : Gtk.ScrolledWindow {
+                        public void colorize_selection (int color);
+                }
+        }
+}
+
 namespace Marlin {
 	[CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
 	namespace Window {
@@ -73,12 +85,9 @@ namespace Marlin {
 		public class Columns : GLib.Object {
 			public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
                         public GOF.Window.Slot active_slot;
-			/*public Operation (int a1, int b1);
-			public int addition ();*/
                         /*public Directory.Async directory;
                         public Widget get_view ();*/
 		}
 	}
 }
-
 

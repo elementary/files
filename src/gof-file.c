@@ -43,6 +43,7 @@
 enum {
 	FM_LIST_MODEL_FILE_COLUMN,
         FM_LIST_MODEL_ICON,
+        FM_LIST_MODEL_COLOR,
         FM_LIST_MODEL_FILENAME,
         FM_LIST_MODEL_SIZE,
         FM_LIST_MODEL_TYPE,
@@ -65,6 +66,8 @@ enum {
 	FM_LIST_MODEL_FILE_NAME_IS_EDITABLE_COLUMN,*/
 	FM_LIST_MODEL_NUM_COLUMNS
 };
+
+const gchar *colred = "red";
 
 
 //static void gof_file_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec);
@@ -169,6 +172,9 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
         nicon = nautilus_icon_info_lookup (self->icon, 16);
         self->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
         g_object_unref (nicon);
+
+        //self->color = colred;
+        self->color = NULL;
 	
         return self;
 }

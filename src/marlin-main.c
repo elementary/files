@@ -7,6 +7,7 @@
 #include "marlin-global-preferences.h" 
 #include "marlin-view-window.h"
 #include "marlin-private.h"
+#include "marlin-tags.h"
 
 //static void     marlin_view_window_up (MarlinViewWindow *window);
 //static void     marlin_view_window_back (MarlinViewWindow *window);
@@ -31,6 +32,7 @@ main (int argc, char *argv[])
 
     /* gsettings parameters */
     settings = g_settings_new ("org.gnome.marlin.preferences");
+    tags = marlin_view_tags_new ();
     /*gboolean showall = g_settings_get_boolean (settings, "showall");
     printf ("test gsettings showall: %d\n", showall);*/
 
@@ -46,7 +48,7 @@ main (int argc, char *argv[])
                 path = g_strdup(g_get_home_dir());
 	}
         
-        window = marlin_view_window_new (settings);
+        window = marlin_view_window_new ();
         marlin_view_window_add_tab (window, g_file_new_for_commandline_arg(path));
 
 	/*g_signal_connect (window, "up", (GCallback) marlin_view_window_up, NULL);*/

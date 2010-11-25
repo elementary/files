@@ -30,6 +30,7 @@
 //#include "gof-directory-async.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
 #include "eel-glib-extensions.h"
+#include "marlin-tags.h"
 
 /*
 struct FMListViewDetails {
@@ -43,7 +44,7 @@ struct FMListViewDetails {
 /* Wait for the rename to end when activating a file being renamed */
 #define WAIT_FOR_RENAME_ON_ACTIVATE 200
 
-static gchar    *col_title[4] = {_("Filename"), _("Size"), _("Type"), _("Modified")};
+static gchar *col_title[4] = { _("Filename"), _("Size"), _("Type"), _("Modified") };
 
 //G_DEFINE_TYPE (FMListView, fm_list_view, G_TYPE_OBJECT)
         /*#define GOF_DIRECTORY_ASYNC_GET_PRIVATE(obj) \
@@ -266,20 +267,23 @@ activate_selected_items (FMListView *view)
         /* TODO add mountable etc */
 
         screen = gdk_screen_get_default();
-        if (g_list_length (file_list) == 1)
+        guint nb_elem = g_list_length (file_list);
+        if (nb_elem == 1)
                 fm_directory_activate_single_file(file_list->data, view, screen);
         else
         {
-                for (; file_list != NULL; file_list=file_list->next)
-                {
-                        file = file_list->data;
-                        if (file->is_directory) {
-                                /* TODO open dirs in new tabs */
-                                printf ("open dir - new tab? %s\n", file->name);
-                        } else {
-                                gof_gnome_open_single_file (file, screen);
+                /* ignore opening more than 10 elements at a time */
+                if (nb_elem < 10)
+                        for (; file_list != NULL; file_list=file_list->next)
+                        {
+                                file = file_list->data;
+                                if (file->is_directory) {
+                                        /* TODO open dirs in new tabs */
+                                        printf ("open dir - new tab? %s\n", file->name);
+                                } else {
+                                        gof_gnome_open_single_file (file, screen);
+                                }
                         }
-                }
         }
 
 	gof_file_list_free (file_list);
@@ -290,6 +294,35 @@ row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 {
         printf ("%s\n", G_STRFUNC);
         activate_selected_items (view);
+}
+
+static void
+fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
+{
+        FMListView *list_view = FM_LIST_VIEW (view);
+	GList *file_list;
+        GOFFile *file;
+        char *uri;
+	
+	file_list = fm_list_view_get_selection (list_view);
+        /*guint array_length = MIN (g_list_length (file_list)*sizeof(char), 30);
+        char **array = malloc(array_length + 1);
+        char **l = array;*/
+        for (; file_list != NULL; file_list=file_list->next)
+        {
+            file = file_list->data;
+            //printf("colorize %s %d\n", file->name, ncolor);
+            file->color = tags_colors[ncolor];
+            uri = g_file_get_uri(file->location);
+            //*array = uri;
+            marlin_view_tags_set_color (tags, uri, ncolor, NULL);
+            g_free (uri);
+        }
+        /**array = NULL;
+        marlin_view_tags_uris_set_color (tags, l, array_length, ncolor, NULL);*/
+        /*for (; *l != NULL; l=l++)
+            printf ("array uri: %s\n", *l);*/
+        //g_strfreev(l);
 }
 
 static void
@@ -389,12 +422,26 @@ filename_cell_data_func (GtkTreeViewColumn *column,
 			 gpointer          *data)
 {
 	char *text;
+        char *color;
 	//GtkTreePath *path;
 	PangoUnderline underline;
 
 	gtk_tree_model_get (model, iter,
 			    FM_LIST_MODEL_FILENAME, &text,
 			    -1);
+
+	gtk_tree_model_get (model, iter,
+			    FM_LIST_MODEL_COLOR, &color,
+			    -1);
+
+        /*if (color) {
+            GList *lrenderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT(column));
+            GList *l;
+            for (l=lrenderers; l != NULL; l=l->next)
+                g_object_set(l->data, "cell-background", color, NULL);
+            g_list_free (lrenderers);
+        }
+	g_free (color);*/
 
 	/*if (click_policy_auto_value == NAUTILUS_CLICK_POLICY_SINGLE) {
 		path = gtk_tree_model_get_path (model, iter);
@@ -415,8 +462,27 @@ filename_cell_data_func (GtkTreeViewColumn *column,
 	g_object_set (G_OBJECT (renderer),
 		      "text", text,
 		      "underline", underline,
+                      "cell-background", color,
 		      NULL);
 	g_free (text);
+}
+
+static void
+color_row_func (GtkTreeViewColumn *column,
+                GtkCellRenderer   *renderer,
+                GtkTreeModel      *model,
+                GtkTreeIter       *iter,
+                gpointer          *data)
+{
+        char *color;
+
+	gtk_tree_model_get (model, iter,
+			    FM_LIST_MODEL_COLOR, &color,
+			    -1);
+
+        g_object_set(renderer, "cell-background", color, NULL);
+        //g_object_set(renderer, "cell-background-set", FALSE, NULL);
+	g_free (color);
 }
 
 static void
@@ -484,7 +550,7 @@ create_and_set_up_tree_view (FMListView *view)
                                  G_CALLBACK (subdirectory_unloaded_callback), view, 0);
 
         //for(k=0; k< GOF_DIR_COLS_MAX; k++) {
-        for(k=2; k< FM_LIST_MODEL_NUM_COLUMNS; k++) {
+        for(k=3; k< FM_LIST_MODEL_NUM_COLUMNS; k++) {
                 /*if(k == FM_LIST_MODEL_ICON) {
                         renderer = gtk_cell_renderer_pixbuf_new( ); 
                         col = gtk_tree_view_column_new_with_attributes (NULL, renderer, "pixbuf", k, NULL);
@@ -497,7 +563,7 @@ create_and_set_up_tree_view (FMListView *view)
                         col = gtk_tree_view_column_new ();
                         gtk_tree_view_column_set_sort_column_id  (col,k);
                         gtk_tree_view_column_set_resizable (col, TRUE);
-                        gtk_tree_view_column_set_title (col, col_title[k-2]);
+                        gtk_tree_view_column_set_title (col, col_title[k-3]);
                         gtk_tree_view_column_set_expand (col, TRUE);
                         gtk_tree_view_column_pack_start (col, renderer, FALSE);
                         gtk_tree_view_column_set_attributes (col,
@@ -514,11 +580,22 @@ create_and_set_up_tree_view (FMListView *view)
 								 NULL, NULL);
                 } else {
                         renderer = gtk_cell_renderer_text_new( );
-                        col = gtk_tree_view_column_new_with_attributes(col_title[k-2], renderer, "text", k, NULL);
+                        col = gtk_tree_view_column_new_with_attributes(col_title[k-3], renderer, "text", k, NULL);
                         gtk_tree_view_column_set_sort_column_id  (col,k);
                         gtk_tree_view_column_set_resizable (col, TRUE);
                         //gtk_tree_view_column_set_fixed_width (col, 240);
+                        //amtest
+                        gtk_tree_view_column_set_cell_data_func (col, renderer,
+                                                                 (GtkTreeCellDataFunc) color_row_func,
+                                                                 NULL, NULL);
                 }
+                //g_object_set(renderer, "cell-background", "red", NULL);
+                /*GList *lrenderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT(col));
+                GList *l;
+                for (l=lrenderers; l != NULL; l=l->next)
+                    g_object_set(l->data, "cell-background", "red", NULL);*/
+
+
                 //gtk_tree_view_column_set_sizing (col, GTK_TREE_VIEW_COLUMN_FIXED);
                 gtk_tree_view_append_column(view->tree, col);
         }
@@ -648,7 +725,7 @@ fm_list_view_class_init (FMListViewClass *klass)
         fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
        	fm_directory_view_class->add_file = fm_list_view_add_file;
-
+       	fm_directory_view_class->colorize_selection = fm_list_view_colorize_selected_items;        
         //eel_g_settings_add_auto_boolean (settings, "single-click", &single_click);
         //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }

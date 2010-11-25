@@ -35,7 +35,7 @@ GType marlin_view_window_get_type (void) G_GNUC_CONST;
 /*MarlinViewWindow* marlin_view_window_new (const gchar* path);
 MarlinViewWindow* marlin_view_window_construct (GType object_type, const gchar* path);
 GType marlin_view_window_get_type (void) G_GNUC_CONST;*/
-MarlinViewWindow* marlin_view_window_new (GSettings *settings);
+MarlinViewWindow* marlin_view_window_new ();
 MarlinViewWindow* marlin_view_window_construct (GType object_type);
 GtkActionGroup* marlin_view_window_get_actiongroup (MarlinViewWindow *mvw);
 void marlin_view_window_set_toolbar_items (MarlinViewWindow *mvw);
@@ -56,5 +56,21 @@ MarlinViewViewContainer* marlin_view_view_container_new (GFile *location);
 
 /*GOFWindowSlot* marlin_view_window_get_active_slot (MarlinViewWindow* self);
 void marlin_view_window_set_active_slot (MarlinViewWindow* self, GOFWindowSlot* value);*/
+
+#include "gof-file.h"
+
+#define MARLIN_VIEW_TYPE_TAGS (marlin_view_tags_get_type ())
+#define MARLIN_VIEW_TAGS(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), MARLIN_VIEW_TYPE_TAGS, MarlinViewTags))
+#define MARLIN_VIEW_TAGS_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), MARLIN_VIEW_TYPE_TAGS, MarlinViewTagsClass))
+#define MARLIN_VIEW_IS_TAGS(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MARLIN_VIEW_TYPE_TAGS))
+#define MARLIN_VIEW_IS_TAGS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), MARLIN_VIEW_TYPE_TAGS))
+#define MARLIN_VIEW_TAGS_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), MARLIN_VIEW_TYPE_TAGS, MarlinViewTagsClass))
+
+typedef struct _MarlinViewTags MarlinViewTags;
+typedef struct _MarlinViewTagsClass MarlinViewTagsClass;
+
+MarlinViewTags* marlin_view_tags_new (void);
+void marlin_view_tags_set_color (MarlinViewTags* self, const gchar* uri, gint n, GError** error);
+gint marlin_view_tags_get_color (MarlinViewTags* self, const gchar* uri, GOFFile *file, GError** error);
 
 #endif /* MARLIN_PRIVATE_H */
