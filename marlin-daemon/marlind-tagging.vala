@@ -107,18 +107,39 @@ public class MarlinTags : Object {
 
     }
 
+    public async void uris_setColor(string[] uris, int color){
+        Idle.add (uris_setColor.callback);
+        yield;
+        string color_string = "%u".printf(color);//Convert int to string
+        string c = "";
+
+        foreach (string uri in uris) {
+            if (color != 0)
+                c += "insert or replace into tags(uri,color) values ('"+uri+"',"+color_string+");\n";
+            else
+                c += "delete from tags where uri='" + uri + "';\n";
+            //stdout.printf("test uri %s\n", uri);
+            stdout.printf("[uri_setColor]: %s\n", uri);
+        }
+        int rc = db.exec (c, null, null);
+        if (rc != Sqlite.OK) { 
+            stderr.printf ("[uris_setColor: SQL error]  %d, %s\n", rc, db.errmsg ());
+        }
+    }
+
     public async bool setColor(string uri, int color){
         Idle.add (setColor.callback);
         yield;
         string color_string = "%u".printf(color);//Convert int to string
         string c = "";
 
-        if(yield isFileInDB(uri)){
+        /*if(yield isFileInDB(uri)){
             c = "update tags set color = "+color_string+" where uri= '"+uri+"'";
         }
         else{
             c = "insert into tags(uri,color) values ('"+uri+"',"+color_string+")";	
-        }
+        }*/
+        c = "insert or replace into tags(uri,color) values ('"+uri+"',"+color_string+")";	
 
         int rc = db.exec (c, null, null);
         if (rc != Sqlite.OK) { 
@@ -163,7 +184,7 @@ public class MarlinTags : Object {
                 break;
             }
         } while (rc == Sqlite.ROW);
-        stdout.printf("[getColor]: %s\n", txt);
+        //stdout.printf("[getColor]: %s\n", txt);
 
         return txt.to_int();
     }

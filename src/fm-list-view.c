@@ -267,20 +267,23 @@ activate_selected_items (FMListView *view)
         /* TODO add mountable etc */
 
         screen = gdk_screen_get_default();
-        if (g_list_length (file_list) == 1)
+        guint nb_elem = g_list_length (file_list);
+        if (nb_elem == 1)
                 fm_directory_activate_single_file(file_list->data, view, screen);
         else
         {
-                for (; file_list != NULL; file_list=file_list->next)
-                {
-                        file = file_list->data;
-                        if (file->is_directory) {
-                                /* TODO open dirs in new tabs */
-                                printf ("open dir - new tab? %s\n", file->name);
-                        } else {
-                                gof_gnome_open_single_file (file, screen);
+                /* ignore opening more than 10 elements at a time */
+                if (nb_elem < 10)
+                        for (; file_list != NULL; file_list=file_list->next)
+                        {
+                                file = file_list->data;
+                                if (file->is_directory) {
+                                        /* TODO open dirs in new tabs */
+                                        printf ("open dir - new tab? %s\n", file->name);
+                                } else {
+                                        gof_gnome_open_single_file (file, screen);
+                                }
                         }
-                }
         }
 
 	gof_file_list_free (file_list);
@@ -299,17 +302,29 @@ fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
         FMListView *list_view = FM_LIST_VIEW (view);
 	GList *file_list;
         GOFFile *file;
+        char *uri;
 	
 	file_list = fm_list_view_get_selection (list_view);
-        for (; file_list != NULL; file_list=file_list->next)
+        guint array_length = MIN (g_list_length (file_list)*sizeof(gchar), 30);
+        gchar **array = g_malloc(array_length + 1);
+        gchar **l = array;
+        int i=0;
+        /* send max 100 uris to tags */
+        for (; i<30 && file_list != NULL; file_list=file_list->next, i++)
         {
             file = file_list->data;
-            printf("colorize %s %d\n", file->name, ncolor);
+            printf("colorize %s %d %d\n", file->name, ncolor, array_length);
             file->color = tags_colors[ncolor];
-            char *uri = g_file_get_uri(file->location);
-            marlin_view_tags_set_color (tags, uri, ncolor, NULL);
-            g_free (uri);
+            uri = g_file_get_uri(file->location);
+            *array++ = uri;
+            //marlin_view_tags_set_color (tags, uri, ncolor, NULL);
+            //g_free (uri);
         }
+        *array = NULL;
+        marlin_view_tags_uris_set_color (tags, l, array_length, ncolor, NULL);
+        /*for (; *l != NULL; l=l++)
+            printf ("array uri: %s\n", *l);*/
+        //g_strfreev(l);
 }
 
 static void
