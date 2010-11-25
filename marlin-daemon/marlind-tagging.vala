@@ -105,15 +105,15 @@ public class MarlinTags : Object {
         return true;
     }
 
-    private async bool isFileInDB(string uri){
+    /*private async bool isFileInDB(string uri){
         if(yield getColor(uri) == 0)
             return false;
         else
             return true;
 
-    }
+    }*/
 
-    public async void uris_setColor(string[] uris, int color){
+    /*public async void uris_setColor(string[] uris, int color){
         Idle.add (uris_setColor.callback);
         yield;
         string c = "";
@@ -130,19 +130,13 @@ public class MarlinTags : Object {
         if (rc != Sqlite.OK) { 
             stderr.printf ("[uris_setColor: SQL error]  %d, %s\n", rc, db.errmsg ());
         }
-    }
+    }*/
 
     public async bool setColor(string uri, int color){
         Idle.add (setColor.callback);
         yield;
         string c = "";
 
-        /*if(yield isFileInDB(uri)){
-            c = "update tags set color = "+color_string+" where uri= '"+uri+"'";
-        }
-        else{
-            c = "insert into tags(uri,color) values ('"+uri+"',"+color_string+")";	
-        }*/
         c = "insert or replace into tags(uri,color) values ('"+uri+"',"+color.to_string()+")";	
 
         int rc = db.exec (c, null, null);
@@ -151,7 +145,6 @@ public class MarlinTags : Object {
             return false;
         }
         //stdout.printf("[Consult]: %s\n",c);
-        stdout.printf("[setColor]: %s\n", uri);
 
         return true;		
     }
@@ -197,7 +190,6 @@ public class MarlinTags : Object {
     {
         Idle.add (deleteEntry.callback);
         yield;
-        //string uri = file.get_uri();
         string c = "delete from tags where uri='" + uri + "'";
         int   rc = db.exec (c, null, null);
 

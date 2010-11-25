@@ -308,13 +308,10 @@ fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
         /*guint array_length = MIN (g_list_length (file_list)*sizeof(char), 30);
         char **array = malloc(array_length + 1);
         char **l = array;*/
-        int i=0;
-        /* send max 100 uris to tags */
-        //for (; i<30 && file_list != NULL; file_list=file_list->next, i++, array++)
-        for (; i<100 && file_list != NULL; file_list=file_list->next, i++)
+        for (; file_list != NULL; file_list=file_list->next)
         {
             file = file_list->data;
-            printf("colorize %s %d\n", file->name, ncolor);
+            //printf("colorize %s %d\n", file->name, ncolor);
             file->color = tags_colors[ncolor];
             uri = g_file_get_uri(file->location);
             //*array = uri;
