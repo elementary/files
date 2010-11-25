@@ -168,8 +168,10 @@ public class MarlinTags : Object {
         return txt.to_int();
     }
 
-    public bool deleteEntry(string uri)
+    public async bool deleteEntry(string uri)
     {
+        Idle.add (deleteEntry.callback);
+        yield;
         //string uri = file.get_uri();
         string c = "delete from tags where uri='" + uri + "'";
         int   rc = db.exec (c, null, null);
