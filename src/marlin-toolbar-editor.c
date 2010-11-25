@@ -574,8 +574,8 @@ static char**
 rb_get_toolbar_actions ()
 {
     static char* actions[] = {
-        "Back","Forward","Up","LocationPathBar",
-        "Separator","ViewModeButton",
+        "Back","Forward","Up","LocationEntry",
+        "Separator","ViewSwitcher",
         NULL };
 
     return actions;

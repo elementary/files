@@ -57,7 +57,7 @@ namespace Marlin.View.Chrome
                         insert(sep, -1);
                         continue;
                 }
-                if (strcmp(name, "LocationPathBar") == 0)
+                if (strcmp(name, "LocationEntry") == 0)
                 {
                     location_bar = new LocationBar ();
                     location_bar.show_all();
@@ -69,7 +69,7 @@ namespace Marlin.View.Chrome
                         location_bar.path = win.current_tab.slot.directory.get_uri();
                     continue;
                 }
-                if (strcmp(name, "ViewModeButton") == 0)
+                if (strcmp(name, "ViewSwitcher") == 0)
                 {
                     view_switcher = new ViewSwitcher(win.main_actions);
                     view_switcher.show_all();

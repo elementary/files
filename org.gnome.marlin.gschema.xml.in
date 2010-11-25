@@ -63,7 +63,7 @@
       </description>
     </key>
     <key name="toolbar-items" type="as">
-      <default>[ 'Back', 'Forward', 'Up', 'LocationPathBar', 'ViewModeButton']</default>
+      <default>[ 'Back', 'Forward', 'Up', 'LocationEntry', 'ViewSwitcher']</default>
       <summary>List of actions present in the toolbar</summary>
       <description>
         List of actions present in the toolbar
