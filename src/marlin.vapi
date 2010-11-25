@@ -26,11 +26,11 @@ namespace GOF {
 	namespace Window {
 		[CCode (cheader_filename = "gof-window-slot.h")]
 		public class Slot : GLib.Object {
-			public Slot (File f, Marlin.View.ViewContainer ctab);
+			public Slot (GLib.File f, Marlin.View.ViewContainer ctab);
 			/*public Operation (int a1, int b1);
 			public int addition ();*/
                         public Directory.Async directory;
-                        public File location;
+                        public GLib.File location;
                         public Widget view_box;
                         public Widget get_view ();
 		}
@@ -40,13 +40,18 @@ namespace GOF {
 	namespace Directory {
 		[CCode (cheader_filename = "gof-directory-async.h")]
 		public class Async : GLib.Object {
-			public Async (File f);
+			public Async (GLib.File f);
                         public void cancel ();
                         public string get_uri ();
                         public bool has_parent ();
-                        public File get_parent ();
+                        public GLib.File get_parent ();
                          
                 }
+        }
+	[CCode (cheader_filename = "gof-file.h")]
+	public class File : GLib.Object {
+            public File (GLib.FileInfo file_info, GLib.File dir);
+            public string color;
         }
 }
 
@@ -65,7 +70,7 @@ namespace Marlin {
 	namespace Window {
 		[CCode (cheader_filename = "marlin-window-columns.h")]
 		public class Columns : GLib.Object {
-			public Columns (File f, Marlin.View.ViewContainer ctab);
+			public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
                         public GOF.Window.Slot active_slot;
                         /*public Directory.Async directory;
                         public Widget get_view ();*/

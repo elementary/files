@@ -57,6 +57,8 @@ MarlinViewViewContainer* marlin_view_view_container_new (GFile *location);
 /*GOFWindowSlot* marlin_view_window_get_active_slot (MarlinViewWindow* self);
 void marlin_view_window_set_active_slot (MarlinViewWindow* self, GOFWindowSlot* value);*/
 
+#include "gof-file.h"
+
 #define MARLIN_VIEW_TYPE_TAGS (marlin_view_tags_get_type ())
 #define MARLIN_VIEW_TAGS(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), MARLIN_VIEW_TYPE_TAGS, MarlinViewTags))
 #define MARLIN_VIEW_TAGS_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), MARLIN_VIEW_TYPE_TAGS, MarlinViewTagsClass))
@@ -69,6 +71,6 @@ typedef struct _MarlinViewTagsClass MarlinViewTagsClass;
 
 MarlinViewTags* marlin_view_tags_new (void);
 void marlin_view_tags_set_color (MarlinViewTags* self, const gchar* uri, gint n, GError** error);
-gint marlin_view_tags_get_color (MarlinViewTags* self, const gchar* uri, GError** error);
+gint marlin_view_tags_get_color (MarlinViewTags* self, const gchar* uri, GOFFile *file, GError** error);
 
 #endif /* MARLIN_PRIVATE_H */

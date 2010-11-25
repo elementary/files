@@ -12,6 +12,8 @@ namespace Marlin.View {
 
         private CTags tags;
 
+        static string[] tags_colors = { null, "red", "orange", "yellow", "green", "blue", "violet", "gray" };
+
         public Tags() {
             try {
                 tags = Bus.get_proxy_sync (BusType.SESSION, "org.elementary.marlin.db",
@@ -38,8 +40,10 @@ namespace Marlin.View {
 
         }
 
-        public async int get_color (string uri) throws IOError {
-            return yield tags.getColor(uri);
+        public async void get_color (string uri, GOF.File myfile) throws IOError {
+            int n = yield tags.getColor(uri);
+            //myfile.color = "red";
+            myfile.color = tags_colors[n];
         }
 
     }
