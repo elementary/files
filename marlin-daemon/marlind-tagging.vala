@@ -84,6 +84,12 @@ public class MarlinTags : Object {
             return false;
         }
 
+        // disable synchronized commits for performance reasons ... this is not vital
+        rc = db.exec("PRAGMA synchronous=OFF");
+        if (rc != Sqlite.OK)
+            stdout.printf("Unable to disable synchronous mode %d, %s\n", rc, db.errmsg ());
+
+
         Sqlite.Statement stmt;
         int res = db.prepare_v2("CREATE TABLE IF NOT EXISTS tags ("
             + "id INTEGER PRIMARY KEY, "
@@ -110,12 +116,11 @@ public class MarlinTags : Object {
     public async void uris_setColor(string[] uris, int color){
         Idle.add (uris_setColor.callback);
         yield;
-        string color_string = "%u".printf(color);//Convert int to string
         string c = "";
 
         foreach (string uri in uris) {
             if (color != 0)
-                c += "insert or replace into tags(uri,color) values ('"+uri+"',"+color_string+");\n";
+                c += "insert or replace into tags(uri,color) values ('"+uri+"',"+color.to_string()+");\n";
             else
                 c += "delete from tags where uri='" + uri + "';\n";
             //stdout.printf("test uri %s\n", uri);
@@ -130,7 +135,6 @@ public class MarlinTags : Object {
     public async bool setColor(string uri, int color){
         Idle.add (setColor.callback);
         yield;
-        string color_string = "%u".printf(color);//Convert int to string
         string c = "";
 
         /*if(yield isFileInDB(uri)){
@@ -139,7 +143,7 @@ public class MarlinTags : Object {
         else{
             c = "insert into tags(uri,color) values ('"+uri+"',"+color_string+")";	
         }*/
-        c = "insert or replace into tags(uri,color) values ('"+uri+"',"+color_string+")";	
+        c = "insert or replace into tags(uri,color) values ('"+uri+"',"+color.to_string()+")";	
 
         int rc = db.exec (c, null, null);
         if (rc != Sqlite.OK) { 

@@ -305,23 +305,24 @@ fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
         char *uri;
 	
 	file_list = fm_list_view_get_selection (list_view);
-        guint array_length = MIN (g_list_length (file_list)*sizeof(gchar), 30);
-        gchar **array = g_malloc(array_length + 1);
-        gchar **l = array;
+        /*guint array_length = MIN (g_list_length (file_list)*sizeof(char), 30);
+        char **array = malloc(array_length + 1);
+        char **l = array;*/
         int i=0;
         /* send max 100 uris to tags */
-        for (; i<30 && file_list != NULL; file_list=file_list->next, i++)
+        //for (; i<30 && file_list != NULL; file_list=file_list->next, i++, array++)
+        for (; i<100 && file_list != NULL; file_list=file_list->next, i++)
         {
             file = file_list->data;
-            printf("colorize %s %d %d\n", file->name, ncolor, array_length);
+            printf("colorize %s %d\n", file->name, ncolor);
             file->color = tags_colors[ncolor];
             uri = g_file_get_uri(file->location);
-            *array++ = uri;
-            //marlin_view_tags_set_color (tags, uri, ncolor, NULL);
-            //g_free (uri);
+            //*array = uri;
+            marlin_view_tags_set_color (tags, uri, ncolor, NULL);
+            g_free (uri);
         }
-        *array = NULL;
-        marlin_view_tags_uris_set_color (tags, l, array_length, ncolor, NULL);
+        /**array = NULL;
+        marlin_view_tags_uris_set_color (tags, l, array_length, ncolor, NULL);*/
         /*for (; *l != NULL; l=l++)
             printf ("array uri: %s\n", *l);*/
         //g_strfreev(l);
