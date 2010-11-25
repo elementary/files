@@ -322,7 +322,8 @@ namespace Marlin.View {
         
         private void action_show_hidden_files (Gtk.Action action) {
             /* simply reload the view as show-hiddenfiles is a binded settings*/
-            current_tab.reload();
+            if (current_tab != null)
+                current_tab.reload();
         }
         
         private void action_show_hide_menubar (Gtk.Action action) {
