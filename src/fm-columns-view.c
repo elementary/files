@@ -25,6 +25,7 @@
 
 //#include "gof-directory-async.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
+#include "marlin-tags.h"
 
 /*
    struct FMColumnsViewDetails {
@@ -232,6 +233,26 @@ row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
     activate_selected_items (view);
 }
 
+static void
+fm_columns_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
+{
+    FMColumnsView *cview = FM_COLUMNS_VIEW (view);
+    GList *file_list;
+    GOFFile *file;
+    char *uri;
+
+    file_list = fm_columns_view_get_selection (cview);
+    for (; file_list != NULL; file_list=file_list->next)
+    {
+        file = file_list->data;
+        //printf("colorize %s %d\n", file->name, ncolor);
+        file->color = tags_colors[ncolor];
+        uri = g_file_get_uri(file->location);
+        marlin_view_tags_set_color (tags, uri, ncolor, NULL);
+        g_free (uri);
+    }
+}
+
 static gboolean
 key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_data)
 {
@@ -310,11 +331,16 @@ filename_cell_data_func (GtkTreeViewColumn *column,
                          gpointer          *data)
 {
     char *text;
+    char *color;
     //GtkTreePath *path;
     PangoUnderline underline;
 
     gtk_tree_model_get (model, iter,
                         FM_LIST_MODEL_FILENAME, &text,
+                        -1);
+
+    gtk_tree_model_get (model, iter,
+                        FM_LIST_MODEL_COLOR, &color,
                         -1);
 
     /*if (click_policy_auto_value == NAUTILUS_CLICK_POLICY_SINGLE) {
@@ -336,6 +362,7 @@ filename_cell_data_func (GtkTreeViewColumn *column,
     g_object_set (G_OBJECT (renderer),
                   "text", text,
                   "underline", underline,
+                  "cell-background", color,
                   NULL);
     g_free (text);
 }
@@ -563,6 +590,7 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
     fm_directory_view_class->add_file = fm_columns_view_add_file;
+    fm_directory_view_class->colorize_selection = fm_columns_view_colorize_selected_items;
 
 
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
