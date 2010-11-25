@@ -165,10 +165,6 @@ namespace Marlin.View {
             Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
             Preferences.settings.bind("show-sidebar", main_actions.get_action("Show Hide Sidebar"), "active", 0);
 
-            top_menu.view_switcher.view_changed.connect((mode) => {
-                Preferences.settings.set_enum("default-viewmode", mode);
-            });
-
             /*/
             /* Connect and abstract signals to local ones
             /*/
@@ -196,19 +192,6 @@ namespace Marlin.View {
                 tabs.set_current_page((int) offset);
             });
             
-            top_menu.view_switcher.view_changed.connect((mode) => {
-                Gtk.Action action;
-
-                //You cannot do a switch here, only for int and string
-                if (mode == ViewMode.LIST){
-                    action = main_actions.get_action("view-as-detailed-list");
-                    action.activate();
-                } else if (mode == ViewMode.MILLER){
-                    action = main_actions.get_action("view-as-columns");
-                    action.activate();
-                }
-            });
-
             /* Binding Backspace keyboard shortcut */
             unowned Gtk.BindingSet binding_set;
 
