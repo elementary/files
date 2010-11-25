@@ -30,9 +30,9 @@ namespace Marlin.View {
                                            "/org/elementary/marlin/db");
         }*/
 
-        public async void uris_set_color (string[] uris, int n) throws IOError {
+        /*public async void uris_set_color (string[] uris, int n) throws IOError {
             yield tags.uris_setColor(uris, n);
-        }
+        }*/
 
         public async void set_color (string uri, int n) throws IOError {
             if (n == 0)
