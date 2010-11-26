@@ -799,12 +799,6 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
     //klass->delete = real_delete;
 }
 
-/*void
-fm_directory_view_colorize_selection (FMDirectoryView *view, int color)
-{
-    g_signal_emit (view, signals[COLORIZE_SELECTION], 0, color);
-}*/
-
 void
 fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFile *file)
 {

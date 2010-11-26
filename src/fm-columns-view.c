@@ -105,12 +105,11 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     GOFFile *file;
     GList *file_list;
 
-    printf ("selection changed\n");
     file_list = fm_columns_view_get_selection (view);
     if (file_list == NULL)
         return;
     file = file_list->data;
-    show_selected_files (file);
+    //show_selected_files (file);
 
     /* setup the current active slot */
     fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
@@ -591,7 +590,6 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
 
     fm_directory_view_class->add_file = fm_columns_view_add_file;
     fm_directory_view_class->colorize_selection = fm_columns_view_colorize_selected_items;
-
 
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }
