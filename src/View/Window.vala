@@ -171,7 +171,10 @@ namespace Marlin.View {
             /* Connect and abstract signals to local ones
             /*/
        
-            delete_event.connect(() => { main_quit(); });
+            delete_event.connect(() => {
+            	main_quit();
+            	return false;
+            });
             
             tabs.switch_page.connect((page, offset) => {
                 change_tab(offset);
@@ -192,6 +195,8 @@ namespace Marlin.View {
 
                 change_tab(offset);                
                 tabs.set_current_page((int) offset);
+                
+                return false;
             });
             
             /* Binding Backspace keyboard shortcut */
@@ -251,6 +256,8 @@ namespace Marlin.View {
                 if(click.button == 2){
                     remove_tab(content);
                 }
+                
+                return false;
             });
             
             tabs.append_page(content, eventbox);
@@ -269,7 +276,6 @@ namespace Marlin.View {
                 tabs.show_tabs = false;
             }else if(tabs.get_children().length() == 1){
                 main_quit();
-                return;
             }
             
             tabs.remove(view_container);
