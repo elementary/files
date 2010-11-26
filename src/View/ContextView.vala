@@ -66,7 +66,7 @@ namespace Marlin.View {
             box.pack_start(information_wrap, false, false);
             
             var info = new List<Pair<string, string>>();
-            info.append(new Pair<string, string>("Type", "Information test test test"));
+            info.append(new Pair<string, string>("Type", "Information test"));
             info.append(new Pair<string, string>("Information", "Test"));
             
             update_info_list(info);
@@ -96,11 +96,15 @@ namespace Marlin.View {
         }
         
         private void update_info_list(List<Pair<string, string>> item_info){
-            information = new VBox(false, 2);        
-            
+            information = new VBox(false, 2);
+
+            Gtk.Table table = new Table (4, 2, false);
+            table.set_col_spacing (0, 10);
+            table.set_row_spacings (3);
+            information.add (table);
+
+            int n = 0;
             item_info.foreach((pair) => {
-                var pair_box = new HBox(true, 5);
-                
                 var key_alignment = new Alignment(1f, 0f, 0f, 0f);
                 var key_label = new Label(((Pair<string, string>) pair).key);
                 key_label.set_state(StateType.INSENSITIVE);
@@ -109,7 +113,7 @@ namespace Marlin.View {
                 key_label.set_line_wrap_mode(Pango.WrapMode.WORD);
                 key_alignment.add(key_label);
                 
-                pair_box.pack_start(key_alignment, true, true);
+                table.attach_defaults (key_alignment, 0, 1, 0+n, 1+n);
                 
                 var value_alignment = new Alignment(0f, 0f, 0f, 0f);
                 var value_label = new Label(((Pair<string, string>) pair).value);
@@ -118,9 +122,8 @@ namespace Marlin.View {
                 value_label.set_line_wrap_mode(Pango.WrapMode.WORD);
                 value_alignment.add(value_label);
                 
-                pair_box.pack_start(value_alignment, true, true);
-                
-                information.pack_start(pair_box, false, false);
+                table.attach_defaults (value_alignment, 1, 2, 0+n, 1+n);
+                n++;
             });
             
             information_wrap.add(information);
