@@ -39,6 +39,7 @@
 #include "eel-gtk-macros.h"
 #include "nautilus-marshal.h"
 #include "fm-columns-view.h"
+#include "marlin-private.h"
 
 enum {
     ADD_FILE,
@@ -55,6 +56,7 @@ enum {
     TRASH,
     DELETE,
     COLORIZE_SELECTION,
+    SYNC_SELECTION,
     LAST_SIGNAL
 };
 
@@ -77,8 +79,7 @@ static guint signals[LAST_SIGNAL];
 
 struct FMDirectoryViewDetails
 {
-    //NautilusWindowInfo *window;
-    //GtkWidget *window;
+    GtkWidget *window;
     GOFWindowSlot *slot;
     //GOFDirectoryAsync *directory;
     //GOFFile *directory_as_file;
@@ -459,19 +460,6 @@ fm_directory_view_set_active_slot (FMDirectoryView *dview)
     printf ("!!!!!!!!!!! %s\n", G_STRFUNC);
 }
 
-#if 0
-void
-fm_directory_view_load_parent_location (FMDirectoryView *dview)
-{
-    GFile *location, *parent;
-
-    location = gof_window_slot_get_location(dview->details->slot);
-    parent = g_file_get_parent(location);
-    if (parent != NULL)
-        gof_window_slot_change_location (dview->details->slot, parent);
-}
-#endif
-
 void
 fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location)
 {
@@ -578,7 +566,7 @@ fm_directory_view_set_property (GObject         *object,
 {
     FMDirectoryView *directory_view;
     GOFWindowSlot *slot;
-    //GtkWidget *window;
+    GtkWidget *window;
 
     directory_view = FM_DIRECTORY_VIEW (object);
 
@@ -587,11 +575,10 @@ fm_directory_view_set_property (GObject         *object,
         g_assert (directory_view->details->slot == NULL);
 
         slot = GOF_WINDOW_SLOT (g_value_get_object (value));
-        //window = nautilus_window_slot_info_get_window (slot);
-        //window = NULL;
+        window = marlin_view_view_container_get_window (MARLIN_VIEW_VIEW_CONTAINER(slot->ctab));
 
         directory_view->details->slot = slot;
-        //directory_view->details->window = window;
+        directory_view->details->window = window;
 
         g_signal_connect (slot->directory, "file_added", G_CALLBACK (file_added_callback), directory_view);
 
@@ -651,6 +638,14 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__INT,
                       G_TYPE_NONE, 1, G_TYPE_INT);
+    signals[SYNC_SELECTION] =
+        g_signal_new ("sync_selection",
+                      G_TYPE_FROM_CLASS (klass),
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (FMDirectoryViewClass, sync_selection),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__VOID,
+                      G_TYPE_NONE, 0);
 
     /*signals[BEGIN_FILE_CHANGES] =
       g_signal_new ("begin_file_changes",
@@ -804,15 +799,14 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
     //klass->delete = real_delete;
 }
 
-void
+/*void
 fm_directory_view_colorize_selection (FMDirectoryView *view, int color)
 {
-    printf ("%s\n", G_STRFUNC);
-    //g_signal_emit (view, signals[COLORIZE_SELECTION], 0);
     g_signal_emit (view, signals[COLORIZE_SELECTION], 0, color);
-    /*EEL_CALL_METHOD
-      (FM_DIRECTORY_VIEW_CLASS, view,
-      colorize_selection, (view));*/
+}*/
 
+void
+fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFile *file)
+{
+    g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", file);
 }
-

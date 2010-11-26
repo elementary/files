@@ -118,6 +118,5 @@ void            gof_window_columns_add_location (GOFWindowSlot *slot, GFile *loc
 void            gof_window_columns_add_preview (GOFWindowSlot *slot, GFile *location);
 GFile           *gof_window_slot_get_location (GOFWindowSlot *slot);
 char            *gof_window_slot_get_location_uri (GOFWindowSlot *slot);
-GtkWidget       *gof_window_slot_get_view (GOFWindowSlot *slot);
 
 #endif /* GOF_WINDOW_SLOT_H */

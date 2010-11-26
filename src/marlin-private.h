@@ -52,6 +52,7 @@ GType marlin_view_view_container_get_type (void) G_GNUC_CONST;
 
 void marlin_view_window_add_tab (MarlinViewWindow* self, GFile *location);
 MarlinViewViewContainer* marlin_view_view_container_new (GFile *location);
+GtkWidget* marlin_view_view_container_get_window (MarlinViewViewContainer* self);
 
 /*GOFWindowSlot* marlin_view_window_get_active_slot (MarlinViewWindow* self);
   void marlin_view_window_set_active_slot (MarlinViewWindow* self, GOFWindowSlot* value);*/

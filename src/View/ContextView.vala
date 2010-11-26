@@ -44,7 +44,7 @@ namespace Marlin.View {
             this.window = window;
             set_size_request(160, -1);
             
-            window.current_tab.selection_changed.connect(update);
+            window.selection_changed.connect(update);
             
             var alignment = new Gtk.Alignment(0.5f, 0.381966f, 0, 0); // Yes that is 1 - 1/golden_ratio, in doublt always golden ratio
             box = new VBox(false, 4);
@@ -90,12 +90,15 @@ namespace Marlin.View {
             file_info.get_modification_time(out modified);
             info.append(new Pair<string, string>("Modified", modified.to_iso8601()));
             
-            label.label = file_info.get_display_name();
+            //label.label = file_info.get_display_name();
+            label.label = gof_file.name;
             
             update_info_list(info);
         }
         
         private void update_info_list(List<Pair<string, string>> item_info){
+            if (information != null)
+                information_wrap.remove(information);
             information = new VBox(false, 2);
 
             Gtk.Table table = new Table (4, 2, false);

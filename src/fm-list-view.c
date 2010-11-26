@@ -156,28 +156,23 @@ row_collapsed_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 static void
 list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data)
 {
-    //FMListView *view = FM_LIST_VIEW (user_data);
-    printf ("selection changed\n");
-}
+    GtkTreeIter iter;
+    GOFFile *file = NULL;
+    FMListView *view = FM_LIST_VIEW (user_data);
 
-#if 0
-static void
-go_up (FMListView *view)
-{
-    printf("%s\n", G_STRFUNC);
-    /*
-       GOFDirectoryAsync *dir;
-       GFile *parent;
+    GList *paths = gtk_tree_selection_get_selected_rows (selection, NULL);
+    if (paths!=NULL && gtk_tree_model_get_iter (GTK_TREE_MODEL(view->model), &iter, paths->data))   
+    {
+        gtk_tree_model_get (GTK_TREE_MODEL (view->model), &iter,
+                            FM_LIST_MODEL_FILE_COLUMN, &file,
+                            -1);
+        if (file != NULL) 
+            fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view), file);
+    }
 
-       parent = g_file_get_parent(view->location);
-       if (parent != NULL) {
-       view->location = parent;
-       fm_list_view_clear(view);
-       dir = gof_directory_async_new(parent);
-       }*/
-    fm_directory_view_load_parent_location (FM_DIRECTORY_VIEW (view));
+    g_list_foreach (paths, (GFunc) gtk_tree_path_free, NULL);
+    g_list_free (paths);
 }
-#endif
 
 static void
 gof_gnome_open_single_file (GOFFile *file, GdkScreen *screen)
@@ -322,6 +317,14 @@ fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
     /*for (; *l != NULL; l=l++)
       printf ("array uri: %s\n", *l);*/
     //g_strfreev(l);
+}
+
+static void
+fm_list_view_sync_selection (FMDirectoryView *view)
+{
+    FMListView *list_view = FM_LIST_VIEW (view);
+
+    list_selection_changed_callback (gtk_tree_view_get_selection (list_view->tree), view);
 }
 
 static void
@@ -725,6 +728,7 @@ fm_list_view_class_init (FMListViewClass *klass)
 
     fm_directory_view_class->add_file = fm_list_view_add_file;
     fm_directory_view_class->colorize_selection = fm_list_view_colorize_selected_items;        
+    fm_directory_view_class->sync_selection = fm_list_view_sync_selection;
     //eel_g_settings_add_auto_boolean (settings, "single-click", &single_click);
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }

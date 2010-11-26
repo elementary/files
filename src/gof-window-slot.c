@@ -462,9 +462,3 @@ nautilus_window_slot_add_current_location_to_history_list (NautilusWindowSlot *s
 }
 #endif
 
-GtkWidget *
-gof_window_slot_get_view (GOFWindowSlot *slot)
-{
-    return (slot->view_box);
-}
-

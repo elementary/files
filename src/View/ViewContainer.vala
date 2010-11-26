@@ -37,7 +37,6 @@ namespace Marlin.View {
         public signal void up();
         public signal void back();
         public signal void forward();
-        public signal void selection_changed(GOF.File gof_file);
 
         public ViewContainer(Marlin.View.Window win, GLib.File location){
             window = win;
@@ -132,6 +131,11 @@ namespace Marlin.View {
             window.can_go_forward = browser.can_go_forward();
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
+        }
+
+        public new Gtk.Widget get_window()
+        {
+                return ((Gtk.Widget) window);
         }
     }
 }

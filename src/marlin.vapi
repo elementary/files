@@ -39,7 +39,6 @@ namespace GOF {
             public Directory.Async directory;
             public GLib.File location;
             public Widget view_box;
-            public Widget get_view ();
         }
     }
 
@@ -49,6 +48,7 @@ namespace GOF {
         public GLib.File location;
         public GLib.Icon icon;
         public GLib.FileInfo info;
+        public string name;
         public string color;
     }
 
@@ -70,7 +70,8 @@ namespace FM {
     namespace Directory {
         [CCode (cheader_filename = "fm-directory-view.h")]
         public class View : Gtk.ScrolledWindow {
-            public void colorize_selection (int color);
+            public signal void colorize_selection (int color);
+            public signal void sync_selection ();
         }
     }
 }

@@ -57,6 +57,7 @@ namespace Marlin.View {
         }
 
         //public signal void refresh();
+        public signal void selection_changed(GOF.File gof_file);
 
         public void update_action_radio_view(int n) {
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
@@ -209,6 +210,8 @@ namespace Marlin.View {
                 current_tab.update_location_state(false);
                 /* update radio action view state */
                 update_action_radio_view(current_tab.view_mode);
+                /* sync selection */
+                ((FM.Directory.View) current_tab.slot.view_box).sync_selection();
                 /* focus the main view */
                 /* FIXME not a smart move it's crashing when opening / closing tabs */
                 /*((Bin)current_tab.slot.get_view()).get_child().grab_focus();*/
