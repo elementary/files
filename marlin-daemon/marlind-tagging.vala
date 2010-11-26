@@ -74,6 +74,8 @@ public class MarlinTags : Object {
         //The database must exists, add here the full path
         print("Database path: %s \n", marlin_db_path);
         openDB(marlin_db_path);
+
+		return true;
     }
 
     private bool openDB(string dbpath){
