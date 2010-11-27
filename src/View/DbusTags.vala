@@ -13,7 +13,7 @@ namespace Marlin.View {
 
         private CTags tags;
 
-        static string[] tags_colors = { null, "red", "orange", "yellow", "green", "blue", "violet", "gray" };
+        static string[] tags_colors = { null, "#fce94f", "#fcaf3e", "#997666", "#8ae234", "#729fcf", "#ad7fa8", "#ef2929", "#d3d7cf", "#888a85" };
 
         public Tags() {
             try {

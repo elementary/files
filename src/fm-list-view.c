@@ -425,6 +425,8 @@ filename_cell_data_func (GtkTreeViewColumn *column,
 {
     char *text;
     char *color;
+    GdkRGBA rgba;
+
     //GtkTreePath *path;
     PangoUnderline underline;
 
@@ -435,6 +437,10 @@ filename_cell_data_func (GtkTreeViewColumn *column,
     gtk_tree_model_get (model, iter,
                         FM_LIST_MODEL_COLOR, &color,
                         -1);
+    if (color != NULL) {
+        gdk_rgba_parse (color, &rgba);
+        //rgba.alpha = 0.85;
+    }
 
     /*if (color) {
       GList *lrenderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT(column));
@@ -464,7 +470,8 @@ filename_cell_data_func (GtkTreeViewColumn *column,
     g_object_set (G_OBJECT (renderer),
                   "text", text,
                   "underline", underline,
-                  "cell-background", color,
+                  //"cell-background", color,
+                  "cell-background-rgba", &rgba,
                   NULL);
     g_free (text);
 }
@@ -477,13 +484,18 @@ color_row_func (GtkTreeViewColumn *column,
                 gpointer          *data)
 {
     char *color;
+    GdkRGBA rgba;
 
     gtk_tree_model_get (model, iter,
                         FM_LIST_MODEL_COLOR, &color,
                         -1);
+    if (color != NULL) {
+        gdk_rgba_parse (color, &rgba);
+        //rgba.alpha = 0.85;
+    }
 
-    g_object_set(renderer, "cell-background", color, NULL);
-    //g_object_set(renderer, "cell-background-set", FALSE, NULL);
+    //g_object_set(renderer, "cell-background", color, NULL);
+    g_object_set(renderer, "cell-background-rgba", &rgba, NULL);
     g_free (color);
 }
 

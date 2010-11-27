@@ -20,13 +20,15 @@
 		<separator/>
                 <!--<menu action="ColorMenu">-->
                     <menuitem action="set-color-clear" />
-                    <menuitem action="set-color-red" />
+                    <menuitem action="set-color-butter" />
                     <menuitem action="set-color-orange" />
-                    <menuitem action="set-color-yellow" />
-                    <menuitem action="set-color-green" />
-                    <menuitem action="set-color-blue" />
-                    <menuitem action="set-color-violet" />
-                    <menuitem action="set-color-gray" />
+                    <menuitem action="set-color-chocolate" />
+                    <menuitem action="set-color-chameleon" />
+                    <menuitem action="set-color-skyblue" />
+                    <menuitem action="set-color-plum" />
+                    <menuitem action="set-color-red" />
+                    <menuitem action="set-color-lightgray" />
+                    <menuitem action="set-color-darkgray" />
                 <!--</menu>-->
 
 		<!--<menuitem name="Preferences" action="Preferences"/>-->
