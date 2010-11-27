@@ -153,7 +153,7 @@ public class MarlinTags : Object {
     }
 
 	private string escape(string input){
-		return input.replace("'", "\\'");
+		return input.replace("'", "''");
 	}
 
     public async int getColor(string raw_uri)
@@ -191,7 +191,13 @@ public class MarlinTags : Object {
         } while (rc == Sqlite.ROW);
         //stdout.printf("[getColor]: %s\n", txt);
 
-        return txt.to_int();
+		int ret = txt.to_int();
+
+		if(ret == -1){
+			ret = 0;
+		}
+
+        return ret;
     }
 
     public async bool deleteEntry(string uri)
