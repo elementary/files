@@ -45,6 +45,14 @@ marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location)
 }
 #endif
 
+static void
+hadj_changed (GtkAdjustment *hadj, gpointer user_data)
+{
+    MarlinWindowColumns *mwcols = MARLIN_WINDOW_COLUMNS (user_data);
+    gtk_adjustment_set_value (hadj, gtk_adjustment_get_upper (hadj));
+    gtk_adjustment_value_changed (hadj);
+}
+
 MarlinWindowColumns *
 marlin_window_columns_new (GFile *location, GObject *ctab)
 {
@@ -73,6 +81,12 @@ marlin_window_columns_new (GFile *location, GObject *ctab)
                                     GTK_POLICY_NEVER);
     gtk_widget_show (mwcols->view_box);
     gtk_container_add (GTK_CONTAINER (mwcols->view_box), viewport);
+
+    GtkAdjustment *hadj;
+    hadj = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (slot->mwcols->view_box));
+    
+    /* autoscroll Miller Columns */
+    g_signal_connect(hadj, "changed", (GCallback) hadj_changed, mwcols);
 
     gof_window_column_add(slot, slot->view_box);
 
