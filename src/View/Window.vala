@@ -132,8 +132,7 @@ namespace Marlin.View {
             isize13 = icon_size_register ("15px", 15, 15);
 
             /* Sidebar */
-            //var sidebar = new Label("Sidebar");
-            var sidebar = new ContextView(this);
+            var sidebar = new Label("Sidebar");
             sidebar.set_size_request(150, -1);
 
             /* Devide main views into sidebars */

@@ -24,14 +24,15 @@
 using Gtk;
 
 namespace Marlin.View {
-    public class ViewContainer : Gtk.EventBox {
+    public class ViewContainer : Gtk.HPaned {
         public Gtk.Widget? content_item;
         public Gtk.Label label;
-        private Marlin.View.Window? window;
+        private Marlin.View.Window window;
         public GOF.Window.Slot? slot;
         public Marlin.Window.Columns? mwcol;
         Browser<string> browser;
         public int view_mode = 0;
+        private ContextView contextbar;
 
         public signal void path_changed(File file);
         public signal void up();
@@ -53,9 +54,14 @@ namespace Marlin.View {
             label.set_padding(0, 0);
             update_location_state(true);
 
-            //add(content_item);	
+            /* ContextView */
+            contextbar = new ContextView(window);
+            contextbar.set_size_request(150, -1);
 
-            this.show_all();
+            /* Devide for contextbar */
+            this.show();
+            this.pack2(contextbar, false, true);
+            //sidebar_box.set_name("app-sidebar"); //TODO where is this for? and what should it be?
 
             path_changed.connect((myfile) => {
                                  change_view(view_mode, myfile);
@@ -75,16 +81,19 @@ namespace Marlin.View {
                             change_view(view_mode, File.new_for_commandline_arg(browser.go_forward()));
                             update_location_state(false);
                             });
+
+            
         }
 
         public Widget content{
             set{
                 if (content_item != null)
                     remove(content_item);
-                add(value);
+                pack1(value, true, true);
                 content_item = value;
-                content_item.show();
+                //content_item.show();
                 ((Bin)value).get_child().grab_focus();
+                show();
             }
             get{
                 return content_item;
@@ -108,6 +117,7 @@ namespace Marlin.View {
             case ViewMode.MILLER:
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;
+                contextbar.update(null);
                 break;
             default:
                 slot = new GOF.Window.Slot(location, this);

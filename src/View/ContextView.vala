@@ -65,35 +65,38 @@ namespace Marlin.View {
             
             box.pack_start(information_wrap, false, false);
             
-            var info = new List<Pair<string, string>>();
-            info.append(new Pair<string, string>("Type", "Information test"));
-            info.append(new Pair<string, string>("Information", "Test"));
-            
-            update_info_list(info);
-            
             alignment.add(box);
             add(alignment);
             
             alignment.show_all();
         }
         
-        public void update(GOF.File gof_file){
-            var file_info = gof_file.info;
+        public void update(GOF.File? gof_file){
+            if(gof_file == null){
+                hide();
+                return;
+            }
         
+            var file_info = gof_file.info;
             Nautilus.IconInfo icon_info = Nautilus.IconInfo.lookup(gof_file.icon, 96);
             icon = icon_info.get_pixbuf_nodefault();
-            
             var info = new List<Pair<string, string>>();
-            info.append(new Pair<string, string>("Type", file_info.get_content_type()));
-            info.append(new Pair<string, string>("Size", file_info.get_size().to_string()));
+            var raw_type = file_info.get_file_type();
+            
+            info.append(new Pair<string, string>("Mimetype", file_info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE)));
+            if(raw_type != FileType.DIRECTORY)
+                info.append(new Pair<string, string>("Size", (file_info.get_size() / 1024).to_string() + " KB")); //TODO nice filesizes
+                
             TimeVal modified;
             file_info.get_modification_time(out modified);
-            info.append(new Pair<string, string>("Modified", modified.to_iso8601()));
+            info.append(new Pair<string, string>("Modified", modified.to_iso8601().replace("T", "\n").replace("Z", ""))); //TODO nice localized time
             
             //label.label = file_info.get_display_name();
             label.label = gof_file.name;
             
             update_info_list(info);
+            
+            show();
         }
         
         private void update_info_list(List<Pair<string, string>> item_info){
