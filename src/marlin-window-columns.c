@@ -63,12 +63,16 @@ marlin_window_columns_new (GFile *location, GObject *ctab)
     mwcols->colpane = gtk_hbox_new (FALSE, 0);
     slot->colpane = mwcols->colpane;
     gtk_widget_show (mwcols->colpane);
-    mwcols->view_box = gtk_scrolled_window_new(0, 0);
-    gtk_widget_show (mwcols->view_box);
-    gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW (mwcols->view_box), mwcols->colpane);
+    mwcols->view_box = gtk_scrolled_window_new (0, 0);
+    GtkWidget *viewport = gtk_viewport_new (0, 0);
+    gtk_viewport_set_shadow_type (GTK_VIEWPORT (viewport), GTK_SHADOW_NONE);
+    gtk_container_add (GTK_CONTAINER (viewport), mwcols->colpane);
+    gtk_widget_show (viewport);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (mwcols->view_box),
                                     GTK_POLICY_AUTOMATIC,
                                     GTK_POLICY_NEVER);
+    gtk_widget_show (mwcols->view_box);
+    gtk_container_add (GTK_CONTAINER (mwcols->view_box), viewport);
 
     gof_window_column_add(slot, slot->view_box);
 
