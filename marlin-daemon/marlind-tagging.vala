@@ -134,10 +134,11 @@ public class MarlinTags : Object {
         }
     }*/
 
-    public async bool setColor(string uri, int color){
+    public async bool setColor(string raw_uri, int color){
         Idle.add (setColor.callback);
         yield;
         string c = "";
+		var uri = escape(raw_uri);
 
         c = "insert or replace into tags(uri,color) values ('"+uri+"',"+color.to_string()+")";	
 
@@ -151,10 +152,15 @@ public class MarlinTags : Object {
         return true;		
     }
 
-    public async int getColor(string uri)
+	private string escape(string input){
+		return input.replace("'", "\\'");
+	}
+
+    public async int getColor(string raw_uri)
     {
         Idle.add (getColor.callback);
         yield;
+		var uri = escape(raw_uri);
         string c = "select color from tags where uri='" + uri + "'";
         Statement stmt;
         int rc = 0;
