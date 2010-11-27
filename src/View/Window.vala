@@ -141,6 +141,7 @@ namespace Marlin.View {
             main_box.show();
             main_box.pack1(sidebar, false, true);
             main_box.pack2(tabs, true, true);
+            main_box.set_name("app-sidebar");
             //main_box.set_position(196);
 
             /*/
