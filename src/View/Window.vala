@@ -230,6 +230,9 @@ namespace Marlin.View {
                 update_action_radio_view(current_tab.view_mode);
                 /* sync selection */
                 ((FM.Directory.View) current_tab.slot.view_box).sync_selection();
+                /* sync ContextView */
+                current_tab.sync_contextview();
+
                 /* focus the main view */
                 /* FIXME not a smart move it's crashing when opening / closing tabs */
                 /*((Bin)current_tab.slot.get_view()).get_child().grab_focus();*/
