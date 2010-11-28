@@ -42,14 +42,16 @@ namespace Marlin.View {
     
         public ContextView(Window window){
             this.window = window;
-            set_size_request(160, -1);
+            set_size_request(150, -1);
             
             window.selection_changed.connect(update);
             
             var alignment = new Gtk.Alignment(0.5f, 0.381966f, 0, 0); // Yes that is 1 - 1/golden_ratio, in doublt always golden ratio
             box = new VBox(false, 4);
               
-            image = new Image.from_stock(Stock.INFO, icon_size_register ("", 128, 128));
+            image = new Image.from_stock(Stock.INFO, window.isize128);
+                                         /*icon_size_from_name ("128px"));
+                                         icon_size_register ("128px", 128, 128));*/
             image.set_size_request(-1, 128+24);
             box.pack_start(image, false, false);
             
@@ -69,7 +71,6 @@ namespace Marlin.View {
             add(alignment);
             
             alignment.show_all();
-            set_size_request(150, -1);
         }
         
         public void update(GOF.File? gof_file){

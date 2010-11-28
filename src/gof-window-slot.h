@@ -115,7 +115,7 @@ GOFWindowSlot   *gof_window_slot_column_new (GFile *location, GObject *ctab);
 
 void            gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column);
 void            gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location);
-void            gof_window_columns_add_preview (GOFWindowSlot *slot, GFile *location);
+void            gof_window_columns_add_preview (GOFWindowSlot *slot, GtkWidget *context_view);
 GFile           *gof_window_slot_get_location (GOFWindowSlot *slot);
 char            *gof_window_slot_get_location_uri (GOFWindowSlot *slot);
 

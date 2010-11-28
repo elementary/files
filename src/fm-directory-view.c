@@ -444,14 +444,20 @@ fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location)
 }
 
 void
-fm_directory_view_column_add_preview (FMDirectoryView *dview, GFile *location)
+fm_directory_view_column_add_preview (FMDirectoryView *dview, GOFFile *file)
 {
-    gof_window_columns_add_preview(dview->details->slot, location);
+    GtkWidget *contextview = marlin_view_context_view_new (MARLIN_VIEW_WINDOW (dview->details->window));
+    marlin_view_context_view_update (MARLIN_VIEW_CONTEXT_VIEW (contextview), file);
+    /* resize context view to match the default columns size 180+2 border px */
+    gtk_widget_set_size_request (contextview, 182, -1);
+    gof_window_columns_add_preview(dview->details->slot, contextview);
 }
 
 void
 fm_directory_view_set_active_slot (FMDirectoryView *dview)
 {
+    /* TODO check and remove this dead function */
+
     GOFWindowSlot *slot = dview->details->slot;
     //marlin_window_set_active_slot (MARLIN_WINDOW (slot->window), slot);
     /*marlin_view_window_set_active_slot (MARLIN_VIEW_WINDOW (slot->window), slot);

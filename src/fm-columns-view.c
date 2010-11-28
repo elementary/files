@@ -116,7 +116,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     if (file->is_directory)
         fm_directory_view_column_add_location (FM_DIRECTORY_VIEW (view), file->location);
     else
-        fm_directory_view_column_add_preview (FM_DIRECTORY_VIEW (view), file->location);
+        fm_directory_view_column_add_preview (FM_DIRECTORY_VIEW (view), file);
 }
 
 static void

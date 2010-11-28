@@ -172,10 +172,10 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
 }
 
 void
-gof_window_columns_add_preview (GOFWindowSlot *slot, GFile *location)
+gof_window_columns_add_preview (GOFWindowSlot *slot, GtkWidget *context_view)
 {
-    printf ("%s\n", G_STRFUNC);
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
+    gtk_container_add(GTK_CONTAINER(slot->colpane), context_view);
 }
 
 static void

@@ -73,4 +73,17 @@ MarlinViewTags* marlin_view_tags_new (void);
 void marlin_view_tags_set_color (MarlinViewTags* self, const gchar* uri, gint n, GError** error);
 gint marlin_view_tags_get_color (MarlinViewTags* self, const gchar* uri, GOFFile *file, GError** error);
 
+#define MARLIN_VIEW_TYPE_CONTEXT_VIEW (marlin_view_context_view_get_type ())
+#define MARLIN_VIEW_CONTEXT_VIEW(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), MARLIN_VIEW_TYPE_CONTEXT_VIEW, MarlinViewContextView))
+#define MARLIN_VIEW_CONTEXT_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), MARLIN_VIEW_TYPE_CONTEXT_VIEW, MarlinViewContextViewClass))
+#define MARLIN_VIEW_IS_CONTEXT_VIEW(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MARLIN_VIEW_TYPE_CONTEXT_VIEW))
+#define MARLIN_VIEW_IS_CONTEXT_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), MARLIN_VIEW_TYPE_CONTEXT_VIEW))
+#define MARLIN_VIEW_CONTEXT_VIEW_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), MARLIN_VIEW_TYPE_CONTEXT_VIEW, MarlinViewContextViewClass))
+
+typedef struct _MarlinViewContextView MarlinViewContextView;
+typedef struct _MarlinViewContextViewClass MarlinViewContextViewClass;
+
+MarlinViewContextView* marlin_view_context_view_new (MarlinViewWindow* window);
+void marlin_view_context_view_update (MarlinViewContextView* self, GOFFile* gof_file);
+
 #endif /* MARLIN_PRIVATE_H */

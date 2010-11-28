@@ -31,7 +31,8 @@ namespace Marlin.View {
         public Widget menu_bar;
         public Chrome.TopMenu top_menu;
         public Notebook tabs;
-        private IconSize isize13;
+        private IconSize isize15;
+        public IconSize isize128;
         
         public ViewContainer current_tab;
         public HPaned main_box;
@@ -131,7 +132,9 @@ namespace Marlin.View {
             tabs.show();
             
             //view = new View();
-            isize13 = icon_size_register ("15px", 15, 15);
+            /* register icon sizes */
+            isize15 = icon_size_register ("15px", 15, 15);
+            isize128 = icon_size_register ("128px", 128, 128);
 
             /* Sidebar */
             var sidebar = new Label("Sidebar");
@@ -240,7 +243,7 @@ namespace Marlin.View {
             //var image = new Image.from_stock(Stock.CLOSE, IconSize.MENU);
             //var image = new Image.from_stock(Stock.CLOSE, IconSize.BUTTON);
             /* TODO reduce the size of the tab */
-            var image = new Image.from_stock(Stock.CLOSE, isize13);
+            var image = new Image.from_stock(Stock.CLOSE, isize15);
             var button = new Button();
             button.set_relief(ReliefStyle.NONE);
             button.set_focus_on_click(false);
