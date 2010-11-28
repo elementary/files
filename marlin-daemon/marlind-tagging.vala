@@ -138,7 +138,7 @@ public class MarlinTags : Object {
         Idle.add (setColor.callback);
         yield;
         string c = "";
-		var uri = escape(raw_uri);
+    	var uri = escape(raw_uri);
 
         c = "insert or replace into tags(uri,color) values ('"+uri+"',"+color.to_string()+")";	
 
@@ -153,7 +153,7 @@ public class MarlinTags : Object {
     }
 
 	private string escape(string input){
-		return input.replace("'", "''");
+        return input.replace("'", "''");
 	}
 
     public async int getColor(string raw_uri)
@@ -165,7 +165,6 @@ public class MarlinTags : Object {
         Statement stmt;
         int rc = 0;
         int col, cols;
-        //string txt = "-1";
         string txt = "0";
 
         if ((rc = db.prepare_v2 (c, -1, out stmt, null)) == 1) {
@@ -191,9 +190,9 @@ public class MarlinTags : Object {
         } while (rc == Sqlite.ROW);
         //stdout.printf("[getColor]: %s\n", txt);
 
-		int ret = txt.to_int();
-
-		if(ret == -1){
+	    int ret = txt.to_int();
+        /* It appears that a db error return -1, we got to check the value just in case */
+	    if(ret == -1){
 			ret = 0;
 		}
 
