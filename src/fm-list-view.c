@@ -166,9 +166,9 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
         gtk_tree_model_get (GTK_TREE_MODEL (view->model), &iter,
                             FM_LIST_MODEL_FILE_COLUMN, &file,
                             -1);
-        if (file != NULL) 
-            fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view), file);
+        //if (file != NULL) 
     }
+    fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view), file);
 
     g_list_foreach (paths, (GFunc) gtk_tree_path_free, NULL);
     g_list_free (paths);

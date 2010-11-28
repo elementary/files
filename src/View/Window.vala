@@ -60,7 +60,7 @@ namespace Marlin.View {
         }
 
         //public signal void refresh();
-        public signal void selection_changed(GOF.File gof_file);
+        public signal void selection_changed(GOF.File? gof_file);
 
         public void update_action_radio_view(int n) {
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
