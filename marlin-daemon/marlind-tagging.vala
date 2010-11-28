@@ -49,7 +49,8 @@ public class MarlinTags : Object {
         error("%s: [%d] %s", op, res, db.errmsg());
     }
 
-    private static int show_table_callback (int n_columns, string[] values, string[] column_names){
+    private static int show_table_callback (int n_columns, string[] values, string[] column_names)
+    {
         for (int i = 0; i < n_columns; i++) {
             stdout.printf ("%s = %s\n", column_names[i], values[i]);
         }
@@ -75,7 +76,7 @@ public class MarlinTags : Object {
         print("Database path: %s \n", marlin_db_path);
         openDB(marlin_db_path);
 
-		return true;
+        return true;
     }
 
     private bool openDB(string dbpath){
@@ -152,9 +153,9 @@ public class MarlinTags : Object {
         return true;		
     }
 
-	private string escape(string input){
+    private string escape(string input){
         return input.replace("'", "''");
-	}
+    }
 
     public async int getColor(string raw_uri)
     {
@@ -190,11 +191,11 @@ public class MarlinTags : Object {
         } while (rc == Sqlite.ROW);
         //stdout.printf("[getColor]: %s\n", txt);
 
-	    int ret = txt.to_int();
+	int ret = txt.to_int();
         /* It appears that a db error return -1, we got to check the value just in case */
-	    if(ret == -1){
-			ret = 0;
-		}
+	if(ret == -1){
+	    ret = 0;
+	}
 
         return ret;
     }
