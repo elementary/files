@@ -34,6 +34,7 @@ namespace Marlin.View {
         private IconSize isize13;
         
         public ViewContainer current_tab;
+        private ContextView contextview;
 
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
@@ -134,13 +135,21 @@ namespace Marlin.View {
             /* Sidebar */
             var sidebar = new Label("Sidebar");
             sidebar.set_size_request(150, -1);
+            contextview = new ContextView(this);
+            contextview.set_size_request(150, -1);
 
             /* Devide main views into sidebars */
             var main_box = new HPaned();
             main_box.show();
-            main_box.pack1(sidebar, false, true);
-            main_box.pack2(tabs, true, true);
-            main_box.set_name("app-sidebar");
+            var lside_pane = new HPaned();
+            lside_pane.show();
+
+            lside_pane.pack1(sidebar, false, true);
+            lside_pane.pack2(main_box, true, true);
+
+            main_box.pack1(tabs, true, true);
+            main_box.pack2(contextview, false, true);
+            main_box.set_name("app-sidebar"); /* TODO remove later if uneeded - test theming */
             //main_box.set_position(196);
 
             /*/
@@ -151,7 +160,7 @@ namespace Marlin.View {
             window_box.show();
             window_box.pack_start(menu_bar, false, false, 0);
             window_box.pack_start(top_menu, false, false, 0);
-            window_box.pack_start(main_box, true, true, 0);
+            window_box.pack_start(lside_pane, true, true, 0);
 
             add(window_box);
             set_default_size(760, 450);
