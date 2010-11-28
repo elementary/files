@@ -66,8 +66,6 @@ enum {
     FM_LIST_MODEL_NUM_COLUMNS
 };
 
-const gchar *colred = "red";
-
 
 //static void gof_file_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec);
 //static void gof_file_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec);
@@ -142,7 +140,6 @@ gint gof_file_SizeCompareFunc (GOFFile* a, GOFFile* b) {
 }
 #endif
 
-//GOFFile* gof_file_new (GFileInfo* file_info, GFileEnumerator *enumerator)
 GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
 {
     GOFFile * self;
@@ -156,16 +153,18 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
     //printf ("test parent_dir %s\n", g_file_get_uri(self->directory));
     //g_object_ref (self->directory);
     self->name = g_file_info_get_name (file_info);
+    self->is_hidden = g_file_info_get_is_hidden (file_info);
+    /* don't waste time on collecting data for hidden files which would be dropped */
+    if (self->is_hidden && !g_settings_get_boolean(settings, "show-hiddenfiles"))
+        return self;
     self->location = g_file_get_child(self->directory, self->name);
     self->ftype = g_file_info_get_attribute_string (file_info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
     self->utf8_collation_key = g_utf8_collate_key (self->name, -1);
     self->size = (guint64) g_file_info_get_size (file_info);
     self->format_size = g_format_size_for_display(self->size);
     self->file_type = g_file_info_get_file_type(file_info);
-    //self->is_directory = (self->file_type & G_FILE_TYPE_DIRECTORY) != 0;
     self->is_directory = (self->file_type == G_FILE_TYPE_DIRECTORY);
     self->icon = g_content_type_get_icon (self->ftype);
-    self->is_hidden = g_file_info_get_is_hidden (file_info);
     self->modified = g_file_info_get_attribute_uint64 (file_info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
     self->formated_modified = gof_file_get_date_as_string (self->modified);
 
@@ -173,7 +172,6 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
     self->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
     g_object_unref (nicon);
 
-    //self->color = colred;
     self->color = NULL;
 
     return self;
