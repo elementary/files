@@ -34,7 +34,8 @@ namespace Marlin.View {
         private IconSize isize13;
         
         public ViewContainer current_tab;
-        private ContextView contextview;
+        public HPaned main_box;
+        public ContextView contextview;
 
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
@@ -136,10 +137,10 @@ namespace Marlin.View {
             var sidebar = new Label("Sidebar");
             sidebar.set_size_request(150, -1);
             contextview = new ContextView(this);
-            contextview.set_size_request(150, -1);
+            //contextview.set_size_request(150, -1);
 
             /* Devide main views into sidebars */
-            var main_box = new HPaned();
+            main_box = new HPaned();
             main_box.show();
             var lside_pane = new HPaned();
             lside_pane.show();

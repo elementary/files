@@ -106,10 +106,18 @@ namespace Marlin.View {
             slot.directory.cancel();
             switch (nview) {
             case ViewMode.MILLER:
+                if (window.contextview != null) {
+                    window.main_box.remove (window.contextview);
+                    window.contextview = null;
+                }
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;
                 break;
             default:
+                if (window.contextview == null) {
+                    window.contextview = new ContextView(window);
+                    window.main_box.pack2(window.contextview, false, true);
+                }
                 slot = new GOF.Window.Slot(location, this);
                 break;
             }

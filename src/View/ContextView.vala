@@ -69,6 +69,7 @@ namespace Marlin.View {
             add(alignment);
             
             alignment.show_all();
+            set_size_request(150, -1);
         }
         
         public void update(GOF.File? gof_file){
