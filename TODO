@@ -1,9 +1,7 @@
 This is a short TODO list.
 
 - open in new tab, folder opened with middle click button.
-- add 2 empty sidebars on the left and on the right from the main view. They should be toggable from a shortcut key F9 and ?
 - add popup menu for back/forward arrow toolbar button with the history from the 2 stacks on long click or right click: extend Browser class.
-- build the preview last column in columns view, reuse the functionality in the right sidebar for others view. add metadata infos, rating, tagging.
 - add completion on the pathbar location, cf thunar they got a nice popup menu.
 - start adding other signals for deleted files etc
 - add drag & drop on the list view
