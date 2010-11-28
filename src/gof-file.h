@@ -61,6 +61,7 @@ struct _GOFFile {
     GIcon           *icon;
     GdkPixbuf       *pix;
     guint64         modified;
+    gchar           *formated_modified;
     const gchar     *color;
 };
 
@@ -70,8 +71,6 @@ struct _GOFFileClass {
 
 GType gof_file_get_type (void);
 
-//GOFFile*        gof_file_new (GFileInfo* file_info);
-//GOFFile* gof_file_new (GFileInfo* file_info, GFileEnumerator *enumerator);
 GOFFile*        gof_file_new (GFileInfo* file_info, GFile *dir);
 GFileInfo*      gof_file_get_file_info (GOFFile* self);
 gint            gof_file_NameCompareFunc (GOFFile* a, GOFFile* b);

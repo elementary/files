@@ -167,6 +167,7 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
     self->icon = g_content_type_get_icon (self->ftype);
     self->is_hidden = g_file_info_get_is_hidden (file_info);
     self->modified = g_file_info_get_attribute_uint64 (file_info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+    self->formated_modified = gof_file_get_date_as_string (self->modified);
 
     nicon = nautilus_icon_info_lookup (self->icon, 16);
     self->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
@@ -199,6 +200,7 @@ static void gof_file_finalize (GObject* obj) {
     _g_object_unref0 (file->location);
     g_free(file->utf8_collation_key);
     g_free(file->format_size);
+    g_free(file->formated_modified);
     _g_object_unref0 (file->icon);
     _g_object_unref0 (file->pix);
 

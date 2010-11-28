@@ -50,8 +50,6 @@ namespace Marlin.View {
             box = new VBox(false, 4);
               
             image = new Image.from_stock(Stock.INFO, window.isize128);
-                                         /*icon_size_from_name ("128px"));
-                                         icon_size_register ("128px", 128, 128));*/
             image.set_size_request(-1, 128+24);
             box.pack_start(image, false, false);
             
@@ -85,13 +83,13 @@ namespace Marlin.View {
             var info = new List<Pair<string, string>>();
             var raw_type = file_info.get_file_type();
             
+            /* TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
+               we are in listview: size, type, modified */
             info.append(new Pair<string, string>("Mimetype", file_info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE)));
             if(raw_type != FileType.DIRECTORY)
-                info.append(new Pair<string, string>("Size", (file_info.get_size() / 1024).to_string() + " KB")); //TODO nice filesizes
-                
-            TimeVal modified;
-            file_info.get_modification_time(out modified);
-            info.append(new Pair<string, string>("Modified", modified.to_iso8601().replace("T", "\n").replace("Z", ""))); //TODO nice localized time
+                info.append(new Pair<string, string>("Size", gof_file.format_size));
+            /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
+            info.append(new Pair<string, string>("Modified", gof_file.formated_modified.replace(" ", "\n")));
             
             //label.label = file_info.get_display_name();
             label.label = gof_file.name;

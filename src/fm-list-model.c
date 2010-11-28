@@ -340,7 +340,7 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
     case FM_LIST_MODEL_MODIFIED:
         g_value_init (value, G_TYPE_STRING);
         if (file != NULL)
-            g_value_set_string(value, gof_file_get_date_as_string (file->modified));
+            g_value_set_string(value, file->formated_modified);
         break;
 
     }

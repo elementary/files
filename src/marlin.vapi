@@ -42,14 +42,17 @@ namespace GOF {
         }
     }
 
-    [CCode (cprefix = "GOFFile", lower_case_cprefix = "gof_file_", cheader_filename = "gof-file.h")]
+    [CCode (cprefix = "GOFFile", lower_case_cprefix = "gof_file_")]
+    [CCode (cheader_filename = "gof-file.h")]
     public class File : GLib.Object {
         public File(GLib.FileInfo file_info, GLib.File dir);
         public GLib.File location;
         public GLib.Icon icon;
         public GLib.FileInfo info;
         public string name;
+        public string format_size;
         public string color;
+        public string formated_modified;
     }
 
     [CCode (cprefix = "GOFDirectoryAsync", lower_case_cprefix = "gof_directory_")]
