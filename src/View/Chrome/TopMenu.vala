@@ -26,7 +26,7 @@ namespace Marlin.View.Chrome
     {
         public ViewSwitcher? view_switcher;
         public Gtk.Menu compact_menu;
-        public CompactMenuButton compact_menu_button;
+        public CompactToolMenuButton compact_tool_menu_button;
         public LocationBar? location_bar;
         public Window win;
 
@@ -35,7 +35,7 @@ namespace Marlin.View.Chrome
             win = window;
             
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
-            compact_menu_button = new CompactMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
+            compact_tool_menu_button = new CompactToolMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
             setup_items();
             show();
         }
@@ -86,7 +86,7 @@ namespace Marlin.View.Chrome
             }
 
             /*refresh = new ToolButton.from_stock(Stock.REFRESH);*/
-            insert(compact_menu_button, -1);
+            insert(compact_tool_menu_button, -1);
         }
 
         private void toolitems_destroy (Gtk.Widget? w) {

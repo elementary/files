@@ -339,9 +339,9 @@ namespace Marlin.View {
             bool vis = true;
             menu_bar.get("visible", &vis);
             if (vis)
-                top_menu.compact_menu_button.hide();
+                top_menu.compact_tool_menu_button.hide();
             else
-                top_menu.compact_menu_button.show_all();
+                top_menu.compact_tool_menu_button.show_all();
         }
 
         /*private void action_show_hide_sidebar (Gtk.Action action) {

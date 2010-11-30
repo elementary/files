@@ -2,48 +2,42 @@ using Gtk;
 
 namespace Marlin.View.Chrome {
 
-    public class CompactMenuButton : ToggleToolButton
+    public abstract class ToolButtonWithMenu : ToggleToolButton
     {
-        Menu menu;
-
-        public CompactMenuButton.from_stock (string stock_image, IconSize size, string label, Menu m)
-        {
-            Image image = new Image.from_stock(stock_image, size);
-
-            this(image, label, m);
+        protected Menu menu;
+        private PositionType _menu_orientation;
+        protected PositionType menu_orientation{
+            set{
+                if(value == PositionType.TOP || value == PositionType.BOTTOM){
+                    value = PositionType.LEFT;
+                }
+                
+                _menu_orientation = value;
+            }
+            get{
+                return _menu_orientation;
+            }
         }
 
-        public CompactMenuButton (Image image, string label, Menu _menu)
+        public ToolButtonWithMenu (Image image, string label, Menu _menu, PositionType menu_orientation = PositionType.LEFT)
         {
+            this.menu_orientation = menu_orientation;
+        
             icon_widget = image;
-            Label l = new Label (label);
-            l.use_underline = true;
-            label_widget = l;
+            label_widget = new Label (label);
+            ((Label) label_widget).use_underline = true;
             can_focus = true;
             menu = _menu;
             menu.attach_to_widget (this, null);
             menu.deactivate.connect(() => {
-                                    active = false;
-                                    });
+                active = false;
+            });
 
-            clicked.connect(on_clicked);
-            button_press_event.connect(on_button_press_event);
             mnemonic_activate.connect(on_mnemonic_activate);
+            menu.deactivate.connect(popdown_menu);
         }
 
-        protected bool on_button_press_event (Gdk.EventButton ev)
-        {
-            custom_popup_menu (ev);
-            return true;
-        }
-
-        protected void on_clicked ()
-        {
-            menu.select_first (true);
-            custom_popup_menu (null);
-        }
-
-        protected bool on_mnemonic_activate (bool group_cycling)
+        private bool on_mnemonic_activate (bool group_cycling)
         {
             // ToggleButton always grabs focus away from the editor,
             // so reimplement Widget's version, which only grabs the
@@ -57,10 +51,8 @@ namespace Marlin.View.Chrome {
             return true;
         }
 
-
-        void custom_popup_menu(Gdk.EventButton? ev /*, GetMenuPosition */)
+        protected void popup_menu(Gdk.EventButton? ev)
         {
-            menu.deactivate.connect(deactivate_menu);
             try {
                 menu.popup (null,
                             null,
@@ -74,7 +66,7 @@ namespace Marlin.View.Chrome {
             }
         }
 
-        void deactivate_menu ()
+        protected void popdown_menu ()
         {
             menu.popdown ();
 
@@ -83,7 +75,7 @@ namespace Marlin.View.Chrome {
                 menu.attach_widget.set_state(Gtk.StateType.NORMAL);
         }
 
-        void get_menu_position (Menu menu, out int x, out int y, out bool push_in)
+        private void get_menu_position (Menu menu, out int x, out int y, out bool push_in)
         {
             if (menu.attach_widget == null ||
                 menu.attach_widget.get_window() == null) {
