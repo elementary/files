@@ -160,7 +160,7 @@ gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
 void
 gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
 {
-    printf ("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     slot->mwcols->active_slot = slot;
     //GList *childs = gtk_container_get_children (slot->colpane);
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
@@ -181,7 +181,7 @@ gof_window_columns_add_preview (GOFWindowSlot *slot, GtkWidget *context_view)
 static void
 gof_window_slot_finalize (GObject *object)
 {
-    printf ("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     GOFWindowSlot *slot = GOF_WINDOW_SLOT (object);
 
     //load_dir_async_cancel(slot->directory);

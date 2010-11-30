@@ -39,7 +39,7 @@
 #include "eel-gtk-macros.h"
 #include "nautilus-marshal.h"
 #include "fm-columns-view.h"
-#include "marlin-private.h"
+#include "marlin-vala.h"
 
 enum {
     ADD_FILE,
@@ -379,7 +379,7 @@ fm_directory_view_destroy (GtkWidget *object)
     //GList *node, *next;
 
     view = FM_DIRECTORY_VIEW (object);
-    printf ("$$ %s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
 
     //disconnect_model_handlers (view);
 
@@ -403,7 +403,7 @@ fm_directory_view_finalize (GObject *object)
     FMDirectoryView *view;
 
     view = FM_DIRECTORY_VIEW (object);
-    printf ("$$ %s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
 
     /*eel_preferences_remove_callback (NAUTILUS_PREFERENCES_CONFIRM_TRASH,
       schedule_update_menus_callback, view);
@@ -463,7 +463,7 @@ fm_directory_view_set_active_slot (FMDirectoryView *dview)
     /*marlin_view_window_set_active_slot (MARLIN_VIEW_WINDOW (slot->window), slot);
       g_signal_emit_by_name (slot->window, "column-path-changed", slot->location);*/
 
-    printf ("!!!!!!!!!!! %s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "!!!!!!!!!!! %s\n", G_STRFUNC);
 }
 
 void
@@ -496,13 +496,13 @@ fm_directory_view_handle_scroll_event (FMDirectoryView *directory_view,
         case GDK_SCROLL_UP:
             /* Zoom In */
             //fm_directory_view_bump_zoom_level (directory_view, 1);
-            printf ("TODO zoom in");
+            log_printf (LOG_LEVEL_UNDEFINED, "TODO zoom in");
             return TRUE;
 
         case GDK_SCROLL_DOWN:
             /* Zoom Out */
             //fm_directory_view_bump_zoom_level (directory_view, -1);
-            printf ("TODO zoom out");
+            log_printf (LOG_LEVEL_UNDEFINED, "TODO zoom out");
             return TRUE;
 
         case GDK_SCROLL_LEFT:

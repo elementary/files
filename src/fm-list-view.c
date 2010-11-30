@@ -74,7 +74,7 @@ unload_file_timeout (gpointer data)
 
     path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), iter);
     if (!gtk_tree_view_row_expanded (view->tree, path)) {
-        printf ("unloadn");
+        log_printf (LOG_LEVEL_UNDEFINED, "unloadn");
         fm_list_model_unload_subdirectory (view->model, iter);
     }
     if (path != NULL)
@@ -137,7 +137,7 @@ row_collapsed_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 
     fm_list_model_get_directory_file (view->model, path, &unload_data->directory, &unload_data->file);
 
-    //printf ("collapsed %s %s\n", unload_data->file->name, gof_directory_get_uri(unload_data->directory));
+    //log_printf (LOG_LEVEL_UNDEFINED, "collapsed %s %s\n", unload_data->file->name, gof_directory_get_uri(unload_data->directory));
 
     eel_add_weak_pointer (&unload_data->view);
     g_timeout_add_seconds (COLLAPSE_TO_UNLOAD_DELAY,
@@ -150,7 +150,7 @@ row_collapsed_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 /*static void
   show_selected_files (GOFFile *file)
   {
-  printf ("selected: %s\n", file->name);
+  log_printf (LOG_LEVEL_UNDEFINED, "selected: %s\n", file->name);
   }*/
 
 static void
@@ -193,7 +193,7 @@ gof_gnome_open_single_file (GOFFile *file, GdkScreen *screen)
     }
     else
     {
-        printf ("non native\n");
+        log_printf (LOG_LEVEL_UNDEFINED, "non native\n");
 
         /* FIXME: work with all apps supporting gio 
            don't work with archives: opening a zip from trash with
@@ -273,7 +273,7 @@ activate_selected_items (FMListView *view)
                 file = file_list->data;
                 if (file->is_directory) {
                     /* TODO open dirs in new tabs */
-                    printf ("open dir - new tab? %s\n", file->name);
+                    log_printf (LOG_LEVEL_UNDEFINED, "open dir - new tab? %s\n", file->name);
                 } else {
                     gof_gnome_open_single_file (file, screen);
                 }
@@ -286,7 +286,7 @@ activate_selected_items (FMListView *view)
 static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMListView *view)
 {
-    printf ("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     activate_selected_items (view);
 }
 
@@ -309,13 +309,13 @@ fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
         file->color = tags_colors[ncolor];
         uri = g_file_get_uri(file->location);
         //*array = uri;
-        marlin_view_tags_set_color (tags, uri, ncolor, NULL);
+        marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
         g_free (uri);
     }
     /**array = NULL;
       marlin_view_tags_uris_set_color (tags, l, array_length, ncolor, NULL);*/
     /*for (; *l != NULL; l=l++)
-      printf ("array uri: %s\n", *l);*/
+      log_printf (LOG_LEVEL_UNDEFINED, "array uri: %s\n", *l);*/
     //g_strfreev(l);
 }
 
@@ -332,7 +332,7 @@ subdirectory_unloaded_callback (FMListModel *model,
                                 GOFDirectoryAsync *directory,
                                 gpointer callback_data)
 {
-    printf ("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     FMListView *view;
 
     g_return_if_fail (FM_IS_LIST_MODEL (model));
@@ -706,7 +706,7 @@ fm_list_view_finalize (GObject *object)
 {
     FMListView *view = FM_LIST_VIEW (object);
 
-    printf ("$$ %s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
 
     g_object_unref (view->model);
     //g_free (view->details);

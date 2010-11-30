@@ -6,7 +6,7 @@
 //#include <libintl.h>
 #include "marlin-global-preferences.h" 
 #include "marlin-view-window.h"
-#include "marlin-private.h"
+#include "marlin-vala.h"
 #include "marlin-tags.h"
 
 //static void     marlin_view_window_up (MarlinViewWindow *window);
@@ -23,6 +23,10 @@ main (int argc, char *argv[])
     GtkWidget       *btn;
     GtkWidget       *entry;
     gchar           *path;
+    
+    log_println (LOG_LEVEL_INFO, "Welcome to Marlin");
+    log_println (LOG_LEVEL_INFO, "Version: %s", "0.1");
+    log_println (LOG_LEVEL_INFO, "Report any issues/bugs you might find to lp:marlin", "0.1");
 
     gtk_init (&argc, &argv);
     /* Initialize gettext support */
@@ -34,7 +38,7 @@ main (int argc, char *argv[])
     settings = g_settings_new ("org.gnome.marlin.preferences");
     tags = marlin_view_tags_new ();
     /*gboolean showall = g_settings_get_boolean (settings, "showall");
-      printf ("test gsettings showall: %d\n", showall);*/
+      log_printf (LOG_LEVEL_UNDEFINED, "test gsettings showall: %d\n", showall);*/
 
     /*window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
       gtk_window_set_title (GTK_WINDOW (window), "marlin");
@@ -97,7 +101,7 @@ marlin_view_window_up (MarlinViewWindow *window)
     //g_signal_emit_by_name (window, "path-changed", "/home/am/Images");
     g_signal_emit_by_name (window, "path-changed", parent);
     g_object_unref (parent);
-    printf ("!!!!!!!! %s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "!!!!!!!! %s\n", G_STRFUNC);
 }
 #endif
 
@@ -105,7 +109,7 @@ marlin_view_window_up (MarlinViewWindow *window)
    static void
    marlin_view_window_back (MarlinViewWindow *window)
    {
-   printf ("%s\n", G_STRFUNC);
+   log_printf (LOG_LEVEL_INFO, "%s\n", G_STRFUNC);
    }*/
 
 #if 0

@@ -24,6 +24,7 @@
 //#include "fm-list-model.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
 #include "marlin-global-preferences.h"
+#include "marlin-vala.h"
 
 struct GOFDirectoryAsyncPrivate {
     //GTimer          *timer;
@@ -101,7 +102,7 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
                                        G_PRIORITY_DEFAULT,
                                        NULL, NULL, NULL);
 
-        printf ("%s ended\n", G_STRFUNC);
+        log_printf (LOG_LEVEL_UNDEFINED, "%s ended\n", G_STRFUNC);
         g_signal_emit (dir, signals[DONE_LOADING], 0);
         /*folder->finished_loading = TRUE;
           g_signal_emit_by_name (dir, "finished-loading", 0);*/
@@ -116,14 +117,14 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
         //g_object_unref (goff);
 #if 0
         const gchar *name = g_file_info_get_name (info);
-        //gchar *size = g_strconcat (g_strdup_printf ("%i", ((gint) g_file_info_get_size (info)) / 1024), "KiB", NULL);
+        //gchar *size = g_strconcat (g_strdup_log_printf (LOG_LEVEL_UNDEFINED, "%i", ((gint) g_file_info_get_size (info)) / 1024), "KiB", NULL);
         gchar *size = g_format_size_for_display(g_file_info_get_size(info));
         if (g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY)
             size = "<dir>";
         const gchar *ftype = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
         GIcon *icon = g_content_type_get_icon (ftype);
         //gchar *picon = g_icon_to_string (icon);
-        //printf ("%s %s\n", name, picon);
+        //log_printf (LOG_LEVEL_UNDEFINED, "%s %s\n", name, picon);
 #endif
 #if 0
         GtkIconTheme *icon_theme = gtk_icon_theme_get_default ();
@@ -142,7 +143,7 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
         /* TODO: handle hidden files differently */
         if (!goff->is_hidden || g_settings_get_boolean(settings, "show-hiddenfiles"))
         {
-            //printf ("%s\n", goff->name);
+            //log_printf (LOG_LEVEL_UNDEFINED, "%s\n", goff->name);
             //fm_list_model_add_file (dir->priv->model, goff, dir);
 
             g_signal_emit (dir, signals[FILE_ADDED], 0, goff);
@@ -212,7 +213,7 @@ load_dir_async (GOFDirectoryAsync *dir)
     if (p->_dir)
     {
         char *uri = g_file_get_uri(p->_dir);
-        g_message ("Start loading directory %s", uri);
+        log_printf( LOG_LEVEL_UNDEFINED, "Start loading directory %s \n", uri);
         g_free (uri);
         p->monitor = gof_monitor_directory (p->_dir);
 
@@ -236,7 +237,7 @@ gof_directory_async_cancel (GOFDirectoryAsync *dir)
    static void
    done_loading (GOFDirectoryAsync *dir)
    {
-   printf ("%s\n", G_STRFUNC);
+   log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
 //gtk_tree_view_set_model (GTK_TREE_VIEW (dir->priv->tree), GTK_TREE_MODEL (dir->priv->m_store));
 }*/
 
@@ -263,11 +264,11 @@ GOFDirectoryAsync *gof_directory_async_get_for_file(GOFFile *file)
     self = g_object_new (GOF_TYPE_DIRECTORY_ASYNC, NULL);
     //self->priv->_parent = g_file_dup (file->directory);
     //self->priv->model = model;
-    //printf ("test %s %s\n", file->name, g_file_get_uri(file->directory));
+    //log_printf (LOG_LEVEL_UNDEFINED, "test %s %s\n", file->name, g_file_get_uri(file->directory));
     //self->priv->_dir = g_file_get_child(file->directory, file->name);
     self->priv->_dir = file->location;
     g_object_ref (file->location);
-    //printf ("test %s\n", g_file_get_uri(self->priv->_dir));
+    //log_printf (LOG_LEVEL_UNDEFINED, "test %s\n", g_file_get_uri(self->priv->_dir));
     //load_dir_async (self);
 
     return (self);
@@ -308,7 +309,7 @@ gof_directory_async_finalize (GObject *object)
        }*/
     //load_dir_async_cancel (dir);
     char *uri = g_file_get_uri(dir->priv->_dir);
-    printf (">> %s %s\n", G_STRFUNC, uri);
+    log_printf (LOG_LEVEL_UNDEFINED, ">> %s %s\n", G_STRFUNC, uri);
     g_free (uri);
     if (dir->priv->monitor)
         gof_monitor_cancel (dir->priv->monitor);

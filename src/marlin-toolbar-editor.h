@@ -25,7 +25,7 @@
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
-#include "marlin-private.h"
+#include "marlin-vala.h"
 
 G_BEGIN_DECLS
 

@@ -26,6 +26,7 @@
 //#include "gof-directory-async.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
 #include "marlin-tags.h"
+#include "marlin-vala.h"
 
 /*
    struct FMColumnsViewDetails {
@@ -95,7 +96,7 @@ row_collapsed_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 static void
 show_selected_files (GOFFile *file)
 {
-    printf ("selected: %s\n", file->name);
+    log_printf (LOG_LEVEL_UNDEFINED, "selected: %s\n", file->name);
 }
 
 static void
@@ -138,14 +139,14 @@ gof_gnome_open_single_file (GOFFile *file, GdkScreen *screen)
     }
     else
     {
-        printf ("non native\n");
+        log_printf (LOG_LEVEL_UNDEFINED, "non native\n");
 
         /* FIXME: work with all apps supporting gio 
            don't work with archives: opening a zip from trash with
            file-roller - happens too with nautilus */
         uri = g_file_get_uri(file->location);
         cmd = g_strconcat("gnome-open ", uri, NULL);
-        printf("command %s\n", cmd);
+        log_printf (LOG_LEVEL_UNDEFINED, "command %s\n", cmd);
         gdk_spawn_command_line_on_screen (screen, cmd, NULL);
         g_free (uri);
         g_free (cmd);
@@ -157,7 +158,7 @@ fm_directory_activate_single_file (GOFFile *file, FMColumnsView *view, GdkScreen
 {
     //GOFDirectoryAsync *dir;
 
-    printf("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     if (file->is_directory) {
         //view->location = file->location;
         /*
@@ -215,7 +216,7 @@ activate_selected_items (FMColumnsView *view)
             file = file_list->data;
             if (file->is_directory) {
                 /* TODO open dirs in new tabs */
-                printf ("open dir - new tab? %s\n", file->name);
+                log_printf (LOG_LEVEL_UNDEFINED, "open dir - new tab? %s\n", file->name);
             } else {
                 gof_gnome_open_single_file (file, screen);
             }
@@ -228,7 +229,7 @@ activate_selected_items (FMColumnsView *view)
 static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMColumnsView *view)
 {
-    printf ("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     activate_selected_items (view);
 }
 
@@ -244,10 +245,10 @@ fm_columns_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
     for (; file_list != NULL; file_list=file_list->next)
     {
         file = file_list->data;
-        //printf("colorize %s %d\n", file->name, ncolor);
+        //log_printf (LOG_LEVEL_UNDEFINED, "colorize %s %d\n", file->name, ncolor);
         file->color = tags_colors[ncolor];
         uri = g_file_get_uri(file->location);
-        marlin_view_tags_set_color (tags, uri, ncolor, NULL);
+        marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
         g_free (uri);
     }
 }
@@ -559,7 +560,7 @@ fm_columns_view_finalize (GObject *object)
 {
     FMColumnsView *view = FM_COLUMNS_VIEW (object);
 
-    printf ("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
 
     g_object_unref (view->model);
     //g_free (view->details);

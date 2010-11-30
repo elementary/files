@@ -24,6 +24,7 @@
 #include "marlin-global-preferences.h" 
 #include "eel-i18n.h"
 #include "eel-fcts.h"
+#include "marlin-vala.h"
 
 
 /*struct _GOFFilePrivate {
@@ -150,7 +151,7 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
     self->info = file_info;
     //self->parent_dir = g_file_enumerator_get_container (enumerator);
     self->directory = dir;
-    //printf ("test parent_dir %s\n", g_file_get_uri(self->directory));
+    //log_printf (LOG_LEVEL_UNDEFINED, "test parent_dir %s\n", g_file_get_uri(self->directory));
     //g_object_ref (self->directory);
     self->name = g_file_info_get_name (file_info);
     self->is_hidden = g_file_info_get_is_hidden (file_info);
@@ -193,7 +194,7 @@ static void gof_file_finalize (GObject* obj) {
     GOFFile *file;
 
     file = GOF_FILE (obj);
-    printf ("%s %s\n", G_STRFUNC, file->name);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s %s\n", G_STRFUNC, file->name);
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
     g_free(file->utf8_collation_key);
@@ -415,7 +416,7 @@ gof_file_compare_for_sort (GOFFile *file1,
     }
 
     result = gof_file_compare_for_sort_internal (file1, file2, directories_first, reversed);
-    //printf ("res %d %s %s\n", result, file1->name, file2->name);
+    //log_printf (LOG_LEVEL_UNDEFINED, "res %d %s %s\n", result, file1->name, file2->name);
 
     if (result == 0) {
         switch (sort_type) {

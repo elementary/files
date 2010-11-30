@@ -24,6 +24,7 @@
 #include "fm-list-model.h"
 //#include "gof-window-slot.h"
 #include "fm-directory-view.h"
+#include "marlin-vala.h"
 
 G_BEGIN_DECLS
 
