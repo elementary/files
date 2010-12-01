@@ -51,7 +51,7 @@ namespace Marlin.View.Chrome {
             return true;
         }
 
-        protected void popup_menu(Gdk.EventButton? ev)
+        protected new void popup_menu(Gdk.EventButton? ev)
         {
             try {
                 menu.popup (null,
