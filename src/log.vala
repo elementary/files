@@ -139,6 +139,8 @@ public class Log : Object{
 		    case Level.UNDEFINED:
 		        return true;	    
 		}
+		
+		return false;
 	}
     
     public static void printf(Level lvl, string str, ...){
