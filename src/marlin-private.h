@@ -39,6 +39,10 @@ MarlinViewWindow* marlin_view_window_construct (GType object_type);
 GtkActionGroup* marlin_view_window_get_actiongroup (MarlinViewWindow *mvw);
 void marlin_view_window_set_toolbar_items (MarlinViewWindow *mvw);
 
+#include "gof-window-slot.h"
+
+GOFWindowSlot* marlin_view_window_get_active_slot (MarlinViewWindow *mvw);
+
 #define MARLIN_VIEW_TYPE_VIEW_CONTAINER (marlin_view_view_container_get_type ())
 #define MARLIN_VIEW_VIEW_CONTAINER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), MARLIN_VIEW_TYPE_VIEW_CONTAINER, MarlinViewViewContainer))
 #define MARLIN_VIEW_VIEW_CONTAINER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), MARLIN_VIEW_TYPE_VIEW_CONTAINER, MarlinViewViewContainerClass))
@@ -53,9 +57,6 @@ GType marlin_view_view_container_get_type (void) G_GNUC_CONST;
 void marlin_view_window_add_tab (MarlinViewWindow* self, GFile *location);
 MarlinViewViewContainer* marlin_view_view_container_new (GFile *location);
 GtkWidget* marlin_view_view_container_get_window (MarlinViewViewContainer* self);
-
-/*GOFWindowSlot* marlin_view_window_get_active_slot (MarlinViewWindow* self);
-  void marlin_view_window_set_active_slot (MarlinViewWindow* self, GOFWindowSlot* value);*/
 
 #include "gof-file.h"
 

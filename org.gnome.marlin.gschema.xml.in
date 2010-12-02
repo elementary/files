@@ -69,5 +69,33 @@
         List of actions present in the toolbar
       </description>
     </key>
+    <key name="sidebar-icon-size" type="i">
+      <default>16</default>
+      <summary>Size of the icons in the Places sidebar</summary>
+      <description>
+        If set to a null or negative value, the default GTK_ICON_SIZE_MENU would be used.
+      </description>
+    </key>
+    <key name="sidebar-cat-personal-expander" type="b">
+      <default>true</default>
+      <_summary>Categorie personal expander</_summary>
+      <_description>
+        Expand/Collapse categorie Personal
+      </_description>
+    </key>
+    <key name="sidebar-cat-devices-expander" type="b">
+      <default>true</default>
+      <_summary>Categorie Devices expander</_summary>
+      <_description>
+        Expand/Collapse categorie Devices
+      </_description>
+    </key>
+    <key name="sidebar-cat-network-expander" type="b">
+      <default>true</default>
+      <_summary>Categorie Network expander</_summary>
+      <_description>
+        Expand/Collapse categorie Network
+      </_description>
+    </key>
   </schema>
 </schemalist>

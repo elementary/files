@@ -38,12 +38,6 @@ G_BEGIN_DECLS
 #define GOF_DIRECTORY_ASYNC_GET_CLASS(obj) \
     (G_TYPE_INSTANCE_GET_CLASS ((obj), GOF_TYPE_DIRECTORY_ASYNC, GOFDirectoryAsyncClass))
 
-/*
-#define GIO_SUCKLESS_DEFAULT_ATTRIBUTES                                \
-"standard::type,standard::is-hidden,standard::name,standard::display-name,standard::edit-name,standard::copy-name,standard::fast-content-type,standard::size,standard::allocated-size,access::*,mountable::*,time::*,unix::*,owner::*,selinux::*,thumbnail::*,id::filesystem,trash::orig-path,trash::deletion-date,metadata::*"
-*/
-
-#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-symlink,standard::type,standard::name,standard::fast-content-type,standard::size,access::*,time::*"
 #define FILES_PER_QUERY 100
 
 //typedef struct GOFDirectoryAsyncDetails GOFDirectoryAsyncDetails;
