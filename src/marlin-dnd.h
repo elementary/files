@@ -56,6 +56,7 @@ typedef enum {
     MARLIN_ICON_DND_RAW,
     MARLIN_ICON_DND_ROOTWINDOW_DROP
 } MarlinIconDndTargetType;
+#endif
 
 typedef enum {
     MARLIN_DND_ACTION_FIRST = GDK_ACTION_ASK << 1,
@@ -64,6 +65,7 @@ typedef enum {
     MARLIN_DND_ACTION_SET_AS_GLOBAL_BACKGROUND = MARLIN_DND_ACTION_FIRST << 2
 } MarlinDndAction;
 
+#if 0
 /* drag&drop-related information. */
 typedef struct {
     GtkTargetList *target_list;
@@ -168,10 +170,10 @@ gboolean		marlin_drag_drag_data_get		(GtkWidget *widget,
                                                                  MarlinDragEachSelectedItemIterator  each_selected_item_iterator);
 int			marlin_drag_modifier_based_action	(int default_action,
                                                                  int non_default_action);
-
+#endif
 GdkDragAction		marlin_drag_drop_action_ask		(GtkWidget *widget,
                                                                  GdkDragAction possible_actions);
-
+#if 0
 gboolean		marlin_drag_autoscroll_in_scroll_region	(GtkWidget *widget);
 void			marlin_drag_autoscroll_calculate_delta	(GtkWidget *widget,
                                                                  float *x_scroll_delta,

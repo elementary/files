@@ -44,6 +44,7 @@ marlin_SOURCES = \
     eel-fcts.c                              \
     eel-i18n.c                              \
     eel-marshal.c                           \
+    eel-gtk-extensions.c                    \
     eel-glib-extensions.c                   \
     eel-stock-dialogs.c                     \
     gossip-cell-renderer-expander.c         \

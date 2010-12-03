@@ -38,6 +38,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "gof-file.h"
+#include "eel-gtk-extensions.h"
 
 /* a set of defines stolen from the eel-icon-dnd.c file.
  * These are in microseconds.
@@ -700,6 +701,7 @@ marlin_drag_drag_data_get (GtkWidget *widget,
 
     return TRUE;
 }
+#endif
 
 typedef struct
 {
@@ -823,6 +825,7 @@ marlin_drag_drop_action_ask (GtkWidget *widget,
     return damd.chosen;
 }
 
+#if 0
 gboolean
 marlin_drag_autoscroll_in_scroll_region (GtkWidget *widget)
 {
