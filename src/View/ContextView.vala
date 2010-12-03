@@ -37,12 +37,12 @@ namespace Marlin.View {
         
         private Image image;
         private EventBox information_wrap;
-        private VBox information;
+        private Table information;
         private Label label;
     
         public ContextView(Window window){
             this.window = window;
-            set_size_request(150, -1);
+            set_size_request(180, -1);
             
             window.selection_changed.connect(update);
             
@@ -53,17 +53,14 @@ namespace Marlin.View {
             image.set_size_request(-1, 128+24);
             box.pack_start(image, false, false);
             
-            label = new Label("Information");
+            label = new Label("");
             var font_style = new Pango.FontDescription();
             font_style.set_size(14 * 1000);
             label.modify_font(font_style);
+            label.ellipsize = Pango.EllipsizeMode.MIDDLE;
             box.pack_start(label, false, false);
             
             box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
-            
-            information_wrap = new EventBox();
-            
-            box.pack_start(information_wrap, false, false);
             
             alignment.add(box);
             add(alignment);
@@ -85,6 +82,7 @@ namespace Marlin.View {
             
             /* TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
                we are in listview: size, type, modified */
+            info.append(new Pair<string, string>("Name", gof_file.name));
             info.append(new Pair<string, string>("Mimetype", file_info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE)));
             if(raw_type != FileType.DIRECTORY)
                 info.append(new Pair<string, string>("Size", gof_file.format_size));
@@ -100,40 +98,46 @@ namespace Marlin.View {
         }
         
         private void update_info_list(List<Pair<string, string>> item_info){
+            int width = 160;
+            int spacing = 10;
+        
             if (information != null)
-                information_wrap.remove(information);
-            information = new VBox(false, 2);
+                box.remove(information);
 
-            Gtk.Table table = new Table (4, 2, false);
-            table.set_col_spacing (0, 10);
-            table.set_row_spacings (3);
-            information.add (table);
+            information = new Table (item_info.length(), 2, false);
+            //information.set_size_request (width, -1);
+            information.set_col_spacings (spacing);
+            information.set_row_spacings (3);
 
             int n = 0;
             item_info.foreach((pair) => {
                 var key_alignment = new Alignment(1f, 0f, 0f, 0f);
                 var key_label = new Label(((Pair<string, string>) pair).key);
+                //key_label.set_size_request((width - spacing) / 2, -1);
                 key_label.set_state(StateType.INSENSITIVE);
                 key_label.set_justify(Justification.RIGHT);
+                key_label.set_single_line_mode(false);
                 key_label.set_line_wrap(true);
-                key_label.set_line_wrap_mode(Pango.WrapMode.WORD);
+                key_label.set_line_wrap_mode(Pango.WrapMode.CHAR);
                 key_alignment.add(key_label);
                 
-                table.attach_defaults (key_alignment, 0, 1, 0+n, 1+n);
+                information.attach_defaults (key_alignment, 0, 1, 0+n, 1+n);
                 
                 var value_alignment = new Alignment(0f, 0f, 0f, 0f);
                 var value_label = new Label(((Pair<string, string>) pair).value);
+                //value_label.set_size_request((width - spacing) / 2, -1);
                 value_label.set_line_wrap(true);
+                value_label.set_single_line_mode(false);
                 value_label.set_justify(Justification.LEFT);
-                value_label.set_line_wrap_mode(Pango.WrapMode.WORD);
+                value_label.set_line_wrap_mode(Pango.WrapMode.CHAR);
                 value_alignment.add(value_label);
                 
-                table.attach_defaults (value_alignment, 1, 2, 0+n, 1+n);
+                information.attach_defaults (value_alignment, 1, 2, 0+n, 1+n);
                 n++;
             });
             
-            information_wrap.add(information);
-            information_wrap.show_all();
+            box.pack_start(information, false, false);
+            information.show_all();
         }
     }
 }

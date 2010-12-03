@@ -21,7 +21,7 @@ using Gdk;
 namespace Marlin.View.Chrome
 {
     public class ModeButton : Gtk.EventBox
-    {
+    {    
         public signal void mode_added(int index, Widget widget);
         public signal void mode_removed(int index, Widget widget);
         public signal void mode_changed(Widget widget);

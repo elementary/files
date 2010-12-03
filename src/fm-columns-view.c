@@ -363,6 +363,7 @@ filename_cell_data_func (GtkTreeViewColumn *column,
                   "text", text,
                   "underline", underline,
                   "cell-background", color,
+                  "ellipsize", PANGO_ELLIPSIZE_MIDDLE,
                   NULL);
     g_free (text);
 }
