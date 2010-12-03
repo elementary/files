@@ -57,6 +57,7 @@
 #include "marlin-global-preferences.h"
 #include "marlin-bookmark.h"
 #include "marlin-trash-monitor.h"
+#include "marlin-dnd.h"
 
 /*#include "marlin-bookmark-list.h"
 #include "marlin-places-sidebar.h"
@@ -129,41 +130,8 @@ static const GtkTargetEntry marlin_shortcuts_drop_targets [] = {
     { "text/uri-list", 0, TEXT_URI_LIST }
 };
 
-/* Drag and drop interface declarations */
-typedef struct {
-    GtkTreeModelFilter parent;
-
-    MarlinPlacesSidebar *sidebar;
-} MarlinShortcutsModelFilter;
-
-typedef struct {
-    GtkTreeModelFilterClass parent_class;
-} MarlinShortcutsModelFilterClass;
-
-#define MARLIN_SHORTCUTS_MODEL_FILTER_TYPE (_marlin_shortcuts_model_filter_get_type ())
-#define MARLIN_SHORTCUTS_MODEL_FILTER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), marlin_SHORTCUTS_MODEL_FILTER_TYPE, MarlinShortcutsModelFilter))
-
-GType _marlin_shortcuts_model_filter_get_type (void);
-static void marlin_shortcuts_model_filter_drag_source_iface_init (GtkTreeDragSourceIface *iface);
-
-G_DEFINE_TYPE_WITH_CODE (MarlinShortcutsModelFilter,
-                         _marlin_shortcuts_model_filter,
-                         GTK_TYPE_TREE_MODEL_FILTER,
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_DRAG_SOURCE,
-                                                marlin_shortcuts_model_filter_drag_source_iface_init));
-
-static GtkTreeModel *marlin_shortcuts_model_filter_new (MarlinPlacesSidebar *sidebar,
-                                                        GtkTreeModel          *child_model,
-                                                        GtkTreePath           *root);
-
-/*G_DEFINE_TYPE_WITH_CODE (MarlinPlacesSidebar, marlin_places_sidebar, GTK_TYPE_SCROLLED_WINDOW,
-  G_IMPLEMENT_INTERFACE (MARLIN_TYPE_SIDEBAR,
-  marlin_places_sidebar_iface_init));*/
 G_DEFINE_TYPE (MarlinPlacesSidebar, marlin_places_sidebar, GTK_TYPE_SCROLLED_WINDOW);
 
-/*G_DEFINE_TYPE_WITH_CODE (MarlinPlacesSidebarProvider, marlin_places_sidebar_provider, G_TYPE_OBJECT,
-  G_IMPLEMENT_INTERFACE (MARLIN_TYPE_SIDEBAR_PROVIDER,
-  sidebar_provider_iface_init));*/
 
 static void
 category_renderer_func (GtkTreeViewColumn *column,
@@ -1037,6 +1005,7 @@ can_accept_items_as_bookmarks (const GList *items)
     char *uri;
     GOFFile *file;
 
+    //TODO
     /* Iterate through selection checking if item will get accepted as a bookmark.
      * If more than 100 items selected, return an over-optimistic result.
      */
@@ -1063,7 +1032,8 @@ drag_motion_callback (GtkTreeView *tree_view,
                       MarlinPlacesSidebar *sidebar)
 {
     //amtest
-    //printf ("%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
+//#if 0
     GtkTreePath *path;
     GtkTreeViewDropPosition pos;
     int action;
@@ -1102,10 +1072,12 @@ drag_motion_callback (GtkTreeView *tree_view,
                                     &iter,
                                     PLACES_SIDEBAR_COLUMN_URI, &uri,
                                     -1);
-                //printf ("test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), &child_iter));
-                marlin_drag_default_drop_action_for_icons (context, uri,
+                printf ("test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), &child_iter));
+                /*marlin_drag_default_drop_action_for_icons (context, uri,
                                                            sidebar->drag_list,
-                                                           &action);
+                                                           &action);*/
+                //amtest
+                action = 0;
                 g_free (uri);
             }
         }
@@ -1120,7 +1092,7 @@ drag_motion_callback (GtkTreeView *tree_view,
     } else {
         gdk_drag_status (context, 0, time);
     }
-
+//#endif
     return TRUE;
 }
 
@@ -1130,6 +1102,8 @@ drag_leave_callback (GtkTreeView *tree_view,
                      unsigned int time,
                      MarlinPlacesSidebar *sidebar)
 {
+    //amtest drag
+    printf ("%s\n", G_STRFUNC);
     free_drag_data (sidebar);
     gtk_tree_view_set_drag_dest_row (tree_view, NULL, GTK_TREE_VIEW_DROP_BEFORE);
     g_signal_stop_emission_by_name (tree_view, "drag-leave");
@@ -1141,7 +1115,7 @@ bookmarks_drop_uris (MarlinPlacesSidebar *sidebar,
                      GtkSelectionData      *selection_data,
                      int                    position)
 {
-    //MarlinBookmark *bookmark;
+    MarlinBookmark *bookmark;
     GOFFile *file;
     char *uri, *name;
     char **uris;
@@ -1189,7 +1163,8 @@ bookmarks_drop_uris (MarlinPlacesSidebar *sidebar,
     g_strfreev (uris);
 }
 
-#if 0
+//amtest drag
+//#if 0
 static GList *
 uri_list_from_selection (GList *selection)
 {
@@ -1230,7 +1205,7 @@ build_selection_list (const char *data)
 
     return g_list_reverse (result);
 }
-#endif
+//#endif
 
 static gboolean
 get_selected_iter (MarlinPlacesSidebar *sidebar,
@@ -1247,37 +1222,48 @@ get_selected_iter (MarlinPlacesSidebar *sidebar,
     return TRUE;
 }
 
-#if 0
+//#if 0
 /* Reorders the selected bookmark to the specified position */
 static void
-reorder_bookmarks (MarlinPlacesSidebar *sidebar,
-                   int                   new_position)
+reorder_bookmarks (MarlinPlacesSidebar *sidebar, int new_position)
 {
     GtkTreeIter iter;
     PlaceType type; 
     int old_position;
 
-    /* Get the selected path */
+    char *uri = NULL;
 
-    if (!get_selected_iter (sidebar, &iter))
+    if (sidebar->drag_list != NULL)
+    {
+       MarlinDragSelectionItem *item = sidebar->drag_list->data;
+       if (item != NULL)
+            uri = item->uri;
+    }
+
+    /* Get the selected path */
+    printf ("%s: new_pos: %d uri %s\n", G_STRFUNC, new_position, uri);
+
+    //TODO got a bug here
+    /*if (!get_selected_iter (sidebar, &iter))
         g_assert_not_reached ();
 
     gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
                         PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type,
                         PLACES_SIDEBAR_COLUMN_INDEX, &old_position,
-                        -1);
+                        -1);*/
 
-    old_position = old_position -sidebar->n_builtins_before;
-    if (type != PLACES_BOOKMARK ||
+    //old_position = old_position -sidebar->n_builtins_before;
+    //old_position = current_position -sidebar->n_builtins_before;
+    /*if (type != PLACES_BOOKMARK ||
         old_position < 0 ||
         old_position >= marlin_bookmark_list_length (sidebar->bookmarks)) {
         return;
-    }
+    }*/
 
     if (new_position < 0)
         new_position = 0;
-    marlin_bookmark_list_move_item (sidebar->bookmarks, old_position,
-                                    new_position);
+    /*marlin_bookmark_list_move_item (sidebar->bookmarks, old_position,
+                                    new_position);*/
 }
 
 static void
@@ -1291,8 +1277,9 @@ drag_data_received_callback (GtkWidget *widget,
                              MarlinPlacesSidebar *sidebar)
 {
     //amtest
-    //printf ("%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
 
+//#if 0
     GtkTreeView *tree_view;
     GtkTreePath *tree_path;
     GtkTreeViewDropPosition tree_pos;
@@ -1309,6 +1296,7 @@ drag_data_received_callback (GtkWidget *widget,
     if (!sidebar->drag_data_received) {
         if (gtk_selection_data_get_target (selection_data) != GDK_NONE &&
             info == TEXT_URI_LIST) {
+        //if (gtk_selection_data_get_target (selection_data) != GDK_NONE) {
             sidebar->drag_list = build_selection_list (gtk_selection_data_get_data (selection_data));
         } else {
             sidebar->drag_list = NULL;
@@ -1340,6 +1328,7 @@ drag_data_received_callback (GtkWidget *widget,
                             PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type,
                             PLACES_SIDEBAR_COLUMN_INDEX, &position,
                             -1);
+        printf ("test pos %d\n", position);
 
         if (!(type == PLACES_BOOKMARK || type == PLACES_BUILT_IN)) {
             goto out;
@@ -1363,7 +1352,9 @@ drag_data_received_callback (GtkWidget *widget,
             g_assert_not_reached ();
             break;
         }
-    } else {
+    }
+#if 0
+    else {
         GdkDragAction real_action;
 
         /* file transfer requested */
@@ -1387,9 +1378,10 @@ drag_data_received_callback (GtkWidget *widget,
             case TEXT_URI_LIST:
                 selection_list = build_selection_list (gtk_selection_data_get_data (selection_data));
                 uris = uri_list_from_selection (selection_list);
-                marlin_file_operations_copy_move (uris, NULL, drop_uri,
+                //TODO
+                /*marlin_file_operations_copy_move (uris, NULL, drop_uri,
                                                   real_action, GTK_WIDGET (tree_view),
-                                                  NULL, NULL);
+                                                  NULL, NULL);*/
                 marlin_drag_destroy_selection_list (selection_list);
                 g_list_free (uris);
                 success = TRUE;
@@ -1405,6 +1397,7 @@ drag_data_received_callback (GtkWidget *widget,
             g_free (drop_uri);
         }
     }
+#endif
 
 out:
     sidebar->drop_occured = FALSE;
@@ -1422,13 +1415,16 @@ drag_drop_callback (GtkTreeView *tree_view,
                     unsigned int time,
                     MarlinPlacesSidebar *sidebar)
 {
+    //amtest
+    printf ("%s\n", G_STRFUNC);
+
     gboolean retval = FALSE;
     sidebar->drop_occured = TRUE;
     retval = get_drag_data (tree_view, context, time);
     g_signal_stop_emission_by_name (tree_view, "drag-drop");
     return retval;
 }
-#endif
+//#endif
 
 /* Callback used when the file list's popup menu is detached */
 static void
@@ -1554,7 +1550,7 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
 
     gtk_widget_set_sensitive (sidebar->popup_menu_remove_item, (type == PLACES_BOOKMARK));
     gtk_widget_set_sensitive (sidebar->popup_menu_rename_item, (type == PLACES_BOOKMARK));
-    //gtk_widget_set_sensitive (sidebar->popup_menu_empty_trash_item, !marlin_trash_monitor_is_empty ());
+    gtk_widget_set_sensitive (sidebar->popup_menu_empty_trash_item, !marlin_trash_monitor_is_empty ());
 
     check_visibility (mount, volume, drive,
                       &show_mount, &show_unmount, &show_eject, &show_rescan, &show_format, &show_start, &show_stop);
@@ -2552,7 +2548,7 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
                                  MarlinPlacesSidebar *sidebar)
 {
     //amtest
-    //printf ("%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
     if (event->type != GDK_BUTTON_PRESS) {
         /* ignore multiple clicks */
         return TRUE;
@@ -2588,7 +2584,6 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
     return FALSE;
 }
 
-/*
 static void
 bookmarks_edited (GtkCellRenderer       *cell,
                   gchar                 *path_string,
@@ -2615,7 +2610,7 @@ bookmarks_edited (GtkCellRenderer       *cell,
         marlin_bookmark_set_name (bookmark, new_text);
         update_places (sidebar);
     }
-}*/
+}
 
 static void
 bookmarks_editing_canceled (GtkCellRenderer       *cell,
@@ -2856,10 +2851,10 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     gtk_tree_view_column_set_cell_data_func (col, cell,
                                              category_renderer_func, NULL, NULL);
 
-    /*g_signal_connect (cell, "edited", 
+    g_signal_connect (cell, "edited", 
                       G_CALLBACK (bookmarks_edited), sidebar);
     g_signal_connect (cell, "editing-canceled", 
-                      G_CALLBACK (bookmarks_editing_canceled), sidebar);*/
+                      G_CALLBACK (bookmarks_editing_canceled), sidebar);
 
     g_object_set (tree_view, "show-expanders", FALSE, NULL);
 
@@ -2914,27 +2909,27 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     g_signal_connect_object	(tree_view, "row_activated", 
                                  G_CALLBACK (row_activated_callback), sidebar, 0);
 
-    /*gtk_tree_view_enable_model_drag_source (GTK_TREE_VIEW (tree_view),
+    gtk_tree_view_enable_model_drag_source (GTK_TREE_VIEW (tree_view),
                                             GDK_BUTTON1_MASK,
                                             marlin_shortcuts_source_targets,
                                             G_N_ELEMENTS (marlin_shortcuts_source_targets),
                                             GDK_ACTION_MOVE);
     gtk_drag_dest_set (GTK_WIDGET (tree_view),
                        0,
-                       marlin_shortcuts_drop_targets, G_N_ELEMENTS (nautilus_shortcuts_drop_targets),
-                       GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK);*/
+                       marlin_shortcuts_drop_targets, G_N_ELEMENTS (marlin_shortcuts_drop_targets),
+                       GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK);
 
     g_signal_connect (tree_view, "key-press-event",
                       G_CALLBACK (bookmarks_key_press_event_cb), sidebar);
 
-    /*g_signal_connect (tree_view, "drag-motion",
+    g_signal_connect (tree_view, "drag-motion",
                       G_CALLBACK (drag_motion_callback), sidebar);
     g_signal_connect (tree_view, "drag-leave",
                       G_CALLBACK (drag_leave_callback), sidebar);
     g_signal_connect (tree_view, "drag-data-received",
                       G_CALLBACK (drag_data_received_callback), sidebar);
     g_signal_connect (tree_view, "drag-drop",
-                      G_CALLBACK (drag_drop_callback), sidebar);*/
+                      G_CALLBACK (drag_drop_callback), sidebar);
 
     g_signal_connect (selection, "changed",
                       G_CALLBACK (bookmarks_selection_changed_cb), sidebar);
@@ -2979,7 +2974,7 @@ marlin_places_sidebar_dispose (GObject *object)
     g_free (sidebar->uri);
     sidebar->uri = NULL;
 
-    //free_drag_data (sidebar);
+    free_drag_data (sidebar);
 
     if (sidebar->store != NULL) {
         g_object_unref (sidebar->store);
@@ -2998,7 +2993,6 @@ marlin_places_sidebar_dispose (GObject *object)
 
     eel_remove_weak_pointer (&(sidebar->go_to_after_mount_slot));
 
-    //TODO check this
     /*g_signal_handlers_disconnect_by_func (marlin_preferences,
                                           desktop_location_changed_callback,
                                           sidebar);*/
@@ -3013,49 +3007,6 @@ marlin_places_sidebar_class_init (MarlinPlacesSidebarClass *class)
 
     GTK_WIDGET_CLASS (class)->style_set = marlin_places_sidebar_style_set;
 }
-
-#if 0
-static const char *
-marlin_places_sidebar_get_sidebar_id (MarlinSidebar *sidebar)
-{
-    return MARLIN_PLACES_SIDEBAR_ID;
-}
-
-static char *
-marlin_places_sidebar_get_tab_label (MarlinSidebar *sidebar)
-{
-    return g_strdup (_("Places"));
-}
-
-static char *
-marlin_places_sidebar_get_tab_tooltip (MarlinSidebar *sidebar)
-{
-    return g_strdup (_("Show Places"));
-}
-
-static GdkPixbuf *
-marlin_places_sidebar_get_tab_icon (MarlinSidebar *sidebar)
-{
-    return NULL;
-}
-
-static void
-marlin_places_sidebar_is_visible_changed (MarlinSidebar *sidebar,
-                                          gboolean         is_visible)
-{
-    /* Do nothing */
-}
-
-static void
-marlin_places_sidebar_iface_init (MarlinSidebarIface *iface)
-{
-    iface->get_sidebar_id = marlin_places_sidebar_get_sidebar_id;
-    iface->get_tab_label = marlin_places_sidebar_get_tab_label;
-    iface->get_tab_tooltip = marlin_places_sidebar_get_tab_tooltip;
-    iface->get_tab_icon = marlin_places_sidebar_get_tab_icon;
-    iface->is_visible_changed = marlin_places_sidebar_is_visible_changed;
-}
-#endif
 
 static void
 marlin_places_sidebar_set_parent_window (MarlinPlacesSidebar *sidebar,
@@ -3126,114 +3077,3 @@ marlin_places_sidebar_new (GtkWidget *window)
     return (sidebar);
 }
 
-/*
-static MarlinSidebar *
-marlin_places_sidebar_create (MarlinSidebarProvider *provider,
-                              MarlinViewWindowInfo *window)
-{
-    MarlinPlacesSidebar *sidebar;
-
-    sidebar = g_object_new (marlin_places_sidebar_get_type (), NULL);
-    marlin_places_sidebar_set_parent_window (sidebar, window);
-    g_object_ref_sink (sidebar);
-
-    return MARLIN_SIDEBAR (sidebar);
-}
-
-static void 
-sidebar_provider_iface_init (MarlinSidebarProviderIface *iface)
-{
-    iface->create = marlin_places_sidebar_create;
-}
-
-static void
-marlin_places_sidebar_provider_init (MarlinPlacesSidebarProvider *sidebar)
-{
-}
-
-static void
-marlin_places_sidebar_provider_class_init (MarlinPlacesSidebarProviderClass *class)
-{
-}
-
-void
-marlin_places_sidebar_register (void)
-{
-    marlin_module_add_type (nautilus_places_sidebar_provider_get_type ());
-}*/
-
-/* Drag and drop interfaces */
-
-static void
-_marlin_shortcuts_model_filter_class_init (MarlinShortcutsModelFilterClass *class)
-{
-}
-
-static void
-_marlin_shortcuts_model_filter_init (MarlinShortcutsModelFilter *model)
-{
-    model->sidebar = NULL;
-}
-
-/* GtkTreeDragSource::row_draggable implementation for the shortcuts filter model */
-#if 0
-static gboolean
-marlin_shortcuts_model_filter_row_draggable (GtkTreeDragSource *drag_source,
-                                             GtkTreePath       *path)
-{
-    //amtest
-    printf("USELESS ??\n");
-    //MarlinShortcutsModelFilter *model;
-    int pos;
-    int bookmarks_pos;
-    int num_bookmarks;
-
-    //model = MARLIN_SHORTCUTS_MODEL_FILTER (drag_source);
-
-    pos = *gtk_tree_path_get_indices (path);
-    bookmarks_pos = get_bookmark_index (model->sidebar->tree_view);
-    num_bookmarks = marlin_bookmark_list_length (model->sidebar->bookmarks);
-
-    return (pos >= bookmarks_pos && pos < bookmarks_pos + num_bookmarks);
-}
-#endif
-
-/* GtkTreeDragSource::drag_data_get implementation for the shortcuts filter model */
-static gboolean
-marlin_shortcuts_model_filter_drag_data_get (GtkTreeDragSource *drag_source,
-                                             GtkTreePath       *path,
-                                             GtkSelectionData  *selection_data)
-{
-    /*MarlinShortcutsModelFilter *model;
-
-    model = MARLIN_SHORTCUTS_MODEL_FILTER (drag_source);*/
-
-    /* FIXME */
-
-    return FALSE;
-}
-
-/* Fill the GtkTreeDragSourceIface vtable */
-static void
-marlin_shortcuts_model_filter_drag_source_iface_init (GtkTreeDragSourceIface *iface)
-{
-    //iface->row_draggable = marlin_shortcuts_model_filter_row_draggable;
-    //iface->drag_data_get = marlin_shortcuts_model_filter_drag_data_get;
-}
-
-static GtkTreeModel *
-marlin_shortcuts_model_filter_new (MarlinPlacesSidebar *sidebar,
-                                   GtkTreeModel          *child_model,
-                                   GtkTreePath           *root)
-{
-    MarlinShortcutsModelFilter *model;
-
-    model = g_object_new (MARLIN_SHORTCUTS_MODEL_FILTER_TYPE,
-                          "child-model", child_model,
-                          "virtual-root", root,
-                          NULL);
-
-    model->sidebar = sidebar;
-
-    return GTK_TREE_MODEL (model);
-}

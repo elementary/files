@@ -50,6 +50,7 @@ marlin_SOURCES = \
     marlin-trash-monitor.c                  \
     marlin-bookmark.c                       \
     marlin-bookmark-list.c                  \
+    marlin-dnd.c                            \
     marlin-places-sidebar.c                 \
     marlin-window-columns.c                 \
     gof-window-slot.c                       \

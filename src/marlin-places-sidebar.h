@@ -22,7 +22,6 @@
 #ifndef _MARLIN_PLACES_SIDEBAR_H
 #define _MARLIN_PLACES_SIDEBAR_H
 
-/*#include <libmarlin-private/nautilus-view.h>*/
 #include "marlin-bookmark-list.h"
 #include <gtk/gtk.h>
 
