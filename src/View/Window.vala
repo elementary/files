@@ -23,6 +23,7 @@
 using Gtk;
 using Gdk;
 using Cairo;
+using Marlin.View.Chrome;
 
 namespace Marlin.View {
     public class Window : Gtk.Window
@@ -35,7 +36,7 @@ namespace Marlin.View {
         public IconSize isize128;
         
         public ViewContainer current_tab;
-        public HPaned main_box;
+        public Chrome.HPaned main_box;
         public ContextView contextview;
 
         public Gtk.ActionGroup main_actions;
@@ -84,7 +85,7 @@ namespace Marlin.View {
            
             print("Color changed: %i\n",n);
             ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
-	}
+	    }
         
         public Window ()
         {   
@@ -143,9 +144,10 @@ namespace Marlin.View {
             //contextview.set_size_request(150, -1);
 
             /* Devide main views into sidebars */
-            main_box = new HPaned();
+            main_box = new Chrome.HPaned();
             main_box.show();
-            var lside_pane = new HPaned();
+            
+            var lside_pane = new Chrome.HPaned();
             lside_pane.show();
 
             lside_pane.pack1(sidebar, false, true);
@@ -154,7 +156,6 @@ namespace Marlin.View {
             main_box.pack1(tabs, true, true);
             main_box.pack2(contextview, false, true);
             main_box.set_name("app-sidebar"); /* TODO remove later if uneeded - test theming */
-            //main_box.set_position(196);
 
             /*/
             /* Pack up all the view

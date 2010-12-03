@@ -39,6 +39,7 @@ marlin_VALASOURCES = \
     View/Chrome/ModeButton.vala             \
     View/Chrome/TopMenu.vala                \
     View/Chrome/ViewSwicher.vala            \
+    View/Chrome/HPaned.vala                 \
 	$(NULL)
 
 marlin_SOURCES = \
