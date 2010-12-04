@@ -152,9 +152,11 @@ namespace Marlin.View {
 
             lside_pane.pack1(sidebar, false, true);
             lside_pane.pack2(main_box, true, true);
+            lside_pane.collapse = 1;
 
             main_box.pack1(tabs, true, true);
             main_box.pack2(contextview, false, true);
+            main_box.collapse = 2;
             main_box.set_name("app-sidebar"); /* TODO remove later if uneeded - test theming */
 
             /*/
