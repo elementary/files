@@ -499,7 +499,6 @@ nautilus_icon_info_get_pixbuf (NautilusIconInfo *icon)
                                         NULL, /* don't destroy info */
                                         NULL);
     } 
-
     return res;
 }
 
@@ -530,7 +529,7 @@ nautilus_icon_info_get_pixbuf_nodefault_at_size (NautilusIconInfo  *icon,
     g_object_unref (pixbuf);
     return scaled_pixbuf;
 }
-
+#endif
 
 GdkPixbuf *
 nautilus_icon_info_get_pixbuf_at_size (NautilusIconInfo  *icon,
@@ -540,7 +539,10 @@ nautilus_icon_info_get_pixbuf_at_size (NautilusIconInfo  *icon,
     int w, h, s;
     double scale;
 
-    pixbuf = nautilus_icon_info_get_pixbuf (icon);
+    //pixbuf = nautilus_icon_info_get_pixbuf (icon);
+    pixbuf = nautilus_icon_info_get_pixbuf_nodefault (icon);
+    if (pixbuf == NULL)
+        return NULL;
 
     w = gdk_pixbuf_get_width (pixbuf);
     h = gdk_pixbuf_get_height (pixbuf);
@@ -556,7 +558,6 @@ nautilus_icon_info_get_pixbuf_at_size (NautilusIconInfo  *icon,
     g_object_unref (pixbuf);
     return scaled_pixbuf;
 }
-#endif
 
 gboolean
 nautilus_icon_info_get_embedded_rect (NautilusIconInfo  *icon,

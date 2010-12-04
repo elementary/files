@@ -63,16 +63,12 @@ NautilusIconInfo *    nautilus_icon_info_lookup_from_path             (const cha
                                                                        int                size);
 
 gboolean              nautilus_icon_info_is_fallback                  (NautilusIconInfo  *icon);
-#if 0
-GdkPixbuf *           nautilus_icon_info_get_pixbuf                   (NautilusIconInfo  *icon);
-#endif
+//GdkPixbuf *           nautilus_icon_info_get_pixbuf                   (NautilusIconInfo  *icon);
 GdkPixbuf *           nautilus_icon_info_get_pixbuf_nodefault         (NautilusIconInfo  *icon);
-#if 0
-GdkPixbuf *           nautilus_icon_info_get_pixbuf_nodefault_at_size (NautilusIconInfo  *icon,
-                                                                       gsize              forced_size);
+/*GdkPixbuf *           nautilus_icon_info_get_pixbuf_nodefault_at_size (NautilusIconInfo  *icon,
+                                                                       gsize              forced_size);*/
 GdkPixbuf *           nautilus_icon_info_get_pixbuf_at_size           (NautilusIconInfo  *icon,
                                                                        gsize              forced_size);
-#endif
 gboolean              nautilus_icon_info_get_embedded_rect            (NautilusIconInfo  *icon,
                                                                        GdkRectangle      *rectangle);
 gboolean              nautilus_icon_info_get_attach_points            (NautilusIconInfo  *icon,

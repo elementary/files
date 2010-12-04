@@ -28,7 +28,18 @@
 
 #include <gtk/gtk.h>
 
+#define EEL_DEFAULT_POPUP_MENU_DISPLACEMENT 	2
+
 //void    eel_gtk_adjustment_set_value (GtkAdjustment *adjustment, float value);
 GtkMenuItem *eel_gtk_menu_append_separator (GtkMenu *menu);
+
+void        eel_pop_up_context_menu (GtkMenu	     *menu,
+                                     gint16	      offset_x,
+                                     gint16	      offset_y,
+                                     GdkEventButton *event);
+void        eel_gtk_widget_set_shown (GtkWidget *widget, gboolean shown);
+
+void        eel_gtk_tree_view_set_activate_on_single_click (GtkTreeView *tree_view,
+                                                            gboolean should_activate);
 
 #endif /* EEL_GTK_EXTENSIONS_H */

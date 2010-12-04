@@ -61,7 +61,8 @@ typedef struct {
     GtkWidget *popup_menu_open_in_new_tab_item;
     GtkWidget *popup_menu_remove_item;
     GtkWidget *popup_menu_rename_item;
-    GtkWidget *popup_menu_separator_item;
+    GtkWidget *popup_menu_separator_item1;
+    GtkWidget *popup_menu_separator_item2;
     GtkWidget *popup_menu_mount_item;
     GtkWidget *popup_menu_unmount_item;
     GtkWidget *popup_menu_eject_item;
@@ -75,6 +76,8 @@ typedef struct {
     gboolean mounting;
     GOFWindowSlot *go_to_after_mount_slot;
     /*MarlinWindowOpenFlags go_to_after_mount_flags;*/
+
+    GtkTreePath *eject_highlight_path;
 } MarlinPlacesSidebar;
 
 typedef struct {

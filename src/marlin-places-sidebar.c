@@ -29,7 +29,9 @@
 #include <eel/eel-preferences.h>
 #include <eel/eel-string.h>
 #include <eel/eel-stock-dialogs.h>*/
+#include "eel-fcts.h"
 #include "eel-gtk-extensions.h"
+#include "eel-gdk-pixbuf-extensions.h"
 #include "gossip-cell-renderer-expander.h"
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
@@ -54,7 +56,6 @@
 #include "marlin-icons.h"
 #include "marlin-places-sidebar.h"
 #include "marlin-private.h"
-#include "eel-fcts.h"
 #include "marlin-global-preferences.h"
 #include "marlin-bookmark.h"
 #include "marlin-trash-monitor.h"
@@ -80,8 +81,8 @@ enum {
     PLACES_SIDEBAR_COLUMN_EJECT,
     PLACES_SIDEBAR_COLUMN_NO_EJECT,
     PLACES_SIDEBAR_COLUMN_BOOKMARK,
-    PLACES_SIDEBAR_COLUMN_NO_BOOKMARK,
     PLACES_SIDEBAR_COLUMN_TOOLTIP,
+    PLACES_SIDEBAR_COLUMN_EJECT_ICON,
 
     PLACES_SIDEBAR_COLUMN_COUNT
 };
@@ -133,6 +134,31 @@ static const GtkTargetEntry marlin_shortcuts_drop_targets [] = {
 
 G_DEFINE_TYPE (MarlinPlacesSidebar, marlin_places_sidebar, GTK_TYPE_SCROLLED_WINDOW);
 
+static GdkPixbuf *
+get_eject_icon (gboolean highlighted)
+{
+    GdkPixbuf *eject;
+    NautilusIconInfo *eject_icon_info;
+    int icon_size;
+
+    //TODO
+    //icon_size = nautilus_get_icon_size_for_stock_size (GTK_ICON_SIZE_MENU);
+    icon_size = 16;
+
+    eject_icon_info = nautilus_icon_info_lookup_from_name ("media-eject", icon_size);
+    eject = nautilus_icon_info_get_pixbuf_at_size (eject_icon_info, icon_size);
+
+    if (highlighted) {
+        GdkPixbuf *high;
+        high = eel_gdk_pixbuf_render (eject, 1, 255, 255, 0, 0);
+        g_object_unref (eject);
+        eject = high;
+    }
+
+    g_object_unref (eject_icon_info);
+
+    return eject;
+}
 
 static void
 category_renderer_func (GtkTreeViewColumn *column,
@@ -170,9 +196,10 @@ add_place (MarlinPlacesSidebar *sidebar,
            const int index,
            const char *tooltip)
 {
-    GdkPixbuf            *pixbuf;
-    GtkTreeIter           iter, child_iter;
-    NautilusIconInfo *icon_info;
+    GdkPixbuf           *pixbuf;
+    GtkTreeIter          iter, child_iter;
+    GdkPixbuf	        *eject;
+    NautilusIconInfo    *icon_info;
     gint icon_size;
     gboolean show_eject, show_unmount;
     gboolean show_eject_button;
@@ -201,6 +228,12 @@ add_place (MarlinPlacesSidebar *sidebar,
         show_eject_button = (show_unmount || show_eject);
     }
 
+    if (show_eject_button) {
+        eject = get_eject_icon (FALSE);
+    } else {
+        eject = NULL;
+    }
+
     gtk_tree_store_append (sidebar->store, &iter, parent);
     gtk_tree_store_set (sidebar->store, &iter,
                         PLACES_SIDEBAR_COLUMN_ICON, pixbuf,
@@ -214,8 +247,8 @@ add_place (MarlinPlacesSidebar *sidebar,
                         PLACES_SIDEBAR_COLUMN_EJECT, show_eject_button,
                         PLACES_SIDEBAR_COLUMN_NO_EJECT, !show_eject_button,
                         PLACES_SIDEBAR_COLUMN_BOOKMARK, place_type != PLACES_BOOKMARK,
-                        PLACES_SIDEBAR_COLUMN_NO_BOOKMARK, place_type == PLACES_BOOKMARK,
                         PLACES_SIDEBAR_COLUMN_TOOLTIP, tooltip,
+                        PLACES_SIDEBAR_COLUMN_EJECT_ICON, eject,
                         -1);
 
     if (pixbuf != NULL) {
@@ -300,55 +333,54 @@ update_places (MarlinPlacesSidebar *sidebar)
     gtk_tree_store_append (sidebar->store, &iter, NULL);
     gtk_tree_store_set (sidebar->store, &iter,
                         PLACES_SIDEBAR_COLUMN_ICON, NULL,
-                        PLACES_SIDEBAR_COLUMN_NAME, _("Personal"),
+                        PLACES_SIDEBAR_COLUMN_NAME, _("Places"),
                         PLACES_SIDEBAR_COLUMN_ROW_TYPE, PLACES_BOOKMARKS_CATEGORY,
                         PLACES_SIDEBAR_COLUMN_EJECT, FALSE,
                         PLACES_SIDEBAR_COLUMN_NO_EJECT, TRUE,
                         PLACES_SIDEBAR_COLUMN_BOOKMARK, FALSE,
-                        PLACES_SIDEBAR_COLUMN_NO_BOOKMARK, TRUE,
-                        PLACES_SIDEBAR_COLUMN_TOOLTIP, _("Personal bookmarked places"),
+                        PLACES_SIDEBAR_COLUMN_TOOLTIP, _("Your common places and bookmarks"),
                         -1);
 
     /* add built in bookmarks */
 
     /* home folder if different from desktop directory */
     /*desktop_path = marlin_get_desktop_directory ();
-    if (strcmp (g_get_home_dir(), desktop_path) != 0) {*/
-        char *display_name;
+      if (strcmp (g_get_home_dir(), desktop_path) != 0) {*/
+    char *display_name;
 
-        mount_uri = g_filename_to_uri (g_get_home_dir (), NULL, NULL);
-        display_name = g_filename_display_basename (g_get_home_dir ());
-        icon = g_themed_icon_new (MARLIN_ICON_HOME);
-        last_iter = add_place (sidebar, PLACES_BUILT_IN, &iter,
-                               display_name, icon, mount_uri, 
-                               NULL, NULL, NULL, 0,
-                               _("Open your personal folder"));
-        compare_for_selection (sidebar,
-                               location, mount_uri, last_uri,
-                               &last_iter, &select_path);
-        sidebar->n_builtins_before++;
-        g_object_unref (icon);
-        g_free (display_name);
-        g_free (mount_uri);
+    mount_uri = g_filename_to_uri (g_get_home_dir (), NULL, NULL);
+    display_name = g_filename_display_basename (g_get_home_dir ());
+    icon = g_themed_icon_new (MARLIN_ICON_HOME);
+    last_iter = add_place (sidebar, PLACES_BUILT_IN, &iter,
+                           display_name, icon, mount_uri, 
+                           NULL, NULL, NULL, 0,
+                           _("Open your personal folder"));
+    compare_for_selection (sidebar,
+                           location, mount_uri, last_uri,
+                           &last_iter, &select_path);
+    sidebar->n_builtins_before++;
+    g_object_unref (icon);
+    g_free (display_name);
+    g_free (mount_uri);
     /*}*/
 
     /* desktop directory if show_desktop */
     /*if (eel_preferences_get_boolean (MARLIN_PREFERENCES_SHOW_DESKTOP))
-    {
-        mount_uri = g_filename_to_uri (desktop_path, NULL, NULL);
-        icon = g_themed_icon_new (MARLIN_ICON_DESKTOP);
-        last_iter = add_place (sidebar, PLACES_BUILT_IN, &iter,
-                               _("Desktop"), icon, mount_uri, 
-                               NULL, NULL, NULL, 1,
-                               _       ("Open the contents of your desktop in a folder"));
-        g_object_unref (icon);
-        compare_for_selection (sidebar,
-                               location, mount_uri, last_uri,
-                               &last_iter, &select_path);
-        sidebar->n_builtins_before++;
-        g_free (mount_uri);
-    }
-    g_free (desktop_path);*/
+      {
+      mount_uri = g_filename_to_uri (desktop_path, NULL, NULL);
+      icon = g_themed_icon_new (MARLIN_ICON_DESKTOP);
+      last_iter = add_place (sidebar, PLACES_BUILT_IN, &iter,
+      _("Desktop"), icon, mount_uri, 
+      NULL, NULL, NULL, 1,
+      _       ("Open the contents of your desktop in a folder"));
+      g_object_unref (icon);
+      compare_for_selection (sidebar,
+      location, mount_uri, last_uri,
+      &last_iter, &select_path);
+      sidebar->n_builtins_before++;
+      g_free (mount_uri);
+      }
+      g_free (desktop_path);*/
 
     /* add bookmarks */
 
@@ -379,7 +411,7 @@ update_places (MarlinPlacesSidebar *sidebar)
         g_free (mount_uri);
         g_free (tooltip);
     }
-    
+
     /* add trash */
 
     mount_uri = MARLIN_TRASH_URI; /* No need to strdup */
@@ -403,7 +435,6 @@ update_places (MarlinPlacesSidebar *sidebar)
                         PLACES_SIDEBAR_COLUMN_EJECT, FALSE,
                         PLACES_SIDEBAR_COLUMN_NO_EJECT, TRUE,
                         PLACES_SIDEBAR_COLUMN_BOOKMARK, FALSE,
-                        PLACES_SIDEBAR_COLUMN_NO_BOOKMARK, TRUE,
                         PLACES_SIDEBAR_COLUMN_TOOLTIP, _("Your local partitions and devices"),
                         -1);
 
@@ -596,7 +627,6 @@ update_places (MarlinPlacesSidebar *sidebar)
                         PLACES_SIDEBAR_COLUMN_EJECT, FALSE,
                         PLACES_SIDEBAR_COLUMN_NO_EJECT, TRUE,
                         PLACES_SIDEBAR_COLUMN_BOOKMARK, FALSE,
-                        PLACES_SIDEBAR_COLUMN_NO_BOOKMARK, TRUE,
                         PLACES_SIDEBAR_COLUMN_TOOLTIP, _("Your network places"),
                         -1);
 
@@ -632,9 +662,9 @@ update_places (MarlinPlacesSidebar *sidebar)
                            mount_uri, NULL, NULL, NULL, 0,
                            _("Browse the contents of the network"));
     g_object_unref (icon);
-    
+
     expander_init_pref_state (sidebar->tree_view);
-    
+
     if (eel_strcmp (location, mount_uri) == 0) {
         gtk_tree_selection_select_iter (selection, &last_iter);
     }
@@ -720,6 +750,90 @@ drive_changed_callback (GVolumeMonitor *volume_monitor,
 }
 
 static gboolean
+over_eject_button (MarlinPlacesSidebar *sidebar,
+                   gint x,
+                   gint y,
+                   GtkTreePath **path)
+{
+    GtkTreeViewColumn *column;
+    GtkTextDirection direction;
+    int width, total_width;
+    int eject_button_size;
+    gboolean show_eject;
+    GtkTreeIter iter;
+
+    *path = NULL;
+
+    if (gtk_tree_view_get_path_at_pos (sidebar->tree_view,
+                                       x, y,
+                                       path, &column, NULL, NULL)) {
+
+        gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store), &iter, *path);
+        gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+                            PLACES_SIDEBAR_COLUMN_EJECT, &show_eject,
+                            -1);
+
+        if (!show_eject) {
+            goto out;
+        }
+
+        total_width = 0;
+
+        gtk_widget_style_get (GTK_WIDGET (sidebar->tree_view),
+                              "horizontal-separator", &width,
+                              NULL);
+        total_width += width;
+
+        direction = gtk_widget_get_direction (GTK_WIDGET (sidebar->tree_view));
+        if (direction != GTK_TEXT_DIR_RTL) {
+            gtk_tree_view_column_cell_get_position (column,
+                                                    sidebar->icon_cell_renderer,
+                                                    NULL, &width);
+            total_width += width;
+
+            gtk_tree_view_column_cell_get_position (column,
+                                                    sidebar->eject_text_cell_renderer,
+                                                    NULL, &width);
+            total_width += width;
+        }
+
+        total_width += EJECT_BUTTON_XPAD + TEXT_XPAD + ICON_XPAD;
+
+        //TODO
+        //eject_button_size = nautilus_get_icon_size_for_stock_size (GTK_ICON_SIZE_MENU);
+        eject_button_size = 16;
+
+        if (x - total_width >= 0 && x - total_width <= eject_button_size) {
+            return TRUE;
+        }
+    }
+
+out:
+    if (*path != NULL) {
+        gtk_tree_path_free (*path);
+        *path = NULL;
+    }
+
+    return FALSE;
+}
+
+static gboolean
+clicked_eject_button (MarlinPlacesSidebar *sidebar,
+                      GtkTreePath **path)
+{
+    GdkEvent *event = gtk_get_current_event ();
+    GdkEventButton *button_event = (GdkEventButton *) event;
+
+    if ((event->type == GDK_BUTTON_PRESS || event->type == GDK_BUTTON_RELEASE) &&
+        over_eject_button (sidebar, button_event->x, button_event->y, path)) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+#if 0
+static gboolean
 clicked_eject_button (MarlinPlacesSidebar *sidebar,
                       GtkTreePath **path)
 {
@@ -750,6 +864,7 @@ clicked_eject_button (MarlinPlacesSidebar *sidebar,
             goto out;
         }
 
+        printf(">>>>>>>> %s\n", G_STRFUNC);
         total_width = 0;
 
         gtk_widget_style_get (GTK_WIDGET (sidebar->tree_view),
@@ -788,7 +903,7 @@ out:
 
     return FALSE;
 }
-
+#endif
 
 static void
 row_activated_callback (GtkTreeView *tree_view,
@@ -799,21 +914,21 @@ row_activated_callback (GtkTreeView *tree_view,
     //amtest
     printf ("%s\n", G_STRFUNC);
     /*open_selected_bookmark (MARLIN_PLACES_SIDEBAR (user_data),
-                            gtk_tree_view_get_model (tree_view),
-                            path,
-                            0);*/
+      gtk_tree_view_get_model (tree_view),
+      path,
+      0);*/
 }
 
 /*
-static void
-desktop_location_changed_callback (gpointer user_data)
-{
-    MarlinPlacesSidebar *sidebar;
+   static void
+   desktop_location_changed_callback (gpointer user_data)
+   {
+   MarlinPlacesSidebar *sidebar;
 
-    sidebar = MARLIN_PLACES_SIDEBAR (user_data);
+   sidebar = MARLIN_PLACES_SIDEBAR (user_data);
 
-    update_places (sidebar);
-}*/
+   update_places (sidebar);
+   }*/
 
 static void
 loading_uri_callback (GtkWidget *window,
@@ -1007,15 +1122,15 @@ can_accept_items_as_bookmarks (const GList *items)
      * If more than 100 items selected, return an over-optimistic result.
      */
     /*
-    for (max = 100; items != NULL && max >= 0; items = items->next, max--) {
-        uri = ((MarlinDragSelectionItem *)items->data)->uri;
-        file = marlin_file_get_by_uri (uri);
-        if (!can_accept_file_as_bookmark (file)) {
-            marlin_file_unref (file);
-            return FALSE;
-        }
-        marlin_file_unref (file);
-    }*/
+       for (max = 100; items != NULL && max >= 0; items = items->next, max--) {
+       uri = ((MarlinDragSelectionItem *)items->data)->uri;
+       file = marlin_file_get_by_uri (uri);
+       if (!can_accept_file_as_bookmark (file)) {
+       marlin_file_unref (file);
+       return FALSE;
+       }
+       marlin_file_unref (file);
+       }*/
 
     return TRUE;
 }
@@ -1069,8 +1184,8 @@ drag_motion_callback (GtkTreeView *tree_view,
                                     -1);
                 printf ("test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), &child_iter));
                 /*marlin_drag_default_drop_action_for_icons (context, uri,
-                                                           sidebar->drag_list,
-                                                           &action);*/
+                  sidebar->drag_list,
+                  &action);*/
                 //amtest
                 action = 0;
                 g_free (uri);
@@ -1087,7 +1202,7 @@ drag_motion_callback (GtkTreeView *tree_view,
     } else {
         gdk_drag_status (context, 0, time);
     }
-    
+
     return TRUE;
 }
 
@@ -1127,33 +1242,33 @@ bookmarks_drop_uris (MarlinPlacesSidebar *sidebar,
     printf ("%s\n", G_STRFUNC);
     //TODO something is weird here
     /*
-    for (i = 0; uris[i]; i++) {
-        uri = uris[i];
-        file = marlin_file_get_by_uri (uri);
+       for (i = 0; uris[i]; i++) {
+       uri = uris[i];
+       file = marlin_file_get_by_uri (uri);
 
-        if (!can_accept_file_as_bookmark (file)) {
-            marlin_file_unref (file);
-            continue;
-        }
+       if (!can_accept_file_as_bookmark (file)) {
+       marlin_file_unref (file);
+       continue;
+       }
 
-        uri = marlin_file_get_drop_target_uri (file);
-        location = g_file_new_for_uri (uri);
-        marlin_file_unref (file);
+       uri = marlin_file_get_drop_target_uri (file);
+       location = g_file_new_for_uri (uri);
+       marlin_file_unref (file);
 
-        name = marlin_compute_title_for_location (location);
-        icon = g_themed_icon_new (MARLIN_ICON_FOLDER);
-        bookmark = marlin_bookmark_new (location, name, TRUE, icon);
+       name = marlin_compute_title_for_location (location);
+       icon = g_themed_icon_new (MARLIN_ICON_FOLDER);
+       bookmark = marlin_bookmark_new (location, name, TRUE, icon);
 
-        if (!marlin_bookmark_list_contains (sidebar->bookmarks, bookmark)) {
-            marlin_bookmark_list_insert_item (sidebar->bookmarks, bookmark, position++);
-        }
+       if (!marlin_bookmark_list_contains (sidebar->bookmarks, bookmark)) {
+       marlin_bookmark_list_insert_item (sidebar->bookmarks, bookmark, position++);
+       }
 
-        g_object_unref (location);
-        g_object_unref (bookmark);
-        g_object_unref (icon);
-        g_free (name);
-        g_free (uri);
-    }*/
+       g_object_unref (location);
+       g_object_unref (bookmark);
+       g_object_unref (icon);
+       g_free (name);
+       g_free (uri);
+       }*/
 
     g_strfreev (uris);
 }
@@ -1356,11 +1471,11 @@ drag_data_received_callback (GtkWidget *widget,
             case TEXT_URI_LIST:
                 selection_list = build_selection_list (gtk_selection_data_get_data (selection_data));
                 uris = uri_list_from_selection (selection_list);
-                //TODO
+                //TODO file_operation
                 printf ("file_operation_copy_move: drop_uri %s action %d\n", drop_uri, real_action);
                 /*marlin_file_operations_copy_move (uris, NULL, drop_uri,
-                                                  real_action, GTK_WIDGET (tree_view),
-                                                  NULL, NULL);*/
+                  real_action, GTK_WIDGET (tree_view),
+                  NULL, NULL);*/
                 marlin_drag_destroy_selection_list (selection_list);
                 g_list_free (uris);
                 success = TRUE;
@@ -1416,7 +1531,8 @@ bookmarks_popup_menu_detach_cb (GtkWidget *attach_widget,
     sidebar->popup_menu = NULL;
     sidebar->popup_menu_remove_item = NULL;
     sidebar->popup_menu_rename_item = NULL;
-    sidebar->popup_menu_separator_item = NULL;
+    sidebar->popup_menu_separator_item1 = NULL;
+    sidebar->popup_menu_separator_item2 = NULL;
     sidebar->popup_menu_mount_item = NULL;
     sidebar->popup_menu_unmount_item = NULL;
     sidebar->popup_menu_eject_item = NULL;
@@ -1525,8 +1641,13 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
 
     gtk_widget_show (sidebar->popup_menu_open_in_new_tab_item);
 
-    gtk_widget_set_sensitive (sidebar->popup_menu_remove_item, (type == PLACES_BOOKMARK));
-    gtk_widget_set_sensitive (sidebar->popup_menu_rename_item, (type == PLACES_BOOKMARK));
+    /*gtk_widget_set_sensitive (sidebar->popup_menu_remove_item, (type == PLACES_BOOKMARK));
+      gtk_widget_set_sensitive (sidebar->popup_menu_rename_item, (type == PLACES_BOOKMARK));*/
+    eel_gtk_widget_set_shown (sidebar->popup_menu_remove_item, (type == PLACES_BOOKMARK));
+    //TODO add the possibility to rename volume later
+    eel_gtk_widget_set_shown (sidebar->popup_menu_rename_item, (type == PLACES_BOOKMARK));
+    eel_gtk_widget_set_shown (sidebar->popup_menu_separator_item1, (type == PLACES_BOOKMARK));
+
     gtk_widget_set_sensitive (sidebar->popup_menu_empty_trash_item, !marlin_trash_monitor_is_empty ());
 
     check_visibility (mount, volume, drive,
@@ -1539,15 +1660,17 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
     show_empty_trash = (uri != NULL) &&
         (!strcmp (uri, "trash:///"));
 
-    /*eel_gtk_widget_set_shown (sidebar->popup_menu_mount_item, show_mount);
+    eel_gtk_widget_set_shown (sidebar->popup_menu_mount_item, show_mount);
     eel_gtk_widget_set_shown (sidebar->popup_menu_unmount_item, show_unmount);
     eel_gtk_widget_set_shown (sidebar->popup_menu_eject_item, show_eject);
-    eel_gtk_widget_set_shown (sidebar->popup_menu_rescan_item, show_rescan);
-    eel_gtk_widget_set_shown (sidebar->popup_menu_format_item, show_format);
-    eel_gtk_widget_set_shown (sidebar->popup_menu_start_item, show_start);
-    eel_gtk_widget_set_shown (sidebar->popup_menu_stop_item, show_stop);
-    eel_gtk_widget_set_shown (sidebar->popup_menu_empty_trash_item, show_empty_trash);*/
+    /*    eel_gtk_widget_set_shown (sidebar->popup_menu_rescan_item, show_rescan);
+          eel_gtk_widget_set_shown (sidebar->popup_menu_format_item, show_format);
+          eel_gtk_widget_set_shown (sidebar->popup_menu_start_item, show_start);
+          eel_gtk_widget_set_shown (sidebar->popup_menu_stop_item, show_stop);*/
+    eel_gtk_widget_set_shown (sidebar->popup_menu_empty_trash_item, show_empty_trash);
 
+    //TODO check this
+#if 0
     /* Adjust start/stop items to reflect the type of the drive */
     gtk_menu_item_set_label (GTK_MENU_ITEM (sidebar->popup_menu_start_item), _("_Start"));
     gtk_menu_item_set_label (GTK_MENU_ITEM (sidebar->popup_menu_stop_item), _("_Stop"));
@@ -1578,7 +1701,7 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
             break;
         }
     }
-
+#endif
 
     g_free (uri);
 }
@@ -1588,8 +1711,6 @@ static void
 bookmarks_selection_changed_cb (GtkTreeSelection      *selection,
                                 MarlinPlacesSidebar *sidebar)
 {
-    //amtest
-    printf ("%s\n", G_STRFUNC);
     bookmarks_check_popup_sensitivity (sidebar);
 }
 
@@ -1615,8 +1736,8 @@ volume_mounted_cb (GVolume *volume,
 #if 0
             if ((sidebar->go_to_after_mount_flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW) == 0) {
                 /*marlin_window_slot_info_open_location (sidebar->go_to_after_mount_slot, location,
-                                                       MARLIN_WINDOW_OPEN_ACCORDING_TO_MODE,
-                                                       sidebar->go_to_after_mount_flags, NULL);*/
+                  MARLIN_WINDOW_OPEN_ACCORDING_TO_MODE,
+                  sidebar->go_to_after_mount_flags, NULL);*/
             } else {
                 MarlinViewWindow *cur, *new;
 
@@ -1813,7 +1934,6 @@ rename_shortcut_cb (GtkMenuItem           *item,
     rename_selected_bookmark (sidebar);
 }
 
-#if 0
 /* Removes the selected bookmarks */
 static void
 remove_selected_bookmarks (MarlinPlacesSidebar *sidebar)
@@ -1847,7 +1967,6 @@ remove_shortcut_cb (GtkMenuItem           *item,
 {
     remove_selected_bookmarks (sidebar);
 }
-#endif
 
 static void
 mount_shortcut_cb (GtkMenuItem           *item,
@@ -2061,7 +2180,8 @@ static gboolean
 eject_or_unmount_bookmark (MarlinPlacesSidebar *sidebar,
                            GtkTreePath *path)
 {
-    //printf ("%\n", G_STRFUNC);
+    //TODO
+    printf ("%s\n", G_STRFUNC);
     GtkTreeModel *model;
     GtkTreeIter iter;
     gboolean can_unmount, can_eject;
@@ -2154,6 +2274,8 @@ drive_poll_for_media_cb (GObject *source_object,
     }
 }
 
+//TODO remove?
+#if 0
 static void
 rescan_shortcut_cb (GtkMenuItem           *item,
                     MarlinPlacesSidebar *sidebar)
@@ -2288,11 +2410,13 @@ stop_shortcut_cb (GtkMenuItem           *item,
     }
     g_object_unref (drive);
 }
+#endif
 
 static void
 empty_trash_cb (GtkMenuItem           *item,
                 MarlinPlacesSidebar *sidebar)
 {
+    //TODO file_operation
     printf ("%s\n", G_STRFUNC);
     //marlin_file_operations_empty_trash (GTK_WIDGET (sidebar->window));
 }
@@ -2315,7 +2439,7 @@ bookmarks_key_press_event_cb (GtkWidget             *widget,
     if ((event->keyval == GDK_KEY_Delete
          || event->keyval == GDK_KEY_KP_Delete)
         && (event->state & modifiers) == 0) {
-        //remove_selected_bookmarks (sidebar);
+        remove_selected_bookmarks (sidebar);
         return TRUE;
     }
 
@@ -2364,7 +2488,8 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
     gtk_widget_show (item);
     gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
 
-    //eel_gtk_menu_append_separator (GTK_MENU (sidebar->popup_menu));
+    sidebar->popup_menu_separator_item1 =
+        GTK_WIDGET (eel_gtk_menu_append_separator (GTK_MENU (sidebar->popup_menu)));
 
     item = gtk_image_menu_item_new_with_label (_("Remove"));
     sidebar->popup_menu_remove_item = item;
@@ -2384,8 +2509,8 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
 
     /* Mount/Unmount/Eject menu items */
 
-    sidebar->popup_menu_separator_item =
-      GTK_WIDGET (eel_gtk_menu_append_separator (GTK_MENU (sidebar->popup_menu)));
+    sidebar->popup_menu_separator_item2 =
+        GTK_WIDGET (eel_gtk_menu_append_separator (GTK_MENU (sidebar->popup_menu)));
 
     item = gtk_menu_item_new_with_mnemonic (_("_Mount"));
     sidebar->popup_menu_mount_item = item;
@@ -2408,33 +2533,33 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
     gtk_widget_show (item);
     gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
 
-    item = gtk_menu_item_new_with_mnemonic (_("_Detect Media"));
-    sidebar->popup_menu_rescan_item = item;
-    g_signal_connect (item, "activate",
-                      G_CALLBACK (rescan_shortcut_cb), sidebar);
-    gtk_widget_show (item);
-    gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
+    /*item = gtk_menu_item_new_with_mnemonic (_("_Detect Media"));
+      sidebar->popup_menu_rescan_item = item;
+      g_signal_connect (item, "activate",
+      G_CALLBACK (rescan_shortcut_cb), sidebar);
+      gtk_widget_show (item);
+      gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
 
-    item = gtk_menu_item_new_with_mnemonic (_("_Format"));
-    sidebar->popup_menu_format_item = item;
-    g_signal_connect (item, "activate",
-                      G_CALLBACK (format_shortcut_cb), sidebar);
-    gtk_widget_show (item);
-    gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
+      item = gtk_menu_item_new_with_mnemonic (_("_Format"));
+      sidebar->popup_menu_format_item = item;
+      g_signal_connect (item, "activate",
+      G_CALLBACK (format_shortcut_cb), sidebar);
+      gtk_widget_show (item);
+      gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
 
-    item = gtk_menu_item_new_with_mnemonic (_("_Start"));
-    sidebar->popup_menu_start_item = item;
-    g_signal_connect (item, "activate",
-                      G_CALLBACK (start_shortcut_cb), sidebar);
-    gtk_widget_show (item);
-    gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
+      item = gtk_menu_item_new_with_mnemonic (_("_Start"));
+      sidebar->popup_menu_start_item = item;
+      g_signal_connect (item, "activate",
+      G_CALLBACK (start_shortcut_cb), sidebar);
+      gtk_widget_show (item);
+      gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
 
-    item = gtk_menu_item_new_with_mnemonic (_("_Stop"));
-    sidebar->popup_menu_stop_item = item;
-    g_signal_connect (item, "activate",
-                      G_CALLBACK (stop_shortcut_cb), sidebar);
-    gtk_widget_show (item);
-    gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
+      item = gtk_menu_item_new_with_mnemonic (_("_Stop"));
+      sidebar->popup_menu_stop_item = item;
+      g_signal_connect (item, "activate",
+      G_CALLBACK (stop_shortcut_cb), sidebar);
+      gtk_widget_show (item);
+      gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);*/
 
     /* Empty Trash menu item */
 
@@ -2460,10 +2585,10 @@ bookmarks_popup_menu (MarlinPlacesSidebar *sidebar,
 {
     bookmarks_update_popup_menu (sidebar);
     printf ("%s\n", G_STRFUNC);
-    /*eel_pop_up_context_menu (GTK_MENU(sidebar->popup_menu),
-      EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
-      EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
-      event);*/
+    eel_pop_up_context_menu (GTK_MENU(sidebar->popup_menu),
+                             EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
+                             EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
+                             event);
 }
 
 /* Callback used for the GtkWidget::popup-menu signal of the shortcuts list */
@@ -2480,6 +2605,8 @@ bookmarks_button_release_event_cb (GtkWidget *widget,
                                    GdkEventButton *event,
                                    MarlinPlacesSidebar *sidebar)
 {
+    //amtest
+    printf ("%s\n", G_STRFUNC);
     GtkTreePath *path;
     GtkTreeModel *model;
     GtkTreeView *tree_view;
@@ -2494,22 +2621,22 @@ bookmarks_button_release_event_cb (GtkWidget *widget,
         return FALSE;
     }
 
-    tree_view = GTK_TREE_VIEW (widget);
-    model = gtk_tree_view_get_model (tree_view);
+    /*tree_view = GTK_TREE_VIEW (widget);
+      model = gtk_tree_view_get_model (tree_view);
 
-    if (event->button == 1) {
+      if (event->button == 1) {
 
-        if (event->window != gtk_tree_view_get_bin_window (tree_view)) {
-            return FALSE;
-        }
+      if (event->window != gtk_tree_view_get_bin_window (tree_view)) {
+      return FALSE;
+      }
 
-        gtk_tree_view_get_path_at_pos (tree_view, (int) event->x, (int) event->y,
-                                       &path, NULL, NULL, NULL);
+      gtk_tree_view_get_path_at_pos (tree_view, (int) event->x, (int) event->y,
+      &path, NULL, NULL, NULL);
 
-        //open_selected_bookmark (sidebar, model, path, 0);
+    //open_selected_bookmark (sidebar, model, path, 0);
 
-        gtk_tree_path_free (path);
-    }
+    gtk_tree_path_free (path);
+    }*/
 
     return FALSE;
 }
@@ -2547,15 +2674,112 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
         //printf ("selected path %s\n", gtk_tree_path_to_string (path));
         printf ("%s open_selected_bookmark ...\n", G_STRFUNC);
         /*open_selected_bookmark (sidebar, model, path,
-                                event->state & GDK_CONTROL_MASK ?
-                                MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW :
-                                MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);*/
+          event->state & GDK_CONTROL_MASK ?
+MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW :
+MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);*/
 
         if (path != NULL) {
             gtk_tree_path_free (path);
             return TRUE;
         }
     }
+
+    return FALSE;
+}
+
+static void
+update_eject_buttons (MarlinPlacesSidebar   *sidebar,
+                      GtkTreePath 	    *path)
+{
+    GtkTreeIter iter;
+    gboolean icon_visible, path_same;
+
+    icon_visible = TRUE;
+    if (path == NULL && sidebar->eject_highlight_path == NULL) {
+        /* Both are null - highlight up to date */
+        return;
+    }
+
+    path_same = (path != NULL) &&
+        (sidebar->eject_highlight_path != NULL) &&
+        (gtk_tree_path_compare (sidebar->eject_highlight_path, path) == 0);
+
+    if (path_same) {
+        /* Same path - highlight up to date */
+        return;
+    }
+
+    if (path) {
+        gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store),
+                                 &iter,
+                                 path);
+
+        gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store),
+                            &iter,
+                            PLACES_SIDEBAR_COLUMN_EJECT, &icon_visible,
+                            -1);
+    }
+
+    if (!icon_visible || path == NULL || !path_same) {
+        /* remove highlighting and reset the saved path, as we are leaving
+         * an eject button area.
+         */
+        if (sidebar->eject_highlight_path) {
+            gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store),
+                                     &iter,
+                                     sidebar->eject_highlight_path);
+
+            gtk_tree_store_set (sidebar->store,
+                                &iter,
+                                PLACES_SIDEBAR_COLUMN_EJECT_ICON, get_eject_icon (FALSE),
+                                -1);
+            //gtk_tree_model_row_changed (GTK_TREE_MODEL (sidebar->store), path, &iter);
+
+            gtk_tree_path_free (sidebar->eject_highlight_path);
+            sidebar->eject_highlight_path = NULL;
+        }
+
+        if (!icon_visible) {
+            return;
+        }
+    }
+
+    if (path != NULL) {
+        /* add highlighting to the selected path, as the icon is visible and
+         * we're hovering it.
+         */
+        gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store),
+                                 &iter,
+                                 path);
+        gtk_tree_store_set (sidebar->store,
+                            &iter,
+                            PLACES_SIDEBAR_COLUMN_EJECT_ICON, get_eject_icon (TRUE),
+                            -1);
+        //gtk_tree_model_row_changed (GTK_TREE_MODEL (sidebar->store), path, &iter);
+
+        sidebar->eject_highlight_path = gtk_tree_path_copy (path);
+    }
+}
+
+static gboolean
+bookmarks_motion_event_cb (GtkWidget            *widget,
+                           GdkEventMotion       *event,
+                           MarlinPlacesSidebar  *sidebar)
+{
+    GtkTreePath *path;
+    GtkTreeModel *model;
+
+    model = GTK_TREE_MODEL (sidebar->store);
+    path = NULL;
+
+    if (over_eject_button (sidebar, event->x, event->y, &path)) {
+        update_eject_buttons (sidebar, path);
+        gtk_tree_path_free (path);
+
+        return TRUE;
+    }
+
+    update_eject_buttons (sidebar, NULL);
 
     return FALSE;
 }
@@ -2802,13 +3026,15 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     cell = gtk_cell_renderer_pixbuf_new ();
     g_object_set (cell,
                   "mode", GTK_CELL_RENDERER_MODE_ACTIVATABLE,
-                  "icon-name", "media-eject",
-                  "stock-size", GTK_ICON_SIZE_MENU,
+                  //"icon-name", "media-eject",
+                  //"stock-size", GTK_ICON_SIZE_MENU,
+                  "stock-size", 16,
                   "xpad", EJECT_BUTTON_XPAD,
                   NULL);
     gtk_tree_view_column_pack_start (col, cell, FALSE);
     gtk_tree_view_column_set_attributes (col, cell,
                                          "visible", PLACES_SIDEBAR_COLUMN_EJECT,
+                                         "pixbuf", PLACES_SIDEBAR_COLUMN_EJECT_ICON,
                                          NULL);
 
     cell = gtk_cell_renderer_text_new ();
@@ -2846,7 +3072,6 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                                              NULL);
 
     /* this is required to align the eject buttons to the right */
-    //TODO check this
     gtk_tree_view_column_set_max_width (GTK_TREE_VIEW_COLUMN (col), NAUTILUS_ICON_SIZE_SMALLER);
     gtk_tree_view_column_set_expand(col, TRUE);
     gtk_tree_view_append_column (tree_view, col);
@@ -2864,8 +3089,8 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                                          G_TYPE_BOOLEAN,
                                          G_TYPE_BOOLEAN,
                                          G_TYPE_BOOLEAN,
-                                         G_TYPE_BOOLEAN,
-                                         G_TYPE_STRING
+                                         G_TYPE_STRING,
+                                         GDK_TYPE_PIXBUF
                                         );
 
     gtk_tree_view_set_tooltip_column (tree_view, PLACES_SIDEBAR_COLUMN_TOOLTIP);
@@ -2880,7 +3105,6 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
 
     gtk_tree_view_set_search_column (tree_view, PLACES_SIDEBAR_COLUMN_NAME);
     selection = gtk_tree_view_get_selection (tree_view);
-    //gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
     gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
 
     g_signal_connect_object	(tree_view, "row_activated", 
@@ -2916,21 +3140,22 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                       G_CALLBACK (bookmarks_button_press_event_cb), sidebar);
     g_signal_connect (tree_view, "button-release-event",
                       G_CALLBACK (bookmarks_button_release_event_cb), sidebar);
+    g_signal_connect (tree_view, "motion-notify-event",
+                      G_CALLBACK (bookmarks_motion_event_cb), sidebar);
     g_signal_connect (tree_view, "row-expanded",
                       G_CALLBACK (category_row_expanded_event_cb), sidebar);
     g_signal_connect (tree_view, "row-collapsed",
                       G_CALLBACK (category_row_collapsed_event_cb), sidebar);
 
-    /*eel_gtk_tree_view_set_activate_on_single_click (sidebar->tree_view,
-                                                    TRUE);*/
+    eel_gtk_tree_view_set_activate_on_single_click (sidebar->tree_view, TRUE);
 
     /*g_signal_connect_swapped (marlin_preferences, "changed::" MARLIN_PREFERENCES_DESKTOP_IS_HOME_DIR,
-                              G_CALLBACK(desktop_location_changed_callback),
-                              sidebar);*/
+      G_CALLBACK(desktop_location_changed_callback),
+      sidebar);*/
     /*eel_preferences_add_callback_while_alive (MARLIN_PREFERENCES_DESKTOP_IS_HOME_DIR,
-                                              desktop_location_changed_callback,
-                                              sidebar,
-                                              G_OBJECT (sidebar));*/
+      desktop_location_changed_callback,
+      sidebar,
+      G_OBJECT (sidebar));*/
 
     g_signal_connect_object (marlin_trash_monitor_get (),
                              "trash_state_changed",
@@ -2953,6 +3178,11 @@ marlin_places_sidebar_dispose (GObject *object)
 
     free_drag_data (sidebar);
 
+    if (sidebar->eject_highlight_path != NULL) {
+        gtk_tree_path_free (sidebar->eject_highlight_path);
+        sidebar->eject_highlight_path = NULL;
+    }
+
     if (sidebar->store != NULL) {
         g_object_unref (sidebar->store);
         sidebar->store = NULL;
@@ -2971,8 +3201,8 @@ marlin_places_sidebar_dispose (GObject *object)
     eel_remove_weak_pointer (&(sidebar->go_to_after_mount_slot));
 
     /*g_signal_handlers_disconnect_by_func (marlin_preferences,
-                                          desktop_location_changed_callback,
-                                          sidebar);*/
+      desktop_location_changed_callback,
+      sidebar);*/
 
     G_OBJECT_CLASS (marlin_places_sidebar_parent_class)->dispose (object);
 }
@@ -3006,8 +3236,8 @@ marlin_places_sidebar_set_parent_window (MarlinPlacesSidebar *sidebar,
                              sidebar, G_CONNECT_SWAPPED);
 
     /*g_signal_connect_object (window, "loading_uri",
-                             G_CALLBACK (loading_uri_callback),
-                             sidebar, 0);*/
+      G_CALLBACK (loading_uri_callback),
+      sidebar, 0);*/
 
     g_signal_connect_object (sidebar->volume_monitor, "volume_added",
                              G_CALLBACK (volume_added_callback), sidebar, 0);
