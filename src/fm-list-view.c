@@ -186,7 +186,7 @@ gof_gnome_open_single_file (GOFFile *file, GdkScreen *screen)
         cmd = g_strconcat("gnome-open ", quoted_uri, NULL);
         g_free(quoted_uri);
 
-        //printf("command %s\n", uri);
+        //log_printf (LOG_LEVEL_UNDEFINED, "command %s\n", uri);
         gdk_spawn_command_line_on_screen (screen, cmd, NULL);
         g_free (uri);
         g_free (cmd);
@@ -200,7 +200,7 @@ gof_gnome_open_single_file (GOFFile *file, GdkScreen *screen)
            file-roller - happens too with nautilus */
         uri = g_file_get_uri(file->location);
         cmd = g_strconcat("gnome-open ", uri, NULL);
-        printf("command %s\n", cmd);
+        log_printf (LOG_LEVEL_UNDEFINED, "command %s\n", cmd);
         gdk_spawn_command_line_on_screen (screen, cmd, NULL);
         g_free (uri);
         g_free (cmd);
@@ -212,7 +212,7 @@ fm_directory_activate_single_file (GOFFile *file, FMListView *view, GdkScreen *s
 {
     //GOFDirectoryAsync *dir;
 
-    printf("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     if (file->is_directory) {
         //view->location = file->location;
         /*
@@ -305,7 +305,7 @@ fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
     for (; file_list != NULL; file_list=file_list->next)
     {
         file = file_list->data;
-        //printf("colorize %s %d\n", file->name, ncolor);
+        //log_printf (LOG_LEVEL_UNDEFINED, "colorize %s %d\n", file->name, ncolor);
         file->color = tags_colors[ncolor];
         uri = g_file_get_uri(file->location);
         //*array = uri;

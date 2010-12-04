@@ -1037,7 +1037,7 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     replace_dummy = FALSE;
 
     if (parent_ptr != NULL) {
-        //printf ("parent_ptr != NULL %s\n", file->name);
+        //log_printf (LOG_LEVEL_UNDEFINED, "parent_ptr != NULL %s\n", file->name);
         file_entry->parent = g_sequence_get (parent_ptr);
         /* At this point we set loaded. Either we saw
          * "done" and ignored it waiting for this, or we do this
@@ -1229,7 +1229,7 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
     }
     /* FIXME we don't need to unref file here - clean up this part */
     /*if (file_entry->file != NULL) {
-    //printf ("remove file %s\n", file_entry->file->name);
+    //log_printf (LOG_LEVEL_UNDEFINED, "remove file %s\n", file_entry->file->name);
     g_object_unref (file_entry->file);
     }*/
 
@@ -1264,7 +1264,7 @@ fm_list_model_remove_file (FMListModel *model, GOFFile *file,
     GtkTreeIter iter;
 
     if (fm_list_model_get_tree_iter_from_file (model, file, directory, &iter)) {
-        //printf ("remove file %s\n", file->name);
+        //log_printf (LOG_LEVEL_UNDEFINED, "remove file %s\n", file->name);
         fm_list_model_remove (model, &iter);
     }
 }
@@ -1386,8 +1386,8 @@ fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter)
                          file_entry->subdirectory);
     file_entry->loaded = 0;
 
-    printf("remove all children\n"); 	
-    //printf("remove all children %d\n", g_sequence_get_length (file_entry->files));
+    log_printf (LOG_LEVEL_UNDEFINED, "remove all children\n"); 	
+    //log_printf (LOG_LEVEL_UNDEFINED, "remove all children %d\n", g_sequence_get_length (file_entry->files));
     /* Remove all children */
     while (g_sequence_get_length (file_entry->files) > 0) {
         child_ptr = g_sequence_get_begin_iter (file_entry->files);
@@ -1672,7 +1672,7 @@ fm_list_model_finalize (GObject *object)
 {
     FMListModel *model = FM_LIST_MODEL (object);
 
-    printf ("$$ %s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
     g_free (model->details);
 
     G_OBJECT_CLASS (fm_list_model_parent_class)->finalize (object);

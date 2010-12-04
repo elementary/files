@@ -56,7 +56,7 @@ hadj_changed (GtkAdjustment *hadj, gpointer user_data)
 MarlinWindowColumns *
 marlin_window_columns_new (GFile *location, GObject *ctab)
 {
-    printf("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     MarlinWindowColumns *mwcols;
     mwcols = g_object_new (MARLIN_TYPE_WINDOW_COLUMNS, NULL);
     mwcols->location = location;

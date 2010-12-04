@@ -193,7 +193,7 @@ gof_window_slot_finalize (GObject *object)
 GOFWindowSlot *
 gof_window_slot_new (GFile *location, GObject *ctab)
 {
-    printf("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     GOFWindowSlot *slot;
     slot = g_object_new (GOF_TYPE_WINDOW_SLOT, NULL);
     slot->location = location;
@@ -241,7 +241,7 @@ gof_window_slot_new (GFile *location, GObject *ctab)
 GOFWindowSlot *
 gof_window_slot_column_new (GFile *location, GObject *ctab)
 {
-    printf("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     GOFWindowSlot *slot;
     slot = g_object_new (GOF_TYPE_WINDOW_SLOT, NULL);
     slot->location = location;
@@ -259,7 +259,7 @@ gof_window_slot_column_new (GFile *location, GObject *ctab)
 GOFWindowSlot *
 gof_window_slot_column_new (GFile *location, GtkWidget *window)
 {
-    printf("%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     GOFWindowSlot *slot;
     slot = g_object_new (GOF_TYPE_WINDOW_SLOT, NULL);
     slot->location = location;

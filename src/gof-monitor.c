@@ -30,6 +30,7 @@
 
 #include <gio/gio.h>
 #include <stdio.h>
+#include "marlin-vala.h"
 
 struct GOFMonitor {
     GFileMonitor *monitor;
@@ -58,15 +59,15 @@ dir_changed (GFileMonitor* monitor,
     case G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED:
     case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
         //nautilus_file_changes_queue_file_changed (child);
-        printf ("file changed %s\n", uri);
+        log_printf (LOG_LEVEL_UNDEFINED, "file changed %s\n", uri);
         break;
     case G_FILE_MONITOR_EVENT_DELETED:
         //nautilus_file_changes_queue_file_removed (child);
-        printf ("file deleted %s\n", uri);
+        log_printf (LOG_LEVEL_UNDEFINED, "file deleted %s\n", uri);
         break;
     case G_FILE_MONITOR_EVENT_CREATED:
         //nautilus_file_changes_queue_file_added (child);
-        printf ("file added %s\n", uri);
+        log_printf (LOG_LEVEL_UNDEFINED, "file added %s\n", uri);
         break;
 
     case G_FILE_MONITOR_EVENT_PRE_UNMOUNT:

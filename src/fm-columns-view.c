@@ -84,7 +84,7 @@ row_collapsed_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 
     fm_list_model_get_directory_file (view->model, path, &unload_data->directory, &unload_data->file);
 
-    //printf ("collapsed %s %s\n", unload_data->file->name, gof_directory_get_uri(unload_data->directory));
+    //log_printf (LOG_LEVEL_UNDEFINED, "collapsed %s %s\n", unload_data->file->name, gof_directory_get_uri(unload_data->directory));
     g_timeout_add_seconds (COLLAPSE_TO_UNLOAD_DELAY,
                            unload_file_timeout,
                            unload_data);
@@ -132,7 +132,7 @@ gof_gnome_open_single_file (GOFFile *file, GdkScreen *screen)
         cmd = g_strconcat("gnome-open ", quoted_uri, NULL);
         g_free(quoted_uri);
 
-        //printf("command %s\n", uri);
+        //log_printf (LOG_LEVEL_UNDEFINED, "command %s\n", uri);
         gdk_spawn_command_line_on_screen (screen, cmd, NULL);
         g_free (uri);
         g_free (cmd);
