@@ -53,6 +53,8 @@ marlin_SOURCES = \
     marlin-bookmark.c                       \
     marlin-bookmark-list.c                  \
     marlin-dnd.c                            \
+    marlin-file-utilities.c                 \
+    marlin-file-operations.c                \
     marlin-places-sidebar.c                 \
     marlin-window-columns.c                 \
     gof-window-slot.c                       \

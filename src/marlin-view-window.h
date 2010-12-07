@@ -28,4 +28,10 @@ typedef struct GOFWindowSlot GOFWindowSlot;
 
 typedef struct GOFWindowSlotClass GOFWindowSlotClass;
 
+typedef enum {
+	MARLIN_WINDOW_OPEN_FLAG_DEFAULT,
+	MARLIN_WINDOW_OPEN_FLAG_NEW_TAB,
+	MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW
+} MarlinViewWindowOpenFlags;
+
 #endif /* MARLIN_VIEW_WINDOW_H */

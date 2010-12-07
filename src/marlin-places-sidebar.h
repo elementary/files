@@ -75,7 +75,7 @@ typedef struct {
     /* volume mounting - delayed open process */
     gboolean mounting;
     GOFWindowSlot *go_to_after_mount_slot;
-    /*MarlinWindowOpenFlags go_to_after_mount_flags;*/
+    MarlinViewWindowOpenFlags go_to_after_mount_flags;
 
     GtkTreePath *eject_highlight_path;
 } MarlinPlacesSidebar;
