@@ -50,7 +50,18 @@ marlin_SOURCES = \
     eel-fcts.c                              \
     eel-i18n.c                              \
     eel-marshal.c                           \
+    eel-gtk-extensions.c                    \
+    eel-gdk-pixbuf-extensions.c             \
     eel-glib-extensions.c                   \
+    eel-stock-dialogs.c                     \
+    gossip-cell-renderer-expander.c         \
+    marlin-trash-monitor.c                  \
+    marlin-bookmark.c                       \
+    marlin-bookmark-list.c                  \
+    marlin-dnd.c                            \
+    marlin-file-utilities.c                 \
+    marlin-file-operations.c                \
+    marlin-places-sidebar.c                 \
     marlin-window-columns.c                 \
     gof-window-slot.c                       \
     nautilus-marshal-guts.c                 \

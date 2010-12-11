@@ -138,7 +138,8 @@ namespace Marlin.View {
             isize128 = icon_size_register ("128px", 128, 128);
 
             /* Sidebar */
-            var sidebar = new Label("Sidebar");
+            //var sidebar = new Label("Sidebar");
+            var sidebar = new Marlin.Places.Sidebar ((Gtk.Widget) this);
             sidebar.set_size_request(150, -1);
             contextview = new ContextView(this);
             //contextview.set_size_request(150, -1);
@@ -223,6 +224,12 @@ namespace Marlin.View {
             Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
             Signal.connect (this, "go_up",
                     (GLib.Callback)action_go_up, null);
+        }
+
+        public GOF.Window.Slot? get_active_slot() {
+            if (current_tab != null && current_tab.slot != null)
+                return current_tab.slot;
+            return null;
         }
 
         public void change_tab(uint offset){

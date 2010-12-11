@@ -188,3 +188,15 @@ eel_g_date_new_tm (struct tm *time_pieces)
                            time_pieces->tm_year + 1900);
 }
 
+int
+eel_strcmp (const char *string_a, const char *string_b)
+{
+	/* FIXME bugzilla.eazel.com 5450: Maybe we need to make this
+	 * treat 'NULL < ""', or have a flavor that does that. If we
+	 * didn't have code that already relies on 'NULL == ""', I
+	 * would change it right now.
+	 */
+	return strcmp (string_a == NULL ? "" : string_a,
+		       string_b == NULL ? "" : string_b);
+}
+

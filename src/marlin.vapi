@@ -90,6 +90,13 @@ namespace Marlin {
             public Widget get_view ();*/
         }
     }
+    [CCode (cprefix = "MarlinPlaces", lower_case_cprefix = "marlin_places_")]
+    namespace Places {
+        [CCode (cheader_filename = "marlin-places-sidebar.h")]
+        public class Sidebar : Gtk.ScrolledWindow {
+            public Sidebar (Gtk.Widget window);
+        }
+    }
 }
 
 

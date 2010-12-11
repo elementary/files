@@ -154,20 +154,22 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
     //log_printf (LOG_LEVEL_UNDEFINED, "test parent_dir %s\n", g_file_get_uri(self->directory));
     //g_object_ref (self->directory);
     self->name = g_file_info_get_name (file_info);
+    self->display_name = g_file_info_get_display_name (file_info);
     self->is_hidden = g_file_info_get_is_hidden (file_info);
     /* don't waste time on collecting data for hidden files which would be dropped */
     if (self->is_hidden && !g_settings_get_boolean(settings, "show-hiddenfiles"))
         return self;
     self->location = g_file_get_child(self->directory, self->name);
     self->ftype = g_file_info_get_attribute_string (file_info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
-    self->utf8_collation_key = g_utf8_collate_key (self->name, -1);
     self->size = (guint64) g_file_info_get_size (file_info);
-    self->format_size = g_format_size_for_display(self->size);
     self->file_type = g_file_info_get_file_type(file_info);
     self->is_directory = (self->file_type == G_FILE_TYPE_DIRECTORY);
-    self->icon = g_content_type_get_icon (self->ftype);
     self->modified = g_file_info_get_attribute_uint64 (file_info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+    
+    self->utf8_collation_key = g_utf8_collate_key (self->name, -1);
+    self->format_size = g_format_size_for_display(self->size);
     self->formated_modified = gof_file_get_date_as_string (self->modified);
+    self->icon = g_content_type_get_icon (self->ftype);
 
     nicon = nautilus_icon_info_lookup (self->icon, 16);
     self->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
@@ -178,6 +180,22 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
     return self;
 }
 
+GOFFile* gof_file_get(GFile *location)
+{
+    /* TODO check directories in a hastable for a already known file */
+    GFileInfo *file_info;
+    GFile *parent;
+    GOFFile *file;
+    
+    parent = g_file_get_parent (location);
+    file_info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
+                                   G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, NULL);
+    if (file_info == NULL)
+        return NULL;
+    file = gof_file_new(file_info, parent);
+
+    return (file);
+}
 
 GFileInfo* gof_file_get_file_info (GOFFile* self) {
     GFileInfo* result;

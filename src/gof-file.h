@@ -51,6 +51,7 @@ struct _GOFFile {
     GFile           *location;
     GFile           *directory;
     const gchar     *name;
+    const gchar     *display_name;
     const gchar     *ftype;
     gchar           *utf8_collation_key;
     guint64         size;
@@ -69,9 +70,17 @@ struct _GOFFileClass {
     GObjectClass parent_class;
 };
 
+/*
+#define GIO_SUCKLESS_DEFAULT_ATTRIBUTES                                \
+"standard::type,standard::is-hidden,standard::name,standard::display-name,standard::edit-name,standard::copy-name,standard::fast-content-type,standard::size,standard::allocated-size,access::*,mountable::*,time::*,unix::*,owner::*,selinux::*,thumbnail::*,id::filesystem,trash::orig-path,trash::deletion-date,metadata::*"
+*/
+
+#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,access::*,time::*"
+
 GType gof_file_get_type (void);
 
 GOFFile*        gof_file_new (GFileInfo* file_info, GFile *dir);
+GOFFile*        gof_file_get (GFile *location);
 GFileInfo*      gof_file_get_file_info (GOFFile* self);
 gint            gof_file_NameCompareFunc (GOFFile* a, GOFFile* b);
 gint            gof_file_SizeCompareFunc (GOFFile* a, GOFFile* b);

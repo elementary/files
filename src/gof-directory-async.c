@@ -21,7 +21,6 @@
 #include "nautilus-icon-info.h"
 #include "gof-monitor.h"
 #include "gof-file.h"
-//#include "fm-list-model.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
 #include "marlin-global-preferences.h"
 #include "marlin-vala.h"
@@ -140,22 +139,10 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
           nicon = nautilus_icon_info_lookup (goff->icon, 16);
           GdkPixbuf *pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);*/
 
-        /* TODO: handle hidden files differently */
         if (!goff->is_hidden || g_settings_get_boolean(settings, "show-hiddenfiles"))
         {
-            //log_printf (LOG_LEVEL_UNDEFINED, "%s\n", goff->name);
-            //fm_list_model_add_file (dir->priv->model, goff, dir);
-
             g_signal_emit (dir, signals[FILE_ADDED], 0, goff);
-            //custom_list_append_record (customlist,);
-
-            /*gtk_list_store_append (dir->priv->m_store, &iter);
-              gtk_list_store_set (dir->priv->m_store, &iter, 
-            //GOF_DIR_COL_ICON, NULL,
-            GOF_DIR_COL_ICON, pix,
-            GOF_DIR_COL_FILENAME, goff->name,
-            GOF_DIR_COL_SIZE, goff->format_size,
-            -1);*/
+            
             /* val = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
                g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE) 
                g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY ? 'd' : '-',
@@ -170,7 +157,6 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
     g_file_enumerator_next_files_async (enumerator, FILES_PER_QUERY,
                                         G_PRIORITY_DEFAULT,
                                         dir->priv->cancellable,
-                                        //NULL,
                                         enumerator_files_callback,
                                         dir);
 }
@@ -191,10 +177,8 @@ static void load_dir_async_callback (GObject *source_object, GAsyncResult *res, 
     if (enumerator) {
         g_file_enumerator_next_files_async (enumerator,
                                             FILES_PER_QUERY,
-                                            //G_PRIORITY_LOW,
                                             G_PRIORITY_DEFAULT,
                                             dir->priv->cancellable,
-                                            //NULL,
                                             enumerator_files_callback,
                                             g_object_ref (dir));
         g_object_unref (enumerator);
@@ -203,7 +187,6 @@ static void load_dir_async_callback (GObject *source_object, GAsyncResult *res, 
 }
 
 
-//static void
 void
 load_dir_async (GOFDirectoryAsync *dir)
 {
@@ -217,11 +200,12 @@ load_dir_async (GOFDirectoryAsync *dir)
         g_free (uri);
         p->monitor = gof_monitor_directory (p->_dir);
 
-        g_file_enumerate_children_async (p->_dir, GOF_GIO_DEFAULT_ATTRIBUTES, G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, 
-                                         G_PRIORITY_DEFAULT, p->cancellable, load_dir_async_callback, dir);
-        //G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, G_PRIORITY_DEFAULT, NULL, NULL, dir);
-
-        //GtkTreeIter iter;
+        g_file_enumerate_children_async (p->_dir, GOF_GIO_DEFAULT_ATTRIBUTES, 
+                                         G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, 
+                                         G_PRIORITY_DEFAULT, 
+                                         p->cancellable, 
+                                         load_dir_async_callback, 
+                                         dir);
     }
 }
 
@@ -290,9 +274,6 @@ GOFDirectoryAsync *gof_directory_async_get_for_file(GOFFile *file)
 static void
 gof_directory_async_init (GOFDirectoryAsync *self)
 {
-    /*GOFDirectoryAsyncPrivate *priv;
-
-      priv = GOF_DIRECTORY_ASYNC_GET_PRIVATE (self);*/
     self->priv = g_new0(GOFDirectoryAsyncPrivate, 1);
 }
 
