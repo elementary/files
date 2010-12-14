@@ -78,15 +78,15 @@ namespace Marlin.View {
                 current_tab.change_view(n, null);
         }
 
-        protected virtual void action_radio_set_color_changed(){		
+        /*protected virtual void action_radio_set_color_changed(){		
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("set-color-clear");
             assert(action != null);
             int n = action.get_current_value();
            
             print("Color changed: %i\n",n);
             ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
-	    }
-        
+	}*/
+
         public Window ()
         {   
             ui = new UIManager();
@@ -102,14 +102,13 @@ namespace Marlin.View {
             main_actions.add_toggle_actions(main_toggle_entries, this);
             main_actions.add_radio_actions(view_radio_entries, -1, 
                                            action_radio_change_view);
-            main_actions.add_radio_actions(color_radio_entries, -1,
-                                           action_radio_set_color_changed);
+            /*main_actions.add_radio_actions(color_radio_entries, -1,
+                                           action_radio_set_color_changed);*/
             accel_group = ui.get_accel_group();
             add_accel_group(accel_group);
             
             ui.insert_action_group(main_actions, 0);
             ui.ensure_update();
-
 
             /* Menubar */
             menu_bar = ui.get_widget("/MenuBar");
@@ -225,6 +224,11 @@ namespace Marlin.View {
             Signal.connect (this, "go_up",
                     (GLib.Callback)action_go_up, null);
         }
+        
+        public void colorize_current_tab_selection (int n) { 
+            ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
+	}
+        
 
         public GOF.Window.Slot? get_active_slot() {
             if (current_tab != null && current_tab.slot != null)
@@ -405,6 +409,9 @@ namespace Marlin.View {
                                  N_("Customize _Toolbar"),               
                                  null, N_("Easily edit the toolbar layout"),
                                  action_toolbar_editor_callback },
+                               /*{ Chrome.ColorAction, null, "ColorAction"),
+                                 null, null,
+                                 null },*/
                                { "Up", Stock.GO_UP, N_("Open _Parent"),
                                  "<alt>Up", N_("Open the parent folder"),
                                  action_go_up },
@@ -466,7 +473,7 @@ namespace Marlin.View {
               ViewMode.MILLER }
         };
 
-        enum RowColor {
+        /*enum RowColor {
             NONE,
             BUTTER,
             ORANGE,
@@ -510,7 +517,7 @@ namespace Marlin.View {
             { "set-color-darkgray", null,
               N_("Dark Gray"), null, null,
               RowColor.DARKGRAY }
-        };
+        };*/
 
     }
 }

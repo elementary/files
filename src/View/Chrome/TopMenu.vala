@@ -35,6 +35,15 @@ namespace Marlin.View.Chrome
             win = window;
             
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
+
+            MenuItem coloritem = new ColorWidget(win);            
+            coloritem.show_all();
+            Gtk.Widget set_color_label = new Gtk.MenuItem.with_label ("Set Color:");
+            compact_menu.append((Gtk.MenuItem) set_color_label);
+            set_color_label.set_sensitive(false);
+            set_color_label.show();
+            compact_menu.append((Gtk.MenuItem) coloritem);
+
             compact_tool_menu_button = new CompactToolMenuButton.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
             setup_items();
             show();

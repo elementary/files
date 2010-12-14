@@ -1,5 +1,7 @@
 GSettings  *settings;
 
+static gchar *tags_colors[10] = { NULL, "#fce94f", "#fcaf3e", "#997666", "#8ae234", "#729fcf", "#ad7fa8", "#ef2929", "#d3d7cf", "#888a85" };
+
 #define MARLIN_PREFERENCES_RGBA_COLORMAP                    "rgba-colormap"
 #define MARLIN_PREFERENCES_DATE_FORMAT                      "date-format"
 #define MARLIN_PREFERENCES_SIDEBAR_ICON_SIZE                "sidebar-icon-size"

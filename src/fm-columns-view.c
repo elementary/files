@@ -25,8 +25,9 @@
 
 //#include "gof-directory-async.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
+#include "marlin-global-preferences.h"
 #include "marlin-tags.h"
-#include "marlin-vala.h"
+//#include "marlin-vala.h"
 
 /*
    struct FMColumnsViewDetails {

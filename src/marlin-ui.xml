@@ -9,7 +9,7 @@
                 <placeholder name="Close Items Placeholder"/>-->
 		<menuitem name="Close" action="Close"/>
 	</menu>
-	<menu action="Edit">
+	<menu name="Edit" action="Edit">
         <!--<placeholder name="Undostack Actions"/>
 		<separator/>
 		<placeholder name="Clipboard Actions">
@@ -19,7 +19,7 @@
 		<menuitem name="ToolbarEditor" 	  action="ToolbarEditor"/>
 		<separator/>
                 <!--<menu action="ColorMenu">-->
-                    <menuitem action="set-color-clear" />
+                <!--    <menuitem action="set-color-clear" />
                     <menuitem action="set-color-butter" />
                     <menuitem action="set-color-orange" />
                     <menuitem action="set-color-chocolate" />
@@ -28,7 +28,7 @@
                     <menuitem action="set-color-plum" />
                     <menuitem action="set-color-red" />
                     <menuitem action="set-color-lightgray" />
-                    <menuitem action="set-color-darkgray" />
+                    <menuitem action="set-color-darkgray" />-->
                 <!--</menu>-->
 
 		<!--<menuitem name="Preferences" action="Preferences"/>-->

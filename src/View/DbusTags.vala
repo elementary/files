@@ -13,8 +13,6 @@ namespace Marlin.View {
 
         private CTags tags;
 
-        static string[] tags_colors = { null, "#fce94f", "#fcaf3e", "#997666", "#8ae234", "#729fcf", "#ad7fa8", "#ef2929", "#d3d7cf", "#888a85" };
-
         public Tags() {
             try {
                 tags = Bus.get_proxy_sync (BusType.SESSION, "org.elementary.marlin.db",
@@ -43,26 +41,9 @@ namespace Marlin.View {
 
         public async void get_color (string uri, GOF.File myfile) throws IOError {
             int n = yield tags.getColor(uri);
-            myfile.color = tags_colors[n];
+            myfile.color = Preferences.tags_colors[n];
         }
 
     }
 }
 
-/*void main () {
-    try {
-        Demo demo = Bus.get_proxy_sync (BusType.SESSION, "org.elementary.marlin.db",
-                                        "/org/elementary/marlin/db");
-
-        demo.setColor("file:///home/jordi", 3);
-        //demo.isFileInDB("file:///home/jordi");
-        print("\n\nColor for file is %i\n",   demo.getColor("file:///home/jordi"));
-        //demo.deleteEntry("file:///home/jordi");
-
-        //demo.clearDB();
-
-    } catch (IOError e) {
-        stderr.printf ("%s\n", e.message);
-    }
-}
-*/

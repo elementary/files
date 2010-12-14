@@ -15,6 +15,7 @@ namespace Config {
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
 namespace Preferences {
     public GLib.Settings settings;
+    public string tags_colors[10];
 }
 
 public static uint action_new (GLib.Type type, string signal_name);
@@ -26,6 +27,7 @@ namespace Nautilus {
     public class IconInfo : GLib.Object{
         public static IconInfo lookup(GLib.Icon icon, int size);
         public Gdk.Pixbuf get_pixbuf_nodefault();
+        public Gdk.Pixbuf get_pixbuf_at_size(int size);
     }
 }
 
