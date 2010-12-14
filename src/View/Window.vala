@@ -1,12 +1,12 @@
-// 
+//
 //  Window.vala
-//  
+//
 //  Authors:
 //       Mathijs Henquet <mathijs.henquet@gmail.com>
 //       ammonkey <am.monkeyd@gmail.com>
-// 
+//
 //  Copyright (c) 2010 Mathijs Henquet
-// 
+//
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -34,9 +34,9 @@ namespace Marlin.View {
         public Notebook tabs;
         private IconSize isize15;
         public IconSize isize128;
-        
+
         public ViewContainer current_tab;
-        public Chrome.HPaned main_box;
+        public HCollapsablePaned main_box;
         public ContextView contextview;
 
         public Gtk.ActionGroup main_actions;
@@ -47,13 +47,13 @@ namespace Marlin.View {
                 main_actions.get_action("Up").set_sensitive(value);
             }
         }
-        
+
         public bool can_go_forward{
             set{
                 main_actions.get_action("Forward").set_sensitive(value);
             }
         }
-        
+
         public bool can_go_back{
             set{
                 main_actions.get_action("Back").set_sensitive(value);
@@ -78,17 +78,17 @@ namespace Marlin.View {
                 current_tab.change_view(n, null);
         }
 
-        /*protected virtual void action_radio_set_color_changed(){		
+        /*protected virtual void action_radio_set_color_changed(){
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("set-color-clear");
             assert(action != null);
             int n = action.get_current_value();
-           
+
             print("Color changed: %i\n",n);
             ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
-	}*/
+	    }*/
 
         public Window ()
-        {   
+        {
             ui = new UIManager();
 
             try {
@@ -100,19 +100,19 @@ namespace Marlin.View {
             main_actions = new Gtk.ActionGroup("MainActionGroup");
             main_actions.add_actions(main_entries, this);
             main_actions.add_toggle_actions(main_toggle_entries, this);
-            main_actions.add_radio_actions(view_radio_entries, -1, 
+            main_actions.add_radio_actions(view_radio_entries, -1,
                                            action_radio_change_view);
             /*main_actions.add_radio_actions(color_radio_entries, -1,
                                            action_radio_set_color_changed);*/
             accel_group = ui.get_accel_group();
             add_accel_group(accel_group);
-            
+
             ui.insert_action_group(main_actions, 0);
             ui.ensure_update();
 
             /* Menubar */
             menu_bar = ui.get_widget("/MenuBar");
- 
+
             /* Topmenu */
             top_menu = new Chrome.TopMenu(this);
 
@@ -123,14 +123,14 @@ namespace Marlin.View {
                     current_tab.path_changed(File.new_for_commandline_arg(top_menu.location_bar.path));
                 });
             }
-        
-        
+
+
             /* Contents */
             tabs = new Notebook();
             tabs.show_border = false;
             tabs.show_tabs = false;
             tabs.show();
-            
+
             //view = new View();
             /* register icon sizes */
             isize15 = icon_size_register ("15px", 15, 15);
@@ -144,19 +144,19 @@ namespace Marlin.View {
             //contextview.set_size_request(150, -1);
 
             /* Devide main views into sidebars */
-            main_box = new Chrome.HPaned();
+            main_box = new HCollapsablePaned();
             main_box.show();
-            
-            var lside_pane = new Chrome.HPaned();
+
+            var lside_pane = new HCollapsablePaned();
             lside_pane.show();
 
             lside_pane.pack1(sidebar, false, true);
             lside_pane.pack2(main_box, true, true);
-            lside_pane.collapse = 1;
+            lside_pane.collapse_mode = CollapseMode.LEFT;
 
             main_box.pack1(tabs, true, true);
             main_box.pack2(contextview, false, true);
-            main_box.collapse = 2;
+            main_box.collapse_mode = CollapseMode.RIGHT;
             main_box.set_name("app-sidebar"); /* TODO remove later if uneeded - test theming */
 
             /*/
@@ -171,7 +171,7 @@ namespace Marlin.View {
 
             add(window_box);
             set_default_size(760, 450);
-            set_position(WindowPosition.CENTER);    
+            set_position(WindowPosition.CENTER);
             title = Resources.APP_TITLE;
             //this.icon = DrawingService.GetIcon("system-file-manager", 32);
             show();
@@ -186,12 +186,12 @@ namespace Marlin.View {
             /*/
             /* Connect and abstract signals to local ones
             /*/
-       
+
             delete_event.connect(() => {
             	main_quit();
             	return false;
             });
-            
+
             tabs.switch_page.connect((page, offset) => {
                 change_tab(offset);
             });
@@ -209,12 +209,12 @@ namespace Marlin.View {
                 else if(offset>=tabs.get_children().length())
                     offset = tabs.get_children().length();
 
-                change_tab(offset);                
+                change_tab(offset);
                 tabs.set_current_page((int) offset);
-                
+
                 return false;
             });
-            
+
             /* Binding Backspace keyboard shortcut */
             unowned Gtk.BindingSet binding_set;
 
@@ -224,11 +224,11 @@ namespace Marlin.View {
             Signal.connect (this, "go_up",
                     (GLib.Callback)action_go_up, null);
         }
-        
-        public void colorize_current_tab_selection (int n) { 
+
+        public void colorize_current_tab_selection (int n) {
             ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
 	}
-        
+
 
         public GOF.Window.Slot? get_active_slot() {
             if (current_tab != null && current_tab.slot != null)
@@ -251,8 +251,8 @@ namespace Marlin.View {
                 /* FIXME not a smart move it's crashing when opening / closing tabs */
                 /*((Bin)current_tab.slot.get_view()).get_child().grab_focus();*/
             }
-        }        
-        
+        }
+
         public void add_tab(File location){
             ViewContainer content = new View.ViewContainer(this, location);
             var hbox = new HBox(false, 0);
@@ -271,7 +271,7 @@ namespace Marlin.View {
             style.ythickness = 0;
             button.modify_style(style);
             hbox.pack_start(button, false, false, 0);
-            
+
             button.clicked.connect(() => {
                 remove_tab(content);
             });
@@ -286,31 +286,31 @@ namespace Marlin.View {
                 if(click.button == 2){
                     remove_tab(content);
                 }
-                
+
                 return false;
             });
-            
+
             tabs.append_page(content, eventbox);
             tabs.child_set (content, "tab-expand", true, null );
 
             tabs.set_tab_reorderable(content, true);
-            tabs.show_tabs = tabs.get_children().length() > 1;        
-                                
+            tabs.show_tabs = tabs.get_children().length() > 1;
+
             /* jump to that new tab */
-            tabs.set_current_page(tabs.get_n_pages()-1); 
+            tabs.set_current_page(tabs.get_n_pages()-1);
             current_tab = content;
         }
-        
-        public void remove_tab(ViewContainer view_container){            
+
+        public void remove_tab(ViewContainer view_container){
             if(tabs.get_children().length() == 2){
                 tabs.show_tabs = false;
             }else if(tabs.get_children().length() == 1){
                 main_quit();
             }
-            
+
             tabs.remove(view_container);
         }
-        
+
         private void action_new_tab (Gtk.Action action) {
             add_tab(File.new_for_commandline_arg(Environment.get_home_dir()));
         }
@@ -342,20 +342,20 @@ namespace Marlin.View {
         private void action_go_forward (Gtk.Action action) {
             current_tab.forward();
         }
-        
+
         private void action_show_hidden_files (Gtk.Action action) {
             /* simply reload the view as show-hiddenfiles is a binded settings*/
             if (current_tab != null)
                 current_tab.reload();
         }
-        
+
         private void action_show_hide_menubar (Gtk.Action action) {
             bool vis = true;
             menu_bar.get("visible", &vis);
             if (vis)
-                top_menu.compact_tool_menu_button.hide();
+                top_menu.app_menu.hide();
             else
-                top_menu.compact_tool_menu_button.show_all();
+                top_menu.app_menu.show_all();
         }
 
         /*private void action_show_hide_sidebar (Gtk.Action action) {
@@ -406,7 +406,7 @@ namespace Marlin.View {
   /* tooltip */                  N_("Close this folder"),
                                  action_remove_tab },
                                { "ToolbarEditor", Stock.PREFERENCES,
-                                 N_("Customize _Toolbar"),               
+                                 N_("Customize _Toolbar"),
                                  null, N_("Easily edit the toolbar layout"),
                                  action_toolbar_editor_callback },
                                /*{ Chrome.ColorAction, null, "ColorAction"),
@@ -452,7 +452,7 @@ namespace Marlin.View {
   /* label, accelerator */       N_("_Menubar"), "F8",
   /* tooltip */                  N_("Change the visibility of this window's menubar"),
                                  action_show_hide_menubar,
-  /* is_active */                true }, 
+  /* is_active */                true },
   /* name, stock id */         { "Show Hide Sidebar", null,
   /* label, accelerator */       N_("_Side Pane"), "F9",
   /* tooltip */                  N_("Change the visibility of this window's side pane"),
@@ -460,7 +460,7 @@ namespace Marlin.View {
   /* is_active */                true }
 
         };
-        
+
         static const Gtk.RadioActionEntry view_radio_entries[] = {
             /*{ "view-as-icons", null,
               N_("Icon View"), null, null,
@@ -521,3 +521,4 @@ namespace Marlin.View {
 
     }
 }
+

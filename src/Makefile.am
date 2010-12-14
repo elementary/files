@@ -32,14 +32,14 @@ marlin_VALASOURCES = \
     View/ContextView.vala                   \
     View/Browser.vala                       \
     View/ViewMode.vala                      \
-    View/Chrome/CompactToolMenuButton.vala  \
-    View/Chrome/ToolButtonExtraOptions.vala \
+    View/Chrome/AdvancedMenuToolButton.vala \
+    View/Chrome/AppMenu.vala                \
     View/Chrome/ToolButtonWithMenu.vala     \
     View/Chrome/LocationBar.vala            \
     View/Chrome/ModeButton.vala             \
     View/Chrome/TopMenu.vala                \
     View/Chrome/ViewSwicher.vala            \
-    View/Chrome/HPaned.vala                 \
+    View/Chrome/CollapsablePaned.vala       \
     View/Chrome/ColorWidget.vala            \
     $(NULL)
 
@@ -99,3 +99,4 @@ CLEANFILES = \
 	*.stamp \
 	$(marlin_VALASOURCES:.vala=.c) \
 	$(NULL)
+

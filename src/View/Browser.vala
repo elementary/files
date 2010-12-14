@@ -1,4 +1,4 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
+/* -*- Mode: Vala; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
 /*
  * Copyright (C) 2010 ammonkey
  *
@@ -28,6 +28,7 @@ namespace Marlin.View {
         private Stack<string> forward_stack;
 
         private string current_uri = null;
+        private int history_list_length = 10;
 
         public Browser ()
         {
@@ -62,6 +63,14 @@ namespace Marlin.View {
           stdout.printf ("bck|fwd: %d %d\n", back_stack.size(), forward_stack.size());
           }*/
 
+        public Gee.List go_back_list(){
+            return back_stack.slice_head(history_list_length);
+        }
+
+        public Gee.List go_forward_list(){
+            return forward_stack.slice_head(history_list_length);
+        }
+
         public string? go_back ()
         {
             var uri = back_stack.pop();
@@ -69,7 +78,7 @@ namespace Marlin.View {
             {
                 if (current_uri != null) {
                     forward_stack.push (current_uri);
-                    current_uri = uri;      
+                    current_uri = uri;
                 }
                 //stdout.printf ("%% %s\n", uri);
                 return (uri);
@@ -143,6 +152,11 @@ namespace Marlin.View {
         {
             return size() == 0;
         }
+
+        public Gee.List<G>? slice_head(int amount){
+            return list.slice(0, amount);
+        }
     }
 
 } /* namespace */
+
