@@ -42,15 +42,15 @@ eel_gtk_adjustment_set_value (GtkAdjustment *adjustment,
     upper_page_start = MAX (gtk_adjustment_get_upper (adjustment) -
                             gtk_adjustment_get_page_size (adjustment),
                             gtk_adjustment_get_lower (adjustment));
-    printf (">> upper: %f page_size: %f lower: %f value: %f upper_page_start %f\n", 
+    log_printf (LOG_LEVEL_UNDEFINED, ">> upper: %f page_size: %f lower: %f value: %f upper_page_start %f\n",
             gtk_adjustment_get_upper (adjustment),
             gtk_adjustment_get_page_size (adjustment),
             gtk_adjustment_get_lower (adjustment),
             gtk_adjustment_get_value (adjustment),
             upper_page_start);
     clamped_value = CLAMP (value, gtk_adjustment_get_lower (adjustment), upper_page_start);
-    printf (">>clamped %f\n", clamped_value);
-    printf ("CLAMP test: %f\n", CLAMP (value, 0.0, 100.0));
+    log_printf (LOG_LEVEL_UNDEFINED, ">>clamped %f\n", clamped_value);
+    log_printf (LOG_LEVEL_UNDEFINED, "CLAMP test: %f\n", CLAMP (value, 0.0, 100.0));
     if (clamped_value != gtk_adjustment_get_value (adjustment)) {
         gtk_adjustment_set_value (adjustment, clamped_value);
         gtk_adjustment_value_changed (adjustment);
@@ -78,20 +78,20 @@ eel_gtk_menu_append_separator (GtkMenu *menu)
 
 /**
  * eel_pop_up_context_menu:
- * 
+ *
  * Pop up a context menu under the mouse.
- * The menu is sunk after use, so it will be destroyed unless the 
+ * The menu is sunk after use, so it will be destroyed unless the
  * caller first ref'ed it.
- * 
+ *
  * This function is more of a helper function than a gtk extension,
  * so perhaps it belongs in a different file.
- * 
+ *
  * @menu: The menu to pop up under the mouse.
  * @offset_x: Number of pixels to displace the popup menu vertically
  * @offset_y: Number of pixels to displace the popup menu horizontally
  * @event: The event that invoked this popup menu.
 **/
-void 
+void
 eel_pop_up_context_menu (GtkMenu	     *menu,
                          gint16	      offset_x,
                          gint16	      offset_y,
@@ -150,7 +150,7 @@ eel_gtk_widget_set_shown (GtkWidget *widget, gboolean shown)
 	}
 }
 
-static gboolean 
+static gboolean
 tree_view_button_press_callback (GtkWidget *tree_view,
 				 GdkEventButton *event,
 				 gpointer data)
@@ -163,7 +163,7 @@ tree_view_button_press_callback (GtkWidget *tree_view,
 						   event->x, event->y,
 						   &path,
 						   &column,
-						   NULL, 
+						   NULL,
 						   NULL)) {
 			gtk_tree_view_row_activated
 				(GTK_TREE_VIEW (tree_view), path, column);
@@ -179,23 +179,23 @@ eel_gtk_tree_view_set_activate_on_single_click (GtkTreeView *tree_view,
 {
 	guint button_press_id;
 
-	button_press_id = GPOINTER_TO_UINT 
-		(g_object_get_data (G_OBJECT (tree_view), 
+	button_press_id = GPOINTER_TO_UINT
+		(g_object_get_data (G_OBJECT (tree_view),
 				    "eel-tree-view-activate"));
 
 	if (button_press_id && !should_activate) {
 		g_signal_handler_disconnect (tree_view, button_press_id);
-		g_object_set_data (G_OBJECT (tree_view), 
-				   "eel-tree-view-activate", 
+		g_object_set_data (G_OBJECT (tree_view),
+				   "eel-tree-view-activate",
 				   NULL);
 	} else if (!button_press_id && should_activate) {
-		button_press_id = g_signal_connect 
+		button_press_id = g_signal_connect
 			(tree_view,
 			 "button_press_event",
 			 G_CALLBACK  (tree_view_button_press_callback),
 			 NULL);
-		g_object_set_data (G_OBJECT (tree_view), 
-				   "eel-tree-view-activate", 
+		g_object_set_data (G_OBJECT (tree_view),
+				   "eel-tree-view-activate",
 				   GUINT_TO_POINTER (button_press_id));
 	}
 }

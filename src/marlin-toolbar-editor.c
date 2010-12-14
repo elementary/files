@@ -161,7 +161,7 @@ static void tb_editor_set_item_values(TBEditorWidget *tbw, const gchar *action_n
     if (action != NULL)
     {
         /*gtk_action_block_activate(action);
-          printf ("blocked %s\n", action_name);*/
+          log_printf (LOG_LEVEL_UNDEFINED, "blocked %s\n", action_name);*/
         icon = katze_object_get_string(action, "icon-name");
         if (icon == NULL)
         {
@@ -181,8 +181,8 @@ static void tb_editor_set_item_values(TBEditorWidget *tbw, const gchar *action_n
       GTK_ICON_LOOKUP_USE_BUILTIN | GTK_ICON_LOOKUP_GENERIC_FALLBACK | GTK_ICON_LOOKUP_FORCE_SIZE);
       gchar *test;
       test = gtk_icon_info_get_filename (icon_info);
-    //printf ("action: %20s icon: %20s\n", action_name, icon);
-    printf ("action: %20s icon: %20s test: %s\n", action_name, icon, test);*/
+    //log_printf (LOG_LEVEL_UNDEFINED, "action: %20s icon: %20s\n", action_name, icon);
+    log_printf (LOG_LEVEL_UNDEFINED, "action: %20s icon: %20s test: %s\n", action_name, icon, test);*/
 
 
     if (icon != NULL)
@@ -337,7 +337,7 @@ static void tb_editor_drag_data_rcvd_cb(GtkWidget *widget, GdkDragContext *conte
     GtkTreeView *tree = GTK_TREE_VIEW(widget);
     gboolean del = FALSE;
 
-    if (gtk_selection_data_get_target (data) != GDK_NONE ) 
+    if (gtk_selection_data_get_target (data) != GDK_NONE )
     {
         gboolean is_sep;
         const guchar *text = gtk_selection_data_get_data (data);
@@ -646,3 +646,4 @@ marlin_toolbar_editor_dialog_show (MarlinViewWindow *mvw)
     tb_editor_free_path(tbw);
     g_free(tbw);
 }
+

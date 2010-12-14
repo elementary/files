@@ -73,7 +73,7 @@ pixbuf_toggle_notify (gpointer      info,
     NautilusIconInfo  *icon = info;
 
     if (is_last_ref) {
-        icon->sole_owner = TRUE;	
+        icon->sole_owner = TRUE;
         g_object_remove_toggle_ref (object,
                                     pixbuf_toggle_notify,
                                     info);
@@ -125,7 +125,7 @@ nautilus_icon_info_new_for_pixbuf (GdkPixbuf *pixbuf)
 
     if (pixbuf) {
         icon->pixbuf = g_object_ref (pixbuf);
-    } 
+    }
 
     return icon;
 }
@@ -357,7 +357,7 @@ nautilus_icon_info_lookup (GIcon *icon,
                                        NULL, NULL, NULL);
         if (stream) {
             //amtest
-            printf ("stream???\n");
+            log_printf (LOG_LEVEL_UNDEFINED, "stream???\n");
             //pixbuf = eel_gdk_pixbuf_load_from_stream_at_size (stream, size);
             g_object_unref (stream);
         }
@@ -498,7 +498,7 @@ nautilus_icon_info_get_pixbuf (NautilusIconInfo *icon)
                                         nautilus_default_file_icon_width * 4, /* stride */
                                         NULL, /* don't destroy info */
                                         NULL);
-    } 
+    }
     return res;
 }
 
@@ -591,7 +591,7 @@ nautilus_icon_info_get_used_name (NautilusIconInfo  *icon)
 
 /* Return nominal icon size for given zoom level.
  * @zoom_level: zoom level for which to find matching icon size.
- * 
+ *
  * Return value: icon size between NAUTILUS_ICON_SIZE_SMALLEST and
  * NAUTILUS_ICON_SIZE_LARGEST, inclusive.
  */
@@ -678,7 +678,7 @@ nautilus_get_icon_size_for_stock_size (GtkIconSize size)
 
     if (gtk_icon_size_lookup (size, &w, &h)) {
         return MAX (w, h);
-    } 
+    }
     return NAUTILUS_ZOOM_LEVEL_STANDARD;
 }
 
@@ -699,3 +699,4 @@ nautilus_icon_get_emblem_size_for_icon_size (guint size)
 
     return 0; /* no emblems for smaller sizes */
 }
+
