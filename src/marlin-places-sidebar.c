@@ -334,7 +334,7 @@ update_places (MarlinPlacesSidebar *sidebar)
     gtk_tree_store_append (sidebar->store, &iter, NULL);
     gtk_tree_store_set (sidebar->store, &iter,
                         PLACES_SIDEBAR_COLUMN_ICON, NULL,
-                        PLACES_SIDEBAR_COLUMN_NAME, _("Places"),
+                        PLACES_SIDEBAR_COLUMN_NAME, _("Personal"),
                         PLACES_SIDEBAR_COLUMN_ROW_TYPE, PLACES_BOOKMARKS_CATEGORY,
                         PLACES_SIDEBAR_COLUMN_EJECT, FALSE,
                         PLACES_SIDEBAR_COLUMN_NO_EJECT, TRUE,
