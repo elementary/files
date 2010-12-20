@@ -95,6 +95,9 @@ namespace Marlin.View {
             set{
                 label.label = value;
             }
+            get{
+                return label.label;
+            }
         }
 
         public void change_view(int nview, GLib.File? location){

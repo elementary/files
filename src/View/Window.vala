@@ -227,13 +227,17 @@ namespace Marlin.View {
 
         public void colorize_current_tab_selection (int n) {
             ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
-	}
+        }
 
 
         public GOF.Window.Slot? get_active_slot() {
             if (current_tab != null && current_tab.slot != null)
                 return current_tab.slot;
             return null;
+        }
+
+        public new void set_title(string title){
+            this.title = title + " - Marlin";
         }
 
         public void change_tab(uint offset){
@@ -246,6 +250,8 @@ namespace Marlin.View {
                 ((FM.Directory.View) current_tab.slot.view_box).sync_selection();
                 /* sync ContextView */
                 current_tab.sync_contextview();
+                /* set window title to current title */
+                set_title(current_tab.tab_name);
 
                 /* focus the main view */
                 /* FIXME not a smart move it's crashing when opening / closing tabs */

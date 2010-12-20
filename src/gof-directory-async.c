@@ -134,7 +134,7 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
                     GTK_ICON_LOOKUP_GENERIC_FALLBACK);
         GdkPixbuf *pix = gtk_icon_info_load_icon(icon_info, NULL);
         // application-octet-stream gnome-mime-application-octet-stream application-x-generic
-#endif 
+#endif
         /*NautilusIconInfo *nicon;
           nicon = nautilus_icon_info_lookup (goff->icon, 16);
           GdkPixbuf *pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);*/
@@ -142,12 +142,12 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
         if (!goff->is_hidden || g_settings_get_boolean(settings, "show-hiddenfiles"))
         {
             g_signal_emit (dir, signals[FILE_ADDED], 0, goff);
-            
+
             /* val = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
-               g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE) 
+               g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE)
                g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY ? 'd' : '-',
                */
-        } else 
+        } else
             g_object_unref (goff);
     }
 
@@ -161,7 +161,7 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
                                         dir);
 }
 
-static void load_dir_async_callback (GObject *source_object, GAsyncResult *res, gpointer user_data) 
+static void load_dir_async_callback (GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     GOFDirectoryAsync *dir = user_data;
     GFileEnumerator *enumerator;
@@ -200,11 +200,11 @@ load_dir_async (GOFDirectoryAsync *dir)
         g_free (uri);
         p->monitor = gof_monitor_directory (p->_dir);
 
-        g_file_enumerate_children_async (p->_dir, GOF_GIO_DEFAULT_ATTRIBUTES, 
-                                         G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, 
-                                         G_PRIORITY_DEFAULT, 
-                                         p->cancellable, 
-                                         load_dir_async_callback, 
+        g_file_enumerate_children_async (p->_dir, GOF_GIO_DEFAULT_ATTRIBUTES,
+                                         G_FILE_QUERY_INFO_NONE,
+                                         G_PRIORITY_DEFAULT,
+                                         p->cancellable,
+                                         load_dir_async_callback,
                                          dir);
     }
 }
@@ -350,3 +350,4 @@ gof_directory_async_get_parent(GOFDirectoryAsync *directory)
 {
     return (directory->priv->_parent);
 }
+
