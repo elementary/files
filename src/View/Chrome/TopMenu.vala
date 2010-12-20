@@ -56,8 +56,6 @@ namespace Marlin.View.Chrome
             @foreach (toolitems_destroy);
             string[]? toolbar_items = Preferences.settings.get_strv("toolbar-items");
             foreach (string name in toolbar_items) {
-                Log.println(Log.Level.DEBUG, name);
-
                 if (name == "Separator")
                 {
                         Gtk.SeparatorToolItem? sep = new Gtk.SeparatorToolItem ();

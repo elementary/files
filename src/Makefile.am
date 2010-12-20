@@ -17,6 +17,7 @@ marlin_VALAFLAGS = \
     --pkg gtk+-3.0 \
     --pkg gio-2.0 \
     --pkg gee-1.0 \
+    -g \
     $(NULL)
 
 marlin_LDADD = \

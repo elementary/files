@@ -4,7 +4,7 @@
 #include "marlin-window-columns.h"
 //#include <glib/gi18n.h>
 //#include <libintl.h>
-#include "marlin-global-preferences.h" 
+#include "marlin-global-preferences.h"
 #include "marlin-view-window.h"
 #include "marlin-vala.h"
 #include "marlin-tags.h"
@@ -23,7 +23,9 @@ main (int argc, char *argv[])
     GtkWidget       *btn;
     GtkWidget       *entry;
     gchar           *path;
-    
+
+
+    log_level = LOG_LEVEL_DEBUG;
     log_println (LOG_LEVEL_INFO, "Welcome to Marlin");
     log_println (LOG_LEVEL_INFO, "Version: %s", "0.1");
     log_println (LOG_LEVEL_INFO, "Report any issues/bugs you might find to lp:marlin", "0.1");
@@ -74,7 +76,7 @@ main (int argc, char *argv[])
 
 
     gtk_main ();
-    g_free (path);	
+    g_free (path);
     return 0;
 }
 
@@ -88,10 +90,10 @@ marlin_view_window_up (MarlinViewWindow *window)
 
     if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) == NULL)
         return;
-    if (slot->location == NULL) 
+    if (slot->location == NULL)
         return;
     parent = g_file_get_parent (slot->location);
-    if (parent == NULL) 
+    if (parent == NULL)
         return;
 
     /*if (slot->mwcols != NULL)
@@ -126,3 +128,4 @@ marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer
     //mwcols = marlin_window_columns_new(file, GTK_WIDGET (window));
 }
 #endif
+

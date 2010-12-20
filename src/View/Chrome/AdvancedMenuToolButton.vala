@@ -51,9 +51,9 @@ namespace Gtk {
                 menu.set_size_request(menu_width, -1);
             }
             menu.attach_to_widget (this, null);
-//            menu.deactivate.connect(() => {
-//                active = false;
-//            });
+            menu.deactivate.connect(() => {
+                //active = false;
+            });
 
             mnemonic_activate.connect(on_mnemonic_activate);
             menu.deactivate.connect(popdown_menu);
@@ -83,7 +83,7 @@ namespace Gtk {
 
         private bool on_button_press_event (Gdk.EventButton ev)
         {
-            if(timeout == -1){
+            if(timeout == -1 && ev.button == 1){
                 timeout = (int) Timeout.add(long_press_time, () => {
                     long_click();
                     timeout = -1;
