@@ -218,7 +218,7 @@ load_dir_async (GOFDirectoryAsync *dir)
         p->monitor = gof_monitor_directory (p->_dir);
 
         g_file_enumerate_children_async (p->_dir, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                         G_FILE_QUERY_INFO_NONE,
+                                         G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
                                          G_PRIORITY_DEFAULT,
                                          p->cancellable,
                                          load_dir_async_callback,
@@ -226,7 +226,7 @@ load_dir_async (GOFDirectoryAsync *dir)
 
         g_file_query_info_async(p->_dir,
                                 GOF_GIO_DEFAULT_ATTRIBUTES,
-                                G_FILE_QUERY_INFO_NONE,
+                                G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
                                 G_PRIORITY_DEFAULT,
                                 p->directory_info_cancellable,
                                 load_dir_info_async_callback,
