@@ -140,8 +140,6 @@ namespace Marlin.View {
             //var sidebar = new Label("Sidebar");
             var sidebar = new Marlin.Places.Sidebar ((Gtk.Widget) this);
             sidebar.set_size_request(150, -1);
-            contextview = new ContextView(this);
-            //contextview.set_size_request(150, -1);
 
             /* Devide main views into sidebars */
             main_box = new HCollapsablePaned();
@@ -155,7 +153,9 @@ namespace Marlin.View {
             lside_pane.collapse_mode = CollapseMode.LEFT;
 
             main_box.pack1(tabs, true, true);
-            main_box.pack2(contextview, false, true);
+
+            contextview = new ContextView(this);
+            main_box.pack2(contextview, false, false);
             main_box.collapse_mode = CollapseMode.RIGHT;
             main_box.set_name("app-sidebar"); /* TODO remove later if uneeded - test theming */
 

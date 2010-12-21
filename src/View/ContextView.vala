@@ -27,6 +27,12 @@ using Cairo;
 namespace Marlin.View {
     public class ContextView : Gtk.EventBox
     {
+        public static int width{
+            get{
+                return 180;
+            }
+        }
+
         private VBox box;
         private Window window;
         private Gdk.Pixbuf icon{
@@ -42,7 +48,7 @@ namespace Marlin.View {
 
         public ContextView(Window window){
             this.window = window;
-            set_size_request(180, -1);
+            set_size_request(width, -1);
 
             window.selection_changed.connect(update);
 
@@ -83,7 +89,7 @@ namespace Marlin.View {
             /* TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
                we are in listview: size, type, modified */
             info.append(new Pair<string, string>("Name", gof_file.name));
-            var nice_type = g_content_type_get_description(file_info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE));
+            var nice_type = ContentType.get_description(file_info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE));
             info.append(new Pair<string, string>("Type", nice_type));
             if(raw_type != FileType.DIRECTORY)
                 info.append(new Pair<string, string>("Size", gof_file.format_size));
@@ -101,14 +107,12 @@ namespace Marlin.View {
         }
 
         private void update_info_list(List<Pair<string, string>> item_info){
-            int width = 160;
             int spacing = 10;
 
             if (information != null)
                 box.remove(information);
 
             information = new Table (item_info.length(), 2, false);
-            //information.set_size_request (width, -1);
             information.set_col_spacings (spacing);
             information.set_row_spacings (3);
 
@@ -116,7 +120,6 @@ namespace Marlin.View {
             item_info.foreach((pair) => {
                 var key_alignment = new Alignment(1f, 0f, 0f, 0f);
                 var key_label = new Label(((Pair<string, string>) pair).key);
-                //key_label.set_size_request((width - spacing) / 2, -1);
                 key_label.set_state(StateType.INSENSITIVE);
                 key_label.set_justify(Justification.RIGHT);
                 key_label.set_single_line_mode(false);
@@ -128,7 +131,6 @@ namespace Marlin.View {
 
                 var value_alignment = new Alignment(0f, 0f, 0f, 0f);
                 var value_label = new Label(((Pair<string, string>) pair).value);
-                //value_label.set_size_request((width - spacing) / 2, -1);
                 value_label.set_line_wrap(true);
                 value_label.set_single_line_mode(false);
                 value_label.set_justify(Justification.LEFT);
