@@ -83,12 +83,14 @@ namespace Marlin.View {
             /* TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
                we are in listview: size, type, modified */
             info.append(new Pair<string, string>("Name", gof_file.name));
-            info.append(new Pair<string, string>("Owner", file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
-            info.append(new Pair<string, string>("Mimetype", file_info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE)));
+            var nice_type = g_content_type_get_description(file_info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE));
+            info.append(new Pair<string, string>("Type", nice_type));
             if(raw_type != FileType.DIRECTORY)
                 info.append(new Pair<string, string>("Size", gof_file.format_size));
             /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
             info.append(new Pair<string, string>("Modified", gof_file.formated_modified.replace(" ", "\n")));
+            info.append(new Pair<string, string>("Owner", file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
+            info.append(new Pair<string, string>("Mimetype", file_info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE)));
 
             //label.label = file_info.get_display_name();
             label.label = gof_file.name;
