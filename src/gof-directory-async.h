@@ -49,12 +49,13 @@ typedef struct {
     //GOFDirectoryAsyncDetails *details;
     GObject parent;
     GOFDirectoryAsyncPrivate *priv;
+    GFileInfo       *info;
 } GOFDirectoryAsync;
 
 typedef struct {
     GObjectClass parent_class;
 
-    /* The files_added signal is emitted as the directory model 
+    /* The files_added signal is emitted as the directory model
      * discovers new files.
      */
     void     (* file_added)         (GOFDirectoryAsync *directory, GOFFile *file);
@@ -64,6 +65,7 @@ typedef struct {
     GList                      *added_files);
 #endif
     void     (* done_loading)        (GOFDirectoryAsync         *directory);
+    void     (* info_available)        (GOFDirectoryAsync         *directory);
 
 } GOFDirectoryAsyncClass;
 
@@ -86,3 +88,4 @@ GFile                   *gof_directory_async_get_parent(GOFDirectoryAsync *direc
 G_END_DECLS
 
 #endif /* GOF_DIRECTORY_ASYNC_H */
+

@@ -57,15 +57,17 @@ namespace GOF {
         public string formated_modified;
     }
 
-    [CCode (cprefix = "GOFDirectoryAsync", lower_case_cprefix = "gof_directory_")]
+    [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]
     namespace Directory {
         [CCode (cheader_filename = "gof-directory-async.h")]
         public class Async : GLib.Object {
+            public GLib.FileInfo info;
             public Async (GLib.File f);
             public void cancel ();
             public string get_uri ();
             public bool has_parent ();
             public GLib.File get_parent ();
+            public signal void info_available ();
         }
     }
 }
@@ -100,5 +102,4 @@ namespace Marlin {
         }
     }
 }
-
 

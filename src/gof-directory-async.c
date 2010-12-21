@@ -33,6 +33,7 @@ struct GOFDirectoryAsyncPrivate {
     GOFMonitor      *monitor;
     //FMListModel     *model;
     GCancellable    *cancellable;
+    GCancellable    *directory_info_cancellable;
     //GHashTable      *file_hash;
     //GHashTable      *hidden_file_hash;
 };
@@ -42,7 +43,8 @@ enum {
     /*FILES_CHANGED,*/
     DONE_LOADING,
     /*LOAD_ERROR,*/
-    LAST_SIGNAL
+    LAST_SIGNAL,
+    INFO_AVAILABLE
 };
 
 static guint signals[LAST_SIGNAL];
@@ -183,7 +185,21 @@ static void load_dir_async_callback (GObject *source_object, GAsyncResult *res, 
                                             g_object_ref (dir));
         g_object_unref (enumerator);
     }
+}
 
+static void load_dir_info_async_callback (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GOFDirectoryAsync *dir = user_data;
+    GError *error = NULL;
+
+    if (g_cancellable_is_cancelled (dir->priv->directory_info_cancellable)) {
+        return;
+    }
+
+    dir->info = g_file_query_info_finish (G_FILE (source_object), res, &error);
+    print_error(error);
+
+    g_signal_emit (dir, signals[INFO_AVAILABLE], 0);
 }
 
 
@@ -192,6 +208,7 @@ load_dir_async (GOFDirectoryAsync *dir)
 {
     GOFDirectoryAsyncPrivate *p = dir->priv;
     p->cancellable = g_cancellable_new ();
+    p->directory_info_cancellable = g_cancellable_new ();
 
     if (p->_dir)
     {
@@ -206,6 +223,14 @@ load_dir_async (GOFDirectoryAsync *dir)
                                          p->cancellable,
                                          load_dir_async_callback,
                                          dir);
+
+        g_file_query_info_async(p->_dir,
+                                GOF_GIO_DEFAULT_ATTRIBUTES,
+                                G_FILE_QUERY_INFO_NONE,
+                                G_PRIORITY_DEFAULT,
+                                p->directory_info_cancellable,
+                                load_dir_info_async_callback,
+                                dir);
     }
 }
 
@@ -327,6 +352,15 @@ gof_directory_async_class_init (GOFDirectoryAsyncClass *klass)
                       G_TYPE_FROM_CLASS (object_class),
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (GOFDirectoryAsyncClass, done_loading),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__VOID,
+                      G_TYPE_NONE, 0);
+
+    signals[INFO_AVAILABLE] =
+        g_signal_new ("info_available",
+                      G_TYPE_FROM_CLASS (object_class),
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (GOFDirectoryAsyncClass, info_available),
                       NULL, NULL,
                       g_cclosure_marshal_VOID__VOID,
                       G_TYPE_NONE, 0);

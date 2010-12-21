@@ -32,6 +32,7 @@ namespace Marlin.View {
         public Marlin.Window.Columns? mwcol;
         Browser<string> browser;
         public int view_mode = 0;
+        private ulong file_info_callback;
 
         public signal void path_changed(File file);
         public signal void up();
@@ -138,15 +139,23 @@ namespace Marlin.View {
         }
 
         public void reload(){
-                change_view(view_mode, null);
+            change_view(view_mode, null);
         }
 
         public void update_location_state(bool save_history)
         {
+            file_info_callback = slot.directory.info_available.connect(() => {
+                tab_name = slot.directory.info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
+                if(window.current_tab == this){
+                    window.set_title(tab_name);
+                }
+
+                Source.remove((uint) file_info_callback);
+            });
+
             window.can_go_up = slot.directory.has_parent();
-            tab_name = slot.directory.get_uri();
             if (window.top_menu.location_bar != null)
-                window.top_menu.location_bar.path = slot.directory.get_uri();
+                    window.top_menu.location_bar.path = slot.directory.get_uri();
             if (save_history)
                 browser.record_uri(slot.directory.get_uri());
             window.can_go_back = browser.can_go_back();
@@ -157,7 +166,7 @@ namespace Marlin.View {
 
         public new Gtk.Widget get_window()
         {
-                return ((Gtk.Widget) window);
+            return ((Gtk.Widget) window);
         }
     }
 }
