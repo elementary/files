@@ -237,7 +237,7 @@ namespace Marlin.View {
         }
 
         public new void set_title(string title){
-            this.title = title + " - Marlin";
+            this.title = title;
         }
 
         public void change_tab(uint offset){
