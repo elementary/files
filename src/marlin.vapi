@@ -77,6 +77,8 @@ namespace FM {
         public class View : Gtk.ScrolledWindow {
             public signal void colorize_selection (int color);
             public signal void sync_selection ();
+            public void merge_menus ();
+            public void unmerge_menus ();
         }
     }
 }

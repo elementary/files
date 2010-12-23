@@ -55,13 +55,18 @@ marlin_SOURCES = \
     eel-gdk-pixbuf-extensions.c             \
     eel-glib-extensions.c                   \
     eel-stock-dialogs.c                     \
+    eel-debug.c                             \
+    eel-string.c                            \
+    eel-ui.c                                \
     gossip-cell-renderer-expander.c         \
     marlin-trash-monitor.c                  \
     marlin-bookmark.c                       \
     marlin-bookmark-list.c                  \
     marlin-dnd.c                            \
+    marlin-clipboard-manager.c              \
     marlin-file-utilities.c                 \
     marlin-file-operations.c                \
+    marlin-file-conflict-dialog.c           \
     marlin-places-sidebar.c                 \
     marlin-window-columns.c                 \
     gof-window-slot.c                       \
@@ -82,6 +87,7 @@ marlin_SOURCES = \
 uidir = $(datadir)/marlin/ui
 ui_DATA = \
 	marlin-ui.xml \
+        fm-directory-view-ui.xml \
 	$(NULL)
 
 BUILT_SOURCES = marlin.vala.stamp

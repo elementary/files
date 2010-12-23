@@ -34,6 +34,9 @@ main (int argc, char *argv[])
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
 
+    g_set_application_name ("marlin");
+    g_set_prgname ("marlin");
+
     /* gsettings parameters */
     settings = g_settings_new ("org.gnome.marlin.preferences");
     tags = marlin_view_tags_new ();

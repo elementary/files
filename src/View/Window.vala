@@ -35,7 +35,7 @@ namespace Marlin.View {
         private IconSize isize15;
         public IconSize isize128;
 
-        public ViewContainer current_tab;
+        public ViewContainer? current_tab;
         public HCollapsablePaned main_box;
         public ContextView contextview;
 
@@ -237,8 +237,11 @@ namespace Marlin.View {
         }
 
         public void change_tab(uint offset){
+            if (current_tab != null)
+                ((FM.Directory.View) current_tab.slot.view_box).unmerge_menus();
             current_tab = (ViewContainer) tabs.get_children().nth_data(offset);
-            if (current_tab != null && current_tab.slot != null) {
+            if (current_tab != null && current_tab.slot != null) {                
+                ((FM.Directory.View) current_tab.slot.view_box).merge_menus();
                 current_tab.update_location_state(false);
                 /* update radio action view state */
                 update_action_radio_view(current_tab.view_mode);

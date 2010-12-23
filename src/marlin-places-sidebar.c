@@ -168,7 +168,7 @@ category_renderer_func (GtkTreeViewColumn *column,
                         GtkTreeIter *iter,
                         gpointer data)
 {
-    PlaceType	 	type;
+    PlaceType	 	type; 
 
     gtk_tree_model_get (model, iter, PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type, -1);
 
@@ -289,7 +289,7 @@ static void
 update_places (MarlinPlacesSidebar *sidebar)
 {
     //amtest
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
 
     MarlinBookmark *bookmark;
     GtkTreeSelection *selection;
@@ -353,7 +353,7 @@ update_places (MarlinPlacesSidebar *sidebar)
     display_name = g_filename_display_basename (g_get_home_dir ());
     icon = g_themed_icon_new (MARLIN_ICON_HOME);
     last_iter = add_place (sidebar, PLACES_BUILT_IN, &iter,
-                           display_name, icon, mount_uri,
+                           display_name, icon, mount_uri, 
                            NULL, NULL, NULL, 0,
                            _("Open your personal folder"));
     compare_for_selection (sidebar,
@@ -371,7 +371,7 @@ update_places (MarlinPlacesSidebar *sidebar)
       mount_uri = g_filename_to_uri (desktop_path, NULL, NULL);
       icon = g_themed_icon_new (MARLIN_ICON_DESKTOP);
       last_iter = add_place (sidebar, PLACES_BUILT_IN, &iter,
-      _("Desktop"), icon, mount_uri,
+      _("Desktop"), icon, mount_uri, 
       NULL, NULL, NULL, 1,
       _       ("Open the contents of your desktop in a folder"));
       g_object_unref (icon);
@@ -400,12 +400,12 @@ update_places (MarlinPlacesSidebar *sidebar)
         tooltip = g_file_get_parse_name (root);
         last_iter = add_place (sidebar, PLACES_BOOKMARK, &iter,
                                name, icon, mount_uri,
-                               NULL, NULL, NULL, index + sidebar->n_builtins_before,
+                               NULL, NULL, NULL, index + sidebar->n_builtins_before, 
                                tooltip);
         compare_for_selection (sidebar,
                                location, mount_uri, last_uri,
                                &last_iter, &select_path);
-        //log_printf (LOG_LEVEL_UNDEFINED, "bookmark: %d %s\n", index, mount_uri);
+        //printf ("bookmark: %d %s\n", index, mount_uri);
         g_free (name);
         g_object_unref (root);
         g_object_unref (icon);
@@ -591,7 +591,7 @@ update_places (MarlinPlacesSidebar *sidebar)
 
         if (!g_file_is_native (root)) {
             char *scheme = g_file_get_uri_scheme(root);
-            //log_printf (LOG_LEVEL_UNDEFINED, "scheme: %s\n", scheme);
+            //printf ("scheme: %s\n", scheme);
             if (strcmp(scheme, "archive"))
             {
                 network_mounts = g_list_prepend (network_mounts, g_object_ref (mount));
@@ -842,7 +842,7 @@ row_activated_callback (GtkTreeView *tree_view,
     MarlinPlacesSidebar *sidebar = MARLIN_PLACES_SIDEBAR (user_data);
 
     //amtest
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
     open_selected_bookmark (sidebar, GTK_TREE_MODEL (sidebar->store), path, 0);
 }
 
@@ -874,7 +874,7 @@ loading_uri_callback (GtkWidget *window,
         sidebar->uri = g_strdup (location);
 
         //amtest
-        //log_printf (LOG_LEVEL_UNDEFINED, "%s %s\n", G_STRFUNC, sidebar->uri);
+        //printf ("%s %s\n", G_STRFUNC, sidebar->uri);
 
         /* set selection if any place matches location */
         selection = gtk_tree_view_get_selection (sidebar->tree_view);
@@ -885,8 +885,8 @@ loading_uri_callback (GtkWidget *window,
             child_valid = gtk_tree_model_iter_children (GTK_TREE_MODEL (sidebar->store), &child_iter, &iter);
             while (child_valid)
             {
-                //log_printf (LOG_LEVEL_UNDEFINED, "test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), &child_iter));
-                gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &child_iter,
+                //printf ("test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), &child_iter));
+                gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &child_iter, 
                                     PLACES_SIDEBAR_COLUMN_URI, &uri,
                                     -1);
                 if (uri != NULL) {
@@ -959,14 +959,14 @@ compute_drop_position (GtkTreeView *tree_view,
     num_rows = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (sidebar->store), NULL);
     /*gtk_tree_model_get_iter_first (GTK_TREE_MODEL (sidebar->store), &iter);
       num_rows = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (sidebar->store), &iter);*/
-    //log_printf (LOG_LEVEL_UNDEFINED, "num rows %d\n", num_rows);
+    //printf ("num rows %d\n", num_rows);
 
     if (!gtk_tree_view_get_dest_row_at_pos (tree_view,
                                             x,
                                             y,
                                             path,
                                             pos)) {
-        //log_printf (LOG_LEVEL_UNDEFINED, "dest_row_at_pos UNKNOWN\n");
+        //printf ("dest_row_at_pos UNKNOWN\n");
         //row = num_rows - 1;
         //		*path = gtk_tree_path_new_from_indices (row, -1);
         /*gtk_tree_view_get_path_at_pos(tree_view,  x, y, path, NULL, NULL, NULL);
@@ -975,11 +975,11 @@ compute_drop_position (GtkTreeView *tree_view,
         *pos = -1;
         return;
     }
-    //log_printf (LOG_LEVEL_UNDEFINED, "TEST path %s\n", gtk_tree_path_to_string (*path));
+    //printf ("TEST path %s\n", gtk_tree_path_to_string (*path));
     row = *gtk_tree_path_get_indices (*path);
     /*gint *idxs = gtk_tree_path_get_indices (*path);
       row = idxs[1];*/
-    //log_printf (LOG_LEVEL_UNDEFINED, "row indice %d\n", row);
+    //printf ("row indice %d\n", row);
 
     gtk_tree_path_free (*path);
 
@@ -1005,7 +1005,7 @@ compute_drop_position (GtkTreeView *tree_view,
 
 static gboolean
 get_drag_data (GtkTreeView *tree_view,
-               GdkDragContext *context,
+               GdkDragContext *context, 
                unsigned int time)
 {
     GdkAtom target;
@@ -1099,17 +1099,17 @@ drag_motion_callback (GtkTreeView *tree_view,
         if (sidebar->drag_list == NULL) {
             action = 0;
         } else {
-            //log_printf (LOG_LEVEL_UNDEFINED, "huuuuuuuuuu?\n");
+            //printf ("huuuuuuuuuu?\n");
             if (path != NULL)
             {
-                //log_printf (LOG_LEVEL_UNDEFINED, "huuuuuuuuuu %s path %s\n", G_STRFUNC, gtk_tree_path_to_string (path));
+                //printf ("huuuuuuuuuu %s path %s\n", G_STRFUNC, gtk_tree_path_to_string (path));
                 gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store),
                                          &iter, path);
                 gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store),
                                     &iter,
                                     PLACES_SIDEBAR_COLUMN_URI, &uri,
                                     -1);
-                log_printf (LOG_LEVEL_UNDEFINED, "test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), &child_iter));
+                printf ("test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), &child_iter));
                 /*marlin_drag_default_drop_action_for_icons (context, uri,
                   sidebar->drag_list,
                   &action);*/
@@ -1140,7 +1140,7 @@ drag_leave_callback (GtkTreeView *tree_view,
                      MarlinPlacesSidebar *sidebar)
 {
     //amtest drag
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
     free_drag_data (sidebar);
     gtk_tree_view_set_drag_dest_row (tree_view, NULL, GTK_TREE_VIEW_DROP_BEFORE);
     g_signal_stop_emission_by_name (tree_view, "drag-leave");
@@ -1166,7 +1166,7 @@ bookmarks_drop_uris (MarlinPlacesSidebar *sidebar,
 
     if (position < 0)
         position = 0;
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
     //TODO something is weird here
     /*
        for (i = 0; uris[i]; i++) {
@@ -1252,7 +1252,7 @@ get_selected_iter (MarlinPlacesSidebar *sidebar,
         return FALSE;
     }
     //amtest
-    //log_printf (LOG_LEVEL_UNDEFINED, "TEST %s: %s\n", G_STRFUNC, gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), iter));
+    //printf ("TEST %s: %s\n", G_STRFUNC, gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), iter));
     return TRUE;
 }
 
@@ -1261,7 +1261,7 @@ static void
 reorder_bookmarks (MarlinPlacesSidebar *sidebar, int new_position)
 {
     GtkTreeIter iter;
-    PlaceType type;
+    PlaceType type; 
     int old_position;
     GtkTreeSelection *selection;
 
@@ -1276,7 +1276,7 @@ reorder_bookmarks (MarlinPlacesSidebar *sidebar, int new_position)
                         PLACES_SIDEBAR_COLUMN_INDEX, &old_position,
                         -1);
 
-    //log_printf (LOG_LEVEL_UNDEFINED, "%s: old_pos: %d new_pos: %d\n", G_STRFUNC, old_position, new_position);
+    //printf("%s: old_pos: %d new_pos: %d\n", G_STRFUNC, old_position, new_position);
     old_position = old_position -sidebar->n_builtins_before;
     if (type != PLACES_BOOKMARK ||
         old_position < 0 ||
@@ -1301,7 +1301,7 @@ drag_data_received_callback (GtkWidget *widget,
                              MarlinPlacesSidebar *sidebar)
 {
     //amtest
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
 
     GtkTreeView *tree_view;
     GtkTreePath *tree_path;
@@ -1311,7 +1311,7 @@ drag_data_received_callback (GtkWidget *widget,
     GtkTreeModel *model;
     char *drop_uri;
     GList *selection_list, *uris;
-    PlaceType type;
+    PlaceType type; 
     gboolean success;
 
     tree_view = GTK_TREE_VIEW (widget);
@@ -1399,7 +1399,7 @@ drag_data_received_callback (GtkWidget *widget,
                 selection_list = build_selection_list (gtk_selection_data_get_data (selection_data));
                 uris = uri_list_from_selection (selection_list);
                 //TODO file_operation
-                log_printf (LOG_LEVEL_UNDEFINED, "file_operation_copy_move: drop_uri %s action %d\n", drop_uri, real_action);
+                printf ("file_operation_copy_move: drop_uri %s action %d\n", drop_uri, real_action);
                 /*marlin_file_operations_copy_move (uris, NULL, drop_uri,
                   real_action, GTK_WIDGET (tree_view),
                   NULL, NULL);*/
@@ -1436,7 +1436,7 @@ drag_drop_callback (GtkTreeView *tree_view,
                     MarlinPlacesSidebar *sidebar)
 {
     //amtest
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
 
     gboolean retval = FALSE;
     sidebar->drop_occured = TRUE;
@@ -1515,7 +1515,7 @@ check_visibility (GMount           *mount,
 
     if (drive != NULL) {
         if (g_drive_is_media_removable (drive) &&
-            !g_drive_is_media_check_automatic (drive) &&
+            !g_drive_is_media_check_automatic (drive) && 
             g_drive_can_poll_for_media (drive))
             *show_rescan = TRUE;
 
@@ -1536,7 +1536,7 @@ static void
 bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
 {
     GtkTreeIter iter;
-    PlaceType type;
+    PlaceType type; 
     GDrive *drive = NULL;
     GVolume *volume = NULL;
     GMount *mount = NULL;
@@ -1580,8 +1580,8 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
     check_visibility (mount, volume, drive,
                       &show_mount, &show_unmount, &show_eject, &show_rescan, &show_format, &show_start, &show_stop);
 
-    /* We actually want both eject and unmount since eject will unmount all volumes.
-     * TODO: hide unmount if the drive only has a single mountable volume
+    /* We actually want both eject and unmount since eject will unmount all volumes. 
+     * TODO: hide unmount if the drive only has a single mountable volume 
      */
 
     show_empty_trash = (uri != NULL) &&
@@ -1659,7 +1659,7 @@ volume_mounted_cb (GVolume *volume,
 
         if (sidebar->go_to_after_mount_slot != NULL) {
             //TODO
-            log_printf (LOG_LEVEL_UNDEFINED, "%s: %s\n", G_STRFUNC, g_file_get_uri (location));
+            printf("%s: %s\n", G_STRFUNC, g_file_get_uri (location));
 #if 0
             if ((sidebar->go_to_after_mount_flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW) == 0) {
                 /*marlin_window_slot_info_open_location (sidebar->go_to_after_mount_slot, location,
@@ -1731,7 +1731,7 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
     gtk_tree_model_get (model, &iter, PLACES_SIDEBAR_COLUMN_URI, &uri, -1);
 
     if (uri != NULL) {
-        log_printf (LOG_LEVEL_UNDEFINED, "%s: uri: %s\n", G_STRFUNC, uri);
+        printf ("%s: uri: %s\n", G_STRFUNC, uri);
         //amtest
 #if 0
         marlin_debug_log (FALSE, MARLIN_DEBUG_LOG_DOMAIN_USER,
@@ -1778,7 +1778,7 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
             sidebar->go_to_after_mount_flags = flags;
 
             /* TODO file_operation */
-            log_printf (LOG_LEVEL_UNDEFINED, "%s: marlin_file_operations_mount_volume_full\n", G_STRFUNC);
+            printf ("%s: marlin_file_operations_mount_volume_full\n", G_STRFUNC);
             /*marlin_file_operations_mount_volume_full (NULL, volume, FALSE,
               volume_mounted_cb,
               G_OBJECT (sidebar));*/
@@ -1786,7 +1786,7 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
                    (g_drive_can_start (drive) || g_drive_can_start_degraded (drive))) {
             GMountOperation *mount_op;
 
-            log_printf (LOG_LEVEL_UNDEFINED, "%s: gtk_mount_operation_new\n", G_STRFUNC);
+            printf ("%s: gtk_mount_operation_new\n", G_STRFUNC);
             mount_op = gtk_mount_operation_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (sidebar))));
             g_drive_start (drive, G_DRIVE_START_NONE, mount_op, NULL, drive_start_from_bookmark_cb, NULL);
             g_object_unref (mount_op);
@@ -1866,7 +1866,7 @@ static void
 remove_selected_bookmarks (MarlinPlacesSidebar *sidebar)
 {
     GtkTreeIter iter;
-    PlaceType type;
+    PlaceType type; 
     int index;
 
     if (!get_selected_iter (sidebar, &iter)) {
@@ -1934,7 +1934,7 @@ do_unmount (GMount *mount,
     if (mount != NULL) {
         //marlin_window_info_set_initiated_unmount (sidebar->window, TRUE);
         //TODO file_operation
-        log_printf (LOG_LEVEL_UNDEFINED, "%s: marlin_file_operations_unmount_mount_full\n", G_STRFUNC);
+        printf ("%s: marlin_file_operations_unmount_mount_full\n", G_STRFUNC);
         /*marlin_file_operations_unmount_mount_full (NULL, mount, FALSE, TRUE,
           unmount_done,
           g_object_ref (sidebar->window));*/
@@ -2065,7 +2065,7 @@ do_eject (GMount *mount,
     GMountOperation *mount_op;
 
     //TODO
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
     mount_op = gtk_mount_operation_new (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (sidebar))));
     if (mount != NULL) {
         //marlin_window_info_set_initiated_unmount (sidebar->window, TRUE);
@@ -2344,7 +2344,7 @@ empty_trash_cb (GtkMenuItem           *item,
                 MarlinPlacesSidebar *sidebar)
 {
     //TODO file_operation
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
     marlin_file_operations_empty_trash (GTK_WIDGET (sidebar->window));
 }
 
@@ -2503,7 +2503,7 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
 static void
 bookmarks_update_popup_menu (MarlinPlacesSidebar *sidebar)
 {
-    bookmarks_build_popup_menu (sidebar);
+    bookmarks_build_popup_menu (sidebar);  
 }
 
 static void
@@ -2532,7 +2532,7 @@ bookmarks_button_release_event_cb (GtkWidget *widget,
                                    MarlinPlacesSidebar *sidebar)
 {
     //amtest
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
     GtkTreePath *path;
     GtkTreeModel *model;
     GtkTreeView *tree_view;
@@ -2567,7 +2567,7 @@ bookmarks_button_release_event_cb (GtkWidget *widget,
     return FALSE;
 }
 
-/* Callback used when a button is pressed on the shortcuts list.
+/* Callback used when a button is pressed on the shortcuts list.  
  * We trap button 3 to bring up a popup menu, and button 2 to
  * open in a new tab.
  */
@@ -2577,7 +2577,7 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
                                  MarlinPlacesSidebar *sidebar)
 {
     //amtest
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    printf ("%s\n", G_STRFUNC);
     if (event->type != GDK_BUTTON_PRESS) {
         /* ignore multiple clicks */
         return TRUE;
@@ -2595,10 +2595,10 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
 
         model = gtk_tree_view_get_model (tree_view);
 
-        gtk_tree_view_get_path_at_pos (tree_view, (int) event->x, (int) event->y,
+        gtk_tree_view_get_path_at_pos (tree_view, (int) event->x, (int) event->y, 
                                        &path, NULL, NULL, NULL);
-        //log_printf (LOG_LEVEL_UNDEFINED, "selected path %s\n", gtk_tree_path_to_string (path));
-        //log_printf (LOG_LEVEL_UNDEFINED, "%s open_selected_bookmark ...\n", G_STRFUNC);
+        //printf ("selected path %s\n", gtk_tree_path_to_string (path));
+        //printf ("%s open_selected_bookmark ...\n", G_STRFUNC);
         open_selected_bookmark (sidebar, model, path,
                                 event->state & GDK_CONTROL_MASK ?
                                 MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW :
@@ -2847,7 +2847,7 @@ expander_cell_data_func (GtkTreeViewColumn *tree_column,
                          GtkTreeIter *iter,
                          MarlinPlacesSidebar *sidebar)
 {
-    PlaceType	 	type;
+    PlaceType	 	type; 
 
     gtk_tree_model_get (model, iter, PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type, -1);
 
@@ -2976,9 +2976,9 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     gtk_tree_view_column_set_cell_data_func (col, cell,
                                              category_renderer_func, NULL, NULL);
 
-    g_signal_connect (cell, "edited",
+    g_signal_connect (cell, "edited", 
                       G_CALLBACK (bookmarks_edited), sidebar);
-    g_signal_connect (cell, "editing-canceled",
+    g_signal_connect (cell, "editing-canceled", 
                       G_CALLBACK (bookmarks_editing_canceled), sidebar);
 
     g_object_set (tree_view, "show-expanders", FALSE, NULL);
@@ -2988,8 +2988,8 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     cell = gossip_cell_renderer_expander_new ();
     sidebar->expander_renderer = cell;
     gtk_tree_view_column_pack_end (col, cell, FALSE);
-    gtk_tree_view_column_set_cell_data_func (col,
-                                             cell,
+    gtk_tree_view_column_set_cell_data_func (col, 
+                                             cell, 
                                              (GtkTreeCellDataFunc) expander_cell_data_func,
                                              sidebar,
                                              NULL);
@@ -3001,7 +3001,7 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
 
     /* this is required to set the category cells to bold and higher than the other ones */
     sidebar->store = gtk_tree_store_new (PLACES_SIDEBAR_COLUMN_COUNT,
-                                         G_TYPE_INT,
+                                         G_TYPE_INT, 
                                          G_TYPE_STRING,
                                          G_TYPE_DRIVE,
                                          G_TYPE_VOLUME,
@@ -3030,7 +3030,7 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     selection = gtk_tree_view_get_selection (tree_view);
     gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
 
-    g_signal_connect_object (tree_view, "row_activated",
+    g_signal_connect_object (tree_view, "row_activated", 
                              G_CALLBACK (row_activated_callback), sidebar, 0);
 
     gtk_tree_view_enable_model_drag_source (GTK_TREE_VIEW (tree_view),
@@ -3070,7 +3070,7 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     g_signal_connect (tree_view, "row-collapsed",
                       G_CALLBACK (category_row_collapsed_event_cb), sidebar);
 
-    /* TODO remove/keep? using this prohibit us to use the row_activated signal
+    /* TODO remove/keep? using this prohibit us to use the row_activated signal 
        no keyboard abilities in the sidebar */
     //eel_gtk_tree_view_set_activate_on_single_click (sidebar->tree_view, TRUE);
 

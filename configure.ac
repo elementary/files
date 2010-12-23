@@ -64,6 +64,7 @@ PKG_CHECK_MODULES(ALL, [
         gee-1.0
         sqlite3
         dbus-glib-1
+        taskview-glib-1.0
 ])
 dnl ===========================================================================
 
@@ -152,7 +153,7 @@ AC_SUBST(DBUSSERVICEDIR)
 dnl ===========================================================================
 
 dnl core marlin
-CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gio-unix-2.0 gee-1.0"
+CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gio-unix-2.0 gee-1.0 taskview-glib-1.0"
 CORE_CFLAGS="`$PKG_CONFIG --cflags $CORE_MODULES` $x_cflags $WARNING_CFLAGS"
 AC_SUBST(CORE_CFLAGS)
 CORE_LIBS="`$PKG_CONFIG --libs $CORE_MODULES` $x_libs"

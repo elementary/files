@@ -1,27 +1,27 @@
 /* eel-glib-extensions.c - implementation of new functions that conceptually
-   belong in glib. Perhaps some of these will be
-   actually rolled into glib someday.
-
-   Copyright (C) 2000 Eazel, Inc.
-
-   The Gnome Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License as
-   published by the Free Software Foundation; either version 2 of the
-   License, or (at your option) any later version.
-
-   The Gnome Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
-
-   You should have received a copy of the GNU Library General Public
-   License along with the Gnome Library; see the file COPYING.LIB.  If not,
-   write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-   Boston, MA 02111-1307, USA.
-
-   Authors: John Sullivan <sullivan@eazel.com>
-   ammonkey <am.monkeyd@gmail.com>
-*/
+ * belong in glib. Perhaps some of these will be
+ * actually rolled into glib someday.
+ *
+ * Copyright (C) 2000 Eazel, Inc.
+ *
+ * The Gnome Library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * The Gnome Library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public
+ * License along with the Gnome Library; see the file COPYING.LIB.  If not,
+ * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+ *
+ * Authors: John Sullivan <sullivan@eazel.com>
+ *          ammonkey <am.monkeyd@gmail.com>
+ */
 
 #include "eel-glib-extensions.h"
 #include <sys/time.h>
@@ -114,5 +114,30 @@ eel_remove_weak_pointer (gpointer pointer_location)
                                   object_location);
 
     *object_location = NULL;
+}
+
+/**
+ * eel_g_object_list_ref
+ *
+ * Ref all the objects in a list.
+ * @list: GList of objects.
+**/
+GList *
+eel_g_object_list_ref (GList *list)
+{
+    g_list_foreach (list, (GFunc) g_object_ref, NULL);
+    return list;
+}
+
+/**
+ * eel_g_object_list_copy
+ *
+ * Copy the list of objects, ref'ing each one.
+ * @list: GList of objects.
+**/
+GList *
+eel_g_object_list_copy (GList *list)
+{
+    return g_list_copy (eel_g_object_list_ref (list));
 }
 

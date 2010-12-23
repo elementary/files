@@ -30,4 +30,13 @@ eel_show_error_dialog (const char *primary_text,
 		       const char *secondary_text,
 		       GtkWindow *parent);
 
+void
+marlin_dialogs_show_error (gpointer      parent,
+                           const GError *error,
+                           const gchar  *format,
+                           ...);
+
+void eel_gtk_message_dialog_set_details_label (GtkMessageDialog *dialog,
+                                               const gchar *details_text);
+
 #endif /* EEL_STOCK_DIALOGS_H */

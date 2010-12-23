@@ -11,10 +11,10 @@
 	</menu>
 	<menu name="Edit" action="Edit">
         <!--<placeholder name="Undostack Actions"/>
-		<separator/>
+		<separator/>-->
 		<placeholder name="Clipboard Actions">
                 </placeholder>
-		<separator/>-->
+		<separator/>
 		<!--<placeholder name="Select Items"/>-->
 		<menuitem name="ToolbarEditor" 	  action="ToolbarEditor"/>
 		<separator/>

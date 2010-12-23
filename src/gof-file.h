@@ -68,6 +68,11 @@ struct _GOFFile {
 
 struct _GOFFileClass {
     GObjectClass parent_class;
+
+    /* Called when the file notices any change. */
+    //void            (* changed)             (GOFFile *file);
+    void            (* destroy)             (GOFFile *file);
+
 };
 
 /*
@@ -96,6 +101,7 @@ char *          gof_file_get_date_as_string (guint64 d);
 
 void            gof_file_list_unref (GList *list);
 void            gof_file_list_free (GList *list);
+
 G_END_DECLS
 
 #endif /* GOF_DIRECTORY_ASYNC_H */

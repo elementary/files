@@ -28,11 +28,12 @@
 #define FM_DIRECTORY_VIEW_H
 
 #include <gtk/gtk.h>
+#include <gio/gio.h>
 #include "gof-directory-async.h"
 #include "gof-file.h"
 #include "marlin-window-columns.h"
 #include "gof-window-slot.h"
-#include <gio/gio.h>
+#include "marlin-clipboard-manager.h"
 
 typedef struct FMDirectoryView FMDirectoryView;
 typedef struct FMDirectoryViewClass FMDirectoryViewClass;
@@ -52,8 +53,9 @@ typedef struct FMDirectoryViewClass FMDirectoryViewClass;
 typedef struct FMDirectoryViewDetails FMDirectoryViewDetails;
 
 struct FMDirectoryView {
-    GtkScrolledWindow parent;
-    FMDirectoryViewDetails *details;
+    GtkScrolledWindow       parent;
+    MarlinClipboardManager  *clipboard;
+    FMDirectoryViewDetails  *details;
 };
 
 struct FMDirectoryViewClass {
@@ -148,7 +150,7 @@ struct FMDirectoryViewClass {
      * GOFFile pointers.
      */
     GList *	(* get_selection) 	 	(FMDirectoryView *view);
-
+#endif
     /* get_selection_for_file_transfer  is a function pointer for
      * subclasses to replace (override). Subclasses must replace it
      * with a function that returns a newly-allocated GList of
@@ -158,6 +160,7 @@ struct FMDirectoryViewClass {
      */
     GList *	(* get_selection_for_file_transfer)(FMDirectoryView *view);
 
+#if 0
     /* select_all is a function pointer that subclasses must override to
      * select all of the items in the view */
     void     (* select_all)	         	(FMDirectoryView *view);
@@ -214,14 +217,16 @@ struct FMDirectoryViewClass {
      * override to return the EelBackground for this view.
      */
     //GtkWidget * (* get_background_widget)	(FMDirectoryView *view);
+#endif
 
     /* merge_menus is a function pointer that subclasses can override to
      * add their own menu items to the window's menu bar.
      * If overridden, subclasses must call parent class's function.
      */
-    //void    (* merge_menus)         	(FMDirectoryView *view);
-    //void    (* unmerge_menus)         	(FMDirectoryView *view);
+    void    (* merge_menus)         	(FMDirectoryView *view);
+    void    (* unmerge_menus)         	(FMDirectoryView *view);
 
+#if 0
     /* update_menus is a function pointer that subclasses can override to
      * update the sensitivity or wording of menu items in the menu bar.
      * It is called (at least) whenever the selection changes. If overridden, 
@@ -358,5 +363,7 @@ void    fm_directory_view_load_location (FMDirectoryView *directory_view, GFile 
 //void    fm_directory_view_colorize_selection (FMDirectoryView *view, int color);
 void    fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFile *file);
 
+void    fm_directory_view_merge_menus (FMDirectoryView *view);
+void    fm_directory_view_unmerge_menus (FMDirectoryView *view);
 
 #endif /* FM_DIRECTORY_VIEW_H */

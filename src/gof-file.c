@@ -76,46 +76,55 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 #define SORT_LAST_CHAR1 '.'
 #define SORT_LAST_CHAR2 '#'
 
-    /*        
-              static int _vala_strcmp0 (const char * str1, const char * str2) {
-              if (str1 == NULL) {
-              return -(str1 != str2);
-              }
-              if (str2 == NULL) {
-              return str1 != str2;
-              }
-              return strcmp (str1, str2);
-              }*/
+enum {
+    //CHANGED,
+    //UPDATED_DEEP_COUNT_IN_PROGRESS,
+    DESTROY,
+    LAST_SIGNAL
+};
+
+static guint signals[LAST_SIGNAL];
+
+/*        
+          static int _vala_strcmp0 (const char * str1, const char * str2) {
+          if (str1 == NULL) {
+          return -(str1 != str2);
+          }
+          if (str2 == NULL) {
+          return str1 != str2;
+          }
+          return strcmp (str1, str2);
+          }*/
 
 #if 0
-    gint gof_file_NameCompareFunc (GOFFile* a, GOFFile* b) {
-        gint result = 0;
-        g_return_val_if_fail (a != NULL, 0);
-        g_return_val_if_fail (b != NULL, 0);
-        if (gof_file_get_directory (a) != gof_file_get_directory (b)) {
-            result = ((gint) gof_file_get_directory (b)) - ((gint) gof_file_get_directory (a));
-            return result;
+gint gof_file_NameCompareFunc (GOFFile* a, GOFFile* b) {
+    gint result = 0;
+    g_return_val_if_fail (a != NULL, 0);
+    g_return_val_if_fail (b != NULL, 0);
+    if (gof_file_get_directory (a) != gof_file_get_directory (b)) {
+        result = ((gint) gof_file_get_directory (b)) - ((gint) gof_file_get_directory (a));
+        return result;
+    } else {
+        char* _tmp1_ = g_utf8_casefold (gof_file_get_name (b), -1);
+        char* _tmp0_ = g_utf8_casefold (gof_file_get_name (a), -1);
+        if (_vala_strcmp0 (_tmp0_, _tmp1_) < 0) {
+            _g_free0 (_tmp1_);
+            _g_free0 (_tmp0_);
+            return -1;
         } else {
-            char* _tmp1_ = g_utf8_casefold (gof_file_get_name (b), -1);
-            char* _tmp0_ = g_utf8_casefold (gof_file_get_name (a), -1);
-            if (_vala_strcmp0 (_tmp0_, _tmp1_) < 0) {
-                _g_free0 (_tmp1_);
-                _g_free0 (_tmp0_);
-                return -1;
+            char* _tmp4_;
+            char* _tmp3_;
+            gboolean _tmp5_;
+            if ((_tmp5_ = _vala_strcmp0 (_tmp3_ = g_utf8_casefold (gof_file_get_name (a), -1), _tmp4_ = g_utf8_casefold (gof_file_get_name (b), -1)) == 0, _g_free0 (_tmp4_), _g_free0 (_tmp3_), _tmp5_)) {
+                result = 0;
+                return result;
             } else {
-                char* _tmp4_;
-                char* _tmp3_;
-                gboolean _tmp5_;
-                if ((_tmp5_ = _vala_strcmp0 (_tmp3_ = g_utf8_casefold (gof_file_get_name (a), -1), _tmp4_ = g_utf8_casefold (gof_file_get_name (b), -1)) == 0, _g_free0 (_tmp4_), _g_free0 (_tmp3_), _tmp5_)) {
-                    result = 0;
-                    return result;
-                } else {
-                    result = 1;
-                    return result;
-                }
+                result = 1;
+                return result;
             }
         }
     }
+}
 
 gint gof_file_SizeCompareFunc (GOFFile* a, GOFFile* b) {
     gint result = 0;
@@ -165,7 +174,7 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
     self->file_type = g_file_info_get_file_type(file_info);
     self->is_directory = (self->file_type == G_FILE_TYPE_DIRECTORY);
     self->modified = g_file_info_get_attribute_uint64 (file_info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
-    
+
     self->utf8_collation_key = g_utf8_collate_key (self->name, -1);
     self->format_size = g_format_size_for_display(self->size);
     self->formated_modified = gof_file_get_date_as_string (self->modified);
@@ -186,7 +195,7 @@ GOFFile* gof_file_get(GFile *location)
     GFileInfo *file_info;
     GFile *parent;
     GOFFile *file;
-    
+
     parent = g_file_get_parent (location);
     file_info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
                                    G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, NULL);
@@ -230,6 +239,16 @@ static void gof_file_class_init (GOFFileClass * klass) {
     /*G_OBJECT_CLASS (klass)->get_property = gof_file_get_property;
       G_OBJECT_CLASS (klass)->set_property = gof_file_set_property;*/
     G_OBJECT_CLASS (klass)->finalize = gof_file_finalize;
+
+    signals[DESTROY] =g_signal_new ("destroy",
+                                    G_TYPE_FROM_CLASS (klass),
+                                    G_SIGNAL_RUN_LAST,
+                                    G_STRUCT_OFFSET (GOFFileClass, destroy),
+                                    NULL, NULL,
+                                    g_cclosure_marshal_VOID__VOID,
+                                    G_TYPE_NONE, 0);
+
+
     /*g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_NAME, g_param_spec_string ("name", "name", "name", NULL, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));
       g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_SIZE, g_param_spec_uint64 ("size", "size", "size", 0, G_MAXUINT64, 0U, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));
       g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_DIRECTORY, g_param_spec_boolean ("directory", "directory", "directory", FALSE, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));*/
