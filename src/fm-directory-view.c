@@ -86,7 +86,7 @@ struct FMDirectoryViewDetails
     //GOFFile *directory_as_file;
 
     /* whether we are in the active slot */
-    //gboolean active;
+    gboolean active;
 
     /* loading indicates whether this view has begun loading a directory.
      * This flag should need not be set inside subclasses. FMDirectoryView automatically
@@ -131,12 +131,13 @@ static void     fm_directory_view_init          (FMDirectoryView      *view);
 //static void     fm_directory_view_unmerge_menus (FMDirectoryView      *view);
 static void     real_merge_menus (FMDirectoryView *view);
 static void     real_unmerge_menus (FMDirectoryView *view);
+static void     fm_directory_view_grab_focus (GtkWidget *widget);
 
 
 EEL_CLASS_BOILERPLATE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW)
 
-EEL_IMPLEMENT_MUST_OVERRIDE_SIGNAL (fm_directory_view, add_file)
-    /*EEL_IMPLEMENT_MUST_OVERRIDE_SIGNAL (fm_directory_view, bump_zoom_level)
+/*EEL_IMPLEMENT_MUST_OVERRIDE_SIGNAL (fm_directory_view, add_file)
+    EEL_IMPLEMENT_MUST_OVERRIDE_SIGNAL (fm_directory_view, bump_zoom_level)
       EEL_IMPLEMENT_MUST_OVERRIDE_SIGNAL (fm_directory_view, can_zoom_in)
       EEL_IMPLEMENT_MUST_OVERRIDE_SIGNAL (fm_directory_view, can_zoom_out)
       EEL_IMPLEMENT_MUST_OVERRIDE_SIGNAL (fm_directory_view, clear)
@@ -557,24 +558,26 @@ fm_directory_view_parent_set (GtkWidget *widget,
         GTK_WIDGET_CLASS (parent_class)->parent_set (widget, old_parent);
     }
 
-//#if 0
+    printf("%s\n", G_STRFUNC);
     if (parent != NULL) {
         g_assert (old_parent == NULL);
 
-        if (view->details->slot)
-            printf ("talalalalalala\n");
-        if (view->details->slot == 
-            MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot) {
-            //view->details->active = TRUE;
-
-            fm_directory_view_merge_menus (view);
-            //schedule_update_menus (view);
+        g_assert (view->details->slot);
+        if (MARLIN_VIEW_WINDOW (view->details->window)->current_tab)
+        {
+            /*printf ("active_slot %s\n", g_file_get_uri(MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot->location));
+            printf ("view_details slot %s\n", g_file_get_uri(view->details->slot->location));*/
+            if (view->details->slot == 
+                MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot) {
+                fm_directory_view_merge_menus (view);
+                view->details->active = TRUE;
+                //schedule_update_menus (view);
+            }
         }
     } else {
         fm_directory_view_unmerge_menus (view);
         //remove_update_menus_timeout_callback (view);
     }
-//#endif
 }
 
 static void
@@ -619,8 +622,8 @@ fm_directory_view_unrealize (GtkWidget *widget)
     //view->icon_factory = NULL;
 
     /* drop the reference on the clipboard manager */
-    g_object_unref (G_OBJECT (view->clipboard));
-    view->clipboard = NULL;
+    /*g_object_unref (G_OBJECT (view->clipboard));
+    view->clipboard = NULL;*/
 
     /* let the GtkWidget do its work */
     GTK_WIDGET_CLASS (parent_class)->unrealize (widget);
@@ -896,6 +899,8 @@ void
 fm_directory_view_merge_menus (FMDirectoryView *view)
 {
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    if (view->details->active)
+        return;
 
     EEL_CALL_METHOD
         (FM_DIRECTORY_VIEW_CLASS, view,
@@ -993,6 +998,7 @@ static const GtkActionEntry directory_view_entries[] = {
 static void
 real_unmerge_menus (FMDirectoryView *view)
 {
+    printf("%s\n", G_STRFUNC);
     GtkUIManager *ui_manager;
 
     if (view->details->window == NULL) {
@@ -1021,6 +1027,7 @@ real_unmerge_menus (FMDirectoryView *view)
 static void
 real_merge_menus (FMDirectoryView *view)
 {
+    printf("%s\n", G_STRFUNC);
     GtkActionGroup *action_group;
     GtkUIManager *ui_manager;
     GtkAction *action;

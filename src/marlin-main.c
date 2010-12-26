@@ -9,10 +9,6 @@
 #include "marlin-vala.h"
 #include "marlin-tags.h"
 
-//static void     marlin_view_window_up (MarlinViewWindow *window);
-//static void     marlin_view_window_back (MarlinViewWindow *window);
-//static void     marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data);
-
 
 int
 main (int argc, char *argv[])
@@ -50,7 +46,7 @@ main (int argc, char *argv[])
       g_signal_connect (window, "destroy", gtk_main_quit, NULL);*/
 
     if (argc > 1) {
-        path = argv[1];
+        path = g_strdup(argv[1]);
     } else {
         path = g_strdup(g_get_home_dir());
     }
@@ -81,51 +77,3 @@ main (int argc, char *argv[])
     return 0;
 }
 
-
-#if 0
-static void
-marlin_view_window_up (MarlinViewWindow *window)
-{
-    GOFWindowSlot *slot;
-    GFile *parent;
-
-    if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) == NULL)
-        return;
-    if (slot->location == NULL) 
-        return;
-    parent = g_file_get_parent (slot->location);
-    if (parent == NULL) 
-        return;
-
-    /*if (slot->mwcols != NULL)
-      marlin_window_columns_change_location (slot, parent);
-      else
-      gof_window_slot_change_location (slot, parent);*/
-    //g_signal_emit_by_name (window, "path-changed", "/home/am/Images");
-    g_signal_emit_by_name (window, "path-changed", parent);
-    g_object_unref (parent);
-    log_printf (LOG_LEVEL_UNDEFINED, "!!!!!!!! %s\n", G_STRFUNC);
-}
-#endif
-
-/*
-   static void
-   marlin_view_window_back (MarlinViewWindow *window)
-   {
-   log_printf (LOG_LEVEL_INFO, "%s\n", G_STRFUNC);
-   }*/
-
-#if 0
-static void
-marlin_view_window_path_changed (MarlinViewWindow *window, GFile *file, gpointer data)
-{
-    GOFWindowSlot *slot;
-    MarlinWindowColumns *mwcols;
-
-    g_return_if_fail (file != NULL);
-    /*if ((slot = GOF_WINDOW_SLOT (marlin_view_window_get_active_slot(window))) != NULL)
-      load_dir_async_cancel(slot->directory);*/
-    slot = gof_window_slot_new(file, GTK_WIDGET (window));
-    //mwcols = marlin_window_columns_new(file, GTK_WIDGET (window));
-}
-#endif

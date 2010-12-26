@@ -39,12 +39,12 @@ typedef void (* MarlinOpCallback)        (gpointer    callback_data);
 typedef void (* MarlinDeleteCallback)    (GHashTable *debuting_uris,
                                           gboolean    user_cancel,
                                           gpointer    callback_data);
+#endif
 typedef void (* MarlinMountCallback)     (GVolume    *volume,
                                           GObject    *callback_data_object);
 typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);
 
-/* FIXME: int copy_action should be an enum */
-
+#if 0
 void marlin_file_operations_copy_move   (const GList               *item_uris,
                                          GArray                    *relative_item_points,
                                          const char                *target_dir_uri,
@@ -53,6 +53,7 @@ void marlin_file_operations_copy_move   (const GList               *item_uris,
                                          MarlinCopyCallback       done_callback,
                                          gpointer                   done_callback_data);
 #endif
+
 void marlin_file_operations_empty_trash (GtkWidget                 *parent_view);
 #if 0
 void marlin_file_operations_new_folder  (GtkWidget                 *parent_view,
@@ -97,6 +98,7 @@ void marlin_file_operations_unmount_mount (GtkWindow                      *paren
                                            GMount                         *mount,
                                            gboolean                        eject,
                                            gboolean                        check_trash);
+#endif
 void marlin_file_operations_unmount_mount_full (GtkWindow                 *parent_window,
                                                 GMount                    *mount,
                                                 gboolean                   eject,
@@ -111,13 +113,20 @@ void marlin_file_operations_mount_volume_full (GtkWindow                      *p
                                                gboolean                        allow_autorun,
                                                MarlinMountCallback           mount_callback,
                                                GObject                        *mount_callback_data_object);
-#endif
 void marlin_file_operations_copy      (GList                *files,
                                        GArray               *relative_item_points,
                                        GFile                *target_dir,
                                        GtkWindow            *parent_window,
-                                       MarlinCopyCallback  done_callback,
-                                       gpointer              done_callback_data);
+                                       MarlinCopyCallback   done_callback,
+                                       gpointer             done_callback_data);
+
+void marlin_file_operations_copy_move   (GList                  *files,
+                                         GArray                 *relative_item_points,
+                                         GFile                  *target_dir,
+                                         GdkDragAction          copy_action,
+                                         GtkWidget              *parent_view,
+                                         MarlinCopyCallback     done_callback,
+                                         gpointer               done_callback_data);
 #if 0
 void marlin_file_operations_move      (GList                *files,
                                        GArray               *relative_item_points,

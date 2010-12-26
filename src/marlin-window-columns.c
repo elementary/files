@@ -62,11 +62,12 @@ marlin_window_columns_new (GFile *location, GObject *ctab)
     mwcols->location = location;
     mwcols->ctab = ctab;
 
-    GOFWindowSlot *slot = gof_window_slot_column_new (location, ctab);
+    GOFWindowSlot *slot = gof_window_slot_new (location, mwcols->ctab);
     slot->mwcols = mwcols;
     mwcols->active_slot = slot;
-    //marlin_window_set_active_slot (MARLIN_WINDOW (window), slot);
-    //marlin_view_window_set_active_slot (MARLIN_VIEW_WINDOW (window), slot);
+
+#if 0
+    gof_window_slot_make_column_view (slot);
 
     mwcols->colpane = gtk_hbox_new (FALSE, 0);
     slot->colpane = mwcols->colpane;
@@ -93,14 +94,49 @@ marlin_window_columns_new (GFile *location, GObject *ctab)
     //gtk_container_add( GTK_CONTAINER(window), mwcols->view_box);
     //marlin_view_window_set_content (window, mwcols->view_box);
     marlin_view_view_container_set_content (ctab, mwcols->view_box);
-
+#endif
     return mwcols;
+}
+
+void
+marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
+{
+    GOFWindowSlot *slot = mwcols->active_slot;
+
+    gof_window_slot_make_column_view (slot);
+
+    mwcols->colpane = gtk_hbox_new (FALSE, 0);
+    slot->colpane = mwcols->colpane;
+    gtk_widget_show (mwcols->colpane);
+    mwcols->view_box = gtk_scrolled_window_new (0, 0);
+    GtkWidget *viewport = gtk_viewport_new (0, 0);
+    gtk_viewport_set_shadow_type (GTK_VIEWPORT (viewport), GTK_SHADOW_NONE);
+    gtk_container_add (GTK_CONTAINER (viewport), mwcols->colpane);
+    gtk_widget_show (viewport);
+    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (mwcols->view_box),
+                                    GTK_POLICY_AUTOMATIC,
+                                    GTK_POLICY_NEVER);
+    gtk_widget_show (mwcols->view_box);
+    gtk_container_add (GTK_CONTAINER (mwcols->view_box), viewport);
+
+    GtkAdjustment *hadj;
+    hadj = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (slot->mwcols->view_box));
+    
+    /* autoscroll Miller Columns */
+    g_signal_connect(hadj, "changed", (GCallback) hadj_changed, mwcols);
+
+    gof_window_column_add(slot, slot->view_box);
+
+    //gtk_container_add( GTK_CONTAINER(window), mwcols->view_box);
+    //marlin_view_window_set_content (window, mwcols->view_box);
+    marlin_view_view_container_set_content (mwcols->ctab, mwcols->view_box);
 }
 
 void
 marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 {
-    GOFWindowSlot *slot = gof_window_slot_column_new (location, mwcols->ctab);
+    GOFWindowSlot *slot = gof_window_slot_new (location, mwcols->ctab);
+    gof_window_slot_make_column_view (slot);
     slot->mwcols = mwcols;
     slot->colpane = mwcols->active_slot->colpane;
     //mwcols->active_slot = slot;

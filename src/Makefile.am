@@ -58,6 +58,7 @@ marlin_SOURCES = \
     eel-debug.c                             \
     eel-string.c                            \
     eel-ui.c                                \
+    eel-vfs-extensions.c                    \
     gossip-cell-renderer-expander.c         \
     marlin-trash-monitor.c                  \
     marlin-bookmark.c                       \

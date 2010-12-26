@@ -72,6 +72,7 @@ namespace Marlin.View {
         protected virtual void action_radio_change_view(){
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
             assert(action != null);
+            ((FM.Directory.View) current_tab.slot.view_box).unmerge_menus();
             int n = action.get_current_value();
             /* change the view only for view_mode real change */
             if (n != current_tab.view_mode)
@@ -237,11 +238,14 @@ namespace Marlin.View {
         }
 
         public void change_tab(uint offset){
-            if (current_tab != null)
-                ((FM.Directory.View) current_tab.slot.view_box).unmerge_menus();
+            ViewContainer previous_tab = current_tab;
             current_tab = (ViewContainer) tabs.get_children().nth_data(offset);
-            if (current_tab != null && current_tab.slot != null) {                
+            if (current_tab != null && current_tab.slot != null) {
+                if (previous_tab != null && previous_tab != current_tab)
+                    ((FM.Directory.View) previous_tab.slot.view_box).unmerge_menus();
+                    //((FM.Directory.View) current_tab.slot.view_box).unmerge_menus();
                 ((FM.Directory.View) current_tab.slot.view_box).merge_menus();
+
                 current_tab.update_location_state(false);
                 /* update radio action view state */
                 update_action_radio_view(current_tab.view_mode);
@@ -251,8 +255,7 @@ namespace Marlin.View {
                 current_tab.sync_contextview();
 
                 /* focus the main view */
-                /* FIXME not a smart move it's crashing when opening / closing tabs */
-                /*((Bin)current_tab.slot.get_view()).get_child().grab_focus();*/
+                ((FM.Directory.View) current_tab.slot.view_box).grab_focus();
             }
         }
 
@@ -301,7 +304,7 @@ namespace Marlin.View {
 
             /* jump to that new tab */
             tabs.set_current_page(tabs.get_n_pages()-1);
-            current_tab = content;
+            //current_tab = content;
         }
 
         public void remove_tab(ViewContainer view_container){

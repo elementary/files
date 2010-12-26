@@ -1733,28 +1733,33 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
     if (uri != NULL) {
         printf ("%s: uri: %s\n", G_STRFUNC, uri);
         //amtest
-#if 0
-        marlin_debug_log (FALSE, MARLIN_DEBUG_LOG_DOMAIN_USER,
+//#if 0
+        /*marlin_debug_log (FALSE, MARLIN_DEBUG_LOG_DOMAIN_USER,
                           "activate from places sidebar window=%p: %s",
-                          sidebar->window, uri);
+                          sidebar->window, uri);*/
         location = g_file_new_for_uri (uri);
         /* Navigate to the clicked location */
         if ((flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW) == 0) {
             slot = marlin_view_window_get_active_slot (sidebar->window);
-            marlin_window_slot_info_open_location (slot, location,
+            //amtest sidebar load uri
+            g_signal_emit_by_name (slot->ctab, "path-changed", location);
+
+            /*marlin_window_slot_info_open_location (slot, location,
                                                    MARLIN_WINDOW_OPEN_ACCORDING_TO_MODE,
-                                                   flags, NULL);
+                                                   flags, NULL);*/
         } else {
-            MarlinViewWindow *cur, *new;
+            //TODO once we ll have marlin-application class for managing windows / application
+            printf ("%s: uri: %s FLAG_NEW_WINDOW\n", G_STRFUNC, uri);
+            /*MarlinViewWindow *cur, *new;
 
             cur = MARLIN_WINDOW (sidebar->window);
             new = marlin_application_create_navigation_window (cur->application,
                                                                NULL,
                                                                gtk_window_get_screen (GTK_WINDOW (cur)));
-            marlin_window_go_to (new, location);
+            marlin_window_go_to (new, location);*/
         }
         g_object_unref (location);
-#endif
+//#endif
         g_free (uri);
     } else {
         GDrive *drive;
@@ -1778,10 +1783,11 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
             sidebar->go_to_after_mount_flags = flags;
 
             /* TODO file_operation */
+            //amtest
             printf ("%s: marlin_file_operations_mount_volume_full\n", G_STRFUNC);
-            /*marlin_file_operations_mount_volume_full (NULL, volume, FALSE,
-              volume_mounted_cb,
-              G_OBJECT (sidebar));*/
+            marlin_file_operations_mount_volume_full (NULL, volume, FALSE,
+                                                      volume_mounted_cb,
+                                                      G_OBJECT (sidebar));
         } else if (volume == NULL && drive != NULL &&
                    (g_drive_can_start (drive) || g_drive_can_start_degraded (drive))) {
             GMountOperation *mount_op;
@@ -1911,7 +1917,9 @@ mount_shortcut_cb (GtkMenuItem           *item,
                         -1);
 
     if (volume != NULL) {
-        //marlin_file_operations_mount_volume (NULL, volume, FALSE);
+        //amtest
+        printf ("%s: marlin_file_operations_mount_volume\n", G_STRFUNC);
+        marlin_file_operations_mount_volume (NULL, volume, FALSE);
         g_object_unref (volume);
     }
 }
@@ -1921,6 +1929,7 @@ unmount_done (gpointer data)
 {
     MarlinViewWindow *window;
 
+    printf("%s\n", G_STRFUNC);
     window = data;
     //TODO
     //marlin_window_info_set_initiated_unmount (window, FALSE);
@@ -1934,10 +1943,11 @@ do_unmount (GMount *mount,
     if (mount != NULL) {
         //marlin_window_info_set_initiated_unmount (sidebar->window, TRUE);
         //TODO file_operation
+        //amtest
         printf ("%s: marlin_file_operations_unmount_mount_full\n", G_STRFUNC);
-        /*marlin_file_operations_unmount_mount_full (NULL, mount, FALSE, TRUE,
-          unmount_done,
-          g_object_ref (sidebar->window));*/
+        marlin_file_operations_unmount_mount_full (NULL, mount, FALSE, TRUE,
+                                                   unmount_done,
+                                                   g_object_ref (sidebar->window));
     }
 }
 

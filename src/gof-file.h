@@ -24,6 +24,7 @@
 #include <glib-object.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gio/gio.h>
+#include "nautilus-icon-info.h"
 
 G_BEGIN_DECLS
 
@@ -64,6 +65,9 @@ struct _GOFFile {
     guint64         modified;
     gchar           *formated_modified;
     const gchar     *color;
+
+    const gchar     *thumbnail;
+    gboolean        is_thumbnailing;
 };
 
 struct _GOFFileClass {
@@ -81,6 +85,11 @@ struct _GOFFileClass {
 */
 
 #define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,access::*,time::*"
+
+typedef enum {
+	GOF_FILE_ICON_FLAGS_NONE = 0,
+	GOF_FILE_ICON_FLAGS_USE_THUMBNAILS = (1<<0)
+} GOFFileIconFlags;
 
 GType gof_file_get_type (void);
 
@@ -101,6 +110,8 @@ char *          gof_file_get_date_as_string (guint64 d);
 
 void            gof_file_list_unref (GList *list);
 void            gof_file_list_free (GList *list);
+NautilusIconInfo    *gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags);
+GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileIconFlags flags);
 
 G_END_DECLS
 
