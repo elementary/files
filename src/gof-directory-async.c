@@ -43,8 +43,8 @@ enum {
     /*FILES_CHANGED,*/
     DONE_LOADING,
     /*LOAD_ERROR,*/
-    LAST_SIGNAL,
-    INFO_AVAILABLE
+    INFO_AVAILABLE,
+    LAST_SIGNAL
 };
 
 static guint signals[LAST_SIGNAL];
