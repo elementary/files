@@ -59,6 +59,11 @@ struct UnloadDelayData {
     FMListView *view;
 };
 
+struct SelectionForeachData {
+	GList *list;
+	GtkTreeSelection *selection;
+};
+
 /* Declaration Prototypes */
 static GList    *fm_list_view_get_selection (FMListView *view);
 //static void     fm_list_view_clear (FMListView *view);
@@ -702,6 +707,54 @@ gtk_tree_selection_select_all (gtk_tree_view_get_selection (view->tree));
 }*/
 
 static void
+fm_list_view_get_selection_for_file_transfer_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
+{
+	GOFFile *file;
+	struct SelectionForeachData *selection_data;
+	GtkTreeIter parent, child;
+
+	selection_data = data;
+
+	gtk_tree_model_get (model, iter,
+			    FM_LIST_MODEL_FILE_COLUMN, &file,
+			    -1);
+
+	if (file != NULL) {
+		/* If the parent folder is also selected, don't include this file in the
+		 * file operation, since that would copy it to the toplevel target instead
+		 * of keeping it as a child of the copied folder
+		 */
+		child = *iter;
+		while (gtk_tree_model_iter_parent (model, &parent, &child)) {
+			if (gtk_tree_selection_iter_is_selected (selection_data->selection,
+								 &parent)) {
+				return;
+			}
+			child = parent;
+		}
+		
+		gof_file_ref (file);
+		selection_data->list = g_list_prepend (selection_data->list, file);
+	}
+}
+
+
+static GList *
+fm_list_view_get_selection_for_file_transfer (FMDirectoryView *view)
+{
+	struct SelectionForeachData selection_data;
+
+	selection_data.list = NULL;
+	selection_data.selection = gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree);
+
+	gtk_tree_selection_selected_foreach (selection_data.selection,
+					     fm_list_view_get_selection_for_file_transfer_foreach_func, &selection_data);
+
+	return g_list_reverse (selection_data.list);
+}
+
+
+static void
 fm_list_view_finalize (GObject *object)
 {
     FMListView *view = FM_LIST_VIEW (object);
@@ -741,6 +794,8 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class->add_file = fm_list_view_add_file;
     fm_directory_view_class->colorize_selection = fm_list_view_colorize_selected_items;        
     fm_directory_view_class->sync_selection = fm_list_view_sync_selection;
+    fm_directory_view_class->get_selection_for_file_transfer = fm_list_view_get_selection_for_file_transfer;
+
     //eel_g_settings_add_auto_boolean (settings, "single-click", &single_click);
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }

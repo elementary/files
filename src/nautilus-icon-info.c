@@ -353,7 +353,7 @@ nautilus_icon_info_lookup (GIcon *icon,
         }
 
         pixbuf = NULL;
-        stream = g_loadable_icon_load (G_LOADABLE_ICON (icon),
+        /*stream = g_loadable_icon_load (G_LOADABLE_ICON (icon),
                                        size,
                                        NULL, NULL, NULL);
         if (stream) {
@@ -361,7 +361,7 @@ nautilus_icon_info_lookup (GIcon *icon,
             log_printf (LOG_LEVEL_UNDEFINED, "stream???\n");
             //pixbuf = eel_gdk_pixbuf_load_from_stream_at_size (stream, size);
             g_object_unref (stream);
-        }
+        }*/
 
         icon_info = nautilus_icon_info_new_for_pixbuf (pixbuf);
 

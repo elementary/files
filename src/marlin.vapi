@@ -38,6 +38,7 @@ namespace GOF {
         [CCode (cheader_filename = "gof-window-slot.h")]
         public class Slot : GLib.Object {
             public Slot (GLib.File f, Marlin.View.ViewContainer ctab);
+            public void make_view ();
             public Directory.Async directory;
             public GLib.File location;
             public Widget view_box;
@@ -79,6 +80,8 @@ namespace FM {
         public class View : Gtk.ScrolledWindow {
             public signal void colorize_selection (int color);
             public signal void sync_selection ();
+            public void merge_menus ();
+            public void unmerge_menus ();
         }
     }
 }
@@ -89,6 +92,7 @@ namespace Marlin {
         [CCode (cheader_filename = "marlin-window-columns.h")]
         public class Columns : GLib.Object {
             public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
+            public void make_view ();
             public GOF.Window.Slot active_slot;
             /*public Directory.Async directory;
             public Widget get_view ();*/

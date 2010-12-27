@@ -41,8 +41,11 @@ namespace Marlin.View {
 
         public ViewContainer(Marlin.View.Window win, GLib.File location){
             window = win;
+            /* set active tab */
+            window.current_tab = this;
             browser = new Browser<string> ();
             slot = new GOF.Window.Slot(location, this);
+            slot.make_view();
             /*mwcol = new Marlin.Window.Columns(location, this);
               slot = mwcol.active_slot;*/
             //content_item = slot.get_view();
@@ -85,7 +88,6 @@ namespace Marlin.View {
                 add(value);
                 content_item = value;
                 content_item.show();
-                ((Bin)value).get_child().grab_focus();
             }
             get{
                 return content_item;
@@ -112,11 +114,15 @@ namespace Marlin.View {
             case ViewMode.MILLER:
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;
+                mwcol.make_view();
                 break;
             default:
                 slot = new GOF.Window.Slot(location, this);
+                slot.make_view();
                 break;
             }
+            /* focus the main view */
+            ((FM.Directory.View) slot.view_box).grab_focus();
             sync_contextview();
         }
 

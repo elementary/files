@@ -1,8 +1,7 @@
-/* nautilus-file-operations.c - Marlin file operations.
+/* nautilus-file-operations: execute file operations.
  *
  * Copyright (C) 1999, 2000 Free Software Foundation
  * Copyright (C) 2000, 2001 Eazel, Inc.
- * Copyright (C) 2007 Red Hat, Inc.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -19,9 +18,8 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  *  
- * Authors: Alexander Larsson <alexl@redhat.com>
- *          Ettore Perazzoli <ettore@gnu.org> 
- *          Pavel Cisler <pavel@eazel.com> 
+ * Authors: Ettore Perazzoli <ettore@gnu.org>,
+ *          Pavel Cisler <pavel@eazel.com>
  */
 
 #include <config.h>
@@ -39,8 +37,13 @@
 #include "nautilus-debug-log.h"
 #include "nautilus-file-changes-queue.h"
 #include "nautilus-lib-self-check-functions.h"
-
+*/
+//#ifdef HAVE_TASKVIEW
+//#include <libtaskview-glib/taskview.h>
+#include <libtaskview/taskview.h>
+/*#else
 #include "nautilus-progress-info.h"
+#endif
 
 #include <eel/eel-glib-extensions.h>
 #include <eel/eel-gtk-extensions.h>
@@ -53,7 +56,12 @@
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 #include <glib.h>
-/*#include "nautilus-file-changes-queue.h"
+
+#include "eel-glib-extensions.h"
+#include "eel-string.h"
+
+/*
+#include "nautilus-file-changes-queue.h"
 #include "nautilus-file-private.h"
 #include "nautilus-desktop-icon-file.h"
 #include "nautilus-desktop-link-monitor.h"
@@ -63,6 +71,7 @@
 #include "nautilus-trash-monitor.h"
 #include "nautilus-file-utilities.h"
 #include "nautilus-file-conflict-dialog.h"*/
+#include "marlin-file-conflict-dialog.h"
 
 typedef struct {
     GIOSchedulerJob *io_job;	
@@ -70,7 +79,7 @@ typedef struct {
     GtkWindow *parent_window;
     int screen_num;
     int inhibit_cookie;
-    //MarlinProgressInfo *progress;
+    TaskviewIO *tv_io;
     GCancellable *cancellable;
     GHashTable *skip_files;
     GHashTable *skip_readdir_error;
@@ -81,13 +90,12 @@ typedef struct {
     gboolean delete_all;
 } CommonJob;
 
-#if 0
 typedef struct {
     CommonJob common;
     gboolean is_move;
     GList *files;
     GFile *destination;
-    GFile *desktop_location;
+    //GFile *desktop_location;
     GdkPoint *icon_positions;
     int n_icon_positions;
     GHashTable *debuting_files;
@@ -95,6 +103,7 @@ typedef struct {
     gpointer done_callback_data;
 } CopyMoveJob;
 
+#if 0
 typedef struct {
     CommonJob common;
     GList *files;
@@ -123,7 +132,7 @@ typedef struct {
 typedef struct {
     CommonJob common;
     GList *trash_dirs;
-    //gboolean should_confirm;
+    gboolean should_confirm;
     MarlinOpCallback done_callback;
     gpointer done_callback_data;
 } EmptyTrashJob;
@@ -147,6 +156,18 @@ typedef struct {
     guint32 dir_permissions;
     guint32 dir_mask;
 } SetPermissionsJob;
+#endif
+
+typedef enum {
+    JOB_COPY,
+    JOB_MOVE,
+    JOB_LINK,
+    JOB_DELETE,
+    JOB_CREATE,
+    JOB_EMPTY_TRASH,
+    JOB_MARK_TRUSTES,
+    JOB_SET_PERMISSIONS
+} JobTypes;
 
 typedef enum {
     OP_KIND_COPY,
@@ -170,8 +191,8 @@ typedef struct {
     int last_reported_files_left;
 } TransferInfo;
 
-#define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
-#define NSEC_PER_SEC 1000000000
+//#define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
+//#define NSEC_PER_SEC 1000000000
 #define NSEC_PER_MSEC 1000000
 
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
@@ -210,7 +231,6 @@ static void scan_sources (GList *files,
                           CommonJob *job,
                           OpKind kind);
 
-
 static gboolean empty_trash_job (GIOSchedulerJob *io_job,
                                  GCancellable *cancellable,
                                  gpointer user_data);
@@ -218,6 +238,7 @@ static gboolean empty_trash_job (GIOSchedulerJob *io_job,
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
 
+#if 0
 /* keep in time with format_time()
  *
  * This counts and outputs the number of “time units”
@@ -257,6 +278,7 @@ seconds_count_format_time_units (int seconds)
 
     return hours;
 }
+#endif
 
 static char *
 format_time (int seconds)
@@ -433,7 +455,6 @@ get_link_name (const char *name, int count, int max_length)
 
     return result;
 }
-
 
 /* Localizers: 
  * Feel free to leave out the st, nd, rd and th suffix or
@@ -764,7 +785,6 @@ has_invalid_xml_char (char *str)
     return FALSE;
 }
 
-
 static char *
 custom_full_name_to_string (char *format, va_list va)
 {
@@ -836,7 +856,6 @@ custom_basename_skip (va_list *va)
     (void) va_arg (*va, GFile *);
 }
 
-
 static char *
 custom_size_to_string (char *format, va_list va)
 {
@@ -892,7 +911,6 @@ static EelPrintfHandler handlers[] = {
     { 0 }
 };
 
-
 static char *
 f (const char *format, ...) {
     va_list va;
@@ -904,12 +922,18 @@ f (const char *format, ...) {
 
     return res;
 }
-#endif
 
-#define op_job_new(__type, parent_window) ((__type *)(init_common (sizeof(__type), parent_window)))
+static void
+cancel_callback (TaskviewGeneric *origin, GError **error, CommonJob *job)
+{
+    g_cancellable_cancel (job->cancellable);
+}
 
-static gpointer
-init_common (gsize job_size,
+#define op_job_new(jobtype, __type, parent_window) ((__type *)(init_common (jobtype, sizeof(__type), parent_window)))
+
+static gpointer 
+init_common (JobTypes jobtype,
+             gsize job_size, 
              GtkWindow *parent_window)
 {
     CommonJob *common;
@@ -921,11 +945,43 @@ init_common (gsize job_size,
         common->parent_window = parent_window;
         eel_add_weak_pointer (&common->parent_window);
     }
-    //common->progress = marlin_progress_info_new ();
-    //common->cancellable = marlin_progress_info_get_cancellable (common->progress);
+
+    gint tv_type;
+    const gchar *tv_icon;
+
+    switch (jobtype) {
+    case JOB_COPY:
+        tv_type = TASKVIEW_IO_COPY;
+        tv_icon = "folder-copy";
+        break;
+
+    case JOB_MOVE:
+        tv_type = TASKVIEW_IO_MOVE;
+        tv_icon = "folder-move";
+        break;
+
+    case JOB_DELETE:
+        tv_type = TASKVIEW_IO_DELETE;
+        tv_icon = "user-trash-full";
+        break;
+
+    default:
+        tv_type = TASKVIEW_IO_UNKNOWN;
+        tv_icon = "file-manager";
+    }
+
+    common->tv_io = g_object_new (TASKVIEW_TYPE_IO, 
+                                  "state", TASKVIEW_PREPARING,
+                                  "type", tv_type,
+                                  "icon", tv_icon,
+                                  "callback-cancel", cancel_callback,
+                                  "user-data", common,
+                                  NULL);
+    common->cancellable = g_cancellable_new ();
     common->time = g_timer_new ();
     common->inhibit_cookie = -1;
     common->screen_num = 0;
+
     if (parent_window) {
         screen = gtk_widget_get_screen (GTK_WIDGET (parent_window));
         common->screen_num = gdk_screen_get_number (screen);
@@ -937,8 +993,7 @@ init_common (gsize job_size,
 static void
 finalize_common (CommonJob *common)
 {
-    //marlin_progress_info_finish (common->progress);
-
+    g_object_set (common->tv_io, "state", TASKVIEW_FINISHED, NULL);
     if (common->inhibit_cookie != -1) {
         marlin_uninhibit_power_manager (common->inhibit_cookie);
     }
@@ -952,12 +1007,11 @@ finalize_common (CommonJob *common)
     if (common->skip_readdir_error) {
         g_hash_table_destroy (common->skip_readdir_error);
     }
-    //g_object_unref (common->progress);
-    //g_object_unref (common->cancellable);
+    g_object_unref (common->tv_io);
+    g_object_unref (common->cancellable);
     g_free (common);
 }
 
-#if 0
 static void
 skip_file (CommonJob *common,
            GFile *file)
@@ -1002,6 +1056,7 @@ should_skip_readdir_error (CommonJob *common,
     return FALSE;
 }
 
+#if 0
 static gboolean
 can_delete_without_confirm (GFile *file)
 {
@@ -1028,6 +1083,7 @@ can_delete_files_without_confirm (GList *files)
 
     return TRUE;
 }
+#endif
 
 typedef struct {
     GtkWindow **parent_window;
@@ -1132,12 +1188,12 @@ run_simple_dialog_va (CommonJob *job,
     g_ptr_array_add (ptr_array, NULL);
     data->button_titles = (const char **)g_ptr_array_free (ptr_array, FALSE);
 
-    marlin_progress_info_pause (job->progress);
+    g_object_set (job->tv_io, "state", TASKVIEW_ERROR, NULL);
     g_io_scheduler_job_send_to_mainloop (job->io_job,
                                          do_run_simple_dialog,
                                          data,
                                          NULL);
-    marlin_progress_info_resume (job->progress);
+    g_object_set (job->tv_io, "state", TASKVIEW_RUNNING, NULL);
     res = data->result;
 
     g_free (data->button_titles);
@@ -1225,6 +1281,7 @@ run_warning (CommonJob *job,
     return res;
 }
 
+#if 0
 static int
 run_question (CommonJob *job,
               char *primary_text,
@@ -1393,6 +1450,14 @@ report_delete_progress (CommonJob *job,
                         SourceInfo *source_info,
                         TransferInfo *transfer_info)
 {
+#ifdef HAVE_TASKVIEW
+    g_object_set (job->tv_io,
+                  "description", _("Deleting files"),
+                  "state", TASKVIEW_RUNNING,
+                  "processed-items", (guint64) transfer_info->num_files,
+                  "total-items", (guint64) source_info->num_files,
+                  NULL);
+#else
     int files_left;
     double elapsed, transfer_rate;
     int remaining_time;
@@ -1419,7 +1484,7 @@ report_delete_progress (CommonJob *job,
                       files_left);
 
     marlin_progress_info_take_status (job->progress,
-                                        f (_("Deleting files")));
+                                      f (_("Deleting files")));
 
     elapsed = g_timer_elapsed (job->time, NULL);
     if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE) {
@@ -1449,6 +1514,7 @@ report_delete_progress (CommonJob *job,
     if (source_info->num_files != 0) {
         marlin_progress_info_set_progress (job->progress, transfer_info->num_files, source_info->num_files);
     }
+#endif
 }
 
 static void delete_file (CommonJob *job, GFile *file,
@@ -1599,7 +1665,7 @@ retry:
 skip:
             g_error_free (error);
         } else {
-            marlin_file_changes_queue_file_removed (dir);
+            //marlin_file_changes_queue_file_removed  (dir);
             transfer_info->num_files ++;
             report_delete_progress (job, source_info, transfer_info);
             return;
@@ -1629,7 +1695,7 @@ delete_file (CommonJob *job, GFile *file,
 
     error = NULL;
     if (g_file_delete (file, job->cancellable, &error)) {
-        marlin_file_changes_queue_file_removed (file);
+        //marlin_file_changes_queue_file_removed  (file);
         transfer_info->num_files ++;
         report_delete_progress (job, source_info, transfer_info);
         return;
@@ -1725,13 +1791,21 @@ report_trash_progress (CommonJob *job,
                        int files_trashed,
                        int total_files)
 {
+#ifdef HAVE_TASKVIEW
+    g_object_set (job->tv_io,
+                  "description", _("Moving files to trash"),    
+                  "state", TASKVIEW_RUNNING,
+                  "processed-items", (guint64) files_trashed,
+                  "total-items", (guint64) total_files,
+                  NULL);
+#else
     int files_left;
     char *s;
 
     files_left = total_files - files_trashed;
 
     marlin_progress_info_take_status (job->progress,
-                                        f (_("Moving files to trash")));
+                                      f (_("Moving files to trash")));
 
     s = f (ngettext ("%'d file left to trash",
                      "%'d files left to trash",
@@ -1742,6 +1816,7 @@ report_trash_progress (CommonJob *job,
     if (total_files != 0) {
         marlin_progress_info_set_progress (job->progress, files_trashed, total_files);
     }
+#endif
 }
 
 
@@ -1817,7 +1892,7 @@ skip:
             g_error_free (error);
             total_files--;
         } else {
-            marlin_file_changes_queue_file_removed (file);
+            //marlin_file_changes_queue_file_removed  (file);
 
             files_trashed++;
             report_trash_progress (job, files_trashed, total_files);
@@ -1839,7 +1914,7 @@ delete_job_done (gpointer user_data)
 
     job = user_data;
 
-    eel_g_object_list_free (job->files);
+    g_list_free_full (job->files, g_object_unref);
 
     if (job->done_callback) {
         debuting_uris = g_hash_table_new_full (g_file_hash, (GEqualFunc)g_file_equal, g_object_unref, NULL);
@@ -1849,7 +1924,7 @@ delete_job_done (gpointer user_data)
 
     finalize_common ((CommonJob *)job);
 
-    marlin_file_changes_consume_changes (TRUE);
+    //marlin_file_changes_consume_changes (TRUE);
 
     return FALSE;
 }
@@ -1872,8 +1947,11 @@ delete_job (GIOSchedulerJob *io_job,
 
     common = (CommonJob *)job;
     common->io_job = io_job;
-
+#ifdef HAVE_TASKVIEW
+    taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
+#else
     marlin_progress_info_start (job->common.progress);
+#endif
 
     to_trash_files = NULL;
     to_delete_files = NULL;
@@ -1949,7 +2027,7 @@ trash_or_delete_internal (GList                  *files,
 
     /* TODO: special case desktop icon link files ... */
 
-    job = op_job_new (DeleteJob, parent_window);
+    job = op_job_new (JOB_DELETE, DeleteJob, parent_window);
     job->files = eel_g_object_list_copy (files);
     job->try_trash = try_trash;
     job->user_cancel = FALSE;
@@ -1971,9 +2049,9 @@ trash_or_delete_internal (GList                  *files,
 
 void
 marlin_file_operations_trash_or_delete (GList                  *files,
-                                          GtkWindow              *parent_window,
-                                          MarlinDeleteCallback  done_callback,
-                                          gpointer                done_callback_data)
+                                        GtkWindow              *parent_window,
+                                        MarlinDeleteCallback  done_callback,
+                                        gpointer                done_callback_data)
 {
     trash_or_delete_internal (files, parent_window,
                               TRUE,
@@ -1982,15 +2060,15 @@ marlin_file_operations_trash_or_delete (GList                  *files,
 
 void
 marlin_file_operations_delete (GList                  *files, 
-                                 GtkWindow              *parent_window,
-                                 MarlinDeleteCallback  done_callback,
-                                 gpointer                done_callback_data)
+                               GtkWindow              *parent_window,
+                               MarlinDeleteCallback  done_callback,
+                               gpointer                done_callback_data)
 {
     trash_or_delete_internal (files, parent_window,
                               FALSE,			  
                               done_callback,  done_callback_data);
 }
-
+#endif
 
 
 typedef struct {
@@ -2159,7 +2237,7 @@ has_trash_files (GMount *mount)
         }
     }
 
-    eel_g_object_list_free (dirs);
+    g_list_free_full (dirs, g_object_unref);
 
     return res;
 }
@@ -2215,11 +2293,11 @@ prompt_empty_trash (GtkWindow *parent_window)
 
 void
 marlin_file_operations_unmount_mount_full (GtkWindow                      *parent_window,
-                                             GMount                         *mount,
-                                             gboolean                        eject,
-                                             gboolean                        check_trash,
-                                             MarlinUnmountCallback         callback,
-                                             gpointer                        callback_data)
+                                           GMount                         *mount,
+                                           gboolean                        eject,
+                                           gboolean                        check_trash,
+                                           MarlinUnmountCallback         callback,
+                                           gpointer                        callback_data)
 {
     UnmountData *data;
     int response;
@@ -2241,7 +2319,10 @@ marlin_file_operations_unmount_mount_full (GtkWindow                      *paren
         if (response == GTK_RESPONSE_ACCEPT) {
             EmptyTrashJob *job;
 
-            job = op_job_new (EmptyTrashJob, parent_window);
+            job = op_job_new (JOB_EMPTY_TRASH, EmptyTrashJob, parent_window);
+//#ifdef HAVE_TASKVIEW
+            g_object_set (job->common.tv_io, "description", _("Emptying the trash"), NULL);
+//#endif
             job->should_confirm = FALSE;
             job->trash_dirs = get_trash_dirs_for_mount (mount);
             job->done_callback = (MarlinOpCallback)do_unmount;
@@ -2266,15 +2347,17 @@ marlin_file_operations_unmount_mount_full (GtkWindow                      *paren
     do_unmount (data);
 }
 
+#if 0
 void
 marlin_file_operations_unmount_mount (GtkWindow                      *parent_window,
-                                        GMount                         *mount,
-                                        gboolean                        eject,
-                                        gboolean                        check_trash)
+                                      GMount                         *mount,
+                                      gboolean                        eject,
+                                      gboolean                        check_trash)
 {
     marlin_file_operations_unmount_mount_full (parent_window, mount, eject,
-                                                 check_trash, NULL, NULL);
+                                               check_trash, NULL, NULL);
 }
+#endif
 
 static void
 mount_callback_data_notify (gpointer data,
@@ -2300,7 +2383,8 @@ volume_mount_cb (GObject *source_object,
     char *name;
 
     error = NULL;
-    marlin_allow_autorun_for_volume_finish (G_VOLUME (source_object));
+    //TODO do we want autorun?
+    //marlin_allow_autorun_for_volume_finish (G_VOLUME (source_object));
     if (!g_volume_mount_finish (G_VOLUME (source_object), res, &error)) {
         if (error->code != G_IO_ERROR_FAILED_HANDLED) {
             name = g_volume_get_name (G_VOLUME (source_object));
@@ -2333,22 +2417,21 @@ volume_mount_cb (GObject *source_object,
     g_object_unref (mount_op);
 }
 
-
 void
 marlin_file_operations_mount_volume (GtkWindow *parent_window,
-                                       GVolume *volume,
-                                       gboolean allow_autorun)
+                                     GVolume *volume,
+                                     gboolean allow_autorun)
 {
     marlin_file_operations_mount_volume_full (parent_window, volume,
-                                                allow_autorun, NULL, NULL);
+                                              allow_autorun, NULL, NULL);
 }
 
 void
 marlin_file_operations_mount_volume_full (GtkWindow *parent_window,
-                                            GVolume *volume,
-                                            gboolean allow_autorun,
-                                            MarlinMountCallback mount_callback,
-                                            GObject *mount_callback_data_object)
+                                          GVolume *volume,
+                                          gboolean allow_autorun,
+                                          MarlinMountCallback mount_callback,
+                                          GObject *mount_callback_data_object)
 {
     GMountOperation *mount_op;
 
@@ -2368,8 +2451,9 @@ marlin_file_operations_mount_volume_full (GtkWindow *parent_window,
                        "mount-callback-data",
                        mount_callback_data_object);
 
-    if (allow_autorun)
-        marlin_allow_autorun_for_volume (volume);
+    //TODO do we want autorun?
+    /*if (allow_autorun)
+        marlin_allow_autorun_for_volume (volume);*/
     g_volume_mount (volume, 0, mount_op, NULL, volume_mount_cb, mount_op);
 }
 
@@ -2407,8 +2491,14 @@ report_count_progress (CommonJob *job,
         break;
     } 
 
-    marlin_progress_info_take_details (job->progress, s);
-    marlin_progress_info_pulse_progress (job->progress);
+    g_object_set (job->tv_io,
+                  "state", TASKVIEW_PREPARING,
+                  "description", s,
+                  "total-items", (guint64) source_info->num_files,
+                  "total-size", (guint64) source_info->num_bytes,
+                  //"type", is_move ? TASKVIEW_IO_MOVE : TASKVIEW_IO_COPY,
+                  NULL);
+    g_free (s);
 }
 
 static void
@@ -2839,13 +2929,16 @@ report_copy_progress (CopyMoveJob *copy_job,
                       SourceInfo *source_info,
                       TransferInfo *transfer_info)
 {
+    CommonJob *job;
+    gboolean is_move;
     int files_left;
+#ifndef HAVE_TASKVIEW
     goffset total_size;
     double elapsed, transfer_rate;
     int remaining_time;
+#endif
     guint64 now;
-    CommonJob *job;
-    gboolean is_move;
+    gchar *s = NULL;
 
     job = (CommonJob *)copy_job;
 
@@ -2857,6 +2950,7 @@ report_copy_progress (CopyMoveJob *copy_job,
         ABS ((gint64)(transfer_info->last_report_time - now)) < 100 * NSEC_PER_MSEC) {
         return;
     }
+
     transfer_info->last_report_time = now;
 
     files_left = source_info->num_files - transfer_info->num_files;
@@ -2873,95 +2967,74 @@ report_copy_progress (CopyMoveJob *copy_job,
 
         if (source_info->num_files == 1) {
             if (copy_job->destination != NULL) {
-                marlin_progress_info_take_status (job->progress,
-                                                    f (is_move ?
-                                                       _("Moving \"%B\" to \"%B\""):
-                                                       _("Copying \"%B\" to \"%B\""),
-                                                       (GFile *)copy_job->files->data,
-                                                       copy_job->destination));
+                s = f (is_move ? _("Moving \"%B\" to \"%B\"") :
+                       _("Copying \"%B\" to \"%B\""),
+                       (GFile *)copy_job->files->data,
+                       copy_job->destination);
             } else {
-                marlin_progress_info_take_status (job->progress,
-                                                    f (_("Duplicating \"%B\""),
-                                                       (GFile *)copy_job->files->data));
+                s = f (_("Duplicating \"%B\""), (GFile *)copy_job->files->data);
             }
-        } else if (copy_job->files != NULL &&
-                   copy_job->files->next == NULL) {
+        } else if (copy_job->files != NULL && copy_job->files->next == NULL) {
             if (copy_job->destination != NULL) {
-                marlin_progress_info_take_status (job->progress,
-                                                    f (is_move?
-                                                       ngettext ("Moving %'d file (in \"%B\") to \"%B\"",
-                                                                 "Moving %'d files (in \"%B\") to \"%B\"",
-                                                                 files_left)
-                                                       :
-                                                       ngettext ("Copying %'d file (in \"%B\") to \"%B\"",
-                                                                 "Copying %'d files (in \"%B\") to \"%B\"",
-                                                                 files_left),
-                                                       files_left,
-                                                       (GFile *)copy_job->files->data,
-                                                       copy_job->destination));
+                s = f (is_move ? ngettext ("Moving %'d file (in \"%B\") to \"%B\"",
+                                           "Moving %'d files (in \"%B\") to \"%B\"",
+                                           files_left) :
+                       ngettext ("Copying %'d file (in \"%B\") to \"%B\"",
+                                 "Copying %'d files (in \"%B\") to \"%B\"",
+                                 files_left),
+                       files_left,
+                       (GFile *)copy_job->files->data,
+                       copy_job->destination);
             } else {
-                marlin_progress_info_take_status (job->progress,
-                                                    f (ngettext ("Duplicating %'d file (in \"%B\")",
-                                                                 "Duplicating %'d files (in \"%B\")",
-                                                                 files_left),
-                                                       files_left,
-                                                       (GFile *)copy_job->files->data));
+                s = f (ngettext ("Duplicating %'d file (in \"%B\")",
+                                 "Duplicating %'d files (in \"%B\")",
+                                 files_left),
+                       files_left,
+                       (GFile *)copy_job->files->data);
             }
         } else {
             if (copy_job->destination != NULL) {
-                marlin_progress_info_take_status (job->progress,
-                                                    f (is_move?
-                                                       ngettext ("Moving %'d file to \"%B\"",
-                                                                 "Moving %'d files to \"%B\"",
-                                                                 files_left)
-                                                       :
-                                                       ngettext ("Copying %'d file to \"%B\"",
-                                                                 "Copying %'d files to \"%B\"",
-                                                                 files_left),
-                                                       files_left, copy_job->destination));
+                s = f (is_move?
+                       ngettext ("Moving %'d file to \"%B\"",
+                                 "Moving %'d files to \"%B\"",
+                                 files_left)
+                       :
+                       ngettext ("Copying %'d file to \"%B\"",
+                                 "Copying %'d files to \"%B\"",
+                                 files_left),
+                       files_left, copy_job->destination);
             } else {
-                marlin_progress_info_take_status (job->progress,
-                                                    f (ngettext ("Duplicating %'d file",
-                                                                 "Duplicating %'d files",
-                                                                 files_left),
-                                                       files_left));
+                s = f (ngettext ("Duplicating %'d file",
+                                 "Duplicating %'d files",
+                                 files_left),
+                       files_left);
             }
         }
     }
 
-    total_size = MAX (source_info->num_bytes, transfer_info->num_bytes);
+    g_object_set (job->tv_io, 
+                  "state", TASKVIEW_RUNNING,
+                  "processed-items", (guint64) transfer_info->num_files,
+                  "total-items", (guint64) source_info->num_files,
+                  "processed-size", (guint64) transfer_info->num_bytes,
+                  "total-size", (guint64) source_info->num_bytes,
+                  "type", is_move ? TASKVIEW_IO_MOVE : TASKVIEW_IO_COPY,             
+                  NULL);
 
-    elapsed = g_timer_elapsed (job->time, NULL);
-    transfer_rate = 0;
-    if (elapsed > 0) {
-        transfer_rate = transfer_info->num_bytes / elapsed;
+    if (s != NULL)
+    {
+        taskview_generic_set_description (TASKVIEW_GENERIC (job->tv_io), s);
+        g_free (s);
     }
 
-    if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE &&
-        transfer_rate > 0) {
-        char *s;
-        /* To translators: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB" */		
-        s = f (_("%S of %S"), transfer_info->num_bytes, total_size);
-        marlin_progress_info_take_details (job->progress, s);
-    } else {
-        char *s;
-        remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
-
-        /* To translators: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
-         * "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
-         *
-         * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-         */		
-        s = f (ngettext ("%S of %S \xE2\x80\x94 %T left (%S/sec)",
-                         "%S of %S \xE2\x80\x94 %T left (%S/sec)",
-                         seconds_count_format_time_units (remaining_time)),
-               transfer_info->num_bytes, total_size,
-               remaining_time,
-               (goffset)transfer_rate);
-        marlin_progress_info_take_details (job->progress, s);
+    // FIXME: current-file?
+    if (copy_job->destination != NULL) {
+        gchar *current_item = g_file_get_uri (copy_job->destination);
+        g_object_set (job->tv_io,
+                      "current-item", current_item, 
+                      NULL);	
+        g_free (current_item);
     }
-
-    marlin_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
 }
 
 static int
@@ -3358,7 +3431,7 @@ retry:
         }
         return CREATE_DEST_DIR_FAILED;
     }
-    marlin_file_changes_queue_file_added (*dest);
+    //marlin_file_changes_queue_file_added (*dest);
     return CREATE_DEST_DIR_SUCCESS;
 }
 
@@ -3704,7 +3777,7 @@ skip2:
 
         return FALSE;
     }
-    marlin_file_changes_queue_file_removed (file);
+    //marlin_file_changes_queue_file_removed  (file);
 
     return TRUE;
 
@@ -3785,6 +3858,7 @@ query_fs_type (GFile *file,
     return ret;
 }
 
+#if 0
 static gboolean
 is_trusted_desktop_file (GFile *file,
                          GCancellable *cancellable)
@@ -3830,6 +3904,7 @@ is_trusted_desktop_file (GFile *file,
 
     return res;
 }
+#endif
 
 typedef struct {
     int id;
@@ -3853,9 +3928,9 @@ do_run_conflict_dialog (gpointer _data)
     int response;
 
     dialog = marlin_file_conflict_dialog_new (data->parent,
-                                                data->src,
-                                                data->dest,
-                                                data->dest_dir);
+                                              data->src,
+                                              data->dest,
+                                              data->dest_dir);
     response = gtk_dialog_run (GTK_DIALOG (dialog));
 
     if (response == CONFLICT_RESPONSE_RENAME) {
@@ -3896,13 +3971,12 @@ run_conflict_dialog (CommonJob *job,
     resp_data->new_name = NULL;
     data->resp_data = resp_data;
 
-    marlin_progress_info_pause (job->progress);
+    g_object_set (job->tv_io, "state", TASKVIEW_PAUSED, NULL);
     g_io_scheduler_job_send_to_mainloop (job->io_job,
                                          do_run_conflict_dialog,
                                          data,
                                          NULL);
-    marlin_progress_info_resume (job->progress);
-
+    g_object_set (job->tv_io, "state", TASKVIEW_RUNNING, NULL);
     g_slice_free (ConflictDialogData, data);
 
     g_timer_continue (job->time);
@@ -3975,10 +4049,14 @@ copy_move_file (CopyMoveJob *copy_job,
      */
     handled_invalid_filename = *dest_fs_type != NULL;
 
+    //amtest
+    printf("%s\n", G_STRFUNC);
     if (unique_names) {
         dest = get_unique_target_file (src, dest_dir, same_fs, *dest_fs_type, unique_name_nr++);
+        printf ("unique_names TRUE\n");
     } else {
         dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
+        printf ("unique_names FALSE\n");
     }
 
 
@@ -4087,30 +4165,30 @@ retry:
         report_copy_progress (copy_job, source_info, transfer_info);
 
         if (debuting_files) {
-            if (position) {
-                marlin_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
+            /*if (position) {
+                //marlin_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
             } else {
-                marlin_file_changes_queue_schedule_position_remove (dest);
-            }
+                //marlin_file_changes_queue_schedule_position_remove (dest);
+            }*/
 
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
-        if (copy_job->is_move) {
-            marlin_file_changes_queue_file_moved (src, dest);
+        /*if (copy_job->is_move) {
+            //marlin_file_changes_queue_file_moved (src, dest);
         } else {
-            marlin_file_changes_queue_file_added (dest);
-        }
+            //marlin_file_changes_queue_file_added (dest);
+        }*/
 
         /* If copying a trusted desktop file to the desktop,
            mark it as trusted. */
-        if (copy_job->desktop_location != NULL &&
+        /*if (copy_job->desktop_location != NULL &&
             g_file_equal (copy_job->desktop_location, dest_dir) &&
             is_trusted_desktop_file (src, job->cancellable)) {
             mark_desktop_file_trusted (job,
                                        job->cancellable,
                                        dest,
                                        FALSE);
-        }
+        }*/
 
         g_object_unref (dest);
         return;
@@ -4267,7 +4345,7 @@ retry:
                 g_error_free (error);
                 error = NULL;
             }
-            marlin_file_changes_queue_file_removed (dest);
+            //marlin_file_changes_queue_file_removed  (dest);
         }
 
         if (is_merge) {
@@ -4423,19 +4501,19 @@ copy_job_done (gpointer user_data)
         job->done_callback (job->debuting_files, job->done_callback_data);
     }
 
-    eel_g_object_list_free (job->files);
+    g_list_free_full (job->files, g_object_unref);
     if (job->destination) {
         g_object_unref (job->destination);
     }
-    if (job->desktop_location) {
+    /*if (job->desktop_location) {
         g_object_unref (job->desktop_location);
-    }
+    }*/
     g_hash_table_unref (job->debuting_files);
     g_free (job->icon_positions);
 
     finalize_common ((CommonJob *)job);
 
-    marlin_file_changes_consume_changes (TRUE);
+    //marlin_file_changes_consume_changes (TRUE);
     return FALSE;
 }
 
@@ -4457,7 +4535,7 @@ copy_job (GIOSchedulerJob *io_job,
 
     dest_fs_id = NULL;
 
-    marlin_progress_info_start (job->common.progress);
+    g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, NULL);
 
     scan_sources (job->files,
                   &source_info,
@@ -4506,16 +4584,16 @@ aborted:
 
 void
 marlin_file_operations_copy (GList *files,
-                               GArray *relative_item_points,
-                               GFile *target_dir,
-                               GtkWindow *parent_window,
-                               MarlinCopyCallback  done_callback,
-                               gpointer done_callback_data)
+                             GArray *relative_item_points,
+                             GFile *target_dir,
+                             GtkWindow *parent_window,
+                             MarlinCopyCallback  done_callback,
+                             gpointer done_callback_data)
 {
     CopyMoveJob *job;
 
-    job = op_job_new (CopyMoveJob, parent_window);
-    job->desktop_location = marlin_get_desktop_location ();
+    job = op_job_new (JOB_COPY, CopyMoveJob, parent_window);
+    //job->desktop_location = marlin_get_desktop_location ();
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     job->files = eel_g_object_list_copy (files);
@@ -4542,19 +4620,27 @@ static void
 report_move_progress (CopyMoveJob *move_job, int total, int left)
 {
     CommonJob *job;
+    gchar *s;
 
     job = (CommonJob *)move_job;
+    s = f (_("Preparing to move to \"%B\""), move_job->destination);
 
-    marlin_progress_info_take_status (job->progress,
-                                        f (_("Preparing to Move to \"%B\""),
-                                           move_job->destination));
-
+//#ifdef HAVE_TASKVIEW
+    g_object_set (job->tv_io, 
+                  "state", TASKVIEW_PREPARING, 
+                  "description", s,
+                  "progress", (gint) -1,
+                  NULL);
+    g_free (s);
+/*#else
+    marlin_progress_info_take_status (job->progress, s);
     marlin_progress_info_take_details (job->progress,
-                                         f (ngettext ("Preparing to move %'d file",
-                                                      "Preparing to move %'d files",
-                                                      left), left));
+                                       f (ngettext ("Preparing to move %'d file",
+                                                    "Preparing to move %'d files",
+                                                    left), left));
 
     marlin_progress_info_pulse_progress (job->progress);
+#endif*/
 }
 
 typedef struct {
@@ -4681,13 +4767,13 @@ retry:
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
 
-        marlin_file_changes_queue_file_moved (src, dest);
+        //marlin_file_changes_queue_file_moved (src, dest);
 
-        if (position) {
-            marlin_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
+        /*if (position) {
+            //marlin_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
         } else {
             marlin_file_changes_queue_schedule_position_remove (dest);
-        }
+        }*/
 
         return;
     }
@@ -4925,7 +5011,6 @@ move_files (CopyMoveJob *job,
     }
 }
 
-
 static gboolean
 move_job_done (gpointer user_data)
 {
@@ -4936,14 +5021,14 @@ move_job_done (gpointer user_data)
         job->done_callback (job->debuting_files, job->done_callback_data);
     }
 
-    eel_g_object_list_free (job->files);
+    g_list_free_full (job->files, g_object_unref);
     g_object_unref (job->destination);
     g_hash_table_unref (job->debuting_files);
     g_free (job->icon_positions);
 
     finalize_common ((CommonJob *)job);
 
-    marlin_file_changes_consume_changes (TRUE);
+    //marlin_file_changes_consume_changes (TRUE);
     return FALSE;
 }
 
@@ -4970,7 +5055,11 @@ move_job (GIOSchedulerJob *io_job,
 
     fallbacks = NULL;
 
+//#ifdef HAVE_TASKVIEW
+    g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, NULL);
+/*#else
     marlin_progress_info_start (job->common.progress);
+#endif*/
 
     verify_destination (&job->common,
                         job->destination,
@@ -5016,7 +5105,7 @@ move_job (GIOSchedulerJob *io_job,
                 &source_info, &transfer_info);
 
 aborted:
-    eel_g_list_free_deep (fallbacks);
+    g_list_free_full (fallbacks, g_free);
 
     g_free (dest_fs_id);
     g_free (dest_fs_type);
@@ -5031,15 +5120,15 @@ aborted:
 
 void
 marlin_file_operations_move (GList *files,
-                               GArray *relative_item_points,
-                               GFile *target_dir,
-                               GtkWindow *parent_window,
-                               MarlinCopyCallback  done_callback,
-                               gpointer done_callback_data)
+                             GArray *relative_item_points,
+                             GFile *target_dir,
+                             GtkWindow *parent_window,
+                             MarlinCopyCallback  done_callback,
+                             gpointer done_callback_data)
 {
     CopyMoveJob *job;
 
-    job = op_job_new (CopyMoveJob, parent_window);
+    job = op_job_new (JOB_MOVE, CopyMoveJob, parent_window);
     job->is_move = TRUE;
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
@@ -5067,19 +5156,26 @@ static void
 report_link_progress (CopyMoveJob *link_job, int total, int left)
 {
     CommonJob *job;
+    gchar *s;
 
     job = (CommonJob *)link_job;
+    s = f (_("Creating links in \"%B\""), link_job->destination);
 
-    marlin_progress_info_take_status (job->progress,
-                                        f (_("Creating links in \"%B\""),
-                                           link_job->destination));
-
+//#ifdef HAVE_TASKVIEW
+    g_object_set (job->tv_io,
+                  "state", TASKVIEW_RUNNING,
+                  "description", s,
+                  NULL);
+    g_free (s);
+/*#else 
+    marlin_progress_info_take_status (job->progress, s);
     marlin_progress_info_take_details (job->progress,
-                                         f (ngettext ("Making link to %'d file",
-                                                      "Making links to %'d files",
-                                                      left), left));
+                                       f (ngettext ("Making link to %'d file",
+                                                    "Making links to %'d files",
+                                                    left), left));
 
     marlin_progress_info_set_progress (job->progress, left, total);
+#endif*/
 }
 
 static char *
@@ -5154,12 +5250,12 @@ retry:
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
 
-        marlin_file_changes_queue_file_added (dest);
-        if (position) {
-            marlin_file_changes_queue_schedule_position_set (dest, *position, common->screen_num);
+        //marlin_file_changes_queue_file_added (dest);
+        /*if (position) {
+            //marlin_file_changes_queue_schedule_position_set (dest, *position, common->screen_num);
         } else {
             marlin_file_changes_queue_schedule_position_remove (dest);
-        }
+        }*/
 
         g_object_unref (dest);
 
@@ -5253,14 +5349,14 @@ link_job_done (gpointer user_data)
         job->done_callback (job->debuting_files, job->done_callback_data);
     }
 
-    eel_g_object_list_free (job->files);
+    g_list_free_full (job->files, g_object_unref);
     g_object_unref (job->destination);
     g_hash_table_unref (job->debuting_files);
     g_free (job->icon_positions);
 
     finalize_common ((CommonJob *)job);
 
-    marlin_file_changes_consume_changes (TRUE);
+    //marlin_file_changes_consume_changes (TRUE);
     return FALSE;
 }
 
@@ -5289,7 +5385,7 @@ link_job (GIOSchedulerJob *io_job,
 
     dest_fs_type = NULL;
 
-    marlin_progress_info_start (job->common.progress);
+    g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, NULL);
 
     verify_destination (&job->common,
                         job->destination,
@@ -5337,15 +5433,15 @@ aborted:
 
 void
 marlin_file_operations_link (GList *files,
-                               GArray *relative_item_points,
-                               GFile *target_dir,
-                               GtkWindow *parent_window,
-                               MarlinCopyCallback  done_callback,
-                               gpointer done_callback_data)
+                             GArray *relative_item_points,
+                             GFile *target_dir,
+                             GtkWindow *parent_window,
+                             MarlinCopyCallback  done_callback,
+                             gpointer done_callback_data)
 {
     CopyMoveJob *job;
 
-    job = op_job_new (CopyMoveJob, parent_window);
+    job = op_job_new (JOB_LINK, CopyMoveJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     job->files = eel_g_object_list_copy (files);
@@ -5369,14 +5465,14 @@ marlin_file_operations_link (GList *files,
 
 void
 marlin_file_operations_duplicate (GList *files,
-                                    GArray *relative_item_points,
-                                    GtkWindow *parent_window,
-                                    MarlinCopyCallback  done_callback,
-                                    gpointer done_callback_data)
+                                  GArray *relative_item_points,
+                                  GtkWindow *parent_window,
+                                  MarlinCopyCallback  done_callback,
+                                  gpointer done_callback_data)
 {
     CopyMoveJob *job;
 
-    job = op_job_new (CopyMoveJob, parent_window);
+    job = op_job_new (JOB_COPY, CopyMoveJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     job->files = eel_g_object_list_copy (files);
@@ -5397,6 +5493,7 @@ marlin_file_operations_duplicate (GList *files,
                              job->common.cancellable);
 }
 
+#if 0
 static gboolean
 set_permissions_job_done (gpointer user_data)
 {
@@ -5430,7 +5527,11 @@ set_permissions_file (SetPermissionsJob *job,
 
     common = (CommonJob *)job;
 
+#ifdef HAVE_TASKVIEW
+    taskview_generic_set_progress (TASKVIEW_GENERIC (common->tv_io), -1);
+#else
     marlin_progress_info_pulse_progress (common->progress);
+#endif
 
     free_info = FALSE;
     if (info == NULL) {
@@ -5505,11 +5606,12 @@ set_permissions_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
-    marlin_progress_info_set_status (common->progress,
-                                       _("Setting permissions"));
-
+#ifdef HAVE_TASKVIEW
+    g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, "description", _("Setting permissions"), NULL);
+#else
     marlin_progress_info_start (job->common.progress);
-
+    marlin_progress_info_set_status (common->progress, _("Setting permissions"));
+#endif
     set_permissions_file (job, job->file, NULL);
 
     g_io_scheduler_job_send_to_mainloop_async (io_job,
@@ -5524,16 +5626,16 @@ set_permissions_job (GIOSchedulerJob *io_job,
 
 void
 marlin_file_set_permissions_recursive (const char *directory,
-                                         guint32         file_permissions,
-                                         guint32         file_mask,
-                                         guint32         dir_permissions,
-                                         guint32         dir_mask,
-                                         MarlinOpCallback  callback,
-                                         gpointer  callback_data)
+                                       guint32         file_permissions,
+                                       guint32         file_mask,
+                                       guint32         dir_permissions,
+                                       guint32         dir_mask,
+                                       MarlinOpCallback  callback,
+                                       gpointer  callback_data)
 {
     SetPermissionsJob *job;
 
-    job = op_job_new (SetPermissionsJob, NULL);
+    job = op_job_new (JOB_SET_PERMISSIONS, SetPermissionsJob, NULL);
     job->file = g_file_new_for_uri (directory);
     job->file_permissions = file_permissions;
     job->file_mask = file_mask;
@@ -5582,13 +5684,14 @@ callback_for_move_to_trash (GHashTable *debuting_uris,
 
 void
 marlin_file_operations_copy_move (const GList *item_uris,
-                                    GArray *relative_item_points,
-                                    const char *target_dir,
-                                    GdkDragAction copy_action,
-                                    GtkWidget *parent_view,
-                                    MarlinCopyCallback  done_callback,
-                                    gpointer done_callback_data)
+                                  GArray *relative_item_points,
+                                  const char *target_dir,
+                                  GdkDragAction copy_action,
+                                  GtkWidget *parent_view,
+                                  MarlinCopyCallback  done_callback,
+                                  gpointer done_callback_data)
 {
+    printf ("%s\n", G_STRFUNC);
     GList *locations;
     GList *p;
     GFile *dest, *src_dir;
@@ -5633,15 +5736,15 @@ marlin_file_operations_copy_move (const GList *item_uris,
             (src_dir != NULL &&
              g_file_equal (src_dir, dest))) {
             marlin_file_operations_duplicate (locations,
-                                                relative_item_points,
-                                                parent_window,
-                                                done_callback, done_callback_data);
+                                              relative_item_points,
+                                              parent_window,
+                                              done_callback, done_callback_data);
         } else {
             marlin_file_operations_copy (locations,
-                                           relative_item_points,
-                                           dest,
-                                           parent_window,
-                                           done_callback, done_callback_data);
+                                         relative_item_points,
+                                         dest,
+                                         parent_window,
+                                         done_callback, done_callback_data);
         }
         if (src_dir) {
             g_object_unref (src_dir);
@@ -5655,30 +5758,121 @@ marlin_file_operations_copy_move (const GList *item_uris,
             cb_data->real_callback = done_callback;
             cb_data->real_data = done_callback_data;
             marlin_file_operations_trash_or_delete (locations,
-                                                      parent_window,
-                                                      (MarlinDeleteCallback) callback_for_move_to_trash,
-                                                      cb_data);
+                                                    parent_window,
+                                                    (MarlinDeleteCallback) callback_for_move_to_trash,
+                                                    cb_data);
         } else {
             marlin_file_operations_move (locations,
-                                           relative_item_points,
-                                           dest,
-                                           parent_window,
-                                           done_callback, done_callback_data);
+                                         relative_item_points,
+                                         dest,
+                                         parent_window,
+                                         done_callback, done_callback_data);
         }
     } else {
         marlin_file_operations_link (locations,
-                                       relative_item_points,
-                                       dest,
-                                       parent_window,
-                                       done_callback, done_callback_data);
+                                     relative_item_points,
+                                     dest,
+                                     parent_window,
+                                     done_callback, done_callback_data);
     }
 
-    eel_g_object_list_free (locations);
+    g_list_free_full (locations, g_object_unref);
     if (dest) {
         g_object_unref (dest);
     }
 }
+#endif
 
+void 
+marlin_file_operations_copy_move   (GList                  *files,
+                                    GArray                 *relative_item_points,
+                                    GFile                  *target_dir,
+                                    GdkDragAction          copy_action,
+                                    GtkWidget              *parent_view,
+                                    MarlinCopyCallback     done_callback,
+                                    gpointer               done_callback_data)
+{
+    printf ("%s\n", G_STRFUNC);
+    GList *p;
+    GFile *src_dir;
+    GtkWindow *parent_window;
+    gboolean target_is_mapping;
+    gboolean have_nonmapping_source;
+
+    target_is_mapping = FALSE;
+    have_nonmapping_source = FALSE;
+
+    if (g_file_has_uri_scheme (target_dir, "burn")) {
+        target_is_mapping = TRUE;
+    }
+
+    for (p = files; p != NULL; p = p->next) {
+        if (!g_file_has_uri_scheme ((GFile* )p->data, "burn")) {                
+            have_nonmapping_source = TRUE;
+        }
+    }
+
+    if (target_is_mapping && have_nonmapping_source && copy_action == GDK_ACTION_MOVE) {
+        /* never move to "burn:///", but fall back to copy.
+         * This is a workaround, because otherwise the source files would be removed.
+         */
+        copy_action = GDK_ACTION_COPY;
+    }
+
+    parent_window = NULL;
+    if (parent_view) {
+        parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
+    }
+
+    if (copy_action == GDK_ACTION_COPY) {
+        src_dir = g_file_get_parent (files->data);
+        if (target_dir == NULL ||
+            (src_dir != NULL &&
+             g_file_equal (src_dir, target_dir))) {
+            marlin_file_operations_duplicate (files,
+                                              relative_item_points,
+                                              parent_window,
+                                              done_callback, done_callback_data);
+        } else {
+            marlin_file_operations_copy (files,
+                                         relative_item_points,
+                                         target_dir,
+                                         parent_window,
+                                         done_callback, done_callback_data);
+        }
+        if (src_dir) {
+            g_object_unref (src_dir);
+        }
+
+    } else if (copy_action == GDK_ACTION_MOVE) {
+        if (g_file_has_uri_scheme (target_dir, "trash")) {
+            //TODO move to trash
+            /*MoveTrashCBData *cb_data;
+
+            cb_data = g_slice_new0 (MoveTrashCBData);
+            cb_data->real_callback = done_callback;
+            cb_data->real_data = done_callback_data;
+            marlin_file_operations_trash_or_delete (files,
+                                                    parent_window,
+                                                    (MarlinDeleteCallback) callback_for_move_to_trash,
+                                                    cb_data);*/
+        } else {
+            marlin_file_operations_move (files,
+                                         relative_item_points,
+                                         target_dir,
+                                         parent_window,
+                                         done_callback, done_callback_data);
+        }
+    } else {
+        marlin_file_operations_link (files,
+                                     relative_item_points,
+                                     target_dir,
+                                     parent_window,
+                                     done_callback, done_callback_data);
+    }
+}
+
+#if 0
 static gboolean
 create_job_done (gpointer user_data)
 {
@@ -5701,7 +5895,7 @@ create_job_done (gpointer user_data)
 
     finalize_common ((CommonJob *)job);
 
-    marlin_file_changes_consume_changes (TRUE);
+    //marlin_file_changes_consume_changes (TRUE);
     return FALSE;
 }
 
@@ -5731,7 +5925,7 @@ create_job (GIOSchedulerJob *io_job,
     common = &job->common;
     common->io_job = io_job;
 
-    marlin_progress_info_start (job->common.progress);
+    taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
 
     handled_invalid_filename = FALSE;
 
@@ -5828,12 +6022,12 @@ retry:
 
     if (res) {
         job->created_file = g_object_ref (dest);
-        marlin_file_changes_queue_file_added (dest);
-        if (job->has_position) {
-            marlin_file_changes_queue_schedule_position_set (dest, job->position, common->screen_num);
+        //marlin_file_changes_queue_file_added (dest);
+        /*if (job->has_position) {
+            //marlin_file_changes_queue_schedule_position_set (dest, job->position, common->screen_num);
         } else {
             marlin_file_changes_queue_schedule_position_remove (dest);
-        }
+        }*/
     } else {
         g_assert (error != NULL);
 
@@ -5957,10 +6151,10 @@ aborted:
 
 void 
 marlin_file_operations_new_folder (GtkWidget *parent_view, 
-                                     GdkPoint *target_point,
-                                     const char *parent_dir,
-                                     MarlinCreateCallback done_callback,
-                                     gpointer done_callback_data)
+                                   GdkPoint *target_point,
+                                   const char *parent_dir,
+                                   MarlinCreateCallback done_callback,
+                                   gpointer done_callback_data)
 {
     CreateJob *job;
     GtkWindow *parent_window;
@@ -5970,7 +6164,7 @@ marlin_file_operations_new_folder (GtkWidget *parent_view,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (CreateJob, parent_window);
+    job = op_job_new (JOB_CREATE, CreateJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     job->dest_dir = g_file_new_for_uri (parent_dir);
@@ -5989,12 +6183,12 @@ marlin_file_operations_new_folder (GtkWidget *parent_view,
 
 void 
 marlin_file_operations_new_file_from_template (GtkWidget *parent_view, 
-                                                 GdkPoint *target_point,
-                                                 const char *parent_dir,
-                                                 const char *target_filename,
-                                                 const char *template_uri,
-                                                 MarlinCreateCallback done_callback,
-                                                 gpointer done_callback_data)
+                                               GdkPoint *target_point,
+                                               const char *parent_dir,
+                                               const char *target_filename,
+                                               const char *template_uri,
+                                               MarlinCreateCallback done_callback,
+                                               gpointer done_callback_data)
 {
     CreateJob *job;
     GtkWindow *parent_window;
@@ -6004,7 +6198,7 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (CreateJob, parent_window);
+    job = op_job_new (JOB_CREATE, CreateJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     job->dest_dir = g_file_new_for_uri (parent_dir);
@@ -6027,13 +6221,13 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
 
 void 
 marlin_file_operations_new_file (GtkWidget *parent_view, 
-                                   GdkPoint *target_point,
-                                   const char *parent_dir,
-                                   const char *target_filename,
-                                   const char *initial_contents,
-                                   int length,
-                                   MarlinCreateCallback done_callback,
-                                   gpointer done_callback_data)
+                                 GdkPoint *target_point,
+                                 const char *parent_dir,
+                                 const char *target_filename,
+                                 const char *initial_contents,
+                                 int length,
+                                 MarlinCreateCallback done_callback,
+                                 gpointer done_callback_data)
 {
     CreateJob *job;
     GtkWindow *parent_window;
@@ -6043,7 +6237,7 @@ marlin_file_operations_new_file (GtkWidget *parent_view,
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (CreateJob, parent_window);
+    job = op_job_new (JOB_CREATE, CreateJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     job->dest_dir = g_file_new_for_uri (parent_dir);
@@ -6112,7 +6306,7 @@ empty_trash_job_done (gpointer user_data)
 
     job = user_data;
 
-    //eel_g_object_list_free (job->trash_dirs);
+    g_list_free_full (job->trash_dirs, g_object_unref);
 
     if (job->done_callback) {
         job->done_callback (job->done_callback_data);
@@ -6135,7 +6329,7 @@ empty_trash_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
-    //marlin_progress_info_start (job->common.progress);
+    taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
 
     /*if (job->should_confirm) {
         confirmed = confirm_empty_trash (common);
@@ -6169,9 +6363,8 @@ marlin_file_operations_empty_trash (GtkWidget *parent_view)
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
 
-    job = op_job_new (EmptyTrashJob, parent_window);
-    //job = g_new0 (EmptyTrashJob, 1);
-    //common = g_malloc0 (job_size);
+    job = op_job_new (JOB_EMPTY_TRASH, EmptyTrashJob, parent_window);
+    //g_object_set (job->common.tv_io, "description", _("Emptying the trash"), NULL);
     job->trash_dirs = g_list_prepend (job->trash_dirs,
                                       g_file_new_for_uri ("trash:"));
     //job->should_confirm = TRUE;
@@ -6372,7 +6565,11 @@ mark_trusted_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
+#ifdef HAVE_TASKVIEW
+    g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, NULL);
+#else
     marlin_progress_info_start (job->common.progress);
+#endif
 
     mark_desktop_file_trusted (common,
                                cancellable,
@@ -6389,14 +6586,14 @@ mark_trusted_job (GIOSchedulerJob *io_job,
 
 void
 marlin_file_mark_desktop_file_trusted (GFile *file,
-                                         GtkWindow *parent_window,
-                                         gboolean interactive,
-                                         MarlinOpCallback done_callback,
-                                         gpointer done_callback_data)
+                                       GtkWindow *parent_window,
+                                       gboolean interactive,
+                                       MarlinOpCallback done_callback,
+                                       gpointer done_callback_data)
 {
     MarkTrustedJob *job;
 
-    job = op_job_new (MarkTrustedJob, parent_window);
+    job = op_job_new (JOB_EMPTY_TRASH, MarkTrustedJob, parent_window);
     job->file = g_object_ref (file);
     job->interactive = interactive;
     job->done_callback = done_callback;

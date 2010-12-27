@@ -20,7 +20,6 @@
 #include "gof-file.h"
 #include <stdlib.h>
 #include <string.h>
-#include "nautilus-icon-info.h"
 #include "marlin-global-preferences.h" 
 #include "eel-i18n.h"
 #include "eel-fcts.h"
@@ -76,70 +75,16 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 #define SORT_LAST_CHAR1 '.'
 #define SORT_LAST_CHAR2 '#'
 
-    /*        
-              static int _vala_strcmp0 (const char * str1, const char * str2) {
-              if (str1 == NULL) {
-              return -(str1 != str2);
-              }
-              if (str2 == NULL) {
-              return str1 != str2;
-              }
-              return strcmp (str1, str2);
-              }*/
+#define ICON_NAME_THUMBNAIL_LOADING   "image-loading"
 
-#if 0
-    gint gof_file_NameCompareFunc (GOFFile* a, GOFFile* b) {
-        gint result = 0;
-        g_return_val_if_fail (a != NULL, 0);
-        g_return_val_if_fail (b != NULL, 0);
-        if (gof_file_get_directory (a) != gof_file_get_directory (b)) {
-            result = ((gint) gof_file_get_directory (b)) - ((gint) gof_file_get_directory (a));
-            return result;
-        } else {
-            char* _tmp1_ = g_utf8_casefold (gof_file_get_name (b), -1);
-            char* _tmp0_ = g_utf8_casefold (gof_file_get_name (a), -1);
-            if (_vala_strcmp0 (_tmp0_, _tmp1_) < 0) {
-                _g_free0 (_tmp1_);
-                _g_free0 (_tmp0_);
-                return -1;
-            } else {
-                char* _tmp4_;
-                char* _tmp3_;
-                gboolean _tmp5_;
-                if ((_tmp5_ = _vala_strcmp0 (_tmp3_ = g_utf8_casefold (gof_file_get_name (a), -1), _tmp4_ = g_utf8_casefold (gof_file_get_name (b), -1)) == 0, _g_free0 (_tmp4_), _g_free0 (_tmp3_), _tmp5_)) {
-                    result = 0;
-                    return result;
-                } else {
-                    result = 1;
-                    return result;
-                }
-            }
-        }
-    }
+    enum {
+        //CHANGED,
+        //UPDATED_DEEP_COUNT_IN_PROGRESS,
+        DESTROY,
+        LAST_SIGNAL
+    };
 
-gint gof_file_SizeCompareFunc (GOFFile* a, GOFFile* b) {
-    gint result = 0;
-    g_return_val_if_fail (a != NULL, 0);
-    g_return_val_if_fail (b != NULL, 0);
-    if (gof_file_get_directory (a) != gof_file_get_directory (b)) {
-        result = ((gint) gof_file_get_directory (b)) - ((gint) gof_file_get_directory (a));
-        return result;
-    } else {
-        if (gof_file_get_size (a) < gof_file_get_size (b)) {
-            result = -1;
-            return result;
-        } else {
-            if (gof_file_get_size (a) > gof_file_get_size (b)) {
-                result = 1;
-                return result;
-            } else {
-                result = 0;
-                return result;
-            }
-        }
-    }
-}
-#endif
+static guint signals[LAST_SIGNAL];
 
 GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
 {
@@ -165,7 +110,7 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
     self->file_type = g_file_info_get_file_type(file_info);
     self->is_directory = (self->file_type == G_FILE_TYPE_DIRECTORY);
     self->modified = g_file_info_get_attribute_uint64 (file_info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
-    
+
     self->utf8_collation_key = g_utf8_collate_key (self->name, -1);
     self->format_size = g_format_size_for_display(self->size);
     self->formated_modified = gof_file_get_date_as_string (self->modified);
@@ -178,23 +123,6 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
     self->color = NULL;
 
     return self;
-}
-
-GOFFile* gof_file_get(GFile *location)
-{
-    /* TODO check directories in a hastable for a already known file */
-    GFileInfo *file_info;
-    GFile *parent;
-    GOFFile *file;
-    
-    parent = g_file_get_parent (location);
-    file_info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                   G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, NULL);
-    if (file_info == NULL)
-        return NULL;
-    file = gof_file_new(file_info, parent);
-
-    return (file);
 }
 
 GFileInfo* gof_file_get_file_info (GOFFile* self) {
@@ -230,6 +158,16 @@ static void gof_file_class_init (GOFFileClass * klass) {
     /*G_OBJECT_CLASS (klass)->get_property = gof_file_get_property;
       G_OBJECT_CLASS (klass)->set_property = gof_file_set_property;*/
     G_OBJECT_CLASS (klass)->finalize = gof_file_finalize;
+
+    signals[DESTROY] =g_signal_new ("destroy",
+                                    G_TYPE_FROM_CLASS (klass),
+                                    G_SIGNAL_RUN_LAST,
+                                    G_STRUCT_OFFSET (GOFFileClass, destroy),
+                                    NULL, NULL,
+                                    g_cclosure_marshal_VOID__VOID,
+                                    G_TYPE_NONE, 0);
+
+
     /*g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_NAME, g_param_spec_string ("name", "name", "name", NULL, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));
       g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_SIZE, g_param_spec_uint64 ("size", "size", "size", 0, G_MAXUINT64, 0U, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));
       g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_DIRECTORY, g_param_spec_boolean ("directory", "directory", "directory", FALSE, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));*/
@@ -310,10 +248,6 @@ compare_by_time (GOFFile *file1, GOFFile *file2)
 static int
 compare_by_type (GOFFile *file1, GOFFile *file2)
 {
-    /*char *type_string_1;
-      char *type_string_2;
-      int result;*/
-
     /* Directories go first. Then, if mime types are identical,
      * don't bother getting strings (for speed). This assumes
      * that the string is dependent entirely on the mime type,
@@ -325,23 +259,7 @@ compare_by_type (GOFFile *file1, GOFFile *file2)
         return -1;
     if (file2->is_directory)
         return +1;
-#if 0	
-    if (file1->ftype != NULL && file2->ftype != NULL &&
-        strcmp (eel_ref_str_peek (file_1->details->mime_type),
-                eel_ref_str_peek (file_2->details->mime_type)) == 0) {
-        return 0;
-    }
-
-    type_string_1 = nautilus_file_get_type_as_string (file_1);
-    type_string_2 = nautilus_file_get_type_as_string (file_2);
-
-    result = g_utf8_collate (type_string_1, type_string_2);
-
-    g_free (type_string_1);
-    g_free (type_string_2);
-#endif
     return (strcmp (file1->utf8_collation_key, file2->utf8_collation_key));
-    //return result;
 }
 
 static int
@@ -389,11 +307,7 @@ compare_by_size (GOFFile *file1, GOFFile *file2)
     if (file2->is_directory && !file1->is_directory)
         return 1;
 
-    /*if (file1->is_directory) {
-      return compare_directories_by_count (file1, file2);
-      } else {*/
     return compare_files_by_size (file1, file2);
-    //}
 }
 
 static int
@@ -715,6 +629,191 @@ gof_file_get_date_as_string (guint64 d)
     }
 
     return eel_strdup_strftime (format, file_time);
+}
+
+/*
+   self->icon = g_content_type_get_icon (self->ftype);
+
+   nicon = nautilus_icon_info_lookup (self->icon, 16);
+   self->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+   g_object_unref (nicon);
+   */
+
+NautilusIconInfo *
+gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
+{
+    NautilusIconInfo *icon;
+    GIcon *gicon;
+    //GdkPixbuf *raw_pixbuf, *scaled_pixbuf;
+    //int modified_size;
+
+    if (file == NULL) {
+        return NULL;
+    }
+
+    /*gicon = get_custom_icon (file);
+      if (gicon) {
+      icon = nautilus_icon_info_lookup (gicon, size);
+      g_object_unref (gicon);
+      return icon;
+      }*/
+
+#if 0
+    if (flags & NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS &&
+        nautilus_file_should_show_thumbnail (file)) {
+        if (file->details->thumbnail) {
+            int w, h, s;
+            double scale;
+
+            /*scaled_pixbuf = gdk_pixbuf_scale_simple (raw_pixbuf,
+              w * scale, h * scale,
+              GDK_INTERP_BILINEAR);*/
+
+            /* We don't want frames around small icons */
+            /*if (!gdk_pixbuf_get_has_alpha(raw_pixbuf) || s >= 128) {
+              nautilus_thumbnail_frame_image (&scaled_pixbuf);
+              }*/
+
+            /*icon = nautilus_icon_info_new_for_pixbuf (scaled_pixbuf);
+              g_object_unref (scaled_pixbuf);
+              return icon;*/
+            /*} else if (file->details->thumbnail_path == NULL &&
+              file->details->can_read &&				
+              !file->details->is_thumbnailing &&
+              !file->details->thumbnailing_failed) {
+              if (nautilus_can_thumbnail (file)) {
+              nautilus_create_thumbnail (file);
+              }
+              }*/
+    }
+#endif
+    if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS) {
+        if (file->thumbnail) {
+            printf("show thumb\n");
+        } else {
+            //TODO implement thumb generaton here.
+            printf ("if can thumbnail gen thumb\n");
+        }
+    }
+
+    if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
+        && file->is_thumbnailing)
+        gicon = g_themed_icon_new (ICON_NAME_THUMBNAIL_LOADING);
+    else
+        gicon = file->icon;
+
+    if (gicon) {
+        icon = nautilus_icon_info_lookup (gicon, size);
+        if (nautilus_icon_info_is_fallback(icon)) {
+            g_object_unref (icon);
+            icon = nautilus_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
+        }
+        g_object_unref (gicon);
+        return icon;
+    } else {
+        return nautilus_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
+    }
+}
+
+GdkPixbuf *
+gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileIconFlags flags)
+{
+    NautilusIconInfo *nicon;
+    GdkPixbuf *pix;
+
+    nicon = gof_file_get_icon (file, size, flags);
+    if (force_size) {
+        pix =  nautilus_icon_info_get_pixbuf_at_size (nicon, size);
+    } else {
+        pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+    }
+    g_object_unref (nicon);
+
+    return pix;
+}
+
+//TODO waiting to be implemented with directories: never create twice the same objects
+#if 0
+static GOFFile *
+gof_file_get_internal (GFile *location, gboolean create)
+{
+    gboolean self_owned;
+    NautilusDirectory *directory;
+    NautilusFile *file;
+    GFile *parent;
+    char *basename;
+
+    g_assert (location != NULL);
+
+    parent = g_file_get_parent (location);
+
+    self_owned = FALSE;
+    if (parent == NULL) {
+        self_owned = TRUE;
+        parent = g_object_ref (location);
+    } 
+
+    /* Get object that represents the directory. */
+    directory = nautilus_directory_get_internal (parent, create);
+
+    g_object_unref (parent);
+
+    /* Get the name for the file. */
+    if (self_owned && directory != NULL) {
+        basename = nautilus_directory_get_name_for_self_as_new_file (directory);
+    } else {
+        basename = g_file_get_basename (location);
+    }
+    /* Check to see if it's a file that's already known. */
+    if (directory == NULL) {
+        file = NULL;
+    } else if (self_owned) {
+        file = directory->details->as_file;
+    } else {
+        file = nautilus_directory_find_file_by_name (directory, basename);
+    }
+
+    /* Ref or create the file. */
+    if (file != NULL) {
+        nautilus_file_ref (file);
+    } else if (create) {
+        file = nautilus_file_new_from_filename (directory, basename, self_owned);
+        if (self_owned) {
+            g_assert (directory->details->as_file == NULL);
+            directory->details->as_file = file;
+        } else {
+            nautilus_directory_add_file (directory, file);
+        }
+    }
+
+    g_free (basename);
+    nautilus_directory_unref (directory);
+
+    return file;
+}
+
+GOFFile *
+gof_file_get (GFile *location)
+{
+    return gof_file_get_internal (location, TRUE);
+}
+#endif
+
+GOFFile* gof_file_get(GFile *location)
+{
+    /* TODO check directories in a hastable for a already known file */
+    GFileInfo *file_info;
+    GFile *parent;
+    GOFFile *file;
+
+    parent = g_file_get_parent (location);
+    file_info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
+                                   G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, NULL);
+    if (file_info == NULL)
+        return NULL;
+    file = gof_file_new(file_info, parent);
+
+    return (file);
 }
 
 void

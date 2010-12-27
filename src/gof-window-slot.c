@@ -200,8 +200,8 @@ gof_window_slot_new (GFile *location, GObject *ctab)
     slot->ctab = ctab;
 
     slot->directory = gof_directory_async_new(slot->location);
-    slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
-                                               "window-slot", slot, NULL));
+    /*slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
+                                               "window-slot", slot, NULL));*/
     //slot->view_box = gtk_label_new ("test");
     //marlin_window_set_active_slot (MARLIN_WINDOW (window), slot);
     //marlin_view_window_set_active_slot (MARLIN_VIEW_WINDOW (window), slot);
@@ -232,47 +232,28 @@ gof_window_slot_new (GFile *location, GObject *ctab)
 #endif
     /*gtk_container_add( GTK_CONTAINER(window), slot->view_box);*/
     //marlin_view_window_set_content (window, slot->view_box);
-    marlin_view_view_container_set_content (ctab, slot->view_box);
-    load_dir_async (slot->directory);
+    /*marlin_view_view_container_set_content (ctab, slot->view_box);
+    load_dir_async (slot->directory);*/
 
     return slot;
 }
 
-GOFWindowSlot *
-gof_window_slot_column_new (GFile *location, GObject *ctab)
+void
+gof_window_slot_make_view (GOFWindowSlot *slot)
 {
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
-    GOFWindowSlot *slot;
-    slot = g_object_new (GOF_TYPE_WINDOW_SLOT, NULL);
-    slot->location = location;
-    slot->ctab = ctab;
+    slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
+                                               "window-slot", slot, NULL));
+    marlin_view_view_container_set_content (slot->ctab, slot->view_box);
+    load_dir_async (slot->directory);
+}
 
-    slot->directory = gof_directory_async_new(slot->location);
+void
+gof_window_slot_make_column_view (GOFWindowSlot *slot)
+{
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COLUMNS_VIEW,
                                                "window-slot", slot, NULL));
     load_dir_async (slot->directory);
-
-    return slot;
 }
-
-#if 0
-GOFWindowSlot *
-gof_window_slot_column_new (GFile *location, GtkWidget *window)
-{
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
-    GOFWindowSlot *slot;
-    slot = g_object_new (GOF_TYPE_WINDOW_SLOT, NULL);
-    slot->location = location;
-    slot->window = window;
-
-    slot->directory = gof_directory_async_new(slot->location);
-    slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COLUMNS_VIEW,
-                                               "window-slot", slot, NULL));
-    load_dir_async (slot->directory);
-
-    return slot;
-}
-#endif
 
 static void
 gof_window_slot_init (GOFWindowSlot *slot)
