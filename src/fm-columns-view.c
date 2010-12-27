@@ -593,6 +593,7 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
 
     fm_directory_view_class->add_file = fm_columns_view_add_file;
     fm_directory_view_class->colorize_selection = fm_columns_view_colorize_selected_items;
+    fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection;
 
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }
