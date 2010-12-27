@@ -88,7 +88,7 @@ namespace Marlin.View {
 
             /* TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
                we are in listview: size, type, modified */
-            info.append(new Pair<string, string>("Name", gof_file.name));
+            //info.append(new Pair<string, string>("Name", gof_file.name));
             var nice_type = ContentType.get_description(file_info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE));
             info.append(new Pair<string, string>("Type", nice_type));
             if(raw_type != FileType.DIRECTORY)
