@@ -347,10 +347,12 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
             marlin_file_operations_copy_move (file_list, NULL, request->target_file,
                                               GDK_ACTION_COPY, NULL, NULL, NULL);
 
-        }
-        else
-            //marlin_application_move_into (application, request->widget, file_list, request->target_file, request->new_files_closure);
+        } else {
             printf ("marlin_application_move_into\n");
+            //marlin_application_move_into (application, request->widget, file_list, request->target_file, request->new_files_closure);
+            marlin_file_operations_copy_move (file_list, NULL, request->target_file,
+                                              GDK_ACTION_MOVE, NULL, NULL, NULL);
+        }
         //g_object_unref (G_OBJECT (application));
         //g_list_foreach (file_list, (GFunc) g_free, NULL);
         g_list_foreach (file_list, (GFunc) g_object_unref, NULL);
