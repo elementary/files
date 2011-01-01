@@ -84,7 +84,7 @@ struct _GOFFileClass {
 "standard::type,standard::is-hidden,standard::name,standard::display-name,standard::edit-name,standard::copy-name,standard::fast-content-type,standard::size,standard::allocated-size,access::*,mountable::*,time::*,unix::*,owner::*,selinux::*,thumbnail::*,id::filesystem,trash::orig-path,trash::deletion-date,metadata::*"
 */
 
-#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,access::*,time::*,owner::user-real"
+#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,access::*,time::*,owner::*,unix::uid,id::filesystem"
 
 typedef enum {
 	GOF_FILE_ICON_FLAGS_NONE = 0,
@@ -95,6 +95,7 @@ GType gof_file_get_type (void);
 
 GOFFile*        gof_file_new (GFileInfo* file_info, GFile *dir);
 GOFFile*        gof_file_get (GFile *location);
+GOFFile*        gof_file_get_by_uri (const char *uri);
 GFileInfo*      gof_file_get_file_info (GOFFile* self);
 gint            gof_file_NameCompareFunc (GOFFile* a, GOFFile* b);
 gint            gof_file_SizeCompareFunc (GOFFile* a, GOFFile* b);
@@ -112,6 +113,14 @@ void            gof_file_list_unref (GList *list);
 void            gof_file_list_free (GList *list);
 NautilusIconInfo    *gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags);
 GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileIconFlags flags);
+//gchar           *gof_g_file_list_to_string (GList *list, gsize *len);
+gchar           *gof_file_list_to_string (GList *list, gsize *len);
+
+gboolean        gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b);
+GdkDragAction   gof_file_accepts_drop (GOFFile          *file,
+                                       GList            *file_list,
+                                       GdkDragContext   *context,
+                                       GdkDragAction    *suggested_action_return);
 
 G_END_DECLS
 

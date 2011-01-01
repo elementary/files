@@ -23,6 +23,7 @@
 #include "marlin-global-preferences.h" 
 #include "eel-i18n.h"
 #include "eel-fcts.h"
+#include "eel-string.h"
 #include "marlin-vala.h"
 
 
@@ -77,14 +78,15 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 
 #define ICON_NAME_THUMBNAIL_LOADING   "image-loading"
 
-    enum {
-        //CHANGED,
-        //UPDATED_DEEP_COUNT_IN_PROGRESS,
-        DESTROY,
-        LAST_SIGNAL
-    };
+enum {
+    //CHANGED,
+    //UPDATED_DEEP_COUNT_IN_PROGRESS,
+    DESTROY,
+    LAST_SIGNAL
+};
 
-static guint signals[LAST_SIGNAL];
+static guint    signals[LAST_SIGNAL];
+static guint32  effective_user_id;
 
 GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
 {
@@ -153,6 +155,10 @@ static void gof_file_finalize (GObject* obj) {
 }
 
 static void gof_file_class_init (GOFFileClass * klass) {
+
+    /* determine the effective user id of the process */
+    effective_user_id = geteuid ();
+
     gof_file_parent_class = g_type_class_peek_parent (klass);
     //g_type_class_add_private (klass, sizeof (GOFFilePrivate));
     /*G_OBJECT_CLASS (klass)->get_property = gof_file_get_property;
@@ -799,9 +805,10 @@ gof_file_get (GFile *location)
 }
 #endif
 
-GOFFile* gof_file_get(GFile *location)
+GOFFile* gof_file_get (GFile *location)
 {
     /* TODO check directories in a hastable for a already known file */
+    /* FIXME this function is a temporary workarround - must be async - TODO reshape the GOFFile */
     GFileInfo *file_info;
     GFile *parent;
     GOFFile *file;
@@ -814,6 +821,249 @@ GOFFile* gof_file_get(GFile *location)
     file = gof_file_new(file_info, parent);
 
     return (file);
+}
+
+GOFFile* gof_file_get_by_uri (const char *uri)
+{
+    GFile *location;
+    GOFFile *file;
+	
+    location = g_file_new_for_uri (uri);
+    file = gof_file_get (location);
+    g_object_unref (location);
+	
+    return file;
+}
+
+/* Return value: the string representation of @list conforming to the
+ *               text/uri-list mime type defined in RFC 2483.
+ */
+#if 0
+gchar *
+gof_g_file_list_to_string (GList *list, gsize *len)
+{
+    GString *string;
+    gchar   *uri;
+    GList   *lp;
+
+    /* allocate initial string */
+    string = g_string_new (NULL);
+
+    for (lp = list; lp != NULL; lp = lp->next)
+    {
+        uri = g_file_get_uri (lp->data);
+        string = g_string_append (string, uri);
+        g_free (uri);
+
+        string = g_string_append (string, "\r\n");
+    }
+
+    *len = string->len;
+    return g_string_free (string, FALSE);
+}
+#endif
+
+gchar *
+gof_file_list_to_string (GList *list, gsize *len)
+{
+    GString *string;
+    gchar   *uri;
+    GList   *lp;
+
+    /* allocate initial string */
+    string = g_string_new (NULL);
+
+    for (lp = list; lp != NULL; lp = lp->next)
+    {
+        uri = g_file_get_uri (GOF_FILE(lp->data)->location);
+        string = g_string_append (string, uri);
+        g_free (uri);
+
+        string = g_string_append (string, "\r\n");
+    }
+
+    *len = string->len;
+    return g_string_free (string, FALSE); 
+}
+
+gboolean
+gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b)
+{
+    const gchar *filesystem_id_a;
+    const gchar *filesystem_id_b;
+
+    g_return_val_if_fail (GOF_IS_FILE (file_a), FALSE);
+    g_return_val_if_fail (GOF_IS_FILE (file_b), FALSE);
+
+    /* return false if we have no information about one of the files */
+    if (file_a->info == NULL || file_b->info == NULL)
+        return FALSE;
+
+    /* determine the filesystem IDs */
+    filesystem_id_a = g_file_info_get_attribute_string (file_a->info, 
+                                                        G_FILE_ATTRIBUTE_ID_FILESYSTEM);
+
+    filesystem_id_b = g_file_info_get_attribute_string (file_b->info, 
+                                                        G_FILE_ATTRIBUTE_ID_FILESYSTEM);
+
+    /* compare the filesystem IDs */
+    return eel_str_is_equal (filesystem_id_a, filesystem_id_b);
+}
+
+/**
+ * gof_file_accepts_drop (imported from thunar):
+ * @file                    : a #GOFFile instance.
+ * @file_list               : the list of #GFile<!---->s that will be droppped.
+ * @context                 : the current #GdkDragContext, which is used for the drop.
+ * @suggested_action_return : return location for the suggested #GdkDragAction or %NULL.
+ *
+ * Checks whether @file can accept @path_list for the given @context and
+ * returns the #GdkDragAction<!---->s that can be used or 0 if no actions
+ * apply.
+ *
+ * If any #GdkDragAction<!---->s apply and @suggested_action_return is not
+ * %NULL, the suggested #GdkDragAction for this drop will be stored to the
+ * location pointed to by @suggested_action_return.
+ *
+ * Return value: the #GdkDragAction<!---->s supported for the drop or
+ *               0 if no drop is possible.
+**/
+
+GdkDragAction
+gof_file_accepts_drop (GOFFile          *file,
+                       GList            *file_list,
+                       GdkDragContext   *context,
+                       GdkDragAction    *suggested_action_return)
+{
+    GdkDragAction   suggested_action;
+    GdkDragAction   actions;
+    GOFFile         *ofile;
+    GFile           *parent_file;
+    GList           *lp;
+    guint           n;
+
+    g_return_val_if_fail (GOF_IS_FILE (file), 0);
+    g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), 0);
+
+    /* we can never drop an empty list */
+    if (G_UNLIKELY (file_list == NULL))
+        return 0;
+
+    /* default to whatever GTK+ thinks for the suggested action */
+    suggested_action = gdk_drag_context_get_suggested_action (context);
+
+    printf ("%s %s %s\n", G_STRFUNC, g_file_get_uri (file->location), g_file_get_uri (file_list->data));
+    /* check if we have a writable directory here or an executable file */
+    if (file->is_directory)
+        //TODO
+        //&& thunar_file_is_writable (file))
+    {
+        /* determine the possible actions */
+        actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_ASK);
+
+        /* cannot create symbolic links in the trash or copy to the trash */
+        //TODO
+        /*if (thunar_file_is_trashed (file))
+          actions &= ~(GDK_ACTION_COPY | GDK_ACTION_LINK);*/
+
+        /* check up to 100 of the paths (just in case somebody tries to
+         * drag around his music collection with 5000 files).
+         */
+        for (lp = file_list, n = 0; lp != NULL && n < 100; lp = lp->next, ++n)
+        {
+            printf ("%s %s %s\n", G_STRFUNC, g_file_get_uri (file->location), g_file_get_uri (lp->data));
+            /* we cannot drop a file on itself */
+            if (G_UNLIKELY (g_file_equal (file->location, lp->data)))
+                return 0;
+
+            /* check whether source and destination are the same */
+            parent_file = g_file_get_parent (lp->data);
+            if (G_LIKELY (parent_file != NULL))
+            {
+                if (g_file_equal (file->location, parent_file))
+                {
+                    g_object_unref (parent_file);
+                    return 0;
+                }
+                else
+                    g_object_unref (parent_file);
+            }
+
+            /* copy/move/link within the trash not possible */
+            //TODO
+            /*if (G_UNLIKELY (thunar_g_file_is_trashed (lp->data) && thunar_file_is_trashed (file)))
+              return 0;*/
+        }
+
+        /* if the source offers both copy and move and the GTK+ suggested action is copy, try to be smart telling whether we should copy or move by default by checking whether the source and target are on the same disk. */
+        if ((actions & (GDK_ACTION_COPY | GDK_ACTION_MOVE)) != 0 
+            && (suggested_action == GDK_ACTION_COPY))
+        {
+            /* default to move as suggested action */
+            suggested_action = GDK_ACTION_MOVE;
+
+            /* check for up to 100 files, for the reason state above */
+            for (lp = file_list, n = 0; lp != NULL && n < 100; lp = lp->next, ++n)
+            {
+                /* dropping from the trash always suggests move */
+                //TODO
+                /*if (G_UNLIKELY (thunar_g_file_is_trashed (lp->data)))
+                  break;*/
+
+                /* determine the cached version of the source file */
+                //ofile = thunar_file_cache_lookup (lp->data);
+                //ofile = NULL;
+                ofile = gof_file_get(lp->data);
+
+                /* we have only move if we know the source and both the source and the target
+                 * are on the same disk, and the source file is owned by the current user.
+                 */
+                if (ofile == NULL 
+                    || !gof_file_same_filesystem (file, ofile)
+                    || (ofile->info != NULL 
+                        && g_file_info_get_attribute_uint32 (ofile->info, 
+                                                             G_FILE_ATTRIBUTE_UNIX_UID) != effective_user_id))
+                {
+                    //printf ("%s default suggested action GDK_ACTION_COPY\n", G_STRFUNC);
+                    /* default to copy and get outa here */
+                    suggested_action = GDK_ACTION_COPY;
+                    break;
+                }
+            }
+            //printf ("%s actions MOVE %d COPY %d suggested %d\n", G_STRFUNC, GDK_ACTION_MOVE, GDK_ACTION_COPY, suggested_action);
+        }
+    }
+    //TODO
+#if 0
+    else if (thunar_file_is_executable (file))
+    {
+        /* determine the possible actions */
+        actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_PRIVATE);
+    }
+#endif
+    else
+        return 0;
+
+    /* determine the preferred action based on the context */
+    if (G_LIKELY (suggested_action_return != NULL))
+    {
+        /* determine a working action */
+        if (G_LIKELY ((suggested_action & actions) != 0))
+            *suggested_action_return = suggested_action;
+        else if ((actions & GDK_ACTION_ASK) != 0)
+            *suggested_action_return = GDK_ACTION_ASK;
+        else if ((actions & GDK_ACTION_COPY) != 0)
+            *suggested_action_return = GDK_ACTION_COPY;
+        else if ((actions & GDK_ACTION_LINK) != 0)
+            *suggested_action_return = GDK_ACTION_LINK;
+        else if ((actions & GDK_ACTION_MOVE) != 0)
+            *suggested_action_return = GDK_ACTION_MOVE;
+        else
+            *suggested_action_return = GDK_ACTION_PRIVATE;
+    }
+
+    /* yeppa, we can drop here */
+    return actions;
 }
 
 void

@@ -34,6 +34,7 @@
 #include "marlin-window-columns.h"
 #include "gof-window-slot.h"
 #include "marlin-clipboard-manager.h"
+#include "fm-list-model.h"
 
 typedef struct FMDirectoryView FMDirectoryView;
 typedef struct FMDirectoryViewClass FMDirectoryViewClass;
@@ -55,6 +56,8 @@ typedef struct FMDirectoryViewDetails FMDirectoryViewDetails;
 struct FMDirectoryView {
     GtkScrolledWindow       parent;
     MarlinClipboardManager  *clipboard;
+    FMListModel             *model;
+
     FMDirectoryViewDetails  *details;
 };
 
@@ -350,6 +353,17 @@ struct FMDirectoryViewClass {
     /*gboolean (* trash)                         (FMDirectoryView *view);
       gboolean (* delete)                        (FMDirectoryView *view);*/
 #endif
+
+    /* Returns the path at the given position or NULL if no item/row
+     * is located at that coordinates. The path is freed by the caller.
+     */
+    GtkTreePath *(*get_path_at_pos)     (FMDirectoryView *view, gint x, gint y);
+
+    /* Sets the item/row that is highlighted for feedback. NULL is
+     * passed for path to disable the highlighting.
+     */
+    void         (*highlight_path)      (FMDirectoryView *view, GtkTreePath *path);
+
 };
 
 /* GObject support */
@@ -365,5 +379,8 @@ void    fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFi
 
 void    fm_directory_view_merge_menus (FMDirectoryView *view);
 void    fm_directory_view_unmerge_menus (FMDirectoryView *view);
+
+void    fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event);
+GList   *fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view);
 
 #endif /* FM_DIRECTORY_VIEW_H */

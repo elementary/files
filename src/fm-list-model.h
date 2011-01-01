@@ -129,9 +129,7 @@ void            fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIt
 
   GtkTargetList *   fm_list_model_get_drag_target_list (void);*/
 
-int               fm_list_model_compare_func (FMListModel *model,
-                                              GOFFile *file1,
-                                              GOFFile *file2);
+int             fm_list_model_compare_func (FMListModel *model, GOFFile *file1, GOFFile *file2);
 
 
 /*int               fm_list_model_add_column (FMListModel *model,

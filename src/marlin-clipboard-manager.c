@@ -429,9 +429,9 @@ marlin_clipboard_manager_targets_received (GtkClipboard     *clipboard,
 }
 
 static char *
-gof_file_list_to_string (MarlinClipboardManager *manager,
-                         gboolean format_for_text,
-                         gsize *len)
+marlin_clipboard_file_list_to_string (MarlinClipboardManager *manager,
+                                      gboolean format_for_text,
+                                      gsize *len)
 {
 	GString *uris;
 	char *uri, *tmp;
@@ -493,13 +493,13 @@ marlin_clipboard_manager_get_callback (GtkClipboard     *clipboard,
     switch (target_info)
     {
     case TARGET_GNOME_COPIED_FILES:
-        str = gof_file_list_to_string (manager, FALSE, &len);
+        str = marlin_clipboard_file_list_to_string (manager, FALSE, &len);
         gtk_selection_data_set (selection_data, gtk_selection_data_get_target (selection_data), 8, (guchar *) str, len);
         g_free (str);
         break;
 
     case TARGET_UTF8_STRING:
-        str = gof_file_list_to_string (manager, TRUE, &len);
+        str = marlin_clipboard_file_list_to_string (manager, TRUE, &len);
         gtk_selection_data_set_text (selection_data, str, len);
         //gtk_selection_data_set (selection_data, gtk_selection_data_get_target (selection_data), 8, (guchar *) string_list, strlen (string_list));
         g_free (str);

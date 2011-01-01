@@ -25,6 +25,7 @@
 #define MARLIN_DND_H
 
 #include <gtk/gtk.h>
+#include "gof-file.h"
 /*#include <libnautilus-private/nautilus-window-slot-info.h>*/
 //#include "marlin-private.h"
 
@@ -189,5 +190,10 @@ gboolean		marlin_drag_selection_includes_special_link (GList *selection_list);
 void                    marlin_drag_slot_proxy_init             (GtkWidget *widget,
                                                                  MarlinDragSlotProxyInfo *drag_info);
 #endif
+gboolean                marlin_dnd_perform  (GtkWidget       *widget,
+                                             GOFFile         *file,
+                                             GList           *file_list,
+                                             GdkDragAction   action,
+                                             GClosure        *new_files_closure);
 
 #endif

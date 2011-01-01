@@ -379,7 +379,9 @@ create_and_set_up_tree_view (FMColumnsView *view)
     //GtkBindingSet *binding_set;
 
     //view->details->m_store = gtk_list_store_new  (GOF_DIR_COLS_MAX, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING);
-    view->model = g_object_new (FM_TYPE_LIST_MODEL, NULL);
+    //view->model = g_object_new (FM_TYPE_LIST_MODEL, NULL);
+    view->model = FM_DIRECTORY_VIEW (view)->model;
+    g_object_set (G_OBJECT (view->model), "has-child", FALSE, NULL);
     //view->details->customlist = custom_list_new();
 
     //#if 0

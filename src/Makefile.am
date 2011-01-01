@@ -55,6 +55,7 @@ marlin_SOURCES = \
     eel-gtk-extensions.c                    \
     eel-gdk-pixbuf-extensions.c             \
     eel-glib-extensions.c                   \
+    eel-gio-extensions.c                    \
     eel-stock-dialogs.c                     \
     eel-debug.c                             \
     eel-string.c                            \
