@@ -706,7 +706,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
         && file->is_thumbnailing)
         gicon = g_themed_icon_new (ICON_NAME_THUMBNAIL_LOADING);
     else
-        gicon = file->icon;
+        gicon = g_object_ref (file->icon);
 
     if (gicon) {
         icon = nautilus_icon_info_lookup (gicon, size);

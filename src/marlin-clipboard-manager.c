@@ -268,7 +268,7 @@ marlin_clipboard_manager_owner_changed (GtkClipboard           *clipboard,
 }
 
 static GList *
-convert_lines_to_str_list (char **lines)
+convert_lines_to_gfile_list (char **lines)
 {
 	int i;
 	GList *result;
@@ -328,7 +328,7 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
 
         /* get uris list from selection_data */
 	lines = g_strsplit (data, "\n", 0);
-	file_list = convert_lines_to_str_list (lines);
+	file_list = convert_lines_to_gfile_list (lines);
 	g_strfreev (lines);
     }
 

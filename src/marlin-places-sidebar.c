@@ -32,6 +32,7 @@
 #include "eel-fcts.h"
 #include "eel-gtk-extensions.h"
 #include "eel-gdk-pixbuf-extensions.h"
+#include "eel-gio-extensions.h"
 #include "gossip-cell-renderer-expander.h"
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
@@ -1025,8 +1026,10 @@ free_drag_data (MarlinPlacesSidebar *sidebar)
 {
     sidebar->drag_data_received = FALSE;
 
-    if (sidebar->drag_list) {
-        marlin_drag_destroy_selection_list (sidebar->drag_list);
+    if (sidebar->drag_list != NULL) {
+        //marlin_drag_destroy_selection_list (sidebar->drag_list);
+        g_list_foreach (sidebar->drag_list, (GFunc) g_object_unref, NULL);
+        g_list_free (sidebar->drag_list);
         sidebar->drag_list = NULL;
     }
 }
@@ -1303,7 +1306,7 @@ drag_data_received_callback (GtkWidget *widget,
     int position;
     GtkTreeModel *model;
     char *drop_uri;
-    GList *selection_list, *uris;
+    //GList *selection_list, *uris;
     PlaceType type; 
     gboolean success;
 
@@ -1312,7 +1315,8 @@ drag_data_received_callback (GtkWidget *widget,
     if (!sidebar->drag_data_received) {
         if (gtk_selection_data_get_target (selection_data) != GDK_NONE &&
             info == TEXT_URI_LIST) {
-            sidebar->drag_list = build_selection_list (gtk_selection_data_get_data (selection_data));
+            //sidebar->drag_list = build_selection_list (gtk_selection_data_get_data (selection_data));
+            sidebar->drag_list = eel_g_file_list_new_from_string ((gchar *) gtk_selection_data_get_data (selection_data));
         } else {
             sidebar->drag_list = NULL;
         }
@@ -1389,15 +1393,18 @@ drag_data_received_callback (GtkWidget *widget,
 
             switch (info) {
             case TEXT_URI_LIST:
-                selection_list = build_selection_list (gtk_selection_data_get_data (selection_data));
-                uris = uri_list_from_selection (selection_list);
+                /*selection_list = build_selection_list (gtk_selection_data_get_data (selection_data));
+                uris = uri_list_from_selection (selection_list);*/
                 //TODO file_operation
                 printf ("file_operation_copy_move: drop_uri %s action %d\n", drop_uri, real_action);
-                marlin_file_operations_copy_move (uris, NULL, drop_uri,
+                printf ("%s %s\n", G_STRFUNC, g_file_get_uri (sidebar->drag_list->data));
+                GFile *drop_file = g_file_new_for_uri (drop_uri);
+                marlin_file_operations_copy_move (sidebar->drag_list, NULL, drop_file,
                                                   real_action, GTK_WIDGET (tree_view),
                                                   NULL, NULL);
-                marlin_drag_destroy_selection_list (selection_list);
-                g_list_free (uris);
+                g_object_unref (drop_file);
+                //marlin_drag_destroy_selection_list (selection_list);
+                //g_list_free (uris);
                 success = TRUE;
                 break;
             case GTK_TREE_MODEL_ROW:
