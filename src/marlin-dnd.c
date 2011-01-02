@@ -88,7 +88,7 @@ marlin_drag_finalize (MarlinDragInfo *drag_info)
 #endif
 
 /* Functions to deal with MarlinDragSelectionItems.  */
-
+#if 0
 MarlinDragSelectionItem *
 marlin_drag_selection_item_new (void)
 {
@@ -116,6 +116,7 @@ marlin_drag_destroy_selection_list (GList *list)
 
     g_list_free (list);
 }
+#endif
 
 #if 0
 char **
