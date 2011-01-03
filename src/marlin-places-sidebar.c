@@ -1046,20 +1046,17 @@ can_accept_items_as_bookmarks (const GList *items)
     char *uri;
     GOFFile *file;
 
-    //TODO
     /* Iterate through selection checking if item will get accepted as a bookmark.
      * If more than 100 items selected, return an over-optimistic result.
      */
-    /*
-       for (max = 100; items != NULL && max >= 0; items = items->next, max--) {
-       uri = ((MarlinDragSelectionItem *)items->data)->uri;
-       file = marlin_file_get_by_uri (uri);
-       if (!can_accept_file_as_bookmark (file)) {
-       marlin_file_unref (file);
-       return FALSE;
-       }
-       marlin_file_unref (file);
-       }*/
+    for (max = 100; items != NULL && max >= 0; items = items->next, max--) {
+        file = gof_file_get (items->data);
+        if (!can_accept_file_as_bookmark (file)) {
+            gof_file_unref (file);
+            return FALSE;
+        }
+        gof_file_unref (file);
+    }
 
     return TRUE;
 }

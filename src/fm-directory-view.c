@@ -124,6 +124,7 @@ struct FMDirectoryViewDetails
     guint           drop_occurred : 1;   /* whether the data was dropped */
     GList           *drop_file_list;     /* the list of URIs that are contained in the drop data */
 
+    GdkDragContext  *drag_context;
 
 
 
@@ -683,6 +684,77 @@ fm_directory_view_button_press_event (GtkWidget         *widget,
     return FALSE;
 }
 
+static gboolean
+fm_directory_view_drag_scroll_timer (gpointer user_data)
+{
+    FMDirectoryView   *view = FM_DIRECTORY_VIEW (user_data);
+    GtkAdjustment     *adjustment;
+    gfloat            value;
+    gint              offset;
+    gint              y, x;
+    gint              w, h;
+
+    GDK_THREADS_ENTER ();
+
+    /* verify that we are realized */
+    if (G_LIKELY (gtk_widget_get_realized (GTK_WIDGET (view))))
+    {
+        /* determine pointer location and window geometry */
+        GtkWidget *widget = gtk_bin_get_child (GTK_BIN (view));
+        GdkDevice *pointer = gdk_drag_context_get_device (view->details->drag_context);
+        GdkWindow *window = gtk_widget_get_window (widget);
+
+        gdk_window_get_device_position ( window, pointer, &x, &y, NULL);
+        gdk_window_get_geometry (window, NULL, NULL, &w, &h, NULL);
+
+        /* check if we are near the edge (vertical) */
+        offset = y - (2 * 20);
+        if (G_UNLIKELY (offset > 0))
+            offset = MAX (y - (h - 2 * 20), 0);
+
+        /* change the vertical adjustment appropriately */
+        if (G_UNLIKELY (offset != 0))
+        {
+            /* determine the vertical adjustment */
+            adjustment = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (view));
+
+            /* determine the new value */
+            value = CLAMP (gtk_adjustment_get_value (adjustment) + 2 * offset, gtk_adjustment_get_lower (adjustment), gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
+
+            /* apply the new value */
+            gtk_adjustment_set_value (adjustment, value);
+        }
+
+        /* check if we are near the edge (horizontal) */
+        offset = x - (2 * 20);
+        if (G_UNLIKELY (offset > 0))
+            offset = MAX (x - (w - 2 * 20), 0);
+
+        /* change the horizontal adjustment appropriately */
+        if (G_UNLIKELY (offset != 0))
+        {
+            /* determine the vertical adjustment */
+            adjustment = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (view));
+
+            /* determine the new value */
+            value = CLAMP (gtk_adjustment_get_value (adjustment) + 2 * offset, gtk_adjustment_get_lower (adjustment), gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
+
+            /* apply the new value */
+            gtk_adjustment_set_value (adjustment, value);
+        }
+    }
+    GDK_THREADS_LEAVE ();
+
+    return TRUE;
+}
+
+static void
+fm_directory_view_drag_scroll_timer_destroy (gpointer user_data)
+{
+    FM_DIRECTORY_VIEW (user_data)->details->drag_scroll_timer_id = -1;
+}
+
+
 
 static GOFFile*
 fm_directory_view_get_drop_file (FMDirectoryView *view,
@@ -790,7 +862,7 @@ fm_directory_view_get_dest_actions (FMDirectoryView     *view,
 
     /* tell Gdk whether we can drop here */
     gdk_drag_status (context, action, timestamp);
-    
+
     /* clean up */
     if (G_LIKELY (file != NULL))
         g_object_unref (G_OBJECT (file));
@@ -1057,8 +1129,8 @@ fm_directory_view_drag_data_received (GtkWidget          *widget,
                 //if (gdk_drag_context_get_suggested_action (context) == GDK_ACTION_ASK)
                 printf ("%s selected action %d\n", G_STRFUNC, gdk_drag_context_get_selected_action (context));
                 action = (gdk_drag_context_get_selected_action (context) == GDK_ACTION_ASK)
-                       ? marlin_drag_drop_action_ask (widget, actions)
-                       : gdk_drag_context_get_selected_action (context);
+                    ? marlin_drag_drop_action_ask (widget, actions)
+                    : gdk_drag_context_get_selected_action (context);
 
                 /* perform the requested action */
                 if (G_LIKELY (action != 0))
@@ -1069,7 +1141,7 @@ fm_directory_view_drag_data_received (GtkWidget          *widget,
                                                   view->details->drop_file_list,
                                                   action, 
                                                   NULL);
-                                                  //fm_directory_view_new_files_closure (view));
+                    //fm_directory_view_new_files_closure (view));
                 }
             }
 
@@ -1210,13 +1282,12 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
     /* start the drag autoscroll timer if not already running */
     if (G_UNLIKELY (view->details->drag_scroll_timer_id < 0))
     {
-        printf ("start the drag autoscroll timer if not already running\n");
-
+        view->details->drag_context = context;
         /* schedule the drag autoscroll timer */
-        /*view->details->drag_scroll_timer_id = g_timeout_add_full (G_PRIORITY_LOW, 50, 
-          fm_directory_view_drag_scroll_timer,
-          view, 
-          fm_directory_view_drag_scroll_timer_destroy);*/
+        view->details->drag_scroll_timer_id = g_timeout_add_full (G_PRIORITY_LOW, 50, 
+                                                                  fm_directory_view_drag_scroll_timer,
+                                                                  view, 
+                                                                  fm_directory_view_drag_scroll_timer_destroy);
     }
 
     return TRUE;
