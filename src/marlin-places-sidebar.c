@@ -1026,6 +1026,9 @@ free_drag_data (MarlinPlacesSidebar *sidebar)
 {
     sidebar->drag_data_received = FALSE;
 
+    /* stop any running drag autoscroll timer */
+    if (G_UNLIKELY (sidebar->drag_scroll_timer_id >= 0))
+        g_source_remove (sidebar->drag_scroll_timer_id);
     if (sidebar->drag_list != NULL) {
         g_list_foreach (sidebar->drag_list, (GFunc) g_object_unref, NULL);
         g_list_free (sidebar->drag_list);
@@ -1062,6 +1065,77 @@ can_accept_items_as_bookmarks (const GList *items)
 }
 
 static gboolean
+marlin_places_sidebar_drag_scroll_timer (gpointer user_data)
+{
+    MarlinPlacesSidebar *sidebar = MARLIN_PLACES_SIDEBAR (user_data);
+    GtkAdjustment       *adjustment;
+    gfloat              value;
+    gint                offset;
+    gint                y, x;
+    gint                w, h;
+
+    GDK_THREADS_ENTER ();
+
+    /* verify that we are realized */
+    if (G_LIKELY (gtk_widget_get_realized (GTK_WIDGET (sidebar))))
+    {
+        /* determine pointer location and window geometry */
+        GtkWidget *widget = gtk_bin_get_child (GTK_BIN (sidebar));
+        GdkDevice *pointer = gdk_drag_context_get_device (sidebar->drag_context);
+        GdkWindow *window = gtk_widget_get_window (widget);
+
+        gdk_window_get_device_position ( window, pointer, &x, &y, NULL);
+        gdk_window_get_geometry (window, NULL, NULL, &w, &h, NULL);
+
+        /* check if we are near the edge (vertical) */
+        offset = y - (2 * 20);
+        if (G_UNLIKELY (offset > 0))
+            offset = MAX (y - (h - 2 * 20), 0);
+
+        /* change the vertical adjustment appropriately */
+        if (G_UNLIKELY (offset != 0))
+        {
+            /* determine the vertical adjustment */
+            adjustment = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (sidebar));
+
+            /* determine the new value */
+            value = CLAMP (gtk_adjustment_get_value (adjustment) + 2 * offset, gtk_adjustment_get_lower (adjustment), gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
+
+            /* apply the new value */
+            gtk_adjustment_set_value (adjustment, value);
+        }
+
+        /* check if we are near the edge (horizontal) */
+        offset = x - (2 * 20);
+        if (G_UNLIKELY (offset > 0))
+            offset = MAX (x - (w - 2 * 20), 0);
+
+        /* change the horizontal adjustment appropriately */
+        if (G_UNLIKELY (offset != 0))
+        {
+            /* determine the vertical adjustment */
+            adjustment = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (sidebar));
+
+            /* determine the new value */
+            value = CLAMP (gtk_adjustment_get_value (adjustment) + 2 * offset, gtk_adjustment_get_lower (adjustment), gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
+
+            /* apply the new value */
+            gtk_adjustment_set_value (adjustment, value);
+        }
+    }
+    GDK_THREADS_LEAVE ();
+
+    return TRUE;
+}
+
+static void
+marlin_places_sidebar_drag_scroll_timer_destroy (gpointer user_data)
+{
+    MARLIN_PLACES_SIDEBAR (user_data)->drag_scroll_timer_id = -1;
+}
+
+
+static gboolean
 drag_motion_callback (GtkTreeView *tree_view,
                       GdkDragContext *context,
                       int x,
@@ -1069,12 +1143,9 @@ drag_motion_callback (GtkTreeView *tree_view,
                       unsigned int time,
                       MarlinPlacesSidebar *sidebar)
 {
-    //amtest
     GtkTreePath *path;
     GtkTreeViewDropPosition pos;
-    //int action;
     GdkDragAction action;
-    //GtkTreeIter child_iter;
     GtkTreeIter iter;
     char *uri;
 
@@ -1100,10 +1171,8 @@ drag_motion_callback (GtkTreeView *tree_view,
         if (sidebar->drag_list == NULL) {
             action = 0;
         } else {
-            //printf ("huuuuuuuuuu?\n");
             if (path != NULL)
             {
-                //printf ("huuuuuuuuuu %s path %s\n", G_STRFUNC, gtk_tree_path_to_string (path));
                 gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store),
                                          &iter, path);
                 gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store),
@@ -1119,7 +1188,9 @@ drag_motion_callback (GtkTreeView *tree_view,
                 //action = 0;
                 //TODO use GOFFILE instead of uri
                 if (uri != NULL) {
-                    gof_file_accepts_drop (gof_file_get_by_uri (uri), sidebar->drag_list, context, &action);
+                    GOFFile *file = gof_file_get_by_uri (uri);
+                    gof_file_accepts_drop (file, sidebar->drag_list, context, &action);
+                    g_object_unref (file);
                     g_free (uri);
                 }
             }
@@ -1134,6 +1205,17 @@ drag_motion_callback (GtkTreeView *tree_view,
         gdk_drag_status (context, action, time);
     } else {
         gdk_drag_status (context, 0, time);
+    }
+
+    /* start the drag autoscroll timer if not already running */
+    if (G_UNLIKELY (sidebar->drag_scroll_timer_id < 0))
+    {
+        sidebar->drag_context = context;
+        /* schedule the drag autoscroll timer */
+        sidebar->drag_scroll_timer_id = g_timeout_add_full (G_PRIORITY_LOW, 50, 
+                                                            marlin_places_sidebar_drag_scroll_timer,
+                                                            sidebar, 
+                                                            marlin_places_sidebar_drag_scroll_timer_destroy);
     }
 
     return TRUE;
@@ -2992,6 +3074,7 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     g_signal_connect_object (tree_view, "row_activated", 
                              G_CALLBACK (row_activated_callback), sidebar, 0);
 
+    sidebar->drag_scroll_timer_id = -1;
     gtk_tree_view_enable_model_drag_source (GTK_TREE_VIEW (tree_view),
                                             GDK_BUTTON1_MASK,
                                             marlin_shortcuts_source_targets,
