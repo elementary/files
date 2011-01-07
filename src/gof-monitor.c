@@ -108,7 +108,7 @@ gof_monitor_directory (GOFDirectoryAsync *dir)
     /* TODO: implement GCancellable * */
     monitor = g_new0 (GOFMonitor, 1);
     monitor->gfile_monitor = g_file_monitor_directory (dir->location, G_FILE_MONITOR_WATCH_MOUNTS, NULL, NULL);
-    monitor->dir = g_object_ref(dir);
+    monitor->dir = dir;
 
     if (monitor->gfile_monitor) {
         g_signal_connect (monitor->gfile_monitor, "changed", (GCallback)dir_changed, monitor);
@@ -124,7 +124,6 @@ gof_monitor_cancel (GOFMonitor *monitor)
         g_signal_handlers_disconnect_by_func (monitor->gfile_monitor, dir_changed, monitor);
         g_file_monitor_cancel (monitor->gfile_monitor);
         g_object_unref (monitor->gfile_monitor);
-        g_object_unref (monitor->dir);
     }
 
     g_free (monitor);

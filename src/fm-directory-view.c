@@ -620,7 +620,6 @@ fm_directory_view_finalize (GObject *object)
 
       g_hash_table_destroy (view->details->non_ready_files);*/
 
-
     /*if (slot != NULL)
         g_object_unref (slot);*/
    
