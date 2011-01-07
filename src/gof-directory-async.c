@@ -27,65 +27,80 @@
 
 struct GOFDirectoryAsyncPrivate {
     //GTimer          *timer;
-    GFile           *_dir;
-    GFile           *_parent;
-    //GAsyncResult    *_res;
+    GFile           *parent;
     GOFMonitor      *monitor;
     //FMListModel     *model;
     GCancellable    *cancellable;
     GCancellable    *directory_info_cancellable;
-    //GHashTable      *file_hash;
-    //GHashTable      *hidden_file_hash;
 };
 
 enum {
+    FILE_LOADED,
     FILE_ADDED,
     /*FILES_CHANGED,*/
+    FILE_CHANGED,
+    FILE_DELETED,
     DONE_LOADING,
     /*LOAD_ERROR,*/
     INFO_AVAILABLE,
     LAST_SIGNAL
 };
 
-static guint signals[LAST_SIGNAL];
+G_LOCK_DEFINE_STATIC (directory_cache_mutex);
 
-#if 0
-struct DirectoryLoadState {
-    GOFDirectoryAsync       *directory;
-    GCancellable            *cancellable;
-    GFileEnumerator         *enumerator;
-    GHashTable              *load_mime_list_hash;
-    GOFFile                 *load_directory_file;
-    int                     load_file_count;
-};
-#endif
+static GHashTable   *directory_cache;
+static guint        signals[LAST_SIGNAL];
+
 
 G_DEFINE_TYPE (GOFDirectoryAsync, gof_directory_async, G_TYPE_OBJECT)
     /*#define GOF_DIRECTORY_ASYNC_GET_PRIVATE(obj) \
       (G_TYPE_INSTANCE_GET_PRIVATE(obj, GOF_TYPE_DIRECTORY_ASYNC, GOFDirectoryAsyncPrivate))*/
 
+
 static void
 print_error(GError *error)
 {
-    if (error)
+    if (error != NULL)
     {
-        g_print ("%s", error->message);
+        g_print ("%s\n", error->message);
         g_error_free (error);
     }
 }
 
 static void
+directory_load_done (GOFDirectoryAsync *dir, GFileEnumerator *enumerator, GError *error)
+{
+    if (enumerator) {
+        g_file_enumerator_close_async (enumerator,
+                                       G_PRIORITY_DEFAULT,
+                                       NULL, NULL, NULL);
+        g_object_unref (enumerator);
+    }
+
+    log_printf (LOG_LEVEL_UNDEFINED, "%s ended\n", G_STRFUNC);
+    if (error == NULL)
+        dir->loaded = TRUE;
+    else 
+        g_cancellable_cancel (dir->priv->cancellable);
+    
+    g_signal_emit (dir, signals[DONE_LOADING], 0);
+    dir->loading = FALSE;
+    print_error(error);
+
+    g_object_unref (dir);
+}
+
+static void
 enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointer user_data)
 {
-    GFileEnumerator *enumerator;
     GError *error = NULL;
     GList *files, *f;
-    GOFDirectoryAsync *dir = user_data;
+    GOFDirectoryAsync *dir = GOF_DIRECTORY_ASYNC (user_data);
 
     /*if (g_cancellable_is_cancelled (dir->priv->cancellable)) {
       return;
       }*/
-    enumerator = G_FILE_ENUMERATOR (source_object);
+    GFileEnumerator *enumerator = G_FILE_ENUMERATOR (source_object);
     /* Operation was cancelled */
     if (dir == NULL)
     {
@@ -94,76 +109,48 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
     }
 
     files = g_file_enumerator_next_files_finish (enumerator, result, &error);
-    print_error(error);
+    //print_error(error);
 
-    if (!files)
-    {
-        /* There's no way to spread the error up to the filechooser, if any */
-        g_file_enumerator_close_async (enumerator,
-                                       G_PRIORITY_DEFAULT,
-                                       NULL, NULL, NULL);
-
-        log_printf (LOG_LEVEL_UNDEFINED, "%s ended\n", G_STRFUNC);
-        g_signal_emit (dir, signals[DONE_LOADING], 0);
-        /*folder->finished_loading = TRUE;
-          g_signal_emit_by_name (dir, "finished-loading", 0);*/
-        g_object_unref (dir);
-        return;
-    }
-    //GtkTreeIter iter;
-    for (f = files; f; f = f->next)
+    for (f=files; f; f=f->next)
     {
         //GFileInfo *info = f->data;
-        GOFFile *goff = gof_file_new ((GFileInfo *) f->data, dir->priv->_dir);
+        GOFFile *goff = gof_file_new ((GFileInfo *) f->data, dir->location);
         //g_object_unref (goff);
-#if 0
-        const gchar *name = g_file_info_get_name (info);
-        //gchar *size = g_strconcat (g_strdup_log_printf (LOG_LEVEL_UNDEFINED, "%i", ((gint) g_file_info_get_size (info)) / 1024), "KiB", NULL);
-        gchar *size = g_format_size_for_display(g_file_info_get_size(info));
-        if (g_file_info_get_file_type(info) == G_FILE_TYPE_DIRECTORY)
-            size = "<dir>";
-        const gchar *ftype = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
-        GIcon *icon = g_content_type_get_icon (ftype);
-        //gchar *picon = g_icon_to_string (icon);
-        //log_printf (LOG_LEVEL_UNDEFINED, "%s %s\n", name, picon);
-#endif
-#if 0
-        GtkIconTheme *icon_theme = gtk_icon_theme_get_default ();
-        /*GdkPixbuf *pix = gtk_icon_theme_load_icon (icon_theme, picon, 16,
-          GTK_ICON_LOOKUP_USE_BUILTIN | GTK_ICON_LOOKUP_GENERIC_FALLBACK | GTK_ICON_LOOKUP_FORCE_SIZE, NULL);*/
-        GtkIconInfo *icon_info = gtk_icon_theme_lookup_by_gicon (icon_theme, icon, 16,
-                                                                 //GTK_ICON_LOOKUP_USE_BUILTIN | GTK_ICON_LOOKUP_GENERIC_FALLBACK | GTK_ICON_LOOKUP_FORCE_SIZE);
-                    GTK_ICON_LOOKUP_GENERIC_FALLBACK);
-        GdkPixbuf *pix = gtk_icon_info_load_icon(icon_info, NULL);
-        // application-octet-stream gnome-mime-application-octet-stream application-x-generic
-#endif
-        /*NautilusIconInfo *nicon;
-          nicon = nautilus_icon_info_lookup (goff->icon, 16);
-          GdkPixbuf *pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);*/
 
-        if (!goff->is_hidden || g_settings_get_boolean(settings, "show-hiddenfiles"))
+        //if (!goff->is_hidden || g_settings_get_boolean(settings, "show-hiddenfiles"))
+        if (!goff->is_hidden)
         {
-            g_signal_emit (dir, signals[FILE_ADDED], 0, goff);
+            if (dir->file_hash != NULL)
+                g_hash_table_insert (dir->file_hash, g_object_ref (goff->location), goff);
+            //g_signal_emit (dir, signals[FILE_ADDED], 0, goff);
+            g_signal_emit (dir, signals[FILE_LOADED], 0, goff);
 
             /* val = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
                g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE)
                g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY ? 'd' : '-',
                */
-        } else
-            g_object_unref (goff);
+        } else {
+            if (dir->hidden_file_hash != NULL)
+                g_hash_table_insert (dir->hidden_file_hash, g_object_ref (goff->location), goff);
+        }
+    }
+
+    if (files != NULL) {
+        g_file_enumerator_next_files_async (enumerator, FILES_PER_QUERY,
+                                            G_PRIORITY_DEFAULT,
+                                            dir->priv->cancellable,
+                                            enumerator_files_callback,
+                                            dir);
+    } else {
+        directory_load_done (dir, enumerator, error);
     }
 
     //g_list_foreach (files, (GFunc)g_object_unref, NULL);
     g_list_free (files);
-
-    g_file_enumerator_next_files_async (enumerator, FILES_PER_QUERY,
-                                        G_PRIORITY_DEFAULT,
-                                        dir->priv->cancellable,
-                                        enumerator_files_callback,
-                                        dir);
 }
 
-static void load_dir_async_callback (GObject *source_object, GAsyncResult *res, gpointer user_data)
+static void
+load_dir_async_callback (GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
     GOFDirectoryAsync *dir = user_data;
     GFileEnumerator *enumerator;
@@ -173,17 +160,18 @@ static void load_dir_async_callback (GObject *source_object, GAsyncResult *res, 
         return;
     }
 
+    g_object_ref (dir);
     enumerator = g_file_enumerate_children_finish (G_FILE (source_object), res, &error);
-    print_error(error);
 
-    if (enumerator) {
+    if (enumerator != NULL) {
         g_file_enumerator_next_files_async (enumerator,
                                             FILES_PER_QUERY,
                                             G_PRIORITY_DEFAULT,
                                             dir->priv->cancellable,
                                             enumerator_files_callback,
-                                            g_object_ref (dir));
-        g_object_unref (enumerator);
+                                            dir);
+    } else {
+        directory_load_done (dir, enumerator, error);
     }
 }
 
@@ -192,7 +180,7 @@ static void load_dir_info_async_callback (GObject *source_object, GAsyncResult *
     GOFDirectoryAsync *dir = user_data;
     GError *error = NULL;
 
-    if (g_cancellable_is_cancelled (dir->priv->directory_info_cancellable)) {
+    if (g_cancellable_is_cancelled (dir->priv->cancellable)) {
         return;
     }
 
@@ -206,31 +194,38 @@ static void load_dir_info_async_callback (GObject *source_object, GAsyncResult *
 void
 load_dir_async (GOFDirectoryAsync *dir)
 {
+    g_return_if_fail (GOF_IS_DIRECTORY_ASYNC (dir));
+    g_return_if_fail (G_IS_FILE (dir->location));
+
     GOFDirectoryAsyncPrivate *p = dir->priv;
     p->cancellable = g_cancellable_new ();
-    p->directory_info_cancellable = g_cancellable_new ();
 
-    if (p->_dir)
+    if (!dir->loaded)
     {
-        char *uri = g_file_get_uri(p->_dir);
+        printf ("%s LOADED FALSE\n", G_STRFUNC);
+        dir->loading = TRUE;
+        char *uri = g_file_get_uri(dir->location);
         log_printf( LOG_LEVEL_UNDEFINED, "Start loading directory %s \n", uri);
         g_free (uri);
-        p->monitor = gof_monitor_directory (p->_dir);
+        p->monitor = gof_monitor_directory (dir);
 
-        g_file_enumerate_children_async (p->_dir, GOF_GIO_DEFAULT_ATTRIBUTES,
+        g_file_enumerate_children_async (dir->location, GOF_GIO_DEFAULT_ATTRIBUTES,
                                          G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
                                          G_PRIORITY_DEFAULT,
                                          p->cancellable,
                                          load_dir_async_callback,
                                          dir);
 
-        g_file_query_info_async(p->_dir,
-                                GOF_GIO_DEFAULT_ATTRIBUTES,
-                                G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                G_PRIORITY_DEFAULT,
-                                p->directory_info_cancellable,
-                                load_dir_info_async_callback,
-                                dir);
+        g_file_query_info_async (dir->location,
+                                 GOF_GIO_DEFAULT_ATTRIBUTES,
+                                 G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                 G_PRIORITY_DEFAULT,
+                                 p->cancellable,
+                                 load_dir_info_async_callback,
+                                 dir);
+    } else {
+        printf ("%s ALREADY LOADED\n", G_STRFUNC);
+        g_signal_emit (dir, signals[INFO_AVAILABLE], 0);
     }
 }
 
@@ -242,64 +237,94 @@ gof_directory_async_cancel (GOFDirectoryAsync *dir)
     //g_object_unref (dir);
 }
 
-/*
-   static void
-   done_loading (GOFDirectoryAsync *dir)
-   {
-   log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
-//gtk_tree_view_set_model (GTK_TREE_VIEW (dir->priv->tree), GTK_TREE_MODEL (dir->priv->m_store));
-}*/
-
-GOFDirectoryAsync *gof_directory_async_new(GFile *location)
+GOFDirectoryAsync *gof_directory_async_new (GFile *location)
 {
     GOFDirectoryAsync *self;
 
     self = g_object_new (GOF_TYPE_DIRECTORY_ASYNC, NULL);
     //self->priv->model = model;
-    //self->priv->_dir = g_file_dup(location);
-    self->priv->_dir = location;
-    g_object_ref (location);
-    self->priv->_parent = g_file_get_parent(self->priv->_dir);
-
-    //load_dir_async (self);
+    self->location = g_object_ref (location);
+    self->priv->parent = g_file_get_parent(self->location);
 
     return (self);
 }
 
-GOFDirectoryAsync *gof_directory_async_get_for_file(GOFFile *file)
+GOFDirectoryAsync *gof_directory_async_get_for_file (GOFFile *file)
 {
-    GOFDirectoryAsync *self;
+    GOFDirectoryAsync *dir;
 
-    self = g_object_new (GOF_TYPE_DIRECTORY_ASYNC, NULL);
-    //self->priv->_parent = g_file_dup (file->directory);
-    //self->priv->model = model;
-    //log_printf (LOG_LEVEL_UNDEFINED, "test %s %s\n", file->name, g_file_get_uri(file->directory));
-    //self->priv->_dir = g_file_get_child(file->directory, file->name);
-    self->priv->_dir = file->location;
-    g_object_ref (file->location);
-    //log_printf (LOG_LEVEL_UNDEFINED, "test %s\n", g_file_get_uri(self->priv->_dir));
-    //load_dir_async (self);
+    dir = gof_directory_cache_lookup (file->location);
+    if (G_UNLIKELY (dir != NULL)) {
+        /* take a reference for the caller */
+        g_object_ref (dir);
+        printf (">>>>>>>> %s reuse cached dir %s\n", G_STRFUNC, g_file_get_uri (dir->location));
+    } else {
+        printf (">>>>>>>> %s create dir %s\n", G_STRFUNC, g_file_get_uri (file->location));
+        dir = g_object_new (GOF_TYPE_DIRECTORY_ASYNC, NULL);
+        //log_printf (LOG_LEVEL_UNDEFINED, "test %s %s\n", file->name, g_file_get_uri(file->directory));
+        dir->location = g_object_ref (file->location);
+        dir->priv->parent = g_object_ref (file->directory);
+    }
 
-    return (self);
+    return (dir);
 }
 
-/*
-   GOFDirectoryAsync *gof_directory_async_get_parent(GOFDirectoryAsync *dir)
-   {
-   GOFDirectoryAsync *parent;
+GOFDirectoryAsync *gof_directory_cache_lookup (GFile *file)
+{
+    GOFDirectoryAsync *cached_dir;
 
-   parent = g_object_new (GOF_TYPE_DIRECTORY_ASYNC, NULL);
-   parent->priv->_parent = g_file_get_parent(dir->priv->_dir);
-   parent->priv->model = model;
-   parent->priv->_dir = g_file_dup(dir->priv->_parent);
+    g_return_val_if_fail (G_IS_FILE (file), NULL);
 
-   return (parent);
-   }*/
+    /* allocate the GOFDirectoryAsync cache on-demand */
+    if (G_UNLIKELY (directory_cache == NULL))
+    {
+        G_LOCK (directory_cache_mutex);
+        directory_cache = g_hash_table_new_full (g_file_hash, 
+                                                 (GEqualFunc) g_file_equal, 
+                                                 (GDestroyNotify) g_object_unref, 
+                                                 NULL);
+        G_UNLOCK (directory_cache_mutex);
+    }
+    cached_dir = g_hash_table_lookup (directory_cache, file);
+
+    return cached_dir;
+}
+
+GOFDirectoryAsync *gof_directory_get (GFile *location)
+{
+    GOFDirectoryAsync *dir;
+
+    dir = gof_directory_cache_lookup (location);
+    if (G_UNLIKELY (dir != NULL)) {
+        /* take a reference for the caller */
+        g_object_ref (dir);
+        printf (">>>>>>>> %s reuse cached dir %s\n", G_STRFUNC, g_file_get_uri (dir->location));
+    } else {
+        printf (">>>>>>>> %s create dir %s\n", G_STRFUNC, g_file_get_uri (location));
+        dir = gof_directory_async_new (location);
+        G_LOCK (directory_cache_mutex);
+        g_hash_table_insert (directory_cache, g_object_ref (dir->location), dir);
+        G_UNLOCK (directory_cache_mutex);
+        dir->file_hash = g_hash_table_new_full (g_file_hash, 
+                                                (GEqualFunc) g_file_equal, 
+                                                (GDestroyNotify) g_object_unref,          
+                                                (GDestroyNotify) g_object_unref);
+        dir->hidden_file_hash = g_hash_table_new_full (g_file_hash, 
+                                                       (GEqualFunc) g_file_equal, 
+                                                       (GDestroyNotify) g_object_unref,          
+                                                       (GDestroyNotify) g_object_unref);
+    }
+
+    return (dir);
+}
 
 static void
 gof_directory_async_init (GOFDirectoryAsync *self)
 {
     self->priv = g_new0(GOFDirectoryAsyncPrivate, 1);
+    self->loading = FALSE;
+    self->loaded = FALSE;
+    self->info = NULL;
 }
 
 static void
@@ -314,17 +339,35 @@ gof_directory_async_finalize (GObject *object)
        g_slist_free (priv->monitors);
        }*/
     //load_dir_async_cancel (dir);
-    char *uri = g_file_get_uri(dir->priv->_dir);
+    //gof_directory_async_cancel (dir);
+    char *uri = g_file_get_uri(dir->location);
     log_printf (LOG_LEVEL_UNDEFINED, ">> %s %s\n", G_STRFUNC, uri);
     g_free (uri);
+
     if (dir->priv->monitor)
         gof_monitor_cancel (dir->priv->monitor);
     g_object_unref (dir->priv->cancellable);
-    g_object_unref (dir->priv->_dir);
+
+    /* drop the entry from the cache */
+    G_LOCK (directory_cache_mutex);
+    g_hash_table_remove (directory_cache, dir->location);
+    G_UNLOCK (directory_cache_mutex);
+
+    if (dir->file_hash != NULL)
+        g_hash_table_destroy (dir->file_hash);
+    if (dir->hidden_file_hash != NULL)
+        g_hash_table_destroy (dir->hidden_file_hash);
+
+    /* release directory info */
+    if (dir->info != NULL)
+        g_object_unref (dir->info);
+
+    g_object_unref (dir->location);
     /*if (dir->priv->_parent != NULL)
       g_object_unref (dir->priv->_parent);*/
     g_free (dir->priv);
     G_OBJECT_CLASS (gof_directory_async_parent_class)->finalize (object);
+    printf ("%s EOF\n", G_STRFUNC);
 }
 
 static void
@@ -339,11 +382,35 @@ gof_directory_async_class_init (GOFDirectoryAsyncClass *klass)
 
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 
+    signals[FILE_LOADED] =
+        g_signal_new ("file_loaded",
+                      G_TYPE_FROM_CLASS (object_class),
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (GOFDirectoryAsyncClass, file_loaded),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__POINTER,
+                      G_TYPE_NONE, 1, G_TYPE_POINTER);
     signals[FILE_ADDED] =
         g_signal_new ("file_added",
                       G_TYPE_FROM_CLASS (object_class),
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (GOFDirectoryAsyncClass, file_added),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__POINTER,
+                      G_TYPE_NONE, 1, G_TYPE_POINTER);
+    signals[FILE_CHANGED] =
+        g_signal_new ("file_changed",
+                      G_TYPE_FROM_CLASS (object_class),
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (GOFDirectoryAsyncClass, file_changed),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__POINTER,
+                      G_TYPE_NONE, 1, G_TYPE_POINTER);
+    signals[FILE_DELETED] =
+        g_signal_new ("file_deleted",
+                      G_TYPE_FROM_CLASS (object_class),
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (GOFDirectoryAsyncClass, file_deleted),
                       NULL, NULL,
                       g_cclosure_marshal_VOID__POINTER,
                       G_TYPE_NONE, 1, G_TYPE_POINTER);
@@ -370,18 +437,18 @@ gof_directory_async_class_init (GOFDirectoryAsyncClass *klass)
 char *
 gof_directory_async_get_uri (GOFDirectoryAsync *directory)
 {
-    return g_file_get_uri(directory->priv->_dir);
+    return g_file_get_uri(directory->location);
 }
 
 gboolean
 gof_directory_async_has_parent(GOFDirectoryAsync *directory)
 {
-    return (directory->priv->_parent != NULL);
+    return (directory->priv->parent != NULL);
 }
 
 GFile *
 gof_directory_async_get_parent(GOFDirectoryAsync *directory)
 {
-    return (directory->priv->_parent);
+    return (g_object_ref (directory->priv->parent));
 }
 

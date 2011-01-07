@@ -21,7 +21,8 @@ main (int argc, char *argv[])
     gchar           *path;
 
 
-    log_level = LOG_LEVEL_DEBUG;
+    //log_level = LOG_LEVEL_DEBUG;
+    log_level = LOG_LEVEL_UNDEFINED;
     log_println (LOG_LEVEL_INFO, "Welcome to Marlin");
     log_println (LOG_LEVEL_INFO, "Version: %s", "0.1");
     log_println (LOG_LEVEL_INFO, "Report any issues/bugs you might find to lp:marlin", "0.1");

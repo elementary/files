@@ -327,8 +327,10 @@ update_places (MarlinPlacesSidebar *sidebar)
     gtk_tree_store_clear (sidebar->store);
 
     slot = marlin_view_window_get_active_slot (MARLIN_VIEW_WINDOW (sidebar->window));
-    if (slot)
+    if (slot) {
         location = g_file_get_uri(slot->location);
+        g_object_unref (slot);
+    }
 
     /* add bookmarks category */
 
@@ -1774,6 +1776,7 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
             slot = marlin_view_window_get_active_slot (MARLIN_VIEW_WINDOW (sidebar->window));
             //amtest sidebar load uri
             g_signal_emit_by_name (slot->ctab, "path-changed", location);
+            g_object_unref (slot);
 
             /*marlin_window_slot_info_open_location (slot, location,
               MARLIN_WINDOW_OPEN_ACCORDING_TO_MODE,
@@ -1819,6 +1822,7 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
             marlin_file_operations_mount_volume_full (NULL, volume, FALSE,
                                                       volume_mounted_cb,
                                                       G_OBJECT (sidebar));
+            g_object_unref (slot);
         } else if (volume == NULL && drive != NULL &&
                    (g_drive_can_start (drive) || g_drive_can_start_degraded (drive))) {
             GMountOperation *mount_op;
@@ -3195,8 +3199,10 @@ marlin_places_sidebar_set_parent_window (MarlinPlacesSidebar *sidebar,
     //TODO
     sidebar->bookmarks = marlin_bookmark_list_new ();
     /* maybe store the uri in slot structure */
-    if (slot)
+    if (slot) {
         sidebar->uri = g_file_get_uri (slot->location);
+        g_object_unref (slot);
+    }
 
     g_signal_connect_object (sidebar->bookmarks, "contents_changed",
                              G_CALLBACK (update_places),

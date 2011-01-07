@@ -82,14 +82,14 @@ struct FMDirectoryViewClass {
     void    (* add_file) 		 (FMDirectoryView *view, 
                                           GOFFile *file,
                                           GOFDirectoryAsync *directory);
-    void    (* colorize_selection)	 (FMDirectoryView *view, int color);
-    void    (* sync_selection)	         (FMDirectoryView *view);
-
-#if 0
     void    (* remove_file)		 (FMDirectoryView *view, 
                                           GOFFile *file,
                                           GOFDirectoryAsync *directory);
+    void    (* colorize_selection)	 (FMDirectoryView *view, int color);
+    void    (* sync_selection)	         (FMDirectoryView *view);
 
+
+#if 0
     /* The 'file_changed' signal is emitted to signal a change in a file,
      * including the file being removed.
      * It must be replaced by each subclass.

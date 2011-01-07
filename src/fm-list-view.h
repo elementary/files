@@ -22,7 +22,6 @@
 
 #include <gtk/gtk.h>
 #include "fm-list-model.h"
-//#include "gof-window-slot.h"
 #include "fm-directory-view.h"
 
 G_BEGIN_DECLS
@@ -39,17 +38,13 @@ G_BEGIN_DECLS
 #define FM_LIST_VIEW_GET_CLASS(obj) \
     (G_TYPE_INSTANCE_GET_CLASS ((obj), FM_TYPE_LIST_VIEW, FMListViewClass))
 
-#define FM_LIST_VIEW_ID "OAFIID:Nautilus_File_Manager_List_View"
-
 typedef struct FMListViewDetails FMListViewDetails;
 
 typedef struct {
     FMDirectoryViewClass parent_instance;
-    GtkTreeView     *tree;
-    FMListModel     *model;
-    //GFile           *location;
-    //GOFWindowSlot   *slot;
-    FMListViewDetails *details;
+    GtkTreeView         *tree;
+    FMListModel         *model;
+    FMListViewDetails   *details;
 } FMListView;
 
 typedef struct {
@@ -57,8 +52,6 @@ typedef struct {
 } FMListViewClass;
 
 GType fm_list_view_get_type (void);
-/*void  fm_list_view_register (void);*/
-/*GtkTreeView* fm_list_view_get_tree_view (FMListView *list_view);*/
 
 G_END_DECLS
 

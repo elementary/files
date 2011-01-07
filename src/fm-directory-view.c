@@ -95,7 +95,7 @@ struct FMDirectoryViewDetails
      * sets 'loading' to TRUE before it begins loading a directory's contents and to FALSE
      * after it finishes loading the directory and its view.
      */
-    //gboolean loading;
+    gboolean loading;
 
     /* flag to indicate that no file updates should be dispatched to subclasses.
      * This is a workaround for bug #87701 that prevents the list view from
@@ -267,12 +267,61 @@ fm_directory_view_get_containing_window (FMDirectoryView *view)
 }
 #endif
 
-static void
-file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, gpointer callback_data)
+#if 0
+static void *
+load_file_from_file_hash_cb (gpointer key, gpointer value, gpointer user_data)
 {
-    FMDirectoryView *view = FM_DIRECTORY_VIEW (callback_data);
+    FMDirectoryView *view = FM_DIRECTORY_VIEW (user_data);
 
+    g_signal_emit (view, signals[ADD_FILE], 0, g_object_ref (value), view->details->slot->directory);
+}
+#endif
+
+void
+fm_directory_view_load_file_hash (GOFDirectoryAsync *dir, FMDirectoryView *view)
+{
+    /* TODO this should be threaded */
+    //g_hash_table_foreach (dir->file_hash, (GHFunc) load_file_from_file_hash_cb, view);
+    GHashTableIter iter;
+    GFile *location;
+    GOFFile *file;
+
+    g_hash_table_iter_init (&iter, dir->file_hash);
+    while (g_hash_table_iter_next (&iter, &location, &file)) {
+        g_signal_emit (view, signals[ADD_FILE], 0, file, dir);
+    }
+}
+
+static void
+file_loaded_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
+{
+    printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
     g_signal_emit (view, signals[ADD_FILE], 0, file, directory); 
+}
+
+static void
+file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
+{
+    printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
+    g_signal_emit (view, signals[ADD_FILE], 0, file, directory); 
+}
+
+static void
+file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
+{
+    printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
+    g_signal_emit (view, signals[REMOVE_FILE], 0, file, directory);
+}
+
+static void
+directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
+{
+    /* add the file_hash files for view which have been created during the directory loading */
+    if (view->details->loading) {
+        printf(">> %s load the cached files\n", G_STRFUNC);
+        fm_directory_view_load_file_hash (directory, view);
+    }
+    view->details->loading = FALSE;
 }
 
 void
@@ -285,9 +334,14 @@ fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *di
       attributes,
       files_added_callback, view);*/
 
-    g_signal_connect
-        (directory, "file_added",
-         G_CALLBACK (file_added_callback), view);
+    if (!(directory->loading && directory->loaded))
+        g_signal_connect (directory, "file_loaded", G_CALLBACK (file_loaded_callback), view);
+    g_signal_connect (directory, "file_added", G_CALLBACK (file_added_callback), view);
+
+    load_dir_async (directory);
+    if (!directory->loading && directory->loaded)
+        fm_directory_view_load_file_hash (directory, view);
+
     /* TODO */
     /*g_signal_connect
       (directory, "files_changed",
@@ -305,6 +359,9 @@ fm_directory_view_remove_subdirectory (FMDirectoryView *view, GOFDirectoryAsync 
       view->details->subdirectory_list = g_list_remove (
       view->details->subdirectory_list, directory);*/
 
+    g_signal_handlers_disconnect_by_func (directory,
+                                          G_CALLBACK (file_loaded_callback),
+                                          view);
     g_signal_handlers_disconnect_by_func (directory,
                                           G_CALLBACK (file_added_callback),
                                           view);
@@ -365,7 +422,7 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details = g_new0 (FMDirectoryViewDetails, 1);
     view->details->drag_scroll_timer_id = -1;
     view->details->drag_timer_id = -1;
-
+    
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (view),
                                     GTK_POLICY_AUTOMATIC,
                                     GTK_POLICY_AUTOMATIC);
@@ -530,6 +587,17 @@ fm_directory_view_finalize (GObject *object)
     view = FM_DIRECTORY_VIEW (object);
     log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
 
+    GOFWindowSlot *slot = view->details->slot;
+
+    //printf ("%s %s\n", G_STRFUNC, g_file_get_uri(slot->directory->location));
+    /* disconnect all listeners */
+    g_signal_handlers_disconnect_by_func (slot->directory, file_loaded_callback, view);
+    g_signal_handlers_disconnect_by_func (slot->directory, file_added_callback, view);
+    //g_signal_handlers_disconnect_by_func (slot->directory, "file_changed", G_CALLBACK (file_changed_callback), directory_view);
+    g_signal_handlers_disconnect_by_func (slot->directory, file_deleted_callback, view);
+    g_signal_handlers_disconnect_by_func (slot->directory, directory_done_loading_callback, view);
+    g_object_unref (slot);
+
     /*eel_preferences_remove_callback (NAUTILUS_PREFERENCES_CONFIRM_TRASH,
       schedule_update_menus_callback, view);
       eel_preferences_remove_callback (NAUTILUS_PREFERENCES_ENABLE_DELETE,
@@ -552,9 +620,10 @@ fm_directory_view_finalize (GObject *object)
 
       g_hash_table_destroy (view->details->non_ready_files);*/
 
-    /*g_object_unref (view->details->slot);
-      view->details->slot = NULL;*/
 
+    /*if (slot != NULL)
+        g_object_unref (slot);*/
+   
     g_free (view->details);
 
     EEL_CALL_PARENT (G_OBJECT_CLASS, finalize, (object));
@@ -1504,8 +1573,7 @@ fm_directory_view_parent_set (GtkWidget *widget,
 {
     FMDirectoryView *view;
     GtkWidget *parent;
-
-    view = FM_DIRECTORY_VIEW (widget);
+    GOFDirectoryAsync *dir;
 
     parent = gtk_widget_get_parent (widget);
     g_assert (parent == NULL || old_parent == NULL);
@@ -1515,10 +1583,13 @@ fm_directory_view_parent_set (GtkWidget *widget,
     }
 
     printf("%s\n", G_STRFUNC);
+    view = FM_DIRECTORY_VIEW (widget);
+    dir = view->details->slot->directory;
+
     if (parent != NULL) {
         g_assert (old_parent == NULL);
-
         g_assert (view->details->slot);
+       
         if (MARLIN_VIEW_WINDOW (view->details->window)->current_tab)
         {
             /*printf ("active_slot %s\n", g_file_get_uri(MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot->location));
@@ -1530,6 +1601,10 @@ fm_directory_view_parent_set (GtkWidget *widget,
                 //schedule_update_menus (view);
             }
         }
+
+        if (!dir->loading && dir->loaded)
+            fm_directory_view_load_file_hash (dir, view);
+
     } else {
         fm_directory_view_unmerge_menus (view);
         //remove_update_menus_timeout_callback (view);
@@ -1612,10 +1687,17 @@ fm_directory_view_set_property (GObject         *object,
         slot = GOF_WINDOW_SLOT (g_value_get_object (value));
         window = marlin_view_view_container_get_window (MARLIN_VIEW_VIEW_CONTAINER(slot->ctab));
 
-        directory_view->details->slot = slot;
+        directory_view->details->slot = g_object_ref(slot);
         directory_view->details->window = window;
+        /* store the loading state of the directory */
+        directory_view->details->loading = slot->directory->loading;
 
+        if (!(directory_view->details->loading && slot->directory->loaded))
+            g_signal_connect (slot->directory, "file_loaded", G_CALLBACK (file_loaded_callback), directory_view);
         g_signal_connect (slot->directory, "file_added", G_CALLBACK (file_added_callback), directory_view);
+        //g_signal_connect (slot->directory, "file_changed", G_CALLBACK (file_changed_callback), directory_view);
+        g_signal_connect (slot->directory, "file_deleted", G_CALLBACK (file_deleted_callback), directory_view);
+        g_signal_connect (slot->directory, "done_loading", G_CALLBACK (directory_done_loading_callback), directory_view);
 
         /*g_signal_connect_object (directory_view->details->slot,
           "active", G_CALLBACK (slot_active),
@@ -1667,6 +1749,14 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       G_TYPE_FROM_CLASS (klass),
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (FMDirectoryViewClass, add_file),
+                      NULL, NULL,
+                      nautilus_marshal_VOID__OBJECT_OBJECT,
+                      G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
+    signals[REMOVE_FILE] =
+        g_signal_new ("remove_file",
+                      G_TYPE_FROM_CLASS (klass),
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (FMDirectoryViewClass, remove_file),
                       NULL, NULL,
                       nautilus_marshal_VOID__OBJECT_OBJECT,
                       G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);

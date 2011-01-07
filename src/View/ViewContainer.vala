@@ -44,13 +44,10 @@ namespace Marlin.View {
             /* set active tab */
             window.current_tab = this;
             browser = new Browser<string> ();
-            slot = new GOF.Window.Slot(location, this);
-            slot.make_view();
-            /*mwcol = new Marlin.Window.Columns(location, this);
-              slot = mwcol.active_slot;*/
-            //content_item = slot.get_view();
+            change_view (view_mode, location);
             //label = new Gtk.Label("test");
-            label = new Gtk.Label(slot.directory.get_uri());
+            //label = new Gtk.Label(slot.directory.get_uri());
+            label = new Gtk.Label("Loading...");
             label.set_ellipsize(Pango.EllipsizeMode.END);
             label.set_single_line_mode(true);
             label.set_alignment(0.0f, 0.5f);
@@ -109,7 +106,9 @@ namespace Marlin.View {
             view_mode = nview;
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
-            slot.directory.cancel();
+            if (slot != null) {
+                slot.directory.cancel();
+            }
             switch (nview) {
             case ViewMode.MILLER:
                 mwcol = new Marlin.Window.Columns(location, this);

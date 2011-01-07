@@ -21,7 +21,6 @@
 #define GOF_DIRECTORY_ASYNC_H
 
 #include <gtk/gtk.h>
-//#include "fm-list-model.h"
 #include "gof-file.h"
 
 G_BEGIN_DECLS
@@ -40,16 +39,17 @@ G_BEGIN_DECLS
 
 #define FILES_PER_QUERY 100
 
-//typedef struct GOFDirectoryAsyncDetails GOFDirectoryAsyncDetails;
 typedef struct GOFDirectoryAsyncPrivate GOFDirectoryAsyncPrivate;
 
 typedef struct {
-    //GtkWindow parent_instance;
-    //ASyncGIOSamplePrivate * priv;
-    //GOFDirectoryAsyncDetails *details;
-    GObject parent;
-    GOFDirectoryAsyncPrivate *priv;
-    GFileInfo       *info;
+    GObject                     parent;
+    GFile                       *location;
+    GFileInfo                   *info;
+    gboolean                    loading;
+    gboolean                    loaded;
+    GHashTable                  *file_hash;
+    GHashTable                  *hidden_file_hash;
+    GOFDirectoryAsyncPrivate    *priv;
 } GOFDirectoryAsync;
 
 typedef struct {
@@ -58,7 +58,10 @@ typedef struct {
     /* The files_added signal is emitted as the directory model
      * discovers new files.
      */
+    void     (* file_loaded)        (GOFDirectoryAsync *directory, GOFFile *file);
     void     (* file_added)         (GOFDirectoryAsync *directory, GOFFile *file);
+    void     (* file_changed)       (GOFDirectoryAsync *directory, GOFFile *file);
+    void     (* file_deleted)       (GOFDirectoryAsync *directory, GOFFile *file);
 #if 0
     void     (* files_changed)       (NautilusDirectory         *directory,
                                       GList                     *changed_files);
@@ -71,16 +74,16 @@ typedef struct {
 
 GType                   gof_directory_async_get_type (void);
 
-//GOFDirectoryAsync       *gof_directory_async_new(gchar *);
 GOFDirectoryAsync       *gof_directory_async_new(GFile *location);
 GOFDirectoryAsync       *gof_directory_async_get_for_file(GOFFile *file);
-//GOFDirectoryAsync       *gof_directory_async_get_parent(GOFDirectoryAsync *dir);
-//GtkWidget               *get_tree_view(GOFDirectoryAsync *dir);
+GOFDirectoryAsync       *gof_directory_get (GFile *location);
+GOFDirectoryAsync       *gof_directory_cache_lookup (GFile *file);
 void                    load_dir_async (GOFDirectoryAsync *dir);
 void                    gof_directory_async_cancel (GOFDirectoryAsync *dir);
 char                    *gof_directory_async_get_uri (GOFDirectoryAsync *directory);
 gboolean                gof_directory_async_has_parent(GOFDirectoryAsync *directory);
 GFile                   *gof_directory_async_get_parent(GOFDirectoryAsync *directory);
+void                    gof_directory_async_load_file_hash (GOFDirectoryAsync *dir);
 
 /*GOFDirectoryAsync       *gof_directory_ref (GOFDirectoryAsync *directory);
   void                    gof_directory_unref (GOFDirectoryAsync *directory);*/

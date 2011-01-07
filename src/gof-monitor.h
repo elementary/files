@@ -27,10 +27,11 @@
 
 #include <glib.h>
 #include <gio/gio.h>
+#include "gof-directory-async.h"
 
 typedef struct GOFMonitor GOFMonitor;
 
-GOFMonitor      *gof_monitor_directory  (GFile *location);
+GOFMonitor      *gof_monitor_directory  (GOFDirectoryAsync *dir);
 void            gof_monitor_cancel      (GOFMonitor *monitor);
 
 #endif

@@ -31,11 +31,9 @@
 #include "eel-glib-extensions.h"
 #include "marlin-tags.h"
 
-/*
-   struct FMListViewDetails {
-   GtkTreeView     *tree;
-   FMListModel     *model;
-   };*/
+struct FMListViewDetails {
+    GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
+};
 
 /* We wait two seconds after row is collapsed to unload the subdirectory */
 #define COLLAPSE_TO_UNLOAD_DELAY 2 
@@ -757,6 +755,66 @@ fm_list_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *
     fm_list_model_add_file (model, file, directory);
 }
 
+static void
+fm_list_view_remove_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
+{
+    printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
+    GtkTreePath *path;
+    GtkTreePath *file_path;
+    GtkTreeIter iter;
+    GtkTreeIter temp_iter;
+    GtkTreeRowReference* row_reference;
+    FMListView *list_view;
+    GtkTreeModel* tree_model; 
+    GtkTreeSelection *selection;
+
+    path = NULL;
+    row_reference = NULL;
+    list_view = FM_LIST_VIEW (view);
+    tree_model = GTK_TREE_MODEL(list_view->model);
+
+    if (fm_list_model_get_tree_iter_from_file (list_view->model, file, directory, &iter))
+    {
+        selection = gtk_tree_view_get_selection (list_view->tree);
+        file_path = gtk_tree_model_get_path (tree_model, &iter);
+
+        if (gtk_tree_selection_path_is_selected (selection, file_path)) {
+            /* get reference for next element in the list view. If the element to be deleted is the 
+             * last one, get reference to previous element. If there is only one element in view
+             * no need to select anything.
+             */
+            temp_iter = iter;
+
+            if (gtk_tree_model_iter_next (tree_model, &iter)) {
+                path = gtk_tree_model_get_path (tree_model, &iter);
+                row_reference = gtk_tree_row_reference_new (tree_model, path);
+            } else {
+                path = gtk_tree_model_get_path (tree_model, &temp_iter);
+                if (gtk_tree_path_prev (path)) {
+                    row_reference = gtk_tree_row_reference_new (tree_model, path);
+                }
+            }
+            gtk_tree_path_free (path);
+        }
+
+        gtk_tree_path_free (file_path);
+
+        fm_list_model_remove_file (list_view->model, file, directory);
+
+        if (gtk_tree_row_reference_valid (row_reference)) {
+            if (list_view->details->new_selection_path) {
+                gtk_tree_path_free (list_view->details->new_selection_path);
+            }
+            list_view->details->new_selection_path = gtk_tree_row_reference_get_path (row_reference);
+        }
+
+        if (row_reference) {
+            gtk_tree_row_reference_free (row_reference);
+        }
+    }   
+}
+
+
 /*
    static void
    fm_list_view_clear (FMListView *view)
@@ -906,15 +964,19 @@ fm_list_view_finalize (GObject *object)
 
     log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
 
+    if (view->details->new_selection_path) {
+        gtk_tree_path_free (view->details->new_selection_path);
+    }
+
     g_object_unref (view->model);
-    //g_free (view->details);
+    g_free (view->details);
     G_OBJECT_CLASS (fm_list_view_parent_class)->finalize (object); 
 }
 
 static void
 fm_list_view_init (FMListView *view)
 {
-    //view->details = g_new0 (FMListViewDetails, 1);
+    view->details = g_new0 (FMListViewDetails, 1);
     create_and_set_up_tree_view (view);
 
     g_settings_bind (settings, "single-click", 
@@ -937,6 +999,7 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
     fm_directory_view_class->add_file = fm_list_view_add_file;
+    fm_directory_view_class->remove_file = fm_list_view_remove_file;
     fm_directory_view_class->colorize_selection = fm_list_view_colorize_selected_items;        
     fm_directory_view_class->sync_selection = fm_list_view_sync_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_list_view_get_selection_for_file_transfer;

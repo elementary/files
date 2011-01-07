@@ -128,7 +128,6 @@ G_DEFINE_TYPE_WITH_CODE (FMListModel, fm_list_model, G_TYPE_OBJECT,
 static void
 file_entry_free (FileEntry *file_entry)
 {
-    gof_file_unref (file_entry->file);
     //gof_file_unref (file_entry->file);
     if (file_entry->reverse_map) {
         g_hash_table_destroy (file_entry->reverse_map);
@@ -1362,7 +1361,7 @@ fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirec
     //gof_directory_ref (file_entry->subdirectory);
     *directory = file_entry->subdirectory;
 
-    load_dir_async (file_entry->subdirectory);
+    //load_dir_async (file_entry->subdirectory);
 
     return TRUE;
 }

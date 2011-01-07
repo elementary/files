@@ -21,29 +21,32 @@
    Authors: Seth Nickell <seth@eazel.com>
    Darin Adler <darin@bentspoon.com>
    Alex Graveley <alex@ximian.com>
+   ammonkey <am.monkeyd@gmail.com>
 */
 
 #include <config.h>
 #include "gof-monitor.h"
-//#include "nautilus-file-changes-queue.h"
-//#include "nautilus-file-utilities.h"
-
+#include "gof-file.h"
 #include <gio/gio.h>
 #include <stdio.h>
 #include "marlin-vala.h"
 
 struct GOFMonitor {
-    GFileMonitor *monitor;
+    GFileMonitor        *gfile_monitor;
+    GOFDirectoryAsync   *dir;
 };
 
 static void
-dir_changed (GFileMonitor* monitor,
+dir_changed (GFileMonitor* gfile_monitor,
              GFile *child,
              GFile *other_file,
              GFileMonitorEvent event_type,
              gpointer user_data)
 {
     char *uri, *to_uri;
+    GOFMonitor *monitor = user_data;
+    GOFDirectoryAsync *dir = monitor->dir;
+    GOFFile *file;
 
     uri = g_file_get_uri (child);
     to_uri = NULL;
@@ -64,10 +67,25 @@ dir_changed (GFileMonitor* monitor,
     case G_FILE_MONITOR_EVENT_DELETED:
         //nautilus_file_changes_queue_file_removed (child);
         log_printf (LOG_LEVEL_UNDEFINED, "file deleted %s\n", uri);
+        if ((file = gof_file_get (child)) != NULL) {
+            if (!file->is_hidden)
+                g_hash_table_remove (dir->file_hash, child);
+            else
+                g_hash_table_remove (dir->hidden_file_hash, child);
+            g_signal_emit_by_name (dir, "file_deleted", file);
+            g_object_unref (file);
+        }
         break;
     case G_FILE_MONITOR_EVENT_CREATED:
         //nautilus_file_changes_queue_file_added (child);
         log_printf (LOG_LEVEL_UNDEFINED, "file added %s\n", uri);
+        if ((file = gof_file_get (child)) != NULL) {
+            if (!file->is_hidden)
+                g_hash_table_insert (dir->file_hash, g_object_ref (child), file);
+            else
+                g_hash_table_insert (dir->hidden_file_hash, g_object_ref (child), file);
+            g_signal_emit_by_name (dir, "file_added", file);
+        }
         break;
 
     case G_FILE_MONITOR_EVENT_PRE_UNMOUNT:
@@ -83,31 +101,30 @@ dir_changed (GFileMonitor* monitor,
 }
 
 GOFMonitor *
-gof_monitor_directory (GFile *location)
+gof_monitor_directory (GOFDirectoryAsync *dir)
 {
-    GFileMonitor *dir_monitor;
-    GOFMonitor *ret;
+    GOFMonitor *monitor;
 
-    dir_monitor = g_file_monitor_directory (location, G_FILE_MONITOR_WATCH_MOUNTS, NULL, NULL);
     /* TODO: implement GCancellable * */
-    //dir_monitor = g_file_monitor_directory (location, G_FILE_MONITOR_SEND_MOVED, NULL, NULL);
-    ret = g_new0 (GOFMonitor, 1);
-    ret->monitor = dir_monitor;
+    monitor = g_new0 (GOFMonitor, 1);
+    monitor->gfile_monitor = g_file_monitor_directory (dir->location, G_FILE_MONITOR_WATCH_MOUNTS, NULL, NULL);
+    monitor->dir = g_object_ref(dir);
 
-    if (ret->monitor) {
-        g_signal_connect (ret->monitor, "changed", (GCallback)dir_changed, ret);
+    if (monitor->gfile_monitor) {
+        g_signal_connect (monitor->gfile_monitor, "changed", (GCallback)dir_changed, monitor);
     }
 
-    return ret;
+    return monitor;
 }
 
 void 
 gof_monitor_cancel (GOFMonitor *monitor)
 {
-    if (monitor->monitor != NULL) {
-        g_signal_handlers_disconnect_by_func (monitor->monitor, dir_changed, monitor);
-        g_file_monitor_cancel (monitor->monitor);
-        g_object_unref (monitor->monitor);
+    if (monitor->gfile_monitor != NULL) {
+        g_signal_handlers_disconnect_by_func (monitor->gfile_monitor, dir_changed, monitor);
+        g_file_monitor_cancel (monitor->gfile_monitor);
+        g_object_unref (monitor->gfile_monitor);
+        g_object_unref (monitor->dir);
     }
 
     g_free (monitor);
