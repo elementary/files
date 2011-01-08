@@ -6,7 +6,7 @@ sudo add-apt-repository ppa:ubuntu-desktop/gnome3-builds
 sudo apt-get update
 sudo apt-get upgrade
 
-sudo apt-get install build-essential bzr git automake libtool
+sudo apt-get install build-essential bzr git automake libtool gtk-doc-tools libappindicator-dev libtelepahty-glib-dev libnotify-dev
 sudo apt-get install gtk+3 gnome-common valac libgee-dev flex bison libdbus-glib-1-dev libsqlite3-dev
 
 # Since Marlin in gtk3 and gtk2 themes dont work on gtk3 apps, you will also need a theme. You can get the ambiance and radiance themes using these commands:
@@ -23,6 +23,25 @@ cd ..
 
 # gee vapi file
 sudo cp /usr/share/vala-0.10/vapi/gee-1.0.vapi /usr/share/vala-0.12/vapi/
+
+# get TaskView
+git clone https://github.com/ssickert/TaskView.git
+cd TaskView
+./autogen.sh --prefix=/usr
+make && sudo make install
+cd ..
+
+# and -Addons
+git clone https://github.com/ssickert/TaskView-Addons.git
+cd TaskView-Addons
+mkdir po
+touch INSTALL
+touch NEWS
+./autogen.sh --prefix=/usr
+cp po/Makefile.in.in po/Makefile.in
+./autogen.sh --prefix=/usr
+make && sudo make install
+cd ..
 
 #bzr branch lp:marlin
 #cd marlin

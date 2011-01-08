@@ -96,7 +96,6 @@ namespace Marlin.View {
             /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
             info.append(new Pair<string, string>("Modified", gof_file.formated_modified.replace(" ", "\n")));
             info.append(new Pair<string, string>("Owner", file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
-            info.append(new Pair<string, string>("Mimetype", file_info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE)));
 
             //label.label = file_info.get_display_name();
             label.label = gof_file.name;
