@@ -158,11 +158,11 @@ gof_window_slot_finalize (GObject *object)
 
     //load_dir_async_cancel(slot->directory);
     g_object_unref(slot->directory);
-    /*g_object_unref(slot->location);*/
+    g_object_unref(slot->location);
     G_OBJECT_CLASS (parent_class)->finalize (object);
     printf ("test %s\n", G_STRFUNC);
     /* avoid a warning in vala code: slot is freed in ViewContainer */
-    slot = NULL;
+    //slot = NULL;
 }
 
 GOFWindowSlot *

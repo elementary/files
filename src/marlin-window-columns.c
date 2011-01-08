@@ -241,7 +241,10 @@ nautilus_window_slot_add_current_location_to_history_list (NautilusWindowSlot *s
 static void
 marlin_window_columns_finalize (GObject *object)
 {
-    //MarlinWindowColumns *mwcols = MARLIN_WINDOW_COLUMNS (object);
+    MarlinWindowColumns *mwcols = MARLIN_WINDOW_COLUMNS (object);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+
+    g_object_unref(mwcols->location);
 
     G_OBJECT_CLASS (parent_class)->finalize (object);
 
