@@ -171,7 +171,7 @@ gof_window_slot_new (GFile *location, GObject *ctab)
     log_printf (LOG_LEVEL_UNDEFINED, "%s %s\n", G_STRFUNC, g_file_get_uri (location));
     GOFWindowSlot *slot;
     slot = g_object_new (GOF_TYPE_WINDOW_SLOT, NULL);
-    slot->location = location;
+    slot->location = g_object_ref (location);
     slot->ctab = ctab;
 
     //amtest

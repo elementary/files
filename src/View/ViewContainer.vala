@@ -101,7 +101,7 @@ namespace Marlin.View {
         }
 
         public void change_view(int nview, GLib.File? location){
-            if (location == null)
+            if (location == null) 
                 location = slot.location;
             view_mode = nview;
             if (window.top_menu.view_switcher != null)

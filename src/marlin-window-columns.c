@@ -31,20 +31,6 @@ G_DEFINE_TYPE (MarlinWindowColumns, marlin_window_columns, G_TYPE_OBJECT)
 
 #define parent_class marlin_window_columns_parent_class
 
-#if 0
-void
-marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location)
-{
-    MarlinWindowColumns *mwcols = slot->mwcols;
-    GtkWidget *window = mwcols->window;
-
-    gof_directory_async_cancel(slot->directory);
-    gtk_widget_destroy (mwcols->view_box);
-
-    mwcols = marlin_window_columns_new (location, window);
-}
-#endif
-
 static void
 hadj_changed (GtkAdjustment *hadj, gpointer user_data)
 {
@@ -56,10 +42,10 @@ hadj_changed (GtkAdjustment *hadj, gpointer user_data)
 MarlinWindowColumns *
 marlin_window_columns_new (GFile *location, GObject *ctab)
 {
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s %s\n", G_STRFUNC, g_file_get_uri(location));
     MarlinWindowColumns *mwcols;
     mwcols = g_object_new (MARLIN_TYPE_WINDOW_COLUMNS, NULL);
-    mwcols->location = location;
+    mwcols->location = g_object_ref (location);
     mwcols->ctab = ctab;
 
     GOFWindowSlot *slot = gof_window_slot_new (location, mwcols->ctab);
