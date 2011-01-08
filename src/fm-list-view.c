@@ -674,7 +674,6 @@ create_and_set_up_tree_view (FMListView *view)
     g_signal_connect_object (gtk_tree_view_get_selection (view->tree), "changed",
                              G_CALLBACK (list_selection_changed_callback), view, 0);
 
-    //amtest
     g_signal_connect_object (view->tree, "button-press-event",
                              G_CALLBACK (button_press_callback), view, 0);
     g_signal_connect_object (view->tree, "key_press_event",
@@ -1012,11 +1011,3 @@ fm_list_view_class_init (FMListViewClass *klass)
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }
 
-
-/*
-   GtkTreeView*
-   fm_list_view_get_tree_view (FMListView *list_view)
-   {
-   return list_view->tree_view;
-   }
-   */

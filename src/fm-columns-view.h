@@ -22,7 +22,6 @@
 
 #include <gtk/gtk.h>
 #include "fm-list-model.h"
-//#include "gof-window-slot.h"
 #include "fm-directory-view.h"
 #include "marlin-vala.h"
 
@@ -40,17 +39,13 @@ G_BEGIN_DECLS
 #define FM_COLUMNS_VIEW_GET_CLASS(obj) \
     (G_TYPE_INSTANCE_GET_CLASS ((obj), FM_TYPE_COLUMNS_VIEW, FMColumnsViewClass))
 
-#define FM_COLUMNS_VIEW_ID "OAFIID:Nautilus_File_Manager_Column_View"
-
 typedef struct FMColumnsViewDetails FMColumnsViewDetails;
 
 typedef struct {
     FMDirectoryViewClass parent_instance;
-    GtkTreeView     *tree;
-    FMListModel     *model;
-    //GFile           *location;
-    //GOFWindowSlot   *slot;
-    //FMColumnsViewDetails *details;
+    GtkTreeView             *tree;
+    FMListModel             *model;
+    FMColumnsViewDetails    *details;
 } FMColumnsView;
 
 typedef struct {
@@ -58,8 +53,6 @@ typedef struct {
 } FMColumnsViewClass;
 
 GType fm_columns_view_get_type (void);
-/*void  fm_list_view_register (void);*/
-/*GtkTreeView* fm_list_view_get_tree_view (FMColumnsView *list_view);*/
 
 G_END_DECLS
 

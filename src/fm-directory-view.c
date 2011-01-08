@@ -287,7 +287,7 @@ fm_directory_view_load_file_hash (GOFDirectoryAsync *dir, FMDirectoryView *view)
     GOFFile *file;
 
     g_hash_table_iter_init (&iter, dir->file_hash);
-    while (g_hash_table_iter_next (&iter, &location, &file)) {
+    while (g_hash_table_iter_next (&iter, (gpointer) &location, (gpointer) &file)) {
         g_signal_emit (view, signals[ADD_FILE], 0, file, dir);
     }
 }
