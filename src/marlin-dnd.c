@@ -37,8 +37,8 @@
 /*#include <libnautilus-private/nautilus-file-utilities.h>*/
 #include <stdio.h>
 #include <string.h>
-#include "gof-file.h"
 #include "eel-gtk-extensions.h"
+#include "gof-file.h"
 
 /* a set of defines stolen from the eel-icon-dnd.c file.
  * These are in microseconds.
@@ -89,7 +89,7 @@ marlin_drag_finalize (MarlinDragInfo *drag_info)
 #endif
 
 /* Functions to deal with MarlinDragSelectionItems.  */
-
+#if 0
 MarlinDragSelectionItem *
 marlin_drag_selection_item_new (void)
 {
@@ -117,6 +117,7 @@ marlin_drag_destroy_selection_list (GList *list)
 
     g_list_free (list);
 }
+#endif
 
 #if 0
 char **
@@ -824,6 +825,85 @@ marlin_drag_drop_action_ask (GtkWidget *widget,
 
     return damd.chosen;
 }
+
+/**
+ * marlin_dnd_perform: (imported from thunar)
+ * @widget            : the #GtkWidget on which the drop was done.
+ * @file              : the #GOFFile on which the @file_list was dropped.
+ * @file_list         : the list of #GFile<!---->s that was dropped.
+ * @action            : the #GdkDragAction that was performed.
+ * @new_files_closure : a #GClosure to connect to the job's "new-files" signal,
+ *                      which will be emitted when the job finishes with the
+ *                      list of #GFile<!---->s created by the job, or
+ *                      %NULL if you're not interested in the signal.
+ *
+ * Performs the drop of @file_list on @file in @widget, as given in
+ * @action and returns %TRUE if the drop was started successfully
+ * (or even completed successfully), else %FALSE.
+ *
+ * Return value: %TRUE if the DnD operation was started
+ *               successfully, else %FALSE.
+**/
+gboolean
+marlin_dnd_perform (GtkWidget       *widget,
+                    GOFFile         *file,
+                    GList           *file_list,
+                    GdkDragAction   action,
+                    GClosure        *new_files_closure)
+{
+    gboolean           succeed = TRUE;
+    GError            *error = NULL;
+
+    g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+    g_return_val_if_fail (gtk_widget_get_realized (widget), FALSE);
+
+#if 0
+    /* check if the file is a directory */
+    if (file->is_directory)
+    {
+        switch (action)
+        {
+        case GDK_ACTION_COPY:
+            break;
+
+        case GDK_ACTION_MOVE:
+            break;
+
+        case GDK_ACTION_LINK:
+            break;
+
+        default:
+            succeed = FALSE;
+        }
+    }
+#endif
+    if (file->is_directory)
+    {
+        printf ("%s marlin_file_oeration_copy_move\n", G_STRFUNC);
+        marlin_file_operations_copy_move (file_list, NULL, file->location,
+                                          action, widget, NULL, NULL);
+    }
+    else if (gof_file_is_executable (file))
+    {
+        succeed = gof_file_execute (file, gtk_widget_get_screen (widget), file_list, &error);
+        if (G_UNLIKELY (!succeed))
+        {
+            /* display an error to the user */
+            marlin_dialogs_show_error (widget, error, _("Failed to execute file \"%s\""), file->display_name);
+
+            /* release the error */
+            g_error_free (error);
+        }
+    }
+    else
+    {
+        succeed = FALSE;
+    }
+
+    return succeed;
+}
+
 
 #if 0
 gboolean

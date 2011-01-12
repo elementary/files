@@ -8,3 +8,4 @@ static gchar *tags_colors[10] = { NULL, "#fce94f", "#fcaf3e", "#997666", "#8ae23
 #define MARLIN_PREFERENCES_SIDEBAR_CAT_PERSONAL_EXPANDER    "sidebar-cat-personal-expander"
 #define MARLIN_PREFERENCES_SIDEBAR_CAT_DEVICES_EXPANDER     "sidebar-cat-devices-expander"
 #define MARLIN_PREFERENCES_SIDEBAR_CAT_NETWORK_EXPANDER     "sidebar-cat-network-expander"
+#define MARLIN_PREFERENCES_CONFIRM_TRASH                    "confirm-trash"

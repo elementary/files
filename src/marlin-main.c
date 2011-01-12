@@ -19,9 +19,10 @@ main (int argc, char *argv[])
     GtkWidget       *btn;
     GtkWidget       *entry;
     gchar           *path;
+    GFile           *location;
 
-
-    log_level = LOG_LEVEL_DEBUG;
+    //log_level = LOG_LEVEL_DEBUG;
+    log_level = LOG_LEVEL_UNDEFINED;
     log_println (LOG_LEVEL_INFO, "Welcome to Marlin");
     log_println (LOG_LEVEL_INFO, "Version: %s", "0.1");
     log_println (LOG_LEVEL_INFO, "Report any issues/bugs you might find to lp:marlin", "0.1");
@@ -54,7 +55,8 @@ main (int argc, char *argv[])
     }
 
     window = marlin_view_window_new ();
-    marlin_view_window_add_tab (window, g_file_new_for_commandline_arg(path));
+    location = g_file_new_for_commandline_arg(path);
+    marlin_view_window_add_tab (window, location);
 
     /*g_signal_connect (window, "up", (GCallback) marlin_view_window_up, NULL);*/
     /*g_signal_connect (window, "back", (GCallback) marlin_view_window_back, NULL);
@@ -72,7 +74,8 @@ main (int argc, char *argv[])
       gtk_binding_entry_add_signal (binding_set, GDK_KEY_BackSpace, 0,
       "up", 1,
       G_TYPE_BOOLEAN, FALSE);*/
-
+    
+    g_object_unref (location);
 
     gtk_main ();
     g_free (path);

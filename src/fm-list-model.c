@@ -64,6 +64,7 @@ static int      fm_list_model_file_entry_compare_func (gconstpointer a,
                                                        gconstpointer b,
                                                        gpointer      user_data);
 static void     fm_list_model_tree_model_init (GtkTreeModelIface *iface);
+static void     fm_list_model_drag_dest_init (GtkTreeDragDestIface *iface);
 static void     fm_list_model_sortable_init (GtkTreeSortableIface *iface);
 //static void fm_list_model_multi_drag_source_init (EggTreeMultiDragSourceIface *iface);
 
@@ -110,10 +111,10 @@ void    fm_list_model_remove_file (FMListModel *model, GOFFile *file,
                                    GOFDirectoryAsync *directory);
 
 G_DEFINE_TYPE_WITH_CODE (FMListModel, fm_list_model, G_TYPE_OBJECT,
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_MODEL,
-                                                fm_list_model_tree_model_init)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_SORTABLE,
-                                                fm_list_model_sortable_init));
+    G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_MODEL, fm_list_model_tree_model_init)
+    G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_DRAG_DEST, fm_list_model_drag_dest_init)
+    G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_SORTABLE, fm_list_model_sortable_init))
+
 /*			 G_IMPLEMENT_INTERFACE (EGG_TYPE_TREE_MULTI_DRAG_SOURCE,
                          fm_list_model_multi_drag_source_init));*/
 
@@ -127,7 +128,6 @@ G_DEFINE_TYPE_WITH_CODE (FMListModel, fm_list_model, G_TYPE_OBJECT,
 static void
 file_entry_free (FileEntry *file_entry)
 {
-    gof_file_unref (file_entry->file);
     //gof_file_unref (file_entry->file);
     if (file_entry->reverse_map) {
         g_hash_table_destroy (file_entry->reverse_map);
@@ -1303,8 +1303,7 @@ fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path)
     GtkTreeIter iter;
 
     file = NULL;
-    if (gtk_tree_model_get_iter (GTK_TREE_MODEL (model), 
-                                 &iter, path)) {
+    if (gtk_tree_model_get_iter (GTK_TREE_MODEL (model), &iter, path)) {
         gtk_tree_model_get (GTK_TREE_MODEL (model), 
                             &iter, 
                             FM_LIST_MODEL_FILE_COLUMN, &file,
@@ -1362,7 +1361,7 @@ fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirec
     //gof_directory_ref (file_entry->subdirectory);
     *directory = file_entry->subdirectory;
 
-    load_dir_async (file_entry->subdirectory);
+    //load_dir_async (file_entry->subdirectory);
 
     return TRUE;
 }
@@ -1634,6 +1633,23 @@ fm_list_model_get_emblem_column_id_from_zoom_level (NautilusZoomLevel zoom_level
    return -1;
    }*/
 
+static gboolean
+fm_list_model_drag_data_received (GtkTreeDragDest  *dest,
+                                  GtkTreePath      *path,
+                                  GtkSelectionData *data)
+{
+    return FALSE;
+}
+
+static gboolean
+fm_list_model_row_drop_possible (GtkTreeDragDest  *dest,
+                                 GtkTreePath      *path,
+                                 GtkSelectionData *data)
+{
+    return FALSE;
+}
+
+
 static void
 fm_list_model_dispose (GObject *object)
 {
@@ -1740,6 +1756,13 @@ fm_list_model_tree_model_init (GtkTreeModelIface *iface)
     iface->iter_n_children = fm_list_model_iter_n_children;
     iface->iter_nth_child = fm_list_model_iter_nth_child;
     iface->iter_parent = fm_list_model_iter_parent;
+}
+
+static void
+fm_list_model_drag_dest_init (GtkTreeDragDestIface *iface)
+{
+  iface->drag_data_received = fm_list_model_drag_data_received;
+  iface->row_drop_possible = fm_list_model_row_drop_possible;
 }
 
 static void

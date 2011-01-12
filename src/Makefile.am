@@ -55,6 +55,7 @@ marlin_SOURCES = \
     eel-gtk-extensions.c                    \
     eel-gdk-pixbuf-extensions.c             \
     eel-glib-extensions.c                   \
+    eel-gio-extensions.c                    \
     eel-stock-dialogs.c                     \
     eel-debug.c                             \
     eel-string.c                            \
@@ -64,6 +65,7 @@ marlin_SOURCES = \
     marlin-trash-monitor.c                  \
     marlin-bookmark.c                       \
     marlin-bookmark-list.c                  \
+    marlin-exec.c                           \
     marlin-dnd.c                            \
     marlin-clipboard-manager.c              \
     marlin-file-utilities.c                 \

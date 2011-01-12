@@ -35,11 +35,9 @@ typedef void (* MarlinCreateCallback)    (GFile      *new_file,
                                           gpointer    callback_data);
 #endif
 typedef void (* MarlinOpCallback)        (gpointer    callback_data);
-#if 0
 typedef void (* MarlinDeleteCallback)    (GHashTable *debuting_uris,
                                           gboolean    user_cancel,
                                           gpointer    callback_data);
-#endif
 typedef void (* MarlinMountCallback)     (GVolume    *volume,
                                           GObject    *callback_data_object);
 typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);

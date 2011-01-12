@@ -43,6 +43,7 @@ eel_strchr (const char *haystack, char needle)
 {
     return haystack == NULL ? NULL : strchr (haystack, needle);
 }
+#endif
 
 int
 eel_strcmp (const char *string_a, const char *string_b)
@@ -56,6 +57,7 @@ eel_strcmp (const char *string_a, const char *string_b)
                    string_b == NULL ? "" : string_b);
 }
 
+#if 0
 int
 eel_strcasecmp (const char *string_a, const char *string_b)
 {
@@ -90,6 +92,7 @@ eel_str_is_empty (const char *string_or_null)
 {
     return eel_strcmp (string_or_null, NULL) == 0;
 }
+#endif
 
 gboolean
 eel_str_is_equal (const char *string_a, const char *string_b)
@@ -102,6 +105,7 @@ eel_str_is_equal (const char *string_a, const char *string_b)
     return eel_strcmp (string_a, string_b) == 0;
 }
 
+#if 0
 gboolean
 eel_istr_is_equal (const char *string_a, const char *string_b)
 {

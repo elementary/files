@@ -29,13 +29,12 @@
 //#include "gof-directory-async.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
 #include "eel-glib-extensions.h"
+#include "eel-gtk-extensions.h"
 #include "marlin-tags.h"
 
-/*
-   struct FMListViewDetails {
-   GtkTreeView     *tree;
-   FMListModel     *model;
-   };*/
+struct FMListViewDetails {
+    GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
+};
 
 /* We wait two seconds after row is collapsed to unload the subdirectory */
 #define COLLAPSE_TO_UNLOAD_DELAY 2 
@@ -60,8 +59,8 @@ struct UnloadDelayData {
 };
 
 struct SelectionForeachData {
-	GList *list;
-	GtkTreeSelection *selection;
+    GList *list;
+    GtkTreeSelection *selection;
 };
 
 /* Declaration Prototypes */
@@ -180,59 +179,6 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 }
 
 static void
-gof_gnome_open_single_file (GOFFile *file, GdkScreen *screen)
-{
-    char *uri, *quoted_uri, *cmd;
-
-    if (g_file_is_native (file->location))
-    {
-        uri = g_filename_from_uri(g_file_get_uri(file->location), NULL, NULL);
-        quoted_uri = g_shell_quote(uri);
-        cmd = g_strconcat("gnome-open ", quoted_uri, NULL);
-        g_free(quoted_uri);
-
-        //log_printf (LOG_LEVEL_UNDEFINED, "command %s\n", uri);
-        gdk_spawn_command_line_on_screen (screen, cmd, NULL);
-        g_free (uri);
-        g_free (cmd);
-    }
-    else
-    {
-        log_printf (LOG_LEVEL_UNDEFINED, "non native\n");
-
-        /* FIXME: work with all apps supporting gio 
-           don't work with archives: opening a zip from trash with
-           file-roller - happens too with nautilus */
-        uri = g_file_get_uri(file->location);
-        cmd = g_strconcat("gnome-open ", uri, NULL);
-        log_printf (LOG_LEVEL_UNDEFINED, "command %s\n", cmd);
-        gdk_spawn_command_line_on_screen (screen, cmd, NULL);
-        g_free (uri);
-        g_free (cmd);
-    }
-}
-
-static void
-fm_directory_activate_single_file (GOFFile *file, FMListView *view, GdkScreen *screen)
-{
-    //GOFDirectoryAsync *dir;
-
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
-    if (file->is_directory) {
-        //view->location = file->location;
-        /*
-           fm_list_view_clear(view);
-           dir = gof_directory_async_new(view->location);*/
-        /*fm_list_view_clear(view);
-          gof_window_slot_change_location(view->slot, file->location);*/
-        fm_directory_view_load_location (FM_DIRECTORY_VIEW (view), file->location);
-    } else {
-        gof_gnome_open_single_file (file, screen); 
-    }
-
-}
-
-static void
 activate_selected_items (FMListView *view)
 {
     GList *file_list;
@@ -265,10 +211,10 @@ activate_selected_items (FMListView *view)
 
     /* TODO add mountable etc */
 
-    screen = gdk_screen_get_default();
+    screen = eel_gtk_widget_get_screen (GTK_WIDGET (view));
     guint nb_elem = g_list_length (file_list);
     if (nb_elem == 1)
-        fm_directory_activate_single_file(file_list->data, view, screen);
+        fm_directory_view_activate_single_file(FM_DIRECTORY_VIEW (view), file_list->data, screen);
     else
     {
         /* ignore opening more than 10 elements at a time */
@@ -280,7 +226,7 @@ activate_selected_items (FMListView *view)
                     /* TODO open dirs in new tabs */
                     log_printf (LOG_LEVEL_UNDEFINED, "open dir - new tab? %s\n", file->name);
                 } else {
-                    gof_gnome_open_single_file (file, screen);
+                    gof_file_open_single (file, screen);
                 }
             }
     }
@@ -350,6 +296,128 @@ subdirectory_unloaded_callback (FMListModel *model,
       view);*/
     fm_directory_view_remove_subdirectory (FM_DIRECTORY_VIEW (view), directory);
 }
+
+/*static void
+  do_popup_menu (GtkWidget *widget, FMListView *view, GdkEventButton *event)
+  {
+  if (tree_view_has_selection (GTK_TREE_VIEW (widget))) {
+//fm_directory_view_pop_up_selection_context_menu (FM_DIRECTORY_VIEW (view), event);
+printf ("popup_selection_menu\n");
+} else {
+//fm_directory_view_pop_up_background_context_menu (FM_DIRECTORY_VIEW (view), event);
+printf ("popup_background_menu\n");
+}
+}*/
+
+static gboolean
+button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView *view)
+{
+    GtkTreeSelection    *selection;
+    GtkTreePath         *path;
+    GtkTreeIter         iter;
+    GtkAction           *action;
+
+    /* check if the event is for the bin window */
+    if (G_UNLIKELY (event->window != gtk_tree_view_get_bin_window (tree_view)))
+        return FALSE;
+
+    /* we unselect all selected items if the user clicks on an empty
+     * area of the treeview and no modifier key is active.
+     */
+    if ((event->state & gtk_accelerator_get_default_mod_mask ()) == 0
+        && !gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL))
+    {
+        selection = gtk_tree_view_get_selection (tree_view);
+        gtk_tree_selection_unselect_all (selection);
+    }
+
+    /* open the context menu on right clicks */
+    if (event->type == GDK_BUTTON_PRESS && event->button == 3)
+    {
+        selection = gtk_tree_view_get_selection (tree_view);
+        if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
+        {
+            /* select the path on which the user clicked if not selected yet */
+            if (!gtk_tree_selection_path_is_selected (selection, path))
+            {
+                /* we don't unselect all other items if Control is active */
+                if ((event->state & GDK_CONTROL_MASK) == 0)
+                    gtk_tree_selection_unselect_all (selection);
+                gtk_tree_selection_select_path (selection, path);
+            }
+            gtk_tree_path_free (path);
+
+            /* queue the menu popup */
+            printf ("thunar_standard_view_queue_popup (THUNAR_STANDARD_VIEW (view), event)\n");
+            fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
+        }
+        else
+        {
+            /* open the context menu */
+            //thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (view), event->button, event->time);
+            printf ("thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (view), event->button, event->time)\n");
+        }
+
+        return TRUE;
+    }
+    else if ((event->type == GDK_BUTTON_PRESS || event->type == GDK_2BUTTON_PRESS) && event->button == 2)
+    {
+        /* determine the path to the item that was middle-clicked */
+        if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
+        {
+            /* select only the path to the item on which the user clicked */
+            selection = gtk_tree_view_get_selection (tree_view);
+            gtk_tree_selection_unselect_all (selection);
+            gtk_tree_selection_select_path (selection, path);
+
+            /* if the event was a double-click or we are in single-click mode, then
+             * we'll open the file or folder (folder's are opened in new windows)
+             */
+            if (G_LIKELY (event->type == GDK_2BUTTON_PRESS || exo_tree_view_get_single_click (EXO_TREE_VIEW (tree_view))))
+            {
+                printf ("activate selected ??\n");
+#if 0
+                /* determine the file for the path */
+                gtk_tree_model_get_iter (GTK_TREE_MODEL (view->model), &iter, path);
+                file = thunar_list_model_get_file (view->model, &iter);
+                if (G_LIKELY (file != NULL))
+                {
+                    /* determine the action to perform depending on the type of the file */
+                    /*action = thunar_gtk_ui_manager_get_action_by_name (THUNAR_STANDARD_VIEW (view)->ui_manager,
+                      thunar_file_is_directory (file) ? "open-in-new-window" : "open");*/
+                    printf ("open or open-in-new-window\n");
+
+                    /* emit the action */
+                    /*if (G_LIKELY (action != NULL))
+                      gtk_action_activate (action);*/
+
+                    /* release the file reference */
+                    g_object_unref (G_OBJECT (file));
+                }
+#endif
+            }
+
+            /* cleanup */
+            gtk_tree_path_free (path);
+        }
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+/*static gboolean
+  popup_menu_callback (GtkWidget *widget, gpointer callback_data)
+  {
+  FMListView *view;
+
+  view = FM_LIST_VIEW (callback_data);
+
+  do_popup_menu (widget, view, NULL);
+
+  return TRUE;
+  }*/
 
 static gboolean
 key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_data)
@@ -514,7 +582,9 @@ create_and_set_up_tree_view (FMListView *view)
     //GtkBindingSet *binding_set;
 
     //view->details->m_store = gtk_list_store_new  (GOF_DIR_COLS_MAX, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING);
-    view->model = g_object_new (FM_TYPE_LIST_MODEL, "has-child", TRUE, NULL);
+    //view->model = g_object_new (FM_TYPE_LIST_MODEL, "has-child", TRUE, NULL);
+    view->model = FM_DIRECTORY_VIEW (view)->model;
+    g_object_set (G_OBJECT (view->model), "has-child", TRUE, NULL);
     //view->details->customlist = custom_list_new();
 
     //#if 0
@@ -552,8 +622,8 @@ create_and_set_up_tree_view (FMListView *view)
     g_signal_connect_object (gtk_tree_view_get_selection (view->tree), "changed",
                              G_CALLBACK (list_selection_changed_callback), view, 0);
 
-    /*g_signal_connect_object (view->tree, "button-press-event",
-      G_CALLBACK (button_press_callback), view, 0);*/
+    g_signal_connect_object (view->tree, "button-press-event",
+                             G_CALLBACK (button_press_callback), view, 0);
     g_signal_connect_object (view->tree, "key_press_event",
                              G_CALLBACK (key_press_callback), view, 0);
     g_signal_connect_object (view->tree, "row_expanded",
@@ -632,6 +702,66 @@ fm_list_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *
     fm_list_model_add_file (model, file, directory);
 }
 
+static void
+fm_list_view_remove_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
+{
+    printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
+    GtkTreePath *path;
+    GtkTreePath *file_path;
+    GtkTreeIter iter;
+    GtkTreeIter temp_iter;
+    GtkTreeRowReference* row_reference;
+    FMListView *list_view;
+    GtkTreeModel* tree_model; 
+    GtkTreeSelection *selection;
+
+    path = NULL;
+    row_reference = NULL;
+    list_view = FM_LIST_VIEW (view);
+    tree_model = GTK_TREE_MODEL(list_view->model);
+
+    if (fm_list_model_get_tree_iter_from_file (list_view->model, file, directory, &iter))
+    {
+        selection = gtk_tree_view_get_selection (list_view->tree);
+        file_path = gtk_tree_model_get_path (tree_model, &iter);
+
+        if (gtk_tree_selection_path_is_selected (selection, file_path)) {
+            /* get reference for next element in the list view. If the element to be deleted is the 
+             * last one, get reference to previous element. If there is only one element in view
+             * no need to select anything.
+             */
+            temp_iter = iter;
+
+            if (gtk_tree_model_iter_next (tree_model, &iter)) {
+                path = gtk_tree_model_get_path (tree_model, &iter);
+                row_reference = gtk_tree_row_reference_new (tree_model, path);
+            } else {
+                path = gtk_tree_model_get_path (tree_model, &temp_iter);
+                if (gtk_tree_path_prev (path)) {
+                    row_reference = gtk_tree_row_reference_new (tree_model, path);
+                }
+            }
+            gtk_tree_path_free (path);
+        }
+
+        gtk_tree_path_free (file_path);
+
+        fm_list_model_remove_file (list_view->model, file, directory);
+
+        if (gtk_tree_row_reference_valid (row_reference)) {
+            if (list_view->details->new_selection_path) {
+                gtk_tree_path_free (list_view->details->new_selection_path);
+            }
+            list_view->details->new_selection_path = gtk_tree_row_reference_get_path (row_reference);
+        }
+
+        if (row_reference) {
+            gtk_tree_row_reference_free (row_reference);
+        }
+    }   
+}
+
+
 /*
    static void
    fm_list_view_clear (FMListView *view)
@@ -709,50 +839,70 @@ gtk_tree_selection_select_all (gtk_tree_view_get_selection (view->tree));
 static void
 fm_list_view_get_selection_for_file_transfer_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
 {
-	GOFFile *file;
-	struct SelectionForeachData *selection_data;
-	GtkTreeIter parent, child;
+    GOFFile *file;
+    struct SelectionForeachData *selection_data;
+    GtkTreeIter parent, child;
 
-	selection_data = data;
+    selection_data = data;
 
-	gtk_tree_model_get (model, iter,
-			    FM_LIST_MODEL_FILE_COLUMN, &file,
-			    -1);
+    gtk_tree_model_get (model, iter,
+                        FM_LIST_MODEL_FILE_COLUMN, &file,
+                        -1);
 
-	if (file != NULL) {
-		/* If the parent folder is also selected, don't include this file in the
-		 * file operation, since that would copy it to the toplevel target instead
-		 * of keeping it as a child of the copied folder
-		 */
-		child = *iter;
-		while (gtk_tree_model_iter_parent (model, &parent, &child)) {
-			if (gtk_tree_selection_iter_is_selected (selection_data->selection,
-								 &parent)) {
-				return;
-			}
-			child = parent;
-		}
-		
-		gof_file_ref (file);
-		selection_data->list = g_list_prepend (selection_data->list, file);
-	}
+    if (file != NULL) {
+        /* If the parent folder is also selected, don't include this file in the
+         * file operation, since that would copy it to the toplevel target instead
+         * of keeping it as a child of the copied folder
+         */
+        child = *iter;
+        while (gtk_tree_model_iter_parent (model, &parent, &child)) {
+            if (gtk_tree_selection_iter_is_selected (selection_data->selection,
+                                                     &parent)) {
+                return;
+            }
+            child = parent;
+        }
+
+        gof_file_ref (file);
+        selection_data->list = g_list_prepend (selection_data->list, file);
+    }
 }
 
 
 static GList *
 fm_list_view_get_selection_for_file_transfer (FMDirectoryView *view)
 {
-	struct SelectionForeachData selection_data;
+    struct SelectionForeachData selection_data;
 
-	selection_data.list = NULL;
-	selection_data.selection = gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree);
+    selection_data.list = NULL;
+    selection_data.selection = gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree);
 
-	gtk_tree_selection_selected_foreach (selection_data.selection,
-					     fm_list_view_get_selection_for_file_transfer_foreach_func, &selection_data);
+    gtk_tree_selection_selected_foreach (selection_data.selection,
+                                         fm_list_view_get_selection_for_file_transfer_foreach_func, &selection_data);
 
-	return g_list_reverse (selection_data.list);
+    return g_list_reverse (selection_data.list);
 }
 
+static GtkTreePath*
+fm_list_view_get_path_at_pos (FMDirectoryView *view, gint x, gint y)
+{
+    GtkTreePath *path;
+
+    g_return_val_if_fail (FM_IS_LIST_VIEW (view), NULL);
+
+    if (gtk_tree_view_get_dest_row_at_pos (FM_LIST_VIEW (view)->tree, x, y, &path, NULL))
+        return path;
+
+    return NULL;
+}
+
+static void
+fm_list_view_highlight_path (FMDirectoryView *view, GtkTreePath *path)
+{
+    g_return_if_fail (FM_IS_LIST_VIEW (view));
+    //gtk_tree_view_set_drag_dest_row (GTK_TREE_VIEW (GTK_BIN (standard_view)->child), path, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
+    gtk_tree_view_set_drag_dest_row (FM_LIST_VIEW (view)->tree, path, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
+}
 
 static void
 fm_list_view_finalize (GObject *object)
@@ -761,15 +911,19 @@ fm_list_view_finalize (GObject *object)
 
     log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
 
+    if (view->details->new_selection_path) {
+        gtk_tree_path_free (view->details->new_selection_path);
+    }
+
     g_object_unref (view->model);
-    //g_free (view->details);
+    g_free (view->details);
     G_OBJECT_CLASS (fm_list_view_parent_class)->finalize (object); 
 }
 
 static void
 fm_list_view_init (FMListView *view)
 {
-    //view->details = g_new0 (FMListViewDetails, 1);
+    view->details = g_new0 (FMListViewDetails, 1);
     create_and_set_up_tree_view (view);
 
     g_settings_bind (settings, "single-click", 
@@ -792,19 +946,16 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
     fm_directory_view_class->add_file = fm_list_view_add_file;
+    fm_directory_view_class->remove_file = fm_list_view_remove_file;
     fm_directory_view_class->colorize_selection = fm_list_view_colorize_selected_items;        
     fm_directory_view_class->sync_selection = fm_list_view_sync_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_list_view_get_selection_for_file_transfer;
+
+    fm_directory_view_class->get_path_at_pos = fm_list_view_get_path_at_pos;
+    fm_directory_view_class->highlight_path = fm_list_view_highlight_path;
+
 
     //eel_g_settings_add_auto_boolean (settings, "single-click", &single_click);
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }
 
-
-/*
-   GtkTreeView*
-   fm_list_view_get_tree_view (FMListView *list_view)
-   {
-   return list_view->tree_view;
-   }
-   */

@@ -25,6 +25,7 @@
 #define MARLIN_DND_H
 
 #include <gtk/gtk.h>
+#include "gof-file.h"
 /*#include <libnautilus-private/nautilus-window-slot-info.h>*/
 //#include "marlin-private.h"
 
@@ -38,13 +39,13 @@
 #define MARLIN_ICON_DND_RAW_TYPE	        "application/octet-stream"
 
 /* Item of the drag selection list */
-typedef struct {
+/*typedef struct {
     char *uri;
     gboolean got_icon_position;
     int icon_x, icon_y;
     int icon_width, icon_height;
 } MarlinDragSelectionItem;
-
+*/
 #if 0
 /* Standard Drag & Drop types. */
 typedef enum {
@@ -134,8 +135,8 @@ void			marlin_drag_init			(MarlinDragInfo *drag_info,
                                                                  gboolean add_text_targets);
 void			marlin_drag_finalize			(MarlinDragInfo *drag_info);
 #endif
-MarlinDragSelectionItem *marlin_drag_selection_item_new		(void);
-void		        marlin_drag_destroy_selection_list	(GList	*selection_list);
+/*MarlinDragSelectionItem *marlin_drag_selection_item_new		(void);
+void		        marlin_drag_destroy_selection_list	(GList	*selection_list);*/
 #if 0
 GList		        *marlin_drag_build_selection_list   	(GtkSelectionData *data);
 
@@ -189,5 +190,10 @@ gboolean		marlin_drag_selection_includes_special_link (GList *selection_list);
 void                    marlin_drag_slot_proxy_init             (GtkWidget *widget,
                                                                  MarlinDragSlotProxyInfo *drag_info);
 #endif
+gboolean                marlin_dnd_perform  (GtkWidget       *widget,
+                                             GOFFile         *file,
+                                             GList           *file_list,
+                                             GdkDragAction   action,
+                                             GClosure        *new_files_closure);
 
 #endif

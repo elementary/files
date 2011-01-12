@@ -51,8 +51,8 @@
 	</placeholder>
 
 </popup>-->
-<!--<popup name="selection">
-	<placeholder name="Open Placeholder">
+<popup name="selection">
+	<!--<placeholder name="Open Placeholder">
 		<menuitem name="Open" action="Open"/>
 		<menuitem name="OpenInNewTab" action="OpenInNewTab"/>
 		<menuitem name="OpenAlternate" action="OpenAlternate"/>
@@ -73,13 +73,13 @@
 			 <menuitem name="Open Scripts Folder" action="Open Scripts Folder"/>
 		</menu>
 	</placeholder>
-	<separator name="Clipboard separator"/>
+	<separator name="Clipboard separator"/>-->
 	<placeholder name="File Clipboard Actions">
 		<menuitem name="Cut" action="Cut"/>
 		<menuitem name="Copy" action="Copy"/>
 		<menuitem name="Paste Files Into" action="Paste Files Into"/>
 	</placeholder>
-	<separator name="File actions separator"/>
+<!--	<separator name="File actions separator"/>
 	<placeholder name="File Actions">
 		<menuitem name="Create Link" action="Create Link"/>
 		<menuitem name="Rename" action="Rename"/>
@@ -117,6 +117,6 @@
         </placeholder>
         <menuitem name="Connect To Server Link" action="Connect To Server Link"/>
         <separator name="Properties Separator"/>
-        <menuitem name="Properties" action="Properties"/>
-</popup>-->
+        <menuitem name="Properties" action="Properties"/>-->
+</popup>
 </ui>

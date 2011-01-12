@@ -72,6 +72,7 @@
 #include "nautilus-file-utilities.h"
 #include "nautilus-file-conflict-dialog.h"*/
 #include "marlin-file-conflict-dialog.h"
+#include "marlin-global-preferences.h"
 
 typedef struct {
     GIOSchedulerJob *io_job;	
@@ -103,7 +104,6 @@ typedef struct {
     gpointer done_callback_data;
 } CopyMoveJob;
 
-#if 0
 typedef struct {
     CommonJob common;
     GList *files;
@@ -113,6 +113,7 @@ typedef struct {
     gpointer done_callback_data;
 } DeleteJob;
 
+#if 0
 typedef struct {
     CommonJob common;
     GFile *dest_dir;
@@ -1056,7 +1057,6 @@ should_skip_readdir_error (CommonJob *common,
     return FALSE;
 }
 
-#if 0
 static gboolean
 can_delete_without_confirm (GFile *file)
 {
@@ -1083,7 +1083,6 @@ can_delete_files_without_confirm (GList *files)
 
     return TRUE;
 }
-#endif
 
 typedef struct {
     GtkWindow **parent_window;
@@ -1281,7 +1280,6 @@ run_warning (CommonJob *job,
     return res;
 }
 
-#if 0
 static int
 run_question (CommonJob *job,
               char *primary_text,
@@ -1305,7 +1303,6 @@ run_question (CommonJob *job,
     va_end (varargs);
     return res;
 }
-#endif
 
 static void
 inhibit_power_manager (CommonJob *job, const char *message)
@@ -1326,7 +1323,6 @@ job_aborted (CommonJob *job)
     return g_cancellable_is_cancelled (job->cancellable);
 }
 
-#if 0
 /* Since this happens on a thread we can't use the global prefs object */
 static gboolean
 should_confirm_trash (void)
@@ -1334,7 +1330,7 @@ should_confirm_trash (void)
     GSettings *prefs;
     gboolean confirm_trash;
 
-    prefs = g_settings_new ("org.gnome.nautilus.preferences");
+    prefs = g_settings_new ("org.gnome.marlin.preferences");
     confirm_trash = g_settings_get_boolean (prefs, MARLIN_PREFERENCES_CONFIRM_TRASH);
     g_object_unref (prefs);
     return confirm_trash;
@@ -1379,6 +1375,7 @@ confirm_delete_from_trash (CommonJob *job,
     return (response == 1);
 }
 
+#if 0
 static gboolean
 confirm_empty_trash (CommonJob *job)
 {
@@ -1402,6 +1399,7 @@ confirm_empty_trash (CommonJob *job)
 
     return (response == 1);
 }
+#endif
 
 static gboolean
 confirm_delete_directly (CommonJob *job,
@@ -1450,14 +1448,14 @@ report_delete_progress (CommonJob *job,
                         SourceInfo *source_info,
                         TransferInfo *transfer_info)
 {
-#ifdef HAVE_TASKVIEW
+//#ifdef HAVE_TASKVIEW
     g_object_set (job->tv_io,
                   "description", _("Deleting files"),
                   "state", TASKVIEW_RUNNING,
                   "processed-items", (guint64) transfer_info->num_files,
                   "total-items", (guint64) source_info->num_files,
                   NULL);
-#else
+/*#else
     int files_left;
     double elapsed, transfer_rate;
     int remaining_time;
@@ -1472,9 +1470,9 @@ report_delete_progress (CommonJob *job,
     transfer_info->last_report_time = now;
 
     files_left = source_info->num_files - transfer_info->num_files;
-
+*/
     /* Races and whatnot could cause this to be negative... */
-    if (files_left < 0) {
+/*    if (files_left < 0) {
         files_left = 1;
     }
 
@@ -1494,11 +1492,11 @@ report_delete_progress (CommonJob *job,
         char *details, *time_left_s;
         transfer_rate = transfer_info->num_files / elapsed;
         remaining_time = files_left / transfer_rate;
-
+*/
         /* To translators: %T will expand to a time like "2 minutes".
          * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
          */
-        time_left_s = f (ngettext ("%T left",
+/*        time_left_s = f (ngettext ("%T left",
                                    "%T left",
                                    seconds_count_format_time_units (remaining_time)),
                          remaining_time);
@@ -1514,7 +1512,7 @@ report_delete_progress (CommonJob *job,
     if (source_info->num_files != 0) {
         marlin_progress_info_set_progress (job->progress, transfer_info->num_files, source_info->num_files);
     }
-#endif
+#endif*/
 }
 
 static void delete_file (CommonJob *job, GFile *file,
@@ -1791,14 +1789,14 @@ report_trash_progress (CommonJob *job,
                        int files_trashed,
                        int total_files)
 {
-#ifdef HAVE_TASKVIEW
+//#ifdef HAVE_TASKVIEW
     g_object_set (job->tv_io,
                   "description", _("Moving files to trash"),    
                   "state", TASKVIEW_RUNNING,
                   "processed-items", (guint64) files_trashed,
                   "total-items", (guint64) total_files,
                   NULL);
-#else
+/*#else
     int files_left;
     char *s;
 
@@ -1816,7 +1814,7 @@ report_trash_progress (CommonJob *job,
     if (total_files != 0) {
         marlin_progress_info_set_progress (job->progress, files_trashed, total_files);
     }
-#endif
+#endif*/
 }
 
 
@@ -1947,11 +1945,11 @@ delete_job (GIOSchedulerJob *io_job,
 
     common = (CommonJob *)job;
     common->io_job = io_job;
-#ifdef HAVE_TASKVIEW
+//#ifdef HAVE_TASKVIEW
     taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
-#else
+/*#else
     marlin_progress_info_start (job->common.progress);
-#endif
+#endif*/
 
     to_trash_files = NULL;
     to_delete_files = NULL;
@@ -2058,6 +2056,7 @@ marlin_file_operations_trash_or_delete (GList                  *files,
                               done_callback,  done_callback_data);
 }
 
+#if 0
 void
 marlin_file_operations_delete (GList                  *files, 
                                GtkWindow              *parent_window,
@@ -5666,6 +5665,7 @@ location_list_from_uri_list (const GList *uris)
 
     return g_list_reverse (files);
 }
+#endif
 
 typedef struct {
     MarlinCopyCallback real_callback;
@@ -5681,107 +5681,6 @@ callback_for_move_to_trash (GHashTable *debuting_uris,
         data->real_callback (debuting_uris, data->real_data);
     g_slice_free (MoveTrashCBData, data);
 }
-
-void
-marlin_file_operations_copy_move (const GList *item_uris,
-                                  GArray *relative_item_points,
-                                  const char *target_dir,
-                                  GdkDragAction copy_action,
-                                  GtkWidget *parent_view,
-                                  MarlinCopyCallback  done_callback,
-                                  gpointer done_callback_data)
-{
-    printf ("%s\n", G_STRFUNC);
-    GList *locations;
-    GList *p;
-    GFile *dest, *src_dir;
-    GtkWindow *parent_window;
-    gboolean target_is_mapping;
-    gboolean have_nonmapping_source;
-
-    dest = NULL;
-    target_is_mapping = FALSE;
-    have_nonmapping_source = FALSE;
-
-    if (target_dir) {
-        dest = g_file_new_for_uri (target_dir);
-        if (g_file_has_uri_scheme (dest, "burn")) {
-            target_is_mapping = TRUE;
-        }
-    }
-
-    locations = location_list_from_uri_list (item_uris);
-
-    for (p = location_list_from_uri_list (item_uris); p != NULL; p = p->next) {
-        if (!g_file_has_uri_scheme ((GFile* )p->data, "burn")) {                
-            have_nonmapping_source = TRUE;
-        }
-    }
-
-    if (target_is_mapping && have_nonmapping_source && copy_action == GDK_ACTION_MOVE) {
-        /* never move to "burn:///", but fall back to copy.
-         * This is a workaround, because otherwise the source files would be removed.
-         */
-        copy_action = GDK_ACTION_COPY;
-    }
-
-    parent_window = NULL;
-    if (parent_view) {
-        parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
-    }
-
-    if (copy_action == GDK_ACTION_COPY) {
-        src_dir = g_file_get_parent (locations->data);
-        if (target_dir == NULL ||
-            (src_dir != NULL &&
-             g_file_equal (src_dir, dest))) {
-            marlin_file_operations_duplicate (locations,
-                                              relative_item_points,
-                                              parent_window,
-                                              done_callback, done_callback_data);
-        } else {
-            marlin_file_operations_copy (locations,
-                                         relative_item_points,
-                                         dest,
-                                         parent_window,
-                                         done_callback, done_callback_data);
-        }
-        if (src_dir) {
-            g_object_unref (src_dir);
-        }
-
-    } else if (copy_action == GDK_ACTION_MOVE) {
-        if (g_file_has_uri_scheme (dest, "trash")) {
-            MoveTrashCBData *cb_data;
-
-            cb_data = g_slice_new0 (MoveTrashCBData);
-            cb_data->real_callback = done_callback;
-            cb_data->real_data = done_callback_data;
-            marlin_file_operations_trash_or_delete (locations,
-                                                    parent_window,
-                                                    (MarlinDeleteCallback) callback_for_move_to_trash,
-                                                    cb_data);
-        } else {
-            marlin_file_operations_move (locations,
-                                         relative_item_points,
-                                         dest,
-                                         parent_window,
-                                         done_callback, done_callback_data);
-        }
-    } else {
-        marlin_file_operations_link (locations,
-                                     relative_item_points,
-                                     dest,
-                                     parent_window,
-                                     done_callback, done_callback_data);
-    }
-
-    g_list_free_full (locations, g_object_unref);
-    if (dest) {
-        g_object_unref (dest);
-    }
-}
-#endif
 
 void 
 marlin_file_operations_copy_move   (GList                  *files,
@@ -5846,8 +5745,7 @@ marlin_file_operations_copy_move   (GList                  *files,
 
     } else if (copy_action == GDK_ACTION_MOVE) {
         if (g_file_has_uri_scheme (target_dir, "trash")) {
-            //TODO move to trash
-            /*MoveTrashCBData *cb_data;
+            MoveTrashCBData *cb_data;
 
             cb_data = g_slice_new0 (MoveTrashCBData);
             cb_data->real_callback = done_callback;
@@ -5855,7 +5753,7 @@ marlin_file_operations_copy_move   (GList                  *files,
             marlin_file_operations_trash_or_delete (files,
                                                     parent_window,
                                                     (MarlinDeleteCallback) callback_for_move_to_trash,
-                                                    cb_data);*/
+                                                    cb_data);
         } else {
             marlin_file_operations_move (files,
                                          relative_item_points,

@@ -48,7 +48,7 @@ namespace GOF {
     [CCode (cprefix = "GOFFile", lower_case_cprefix = "gof_file_")]
     [CCode (cheader_filename = "gof-file.h")]
     public class File : GLib.Object {
-        public File(GLib.FileInfo file_info, GLib.File dir);
+        public File(GLib.FileInfo file_info, GLib.File location, GLib.File dir);
         public GLib.File location;
         public GLib.Icon icon;
         public GLib.FileInfo info;

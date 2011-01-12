@@ -34,6 +34,7 @@
 #include "marlin-window-columns.h"
 #include "gof-window-slot.h"
 #include "marlin-clipboard-manager.h"
+#include "fm-list-model.h"
 
 typedef struct FMDirectoryView FMDirectoryView;
 typedef struct FMDirectoryViewClass FMDirectoryViewClass;
@@ -55,6 +56,8 @@ typedef struct FMDirectoryViewDetails FMDirectoryViewDetails;
 struct FMDirectoryView {
     GtkScrolledWindow       parent;
     MarlinClipboardManager  *clipboard;
+    FMListModel             *model;
+
     FMDirectoryViewDetails  *details;
 };
 
@@ -79,14 +82,14 @@ struct FMDirectoryViewClass {
     void    (* add_file) 		 (FMDirectoryView *view, 
                                           GOFFile *file,
                                           GOFDirectoryAsync *directory);
-    void    (* colorize_selection)	 (FMDirectoryView *view, int color);
-    void    (* sync_selection)	         (FMDirectoryView *view);
-
-#if 0
     void    (* remove_file)		 (FMDirectoryView *view, 
                                           GOFFile *file,
                                           GOFDirectoryAsync *directory);
+    void    (* colorize_selection)	 (FMDirectoryView *view, int color);
+    void    (* sync_selection)	         (FMDirectoryView *view);
 
+
+#if 0
     /* The 'file_changed' signal is emitted to signal a change in a file,
      * including the file being removed.
      * It must be replaced by each subclass.
@@ -350,6 +353,17 @@ struct FMDirectoryViewClass {
     /*gboolean (* trash)                         (FMDirectoryView *view);
       gboolean (* delete)                        (FMDirectoryView *view);*/
 #endif
+
+    /* Returns the path at the given position or NULL if no item/row
+     * is located at that coordinates. The path is freed by the caller.
+     */
+    GtkTreePath *(*get_path_at_pos)     (FMDirectoryView *view, gint x, gint y);
+
+    /* Sets the item/row that is highlighted for feedback. NULL is
+     * passed for path to disable the highlighting.
+     */
+    void         (*highlight_path)      (FMDirectoryView *view, GtkTreePath *path);
+
 };
 
 /* GObject support */
@@ -360,10 +374,14 @@ void    fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *lo
 void    fm_directory_view_column_add_preview (FMDirectoryView *dview, GOFFile *file);
 void    fm_directory_view_set_active_slot (FMDirectoryView *dview);
 void    fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location);
+void    fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, GdkScreen *screen);
 //void    fm_directory_view_colorize_selection (FMDirectoryView *view, int color);
 void    fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFile *file);
 
 void    fm_directory_view_merge_menus (FMDirectoryView *view);
 void    fm_directory_view_unmerge_menus (FMDirectoryView *view);
+
+void    fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event);
+GList   *fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view);
 
 #endif /* FM_DIRECTORY_VIEW_H */

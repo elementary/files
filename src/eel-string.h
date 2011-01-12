@@ -43,8 +43,10 @@
 size_t   eel_strlen                        (const char    *str);
 char *   eel_strchr                        (const char    *haystack,
                                             char           needle);
+#endif
 int      eel_strcmp                        (const char    *str_a,
                                             const char    *str_b);
+#if 0
 int      eel_strcasecmp                    (const char    *str_a,
                                             const char    *str_b);
 int      eel_strcmp_case_breaks_ties       (const char    *str_a,
@@ -52,8 +54,10 @@ int      eel_strcmp_case_breaks_ties       (const char    *str_a,
 
 /* Other basic string operations. */
 gboolean eel_str_is_empty                  (const char    *str_or_null);
+#endif
 gboolean eel_str_is_equal                  (const char    *str_a,
                                             const char    *str_b);
+#if 0
 gboolean eel_istr_is_equal                 (const char    *str_a,
                                             const char    *str_b);
 gboolean eel_str_has_prefix                (const char    *target,

@@ -52,10 +52,12 @@ typedef struct {
     gint                n_builtins_before;
 
     /* DnD */
-    GList     *drag_list;
-    gboolean  drag_data_received;
-    int       drag_data_info;
-    gboolean  drop_occured;
+    GList               *drag_list;
+    gint                drag_scroll_timer_id;
+    GdkDragContext      *drag_context;
+    gboolean            drag_data_received;
+    int                 drag_data_info;
+    gboolean            drop_occured;
 
     GtkWidget *popup_menu;
     GtkWidget *popup_menu_open_in_new_tab_item;

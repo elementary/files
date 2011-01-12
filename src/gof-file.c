@@ -23,6 +23,10 @@
 #include "marlin-global-preferences.h" 
 #include "eel-i18n.h"
 #include "eel-fcts.h"
+#include "eel-string.h"
+#include "eel-gio-extensions.h"
+#include "gof-directory-async.h"
+#include "marlin-exec.h"
 #include "marlin-vala.h"
 
 
@@ -84,27 +88,35 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
         LAST_SIGNAL
     };
 
-static guint signals[LAST_SIGNAL];
+static guint    signals[LAST_SIGNAL];
+static guint32  effective_user_id;
 
-GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
+GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
 {
     GOFFile * self;
     NautilusIconInfo *nicon;
 
     g_return_val_if_fail (file_info != NULL, NULL);
+
     self = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
     self->info = file_info;
     //self->parent_dir = g_file_enumerator_get_container (enumerator);
     self->directory = dir;
-    //log_printf (LOG_LEVEL_UNDEFINED, "test parent_dir %s\n", g_file_get_uri(self->directory));
     //g_object_ref (self->directory);
     self->name = g_file_info_get_name (file_info);
+    
+    if (location != NULL)
+        self->location = g_object_ref (location);
+    else if (dir != NULL)
+        self->location = g_file_get_child(self->directory, self->name);
+    else 
+        return NULL;
+    
+    //log_printf (LOG_LEVEL_UNDEFINED, "test parent_dir %s\n", g_file_get_uri(self->location));
+
     self->display_name = g_file_info_get_display_name (file_info);
     self->is_hidden = g_file_info_get_is_hidden (file_info);
-    /* don't waste time on collecting data for hidden files which would be dropped */
-    if (self->is_hidden && !g_settings_get_boolean(settings, "show-hiddenfiles"))
-        return self;
-    self->location = g_file_get_child(self->directory, self->name);
+    self->basename = g_file_get_basename (self->location);
     self->ftype = g_file_info_get_attribute_string (file_info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
     self->size = (guint64) g_file_info_get_size (file_info);
     self->file_type = g_file_info_get_file_type(file_info);
@@ -112,10 +124,17 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *dir)
     self->modified = g_file_info_get_attribute_uint64 (file_info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
     self->utf8_collation_key = g_utf8_collate_key (self->name, -1);
-    self->format_size = g_format_size_for_display(self->size);
+    if (self->is_directory)
+        self->format_size = g_strdup ("--");
+    else
+        self->format_size = g_format_size_for_display(self->size);
     self->formated_modified = gof_file_get_date_as_string (self->modified);
     self->icon = g_content_type_get_icon (self->ftype);
 
+    /* don't waste time on collecting data for hidden files which would be dropped */
+    //TODO set property don't call g_setting for each files
+    if (self->is_hidden && !g_settings_get_boolean(settings, "show-hiddenfiles"))
+        return self;
     nicon = nautilus_icon_info_lookup (self->icon, 16);
     self->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
     g_object_unref (nicon);
@@ -143,6 +162,7 @@ static void gof_file_finalize (GObject* obj) {
     log_printf (LOG_LEVEL_UNDEFINED, "%s %s\n", G_STRFUNC, file->name);
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
+    g_free(file->basename);
     g_free(file->utf8_collation_key);
     g_free(file->format_size);
     g_free(file->formated_modified);
@@ -153,6 +173,10 @@ static void gof_file_finalize (GObject* obj) {
 }
 
 static void gof_file_class_init (GOFFileClass * klass) {
+
+    /* determine the effective user id of the process */
+    effective_user_id = geteuid ();
+
     gof_file_parent_class = g_type_class_peek_parent (klass);
     //g_type_class_add_private (klass, sizeof (GOFFilePrivate));
     /*G_OBJECT_CLASS (klass)->get_property = gof_file_get_property;
@@ -700,7 +724,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
         && file->is_thumbnailing)
         gicon = g_themed_icon_new (ICON_NAME_THUMBNAIL_LOADING);
     else
-        gicon = file->icon;
+        gicon = g_object_ref (file->icon);
 
     if (gicon) {
         icon = nautilus_icon_info_lookup (gicon, size);
@@ -732,88 +756,644 @@ gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileI
     return pix;
 }
 
-//TODO waiting to be implemented with directories: never create twice the same objects
-#if 0
-static GOFFile *
-gof_file_get_internal (GFile *location, gboolean create)
+/**
+ * gof_file_is_writable: impoted from thunar
+ * @file : a #GOFFile instance.
+ *
+ * Determines whether the owner of the current process is allowed
+ * to write the @file.
+ *
+ * Return value: %TRUE if @file can be read.
+ **/
+gboolean
+gof_file_is_writable (GOFFile *file)
 {
-    gboolean self_owned;
-    NautilusDirectory *directory;
-    NautilusFile *file;
-    GFile *parent;
-    char *basename;
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
-    g_assert (location != NULL);
+    if (file->info == NULL)
+        return FALSE;
+    if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+        return TRUE;
 
-    parent = g_file_get_parent (location);
+    return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+}
 
-    self_owned = FALSE;
-    if (parent == NULL) {
-        self_owned = TRUE;
-        parent = g_object_ref (location);
-    } 
+gboolean
+gof_file_is_trashed (GOFFile *file)
+{
+  g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+  return eel_g_file_is_trashed (file->location);
+}
 
-    /* Get object that represents the directory. */
-    directory = nautilus_directory_get_internal (parent, create);
 
-    g_object_unref (parent);
+/**
+ * gof_file_is_desktop_file: imported from thunar
+ * @file : a #GOFFile.
+ *
+ * Returns %TRUE if @file is a .desktop file, but not a .directory file.
+ *
+ * Return value: %TRUE if @file is a .desktop file.
+**/
+gboolean
+gof_file_is_desktop_file (const GOFFile *file)
+{
+    const gchar *content_type;
+    gboolean     is_desktop_file = FALSE;
 
-    /* Get the name for the file. */
-    if (self_owned && directory != NULL) {
-        basename = nautilus_directory_get_name_for_self_as_new_file (directory);
-    } else {
-        basename = g_file_get_basename (location);
-    }
-    /* Check to see if it's a file that's already known. */
-    if (directory == NULL) {
-        file = NULL;
-    } else if (self_owned) {
-        file = directory->details->as_file;
-    } else {
-        file = nautilus_directory_find_file_by_name (directory, basename);
-    }
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
-    /* Ref or create the file. */
-    if (file != NULL) {
-        nautilus_file_ref (file);
-    } else if (create) {
-        file = nautilus_file_new_from_filename (directory, basename, self_owned);
-        if (self_owned) {
-            g_assert (directory->details->as_file == NULL);
-            directory->details->as_file = file;
-        } else {
-            nautilus_directory_add_file (directory, file);
+    if (file->info == NULL)
+        return FALSE;
+
+    content_type = file->ftype;
+    if (content_type != NULL)
+        is_desktop_file = g_content_type_equals (content_type, "application/x-desktop");
+
+    return is_desktop_file 
+        && !g_str_has_suffix (file->basename, ".directory");
+}
+
+/**
+ * gof_file_is_executable: imported from thunar
+ * @file : a #GOFFile instance.
+ *
+ * Determines whether the owner of the current process is allowed
+ * to execute the @file (or enter the directory refered to by
+ * @file). On UNIX it also returns %TRUE if @file refers to a 
+ * desktop entry.
+ *
+ * Return value: %TRUE if @file can be executed.
+**/
+gboolean
+gof_file_is_executable (const GOFFile *file)
+{
+    gboolean     can_execute = FALSE;
+    const gchar *content_type;
+
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+
+    if (file->info == NULL)
+        return FALSE;
+
+    if (g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
+    {
+        /* get the content type of the file */
+        //TODO
+        //content_type = g_file_info_get_content_type (file->info);
+        content_type = file->ftype;
+        if (G_LIKELY (content_type != NULL))
+        {
+#ifdef G_OS_WIN32
+            /* check for .exe, .bar or .com */
+            can_execute = g_content_type_can_be_executable (content_type);
+#else
+            /* check if the content type is save to execute, we don't use
+             * g_content_type_can_be_executable() for unix because it also returns
+             * true for "text/plain" and we don't want that */
+            if (g_content_type_is_a (content_type, "application/x-executable")
+                || g_content_type_is_a (content_type, "application/x-shellscript"))
+            {
+                can_execute = TRUE;
+            }
+#endif
         }
     }
 
-    g_free (basename);
-    nautilus_directory_unref (directory);
+    return can_execute || gof_file_is_desktop_file (file);
+}
+
+
+GOFFile* gof_file_get (GFile *location)
+{
+    /* FIXME must be async */
+    GFileInfo *file_info;
+    GFile *parent;
+    GOFFile *file = NULL;
+    GOFDirectoryAsync *dir = NULL;
+
+    //printf ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
+    if ((parent = g_file_get_parent (location)) != NULL)
+        dir = gof_directory_cache_lookup (parent);
+    if (dir != NULL) {
+        //printf (">>>>>>>>>>>>>>> dir already loaded %s\n", g_file_get_uri (parent));
+        if ((file = g_hash_table_lookup (dir->file_hash, location)) == NULL)
+            file = g_hash_table_lookup (dir->hidden_file_hash, location);
+    }
+
+    if (file != NULL) {
+        //printf (">>>>reuse file\n");
+        g_object_ref (file);
+    } else {
+        file_info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
+                                       G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, NULL);
+        if (file_info == NULL)
+            return NULL;
+        file = gof_file_new (file_info, location, parent);
+    }
+
+    return (file);
+}
+
+GOFFile* gof_file_get_by_uri (const char *uri)
+{
+    GFile *location;
+    GOFFile *file;
+
+    location = g_file_new_for_uri (uri);
+    printf ("%s %s\n", G_STRFUNC, g_file_get_uri (location));
+    file = gof_file_get (location);
+    g_object_unref (location);
 
     return file;
 }
 
-GOFFile *
-gof_file_get (GFile *location)
+GOFFile* gof_file_get_by_commandline_arg (const char *arg)
 {
-    return gof_file_get_internal (location, TRUE);
+    GFile *location;
+    GOFFile *file;
+
+    location = g_file_new_for_commandline_arg (arg);
+    file = gof_file_get (location);
+    g_object_unref (location);
+
+    return file;
+}
+
+/* Return value: the string representation of @list conforming to the
+ *               text/uri-list mime type defined in RFC 2483.
+ */
+#if 0
+gchar *
+gof_g_file_list_to_string (GList *list, gsize *len)
+{
+    GString *string;
+    gchar   *uri;
+    GList   *lp;
+
+    /* allocate initial string */
+    string = g_string_new (NULL);
+
+    for (lp = list; lp != NULL; lp = lp->next)
+    {
+        uri = g_file_get_uri (lp->data);
+        string = g_string_append (string, uri);
+        g_free (uri);
+
+        string = g_string_append (string, "\r\n");
+    }
+
+    *len = string->len;
+    return g_string_free (string, FALSE);
 }
 #endif
 
-GOFFile* gof_file_get(GFile *location)
+gchar *
+gof_file_list_to_string (GList *list, gsize *len)
 {
-    /* TODO check directories in a hastable for a already known file */
-    GFileInfo *file_info;
-    GFile *parent;
-    GOFFile *file;
+    GString *string;
+    gchar   *uri;
+    GList   *lp;
 
-    parent = g_file_get_parent (location);
-    file_info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                   G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, NULL);
-    if (file_info == NULL)
-        return NULL;
-    file = gof_file_new(file_info, parent);
+    /* allocate initial string */
+    string = g_string_new (NULL);
 
-    return (file);
+    for (lp = list; lp != NULL; lp = lp->next)
+    {
+        uri = g_file_get_uri (GOF_FILE(lp->data)->location);
+        string = g_string_append (string, uri);
+        g_free (uri);
+
+        string = g_string_append (string, "\r\n");
+    }
+
+    *len = string->len;
+    return g_string_free (string, FALSE); 
+}
+
+gboolean
+gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b)
+{
+    const gchar *filesystem_id_a;
+    const gchar *filesystem_id_b;
+
+    g_return_val_if_fail (GOF_IS_FILE (file_a), FALSE);
+    g_return_val_if_fail (GOF_IS_FILE (file_b), FALSE);
+
+    /* return false if we have no information about one of the files */
+    if (file_a->info == NULL || file_b->info == NULL)
+        return FALSE;
+
+    /* determine the filesystem IDs */
+    filesystem_id_a = g_file_info_get_attribute_string (file_a->info, 
+                                                        G_FILE_ATTRIBUTE_ID_FILESYSTEM);
+
+    filesystem_id_b = g_file_info_get_attribute_string (file_b->info, 
+                                                        G_FILE_ATTRIBUTE_ID_FILESYSTEM);
+
+    /* compare the filesystem IDs */
+    return eel_str_is_equal (filesystem_id_a, filesystem_id_b);
+}
+
+/**
+ * gof_file_accepts_drop (imported from thunar):
+ * @file                    : a #GOFFile instance.
+ * @file_list               : the list of #GFile<!---->s that will be droppped.
+ * @context                 : the current #GdkDragContext, which is used for the drop.
+ * @suggested_action_return : return location for the suggested #GdkDragAction or %NULL.
+ *
+ * Checks whether @file can accept @path_list for the given @context and
+ * returns the #GdkDragAction<!---->s that can be used or 0 if no actions
+ * apply.
+ *
+ * If any #GdkDragAction<!---->s apply and @suggested_action_return is not
+ * %NULL, the suggested #GdkDragAction for this drop will be stored to the
+ * location pointed to by @suggested_action_return.
+ *
+ * Return value: the #GdkDragAction<!---->s supported for the drop or
+ *               0 if no drop is possible.
+**/
+
+GdkDragAction
+gof_file_accepts_drop (GOFFile          *file,
+                       GList            *file_list,
+                       GdkDragContext   *context,
+                       GdkDragAction    *suggested_action_return)
+{
+    GdkDragAction   suggested_action;
+    GdkDragAction   actions;
+    GOFFile         *ofile;
+    GFile           *parent_file;
+    GList           *lp;
+    guint           n;
+
+    g_return_val_if_fail (GOF_IS_FILE (file), 0);
+    g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), 0);
+
+    /* we can never drop an empty list */
+    if (G_UNLIKELY (file_list == NULL))
+        return 0;
+
+    /* default to whatever GTK+ thinks for the suggested action */
+    suggested_action = gdk_drag_context_get_suggested_action (context);
+
+    printf ("%s %s %s\n", G_STRFUNC, g_file_get_uri (file->location), g_file_get_uri (file_list->data));
+    /* check if we have a writable directory here or an executable file */
+    if (file->is_directory && gof_file_is_writable (file))
+    {
+        /* determine the possible actions */
+        actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_ASK);
+
+        /* cannot create symbolic links in the trash or copy to the trash */
+        if (gof_file_is_trashed (file))
+            actions &= ~(GDK_ACTION_COPY | GDK_ACTION_LINK);
+
+        /* check up to 100 of the paths (just in case somebody tries to
+         * drag around his music collection with 5000 files).
+         */
+        for (lp = file_list, n = 0; lp != NULL && n < 100; lp = lp->next, ++n)
+        {
+            printf ("%s %s %s\n", G_STRFUNC, g_file_get_uri (file->location), g_file_get_uri (lp->data));
+            /* we cannot drop a file on itself */
+            if (G_UNLIKELY (g_file_equal (file->location, lp->data)))
+                return 0;
+
+            /* check whether source and destination are the same */
+            parent_file = g_file_get_parent (lp->data);
+            if (G_LIKELY (parent_file != NULL))
+            {
+                if (g_file_equal (file->location, parent_file))
+                {
+                    g_object_unref (parent_file);
+                    return 0;
+                }
+                else
+                    g_object_unref (parent_file);
+            }
+
+            /* copy/move/link within the trash not possible */
+            if (G_UNLIKELY (eel_g_file_is_trashed (lp->data) && gof_file_is_trashed (file)))
+                return 0;
+        }
+
+        /* if the source offers both copy and move and the GTK+ suggested action is copy, try to be smart telling whether we should copy or move by default by checking whether the source and target are on the same disk. */
+        if ((actions & (GDK_ACTION_COPY | GDK_ACTION_MOVE)) != 0 
+            && (suggested_action == GDK_ACTION_COPY))
+        {
+            /* default to move as suggested action */
+            suggested_action = GDK_ACTION_MOVE;
+
+            /* check for up to 100 files, for the reason state above */
+            for (lp = file_list, n = 0; lp != NULL && n < 100; lp = lp->next, ++n)
+            {
+                /* dropping from the trash always suggests move */
+                if (G_UNLIKELY (eel_g_file_is_trashed (lp->data)))
+                    break;
+
+                /* determine the cached version of the source file */
+                ofile = gof_file_get(lp->data);
+
+                /* we have only move if we know the source and both the source and the target
+                 * are on the same disk, and the source file is owned by the current user.
+                 */
+                if (ofile == NULL 
+                    || !gof_file_same_filesystem (file, ofile)
+                    || (ofile->info != NULL 
+                        && g_file_info_get_attribute_uint32 (ofile->info, 
+                                                             G_FILE_ATTRIBUTE_UNIX_UID) != effective_user_id))
+                {
+                    //printf ("%s default suggested action GDK_ACTION_COPY\n", G_STRFUNC);
+                    /* default to copy and get outa here */
+                    suggested_action = GDK_ACTION_COPY;
+                    break;
+                }
+            }
+            //printf ("%s actions MOVE %d COPY %d suggested %d\n", G_STRFUNC, GDK_ACTION_MOVE, GDK_ACTION_COPY, suggested_action);
+        }
+    }
+    else if (gof_file_is_executable (file))
+    {
+        /* determine the possible actions */
+        actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_PRIVATE);
+    }
+    else
+        return 0;
+
+    /* determine the preferred action based on the context */
+    if (G_LIKELY (suggested_action_return != NULL))
+    {
+        /* determine a working action */
+        if (G_LIKELY ((suggested_action & actions) != 0))
+            *suggested_action_return = suggested_action;
+        else if ((actions & GDK_ACTION_ASK) != 0)
+            *suggested_action_return = GDK_ACTION_ASK;
+        else if ((actions & GDK_ACTION_COPY) != 0)
+            *suggested_action_return = GDK_ACTION_COPY;
+        else if ((actions & GDK_ACTION_LINK) != 0)
+            *suggested_action_return = GDK_ACTION_LINK;
+        else if ((actions & GDK_ACTION_MOVE) != 0)
+            *suggested_action_return = GDK_ACTION_MOVE;
+        else
+            *suggested_action_return = GDK_ACTION_PRIVATE;
+    }
+
+    /* yeppa, we can drop here */
+    return actions;
+}
+
+static gboolean
+gof_spawn_command_line_on_screen (char *cmd, GdkScreen *screen)
+{
+    GAppInfo *app;
+    GdkAppLaunchContext *ctx;
+    GError *error = NULL;
+    gboolean succeed = FALSE;
+
+    app = g_app_info_create_from_commandline (cmd, NULL, 0, &error);
+
+    if (app != NULL && screen != NULL) {
+        ctx = gdk_app_launch_context_new ();
+        gdk_app_launch_context_set_screen (ctx, screen);
+
+        succeed = g_app_info_launch (app, NULL, G_APP_LAUNCH_CONTEXT (ctx), &error);
+
+        g_object_unref (app);
+        g_object_unref (ctx);
+    }
+
+    if (error != NULL) {
+        g_message ("Could not start application on terminal: %s", error->message);
+        g_error_free (error);
+    }
+
+    return (succeed);
+}
+
+
+/**
+ * gof_file_get_default_handler: imported from thunar
+ * @file : a #GOFFile instance.
+ *
+ * Returns the default #GAppInfo for @file or %NULL if there is none.
+ * 
+ * The caller is responsible to free the returned #GAppInfo using
+ * g_object_unref().
+ *
+ * Return value: Default #GAppInfo for @file or %NULL if there is none.
+**/
+GAppInfo *
+gof_file_get_default_handler (const GOFFile *file) 
+{
+    const gchar *content_type;
+    GAppInfo    *app_info = NULL;
+    gboolean     must_support_uris = FALSE;
+    gchar       *path;
+
+    g_return_val_if_fail (GOF_IS_FILE (file), NULL);
+
+    //TODO
+    //content_type = thunar_file_get_content_type (file);
+    content_type = file->ftype;
+    if (content_type != NULL)
+    {
+        path = g_file_get_path (file->location);
+        must_support_uris = (path == NULL);
+        g_free (path);
+
+        app_info = g_app_info_get_default_for_type (content_type, must_support_uris);
+    }
+
+    if (app_info == NULL)
+        app_info = g_file_query_default_handler (file->location, NULL, NULL);
+
+    return app_info;
+}
+
+gboolean
+gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error)
+{
+    gboolean    snotify = FALSE;
+    gboolean    terminal;
+    gboolean    result = FALSE;
+    GKeyFile    *key_file;
+    GError      *err = NULL;
+    gchar       *icon = NULL;
+    gchar       *name;
+    gchar       *type;
+    gchar       *url;
+    gchar       *location;
+    gchar       *exec;
+
+    gchar       *cmd = NULL;
+    gchar       *quoted_location;
+    gchar       *quoted_arg_location;
+    gchar       *arg_location;
+    GList       *lp;
+
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
+    g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+    /* only execute locale executable files */
+    if (!g_file_is_native (file->location))
+        return FALSE;
+    location = g_file_get_path (file->location);
+
+    if (gof_file_is_desktop_file (file))
+    {
+        key_file = eel_g_file_query_key_file (file->location, NULL, &err);
+
+        if (key_file == NULL)
+        {
+            g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
+                         _("Failed to parse the desktop file: %s"), err->message);
+            g_error_free (err);
+            return FALSE;
+        }
+
+        type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                      G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
+
+        if (G_LIKELY (eel_str_is_equal (type, "Application")))
+        {
+            exec = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                          G_KEY_FILE_DESKTOP_KEY_EXEC, NULL);
+            if (G_LIKELY (exec != NULL))
+            {
+                /* parse other fields */
+                name = g_key_file_get_locale_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                                     G_KEY_FILE_DESKTOP_KEY_NAME, NULL,
+                                                     NULL);
+                icon = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                              G_KEY_FILE_DESKTOP_KEY_ICON, NULL);
+                /* TODO use terminal snotify */
+                terminal = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                                   G_KEY_FILE_DESKTOP_KEY_TERMINAL, NULL);
+                snotify = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                                  G_KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY, 
+                                                  NULL);
+
+                cmd = marlin_exec_parse (exec, file_list, icon, name, location); 
+
+                g_free (name);
+                g_free (icon);
+                g_free (exec);
+            }
+            else
+            {
+                /* TRANSLATORS: `Exec' is a field name in a .desktop file. 
+                 * Don't translate it. */
+                g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, 
+                             _("No Exec field specified"));
+            }
+        }
+        else if (eel_str_is_equal (type, "Link"))
+        {
+            url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                         G_KEY_FILE_DESKTOP_KEY_URL, NULL);
+            if (G_LIKELY (url != NULL))
+            {
+                //printf ("%s Link %s\n", G_STRFUNC, url);
+                GOFFile *link = gof_file_get_by_commandline_arg (url);
+                result = gof_file_launch (link, screen);
+                g_object_unref (link);
+                return (result); 
+            }
+            else
+            {
+                /* TRANSLATORS: `URL' is a field name in a .desktop file.
+                 * Don't translate it. */
+                g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, 
+                             _("No URL field specified"));
+            }
+        }
+        else
+        {
+            g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, 
+                         _("Invalid desktop file"));
+        }
+
+        g_free (type);
+        g_key_file_free (key_file);
+    }
+    else
+    {
+        quoted_location = g_shell_quote (location);
+        cmd = marlin_exec_auto_parse (quoted_location, file_list);
+        //printf ("%s exec: %s\n", G_STRFUNC, cmd);
+        g_free (quoted_location);
+    }
+
+    if (cmd != NULL) {
+        //printf ("%s cmd: %s\n", G_STRFUNC, cmd);
+        result = gof_spawn_command_line_on_screen (cmd, screen);
+    }
+
+    g_free (location);
+    g_free (cmd);
+
+    return result;
+}
+
+gboolean
+gof_file_launch (GOFFile  *file, GdkScreen *screen)
+{
+    GdkAppLaunchContext *context;
+    GAppInfo            *app_info;
+    gboolean             succeed;
+    GList                path_list;
+    GError              **error;
+
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
+
+    /* check if we should execute the file */
+    if (gof_file_is_executable (file))
+        return gof_file_execute (file, screen, NULL, error);
+
+    /* determine the default application to open the file */
+    /* TODO We should probably add a cancellable argument to gof_file_launch() */
+    app_info = gof_file_get_default_handler (file);
+
+    /* display the application chooser if no application is defined for this file
+     * type yet */
+    if (G_UNLIKELY (app_info == NULL))
+    {
+        //TODO
+        /*thunar_show_chooser_dialog (parent, file, TRUE);*/
+        printf ("%s application show_chooser_dialog\n", G_STRFUNC);
+        return TRUE;
+    }
+
+    /* check if we're not trying to launch another file manager again, possibly
+     * ourselfs which will end in a loop */
+    /*if (g_strcmp0 (g_app_info_get_id (app_info), "exo-file-manager.desktop") == 0
+      || g_strcmp0 (g_app_info_get_id (app_info), "Thunar.desktop") == 0
+      || g_strcmp0 (g_app_info_get_name (app_info), "exo-file-manager") == 0)
+      {
+      g_object_unref (G_OBJECT (app_info));
+      thunar_show_chooser_dialog (parent, file, TRUE);
+      return TRUE;
+      }*/
+
+    /* TODO allow launch of multiples same content type files */
+    /* fake a path list */
+    path_list.data = file->location;
+    path_list.next = path_list.prev = NULL;
+
+    context = gdk_app_launch_context_new ();
+    gdk_app_launch_context_set_screen (context, screen);
+    succeed = g_app_info_launch (app_info, &path_list, G_APP_LAUNCH_CONTEXT (context), error);
+
+    g_object_unref (context);
+    g_object_unref (G_OBJECT (app_info));
+
+    return succeed;
+}
+
+void
+gof_file_open_single (GOFFile *file, GdkScreen *screen)
+{
+    gof_file_launch (file, screen);
 }
 
 void

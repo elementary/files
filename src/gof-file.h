@@ -22,6 +22,7 @@
 
 #include <glib.h>
 #include <glib-object.h>
+#include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gio/gio.h>
 #include "nautilus-icon-info.h"
@@ -53,6 +54,7 @@ struct _GOFFile {
     GFile           *directory;
     const gchar     *name;
     const gchar     *display_name;
+    char            *basename;
     const gchar     *ftype;
     gchar           *utf8_collation_key;
     guint64         size;
@@ -84,7 +86,7 @@ struct _GOFFileClass {
 "standard::type,standard::is-hidden,standard::name,standard::display-name,standard::edit-name,standard::copy-name,standard::fast-content-type,standard::size,standard::allocated-size,access::*,mountable::*,time::*,unix::*,owner::*,selinux::*,thumbnail::*,id::filesystem,trash::orig-path,trash::deletion-date,metadata::*"
 */
 
-#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,access::*,time::*,owner::user-real"
+#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,access::*,time::*,owner::*,unix::uid,id::filesystem"
 
 typedef enum {
 	GOF_FILE_ICON_FLAGS_NONE = 0,
@@ -93,8 +95,10 @@ typedef enum {
 
 GType gof_file_get_type (void);
 
-GOFFile*        gof_file_new (GFileInfo* file_info, GFile *dir);
+GOFFile*        gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir);
 GOFFile*        gof_file_get (GFile *location);
+GOFFile*        gof_file_get_by_uri (const char *uri);
+GOFFile*        gof_file_get_by_commandline_arg (const char *arg);
 GFileInfo*      gof_file_get_file_info (GOFFile* self);
 gint            gof_file_NameCompareFunc (GOFFile* a, GOFFile* b);
 gint            gof_file_SizeCompareFunc (GOFFile* a, GOFFile* b);
@@ -112,6 +116,22 @@ void            gof_file_list_unref (GList *list);
 void            gof_file_list_free (GList *list);
 NautilusIconInfo    *gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags);
 GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileIconFlags flags);
+gboolean        gof_file_is_writable (GOFFile *file);
+gboolean        gof_file_is_trashed (GOFFile *file);
+gboolean        gof_file_is_desktop_file (const GOFFile *file);
+gchar           *gof_file_list_to_string (GList *list, gsize *len);
+
+gboolean        gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b);
+GdkDragAction   gof_file_accepts_drop (GOFFile          *file,
+                                       GList            *file_list,
+                                       GdkDragContext   *context,
+                                       GdkDragAction    *suggested_action_return);
+void            gof_file_open_single (GOFFile *file, GdkScreen *screen);
+gboolean        gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error);
+gboolean        gof_file_launch (GOFFile  *file, GdkScreen *screen);
+GAppInfo        *gof_file_get_default_handler (const GOFFile *file);
+
+
 
 G_END_DECLS
 
