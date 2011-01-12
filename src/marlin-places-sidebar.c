@@ -417,7 +417,6 @@ update_places (MarlinPlacesSidebar *sidebar)
     }
 
     /* add trash */
-
     mount_uri = MARLIN_TRASH_URI; /* No need to strdup */
     icon = marlin_trash_monitor_get_icon ();
     last_iter = add_place (sidebar, PLACES_BUILT_IN, &iter,
@@ -430,7 +429,6 @@ update_places (MarlinPlacesSidebar *sidebar)
     g_object_unref (icon);
 
     /* add storage category */
-
     gtk_tree_store_append (sidebar->store, &iter, NULL);
     gtk_tree_store_set (sidebar->store, &iter,
                         PLACES_SIDEBAR_COLUMN_ICON, NULL,
@@ -1181,7 +1179,7 @@ drag_motion_callback (GtkTreeView *tree_view,
                                     &iter,
                                     PLACES_SIDEBAR_COLUMN_URI, &uri,
                                     -1);
-                printf ("%s %s\n", G_STRFUNC, uri);
+                //printf ("%s %s\n", G_STRFUNC, uri);
                 //printf ("test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), &child_iter));
                 /*marlin_drag_default_drop_action_for_icons (context, uri,
                   sidebar->drag_list,
@@ -1191,6 +1189,7 @@ drag_motion_callback (GtkTreeView *tree_view,
                 //TODO use GOFFILE instead of uri
                 if (uri != NULL) {
                     GOFFile *file = gof_file_get_by_uri (uri);
+                    printf ("%s %s\n", G_STRFUNC, g_file_get_uri (file->location));
                     gof_file_accepts_drop (file, sidebar->drag_list, context, &action);
                     g_object_unref (file);
                     g_free (uri);
@@ -1430,7 +1429,6 @@ drag_data_received_callback (GtkWidget *widget,
 
             switch (info) {
             case TEXT_URI_LIST:
-                //TODO file_operation
                 printf ("file_operation_copy_move: drop_uri %s action %d\n", drop_uri, real_action);
                 printf ("%s %s\n", G_STRFUNC, g_file_get_uri (sidebar->drag_list->data));
                 GFile *drop_file = g_file_new_for_uri (drop_uri);
@@ -2388,8 +2386,6 @@ static void
 empty_trash_cb (GtkMenuItem           *item,
                 MarlinPlacesSidebar *sidebar)
 {
-    //TODO file_operation
-    printf ("%s\n", G_STRFUNC);
     marlin_file_operations_empty_trash (GTK_WIDGET (sidebar->window));
 }
 
@@ -2534,7 +2530,6 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
       gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);*/
 
     /* Empty Trash menu item */
-
     item = gtk_menu_item_new_with_mnemonic (_("Empty _Trash"));
     sidebar->popup_menu_empty_trash_item = item;
     g_signal_connect (item, "activate",

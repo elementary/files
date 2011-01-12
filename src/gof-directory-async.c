@@ -114,7 +114,7 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
     for (f=files; f; f=f->next)
     {
         //GFileInfo *info = f->data;
-        GOFFile *goff = gof_file_new ((GFileInfo *) f->data, dir->location);
+        GOFFile *goff = gof_file_new ((GFileInfo *) f->data, NULL, dir->location);
         //g_object_unref (goff);
 
         //if (!goff->is_hidden || g_settings_get_boolean(settings, "show-hiddenfiles"))

@@ -56,4 +56,60 @@ eel_g_file_list_new_from_string (const gchar *string)
     return list;
 }
 
+gchar *
+eel_g_file_get_location (GFile *file)
+{
+    gchar *location;
+
+    g_return_val_if_fail (G_IS_FILE (file), NULL);
+
+    location = g_file_get_path (file);
+    if (location == NULL)
+        location = g_file_get_uri (file);
+
+    return location;
+}
+
+gboolean 
+eel_g_file_is_trashed (GFile *file)
+{
+  g_return_val_if_fail (G_IS_FILE (file), FALSE);
+  return g_file_has_uri_scheme (file, "trash");
+}
+
+GKeyFile *
+eel_g_file_query_key_file (GFile *file, GCancellable *cancellable, GError **error)
+{
+    GKeyFile *key_file;
+    gchar    *contents = NULL;
+    gsize     length;
+
+    g_return_val_if_fail (G_IS_FILE (file), NULL);
+    g_return_val_if_fail (cancellable == NULL || G_IS_CANCELLABLE (cancellable), NULL);
+    g_return_val_if_fail (error == NULL || *error == NULL, NULL);
+
+    /* try to load the entire file into memory */
+    if (!g_file_load_contents (file, cancellable, &contents, &length, NULL, error))
+        return NULL;
+
+    /* allocate a new key file */
+    key_file = g_key_file_new ();
+
+    /* try to parse the key file from the contents of the file */
+    if (G_LIKELY (length == 0
+                  || g_key_file_load_from_data (key_file, contents, length,
+                                                G_KEY_FILE_KEEP_COMMENTS
+                                                | G_KEY_FILE_KEEP_TRANSLATIONS,
+                                                error)))
+    {
+        g_free (contents);
+        return key_file;
+    }
+    else
+    {
+        g_free (contents);
+        g_key_file_free (key_file);
+        return NULL;
+    }
+}
 

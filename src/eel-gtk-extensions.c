@@ -43,11 +43,11 @@ eel_gtk_adjustment_set_value (GtkAdjustment *adjustment,
                             gtk_adjustment_get_page_size (adjustment),
                             gtk_adjustment_get_lower (adjustment));
     log_printf (LOG_LEVEL_UNDEFINED, ">> upper: %f page_size: %f lower: %f value: %f upper_page_start %f\n",
-            gtk_adjustment_get_upper (adjustment),
-            gtk_adjustment_get_page_size (adjustment),
-            gtk_adjustment_get_lower (adjustment),
-            gtk_adjustment_get_value (adjustment),
-            upper_page_start);
+                gtk_adjustment_get_upper (adjustment),
+                gtk_adjustment_get_page_size (adjustment),
+                gtk_adjustment_get_lower (adjustment),
+                gtk_adjustment_get_value (adjustment),
+                upper_page_start);
     clamped_value = CLAMP (value, gtk_adjustment_get_lower (adjustment), upper_page_start);
     log_printf (LOG_LEVEL_UNDEFINED, ">>clamped %f\n", clamped_value);
     log_printf (LOG_LEVEL_UNDEFINED, "CLAMP test: %f\n", CLAMP (value, 0.0, 100.0));
@@ -137,66 +137,78 @@ eel_pop_up_context_menu (GtkMenu	     *menu,
  * Show or hide a widget.
  * @widget: The widget.
  * @shown: Boolean value indicating whether the widget should be shown or hidden.
- **/
+**/
 void
 eel_gtk_widget_set_shown (GtkWidget *widget, gboolean shown)
 {
-	g_return_if_fail (GTK_IS_WIDGET (widget));
+    g_return_if_fail (GTK_IS_WIDGET (widget));
 
-	if (shown) {
-		gtk_widget_show (widget);
-	} else {
-		gtk_widget_hide (widget);
-	}
+    if (shown) {
+        gtk_widget_show (widget);
+    } else {
+        gtk_widget_hide (widget);
+    }
 }
 
 static gboolean
 tree_view_button_press_callback (GtkWidget *tree_view,
-				 GdkEventButton *event,
-				 gpointer data)
+                                 GdkEventButton *event,
+                                 gpointer data)
 {
-	GtkTreePath *path;
-	GtkTreeViewColumn *column;
+    GtkTreePath *path;
+    GtkTreeViewColumn *column;
 
-	if (event->button == 1 && event->type == GDK_BUTTON_PRESS) {
-		if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tree_view),
-						   event->x, event->y,
-						   &path,
-						   &column,
-						   NULL,
-						   NULL)) {
-			gtk_tree_view_row_activated
-				(GTK_TREE_VIEW (tree_view), path, column);
-		}
-	}
+    if (event->button == 1 && event->type == GDK_BUTTON_PRESS) {
+        if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tree_view),
+                                           event->x, event->y,
+                                           &path,
+                                           &column,
+                                           NULL,
+                                           NULL)) {
+            gtk_tree_view_row_activated
+                (GTK_TREE_VIEW (tree_view), path, column);
+        }
+    }
 
-	return FALSE;
+    return FALSE;
 }
 
 void
 eel_gtk_tree_view_set_activate_on_single_click (GtkTreeView *tree_view,
-						gboolean should_activate)
+                                                gboolean should_activate)
 {
-	guint button_press_id;
+    guint button_press_id;
 
-	button_press_id = GPOINTER_TO_UINT
-		(g_object_get_data (G_OBJECT (tree_view),
-				    "eel-tree-view-activate"));
+    button_press_id = GPOINTER_TO_UINT
+        (g_object_get_data (G_OBJECT (tree_view),
+                            "eel-tree-view-activate"));
 
-	if (button_press_id && !should_activate) {
-		g_signal_handler_disconnect (tree_view, button_press_id);
-		g_object_set_data (G_OBJECT (tree_view),
-				   "eel-tree-view-activate",
-				   NULL);
-	} else if (!button_press_id && should_activate) {
-		button_press_id = g_signal_connect
-			(tree_view,
-			 "button_press_event",
-			 G_CALLBACK  (tree_view_button_press_callback),
-			 NULL);
-		g_object_set_data (G_OBJECT (tree_view),
-				   "eel-tree-view-activate",
-				   GUINT_TO_POINTER (button_press_id));
-	}
+    if (button_press_id && !should_activate) {
+        g_signal_handler_disconnect (tree_view, button_press_id);
+        g_object_set_data (G_OBJECT (tree_view),
+                           "eel-tree-view-activate",
+                           NULL);
+    } else if (!button_press_id && should_activate) {
+        button_press_id = g_signal_connect
+            (tree_view,
+             "button_press_event",
+             G_CALLBACK  (tree_view_button_press_callback),
+             NULL);
+        g_object_set_data (G_OBJECT (tree_view),
+                           "eel-tree-view-activate",
+                           GUINT_TO_POINTER (button_press_id));
+    }
 }
 
+GdkScreen *
+eel_gtk_widget_get_screen (GtkWidget *widget)
+{
+    GdkScreen *screen;
+
+    if (G_UNLIKELY (widget == NULL))
+        screen = gdk_screen_get_default ();
+    else if (GTK_IS_WIDGET (widget))
+        screen = gtk_widget_get_screen (widget);
+    else
+        return NULL;
+}

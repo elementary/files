@@ -97,5 +97,12 @@
         Expand/Collapse categorie Network
       </_description>
     </key>
+    <key name="confirm-trash" type="b">
+      <default>true</default>
+      <_summary>Confirm trash</_summary>
+      <_description>
+        Confirm trash
+      </_description>
+    </key>
   </schema>
 </schemalist>

@@ -38,6 +38,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "eel-gtk-extensions.h"
+#include "gof-file.h"
 
 /* a set of defines stolen from the eel-icon-dnd.c file.
  * These are in microseconds.
@@ -883,21 +884,18 @@ marlin_dnd_perform (GtkWidget       *widget,
         marlin_file_operations_copy_move (file_list, NULL, file->location,
                                           action, widget, NULL, NULL);
     }
-#if 0
-    else if (thunar_file_is_executable (file))
+    else if (gof_file_is_executable (file))
     {
-        /* TODO any chance to determine the working dir here? */
-        succeed = thunar_file_execute (file, NULL, gtk_widget_get_screen (widget), file_list, &error);
+        succeed = gof_file_execute (file, gtk_widget_get_screen (widget), file_list, &error);
         if (G_UNLIKELY (!succeed))
         {
             /* display an error to the user */
-            thunar_dialogs_show_error (widget, error, _("Failed to execute file \"%s\""), thunar_file_get_display_name (file));
+            marlin_dialogs_show_error (widget, error, _("Failed to execute file \"%s\""), file->display_name);
 
             /* release the error */
             g_error_free (error);
         }
     }
-#endif
     else
     {
         succeed = FALSE;

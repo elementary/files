@@ -26,6 +26,7 @@
 //#include "gof-directory-async.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
 #include "marlin-global-preferences.h"
+#include "eel-gtk-extensions.h"
 #include "marlin-tags.h"
 //#include "marlin-vala.h"
 
@@ -120,59 +121,6 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 }
 
 static void
-gof_gnome_open_single_file (GOFFile *file, GdkScreen *screen)
-{
-    char *uri, *quoted_uri, *cmd;
-
-    if (g_file_is_native (file->location))
-    {
-        uri = g_filename_from_uri(g_file_get_uri(file->location), NULL, NULL);
-        quoted_uri = g_shell_quote(uri);
-        cmd = g_strconcat("gnome-open ", quoted_uri, NULL);
-        g_free(quoted_uri);
-
-        //log_printf (LOG_LEVEL_UNDEFINED, "command %s\n", uri);
-        gdk_spawn_command_line_on_screen (screen, cmd, NULL);
-        g_free (uri);
-        g_free (cmd);
-    }
-    else
-    {
-        log_printf (LOG_LEVEL_UNDEFINED, "non native\n");
-
-        /* FIXME: work with all apps supporting gio 
-           don't work with archives: opening a zip from trash with
-           file-roller - happens too with nautilus */
-        uri = g_file_get_uri(file->location);
-        cmd = g_strconcat("gnome-open ", uri, NULL);
-        log_printf (LOG_LEVEL_UNDEFINED, "command %s\n", cmd);
-        gdk_spawn_command_line_on_screen (screen, cmd, NULL);
-        g_free (uri);
-        g_free (cmd);
-    }
-}
-
-static void
-fm_directory_activate_single_file (GOFFile *file, FMColumnsView *view, GdkScreen *screen)
-{
-    //GOFDirectoryAsync *dir;
-
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
-    if (file->is_directory) {
-        //view->location = file->location;
-        /*
-           fm_columns_view_clear(view);
-           dir = gof_directory_async_new(view->location);*/
-        /*fm_columns_view_clear(view);
-          gof_window_slot_change_location(view->slot, file->location);*/
-        fm_directory_view_load_location (FM_DIRECTORY_VIEW (view), file->location);
-    } else {
-        gof_gnome_open_single_file (file, screen); 
-    }
-
-}
-
-static void
 activate_selected_items (FMColumnsView *view)
 {
     GList *file_list;
@@ -205,9 +153,9 @@ activate_selected_items (FMColumnsView *view)
 
     /* TODO add mountable etc */
 
-    screen = gdk_screen_get_default();
+    screen = eel_gtk_widget_get_screen (GTK_WIDGET (view));
     if (g_list_length (file_list) == 1)
-        fm_directory_activate_single_file(file_list->data, view, screen);
+        fm_directory_view_activate_single_file (FM_DIRECTORY_VIEW (view), file_list->data, screen);
     else
     {
         for (; file_list != NULL; file_list=file_list->next)
@@ -217,7 +165,7 @@ activate_selected_items (FMColumnsView *view)
                 /* TODO open dirs in new tabs */
                 log_printf (LOG_LEVEL_UNDEFINED, "open dir - new tab? %s\n", file->name);
             } else {
-                gof_gnome_open_single_file (file, screen);
+                gof_file_open_single (file, screen);
             }
         }
     }

@@ -680,6 +680,18 @@ fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *locatio
     g_signal_emit_by_name (slot->ctab, "path-changed", location);
 }
 
+void
+fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, GdkScreen *screen)
+{
+    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    if (file->is_directory) {
+        fm_directory_view_load_location (view, file->location);
+    } else {
+        //gof_gnome_open_single_file (file, screen); 
+        gof_file_open_single (file, screen); 
+    }
+}
+
 static gboolean
 fm_directory_view_handle_scroll_event (FMDirectoryView *directory_view,
                                        GdkEventScroll *event)
@@ -845,9 +857,7 @@ fm_directory_view_get_drop_file (FMDirectoryView *view,
         printf ("%s %s\n", G_STRFUNC, g_file_get_uri (file->location));
 
         /* we can only drop to directories and executable files */
-        if (!file->is_directory)
-            //TODO
-            //&& !thunar_file_is_executable (file))
+        if (!file->is_directory && !gof_file_is_executable (file))
         {
             /* drop to the folder instead */
             g_object_unref (G_OBJECT (file));

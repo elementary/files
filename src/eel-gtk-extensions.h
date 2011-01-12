@@ -41,5 +41,6 @@ void        eel_gtk_widget_set_shown (GtkWidget *widget, gboolean shown);
 
 void        eel_gtk_tree_view_set_activate_on_single_click (GtkTreeView *tree_view,
                                                             gboolean should_activate);
+GdkScreen   *eel_gtk_widget_get_screen (GtkWidget *widget);
 
 #endif /* EEL_GTK_EXTENSIONS_H */

@@ -65,6 +65,7 @@ marlin_SOURCES = \
     marlin-trash-monitor.c                  \
     marlin-bookmark.c                       \
     marlin-bookmark-list.c                  \
+    marlin-exec.c                           \
     marlin-dnd.c                            \
     marlin-clipboard-manager.c              \
     marlin-file-utilities.c                 \

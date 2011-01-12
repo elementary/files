@@ -374,6 +374,7 @@ void    fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *lo
 void    fm_directory_view_column_add_preview (FMDirectoryView *dview, GOFFile *file);
 void    fm_directory_view_set_active_slot (FMDirectoryView *dview);
 void    fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location);
+void    fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, GdkScreen *screen);
 //void    fm_directory_view_colorize_selection (FMDirectoryView *view, int color);
 void    fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFile *file);
 
