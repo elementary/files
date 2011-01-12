@@ -25,6 +25,8 @@
 #include <config.h>
 #include "eel-gdk-pixbuf-extensions.h"
 
+#define LOAD_BUFFER_SIZE 65536
+
 #define EEL_RGB_COLOR_RED	0xFF0000
 #define EEL_RGB_COLOR_GREEN	0x00FF00
 #define EEL_RGB_COLOR_BLUE	0x0000FF
@@ -43,23 +45,98 @@
 #define EEL_RGBA_COLOR_GET_B(color) (((color) >> 0) & 0xff)
 #define EEL_RGBA_COLOR_GET_A(color) (((color) >> 24) & 0xff)
 
+static void
+pixbuf_loader_size_prepared (GdkPixbufLoader *loader,
+                             int              width,
+                             int              height,
+                             gpointer         desired_size_ptr)
+{
+    int size, desired_size;
+    float scale;
+
+    size = MAX (width, height);
+    desired_size = GPOINTER_TO_INT (desired_size_ptr);
+
+    if (size != desired_size) {
+        scale = (float) desired_size / size;
+        gdk_pixbuf_loader_set_size (loader,
+                                    floor (scale * width + 0.5),
+                                    floor (scale * height + 0.5));
+    }
+}
+
+GdkPixbuf *
+eel_gdk_pixbuf_load_from_stream_at_size (GInputStream  *stream, int size)
+{
+    char buffer[LOAD_BUFFER_SIZE];
+    gssize bytes_read;
+    GdkPixbufLoader *loader;
+    GdkPixbuf *pixbuf;
+    gboolean got_eos;
+
+
+    g_return_val_if_fail (stream != NULL, NULL);
+
+    got_eos = FALSE;
+    loader = gdk_pixbuf_loader_new ();
+
+    if (size > 0) {
+        g_signal_connect (loader, "size-prepared",
+                          G_CALLBACK (pixbuf_loader_size_prepared),
+                          GINT_TO_POINTER (size));
+    }
+
+    while (1) {
+        bytes_read = g_input_stream_read (stream, buffer, sizeof (buffer),
+                                          NULL, NULL);
+
+        if (bytes_read < 0) {
+            break;
+        }
+        if (bytes_read == 0) {
+            got_eos = TRUE;
+            break;
+        }
+        if (!gdk_pixbuf_loader_write (loader,
+                                      buffer,
+                                      bytes_read,
+                                      NULL)) {
+            break;
+        }
+    }
+
+    g_input_stream_close (stream, NULL, NULL);
+    gdk_pixbuf_loader_close (loader, NULL);
+
+    pixbuf = NULL;
+    if (got_eos) {
+        pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
+        if (pixbuf != NULL) {
+            g_object_ref (pixbuf);
+        }
+    }
+
+    g_object_unref (loader);
+
+    return pixbuf;
+}
 
 /* shared utility to create a new pixbuf from the passed-in one */
 
 static GdkPixbuf *
 create_new_pixbuf (GdkPixbuf *src)
 {
-	g_assert (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB);
-	g_assert ((!gdk_pixbuf_get_has_alpha (src)
-			       && gdk_pixbuf_get_n_channels (src) == 3)
-			      || (gdk_pixbuf_get_has_alpha (src)
-				  && gdk_pixbuf_get_n_channels (src) == 4));
+    g_assert (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB);
+    g_assert ((!gdk_pixbuf_get_has_alpha (src)
+               && gdk_pixbuf_get_n_channels (src) == 3)
+              || (gdk_pixbuf_get_has_alpha (src)
+                  && gdk_pixbuf_get_n_channels (src) == 4));
 
-	return gdk_pixbuf_new (gdk_pixbuf_get_colorspace (src),
-			       gdk_pixbuf_get_has_alpha (src),
-			       gdk_pixbuf_get_bits_per_sample (src),
-			       gdk_pixbuf_get_width (src),
-			       gdk_pixbuf_get_height (src));
+    return gdk_pixbuf_new (gdk_pixbuf_get_colorspace (src),
+                           gdk_pixbuf_get_has_alpha (src),
+                           gdk_pixbuf_get_bits_per_sample (src),
+                           gdk_pixbuf_get_width (src),
+                           gdk_pixbuf_get_height (src));
 }
 
 /* utility routine to bump the level of a color component with pinning */
@@ -67,53 +144,53 @@ create_new_pixbuf (GdkPixbuf *src)
 static guchar
 lighten_component (guchar cur_value)
 {
-	int new_value = cur_value;
-	new_value += 24 + (new_value >> 3);
-	if (new_value > 255) {
-		new_value = 255;
-	}
-	return (guchar) new_value;
+    int new_value = cur_value;
+    new_value += 24 + (new_value >> 3);
+    if (new_value > 255) {
+        new_value = 255;
+    }
+    return (guchar) new_value;
 }
 
 GdkPixbuf *
 eel_create_spotlight_pixbuf (GdkPixbuf* src)
 {
-	GdkPixbuf *dest;
-	int i, j;
-	int width, height, has_alpha, src_row_stride, dst_row_stride;
-	guchar *target_pixels, *original_pixels;
-	guchar *pixsrc, *pixdest;
+    GdkPixbuf *dest;
+    int i, j;
+    int width, height, has_alpha, src_row_stride, dst_row_stride;
+    guchar *target_pixels, *original_pixels;
+    guchar *pixsrc, *pixdest;
 
-	g_return_val_if_fail (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB, NULL);
-	g_return_val_if_fail ((!gdk_pixbuf_get_has_alpha (src)
-			       && gdk_pixbuf_get_n_channels (src) == 3)
-			      || (gdk_pixbuf_get_has_alpha (src)
-				  && gdk_pixbuf_get_n_channels (src) == 4), NULL);
-	g_return_val_if_fail (gdk_pixbuf_get_bits_per_sample (src) == 8, NULL);
+    g_return_val_if_fail (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB, NULL);
+    g_return_val_if_fail ((!gdk_pixbuf_get_has_alpha (src)
+                           && gdk_pixbuf_get_n_channels (src) == 3)
+                          || (gdk_pixbuf_get_has_alpha (src)
+                              && gdk_pixbuf_get_n_channels (src) == 4), NULL);
+    g_return_val_if_fail (gdk_pixbuf_get_bits_per_sample (src) == 8, NULL);
 
-	dest = create_new_pixbuf (src);
-	
-	has_alpha = gdk_pixbuf_get_has_alpha (src);
-	width = gdk_pixbuf_get_width (src);
-	height = gdk_pixbuf_get_height (src);
-	dst_row_stride = gdk_pixbuf_get_rowstride (dest);
-	src_row_stride = gdk_pixbuf_get_rowstride (src);
-	target_pixels = gdk_pixbuf_get_pixels (dest);
-	original_pixels = gdk_pixbuf_get_pixels (src);
+    dest = create_new_pixbuf (src);
 
-	for (i = 0; i < height; i++) {
-		pixdest = target_pixels + i * dst_row_stride;
-		pixsrc = original_pixels + i * src_row_stride;
-		for (j = 0; j < width; j++) {		
-			*pixdest++ = lighten_component (*pixsrc++);
-			*pixdest++ = lighten_component (*pixsrc++);
-			*pixdest++ = lighten_component (*pixsrc++);
-			if (has_alpha) {
-				*pixdest++ = *pixsrc++;
-			}
-		}
-	}
-	return dest;
+    has_alpha = gdk_pixbuf_get_has_alpha (src);
+    width = gdk_pixbuf_get_width (src);
+    height = gdk_pixbuf_get_height (src);
+    dst_row_stride = gdk_pixbuf_get_rowstride (dest);
+    src_row_stride = gdk_pixbuf_get_rowstride (src);
+    target_pixels = gdk_pixbuf_get_pixels (dest);
+    original_pixels = gdk_pixbuf_get_pixels (src);
+
+    for (i = 0; i < height; i++) {
+        pixdest = target_pixels + i * dst_row_stride;
+        pixsrc = original_pixels + i * src_row_stride;
+        for (j = 0; j < width; j++) {		
+            *pixdest++ = lighten_component (*pixsrc++);
+            *pixdest++ = lighten_component (*pixsrc++);
+            *pixdest++ = lighten_component (*pixsrc++);
+            if (has_alpha) {
+                *pixdest++ = *pixsrc++;
+            }
+        }
+    }
+    return dest;
 }
 
 
@@ -225,60 +302,60 @@ static guchar
 eel_gdk_pixbuf_lighten_pixbuf_component (guchar cur_value,
                                          guint lighten_value)
 {
-	int new_value = cur_value;
-	if (lighten_value > 0) {
-		new_value += lighten_value + (new_value >> 3);
-		if (new_value > 255) {
-			new_value = 255;
-		}
-	}
-	return (guchar) new_value;
+    int new_value = cur_value;
+    if (lighten_value > 0) {
+        new_value += lighten_value + (new_value >> 3);
+        if (new_value > 255) {
+            new_value = 255;
+        }
+    }
+    return (guchar) new_value;
 }
 
 static GdkPixbuf *
 eel_gdk_pixbuf_lighten (GdkPixbuf* src,
                         guint lighten_value)
 {
-	GdkPixbuf *dest;
-	int i, j;
-	int width, height, has_alpha, src_row_stride, dst_row_stride;
-	guchar *target_pixels, *original_pixels;
-	guchar *pixsrc, *pixdest;
+    GdkPixbuf *dest;
+    int i, j;
+    int width, height, has_alpha, src_row_stride, dst_row_stride;
+    guchar *target_pixels, *original_pixels;
+    guchar *pixsrc, *pixdest;
 
-	g_assert (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB);
-	g_assert ((!gdk_pixbuf_get_has_alpha (src)
-			       && gdk_pixbuf_get_n_channels (src) == 3)
-			      || (gdk_pixbuf_get_has_alpha (src)
-				  && gdk_pixbuf_get_n_channels (src) == 4));
-	g_assert (gdk_pixbuf_get_bits_per_sample (src) == 8);
+    g_assert (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB);
+    g_assert ((!gdk_pixbuf_get_has_alpha (src)
+               && gdk_pixbuf_get_n_channels (src) == 3)
+              || (gdk_pixbuf_get_has_alpha (src)
+                  && gdk_pixbuf_get_n_channels (src) == 4));
+    g_assert (gdk_pixbuf_get_bits_per_sample (src) == 8);
 
-	dest = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (src),
-			       gdk_pixbuf_get_has_alpha (src),
-			       gdk_pixbuf_get_bits_per_sample (src),
-			       gdk_pixbuf_get_width (src),
-			       gdk_pixbuf_get_height (src));
-	
-	has_alpha = gdk_pixbuf_get_has_alpha (src);
-	width = gdk_pixbuf_get_width (src);
-	height = gdk_pixbuf_get_height (src);
-	dst_row_stride = gdk_pixbuf_get_rowstride (dest);
-	src_row_stride = gdk_pixbuf_get_rowstride (src);
-	target_pixels = gdk_pixbuf_get_pixels (dest);
-	original_pixels = gdk_pixbuf_get_pixels (src);
+    dest = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (src),
+                           gdk_pixbuf_get_has_alpha (src),
+                           gdk_pixbuf_get_bits_per_sample (src),
+                           gdk_pixbuf_get_width (src),
+                           gdk_pixbuf_get_height (src));
 
-	for (i = 0; i < height; i++) {
-		pixdest = target_pixels + i * dst_row_stride;
-		pixsrc = original_pixels + i * src_row_stride;
-		for (j = 0; j < width; j++) {		
-			*pixdest++ = eel_gdk_pixbuf_lighten_pixbuf_component (*pixsrc++, lighten_value);
-			*pixdest++ = eel_gdk_pixbuf_lighten_pixbuf_component (*pixsrc++, lighten_value);
-			*pixdest++ = eel_gdk_pixbuf_lighten_pixbuf_component (*pixsrc++, lighten_value);
-			if (has_alpha) {
-				*pixdest++ = *pixsrc++;
-			}
-		}
-	}
-	return dest;
+    has_alpha = gdk_pixbuf_get_has_alpha (src);
+    width = gdk_pixbuf_get_width (src);
+    height = gdk_pixbuf_get_height (src);
+    dst_row_stride = gdk_pixbuf_get_rowstride (dest);
+    src_row_stride = gdk_pixbuf_get_rowstride (src);
+    target_pixels = gdk_pixbuf_get_pixels (dest);
+    original_pixels = gdk_pixbuf_get_pixels (src);
+
+    for (i = 0; i < height; i++) {
+        pixdest = target_pixels + i * dst_row_stride;
+        pixsrc = original_pixels + i * src_row_stride;
+        for (j = 0; j < width; j++) {		
+            *pixdest++ = eel_gdk_pixbuf_lighten_pixbuf_component (*pixsrc++, lighten_value);
+            *pixdest++ = eel_gdk_pixbuf_lighten_pixbuf_component (*pixsrc++, lighten_value);
+            *pixdest++ = eel_gdk_pixbuf_lighten_pixbuf_component (*pixsrc++, lighten_value);
+            if (has_alpha) {
+                *pixdest++ = *pixsrc++;
+            }
+        }
+    }
+    return dest;
 }
 
 GdkPixbuf *

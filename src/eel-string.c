@@ -86,13 +86,13 @@ eel_strcmp_case_breaks_ties (const char *string_a, const char *string_b)
     }
     return eel_strcmp (string_a, string_b);
 }
+#endif
 
 gboolean
 eel_str_is_empty (const char *string_or_null)
 {
     return eel_strcmp (string_or_null, NULL) == 0;
 }
-#endif
 
 gboolean
 eel_str_is_equal (const char *string_a, const char *string_b)

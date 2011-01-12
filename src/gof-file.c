@@ -25,6 +25,7 @@
 #include "eel-fcts.h"
 #include "eel-string.h"
 #include "eel-gio-extensions.h"
+#include "eel-string.h"
 #include "gof-directory-async.h"
 #include "marlin-exec.h"
 #include "marlin-vala.h"
@@ -93,55 +94,122 @@ static guint32  effective_user_id;
 
 GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
 {
-    GOFFile * self;
+    GOFFile *file;
     NautilusIconInfo *nicon;
+    GKeyFile *key_file;
+    gchar *p;
 
     g_return_val_if_fail (file_info != NULL, NULL);
 
-    self = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
-    self->info = file_info;
-    //self->parent_dir = g_file_enumerator_get_container (enumerator);
-    self->directory = dir;
-    //g_object_ref (self->directory);
-    self->name = g_file_info_get_name (file_info);
-    
+    file = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
+    file->info = file_info;
+    //file->parent_dir = g_file_enumerator_get_container (enumerator);
+    file->directory = dir;
+    //g_object_ref (file->directory);
+    file->name = g_file_info_get_name (file_info);
+
     if (location != NULL)
-        self->location = g_object_ref (location);
+        file->location = g_object_ref (location);
     else if (dir != NULL)
-        self->location = g_file_get_child(self->directory, self->name);
+        file->location = g_file_get_child(file->directory, file->name);
     else 
         return NULL;
-    
-    //log_printf (LOG_LEVEL_UNDEFINED, "test parent_dir %s\n", g_file_get_uri(self->location));
 
-    self->display_name = g_file_info_get_display_name (file_info);
-    self->is_hidden = g_file_info_get_is_hidden (file_info);
-    self->basename = g_file_get_basename (self->location);
-    self->ftype = g_file_info_get_attribute_string (file_info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
-    self->size = (guint64) g_file_info_get_size (file_info);
-    self->file_type = g_file_info_get_file_type(file_info);
-    self->is_directory = (self->file_type == G_FILE_TYPE_DIRECTORY);
-    self->modified = g_file_info_get_attribute_uint64 (file_info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+    //log_printf (LOG_LEVEL_UNDEFINED, "test parent_dir %s\n", g_file_get_uri(file->location));
 
-    self->utf8_collation_key = g_utf8_collate_key (self->name, -1);
-    if (self->is_directory)
-        self->format_size = g_strdup ("--");
+    file->display_name = g_file_info_get_display_name (file_info);
+    file->is_hidden = g_file_info_get_is_hidden (file_info);
+    file->basename = g_file_get_basename (file->location);
+    file->ftype = g_file_info_get_attribute_string (file_info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
+    file->size = (guint64) g_file_info_get_size (file_info);
+    file->file_type = g_file_info_get_file_type(file_info);
+    file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
+    file->modified = g_file_info_get_attribute_uint64 (file_info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+
+    file->utf8_collation_key = g_utf8_collate_key (file->name, -1);
+    if (file->is_directory)
+        file->format_size = g_strdup ("--");
     else
-        self->format_size = g_format_size_for_display(self->size);
-    self->formated_modified = gof_file_get_date_as_string (self->modified);
-    self->icon = g_content_type_get_icon (self->ftype);
+        file->format_size = g_format_size_for_display(file->size);
+    file->formated_modified = gof_file_get_date_as_string (file->modified);
+
+    if ((file->is_desktop = gof_file_is_desktop_file (file)))
+    {
+        /* determine the custom icon and display name for .desktop files */
+
+        /* query a key file for the .desktop file */
+        //TODO make cancellable & error
+        key_file = eel_g_file_query_key_file (file->location, NULL, NULL);
+        if (key_file != NULL)
+        {
+            /* read the icon name from the .desktop file */
+            file->custom_icon_name = g_key_file_get_string (key_file, 
+                                                            G_KEY_FILE_DESKTOP_GROUP,
+                                                            G_KEY_FILE_DESKTOP_KEY_ICON,
+                                                            NULL);
+
+            if (G_UNLIKELY (eel_str_is_empty (file->custom_icon_name)))
+            {
+                /* make sure we set null if the string is empty else the assertion in 
+                 * thunar_icon_factory_lookup_icon() will fail */
+                g_free (file->custom_icon_name);
+                file->custom_icon_name = NULL;
+            }
+            else
+            {
+                /* drop any suffix (e.g. '.png') from themed icons */
+                if (!g_path_is_absolute (file->custom_icon_name))
+                {
+                    p = strrchr (file->custom_icon_name, '.');
+                    if (p != NULL)
+                        *p = '\0';
+                }
+            }
+
+            /* read the display name from the .desktop file (will be overwritten later
+             * if it's undefined here) */
+            file->custom_display_name = g_key_file_get_string (key_file,
+                                                        G_KEY_FILE_DESKTOP_GROUP,
+                                                        G_KEY_FILE_DESKTOP_KEY_NAME,
+                                                        NULL);
+
+            /* check if we have a display name now */
+            if (file->custom_display_name != NULL)
+            {
+                /* drop the name if it's empty or has invalid encoding */
+                if (*file->custom_display_name == '\0' 
+                    || !g_utf8_validate (file->custom_display_name, -1, NULL))
+                {
+                    g_free (file->custom_display_name);
+                    file->custom_display_name = NULL;
+                }
+            }
+
+            /* free the key file */
+            g_key_file_free (key_file);
+        }
+    }
+
+    file->icon = g_content_type_get_icon (file->ftype);
 
     /* don't waste time on collecting data for hidden files which would be dropped */
     //TODO set property don't call g_setting for each files
-    if (self->is_hidden && !g_settings_get_boolean(settings, "show-hiddenfiles"))
-        return self;
-    nicon = nautilus_icon_info_lookup (self->icon, 16);
-    self->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+    if (file->is_hidden && !g_settings_get_boolean(settings, "show-hiddenfiles"))
+        return file;
+    if (file->custom_icon_name != NULL) {
+        if (g_path_is_absolute (file->custom_icon_name)) 
+            nicon = nautilus_icon_info_lookup_from_path (file->custom_icon_name, 16);
+        else
+            nicon = nautilus_icon_info_lookup_from_name (file->custom_icon_name, 16);
+    } else {
+        nicon = nautilus_icon_info_lookup (file->icon, 16);
+    }
+    file->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
     g_object_unref (nicon);
 
-    self->color = NULL;
+    file->color = NULL;
 
-    return self;
+    return file;
 }
 
 GFileInfo* gof_file_get_file_info (GOFFile* self) {
@@ -168,6 +236,9 @@ static void gof_file_finalize (GObject* obj) {
     g_free(file->formated_modified);
     _g_object_unref0 (file->icon);
     _g_object_unref0 (file->pix);
+
+    g_free (file->custom_display_name);
+    g_free (file->custom_icon_name);
 
     G_OBJECT_CLASS (gof_file_parent_class)->finalize (obj);
 }
@@ -764,7 +835,7 @@ gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileI
  * to write the @file.
  *
  * Return value: %TRUE if @file can be read.
- **/
+**/
 gboolean
 gof_file_is_writable (GOFFile *file)
 {
@@ -781,8 +852,8 @@ gof_file_is_writable (GOFFile *file)
 gboolean
 gof_file_is_trashed (GOFFile *file)
 {
-  g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-  return eel_g_file_is_trashed (file->location);
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+    return eel_g_file_is_trashed (file->location);
 }
 
 

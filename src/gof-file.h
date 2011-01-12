@@ -54,6 +54,7 @@ struct _GOFFile {
     GFile           *directory;
     const gchar     *name;
     const gchar     *display_name;
+    gchar           *custom_display_name;
     char            *basename;
     const gchar     *ftype;
     gchar           *utf8_collation_key;
@@ -62,7 +63,9 @@ struct _GOFFile {
     GFileType       file_type;
     gboolean        is_directory;
     gboolean        is_hidden;
+    gboolean        is_desktop;
     GIcon           *icon;
+    gchar           *custom_icon_name;
     GdkPixbuf       *pix;
     guint64         modified;
     gchar           *formated_modified;

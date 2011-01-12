@@ -321,8 +321,13 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
 
     case FM_LIST_MODEL_FILENAME:
         g_value_init (value, G_TYPE_STRING);
-        if (file != NULL)
-            g_value_set_string(value, file->name);
+        if (file != NULL) {
+            //g_value_set_string(value, file->name);
+            if (file->custom_display_name != NULL)
+                g_value_set_string(value, file->custom_display_name);
+            else
+                g_value_set_string(value, file->display_name);
+        }
         break;
 
     case FM_LIST_MODEL_SIZE:

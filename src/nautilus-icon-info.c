@@ -24,7 +24,7 @@
 //#include "nautilus-default-file-icon.h"
 #include <gtk/gtk.h>
 #include <gio/gio.h>
-//#include <eel/eel-gdk-pixbuf-extensions.h>
+#include "eel-gdk-pixbuf-extensions.h"
 
 struct _NautilusIconInfo
 {
@@ -353,15 +353,14 @@ nautilus_icon_info_lookup (GIcon *icon,
         }
 
         pixbuf = NULL;
-        /*stream = g_loadable_icon_load (G_LOADABLE_ICON (icon),
+        stream = g_loadable_icon_load (G_LOADABLE_ICON (icon),
                                        size,
                                        NULL, NULL, NULL);
         if (stream) {
-            //amtest
-            log_printf (LOG_LEVEL_UNDEFINED, "stream???\n");
-            //pixbuf = eel_gdk_pixbuf_load_from_stream_at_size (stream, size);
+            //log_printf (LOG_LEVEL_UNDEFINED, "%s stream\n", G_STRFUNC);
+            pixbuf = eel_gdk_pixbuf_load_from_stream_at_size (stream, size);
             g_object_unref (stream);
-        }*/
+        }
 
         icon_info = nautilus_icon_info_new_for_pixbuf (pixbuf);
 
@@ -454,7 +453,8 @@ nautilus_icon_info_lookup_from_path (const char *path,
     NautilusIconInfo *info;
 
     icon_file = g_file_new_for_path (path);
-    icon = g_file_icon_new (icon_file);
+    if ((icon = g_file_icon_new (icon_file)) == NULL)
+        return NULL;
     info = nautilus_icon_info_lookup (icon, size);
     g_object_unref (icon);
     g_object_unref (icon_file);

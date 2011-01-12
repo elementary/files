@@ -38,17 +38,16 @@ void                 eel_gdk_pixbuf_list_ref                  (GList            
 void                 eel_gdk_pixbuf_list_unref                (GList                 *pixbuf_list);
 void                 eel_gdk_pixbuf_list_free                 (GList                 *pixbuf_list);
 
-
-/* Loading a GdkPixbuf with a URI. */
-GdkPixbuf *          eel_gdk_pixbuf_load_from_stream_at_size  (GInputStream          *stream,
-							       int                    size);
 #endif
 
-GdkPixbuf *          eel_gdk_pixbuf_render                    (GdkPixbuf *pixbuf,
-                                                               guint render_mode,
-                                                               guint saturation,
-                                                               guint brightness,
-                                                               guint lighten_value,
-                                                               guint color);
+/* Loading a GdkPixbuf with a URI. */
+GdkPixbuf   *eel_gdk_pixbuf_load_from_stream_at_size    (GInputStream  *stream, int size);
+
+GdkPixbuf   *eel_gdk_pixbuf_render                      (GdkPixbuf *pixbuf,
+                                                         guint render_mode,
+                                                         guint saturation,
+                                                         guint brightness,
+                                                         guint lighten_value,
+                                                         guint color);
 
 #endif /* EEL_GDK_PIXBUF_EXTENSIONS_H */

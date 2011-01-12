@@ -51,10 +51,10 @@ int      eel_strcasecmp                    (const char    *str_a,
                                             const char    *str_b);
 int      eel_strcmp_case_breaks_ties       (const char    *str_a,
                                             const char    *str_b);
+#endif
 
 /* Other basic string operations. */
 gboolean eel_str_is_empty                  (const char    *str_or_null);
-#endif
 gboolean eel_str_is_equal                  (const char    *str_a,
                                             const char    *str_b);
 #if 0
