@@ -3,15 +3,13 @@ This is a short TODO list.
 - middle click folder whould open in new tab.
 - add popup menu for back/forward arrow toolbar button with the history from the 2 stacks on long click or right click: extend Browser class.
 - add completion on the pathbar location, cf thunar they got a nice popup menu.
-- start adding other signals for deleted files etc
-- add drag & drop on the list view
 - stop destroying the model for each view change, share the same model between all views.
 - add emblems
 - check dropbox support
 - add thumbnails use tumbler, same logic as thunar request thumbs for only shown files.
 - add an icon view
 - add application api, managing all opened windows, use g_applicaion? libunique? own made socket api ala pcmanfm? expose api via dbus.
-- add operation api, managing all the files operations. it must implement an undo/redo mechanism.- use app indicator for showing the progress operation window.
+- files operations must implement an undo/redo mechanism.
+- use app indicator for showing the progress operation window.
 - do the usual filecheck on files without extension of find a way that textfiles don't get detected as octet-stream
-- instead of displaying 4kb as folder size, display nothing
 ...
