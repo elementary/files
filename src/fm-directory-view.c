@@ -1288,7 +1288,6 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
     /* request the drop data on-demand (if we don't have it already) */
     if (G_UNLIKELY (!view->details->drop_data_ready))
     {
-        printf ("hummmm\n");
         /* check if we can handle that drag data (yet?) */
         target = gtk_drag_dest_find_target (widget, context, NULL);
 
@@ -1307,7 +1306,8 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
               {
               action = gdk_drag_context_get_suggested_action (context);
               }*/
-            if (G_LIKELY (file != NULL && file->is_directory)) {
+            if (G_LIKELY (file != NULL && file->is_directory 
+                          && gof_file_is_writable (file))) {
                 printf ("%s get_suggested_action for file = directory\n");
                 action = gdk_drag_context_get_suggested_action (context);
             }

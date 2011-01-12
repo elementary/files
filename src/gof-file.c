@@ -124,7 +124,10 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
     self->modified = g_file_info_get_attribute_uint64 (file_info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
     self->utf8_collation_key = g_utf8_collate_key (self->name, -1);
-    self->format_size = g_format_size_for_display(self->size);
+    if (self->is_directory)
+        self->format_size = g_strdup ("--");
+    else
+        self->format_size = g_format_size_for_display(self->size);
     self->formated_modified = gof_file_get_date_as_string (self->modified);
     self->icon = g_content_type_get_icon (self->ftype);
 
