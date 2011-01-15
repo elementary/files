@@ -1264,12 +1264,13 @@ bookmarks_drop_uris (MarlinPlacesSidebar    *sidebar,
             continue;
         }
 
-        bookmark = marlin_bookmark_new (file->location, file->display_name, TRUE, file->icon);
+        bookmark = marlin_bookmark_new (file, NULL);
         if (!marlin_bookmark_list_contains (sidebar->bookmarks, bookmark)) {
             marlin_bookmark_list_insert_item (sidebar->bookmarks, bookmark, position++);
         }
 
         g_object_unref (bookmark);
+        gof_file_unref (file);
     }
 
     g_strfreev (uris);

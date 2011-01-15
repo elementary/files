@@ -26,6 +26,8 @@
 
 #include <gtk/gtk.h>
 #include <gio/gio.h>
+#include "gof-file.h"
+
 typedef struct MarlinBookmark MarlinBookmark;
 
 #define MARLIN_TYPE_BOOKMARK marlin_bookmark_get_type()
@@ -40,16 +42,16 @@ typedef struct MarlinBookmark MarlinBookmark;
 #define MARLIN_BOOKMARK_GET_CLASS(obj) \
     (G_TYPE_INSTANCE_GET_CLASS ((obj), MARLIN_TYPE_BOOKMARK, MarlinBookmarkClass))
 
-typedef struct MarlinBookmarkDetails MarlinBookmarkDetails;
-
 struct MarlinBookmark {
     GObject object;
-    MarlinBookmarkDetails *details;	
+    const char  *name;
+    char        *label;
+    GOFFile     *file;
 };
 
 struct MarlinBookmarkClass {
     GObjectClass parent_class;
-
+    
     /* Signals that clients can connect to. */
 
     /* The appearance_changed signal is emitted when the bookmark's
@@ -66,10 +68,8 @@ struct MarlinBookmarkClass {
 typedef struct MarlinBookmarkClass MarlinBookmarkClass;
 
 GType               marlin_bookmark_get_type               (void);
-MarlinBookmark *    marlin_bookmark_new                    (GFile *location,
-                                                                const char *name,
-                                                                gboolean has_custom_name,
-                                                                GIcon *icon);
+
+MarlinBookmark *    marlin_bookmark_new (GOFFile *file, char *label);
 MarlinBookmark *    marlin_bookmark_copy                   (MarlinBookmark      *bookmark);
 char *              marlin_bookmark_get_name               (MarlinBookmark      *bookmark);
 GFile *             marlin_bookmark_get_location           (MarlinBookmark      *bookmark);
@@ -77,7 +77,7 @@ char *              marlin_bookmark_get_uri                (MarlinBookmark      
 GIcon *             marlin_bookmark_get_icon               (MarlinBookmark      *bookmark);
 gboolean	    marlin_bookmark_get_has_custom_name    (MarlinBookmark      *bookmark);		
 gboolean            marlin_bookmark_set_name               (MarlinBookmark      *bookmark,
-                                                            const char            *new_name);		
+                                                            char                *new_name);		
 gboolean            marlin_bookmark_uri_known_not_to_exist (MarlinBookmark      *bookmark);
 int                 marlin_bookmark_compare_with           (gconstpointer          a,
                                                             gconstpointer          b);

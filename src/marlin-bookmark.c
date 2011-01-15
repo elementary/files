@@ -32,7 +32,6 @@
 #include <eel/eel-vfs-extensions.h>*/
 /*#include <libnautilus-private/nautilus-file.h>
 #include <libnautilus-private/nautilus-icon-names.h>*/
-#include "gof-file.h"
 #include "nautilus-icon-info.h"
 #include "marlin-icons.h"
 
@@ -45,17 +44,6 @@ enum {
 //#define ELLIPSISED_MENU_ITEM_MIN_CHARS  32
 
 static guint signals[LAST_SIGNAL];
-
-struct MarlinBookmarkDetails
-{
-    char *name;
-    gboolean has_custom_name;
-    GFile *location;
-    GIcon *icon;
-    GOFFile *file;
-
-    char *scroll_file;
-};
 
 //static void	  marlin_bookmark_connect_file	  (MarlinBookmark	 *file);
 //static void	  marlin_bookmark_disconnect_file	  (MarlinBookmark	 *file);
@@ -72,16 +60,9 @@ marlin_bookmark_finalize (GObject *object)
     g_assert (MARLIN_IS_BOOKMARK (object));
 
     bookmark = MARLIN_BOOKMARK (object);
-
     //marlin_bookmark_disconnect_file (bookmark);	
-
-    //g_free (bookmark->details->name);
-    g_object_unref (bookmark->details->location);
-    if (bookmark->details->icon) {
-        g_object_unref (bookmark->details->icon);
-    }
-    g_free (bookmark->details->scroll_file);
-    g_free (bookmark->details);
+    g_free (bookmark->label);
+    g_object_unref (bookmark->file);
 
     G_OBJECT_CLASS (marlin_bookmark_parent_class)->finalize (object);
 }
@@ -116,7 +97,7 @@ marlin_bookmark_class_init (MarlinBookmarkClass *class)
 static void
 marlin_bookmark_init (MarlinBookmark *bookmark)
 {
-    bookmark->details = g_new0 (MarlinBookmarkDetails, 1);
+    ;
 }
 
 /**
@@ -141,13 +122,13 @@ marlin_bookmark_compare_with (gconstpointer a, gconstpointer b)
     bookmark_a = MARLIN_BOOKMARK (a);
     bookmark_b = MARLIN_BOOKMARK (b);
 
-    if (eel_strcmp (bookmark_a->details->name,
-                    bookmark_b->details->name) != 0) {
+    if (eel_strcmp (bookmark_a->name,
+                    bookmark_b->name) != 0) {
         return 1;
     }
 
-    if (!g_file_equal (bookmark_a->details->location,
-                       bookmark_b->details->location)) {
+    if (!g_file_equal (bookmark_a->file->location,
+                       bookmark_b->file->location)) {
         return 1;
     }
 
@@ -176,8 +157,8 @@ marlin_bookmark_compare_uris (gconstpointer a, gconstpointer b)
     bookmark_a = MARLIN_BOOKMARK (a);
     bookmark_b = MARLIN_BOOKMARK (b);
 
-    return !g_file_equal (bookmark_a->details->location,
-                          bookmark_b->details->location);
+    return !g_file_equal (bookmark_a->file->location,
+                          bookmark_b->file->location);
 }
 
 MarlinBookmark *
@@ -185,11 +166,7 @@ marlin_bookmark_copy (MarlinBookmark *bookmark)
 {
     g_return_val_if_fail (MARLIN_IS_BOOKMARK (bookmark), NULL);
 
-    return marlin_bookmark_new (
-                                  bookmark->details->location,
-                                  bookmark->details->name,
-                                  bookmark->details->has_custom_name,
-                                  bookmark->details->icon);
+    return marlin_bookmark_new (bookmark->file, bookmark->label);
 }
 
 char *
@@ -197,7 +174,7 @@ marlin_bookmark_get_name (MarlinBookmark *bookmark)
 {
     g_return_val_if_fail(MARLIN_IS_BOOKMARK (bookmark), NULL);
 
-    return g_strdup (bookmark->details->name);
+    return g_strdup (bookmark->name);
 }
 
 
@@ -206,7 +183,7 @@ marlin_bookmark_get_has_custom_name (MarlinBookmark *bookmark)
 {
     g_return_val_if_fail(MARLIN_IS_BOOKMARK (bookmark), FALSE);
 
-    return (bookmark->details->has_custom_name);
+    return (bookmark->label != NULL);
 }
 
 
@@ -242,13 +219,19 @@ GIcon *
 marlin_bookmark_get_icon (MarlinBookmark *bookmark)
 {
     g_return_val_if_fail (MARLIN_IS_BOOKMARK (bookmark), NULL);
+    g_return_val_if_fail (G_IS_FILE (bookmark->file->location), NULL);
 
     /* Try to connect a file in case file exists now but didn't earlier. */
     //marlin_bookmark_connect_file (bookmark);
 
-    if (bookmark->details->icon) {
-        return g_object_ref (bookmark->details->icon);
+    if (bookmark->file->icon) {
+        return g_object_ref (bookmark->file->icon);
     }
+    if (!g_file_is_native (bookmark->file->location))
+        return g_themed_icon_new (MARLIN_ICON_FOLDER_REMOTE);
+    else
+        return g_themed_icon_new (MARLIN_ICON_FOLDER);
+
     return NULL;
 }
 
@@ -265,7 +248,7 @@ marlin_bookmark_get_location (MarlinBookmark *bookmark)
      */
     //marlin_bookmark_connect_file (bookmark);
 
-    return g_object_ref (bookmark->details->location);
+    return g_object_ref (bookmark->file->location);
 }
 
 char *
@@ -290,29 +273,26 @@ marlin_bookmark_get_uri (MarlinBookmark *bookmark)
  * Returns: TRUE if the name changed else FALSE.
 **/
 gboolean
-marlin_bookmark_set_name (MarlinBookmark *bookmark, const char *new_name)
+marlin_bookmark_set_name (MarlinBookmark *bookmark, char *new_name)
 {
     g_return_val_if_fail (new_name != NULL, FALSE);
     g_return_val_if_fail (MARLIN_IS_BOOKMARK (bookmark), FALSE);
 
-    if (strcmp (new_name, bookmark->details->name) == 0) {
+    if (strcmp (new_name, bookmark->file->name) == 0) {
         return FALSE;
-    } else if (!bookmark->details->has_custom_name) {
-        bookmark->details->has_custom_name = TRUE;
-    }
+    } 
 
-    g_free (bookmark->details->name);
-    bookmark->details->name = g_strdup (new_name);
+    bookmark->label = g_strdup (new_name);
+    bookmark->name = bookmark->label;
 
+    /* TODO check the two signals */
     g_signal_emit (bookmark, signals[APPEARANCE_CHANGED], 0);
-
-    if (bookmark->details->has_custom_name) {
-        g_signal_emit (bookmark, signals[CONTENTS_CHANGED], 0);
-    }
+    g_signal_emit (bookmark, signals[CONTENTS_CHANGED], 0);
 
     return TRUE;
 }
 
+#if 0
 static gboolean
 marlin_bookmark_icon_is_different (MarlinBookmark *bookmark,
                                      GIcon *new_icon)
@@ -326,6 +306,7 @@ marlin_bookmark_icon_is_different (MarlinBookmark *bookmark,
 
     return !g_icon_equal (bookmark->details->icon, new_icon) != 0;
 }
+#endif
 
 /**
  * Update icon if there's a better one available.
@@ -334,10 +315,12 @@ marlin_bookmark_icon_is_different (MarlinBookmark *bookmark,
 static gboolean
 marlin_bookmark_update_icon (MarlinBookmark *bookmark)
 {
+    //TODO
     GIcon *new_icon;
 
     g_assert (MARLIN_IS_BOOKMARK (bookmark));
 
+#if 0
     if (bookmark->details->file == NULL) {
         return FALSE;
     }
@@ -346,7 +329,7 @@ marlin_bookmark_update_icon (MarlinBookmark *bookmark)
         /* never update icons for remote bookmarks */
         return FALSE;
     }
-
+#endif
     //amtest
     /*
     if (!marlin_file_is_not_yet_confirmed (bookmark->details->file) &&
@@ -383,10 +366,10 @@ bookmark_file_changed_callback (GOFFile *file, MarlinBookmark *bookmark)
     should_emit_contents_changed_signal = FALSE;
     location = file->location;
 
-    if (!g_file_equal (bookmark->details->location, location) &&
+    if (!g_file_equal (bookmark->file->location, location) &&
         !marlin_file_is_in_trash (file)) {
-        g_object_unref (bookmark->details->location);
-        bookmark->details->location = location;
+        g_object_unref (bookmark->file->location);
+        bookmark->file->location = location;
         should_emit_contents_changed_signal = TRUE;
     } else {
         g_object_unref (location);
@@ -419,9 +402,9 @@ bookmark_file_changed_callback (GOFFile *file, MarlinBookmark *bookmark)
         display_name = g_strdup (file->display_name);
 
         // TODO check alloc display_name
-        if (strcmp (bookmark->details->name, display_name) != 0) {
-            g_free (bookmark->details->name);
-            bookmark->details->name = display_name;
+        if (strcmp (bookmark->name, display_name) != 0) {
+            g_free (bookmark->name);
+            bookmark->name = display_name;
             should_emit_appearance_changed_signal = TRUE;
         } else {
             g_free (display_name);
@@ -507,7 +490,7 @@ marlin_bookmark_connect_file (MarlinBookmark *bookmark)
     }
 
     if (!marlin_bookmark_uri_known_not_to_exist (bookmark)) {
-        bookmark->details->file = marlin_file_get (bookmark->details->location);
+        bookmark->details->file = marlin_file_get (bookmark->file->location);
         g_assert (!marlin_file_is_gone (bookmark->details->file));
 
         g_signal_connect_object (bookmark->details->file, "changed",
@@ -528,9 +511,9 @@ marlin_bookmark_connect_file (MarlinBookmark *bookmark)
         marlin_file_check_if_ready (bookmark->details->file, MARLIN_FILE_ATTRIBUTE_INFO)) {
         //display_name = marlin_file_get_display_name (bookmark->details->file);
         display_name = bookmark->details->file->name;
-        if (strcmp (bookmark->details->name, display_name) != 0) {
-            g_free (bookmark->details->name);
-            bookmark->details->name = display_name;
+        if (strcmp (bookmark->name, display_name) != 0) {
+            g_free (bookmark->name);
+            bookmark->name = display_name;
         } /*else {
             g_free (display_name);
         }*/
@@ -539,24 +522,23 @@ marlin_bookmark_connect_file (MarlinBookmark *bookmark)
 #endif
 
 MarlinBookmark *
-marlin_bookmark_new (GFile *location, const char *name, gboolean has_custom_name,
-                       GIcon *icon)
+marlin_bookmark_new (GOFFile *file, char *label)
 {
-    MarlinBookmark *new_bookmark;
+    MarlinBookmark *bookmark;
 
-    new_bookmark = MARLIN_BOOKMARK (g_object_new (MARLIN_TYPE_BOOKMARK, NULL));
-    g_object_ref_sink (new_bookmark);
+    bookmark = MARLIN_BOOKMARK (g_object_new (MARLIN_TYPE_BOOKMARK, NULL));
+    g_object_ref_sink (bookmark);
 
-    new_bookmark->details->name = g_strdup (name);
-    new_bookmark->details->location = g_object_ref (location);
-    new_bookmark->details->has_custom_name = has_custom_name;
-    if (icon) {
-        new_bookmark->details->icon = g_object_ref (icon);
-    }
+    bookmark->label = g_strdup (label);
+    bookmark->file = g_object_ref (file);
+    if (label != NULL)
+        bookmark->name = bookmark->label;
+    else
+        bookmark->name = file->name;
 
     //marlin_bookmark_connect_file (new_bookmark);
 
-    return new_bookmark;
+    return bookmark;
 }				 
 
 #if 0
@@ -591,7 +573,7 @@ marlin_bookmark_menu_item_new (MarlinBookmark *bookmark)
     GtkWidget *image_widget;
     GtkLabel *label;
 
-    menu_item = gtk_image_menu_item_new_with_label (bookmark->details->name);
+    menu_item = gtk_image_menu_item_new_with_label (bookmark->name);
     label = GTK_LABEL (gtk_bin_get_child (GTK_BIN (menu_item)));
     gtk_label_set_use_underline (label, FALSE);
     gtk_label_set_ellipsize (label, PANGO_ELLIPSIZE_END);
@@ -615,10 +597,10 @@ marlin_bookmark_uri_known_not_to_exist (MarlinBookmark *bookmark)
     gboolean exists;
 
     /* Convert to a path, returning FALSE if not local. */
-    if (!g_file_is_native (bookmark->details->location)) {
+    if (!g_file_is_native (bookmark->file->location)) {
         return FALSE;
     }
-    path_name = g_file_get_path (bookmark->details->location);
+    path_name = g_file_get_path (bookmark->file->location);
 
     /* Now check if the file exists (sync. call OK because it is local). */
     exists = g_file_test (path_name, G_FILE_TEST_EXISTS);

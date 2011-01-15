@@ -70,6 +70,7 @@ struct _GOFFile {
     guint64         modified;
     gchar           *formated_modified;
     const gchar     *color;
+    gboolean        is_mounted;
 
     const gchar     *thumbnail;
     gboolean        is_thumbnailing;

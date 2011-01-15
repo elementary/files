@@ -35,7 +35,7 @@
 #include <gio/gio.h>
 #include <string.h>
 #include "gof-file.h"
-#include "marlin-icons.h"
+//#include "marlin-icons.h"
 
 #define MAX_BOOKMARK_LENGTH 80
 #define LOAD_JOB 1
@@ -58,48 +58,47 @@ static void        marlin_bookmark_list_save_file     (MarlinBookmarkList *bookm
 G_DEFINE_TYPE(MarlinBookmarkList, marlin_bookmark_list, G_TYPE_OBJECT)
 
 static MarlinBookmark *
-new_bookmark_from_uri (const char *uri, const char *label)
+new_bookmark_from_uri (const char *uri, char *label)
 {
-    MarlinBookmark *new_bookmark;
+    MarlinBookmark *bookmark;
     GOFFile *file;
     char *name;
     GIcon *icon;
     gboolean has_label;
     GFile *location;
-    gboolean native;
 
-    location = g_file_new_for_uri (uri);
+    /*location = g_file_new_for_uri (uri);
     has_label = FALSE;
 
     new_bookmark = NULL;
     name = NULL;
 
-    if (label) { 
+    if (label != NULL) { 
         name = g_strdup (label);
         has_label = TRUE;
-    }
+    }*/
 
-    native = g_file_is_native (location);
-
-    if (!native)
-        icon = g_themed_icon_new (MARLIN_ICON_FOLDER_REMOTE);
-    file = gof_file_get (location);
-    if (file != NULL) {
+    /*if (!g_file_is_native (location))
+        icon = g_themed_icon_new (MARLIN_ICON_FOLDER_REMOTE);*/
+    //file = gof_file_get (location);
+    file = gof_file_get_by_uri (uri);
+    /*if (file != NULL) {
         if (name == NULL)
             name = g_strdup (file->display_name);
         if (icon == NULL)
             icon = file->icon;
     }
     if (name == NULL)
-        name = g_file_get_parse_name (location);
+        name = g_file_get_parse_name (location);*/
 
-    new_bookmark = marlin_bookmark_new (location, name, has_label, icon);
+    //new_bookmark = marlin_bookmark_new (location, name, has_label, icon);
+    bookmark = marlin_bookmark_new (file, label);
 
     if (file != NULL)
         g_object_unref (file);
 
-    g_free (name);
-    return new_bookmark;
+    //g_free (name);
+    return bookmark;
 }
 
 static GFile *
@@ -108,9 +107,7 @@ marlin_bookmark_list_get_file (void)
     char *filename;
     GFile *file;
 
-    filename = g_build_filename (g_get_home_dir (),
-                                 ".gtk-bookmarks",
-                                 NULL);
+    filename = g_build_filename (g_get_home_dir (), ".gtk-bookmarks", NULL);
     file = g_file_new_for_path (filename);
 
     g_free (filename);

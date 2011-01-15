@@ -37,6 +37,7 @@
 #define MARLIN_PLACES_SIDEBAR_GET_CLASS(obj) \
     (G_TYPE_INSTANCE_GET_CLASS ((obj), MARLIN_TYPE_PLACES_SIDEBAR, MarlinPlacesSidebarClass))
 
+
 typedef struct {
     GtkScrolledWindow   parent;
     GtkTreeView         *tree_view;

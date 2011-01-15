@@ -92,6 +92,14 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 static guint    signals[LAST_SIGNAL];
 static guint32  effective_user_id;
 
+static void
+gof_set_custom_display_name (GOFFile *file, gchar *name)
+{
+    g_free (file->custom_display_name);
+    file->custom_display_name = g_strdup (name);
+    file->name = file->custom_display_name;
+}
+
 GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
 {
     GOFFile *file;
@@ -99,34 +107,40 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
     GKeyFile *key_file;
     gchar *p;
 
-    g_return_val_if_fail (file_info != NULL, NULL);
+    //g_return_val_if_fail (file_info != NULL, NULL);
 
     file = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
     file->info = file_info;
     //file->parent_dir = g_file_enumerator_get_container (enumerator);
     file->directory = dir;
     //g_object_ref (file->directory);
-    file->name = g_file_info_get_name (file_info);
+    if (file_info != NULL)
+        file->name = g_file_info_get_name (file_info);
 
-    if (location != NULL)
+    if (location != NULL) {
         file->location = g_object_ref (location);
-    else if (dir != NULL)
+    } else if (dir != NULL) {
         file->location = g_file_get_child(file->directory, file->name);
-    else 
+    } else { 
         return NULL;
+    }
 
+    file->basename = g_file_get_basename (file->location);
+    if (file_info == NULL && file->location != NULL)
+        gof_set_custom_display_name (file, file->basename);
+    
     //log_printf (LOG_LEVEL_UNDEFINED, "test parent_dir %s\n", g_file_get_uri(file->location));
+    if (file_info == NULL)
+        return file;
 
     file->display_name = g_file_info_get_display_name (file_info);
     file->is_hidden = g_file_info_get_is_hidden (file_info);
-    file->basename = g_file_get_basename (file->location);
     file->ftype = g_file_info_get_attribute_string (file_info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
     file->size = (guint64) g_file_info_get_size (file_info);
     file->file_type = g_file_info_get_file_type(file_info);
     file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
     file->modified = g_file_info_get_attribute_uint64 (file_info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
-    file->utf8_collation_key = g_utf8_collate_key (file->name, -1);
     if (file->is_directory)
         file->format_size = g_strdup ("--");
     else
@@ -168,20 +182,23 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
 
             /* read the display name from the .desktop file (will be overwritten later
              * if it's undefined here) */
-            file->custom_display_name = g_key_file_get_string (key_file,
+            char *custom_display_name = g_key_file_get_string (key_file,
                                                         G_KEY_FILE_DESKTOP_GROUP,
                                                         G_KEY_FILE_DESKTOP_KEY_NAME,
                                                         NULL);
 
             /* check if we have a display name now */
-            if (file->custom_display_name != NULL)
+            if (custom_display_name != NULL)
             {
                 /* drop the name if it's empty or has invalid encoding */
-                if (*file->custom_display_name == '\0' 
-                    || !g_utf8_validate (file->custom_display_name, -1, NULL))
+                if (*custom_display_name == '\0' 
+                    || !g_utf8_validate (custom_display_name, -1, NULL))
                 {
-                    g_free (file->custom_display_name);
-                    file->custom_display_name = NULL;
+                    g_free (custom_display_name);
+                    custom_display_name = NULL;
+                } else {
+                    gof_set_custom_display_name (file, custom_display_name);
+                    g_free (custom_display_name);
                 }
             }
 
@@ -191,6 +208,7 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
     }
 
     file->icon = g_content_type_get_icon (file->ftype);
+    file->utf8_collation_key = g_utf8_collate_key (file->name, -1);
 
     /* don't waste time on collecting data for hidden files which would be dropped */
     //TODO set property don't call g_setting for each files
@@ -219,8 +237,14 @@ GFileInfo* gof_file_get_file_info (GOFFile* self) {
     return result;
 }
 
-static void gof_file_init (GOFFile *self) {
-    ;
+static void gof_file_init (GOFFile *file) {
+    file->info = NULL;
+    file->location = NULL;
+    file->icon = NULL;
+    file->pix = NULL;
+
+    /* assume the file is mounted by default */
+    file->is_mounted = TRUE;
 }
 
 static void gof_file_finalize (GObject* obj) {
@@ -941,6 +965,7 @@ GOFFile* gof_file_get (GFile *location)
     GFile *parent;
     GOFFile *file = NULL;
     GOFDirectoryAsync *dir = NULL;
+    GError *err = NULL;
 
     //printf ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
     if ((parent = g_file_get_parent (location)) != NULL)
@@ -956,10 +981,19 @@ GOFFile* gof_file_get (GFile *location)
         g_object_ref (file);
     } else {
         file_info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                       G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, NULL);
-        if (file_info == NULL)
-            return NULL;
+                                       G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, &err);
         file = gof_file_new (file_info, location, parent);
+        if (err != NULL)
+            if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED)
+            {
+                file->is_mounted = FALSE;
+                //printf ("%s %s NOT MOUNTED\n", G_STRFUNC, g_file_get_uri (location));
+                g_clear_error (&err);
+            }
+
+        /*if (file_info == NULL) {
+            printf ("%s file_info NULL\n", G_STRFUNC);
+        }*/
     }
 
     return (file);
@@ -973,6 +1007,10 @@ GOFFile* gof_file_get_by_uri (const char *uri)
     location = g_file_new_for_uri (uri);
     printf ("%s %s\n", G_STRFUNC, g_file_get_uri (location));
     file = gof_file_get (location);
+    if (file == NULL) {
+        printf ("%s NULL\n", G_STRFUNC);
+        exit (-1);
+    }
     g_object_unref (location);
 
     return file;

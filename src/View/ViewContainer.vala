@@ -59,23 +59,26 @@ namespace Marlin.View {
             this.show_all();
 
             path_changed.connect((myfile) => {
-                                 change_view(view_mode, myfile);
-                                 update_location_state(true);
-                                 });
+                /* location didn't change, do nothing */
+                if (slot != null && myfile != null && slot.location.equal (myfile))
+                    return;
+                change_view(view_mode, myfile);
+                update_location_state(true);
+            });
             up.connect(() => {
-                       if (slot.directory.has_parent()) {
-                       change_view(view_mode, slot.directory.get_parent());
-                       update_location_state(true);
-                       }
-                       });
+                if (slot.directory.has_parent()) {
+                    change_view(view_mode, slot.directory.get_parent());
+                    update_location_state(true);
+                }
+            });
             back.connect(() => {
-                         change_view(view_mode, File.new_for_commandline_arg(browser.go_back()));
-                         update_location_state(false);
-                         });
+                change_view(view_mode, File.new_for_commandline_arg(browser.go_back()));
+                update_location_state(false);
+            });
             forward.connect(() => {
-                            change_view(view_mode, File.new_for_commandline_arg(browser.go_forward()));
-                            update_location_state(false);
-                            });
+                change_view(view_mode, File.new_for_commandline_arg(browser.go_forward()));
+                update_location_state(false);
+            });
         }
 
         public Widget content{
@@ -160,7 +163,7 @@ namespace Marlin.View {
 
             window.can_go_up = slot.directory.has_parent();
             if (window.top_menu.location_bar != null)
-                    window.top_menu.location_bar.path = slot.directory.get_uri();
+                    window.top_menu.location_bar.path = slot.location.get_parse_name();
             if (save_history)
                 browser.record_uri(slot.directory.get_uri());
             window.can_go_back = browser.can_go_back();
