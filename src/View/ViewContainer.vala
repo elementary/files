@@ -44,10 +44,8 @@ namespace Marlin.View {
             /* set active tab */
             window.current_tab = this;
             browser = new Browser<string> ();
-            change_view (view_mode, location);
-            //label = new Gtk.Label("test");
-            //label = new Gtk.Label(slot.directory.get_uri());
             label = new Gtk.Label("Loading...");
+            change_view (view_mode, location);
             label.set_ellipsize(Pango.EllipsizeMode.END);
             label.set_single_line_mode(true);
             label.set_alignment(0.0f, 0.5f);
@@ -103,6 +101,17 @@ namespace Marlin.View {
             }
         }
 
+        private void connect_available_info() {
+            file_info_callback = slot.directory.info_available.connect(() => {
+                tab_name = slot.directory.file.info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
+                if(window.current_tab == this){
+                    window.set_title(tab_name);
+                }
+
+                Source.remove((uint) file_info_callback);
+            });
+        }
+
         public void change_view(int nview, GLib.File? location){
             if (location == null) 
                 location = slot.location;
@@ -112,14 +121,17 @@ namespace Marlin.View {
             if (slot != null) {
                 slot.directory.cancel();
             }
+
             switch (nview) {
             case ViewMode.MILLER:
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;
+                connect_available_info();
                 mwcol.make_view();
                 break;
             default:
                 slot = new GOF.Window.Slot(location, this);
+                connect_available_info();
                 slot.make_view();
                 break;
             }
@@ -152,15 +164,6 @@ namespace Marlin.View {
 
         public void update_location_state(bool save_history)
         {
-            file_info_callback = slot.directory.info_available.connect(() => {
-                tab_name = slot.directory.info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
-                if(window.current_tab == this){
-                    window.set_title(tab_name);
-                }
-
-                Source.remove((uint) file_info_callback);
-            });
-
             window.can_go_up = slot.directory.has_parent();
             if (window.top_menu.location_bar != null)
                     window.top_menu.location_bar.path = slot.location.get_parse_name();

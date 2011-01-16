@@ -23,12 +23,6 @@
 
 #include <config.h>
 
-/*#include <eel/eel-debug.h>
-#include <eel/eel-gtk-extensions.h>
-#include <eel/eel-glib-extensions.h>
-#include <eel/eel-preferences.h>
-#include <eel/eel-string.h>
-#include <eel/eel-stock-dialogs.h>*/
 #include "eel-fcts.h"
 #include "eel-gtk-extensions.h"
 #include "eel-gdk-pixbuf-extensions.h"
@@ -36,20 +30,6 @@
 #include "gossip-cell-renderer-expander.h"
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
-/*#include <libmarlin-private/nautilus-debug-log.h>
-#include <libmarlin-private/nautilus-dnd.h>
-#include <libmarlin-private/nautilus-bookmark.h>
-#include <libmarlin-private/nautilus-global-preferences.h>
-#include <libmarlin-private/nautilus-sidebar-provider.h>
-#include <libmarlin-private/nautilus-module.h>
-#include <libmarlin-private/nautilus-file.h>
-#include <libmarlin-private/nautilus-file-utilities.h>
-#include <libmarlin-private/nautilus-file-operations.h>
-#include <libmarlin-private/nautilus-trash-monitor.h>
-#include <libmarlin-private/nautilus-icon-names.h>
-#include <libmarlin-private/nautilus-autorun.h>
-#include <libmarlin-private/nautilus-window-info.h>
-#include <libmarlin-private/nautilus-window-slot-info.h>*/
 #include <gio/gio.h>
 #include "gof-file.h"
 #include "gof-window-slot.h"
@@ -62,10 +42,6 @@
 #include "marlin-bookmark.h"
 #include "marlin-trash-monitor.h"
 #include "marlin-dnd.h"
-
-/*#include "marlin-bookmark-list.h"
-#include "marlin-places-sidebar.h"
-#include "marlin-window.h"*/
 
 #define EJECT_BUTTON_XPAD 0
 #define TEXT_XPAD 5
@@ -1691,7 +1667,8 @@ volume_mounted_cb (GVolume *volume,
 
         if (sidebar->go_to_after_mount_slot != NULL) {
             //TODO
-            printf("%s: %s\n", G_STRFUNC, g_file_get_uri (location));
+            printf("%s: go_to %s %s\n", G_STRFUNC, g_file_get_uri (sidebar->go_to_after_mount_slot->location), g_file_get_uri (location));
+            g_signal_emit_by_name (sidebar->go_to_after_mount_slot->ctab, "path-changed", location);
 #if 0
             if ((sidebar->go_to_after_mount_flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW) == 0) {
                 /*marlin_window_slot_info_open_location (sidebar->go_to_after_mount_slot, location,
@@ -1765,7 +1742,6 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
     if (uri != NULL) {
         printf ("%s: uri: %s\n", G_STRFUNC, uri);
         //amtest
-        //#if 0
         /*marlin_debug_log (FALSE, MARLIN_DEBUG_LOG_DOMAIN_USER,
           "activate from places sidebar window=%p: %s",
           sidebar->window, uri);*/
@@ -1773,7 +1749,6 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
         /* Navigate to the clicked location */
         if ((flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW) == 0) {
             slot = marlin_view_window_get_active_slot (MARLIN_VIEW_WINDOW (sidebar->window));
-            //amtest sidebar load uri
             g_signal_emit_by_name (slot->ctab, "path-changed", location);
             g_object_unref (slot);
 
@@ -1783,6 +1758,8 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
         } else {
             //TODO once we ll have marlin-application class for managing windows / application
             printf ("%s: uri: %s FLAG_NEW_WINDOW\n", G_STRFUNC, uri);
+            //marlin_view_window_add_tab (sidebar->window, location);
+
             /*MarlinViewWindow *cur, *new;
 
               cur = MARLIN_WINDOW (sidebar->window);
@@ -1792,7 +1769,6 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
               marlin_window_go_to (new, location);*/
         }
         g_object_unref (location);
-        //#endif
         g_free (uri);
     } else {
         GDrive *drive;
@@ -1815,8 +1791,6 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
 
             sidebar->go_to_after_mount_flags = flags;
 
-            /* TODO file_operation */
-            //amtest
             printf ("%s: marlin_file_operations_mount_volume_full\n", G_STRFUNC);
             marlin_file_operations_mount_volume_full (NULL, volume, FALSE,
                                                       volume_mounted_cb,

@@ -184,12 +184,48 @@ static void load_dir_info_async_callback (GObject *source_object, GAsyncResult *
         return;
     }
 
-    dir->info = g_file_query_info_finish (G_FILE (source_object), res, &error);
+    dir->file->info = g_file_query_info_finish (G_FILE (source_object), res, &error);
     print_error(error);
 
     g_signal_emit (dir, signals[INFO_AVAILABLE], 0);
 }
 
+static GMountOperation *
+gof_mount_operation_new (gpointer parent)
+{
+  GMountOperation *mount_operation;
+  GtkWindow       *window = NULL;
+  GdkScreen       *screen = NULL;
+
+  mount_operation = gtk_mount_operation_new (NULL);
+
+  //TODO parent=widget
+  /*screen = thunar_util_parse_parent (parent, &window);
+  gtk_mount_operation_set_screen (GTK_MOUNT_OPERATION (mount_operation), screen);
+  gtk_mount_operation_set_parent (GTK_MOUNT_OPERATION (mount_operation), window);*/
+
+  return mount_operation;
+}
+
+static void
+gof_directory_async_load_and_enum (GObject *source_object, GAsyncResult *res, gpointer user_data)
+{
+    GOFDirectoryAsync *dir = GOF_DIRECTORY_ASYNC (user_data);
+
+    g_file_enumerate_children_async (dir->location, GOF_GIO_DEFAULT_ATTRIBUTES,
+                                     G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                     G_PRIORITY_DEFAULT,
+                                     dir->priv->cancellable,
+                                     load_dir_async_callback,
+                                     dir);
+    g_file_query_info_async (dir->location,
+                             GOF_GIO_DEFAULT_ATTRIBUTES,
+                             G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                             G_PRIORITY_DEFAULT,
+                             dir->priv->cancellable,
+                             load_dir_info_async_callback,
+                             dir);
+}
 
 void
 load_dir_async (GOFDirectoryAsync *dir)
@@ -204,25 +240,33 @@ load_dir_async (GOFDirectoryAsync *dir)
     {
         printf ("%s LOADED FALSE\n", G_STRFUNC);
         dir->loading = TRUE;
+        
         char *uri = g_file_get_uri(dir->location);
         log_printf( LOG_LEVEL_UNDEFINED, "Start loading directory %s \n", uri);
         g_free (uri);
+        
         p->monitor = gof_monitor_directory (dir);
+        dir->file = gof_file_get (dir->location);
 
-        g_file_enumerate_children_async (dir->location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                         G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                         G_PRIORITY_DEFAULT,
-                                         p->cancellable,
-                                         load_dir_async_callback,
-                                         dir);
+        if (!dir->file->is_mounted) {
+            GMountOperation *mount_operation = gof_mount_operation_new (NULL);
+            //g_file_mount_mountable (location, 
+            g_file_mount_enclosing_volume (dir->location, 
+                                           G_MOUNT_MOUNT_NONE, mount_operation, 
+                                           p->cancellable,
+                                           gof_directory_async_load_and_enum, dir);
+            g_object_unref (mount_operation);
+        } else {
+            if (dir->file->info != NULL)
+                g_signal_emit (dir, signals[INFO_AVAILABLE], 0);
 
-        g_file_query_info_async (dir->location,
-                                 GOF_GIO_DEFAULT_ATTRIBUTES,
-                                 G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                 G_PRIORITY_DEFAULT,
-                                 p->cancellable,
-                                 load_dir_info_async_callback,
-                                 dir);
+            g_file_enumerate_children_async (dir->location, GOF_GIO_DEFAULT_ATTRIBUTES,
+                                             G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                             G_PRIORITY_DEFAULT,
+                                             p->cancellable,
+                                             load_dir_async_callback,
+                                             dir);
+        }
     } else {
         printf ("%s ALREADY LOADED\n", G_STRFUNC);
         g_signal_emit (dir, signals[INFO_AVAILABLE], 0);
@@ -324,7 +368,6 @@ gof_directory_async_init (GOFDirectoryAsync *self)
     self->priv = g_new0(GOFDirectoryAsyncPrivate, 1);
     self->loading = FALSE;
     self->loaded = FALSE;
-    self->info = NULL;
 }
 
 static void
@@ -357,10 +400,6 @@ gof_directory_async_finalize (GObject *object)
         g_hash_table_destroy (dir->file_hash);
     if (dir->hidden_file_hash != NULL)
         g_hash_table_destroy (dir->hidden_file_hash);
-
-    /* release directory info */
-    if (dir->info != NULL)
-        g_object_unref (dir->info);
 
     g_object_unref (dir->location);
     /*if (dir->priv->_parent != NULL)

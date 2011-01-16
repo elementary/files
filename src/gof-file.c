@@ -957,6 +957,16 @@ gof_file_is_executable (const GOFFile *file)
     return can_execute || gof_file_is_desktop_file (file);
 }
 
+static void
+print_error(GError *error)
+{
+    if (error != NULL)
+    {
+        g_print ("%s\n", error->message);
+        g_clear_error (&error);
+    }
+}
+
 
 GOFFile* gof_file_get (GFile *location)
 {
@@ -983,13 +993,14 @@ GOFFile* gof_file_get (GFile *location)
         file_info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
                                        G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, &err);
         file = gof_file_new (file_info, location, parent);
-        if (err != NULL)
+        if (err != NULL) {
             if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED)
             {
                 file->is_mounted = FALSE;
-                //printf ("%s %s NOT MOUNTED\n", G_STRFUNC, g_file_get_uri (location));
                 g_clear_error (&err);
             }
+            print_error (err);
+        }
 
         /*if (file_info == NULL) {
             printf ("%s file_info NULL\n", G_STRFUNC);
@@ -1007,6 +1018,7 @@ GOFFile* gof_file_get_by_uri (const char *uri)
     location = g_file_new_for_uri (uri);
     printf ("%s %s\n", G_STRFUNC, g_file_get_uri (location));
     file = gof_file_get (location);
+    /* FIXME remove this ugly test */ 
     if (file == NULL) {
         printf ("%s NULL\n", G_STRFUNC);
         exit (-1);

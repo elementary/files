@@ -16,6 +16,7 @@
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *
  *  Authors : Mr Jamie McCracken (jamiemcc at blueyonder dot co dot uk)
+ *            Roth Robert <evfool@gmail.com>
  *            ammonkey <am.monkeyd@gmail.com>
  *
  */

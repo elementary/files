@@ -62,7 +62,7 @@ namespace GOF {
     namespace Directory {
         [CCode (cheader_filename = "gof-directory-async.h")]
         public class Async : GLib.Object {
-            public GLib.FileInfo info;
+            public GOF.File file;
             public Async (GLib.File f);
             public void cancel ();
             public string get_uri ();

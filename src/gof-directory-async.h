@@ -44,7 +44,7 @@ typedef struct GOFDirectoryAsyncPrivate GOFDirectoryAsyncPrivate;
 typedef struct {
     GObject                     parent;
     GFile                       *location;
-    GFileInfo                   *info;
+    GOFFile                     *file;
     gboolean                    loading;
     gboolean                    loaded;
     GHashTable                  *file_hash;
