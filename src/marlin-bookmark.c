@@ -227,10 +227,7 @@ marlin_bookmark_get_icon (MarlinBookmark *bookmark)
     if (bookmark->file->icon) {
         return g_object_ref (bookmark->file->icon);
     }
-    if (!g_file_is_native (bookmark->file->location))
-        return g_themed_icon_new (MARLIN_ICON_FOLDER_REMOTE);
-    else
-        return g_themed_icon_new (MARLIN_ICON_FOLDER);
+    return g_themed_icon_new (MARLIN_ICON_FOLDER);
 
     return NULL;
 }

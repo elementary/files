@@ -49,9 +49,7 @@ struct _NautilusIconInfoClass
 
 static void schedule_reap_cache (void);
 
-G_DEFINE_TYPE (NautilusIconInfo,
-               nautilus_icon_info,
-               G_TYPE_OBJECT);
+G_DEFINE_TYPE (NautilusIconInfo, nautilus_icon_info, G_TYPE_OBJECT);
 
 static void
 nautilus_icon_info_init (NautilusIconInfo *icon)
@@ -325,8 +323,7 @@ themed_icon_key_free (ThemedIconKey *key)
 }
 
 NautilusIconInfo *
-nautilus_icon_info_lookup (GIcon *icon,
-                           int size)
+nautilus_icon_info_lookup (GIcon *icon, int size)
 {
     NautilusIconInfo *icon_info;
     GdkPixbuf *pixbuf;

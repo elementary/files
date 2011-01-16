@@ -29,6 +29,7 @@
 #include "gof-directory-async.h"
 #include "marlin-exec.h"
 #include "marlin-vala.h"
+#include "marlin-icons.h"
 
 
 /*struct _GOFFilePrivate {
@@ -92,6 +93,35 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 static guint    signals[LAST_SIGNAL];
 static guint32  effective_user_id;
 
+static GIcon *
+get_icon_user_special_dirs(char *path)
+{
+    GIcon *icon = NULL;
+
+    if (!path)
+        return NULL;
+    if (strcmp (path, g_get_home_dir ()) == 0)
+        icon = g_themed_icon_new ("user-home");
+    else if (strcmp (path, g_get_user_special_dir (G_USER_DIRECTORY_DESKTOP)) == 0)
+        icon = g_themed_icon_new ("user-desktop");
+    else if (g_strcmp0 (path, g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS)) == 0)
+        icon = g_themed_icon_new_with_default_fallbacks ("folder-documents");
+    else if (g_strcmp0 (path, g_get_user_special_dir (G_USER_DIRECTORY_DOWNLOAD)) == 0)
+        icon = g_themed_icon_new_with_default_fallbacks ("folder-download");
+    else if (g_strcmp0 (path, g_get_user_special_dir (G_USER_DIRECTORY_MUSIC)) == 0)
+        icon = g_themed_icon_new_with_default_fallbacks ("folder-music");
+    else if (g_strcmp0 (path, g_get_user_special_dir (G_USER_DIRECTORY_PICTURES)) == 0)
+        icon = g_themed_icon_new_with_default_fallbacks ("folder-pictures");
+    else if (g_strcmp0 (path, g_get_user_special_dir (G_USER_DIRECTORY_PUBLIC_SHARE)) == 0)
+        icon = g_themed_icon_new_with_default_fallbacks ("folder-publicshare");
+    else if (g_strcmp0 (path, g_get_user_special_dir (G_USER_DIRECTORY_TEMPLATES)) == 0)
+        icon = g_themed_icon_new_with_default_fallbacks ("folder-templates");
+    else if (g_strcmp0 (path, g_get_user_special_dir (G_USER_DIRECTORY_VIDEOS)) == 0)
+        icon = g_themed_icon_new_with_default_fallbacks ("folder-videos");
+
+    return (icon);
+}
+
 static void
 gof_set_custom_display_name (GOFFile *file, gchar *name)
 {
@@ -128,7 +158,7 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
     file->basename = g_file_get_basename (file->location);
     if (file_info == NULL && file->location != NULL)
         gof_set_custom_display_name (file, file->basename);
-    
+
     //log_printf (LOG_LEVEL_UNDEFINED, "test parent_dir %s\n", g_file_get_uri(file->location));
     if (file_info == NULL)
         return file;
@@ -183,9 +213,9 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
             /* read the display name from the .desktop file (will be overwritten later
              * if it's undefined here) */
             char *custom_display_name = g_key_file_get_string (key_file,
-                                                        G_KEY_FILE_DESKTOP_GROUP,
-                                                        G_KEY_FILE_DESKTOP_KEY_NAME,
-                                                        NULL);
+                                                               G_KEY_FILE_DESKTOP_GROUP,
+                                                               G_KEY_FILE_DESKTOP_KEY_NAME,
+                                                               NULL);
 
             /* check if we have a display name now */
             if (custom_display_name != NULL)
@@ -207,13 +237,29 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
         }
     }
 
-    file->icon = g_content_type_get_icon (file->ftype);
+    if (file->is_directory && !file->is_hidden)
+    {
+        //TODO hum store the uri?
+        char *uri = g_file_get_uri (file->location);
+        char *path = g_filename_from_uri (uri, NULL, NULL);
+        file->icon = get_icon_user_special_dirs(path);
+        g_free (uri);
+        g_free (path);
+
+        if (file->icon == NULL && !g_file_is_native (file->location))
+            file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER_REMOTE);
+    }
+    if (file->icon == NULL)
+        file->icon = g_content_type_get_icon (file->ftype);
+
     file->utf8_collation_key = g_utf8_collate_key (file->name, -1);
 
     /* don't waste time on collecting data for hidden files which would be dropped */
+    /* FIXME repair hidden files */
     //TODO set property don't call g_setting for each files
     if (file->is_hidden && !g_settings_get_boolean(settings, "show-hiddenfiles"))
         return file;
+
     if (file->custom_icon_name != NULL) {
         if (g_path_is_absolute (file->custom_icon_name)) 
             nicon = nautilus_icon_info_lookup_from_path (file->custom_icon_name, 16);
@@ -1003,8 +1049,8 @@ GOFFile* gof_file_get (GFile *location)
         }
 
         /*if (file_info == NULL) {
-            printf ("%s file_info NULL\n", G_STRFUNC);
-        }*/
+          printf ("%s file_info NULL\n", G_STRFUNC);
+          }*/
     }
 
     return (file);
