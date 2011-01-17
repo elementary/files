@@ -57,6 +57,7 @@ struct _GOFFile {
     gchar           *custom_display_name;
     char            *basename;
     const gchar     *ftype;
+    gchar           *formated_type;
     gchar           *utf8_collation_key;
     guint64         size;
     gchar           *format_size;
@@ -90,7 +91,7 @@ struct _GOFFileClass {
 "standard::type,standard::is-hidden,standard::name,standard::display-name,standard::edit-name,standard::copy-name,standard::fast-content-type,standard::size,standard::allocated-size,access::*,mountable::*,time::*,unix::*,owner::*,selinux::*,thumbnail::*,id::filesystem,trash::orig-path,trash::deletion-date,metadata::*"
 */
 
-#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,access::*,time::*,owner::*,unix::uid,id::filesystem"
+#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,unix::uid,id::filesystem"
 
 typedef enum {
 	GOF_FILE_ICON_FLAGS_NONE = 0,
@@ -122,6 +123,8 @@ NautilusIconInfo    *gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlag
 GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileIconFlags flags);
 gboolean        gof_file_is_writable (GOFFile *file);
 gboolean        gof_file_is_trashed (GOFFile *file);
+const gchar     *gof_file_get_symlink_target (GOFFile *file);
+gboolean        gof_file_is_symlink (GOFFile *file);
 gboolean        gof_file_is_desktop_file (const GOFFile *file);
 gchar           *gof_file_list_to_string (GList *list, gsize *len);
 

@@ -56,6 +56,7 @@ namespace GOF {
         public string format_size;
         public string color;
         public string formated_modified;
+        public string formated_type;
     }
 
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]

@@ -299,7 +299,7 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
 
     file_entry = g_sequence_get (iter->user_data);
     file = file_entry->file;
-    //amtest
+    
     switch (column) {
     case FM_LIST_MODEL_FILE_COLUMN:
         g_value_init (value, GOF_TYPE_FILE);
@@ -334,7 +334,7 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
     case FM_LIST_MODEL_TYPE:
         g_value_init (value, G_TYPE_STRING);
         if (file != NULL)
-            g_value_set_string(value, file->ftype);
+            g_value_set_string(value, file->formated_type);
         break;
 
     case FM_LIST_MODEL_MODIFIED:

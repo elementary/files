@@ -213,14 +213,16 @@ gof_directory_async_load_and_enum (GObject *source_object, GAsyncResult *res, gp
     GOFDirectoryAsync *dir = GOF_DIRECTORY_ASYNC (user_data);
 
     g_file_enumerate_children_async (dir->location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                     G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                     //G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                     0,
                                      G_PRIORITY_DEFAULT,
                                      dir->priv->cancellable,
                                      load_dir_async_callback,
                                      dir);
     g_file_query_info_async (dir->location,
                              GOF_GIO_DEFAULT_ATTRIBUTES,
-                             G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                             //G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                             0,
                              G_PRIORITY_DEFAULT,
                              dir->priv->cancellable,
                              load_dir_info_async_callback,
@@ -261,7 +263,8 @@ load_dir_async (GOFDirectoryAsync *dir)
                 g_signal_emit (dir, signals[INFO_AVAILABLE], 0);
 
             g_file_enumerate_children_async (dir->location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                             G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                             //G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                             0,
                                              G_PRIORITY_DEFAULT,
                                              p->cancellable,
                                              load_dir_async_callback,

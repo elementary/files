@@ -254,6 +254,22 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
 
     file->utf8_collation_key = g_utf8_collate_key (file->name, -1);
 
+    /* get the formated type of thesyminked target */
+    GFile *target_location;
+    if (G_UNLIKELY (gof_file_is_symlink (file))) {
+        /* TODO put this in a queue and launch async? */
+        const char *target_path = g_file_info_get_symlink_target (file_info);
+        if (!g_path_is_absolute (target_path))
+            target_location = g_file_get_child(file->directory, target_path);
+        else
+            target_location = g_file_new_for_commandline_arg (target_path);
+        GOFFile *target_file = gof_file_get (target_location);
+        file->formated_type = g_strdup_printf (_("link to %s"), target_file->formated_type);
+        gof_file_unref (target_file);
+    } else {
+        file->formated_type = g_content_type_get_description (file->ftype);
+    }
+
     /* don't waste time on collecting data for hidden files which would be dropped */
     /* FIXME repair hidden files */
     //TODO set property don't call g_setting for each files
@@ -302,6 +318,7 @@ static void gof_file_finalize (GObject* obj) {
     _g_object_unref0 (file->location);
     g_free(file->basename);
     g_free(file->utf8_collation_key);
+    g_free(file->formated_type);
     g_free(file->format_size);
     g_free(file->formated_modified);
     _g_object_unref0 (file->icon);
@@ -926,6 +943,28 @@ gof_file_is_trashed (GOFFile *file)
     return eel_g_file_is_trashed (file->location);
 }
 
+const gchar *
+gof_file_get_symlink_target (GOFFile *file)
+{
+    g_return_val_if_fail (GOF_IS_FILE (file), NULL);
+
+    if (file->info == NULL)
+        return NULL;
+
+    return g_file_info_get_symlink_target (file->info);
+}
+
+gboolean 
+gof_file_is_symlink (GOFFile *file) 
+{
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+
+    if (file->info == NULL)
+        return FALSE;
+
+    return g_file_info_get_is_symlink (file->info);
+}
+
 
 /**
  * gof_file_is_desktop_file: imported from thunar
@@ -1037,7 +1076,8 @@ GOFFile* gof_file_get (GFile *location)
         g_object_ref (file);
     } else {
         file_info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                       G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, &err);
+                                       //G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, &err);
+                                       0, NULL, &err);
         file = gof_file_new (file_info, location, parent);
         if (err != NULL) {
             if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED)
