@@ -1061,7 +1061,7 @@ marlin_places_sidebar_drag_scroll_timer (gpointer user_data)
         GdkWindow *window = gtk_widget_get_window (widget);
 
         gdk_window_get_device_position ( window, pointer, &x, &y, NULL);
-        gdk_window_get_geometry (window, NULL, NULL, &w, &h, NULL);
+        gdk_window_get_geometry (window, NULL, NULL, &w, &h);
 
         /* check if we are near the edge (vertical) */
         offset = y - (2 * 20);

@@ -785,7 +785,7 @@ fm_directory_view_drag_scroll_timer (gpointer user_data)
         GdkWindow *window = gtk_widget_get_window (widget);
 
         gdk_window_get_device_position ( window, pointer, &x, &y, NULL);
-        gdk_window_get_geometry (window, NULL, NULL, &w, &h, NULL);
+        gdk_window_get_geometry (window, NULL, NULL, &w, &h);
 
         /* check if we are near the edge (vertical) */
         offset = y - (2 * 20);
@@ -1092,7 +1092,7 @@ fm_directory_view_drag_data_received (GtkWidget          *widget,
             if (G_UNLIKELY (gtk_selection_data_get_format (selection_data) == 8 && gtk_selection_data_get_length (selection_data) == 1 && gtk_selection_data_get_data (selection_data)[0] == 'F'))
             {
                 /* indicate that we don't provide "F" fallback */
-                gdk_property_change (GDK_DRAWABLE (gdk_drag_context_get_source_window (context)),
+                gdk_property_change (gdk_drag_context_get_source_window (context),
                                      gdk_atom_intern_static_string ("XdndDirectSave0"),
                                      gdk_atom_intern_static_string ("text/plain"), 8,
                                      GDK_PROP_MODE_REPLACE, (const guchar *) "", 0);
@@ -1308,7 +1308,7 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
               }*/
             if (G_LIKELY (file != NULL && file->is_directory 
                           && gof_file_is_writable (file))) {
-                printf ("%s get_suggested_action for file = directory\n");
+                printf ("%s get_suggested_action for file = directory\n", file->name);
                 action = gdk_drag_context_get_suggested_action (context);
             }
 
