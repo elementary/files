@@ -91,7 +91,7 @@ namespace Marlin.View.Chrome
 
         public void append (Widget widget)
         {
-            box.pack_start (widget, true, true, 5);
+            box.pack_start (widget, true, true, 3);
             int index = (int) box.get_children().length() - 2;
             mode_added (index, widget);
         }
@@ -183,7 +183,8 @@ namespace Marlin.View.Chrome
 
             var n_children = (int) box.get_children().length();
 
-            style.draw_box (cr, StateType.NORMAL, ShadowType.IN, this, "button", 0, 0, width, height);
+            //style.draw_box (cr, StateType.NORMAL, ShadowType.IN, this, "button", 0, 0, width, height);
+            style.draw_box (cr, StateType.NORMAL, ShadowType.ETCHED_OUT, this, "button", 0, 0, width, height);
             if (_selected >= 0) {
                 if (n_children > 1) {
                     item_width = width / n_children;
@@ -201,7 +202,8 @@ namespace Marlin.View.Chrome
                 cr.clip();
 
                 style.draw_box (cr, StateType.SELECTED,
-                                ShadowType.ETCHED_OUT, this, "button",
+                                //ShadowType.ETCHED_OUT, this, "button",
+                                ShadowType.IN, this, "button",
                                 0, 0,
                                 width, height);
             }
@@ -229,7 +231,8 @@ namespace Marlin.View.Chrome
                 cr.clip();
 
                 style.draw_box (cr, StateType.PRELIGHT,
-                                ShadowType.IN, this, "button",
+                                //ShadowType.IN, this, "button",
+                                ShadowType.ETCHED_OUT, this, "button",
                                 0, 0,
                                 width, height);
             }
