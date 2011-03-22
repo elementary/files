@@ -33,6 +33,7 @@ namespace Marlin.View.Chrome
         public TopMenu (Window window)
         {
             win = window;
+	    get_style_context().add_class ("primary-toolbar");
 
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
 
@@ -79,6 +80,7 @@ namespace Marlin.View.Chrome
                 if (name == "ViewSwitcher")
                 {
                     view_switcher = new ViewSwitcher(win.main_actions);
+		    view_switcher.get_style_context().add_class ("raised");
                     view_switcher.show_all();
                     insert(view_switcher, -1);
                     continue;
