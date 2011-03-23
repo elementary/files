@@ -208,9 +208,10 @@ gof_mount_operation_new (gpointer parent)
 }
 
 static void
-gof_directory_async_load_and_enum (GObject *source_object, GAsyncResult *res, gpointer user_data)
+//gof_directory_async_load_and_enum (GObject *source_object, GAsyncResult *res, gpointer user_data)
+gof_directory_async_load_and_enum (GOFDirectoryAsync *dir)
 {
-    GOFDirectoryAsync *dir = GOF_DIRECTORY_ASYNC (user_data);
+    //GOFDirectoryAsync *dir = GOF_DIRECTORY_ASYNC (user_data);
     g_assert (dir->location != NULL);
 
     g_file_enumerate_children_async (dir->location, GOF_GIO_DEFAULT_ATTRIBUTES,
@@ -228,6 +229,58 @@ gof_directory_async_load_and_enum (GObject *source_object, GAsyncResult *res, gp
 			     dir->priv->cancellable,
 			     load_dir_info_async_callback,
 			     dir);
+}
+
+static void
+gof_directory_async_mountable_finish (GObject      *object,
+				      GAsyncResult *result,
+				      gpointer      user_data)
+{
+    GOFDirectoryAsync *dir = user_data;
+    GError *error = NULL;
+
+    g_return_if_fail (G_IS_FILE (object));
+    g_return_if_fail (G_IS_ASYNC_RESULT (result));
+    g_return_if_fail (user_data != NULL);
+    g_return_if_fail (GOF_IS_FILE (dir->file));
+
+    if (!g_file_mount_mountable_finish (G_FILE (object), result, &error))
+    {
+	if (error->domain == G_IO_ERROR)
+	{
+	    if (error->code == G_IO_ERROR_ALREADY_MOUNTED)
+		g_clear_error (&error);
+	}
+	print_error (error);
+    }  else {
+	gof_directory_async_load_and_enum (dir);
+    }
+}
+
+static void
+gof_directory_async_enclosing_volume_finish (GObject      *object,
+					     GAsyncResult *result,
+					     gpointer      user_data)
+{
+    GOFDirectoryAsync *dir = user_data;
+    GError *error = NULL;
+
+    g_return_if_fail (G_IS_FILE (object));
+    g_return_if_fail (G_IS_ASYNC_RESULT (result));
+    g_return_if_fail (user_data != NULL);
+    g_return_if_fail (GOF_IS_FILE (dir->file));
+
+    if (!g_file_mount_enclosing_volume_finish (G_FILE (object), result, &error))
+    {
+      if (error->domain == G_IO_ERROR)
+        {
+          if (error->code == G_IO_ERROR_ALREADY_MOUNTED)
+            g_clear_error (&error);
+        }
+	print_error (error);
+    }  else {
+	gof_directory_async_load_and_enum (dir);
+    }
 }
 
 void
@@ -258,12 +311,12 @@ load_dir_async (GOFDirectoryAsync *dir)
 		g_file_mount_mountable (dir->location, 
 					G_MOUNT_MOUNT_NONE, mount_operation, 
 					p->cancellable,
-					gof_directory_async_load_and_enum, dir);
+					gof_directory_async_mountable_finish, dir);
 	    } else {
 		g_file_mount_enclosing_volume (dir->location, 
 					       G_MOUNT_MOUNT_NONE, mount_operation, 
 					       p->cancellable,
-					       gof_directory_async_load_and_enum, dir);
+					       gof_directory_async_enclosing_volume_finish, dir);
 	    }
 	    g_object_unref (mount_operation);
 	} else {
