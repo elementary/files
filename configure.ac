@@ -133,9 +133,9 @@ else
 fi
 
 dnl ===========================================================================
-AC_ARG_ENABLE(clutter_view, 
-	AC_HELP_STRING([--disable-clutter-view], 
-			[Disable clutter view]))
+AC_ARG_ENABLE(taskview, 
+	AC_HELP_STRING([--disable-taskview], 
+			[Disable taskview]))
 msg_taskview=no
 AM_CONDITIONAL(ENABLE_TASKVIEW, false)
 if test "x$enable_taskview" != "xno"; then
