@@ -97,8 +97,8 @@ struct GOFWindowSlotClass {
     GObjectClass parent_class;
 
     /* wrapped GOFWindowInfo signals, for overloading */
-    /*void (* active)   (NautilusWindowSlot *slot);
-      void (* inactive) (NautilusWindowSlot *slot);*/
+    void (* active)   (GOFWindowSlot *slot);
+    void (* inactive) (GOFWindowSlot *slot);
 
     //void (* update_query_editor) (NautilusWindowSlot *slot);
 };

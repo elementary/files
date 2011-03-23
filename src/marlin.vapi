@@ -42,6 +42,8 @@ namespace GOF {
             public Directory.Async directory;
             public GLib.File location;
             public Widget view_box;
+            public signal void active ();
+            public signal void inactive ();
         }
     }
 

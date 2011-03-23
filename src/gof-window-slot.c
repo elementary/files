@@ -28,8 +28,15 @@ static void gof_window_slot_class_init (GOFWindowSlotClass *class);
 static void gof_window_slot_finalize   (GObject *object);
 
 G_DEFINE_TYPE (GOFWindowSlot, gof_window_slot, G_TYPE_OBJECT)
-
 #define parent_class gof_window_slot_parent_class
+
+enum {
+    ACTIVE,
+    INACTIVE,
+    LAST_SIGNAL
+};
+
+static guint signals[LAST_SIGNAL] = { 0 };
 
 #if 0
 static void
@@ -292,6 +299,24 @@ gof_window_slot_class_init (GOFWindowSlotClass *class)
     /*class->active = real_active;
       class->inactive = real_inactive;
       class->update_query_editor = real_update_query_editor; */
+
+    signals[ACTIVE] =
+	g_signal_new ("active",
+		      G_TYPE_FROM_CLASS (class),
+		      G_SIGNAL_RUN_LAST,
+		      G_STRUCT_OFFSET (GOFWindowSlotClass, active),
+		      NULL, NULL,
+		      g_cclosure_marshal_VOID__VOID,
+		      G_TYPE_NONE, 0);
+
+    signals[INACTIVE] =
+	g_signal_new ("inactive",
+		      G_TYPE_FROM_CLASS (class),
+		      G_SIGNAL_RUN_LAST,
+		      G_STRUCT_OFFSET (GOFWindowSlotClass, inactive),
+		      NULL, NULL,
+		      g_cclosure_marshal_VOID__VOID,
+		      G_TYPE_NONE, 0);
 
     G_OBJECT_CLASS (class)->finalize = gof_window_slot_finalize;
 }

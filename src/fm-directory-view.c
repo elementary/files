@@ -1676,6 +1676,26 @@ fm_directory_view_grab_focus (GtkWidget *widget)
     gtk_widget_grab_focus (gtk_bin_get_child (GTK_BIN (widget)));
 }
 
+static void
+slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
+{
+	g_assert (!view->details->active);
+	view->details->active = TRUE;
+
+	fm_directory_view_merge_menus (view);
+	//schedule_update_menus (view);
+}
+
+static void
+slot_inactive (GOFWindowSlot *slot, FMDirectoryView *view)
+{
+	g_assert (view->details->active ||
+		  gtk_widget_get_parent (GTK_WIDGET (view)) == NULL);
+	view->details->active = FALSE;
+
+	fm_directory_view_unmerge_menus (view);
+	//remove_update_menus_timeout_callback (view);
+}
 
 static void
 fm_directory_view_set_property (GObject         *object,
@@ -1708,14 +1728,14 @@ fm_directory_view_set_property (GObject         *object,
         g_signal_connect (slot->directory, "file_deleted", G_CALLBACK (file_deleted_callback), directory_view);
         g_signal_connect (slot->directory, "done_loading", G_CALLBACK (directory_done_loading_callback), directory_view);
 
-        /*g_signal_connect_object (directory_view->details->slot,
-          "active", G_CALLBACK (slot_active),
-          directory_view, 0);
-          g_signal_connect_object (directory_view->details->slot,
-          "inactive", G_CALLBACK (slot_inactive),
-          directory_view, 0);
+	g_signal_connect_object (directory_view->details->slot,
+				 "active", G_CALLBACK (slot_active),
+				 directory_view, 0);
+	g_signal_connect_object (directory_view->details->slot,
+				 "inactive", G_CALLBACK (slot_inactive),
+				 directory_view, 0);
 
-          g_signal_connect_object (directory_view->details->window,
+          /*g_signal_connect_object (directory_view->details->window,
           "hidden-files-mode-changed", G_CALLBACK (hidden_files_mode_changed),
           directory_view, 0);*/
         //fm_directory_view_init_show_hidden_files (directory_view);
@@ -1954,9 +1974,8 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFile *file
 void
 fm_directory_view_merge_menus (FMDirectoryView *view)
 {
+    printf ("%s\n", G_STRFUNC);
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
-    if (view->details->active)
-        return;
 
     EEL_CALL_METHOD
         (FM_DIRECTORY_VIEW_CLASS, view,

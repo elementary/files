@@ -42,7 +42,6 @@ namespace Marlin.View {
         public ViewContainer(Marlin.View.Window win, GLib.File location){
             window = win;
             /* set active tab */
-            window.current_tab = this;
             browser = new Browser<string> ();
             label = new Gtk.Label("Loading...");
             change_view (view_mode, location);
