@@ -24,8 +24,6 @@ using Gtk;
 using Marlin.View;
 using Config;
 
-extern void xstuff_zoom_animate (Widget widget, Gdk.Pixbuf pixbuf, Gdk.Rectangle? opt_src_rect);
-
 namespace Marlin.View.Chrome
 {
     public class ViewSwitcher : ToolItem
@@ -87,7 +85,6 @@ namespace Marlin.View.Chrome
                     action.activate();
                 }
                 
-                //xstuff_zoom_animate (this, ((Image) mode).get_pixbuf(), null);
             });
 
             switcher.sensitive = true;

@@ -22,13 +22,16 @@ main (int argc, char *argv[])
     gchar           *path;
     GFile           *location;
 
+    g_type_init ();
+    g_thread_init (NULL);
+    gtk_init (&argc, &argv);
+
     //log_level = LOG_LEVEL_DEBUG;
     log_level = LOG_LEVEL_UNDEFINED;
     log_println (LOG_LEVEL_INFO, "Welcome to Marlin");
     log_println (LOG_LEVEL_INFO, "Version: %s", "0.1");
     log_println (LOG_LEVEL_INFO, "Report any issues/bugs you might find to lp:marlin", "0.1");
 
-    gtk_init (&argc, &argv);
     /* Initialize gettext support */
     bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -63,15 +66,6 @@ main (int argc, char *argv[])
     MarlinProgressUIHandler *progress_handler;
     progress_handler = marlin_progress_ui_handler_new ();
 
-    /*g_signal_connect (window, "up", (GCallback) marlin_view_window_up, NULL);*/
-    /*g_signal_connect (window, "back", (GCallback) marlin_view_window_back, NULL);
-      g_signal_connect (window, "forward", (GCallback) __lambda23__marlin_view_window_forward, NULL);
-      g_signal_connect (window, "refresh", (GCallback) __lambda24__marlin_view_window_refresh, NULL);*/
-    //g_signal_connect (window, "quit", (GCallback) gtk_main_quit, NULL);
-    //g_signal_connect (window, "path-changed", (GCallback) marlin_view_window_path_changed, NULL);
-    //g_signal_connect (window, "browser-path-changed", (GCallback) marlin_view_window_path_changed, NULL);
-
-    //g_signal_emit_by_name (window, "path-changed", g_file_new_for_commandline_arg (path));
 
     /*GtkBindingSet *binding_set;
 
