@@ -9,6 +9,7 @@
 #include "marlin-vala.h"
 #include "marlin-tags.h"
 
+#include "marlin-progress-ui-handler.h"
 
 int
 main (int argc, char *argv[])
@@ -57,6 +58,10 @@ main (int argc, char *argv[])
     window = marlin_view_window_new ();
     location = g_file_new_for_commandline_arg(path);
     marlin_view_window_add_tab (window, location);
+    /* TODO make an application class and manage windows launch 
+    ** move progress_handler*/
+    MarlinProgressUIHandler *progress_handler;
+    progress_handler = marlin_progress_ui_handler_new ();
 
     /*g_signal_connect (window, "up", (GCallback) marlin_view_window_up, NULL);*/
     /*g_signal_connect (window, "back", (GCallback) marlin_view_window_back, NULL);

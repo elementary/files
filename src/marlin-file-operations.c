@@ -38,14 +38,14 @@
 #include "nautilus-file-changes-queue.h"
 #include "nautilus-lib-self-check-functions.h"
 */
-//#ifdef HAVE_TASKVIEW
+#ifdef ENABLE_TASKVIEW
 //#include <libtaskview-glib/taskview.h>
 #include <libtaskview/taskview.h>
-/*#else
-#include "nautilus-progress-info.h"
+#else
+#include "marlin-progress-info.h"
 #endif
 
-#include <eel/eel-glib-extensions.h>
+/*#include <eel/eel-glib-extensions.h>
 #include <eel/eel-gtk-extensions.h>
 #include <eel/eel-stock-dialogs.h>
 #include <eel/eel-vfs-extensions.h>
@@ -80,7 +80,11 @@ typedef struct {
     GtkWindow *parent_window;
     int screen_num;
     int inhibit_cookie;
-    TaskviewIO *tv_io;
+#ifdef ENABLE_TASKVIEW
+	TaskviewIO *tv_io;
+#else
+	MarlinProgressInfo *progress;
+#endif
     GCancellable *cancellable;
     GHashTable *skip_files;
     GHashTable *skip_readdir_error;
@@ -192,7 +196,7 @@ typedef struct {
     int last_reported_files_left;
 } TransferInfo;
 
-//#define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
+#define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
 //#define NSEC_PER_SEC 1000000000
 #define NSEC_PER_MSEC 1000000
 
@@ -239,7 +243,7 @@ static gboolean empty_trash_job (GIOSchedulerJob *io_job,
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
 
-#if 0
+#ifndef ENABLE_TASKVIEW
 /* keep in time with format_time()
  *
  * This counts and outputs the number of “time units”
@@ -924,11 +928,13 @@ f (const char *format, ...) {
     return res;
 }
 
+#ifdef ENABLE_TASKVIEW
 static void
 cancel_callback (TaskviewGeneric *origin, GError **error, CommonJob *job)
 {
     g_cancellable_cancel (job->cancellable);
 }
+#endif
 
 #define op_job_new(jobtype, __type, parent_window) ((__type *)(init_common (jobtype, sizeof(__type), parent_window)))
 
@@ -947,6 +953,7 @@ init_common (JobTypes jobtype,
         eel_add_weak_pointer (&common->parent_window);
     }
 
+#ifdef ENABLE_TASKVIEW
     gint tv_type;
     const gchar *tv_icon;
 
@@ -979,6 +986,10 @@ init_common (JobTypes jobtype,
                                   "user-data", common,
                                   NULL);
     common->cancellable = g_cancellable_new ();
+#else
+	common->progress = marlin_progress_info_new ();
+	common->cancellable = marlin_progress_info_get_cancellable (common->progress);
+#endif
     common->time = g_timer_new ();
     common->inhibit_cookie = -1;
     common->screen_num = 0;
@@ -994,7 +1005,11 @@ init_common (JobTypes jobtype,
 static void
 finalize_common (CommonJob *common)
 {
+#ifdef ENABLE_TASKVIEW
     g_object_set (common->tv_io, "state", TASKVIEW_FINISHED, NULL);
+#else
+    marlin_progress_info_finish (common->progress);
+#endif
     if (common->inhibit_cookie != -1) {
         marlin_uninhibit_power_manager (common->inhibit_cookie);
     }
@@ -1008,7 +1023,11 @@ finalize_common (CommonJob *common)
     if (common->skip_readdir_error) {
         g_hash_table_destroy (common->skip_readdir_error);
     }
-    g_object_unref (common->tv_io);
+#ifdef ENABLE_TASKVIEW
+	g_object_unref (common->tv_io);
+#else
+	g_object_unref (common->progress);
+#endif
     g_object_unref (common->cancellable);
     g_free (common);
 }
@@ -1187,12 +1206,20 @@ run_simple_dialog_va (CommonJob *job,
     g_ptr_array_add (ptr_array, NULL);
     data->button_titles = (const char **)g_ptr_array_free (ptr_array, FALSE);
 
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->tv_io, "state", TASKVIEW_ERROR, NULL);
+#else
+    marlin_progress_info_pause (job->progress);
+#endif
     g_io_scheduler_job_send_to_mainloop (job->io_job,
                                          do_run_simple_dialog,
                                          data,
                                          NULL);
-    g_object_set (job->tv_io, "state", TASKVIEW_RUNNING, NULL);
+#ifdef ENABLE_TASKVIEW
+	g_object_set (job->tv_io, "state", TASKVIEW_RUNNING, NULL);
+#else
+	marlin_progress_info_resume (job->progress);
+#endif
     res = data->result;
 
     g_free (data->button_titles);
@@ -1448,14 +1475,14 @@ report_delete_progress (CommonJob *job,
                         SourceInfo *source_info,
                         TransferInfo *transfer_info)
 {
-//#ifdef HAVE_TASKVIEW
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->tv_io,
                   "description", _("Deleting files"),
                   "state", TASKVIEW_RUNNING,
                   "processed-items", (guint64) transfer_info->num_files,
                   "total-items", (guint64) source_info->num_files,
                   NULL);
-/*#else
+#else
     int files_left;
     double elapsed, transfer_rate;
     int remaining_time;
@@ -1470,9 +1497,9 @@ report_delete_progress (CommonJob *job,
     transfer_info->last_report_time = now;
 
     files_left = source_info->num_files - transfer_info->num_files;
-*/
+
     /* Races and whatnot could cause this to be negative... */
-/*    if (files_left < 0) {
+    if (files_left < 0) {
         files_left = 1;
     }
 
@@ -1492,11 +1519,11 @@ report_delete_progress (CommonJob *job,
         char *details, *time_left_s;
         transfer_rate = transfer_info->num_files / elapsed;
         remaining_time = files_left / transfer_rate;
-*/
+
         /* To translators: %T will expand to a time like "2 minutes".
          * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
          */
-/*        time_left_s = f (ngettext ("%T left",
+        time_left_s = f (ngettext ("%T left",
                                    "%T left",
                                    seconds_count_format_time_units (remaining_time)),
                          remaining_time);
@@ -1512,7 +1539,7 @@ report_delete_progress (CommonJob *job,
     if (source_info->num_files != 0) {
         marlin_progress_info_set_progress (job->progress, transfer_info->num_files, source_info->num_files);
     }
-#endif*/
+#endif
 }
 
 static void delete_file (CommonJob *job, GFile *file,
@@ -1789,14 +1816,14 @@ report_trash_progress (CommonJob *job,
                        int files_trashed,
                        int total_files)
 {
-//#ifdef HAVE_TASKVIEW
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->tv_io,
                   "description", _("Moving files to trash"),    
                   "state", TASKVIEW_RUNNING,
                   "processed-items", (guint64) files_trashed,
                   "total-items", (guint64) total_files,
                   NULL);
-/*#else
+#else
     int files_left;
     char *s;
 
@@ -1814,7 +1841,7 @@ report_trash_progress (CommonJob *job,
     if (total_files != 0) {
         marlin_progress_info_set_progress (job->progress, files_trashed, total_files);
     }
-#endif*/
+#endif
 }
 
 
@@ -1945,11 +1972,11 @@ delete_job (GIOSchedulerJob *io_job,
 
     common = (CommonJob *)job;
     common->io_job = io_job;
-//#ifdef HAVE_TASKVIEW
+#ifdef ENABLE_TASKVIEW
     taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
-/*#else
+#else
     marlin_progress_info_start (job->common.progress);
-#endif*/
+#endif
 
     to_trash_files = NULL;
     to_delete_files = NULL;
@@ -2319,9 +2346,9 @@ marlin_file_operations_unmount_mount_full (GtkWindow                      *paren
             EmptyTrashJob *job;
 
             job = op_job_new (JOB_EMPTY_TRASH, EmptyTrashJob, parent_window);
-//#ifdef HAVE_TASKVIEW
+#ifdef ENABLE_TASKVIEW
             g_object_set (job->common.tv_io, "description", _("Emptying the trash"), NULL);
-//#endif
+#endif
             job->should_confirm = FALSE;
             job->trash_dirs = get_trash_dirs_for_mount (mount);
             job->done_callback = (MarlinOpCallback)do_unmount;
@@ -2490,6 +2517,7 @@ report_count_progress (CommonJob *job,
         break;
     } 
 
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->tv_io,
                   "state", TASKVIEW_PREPARING,
                   "description", s,
@@ -2498,6 +2526,11 @@ report_count_progress (CommonJob *job,
                   //"type", is_move ? TASKVIEW_IO_MOVE : TASKVIEW_IO_COPY,
                   NULL);
     g_free (s);
+#else
+    marlin_progress_info_take_details (job->progress, s);
+    marlin_progress_info_pulse_progress (job->progress);
+#endif
+
 }
 
 static void
@@ -2931,7 +2964,7 @@ report_copy_progress (CopyMoveJob *copy_job,
     CommonJob *job;
     gboolean is_move;
     int files_left;
-#ifndef HAVE_TASKVIEW
+#ifndef ENABLE_TASKVIEW
     goffset total_size;
     double elapsed, transfer_rate;
     int remaining_time;
@@ -3011,6 +3044,7 @@ report_copy_progress (CopyMoveJob *copy_job,
         }
     }
 
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->tv_io, 
                   "state", TASKVIEW_RUNNING,
                   "processed-items", (guint64) transfer_info->num_files,
@@ -3034,6 +3068,47 @@ report_copy_progress (CopyMoveJob *copy_job,
                       NULL);	
         g_free (current_item);
     }
+#else
+    if (s != NULL) 
+	{
+		marlin_progress_info_take_status (job->progress, s);
+	}
+	
+
+	total_size = MAX (source_info->num_bytes, transfer_info->num_bytes);
+	
+	elapsed = g_timer_elapsed (job->time, NULL);
+	transfer_rate = 0;
+	if (elapsed > 0) {
+		transfer_rate = transfer_info->num_bytes / elapsed;
+	}
+
+	if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE &&
+	    transfer_rate > 0) {
+		char *s;
+		/* To translators: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB" */		
+		s = f (_("%S of %S"), transfer_info->num_bytes, total_size);
+		marlin_progress_info_take_details (job->progress, s);
+	} else {
+		char *s;
+		remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
+
+		/* To translators: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
+		 * "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
+		 *
+		 * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+		 */		
+		s = f (ngettext ("%S of %S \xE2\x80\x94 %T left (%S/sec)",
+				 "%S of %S \xE2\x80\x94 %T left (%S/sec)",
+				 seconds_count_format_time_units (remaining_time)),
+		       transfer_info->num_bytes, total_size,
+		       remaining_time,
+		       (goffset)transfer_rate);
+		marlin_progress_info_take_details (job->progress, s);
+	}
+
+	marlin_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
+#endif 
 }
 
 static int
@@ -3970,12 +4045,20 @@ run_conflict_dialog (CommonJob *job,
     resp_data->new_name = NULL;
     data->resp_data = resp_data;
 
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->tv_io, "state", TASKVIEW_PAUSED, NULL);
+#else
+    marlin_progress_info_pause (job->progress);
+#endif
     g_io_scheduler_job_send_to_mainloop (job->io_job,
                                          do_run_conflict_dialog,
                                          data,
                                          NULL);
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->tv_io, "state", TASKVIEW_RUNNING, NULL);
+#else
+    marlin_progress_info_resume (job->progress);
+#endif
     g_slice_free (ConflictDialogData, data);
 
     g_timer_continue (job->time);
@@ -4534,7 +4617,11 @@ copy_job (GIOSchedulerJob *io_job,
 
     dest_fs_id = NULL;
 
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, NULL);
+#else
+    marlin_progress_info_start (job->common.progress);
+#endif
 
     scan_sources (job->files,
                   &source_info,
@@ -4624,14 +4711,14 @@ report_move_progress (CopyMoveJob *move_job, int total, int left)
     job = (CommonJob *)move_job;
     s = f (_("Preparing to move to \"%B\""), move_job->destination);
 
-//#ifdef HAVE_TASKVIEW
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->tv_io, 
                   "state", TASKVIEW_PREPARING, 
                   "description", s,
                   "progress", (gint) -1,
                   NULL);
     g_free (s);
-/*#else
+#else
     marlin_progress_info_take_status (job->progress, s);
     marlin_progress_info_take_details (job->progress,
                                        f (ngettext ("Preparing to move %'d file",
@@ -4639,7 +4726,7 @@ report_move_progress (CopyMoveJob *move_job, int total, int left)
                                                     left), left));
 
     marlin_progress_info_pulse_progress (job->progress);
-#endif*/
+#endif
 }
 
 typedef struct {
@@ -5054,11 +5141,11 @@ move_job (GIOSchedulerJob *io_job,
 
     fallbacks = NULL;
 
-//#ifdef HAVE_TASKVIEW
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, NULL);
-/*#else
+#else
     marlin_progress_info_start (job->common.progress);
-#endif*/
+#endif
 
     verify_destination (&job->common,
                         job->destination,
@@ -5160,13 +5247,13 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
     job = (CommonJob *)link_job;
     s = f (_("Creating links in \"%B\""), link_job->destination);
 
-//#ifdef HAVE_TASKVIEW
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->tv_io,
                   "state", TASKVIEW_RUNNING,
                   "description", s,
                   NULL);
     g_free (s);
-/*#else 
+#else 
     marlin_progress_info_take_status (job->progress, s);
     marlin_progress_info_take_details (job->progress,
                                        f (ngettext ("Making link to %'d file",
@@ -5174,7 +5261,7 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
                                                     left), left));
 
     marlin_progress_info_set_progress (job->progress, left, total);
-#endif*/
+#endif
 }
 
 static char *
@@ -5384,7 +5471,11 @@ link_job (GIOSchedulerJob *io_job,
 
     dest_fs_type = NULL;
 
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, NULL);
+#else
+    marlin_progress_info_start (job->common.progress);
+#endif
 
     verify_destination (&job->common,
                         job->destination,
@@ -5526,7 +5617,7 @@ set_permissions_file (SetPermissionsJob *job,
 
     common = (CommonJob *)job;
 
-#ifdef HAVE_TASKVIEW
+#ifdef ENABLE_TASKVIEW
     taskview_generic_set_progress (TASKVIEW_GENERIC (common->tv_io), -1);
 #else
     marlin_progress_info_pulse_progress (common->progress);
@@ -5605,7 +5696,7 @@ set_permissions_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
-#ifdef HAVE_TASKVIEW
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, "description", _("Setting permissions"), NULL);
 #else
     marlin_progress_info_start (job->common.progress);
@@ -6227,7 +6318,11 @@ empty_trash_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
+#ifdef ENABLE_TASKVIEW
     taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
+#else
+    marlin_progress_info_start (job->common.progress);
+#endif
 
     /*if (job->should_confirm) {
         confirmed = confirm_empty_trash (common);
@@ -6463,7 +6558,7 @@ mark_trusted_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
-#ifdef HAVE_TASKVIEW
+#ifdef ENABLE_TASKVIEW
     g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, NULL);
 #else
     marlin_progress_info_start (job->common.progress);
