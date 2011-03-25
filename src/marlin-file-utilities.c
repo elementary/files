@@ -48,11 +48,11 @@
  * The filename need not exist. (according to gnome standard))
  *
  * Return value: the filename path, or NULL if the home directory could not be found
- **/
+**/
 char *
 marlin_get_accel_map_file (void)
 {
-	return g_build_filename (g_get_home_dir (), ".gnome2/accels/marlin", NULL);
+    return g_build_filename (g_get_home_dir (), ".gnome2/accels/marlin", NULL);
 }
 
 
@@ -72,14 +72,14 @@ get_dbus_connection (void)
     static GDBusConnection *conn = NULL;
 
     if (conn == NULL) {
-        GError *error = NULL;
+	GError *error = NULL;
 
-        conn = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
+	conn = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
 
-        if (conn == NULL) {
-            g_warning ("Could not connect to session bus: %s", error->message);
-            g_error_free (error);
-        }
+	if (conn == NULL) {
+	    g_warning ("Could not connect to session bus: %s", error->message);
+	    g_error_free (error);
+	}
     }
 
     return conn;
@@ -110,29 +110,29 @@ marlin_inhibit_power_manager (const char *message)
     connection = get_dbus_connection ();
 
     if (connection == NULL) {
-        return -1;
+	return -1;
     }
 
     result = g_dbus_connection_call_sync (connection,
-                                          GSM_NAME,
-                                          GSM_PATH,
-                                          GSM_INTERFACE,
-                                          "Inhibit",
-                                          g_variant_new ("(susu)",
-                                                         "Marlin",
-                                                         (guint) 0,
-                                                         message,
-                                                         (guint) (INHIBIT_LOGOUT | INHIBIT_SUSPEND)),
-                                          G_VARIANT_TYPE ("(u)"),
-                                          G_DBUS_CALL_FLAGS_NO_AUTO_START,
-                                          -1,
-                                          NULL,
-                                          &error);
+					  GSM_NAME,
+					  GSM_PATH,
+					  GSM_INTERFACE,
+					  "Inhibit",
+					  g_variant_new ("(susu)",
+							 "Marlin",
+							 (guint) 0,
+							 message,
+							 (guint) (INHIBIT_LOGOUT | INHIBIT_SUSPEND)),
+					  G_VARIANT_TYPE ("(u)"),
+					  G_DBUS_CALL_FLAGS_NO_AUTO_START,
+					  -1,
+					  NULL,
+					  &error);
 
     if (error != NULL) {
-        g_warning ("Could not inhibit power management: %s", error->message);
-        g_error_free (error);
-        return -1;
+	g_warning ("Could not inhibit power management: %s", error->message);
+	g_error_free (error);
+	return -1;
     }
 
     g_variant_get (result, "(u)", &cookie);
@@ -161,25 +161,25 @@ marlin_uninhibit_power_manager (gint cookie)
     connection = get_dbus_connection ();
 
     if (connection == NULL) {
-        return;
+	return;
     }
 
     result = g_dbus_connection_call_sync (connection,
-                                          GSM_NAME,
-                                          GSM_PATH,
-                                          GSM_INTERFACE,
-                                          "Uninhibit",
-                                          g_variant_new ("(u)", (guint) cookie),
-                                          NULL,
-                                          G_DBUS_CALL_FLAGS_NO_AUTO_START,
-                                          -1,
-                                          NULL,
-                                          &error);
+					  GSM_NAME,
+					  GSM_PATH,
+					  GSM_INTERFACE,
+					  "Uninhibit",
+					  g_variant_new ("(u)", (guint) cookie),
+					  NULL,
+					  G_DBUS_CALL_FLAGS_NO_AUTO_START,
+					  -1,
+					  NULL,
+					  &error);
 
     if (result == NULL) {
-        g_warning ("Could not uninhibit power management: %s", error->message);
-        g_error_free (error);
-        return;
+	g_warning ("Could not uninhibit power management: %s", error->message);
+	g_error_free (error);
+	return;
     }
 
     g_variant_unref (result);

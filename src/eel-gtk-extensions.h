@@ -27,8 +27,23 @@
 #define EEL_GTK_EXTENSIONS_H
 
 #include <gtk/gtk.h>
+#include "eel-gdk-extensions.h"
 
 #define EEL_DEFAULT_POPUP_MENU_DISPLACEMENT 	2
+
+char	    *eel_gtk_window_get_geometry_string (GtkWindow *window);
+void	    eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window, 
+							     const char *geometry_string,
+							     guint minimum_width,
+							     guint minimum_height,
+							     gboolean ignore_position);
+
+void	    eel_gtk_window_set_initial_geometry (GtkWindow *window, 
+						 EelGdkGeometryFlags geometry_flags,
+						 int left,
+						 int top,
+						 guint width,
+						 guint height);
 
 //void    eel_gtk_adjustment_set_value (GtkAdjustment *adjustment, float value);
 GtkMenuItem *eel_gtk_menu_append_separator (GtkMenu *menu);

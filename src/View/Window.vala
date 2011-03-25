@@ -24,6 +24,7 @@ using Gtk;
 using Gdk;
 using Cairo;
 using Marlin.View.Chrome;
+using EelGtk.Window;
 
 namespace Marlin.View {
     public class Window : Gtk.Window
@@ -170,8 +171,13 @@ namespace Marlin.View {
             window_box.pack_start(lside_pane, true, true, 0);
 
             add(window_box);
-            set_default_size(760, 450);
-            set_position(WindowPosition.CENTER);
+            /*set_default_size(760, 450);
+            set_position(WindowPosition.CENTER);*/
+	    var geometry = Preferences.settings.get_string("geometry");
+	    set_initial_geometry_from_string (this, geometry, 300, 100, false);
+	    if (Preferences.settings.get_boolean("maximized")) {
+		maximize();
+	    } 
             title = Resources.APP_TITLE;
             //this.icon = DrawingService.GetIcon("system-file-manager", 32);
             show();
@@ -188,7 +194,8 @@ namespace Marlin.View {
             /*/
 
             delete_event.connect(() => {
-            	main_quit();
+		save_geometry();
+		destroy();
             	return false;
             });
 
@@ -319,7 +326,8 @@ namespace Marlin.View {
             if(tabs.get_children().length() == 2){
                 tabs.show_tabs = false;
             }else if(tabs.get_children().length() == 1){
-                main_quit();
+		save_geometry();
+		destroy();
             }
 
             tabs.remove(view_container);
@@ -332,6 +340,14 @@ namespace Marlin.View {
         private void action_remove_tab (Gtk.Action action) {
             remove_tab(current_tab);
         }
+
+	private void save_geometry () {
+	    var geometry = get_geometry_string (this);
+	    bool is_maximized = get_window().get_state() == Gdk.WindowState.MAXIMIZED;
+	    if (is_maximized == false) 
+		Preferences.settings.set_string("geometry", geometry);
+            Preferences.settings.set_boolean("maximized", is_maximized);
+	}
 
         public Gtk.ActionGroup get_actiongroup () {
             return this.main_actions;

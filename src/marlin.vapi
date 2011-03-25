@@ -21,6 +21,12 @@ namespace Preferences {
 public static uint action_new (GLib.Type type, string signal_name);
 public void marlin_toolbar_editor_dialog_show (Marlin.View.Window mvw);
 
+[CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
+namespace EelGtk.Window {
+    public string get_geometry_string (Gtk.Window win);
+    public void set_initial_geometry_from_string (Gtk.Window win, string geometry, uint w, uint h, bool ignore_position);
+}
+
 [CCode (cprefix = "Nautilus", lower_case_cprefix = "nautilus_")]
 namespace Nautilus {
     [CCode (cheader_filename = "nautilus-icon-info.h")]

@@ -97,6 +97,21 @@
         Expand/Collapse categorie Network
       </_description>
     </key>
+    <key name="geometry" type="s">
+      <default>''</default>
+      <_summary>The geometry string for a navigation window.</_summary>
+      <_description>A string containing the saved geometry and coordinates string for navigation windows.</_description>
+    </key>
+    <key name="maximized" type="b">
+      <default>false</default>
+      <_summary>Whether the navigation window should be maximized.</_summary>
+      <_description>Whether the navigation window should be maximized by default.</_description>
+    </key>
+    <key name="sidebar-width" type="i">
+      <default>148</default>
+      <_summary>Width of the side pane</_summary>
+      <_description>The default width of the side pane in new windows.</_description>
+    </key>
     <key name="confirm-trash" type="b">
       <default>true</default>
       <_summary>Confirm trash</_summary>
