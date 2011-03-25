@@ -30,6 +30,7 @@
  * freed with g_free, is not NULL, and is guaranteed to exist.
  */
 //char *  marlin_get_xdg_dir                      (const char *type);
+char	*marlin_get_accel_map_file		(void);
 
 /* Inhibit/Uninhibit GNOME Power Manager */
 int     marlin_inhibit_power_manager            (const char *message) G_GNUC_WARN_UNUSED_RESULT;

@@ -41,6 +41,21 @@
 #include <unistd.h>
 #include <stdlib.h>*/
 
+/**
+ * marlin_get_accel_map_file:
+ * 
+ * Get the path for the filename containing nautilus accelerator map.
+ * The filename need not exist. (according to gnome standard))
+ *
+ * Return value: the filename path, or NULL if the home directory could not be found
+ **/
+char *
+marlin_get_accel_map_file (void)
+{
+	return g_build_filename (g_get_home_dir (), ".gnome2/accels/marlin", NULL);
+}
+
+
 #define GSM_NAME  "org.gnome.SessionManager"
 #define GSM_PATH "/org/gnome/SessionManager"
 #define GSM_INTERFACE "org.gnome.SessionManager"

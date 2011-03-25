@@ -1,37 +1,21 @@
 #include <config.h>
-#include "gof-directory-async.h"
-#include "gof-window-slot.h"
-#include "marlin-window-columns.h"
+#include <glib.h>
+#include <glib-object.h>
+
 //#include <glib/gi18n.h>
 //#include <libintl.h>
-#include "marlin-global-preferences.h"
-#include "marlin-view-window.h"
-#include "marlin-vala.h"
-#include "marlin-tags.h"
 
-#include "marlin-progress-ui-handler.h"
+#include "marlin-application.h"
 
 int
 main (int argc, char *argv[])
 {
-    MarlinViewWindow *window;
-    GtkWidget       *vbox;
-    GtkWidget       *hbox;
-    GtkWidget       *btn;
-    GtkWidget       *entry;
-    gchar           *path;
-    GFile           *location;
+    MarlinApplication *application;
+    gint ret;
 
     g_type_init ();
     g_thread_init (NULL);
-    gtk_init (&argc, &argv);
-
-    //log_level = LOG_LEVEL_DEBUG;
-    log_level = LOG_LEVEL_UNDEFINED;
-    log_println (LOG_LEVEL_INFO, "Welcome to Marlin");
-    log_println (LOG_LEVEL_INFO, "Version: %s", "0.1");
-    log_println (LOG_LEVEL_INFO, "Report any issues/bugs you might find to lp:marlin", "0.1");
-
+    
     /* Initialize gettext support */
     bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -40,44 +24,11 @@ main (int argc, char *argv[])
     g_set_application_name ("marlin");
     g_set_prgname ("marlin");
 
-    /* gsettings parameters */
-    settings = g_settings_new ("org.gnome.marlin.preferences");
-    tags = marlin_view_tags_new ();
-    /*gboolean showall = g_settings_get_boolean (settings, "showall");
-      log_printf (LOG_LEVEL_UNDEFINED, "test gsettings showall: %d\n", showall);*/
+    application = marlin_application_new ();
+    ret = g_application_run (G_APPLICATION (application), argc, argv);
 
-    /*window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-      gtk_window_set_title (GTK_WINDOW (window), "marlin");
-      gtk_window_set_default_size (GTK_WINDOW (window), 600, 300);
-      gtk_container_set_border_width (GTK_CONTAINER (window), 0);
-      g_signal_connect (window, "destroy", gtk_main_quit, NULL);*/
+    g_object_unref (application);
 
-    if (argc > 1) {
-        path = g_strdup(argv[1]);
-    } else {
-        path = g_strdup(g_get_home_dir());
-    }
-
-    window = marlin_view_window_new ();
-    location = g_file_new_for_commandline_arg(path);
-    marlin_view_window_add_tab (window, location);
-    /* TODO make an application class and manage windows launch 
-    ** move progress_handler*/
-    MarlinProgressUIHandler *progress_handler;
-    progress_handler = marlin_progress_ui_handler_new ();
-
-
-    /*GtkBindingSet *binding_set;
-
-      binding_set = gtk_binding_set_by_class (MARLIN_VIEW_WINDOW_CLASS (window));
-      gtk_binding_entry_add_signal (binding_set, GDK_KEY_BackSpace, 0,
-      "up", 1,
-      G_TYPE_BOOLEAN, FALSE);*/
-    
-    g_object_unref (location);
-
-    gtk_main ();
-    g_free (path);
-    return 0;
+    return ret;
 }
 
