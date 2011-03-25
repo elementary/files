@@ -24,6 +24,7 @@
 
 #include <config.h>
 #include "eel-gdk-pixbuf-extensions.h"
+#include <math.h>
 
 #define LOAD_BUFFER_SIZE 65536
 

@@ -24,6 +24,7 @@
 #define _MARLIN_PLACES_SIDEBAR_H
 
 #include "marlin-bookmark-list.h"
+#include "gof-window-slot.h"
 #include <gtk/gtk.h>
 
 #define MARLIN_TYPE_PLACES_SIDEBAR marlin_places_sidebar_get_type()
@@ -90,5 +91,7 @@ typedef struct {
 
 GType marlin_places_sidebar_get_type (void);
 void marlin_places_sidebar_register (void);
+
+MarlinPlacesSidebar *marlin_places_sidebar_new (GtkWidget *window);
 
 #endif

@@ -33,6 +33,7 @@ namespace Marlin.View {
         public Widget menu_bar;
         public Chrome.TopMenu top_menu;
         public Notebook tabs;
+        public Marlin.Places.Sidebar sidebar;
         private IconSize isize15;
         public IconSize isize128;
 
@@ -138,9 +139,8 @@ namespace Marlin.View {
             isize128 = icon_size_register ("128px", 128, 128);
 
             /* Sidebar */
-            //var sidebar = new Label("Sidebar");
-            var sidebar = new Marlin.Places.Sidebar ((Gtk.Widget) this);
-            sidebar.set_size_request(150, -1);
+            sidebar = new Marlin.Places.Sidebar ((Gtk.Widget) this);
+            sidebar.set_size_request(Preferences.settings.get_int("sidebar-width"), -1);
 
             /* Devide main views into sidebars */
             main_box = new HCollapsablePaned();
@@ -173,11 +173,11 @@ namespace Marlin.View {
             add(window_box);
             /*set_default_size(760, 450);
             set_position(WindowPosition.CENTER);*/
-	    var geometry = Preferences.settings.get_string("geometry");
-	    set_initial_geometry_from_string (this, geometry, 300, 100, false);
-	    if (Preferences.settings.get_boolean("maximized")) {
-		maximize();
-	    } 
+            var geometry = Preferences.settings.get_string("geometry");
+            set_initial_geometry_from_string (this, geometry, 300, 100, false);
+            if (Preferences.settings.get_boolean("maximized")) {
+                maximize();
+            } 
             title = Resources.APP_TITLE;
             //this.icon = DrawingService.GetIcon("system-file-manager", 32);
             show();
@@ -194,8 +194,8 @@ namespace Marlin.View {
             /*/
 
             delete_event.connect(() => {
-		save_geometry();
-		destroy();
+                save_geometries();
+                destroy();
             	return false;
             });
 
@@ -258,7 +258,7 @@ namespace Marlin.View {
 	    } 
 
             if (current_tab != null && current_tab.slot != null) {
-		current_tab.slot.active();
+                current_tab.slot.active();
                 current_tab.update_location_state(false);
                 /* update radio action view state */
                 update_action_radio_view(current_tab.view_mode);
@@ -276,6 +276,7 @@ namespace Marlin.View {
 
         public void add_tab(File location){
             ViewContainer content = new View.ViewContainer(this, location);
+
             var hbox = new HBox(false, 0);
             hbox.pack_start(content.label, true, true, 0);
             //var image = new Image.from_stock(Stock.CLOSE, IconSize.MENU);
@@ -326,8 +327,8 @@ namespace Marlin.View {
             if(tabs.get_children().length() == 2){
                 tabs.show_tabs = false;
             }else if(tabs.get_children().length() == 1){
-		save_geometry();
-		destroy();
+                save_geometries();
+                destroy();
             }
 
             tabs.remove(view_container);
@@ -341,13 +342,18 @@ namespace Marlin.View {
             remove_tab(current_tab);
         }
 
-	private void save_geometry () {
-	    var geometry = get_geometry_string (this);
-	    bool is_maximized = get_window().get_state() == Gdk.WindowState.MAXIMIZED;
-	    if (is_maximized == false) 
-		Preferences.settings.set_string("geometry", geometry);
+    	private void save_geometries () {
+            Gtk.Allocation sidebar_alloc;
+            sidebar.get_allocation (out sidebar_alloc);
+            if (sidebar_alloc.width > 1)
+                Preferences.settings.set_int("sidebar-width", sidebar_alloc.width);
+
+            var geometry = get_geometry_string (this);
+            bool is_maximized = get_window().get_state() == Gdk.WindowState.MAXIMIZED;
+            if (is_maximized == false) 
+                Preferences.settings.set_string("geometry", geometry);
             Preferences.settings.set_boolean("maximized", is_maximized);
-	}
+        }
 
         public Gtk.ActionGroup get_actiongroup () {
             return this.main_actions;
