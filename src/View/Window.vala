@@ -251,11 +251,11 @@ namespace Marlin.View {
             ViewContainer old_tab = current_tab;
             current_tab = (ViewContainer) tabs.get_children().nth_data(offset);
             if (old_tab == current_tab) {
-		return;
-	    }
-	    if (old_tab != null) {
-		old_tab.slot.inactive();
-	    } 
+                return;
+            }
+            if (old_tab != null) {
+                old_tab.slot.inactive();
+            } 
 
             if (current_tab != null && current_tab.slot != null) {
                 current_tab.slot.active();
