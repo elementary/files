@@ -150,7 +150,7 @@ namespace Marlin.View {
                 break;
             default:
                 if (window.contextview == null) {
-                    window.contextview = new ContextView(window);
+                    window.contextview = new ContextView(window, true);
                     window.main_box.pack2(window.contextview, false, true);
                 }
                 break;

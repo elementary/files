@@ -639,7 +639,7 @@ fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location)
 void
 fm_directory_view_column_add_preview (FMDirectoryView *dview, GOFFile *file)
 {
-    MarlinViewContextView *contextview = marlin_view_context_view_new (MARLIN_VIEW_WINDOW (dview->details->window));
+    MarlinViewContextView *contextview = marlin_view_context_view_new (MARLIN_VIEW_WINDOW (dview->details->window), FALSE);
     marlin_view_context_view_update (contextview, file);
     /* resize context view to match the default columns size 180+2 border px */
     gtk_widget_set_size_request (GTK_WIDGET (contextview), 182, -1);

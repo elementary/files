@@ -46,11 +46,12 @@ namespace Marlin.View {
         private Table information;
         private Label label;
 
-        public ContextView(Window window){
+        public ContextView(Window window, bool should_sync) {
             this.window = window;
             set_size_request(width, -1);
 
-            window.selection_changed.connect(update);
+            if (should_sync)
+                window.selection_changed.connect(update);
 
             var alignment = new Gtk.Alignment(0.5f, 0.381966f, 0, 0); // Yes that is 1 - 1/golden_ratio, in doublt always golden ratio
             box = new VBox(false, 4);

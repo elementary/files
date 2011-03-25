@@ -155,7 +155,7 @@ namespace Marlin.View {
 
             main_box.pack1(tabs, true, true);
 
-            contextview = new ContextView(this);
+            contextview = new ContextView(this, true);
             main_box.pack2(contextview, false, false);
             main_box.collapse_mode = CollapseMode.RIGHT;
             main_box.set_name("app-sidebar"); /* TODO remove later if uneeded - test theming */
