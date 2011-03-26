@@ -12,25 +12,25 @@
 		</placeholder>
 	</menu>
 </menubar>
-<!--<popup name="background">
+<popup name="background">
 	<placeholder name="Before Zoom Items">
 		<placeholder name="New Object Items">
 			<menuitem name="New Folder" action="New Folder"/>
-			<menuitem name="New Launcher" action="New Launcher"/>
+			<!--<menuitem name="New Launcher" action="New Launcher"/>-->
 			<menu action="New Documents">
 		         	<menuitem name="No Templates" action="No Templates"/>
 			 	<placeholder name="New Documents Placeholder"/>
 			 	<separator name="After New Documents"/>
 			 	<menuitem name="New Empty File" action="New Empty File"/>
 			</menu>
-                	<menu action="Scripts">
-			 	<placeholder name="Scripts Placeholder"/>
-			 	<separator name="After Scripts"/>
-			 	<menuitem name="Open Scripts Folder" action="Open Scripts Folder"/>
-			</menu>
+            <!--<menu action="Scripts">
+		        <placeholder name="Scripts Placeholder"/>
+			        <separator name="After Scripts"/>
+			        <menuitem name="Open Scripts Folder" action="Open Scripts Folder"/>
+			</menu>-->
 		</placeholder>
-		<separator name="View items separator"/>
-		<placeholder name="View Items"/>
+		<!--<separator name="View items separator"/>
+		<placeholder name="View Items"/>-->
 		<separator name="Clipboard separator"/>
 		<placeholder name="File Clipboard Actions">
 			<menuitem name="Paste" action="Paste"/>
@@ -39,19 +39,18 @@
 
 	<separator name="Folder Items separator"/>
 	<placeholder name="Folder Items Placeholder">
-		<menuitem name="Self Mount Volume" action="Self Mount Volume"/>
+		<!--<menuitem name="Self Mount Volume" action="Self Mount Volume"/>
 		<menuitem name="Self Unmount Volume" action="Self Unmount Volume"/>
 		<menuitem name="Self Eject Volume" action="Self Eject Volume"/>
 		<menuitem name="Self Format Volume" action="Self Format Volume"/>
 		<menuitem name="Self Start Volume" action="Self Start Volume"/>
 		<menuitem name="Self Stop Volume" action="Self Stop Volume"/>
-		<menuitem name="Self Poll" action="Self Poll"/>
+		<menuitem name="Self Poll" action="Self Poll"/>-->
 		<separator name="Properties separator"/>
 		<menuitem name="Properties" action="Properties"/>
 	</placeholder>
-
-</popup>-->
-<!--<popup name="selection">-->
+</popup>
+<popup name="selection">
 	<!--<placeholder name="Open Placeholder">
 		<menuitem name="Open" action="Open"/>
 		<menuitem name="OpenInNewTab" action="OpenInNewTab"/>
@@ -74,11 +73,12 @@
 		</menu>
 	</placeholder>
 	<separator name="Clipboard separator"/>-->
-	<!--<placeholder name="File Clipboard Actions">
+	<placeholder name="File Clipboard Actions">
 		<menuitem name="Cut" action="Cut"/>
 		<menuitem name="Copy" action="Copy"/>
-		<menuitem name="Paste Files Into" action="Paste Files Into"/>
-	</placeholder>-->
+		<!--<menuitem name="Paste Files Into" action="Paste Files Into"/>-->
+		<menuitem name="Paste" action="Paste"/>
+	</placeholder>
 <!--	<separator name="File actions separator"/>
 	<placeholder name="File Actions">
 		<menuitem name="Create Link" action="Create Link"/>
@@ -118,5 +118,5 @@
         <menuitem name="Connect To Server Link" action="Connect To Server Link"/>
         <separator name="Properties Separator"/>
         <menuitem name="Properties" action="Properties"/>-->
-<!--</popup>-->
+</popup>
 </ui>

@@ -354,8 +354,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
         else
         {
             /* open the context menu */
-            //thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (view), event->button, event->time);
-            printf ("thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (view), event->button, event->time)\n");
+            fm_directory_view_context_menu (view, event->button, event);
         }
 
         return TRUE;

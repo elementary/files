@@ -43,6 +43,7 @@
 #include "marlin-vala.h"
 #include "eel-ui.h"
 #include "eel-gio-extensions.h"
+#include "eel-gtk-extensions.h"
 
 enum {
     ADD_FILE,
@@ -1451,6 +1452,8 @@ fm_directory_view_drag_timer (gpointer user_data)
     /* fire up the context menu */
     GDK_THREADS_ENTER ();
     //thunar_standard_view_context_menu (standard_view, 3, gtk_get_current_event_time ());
+    //fm_directory_view_context_menu (view, 3, gtk_get_current_event_time ());
+    fm_directory_view_context_menu (view, 3, gtk_get_current_event ());
     printf ("fire up the context menu 3\n");
     GDK_THREADS_LEAVE ();
 
@@ -1470,6 +1473,7 @@ fm_directory_view_button_release_event (GtkWidget        *widget,
 
     /* fire up the context menu */
     //thunar_standard_view_context_menu (standard_view, 0, event->time);
+    fm_directory_view_context_menu (view, 0, event);
     printf ("fire up the context menu 0\n");
 
     return TRUE;
@@ -1573,6 +1577,45 @@ fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event)
         g_signal_connect (G_OBJECT (view_box), "motion-notify-event", 
                           G_CALLBACK (fm_directory_view_motion_notify_event), view);
     }
+}
+
+void
+fm_directory_view_context_menu (FMDirectoryView *view,
+                                guint           button,
+                                GdkEventButton   *event)
+                                //int32         timestamp)
+{
+    GtkWidget *menu;
+    GList     *selection;
+    GtkUIManager *ui_manager;
+
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    selection = fm_directory_view_get_selection_for_file_transfer (view);
+    //thunar_standard_view_merge_custom_actions (standard_view, selected_items);
+    /*g_list_foreach (selected_items, (GFunc) gtk_tree_path_free, NULL);
+    g_list_free (selected_items);*/
+    gof_file_list_free (selection);
+   
+    /* grab an additional reference on the view */
+    g_object_ref (G_OBJECT (view));
+
+    ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
+    /* run the menu on the view's screen (figuring out whether to use the file or the folder context menu) */
+    menu = gtk_ui_manager_get_widget (ui_manager, (selection != NULL) ? "/selection" : "/background");
+    //thunar_gtk_menu_run (GTK_MENU (menu), GTK_WIDGET (standard_view), NULL, NULL, button, timestamp);
+    
+    printf ("%s\n", G_STRFUNC);
+    gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (view)));
+	gtk_widget_show (GTK_WIDGET (menu));
+
+    eel_pop_up_context_menu (GTK_MENU(menu),
+                             EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
+                             EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
+                             event);
+
+
+    /* release the additional reference on the view */
+    g_object_unref (G_OBJECT (view));
 }
 
 
