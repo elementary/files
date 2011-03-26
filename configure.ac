@@ -133,22 +133,6 @@ else
 fi
 
 dnl ===========================================================================
-AC_ARG_ENABLE(taskview, 
-	AC_HELP_STRING([--disable-taskview], 
-			[Disable taskview]))
-msg_taskview=no
-AM_CONDITIONAL(ENABLE_TASKVIEW, false)
-if test "x$enable_taskview" != "xno"; then
-	PKG_CHECK_MODULES(TASKVIEW, [taskview-glib-1.0], [
-                          AM_CONDITIONAL(ENABLE_TASKVIEW, true)
-                          AC_DEFINE(ENABLE_TASKVIEW, 1, [Define to 1 if taskview is enabled])]
-                          msg_taskview=yes,
-                          [AM_CONDITIONAL(ENABLE_TASKVIEW, false)])
-        AC_SUBST(TASKVIEW_CFLAGS)
-	AC_SUBST(TASKVIEW_LIBS)
-fi
-
-dnl ===========================================================================
 dnl AS_AC_EXPAND(DATADIR, $datadir)
 
 dnl DBUS_SERVICES_DIR="$DATADIR/dbus-1/services"
@@ -169,7 +153,7 @@ AC_SUBST(DBUSSERVICEDIR)
 dnl ===========================================================================
 
 dnl core marlin
-CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gio-unix-2.0 gee-1.0 libnotify taskview-glib-1.0"
+CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gio-unix-2.0 gee-1.0 libnotify"
 CORE_CFLAGS="`$PKG_CONFIG --cflags $CORE_MODULES` $x_cflags $WARNING_CFLAGS"
 AC_SUBST(CORE_CFLAGS)
 CORE_LIBS="`$PKG_CONFIG --libs $CORE_MODULES` $x_libs"
@@ -208,6 +192,4 @@ marlin-$VERSION:
 	source code location:	${srcdir}
 	compiler:		${CC}
 	PackageKit support:     $msg_packagekit
-
-	taskview: $msg_taskview
 "
