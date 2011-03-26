@@ -155,8 +155,8 @@ namespace Marlin.View {
 
             main_box.pack1(tabs, true, true);
 
-            contextview = new ContextView(this, true);
-            main_box.pack2(contextview, false, false);
+            ((Gtk.ToggleAction) main_actions.get_action("Show Hide Context Pane")).set_active(Preferences.settings.get_boolean("start-with-contextview"));
+
             main_box.collapse_mode = CollapseMode.RIGHT;
             main_box.set_name("app-sidebar"); /* TODO remove later if uneeded - test theming */
 
@@ -353,6 +353,9 @@ namespace Marlin.View {
             if (is_maximized == false) 
                 Preferences.settings.set_string("geometry", geometry);
             Preferences.settings.set_boolean("maximized", is_maximized);
+            
+            Preferences.settings.set_boolean("start-with-contextview",
+                ((Gtk.ToggleAction) main_actions.get_action("Show Hide Context Pane")).get_active());
         }
 
         public Gtk.ActionGroup get_actiongroup () {
@@ -385,14 +388,25 @@ namespace Marlin.View {
                 current_tab.reload();
         }
 
-        private void action_show_hide_menubar (Gtk.Action action) {
+        private void action_show_hide_contextview (Gtk.Action action) {
+            if (((Gtk.ToggleAction)action).get_active()) {
+                current_tab.sync_contextview();
+                ((FM.Directory.View) current_tab.slot.view_box).sync_selection();
+            } else {
+                 //main_box.remove (contextview);
+                contextview.destroy();
+                contextview = null;
+            }
+        }
+
+        /*private void action_show_hide_menubar (Gtk.Action action) {
             bool vis = true;
             menu_bar.get("visible", &vis);
             if (vis)
                 top_menu.app_menu.hide();
             else
                 top_menu.app_menu.show_all();
-        }
+        }*/
 
         /*private void action_show_hide_sidebar (Gtk.Action action) {
             stdout.printf ("TODO\n");
@@ -484,10 +498,16 @@ namespace Marlin.View {
   /* tooltip */                  N_("Toggle the display of hidden files in the current window"),
                                  action_show_hidden_files,
                                  true },
+  /* name, stock id */         { "Show Hide Context Pane", null,
+  /* label, accelerator */       N_("_Context Pane"), "F7",
+  /* tooltip */                  N_("Change the visibility of the context pane"),
+                                 action_show_hide_contextview,
+  /* is_active */                true },
   /* name, stock id */         { "Show Hide Menubar", null,
   /* label, accelerator */       N_("_Menubar"), "F8",
   /* tooltip */                  N_("Change the visibility of this window's menubar"),
-                                 action_show_hide_menubar,
+                                 /* action_show_hide_menubar, */
+                                 null,
   /* is_active */                true },
   /* name, stock id */         { "Show Hide Sidebar", null,
   /* label, accelerator */       N_("_Side Pane"), "F9",

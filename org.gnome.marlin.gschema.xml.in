@@ -26,6 +26,13 @@
         If set to true, hidden files will also be shown (files starting with a "." for example)
       </_description>
     </key>
+    <key name="start-with-contextview" type="b">
+      <default>true</default>
+      <_summary>Show the context view pane</_summary>
+      <_description>
+        Show the context view pane
+      </_description>
+    </key>
     <key name="rgba-colormap" type="b">
       <default>false</default>
       <_summary>enable rgba window</_summary>

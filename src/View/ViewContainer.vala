@@ -149,7 +149,9 @@ namespace Marlin.View {
                 }
                 break;
             default:
-                if (window.contextview == null) {
+                if (window.contextview == null && 
+                    ((Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane")).get_active()) 
+                {
                     window.contextview = new ContextView(window, true);
                     window.main_box.pack2(window.contextview, false, true);
                 }
