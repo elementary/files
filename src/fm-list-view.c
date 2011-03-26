@@ -33,6 +33,7 @@
 #include "marlin-tags.h"
 
 struct FMListViewDetails {
+    GList       *selection;
     GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
 };
 
@@ -64,7 +65,8 @@ struct SelectionForeachData {
 };
 
 /* Declaration Prototypes */
-static GList    *fm_list_view_get_selection (FMListView *view);
+static GList    *fm_list_view_get_selection (FMDirectoryView *view);
+static GList    *get_selection (FMListView *view);
 //static void     fm_list_view_clear (FMListView *view);
 
 #if 0
@@ -164,18 +166,26 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     GOFFile *file = NULL;
     FMListView *view = FM_LIST_VIEW (user_data);
 
-    GList *paths = gtk_tree_selection_get_selected_rows (selection, NULL);
+    /*GList *paths = gtk_tree_selection_get_selected_rows (selection, NULL);
     if (paths!=NULL && gtk_tree_model_get_iter (GTK_TREE_MODEL(view->model), &iter, paths->data))   
     {
         gtk_tree_model_get (GTK_TREE_MODEL (view->model), &iter,
                             FM_LIST_MODEL_FILE_COLUMN, &file,
                             -1);
         //if (file != NULL) 
-    }
+    }*/
+    if (view->details->selection != NULL)
+        gof_file_list_free (view->details->selection);
+    view->details->selection = get_selection(view);
+
+    if (view->details->selection != NULL) 
+        file = view->details->selection->data;
+    
     fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view), file);
 
-    g_list_foreach (paths, (GFunc) gtk_tree_path_free, NULL);
-    g_list_free (paths);
+    //fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view), file);
+    /*g_list_foreach (paths, (GFunc) gtk_tree_path_free, NULL);
+    g_list_free (paths);*/
 }
 
 static void
@@ -231,7 +241,7 @@ activate_selected_items (FMListView *view)
             }
     }
 
-    gof_file_list_free (file_list);
+    //gof_file_list_free (file_list);
 }
 
 static void
@@ -273,6 +283,7 @@ fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
 static void
 fm_list_view_sync_selection (FMDirectoryView *view)
 {
+    //TODO replace this crap
     FMListView *list_view = FM_LIST_VIEW (view);
 
     list_selection_changed_callback (gtk_tree_view_get_selection (list_view->tree), view);
@@ -772,7 +783,7 @@ fm_list_model_clear (view->model);
 }*/
 
 static void
-fm_list_view_get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
+get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
 {
     GList **list;
     GOFFile *file;
@@ -789,16 +800,22 @@ fm_list_view_get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path,
 }
 
 static GList *
-fm_list_view_get_selection (FMListView *view)
+get_selection (FMListView *view)
 {
     GList *list;
 
     list = NULL;
 
     gtk_tree_selection_selected_foreach (gtk_tree_view_get_selection (view->tree),
-                                         fm_list_view_get_selection_foreach_func, &list);
+                                         get_selection_foreach_func, &list);
 
     return g_list_reverse (list);
+}
+
+static GList *
+fm_list_view_get_selection (FMDirectoryView *view)
+{
+    return FM_LIST_VIEW (view)->details->selection;
 }
 
 /*static void
@@ -910,9 +927,10 @@ fm_list_view_finalize (GObject *object)
 
     log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
 
-    if (view->details->new_selection_path) {
+    if (view->details->new_selection_path)
         gtk_tree_path_free (view->details->new_selection_path);
-    }
+    if (view->details->selection)
+        gof_file_list_free (view->details->selection);
 
     g_object_unref (view->model);
     g_free (view->details);
@@ -923,6 +941,8 @@ static void
 fm_list_view_init (FMListView *view)
 {
     view->details = g_new0 (FMListViewDetails, 1);
+    view->details->selection = NULL;
+
     create_and_set_up_tree_view (view);
 
     g_settings_bind (settings, "single-click", 
@@ -948,6 +968,7 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class->remove_file = fm_list_view_remove_file;
     fm_directory_view_class->colorize_selection = fm_list_view_colorize_selected_items;        
     fm_directory_view_class->sync_selection = fm_list_view_sync_selection;
+    fm_directory_view_class->get_selection = fm_list_view_get_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_list_view_get_selection_for_file_transfer;
 
     fm_directory_view_class->get_path_at_pos = fm_list_view_get_path_at_pos;

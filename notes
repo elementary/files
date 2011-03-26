@@ -15,3 +15,7 @@ package libglib2.0-bin provide glib-compile-schemas
 from simplelist to tree
 fm-list-model.c:139 GTK_TREE_MODEL_LIST_ONLY 
 :490 fm_list_model_iter_has_child return FALSE => simple list
+
+---------------------------
+
+real_update_menus, nautilus-view.c:8270

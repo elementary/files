@@ -146,6 +146,7 @@ struct FMDirectoryViewClass {
      * values. 
      */
     void     (* reset_to_defaults)	         (FMDirectoryView *view);
+#endif
 
     /* get_selection is not a signal; it is just a function pointer for
      * subclasses to replace (override). Subclasses must replace it
@@ -153,7 +154,7 @@ struct FMDirectoryViewClass {
      * GOFFile pointers.
      */
     GList *	(* get_selection) 	 	(FMDirectoryView *view);
-#endif
+
     /* get_selection_for_file_transfer  is a function pointer for
      * subclasses to replace (override). Subclasses must replace it
      * with a function that returns a newly-allocated GList of
@@ -372,7 +373,7 @@ void    fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryA
 void    fm_directory_view_remove_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory);
 void    fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location);
 void    fm_directory_view_column_add_preview (FMDirectoryView *dview, GOFFile *file);
-void    fm_directory_view_set_active_slot (FMDirectoryView *dview);
+//void    fm_directory_view_set_active_slot (FMDirectoryView *dview);
 void    fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location);
 void    fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, GdkScreen *screen);
 //void    fm_directory_view_colorize_selection (FMDirectoryView *view, int color);
@@ -382,6 +383,7 @@ void    fm_directory_view_merge_menus (FMDirectoryView *view);
 void    fm_directory_view_unmerge_menus (FMDirectoryView *view);
 
 void    fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event);
+GList   *fm_directory_view_get_selection (FMDirectoryView *view);
 GList   *fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view);
 
 #endif /* FM_DIRECTORY_VIEW_H */

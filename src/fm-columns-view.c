@@ -113,7 +113,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     //show_selected_files (file);
 
     /* setup the current active slot */
-    fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
+    //fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
     if (file->is_directory)
         fm_directory_view_column_add_location (FM_DIRECTORY_VIEW (view), file->location);
     else

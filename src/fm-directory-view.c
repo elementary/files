@@ -224,8 +224,8 @@ EEL_CLASS_BOILERPLATE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WIN
       FMDirectoryView *directory_view;
       } ApplicationLaunchParameters;*/
 
-    /* Identifiers for DnD target types */
-    enum
+/* Identifiers for DnD target types */
+enum
 {
     TARGET_TEXT_URI_LIST,
     TARGET_XDND_DIRECT_SAVE0,
@@ -647,6 +647,7 @@ fm_directory_view_column_add_preview (FMDirectoryView *dview, GOFFile *file)
     gof_window_columns_add_preview(dview->details->slot, GTK_WIDGET (contextview));
 }
 
+#if 0
 void
 fm_directory_view_set_active_slot (FMDirectoryView *dview)
 {
@@ -659,6 +660,7 @@ fm_directory_view_set_active_slot (FMDirectoryView *dview)
 
     log_printf (LOG_LEVEL_UNDEFINED, "!!!!!!!!!!! %s\n", G_STRFUNC);
 }
+#endif
 
 void
 fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location)
@@ -1590,11 +1592,10 @@ fm_directory_view_context_menu (FMDirectoryView *view,
     GtkUIManager *ui_manager;
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
-    selection = fm_directory_view_get_selection_for_file_transfer (view);
+    selection = fm_directory_view_get_selection (view);
     //thunar_standard_view_merge_custom_actions (standard_view, selected_items);
     /*g_list_foreach (selected_items, (GFunc) gtk_tree_path_free, NULL);
     g_list_free (selected_items);*/
-    gof_file_list_free (selection);
    
     /* grab an additional reference on the view */
     g_object_ref (G_OBJECT (view));
@@ -1767,6 +1768,7 @@ fm_directory_view_set_property (GObject         *object,
         if (!(directory_view->details->loading && slot->directory->loaded))
             g_signal_connect (slot->directory, "file_loaded", G_CALLBACK (file_loaded_callback), directory_view);
         g_signal_connect (slot->directory, "file_added", G_CALLBACK (file_added_callback), directory_view);
+        //TODO
         //g_signal_connect (slot->directory, "file_changed", G_CALLBACK (file_changed_callback), directory_view);
         g_signal_connect (slot->directory, "file_deleted", G_CALLBACK (file_deleted_callback), directory_view);
         g_signal_connect (slot->directory, "done_loading", G_CALLBACK (directory_done_loading_callback), directory_view);
@@ -2036,6 +2038,16 @@ fm_directory_view_unmerge_menus (FMDirectoryView *view)
 }
 
 GList *
+fm_directory_view_get_selection (FMDirectoryView *view)
+{
+    g_return_val_if_fail (FM_IS_DIRECTORY_VIEW (view), NULL);
+
+    return EEL_CALL_METHOD_WITH_RETURN_VALUE
+        (FM_DIRECTORY_VIEW_CLASS, view,
+         get_selection, (view));
+}
+
+GList *
 fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view)
 {
     g_return_val_if_fail (FM_IS_DIRECTORY_VIEW (view), NULL);
@@ -2095,21 +2107,96 @@ action_paste_files (GtkAction *action, FMDirectoryView *view)
     }
 }
 
+static void
+new_folder_done (GFile *new_folder, gpointer user_data)
+{
+    //TODO
+    //rename_file (directory_view, file);
+    printf ("rename file\n");
+}
+
+static void
+action_new_folder_callback (GtkAction *action, gpointer data)
+{                
+    FMDirectoryView *view;
+    
+    g_assert (FM_IS_DIRECTORY_VIEW (data));
+
+    view = FM_DIRECTORY_VIEW (data);
+
+    //data = new_folder_data_new (view);
+
+	/*g_signal_connect_data (view,
+                           "add_file",
+                           G_CALLBACK (track_newly_added_locations),
+                           data,
+                           (GClosureNotify)NULL,
+                           G_CONNECT_AFTER);*/
+
+    /* TODO usefull for desktop
+	pos = context_menu_to_file_operation_position (directory_view);*/
+
+    printf ("%s\n", G_STRFUNC);
+	/*parent_uri = nautilus_view_get_backing_uri (directory_view);
+	marlin_file_operations_new_folder (GTK_WIDGET (view),
+                                       //pos, parent_uri,
+                                       NULL, parent_uri,
+                                       //new_folder_done, data);
+                                       new_folder_done, NULL);
+
+	g_free (parent_uri);*/
+}
+
+static void
+action_properties_callback (GtkAction *action, gpointer data)
+{
+    //TODO
+#if 0
+    FMDirectoryView *view;
+    GList *selection;
+    GList *files;
+        
+    g_assert (FM_DIRECTORY_IS_VIEW (callback_data));
+
+    view = FM_DIRECTORY_VIEW (callback_data);
+    selection = nautilus_view_get_selection (view);
+    if (g_list_length (selection) == 0) {
+        if (view->details->directory_as_file != NULL) {
+			files = g_list_append (NULL, nautilus_file_ref (view->details->directory_as_file));
+			nautilus_properties_window_present (files, GTK_WIDGET (view));
+			gof_file_list_free (files);
+		}
+	} else {
+		nautilus_properties_window_present (selection, GTK_WIDGET (view));
+	}
+    gof_file_list_free (selection);
+#endif
+}
+
 
 //TODO complete this list
 static const GtkActionEntry directory_view_entries[] = {
     /* name, stock id */        { "Cut", GTK_STOCK_CUT,
-        /* label, accelerator */      NULL, NULL,
-        /* tooltip */                 N_("Prepare the selected files to be moved with a Paste command"),
-        G_CALLBACK (action_cut_files) },
+    /* label, accelerator */      NULL, NULL,
+    /* tooltip */                 N_("Prepare the selected files to be moved with a Paste command"),
+            G_CALLBACK (action_cut_files) },
     /* name, stock id */        { "Copy", GTK_STOCK_COPY,
-        /* label, accelerator */      NULL, NULL,
-        /* tooltip */                 N_("Prepare the selected files to be copied with a Paste command"),
-        G_CALLBACK (action_copy_files) },
+    /* label, accelerator */      NULL, NULL,
+    /* tooltip */                 N_("Prepare the selected files to be copied with a Paste command"),
+            G_CALLBACK (action_copy_files) },
     /* name, stock id */        { "Paste", GTK_STOCK_PASTE,
-        /* label, accelerator */      NULL, NULL,
-        /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command"),
-        G_CALLBACK (action_paste_files) }
+    /* label, accelerator */      NULL, NULL,
+    /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command"),
+            G_CALLBACK (action_paste_files) },
+    /* name, stock id */         { "New Folder", "folder-new",
+    /* label, accelerator */       N_("Create New _Folder"), "<control><shift>N",
+    /* tooltip */                  N_("Create a new empty folder inside this folder"),
+	        G_CALLBACK (action_new_folder_callback) },
+    /* name, stock id */         { "Properties", GTK_STOCK_PROPERTIES,
+    /* label, accelerator */       N_("_Properties"), "<alt>Return",
+    /* tooltip */                  N_("View or modify the properties of each selected item"),
+	        G_CALLBACK (action_properties_callback) }
+
 };
 
 
