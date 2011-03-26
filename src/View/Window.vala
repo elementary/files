@@ -399,14 +399,14 @@ namespace Marlin.View {
             }
         }
 
-        /*private void action_show_hide_menubar (Gtk.Action action) {
+        private void action_show_hide_menubar (Gtk.Action action) {
             bool vis = true;
             menu_bar.get("visible", &vis);
             if (vis)
                 top_menu.app_menu.hide();
             else
                 top_menu.app_menu.show_all();
-        }*/
+        }
 
         /*private void action_show_hide_sidebar (Gtk.Action action) {
             stdout.printf ("TODO\n");
@@ -506,8 +506,7 @@ namespace Marlin.View {
   /* name, stock id */         { "Show Hide Menubar", null,
   /* label, accelerator */       N_("_Menubar"), "F8",
   /* tooltip */                  N_("Change the visibility of this window's menubar"),
-                                 /* action_show_hide_menubar, */
-                                 null,
+                                 action_show_hide_menubar, 
   /* is_active */                true },
   /* name, stock id */         { "Show Hide Sidebar", null,
   /* label, accelerator */       N_("_Side Pane"), "F9",
