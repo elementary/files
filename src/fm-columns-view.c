@@ -31,6 +31,7 @@
 //#include "marlin-vala.h"
 
 struct FMColumnsViewDetails {
+    GList       *selection;
     GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
 };
 
@@ -55,7 +56,8 @@ struct UnloadDelayData {
 };
 
 /* Declaration Prototypes */
-static GList    *fm_columns_view_get_selection (FMColumnsView *view);
+static GList    *get_selection (FMColumnsView *view);
+static GList    *fm_columns_view_get_selection (FMDirectoryView *view);
 //static void     fm_columns_view_clear (FMColumnsView *view);
 
 #if 0
@@ -104,12 +106,13 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 {
     FMColumnsView *view = FM_COLUMNS_VIEW (user_data);
     GOFFile *file;
-    GList *file_list;
 
-    file_list = fm_columns_view_get_selection (view);
-    if (file_list == NULL)
+    if (view->details->selection != NULL)
+        gof_file_list_free (view->details->selection);
+    view->details->selection = get_selection (view);
+    if (view->details->selection == NULL)
         return;
-    file = file_list->data;
+    file = view->details->selection->data;
     //show_selected_files (file);
 
     /* setup the current active slot */
@@ -127,7 +130,7 @@ activate_selected_items (FMColumnsView *view)
     GdkScreen *screen;
     GOFFile *file;
 
-    file_list = fm_columns_view_get_selection (view);
+    file_list = fm_columns_view_get_selection (FM_DIRECTORY_VIEW (view));
 
 #if 0	
     if (view->details->renaming_file) {
@@ -170,7 +173,7 @@ activate_selected_items (FMColumnsView *view)
         }
     }
 
-    gof_file_list_free (file_list);
+    //gof_file_list_free (file_list);
 }
 
 static void
@@ -183,12 +186,11 @@ row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 static void
 fm_columns_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
 {
-    FMColumnsView *cview = FM_COLUMNS_VIEW (view);
     GList *file_list;
     GOFFile *file;
     char *uri;
 
-    file_list = fm_columns_view_get_selection (cview);
+    file_list = fm_columns_view_get_selection (view);
     for (; file_list != NULL; file_list=file_list->next)
     {
         file = file_list->data;
@@ -615,7 +617,7 @@ fm_list_model_clear (view->model);
 }*/
 
 static void
-fm_columns_view_get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
+get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
 {
     GList **list;
     GOFFile *file;
@@ -632,22 +634,22 @@ fm_columns_view_get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *pa
 }
 
 static GList *
-fm_columns_view_get_selection (FMColumnsView *view)
+get_selection (FMColumnsView *view)
 {
     GList *list;
 
     list = NULL;
 
     gtk_tree_selection_selected_foreach (gtk_tree_view_get_selection (view->tree),
-                                         fm_columns_view_get_selection_foreach_func, &list);
+                                         get_selection_foreach_func, &list);
 
     return g_list_reverse (list);
 }
 
 static GList *
-fm_list_view_get_selection_for_file_transfer (FMDirectoryView *view)
+fm_columns_view_get_selection (FMDirectoryView *view)
 {
-    return fm_columns_view_get_selection (FM_COLUMNS_VIEW (view));
+    return FM_COLUMNS_VIEW (view)->details->selection;
 }
 
 /*static void
@@ -712,9 +714,10 @@ fm_columns_view_finalize (GObject *object)
 
     log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
 
-    if (view->details->new_selection_path) {
+    if (view->details->new_selection_path) 
         gtk_tree_path_free (view->details->new_selection_path);
-    }
+    if (view->details->selection)
+        gof_file_list_free (view->details->selection);
 
     g_object_unref (view->model);
     g_free (view->details);
@@ -746,7 +749,8 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class->add_file = fm_columns_view_add_file;
     fm_directory_view_class->remove_file = fm_columns_view_remove_file;
     fm_directory_view_class->colorize_selection = fm_columns_view_colorize_selected_items;
-    fm_directory_view_class->get_selection_for_file_transfer = fm_list_view_get_selection_for_file_transfer; 
+    fm_directory_view_class->get_selection = fm_columns_view_get_selection; 
+    fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection; 
 
     fm_directory_view_class->get_path_at_pos = fm_columns_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_columns_view_highlight_path;

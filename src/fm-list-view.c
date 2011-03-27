@@ -195,7 +195,7 @@ activate_selected_items (FMListView *view)
     GdkScreen *screen;
     GOFFile *file;
 
-    file_list = fm_list_view_get_selection (view);
+    file_list = fm_list_view_get_selection (FM_DIRECTORY_VIEW (view));
 
 #if 0	
     if (view->details->renaming_file) {
@@ -254,12 +254,11 @@ row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 static void
 fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
 {
-    FMListView *list_view = FM_LIST_VIEW (view);
     GList *file_list;
     GOFFile *file;
     char *uri;
 
-    file_list = fm_list_view_get_selection (list_view);
+    file_list = fm_list_view_get_selection (view);
     /*guint array_length = MIN (g_list_length (file_list)*sizeof(char), 30);
       char **array = malloc(array_length + 1);
       char **l = array;*/
@@ -521,7 +520,7 @@ filename_cell_data_func (GtkTreeViewColumn *column,
                         FM_LIST_MODEL_COLOR, &color,
                         -1);
     if (color != NULL) {
-        gdk_rgba_parse (color, &rgba);
+        gdk_rgba_parse (&rgba, color);
         //rgba.alpha = 0.85;
     }
 
@@ -573,7 +572,7 @@ color_row_func (GtkTreeViewColumn *column,
                         FM_LIST_MODEL_COLOR, &color,
                         -1);
     if (color != NULL) {
-        gdk_rgba_parse (color, &rgba);
+        gdk_rgba_parse (&rgba, color);
         //rgba.alpha = 0.85;
     }
 
