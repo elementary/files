@@ -1616,3 +1616,148 @@ gof_file_list_free (GList *list)
     g_list_free (list);
 }
 
+/* TODO move this mini job to marlin-file-operations? */
+GOFFileOperation *
+gof_file_operation_new (GOFFile *file,
+                        GOFFileOperationCallback callback,
+                        gpointer callback_data)
+{
+	GOFFileOperation *op;
+
+	op = g_new0 (GOFFileOperation, 1);
+	op->file = gof_file_ref (file);
+	op->callback = callback;
+	op->callback_data = callback_data;
+	op->cancellable = g_cancellable_new ();
+
+	op->file->operations_in_progress = g_list_prepend
+		(op->file->operations_in_progress, op);
+
+	return op;
+}
+
+static void
+gof_file_operation_remove (GOFFileOperation *op)
+{
+	op->file->operations_in_progress = g_list_remove
+		(op->file->operations_in_progress, op);
+}
+
+void
+gof_file_operation_free (GOFFileOperation *op)
+{
+	gof_file_operation_remove (op);
+	gof_file_unref (op->file);
+	g_object_unref (op->cancellable);
+	if (op->free_data) {
+		op->free_data (op->data);
+	}
+	g_free (op);
+}
+
+void
+gof_file_operation_complete (GOFFileOperation *op, GFile *result_file, GError *error)
+{
+	/* Claim that something changed even if the operation failed.
+	 * This makes it easier for some clients who see the "reverting"
+	 * as "changing back".
+	 */
+	gof_file_operation_remove (op);
+	//gof_file_changed (op->file);
+	if (op->callback) {
+		(* op->callback) (op->file, result_file, error, op->callback_data);
+	}
+	gof_file_operation_free (op);
+}
+
+void
+gof_file_operation_cancel (GOFFileOperation *op)
+{
+	/* Cancel the operation if it's still in progress. */
+	g_cancellable_cancel (op->cancellable);
+}
+
+static void
+rename_callback (GObject *source_object,
+                 GAsyncResult *res,
+                 gpointer callback_data)
+{
+	GOFFileOperation *op;
+	GFile *new_file;
+	GError *error;
+
+	op = callback_data;
+	error = NULL;
+	new_file = g_file_set_display_name_finish (G_FILE (source_object),
+                                               res, &error);
+
+    gof_file_operation_complete (op, NULL, error);
+	if (new_file != NULL) {
+        g_object_unref (new_file);
+	} else { 
+        g_error_free (error);
+    }
+}
+
+void
+gof_file_rename (GOFFile *file,
+                 const char *new_name,
+                 GOFFileOperationCallback callback,
+                 gpointer callback_data)
+{
+	GOFFileOperation *op;
+	char *uri;
+	char *old_name;
+	char *new_file_name;
+	gboolean success, name_changed;
+	GError *error;
+	
+	g_return_if_fail (GOF_IS_FILE (file));
+	g_return_if_fail (new_name != NULL);
+	g_return_if_fail (callback != NULL);
+
+    //TODO rename .desktop files
+	/* Return an error for incoming names containing path separators.
+	 * But not for .desktop files as '/' are allowed for them */
+	if (strstr (new_name, "/") != NULL) {
+		error = g_error_new (G_IO_ERROR, G_IO_ERROR_INVALID_ARGUMENT,
+				     _("Slashes are not allowed in filenames"));
+		(* callback) (file, NULL, error, callback_data);
+		g_error_free (error);
+		return;
+	}
+	
+    //TODO check
+
+    /* Self-owned files can't be renamed. Test the name-not-actually-changing
+	 * case before this case.
+	 */
+#if 0
+	if (nautilus_file_is_self_owned (file)) {
+       	/* Claim that something changed even if the rename
+		 * failed. This makes it easier for some clients who
+		 * see the "reverting" to the old name as "changing
+		 * back".
+		 */
+		nautilus_file_changed (file);
+		error = g_error_new (G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
+                             _("Toplevel files cannot be renamed"));
+		
+		(* callback) (file, NULL, error, callback_data);
+		g_error_free (error);
+		return;
+	}
+#endif
+
+    /* Set up a renaming operation. */
+	op = gof_file_operation_new (file, callback, callback_data);
+	op->is_rename = TRUE;
+
+	/* Do the renaming. */
+	g_file_set_display_name_async (file->location,
+                                   new_name,
+                                   G_PRIORITY_DEFAULT,
+                                   op->cancellable,
+                                   rename_callback,
+                                   op);
+}

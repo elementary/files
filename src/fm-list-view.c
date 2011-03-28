@@ -295,6 +295,7 @@ fm_list_view_rename_callback (GOFFile *file,
 {
 	FMListView *view = FM_LIST_VIEW (callback_data);
 
+    printf ("%s\n", G_STRFUNC);
 	if (view->details->renaming_file) {
 		view->details->rename_done = TRUE;
 		
@@ -393,9 +394,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 	if (strcmp (new_text, view->details->original_name) != 0) {
 		view->details->renaming_file = gof_file_ref (file);
 		view->details->rename_done = FALSE;
-        //TODO
-		//nautilus_rename_file (file, new_text, nautilus_list_view_rename_callback, g_object_ref (view));
-        fm_list_view_rename_callback (file, NULL, NULL, g_object_ref (view));
+		gof_file_rename (file, new_text, fm_list_view_rename_callback, g_object_ref (view));
 
 		g_free (view->details->original_name);
 		view->details->original_name = g_strdup (new_text);
@@ -405,8 +404,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 
 	/*We're done editing - make the filename-cells readonly again.*/
 	g_object_set (G_OBJECT (view->details->file_name_cell),
-                  "editable", FALSE,
-                  NULL);
+                  "editable", FALSE, NULL);
 
     //TODO
 	//nautilus_view_unfreeze_updates (NAUTILUS_VIEW (view));
@@ -1118,6 +1116,9 @@ fm_list_view_finalize (GObject *object)
     FMListView *view = FM_LIST_VIEW (object);
 
     log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
+
+    g_free (view->details->original_name);
+	view->details->original_name = NULL;
 
     if (view->details->new_selection_path)
         gtk_tree_path_free (view->details->new_selection_path);

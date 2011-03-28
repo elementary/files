@@ -2156,6 +2156,9 @@ new_folder_done (GFile *new_folder, gpointer data)
     //TODO
     printf ("rename file\n");
     //rename_file (view, file);
+    EEL_CALL_METHOD (FM_DIRECTORY_VIEW_CLASS, view, start_renaming_file, (view, file, FALSE));
+    //fm_directory_view_reveal_selection (view);
+
     g_object_unref (file);
 }
 

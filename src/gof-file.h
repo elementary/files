@@ -75,6 +75,8 @@ struct _GOFFile {
 
     const gchar     *thumbnail;
     gboolean        is_thumbnailing;
+
+    GList *operations_in_progress;
 };
 
 struct _GOFFileClass {
@@ -97,6 +99,24 @@ typedef enum {
 	GOF_FILE_ICON_FLAGS_NONE = 0,
 	GOF_FILE_ICON_FLAGS_USE_THUMBNAILS = (1<<0)
 } GOFFileIconFlags;
+
+typedef void (*GOFFileOperationCallback) (GOFFile  *file,
+                                          GFile    *result_location,
+                                          GError   *error,
+                                          gpointer callback_data);
+
+typedef struct {
+	GOFFile *file;
+	GCancellable *cancellable;
+	GOFFileOperationCallback callback;
+	gpointer callback_data;
+	gboolean is_rename;
+	
+	gpointer data;
+	GDestroyNotify free_data;
+} GOFFileOperation;
+
+
 
 GType gof_file_get_type (void);
 
@@ -138,6 +158,10 @@ gboolean        gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_
 gboolean        gof_file_launch (GOFFile  *file, GdkScreen *screen);
 GAppInfo        *gof_file_get_default_handler (const GOFFile *file);
 
+void            gof_file_rename (GOFFile *file,
+                                 const char *new_name,
+                                 GOFFileOperationCallback callback,
+                                 gpointer callback_data);
 
 
 G_END_DECLS
