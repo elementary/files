@@ -117,7 +117,6 @@ typedef struct {
     gpointer done_callback_data;
 } DeleteJob;
 
-#if 0
 typedef struct {
     CommonJob common;
     GFile *dest_dir;
@@ -132,7 +131,6 @@ typedef struct {
     MarlinCreateCallback done_callback;
     gpointer done_callback_data;
 } CreateJob;
-#endif
 
 typedef struct {
     CommonJob common;
@@ -5861,7 +5859,6 @@ marlin_file_operations_copy_move   (GList                  *files,
     }
 }
 
-#if 0
 static gboolean
 create_job_done (gpointer user_data)
 {
@@ -5914,7 +5911,11 @@ create_job (GIOSchedulerJob *io_job,
     common = &job->common;
     common->io_job = io_job;
 
+#ifdef HAVE_TASKVIEW
     taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
+#else
+    marlin_progress_info_start (job->common.progress);
+#endif
 
     handled_invalid_filename = FALSE;
 
@@ -6141,7 +6142,7 @@ aborted:
 void 
 marlin_file_operations_new_folder (GtkWidget *parent_view, 
                                    GdkPoint *target_point,
-                                   const char *parent_dir,
+                                   GFile *parent_dir,
                                    MarlinCreateCallback done_callback,
                                    gpointer done_callback_data)
 {
@@ -6156,7 +6157,7 @@ marlin_file_operations_new_folder (GtkWidget *parent_view,
     job = op_job_new (JOB_CREATE, CreateJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
-    job->dest_dir = g_file_new_for_uri (parent_dir);
+    job->dest_dir = g_object_ref (parent_dir);
     job->make_dir = TRUE;
     if (target_point != NULL) {
         job->position = *target_point;
@@ -6170,6 +6171,7 @@ marlin_file_operations_new_folder (GtkWidget *parent_view,
                              job->common.cancellable);
 }
 
+#if 0
 void 
 marlin_file_operations_new_file_from_template (GtkWidget *parent_view, 
                                                GdkPoint *target_point,

@@ -30,10 +30,8 @@
 
 typedef void (* MarlinCopyCallback)      (GHashTable *debuting_uris,
                                           gpointer    callback_data);
-#if 0
 typedef void (* MarlinCreateCallback)    (GFile      *new_file,
                                           gpointer    callback_data);
-#endif
 typedef void (* MarlinOpCallback)        (gpointer    callback_data);
 typedef void (* MarlinDeleteCallback)    (GHashTable *debuting_uris,
                                           gboolean    user_cancel,
@@ -53,12 +51,12 @@ void marlin_file_operations_copy_move   (const GList               *item_uris,
 #endif
 
 void marlin_file_operations_empty_trash (GtkWidget                 *parent_view);
-#if 0
 void marlin_file_operations_new_folder  (GtkWidget                 *parent_view,
                                          GdkPoint                  *target_point,
-                                         const char                *parent_dir_uri,
+                                         GFile                     *parent_dir,
                                          MarlinCreateCallback     done_callback,
                                          gpointer                   done_callback_data);
+#if 0
 void marlin_file_operations_new_file    (GtkWidget                 *parent_view,
                                          GdkPoint                  *target_point,
                                          const char                *parent_dir,

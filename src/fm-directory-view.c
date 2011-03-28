@@ -35,6 +35,7 @@
 #include <glib/gstdio.h>
 #include <gio/gio.h>
 #include "gof-directory-async.h"
+#include "marlin-file-operations.h"
 //#include "fm-list-view.h"
 #include "eel-gtk-macros.h"
 #include "nautilus-marshal.h"
@@ -2108,21 +2109,62 @@ action_paste_files (GtkAction *action, FMDirectoryView *view)
 }
 
 static void
-new_folder_done (GFile *new_folder, gpointer user_data)
+real_action_rename (FMDirectoryView *view, gboolean select_all)
 {
+	GOFFile *file;
+	GList *selection;
+
+	g_assert (FM_IS_DIRECTORY_VIEW (view));
+
+	selection = fm_directory_view_get_selection (view);
+
+    printf ("%s\n", G_STRFUNC);
+	if (selection != NULL) {
+		/* If there is more than one file selected, invoke a batch renamer */
+		if (selection->next != NULL) {
+            //TODO bulk rename tool
+            printf ("TODO bulk rename tool\n");
+			/*if (have_bulk_rename_tool ()) {
+				invoke_external_bulk_rename_utility (view, selection);
+			}*/
+		} else {
+			file = GOF_FILE (selection->data);
+			if (!select_all) {
+				/* directories don't have a file extension, so
+				 * they are always pre-selected as a whole */
+				select_all = file->is_directory;
+			}
+			EEL_CALL_METHOD (FM_DIRECTORY_VIEW_CLASS, view, start_renaming_file, (view, file, select_all));
+		}
+	}
+}
+
+static void
+action_rename_callback (GtkAction *action, gpointer data)
+{
+	real_action_rename (FM_DIRECTORY_VIEW (data), FALSE);
+}
+
+static void
+new_folder_done (GFile *new_folder, gpointer data)
+{
+    g_assert (FM_IS_DIRECTORY_VIEW (data));
+ 
+    FMDirectoryView *view = FM_DIRECTORY_VIEW (data);
+    GOFFile *file = gof_file_get (new_folder);
+
     //TODO
-    //rename_file (directory_view, file);
     printf ("rename file\n");
+    //rename_file (view, file);
+    g_object_unref (file);
 }
 
 static void
 action_new_folder_callback (GtkAction *action, gpointer data)
 {                
-    FMDirectoryView *view;
-    
     g_assert (FM_IS_DIRECTORY_VIEW (data));
-
-    view = FM_DIRECTORY_VIEW (data);
+ 
+    FMDirectoryView *view = FM_DIRECTORY_VIEW (data);
 
     //data = new_folder_data_new (view);
 
@@ -2137,14 +2179,12 @@ action_new_folder_callback (GtkAction *action, gpointer data)
 	pos = context_menu_to_file_operation_position (directory_view);*/
 
     printf ("%s\n", G_STRFUNC);
-	/*parent_uri = nautilus_view_get_backing_uri (directory_view);
 	marlin_file_operations_new_folder (GTK_WIDGET (view),
                                        //pos, parent_uri,
-                                       NULL, parent_uri,
+                                       NULL, view->details->slot->location,
                                        //new_folder_done, data);
-                                       new_folder_done, NULL);
+                                       new_folder_done, view);
 
-	g_free (parent_uri);*/
 }
 
 static void
@@ -2188,6 +2228,10 @@ static const GtkActionEntry directory_view_entries[] = {
     /* label, accelerator */      NULL, NULL,
     /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command"),
             G_CALLBACK (action_paste_files) },
+    /* name, stock id */         { "Rename", NULL,
+    /* label, accelerator */       N_("_Rename..."), "F2",
+    /* tooltip */                  N_("Rename selected item"),
+	        G_CALLBACK (action_rename_callback) },
     /* name, stock id */         { "New Folder", "folder-new",
     /* label, accelerator */       N_("Create New _Folder"), "<control><shift>N",
     /* tooltip */                  N_("Create a new empty folder inside this folder"),

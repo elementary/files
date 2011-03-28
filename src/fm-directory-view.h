@@ -312,13 +312,14 @@ struct FMDirectoryViewClass {
 
     /*gboolean (* can_rename_file)            (FMDirectoryView *view,
       GOFFile *file);*/
+#endif
     /* select_all specifies whether the whole filename should be selected
      * or only its basename (i.e. everything except the extension)
      * */
     void	 (* start_renaming_file)        (FMDirectoryView *view,
-                                                 GOFFile *file,
-                                                 gboolean select_all);
-
+                                             GOFFile *file,
+                                             gboolean select_all);
+#if 0
     /*gboolean (* file_still_belongs)		(FMDirectoryView *view,
       GOFFile	 *file,
       GOFDirectoryAsync *directory);

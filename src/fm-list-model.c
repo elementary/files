@@ -618,7 +618,6 @@ lookup_file (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory)
     return ptr;
 }
 
-#if 0
 struct GetIters {
     FMListModel *model;
     GOFFile *file;
@@ -684,11 +683,10 @@ fm_list_model_get_first_iter_for_file (FMListModel          *model,
         res = TRUE;
         *iter = *(GtkTreeIter *)list->data;
     }
-    //eel_g_list_free_deep (list);
+    g_list_free_full (list, g_free);
 
     return res;
 }
-#endif
 
 gboolean
 fm_list_model_get_tree_iter_from_file (FMListModel *model, GOFFile *file,

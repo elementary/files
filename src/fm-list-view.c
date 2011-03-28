@@ -35,6 +35,14 @@
 struct FMListViewDetails {
     GList       *selection;
     GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
+
+    GtkCellEditable     *editable_widget;
+    GtkTreeViewColumn   *file_name_column;
+    GtkCellRendererText *file_name_cell;
+    char                *original_name;
+
+    GOFFile     *renaming_file;
+    gboolean    rename_done;
 };
 
 /* We wait two seconds after row is collapsed to unload the subdirectory */
@@ -280,6 +288,187 @@ fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
 }
 
 static void
+fm_list_view_rename_callback (GOFFile *file,
+                              GFile *result_location,
+                              GError *error,
+                              gpointer callback_data)
+{
+	FMListView *view = FM_LIST_VIEW (callback_data);
+
+	if (view->details->renaming_file) {
+		view->details->rename_done = TRUE;
+		
+		if (error != NULL) {
+			/* If the rename failed (or was cancelled), kill renaming_file.
+			 * We won't get a change event for the rename, so otherwise
+			 * it would stay around forever.
+			 */
+			gof_file_unref (view->details->renaming_file);
+			view->details->renaming_file = NULL;
+		}
+	}
+	
+	g_object_unref (view);
+}
+
+static void
+editable_focus_out_cb (GtkWidget *widget, GdkEvent *event, gpointer user_data)
+{
+	FMListView *view = user_data;
+
+    //TODO
+	//nautilus_view_unfreeze_updates (NAUTILUS_VIEW (view));
+	view->details->editable_widget = NULL;
+}
+
+static void
+cell_renderer_editing_started_cb (GtkCellRenderer *renderer,
+                                  GtkCellEditable *editable,
+                                  const gchar *path_str,
+                                  FMListView *list_view)
+{
+	GtkEntry *entry;
+
+	entry = GTK_ENTRY (editable);
+	list_view->details->editable_widget = editable;
+
+	/* Free a previously allocated original_name */
+	g_free (list_view->details->original_name);
+
+	list_view->details->original_name = g_strdup (gtk_entry_get_text (entry));
+
+	g_signal_connect (entry, "focus-out-event",
+                      G_CALLBACK (editable_focus_out_cb), list_view);
+
+    //TODO
+	/*nautilus_clipboard_set_up_editable
+		(GTK_EDITABLE (entry),
+		 nautilus_view_get_ui_manager (NAUTILUS_VIEW (list_view)),
+		 FALSE);*/
+}
+
+static void
+cell_renderer_editing_canceled (GtkCellRendererText *cell,
+                                FMListView          *view)
+{
+	view->details->editable_widget = NULL;
+
+    //TODO
+	//nautilus_view_unfreeze_updates (NAUTILUS_VIEW (view));
+}
+
+static void
+cell_renderer_edited (GtkCellRendererText *cell,
+                      const char          *path_str,
+                      const char          *new_text,
+                      FMListView          *view)
+{
+	GtkTreePath *path;
+	GOFFile *file;
+	GtkTreeIter iter;
+
+    printf ("%s\n", G_STRFUNC);
+	view->details->editable_widget = NULL;
+
+	/* Don't allow a rename with an empty string. Revert to original 
+	 * without notifying the user.
+	 */
+	if (new_text[0] == '\0') {
+		g_object_set (G_OBJECT (view->details->file_name_cell),
+                      "editable", FALSE, NULL);
+		//nautilus_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+		return;
+	}
+	
+	path = gtk_tree_path_new_from_string (path_str);
+
+	gtk_tree_model_get_iter (GTK_TREE_MODEL (view->model), &iter, path);
+
+	gtk_tree_path_free (path);
+	
+	gtk_tree_model_get (GTK_TREE_MODEL (view->model), &iter,
+                        FM_LIST_MODEL_FILE_COLUMN, &file, -1);
+
+	/* Only rename if name actually changed */
+	if (strcmp (new_text, view->details->original_name) != 0) {
+		view->details->renaming_file = gof_file_ref (file);
+		view->details->rename_done = FALSE;
+        //TODO
+		//nautilus_rename_file (file, new_text, nautilus_list_view_rename_callback, g_object_ref (view));
+        fm_list_view_rename_callback (file, NULL, NULL, g_object_ref (view));
+
+		g_free (view->details->original_name);
+		view->details->original_name = g_strdup (new_text);
+	}
+	
+	gof_file_unref (file);
+
+	/*We're done editing - make the filename-cells readonly again.*/
+	g_object_set (G_OBJECT (view->details->file_name_cell),
+                  "editable", FALSE,
+                  NULL);
+
+    //TODO
+	//nautilus_view_unfreeze_updates (NAUTILUS_VIEW (view));
+}
+
+static void
+fm_list_view_start_renaming_file (FMDirectoryView *view,
+                                  GOFFile *file,
+                                  gboolean select_all)
+{
+	FMListView *list_view;
+	GtkTreeIter iter;
+	GtkTreePath *path;
+	gint start_offset, end_offset;
+
+	list_view = FM_LIST_VIEW (view);
+	
+	/* Select all if we are in renaming mode already */
+	if (list_view->details->file_name_column && list_view->details->editable_widget) {
+		gtk_editable_select_region (GTK_EDITABLE (list_view->details->editable_widget),
+                                    0, -1);
+		return;
+	}
+
+	if (!fm_list_model_get_first_iter_for_file (list_view->model, file, &iter)) {
+		return;
+	}
+
+	/* Freeze updates to the view to prevent losing rename focus when the tree view updates */
+    //TODO
+	//nautilus_view_freeze_updates (NAUTILUS_VIEW (view));
+
+	path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_view->model), &iter);
+
+	/* Make filename-cells editable. */
+	g_object_set (G_OBJECT (list_view->details->file_name_cell),
+                  "editable", TRUE, NULL);
+
+	gtk_tree_view_scroll_to_cell (list_view->tree, NULL,
+                                  list_view->details->file_name_column,
+                                  TRUE, 0.0, 0.0);
+	/* set cursor also triggers editing-started, where we save the editable widget */
+	/*gtk_tree_view_set_cursor (list_view->tree, path,
+                              list_view->details->file_name_column, TRUE);*/
+    /* sound like set_cursor is not enought to trigger editing-started, we use cursor_on_cell instead */
+    gtk_tree_view_set_cursor_on_cell (list_view->tree, path,
+                                      list_view->details->file_name_column,
+                                      (GtkCellRenderer *) list_view->details->file_name_cell,
+                                      TRUE);
+
+	if (list_view->details->editable_widget != NULL) {
+		eel_filename_get_rename_region (list_view->details->original_name,
+                                        &start_offset, &end_offset);
+
+		gtk_editable_select_region (GTK_EDITABLE (list_view->details->editable_widget),
+                                    start_offset, end_offset);
+	}
+
+	gtk_tree_path_free (path);
+}
+
+static void
 fm_list_view_sync_selection (FMDirectoryView *view)
 {
     //TODO replace this crap
@@ -358,7 +547,6 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
             gtk_tree_path_free (path);
 
             /* queue the menu popup */
-            printf ("thunar_standard_view_queue_popup (THUNAR_STANDARD_VIEW (view), event)\n");
             fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
         }
         else
@@ -657,8 +845,9 @@ create_and_set_up_tree_view (FMListView *view)
         }*/ 
         if (k == FM_LIST_MODEL_FILENAME) {
             //cell = nautilus_cell_renderer_pixbuf_emblem_new ();
-            renderer = gtk_cell_renderer_pixbuf_new( ); 
+            renderer = gtk_cell_renderer_pixbuf_new (); 
             col = gtk_tree_view_column_new ();
+            view->details->file_name_column = col;
             gtk_tree_view_column_set_sort_column_id  (col,k);
             gtk_tree_view_column_set_resizable (col, TRUE);
             gtk_tree_view_column_set_title (col, col_title[k-3]);
@@ -671,7 +860,11 @@ create_and_set_up_tree_view (FMListView *view)
                                                  NULL);
 
             renderer = nautilus_cell_renderer_text_ellipsized_new ();
-            renderer = gtk_cell_renderer_text_new( );
+           	view->details->file_name_cell = (GtkCellRendererText *) renderer;
+            g_signal_connect (renderer, "edited", G_CALLBACK (cell_renderer_edited), view);
+			g_signal_connect (renderer, "editing-canceled", G_CALLBACK (cell_renderer_editing_canceled), view);
+			g_signal_connect (renderer, "editing-started", G_CALLBACK (cell_renderer_editing_started_cb), view);
+
             gtk_tree_view_column_pack_start (col, renderer, TRUE);
             gtk_tree_view_column_set_cell_data_func (col, renderer,
                                                      (GtkTreeCellDataFunc) filename_cell_data_func,
@@ -972,6 +1165,8 @@ fm_list_view_class_init (FMListViewClass *klass)
 
     fm_directory_view_class->get_path_at_pos = fm_list_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_list_view_highlight_path;
+    fm_directory_view_class->start_renaming_file = fm_list_view_start_renaming_file;
+
 
 
     //eel_g_settings_add_auto_boolean (settings, "single-click", &single_click);

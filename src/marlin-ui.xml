@@ -12,8 +12,9 @@
 	<menu name="Edit" action="Edit">
         <!--<placeholder name="Undostack Actions"/>
 		<separator/>-->
-		<placeholder name="Clipboard Actions">
-                </placeholder>
+		<placeholder name="Clipboard Actions"/>
+		<separator/>
+        <placeholder name="File Items Placeholder"/>
 		<separator/>
 		<!--<placeholder name="Select Items"/>-->
 		<menuitem name="ToolbarEditor" 	  action="ToolbarEditor"/>
