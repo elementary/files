@@ -109,13 +109,13 @@
 			<menuitem name="Copy to Desktop" action="Move to Desktop"/>
 		</menu>-->
 	</placeholder>
-	<!--<separator name="Dangerous separator"/>
+	<separator name="Dangerous separator"/>
 	<placeholder name="Dangerous File Actions">
 		<menuitem name="Trash" action="Trash"/>
 		<menuitem name="Delete" action="Delete"/>
 		<menuitem name="Restore From Trash" action="Restore From Trash"/>
 	</placeholder>
-	<separator name="Appearance separator"/>
+	<!--<separator name="Appearance separator"/>
 	<placeholder name="Icon Appearance Items">
 	</placeholder>
 	<separator name="Extension actions separator"/>

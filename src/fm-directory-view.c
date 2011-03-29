@@ -38,9 +38,10 @@
 #include "marlin-file-operations.h"
 //#include "fm-list-view.h"
 #include "eel-gtk-macros.h"
-#include "nautilus-marshal.h"
+#include "marlin-marshal.h"
 #include "fm-columns-view.h"
 #include "marlin-dnd.h"
+#include "marlin-file-utilities.h"
 #include "marlin-vala.h"
 #include "eel-ui.h"
 #include "eel-gio-extensions.h"
@@ -128,7 +129,7 @@ struct FMDirectoryViewDetails
 
     GdkDragContext  *drag_context;
 
-
+    gboolean        selection_was_removed;
 
 };
 
@@ -1743,6 +1744,139 @@ slot_inactive (GOFWindowSlot *slot, FMDirectoryView *view)
 }
 
 static void
+trash_or_delete_done_cb (GHashTable *debuting_uris,
+                         gboolean user_cancel,
+                         FMDirectoryView *view)
+{
+	if (user_cancel) {
+		view->details->selection_was_removed = FALSE;
+	}
+}
+
+static void
+trash_or_delete_files (FMDirectoryView *view,
+                       const GList *files,
+                       gboolean delete_if_all_already_in_trash)
+{
+	GList *locations;
+	const GList *node;
+	
+	locations = NULL;
+	for (node = files; node != NULL; node = node->next) {
+		locations = g_list_prepend (locations,
+					    g_object_ref (((GOFFile *) node->data)->location));
+	}
+	
+	locations = g_list_reverse (locations);
+
+	marlin_file_operations_trash_or_delete (locations,
+						  GTK_WINDOW (view->details->window),
+						  (MarlinDeleteCallback) trash_or_delete_done_cb,
+						  view);
+	g_list_free_full (locations, g_object_unref);
+}
+
+static void
+trash_or_delete_selected_files (FMDirectoryView *view)
+{
+    GList *selection;
+
+    /* This might be rapidly called multiple times for the same selection
+	 * when using keybindings. So we remember if the current selection
+	 * was already removed (but the view doesn't know about it yet).
+	 */
+	if (!view->details->selection_was_removed) {
+		selection = fm_directory_view_get_selection_for_file_transfer (view);
+		trash_or_delete_files (view, selection, TRUE);
+		gof_file_list_free (selection);
+		view->details->selection_was_removed = TRUE;
+	}
+}
+
+static gboolean
+real_trash (FMDirectoryView *view)
+{
+    //TODO
+	/*GtkAction *action;
+
+	action = gtk_action_group_get_action (view->details->dir_action_group,
+                                          NAUTILUS_ACTION_TRASH);
+	if (gtk_action_get_sensitive (action) &&
+	    gtk_action_get_visible (action)) {*/
+		trash_or_delete_selected_files (view);
+		return TRUE;
+	/*}
+	return FALSE;*/
+}
+
+static void
+action_trash_callback (GtkAction *action, gpointer callback_data)
+{
+    trash_or_delete_selected_files (FM_DIRECTORY_VIEW (callback_data));
+}
+
+static void
+delete_selected_files (FMDirectoryView *view)
+{
+    GList *selection;
+	GList *node;
+	GList *locations;
+
+	selection = fm_directory_view_get_selection_for_file_transfer (view);
+	if (selection == NULL)
+		return;
+
+	locations = NULL;
+	for (node = selection; node != NULL; node = node->next) {
+		locations = g_list_prepend (locations,
+					    g_object_ref (((GOFFile *) node->data)->location));
+	}
+	locations = g_list_reverse (locations);
+
+	marlin_file_operations_delete (locations, GTK_WINDOW (view->details->window), NULL, NULL);
+
+	g_list_free_full (locations, g_object_unref);
+    gof_file_list_free (selection);
+}
+
+static void
+action_delete_callback (GtkAction *action, gpointer data)
+{
+        delete_selected_files (FM_DIRECTORY_VIEW (data));
+}
+
+static void
+action_restore_from_trash_callback (GtkAction *action, gpointer data)
+{
+	FMDirectoryView *view;
+	GList *selection;
+
+	view = FM_DIRECTORY_VIEW (data);
+
+	selection = fm_directory_view_get_selection_for_file_transfer (view);
+	marlin_restore_files_from_trash (selection, GTK_WINDOW (view->details->window));
+
+	gof_file_list_free (selection);
+}
+
+static gboolean
+real_delete (FMDirectoryView *view)
+{
+    //TODO
+	/*GtkAction *action;
+
+	action = gtk_action_group_get_action (view->details->dir_action_group,
+                                          NAUTILUS_ACTION_DELETE);
+	if (gtk_action_get_sensitive (action) &&
+	    gtk_action_get_visible (action)) {*/
+		delete_selected_files (view);
+		return TRUE;
+	/*}
+	return FALSE;*/
+}
+
+
+static void
 fm_directory_view_set_property (GObject         *object,
                                 guint            prop_id,
                                 const GValue    *value,
@@ -1825,7 +1959,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (FMDirectoryViewClass, add_file),
                       NULL, NULL,
-                      nautilus_marshal_VOID__OBJECT_OBJECT,
+                      marlin_marshal_VOID__OBJECT_OBJECT,
                       G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
     signals[REMOVE_FILE] =
         g_signal_new ("remove_file",
@@ -1833,7 +1967,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (FMDirectoryViewClass, remove_file),
                       NULL, NULL,
-                      nautilus_marshal_VOID__OBJECT_OBJECT,
+                      marlin_marshal_VOID__OBJECT_OBJECT,
                       G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
     signals[COLORIZE_SELECTION] =
         g_signal_new ("colorize_selection",
@@ -1975,22 +2109,22 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                                                           G_PARAM_WRITABLE |
                                                           G_PARAM_CONSTRUCT_ONLY));
 
-    /*signals[TRASH] =
-      g_signal_new ("trash",
-      G_TYPE_FROM_CLASS (klass),
-      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-      G_STRUCT_OFFSET (FMDirectoryViewClass, trash),
-      g_signal_accumulator_true_handled, NULL,
-      eel_marshal_BOOLEAN__VOID,
-      G_TYPE_BOOLEAN, 0);
-      signals[DELETE] =
-      g_signal_new ("delete",
-      G_TYPE_FROM_CLASS (klass),
-      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-      G_STRUCT_OFFSET (FMDirectoryViewClass, delete),
-      g_signal_accumulator_true_handled, NULL,
-      eel_marshal_BOOLEAN__VOID,
-      G_TYPE_BOOLEAN, 0);*/
+    signals[TRASH] =
+        g_signal_new ("trash",
+                      G_TYPE_FROM_CLASS (klass),
+                      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+                      G_STRUCT_OFFSET (FMDirectoryViewClass, trash),
+                      g_signal_accumulator_true_handled, NULL,
+                      marlin_marshal_BOOLEAN__VOID,
+                      G_TYPE_BOOLEAN, 0);
+    signals[DELETE] =
+        g_signal_new ("delete",
+                      G_TYPE_FROM_CLASS (klass),
+                      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+                      G_STRUCT_OFFSET (FMDirectoryViewClass, delete),
+                      g_signal_accumulator_true_handled, NULL,
+                      marlin_marshal_BOOLEAN__VOID,
+                      G_TYPE_BOOLEAN, 0);
 
     binding_set = gtk_binding_set_by_class (klass);
     gtk_binding_entry_add_signal (binding_set, GDK_KEY_Delete, 0,
@@ -2000,13 +2134,15 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
     gtk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Delete, GDK_SHIFT_MASK,
                                   "delete", 0);
 
-    //klass->trash = real_trash;
-    //klass->delete = real_delete;
+    klass->trash = real_trash;
+    klass->delete = real_delete;
 }
 
 void
 fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFile *file)
 {
+    view->details->selection_was_removed = FALSE;
+
     g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", file);
 }
 
@@ -2239,6 +2375,18 @@ static const GtkActionEntry directory_view_entries[] = {
     /* label, accelerator */       N_("Create New _Folder"), "<control><shift>N",
     /* tooltip */                  N_("Create a new empty folder inside this folder"),
 	        G_CALLBACK (action_new_folder_callback) },
+    /* name, stock id */         { "Trash", NULL,
+    /* label, accelerator */       N_("Mo_ve to Trash"), NULL,
+    /* tooltip */                  N_("Move each selected item to the Trash"),
+            G_CALLBACK (action_trash_callback) },
+    /* name, stock id */         { "Delete", NULL,
+    /* label, accelerator */       N_("_Delete"), "<shift>Delete",
+    /* tooltip */                  N_("Delete each selected item, without moving to the Trash"),
+            G_CALLBACK (action_delete_callback) },
+    /* name, stock id */         { "Restore From Trash", NULL,
+    /* label, accelerator */       N_("_Restore"), NULL,
+                                   NULL,
+            G_CALLBACK (action_restore_from_trash_callback) },
     /* name, stock id */         { "Properties", GTK_STOCK_PROPERTIES,
     /* label, accelerator */       N_("_Properties"), "<alt>Return",
     /* tooltip */                  N_("View or modify the properties of each selected item"),

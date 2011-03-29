@@ -90,6 +90,10 @@ AC_CHECK_FUNCS([strrchr])
 
 dnl ==========================================================================
 
+AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
+
+dnl ==========================================================================
+
 dnl Turn on the additional warnings last, so -Werror doesn't affect other tests.
 
 AC_ARG_ENABLE(more-warnings,

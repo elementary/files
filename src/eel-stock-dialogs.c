@@ -87,6 +87,16 @@ show_ok_dialog (const char *primary_text,
     return dialog;
 }
 
+GtkDialog *
+eel_show_warning_dialog (const char *primary_text,
+                         const char *secondary_text,
+                         GtkWindow *parent)
+{
+	return show_ok_dialog (primary_text, 
+			       secondary_text,
+			       GTK_MESSAGE_WARNING, parent);
+}
+
 //TODO merge with marlin_dialogs_show_error
 GtkDialog *
 eel_show_error_dialog (const char *primary_text,

@@ -26,9 +26,14 @@
 #include <gtk/gtk.h>
 
 GtkDialog *
+eel_show_warning_dialog (const char *primary_text,
+                         const char *secondary_text,
+                         GtkWindow *parent);
+
+GtkDialog *
 eel_show_error_dialog (const char *primary_text,
-		       const char *secondary_text,
-		       GtkWindow *parent);
+                       const char *secondary_text,
+                       GtkWindow *parent);
 
 void
 marlin_dialogs_show_error (gpointer      parent,

@@ -2071,9 +2071,9 @@ trash_or_delete_internal (GList                  *files,
 }
 
 void
-marlin_file_operations_trash_or_delete (GList                  *files,
-                                        GtkWindow              *parent_window,
-                                        MarlinDeleteCallback  done_callback,
+marlin_file_operations_trash_or_delete (GList                   *files,
+                                        GtkWindow               *parent_window,
+                                        MarlinDeleteCallback    done_callback,
                                         gpointer                done_callback_data)
 {
     trash_or_delete_internal (files, parent_window,
@@ -2081,18 +2081,16 @@ marlin_file_operations_trash_or_delete (GList                  *files,
                               done_callback,  done_callback_data);
 }
 
-#if 0
 void
-marlin_file_operations_delete (GList                  *files, 
-                               GtkWindow              *parent_window,
-                               MarlinDeleteCallback  done_callback,
-                               gpointer                done_callback_data)
+marlin_file_operations_delete (GList                    *files, 
+                               GtkWindow                *parent_window,
+                               MarlinDeleteCallback     done_callback,
+                               gpointer                 done_callback_data)
 {
     trash_or_delete_internal (files, parent_window,
                               FALSE,			  
                               done_callback,  done_callback_data);
 }
-#endif
 
 
 typedef struct {

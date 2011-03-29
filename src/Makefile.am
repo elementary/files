@@ -24,6 +24,12 @@ marlin_LDADD = \
     $(CORE_LIBS) \
     $(NULL)
 
+BUILT_SOURCES = \
+    marlin-marshal.c \
+    marlin-marshal.h \
+    marlin.vala.stamp \
+    $(NULL)
+
 marlin_VALASOURCES = \
     log.vala        	                    \
     View/Window.vala 	                    \
@@ -44,16 +50,14 @@ marlin_VALASOURCES = \
     View/Chrome/ColorWidget.vala            \
     $(NULL)
 
-marlin_SOURCES = \
-    $(marlin_VALASOURCES:.vala=.c) 	    \
+marlin_CSOURCES = \
     marlin-main.c                           \
     marlin-application.c                    \
     mysignal.c                              \
     eel-fcts.c                              \
     eel-i18n.c                              \
-    eel-marshal.c                           \
     eel-gtk-extensions.c                    \
-    eel-gdk-extensions.c		    \
+    eel-gdk-extensions.c                    \
     eel-gdk-pixbuf-extensions.c             \
     eel-glib-extensions.c                   \
     eel-gio-extensions.c                    \
@@ -72,14 +76,13 @@ marlin_SOURCES = \
     marlin-file-utilities.c                 \
     marlin-file-operations.c                \
     marlin-file-conflict-dialog.c           \
-    marlin-progress-info.c		    \
-    marlin-progress-info-manager.c	    \
-    marlin-progress-ui-handler.c	    \
-    marlin-progress-info-widget.c	    \
+    marlin-progress-info.c                  \
+    marlin-progress-info-manager.c          \
+    marlin-progress-ui-handler.c            \
+    marlin-progress-info-widget.c           \
     marlin-places-sidebar.c                 \
     marlin-window-columns.c                 \
     gof-window-slot.c                       \
-    nautilus-marshal-guts.c                 \
     gof-directory-async.c                   \
     nautilus-icon-info.c                    \
     gof-monitor.c                           \
@@ -93,14 +96,41 @@ marlin_SOURCES = \
     marlin-toolbar-editor.c                 \
     $(NULL)
 
+marlin_SOURCES = \
+    $(marlin_VALASOURCES:.vala=.c)          \
+    $(marlin_CSOURCES)                      \
+    $(NULL)
+
+nodist_marlin_SOURCES = \
+    $(BUILT_SOURCES) \
+	$(NULL)
+
+marlin-marshal.list: $(marlin_CSOURCES) Makefile.am
+	$(AM_V_GEN)( cd $(srcdir) && \
+	sed -n -e 's/.*marlin_marshal_\([[:upper:][:digit:]]*__[[:upper:][:digit:]_]*\).*/\1/p' \
+	$(marlin_CSOURCES) ) \
+	| sed -e 's/__/:/' -e 'y/_/,/' | sort -u > $@.tmp
+	@if cmp -s $@.tmp $@; then \
+		rm $@.tmp; \
+	else \
+		mv $@.tmp $@; \
+	fi
+
+%-marshal.c: %-marshal.list Makefile
+	$(AM_V_GEN)echo "#include \"marlin-marshal.h\"" > $@ && \
+	$(GLIB_GENMARSHAL) --body --prefix=$(subst -,_,$*)_marshal $< >> $*-marshal.c
+
+%-marshal.h: %-marshal.list Makefile
+	$(AM_V_GEN)$(GLIB_GENMARSHAL) --header --prefix=$(subst -,_,$*)_marshal $< > $*-marshal.h
+
 uidir = $(datadir)/marlin/ui
 ui_DATA = \
 	marlin-ui.xml \
-        fm-directory-view-ui.xml \
+    fm-directory-view-ui.xml \
 	$(NULL)
 
-BUILT_SOURCES = marlin.vala.stamp
 EXTRA_DIST = \
+    marlin-marshall.list \
 	marlin.vala.stamp \
 	$(marlin_VALASOURCES) \
 	$(NULL)
@@ -111,7 +141,8 @@ marlin.vala.stamp: $(marlin_VALASOURCES)
 	touch marlin.vala.stamp
 
 CLEANFILES = \
-	*.stamp \
+    marlin-marshall.list \
+    $(BUILT_SOURCES) \
 	$(marlin_VALASOURCES:.vala=.c) \
 	$(NULL)
 

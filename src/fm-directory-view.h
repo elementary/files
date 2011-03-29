@@ -350,11 +350,11 @@ struct FMDirectoryViewClass {
       void    (* set_is_active)                  (FMDirectoryView *view,
       gboolean
       is_active);*/
+#endif
 
     /* Signals used only for keybindings */
-    /*gboolean (* trash)                         (FMDirectoryView *view);
-      gboolean (* delete)                        (FMDirectoryView *view);*/
-#endif
+    gboolean (* trash)                         (FMDirectoryView *view);
+    gboolean (* delete)                        (FMDirectoryView *view);
 
     /* Returns the path at the given position or NULL if no item/row
      * is located at that coordinates. The path is freed by the caller.

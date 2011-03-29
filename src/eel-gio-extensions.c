@@ -70,6 +70,22 @@ eel_g_file_get_location (GFile *file)
     return location;
 }
 
+GFile *
+eel_g_file_get_trash_original_file (const gchar *string)
+{
+    GFile *location = NULL;
+	char *filename;
+
+    if (string != NULL) {
+        /* file name is stored in URL encoding */
+		filename = g_uri_unescape_string (string, "");
+		location = g_file_new_for_path (filename);
+		g_free (filename);
+    }
+
+    return location;
+}
+
 gboolean 
 eel_g_file_is_trashed (GFile *file)
 {

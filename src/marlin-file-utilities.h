@@ -36,4 +36,6 @@ char	*marlin_get_accel_map_file		(void);
 int     marlin_inhibit_power_manager            (const char *message) G_GNUC_WARN_UNUSED_RESULT;
 void    marlin_uninhibit_power_manager          (int cookie);
 
+void    marlin_restore_files_from_trash         (GList *files, GtkWindow *parent_window);
+
 #endif /* MARLIN_FILE_UTILITIES_H */

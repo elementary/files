@@ -83,12 +83,12 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 
 #define ICON_NAME_THUMBNAIL_LOADING   "image-loading"
 
-    enum {
-        //CHANGED,
-        //UPDATED_DEEP_COUNT_IN_PROGRESS,
-        DESTROY,
-        LAST_SIGNAL
-    };
+enum {
+    //CHANGED,
+    //UPDATED_DEEP_COUNT_IN_PROGRESS,
+    DESTROY,
+    LAST_SIGNAL
+};
 
 static guint    signals[LAST_SIGNAL];
 static guint32  effective_user_id;
@@ -288,6 +288,18 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
     g_object_unref (nicon);
 
     file->color = NULL;
+
+    GTimeVal g_trash_time;
+   	const char * time_string;
+
+  	file->trash_time = 0;
+    time_string = g_file_info_get_attribute_string (file_info, "trash::deletion-date");
+    if (time_string != NULL) {
+	    g_time_val_from_iso8601 (time_string, &g_trash_time);
+		file->trash_time = g_trash_time.tv_sec;
+    }
+
+	file->trash_orig_path = g_file_info_get_attribute_byte_string (file_info, "trash::orig-path");
 
     return file;
 }

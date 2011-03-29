@@ -72,16 +72,16 @@ void marlin_file_operations_new_file_from_template (GtkWidget               *par
                                                     const char              *template_uri,
                                                     MarlinCreateCallback   done_callback,
                                                     gpointer                 data);
-
+#endif
 void marlin_file_operations_delete          (GList                  *files,
                                              GtkWindow              *parent_window,
-                                             MarlinDeleteCallback  done_callback,
-                                             gpointer                done_callback_data);
+                                             MarlinDeleteCallback   done_callback,
+                                             gpointer               done_callback_data);
 void marlin_file_operations_trash_or_delete (GList                  *files,
                                              GtkWindow              *parent_window,
-                                             MarlinDeleteCallback  done_callback,
-                                             gpointer                done_callback_data);
-
+                                             MarlinDeleteCallback   done_callback,
+                                             gpointer               done_callback_data);
+#if 0
 void marlin_file_set_permissions_recursive (const char                     *directory,
                                             guint32                         file_permissions,
                                             guint32                         file_mask,
