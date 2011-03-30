@@ -5,10 +5,10 @@ AC_PREREQ([2.54])
 
 dnl ===========================================================================
 
-m4_define(glib_minver,                 2.27.0)
+m4_define(glib_minver,                 2.28.0)
 #m4_define(gnome_desktop_minver,        2.91.0)
 m4_define(pango_minver,                1.1.2)
-m4_define(gtk_minver,                  2.91.0)
+m4_define(gtk_minver,                  3.0.3)
 #m4_define(xml_minver,                  2.4.7)
 #m4_define(appindicator_minver,         0.0.2)
 
@@ -57,13 +57,11 @@ AC_CHECK_LIB(m, floor)
 PKG_CHECK_MODULES(ALL, [
 	glib-2.0		>= glib_minver
 	gthread-2.0
-	gio-unix-2.0		
 	gio-2.0	
-        pango			>= pango_minver
+    pango			>= pango_minver
 	gtk+-3.0		>= gtk_minver
-        gee-1.0
-        sqlite3
-        dbus-glib-1
+    gee-1.0
+    sqlite3
 	libnotify
 ])
 dnl ===========================================================================
@@ -157,7 +155,7 @@ AC_SUBST(DBUSSERVICEDIR)
 dnl ===========================================================================
 
 dnl core marlin
-CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gio-unix-2.0 gee-1.0 libnotify"
+CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gee-1.0 libnotify"
 CORE_CFLAGS="`$PKG_CONFIG --cflags $CORE_MODULES` $x_cflags $WARNING_CFLAGS"
 AC_SUBST(CORE_CFLAGS)
 CORE_LIBS="`$PKG_CONFIG --libs $CORE_MODULES` $x_libs"
