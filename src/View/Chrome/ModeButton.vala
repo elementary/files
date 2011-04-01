@@ -75,7 +75,7 @@ namespace Marlin.View.Chrome
 
         public int hovered {
             get {
-                return this._hovered;
+                return _hovered;
             }
             set {
                 if (value < -1 || value >= box.get_children().length())
@@ -144,10 +144,9 @@ namespace Marlin.View.Chrome
             return true;
         }
 
-        protected bool on_leave_notify_event()
+        protected bool on_leave_notify_event(Gdk.EventCrossing ev)
         {
-            _hovered = -1;
-            queue_draw ();
+            hovered = -1;
 
             return true;
         }
@@ -168,7 +167,7 @@ namespace Marlin.View.Chrome
                 i = (int) (evnt.x / child_size);
 
             if (i >= 0 && i < n_children)
-                this.hovered = i;
+                hovered = i;
 
             return false;
         }
