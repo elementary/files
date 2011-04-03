@@ -130,46 +130,41 @@ gof_set_custom_display_name (GOFFile *file, gchar *name)
     file->name = file->custom_display_name;
 }
 
-GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
+GOFFile    *gof_file_new (GFile *location, GFile *dir)
 {
     GOFFile *file;
-    NautilusIconInfo *nicon;
+
+    file = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
+    file->location = g_object_ref (location);
+    file->directory = g_object_ref (dir);
+    file->basename = g_file_get_basename (file->location);
+    //file->parent_dir = g_file_enumerator_get_container (enumerator);
+
+    return (file);
+}
+
+void gof_file_update (GOFFile *file)
+{
     GKeyFile *key_file;
     gchar *p;
 
-    //g_return_val_if_fail (file_info != NULL, NULL);
+    g_return_if_fail (file->info != NULL);
 
-    file = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
-    file->info = file_info;
-    //file->parent_dir = g_file_enumerator_get_container (enumerator);
-    file->directory = dir;
-    //g_object_ref (file->directory);
-    if (file_info != NULL)
-        file->name = g_file_info_get_name (file_info);
+    file->name = g_file_info_get_name (file->info);
 
-    if (location != NULL) {
-        file->location = g_object_ref (location);
-    } else if (dir != NULL) {
-        file->location = g_file_get_child(file->directory, file->name);
-    } else { 
-        return NULL;
-    }
-
-    file->basename = g_file_get_basename (file->location);
-    if (file_info == NULL && file->location != NULL)
-        gof_set_custom_display_name (file, file->basename);
+    //TODO ???
+    /*if (file->info == NULL && file->location != NULL)
+        gof_set_custom_display_name (file, file->basename);*/
 
     //log_printf (LOG_LEVEL_UNDEFINED, "test parent_dir %s\n", g_file_get_uri(file->location));
-    if (file_info == NULL)
-        return file;
 
-    file->display_name = g_file_info_get_display_name (file_info);
-    file->is_hidden = g_file_info_get_is_hidden (file_info);
-    file->ftype = g_file_info_get_attribute_string (file_info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
-    file->size = (guint64) g_file_info_get_size (file_info);
-    file->file_type = g_file_info_get_file_type(file_info);
+    file->display_name = g_file_info_get_display_name (file->info);
+    file->is_hidden = g_file_info_get_is_hidden (file->info);
+    file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
+    file->size = (guint64) g_file_info_get_size (file->info);
+    file->file_type = g_file_info_get_file_type(file->info);
     file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
-    file->modified = g_file_info_get_attribute_uint64 (file_info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+    file->modified = g_file_info_get_attribute_uint64 (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
     if (file->is_directory)
         file->format_size = g_strdup ("--");
@@ -239,7 +234,6 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
 
     if (file->is_directory && !file->is_hidden)
     {
-        //TODO hum store the uri?
         char *uri = g_file_get_uri (file->location);
         char *path = g_filename_from_uri (uri, NULL, NULL);
         file->icon = get_icon_user_special_dirs(path);
@@ -258,50 +252,59 @@ GOFFile* gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir)
     GFile *target_location;
     if (G_UNLIKELY (gof_file_is_symlink (file))) {
         /* TODO put this in a queue and launch async? */
-        const char *target_path = g_file_info_get_symlink_target (file_info);
+        /* TODO check if we can have an infinite loop here link of link of link */
+        const char *target_path = g_file_info_get_symlink_target (file->info);
         if (!g_path_is_absolute (target_path))
             target_location = g_file_get_child(file->directory, target_path);
         else
             target_location = g_file_new_for_commandline_arg (target_path);
         GOFFile *target_file = gof_file_get (target_location);
+        gof_file_update (target_file);
         file->formated_type = g_strdup_printf (_("link to %s"), target_file->formated_type);
         gof_file_unref (target_file);
     } else {
         file->formated_type = g_content_type_get_description (file->ftype);
     }
+    file->color = NULL;
+}
+
+void gof_file_update_icon (GOFFile *file, gint size)
+{
+    NautilusIconInfo *nicon;
 
     /* don't waste time on collecting data for hidden files which would be dropped */
     /* FIXME repair hidden files */
     //TODO set property don't call g_setting for each files
     if (file->is_hidden && !g_settings_get_boolean(settings, "show-hiddenfiles"))
-        return file;
+        return ;
 
     if (file->custom_icon_name != NULL) {
         if (g_path_is_absolute (file->custom_icon_name)) 
-            nicon = nautilus_icon_info_lookup_from_path (file->custom_icon_name, 16);
+            nicon = nautilus_icon_info_lookup_from_path (file->custom_icon_name, size);
         else
-            nicon = nautilus_icon_info_lookup_from_name (file->custom_icon_name, 16);
+            nicon = nautilus_icon_info_lookup_from_name (file->custom_icon_name, size);
     } else {
-        nicon = nautilus_icon_info_lookup (file->icon, 16);
+        nicon = nautilus_icon_info_lookup (file->icon, size);
     }
     file->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
     g_object_unref (nicon);
+}
 
-    file->color = NULL;
-
+void gof_file_update_trash_info (GOFFile *file)
+{
     GTimeVal g_trash_time;
    	const char * time_string;
 
+    g_return_if_fail (file->info != NULL);
+
   	file->trash_time = 0;
-    time_string = g_file_info_get_attribute_string (file_info, "trash::deletion-date");
+    time_string = g_file_info_get_attribute_string (file->info, "trash::deletion-date");
     if (time_string != NULL) {
 	    g_time_val_from_iso8601 (time_string, &g_trash_time);
 		file->trash_time = g_trash_time.tv_sec;
     }
 
-	file->trash_orig_path = g_file_info_get_attribute_byte_string (file_info, "trash::orig-path");
-
-    return file;
+	file->trash_orig_path = g_file_info_get_attribute_byte_string (file->info, "trash::orig-path");
 }
 
 GFileInfo* gof_file_get_file_info (GOFFile* self) {
@@ -1067,8 +1070,6 @@ print_error(GError *error)
 
 GOFFile* gof_file_get (GFile *location)
 {
-    /* FIXME must be async */
-    GFileInfo *file_info;
     GFile *parent;
     GOFFile *file = NULL;
     GOFDirectoryAsync *dir = NULL;
@@ -1088,11 +1089,13 @@ GOFFile* gof_file_get (GFile *location)
         g_object_ref (file);
     } else {
         //amtest
+        file = gof_file_new (location, parent);
+        /* FIXME must be async */
         printf ("!!!!!!!!!!!!file_query_info %s\n", g_file_get_uri (location));
-        file_info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                       //G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, &err);
+        file->info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
                                        0, NULL, &err);
-        file = gof_file_new (file_info, location, parent);
+        gof_file_update (file);
+
         if (err != NULL) {
             if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED)
             {
@@ -1101,11 +1104,9 @@ GOFFile* gof_file_get (GFile *location)
             }
             print_error (err);
         }
-
-        /*if (file_info == NULL) {
-          printf ("%s file_info NULL\n", G_STRFUNC);
-          }*/
     }
+    if (parent != NULL)
+        g_object_unref (parent);
 
     return (file);
 }
@@ -1118,11 +1119,6 @@ GOFFile* gof_file_get_by_uri (const char *uri)
     location = g_file_new_for_uri (uri);
     printf ("%s %s\n", G_STRFUNC, g_file_get_uri (location));
     file = gof_file_get (location);
-    /* FIXME remove this ugly test */ 
-    if (file == NULL) {
-        printf ("%s NULL\n", G_STRFUNC);
-        exit (-1);
-    }
     g_object_unref (location);
 
     return file;

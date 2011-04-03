@@ -297,18 +297,34 @@ fm_directory_view_load_file_hash (GOFDirectoryAsync *dir, FMDirectoryView *view)
     }
 }
 
+#if 0
+static gboolean
+file_load_icon (GOFFile *file)
+{
+    /* TODO manage differents sizes depending on the view */
+    printf ("%s\n", G_STRFUNC);
+    gof_file_update_icon (file, 16);
+    return FALSE;
+}
+#endif
+//TODO
+
 static void
 file_loaded_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
     printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
+    gof_file_update_icon (file, 16);
     g_signal_emit (view, signals[ADD_FILE], 0, file, directory); 
+    //g_idle_add ((GSourceFunc) file_load_icon, file);
 }
 
 static void
 file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
     printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
-    g_signal_emit (view, signals[ADD_FILE], 0, file, directory); 
+    gof_file_update_icon (file, 16);
+    g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
+    //g_idle_add ((GSourceFunc) file_load_icon, file);
 }
 
 static void

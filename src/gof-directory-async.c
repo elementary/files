@@ -113,8 +113,12 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
 
     for (f=files; f; f=f->next)
     {
-        //GFileInfo *info = f->data;
-        GOFFile *goff = gof_file_new ((GFileInfo *) f->data, NULL, dir->location);
+        GFileInfo *file_info = (GFileInfo *) f->data;
+        GFile *location =  g_file_get_child (dir->location, g_file_info_get_name (file_info));
+        GOFFile *goff = gof_file_new (location, dir->location);
+        goff->info = file_info;
+        gof_file_update (goff);
+        g_object_unref (location);
         //g_object_unref (goff);
 
         //if (!goff->is_hidden || g_settings_get_boolean(settings, "show-hiddenfiles"))
@@ -122,13 +126,7 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
         {
             if (dir->file_hash != NULL)
                 g_hash_table_insert (dir->file_hash, g_object_ref (goff->location), goff);
-            //g_signal_emit (dir, signals[FILE_ADDED], 0, goff);
             g_signal_emit (dir, signals[FILE_LOADED], 0, goff);
-
-            /* val = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
-               g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE)
-               g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY ? 'd' : '-',
-               */
         } else {
             if (dir->hidden_file_hash != NULL)
                 g_hash_table_insert (dir->hidden_file_hash, g_object_ref (goff->location), goff);
@@ -214,12 +212,6 @@ gof_directory_async_load_and_enum (GOFDirectoryAsync *dir)
 {
     g_assert (dir->location != NULL);
 
-    g_file_enumerate_children_async (dir->location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                     0,
-                                     G_PRIORITY_DEFAULT,
-                                     dir->priv->cancellable,
-                                     load_dir_async_callback,
-                                     dir);
     g_file_query_info_async (dir->location,
                              GOF_GIO_DEFAULT_ATTRIBUTES,
                              0,
@@ -227,6 +219,12 @@ gof_directory_async_load_and_enum (GOFDirectoryAsync *dir)
                              dir->priv->cancellable,
                              load_dir_info_async_callback,
                              dir);
+    g_file_enumerate_children_async (dir->location, GOF_GIO_DEFAULT_ATTRIBUTES,
+                                     0,
+                                     G_PRIORITY_DEFAULT,
+                                     dir->priv->cancellable,
+                                     load_dir_async_callback,
+                                     dir);
 }
 
 static void
@@ -241,7 +239,7 @@ gof_directory_async_mountable_finish (GObject      *object,
     g_return_if_fail (G_IS_ASYNC_RESULT (result));
     g_return_if_fail (dir != NULL);
     g_return_if_fail (dir->file != NULL);
-    g_return_if_fail (GOF_IS_FILE (dir->file));
+    //g_return_if_fail (GOF_IS_FILE (dir->file));
 
     if (!g_file_mount_mountable_finish (G_FILE (object), result, &error))
     {
@@ -268,7 +266,7 @@ gof_directory_async_enclosing_volume_finish (GObject      *object,
     g_return_if_fail (G_IS_ASYNC_RESULT (result));
     g_return_if_fail (dir != NULL);
     g_return_if_fail (dir->file != NULL);
-    g_return_if_fail (GOF_IS_FILE (dir->file));
+    //g_return_if_fail (GOF_IS_FILE (dir->file));
 
     if (!g_file_mount_enclosing_volume_finish (G_FILE (object), result, &error))
     {

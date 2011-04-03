@@ -123,7 +123,13 @@ typedef struct {
 
 GType gof_file_get_type (void);
 
-GOFFile*        gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir);
+//GOFFile*        gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir);
+GOFFile         *gof_file_new (GFile *location, GFile *dir);
+
+void            gof_file_update (GOFFile *file);
+void            gof_file_update_icon (GOFFile *file, gint size);
+void            gof_file_update_trash_info (GOFFile *file);
+
 GOFFile*        gof_file_get (GFile *location);
 GOFFile*        gof_file_get_by_uri (const char *uri);
 GOFFile*        gof_file_get_by_commandline_arg (const char *arg);
