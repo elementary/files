@@ -68,7 +68,7 @@ typedef struct {
     GList                      *added_files);
 #endif
     void     (* done_loading)        (GOFDirectoryAsync         *directory);
-    void     (* info_available)        (GOFDirectoryAsync         *directory);
+    void     (* info_available)      (GOFDirectoryAsync         *directory);
 
 } GOFDirectoryAsyncClass;
 

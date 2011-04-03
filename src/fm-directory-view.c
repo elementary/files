@@ -199,6 +199,8 @@ static void     fm_directory_view_drag_end (GtkWidget       *widget,
                                             GdkDragContext  *context,
                                             FMDirectoryView *view);
 
+static void     update_menus_selection (FMDirectoryView *view);
+
 EEL_CLASS_BOILERPLATE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW)
 
     /*EEL_IMPLEMENT_MUST_OVERRIDE_SIGNAL (fm_directory_view, add_file)
@@ -1483,7 +1485,72 @@ fm_directory_view_button_release_event (GtkWidget        *widget,
     return TRUE;
 }
 
+static void
+dir_action_set_visible (FMDirectoryView *view, const gchar *action_name, gboolean visible)
+{
+    GtkAction *action;
 
+    action = gtk_action_group_get_action (view->details->dir_action_group, action_name);
+    if (action != NULL) {
+        gtk_action_set_visible (action, visible);
+        /* enable/disable action too */
+        gtk_action_set_sensitive (action, visible);
+    }
+}
+
+static void
+dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gboolean sensitive)
+{
+    GtkAction *action;
+
+    action = gtk_action_group_get_action (view->details->dir_action_group, action_name);
+    if (action != NULL)
+        gtk_action_set_sensitive (action, sensitive);
+}
+
+static void
+update_menus_empty_selection (FMDirectoryView *view)
+{
+    GtkAction *action;
+
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+   
+    dir_action_set_sensitive (view, "Cut", FALSE);
+    dir_action_set_sensitive (view, "Copy", FALSE);
+    dir_action_set_sensitive (view, "Rename", FALSE);
+    
+    GOFWindowSlot *slot = view->details->slot;
+
+    if (gof_file_is_trashed (slot->directory->file)) 
+        dir_action_set_visible (view, "New Folder", FALSE);
+    else 
+        dir_action_set_visible (view, "New Folder", TRUE);
+}
+
+static void
+update_menus_selection (FMDirectoryView *view)
+{
+    GList       *selection;
+    GtkAction   *action;
+    GOFFile     *file;
+
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    selection = fm_directory_view_get_selection (view);
+    file = GOF_FILE (selection->data);
+
+    dir_action_set_sensitive (view, "Cut", TRUE);
+    dir_action_set_sensitive (view, "Copy", TRUE);
+    dir_action_set_sensitive (view, "Rename", TRUE);
+
+    if (gof_file_is_trashed(file)) {
+        dir_action_set_visible (view, "Restore From Trash", TRUE);
+        dir_action_set_visible (view, "Trash", FALSE);
+        dir_action_set_visible (view, "Rename", FALSE);
+    } else {
+        dir_action_set_visible (view, "Restore From Trash", FALSE);
+        dir_action_set_visible (view, "Trash", TRUE);
+    }
+}
 
 static gboolean
 fm_directory_view_motion_notify_event (GtkWidget         *widget,
@@ -1621,7 +1688,6 @@ fm_directory_view_context_menu (FMDirectoryView *view,
     g_object_unref (G_OBJECT (view));
 }
 
-
 static void
 fm_directory_view_parent_set (GtkWidget *widget,
                               GtkWidget *old_parent)
@@ -1653,6 +1719,7 @@ fm_directory_view_parent_set (GtkWidget *widget,
                 MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot) {
                 fm_directory_view_merge_menus (view);
                 view->details->active = TRUE;
+                update_menus_empty_selection (view);
                 //schedule_update_menus (view);
             }
         }
@@ -2138,12 +2205,22 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
     klass->delete = real_delete;
 }
 
+/* TODO maybe pass the entire selection in the signal */
 void
 fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFile *file)
 {
-    view->details->selection_was_removed = FALSE;
+    GList *selection;
 
+    view->details->selection_was_removed = FALSE;
     g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", file);
+
+    selection = fm_directory_view_get_selection (view);
+    if (selection != NULL) {
+        update_menus_selection (view);
+    } else {
+        update_menus_empty_selection (view);
+    }
+
 }
 
 

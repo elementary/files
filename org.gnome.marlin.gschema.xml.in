@@ -55,7 +55,7 @@
       </_description>
     </key>
     <key name="single-click-timeout" type="i">
-      <default>320</default>
+      <default>290</default>
       <range min="50" max="1000" />
       <summary>single click timeout</summary>
       <description>

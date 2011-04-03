@@ -1087,6 +1087,8 @@ GOFFile* gof_file_get (GFile *location)
         //printf (">>>>reuse file\n");
         g_object_ref (file);
     } else {
+        //amtest
+        printf ("!!!!!!!!!!!!file_query_info %s\n", g_file_get_uri (location));
         file_info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
                                        //G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, &err);
                                        0, NULL, &err);
