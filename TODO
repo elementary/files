@@ -12,4 +12,9 @@ This is a short TODO list.
 - files operations must implement an undo/redo mechanism.
 - use app indicator for showing the progress operation window.
 - do the usual filecheck on files without extension of find a way that textfiles don't get detected as octet-stream
+- store typechecks in db together with last edited date
+- deselecting all items should set info panel to the folder info
+- interface for tagging system, an easy way to tag a file in the preview panel
+- dual panel mode (like nautilus F3)
 ...
+
