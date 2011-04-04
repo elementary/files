@@ -77,8 +77,7 @@ namespace Marlin.View {
 
         public void update(GOF.File? gof_file){
             if(gof_file == null){
-                hide();
-                return;
+                gof_file = window.current_tab.slot.directory.file;
             }
 
             var file_info = gof_file.info;
