@@ -266,6 +266,8 @@ void gof_file_update (GOFFile *file)
         file->formated_type = g_content_type_get_description (file->ftype);
     }
     file->color = NULL;
+
+    gof_file_update_trash_info (file);
 }
 
 void gof_file_update_icon (GOFFile *file, gint size)
