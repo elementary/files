@@ -29,7 +29,7 @@ namespace Marlin.View {
     {
         public static int width{
             get{
-                return 180;
+                return 170;
             }
         }
 
@@ -43,7 +43,7 @@ namespace Marlin.View {
 
         private Image image;
         private EventBox information_wrap;
-        private Table information;
+        private VBox information;
         private Label label;
 
         public ContextView(Window window, bool should_sync) {
@@ -107,41 +107,37 @@ namespace Marlin.View {
         }
 
         private void update_info_list(List<Pair<string, string>> item_info){
-            int spacing = 10;
-
             if (information != null)
                 box.remove(information);
 
-            information = new Table (item_info.length(), 2, false);
-            information.set_col_spacings (spacing);
-            information.set_row_spacings (3);
+            information = new VBox (false, 2);
 
             int n = 0;
             item_info.foreach((pair) => {
+                var hbox = new HBox (true, 10);
+
                 var key_alignment = new Alignment(1f, 0f, 0f, 0f);
                 var key_label = new Label(((Pair<string, string>) pair).key);
                 key_label.set_state(StateType.INSENSITIVE);
                 key_label.set_justify(Justification.RIGHT);
-                key_label.set_single_line_mode(false);
-                key_label.set_line_wrap(true);
-                key_label.set_line_wrap_mode(Pango.WrapMode.CHAR);
+                //key_label.set_single_line_mode(false);
+                //key_label.set_line_wrap(true);
+                //key_label.set_line_wrap_mode(Pango.WrapMode.CHAR);
                 key_alignment.add(key_label);
-
-                information.attach_defaults (key_alignment, 0, 1, 0+n, 1+n);
-
+                hbox.pack_start(key_alignment, true, true, 0);
+                
                 var value_alignment = new Alignment(0f, 0f, 0f, 0f);
                 var value_label = new Label(((Pair<string, string>) pair).value);
-                value_label.set_line_wrap(true);
-                value_label.set_single_line_mode(false);
+                value_label.ellipsize = Pango.EllipsizeMode.MIDDLE;
                 value_label.set_justify(Justification.LEFT);
-                value_label.set_line_wrap_mode(Pango.WrapMode.CHAR);
                 value_alignment.add(value_label);
+                hbox.pack_start(value_alignment, true, true, 0);
+                information.pack_start(hbox, true, true, 0);
 
-                information.attach_defaults (value_alignment, 1, 2, 0+n, 1+n);
                 n++;
             });
 
-            box.pack_start(information, false, false);
+            box.pack_start(information, true, true);
             information.show_all();
         }
     }
