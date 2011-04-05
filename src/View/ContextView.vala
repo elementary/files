@@ -29,7 +29,7 @@ namespace Marlin.View {
     {
         public static int width{
             get{
-                return 170;
+                return 210;
             }
         }
 
@@ -65,6 +65,7 @@ namespace Marlin.View {
             font_style.set_size(14 * 1000);
             label.modify_font(font_style);
             label.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            label.set_padding(10, -1);
             box.pack_start(label, false, false);
 
             box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
@@ -88,7 +89,7 @@ namespace Marlin.View {
 
             /* TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
                we are in listview: size, type, modified */
-            //info.append(new Pair<string, string>("Name", gof_file.name));
+            info.append(new Pair<string, string>("Name", gof_file.name));
             info.append(new Pair<string, string>("Type", gof_file.formated_type));
 
             if (file_info.get_is_symlink())
@@ -110,28 +111,30 @@ namespace Marlin.View {
             if (information != null)
                 box.remove(information);
 
-            information = new VBox (false, 2);
+            information = new VBox (false, 6);
 
             int n = 0;
             item_info.foreach((pair) => {
                 var hbox = new HBox (true, 10);
 
-                var key_alignment = new Alignment(1f, 0f, 0f, 0f);
                 var key_label = new Label(((Pair<string, string>) pair).key);
                 key_label.set_state(StateType.INSENSITIVE);
+                key_label.set_size_request((width-10)/2, -1);
                 key_label.set_justify(Justification.RIGHT);
-                //key_label.set_single_line_mode(false);
-                //key_label.set_line_wrap(true);
-                //key_label.set_line_wrap_mode(Pango.WrapMode.CHAR);
-                key_alignment.add(key_label);
-                hbox.pack_start(key_alignment, true, true, 0);
-                
-                var value_alignment = new Alignment(0f, 0f, 0f, 0f);
+                key_label.size_allocate.connect((l, s) => l.set_size_request(s.width +1, -1));
+                key_label.set_alignment(1, 0);
+
+                hbox.pack_start(key_label, true, true, 0);
+
                 var value_label = new Label(((Pair<string, string>) pair).value);
-                value_label.ellipsize = Pango.EllipsizeMode.MIDDLE;
+                value_label.set_alignment(0, 0);
+                value_label.set_size_request((width-10)/2, -1);
+                value_label.size_allocate.connect((l, s) => l.set_size_request(s.width +1, -1));
+                value_label.wrap = true;
+                value_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
                 value_label.set_justify(Justification.LEFT);
-                value_alignment.add(value_label);
-                hbox.pack_start(value_alignment, true, true, 0);
+
+                hbox.pack_start(value_label, true, true, 0);
                 information.pack_start(hbox, true, true, 0);
 
                 n++;
