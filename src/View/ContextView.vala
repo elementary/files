@@ -29,7 +29,7 @@ namespace Marlin.View {
     {
         public static int width{
             get{
-                return 210;
+                return 180;
             }
         }
 
@@ -97,7 +97,8 @@ namespace Marlin.View {
             if(raw_type != FileType.DIRECTORY)
                 info.append(new Pair<string, string>("Size", gof_file.format_size));
             /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
-            info.append(new Pair<string, string>("Modified", gof_file.formated_modified.replace(" ", "\n")));
+            //info.append(new Pair<string, string>("Modified", gof_file.formated_modified.replace(" ", "\n")));
+            info.append(new Pair<string, string>("Modified", gof_file.formated_modified));
             info.append(new Pair<string, string>("Owner", file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
 
             label.label = gof_file.name;
