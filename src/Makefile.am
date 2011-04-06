@@ -90,7 +90,6 @@ marlin_CSOURCES = \
     fm-directory-view.c                     \
     exo-tree-view.c                         \
     fm-list-model.c                         \
-    fm-icon-view.c                          \
     fm-list-view.c                          \
     fm-columns-view.c                       \
     nautilus-cell-renderer-text-ellipsized.c\
