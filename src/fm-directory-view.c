@@ -66,7 +66,7 @@ enum {
     LAST_SIGNAL
 };
 
-enum 
+enum
 {
     PROP_0,
     PROP_WINDOW_SLOT
@@ -314,7 +314,7 @@ file_loaded_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryVi
 {
     printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
     gof_file_update_icon (file, 16);
-    g_signal_emit (view, signals[ADD_FILE], 0, file, directory); 
+    g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
     //g_idle_add ((GSourceFunc) file_load_icon, file);
 }
 
@@ -443,13 +443,13 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details = g_new0 (FMDirectoryViewDetails, 1);
     view->details->drag_scroll_timer_id = -1;
     view->details->drag_timer_id = -1;
-    
+
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (view),
                                     GTK_POLICY_AUTOMATIC,
                                     GTK_POLICY_AUTOMATIC);
     gtk_scrolled_window_set_hadjustment (GTK_SCROLLED_WINDOW (view), NULL);
     gtk_scrolled_window_set_vadjustment (GTK_SCROLLED_WINDOW (view), NULL);
-    /* amtest: i am not sure i want a shadow here or only when no tabs */ 
+    /* amtest: i am not sure i want a shadow here or only when no tabs */
     //gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (view), GTK_SHADOW_IN);
     //gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (view), GTK_SHADOW_NONE);
 
@@ -481,7 +481,7 @@ fm_directory_view_init (FMDirectoryView *view)
       image_display_policy_changed_callback, view);
       eel_preferences_add_callback (NAUTILUS_PREFERENCES_CLICK_POLICY,
       click_policy_changed_callback, view);
-      eel_preferences_add_callback (NAUTILUS_PREFERENCES_SORT_DIRECTORIES_FIRST, 
+      eel_preferences_add_callback (NAUTILUS_PREFERENCES_SORT_DIRECTORIES_FIRST,
       sort_directories_first_changed_callback, view);
       eel_preferences_add_callback (NAUTILUS_PREFERENCES_LOCKDOWN_COMMAND_LINE,
       lockdown_disable_command_line_changed_callback, view);*/
@@ -643,7 +643,7 @@ fm_directory_view_finalize (GObject *object)
 
     /*if (slot != NULL)
         g_object_unref (slot);*/
-   
+
     g_free (view->details);
 
     EEL_CALL_PARENT (G_OBJECT_CLASS, finalize, (object));
@@ -660,7 +660,7 @@ fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location)
 void
 fm_directory_view_column_add_preview (FMDirectoryView *dview, GOFFile *file)
 {
-    MarlinViewContextView *contextview = marlin_view_context_view_new (MARLIN_VIEW_WINDOW (dview->details->window), FALSE);
+    MarlinViewContextView *contextview = marlin_view_context_view_new (MARLIN_VIEW_WINDOW (dview->details->window), FALSE, GTK_ORIENTATION_VERTICAL);
     marlin_view_context_view_update (contextview, file);
     /* resize context view to match the default columns size 180+2 border px */
     gtk_widget_set_size_request (GTK_WIDGET (contextview), 182, -1);
@@ -710,8 +710,8 @@ fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, Gd
     if (file->is_directory) {
         fm_directory_view_load_location (view, file->location);
     } else {
-        //gof_gnome_open_single_file (file, screen); 
-        gof_file_open_single (file, screen); 
+        //gof_gnome_open_single_file (file, screen);
+        gof_file_open_single (file, screen);
     }
 }
 
@@ -1016,7 +1016,7 @@ fm_directory_view_drag_drop (GtkWidget          *widget,
                 if (G_LIKELY (*prop_text != '\0' && strchr ((const gchar *) prop_text, G_DIR_SEPARATOR) == NULL))
                 {
                     /* allocate the relative path for the target */
-                    path = g_file_resolve_relative_path (thunar_file_get_file (file), 
+                    path = g_file_resolve_relative_path (thunar_file_get_file (file),
                                                          (const gchar *)prop_text);
 
                     /* determine the new URI */
@@ -1237,10 +1237,10 @@ fm_directory_view_drag_data_received (GtkWidget          *widget,
                 if (G_LIKELY (action != 0))
                 {
                     printf ("%s perform action %d\n", G_STRFUNC, action);
-                    succeed = marlin_dnd_perform (GTK_WIDGET (view), 
-                                                  file, 
+                    succeed = marlin_dnd_perform (GTK_WIDGET (view),
+                                                  file,
                                                   view->details->drop_file_list,
-                                                  action, 
+                                                  action,
                                                   NULL);
                     //fm_directory_view_new_files_closure (view));
                 }
@@ -1322,14 +1322,14 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
 
             /* check if we can save here */
             //TODO
-            /*if (G_LIKELY (file != NULL 
-              && thunar_file_is_local (file) 
-              && thunar_file_is_directory (file) 
+            /*if (G_LIKELY (file != NULL
+              && thunar_file_is_local (file)
+              && thunar_file_is_directory (file)
               && thunar_file_is_writable (file)))
               {
               action = gdk_drag_context_get_suggested_action (context);
               }*/
-            if (G_LIKELY (file != NULL && file->is_directory 
+            if (G_LIKELY (file != NULL && file->is_directory
                           && gof_file_is_writable (file))) {
                 printf ("%s get_suggested_action for file = directory\n", file->name);
                 action = gdk_drag_context_get_suggested_action (context);
@@ -1385,9 +1385,9 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
     {
         view->details->drag_context = context;
         /* schedule the drag autoscroll timer */
-        view->details->drag_scroll_timer_id = g_timeout_add_full (G_PRIORITY_LOW, 50, 
+        view->details->drag_scroll_timer_id = g_timeout_add_full (G_PRIORITY_LOW, 50,
                                                                   fm_directory_view_drag_scroll_timer,
-                                                                  view, 
+                                                                  view,
                                                                   fm_directory_view_drag_scroll_timer_destroy);
     }
 
@@ -1530,16 +1530,16 @@ update_menus_empty_selection (FMDirectoryView *view)
     GtkAction *action;
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
-   
+
     dir_action_set_sensitive (view, "Cut", FALSE);
     dir_action_set_sensitive (view, "Copy", FALSE);
     dir_action_set_sensitive (view, "Rename", FALSE);
-    
+
     GOFWindowSlot *slot = view->details->slot;
 
-    if (gof_file_is_trashed (slot->directory->file)) 
+    if (gof_file_is_trashed (slot->directory->file))
         dir_action_set_visible (view, "New Folder", FALSE);
-    else 
+    else
         dir_action_set_visible (view, "New Folder", TRUE);
 }
 
@@ -1653,15 +1653,15 @@ fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event)
         g_object_get (G_OBJECT (settings), "gtk-menu-popup-delay", &delay, NULL);
 
         /* schedule the timer */
-        view->details->drag_timer_id = g_timeout_add_full (G_PRIORITY_LOW, delay, 
+        view->details->drag_timer_id = g_timeout_add_full (G_PRIORITY_LOW, delay,
                                                            fm_directory_view_drag_timer,
-                                                           view, 
+                                                           view,
                                                            fm_directory_view_drag_timer_destroy);
 
         /* register the motion notify and the button release events on the real view */
-        g_signal_connect (G_OBJECT (view_box), "button-release-event", 
+        g_signal_connect (G_OBJECT (view_box), "button-release-event",
                           G_CALLBACK (fm_directory_view_button_release_event), view);
-        g_signal_connect (G_OBJECT (view_box), "motion-notify-event", 
+        g_signal_connect (G_OBJECT (view_box), "motion-notify-event",
                           G_CALLBACK (fm_directory_view_motion_notify_event), view);
     }
 }
@@ -1681,7 +1681,7 @@ fm_directory_view_context_menu (FMDirectoryView *view,
     //thunar_standard_view_merge_custom_actions (standard_view, selected_items);
     /*g_list_foreach (selected_items, (GFunc) gtk_tree_path_free, NULL);
     g_list_free (selected_items);*/
-   
+
     /* grab an additional reference on the view */
     g_object_ref (G_OBJECT (view));
 
@@ -1689,7 +1689,7 @@ fm_directory_view_context_menu (FMDirectoryView *view,
     /* run the menu on the view's screen (figuring out whether to use the file or the folder context menu) */
     menu = gtk_ui_manager_get_widget (ui_manager, (selection != NULL) ? "/selection" : "/background");
     //thunar_gtk_menu_run (GTK_MENU (menu), GTK_WIDGET (standard_view), NULL, NULL, button, timestamp);
-    
+
     printf ("%s\n", G_STRFUNC);
     gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (view)));
 	gtk_widget_show (GTK_WIDGET (menu));
@@ -1726,12 +1726,12 @@ fm_directory_view_parent_set (GtkWidget *widget,
     if (parent != NULL) {
         g_assert (old_parent == NULL);
         g_assert (view->details->slot);
-       
+
         if (MARLIN_VIEW_WINDOW (view->details->window)->current_tab)
         {
             /*printf ("active_slot %s\n", g_file_get_uri(MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot->location));
               printf ("view_details slot %s\n", g_file_get_uri(view->details->slot->location));*/
-            if (view->details->slot == 
+            if (view->details->slot ==
                 MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot) {
                 fm_directory_view_merge_menus (view);
                 view->details->active = TRUE;
@@ -1843,13 +1843,13 @@ trash_or_delete_files (FMDirectoryView *view,
 {
 	GList *locations;
 	const GList *node;
-	
+
 	locations = NULL;
 	for (node = files; node != NULL; node = node->next) {
 		locations = g_list_prepend (locations,
 					    g_object_ref (((GOFFile *) node->data)->location));
 	}
-	
+
 	locations = g_list_reverse (locations);
 
 	marlin_file_operations_trash_or_delete (locations,
@@ -2242,7 +2242,7 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFile *file
 
 /**
  * fm_directory_view_merge_menus:
- * 
+ *
  * Add this view's menus to the window's menu bar.
  * @view: FMDirectoryView in question.
  */
@@ -2378,7 +2378,7 @@ static void
 new_folder_done (GFile *new_folder, gpointer data)
 {
     g_assert (FM_IS_DIRECTORY_VIEW (data));
- 
+
     FMDirectoryView *view = FM_DIRECTORY_VIEW (data);
     GOFFile *file = gof_file_get (new_folder);
 
@@ -2393,9 +2393,9 @@ new_folder_done (GFile *new_folder, gpointer data)
 
 static void
 action_new_folder_callback (GtkAction *action, gpointer data)
-{                
+{
     g_assert (FM_IS_DIRECTORY_VIEW (data));
- 
+
     FMDirectoryView *view = FM_DIRECTORY_VIEW (data);
 
     //data = new_folder_data_new (view);
@@ -2427,7 +2427,7 @@ action_properties_callback (GtkAction *action, gpointer data)
     FMDirectoryView *view;
     GList *selection;
     GList *files;
-        
+
     g_assert (FM_DIRECTORY_IS_VIEW (callback_data));
 
     view = FM_DIRECTORY_VIEW (callback_data);
@@ -2532,7 +2532,7 @@ real_merge_menus (FMDirectoryView *view)
     action_group = gtk_action_group_new ("DirViewActions");
     //gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
     view->details->dir_action_group = action_group;
-    gtk_action_group_add_actions (action_group, 
+    gtk_action_group_add_actions (action_group,
                                   directory_view_entries, G_N_ELEMENTS (directory_view_entries),
                                   view);
 
@@ -2564,3 +2564,4 @@ real_merge_menus (FMDirectoryView *view)
     //view->details->scripts_invalid = TRUE;
     //view->details->templates_invalid = TRUE;
 }
+

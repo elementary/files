@@ -57,7 +57,7 @@ namespace Marlin.View {
         private Gee.List<Pair<string, string>> info;
 
         private Orientation _orientation = Orientation.HORIZONTAL;
-        private Orientation orientation{
+        public Orientation orientation{
             set{
                 _orientation = value;
                 update_info_panel();
@@ -67,8 +67,23 @@ namespace Marlin.View {
             }
         }
 
-        public ContextView(Window window, bool should_sync) {
+        public Orientation parent_orientation{
+            set{
+                switch(value){
+                    case(Orientation.HORIZONTAL):
+                        orientation = orientation.VERTICAL;
+                        break;
+                    case(Orientation.VERTICAL):
+                    default:
+                        orientation = orientation.HORIZONTAL;
+                        break;
+                }
+            }
+        }
+
+        public ContextView(Window window, bool should_sync, Orientation initialOrientation = Orientation.VERTICAL) {
             this.window = window;
+            _orientation = initialOrientation;
 
             if (should_sync)
                 window.selection_changed.connect(update);
@@ -84,8 +99,6 @@ namespace Marlin.View {
             image.set_size_request(-1, 128+24);
 
             info = new LinkedList<Pair<string, string>>();
-
-            update_info_panel();
         }
 
         public void update(GOF.File? gof_file){
@@ -140,7 +153,7 @@ namespace Marlin.View {
             box.pack_start(value_label, true, true, 0);
         }
 
-        private void update_info_panel(){
+        public void update_info_panel(){
             if(orientation == Orientation.HORIZONTAL)
                 construct_info_panel_horizontal(info);
             else
@@ -153,20 +166,25 @@ namespace Marlin.View {
             var alignment = new Gtk.Alignment(0.5f, 0.381966f, 0, 0); // Yes that is 1 - 1/golden_ratio, in doublt always golden ratio
             var box = new VBox(false, 4);
 
+            image.parent.remove(image);
+            image.xpad = 0;
+            image.queue_resize();
             box.pack_start(image, false, false);
-            image.reparent(box);
+            label.parent.remove(label);
             box.pack_start(label, false, false);
-            label.reparent(box);
             box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
 
             var information = new VBox (false, key_value_padding);
 
             int n = 0;
             foreach(var pair in item_info){
-                var key_value_pair = new HBox (true, key_value_padding);
+                var key_value_pair = new HBox (false, key_value_padding);
                 populate_key_value_pair(key_value_pair, pair);
 
-                information.pack_start(key_value_pair, true, true, 0);
+                var alignment_ = new Gtk.Alignment(0, 0, 0, 0);
+                alignment_.add(key_value_pair);
+
+                information.pack_start(alignment_, true, true, 0);
 
                 n++;
             }
@@ -185,9 +203,9 @@ namespace Marlin.View {
             var box = new HBox(false, 0);
 
             var alignment_img = new Gtk.Alignment(0, 0.5f, 0, 0);
+            image.parent.remove(image);
             alignment_img.add(image);
-            image.reparent(alignment_img);
-            image.xpad = 36;
+            image.xpad = 36; // FIXME: Make this nice and logical instead of silly and arbitrary
 
             box.pack_start(alignment_img, false, false);
 
