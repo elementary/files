@@ -1558,6 +1558,14 @@ update_menus_selection (FMDirectoryView *view)
     dir_action_set_sensitive (view, "Copy", TRUE);
     dir_action_set_sensitive (view, "Rename", TRUE);
 
+    /* got more than one element in selection */
+    if (selection->next == NULL && file->is_directory
+        && marlin_clipboard_manager_get_can_paste (view->clipboard)) {
+        dir_action_set_sensitive (view, "Paste", TRUE);
+    } else {
+        dir_action_set_sensitive (view, "Paste", FALSE);
+    }
+
     if (gof_file_is_trashed(file)) {
         dir_action_set_visible (view, "Restore From Trash", TRUE);
         dir_action_set_visible (view, "Trash", FALSE);
