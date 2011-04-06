@@ -112,7 +112,7 @@ namespace Marlin.View {
         }
 
         public void change_view(int nview, GLib.File? location){
-            if (location == null) 
+            if (location == null)
                 location = slot.location;
             view_mode = nview;
             if (window.top_menu.view_switcher != null)
@@ -149,8 +149,8 @@ namespace Marlin.View {
                 }
                 break;
             default:
-                if (window.contextview == null && 
-                    ((Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane")).get_active()) 
+                if (window.contextview == null &&
+                    ((Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane")).get_active())
                 {
                     window.contextview = new ContextView(window, true);
                     window.main_box.pack2(window.contextview, false, true);

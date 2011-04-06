@@ -38,7 +38,7 @@ namespace Marlin.View {
         public IconSize isize128;
 
         public ViewContainer? current_tab;
-        public HCollapsablePaned main_box;
+        public CollapsablePaned main_box;
         public ContextView contextview;
 
         public Gtk.ActionGroup main_actions;
@@ -143,7 +143,7 @@ namespace Marlin.View {
             sidebar.set_size_request(Preferences.settings.get_int("sidebar-width"), -1);
 
             /* Devide main views into sidebars */
-            main_box = new HCollapsablePaned();
+            main_box = new CollapsablePaned(Orientation.VERTICAL);
             main_box.show();
 
             var lside_pane = new HCollapsablePaned();
@@ -177,7 +177,7 @@ namespace Marlin.View {
             set_initial_geometry_from_string (this, geometry, 300, 100, false);
             if (Preferences.settings.get_boolean("maximized")) {
                 maximize();
-            } 
+            }
             title = Resources.APP_TITLE;
             //this.icon = DrawingService.GetIcon("system-file-manager", 32);
             show();
@@ -255,7 +255,7 @@ namespace Marlin.View {
             }
             if (old_tab != null) {
                 old_tab.slot.inactive();
-            } 
+            }
 
             if (current_tab != null && current_tab.slot != null) {
                 current_tab.slot.active();
@@ -350,10 +350,10 @@ namespace Marlin.View {
 
             var geometry = get_geometry_string (this);
             bool is_maximized = get_window().get_state() == Gdk.WindowState.MAXIMIZED;
-            if (is_maximized == false) 
+            if (is_maximized == false)
                 Preferences.settings.set_string("geometry", geometry);
             Preferences.settings.set_boolean("maximized", is_maximized);
-            
+
             Preferences.settings.set_boolean("start-with-contextview",
                 ((Gtk.ToggleAction) main_actions.get_action("Show Hide Context Pane")).get_active());
         }
@@ -506,7 +506,7 @@ namespace Marlin.View {
   /* name, stock id */         { "Show Hide Menubar", null,
   /* label, accelerator */       N_("_Menubar"), "F8",
   /* tooltip */                  N_("Change the visibility of this window's menubar"),
-                                 action_show_hide_menubar, 
+                                 action_show_hide_menubar,
   /* is_active */                true },
   /* name, stock id */         { "Show Hide Sidebar", null,
   /* label, accelerator */       N_("_Side Pane"), "F9",
