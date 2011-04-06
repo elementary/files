@@ -152,7 +152,7 @@ namespace Marlin.View {
                 if (window.contextview == null &&
                     ((Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane")).get_active())
                 {
-                    window.contextview = new ContextView(window, true);
+                    window.contextview = new ContextView(window, true, window.main_box.orientation);
                     window.main_box.notify.connect((prop) => {
                         if(prop.name == "orientation")
                             window.contextview.parent_orientation = window.main_box.orientation;

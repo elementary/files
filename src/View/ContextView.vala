@@ -71,21 +71,23 @@ namespace Marlin.View {
 
         public Orientation parent_orientation{
             set{
-                switch(value){
-                    case(Orientation.HORIZONTAL):
-                        orientation = orientation.VERTICAL;
-                        break;
-                    case(Orientation.VERTICAL):
-                    default:
-                        orientation = orientation.HORIZONTAL;
-                        break;
-                }
+                orientation = convert_parent_orientation(value);
             }
         }
 
-        public ContextView(Window window, bool should_sync, Orientation initialOrientation = Orientation.VERTICAL) {
+        private Orientation convert_parent_orientation(Orientation o){
+            switch(o){
+                case(Orientation.HORIZONTAL):
+                    return orientation.VERTICAL;
+                case(Orientation.VERTICAL):
+                default:
+                    return orientation.HORIZONTAL;
+            }
+        }
+
+        public ContextView(Window window, bool should_sync, Orientation parent_orientation = Orientation.VERTICAL) {
             this.window = window;
-            _orientation = initialOrientation;
+            _orientation = convert_parent_orientation(parent_orientation);
 
             if (should_sync)
                 window.selection_changed.connect(update);
@@ -113,7 +115,7 @@ namespace Marlin.View {
             var file_info = gof_file.info;
             var icon_size_request = 96;
             if(orientation == Orientation.HORIZONTAL){
-                icon_size_request = 64;
+                icon_size_request = 42;
             }
 
             Nautilus.IconInfo icon_info = Nautilus.IconInfo.lookup(gof_file.icon, icon_size_request);
@@ -132,7 +134,7 @@ namespace Marlin.View {
             if(raw_type != FileType.DIRECTORY)
                 info.add(new Pair<string, string>("Size", gof_file.format_size));
             /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
-            info.add(new Pair<string, string>("Modified", gof_file.formated_modified.replace(" ", "\n")));
+            info.add(new Pair<string, string>("Modified", gof_file.formated_modified));
             info.add(new Pair<string, string>("Owner", file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
 
             label.label = gof_file.name;
@@ -212,7 +214,7 @@ namespace Marlin.View {
             var box = new HBox(false, 0);
 
             var alignment_img = new Gtk.Alignment(0, 0.5f, 0, 0);
-            alignment_img.set_padding(16, 16, 16+8, 0); // TODO: change this is something more concrete
+            alignment_img.set_padding(2, 8, 4, 0); // TODO: change this is something more concrete
             image.parent.remove(image);
             alignment_img.add(image);
 
@@ -237,12 +239,13 @@ namespace Marlin.View {
                 var alignment = new Gtk.Alignment(0, 0, 0, 0);
                 alignment.add(key_value_pair);
 
-                table.attach(alignment, column, column+1, row, row+1, AttachOptions.FILL, AttachOptions.FILL, key_value_padding/2, key_value_padding/2);
+                table.attach(alignment, column, column+1, row, row+1, AttachOptions.FILL, AttachOptions.FILL, key_value_padding/2, key_value_padding/4);
 
                 n++;
             }
 
             var alignment = new Gtk.Alignment(0, 0.5f, 0, 0);
+            alignment.set_padding(0, 4, 0, 0);
             alignment.add(table);
 
             box.pack_start(alignment, true, true);

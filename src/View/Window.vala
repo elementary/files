@@ -91,11 +91,11 @@ namespace Marlin.View {
 
         public Window ()
         {
-            Timeout.add(6*1000, () => { Log.println(Log.Level.DEBUG, "To horizontal"); main_box.orientation = Orientation.VERTICAL; return true; });
-            Timeout.add(3*1000, () => {
-                Timeout.add(6*1000, () => { Log.println(Log.Level.DEBUG, "To vertical"); main_box.orientation = Orientation.HORIZONTAL; return true; });
-                return false;
-            });
+            //Timeout.add(6*1000, () => { Log.println(Log.Level.DEBUG, "To horizontal"); main_box.orientation = Orientation.VERTICAL; return true; });
+            //Timeout.add(3*1000, () => {
+            //    Timeout.add(6*1000, () => { Log.println(Log.Level.DEBUG, "To vertical"); main_box.orientation = Orientation.HORIZONTAL; return true; });
+            //    return false;
+            //});
 
             ui = new UIManager();
 
@@ -149,7 +149,7 @@ namespace Marlin.View {
             sidebar.set_size_request(Preferences.settings.get_int("sidebar-width"), -1);
 
             /* Devide main views into sidebars */
-            main_box = new CollapsablePaned(Orientation.HORIZONTAL);
+            main_box = new CollapsablePaned(Orientation.VERTICAL);
             main_box.show();
 
             var lside_pane = new HCollapsablePaned();
