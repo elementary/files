@@ -32,6 +32,7 @@ struct GOFDirectoryAsyncPrivate {
     //FMListModel     *model;
     GCancellable    *cancellable;
     GCancellable    *directory_info_cancellable;
+    gboolean        show_hiddenfiles;
 };
 
 enum {
@@ -130,6 +131,8 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
         } else {
             if (dir->hidden_file_hash != NULL)
                 g_hash_table_insert (dir->hidden_file_hash, g_object_ref (goff->location), goff);
+            if (dir->priv->show_hiddenfiles)
+                g_signal_emit (dir, signals[FILE_LOADED], 0, goff);
         }
     }
 
@@ -433,6 +436,7 @@ gof_directory_async_init (GOFDirectoryAsync *self)
     self->priv = g_new0(GOFDirectoryAsyncPrivate, 1);
     self->loading = FALSE;
     self->loaded = FALSE;
+    self->priv->show_hiddenfiles = g_settings_get_boolean (settings, "show-hiddenfiles");
 }
 
 static void

@@ -288,6 +288,8 @@ void gof_file_update_icon (GOFFile *file, gint size)
     } else {
         nicon = nautilus_icon_info_lookup (file->icon, size);
     }
+    /* destroy pixbuff if already present */
+    _g_object_unref0 (file->pix);
     file->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
     g_object_unref (nicon);
 }

@@ -46,6 +46,8 @@
 #include "eel-ui.h"
 #include "eel-gio-extensions.h"
 #include "eel-gtk-extensions.h"
+#include "marlin-global-preferences.h" 
+
 
 enum {
     ADD_FILE,
@@ -294,6 +296,14 @@ fm_directory_view_load_file_hash (GOFDirectoryAsync *dir, FMDirectoryView *view)
     g_hash_table_iter_init (&iter, dir->file_hash);
     while (g_hash_table_iter_next (&iter, (gpointer) &location, (gpointer) &file)) {
         g_signal_emit (view, signals[ADD_FILE], 0, file, dir);
+    }
+    
+    if (g_settings_get_boolean (settings, "show-hiddenfiles")) {
+        g_hash_table_iter_init (&iter, dir->hidden_file_hash);
+        while (g_hash_table_iter_next (&iter, (gpointer) &location, (gpointer) &file)) {
+            gof_file_update_icon (file, 16);
+            g_signal_emit (view, signals[ADD_FILE], 0, file, dir);
+        }
     }
 }
 

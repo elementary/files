@@ -64,6 +64,8 @@ namespace Marlin.View {
 
         //public signal void refresh();
         public signal void selection_changed(GOF.File? gof_file);
+        
+        public signal void reload_tabs();
 
         public void update_action_radio_view(int n) {
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
@@ -383,9 +385,10 @@ namespace Marlin.View {
         }
 
         private void action_show_hidden_files (Gtk.Action action) {
-            /* simply reload the view as show-hiddenfiles is a binded settings*/
-            if (current_tab != null)
-                current_tab.reload();
+            /*if (current_tab != null)
+                current_tab.reload();*/
+            /* simply reload the views as show-hiddenfiles is a binded settings */
+            this.reload_tabs();
         }
 
         private void action_show_hide_contextview (Gtk.Action action) {

@@ -76,6 +76,7 @@ namespace Marlin.View {
                 change_view(view_mode, File.new_for_commandline_arg(browser.go_forward()));
                 update_location_state(false);
             });
+            win.reload_tabs.connect(() => { reload(); });
         }
 
         public Widget content{
