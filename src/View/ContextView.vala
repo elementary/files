@@ -167,8 +167,6 @@ namespace Marlin.View {
             var box = new VBox(false, 4);
 
             image.parent.remove(image);
-            image.xpad = 0;
-            image.queue_resize();
             box.pack_start(image, false, false);
             label.parent.remove(label);
             box.pack_start(label, false, false);
@@ -203,9 +201,9 @@ namespace Marlin.View {
             var box = new HBox(false, 0);
 
             var alignment_img = new Gtk.Alignment(0, 0.5f, 0, 0);
+            alignment_img.set_padding(0, 0, 36, 0); // TODO: change this is something more concrete
             image.parent.remove(image);
             alignment_img.add(image);
-            image.xpad = 36; // FIXME: Make this nice and logical instead of silly and arbitrary
 
             box.pack_start(alignment_img, false, false);
 
