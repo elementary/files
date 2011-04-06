@@ -28,7 +28,7 @@ using Gee;
 namespace Marlin.View {
     public class ContextView : Gtk.EventBox
     {
-        public const int height = 80;
+        public const int height = -1;
         public const int width = 190;
         public const int key_value_padding = 8;
         public const int key_value_width = 90;
@@ -56,11 +56,13 @@ namespace Marlin.View {
         private Label label;
         private Gee.List<Pair<string, string>> info;
 
+        private GOF.File? last_geof_cache = null;
+
         private Orientation _orientation = Orientation.HORIZONTAL;
         public Orientation orientation{
             set{
                 _orientation = value;
-                update_info_panel();
+                update(last_geof_cache);
             }
             get{
                 return _orientation;
@@ -96,7 +98,7 @@ namespace Marlin.View {
             label.set_padding(key_value_padding, -1);
 
             image = new Image.from_stock(Stock.INFO, window.isize128);
-            image.set_size_request(-1, 128+24);
+            //image.set_size_request(-1, );
 
             info = new LinkedList<Pair<string, string>>();
         }
@@ -106,8 +108,15 @@ namespace Marlin.View {
                 gof_file = window.current_tab.slot.directory.file;
             }
 
+            last_geof_cache = gof_file;
+
             var file_info = gof_file.info;
-            Nautilus.IconInfo icon_info = Nautilus.IconInfo.lookup(gof_file.icon, 96);
+            var icon_size_request = 96;
+            if(orientation == Orientation.HORIZONTAL){
+                icon_size_request = 64;
+            }
+
+            Nautilus.IconInfo icon_info = Nautilus.IconInfo.lookup(gof_file.icon, icon_size_request);
             icon = icon_info.get_pixbuf_nodefault();
 
             info.clear();
@@ -132,7 +141,7 @@ namespace Marlin.View {
             show();
         }
 
-        private void populate_key_value_pair(Box box, Pair<string, string> pair){
+        private void populate_key_value_pair(Box box, Pair<string, string> pair, bool limit_width = false){
             var key_label = new Label(pair.key);
             key_label.set_state(StateType.INSENSITIVE);
             key_label.set_size_request((int) (key_value_width * 0.618033f), -1);
@@ -140,11 +149,12 @@ namespace Marlin.View {
             key_label.size_allocate.connect((l, s) => l.set_size_request(s.width, -1));
             key_label.set_alignment(1, 0);
 
-            box.pack_start(key_label, true, true, 0);
+            box.pack_start(key_label, false, true, 0);
 
             var value_label = new Label(((Pair<string, string>) pair).value);
             value_label.set_alignment(0, 0);
-            value_label.set_size_request(key_value_width, -1);
+            if(limit_width)
+                value_label.set_size_request(key_value_width, -1);
             value_label.size_allocate.connect((l, s) => l.set_size_request(s.width, -1));
             value_label.wrap = true;
             value_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
@@ -177,7 +187,8 @@ namespace Marlin.View {
             int n = 0;
             foreach(var pair in item_info){
                 var key_value_pair = new HBox (false, key_value_padding);
-                populate_key_value_pair(key_value_pair, pair);
+                key_value_pair.set_size_request(key_value_width, -1);
+                populate_key_value_pair(key_value_pair, pair, true);
 
                 var alignment_ = new Gtk.Alignment(0, 0, 0, 0);
                 alignment_.add(key_value_pair);
@@ -201,7 +212,7 @@ namespace Marlin.View {
             var box = new HBox(false, 0);
 
             var alignment_img = new Gtk.Alignment(0, 0.5f, 0, 0);
-            alignment_img.set_padding(0, 0, 36, 0); // TODO: change this is something more concrete
+            alignment_img.set_padding(16, 16, 16+8, 0); // TODO: change this is something more concrete
             image.parent.remove(image);
             alignment_img.add(image);
 
@@ -220,6 +231,7 @@ namespace Marlin.View {
                 var row = n % 2;
 
                 var key_value_pair = new HBox (false, key_value_padding);
+                key_value_pair.set_size_request(key_value_width, -1);
                 populate_key_value_pair(key_value_pair, pair);
 
                 var alignment = new Gtk.Alignment(0, 0, 0, 0);
