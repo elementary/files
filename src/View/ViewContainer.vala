@@ -39,10 +39,42 @@ namespace Marlin.View {
         public signal void back();
         public signal void forward();
 
+        /**
+         * Go back or forward.
+         *
+         * @i the count of back or forward, if i is > 0, we will go i times
+         * back, otherwise, we will go i times forward.
+         *
+         **/
+        public void go_back_forward(int i)
+        {
+            if(i > 0)
+            {
+                string path = "";
+                for(int j = 0; j < i; j++)
+                {
+                    path = browser.go_back();
+                }
+                change_view(view_mode, File.new_for_commandline_arg(path));
+                update_location_state(false);
+            }
+
+            else if (i < 0)
+            {
+                string path = "";
+                for(int j = 0; j < -i; j++)
+                {
+                    path = browser.go_forward();
+                }
+                change_view(view_mode, File.new_for_commandline_arg(path));
+                update_location_state(false);
+            }
+        }
+
         public ViewContainer(Marlin.View.Window win, GLib.File location){
             window = win;
             /* set active tab */
-            browser = new Browser<string> ();
+            browser = new Browser<string> (go_back_forward);
             label = new Gtk.Label("Loading...");
             change_view (view_mode, location);
             label.set_ellipsize(Pango.EllipsizeMode.END);
@@ -177,6 +209,8 @@ namespace Marlin.View {
                 browser.record_uri(slot.directory.get_uri());
             window.can_go_back = browser.can_go_back();
             window.can_go_forward = browser.can_go_forward();
+            window.button_forward.menu = browser.forward_menu;
+            window.button_back.menu = browser.back_menu;
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
         }

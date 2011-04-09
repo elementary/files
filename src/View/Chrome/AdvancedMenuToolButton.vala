@@ -28,13 +28,29 @@ namespace Gtk {
 
         public signal void long_click();
         public signal void right_click();
-        public Menu menu;
+        private Menu menu_;
+        public Menu menu {
+            get { return menu_; }
+            set { menu_ = value; update_menu_properties(); }
+        }
 
         public AdvancedMenuToolButton.from_stock (string stock_image, IconSize size, string label, Menu menu)
         {
             Image image = new Image.from_stock(stock_image, size);
 
             this(image, label, menu);
+        }
+        
+        private void update_menu_properties()
+        {
+            if(menu_orientation == PositionType.RIGHT){
+                menu.set_size_request(menu_width, -1);
+            }
+            menu.attach_to_widget (this, null);
+            menu.deactivate.connect(() => {
+                //active = false;
+            });
+            menu.deactivate.connect(popdown_menu);
         }
 
         public AdvancedMenuToolButton (Image image, string label, Menu _menu, PositionType _menu_orientation = PositionType.LEFT)
@@ -47,16 +63,10 @@ namespace Gtk {
             can_focus = true;
 
             menu = _menu;
-            if(menu_orientation == PositionType.RIGHT){
-                menu.set_size_request(menu_width, -1);
-            }
-            menu.attach_to_widget (this, null);
-            menu.deactivate.connect(() => {
-                //active = false;
-            });
+            
+            update_menu_properties();
 
             mnemonic_activate.connect(on_mnemonic_activate);
-            menu.deactivate.connect(popdown_menu);
 
             button = (Button) get_child();
             button.events |= EventMask.BUTTON_PRESS_MASK

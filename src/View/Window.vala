@@ -43,6 +43,9 @@ namespace Marlin.View {
 
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
+        
+        public ToolButtonWithMenu button_forward;
+        public ToolButtonWithMenu button_back;
 
         public bool can_go_up{
             set{

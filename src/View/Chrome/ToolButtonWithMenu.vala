@@ -1,7 +1,7 @@
 using Gdk;
 
 namespace Gtk{
-    class ToolButtonWithMenu : AdvancedMenuToolButton, Activatable {
+    public class ToolButtonWithMenu : AdvancedMenuToolButton, Activatable {
         public ToolButtonWithMenu.from_action (Action action)
         {
             this.from_stock(action.stock_id, IconSize.MENU, action.label);
