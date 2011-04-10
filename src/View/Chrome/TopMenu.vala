@@ -91,14 +91,20 @@ namespace Marlin.View.Chrome
 
                 if (main_action != null)
                 {
-                    if (name == "Forward" || name == "Back"){
-                        item = new ToolButtonWithMenu.from_action(main_action);
-                        item.show_all();
+                    if (name == "Forward"){
+                        win.button_forward = new ToolButtonWithMenu.from_action(main_action);
+                        win.button_forward.show_all();
+                        insert(win.button_forward, -1);
+                    }
+                    else if ( name == "Back"){
+                        win.button_back = new ToolButtonWithMenu.from_action(main_action);
+                        win.button_back.show_all();
+                        insert(win.button_back, -1);
                     }else{
                         item = (ToolItem) main_action.create_tool_item();
+                        insert(item, -1);
                     }
 
-                    insert(item, -1);
                 }
             }
 

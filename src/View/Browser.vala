@@ -1,4 +1,3 @@
-/* -*- Mode: Vala; indent-tabs-mode: t; c-basic-offset: 8; tab-width: 8 -*- */
 /*
  * Copyright (C) 2010 ammonkey
  *
@@ -22,13 +21,17 @@ using Gee;
 
 namespace Marlin.View {
 
-    public class Browser<G> : GLib.Object
+    public class Browser : GLib.Object
     {
         private Stack<string> back_stack;
         private Stack<string> forward_stack;
 
         private string current_uri = null;
         private int history_list_length = 10;
+
+        /* The two menus which are displayed on the back/forward buttons */
+        public Gtk.Menu back_menu;
+        public Gtk.Menu forward_menu;
 
         public Browser ()
         {
@@ -63,16 +66,18 @@ namespace Marlin.View {
           stdout.printf ("bck|fwd: %d %d\n", back_stack.size(), forward_stack.size());
           }*/
 
-        public Gee.List go_back_list(){
+        public Gee.List<string> go_back_list(){
             return back_stack.slice_head(history_list_length);
         }
 
-        public Gee.List go_forward_list(){
+        public Gee.List<string> go_forward_list(){
             return forward_stack.slice_head(history_list_length);
         }
 
-        public string? go_back ()
+        public string? go_back (uint n = 1)
         {
+            Log.println(Log.Level.DEBUG, "[Browser] go back %i places", n);
+
             var uri = back_stack.pop();
             if (uri != null)
             {
@@ -81,13 +86,19 @@ namespace Marlin.View {
                     current_uri = uri;
                 }
                 //stdout.printf ("%% %s\n", uri);
-                return (uri);
             }
-            return null;
+
+            if(n <= 1){
+                return uri;
+            }else{
+                return go_back(n-1);
+            }
         }
 
-        public string? go_forward ()
+        public string? go_forward (uint n = 1)
         {
+            Log.println(Log.Level.DEBUG, "[Browser] go forward %i places", n);
+
             var uri = forward_stack.pop();
             if (uri != null)
             {
@@ -96,9 +107,13 @@ namespace Marlin.View {
                     current_uri = uri;
                 }
                 //stdout.printf ("%% %s\n", uri);
-                return (uri);
             }
-            return null;
+
+            if(n <= 1){
+                return uri;
+            }else{
+                return go_forward(n-1);
+            }
         }
 
         public bool can_go_back ()  {
@@ -154,7 +169,7 @@ namespace Marlin.View {
         }
 
         public Gee.List<G>? slice_head(int amount){
-            return list.slice(0, amount);
+            return list.slice(0, int.min(size(), amount));
         }
     }
 

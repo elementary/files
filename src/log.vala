@@ -33,7 +33,7 @@ public class Log : Object{
         Reset
     }
 
-    public static Level level = Level.UNDEFINED;
+    public static Level level = Level.DEBUG;
 
     public static void printf(Level lvl, string str, ...){
         if(!should_log(lvl))
