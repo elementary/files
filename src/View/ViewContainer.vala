@@ -30,51 +30,19 @@ namespace Marlin.View {
         private Marlin.View.Window window;
         public GOF.Window.Slot? slot;
         public Marlin.Window.Columns? mwcol;
-        Browser<string> browser;
+        Browser browser;
         public int view_mode = 0;
         private ulong file_info_callback;
 
         public signal void path_changed(File file);
         public signal void up();
-        public signal void back();
-        public signal void forward();
-
-        /**
-         * Go back or forward.
-         *
-         * @i the count of back or forward, if i is > 0, we will go i times
-         * back, otherwise, we will go i times forward.
-         *
-         **/
-        public void go_back_forward(int i)
-        {
-            if(i > 0)
-            {
-                string path = "";
-                for(int j = 0; j < i; j++)
-                {
-                    path = browser.go_back();
-                }
-                change_view(view_mode, File.new_for_commandline_arg(path));
-                update_location_state(false);
-            }
-
-            else if (i < 0)
-            {
-                string path = "";
-                for(int j = 0; j < -i; j++)
-                {
-                    path = browser.go_forward();
-                }
-                change_view(view_mode, File.new_for_commandline_arg(path));
-                update_location_state(false);
-            }
-        }
+        public signal void back(int n=1);
+        public signal void forward(int n=1);
 
         public ViewContainer(Marlin.View.Window win, GLib.File location){
             window = win;
             /* set active tab */
-            browser = new Browser<string> (go_back_forward);
+            browser = new Browser ();
             label = new Gtk.Label("Loading...");
             change_view (view_mode, location);
             label.set_ellipsize(Pango.EllipsizeMode.END);
@@ -100,12 +68,12 @@ namespace Marlin.View {
                     update_location_state(true);
                 }
             });
-            back.connect(() => {
-                change_view(view_mode, File.new_for_commandline_arg(browser.go_back()));
+            back.connect((n) => {
+                change_view(view_mode, File.new_for_commandline_arg(browser.go_back(n)));
                 update_location_state(false);
             });
-            forward.connect(() => {
-                change_view(view_mode, File.new_for_commandline_arg(browser.go_forward()));
+            forward.connect((n) => {
+                change_view(view_mode, File.new_for_commandline_arg(browser.go_forward(n)));
                 update_location_state(false);
             });
             win.reload_tabs.connect(() => { reload(); });
@@ -209,10 +177,49 @@ namespace Marlin.View {
                 browser.record_uri(slot.directory.get_uri());
             window.can_go_back = browser.can_go_back();
             window.can_go_forward = browser.can_go_forward();
-            window.button_forward.menu = browser.forward_menu;
-            window.button_back.menu = browser.back_menu;
+            update_history_menu(browser);
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
+        }
+
+        public void update_history_menu(Browser browser)  {
+            Gee.List<string> list;
+            int n;
+
+            /* Clear the back menu and re-add the correct entries. */
+            var back_menu = new Gtk.Menu ();
+            list = browser.go_back_list();
+
+            n = 1;
+            foreach(string path in list){
+                int cn = n++; // No i'm not mad, thats just how closures work in vala (and other langs).
+                              // You see if I would just use back(n) the reference to n would be passed
+                              // in the clusure, restulting in a value of n which would always be n=1. So
+                              // by introducting a new variable I can bypass this anoyance.
+                var item = new MenuItem.with_label (path.replace("file://", "")); //TODO add `real' escaping/serializing
+                item.activate.connect(() => { back(cn); });
+                back_menu.insert(item, -1);
+            }
+
+            back_menu.show_all();
+            window.button_back.menu = back_menu;
+
+            Log.println(Log.Level.DEBUG, "[ViewContainer] Updated history menu");
+
+            /* Same for the forward menu */
+            var forward_menu = new Gtk.Menu ();
+            list = browser.go_forward_list();
+
+            n = 1;
+            foreach(var path in list){
+                int cn = n++; // For explenation look up
+                var item = new MenuItem.with_label (path.replace("file://", "")); //TODO add `real' escaping/serializing
+                item.activate.connect(() => forward(-cn));
+                forward_menu.insert(item, -1);
+            }
+
+            forward_menu.show_all();
+            window.button_forward.menu = forward_menu;
         }
 
         public new Gtk.Widget get_window()

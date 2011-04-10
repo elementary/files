@@ -40,7 +40,7 @@ namespace Gtk {
 
             this(image, label, menu);
         }
-        
+
         private void update_menu_properties()
         {
             if(menu_orientation == PositionType.RIGHT){
@@ -63,7 +63,7 @@ namespace Gtk {
             can_focus = true;
 
             menu = _menu;
-            
+
             update_menu_properties();
 
             mnemonic_activate.connect(on_mnemonic_activate);

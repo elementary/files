@@ -43,7 +43,7 @@ namespace Marlin.View {
 
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
-        
+
         public ToolButtonWithMenu button_forward;
         public ToolButtonWithMenu button_back;
 
@@ -67,7 +67,7 @@ namespace Marlin.View {
 
         //public signal void refresh();
         public signal void selection_changed(GOF.File? gof_file);
-        
+
         public signal void reload_tabs();
 
         public void update_action_radio_view(int n) {
