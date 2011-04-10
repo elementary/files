@@ -47,6 +47,9 @@ namespace Marlin.View {
         public ToolButtonWithMenu button_forward;
         public ToolButtonWithMenu button_back;
 
+        private const int horizontal_contextplane_max_width = 840;
+        private const int horizontal_contextplane_max_height = 380; // after which we will go vertical
+
         public bool can_go_up{
             set{
                 main_actions.get_action("Up").set_sensitive(value);
@@ -233,6 +236,8 @@ namespace Marlin.View {
                 return false;
             });
 
+            size_allocate.connect(resized);
+
             /* Binding Backspace keyboard shortcut */
             unowned Gtk.BindingSet binding_set;
 
@@ -343,6 +348,20 @@ namespace Marlin.View {
             }
 
             tabs.remove(view_container);
+        }
+
+        private void resized(Gdk.Rectangle allocation){
+            Orientation current_state = main_box.orientation;
+
+            Orientation future_state = Orientation.VERTICAL; // Becouse how Paned class works, this is inverted
+            if(allocation.width  > horizontal_contextplane_max_width &&
+               allocation.height > horizontal_contextplane_max_height){
+                future_state = Orientation.HORIZONTAL;
+            }
+
+            if(current_state != future_state){
+                main_box.orientation = future_state;
+            }
         }
 
         private void action_new_tab (Gtk.Action action) {
