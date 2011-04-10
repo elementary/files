@@ -39,6 +39,7 @@ marlin_VALASOURCES = \
     View/ContextView.vala                   \
     View/Browser.vala                       \
     View/ViewMode.vala                      \
+    View/Animations.vala                    \
     View/Chrome/AdvancedMenuToolButton.vala \
     View/Chrome/AppMenu.vala                \
     View/Chrome/ToolButtonWithMenu.vala     \
