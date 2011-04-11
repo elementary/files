@@ -18,6 +18,7 @@
 		<separator/>
 		<!--<placeholder name="Select Items"/>-->
 		<menuitem name="ToolbarEditor" 	  action="ToolbarEditor"/>
+		<menuitem name="MarlinSettings"   action="MarlinSettings"/>
 		<separator/>
                 <!--<menu action="ColorMenu">-->
                 <!--    <menuitem action="set-color-clear" />
@@ -115,6 +116,7 @@
 	<menuitem name="Reset to Defaults" action="Reset to Defaults"/>-->
     <menuitem name="Show Hidden Files" action="Show Hidden Files"/>
 	<separator/>
+    <menuitem name="MarlinSettings" action="MarlinSettings"/>
     <menuitem name="Show Hide Menubar" action="Show Hide Menubar"/>
 	<separator/>
     <menuitem name="About" action="About"/>

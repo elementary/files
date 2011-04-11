@@ -32,6 +32,7 @@ BUILT_SOURCES = \
 
 marlin_VALASOURCES = \
     log.vala        	                    \
+    View/SettingsDialog.vala                \
     View/Window.vala 	                    \
     View/Resources.vala	                    \
     View/DbusTags.vala	                    \
