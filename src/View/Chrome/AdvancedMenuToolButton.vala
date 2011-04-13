@@ -2,7 +2,7 @@ using Gdk;
 
 namespace Gtk {
 
-    public abstract class AdvancedMenuToolButton : ToolButton
+    public abstract class AdvancedMenuToolButton : ToggleToolButton
     {
         private int long_press_time = Gtk.Settings.get_default().gtk_double_click_time * 2;
         private int menu_width = 200;

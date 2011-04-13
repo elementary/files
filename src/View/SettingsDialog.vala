@@ -39,7 +39,7 @@ namespace Marlin.View
 
             /* Single click */
             var hbox_single_click = new Gtk.HBox(false, 0);
-            var checkbox = new Gtk.Switch();
+            var checkbox = new Gtk.CheckButton();
 
             Preferences.settings.bind("single-click", checkbox , "active", SettingsBindFlags.DEFAULT);
 
@@ -52,7 +52,7 @@ namespace Marlin.View
             first_vbox.pack_start(hbox_single_click, false);
 
             /* Mouse selection speed */
-            var spin_click_speed = new Gtk.SpinButton.with_range(50, 1000, 1);
+            var spin_click_speed = new Gtk.HScale.with_range(50, 1000, 1);
 
             hbox_single_click = new Gtk.HBox(false, 0);
 
@@ -60,11 +60,11 @@ namespace Marlin.View
             label.set_alignment(0, 0.5f);
 
             hbox_single_click.pack_start(label);
-            hbox_single_click.pack_start(spin_click_speed, false, false);
+            hbox_single_click.pack_start(spin_click_speed, true, true);
 
             Preferences.settings.bind("single-click", hbox_single_click, "sensitive", SettingsBindFlags.DEFAULT);
 
-            Preferences.settings.bind("single-click-timeout", spin_click_speed, "value", SettingsBindFlags.DEFAULT);
+            Preferences.settings.bind("single-click-timeout", spin_click_speed.get_adjustment(), "value", SettingsBindFlags.DEFAULT);
             
             first_vbox.pack_start(hbox_single_click, false);
             
