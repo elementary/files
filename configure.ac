@@ -183,6 +183,7 @@ marlin-daemon/Makefile
 data/Makefile
 icons/Makefile
 po/Makefile.in
+src/tests/Makefile
 ])
 AC_OUTPUT
 
