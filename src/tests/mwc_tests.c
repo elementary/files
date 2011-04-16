@@ -27,4 +27,5 @@ void marlin_window_columns_tests(void)
     mwcols = marlin_window_columns_new(g_file_new_for_path("/home/"), NULL);
     location = marlin_window_columns_get_location(mwcols);
     g_assert_cmpstr(g_file_get_path(location), ==, "/home");
+
 }

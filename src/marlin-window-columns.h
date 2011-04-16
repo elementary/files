@@ -110,6 +110,5 @@ void                    marlin_window_columns_make_view (MarlinWindowColumns *mw
 
 void                    marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location);
 GFile                   *marlin_window_columns_get_location (MarlinWindowColumns *mwcol);
-void                    marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location);
 
 #endif /* MARLIN_WINDOW_COLUMNS_H */
