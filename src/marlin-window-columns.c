@@ -71,18 +71,15 @@ static gboolean marlin_window_columns_key_pressed(GtkWidget* box, GdkEventKey* e
         /* Get previous file list to grab_focus on it */
         if(active_position + 1 > g_list_length(mwcols->slot))
         {
-            printf("Select a new slot\n");
             to_active =  GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot, active_position+1));
         }
         if(to_active != NULL)
         {
-            printf("grab focus\n");
             gtk_widget_grab_focus(to_active->view_box);
             mwcols->active_slot = to_active;
         }
         break;
     }
-    printf("Active position: %d elements number: %d\n", active_position, g_list_length(mwcols->slot));
 }
 
 /**
@@ -155,7 +152,6 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
 void
 marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 {
-    printf("YEAH\n\n\n\n");
     GOFWindowSlot *slot = gof_window_slot_new (location, mwcols->ctab);
     gof_window_slot_make_column_view (slot);
     slot->mwcols = mwcols;

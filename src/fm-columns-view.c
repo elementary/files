@@ -652,40 +652,6 @@ fm_columns_view_get_selection (FMDirectoryView *view)
     return FM_COLUMNS_VIEW (view)->details->selection;
 }
 
-/*static void
-  fm_columns_view_set_selection (FMColumnsView *list_view, GList *selection)
-  {
-  GtkTreeSelection *tree_selection;
-  GList *node;
-  GList *iters, *l;
-  GOFFile *file;
-
-  tree_selection = gtk_tree_view_get_selection (list_view->tree);
-
-//g_signal_handlers_block_by_func (tree_selection, list_selection_changed_callback, view);
-
-gtk_tree_selection_unselect_all (tree_selection);
-for (node = selection; node != NULL; node = node->next) {
-file = node->data;
-iters = fm_list_model_get_all_iters_for_file (list_view->model, file);
-
-for (l = iters; l != NULL; l = l->next) {
-gtk_tree_selection_select_iter (tree_selection,
-(GtkTreeIter *)l->data);
-}
-//eel_g_list_free_deep (iters);
-}
-
-//g_signal_handlers_unblock_by_func (tree_selection, list_selection_changed_callback, view);
-//fm_directory_view_notify_selection_changed (view);
-}
-
-static void
-fm_columns_view_select_all (FMColumnsView *view)
-{
-gtk_tree_selection_select_all (gtk_tree_view_get_selection (view->tree));
-}*/
-
 static GtkTreePath*
 fm_columns_view_get_path_at_pos (FMDirectoryView *view, gint x, gint y)
 {

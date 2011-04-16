@@ -19,13 +19,54 @@
 
 #include "tests/mwc_tests.h"
 
+static gboolean marlin_mwc_fatal_handler(const gchar* log_domain,
+                               GLogLevelFlags log_level,
+                               const gchar* message,
+                               gpointer user_data)
+{
+    return FALSE;
+}
+
 void marlin_window_columns_tests(void)
 {
+    MarlinViewWindow* win;
+    MarlinViewViewContainer* view_container;
     MarlinWindowColumns* mwcols;
     GFile* location;
 
-    mwcols = marlin_window_columns_new(g_file_new_for_path("/home/"), NULL);
-    location = marlin_window_columns_get_location(mwcols);
-    g_assert_cmpstr(g_file_get_path(location), ==, "/home");
+    /* Init the main windows (it shouldn't be required, FIXME)
+     * This code is used to enable warnings, it shouldn't be required either :( */
+    g_test_log_set_fatal_handler(marlin_mwc_fatal_handler, NULL);
+    win = marlin_view_window_new();
+    view_container = marlin_view_view_container_new(win, g_file_new_for_path("/usr/"));
 
+    g_assert(win != NULL);
+
+    mwcols = marlin_window_columns_new(g_file_new_for_path("/usr/"), view_container);
+    location = marlin_window_columns_get_location(mwcols);
+    g_assert_cmpstr(g_file_get_path(location), ==, "/usr");
+
+    marlin_window_columns_make_view(mwcols);
+
+    /* GOFWindowSlot */
+
+    GOFWindowSlot* gof = gof_window_slot_new(g_file_new_for_path("/home/"), NULL);
+
+    /* Check if the two functions returns the same result */
+    g_assert_cmpstr(gof_window_slot_get_location_uri(gof), ==, "file:///home");
+    g_assert_cmpstr(g_file_get_path(gof_window_slot_get_location(gof)), ==, "/home");
+
+    g_assert_cmpint(g_list_length(mwcols->slot), ==, 1);
+
+    /* Add new slots to the MWC */
+    marlin_window_columns_add(mwcols, g_file_new_for_path("/"));
+    g_assert_cmpstr(g_file_get_path(marlin_window_columns_get_location(mwcols)),
+                                    ==,
+                                    "/usr");
+    marlin_window_columns_add(mwcols, g_file_new_for_path("/usr/share"));
+    g_assert_cmpstr(g_file_get_path(marlin_window_columns_get_location(mwcols)),
+                                    ==,
+                                    "/usr");
+ 
+    g_assert_cmpint(g_list_length(mwcols->slot), ==, 2);
 }

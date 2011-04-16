@@ -62,8 +62,6 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
     slot->mwcols->active_slot = slot;
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
     
-    slot->mwcols->slot = NULL;
-
     marlin_window_columns_add (slot->mwcols, location);
     /*GOFWindowSlot *slot = gof_window_slot_column_new (location);
       slot->mwcols = mwcols;

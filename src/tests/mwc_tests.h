@@ -25,6 +25,7 @@
 #include <glib.h>
 #include "marlin-window-columns.h"
 #include "marlin-global-preferences.h"
+#include "marlin-vala.h"
 
 void marlin_window_columns_tests(void);
 
