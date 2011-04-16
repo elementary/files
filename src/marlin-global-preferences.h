@@ -1,3 +1,6 @@
+#ifndef H_MARLIN_GLOBAL_PREFERENCES
+#define H_MARLIN_GLOBAL_PREFERENCES
+
 GSettings  *settings;
 
 static gchar *tags_colors[10] = { NULL, "#fce94f", "#fcaf3e", "#997666", "#8ae234", "#729fcf", "#ad7fa8", "#ef2929", "#d3d7cf", "#888a85" };
@@ -9,3 +12,5 @@ static gchar *tags_colors[10] = { NULL, "#fce94f", "#fcaf3e", "#997666", "#8ae23
 #define MARLIN_PREFERENCES_SIDEBAR_CAT_DEVICES_EXPANDER     "sidebar-cat-devices-expander"
 #define MARLIN_PREFERENCES_SIDEBAR_CAT_NETWORK_EXPANDER     "sidebar-cat-network-expander"
 #define MARLIN_PREFERENCES_CONFIRM_TRASH                    "confirm-trash"
+
+#endif

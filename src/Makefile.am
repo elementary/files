@@ -155,6 +155,7 @@ GTESTER_REPORT = /usr/bin/gtester-report	# for the GLIB package
 
 check_PROGRAMS = marlintests
 marlintests_SOURCES = tests/marlintests.c             \
+					  tests/mwc_tests.c               \
 					  $(marlin_VALASOURCES:.vala=.c)  \
 				      $(marlin_CSOURCES)              \
 					  $(BUILT_SOURCES)                \
