@@ -59,14 +59,12 @@ void marlin_window_columns_tests(void)
     g_assert_cmpint(g_list_length(mwcols->slot), ==, 1);
 
     /* Add new slots to the MWC */
-    marlin_window_columns_add(mwcols, g_file_new_for_path("/"));
-    g_assert_cmpstr(g_file_get_path(marlin_window_columns_get_location(mwcols)),
-                                    ==,
-                                    "/usr");
-    marlin_window_columns_add(mwcols, g_file_new_for_path("/usr/share"));
+    marlin_window_columns_add_location(mwcols, g_file_new_for_path("/usr/share"));
     g_assert_cmpstr(g_file_get_path(marlin_window_columns_get_location(mwcols)),
                                     ==,
                                     "/usr");
  
     g_assert_cmpint(g_list_length(mwcols->slot), ==, 2);
+    marlin_window_columns_add_location(mwcols, g_file_new_for_path("/usr/share/games"));
+    g_assert_cmpint(g_list_length(mwcols->slot), ==, 3);
 }

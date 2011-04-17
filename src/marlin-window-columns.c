@@ -62,6 +62,7 @@ static gboolean marlin_window_columns_key_pressed(GtkWidget* box, GdkEventKey* e
         if(to_active != NULL)
         {
             gtk_widget_grab_focus(to_active->view_box);
+            printf("GRAB FOCUS on : %d\n", active_position-1);
             mwcols->active_slot = to_active;
         }
         break;
@@ -69,13 +70,14 @@ static gboolean marlin_window_columns_key_pressed(GtkWidget* box, GdkEventKey* e
     case GDK_KEY_Right:
         active_position = g_list_index(mwcols->slot, mwcols->active_slot);
         /* Get previous file list to grab_focus on it */
-        if(active_position + 1 > g_list_length(mwcols->slot))
+        if(active_position < g_list_length(mwcols->slot))
         {
             to_active =  GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot, active_position+1));
         }
         if(to_active != NULL)
         {
             gtk_widget_grab_focus(to_active->view_box);
+            printf("GRAB FOCUS on : %d\n", active_position+1);
             mwcols->active_slot = to_active;
         }
         break;
@@ -139,13 +141,21 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
 
     gof_window_column_add(slot, slot->view_box);
 
-    //gtk_container_add( GTK_CONTAINER(window), mwcols->view_box);
-    //marlin_view_window_set_content (window, mwcols->view_box);
     marlin_view_view_container_set_content (mwcols->ctab, mwcols->view_box);
+    
+    /* Left/Right events */
     gtk_widget_add_events (GTK_WIDGET(mwcols->colpane), GDK_KEY_RELEASE_MASK);
     g_signal_connect(mwcols->colpane, "key_release_event", (GCallback)marlin_window_columns_key_pressed, mwcols);
 }
 
+/**
+ * Add a new column
+ **/
+void
+marlin_window_columns_add_location (MarlinWindowColumns *mwcols, GFile *location)
+{
+    gof_window_columns_add_location(mwcols->active_slot, location);
+}
 /**
  * Add a new column
  **/
@@ -156,10 +166,11 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
     gof_window_slot_make_column_view (slot);
     slot->mwcols = mwcols;
     slot->colpane = mwcols->active_slot->colpane;
-    printf("LOCATIONURI : %s\n\n\n", gof_window_slot_get_location_uri(slot));
     gof_window_column_add(slot, slot->view_box);
+    //mwcols->active_slot = slot;
     /* Add it in our GList */
     mwcols->slot = g_list_append(mwcols->slot, slot);
+    //gtk_widget_grab_focus(slot->view_box);
 }
 
 static void

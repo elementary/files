@@ -89,12 +89,12 @@ gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
     GtkWidget *hpane = gtk_hpaned_new();
     gtk_widget_show (hpane);
     gtk_container_add(GTK_CONTAINER(slot->colpane), hpane);
-    GtkWidget *vbox2 = gtk_hbox_new(FALSE, 0);
+    GtkWidget *vbox2 = gtk_hbox_new(FALSE /* homogeneous */, 0 /* padding */);
     gtk_widget_show (vbox2);
     slot->colpane = vbox2;
     slot->hpane = hpane;
 
-    gtk_widget_set_size_request (column, 180,-1);
+    gtk_widget_set_size_request (column, 180, -1 /* means auto */);
 
     gtk_paned_pack1 (GTK_PANED (hpane), column, FALSE, FALSE);
     gtk_paned_pack2 (GTK_PANED (hpane), vbox2, TRUE, FALSE);
@@ -103,15 +103,27 @@ gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
 void
 gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
 {
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    gint current_slot_position = 0;
+    gint i;
+    GList* mwcols_slot_tmp = slot->mwcols->slot;
     slot->mwcols->active_slot = slot;
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
     
+    current_slot_position = g_list_index(slot->mwcols->slot, slot);
+    if(current_slot_position == -1)
+    {
+        g_warning("Can't find the slot you are viewing, this should *not* happen.");
+    }
+    else
+    {
+        slot->mwcols->slot = NULL;
+        for(i = 0; i <= current_slot_position; i++)
+        {
+            slot->mwcols->slot = g_list_append(slot->mwcols->slot, g_list_nth_data(mwcols_slot_tmp, i));
+        }
+    }
+    
     marlin_window_columns_add (slot->mwcols, location);
-    /*GOFWindowSlot *slot = gof_window_slot_column_new (location);
-      slot->mwcols = mwcols;
-      mwcols->active_slot = slot;
-      add_column(mwcols, slot->view_box);*/
 }
 
 void
