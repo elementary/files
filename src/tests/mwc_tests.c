@@ -65,6 +65,4 @@ void marlin_window_columns_tests(void)
                                     "/usr");
  
     g_assert_cmpint(g_list_length(mwcols->slot), ==, 2);
-    marlin_window_columns_add_location(mwcols, g_file_new_for_path("/usr/share/games"));
-    g_assert_cmpint(g_list_length(mwcols->slot), ==, 3);
 }
