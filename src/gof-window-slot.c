@@ -38,6 +38,51 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
+
+static void
+gof_window_slot_init (GOFWindowSlot *slot)
+{
+}
+
+static void
+gof_window_slot_class_init (GOFWindowSlotClass *class)
+{
+    signals[ACTIVE] =
+	g_signal_new ("active",
+		      G_TYPE_FROM_CLASS (class),
+		      G_SIGNAL_RUN_LAST,
+		      G_STRUCT_OFFSET (GOFWindowSlotClass, active),
+		      NULL, NULL,
+		      g_cclosure_marshal_VOID__VOID,
+		      G_TYPE_NONE, 0);
+
+    signals[INACTIVE] =
+	g_signal_new ("inactive",
+		      G_TYPE_FROM_CLASS (class),
+		      G_SIGNAL_RUN_LAST,
+		      G_STRUCT_OFFSET (GOFWindowSlotClass, inactive),
+		      NULL, NULL,
+		      g_cclosure_marshal_VOID__VOID,
+		      G_TYPE_NONE, 0);
+
+    G_OBJECT_CLASS (class)->finalize = gof_window_slot_finalize;
+}
+
+static void
+gof_window_slot_finalize (GObject *object)
+{
+    GOFWindowSlot *slot = GOF_WINDOW_SLOT (object);
+    log_printf (LOG_LEVEL_UNDEFINED, "%s %s\n", G_STRFUNC, g_file_get_uri (slot->directory->location));
+
+    //load_dir_async_cancel(slot->directory);
+    g_object_unref(slot->directory);
+    g_object_unref(slot->location);
+    G_OBJECT_CLASS (parent_class)->finalize (object);
+    printf ("test %s\n", G_STRFUNC);
+    /* avoid a warning in vala code: slot is freed in ViewContainer */
+    //slot = NULL;
+}
+
 void
 gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
 {
@@ -76,21 +121,6 @@ gof_window_columns_add_preview (GOFWindowSlot *slot, GtkWidget *context_view)
     gtk_container_add(GTK_CONTAINER(slot->colpane), context_view);
 }
 
-static void
-gof_window_slot_finalize (GObject *object)
-{
-    GOFWindowSlot *slot = GOF_WINDOW_SLOT (object);
-    log_printf (LOG_LEVEL_UNDEFINED, "%s %s\n", G_STRFUNC, g_file_get_uri (slot->directory->location));
-
-    //load_dir_async_cancel(slot->directory);
-    g_object_unref(slot->directory);
-    g_object_unref(slot->location);
-    G_OBJECT_CLASS (parent_class)->finalize (object);
-    printf ("test %s\n", G_STRFUNC);
-    /* avoid a warning in vala code: slot is freed in ViewContainer */
-    //slot = NULL;
-}
-
 GOFWindowSlot *
 gof_window_slot_new (GFile *location, GObject *ctab)
 {
@@ -105,6 +135,11 @@ gof_window_slot_new (GFile *location, GObject *ctab)
     return slot;
 }
 
+/**
+ * Used to make a view in the list view.
+ * It replaces the content of the current tab by it own widget (wich is a list
+ * of the current files of this directory).
+ **/
 void
 gof_window_slot_make_view (GOFWindowSlot *slot)
 {
@@ -114,6 +149,15 @@ gof_window_slot_make_view (GOFWindowSlot *slot)
     load_dir_async (slot->directory);
 }
 
+/**
+ * Used to make a view in the column view.
+ * It replaces the content of the current tab by it own widget (wich is a list
+ * of the current files of this directory).
+ *
+ * Note:
+ * In miller column view, you'll have multiple column displayed, not only this
+ * one.
+ **/
 void
 gof_window_slot_make_column_view (GOFWindowSlot *slot)
 {
@@ -121,36 +165,6 @@ gof_window_slot_make_column_view (GOFWindowSlot *slot)
                                                "window-slot", slot, NULL));
     load_dir_async (slot->directory);
 }
-
-static void
-gof_window_slot_init (GOFWindowSlot *slot)
-{
-}
-
-static void
-gof_window_slot_class_init (GOFWindowSlotClass *class)
-{
-    signals[ACTIVE] =
-	g_signal_new ("active",
-		      G_TYPE_FROM_CLASS (class),
-		      G_SIGNAL_RUN_LAST,
-		      G_STRUCT_OFFSET (GOFWindowSlotClass, active),
-		      NULL, NULL,
-		      g_cclosure_marshal_VOID__VOID,
-		      G_TYPE_NONE, 0);
-
-    signals[INACTIVE] =
-	g_signal_new ("inactive",
-		      G_TYPE_FROM_CLASS (class),
-		      G_SIGNAL_RUN_LAST,
-		      G_STRUCT_OFFSET (GOFWindowSlotClass, inactive),
-		      NULL, NULL,
-		      g_cclosure_marshal_VOID__VOID,
-		      G_TYPE_NONE, 0);
-
-    G_OBJECT_CLASS (class)->finalize = gof_window_slot_finalize;
-}
-
 GFile *
 gof_window_slot_get_location (GOFWindowSlot *slot)
 {

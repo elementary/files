@@ -156,6 +156,7 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
     gof_window_slot_make_column_view (slot);
     slot->mwcols = mwcols;
     slot->colpane = mwcols->active_slot->colpane;
+    printf("LOCATIONURI : %s\n\n\n", gof_window_slot_get_location_uri(slot));
     gof_window_column_add(slot, slot->view_box);
     /* Add it in our GList */
     mwcols->slot = g_list_append(mwcols->slot, slot);
