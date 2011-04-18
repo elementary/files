@@ -365,7 +365,11 @@ namespace Marlin.View {
             }
         }
 
-        private void action_new_tab (Gtk.Action action) {
+       private void action_marlin_settings_callback (Gtk.Action action) {
+            new SettingsDialog(this);
+        }
+
+       private void action_new_tab (Gtk.Action action) {
             add_tab(File.new_for_commandline_arg(Environment.get_home_dir()));
         }
 
@@ -491,7 +495,11 @@ namespace Marlin.View {
                                  N_("Customize _Toolbar"),
                                  null, N_("Easily edit the toolbar layout"),
                                  action_toolbar_editor_callback },
-                               /*{ Chrome.ColorAction, null, "ColorAction"),
+                               { "MarlinSettings", Stock.PREFERENCES,
+                                 N_("Settings"),
+                                 null, N_("Change Marlin's settings"),
+                                 action_marlin_settings_callback },
+                             /*{ Chrome.ColorAction, null, "ColorAction"),
                                  null, null,
                                  null },*/
                                { "Up", Stock.GO_UP, N_("Open _Parent"),
