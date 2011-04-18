@@ -3037,6 +3037,8 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
 
     gtk_container_add (GTK_CONTAINER (sidebar), GTK_WIDGET (tree_view));
 
+    gtk_style_context_add_class(gtk_widget_get_style_context(GTK_WIDGET(tree_view)), "left-sidebar");
+
     gtk_widget_show (GTK_WIDGET (tree_view));
     gtk_widget_show (GTK_WIDGET (sidebar));
     sidebar->tree_view = tree_view;

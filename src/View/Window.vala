@@ -175,7 +175,6 @@ namespace Marlin.View {
             ((Gtk.ToggleAction) main_actions.get_action("Show Hide Context Pane")).set_active(Preferences.settings.get_boolean("start-with-contextview"));
 
             main_box.collapse_mode = CollapseMode.RIGHT;
-            main_box.set_name("app-sidebar"); /* TODO remove later if uneeded - test theming */
 
             /*/
             /* Pack up all the view
