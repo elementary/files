@@ -56,3 +56,4 @@ src/marlin-marshal.h
 src/marlin-marshal.list
 src/marlin-vala.h
 src/marlin.vala.stamp
+src/View/Animations.c

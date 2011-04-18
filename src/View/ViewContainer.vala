@@ -50,6 +50,8 @@ namespace Marlin.View {
             label.set_alignment(0.0f, 0.5f);
             label.set_padding(0, 0);
             update_location_state(true);
+            window.button_back.fetcher = get_back_menu;
+            window.button_forward.fetcher = get_forward_menu;
 
             //add(content_item);
 
@@ -177,21 +179,16 @@ namespace Marlin.View {
                 browser.record_uri(slot.directory.get_uri());
             window.can_go_back = browser.can_go_back();
             window.can_go_forward = browser.can_go_forward();
-            update_history_menu(browser);
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
         }
 
-        public void update_history_menu(Browser browser)  {
-            Gee.List<string> list;
-            int n;
-
+        public Menu get_back_menu()  {
             /* Clear the back menu and re-add the correct entries. */
             var back_menu = new Gtk.Menu ();
-            list = browser.go_back_list();
-
-            n = 1;
-            foreach(string path in list){
+            var list = browser.go_back_list();
+            var n = 1;
+            foreach(var path in list){
                 int cn = n++; // No i'm not mad, thats just how closures work in vala (and other langs).
                               // You see if I would just use back(n) the reference to n would be passed
                               // in the clusure, restulting in a value of n which would always be n=1. So
@@ -202,15 +199,14 @@ namespace Marlin.View {
             }
 
             back_menu.show_all();
-            window.button_back.menu = back_menu;
+            return back_menu;
+        }
 
-            Log.println(Log.Level.DEBUG, "[ViewContainer] Updated history menu");
-
+        public Menu get_forward_menu() {
             /* Same for the forward menu */
             var forward_menu = new Gtk.Menu ();
-            list = browser.go_forward_list();
-
-            n = 1;
+            var list = browser.go_forward_list();
+            var n = 1;
             foreach(var path in list){
                 int cn = n++; // For explenation look up
                 var item = new MenuItem.with_label (path.replace("file://", "")); //TODO add `real' escaping/serializing
@@ -219,7 +215,7 @@ namespace Marlin.View {
             }
 
             forward_menu.show_all();
-            window.button_forward.menu = forward_menu;
+            return forward_menu;
         }
 
         public new Gtk.Widget get_window()

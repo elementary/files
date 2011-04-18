@@ -4,6 +4,8 @@ namespace Gtk {
 
     public abstract class AdvancedMenuToolButton : ToggleToolButton
     {
+        public delegate Menu MenuFetcher();
+
         private int long_press_time = Gtk.Settings.get_default().gtk_double_click_time * 2;
         private int menu_width = 200;
         private Button button;
@@ -28,10 +30,32 @@ namespace Gtk {
 
         public signal void long_click();
         public signal void right_click();
-        private Menu menu_;
+
+        private bool has_fetcher = false;
+        private MenuFetcher _fetcher;
+        public MenuFetcher fetcher{
+            set{
+                _fetcher = value;
+                has_fetcher = true;
+            }
+            get{
+                return _fetcher;
+            }
+        }
+
+        private Menu _menu;
         public Menu menu {
-            get { return menu_; }
-            set { menu_ = value; update_menu_properties(); }
+            get {
+                    return _menu;
+                }
+            set {
+                    if(has_fetcher)
+                        Log.println(Log.Level.WARN, "Don't set the menu property on a AdvancedMenuToolButton when there is allready a menu fetcher");
+                    else{
+                        _menu = value;
+                        update_menu_properties();
+                }
+            }
         }
 
         public AdvancedMenuToolButton.from_stock (string stock_image, IconSize size, string label, Menu menu)
@@ -124,6 +148,8 @@ namespace Gtk {
 
         protected new void popup_menu(Gdk.EventButton? ev = null)
         {
+            if(has_fetcher) fetch_menu();
+
             menu.select_first (true);
 
             try {
@@ -146,6 +172,11 @@ namespace Gtk {
             // Unhighlight the parent
             if (menu.attach_widget != null)
                 menu.attach_widget.set_state(Gtk.StateType.NORMAL);
+        }
+
+        private void fetch_menu(){
+            _menu = fetcher();
+            update_menu_properties();
         }
 
         private void get_menu_position (Menu menu, out int x, out int y, out bool push_in)
