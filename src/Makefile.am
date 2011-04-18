@@ -60,6 +60,7 @@ marlin_CSOURCES = \
     eel-gtk-extensions.c                    \
     eel-gdk-extensions.c                    \
     eel-gdk-pixbuf-extensions.c             \
+    eel-pango-extensions.c                  \
     eel-glib-extensions.c                   \
     eel-gio-extensions.c                    \
     eel-stock-dialogs.c                     \
@@ -68,6 +69,7 @@ marlin_CSOURCES = \
     eel-ui.c                                \
     eel-vfs-extensions.c                    \
     gossip-cell-renderer-expander.c         \
+    marlin-enum-types.c                     \
     marlin-trash-monitor.c                  \
     marlin-bookmark.c                       \
     marlin-bookmark-list.c                  \
@@ -88,9 +90,13 @@ marlin_CSOURCES = \
     nautilus-icon-info.c                    \
     gof-monitor.c                           \
     gof-file.c                              \
+    marlin-icon-renderer.c                  \
+    marlin-text-renderer.c                  \
     fm-directory-view.c                     \
+    exo-icon-view.c                         \
     exo-tree-view.c                         \
     fm-list-model.c                         \
+    fm-icon-view.c                          \
     fm-list-view.c                          \
     fm-columns-view.c                       \
     nautilus-cell-renderer-text-ellipsized.c\

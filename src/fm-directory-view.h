@@ -57,6 +57,8 @@ struct FMDirectoryView {
     GtkScrolledWindow       parent;
     MarlinClipboardManager  *clipboard;
     FMListModel             *model;
+    GtkCellRenderer         *icon_renderer;
+    GtkCellRenderer         *name_renderer;
 
     FMDirectoryViewDetails  *details;
 };
@@ -377,6 +379,7 @@ void    fm_directory_view_column_add_preview (FMDirectoryView *dview, GOFFile *f
 //void    fm_directory_view_set_active_slot (FMDirectoryView *dview);
 void    fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location);
 void    fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, GdkScreen *screen);
+void    fm_directory_view_activate_selected_items (FMDirectoryView *view);
 //void    fm_directory_view_colorize_selection (FMDirectoryView *view, int color);
 void    fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFile *file);
 

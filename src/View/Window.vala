@@ -74,13 +74,15 @@ namespace Marlin.View {
         public signal void reload_tabs();
 
         public void update_action_radio_view(int n) {
-            Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
+            //Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
+            Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
             assert(action != null);
             action.set_current_value(n);
         }
 
         protected virtual void action_radio_change_view(){
-            Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
+            //Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
+            Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
             assert(action != null);
             int n = action.get_current_value();
             /* change the view only for view_mode real change */
@@ -219,22 +221,17 @@ namespace Marlin.View {
             });
 
             tabs.scroll_event.connect((scroll) => {
-                uint offset = tabs.get_current_page();
+                int offset = tabs.get_current_page();
 
                 if(scroll.direction == ScrollDirection.UP)
                     offset++;
                 else if(scroll.direction == ScrollDirection.DOWN)
                     offset--;
 
-                if(offset<1)
-                    offset = 0;
-                else if(offset>=tabs.get_children().length())
-                    offset = tabs.get_children().length();
+                if(offset >= 0 && offset <= tabs.get_children().length()-1)
+                    tabs.set_current_page(offset);
 
-                change_tab(offset);
-                tabs.set_current_page((int) offset);
-
-                return false;
+                return true;
             });
 
             size_allocate.connect(resized);
@@ -459,6 +456,29 @@ namespace Marlin.View {
         private void action_go_to_network_callback (Gtk.Action action) {
                 current_tab.path_changed(File.new_for_commandline_arg(Resources.MARLIN_NETWORK_URI));
         }
+        
+        private void action_zoom_in_callback (Gtk.Action action) {
+            var zoom = Preferences.marlin_icon_view_settings.get_enum ("zoom-level") + 1;
+            if (zoom >= MarlinZoomLevel.MARLIN_ZOOM_LEVEL_SMALLEST 
+                && zoom <= MarlinZoomLevel.MARLIN_ZOOM_LEVEL_LARGEST)
+            {
+                    Preferences.marlin_icon_view_settings.set_enum ("zoom-level", zoom);
+            }
+        }
+        
+        private void action_zoom_out_callback (Gtk.Action action) {
+            var zoom = Preferences.marlin_icon_view_settings.get_enum ("zoom-level") - 1;
+            if (zoom >= MarlinZoomLevel.MARLIN_ZOOM_LEVEL_SMALLEST 
+                && zoom <= MarlinZoomLevel.MARLIN_ZOOM_LEVEL_LARGEST)
+            {
+                    Preferences.marlin_icon_view_settings.set_enum ("zoom-level", zoom);
+            }
+        }
+
+        private void action_zoom_normal_callback (Gtk.Action action) {
+            var zoom = Preferences.marlin_icon_view_settings.get_enum ("default-zoom-level");
+            Preferences.marlin_icon_view_settings.set_enum ("zoom-level", zoom);
+        }
 
         protected void show_about() {
         Gtk.show_about_dialog(this,
@@ -524,6 +544,30 @@ namespace Marlin.View {
   /* label, accelerator */       N_("_Network"), null,
   /* tooltip */                  N_("Browse bookmarked and local network locations"),
                                  action_go_to_network_callback },
+  /* name, stock id */         { "Zoom In", Stock.ZOOM_IN,
+  /* label, accelerator */       N_("Zoom _In"), "<control>plus",
+  /* tooltip */                  N_("Increase the view size"),
+                                 action_zoom_in_callback },
+  /* name, stock id */         { "ZoomInAccel", null,
+  /* label, accelerator */       "ZoomInAccel", "<control>equal",
+  /* tooltip */                  null,
+                                 action_zoom_in_callback },
+  /* name, stock id */         { "ZoomInAccel2", null,
+  /* label, accelerator */       "ZoomInAccel2", "<control>KP_Add",
+  /* tooltip */                  null,
+                                 action_zoom_in_callback },
+  /* name, stock id */         { "Zoom Out", Stock.ZOOM_OUT,
+  /* label, accelerator */       N_("Zoom _Out"), "<control>minus",
+  /* tooltip */                  N_("Decrease the view size"),
+                                 action_zoom_out_callback },
+  /* name, stock id */         { "ZoomOutAccel", null,
+  /* label, accelerator */       "ZoomOutAccel", "<control>KP_Subtract",
+  /* tooltip */                  null,
+                                 action_zoom_out_callback },
+  /* name, stock id */         { "Zoom Normal", Stock.ZOOM_100,
+  /* label, accelerator */       N_("Normal Si_ze"), "<control>0",
+  /* tooltip */                  N_("Use the normal view size"),
+                                 action_zoom_normal_callback },
   /* name, stock id */         { "About", Stock.ABOUT,
   /* label, accelerator */       N_("_About"), null,
   /* tooltip */                  N_("Display credits"),
@@ -557,14 +601,14 @@ namespace Marlin.View {
         };
 
         static const Gtk.RadioActionEntry view_radio_entries[] = {
-            /*{ "view-as-icons", null,
-              N_("Icon View"), null, null,
-              0 },*/
+            { "view-as-icons", null,
+              N_("Icon View"), "<control>1", null,
+              ViewMode.ICON },
             { "view-as-detailed-list", null,
-              N_("List View"), "<control>1", null,
+              N_("List View"), "<control>2", null,
               ViewMode.LIST },
             { "view-as-columns", null,
-              N_("Columns View"), "<control>2", null,
+              N_("Columns View"), "<control>3", null,
               ViewMode.MILLER }
         };
 

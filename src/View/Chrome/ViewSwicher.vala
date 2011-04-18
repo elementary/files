@@ -35,12 +35,16 @@ namespace Marlin.View.Chrome
             set{
                 Widget target;
 
-                if(value == ViewMode.LIST){
+                switch (value) {
+                case ViewMode.LIST:
                     target = list;
-                }else if(value == ViewMode.MILLER){
+                    break;
+                case ViewMode.MILLER:
                     target = miller;
-                }else{
-                    target = miller;
+                    break;
+                default:
+                    target = icon;
+                    break;
                 }
 
                 Preferences.settings.set_enum("default-viewmode", value);
@@ -54,6 +58,7 @@ namespace Marlin.View.Chrome
 
         private Gtk.ActionGroup main_actions;
 
+        private Image icon;
         private Image list;
         private Image miller;
 
@@ -68,6 +73,8 @@ namespace Marlin.View.Chrome
 
             switcher = new ModeButton();
 
+            icon = new Image.from_file(Config.PIXMAP_DIR + "view-list-icons-symbolic.svg");
+            switcher.append(icon);
             list = new Image.from_file(Config.PIXMAP_DIR + "view-list-details-symbolic.svg");
             switcher.append(list);
             miller = new Image.from_file(Config.PIXMAP_DIR + "view-list-column-symbolic.svg");
@@ -82,6 +89,9 @@ namespace Marlin.View.Chrome
                     action.activate();
                 } else if (mode == miller){
                     action = main_actions.get_action("view-as-columns");
+                    action.activate();
+                } else {
+                    action = main_actions.get_action("view-as-icons");
                     action.activate();
                 }
                 

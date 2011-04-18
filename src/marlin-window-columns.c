@@ -195,7 +195,6 @@ marlin_window_columns_finalize (GObject *object)
     MarlinWindowColumns *mwcols = MARLIN_WINDOW_COLUMNS (object);
     log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
 
-    g_signal_handlers_disconnect_by_func (mwcols->hadj, G_CALLBACK (hadj_changed), mwcols);
     g_signal_handlers_disconnect_by_func (mwcols->colpane,
                                           G_CALLBACK (marlin_window_columns_key_pressed),
                                           mwcols);

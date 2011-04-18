@@ -294,7 +294,9 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
 
     model = (FMListModel *)tree_model;
 
-    g_return_if_fail (model->details->stamp == iter->stamp);
+    //amtest
+    //g_return_if_fail (model->details->stamp == iter->stamp);
+    g_assert (model->details->stamp == iter->stamp);
     g_return_if_fail (!g_sequence_iter_is_end (iter->user_data));
 
     file_entry = g_sequence_get (iter->user_data);
@@ -1183,6 +1185,9 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
     GtkTreePath *path;
     GtkTreeIter parent_iter;
 
+    g_return_if_fail (FM_IS_LIST_MODEL (model));
+    g_return_if_fail (iter->stamp == model->details->stamp);
+
     ptr = iter->user_data;
     file_entry = g_sequence_get (ptr);
     if (file_entry->files != NULL) {
@@ -1235,6 +1240,8 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
         g_signal_emit (model,
                        list_model_signals[SUBDIRECTORY_UNLOADED], 0,
                        file_entry->subdirectory);
+        g_hash_table_remove (model->details->directory_reverse_map,
+				     file_entry->subdirectory);
     }
 
     path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), iter);

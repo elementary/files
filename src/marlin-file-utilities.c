@@ -286,7 +286,7 @@ marlin_restore_files_from_trash (GList *files, GtkWindow *parent_window)
 		g_hash_table_destroy (original_dirs_hash);
 	}
 
-	gof_file_list_unref (unhandled_files);
+	gof_file_list_free (unhandled_files);
 }
 
 

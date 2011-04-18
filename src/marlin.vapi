@@ -15,6 +15,7 @@ namespace Config {
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
 namespace Preferences {
     public GLib.Settings settings;
+    public GLib.Settings marlin_icon_view_settings;
     public string tags_colors[10];
 }
 
@@ -44,7 +45,8 @@ namespace GOF {
         [CCode (cheader_filename = "gof-window-slot.h")]
         public class Slot : GLib.Object {
             public Slot (GLib.File f, Marlin.View.ViewContainer ctab);
-            public void make_view ();
+            public void make_icon_view ();
+            public void make_list_view ();
             public Directory.Async directory;
             public GLib.File location;
             public Widget view_box;

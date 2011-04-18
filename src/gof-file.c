@@ -275,7 +275,6 @@ void gof_file_update_icon (GOFFile *file, gint size)
     NautilusIconInfo *nicon;
 
     /* don't waste time on collecting data for hidden files which would be dropped */
-    /* FIXME repair hidden files */
     //TODO set property don't call g_setting for each files
     if (file->is_hidden && !g_settings_get_boolean(settings, "show-hiddenfiles"))
         return ;
@@ -1618,15 +1617,9 @@ gof_file_open_single (GOFFile *file, GdkScreen *screen)
 }
 
 void
-gof_file_list_unref (GList *list)
-{
-    g_list_foreach (list, (GFunc) gof_file_unref, NULL);
-}
-
-void
 gof_file_list_free (GList *list)
 {
-    gof_file_list_unref (list);
+    g_list_foreach (list, (GFunc) gof_file_unref, NULL);
     g_list_free (list);
 }
 

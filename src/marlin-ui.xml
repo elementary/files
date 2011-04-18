@@ -1,4 +1,7 @@
 <ui>
+<accelerator action="ZoomInAccel"/>
+<accelerator action="ZoomInAccel2"/>
+<accelerator action="ZoomOutAccel"/>
 <menubar name="MenuBar">
 	<menu action="File">
 <!--		<menuitem name="Connect to Server" action="Connect to Server"/>-->
@@ -45,16 +48,16 @@
             <menuitem name="Show Hide Sidebar" action="Show Hide Sidebar"/>
             <separator/>
             <menuitem name="Show Hidden Files" action="Show Hidden Files"/>
-		<!--<placeholder name="View Preferences Placeholder"/>
+		<placeholder name="View Preferences Placeholder"/>
 		<separator/>
 		<placeholder name="View Items Placeholder"/>
 		<separator/>
-		<placeholder name="Zoom Items Placeholder">
-			<menuitem name="Zoom In" action="Zoom In"/>
-			<menuitem name="Zoom Out" action="Zoom Out"/>
-			<menuitem name="Zoom Normal" action="Zoom Normal"/>
-		</placeholder>
-                <separator/>
+		    <placeholder name="Zoom Items Placeholder">
+			    <menuitem name="Zoom In" action="Zoom In"/>
+			    <menuitem name="Zoom Out" action="Zoom Out"/>
+			    <menuitem name="Zoom Normal" action="Zoom Normal"/>
+		    </placeholder>
+        <!--<separator/>
                 <placeholder name="Show Hide Clutter">
                         <menuitem name="Clutterflow" action="Show Hide Clutter"/>
                 </placeholder>
@@ -66,7 +69,7 @@
 			<placeholder name="Short List"/>
 		</placeholder>-->
             <separator/>
-            <!--<menuitem action="view-as-icons" />-->
+            <menuitem action="view-as-icons" />
             <menuitem action="view-as-detailed-list" />
             <menuitem action="view-as-columns" />
             <!--<menuitem action="view-as-compact-list" />-->

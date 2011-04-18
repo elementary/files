@@ -125,6 +125,11 @@ namespace Marlin.View {
             }
 
             switch (nview) {
+            case ViewMode.LIST:
+                slot = new GOF.Window.Slot(location, this);
+                connect_available_info();
+                slot.make_list_view();
+                break;
             case ViewMode.MILLER:
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;
@@ -134,7 +139,7 @@ namespace Marlin.View {
             default:
                 slot = new GOF.Window.Slot(location, this);
                 connect_available_info();
-                slot.make_view();
+                slot.make_icon_view();
                 break;
             }
             /* focus the main view */

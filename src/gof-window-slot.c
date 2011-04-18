@@ -19,6 +19,7 @@
 
 #include "gof-window-slot.h"
 //#include "gof-directory-async.h"
+#include "fm-icon-view.h"
 #include "fm-list-view.h"
 #include "fm-columns-view.h"
 #include "marlin-view-window.h"
@@ -154,7 +155,16 @@ gof_window_slot_new (GFile *location, GObject *ctab)
  * of the current files of this directory).
  **/
 void
-gof_window_slot_make_view (GOFWindowSlot *slot)
+gof_window_slot_make_icon_view (GOFWindowSlot *slot)
+{
+    slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_ICON_VIEW,
+                                               "window-slot", slot, NULL));
+    marlin_view_view_container_set_content (slot->ctab, slot->view_box);
+    load_dir_async (slot->directory);
+}
+
+void
+gof_window_slot_make_list_view (GOFWindowSlot *slot)
 {
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
                                                "window-slot", slot, NULL));

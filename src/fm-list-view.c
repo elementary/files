@@ -196,6 +196,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     g_list_free (paths);*/
 }
 
+#if 0
 static void
 activate_selected_items (FMListView *view)
 {
@@ -251,12 +252,13 @@ activate_selected_items (FMListView *view)
 
     //gof_file_list_free (file_list);
 }
+#endif
 
 static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMListView *view)
 {
     log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
-    activate_selected_items (view);
+    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view));
 }
 
 static void
@@ -617,7 +619,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
 static gboolean
 key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_data)
 {
-    FMListView *view;
+    FMDirectoryView *view;
     //GdkEventButton button_event = { 0 };
     gboolean handled;
     GtkTreeView *tree_view;
@@ -625,7 +627,7 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
 
     tree_view = GTK_TREE_VIEW (widget);
 
-    view = FM_LIST_VIEW (callback_data);
+    view = FM_DIRECTORY_VIEW (callback_data);
     handled = FALSE;
 
     switch (event->keyval) {
@@ -663,7 +665,7 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
         /*if ((event->state & GDK_SHIFT_MASK) != 0) {
           activate_selected_items_alternate (FM_LIST_VIEW (view), NULL, TRUE);
           } else {*/
-        activate_selected_items (FM_LIST_VIEW (view));
+        fm_directory_view_activate_selected_items (view);
         //}
         handled = TRUE;
         break;
@@ -672,7 +674,7 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
         /*if ((event->state & GDK_SHIFT_MASK) != 0) {
           activate_selected_items_alternate (FM_LIST_VIEW (view), NULL, TRUE);
           } else {*/
-        activate_selected_items (view);
+        fm_directory_view_activate_selected_items (view);
         //}
         handled = TRUE;
         break;
@@ -842,20 +844,25 @@ create_and_set_up_tree_view (FMListView *view)
         //gtk_tree_view_column_set_expand (col, TRUE);
         }*/ 
         if (k == FM_LIST_MODEL_FILENAME) {
-            //cell = nautilus_cell_renderer_pixbuf_emblem_new ();
-            renderer = gtk_cell_renderer_pixbuf_new (); 
             col = gtk_tree_view_column_new ();
             view->details->file_name_column = col;
             gtk_tree_view_column_set_sort_column_id  (col,k);
             gtk_tree_view_column_set_resizable (col, TRUE);
             gtk_tree_view_column_set_title (col, col_title[k-3]);
             gtk_tree_view_column_set_expand (col, TRUE);
+#if 0
+            renderer = gtk_cell_renderer_pixbuf_new (); 
             gtk_tree_view_column_pack_start (col, renderer, FALSE);
             gtk_tree_view_column_set_attributes (col,
                                                  renderer,
                                                  "pixbuf", FM_LIST_MODEL_ICON,
                                                  //"pixbuf_emblem", FM_LIST_MODEL_SMALLEST_EMBLEM_COLUMN,
                                                  NULL);
+#endif
+            /* add the icon renderer */
+            gtk_tree_view_column_pack_start (col, FM_DIRECTORY_VIEW (view)->icon_renderer, FALSE);
+            gtk_tree_view_column_set_attributes (col, FM_DIRECTORY_VIEW (view)->icon_renderer,
+                                                 "file",  FM_LIST_MODEL_FILE_COLUMN, NULL);
 
             renderer = nautilus_cell_renderer_text_ellipsized_new ();
            	view->details->file_name_cell = (GtkCellRendererText *) renderer;
@@ -1110,6 +1117,21 @@ fm_list_view_highlight_path (FMDirectoryView *view, GtkTreePath *path)
     gtk_tree_view_set_drag_dest_row (FM_LIST_VIEW (view)->tree, path, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
 }
 
+#if 0
+static void
+fm_list_view_zoom_level_changed (FMListView *view)
+{
+    GList *cols, *l;
+
+    cols =  gtk_tree_view_get_columns (view->tree);
+    for(l=cols; l != NULL; l=l->next) {
+        /* just queue a resize on this column */
+        if (gtk_tree_view_column_get_visible (l->data))
+            gtk_tree_view_column_queue_resize (l->data);
+    }
+}
+#endif
+
 static void
 fm_list_view_finalize (GObject *object)
 {
@@ -1142,6 +1164,13 @@ fm_list_view_init (FMListView *view)
                      EXO_TREE_VIEW (view->tree), "single-click", 0);
     g_settings_bind (settings, "single-click-timeout", 
                      EXO_TREE_VIEW (view->tree), "single-click-timeout", 0);
+
+    /* set the new "size" for the icon renderer */
+    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "size", 16, NULL);
+    //TODO clean up this "hack"
+    gtk_cell_renderer_set_fixed_size (FM_DIRECTORY_VIEW (view)->icon_renderer, 18, 18);
+
+    //fm_list_view_zoom_level_changed (view);
 }
 
 static void

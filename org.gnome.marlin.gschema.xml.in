@@ -1,7 +1,17 @@
 <schemalist>
   <enum id="viewmode">
-    <value nick="list" value="0"/>
-    <value nick="miller_columns" value="1"/>
+    <value nick="icon" value="0"/>
+    <value nick="list" value="1"/>
+    <value nick="miller_columns" value="2"/>
+  </enum>
+  <enum id="org.gnome.marlin.ZoomLevel">
+    <value nick="smallest" value="0"/>
+    <value nick="smaller" value="1"/>
+    <value nick="small" value="2"/>
+    <value nick="normal" value="3"/>
+    <value nick="large" value="4"/>
+    <value nick="larger" value="5"/>
+    <value nick="largest" value="6"/>
   </enum>
 
   <schema id="org.gnome.marlin.preferences" path="/apps/marlin/preferences/">
@@ -127,4 +137,18 @@
       </_description>
     </key>
   </schema>
+
+  <schema id="org.gnome.marlin.icon-view" path="/apps/marlin/icon-view/">
+    <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
+      <default>'normal'</default>
+      <_summary>icon default zoom level</_summary>
+      <_description>Default Zoom level used by the icon view.</_description>
+    </key>
+    <key name="zoom-level" enum="org.gnome.marlin.ZoomLevel">
+      <default>'normal'</default>
+      <_summary>icon zoom level</_summary>
+      <_description>Zoom level used by the icon view.</_description>
+    </key>
+  </schema>
+
 </schemalist>
