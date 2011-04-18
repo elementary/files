@@ -53,7 +53,6 @@ marlin_VALASOURCES = \
     $(NULL)
 
 marlin_CSOURCES = \
-    marlin-main.c                           \
     marlin-application.c                    \
     mysignal.c                              \
     eel-fcts.c                              \
@@ -101,6 +100,7 @@ marlin_CSOURCES = \
 marlin_SOURCES = \
     $(marlin_VALASOURCES:.vala=.c)          \
     $(marlin_CSOURCES)                      \
+	marlin-main.c                           \
     $(NULL)
 
 nodist_marlin_SOURCES = \
@@ -147,4 +147,23 @@ CLEANFILES = \
     $(BUILT_SOURCES) \
 	$(marlin_VALASOURCES:.vala=.c) \
 	$(NULL)
+
+# GLIB - Library of useful C routines
+
+#GTESTER = gtester 			# for non-GLIB packages
+GTESTER = /usr/bin/gtester		# for the GLIB package
+GTESTER_REPORT = /usr/bin/gtester-report	# for the GLIB package
+
+check_PROGRAMS = marlintests
+marlintests_SOURCES = tests/marlintests.c             \
+					  tests/mwc_tests.c               \
+					  $(marlin_VALASOURCES:.vala=.c)  \
+				      $(marlin_CSOURCES)              \
+					  $(BUILT_SOURCES)                \
+					  $(NULL)
+marlintests_LDADD = $(CORE_LIBS) $(NULL)
+marlintests_CFLAGS = $(CORE_CFLAGS) $(NULL) -I..
+marlintests_CPPFLAGS = $(marlin_CPPFLAGS)
+TESTS_ENVIRONMENT= $(GTESTER)
+TESTS = marlintests
 

@@ -58,3 +58,4 @@ src/marlin-vala.h
 src/marlin.vala.stamp
 src/View/Animations.c
 src/View/SettingsDialog.c
+src/marlintests

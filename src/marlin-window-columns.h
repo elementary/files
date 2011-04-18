@@ -56,6 +56,7 @@ typedef struct {
       GtkWidget *extra_location_separator;*/
     GtkWidget *view_box;
     GtkWidget *colpane;
+    GtkAdjustment *hadj;
 
     /* Current location. */
     GFile *location;
@@ -107,11 +108,8 @@ GType                   marlin_window_columns_get_type (void);
 
 MarlinWindowColumns     *marlin_window_columns_new (GFile *location, GObject *ctab);
 void                    marlin_window_columns_make_view (MarlinWindowColumns *mwcols);
-//void                    marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location);
 
 void                    marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location);
 GFile                   *marlin_window_columns_get_location (MarlinWindowColumns *mwcol);
-//GOFWindowSlot   *marlin_window_columns_get_active_slot (MarlinWindowColumns *mwcols);
-void                    marlin_window_columns_change_location (GOFWindowSlot *slot, GFile *location);
 
 #endif /* MARLIN_WINDOW_COLUMNS_H */
