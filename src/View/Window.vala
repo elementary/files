@@ -145,6 +145,7 @@ namespace Marlin.View {
             tabs = new Notebook();
             tabs.show_border = false;
             tabs.show_tabs = false;
+            tabs.set_scrollable(true);
             tabs.show();
 
             //view = new View();
