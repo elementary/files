@@ -285,7 +285,6 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
     case GDK_KEY_Right:
         gtk_tree_view_get_cursor (tree_view, &path, NULL);
         if (path) {
-            //gtk_tree_view_expand_row (tree_view, path, FALSE);
             gtk_tree_path_free (path);
         }
         handled = TRUE;
@@ -293,7 +292,6 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
     case GDK_KEY_Left:
         gtk_tree_view_get_cursor (tree_view, &path, NULL);
         if (path) {
-            //gtk_tree_view_collapse_row (tree_view, path);
             gtk_tree_path_free (path);
         }
         handled = TRUE;
@@ -559,6 +557,15 @@ fm_columns_view_get_selection (FMDirectoryView *view)
     return FM_COLUMNS_VIEW (view)->details->selection;
 }
 
+static GList *
+fm_columns_view_get_selection_for_file_transfer (FMDirectoryView *view)
+{
+    GList *list = g_list_copy (fm_columns_view_get_selection (view));
+    g_list_foreach (list, (GFunc) gof_file_ref, NULL);
+
+    return list;
+}
+
 static GtkTreePath*
 fm_columns_view_get_path_at_pos (FMDirectoryView *view, gint x, gint y)
 {
@@ -628,7 +635,7 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class->remove_file = fm_columns_view_remove_file;
     fm_directory_view_class->colorize_selection = fm_columns_view_colorize_selected_items;
     fm_directory_view_class->get_selection = fm_columns_view_get_selection; 
-    fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection; 
+    fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer; 
 
     fm_directory_view_class->get_path_at_pos = fm_columns_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_columns_view_highlight_path;
