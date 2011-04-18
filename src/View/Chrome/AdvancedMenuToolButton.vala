@@ -2,7 +2,7 @@ using Gdk;
 
 namespace Gtk {
 
-    public abstract class AdvancedMenuToolButton : ToggleToolButton
+    public abstract class AdvancedMenuToolButton : ToolButton
     {
         public delegate Menu MenuFetcher();
 

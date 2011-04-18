@@ -39,7 +39,7 @@ namespace Marlin.View
 
             /* Single click */
             var hbox_single_click = new Gtk.HBox(false, 0);
-            var checkbox = new Gtk.CheckButton();
+            var checkbox = new Gtk.Switch();
 
             Preferences.settings.bind("single-click", checkbox , "active", SettingsBindFlags.DEFAULT);
 
