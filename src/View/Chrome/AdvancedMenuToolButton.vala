@@ -88,8 +88,6 @@ namespace Gtk {
 
             menu = _menu;
 
-            update_menu_properties();
-
             mnemonic_activate.connect(on_mnemonic_activate);
 
             button = (Button) get_child();
