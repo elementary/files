@@ -426,7 +426,8 @@ namespace Marlin.View {
                 ((FM.Directory.View) current_tab.slot.view_box).sync_selection();
             } else {
                  //main_box.remove (contextview);
-                contextview.destroy();
+                if (contextview != null)
+                    contextview.destroy();
                 contextview = null;
             }
         }
