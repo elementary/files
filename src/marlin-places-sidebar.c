@@ -43,7 +43,7 @@
 #include "marlin-trash-monitor.h"
 #include "marlin-dnd.h"
 
-#define EJECT_BUTTON_XPAD 0
+#define EJECT_BUTTON_XPAD 4
 #define TEXT_XPAD 5
 #define ICON_XPAD 6
 
@@ -734,8 +734,7 @@ over_eject_button (MarlinPlacesSidebar *sidebar,
                    GtkTreePath **path)
 {
     GtkTreeViewColumn *column;
-    GtkTextDirection direction;
-    int width, total_width;
+    int width, x_offset, hseparator;
     int eject_button_size;
     gboolean show_eject;
     GtkTreeIter iter;
@@ -755,35 +754,27 @@ over_eject_button (MarlinPlacesSidebar *sidebar,
             goto out;
         }
 
-        total_width = 0;
-
         gtk_widget_style_get (GTK_WIDGET (sidebar->tree_view),
-                              "horizontal-separator", &width,
+                              "horizontal-separator", &hseparator,
                               NULL);
-        total_width += width;
 
-        direction = gtk_widget_get_direction (GTK_WIDGET (sidebar->tree_view));
-        if (direction != GTK_TEXT_DIR_RTL) {
-            gtk_tree_view_column_cell_get_position (column,
-                                                    sidebar->icon_cell_renderer,
-                                                    NULL, &width);
-            total_width += width;
+        /* Reload cell attributes for this particular row */
+		/*gtk_tree_view_column_cell_set_cell_data (column,
+							 GTK_TREE_MODEL (sidebar->store), &iter, FALSE, FALSE);*/
 
-            gtk_tree_view_column_cell_get_position (column,
-                                                    sidebar->eject_text_cell_renderer,
-                                                    NULL, &width);
-            total_width += width;
-        }
+		gtk_tree_view_column_cell_get_position (column,
+							sidebar->eject_icon_cell_renderer,
+							&x_offset, &width);
 
-        total_width += EJECT_BUTTON_XPAD + TEXT_XPAD + ICON_XPAD;
-
-        //TODO
-        //eject_button_size = nautilus_get_icon_size_for_stock_size (GTK_ICON_SIZE_MENU);
         eject_button_size = 16;
+        x_offset += width - hseparator - EJECT_BUTTON_XPAD - eject_button_size;
 
-        if (x - total_width >= 0 && x - total_width <= eject_button_size) {
+        if (x - x_offset >= 0 && x - x_offset <= eject_button_size) {
+            //printf ("over eject button\n");
             return TRUE;
-        }
+        } /*else {
+            printf ("FAILED over eject\n");
+        }*/
     }
 
 out:
@@ -2963,11 +2954,12 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
 
 
     cell = gtk_cell_renderer_pixbuf_new ();
+    sidebar->eject_icon_cell_renderer = cell;
     g_object_set (cell,
                   "mode", GTK_CELL_RENDERER_MODE_ACTIVATABLE,
-                  //TODO
                   "stock-size", 16,
                   "xpad", EJECT_BUTTON_XPAD,
+                  "xalign", 1.0,
                   NULL);
     gtk_tree_view_column_pack_start (col, cell, FALSE);
     gtk_tree_view_column_set_attributes (col, cell,
@@ -3002,6 +2994,10 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
 
     cell = gossip_cell_renderer_expander_new ();
     sidebar->expander_renderer = cell;
+    /* align expander with eject buttons */
+    gint exp_size;
+    g_object_get (cell, "expander-size", &exp_size, NULL);
+    g_object_set (cell, "xpad", ABS (16 - exp_size) + EJECT_BUTTON_XPAD, "xalign", 1.0, NULL);
     gtk_tree_view_column_pack_end (col, cell, FALSE);
     gtk_tree_view_column_set_cell_data_func (col, 
                                              cell, 

@@ -46,8 +46,9 @@ typedef struct {
     GtkCellRenderer     *indent_renderer;
     GtkCellRenderer     *icon_cell_renderer;
     GtkCellRenderer     *eject_text_cell_renderer;
-    GtkCellRenderer	*expander_renderer;
-    char 	        *uri;
+    GtkCellRenderer     *eject_icon_cell_renderer;
+    GtkCellRenderer	    *expander_renderer;
+    char 	            *uri;
     GtkTreeStore        *store;
     GtkWidget           *window;
     MarlinBookmarkList  *bookmarks;
