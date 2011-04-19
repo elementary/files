@@ -86,7 +86,6 @@ static void     fm_icon_view_zoom_level_changed (FMDirectoryView *view);
   log_printf (LOG_LEVEL_UNDEFINED, "selected: %s\n", file->name);
   }*/
 
-//TODO
 static void
 fm_icon_view_selection_changed (GtkTreeSelection *selection, gpointer user_data)
 {
@@ -331,35 +330,20 @@ fm_icon_view_start_renaming_file (FMDirectoryView *view,
 
     gtk_tree_path_free (path);
 }
+#endif
 
 static void
 fm_icon_view_sync_selection (FMDirectoryView *view)
 {
-    //TODO replace this crap
-    FMIconView *list_view = FM_ICON_VIEW (view);
+    FMIconView *icon_view = FM_ICON_VIEW (view);
+    GOFFile *file;
 
-    fm_icon_view_selection_changed (gtk_tree_view_get_selection (list_view->tree), view);
+    if (icon_view->details->selection != NULL) 
+        file = icon_view->details->selection->data;
+
+    fm_directory_view_notify_selection_changed (view, file);
 }
 
-static void
-subdirectory_unloaded_callback (FMListModel *model,
-                                GOFDirectoryAsync *directory,
-                                gpointer callback_data)
-{
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
-    FMIconView *view;
-
-    g_return_if_fail (FM_IS_LIST_MODEL (model));
-    g_return_if_fail (GOF_IS_DIRECTORY_ASYNC (directory));
-
-    view = FM_ICON_VIEW(callback_data);
-
-    /*g_signal_handlers_disconnect_by_func (directory,
-      G_CALLBACK (subdirectory_done_loading_callback),
-      view);*/
-    fm_directory_view_remove_subdirectory (FM_DIRECTORY_VIEW (view), directory);
-}
-#endif
 
 /*static void
   do_popup_menu (GtkWidget *widget, FMIconView *view, GdkEventButton *event)
@@ -881,7 +865,7 @@ fm_icon_view_class_init (FMIconViewClass *klass)
     fm_directory_view_class->add_file = fm_icon_view_add_file;
     fm_directory_view_class->remove_file = fm_icon_view_remove_file;
     //fm_directory_view_class->colorize_selection = fm_icon_view_colorize_selected_items;        
-    /*fm_directory_view_class->sync_selection = fm_icon_view_sync_selection;*/
+    fm_directory_view_class->sync_selection = fm_icon_view_sync_selection;
     fm_directory_view_class->get_selection = fm_icon_view_get_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_list_view_get_selection_for_file_transfer;
 

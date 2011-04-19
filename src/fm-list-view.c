@@ -471,10 +471,13 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
 static void
 fm_list_view_sync_selection (FMDirectoryView *view)
 {
-    //TODO replace this crap
     FMListView *list_view = FM_LIST_VIEW (view);
+    GOFFile *file;
 
-    list_selection_changed_callback (gtk_tree_view_get_selection (list_view->tree), view);
+    if (list_view->details->selection != NULL) 
+        file = list_view->details->selection->data;
+
+    fm_directory_view_notify_selection_changed (view, file);
 }
 
 static void
