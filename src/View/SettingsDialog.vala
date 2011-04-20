@@ -76,7 +76,28 @@ namespace Marlin.View
 
             
             /* Sidebar icon size */
-            var spin_icon_size = new Gtk.SpinButton.with_range(4, 128, 1);
+            var spin_icon_size = new Chrome.ModeButton();
+            spin_icon_size.append(new Gtk.Label("16"));
+            spin_icon_size.append(new Gtk.Label("24"));
+            spin_icon_size.append(new Gtk.Label("32"));
+            spin_icon_size.append(new Gtk.Label("48"));
+            switch((int)Preferences.settings.get_value("sidebar-icon-size"))
+            {
+            case 16:
+                spin_icon_size.selected = 0;
+                break;
+            case 24:
+                spin_icon_size.selected = 1;
+                break;
+            case 32:
+                spin_icon_size.selected = 2;
+                break;
+            case 48:
+                spin_icon_size.selected = 3;
+                break;
+            }
+
+            spin_icon_size.mode_changed.connect(spin_icon_size_changed);
 
             hbox_single_click = new Gtk.HBox(false, 0);
 
@@ -86,7 +107,7 @@ namespace Marlin.View
             hbox_single_click.pack_start(label);
             hbox_single_click.pack_start(spin_icon_size, false, false);
 
-            Preferences.settings.bind("sidebar-icon-size", spin_icon_size, "value", SettingsBindFlags.DEFAULT);
+            //Preferences.settings.bind("sidebar-icon-size", spin_icon_size, "value", SettingsBindFlags.DEFAULT);
             
             first_vbox.pack_start(hbox_single_click, false);
 
@@ -101,6 +122,27 @@ namespace Marlin.View
             add_buttons("gtk-close", Gtk.ResponseType.DELETE_EVENT);
             
             run();
+        }
+
+        private void spin_icon_size_changed(Gtk.Widget widget)
+        {
+            int value = 16;
+            switch(((Gtk.Label)widget).get_text())
+            {
+            case "16":
+                value = 16;
+                break;
+            case "24":
+                value = 24;
+                break;
+            case "32":
+                value = 32;
+                break;
+            case "48":
+                value = 48;
+                break;
+            }
+            Preferences.settings.set_value("sidebar-icon-size", value);
         }
 
         public override void response(int id)
