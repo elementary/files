@@ -50,6 +50,7 @@ namespace Marlin.View.Chrome
 
             bread.activate_entry.connect( () => { state = false; update_widget(); });
 
+            bread.changed.connect( () => { entry.text = bread.text; activate(); });
             state = true;
 
             set_expand(true);
@@ -78,7 +79,9 @@ namespace Marlin.View.Chrome
     class Breadcrumbs : DrawingArea
     {
         public signal void activate_entry();
+        public signal void changed();
         public string text = "/";
+        Gee.ArrayList<int> list;
         public Breadcrumbs()
         {
 
@@ -93,13 +96,69 @@ namespace Marlin.View.Chrome
             {
                 activate_entry();
             }
+            else
+            {
+                int x = (int)event.x;
+                foreach(int x_render in list)
+                {
+                    if(x < x_render)
+                    {
+                        int to_keep = list.index_of(x_render);
+                        print(to_keep.to_string() + "\n");
+
+                        var text_tmp = text;
+                        text = "";
+                        for(int i = 0; i <= to_keep; i++)
+                        {
+                            text += text_tmp.split("/")[i] + "/";
+                        }
+                        print(text);
+
+                        changed();
+                        break;
+                    }
+                }
+            }
             return false;
         }
 
         public override bool draw(Cairo.Context cr)
         {
             double height = get_allocated_height();
+            double width = get_allocated_width();
             Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height());
+           
+
+            cr.set_source_rgb(0.8,0.8,0.8);
+            int r = 10;
+            int x = 0;
+            int y = 5;
+            height -= 2*y;
+            width -= 2*x;
+               cr.move_to(x+r, y); // Move to A
+               cr.line_to(x+width-r, y); // Straight line to B
+               cr.curve_to(x+width, y, x+width, y, x+width, y+r); // Curve to C, Control points are both at Q
+               cr.line_to(x+width, y+height-r); // Move to D
+               cr.curve_to(x+width, y+height, x+width, y+height, x+width-r, y+height); // Curve to E
+               cr.line_to(x+r,y+height); // Line to F
+               cr.curve_to(x,y+height,x,y+height,x,y+height-r); // Curve to 
+               cr.line_to(x,y+r); // Line to H
+               cr.curve_to(x,y,x,y,x+r,y); // Curve to A
+            height = get_allocated_height();
+            width = get_allocated_width();
+
+            Cairo.Pattern pat = new Cairo.Pattern.linear(0,0, 0, height-2*y);
+
+            pat.add_color_stop_rgb(0, 0.8,0.8,0.8);
+            pat.add_color_stop_rgb(1, 0.7,0.7,0.7);
+
+            cr.set_source(pat);
+            cr.fill_preserve();
+            cr.set_source_rgb(0.5,0.5,0.5);
+            cr.set_line_width(1);
+            cr.stroke();
+
+
             cr.set_source_rgb(0,0,0);
             //cr.paint();
             cr.set_font_size(15);
@@ -114,8 +173,9 @@ namespace Marlin.View.Chrome
             cr.show_text(path);
             double x_render = -10;
             Cairo.TextExtents txt = Cairo.TextExtents();
-            cr.set_line_width(2);
+            cr.set_line_width(1);
             cr.set_source_rgb(0.6,0.6,0.6);
+            list = new Gee.ArrayList<int>();
             foreach(string dir in dirs)
             {
                 cr.text_extents(dir + "   ", out txt);
@@ -124,6 +184,7 @@ namespace Marlin.View.Chrome
                 cr.line_to(x_render + 5, height/2);
                 cr.line_to(x_render, height/2 + height/6);
                 cr.stroke();
+                list.add((int)x_render);
             }
 
             return true;
