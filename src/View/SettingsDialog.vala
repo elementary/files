@@ -68,6 +68,13 @@ namespace Marlin.View
             
             first_vbox.pack_start(hbox_single_click, false);
             
+            
+            main_notebook.append_page(first_vbox, new Gtk.Label(N_("Behavior")));
+
+            first_vbox = new Gtk.VBox(false, 3);
+            first_vbox.border_width = 5;
+
+            
             /* Sidebar icon size */
             var spin_icon_size = new Gtk.SpinButton.with_range(4, 128, 1);
 
@@ -83,9 +90,7 @@ namespace Marlin.View
             
             first_vbox.pack_start(hbox_single_click, false);
 
-            
-            
-            main_notebook.append_page(first_vbox, new Gtk.Label(N_("Misc")));
+            main_notebook.append_page(first_vbox, new Gtk.Label(N_("Display")));
 
             ((Gtk.HBox)get_content_area()).pack_start(main_notebook);
 
