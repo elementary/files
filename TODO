@@ -1,7 +1,6 @@
 This is a short TODO list.
 
 - middle click folder whould open in new tab.
-- add popup menu for back/forward arrow toolbar button with the history from the 2 stacks on long click or right click: extend Browser class.
 - add completion on the pathbar location, cf thunar they got a nice popup menu.
 - add emblems
 - check dropbox support
