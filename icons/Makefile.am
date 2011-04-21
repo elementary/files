@@ -4,6 +4,9 @@ icondir = $(datadir)/pixmaps/marlin
 
 icon_DATA =\
 	thumbnail_frame.png \
+	bread_left.png \
+	bread_right.png \
+	bread_center.png \
         view-list-icons-symbolic.svg \
         view-list-details-symbolic.svg \
         view-list-compact-symbolic.svg \

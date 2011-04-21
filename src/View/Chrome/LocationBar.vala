@@ -89,7 +89,13 @@ namespace Marlin.View.Chrome
         Gee.ArrayList<int> list;
         int selected = -1;
         string gtk_font_name;
-        int space_breads = 5;
+        int space_breads = 10;
+        
+        Cairo.ImageSurface bread_center;
+        Cairo.ImageSurface bread_left;
+        Cairo.ImageSurface bread_right;
+        Cairo.ImageSurface bread_separator;
+        
         public Breadcrumbs()
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
@@ -100,6 +106,10 @@ namespace Marlin.View.Chrome
             var font = Pango.FontDescription.from_string (gtk_font_name);
             gtk_font_name = font.get_family();
             print(gtk_font_name  + "\n\n\n\n");
+            bread_center = new Cairo.ImageSurface.from_png("icons/bread_center.png");
+            bread_right = new Cairo.ImageSurface.from_png("icons/bread_right.png");
+            bread_left = new Cairo.ImageSurface.from_png("icons/bread_left.png");
+            bread_separator = new Cairo.ImageSurface.from_png("icons/bread_separator.png");
         }
 
         public override bool button_press_event(Gdk.EventButton event)
@@ -164,18 +174,15 @@ namespace Marlin.View.Chrome
             double width = get_allocated_width();
             Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height());
 
-            /* Select system font */
-            cr.select_font_face(gtk_font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
-
             /* All this block is an ugly copy/paste to get a rounded rectangle,
              * it needs to be removed and replaced by some gtk/theming stuff. */
             cr.set_source_rgb(0.8,0.8,0.8);
-            int r = 10;
+            int r = 5;
             int x = 0;
             int y = 5;
             height -= 2*y;
             width -= 2*x;
-            cr.move_to(x+r, y); // Move to A
+            /*cr.move_to(x+r, y); // Move to A
             cr.line_to(x+width-r, y); // Straight line to B
             cr.curve_to(x+width, y, x+width, y, x+width, y+r); // Curve to C, Control points are both at Q
             cr.line_to(x+width, y+height-r); // Move to D
@@ -183,47 +190,75 @@ namespace Marlin.View.Chrome
             cr.line_to(x+r,y+height); // Line to F
             cr.curve_to(x,y+height,x,y+height,x,y+height-r); // Curve to 
             cr.line_to(x,y+r); // Line to H
-            cr.curve_to(x,y,x,y,x+r,y); // Curve to A
+            cr.curve_to(x,y,x,y,x+r,y); // Curve to A*/
+            cr.scale(1, height/bread_left.get_height());
+            cr.set_source_surface(bread_left, 0, y * bread_left.get_height()/height);
+            cr.paint();
+            cr.restore();
+            cr.save();
+
+            Cairo.Pattern pat = new Cairo.Pattern.for_surface(bread_center);
+            pat.set_extend(Cairo.Extend.REPEAT);
+            Cairo.Matrix mat = Cairo.Matrix.identity();
+            mat.scale((width - bread_left.get_width() - bread_right.get_width()), bread_center.get_height()/height);
+            pat.set_matrix(mat);
+            cr.translate(bread_left.get_width(),y);
+            cr.set_source(pat);
+            cr.rectangle(0,0,(width - bread_left.get_width() - bread_right.get_width()),height);
+            cr.fill();
+            cr.restore();
+            cr.save();
+
+            cr.translate(width - bread_right.get_width(), y);
+            cr.scale(height/bread_right.get_height(), height/bread_right.get_height());
+            cr.set_source_surface(bread_right, 0, 0);
+            cr.paint();
+            cr.restore();
+            cr.save();
+
             height = get_allocated_height();
             width = get_allocated_width();
 
-            Cairo.Pattern pat = new Cairo.Pattern.linear(0,0, 0, height-2*y);
+            /*Cairo.Pattern pat = new Cairo.Pattern.linear(0,0, 0, height-2*y);
 
-            pat.add_color_stop_rgb(0, 0.8,0.8,0.8);
-            pat.add_color_stop_rgb(1, 0.7,0.7,0.7);
+            pat.add_color_stop_rgb(0, 0.99,0.99,0.99);
+            pat.add_color_stop_rgb(1, 0.86,0.86,0.86);
 
             cr.set_source(pat);
             cr.fill_preserve();
-            cr.set_source_rgb(0.5,0.5,0.5);
+            cr.set_source_rgb(0.66,0.66,0.66);
             cr.set_line_width(1);
-            cr.stroke();
+            cr.stroke();*/
 
             /* Remove all "/" and replace them with some space. We will keep the
              * first / since it shows the root path. */
             var dirs = text.split("/");
-            var path = " /  ";
-            foreach(string dir in dirs)
-            {
-                if(dir != "")
-                    path += dir + "   ";
-            }
-            
             /* the > */
             double x_render = 0;
+            /* Select system font */
+            cr.select_font_face(gtk_font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
             Cairo.TextExtents txt = Cairo.TextExtents();
             cr.set_font_size(15);
             cr.set_line_width(1);
+            cr.save();
             list = new Gee.ArrayList<int>();
             cr.text_extents("/" + "  ", out txt);
             x_render += txt.x_advance;
             
             /* Draw the first > */
-            cr.set_source_rgb(0.6,0.6,0.6);
+            /*cr.set_source_rgb(0.6,0.6,0.6);
             cr.move_to(x_render, height/3);
             cr.line_to(x_render + 5, height/2);
             cr.line_to(x_render, height/2 + height/6);
-            cr.stroke();
+            cr.stroke();*/
             
+            cr.translate(x_render, y);
+            cr.scale((height - 2*y)/bread_separator.get_height(), (height -2*y)/bread_separator.get_height());
+            cr.set_source_surface(bread_separator, 0, 0);
+            cr.paint();
+            cr.restore();
+            cr.save();
+
             /* Add the value into our list to recall it later. */
             list.add((int)x_render);
             
@@ -234,11 +269,14 @@ namespace Marlin.View.Chrome
                 if(dir != "")
                 {
                     cr.text_extents(dir + "   ", out txt);
+                    
                     x_render += txt.x_advance + space_breads;
-                    cr.move_to(x_render, height/3);
-                    cr.line_to(x_render + 5, height/2);
-                    cr.line_to(x_render, height/2 + height/6);
-                    cr.stroke();
+                    cr.translate(x_render, y);
+                    cr.scale((height - 2*y)/bread_separator.get_height(), (height -2*y)/bread_separator.get_height());
+                    cr.set_source_surface(bread_separator, 0, 0);
+                    cr.paint();
+                    cr.restore();
+                    cr.save();
                     list.add((int)x_render);
                 }
             }
@@ -266,10 +304,9 @@ namespace Marlin.View.Chrome
                 cr.set_source_rgb(0,0,0);
 
             /* The path itself, e.g. " /   home" */
-            cr.move_to(3, get_allocated_height()/2 + 15/2);
 
             int i = 0;
-            cr.move_to(5, get_allocated_height()/2 + 15/2);
+            cr.move_to(5, get_allocated_height()/2 + 13/2);
             cr.show_text("/");
             foreach(string dir in dirs)
             {
@@ -277,7 +314,7 @@ namespace Marlin.View.Chrome
                  * dirs, and we only need three. */ 
                 if(dir != "")
                 {
-                    cr.move_to(8 + list[i], get_allocated_height()/2 + 15/2);
+                    cr.move_to(bread_separator.get_width() + list[i], get_allocated_height()/2 + 13/2);
                     cr.show_text(dir);
                     i++;
                 }
