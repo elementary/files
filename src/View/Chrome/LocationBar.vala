@@ -26,14 +26,19 @@ namespace Marlin.View.Chrome
     {
         private Entry entry;
         private Breadcrumbs bread;
-
-        public bool state;
+        bool _state;
+        public bool state
+        {
+            get { return _state; }
+            set { _state = value; update_widget(); }
+        }
 
         public new string path{
             set{
                 var new_path = value;
                 entry.text = new_path;
                 bread.text = new_path;
+                state = true;
                 bread.queue_draw();
             }
             get{
@@ -48,7 +53,7 @@ namespace Marlin.View.Chrome
             entry = new Entry ();
             bread = new Breadcrumbs();
 
-            bread.activate_entry.connect( () => { state = false; update_widget(); });
+            bread.activate_entry.connect( () => { state = false; });
 
             bread.changed.connect( () => { entry.text = bread.text; activate(); });
             state = true;
@@ -56,15 +61,16 @@ namespace Marlin.View.Chrome
             set_expand(true);
             add(bread);
 
-            entry.activate.connect(() => { activate(); state = true; update_widget(); });
-            entry.focus_out_event.connect(() => {state = true; update_widget(); return false; });
+            entry.activate.connect(() => { activate(); state = true;});
+            entry.focus_out_event.connect(() => { if(!state) state = true; return true; });
         }
 
         private void update_widget()
         {
-            remove(entry);
-            remove(bread);
-            if(state)
+            var list = get_children();
+            foreach(Widget w in list)
+                remove(w);
+            if(_state)
             {
                 add(bread);
             }

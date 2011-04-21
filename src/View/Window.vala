@@ -241,8 +241,12 @@ namespace Marlin.View {
             binding_set = Gtk.BindingSet.by_class (typeof (Marlin.View.Window).class_ref ());
             action_new (typeof (Marlin.View.Window), "go_up");
             Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
+            action_new (typeof (Marlin.View.Window), "edit_path");
+            Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
             Signal.connect (this, "go_up",
                     (GLib.Callback)action_go_up, null);
+            Signal.connect (this, "edit_path",
+                    (GLib.Callback)action_edit_path, null);
         }
 
         public void colorize_current_tab_selection (int n) {
@@ -403,6 +407,10 @@ namespace Marlin.View {
 
         private void action_go_up () {
             current_tab.up();
+        }
+
+        private void action_edit_path () {
+            top_menu.location_bar.state = false;
         }
 
         private void action_go_back (Gtk.Action action) {
