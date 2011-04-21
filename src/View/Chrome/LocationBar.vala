@@ -266,24 +266,32 @@ namespace Marlin.View.Chrome
                     x_hl = -10;
                 else
                     x_hl = list[selected - 1] + 5;
-                cr.move_to(x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7,
+                double first_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7;
+                cr.move_to(first_stop,
                            y);
                 cr.line_to(x_hl + 5,
                            height/2);
-                cr.line_to(x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7,
+                cr.line_to(first_stop,
                            height - y);
                 x_hl = list[selected] + 7;
-                cr.line_to(x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7,
+                double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7;
+                cr.line_to(second_stop,
                            height - y);
                 cr.line_to(x_hl + 5,
                            height/2);
-                cr.line_to(x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7,
+                cr.line_to(second_stop,
                            y);
                 cr.close_path();
+                Gdk.RGBA color = Gdk.RGBA();
+                button.get_style_context().get_background_color(Gtk.StateFlags.SELECTED, color);
+                
+                Cairo.Pattern pat = new Cairo.Pattern.linear(first_stop, y, second_stop, y);
+                pat.add_color_stop_rgba(0, color.red, color.green, color.blue, 0);
+                pat.add_color_stop_rgba(1, color.red, color.green, color.blue, 1);
                 
                 /* TODO: This color shouldn't be hardcoded, we should read it
                  * from a gtk theme */ 
-                cr.set_source_rgba(0.5,0.5,0.5, 0.3);
+                cr.set_source(pat);
                 cr.fill();
                 y--;
             }
