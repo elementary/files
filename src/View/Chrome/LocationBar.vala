@@ -96,13 +96,10 @@ namespace Marlin.View.Chrome
         Gee.ArrayList<int> list;
         int selected = -1;
         string gtk_font_name;
-        int space_breads = 10;
-        
-        Cairo.ImageSurface bread_center;
-        Cairo.ImageSurface bread_left;
-        Cairo.ImageSurface bread_right;
-        Cairo.ImageSurface bread_separator;
+        int space_breads = 12;
+
         Cairo.ImageSurface home_img;
+        Gtk.Button button;
         
         public Breadcrumbs()
         {
@@ -114,11 +111,8 @@ namespace Marlin.View.Chrome
             var font = Pango.FontDescription.from_string (gtk_font_name);
             gtk_font_name = font.get_family();
 
-            bread_center    = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_center.png");
-            bread_right     = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_right.png");
-            bread_left      = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_left.png");
-            bread_separator = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_separator.png");
             home_img        = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/home.png");
+            button = new Gtk.Button();
         }
 
         public override bool button_press_event(Gdk.EventButton event)
@@ -159,7 +153,6 @@ namespace Marlin.View.Chrome
         
         public override bool motion_notify_event(Gdk.EventMotion event)
         {
-        
             int x = (int)event.x;
             int x_previous = -10;
             selected = -1;
@@ -191,45 +184,19 @@ namespace Marlin.View.Chrome
             /* x padding */
             int x = 0;
             /* y padding */
-            int y = 4;
-            
+            int y = 6;
+
             /* Draw toolbar background */
             Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height());
+            Gtk.render_background(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
+            Gtk.render_frame(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
 
             height -= 2*y;
             width -= 2*x;
 
-            /* Draw left part */
-            cr.scale(1, height/bread_left.get_height());
-            cr.set_source_surface(bread_left, 0, y * bread_left.get_height()/height);
-            cr.paint();
             cr.restore();
             cr.save();
-
-            /* Draw center, with a pattern to repeat it. */
-            Cairo.Pattern pat = new Cairo.Pattern.for_surface(bread_center);
-            pat.set_extend(Cairo.Extend.REPEAT);
-
-            Cairo.Matrix mat = Cairo.Matrix.identity();
-            mat.scale((width - bread_left.get_width() - bread_right.get_width()),
-                      bread_center.get_height()/height);
-            pat.set_matrix(mat);
-
-            cr.translate(bread_left.get_width(),y);
-            cr.set_source(pat);
-            cr.rectangle(0, 0, (width - bread_left.get_width() - bread_right.get_width()), height);
-            cr.fill();
-            cr.restore();
-            cr.save();
-
-            /* Draw the right part. */
-            cr.translate(width - bread_right.get_width(), y);
-            cr.scale(height/bread_right.get_height(), height/bread_right.get_height());
-            cr.set_source_surface(bread_right, 0, 0);
-            cr.paint();
-            cr.restore();
-            cr.save();
-
+            cr.set_source_rgb(0.3,0.3,0.3);
             height = get_allocated_height();
             width = get_allocated_width();
 
@@ -252,13 +219,12 @@ namespace Marlin.View.Chrome
             x_render += home_img.get_width();
             
             /* Draw the first > */
-            cr.translate(x_render, y);
-            cr.scale((height - 2*y)/bread_separator.get_height(),
-                     (height -2*y)/bread_separator.get_height());
-            cr.set_source_surface(bread_separator, 0, 0);
-            cr.paint();
-            cr.restore();
-            cr.save();
+
+            cr.set_source_rgba(0.5,0.5,0.5,0.5);
+            cr.move_to(x_render, y + 0.5);
+            cr.line_to(x_render + 10, height/2);
+            cr.line_to(x_render, height - y - 1);
+            cr.stroke();
 
             /* Add the value into our list to recall it later. */
             list.add((int)x_render);
@@ -276,13 +242,10 @@ namespace Marlin.View.Chrome
                     x_render += txt.x_advance + space_breads;
 
                     /* Draw the separator */
-                    cr.translate(x_render, y);
-                    cr.scale((height - 2*y)/bread_separator.get_height(),
-                             (height - 2*y)/bread_separator.get_height());
-                    cr.set_source_surface(bread_separator, 0, 0);
-                    cr.paint();
-                    cr.restore();
-                    cr.save();
+                    cr.move_to(x_render, y + 1);
+                    cr.line_to(x_render + 10, height/2);
+                    cr.line_to(x_render, height - y - 1);
+                    cr.stroke();
 
                     /* Add the value into our list to recall it later (useful
                      * for the mouse events) */
@@ -298,27 +261,27 @@ namespace Marlin.View.Chrome
                 y++;
                 int x_hl;
                 if(selected == 0)
-                    x_hl = -1;
+                    x_hl = -10;
                 else
-                    x_hl = list[selected - 1] + 7;
-                cr.move_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5,
+                    x_hl = list[selected - 1] + 5;
+                cr.move_to(x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7,
                            y);
                 cr.line_to(x_hl + 5,
                            height/2);
-                cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5,
+                cr.line_to(x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7,
                            height - y);
                 x_hl = list[selected] + 7;
-                cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5,
+                cr.line_to(x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7,
                            height - y);
                 cr.line_to(x_hl + 5,
                            height/2);
-                cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5,
+                cr.line_to(x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7,
                            y);
                 cr.close_path();
                 
                 /* TODO: This color shouldn't be hardcoded, we should read it
                  * from a gtk theme */ 
-                cr.set_source_rgba(0.5,0.5,0.5, 0.2);
+                cr.set_source_rgba(0.5,0.5,0.5, 0.3);
                 cr.fill();
                 y--;
             }
@@ -340,15 +303,16 @@ namespace Marlin.View.Chrome
             }
             else
             {
-                cr.translate(5, 2.5*y);
-                cr.scale((height - 5*y)/home_img.get_height(),
-                         (height - 5*y)/home_img.get_height());
+                cr.translate(5, 1.75*y);
+                cr.scale((height - 3.5*y)/home_img.get_height(),
+                         (height - 3.5*y)/home_img.get_height());
                 cr.set_source_surface(home_img, 0, 0);
                 cr.paint();
                 cr.restore();
                 cr.save();
                 dirs = (text.replace(Environment.get_home_dir(), "") + "/").split("/");
             }
+
 
             int i = 0;
             foreach(string dir in dirs)
@@ -357,7 +321,7 @@ namespace Marlin.View.Chrome
                  * dirs, and we only need three. */ 
                 if(dir != "")
                 {
-                    cr.move_to(bread_separator.get_width() + list[i],
+                    cr.move_to(15 + list[i],
                                get_allocated_height()/2 + 13/2);
                     cr.show_text(dir);
                     i++;
