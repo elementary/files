@@ -129,10 +129,11 @@ namespace Marlin.View.Chrome
             }
             else
             {
+                int x_previous = -10;
                 int x = (int)event.x;
                 foreach(int x_render in list)
                 {
-                    if(x < x_render)
+                    if(x <= x_render + 5 && x > x_previous + 5)
                     {
                         int to_keep = list.index_of(x_render);
                         print(to_keep.to_string() + "\n");
@@ -151,6 +152,7 @@ namespace Marlin.View.Chrome
                         changed();
                         break;
                     }
+                    x_previous = x_render;
                 }
             }
             return true;
