@@ -113,12 +113,12 @@ namespace Marlin.View.Chrome
             gtk_settings.get ("gtk-font-name", out gtk_font_name);
             var font = Pango.FontDescription.from_string (gtk_font_name);
             gtk_font_name = font.get_family();
-            print(gtk_font_name  + "\n\n\n\n");
-            bread_center = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_center.png");
-            bread_right = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_right.png");
-            bread_left = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_left.png");
+
+            bread_center    = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_center.png");
+            bread_right     = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_right.png");
+            bread_left      = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_left.png");
             bread_separator = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_separator.png");
-            home_img = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/home.png");
+            home_img        = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/home.png");
         }
 
         public override bool button_press_event(Gdk.EventButton event)
@@ -136,7 +136,6 @@ namespace Marlin.View.Chrome
                     if(x <= x_render + 5 && x > x_previous + 5)
                     {
                         int to_keep = list.index_of(x_render);
-                        print(to_keep.to_string() + "\n");
 
                         var text_tmp = text.split("/");
                         text = "";
@@ -186,43 +185,44 @@ namespace Marlin.View.Chrome
         {
             double height = get_allocated_height();
             double width = get_allocated_width();
+            /* It is increased when we draw each directory name to put the
+             * separators at the good place */
+            double x_render = 0;
+            /* x padding */
+            int x = 0;
+            /* y padding */
+            int y = 4;
+            
+            /* Draw toolbar background */
             Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height());
 
-            /* All this block is an ugly copy/paste to get a rounded rectangle,
-             * it needs to be removed and replaced by some gtk/theming stuff. */
-            cr.set_source_rgb(0.8,0.8,0.8);
-            int r = 5;
-            int x = 0;
-            int y = 4;
             height -= 2*y;
             width -= 2*x;
-            /*cr.move_to(x+r, y); // Move to A
-            cr.line_to(x+width-r, y); // Straight line to B
-            cr.curve_to(x+width, y, x+width, y, x+width, y+r); // Curve to C, Control points are both at Q
-            cr.line_to(x+width, y+height-r); // Move to D
-            cr.curve_to(x+width, y+height, x+width, y+height, x+width-r, y+height); // Curve to E
-            cr.line_to(x+r,y+height); // Line to F
-            cr.curve_to(x,y+height,x,y+height,x,y+height-r); // Curve to 
-            cr.line_to(x,y+r); // Line to H
-            cr.curve_to(x,y,x,y,x+r,y); // Curve to A*/
+
+            /* Draw left part */
             cr.scale(1, height/bread_left.get_height());
             cr.set_source_surface(bread_left, 0, y * bread_left.get_height()/height);
             cr.paint();
             cr.restore();
             cr.save();
 
+            /* Draw center, with a pattern to repeat it. */
             Cairo.Pattern pat = new Cairo.Pattern.for_surface(bread_center);
             pat.set_extend(Cairo.Extend.REPEAT);
+
             Cairo.Matrix mat = Cairo.Matrix.identity();
-            mat.scale((width - bread_left.get_width() - bread_right.get_width()), bread_center.get_height()/height);
+            mat.scale((width - bread_left.get_width() - bread_right.get_width()),
+                      bread_center.get_height()/height);
             pat.set_matrix(mat);
+
             cr.translate(bread_left.get_width(),y);
             cr.set_source(pat);
-            cr.rectangle(0,0,(width - bread_left.get_width() - bread_right.get_width()),height);
+            cr.rectangle(0, 0, (width - bread_left.get_width() - bread_right.get_width()), height);
             cr.fill();
             cr.restore();
             cr.save();
 
+            /* Draw the right part. */
             cr.translate(width - bread_right.get_width(), y);
             cr.scale(height/bread_right.get_height(), height/bread_right.get_height());
             cr.set_source_surface(bread_right, 0, 0);
@@ -233,36 +233,28 @@ namespace Marlin.View.Chrome
             height = get_allocated_height();
             width = get_allocated_width();
 
-            /*Cairo.Pattern pat = new Cairo.Pattern.linear(0,0, 0, height-2*y);
-
-            pat.add_color_stop_rgb(0, 0.99,0.99,0.99);
-            pat.add_color_stop_rgb(1, 0.86,0.86,0.86);
-
-            cr.set_source(pat);
-            cr.fill_preserve();
-            cr.set_source_rgb(0.66,0.66,0.66);
-            cr.set_line_width(1);
-            cr.stroke();*/
-
-            /* Remove all "/" and replace them with some space. We will keep the
-             * first / since it shows the root path. */
+            /* The > */
+            /* Don't count the home directory since we won't draw it later. */
             var dirs = (text.replace(Environment.get_home_dir(), "") + "/").split("/");
-            /* the > */
-            double x_render = 0;
-            /* Select system font */
+
+            /* Select our system font */
             cr.select_font_face(gtk_font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
-            Cairo.TextExtents txt = Cairo.TextExtents();
+            /* TODO: We should use system font size but cairo doesn't seem to
+             * scale them like Gtk?! */
             cr.set_font_size(15);
             cr.set_line_width(1);
             cr.save();
+
+            Cairo.TextExtents txt = Cairo.TextExtents();
             list = new Gee.ArrayList<int>();
-            cr.text_extents("/     ", out txt);
-            x_render += txt.x_advance;
+            
+            /* We must let some space for the first dir, it can be "/" or home */
+            x_render += home_img.get_width();
             
             /* Draw the first > */
-            
             cr.translate(x_render, y);
-            cr.scale((height - 2*y)/bread_separator.get_height(), (height -2*y)/bread_separator.get_height());
+            cr.scale((height - 2*y)/bread_separator.get_height(),
+                     (height -2*y)/bread_separator.get_height());
             cr.set_source_surface(bread_separator, 0, 0);
             cr.paint();
             cr.restore();
@@ -278,73 +270,95 @@ namespace Marlin.View.Chrome
                 if(dir != "")
                 {
                     cr.text_extents(dir + "   ", out txt);
-                    
+
+                    /* Increase the separator position, with a custom padding
+                     * (space_breads). */
                     x_render += txt.x_advance + space_breads;
+
+                    /* Draw the separator */
                     cr.translate(x_render, y);
-                    cr.scale((height - 2*y)/bread_separator.get_height(), (height -2*y)/bread_separator.get_height());
+                    cr.scale((height - 2*y)/bread_separator.get_height(),
+                             (height - 2*y)/bread_separator.get_height());
                     cr.set_source_surface(bread_separator, 0, 0);
                     cr.paint();
                     cr.restore();
                     cr.save();
+
+                    /* Add the value into our list to recall it later (useful
+                     * for the mouse events) */
                     list.add((int)x_render);
                 }
             }
-            if(list.size == 0) list.add(0);
-            
+
             /* If a dir is selected (= mouse hover)*/
             if(selected != -1)
             {
+                /* FIXME: this block could be cleaned up, +7 and +5 are
+                 * hardcoded. */
                 y++;
                 int x_hl;
                 if(selected == 0)
                     x_hl = -1;
                 else
                     x_hl = list[selected - 1] + 7;
-                cr.move_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5, y);
-                cr.line_to(x_hl + 5, height/2);
-                cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5, height - y);
+                cr.move_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5,
+                           y);
+                cr.line_to(x_hl + 5,
+                           height/2);
+                cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5,
+                           height - y);
                 x_hl = list[selected] + 7;
-                cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5, height - y);
-                cr.line_to(x_hl + 5, height/2);
-                cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5, y);
+                cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5,
+                           height - y);
+                cr.line_to(x_hl + 5,
+                           height/2);
+                cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5,
+                           y);
                 cr.close_path();
+                
+                /* TODO: This color shouldn't be hardcoded, we should read it
+                 * from a gtk theme */ 
                 cr.set_source_rgba(0.5,0.5,0.5, 0.2);
                 cr.fill();
                 y--;
             }
-                cr.restore();
-                cr.save();
-                cr.set_source_rgb(0,0,0);
 
-            /* The path itself, e.g. " /   home" */
+            cr.restore();
+            cr.save();
+            cr.set_source_rgb(0,0,0);
+
+            /* The path itself, e.g.  /   home */
 
             /* Remove all "/" and replace them with some space. We will keep the
              * first / since it shows the root path. */
             dirs = text.split("/");
-            int i = 0;
+
             if(Environment.get_home_dir() != "/" + dirs[1] + "/" + dirs[2])
             {
-                cr.move_to(5, get_allocated_height()/2 + 13/2);
+                cr.move_to(10, get_allocated_height()/2 + 13/2);
                 cr.show_text("/");
             }
             else
             {
                 cr.translate(5, 2.5*y);
-                cr.scale((height - 5*y)/home_img.get_height(), (height - 5*y)/home_img.get_height());
+                cr.scale((height - 5*y)/home_img.get_height(),
+                         (height - 5*y)/home_img.get_height());
                 cr.set_source_surface(home_img, 0, 0);
-                list[0] = home_img.get_width();
                 cr.paint();
                 cr.restore();
                 cr.save();
                 dirs = (text.replace(Environment.get_home_dir(), "") + "/").split("/");
             }
+
+            int i = 0;
             foreach(string dir in dirs)
             {
                 /* Don't add too much dir, e.g. in "/home///", we would get five
                  * dirs, and we only need three. */ 
                 if(dir != "")
                 {
-                    cr.move_to(bread_separator.get_width() + list[i], get_allocated_height()/2 + 13/2);
+                    cr.move_to(bread_separator.get_width() + list[i],
+                               get_allocated_height()/2 + 13/2);
                     cr.show_text(dir);
                     i++;
                 }
