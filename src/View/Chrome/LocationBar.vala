@@ -57,6 +57,7 @@ namespace Marlin.View.Chrome
             add(bread);
 
             entry.activate.connect(() => { activate(); state = true; update_widget(); });
+            entry.focus_out_event.connect(() => {state = true; update_widget(); return false; });
         }
 
         private void update_widget()
@@ -134,7 +135,6 @@ namespace Marlin.View.Chrome
                         {
                             text += text_tmp.split("/")[i] + "/";
                         }
-                        print(text);
 
                         changed();
                         break;
@@ -157,7 +157,7 @@ namespace Marlin.View.Chrome
             }
             foreach(int x_render in list)
             {
-                if(x <= x_render && x > x_previous)
+                if(x <= x_render + 5 && x > x_previous + 5)
                 {
                     selected = list.index_of(x_render);
                     break;
@@ -179,7 +179,7 @@ namespace Marlin.View.Chrome
             cr.set_source_rgb(0.8,0.8,0.8);
             int r = 5;
             int x = 0;
-            int y = 5;
+            int y = 4;
             height -= 2*y;
             width -= 2*x;
             /*cr.move_to(x+r, y); // Move to A
@@ -284,20 +284,21 @@ namespace Marlin.View.Chrome
             /* If a dir is selected (= mouse hover)*/
             if(selected != -1)
             {
+                y++;
                 int x_hl;
                 if(selected == 0)
-                    x_hl = -5;
+                    x_hl = -1;
                 else
-                    x_hl = list[selected - 1];
+                    x_hl = list[selected - 1] + 7;
                 cr.move_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5, y);
                 cr.line_to(x_hl + 5, height/2);
                 cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5, height - y);
-                x_hl = list[selected];
+                x_hl = list[selected] + 7;
                 cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5, height - y);
                 cr.line_to(x_hl + 5, height/2);
                 cr.line_to(x_hl - 5*(height/2 - y)/(height/2 - height/3) + 5, y);
                 cr.close_path();
-                cr.set_source_rgba(0.5,0.5,0.5, 0.5);
+                cr.set_source_rgba(0.5,0.5,0.5, 0.2);
                 cr.fill();
                 
             }
