@@ -111,7 +111,9 @@ namespace Marlin.View.Chrome
             var font = Pango.FontDescription.from_string (gtk_font_name);
             gtk_font_name = font.get_family();
 
-            home_img        = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/home.png");
+            home_img = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/home.png");
+            
+            /* FIXME: we should directly use a Gtk.StyleContext */
             button = new Gtk.Button();
         }
 
