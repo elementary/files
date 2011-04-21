@@ -286,8 +286,8 @@ namespace Marlin.View.Chrome
                 button.get_style_context().get_background_color(Gtk.StateFlags.SELECTED, color);
                 
                 Cairo.Pattern pat = new Cairo.Pattern.linear(first_stop, y, second_stop, y);
-                pat.add_color_stop_rgba(0, color.red, color.green, color.blue, 0);
-                pat.add_color_stop_rgba(1, color.red, color.green, color.blue, 1);
+                pat.add_color_stop_rgba(0.7, color.red, color.green, color.blue, 0);
+                pat.add_color_stop_rgba(1, color.red, color.green, color.blue, 0.6);
                 
                 /* TODO: This color shouldn't be hardcoded, we should read it
                  * from a gtk theme */ 
