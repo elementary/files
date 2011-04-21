@@ -8,6 +8,7 @@ icon_DATA =\
 	bread_right.png \
 	bread_center.png \
 	bread_separator.png \
+	home.png \
         view-list-icons-symbolic.svg \
         view-list-details-symbolic.svg \
         view-list-compact-symbolic.svg \

@@ -96,6 +96,7 @@ namespace Marlin.View.Chrome
         Cairo.ImageSurface bread_left;
         Cairo.ImageSurface bread_right;
         Cairo.ImageSurface bread_separator;
+        Cairo.ImageSurface home_img;
         
         public Breadcrumbs()
         {
@@ -111,6 +112,7 @@ namespace Marlin.View.Chrome
             bread_right = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_right.png");
             bread_left = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_left.png");
             bread_separator = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_separator.png");
+            home_img = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/home.png");
         }
 
         public override bool button_press_event(Gdk.EventButton event)
@@ -129,11 +131,15 @@ namespace Marlin.View.Chrome
                         int to_keep = list.index_of(x_render);
                         print(to_keep.to_string() + "\n");
 
-                        var text_tmp = text;
+                        var text_tmp = text.split("/");
                         text = "";
+                        if(Environment.get_home_dir() == "/" + text_tmp[1] + "/" + text_tmp[2])
+                        {
+                            to_keep += 2;
+                        }
                         for(int i = 0; i <= to_keep; i++)
                         {
-                            text += text_tmp.split("/")[i] + "/";
+                            text += text_tmp[i] + "/";
                         }
 
                         changed();
@@ -232,7 +238,7 @@ namespace Marlin.View.Chrome
 
             /* Remove all "/" and replace them with some space. We will keep the
              * first / since it shows the root path. */
-            var dirs = text.split("/");
+            var dirs = (text.replace(Environment.get_home_dir(), "") + "/").split("/");
             /* the > */
             double x_render = 0;
             /* Select system font */
@@ -242,15 +248,10 @@ namespace Marlin.View.Chrome
             cr.set_line_width(1);
             cr.save();
             list = new Gee.ArrayList<int>();
-            cr.text_extents("/" + "  ", out txt);
+            cr.text_extents("/     ", out txt);
             x_render += txt.x_advance;
             
             /* Draw the first > */
-            /*cr.set_source_rgb(0.6,0.6,0.6);
-            cr.move_to(x_render, height/3);
-            cr.line_to(x_render + 5, height/2);
-            cr.line_to(x_render, height/2 + height/6);
-            cr.stroke();*/
             
             cr.translate(x_render, y);
             cr.scale((height - 2*y)/bread_separator.get_height(), (height -2*y)/bread_separator.get_height());
@@ -280,6 +281,7 @@ namespace Marlin.View.Chrome
                     list.add((int)x_render);
                 }
             }
+            if(list.size == 0) list.add(0);
             
             /* If a dir is selected (= mouse hover)*/
             if(selected != -1)
@@ -300,15 +302,34 @@ namespace Marlin.View.Chrome
                 cr.close_path();
                 cr.set_source_rgba(0.5,0.5,0.5, 0.2);
                 cr.fill();
-                
+                y--;
             }
+                cr.restore();
+                cr.save();
                 cr.set_source_rgb(0,0,0);
 
             /* The path itself, e.g. " /   home" */
 
+            /* Remove all "/" and replace them with some space. We will keep the
+             * first / since it shows the root path. */
+            dirs = text.split("/");
             int i = 0;
-            cr.move_to(5, get_allocated_height()/2 + 13/2);
-            cr.show_text("/");
+            if(Environment.get_home_dir() != "/" + dirs[1] + "/" + dirs[2])
+            {
+                cr.move_to(5, get_allocated_height()/2 + 13/2);
+                cr.show_text("/");
+            }
+            else
+            {
+                cr.translate(5, 2.5*y);
+                cr.scale((height - 5*y)/home_img.get_height(), (height - 5*y)/home_img.get_height());
+                cr.set_source_surface(home_img, 0, 0);
+                list[0] = home_img.get_width();
+                cr.paint();
+                cr.restore();
+                cr.save();
+                dirs = (text.replace(Environment.get_home_dir(), "") + "/").split("/");
+            }
             foreach(string dir in dirs)
             {
                 /* Don't add too much dir, e.g. in "/home///", we would get five
