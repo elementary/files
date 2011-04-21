@@ -85,24 +85,8 @@
 
 #define EXO_ICON_VIEW_PRIORITY_LAYOUT (GDK_PRIORITY_REDRAW + 5)
 
-typedef struct _ExoIconViewCellInfo ExoIconViewCellInfo;
 typedef struct _ExoIconViewItem ExoIconViewItem;
 
-#define EXO_ICON_VIEW_CELL_INFO(obj)   ((ExoIconViewCellInfo *) (obj))
-
-struct _ExoIconViewCellInfo
-{
-    GtkCellRenderer      *cell;
-    guint                 expand : 1;
-    guint                 pack : 1;
-    guint                 editing : 1;
-    gint                  position;
-    GSList               *attributes;
-    GtkCellLayoutDataFunc func;
-    gpointer              func_data;
-    GDestroyNotify        destroy;
-    gboolean              is_text;
-};
 
 struct _ExoIconViewItem
 {
@@ -406,29 +390,6 @@ static ExoIconViewItem *    exo_icon_view_get_item_at_coords             (ExoIco
                                                                           GtkCellRenderer       **cell_at_pos);
 static void                 exo_icon_view_set_cell_data                  (ExoIconView            *icon_view,
                                                                           ExoIconViewItem        *item);
-
-static void                 exo_icon_view_cell_layout_pack_start         (GtkCellLayout          *layout,
-                                                                          GtkCellRenderer        *renderer,
-                                                                          gboolean                expand);
-static void                 exo_icon_view_cell_layout_pack_end           (GtkCellLayout          *layout,
-                                                                          GtkCellRenderer        *renderer,
-                                                                          gboolean                expand);
-static void                 exo_icon_view_cell_layout_add_attribute      (GtkCellLayout          *layout,
-                                                                          GtkCellRenderer        *renderer,
-                                                                          const gchar            *attribute,
-                                                                          gint                    column);
-static void                 exo_icon_view_cell_layout_clear              (GtkCellLayout          *layout);
-static void                 exo_icon_view_cell_layout_clear_attributes   (GtkCellLayout          *layout,
-                                                                          GtkCellRenderer        *renderer);
-static void                 exo_icon_view_cell_layout_set_cell_data_func (GtkCellLayout          *layout,
-                                                                          GtkCellRenderer        *cell,
-                                                                          GtkCellLayoutDataFunc   func,
-                                                                          gpointer                func_data,
-                                                                          GDestroyNotify          destroy);
-static void                 exo_icon_view_cell_layout_reorder            (GtkCellLayout          *layout,
-                                                                          GtkCellRenderer        *cell,
-                                                                          gint                    position);
-
 
 static void                 exo_icon_view_ensure_cell_area               (ExoIconView            *icon_view,
                                                                           GtkCellArea            *cell_area);
@@ -1124,15 +1085,6 @@ exo_icon_view_class_init (ExoIconViewClass *klass)
 static void
 exo_icon_view_cell_layout_init (GtkCellLayoutIface *iface)
 {
-    /*iface->pack_start = exo_icon_view_cell_layout_pack_start;
-    iface->pack_end = exo_icon_view_cell_layout_pack_end;
-    iface->clear = exo_icon_view_cell_layout_clear;
-    iface->add_attribute = exo_icon_view_cell_layout_add_attribute;
-    iface->set_cell_data_func = exo_icon_view_cell_layout_set_cell_data_func;
-    iface->clear_attributes = exo_icon_view_cell_layout_clear_attributes;
-    iface->reorder = exo_icon_view_cell_layout_reorder;*/
-
-    //TODO
     iface->get_area = exo_icon_view_cell_layout_get_area;
 }
 
@@ -4413,215 +4365,6 @@ exo_icon_view_set_cell_data (ExoIconView     *icon_view,
                                     &iter, FALSE, FALSE);
 }
 
-
-
-
-static ExoIconViewCellInfo *
-exo_icon_view_get_cell_info (ExoIconView     *icon_view,
-                             GtkCellRenderer *renderer)
-{
-    GList *lp;
-
-    for (lp = icon_view->priv->cell_list; lp != NULL; lp = lp->next)
-        if (EXO_ICON_VIEW_CELL_INFO (lp->data)->cell == renderer)
-            return lp->data;
-
-    return NULL;
-}
-
-static void
-free_cell_attributes (ExoIconViewCellInfo *info)
-{
-    GSList *lp;
-
-    for (lp = info->attributes; lp != NULL && lp->next != NULL; lp = lp->next->next)
-        g_free (lp->data);
-    g_slist_free (info->attributes);
-    info->attributes = NULL;
-}
-
-static void
-free_cell_info (ExoIconViewCellInfo *info)
-{
-    if (G_UNLIKELY (info->destroy != NULL))
-        (*info->destroy) (info->func_data);
-
-    free_cell_attributes (info);
-    g_object_unref (G_OBJECT (info->cell));
-    g_slice_free (ExoIconViewCellInfo, info);
-}
-
-
-static void
-exo_icon_view_cell_layout_pack_start (GtkCellLayout   *layout,
-                                      GtkCellRenderer *renderer,
-                                      gboolean         expand)
-{
-    ExoIconViewCellInfo *info;
-    ExoIconView         *icon_view = EXO_ICON_VIEW (layout);
-
-    g_return_if_fail (GTK_IS_CELL_RENDERER (renderer));
-    g_return_if_fail (exo_icon_view_get_cell_info (icon_view, renderer) == NULL);
-
-    //TODO
-    /*g_object_ref (renderer);
-    gtk_object_sink (GTK_OBJECT (renderer));*/
-    g_object_ref_sink (renderer);
-
-    info = g_slice_new0 (ExoIconViewCellInfo);
-    info->cell = renderer;
-    info->expand = expand ? TRUE : FALSE;
-    info->pack = GTK_PACK_START;
-    info->position = icon_view->priv->n_cells;
-    info->is_text = GTK_IS_CELL_RENDERER_TEXT (renderer);
-
-    icon_view->priv->cell_list = g_list_append (icon_view->priv->cell_list, info);
-    icon_view->priv->n_cells++;
-
-    exo_icon_view_invalidate_sizes (icon_view);
-}
-
-
-
-static void
-exo_icon_view_cell_layout_pack_end (GtkCellLayout   *layout,
-                                    GtkCellRenderer *renderer,
-                                    gboolean         expand)
-{
-    ExoIconViewCellInfo *info;
-    ExoIconView         *icon_view = EXO_ICON_VIEW (layout);
-
-    g_return_if_fail (GTK_IS_CELL_RENDERER (renderer));
-    g_return_if_fail (exo_icon_view_get_cell_info (icon_view, renderer) == NULL);
-
-    //TODO
-    /*g_object_ref (renderer);
-    gtk_object_sink (GTK_OBJECT (renderer));*/
-    g_object_ref_sink (renderer);
-
-    info = g_slice_new0 (ExoIconViewCellInfo);
-    info->cell = renderer;
-    info->expand = expand ? TRUE : FALSE;
-    info->pack = GTK_PACK_END;
-    info->position = icon_view->priv->n_cells;
-    info->is_text = GTK_IS_CELL_RENDERER_TEXT (renderer);
-
-    icon_view->priv->cell_list = g_list_append (icon_view->priv->cell_list, info);
-    icon_view->priv->n_cells++;
-
-    exo_icon_view_invalidate_sizes (icon_view);
-}
-
-
-
-static void
-exo_icon_view_cell_layout_add_attribute (GtkCellLayout   *layout,
-                                         GtkCellRenderer *renderer,
-                                         const gchar     *attribute,
-                                         gint             column)
-{
-    ExoIconViewCellInfo *info;
-
-    info = exo_icon_view_get_cell_info (EXO_ICON_VIEW (layout), renderer);
-    if (G_LIKELY (info != NULL))
-    {
-        info->attributes = g_slist_prepend (info->attributes, GINT_TO_POINTER (column));
-        info->attributes = g_slist_prepend (info->attributes, g_strdup (attribute));
-
-        exo_icon_view_invalidate_sizes (EXO_ICON_VIEW (layout));
-    }
-}
-
-
-
-static void
-exo_icon_view_cell_layout_clear (GtkCellLayout *layout)
-{
-    ExoIconView *icon_view = EXO_ICON_VIEW (layout);
-
-    g_list_foreach (icon_view->priv->cell_list, (GFunc) free_cell_info, NULL);
-    g_list_free (icon_view->priv->cell_list);
-    icon_view->priv->cell_list = NULL;
-    icon_view->priv->n_cells = 0;
-
-    exo_icon_view_invalidate_sizes (icon_view);
-}
-
-
-
-static void
-exo_icon_view_cell_layout_set_cell_data_func (GtkCellLayout         *layout,
-                                              GtkCellRenderer       *cell,
-                                              GtkCellLayoutDataFunc  func,
-                                              gpointer               func_data,
-                                              GDestroyNotify         destroy)
-{
-    ExoIconViewCellInfo *info;
-    GDestroyNotify       notify;
-
-    info = exo_icon_view_get_cell_info (EXO_ICON_VIEW (layout), cell);
-    if (G_LIKELY (info != NULL))
-    {
-        if (G_UNLIKELY (info->destroy != NULL))
-        {
-            notify = info->destroy;
-            info->destroy = NULL;
-            (*notify) (info->func_data);
-        }
-
-        info->func = func;
-        info->func_data = func_data;
-        info->destroy = destroy;
-
-        exo_icon_view_invalidate_sizes (EXO_ICON_VIEW (layout));
-    }
-}
-
-
-
-static void
-exo_icon_view_cell_layout_clear_attributes (GtkCellLayout   *layout,
-                                            GtkCellRenderer *renderer)
-{
-    ExoIconViewCellInfo *info;
-
-    info = exo_icon_view_get_cell_info (EXO_ICON_VIEW (layout), renderer);
-    if (G_LIKELY (info != NULL))
-    {
-        free_cell_attributes (info);
-
-        exo_icon_view_invalidate_sizes (EXO_ICON_VIEW (layout));
-    }
-}
-
-
-
-static void
-exo_icon_view_cell_layout_reorder (GtkCellLayout   *layout,
-                                   GtkCellRenderer *cell,
-                                   gint             position)
-{
-    ExoIconViewCellInfo *info;
-    ExoIconView         *icon_view = EXO_ICON_VIEW (layout);
-    GList               *lp;
-    gint                 n;
-
-    icon_view = EXO_ICON_VIEW (layout);
-
-    info = exo_icon_view_get_cell_info (icon_view, cell);
-    if (G_LIKELY (info != NULL))
-    {
-        lp = g_list_find (icon_view->priv->cell_list, info);
-
-        icon_view->priv->cell_list = g_list_remove_link (icon_view->priv->cell_list, lp);
-        icon_view->priv->cell_list = g_list_insert (icon_view->priv->cell_list, info, position);
-
-        for (lp = icon_view->priv->cell_list, n = 0; lp != NULL; lp = lp->next, ++n)
-            EXO_ICON_VIEW_CELL_INFO (lp->data)->position = n;
-
-        exo_icon_view_invalidate_sizes (icon_view);
-    }
-}
 
 
 
