@@ -107,10 +107,10 @@ namespace Marlin.View.Chrome
             var font = Pango.FontDescription.from_string (gtk_font_name);
             gtk_font_name = font.get_family();
             print(gtk_font_name  + "\n\n\n\n");
-            bread_center = new Cairo.ImageSurface.from_png("icons/bread_center.png");
-            bread_right = new Cairo.ImageSurface.from_png("icons/bread_right.png");
-            bread_left = new Cairo.ImageSurface.from_png("icons/bread_left.png");
-            bread_separator = new Cairo.ImageSurface.from_png("icons/bread_separator.png");
+            bread_center = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_center.png");
+            bread_right = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_right.png");
+            bread_left = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_left.png");
+            bread_separator = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/bread_separator.png");
         }
 
         public override bool button_press_event(Gdk.EventButton event)
