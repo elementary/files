@@ -79,6 +79,26 @@ eel_pango_attr_list_big (void)
 
 
 /**
+ * eel_pango_attr_list_small:
+ *
+ * Returns a #PangoAttrList for rendering small text.
+ * The returned list is owned by the callee and must
+ * not be freed or modified by the caller.
+ *
+ * Return value: a #PangoAttrList for rendering big text.
+**/
+PangoAttrList*
+eel_pango_attr_list_small (void)
+{
+    static PangoAttrList *attr_list = NULL;
+    if (G_UNLIKELY (attr_list == NULL))
+        attr_list = eel_pango_attr_list_wrap (pango_attr_scale_new (PANGO_SCALE_SMALL), NULL);
+    return attr_list;
+}
+
+
+
+/**
  * eel_pango_attr_list_big_bold:
  *
  * Returns a #PangoAttrList for rendering big bold text.

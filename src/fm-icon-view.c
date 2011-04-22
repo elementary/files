@@ -959,7 +959,7 @@ fm_icon_view_zoom_level_changed (FMDirectoryView *view)
     }
 
     /* set the new "wrap-width" for the text renderer */
-    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->name_renderer), "wrap-width", wrap_width, NULL);
+    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->name_renderer), "wrap-width", wrap_width, "zoom-level", zoom_level, NULL);
     /* set the new "size" for the icon renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "size", marlin_zoom_level_to_icon_size (zoom_level), NULL);
    

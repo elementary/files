@@ -38,6 +38,7 @@ enum
     PROP_FOLLOW_PRELIT,
     PROP_FOLLOW_STATE,
     PROP_TEXT,
+    PROP_ZOOM_LEVEL,
     PROP_WRAP_MODE,
     PROP_WRAP_WIDTH,
 };
@@ -99,43 +100,8 @@ static void             marlin_text_renderer_entry_menu_popdown_timer_destroy (g
 
 
 
-struct _MarlinTextRendererClass
-{
-    GtkCellRendererClass __parent__;
-
-    void (*edited) (MarlinTextRenderer *text_renderer,
-                    const gchar        *path,
-                    const gchar        *text);
-};
-
-struct _MarlinTextRenderer
-{
-    GtkCellRenderer __parent__;
-
-    PangoLayout  *layout;
-    GtkWidget    *widget;
-    gboolean      text_static;
-    gchar        *text;
-    gint          char_width;
-    gint          char_height;
-    PangoWrapMode wrap_mode;
-    gint          wrap_width;
-    gboolean      follow_state;
-    gint          focus_width;;
-
-    /* underline prelited rows */
-    gboolean      follow_prelit;
-
-    /* cell editing support */
-    GtkWidget    *entry;
-    gboolean      entry_menu_active;
-    gint          entry_menu_popdown_timer_id;
-};
-
-
 
 static guint text_renderer_signals[LAST_SIGNAL];
-
 
 
 G_DEFINE_TYPE (MarlinTextRenderer, marlin_text_renderer, GTK_TYPE_CELL_RENDERER)
@@ -200,6 +166,19 @@ marlin_text_renderer_class_init (MarlinTextRendererClass *klass)
                                                           "text",
                                                           NULL,
                                                           EXO_PARAM_READWRITE));
+
+    /**
+     * MarlinTextRenderer:size:
+     *
+     * The zoom-level at which we have to render the text.
+    **/
+    g_object_class_install_property (gobject_class,
+                                     PROP_ZOOM_LEVEL,
+                                     g_param_spec_enum ("zoom-level", "zoom-level", "zoom-level",
+                                                        MARLIN_TYPE_ZOOM_LEVEL,
+                                                        MARLIN_ZOOM_LEVEL_NORMAL,
+                                                        EXO_PARAM_READWRITE));
+
 
     /**
      * MarlinTextRenderer:wrap-mode:
@@ -301,6 +280,10 @@ marlin_text_renderer_get_property (GObject    *object,
         g_value_set_string (value, text_renderer->text);
         break;
 
+    case PROP_ZOOM_LEVEL:
+        g_value_set_enum (value, text_renderer->zoom_level);
+        break;
+
     case PROP_WRAP_MODE:
         g_value_set_enum (value, text_renderer->wrap_mode);
         break;
@@ -345,6 +328,14 @@ marlin_text_renderer_set_property (GObject      *object,
         text_renderer->text = (sval == NULL) ? "" : (gchar *)sval;
         if (!text_renderer->text_static)
             text_renderer->text = g_strdup (text_renderer->text);
+        break;
+
+    case PROP_ZOOM_LEVEL:
+        text_renderer->zoom_level = g_value_get_enum (value);
+        if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL)
+            pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_small ());
+        else 
+            pango_layout_set_attributes (text_renderer->layout, NULL);
         break;
 
     case PROP_WRAP_MODE:
@@ -400,6 +391,8 @@ marlin_text_renderer_get_size (GtkCellRenderer      *cell,
     else
     {
         /* calculate the real text dimension */
+        pango_layout_set_ellipsize (text_renderer->layout, PANGO_ELLIPSIZE_END);
+        pango_layout_set_height (text_renderer->layout, -3);
         pango_layout_set_width (text_renderer->layout, text_renderer->wrap_width * PANGO_SCALE);
         pango_layout_set_wrap (text_renderer->layout, text_renderer->wrap_mode);
         pango_layout_set_text (text_renderer->layout, text_renderer->text, -1);
@@ -409,11 +402,12 @@ marlin_text_renderer_get_size (GtkCellRenderer      *cell,
     /* if we have to follow the state manually, we'll need
      * to reserve some space to render the indicator to.
      */
-    if (text_renderer->follow_state)
+    //TODO evaluate this padding there s a few wasted space in icon view.
+    /*if (text_renderer->follow_state)
     {
         text_width += 2 * text_renderer->focus_width;
         text_height += 2 * text_renderer->focus_width;
-    }
+    }*/
 
     gtk_cell_renderer_get_padding (cell, &xpad, &ypad);
     /* update width/height */
@@ -491,8 +485,14 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
     /* check if we should follow the prelit state (used for single click support) */
     if (text_renderer->follow_prelit && (flags & GTK_CELL_RENDERER_PRELIT) != 0)
         pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_underline_single ());
-    else
-        pango_layout_set_attributes (text_renderer->layout, NULL);
+    /*else
+        pango_layout_set_attributes (text_renderer->layout, NULL);*/
+
+    /* render small/normal text depending on the zoom_level */
+    if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL)
+        pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_small ());
+    else 
+        pango_layout_set_attributes (text_renderer->layout, NULL);    
 
     /* setup the wrapping */
     if (text_renderer->wrap_width < 0)
@@ -506,10 +506,19 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         pango_layout_set_wrap (text_renderer->layout, text_renderer->wrap_mode);
     }
 
+    /* ellipsize to max lines except for selected or prelit items */
+    pango_layout_set_ellipsize (text_renderer->layout, PANGO_ELLIPSIZE_END);
+    pango_layout_set_height (text_renderer->layout, -3);
+    if ((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED ||
+        (flags & GTK_CELL_RENDERER_PRELIT) == GTK_CELL_RENDERER_PRELIT) {
+        pango_layout_set_ellipsize (text_renderer->layout, PANGO_ELLIPSIZE_NONE);
+    }
+    
     pango_layout_set_text (text_renderer->layout, text_renderer->text, -1);
 
     /* calculate the real text dimension */
     pango_layout_get_pixel_size (text_renderer->layout, &text_width, &text_height);
+
 
     /* take into account the state indicator (required for calculation) */
     if (text_renderer->follow_state)
@@ -541,9 +550,6 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         x1 = x0 + text_width;
         y1 = y0 + text_height;
 
-        /* Cairo produces nicer results than using a polygon
-         * and so we use it directly if possible.
-         */
         cairo_move_to (cr, x0 + 5, y0);
         cairo_line_to (cr, x1 - 5, y0);
         cairo_curve_to (cr, x1 - 5, y0, x1, y0, x1, y0 + 5);
@@ -553,28 +559,17 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         cairo_curve_to (cr, x0 + 5, y1, x0, y1, x0, y1 - 5);
         cairo_line_to (cr, x0, y0 + 5);
         cairo_curve_to (cr, x0, y0 + 5, x0, y0, x0 + 5, y0);
-        //TODO check
-        //gdk_cairo_set_source_color (cr, &widget->style->base[state]);
+        
         GdkRGBA color;
-        //printf (">>test state %d\n", state);
-        //gtk_style_context_get_background_color (context, state, &color);
         gtk_style_context_get_background_color (context, GTK_STATE_FLAG_SELECTED, &color);
-        //gtk_style_context_get_border_color (context, state, &color);
-        //gtk_style_context_get_color (context, state, &color);
-        //gtk_style_context_lookup_color (context, "background-color", &color);
-        //gdk_rgba_parse (&color, "green");
         gdk_cairo_set_source_rgba (cr, &color);
 
         cairo_fill (cr);
-        //cairo_restore (cr);
     }
 
     /* draw the focus indicator */
     if (text_renderer->follow_state && (flags & GTK_CELL_RENDERER_FOCUSED) != 0)
     {
-        //TODO
-        /*gtk_paint_focus (widget->style, window, GTK_WIDGET_STATE (widget), NULL, widget, "icon_view",
-                         cell_area->x + x_offset, cell_area->y + y_offset, text_width, text_height);*/
         gtk_render_focus (context, cr, cell_area->x + x_offset, cell_area->y + y_offset, text_width, text_height);
     }
 
@@ -587,13 +582,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         y_offset += text_renderer->focus_width;
     }
 
-    //TODO
     /* draw the text */
-    /*gtk_paint_layout (widget->style, window, state, TRUE,
-                      expose_area, widget, "cellrenderertext",
-                      cell_area->x + x_offset + xpad,
-                      cell_area->y + y_offset + ypad,
-                      text_renderer->layout);*/
     gtk_render_layout (context, cr,                                      
                        cell_area->x + x_offset + xpad,
                        cell_area->y + y_offset + ypad,
@@ -666,6 +655,7 @@ marlin_text_renderer_set_widget (MarlinTextRenderer *text_renderer,
     gint focus_padding;
     gint focus_line_width;
     const PangoFontDescription *font_desc;
+    PangoFontDescription *desc;
 
     if (G_LIKELY (widget == text_renderer->widget))
         return;
@@ -705,6 +695,7 @@ marlin_text_renderer_set_widget (MarlinTextRenderer *text_renderer,
 
         /* calculate the average character dimensions */
         metrics = pango_context_get_metrics (context, font_desc, pango_context_get_language (context));
+
         text_renderer->char_width = PANGO_PIXELS (pango_font_metrics_get_approximate_char_width (metrics));
         text_renderer->char_height = PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) + pango_font_metrics_get_descent (metrics));
         pango_font_metrics_unref (metrics);

@@ -20,6 +20,7 @@
 #define __MARLIN_TEXT_RENDERER_H__
 
 #include <gtk/gtk.h>
+#include "marlin-enum-types.h"
 
 G_BEGIN_DECLS;
 
@@ -32,6 +33,41 @@ typedef struct _MarlinTextRenderer      MarlinTextRenderer;
 #define MARLIN_IS_TEXT_RENDERER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MARLIN_TYPE_TEXT_RENDERER))
 #define MARLIN_IS_TEXT_RENDERER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), MARLIN_TYPE_TEXT_RENDERER))
 #define MARLIN_TEXT_RENDERER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), MARLIN_TYPE_TEXT_RENDERER, MarlinTextRendererClass))
+
+struct _MarlinTextRendererClass
+{
+    GtkCellRendererClass __parent__;
+
+    void (*edited) (MarlinTextRenderer *text_renderer,
+                    const gchar        *path,
+                    const gchar        *text);
+};
+
+struct _MarlinTextRenderer
+{
+    GtkCellRenderer __parent__;
+
+    PangoLayout  *layout;
+    GtkWidget    *widget;
+    gboolean      text_static;
+    gchar        *text;
+    gint          char_width;
+    gint          char_height;
+    PangoWrapMode wrap_mode;
+    gint          wrap_width;
+    gboolean      follow_state;
+    gint          focus_width;
+    MarlinZoomLevel zoom_level;
+
+    /* underline prelited rows */
+    gboolean      follow_prelit;
+
+    /* cell editing support */
+    GtkWidget    *entry;
+    gboolean      entry_menu_active;
+    gint          entry_menu_popdown_timer_id;
+};
+
 
 GType            marlin_text_renderer_get_type (void) G_GNUC_CONST;
 
