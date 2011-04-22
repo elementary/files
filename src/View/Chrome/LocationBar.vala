@@ -444,6 +444,7 @@ namespace Marlin.View.Chrome
             /* Remove all "/" and replace them with some space. We will keep the
              * first / since it shows the root path. */
             dirs = text.split("/");
+            bool in_home = false;
 
             if(Environment.get_home_dir() != "/" + dirs[1] + "/" + dirs[2])
             {
@@ -452,6 +453,7 @@ namespace Marlin.View.Chrome
             }
             else
             {
+                in_home = true;
                 cr.translate(5, 1.75*y);
                 cr.scale((height - 3.5*y)/home_img.get_height(),
                          (height - 3.5*y)/home_img.get_height());
@@ -462,7 +464,7 @@ namespace Marlin.View.Chrome
                 dirs = (text.replace(Environment.get_home_dir(), "") + "/").split("/");
             }
 
-            int i = draw_breads(cr, dirs);
+            int i = draw_breads(cr, dirs, in_home);
 
             draw_old_animation(cr, i);
 
@@ -474,7 +476,10 @@ namespace Marlin.View.Chrome
             int x_hl;
             double height = get_allocated_height();
             double width = get_allocated_width();
-            x_hl = list[i] + 7;
+            if(i < list.size)
+                x_hl = list[i] + 7;
+            else
+                x_hl = 7;
             double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7;
             cr.move_to(second_stop,
                        height - y);
@@ -510,10 +515,9 @@ namespace Marlin.View.Chrome
             }
         }
 
-        private int draw_breads(Cairo.Context cr, string[] dirs)
+        private int draw_breads(Cairo.Context cr, string[] dirs, bool in_home)
         {
             int i = 0;
-            bool in_home = Environment.get_home_dir() != "/" + dirs[1] + "/" + dirs[2];
             foreach(string dir in dirs)
             {
                 /* Don't add too much dir, e.g. in "/home///", we would get five
