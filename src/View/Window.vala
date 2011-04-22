@@ -196,6 +196,8 @@ namespace Marlin.View {
             }
             title = Resources.APP_TITLE;
             //this.icon = DrawingService.GetIcon("system-file-manager", 32);
+            //this.icon = IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
+            this.icon = IconTheme.get_default ().load_icon ("marlin", 32, 0);
             show();
 
             Preferences.settings.bind("show-menubar", menu_bar, "visible", 0);
