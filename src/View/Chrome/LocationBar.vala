@@ -107,11 +107,13 @@ namespace Marlin.View.Chrome
 
         Cairo.ImageSurface home_img;
         Gtk.Button button;
+        Gtk.IMContext im_context;
         
         public Breadcrumbs()
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                       | Gdk.EventMask.BUTTON_RELEASE_MASK
+                      | Gdk.EventMask.KEY_PRESS_MASK
                       | Gdk.EventMask.POINTER_MOTION_MASK
                       | Gdk.EventMask.LEAVE_NOTIFY_MASK);
 
@@ -126,6 +128,8 @@ namespace Marlin.View.Chrome
             
             /* FIXME: we should directly use a Gtk.StyleContext */
             button = new Gtk.Button();
+            
+            set_can_focus(true);
 
             /* x padding */
             x = 0;
@@ -417,9 +421,7 @@ namespace Marlin.View.Chrome
 
             /* Draw toolbar background */
 
-            /* the height +1 is here to fix an adwaita bug, we will have to
-             * remove it, FIXME */
-            Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height()+1);
+            Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height());
             Gtk.render_background(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
             Gtk.render_frame(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
 
@@ -476,7 +478,7 @@ namespace Marlin.View.Chrome
 
             draw_old_animation(cr, i);
 
-            return true;
+            return false;
         }
 
         private void get_mask(Cairo.Context cr, int i)
