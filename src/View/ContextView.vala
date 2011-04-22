@@ -178,10 +178,16 @@ namespace Marlin.View {
             var alignment = new Gtk.Alignment(0.5f, 0.381966f, 0, 0); // Yes that is 1 - 1/golden_ratio, in doublt always golden ratio
             var box = new VBox(false, 4);
 
-            image.parent.remove(image);
-            box.pack_start(image, false, false);
-            label.parent.remove(label);
-            box.pack_start(label, false, false);
+            if (image != null) {
+                if (image.parent != null)
+                    image.parent.remove(image);
+                box.pack_start(image, false, false);
+            }
+            if (label != null) { 
+                if (label.parent != null)
+                    label.parent.remove(label);
+                box.pack_start(label, false, false);
+            }
             box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
 
             var information = new VBox (false, key_value_padding);
@@ -215,8 +221,11 @@ namespace Marlin.View {
 
             var alignment_img = new Gtk.Alignment(0, 0.5f, 0, 0);
             alignment_img.set_padding(2, 8, 4, 0); // TODO: change this is something more concrete
-            image.parent.remove(image);
-            alignment_img.add(image);
+            if (image != null) {
+                if (image.parent != null)
+                    image.parent.remove(image);
+                alignment_img.add(image);
+            }
 
             box.pack_start(alignment_img, false, false);
 
@@ -256,7 +265,8 @@ namespace Marlin.View {
 
         private void set_content(Widget w){
             var lw = get_child();
-            remove(lw);
+            if (lw != null)
+                remove(lw);
             add(w);
         }
     }
