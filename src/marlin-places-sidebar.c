@@ -1738,7 +1738,7 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
           sidebar->window, uri);*/
         location = g_file_new_for_uri (uri);
         /* Navigate to the clicked location */
-        if ((flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW) == 0) {
+        if (!(flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW) && !(flags & MARLIN_WINDOW_OPEN_FLAG_NEW_TAB)) {
             slot = marlin_view_window_get_active_slot (MARLIN_VIEW_WINDOW (sidebar->window));
             g_signal_emit_by_name (slot->ctab, "path-changed", location);
             g_object_unref (slot);
@@ -1746,6 +1746,8 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
             /*marlin_window_slot_info_open_location (slot, location,
               MARLIN_WINDOW_OPEN_ACCORDING_TO_MODE,
               flags, NULL);*/
+        } else if (!(flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW)) { /* New tab */
+            marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (sidebar->window), location);
         } else {
             //TODO once we ll have marlin-application class for managing windows / application
             printf ("%s: uri: %s FLAG_NEW_WINDOW\n", G_STRFUNC, uri);
