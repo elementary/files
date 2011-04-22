@@ -157,7 +157,7 @@ namespace Marlin.View.Chrome
 
                         var text_tmp = text.split("/");
                         string text_ = "";
-                        if(Environment.get_home_dir() == "/" + text_tmp[1] + "/" + text_tmp[2])
+                        if(is_in_home(text_tmp))
                         {
                             to_keep += 2;
                         }
@@ -178,7 +178,12 @@ namespace Marlin.View.Chrome
             }
             return true;
         }
-        
+
+        private bool is_in_home(string[] dirs)
+        {
+            return Environment.get_home_dir() == "/" + dirs[1] + "/" + dirs[2];
+        }
+
         public void animate_new_breadcrumbs(string newpath)
         {
             var old_path = text.split("/");
@@ -276,6 +281,7 @@ namespace Marlin.View.Chrome
             /* If a dir is selected (= mouse hover)*/
             if(selected != -1)
             {
+                y++;
                 int height = get_allocated_height();
                 /* FIXME: this block could be cleaned up, +7 and +5 are
                  * hardcoded. */
@@ -309,6 +315,7 @@ namespace Marlin.View.Chrome
 
                 cr.set_source(pat);
                 cr.fill();
+                y--;
             }
         }
 
@@ -410,7 +417,8 @@ namespace Marlin.View.Chrome
 
             /* Draw toolbar background */
 
-            /* the height +1 is here to fix an adwaita bug */
+            /* the height +1 is here to fix an adwaita bug, we will have to
+             * remove it, FIXME */
             Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height()+1);
             Gtk.render_background(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
             Gtk.render_frame(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
@@ -446,7 +454,7 @@ namespace Marlin.View.Chrome
             dirs = text.split("/");
             bool in_home = false;
 
-            if(Environment.get_home_dir() != "/" + dirs[1] + "/" + dirs[2])
+            if(!is_in_home(dirs))
             {
                 cr.move_to(10, get_allocated_height()/2 + 13/2);
                 cr.show_text("/");
