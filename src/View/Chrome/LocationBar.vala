@@ -105,7 +105,8 @@ namespace Marlin.View.Chrome
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                       | Gdk.EventMask.BUTTON_RELEASE_MASK
-                      | Gdk.EventMask.POINTER_MOTION_MASK);
+                      | Gdk.EventMask.POINTER_MOTION_MASK
+                      | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             var gtk_settings = Gtk.Settings.get_for_screen (get_screen ());
             gtk_settings.get ("gtk-font-name", out gtk_font_name);
             var font = Pango.FontDescription.from_string (gtk_font_name);
@@ -176,6 +177,13 @@ namespace Marlin.View.Chrome
             return true;
         }
 
+        public override bool leave_notify_event(Gdk.EventCrossing event)
+        {
+            selected = -1;
+            queue_draw();
+            return false;
+        }
+
         public override bool draw(Cairo.Context cr)
         {
             double height = get_allocated_height();
@@ -189,7 +197,9 @@ namespace Marlin.View.Chrome
             int y = 6;
 
             /* Draw toolbar background */
-            Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height());
+
+            /* the height +1 is here to fix an adwaita bug */
+            Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height()+1);
             Gtk.render_background(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
             Gtk.render_frame(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
 
@@ -288,9 +298,7 @@ namespace Marlin.View.Chrome
                 Cairo.Pattern pat = new Cairo.Pattern.linear(first_stop, y, second_stop, y);
                 pat.add_color_stop_rgba(0.7, color.red, color.green, color.blue, 0);
                 pat.add_color_stop_rgba(1, color.red, color.green, color.blue, 0.6);
-                
-                /* TODO: This color shouldn't be hardcoded, we should read it
-                 * from a gtk theme */ 
+
                 cr.set_source(pat);
                 cr.fill();
                 y--;
