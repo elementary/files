@@ -274,11 +274,6 @@ void gof_file_update_icon (GOFFile *file, gint size)
 {
     NautilusIconInfo *nicon;
 
-    /* don't waste time on collecting data for hidden files which would be dropped */
-    //TODO set property don't call g_setting for each files
-    if (file->is_hidden && !g_settings_get_boolean(settings, "show-hiddenfiles"))
-        return ;
-
     if (file->custom_icon_name != NULL) {
         if (g_path_is_absolute (file->custom_icon_name)) 
             nicon = nautilus_icon_info_lookup_from_path (file->custom_icon_name, size);
