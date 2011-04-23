@@ -111,6 +111,7 @@ namespace Marlin.View.Chrome
         
         Gee.ArrayList<BreadcrumbsElement> elements;
         Gee.List<BreadcrumbsElement> newbreads;
+        string[] home;
         
         public Breadcrumbs()
         {
@@ -177,6 +178,10 @@ namespace Marlin.View.Chrome
                 }
             });
             entry.hide();
+            home = new string[2];
+            home[0] = "home";
+            home[1] = Environment.get_home_dir().split("/")[2];
+            
         }
 
         string [] old_text = new string[0];
@@ -200,16 +205,19 @@ namespace Marlin.View.Chrome
                 bool found = false;
                 foreach(BreadcrumbsElement element in elements)
                 {
-                    x_render += element.text_width + space_breads;
-                    newpath += element.text + "/";
-                    if(x <= x_render + 5 && x > x_previous + 5)
+                    if(element.display)
                     {
-                        selected = elements.index_of(element);
-                        changed(newpath);
-                        found = true;
-                        break;
+                        x_render += element.text_width + space_breads;
+                        newpath += element.text + "/";
+                        if(x <= x_render + 5 && x > x_previous + 5)
+                        {
+                            selected = elements.index_of(element);
+                            changed(newpath);
+                            found = true;
+                            break;
+                        }
+                        x_previous = x_render;
                     }
-                    x_previous = x_render;
                 }
                 if(!found)
                 {
@@ -300,8 +308,16 @@ namespace Marlin.View.Chrome
                     break;
                 }
             }
-            
-            
+
+            if(newelements.size > 2)
+            if(newelements[1].text == home[0] && newelements[2].text == home[1])
+            {
+                newelements[2].set_icon(home_img);
+                newelements[2].text = "/home/" + home[1];
+                newelements[1].display = false;;
+                newelements[0].display = false;
+            }
+
             if(newelements.size > elements.size)
             {
                 view_old = false;
@@ -378,8 +394,11 @@ namespace Marlin.View.Chrome
                 {
                     foreach(BreadcrumbsElement element in elements)
                     {
-                        x_hl += element.text_width;
-                        x_hl += space_breads;
+                        if(element.display)
+                        {
+                            x_hl += element.text_width;
+                            x_hl += space_breads;
+                        }
                         if(element == elements[selected - 1])
                         {
                             break;
@@ -436,13 +455,16 @@ namespace Marlin.View.Chrome
             }
             foreach(BreadcrumbsElement element in elements)
             {
-                x_render += element.text_width + space_breads;
-                if(x <= x_render + 5 && x > x_previous + 5)
+                if(element.display)
                 {
-                    selected = elements.index_of(element);
-                    break;
+                    x_render += element.text_width + space_breads;
+                    if(x <= x_render + 5 && x > x_previous + 5)
+                    {
+                        selected = elements.index_of(element);
+                        break;
+                    }
+                    x_previous = x_render;
                 }
-                x_previous = x_render;
             }
             if(focus)
             {
@@ -493,16 +515,22 @@ namespace Marlin.View.Chrome
 
             foreach(BreadcrumbsElement element in elements)
             {
+                if(element.display)
+                {
                 element.draw(cr, x_render, y, height);
                 x_render += element.text_width + space_breads;
+                }
                 i++;
             }
             if(view_old)
             {
                 foreach(BreadcrumbsElement element in newbreads)
                 {
-                    element.draw(cr, x_render, y, height);
-                    x_render += element.text_width + space_breads;
+                    if(element.display)
+                    {
+                        element.draw(cr, x_render, y, height);
+                        x_render += element.text_width + space_breads;
+                    }
                 }
             }
 
@@ -524,11 +552,18 @@ namespace Marlin.View.Chrome
         int font_size;
         public int offset = 0;
         public double text_width = -1;
+        Cairo.ImageSurface icon;
+        public bool display = true;
         public BreadcrumbsElement(string text_, string font_name_, int font_size_)
         {
             text = text_;
             font_name = font_name_;
             font_size = font_size_;
+        }
+        
+        public void set_icon(Cairo.ImageSurface icon_)
+        {
+            icon = icon_;
         }
         
         private void compute_text_width(Cairo.Context cr)
@@ -543,9 +578,13 @@ namespace Marlin.View.Chrome
             cr.set_source_rgb(0,0,0);
             cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
             cr.set_font_size(font_size);
-            if(text_width < 0)
+            if(text_width < 0 && icon == null)
             {
                 compute_text_width(cr);
+            }
+            else if(icon != null)
+            {
+                text_width = icon.get_width();
             }
             
             if(offset != 0)
@@ -560,9 +599,19 @@ namespace Marlin.View.Chrome
                 cr.clip();
             }
             
-            cr.move_to(x - offset*5,
-                       height/2 + font_size/2);
-            cr.show_text(text);
+            if(icon == null)
+            {
+                cr.move_to(x - offset*5,
+                           height/2 + font_size/2);
+                cr.show_text(text);
+            }
+            else
+            {
+                cr.set_source_surface(icon, x - offset*5,
+                           1.5*y);
+                cr.paint();
+                cr.set_source_rgba(0,0,0, 0.8);
+            }
             /* Draw the separator */
             cr.set_line_width(1);
             cr.move_to(x - offset*5 + text_width, y);
