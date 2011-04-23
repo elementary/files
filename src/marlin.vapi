@@ -55,7 +55,6 @@ namespace GOF {
         }
     }
 
-    [CCode (cprefix = "GOFFile", lower_case_cprefix = "gof_file_")]
     [CCode (cheader_filename = "gof-file.h")]
     public class File : GLib.Object {
         public File(GLib.File location, GLib.File dir);
@@ -67,6 +66,8 @@ namespace GOF {
         public string color;
         public string formated_modified;
         public string formated_type;
+
+        public bool is_directory;
     }
 
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]

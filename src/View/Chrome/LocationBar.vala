@@ -187,12 +187,49 @@ namespace Marlin.View.Chrome
                     elements.remove(element);
                 }
             });
+            entry.need_completion.connect(() => {
+                string path = "";
+                foreach(BreadcrumbsElement element in elements)
+                {
+                    if(element.display)
+                        path += element.text;
+                }
+                for(int i = 0; i < entry.text.split("/").length - 1; i++)
+                {
+                    path += "/" + entry.text.split("/")[i];
+                }
+                if(entry.text.split("/").length > 0)
+                to_search = entry.text.split("/")[entry.text.split("/").length - 1];
+                else
+                to_search = "";
+                print("%s\n", to_search);
+                entry.completion = "";
+                
+                if(to_search.length > 0)
+                {
+                    var directory = File.new_for_path(path +"/");
+                    files = new GOF.Directory.Async(directory);
+                    files.load();
+                    files.file_loaded.connect(on_file_loaded);
+                }
+            });
             entry.hide();
             home = new string[2];
             home[0] = "home";
             home[1] = Environment.get_home_dir().split("/")[2];
             
         }
+        GOF.Directory.Async files;
+        string to_search;
+        
+        private void on_file_loaded(GOF.File file)
+        {
+            if(file.name.slice(0, to_search.length) == to_search && file.is_directory)
+            {
+                entry.completion = file.name.slice(to_search.length, file.name.length);
+            }
+        }
+        
         public override bool button_press_event(Gdk.EventButton event)
         {
             if(event.type == Gdk.EventType.2BUTTON_PRESS)
@@ -254,7 +291,7 @@ namespace Marlin.View.Chrome
                 if(element.display)
                     _text += element.text;
             }
-            changed(_text + "/" + entry.text);
+            changed(_text + "/" + entry.text + entry.completion);
             entry.reset();
         }
         
@@ -621,6 +658,7 @@ namespace Marlin.View.Chrome
         public string text = "";
         internal int cursor = 0;
         string font_name;
+        internal string completion = "";
         int font_size;
         uint timeout;
         bool blink = true;
@@ -638,6 +676,7 @@ namespace Marlin.View.Chrome
         public signal void left();
         public signal void left_full();
         public signal void need_draw();
+        public signal void need_completion();
         
         public BreadcrumbsEntry(string font_name, int font_size, Gtk.StyleContext context_)
         {
@@ -663,6 +702,7 @@ namespace Marlin.View.Chrome
         {
             text = text.slice(0,cursor) + character + text.slice(cursor, text.length);
             cursor ++;
+            need_completion();
             //print("%s, %d\n", text, cursor);
         }
         
@@ -694,6 +734,7 @@ namespace Marlin.View.Chrome
                 {
                     backspace();
                 }
+                need_completion();
                 break;
             case 0xffff: /* delete */
                 if(cursor < text.length && !((event.state & Gdk.ModifierType.CONTROL_MASK) == 4))
@@ -702,6 +743,7 @@ namespace Marlin.View.Chrome
                 }
                 else if(cursor < text.length)
                     text = text.slice(0,cursor);
+                need_completion();
                 break;
             default:
                 im_context.filter_keypress(event);
@@ -775,12 +817,17 @@ namespace Marlin.View.Chrome
                 else cr.set_source_surface(arrow_img, x + width - arrow_img.get_width() - 10, height/2 - arrow_img.get_height()/2);
                 cr.paint();
             }
+            cr.text_extents(text, out txt);
+            cr.set_source_rgba(0,0,0,0.5);
+            cr.move_to(x + txt.x_advance, height/2 + font_size/2);
+            cr.show_text(completion);
         }
         
         public void reset()
         {
             text = "";
             cursor = 0;
+            completion = "";
         }
         
         public void hide()
