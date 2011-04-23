@@ -164,8 +164,11 @@ namespace Marlin.View.Chrome
                 entry.text = "";
                 foreach(BreadcrumbsElement element in elements)
                 {
-                    entry.text = entry.text + "/" + element.text;
-                    entry.cursor = element.text.length + 1;
+                    if(element.display)
+                    {
+                        entry.text = entry.text + "/" + element.text;
+                        entry.cursor = element.text.length + 1;
+                    }
                 }
                 entry.text += text_tmp;
                 elements.clear();
