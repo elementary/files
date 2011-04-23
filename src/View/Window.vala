@@ -49,6 +49,7 @@ namespace Marlin.View {
 
         private const int horizontal_contextplane_max_width = 840;
         private const int horizontal_contextplane_max_height = 380; // after which we will go vertical
+
         public bool can_go_up{
             set{
                 main_actions.get_action("Up").set_sensitive(value);

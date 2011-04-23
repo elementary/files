@@ -1749,9 +1749,6 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
         } else if (!(flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW)) { /* New tab */
             marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (sidebar->window), location);
         } else {
-            //MarlinViewWindow *window = MARLIN_VIEW_WINDOW (sidebar->window);
-
-            //marlin_application_create_window (MARLIN_APPLICATION (gtk_window_get_application (window)), uri, gtk_window_get_screen (GTK_WINDOW (window)));
             marlin_application_create_window (MARLIN_APPLICATION (gtk_window_get_application (GTK_WINDOW (sidebar->window))), uri, gtk_window_get_screen (GTK_WINDOW (sidebar->window)));
         }
         g_object_unref (location);
