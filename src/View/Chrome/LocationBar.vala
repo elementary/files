@@ -103,10 +103,11 @@ namespace Marlin.View.Chrome
         int space_breads = 12;
         int x;
         int y;
+        int gtk_font_size;
 
         Cairo.ImageSurface home_img;
         Gtk.Button button;
-        Gtk.IMContext im_context;
+        BreadcrumbsEntry entry;
         
         Gee.ArrayList<BreadcrumbsElement> elements;
         Gee.List<BreadcrumbsElement> newbreads;
@@ -116,6 +117,7 @@ namespace Marlin.View.Chrome
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                       | Gdk.EventMask.BUTTON_RELEASE_MASK
                       | Gdk.EventMask.KEY_PRESS_MASK
+                      | Gdk.EventMask.KEY_RELEASE_MASK
                       | Gdk.EventMask.POINTER_MOTION_MASK
                       | Gdk.EventMask.LEAVE_NOTIFY_MASK);
 
@@ -123,6 +125,9 @@ namespace Marlin.View.Chrome
             var gtk_settings = Gtk.Settings.get_for_screen (get_screen ());
             gtk_settings.get ("gtk-font-name", out gtk_font_name);
             var font = Pango.FontDescription.from_string (gtk_font_name);
+            /* FIXME: This is hackish */
+            gtk_font_size = (int)(gtk_font_name.split(" ")[1].to_int() * 1.3);
+
             gtk_font_name = font.get_family();
 
             /* Load home image */
@@ -139,6 +144,28 @@ namespace Marlin.View.Chrome
             y = 6;
             
             elements = new Gee.ArrayList<BreadcrumbsElement>();
+            
+            
+            entry = new BreadcrumbsEntry(gtk_font_name, gtk_font_size);
+            entry.enter.connect(on_entry_enter);
+            entry.need_draw.connect(() => {queue_draw();});
+            entry.left.connect(() => {
+                if(elements.size > 0)
+                {
+                    var element = elements[elements.size - 1];
+                    elements.remove(element);
+                    entry.text = element.text + "/" + entry.text;
+                    entry.cursor = element.text.length + 1;
+                }
+            });
+            entry.backspace.connect(() => {
+                if(elements.size > 0)
+                {
+                    var element = elements[elements.size - 1];
+                    elements.remove(element);
+                }
+            });
+            entry.hide();
         }
 
         string [] old_text = new string[0];
@@ -156,9 +183,10 @@ namespace Marlin.View.Chrome
             else
             {
                 double x_previous = -10;
-                int x = (int)event.x;
+                double x = event.x;
                 double x_render = 0;
                 string newpath = "";
+                bool found = false;
                 foreach(BreadcrumbsElement element in elements)
                 {
                     x_render += element.text_width + space_breads;
@@ -167,11 +195,42 @@ namespace Marlin.View.Chrome
                     {
                         selected = elements.index_of(element);
                         changed(newpath);
+                        found = true;
                         break;
                     }
                     x_previous = x_render;
                 }
+                if(!found)
+                {
+                    grab_focus();
+                    entry.show();
+                }
             }
+            return true;
+        }
+        
+        private void on_entry_enter()
+        {
+            _text = "";
+            foreach(BreadcrumbsElement element in elements)
+            {
+                _text += element.text;
+            }
+            changed(_text + "/" + entry.text);
+            entry.reset();
+        }
+        
+        public override bool key_press_event(Gdk.EventKey event)
+        {
+            entry.key_press_event(event);
+            queue_draw();
+            return true;
+        }
+        
+        public override bool key_release_event(Gdk.EventKey event)
+        {
+            entry.key_release_event(event);
+            queue_draw();
             return true;
         }
 
@@ -187,12 +246,12 @@ namespace Marlin.View.Chrome
             var breads = newpath.split("/");
             var newelements = new Gee.ArrayList<BreadcrumbsElement>();
             if(breads[0] == "")
-                newelements.add(new BreadcrumbsElement("/", "Ubuntu", 13));
+                newelements.add(new BreadcrumbsElement("/", "Ubuntu", gtk_font_size));
             
             foreach(string dir in breads)
             {
                 if(dir != "")
-                newelements.add(new BreadcrumbsElement(dir, "Ubuntu", 13));
+                newelements.add(new BreadcrumbsElement(dir, "Ubuntu", gtk_font_size));
             }
             
             int max_path = 0;
@@ -232,6 +291,7 @@ namespace Marlin.View.Chrome
             
             elements.clear();
             elements = newelements;
+            entry.reset();
         }
         
         bool view_old = false;
@@ -280,7 +340,6 @@ namespace Marlin.View.Chrome
 
         private void draw_selection(Cairo.Context cr)
         {
-
             /* If a dir is selected (= mouse hover)*/
             if(selected != -1)
             {
@@ -306,10 +365,10 @@ namespace Marlin.View.Chrome
                     x_hl = -10;
                 }
                 x_hl += 7;
-                double first_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7;
+                double first_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
                 cr.move_to(first_stop,
                            y);
-                cr.line_to(x_hl + 5,
+                cr.line_to(x_hl + 3,
                            height/2);
                 cr.line_to(first_stop,
                            height - y);
@@ -317,10 +376,10 @@ namespace Marlin.View.Chrome
                     x_hl += elements[selected].text_width;
                 else
                     x_hl = elements[selected].text_width + space_breads/2 + y;
-                double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7;
+                double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
                 cr.line_to(second_stop,
                            height - y);
-                cr.line_to(x_hl + 5,
+                cr.line_to(x_hl + 3,
                            height/2);
                 cr.line_to(second_stop,
                            y);
@@ -369,6 +428,21 @@ namespace Marlin.View.Chrome
             queue_draw();
             return false;
         }
+        
+        public override bool focus_out_event(Gdk.EventFocus event)
+        {
+            focus = false;
+            entry.hide();
+            return true;
+        }
+        
+        bool focus = false;
+        
+        public override bool focus_in_event(Gdk.EventFocus event)
+        {
+            focus = true;
+            return true;
+        }
 
         public override bool draw(Cairo.Context cr)
         {
@@ -400,6 +474,11 @@ namespace Marlin.View.Chrome
             }
 
             draw_selection(cr);
+
+            if(entry != null && focus)
+            {
+                entry.draw(cr, x_render + space_breads/2, height);
+            }
             return false;
         }
     }
@@ -456,6 +535,111 @@ namespace Marlin.View.Chrome
             cr.line_to(x - offset*5 + text_width + 10, height/2);
             cr.line_to(x - offset*5 + text_width, height - y);
             cr.stroke();
+        }
+    }
+    
+    class BreadcrumbsEntry : GLib.Object
+    {
+        IMContext im_context;
+        public string text = "";
+        internal int cursor = 0;
+        string font_name;
+        int font_size;
+        uint timeout;
+        bool blink = true;
+        
+        public signal void enter();
+        public signal void backspace();
+        public signal void left();
+        public signal void need_draw();
+        
+        public BreadcrumbsEntry(string font_name, int font_size)
+        {
+            im_context = new IMMulticontext();
+            im_context.commit.connect(commit);
+            this.font_name = font_name;
+            this.font_size = font_size;
+        }
+        
+        public void show()
+        {
+            timeout = Timeout.add(500, () => {blink = !blink;  need_draw(); return true;});
+        }
+        
+        private void commit(string character)
+        {
+            text = text.slice(0,cursor) + character + text.slice(cursor, text.length);
+            cursor ++;
+            //print("%s, %d\n", text, cursor);
+        }
+        
+        public void key_press_event(Gdk.EventKey event)
+        {
+            switch(event.keyval)
+            {
+            case 0xff51: /* left */
+                if(cursor > 0) cursor --;
+                else left();
+                break;
+            case 0xff53: /* right */
+                if(cursor < text.length) cursor ++;
+                break;
+            case 0xff0d: /* enter */
+                enter();
+                break;
+            case 0xff08: /* backspace */
+                if(cursor > 0)
+                {
+                    text = text.slice(0,cursor - 1) + text.slice(cursor, text.length);
+                    cursor --;
+                }
+                else
+                {
+                    backspace();
+                }
+                break;
+            default:
+                im_context.filter_keypress(event);
+                break;
+            }
+        }
+        
+        public void key_release_event(Gdk.EventKey event)
+        {
+            im_context.filter_keypress(event);
+        }
+        
+        public void draw(Cairo.Context cr, double x, double height)
+        {
+            cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
+            cr.set_font_size(font_size);
+            cr.set_source_rgba(0,0,0,0.8);
+            cr.move_to(x, height/2 + font_size/2);
+            cr.show_text(text);
+            Cairo.TextExtents txt = Cairo.TextExtents();
+            cr.text_extents(text.slice(0, cursor), out txt);
+            if(blink)
+            {
+                cr.move_to(x + txt.x_advance, height/4);
+                cr.line_to(x + txt.x_advance, height/2 + height/4);
+                cr.stroke();
+            }
+        }
+        
+        public void reset()
+        {
+            text = "";
+            cursor = 0;
+        }
+        
+        public void hide()
+        {
+            Source.remove(timeout);
+        }
+        
+        ~BreadcrumbsEntry()
+        {
+            hide();
         }
     }
 }
