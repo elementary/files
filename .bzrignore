@@ -59,3 +59,5 @@ src/marlin.vala.stamp
 src/View/Animations.c
 src/View/SettingsDialog.c
 src/marlintests
+po/.intltool-merge-cache
+data/marlin.desktop
