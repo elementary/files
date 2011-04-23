@@ -113,6 +113,9 @@ namespace Marlin.View.Chrome
         Gee.List<BreadcrumbsElement> newbreads;
         string[] home;
         
+        /* Where the new text start */
+        int anim_state = 0;
+        
         public Breadcrumbs()
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
@@ -138,6 +141,7 @@ namespace Marlin.View.Chrome
             button = new Gtk.Button();
             
             set_can_focus(true);
+
 
             /* x padding */
             x = 0;
@@ -186,13 +190,6 @@ namespace Marlin.View.Chrome
             home[1] = Environment.get_home_dir().split("/")[2];
             
         }
-
-        string [] old_text = new string[0];
-        
-        /* Where the new text start */
-        int new_text_index = -1;
-        int anim_state = 0;
-
         public override bool button_press_event(Gdk.EventButton event)
         {
             if(event.type == Gdk.EventType.2BUTTON_PRESS)
@@ -270,11 +267,6 @@ namespace Marlin.View.Chrome
             entry.key_release_event(event);
             queue_draw();
             return true;
-        }
-
-        private bool is_in_home(string[] dirs)
-        {
-            return Environment.get_home_dir() == "/" + dirs[1] + "/" + dirs[2];
         }
 
         public void animate_new_breadcrumbs(string newpath)
@@ -495,7 +487,7 @@ namespace Marlin.View.Chrome
             return true;
         }
         
-        bool focus = false;
+        new bool focus = false;
         
         public override bool focus_in_event(Gdk.EventFocus event)
         {
@@ -639,6 +631,10 @@ namespace Marlin.View.Chrome
         Cairo.ImageSurface arrow_img;
         Cairo.ImageSurface arrow_hover_img;
         
+        double select = 0;
+        int selected = 0;
+        bool hover = false;
+        
         public signal void enter();
         public signal void backspace();
         public signal void left();
@@ -661,7 +657,7 @@ namespace Marlin.View.Chrome
         public void show()
         {
             Source.remove(timeout);
-            timeout = Timeout.add(500, () => {blink = !blink;  need_draw(); return true;});
+            timeout = Timeout.add(700, () => {blink = !blink;  need_draw(); return true;});
         }
         
         private void commit(string character)
@@ -720,24 +716,16 @@ namespace Marlin.View.Chrome
             im_context.filter_keypress(event);
         }
         
-        double select = 0;
-        double select_start = 0;
-        int selected = 0;
-        int selected_start = 0;
-        bool drag_ = false;
-        bool hover = false;
-        
         public void mouse_motion_event(Gdk.EventMotion event, double width)
         {
             hover = false;
             if(event.x < width && event.x > width - arrow_img.get_width())
-                hover = true;;
+                hover = true;
         }
         
         public void mouse_press_event(Gdk.EventButton event, double width)
         {
             select = event.x;
-            print("%f %f %f\n\n", event.x, width, arrow_img.get_width());
             if(event.x < width && event.x > width - arrow_img.get_width())
                 enter();
         }
