@@ -518,6 +518,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
     GtkTreePath         *path;
     GtkTreeIter         iter;
     GtkAction           *action;
+    GOFFile             *file;
 
     /* check if the event is for the bin window */
     if (G_UNLIKELY (event->window != gtk_tree_view_get_bin_window (tree_view)))
@@ -575,26 +576,9 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
              */
             if (G_LIKELY (event->type == GDK_2BUTTON_PRESS || exo_tree_view_get_single_click (EXO_TREE_VIEW (tree_view))))
             {
-                printf ("activate selected ??\n");
-#if 0
-                /* determine the file for the path */
-                gtk_tree_model_get_iter (GTK_TREE_MODEL (view->model), &iter, path);
-                file = thunar_list_model_get_file (view->model, &iter);
-                if (G_LIKELY (file != NULL))
-                {
-                    /* determine the action to perform depending on the type of the file */
-                    /*action = thunar_gtk_ui_manager_get_action_by_name (THUNAR_STANDARD_VIEW (view)->ui_manager,
-                      thunar_file_is_directory (file) ? "open-in-new-window" : "open");*/
-                    printf ("open or open-in-new-window\n");
-
-                    /* emit the action */
-                    /*if (G_LIKELY (action != NULL))
-                      gtk_action_activate (action);*/
-
-                    /* release the file reference */
-                    g_object_unref (G_OBJECT (file));
-                }
-#endif
+                file = fm_list_model_file_for_path (view->model, path);
+                fm_directory_view_activate_single_file (FM_DIRECTORY_VIEW (view), file, eel_gtk_widget_get_screen (GTK_WIDGET (view)), TRUE);
+                g_object_unref (file);
             }
 
             /* cleanup */

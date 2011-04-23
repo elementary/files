@@ -682,13 +682,16 @@ fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *locatio
 }
 
 void
-fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, GdkScreen *screen)
+fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, 
+                                        GdkScreen *screen, gboolean open_in_tab)
 {
     log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
     if (file->is_directory) {
-        fm_directory_view_load_location (view, file->location);
+        if (open_in_tab)
+            marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), file->location);
+        else
+            fm_directory_view_load_location (view, file->location);
     } else {
-        //gof_gnome_open_single_file (file, screen);
         gof_file_open_single (file, screen);
     }
 }
@@ -707,7 +710,7 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view)
     //TODO remove element count it must already be stored in a structure
     guint nb_elem = g_list_length (file_list);
     if (nb_elem == 1)
-        fm_directory_view_activate_single_file(FM_DIRECTORY_VIEW (view), file_list->data, screen);
+        fm_directory_view_activate_single_file(FM_DIRECTORY_VIEW (view), file_list->data, screen, FALSE);
     else
     {
         /* ignore opening more than 10 elements at a time */
@@ -716,8 +719,7 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view)
             {
                 file = file_list->data;
                 if (file->is_directory) {
-                    /* TODO open dirs in new tabs */
-                    log_printf (LOG_LEVEL_UNDEFINED, "open dir - new tab? %s\n", file->name);
+                    marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), file->location);
                 } else {
                     gof_file_open_single (file, screen);
                 }
@@ -927,11 +929,10 @@ fm_directory_view_get_drop_file (FMDirectoryView *view,
     if (G_UNLIKELY (path == NULL))
     {
         /* determine the current directory */
-        //file = thunar_navigator_get_current_directory (THUNAR_NAVIGATOR (view));
-        //FIXME after the GOFFile reshape
         file = gof_file_get (view->details->slot->location);
-        if (G_LIKELY (file != NULL))
-            g_object_ref (G_OBJECT (file));
+        //TODO check gof_file_get is already reffed
+        /*if (G_LIKELY (file != NULL))
+            g_object_ref (G_OBJECT (file));*/
     }
 
     /* return the path (if any) */

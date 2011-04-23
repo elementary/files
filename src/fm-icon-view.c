@@ -103,7 +103,7 @@ fm_icon_view_selection_changed (GtkTreeSelection *selection, gpointer user_data)
     }*/
     if (view->details->selection != NULL)
         gof_file_list_free (view->details->selection);
-    view->details->selection = get_selection(view);
+    view->details->selection = get_selection (view);
 
     if (view->details->selection != NULL) 
         file = view->details->selection->data;

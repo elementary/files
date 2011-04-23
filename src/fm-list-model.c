@@ -1314,7 +1314,7 @@ fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path)
                             FM_LIST_MODEL_FILE_COLUMN, &file,
                             -1);
     }
-    return file;
+    return g_object_ref (file);
 }
 
 void fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory, GOFFile **file)
