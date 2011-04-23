@@ -217,6 +217,21 @@ namespace Marlin.View.Chrome
                     entry.show();
                 }
             }
+            if(focus)
+            {
+                event.x -= x_render_saved;
+                entry.mouse_press_event(event);
+            }
+            return true;
+        }
+        
+        public override bool button_release_event(Gdk.EventButton event)
+        {
+            if(focus)
+            {
+                event.x -= x_render_saved;
+                entry.mouse_release_event(event);
+            }
             return true;
         }
         
@@ -429,9 +444,16 @@ namespace Marlin.View.Chrome
                 }
                 x_previous = x_render;
             }
+            if(focus)
+            {
+                event.x -= x_render_saved;
+                entry.mouse_motion_event(event);
+            }
             queue_draw();
             return true;
         }
+        
+        double x_render_saved = 0;
 
         public override bool leave_notify_event(Gdk.EventCrossing event)
         {
@@ -488,6 +510,7 @@ namespace Marlin.View.Chrome
 
             if(entry != null && focus)
             {
+                x_render_saved = x_render + space_breads/2;
                 entry.draw(cr, x_render + space_breads/2, height);
             }
             return false;
@@ -590,6 +613,10 @@ namespace Marlin.View.Chrome
             switch(event.keyval)
             {
             case 0xff51: /* left */
+                if(select != 0)
+                    cursor = selected;
+                select = 0;
+                select_start = 0;
                 if(cursor > 0 && ! ((event.state & Gdk.ModifierType.CONTROL_MASK) == 4))
                     cursor --; /* No control pressed, the cursor is not at the begin */
                 else if( cursor == 0 && (event.state & Gdk.ModifierType.CONTROL_MASK) == 4)
@@ -598,6 +625,10 @@ namespace Marlin.View.Chrome
                 else left();
                 break;
             case 0xff53: /* right */
+                if(select != 0)
+                    cursor = selected;
+                select = 0;
+                select_start = 0;
                 if(cursor < text.length) cursor ++;
                 break;
             case 0xff0d: /* enter */
@@ -626,7 +657,7 @@ namespace Marlin.View.Chrome
                 im_context.filter_keypress(event);
                 break;
             }
-            print("%x\n", event.keyval);
+            //print("%x\n", event.keyval);
         }
         
         public void key_release_event(Gdk.EventKey event)
@@ -634,14 +665,77 @@ namespace Marlin.View.Chrome
             im_context.filter_keypress(event);
         }
         
+        double select = 0;
+        double select_start = 0;
+        int selected = 0;
+        int selected_start = 0;
+        bool drag_ = false;
+        
+        public void mouse_motion_event(Gdk.EventMotion event)
+        {
+            if(drag_ == true)
+            {
+                select = event.x;
+            }
+        }
+        
+        public void mouse_press_event(Gdk.EventButton event)
+        {
+            if(event.x > 0)
+            {
+                drag_ = true;
+                select_start = event.x;
+            }
+        }
+        
+        public void mouse_release_event(Gdk.EventButton event)
+        {
+            drag_ = false;
+        }
+        
         public void draw(Cairo.Context cr, double x, double height)
         {
             cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
             cr.set_font_size(font_size);
             cr.set_source_rgba(0,0,0,0.8);
+            selected = 0;
+
+            cr.set_source_rgba(0,0,0,0.8);
+            
+            
             cr.move_to(x, height/2 + font_size/2);
             cr.show_text(text);
+            
+            selected_start = 0;
+            double first_point = select_start > select ? select : select_start;
+            double second_point = select_start > select ? select_start : select;
             Cairo.TextExtents txt = Cairo.TextExtents();
+            for(int i = text.length - 1; i > 0; i--)
+            {
+                cr.text_extents(text.slice(0, i), out txt);
+                if(txt.x_advance < first_point)
+                {
+                    selected_start = i;
+                    break;
+                }
+                txt.x_advance = 0;
+            }
+            double first_offset = txt.x_advance;
+            for(int i = text.length - 1; i > 0; i--)
+            {
+                cr.text_extents(text.slice(selected_start, i), out txt);
+                if(first_offset + txt.x_advance < second_point)
+                {
+                    selected = i;
+                    cr.rectangle(x + first_offset, height/4, txt.x_advance, height/2);
+                    cr.fill();
+                    cr.set_source_rgba(1,1,1,1);
+                    cr.move_to(first_offset + x, height/2 + font_size/2);
+                    cr.show_text(text.slice(selected_start, i));
+                    break;
+                }
+                txt.x_advance = 0;
+            }
             cr.text_extents(text.slice(0, cursor), out txt);
             if(blink)
             {
