@@ -157,16 +157,12 @@ namespace Marlin.View.Chrome
             entry.left.connect(() => {
                 if(elements.size > 0)
                 {
-                    for(int i = elements.size - 1; i > 0; i --)
+                    var element = elements[elements.size - 1];
+                    elements.remove(element);
+                    if(element.display)
                     {
-                        if(elements[i].display)
-                        {
-                            entry.text = elements[i].text + "/" + entry.text;
-                            entry.cursor = elements[i].text.length + 1;
-                            elements[i].display = false;
-                            removed_breads.add(i);
-                            break;
-                        }
+                        entry.text = element.text + "/" + entry.text;
+                        entry.cursor = element.text.length + 1;
                     }
                 }
             });
@@ -179,11 +175,10 @@ namespace Marlin.View.Chrome
                     {
                         entry.text = entry.text + "/" + element.text;
                         entry.cursor = element.text.length + 1;
-                        element.display = false;
                     }
                 }
                 entry.text += text_tmp;
-                //elements.clear();
+                elements.clear();
             });
             entry.backspace.connect(() => {
                 if(elements.size > 0)
@@ -279,7 +274,6 @@ namespace Marlin.View.Chrome
 
         public void animate_new_breadcrumbs(string newpath)
         {
-            removed_breads = new Gee.ArrayList<int>();
             _text = newpath;
             selected = -1;
             var breads = newpath.split("/");
@@ -471,11 +465,8 @@ namespace Marlin.View.Chrome
                     x_previous = x_render;
                 }
             }
-            if(focus)
-            {
-                event.x -= x_render_saved;
-                entry.mouse_motion_event(event, get_allocated_width() - x_render_saved);
-            }
+            event.x -= x_render_saved;
+            entry.mouse_motion_event(event, get_allocated_width() - x_render_saved);
             queue_draw();
             return true;
         }
@@ -489,14 +480,8 @@ namespace Marlin.View.Chrome
             return false;
         }
         
-        Gee.ArrayList<int> removed_breads;
-        
         public override bool focus_out_event(Gdk.EventFocus event)
         {
-            foreach(int i in removed_breads)
-            {
-                elements[i].display = true;
-            }
             focus = false;
             entry.hide();
             return true;
@@ -506,10 +491,6 @@ namespace Marlin.View.Chrome
         
         public override bool focus_in_event(Gdk.EventFocus event)
         {
-            foreach(int i in removed_breads)
-            {
-                elements[i].display = false;
-            }
             focus = true;
             return true;
         }
@@ -551,11 +532,8 @@ namespace Marlin.View.Chrome
 
             draw_selection(cr);
 
-            if(entry != null && focus)
-            {
-                x_render_saved = x_render + space_breads/2;
-                entry.draw(cr, x_render + space_breads/2, height, width - x_render);
-            }
+            x_render_saved = x_render + space_breads/2;
+            entry.draw(cr, x_render + space_breads/2, height, width - x_render);
             return false;
         }
     }
@@ -653,6 +631,7 @@ namespace Marlin.View.Chrome
         double select = 0;
         int selected = 0;
         bool hover = false;
+        new bool focus = false;
         
         public signal void enter();
         public signal void backspace();
@@ -675,6 +654,7 @@ namespace Marlin.View.Chrome
         
         public void show()
         {
+            focus = true;
             Source.remove(timeout);
             timeout = Timeout.add(700, () => {blink = !blink;  need_draw(); return true;});
         }
@@ -783,16 +763,18 @@ namespace Marlin.View.Chrome
                 select = -1;
             }
             cr.text_extents(text.slice(0, cursor), out txt);
-            if(blink)
+            if(blink && focus)
             {
                 cr.move_to(x + txt.x_advance, height/4);
                 cr.line_to(x + txt.x_advance, height/2 + height/4);
                 cr.stroke();
             }
-            
-            if(hover) cr.set_source_surface(arrow_hover_img, x + width - arrow_hover_img.get_width() - 10, height/2 - arrow_hover_img.get_height()/2);
-            else cr.set_source_surface(arrow_img, x + width - arrow_img.get_width() - 10, height/2 - arrow_img.get_height()/2);
-            cr.paint();
+            if(text != "")
+            {
+                if(hover) cr.set_source_surface(arrow_hover_img, x + width - arrow_hover_img.get_width() - 10, height/2 - arrow_hover_img.get_height()/2);
+                else cr.set_source_surface(arrow_img, x + width - arrow_img.get_width() - 10, height/2 - arrow_img.get_height()/2);
+                cr.paint();
+            }
         }
         
         public void reset()
@@ -803,6 +785,7 @@ namespace Marlin.View.Chrome
         
         public void hide()
         {
+            focus = false;
             Source.remove(timeout);
         }
         
