@@ -158,6 +158,17 @@ namespace Marlin.View.Chrome
                     entry.cursor = element.text.length + 1;
                 }
             });
+            entry.left_full.connect(() => {
+                string text_tmp = entry.text;
+                entry.text = "";
+                foreach(BreadcrumbsElement element in elements)
+                {
+                    entry.text = entry.text + "/" + element.text;
+                    entry.cursor = element.text.length + 1;
+                }
+                entry.text += text_tmp;
+                elements.clear();
+            });
             entry.backspace.connect(() => {
                 if(elements.size > 0)
                 {
@@ -551,6 +562,7 @@ namespace Marlin.View.Chrome
         public signal void enter();
         public signal void backspace();
         public signal void left();
+        public signal void left_full();
         public signal void need_draw();
         
         public BreadcrumbsEntry(string font_name, int font_size)
@@ -578,7 +590,11 @@ namespace Marlin.View.Chrome
             switch(event.keyval)
             {
             case 0xff51: /* left */
-                if(cursor > 0) cursor --;
+                if(cursor > 0 && ! ((event.state & Gdk.ModifierType.CONTROL_MASK) == 4))
+                    cursor --; /* No control pressed, the cursor is not at the begin */
+                else if( cursor == 0 && (event.state & Gdk.ModifierType.CONTROL_MASK) == 4)
+                    left_full(); /* Control pressed, the cursor is at the begin */
+                else if((event.state & Gdk.ModifierType.CONTROL_MASK) == 4) cursor = 0;
                 else left();
                 break;
             case 0xff53: /* right */
@@ -598,10 +614,19 @@ namespace Marlin.View.Chrome
                     backspace();
                 }
                 break;
+            case 0xffff: /* delete */
+                if(cursor < text.length && !((event.state & Gdk.ModifierType.CONTROL_MASK) == 4))
+                {
+                    text = text.slice(0,cursor) + text.slice(cursor + 1, text.length);
+                }
+                else if(cursor < text.length)
+                    text = text.slice(0,cursor);
+                break;
             default:
                 im_context.filter_keypress(event);
                 break;
             }
+            print("%x\n", event.keyval);
         }
         
         public void key_release_event(Gdk.EventKey event)
