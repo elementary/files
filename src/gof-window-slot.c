@@ -160,7 +160,7 @@ gof_window_slot_make_icon_view (GOFWindowSlot *slot)
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_ICON_VIEW,
                                                "window-slot", slot, NULL));
     marlin_view_view_container_set_content (slot->ctab, slot->view_box);
-    load_dir_async (slot->directory);
+    gof_directory_async_load (slot->directory);
 }
 
 void
@@ -169,7 +169,7 @@ gof_window_slot_make_list_view (GOFWindowSlot *slot)
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
                                                "window-slot", slot, NULL));
     marlin_view_view_container_set_content (slot->ctab, slot->view_box);
-    load_dir_async (slot->directory);
+    gof_directory_async_load (slot->directory);
 }
 
 /**
@@ -186,7 +186,7 @@ gof_window_slot_make_column_view (GOFWindowSlot *slot)
 {
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COLUMNS_VIEW,
                                                "window-slot", slot, NULL));
-    load_dir_async (slot->directory);
+    gof_directory_async_load (slot->directory);
 }
 GFile *
 gof_window_slot_get_location (GOFWindowSlot *slot)

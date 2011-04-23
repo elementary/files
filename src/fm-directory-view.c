@@ -354,7 +354,7 @@ fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *di
         g_signal_connect (directory, "file_loaded", G_CALLBACK (file_loaded_callback), view);
     g_signal_connect (directory, "file_added", G_CALLBACK (file_added_callback), view);
 
-    load_dir_async (directory);
+    gof_directory_async_load (directory);
     if (!directory->loading && directory->loaded)
         fm_directory_view_load_file_hash (directory, view);
 

@@ -73,12 +73,26 @@ namespace GOF {
     namespace Directory {
         [CCode (cheader_filename = "gof-directory-async.h")]
         public class Async : GLib.Object {
+            public GLib.File location;
             public GOF.File file;
+            public bool loading;
+            public bool loaded;
+            public HashTable file_hash;
+            public HashTable hidden_file_hash;
+
             public Async (GLib.File f);
+            public Async get_for_file (GOF.File f);
+            public Async get (GLib.File f);
+            public void load ();
             public void cancel ();
             public string get_uri ();
             public bool has_parent ();
             public GLib.File get_parent ();
+            
+            public signal void file_loaded (GOF.File file);
+            public signal void file_added (GOF.File file);
+            public signal void file_changed (GOF.File file);
+            public signal void file_deleted (GOF.File file);
             public signal void info_available ();
         }
     }

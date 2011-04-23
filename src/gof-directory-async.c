@@ -285,7 +285,7 @@ gof_directory_async_enclosing_volume_finish (GObject      *object,
 }
 
 void
-load_dir_async (GOFDirectoryAsync *dir)
+gof_directory_async_load (GOFDirectoryAsync *dir)
 {
     g_return_if_fail (GOF_IS_DIRECTORY_ASYNC (dir));
     g_return_if_fail (G_IS_FILE (dir->location));

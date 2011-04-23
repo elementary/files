@@ -78,12 +78,12 @@ GOFDirectoryAsync       *gof_directory_async_new(GFile *location);
 GOFDirectoryAsync       *gof_directory_async_get_for_file(GOFFile *file);
 GOFDirectoryAsync       *gof_directory_get (GFile *location);
 GOFDirectoryAsync       *gof_directory_cache_lookup (GFile *file);
-void                    load_dir_async (GOFDirectoryAsync *dir);
+void                    gof_directory_async_load (GOFDirectoryAsync *dir);
 void                    gof_directory_async_cancel (GOFDirectoryAsync *dir);
 char                    *gof_directory_async_get_uri (GOFDirectoryAsync *directory);
 gboolean                gof_directory_async_has_parent(GOFDirectoryAsync *directory);
 GFile                   *gof_directory_async_get_parent(GOFDirectoryAsync *directory);
-void                    gof_directory_async_load_file_hash (GOFDirectoryAsync *dir);
+//void                    gof_directory_async_load_file_hash (GOFDirectoryAsync *dir);
 
 /*GOFDirectoryAsync       *gof_directory_ref (GOFDirectoryAsync *directory);
   void                    gof_directory_unref (GOFDirectoryAsync *directory);*/
