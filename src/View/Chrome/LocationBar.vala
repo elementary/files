@@ -159,8 +159,11 @@ namespace Marlin.View.Chrome
                 {
                     var element = elements[elements.size - 1];
                     elements.remove(element);
-                    entry.text = element.text + "/" + entry.text;
-                    entry.cursor = element.text.length + 1;
+                    if(element.display)
+                    {
+                        entry.text = element.text + "/" + entry.text;
+                        entry.cursor = element.text.length + 1;
+                    }
                 }
             });
             entry.left_full.connect(() => {
