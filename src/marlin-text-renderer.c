@@ -332,10 +332,12 @@ marlin_text_renderer_set_property (GObject      *object,
 
     case PROP_ZOOM_LEVEL:
         text_renderer->zoom_level = g_value_get_enum (value);
-        if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL)
-            pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_small ());
-        else 
-            pango_layout_set_attributes (text_renderer->layout, NULL);
+        if (text_renderer->layout != NULL) {
+            if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL)
+                pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_small ());
+            else 
+                pango_layout_set_attributes (text_renderer->layout, NULL);
+        }
         break;
 
     case PROP_WRAP_MODE:

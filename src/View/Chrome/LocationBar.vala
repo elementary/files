@@ -98,20 +98,30 @@ namespace Marlin.View.Chrome
             get { return _text; }
             set { _text = value;  selected = -1; queue_draw();}
         }
-        Gee.ArrayList<int> list;
         int selected = -1;
         string gtk_font_name;
         int space_breads = 12;
         int x;
         int y;
+        int gtk_font_size;
 
         Cairo.ImageSurface home_img;
         Gtk.Button button;
+        BreadcrumbsEntry entry;
+        
+        Gee.ArrayList<BreadcrumbsElement> elements;
+        Gee.List<BreadcrumbsElement> newbreads;
+        string[] home;
+        
+        /* Where the new text start */
+        int anim_state = 0;
         
         public Breadcrumbs()
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                       | Gdk.EventMask.BUTTON_RELEASE_MASK
+                      | Gdk.EventMask.KEY_PRESS_MASK
+                      | Gdk.EventMask.KEY_RELEASE_MASK
                       | Gdk.EventMask.POINTER_MOTION_MASK
                       | Gdk.EventMask.LEAVE_NOTIFY_MASK);
 
@@ -119,6 +129,9 @@ namespace Marlin.View.Chrome
             var gtk_settings = Gtk.Settings.get_for_screen (get_screen ());
             gtk_settings.get ("gtk-font-name", out gtk_font_name);
             var font = Pango.FontDescription.from_string (gtk_font_name);
+            /* FIXME: This is hackish */
+            gtk_font_size = (int)(gtk_font_name.split(" ")[1].to_int() * 1.3);
+
             gtk_font_name = font.get_family();
 
             /* Load home image */
@@ -126,19 +139,60 @@ namespace Marlin.View.Chrome
             
             /* FIXME: we should directly use a Gtk.StyleContext */
             button = new Gtk.Button();
+            
+            set_can_focus(true);
+
 
             /* x padding */
             x = 0;
             /* y padding */
             y = 6;
+            
+            elements = new Gee.ArrayList<BreadcrumbsElement>();
+            
+            
+            entry = new BreadcrumbsEntry(gtk_font_name, gtk_font_size, button.get_style_context());
+            entry.enter.connect(on_entry_enter);
+            entry.need_draw.connect(() => {queue_draw();});
+            entry.left.connect(() => {
+                if(elements.size > 0)
+                {
+                    var element = elements[elements.size - 1];
+                    elements.remove(element);
+                    if(element.display)
+                    {
+                        entry.text = element.text + "/" + entry.text;
+                        entry.cursor = element.text.length + 1;
+                    }
+                }
+            });
+            entry.left_full.connect(() => {
+                string text_tmp = entry.text;
+                entry.text = "";
+                foreach(BreadcrumbsElement element in elements)
+                {
+                    if(element.display)
+                    {
+                        entry.text = entry.text + "/" + element.text;
+                        entry.cursor = element.text.length + 1;
+                    }
+                }
+                entry.text += text_tmp;
+                elements.clear();
+            });
+            entry.backspace.connect(() => {
+                if(elements.size > 0)
+                {
+                    var element = elements[elements.size - 1];
+                    elements.remove(element);
+                }
+            });
+            entry.hide();
+            home = new string[2];
+            home[0] = "home";
+            home[1] = Environment.get_home_dir().split("/")[2];
+            
         }
-
-        string [] old_text = new string[0];
-        
-        /* Where the new text start */
-        int new_text_index = -1;
-        int anim_state = 0;
-
         public override bool button_press_event(Gdk.EventButton event)
         {
             if(event.type == Gdk.EventType.2BUTTON_PRESS)
@@ -147,111 +201,156 @@ namespace Marlin.View.Chrome
             }
             else
             {
-                int x_previous = -10;
-                int x = (int)event.x;
-                foreach(int x_render in list)
+                double x_previous = -10;
+                double x = event.x;
+                double x_render = 0;
+                string newpath = "";
+                bool found = false;
+                foreach(BreadcrumbsElement element in elements)
                 {
-                    if(x <= x_render + 5 && x > x_previous + 5)
+                    if(element.display)
                     {
-                        int to_keep = list.index_of(x_render);
-
-                        var text_tmp = text.split("/");
-                        string text_ = "";
-                        if(is_in_home(text_tmp))
+                        x_render += element.text_width + space_breads;
+                        newpath += element.text + "/";
+                        if(x <= x_render + 5 && x > x_previous + 5)
                         {
-                            to_keep += 2;
+                            selected = elements.index_of(element);
+                            changed(newpath);
+                            found = true;
+                            break;
                         }
-                        for(int i = 0; i <= to_keep; i++)
-                        {
-                            text_ += text_tmp[i] + "/";
-                        }
-
-                        /*save_old_breads(text_tmp, to_keep);
-
-                        animate_old_breads();*/
-
-                        changed(text_);
-                        break;
+                        x_previous = x_render;
                     }
-                    x_previous = x_render;
                 }
+                if(!found)
+                {
+                    grab_focus();
+                    entry.show();
+                }
+            }
+            if(focus)
+            {
+                event.x -= x_render_saved;
+                entry.mouse_press_event(event, get_allocated_width() - x_render_saved);
             }
             return true;
         }
-
-        private bool is_in_home(string[] dirs)
+        
+        public override bool button_release_event(Gdk.EventButton event)
         {
-            return Environment.get_home_dir() == "/" + dirs[1] + "/" + dirs[2];
+            if(focus)
+            {
+                event.x -= x_render_saved;
+                entry.mouse_release_event(event);
+            }
+            return true;
+        }
+        
+        private void on_entry_enter()
+        {
+            _text = "";
+            foreach(BreadcrumbsElement element in elements)
+            {
+                if(element.display)
+                    _text += element.text;
+            }
+            changed(_text + "/" + entry.text);
+            entry.reset();
+        }
+        
+        public override bool key_press_event(Gdk.EventKey event)
+        {
+            entry.key_press_event(event);
+            queue_draw();
+            return true;
+        }
+        
+        public override bool key_release_event(Gdk.EventKey event)
+        {
+            entry.key_release_event(event);
+            queue_draw();
+            return true;
         }
 
         public void animate_new_breadcrumbs(string newpath)
         {
-            var old_path = text.split("/");
-            var new_path = newpath.split("/");
-            int max_path = 0;
-            bool different_path = false;
-            if(old_path.length >= new_path.length && text != "/")
+            _text = newpath;
+            selected = -1;
+            var breads = newpath.split("/");
+            var newelements = new Gee.ArrayList<BreadcrumbsElement>();
+            if(breads[0] == "")
+                newelements.add(new BreadcrumbsElement("/", "Ubuntu", gtk_font_size));
+            
+            foreach(string dir in breads)
             {
-                max_path = new_path.length;
-                if(new_path[max_path - 1] == "")
-                    max_path --;
+                if(dir != "")
+                newelements.add(new BreadcrumbsElement(dir, "Ubuntu", gtk_font_size));
+            }
+            
+            int max_path = 0;
+            if(newelements.size > elements.size)
+            {
+                max_path = elements.size;
             }
             else
             {
-                max_path = old_path.length;
-                if(text == "/")
-                    max_path --;
+                max_path = newelements.size;
             }
+            
+            bool same = true;
             
             for(int i = 0; i < max_path; i++)
             {
-                if(old_path[i] != new_path[i])
+                if(newelements[i].text != elements[i].text)
                 {
-                    different_path = true;
-                    text = newpath;
-                    queue_draw();
+                    same = false;
                     break;
                 }
             }
-            if(!different_path)
-            {
-                if(old_path.length > new_path.length || (old_path.length == new_path.length && newpath == "/"))
-                {
-                    save_old_breads(old_path, max_path - 1);
-                    text = newpath;
-                    animate_old_breads();
-                }
-                else
-                {
-                    text = newpath;
-                    new_text_index = 0;
-                    foreach(string dir in old_path)
-                    {
-                        if(dir != "") new_text_index ++;
-                    }
-                    animate_new_breads();
-                }
-            }
-        }
 
-        private void save_old_breads(string[] text_tmp, int to_keep)
-        {
-            old_text = new string[text_tmp.length - to_keep - 1];
-            for(int i = 0; i < old_text.length; i++)
+            if(newelements.size > 2)
+            if(newelements[1].text == home[0] && newelements[2].text == home[1])
             {
-                old_text[i] = text_tmp[i + to_keep + 1];
+                newelements[2].set_icon(home_img);
+                newelements[2].text = "/home/" + home[1] + "/";
+                newelements[1].display = false;;
+                newelements[0].display = false;
             }
+
+            if(newelements.size > elements.size)
+            {
+                view_old = false;
+                newbreads = newelements.slice(max_path, newelements.size);
+                animate_new_breads();
+            }
+            else if(newelements.size < elements.size)
+            {
+                view_old = true;
+                newbreads = elements.slice(max_path, elements.size);
+                animate_old_breads();
+            }
+            
+            elements.clear();
+            elements = newelements;
+            entry.reset();
         }
+        
+        bool view_old = false;
 
         private void animate_old_breads()
         {
-            anim_state = 10;
+            anim_state = 0;
             Timeout.add(1000/60, () => {
-                anim_state--;
-                queue_draw();
-                if(anim_state <= 0)
+                anim_state++;
+                foreach(BreadcrumbsElement bread in newbreads)
                 {
-                    old_text = new string[0];
+                    bread.offset = anim_state;
+                }
+                queue_draw();
+                if(anim_state >= 10)
+                {
+                    newbreads = null;
+                    view_old = false;
                     queue_draw();
                     return false;
                 }
@@ -261,13 +360,18 @@ namespace Marlin.View.Chrome
 
         private void animate_new_breads()
         {
-            anim_state = 0;
+            anim_state = 10;
             Timeout.add(1000/60, () => {
-                anim_state++;
-                queue_draw();
-                if(anim_state >= 10)
+                anim_state--;
+                foreach(BreadcrumbsElement bread in newbreads)
                 {
-                    new_text_index = -1;
+                    bread.offset = anim_state;
+                }
+                queue_draw();
+                if(anim_state <= 0)
+                {
+                    newbreads = null;
+                    view_old = false;
                     queue_draw();
                     return false;
                 }
@@ -277,7 +381,6 @@ namespace Marlin.View.Chrome
 
         private void draw_selection(Cairo.Context cr)
         {
-
             /* If a dir is selected (= mouse hover)*/
             if(selected != -1)
             {
@@ -285,23 +388,42 @@ namespace Marlin.View.Chrome
                 int height = get_allocated_height();
                 /* FIXME: this block could be cleaned up, +7 and +5 are
                  * hardcoded. */
-                int x_hl;
-                if(selected == 0)
-                    x_hl = -10;
+                double x_hl = y;
+                if(selected > 0)
+                {
+                    foreach(BreadcrumbsElement element in elements)
+                    {
+                        if(element.display)
+                        {
+                            x_hl += element.text_width;
+                            x_hl += space_breads;
+                        }
+                        if(element == elements[selected - 1])
+                        {
+                            break;
+                        }
+                    }
+                }
                 else
-                    x_hl = list[selected - 1] + 5;
-                double first_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7;
+                {
+                    x_hl = -10;
+                }
+                x_hl += 7;
+                double first_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
                 cr.move_to(first_stop,
                            y);
-                cr.line_to(x_hl + 5,
+                cr.line_to(x_hl + 3,
                            height/2);
                 cr.line_to(first_stop,
                            height - y);
-                x_hl = list[selected] + 7;
-                double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7;
+                if(selected > 0)
+                    x_hl += elements[selected].text_width;
+                else
+                    x_hl = elements[selected].text_width + space_breads/2 + y;
+                double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
                 cr.line_to(second_stop,
                            height - y);
-                cr.line_to(x_hl + 5,
+                cr.line_to(x_hl + 3,
                            height/2);
                 cr.line_to(second_stop,
                            y);
@@ -322,25 +444,34 @@ namespace Marlin.View.Chrome
         public override bool motion_notify_event(Gdk.EventMotion event)
         {
             int x = (int)event.x;
-            int x_previous = -10;
+            double x_render = 0;
+            double x_previous = -10;
             selected = -1;
             if(event.y > get_allocated_height() - 5 || event.y < 5)
             {
                 queue_draw();
                 return true;
             }
-            foreach(int x_render in list)
+            foreach(BreadcrumbsElement element in elements)
             {
-                if(x <= x_render + 5 && x > x_previous + 5)
+                if(element.display)
                 {
-                    selected = list.index_of(x_render);
-                    break;
+                    x_render += element.text_width + space_breads;
+                    if(x <= x_render + 5 && x > x_previous + 5)
+                    {
+                        selected = elements.index_of(element);
+                        break;
+                    }
+                    x_previous = x_render;
                 }
-                x_previous = x_render;
             }
+            event.x -= x_render_saved;
+            entry.mouse_motion_event(event, get_allocated_width() - x_render_saved);
             queue_draw();
             return true;
         }
+        
+        double x_render_saved = 0;
 
         public override bool leave_notify_event(Gdk.EventCrossing event)
         {
@@ -348,66 +479,20 @@ namespace Marlin.View.Chrome
             queue_draw();
             return false;
         }
-
-        private void populate_list_draw_separators(Cairo.Context cr, string[] dirs)
+        
+        public override bool focus_out_event(Gdk.EventFocus event)
         {
-            double height = get_allocated_height();
-            double width = get_allocated_width();
-            /* It is increased when we draw each directory name to put the
-             * separators at the good place */
-            double x_render = 0;
-            Cairo.TextExtents txt = Cairo.TextExtents();
-            list = new Gee.ArrayList<int>();
-
-            /* We must let some space for the first dir, it can be "/" or home */
-            x_render += home_img.get_width();
-            
-            /* Draw the first > */
-
-            cr.set_source_rgba(0.5,0.5,0.5,0.5);
-            cr.move_to(x_render, y + 0.5);
-            cr.line_to(x_render + 10, height/2);
-            cr.line_to(x_render, height - y - 1);
-            cr.stroke();
-
-            /* Add the value into our list to recall it later. */
-            list.add((int)x_render);
-            
-            /* Compute text width */
-
-            foreach(string dir in dirs)
-            {
-                /* Don't add too much dir, e.g. in "/home///", we would get five
-                 * dirs, and we only need three. */ 
-                if(dir != "")
-                {
-                    cr.text_extents(dir + "   ", out txt);
-
-                    /* Increase the separator position, with a custom padding
-                     * (space_breads). */
-                    x_render += txt.x_advance + space_breads;
-
-                    /* Draw the separator */
-                    cr.move_to(x_render, y + 1);
-                    cr.line_to(x_render + 10, height/2);
-                    cr.line_to(x_render, height - y - 1);
-                    cr.stroke();
-
-                    /* Add the value into our list to recall it later (useful
-                     * for the mouse events) */
-                    list.add((int)x_render);
-                }
-            }
-
-            foreach(string dir in old_text)
-            {
-                if(dir != "")
-                {
-                    cr.text_extents(dir + "   ", out txt);
-                    x_render += txt.x_advance + space_breads;
-                    list.add((int)x_render);
-                }
-            }
+            focus = false;
+            entry.hide();
+            return true;
+        }
+        
+        new bool focus = false;
+        
+        public override bool focus_in_event(Gdk.EventFocus event)
+        {
+            focus = true;
+            return true;
         }
 
         public override bool draw(Cairo.Context cr)
@@ -417,144 +502,296 @@ namespace Marlin.View.Chrome
 
             /* Draw toolbar background */
 
-            /* the height +1 is here to fix an adwaita bug, we will have to
-             * remove it, FIXME */
-            Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height()+1);
+            Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height());
             Gtk.render_background(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
             Gtk.render_frame(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
 
-            cr.set_source_rgb(0.3,0.3,0.3);
-            height = get_allocated_height();
-            width = get_allocated_width();
+            double x_render = y;
+            int i = 0;
 
-            /* The > */
-            /* Don't count the home directory since we won't draw it later. */
-            var dirs = (text.replace(Environment.get_home_dir(), "") + "/").split("/");
+            foreach(BreadcrumbsElement element in elements)
+            {
+                if(element.display)
+                {
+                element.draw(cr, x_render, y, height);
+                x_render += element.text_width + space_breads;
+                }
+                i++;
+            }
+            if(view_old)
+            {
+                foreach(BreadcrumbsElement element in newbreads)
+                {
+                    if(element.display)
+                    {
+                        element.draw(cr, x_render, y, height);
+                        x_render += element.text_width + space_breads;
+                    }
+                }
+            }
 
-            /* Select our system font */
-            cr.select_font_face(gtk_font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
-            /* TODO: We should use system font size but cairo doesn't seem to
-             * scale them like Gtk?! */
-            cr.set_font_size(15);
-            cr.set_line_width(1);
-            cr.save();
-            
-            populate_list_draw_separators(cr, dirs);
-            
             draw_selection(cr);
 
-            cr.restore();
-            cr.save();
+            x_render_saved = x_render + space_breads/2;
+            entry.draw(cr, x_render + space_breads/2, height, width - x_render);
+            return false;
+        }
+    }
+    
+    class BreadcrumbsElement : GLib.Object
+    {
+        public string text;
+        string font_name;
+        int font_size;
+        public int offset = 0;
+        public double text_width = -1;
+        Cairo.ImageSurface icon;
+        public bool display = true;
+        public BreadcrumbsElement(string text_, string font_name_, int font_size_)
+        {
+            text = text_;
+            font_name = font_name_;
+            font_size = font_size_;
+        }
+        
+        public void set_icon(Cairo.ImageSurface icon_)
+        {
+            icon = icon_;
+        }
+        
+        private void compute_text_width(Cairo.Context cr)
+        {
+            Cairo.TextExtents txt = Cairo.TextExtents();
+            cr.text_extents(text, out txt);
+            text_width = txt.x_advance;
+        }
+        
+        public void draw(Cairo.Context cr, double x, double y, double height)
+        {
             cr.set_source_rgb(0,0,0);
-
-            /* The path itself, e.g.  /   home */
-
-            /* Remove all "/" and replace them with some space. We will keep the
-             * first / since it shows the root path. */
-            dirs = text.split("/");
-            bool in_home = false;
-
-            if(!is_in_home(dirs))
+            cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
+            cr.set_font_size(font_size);
+            if(text_width < 0 && icon == null)
             {
-                cr.move_to(10, get_allocated_height()/2 + 13/2);
-                cr.show_text("/");
+                compute_text_width(cr);
+            }
+            else if(icon != null)
+            {
+                text_width = icon.get_width();
+            }
+            
+            if(offset != 0)
+            {
+                cr.move_to(x, y);
+                cr.line_to(x + 5, height/2);
+                cr.line_to(x, height - y);
+                cr.line_to(x + text_width + 5, height - y);
+                cr.line_to(x + text_width + 10 + 5, height/2);
+                cr.line_to(x + text_width + 5, y);
+                cr.close_path();
+                cr.clip();
+            }
+            
+            if(icon == null)
+            {
+                cr.move_to(x - offset*5,
+                           height/2 + font_size/2);
+                cr.show_text(text);
             }
             else
             {
-                in_home = true;
-                cr.translate(5, 1.75*y);
-                cr.scale((height - 3.5*y)/home_img.get_height(),
-                         (height - 3.5*y)/home_img.get_height());
-                cr.set_source_surface(home_img, 0, 0);
+                cr.set_source_surface(icon, x - offset*5,
+                           1.5*y);
                 cr.paint();
-                cr.restore();
-                cr.save();
-                dirs = (text.replace(Environment.get_home_dir(), "") + "/").split("/");
+                cr.set_source_rgba(0,0,0, 0.8);
             }
-
-            int i = draw_breads(cr, dirs, in_home);
-
-            draw_old_animation(cr, i);
-
-            return true;
+            cr.set_source_rgba(0,0,0,0.5);
+            /* Draw the separator */
+            cr.set_line_width(1);
+            cr.move_to(x - offset*5 + text_width, y);
+            cr.line_to(x - offset*5 + text_width + 10, height/2);
+            cr.line_to(x - offset*5 + text_width, height - y);
+            cr.stroke();
         }
-
-        private void get_mask(Cairo.Context cr, int i)
+    }
+    
+    class BreadcrumbsEntry : GLib.Object
+    {
+        IMContext im_context;
+        public string text = "";
+        internal int cursor = 0;
+        string font_name;
+        int font_size;
+        uint timeout;
+        bool blink = true;
+        Gtk.StyleContext context;
+        Cairo.ImageSurface arrow_img;
+        Cairo.ImageSurface arrow_hover_img;
+        
+        double select = 0;
+        int selected = 0;
+        bool hover = false;
+        new bool focus = false;
+        
+        public signal void enter();
+        public signal void backspace();
+        public signal void left();
+        public signal void left_full();
+        public signal void need_draw();
+        
+        public BreadcrumbsEntry(string font_name, int font_size, Gtk.StyleContext context_)
         {
-            int x_hl;
-            double height = get_allocated_height();
-            double width = get_allocated_width();
-            if(i < list.size)
-                x_hl = list[i] + 7;
-            else
-                x_hl = 7;
-            double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7;
-            cr.move_to(second_stop,
-                       height - y);
-            cr.line_to(x_hl + 5,
-                       height/2);
-            cr.line_to(second_stop,
-                       y);
-            cr.line_to(width, y);
-            cr.line_to(width, height);
-            cr.close_path();
-            cr.clip();
+            im_context = new IMMulticontext();
+            im_context.commit.connect(commit);
+            this.font_name = font_name;
+            this.font_size = font_size;
+            context = context_;
+            
+            /* Load arrow image */
+            arrow_img = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/arrow.png");
+            arrow_hover_img = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/arrow_hover.png");
         }
-
-        private void draw_old_animation(Cairo.Context cr, int i)
+        
+        public void show()
         {
-            get_mask(cr, i);
-            cr.set_source_rgba(0,0,0,(double)anim_state/10.0);
-
-            foreach(string dir in old_text)
+            focus = true;
+            Source.remove(timeout);
+            timeout = Timeout.add(700, () => {blink = !blink;  need_draw(); return true;});
+        }
+        
+        private void commit(string character)
+        {
+            text = text.slice(0,cursor) + character + text.slice(cursor, text.length);
+            cursor ++;
+            //print("%s, %d\n", text, cursor);
+        }
+        
+        public void key_press_event(Gdk.EventKey event)
+        {
+            switch(event.keyval)
             {
-                if(dir != "")
+            case 0xff51: /* left */
+                if(cursor > 0 && ! ((event.state & Gdk.ModifierType.CONTROL_MASK) == 4))
+                    cursor --; /* No control pressed, the cursor is not at the begin */
+                else if( cursor == 0 && (event.state & Gdk.ModifierType.CONTROL_MASK) == 4)
+                    left_full(); /* Control pressed, the cursor is at the begin */
+                else if((event.state & Gdk.ModifierType.CONTROL_MASK) == 4) cursor = 0;
+                else left();
+                break;
+            case 0xff53: /* right */
+                if(cursor < text.length) cursor ++;
+                break;
+            case 0xff0d: /* enter */
+                enter();
+                break;
+            case 0xff08: /* backspace */
+                if(cursor > 0)
                 {
-                    int old_x;
-                    if(i == 0)
-                        old_x = -10;
-                    else
-                        old_x = list[i - 1];
-                    cr.move_to(15 + list[i] - list[i] + old_x + (double)anim_state/10.0*(list[i] - old_x),
-                               get_allocated_height()/2 + 13/2);
-                    cr.show_text(dir);
-                    i++;
+                    text = text.slice(0,cursor - 1) + text.slice(cursor, text.length);
+                    cursor --;
                 }
+                else
+                {
+                    backspace();
+                }
+                break;
+            case 0xffff: /* delete */
+                if(cursor < text.length && !((event.state & Gdk.ModifierType.CONTROL_MASK) == 4))
+                {
+                    text = text.slice(0,cursor) + text.slice(cursor + 1, text.length);
+                }
+                else if(cursor < text.length)
+                    text = text.slice(0,cursor);
+                break;
+            default:
+                im_context.filter_keypress(event);
+                break;
+            }
+            //print("%x\n", event.keyval);
+        }
+        
+        public void key_release_event(Gdk.EventKey event)
+        {
+            im_context.filter_keypress(event);
+        }
+        
+        public void mouse_motion_event(Gdk.EventMotion event, double width)
+        {
+            hover = false;
+            if(event.x < width && event.x > width - arrow_img.get_width())
+                hover = true;
+        }
+        
+        public void mouse_press_event(Gdk.EventButton event, double width)
+        {
+            select = event.x;
+            if(event.x < width && event.x > width - arrow_img.get_width())
+                enter();
+        }
+        
+        public void mouse_release_event(Gdk.EventButton event)
+        {
+        }
+        
+        public void draw(Cairo.Context cr, double x, double height, double width)
+        {
+            cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
+            cr.set_font_size(font_size);
+            cr.set_source_rgba(0,0,0,0.8);
+            selected = 0;
+
+            cr.set_source_rgba(0,0,0,0.8);
+            
+            
+            cr.move_to(x, height/2 + font_size/2);
+            cr.show_text(text);
+
+            Cairo.TextExtents txt = Cairo.TextExtents();
+            if(select > 0)
+            {
+                cursor = text.length;
+                for(int i = 0; i < text.length; i++)
+                {
+                    cr.text_extents(text.slice(0, i), out txt);
+                    if(txt.x_advance > select)
+                    {
+                        cursor = i;
+                        break;
+                    }
+                    txt.x_advance = 0;
+                }
+                select = -1;
+            }
+            cr.text_extents(text.slice(0, cursor), out txt);
+            if(blink && focus)
+            {
+                cr.move_to(x + txt.x_advance, height/4);
+                cr.line_to(x + txt.x_advance, height/2 + height/4);
+                cr.stroke();
+            }
+            if(text != "")
+            {
+                if(hover) cr.set_source_surface(arrow_hover_img, x + width - arrow_hover_img.get_width() - 10, height/2 - arrow_hover_img.get_height()/2);
+                else cr.set_source_surface(arrow_img, x + width - arrow_img.get_width() - 10, height/2 - arrow_img.get_height()/2);
+                cr.paint();
             }
         }
-
-        private int draw_breads(Cairo.Context cr, string[] dirs, bool in_home)
+        
+        public void reset()
         {
-            int i = 0;
-            foreach(string dir in dirs)
-            {
-                /* Don't add too much dir, e.g. in "/home///", we would get five
-                 * dirs, and we only need three. */ 
-                if(dir != "")
-                {
-                    if((new_text_index != -1 && i >= new_text_index) || (in_home && new_text_index != -1 && i + 2 >= new_text_index))
-                    {
-                        get_mask(cr, i);
-                        int old_x;
-                        if(i == 0)
-                            old_x = -10;
-                        else
-                            old_x = list[i - 1];
-                        cr.set_source_rgba(0,0,0,(double)anim_state/10.0);
-                        cr.move_to(15 + list[i] - list[i] + old_x + (double)anim_state/10.0*(list[i] - old_x),
-                                   get_allocated_height()/2 + 13/2);
-                        cr.show_text(dir);
-                    }
-                    else
-                    {
-                        cr.move_to(15 + list[i],
-                                   get_allocated_height()/2 + 13/2);
-                        cr.show_text(dir);
-                    }
-                    i++;
-                }
-            }
-            return i;
+            text = "";
+            cursor = 0;
+        }
+        
+        public void hide()
+        {
+            focus = false;
+            Source.remove(timeout);
+        }
+        
+        ~BreadcrumbsEntry()
+        {
+            hide();
         }
     }
 }

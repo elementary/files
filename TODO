@@ -1,16 +1,18 @@
 This is a short TODO list.
 
-- middle click folder whould open in new tab.
 - add completion on the pathbar location, cf thunar they got a nice popup menu.
 - add emblems
+- icon_view add single click mode.
+- add easy multiple selection with only the mouse +/- like in dolphin for all the views, use the pixbuff cellrenderer in list_view, use it to start rubberbanding too.
 - check dropbox support
 - add thumbnails use tumbler, same logic as thunar request thumbs for only shown files.
-- add an icon view
 - files operations must implement an undo/redo mechanism.
 - do the usual filecheck on files without extension of find a way that textfiles don't get detected as octet-stream
 - store typechecks in db together with last edited date
 - interface for tagging system, an easy way to tag a file in the preview panel
 - dual panel mode? (like nautilus F3)
+- dialog property of the selection.
+- add edit location mode of the breadcrumbs (check synpase).
 ...
 
 

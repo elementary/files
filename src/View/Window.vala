@@ -99,13 +99,16 @@ namespace Marlin.View {
             ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
 	    }*/
 
-        public Window ()
+        public Window (Marlin.Application app, Gdk.Screen myscreen)
         {
             //Timeout.add(6*1000, () => { Log.println(Log.Level.DEBUG, "To horizontal"); main_box.orientation = Orientation.VERTICAL; return true; });
             //Timeout.add(3*1000, () => {
             //    Timeout.add(6*1000, () => { Log.println(Log.Level.DEBUG, "To vertical"); main_box.orientation = Orientation.HORIZONTAL; return true; });
             //    return false;
             //});
+
+            application = app;
+            screen = myscreen;
 
             ui = new UIManager();
 
@@ -152,6 +155,7 @@ namespace Marlin.View {
 
             //view = new View();
             /* register icon sizes */
+            /* TODO move this */
             isize15 = icon_size_register ("15px", 15, 15);
             isize128 = icon_size_register ("128px", 128, 128);
 
@@ -367,12 +371,16 @@ namespace Marlin.View {
             }
         }
 
-       private void action_marlin_settings_callback (Gtk.Action action) {
+        private void action_marlin_settings_callback (Gtk.Action action) {
             new SettingsDialog(this);
         }
 
-       private void action_new_tab (Gtk.Action action) {
-            add_tab(File.new_for_commandline_arg(Environment.get_home_dir()));
+        private void action_new_window (Gtk.Action action) {
+            ((Marlin.Application) application).create_window_from_gfile (current_tab.slot.location, screen);
+        }
+
+        private void action_new_tab (Gtk.Action action) {
+            add_tab (current_tab.slot.location);
         }
 
         private void action_remove_tab (Gtk.Action action) {
@@ -513,6 +521,9 @@ namespace Marlin.View {
   /* name, stock id, label */  { "Go", null, N_("_Go") },
   /* name, stock id, label */  { "Help", null, N_("_Help") },
 /*                               { "ColorMenu", null, N_("Set _Color") },*/
+  /* name, stock id, label */  { "New Window", "window-new", N_("New _Window"),
+                                 "<control>N", N_("Open another Marlin window for the displayed location"),
+                                 action_new_window },
   /* name, stock id */         { "New Tab", "tab-new",
   /* label, accelerator */       N_("New _Tab"), "<control>T",
   /* tooltip */                  N_("Open another tab for the displayed location"),

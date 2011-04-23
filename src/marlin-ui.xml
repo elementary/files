@@ -6,7 +6,7 @@
 	<menu action="File">
 <!--		<menuitem name="Connect to Server" action="Connect to Server"/>-->
         <menuitem name="New Tab" action="New Tab"/>
-		<!--<menuitem name="New Window" action="New Window"/>-->
+		<menuitem name="New Window" action="New Window"/>
 		<separator/>
 		<!--<separator/>
                 <placeholder name="Close Items Placeholder"/>-->
@@ -108,7 +108,7 @@
 </popup>-->
 <popup name="CompactMenu" accelerators="false">
 	<menuitem name="New Tab" action="New Tab"/>
-	<!--<menuitem name="New Window" action="New Window"/>-->
+	<menuitem name="New Window" action="New Window"/>
 	<separator/>
     <!--
         <menuitem name="Undo" action="Undo"/>

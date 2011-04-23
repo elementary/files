@@ -4,6 +4,8 @@ pixmapdir = $(datadir)/pixmaps/marlin
 pixmap_DATA =\
 	thumbnail_frame.png \
 	home.png \
+	arrow.png \
+	arrow_hover.png \
         view-list-icons-symbolic.svg \
         view-list-details-symbolic.svg \
         view-list-compact-symbolic.svg \
