@@ -98,7 +98,6 @@ namespace Marlin.View.Chrome
             get { return _text; }
             set { _text = value;  selected = -1; queue_draw();}
         }
-        Gee.ArrayList<int> list;
         int selected = -1;
         string gtk_font_name;
         int space_breads = 12;
@@ -108,6 +107,9 @@ namespace Marlin.View.Chrome
         Cairo.ImageSurface home_img;
         Gtk.Button button;
         Gtk.IMContext im_context;
+        
+        Gee.ArrayList<BreadcrumbsElement> elements;
+        Gee.List<BreadcrumbsElement> newbreads;
         
         public Breadcrumbs()
         {
@@ -135,6 +137,8 @@ namespace Marlin.View.Chrome
             x = 0;
             /* y padding */
             y = 6;
+            
+            elements = new Gee.ArrayList<BreadcrumbsElement>();
         }
 
         string [] old_text = new string[0];
@@ -151,30 +155,18 @@ namespace Marlin.View.Chrome
             }
             else
             {
-                int x_previous = -10;
+                double x_previous = -10;
                 int x = (int)event.x;
-                foreach(int x_render in list)
+                double x_render = 0;
+                string newpath = "";
+                foreach(BreadcrumbsElement element in elements)
                 {
+                    x_render += element.text_width + space_breads;
+                    newpath += element.text + "/";
                     if(x <= x_render + 5 && x > x_previous + 5)
                     {
-                        int to_keep = list.index_of(x_render);
-
-                        var text_tmp = text.split("/");
-                        string text_ = "";
-                        if(is_in_home(text_tmp))
-                        {
-                            to_keep += 2;
-                        }
-                        for(int i = 0; i <= to_keep; i++)
-                        {
-                            text_ += text_tmp[i] + "/";
-                        }
-
-                        /*save_old_breads(text_tmp, to_keep);
-
-                        animate_old_breads();*/
-
-                        changed(text_);
+                        selected = elements.index_of(element);
+                        changed(newpath);
                         break;
                     }
                     x_previous = x_render;
@@ -190,72 +182,74 @@ namespace Marlin.View.Chrome
 
         public void animate_new_breadcrumbs(string newpath)
         {
-            var old_path = text.split("/");
-            var new_path = newpath.split("/");
-            int max_path = 0;
-            bool different_path = false;
-            if(old_path.length >= new_path.length && text != "/")
+            _text = newpath;
+            selected = -1;
+            var breads = newpath.split("/");
+            var newelements = new Gee.ArrayList<BreadcrumbsElement>();
+            if(breads[0] == "")
+                newelements.add(new BreadcrumbsElement("/", "Ubuntu", 13));
+            
+            foreach(string dir in breads)
             {
-                max_path = new_path.length;
-                if(new_path[max_path - 1] == "")
-                    max_path --;
+                if(dir != "")
+                newelements.add(new BreadcrumbsElement(dir, "Ubuntu", 13));
+            }
+            
+            int max_path = 0;
+            if(newelements.size > elements.size)
+            {
+                max_path = elements.size;
             }
             else
             {
-                max_path = old_path.length;
-                if(text == "/")
-                    max_path --;
+                max_path = newelements.size;
             }
+            
+            bool same = true;
             
             for(int i = 0; i < max_path; i++)
             {
-                if(old_path[i] != new_path[i])
+                if(newelements[i].text != elements[i].text)
                 {
-                    different_path = true;
-                    text = newpath;
-                    queue_draw();
+                    same = false;
                     break;
                 }
             }
-            if(!different_path)
+            
+            
+            if(newelements.size > elements.size)
             {
-                if(old_path.length > new_path.length || (old_path.length == new_path.length && newpath == "/"))
-                {
-                    save_old_breads(old_path, max_path - 1);
-                    text = newpath;
-                    animate_old_breads();
-                }
-                else
-                {
-                    text = newpath;
-                    new_text_index = 0;
-                    foreach(string dir in old_path)
-                    {
-                        if(dir != "") new_text_index ++;
-                    }
-                    animate_new_breads();
-                }
+                view_old = false;
+                newbreads = newelements.slice(max_path, newelements.size);
+                animate_new_breads();
             }
-        }
-
-        private void save_old_breads(string[] text_tmp, int to_keep)
-        {
-            old_text = new string[text_tmp.length - to_keep - 1];
-            for(int i = 0; i < old_text.length; i++)
+            else if(newelements.size < elements.size)
             {
-                old_text[i] = text_tmp[i + to_keep + 1];
+                view_old = true;
+                newbreads = elements.slice(max_path, elements.size);
+                animate_old_breads();
             }
+            
+            elements.clear();
+            elements = newelements;
         }
+        
+        bool view_old = false;
 
         private void animate_old_breads()
         {
-            anim_state = 10;
+            anim_state = 0;
             Timeout.add(1000/60, () => {
-                anim_state--;
-                queue_draw();
-                if(anim_state <= 0)
+                anim_state++;
+                foreach(BreadcrumbsElement bread in newbreads)
                 {
-                    old_text = new string[0];
+                    bread.offset = anim_state;
+                }
+                queue_draw();
+                if(anim_state >= 10)
+                {
+                    newbreads = null;
+                    view_old = false;
                     queue_draw();
                     return false;
                 }
@@ -265,13 +259,18 @@ namespace Marlin.View.Chrome
 
         private void animate_new_breads()
         {
-            anim_state = 0;
+            anim_state = 10;
             Timeout.add(1000/60, () => {
-                anim_state++;
-                queue_draw();
-                if(anim_state >= 10)
+                anim_state--;
+                foreach(BreadcrumbsElement bread in newbreads)
                 {
-                    new_text_index = -1;
+                    bread.offset = anim_state;
+                }
+                queue_draw();
+                if(anim_state <= 0)
+                {
+                    newbreads = null;
+                    view_old = false;
                     queue_draw();
                     return false;
                 }
@@ -289,11 +288,24 @@ namespace Marlin.View.Chrome
                 int height = get_allocated_height();
                 /* FIXME: this block could be cleaned up, +7 and +5 are
                  * hardcoded. */
-                int x_hl;
-                if(selected == 0)
-                    x_hl = -10;
+                double x_hl = y;
+                if(selected > 0)
+                {
+                    foreach(BreadcrumbsElement element in elements)
+                    {
+                        x_hl += element.text_width;
+                        x_hl += space_breads;
+                        if(element == elements[selected - 1])
+                        {
+                            break;
+                        }
+                    }
+                }
                 else
-                    x_hl = list[selected - 1] + 5;
+                {
+                    x_hl = -10;
+                }
+                x_hl += 7;
                 double first_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7;
                 cr.move_to(first_stop,
                            y);
@@ -301,7 +313,10 @@ namespace Marlin.View.Chrome
                            height/2);
                 cr.line_to(first_stop,
                            height - y);
-                x_hl = list[selected] + 7;
+                if(selected > 0)
+                    x_hl += elements[selected].text_width;
+                else
+                    x_hl = elements[selected].text_width + space_breads/2 + y;
                 double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7;
                 cr.line_to(second_stop,
                            height - y);
@@ -326,18 +341,20 @@ namespace Marlin.View.Chrome
         public override bool motion_notify_event(Gdk.EventMotion event)
         {
             int x = (int)event.x;
-            int x_previous = -10;
+            double x_render = 0;
+            double x_previous = -10;
             selected = -1;
             if(event.y > get_allocated_height() - 5 || event.y < 5)
             {
                 queue_draw();
                 return true;
             }
-            foreach(int x_render in list)
+            foreach(BreadcrumbsElement element in elements)
             {
+                x_render += element.text_width + space_breads;
                 if(x <= x_render + 5 && x > x_previous + 5)
                 {
-                    selected = list.index_of(x_render);
+                    selected = elements.index_of(element);
                     break;
                 }
                 x_previous = x_render;
@@ -353,67 +370,6 @@ namespace Marlin.View.Chrome
             return false;
         }
 
-        private void populate_list_draw_separators(Cairo.Context cr, string[] dirs)
-        {
-            double height = get_allocated_height();
-            double width = get_allocated_width();
-            /* It is increased when we draw each directory name to put the
-             * separators at the good place */
-            double x_render = 0;
-            Cairo.TextExtents txt = Cairo.TextExtents();
-            list = new Gee.ArrayList<int>();
-
-            /* We must let some space for the first dir, it can be "/" or home */
-            x_render += home_img.get_width();
-            
-            /* Draw the first > */
-
-            cr.set_source_rgba(0.5,0.5,0.5,0.5);
-            cr.move_to(x_render, y + 0.5);
-            cr.line_to(x_render + 10, height/2);
-            cr.line_to(x_render, height - y - 1);
-            cr.stroke();
-
-            /* Add the value into our list to recall it later. */
-            list.add((int)x_render);
-            
-            /* Compute text width */
-
-            foreach(string dir in dirs)
-            {
-                /* Don't add too much dir, e.g. in "/home///", we would get five
-                 * dirs, and we only need three. */ 
-                if(dir != "")
-                {
-                    cr.text_extents(dir + "   ", out txt);
-
-                    /* Increase the separator position, with a custom padding
-                     * (space_breads). */
-                    x_render += txt.x_advance + space_breads;
-
-                    /* Draw the separator */
-                    cr.move_to(x_render, y + 1);
-                    cr.line_to(x_render + 10, height/2);
-                    cr.line_to(x_render, height - y - 1);
-                    cr.stroke();
-
-                    /* Add the value into our list to recall it later (useful
-                     * for the mouse events) */
-                    list.add((int)x_render);
-                }
-            }
-
-            foreach(string dir in old_text)
-            {
-                if(dir != "")
-                {
-                    cr.text_extents(dir + "   ", out txt);
-                    x_render += txt.x_advance + space_breads;
-                    list.add((int)x_render);
-                }
-            }
-        }
-
         public override bool draw(Cairo.Context cr)
         {
             double height = get_allocated_height();
@@ -425,138 +381,81 @@ namespace Marlin.View.Chrome
             Gtk.render_background(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
             Gtk.render_frame(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
 
-            cr.set_source_rgb(0.3,0.3,0.3);
-            height = get_allocated_height();
-            width = get_allocated_width();
+            double x_render = y;
+            int i = 0;
 
-            /* The > */
-            /* Don't count the home directory since we won't draw it later. */
-            var dirs = (text.replace(Environment.get_home_dir(), "") + "/").split("/");
+            foreach(BreadcrumbsElement element in elements)
+            {
+                element.draw(cr, x_render, y, height);
+                x_render += element.text_width + space_breads;
+                i++;
+            }
+            if(view_old)
+            {
+                foreach(BreadcrumbsElement element in newbreads)
+                {
+                    element.draw(cr, x_render, y, height);
+                    x_render += element.text_width + space_breads;
+                }
+            }
 
-            /* Select our system font */
-            cr.select_font_face(gtk_font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
-            /* TODO: We should use system font size but cairo doesn't seem to
-             * scale them like Gtk?! */
-            cr.set_font_size(15);
-            cr.set_line_width(1);
-            cr.save();
-            
-            populate_list_draw_separators(cr, dirs);
-            
             draw_selection(cr);
-
-            cr.restore();
-            cr.save();
-            cr.set_source_rgb(0,0,0);
-
-            /* The path itself, e.g.  /   home */
-
-            /* Remove all "/" and replace them with some space. We will keep the
-             * first / since it shows the root path. */
-            dirs = text.split("/");
-            bool in_home = false;
-
-            if(!is_in_home(dirs))
-            {
-                cr.move_to(10, get_allocated_height()/2 + 13/2);
-                cr.show_text("/");
-            }
-            else
-            {
-                in_home = true;
-                cr.translate(5, 1.75*y);
-                cr.scale((height - 3.5*y)/home_img.get_height(),
-                         (height - 3.5*y)/home_img.get_height());
-                cr.set_source_surface(home_img, 0, 0);
-                cr.paint();
-                cr.restore();
-                cr.save();
-                dirs = (text.replace(Environment.get_home_dir(), "") + "/").split("/");
-            }
-
-            int i = draw_breads(cr, dirs, in_home);
-
-            draw_old_animation(cr, i);
-
             return false;
         }
-
-        private void get_mask(Cairo.Context cr, int i)
+    }
+    
+    class BreadcrumbsElement : GLib.Object
+    {
+        public string text;
+        string font_name;
+        int font_size;
+        public int offset = 0;
+        public double text_width = -1;
+        public BreadcrumbsElement(string text_, string font_name_, int font_size_)
         {
-            int x_hl;
-            double height = get_allocated_height();
-            double width = get_allocated_width();
-            if(i < list.size)
-                x_hl = list[i] + 7;
-            else
-                x_hl = 7;
-            double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 7;
-            cr.move_to(second_stop,
-                       height - y);
-            cr.line_to(x_hl + 5,
-                       height/2);
-            cr.line_to(second_stop,
-                       y);
-            cr.line_to(width, y);
-            cr.line_to(width, height);
-            cr.close_path();
-            cr.clip();
+            text = text_;
+            font_name = font_name_;
+            font_size = font_size_;
         }
-
-        private void draw_old_animation(Cairo.Context cr, int i)
+        
+        private void compute_text_width(Cairo.Context cr)
         {
-            get_mask(cr, i);
-            cr.set_source_rgba(0,0,0,(double)anim_state/10.0);
-
-            foreach(string dir in old_text)
-            {
-                if(dir != "")
-                {
-                    int old_x;
-                    if(i == 0)
-                        old_x = -10;
-                    else
-                        old_x = list[i - 1];
-                    cr.move_to(15 + list[i] - list[i] + old_x + (double)anim_state/10.0*(list[i] - old_x),
-                               get_allocated_height()/2 + 13/2);
-                    cr.show_text(dir);
-                    i++;
-                }
-            }
+            Cairo.TextExtents txt = Cairo.TextExtents();
+            cr.text_extents(text, out txt);
+            text_width = txt.x_advance;
         }
-
-        private int draw_breads(Cairo.Context cr, string[] dirs, bool in_home)
+        
+        public void draw(Cairo.Context cr, double x, double y, double height)
         {
-            int i = 0;
-            foreach(string dir in dirs)
+            cr.set_source_rgb(0,0,0);
+            cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
+            cr.set_font_size(font_size);
+            if(text_width < 0)
             {
-                /* Don't add too much dir, e.g. in "/home///", we would get five
-                 * dirs, and we only need three. */ 
-                if(dir != "")
-                {
-                    if((new_text_index != -1 && i >= new_text_index) || (in_home && new_text_index != -1 && i + 2 >= new_text_index))
-                    {
-                        get_mask(cr, i);
-                        int old_x;
-                        if(i == 0)
-                            old_x = -10;
-                        else
-                            old_x = list[i - 1];
-                        cr.set_source_rgba(0,0,0,(double)anim_state/10.0);
-                        cr.move_to(15 + list[i] - list[i] + old_x + (double)anim_state/10.0*(list[i] - old_x),
-                                   get_allocated_height()/2 + 13/2);
-                        cr.show_text(dir);
-                    }
-                    else
-                    {
-                        cr.move_to(15 + list[i],
-                                   get_allocated_height()/2 + 13/2);
-                        cr.show_text(dir);
-                    }
-                    i++;
-                }
+                compute_text_width(cr);
             }
-            return i;
+            
+            if(offset != 0)
+            {
+                cr.move_to(x, y);
+                cr.line_to(x + 5, height/2);
+                cr.line_to(x, height - y);
+                cr.line_to(x + text_width + 5, height - y);
+                cr.line_to(x + text_width + 10 + 5, height/2);
+                cr.line_to(x + text_width + 5, y);
+                cr.close_path();
+                cr.clip();
+            }
+            
+            cr.move_to(x - offset*5,
+                       height/2 + font_size/2);
+            cr.show_text(text);
+            /* Draw the separator */
+            cr.set_line_width(1);
+            cr.move_to(x - offset*5 + text_width, y);
+            cr.line_to(x - offset*5 + text_width + 10, height/2);
+            cr.line_to(x - offset*5 + text_width, height - y);
+            cr.stroke();
         }
     }
 }
