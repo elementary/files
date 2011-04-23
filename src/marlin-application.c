@@ -105,7 +105,8 @@ open_window (MarlinApplication *application,
 
     //DEBUG ("Opening new window at uri %s", uri);
 
-    window = marlin_view_window_new ();
+    window = marlin_view_window_new (application, screen);
+
     gtk_application_add_window (GTK_APPLICATION (application),
                                 GTK_WINDOW (window));
     marlin_view_window_add_tab (window, location);
@@ -157,7 +158,7 @@ open_tabs (MarlinApplication *application, char **uris, GdkScreen *screen)
     if (list != NULL && list->data != NULL) {
         window = list->data;
     } else {
-        window = marlin_view_window_new ();
+        window = marlin_view_window_new (application, screen);
         gtk_application_add_window (GTK_APPLICATION (application),
                                     GTK_WINDOW (window));
     }
@@ -406,6 +407,35 @@ marlin_application_finalize (GObject *object)
     notify_uninit ();
 
     G_OBJECT_CLASS (marlin_application_parent_class)->finalize (object);
+}
+
+void
+marlin_application_create_window_from_gfile (MarlinApplication *application, 
+                                             GFile *location, GdkScreen *screen)
+{
+    MarlinViewWindow *window;
+
+    if (location == NULL)
+        location = g_file_new_for_path (g_get_home_dir ());
+    else
+        g_object_ref (location);
+
+    //DEBUG ("Opening new window at uri %s", uri);
+
+    window = marlin_view_window_new (application, screen);
+
+    gtk_application_add_window (GTK_APPLICATION (application),
+                                GTK_WINDOW (window));
+    marlin_view_window_add_tab (window, location);
+
+    g_object_unref (location);
+}
+
+void
+marlin_application_create_window (MarlinApplication *application,
+                                  const char *uri, GdkScreen *screen)
+{
+    open_window (application, uri, screen);
 }
 
 void

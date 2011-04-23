@@ -681,6 +681,8 @@ fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *locatio
     g_signal_emit_by_name (slot->ctab, "path-changed", location);
 }
 
+/* TODO remove screen if we don't create any new windows 
+** (check if we have to) */
 void
 fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, 
                                         GdkScreen *screen, gboolean open_in_tab)

@@ -1712,7 +1712,7 @@ drive_start_from_bookmark_cb (GObject      *source_object,
 static void
 open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
                         GtkTreeModel	            *model,
-                        GtkTreePath	            *path,
+                        GtkTreePath	                *path,
                         MarlinViewWindowOpenFlags   flags)
 {
     GOFWindowSlot *slot;
@@ -1749,17 +1749,10 @@ open_selected_bookmark (MarlinPlacesSidebar         *sidebar,
         } else if (!(flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW)) { /* New tab */
             marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (sidebar->window), location);
         } else {
-            //TODO once we ll have marlin-application class for managing windows / application
-            printf ("%s: uri: %s FLAG_NEW_WINDOW\n", G_STRFUNC, uri);
-            //marlin_view_window_add_tab (sidebar->window, location);
+            //MarlinViewWindow *window = MARLIN_VIEW_WINDOW (sidebar->window);
 
-            /*MarlinViewWindow *cur, *new;
-
-              cur = MARLIN_WINDOW (sidebar->window);
-              new = marlin_application_create_navigation_window (cur->application,
-              NULL,
-              gtk_window_get_screen (GTK_WINDOW (cur)));
-              marlin_window_go_to (new, location);*/
+            //marlin_application_create_window (MARLIN_APPLICATION (gtk_window_get_application (window)), uri, gtk_window_get_screen (GTK_WINDOW (window)));
+            marlin_application_create_window (MARLIN_APPLICATION (gtk_window_get_application (GTK_WINDOW (sidebar->window))), uri, gtk_window_get_screen (GTK_WINDOW (sidebar->window)));
         }
         g_object_unref (location);
         g_free (uri);
