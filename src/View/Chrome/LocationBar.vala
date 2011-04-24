@@ -110,6 +110,7 @@ namespace Marlin.View.Chrome
         int gtk_font_size;
 
         Gtk.Button button;
+        Gtk.StyleContext entry_context;
         BreadcrumbsEntry entry;
         
         /* This list will contain all BreadcrumbsElement */
@@ -153,6 +154,7 @@ namespace Marlin.View.Chrome
 
             /* FIXME: we should directly use a Gtk.StyleContext */
             button = new Gtk.Button();
+            entry_context = new Gtk.Entry().get_style_context();
 
             set_can_focus(true);
 
@@ -193,7 +195,7 @@ namespace Marlin.View.Chrome
             });
 
             entry.left_full.connect(() => {
-                string text_tmp = entry.text;
+                string tmp = entry.text;
                 entry.text = "";
                 foreach(BreadcrumbsElement element in elements)
                 {
@@ -201,17 +203,15 @@ namespace Marlin.View.Chrome
                     {
                         if(entry.text[0] != '/')
                         {
-                            entry.text = element.text + "/" + entry.text;
-                            entry.cursor = element.text.length + 1;
+                            entry.text += element.text + "/";
                         }
                         else
                         {
-                            entry.text = element.text + entry.text;
-                            entry.cursor = element.text.length;
+                            entry.text += element.text;
                         }
                     }
                 }
-                entry.text += text_tmp;
+                entry.text += tmp;
                 elements.clear();
             });
 
@@ -251,6 +251,13 @@ namespace Marlin.View.Chrome
                     else
                         Idle.add ((SourceFunc) load_file_hash, Priority.DEFAULT_IDLE);
                 }
+            });
+            
+            entry.paste.connect( () => {
+                var display = get_display();
+                Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
+                Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
+                clipboard.request_text(request_text);
             });
 
             entry.hide();
@@ -339,7 +346,11 @@ namespace Marlin.View.Chrome
                 if(element.display)
                     text += "/" + element.text;
             }
-            changed(text + "/" + entry.text + entry.completion);
+            if(text != "")
+                changed(text + "/" + entry.text + entry.completion);
+            else
+                changed(entry.text + entry.completion);
+                
             entry.reset();
         }
 
@@ -590,6 +601,12 @@ namespace Marlin.View.Chrome
             focus = true;
             return true;
         }
+        
+        private void request_text(Gtk.Clipboard clip, string? text)
+        {
+            if(text != null)
+                entry.text += text;
+        }
 
         public override bool draw(Cairo.Context cr)
         {
@@ -599,8 +616,16 @@ namespace Marlin.View.Chrome
             /* Draw toolbar background */
 
             Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height());
-            Gtk.render_background(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
-            Gtk.render_frame(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
+            if(focus)
+            {
+                Gtk.render_background(entry_context, cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
+                Gtk.render_frame(entry_context, cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
+            }
+            else
+            {
+                Gtk.render_background(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
+                Gtk.render_frame(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
+            }
 
             double x_render = y;
             int i = 0;
@@ -747,6 +772,7 @@ namespace Marlin.View.Chrome
         public signal void left();
         public signal void left_full();
         public signal void need_draw();
+        public signal void paste();
         public signal void need_completion();
         
         public BreadcrumbsEntry(string font_name, int font_size, Gtk.StyleContext context_)
@@ -830,6 +856,14 @@ namespace Marlin.View.Chrome
                     cursor += completion.length + 1;
                     completion = "";
                 }
+                break;
+            case 0x056: /* V */
+                if((event.state & Gdk.ModifierType.CONTROL_MASK) == 4)
+                {
+                    paste();
+                }
+                else
+                    im_context.filter_keypress(event);
                 break;
             default:
                 im_context.filter_keypress(event);
