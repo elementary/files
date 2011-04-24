@@ -58,7 +58,6 @@ namespace Marlin.View.Chrome
             state = true;
 
             set_expand(true);
-            add(bread);
 
             entry.activate.connect(() => { activate(); state = true;});
             entry.focus_out_event.connect(() => { if(!state) state = true; return true; });
