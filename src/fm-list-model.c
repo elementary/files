@@ -1348,7 +1348,7 @@ fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirec
         return FALSE;
     }
 
-    file_entry->subdirectory = gof_directory_async_get_for_file (file_entry->file);
+    file_entry->subdirectory = gof_directory_async_new_from_file (file_entry->file);
 
     /* FIXME not sure the hash lookup is really needed gof_driectory_async_get_for_file is a always a new object */
     if (g_hash_table_lookup (model->details->directory_reverse_map,

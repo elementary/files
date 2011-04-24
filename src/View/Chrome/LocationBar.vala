@@ -208,9 +208,11 @@ namespace Marlin.View.Chrome
                 if(to_search.length > 0)
                 {
                     var directory = File.new_for_path(path +"/");
-                    files = new GOF.Directory.Async(directory);
-                    files.load();
-                    files.file_loaded.connect(on_file_loaded);
+                    files = new GOF.Directory.Async.from_gfile (directory);
+                    if (files.load())
+                        files.file_loaded.connect(on_file_loaded);
+                    else
+                        Idle.add ((SourceFunc) load_file_hash, Priority.DEFAULT_IDLE);
                 }
             });
             entry.hide();
@@ -221,10 +223,18 @@ namespace Marlin.View.Chrome
         }
         GOF.Directory.Async files;
         string to_search;
-        
+       
+        private bool load_file_hash ()
+        {
+            foreach (var file in files.file_hash.get_values ()) {
+                on_file_loaded ((GOF.File) file);
+            }
+            return false;
+        }
+
         private void on_file_loaded(GOF.File file)
         {
-            if(file.name.slice(0, to_search.length) == to_search && file.is_directory)
+            if(file.is_directory && file.name.slice(0, to_search.length) == to_search)
             {
                 entry.completion = file.name.slice(to_search.length, file.name.length);
             }

@@ -78,13 +78,14 @@ namespace GOF {
             public GOF.File file;
             public bool loading;
             public bool loaded;
+            //public HashTable<GLib.File,GOF.File> file_hash;
             public HashTable file_hash;
             public HashTable hidden_file_hash;
 
             public Async (GLib.File f);
-            public Async get_for_file (GOF.File f);
-            public Async get (GLib.File f);
-            public void load ();
+            public Async.from_file (GOF.File f);
+            public Async.from_gfile (GLib.File f);
+            public bool load ();
             public void cancel ();
             public string get_uri ();
             public bool has_parent ();
@@ -94,6 +95,7 @@ namespace GOF {
             public signal void file_added (GOF.File file);
             public signal void file_changed (GOF.File file);
             public signal void file_deleted (GOF.File file);
+            public signal void done_loading ();
             public signal void info_available ();
         }
     }

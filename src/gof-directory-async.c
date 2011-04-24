@@ -284,7 +284,7 @@ gof_directory_async_enclosing_volume_finish (GObject      *object,
     }
 }
 
-void
+gboolean
 gof_directory_async_load (GOFDirectoryAsync *dir)
 {
     g_return_if_fail (GOF_IS_DIRECTORY_ASYNC (dir));
@@ -294,7 +294,7 @@ gof_directory_async_load (GOFDirectoryAsync *dir)
     GOFDirectoryAsyncPrivate *p = dir->priv;
     p->cancellable = g_cancellable_new ();
 
-    if (!dir->loaded)
+    if (!dir->loaded && !dir->loading)
     {
         printf ("%s LOADED FALSE\n", G_STRFUNC);
         dir->loading = TRUE;
@@ -333,10 +333,12 @@ gof_directory_async_load (GOFDirectoryAsync *dir)
                                              load_dir_async_callback,
                                              dir);
         }
+        return TRUE;
     } else {
         printf ("%s ALREADY LOADED\n", G_STRFUNC);
         g_signal_emit (dir, signals[INFO_AVAILABLE], 0);
     }
+    return FALSE;
 }
 
 void
@@ -360,12 +362,12 @@ GOFDirectoryAsync *gof_directory_async_new (GFile *location)
     return (self);
 }
 
-GOFDirectoryAsync *gof_directory_async_get_for_file (GOFFile *file)
+GOFDirectoryAsync *gof_directory_async_new_from_file (GOFFile *file)
 {
     GOFDirectoryAsync *dir;
 
     dir = gof_directory_cache_lookup (file->location);
-    if (G_UNLIKELY (dir != NULL)) {
+    if (dir != NULL) {
         /* take a reference for the caller */
         g_object_ref (dir);
         printf (">>>>>>>> %s reuse cached dir %s\n", G_STRFUNC, g_file_get_uri (dir->location));
@@ -376,6 +378,9 @@ GOFDirectoryAsync *gof_directory_async_get_for_file (GOFFile *file)
         dir->location = g_object_ref (file->location);
         dir->priv->parent = g_object_ref (file->directory);
         dir->file = gof_file_get (dir->location);
+        G_LOCK (directory_cache_mutex);
+        g_hash_table_insert (directory_cache, g_object_ref (dir->location), dir);
+        G_UNLOCK (directory_cache_mutex);
     }
 
     return (dir);
@@ -402,7 +407,7 @@ GOFDirectoryAsync *gof_directory_cache_lookup (GFile *file)
     return cached_dir;
 }
 
-GOFDirectoryAsync *gof_directory_get (GFile *location)
+GOFDirectoryAsync *gof_directory_async_new_from_gfile (GFile *location)
 {
     GOFDirectoryAsync *dir;
 
@@ -417,26 +422,28 @@ GOFDirectoryAsync *gof_directory_get (GFile *location)
         G_LOCK (directory_cache_mutex);
         g_hash_table_insert (directory_cache, g_object_ref (dir->location), dir);
         G_UNLOCK (directory_cache_mutex);
-        dir->file_hash = g_hash_table_new_full (g_file_hash, 
-                                                (GEqualFunc) g_file_equal, 
-                                                (GDestroyNotify) g_object_unref,          
-                                                (GDestroyNotify) g_object_unref);
-        dir->hidden_file_hash = g_hash_table_new_full (g_file_hash, 
-                                                       (GEqualFunc) g_file_equal, 
-                                                       (GDestroyNotify) g_object_unref,          
-                                                       (GDestroyNotify) g_object_unref);
     }
 
     return (dir);
 }
 
+
 static void
-gof_directory_async_init (GOFDirectoryAsync *self)
+gof_directory_async_init (GOFDirectoryAsync *dir)
 {
-    self->priv = g_new0(GOFDirectoryAsyncPrivate, 1);
-    self->loading = FALSE;
-    self->loaded = FALSE;
-    self->priv->show_hiddenfiles = g_settings_get_boolean (settings, "show-hiddenfiles");
+    dir->priv = g_new0(GOFDirectoryAsyncPrivate, 1);
+    dir->loading = FALSE;
+    dir->loaded = FALSE;
+    dir->priv->show_hiddenfiles = g_settings_get_boolean (settings, "show-hiddenfiles");
+        
+    dir->file_hash = g_hash_table_new_full (g_file_hash, 
+                                            (GEqualFunc) g_file_equal, 
+                                            (GDestroyNotify) g_object_unref,          
+                                            (GDestroyNotify) g_object_unref);
+    dir->hidden_file_hash = g_hash_table_new_full (g_file_hash, 
+                                                   (GEqualFunc) g_file_equal, 
+                                                   (GDestroyNotify) g_object_unref,          
+                                                   (GDestroyNotify) g_object_unref);
 }
 
 static void

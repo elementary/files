@@ -75,10 +75,10 @@ typedef struct {
 GType                   gof_directory_async_get_type (void);
 
 GOFDirectoryAsync       *gof_directory_async_new(GFile *location);
-GOFDirectoryAsync       *gof_directory_async_get_for_file(GOFFile *file);
-GOFDirectoryAsync       *gof_directory_get (GFile *location);
+GOFDirectoryAsync       *gof_directory_async_new_from_file (GOFFile *file);
+GOFDirectoryAsync       *gof_directory_async_new_from_gfile (GFile *location);
 GOFDirectoryAsync       *gof_directory_cache_lookup (GFile *file);
-void                    gof_directory_async_load (GOFDirectoryAsync *dir);
+gboolean                gof_directory_async_load (GOFDirectoryAsync *dir);
 void                    gof_directory_async_cancel (GOFDirectoryAsync *dir);
 char                    *gof_directory_async_get_uri (GOFDirectoryAsync *directory);
 gboolean                gof_directory_async_has_parent(GOFDirectoryAsync *directory);

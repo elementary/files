@@ -144,7 +144,7 @@ gof_window_slot_new (GFile *location, GObject *ctab)
     slot->location = g_object_ref (location);
     slot->ctab = ctab;
 
-    slot->directory = gof_directory_get (slot->location);
+    slot->directory = gof_directory_async_new_from_gfile (slot->location);
 
     return slot;
 }
