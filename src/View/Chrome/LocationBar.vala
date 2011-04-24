@@ -87,7 +87,7 @@ namespace Marlin.View.Chrome
         }
     }
 
-    class Breadcrumbs : DrawingArea
+    public class Breadcrumbs : DrawingArea
     {
         /**
          * When the user use a double click, this signal is emited to ask the
@@ -178,8 +178,16 @@ namespace Marlin.View.Chrome
                     elements.remove(element);
                     if(element.display)
                     {
-                        entry.text = element.text + "/" + entry.text;
-                        entry.cursor = element.text.length + 1;
+                        if(entry.text[0] != '/')
+                        {
+                            entry.text = element.text + "/" + entry.text;
+                            entry.cursor = element.text.length + 1;
+                        }
+                        else
+                        {
+                            entry.text = element.text + entry.text;
+                            entry.cursor = element.text.length;
+                        }
                     }
                 }
             });
@@ -191,8 +199,16 @@ namespace Marlin.View.Chrome
                 {
                     if(element.display)
                     {
-                        entry.text = entry.text + "/" + element.text;
-                        entry.cursor = element.text.length + 1;
+                        if(entry.text[0] != '/')
+                        {
+                            entry.text = element.text + "/" + entry.text;
+                            entry.cursor = element.text.length + 1;
+                        }
+                        else
+                        {
+                            entry.text = element.text + entry.text;
+                            entry.cursor = element.text.length;
+                        }
                     }
                 }
                 entry.text += text_tmp;
@@ -212,7 +228,8 @@ namespace Marlin.View.Chrome
                 foreach(BreadcrumbsElement element in elements)
                 {
                     if(element.display)
-                        path += element.text;
+                        path += "/" + element.text; /* sometimes, + "/" is useless
+                                                     * but we are never careful enough */
                 }
                 for(int i = 0; i < entry.text.split("/").length - 1; i++)
                 {
@@ -320,7 +337,7 @@ namespace Marlin.View.Chrome
             foreach(BreadcrumbsElement element in elements)
             {
                 if(element.display)
-                    text += element.text;
+                    text += "/" + element.text;
             }
             changed(text + "/" + entry.text + entry.completion);
             entry.reset();
@@ -386,7 +403,7 @@ namespace Marlin.View.Chrome
             if(newelements[1].text == home[0] && newelements[2].text == home[1])
             {
                 newelements[2].set_icon(home_img);
-                newelements[2].text = "/home/" + home[1] + "/";
+                newelements[2].text = "/home/" + home[1];
                 newelements[1].display = false;;
                 newelements[0].display = false;
             }
@@ -606,6 +623,18 @@ namespace Marlin.View.Chrome
             entry.draw(cr, x_render + space_breads/2, height, width - x_render);
             return false;
         }
+
+        /* TESTS */
+        public int tests_get_elements_size()
+        {
+            int i = 0;
+            foreach(BreadcrumbsElement element in elements)
+            {
+                if(element.display)
+                    i++;
+            }
+            return i;
+        }
     }
     
     class BreadcrumbsElement : GLib.Object
@@ -808,6 +837,7 @@ namespace Marlin.View.Chrome
         public void mouse_press_event(Gdk.EventButton event, double width)
         {
             select = event.x;
+            blink = true;
             if(event.x < width && event.x > width - arrow_img.get_width())
                 enter();
         }

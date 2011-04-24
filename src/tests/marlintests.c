@@ -23,6 +23,7 @@
 #include "marlin-window-columns.h"
 #include "marlin-global-preferences.h"
 #include "tests/mwc_tests.h"
+#include "tests/LocationBar_tests.h"
 
 int main (int argc, char* argv[])
 {
@@ -36,5 +37,6 @@ int main (int argc, char* argv[])
     //tags = marlin_view_tags_new ();
 
     g_test_add_func("/marlin/marlin_window_columns", marlin_window_columns_tests);
+    g_test_add_func("/marlin/marlin_location_bar", marlin_location_bar_tests);
     return g_test_run();
 }
