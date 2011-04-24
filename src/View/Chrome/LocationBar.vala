@@ -108,6 +108,7 @@ namespace Marlin.View.Chrome
         int x;
         int y;
         int gtk_font_size;
+        string protocol = "";
 
         Gtk.Button button;
         Gtk.StyleContext entry_context;
@@ -344,7 +345,7 @@ namespace Marlin.View.Chrome
             foreach(BreadcrumbsElement element in elements)
             {
                 if(element.display)
-                    text += "/" + element.text;
+                    text += element.text + "/";
             }
             if(text != "")
                 changed(text + "/" + entry.text + entry.completion);
@@ -376,9 +377,19 @@ namespace Marlin.View.Chrome
          **/
         public void change_breadcrumbs(string newpath)
         {
-            text = newpath;
+            var explode_protocol = newpath.split("://");
+            if(explode_protocol.length > 1)
+            {
+                protocol = explode_protocol[0] + "://";
+                text = explode_protocol[1];
+            }
+            else
+            {
+                text = newpath;
+                protocol = "";
+            }
             selected = -1;
-            var breads = newpath.split("/");
+            var breads = text.split("/");
             var newelements = new Gee.ArrayList<BreadcrumbsElement>();
             if(breads[0] == "")
                 newelements.add(new BreadcrumbsElement("/", "Ubuntu", gtk_font_size));
@@ -388,6 +399,8 @@ namespace Marlin.View.Chrome
                 if(dir != "")
                 newelements.add(new BreadcrumbsElement(dir, "Ubuntu", gtk_font_size));
             }
+            
+            newelements[0].text = protocol + newelements[0].text;
             
             int max_path = 0;
             if(newelements.size > elements.size)

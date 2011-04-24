@@ -27,6 +27,10 @@ namespace EelGtk.Window {
     public string get_geometry_string (Gtk.Window win);
     public void set_initial_geometry_from_string (Gtk.Window win, string geometry, uint w, uint h, bool ignore_position);
 }
+[CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-gtk-extensions.h")]
+namespace Eel {
+    public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
+}
 
 [CCode (cprefix = "Nautilus", lower_case_cprefix = "nautilus_")]
 namespace Nautilus {
