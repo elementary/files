@@ -754,7 +754,7 @@ namespace Marlin.View.Chrome
                 break;
             case 0xff53: /* right */
                 if(cursor < text.length) cursor ++;
-                else
+                else if(completion != "")
                 {
                     text += completion + "/";
                     cursor += completion.length + 1;
@@ -789,6 +789,7 @@ namespace Marlin.View.Chrome
                 im_context.filter_keypress(event);
                 break;
             }
+            blink = true;
             //print("%x\n", event.keyval);
         }
         
