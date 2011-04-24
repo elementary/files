@@ -37,7 +37,7 @@ namespace Marlin.View.Chrome
             set{
                 var new_path = value;
                 entry.text = new_path;
-                bread.animate_new_breadcrumbs(new_path);
+                bread.change_breadcrumbs(new_path);
                 state = true;
             }
             get{
@@ -89,14 +89,19 @@ namespace Marlin.View.Chrome
 
     class Breadcrumbs : DrawingArea
     {
+        /**
+         * When the user use a double click, this signal is emited to ask the
+         * parent to show the location bar.
+         **/
         public signal void activate_entry();
+        /**
+         * When the user click on a breadcrumb, or when he enters a path by hand
+         * in the integrated entry
+         **/
         public signal void changed(string changed);
-        string _text = "";
-        public string text
-        {
-            get { return _text; }
-            set { _text = value;  selected = -1; queue_draw();}
-        }
+
+        string text = "";
+
         int selected = -1;
         string gtk_font_name;
         int space_breads = 12;
@@ -104,17 +109,30 @@ namespace Marlin.View.Chrome
         int y;
         int gtk_font_size;
 
-        Cairo.ImageSurface home_img;
         Gtk.Button button;
         BreadcrumbsEntry entry;
         
+        /* This list will contain all BreadcrumbsElement */
         Gee.ArrayList<BreadcrumbsElement> elements;
+        
+        /* This list will contain the BreadcrumbsElement which are animated */
         Gee.List<BreadcrumbsElement> newbreads;
+
         string[] home;
         
-        /* Where the new text start */
+        /* A flag to know when the animation is finished */
         int anim_state = 0;
+
+        GOF.Directory.Async files;
+        string to_search;
         
+        bool view_old = false;
+        
+        double x_render_saved = 0;
+        Cairo.ImageSurface home_img;
+        
+        new bool focus = false;
+
         public Breadcrumbs()
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
@@ -133,14 +151,10 @@ namespace Marlin.View.Chrome
 
             gtk_font_name = font.get_family();
 
-            /* Load home image */
-            home_img = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/home.png");
-            
             /* FIXME: we should directly use a Gtk.StyleContext */
             button = new Gtk.Button();
-            
-            set_can_focus(true);
 
+            set_can_focus(true);
 
             /* x padding */
             x = 0;
@@ -148,11 +162,15 @@ namespace Marlin.View.Chrome
             y = 6;
             
             elements = new Gee.ArrayList<BreadcrumbsElement>();
-            
-            
+
             entry = new BreadcrumbsEntry(gtk_font_name, gtk_font_size, button.get_style_context());
+
             entry.enter.connect(on_entry_enter);
-            entry.need_draw.connect(() => {queue_draw();});
+
+            /* Let's connect the signals ;)
+             * FIXME: there could be a separate function for eacg signal */
+            entry.need_draw.connect(() => { queue_draw(); });
+
             entry.left.connect(() => {
                 if(elements.size > 0)
                 {
@@ -165,6 +183,7 @@ namespace Marlin.View.Chrome
                     }
                 }
             });
+
             entry.left_full.connect(() => {
                 string text_tmp = entry.text;
                 entry.text = "";
@@ -179,6 +198,7 @@ namespace Marlin.View.Chrome
                 entry.text += text_tmp;
                 elements.clear();
             });
+
             entry.backspace.connect(() => {
                 if(elements.size > 0)
                 {
@@ -186,6 +206,7 @@ namespace Marlin.View.Chrome
                     elements.remove(element);
                 }
             });
+
             entry.need_completion.connect(() => {
                 string path = "";
                 foreach(BreadcrumbsElement element in elements)
@@ -214,15 +235,16 @@ namespace Marlin.View.Chrome
                         Idle.add ((SourceFunc) load_file_hash, Priority.DEFAULT_IDLE);
                 }
             });
+
             entry.hide();
+            
+            home_img = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/home.png");
+
             home = new string[2];
             home[0] = "home";
             home[1] = Environment.get_home_dir().split("/")[2];
-            
         }
-        GOF.Directory.Async files;
-        string to_search;
-       
+
         private bool load_file_hash ()
         {
             foreach (var file in files.file_hash.get_values ()) {
@@ -238,7 +260,7 @@ namespace Marlin.View.Chrome
                 entry.completion = file.name.slice(to_search.length, file.name.length);
             }
         }
-        
+
         public override bool button_press_event(Gdk.EventButton event)
         {
             if(event.type == Gdk.EventType.2BUTTON_PRESS)
@@ -281,7 +303,7 @@ namespace Marlin.View.Chrome
             }
             return true;
         }
-        
+
         public override bool button_release_event(Gdk.EventButton event)
         {
             if(focus)
@@ -291,26 +313,26 @@ namespace Marlin.View.Chrome
             }
             return true;
         }
-        
+
         private void on_entry_enter()
         {
-            _text = "";
+            text = "";
             foreach(BreadcrumbsElement element in elements)
             {
                 if(element.display)
-                    _text += element.text;
+                    text += element.text;
             }
-            changed(_text + "/" + entry.text + entry.completion);
+            changed(text + "/" + entry.text + entry.completion);
             entry.reset();
         }
-        
+
         public override bool key_press_event(Gdk.EventKey event)
         {
             entry.key_press_event(event);
             queue_draw();
             return true;
         }
-        
+
         public override bool key_release_event(Gdk.EventKey event)
         {
             entry.key_release_event(event);
@@ -318,9 +340,15 @@ namespace Marlin.View.Chrome
             return true;
         }
 
-        public void animate_new_breadcrumbs(string newpath)
+        /**
+         * Change the Breadcrumbs content.
+         *
+         * This function will try to see if the new/old BreadcrumbsElement can
+         * be animated.
+         **/
+        public void change_breadcrumbs(string newpath)
         {
-            _text = newpath;
+            text = newpath;
             selected = -1;
             var breads = newpath.split("/");
             var newelements = new Gee.ArrayList<BreadcrumbsElement>();
@@ -380,9 +408,8 @@ namespace Marlin.View.Chrome
             elements = newelements;
             entry.reset();
         }
-        
-        bool view_old = false;
 
+        /* A threaded function to animate the old BreadcrumbsElement */
         private void animate_old_breads()
         {
             anim_state = 0;
@@ -404,6 +431,7 @@ namespace Marlin.View.Chrome
             } );
         }
 
+        /* A threaded function to animate the new BreadcrumbsElement */
         private void animate_new_breads()
         {
             anim_state = 10;
@@ -516,8 +544,6 @@ namespace Marlin.View.Chrome
             queue_draw();
             return true;
         }
-        
-        double x_render_saved = 0;
 
         public override bool leave_notify_event(Gdk.EventCrossing event)
         {
@@ -532,8 +558,6 @@ namespace Marlin.View.Chrome
             entry.hide();
             return true;
         }
-        
-        new bool focus = false;
         
         public override bool focus_in_event(Gdk.EventFocus event)
         {
@@ -605,7 +629,7 @@ namespace Marlin.View.Chrome
             icon = icon_;
         }
         
-        private void compute_text_width(Cairo.Context cr)
+        private void computetext_width(Cairo.Context cr)
         {
             Cairo.TextExtents txt = Cairo.TextExtents();
             cr.text_extents(text, out txt);
@@ -619,7 +643,7 @@ namespace Marlin.View.Chrome
             cr.set_font_size(font_size);
             if(text_width < 0 && icon == null)
             {
-                compute_text_width(cr);
+                computetext_width(cr);
             }
             else if(icon != null)
             {
@@ -730,6 +754,12 @@ namespace Marlin.View.Chrome
                 break;
             case 0xff53: /* right */
                 if(cursor < text.length) cursor ++;
+                else
+                {
+                    text += completion + "/";
+                    cursor += completion.length + 1;
+                    completion = "";
+                }
                 break;
             case 0xff0d: /* enter */
                 enter();
@@ -823,8 +853,14 @@ namespace Marlin.View.Chrome
             }
             if(text != "")
             {
-                if(hover) cr.set_source_surface(arrow_hover_img, x + width - arrow_hover_img.get_width() - 10, height/2 - arrow_hover_img.get_height()/2);
-                else cr.set_source_surface(arrow_img, x + width - arrow_img.get_width() - 10, height/2 - arrow_img.get_height()/2);
+                if(hover)
+                    cr.set_source_surface(arrow_hover_img,
+                                          x + width - arrow_hover_img.get_width() - 10,
+                                          height/2 - arrow_hover_img.get_height()/2);
+                else
+                    cr.set_source_surface(arrow_img,
+                                          x + width - arrow_img.get_width() - 10,
+                                          height/2 - arrow_img.get_height()/2);
                 cr.paint();
             }
             cr.text_extents(text, out txt);
