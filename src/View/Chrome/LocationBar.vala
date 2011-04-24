@@ -558,6 +558,14 @@ namespace Marlin.View.Chrome
             }
             event.x -= x_render_saved;
             entry.mouse_motion_event(event, get_allocated_width() - x_render_saved);
+            if(event.x > 0)
+            {
+                get_window().set_cursor(new Gdk.Cursor(Gdk.CursorType.XTERM));
+            }
+            else
+            {
+                get_window().set_cursor(null);
+            }
             queue_draw();
             return true;
         }
@@ -566,6 +574,7 @@ namespace Marlin.View.Chrome
         {
             selected = -1;
             queue_draw();
+            get_window().set_cursor(null);
             return false;
         }
         
@@ -813,6 +822,14 @@ namespace Marlin.View.Chrome
                 else if(cursor < text.length)
                     text = text.slice(0,cursor);
                 need_completion();
+                break;
+            case 0xff09: /* tab */
+                if(completion != "")
+                {
+                    text += completion + "/";
+                    cursor += completion.length + 1;
+                    completion = "";
+                }
                 break;
             default:
                 im_context.filter_keypress(event);
