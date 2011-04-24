@@ -130,7 +130,7 @@ namespace Marlin.View.Chrome
             gtk_settings.get ("gtk-font-name", out gtk_font_name);
             var font = Pango.FontDescription.from_string (gtk_font_name);
             /* FIXME: This is hackish */
-            gtk_font_size = (int)(gtk_font_name.split(" ")[1].to_int() * 1.3);
+            gtk_font_size = (int)(int.parse(gtk_font_name.split(" ")[1]) * 1.3);
 
             gtk_font_name = font.get_family();
 

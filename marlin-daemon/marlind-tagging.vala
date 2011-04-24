@@ -191,7 +191,7 @@ public class MarlinTags : Object {
         } while (rc == Sqlite.ROW);
         //stdout.printf("[getColor]: %s\n", txt);
 
-	int ret = txt.to_int();
+	int ret = int.parse(txt);
         /* It appears that a db error return -1, we got to check the value just in case */
 	if(ret == -1){
 	    ret = 0;
