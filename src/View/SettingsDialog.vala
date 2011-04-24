@@ -77,10 +77,10 @@ namespace Marlin.View
             
             /* Sidebar icon size */
             var spin_icon_size = new Chrome.ModeButton();
-            spin_icon_size.append(new Gtk.Label("16"));
-            spin_icon_size.append(new Gtk.Label("24"));
-            spin_icon_size.append(new Gtk.Label("32"));
-            spin_icon_size.append(new Gtk.Label("48"));
+            spin_icon_size.append(new Gtk.Label(N_("small")));
+            spin_icon_size.append(new Gtk.Label(N_("medium")));
+            spin_icon_size.append(new Gtk.Label(N_("large")));
+            spin_icon_size.append(new Gtk.Label(N_("extra-large")));
             switch((int)Preferences.settings.get_value("sidebar-icon-size"))
             {
             case 16:
@@ -129,16 +129,16 @@ namespace Marlin.View
             int value = 16;
             switch(((Gtk.Label)widget).get_text())
             {
-            case "16":
+            case N_("small"):
                 value = 16;
                 break;
-            case "24":
+            case N_("medium"):
                 value = 24;
                 break;
-            case "32":
+            case N_("large"):
                 value = 32;
                 break;
-            case "48":
+            case N_("extra-large"):
                 value = 48;
                 break;
             }
