@@ -703,7 +703,8 @@ namespace Marlin.View.Chrome
         public void show()
         {
             focus = true;
-            Source.remove(timeout);
+            if (timeout > 0)
+                Source.remove(timeout);
             timeout = Timeout.add(700, () => {blink = !blink;  need_draw(); return true;});
         }
         
@@ -842,7 +843,8 @@ namespace Marlin.View.Chrome
         public void hide()
         {
             focus = false;
-            Source.remove(timeout);
+            if (timeout > 0)
+                Source.remove(timeout);
         }
         
         ~BreadcrumbsEntry()
