@@ -391,4 +391,8 @@ void    fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *ev
 GList   *fm_directory_view_get_selection (FMDirectoryView *view);
 GList   *fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view);
 
+void    fm_directory_view_context_menu (FMDirectoryView *view,
+                                        guint           button,
+                                        GdkEventButton  *event);
+
 #endif /* FM_DIRECTORY_VIEW_H */

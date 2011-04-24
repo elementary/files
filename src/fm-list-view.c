@@ -556,7 +556,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
         else
         {
             /* open the context menu */
-            fm_directory_view_context_menu (view, event->button, event);
+            fm_directory_view_context_menu (FM_DIRECTORY_VIEW (view), event->button, event);
         }
 
         return TRUE;

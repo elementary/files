@@ -1514,7 +1514,8 @@ fm_directory_view_drag_timer (gpointer user_data)
     GDK_THREADS_ENTER ();
     //thunar_standard_view_context_menu (standard_view, 3, gtk_get_current_event_time ());
     //fm_directory_view_context_menu (view, 3, gtk_get_current_event_time ());
-    fm_directory_view_context_menu (view, 3, gtk_get_current_event ());
+    //fm_directory_view_context_menu (view, 3, (GdkEventButton *) gtk_get_current_event ());
+    fm_directory_view_context_menu (view, 3, (GdkEventButton *) gtk_get_current_event ());
     printf ("fire up the context menu 3\n");
     GDK_THREADS_LEAVE ();
 
@@ -1716,7 +1717,7 @@ fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event)
 void
 fm_directory_view_context_menu (FMDirectoryView *view,
                                 guint           button,
-                                GdkEventButton   *event)
+                                GdkEventButton  *event)
                                 //int32         timestamp)
 {
     GtkWidget *menu;
