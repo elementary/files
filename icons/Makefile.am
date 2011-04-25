@@ -3,7 +3,6 @@ NULL=
 pixmapdir = $(datadir)/pixmaps/marlin
 pixmap_DATA =\
 	thumbnail_frame.png \
-	home.png \
 	arrow.png \
 	arrow_hover.png \
         view-list-icons-symbolic.svg \

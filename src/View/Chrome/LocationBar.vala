@@ -136,7 +136,7 @@ namespace Marlin.View.Chrome
         bool view_old = false;
         
         double x_render_saved = 0;
-        Cairo.ImageSurface home_img;
+        Gdk.Pixbuf home_img;
         
         new bool focus = false;
 
@@ -268,7 +268,15 @@ namespace Marlin.View.Chrome
 
             entry.hide();
             
-            home_img = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/home.png");
+            try {
+                home_img = IconTheme.get_default ().load_icon ("go-home-symbolic", 16, 0);
+            } catch (Error err) {
+                try {
+                    home_img = IconTheme.get_default ().load_icon ("go-home", 16, 0);
+                } catch (Error err) {
+                    stderr.printf ("Unable to load home icon: %s", err.message);
+                }
+            }
 
             home = new string[2];
             home[0] = "home";
@@ -710,7 +718,7 @@ namespace Marlin.View.Chrome
         int font_size;
         public int offset = 0;
         public double text_width = -1;
-        Cairo.ImageSurface icon;
+        Gdk.Pixbuf icon;
         public bool display = true;
         public BreadcrumbsElement(string text_, string font_name_, int font_size_)
         {
@@ -719,7 +727,7 @@ namespace Marlin.View.Chrome
             font_size = font_size_;
         }
         
-        public void set_icon(Cairo.ImageSurface icon_)
+        public void set_icon(Gdk.Pixbuf icon_)
         {
             icon = icon_;
         }
@@ -765,10 +773,9 @@ namespace Marlin.View.Chrome
             }
             else
             {
-                cr.set_source_surface(icon, x - offset*5,
-                           1.5*y);
+                Gdk.cairo_set_source_pixbuf(cr, icon, x - offset*5,
+                           height/2 - icon.get_height()/2);
                 cr.paint();
-                cr.set_source_rgba(0,0,0, 0.8);
             }
             cr.set_source_rgba(0,0,0,0.5);
             /* Draw the separator */
