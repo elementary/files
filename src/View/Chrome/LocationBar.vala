@@ -1010,16 +1010,23 @@ namespace Marlin.View.Chrome
         
         public void mouse_press_event(Gdk.EventButton event, double width)
         {
-            selection_mouse_start = 0;
-            selection_mouse_end = 0;
+            reset_selection();
             blink = true;
             if(event.x < width && event.x > width - arrow_img.get_width())
                 enter();
-            else if(event.x > -20)
+            else if(event.x >= 0)
             {
                 is_selecting = true;
                 selection_mouse_start = event.x;
+                selection_mouse_end = event.x;
             }
+            else if(event.x >= -20)
+            {
+                is_selecting = true;
+                selection_mouse_start = 0;
+                selection_mouse_end = 0;
+            }
+            need_draw();
         }
         
         public void mouse_release_event(Gdk.EventButton event)
@@ -1038,20 +1045,21 @@ namespace Marlin.View.Chrome
         
         private void update_selection(Cairo.Context cr)
         {
+            double last_diff = double.MAX;
             Cairo.TextExtents txt = Cairo.TextExtents();
             if(selection_mouse_start > 0)
             {
                 selected_start = 0;
                 selection_start = 0;
                 cursor = text.length;
-                for(int i = text.length; i > 0; i--)
+                for(int i = 0; i <= text.length; i++)
                 {
                     cr.text_extents(text.slice(0, i), out txt);
-                    if(txt.x_advance - 10 < selection_mouse_start)
+                    if(Math.fabs(selection_mouse_start - txt.x_advance) < last_diff)
                     {
+                        last_diff = Math.fabs(selection_mouse_start - txt.x_advance);
                         selection_start = txt.x_advance;
                         selected_start = i;
-                        break;
                     }
                     txt.x_advance = 0;
                 }
@@ -1060,18 +1068,19 @@ namespace Marlin.View.Chrome
 
             if(selection_mouse_end > 0)
             {
+                last_diff = double.MAX;
                 selected_end = 0;
                 selection_end = 0;
                 cursor = text.length;
-                for(int i = text.length; i > 0; i--)
+                for(int i = 0; i <= text.length; i++)
                 {
                     cr.text_extents(text.slice(0, i), out txt);
-                    if(txt.x_advance < selection_mouse_end - 5)
+                    if(Math.fabs(selection_mouse_end - txt.x_advance) < last_diff)
                     {
+                        last_diff = Math.fabs(selection_mouse_end - txt.x_advance);
                         selected_end = i;
                         selection_end = txt.x_advance;
                         cursor = i;
-                        break;
                     }
                     txt.x_advance = 0;
                 }
