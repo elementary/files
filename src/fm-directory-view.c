@@ -2374,12 +2374,15 @@ static void
 action_paste_files (GtkAction *action, FMDirectoryView *view)
 {
     GFile *current_directory;
+    MarlinViewWindow* win;
 
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    
+    win = MARLIN_VIEW_WINDOW(view->details->window);
 
     current_directory = view->details->slot->location;
-    if (G_LIKELY (current_directory != NULL))
+    if (G_LIKELY (current_directory != NULL) && marlin_view_window_paste(win))
     {
         marlin_clipboard_manager_paste_files (view->clipboard, current_directory,
                                               GTK_WIDGET (view), NULL);

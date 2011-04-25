@@ -85,6 +85,11 @@ namespace Marlin.View.Chrome
                 entry.grab_focus();
             }
         }
+        
+        public bool paste()
+        {
+            return bread.paste();
+        }
     }
 
     public class Breadcrumbs : DrawingArea
@@ -268,6 +273,20 @@ namespace Marlin.View.Chrome
             home = new string[2];
             home[0] = "home";
             home[1] = Environment.get_home_dir().split("/")[2];
+        }
+        
+        public bool paste()
+        {
+            if(focus)
+            {
+                var display = get_display();
+                Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
+                Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
+                clipboard.request_text(request_text);
+                return true;
+            }
+            else
+                return false;
         }
 
         private bool load_file_hash ()

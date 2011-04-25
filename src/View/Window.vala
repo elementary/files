@@ -67,6 +67,13 @@ namespace Marlin.View {
                 main_actions.get_action("Back").set_sensitive(value);
             }
         }
+        
+        public bool paste()
+        {
+            if(top_menu.location_bar.paste())
+                return false;
+            return true;
+        }
 
         //public signal void refresh();
         public signal void selection_changed(GOF.File? gof_file);
