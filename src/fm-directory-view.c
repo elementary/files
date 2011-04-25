@@ -2342,13 +2342,18 @@ static void
 action_cut_files (GtkAction *action, FMDirectoryView *view)
 {
     GList *selection;
+    MarlinViewWindow* win;
 
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (view->clipboard));
 
-    selection = fm_directory_view_get_selection_for_file_transfer (view);
-    marlin_clipboard_manager_cut_files (view->clipboard, selection);
+    win = MARLIN_VIEW_WINDOW(view->details->window);
+    if (marlin_view_window_cut(win))
+    {
+        selection = fm_directory_view_get_selection_for_file_transfer (view);
+        marlin_clipboard_manager_cut_files (view->clipboard, selection);
+    }
 
     /*copy_or_cut_files (view, selection, FALSE);*/
     gof_file_list_free (selection);
@@ -2358,16 +2363,21 @@ static void
 action_copy_files (GtkAction *action, FMDirectoryView *view)
 {
     GList *selection;
+    MarlinViewWindow* win;
 
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (view->clipboard));
 
-    selection = fm_directory_view_get_selection_for_file_transfer (view);
-    marlin_clipboard_manager_copy_files (view->clipboard, selection);
+    win = MARLIN_VIEW_WINDOW(view->details->window);
+    if (marlin_view_window_copy(win))
+    {
+        selection = fm_directory_view_get_selection_for_file_transfer (view);
+        marlin_clipboard_manager_copy_files (view->clipboard, selection);
 
-    /*copy_or_cut_files (view, selection, FALSE);*/
-    gof_file_list_free (selection);
+        /*copy_or_cut_files (view, selection, FALSE);*/
+        gof_file_list_free (selection);
+    }
 }
 
 static void
