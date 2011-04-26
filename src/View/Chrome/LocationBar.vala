@@ -141,6 +141,7 @@ namespace Marlin.View.Chrome
         int anim_state = 0;
 
         GOF.Directory.Async files;
+        GOF.Directory.Async files_menu;
         string to_search;
         
         bool view_old = false;
@@ -149,6 +150,11 @@ namespace Marlin.View.Chrome
         Gdk.Pixbuf home_img;
         
         new bool focus = false;
+
+        Menu menu;
+        string current_right_click_root;
+        
+        double right_click_root;
 
         public Breadcrumbs()
         {
@@ -291,6 +297,9 @@ namespace Marlin.View.Chrome
             home = new string[2];
             home[0] = "home";
             home[1] = Environment.get_home_dir().split("/")[2];
+            menu = new Menu();
+            menu.append(new MenuItem.with_label("Test"));
+            menu.show_all();
         }
         
         public bool paste()
@@ -349,11 +358,71 @@ namespace Marlin.View.Chrome
             }
         }
 
+        private bool load_file_hash_menu ()
+        {
+            foreach (var file in files_menu.file_hash.get_values ()) {
+                on_file_loaded_menu ((GOF.File) file);
+            }
+            return false;
+        }
+
+        private void on_file_loaded_menu(GOF.File file)
+        {
+            if(file.is_directory)
+            {
+                var menuitem = new Gtk.MenuItem.with_label(file.name);
+               menu.append(menuitem);
+               menuitem.activate.connect(() => { changed(current_right_click_root + "/" + ((MenuItem)menu.get_active()).get_label()); });
+               menu.show_all();
+            }
+        }
+
+        private void load_right_click_menu()
+        {
+            menu = new Menu();
+            var directory = File.new_for_path(current_right_click_root +"/");
+            files_menu = new GOF.Directory.Async.from_gfile (directory);
+            if (files_menu.load())
+                files_menu.file_loaded.connect(on_file_loaded_menu);
+            else
+                Idle.add ((SourceFunc) load_file_hash_menu, Priority.DEFAULT_IDLE);
+
+            menu.popup (null,
+                        null,
+                        null,
+                        0,
+                        Gtk.get_current_event_time());
+        }
+
         public override bool button_press_event(Gdk.EventButton event)
         {
             if(event.type == Gdk.EventType.2BUTTON_PRESS)
             {
                 activate_entry();
+            }
+            else if(event.button == 3)
+            {
+                double x_previous = -10;
+                double x = event.x;
+                double x_render = 0;
+                string newpath = "";
+                foreach(BreadcrumbsElement element in elements)
+                {
+                    if(element.display)
+                    {
+                        x_render += element.text_width + space_breads;
+                        newpath += element.text + "/";
+                        if(x <= x_render + 5 && x > x_previous + 5)
+                        {
+                            right_click_root = x_previous;
+                            current_right_click_root = newpath + "/";
+                            load_right_click_menu();
+
+                            break;
+                        }
+                        x_previous = x_render;
+                    }
+                }
             }
             else
             {
@@ -390,6 +459,34 @@ namespace Marlin.View.Chrome
                 entry.mouse_press_event(event, get_allocated_width() - x_render_saved);
             }
             return true;
+        }
+        
+        private void get_menu_position (Menu menu, out int x, out int y, out bool push_in)
+        {
+            if (menu.attach_widget == null ||
+                menu.attach_widget.get_window() == null) {
+                // Prevent null exception in weird cases
+                x = 0;
+                y = 0;
+                push_in = true;
+                return;
+            }
+
+            menu.attach_widget.get_window().get_origin (out x, out y);
+            Allocation allocation;
+            menu.attach_widget.get_allocation(out allocation);
+
+            x += (int)right_click_root;
+
+            int width, height;
+            menu.get_size_request(out width, out height);
+
+            if (y + height >= menu.attach_widget.get_screen().get_height())
+                y -= height;
+            else
+                y += allocation.height;
+
+            push_in = true;
         }
 
         public override bool button_release_event(Gdk.EventButton event)
