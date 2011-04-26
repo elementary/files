@@ -155,6 +155,7 @@ namespace Marlin.View.Chrome
         string current_right_click_root;
         
         double right_click_root;
+        private int timeout = -1;
 
         public Breadcrumbs()
         {
@@ -376,6 +377,30 @@ namespace Marlin.View.Chrome
                menu.show_all();
             }
         }
+        
+        private void select_bread_from_coord(double x)
+        {
+            double x_previous = -10;
+            double x_render = 0;
+            string newpath = "";
+            foreach(BreadcrumbsElement element in elements)
+            {
+                if(element.display)
+                {
+                    x_render += element.text_width + space_breads;
+                    newpath += element.text + "/";
+                    if(x <= x_render + 5 && x > x_previous + 5)
+                    {
+                        right_click_root = x_previous;
+                        current_right_click_root = newpath + "/";
+                        load_right_click_menu();
+
+                        break;
+                    }
+                    x_previous = x_render;
+                }
+            }
+        }
 
         private void load_right_click_menu()
         {
@@ -396,62 +421,21 @@ namespace Marlin.View.Chrome
 
         public override bool button_press_event(Gdk.EventButton event)
         {
+            if(timeout == -1 && event.button == 1){
+                timeout = (int) Timeout.add(500, () => {
+                select_bread_from_coord(event.x);
+                    timeout = -1;
+                    return false;
+                });
+            }
+
             if(event.type == Gdk.EventType.2BUTTON_PRESS)
             {
                 activate_entry();
             }
             else if(event.button == 3)
             {
-                double x_previous = -10;
-                double x = event.x;
-                double x_render = 0;
-                string newpath = "";
-                foreach(BreadcrumbsElement element in elements)
-                {
-                    if(element.display)
-                    {
-                        x_render += element.text_width + space_breads;
-                        newpath += element.text + "/";
-                        if(x <= x_render + 5 && x > x_previous + 5)
-                        {
-                            right_click_root = x_previous;
-                            current_right_click_root = newpath + "/";
-                            load_right_click_menu();
-
-                            break;
-                        }
-                        x_previous = x_render;
-                    }
-                }
-            }
-            else
-            {
-                double x_previous = -10;
-                double x = event.x;
-                double x_render = 0;
-                string newpath = "";
-                bool found = false;
-                foreach(BreadcrumbsElement element in elements)
-                {
-                    if(element.display)
-                    {
-                        x_render += element.text_width + space_breads;
-                        newpath += element.text + "/";
-                        if(x <= x_render + 5 && x > x_previous + 5)
-                        {
-                            selected = elements.index_of(element);
-                            changed(newpath);
-                            found = true;
-                            break;
-                        }
-                        x_previous = x_render;
-                    }
-                }
-                if(!found)
-                {
-                    grab_focus();
-                    entry.show();
-                }
+                select_bread_from_coord(event.x);
             }
             if(focus)
             {
@@ -491,6 +475,39 @@ namespace Marlin.View.Chrome
 
         public override bool button_release_event(Gdk.EventButton event)
         {
+            if(timeout != -1){
+                Source.remove((uint) timeout);
+                timeout = -1;
+            }
+            if(event.button == 1)
+            {
+                double x_previous = -10;
+                double x = event.x;
+                double x_render = 0;
+                string newpath = "";
+                bool found = false;
+                foreach(BreadcrumbsElement element in elements)
+                {
+                    if(element.display)
+                    {
+                        x_render += element.text_width + space_breads;
+                        newpath += element.text + "/";
+                        if(x <= x_render + 5 && x > x_previous + 5)
+                        {
+                            selected = elements.index_of(element);
+                            changed(newpath);
+                            found = true;
+                            break;
+                        }
+                        x_previous = x_render;
+                    }
+                }
+                if(!found)
+                {
+                    grab_focus();
+                    entry.show();
+                }
+            }
             if(focus)
             {
                 event.x -= x_render_saved;
