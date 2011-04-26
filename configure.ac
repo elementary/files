@@ -62,7 +62,7 @@ PKG_CHECK_MODULES(ALL, [
 	gtk+-3.0		>= gtk_minver
     gee-1.0
     sqlite3
-	libnotify
+	libnotify      >= 0.7.3
 ])
 dnl ===========================================================================
 
