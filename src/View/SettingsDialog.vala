@@ -106,8 +106,37 @@ namespace Marlin.View
 
             hbox_single_click.pack_start(label);
             hbox_single_click.pack_start(spin_icon_size, false, false);
+            
+            first_vbox.pack_start(hbox_single_click, false);
 
-            //Preferences.settings.bind("sidebar-icon-size", spin_icon_size, "value", SettingsBindFlags.DEFAULT);
+            
+            /* Date format */
+            var mode_date_format = new Chrome.ModeButton();
+            mode_date_format.append(new Gtk.Label(N_("locale")));
+            mode_date_format.append(new Gtk.Label(N_("iso")));
+            mode_date_format.append(new Gtk.Label(N_("informal")));
+            switch((string)Preferences.settings.get_value("date-format"))
+            {
+            case "locale":
+                mode_date_format.selected = 0;
+                break;
+            case "iso":
+                mode_date_format.selected = 1;
+                break;
+            case "informal":
+                mode_date_format.selected = 2;
+                break;
+            }
+
+            mode_date_format.mode_changed.connect(date_format_changed);
+
+            hbox_single_click = new Gtk.HBox(false, 0);
+
+            label = new Gtk.Label(N_("Date format:"));
+            label.set_alignment(0, 0.5f);
+
+            hbox_single_click.pack_start(label);
+            hbox_single_click.pack_start(mode_date_format, false, false);
             
             first_vbox.pack_start(hbox_single_click, false);
 
@@ -143,6 +172,24 @@ namespace Marlin.View
                 break;
             }
             Preferences.settings.set_value("sidebar-icon-size", value);
+        }
+
+        private void date_format_changed(Gtk.Widget widget)
+        {
+            string value = "iso";
+            switch(((Gtk.Label)widget).get_text())
+            {
+            case N_("locale"):
+                value = "locale";
+                break;
+            case N_("iso"):
+                value = "iso";
+                break;
+            case N_("informal"):
+                value = "informal";
+                break;
+            }
+            Preferences.settings.set_value("date-format", value);
         }
 
         public override void response(int id)
