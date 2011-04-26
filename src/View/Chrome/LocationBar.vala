@@ -422,7 +422,7 @@ namespace Marlin.View.Chrome
         public override bool button_press_event(Gdk.EventButton event)
         {
             if(timeout == -1 && event.button == 1){
-                timeout = (int) Timeout.add(500, () => {
+                timeout = (int) Timeout.add(800, () => {
                 select_bread_from_coord(event.x);
                     timeout = -1;
                     return false;
