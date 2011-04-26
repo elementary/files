@@ -26,6 +26,7 @@ namespace Marlin.View.Chrome
     {
         public ViewSwitcher? view_switcher;
         public Gtk.Menu compact_menu;
+        public Gtk.Menu toolbar_menu;
         public AppMenu app_menu;
         public LocationBar? location_bar;
         public Window win;
@@ -33,9 +34,10 @@ namespace Marlin.View.Chrome
         public TopMenu (Window window)
         {
             win = window;
-	    get_style_context().add_class ("primary-toolbar");
+	        get_style_context().add_class ("primary-toolbar");
 
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
+            toolbar_menu = (Gtk.Menu) win.ui.get_widget("/ToolbarMenu");
 
             MenuItem coloritem = new ColorWidget(win);
             coloritem.show_all();
@@ -48,6 +50,18 @@ namespace Marlin.View.Chrome
             app_menu = new AppMenu.from_stock(Stock.PROPERTIES, IconSize.MENU, "Menu", compact_menu);
             setup_items();
             show();
+            
+            button_press_event.connect(right_click);
+        }
+        
+        private bool right_click(Gdk.EventButton event)
+        {
+            if(event.button == 3)
+            {
+                Eel.pop_up_context_menu(toolbar_menu, 0, 0, event);
+                return true;
+            }
+            return false;
         }
 
         public void setup_items ()

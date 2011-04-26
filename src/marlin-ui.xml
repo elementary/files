@@ -106,6 +106,10 @@
         <separator/>
 	<placeholder name="After Zoom Items"/>
 </popup>-->
+<popup name="ToolbarMenu" accelerators="false">
+	<menuitem name="ToolbarEditor" action="ToolbarEditor"/>
+	<menuitem name="Show Hide Menubar" action="Show Hide Menubar"/>
+</popup>
 <popup name="CompactMenu" accelerators="false">
 	<menuitem name="New Tab" action="New Tab"/>
 	<menuitem name="New Window" action="New Window"/>
