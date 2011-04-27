@@ -655,9 +655,14 @@ namespace Marlin.View.Chrome
             anim_state = 10;
             Timeout.add(1000/60, () => {
                 anim_state--;
-                foreach(BreadcrumbsElement bread in newbreads)
+                /* FIXME: Instead of this hacksih if( != null), we should use a
+                 * nice mutex */
+                if(newbreads != null)
                 {
-                    bread.offset = anim_state;
+                    foreach(BreadcrumbsElement bread in newbreads)
+                    {
+                        bread.offset = anim_state;
+                    }
                 }
                 queue_draw();
                 if(anim_state <= 0)
