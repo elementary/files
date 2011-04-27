@@ -360,46 +360,36 @@ printf ("popup_background_menu\n");
 static gboolean
 button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMIconView *view)
 {
-    GtkTreeSelection    *selection;
-    GtkTreePath         *path;
-    GtkTreeIter         iter;
-    GtkAction           *action;
-
-    /* check if the event is for the bin window */
-    if (G_UNLIKELY (event->window != gtk_tree_view_get_bin_window (tree_view)))
-        return FALSE;
-
-    /* we unselect all selected items if the user clicks on an empty
-     * area of the treeview and no modifier key is active.
-     */
-    if ((event->state & gtk_accelerator_get_default_mod_mask ()) == 0
-        && !gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL))
-    {
-        selection = gtk_tree_view_get_selection (tree_view);
-        gtk_tree_selection_unselect_all (selection);
-    }
+    GtkTreePath     *path;
+    GtkTreeIter     iter;
+    GtkAction       *action;
+    GOFFile         *file;
 
     /* open the context menu on right clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 3)
     {
-        selection = gtk_tree_view_get_selection (tree_view);
-        if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
+        //selection = exo_icon_view_get_selected_items (view->icons);
+        if ((path = exo_icon_view_get_path_at_pos (view->icons, event->x, event->y)) != NULL)
         {
             /* select the path on which the user clicked if not selected yet */
-            if (!gtk_tree_selection_path_is_selected (selection, path))
+            if (!exo_icon_view_path_is_selected (view->icons, path))
             {
                 /* we don't unselect all other items if Control is active */
                 if ((event->state & GDK_CONTROL_MASK) == 0)
-                    gtk_tree_selection_unselect_all (selection);
-                gtk_tree_selection_select_path (selection, path);
+                    exo_icon_view_unselect_all (view->icons);
+                exo_icon_view_select_path (view->icons, path);
             }
             gtk_tree_path_free (path);
 
             /* queue the menu popup */
             fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
         }
-        else
+        else if ((event->state & gtk_accelerator_get_default_mod_mask ()) == 0)
         {
+            /* user clicked on an empty area, so we unselect everything
+               to make sure that the folder context menu is opened. */
+            exo_icon_view_unselect_all (view->icons);
+            
             /* open the context menu */
             fm_directory_view_context_menu (FM_DIRECTORY_VIEW (view), event->button, event);
         }
@@ -409,38 +399,20 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMIconView
     else if ((event->type == GDK_BUTTON_PRESS || event->type == GDK_2BUTTON_PRESS) && event->button == 2)
     {
         /* determine the path to the item that was middle-clicked */
-        if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
+        if ((path = exo_icon_view_get_path_at_pos (view->icons, event->x, event->y)) != NULL)
         {
             /* select only the path to the item on which the user clicked */
-            selection = gtk_tree_view_get_selection (tree_view);
-            gtk_tree_selection_unselect_all (selection);
-            gtk_tree_selection_select_path (selection, path);
+            exo_icon_view_unselect_all (view->icons);
+            exo_icon_view_select_path (view->icons, path);
 
             /* if the event was a double-click or we are in single-click mode, then
              * we'll open the file or folder (folder's are opened in new windows)
              */
-            if (G_LIKELY (event->type == GDK_2BUTTON_PRESS || exo_tree_view_get_single_click (EXO_TREE_VIEW (tree_view))))
+            if (G_LIKELY (event->type == GDK_2BUTTON_PRESS ||  exo_icon_view_get_single_click (view->icons)))
             {
-                printf ("activate selected ??\n");
-#if 0
-                /* determine the file for the path */
-                gtk_tree_model_get_iter (GTK_TREE_MODEL (view->model), &iter, path);
-                file = thunar_list_model_get_file (view->model, &iter);
-                if (G_LIKELY (file != NULL))
-                {
-                    /* determine the action to perform depending on the type of the file */
-                    /*action = thunar_gtk_ui_manager_get_action_by_name (THUNAR_STANDARD_VIEW (view)->ui_manager,
-                      thunar_file_is_directory (file) ? "open-in-new-window" : "open");*/
-                    printf ("open or open-in-new-window\n");
-
-                    /* emit the action */
-                    /*if (G_LIKELY (action != NULL))
-                      gtk_action_activate (action);*/
-
-                    /* release the file reference */
-                    g_object_unref (G_OBJECT (file));
-                }
-#endif
+                file = fm_list_model_file_for_path (view->model, path);
+                fm_directory_view_activate_single_file (FM_DIRECTORY_VIEW (view), file, eel_gtk_widget_get_screen (GTK_WIDGET (view)), TRUE);
+                g_object_unref (file);
             }
 
             /* cleanup */
@@ -572,18 +544,6 @@ create_and_set_up_icon_view (FMIconView *view)
 
 
 
-#if 0
-    /*exo_tree_view_set_single_click (EXO_TREE_VIEW (view->tree), TRUE);
-      exo_tree_view_set_single_click_timeout (EXO_TREE_VIEW (view->tree), 350);*/
-
-    g_signal_connect_object (view->tree, "button-press-event",
-                             G_CALLBACK (button_press_callback), view, 0);
-    g_signal_connect_object (view->tree, "key_press_event",
-                             G_CALLBACK (key_press_callback), view, 0);
-    g_signal_connect_object (view->tree, "row-activated",
-                             G_CALLBACK (row_activated_callback), view, 0);
-
-#endif
     gtk_widget_show (GTK_WIDGET (view->icons));
     gtk_container_add (GTK_CONTAINER (view), GTK_WIDGET (view->icons));
 
@@ -846,6 +806,13 @@ fm_icon_view_init (FMIconView *view)
                      view->icons, "single-click", 0);
     g_settings_bind (settings, "single-click-timeout", 
                      view->icons, "single-click-timeout", 0);
+
+    g_signal_connect_object (view->icons, "button-press-event",
+                             G_CALLBACK (button_press_callback), view, 0);
+#if 0
+    g_signal_connect_object (view->tree, "key_press_event",
+                             G_CALLBACK (key_press_callback), view, 0);
+#endif
 }
 
 static void
