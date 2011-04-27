@@ -39,8 +39,9 @@ namespace Marlin.View {
         public signal void back(int n=1);
         public signal void forward(int n=1);
 
-        public ViewContainer(Marlin.View.Window win, GLib.File location){
+        public ViewContainer(Marlin.View.Window win, GLib.File location, int _view_mode = 0){
             window = win;
+            view_mode = _view_mode;
             /* set active tab */
             browser = new Browser ();
             label = new Gtk.Label("Loading...");

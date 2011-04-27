@@ -323,7 +323,7 @@ namespace Marlin.View {
         }
 
         public void add_tab(File location){
-            ViewContainer content = new View.ViewContainer(this, location);
+            ViewContainer content = new View.ViewContainer(this, location, current_tab != null ? current_tab.view_mode : 0);
 
             var hbox = new HBox(false, 0);
             hbox.pack_start(content.label, true, true, 0);
