@@ -1,5 +1,11 @@
-/* gtkiconview.h
- * Copyright (C) 2002, 2004  Anders Carlsson <andersca@gnome.org>
+/*-
+ * Copyright (c) 2002,2004  Anders Carlsson <andersca@gnu.org>
+ * Copyright (c) 2004-2006  os-cillation e.K.
+ * Copyright (c) 2008       Jannis Pohlmann <jannis@xfce.org>,
+ *                          Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2011       ammonkey <am.monkeyd@gmail.com>
+ *
+ * Originaly Written by Anders Carlsson for gtk+: gtkiconview
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -171,6 +177,12 @@ void           exo_icon_view_selected_foreach   (ExoIconView            *icon_vi
 void           exo_icon_view_set_selection_mode (ExoIconView            *icon_view,
                                                  GtkSelectionMode        mode);
 GtkSelectionMode exo_icon_view_get_selection_mode (ExoIconView            *icon_view);
+gboolean         exo_icon_view_get_single_click (ExoIconView *icon_view);
+void             exo_icon_view_set_single_click (ExoIconView *icon_view,
+                                                 gboolean     single_click);
+guint            exo_icon_view_get_single_click_timeout (ExoIconView *icon_view);
+void             exo_icon_view_set_single_click_timeout (ExoIconView *icon_view,
+                                                         guint  single_click_timeout);
 void             exo_icon_view_select_path        (ExoIconView            *icon_view,
                                                    GtkTreePath            *path);
 void             exo_icon_view_unselect_path      (ExoIconView            *icon_view,

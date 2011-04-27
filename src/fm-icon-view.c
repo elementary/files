@@ -556,6 +556,7 @@ create_and_set_up_icon_view (FMIconView *view)
     /*g_object_set (G_OBJECT (view->icons), "text-column", FM_LIST_MODEL_FILENAME, 
       "pixbuf-column", FM_LIST_MODEL_ICON, NULL);*/
 
+    //TODO move this entire section. make follow-state depending on single-click
     //#if 0
     /* add the abstract icon renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "follow-state", TRUE, NULL);
@@ -841,12 +842,10 @@ fm_icon_view_init (FMIconView *view)
     /*g_settings_bind (marlin_icon_view_settings, "zoom-level", 
       FM_DIRECTORY_VIEW (view)->icon_renderer, "size", 0);*/
 
-
-    //TODO
-    /*g_settings_bind (settings, "single-click", 
-      EXO_TREE_VIEW (view->tree), "single-click", 0);
-      g_settings_bind (settings, "single-click-timeout", 
-      EXO_TREE_VIEW (view->tree), "single-click-timeout", 0);*/
+    g_settings_bind (settings, "single-click", 
+                     view->icons, "single-click", 0);
+    g_settings_bind (settings, "single-click-timeout", 
+                     view->icons, "single-click-timeout", 0);
 }
 
 static void
@@ -882,7 +881,6 @@ fm_icon_view_class_init (FMIconViewClass *klass)
                                                            FALSE,
                                                            (G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS)));
 
-    //eel_g_settings_add_auto_boolean (settings, "single-click", &single_click);
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }
 

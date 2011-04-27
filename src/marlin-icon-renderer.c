@@ -66,9 +66,7 @@ static void marlin_icon_renderer_render        (GtkCellRenderer         *rendere
                                                 GtkCellRendererState     flags);
 
 
-
-G_DEFINE_TYPE (MarlinIconRenderer, marlin_icon_renderer, GTK_TYPE_CELL_RENDERER)
-
+G_DEFINE_TYPE (MarlinIconRenderer, marlin_icon_renderer, GTK_TYPE_CELL_RENDERER_PIXBUF)
 
 
 static void
@@ -630,6 +628,30 @@ marlin_icon_renderer_render (GtkCellRenderer        *cell,
     /* release our reference on the icon factory */
     g_object_unref (G_OBJECT (icon_factory));
 #endif
+
+    //amtest
+    GdkPixbuf *pix;
+    NautilusIconInfo *nicon;
+
+    if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
+    {
+        nicon = nautilus_icon_info_lookup_from_name ("remove", 16);
+        pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+        gdk_cairo_set_source_pixbuf (cr, pix, icon_area.x, icon_area.y);
+        cairo_paint (cr);
+        
+        _g_object_unref0 (pix);
+    }
+    
+    if (flags == GTK_CELL_RENDERER_PRELIT)
+    {
+        nicon = nautilus_icon_info_lookup_from_name ("add", 16);
+        pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+        gdk_cairo_set_source_pixbuf (cr, pix, icon_area.x, icon_area.y);
+        cairo_paint (cr);
+        
+        _g_object_unref0 (pix);
+    }
 }
 
 

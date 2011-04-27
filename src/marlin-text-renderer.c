@@ -404,12 +404,11 @@ marlin_text_renderer_get_size (GtkCellRenderer      *cell,
     /* if we have to follow the state manually, we'll need
      * to reserve some space to render the indicator to.
      */
-    //TODO evaluate this padding there s a few wasted space in icon view.
-    /*if (text_renderer->follow_state)
+    if (text_renderer->follow_state)
     {
         text_width += 2 * text_renderer->focus_width;
         text_height += 2 * text_renderer->focus_width;
-    }*/
+    }
 
     gtk_cell_renderer_get_padding (cell, &xpad, &ypad);
     /* update width/height */

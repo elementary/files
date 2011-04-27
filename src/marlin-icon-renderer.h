@@ -36,12 +36,12 @@ typedef struct _MarlinIconRenderer      MarlinIconRenderer;
 
 struct _MarlinIconRendererClass
 {
-    GtkCellRendererClass __parent__;
+    GtkCellRendererPixbufClass __parent__;
 };
 
 struct _MarlinIconRenderer
 {
-    GtkCellRenderer __parent__;
+    GtkCellRendererPixbuf __parent__;
 
     GOFFile     *drop_file;
     GOFFile     *file;

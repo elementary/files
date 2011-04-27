@@ -66,10 +66,10 @@
     </key>
     <key name="single-click-timeout" type="i">
       <default>290</default>
-      <range min="50" max="1000" />
+      <range min="0" max="1000" />
       <summary>single click timeout</summary>
       <description>
-        The amount of time which the item under the mouse cursor will be selected automatically in single click mode
+        The amount of time which the item under the mouse cursor will be selected automatically in single click mode. A value of 0 disables the automatic selection.
       </description>
     </key>
     <key name="default-viewmode" enum="viewmode">

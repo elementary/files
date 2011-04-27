@@ -52,11 +52,11 @@ namespace Marlin.View
             first_vbox.pack_start(hbox_single_click, false);
 
             /* Mouse selection speed */
-            var spin_click_speed = new Gtk.HScale.with_range(50, 1000, 1);
+            var spin_click_speed = new Gtk.HScale.with_range(0, 1000, 1);
 
             hbox_single_click = new Gtk.HBox(false, 0);
 
-            label = new Gtk.Label(N_("Mouse selection speed:"));
+            label = new Gtk.Label(N_("Mouse auto-selection speed:"));
             label.set_alignment(0, 0.5f);
 
             hbox_single_click.pack_start(label);

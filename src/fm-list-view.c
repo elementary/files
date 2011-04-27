@@ -1185,8 +1185,6 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class->start_renaming_file = fm_list_view_start_renaming_file;
 
 
-
-    //eel_g_settings_add_auto_boolean (settings, "single-click", &single_click);
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }
 

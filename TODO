@@ -2,7 +2,6 @@ This is a short TODO list.
 
 - add completion on the pathbar location, cf thunar they got a nice popup menu.
 - add emblems
-- icon_view add single click mode.
 - add easy multiple selection with only the mouse +/- like in dolphin for all the views, use the pixbuff cellrenderer in list_view, use it to start rubberbanding too.
 - check dropbox support
 - add thumbnails use tumbler, same logic as thunar request thumbs for only shown files.
