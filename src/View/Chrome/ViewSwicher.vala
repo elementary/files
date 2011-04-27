@@ -98,7 +98,7 @@ namespace Marlin.View.Chrome
             });
 
             switcher.sensitive = true;
-            mode = ViewMode.LIST;
+            mode = (ViewMode)Preferences.settings.get_enum("default-viewmode");
 
             add (switcher);
         }
