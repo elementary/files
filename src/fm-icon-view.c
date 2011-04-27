@@ -368,7 +368,6 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMIconView
     /* open the context menu on right clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 3)
     {
-        //selection = exo_icon_view_get_selected_items (view->icons);
         if ((path = exo_icon_view_get_path_at_pos (view->icons, event->x, event->y)) != NULL)
         {
             /* select the path on which the user clicked if not selected yet */
