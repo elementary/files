@@ -4,6 +4,31 @@
 <accelerator action="PropertiesAccel"/>
 <accelerator action="RenameSelectAll"/>-->
 <menubar name="MenuBar">
+    <menu action="File">
+        <placeholder name="New Items Placeholder">
+            <menuitem name="New Folder" action="New Folder"/>
+        </placeholder>
+        <!--<placeholder name="Open Placeholder">
+			<menuitem name="Open" action="Open"/>
+			<menuitem name="OpenInNewTab" action="OpenInNewTab"/>
+			<menuitem name="OpenAlternate" action="OpenAlternate"/>
+			<placeholder name="Applications Placeholder">
+            </placeholder>
+			<menu action="Open With">
+				<placeholder name="Applications Placeholder"/>
+				<separator name="Open With Separator"/>
+				<menuitem name="OtherApplication" action="OtherApplication1"/>
+			</menu>
+			<placeholder name="OtherApplicationPlaceholder">
+				<menuitem name="OtherApplication" action="OtherApplication2"/>
+			</placeholder>
+			<menu action="Scripts">
+				 <placeholder name="Scripts Placeholder"/>
+				 <separator name="After Scripts"/>
+				 <menuitem name="Open Scripts Folder" action="Open Scripts Folder"/>
+			</menu>
+		</placeholder>-->
+    </menu>
 	<menu action="Edit">
 		<placeholder name="Clipboard Actions">
 			<menuitem name="Cut" action="Cut"/>

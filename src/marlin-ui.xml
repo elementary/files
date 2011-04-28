@@ -4,10 +4,12 @@
 <accelerator action="ZoomOutAccel"/>
 <menubar name="MenuBar">
 	<menu action="File">
+        <placeholder name="New Items Placeholder">
 <!--		<menuitem name="Connect to Server" action="Connect to Server"/>-->
-        <menuitem name="New Tab" action="New Tab"/>
-		<menuitem name="New Window" action="New Window"/>
-		<separator/>
+            <menuitem name="New Tab" action="New Tab"/>
+	    	<menuitem name="New Window" action="New Window"/>
+		    <separator/>
+        </placeholder>
 		<!--<separator/>
                 <placeholder name="Close Items Placeholder"/>-->
 		<menuitem name="Close" action="Close"/>
@@ -88,6 +90,12 @@
 		<separator/>
         <placeholder name="History Placeholder"/>-->
 	</menu>
+    <!--<menu action="Bookmarks">
+	    <menuitem name="Add Bookmark" action="Add Bookmark"/>
+		<menuitem name="Edit Bookmark" action="Edit Bookmarks"/>
+		<separator/>
+		<placeholder name="Bookmarks Placeholder"/>
+    </menu>-->
 	<menu action="Help">
 		<menuitem name="About" action="About"/>
 	</menu>

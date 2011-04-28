@@ -1542,7 +1542,8 @@ fm_directory_view_button_release_event (GtkWidget        *widget,
 }
 
 static void
-dir_action_set_visible (FMDirectoryView *view, const gchar *action_name, gboolean visible)
+dir_action_set_visible_and_sensitive (FMDirectoryView *view, const gchar *action_name, 
+                                      gboolean visible, gboolean sensitive)
 {
     GtkAction *action;
 
@@ -1550,8 +1551,18 @@ dir_action_set_visible (FMDirectoryView *view, const gchar *action_name, gboolea
     if (action != NULL) {
         gtk_action_set_visible (action, visible);
         /* enable/disable action too */
-        gtk_action_set_sensitive (action, visible);
+        gtk_action_set_sensitive (action, sensitive);
     }
+}
+
+static void
+dir_action_set_visible (FMDirectoryView *view, const gchar *action_name, gboolean visible)
+{
+    GtkAction *action;
+
+    action = gtk_action_group_get_action (view->details->dir_action_group, action_name);
+    if (action != NULL)
+        gtk_action_set_visible (action, visible);
 }
 
 static void
@@ -1578,9 +1589,9 @@ update_menus_empty_selection (FMDirectoryView *view)
     GOFWindowSlot *slot = view->details->slot;
 
     if (gof_file_is_trashed (slot->directory->file))
-        dir_action_set_visible (view, "New Folder", FALSE);
+        dir_action_set_visible_and_sensitive (view, "New Folder", FALSE, FALSE);
     else
-        dir_action_set_visible (view, "New Folder", TRUE);
+        dir_action_set_visible_and_sensitive (view, "New Folder", TRUE, TRUE);
 }
 
 static void
@@ -1598,21 +1609,25 @@ update_menus_selection (FMDirectoryView *view)
     dir_action_set_sensitive (view, "Copy", TRUE);
     dir_action_set_sensitive (view, "Rename", TRUE);
 
+    //FIXME:paste shouldn't appear in menu slection if selection != 1 folder
+    //it should still appear in menubar and act on the slot folder.
+
     /* got more than one element in selection */
-    if (selection->next == NULL && file->is_directory
-        && marlin_clipboard_manager_get_can_paste (view->clipboard)) {
+    /*if (selection->next == NULL && file->is_directory
+        && marlin_clipboard_manager_get_can_paste (view->clipboard)) {*/
+    if (marlin_clipboard_manager_get_can_paste (view->clipboard)) {
         dir_action_set_sensitive (view, "Paste", TRUE);
     } else {
         dir_action_set_sensitive (view, "Paste", FALSE);
     }
 
     if (gof_file_is_trashed(file)) {
-        dir_action_set_visible (view, "Restore From Trash", TRUE);
-        dir_action_set_visible (view, "Trash", FALSE);
-        dir_action_set_visible (view, "Rename", FALSE);
+        dir_action_set_visible_and_sensitive (view, "Restore From Trash", TRUE, TRUE);
+        dir_action_set_visible_and_sensitive (view, "Trash", FALSE, FALSE);
+        dir_action_set_visible_and_sensitive (view, "Rename", FALSE, FALSE);
     } else {
-        dir_action_set_visible (view, "Restore From Trash", FALSE);
-        dir_action_set_visible (view, "Trash", TRUE);
+        dir_action_set_visible_and_sensitive (view, "Restore From Trash", FALSE, FALSE);
+        dir_action_set_visible_and_sensitive (view, "Trash", TRUE, TRUE);
     }
 }
 
