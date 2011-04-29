@@ -540,7 +540,7 @@ namespace Marlin.View {
   /* tooltip */                  N_("Close this folder"),
                                  action_remove_tab },
                                { "ToolbarEditor", Stock.PREFERENCES,
-                                 N_("Customize _Toolbar"),
+                                 N_("Customize _Toolbar..."),
                                  null, N_("Easily edit the toolbar layout"),
                                  action_toolbar_editor_callback },
                                { "MarlinSettings", Stock.PREFERENCES,
