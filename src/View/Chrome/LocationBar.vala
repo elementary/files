@@ -308,7 +308,6 @@ namespace Marlin.View.Chrome
             home[0] = "home";
             home[1] = Environment.get_home_dir().split("/")[2];
             menu = new Menu();
-            menu.append(new MenuItem.with_label("Test"));
             menu.show_all();
         }
         
@@ -573,12 +572,12 @@ namespace Marlin.View.Chrome
             var breads = text.split("/");
             var newelements = new Gee.ArrayList<BreadcrumbsElement>();
             if(breads[0] == "")
-                newelements.add(new BreadcrumbsElement("/", "Ubuntu", gtk_font_size));
+                newelements.add(new BreadcrumbsElement("/", gtk_font_name, gtk_font_size));
             
             foreach(string dir in breads)
             {
                 if(dir != "")
-                newelements.add(new BreadcrumbsElement(dir, "Ubuntu", gtk_font_size));
+                newelements.add(new BreadcrumbsElement(dir, gtk_font_name, gtk_font_size));
             }
             
             newelements[0].text = protocol + newelements[0].text;
@@ -992,8 +991,7 @@ namespace Marlin.View.Chrome
         uint timeout;
         bool blink = true;
         Gtk.StyleContext context;
-        Cairo.ImageSurface arrow_img;
-        Cairo.ImageSurface arrow_hover_img;
+        Gdk.Pixbuf arrow_img;
         
         double selection_mouse_start = -1;
         double selection_mouse_end = -1;
@@ -1023,8 +1021,15 @@ namespace Marlin.View.Chrome
             context = context_;
             
             /* Load arrow image */
-            arrow_img = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/arrow.png");
-            arrow_hover_img = new Cairo.ImageSurface.from_png(Config.PIXMAP_DIR + "/arrow_hover.png");
+            try {
+                arrow_img = IconTheme.get_default ().load_icon ("go-jump-symbolic", 16, 0);
+            } catch (Error err) {
+                try {
+                    arrow_img = IconTheme.get_default ().load_icon ("go-jump", 16, 0);
+                } catch (Error err) {
+                    stderr.printf ("Unable to load home icon: %s", err.message);
+                }
+            }
         }
         
         public void show()
@@ -1269,15 +1274,13 @@ namespace Marlin.View.Chrome
             }
             if(text != "")
             {
-                if(hover)
-                    cr.set_source_surface(arrow_hover_img,
-                                          x + width - arrow_hover_img.get_width() - 10,
-                                          height/2 - arrow_hover_img.get_height()/2);
-                else
-                    cr.set_source_surface(arrow_img,
+                    Gdk.cairo_set_source_pixbuf(cr,arrow_img,
                                           x + width - arrow_img.get_width() - 10,
                                           height/2 - arrow_img.get_height()/2);
-                cr.paint();
+                if(hover)
+                    cr.paint();
+                else
+                    cr.paint_with_alpha(0.8);
             }
             cr.text_extents(text, out txt);
             cr.set_source_rgba(0,0,0,0.5);
