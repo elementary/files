@@ -153,6 +153,8 @@ namespace Marlin.View.Chrome
         
         double x_render_saved = 0;
         Gdk.Pixbuf home_img;
+        Gdk.Pixbuf trash_img;
+        Gdk.Pixbuf network_img;
         
         new bool focus = false;
 
@@ -302,6 +304,16 @@ namespace Marlin.View.Chrome
                 } catch (Error err) {
                     stderr.printf ("Unable to load home icon: %s", err.message);
                 }
+            }
+            try {
+                trash_img = IconTheme.get_default ().load_icon ("user-trash", 16, 0);
+            } catch (Error err) {
+                stderr.printf ("Unable to load home icon: %s", err.message);
+            }
+            try {
+                network_img = IconTheme.get_default ().load_icon ("network", 16, 0);
+            } catch (Error err) {
+                stderr.printf ("Unable to load home icon: %s", err.message);
             }
 
             home = new string[2];
@@ -612,6 +624,18 @@ namespace Marlin.View.Chrome
                 newelements[2].text = "/home/" + home[1];
                 newelements[1].display = false;;
                 newelements[0].display = false;
+            }
+            
+            switch(protocol)
+            {
+            case "trash://":
+                newelements[0].set_icon(trash_img);
+                break;
+            case "network://":
+                newelements[0].set_icon(network_img);
+                break;
+            default:
+                break;
             }
 
             if(newelements.size > elements.size)
