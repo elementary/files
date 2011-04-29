@@ -880,15 +880,15 @@ namespace Marlin.View.Chrome
         static const Gtk.ActionEntry[] action_entries = {
   /* name, stock id */         { "Cut", Stock.CUT,
   /* label, accelerator */       null, null,
-  /* tooltip */                  N_("Prepare the selected files to be moved with a Paste command"),
+  /* tooltip */                  N_("Cut the selected text to the clipboard"),
                                  action_cut },
   /* name, stock id */         { "Copy", Stock.COPY,
   /* label, accelerator */       null, null,
-  /* tooltip */                 N_("Prepare the selected files to be copied with a Paste command"),
+  /* tooltip */                 N_("Copy the selected text to the clipboard"),
                                 action_copy },
   /* name, stock id */        { "Paste", Stock.PASTE,
   /* label, accelerator */      null, null,
-  /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command"),
+  /* tooltip */                 N_("Paste the text stored on the clipboard"),
                                 action_paste }
          };
 
