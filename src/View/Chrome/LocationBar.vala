@@ -380,11 +380,12 @@ namespace Marlin.View.Chrome
             }
         }
         
-        private void select_bread_from_coord(double x)
+        private bool select_bread_from_coord(double x)
         {
             double x_previous = -10;
             double x_render = 0;
             string newpath = "";
+            bool found = false;
             foreach(BreadcrumbsElement element in elements)
             {
                 if(element.display)
@@ -396,12 +397,14 @@ namespace Marlin.View.Chrome
                         right_click_root = x_previous;
                         current_right_click_root = newpath + "/";
                         load_right_click_menu();
+                        found = true;
 
                         break;
                     }
                     x_previous = x_render;
                 }
             }
+            return found;
         }
 
         private void load_right_click_menu()
@@ -437,7 +440,7 @@ namespace Marlin.View.Chrome
             }
             else if(event.button == 3)
             {
-                select_bread_from_coord(event.x);
+                return select_bread_from_coord(event.x);
             }
             if(focus)
             {
