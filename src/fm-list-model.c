@@ -1051,7 +1051,7 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
             FileEntry *dummy_entry = g_sequence_get (dummy_ptr);
             if (dummy_entry->file == NULL) {
                 /* replace the dummy loading entry */
-                model->details->stamp++;
+                //model->details->stamp++;
                 g_sequence_remove (dummy_ptr);
 
                 replace_dummy = TRUE;
@@ -1201,7 +1201,7 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
             } else {
                 path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), iter);
                 gtk_tree_path_append_index (path, 0);
-                model->details->stamp++;
+                //model->details->stamp++;
                 g_sequence_remove (child_ptr);
                 gtk_tree_model_row_deleted (GTK_TREE_MODEL (model), path);
                 gtk_tree_path_free (path);
@@ -1247,7 +1247,7 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
     path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), iter);
 
     g_sequence_remove (ptr);
-    model->details->stamp++;
+    //model->details->stamp++;
     gtk_tree_model_row_deleted (GTK_TREE_MODEL (model), path);
 
     gtk_tree_path_free (path);
