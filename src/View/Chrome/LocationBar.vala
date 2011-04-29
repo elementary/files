@@ -87,21 +87,6 @@ namespace Marlin.View.Chrome
                 entry.grab_focus();
             }
         }
-        
-        /*public bool paste()
-        {
-            return bread.paste();
-        }
-
-        public bool copy()
-        {
-            return bread.copy();
-        }
-
-        public bool cut()
-        {
-            return bread.cut();
-        }*/
     }
 
     public class Breadcrumbs : DrawingArea
@@ -145,23 +130,35 @@ namespace Marlin.View.Chrome
         /* A flag to know when the animation is finished */
         int anim_state = 0;
 
+        /* Used for auto-copmpletion */
         GOF.Directory.Async files;
-        GOF.Directory.Async files_menu;
+        /* The string which contains the text we search in the file. e.g, if the
+         * user enter /home/user/a, we will search for "a". */
         string to_search;
-        
+
+        /* Used for the context menu we show when there is a right click */
+        GOF.Directory.Async files_menu;
+        Menu menu;
+        string current_right_click_root;
+        double right_click_root;
+
+        /* if we must display the BreadcrumbsElement which are in  newbreads. */
         bool view_old = false;
-        
+
+        /* Used to decide if this button press event must be send to the
+         * integrated entry or not. */
         double x_render_saved = 0;
+
+        /* The custom icons
+         * FIXME: they shouldn't be hardcoded. */
         Gdk.Pixbuf home_img;
         Gdk.Pixbuf trash_img;
         Gdk.Pixbuf network_img;
-        
-        new bool focus = false;
 
-        Menu menu;
-        string current_right_click_root;
+        /* if we have the focus or not
+         * FIXME: this should be replaced with some nice Gtk.Widget method. */
+        new bool focus = false;
         
-        double right_click_root;
         private int timeout = -1;
 
         public Breadcrumbs(Window window)
@@ -204,7 +201,7 @@ namespace Marlin.View.Chrome
             entry.enter.connect(on_entry_enter);
 
             /* Let's connect the signals ;)
-             * FIXME: there could be a separate function for eacg signal */
+             * FIXME: there could be a separate function for each signal */
             entry.need_draw.connect(() => { queue_draw(); });
 
             entry.left.connect(() => {
@@ -296,6 +293,7 @@ namespace Marlin.View.Chrome
 
             entry.hide();
             
+            /* Load custom icons */
             try {
                 home_img = IconTheme.get_default ().load_icon ("go-home-symbolic", 16, 0);
             } catch (Error err) {
@@ -322,7 +320,7 @@ namespace Marlin.View.Chrome
             menu = new Menu();
             menu.show_all();
         }
-        
+
         private void action_paste()
         {
             if(focus)
@@ -333,10 +331,9 @@ namespace Marlin.View.Chrome
                 clipboard.request_text(request_text);
             }
         }
-        
+
         private void action_copy()
         {
-            print("COPY\n\n\n\n");
             if(focus)
             {
                 var display = get_display();
@@ -349,10 +346,9 @@ namespace Marlin.View.Chrome
         private void action_cut()
         {
             //TODO check
-            print("TODO action_cut\n");
             if(focus)
             {
-                action_copy ();
+                action_copy();
                 entry.delete_selection();
             }
         }
@@ -391,7 +387,7 @@ namespace Marlin.View.Chrome
                menu.show_all();
             }
         }
-        
+
         private bool select_bread_from_coord(double x)
         {
             double x_previous = -10;
