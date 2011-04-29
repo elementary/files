@@ -81,7 +81,7 @@ namespace Marlin.View.Chrome
                 }
                 if (name == "LocationEntry")
                 {
-                    location_bar = new LocationBar ();
+                    location_bar = new LocationBar (win);
                     location_bar.show_all();
                     insert(location_bar, -1);
                     /* init the path if we got a curent tab with a valid slot

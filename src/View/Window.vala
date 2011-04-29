@@ -68,29 +68,8 @@ namespace Marlin.View {
             }
         }
         
-        public bool paste()
-        {
-            if(top_menu.location_bar.paste())
-                return false;
-            return true;
-        }
-        
-        public bool copy()
-        {
-            if(top_menu.location_bar.copy())
-                return false;
-            return true;
-        }
-        
-        public bool cut()
-        {
-            if(top_menu.location_bar.cut())
-                return false;
-            return true;
-        }
-
         //public signal void refresh();
-        public signal void selection_changed(GOF.File? gof_file);
+        public signal void selection_changed(GOF.File gof_file);
 
         public signal void reload_tabs();
 

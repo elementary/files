@@ -577,7 +577,7 @@ marlin_clipboard_manager_transfer_files (MarlinClipboardManager *manager,
 
 
 /**
- * marlin_clipboard_manager_get_for_display:
+ * marlin_clipboard_manager_new_get_for_display:
  * @display : a #GdkDisplay.
  *
  * Determines the #MarlinClipboardManager that is used to manage
@@ -589,7 +589,7 @@ marlin_clipboard_manager_transfer_files (MarlinClipboardManager *manager,
  * Return value: the #MarlinClipboardManager for @display.
 **/
 MarlinClipboardManager*
-marlin_clipboard_manager_get_for_display (GdkDisplay *display)
+marlin_clipboard_manager_new_get_for_display (GdkDisplay *display)
 {
     MarlinClipboardManager *manager;
     GtkClipboard           *clipboard;

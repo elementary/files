@@ -105,11 +105,7 @@ namespace Marlin.View {
             info = new LinkedList<Pair<string, string>>();
         }
 
-        public void update(GOF.File? gof_file){
-            if(gof_file == null){
-                gof_file = window.current_tab.slot.directory.file;
-            }
-
+        public void update(GOF.File gof_file){
             last_geof_cache = gof_file;
 
             var file_info = gof_file.info;

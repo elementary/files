@@ -39,7 +39,7 @@ typedef struct _MarlinClipboardManager      MarlinClipboardManager;
 
 GType                   marlin_clipboard_manager_get_type        (void) G_GNUC_CONST;
 
-MarlinClipboardManager *marlin_clipboard_manager_get_for_display (GdkDisplay             *display);
+MarlinClipboardManager *marlin_clipboard_manager_new_get_for_display (GdkDisplay *display);
 
 gboolean                marlin_clipboard_manager_get_can_paste   (MarlinClipboardManager *manager);
 

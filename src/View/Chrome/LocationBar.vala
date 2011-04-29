@@ -24,6 +24,7 @@ namespace Marlin.View.Chrome
 {
     public class LocationBar : ToolItem
     {
+        public Window win;
         private Entry entry;
         private Breadcrumbs bread;
         bool _state;
@@ -47,10 +48,11 @@ namespace Marlin.View.Chrome
 
         public new signal void activate();
 
-        public LocationBar ()
+        public LocationBar (Window window)
         {
+            win = window;
             entry = new Entry ();
-            bread = new Breadcrumbs();
+            bread = new Breadcrumbs(window);
 
             bread.activate_entry.connect( () => { state = false; });
 
@@ -86,7 +88,7 @@ namespace Marlin.View.Chrome
             }
         }
         
-        public bool paste()
+        /*public bool paste()
         {
             return bread.paste();
         }
@@ -99,7 +101,7 @@ namespace Marlin.View.Chrome
         public bool cut()
         {
             return bread.cut();
-        }
+        }*/
     }
 
     public class Breadcrumbs : DrawingArea
@@ -128,6 +130,9 @@ namespace Marlin.View.Chrome
         Gtk.Button button;
         Gtk.StyleContext entry_context;
         BreadcrumbsEntry entry;
+
+        private UIManager ui;
+        public Gtk.ActionGroup clipboard_actions;
         
         /* This list will contain all BreadcrumbsElement */
         Gee.ArrayList<BreadcrumbsElement> elements;
@@ -157,7 +162,7 @@ namespace Marlin.View.Chrome
         double right_click_root;
         private int timeout = -1;
 
-        public Breadcrumbs()
+        public Breadcrumbs(Window window)
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                       | Gdk.EventMask.BUTTON_RELEASE_MASK
@@ -165,6 +170,10 @@ namespace Marlin.View.Chrome
                       | Gdk.EventMask.KEY_RELEASE_MASK
                       | Gdk.EventMask.POINTER_MOTION_MASK
                       | Gdk.EventMask.LEAVE_NOTIFY_MASK);
+
+            /* grab the UIManager */
+            ui = window.ui;
+            init_clipboard ();
 
             /* Loade default font */
             var gtk_settings = Gtk.Settings.get_for_screen (get_screen ());
@@ -303,7 +312,7 @@ namespace Marlin.View.Chrome
             menu.show_all();
         }
         
-        public bool paste()
+        private void action_paste()
         {
             if(focus)
             {
@@ -311,13 +320,10 @@ namespace Marlin.View.Chrome
                 Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
                 Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
                 clipboard.request_text(request_text);
-                return true;
             }
-            else
-                return false;
         }
         
-        public bool copy()
+        private void action_copy()
         {
             print("COPY\n\n\n\n");
             if(focus)
@@ -326,21 +332,19 @@ namespace Marlin.View.Chrome
                 Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
                 Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
                 clipboard.set_text(entry.get_selection(), entry.get_selection().length);
-                return true;
             }
-            else
-                return false;
         }
         
-        public bool cut()
+        private void action_cut()
         {
+            //TODO check
+            print("TODO action_cut\n");
             if(focus)
             {
-                if(copy()) entry.delete_selection();
-                return true;
+                action_copy ();
+                entry.delete_selection();
+                //if(copy()) entry.delete_selection();
             }
-            else
-                return false;
         }
 
         private bool load_file_hash ()
@@ -423,7 +427,7 @@ namespace Marlin.View.Chrome
         {
             if(timeout == -1 && event.button == 1){
                 timeout = (int) Timeout.add(800, () => {
-                select_bread_from_coord(event.x);
+                    select_bread_from_coord(event.x);
                     timeout = -1;
                     return false;
                 });
@@ -788,12 +792,14 @@ namespace Marlin.View.Chrome
         {
             focus = false;
             entry.hide();
+            merge_out_clipboard_actions ();
             return true;
         }
         
         public override bool focus_in_event(Gdk.EventFocus event)
         {
             focus = true;
+            merge_in_clipboard_actions ();
             return true;
         }
         
@@ -852,6 +858,39 @@ namespace Marlin.View.Chrome
             entry.draw(cr, x_render + space_breads/2, height, width - x_render);
             return false;
         }
+
+        private void init_clipboard ()
+        {
+            clipboard_actions = new Gtk.ActionGroup ("ClipboardActions");
+            clipboard_actions.add_actions (action_entries, this);
+        }
+
+        private void merge_in_clipboard_actions ()
+        {
+            ui.insert_action_group (clipboard_actions, 0);
+            ui.ensure_update ();        
+        }
+
+        private void merge_out_clipboard_actions ()
+        {
+            ui.remove_action_group (clipboard_actions);
+            ui.ensure_update ();        
+        }
+
+        static const Gtk.ActionEntry[] action_entries = {
+  /* name, stock id */         { "Cut", Stock.CUT,
+  /* label, accelerator */       null, null,
+  /* tooltip */                  N_("Prepare the selected files to be moved with a Paste command"),
+                                 action_cut },
+  /* name, stock id */         { "Copy", Stock.COPY,
+  /* label, accelerator */       null, null,
+  /* tooltip */                 N_("Prepare the selected files to be copied with a Paste command"),
+                                action_copy },
+  /* name, stock id */        { "Paste", Stock.PASTE,
+  /* label, accelerator */      null, null,
+  /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command"),
+                                action_paste }
+         };
 
         /* TESTS */
         public int tests_get_elements_size()

@@ -203,7 +203,6 @@ static void     fm_directory_view_drag_end (GtkWidget       *widget,
                                             GdkDragContext  *context,
                                             FMDirectoryView *view);
 
-static void     update_menus_selection (FMDirectoryView *view);
 
 EEL_CLASS_BOILERPLATE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW)
 
@@ -1542,33 +1541,28 @@ fm_directory_view_button_release_event (GtkWidget        *widget,
 }
 
 static void
-dir_action_set_visible_and_sensitive (FMDirectoryView *view, const gchar *action_name, 
-                                      gboolean visible, gboolean sensitive)
+dir_action_set_visible (FMDirectoryView *view, const gchar *action_name, gboolean visible)
 {
     GtkAction *action;
+    
+    if (!view->details->dir_action_group)
+        return;
 
     action = gtk_action_group_get_action (view->details->dir_action_group, action_name);
     if (action != NULL) {
         gtk_action_set_visible (action, visible);
         /* enable/disable action too */
-        gtk_action_set_sensitive (action, sensitive);
+        gtk_action_set_sensitive (action, visible);
     }
-}
-
-static void
-dir_action_set_visible (FMDirectoryView *view, const gchar *action_name, gboolean visible)
-{
-    GtkAction *action;
-
-    action = gtk_action_group_get_action (view->details->dir_action_group, action_name);
-    if (action != NULL)
-        gtk_action_set_visible (action, visible);
 }
 
 static void
 dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gboolean sensitive)
 {
     GtkAction *action;
+    
+    if (!view->details->dir_action_group)
+        return;
 
     action = gtk_action_group_get_action (view->details->dir_action_group, action_name);
     if (action != NULL)
@@ -1576,10 +1570,18 @@ dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gbool
 }
 
 static void
+update_menus_common (FMDirectoryView *view)
+{
+    if (marlin_clipboard_manager_get_can_paste (view->clipboard)) {
+        dir_action_set_sensitive (view, "Paste", TRUE);
+    } else {
+        dir_action_set_sensitive (view, "Paste", FALSE);
+    }
+}
+
+static void
 update_menus_empty_selection (FMDirectoryView *view)
 {
-    GtkAction *action;
-
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
     dir_action_set_sensitive (view, "Cut", FALSE);
@@ -1589,16 +1591,16 @@ update_menus_empty_selection (FMDirectoryView *view)
     GOFWindowSlot *slot = view->details->slot;
 
     if (gof_file_is_trashed (slot->directory->file))
-        dir_action_set_visible_and_sensitive (view, "New Folder", FALSE, FALSE);
+        dir_action_set_visible (view, "New Folder", FALSE);
     else
-        dir_action_set_visible_and_sensitive (view, "New Folder", TRUE, TRUE);
+        dir_action_set_visible (view, "New Folder", TRUE);
+   
 }
 
 static void
 update_menus_selection (FMDirectoryView *view)
 {
     GList       *selection;
-    GtkAction   *action;
     GOFFile     *file;
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
@@ -1609,25 +1611,21 @@ update_menus_selection (FMDirectoryView *view)
     dir_action_set_sensitive (view, "Copy", TRUE);
     dir_action_set_sensitive (view, "Rename", TRUE);
 
-    //FIXME:paste shouldn't appear in menu slection if selection != 1 folder
-    //it should still appear in menubar and act on the slot folder.
-
-    /* got more than one element in selection */
-    /*if (selection->next == NULL && file->is_directory
-        && marlin_clipboard_manager_get_can_paste (view->clipboard)) {*/
-    if (marlin_clipboard_manager_get_can_paste (view->clipboard)) {
-        dir_action_set_sensitive (view, "Paste", TRUE);
+    /* got only one element in selection */
+    if (selection->next == NULL && file->is_directory
+        && marlin_clipboard_manager_get_can_paste (view->clipboard)) {
+        dir_action_set_visible (view, "Paste Into Folder", TRUE);
     } else {
-        dir_action_set_sensitive (view, "Paste", FALSE);
+        dir_action_set_visible (view, "Paste Into Folder", FALSE);
     }
 
     if (gof_file_is_trashed(file)) {
-        dir_action_set_visible_and_sensitive (view, "Restore From Trash", TRUE, TRUE);
-        dir_action_set_visible_and_sensitive (view, "Trash", FALSE, FALSE);
-        dir_action_set_visible_and_sensitive (view, "Rename", FALSE, FALSE);
+        dir_action_set_visible (view, "Restore From Trash", TRUE);
+        dir_action_set_visible (view, "Trash", FALSE);
+        dir_action_set_visible (view, "Rename", FALSE);
     } else {
-        dir_action_set_visible_and_sensitive (view, "Restore From Trash", FALSE, FALSE);
-        dir_action_set_visible_and_sensitive (view, "Trash", TRUE, TRUE);
+        dir_action_set_visible (view, "Restore From Trash", FALSE);
+        dir_action_set_visible (view, "Trash", TRUE);
     }
 }
 
@@ -1825,12 +1823,12 @@ fm_directory_view_realize (GtkWidget *widget)
 
     /* query the clipboard manager for the display */
     display = gtk_widget_get_display (widget);
-    view->clipboard = marlin_clipboard_manager_get_for_display (display);
+    view->clipboard = marlin_clipboard_manager_new_get_for_display (display);
 
     /* we need update the selection state based on the clipboard content */
-    /*g_signal_connect_swapped (G_OBJECT (view->clipboard), "changed",
-      G_CALLBACK (thunar_standard_view_selection_changed), view);
-      thunar_standard_view_selection_changed (view);*/
+    g_signal_connect_swapped (G_OBJECT (view->clipboard), "changed",
+                              G_CALLBACK (fm_directory_view_notify_selection_changed), view);
+    fm_directory_view_notify_selection_changed (view);
 
     /* determine the icon factory for the screen on which we are realized */
     //icon_theme = gtk_icon_theme_get_for_screen (gtk_widget_get_screen (widget));
@@ -1846,7 +1844,7 @@ fm_directory_view_unrealize (GtkWidget *widget)
     FMDirectoryView    *view = FM_DIRECTORY_VIEW (widget);
 
     /* disconnect the clipboard changed handler */
-    /*g_signal_handlers_disconnect_by_func (G_OBJECT (view->clipboard), thunar_standard_view_selection_changed, view);*/
+    g_signal_handlers_disconnect_by_func (G_OBJECT (view->clipboard), fm_directory_view_notify_selection_changed, view);
 
     /* drop the reference on the icon factory */
     //g_signal_handlers_disconnect_by_func (G_OBJECT (view->icon_factory), gtk_widget_queue_draw, view);
@@ -1854,8 +1852,8 @@ fm_directory_view_unrealize (GtkWidget *widget)
     //view->icon_factory = NULL;
 
     /* drop the reference on the clipboard manager */
-    /*g_object_unref (G_OBJECT (view->clipboard));
-      view->clipboard = NULL;*/
+    g_object_unref (G_OBJECT (view->clipboard));
+    view->clipboard = NULL;
 
     /* let the GtkWidget do its work */
     GTK_WIDGET_CLASS (parent_class)->unrealize (widget);
@@ -2042,6 +2040,8 @@ fm_directory_view_set_property (GObject         *object,
         window = marlin_view_view_container_get_window (MARLIN_VIEW_VIEW_CONTAINER(slot->ctab));
 
         directory_view->details->slot = g_object_ref(slot);
+        //debugtest
+        printf ("!!!! %s window\n", G_STRFUNC);
         directory_view->details->window = window;
         /* store the loading state of the directory */
         directory_view->details->loading = slot->directory->loading;
@@ -2289,20 +2289,27 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
 
 /* TODO maybe pass the entire selection in the signal */
 void
-fm_directory_view_notify_selection_changed (FMDirectoryView *view, GOFFile *file)
+fm_directory_view_notify_selection_changed (FMDirectoryView *view)
 {
     GList *selection;
+    GOFFile *file = NULL;
 
     view->details->selection_was_removed = FALSE;
-    g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", file);
 
     selection = fm_directory_view_get_selection (view);
     if (selection != NULL) {
+        file = selection->data;
         update_menus_selection (view);
     } else {
         update_menus_empty_selection (view);
     }
+    update_menus_common (view);
 
+    /* if empty selection then pass the currentslot folder */
+    if (file == NULL)
+        file = view->details->slot->directory->file;
+    
+    g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", file);
 }
 
 
@@ -2364,13 +2371,9 @@ action_cut_files (GtkAction *action, FMDirectoryView *view)
     g_return_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (view->clipboard));
 
     win = MARLIN_VIEW_WINDOW(view->details->window);
-    if (marlin_view_window_cut(win))
-    {
-        selection = fm_directory_view_get_selection_for_file_transfer (view);
-        marlin_clipboard_manager_cut_files (view->clipboard, selection);
-    }
+    selection = fm_directory_view_get_selection_for_file_transfer (view);
+    marlin_clipboard_manager_cut_files (view->clipboard, selection);
 
-    /*copy_or_cut_files (view, selection, FALSE);*/
     gof_file_list_free (selection);
 }
 
@@ -2385,14 +2388,10 @@ action_copy_files (GtkAction *action, FMDirectoryView *view)
     g_return_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (view->clipboard));
 
     win = MARLIN_VIEW_WINDOW(view->details->window);
-    if (marlin_view_window_copy(win))
-    {
-        selection = fm_directory_view_get_selection_for_file_transfer (view);
-        marlin_clipboard_manager_copy_files (view->clipboard, selection);
+    selection = fm_directory_view_get_selection_for_file_transfer (view);
+    marlin_clipboard_manager_copy_files (view->clipboard, selection);
 
-        /*copy_or_cut_files (view, selection, FALSE);*/
-        gof_file_list_free (selection);
-    }
+    gof_file_list_free (selection);
 }
 
 static void
@@ -2407,13 +2406,27 @@ action_paste_files (GtkAction *action, FMDirectoryView *view)
     win = MARLIN_VIEW_WINDOW(view->details->window);
 
     current_directory = view->details->slot->location;
-    if (G_LIKELY (current_directory != NULL) && marlin_view_window_paste(win))
+    if (G_LIKELY (current_directory != NULL))
     {
         marlin_clipboard_manager_paste_files (view->clipboard, current_directory,
                                               GTK_WIDGET (view), NULL);
         //TODO evalutate
         //t_standard_view_new_files_closure (standard_view));
     }
+}
+
+static void
+action_paste_into_folder (GtkAction *action, FMDirectoryView *view)
+{
+    GOFFile *file;
+
+    g_return_if_fail (GTK_IS_ACTION (action));
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
+    /* determine the first selected file and verify that it's a folder */
+    file = g_list_nth_data (fm_directory_view_get_selection (view), 0);
+    if (G_LIKELY (file != NULL && file->is_directory))
+        marlin_clipboard_manager_paste_files (view->clipboard, file->location, GTK_WIDGET (view), NULL);
 }
 
 static void
@@ -2539,6 +2552,10 @@ static const GtkActionEntry directory_view_entries[] = {
     /* label, accelerator */      NULL, NULL,
     /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command"),
             G_CALLBACK (action_paste_files) },
+    /* name, stock id */        { "Paste Into Folder", GTK_STOCK_PASTE,
+    /* label, accelerator */      N_("Paste Into Folder"), NULL,
+    /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command into selected folder"),
+            G_CALLBACK (action_paste_into_folder) },
     /* name, stock id */         { "Rename", NULL,
     /* label, accelerator */       N_("_Rename..."), "F2",
     /* tooltip */                  N_("Rename selected item"),

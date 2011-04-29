@@ -116,8 +116,7 @@
 	<placeholder name="File Clipboard Actions">
 		<menuitem name="Cut" action="Cut"/>
 		<menuitem name="Copy" action="Copy"/>
-		<!--<menuitem name="Paste Files Into" action="Paste Files Into"/>-->
-		<menuitem name="Paste" action="Paste"/>
+		<menuitem name="Paste Into Folder" action="Paste Into Folder"/>
 	</placeholder>
 	<separator name="File actions separator"/>
 	<placeholder name="File Actions">

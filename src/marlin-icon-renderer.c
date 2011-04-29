@@ -446,7 +446,7 @@ marlin_icon_renderer_render (GtkCellRenderer        *cell,
     {
 #if 0
         /* use a translucent icon to represent cutted and hidden files to the user */
-        clipboard = marlin_clipboard_manager_get_for_display (gtk_widget_get_display (widget));
+        clipboard = marlin_clipboard_manager_new_get_for_display (gtk_widget_get_display (widget));
         if (marlin_clipboard_manager_has_cutted_file (clipboard, icon_renderer->file))
         {
             /* 50% translucent for cutted files */

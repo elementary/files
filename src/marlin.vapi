@@ -144,5 +144,17 @@ namespace Marlin {
             public Sidebar (Gtk.Widget window);
         }
     }
+    [CCode (cprefix = "MarlinClipboard", lower_case_cprefix = "marlin_clipboard_")]
+    namespace Clipboard {
+        [CCode (cheader_filename = "marlin-clipboard-manager.h")]
+        public class Manager : GLib.Object {
+            public Manager.get_for_display (Gdk.Display display);
+            public bool get_can_paste ();
+            public bool has_cutted_files (GOF.File file);
+            public void copy_files (GLib.List files);
+            public void cut_files (GLib.List files);
+            public void paste_files (GLib.File target, Gtk.Widget widget, GLib.List files, GLib.Closure new_file_closure);
+        }
+    }
 }
 

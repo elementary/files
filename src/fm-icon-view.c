@@ -87,32 +87,15 @@ static void     fm_icon_view_zoom_level_changed (FMDirectoryView *view);
   }*/
 
 static void
-fm_icon_view_selection_changed (GtkTreeSelection *selection, gpointer user_data)
+fm_icon_view_selection_changed (GtkIconView *iconview, gpointer user_data)
 {
-    GtkTreeIter iter;
-    GOFFile *file = NULL;
     FMIconView *view = FM_ICON_VIEW (user_data);
 
-    /*GList *paths = gtk_tree_selection_get_selected_rows (selection, NULL);
-      if (paths!=NULL && gtk_tree_model_get_iter (GTK_TREE_MODEL(view->model), &iter, paths->data))   
-      {
-      gtk_tree_model_get (GTK_TREE_MODEL (view->model), &iter,
-      FM_LIST_MODEL_FILE_COLUMN, &file,
-      -1);
-    //if (file != NULL) 
-    }*/
     if (view->details->selection != NULL)
         gof_file_list_free (view->details->selection);
     view->details->selection = get_selection (view);
 
-    if (view->details->selection != NULL) 
-        file = view->details->selection->data;
-
-    fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view), file);
-
-    //fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view), file);
-    /*g_list_foreach (paths, (GFunc) gtk_tree_path_free, NULL);
-      g_list_free (paths);*/
+    fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view));
 }
 
 static void
@@ -335,13 +318,7 @@ fm_icon_view_start_renaming_file (FMDirectoryView *view,
 static void
 fm_icon_view_sync_selection (FMDirectoryView *view)
 {
-    FMIconView *icon_view = FM_ICON_VIEW (view);
-    GOFFile *file;
-
-    if (icon_view->details->selection != NULL) 
-        file = icon_view->details->selection->data;
-
-    fm_directory_view_notify_selection_changed (view, file);
+    fm_directory_view_notify_selection_changed (view);
 }
 
 
