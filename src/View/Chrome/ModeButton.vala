@@ -136,12 +136,15 @@ namespace Marlin.View.Chrome
             return true;	
         }
 
-        protected bool on_button_press_event(EventButton evnt)
+        protected bool on_button_press_event(EventButton ev)
         {
-            if (_hovered > -1 && _hovered != _selected)
+            if (_hovered > -1 && _hovered != _selected && ev.button != 3)
+            {
                 selected = _hovered;
+                return true;
+            }
 
-            return true;
+            return false;
         }
 
         protected bool on_leave_notify_event(Gdk.EventCrossing ev)

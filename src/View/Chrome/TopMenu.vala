@@ -54,14 +54,19 @@ namespace Marlin.View.Chrome
             button_press_event.connect(right_click);
         }
         
-        private bool right_click(Gdk.EventButton event)
+        public bool right_click(Gdk.EventButton event)
         {
             if(event.button == 3)
             {
-                Eel.pop_up_context_menu(toolbar_menu, 0, 0, event);
+                right_click_extern(event);
                 return true;
             }
             return false;
+        }
+        
+        public void right_click_extern(Gdk.EventButton event)
+        {
+            Eel.pop_up_context_menu(toolbar_menu, 0, 0, event);
         }
 
         public void setup_items ()
@@ -73,11 +78,11 @@ namespace Marlin.View.Chrome
             foreach (string name in toolbar_items) {
                 if (name == "Separator")
                 {
-                        Gtk.SeparatorToolItem? sep = new Gtk.SeparatorToolItem ();
-                        sep.set_draw(true);
-                        sep.show();
-                        insert(sep, -1);
-                        continue;
+                    Gtk.SeparatorToolItem? sep = new Gtk.SeparatorToolItem ();
+                    sep.set_draw(true);
+                    sep.show();
+                    insert(sep, -1);
+                    continue;
                 }
                 if (name == "LocationEntry")
                 {
@@ -94,7 +99,7 @@ namespace Marlin.View.Chrome
                 if (name == "ViewSwitcher")
                 {
                     view_switcher = new ViewSwitcher(win.main_actions);
-		    view_switcher.get_style_context().add_class ("raised");
+		            view_switcher.get_style_context().add_class ("raised");
                     view_switcher.show_all();
                     insert(view_switcher, -1);
                     continue;
@@ -122,7 +127,6 @@ namespace Marlin.View.Chrome
                 }
             }
 
-            /*refresh = new ToolButton.from_stock(Stock.REFRESH);*/
             insert(app_menu, -1);
         }
 

@@ -143,7 +143,9 @@ namespace Marlin.View {
                 top_menu.location_bar.activate.connect(() => {
                     current_tab.path_changed(File.new_for_commandline_arg(top_menu.location_bar.path));
                 });
+                top_menu.app_menu.right_click.connect(top_menu.right_click_extern);
             }
+            menu_bar.button_press_event.connect(top_menu.right_click);
 
 
             /* Contents */

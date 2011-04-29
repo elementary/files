@@ -29,7 +29,7 @@ namespace Gtk {
         }
 
         public signal void long_click();
-        public signal void right_click();
+        public signal void right_click(Gdk.EventButton ev);
 
         private bool has_fetcher = false;
         private MenuFetcher _fetcher;
@@ -124,7 +124,7 @@ namespace Gtk {
             }
 
             if(ev.button == 3){
-                right_click();
+                right_click(ev);
             }
 
             return false;

@@ -342,7 +342,6 @@ namespace Marlin.View.Chrome
             {
                 action_copy ();
                 entry.delete_selection();
-                //if(copy()) entry.delete_selection();
             }
         }
 
