@@ -2555,8 +2555,7 @@ static const GtkActionEntry directory_view_entries[] = {
     /* label, accelerator */      NULL, NULL,
     /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command"),
             G_CALLBACK (action_paste_files) },
-    /* name, stock id */        { "Paste", GTK_STOCK_PASTE, /* Don't use Paste Into Folder here, it will
-                                                             * cause some bugs (the pathbar won't receive any signals */
+    /* name, stock id */        { "Paste Into Folder", GTK_STOCK_PASTE,
     /* label, accelerator */      N_("Paste Into Folder"), NULL,
     /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command into selected folder"),
             G_CALLBACK (action_paste_into_folder) },
