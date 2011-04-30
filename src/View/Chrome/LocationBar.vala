@@ -314,6 +314,7 @@ namespace Marlin.View.Chrome
                 stderr.printf ("Unable to load home icon: %s", err.message);
             }
 
+            /* FIXME: This won't work if the user dir is not in /home/ */
             home = new string[2];
             home[0] = "home";
             home[1] = Environment.get_home_dir().split("/")[2];
@@ -323,6 +324,7 @@ namespace Marlin.View.Chrome
 
         private void action_paste()
         {
+            print("PASTE\n\n\n");
             if(focus)
             {
                 var display = get_display();
@@ -1118,18 +1120,26 @@ namespace Marlin.View.Chrome
         
         public void key_press_event(Gdk.EventKey event)
         {
+            /* FIXME: I can't find the vapi to not use hardcoded key value. */
             switch(event.keyval)
             {
             case 0xff51: /* left */
                 if(cursor > 0 && ! ((event.state & Gdk.ModifierType.CONTROL_MASK) == 4))
+                {
                     cursor --; /* No control pressed, the cursor is not at the begin */
+                    reset_selection();
+                }
                 else if( cursor == 0 && (event.state & Gdk.ModifierType.CONTROL_MASK) == 4)
                     left_full(); /* Control pressed, the cursor is at the begin */
                 else if((event.state & Gdk.ModifierType.CONTROL_MASK) == 4) cursor = 0;
                 else left();
                 break;
             case 0xff53: /* right */
-                if(cursor < text.length) cursor ++;
+                if(cursor < text.length)
+                {
+                    cursor ++;
+                    reset_selection();
+                }
                 else if(completion != "")
                 {
                     text += completion + "/";

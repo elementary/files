@@ -506,19 +506,25 @@ namespace Marlin.View {
         }
 
         protected void show_about() {
-        Gtk.show_about_dialog(this,
-            "program-name", Resources.APP_TITLE,
-            "version", Config.VERSION,
-            "comments", Resources.COMMENTS,
-            "copyright", Resources.COPYRIGHT,
-            "license", Resources.LICENSE,
-            "website", Resources.ELEMENTARY_URL,
-            "website-label",  Resources.ELEMENTARY_LABEL,
-            "authors", Resources.AUTHORS,
-            "artists", Resources.ARTISTS,
-            "logo-icon-name", Resources.ICON_ABOUT_LOGO,
-            "translator-credits", _("translator-credits"),
-            null);
+            Gdk.Pixbuf logo = null;
+            try {
+                logo = IconTheme.get_default ().load_icon ("marlin", 64, 0);
+            } catch (Error err) {
+                stderr.printf ("Unable to load marlin icon: %s", err.message);
+            }
+            Gtk.show_about_dialog(this,
+                "program-name", Resources.APP_TITLE,
+                "version", Config.VERSION,
+                "comments", Resources.COMMENTS,
+                "copyright", Resources.COPYRIGHT,
+                "license", Resources.LICENSE,
+                "website", Resources.ELEMENTARY_URL,
+                "website-label",  Resources.ELEMENTARY_LABEL,
+                "authors", Resources.AUTHORS,
+                "artists", Resources.ARTISTS,
+                "logo", logo,
+                "translator-credits", _("translator-credits"),
+                null);
         }
 
         static const Gtk.ActionEntry[] main_entries = {

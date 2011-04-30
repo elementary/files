@@ -2364,13 +2364,11 @@ static void
 action_cut_files (GtkAction *action, FMDirectoryView *view)
 {
     GList *selection;
-    MarlinViewWindow* win;
 
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (view->clipboard));
 
-    win = MARLIN_VIEW_WINDOW(view->details->window);
     selection = fm_directory_view_get_selection_for_file_transfer (view);
     marlin_clipboard_manager_cut_files (view->clipboard, selection);
 
@@ -2381,13 +2379,11 @@ static void
 action_copy_files (GtkAction *action, FMDirectoryView *view)
 {
     GList *selection;
-    MarlinViewWindow* win;
 
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (view->clipboard));
 
-    win = MARLIN_VIEW_WINDOW(view->details->window);
     selection = fm_directory_view_get_selection_for_file_transfer (view);
     marlin_clipboard_manager_copy_files (view->clipboard, selection);
 
@@ -2398,12 +2394,9 @@ static void
 action_paste_files (GtkAction *action, FMDirectoryView *view)
 {
     GFile *current_directory;
-    MarlinViewWindow* win;
 
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
-    
-    win = MARLIN_VIEW_WINDOW(view->details->window);
 
     current_directory = view->details->slot->location;
     if (G_LIKELY (current_directory != NULL))
@@ -2552,7 +2545,8 @@ static const GtkActionEntry directory_view_entries[] = {
     /* label, accelerator */      NULL, NULL,
     /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command"),
             G_CALLBACK (action_paste_files) },
-    /* name, stock id */        { "Paste Into Folder", GTK_STOCK_PASTE,
+    /* name, stock id */        { "Paste", GTK_STOCK_PASTE, /* Don't use Paste Into Folder here, it will
+                                                             * cause some bugs (the pathbar won't receive any signals */
     /* label, accelerator */      N_("Paste Into Folder"), NULL,
     /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command into selected folder"),
             G_CALLBACK (action_paste_into_folder) },
