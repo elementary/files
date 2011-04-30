@@ -27,7 +27,7 @@ using Gee;
 
 namespace Marlin.View {
 
-    public class AppButton : Gtk.Button
+    class AppButton : Gtk.Button
     {
         AppInfo app_info;
         GOF.File file;
@@ -51,6 +51,26 @@ namespace Marlin.View {
             //hbox.pack_start(label, true, true);
             add(hbox);
             pressed.connect(() => { file.launch_with(get_screen(), app_info); } );
+        }
+    }
+    
+    class AppRadio : Gtk.RadioButton
+    {
+        public AppInfo app_info;
+        public GOF.File file;
+        public AppRadio(GLib.SList<Gtk.RadioButton> list, AppInfo app_info, GOF.File file)
+        {
+            set_group(list);
+            this.app_info = app_info;
+            this.file = file;
+            set_tooltip_text(N_("Set as default for the %s").replace("%s", file.formated_type));
+        }
+        public override void toggled()
+        {
+            if(active)
+            {
+                app_info.set_as_default_for_type(file.ftype);
+            }
         }
     }
 
@@ -185,15 +205,25 @@ namespace Marlin.View {
             apps_scrolled = new ScrolledWindow(null,null);
             apps = new Gtk.HBox(false, 5);
             var button = new AppButton(AppInfo.get_default_for_type(gof_file.ftype, true), gof_file);
+            AppRadio app_radio = null;
             string name = AppInfo.get_default_for_type(gof_file.ftype, true).get_name();
-            apps.pack_start(button, false, false);
+            app_radio = new AppRadio(null, AppInfo.get_default_for_type(gof_file.ftype, true), gof_file);
+            var vbox = new VBox(false, 2);
+            
+            vbox.pack_start(button);
+            vbox.pack_start(app_radio);
+            apps.pack_start(vbox, false, false);
             int i = 0;
             foreach(AppInfo app_info in AppInfo.get_all_for_type(gof_file.ftype))
             {
                 if(app_info.get_name() != name)
                 {
                     button = new AppButton(app_info, gof_file);
-                    apps.pack_start(button, false, false);
+                    app_radio = new AppRadio(app_radio.get_group(), app_info, gof_file);
+                    vbox = new VBox(false, 2);
+                    vbox.pack_start(button);
+                    vbox.pack_start(app_radio);
+                    apps.pack_start(vbox, false, false);
                 }
                 if(i > 3)
                     break;
@@ -292,7 +322,9 @@ namespace Marlin.View {
             box.pack_start(information, false, false);
             if(!last_geof_cache.is_directory)
             {
-                box.pack_start(new Label(N_("Open with:")), false, false);
+                var label = new Label(N_("Open with:"));
+                label.set_sensitive(false);
+                box.pack_start(label, false, false);
                 box.pack_start(apps, true, true);
                 box.pack_start(app_chooser, true, true);
             }
