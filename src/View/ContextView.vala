@@ -43,7 +43,7 @@ namespace Marlin.View {
             var label = new Label(app_info.get_name());
             label.ellipsize = Pango.EllipsizeMode.END;
             label.set_alignment(0, 0.5f);
-            hbox.pack_start(label, true, true);
+            //hbox.pack_start(label, true, true);
             add(hbox);
             pressed.connect(() => { file.launch_with(get_screen(), app_info); } );
         }
@@ -56,7 +56,7 @@ namespace Marlin.View {
         public const int key_value_padding = 8;
         public const int key_value_width = 90;
         public Gtk.Menu toolbar_menu;
-        private VBox apps;
+        private HBox apps;
         private ScrolledWindow apps_scrolled;
 
         public int panel_size{
@@ -178,15 +178,47 @@ namespace Marlin.View {
 
             /* Apps list */
             apps_scrolled = new ScrolledWindow(null,null);
-            apps = new Gtk.VBox(false, 5);
+            apps = new Gtk.HBox(false, 5);
+            var button = new AppButton(AppInfo.get_default_for_type(gof_file.ftype, true), gof_file);
+            string name = AppInfo.get_default_for_type(gof_file.ftype, true).get_name();
+            apps.pack_start(button, false, false);
+            int i = 0;
             foreach(AppInfo app_info in AppInfo.get_all_for_type(gof_file.ftype))
             {
-                var button = new AppButton(app_info, gof_file);
-                apps.pack_start(button, false, false);
+                if(app_info.get_name() != name)
+                {
+                    button = new AppButton(app_info, gof_file);
+                    apps.pack_start(button, false, false);
+                }
+                if(i > 3)
+                    break;
+                i++;
             }
+            
+            app_chooser = new Button();
+            app_chooser.pressed.connect(() => { dial = new AppChooserDialog(window, 0, gof_file.location);
+            ((AppChooserWidget)dial.get_widget()).application_selected.connect(save_app_info);
+            dial.response.connect(launch_gof);
+            dial.run();
+            });
 
             update_info_panel();
             show();
+        }
+        AppChooserDialog dial;
+        Button app_chooser;
+        AppInfo app_info;
+        
+        private void save_app_info(AppInfo app_info)
+        {
+            this.app_info = app_info;
+        }
+        
+        private void launch_gof(int response)
+        {
+            if(response == -5)
+                last_geof_cache.launch_with(get_screen(), app_info);
+            dial.destroy();
         }
 
         private void populate_key_value_pair(Box box, Pair<string, string> pair, bool limit_width = false){
@@ -255,6 +287,7 @@ namespace Marlin.View {
             box.pack_start(information, false, false);
             box.pack_start(new Label(N_("Open with:")), false, false);
             box.pack_start(apps, true, true);
+            box.pack_start(app_chooser, true, true);
             var scrolled = new ScrolledWindow(null, null);
             var box_ = new VBox(false, 0);
             box_.pack_start(box, true, false);
