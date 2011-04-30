@@ -93,6 +93,13 @@
         If set to a null or negative value, the default GTK_ICON_SIZE_MENU would be used.
       </description>
     </key>
+    <key type="b" name="show-open-with-text">
+      <default>false</default>
+      <summary>Show applications name</summary>
+      <description>
+        Use large buttons in the context pane
+      </description>
+    </key>
     <key name="sidebar-cat-personal-expander" type="b">
       <default>true</default>
       <_summary>Categorie personal expander</_summary>
