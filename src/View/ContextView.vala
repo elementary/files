@@ -26,6 +26,29 @@ using Cairo;
 using Gee;
 
 namespace Marlin.View {
+
+    public class AppButton : Gtk.Button
+    {
+        AppInfo app_info;
+        GOF.File file;
+        HBox hbox;
+        public AppButton(AppInfo app_info, GOF.File file)
+        {
+            this.app_info = app_info;
+            this.file = file;
+            var image = new Image.from_gicon(app_info.get_icon(), IconSize.BUTTON);
+            //set_image(image);
+            hbox = new HBox(false, 5);
+            hbox.pack_start(image, false, false);
+            var label = new Label(app_info.get_name());
+            label.ellipsize = Pango.EllipsizeMode.END;
+            label.set_alignment(0, 0.5f);
+            hbox.pack_start(label, true, true);
+            add(hbox);
+            pressed.connect(() => { file.launch_with(get_screen(), app_info); } );
+        }
+    }
+
     public class ContextView : Gtk.EventBox
     {
         public const int height = -1;
@@ -33,6 +56,8 @@ namespace Marlin.View {
         public const int key_value_padding = 8;
         public const int key_value_width = 90;
         public Gtk.Menu toolbar_menu;
+        private VBox apps;
+        private ScrolledWindow apps_scrolled;
 
         public int panel_size{
             get{
@@ -151,6 +176,15 @@ namespace Marlin.View {
 
             label.label = gof_file.name;
 
+            /* Apps list */
+            apps_scrolled = new ScrolledWindow(null,null);
+            apps = new Gtk.VBox(false, 5);
+            foreach(AppInfo app_info in AppInfo.get_all_for_type(gof_file.ftype))
+            {
+                var button = new AppButton(app_info, gof_file);
+                apps.pack_start(button, false, false);
+            }
+
             update_info_panel();
             show();
         }
@@ -218,12 +252,17 @@ namespace Marlin.View {
                 n++;
             }
 
-            box.pack_start(information, true, true);
+            box.pack_start(information, false, false);
+            box.pack_start(new Label(N_("Open with:")), false, false);
+            box.pack_start(apps, true, true);
+            var scrolled = new ScrolledWindow(null, null);
+            var box_ = new VBox(false, 0);
+            box_.pack_start(box, true, false);
+            scrolled.add_with_viewport(box_);
 
-            alignment.add(box);
-            alignment.show_all();
+            scrolled.show_all();
 
-            set_content(alignment);
+            set_content(scrolled);
         }
 
         private void construct_info_panel_horizontal(Gee.List<Pair<string, string>> item_info){

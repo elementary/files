@@ -62,6 +62,7 @@ namespace GOF {
     [CCode (cheader_filename = "gof-file.h")]
     public class File : GLib.Object {
         public File(GLib.File location, GLib.File dir);
+        public bool launch_with(Gdk.Screen screen, AppInfo app);
         public GLib.File location;
         public GLib.Icon? icon;
         public GLib.FileInfo? info;
@@ -70,6 +71,7 @@ namespace GOF {
         public string color;
         public string formated_modified;
         public string formated_type;
+        public string ftype;
 
         public bool is_directory;
     }
