@@ -353,14 +353,26 @@ namespace Marlin.View.Chrome
             }
         }
 
+        /**
+         * Load the file list for auto-completion.
+         **/
         private bool load_file_hash ()
         {
-            foreach (var file in files.file_hash.get_values ()) {
+            foreach (var file in files.file_hash.get_values())
+            {
                 on_file_loaded ((GOF.File) file);
             }
             return false;
         }
 
+        /**
+         * This function can be called by load_file_hash or it is used as a
+         * callback for files.file_loaded. We check that the file can be used
+         * in auto-completion, if yes we put it in our entry.
+         *
+         * @param file The file you want to load
+         *
+         **/
         private void on_file_loaded(GOF.File file)
         {
             if(file.is_directory && file.name.slice(0, to_search.length) == to_search)
@@ -382,18 +394,30 @@ namespace Marlin.View.Chrome
             if(file.is_directory)
             {
                 var menuitem = new Gtk.MenuItem.with_label(file.name);
-               menu.append(menuitem);
-               menuitem.activate.connect(() => { changed(current_right_click_root + "/" + ((MenuItem)menu.get_active()).get_label()); });
-               menu.show_all();
+                menu.append(menuitem);
+                menuitem.activate.connect(() => {
+                    changed(current_right_click_root + "/" + ((MenuItem)menu.get_active()).get_label()); });
+                menu.show_all();
             }
         }
 
+        /**
+         * Select the breadcrumb to make a right click. This function check
+         * where the user click, then, it loads a context menu with the others
+         * directory in it parent.
+         * See load_right_click_menu() for the context menu.
+         *
+         * @param x where the user click along the x axis
+         * @param event a button event to compute the coords of the new menu.
+         *
+         **/
         private bool select_bread_from_coord(double x, Gdk.EventButton event)
         {
             double x_previous = -10;
             double x_render = 0;
             string newpath = "";
             bool found = false;
+
             foreach(BreadcrumbsElement element in elements)
             {
                 if(element.display)
@@ -403,30 +427,20 @@ namespace Marlin.View.Chrome
                     if(x <= x_render + 5 && x > x_previous + 5)
                     {
                         right_click_root = x_previous;
-                        if(x_previous < 0)
-                            x_previous = 0;
-                        menu_x_root = event.x_root - event.x + x_previous;
-                        menu_y_root = event.y_root + get_allocated_height() - event.y - 5;
-                        /* Let's remove the last directory since we only want the parent */
-                        string to_remove = "";
-                        for(int i = newpath.split("/").length - 1; i > 0; i--)
-                        {
-                            if(newpath.split("/")[i] != "")
-                            {
-                                to_remove = newpath.split("/")[i];
-                                break;
-                            }
-                        }
-                        current_right_click_root = "";
-                        foreach(string dir in newpath.split("/"))
-                        {
-                            if(dir != to_remove)
-                            {
-                                current_right_click_root += dir +"/";
-                            }
-                        }
 
-                        load_right_click_menu();
+                        if(Marlin.Utils.has_parent(newpath))
+                        {
+                            /* Compute the coords of the menu, to show it at the
+                             * bottom of our pathbar. */
+                            if(x_previous < 0)
+                                x_previous = 0;
+                            menu_x_root = event.x_root - event.x + x_previous;
+                            menu_y_root = event.y_root + get_allocated_height() - event.y - 5;
+                            /* Let's remove the last directory since we only want the parent */
+                            current_right_click_root = Marlin.Utils.get_parent(newpath);
+
+                            load_right_click_menu();
+                        }
                         found = true;
 
                         break;
@@ -1335,6 +1349,21 @@ namespace Marlin.View.Chrome
         {
             hide();
         }
+    }
+}
+
+namespace Marlin.Utils
+{
+    public string get_parent(string newpath)
+    {
+        var path = File.new_for_path(newpath);
+        return path.get_parent().get_path();
+    }
+
+    public bool has_parent(string newpath)
+    {
+        var path = File.new_for_path(newpath);
+        return path.has_parent(null);
     }
 }
 
