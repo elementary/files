@@ -388,7 +388,7 @@ namespace Marlin.View.Chrome
             }
         }
 
-        private bool select_bread_from_coord(double x)
+        private bool select_bread_from_coord(double x, Gdk.EventButton event)
         {
             double x_previous = -10;
             double x_render = 0;
@@ -403,7 +403,29 @@ namespace Marlin.View.Chrome
                     if(x <= x_render + 5 && x > x_previous + 5)
                     {
                         right_click_root = x_previous;
-                        current_right_click_root = newpath + "/";
+                        if(x_previous < 0)
+                            x_previous = 0;
+                        menu_x_root = event.x_root - event.x + x_previous;
+                        menu_y_root = event.y_root + get_allocated_height() - event.y - 5;
+                        /* Let's remove the last directory since we only want the parent */
+                        string to_remove = "";
+                        for(int i = newpath.split("/").length - 1; i > 0; i--)
+                        {
+                            if(newpath.split("/")[i] != "")
+                            {
+                                to_remove = newpath.split("/")[i];
+                                break;
+                            }
+                        }
+                        current_right_click_root = "";
+                        foreach(string dir in newpath.split("/"))
+                        {
+                            if(dir != to_remove)
+                            {
+                                current_right_click_root += dir +"/";
+                            }
+                        }
+
                         load_right_click_menu();
                         found = true;
 
@@ -427,7 +449,7 @@ namespace Marlin.View.Chrome
 
             menu.popup (null,
                         null,
-                        null,
+                        get_menu_position,
                         0,
                         Gtk.get_current_event_time());
         }
@@ -436,7 +458,7 @@ namespace Marlin.View.Chrome
         {
             if(timeout == -1 && event.button == 1){
                 timeout = (int) Timeout.add(800, () => {
-                    select_bread_from_coord(event.x);
+                    select_bread_from_coord(event.x, event);
                     timeout = -1;
                     return false;
                 });
@@ -448,7 +470,7 @@ namespace Marlin.View.Chrome
             }
             else if(event.button == 3)
             {
-                return select_bread_from_coord(event.x);
+                return select_bread_from_coord(event.x, event);
             }
             if(focus)
             {
@@ -458,32 +480,13 @@ namespace Marlin.View.Chrome
             return true;
         }
         
+        double menu_x_root;
+        double menu_y_root;
+        
         private void get_menu_position (Menu menu, out int x, out int y, out bool push_in)
         {
-            if (menu.attach_widget == null ||
-                menu.attach_widget.get_window() == null) {
-                // Prevent null exception in weird cases
-                x = 0;
-                y = 0;
-                push_in = true;
-                return;
-            }
-
-            menu.attach_widget.get_window().get_origin (out x, out y);
-            Allocation allocation;
-            menu.attach_widget.get_allocation(out allocation);
-
-            x += (int)right_click_root;
-
-            int width, height;
-            menu.get_size_request(out width, out height);
-
-            if (y + height >= menu.attach_widget.get_screen().get_height())
-                y -= height;
-            else
-                y += allocation.height;
-
-            push_in = true;
+            x = (int)menu_x_root;
+            y = (int)menu_y_root;
         }
 
         public override bool button_release_event(Gdk.EventButton event)
