@@ -117,6 +117,10 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     file = view->details->selection->data;
     //show_selected_files (file);
 
+    /* don't update column if we got a drag_begin started */
+    if (fm_directory_view_is_drag_pending (FM_DIRECTORY_VIEW (view)))
+        return;
+
     /* setup the current active slot */
     //fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
     if (file->is_directory)

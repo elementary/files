@@ -394,5 +394,6 @@ GList   *fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *vie
 void    fm_directory_view_context_menu (FMDirectoryView *view,
                                         guint           button,
                                         GdkEventButton  *event);
+gboolean fm_directory_view_is_drag_pending (FMDirectoryView *view);
 
 #endif /* FM_DIRECTORY_VIEW_H */

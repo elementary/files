@@ -130,6 +130,7 @@ struct FMDirectoryViewDetails
     guint           drop_highlight : 1;
     guint           drop_occurred : 1;   /* whether the data was dropped */
     GList           *drop_file_list;     /* the list of URIs that are contained in the drop data */
+    gboolean        drag_begin;
 
     GdkDragContext  *drag_context;
 
@@ -1446,6 +1447,7 @@ fm_directory_view_drag_begin (GtkWidget           *widget,
 
     /* query the list of selected URIs */
     view->details->drag_file_list = fm_directory_view_get_selection_for_file_transfer (view);
+    view->details->drag_begin = TRUE;
 
     if (G_LIKELY (view->details->drag_file_list != NULL))
     {
@@ -1495,6 +1497,7 @@ fm_directory_view_drag_end (GtkWidget       *widget,
                             GdkDragContext  *context,
                             FMDirectoryView *view)
 {
+    printf ("%s\n", G_STRFUNC);
     /* stop any running drag autoscroll timer */
     if (G_UNLIKELY (view->details->drag_scroll_timer_id >= 0))
         g_source_remove (view->details->drag_scroll_timer_id);
@@ -1502,6 +1505,7 @@ fm_directory_view_drag_end (GtkWidget       *widget,
     /* release the list of dragged URIs */
     gof_file_list_free (view->details->drag_file_list);
     view->details->drag_file_list = NULL;
+    view->details->drag_begin = FALSE;
 }
 
 static gboolean
@@ -1519,6 +1523,12 @@ fm_directory_view_drag_timer (gpointer user_data)
     GDK_THREADS_LEAVE ();
 
     return FALSE;
+}
+
+gboolean
+fm_directory_view_is_drag_pending (FMDirectoryView *view)
+{
+    return (view->details->drag_begin);
 }
 
 static gboolean
