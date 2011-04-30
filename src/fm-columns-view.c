@@ -33,6 +33,8 @@
 struct FMColumnsViewDetails {
     GList       *selection;
     GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
+
+    gint pressed_button;
 };
 
 /* Wait for the rename to end when activating a file being renamed */
@@ -161,6 +163,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
     if (G_UNLIKELY (event->window != gtk_tree_view_get_bin_window (tree_view)))
         return FALSE;
 
+    view->details->pressed_button = -1;
     /* we unselect all selected items if the user clicks on an empty
      * area of the treeview and no modifier key is active.
      */
@@ -171,10 +174,19 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
         gtk_tree_selection_unselect_all (selection);
     }
 
+    selection = gtk_tree_view_get_selection (tree_view);
+    if (event->type == GDK_BUTTON_PRESS && event->button == 1) {
+        /* save last pressed button */
+        if (view->details->pressed_button < 0)
+            view->details->pressed_button = event->button;
+
+        /* disconnect the selection changed signal to operate only on release button event */
+         g_signal_handlers_block_by_func (selection, list_selection_changed_callback, view);
+    }
+
     /* open the context menu on right clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 3)
     {
-        selection = gtk_tree_view_get_selection (tree_view);
         if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
         {
             /* select the path on which the user clicked if not selected yet */
@@ -247,6 +259,25 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
     }
 
     return FALSE;
+}
+
+static gboolean
+button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsView *view)
+{
+    GtkTreeSelection    *selection;
+    GtkTreePath         *path;
+
+    if (view->details->pressed_button == event->button) 
+    {
+        selection = gtk_tree_view_get_selection (tree_view);
+        list_selection_changed_callback (selection, view);
+        g_signal_handlers_unblock_by_func (selection, list_selection_changed_callback, view);
+
+        /* reset the pressed_button state */
+        view->details->pressed_button = -1;
+    }
+
+    return TRUE;
 }
 
 /*static gboolean
@@ -402,6 +433,8 @@ create_and_set_up_tree_view (FMColumnsView *view)
 
     g_signal_connect_object (view->tree, "button-press-event",
                              G_CALLBACK (button_press_callback), view, 0);
+    g_signal_connect_object (view->tree, "button-release-event",
+                             G_CALLBACK (button_release_callback), view, 0);
     g_signal_connect_object (view->tree, "key_press_event",
                              G_CALLBACK (key_press_callback), view, 0);
     g_signal_connect_object (view->tree, "row-activated",
@@ -608,6 +641,8 @@ static void
 fm_columns_view_init (FMColumnsView *view)
 {
     view->details = g_new0 (FMColumnsViewDetails, 1);
+    view->details->pressed_button = -1;
+
     create_and_set_up_tree_view (view);
 
     //fm_columns_view_click_policy_changed (FM_DIRECTORY_VIEW (view));
