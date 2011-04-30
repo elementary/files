@@ -36,10 +36,15 @@ namespace Marlin.View {
         {
             this.app_info = app_info;
             this.file = file;
-            var image = new Image.from_gicon(app_info.get_icon(), IconSize.BUTTON);
+            Image image;
+            if(app_info.get_icon() == null)
+                image = new Image.from_stock(Gtk.Stock.EXECUTE, IconSize.BUTTON);
+            else
+                image = new Image.from_gicon(app_info.get_icon(), IconSize.BUTTON);
             //set_image(image);
             hbox = new HBox(false, 5);
             hbox.pack_start(image, false, false);
+            set_tooltip_text(app_info.get_name());
             var label = new Label(app_info.get_name());
             label.ellipsize = Pango.EllipsizeMode.END;
             label.set_alignment(0, 0.5f);
@@ -195,7 +200,7 @@ namespace Marlin.View {
                 i++;
             }
             
-            app_chooser = new Button();
+            app_chooser = new Button.with_label(N_("Other..."));
             app_chooser.pressed.connect(() => { dial = new AppChooserDialog(window, 0, gof_file.location);
             ((AppChooserWidget)dial.get_widget()).application_selected.connect(save_app_info);
             dial.response.connect(launch_gof);
@@ -285,9 +290,12 @@ namespace Marlin.View {
             }
 
             box.pack_start(information, false, false);
-            box.pack_start(new Label(N_("Open with:")), false, false);
-            box.pack_start(apps, true, true);
-            box.pack_start(app_chooser, true, true);
+            if(!last_geof_cache.is_directory)
+            {
+                box.pack_start(new Label(N_("Open with:")), false, false);
+                box.pack_start(apps, true, true);
+                box.pack_start(app_chooser, true, true);
+            }
             var scrolled = new ScrolledWindow(null, null);
             var box_ = new VBox(false, 0);
             box_.pack_start(box, true, false);
