@@ -32,6 +32,7 @@ namespace Marlin.View {
         public const int width = 190;
         public const int key_value_padding = 8;
         public const int key_value_width = 90;
+        public Gtk.Menu toolbar_menu;
 
         public int panel_size{
             get{
@@ -103,7 +104,22 @@ namespace Marlin.View {
             //image.set_size_request(-1, );
 
             info = new LinkedList<Pair<string, string>>();
+
+            toolbar_menu = (Gtk.Menu) window.ui.get_widget("/ToolbarMenu");
+            button_press_event.connect(right_click);
         }
+
+        public bool right_click(Gdk.EventButton event)
+        {
+            if(event.button == 3)
+            {
+                Eel.pop_up_context_menu(toolbar_menu, 0, 0, event);
+                return true;
+            }
+            return false;
+        }
+
+
 
         public void update(GOF.File gof_file){
             last_geof_cache = gof_file;
