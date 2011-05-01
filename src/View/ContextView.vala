@@ -26,6 +26,64 @@ using Cairo;
 using Gee;
 
 namespace Marlin.View {
+
+    class AppButton : Gtk.Button
+    {
+        AppInfo app_info;
+        GOF.File file;
+        HBox hbox;
+        public AppButton(AppInfo app_info, GOF.File file)
+        {
+            this.app_info = app_info;
+            this.file = file;
+            Image image;
+            if(app_info.get_icon() == null)
+                image = new Image.from_stock(Gtk.Stock.EXECUTE, IconSize.BUTTON);
+            else
+                image = new Image.from_gicon(app_info.get_icon(), IconSize.BUTTON);
+            //set_image(image);
+            hbox = new HBox(false, 5);
+            hbox.pack_start(image, false, false);
+            set_tooltip_text(app_info.get_name());
+            if((bool)Preferences.settings.get_value("show-open-with-text"))
+            {
+                var label = new Label(app_info.get_name());
+                label.ellipsize = Pango.EllipsizeMode.END;
+                label.set_alignment(0, 0.5f);
+                hbox.pack_start(label, true, true);
+            }
+            add(hbox);
+            pressed.connect(() => { file.launch_with(get_screen(), app_info); } );
+        }
+    }
+    
+    class AppRadio : Gtk.RadioButton
+    {
+        public AppInfo app_info;
+        public GOF.File file;
+        public AppRadio(GLib.SList<Gtk.RadioButton>? list, AppInfo app_info, GOF.File file)
+        {
+            set_group(list);
+            this.app_info = app_info;
+            this.file = file;
+            set_tooltip_text(N_("Set as default for %s").replace("%s", file.formated_type));
+        }
+        public override void toggled()
+        {
+            if(active)
+            {
+                try
+                {
+                    app_info.set_as_default_for_type(file.ftype);
+                }
+                catch(Error e)
+                {
+                    print("Can't set the default app: %s\n", e.message);
+                }
+            }
+        }
+    }
+
     public class ContextView : Gtk.EventBox
     {
         public const int height = -1;
@@ -33,6 +91,8 @@ namespace Marlin.View {
         public const int key_value_padding = 8;
         public const int key_value_width = 90;
         public Gtk.Menu toolbar_menu;
+        private Box apps;
+        private ScrolledWindow apps_scrolled;
 
         public int panel_size{
             get{
@@ -151,8 +211,86 @@ namespace Marlin.View {
 
             label.label = gof_file.name;
 
+            /* Apps list */
+            apps_scrolled = new ScrolledWindow(null,null);
+            Box vbox;
+            if((bool)Preferences.settings.get_value("show-open-with-text"))
+            {
+                apps = new VBox(false, 5);
+                vbox = new HBox(false, 2);
+            }
+            else
+            {
+                apps = new HBox(false, 5);
+                vbox = new VBox(false, 2);
+            }
+            var button = new AppButton(AppInfo.get_default_for_type(gof_file.ftype, false), gof_file);
+            AppRadio app_radio = null;
+            string name = AppInfo.get_default_for_type(gof_file.ftype, false).get_name();
+            app_radio = new AppRadio(null, AppInfo.get_default_for_type(gof_file.ftype, false), gof_file);
+
+            if((bool)Preferences.settings.get_value("show-open-with-text"))
+            {
+                vbox.pack_start(app_radio, false, false);
+                app_radio.active = true;
+                vbox.pack_start(button);
+            }
+            else
+            {
+                vbox.pack_start(button);
+                vbox.pack_start(app_radio, false, false);
+            }
+            apps.pack_start(vbox, false, false);
+            int i = 0;
+            foreach(AppInfo app_info in AppInfo.get_all_for_type(gof_file.ftype))
+            {
+                if(app_info.get_name() != name)
+                {
+                    button = new AppButton(app_info, gof_file);
+                    app_radio = new AppRadio(app_radio.get_group(), app_info, gof_file);
+                    if((bool)Preferences.settings.get_value("show-open-with-text"))
+                    {
+                        vbox = new HBox(false, 2);
+                        vbox.pack_start(app_radio, false, false);
+                        vbox.pack_start(button);
+                    }
+                    else
+                    {
+                        vbox = new VBox(false, 2);
+                        vbox.pack_start(button);
+                        vbox.pack_start(app_radio, false, false);
+                    }
+                    apps.pack_start(vbox, false, false);
+                }
+                if(i > 3)
+                    break;
+                i++;
+            }
+            
+            app_chooser = new Button.with_label(N_("Other..."));
+            app_chooser.pressed.connect(() => { dial = new AppChooserDialog(window, 0, gof_file.location);
+            ((AppChooserWidget)dial.get_widget()).application_selected.connect(save_app_info);
+            dial.response.connect(launch_gof);
+            dial.run();
+            });
+
             update_info_panel();
             show();
+        }
+        AppChooserDialog dial;
+        Button app_chooser;
+        AppInfo app_info;
+        
+        private void save_app_info(AppInfo app_info)
+        {
+            this.app_info = app_info;
+        }
+        
+        private void launch_gof(int response)
+        {
+            if(response == -5)
+                last_geof_cache.launch_with(get_screen(), app_info);
+            dial.destroy();
         }
 
         private void populate_key_value_pair(Box box, Pair<string, string> pair, bool limit_width = false){
@@ -187,7 +325,6 @@ namespace Marlin.View {
         private void construct_info_panel_vertical(Gee.List<Pair<string, string>> item_info){
             set_size_request(panel_size, -1);
 
-            var alignment = new Gtk.Alignment(0.5f, 0.381966f, 0, 0); // Yes that is 1 - 1/golden_ratio, in doublt always golden ratio
             var box = new VBox(false, 4);
 
             if (image != null) {
@@ -218,12 +355,24 @@ namespace Marlin.View {
                 n++;
             }
 
-            box.pack_start(information, true, true);
+            box.pack_start(information, false, false);
+            if(!last_geof_cache.is_directory)
+            {
+                var label = new Label(N_("Open with:"));
+                label.set_sensitive(false);
+                box.pack_start(label, false, false);
+                box.pack_start(apps, true, true);
+                box.pack_start(app_chooser, true, true);
+            }
+            var scrolled = new ScrolledWindow(null, null);
+            var box_ = new VBox(false, 0);
+            box_.pack_start(box, true, false);
+            scrolled.add_with_viewport(box_);
+            box.set_margin_right(3);
 
-            alignment.add(box);
-            alignment.show_all();
+            scrolled.show_all();
 
-            set_content(alignment);
+            set_content(scrolled);
         }
 
         private void construct_info_panel_horizontal(Gee.List<Pair<string, string>> item_info){

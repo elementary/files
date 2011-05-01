@@ -162,6 +162,7 @@ GdkDragAction   gof_file_accepts_drop (GOFFile          *file,
                                        GdkDragContext   *context,
                                        GdkDragAction    *suggested_action_return);
 void            gof_file_open_single (GOFFile *file, GdkScreen *screen);
+gboolean        gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info);
 gboolean        gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error);
 gboolean        gof_file_launch (GOFFile  *file, GdkScreen *screen);
 GAppInfo        *gof_file_get_default_handler (const GOFFile *file);

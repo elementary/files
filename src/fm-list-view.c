@@ -179,64 +179,6 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view));
 }
 
-#if 0
-static void
-activate_selected_items (FMListView *view)
-{
-    GList *file_list;
-    GdkScreen *screen;
-    GOFFile *file;
-
-    file_list = fm_list_view_get_selection (FM_DIRECTORY_VIEW (view));
-
-#if 0	
-    if (view->details->renaming_file) {
-        /* We're currently renaming a file, wait until the rename is
-           finished, or the activation uri will be wrong */
-        if (view->details->renaming_file_activate_timeout == 0) {
-            view->details->renaming_file_activate_timeout =
-                g_timeout_add (WAIT_FOR_RENAME_ON_ACTIVATE, (GSourceFunc) activate_selected_items, view);
-        }
-        return;
-    }
-
-    if (view->details->renaming_file_activate_timeout != 0) {
-        g_source_remove (view->details->renaming_file_activate_timeout);
-        view->details->renaming_file_activate_timeout = 0;
-    }
-#endif	
-    /*fm_directory_view_activate_files (FM_DIRECTORY_VIEW (view),
-      file_list,
-      NAUTILUS_WINDOW_OPEN_ACCORDING_TO_MODE,
-      0,
-      TRUE);*/
-
-    /* TODO add mountable etc */
-
-    screen = eel_gtk_widget_get_screen (GTK_WIDGET (view));
-    guint nb_elem = g_list_length (file_list);
-    if (nb_elem == 1)
-        fm_directory_view_activate_single_file(FM_DIRECTORY_VIEW (view), file_list->data, screen);
-    else
-    {
-        /* ignore opening more than 10 elements at a time */
-        if (nb_elem < 10)
-            for (; file_list != NULL; file_list=file_list->next)
-            {
-                file = file_list->data;
-                if (file->is_directory) {
-                    /* TODO open dirs in new tabs */
-                    log_printf (LOG_LEVEL_UNDEFINED, "open dir - new tab? %s\n", file->name);
-                } else {
-                    gof_file_open_single (file, screen);
-                }
-            }
-    }
-
-    //gof_file_list_free (file_list);
-}
-#endif
-
 static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMListView *view)
 {
