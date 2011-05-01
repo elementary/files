@@ -3,6 +3,7 @@ SUBDIRS =               \
         marlin-daemon   \
         data            \
         icons           \
+        po              \
         $(NULL)
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-update-mimedb

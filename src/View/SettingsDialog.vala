@@ -26,12 +26,12 @@ namespace Marlin.View
     {
         public SettingsDialog(Window win)
         {
-            set_title(N_("Marlin Settings"));
+            set_title(_("Marlin Settings"));
             /*height_request = 600;*/
             width_request = 500;
             set_resizable(false);
 
-            var main_notebook = new Gtk.Notebook();
+            var mai_notebook = new Gtk.Notebook();
 
             var first_vbox = new Gtk.VBox(false, 3);
             first_vbox.border_width = 5;
@@ -43,7 +43,7 @@ namespace Marlin.View
 
             Preferences.settings.bind("single-click", checkbox , "active", SettingsBindFlags.DEFAULT);
 
-            var label = new Gtk.Label(N_("Single click to open:"));
+            var label = new Gtk.Label(_("Single click to open:"));
             label.set_alignment(0, 0.5f);
 
             hbox_single_click.pack_start(label);
@@ -52,24 +52,24 @@ namespace Marlin.View
             first_vbox.pack_start(hbox_single_click, false);
 
             /* Mouse selection speed */
-            var spin_click_speed = new Gtk.HScale.with_range(0, 1000, 1);
+            var spi_click_speed = new Gtk.HScale.with_range(0, 1000, 1);
 
             hbox_single_click = new Gtk.HBox(false, 0);
 
-            label = new Gtk.Label(N_("Mouse auto-selection speed:"));
+            label = new Gtk.Label(_("Mouse auto-selection speed:"));
             label.set_alignment(0, 0.5f);
 
             hbox_single_click.pack_start(label);
-            hbox_single_click.pack_start(spin_click_speed, true, true);
+            hbox_single_click.pack_start(spi_click_speed, true, true);
 
             Preferences.settings.bind("single-click", hbox_single_click, "sensitive", SettingsBindFlags.DEFAULT);
 
-            Preferences.settings.bind("single-click-timeout", spin_click_speed.get_adjustment(), "value", SettingsBindFlags.DEFAULT);
+            Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(), "value", SettingsBindFlags.DEFAULT);
             
             first_vbox.pack_start(hbox_single_click, false);
             
             
-            main_notebook.append_page(first_vbox, new Gtk.Label(N_("Behavior")));
+            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Behavior")));
 
             first_vbox = new Gtk.VBox(false, 3);
             first_vbox.border_width = 5;
@@ -77,10 +77,10 @@ namespace Marlin.View
             
             /* Sidebar icon size */
             var spin_icon_size = new Chrome.ModeButton();
-            spin_icon_size.append(new Gtk.Label(N_("small")));
-            spin_icon_size.append(new Gtk.Label(N_("medium")));
-            spin_icon_size.append(new Gtk.Label(N_("large")));
-            spin_icon_size.append(new Gtk.Label(N_("extra-large")));
+            spin_icon_size.append(new Gtk.Label(_("small")));
+            spin_icon_size.append(new Gtk.Label(_("medium")));
+            spin_icon_size.append(new Gtk.Label(_("large")));
+            spin_icon_size.append(new Gtk.Label(_("extra-large")));
             switch((int)Preferences.settings.get_value("sidebar-icon-size"))
             {
             case 16:
@@ -101,7 +101,7 @@ namespace Marlin.View
 
             hbox_single_click = new Gtk.HBox(false, 0);
 
-            label = new Gtk.Label(N_("Sidebar icon size:"));
+            label = new Gtk.Label(_("Sidebar icon size:"));
             label.set_alignment(0, 0.5f);
 
             hbox_single_click.pack_start(label);
@@ -112,9 +112,9 @@ namespace Marlin.View
             
             /* Date format */
             var mode_date_format = new Chrome.ModeButton();
-            mode_date_format.append(new Gtk.Label(N_("locale")));
-            mode_date_format.append(new Gtk.Label(N_("iso")));
-            mode_date_format.append(new Gtk.Label(N_("informal")));
+            mode_date_format.append(new Gtk.Label(_("locale")));
+            mode_date_format.append(new Gtk.Label(_("iso")));
+            mode_date_format.append(new Gtk.Label(_("informal")));
             switch((string)Preferences.settings.get_value("date-format"))
             {
             case "locale":
@@ -132,7 +132,7 @@ namespace Marlin.View
 
             hbox_single_click = new Gtk.HBox(false, 0);
 
-            label = new Gtk.Label(N_("Date format:"));
+            label = new Gtk.Label(_("Date format:"));
             label.set_alignment(0, 0.5f);
 
             hbox_single_click.pack_start(label);
@@ -147,7 +147,7 @@ namespace Marlin.View
 
             Preferences.settings.bind("show-open-with-text", checkbox , "active", SettingsBindFlags.DEFAULT);
 
-            label = new Gtk.Label(N_("Show applications names in the context pane:"));
+            label = new Gtk.Label(_("Show applications names in the context pane:"));
             label.set_alignment(0, 0.5f);
 
             hbox_single_click.pack_start(label);
@@ -155,9 +155,9 @@ namespace Marlin.View
 
             first_vbox.pack_start(hbox_single_click, false);
 
-            main_notebook.append_page(first_vbox, new Gtk.Label(N_("Display")));
+            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Display")));
 
-            ((Gtk.HBox)get_content_area()).pack_start(main_notebook);
+            ((Gtk.HBox)get_content_area()).pack_start(mai_notebook);
 
             this.show_all();
 
@@ -173,16 +173,16 @@ namespace Marlin.View
             int value = 16;
             switch(((Gtk.Label)widget).get_text())
             {
-            case N_("small"):
+            case "small":
                 value = 16;
                 break;
-            case N_("medium"):
+            case "medium":
                 value = 24;
                 break;
-            case N_("large"):
+            case "large":
                 value = 32;
                 break;
-            case N_("extra-large"):
+            case "extra-large":
                 value = 48;
                 break;
             }
@@ -194,13 +194,13 @@ namespace Marlin.View
             string value = "iso";
             switch(((Gtk.Label)widget).get_text())
             {
-            case N_("locale"):
+            case "locale":
                 value = "locale";
                 break;
-            case N_("iso"):
+            case "iso":
                 value = "iso";
                 break;
-            case N_("informal"):
+            case "informal":
                 value = "informal";
                 break;
             }

@@ -61,3 +61,4 @@ src/View/SettingsDialog.c
 src/marlintests
 po/.intltool-merge-cache
 data/marlin.desktop
+po/fr.gmo

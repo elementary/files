@@ -177,7 +177,7 @@ namespace Marlin.View {
             if (file_info.get_is_symlink())
                 info.add(new Pair<string, string>("Target", file_info.get_symlink_target()));
             if(raw_type != FileType.DIRECTORY)
-                info.add(new Pair<string, string>("Size", gof_file.format_size));
+                info.add(new Pair<string, string>(_("Size"), gof_file.format_size));
             /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
             info.add(new Pair<string, string>("Modified", gof_file.formated_modified));
             info.add(new Pair<string, string>("Owner", file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));

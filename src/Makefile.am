@@ -9,6 +9,7 @@ marlin_CPPFLAGS = \
     -DPIXMAP_DIR=\""$(datadir)/pixmaps/marlin/"\"   \
     -DUI_DIR=\""$(datadir)/marlin/ui/"\"            \
     -DVERSION="\"$(VERSION)\"" 	                    \
+    -DGETTEXT_PACKAGE=\""marlin"\" \
     $(NULL)
 
 marlin_VALAFLAGS = \
