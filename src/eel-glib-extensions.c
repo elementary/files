@@ -25,6 +25,7 @@
 
 #include "eel-glib-extensions.h"
 #include <sys/time.h>
+#include <math.h>
 
 static void
 update_auto_boolean (GSettings   *settings,
@@ -139,5 +140,23 @@ GList *
 eel_g_object_list_copy (GList *list)
 {
     return g_list_copy (eel_g_object_list_ref (list));
+}
+
+int
+eel_round (double d)
+{
+    double val;
+
+    val = floor (d + .5);
+
+    /* The tests are needed because the result of floating-point to integral
+     * conversion is undefined if the floating point value is not representable
+     * in the new type. E.g. the magnititude is too large or a negative
+     * floating-point value being converted to an unsigned.
+     */
+    g_return_val_if_fail (val <= INT_MAX, INT_MAX);
+    g_return_val_if_fail (val >= INT_MIN, INT_MIN);
+
+    return val;
 }
 

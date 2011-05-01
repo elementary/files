@@ -28,6 +28,8 @@
 #include <gtk/gtk.h>
 #include "marlin-clipboard-manager.h"
 #include "marlin-icon-renderer.h"
+#include "eel-gdk-pixbuf-extensions.h"
+
 
 #define EXO_PARAM_READWRITE (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)
 
@@ -386,7 +388,7 @@ marlin_icon_renderer_render (GtkCellRenderer        *cell,
     GdkRectangle            emblem_area;
     GdkRectangle            icon_area;
     GdkRectangle            draw_area;
-    GtkStateType            state;
+    GtkStateFlags           state;
     GtkStyleContext        *context;
     GdkPixbuf              *emblem;
     GdkPixbuf              *icon;
@@ -462,27 +464,30 @@ marlin_icon_renderer_render (GtkCellRenderer        *cell,
             icon = temp;
         }
         g_object_unref (G_OBJECT (clipboard));
+#endif
 
+        context = gtk_widget_get_style_context (widget);
+        
         /* colorize the icon if we should follow the selection state */
         if ((flags & (GTK_CELL_RENDERER_SELECTED | GTK_CELL_RENDERER_PRELIT)) != 0 && icon_renderer->follow_state)
         {
             if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
             {
-                state = GTK_WIDGET_HAS_FOCUS (widget) ? GTK_STATE_SELECTED : GTK_STATE_ACTIVE;
-                temp = exo_gdk_pixbuf_colorize (icon, &widget->style->base[state]);
-                g_object_unref (G_OBJECT (icon));
+                state = gtk_widget_has_focus (widget) ? GTK_STATE_FLAG_SELECTED : GTK_STATE_FLAG_ACTIVE;
+                GdkRGBA color;
+                gtk_style_context_get_background_color (context, state, &color);
+                temp = eel_create_colorized_pixbuf (icon, &color);
+                //g_object_unref (G_OBJECT (icon));
                 icon = temp;
             }
 
             if ((flags & GTK_CELL_RENDERER_PRELIT) != 0)
             {
-                temp = exo_gdk_pixbuf_spotlight (icon);
-                g_object_unref (G_OBJECT (icon));
+                temp = eel_create_spotlight_pixbuf (icon);
+                //g_object_unref (G_OBJECT (icon));
                 icon = temp;
             }
         }
-#endif
-        context = gtk_widget_get_style_context (widget);
 
         /* check if we should render an insensitive icon */
         if (G_UNLIKELY (!gtk_widget_get_sensitive (widget) || 

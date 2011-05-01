@@ -451,7 +451,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
 {
     MarlinTextRenderer *text_renderer = MARLIN_TEXT_RENDERER (cell);
     GtkStyleContext *context;
-    //GtkStateType state;
+    GtkStateFlags state;
     gint x0, x1, y0, y1;
     gint text_width;
     gint text_height;
@@ -463,12 +463,9 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
     /* setup the new widget */
     marlin_text_renderer_set_widget (text_renderer, widget);
 
-    /*if ((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED)
+    if ((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED)
     {
-        if (gtk_widget_has_focus (widget))
-            state = GTK_STATE_SELECTED;
-        else
-            state = GTK_STATE_ACTIVE;
+        state = gtk_widget_has_focus (widget) ? GTK_STATE_FLAG_SELECTED : GTK_STATE_FLAG_ACTIVE;
     }
     else if ((flags & GTK_CELL_RENDERER_PRELIT) == GTK_CELL_RENDERER_PRELIT
              && gtk_widget_get_state (widget) == GTK_STATE_PRELIGHT)
@@ -477,11 +474,8 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
     }
     else
     {
-        if (!gtk_widget_get_sensitive (widget))
-            state = GTK_STATE_INSENSITIVE;
-        else
-            state = GTK_STATE_NORMAL;
-    }*/
+        state = gtk_widget_get_sensitive (widget) ? GTK_STATE_FLAG_NORMAL : GTK_STATE_INSENSITIVE;
+    }
 
     /* render small/normal text depending on the zoom_level */
     if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL) 
@@ -564,7 +558,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         cairo_curve_to (cr, x0, y0 + 5, x0, y0, x0 + 5, y0);
         
         GdkRGBA color;
-        gtk_style_context_get_background_color (context, GTK_STATE_FLAG_SELECTED, &color);
+        gtk_style_context_get_background_color (context, state, &color);
         gdk_cairo_set_source_rgba (cr, &color);
 
         cairo_fill (cr);

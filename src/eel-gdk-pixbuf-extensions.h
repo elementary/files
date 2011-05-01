@@ -24,30 +24,23 @@
 #ifndef EEL_GDK_PIXBUF_EXTENSIONS_H
 #define EEL_GDK_PIXBUF_EXTENSIONS_H
 
-//#include <eel/eel-art-extensions.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gdk/gdk.h>
-#include <gio/gio.h>
-
-#define EEL_OPACITY_FULLY_TRANSPARENT 0
-#define EEL_OPACITY_FULLY_OPAQUE      255
-
-#if 0
-/* Convenience functions for lists of GdkPixbuf objects. */
-void                 eel_gdk_pixbuf_list_ref                  (GList                 *pixbuf_list);
-void                 eel_gdk_pixbuf_list_unref                (GList                 *pixbuf_list);
-void                 eel_gdk_pixbuf_list_free                 (GList                 *pixbuf_list);
-
-#endif
 
 /* Loading a GdkPixbuf with a URI. */
 GdkPixbuf   *eel_gdk_pixbuf_load_from_stream_at_size    (GInputStream  *stream, int size);
 
-GdkPixbuf   *eel_gdk_pixbuf_render                      (GdkPixbuf *pixbuf,
-                                                         guint render_mode,
-                                                         guint saturation,
-                                                         guint brightness,
-                                                         guint lighten_value,
-                                                         guint color);
+/* return a lightened pixbuf for pre-lighting */
+GdkPixbuf   *eel_create_spotlight_pixbuf (GdkPixbuf *source_pixbuf);
+
+/* return a darkened pixbuf for selection hiliting */
+GdkPixbuf   *eel_create_darkened_pixbuf  (GdkPixbuf *source_pixbuf,
+                                          int        saturation,
+                                          int        darken);
+
+/* return a pixbuf colorized with the color specified by the parameters */
+GdkPixbuf   *eel_create_colorized_pixbuf (GdkPixbuf *source_pixbuf,
+                                          GdkRGBA *color);
+
 
 #endif /* EEL_GDK_PIXBUF_EXTENSIONS_H */

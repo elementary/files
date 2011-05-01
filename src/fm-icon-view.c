@@ -724,7 +724,7 @@ fm_icon_view_init (FMIconView *view)
 
     exo_icon_view_set_selection_mode (view->icons, GTK_SELECTION_MULTIPLE);
     /*exo_icon_view_set_enable_search (view->icons, TRUE);*/
-
+    
     /* add the icon renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer),
                   "follow-state", TRUE, "ypad", 3u, NULL);

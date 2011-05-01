@@ -24,27 +24,10 @@
 
 #include <config.h>
 #include "eel-gdk-pixbuf-extensions.h"
+#include "eel-glib-extensions.h"
 #include <math.h>
 
 #define LOAD_BUFFER_SIZE 65536
-
-#define EEL_RGB_COLOR_RED	0xFF0000
-#define EEL_RGB_COLOR_GREEN	0x00FF00
-#define EEL_RGB_COLOR_BLUE	0x0000FF
-#define EEL_RGB_COLOR_WHITE	0xFFFFFF
-#define EEL_RGB_COLOR_BLACK	0x000000
-
-#define EEL_RGBA_COLOR_OPAQUE_RED	0xFFFF0000
-#define EEL_RGBA_COLOR_OPAQUE_GREEN	0xFF00FF00
-#define EEL_RGBA_COLOR_OPAQUE_BLUE	0xFF0000FF
-#define EEL_RGBA_COLOR_OPAQUE_WHITE	0xFFFFFFFF
-#define EEL_RGBA_COLOR_OPAQUE_BLACK	0xFF000000
-
-/* Access the individual RGBA components */
-#define EEL_RGBA_COLOR_GET_R(color) (((color) >> 16) & 0xff)
-#define EEL_RGBA_COLOR_GET_G(color) (((color) >> 8) & 0xff)
-#define EEL_RGBA_COLOR_GET_B(color) (((color) >> 0) & 0xff)
-#define EEL_RGBA_COLOR_GET_A(color) (((color) >> 24) & 0xff)
 
 static void
 pixbuf_loader_size_prepared (GdkPixbufLoader *loader,
@@ -121,6 +104,7 @@ eel_gdk_pixbuf_load_from_stream_at_size (GInputStream  *stream, int size)
 
     return pixbuf;
 }
+
 
 /* shared utility to create a new pixbuf from the passed-in one */
 
@@ -255,9 +239,7 @@ eel_create_darkened_pixbuf (GdkPixbuf *src, int saturation, int darken)
 
 GdkPixbuf *
 eel_create_colorized_pixbuf (GdkPixbuf *src,
-                             int red_value,
-                             int green_value,
-                             int blue_value)
+                             GdkRGBA *color)
 {
     int i, j;
     int width, height, has_alpha, src_row_stride, dst_row_stride;
@@ -266,6 +248,7 @@ eel_create_colorized_pixbuf (GdkPixbuf *src,
     guchar *pixsrc;
     guchar *pixdest;
     GdkPixbuf *dest;
+    gint red_value, green_value, blue_value;
 
     g_return_val_if_fail (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB, NULL);
     g_return_val_if_fail ((!gdk_pixbuf_get_has_alpha (src)
@@ -273,6 +256,10 @@ eel_create_colorized_pixbuf (GdkPixbuf *src,
                           || (gdk_pixbuf_get_has_alpha (src)
                               && gdk_pixbuf_get_n_channels (src) == 4), NULL);
     g_return_val_if_fail (gdk_pixbuf_get_bits_per_sample (src) == 8, NULL);
+
+    red_value = eel_round (color->red * 255);
+    green_value = eel_round (color->green * 255);
+    blue_value = eel_round (color->blue * 255);
 
     dest = create_new_pixbuf (src);
 
@@ -299,113 +286,3 @@ eel_create_colorized_pixbuf (GdkPixbuf *src,
     return dest;
 }
 
-static guchar
-eel_gdk_pixbuf_lighten_pixbuf_component (guchar cur_value,
-                                         guint lighten_value)
-{
-    int new_value = cur_value;
-    if (lighten_value > 0) {
-        new_value += lighten_value + (new_value >> 3);
-        if (new_value > 255) {
-            new_value = 255;
-        }
-    }
-    return (guchar) new_value;
-}
-
-static GdkPixbuf *
-eel_gdk_pixbuf_lighten (GdkPixbuf* src,
-                        guint lighten_value)
-{
-    GdkPixbuf *dest;
-    int i, j;
-    int width, height, has_alpha, src_row_stride, dst_row_stride;
-    guchar *target_pixels, *original_pixels;
-    guchar *pixsrc, *pixdest;
-
-    g_assert (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB);
-    g_assert ((!gdk_pixbuf_get_has_alpha (src)
-               && gdk_pixbuf_get_n_channels (src) == 3)
-              || (gdk_pixbuf_get_has_alpha (src)
-                  && gdk_pixbuf_get_n_channels (src) == 4));
-    g_assert (gdk_pixbuf_get_bits_per_sample (src) == 8);
-
-    dest = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (src),
-                           gdk_pixbuf_get_has_alpha (src),
-                           gdk_pixbuf_get_bits_per_sample (src),
-                           gdk_pixbuf_get_width (src),
-                           gdk_pixbuf_get_height (src));
-
-    has_alpha = gdk_pixbuf_get_has_alpha (src);
-    width = gdk_pixbuf_get_width (src);
-    height = gdk_pixbuf_get_height (src);
-    dst_row_stride = gdk_pixbuf_get_rowstride (dest);
-    src_row_stride = gdk_pixbuf_get_rowstride (src);
-    target_pixels = gdk_pixbuf_get_pixels (dest);
-    original_pixels = gdk_pixbuf_get_pixels (src);
-
-    for (i = 0; i < height; i++) {
-        pixdest = target_pixels + i * dst_row_stride;
-        pixsrc = original_pixels + i * src_row_stride;
-        for (j = 0; j < width; j++) {		
-            *pixdest++ = eel_gdk_pixbuf_lighten_pixbuf_component (*pixsrc++, lighten_value);
-            *pixdest++ = eel_gdk_pixbuf_lighten_pixbuf_component (*pixsrc++, lighten_value);
-            *pixdest++ = eel_gdk_pixbuf_lighten_pixbuf_component (*pixsrc++, lighten_value);
-            if (has_alpha) {
-                *pixdest++ = *pixsrc++;
-            }
-        }
-    }
-    return dest;
-}
-
-GdkPixbuf *
-eel_gdk_pixbuf_render (GdkPixbuf *pixbuf,
-                       guint render_mode,
-                       guint saturation,
-                       guint brightness,
-                       guint lighten_value,
-                       guint color)
-{
-    GdkPixbuf *temp_pixbuf, *old_pixbuf;
-
-    if (render_mode == 1) {
-        /* lighten icon */
-        temp_pixbuf = eel_create_spotlight_pixbuf (pixbuf);
-    }
-    else if (render_mode == 2) {
-        /* colorize icon */
-        temp_pixbuf = eel_create_colorized_pixbuf (pixbuf,
-                                                   EEL_RGBA_COLOR_GET_R (color),
-                                                   EEL_RGBA_COLOR_GET_G (color),
-                                                   EEL_RGBA_COLOR_GET_B (color));
-    } else if (render_mode == 3) {
-        /* monochromely colorize icon */
-        old_pixbuf = eel_create_darkened_pixbuf (pixbuf, 0, 255);		
-        temp_pixbuf = eel_create_colorized_pixbuf (old_pixbuf,
-                                                   EEL_RGBA_COLOR_GET_R (color),
-                                                   EEL_RGBA_COLOR_GET_G (color),
-                                                   EEL_RGBA_COLOR_GET_B (color));
-        g_object_unref (old_pixbuf);
-    } else {
-        temp_pixbuf = NULL;
-    }
-
-    if (saturation < 255 || brightness < 255 || temp_pixbuf == NULL) { // temp_pixbuf == NULL just for safer code (return copy)
-        old_pixbuf = temp_pixbuf;
-        temp_pixbuf = eel_create_darkened_pixbuf (temp_pixbuf ? temp_pixbuf : pixbuf, saturation, brightness);
-        if (old_pixbuf) {
-            g_object_unref (old_pixbuf);
-        }
-    }
-
-    if (lighten_value > 0) {
-        old_pixbuf = temp_pixbuf;
-        temp_pixbuf = eel_gdk_pixbuf_lighten (temp_pixbuf ? temp_pixbuf : pixbuf, lighten_value);
-        if (old_pixbuf) {
-            g_object_unref (old_pixbuf);
-        }
-    }
-
-    return temp_pixbuf;
-}

@@ -128,7 +128,7 @@ get_eject_icon (gboolean highlighted)
 
     if (highlighted) {
         GdkPixbuf *high;
-        high = eel_gdk_pixbuf_render (eject, 1, 255, 255, 0, 0);
+        high =  eel_create_spotlight_pixbuf (eject);
         g_object_unref (eject);
         eject = high;
     }
