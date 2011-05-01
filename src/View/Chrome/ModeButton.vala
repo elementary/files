@@ -149,7 +149,8 @@ namespace Marlin.View.Chrome
 
         protected bool on_leave_notify_event(Gdk.EventCrossing ev)
         {
-            hovered = -1;
+            _hovered = -1;
+            queue_draw();
 
             return true;
         }

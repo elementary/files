@@ -221,7 +221,7 @@ namespace Marlin.View {
             }
             else
             {
-                apps = new HBox(false, 5);
+                apps = new HBox(true, 5);
                 vbox = new VBox(false, 2);
             }
             var button = new AppButton(AppInfo.get_default_for_type(gof_file.ftype, false), gof_file);
@@ -361,8 +361,10 @@ namespace Marlin.View {
                 var label = new Label(N_("Open with:"));
                 label.set_sensitive(false);
                 box.pack_start(label, false, false);
-                box.pack_start(apps, true, true);
-                box.pack_start(app_chooser, true, true);
+                var vbox = new VBox(false, 0);
+                vbox.pack_start(apps, true, true);
+                vbox.pack_start(app_chooser, true, true);
+                box.pack_start(vbox);
             }
             var scrolled = new ScrolledWindow(null, null);
             var box_ = new VBox(false, 0);
