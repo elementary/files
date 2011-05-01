@@ -56,33 +56,6 @@ namespace Marlin.View {
             pressed.connect(() => { file.launch_with(get_screen(), app_info); } );
         }
     }
-    
-    class AppRadio : Gtk.RadioButton
-    {
-        public AppInfo app_info;
-        public GOF.File file;
-        public AppRadio(GLib.SList<Gtk.RadioButton>? list, AppInfo app_info, GOF.File file)
-        {
-            set_group(list);
-            this.app_info = app_info;
-            this.file = file;
-            set_tooltip_text(N_("Set as default for %s").replace("%s", file.formated_type));
-        }
-        public override void toggled()
-        {
-            if(active)
-            {
-                try
-                {
-                    app_info.set_as_default_for_type(file.ftype);
-                }
-                catch(Error e)
-                {
-                    print("Can't set the default app: %s\n", e.message);
-                }
-            }
-        }
-    }
 
     public class ContextView : Gtk.EventBox
     {
@@ -213,65 +186,42 @@ namespace Marlin.View {
 
             /* Apps list */
             apps_scrolled = new ScrolledWindow(null,null);
-            Box vbox;
             if((bool)Preferences.settings.get_value("show-open-with-text"))
             {
                 apps = new VBox(false, 5);
-                vbox = new HBox(false, 2);
             }
             else
             {
                 apps = new HBox(true, 5);
-                vbox = new VBox(false, 2);
             }
             var button = new AppButton(AppInfo.get_default_for_type(gof_file.ftype, false), gof_file);
-            AppRadio app_radio = null;
             string name = AppInfo.get_default_for_type(gof_file.ftype, false).get_name();
-            app_radio = new AppRadio(null, AppInfo.get_default_for_type(gof_file.ftype, false), gof_file);
 
-            if((bool)Preferences.settings.get_value("show-open-with-text"))
-            {
-                vbox.pack_start(app_radio, false, false);
-                app_radio.active = true;
-                vbox.pack_start(button);
-            }
-            else
-            {
-                vbox.pack_start(button);
-                vbox.pack_start(app_radio, false, false);
-            }
-            apps.pack_start(vbox, false, false);
+            apps.pack_start(button, false, false);
             int i = 0;
             foreach(AppInfo app_info in AppInfo.get_all_for_type(gof_file.ftype))
             {
                 if(app_info.get_name() != name)
                 {
                     button = new AppButton(app_info, gof_file);
-                    app_radio = new AppRadio(app_radio.get_group(), app_info, gof_file);
-                    if((bool)Preferences.settings.get_value("show-open-with-text"))
-                    {
-                        vbox = new HBox(false, 2);
-                        vbox.pack_start(app_radio, false, false);
-                        vbox.pack_start(button);
-                    }
-                    else
-                    {
-                        vbox = new VBox(false, 2);
-                        vbox.pack_start(button);
-                        vbox.pack_start(app_radio, false, false);
-                    }
-                    apps.pack_start(vbox, false, false);
+                    apps.pack_start(button, true, true);
                 }
                 if(i > 3)
                     break;
                 i++;
             }
+
+            set_as_default = false;
             
             app_chooser = new Button.with_label(N_("Other..."));
-            app_chooser.pressed.connect(() => { dial = new AppChooserDialog(window, 0, gof_file.location);
-            ((AppChooserWidget)dial.get_widget()).application_selected.connect(save_app_info);
-            dial.response.connect(launch_gof);
-            dial.run();
+            app_chooser.pressed.connect(() => {
+                dial = new AppChooserDialog(window, 0, gof_file.location);
+                var check_button = new CheckButton.with_label(N_("Set as default"));
+                check_button.toggled.connect( () => {set_as_default = ! set_as_default; });
+                ((Box)dial.get_content_area()).pack_start(check_button);
+                dial.get_content_area().show_all();
+                dial.response.connect(launch_gof);
+                dial.run();
             });
 
             update_info_panel();
@@ -279,17 +229,23 @@ namespace Marlin.View {
         }
         AppChooserDialog dial;
         Button app_chooser;
-        AppInfo app_info;
-        
-        private void save_app_info(AppInfo app_info)
-        {
-            this.app_info = app_info;
-        }
+        bool set_as_default;
         
         private void launch_gof(int response)
         {
             if(response == -5)
-                last_geof_cache.launch_with(get_screen(), app_info);
+                last_geof_cache.launch_with(get_screen(), dial.get_app_info());
+            if(set_as_default)
+            {
+                try
+                {
+                    dial.get_app_info().set_as_default_for_type(last_geof_cache.ftype);
+                }
+                catch(Error e)
+                {
+                    print("Can't set the default app: %s\n", e.message);
+                }
+            }
             dial.destroy();
         }
 
