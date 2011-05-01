@@ -480,52 +480,6 @@ fm_icon_view_notify_model (ExoIconView *exo_icon, GParamSpec *pspec, FMIconView 
 
 
 static void
-create_and_set_up_icon_view (FMIconView *view)
-{
-    view->model = FM_DIRECTORY_VIEW (view)->model;
-    g_object_set (G_OBJECT (view->model), "has-child", FALSE, NULL);
-
-    view->icons = EXO_ICON_VIEW (exo_icon_view_new());
-    //view->icons = GTK_ICON_VIEW (gtk_icon_view_new());
-    //g_object_set (G_OBJECT (view->icons), "model", GTK_TREE_MODEL (view->model), NULL);
-    exo_icon_view_set_model (view->icons, GTK_TREE_MODEL (view->model));
-
-    /*exo_icon_view_set_text_column (view->icons, FM_LIST_MODEL_FILENAME);
-      exo_icon_view_set_pixbuf_column (view->icons, FM_LIST_MODEL_ICON);*/
-
-    /*g_signal_connect (G_OBJECT (view->icons), "notify::model", G_CALLBACK (fm_icon_view_notify_model), view);*/
-    g_signal_connect (G_OBJECT (view->icons), "item-activated", G_CALLBACK (fm_icon_view_item_activated), view);
-    g_signal_connect (G_OBJECT (view->icons), "selection-changed", G_CALLBACK (fm_icon_view_selection_changed), view);
-
-
-    exo_icon_view_set_selection_mode (view->icons, GTK_SELECTION_MULTIPLE);
-    /*exo_icon_view_set_enable_search (view->icons, TRUE);*/
-
-    /*g_object_set (G_OBJECT (view->icons), "text-column", FM_LIST_MODEL_FILENAME, 
-      "pixbuf-column", FM_LIST_MODEL_ICON, NULL);*/
-
-    //TODO move this entire section. make follow-state depending on single-click
-    //#if 0
-    /* add the abstract icon renderer */
-    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "follow-state", TRUE, NULL);
-    gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, FALSE);
-    gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, "file", FM_LIST_MODEL_FILE_COLUMN);
-
-    /* add the name renderer */
-    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->name_renderer), "follow-state", TRUE, NULL);
-    gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, TRUE);
-    gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, "text", FM_LIST_MODEL_FILENAME);
-    //#endif
-
-
-
-
-    gtk_widget_show (GTK_WIDGET (view->icons));
-    gtk_container_add (GTK_CONTAINER (view), GTK_WIDGET (view->icons));
-
-}
-
-static void
 fm_icon_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
 {
     FMListModel *model;
@@ -757,15 +711,31 @@ fm_icon_view_init (FMIconView *view)
     view->details = g_new0 (FMIconViewDetails, 1);
     view->details->selection = NULL;
 
-    create_and_set_up_icon_view (view);
+    view->model = FM_DIRECTORY_VIEW (view)->model;
+    g_object_set (G_OBJECT (view->model), "has-child", FALSE, NULL);
 
-    /* setup the icon renderer */
+    view->icons = EXO_ICON_VIEW (exo_icon_view_new());
+    exo_icon_view_set_model (view->icons, GTK_TREE_MODEL (view->model));
+
+    /*g_signal_connect (G_OBJECT (view->icons), "notify::model", G_CALLBACK (fm_icon_view_notify_model), view);*/
+    g_signal_connect (G_OBJECT (view->icons), "item-activated", G_CALLBACK (fm_icon_view_item_activated), view);
+    g_signal_connect (G_OBJECT (view->icons), "selection-changed", G_CALLBACK (fm_icon_view_selection_changed), view);
+
+
+    exo_icon_view_set_selection_mode (view->icons, GTK_SELECTION_MULTIPLE);
+    /*exo_icon_view_set_enable_search (view->icons, TRUE);*/
+
+    /* add the icon renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer),
-                  "ypad", 3u, NULL);
+                  "follow-state", TRUE, "ypad", 3u, NULL);
+    gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, FALSE);
+    gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, "file", FM_LIST_MODEL_FILE_COLUMN);
 
-    /* setup the name renderer */
-    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->name_renderer),
-                  "wrap-mode", PANGO_WRAP_WORD_CHAR, NULL);
+    /* add the name renderer */
+    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->name_renderer), 
+                  "follow-state", TRUE, "wrap-mode", PANGO_WRAP_WORD_CHAR, NULL);
+    gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, TRUE);
+    gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, "text", FM_LIST_MODEL_FILENAME);
 
     /* TODO */
     /* synchronize the "text-beside-icons" property with the global preference */
@@ -782,6 +752,8 @@ fm_icon_view_init (FMIconView *view)
                      view->icons, "single-click", 0);
     g_settings_bind (settings, "single-click-timeout", 
                      view->icons, "single-click-timeout", 0);
+    g_settings_bind (settings, "single-click", 
+                     FM_DIRECTORY_VIEW (view)->name_renderer, "follow-prelit", 0); 
 
     g_signal_connect_object (view->icons, "button-press-event",
                              G_CALLBACK (button_press_callback), view, 0);
@@ -789,6 +761,10 @@ fm_icon_view_init (FMIconView *view)
     g_signal_connect_object (view->tree, "key_press_event",
                              G_CALLBACK (key_press_callback), view, 0);
 #endif
+
+    gtk_widget_show (GTK_WIDGET (view->icons));
+    gtk_container_add (GTK_CONTAINER (view), GTK_WIDGET (view->icons));
+
 }
 
 static void

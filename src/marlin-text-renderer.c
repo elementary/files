@@ -483,17 +483,19 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
             state = GTK_STATE_NORMAL;
     }*/
 
-    /* check if we should follow the prelit state (used for single click support) */
-    if (text_renderer->follow_prelit && (flags & GTK_CELL_RENDERER_PRELIT) != 0)
-        pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_underline_single ());
-    /*else
-        pango_layout_set_attributes (text_renderer->layout, NULL);*/
-
     /* render small/normal text depending on the zoom_level */
-    if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL)
-        pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_small ());
-    else 
-        pango_layout_set_attributes (text_renderer->layout, NULL);    
+    if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL) 
+    {
+        if (text_renderer->follow_prelit && (flags & GTK_CELL_RENDERER_PRELIT) != 0)
+            pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_small_underline_single ());
+        else
+            pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_small ());
+    } else {
+        if (text_renderer->follow_prelit && (flags & GTK_CELL_RENDERER_PRELIT) != 0)
+            pango_layout_set_attributes (text_renderer->layout, eel_pango_attr_list_underline_single ());
+        else
+            pango_layout_set_attributes (text_renderer->layout, NULL);
+    }
 
     /* setup the wrapping */
     if (text_renderer->wrap_width < 0)

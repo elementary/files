@@ -195,3 +195,13 @@ eel_pango_attr_list_underline_single (void)
         attr_list = eel_pango_attr_list_wrap (pango_attr_underline_new (PANGO_UNDERLINE_SINGLE), NULL);
     return attr_list;
 }
+
+PangoAttrList*
+eel_pango_attr_list_small_underline_single (void)
+{
+    static PangoAttrList *attr_list = NULL;
+    if (G_UNLIKELY (attr_list == NULL))
+        attr_list = eel_pango_attr_list_wrap (pango_attr_scale_new (PANGO_SCALE_SMALL), 
+                                              pango_attr_underline_new (PANGO_UNDERLINE_SINGLE), NULL);
+    return attr_list;
+}

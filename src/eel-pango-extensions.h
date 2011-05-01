@@ -30,6 +30,7 @@ PangoAttrList *eel_pango_attr_list_bold              (void) G_GNUC_CONST;
 PangoAttrList *eel_pango_attr_list_italic            (void) G_GNUC_CONST;
 PangoAttrList *eel_pango_attr_list_small_italic      (void) G_GNUC_CONST;
 PangoAttrList *eel_pango_attr_list_underline_single  (void) G_GNUC_CONST;
+PangoAttrList *eel_pango_attr_list_small_underline_single (void) G_GNUC_CONST;
 
 G_END_DECLS;
 
