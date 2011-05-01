@@ -204,7 +204,7 @@ namespace Marlin.View {
                 if(app_info.get_name() != name)
                 {
                     button = new AppButton(app_info, gof_file);
-                    apps.pack_start(button, true, true);
+                    apps.pack_start(button, false, false);
                 }
                 if(i > 3)
                     break;
@@ -317,7 +317,7 @@ namespace Marlin.View {
                 var label = new Label(N_("Open with:"));
                 label.set_sensitive(false);
                 box.pack_start(label, false, false);
-                var vbox = new VBox(false, 0);
+                var vbox = new VBox(false, 5);
                 vbox.pack_start(apps, true, true);
                 vbox.pack_start(app_chooser, true, true);
                 box.pack_start(vbox);
