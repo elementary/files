@@ -76,3 +76,33 @@ void marlin_plugin_manager_interface_loaded(MarlinPluginManager* plugin, GtkWidg
     }
 
 }
+
+void marlin_plugin_manager_directory_loaded(MarlinPluginManager* plugin, gchar* path)
+{
+    g_debug("Directory loaded");
+
+    GList* item = g_list_nth(plugin->plugins_list, 0);
+
+    ((MarlinPlugin*)item->data)->hook_directory_loaded(path);
+
+    while((item = g_list_next(plugin->plugins_list)))
+    {
+        ((MarlinPlugin*)item->data)->hook_directory_loaded(path);
+    }
+
+}
+
+void marlin_plugin_manager_hook_context_menu(MarlinPluginManager* plugin, GtkWidget* win)
+{
+    g_debug("Plugin Context Menu");
+
+    GList* item = g_list_nth(plugin->plugins_list, 0);
+
+    ((MarlinPlugin*)item->data)->hook_context_menu(win);
+
+    while((item = g_list_next(plugin->plugins_list)))
+    {
+        ((MarlinPlugin*)item->data)->hook_context_menu(win);
+    }
+
+}

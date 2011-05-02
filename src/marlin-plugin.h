@@ -43,6 +43,7 @@ struct _MarlinPlugin
     GObject parent_instance;
     void* plugin_handle;
     void (*hook_interface_loaded)(void*);
+    void (*hook_context_menu)(void*);
 
     void (*hook_plugin_init)(void);
 

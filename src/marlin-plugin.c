@@ -64,6 +64,12 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
         g_warning("Can't load hook: %s, %s", path, dl_error);
     }
 
+    plugin->hook_context_menu = dlsym(plugin->plugin_handle, "hook_context_menu");
+    if((dl_error = dlerror()) != NULL)
+    {
+        g_warning("Can't load hook: %s, %s", path, dl_error);
+    }
+
     plugin->hook_file_loaded = dlsym(plugin->plugin_handle, "hook_file_loaded");
     if((dl_error = dlerror()) != NULL)
     {

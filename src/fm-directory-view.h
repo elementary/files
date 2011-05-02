@@ -35,6 +35,7 @@
 #include "gof-window-slot.h"
 #include "marlin-clipboard-manager.h"
 #include "fm-list-model.h"
+#include "marlin-plugin-manager.h"
 
 typedef struct FMDirectoryView FMDirectoryView;
 typedef struct FMDirectoryViewClass FMDirectoryViewClass;
