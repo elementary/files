@@ -194,21 +194,26 @@ namespace Marlin.View {
             {
                 apps = new HBox(true, 5);
             }
-            var button = new AppButton(AppInfo.get_default_for_type(gof_file.ftype, false), gof_file);
-            string name = AppInfo.get_default_for_type(gof_file.ftype, false).get_name();
 
-            apps.pack_start(button, false, false);
-            int i = 0;
-            foreach(AppInfo app_info in AppInfo.get_all_for_type(gof_file.ftype))
+            if (!(gof_file.is_symlink() && !gof_file.link_known_target) && 
+                Posix.strncmp (gof_file.ftype, "application/octet-stream", 24) != 0) 
             {
-                if(app_info.get_name() != name)
+                var button = new AppButton(AppInfo.get_default_for_type(gof_file.ftype, false), gof_file);
+                string name = AppInfo.get_default_for_type(gof_file.ftype, false).get_name();
+
+                apps.pack_start(button, false, false);
+                int i = 0;
+                foreach(AppInfo app_info in AppInfo.get_all_for_type(gof_file.ftype))
                 {
-                    button = new AppButton(app_info, gof_file);
-                    apps.pack_start(button, false, false);
+                    if(app_info.get_name() != name)
+                    {
+                        button = new AppButton(app_info, gof_file);
+                        apps.pack_start(button, false, false);
+                    }
+                    if(i > 3)
+                        break;
+                    i++;
                 }
-                if(i > 3)
-                    break;
-                i++;
             }
 
             set_as_default = false;

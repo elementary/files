@@ -74,6 +74,8 @@ namespace GOF {
         public string ftype;
 
         public bool is_directory;
+        public bool is_symlink();
+        public bool link_known_target;
     }
 
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]

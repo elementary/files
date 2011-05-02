@@ -260,6 +260,7 @@ void gof_file_update (GOFFile *file)
             target_location = g_file_new_for_commandline_arg (target_path);
         GOFFile *target_file = gof_file_get (target_location);
         gof_file_update (target_file);
+        file->link_known_target = (target_file->formated_type != NULL);
         file->formated_type = g_strdup_printf (_("link to %s"), target_file->formated_type);
         gof_file_unref (target_file);
     } else {
