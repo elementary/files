@@ -203,6 +203,7 @@ static void     fm_directory_view_drag_data_delete (GtkWidget       *widget,
 static void     fm_directory_view_drag_end (GtkWidget       *widget,
                                             GdkDragContext  *context,
                                             FMDirectoryView *view);
+static void     fm_directory_view_clipboard_changed (FMDirectoryView *view);
 
 
 EEL_CLASS_BOILERPLATE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW)
@@ -1327,7 +1328,6 @@ fm_directory_view_drag_leave (GtkWidget         *widget,
     }
 
     /* disable the highlighting of the items in the view */
-    //TODO
     (*FM_DIRECTORY_VIEW_GET_CLASS (view)->highlight_path) (view, NULL);
 }
 
@@ -1837,8 +1837,8 @@ fm_directory_view_realize (GtkWidget *widget)
 
     /* we need update the selection state based on the clipboard content */
     g_signal_connect_swapped (G_OBJECT (view->clipboard), "changed",
-                              G_CALLBACK (fm_directory_view_notify_selection_changed), view);
-    fm_directory_view_notify_selection_changed (view);
+                              G_CALLBACK (fm_directory_view_clipboard_changed), view);
+    fm_directory_view_clipboard_changed (view);
 
     /* determine the icon factory for the screen on which we are realized */
     //icon_theme = gtk_icon_theme_get_for_screen (gtk_widget_get_screen (widget));
@@ -1854,7 +1854,7 @@ fm_directory_view_unrealize (GtkWidget *widget)
     FMDirectoryView    *view = FM_DIRECTORY_VIEW (widget);
 
     /* disconnect the clipboard changed handler */
-    g_signal_handlers_disconnect_by_func (G_OBJECT (view->clipboard), fm_directory_view_notify_selection_changed, view);
+    g_signal_handlers_disconnect_by_func (G_OBJECT (view->clipboard), fm_directory_view_clipboard_changed, view);
 
     /* drop the reference on the icon factory */
     //g_signal_handlers_disconnect_by_func (G_OBJECT (view->icon_factory), gtk_widget_queue_draw, view);
@@ -2297,7 +2297,6 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
     klass->delete = real_delete;
 }
 
-/* TODO maybe pass the entire selection in the signal */
 void
 fm_directory_view_notify_selection_changed (FMDirectoryView *view)
 {
@@ -2319,9 +2318,21 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
     if (file == NULL)
         file = view->details->slot->directory->file;
     
+    /* TODO maybe pass the entire selection in the signal */
     g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", file);
 }
 
+static void
+fm_directory_view_clipboard_changed (FMDirectoryView *view)
+{
+    fm_directory_view_notify_selection_changed (view);
+
+    /* We could optimize this by redrawing only the old and the new  
+     * clipboard selection by emitting row-changed on the model but the icon view
+     * handle this situation very badly by recomputing all the layout. 
+     */
+    gtk_widget_queue_draw (GTK_WIDGET (view));
+}
 
 /**
  * fm_directory_view_merge_menus:

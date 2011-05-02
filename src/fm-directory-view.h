@@ -177,7 +177,7 @@ struct FMDirectoryViewClass {
 
     void     (* set_selection)	 	(FMDirectoryView *view, 
                                          GList *selection);
-
+    
     /* invert_selection is a function pointer that subclasses must
      * override to invert selection. */
 

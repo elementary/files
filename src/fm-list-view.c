@@ -947,9 +947,39 @@ gtk_tree_selection_select_iter (tree_selection,
 
 //g_signal_handlers_unblock_by_func (tree_selection, list_selection_changed_callback, view);
 //fm_directory_view_notify_selection_changed (view);
-}
+}*/
 
+#if 0
 static void
+fm_list_view_reset_selection (FMDirectoryView *view)
+{
+    FMListView *list_view = FM_LIST_VIEW (view);
+    GtkTreeSelection *tree_selection;
+    GList *lp, *selected_paths;
+    GtkTreePath *path;
+
+    g_signal_handlers_block_by_func (list_view->tree, list_selection_changed_callback, list_view);
+
+    tree_selection = gtk_tree_view_get_selection (list_view->tree);
+    GtkTreeModel *model = GTK_TREE_MODEL (list_view->model);
+    selected_paths = gtk_tree_selection_get_selected_rows (tree_selection, &model);
+    gtk_tree_selection_unselect_all (tree_selection);
+    
+    for (lp = selected_paths; lp != NULL; lp = lp->next)
+    {
+        path = lp->data;
+        gtk_tree_selection_select_path (tree_selection, path);
+
+        /* release the tree path... */
+        gtk_tree_path_free (path);
+    }
+    g_list_free (selected_paths);
+
+    g_signal_handlers_unblock_by_func (list_view->tree, list_selection_changed_callback, list_view);
+}
+#endif
+
+/*static void
 fm_list_view_select_all (FMListView *view)
 {
 gtk_tree_selection_select_all (gtk_tree_view_get_selection (view->tree));

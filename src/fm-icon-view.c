@@ -617,7 +617,7 @@ fm_icon_view_get_selection (FMDirectoryView *view)
 }
 
 static GList *
-fm_list_view_get_selection_for_file_transfer (FMDirectoryView *view)
+fm_icon_view_get_selection_for_file_transfer (FMDirectoryView *view)
 {
     GList *list = g_list_copy (fm_icon_view_get_selection (view));
     g_list_foreach (list, (GFunc) gof_file_ref, NULL);
@@ -625,35 +625,34 @@ fm_list_view_get_selection_for_file_transfer (FMDirectoryView *view)
     return list;
 }
 
-/*static void
-  fm_icon_view_set_selection (FMIconView *list_view, GList *selection)
-  {
-  GtkTreeSelection *tree_selection;
-  GList *node;
-  GList *iters, *l;
-  GOFFile *file;
-
-  tree_selection = gtk_tree_view_get_selection (list_view->tree);
-
-//g_signal_handlers_block_by_func (tree_selection, list_selection_changed_callback, view);
-
-gtk_tree_selection_unselect_all (tree_selection);
-for (node = selection; node != NULL; node = node->next) {
-file = node->data;
-iters = fm_list_model_get_all_iters_for_file (list_view->model, file);
-
-for (l = iters; l != NULL; l = l->next) {
-gtk_tree_selection_select_iter (tree_selection,
-(GtkTreeIter *)l->data);
-}
-//eel_g_list_free_deep (iters);
-}
-
-//g_signal_handlers_unblock_by_func (tree_selection, list_selection_changed_callback, view);
-//fm_directory_view_notify_selection_changed (view);
-}
-
+#if 0
 static void
+fm_icon_view_reset_selection (FMDirectoryView *view)
+{
+    FMIconView *icon_view = FM_ICON_VIEW (view);
+    GList *lp, *selected_paths;
+    GtkTreePath *path;
+
+    g_signal_handlers_block_by_func (icon_view->icons, fm_icon_view_selection_changed, icon_view);
+
+    selected_paths = exo_icon_view_get_selected_items (icon_view->icons);
+    exo_icon_view_unselect_all (icon_view->icons);
+    
+    for (lp = selected_paths; lp != NULL; lp = lp->next)
+    {
+        path = lp->data;
+        exo_icon_view_select_path (icon_view->icons, path);
+
+        /* release the tree path... */
+        gtk_tree_path_free (path);
+    }
+    g_list_free (selected_paths);
+
+    g_signal_handlers_unblock_by_func (icon_view->icons, fm_icon_view_selection_changed, icon_view);
+}
+#endif
+
+/*static void
 fm_icon_view_select_all (FMIconView *view)
 {
 gtk_tree_selection_select_all (gtk_tree_view_get_selection (view->tree));
@@ -784,7 +783,7 @@ fm_icon_view_class_init (FMIconViewClass *klass)
     //fm_directory_view_class->colorize_selection = fm_icon_view_colorize_selected_items;        
     fm_directory_view_class->sync_selection = fm_icon_view_sync_selection;
     fm_directory_view_class->get_selection = fm_icon_view_get_selection;
-    fm_directory_view_class->get_selection_for_file_transfer = fm_list_view_get_selection_for_file_transfer;
+    fm_directory_view_class->get_selection_for_file_transfer = fm_icon_view_get_selection_for_file_transfer;
 
     fm_directory_view_class->get_path_at_pos = fm_icon_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_icon_view_highlight_path;
