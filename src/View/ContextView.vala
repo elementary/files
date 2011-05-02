@@ -196,7 +196,7 @@ namespace Marlin.View {
             }
 
             if (!(gof_file.is_symlink() && !gof_file.link_known_target) && 
-                Posix.strncmp (gof_file.ftype, "application/octet-stream", 24) != 0) 
+                gof_file.ftype != "application/octet-stream") 
             {
                 var button = new AppButton(AppInfo.get_default_for_type(gof_file.ftype, false), gof_file);
                 string name = AppInfo.get_default_for_type(gof_file.ftype, false).get_name();
