@@ -135,6 +135,17 @@ else
 fi
 
 dnl ===========================================================================
+
+AC_ARG_ENABLE(debug, 
+	AC_HELP_STRING([--disable-debug], 
+			[Disable debug]))
+msg_debug=no
+if test "x$enable_debug" != "xno"; then
+    AC_DEFINE(ENABLE_DEBUG, 1, [Define to 1 if debug is enabled])]
+    msg_debug=yes
+fi
+
+dnl ===========================================================================
 dnl AS_AC_EXPAND(DATADIR, $datadir)
 
 dnl DBUS_SERVICES_DIR="$DATADIR/dbus-1/services"
@@ -195,4 +206,6 @@ marlin-$VERSION:
 	source code location:	${srcdir}
 	compiler:		${CC}
 	PackageKit support:     $msg_packagekit
+    
+	debug:                  $msg_debug
 "

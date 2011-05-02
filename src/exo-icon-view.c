@@ -3641,7 +3641,9 @@ exo_icon_view_row_changed (GtkTreeModel *model,
      */
     exo_icon_view_invalidate_sizes (icon_view);
 
+#ifdef ENABLE_DEBUG
     verify_items (icon_view);
+#endif
 }
 
 static void
@@ -3686,7 +3688,9 @@ exo_icon_view_row_inserted (GtkTreeModel *model,
         item->index++;
     }
 
+#ifdef ENABLE_DEBUG
     verify_items (icon_view);
+#endif
 
     exo_icon_view_queue_layout (icon_view);
 }
@@ -3748,7 +3752,9 @@ exo_icon_view_row_deleted (GtkTreeModel *model,
 
     icon_view->priv->items = g_list_delete_link (icon_view->priv->items, list);
 
-    verify_items (icon_view);  
+#ifdef ENABLE_DEBUG
+    verify_items (icon_view);
+#endif
 
     exo_icon_view_queue_layout (icon_view);
 
@@ -3800,7 +3806,9 @@ exo_icon_view_rows_reordered (GtkTreeModel *model,
 
     exo_icon_view_queue_layout (icon_view);
 
-    verify_items (icon_view);  
+#ifdef ENABLE_DEBUG
+    verify_items (icon_view);
+#endif
 }
 
 static void
