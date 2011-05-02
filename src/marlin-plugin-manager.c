@@ -77,7 +77,7 @@ void marlin_plugin_manager_interface_loaded(MarlinPluginManager* plugin, GtkWidg
     while(item != NULL)
     {
         ((MarlinPlugin*)item->data)->hook_interface_loaded(win);
-        item = g_list_next(plugin->plugins_list);
+        item = g_list_next(item);
     }
 
 }
@@ -90,7 +90,7 @@ void marlin_plugin_manager_directory_loaded(MarlinPluginManager* plugin, gchar* 
     while(item != NULL)
     {
         ((MarlinPlugin*)item->data)->hook_directory_loaded(path);
-        item = g_list_next(plugin->plugins_list);
+        item = g_list_next(item);
     }
 
 }
@@ -104,7 +104,7 @@ void marlin_plugin_manager_hook_context_menu(MarlinPluginManager* plugin, GtkWid
     while(item != NULL)
     {
         ((MarlinPlugin*)item->data)->hook_context_menu(win);
-        item = g_list_next(plugin->plugins_list);
+        item = g_list_next(item);
     }
 
 }
