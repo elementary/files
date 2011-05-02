@@ -159,7 +159,7 @@ void gof_file_update (GOFFile *file)
     //log_printf (LOG_LEVEL_UNDEFINED, "test parent_dir %s\n", g_file_get_uri(file->location));
 
     file->display_name = g_file_info_get_display_name (file->info);
-    file->is_hidden = g_file_info_get_is_hidden (file->info);
+    file->is_hidden = g_file_info_get_is_hidden (file->info) || g_file_info_get_is_backup (file->info);
     file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
     file->size = (guint64) g_file_info_get_size (file->info);
     file->file_type = g_file_info_get_file_type(file->info);
