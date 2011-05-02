@@ -84,25 +84,21 @@ typedef struct {
 } FMListModelClass;
 
 GType    fm_list_model_get_type                          (void);
-/*gboolean fm_list_model_add_file                          (FMListModel          *model,
-  GOFFile         *file,
-  NautilusDirectory    *directory);*/
-/*gboolean fm_list_model_add_file                          (FMListModel          *model,
-  GOFFile         *file);*/
+
 gboolean fm_list_model_add_file                          (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory);
 /*void     fm_list_model_file_changed                      (FMListModel          *model,
   GOFFile         *file,
   NautilusDirectory    *directory);*/
 gboolean fm_list_model_is_empty                          (FMListModel *model);
 guint    fm_list_model_get_length                        (FMListModel *model);
-/*void     fm_list_model_remove_file                       (FMListModel          *model,
-  GOFFile         *file,
-  GOFDirectoryAsync    *directory);*/
+void     fm_list_model_remove_file                       (FMListModel       *model,
+                                                          GOFFile           *file,
+                                                          GOFDirectoryAsync *directory);
 void     fm_list_model_clear                             (FMListModel *model);
-gboolean fm_list_model_get_tree_iter_from_file           (FMListModel           *model,
-                                                          GOFFile               *file,
-                                                          GOFDirectoryAsync     *directory,
-                                                          GtkTreeIter           *iter);
+gboolean fm_list_model_get_tree_iter_from_file           (FMListModel        *model,
+                                                          GOFFile            *file,
+                                                          GOFDirectoryAsync  *directory,
+                                                          GtkTreeIter        *iter);
 GList *  fm_list_model_get_all_iters_for_file            (FMListModel *model, GOFFile *file);
 gboolean fm_list_model_get_first_iter_for_file           (FMListModel *model, GOFFile *file, GtkTreeIter *iter);
 void     fm_list_model_set_should_sort_directories_first (FMListModel *model, gboolean sort_directories_first);
