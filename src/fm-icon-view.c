@@ -764,7 +764,6 @@ fm_icon_view_init (FMIconView *view)
 
     gtk_widget_show (GTK_WIDGET (view->icons));
     gtk_container_add (GTK_CONTAINER (view), GTK_WIDGET (view->icons));
-
 }
 
 static void

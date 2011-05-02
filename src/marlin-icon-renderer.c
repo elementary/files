@@ -393,7 +393,6 @@ marlin_icon_renderer_render (GtkCellRenderer        *cell,
     GdkPixbuf              *emblem;
     GdkPixbuf              *icon;
     GdkPixbuf              *temp;
-    GdkPixbuf              *invisible = NULL;
     GList                  *emblems;
     GList                  *lp;
     gint                    max_emblems;
@@ -446,16 +445,16 @@ marlin_icon_renderer_render (GtkCellRenderer        *cell,
     /* check whether the icon is affected by the expose event */
     if (gdk_rectangle_intersect (cell_area, &icon_area, &draw_area))
     {
-#if 0
         /* use a translucent icon to represent cutted and hidden files to the user */
         clipboard = marlin_clipboard_manager_new_get_for_display (gtk_widget_get_display (widget));
         if (marlin_clipboard_manager_has_cutted_file (clipboard, icon_renderer->file))
         {
             /* 50% translucent for cutted files */
-            temp = exo_gdk_pixbuf_lucent (icon, 50);
+            temp = eel_gdk_pixbuf_lucent (icon, 50);
             g_object_unref (G_OBJECT (icon));
             icon = temp;
         }
+#if 0
         else if (thunar_file_is_hidden (icon_renderer->file))
         {
             /* 75% translucent for hidden files */
@@ -463,8 +462,8 @@ marlin_icon_renderer_render (GtkCellRenderer        *cell,
             g_object_unref (G_OBJECT (icon));
             icon = temp;
         }
-        g_object_unref (G_OBJECT (clipboard));
 #endif
+        g_object_unref (G_OBJECT (clipboard));
 
         context = gtk_widget_get_style_context (widget);
         
@@ -477,14 +476,14 @@ marlin_icon_renderer_render (GtkCellRenderer        *cell,
                 GdkRGBA color;
                 gtk_style_context_get_background_color (context, state, &color);
                 temp = eel_create_colorized_pixbuf (icon, &color);
-                //g_object_unref (G_OBJECT (icon));
+                g_object_unref (G_OBJECT (icon));
                 icon = temp;
             }
 
             if ((flags & GTK_CELL_RENDERER_PRELIT) != 0)
             {
                 temp = eel_create_spotlight_pixbuf (icon);
-                //g_object_unref (G_OBJECT (icon));
+                g_object_unref (G_OBJECT (icon));
                 icon = temp;
             }
         }
@@ -506,8 +505,10 @@ marlin_icon_renderer_render (GtkCellRenderer        *cell,
             gtk_style_context_save (context);
             gtk_style_context_set_state (context, GTK_STATE_FLAG_INSENSITIVE);
 
-            icon = invisible = gtk_render_icon_pixbuf (context, icon_source,
-                                                       (GtkIconSize) -1);
+            temp = gtk_render_icon_pixbuf (context, icon_source, (GtkIconSize) -1);
+            g_object_unref (G_OBJECT (icon));
+            icon = temp;
+
             //TODO remove
 #if 0
             /* render the insensitive icon */
@@ -529,13 +530,9 @@ marlin_icon_renderer_render (GtkCellRenderer        *cell,
         gdk_cairo_set_source_pixbuf (cr, icon, icon_area.x, icon_area.y);
         gdk_cairo_rectangle (cr, &draw_area);
         cairo_fill (cr);
-
-        if (invisible)
-            g_object_unref (invisible);
     }
 
-    /* release the file's icon */
-    //g_object_unref (G_OBJECT (icon));
+    icon_renderer->file->pix = icon;
 
     //TODO
 #if 0

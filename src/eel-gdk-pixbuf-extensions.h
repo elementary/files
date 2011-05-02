@@ -42,5 +42,7 @@ GdkPixbuf   *eel_create_darkened_pixbuf  (GdkPixbuf *source_pixbuf,
 GdkPixbuf   *eel_create_colorized_pixbuf (GdkPixbuf *source_pixbuf,
                                           GdkRGBA *color);
 
+GdkPixbuf   *eel_gdk_pixbuf_lucent (GdkPixbuf *source,
+                                    guint percent);
 
 #endif /* EEL_GDK_PIXBUF_EXTENSIONS_H */

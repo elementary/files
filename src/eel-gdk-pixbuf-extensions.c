@@ -286,3 +286,94 @@ eel_create_colorized_pixbuf (GdkPixbuf *src,
     return dest;
 }
 
+
+/**
+ * imported from exo_gdk_pixbuf_lucent:
+ * @source  : the source #GdkPixbuf.
+ * @percent : the percentage of translucency.
+ *
+ * Returns a version of @source, whose pixels translucency is
+ * @percent of the original @source pixels.
+ *
+ * The caller is responsible to free the returned object
+ * using g_object_unref() when no longer needed.
+ *
+ * Returns: a translucent version of @source.
+ *
+ * Since: 0.3.1.3
+ **/
+GdkPixbuf*
+eel_gdk_pixbuf_lucent (GdkPixbuf *source,
+                       guint percent)
+{
+  GdkPixbuf *dst;
+  guchar    *dst_pixels;
+  guchar    *src_pixels;
+  guchar    *pixdst;
+  guchar    *pixsrc;
+  gint       dst_row_stride;
+  gint       src_row_stride;
+  gint       width;
+  gint       height;
+  gint       i, j;
+
+  g_return_val_if_fail (GDK_IS_PIXBUF (source), NULL);
+  g_return_val_if_fail ((gint) percent >= 0 && percent <= 100, NULL);
+
+  /* determine source parameters */
+  width = gdk_pixbuf_get_width (source);
+  height = gdk_pixbuf_get_height (source);
+
+  /* allocate the destination pixbuf */
+  dst = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (source), TRUE, gdk_pixbuf_get_bits_per_sample (source), width, height);
+
+  /* determine row strides on src/dst */
+  dst_row_stride = gdk_pixbuf_get_rowstride (dst);
+  src_row_stride = gdk_pixbuf_get_rowstride (source);
+
+  /* determine pixels on src/dst */
+  dst_pixels = gdk_pixbuf_get_pixels (dst);
+  src_pixels = gdk_pixbuf_get_pixels (source);
+
+  /* check if the source already contains an alpha channel */
+  if (G_LIKELY (gdk_pixbuf_get_has_alpha (source)))
+    {
+      for (i = height; --i >= 0; )
+        {
+          pixdst = dst_pixels + i * dst_row_stride;
+          pixsrc = src_pixels + i * src_row_stride;
+
+          for (j = width; --j >= 0; )
+            {
+              *pixdst++ = *pixsrc++;
+              *pixdst++ = *pixsrc++;
+              *pixdst++ = *pixsrc++;
+              *pixdst++ = ((guint) *pixsrc++ * percent) / 100u;
+            }
+        }
+    }
+  else
+    {
+      /* pre-calculate the alpha value */
+      percent = (255u * percent) / 100u;
+
+      for (i = height; --i >= 0; )
+        {
+          pixdst = dst_pixels + i * dst_row_stride;
+          pixsrc = src_pixels + i * src_row_stride;
+
+          for (j = width; --j >= 0; )
+            {
+              *pixdst++ = *pixsrc++;
+              *pixdst++ = *pixsrc++;
+              *pixdst++ = *pixsrc++;
+              *pixdst++ = percent;
+            }
+        }
+    }
+
+  return dst;
+}
+
+
+
