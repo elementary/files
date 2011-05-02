@@ -59,20 +59,25 @@ static marlin_plugin_manager_add_plugin(MarlinPluginManager* plugins, const gcha
 
 void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin)
 {
-    marlin_plugin_manager_add_plugin(plugins, "hw/libhw.so");
+    /* We should use GOF File here */
+    GFile* dir = g_file_new_for_path("/usr/share/marlin/plugins/");
+    GFileEnumerator* enumerator = g_file_enumerate_children(dir, "standard::*", 0, NULL, NULL);
+    GFileInfo* file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
+    while(file_info != NULL)
+    {
+        marlin_plugin_manager_add_plugin(plugins, g_strdup_printf("/usr/share/marlin/plugins/%s", g_file_info_get_name(file_info)));
+        file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
+    }
 }
 
 void marlin_plugin_manager_interface_loaded(MarlinPluginManager* plugin, GtkWidget* win)
 {
-    printf("HERE\n\n\n\n\n\n");
+    GList* item = g_list_first(plugin->plugins_list);
 
-    GList* item = g_list_nth(plugin->plugins_list, 0);
-
-    ((MarlinPlugin*)item->data)->hook_interface_loaded(win);
-
-    while((item = g_list_next(plugin->plugins_list)))
+    while(item != NULL)
     {
         ((MarlinPlugin*)item->data)->hook_interface_loaded(win);
+        item = g_list_next(plugin->plugins_list);
     }
 
 }
@@ -80,14 +85,12 @@ void marlin_plugin_manager_interface_loaded(MarlinPluginManager* plugin, GtkWidg
 void marlin_plugin_manager_directory_loaded(MarlinPluginManager* plugin, gchar* path)
 {
     g_debug("Directory loaded");
+    GList* item = g_list_first(plugin->plugins_list);
 
-    GList* item = g_list_nth(plugin->plugins_list, 0);
-
-    ((MarlinPlugin*)item->data)->hook_directory_loaded(path);
-
-    while((item = g_list_next(plugin->plugins_list)))
+    while(item != NULL)
     {
         ((MarlinPlugin*)item->data)->hook_directory_loaded(path);
+        item = g_list_next(plugin->plugins_list);
     }
 
 }
@@ -96,13 +99,12 @@ void marlin_plugin_manager_hook_context_menu(MarlinPluginManager* plugin, GtkWid
 {
     g_debug("Plugin Context Menu");
 
-    GList* item = g_list_nth(plugin->plugins_list, 0);
+    GList* item = g_list_first(plugin->plugins_list);
 
-    ((MarlinPlugin*)item->data)->hook_context_menu(win);
-
-    while((item = g_list_next(plugin->plugins_list)))
+    while(item != NULL)
     {
         ((MarlinPlugin*)item->data)->hook_context_menu(win);
+        item = g_list_next(plugin->plugins_list);
     }
 
 }
