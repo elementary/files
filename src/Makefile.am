@@ -103,6 +103,8 @@ marlin_CSOURCES = \
     fm-columns-view.c                       \
     nautilus-cell-renderer-text-ellipsized.c\
     marlin-toolbar-editor.c                 \
+	marlin-plugin.c       					\
+	marlin-plugin-manager.c
     $(NULL)
 
 marlin_SOURCES = \
