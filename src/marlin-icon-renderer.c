@@ -454,15 +454,14 @@ marlin_icon_renderer_render (GtkCellRenderer        *cell,
             g_object_unref (G_OBJECT (icon));
             icon = temp;
         }
-#if 0
-        else if (thunar_file_is_hidden (icon_renderer->file))
+        else if (icon_renderer->file->is_hidden)
         {
             /* 75% translucent for hidden files */
-            temp = exo_gdk_pixbuf_lucent (icon, 75);
+            temp = eel_gdk_pixbuf_lucent (icon, 75);
             g_object_unref (G_OBJECT (icon));
             icon = temp;
         }
-#endif
+        
         g_object_unref (G_OBJECT (clipboard));
 
         context = gtk_widget_get_style_context (widget);
