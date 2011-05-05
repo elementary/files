@@ -624,6 +624,17 @@ fm_columns_view_highlight_path (FMDirectoryView *view, GtkTreePath *path)
     gtk_tree_view_set_drag_dest_row (FM_COLUMNS_VIEW (view)->tree, path, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
 }
 
+static gboolean
+fm_columns_view_get_visible_range (FMDirectoryView *view, 
+                                   GtkTreePath     **start_path,
+                                   GtkTreePath     **end_path)
+
+{
+    g_return_if_fail (FM_IS_COLUMNS_VIEW (view));
+    return gtk_tree_view_get_visible_range (FM_COLUMNS_VIEW (view)->tree,
+                                            start_path, end_path);
+}
+
 static void
 fm_columns_view_finalize (GObject *object)
 {
@@ -678,6 +689,7 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
 
     fm_directory_view_class->get_path_at_pos = fm_columns_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_columns_view_highlight_path;
+    fm_directory_view_class->get_visible_range = fm_columns_view_get_visible_range;
 
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }

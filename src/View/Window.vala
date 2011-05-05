@@ -47,7 +47,7 @@ namespace Marlin.View {
         public ToolButtonWithMenu button_forward;
         public ToolButtonWithMenu button_back;
 
-        private const int horizontal_contextplane_max_width = 840;
+        private const int horizontal_contextplane_max_width = 910;
         private const int horizontal_contextplane_max_height = 380; // after which we will go vertical
 
         public bool can_go_up{

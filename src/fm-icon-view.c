@@ -680,6 +680,15 @@ fm_icon_view_highlight_path (FMDirectoryView *view, GtkTreePath *path)
     exo_icon_view_set_drag_dest_item (FM_ICON_VIEW (view)->icons, path, EXO_ICON_VIEW_DROP_INTO);
 }
 
+static gboolean
+fm_icon_view_get_visible_range (FMDirectoryView *view,
+                                GtkTreePath     **start_path,
+                                GtkTreePath     **end_path)
+{
+    g_return_val_if_fail (FM_IS_ICON_VIEW (view), FALSE);
+    return exo_icon_view_get_visible_range (FM_ICON_VIEW (view)->icons, start_path, end_path);
+}
+
 
 static void
 fm_icon_view_finalize (GObject *object)
@@ -787,8 +796,9 @@ fm_icon_view_class_init (FMIconViewClass *klass)
 
     fm_directory_view_class->get_path_at_pos = fm_icon_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_icon_view_highlight_path;
-    //fm_directory_view_class->start_renaming_file = fm_icon_view_start_renaming_file;
+    fm_directory_view_class->get_visible_range = fm_icon_view_get_visible_range;
 
+    //fm_directory_view_class->start_renaming_file = fm_icon_view_start_renaming_file;
 
     g_object_class_install_property (object_class,
                                      PROP_TEXT_BESIDE_ICONS,

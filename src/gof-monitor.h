@@ -20,6 +20,7 @@
 
    Authors: Seth Nickell <seth@eazel.com>
    Darin Adler <darin@bentspoon.com>
+   ammonkey <am.monkeyd@gmail.com>
 */
 
 #ifndef GOF_MONITOR_H
@@ -31,7 +32,8 @@
 
 typedef struct GOFMonitor GOFMonitor;
 
-GOFMonitor      *gof_monitor_directory  (GOFDirectoryAsync *dir);
-void            gof_monitor_cancel      (GOFMonitor *monitor);
+GOFMonitor      *gof_monitor_directory      (GOFDirectoryAsync *dir);
+void            gof_monitor_cancel          (GOFMonitor *monitor);
+void            gof_monitor_file_changed    (GOFFile *file);
 
 #endif

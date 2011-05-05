@@ -1096,10 +1096,9 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     return TRUE;
 }
 
-#if 0
 void
 fm_list_model_file_changed (FMListModel *model, GOFFile *file,
-                            NautilusDirectory *directory)
+                            GOFDirectoryAsync *directory)
 {
     FileEntry *parent_file_entry;
     GtkTreeIter iter;
@@ -1163,7 +1162,6 @@ fm_list_model_file_changed (FMListModel *model, GOFFile *file,
     gtk_tree_model_row_changed (GTK_TREE_MODEL (model), path, &iter);
     gtk_tree_path_free (path);
 }
-#endif
 
 gboolean
 fm_list_model_is_empty (FMListModel *model)
@@ -1314,6 +1312,18 @@ fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path)
                             FM_LIST_MODEL_FILE_COLUMN, &file,
                             -1);
     }
+    return (file);
+}
+
+GOFFile *
+fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter)
+{
+    GOFFile *file;
+
+    file = NULL;
+    gtk_tree_model_get (GTK_TREE_MODEL (model), iter, 
+                        FM_LIST_MODEL_FILE_COLUMN, &file, -1);
+    
     return (file);
 }
 

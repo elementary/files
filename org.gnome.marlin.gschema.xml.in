@@ -79,6 +79,13 @@
         The default viewmode to be used when opening a new tab or window
       </description>
     </key>
+    <key name="toolbar-primary-css-style" type="b">
+      <default>true</default>
+      <_summary>toolbar css style</_summary>
+      <_description>
+        Set the toolbar css style to primary-toolbar.
+      </_description>
+    </key>
     <key name="toolbar-items" type="as">
       <default>[ 'Back', 'Forward', 'Up', 'LocationEntry', 'ViewSwitcher']</default>
       <summary>List of actions present in the toolbar</summary>

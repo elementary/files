@@ -5019,9 +5019,9 @@ exo_icon_view_get_tooltip_column (ExoIconView *icon_view)
  * Since: 2.8
 **/
 gboolean
-        exo_icon_view_get_visible_range (ExoIconView  *icon_view,
-                                         GtkTreePath **start_path,
-                                         GtkTreePath **end_path)
+exo_icon_view_get_visible_range (ExoIconView  *icon_view,
+                                 GtkTreePath **start_path,
+                                 GtkTreePath **end_path)
 {
     gint start_index = -1;
     gint end_index = -1;

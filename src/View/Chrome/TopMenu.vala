@@ -34,7 +34,8 @@ namespace Marlin.View.Chrome
         public TopMenu (Window window)
         {
             win = window;
-	        get_style_context().add_class ("primary-toolbar");
+            if (Preferences.settings.get_boolean("toolbar-primary-css-style"))
+	            get_style_context().add_class ("primary-toolbar");
 
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             toolbar_menu = (Gtk.Menu) win.ui.get_widget("/ToolbarMenu");

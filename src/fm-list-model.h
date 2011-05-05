@@ -86,9 +86,7 @@ typedef struct {
 GType    fm_list_model_get_type                          (void);
 
 gboolean fm_list_model_add_file                          (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory);
-/*void     fm_list_model_file_changed                      (FMListModel          *model,
-  GOFFile         *file,
-  NautilusDirectory    *directory);*/
+void     fm_list_model_file_changed                      (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory);
 gboolean fm_list_model_is_empty                          (FMListModel *model);
 guint    fm_list_model_get_length                        (FMListModel *model);
 void     fm_list_model_remove_file                       (FMListModel       *model,
@@ -113,6 +111,7 @@ void     fm_list_model_sort_files                        (FMListModel *model, GL
 //int               fm_list_model_get_emblem_column_id_from_zoom_level (NautilusZoomLevel zoom_level);
 
 GOFFile *       fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path);
+GOFFile *       fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter);
 void            fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path, 
                                                   GOFDirectoryAsync **directory, GOFFile **file);
 gboolean        fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory);

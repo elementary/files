@@ -39,6 +39,26 @@ G_BEGIN_DECLS
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
 #define _g_free0(var) (var = (g_free (var), NULL))
 
+/**
+ * GOFFileThumbState:
+ * @GOF_FILE_THUMB_STATE_MASK    : the mask to extract the thumbnail state.
+ * @GOF_FILE_THUMB_STATE_UNKNOWN : unknown whether there's a thumbnail.
+ * @GOF_FILE_THUMB_STATE_NONE    : no thumbnail is available.
+ * @GOF_FILE_THUMB_STATE_READY   : a thumbnail is available.
+ * @GOF_FILE_THUMB_STATE_LOADING : a thumbnail is being generated.
+ *
+ * The state of the thumbnailing for a given #GOFFile.
+ **/
+typedef enum /*< flags >*/
+{
+  GOF_FILE_THUMB_STATE_MASK    = 0x03,
+  GOF_FILE_THUMB_STATE_UNKNOWN = 0x00,
+  GOF_FILE_THUMB_STATE_NONE    = 0x01,
+  GOF_FILE_THUMB_STATE_READY   = 0x02,
+  GOF_FILE_THUMB_STATE_LOADING = 0x03,
+} GOFFileThumbState;
+
+
 typedef struct _GOFFile GOFFile;
 typedef struct _GOFFileClass GOFFileClass;
 //typedef struct _GOFFilePrivate GOFFilePrivate;
@@ -74,13 +94,15 @@ struct _GOFFile {
     const gchar     *color;
     gboolean        is_mounted;
 
-    const gchar     *thumbnail;
+    const gchar     *thumbnail_path;
     gboolean        is_thumbnailing;
 
     const char      *trash_orig_path;
     time_t          trash_time; /* 0 is unknown */
 
     GList *operations_in_progress;
+
+    guint           flags;
 };
 
 struct _GOFFileClass {
@@ -97,7 +119,7 @@ struct _GOFFileClass {
 "standard::type,standard::is-hidden,standard::name,standard::display-name,standard::edit-name,standard::copy-name,standard::fast-content-type,standard::size,standard::allocated-size,access::*,mountable::*,time::*,unix::*,owner::*,selinux::*,thumbnail::*,id::filesystem,trash::orig-path,trash::deletion-date,metadata::*"
 */
 
-#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::uid,id::filesystem"
+#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::uid,id::filesystem,thumbnail::*"
 
 typedef enum {
 	GOF_FILE_ICON_FLAGS_NONE = 0,
@@ -128,6 +150,7 @@ GType gof_file_get_type (void);
 GOFFile         *gof_file_new (GFile *location, GFile *dir);
 
 void            gof_file_update (GOFFile *file);
+void            gof_file_query_update (GOFFile *file);
 void            gof_file_update_icon (GOFFile *file, gint size);
 void            gof_file_update_trash_info (GOFFile *file);
 
@@ -172,6 +195,17 @@ void            gof_file_rename (GOFFile *file,
                                  const char *new_name,
                                  GOFFileOperationCallback callback,
                                  gpointer callback_data);
+void            gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state);
+
+/**
+ * gof_file_get_thumb_state:
+ * @file : a #GOFFile.
+ *
+ * Returns the current #GOFFileThumbState for @file. 
+ *
+ * Return value: the #GOFFileThumbState for @file.
+ **/
+#define gof_file_get_thumb_state(file) (GOF_FILE ((file))->flags & GOF_FILE_THUMB_STATE_MASK)
 
 
 G_END_DECLS

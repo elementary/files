@@ -63,6 +63,8 @@ dir_changed (GFileMonitor* gfile_monitor,
     case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
         //nautilus_file_changes_queue_file_changed (child);
         log_printf (LOG_LEVEL_UNDEFINED, "file changed %s\n", uri);
+        file = gof_file_get (child);
+        g_signal_emit_by_name (dir, "file_changed", file);
         break;
     case G_FILE_MONITOR_EVENT_DELETED:
         //nautilus_file_changes_queue_file_removed (child);
@@ -131,3 +133,16 @@ gof_monitor_cancel (GOFMonitor *monitor)
 
     g_free (monitor);
 }
+
+void
+gof_monitor_file_changed (GOFFile *file)
+{
+    GOFDirectoryAsync *dir;
+
+    /* get the DirectoryAsync associated to the file */
+    dir = gof_directory_cache_lookup (file->directory);
+    g_return_if_fail (dir != NULL);
+
+    g_signal_emit_by_name (dir, "file_changed", file);
+}
+
