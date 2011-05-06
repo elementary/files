@@ -78,6 +78,7 @@ namespace Marlin.View.Chrome
                 remove(w);
             if(_state)
             {
+                border_width = 0;
                 add(bread);
             }
             else
@@ -89,7 +90,7 @@ namespace Marlin.View.Chrome
         }
     }
 
-    public class Breadcrumbs : DrawingArea
+    public class Breadcrumbs : Gtk.EventBox
     {
         /**
          * When the user use a double click, this signal is emited to ask the
@@ -188,6 +189,7 @@ namespace Marlin.View.Chrome
             entry_context = new Gtk.Entry().get_style_context();
 
             set_can_focus(true);
+            set_visible_window (false);
 
             /* x padding */
             x = 0;
@@ -855,17 +857,15 @@ namespace Marlin.View.Chrome
             double width = get_allocated_width();
 
             /* Draw toolbar background */
-
-            Gtk.render_background(get_style_context(), cr, 0, 0, get_allocated_width(), get_allocated_height());
             if(focus)
             {
-                Gtk.render_background(entry_context, cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
-                Gtk.render_frame(entry_context, cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
+                Gtk.render_background(entry_context, cr, 0, 6, width, height - 12);
+                Gtk.render_frame(entry_context, cr, 0, 6, width, height - 12);
             }
             else
             {
-                Gtk.render_background(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
-                Gtk.render_frame(button.get_style_context(), cr, 0, 6, get_allocated_width(), get_allocated_height() - 12);
+                Gtk.render_background(button.get_style_context(), cr, 0, 6, width, height - 12);
+                Gtk.render_frame(button.get_style_context(), cr, 0, 6, width, height - 12);
             }
 
             double x_render = y;
