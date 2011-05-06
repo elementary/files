@@ -42,6 +42,7 @@ namespace Marlin.View.Chrome
             box.border_width = 0;
             add (box);
             box.show ();
+            set_visible_window (false);
             
             set_size_request(-1, 24);
 
