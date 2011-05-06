@@ -734,8 +734,10 @@ fm_icon_view_init (FMIconView *view)
     /*exo_icon_view_set_enable_search (view->icons, TRUE);*/
     
     /* add the icon renderer */
+    /*g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer),
+                  "follow-state", TRUE, "ypad", 3u, NULL);*/
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer),
-                  "follow-state", TRUE, "ypad", 3u, NULL);
+                  "follow-state", TRUE, "yalign", 1.0f, NULL);
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, FALSE);
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, "file", FM_LIST_MODEL_FILE_COLUMN);
 
@@ -835,7 +837,7 @@ fm_icon_view_set_property (GObject      *object,
         else
         {
             exo_icon_view_set_item_orientation (FM_ICON_VIEW (view)->icons, GTK_ORIENTATION_VERTICAL);
-            g_object_set (G_OBJECT (view->name_renderer), "yalign", 0.0f, NULL);
+            g_object_set (G_OBJECT (view->name_renderer), "xalign", 0.5f, "yalign", 0.0f, NULL);
 
             /* connect the "zoom-level" signal handler as the wrap-width is now synced with the "zoom-level" */
             g_signal_connect_swapped (marlin_icon_view_settings, "changed::zoom-level",
