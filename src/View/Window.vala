@@ -168,6 +168,7 @@ namespace Marlin.View {
 
             /* Devide main views into sidebars */
             main_box = new CollapsablePaned(Orientation.VERTICAL);
+            main_box.get_style_context().add_class ("sidebar-hpaned");
             main_box.show();
 
             var lside_pane = new HCollapsablePaned();
