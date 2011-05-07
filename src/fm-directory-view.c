@@ -2844,6 +2844,7 @@ real_merge_menus (FMDirectoryView *view)
     action_group = gtk_action_group_new ("DirViewActions");
     //gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
     view->details->dir_action_group = action_group;
+    gtk_action_group_set_translation_domain (action_group, "marlin");
     gtk_action_group_add_actions (action_group,
                                   directory_view_entries, G_N_ELEMENTS (directory_view_entries),
                                   view);

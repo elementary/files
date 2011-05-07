@@ -62,3 +62,6 @@ src/marlintests
 po/.intltool-merge-cache
 data/marlin.desktop
 po/fr.gmo
+po/de.gmo
+po/pl.gmo
+po/uk.gmo

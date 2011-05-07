@@ -119,6 +119,7 @@ namespace Marlin.View {
             }
 
             main_actions = new Gtk.ActionGroup("MainActionGroup");
+            main_actions.set_translation_domain("marlin");
             main_actions.add_actions(main_entries, this);
             main_actions.add_toggle_actions(main_toggle_entries, this);
             main_actions.add_radio_actions(view_radio_entries, -1,
