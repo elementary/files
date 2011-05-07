@@ -143,6 +143,8 @@ struct FMDirectoryViewDetails
     guint               thumbnail_source_id;
     gboolean            thumbnailing_scheduled;
 
+    GtkWidget       *menu_selection;
+    GtkWidget       *menu_background;
 };
 
 /* forward declarations */
@@ -1766,23 +1768,19 @@ fm_directory_view_context_menu (FMDirectoryView *view,
 {
     GtkWidget *menu;
     GList     *selection;
-    GtkUIManager *ui_manager;
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     selection = fm_directory_view_get_selection (view);
     //thunar_standard_view_merge_custom_actions (standard_view, selected_items);
-    /*g_list_foreach (selected_items, (GFunc) gtk_tree_path_free, NULL);
-      g_list_free (selected_items);*/
 
     /* grab an additional reference on the view */
     g_object_ref (G_OBJECT (view));
 
-    ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
     /* run the menu on the view's screen (figuring out whether to use the file or the folder context menu) */
-    menu = gtk_ui_manager_get_widget (ui_manager, (selection != NULL) ? "/selection" : "/background");
-    //thunar_gtk_menu_run (GTK_MENU (menu), GTK_WIDGET (standard_view), NULL, NULL, button, timestamp);
+    menu = (selection != NULL) ? view->details->menu_selection : view->details->menu_background;
 
     printf ("%s\n", G_STRFUNC);
+
     gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (view)));
     gtk_widget_show (GTK_WIDGET (menu));
 
@@ -2806,15 +2804,14 @@ real_unmerge_menus (FMDirectoryView *view)
     printf("%s\n", G_STRFUNC);
     GtkUIManager *ui_manager;
 
-    if (view->details->window == NULL) {
+    if (view->details->window == NULL) 
         return;
-    }
 
     ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
-
     eel_ui_unmerge_ui (ui_manager,
                        &view->details->dir_merge_id,
                        &view->details->dir_action_group);
+    
     /*eel_ui_unmerge_ui (ui_manager,
       &view->details->extensions_menu_merge_id,
       &view->details->extensions_menu_action_group);
@@ -2827,6 +2824,7 @@ real_unmerge_menus (FMDirectoryView *view)
       eel_ui_unmerge_ui (ui_manager,
       &view->details->templates_merge_id,
       &view->details->templates_action_group);*/
+
 }
 
 static void
@@ -2835,7 +2833,6 @@ real_merge_menus (FMDirectoryView *view)
     printf("%s\n", G_STRFUNC);
     GtkActionGroup *action_group;
     GtkUIManager *ui_manager;
-    GtkAction *action;
     const char *ui;
     char *tooltip;
 
@@ -2848,6 +2845,7 @@ real_merge_menus (FMDirectoryView *view)
     gtk_action_group_add_actions (action_group,
                                   directory_view_entries, G_N_ELEMENTS (directory_view_entries),
                                   view);
+
 
     /* Translators: %s is a directory */
     //tooltip = g_strdup_printf (_("Run or manage scripts from %s"), "~/.gnome2/nautilus-scripts");
@@ -2874,6 +2872,35 @@ real_merge_menus (FMDirectoryView *view)
     ui = eel_ui_string_get ("fm-directory-view-ui.xml");
     view->details->dir_merge_id = gtk_ui_manager_add_ui_from_string (ui_manager, ui, -1, NULL);
 
+    view->details->menu_selection = gtk_ui_manager_get_widget (ui_manager, "/selection");
+    view->details->menu_background = gtk_ui_manager_get_widget (ui_manager, "/background");
+
+    /* we have to make sure that we add our custom widget once in the menu */
+    static gboolean selection_menu_builded = FALSE;
+
+    if (!selection_menu_builded) 
+    {
+        GtkWidget *item;
+    
+        /* append a menu separator */
+        item = gtk_separator_menu_item_new ();
+        gtk_menu_shell_append (GTK_MENU_SHELL (view->details->menu_selection), item);
+        gtk_widget_show (item);
+
+        /* append insensitive label 'Set Color' */
+        item = gtk_menu_item_new_with_label ("Set Color:");
+        gtk_widget_set_sensitive (item, FALSE);
+        gtk_menu_shell_append (GTK_MENU_SHELL (view->details->menu_selection), item);
+        gtk_widget_show (item);
+    
+        /* append menu color selection */
+        item = GTK_WIDGET (marlin_view_chrome_color_widget_new (MARLIN_VIEW_WINDOW (view->details->window)));
+        gtk_menu_shell_append (GTK_MENU_SHELL (view->details->menu_selection), item);
+        gtk_widget_show (item);
+    
+        selection_menu_builded = TRUE;
+    }
+    
     //view->details->scripts_invalid = TRUE;
     //view->details->templates_invalid = TRUE;
 }

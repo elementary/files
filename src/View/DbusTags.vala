@@ -40,8 +40,10 @@ namespace Marlin.View {
         }
 
         public async void get_color (string uri, GOF.File myfile) throws IOError {
+            if (myfile != null) 
+                return;
             int n = yield tags.getColor(uri);
-            myfile.color = Preferences.tags_colors[n];
+            myfile.color = Preferences.tags_colors[n];            
         }
 
     }
