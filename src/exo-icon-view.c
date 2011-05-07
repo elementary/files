@@ -3472,21 +3472,25 @@ exo_icon_view_get_item_at_coords (ExoIconView          *icon_view,
     for (items = icon_view->priv->items; items; items = items->next)
     {
         ExoIconViewItem *item = items->data;
-        HitTestData data = { item, GTK_WIDGET (icon_view), { x, y, 0, 0 }, FALSE };
-        GtkCellAreaContext *context;
-        GdkRectangle *item_area = (GdkRectangle *)item;
+        if (x >= item->cell_area.x - icon_view->priv->row_spacing / 2 && x <= item->cell_area.x + item->cell_area.width + icon_view->priv->row_spacing / 2 &&
+          y >= item->cell_area.y - icon_view->priv->column_spacing / 2 && y <= item->cell_area.y + item->cell_area.height + icon_view->priv->column_spacing / 2)
+        {
+            HitTestData data = { item, GTK_WIDGET (icon_view), { x, y, 0, 0 }, FALSE };
+            GtkCellAreaContext *context;
+            GdkRectangle *item_area = (GdkRectangle *)item;
 
-        context = g_ptr_array_index (icon_view->priv->row_contexts, item->row);
+            context = g_ptr_array_index (icon_view->priv->row_contexts, item->row);
 
-        exo_icon_view_set_cell_data (icon_view, item);
-        gtk_cell_area_foreach_alloc (icon_view->priv->cell_area, context,
-                                     GTK_WIDGET (icon_view),
-                                     item_area, item_area,
-                                     (GtkCellAllocCallback)hit_test_pos, &data);
-        if (data.hit) {
-            return item;
+            exo_icon_view_set_cell_data (icon_view, item);
+            gtk_cell_area_foreach_alloc (icon_view->priv->cell_area, context,
+                                         GTK_WIDGET (icon_view),
+                                         item_area, item_area,
+                                         (GtkCellAllocCallback)hit_test_pos, &data);
+            if (data.hit) {
+                return item;
+            }
+
         }
-
         /*selected = is_in ^ item->selected_before_rubberbanding;
 
         if (item->selected != selected)
@@ -5015,9 +5019,9 @@ exo_icon_view_get_tooltip_column (ExoIconView *icon_view)
  * Since: 2.8
 **/
 gboolean
-        exo_icon_view_get_visible_range (ExoIconView  *icon_view,
-                                         GtkTreePath **start_path,
-                                         GtkTreePath **end_path)
+exo_icon_view_get_visible_range (ExoIconView  *icon_view,
+                                 GtkTreePath **start_path,
+                                 GtkTreePath **end_path)
 {
     gint start_index = -1;
     gint end_index = -1;

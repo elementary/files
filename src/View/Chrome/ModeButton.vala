@@ -32,16 +32,17 @@ namespace Marlin.View.Chrome
 
         public ModeButton ()
         {
-            events |= EventMask.POINTER_MOTION_MASK
-                   |  EventMask.BUTTON_PRESS_MASK
+            events |= Gdk.EventMask.BUTTON_PRESS_MASK
             //       |  EventMask.VISIBILITY_NOTIFY_MASK
-                   |  EventMask.LEAVE_NOTIFY_MASK; 
+                   | Gdk.EventMask.POINTER_MOTION_MASK
+                   | Gdk.EventMask.LEAVE_NOTIFY_MASK; 
             //       |  EventMask.SCROLL_MASK;
 
             box = new HBox (true, 1);
             box.border_width = 0;
             add (box);
             box.show ();
+            set_visible_window (false);
             
             set_size_request(-1, 24);
 
@@ -58,7 +59,9 @@ namespace Marlin.View.Chrome
                 return this._selected;
             }
             set {
-                if (value < -1 || value >= box.get_children().length())
+                if (value < 0 || value >= box.get_children().length())
+                    return;
+                if (value == _selected)
                     return;
 
                 if (_selected >= 0)
@@ -78,13 +81,14 @@ namespace Marlin.View.Chrome
                 return _hovered;
             }
             set {
-                if (value < -1 || value >= box.get_children().length())
+                //stdout.printf ("hovered %d _h %d length %u\n", value, _hovered, box.get_children().length());
+                if (value <= -1 || value >= box.get_children().length())
                     return;
-
                 if (value == _hovered)
                     return;
 
                 _hovered = value;
+                //stdout.printf ("queue draw\n");
                 queue_draw ();
             }
         }
@@ -138,7 +142,22 @@ namespace Marlin.View.Chrome
 
         protected bool on_button_press_event(EventButton ev)
         {
-            if (_hovered > -1 && _hovered != _selected && ev.button != 3)
+            //stdout.printf ("on_button_press _hovered %d _selected %d\n", _hovered, _selected);
+            int n_children = (int) box.get_children().length();
+            if (n_children < 1)
+                return false;
+
+            Allocation allocation;
+            get_allocation(out allocation);	
+
+            double child_size = allocation.width / n_children;
+            int i = -1;
+
+            if (child_size > 0)
+                i = (int) (ev.x / child_size);
+            hovered = i;
+            
+            if (ev.button != 3)
             {
                 selected = _hovered;
                 return true;
@@ -149,6 +168,7 @@ namespace Marlin.View.Chrome
 
         protected bool on_leave_notify_event(Gdk.EventCrossing ev)
         {
+            //stdout.printf ("on_leave_notify_event\n");
             _hovered = -1;
             queue_draw();
 
@@ -169,11 +189,9 @@ namespace Marlin.View.Chrome
 
             if (child_size > 0)
                 i = (int) (evnt.x / child_size);
+            hovered = i;
 
-            if (i >= 0 && i < n_children)
-                hovered = i;
-
-            return false;
+            return true;
         }
 
         protected bool on_draw(Cairo.Context cr)

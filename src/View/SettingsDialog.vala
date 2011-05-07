@@ -130,6 +130,7 @@ namespace Marlin.View
 
             mode_date_format.mode_changed.connect(date_format_changed);
 
+            mode_date_format.set_visible_window(true);
             hbox_single_click = new Gtk.HBox(false, 0);
 
             label = new Gtk.Label(_("Date format:"));
@@ -157,7 +158,7 @@ namespace Marlin.View
 
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Display")));
 
-            ((Gtk.HBox)get_content_area()).pack_start(mai_notebook);
+            ((Gtk.Box)get_content_area()).pack_start(mai_notebook);
 
             this.show_all();
 

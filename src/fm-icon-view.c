@@ -680,6 +680,15 @@ fm_icon_view_highlight_path (FMDirectoryView *view, GtkTreePath *path)
     exo_icon_view_set_drag_dest_item (FM_ICON_VIEW (view)->icons, path, EXO_ICON_VIEW_DROP_INTO);
 }
 
+static gboolean
+fm_icon_view_get_visible_range (FMDirectoryView *view,
+                                GtkTreePath     **start_path,
+                                GtkTreePath     **end_path)
+{
+    g_return_val_if_fail (FM_IS_ICON_VIEW (view), FALSE);
+    return exo_icon_view_get_visible_range (FM_ICON_VIEW (view)->icons, start_path, end_path);
+}
+
 
 static void
 fm_icon_view_finalize (GObject *object)
@@ -725,8 +734,10 @@ fm_icon_view_init (FMIconView *view)
     /*exo_icon_view_set_enable_search (view->icons, TRUE);*/
     
     /* add the icon renderer */
+    /*g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer),
+                  "follow-state", TRUE, "ypad", 3u, NULL);*/
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer),
-                  "follow-state", TRUE, "ypad", 3u, NULL);
+                  "follow-state", TRUE, "yalign", 1.0f, NULL);
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, FALSE);
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, "file", FM_LIST_MODEL_FILE_COLUMN);
 
@@ -787,8 +798,9 @@ fm_icon_view_class_init (FMIconViewClass *klass)
 
     fm_directory_view_class->get_path_at_pos = fm_icon_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_icon_view_highlight_path;
-    //fm_directory_view_class->start_renaming_file = fm_icon_view_start_renaming_file;
+    fm_directory_view_class->get_visible_range = fm_icon_view_get_visible_range;
 
+    //fm_directory_view_class->start_renaming_file = fm_icon_view_start_renaming_file;
 
     g_object_class_install_property (object_class,
                                      PROP_TEXT_BESIDE_ICONS,
@@ -825,7 +837,7 @@ fm_icon_view_set_property (GObject      *object,
         else
         {
             exo_icon_view_set_item_orientation (FM_ICON_VIEW (view)->icons, GTK_ORIENTATION_VERTICAL);
-            g_object_set (G_OBJECT (view->name_renderer), "yalign", 0.0f, NULL);
+            g_object_set (G_OBJECT (view->name_renderer), "xalign", 0.5f, "yalign", 0.0f, NULL);
 
             /* connect the "zoom-level" signal handler as the wrap-width is now synced with the "zoom-level" */
             g_signal_connect_swapped (marlin_icon_view_settings, "changed::zoom-level",

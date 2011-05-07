@@ -369,6 +369,10 @@ struct FMDirectoryViewClass {
      */
     void         (*highlight_path)      (FMDirectoryView *view, GtkTreePath *path);
 
+    /* Returns the visible range */
+    gboolean     (*get_visible_range)   (FMDirectoryView *view, GtkTreePath **start_path,
+                                         GtkTreePath **end_path);
+
 };
 
 /* GObject support */

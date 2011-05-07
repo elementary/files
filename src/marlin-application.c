@@ -28,6 +28,7 @@
 #include "marlin-view-window.h"
 #include "marlin-vala.h"
 #include "marlin-progress-ui-handler.h"
+#include "marlin-clipboard-manager.h"
 #include "marlin-file-utilities.h"
 #include "marlin-global-preferences.h"
 #include "marlin-tags.h"
@@ -70,6 +71,7 @@ struct _MarlinApplicationPriv {
     /* TODO */
     //GVolumeMonitor *volume_monitor;
     MarlinProgressUIHandler *progress_handler;
+    MarlinClipboardManager *clipboard;
 
     gboolean initialized;
 };
@@ -81,6 +83,7 @@ finish_startup (MarlinApplication *application,
     /* Initialize the UI handler singleton for file operations */
     notify_init (GETTEXT_PACKAGE);
     application->priv->progress_handler = marlin_progress_ui_handler_new ();
+    application->priv->clipboard = marlin_clipboard_manager_new_get_for_display (gdk_display_get_default());
 
     /* TODO move the volume manager here? */
     /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
@@ -405,6 +408,7 @@ marlin_application_finalize (GObject *object)
 
     //g_clear_object (&application->priv->volume_monitor);
     g_clear_object (&application->priv->progress_handler);
+    g_clear_object (&application->priv->clipboard);
 
     //marlin_dbus_manager_stop ();
     notify_uninit ();

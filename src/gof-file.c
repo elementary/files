@@ -150,6 +150,17 @@ void gof_file_update (GOFFile *file)
 
     g_return_if_fail (file->info != NULL);
 
+    /* free previously allocated */
+    g_free(file->utf8_collation_key);
+    g_free(file->formated_type);
+    g_free(file->format_size);
+    g_free(file->formated_modified);
+    _g_object_unref0 (file->icon);
+    _g_object_unref0 (file->pix);
+    g_free (file->custom_display_name);
+    g_free (file->custom_icon_name);
+
+
     file->name = g_file_info_get_name (file->info);
 
     //TODO ???
@@ -246,6 +257,8 @@ void gof_file_update (GOFFile *file)
     if (file->icon == NULL)
         file->icon = g_content_type_get_icon (file->ftype);
 
+    file->thumbnail_path =  g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
+
     file->utf8_collation_key = g_utf8_collate_key (file->name, -1);
 
     /* get the formated type of thesyminked target */
@@ -281,12 +294,43 @@ void gof_file_update_icon (GOFFile *file, gint size)
         else
             nicon = nautilus_icon_info_lookup_from_name (file->custom_icon_name, size);
     } else {
-        nicon = nautilus_icon_info_lookup (file->icon, size);
+        nicon = gof_file_get_icon (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     }
+    
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
     file->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
-    g_object_unref (nicon);
+    _g_object_unref0 (nicon);
+}
+
+static void
+print_error(GError *error)
+{
+    if (error != NULL)
+    {
+        g_print ("%s\n", error->message);
+        g_clear_error (&error);
+    }
+}
+
+void gof_file_query_update (GOFFile *file)
+{
+    GError *err = NULL;
+
+    /* FIXME must be async */
+    //printf ("!!!!!!!!!!!!file_query_info %s\n", g_file_get_uri (file->location));
+    file->info = g_file_query_info (file->location, GOF_GIO_DEFAULT_ATTRIBUTES,
+                                    0, NULL, &err);
+    gof_file_update (file);
+
+    if (err != NULL) {
+        if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED)
+        {
+            file->is_mounted = FALSE;
+            g_clear_error (&err);
+        }
+        print_error (err);
+    }
 }
 
 void gof_file_update_trash_info (GOFFile *file)
@@ -843,9 +887,8 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     //GdkPixbuf *raw_pixbuf, *scaled_pixbuf;
     //int modified_size;
 
-    if (file == NULL) {
+    if (file == NULL) 
         return NULL;
-    }
 
     /*gicon = get_custom_icon (file);
       if (gicon) {
@@ -883,20 +926,22 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
               }*/
     }
 #endif
+    //printf ("%s %s %s\n", G_STRFUNC, file->name, file->thumbnail_path);
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS) {
-        if (file->thumbnail) {
-            printf("show thumb\n");
-        } else {
-            //TODO implement thumb generaton here.
-            printf ("if can thumbnail gen thumb\n");
+        if (file->thumbnail_path != NULL) {
+            //printf("show thumb\n");
+            icon = nautilus_icon_info_lookup_from_path (file->thumbnail_path, size);
+            return icon;
         }
     }
 
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
-        && file->is_thumbnailing)
+        && file->flags == GOF_FILE_THUMB_STATE_LOADING) {
         gicon = g_themed_icon_new (ICON_NAME_THUMBNAIL_LOADING);
-    else
+        //printf ("thumbnail loading\n");
+    } else { 
         gicon = g_object_ref (file->icon);
+    }
 
     if (gicon) {
         icon = nautilus_icon_info_lookup (gicon, size);
@@ -1056,14 +1101,26 @@ gof_file_is_executable (const GOFFile *file)
     return can_execute || gof_file_is_desktop_file (file);
 }
 
-static void
-print_error(GError *error)
+/**
+ * gof_file_set_thumb_state: imported from thunar
+ * @file        : a #GOFFile.
+ * @thumb_state : the new #GOFFileThumbState.
+ *
+ * Sets the #GOFFileThumbState for @file to @thumb_state. 
+ * This will cause a "file-changed" signal to be emitted from
+ * #GOFMonitor. 
+ **/ 
+void
+gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 {
-    if (error != NULL)
-    {
-        g_print ("%s\n", error->message);
-        g_clear_error (&error);
-    }
+    g_return_if_fail (GOF_IS_FILE (file));
+
+    /* set the new thumbnail state */
+    file->flags = (file->flags & ~GOF_FILE_THUMB_STATE_MASK) | (state);
+  
+    /* notify others of this change, so that all components can update
+    * their file information */
+    gof_monitor_file_changed (file);
 }
 
 
@@ -1089,10 +1146,9 @@ GOFFile* gof_file_get (GFile *location)
     } else {
         //amtest
         file = gof_file_new (location, parent);
-        /* FIXME must be async */
         printf ("!!!!!!!!!!!!file_query_info %s\n", g_file_get_uri (location));
         file->info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                       0, NULL, &err);
+                                        0, NULL, &err);
         gof_file_update (file);
 
         if (err != NULL) {

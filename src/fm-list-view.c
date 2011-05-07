@@ -1053,6 +1053,17 @@ fm_list_view_highlight_path (FMDirectoryView *view, GtkTreePath *path)
     gtk_tree_view_set_drag_dest_row (FM_LIST_VIEW (view)->tree, path, GTK_TREE_VIEW_DROP_INTO_OR_AFTER);
 }
 
+static gboolean
+fm_list_view_get_visible_range (FMDirectoryView *view, 
+                                GtkTreePath     **start_path,
+                                GtkTreePath     **end_path)
+
+{
+    g_return_if_fail (FM_IS_LIST_VIEW (view));
+    return gtk_tree_view_get_visible_range (FM_LIST_VIEW (view)->tree,
+                                            start_path, end_path);
+}
+
 #if 0
 static void
 fm_list_view_zoom_level_changed (FMListView *view)
@@ -1131,6 +1142,7 @@ fm_list_view_class_init (FMListViewClass *klass)
 
     fm_directory_view_class->get_path_at_pos = fm_list_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_list_view_highlight_path;
+    fm_directory_view_class->get_visible_range = fm_list_view_get_visible_range;
     fm_directory_view_class->start_renaming_file = fm_list_view_start_renaming_file;
 
 

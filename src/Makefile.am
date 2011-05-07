@@ -91,6 +91,7 @@ marlin_CSOURCES = \
     nautilus-icon-info.c                    \
     gof-monitor.c                           \
     gof-file.c                              \
+    marlin-thumbnailer.c                    \
     marlin-icon-renderer.c                  \
     marlin-text-renderer.c                  \
     fm-directory-view.c                     \

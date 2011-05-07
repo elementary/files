@@ -146,6 +146,14 @@ if test "x$enable_debug" != "xno"; then
 fi
 
 dnl ===========================================================================
+
+PKG_CHECK_MODULES(DBUS, dbus-glib-1, HAVE_DBUS=yes, HAVE_DBUS=no)
+if test $HAVE_DBUS = yes; then
+    AC_DEFINE(HAVE_DBUS, [1], DBus support enabled)
+    AC_SUBST(DBUS_LIBS)
+fi
+
+dnl ===========================================================================
 dnl AS_AC_EXPAND(DATADIR, $datadir)
 
 dnl DBUS_SERVICES_DIR="$DATADIR/dbus-1/services"
@@ -166,7 +174,7 @@ AC_SUBST(DBUSSERVICEDIR)
 dnl ===========================================================================
 
 dnl core marlin
-CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gee-1.0 libnotify"
+CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gee-1.0 libnotify dbus-glib-1"
 CORE_CFLAGS="`$PKG_CONFIG --cflags $CORE_MODULES` $x_cflags $WARNING_CFLAGS"
 AC_SUBST(CORE_CFLAGS)
 CORE_LIBS="`$PKG_CONFIG --libs $CORE_MODULES` $x_libs"
