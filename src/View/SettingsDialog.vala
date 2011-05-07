@@ -157,7 +157,7 @@ namespace Marlin.View
 
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Display")));
 
-            ((Gtk.HBox)get_content_area()).pack_start(mai_notebook);
+            ((Gtk.Box)get_content_area()).pack_start(mai_notebook);
 
             this.show_all();
 
