@@ -5,7 +5,7 @@
 //       Mathijs Henquet <mathijs.henquet@gmail.com>
 //       ammonkey <am.monkeyd@gmail.com>
 //
-//  Copyright (c) 2010 Mathijs Henquet
+//  Copyright (c) 2011 Mathijs Henquet
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -266,6 +266,7 @@ namespace Marlin.View {
 
             var value_label = new Label(((Pair<string, string>) pair).value);
             value_label.set_alignment(0, 0);
+            value_label.set_selectable(true);
             if(limit_width)
                 value_label.set_size_request(key_value_width, -1);
             value_label.size_allocate.connect((l, s) => l.set_size_request(s.width, -1));

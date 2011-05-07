@@ -10,6 +10,7 @@ This is a short TODO list.
 - store typechecks in db together with last edited date
 - interface for tagging system, an easy way to tag a file in the preview panel
 - dialog property of the selection.
+- add drag support to the locationbar, we should be able to move a file by dragging it on the folder names
 ...
 
 
