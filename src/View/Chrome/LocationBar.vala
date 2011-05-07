@@ -261,18 +261,14 @@ namespace Marlin.View.Chrome
                 foreach(BreadcrumbsElement element in elements)
                 {
                     if(element.display)
-                        path += "/" + element.text; /* sometimes, + "/" is useless
+                        path += element.text + "/"; /* sometimes, + "/" is useless
                                                      * but we are never careful enough */
                 }
-                for(int i = 0; i < entry.text.split("/").length - 1; i++)
-                {
-                    path += "/" + entry.text.split("/")[i];
-                }
+                path = Marlin.Utils.get_parent(path + "/" +  entry.text);
                 if(entry.text.split("/").length > 0)
-                to_search = entry.text.split("/")[entry.text.split("/").length - 1];
+                    to_search = entry.text.split("/")[entry.text.split("/").length - 1];
                 else
-                to_search = "";
-                print("%s\n", to_search);
+                    to_search = "";
                 entry.completion = "";
                 
                 if(to_search.length > 0)
@@ -326,7 +322,6 @@ namespace Marlin.View.Chrome
 
         private void action_paste()
         {
-            print("PASTE\n\n\n");
             if(focus)
             {
                 var display = get_display();
@@ -1366,13 +1361,17 @@ namespace Marlin.Utils
 {
     public string get_parent(string newpath)
     {
-        var path = File.new_for_path(newpath);
+        var path = File.new_for_uri(newpath);
+        if(!path.query_exists())
+            path = File.new_for_path(newpath);
         return path.get_parent().get_path();
     }
 
     public bool has_parent(string newpath)
     {
-        var path = File.new_for_path(newpath);
+        var path = File.new_for_uri(newpath);
+        if(!path.query_exists())
+            path = File.new_for_path(newpath);
         return path.has_parent(null);
     }
 }
