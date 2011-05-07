@@ -72,10 +72,12 @@ namespace GOF {
         public string formated_modified;
         public string formated_type;
         public string ftype;
+        public Gdk.Pixbuf pix;
 
         public bool is_directory;
         public bool is_symlink();
         public bool link_known_target;
+        public Nautilus.IconInfo get_icon(int size, FileIconFlags flags);
     }
 
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]
@@ -106,6 +108,12 @@ namespace GOF {
             public signal void done_loading ();
             public signal void info_available ();
         }
+    }
+    [CCode (cheader_filename = "gof-file.h")]
+    public enum FileIconFlags
+    {
+        NONE,
+        USE_THUMBNAILS
     }
 }
 

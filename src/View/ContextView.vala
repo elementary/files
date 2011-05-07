@@ -152,19 +152,24 @@ namespace Marlin.View {
             return false;
         }
 
+        private void update_icon(GOF.File gof_file)
+        {
+            var icon_size_request = 96; /* -10 is just an hardcoded padding */
+            if(orientation == Orientation.HORIZONTAL){
+                icon_size_request = 42;
+            }
+
+            Nautilus.IconInfo icon_info = gof_file.get_icon(icon_size_request, GOF.FileIconFlags.USE_THUMBNAILS);
+            icon = icon_info.get_pixbuf_nodefault();
+        }
 
 
         public void update(GOF.File gof_file){
             last_geof_cache = gof_file;
 
             var file_info = gof_file.info;
-            var icon_size_request = 96;
-            if(orientation == Orientation.HORIZONTAL){
-                icon_size_request = 42;
-            }
 
-            Nautilus.IconInfo icon_info = Nautilus.IconInfo.lookup(gof_file.icon, icon_size_request);
-            icon = icon_info.get_pixbuf_nodefault();
+            update_icon(gof_file);
 
             info.clear();
             var raw_type = file_info.get_file_type();
