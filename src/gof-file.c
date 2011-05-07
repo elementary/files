@@ -159,6 +159,7 @@ void gof_file_update (GOFFile *file)
     _g_object_unref0 (file->pix);
     g_free (file->custom_display_name);
     g_free (file->custom_icon_name);
+    file->custom_display_name = NULL;
 
 
     file->name = g_file_info_get_name (file->info);
@@ -362,6 +363,7 @@ static void gof_file_init (GOFFile *file) {
     file->location = NULL;
     file->icon = NULL;
     file->pix = NULL;
+    file->custom_display_name = NULL;
 
     /* assume the file is mounted by default */
     file->is_mounted = TRUE;
