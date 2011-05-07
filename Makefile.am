@@ -1,4 +1,5 @@
 SUBDIRS =               \
+        libcore            \
         src             \
         marlin-daemon   \
         data            \

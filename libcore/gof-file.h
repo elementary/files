@@ -168,7 +168,7 @@ int             gof_file_compare_for_sort (GOFFile *file_1,
                                            gboolean reversed);
 GOFFile*        gof_file_ref (GOFFile *file);
 void            gof_file_unref (GOFFile *file);
-char *          gof_file_get_date_as_string (guint64 d, int date_format);
+char *          gof_file_get_date_as_string (guint64 d);
 
 void            gof_file_list_free (GList *list);
 NautilusIconInfo    *gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags);

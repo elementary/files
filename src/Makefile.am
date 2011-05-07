@@ -5,6 +5,7 @@ bin_PROGRAMS = \
 
 marlin_CPPFLAGS = \
     -I$(top_srcdir) \
+    -I$(top_srcdir)/libcore/ \
     $(CORE_CFLAGS) \
     -DPIXMAP_DIR=\""$(datadir)/pixmaps/marlin/"\"   \
     -DUI_DIR=\""$(datadir)/marlin/ui/"\"            \
@@ -23,6 +24,7 @@ marlin_VALAFLAGS = \
 
 marlin_LDADD = \
     $(CORE_LIBS) \
+    libmarlincore.la \
     $(NULL)
 
 BUILT_SOURCES = \
@@ -32,7 +34,6 @@ BUILT_SOURCES = \
     $(NULL)
 
 marlin_VALASOURCES = \
-    log.vala        	                    \
     View/SettingsDialog.vala                \
     View/Window.vala 	                    \
     View/Resources.vala	                    \
@@ -56,25 +57,11 @@ marlin_VALASOURCES = \
 marlin_CSOURCES = \
     marlin-application.c                    \
     mysignal.c                              \
-    eel-fcts.c                              \
-    eel-i18n.c                              \
-    eel-gtk-extensions.c                    \
-    eel-gdk-extensions.c                    \
-    eel-gdk-pixbuf-extensions.c             \
-    eel-pango-extensions.c                  \
-    eel-glib-extensions.c                   \
-    eel-gio-extensions.c                    \
-    eel-stock-dialogs.c                     \
-    eel-debug.c                             \
-    eel-string.c                            \
-    eel-ui.c                                \
-    eel-vfs-extensions.c                    \
     gossip-cell-renderer-expander.c         \
     marlin-enum-types.c                     \
     marlin-trash-monitor.c                  \
     marlin-bookmark.c                       \
     marlin-bookmark-list.c                  \
-    marlin-exec.c                           \
     marlin-dnd.c                            \
     marlin-clipboard-manager.c              \
     marlin-file-utilities.c                 \
@@ -87,10 +74,6 @@ marlin_CSOURCES = \
     marlin-places-sidebar.c                 \
     marlin-window-columns.c                 \
     gof-window-slot.c                       \
-    gof-directory-async.c                   \
-    nautilus-icon-info.c                    \
-    gof-monitor.c                           \
-    gof-file.c                              \
     marlin-thumbnailer.c                    \
     marlin-icon-renderer.c                  \
     marlin-text-renderer.c                  \
@@ -101,7 +84,6 @@ marlin_CSOURCES = \
     fm-icon-view.c                          \
     fm-list-view.c                          \
     fm-columns-view.c                       \
-    nautilus-cell-renderer-text-ellipsized.c\
     marlin-toolbar-editor.c                 \
     $(NULL)
 
