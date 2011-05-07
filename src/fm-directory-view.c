@@ -42,6 +42,7 @@
 #include "fm-columns-view.h"
 #include "marlin-dnd.h"
 #include "marlin-file-utilities.h"
+#include "marlincore-vala.h"
 #include "marlin-vala.h"
 #include "eel-ui.h"
 #include "eel-gio-extensions.h"

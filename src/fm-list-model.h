@@ -24,6 +24,7 @@
 #include <gdk/gdk.h>
 #include "gof-file.h"
 #include "gof-directory-async.h"
+#include "marlincore-vala.h"
 /*#include <libnautilus-private/nautilus-file.h>
 #include <libnautilus-private/nautilus-directory.h>
 #include <libnautilus-extension/nautilus-column.h>*/

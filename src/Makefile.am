@@ -3,7 +3,7 @@ DATADIR = $(datadir)
 bin_PROGRAMS = \
     marlin
 
-marlin_CPPFLAGS = \
+marlin_CFLAGS = \
     -I$(top_srcdir) \
     -I$(top_srcdir)/libcore/ \
     $(CORE_CFLAGS) \
@@ -19,39 +19,24 @@ marlin_VALAFLAGS = \
     --pkg gtk+-3.0 \
     --pkg gio-2.0 \
     --pkg gee-1.0 \
+    --vapidir=$(top_srcdir)/libcore/ \
+    --pkg marlincore \
+    --vapidir=$(top_srcdir)/src/ \
+    --pkg marlin \
     -g \
     $(NULL)
 
 marlin_LDADD = \
     $(CORE_LIBS) \
-    libmarlincore.la \
+    $(top_srcdir)/libcore/libmarlincore.la \
     $(NULL)
 
 BUILT_SOURCES = \
     marlin-marshal.c \
     marlin-marshal.h \
-    marlin.vala.stamp \
     $(NULL)
 
-marlin_VALASOURCES = \
-    View/SettingsDialog.vala                \
-    View/Window.vala 	                    \
-    View/Resources.vala	                    \
-    View/DbusTags.vala	                    \
-    View/ViewContainer.vala                 \
-    View/ContextView.vala                   \
-    View/Browser.vala                       \
-    View/ViewMode.vala                      \
-    View/Animations.vala                    \
-    View/Chrome/AdvancedMenuToolButton.vala \
-    View/Chrome/AppMenu.vala                \
-    View/Chrome/ToolButtonWithMenu.vala     \
-    View/Chrome/LocationBar.vala            \
-    View/Chrome/ModeButton.vala             \
-    View/Chrome/TopMenu.vala                \
-    View/Chrome/ViewSwicher.vala            \
-    View/Chrome/CollapsablePaned.vala       \
-    View/Chrome/ColorWidget.vala            \
+marlin_SOURCES = \
     $(NULL)
 
 marlin_CSOURCES = \
@@ -88,7 +73,24 @@ marlin_CSOURCES = \
     $(NULL)
 
 marlin_SOURCES = \
-    $(marlin_VALASOURCES:.vala=.c)          \
+    View/SettingsDialog.vala                \
+    View/Window.vala 	                    \
+    View/Resources.vala	                    \
+    View/DbusTags.vala	                    \
+    View/ViewContainer.vala                 \
+    View/ContextView.vala                   \
+    View/Browser.vala                       \
+    View/ViewMode.vala                      \
+    View/Animations.vala                    \
+    View/Chrome/AdvancedMenuToolButton.vala \
+    View/Chrome/AppMenu.vala                \
+    View/Chrome/ToolButtonWithMenu.vala     \
+    View/Chrome/LocationBar.vala            \
+    View/Chrome/ModeButton.vala             \
+    View/Chrome/TopMenu.vala                \
+    View/Chrome/ViewSwicher.vala            \
+    View/Chrome/CollapsablePaned.vala       \
+    View/Chrome/ColorWidget.vala            \
     $(marlin_CSOURCES)                      \
 	marlin-main.c                           \
     $(NULL)
@@ -127,34 +129,10 @@ EXTRA_DIST = \
 	$(marlin_VALASOURCES) \
 	$(NULL)
 
-
-marlin.vala.stamp: $(marlin_VALASOURCES)
-	$(AM_V_GEN) $(VALAC) marlin.vapi $(marlin_VALAFLAGS) $^
-	touch marlin.vala.stamp
-
 CLEANFILES = \
     marlin-marshall.list \
     $(BUILT_SOURCES) \
 	$(marlin_VALASOURCES:.vala=.c) \
 	$(NULL)
 
-# GLIB - Library of useful C routines
-
-#GTESTER = gtester 			# for non-GLIB packages
-GTESTER = /usr/bin/gtester		# for the GLIB package
-GTESTER_REPORT = /usr/bin/gtester-report	# for the GLIB package
-
-check_PROGRAMS = marlintests
-marlintests_SOURCES = tests/marlintests.c             \
-					  tests/mwc_tests.c               \
-					  tests/LocationBar_tests.c       \
-					  $(marlin_VALASOURCES:.vala=.c)  \
-				      $(marlin_CSOURCES)              \
-					  $(BUILT_SOURCES)                \
-					  $(NULL)
-marlintests_LDADD = $(CORE_LIBS) $(NULL)
-marlintests_CFLAGS = $(CORE_CFLAGS) $(NULL) -I..
-marlintests_CPPFLAGS = $(marlin_CPPFLAGS)
-TESTS_ENVIRONMENT= $(GTESTER)
-TESTS = marlintests
 
