@@ -459,6 +459,9 @@ fm_directory_view_init (FMDirectoryView *view)
     /* connect to size allocation signals for generating thumbnail requests */
     g_signal_connect_after (G_OBJECT (view), "size-allocate",
                             G_CALLBACK (fm_directory_view_size_allocate), NULL);
+    
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (view),
+					       GTK_SHADOW_ETCHED_IN);
 }
 
 static GObject*
