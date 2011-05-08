@@ -54,7 +54,9 @@ MarlinPluginManager* marlin_plugin_manager_new (void)
 
 static marlin_plugin_manager_add_plugin(MarlinPluginManager* plugins, const gchar* path)
 {
-    plugins->plugins_list = g_list_append(plugins->plugins_list, marlin_plugin_new(path));
+    MarlinPlugin* plugin = marlin_plugin_new(path);
+    if(plugin != NULL)
+        plugins->plugins_list = g_list_append(plugins->plugins_list, plugin);
 }
 
 void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin)
@@ -65,7 +67,11 @@ void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin)
     GFileInfo* file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
     while(file_info != NULL)
     {
-        marlin_plugin_manager_add_plugin(plugins, g_strdup_printf("/usr/share/marlin/plugins/%s", g_file_info_get_name(file_info)));
+        printf("%s\n", g_file_info_get_content_type(file_info));
+        if(!g_strcmp0(g_file_info_get_content_type(file_info), "text/plain"))
+        {
+            marlin_plugin_manager_add_plugin(plugins, g_strdup_printf("/usr/share/marlin/plugins/%s", g_file_info_get_name(file_info)));
+        }
         file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
     }
 }

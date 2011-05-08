@@ -26,17 +26,9 @@
 
 #include <gtk/gtk.h>
 
-//char *      nautilus_get_ui_directory              (void);
-//char *      eel_ui_file                     (const char        *partial_path);
 void        eel_ui_unmerge_ui               (GtkUIManager      *ui_manager,
-		                             guint             *merge_id,
-					     GtkActionGroup   **action_group);
-/*void        nautilus_ui_prepare_merge_ui           (GtkUIManager      *ui_manager,
-						    const char        *name,
-						    guint             *merge_id,
-						    GtkActionGroup   **action_group);
-GtkAction * nautilus_action_from_menu_item         (NautilusMenuItem  *item);
-GtkAction * nautilus_toolbar_action_from_menu_item (NautilusMenuItem  *item);*/
+                                             guint             *merge_id,
+                                             GtkActionGroup   **action_group);
 const char *eel_ui_string_get               (const char        *filename);
 
 #endif /* EEL_UI_H */

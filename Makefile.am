@@ -1,9 +1,11 @@
 SUBDIRS =               \
+        libcore         \
         src             \
         marlin-daemon   \
         data            \
         icons           \
         po              \
+        plugins         \
         $(NULL)
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-update-mimedb

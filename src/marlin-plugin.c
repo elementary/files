@@ -49,8 +49,17 @@ marlin_plugin_class_init (MarlinPluginClass *klass)
 MarlinPlugin* marlin_plugin_new(const gchar* path)
 {
     gchar* dl_error;
+    GKeyFile* keyfile;
     MarlinPlugin* plugin = g_object_new(MARLIN_TYPE_PLUGIN, NULL);
-    plugin->plugin_handle = dlopen (path, RTLD_LAZY);
+    /* Creating a new keyfile object, to load the plugin config in it. */
+    keyfile = g_key_file_new();
+
+    /* Load the keys, it can be empty, that's why we will put some default value
+     * then. */
+    g_key_file_load_from_file(keyfile, path,
+                              G_KEY_FILE_NONE,
+                              NULL);
+    plugin->plugin_handle = dlopen (g_key_file_get_value(keyfile, "Plugin", "File", NULL), RTLD_LAZY);
     if(! plugin->plugin_handle)
     {
         g_warning("Can't load plugin: %s", path);

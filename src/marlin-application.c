@@ -26,6 +26,7 @@
 #include "marlin-application.h"
 
 #include "marlin-view-window.h"
+#include "marlincore-vala.h"
 #include "marlin-vala.h"
 #include "marlin-progress-ui-handler.h"
 #include "marlin-clipboard-manager.h"

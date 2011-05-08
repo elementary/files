@@ -42,19 +42,6 @@ eel_ui_unmerge_ui (GtkUIManager *ui_manager,
     }
 }
 
-/*char *
-eel_ui_file (const char *partial_path)
-{
-    char *path;
-
-    path = g_build_filename (DATADIR "/marlin/ui", partial_path, NULL);
-    if (g_file_test (path, G_FILE_TEST_EXISTS)) {
-        return path;
-    }
-    g_free (path);
-    return NULL;
-}*/
-
 const char *
 eel_ui_string_get (const char *filename)
 {
@@ -69,9 +56,6 @@ eel_ui_string_get (const char *filename)
 
     ui = g_hash_table_lookup (ui_cache, filename);
     if (ui == NULL) {
-        //path = eel_ui_file (filename);
-        //path = UI_DIR filename;
-        //path = g_build_filename (DATADIR "/marlin/ui", partial_path, NULL);
         path = g_build_filename (UI_DIR, filename, NULL);
         if (path == NULL || !g_file_get_contents (path, &ui, NULL, NULL)) {
             g_warning ("Unable to load ui file %s\n", filename); 

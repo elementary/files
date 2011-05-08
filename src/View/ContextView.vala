@@ -5,7 +5,7 @@
 //       Mathijs Henquet <mathijs.henquet@gmail.com>
 //       ammonkey <am.monkeyd@gmail.com>
 //
-//  Copyright (c) 2010 Mathijs Henquet
+//  Copyright (c) 2011 Mathijs Henquet
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -152,19 +152,24 @@ namespace Marlin.View {
             return false;
         }
 
+        private void update_icon(GOF.File gof_file)
+        {
+            var icon_size_request = 96; /* -10 is just an hardcoded padding */
+            if(orientation == Orientation.HORIZONTAL){
+                icon_size_request = 42;
+            }
+
+            Nautilus.IconInfo icon_info = gof_file.get_icon(icon_size_request, GOF.FileIconFlags.USE_THUMBNAILS);
+            icon = icon_info.get_pixbuf_nodefault();
+        }
 
 
         public void update(GOF.File gof_file){
             last_geof_cache = gof_file;
 
             var file_info = gof_file.info;
-            var icon_size_request = 96;
-            if(orientation == Orientation.HORIZONTAL){
-                icon_size_request = 42;
-            }
 
-            Nautilus.IconInfo icon_info = Nautilus.IconInfo.lookup(gof_file.icon, icon_size_request);
-            icon = icon_info.get_pixbuf_nodefault();
+            update_icon(gof_file);
 
             info.clear();
             var raw_type = file_info.get_file_type();
@@ -266,6 +271,7 @@ namespace Marlin.View {
 
             var value_label = new Label(((Pair<string, string>) pair).value);
             value_label.set_alignment(0, 0);
+            value_label.set_selectable(true);
             if(limit_width)
                 value_label.set_size_request(key_value_width, -1);
             value_label.size_allocate.connect((l, s) => l.set_size_request(s.width, -1));

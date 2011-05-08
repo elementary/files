@@ -113,7 +113,7 @@ namespace Marlin.View.Chrome
         int gtk_font_size;
         string protocol = "";
 
-        Gtk.Button button;
+        Gtk.StyleContext button_context;
         Gtk.StyleContext entry_context;
         BreadcrumbsEntry entry;
 
@@ -184,8 +184,7 @@ namespace Marlin.View.Chrome
 
             gtk_font_name = font.get_family();
 
-            /* FIXME: we should directly use a Gtk.StyleContext */
-            button = new Gtk.Button();
+            button_context = new Gtk.Button().get_style_context();
             entry_context = new Gtk.Entry().get_style_context();
 
             set_can_focus(true);
@@ -198,7 +197,7 @@ namespace Marlin.View.Chrome
             
             elements = new Gee.ArrayList<BreadcrumbsElement>();
 
-            entry = new BreadcrumbsEntry(gtk_font_name, gtk_font_size, button.get_style_context());
+            entry = new BreadcrumbsEntry(gtk_font_name, gtk_font_size, button_context);
 
             entry.enter.connect(on_entry_enter);
 
@@ -261,18 +260,14 @@ namespace Marlin.View.Chrome
                 foreach(BreadcrumbsElement element in elements)
                 {
                     if(element.display)
-                        path += "/" + element.text; /* sometimes, + "/" is useless
+                        path += element.text + "/"; /* sometimes, + "/" is useless
                                                      * but we are never careful enough */
                 }
-                for(int i = 0; i < entry.text.split("/").length - 1; i++)
-                {
-                    path += "/" + entry.text.split("/")[i];
-                }
+                path = Marlin.Utils.get_parent(path + "/" +  entry.text);
                 if(entry.text.split("/").length > 0)
-                to_search = entry.text.split("/")[entry.text.split("/").length - 1];
+                    to_search = entry.text.split("/")[entry.text.split("/").length - 1];
                 else
-                to_search = "";
-                print("%s\n", to_search);
+                    to_search = "";
                 entry.completion = "";
                 
                 if(to_search.length > 0)
@@ -326,7 +321,6 @@ namespace Marlin.View.Chrome
 
         private void action_paste()
         {
-            print("PASTE\n\n\n");
             if(focus)
             {
                 var display = get_display();
@@ -677,11 +671,20 @@ namespace Marlin.View.Chrome
         private void animate_old_breads()
         {
             anim_state = 0;
+            foreach(BreadcrumbsElement bread in newbreads)
+            {
+                bread.offset = anim_state;
+            }
             Timeout.add(1000/60, () => {
                 anim_state++;
-                foreach(BreadcrumbsElement bread in newbreads)
+                /* FIXME: Instead of this hacksih if( != null), we should use a
+                 * nice mutex */
+                if(newbreads != null)
                 {
-                    bread.offset = anim_state;
+                    foreach(BreadcrumbsElement bread in newbreads)
+                    {
+                        bread.offset = anim_state;
+                    }
                 }
                 queue_draw();
                 if(anim_state >= 10)
@@ -699,6 +702,10 @@ namespace Marlin.View.Chrome
         private void animate_new_breads()
         {
             anim_state = 10;
+            foreach(BreadcrumbsElement bread in newbreads)
+            {
+                bread.offset = anim_state;
+            }
             Timeout.add(1000/60, () => {
                 anim_state--;
                 /* FIXME: Instead of this hacksih if( != null), we should use a
@@ -772,7 +779,7 @@ namespace Marlin.View.Chrome
                            y);
                 cr.close_path();
                 Gdk.RGBA color = Gdk.RGBA();
-                button.get_style_context().get_background_color(Gtk.StateFlags.SELECTED, color);
+                button_context.get_background_color(Gtk.StateFlags.SELECTED, color);
                 
                 Cairo.Pattern pat = new Cairo.Pattern.linear(first_stop, y, second_stop, y);
                 pat.add_color_stop_rgba(0.7, color.red, color.green, color.blue, 0);
@@ -855,17 +862,18 @@ namespace Marlin.View.Chrome
         {
             double height = get_allocated_height();
             double width = get_allocated_width();
+            double margin = 6;
 
             /* Draw toolbar background */
             if(focus)
             {
-                Gtk.render_background(entry_context, cr, 0, 6, width, height - 12);
-                Gtk.render_frame(entry_context, cr, 0, 6, width, height - 12);
+                Gtk.render_background(entry_context, cr, 0, margin, width, height - margin*2);
+                Gtk.render_frame(entry_context, cr, 0, margin, width, height - margin*2);
             }
             else
             {
-                Gtk.render_background(button.get_style_context(), cr, 0, 6, width, height - 12);
-                Gtk.render_frame(button.get_style_context(), cr, 0, 6, width, height - 12);
+                Gtk.render_background(button_context, cr, 0, margin, width, height-margin*2);
+                Gtk.render_frame(button_context, cr, 0, margin, width, height-margin*2);
             }
 
             double x_render = y;
@@ -875,8 +883,8 @@ namespace Marlin.View.Chrome
             {
                 if(element.display)
                 {
-                element.draw(cr, x_render, y, height);
-                x_render += element.text_width + space_breads;
+                    element.draw(cr, x_render, margin, height-margin*2, button_context);
+                    x_render += element.text_width + space_breads;
                 }
                 i++;
             }
@@ -886,7 +894,7 @@ namespace Marlin.View.Chrome
                 {
                     if(element.display)
                     {
-                        element.draw(cr, x_render, y, height);
+                        element.draw(cr, x_render, margin, height - margin*2, button_context);
                         x_render += element.text_width + space_breads;
                     }
                 }
@@ -973,7 +981,7 @@ namespace Marlin.View.Chrome
             text_width = txt.x_advance;
         }
         
-        public void draw(Cairo.Context cr, double x, double y, double height)
+        public void draw(Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context)
         {
             cr.set_source_rgb(0,0,0);
             cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
@@ -990,10 +998,10 @@ namespace Marlin.View.Chrome
             if(offset != 0)
             {
                 cr.move_to(x, y);
-                cr.line_to(x + 5, height/2);
-                cr.line_to(x, height - y);
-                cr.line_to(x + text_width + 5, height - y);
-                cr.line_to(x + text_width + 10 + 5, height/2);
+                cr.line_to(x + 5, y + height/2);
+                cr.line_to(x, y + height);
+                cr.line_to(x + text_width + 5, y+ height);
+                cr.line_to(x + text_width + 10 + 5, y+height/2);
                 cr.line_to(x + text_width + 5, y);
                 cr.close_path();
                 cr.clip();
@@ -1002,22 +1010,24 @@ namespace Marlin.View.Chrome
             if(icon == null)
             {
                 cr.move_to(x - offset*5,
-                           height/2 + font_size/2);
+                           y + height/2 + font_size/2);
                 cr.show_text(text);
             }
             else
             {
                 Gdk.cairo_set_source_pixbuf(cr, icon, x - offset*5,
-                           height/2 - icon.get_height()/2);
+                           y + height/2 - icon.get_height()/2);
                 cr.paint();
             }
+            cr.save();
             cr.set_source_rgba(0,0,0,0.5);
             /* Draw the separator */
-            cr.set_line_width(1);
-            cr.move_to(x - offset*5 + text_width, y);
-            cr.line_to(x - offset*5 + text_width + 10, height/2);
-            cr.line_to(x - offset*5 + text_width, height - y);
-            cr.stroke();
+            cr.translate(x  - offset*5 + text_width - height/4, y + height/2);
+            cr.rectangle(0, -height/2 + 2, height, height - 4);
+            cr.clip();
+            cr.rotate(Math.PI/4);
+            Gtk.render_frame(button_context, cr, -height/2, -height/2, Math.sqrt(height*height), Math.sqrt(height*height));
+            cr.restore();
         }
     }
     
@@ -1366,13 +1376,17 @@ namespace Marlin.Utils
 {
     public string get_parent(string newpath)
     {
-        var path = File.new_for_path(newpath);
+        var path = File.new_for_uri(newpath);
+        if(!path.query_exists())
+            path = File.new_for_path(newpath);
         return path.get_parent().get_path();
     }
 
     public bool has_parent(string newpath)
     {
-        var path = File.new_for_path(newpath);
+        var path = File.new_for_uri(newpath);
+        if(!path.query_exists())
+            path = File.new_for_path(newpath);
         return path.has_parent(null);
     }
 }
