@@ -859,8 +859,8 @@ namespace Marlin.View.Chrome
             }
             else
             {
-                Gtk.render_background(button.get_style_context(), cr, 0, 6, width, height - 12);
-                Gtk.render_frame(button.get_style_context(), cr, 0, 6, width, height - 12);
+                Gtk.render_background(button.get_style_context(), cr, 0, 6, width, height-12);
+                Gtk.render_frame(button.get_style_context(), cr, 0, 6, width, height-12);
             }
 
             double x_render = y;
@@ -870,8 +870,8 @@ namespace Marlin.View.Chrome
             {
                 if(element.display)
                 {
-                element.draw(cr, x_render, y, height);
-                x_render += element.text_width + space_breads;
+                    element.draw(cr, x_render, 6, height-12);
+                    x_render += element.text_width + space_breads;
                 }
                 i++;
             }
@@ -881,7 +881,7 @@ namespace Marlin.View.Chrome
                 {
                     if(element.display)
                     {
-                        element.draw(cr, x_render, y, height);
+                        element.draw(cr, x_render, 6, height - 12);
                         x_render += element.text_width + space_breads;
                     }
                 }
@@ -949,11 +949,13 @@ namespace Marlin.View.Chrome
         public double text_width = -1;
         Gdk.Pixbuf icon;
         public bool display = true;
+        Gtk.StyleContext button_context;
         public BreadcrumbsElement(string text_, string font_name_, int font_size_)
         {
             text = text_;
             font_name = font_name_;
             font_size = font_size_;
+            button_context = (new Button()).get_style_context();
         }
         
         public void set_icon(Gdk.Pixbuf icon_)
@@ -984,35 +986,37 @@ namespace Marlin.View.Chrome
             
             if(offset != 0)
             {
-                cr.move_to(x, y);
-                cr.line_to(x + 5, height/2);
+                /*cr.move_to(x, y);
+                cr.line_to(x + 5, y + height/2);
                 cr.line_to(x, height - y);
                 cr.line_to(x + text_width + 5, height - y);
                 cr.line_to(x + text_width + 10 + 5, height/2);
                 cr.line_to(x + text_width + 5, y);
                 cr.close_path();
-                cr.clip();
+                cr.clip();*/
             }
             
             if(icon == null)
             {
                 cr.move_to(x - offset*5,
-                           height/2 + font_size/2);
+                           y + height/2 + font_size/2);
                 cr.show_text(text);
             }
             else
             {
                 Gdk.cairo_set_source_pixbuf(cr, icon, x - offset*5,
-                           height/2 - icon.get_height()/2);
+                           y + height/2 - icon.get_height()/2);
                 cr.paint();
             }
+            cr.save();
             cr.set_source_rgba(0,0,0,0.5);
             /* Draw the separator */
-            cr.set_line_width(1);
-            cr.move_to(x - offset*5 + text_width, y);
-            cr.line_to(x - offset*5 + text_width + 10, height/2);
-            cr.line_to(x - offset*5 + text_width, height - y);
-            cr.stroke();
+            cr.translate(x  - offset*5 + text_width - 5, y + height/2);
+            cr.rectangle(0, -height/2, height, height);
+            cr.clip();
+            cr.rotate(Math.PI/4);
+            Gtk.render_frame(button_context, cr, -height/2, -height/2, height, Math.sqrt(height*height));
+            cr.restore();
         }
     }
     
