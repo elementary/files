@@ -90,3 +90,6 @@ src/marlin_vala.stamp
 libcore/marlincore.vapi
 libcore/marlincore-vala.h
 libcore/libmarlincore.la
+plugins/open-terminal/libmarlin-openterminal.la
+plugins/open-terminal/libmarlin_openterminal_a-plugin.o
+plugins/open-terminal/libmarlin_openterminal_la-plugin.lo
