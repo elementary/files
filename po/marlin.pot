@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: ../src/marlin-application.c:604
-#, fuzzy, c-format
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-01 13:42+0200\n"
+"POT-Creation-Date: 2011-05-08 02:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,12 +190,12 @@ msgid "Opacity of the selection box"
 msgstr ""
 
 #. tell the user that the file name provided by the X Direct Save source is invalid
-#: ../src/fm-directory-view.c:1076
+#: ../src/fm-directory-view.c:1100
 msgid "Invalid filename provided by XDS drag site"
 msgstr ""
 
 #. display an error dialog to the user
-#: ../src/fm-directory-view.c:1237
+#: ../src/fm-directory-view.c:1261
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr ""
@@ -204,32 +203,32 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2548
+#: ../src/fm-directory-view.c:2759
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2552
+#: ../src/fm-directory-view.c:2763
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2556
+#: ../src/fm-directory-view.c:2767
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2559
+#: ../src/fm-directory-view.c:2770
 msgid "Paste Into Folder"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2560
+#: ../src/fm-directory-view.c:2771
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -237,62 +236,62 @@ msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2563
+#: ../src/fm-directory-view.c:2774
 msgid "_Rename..."
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2564
+#: ../src/fm-directory-view.c:2775
 msgid "Rename selected item"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2567
+#: ../src/fm-directory-view.c:2778
 msgid "Create New _Folder"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2568
+#: ../src/fm-directory-view.c:2779
 msgid "Create a new empty folder inside this folder"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2571
+#: ../src/fm-directory-view.c:2782
 msgid "Mo_ve to Trash"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2572
+#: ../src/fm-directory-view.c:2783
 msgid "Move each selected item to the Trash"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2575
+#: ../src/fm-directory-view.c:2786
 msgid "_Delete"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2576
+#: ../src/fm-directory-view.c:2787
 msgid "Delete each selected item, without moving to the Trash"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2579
+#: ../src/fm-directory-view.c:2790
 msgid "_Restore"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2583
+#: ../src/fm-directory-view.c:2794
 msgid "_Properties"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2584
+#: ../src/fm-directory-view.c:2795
 msgid "View or modify the properties of each selected item"
 msgstr ""
 
@@ -308,9 +307,7 @@ msgstr ""
 msgid "Filename"
 msgstr ""
 
-#: ../src/fm-list-view.c:54 ../src/marlin-application.c:605
-#: ../src/View/ContextView.vala:180
-#, c-format
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:185
 msgid "Size"
 msgstr ""
 
@@ -322,7 +319,7 @@ msgstr ""
 msgid "Modified"
 msgstr ""
 
-#: ../src/gof-file.c:263
+#: ../src/gof-file.c:278
 #, c-format
 msgid "link to %s"
 msgstr ""
@@ -342,62 +339,62 @@ msgstr ""
 #. * off zero padding, and putting a "_" there will use
 #. * space padding instead of zero padding.
 #.
-#: ../src/gof-file.c:680
+#: ../src/gof-file.c:727
 msgid "today at 00:00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:681
+#: ../src/gof-file.c:728
 msgid "today at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/gof-file.c:683
+#: ../src/gof-file.c:730
 msgid "today at 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:684
+#: ../src/gof-file.c:731
 msgid "today at %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:686
+#: ../src/gof-file.c:733
 msgid "today, 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:687
+#: ../src/gof-file.c:734
 msgid "today, %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:689 ../src/gof-file.c:690
+#: ../src/gof-file.c:736 ../src/gof-file.c:737
 msgid "today"
 msgstr ""
 
 #. Yesterday, use special word.
 #. * Note to localizers: Same issues as "today" string.
 #.
-#: ../src/gof-file.c:699
+#: ../src/gof-file.c:746
 msgid "yesterday at 00:00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:700
+#: ../src/gof-file.c:747
 msgid "yesterday at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/gof-file.c:702
+#: ../src/gof-file.c:749
 msgid "yesterday at 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:703
+#: ../src/gof-file.c:750
 msgid "yesterday at %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:705
+#: ../src/gof-file.c:752
 msgid "yesterday, 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:706
+#: ../src/gof-file.c:753
 msgid "yesterday, %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:708 ../src/gof-file.c:709
+#: ../src/gof-file.c:755 ../src/gof-file.c:756
 msgid "yesterday"
 msgstr ""
 
@@ -406,122 +403,122 @@ msgstr ""
 #. * The width measurement templates correspond to
 #. * the day/month name with the most letters.
 #.
-#: ../src/gof-file.c:720
+#: ../src/gof-file.c:767
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:721
+#: ../src/gof-file.c:768
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/gof-file.c:723
+#: ../src/gof-file.c:770
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:724
+#: ../src/gof-file.c:771
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/gof-file.c:726
+#: ../src/gof-file.c:773
 msgid "Mon, Oct 00 0000 at 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:727
+#: ../src/gof-file.c:774
 msgid "%a, %b %-d %Y at %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:729
+#: ../src/gof-file.c:776
 msgid "Oct 00 0000 at 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:730
+#: ../src/gof-file.c:777
 msgid "%b %-d %Y at %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:732
+#: ../src/gof-file.c:779
 msgid "Oct 00 0000, 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:733
+#: ../src/gof-file.c:780
 msgid "%b %-d %Y, %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:735
+#: ../src/gof-file.c:782
 msgid "00/00/00, 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:736
+#: ../src/gof-file.c:783
 msgid "%m/%-d/%y, %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:738
+#: ../src/gof-file.c:785
 msgid "00/00/00"
 msgstr ""
 
-#: ../src/gof-file.c:739
+#: ../src/gof-file.c:786
 msgid "%m/%d/%y"
 msgstr ""
 
-#: ../src/gof-file.c:1463
+#: ../src/gof-file.c:1522
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr ""
 
-#: ../src/gof-file.c:1501
+#: ../src/gof-file.c:1560
 #, c-format
 msgid "No Exec field specified"
 msgstr ""
 
-#: ../src/gof-file.c:1521
+#: ../src/gof-file.c:1580
 #, c-format
 msgid "No URL field specified"
 msgstr ""
 
-#: ../src/gof-file.c:1527
+#: ../src/gof-file.c:1586
 #, c-format
 msgid "Invalid desktop file"
 msgstr ""
 
-#: ../src/gof-file.c:1751
+#: ../src/gof-file.c:1810
 #, c-format
 msgid "Slashes are not allowed in filenames"
 msgstr ""
 
-#: ../src/gof-file.c:1771
+#: ../src/gof-file.c:1830
 #, c-format
 msgid "Toplevel files cannot be renamed"
 msgstr ""
 
-#: ../src/marlin-application.c:465
+#: ../src/marlin-application.c:469
 msgid "Show the version of the program."
 msgstr ""
 
-#: ../src/marlin-application.c:467
+#: ../src/marlin-application.c:471
 msgid ""
 "Do not manage the desktop (ignore the preference set in the preferences "
 "dialog)."
 msgstr ""
 
-#: ../src/marlin-application.c:469
+#: ../src/marlin-application.c:473
 msgid "Open uri(s) in new tab"
 msgstr ""
 
-#: ../src/marlin-application.c:471
+#: ../src/marlin-application.c:475
 msgid "Quit Marlin."
 msgstr ""
 
-#: ../src/marlin-application.c:472
+#: ../src/marlin-application.c:476
 msgid "[URI...]"
 msgstr ""
 
-#: ../src/marlin-application.c:483
+#: ../src/marlin-application.c:487
 msgid ""
 "\n"
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
 
-#: ../src/marlin-application.c:508
+#: ../src/marlin-application.c:512
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
@@ -1434,7 +1431,7 @@ msgid "Your common places and bookmarks"
 msgstr ""
 
 #. tooltip
-#: ../src/marlin-places-sidebar.c:337 ../src/View/Window.vala:571
+#: ../src/marlin-places-sidebar.c:337 ../src/View/Window.vala:572
 msgid "Open your personal folder"
 msgstr ""
 
@@ -1627,33 +1624,33 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:923
+#: ../src/View/Chrome/LocationBar.vala:918
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:927
+#: ../src/View/Chrome/LocationBar.vala:922
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:931
+#: ../src/View/Chrome/LocationBar.vala:926
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
-#: ../src/View/ContextView.vala:216
+#: ../src/View/ContextView.vala:226
 msgid "Other..."
 msgstr ""
 
-#: ../src/View/ContextView.vala:219
+#: ../src/View/ContextView.vala:229
 msgid "Set as default"
 msgstr ""
 
-#: ../src/View/ContextView.vala:317
+#: ../src/View/ContextView.vala:328
 msgid "Open with:"
 msgstr ""
 
@@ -1705,248 +1702,248 @@ msgstr ""
 msgid "informal"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:135
+#: ../src/View/SettingsDialog.vala:136
 msgid "Date format:"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:150
+#: ../src/View/SettingsDialog.vala:151
 msgid "Show applications names in the context pane:"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:158
+#: ../src/View/SettingsDialog.vala:159
 msgid "Display"
 msgstr ""
 
-#: ../src/View/Window.vala:526
+#: ../src/View/Window.vala:527
 msgid "translator-credits"
 msgstr ""
 
 #. name, stock id, label
-#: ../src/View/Window.vala:531
+#: ../src/View/Window.vala:532
 msgid "_File"
 msgstr ""
 
 #. name, stock id, label
-#: ../src/View/Window.vala:532
+#: ../src/View/Window.vala:533
 msgid "_Edit"
 msgstr ""
 
 #. name, stock id, label
-#: ../src/View/Window.vala:533
+#: ../src/View/Window.vala:534
 msgid "_View"
 msgstr ""
 
 #. name, stock id, label
-#: ../src/View/Window.vala:534
+#: ../src/View/Window.vala:535
 msgid "_Go"
 msgstr ""
 
 #. name, stock id, label
-#: ../src/View/Window.vala:535
+#: ../src/View/Window.vala:536
 msgid "_Help"
 msgstr ""
 
 #. { "ColorMenu", null, N_("Set _Color") },
 #. name, stock id, label
-#: ../src/View/Window.vala:537
+#: ../src/View/Window.vala:538
 msgid "New _Window"
 msgstr ""
 
-#: ../src/View/Window.vala:538
+#: ../src/View/Window.vala:539
 msgid "Open another Marlin window for the displayed location"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:541
+#: ../src/View/Window.vala:542
 msgid "New _Tab"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:542
+#: ../src/View/Window.vala:543
 msgid "Open another tab for the displayed location"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:545
+#: ../src/View/Window.vala:546
 msgid "_Close"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:546
+#: ../src/View/Window.vala:547
 msgid "Close this folder"
 msgstr ""
 
-#: ../src/View/Window.vala:549
+#: ../src/View/Window.vala:550
 msgid "Customize _Toolbar..."
 msgstr ""
 
-#: ../src/View/Window.vala:550
+#: ../src/View/Window.vala:551
 msgid "Easily edit the toolbar layout"
 msgstr ""
 
-#: ../src/View/Window.vala:553
+#: ../src/View/Window.vala:554
 msgid "Settings"
 msgstr ""
 
-#: ../src/View/Window.vala:554
+#: ../src/View/Window.vala:555
 msgid "Change Marlin's settings"
 msgstr ""
 
 #. { Chrome.ColorAction, null, "ColorAction"),
 #. null, null,
 #. null },
-#: ../src/View/Window.vala:559
+#: ../src/View/Window.vala:560
 msgid "Open _Parent"
 msgstr ""
 
-#: ../src/View/Window.vala:560
+#: ../src/View/Window.vala:561
 msgid "Open the parent folder"
 msgstr ""
 
-#: ../src/View/Window.vala:562
+#: ../src/View/Window.vala:563
 msgid "_Back"
 msgstr ""
 
-#: ../src/View/Window.vala:563
+#: ../src/View/Window.vala:564
 msgid "Go to the previous visited location"
 msgstr ""
 
-#: ../src/View/Window.vala:566
+#: ../src/View/Window.vala:567
 msgid "_Forward"
 msgstr ""
 
-#: ../src/View/Window.vala:567
+#: ../src/View/Window.vala:568
 msgid "Go to the next visited location"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:570
+#: ../src/View/Window.vala:571
 msgid "_Home Folder"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:574
+#: ../src/View/Window.vala:575
 msgid "_Trash"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:575
+#: ../src/View/Window.vala:576
 msgid "Open your personal trash folder"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:578
+#: ../src/View/Window.vala:579
 msgid "_Network"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:579
+#: ../src/View/Window.vala:580
 msgid "Browse bookmarked and local network locations"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:582
+#: ../src/View/Window.vala:583
 msgid "Zoom _In"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:583
+#: ../src/View/Window.vala:584
 msgid "Increase the view size"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:594
+#: ../src/View/Window.vala:595
 msgid "Zoom _Out"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:595
+#: ../src/View/Window.vala:596
 msgid "Decrease the view size"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:602
+#: ../src/View/Window.vala:603
 msgid "Normal Si_ze"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:603
+#: ../src/View/Window.vala:604
 msgid "Use the normal view size"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:606
+#: ../src/View/Window.vala:607
 msgid "_About"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:607
+#: ../src/View/Window.vala:608
 msgid "Display credits"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:615
+#: ../src/View/Window.vala:616
 msgid "Show _Hidden Files"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:616
+#: ../src/View/Window.vala:617
 msgid "Toggle the display of hidden files in the current window"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:620
+#: ../src/View/Window.vala:621
 msgid "_Context Pane"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:621
+#: ../src/View/Window.vala:622
 msgid "Change the visibility of the context pane"
 msgstr ""
 
 #. is_active
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:625
+#: ../src/View/Window.vala:626
 msgid "_Menubar"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:626
+#: ../src/View/Window.vala:627
 msgid "Change the visibility of this window's menubar"
 msgstr ""
 
 #. is_active
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:630
+#: ../src/View/Window.vala:631
 msgid "_Side Pane"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:631
+#: ../src/View/Window.vala:632
 msgid "Change the visibility of this window's side pane"
 msgstr ""
 
-#: ../src/View/Window.vala:639
+#: ../src/View/Window.vala:640
 msgid "Icon View"
 msgstr ""
 
-#: ../src/View/Window.vala:642
+#: ../src/View/Window.vala:643
 msgid "List View"
 msgstr ""
 
-#: ../src/View/Window.vala:645
+#: ../src/View/Window.vala:646
 msgid "Columns View"
 msgstr ""

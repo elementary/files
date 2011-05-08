@@ -1,0 +1,15 @@
+Source: marlin
+Section: x11
+Priority: optional
+Maintainer: Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>
+Vcs-Bzr: https://code.launchpad.net/~elementaryproject/marlin/trunk
+Build-Depends: debhelper (>= 5), cdbs, valac (>= 0.11.2), libglib2.0-dev (>= 2.28.0), libpango1.0-dev (>= 1.1.2), libgtk-3-dev (>= 3.0.3), libgee-dev, libsqlite3-dev, libnotify-dev, libdbus-glib-1-dev
+XS-Python-Version: all
+Standards-Version: 3.8.4
+
+Package: marlin
+Architecture: any
+Depends: ${misc:Depends}
+Description: The sexiest fish in the large sea of file-browsers
+ A file manager which created to be fast, and easy to use.
+ An elementary Team project.

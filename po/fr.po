@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-01 13:42+0200\n"
+"POT-Creation-Date: 2011-05-08 02:18+0200\n"
 "PO-Revision-Date: 2011-05-07 12:45+0100\n"
 "Last-Translator: Lucas Baudin <xapantu@gmail.com>\n"
 "Language-Team: Fr <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Launchpad-Export-Date: 2011-05-03 05:14+0000\n"
 "X-Generator: Launchpad (build 12758)\n"
-"Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: ../src/eel-stock-dialogs.c:35
@@ -36,25 +36,26 @@ msgstr "Mode de sélection"
 msgid "The selection mode"
 msgstr "Le mode de sélection"
 
-#: ../src/exo-icon-view.c:593
-#: ../src/exo-tree-view.c:161
+#: ../src/exo-icon-view.c:593 ../src/exo-tree-view.c:161
 msgid "Single Click"
 msgstr "Clic simple"
 
-#: ../src/exo-icon-view.c:594
-#: ../src/exo-tree-view.c:162
+#: ../src/exo-icon-view.c:594 ../src/exo-tree-view.c:162
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Si les éléments dans la vue peuvent être activés ou non avec un simple clique"
+msgstr ""
+"Si les éléments dans la vue peuvent être activés ou non avec un simple clique"
 
-#: ../src/exo-icon-view.c:610
-#: ../src/exo-tree-view.c:178
+#: ../src/exo-icon-view.c:610 ../src/exo-tree-view.c:178
 msgid "Single Click Timeout"
 msgstr ""
 
-#: ../src/exo-icon-view.c:611
-#: ../src/exo-tree-view.c:179
-msgid "The amount of time after which the item under the mouse cursor will be selected automatically in single click mode"
-msgstr "Durée après laquelle l'élément sous le pointeur sera automatiquement sélectionné en mode simple clic"
+#: ../src/exo-icon-view.c:611 ../src/exo-tree-view.c:179
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr ""
+"Durée après laquelle l'élément sous le pointeur sera automatiquement "
+"sélectionné en mode simple clic"
 
 #: ../src/exo-icon-view.c:629
 msgid "Pixbuf column"
@@ -141,7 +142,8 @@ msgid "Item Orientation"
 msgstr "Orientation de l'élément"
 
 #: ../src/exo-icon-view.c:791
-msgid "How the text and icon of each item are positioned relative to each other"
+msgid ""
+"How the text and icon of each item are positioned relative to each other"
 msgstr ""
 
 #: ../src/exo-icon-view.c:807
@@ -193,12 +195,12 @@ msgid "Opacity of the selection box"
 msgstr ""
 
 #. tell the user that the file name provided by the X Direct Save source is invalid
-#: ../src/fm-directory-view.c:1076
+#: ../src/fm-directory-view.c:1100
 msgid "Invalid filename provided by XDS drag site"
 msgstr ""
 
 #. display an error dialog to the user
-#: ../src/fm-directory-view.c:1237
+#: ../src/fm-directory-view.c:1261
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr ""
@@ -206,93 +208,96 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2548
+#: ../src/fm-directory-view.c:2759
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2552
+#: ../src/fm-directory-view.c:2763
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2556
+#: ../src/fm-directory-view.c:2767
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2559
+#: ../src/fm-directory-view.c:2770
 msgid "Paste Into Folder"
 msgstr "Coller dans le dossier"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2560
-msgid "Move or copy files previously selected by a Cut or Copy command into selected folder"
+#: ../src/fm-directory-view.c:2771
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2563
+#: ../src/fm-directory-view.c:2774
 msgid "_Rename..."
 msgstr "_Renommer..."
 
 #. tooltip
-#: ../src/fm-directory-view.c:2564
+#: ../src/fm-directory-view.c:2775
 msgid "Rename selected item"
 msgstr "Renommer l'objet sélectionné"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2567
+#: ../src/fm-directory-view.c:2778
 msgid "Create New _Folder"
 msgstr "Créer un nouveau _dossier"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2568
+#: ../src/fm-directory-view.c:2779
 msgid "Create a new empty folder inside this folder"
 msgstr "Créer un nouveau dossier vide dans ce dossier"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2571
+#: ../src/fm-directory-view.c:2782
 msgid "Mo_ve to Trash"
 msgstr "Déplacer vers la _corbeille"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2572
+#: ../src/fm-directory-view.c:2783
 msgid "Move each selected item to the Trash"
 msgstr "Met chaque élément sélectionné à la corbeille"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2575
+#: ../src/fm-directory-view.c:2786
 msgid "_Delete"
 msgstr "_Supprimer"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2576
+#: ../src/fm-directory-view.c:2787
 msgid "Delete each selected item, without moving to the Trash"
-msgstr "Supprime tous les éléments sélectionnés, sans les mettre à la corbeille"
+msgstr ""
+"Supprime tous les éléments sélectionnés, sans les mettre à la corbeille"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2579
+#: ../src/fm-directory-view.c:2790
 msgid "_Restore"
 msgstr "_Restaurer"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2583
+#: ../src/fm-directory-view.c:2794
 msgid "_Properties"
 msgstr "_Propriétés"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2584
+#: ../src/fm-directory-view.c:2795
 msgid "View or modify the properties of each selected item"
 msgstr "Affiche ou modifie les propriétés de chaque élément sélectionné"
 
@@ -308,10 +313,7 @@ msgstr "Chargement..."
 msgid "Filename"
 msgstr "Nom"
 
-#: ../src/fm-list-view.c:54
-#: ../src/marlin-application.c:605
-#: ../src/View/ContextView.vala:180
-#, c-format
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:185
 msgid "Size"
 msgstr "Taille"
 
@@ -323,7 +325,7 @@ msgstr "Type"
 msgid "Modified"
 msgstr "Date de modification"
 
-#: ../src/gof-file.c:263
+#: ../src/gof-file.c:278
 #, c-format
 msgid "link to %s"
 msgstr ""
@@ -343,64 +345,62 @@ msgstr ""
 #. * off zero padding, and putting a "_" there will use
 #. * space padding instead of zero padding.
 #.
-#: ../src/gof-file.c:680
+#: ../src/gof-file.c:727
 msgid "today at 00:00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:681
+#: ../src/gof-file.c:728
 msgid "today at %-I:%M:%S %p"
 msgstr "Aujourd'hui à %-H:%M:%S"
 
-#: ../src/gof-file.c:683
+#: ../src/gof-file.c:730
 msgid "today at 00:00 PM"
 msgstr "Aujourd'hui à 00:00"
 
-#: ../src/gof-file.c:684
+#: ../src/gof-file.c:731
 msgid "today at %-I:%M %p"
 msgstr "Aujourd'hui à %-H:%M"
 
-#: ../src/gof-file.c:686
+#: ../src/gof-file.c:733
 msgid "today, 00:00 PM"
 msgstr "Aujourd'hui, 00:00"
 
-#: ../src/gof-file.c:687
+#: ../src/gof-file.c:734
 msgid "today, %-I:%M %p"
 msgstr "Aujourd'hui, %-H:%M"
 
-#: ../src/gof-file.c:689
-#: ../src/gof-file.c:690
+#: ../src/gof-file.c:736 ../src/gof-file.c:737
 msgid "today"
 msgstr "Aujourd'hui"
 
 #. Yesterday, use special word.
 #. * Note to localizers: Same issues as "today" string.
 #.
-#: ../src/gof-file.c:699
+#: ../src/gof-file.c:746
 msgid "yesterday at 00:00:00 PM"
 msgstr "Hier à 00:00:00"
 
-#: ../src/gof-file.c:700
+#: ../src/gof-file.c:747
 msgid "yesterday at %-I:%M:%S %p"
 msgstr "Hier à %-H:%M:%S"
 
-#: ../src/gof-file.c:702
+#: ../src/gof-file.c:749
 msgid "yesterday at 00:00 PM"
 msgstr "Hier à 00:00"
 
-#: ../src/gof-file.c:703
+#: ../src/gof-file.c:750
 msgid "yesterday at %-I:%M %p"
 msgstr "Hier à %-H:%M"
 
-#: ../src/gof-file.c:705
+#: ../src/gof-file.c:752
 msgid "yesterday, 00:00 PM"
 msgstr "Hier, 00:00"
 
-#: ../src/gof-file.c:706
+#: ../src/gof-file.c:753
 msgid "yesterday, %-I:%M %p"
 msgstr "Hier, %-H:%M"
 
-#: ../src/gof-file.c:708
-#: ../src/gof-file.c:709
+#: ../src/gof-file.c:755 ../src/gof-file.c:756
 msgid "yesterday"
 msgstr "Hier"
 
@@ -409,113 +409,115 @@ msgstr "Hier"
 #. * The width measurement templates correspond to
 #. * the day/month name with the most letters.
 #.
-#: ../src/gof-file.c:720
+#: ../src/gof-file.c:767
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
 msgstr "Vendredi 00 septembre 0000 à 00:00:00"
 
-#: ../src/gof-file.c:721
+#: ../src/gof-file.c:768
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
 msgstr "%A %-d %B %Y à %-H:%M:%S"
 
-#: ../src/gof-file.c:723
+#: ../src/gof-file.c:770
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
 msgstr "Lun 00 Oct 0000 à 00:00:00"
 
-#: ../src/gof-file.c:724
+#: ../src/gof-file.c:771
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
 msgstr "%a %-d %b %Y à %-H:%M:%S"
 
-#: ../src/gof-file.c:726
+#: ../src/gof-file.c:773
 msgid "Mon, Oct 00 0000 at 00:00 PM"
 msgstr "Lun 00 Oct 0000 à 00:00"
 
-#: ../src/gof-file.c:727
+#: ../src/gof-file.c:774
 msgid "%a, %b %-d %Y at %-I:%M %p"
 msgstr "%a %-d %b %Y à %-H:%M"
 
-#: ../src/gof-file.c:729
+#: ../src/gof-file.c:776
 msgid "Oct 00 0000 at 00:00 PM"
 msgstr "00 Oct 0000 à 00:00"
 
-#: ../src/gof-file.c:730
+#: ../src/gof-file.c:777
 msgid "%b %-d %Y at %-I:%M %p"
 msgstr "%-d %b %Y à %-H:%M"
 
-#: ../src/gof-file.c:732
+#: ../src/gof-file.c:779
 msgid "Oct 00 0000, 00:00 PM"
 msgstr "00 Oct 0000, 00:00"
 
-#: ../src/gof-file.c:733
+#: ../src/gof-file.c:780
 msgid "%b %-d %Y, %-I:%M %p"
 msgstr "%-d %b %Y, %-H:%M"
 
-#: ../src/gof-file.c:735
+#: ../src/gof-file.c:782
 msgid "00/00/00, 00:00 PM"
 msgstr "00/00/00, 00:00"
 
-#: ../src/gof-file.c:736
+#: ../src/gof-file.c:783
 msgid "%m/%-d/%y, %-I:%M %p"
 msgstr "%-d/%m/%y, %-H:%M"
 
-#: ../src/gof-file.c:738
+#: ../src/gof-file.c:785
 msgid "00/00/00"
 msgstr "00/00/00"
 
-#: ../src/gof-file.c:739
+#: ../src/gof-file.c:786
 msgid "%m/%d/%y"
 msgstr "%d/%m/%y"
 
-#: ../src/gof-file.c:1463
+#: ../src/gof-file.c:1522
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Échec d'analyse du fichier desktop : %s"
 
-#: ../src/gof-file.c:1501
+#: ../src/gof-file.c:1560
 #, c-format
 msgid "No Exec field specified"
 msgstr "Aucun champ Exec spécifié"
 
-#: ../src/gof-file.c:1521
+#: ../src/gof-file.c:1580
 #, c-format
 msgid "No URL field specified"
 msgstr "Aucune URL spécifiée"
 
-#: ../src/gof-file.c:1527
+#: ../src/gof-file.c:1586
 #, c-format
 msgid "Invalid desktop file"
 msgstr ""
 
-#: ../src/gof-file.c:1751
+#: ../src/gof-file.c:1810
 #, c-format
 msgid "Slashes are not allowed in filenames"
 msgstr ""
 
-#: ../src/gof-file.c:1771
+#: ../src/gof-file.c:1830
 #, c-format
 msgid "Toplevel files cannot be renamed"
 msgstr "Impossible de renommer les fichiers racines"
 
-#: ../src/marlin-application.c:465
+#: ../src/marlin-application.c:469
 msgid "Show the version of the program."
 msgstr "Affiche la version du programme."
 
-#: ../src/marlin-application.c:467
-msgid "Do not manage the desktop (ignore the preference set in the preferences dialog)."
+#: ../src/marlin-application.c:471
+msgid ""
+"Do not manage the desktop (ignore the preference set in the preferences "
+"dialog)."
 msgstr ""
 
-#: ../src/marlin-application.c:469
+#: ../src/marlin-application.c:473
 msgid "Open uri(s) in new tab"
 msgstr ""
 
-#: ../src/marlin-application.c:471
+#: ../src/marlin-application.c:475
 msgid "Quit Marlin."
 msgstr ""
 
-#: ../src/marlin-application.c:472
+#: ../src/marlin-application.c:476
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/marlin-application.c:483
+#: ../src/marlin-application.c:487
 msgid ""
 "\n"
 "\n"
@@ -525,7 +527,7 @@ msgstr ""
 "\n"
 "Parcourt le système de fichiers avec le gestionnaire de fichiers"
 
-#: ../src/marlin-application.c:508
+#: ../src/marlin-application.c:512
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
@@ -568,7 +570,9 @@ msgstr "Fusionner le dossier « %s » ?"
 
 #: ../src/marlin-file-conflict-dialog.c:147
 #: ../src/marlin-file-conflict-dialog.c:360
-msgid "Merging will ask for confirmation before replacing any files in the folder that conflict with the files being copied."
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
 msgstr ""
 
 #: ../src/marlin-file-conflict-dialog.c:152
@@ -741,8 +745,7 @@ msgid_plural "%'d seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/marlin-file-operations.c:304
-#: ../src/marlin-file-operations.c:315
+#: ../src/marlin-file-operations.c:304 ../src/marlin-file-operations.c:315
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -820,10 +823,8 @@ msgstr ""
 #. localizers: tag used to detect the x12th copy of a file
 #. localizers: tag used to detect the x13th copy of a file
 #. localizers: tag used to detect the xxth copy of a file
-#: ../src/marlin-file-operations.c:473
-#: ../src/marlin-file-operations.c:475
-#: ../src/marlin-file-operations.c:477
-#: ../src/marlin-file-operations.c:487
+#: ../src/marlin-file-operations.c:473 ../src/marlin-file-operations.c:475
+#: ../src/marlin-file-operations.c:477 ../src/marlin-file-operations.c:487
 msgid "th copy)"
 msgstr ""
 
@@ -858,10 +859,8 @@ msgstr ""
 #. localizers: appended to x12th file copy
 #. localizers: appended to x13th file copy
 #. localizers: appended to xxth file copy
-#: ../src/marlin-file-operations.c:506
-#: ../src/marlin-file-operations.c:508
-#: ../src/marlin-file-operations.c:510
-#: ../src/marlin-file-operations.c:524
+#: ../src/marlin-file-operations.c:506 ../src/marlin-file-operations.c:508
+#: ../src/marlin-file-operations.c:510 ../src/marlin-file-operations.c:524
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr ""
@@ -905,13 +904,16 @@ msgstr ""
 
 #: ../src/marlin-file-operations.c:1384
 #, c-format
-msgid "Are you sure you want to permanently delete the %'d selected item from the trash?"
-msgid_plural "Are you sure you want to permanently delete the %'d selected items from the trash?"
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/marlin-file-operations.c:1394
-#: ../src/marlin-file-operations.c:1462
+#: ../src/marlin-file-operations.c:1394 ../src/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr ""
 
@@ -951,8 +953,7 @@ msgstr ""
 #. gtk_widget_show (item);
 #. gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
 #. Empty Trash menu item
-#: ../src/marlin-file-operations.c:1422
-#: ../src/marlin-file-operations.c:2293
+#: ../src/marlin-file-operations.c:1422 ../src/marlin-file-operations.c:2293
 #: ../src/marlin-places-sidebar.c:2480
 msgid "Empty _Trash"
 msgstr ""
@@ -964,12 +965,12 @@ msgstr ""
 #: ../src/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
-msgid_plural "Are you sure you want to permanently delete the %'d selected items?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/marlin-file-operations.c:1478
-#: ../src/marlin-file-operations.c:1510
+#: ../src/marlin-file-operations.c:1478 ../src/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr ""
 
@@ -989,35 +990,35 @@ msgid_plural "%T left"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/marlin-file-operations.c:1592
-#: ../src/marlin-file-operations.c:1626
-#: ../src/marlin-file-operations.c:1665
-#: ../src/marlin-file-operations.c:1742
+#: ../src/marlin-file-operations.c:1592 ../src/marlin-file-operations.c:1626
+#: ../src/marlin-file-operations.c:1665 ../src/marlin-file-operations.c:1742
 #: ../src/marlin-file-operations.c:2556
 msgid "Error while deleting."
 msgstr ""
 
 #: ../src/marlin-file-operations.c:1596
-msgid "Files in the folder \"%B\" cannot be deleted because you do not have permissions to see them."
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
 msgstr ""
 
-#: ../src/marlin-file-operations.c:1599
-#: ../src/marlin-file-operations.c:2615
+#: ../src/marlin-file-operations.c:1599 ../src/marlin-file-operations.c:2615
 #: ../src/marlin-file-operations.c:3606
-msgid "There was an error getting information about the files in the folder \"%B\"."
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 
-#: ../src/marlin-file-operations.c:1608
-#: ../src/marlin-file-operations.c:3615
+#: ../src/marlin-file-operations.c:1608 ../src/marlin-file-operations.c:3615
 msgid "_Skip files"
 msgstr ""
 
 #: ../src/marlin-file-operations.c:1629
-msgid "The folder \"%B\" cannot be deleted because you do not have permissions to read it."
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
 msgstr ""
 
-#: ../src/marlin-file-operations.c:1632
-#: ../src/marlin-file-operations.c:2654
+#: ../src/marlin-file-operations.c:1632 ../src/marlin-file-operations.c:2654
 #: ../src/marlin-file-operations.c:3651
 msgid "There was an error reading the folder \"%B\"."
 msgstr ""
@@ -1030,8 +1031,7 @@ msgstr ""
 msgid "There was an error deleting %B."
 msgstr ""
 
-#: ../src/marlin-file-operations.c:1819
-#: ../src/marlin-file-operations.c:1831
+#: ../src/marlin-file-operations.c:1819 ../src/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr ""
 
@@ -1071,8 +1071,13 @@ msgid "Do you want to empty the trash before you unmount?"
 msgstr "Souhaitez-vous vider la corbeille avant de démonter ?"
 
 #: ../src/marlin-file-operations.c:2285
-msgid "In order to regain the free space on this volume the trash must be emptied. All trashed items on the volume will be permanently lost."
-msgstr "Afin de récupérer de l'espace libre sur ce périphérique, la corbeille doit être vidée. Tous les éléments dans la corbeille seront définitivement supprimés."
+msgid ""
+"In order to regain the free space on this volume the trash must be emptied. "
+"All trashed items on the volume will be permanently lost."
+msgstr ""
+"Afin de récupérer de l'espace libre sur ce périphérique, la corbeille doit "
+"être vidée. Tous les éléments dans la corbeille seront définitivement "
+"supprimés."
 
 #: ../src/marlin-file-operations.c:2291
 msgid "Do _not Empty Trash"
@@ -1115,15 +1120,12 @@ msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Préparation de la mise à la corbeille de %'d fichier"
 msgstr[1] "Préparation de la mise à la corbeille de %'d fichiers"
 
-#: ../src/marlin-file-operations.c:2552
-#: ../src/marlin-file-operations.c:3472
-#: ../src/marlin-file-operations.c:3598
-#: ../src/marlin-file-operations.c:3643
+#: ../src/marlin-file-operations.c:2552 ../src/marlin-file-operations.c:3472
+#: ../src/marlin-file-operations.c:3598 ../src/marlin-file-operations.c:3643
 msgid "Error while copying."
 msgstr "Erreur lors de la copie."
 
-#: ../src/marlin-file-operations.c:2554
-#: ../src/marlin-file-operations.c:3596
+#: ../src/marlin-file-operations.c:2554 ../src/marlin-file-operations.c:3596
 #: ../src/marlin-file-operations.c:3641
 msgid "Error while moving."
 msgstr "Erreur lors du déplacement."
@@ -1133,25 +1135,35 @@ msgid "Error while moving files to trash."
 msgstr "Erreur lors de la mise à la corbeille des fichiers."
 
 #: ../src/marlin-file-operations.c:2612
-msgid "Files in the folder \"%B\" cannot be handled because you do not have permissions to see them."
-msgstr "Impossible de traiter les fichiers du dossier « %B » car vous n'avez pas la permission de les lire."
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Impossible de traiter les fichiers du dossier « %B » car vous n'avez pas la "
+"permission de les lire."
 
 #: ../src/marlin-file-operations.c:2651
-msgid "The folder \"%B\" cannot be handled because you do not have permissions to read it."
-msgstr "Impossible de traiter le dossier « %B » car vous n'avez pas la permission de le lire."
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Impossible de traiter le dossier « %B » car vous n'avez pas la permission de "
+"le lire."
 
 #: ../src/marlin-file-operations.c:2728
-msgid "The file \"%B\" cannot be handled because you do not have permissions to read it."
-msgstr "Impossible de traiter le fichier \"%B\" car vous n'avez pas la permission de le lire."
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Impossible de traiter le fichier \"%B\" car vous n'avez pas la permission de "
+"le lire."
 
 #: ../src/marlin-file-operations.c:2731
 msgid "There was an error getting information about \"%B\"."
 msgstr "Erreur lors de l'obtention d'informations concernant « %B »."
 
-#: ../src/marlin-file-operations.c:2831
-#: ../src/marlin-file-operations.c:2873
-#: ../src/marlin-file-operations.c:2906
-#: ../src/marlin-file-operations.c:2936
+#: ../src/marlin-file-operations.c:2831 ../src/marlin-file-operations.c:2873
+#: ../src/marlin-file-operations.c:2906 ../src/marlin-file-operations.c:2936
 msgid "Error while copying to \"%B\"."
 msgstr "Erreur lors de la copie vers « %B »."
 
@@ -1168,8 +1180,12 @@ msgid "The destination is not a folder."
 msgstr "La destination n'est pas un dossier."
 
 #: ../src/marlin-file-operations.c:2907
-msgid "There is not enough space on the destination. Try to remove files to make space."
-msgstr "La destination n'a plus assez d'espace libre. Essayez de supprimer des fichiers pour libérer de l'espace."
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"La destination n'a plus assez d'espace libre. Essayez de supprimer des "
+"fichiers pour libérer de l'espace."
 
 #: ../src/marlin-file-operations.c:2909
 #, c-format
@@ -1247,7 +1263,9 @@ msgstr[0] "%S sur %S—%T restante (%S/s)"
 msgstr[1] "%S sur %S—%T restantes (%S/s)"
 
 #: ../src/marlin-file-operations.c:3476
-msgid "The folder \"%B\" cannot be copied because you do not have permissions to create it in the destination."
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
 msgstr ""
 
 #: ../src/marlin-file-operations.c:3479
@@ -1255,15 +1273,18 @@ msgid "There was an error creating the folder \"%B\"."
 msgstr ""
 
 #: ../src/marlin-file-operations.c:3603
-msgid "Files in the folder \"%B\" cannot be copied because you do not have permissions to see them."
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
 msgstr ""
 
 #: ../src/marlin-file-operations.c:3648
-msgid "The folder \"%B\" cannot be copied because you do not have permissions to read it."
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
 msgstr ""
 
-#: ../src/marlin-file-operations.c:3693
-#: ../src/marlin-file-operations.c:4390
+#: ../src/marlin-file-operations.c:3693 ../src/marlin-file-operations.c:4390
 #: ../src/marlin-file-operations.c:4964
 msgid "Error while moving \"%B\"."
 msgstr ""
@@ -1272,10 +1293,8 @@ msgstr ""
 msgid "Could not remove the source folder."
 msgstr ""
 
-#: ../src/marlin-file-operations.c:3779
-#: ../src/marlin-file-operations.c:3820
-#: ../src/marlin-file-operations.c:4392
-#: ../src/marlin-file-operations.c:4463
+#: ../src/marlin-file-operations.c:3779 ../src/marlin-file-operations.c:3820
+#: ../src/marlin-file-operations.c:4392 ../src/marlin-file-operations.c:4463
 msgid "Error while copying \"%B\"."
 msgstr ""
 
@@ -1290,18 +1309,15 @@ msgid "Could not remove the already existing file %F."
 msgstr "Impossible de supprimer le fichier préexistant « %F »."
 
 #. the run_warning() frees all strings passed in automatically
-#: ../src/marlin-file-operations.c:4150
-#: ../src/marlin-file-operations.c:4808
+#: ../src/marlin-file-operations.c:4150 ../src/marlin-file-operations.c:4808
 msgid "You cannot move a folder into itself."
 msgstr "Impossible de déplacer un dossier vers lui-même."
 
-#: ../src/marlin-file-operations.c:4151
-#: ../src/marlin-file-operations.c:4809
+#: ../src/marlin-file-operations.c:4151 ../src/marlin-file-operations.c:4809
 msgid "You cannot copy a folder into itself."
 msgstr "Impossible de copier un dossier vers lui-même."
 
-#: ../src/marlin-file-operations.c:4152
-#: ../src/marlin-file-operations.c:4810
+#: ../src/marlin-file-operations.c:4152 ../src/marlin-file-operations.c:4810
 msgid "The destination folder is inside the source folder."
 msgstr "Le dossier de destination se trouve à l'intérieur du dossier source."
 
@@ -1321,7 +1337,8 @@ msgstr "Le fichier source serait écrasé par la destination."
 #: ../src/marlin-file-operations.c:4394
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr "Impossible de supprimer le fichier préexistant portant le même nom dans %F."
+msgstr ""
+"Impossible de supprimer le fichier préexistant portant le même nom dans %F."
 
 #: ../src/marlin-file-operations.c:4464
 #, c-format
@@ -1369,7 +1386,8 @@ msgstr "Erreur lors de la création du lien vers %B."
 
 #: ../src/marlin-file-operations.c:5387
 msgid "Symbolic links only supported for local files"
-msgstr "Les liens symboliques ne sont pris en charge que pour des fichiers locaux."
+msgstr ""
+"Les liens symboliques ne sont pris en charge que pour des fichiers locaux."
 
 #: ../src/marlin-file-operations.c:5390
 msgid "The target doesn't support symbolic links."
@@ -1380,8 +1398,7 @@ msgstr "La cible ne prend pas en charge les liens symboliques."
 msgid "There was an error creating the symlink in %F."
 msgstr "Erreur lors de la création du lien symbolique dans %F."
 
-#: ../src/marlin-file-operations.c:5696
-#: ../src/marlin-file-operations.c:5699
+#: ../src/marlin-file-operations.c:5696 ../src/marlin-file-operations.c:5699
 msgid "Setting permissions"
 msgstr "Définition des permissions"
 
@@ -1413,10 +1430,8 @@ msgstr "Erreur lors de la création du répertoire dans %F."
 msgid "Emptying Trash"
 msgstr "Vidage de la corbeille"
 
-#: ../src/marlin-file-operations.c:6413
-#: ../src/marlin-file-operations.c:6454
-#: ../src/marlin-file-operations.c:6489
-#: ../src/marlin-file-operations.c:6524
+#: ../src/marlin-file-operations.c:6413 ../src/marlin-file-operations.c:6454
+#: ../src/marlin-file-operations.c:6489 ../src/marlin-file-operations.c:6524
 msgid "Unable to mark launcher trusted (executable)"
 msgstr "Impossible de marquer ce lanceur comme fiable (exécutable)"
 
@@ -1438,8 +1453,7 @@ msgid "Your common places and bookmarks"
 msgstr ""
 
 #. tooltip
-#: ../src/marlin-places-sidebar.c:337
-#: ../src/View/Window.vala:571
+#: ../src/marlin-places-sidebar.c:337 ../src/View/Window.vala:572
 msgid "Open your personal folder"
 msgstr ""
 
@@ -1467,8 +1481,7 @@ msgstr "Système de fichier"
 msgid "Open the contents of the File System"
 msgstr ""
 
-#: ../src/marlin-places-sidebar.c:473
-#: ../src/marlin-places-sidebar.c:496
+#: ../src/marlin-places-sidebar.c:473 ../src/marlin-places-sidebar.c:496
 #, c-format
 msgid "Mount and open %s"
 msgstr ""
@@ -1532,14 +1545,12 @@ msgstr ""
 msgid "_Lock Drive"
 msgstr ""
 
-#: ../src/marlin-places-sidebar.c:1690
-#: ../src/marlin-places-sidebar.c:2237
+#: ../src/marlin-places-sidebar.c:1690 ../src/marlin-places-sidebar.c:2237
 #, c-format
 msgid "Unable to start %s"
 msgstr ""
 
-#: ../src/marlin-places-sidebar.c:1980
-#: ../src/marlin-places-sidebar.c:2009
+#: ../src/marlin-places-sidebar.c:1980 ../src/marlin-places-sidebar.c:2009
 #: ../src/marlin-places-sidebar.c:2038
 #, c-format
 msgid "Unable to eject %s"
@@ -1587,8 +1598,7 @@ msgstr ""
 msgid "_Eject"
 msgstr ""
 
-#: ../src/marlin-progress-info.c:191
-#: ../src/marlin-progress-info.c:209
+#: ../src/marlin-progress-info.c:191 ../src/marlin-progress-info.c:209
 msgid "Preparing"
 msgstr ""
 
@@ -1620,7 +1630,9 @@ msgid "Customize Toolbar"
 msgstr ""
 
 #: ../src/marlin-toolbar-editor.c:465
-msgid "Select items to be displayed on the toolbar. Items can be reodered by drag and drop."
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reodered by drag "
+"and drop."
 msgstr ""
 
 #: ../src/marlin-toolbar-editor.c:481
@@ -1634,33 +1646,33 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:923
+#: ../src/View/Chrome/LocationBar.vala:918
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:927
+#: ../src/View/Chrome/LocationBar.vala:922
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:931
+#: ../src/View/Chrome/LocationBar.vala:926
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
-#: ../src/View/ContextView.vala:216
+#: ../src/View/ContextView.vala:226
 msgid "Other..."
 msgstr ""
 
-#: ../src/View/ContextView.vala:219
+#: ../src/View/ContextView.vala:229
 msgid "Set as default"
 msgstr ""
 
-#: ../src/View/ContextView.vala:317
+#: ../src/View/ContextView.vala:328
 msgid "Open with:"
 msgstr ""
 
@@ -1712,19 +1724,19 @@ msgstr ""
 msgid "informal"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:135
+#: ../src/View/SettingsDialog.vala:136
 msgid "Date format:"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:150
+#: ../src/View/SettingsDialog.vala:151
 msgid "Show applications names in the context pane:"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:158
+#: ../src/View/SettingsDialog.vala:159
 msgid "Display"
 msgstr ""
 
-#: ../src/View/Window.vala:526
+#: ../src/View/Window.vala:527
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1732,232 +1744,231 @@ msgstr ""
 "  xapantu https://launchpad.net/~xapantu"
 
 #. name, stock id, label
-#: ../src/View/Window.vala:531
+#: ../src/View/Window.vala:532
 msgid "_File"
 msgstr ""
 
 #. name, stock id, label
-#: ../src/View/Window.vala:532
+#: ../src/View/Window.vala:533
 msgid "_Edit"
 msgstr ""
 
 #. name, stock id, label
-#: ../src/View/Window.vala:533
+#: ../src/View/Window.vala:534
 msgid "_View"
 msgstr ""
 
 #. name, stock id, label
-#: ../src/View/Window.vala:534
+#: ../src/View/Window.vala:535
 msgid "_Go"
 msgstr ""
 
 #. name, stock id, label
-#: ../src/View/Window.vala:535
+#: ../src/View/Window.vala:536
 msgid "_Help"
 msgstr ""
 
 #. { "ColorMenu", null, N_("Set _Color") },
 #. name, stock id, label
-#: ../src/View/Window.vala:537
+#: ../src/View/Window.vala:538
 msgid "New _Window"
 msgstr ""
 
-#: ../src/View/Window.vala:538
+#: ../src/View/Window.vala:539
 msgid "Open another Marlin window for the displayed location"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:541
+#: ../src/View/Window.vala:542
 msgid "New _Tab"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:542
+#: ../src/View/Window.vala:543
 msgid "Open another tab for the displayed location"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:545
+#: ../src/View/Window.vala:546
 msgid "_Close"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:546
+#: ../src/View/Window.vala:547
 msgid "Close this folder"
 msgstr ""
 
-#: ../src/View/Window.vala:549
+#: ../src/View/Window.vala:550
 msgid "Customize _Toolbar..."
 msgstr "Personnaliser la _barre d'outils..."
 
-#: ../src/View/Window.vala:550
+#: ../src/View/Window.vala:551
 msgid "Easily edit the toolbar layout"
 msgstr ""
 
-#: ../src/View/Window.vala:553
+#: ../src/View/Window.vala:554
 msgid "Settings"
 msgstr ""
 
-#: ../src/View/Window.vala:554
+#: ../src/View/Window.vala:555
 msgid "Change Marlin's settings"
 msgstr ""
 
 #. { Chrome.ColorAction, null, "ColorAction"),
 #. null, null,
 #. null },
-#: ../src/View/Window.vala:559
+#: ../src/View/Window.vala:560
 msgid "Open _Parent"
 msgstr ""
 
-#: ../src/View/Window.vala:560
+#: ../src/View/Window.vala:561
 msgid "Open the parent folder"
 msgstr ""
 
-#: ../src/View/Window.vala:562
+#: ../src/View/Window.vala:563
 msgid "_Back"
 msgstr ""
 
-#: ../src/View/Window.vala:563
+#: ../src/View/Window.vala:564
 msgid "Go to the previous visited location"
 msgstr ""
 
-#: ../src/View/Window.vala:566
+#: ../src/View/Window.vala:567
 msgid "_Forward"
 msgstr ""
 
-#: ../src/View/Window.vala:567
+#: ../src/View/Window.vala:568
 msgid "Go to the next visited location"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:570
+#: ../src/View/Window.vala:571
 msgid "_Home Folder"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:574
+#: ../src/View/Window.vala:575
 msgid "_Trash"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:575
+#: ../src/View/Window.vala:576
 msgid "Open your personal trash folder"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:578
+#: ../src/View/Window.vala:579
 msgid "_Network"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:579
+#: ../src/View/Window.vala:580
 msgid "Browse bookmarked and local network locations"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:582
+#: ../src/View/Window.vala:583
 msgid "Zoom _In"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:583
+#: ../src/View/Window.vala:584
 msgid "Increase the view size"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:594
+#: ../src/View/Window.vala:595
 msgid "Zoom _Out"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:595
+#: ../src/View/Window.vala:596
 msgid "Decrease the view size"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:602
+#: ../src/View/Window.vala:603
 msgid "Normal Si_ze"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:603
+#: ../src/View/Window.vala:604
 msgid "Use the normal view size"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:606
+#: ../src/View/Window.vala:607
 msgid "_About"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:607
+#: ../src/View/Window.vala:608
 msgid "Display credits"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:615
+#: ../src/View/Window.vala:616
 msgid "Show _Hidden Files"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:616
+#: ../src/View/Window.vala:617
 msgid "Toggle the display of hidden files in the current window"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:620
+#: ../src/View/Window.vala:621
 msgid "_Context Pane"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:621
+#: ../src/View/Window.vala:622
 msgid "Change the visibility of the context pane"
 msgstr ""
 
 #. is_active
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:625
+#: ../src/View/Window.vala:626
 msgid "_Menubar"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:626
+#: ../src/View/Window.vala:627
 msgid "Change the visibility of this window's menubar"
 msgstr ""
 
 #. is_active
 #. name, stock id
 #. label, accelerator
-#: ../src/View/Window.vala:630
+#: ../src/View/Window.vala:631
 msgid "_Side Pane"
 msgstr ""
 
 #. tooltip
-#: ../src/View/Window.vala:631
+#: ../src/View/Window.vala:632
 msgid "Change the visibility of this window's side pane"
 msgstr ""
 
-#: ../src/View/Window.vala:639
+#: ../src/View/Window.vala:640
 msgid "Icon View"
 msgstr ""
 
-#: ../src/View/Window.vala:642
+#: ../src/View/Window.vala:643
 msgid "List View"
 msgstr ""
 
-#: ../src/View/Window.vala:645
+#: ../src/View/Window.vala:646
 msgid "Columns View"
 msgstr ""
-
