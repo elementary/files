@@ -113,7 +113,7 @@ namespace Marlin.View.Chrome
         int gtk_font_size;
         string protocol = "";
 
-        Gtk.Button button;
+        Gtk.StyleContext button_context;
         Gtk.StyleContext entry_context;
         BreadcrumbsEntry entry;
 
@@ -184,8 +184,7 @@ namespace Marlin.View.Chrome
 
             gtk_font_name = font.get_family();
 
-            /* FIXME: we should directly use a Gtk.StyleContext */
-            button = new Gtk.Button();
+            button_context = new Gtk.Button().get_style_context();
             entry_context = new Gtk.Entry().get_style_context();
 
             set_can_focus(true);
@@ -198,7 +197,7 @@ namespace Marlin.View.Chrome
             
             elements = new Gee.ArrayList<BreadcrumbsElement>();
 
-            entry = new BreadcrumbsEntry(gtk_font_name, gtk_font_size, button.get_style_context());
+            entry = new BreadcrumbsEntry(gtk_font_name, gtk_font_size, button_context);
 
             entry.enter.connect(on_entry_enter);
 
@@ -672,11 +671,20 @@ namespace Marlin.View.Chrome
         private void animate_old_breads()
         {
             anim_state = 0;
+            foreach(BreadcrumbsElement bread in newbreads)
+            {
+                bread.offset = anim_state;
+            }
             Timeout.add(1000/60, () => {
                 anim_state++;
-                foreach(BreadcrumbsElement bread in newbreads)
+                /* FIXME: Instead of this hacksih if( != null), we should use a
+                 * nice mutex */
+                if(newbreads != null)
                 {
-                    bread.offset = anim_state;
+                    foreach(BreadcrumbsElement bread in newbreads)
+                    {
+                        bread.offset = anim_state;
+                    }
                 }
                 queue_draw();
                 if(anim_state >= 10)
@@ -694,6 +702,10 @@ namespace Marlin.View.Chrome
         private void animate_new_breads()
         {
             anim_state = 10;
+            foreach(BreadcrumbsElement bread in newbreads)
+            {
+                bread.offset = anim_state;
+            }
             Timeout.add(1000/60, () => {
                 anim_state--;
                 /* FIXME: Instead of this hacksih if( != null), we should use a
@@ -767,7 +779,7 @@ namespace Marlin.View.Chrome
                            y);
                 cr.close_path();
                 Gdk.RGBA color = Gdk.RGBA();
-                button.get_style_context().get_background_color(Gtk.StateFlags.SELECTED, color);
+                button_context.get_background_color(Gtk.StateFlags.SELECTED, color);
                 
                 Cairo.Pattern pat = new Cairo.Pattern.linear(first_stop, y, second_stop, y);
                 pat.add_color_stop_rgba(0.7, color.red, color.green, color.blue, 0);
@@ -850,17 +862,18 @@ namespace Marlin.View.Chrome
         {
             double height = get_allocated_height();
             double width = get_allocated_width();
+            double margin = 6;
 
             /* Draw toolbar background */
             if(focus)
             {
-                Gtk.render_background(entry_context, cr, 0, 6, width, height - 12);
-                Gtk.render_frame(entry_context, cr, 0, 6, width, height - 12);
+                Gtk.render_background(entry_context, cr, 0, margin, width, height - margin*2);
+                Gtk.render_frame(entry_context, cr, 0, margin, width, height - margin*2);
             }
             else
             {
-                Gtk.render_background(button.get_style_context(), cr, 0, 6, width, height-12);
-                Gtk.render_frame(button.get_style_context(), cr, 0, 6, width, height-12);
+                Gtk.render_background(button_context, cr, 0, margin, width, height-margin*2);
+                Gtk.render_frame(button_context, cr, 0, margin, width, height-margin*2);
             }
 
             double x_render = y;
@@ -870,7 +883,7 @@ namespace Marlin.View.Chrome
             {
                 if(element.display)
                 {
-                    element.draw(cr, x_render, 6, height-12);
+                    element.draw(cr, x_render, margin, height-margin*2, button_context);
                     x_render += element.text_width + space_breads;
                 }
                 i++;
@@ -881,7 +894,7 @@ namespace Marlin.View.Chrome
                 {
                     if(element.display)
                     {
-                        element.draw(cr, x_render, 6, height - 12);
+                        element.draw(cr, x_render, margin, height - margin*2, button_context);
                         x_render += element.text_width + space_breads;
                     }
                 }
@@ -949,13 +962,11 @@ namespace Marlin.View.Chrome
         public double text_width = -1;
         Gdk.Pixbuf icon;
         public bool display = true;
-        Gtk.StyleContext button_context;
         public BreadcrumbsElement(string text_, string font_name_, int font_size_)
         {
             text = text_;
             font_name = font_name_;
             font_size = font_size_;
-            button_context = (new Button()).get_style_context();
         }
         
         public void set_icon(Gdk.Pixbuf icon_)
@@ -970,7 +981,7 @@ namespace Marlin.View.Chrome
             text_width = txt.x_advance;
         }
         
-        public void draw(Cairo.Context cr, double x, double y, double height)
+        public void draw(Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context)
         {
             cr.set_source_rgb(0,0,0);
             cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
@@ -1011,11 +1022,11 @@ namespace Marlin.View.Chrome
             cr.save();
             cr.set_source_rgba(0,0,0,0.5);
             /* Draw the separator */
-            cr.translate(x  - offset*5 + text_width - 5, y + height/2);
+            cr.translate(x  - offset*5 + text_width - height/4, y + height/2);
             cr.rectangle(0, -height/2 + 2, height, height - 4);
             cr.clip();
             cr.rotate(Math.PI/4);
-            Gtk.render_frame(button_context, cr, -height/2, -height/2, height, Math.sqrt(height*height));
+            Gtk.render_frame(button_context, cr, -height/2, -height/2, Math.sqrt(height*height), Math.sqrt(height*height));
             cr.restore();
         }
     }
