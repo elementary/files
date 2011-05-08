@@ -986,14 +986,14 @@ namespace Marlin.View.Chrome
             
             if(offset != 0)
             {
-                /*cr.move_to(x, y);
+                cr.move_to(x, y);
                 cr.line_to(x + 5, y + height/2);
-                cr.line_to(x, height - y);
-                cr.line_to(x + text_width + 5, height - y);
-                cr.line_to(x + text_width + 10 + 5, height/2);
+                cr.line_to(x, y + height);
+                cr.line_to(x + text_width + 5, y+ height);
+                cr.line_to(x + text_width + 10 + 5, y+height/2);
                 cr.line_to(x + text_width + 5, y);
                 cr.close_path();
-                cr.clip();*/
+                cr.clip();
             }
             
             if(icon == null)
@@ -1012,7 +1012,7 @@ namespace Marlin.View.Chrome
             cr.set_source_rgba(0,0,0,0.5);
             /* Draw the separator */
             cr.translate(x  - offset*5 + text_width - 5, y + height/2);
-            cr.rectangle(0, -height/2, height, height);
+            cr.rectangle(0, -height/2 + 2, height, height - 4);
             cr.clip();
             cr.rotate(Math.PI/4);
             Gtk.render_frame(button_context, cr, -height/2, -height/2, height, Math.sqrt(height*height));
