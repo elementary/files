@@ -3,8 +3,9 @@ DATADIR = $(datadir)
 bin_PROGRAMS = \
     marlin
 
-marlin_CPPFLAGS = \
+marlin_CFLAGS = \
     -I$(top_srcdir) \
+    -I$(top_srcdir)/libcore/ \
     $(CORE_CFLAGS) \
     -DPIXMAP_DIR=\""$(datadir)/pixmaps/marlin/"\"   \
     -DUI_DIR=\""$(datadir)/marlin/ui/"\"            \
@@ -18,21 +19,60 @@ marlin_VALAFLAGS = \
     --pkg gtk+-3.0 \
     --pkg gio-2.0 \
     --pkg gee-1.0 \
+    --vapidir=$(top_srcdir)/libcore/ \
+    --pkg marlincore \
+    --vapidir=$(top_srcdir)/src/ \
+    --pkg marlin \
     -g \
     $(NULL)
 
 marlin_LDADD = \
     $(CORE_LIBS) \
+    $(top_srcdir)/libcore/libmarlincore.la \
     $(NULL)
 
 BUILT_SOURCES = \
     marlin-marshal.c \
     marlin-marshal.h \
-    marlin.vala.stamp \
     $(NULL)
 
-marlin_VALASOURCES = \
-    log.vala        	                    \
+marlin_SOURCES = \
+    $(NULL)
+
+marlin_CSOURCES = \
+    marlin-application.c                    \
+    mysignal.c                              \
+    gossip-cell-renderer-expander.c         \
+    marlin-enum-types.c                     \
+    marlin-trash-monitor.c                  \
+    marlin-bookmark.c                       \
+    marlin-bookmark-list.c                  \
+    marlin-dnd.c                            \
+    marlin-clipboard-manager.c              \
+    marlin-file-utilities.c                 \
+    marlin-file-operations.c                \
+    marlin-file-conflict-dialog.c           \
+    marlin-progress-info.c                  \
+    marlin-progress-info-manager.c          \
+    marlin-progress-ui-handler.c            \
+    marlin-progress-info-widget.c           \
+    marlin-places-sidebar.c                 \
+    marlin-window-columns.c                 \
+    gof-window-slot.c                       \
+    marlin-thumbnailer.c                    \
+    marlin-icon-renderer.c                  \
+    marlin-text-renderer.c                  \
+    fm-directory-view.c                     \
+    exo-icon-view.c                         \
+    exo-tree-view.c                         \
+    fm-list-model.c                         \
+    fm-icon-view.c                          \
+    fm-list-view.c                          \
+    fm-columns-view.c                       \
+    marlin-toolbar-editor.c                 \
+    $(NULL)
+
+marlin_SOURCES = \
     View/SettingsDialog.vala                \
     View/Window.vala 	                    \
     View/Resources.vala	                    \
@@ -51,62 +91,6 @@ marlin_VALASOURCES = \
     View/Chrome/ViewSwicher.vala            \
     View/Chrome/CollapsablePaned.vala       \
     View/Chrome/ColorWidget.vala            \
-    $(NULL)
-
-marlin_CSOURCES = \
-    marlin-application.c                    \
-    mysignal.c                              \
-    eel-fcts.c                              \
-    eel-i18n.c                              \
-    eel-gtk-extensions.c                    \
-    eel-gdk-extensions.c                    \
-    eel-gdk-pixbuf-extensions.c             \
-    eel-pango-extensions.c                  \
-    eel-glib-extensions.c                   \
-    eel-gio-extensions.c                    \
-    eel-stock-dialogs.c                     \
-    eel-debug.c                             \
-    eel-string.c                            \
-    eel-ui.c                                \
-    eel-vfs-extensions.c                    \
-    gossip-cell-renderer-expander.c         \
-    marlin-enum-types.c                     \
-    marlin-trash-monitor.c                  \
-    marlin-bookmark.c                       \
-    marlin-bookmark-list.c                  \
-    marlin-exec.c                           \
-    marlin-dnd.c                            \
-    marlin-clipboard-manager.c              \
-    marlin-file-utilities.c                 \
-    marlin-file-operations.c                \
-    marlin-file-conflict-dialog.c           \
-    marlin-progress-info.c                  \
-    marlin-progress-info-manager.c          \
-    marlin-progress-ui-handler.c            \
-    marlin-progress-info-widget.c           \
-    marlin-places-sidebar.c                 \
-    marlin-window-columns.c                 \
-    gof-window-slot.c                       \
-    gof-directory-async.c                   \
-    nautilus-icon-info.c                    \
-    gof-monitor.c                           \
-    gof-file.c                              \
-    marlin-thumbnailer.c                    \
-    marlin-icon-renderer.c                  \
-    marlin-text-renderer.c                  \
-    fm-directory-view.c                     \
-    exo-icon-view.c                         \
-    exo-tree-view.c                         \
-    fm-list-model.c                         \
-    fm-icon-view.c                          \
-    fm-list-view.c                          \
-    fm-columns-view.c                       \
-    nautilus-cell-renderer-text-ellipsized.c\
-    marlin-toolbar-editor.c                 \
-    $(NULL)
-
-marlin_SOURCES = \
-    $(marlin_VALASOURCES:.vala=.c)          \
     $(marlin_CSOURCES)                      \
 	marlin-main.c                           \
     $(NULL)
@@ -145,34 +129,10 @@ EXTRA_DIST = \
 	$(marlin_VALASOURCES) \
 	$(NULL)
 
-
-marlin.vala.stamp: $(marlin_VALASOURCES)
-	$(AM_V_GEN) $(VALAC) marlin.vapi $(marlin_VALAFLAGS) $^
-	touch marlin.vala.stamp
-
 CLEANFILES = \
     marlin-marshall.list \
     $(BUILT_SOURCES) \
 	$(marlin_VALASOURCES:.vala=.c) \
 	$(NULL)
 
-# GLIB - Library of useful C routines
-
-#GTESTER = gtester 			# for non-GLIB packages
-GTESTER = /usr/bin/gtester		# for the GLIB package
-GTESTER_REPORT = /usr/bin/gtester-report	# for the GLIB package
-
-check_PROGRAMS = marlintests
-marlintests_SOURCES = tests/marlintests.c             \
-					  tests/mwc_tests.c               \
-					  tests/LocationBar_tests.c       \
-					  $(marlin_VALASOURCES:.vala=.c)  \
-				      $(marlin_CSOURCES)              \
-					  $(BUILT_SOURCES)                \
-					  $(NULL)
-marlintests_LDADD = $(CORE_LIBS) $(NULL)
-marlintests_CFLAGS = $(CORE_CFLAGS) $(NULL) -I..
-marlintests_CPPFLAGS = $(marlin_CPPFLAGS)
-TESTS_ENVIRONMENT= $(GTESTER)
-TESTS = marlintests
 

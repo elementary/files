@@ -29,7 +29,7 @@
 #include "gof-file.h"
 #include <gio/gio.h>
 #include <stdio.h>
-#include "marlin-vala.h"
+#include "marlincore-vala.h"
 
 struct GOFMonitor {
     GFileMonitor        *gfile_monitor;

@@ -28,7 +28,7 @@
 #include "eel-string.h"
 #include "gof-directory-async.h"
 #include "marlin-exec.h"
-#include "marlin-vala.h"
+#include "marlincore-vala.h"
 #include "marlin-icons.h"
 
 
