@@ -1,3 +1,3 @@
 [Plugin]
 Name=Open Terminal
-File=libmarlin-openterminal.so
+File=/usr/share/marlin/plugins/libmarlin-openterminal.so

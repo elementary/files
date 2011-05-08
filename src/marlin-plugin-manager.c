@@ -88,7 +88,7 @@ void marlin_plugin_manager_interface_loaded(MarlinPluginManager* plugin, GtkWidg
 
 }
 
-void marlin_plugin_manager_directory_loaded(MarlinPluginManager* plugin, gchar* path)
+void marlin_plugin_manager_directory_loaded(MarlinPluginManager* plugin, GOFFile* path)
 {
     g_debug("Directory loaded");
     GList* item = g_list_first(plugin->plugins_list);

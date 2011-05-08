@@ -16,6 +16,7 @@
  */
 
 #include <gtk/gtk.h>
+#include "gof-file.h"
 
 static gchar* current_path = NULL;
 static gboolean menu_added = FALSE;
@@ -35,9 +36,10 @@ void hook_plugin_finish(void)
     printf("Shutdown\n");
 }
 
-void hook_directory_loaded(gchar* path)
+void hook_directory_loaded(GOFFile* path)
 {
-    current_path = g_strdup(path);
+    current_path = g_strdup(g_file_get_path(path->location));
+    g_debug("Current path: %s", current_path);
 }
 static void on_open_terminal_activated(GtkWidget* widget, gpointer data)
 {
@@ -50,10 +52,11 @@ static void on_open_terminal_activated(GtkWidget* widget, gpointer data)
 
 void hook_context_menu(GtkWidget* menu)
 {
-    g_debug("Open Terminal");
+    g_debug("Open Terminall");
     
     if(!menu_added)
     {
+    g_debug("Open Terminall");
         GtkWidget* menuitem = gtk_menu_item_new_with_label("Open a terminal here");
 	    gtk_menu_shell_append(menu, menuitem);
 	    g_signal_connect(menuitem, "activate", on_open_terminal_activated, NULL);

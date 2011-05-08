@@ -22,6 +22,7 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 #include "marlin-plugin.h"
+#include "gof-file.h"
 
 G_BEGIN_DECLS
 
@@ -51,7 +52,7 @@ GType marlin_plugin_manager_get_type (void) G_GNUC_CONST;
 MarlinPluginManager* marlin_plugin_manager_new(void);
 void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin);
 void marlin_plugin_manager_hook_context_menu(MarlinPluginManager* plugin, GtkWidget* win);
-void marlin_plugin_manager_directory_loaded(MarlinPluginManager* plugin, gchar* path);
+void marlin_plugin_manager_directory_loaded(MarlinPluginManager* plugin, GOFFile* path);
 
 extern MarlinPluginManager* plugins;
 

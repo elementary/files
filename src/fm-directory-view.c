@@ -306,7 +306,7 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
         fm_directory_view_load_file_hash (directory, view);
     }
     
-    marlin_plugin_manager_directory_loaded(plugins, g_file_get_path(directory->location));
+    marlin_plugin_manager_directory_loaded(plugins, gof_file_get(directory->location));
     view->details->loading = FALSE;
 }
 
