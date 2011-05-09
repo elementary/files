@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 02:18+0200\n"
+"POT-Creation-Date: 2011-05-09 17:21+0200\n"
 "PO-Revision-Date: 2011-05-04 13:29+0000\n"
 "Last-Translator: Cinkowskiw <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -20,186 +20,191 @@ msgstr ""
 "X-Launchpad-Export-Date: 2011-05-05 05:21+0000\n"
 "X-Generator: Launchpad (build 12959)\n"
 
-#: ../src/eel-stock-dialogs.c:35
+#: ../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
 msgstr "Pokaż więcej _szczegółów"
 
-#: ../src/eel-vfs-extensions.c:72
+#: ../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
 msgstr " (nieprawidłowe kodowanie Unicode)"
 
-#: ../src/exo-icon-view.c:577
-msgid "Selection mode"
-msgstr "Tryb wyboru"
-
-#: ../src/exo-icon-view.c:578
-msgid "The selection mode"
-msgstr "Tryb wyboru"
-
-#: ../src/exo-icon-view.c:593 ../src/exo-tree-view.c:161
-msgid "Single Click"
-msgstr "Pojedyncze kliknięcie"
-
-#: ../src/exo-icon-view.c:594 ../src/exo-tree-view.c:162
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Czy elementy w widoku można aktywować za pomocą jednego kliknięcia"
-
-#: ../src/exo-icon-view.c:610 ../src/exo-tree-view.c:178
-msgid "Single Click Timeout"
-msgstr "Limit czasowy pojedynczego kliknięcia"
-
-#: ../src/exo-icon-view.c:611 ../src/exo-tree-view.c:179
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-"Opóźnienie czasowe, po którym element zostanie automatycznie zaznaczony "
-"przez stojący nad nim kursor myszy"
-
-#: ../src/exo-icon-view.c:629
-msgid "Pixbuf column"
-msgstr "Kolumna ikon"
-
-#: ../src/exo-icon-view.c:630
-msgid "Model column used to retrieve the icon pixbuf from"
-msgstr "Kolumna modelowa używana do pobierania ikon"
-
-#: ../src/exo-icon-view.c:647
-msgid "Text column"
-msgstr "Kolumna tekstowa"
-
-#: ../src/exo-icon-view.c:648
-msgid "Model column used to retrieve the text from"
-msgstr "Użyty model kolumny do pobierania tekstu"
-
-#: ../src/exo-icon-view.c:667
-msgid "Markup column"
-msgstr "Kolumna znaczników"
-
-#: ../src/exo-icon-view.c:668
-msgid "Model column used to retrieve the text if using Pango markup"
-msgstr "Model kolumny użyty do pobierania tekstu przy użyciu znaczników Pango"
-
-#: ../src/exo-icon-view.c:675
-msgid "Icon View Model"
-msgstr "Model widoku ikon"
-
-#: ../src/exo-icon-view.c:676
-msgid "The model for the icon view"
-msgstr "Model dla widoku ikon"
-
-#: ../src/exo-icon-view.c:692
-msgid "Number of columns"
-msgstr "Liczba kolumn"
-
-#: ../src/exo-icon-view.c:693
-msgid "Number of columns to display"
-msgstr "Liczba wyświetlanych kolumn"
-
-#: ../src/exo-icon-view.c:710
-msgid "Width for each item"
-msgstr "Szerokość każdego elementu"
-
-#: ../src/exo-icon-view.c:711
-msgid "The width used for each item"
-msgstr "Szerokość używana dla każdego elementu"
-
-#: ../src/exo-icon-view.c:726
-msgid "Spacing"
+#: ../libcore/gof-file.c:278
+#, c-format
+msgid "link to %s"
 msgstr ""
 
-#: ../src/exo-icon-view.c:727
-msgid "Space which is inserted between cells of an item"
+#. Today, use special word.
+#. * strftime patterns preceeded with the widest
+#. * possible resulting string for that pattern.
+#. *
+#. * Note to localizers: You can look at man strftime
+#. * for details on the format, but you should only use
+#. * the specifiers from the C standard, not extensions.
+#. * These include "%" followed by one of
+#. * "aAbBcdHIjmMpSUwWxXyYZ". There are two extensions
+#. * in the Nautilus version of strftime that can be
+#. * used (and match GNU extensions). Putting a "-"
+#. * between the "%" and any numeric directive will turn
+#. * off zero padding, and putting a "_" there will use
+#. * space padding instead of zero padding.
+#.
+#: ../libcore/gof-file.c:727
+msgid "today at 00:00:00 PM"
 msgstr ""
 
-#: ../src/exo-icon-view.c:742
-msgid "Row Spacing"
+#: ../libcore/gof-file.c:728
+msgid "today at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/exo-icon-view.c:743
-msgid "Space which is inserted between grid rows"
+#: ../libcore/gof-file.c:730
+msgid "today at 00:00 PM"
 msgstr ""
 
-#: ../src/exo-icon-view.c:758
-msgid "Column Spacing"
+#: ../libcore/gof-file.c:731
+msgid "today at %-I:%M %p"
 msgstr ""
 
-#: ../src/exo-icon-view.c:759
-msgid "Space which is inserted between grid columns"
+#: ../libcore/gof-file.c:733
+msgid "today, 00:00 PM"
 msgstr ""
 
-#: ../src/exo-icon-view.c:774
-msgid "Margin"
+#: ../libcore/gof-file.c:734
+msgid "today, %-I:%M %p"
 msgstr ""
 
-#: ../src/exo-icon-view.c:775
-msgid "Space which is inserted at the edges of the icon view"
+#: ../libcore/gof-file.c:736 ../libcore/gof-file.c:737
+msgid "today"
 msgstr ""
 
-#: ../src/exo-icon-view.c:790
-msgid "Item Orientation"
+#. Yesterday, use special word.
+#. * Note to localizers: Same issues as "today" string.
+#.
+#: ../libcore/gof-file.c:746
+msgid "yesterday at 00:00:00 PM"
 msgstr ""
 
-#: ../src/exo-icon-view.c:791
-msgid ""
-"How the text and icon of each item are positioned relative to each other"
+#: ../libcore/gof-file.c:747
+msgid "yesterday at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/exo-icon-view.c:807
-msgid "Reorderable"
+#: ../libcore/gof-file.c:749
+msgid "yesterday at 00:00 PM"
 msgstr ""
 
-#: ../src/exo-icon-view.c:808
-msgid "View is reorderable"
+#: ../libcore/gof-file.c:750
+msgid "yesterday at %-I:%M %p"
 msgstr ""
 
-#: ../src/exo-icon-view.c:815
-msgid "Tooltip Column"
+#: ../libcore/gof-file.c:752
+msgid "yesterday, 00:00 PM"
 msgstr ""
 
-#: ../src/exo-icon-view.c:816
-msgid "The column in the model containing the tooltip texts for the items"
+#: ../libcore/gof-file.c:753
+msgid "yesterday, %-I:%M %p"
 msgstr ""
 
-#: ../src/exo-icon-view.c:833
-msgid "Item Padding"
+#: ../libcore/gof-file.c:755 ../libcore/gof-file.c:756
+msgid "yesterday"
 msgstr ""
 
-#: ../src/exo-icon-view.c:834
-msgid "Padding around icon view items"
+#. Current week, include day of week.
+#. * Note to localizers: Same issues as "today" string.
+#. * The width measurement templates correspond to
+#. * the day/month name with the most letters.
+#.
+#: ../libcore/gof-file.c:767
+msgid "Wednesday, September 00 0000 at 00:00:00 PM"
 msgstr ""
 
-#: ../src/exo-icon-view.c:851
-msgid "Cell Area"
+#: ../libcore/gof-file.c:768
+msgid "%A, %B %-d %Y at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/exo-icon-view.c:852
-msgid "The GtkCellArea used to layout cells"
+#: ../libcore/gof-file.c:770
+msgid "Mon, Oct 00 0000 at 00:00:00 PM"
 msgstr ""
 
-#: ../src/exo-icon-view.c:865
-msgid "Selection Box Color"
+#: ../libcore/gof-file.c:771
+msgid "%a, %b %-d %Y at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/exo-icon-view.c:866
-msgid "Color of the selection box"
+#: ../libcore/gof-file.c:773
+msgid "Mon, Oct 00 0000 at 00:00 PM"
 msgstr ""
 
-#: ../src/exo-icon-view.c:872
-msgid "Selection Box Alpha"
+#: ../libcore/gof-file.c:774
+msgid "%a, %b %-d %Y at %-I:%M %p"
 msgstr ""
 
-#: ../src/exo-icon-view.c:873
-msgid "Opacity of the selection box"
+#: ../libcore/gof-file.c:776
+msgid "Oct 00 0000 at 00:00 PM"
+msgstr ""
+
+#: ../libcore/gof-file.c:777
+msgid "%b %-d %Y at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/gof-file.c:779
+msgid "Oct 00 0000, 00:00 PM"
+msgstr ""
+
+#: ../libcore/gof-file.c:780
+msgid "%b %-d %Y, %-I:%M %p"
+msgstr ""
+
+#: ../libcore/gof-file.c:782
+msgid "00/00/00, 00:00 PM"
+msgstr ""
+
+#: ../libcore/gof-file.c:783
+msgid "%m/%-d/%y, %-I:%M %p"
+msgstr ""
+
+#: ../libcore/gof-file.c:785
+msgid "00/00/00"
+msgstr ""
+
+#: ../libcore/gof-file.c:786
+msgid "%m/%d/%y"
+msgstr ""
+
+#: ../libcore/gof-file.c:1522
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr ""
+
+#: ../libcore/gof-file.c:1560
+#, c-format
+msgid "No Exec field specified"
+msgstr ""
+
+#: ../libcore/gof-file.c:1580
+#, c-format
+msgid "No URL field specified"
+msgstr ""
+
+#: ../libcore/gof-file.c:1586
+#, c-format
+msgid "Invalid desktop file"
+msgstr ""
+
+#: ../libcore/gof-file.c:1810
+#, c-format
+msgid "Slashes are not allowed in filenames"
+msgstr ""
+
+#: ../libcore/gof-file.c:1830
+#, c-format
+msgid "Toplevel files cannot be renamed"
 msgstr ""
 
 #. tell the user that the file name provided by the X Direct Save source is invalid
-#: ../src/fm-directory-view.c:1100
+#: ../src/fm-directory-view.c:1143
 msgid "Invalid filename provided by XDS drag site"
 msgstr ""
 
 #. display an error dialog to the user
-#: ../src/fm-directory-view.c:1261
+#: ../src/fm-directory-view.c:1304
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr ""
@@ -207,32 +212,32 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2759
+#: ../src/fm-directory-view.c:2802
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2763
+#: ../src/fm-directory-view.c:2806
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2767
+#: ../src/fm-directory-view.c:2810
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2770
+#: ../src/fm-directory-view.c:2813
 msgid "Paste Into Folder"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2771
+#: ../src/fm-directory-view.c:2814
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -240,62 +245,62 @@ msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2774
+#: ../src/fm-directory-view.c:2817
 msgid "_Rename..."
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2775
+#: ../src/fm-directory-view.c:2818
 msgid "Rename selected item"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2778
+#: ../src/fm-directory-view.c:2821
 msgid "Create New _Folder"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2779
+#: ../src/fm-directory-view.c:2822
 msgid "Create a new empty folder inside this folder"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2782
+#: ../src/fm-directory-view.c:2825
 msgid "Mo_ve to Trash"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2783
+#: ../src/fm-directory-view.c:2826
 msgid "Move each selected item to the Trash"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2786
+#: ../src/fm-directory-view.c:2829
 msgid "_Delete"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2787
+#: ../src/fm-directory-view.c:2830
 msgid "Delete each selected item, without moving to the Trash"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2790
+#: ../src/fm-directory-view.c:2833
 msgid "_Restore"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2794
+#: ../src/fm-directory-view.c:2837
 msgid "_Properties"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2795
+#: ../src/fm-directory-view.c:2838
 msgid "View or modify the properties of each selected item"
 msgstr ""
 
@@ -323,206 +328,36 @@ msgstr ""
 msgid "Modified"
 msgstr ""
 
-#: ../src/gof-file.c:278
-#, c-format
-msgid "link to %s"
-msgstr ""
-
-#. Today, use special word.
-#. * strftime patterns preceeded with the widest
-#. * possible resulting string for that pattern.
-#. *
-#. * Note to localizers: You can look at man strftime
-#. * for details on the format, but you should only use
-#. * the specifiers from the C standard, not extensions.
-#. * These include "%" followed by one of
-#. * "aAbBcdHIjmMpSUwWxXyYZ". There are two extensions
-#. * in the Nautilus version of strftime that can be
-#. * used (and match GNU extensions). Putting a "-"
-#. * between the "%" and any numeric directive will turn
-#. * off zero padding, and putting a "_" there will use
-#. * space padding instead of zero padding.
-#.
-#: ../src/gof-file.c:727
-msgid "today at 00:00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:728
-msgid "today at %-I:%M:%S %p"
-msgstr ""
-
-#: ../src/gof-file.c:730
-msgid "today at 00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:731
-msgid "today at %-I:%M %p"
-msgstr ""
-
-#: ../src/gof-file.c:733
-msgid "today, 00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:734
-msgid "today, %-I:%M %p"
-msgstr ""
-
-#: ../src/gof-file.c:736 ../src/gof-file.c:737
-msgid "today"
-msgstr ""
-
-#. Yesterday, use special word.
-#. * Note to localizers: Same issues as "today" string.
-#.
-#: ../src/gof-file.c:746
-msgid "yesterday at 00:00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:747
-msgid "yesterday at %-I:%M:%S %p"
-msgstr ""
-
-#: ../src/gof-file.c:749
-msgid "yesterday at 00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:750
-msgid "yesterday at %-I:%M %p"
-msgstr ""
-
-#: ../src/gof-file.c:752
-msgid "yesterday, 00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:753
-msgid "yesterday, %-I:%M %p"
-msgstr ""
-
-#: ../src/gof-file.c:755 ../src/gof-file.c:756
-msgid "yesterday"
-msgstr ""
-
-#. Current week, include day of week.
-#. * Note to localizers: Same issues as "today" string.
-#. * The width measurement templates correspond to
-#. * the day/month name with the most letters.
-#.
-#: ../src/gof-file.c:767
-msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:768
-msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-msgstr ""
-
-#: ../src/gof-file.c:770
-msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:771
-msgid "%a, %b %-d %Y at %-I:%M:%S %p"
-msgstr ""
-
-#: ../src/gof-file.c:773
-msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:774
-msgid "%a, %b %-d %Y at %-I:%M %p"
-msgstr ""
-
-#: ../src/gof-file.c:776
-msgid "Oct 00 0000 at 00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:777
-msgid "%b %-d %Y at %-I:%M %p"
-msgstr ""
-
-#: ../src/gof-file.c:779
-msgid "Oct 00 0000, 00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:780
-msgid "%b %-d %Y, %-I:%M %p"
-msgstr ""
-
-#: ../src/gof-file.c:782
-msgid "00/00/00, 00:00 PM"
-msgstr ""
-
-#: ../src/gof-file.c:783
-msgid "%m/%-d/%y, %-I:%M %p"
-msgstr ""
-
-#: ../src/gof-file.c:785
-msgid "00/00/00"
-msgstr ""
-
-#: ../src/gof-file.c:786
-msgid "%m/%d/%y"
-msgstr ""
-
-#: ../src/gof-file.c:1522
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr ""
-
-#: ../src/gof-file.c:1560
-#, c-format
-msgid "No Exec field specified"
-msgstr ""
-
-#: ../src/gof-file.c:1580
-#, c-format
-msgid "No URL field specified"
-msgstr ""
-
-#: ../src/gof-file.c:1586
-#, c-format
-msgid "Invalid desktop file"
-msgstr ""
-
-#: ../src/gof-file.c:1810
-#, c-format
-msgid "Slashes are not allowed in filenames"
-msgstr ""
-
-#: ../src/gof-file.c:1830
-#, c-format
-msgid "Toplevel files cannot be renamed"
-msgstr ""
-
-#: ../src/marlin-application.c:469
+#: ../src/marlin-application.c:470
 msgid "Show the version of the program."
 msgstr ""
 
-#: ../src/marlin-application.c:471
+#: ../src/marlin-application.c:472
 msgid ""
 "Do not manage the desktop (ignore the preference set in the preferences "
 "dialog)."
 msgstr ""
 
-#: ../src/marlin-application.c:473
+#: ../src/marlin-application.c:474
 msgid "Open uri(s) in new tab"
 msgstr ""
 
-#: ../src/marlin-application.c:475
+#: ../src/marlin-application.c:476
 msgid "Quit Marlin."
 msgstr ""
 
-#: ../src/marlin-application.c:476
+#: ../src/marlin-application.c:477
 msgid "[URI...]"
 msgstr ""
 
-#: ../src/marlin-application.c:487
+#: ../src/marlin-application.c:488
 msgid ""
 "\n"
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
 
-#: ../src/marlin-application.c:512
+#: ../src/marlin-application.c:513
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
@@ -1628,21 +1463,21 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:918
+#: ../src/View/Chrome/LocationBar.vala:931
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:922
+#: ../src/View/Chrome/LocationBar.vala:935
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:926
+#: ../src/View/Chrome/LocationBar.vala:939
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
@@ -1953,3 +1788,62 @@ msgstr ""
 #: ../src/View/Window.vala:646
 msgid "Columns View"
 msgstr ""
+
+#~ msgid "Selection mode"
+#~ msgstr "Tryb wyboru"
+
+#~ msgid "The selection mode"
+#~ msgstr "Tryb wyboru"
+
+#~ msgid "Single Click"
+#~ msgstr "Pojedyncze kliknięcie"
+
+#~ msgid "Whether the items in the view can be activated with single clicks"
+#~ msgstr "Czy elementy w widoku można aktywować za pomocą jednego kliknięcia"
+
+#~ msgid "Single Click Timeout"
+#~ msgstr "Limit czasowy pojedynczego kliknięcia"
+
+#~ msgid ""
+#~ "The amount of time after which the item under the mouse cursor will be "
+#~ "selected automatically in single click mode"
+#~ msgstr ""
+#~ "Opóźnienie czasowe, po którym element zostanie automatycznie zaznaczony "
+#~ "przez stojący nad nim kursor myszy"
+
+#~ msgid "Pixbuf column"
+#~ msgstr "Kolumna ikon"
+
+#~ msgid "Model column used to retrieve the icon pixbuf from"
+#~ msgstr "Kolumna modelowa używana do pobierania ikon"
+
+#~ msgid "Text column"
+#~ msgstr "Kolumna tekstowa"
+
+#~ msgid "Model column used to retrieve the text from"
+#~ msgstr "Użyty model kolumny do pobierania tekstu"
+
+#~ msgid "Markup column"
+#~ msgstr "Kolumna znaczników"
+
+#~ msgid "Model column used to retrieve the text if using Pango markup"
+#~ msgstr ""
+#~ "Model kolumny użyty do pobierania tekstu przy użyciu znaczników Pango"
+
+#~ msgid "Icon View Model"
+#~ msgstr "Model widoku ikon"
+
+#~ msgid "The model for the icon view"
+#~ msgstr "Model dla widoku ikon"
+
+#~ msgid "Number of columns"
+#~ msgstr "Liczba kolumn"
+
+#~ msgid "Number of columns to display"
+#~ msgstr "Liczba wyświetlanych kolumn"
+
+#~ msgid "Width for each item"
+#~ msgstr "Szerokość każdego elementu"
+
+#~ msgid "The width used for each item"
+#~ msgstr "Szerokość używana dla każdego elementu"
