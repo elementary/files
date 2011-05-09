@@ -390,9 +390,7 @@ fm_directory_view_init (FMDirectoryView *view)
                                     GTK_POLICY_AUTOMATIC);
     gtk_scrolled_window_set_hadjustment (GTK_SCROLLED_WINDOW (view), NULL);
     gtk_scrolled_window_set_vadjustment (GTK_SCROLLED_WINDOW (view), NULL);
-    /* amtest: i am not sure i want a shadow here or only when no tabs */
-    //gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (view), GTK_SHADOW_IN);
-    //gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (view), GTK_SHADOW_NONE);
+    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (view), GTK_SHADOW_NONE);
 
     /*g_signal_connect_object (nautilus_signaller_get_current (),
       "user_dirs_changed",
@@ -459,9 +457,6 @@ fm_directory_view_init (FMDirectoryView *view)
     /* connect to size allocation signals for generating thumbnail requests */
     g_signal_connect_after (G_OBJECT (view), "size-allocate",
                             G_CALLBACK (fm_directory_view_size_allocate), NULL);
-    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (view),
-					       GTK_SHADOW_ETCHED_IN);
-
 }
 
 static GObject*
