@@ -885,7 +885,7 @@ namespace Marlin.View.Chrome
             {
                 if(element.display)
                 {
-                    element.draw(cr, x_render, margin, height-margin*2, button_context);
+                    element.draw(cr, x_render, margin, height-margin*2, button_context, this);
                     x_render += element.text_width + space_breads;
                 }
                 i++;
@@ -896,7 +896,7 @@ namespace Marlin.View.Chrome
                 {
                     if(element.display)
                     {
-                        element.draw(cr, x_render, margin, height - margin*2, button_context);
+                        element.draw(cr, x_render, margin, height - margin*2, button_context, this);
                         x_render += element.text_width + space_breads;
                     }
                 }
@@ -905,7 +905,7 @@ namespace Marlin.View.Chrome
             draw_selection(cr);
 
             x_render_saved = x_render + space_breads/2;
-            entry.draw(cr, x_render + space_breads/2, height, width - x_render);
+            entry.draw(cr, x_render + space_breads/2, height, width - x_render, this);
             return false;
         }
 
@@ -962,6 +962,7 @@ namespace Marlin.View.Chrome
         int font_size;
         public int offset = 0;
         public double text_width = -1;
+        public double text_height = -1;
         Gdk.Pixbuf icon;
         public bool display = true;
         public BreadcrumbsElement(string text_, string font_name_, int font_size_)
@@ -976,21 +977,23 @@ namespace Marlin.View.Chrome
             icon = icon_;
         }
         
-        private void computetext_width(Cairo.Context cr)
+        private void computetext_width(Pango.Layout pango)
         {
-            Cairo.TextExtents txt = Cairo.TextExtents();
-            cr.text_extents(text, out txt);
-            text_width = txt.x_advance;
+            int text_width, text_height;
+            pango.get_size(out text_width, out text_height);
+            this.text_width = Pango.units_to_double(text_width);
+            this.text_height = Pango.units_to_double(text_height);
         }
         
-        public void draw(Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context)
+        public void draw(Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, Gtk.Widget widget)
         {
             cr.set_source_rgb(0,0,0);
             cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
             cr.set_font_size(font_size);
+            Pango.Layout layout = widget.create_pango_layout(text);
             if(text_width < 0 && icon == null)
             {
-                computetext_width(cr);
+                computetext_width(layout);
             }
             else if(icon != null)
             {
@@ -1011,9 +1014,8 @@ namespace Marlin.View.Chrome
             
             if(icon == null)
             {
-                cr.move_to(x - offset*5,
-                           y + height/2 + font_size/2);
-                cr.show_text(text);
+                Gtk.render_layout(button_context, cr, x - offset*5,
+                            y + height/2 - text_height/2, layout);
             }
             else
             {
@@ -1312,7 +1314,7 @@ namespace Marlin.View.Chrome
             }
         }
         
-        public void draw(Cairo.Context cr, double x, double height, double width)
+        public void draw(Cairo.Context cr, double x, double height, double width, Gtk.Widget widget)
         {
             cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
             cr.set_font_size(font_size);
