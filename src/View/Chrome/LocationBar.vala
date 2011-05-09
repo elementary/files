@@ -802,6 +802,7 @@ namespace Marlin.View.Chrome
                 queue_draw();
                 return true;
             }
+            set_tooltip_text("");
             foreach(BreadcrumbsElement element in elements)
             {
                 if(element.display)
@@ -810,6 +811,7 @@ namespace Marlin.View.Chrome
                     if(x <= x_render + 5 && x > x_previous + 5)
                     {
                         selected = elements.index_of(element);
+                        set_tooltip_text(_("Go to %s").printf(element.text));
                         break;
                     }
                     x_previous = x_render;
