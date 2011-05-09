@@ -340,11 +340,13 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
             handled = FALSE;
             break;
         }
-        /*if ((event->state & GDK_SHIFT_MASK) != 0) {
-          activate_selected_items_alternate (FM_COLUMNS_VIEW (view), NULL, TRUE);
-          } else {*/
-        fm_directory_view_activate_selected_items (view);
-        //}
+        if ((event->state & GDK_SHIFT_MASK) != 0) {
+            //TODO
+            printf ("activate alternate\n"); 
+            //activate_selected_items_alternate (FM_LIST_VIEW (view), NULL, TRUE);
+        } else {
+            fm_directory_view_preview_selected_items (view);
+        }
         handled = TRUE;
         break;
     case GDK_KEY_Return:

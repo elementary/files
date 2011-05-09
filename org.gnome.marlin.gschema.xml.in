@@ -150,6 +150,11 @@
         Confirm trash
       </_description>
     </key>
+    <key name="previewer-path" type="s">
+      <default>''</default>
+      <_summary>Path of the previewer.</_summary>
+      <_description>Path of the previewer or executable name (if path already definied in PATH environnment variable). If no path is set, then the space bindkey would just activate the selected items instead of previewing them </_description>
+    </key>
   </schema>
 
   <schema id="org.gnome.marlin.icon-view" path="/apps/marlin/icon-view/">

@@ -144,6 +144,7 @@ struct FMDirectoryViewDetails
     guint               thumbnail_source_id;
     gboolean            thumbnailing_scheduled;
 
+    gchar           *previewer;
     GtkWidget       *menu_selection;
     GtkWidget       *menu_background;
 };
@@ -419,6 +420,14 @@ fm_directory_view_init (FMDirectoryView *view)
     view->name_renderer = marlin_text_renderer_new ();
     g_object_ref_sink (G_OBJECT (view->name_renderer));
     //exo_binding_new (G_OBJECT (standard_view->preferences), "misc-single-click", G_OBJECT (standard_view->name_renderer), "follow-prelit");
+    
+    /* get the previewer_path if any */
+    gchar *previewer_path = g_settings_get_string (settings, "previewer-path");
+    if (strlen (previewer_path) > 0)
+        view->details->previewer = g_strdup (previewer_path);
+    else
+        view->details->previewer = NULL;
+    g_free (previewer_path);
 
 
     gtk_widget_show (GTK_WIDGET (view));
@@ -641,6 +650,7 @@ fm_directory_view_finalize (GObject *object)
     /* release the reference on the action group */
     g_object_unref (G_OBJECT (view->details->dir_action_group));
 
+    g_free (view->details->previewer);
 
     /*if (slot != NULL)
       g_object_unref (slot);*/
@@ -749,6 +759,40 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view)
                     gof_file_open_single (file, screen);
                 }
             }
+    }
+}
+
+void
+fm_directory_view_preview_selected_items (FMDirectoryView *view)
+{
+    GList *selection;
+    GList *file_list = NULL;
+    GdkScreen *screen;
+    GOFFile *file;
+
+    /* activate selected items if no previewer have been defined */
+    if (view->details->previewer == NULL) {
+        fm_directory_view_activate_selected_items (view);
+        return;
+    }
+
+
+    selection = fm_directory_view_get_selection (view);
+    /* FIXME only grab the first selection item as gloobus-preview is unable to handle 
+    multiple selection */
+    if (selection != NULL) {
+        file = selection->data;
+        file_list = g_list_prepend (file_list, file->location);
+
+        screen = eel_gtk_widget_get_screen (GTK_WIDGET (view));
+        GdkAppLaunchContext *context = gdk_app_launch_context_new ();
+        gdk_app_launch_context_set_screen (context, screen);
+        GAppInfo* previewer_app = g_app_info_create_from_commandline(view->details->previewer, NULL, 0, NULL);
+        g_app_info_launch(previewer_app, file_list, G_APP_LAUNCH_CONTEXT (context), NULL);
+
+        g_list_free (file_list);
+        g_object_unref (context);
+        g_object_unref (previewer_app);
     }
 }
 
