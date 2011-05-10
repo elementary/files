@@ -54,7 +54,7 @@ MarlinPluginManager* marlin_plugin_manager_new(void);
 void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin);
 void marlin_plugin_manager_hook_context_menu(MarlinPluginManager* plugin, GtkWidget* win);
 void marlin_plugin_manager_directory_loaded(MarlinPluginManager* plugin, GOFFile* path);
-
+void marlin_plugin_manager_hook_send(MarlinPluginManager* plugin, void* user_data, int hook);
 extern MarlinPluginManager* plugins;
 
 G_END_DECLS

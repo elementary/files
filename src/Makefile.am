@@ -70,8 +70,6 @@ marlin_CSOURCES = \
     fm-list-view.c                          \
     fm-columns-view.c                       \
     marlin-toolbar-editor.c                 \
-	marlin-plugin.c       					\
-	marlin-plugin-manager.c
     $(NULL)
 
 marlin_SOURCES = \

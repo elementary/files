@@ -45,7 +45,7 @@ void hook_directory_loaded(GOFFile* path)
 }
 static void on_open_terminal_activated(GtkWidget* widget, gpointer data)
 {
-    GAppInfo* term_app = g_app_info_create_from_commandline(g_strdup_printf("/usr/bin/gnome-terminal --working-directory=%s", current_path),
+    GAppInfo* term_app = g_app_info_create_from_commandline(g_strdup_printf("gnome-terminal --working-directory=%s", current_path),
                                                             "Terminal",
                                                             0,
                                                             NULL);
@@ -55,16 +55,16 @@ static void on_open_terminal_activated(GtkWidget* widget, gpointer data)
 void hook_context_menu(GtkWidget* menu)
 {
     g_debug("Open Terminal");
+}
+
+static void put_right_click_menu(GtkUIManager* ui_manager)
+{
+    GtkMenu* menu = gtk_ui_manager_get_widget (ui_manager, "/background");
     
-    if(!menu_added)
-    {
-    g_debug("Open Terminal 2");
-        GtkWidget* menuitem = gtk_menu_item_new_with_label("Open a terminal here");
-	    gtk_menu_shell_append(menu, menuitem);
-	    g_signal_connect(menuitem, "activate", on_open_terminal_activated, NULL);
-	    gtk_widget_show_all (GTK_WIDGET (menu));
-	    menu_added = TRUE;
-	}
+    GtkWidget* menuitem = gtk_menu_item_new_with_label("Open a terminal here");
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
+    g_signal_connect(menuitem, "activate", on_open_terminal_activated, NULL);
+    gtk_widget_show (GTK_WIDGET (menuitem));
 }
 
 void receive_all_hook(void* user_data, int hook)
@@ -76,6 +76,12 @@ void receive_all_hook(void* user_data, int hook)
         break;
     case MARLIN_PLUGIN_HOOK_CONTEXT_MENU:
         hook_context_menu(user_data);
+        break;
+    case MARLIN_PLUGIN_HOOK_UI:
+        put_right_click_menu(user_data);
+        break;
+    case MARLIN_PLUGIN_HOOK_DIRECTORY:
+        hook_directory_loaded(user_data);
         break;
     default:
         g_debug("Don't know this hook: %d", hook);

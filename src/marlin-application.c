@@ -116,6 +116,7 @@ open_window (MarlinApplication *application,
     gtk_application_add_window (GTK_APPLICATION (application),
                                 GTK_WINDOW (window));
     marlin_view_window_add_tab (window, location);
+    marlin_plugin_manager_hook_send(plugins, window->ui, MARLIN_PLUGIN_HOOK_UI);
 
     g_object_unref (location);
 }

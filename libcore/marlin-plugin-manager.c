@@ -78,38 +78,28 @@ void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin)
 
 void marlin_plugin_manager_interface_loaded(MarlinPluginManager* plugin, GtkWidget* win)
 {
-    GList* item = g_list_first(plugin->plugins_list);
-
-    while(item != NULL)
-    {
-        ((MarlinPlugin*)item->data)->hook_receive(win, MARLIN_PLUGIN_HOOK_INTERFACE);
-        item = g_list_next(item);
-    }
-
+    marlin_plugin_manager_hook_send(plugin, win, MARLIN_PLUGIN_HOOK_INTERFACE);
 }
 
 void marlin_plugin_manager_directory_loaded(MarlinPluginManager* plugin, GOFFile* path)
 {
-    g_debug("Directory loaded");
-    GList* item = g_list_first(plugin->plugins_list);
-
-    while(item != NULL)
-    {
-        ((MarlinPlugin*)item->data)->hook_receive(path, MARLIN_PLUGIN_HOOK_DIRECTORY);
-        item = g_list_next(item);
-    }
-
+    marlin_plugin_manager_hook_send(plugin, path, MARLIN_PLUGIN_HOOK_DIRECTORY);
 }
 
 void marlin_plugin_manager_hook_context_menu(MarlinPluginManager* plugin, GtkWidget* win)
 {
-    g_debug("Plugin Context Menu");
+    marlin_plugin_manager_hook_send(plugin, win, MARLIN_PLUGIN_HOOK_CONTEXT_MENU);
+}
+
+void marlin_plugin_manager_hook_send(MarlinPluginManager* plugin, void* user_data, int hook)
+{
+    g_debug("Plugin Hook: %d", hook);
 
     GList* item = g_list_first(plugin->plugins_list);
 
     while(item != NULL)
     {
-        ((MarlinPlugin*)item->data)->hook_receive(win, MARLIN_PLUGIN_HOOK_CONTEXT_MENU);
+        ((MarlinPlugin*)item->data)->hook_receive(user_data, hook);
         item = g_list_next(item);
     }
 
