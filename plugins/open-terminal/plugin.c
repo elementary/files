@@ -21,6 +21,7 @@
 
 static gchar* current_path = NULL;
 static gboolean menu_added = FALSE;
+static GSettings* settings = NULL;
 
 
 void hook_interface_loaded(void* win_)
@@ -28,9 +29,10 @@ void hook_interface_loaded(void* win_)
     printf("Interface Loaded\n");
 }
 
-void hook_plugin_init(void)
+void hook_plugin_init(void* user_data)
 {
     printf("Init the plugin\n");
+    settings = settings = g_settings_new ("org.gnome.marlin.plugins.openterminal");
 }
 
 void hook_plugin_finish(void)
@@ -45,7 +47,7 @@ void hook_directory_loaded(GOFFile* path)
 }
 static void on_open_terminal_activated(GtkWidget* widget, gpointer data)
 {
-    GAppInfo* term_app = g_app_info_create_from_commandline(g_strdup_printf("gnome-terminal --working-directory=%s", current_path),
+    GAppInfo* term_app = g_app_info_create_from_commandline(g_strdup_printf("%s%s", g_settings_get_string(settings, "default-terminal"), current_path),
                                                             "Terminal",
                                                             0,
                                                             NULL);
@@ -64,6 +66,8 @@ static void put_right_click_menu(GtkUIManager* ui_manager)
     GtkWidget* menuitem = gtk_menu_item_new_with_label("Open a terminal here");
     gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
     g_signal_connect(menuitem, "activate", on_open_terminal_activated, NULL);
+    menu = gtk_ui_manager_get_widget (ui_manager, "/background");
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
     gtk_widget_show (GTK_WIDGET (menuitem));
 }
 
@@ -82,6 +86,9 @@ void receive_all_hook(void* user_data, int hook)
         break;
     case MARLIN_PLUGIN_HOOK_DIRECTORY:
         hook_directory_loaded(user_data);
+        break;
+    case MARLIN_PLUGIN_HOOK_INIT:
+        hook_plugin_init(user_data);
         break;
     default:
         g_debug("Don't know this hook: %d", hook);

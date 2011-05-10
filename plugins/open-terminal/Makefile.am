@@ -15,3 +15,8 @@ libmarlin_openterminal_la_CFLAGS = \
 pkgdatadir=$(prefix)/share/marlin/plugins
 nobase_dist_pkgdata_DATA = openterminal.plug
 EXTRA_DIST = $(nobase_dist_pkgdata_DATA)
+
+gsettings_SCHEMAS = org.gnome.marlin.plugins.gschema.xml
+
+@GSETTINGS_RULES@
+@INTLTOOL_XML_NOMERGE_RULE@
