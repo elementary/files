@@ -59,7 +59,7 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
     g_key_file_load_from_file(keyfile, path,
                               G_KEY_FILE_NONE,
                               NULL);
-    plugin->plugin_handle = dlopen (g_key_file_get_value(keyfile, "Plugin", "File", NULL), RTLD_LAZY);
+    plugin->plugin_handle = dlopen (g_build_filename(PLUGIN_DIR, g_key_file_get_value(keyfile, "Plugin", "File", NULL)), RTLD_LAZY);
     if(! plugin->plugin_handle)
     {
         g_warning("Can't load plugin: %s", path);

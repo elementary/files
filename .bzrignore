@@ -93,3 +93,5 @@ libcore/libmarlincore.la
 plugins/open-terminal/libmarlin-openterminal.la
 plugins/open-terminal/libmarlin_openterminal_a-plugin.o
 plugins/open-terminal/libmarlin_openterminal_la-plugin.lo
+libcore/libmarlincore_la-marlin-plugin.lo
+libcore/libmarlincore_la-marlin-plugin-manager.lo

@@ -41,4 +41,5 @@ libmarlincore_la_CFLAGS = \
     -DVERSION="\"$(VERSION)\"" 	                    \
     -DGETTEXT_PACKAGE=\""marlin"\" \
     -DUI_DIR=\""$(datadir)/marlin/ui/"\"            \
+    -DPLUGIN_DIR=\""$(datadir)/marlin/plugins"\"    \
     $(NULL)
