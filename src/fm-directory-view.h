@@ -386,6 +386,7 @@ void    fm_directory_view_load_location (FMDirectoryView *directory_view, GFile 
 void    fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, 
                                                 GdkScreen *screen, gboolean open_in_tab);
 void    fm_directory_view_activate_selected_items (FMDirectoryView *view);
+void    fm_directory_view_preview_selected_items (FMDirectoryView *view);
 //void    fm_directory_view_colorize_selection (FMDirectoryView *view, int color);
 void    fm_directory_view_notify_selection_changed (FMDirectoryView *view);
 

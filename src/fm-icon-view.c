@@ -416,19 +416,15 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMIconView
 static gboolean
 key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_data)
 {
-    FMIconView *view;
+    FMDirectoryView *view;
     //GdkEventButton button_event = { 0 };
     gboolean handled;
-    GtkTreeView *tree_view;
-    GtkTreePath *path;
 
-    tree_view = GTK_TREE_VIEW (widget);
-
-    view = FM_ICON_VIEW (callback_data);
+    view = FM_DIRECTORY_VIEW (callback_data);
     handled = FALSE;
 
     switch (event->keyval) {
-        /*case GDK_F10:
+    /*case GDK_F10:
           if (event->state & GDK_CONTROL_MASK) {
           fm_directory_view_pop_up_background_context_menu (view, &button_event);
           handled = TRUE;
@@ -436,29 +432,29 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
           break;*/
     case GDK_KEY_space:
         if (event->state & GDK_CONTROL_MASK) {
-            handled = FALSE;
-            break;
+			handled = FALSE;
+			break;
+		}
+		if (!gtk_widget_has_focus (widget)) {
+			handled = FALSE;
+			break;
+		}
+        if ((event->state & GDK_SHIFT_MASK) != 0) {
+            //TODO
+            printf ("activate alternate\n"); 
+            //activate_selected_items_alternate (FM_ICON_VIEW (view), NULL, TRUE);
+        } else {
+            fm_directory_view_preview_selected_items (view);
         }
-        if (!gtk_widget_has_focus (GTK_WIDGET (tree_view))) {
-            handled = FALSE;
-            break;
-        }
-        /*if ((event->state & GDK_SHIFT_MASK) != 0) {
-          activate_selected_items_alternate (FM_ICON_VIEW (view), NULL, TRUE);
-          } else {*/
-        activate_selected_items (FM_ICON_VIEW (view));
-        //}
         handled = TRUE;
         break;
-    case GDK_KEY_Return:
+    /*case GDK_KEY_Return:
     case GDK_KEY_KP_Enter:
-        /*if ((event->state & GDK_SHIFT_MASK) != 0) {
+        if ((event->state & GDK_SHIFT_MASK) != 0) {
           activate_selected_items_alternate (FM_ICON_VIEW (view), NULL, TRUE);
-          } else {*/
-        activate_selected_items (view);
-        //}
-        handled = TRUE;
-        break;
+          handled = TRUE;
+          }
+        break; */
 
     default:
         handled = FALSE;
@@ -767,10 +763,8 @@ fm_icon_view_init (FMIconView *view)
 
     g_signal_connect_object (view->icons, "button-press-event",
                              G_CALLBACK (button_press_callback), view, 0);
-#if 0
-    g_signal_connect_object (view->tree, "key_press_event",
+    g_signal_connect_object (view->icons, "key_press_event",
                              G_CALLBACK (key_press_callback), view, 0);
-#endif
 
     gtk_widget_show (GTK_WIDGET (view->icons));
     gtk_container_add (GTK_CONTAINER (view), GTK_WIDGET (view->icons));

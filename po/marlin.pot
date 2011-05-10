@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-08 02:18+0200\n"
+"POT-Creation-Date: 2011-05-10 09:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,308 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../src/eel-stock-dialogs.c:35
+#: ../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
 msgstr ""
 
-#: ../src/eel-vfs-extensions.c:72
+#: ../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
 msgstr ""
 
-#: ../src/exo-icon-view.c:577
-msgid "Selection mode"
-msgstr ""
-
-#: ../src/exo-icon-view.c:578
-msgid "The selection mode"
-msgstr ""
-
-#: ../src/exo-icon-view.c:593 ../src/exo-tree-view.c:161
-msgid "Single Click"
-msgstr ""
-
-#: ../src/exo-icon-view.c:594 ../src/exo-tree-view.c:162
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
-
-#: ../src/exo-icon-view.c:610 ../src/exo-tree-view.c:178
-msgid "Single Click Timeout"
-msgstr ""
-
-#: ../src/exo-icon-view.c:611 ../src/exo-tree-view.c:179
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-
-#: ../src/exo-icon-view.c:629
-msgid "Pixbuf column"
-msgstr ""
-
-#: ../src/exo-icon-view.c:630
-msgid "Model column used to retrieve the icon pixbuf from"
-msgstr ""
-
-#: ../src/exo-icon-view.c:647
-msgid "Text column"
-msgstr ""
-
-#: ../src/exo-icon-view.c:648
-msgid "Model column used to retrieve the text from"
-msgstr ""
-
-#: ../src/exo-icon-view.c:667
-msgid "Markup column"
-msgstr ""
-
-#: ../src/exo-icon-view.c:668
-msgid "Model column used to retrieve the text if using Pango markup"
-msgstr ""
-
-#: ../src/exo-icon-view.c:675
-msgid "Icon View Model"
-msgstr ""
-
-#: ../src/exo-icon-view.c:676
-msgid "The model for the icon view"
-msgstr ""
-
-#: ../src/exo-icon-view.c:692
-msgid "Number of columns"
-msgstr ""
-
-#: ../src/exo-icon-view.c:693
-msgid "Number of columns to display"
-msgstr ""
-
-#: ../src/exo-icon-view.c:710
-msgid "Width for each item"
-msgstr ""
-
-#: ../src/exo-icon-view.c:711
-msgid "The width used for each item"
-msgstr ""
-
-#: ../src/exo-icon-view.c:726
-msgid "Spacing"
-msgstr ""
-
-#: ../src/exo-icon-view.c:727
-msgid "Space which is inserted between cells of an item"
-msgstr ""
-
-#: ../src/exo-icon-view.c:742
-msgid "Row Spacing"
-msgstr ""
-
-#: ../src/exo-icon-view.c:743
-msgid "Space which is inserted between grid rows"
-msgstr ""
-
-#: ../src/exo-icon-view.c:758
-msgid "Column Spacing"
-msgstr ""
-
-#: ../src/exo-icon-view.c:759
-msgid "Space which is inserted between grid columns"
-msgstr ""
-
-#: ../src/exo-icon-view.c:774
-msgid "Margin"
-msgstr ""
-
-#: ../src/exo-icon-view.c:775
-msgid "Space which is inserted at the edges of the icon view"
-msgstr ""
-
-#: ../src/exo-icon-view.c:790
-msgid "Item Orientation"
-msgstr ""
-
-#: ../src/exo-icon-view.c:791
-msgid ""
-"How the text and icon of each item are positioned relative to each other"
-msgstr ""
-
-#: ../src/exo-icon-view.c:807
-msgid "Reorderable"
-msgstr ""
-
-#: ../src/exo-icon-view.c:808
-msgid "View is reorderable"
-msgstr ""
-
-#: ../src/exo-icon-view.c:815
-msgid "Tooltip Column"
-msgstr ""
-
-#: ../src/exo-icon-view.c:816
-msgid "The column in the model containing the tooltip texts for the items"
-msgstr ""
-
-#: ../src/exo-icon-view.c:833
-msgid "Item Padding"
-msgstr ""
-
-#: ../src/exo-icon-view.c:834
-msgid "Padding around icon view items"
-msgstr ""
-
-#: ../src/exo-icon-view.c:851
-msgid "Cell Area"
-msgstr ""
-
-#: ../src/exo-icon-view.c:852
-msgid "The GtkCellArea used to layout cells"
-msgstr ""
-
-#: ../src/exo-icon-view.c:865
-msgid "Selection Box Color"
-msgstr ""
-
-#: ../src/exo-icon-view.c:866
-msgid "Color of the selection box"
-msgstr ""
-
-#: ../src/exo-icon-view.c:872
-msgid "Selection Box Alpha"
-msgstr ""
-
-#: ../src/exo-icon-view.c:873
-msgid "Opacity of the selection box"
-msgstr ""
-
-#. tell the user that the file name provided by the X Direct Save source is invalid
-#: ../src/fm-directory-view.c:1100
-msgid "Invalid filename provided by XDS drag site"
-msgstr ""
-
-#. display an error dialog to the user
-#: ../src/fm-directory-view.c:1261
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr ""
-
-#. name, stock id
-#. label, accelerator
-#. tooltip
-#: ../src/fm-directory-view.c:2759
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-
-#. name, stock id
-#. label, accelerator
-#. tooltip
-#: ../src/fm-directory-view.c:2763
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-
-#. name, stock id
-#. label, accelerator
-#. tooltip
-#: ../src/fm-directory-view.c:2767
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-
-#. name, stock id
-#. label, accelerator
-#: ../src/fm-directory-view.c:2770
-msgid "Paste Into Folder"
-msgstr ""
-
-#. tooltip
-#: ../src/fm-directory-view.c:2771
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-
-#. name, stock id
-#. label, accelerator
-#: ../src/fm-directory-view.c:2774
-msgid "_Rename..."
-msgstr ""
-
-#. tooltip
-#: ../src/fm-directory-view.c:2775
-msgid "Rename selected item"
-msgstr ""
-
-#. name, stock id
-#. label, accelerator
-#: ../src/fm-directory-view.c:2778
-msgid "Create New _Folder"
-msgstr ""
-
-#. tooltip
-#: ../src/fm-directory-view.c:2779
-msgid "Create a new empty folder inside this folder"
-msgstr ""
-
-#. name, stock id
-#. label, accelerator
-#: ../src/fm-directory-view.c:2782
-msgid "Mo_ve to Trash"
-msgstr ""
-
-#. tooltip
-#: ../src/fm-directory-view.c:2783
-msgid "Move each selected item to the Trash"
-msgstr ""
-
-#. name, stock id
-#. label, accelerator
-#: ../src/fm-directory-view.c:2786
-msgid "_Delete"
-msgstr ""
-
-#. tooltip
-#: ../src/fm-directory-view.c:2787
-msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
-
-#. name, stock id
-#. label, accelerator
-#: ../src/fm-directory-view.c:2790
-msgid "_Restore"
-msgstr ""
-
-#. name, stock id
-#. label, accelerator
-#: ../src/fm-directory-view.c:2794
-msgid "_Properties"
-msgstr ""
-
-#. tooltip
-#: ../src/fm-directory-view.c:2795
-msgid "View or modify the properties of each selected item"
-msgstr ""
-
-#: ../src/fm-list-model.c:457
-msgid "(Empty)"
-msgstr ""
-
-#: ../src/fm-list-model.c:459
-msgid "Loading..."
-msgstr ""
-
-#: ../src/fm-list-view.c:54
-msgid "Filename"
-msgstr ""
-
-#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:185
-msgid "Size"
-msgstr ""
-
-#: ../src/fm-list-view.c:54
-msgid "Type"
-msgstr ""
-
-#: ../src/fm-list-view.c:54
-msgid "Modified"
-msgstr ""
-
-#: ../src/gof-file.c:278
+#: ../libcore/gof-file.c:278
 #, c-format
 msgid "link to %s"
 msgstr ""
@@ -339,62 +46,62 @@ msgstr ""
 #. * off zero padding, and putting a "_" there will use
 #. * space padding instead of zero padding.
 #.
-#: ../src/gof-file.c:727
+#: ../libcore/gof-file.c:727
 msgid "today at 00:00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:728
+#: ../libcore/gof-file.c:728
 msgid "today at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/gof-file.c:730
+#: ../libcore/gof-file.c:730
 msgid "today at 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:731
+#: ../libcore/gof-file.c:731
 msgid "today at %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:733
+#: ../libcore/gof-file.c:733
 msgid "today, 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:734
+#: ../libcore/gof-file.c:734
 msgid "today, %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:736 ../src/gof-file.c:737
+#: ../libcore/gof-file.c:736 ../libcore/gof-file.c:737
 msgid "today"
 msgstr ""
 
 #. Yesterday, use special word.
 #. * Note to localizers: Same issues as "today" string.
 #.
-#: ../src/gof-file.c:746
+#: ../libcore/gof-file.c:746
 msgid "yesterday at 00:00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:747
+#: ../libcore/gof-file.c:747
 msgid "yesterday at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/gof-file.c:749
+#: ../libcore/gof-file.c:749
 msgid "yesterday at 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:750
+#: ../libcore/gof-file.c:750
 msgid "yesterday at %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:752
+#: ../libcore/gof-file.c:752
 msgid "yesterday, 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:753
+#: ../libcore/gof-file.c:753
 msgid "yesterday, %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:755 ../src/gof-file.c:756
+#: ../libcore/gof-file.c:755 ../libcore/gof-file.c:756
 msgid "yesterday"
 msgstr ""
 
@@ -403,122 +110,253 @@ msgstr ""
 #. * The width measurement templates correspond to
 #. * the day/month name with the most letters.
 #.
-#: ../src/gof-file.c:767
+#: ../libcore/gof-file.c:767
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:768
+#: ../libcore/gof-file.c:768
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/gof-file.c:770
+#: ../libcore/gof-file.c:770
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:771
+#: ../libcore/gof-file.c:771
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
 msgstr ""
 
-#: ../src/gof-file.c:773
+#: ../libcore/gof-file.c:773
 msgid "Mon, Oct 00 0000 at 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:774
+#: ../libcore/gof-file.c:774
 msgid "%a, %b %-d %Y at %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:776
+#: ../libcore/gof-file.c:776
 msgid "Oct 00 0000 at 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:777
+#: ../libcore/gof-file.c:777
 msgid "%b %-d %Y at %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:779
+#: ../libcore/gof-file.c:779
 msgid "Oct 00 0000, 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:780
+#: ../libcore/gof-file.c:780
 msgid "%b %-d %Y, %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:782
+#: ../libcore/gof-file.c:782
 msgid "00/00/00, 00:00 PM"
 msgstr ""
 
-#: ../src/gof-file.c:783
+#: ../libcore/gof-file.c:783
 msgid "%m/%-d/%y, %-I:%M %p"
 msgstr ""
 
-#: ../src/gof-file.c:785
+#: ../libcore/gof-file.c:785
 msgid "00/00/00"
 msgstr ""
 
-#: ../src/gof-file.c:786
+#: ../libcore/gof-file.c:786
 msgid "%m/%d/%y"
 msgstr ""
 
-#: ../src/gof-file.c:1522
+#: ../libcore/gof-file.c:1533
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr ""
 
-#: ../src/gof-file.c:1560
+#: ../libcore/gof-file.c:1571
 #, c-format
 msgid "No Exec field specified"
 msgstr ""
 
-#: ../src/gof-file.c:1580
+#: ../libcore/gof-file.c:1591
 #, c-format
 msgid "No URL field specified"
 msgstr ""
 
-#: ../src/gof-file.c:1586
+#: ../libcore/gof-file.c:1597
 #, c-format
 msgid "Invalid desktop file"
 msgstr ""
 
-#: ../src/gof-file.c:1810
+#: ../libcore/gof-file.c:1821
 #, c-format
 msgid "Slashes are not allowed in filenames"
 msgstr ""
 
-#: ../src/gof-file.c:1830
+#: ../libcore/gof-file.c:1841
 #, c-format
 msgid "Toplevel files cannot be renamed"
 msgstr ""
 
-#: ../src/marlin-application.c:469
+#. tell the user that the file name provided by the X Direct Save source is invalid
+#: ../src/fm-directory-view.c:1146
+msgid "Invalid filename provided by XDS drag site"
+msgstr ""
+
+#. display an error dialog to the user
+#: ../src/fm-directory-view.c:1307
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr ""
+
+#. name, stock id
+#. label, accelerator
+#. tooltip
+#: ../src/fm-directory-view.c:2805
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr ""
+
+#. name, stock id
+#. label, accelerator
+#. tooltip
+#: ../src/fm-directory-view.c:2809
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr ""
+
+#. name, stock id
+#. label, accelerator
+#. tooltip
+#: ../src/fm-directory-view.c:2813
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+
+#. name, stock id
+#. label, accelerator
+#: ../src/fm-directory-view.c:2816
+msgid "Paste Into Folder"
+msgstr ""
+
+#. tooltip
+#: ../src/fm-directory-view.c:2817
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+
+#. name, stock id
+#. label, accelerator
+#: ../src/fm-directory-view.c:2820
+msgid "_Rename..."
+msgstr ""
+
+#. tooltip
+#: ../src/fm-directory-view.c:2821
+msgid "Rename selected item"
+msgstr ""
+
+#. name, stock id
+#. label, accelerator
+#: ../src/fm-directory-view.c:2824
+msgid "Create New _Folder"
+msgstr ""
+
+#. tooltip
+#: ../src/fm-directory-view.c:2825
+msgid "Create a new empty folder inside this folder"
+msgstr ""
+
+#. name, stock id
+#. label, accelerator
+#: ../src/fm-directory-view.c:2828
+msgid "Mo_ve to Trash"
+msgstr ""
+
+#. tooltip
+#: ../src/fm-directory-view.c:2829
+msgid "Move each selected item to the Trash"
+msgstr ""
+
+#. name, stock id
+#. label, accelerator
+#: ../src/fm-directory-view.c:2832
+msgid "_Delete"
+msgstr ""
+
+#. tooltip
+#: ../src/fm-directory-view.c:2833
+msgid "Delete each selected item, without moving to the Trash"
+msgstr ""
+
+#. name, stock id
+#. label, accelerator
+#: ../src/fm-directory-view.c:2836
+msgid "_Restore"
+msgstr ""
+
+#. name, stock id
+#. label, accelerator
+#: ../src/fm-directory-view.c:2840
+msgid "_Properties"
+msgstr ""
+
+#. tooltip
+#: ../src/fm-directory-view.c:2841
+msgid "View or modify the properties of each selected item"
+msgstr ""
+
+#: ../src/fm-list-model.c:457
+msgid "(Empty)"
+msgstr ""
+
+#: ../src/fm-list-model.c:459
+msgid "Loading..."
+msgstr ""
+
+#: ../src/fm-list-view.c:54
+msgid "Filename"
+msgstr ""
+
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:185
+#: ../src/View/ContextView.c:745
+msgid "Size"
+msgstr ""
+
+#: ../src/fm-list-view.c:54
+msgid "Type"
+msgstr ""
+
+#: ../src/fm-list-view.c:54
+msgid "Modified"
+msgstr ""
+
+#: ../src/marlin-application.c:470
 msgid "Show the version of the program."
 msgstr ""
 
-#: ../src/marlin-application.c:471
+#: ../src/marlin-application.c:472
 msgid ""
 "Do not manage the desktop (ignore the preference set in the preferences "
 "dialog)."
 msgstr ""
 
-#: ../src/marlin-application.c:473
+#: ../src/marlin-application.c:474
 msgid "Open uri(s) in new tab"
 msgstr ""
 
-#: ../src/marlin-application.c:475
+#: ../src/marlin-application.c:476
 msgid "Quit Marlin."
 msgstr ""
 
-#: ../src/marlin-application.c:476
+#: ../src/marlin-application.c:477
 msgid "[URI...]"
 msgstr ""
 
-#: ../src/marlin-application.c:487
+#: ../src/marlin-application.c:488
 msgid ""
 "\n"
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
 
-#: ../src/marlin-application.c:512
+#: ../src/marlin-application.c:513
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
@@ -1621,24 +1459,30 @@ msgstr ""
 msgid "Displayed Items"
 msgstr ""
 
+#: ../src/View/Chrome/LocationBar.vala:814
+#: ../src/View/Chrome/LocationBar.c:2533
+#, c-format
+msgid "Go to %s"
+msgstr ""
+
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:918
+#: ../src/View/Chrome/LocationBar.vala:933
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:922
+#: ../src/View/Chrome/LocationBar.vala:937
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/Chrome/LocationBar.vala:926
+#: ../src/View/Chrome/LocationBar.vala:941
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
@@ -1654,67 +1498,67 @@ msgstr ""
 msgid "Open with:"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:29
+#: ../src/View/SettingsDialog.vala:29 ../src/View/SettingsDialog.c:215
 msgid "Marlin Settings"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:46
+#: ../src/View/SettingsDialog.vala:46 ../src/View/SettingsDialog.c:229
 msgid "Single click to open:"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:59
+#: ../src/View/SettingsDialog.vala:59 ../src/View/SettingsDialog.c:241
 msgid "Mouse auto-selection speed:"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:72
+#: ../src/View/SettingsDialog.vala:72 ../src/View/SettingsDialog.c:252
 msgid "Behavior"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:80
+#: ../src/View/SettingsDialog.vala:80 ../src/View/SettingsDialog.c:263
 msgid "small"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:81
+#: ../src/View/SettingsDialog.vala:81 ../src/View/SettingsDialog.c:268
 msgid "medium"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:82
+#: ../src/View/SettingsDialog.vala:82 ../src/View/SettingsDialog.c:273
 msgid "large"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:83
+#: ../src/View/SettingsDialog.vala:83 ../src/View/SettingsDialog.c:278
 msgid "extra-large"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:104
+#: ../src/View/SettingsDialog.vala:104 ../src/View/SettingsDialog.c:312
 msgid "Sidebar icon size:"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:115
+#: ../src/View/SettingsDialog.vala:115 ../src/View/SettingsDialog.c:322
 msgid "locale"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:116
+#: ../src/View/SettingsDialog.vala:116 ../src/View/SettingsDialog.c:327
 msgid "iso"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:117
+#: ../src/View/SettingsDialog.vala:117 ../src/View/SettingsDialog.c:332
 msgid "informal"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:136
+#: ../src/View/SettingsDialog.vala:136 ../src/View/SettingsDialog.c:371
 msgid "Date format:"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:151
+#: ../src/View/SettingsDialog.vala:151 ../src/View/SettingsDialog.c:386
 msgid "Show applications names in the context pane:"
 msgstr ""
 
-#: ../src/View/SettingsDialog.vala:159
+#: ../src/View/SettingsDialog.vala:159 ../src/View/SettingsDialog.c:394
 msgid "Display"
 msgstr ""
 
-#: ../src/View/Window.vala:527
+#: ../src/View/Window.vala:527 ../src/View/Window.c:1418
 msgid "translator-credits"
 msgstr ""
 
@@ -1946,4 +1790,306 @@ msgstr ""
 
 #: ../src/View/Window.vala:646
 msgid "Columns View"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:1
+msgid ""
+"A string containing the saved geometry and coordinates string for navigation "
+"windows."
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:2
+msgid "Categorie Devices expander"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:3
+msgid "Categorie Network expander"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:4
+msgid "Categorie personal expander"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:5
+msgid "Confirm trash"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:6
+msgid "Date Format"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:7
+msgid "Default Zoom level used by the icon view."
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:8
+msgid "Expand/Collapse categorie Devices"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:9
+msgid "Expand/Collapse categorie Network"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:10
+msgid "Expand/Collapse categorie Personal"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:11
+msgid ""
+"If set to true, hidden files will also be shown (files starting with a \".\" "
+"for example)"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:12
+msgid ""
+"If set to true, rgba will be enabled, you'll need a gtk engine supporting "
+"rgba, like murrine. Compiz can have some problems like drawings shadows ..."
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:13
+msgid ""
+"Path of the previewer or executable name (if path already definied in PATH "
+"environnment variable). If no path is set, then the space bindkey would just "
+"activate the selected items instead of previewing them"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:14
+msgid "Path of the previewer."
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:15
+msgid "Set the toolbar css style to primary-toolbar."
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:16
+msgid "Show hidden files"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:17
+msgid "Show the context view pane"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:18
+msgid "Show the menubar"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:19
+msgid "Show the sidebar"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:20
+msgid "The default width of the side pane in new windows."
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:21
+msgid ""
+"The format of file dates. Possible values are \"locale\", \"iso\", and "
+"\"informal\"."
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:22
+msgid "The geometry string for a navigation window."
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:23
+msgid "Whether items are activated by single clicks instead of dubble clicks"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:24
+msgid "Whether the navigation window should be maximized by default."
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:25
+msgid "Whether the navigation window should be maximized."
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:26
+msgid "Width of the side pane"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:27
+msgid "Zoom level used by the icon view."
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:28
+msgid "enable rgba window"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:29
+msgid "icon default zoom level"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:30
+msgid "icon zoom level"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:31
+msgid "single click"
+msgstr ""
+
+#: ../org.gnome.marlin.gschema.xml.in.h:32
+msgid "toolbar css style"
+msgstr ""
+
+#: ../src/exo-icon-view.c:577
+msgid "Selection mode"
+msgstr ""
+
+#: ../src/exo-icon-view.c:578
+msgid "The selection mode"
+msgstr ""
+
+#: ../src/exo-icon-view.c:593 ../src/exo-tree-view.c:161
+msgid "Single Click"
+msgstr ""
+
+#: ../src/exo-icon-view.c:594 ../src/exo-tree-view.c:162
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr ""
+
+#: ../src/exo-icon-view.c:610 ../src/exo-tree-view.c:178
+msgid "Single Click Timeout"
+msgstr ""
+
+#: ../src/exo-icon-view.c:611 ../src/exo-tree-view.c:179
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr ""
+
+#: ../src/exo-icon-view.c:629
+msgid "Pixbuf column"
+msgstr ""
+
+#: ../src/exo-icon-view.c:630
+msgid "Model column used to retrieve the icon pixbuf from"
+msgstr ""
+
+#: ../src/exo-icon-view.c:647
+msgid "Text column"
+msgstr ""
+
+#: ../src/exo-icon-view.c:648
+msgid "Model column used to retrieve the text from"
+msgstr ""
+
+#: ../src/exo-icon-view.c:667
+msgid "Markup column"
+msgstr ""
+
+#: ../src/exo-icon-view.c:668
+msgid "Model column used to retrieve the text if using Pango markup"
+msgstr ""
+
+#: ../src/exo-icon-view.c:675
+msgid "Icon View Model"
+msgstr ""
+
+#: ../src/exo-icon-view.c:676
+msgid "The model for the icon view"
+msgstr ""
+
+#: ../src/exo-icon-view.c:692
+msgid "Number of columns"
+msgstr ""
+
+#: ../src/exo-icon-view.c:693
+msgid "Number of columns to display"
+msgstr ""
+
+#: ../src/exo-icon-view.c:710
+msgid "Width for each item"
+msgstr ""
+
+#: ../src/exo-icon-view.c:711
+msgid "The width used for each item"
+msgstr ""
+
+#: ../src/exo-icon-view.c:726
+msgid "Spacing"
+msgstr ""
+
+#: ../src/exo-icon-view.c:727
+msgid "Space which is inserted between cells of an item"
+msgstr ""
+
+#: ../src/exo-icon-view.c:742
+msgid "Row Spacing"
+msgstr ""
+
+#: ../src/exo-icon-view.c:743
+msgid "Space which is inserted between grid rows"
+msgstr ""
+
+#: ../src/exo-icon-view.c:758
+msgid "Column Spacing"
+msgstr ""
+
+#: ../src/exo-icon-view.c:759
+msgid "Space which is inserted between grid columns"
+msgstr ""
+
+#: ../src/exo-icon-view.c:774
+msgid "Margin"
+msgstr ""
+
+#: ../src/exo-icon-view.c:775
+msgid "Space which is inserted at the edges of the icon view"
+msgstr ""
+
+#: ../src/exo-icon-view.c:790
+msgid "Item Orientation"
+msgstr ""
+
+#: ../src/exo-icon-view.c:791
+msgid ""
+"How the text and icon of each item are positioned relative to each other"
+msgstr ""
+
+#: ../src/exo-icon-view.c:807
+msgid "Reorderable"
+msgstr ""
+
+#: ../src/exo-icon-view.c:808
+msgid "View is reorderable"
+msgstr ""
+
+#: ../src/exo-icon-view.c:815
+msgid "Tooltip Column"
+msgstr ""
+
+#: ../src/exo-icon-view.c:816
+msgid "The column in the model containing the tooltip texts for the items"
+msgstr ""
+
+#: ../src/exo-icon-view.c:833
+msgid "Item Padding"
+msgstr ""
+
+#: ../src/exo-icon-view.c:834
+msgid "Padding around icon view items"
+msgstr ""
+
+#: ../src/exo-icon-view.c:851
+msgid "Cell Area"
+msgstr ""
+
+#: ../src/exo-icon-view.c:852
+msgid "The GtkCellArea used to layout cells"
+msgstr ""
+
+#: ../src/exo-icon-view.c:865
+msgid "Selection Box Color"
+msgstr ""
+
+#: ../src/exo-icon-view.c:866
+msgid "Color of the selection box"
+msgstr ""
+
+#: ../src/exo-icon-view.c:872
+msgid "Selection Box Alpha"
+msgstr ""
+
+#: ../src/exo-icon-view.c:873
+msgid "Opacity of the selection box"
 msgstr ""

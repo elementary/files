@@ -1,0 +1,8 @@
+
+org.gnome.marlin.gschema.xml.in
+src/View/Chrome/LocationBar.c
+src/View/ContextView.c
+src/View/SettingsDialog.c
+src/View/Window.c
+src/exo-icon-view.c
+src/exo-tree-view.c

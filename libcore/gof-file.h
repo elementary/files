@@ -197,6 +197,7 @@ void            gof_file_rename (GOFFile *file,
                                  gpointer callback_data);
 void            gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state);
 
+#define gof_file_get_uri(obj) g_file_get_uri(obj->location)
 /**
  * gof_file_get_thumb_state:
  * @file : a #GOFFile.

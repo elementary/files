@@ -299,11 +299,6 @@ namespace Marlin.View {
                     image.parent.remove(image);
                 box.pack_start(image, false, false);
             }
-            if (label != null) { 
-                if (label.parent != null)
-                    label.parent.remove(label);
-                box.pack_start(label, false, false);
-            }
             box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
 
             var information = new VBox (false, key_value_padding);
