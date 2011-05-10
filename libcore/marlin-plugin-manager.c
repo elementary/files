@@ -62,7 +62,7 @@ static marlin_plugin_manager_add_plugin(MarlinPluginManager* plugins, const gcha
 void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin)
 {
     /* We should use GOF File here */
-    GFile* dir = g_file_new_for_path("/usr/share/marlin/plugins/");
+    GFile* dir = g_file_new_for_path(PLUGIN_DIR);
     GFileEnumerator* enumerator = g_file_enumerate_children(dir, "standard::*", 0, NULL, NULL);
     GFileInfo* file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
     while(file_info != NULL)
@@ -70,10 +70,38 @@ void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin)
         printf("%s\n", g_file_info_get_content_type(file_info));
         if(!g_strcmp0(g_file_info_get_content_type(file_info), "text/plain"))
         {
-            marlin_plugin_manager_add_plugin(plugins, g_strdup_printf("/usr/share/marlin/plugins/%s", g_file_info_get_name(file_info)));
+            marlin_plugin_manager_add_plugin(plugins, g_strdup_printf("%s/%s", PLUGIN_DIR, g_file_info_get_name(file_info)));
         }
         file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
     }
+}
+
+/* This functions needs some tests, it is just a draft */
+GList* marlin_plugin_manager_get_available_plugins(void)
+{
+    GList* plugins = NULL;
+    /* We should use GOF File here */
+    GFile* dir = g_file_new_for_path(PLUGIN_DIR);
+    GFileEnumerator* enumerator = g_file_enumerate_children(dir, "standard::*", 0, NULL, NULL);
+    GFileInfo* file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
+    GKeyFile* keyfile;
+    while(file_info != NULL)
+    {
+        if(!g_strcmp0(g_file_info_get_content_type(file_info), "text/plain"))
+        {
+            /* Creating a new keyfile object, to load the plugin config in it. */
+            keyfile = g_key_file_new();
+
+            /* Load the keys, it can be empty, that's why we will put some default value
+             * then. */
+            g_key_file_load_from_file(keyfile, g_build_filename(PLUGIN_DIR, g_file_info_get_name(file_info), NULL),
+                                      G_KEY_FILE_NONE,
+                                      NULL);
+            plugins = g_list_append(plugins, g_key_file_get_value(keyfile, "Plugin", "Name", NULL));
+        }
+        file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
+    }
+    return plugins;
 }
 
 void marlin_plugin_manager_interface_loaded(MarlinPluginManager* plugin, GtkWidget* win)
