@@ -819,7 +819,7 @@ namespace Marlin.View.Chrome
             }
             event.x -= x_render_saved;
             entry.mouse_motion_event(event, get_allocated_width() - x_render_saved);
-            if(event.x > 0)
+            if(event.x > 0 && event.x + x_render_saved < get_allocated_width() - entry.arrow_img.get_width())
             {
                 get_window().set_cursor(new Gdk.Cursor(Gdk.CursorType.XTERM));
             }
@@ -834,6 +834,7 @@ namespace Marlin.View.Chrome
         public override bool leave_notify_event(Gdk.EventCrossing event)
         {
             selected = -1;
+            entry.hover = false;
             queue_draw();
             get_window().set_cursor(null);
             return false;
@@ -1014,15 +1015,8 @@ namespace Marlin.View.Chrome
             
             if(icon == null)
             {
-                /*Gtk.render_layout(button_context, cr, x - offset*5,
-                            y + height/2 - text_height/2, layout);*/
-                Gdk.RGBA color = Gdk.RGBA();
-                button_context.get_color(Gtk.StateFlags.NORMAL, color);
-                cr.set_source_rgba(color.red, color.green, color.blue, color.alpha);
-                cr.move_to(x - offset*5,
-                            y + height/2 - text_height/2);
-                Pango.cairo_show_layout(cr, layout);
-                //print("%s\n", layout.get_markup());
+                Gtk.render_layout(button_context, cr, x - offset*5,
+                            y + height/2 - text_height/2, layout);
             }
             else
             {
@@ -1053,7 +1047,7 @@ namespace Marlin.View.Chrome
         uint timeout;
         bool blink = true;
         Gtk.StyleContext context;
-        Gdk.Pixbuf arrow_img;
+        internal Gdk.Pixbuf arrow_img;
         
         double selection_mouse_start = -1;
         double selection_mouse_end = -1;
@@ -1061,7 +1055,7 @@ namespace Marlin.View.Chrome
         double selection_end = 0;
         int selected_start = 0;
         int selected_end = 0;
-        bool hover = false;
+        internal bool hover = false;
         new bool focus = false;
         
         bool is_selecting = false;
