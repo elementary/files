@@ -30,6 +30,8 @@ libmarlincore_la_SOURCES = log.vala \
     marlin-exec.c                           \
     gof-monitor.c                           \
     nautilus-cell-renderer-text-ellipsized.c\
+	marlin-plugin.c       					\
+	marlin-plugin-manager.c                 \
     eel-vfs-extensions.c
 
 
@@ -39,4 +41,5 @@ libmarlincore_la_CFLAGS = \
     -DVERSION="\"$(VERSION)\"" 	                    \
     -DGETTEXT_PACKAGE=\""marlin"\" \
     -DUI_DIR=\""$(datadir)/marlin/ui/"\"            \
+    -DPLUGIN_DIR=\""$(datadir)/marlin/plugins"\"    \
     $(NULL)

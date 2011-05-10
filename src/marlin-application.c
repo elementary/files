@@ -33,6 +33,7 @@
 #include "marlin-file-utilities.h"
 #include "marlin-global-preferences.h"
 #include "marlin-tags.h"
+#include "marlin-plugin-manager.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -110,10 +111,12 @@ open_window (MarlinApplication *application,
     //DEBUG ("Opening new window at uri %s", uri);
 
     window = marlin_view_window_new (application, screen);
+    marlin_plugin_manager_interface_loaded(plugins, window);
 
     gtk_application_add_window (GTK_APPLICATION (application),
                                 GTK_WINDOW (window));
     marlin_view_window_add_tab (window, location);
+    marlin_plugin_manager_hook_send(plugins, window->ui, MARLIN_PLUGIN_HOOK_UI);
 
     g_object_unref (location);
 }
@@ -165,6 +168,7 @@ open_tabs (MarlinApplication *application, char **uris, GdkScreen *screen)
         window = marlin_view_window_new (application, screen);
         gtk_application_add_window (GTK_APPLICATION (application),
                                     GTK_WINDOW (window));
+       marlin_plugin_manager_interface_loaded(plugins, window);
     }
 
     if (uris == NULL || uris[0] == NULL) { 
@@ -624,6 +628,9 @@ marlin_application_startup (GApplication *app)
     settings = g_settings_new ("org.gnome.marlin.preferences");
     marlin_icon_view_settings = g_settings_new ("org.gnome.marlin.icon-view");
     tags = marlin_view_tags_new ();
+
+    plugins = marlin_plugin_manager_new ();
+    marlin_plugin_manager_load_plugins (plugins);
 
     /* register property pages */
     //marlin_image_properties_page_register ();

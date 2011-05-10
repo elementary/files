@@ -5,6 +5,7 @@ SUBDIRS =               \
         data            \
         icons           \
         po              \
+        plugins         \
         $(NULL)
 
 DISTCHECK_CONFIGURE_FLAGS = --disable-update-mimedb
@@ -17,3 +18,4 @@ EXTRA_DIST = \
 gsettings_SCHEMAS = org.gnome.marlin.gschema.xml
 @GSETTINGS_RULES@
 @INTLTOOL_XML_NOMERGE_RULE@
+

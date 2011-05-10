@@ -306,6 +306,8 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
         printf(">> %s load the cached files\n", G_STRFUNC);
         fm_directory_view_load_file_hash (directory, view);
     }
+    
+    marlin_plugin_manager_directory_loaded(plugins, gof_file_get(directory->location));
     view->details->loading = FALSE;
 }
 
@@ -1828,7 +1830,8 @@ fm_directory_view_context_menu (FMDirectoryView *view,
     printf ("%s\n", G_STRFUNC);
 
     gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (view)));
-    gtk_widget_show (GTK_WIDGET (menu));
+	gtk_widget_show (GTK_WIDGET (menu));
+	marlin_plugin_manager_hook_context_menu(plugins, menu);
 
     eel_pop_up_context_menu (GTK_MENU(menu),
                              EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
