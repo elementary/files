@@ -1148,18 +1148,23 @@ GOFFile* gof_file_get (GFile *location)
     } else {
         //amtest
         file = gof_file_new (location, parent);
-        printf ("!!!!!!!!!!!!file_query_info %s\n", g_file_get_uri (location));
-        file->info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                        0, NULL, &err);
-        gof_file_update (file);
+        if(file != NULL)
+        {
+#ifdef ENABLE_DEBUG
+            g_debug ("!!!!!!!!!!!!file_query_info %s\n", g_file_get_uri (location));
+#endif
+            file->info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
+                                            0, NULL, &err);
+            gof_file_update (file);
 
-        if (err != NULL) {
-            if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED)
-            {
-                file->is_mounted = FALSE;
-                g_clear_error (&err);
+            if (err != NULL) {
+                if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED)
+                {
+                    file->is_mounted = FALSE;
+                    g_clear_error (&err);
+                }
+                print_error (err);
             }
-            print_error (err);
         }
     }
     if (parent != NULL)
@@ -1174,7 +1179,13 @@ GOFFile* gof_file_get_by_uri (const char *uri)
     GOFFile *file;
 
     location = g_file_new_for_uri (uri);
-    printf ("%s %s\n", G_STRFUNC, g_file_get_uri (location));
+    if(location == NULL)
+    {
+        return NULL;
+    }
+#ifdef ENABLE_DEBUG
+    g_debug ("%s %s", G_STRFUNC, g_file_get_uri (location));
+#endif
     file = gof_file_get (location);
     g_object_unref (location);
 

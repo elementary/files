@@ -1136,7 +1136,6 @@ namespace Marlin.View.Chrome
         private void commit(string character)
         {
             insert(character);
-            //print("%s, %d\n", text, cursor);
         }
         
         public void key_press_event(Gdk.EventKey event)

@@ -1,3 +1,4 @@
+SUBDIRS = tests
 noinst_LTLIBRARIES = libmarlincore.la
 
 libmarlincore_la_VALAFLAGS = \

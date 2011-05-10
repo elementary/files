@@ -204,6 +204,7 @@ icons/Makefile
 po/Makefile.in
 src/tests/Makefile
 libcore/Makefile
+libcore/tests/Makefile
 ])
 AC_OUTPUT
 
