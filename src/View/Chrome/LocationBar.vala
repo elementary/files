@@ -905,7 +905,7 @@ namespace Marlin.View.Chrome
             draw_selection(cr);
 
             x_render_saved = x_render + space_breads/2;
-            entry.draw(cr, x_render + space_breads/2, height, width - x_render, this);
+            entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, button_context);
             return false;
         }
 
@@ -1014,8 +1014,15 @@ namespace Marlin.View.Chrome
             
             if(icon == null)
             {
-                Gtk.render_layout(button_context, cr, x - offset*5,
-                            y + height/2 - text_height/2, layout);
+                /*Gtk.render_layout(button_context, cr, x - offset*5,
+                            y + height/2 - text_height/2, layout);*/
+                Gdk.RGBA color = Gdk.RGBA();
+                button_context.get_color(Gtk.StateFlags.NORMAL, color);
+                cr.set_source_rgba(color.red, color.green, color.blue, color.alpha);
+                cr.move_to(x - offset*5,
+                            y + height/2 - text_height/2);
+                Pango.cairo_show_layout(cr, layout);
+                //print("%s\n", layout.get_markup());
             }
             else
             {
@@ -1269,10 +1276,10 @@ namespace Marlin.View.Chrome
             selection_end = 0;
         }
         
-        private void update_selection(Cairo.Context cr)
+        private void update_selection(Cairo.Context cr, Widget widget)
         {
             double last_diff = double.MAX;
-            Cairo.TextExtents txt = Cairo.TextExtents();
+            Pango.Layout layout = widget.create_pango_layout(text);
             if(selection_mouse_start > 0)
             {
                 selected_start = 0;
@@ -1280,14 +1287,13 @@ namespace Marlin.View.Chrome
                 cursor = text.length;
                 for(int i = 0; i <= text.length; i++)
                 {
-                    cr.text_extents(text.slice(0, i), out txt);
-                    if(Math.fabs(selection_mouse_start - txt.x_advance) < last_diff)
+                    layout.set_text(text.slice(0, i), -1);
+                    if(Math.fabs(selection_mouse_start - get_width(layout)) < last_diff)
                     {
-                        last_diff = Math.fabs(selection_mouse_start - txt.x_advance);
-                        selection_start = txt.x_advance;
+                        last_diff = Math.fabs(selection_mouse_start - get_width(layout));
+                        selection_start = get_width(layout);
                         selected_start = i;
                     }
-                    txt.x_advance = 0;
                 }
                 selection_mouse_start = -1;
             }
@@ -1300,39 +1306,56 @@ namespace Marlin.View.Chrome
                 cursor = text.length;
                 for(int i = 0; i <= text.length; i++)
                 {
-                    cr.text_extents(text.slice(0, i), out txt);
-                    if(Math.fabs(selection_mouse_end - txt.x_advance) < last_diff)
+                    layout.set_text(text.slice(0, i), -1);
+                    if(Math.fabs(selection_mouse_end - get_width(layout)) < last_diff)
                     {
-                        last_diff = Math.fabs(selection_mouse_end - txt.x_advance);
+                        last_diff = Math.fabs(selection_mouse_end - get_width(layout));
                         selected_end = i;
-                        selection_end = txt.x_advance;
+                        selection_end = get_width(layout);
                         cursor = i;
                     }
-                    txt.x_advance = 0;
                 }
                 selection_mouse_end = -1;
             }
         }
+
+        double text_width;
+        double text_height;        
         
-        public void draw(Cairo.Context cr, double x, double height, double width, Gtk.Widget widget)
+        private void computetext_width(Pango.Layout pango)
+        {
+            int text_width, text_height;
+            pango.get_size(out text_width, out text_height);
+            this.text_width = Pango.units_to_double(text_width);
+            this.text_height = Pango.units_to_double(text_height);
+        }
+        
+        private double get_width(Pango.Layout pango)
+        {
+            int text_width, text_height;
+            pango.get_size(out text_width, out text_height);
+            return Pango.units_to_double(text_width);
+        }
+
+        public void draw(Cairo.Context cr, double x, double height, double width, Gtk.Widget widget, Gtk.StyleContext button_context)
         {
             cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
             cr.set_font_size(font_size);
             cr.set_source_rgba(0,0,0,0.8);
 
-            update_selection(cr);
+            update_selection(cr, widget);
 
-            Cairo.TextExtents txt = Cairo.TextExtents();
             cr.set_source_rgba(0,0,0,0.8);
-                        
-            cr.move_to(x, height/2 + font_size/2);
-            cr.show_text(text);
 
-            cr.text_extents(text.slice(0, cursor), out txt);
+            Pango.Layout layout = widget.create_pango_layout(text);
+            computetext_width(layout);
+            Gtk.render_layout(button_context, cr, x, height/2 - text_height/2, layout);
+
+            layout.set_text(text.slice(0, cursor), -1);
             if(blink && focus)
             {
-                cr.move_to(x + txt.x_advance, height/4);
-                cr.line_to(x + txt.x_advance, height/2 + height/4);
+                cr.move_to(x + get_width(layout), height/4);
+                cr.line_to(x + get_width(layout), height/2 + height/4);
                 cr.stroke();
             }
             if(text != "")
@@ -1345,14 +1368,22 @@ namespace Marlin.View.Chrome
                 else
                     cr.paint_with_alpha(0.8);
             }
-            cr.text_extents(text, out txt);
-            cr.set_source_rgba(0,0,0,0.5);
-            cr.move_to(x + txt.x_advance, height/2 + font_size/2);
-            cr.show_text(completion);
             
-            cr.rectangle(x + selection_start, height/4, selection_end - selection_start, height/2);
-            cr.set_source_rgba(0,0,0,0.5);
-            cr.fill();
+            /* draw completion */
+            cr.move_to(x + text_width, height/2 - text_height/2);
+            layout.set_text(completion, -1);
+            Gdk.RGBA color = Gdk.RGBA();
+            button_context.get_color(Gtk.StateFlags.NORMAL, color);
+            cr.set_source_rgba(color.red, color.green, color.blue, color.alpha - 0.3);
+            Pango.cairo_show_layout(cr, layout);
+            
+            /* draw selection */
+            if(focus)
+            {
+                cr.rectangle(x + selection_start, height/4, selection_end - selection_start, height/2);
+                cr.set_source_rgba(0,0,0,0.5);
+                cr.fill();
+            }
         }
         
         public void reset()
