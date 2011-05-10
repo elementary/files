@@ -17,6 +17,8 @@
  */
 
 #include "marlin-plugin.h"
+#include <gio/gio.h>
+#include "marlin-global-preferences.h"
 #include <stdio.h>
 #include <dlfcn.h>
 
@@ -59,21 +61,33 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
     g_key_file_load_from_file(keyfile, path,
                               G_KEY_FILE_NONE,
                               NULL);
-    plugin->plugin_handle = dlopen (g_build_filename(PLUGIN_DIR, g_key_file_get_value(keyfile, "Plugin", "File", NULL)), RTLD_LAZY);
-    if(! plugin->plugin_handle)
+    gchar* name = g_key_file_get_value(keyfile, "Plugin", "Name", NULL);
+    gchar** plugins = g_settings_get_strv(settings, "plugins-enabled");
+    int i;
+    for(i = 0; i < g_strv_length(plugins); i++)
     {
-        g_warning("Can't load plugin: %s", path);
-        g_object_unref(plugin);
-        return NULL;
+        if(!g_strcmp0(name, plugins[i]))
+        {
+            plugin->plugin_handle = dlopen (g_build_filename(PLUGIN_DIR, g_key_file_get_value(keyfile, "Plugin", "File", NULL)), RTLD_LAZY);
+            if(! plugin->plugin_handle)
+            {
+                g_warning("Can't load plugin: %s", path);
+                g_object_unref(plugin);
+                return NULL;
+            }
+
+            plugin->hook_receive = dlsym(plugin->plugin_handle, "receive_all_hook");
+            if((dl_error = dlerror()) != NULL)
+            {
+                g_warning("Can't load plugin: %s, %s", path, dl_error);
+            }
+
+            plugin->hook_receive(NULL, MARLIN_PLUGIN_HOOK_INIT);
+
+            return plugin;
+        }
     }
-
-    plugin->hook_receive = dlsym(plugin->plugin_handle, "receive_all_hook");
-    if((dl_error = dlerror()) != NULL)
-    {
-        g_warning("Can't load plugin: %s, %s", path, dl_error);
-    }
-
-    plugin->hook_receive(NULL, MARLIN_PLUGIN_HOOK_INIT);
-
-    return plugin;
+    g_warning("Plugin not enabled: %s", path);
+    g_object_unref(plugin);
+    return NULL;
 }
