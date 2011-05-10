@@ -17,9 +17,11 @@
 
 #include <gtk/gtk.h>
 #include "gof-file.h"
+#include "marlin-plugins-hook.h"
 
 static gchar* current_path = NULL;
 static gboolean menu_added = FALSE;
+
 
 void hook_interface_loaded(void* win_)
 {
@@ -52,16 +54,31 @@ static void on_open_terminal_activated(GtkWidget* widget, gpointer data)
 
 void hook_context_menu(GtkWidget* menu)
 {
-    g_debug("Open Terminall");
+    g_debug("Open Terminal");
     
     if(!menu_added)
     {
-    g_debug("Open Terminall");
+    g_debug("Open Terminal 2");
         GtkWidget* menuitem = gtk_menu_item_new_with_label("Open a terminal here");
 	    gtk_menu_shell_append(menu, menuitem);
 	    g_signal_connect(menuitem, "activate", on_open_terminal_activated, NULL);
 	    gtk_widget_show_all (GTK_WIDGET (menu));
 	    menu_added = TRUE;
 	}
+}
+
+void receive_all_hook(void* user_data, int hook)
+{
+    switch(hook)
+    {
+    case MARLIN_PLUGIN_HOOK_INTERFACE:
+        hook_interface_loaded(user_data);
+        break;
+    case MARLIN_PLUGIN_HOOK_CONTEXT_MENU:
+        hook_context_menu(user_data);
+        break;
+    default:
+        g_debug("Don't know this hook: %d", hook);
+    }
 }
 

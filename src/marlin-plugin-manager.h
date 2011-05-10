@@ -23,6 +23,7 @@
 #include <gtk/gtk.h>
 #include "marlin-plugin.h"
 #include "gof-file.h"
+#include "marlin-plugins-hook.h"
 
 G_BEGIN_DECLS
 

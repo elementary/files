@@ -67,44 +67,13 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
         return NULL;
     }
 
-    plugin->hook_interface_loaded = dlsym(plugin->plugin_handle, "hook_interface_loaded");
+    plugin->hook_receive = dlsym(plugin->plugin_handle, "receive_all_hook");
     if((dl_error = dlerror()) != NULL)
     {
-        g_warning("Can't load hook: %s, %s", path, dl_error);
+        g_warning("Can't load plugin: %s, %s", path, dl_error);
     }
 
-    plugin->hook_context_menu = dlsym(plugin->plugin_handle, "hook_context_menu");
-    if((dl_error = dlerror()) != NULL)
-    {
-        g_warning("Can't load hook: %s, %s", path, dl_error);
-    }
-
-    plugin->hook_file_loaded = dlsym(plugin->plugin_handle, "hook_file_loaded");
-    if((dl_error = dlerror()) != NULL)
-    {
-        g_warning("Can't load hook: %s, %s", path, dl_error);
-    }
-
-
-    plugin->hook_plugin_finish = dlsym(plugin->plugin_handle, "hook_plugin_finish");
-    if((dl_error = dlerror()) != NULL)
-    {
-        g_warning("Can't load hook: %s, %s", path, dl_error);
-    }
-
-    plugin->hook_plugin_init = dlsym(plugin->plugin_handle, "hook_plugin_init");
-    if((dl_error = dlerror()) != NULL)
-    {
-        g_warning("Can't load hook: %s, %s", path, dl_error);
-    }
-
-    plugin->hook_directory_loaded = dlsym(plugin->plugin_handle, "hook_directory_loaded");
-    if((dl_error = dlerror()) != NULL)
-    {
-        g_warning("Can't load hook: %s, %s", path, dl_error);
-    }
-
-    plugin->hook_plugin_init();
+    plugin->hook_receive(NULL, MARLIN_PLUGIN_HOOK_INIT);
 
     return plugin;
 }

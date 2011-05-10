@@ -20,6 +20,7 @@
 #define _MARLIN_PLUGIN_H_
 
 #include <glib-object.h>
+#include "marlin-plugins-hook.h"
 
 G_BEGIN_DECLS
 
@@ -42,16 +43,7 @@ struct _MarlinPlugin
 {
     GObject parent_instance;
     void* plugin_handle;
-    void (*hook_interface_loaded)(void*);
-    void (*hook_context_menu)(void*);
-
-    void (*hook_plugin_init)(void);
-
-    void (*hook_plugin_finish)(void);
-
-    void (*hook_file_loaded)(void*);
-
-    void (*hook_directory_loaded)(void*);
+    void (*hook_receive)(void*, int);
 };
 
 GType marlin_plugin_get_type (void) G_GNUC_CONST;
