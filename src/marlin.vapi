@@ -87,6 +87,7 @@ namespace GOF {
             public GLib.File location;
             public GOF.File file;
             public bool loading;
+            public bool exists;
             public bool loaded;
             //public HashTable<GLib.File,GOF.File> file_hash;
             public HashTable file_hash;
@@ -167,6 +168,13 @@ namespace Marlin {
             public void cut_files (GLib.List files);
             public void paste_files (GLib.File target, Gtk.Widget widget, GLib.List files, GLib.Closure new_file_closure);
         }
+    }
+    [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_")]
+    namespace FileOperations {
+        [CCode (cheader_filename = "marlin-file-operations.h")]
+        public void new_folder(out Gtk.Widget parent_view, out Gdk.Point target_point, File file, void* callback, void* data_callback);
+        [CCode (cheader_filename = "marlin-file-operations.h")]
+        public void new_folder_with_name(out Gtk.Widget parent_view, out Gdk.Point target_point, File file, string name, void* callback, void* data_callback);
     }
 }
 

@@ -47,6 +47,7 @@ typedef struct {
     GOFFile                     *file;
     gboolean                    loading;
     gboolean                    loaded;
+    gboolean                    exists;
     GHashTable                  *file_hash;
     GHashTable                  *hidden_file_hash;
     GOFDirectoryAsyncPrivate    *priv;

@@ -170,6 +170,10 @@ namespace Marlin.View {
                 }
                 break;
             }
+            if (!slot.directory.exists) {
+                window.main_box.remove (window.contextview);
+                window.contextview = null;
+            }
         }
 
         public void reload(){

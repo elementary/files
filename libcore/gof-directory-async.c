@@ -84,6 +84,10 @@ directory_load_done (GOFDirectoryAsync *dir, GFileEnumerator *enumerator, GError
     else 
         g_cancellable_cancel (dir->priv->cancellable);
 
+    if(error != NULL & error->code == 1) /* 1 is hardcoded, I can't find the good enum, FIXME */
+    {
+        dir->exists = FALSE;
+    }
     g_signal_emit (dir, signals[DONE_LOADING], 0);
     dir->loading = FALSE;
     print_error(error);
@@ -434,6 +438,7 @@ gof_directory_async_init (GOFDirectoryAsync *dir)
     dir->priv = g_new0(GOFDirectoryAsyncPrivate, 1);
     dir->loading = FALSE;
     dir->loaded = FALSE;
+    dir->exists = TRUE;
     dir->priv->show_hiddenfiles = g_settings_get_boolean (settings, "show-hiddenfiles");
         
     dir->file_hash = g_hash_table_new_full (g_file_hash, 

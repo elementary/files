@@ -74,6 +74,7 @@ marlin_CSOURCES = \
 
 marlin_SOURCES = \
     View/SettingsDialog.vala                \
+    View/DirectoryNotFound.vala             \
     View/Window.vala 	                    \
     View/Resources.vala	                    \
     View/DbusTags.vala	                    \

@@ -307,6 +307,15 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
         fm_directory_view_load_file_hash (directory, view);
     }
     
+    /* the directory doesn't exist */
+    if(!directory->exists)
+    {
+        marlin_view_view_container_sync_contextview(MARLIN_VIEW_WINDOW(view->details->window)->current_tab);
+        gtk_widget_destroy(gtk_bin_get_child (GTK_BIN (view)));
+        gtk_scrolled_window_add_with_viewport(view, marlin_view_directory_not_found_new(directory, MARLIN_VIEW_WINDOW(view->details->window)->current_tab));
+        gtk_widget_show_all(view);
+    }
+    
     marlin_plugin_manager_directory_loaded(plugins, gof_file_get(directory->location));
     view->details->loading = FALSE;
 }

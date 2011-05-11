@@ -83,7 +83,14 @@ dir_changed (GFileMonitor* gfile_monitor,
         //nautilus_file_changes_queue_file_added (child);
         log_printf (LOG_LEVEL_UNDEFINED, "file added %s\n", uri);
         file = gof_file_get (child);
-        if (file->info != NULL) {
+        if(!g_strcmp0(g_file_get_path(child), g_file_get_path(dir->location)))
+        {
+            /* in rare case, we can monitor a directory which doesn't exist yet,
+             * and this is our dir which has been created, so, we mustn't say
+             * that it is a new file in this dir */
+             dir->exists = TRUE;
+        }
+        else if (file->info != NULL) {
             if (!file->is_hidden)
                 g_hash_table_insert (dir->file_hash, g_object_ref (child), file);
             else
