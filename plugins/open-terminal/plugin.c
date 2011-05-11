@@ -47,7 +47,7 @@ void hook_directory_loaded(GOFFile* path)
 }
 static void on_open_terminal_activated(GtkWidget* widget, gpointer data)
 {
-    GAppInfo* term_app = g_app_info_create_from_commandline(g_strdup_printf("%s%s", g_settings_get_string(settings, "default-terminal"), current_path),
+    GAppInfo* term_app = g_app_info_create_from_commandline(g_strdup_printf("%s\"%s\"", g_settings_get_string(settings, "default-terminal"), current_path),
                                                             "Terminal",
                                                             0,
                                                             NULL);
