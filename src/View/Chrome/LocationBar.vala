@@ -373,9 +373,10 @@ namespace Marlin.View.Chrome
          **/
         private void on_file_loaded(GOF.File file)
         {
-            if(file.is_directory && file.name.slice(0, to_search.length) == to_search)
+            if(file.is_directory && file.name.length > to_search.length)
             {
-                entry.completion = file.name.slice(to_search.length, file.name.length);
+                if(file.name.slice(0, to_search.length) == to_search)
+                    entry.completion = file.name.slice(to_search.length, file.name.length);
             }
         }
 
