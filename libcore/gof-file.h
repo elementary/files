@@ -158,8 +158,6 @@ GOFFile*        gof_file_get (GFile *location);
 GOFFile*        gof_file_get_by_uri (const char *uri);
 GOFFile*        gof_file_get_by_commandline_arg (const char *arg);
 GFileInfo*      gof_file_get_file_info (GOFFile* self);
-gint            gof_file_NameCompareFunc (GOFFile* a, GOFFile* b);
-gint            gof_file_SizeCompareFunc (GOFFile* a, GOFFile* b);
 
 int             gof_file_compare_for_sort (GOFFile *file_1,
                                            GOFFile *file_2,
@@ -197,6 +195,7 @@ void            gof_file_rename (GOFFile *file,
                                  gpointer callback_data);
 void            gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state);
 
+/* To provide a wrapper around g_file_get_uri (not sure it is really useful tough) */
 #define gof_file_get_uri(obj) g_file_get_uri(obj->location)
 /**
  * gof_file_get_thumb_state:

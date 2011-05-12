@@ -17,24 +17,11 @@
  *
  */
 
-#include <gio/gio.h>
-#include <gtk/gtk.h>
-#include <glib.h>
-#include "marlincore-tests-gof.h"
-#include "marlincore-tests-file.h"
-#include "marlin-global-preferences.h"
+#ifndef _H_MARLIN_CORE_TESTS_FILE
+#define _H_MARLIN_CORE_TESTS_FILE
 
-int main (int argc, char* argv[])
-{
-    g_type_init ();
-    g_thread_init (NULL);
-    gtk_test_init (&argc, &argv);
+#include "gof-file.h"
 
-    settings = g_settings_new ("org.gnome.marlin.preferences");
+void marlincore_tests_file(void);
 
-    g_test_add_func("/marlin/goffile", marlincore_tests_goffile);
-    g_test_add_func("/marlin/goffile", marlincore_tests_file);
-    //g_test_add_func("/marlin/gof", marlin_location_bar_tests);
-
-    return g_test_run();
-}
+#endif

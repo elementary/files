@@ -107,3 +107,11 @@ libwidgets/libmarlinwidgets.la
 libwidgets/libmarlinwidgets_la_vala.stamp
 libwidgets/marlin-widgets.vapi
 libwidgets/marlinwidgets-vala.h
+libcore/libmarlincore_la-marlin-file-conflict-dialog.lo
+libcore/libmarlincore_la-marlin-file-operations.lo
+libcore/libmarlincore_la-marlin-file-utilities.lo
+libcore/libmarlincore_la-marlin-progress-info.lo
+libcore/libmarlincore_la-marlin-progress-info-manager.lo
+libcore/libmarlincore_la-marlin-progress-info-widget.lo
+libcore/libmarlincore_la-marlin-progress-ui-handler.lo
+libcore/tests/coremarlin_tests

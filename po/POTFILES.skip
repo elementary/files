@@ -6,3 +6,5 @@ src/View/SettingsDialog.c
 src/View/Window.c
 src/exo-icon-view.c
 src/exo-tree-view.c
+libwidgets/LocationBar.c
+src/View/DirectoryNotFound.c

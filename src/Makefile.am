@@ -54,13 +54,6 @@ marlin_CSOURCES = \
     marlin-bookmark-list.c                  \
     marlin-dnd.c                            \
     marlin-clipboard-manager.c              \
-    marlin-file-utilities.c                 \
-    marlin-file-operations.c                \
-    marlin-file-conflict-dialog.c           \
-    marlin-progress-info.c                  \
-    marlin-progress-info-manager.c          \
-    marlin-progress-ui-handler.c            \
-    marlin-progress-info-widget.c           \
     marlin-places-sidebar.c                 \
     marlin-window-columns.c                 \
     gof-window-slot.c                       \
