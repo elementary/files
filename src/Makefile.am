@@ -4,14 +4,15 @@ bin_PROGRAMS = \
     marlin
 
 marlin_CFLAGS = \
-    -I$(top_srcdir) \
     -I$(top_srcdir)/libcore/ \
+    -I$(top_srcdir)/libwidgets/ \
     $(CORE_CFLAGS) \
     -DPIXMAP_DIR=\""$(datadir)/pixmaps/marlin/"\"   \
     -DUI_DIR=\""$(datadir)/marlin/ui/"\"            \
     -DVERSION="\"$(VERSION)\"" 	                    \
     -DGETTEXT_PACKAGE=\""marlin"\" \
     $(NULL)
+
 
 marlin_VALAFLAGS = \
     -C \
@@ -21,6 +22,9 @@ marlin_VALAFLAGS = \
     --pkg gee-1.0 \
     --vapidir=$(top_srcdir)/libcore/ \
     --pkg marlincore \
+    --vapidir=$(top_srcdir)/libwidgets/ \
+    --pkg marlin-widgets \
+    --pkg marlin-core \
     --vapidir=$(top_srcdir)/src/ \
     --pkg marlin \
     -g \
@@ -29,6 +33,7 @@ marlin_VALAFLAGS = \
 marlin_LDADD = \
     $(CORE_LIBS) \
     $(top_srcdir)/libcore/libmarlincore.la \
+    $(top_srcdir)/libwidgets/libmarlinwidgets.la \
     $(NULL)
 
 BUILT_SOURCES = \
@@ -83,14 +88,8 @@ marlin_SOURCES = \
     View/Browser.vala                       \
     View/ViewMode.vala                      \
     View/Animations.vala                    \
-    View/Chrome/AdvancedMenuToolButton.vala \
-    View/Chrome/AppMenu.vala                \
-    View/Chrome/ToolButtonWithMenu.vala     \
-    View/Chrome/LocationBar.vala            \
-    View/Chrome/ModeButton.vala             \
     View/Chrome/TopMenu.vala                \
     View/Chrome/ViewSwicher.vala            \
-    View/Chrome/CollapsablePaned.vala       \
     View/Chrome/ColorWidget.vala            \
     $(marlin_CSOURCES)                      \
 	marlin-main.c                           \

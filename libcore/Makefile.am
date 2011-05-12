@@ -9,6 +9,7 @@ libmarlincore_la_VALAFLAGS = \
     --pkg gee-1.0 \
     -g \
     --library marlincore \
+    --vapi=marlincore.vapi
     $(NULL)
 
 

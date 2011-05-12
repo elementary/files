@@ -1,5 +1,6 @@
 SUBDIRS =               \
         libcore         \
+        libwidgets      \
         src             \
         marlin-daemon   \
         data            \

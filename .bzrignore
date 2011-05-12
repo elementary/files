@@ -97,3 +97,13 @@ libcore/libmarlincore_la-marlin-plugin.lo
 libcore/libmarlincore_la-marlin-plugin-manager.lo
 plugins/open-terminal/org.gnome.marlin.plugins.gschema.valid
 src/View/DirectoryNotFound.c
+libwidgets/libmarlinwidgets_la-AdvancedMenuToolButton.lo
+libwidgets/libmarlinwidgets_la-AppMenu.lo
+libwidgets/libmarlinwidgets_la-CollapsablePaned.lo
+libwidgets/libmarlinwidgets_la-LocationBar.lo
+libwidgets/libmarlinwidgets_la-ModeButton.lo
+libwidgets/libmarlinwidgets_la-ToolButtonWithMenu.lo
+libwidgets/libmarlinwidgets.la
+libwidgets/libmarlinwidgets_la_vala.stamp
+libwidgets/marlin-widgets.vapi
+libwidgets/marlinwidgets-vala.h

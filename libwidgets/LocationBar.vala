@@ -24,7 +24,6 @@ namespace Marlin.View.Chrome
 {
     public class LocationBar : ToolItem
     {
-        public Window win;
         private Entry entry;
         private Breadcrumbs bread;
         bool _state;
@@ -48,9 +47,8 @@ namespace Marlin.View.Chrome
 
         public new signal void activate();
 
-        public LocationBar (Window window)
+        public LocationBar (UIManager window)
         {
-            win = window;
             entry = new Entry ();
             bread = new Breadcrumbs(window);
 
@@ -162,7 +160,7 @@ namespace Marlin.View.Chrome
         
         private int timeout = -1;
 
-        public Breadcrumbs(Window window)
+        public Breadcrumbs(UIManager ui)
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                       | Gdk.EventMask.BUTTON_RELEASE_MASK
@@ -172,7 +170,7 @@ namespace Marlin.View.Chrome
                       | Gdk.EventMask.LEAVE_NOTIFY_MASK);
 
             /* grab the UIManager */
-            ui = window.ui;
+            this.ui = ui;
             init_clipboard ();
 
             /* Loade default font */

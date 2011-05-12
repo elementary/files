@@ -204,6 +204,7 @@ icons/Makefile
 po/Makefile.in
 src/tests/Makefile
 libcore/Makefile
+libwidgets/Makefile
 plugins/Makefile
 plugins/open-terminal/Makefile
 libcore/tests/Makefile
