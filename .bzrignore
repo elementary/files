@@ -120,3 +120,6 @@ libcore/libmarlincore_a_vala.stamp
 plugins/contractor/plugin.c
 plugins/contractor/libmarlin-contractor.la
 plugins/contractor/libmarlin_contractor_la-plugin.lo
+po/es.gmo
+po/pt_BR.gmo
+po/zh_CN.gmo
