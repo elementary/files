@@ -158,6 +158,77 @@ namespace Marlin.View
 
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Display")));
 
+            first_vbox = new Gtk.VBox(false, 3);
+            first_vbox.border_width = 5;
+            
+           var view = new Gtk.TreeView(); 
+        var listmodel = new Gtk.ListStore (2, typeof (string), typeof (bool));
+        view.set_model (listmodel);
+
+        view.insert_column_with_attributes (-1, "Plugin Name", new Gtk.CellRendererText (), "text", 0);
+        var toggle = new Gtk.CellRendererToggle();
+        toggle.toggled.connect ((toggle, path) => {
+            var tree_path = new Gtk.TreePath.from_string (path);
+            Gtk.TreeIter iter;
+            listmodel.get_iter (out iter, tree_path);
+            listmodel.set (iter, 1, !toggle.active);
+            if(toggle.active == true)
+            {
+                string[] plugs = new string[Preferences.settings.get_strv("plugins-enabled").length - 1];
+                string[] current_plugins = Preferences.settings.get_strv("plugins-enabled");
+
+                int offset = 0;
+                for(int i = 0; i <= plugs.length; i++)
+                {
+                    print(current_plugins[i] + "\n");
+                    var name = new Value(typeof(string));
+                    listmodel.get_value(iter, 0, out name);
+                    if(current_plugins[i] == (string)name)
+                    {
+                        print("to remove\n");
+                        offset ++;
+                    }
+                    else
+                    {
+                        plugs[i - offset] = current_plugins[i];
+                        print("add plugin: %s\n", current_plugins[i]);
+                    }
+                }
+                Preferences.settings.set_strv("plugins-enabled", plugs);
+            }
+            else
+            {
+                string[] plugs = new string[Preferences.settings.get_strv("plugins-enabled").length + 1];
+                string[] current_plugins = Preferences.settings.get_strv("plugins-enabled");
+
+                for(int i = 0; i < current_plugins.length; i++)
+                {
+                    plugs[i] = current_plugins[i];
+                }
+                var name = new Value(typeof(string));
+                listmodel.get_value(iter, 0, out name);
+                plugs[plugs.length - 1] = name.get_string();
+                Preferences.settings.set_strv("plugins-enabled", plugs);
+
+            }
+        }); 
+        view.insert_column_with_attributes (-1, "Active", toggle, "active", 1);
+
+        Gtk.TreeIter iter;
+
+            foreach(string plugin_name in Marlin.PluginManager.get_available_plugins())
+            {
+                print(plugin_name + "\n");
+                        listmodel.append (out iter);
+        listmodel.set (iter, 0, plugin_name, 1, plugin_name in Preferences.settings.get_strv("plugins-enabled"));
+
+            }
+
+            first_vbox.pack_start(view);
+
+
+            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Plugins")));
+
             ((Gtk.Box)get_content_area()).pack_start(mai_notebook);
 
             this.show_all();
@@ -165,7 +236,7 @@ namespace Marlin.View
             this.delete_event.connect(() => { destroy(); return true; });
 
             add_buttons("gtk-close", Gtk.ResponseType.DELETE_EVENT);
-            
+
             run();
         }
 

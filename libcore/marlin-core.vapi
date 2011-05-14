@@ -41,6 +41,16 @@ namespace Nautilus {
     }
 }
 
+[CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
+namespace Marlin
+{
+    [CCode (cheader_filename = "marlin-plugin-manager.h")]
+    class PluginManager : Object
+    {
+       public static List<string> get_available_plugins(); 
+    }
+}
+
 [CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
 namespace GOF {
     [CCode (cprefix = "GOFWindow", lower_case_cprefix = "gof_window_")]
