@@ -267,6 +267,7 @@ namespace Marlin.View.Chrome
                 else
                     to_search = "";
                 entry.completion = "";
+                autocompleted = false;
                 
                 if(to_search.length > 0)
                 {
@@ -360,6 +361,8 @@ namespace Marlin.View.Chrome
             }
             return false;
         }
+        
+        bool autocompleted = false;
 
         /**
          * This function can be called by load_file_hash or it is used as a
@@ -371,10 +374,35 @@ namespace Marlin.View.Chrome
          **/
         private void on_file_loaded(GOF.File file)
         {
-            if(file.is_directory && file.name.length > to_search.length)
+            /*if(file.name == to_search)
+            {
+                autocompleted = true;
+                entry.completion = "";
+            }
+            else*/ if(file.is_directory && file.name.length > to_search.length)
             {
                 if(file.name.slice(0, to_search.length) == to_search)
-                    entry.completion = file.name.slice(to_search.length, file.name.length);
+                {
+                    if(!autocompleted)
+                    {
+                        entry.completion = file.name.slice(to_search.length, file.name.length);
+                        autocompleted = true;
+                    }
+                    else
+                    {
+                        string file_complet = file.name.slice(to_search.length, file.name.length);
+                        string to_add = "";
+                        for(int i = 0; i < (entry.completion.length > file_complet.length ? file_complet.length : entry.completion.length); i++)
+                        {
+                            if(entry.completion[i] == file_complet[i])
+                                to_add += entry.completion[i].to_string();
+                            else
+                                break;
+                        }
+                        print(to_add + "\n");
+                        entry.completion = to_add;
+                    }
+                }
             }
         }
 

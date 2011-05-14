@@ -69,6 +69,7 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
         if(!g_strcmp0(name, plugins[i]))
         {
             plugin->plugin_handle = dlopen (g_build_filename(PLUGIN_DIR, g_key_file_get_value(keyfile, "Plugin", "File", NULL)), RTLD_NOW | RTLD_GLOBAL);
+            g_debug("Plugin debug:\n Plugin dir: %s\n Keyfile file: %s\n Plugin path: %s\n All the path: %s\n", PLUGIN_DIR, path, g_key_file_get_value(keyfile, "Plugin", "File", NULL), g_build_filename(PLUGIN_DIR, g_key_file_get_value(keyfile, "Plugin", "File", NULL)));
             if(! plugin->plugin_handle)
             {
                 g_warning("Can't load plugin: %s %s", path, dlerror());
