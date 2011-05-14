@@ -115,3 +115,8 @@ libcore/libmarlincore_la-marlin-progress-info-manager.lo
 libcore/libmarlincore_la-marlin-progress-info-widget.lo
 libcore/libmarlincore_la-marlin-progress-ui-handler.lo
 libcore/tests/coremarlin_tests
+plugins/contractor/libmarlin_contractor_la_vala.stamp
+libcore/libmarlincore_a_vala.stamp
+plugins/contractor/plugin.c
+plugins/contractor/libmarlin-contractor.la
+plugins/contractor/libmarlin_contractor_la-plugin.lo

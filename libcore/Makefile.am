@@ -1,5 +1,5 @@
 SUBDIRS = tests
-noinst_LTLIBRARIES = libmarlincore.la
+lib_LTLIBRARIES = libmarlincore.la
 
 libmarlincore_la_VALAFLAGS = \
     -C \
