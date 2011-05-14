@@ -31,9 +31,9 @@ marlin_VALAFLAGS = \
     $(NULL)
 
 marlin_LDADD = \
-    $(CORE_LIBS) \
     $(top_srcdir)/libcore/libmarlincore.la \
     $(top_srcdir)/libwidgets/libmarlinwidgets.la \
+    $(CORE_LIBS) \
     $(NULL)
 
 BUILT_SOURCES = \
