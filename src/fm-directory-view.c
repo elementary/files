@@ -689,21 +689,6 @@ fm_directory_view_column_add_preview (FMDirectoryView *dview, GOFFile *file)
     gof_window_columns_add_preview(dview->details->slot, GTK_WIDGET (contextview));
 }
 
-#if 0
-void
-fm_directory_view_set_active_slot (FMDirectoryView *dview)
-{
-    /* TODO check and remove this dead function */
-
-    GOFWindowSlot *slot = dview->details->slot;
-    //marlin_window_set_active_slot (MARLIN_WINDOW (slot->window), slot);
-    /*marlin_view_window_set_active_slot (MARLIN_VIEW_WINDOW (slot->window), slot);
-      g_signal_emit_by_name (slot->window, "column-path-changed", slot->location);*/
-
-    log_printf (LOG_LEVEL_UNDEFINED, "!!!!!!!!!!! %s\n", G_STRFUNC);
-}
-#endif
-
 void
 fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location)
 {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-14 13:13+0200\n"
+"POT-Creation-Date: 2011-05-15 13:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -197,12 +197,12 @@ msgid "Toplevel files cannot be renamed"
 msgstr ""
 
 #. tell the user that the file name provided by the X Direct Save source is invalid
-#: ../src/fm-directory-view.c:1157
+#: ../src/fm-directory-view.c:1139
 msgid "Invalid filename provided by XDS drag site"
 msgstr ""
 
 #. display an error dialog to the user
-#: ../src/fm-directory-view.c:1318
+#: ../src/fm-directory-view.c:1300
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr ""
@@ -210,32 +210,32 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2817
+#: ../src/fm-directory-view.c:2799
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2821
+#: ../src/fm-directory-view.c:2803
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2825
+#: ../src/fm-directory-view.c:2807
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2828
+#: ../src/fm-directory-view.c:2810
 msgid "Paste Into Folder"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2829
+#: ../src/fm-directory-view.c:2811
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -243,62 +243,62 @@ msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2832
+#: ../src/fm-directory-view.c:2814
 msgid "_Rename..."
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2833
+#: ../src/fm-directory-view.c:2815
 msgid "Rename selected item"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2836
+#: ../src/fm-directory-view.c:2818
 msgid "Create New _Folder"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2837
+#: ../src/fm-directory-view.c:2819
 msgid "Create a new empty folder inside this folder"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2840
+#: ../src/fm-directory-view.c:2822
 msgid "Mo_ve to Trash"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2841
+#: ../src/fm-directory-view.c:2823
 msgid "Move each selected item to the Trash"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2844
+#: ../src/fm-directory-view.c:2826
 msgid "_Delete"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2845
+#: ../src/fm-directory-view.c:2827
 msgid "Delete each selected item, without moving to the Trash"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2848
+#: ../src/fm-directory-view.c:2830
 msgid "_Restore"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2852
+#: ../src/fm-directory-view.c:2834
 msgid "_Properties"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2853
+#: ../src/fm-directory-view.c:2835
 msgid "View or modify the properties of each selected item"
 msgstr ""
 
@@ -1474,7 +1474,7 @@ msgstr ""
 
 #: ../src/marlin-toolbar-editor.c:465
 msgid ""
-"Select items to be displayed on the toolbar. Items can be reodered by drag "
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
 
@@ -1486,7 +1486,7 @@ msgstr ""
 msgid "Displayed Items"
 msgstr ""
 
-#: ../libwidgets/LocationBar.vala:813
+#: ../libwidgets/LocationBar.vala:841
 #, c-format
 msgid "Go to %s"
 msgstr ""
@@ -1494,21 +1494,21 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:933
+#: ../libwidgets/LocationBar.vala:961
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:937
+#: ../libwidgets/LocationBar.vala:965
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:941
+#: ../libwidgets/LocationBar.vala:969
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
