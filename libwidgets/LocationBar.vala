@@ -576,7 +576,6 @@ namespace Marlin.View.Chrome
                 if(!found)
                 {
                     grab_focus();
-                    entry.show();
                 }
             }
             if(focus)
@@ -921,6 +920,8 @@ namespace Marlin.View.Chrome
                 win.present();
                 entry.need_completion();
             }
+            
+            entry.show();
             focus = true;
             merge_in_clipboard_actions ();
             return true;
