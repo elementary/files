@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-15 13:52+0200\n"
+"POT-Creation-Date: 2011-05-18 13:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -300,6 +300,11 @@ msgstr ""
 #. tooltip
 #: ../src/fm-directory-view.c:2835
 msgid "View or modify the properties of each selected item"
+msgstr ""
+
+#. append insensitive label 'Set Color'
+#: ../src/fm-directory-view.c:2931
+msgid "Set Color:"
 msgstr ""
 
 #: ../src/fm-list-model.c:457

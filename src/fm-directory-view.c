@@ -2928,7 +2928,7 @@ real_merge_menus (FMDirectoryView *view)
         gtk_widget_show (item);
 
         /* append insensitive label 'Set Color' */
-        item = gtk_menu_item_new_with_label ("Set Color:");
+        item = gtk_menu_item_new_with_label (_("Set Color:"));
         gtk_widget_set_sensitive (item, FALSE);
         gtk_menu_shell_append (GTK_MENU_SHELL (view->details->menu_selection), item);
         gtk_widget_show (item);
