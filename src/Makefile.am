@@ -30,6 +30,26 @@ marlin_VALAFLAGS = \
     -g \
     $(NULL)
 
+marlin_VALASOURCES = \
+    View/SettingsDialog.vala                \
+    View/DirectoryNotFound.vala             \
+    View/Window.vala 	                    \
+    View/Resources.vala	                    \
+    View/DbusTags.vala	                    \
+    View/ViewContainer.vala                 \
+    View/ContextView.vala                   \
+    View/Browser.vala                       \
+    View/ViewMode.vala                      \
+    View/Animations.vala                    \
+    View/Chrome/TopMenu.vala                \
+    View/Chrome/ViewSwicher.vala            \
+    View/Chrome/ColorWidget.vala
+
+
+marlin.vala.stamp: $(marlin_VALASOURCES)
+	$(AM_V_GEN) $(VALAC) $(marlin_VALAFLAGS) $^
+	touch marlin.vala.stamp
+
 marlin_LDADD = \
     $(top_srcdir)/libcore/libmarlincore.la \
     $(top_srcdir)/libwidgets/libmarlinwidgets.la \
@@ -37,11 +57,9 @@ marlin_LDADD = \
     $(NULL)
 
 BUILT_SOURCES = \
+    marlin.vala.stamp \
     marlin-marshal.c \
     marlin-marshal.h \
-    $(NULL)
-
-marlin_SOURCES = \
     $(NULL)
 
 marlin_CSOURCES = \
@@ -71,21 +89,9 @@ marlin_CSOURCES = \
     $(NULL)
 
 marlin_SOURCES = \
-    View/SettingsDialog.vala                \
-    View/DirectoryNotFound.vala             \
-    View/Window.vala 	                    \
-    View/Resources.vala	                    \
-    View/DbusTags.vala	                    \
-    View/ViewContainer.vala                 \
-    View/ContextView.vala                   \
-    View/Browser.vala                       \
-    View/ViewMode.vala                      \
-    View/Animations.vala                    \
-    View/Chrome/TopMenu.vala                \
-    View/Chrome/ViewSwicher.vala            \
-    View/Chrome/ColorWidget.vala            \
     $(marlin_CSOURCES)                      \
 	marlin-main.c                           \
+    $(marlin_VALASOURCES:.vala=.c)          \
     $(NULL)
 
 nodist_marlin_SOURCES = \

@@ -12,8 +12,15 @@ libmarlincore_la_VALAFLAGS = \
     --vapi=marlincore.vapi
     $(NULL)
 
+libmarlincore_la_VALASOURCES = log.vala
 
-libmarlincore_la_SOURCES = log.vala \
+BUILT_SOURCES = libmarlin.vala.stamp
+
+libmarlin.vala.stamp: $(libmarlincore_la_VALASOURCES)
+	$(AM_V_GEN) $(VALAC) $(libmarlincore_la_VALAFLAGS) $^
+	touch libmarlin.vala.stamp
+
+libmarlincore_la_SOURCES = \
     gof-file.c nautilus-icon-info.c \
     eel-fcts.c                              \
     eel-i18n.c                              \
@@ -40,7 +47,8 @@ libmarlincore_la_SOURCES = log.vala \
     nautilus-cell-renderer-text-ellipsized.c\
 	marlin-plugin.c       					\
 	marlin-plugin-manager.c                 \
-    eel-vfs-extensions.c
+    eel-vfs-extensions.c                    \
+    $(libmarlincore_la_VALASOURCES:.vala=.c)
 
 
 libmarlincore_la_CFLAGS = \
