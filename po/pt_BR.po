@@ -7,20 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-05-12 21:40+0200\n"
-"PO-Revision-Date: 2011-05-12 10:30+0000\n"
+"POT-Creation-Date: 2011-05-15 13:52+0200\n"
+"PO-Revision-Date: 2011-05-15 22:08+0000\n"
 "Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2011-05-13 05:08+0000\n"
+"X-Launchpad-Export-Date: 2011-05-16 04:54+0000\n"
 "X-Generator: Launchpad (build 12959)\n"
 
 #: ../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Mostrar mais _detalhes"
+msgstr "Exibir mais _detalhes"
 
 #: ../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
@@ -169,7 +169,7 @@ msgstr "%m/%d/%y"
 #: ../libcore/gof-file.c:1533
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr ""
+msgstr "Falhou ao analisar o arquivo desktop: %s"
 
 #: ../libcore/gof-file.c:1571
 #, c-format
@@ -197,12 +197,12 @@ msgid "Toplevel files cannot be renamed"
 msgstr "Os arquivos do nível superior não podem ser renomeados"
 
 #. tell the user that the file name provided by the X Direct Save source is invalid
-#: ../src/fm-directory-view.c:1157
+#: ../src/fm-directory-view.c:1139
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "Nome de arquivo provido pelo XDS inválido"
 
 #. display an error dialog to the user
-#: ../src/fm-directory-view.c:1318
+#: ../src/fm-directory-view.c:1300
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "Falha ao criar uma ligação para a URL \"%s\""
@@ -210,7 +210,7 @@ msgstr "Falha ao criar uma ligação para a URL \"%s\""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2817
+#: ../src/fm-directory-view.c:2799
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 "Prepara os arquivos selecionados para serem movidos com um comando Colar"
@@ -218,7 +218,7 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2821
+#: ../src/fm-directory-view.c:2803
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 "Prepara os arquivos selecionados para serem copiados com um comando Colar"
@@ -226,7 +226,7 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2825
+#: ../src/fm-directory-view.c:2807
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 "Mover ou copiar arquivos previamente selecionados por um comando de Recortar "
@@ -234,75 +234,77 @@ msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2828
+#: ../src/fm-directory-view.c:2810
 msgid "Paste Into Folder"
 msgstr "Colar na pasta"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2829
+#: ../src/fm-directory-view.c:2811
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Copiar ou mover arquivos previamente selecionados por um comando Recortar ou "
+"Copiar para pasta selecionada"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2832
+#: ../src/fm-directory-view.c:2814
 msgid "_Rename..."
 msgstr "_Renomear..."
 
 #. tooltip
-#: ../src/fm-directory-view.c:2833
+#: ../src/fm-directory-view.c:2815
 msgid "Rename selected item"
 msgstr "Renomeia o item selecionado"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2836
+#: ../src/fm-directory-view.c:2818
 msgid "Create New _Folder"
-msgstr ""
+msgstr "Criar Nova _Pasta"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2837
+#: ../src/fm-directory-view.c:2819
 msgid "Create a new empty folder inside this folder"
 msgstr "Cria uma nova pasta vazia dentro desta pasta"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2840
+#: ../src/fm-directory-view.c:2822
 msgid "Mo_ve to Trash"
 msgstr "_Mover para a lixeira"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2841
+#: ../src/fm-directory-view.c:2823
 msgid "Move each selected item to the Trash"
 msgstr "Move cada item selecionado para a lixeira"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2844
+#: ../src/fm-directory-view.c:2826
 msgid "_Delete"
 msgstr "_Excluir"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2845
+#: ../src/fm-directory-view.c:2827
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "Exclui cada item selecionado, sem movê-los para a Lixeira"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2848
+#: ../src/fm-directory-view.c:2830
 msgid "_Restore"
 msgstr "_Restaurar"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2852
+#: ../src/fm-directory-view.c:2834
 msgid "_Properties"
 msgstr "_Propriedades"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2853
+#: ../src/fm-directory-view.c:2835
 msgid "View or modify the properties of each selected item"
 msgstr "Vê ou modifica as propriedades de cada item selecionado"
 
@@ -330,11 +332,11 @@ msgstr "Tipo"
 msgid "Modified"
 msgstr "Modificado"
 
-#: ../src/marlin-application.c:474
+#: ../src/marlin-application.c:483
 msgid "Show the version of the program."
 msgstr "Mostra a versão do programa."
 
-#: ../src/marlin-application.c:476
+#: ../src/marlin-application.c:485
 msgid ""
 "Do not manage the desktop (ignore the preference set in the preferences "
 "dialog)."
@@ -342,19 +344,19 @@ msgstr ""
 "Não gerenciar a área de trabalho (ignora as preferências definidas no "
 "diálogo de preferências)."
 
-#: ../src/marlin-application.c:478
+#: ../src/marlin-application.c:487
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "Abrir uri(s) em uma nova aba"
 
-#: ../src/marlin-application.c:480
+#: ../src/marlin-application.c:489
 msgid "Quit Marlin."
-msgstr ""
+msgstr "Fechar Marlin."
 
-#: ../src/marlin-application.c:481
+#: ../src/marlin-application.c:490
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/marlin-application.c:492
+#: ../src/marlin-application.c:501
 msgid ""
 "\n"
 "\n"
@@ -364,9 +366,9 @@ msgstr ""
 "\n"
 "Navegue no sistema de arquivos com o gerenciador de arquivos"
 
-#: ../src/marlin-application.c:517
+#: ../src/marlin-application.c:526
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit não pode ser usado com URIs."
 
 #. tell the user that we cannot paste
 #: ../src/marlin-clipboard-manager.c:378
@@ -1333,7 +1335,7 @@ msgstr "Pessoal"
 
 #: ../src/marlin-places-sidebar.c:321
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "Seus lugares comuns e marcadores"
 
 #. tooltip
 #: ../src/marlin-places-sidebar.c:337 ../src/View/Window.vala:572
@@ -1506,7 +1508,7 @@ msgstr[1] "%'d operações de arquivo ativas"
 
 #: ../libcore/marlin-progress-ui-handler.c:270
 msgid "All file operations have been successfully completed"
-msgstr ""
+msgstr "Todas as operações de arquivo foram concluídas com êxito"
 
 #: ../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
@@ -1514,9 +1516,11 @@ msgstr "Personalizar barra de ferramentas"
 
 #: ../src/marlin-toolbar-editor.c:465
 msgid ""
-"Select items to be displayed on the toolbar. Items can be reodered by drag "
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
+"Selecione os items a serem mostrados na barra de ferramentas. Os itens podem "
+"ser reordenados por arrastar e soltar."
 
 #: ../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
@@ -1526,7 +1530,7 @@ msgstr "Itens disponíveis"
 msgid "Displayed Items"
 msgstr "Itens exibidos"
 
-#: ../libwidgets/LocationBar.vala:813
+#: ../libwidgets/LocationBar.vala:841
 #, c-format
 msgid "Go to %s"
 msgstr "Ir para %s"
@@ -1534,21 +1538,21 @@ msgstr "Ir para %s"
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:933
+#: ../libwidgets/LocationBar.vala:961
 msgid "Cut the selected text to the clipboard"
 msgstr "Recorta o texto selecionado para a área de transferência"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:937
+#: ../libwidgets/LocationBar.vala:965
 msgid "Copy the selected text to the clipboard"
 msgstr "Copia o texto selecionado para a área de transferência"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:941
+#: ../libwidgets/LocationBar.vala:969
 msgid "Paste the text stored on the clipboard"
 msgstr "Cola o texto armazenado na área de transferência"
 
@@ -1566,15 +1570,15 @@ msgstr "Abrir com:"
 
 #: ../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
-msgstr ""
+msgstr "Configurações do Marlin"
 
 #: ../src/View/SettingsDialog.vala:46
 msgid "Single click to open:"
-msgstr ""
+msgstr "Um clique para abrir:"
 
 #: ../src/View/SettingsDialog.vala:59
 msgid "Mouse auto-selection speed:"
-msgstr ""
+msgstr "Velocidade de auto-seleção do mouse:"
 
 #: ../src/View/SettingsDialog.vala:72
 msgid "Behavior"
@@ -1598,7 +1602,7 @@ msgstr "extra grande"
 
 #: ../src/View/SettingsDialog.vala:104
 msgid "Sidebar icon size:"
-msgstr ""
+msgstr "Tamanho do ícone da barra lateral"
 
 #: ../src/View/SettingsDialog.vala:115
 msgid "locale"
@@ -1618,17 +1622,22 @@ msgstr "Formato da data:"
 
 #: ../src/View/SettingsDialog.vala:151
 msgid "Show applications names in the context pane:"
-msgstr ""
+msgstr "Mostrar nomes das aplicações no painel de contexto:"
 
 #: ../src/View/SettingsDialog.vala:159
 msgid "Display"
 msgstr "Exibição"
 
+#: ../src/View/SettingsDialog.vala:230
+msgid "Plugins"
+msgstr "Plugins"
+
 #: ../src/View/Window.vala:527
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fitoschido https://launchpad.net/~fitoschido"
+"  Fitoschido https://launchpad.net/~fitoschido\n"
+"  Leonardo Lemos https://launchpad.net/~leonardolemos"
 
 #. name, stock id, label
 #: ../src/View/Window.vala:532
@@ -1663,7 +1672,7 @@ msgstr "Nova _janela"
 
 #: ../src/View/Window.vala:539
 msgid "Open another Marlin window for the displayed location"
-msgstr ""
+msgstr "Abrir outra janela do Marlin para a localização apresentada"
 
 #. name, stock id
 #. label, accelerator
@@ -1701,7 +1710,7 @@ msgstr "Configurações"
 
 #: ../src/View/Window.vala:555
 msgid "Change Marlin's settings"
-msgstr ""
+msgstr "Mudar configurações do Marlin"
 
 #. { Chrome.ColorAction, null, "ColorAction"),
 #. null, null,
@@ -1800,7 +1809,7 @@ msgstr "_Sobre"
 #. tooltip
 #: ../src/View/Window.vala:608
 msgid "Display credits"
-msgstr ""
+msgstr "Mostrar créditos"
 
 #. name, stock id
 #. label, accelerator
@@ -2023,3 +2032,10 @@ msgstr "Visäo em colunas"
 
 #~ msgid "Item Padding"
 #~ msgstr "Espaçamento de itens"
+
+#~ msgid ""
+#~ "Select items to be displayed on the toolbar. Items can be reodered by drag "
+#~ "and drop."
+#~ msgstr ""
+#~ "Selecione os itens a serem exibidos na barra de ferramentas. Os itens podem "
+#~ "ser reordenados por arrastar e soltar."

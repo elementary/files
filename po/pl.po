@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-12 21:40+0200\n"
-"PO-Revision-Date: 2011-05-13 05:13+0000\n"
+"POT-Creation-Date: 2011-05-15 13:52+0200\n"
+"PO-Revision-Date: 2011-05-17 05:53+0000\n"
 "Last-Translator: Piotr Sokół <Unknown>\n"
 "Language-Team: Polish <>\n"
 "MIME-Version: 1.0\n"
@@ -16,13 +16,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-05-14 05:07+0000\n"
+"X-Launchpad-Export-Date: 2011-05-18 05:31+0000\n"
 "X-Generator: Launchpad (build 12959)\n"
 "Language: pl\n"
 
 #: ../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Pokaż więcej _szczegółów"
+msgstr "Wyświetlenie więcej _szczegółów"
 
 #: ../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
@@ -54,7 +54,7 @@ msgstr ""
 
 #: ../libcore/gof-file.c:728
 msgid "today at %-I:%M:%S %p"
-msgstr ""
+msgstr "dzisiaj o %-I:%M:%S %p"
 
 #: ../libcore/gof-file.c:730
 msgid "today at 00:00 PM"
@@ -199,12 +199,12 @@ msgid "Toplevel files cannot be renamed"
 msgstr ""
 
 #. tell the user that the file name provided by the X Direct Save source is invalid
-#: ../src/fm-directory-view.c:1157
+#: ../src/fm-directory-view.c:1139
 msgid "Invalid filename provided by XDS drag site"
 msgstr ""
 
 #. display an error dialog to the user
-#: ../src/fm-directory-view.c:1318
+#: ../src/fm-directory-view.c:1300
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr ""
@@ -212,32 +212,32 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2817
+#: ../src/fm-directory-view.c:2799
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2821
+#: ../src/fm-directory-view.c:2803
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2825
+#: ../src/fm-directory-view.c:2807
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2828
+#: ../src/fm-directory-view.c:2810
 msgid "Paste Into Folder"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2829
+#: ../src/fm-directory-view.c:2811
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -245,62 +245,62 @@ msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2832
+#: ../src/fm-directory-view.c:2814
 msgid "_Rename..."
 msgstr "_Zmień nazwę..."
 
 #. tooltip
-#: ../src/fm-directory-view.c:2833
+#: ../src/fm-directory-view.c:2815
 msgid "Rename selected item"
-msgstr ""
+msgstr "Zmienia nazwę zaznaczonego elementu"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2836
+#: ../src/fm-directory-view.c:2818
 msgid "Create New _Folder"
 msgstr "Utwórz k_atalog"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2837
+#: ../src/fm-directory-view.c:2819
 msgid "Create a new empty folder inside this folder"
 msgstr "Tworzy nowy, pusty katalog wewnątrz bieżącego katalogu"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2840
+#: ../src/fm-directory-view.c:2822
 msgid "Mo_ve to Trash"
 msgstr "_Przenieś do kosza"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2841
+#: ../src/fm-directory-view.c:2823
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "Przenosi wszystkie zaznaczone elementy do kosza"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2844
+#: ../src/fm-directory-view.c:2826
 msgid "_Delete"
 msgstr "_Usuń"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2845
+#: ../src/fm-directory-view.c:2827
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "Usuwa wszystkie zaznaczone elementy, bez przenoszenia ich do kosza"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2848
+#: ../src/fm-directory-view.c:2830
 msgid "_Restore"
 msgstr "_Przywróć"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2852
+#: ../src/fm-directory-view.c:2834
 msgid "_Properties"
 msgstr "_Właściwości"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2853
+#: ../src/fm-directory-view.c:2835
 msgid "View or modify the properties of each selected item"
 msgstr ""
 
@@ -328,36 +328,36 @@ msgstr "Typ"
 msgid "Modified"
 msgstr "Czas modyfikacji"
 
-#: ../src/marlin-application.c:474
+#: ../src/marlin-application.c:483
 msgid "Show the version of the program."
 msgstr "Wypisuje informacje o wersji"
 
-#: ../src/marlin-application.c:476
+#: ../src/marlin-application.c:485
 msgid ""
 "Do not manage the desktop (ignore the preference set in the preferences "
 "dialog)."
 msgstr ""
 
-#: ../src/marlin-application.c:478
+#: ../src/marlin-application.c:487
 msgid "Open uri(s) in new tab"
 msgstr "Otwiera adresy URI w nowej karcie"
 
-#: ../src/marlin-application.c:480
+#: ../src/marlin-application.c:489
 msgid "Quit Marlin."
 msgstr "Kończy działanie programu"
 
-#: ../src/marlin-application.c:481
+#: ../src/marlin-application.c:490
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/marlin-application.c:492
+#: ../src/marlin-application.c:501
 msgid ""
 "\n"
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
 
-#: ../src/marlin-application.c:517
+#: ../src/marlin-application.c:526
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
@@ -390,7 +390,7 @@ msgstr "Anuluj"
 #: ../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr ""
+msgstr "Nie udało się uruchomić pliku „%s”"
 
 #: ../libcore/marlin-file-conflict-dialog.c:143
 #: ../libcore/marlin-file-conflict-dialog.c:356
@@ -438,7 +438,7 @@ msgstr "Zastąpić katalog „%s”?"
 #: ../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "W katalogu „%s” znajduje się już katalog o tej samej nazwie."
 
 #: ../libcore/marlin-file-conflict-dialog.c:174
 #: ../libcore/marlin-file-conflict-dialog.c:387
@@ -449,25 +449,25 @@ msgstr "Zastąpić plik „%s”?"
 #: ../libcore/marlin-file-conflict-dialog.c:176
 #: ../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Zastąpienie go, zmieni jego zawartość."
 
 #: ../libcore/marlin-file-conflict-dialog.c:180
 #: ../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "W katalogu „%s” znajduje się starszy plik o tej samej nazwie."
 
 #: ../libcore/marlin-file-conflict-dialog.c:184
 #: ../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "W katalogu „%s” znajduje nowszy plik o tej samej nazwie."
 
 #: ../libcore/marlin-file-conflict-dialog.c:188
 #: ../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "W katalogu „%s” znajduje się już inny plik o tej samej nazwie."
 
 #: ../libcore/marlin-file-conflict-dialog.c:250
 #: ../libcore/marlin-file-conflict-dialog.c:456
@@ -498,21 +498,21 @@ msgstr "Czas modyfikacji:"
 #: ../libcore/marlin-file-conflict-dialog.c:281
 #: ../libcore/marlin-file-conflict-dialog.c:477
 msgid "Replace with"
-msgstr ""
+msgstr "następującym plikiem?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:310
 #: ../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr ""
+msgstr "Połącz"
 
 #. Setup the expander for the rename action
 #: ../libcore/marlin-file-conflict-dialog.c:698
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "Wybranie nowej _nazwy dla pliku docelowego"
 
 #: ../libcore/marlin-file-conflict-dialog.c:712
 msgid "Reset"
-msgstr ""
+msgstr "Przywróć"
 
 #. Setup the checkbox to apply the action to all files
 #: ../libcore/marlin-file-conflict-dialog.c:724
@@ -530,7 +530,7 @@ msgstr "Zmień _nazwę"
 
 #: ../libcore/marlin-file-conflict-dialog.c:746
 msgid "Replace"
-msgstr ""
+msgstr "Zastąp"
 
 #: ../libcore/marlin-file-conflict-dialog.c:819
 msgid "File conflict"
@@ -758,11 +758,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Opróżnić kosz?"
 
 #: ../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Wszystkie elementy znajdujące się w koszu zostaną trwale usunięte."
 
 #. item = gtk_menu_item_new_with_mnemonic (_("_Detect Media"));
 #. sidebar->popup_menu_rescan_item = item;
@@ -856,7 +856,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1608
 #: ../libcore/marlin-file-operations.c:3615
 msgid "_Skip files"
-msgstr ""
+msgstr "_Pomiń pliki"
 
 #: ../libcore/marlin-file-operations.c:1629
 msgid ""
@@ -872,11 +872,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "Nie można usunąć katalogu %B."
 
 #: ../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "Wystąpił błąd podczas usuwania %B."
 
 #: ../libcore/marlin-file-operations.c:1819
 #: ../libcore/marlin-file-operations.c:1831
@@ -916,7 +916,7 @@ msgstr "Nie można odmontować %V"
 
 #: ../libcore/marlin-file-operations.c:2283
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "Opróżnić kosz przed odmontowaniem?"
 
 #: ../libcore/marlin-file-operations.c:2285
 msgid ""
@@ -926,7 +926,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2291
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "_Nie opróżniaj kosza"
 
 #: ../libcore/marlin-file-operations.c:2346
 msgid "Emptying the trash"
@@ -980,7 +980,7 @@ msgstr "Wystąpił błąd podczas przenoszenia plików."
 
 #: ../libcore/marlin-file-operations.c:2558
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "Wystąpił błąd podczas przenoszenia plików do kosza."
 
 #: ../libcore/marlin-file-operations.c:2612
 msgid ""
@@ -1261,11 +1261,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:6099
 msgid "Error while creating directory %B."
-msgstr ""
+msgstr "Wystąpił błąd podczas tworzenia katalogu %B."
 
 #: ../libcore/marlin-file-operations.c:6101
 msgid "Error while creating file %B."
-msgstr ""
+msgstr "Wystąpił błąd podczas tworzenia pliku %B."
 
 #: ../libcore/marlin-file-operations.c:6103
 #, c-format
@@ -1388,11 +1388,11 @@ msgstr ""
 #. stop() for type G_DRIVE_START_STOP_TYPE_PASSWORD is normally not used
 #: ../src/marlin-places-sidebar.c:1620
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "_Odblokuj napęd"
 
 #: ../src/marlin-places-sidebar.c:1621
 msgid "_Lock Drive"
-msgstr ""
+msgstr "_Zablokuj napęd"
 
 #: ../src/marlin-places-sidebar.c:1690 ../src/marlin-places-sidebar.c:2237
 #, c-format
@@ -1403,7 +1403,7 @@ msgstr ""
 #: ../src/marlin-places-sidebar.c:2038
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "Nie można wysunąć %s"
 
 #: ../src/marlin-places-sidebar.c:2183
 #, c-format
@@ -1413,7 +1413,7 @@ msgstr ""
 #: ../src/marlin-places-sidebar.c:2293
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "Nie można zatrzymać %s"
 
 #: ../src/marlin-places-sidebar.c:2385
 msgid "_Open"
@@ -1456,7 +1456,7 @@ msgstr "Przygotowywanie"
 #: ../libcore/marlin-progress-ui-handler.c:213
 #: ../libcore/marlin-progress-ui-handler.c:269
 msgid "File Operations"
-msgstr ""
+msgstr "Operacje plikowe"
 
 #: ../libcore/marlin-progress-ui-handler.c:114
 msgid "Show Details"
@@ -1480,7 +1480,7 @@ msgstr "Dostosowywanie paska narzędziowego"
 
 #: ../src/marlin-toolbar-editor.c:465
 msgid ""
-"Select items to be displayed on the toolbar. Items can be reodered by drag "
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
 
@@ -1492,7 +1492,7 @@ msgstr "Dostępne elementy"
 msgid "Displayed Items"
 msgstr "Widoczne elementy"
 
-#: ../libwidgets/LocationBar.vala:813
+#: ../libwidgets/LocationBar.vala:841
 #, c-format
 msgid "Go to %s"
 msgstr "Przechodzi do położenia %s"
@@ -1500,21 +1500,21 @@ msgstr "Przechodzi do położenia %s"
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:933
+#: ../libwidgets/LocationBar.vala:961
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:937
+#: ../libwidgets/LocationBar.vala:965
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:941
+#: ../libwidgets/LocationBar.vala:969
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
@@ -1524,7 +1524,7 @@ msgstr "Inny..."
 
 #: ../src/View/ContextView.vala:229
 msgid "Set as default"
-msgstr ""
+msgstr "Ustawienie jako domyślny"
 
 #: ../src/View/ContextView.vala:323
 msgid "Open with:"
@@ -1540,7 +1540,7 @@ msgstr "Otwieranie pojedynczym kliknięciem:"
 
 #: ../src/View/SettingsDialog.vala:59
 msgid "Mouse auto-selection speed:"
-msgstr ""
+msgstr "Czas automatycznego zaznaczania:"
 
 #: ../src/View/SettingsDialog.vala:72
 msgid "Behavior"
@@ -1590,6 +1590,10 @@ msgstr "Wyświetlanie nazw programów w panelu podręcznym:"
 msgid "Display"
 msgstr "Wygląd"
 
+#: ../src/View/SettingsDialog.vala:230
+msgid "Plugins"
+msgstr ""
+
 #: ../src/View/Window.vala:527
 msgid "translator-credits"
 msgstr ""
@@ -1631,7 +1635,7 @@ msgstr "Nowe _okno"
 
 #: ../src/View/Window.vala:539
 msgid "Open another Marlin window for the displayed location"
-msgstr ""
+msgstr "Otwiera bieżące położenie w nowym oknie programu"
 
 #. name, stock id
 #. label, accelerator
@@ -1642,7 +1646,7 @@ msgstr "Nowa _karta"
 #. tooltip
 #: ../src/View/Window.vala:543
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Otwiera bieżące położenie w nowej karcie"
 
 #. name, stock id
 #. label, accelerator
@@ -1669,7 +1673,7 @@ msgstr "P_referencje"
 
 #: ../src/View/Window.vala:555
 msgid "Change Marlin's settings"
-msgstr ""
+msgstr "Otwiera okno preferencji programu"
 
 #. { Chrome.ColorAction, null, "ColorAction"),
 #. null, null,
@@ -1826,7 +1830,7 @@ msgstr "Lista"
 
 #: ../src/View/Window.vala:646
 msgid "Columns View"
-msgstr ""
+msgstr "Kolumny"
 
 #~ msgid "Whether the items in the view can be activated with single clicks"
 #~ msgstr "Czy elementy w widoku można aktywować za pomocą jednego kliknięcia"

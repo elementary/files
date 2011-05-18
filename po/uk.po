@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-12 21:40+0200\n"
-"PO-Revision-Date: 2011-05-07 23:58+0000\n"
+"POT-Creation-Date: 2011-05-15 13:52+0200\n"
+"PO-Revision-Date: 2011-05-15 04:59+0000\n"
 "Last-Translator: xapantu <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-05-13 05:08+0000\n"
+"X-Launchpad-Export-Date: 2011-05-16 04:54+0000\n"
 "X-Generator: Launchpad (build 12959)\n"
 "Language: uk\n"
 
@@ -31,7 +31,7 @@ msgstr " (некоректний символ Unicode)"
 #: ../libcore/gof-file.c:278
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "посилання на %s"
 
 #. Today, use special word.
 #. * strftime patterns preceeded with the widest
@@ -50,15 +50,15 @@ msgstr ""
 #. 
 #: ../libcore/gof-file.c:727
 msgid "today at 00:00:00 PM"
-msgstr ""
+msgstr "сьогодні о 00:00:00"
 
 #: ../libcore/gof-file.c:728
 msgid "today at %-I:%M:%S %p"
-msgstr ""
+msgstr "сьогодні о %-H:%M:%S %p"
 
 #: ../libcore/gof-file.c:730
 msgid "today at 00:00 PM"
-msgstr ""
+msgstr "сьогодні о 00:00"
 
 #: ../libcore/gof-file.c:731
 msgid "today at %-I:%M %p"
@@ -70,26 +70,26 @@ msgstr ""
 
 #: ../libcore/gof-file.c:734
 msgid "today, %-I:%M %p"
-msgstr ""
+msgstr "сьогодні, %-H:%M %p"
 
 #: ../libcore/gof-file.c:736 ../libcore/gof-file.c:737
 msgid "today"
-msgstr ""
+msgstr "сьогодні"
 
 #. Yesterday, use special word.
 #. * Note to localizers: Same issues as "today" string.
 #. 
 #: ../libcore/gof-file.c:746
 msgid "yesterday at 00:00:00 PM"
-msgstr ""
+msgstr "вчора о 00:00:00"
 
 #: ../libcore/gof-file.c:747
 msgid "yesterday at %-I:%M:%S %p"
-msgstr ""
+msgstr "вчора о %-H:%M:%S"
 
 #: ../libcore/gof-file.c:749
 msgid "yesterday at 00:00 PM"
-msgstr ""
+msgstr "вчора о 00:00"
 
 #: ../libcore/gof-file.c:750
 msgid "yesterday at %-I:%M %p"
@@ -97,7 +97,7 @@ msgstr ""
 
 #: ../libcore/gof-file.c:752
 msgid "yesterday, 00:00 PM"
-msgstr ""
+msgstr "вчора, 00:00"
 
 #: ../libcore/gof-file.c:753
 msgid "yesterday, %-I:%M %p"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: ../libcore/gof-file.c:755 ../libcore/gof-file.c:756
 msgid "yesterday"
-msgstr ""
+msgstr "вчора"
 
 #. Current week, include day of week.
 #. * Note to localizers: Same issues as "today" string.
@@ -114,7 +114,7 @@ msgstr ""
 #. 
 #: ../libcore/gof-file.c:767
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr ""
+msgstr "Середа, Вересень 00 0000 о 00:00:00"
 
 #: ../libcore/gof-file.c:768
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
@@ -122,7 +122,7 @@ msgstr ""
 
 #: ../libcore/gof-file.c:770
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr ""
+msgstr "Пнд, 00 Жов 0000 о 00:00:00"
 
 #: ../libcore/gof-file.c:771
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
@@ -130,7 +130,7 @@ msgstr ""
 
 #: ../libcore/gof-file.c:773
 msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr ""
+msgstr "Пнд, 00 Жов 0000 о 00:00"
 
 #: ../libcore/gof-file.c:774
 msgid "%a, %b %-d %Y at %-I:%M %p"
@@ -199,12 +199,12 @@ msgid "Toplevel files cannot be renamed"
 msgstr ""
 
 #. tell the user that the file name provided by the X Direct Save source is invalid
-#: ../src/fm-directory-view.c:1157
+#: ../src/fm-directory-view.c:1139
 msgid "Invalid filename provided by XDS drag site"
 msgstr ""
 
 #. display an error dialog to the user
-#: ../src/fm-directory-view.c:1318
+#: ../src/fm-directory-view.c:1300
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr ""
@@ -212,32 +212,32 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2817
+#: ../src/fm-directory-view.c:2799
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2821
+#: ../src/fm-directory-view.c:2803
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2825
+#: ../src/fm-directory-view.c:2807
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2828
+#: ../src/fm-directory-view.c:2810
 msgid "Paste Into Folder"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2829
+#: ../src/fm-directory-view.c:2811
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -245,62 +245,62 @@ msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2832
+#: ../src/fm-directory-view.c:2814
 msgid "_Rename..."
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2833
+#: ../src/fm-directory-view.c:2815
 msgid "Rename selected item"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2836
+#: ../src/fm-directory-view.c:2818
 msgid "Create New _Folder"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2837
+#: ../src/fm-directory-view.c:2819
 msgid "Create a new empty folder inside this folder"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2840
+#: ../src/fm-directory-view.c:2822
 msgid "Mo_ve to Trash"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2841
+#: ../src/fm-directory-view.c:2823
 msgid "Move each selected item to the Trash"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2844
+#: ../src/fm-directory-view.c:2826
 msgid "_Delete"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2845
+#: ../src/fm-directory-view.c:2827
 msgid "Delete each selected item, without moving to the Trash"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2848
+#: ../src/fm-directory-view.c:2830
 msgid "_Restore"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2852
+#: ../src/fm-directory-view.c:2834
 msgid "_Properties"
 msgstr ""
 
 #. tooltip
-#: ../src/fm-directory-view.c:2853
+#: ../src/fm-directory-view.c:2835
 msgid "View or modify the properties of each selected item"
 msgstr ""
 
@@ -328,36 +328,36 @@ msgstr ""
 msgid "Modified"
 msgstr ""
 
-#: ../src/marlin-application.c:474
+#: ../src/marlin-application.c:483
 msgid "Show the version of the program."
 msgstr ""
 
-#: ../src/marlin-application.c:476
+#: ../src/marlin-application.c:485
 msgid ""
 "Do not manage the desktop (ignore the preference set in the preferences "
 "dialog)."
 msgstr ""
 
-#: ../src/marlin-application.c:478
+#: ../src/marlin-application.c:487
 msgid "Open uri(s) in new tab"
 msgstr ""
 
-#: ../src/marlin-application.c:480
+#: ../src/marlin-application.c:489
 msgid "Quit Marlin."
 msgstr ""
 
-#: ../src/marlin-application.c:481
+#: ../src/marlin-application.c:490
 msgid "[URI...]"
 msgstr ""
 
-#: ../src/marlin-application.c:492
+#: ../src/marlin-application.c:501
 msgid ""
 "\n"
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
 
-#: ../src/marlin-application.c:517
+#: ../src/marlin-application.c:526
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
@@ -1476,7 +1476,7 @@ msgstr ""
 
 #: ../src/marlin-toolbar-editor.c:465
 msgid ""
-"Select items to be displayed on the toolbar. Items can be reodered by drag "
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
 
@@ -1488,7 +1488,7 @@ msgstr ""
 msgid "Displayed Items"
 msgstr ""
 
-#: ../libwidgets/LocationBar.vala:813
+#: ../libwidgets/LocationBar.vala:841
 #, c-format
 msgid "Go to %s"
 msgstr ""
@@ -1496,21 +1496,21 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:933
+#: ../libwidgets/LocationBar.vala:961
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:937
+#: ../libwidgets/LocationBar.vala:965
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:941
+#: ../libwidgets/LocationBar.vala:969
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
@@ -1586,11 +1586,16 @@ msgstr ""
 msgid "Display"
 msgstr ""
 
+#: ../src/View/SettingsDialog.vala:230
+msgid "Plugins"
+msgstr ""
+
 #: ../src/View/Window.vala:527
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Fedik https://launchpad.net/~fedikw\n"
+"  Fitoschido https://launchpad.net/~fitoschido\n"
 "  xapantu https://launchpad.net/~xapantu"
 
 #. name, stock id, label

@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-05-12 21:40+0200\n"
-"PO-Revision-Date: 2011-05-13 01:09+0000\n"
+"POT-Creation-Date: 2011-05-15 13:52+0200\n"
+"PO-Revision-Date: 2011-05-15 04:59+0000\n"
 "Last-Translator: 英华 <wantinghard@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-05-14 05:07+0000\n"
+"X-Launchpad-Export-Date: 2011-05-16 04:54+0000\n"
 "X-Generator: Launchpad (build 12959)\n"
 
 #: ../libcore/eel-stock-dialogs.c:35
@@ -197,12 +197,12 @@ msgid "Toplevel files cannot be renamed"
 msgstr "无法重命名顶级文件"
 
 #. tell the user that the file name provided by the X Direct Save source is invalid
-#: ../src/fm-directory-view.c:1157
+#: ../src/fm-directory-view.c:1139
 msgid "Invalid filename provided by XDS drag site"
 msgstr ""
 
 #. display an error dialog to the user
-#: ../src/fm-directory-view.c:1318
+#: ../src/fm-directory-view.c:1300
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "创建到 URL “%s”的链接失败"
@@ -210,32 +210,32 @@ msgstr "创建到 URL “%s”的链接失败"
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2817
+#: ../src/fm-directory-view.c:2799
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr "使用“粘贴”命令准备要移动的所选文件"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2821
+#: ../src/fm-directory-view.c:2803
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr "使用“粘贴”命令准备要复制的所选文件"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2825
+#: ../src/fm-directory-view.c:2807
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr "移动或复制先前通过“剪切”或“复制”命令选择的文件"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2828
+#: ../src/fm-directory-view.c:2810
 msgid "Paste Into Folder"
 msgstr "粘贴到文件夹"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2829
+#: ../src/fm-directory-view.c:2811
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -243,62 +243,62 @@ msgstr "将先前通过“剪切”或“复制”命令选择的文件移动或
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2832
+#: ../src/fm-directory-view.c:2814
 msgid "_Rename..."
 msgstr "重命名(_R)..."
 
 #. tooltip
-#: ../src/fm-directory-view.c:2833
+#: ../src/fm-directory-view.c:2815
 msgid "Rename selected item"
 msgstr "重命名选择的项目"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2836
+#: ../src/fm-directory-view.c:2818
 msgid "Create New _Folder"
 msgstr "创建新文件夹(_F)"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2837
+#: ../src/fm-directory-view.c:2819
 msgid "Create a new empty folder inside this folder"
 msgstr "在此文件夹中创建一个新的空文件夹"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2840
+#: ../src/fm-directory-view.c:2822
 msgid "Mo_ve to Trash"
 msgstr "移到回收站(_V)"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2841
+#: ../src/fm-directory-view.c:2823
 msgid "Move each selected item to the Trash"
 msgstr "将每个选择项移到回收站"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2844
+#: ../src/fm-directory-view.c:2826
 msgid "_Delete"
 msgstr "删除(_D)"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2845
+#: ../src/fm-directory-view.c:2827
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "不移到回收站，直接删除每个选择项"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2848
+#: ../src/fm-directory-view.c:2830
 msgid "_Restore"
 msgstr "恢复(_R)"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2852
+#: ../src/fm-directory-view.c:2834
 msgid "_Properties"
 msgstr "属性(_P)"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2853
+#: ../src/fm-directory-view.c:2835
 msgid "View or modify the properties of each selected item"
 msgstr "查看或修改每个选择项的属性"
 
@@ -326,29 +326,29 @@ msgstr "类型"
 msgid "Modified"
 msgstr "已修改"
 
-#: ../src/marlin-application.c:474
+#: ../src/marlin-application.c:483
 msgid "Show the version of the program."
 msgstr "显示程序版本。"
 
-#: ../src/marlin-application.c:476
+#: ../src/marlin-application.c:485
 msgid ""
 "Do not manage the desktop (ignore the preference set in the preferences "
 "dialog)."
 msgstr "不管理桌面(忽略首选项对话框中的偏好设置)。"
 
-#: ../src/marlin-application.c:478
+#: ../src/marlin-application.c:487
 msgid "Open uri(s) in new tab"
 msgstr "在新标签中打开 uri"
 
-#: ../src/marlin-application.c:480
+#: ../src/marlin-application.c:489
 msgid "Quit Marlin."
 msgstr "退出 Marlin。"
 
-#: ../src/marlin-application.c:481
+#: ../src/marlin-application.c:490
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/marlin-application.c:492
+#: ../src/marlin-application.c:501
 msgid ""
 "\n"
 "\n"
@@ -358,7 +358,7 @@ msgstr ""
 "\n"
 "通过文件管理器浏览文件系统"
 
-#: ../src/marlin-application.c:517
+#: ../src/marlin-application.c:526
 msgid "--quit cannot be used with URIs."
 msgstr "--quit 不能与 URI 一起使用。"
 
@@ -1454,9 +1454,9 @@ msgstr "自定义工具栏"
 
 #: ../src/marlin-toolbar-editor.c:465
 msgid ""
-"Select items to be displayed on the toolbar. Items can be reodered by drag "
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
-msgstr "选择要显示在工具栏上的项目。可以通过拖放对项目重新排序。"
+msgstr ""
 
 #: ../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
@@ -1466,7 +1466,7 @@ msgstr "可用项目"
 msgid "Displayed Items"
 msgstr "已显示的项目"
 
-#: ../libwidgets/LocationBar.vala:813
+#: ../libwidgets/LocationBar.vala:841
 #, c-format
 msgid "Go to %s"
 msgstr "转到 %s"
@@ -1474,21 +1474,21 @@ msgstr "转到 %s"
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:933
+#: ../libwidgets/LocationBar.vala:961
 msgid "Cut the selected text to the clipboard"
 msgstr "剪切选择的文本到剪贴板"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:937
+#: ../libwidgets/LocationBar.vala:965
 msgid "Copy the selected text to the clipboard"
 msgstr "复制选择的文件到剪贴板"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:941
+#: ../libwidgets/LocationBar.vala:969
 msgid "Paste the text stored on the clipboard"
 msgstr "粘贴剪贴板中保存的文本"
 
@@ -1563,6 +1563,10 @@ msgstr "在描述面板中显示应用程序名称："
 #: ../src/View/SettingsDialog.vala:159
 msgid "Display"
 msgstr "显示"
+
+#: ../src/View/SettingsDialog.vala:230
+msgid "Plugins"
+msgstr ""
 
 #: ../src/View/Window.vala:527
 msgid "translator-credits"
@@ -1799,6 +1803,11 @@ msgstr "列表视图"
 #: ../src/View/Window.vala:646
 msgid "Columns View"
 msgstr "列视图"
+
+#~ msgid ""
+#~ "Select items to be displayed on the toolbar. Items can be reodered by drag "
+#~ "and drop."
+#~ msgstr "选择要显示在工具栏上的项目。可以通过拖放对项目重新排序。"
 
 #~ msgid ""
 #~ "A string containing the saved geometry and coordinates string for navigation "
