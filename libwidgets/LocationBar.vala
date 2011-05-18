@@ -263,6 +263,7 @@ namespace Marlin.View.Chrome
             });
 
             entry.need_completion.connect(() => {
+                show_autocomplete();
                 string path = "";
                 foreach(BreadcrumbsElement element in elements)
                 {
@@ -887,13 +888,15 @@ namespace Marlin.View.Chrome
             return false;
         }
         
+        bool autocomplete_showed = false;
+        
         public override bool focus_out_event(Gdk.EventFocus event)
         {
             focus = false;
             entry.hide();
             if(can_remove_popup)
             {
-                Timeout.add(75, () => { if(!focus) { autocomplete.hide(); autocomplete.set_transient_for(null); autocomplete.destroy(); autocomplete = null; } return false;});
+                Timeout.add(75, () => { if(!focus) { autocomplete_showed = false; autocomplete.hide(); autocomplete.set_transient_for(null); autocomplete.destroy(); autocomplete = null; } return false;});
             }
             can_remove_popup = true;
             merge_out_clipboard_actions ();
@@ -905,12 +908,10 @@ namespace Marlin.View.Chrome
             changed(path);
         }
         
-        public override bool focus_in_event(Gdk.EventFocus event)
+        private void show_autocomplete()
         {
-            if(autocomplete == null)
+            if(!autocomplete_showed)
             {
-                autocomplete = new PopupLocationBar(get_allocated_width());
-                autocomplete.select.connect(select_);
                 int x_win, y_win;
                 get_window().get_position(out x_win, out y_win);
                 autocomplete.show_all();
@@ -918,7 +919,16 @@ namespace Marlin.View.Chrome
                 get_allocation(out alloc);
                 autocomplete.move(x_win + alloc.x, y_win + alloc.y + get_allocated_height() - 6);
                 win.present();
-                entry.need_completion();
+                autocomplete_showed = true;
+            }
+        }
+        
+        public override bool focus_in_event(Gdk.EventFocus event)
+        {
+            if(autocomplete == null)
+            {
+                autocomplete = new PopupLocationBar(get_allocated_width());
+                autocomplete.select.connect(select_);
             }
             
             entry.show();
