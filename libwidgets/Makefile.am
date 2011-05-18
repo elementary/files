@@ -21,7 +21,8 @@ libmarlinwidgets_la_SOURCES = \
     ToolButtonWithMenu.vala     \
     LocationBar.vala            \
     ModeButton.vala             \
-    CollapsablePaned.vala
+    CollapsablePaned.vala       \
+    PopupLocationBar.vala
 
 
 libmarlinwidgets_la_CFLAGS = \

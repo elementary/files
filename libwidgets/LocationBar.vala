@@ -47,10 +47,10 @@ namespace Marlin.View.Chrome
 
         public new signal void activate();
 
-        public LocationBar (UIManager window)
+        public LocationBar (UIManager window, Window win)
         {
             entry = new Entry ();
-            bread = new Breadcrumbs(window);
+            bread = new Breadcrumbs(window, win);
 
             bread.activate_entry.connect( () => { state = false; });
 
@@ -158,9 +158,10 @@ namespace Marlin.View.Chrome
          * FIXME: this should be replaced with some nice Gtk.Widget method. */
         new bool focus = false;
         
+        Window win;
         private int timeout = -1;
 
-        public Breadcrumbs(UIManager ui)
+        public Breadcrumbs(UIManager ui, Window win)
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                       | Gdk.EventMask.BUTTON_RELEASE_MASK
@@ -172,6 +173,8 @@ namespace Marlin.View.Chrome
             /* grab the UIManager */
             this.ui = ui;
             init_clipboard ();
+            
+            this.win = win;
 
             /* Loade default font */
             var gtk_settings = Gtk.Settings.get_for_screen (get_screen ());
@@ -223,6 +226,12 @@ namespace Marlin.View.Chrome
                     }
                 }
             });
+            entry.up.connect(() => {
+            autocomplete.selected --;
+            });
+            entry.down.connect(() => {
+            autocomplete.selected ++;
+            });
 
             entry.left_full.connect(() => {
                 string tmp = entry.text;
@@ -261,23 +270,24 @@ namespace Marlin.View.Chrome
                         path += element.text + "/"; /* sometimes, + "/" is useless
                                                      * but we are never careful enough */
                 }
-                path = Marlin.Utils.get_parent(path + "/" +  entry.text);
                 if(entry.text.split("/").length > 0)
                     to_search = entry.text.split("/")[entry.text.split("/").length - 1];
                 else
                     to_search = "";
                 entry.completion = "";
                 autocompleted = false;
-                
-                if(to_search.length > 0)
-                {
-                    var directory = File.new_for_path(path +"/");
-                    files = new GOF.Directory.Async.from_gfile (directory);
-                    if (files.load())
-                        files.file_loaded.connect(on_file_loaded);
-                    else
-                        Idle.add ((SourceFunc) load_file_hash, Priority.DEFAULT_IDLE);
-                }
+                autocomplete.clear();
+                autocomplete.selected = -1;
+                path += "/" +  entry.text;
+                if(to_search != "")
+                    path = Marlin.Utils.get_parent(path);
+
+                    var directory = File.new_for_path(path +"");
+                files = new GOF.Directory.Async (directory);
+                if (files.load())
+                    files.file_loaded.connect(on_file_loaded);
+                else
+                    Idle.add ((SourceFunc) load_file_hash, Priority.DEFAULT_IDLE);
             });
             
             entry.paste.connect( () => {
@@ -316,6 +326,7 @@ namespace Marlin.View.Chrome
             home[1] = Environment.get_home_dir().split("/")[2];
             menu = new Menu();
             menu.show_all();
+
         }
 
         private void action_paste()
@@ -402,6 +413,7 @@ namespace Marlin.View.Chrome
                         print(to_add + "\n");
                         entry.completion = to_add;
                     }
+                    autocomplete.add_item(file.location.get_path());
                 }
             }
         }
@@ -425,6 +437,8 @@ namespace Marlin.View.Chrome
                 menu.show_all();
             }
         }
+        PopupLocationBar autocomplete;
+        bool can_remove_popup = false;
 
         /**
          * Select the breadcrumb to make a right click. This function check
@@ -438,6 +452,8 @@ namespace Marlin.View.Chrome
          **/
         private bool select_bread_from_coord(double x, Gdk.EventButton event)
         {
+            can_remove_popup = false;
+
             double x_previous = -10;
             double x_render = 0;
             string newpath = "";
@@ -573,16 +589,21 @@ namespace Marlin.View.Chrome
 
         private void on_entry_enter()
         {
-            text = "";
-            foreach(BreadcrumbsElement element in elements)
-            {
-                if(element.display)
-                    text += element.text + "/";
-            }
-            if(text != "")
-                changed(text + "/" + entry.text + entry.completion);
+            if(autocomplete.selected >= 0)
+                autocomplete.enter();
             else
-                changed(entry.text + entry.completion);
+            {
+                text = "";
+                foreach(BreadcrumbsElement element in elements)
+                {
+                    if(element.display)
+                        text += element.text + "/";
+                }
+                if(text != "")
+                    changed(text + "/" + entry.text + entry.completion);
+                else
+                    changed(entry.text + entry.completion);
+            }
                 
             entry.reset();
         }
@@ -871,12 +892,35 @@ namespace Marlin.View.Chrome
         {
             focus = false;
             entry.hide();
+            if(can_remove_popup)
+            {
+                Timeout.add(75, () => { if(!focus) { autocomplete.hide(); autocomplete.set_transient_for(null); autocomplete.destroy(); autocomplete = null; } return false;});
+            }
+            can_remove_popup = true;
             merge_out_clipboard_actions ();
             return true;
         }
         
+        private void select_(string path)
+        {
+            changed(path);
+        }
+        
         public override bool focus_in_event(Gdk.EventFocus event)
         {
+            if(autocomplete == null)
+            {
+                autocomplete = new PopupLocationBar(get_allocated_width());
+                autocomplete.select.connect(select_);
+                int x_win, y_win;
+                get_window().get_position(out x_win, out y_win);
+                autocomplete.show_all();
+                Allocation alloc;
+                get_allocation(out alloc);
+                autocomplete.move(x_win + alloc.x, y_win + alloc.y + get_allocated_height() - 6);
+                win.present();
+                entry.need_completion();
+            }
             focus = true;
             merge_in_clipboard_actions ();
             return true;
@@ -1090,6 +1134,8 @@ namespace Marlin.View.Chrome
         public signal void enter();
         public signal void backspace();
         public signal void left();
+        public signal void up();
+        public signal void down();
         public signal void left_full();
         public signal void need_draw();
         public signal void paste();
@@ -1229,6 +1275,12 @@ namespace Marlin.View.Chrome
                     cursor += completion.length + 1;
                     completion = "";
                 }
+                break;
+            case 0xff54: /* down */
+                down();
+                break;
+            case 0xff52: /* up */
+                up();
                 break;
             default:
                 im_context.filter_keypress(event);
