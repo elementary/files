@@ -51,7 +51,7 @@ struct FMListViewDetails {
 /* Wait for the rename to end when activating a file being renamed */
 #define WAIT_FOR_RENAME_ON_ACTIVATE 200
 
-static gchar *col_title[4] = { _("Filename"), _("Size"), _("Type"), _("Modified") };
+static gchar *col_title[4] = { N_("Filename"), N_("Size"), N_("Type"), N_("Modified") };
 
 //G_DEFINE_TYPE (FMListView, fm_list_view, G_TYPE_OBJECT)
 /*#define GOF_DIRECTORY_ASYNC_GET_PRIVATE(obj) \
@@ -756,7 +756,7 @@ create_and_set_up_tree_view (FMListView *view)
             view->details->file_name_column = col;
             gtk_tree_view_column_set_sort_column_id  (col,k);
             gtk_tree_view_column_set_resizable (col, TRUE);
-            gtk_tree_view_column_set_title (col, col_title[k-3]);
+            gtk_tree_view_column_set_title (col, _(col_title[k-3]));
             gtk_tree_view_column_set_expand (col, TRUE);
 #if 0
             renderer = gtk_cell_renderer_pixbuf_new (); 
@@ -784,7 +784,7 @@ create_and_set_up_tree_view (FMListView *view)
                                                      NULL, NULL);
         } else {
             renderer = gtk_cell_renderer_text_new( );
-            col = gtk_tree_view_column_new_with_attributes(col_title[k-3], renderer, "text", k, NULL);
+            col = gtk_tree_view_column_new_with_attributes(_(col_title[k-3]), renderer, "text", k, NULL);
             gtk_tree_view_column_set_sort_column_id  (col,k);
             gtk_tree_view_column_set_resizable (col, TRUE);
             //gtk_tree_view_column_set_fixed_width (col, 240);

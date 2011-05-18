@@ -176,16 +176,16 @@ namespace Marlin.View {
 
             /* TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
                we are in listview: size, type, modified */
-            info.add(new Pair<string, string>("Name", gof_file.name));
-            info.add(new Pair<string, string>("Type", gof_file.formated_type));
+            info.add(new Pair<string, string>(_("Name"), gof_file.name));
+            info.add(new Pair<string, string>(_("Type"), gof_file.formated_type));
 
             if (file_info.get_is_symlink())
-                info.add(new Pair<string, string>("Target", file_info.get_symlink_target()));
+                info.add(new Pair<string, string>(_("Target"), file_info.get_symlink_target()));
             if(raw_type != FileType.DIRECTORY)
                 info.add(new Pair<string, string>(_("Size"), gof_file.format_size));
             /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
-            info.add(new Pair<string, string>("Modified", gof_file.formated_modified));
-            info.add(new Pair<string, string>("Owner", file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
+            info.add(new Pair<string, string>(_("Modified"), gof_file.formated_modified));
+            info.add(new Pair<string, string>(_("Owner"), file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
 
             label.label = gof_file.name;
 

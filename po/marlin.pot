@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-18 17:43+0200\n"
+"POT-Creation-Date: 2011-05-18 18:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -323,11 +323,12 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: ../src/fm-list-view.c:54
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:180
 msgid "Type"
 msgstr ""
 
-#: ../src/fm-list-view.c:54
+#. localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso ..
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:187
 msgid "Modified"
 msgstr ""
 
@@ -1515,6 +1516,20 @@ msgstr ""
 #. tooltip
 #: ../libwidgets/LocationBar.vala:1014
 msgid "Paste the text stored on the clipboard"
+msgstr ""
+
+#. TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
+#. we are in listview: size, type, modified
+#: ../src/View/ContextView.vala:179
+msgid "Name"
+msgstr ""
+
+#: ../src/View/ContextView.vala:183
+msgid "Target"
+msgstr ""
+
+#: ../src/View/ContextView.vala:188
+msgid "Owner"
 msgstr ""
 
 #: ../src/View/ContextView.vala:226
