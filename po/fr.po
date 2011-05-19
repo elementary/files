@@ -331,7 +331,7 @@ msgstr "Type"
 
 #: ../src/fm-list-view.c:54
 msgid "Modified"
-msgstr "Date de modification"
+msgstr "Modifié"
 
 #: ../src/marlin-application.c:483
 msgid "Show the version of the program."

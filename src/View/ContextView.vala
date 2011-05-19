@@ -297,7 +297,15 @@ namespace Marlin.View {
             if (image != null) {
                 if (image.parent != null)
                     image.parent.remove(image);
+                image.set_tooltip_text (last_geof_cache.name);
                 box.pack_start(image, false, false);
+            }
+            if (label != null) {
+                if (label.parent != null)
+                    label.parent.remove(label);
+                label.set_selectable(true);
+                label.set_tooltip_text (last_geof_cache.name);
+                box.pack_start(label, false, false);
             }
             box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
 
@@ -305,15 +313,17 @@ namespace Marlin.View {
 
             int n = 0;
             foreach(var pair in item_info){
-                var key_value_pair = new HBox (false, key_value_padding);
-                key_value_pair.set_size_request(key_value_width, -1);
-                populate_key_value_pair(key_value_pair, pair, true);
+                /* skip the firs parameter "name" for vertical panel */
+                if (n>0) {
+                    var key_value_pair = new HBox (false, key_value_padding);
+                    key_value_pair.set_size_request(key_value_width, -1);
+                    populate_key_value_pair(key_value_pair, pair, true);
 
-                var alignment_ = new Gtk.Alignment(0, 0, 0, 0);
-                alignment_.add(key_value_pair);
+                    var alignment_ = new Gtk.Alignment(0, 0, 0, 0);
+                    alignment_.add(key_value_pair);
 
-                information.pack_start(alignment_, true, true, 0);
-
+                    information.pack_start(alignment_, true, true, 0);
+                }
                 n++;
             }
 
@@ -349,6 +359,7 @@ namespace Marlin.View {
             if (image != null) {
                 if (image.parent != null)
                     image.parent.remove(image);
+                image.set_tooltip_text (last_geof_cache.name);
                 alignment_img.add(image);
             }
 
