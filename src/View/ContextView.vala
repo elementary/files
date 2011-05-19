@@ -310,6 +310,7 @@ namespace Marlin.View {
             box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
 
             var information = new VBox (false, key_value_padding);
+            var alignment_ = new Gtk.Alignment(0.5f, 0, 0, 0);
 
             int n = 0;
             foreach(var pair in item_info){
@@ -319,15 +320,15 @@ namespace Marlin.View {
                     key_value_pair.set_size_request(key_value_width, -1);
                     populate_key_value_pair(key_value_pair, pair, true);
 
-                    var alignment_ = new Gtk.Alignment(0, 0, 0, 0);
-                    alignment_.add(key_value_pair);
-
-                    information.pack_start(alignment_, true, true, 0);
+                    information.add(key_value_pair);
                 }
                 n++;
             }
+            alignment_.add(information);
+            box.pack_start(alignment_, false, false);
+            
+            box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
 
-            box.pack_start(information, false, false);
             if(!last_geof_cache.is_directory)
             {
                 var label = new Label(N_("Open with:"));
@@ -381,10 +382,7 @@ namespace Marlin.View {
                 key_value_pair.set_size_request(key_value_width, -1);
                 populate_key_value_pair(key_value_pair, pair);
 
-                var alignment = new Gtk.Alignment(0, 0, 0, 0);
-                alignment.add(key_value_pair);
-
-                table.attach(alignment, column, column+1, row, row+1, AttachOptions.FILL, AttachOptions.FILL, key_value_padding/2, key_value_padding/4);
+                table.attach(key_value_pair, column, column+1, row, row+1, AttachOptions.FILL, AttachOptions.FILL, key_value_padding/2, key_value_padding/4);
 
                 n++;
             }
