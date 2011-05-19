@@ -941,7 +941,7 @@ namespace Marlin.View.Chrome
         private void request_text(Gtk.Clipboard clip, string? text)
         {
             if(text != null)
-                entry.insert(text);
+                entry.insert(text.replace("\n", ""));
         }
 
         public override bool draw(Cairo.Context cr)
