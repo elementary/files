@@ -16,9 +16,8 @@ libmarlinwidgets_la_VALAFLAGS = \
 
 
 libmarlinwidgets_la_SOURCES = \
-    AdvancedMenuToolButton.vala \
-    AppMenu.vala                \
     ToolButtonWithMenu.vala     \
+    AppMenu.vala                \
     LocationBar.vala            \
     ModeButton.vala             \
     CollapsablePaned.vala       \
