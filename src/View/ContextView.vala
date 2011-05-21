@@ -104,8 +104,8 @@ namespace Marlin.View {
                 }
                 first_alloc = true;
                 
-                //window.main_box.set_position (window.main_box.max_position);
                 _orientation = value;
+                change_css_class ();
                 /* reset pane position to original values */
                 window.main_box.set_position (window.main_box.max_position - panel_size);
                 update(last_geof_cache);
@@ -136,9 +136,11 @@ namespace Marlin.View {
             _orientation = convert_parent_orientation(parent_orientation);
 
             should_sync = _should_sync;
-            if (should_sync)
+            if (should_sync) { 
                 window.selection_changed.connect(update);
-
+                change_css_class ();
+            }
+            
             label = new Label("");
             var font_style = new Pango.FontDescription();
             font_style.set_size(14 * 1000);
@@ -153,6 +155,20 @@ namespace Marlin.View {
             toolbar_menu = (Gtk.Menu) window.ui.get_widget("/ToolbarMenu");
             button_press_event.connect(right_click);
             size_allocate.connect(size_allocate_changed);
+        }
+
+        private void change_css_class () {
+            var ctx = window.main_box.get_style_context();
+
+            if (orientation == Orientation.VERTICAL) {
+                ctx.remove_class("contextview-horizontal");
+                ctx.add_class("contextview-vertical");
+            } else {
+                ctx.remove_class("contextview-vertical");
+                ctx.add_class("contextview-horizontal");
+            }
+            
+            window.main_box.reset_style ();
         }
 
         private void size_allocate_changed (Widget w, Gdk.Rectangle s)

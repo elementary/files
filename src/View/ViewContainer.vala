@@ -152,6 +152,12 @@ namespace Marlin.View {
         public void sync_contextview(){
             switch (view_mode) {
             case ViewMode.MILLER:
+                /* reset the panes style */
+                var ctx = window.main_box.get_style_context();
+                ctx.remove_class("contextview-horizontal");
+                ctx.remove_class("contextview-vertical");
+                window.main_box.reset_style ();
+
                 if (window.contextview != null) {
                     window.main_box.remove (window.contextview);
                     window.contextview = null;
@@ -162,12 +168,12 @@ namespace Marlin.View {
                     ((Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane")).get_active())
                 {
                     window.contextview = new ContextView(window, true, window.main_box.orientation);
-                    window.main_box.pack2(window.contextview, false, true);
                     
                     window.main_box.notify.connect((prop) => {
                         if(prop.name == "orientation")
                             window.contextview.parent_orientation = window.main_box.orientation;
                     });
+                    window.main_box.pack2(window.contextview, false, true);
                 }
                 break;
             }
