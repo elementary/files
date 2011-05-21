@@ -86,6 +86,7 @@ namespace GOF {
         public bool is_directory;
         public bool is_symlink();
         public bool link_known_target;
+        public string thumbnail_path;
         public Nautilus.IconInfo get_icon(int size, FileIconFlags flags);
     }
 

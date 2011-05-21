@@ -59,13 +59,12 @@ namespace Marlin.View {
 
     public class ContextView : Gtk.EventBox
     {
-        public const int height = -1;
+        public const int height = 50;
         public const int width = 190;
         public const int key_value_padding = 8;
         public const int key_value_width = 90;
         public Gtk.Menu toolbar_menu;
         private Box apps;
-        private ScrolledWindow apps_scrolled;
 
         public int panel_size{
             get{
@@ -89,13 +88,26 @@ namespace Marlin.View {
         private Image image;
         private Label label;
         private Gee.List<Pair<string, string>> info;
+        private int timeout = -1;
+        private bool first_alloc = true;
+        private Allocation cv_alloc;    /* last allocation of the contextview */
+        private bool should_sync;
 
         private GOF.File? last_geof_cache = null;
 
         private Orientation _orientation = Orientation.HORIZONTAL;
         public Orientation orientation{
             set{
+                if(timeout != -1){
+                    Source.remove((uint) timeout);
+                    timeout = -1;
+                }
+                first_alloc = true;
+                
+                //window.main_box.set_position (window.main_box.max_position);
                 _orientation = value;
+                /* reset pane position to original values */
+                window.main_box.set_position (window.main_box.max_position - panel_size);
                 update(last_geof_cache);
             }
             get{
@@ -119,10 +131,11 @@ namespace Marlin.View {
             }
         }
 
-        public ContextView(Window window, bool should_sync, Orientation parent_orientation = Orientation.VERTICAL) {
+        public ContextView(Window window, bool _should_sync, Orientation parent_orientation = Orientation.VERTICAL) {
             this.window = window;
             _orientation = convert_parent_orientation(parent_orientation);
 
+            should_sync = _should_sync;
             if (should_sync)
                 window.selection_changed.connect(update);
 
@@ -133,13 +146,46 @@ namespace Marlin.View {
             label.ellipsize = Pango.EllipsizeMode.MIDDLE;
             label.set_padding(key_value_padding, -1);
 
-            image = new Image.from_stock(Stock.INFO, window.isize128);
-            //image.set_size_request(-1, );
+            image = new Image ();
 
             info = new LinkedList<Pair<string, string>>();
-
+        
             toolbar_menu = (Gtk.Menu) window.ui.get_widget("/ToolbarMenu");
             button_press_event.connect(right_click);
+            size_allocate.connect(size_allocate_changed);
+        }
+
+        private void size_allocate_changed (Widget w, Gdk.Rectangle s)
+        {
+            /* first allocations can be tricky ignore all allocations different 
+               than the panel requested size at first */
+            if (first_alloc) {
+                if (orientation == Orientation.VERTICAL && 
+                    s.width > 1 && s.width <= panel_size)
+                    first_alloc = false;
+                if (orientation == Orientation.HORIZONTAL && 
+                    s.height > 1 && s.height <= panel_size)
+                    first_alloc = false;
+            }
+            if (first_alloc && should_sync) 
+                return;
+
+            //amtest
+            /*stdout.printf ("::::: %d %d :: %d %d\n", cv_alloc.width, cv_alloc.height,
+                           s.width, s.height);*/
+            if ((orientation == Orientation.VERTICAL && cv_alloc.width != s.width) ||
+                (orientation == Orientation.HORIZONTAL && cv_alloc.height != s.height)) {
+                //stdout.printf ("$$$$$$$$$$$ img alloc %d\n", s.width);
+                if(timeout == -1) {
+                    timeout = (int) Timeout.add(500, () => {
+                        timeout = -1;
+                        update_icon();
+
+                        return false;
+                    });
+                }
+            }
+        
         }
 
         public bool right_click(Gdk.EventButton event)
@@ -152,24 +198,42 @@ namespace Marlin.View {
             return false;
         }
 
-        private void update_icon(GOF.File gof_file)
+        private void update_icon()
         {
-            var icon_size_request = 96; /* -10 is just an hardcoded padding */
-            if(orientation == Orientation.HORIZONTAL){
-                icon_size_request = 42;
+            int w_height, w_width;
+            Allocation alloc;
+            Nautilus.IconInfo icon_info;
+            int icon_size_req;
+    		
+            if (last_geof_cache == null)
+                return;
+
+            window.get_size(out w_width, out w_height);
+            get_allocation(out alloc);
+            cv_alloc = alloc;
+            //stdout.printf ("$$$$$$$$$ real alloc %d %d\n", alloc.width, alloc.height);
+           
+            if (orientation == Orientation.VERTICAL) {
+                icon_size_req = int.min (alloc.width, w_width/2);
+            } else {
+                icon_size_req = int.min (alloc.height, w_height/2);
             }
 
-            Nautilus.IconInfo icon_info = gof_file.get_icon(icon_size_request, GOF.FileIconFlags.USE_THUMBNAILS);
+            icon_info = last_geof_cache.get_icon(icon_size_req, GOF.FileIconFlags.USE_THUMBNAILS);
             icon = icon_info.get_pixbuf_nodefault();
+                        
+            if (should_sync && (icon_size_req > w_width/2 || icon_size_req > w_height/2))
+                window.main_box.set_position (window.main_box.max_position - icon_size_req);
         }
-
 
         public void update(GOF.File gof_file){
             last_geof_cache = gof_file;
 
             var file_info = gof_file.info;
 
-            update_icon(gof_file);
+            /* !should_sync = we are in column view */
+            if (!first_alloc || !should_sync) 
+                update_icon();
 
             info.clear();
             var raw_type = file_info.get_file_type();
@@ -190,7 +254,6 @@ namespace Marlin.View {
             label.label = gof_file.name;
 
             /* Apps list */
-            apps_scrolled = new ScrolledWindow(null,null);
             if((bool)Preferences.settings.get_value("show-open-with-text"))
             {
                 apps = new VBox(false, 5);
@@ -290,15 +353,17 @@ namespace Marlin.View {
         }
 
         private void construct_info_panel_vertical(Gee.List<Pair<string, string>> item_info){
-            set_size_request(panel_size, -1);
+            var box = new VBox(false, 0);
 
-            var box = new VBox(false, 4);
+            /*var blank_box = new VBox(false, 0);
+            blank_box.set_size_request (-1, 20);
+            box.pack_start(blank_box, false, false, 0);*/
 
             if (image != null) {
                 if (image.parent != null)
                     image.parent.remove(image);
                 image.set_tooltip_text (last_geof_cache.name);
-                box.pack_start(image, false, false);
+                box.pack_start(image, false, false, 0);
             }
             if (label != null) {
                 if (label.parent != null)
@@ -334,36 +399,30 @@ namespace Marlin.View {
                 var label = new Label(N_("Open with:"));
                 label.set_sensitive(false);
                 box.pack_start(label, false, false);
-                var vbox = new VBox(false, 5);
-                vbox.pack_start(apps, true, true);
-                vbox.pack_start(app_chooser, true, true);
-                box.pack_start(vbox);
+                var vbox = new VBox(false, 3);
+                vbox.pack_start(apps, false, false);
+                vbox.pack_start(app_chooser, false, false);
+                box.pack_start(vbox, false, false);
+                vbox.set_margin_left(2);
+                vbox.set_margin_right(2);
             }
-            var scrolled = new ScrolledWindow(null, null);
-            var box_ = new VBox(false, 0);
-            box_.pack_start(box, true, false);
-            scrolled.add_with_viewport(box_);
-            box.set_margin_right(3);
-
-            scrolled.show_all();
-
-            set_content(scrolled);
+            
+            box.show_all();
+            set_content(box);
         }
 
         private void construct_info_panel_horizontal(Gee.List<Pair<string, string>> item_info){
-            set_size_request(-1, panel_size);
-
             var box = new HBox(false, 0);
 
-            var alignment_img = new Gtk.Alignment(0, 0.5f, 0, 0);
-            alignment_img.set_padding(2, 8, 4, 0); // TODO: change this is something more concrete
+            var alignment_img = new Gtk.Alignment(0.5f, 0.5f, 0, 0);
+            alignment_img.set_padding(0, 0, 5, 0); 
+
             if (image != null) {
                 if (image.parent != null)
                     image.parent.remove(image);
                 image.set_tooltip_text (last_geof_cache.name);
                 alignment_img.add(image);
             }
-
             box.pack_start(alignment_img, false, false);
 
             //box.pack_start(label, false, false);

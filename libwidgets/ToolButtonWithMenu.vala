@@ -22,6 +22,13 @@
  *
  */
 
+/* 
+ * ToolButtonWithMenu 
+ * - support long click / right click with depressed button states
+ * - activate a GtkAction if any or popup a menu.
+ * (used in history navigation buttons next/prev, appmenu) 
+ */
+
 using Gdk;
 
 namespace Gtk {
