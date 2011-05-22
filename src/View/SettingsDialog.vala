@@ -181,7 +181,7 @@ namespace Marlin.View
                 for(int i = 0; i <= plugs.length; i++)
                 {
                     print(current_plugins[i] + "\n");
-                    var name = new Value(typeof(string));
+                    var name = Value(typeof(string));
                     listmodel.get_value(iter, 0, out name);
                     if(current_plugins[i] == (string)name)
                     {
@@ -205,7 +205,7 @@ namespace Marlin.View
                 {
                     plugs[i] = current_plugins[i];
                 }
-                var name = new Value(typeof(string));
+                var name = Value(typeof(string));
                 listmodel.get_value(iter, 0, out name);
                 plugs[plugs.length - 1] = name.get_string();
                 Preferences.settings.set_strv("plugins-enabled", plugs);

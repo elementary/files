@@ -117,7 +117,7 @@ open_window (MarlinApplication *application,
     //DEBUG ("Opening new window at uri %s", uri);
 
     window = marlin_view_window_new (application, screen);
-    g_signal_connect(window, "selection_changed", selection_changed_plugin, NULL);
+    g_signal_connect(window, "selection_changed", (GCallback) selection_changed_plugin, NULL);
     marlin_plugin_manager_interface_loaded(plugins, window);
 
     gtk_application_add_window (GTK_APPLICATION (application),
@@ -440,7 +440,7 @@ marlin_application_create_window_from_gfile (MarlinApplication *application,
 
     window = marlin_view_window_new (application, screen);
     
-    g_signal_connect(window, "selection_changed", selection_changed_plugin, NULL);
+    g_signal_connect(window, "selection_changed", (GCallback) selection_changed_plugin, NULL);
 
     gtk_application_add_window (GTK_APPLICATION (application),
                                 GTK_WINDOW (window));
