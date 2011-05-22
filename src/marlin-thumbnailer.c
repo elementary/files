@@ -191,12 +191,10 @@ struct _MarlinThumbnailerItem
 #endif
 
 
-
-
+static MarlinThumbnailer    *mthumbnailer;
 
 
 G_DEFINE_TYPE (MarlinThumbnailer, marlin_thumbnailer, G_TYPE_OBJECT);
-
 
 
 static void
@@ -769,7 +767,16 @@ marlin_thumbnailer_new (void)
     return g_object_new (MARLIN_TYPE_THUMBNAILER, NULL);
 }
 
+MarlinThumbnailer*
+marlin_thumbnailer_get (void)
+{
+    if (mthumbnailer == NULL)
+        mthumbnailer = marlin_thumbnailer_new ();
+    else
+        g_object_ref (G_OBJECT (mthumbnailer));
 
+    return mthumbnailer;
+}
 
 gboolean
 marlin_thumbnailer_queue_file (MarlinThumbnailer  *thumbnailer,

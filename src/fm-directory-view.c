@@ -393,7 +393,7 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details->drag_timer_id = -1;
 
     /* create a thumbnailer */
-    view->details->thumbnailer = marlin_thumbnailer_new ();
+    view->details->thumbnailer = marlin_thumbnailer_get ();
     view->details->thumbnailing_scheduled = FALSE;
 
     /* initialize the scrolled window */

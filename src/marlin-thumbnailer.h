@@ -38,6 +38,8 @@ GType              marlin_thumbnailer_get_type        (void) G_GNUC_CONST;
 
 MarlinThumbnailer *marlin_thumbnailer_new             (void) G_GNUC_MALLOC;
 
+MarlinThumbnailer *marlin_thumbnailer_get             (void) G_GNUC_MALLOC;
+
 gboolean           marlin_thumbnailer_queue_file      (MarlinThumbnailer  *thumbnailer,
                                                        GOFFile            *file,
                                                        guint              *request);
