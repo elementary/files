@@ -151,15 +151,19 @@ namespace Gtk {
         }
 
         private void deactivate_menu () {
-            myaction.block_activate ();
+            if (myaction != null)
+                myaction.block_activate ();
             active = false;
-            myaction.unblock_activate ();
+            if (myaction != null)
+                myaction.unblock_activate ();
         }
 
         private void popup_menu_and_depress_button () {
-            myaction.block_activate ();
+            if (myaction != null)
+                myaction.block_activate ();
             active = true;
-            myaction.unblock_activate ();
+            if (myaction != null)
+                myaction.unblock_activate ();
             popup_menu();
         }
 
