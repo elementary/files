@@ -26,7 +26,7 @@ string path;
 
 string get_app_display_name(GLib.HashTable<string,string> app__)
 {
-    return app__.lookup("Description") + " (" + app__.lookup("Name") + ")";
+    return app__.lookup("Description");
 }
 
 void print_apps()
