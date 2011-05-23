@@ -401,5 +401,7 @@ void    fm_directory_view_context_menu (FMDirectoryView *view,
                                         guint           button,
                                         GdkEventButton  *event);
 gboolean fm_directory_view_is_drag_pending (FMDirectoryView *view);
+void    fm_directory_view_freeze_updates (FMDirectoryView *view);
+void    fm_directory_view_unfreeze_updates (FMDirectoryView *view);
 
 #endif /* FM_DIRECTORY_VIEW_H */

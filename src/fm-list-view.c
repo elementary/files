@@ -244,8 +244,7 @@ editable_focus_out_cb (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
 	FMListView *view = user_data;
 
-    //TODO
-	//nautilus_view_unfreeze_updates (NAUTILUS_VIEW (view));
+	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 	view->details->editable_widget = NULL;
 }
 
@@ -281,8 +280,7 @@ cell_renderer_editing_canceled (GtkCellRendererText *cell,
 {
 	view->details->editable_widget = NULL;
 
-    //TODO
-	//nautilus_view_unfreeze_updates (NAUTILUS_VIEW (view));
+	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
 
 static void
@@ -304,7 +302,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 	if (new_text[0] == '\0') {
 		g_object_set (G_OBJECT (view->details->file_name_cell),
                       "editable", FALSE, NULL);
-		//nautilus_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+		fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 		return;
 	}
 	
@@ -333,8 +331,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 	g_object_set (G_OBJECT (view->details->file_name_cell),
                   "editable", FALSE, NULL);
 
-    //TODO
-	//nautilus_view_unfreeze_updates (NAUTILUS_VIEW (view));
+	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
 
 static void
@@ -361,8 +358,7 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
 	}
 
 	/* Freeze updates to the view to prevent losing rename focus when the tree view updates */
-    //TODO
-	//nautilus_view_freeze_updates (NAUTILUS_VIEW (view));
+	fm_directory_view_freeze_updates (FM_DIRECTORY_VIEW (view));
 
 	path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_view->model), &iter);
 

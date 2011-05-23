@@ -2621,6 +2621,22 @@ fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view)
          get_selection_for_file_transfer, (view));
 }
 
+void
+fm_directory_view_freeze_updates (FMDirectoryView *view)
+{
+    /* block thumbnails request on size allocate */
+    g_signal_handlers_block_by_func (G_OBJECT (view), fm_directory_view_size_allocate, NULL);
+
+    /* TODO queue renamed file FILE_CHANGED */
+}
+
+void
+fm_directory_view_unfreeze_updates (FMDirectoryView *view)
+{
+    /* unblock thumbnails request on size allocate */
+    g_signal_handlers_unblock_by_func (G_OBJECT (view), fm_directory_view_size_allocate, NULL);
+}
+
 static void
 action_cut_files (GtkAction *action, FMDirectoryView *view)
 {
