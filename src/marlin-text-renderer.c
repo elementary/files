@@ -618,16 +618,16 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
                                          NULL);
 
     /* select the whole text */
-    gtk_editable_select_region (GTK_EDITABLE (text_renderer->entry), 0, -1);
+    //gtk_editable_select_region (GTK_EDITABLE (text_renderer->entry), 0, -1);
 
     /* remember the tree path that we're editing */
-    g_object_set_data_full (G_OBJECT (text_renderer->entry), "thunar-text-renderer-path", g_strdup (path), g_free);
+    //g_object_set_data_full (G_OBJECT (text_renderer->entry), "thunar-text-renderer-path", g_strdup (path), g_free);
 
     /* connect required signals */
-    g_signal_connect (G_OBJECT (text_renderer->entry), "editing-done", G_CALLBACK (marlin_text_renderer_editing_done), text_renderer);
+    /*g_signal_connect (G_OBJECT (text_renderer->entry), "editing-done", G_CALLBACK (marlin_text_renderer_editing_done), text_renderer);
     g_signal_connect_after (G_OBJECT (text_renderer->entry), "grab-focus", G_CALLBACK (marlin_text_renderer_grab_focus), text_renderer);
     g_signal_connect (G_OBJECT (text_renderer->entry), "focus-out-event", G_CALLBACK (marlin_text_renderer_focus_out_event), text_renderer);
-    g_signal_connect (G_OBJECT (text_renderer->entry), "populate-popup", G_CALLBACK (marlin_text_renderer_populate_popup), text_renderer);
+    g_signal_connect (G_OBJECT (text_renderer->entry), "populate-popup", G_CALLBACK (marlin_text_renderer_populate_popup), text_renderer);*/
 
     return GTK_CELL_EDITABLE (text_renderer->entry);
 }
@@ -713,7 +713,7 @@ marlin_text_renderer_set_widget (MarlinTextRenderer *text_renderer,
 }
 
 
-
+//#if 0
 static void
 marlin_text_renderer_editing_done (GtkCellEditable    *editable,
                                    MarlinTextRenderer *text_renderer)
@@ -725,8 +725,9 @@ marlin_text_renderer_editing_done (GtkCellEditable    *editable,
     //renametest
     printf ("%s\n", G_STRFUNC);
     /* disconnect our signals from the cell editable */
-    g_signal_handlers_disconnect_by_func (G_OBJECT (editable), marlin_text_renderer_editing_done, text_renderer);
+    g_signal_handlers_disconnect_by_func (G_OBJECT (editable), marlin_text_renderer_grab_focus, text_renderer);
     g_signal_handlers_disconnect_by_func (G_OBJECT (editable), marlin_text_renderer_focus_out_event, text_renderer);
+    g_signal_handlers_disconnect_by_func (G_OBJECT (editable), marlin_text_renderer_editing_done, text_renderer);
     g_signal_handlers_disconnect_by_func (G_OBJECT (editable), marlin_text_renderer_populate_popup, text_renderer);
 
     g_object_get (editable, "editing-canceled", &canceled, NULL);
@@ -848,7 +849,7 @@ marlin_text_renderer_entry_menu_popdown_timer_destroy (gpointer user_data)
 {
     MARLIN_TEXT_RENDERER (user_data)->entry_menu_popdown_timer_id = -1;
 }
-
+//#endif
 
 
 /**
