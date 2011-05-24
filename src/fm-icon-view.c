@@ -134,6 +134,7 @@ fm_icon_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
       log_printf (LOG_LEVEL_UNDEFINED, "array uri: %s\n", *l);*/
     //g_strfreev(l);
 }
+#endif
 
 static void
 fm_icon_view_rename_callback (GOFFile *file,
@@ -165,8 +166,8 @@ editable_focus_out_cb (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
     FMIconView *view = user_data;
 
-    //TODO
-    //nautilus_view_unfreeze_updates (NAUTILUS_VIEW (view));
+    printf ("%s\n", G_STRFUNC);
+    fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
     view->details->editable_widget = NULL;
 }
 
@@ -174,43 +175,44 @@ static void
 cell_renderer_editing_started_cb (GtkCellRenderer *renderer,
                                   GtkCellEditable *editable,
                                   const gchar *path_str,
-                                  FMIconView *list_view)
+                                  FMIconView *icon_view)
 {
     GtkEntry *entry;
 
+    printf ("%s\n", G_STRFUNC);
     entry = GTK_ENTRY (editable);
-    list_view->details->editable_widget = editable;
+    icon_view->details->editable_widget = editable;
 
     /* Free a previously allocated original_name */
-    g_free (list_view->details->original_name);
+    g_free (icon_view->details->original_name);
 
-    list_view->details->original_name = g_strdup (gtk_entry_get_text (entry));
+    icon_view->details->original_name = g_strdup (gtk_entry_get_text (entry));
 
     g_signal_connect (entry, "focus-out-event",
-                      G_CALLBACK (editable_focus_out_cb), list_view);
+                      G_CALLBACK (editable_focus_out_cb), icon_view);
 
     //TODO
     /*nautilus_clipboard_set_up_editable
       (GTK_EDITABLE (entry),
-      nautilus_view_get_ui_manager (NAUTILUS_VIEW (list_view)),
+      nautilus_view_get_ui_manager (NAUTILUS_VIEW (icon_view)),
       FALSE);*/
 }
 
 static void
-cell_renderer_editing_canceled (GtkCellRendererText *cell,
-                                FMIconView          *view)
+cell_renderer_editing_canceled (GtkCellRenderer *cell,
+                                FMIconView      *view)
 {
+    printf ("%s\n", G_STRFUNC);
     view->details->editable_widget = NULL;
 
-    //TODO
-    //nautilus_view_unfreeze_updates (NAUTILUS_VIEW (view));
+    fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
 
 static void
-cell_renderer_edited (GtkCellRendererText *cell,
-                      const char          *path_str,
-                      const char          *new_text,
-                      FMIconView          *view)
+cell_renderer_edited (GtkCellRenderer   *cell,
+                      const char        *path_str,
+                      const char        *new_text,
+                      FMIconView        *view)
 {
     GtkTreePath *path;
     GOFFile *file;
@@ -223,9 +225,9 @@ cell_renderer_edited (GtkCellRendererText *cell,
      * without notifying the user.
      */
     if (new_text[0] == '\0') {
-        g_object_set (G_OBJECT (view->details->file_name_cell),
-                      "editable", FALSE, NULL);
-        //nautilus_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+        g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer,
+                      "mode", GTK_CELL_RENDERER_MODE_INERT, NULL);
+        fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
         return;
     }
 
@@ -251,11 +253,10 @@ cell_renderer_edited (GtkCellRendererText *cell,
     gof_file_unref (file);
 
     /*We're done editing - make the filename-cells readonly again.*/
-    g_object_set (G_OBJECT (view->details->file_name_cell),
-                  "editable", FALSE, NULL);
+    g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer,
+                  "mode", GTK_CELL_RENDERER_MODE_INERT, NULL);
 
-    //TODO
-    //nautilus_view_unfreeze_updates (NAUTILUS_VIEW (view));
+    fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
 
 static void
@@ -263,57 +264,61 @@ fm_icon_view_start_renaming_file (FMDirectoryView *view,
                                   GOFFile *file,
                                   gboolean select_all)
 {
-    FMIconView *list_view;
+    FMIconView *icon_view;
     GtkTreeIter iter;
     GtkTreePath *path;
     gint start_offset, end_offset;
 
-    list_view = FM_ICON_VIEW (view);
+    icon_view = FM_ICON_VIEW (view);
 
+    printf ("%s\n", G_STRFUNC);
     /* Select all if we are in renaming mode already */
-    if (list_view->details->file_name_column && list_view->details->editable_widget) {
-        gtk_editable_select_region (GTK_EDITABLE (list_view->details->editable_widget),
+    //if (icon_view->details->file_name_column && icon_view->details->editable_widget) {
+    if (icon_view->details->editable_widget) {
+        gtk_editable_select_region (GTK_EDITABLE (icon_view->details->editable_widget),
                                     0, -1);
         return;
     }
 
-    if (!fm_list_model_get_first_iter_for_file (list_view->model, file, &iter)) {
+    if (!fm_list_model_get_first_iter_for_file (icon_view->model, file, &iter)) {
         return;
     }
 
-    /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
+    /* Freeze updates to the view to prevent losing rename focus when the icon view updates */
+    fm_directory_view_freeze_updates (FM_DIRECTORY_VIEW (view));
+
+    path = gtk_tree_model_get_path (GTK_TREE_MODEL (icon_view->model), &iter);
+
+    /* Make marlin-text-renderer cells editable. */
+    g_object_set (view->name_renderer,
+                  "mode", GTK_CELL_RENDERER_MODE_EDITABLE, NULL);
+
     //TODO
-    //nautilus_view_freeze_updates (NAUTILUS_VIEW (view));
-
-    path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_view->model), &iter);
-
-    /* Make filename-cells editable. */
-    g_object_set (G_OBJECT (list_view->details->file_name_cell),
-                  "editable", TRUE, NULL);
-
-    gtk_tree_view_scroll_to_cell (list_view->tree, NULL,
-                                  list_view->details->file_name_column,
-                                  TRUE, 0.0, 0.0);
+    /*gtk_tree_view_scroll_to_cell (icon_view->tree, NULL,
+                                  icon_view->details->file_name_column,
+                                  TRUE, 0.0, 0.0);*/
     /* set cursor also triggers editing-started, where we save the editable widget */
-    /*gtk_tree_view_set_cursor (list_view->tree, path,
-      list_view->details->file_name_column, TRUE);*/
+    /*gtk_tree_view_set_cursor (icon_view->tree, path,
+      icon_view->details->file_name_column, TRUE);*/
     /* sound like set_cursor is not enought to trigger editing-started, we use cursor_on_cell instead */
-    gtk_tree_view_set_cursor_on_cell (list_view->tree, path,
-                                      list_view->details->file_name_column,
-                                      (GtkCellRenderer *) list_view->details->file_name_cell,
-                                      TRUE);
+    exo_icon_view_set_cursor (icon_view->icons, path,
+                              view->name_renderer,
+                              TRUE);
+    /*gtk_tree_view_set_cursor_on_cell (icon_view->tree, path,
+                                      icon_view->details->file_name_column,
+                                      (GtkCellRenderer *) icon_view->details->file_name_cell,
+                                      TRUE);*/
 
-    if (list_view->details->editable_widget != NULL) {
-        eel_filename_get_rename_region (list_view->details->original_name,
+    if (icon_view->details->editable_widget != NULL) {
+        eel_filename_get_rename_region (icon_view->details->original_name,
                                         &start_offset, &end_offset);
 
-        gtk_editable_select_region (GTK_EDITABLE (list_view->details->editable_widget),
+        gtk_editable_select_region (GTK_EDITABLE (icon_view->details->editable_widget),
                                     start_offset, end_offset);
     }
 
     gtk_tree_path_free (path);
 }
-#endif
 
 static void
 fm_icon_view_sync_selection (FMDirectoryView *view)
@@ -743,6 +748,12 @@ fm_icon_view_init (FMIconView *view)
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, TRUE);
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, "text", FM_LIST_MODEL_FILENAME);
 
+    g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "edited", G_CALLBACK (cell_renderer_edited), view);
+	g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "editing-canceled", G_CALLBACK (cell_renderer_editing_canceled), view);
+	g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "editing-started", G_CALLBACK (cell_renderer_editing_started_cb), view);
+
+
+
     /* TODO */
     /* synchronize the "text-beside-icons" property with the global preference */
     /**/
@@ -793,8 +804,7 @@ fm_icon_view_class_init (FMIconViewClass *klass)
     fm_directory_view_class->get_path_at_pos = fm_icon_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_icon_view_highlight_path;
     fm_directory_view_class->get_visible_range = fm_icon_view_get_visible_range;
-
-    //fm_directory_view_class->start_renaming_file = fm_icon_view_start_renaming_file;
+    fm_directory_view_class->start_renaming_file = fm_icon_view_start_renaming_file;
 
     g_object_class_install_property (object_class,
                                      PROP_TEXT_BESIDE_ICONS,

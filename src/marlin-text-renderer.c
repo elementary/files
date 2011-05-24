@@ -599,14 +599,13 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
 {
     MarlinTextRenderer *text_renderer = MARLIN_TEXT_RENDERER (cell);
     gfloat xalign, yalign;
+    gboolean mode, visible;
 
-    //TODO
-    /* verify that we are editable */
-    //if (renderer->mode != GTK_CELL_RENDERER_MODE_EDITABLE)
-    gboolean mode;
-    g_object_get (cell, "mode", &mode, NULL);
-    if (mode != GTK_CELL_RENDERER_MODE_EDITABLE)
+    /* verify that we are visible & editable */
+    g_object_get (cell, "visible", &visible, "mode", &mode, NULL);
+    if (!(visible && mode == GTK_CELL_RENDERER_MODE_EDITABLE))
         return NULL;
+    printf ("%s\n", G_STRFUNC);
     
     gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);
 
@@ -723,6 +722,8 @@ marlin_text_renderer_editing_done (GtkCellEditable    *editable,
     const gchar *text;
     gboolean canceled;
 
+    //renametest
+    printf ("%s\n", G_STRFUNC);
     /* disconnect our signals from the cell editable */
     g_signal_handlers_disconnect_by_func (G_OBJECT (editable), marlin_text_renderer_editing_done, text_renderer);
     g_signal_handlers_disconnect_by_func (G_OBJECT (editable), marlin_text_renderer_focus_out_event, text_renderer);
@@ -752,6 +753,8 @@ marlin_text_renderer_grab_focus (GtkWidget          *entry,
     const gchar *dot;
     glong        offset;
 
+    //renametest
+    printf ("%s\n", G_STRFUNC);
     /* determine the text from the entry widget */
     text = gtk_entry_get_text (GTK_ENTRY (entry));
 
@@ -778,6 +781,8 @@ marlin_text_renderer_focus_out_event (GtkWidget          *entry,
                                       GdkEventFocus      *event,
                                       MarlinTextRenderer *text_renderer)
 {
+    //renametest
+    printf ("%s\n", G_STRFUNC);
     /* cancel editing if we haven't popped up the menu */
     if (G_LIKELY (!text_renderer->entry_menu_active))
         marlin_text_renderer_editing_done (GTK_CELL_EDITABLE (entry), text_renderer);
@@ -793,6 +798,8 @@ marlin_text_renderer_populate_popup (GtkEntry           *entry,
                                      GtkMenu            *menu,
                                      MarlinTextRenderer *text_renderer)
 {
+    //renametest
+    printf ("%s\n", G_STRFUNC);
     if (G_UNLIKELY (text_renderer->entry_menu_popdown_timer_id >= 0))
         g_source_remove (text_renderer->entry_menu_popdown_timer_id);
 

@@ -692,6 +692,7 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class->get_path_at_pos = fm_columns_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_columns_view_highlight_path;
     fm_directory_view_class->get_visible_range = fm_columns_view_get_visible_range;
+    //fm_directory_view_class->start_renaming_file = fm_columns_view_start_renaming_file;
 
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }
