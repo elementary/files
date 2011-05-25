@@ -145,7 +145,7 @@ fm_icon_view_rename_callback (GOFFile *file,
 {
     FMIconView *view = FM_ICON_VIEW (callback_data);
 
-    printf ("%s\n", G_STRFUNC);
+    //printf ("%s\n", G_STRFUNC);
     if (view->details->renaming_file) {
         view->details->rename_done = TRUE;
 
@@ -167,7 +167,7 @@ editable_focus_out_cb (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
     FMIconView *view = user_data;
 
-    printf ("%s\n", G_STRFUNC);
+    //printf ("%s\n", G_STRFUNC);
     view->details->editable_widget = NULL;
     fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
     
@@ -185,7 +185,7 @@ cell_renderer_editing_started_cb (GtkCellRenderer *renderer,
 {
     EelEditableLabel *label;
 
-    printf ("%s\n", G_STRFUNC);
+    //printf ("%s\n", G_STRFUNC);
     label = EEL_EDITABLE_LABEL (editable);
     icon_view->details->editable_widget = editable;
 
@@ -211,7 +211,7 @@ static void
 cell_renderer_editing_canceled (GtkCellRenderer *cell,
                                 FMIconView      *view)
 {
-    printf ("%s\n", G_STRFUNC);
+    //printf ("%s\n", G_STRFUNC);
     view->details->editable_widget = NULL;
 
     fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
@@ -232,7 +232,7 @@ cell_renderer_edited (GtkCellRenderer   *cell,
     GOFFile *file;
     GtkTreeIter iter;
 
-    printf ("%s\n", G_STRFUNC);
+    //printf ("%s\n", G_STRFUNC);
     view->details->editable_widget = NULL;
 
     /* Don't allow a rename with an empty string. Revert to original 
@@ -285,7 +285,7 @@ fm_icon_view_start_renaming_file (FMDirectoryView *view,
 
     icon_view = FM_ICON_VIEW (view);
 
-    printf ("%s\n", G_STRFUNC);
+    //printf ("%s\n", G_STRFUNC);
     /* Select all if we are in renaming mode already */
     //if (icon_view->details->file_name_column && icon_view->details->editable_widget) {
     if (icon_view->details->editable_widget) {
