@@ -206,4 +206,17 @@ gof_window_slot_get_location_uri (GOFWindowSlot *slot)
     return NULL;
 }
 
+void
+gof_window_slot_freeze_updates (GOFWindowSlot *slot)
+{
+    if (slot->mwcols != NULL)
+        marlin_window_columns_freeze_updates (slot->mwcols);
+}
+
+void
+gof_window_slot_unfreeze_updates (GOFWindowSlot *slot)
+{
+    if (slot->mwcols != NULL)
+        marlin_window_columns_unfreeze_updates (slot->mwcols);
+}
 

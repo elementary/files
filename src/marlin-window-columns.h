@@ -112,4 +112,7 @@ void                    marlin_window_columns_make_view (MarlinWindowColumns *mw
 void                    marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location);
 GFile                   *marlin_window_columns_get_location (MarlinWindowColumns *mwcol);
 
+void                    marlin_window_columns_freeze_updates (MarlinWindowColumns *mwcols);
+void                    marlin_window_columns_unfreeze_updates (MarlinWindowColumns *mwcols);
+
 #endif /* MARLIN_WINDOW_COLUMNS_H */

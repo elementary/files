@@ -119,4 +119,7 @@ void            gof_window_slot_make_icon_view (GOFWindowSlot *slot);
 void            gof_window_slot_make_list_view (GOFWindowSlot *slot);
 void            gof_window_slot_make_column_view (GOFWindowSlot *slot);
 
+void            gof_window_slot_freeze_updates (GOFWindowSlot *slot);
+void            gof_window_slot_unfreeze_updates (GOFWindowSlot *slot);
+
 #endif /* GOF_WINDOW_SLOT_H */

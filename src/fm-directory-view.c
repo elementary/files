@@ -2627,6 +2627,9 @@ fm_directory_view_freeze_updates (FMDirectoryView *view)
     /* block thumbnails request on size allocate */
     g_signal_handlers_block_by_func (G_OBJECT (view), fm_directory_view_size_allocate, NULL);
 
+    /* block key-press events on column view (if any) */
+    gof_window_slot_freeze_updates (view->details->slot);
+
     /* TODO queue renamed file FILE_CHANGED */
 }
 
@@ -2635,6 +2638,9 @@ fm_directory_view_unfreeze_updates (FMDirectoryView *view)
 {
     /* unblock thumbnails request on size allocate */
     g_signal_handlers_unblock_by_func (G_OBJECT (view), fm_directory_view_size_allocate, NULL);
+    
+    /* unblock key-press events on column view (if any) */
+    gof_window_slot_unfreeze_updates (view->details->slot);
 }
 
 static void

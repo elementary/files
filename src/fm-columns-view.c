@@ -34,6 +34,14 @@ struct FMColumnsViewDetails {
     GList       *selection;
     GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
 
+    GtkCellEditable     *editable_widget;
+    GtkTreeViewColumn   *file_name_column;
+    GtkCellRendererText *file_name_cell;
+    char                *original_name;
+
+    GOFFile     *renaming_file;
+    gboolean    rename_done;
+
     gint pressed_button;
 };
 
@@ -154,6 +162,183 @@ fm_columns_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
         g_free (uri);
     }
 }
+
+
+static void
+fm_columns_view_rename_callback (GOFFile *file,
+                              GFile *result_location,
+                              GError *error,
+                              gpointer callback_data)
+{
+	FMColumnsView *view = FM_COLUMNS_VIEW (callback_data);
+
+    printf ("%s\n", G_STRFUNC);
+	if (view->details->renaming_file) {
+		view->details->rename_done = TRUE;
+		
+		if (error != NULL) {
+			/* If the rename failed (or was cancelled), kill renaming_file.
+			 * We won't get a change event for the rename, so otherwise
+			 * it would stay around forever.
+			 */
+			gof_file_unref (view->details->renaming_file);
+			view->details->renaming_file = NULL;
+		}
+	}
+	
+	g_object_unref (view);
+}
+
+static void
+editable_focus_out_cb (GtkWidget *widget, GdkEvent *event, gpointer user_data)
+{
+	FMColumnsView *view = user_data;
+
+	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+	view->details->editable_widget = NULL;
+}
+
+static void
+cell_renderer_editing_started_cb (GtkCellRenderer *renderer,
+                                  GtkCellEditable *editable,
+                                  const gchar *path_str,
+                                  FMColumnsView *col_view)
+{
+	GtkEntry *entry;
+
+	entry = GTK_ENTRY (editable);
+	col_view->details->editable_widget = editable;
+
+	/* Free a previously allocated original_name */
+	g_free (col_view->details->original_name);
+
+	col_view->details->original_name = g_strdup (gtk_entry_get_text (entry));
+
+	g_signal_connect (entry, "focus-out-event",
+                      G_CALLBACK (editable_focus_out_cb), col_view);
+
+    //TODO
+	/*nautilus_clipboard_set_up_editable
+		(GTK_EDITABLE (entry),
+		 nautilus_view_get_ui_manager (NAUTILUS_VIEW (col_view)),
+		 FALSE);*/
+}
+
+static void
+cell_renderer_editing_canceled (GtkCellRendererText *cell,
+                                FMColumnsView          *view)
+{
+	view->details->editable_widget = NULL;
+
+	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+}
+
+static void
+cell_renderer_edited (GtkCellRendererText *cell,
+                      const char          *path_str,
+                      const char          *new_text,
+                      FMColumnsView          *view)
+{
+	GtkTreePath *path;
+	GOFFile *file;
+	GtkTreeIter iter;
+
+    printf ("%s\n", G_STRFUNC);
+	view->details->editable_widget = NULL;
+
+	/* Don't allow a rename with an empty string. Revert to original 
+	 * without notifying the user.
+	 */
+	if (new_text[0] == '\0') {
+		g_object_set (G_OBJECT (view->details->file_name_cell),
+                      "editable", FALSE, NULL);
+		fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+		return;
+	}
+	
+	path = gtk_tree_path_new_from_string (path_str);
+
+	gtk_tree_model_get_iter (GTK_TREE_MODEL (view->model), &iter, path);
+
+	gtk_tree_path_free (path);
+	
+	gtk_tree_model_get (GTK_TREE_MODEL (view->model), &iter,
+                        FM_LIST_MODEL_FILE_COLUMN, &file, -1);
+
+	/* Only rename if name actually changed */
+	if (strcmp (new_text, view->details->original_name) != 0) {
+		view->details->renaming_file = gof_file_ref (file);
+		view->details->rename_done = FALSE;
+		gof_file_rename (file, new_text, fm_columns_view_rename_callback, g_object_ref (view));
+
+		g_free (view->details->original_name);
+		view->details->original_name = g_strdup (new_text);
+	}
+	
+	gof_file_unref (file);
+
+	/*We're done editing - make the filename-cells readonly again.*/
+	g_object_set (G_OBJECT (view->details->file_name_cell),
+                  "editable", FALSE, NULL);
+
+	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+}
+
+static void
+fm_columns_view_start_renaming_file (FMDirectoryView *view,
+                                     GOFFile *file,
+                                     gboolean select_all)
+{
+	FMColumnsView *col_view;
+	GtkTreeIter iter;
+	GtkTreePath *path;
+	gint start_offset, end_offset;
+
+	col_view = FM_COLUMNS_VIEW (view);
+
+	/* Select all if we are in renaming mode already */
+	if (col_view->details->file_name_column && col_view->details->editable_widget) {
+		gtk_editable_select_region (GTK_EDITABLE (col_view->details->editable_widget),
+                                    0, -1);
+		return;
+	}
+
+	if (!fm_list_model_get_first_iter_for_file (col_view->model, file, &iter)) {
+		return;
+	}
+
+	/* Freeze updates to the view to prevent losing rename focus when the tree view updates */
+	fm_directory_view_freeze_updates (view);
+
+	path = gtk_tree_model_get_path (GTK_TREE_MODEL (col_view->model), &iter);
+
+	/* Make filename-cells editable. */
+	g_object_set (G_OBJECT (col_view->details->file_name_cell),
+                  "editable", TRUE, NULL);
+
+	gtk_tree_view_scroll_to_cell (col_view->tree, NULL,
+                                  col_view->details->file_name_column,
+                                  TRUE, 0.0, 0.0);
+	/* set cursor also triggers editing-started, where we save the editable widget */
+	/*gtk_tree_view_set_cursor (col_view->tree, path,
+                              col_view->details->file_name_column, TRUE);*/
+    /* sound like set_cursor is not enought to trigger editing-started, we use cursor_on_cell instead */
+    gtk_tree_view_set_cursor_on_cell (col_view->tree, path,
+                                      col_view->details->file_name_column,
+                                      (GtkCellRenderer *) col_view->details->file_name_cell,
+                                      TRUE);
+
+	if (col_view->details->editable_widget != NULL) {
+		eel_filename_get_rename_region (col_view->details->original_name,
+                                        &start_offset, &end_offset);
+
+		gtk_editable_select_region (GTK_EDITABLE (col_view->details->editable_widget),
+                                    start_offset, end_offset);
+	}
+
+	gtk_tree_path_free (path);
+}
+
 
 static gboolean
 button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsView *view)
@@ -449,6 +634,7 @@ create_and_set_up_tree_view (FMColumnsView *view)
     gtk_tree_selection_set_mode (gtk_tree_view_get_selection (view->tree), GTK_SELECTION_SINGLE);
 
     col = gtk_tree_view_column_new ();
+    view->details->file_name_column = col;
     gtk_tree_view_column_set_sort_column_id  (col, FM_LIST_MODEL_FILENAME);
     //gtk_tree_view_column_set_resizable (col, TRUE);
     //gtk_tree_view_column_set_title (col, col_title);
@@ -468,8 +654,13 @@ create_and_set_up_tree_view (FMColumnsView *view)
     gtk_tree_view_column_set_attributes (col, FM_DIRECTORY_VIEW (view)->icon_renderer,
                                          "file",  FM_LIST_MODEL_FILE_COLUMN, NULL);
 
-    renderer = nautilus_cell_renderer_text_ellipsized_new ();
+    //renderer = nautilus_cell_renderer_text_ellipsized_new ();
     renderer = gtk_cell_renderer_text_new( );
+    view->details->file_name_cell = (GtkCellRendererText *) renderer;
+    g_signal_connect (renderer, "edited", G_CALLBACK (cell_renderer_edited), view);
+    g_signal_connect (renderer, "editing-canceled", G_CALLBACK (cell_renderer_editing_canceled), view);
+    g_signal_connect (renderer, "editing-started", G_CALLBACK (cell_renderer_editing_started_cb), view);
+
     gtk_tree_view_column_pack_start (col, renderer, TRUE);
     gtk_tree_view_column_set_cell_data_func (col, renderer,
                                              (GtkTreeCellDataFunc) filename_cell_data_func,
@@ -686,13 +877,14 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class->add_file = fm_columns_view_add_file;
     fm_directory_view_class->remove_file = fm_columns_view_remove_file;
     fm_directory_view_class->colorize_selection = fm_columns_view_colorize_selected_items;
+    //fm_directory_view_class->sync_selection = fm_columns_view_sync_selection;
     fm_directory_view_class->get_selection = fm_columns_view_get_selection; 
     fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer; 
 
     fm_directory_view_class->get_path_at_pos = fm_columns_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_columns_view_highlight_path;
     fm_directory_view_class->get_visible_range = fm_columns_view_get_visible_range;
-    //fm_directory_view_class->start_renaming_file = fm_columns_view_start_renaming_file;
+    fm_directory_view_class->start_renaming_file = fm_columns_view_start_renaming_file;
 
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }

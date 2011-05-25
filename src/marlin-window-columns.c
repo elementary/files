@@ -65,6 +65,7 @@ static gboolean marlin_window_columns_key_pressed(GtkWidget* box, GdkEventKey* e
             gtk_widget_grab_focus(to_active->view_box);
             printf("GRAB FOCUS on : %d\n", active_position-1);
             mwcols->active_slot = to_active;
+            return TRUE;
         }
         break;
 
@@ -80,9 +81,12 @@ static gboolean marlin_window_columns_key_pressed(GtkWidget* box, GdkEventKey* e
             gtk_widget_grab_focus(to_active->view_box);
             printf("GRAB FOCUS on : %d\n", active_position+1);
             mwcols->active_slot = to_active;
+            return TRUE;
         }
         break;
     }
+
+    return FALSE;
 }
 
 /**
@@ -203,5 +207,21 @@ marlin_window_columns_finalize (GObject *object)
     g_object_unref(mwcols->location);
 
     G_OBJECT_CLASS (parent_class)->finalize (object);
+}
+
+void
+marlin_window_columns_freeze_updates (MarlinWindowColumns *mwcols)
+{
+    /* block key release events to not interfere while we rename a file 
+    with the editing widget */
+    g_signal_handlers_block_by_func (mwcols->colpane, marlin_window_columns_key_pressed, mwcols);
+}
+
+void
+marlin_window_columns_unfreeze_updates (MarlinWindowColumns *mwcols)
+{
+    /* unblock key release events to not interfere while we rename a file 
+    with the editing widget */
+    g_signal_handlers_unblock_by_func (mwcols->colpane, marlin_window_columns_key_pressed, mwcols);
 }
 

@@ -358,7 +358,7 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
 	}
 
 	/* Freeze updates to the view to prevent losing rename focus when the tree view updates */
-	fm_directory_view_freeze_updates (FM_DIRECTORY_VIEW (view));
+	fm_directory_view_freeze_updates (view);
 
 	path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_view->model), &iter);
 
@@ -1142,7 +1142,6 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class->highlight_path = fm_list_view_highlight_path;
     fm_directory_view_class->get_visible_range = fm_list_view_get_visible_range;
     fm_directory_view_class->start_renaming_file = fm_list_view_start_renaming_file;
-
 
     //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
 }
