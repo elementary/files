@@ -33,6 +33,7 @@ libmarlincore_la_SOURCES = \
     eel-stock-dialogs.c                     \
     eel-debug.c                             \
     eel-string.c                            \
+    eel-accessibility.c                     \
     marlin-file-operations.c                \
     marlin-progress-info.c                  \
     marlin-file-utilities.c                 \

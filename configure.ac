@@ -3,15 +3,6 @@
 
 AC_PREREQ([2.54])
 
-dnl ===========================================================================
-
-m4_define(glib_minver,                 2.28.0)
-#m4_define(gnome_desktop_minver,        2.91.0)
-m4_define(pango_minver,                1.1.2)
-m4_define(gtk_minver,                  3.0.3)
-#m4_define(xml_minver,                  2.4.7)
-#m4_define(appindicator_minver,         0.0.2)
-
 AC_INIT([marlin], [0.1], [https://launchpad.net/marlin])
 
 dnl ===========================================================================
@@ -29,12 +20,6 @@ AM_PROG_VALAC([0.11.2])
 AS_IF([test -z "$VALAC"], [AC_MSG_ERROR(["No valac compiler found."])])
 
 AC_SUBST([ACLOCAL_AMFLAGS], ["\${ACLOCAL_FLAGS}"])
-
-AC_SUBST(GLIB_REQUIRED, [glib_minver])
-AC_SUBST(GNOME_DESKTOP_REQUIRED, [gnome_desktop_minver])
-AC_SUBST(PANGO_REQUIRED, [pango_minver])
-AC_SUBST(GTK_REQUIRED, [gtk_minver])
-#AC_SUBST(XML_REQUIRED, [xml_minver])
 
 # Checks for programs.
 AC_C_BIGENDIAN
@@ -55,14 +40,15 @@ AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
 AC_CHECK_LIB(m, floor)
 
 PKG_CHECK_MODULES(ALL, [
-	glib-2.0		>= glib_minver
+	glib-2.0	>= 2.28.0
 	gthread-2.0
 	gio-2.0	
-    pango			>= pango_minver
-	gtk+-3.0		>= gtk_minver
-    gee-1.0
-    sqlite3
-	libnotify      >= 0.7.2
+	pango		>= 1.1.2
+	gtk+-3.0	>= 3.0.3
+	gail-3.0
+	gee-1.0
+	sqlite3
+	libnotify	>= 0.7.2
 ])
 dnl ===========================================================================
 
@@ -174,7 +160,7 @@ AC_SUBST(DBUSSERVICEDIR)
 dnl ===========================================================================
 
 dnl core marlin
-CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gee-1.0 libnotify dbus-glib-1"
+CORE_MODULES="glib-2.0 gtk+-3.0 gthread-2.0 gio-2.0 gee-1.0 libnotify dbus-glib-1 gail-3.0"
 CORE_CFLAGS="`$PKG_CONFIG --cflags $CORE_MODULES` $x_cflags $WARNING_CFLAGS"
 AC_SUBST(CORE_CFLAGS)
 CORE_LIBS="`$PKG_CONFIG --libs $CORE_MODULES` $x_libs"

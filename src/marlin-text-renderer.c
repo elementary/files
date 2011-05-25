@@ -26,6 +26,7 @@
 #include <string.h>
 
 #include "eel-pango-extensions.h"
+#include "eel-editable-label.h"
 #include "marlin-text-renderer.h"
 #include "marlin-marshal.h"
 
@@ -511,6 +512,10 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         pango_layout_set_ellipsize (text_renderer->layout, PANGO_ELLIPSIZE_NONE);
     }
     
+    gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);
+    if (xalign == 0.5f)
+        pango_layout_set_alignment (text_renderer->layout, PANGO_ALIGN_CENTER);
+    
     pango_layout_set_text (text_renderer->layout, text_renderer->text, -1);
 
     /* calculate the real text dimension */
@@ -524,7 +529,6 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         text_height += 2 * text_renderer->focus_width;
     }
 
-    gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);
     gtk_cell_renderer_get_padding (cell, &xpad, &ypad);
 
     /* calculate the real x-offset */
@@ -580,6 +584,9 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
     }
 
     /* draw the text */
+    if (xalign == 0.5f)
+        x_offset = text_renderer->focus_width;
+    
     gtk_render_layout (context, cr,                                      
                        cell_area->x + x_offset + xpad,
                        cell_area->y + y_offset + ypad,
@@ -598,6 +605,7 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
                                     GtkCellRendererState flags)
 {
     MarlinTextRenderer *text_renderer = MARLIN_TEXT_RENDERER (cell);
+    gint xpad, ypad;
     gfloat xalign, yalign;
     gboolean mode, visible;
 
@@ -610,12 +618,31 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
     gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);
 
     /* allocate a new text entry widget to be used for editing */
-    text_renderer->entry = g_object_new (GTK_TYPE_ENTRY,
+    /*text_renderer->entry = g_object_new (GTK_TYPE_ENTRY,
                                          "has-frame", FALSE,
                                          "text", text_renderer->text,
                                          "visible", TRUE,
                                          "xalign", xalign,
-                                         NULL);
+                                         NULL);*/
+    text_renderer->rename_widget = eel_editable_label_new ("Test text");
+    eel_editable_label_set_line_wrap (EEL_EDITABLE_LABEL (text_renderer->rename_widget), TRUE);
+	eel_editable_label_set_line_wrap_mode (EEL_EDITABLE_LABEL (text_renderer->rename_widget), text_renderer->wrap_mode);
+	eel_editable_label_set_draw_outline (EEL_EDITABLE_LABEL (text_renderer->rename_widget), TRUE);
+
+    /* presume we're in POSITION UNDER */
+    if (text_renderer->wrap_width > 0)
+        eel_editable_label_set_justify (EEL_EDITABLE_LABEL (text_renderer->rename_widget), GTK_JUSTIFY_CENTER);
+
+    //gtk_misc_set_alignment (GTK_MISC (text_renderer->rename_widget), xalign, yalign);
+    g_object_set (text_renderer->rename_widget, "yalign", yalign, NULL);
+    gtk_cell_renderer_get_padding (cell, &xpad, &ypad);
+    gtk_misc_set_padding (GTK_MISC (text_renderer->rename_widget), xpad, ypad);
+
+    gtk_widget_set_size_request (text_renderer->rename_widget, text_renderer->wrap_width, -1);
+    eel_editable_label_set_text (EEL_EDITABLE_LABEL (text_renderer->rename_widget),
+                                 text_renderer->text);
+    gtk_widget_show (text_renderer->rename_widget);
+
 
     /* select the whole text */
     //gtk_editable_select_region (GTK_EDITABLE (text_renderer->entry), 0, -1);
@@ -629,7 +656,7 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
     g_signal_connect (G_OBJECT (text_renderer->entry), "focus-out-event", G_CALLBACK (marlin_text_renderer_focus_out_event), text_renderer);
     g_signal_connect (G_OBJECT (text_renderer->entry), "populate-popup", G_CALLBACK (marlin_text_renderer_populate_popup), text_renderer);*/
 
-    return GTK_CELL_EDITABLE (text_renderer->entry);
+    return GTK_CELL_EDITABLE (text_renderer->rename_widget);
 }
 
 

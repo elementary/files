@@ -29,6 +29,7 @@
 #include "nautilus-cell-renderer-text-ellipsized.h"
 #include "eel-glib-extensions.h"
 #include "eel-gtk-extensions.h"
+#include "eel-editable-label.h"
 #include "marlin-tags.h"
 #include "marlin-enum-types.h"
 
@@ -182,18 +183,18 @@ cell_renderer_editing_started_cb (GtkCellRenderer *renderer,
                                   const gchar *path_str,
                                   FMIconView *icon_view)
 {
-    GtkEntry *entry;
+    EelEditableLabel *label;
 
     printf ("%s\n", G_STRFUNC);
-    entry = GTK_ENTRY (editable);
+    label = EEL_EDITABLE_LABEL (editable);
     icon_view->details->editable_widget = editable;
 
     /* Free a previously allocated original_name */
     g_free (icon_view->details->original_name);
 
-    icon_view->details->original_name = g_strdup (gtk_entry_get_text (entry));
+    icon_view->details->original_name = g_strdup (eel_editable_label_get_text (label));
 
-    g_signal_connect (entry, "focus-out-event",
+    g_signal_connect (label, "focus-out-event",
                       G_CALLBACK (editable_focus_out_cb), icon_view);
     /*g_signal_connect (entry, "populate-popup", 
                       G_CALLBACK (editable_populate_popup), text_renderer);*/

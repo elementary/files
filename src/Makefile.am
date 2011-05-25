@@ -63,6 +63,7 @@ BUILT_SOURCES = \
     $(NULL)
 
 marlin_CSOURCES = \
+    eel-editable-label.c                    \
     marlin-application.c                    \
     mysignal.c                              \
     gossip-cell-renderer-expander.c         \
