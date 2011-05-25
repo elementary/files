@@ -28,6 +28,7 @@
 #include <string.h>
 
 #include "eel-editable-label.h"
+#include "eel-pango-extensions.h"
 #include "marlin-marshal.h"
 #include "eel-accessibility.h"
 #include <libgail-util/gailmisc.h>
@@ -39,6 +40,7 @@
 #include <gdk/gdkkeysyms.h>
 
 enum {
+  ACTIVATE,
   MOVE_CURSOR,
   POPULATE_POPUP,
   DELETE_FROM_CURSOR,
@@ -54,6 +56,7 @@ enum {
   PROP_TEXT,
   PROP_JUSTIFY,
   PROP_WRAP,
+  PROP_SMALL_SIZE,
   PROP_CURSOR_POSITION,
   PROP_SELECTION_BOUND,
   PROP_EDITING_CANCELED
@@ -251,7 +254,26 @@ eel_editable_label_class_init (EelEditableLabelClass *class)
   class->cut_clipboard = eel_editable_label_cut_clipboard;
   class->paste_clipboard = eel_editable_label_paste_clipboard;
   class->toggle_overwrite = eel_editable_label_toggle_overwrite;
-  
+ 
+  /**
+   * EelEditableLabel::activate:
+   * @label: The label on which the signal is emitted
+   *
+   * A  <link linkend="keybinding-signals">keybinding signal</link>
+   * which gets emitted when the user activates the editable label.
+   * 
+   * The default bindings for this signal are all forms of the Enter key.
+   */
+  signals[ACTIVATE] =
+    g_signal_new ("activate",
+		  G_OBJECT_CLASS_TYPE (gobject_class),
+		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+		  G_STRUCT_OFFSET (EelEditableLabelClass, activate),
+		  NULL, NULL,
+		  g_cclosure_marshal_VOID__VOID,
+		  G_TYPE_NONE, 0);
+  widget_class->activate_signal = signals[ACTIVATE];
+
   signals[MOVE_CURSOR] = 
     g_signal_new ("move_cursor",
 		  G_TYPE_FROM_CLASS (class),
@@ -337,6 +359,14 @@ eel_editable_label_class_init (EelEditableLabelClass *class)
                                    g_param_spec_boolean ("wrap",
                                                         _("Line wrap"),
                                                         _("If set, wrap lines if the text becomes too wide."),
+                                                        FALSE,
+                                                        G_PARAM_READWRITE));
+
+  g_object_class_install_property (gobject_class,
+                                   PROP_SMALL_SIZE,
+                                   g_param_spec_boolean ("small_size",
+                                                        _("Small size"),
+                                                        _("If set, use small size text."),
                                                         FALSE,
                                                         G_PARAM_READWRITE));
 
@@ -460,6 +490,15 @@ eel_editable_label_class_init (EelEditableLabelClass *class)
                                 GTK_TYPE_MOVEMENT_STEP, GTK_MOVEMENT_BUFFER_ENDS,
                                 G_TYPE_INT, 1,
 				G_TYPE_BOOLEAN, TRUE);
+
+  /* Activate
+   */
+  gtk_binding_entry_add_signal (binding_set, GDK_KEY_Return, 0,
+				"activate", 0);
+  gtk_binding_entry_add_signal (binding_set, GDK_KEY_ISO_Enter, 0,
+				"activate", 0);
+  gtk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter, 0,
+				"activate", 0);
   
   /* Deleting text */
   gtk_binding_entry_add_signal (binding_set, GDK_KEY_Delete, 0,
@@ -562,6 +601,9 @@ eel_editable_label_set_property (GObject      *object,
     case PROP_WRAP:
       eel_editable_label_set_line_wrap (label, g_value_get_boolean (value));
       break;
+    case PROP_SMALL_SIZE:
+      label->small_size = g_value_get_boolean (value);
+      break;
     case PROP_EDITING_CANCELED:
       label->editing_canceled = g_value_get_boolean (value);
       break;
@@ -593,6 +635,9 @@ eel_editable_label_get_property (GObject     *object,
       break;
     case PROP_WRAP:
       g_value_set_boolean (value, label->wrap);
+      break;
+    case PROP_SMALL_SIZE:
+      g_value_set_boolean (value, label->small_size);
       break;
     case PROP_CURSOR_POSITION:
       offset = g_utf8_pointer_to_offset (label->text,
@@ -1016,6 +1061,10 @@ eel_editable_label_ensure_layout (EelEditableLabel *label,
 	pango_layout_set_font_description (label->layout, label->font_desc);
       
       pango_layout_set_attributes (label->layout, tmp_attrs);
+      if (label->small_size)
+        pango_layout_set_attributes (label->layout, eel_pango_attr_list_small ());
+      else
+        pango_layout_set_attributes (label->layout, NULL);
       
       if (preedit_string)
 	g_free (preedit_string);

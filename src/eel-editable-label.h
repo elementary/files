@@ -79,7 +79,8 @@ struct _EelEditableLabel
   int preedit_length;	/* length of preedit string, in bytes */
   int preedit_cursor;	/* offset of cursor within preedit string, in chars */
 
-  guint         editing_canceled        : 1; /* Only used by GtkCellRendererText */
+  guint     editing_canceled : 1; /* Only used by GtkCellRendererText */
+  gboolean  small_size;
 
   PangoFontDescription *font_desc;
 };
@@ -88,6 +89,7 @@ struct _EelEditableLabelClass
 {
   GtkMiscClass parent_class;
 
+  void (* activate)           (EelEditableLabel  *label);
   void (* move_cursor)        (EelEditableLabel  *label,
 			       GtkMovementStep    step,
 			       gint               count,

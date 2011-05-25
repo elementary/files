@@ -624,39 +624,37 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
                                          "visible", TRUE,
                                          "xalign", xalign,
                                          NULL);*/
-    text_renderer->rename_widget = eel_editable_label_new ("Test text");
-    eel_editable_label_set_line_wrap (EEL_EDITABLE_LABEL (text_renderer->rename_widget), TRUE);
-	eel_editable_label_set_line_wrap_mode (EEL_EDITABLE_LABEL (text_renderer->rename_widget), text_renderer->wrap_mode);
-	eel_editable_label_set_draw_outline (EEL_EDITABLE_LABEL (text_renderer->rename_widget), TRUE);
+    text_renderer->entry = eel_editable_label_new ("Test text");
+    eel_editable_label_set_line_wrap (EEL_EDITABLE_LABEL (text_renderer->entry), TRUE);
+    eel_editable_label_set_line_wrap_mode (EEL_EDITABLE_LABEL (text_renderer->entry), text_renderer->wrap_mode);
+    eel_editable_label_set_draw_outline (EEL_EDITABLE_LABEL (text_renderer->entry), TRUE);
 
     /* presume we're in POSITION UNDER */
     if (text_renderer->wrap_width > 0)
-        eel_editable_label_set_justify (EEL_EDITABLE_LABEL (text_renderer->rename_widget), GTK_JUSTIFY_CENTER);
+        eel_editable_label_set_justify (EEL_EDITABLE_LABEL (text_renderer->entry), GTK_JUSTIFY_CENTER);
 
-    //gtk_misc_set_alignment (GTK_MISC (text_renderer->rename_widget), xalign, yalign);
-    g_object_set (text_renderer->rename_widget, "yalign", yalign, NULL);
+    //gtk_misc_set_alignment (GTK_MISC (text_renderer->entry), xalign, yalign);
+    g_object_set (text_renderer->entry, "yalign", yalign, NULL);
     gtk_cell_renderer_get_padding (cell, &xpad, &ypad);
-    gtk_misc_set_padding (GTK_MISC (text_renderer->rename_widget), xpad, ypad);
+    gtk_misc_set_padding (GTK_MISC (text_renderer->entry), xpad, ypad);
 
-    gtk_widget_set_size_request (text_renderer->rename_widget, text_renderer->wrap_width, -1);
-    eel_editable_label_set_text (EEL_EDITABLE_LABEL (text_renderer->rename_widget),
+    if (text_renderer->zoom_level < MARLIN_ZOOM_LEVEL_NORMAL) 
+        g_object_set (text_renderer->entry, "small-size", TRUE, NULL);
+
+    gtk_widget_set_size_request (text_renderer->entry, text_renderer->wrap_width, -1);
+    eel_editable_label_set_text (EEL_EDITABLE_LABEL (text_renderer->entry),
                                  text_renderer->text);
-    gtk_widget_show (text_renderer->rename_widget);
-
-
-    /* select the whole text */
-    //gtk_editable_select_region (GTK_EDITABLE (text_renderer->entry), 0, -1);
+    gtk_widget_show (text_renderer->entry);
 
     /* remember the tree path that we're editing */
-    //g_object_set_data_full (G_OBJECT (text_renderer->entry), "thunar-text-renderer-path", g_strdup (path), g_free);
+    g_object_set_data_full (G_OBJECT (text_renderer->entry), "marlin-text-renderer-path", g_strdup (path), g_free);
 
     /* connect required signals */
-    /*g_signal_connect (G_OBJECT (text_renderer->entry), "editing-done", G_CALLBACK (marlin_text_renderer_editing_done), text_renderer);
-    g_signal_connect_after (G_OBJECT (text_renderer->entry), "grab-focus", G_CALLBACK (marlin_text_renderer_grab_focus), text_renderer);
+    g_signal_connect (G_OBJECT (text_renderer->entry), "editing-done", G_CALLBACK (marlin_text_renderer_editing_done), text_renderer);
     g_signal_connect (G_OBJECT (text_renderer->entry), "focus-out-event", G_CALLBACK (marlin_text_renderer_focus_out_event), text_renderer);
-    g_signal_connect (G_OBJECT (text_renderer->entry), "populate-popup", G_CALLBACK (marlin_text_renderer_populate_popup), text_renderer);*/
+    g_signal_connect (G_OBJECT (text_renderer->entry), "populate-popup", G_CALLBACK (marlin_text_renderer_populate_popup), text_renderer);
 
-    return GTK_CELL_EDITABLE (text_renderer->rename_widget);
+    return GTK_CELL_EDITABLE (text_renderer->entry);
 }
 
 
@@ -678,7 +676,6 @@ marlin_text_renderer_set_widget (MarlinTextRenderer *text_renderer,
     gint focus_padding;
     gint focus_line_width;
     const PangoFontDescription *font_desc;
-    PangoFontDescription *desc;
 
     if (G_LIKELY (widget == text_renderer->widget))
         return;
@@ -740,7 +737,6 @@ marlin_text_renderer_set_widget (MarlinTextRenderer *text_renderer,
 }
 
 
-//#if 0
 static void
 marlin_text_renderer_editing_done (GtkCellEditable    *editable,
                                    MarlinTextRenderer *text_renderer)
@@ -752,7 +748,6 @@ marlin_text_renderer_editing_done (GtkCellEditable    *editable,
     //renametest
     printf ("%s\n", G_STRFUNC);
     /* disconnect our signals from the cell editable */
-    g_signal_handlers_disconnect_by_func (G_OBJECT (editable), marlin_text_renderer_grab_focus, text_renderer);
     g_signal_handlers_disconnect_by_func (G_OBJECT (editable), marlin_text_renderer_focus_out_event, text_renderer);
     g_signal_handlers_disconnect_by_func (G_OBJECT (editable), marlin_text_renderer_editing_done, text_renderer);
     g_signal_handlers_disconnect_by_func (G_OBJECT (editable), marlin_text_renderer_populate_popup, text_renderer);
@@ -765,44 +760,12 @@ marlin_text_renderer_editing_done (GtkCellEditable    *editable,
     /* inform whoever is interested that we have new text (if not cancelled) */
     if (G_LIKELY (!canceled))
     {
-        text = gtk_entry_get_text (GTK_ENTRY (editable));
-        path = g_object_get_data (G_OBJECT (editable), "thunar-text-renderer-path");
+        //text = gtk_entry_get_text (GTK_ENTRY (editable));
+        text = eel_editable_label_get_text (EEL_EDITABLE_LABEL (editable));
+        path = g_object_get_data (G_OBJECT (editable), "marlin-text-renderer-path");
         g_signal_emit (G_OBJECT (text_renderer), text_renderer_signals[EDITED], 0, path, text);
     }
 }
-
-
-
-static void
-marlin_text_renderer_grab_focus (GtkWidget          *entry,
-                                 MarlinTextRenderer *text_renderer)
-{
-    const gchar *text;
-    const gchar *dot;
-    glong        offset;
-
-    //renametest
-    printf ("%s\n", G_STRFUNC);
-    /* determine the text from the entry widget */
-    text = gtk_entry_get_text (GTK_ENTRY (entry));
-
-    /* lookup the last dot in the text */
-    dot = strrchr (text, '.');
-    if (G_LIKELY (dot != NULL))
-    {
-        /* determine the UTF-8 char offset */
-        offset = g_utf8_pointer_to_offset (text, dot);
-
-        /* select the text prior to the dot */
-        if (G_LIKELY (offset > 0))
-            gtk_editable_select_region (GTK_EDITABLE (entry), 0, offset);
-    }
-
-    /* disconnect the grab-focus handler, so we change the selection only once */
-    g_signal_handlers_disconnect_by_func (G_OBJECT (entry), marlin_text_renderer_grab_focus, text_renderer);
-}
-
-
 
 static gboolean
 marlin_text_renderer_focus_out_event (GtkWidget          *entry,
@@ -819,8 +782,6 @@ marlin_text_renderer_focus_out_event (GtkWidget          *entry,
     return FALSE;
 }
 
-
-
 static void
 marlin_text_renderer_populate_popup (GtkEntry           *entry,
                                      GtkMenu            *menu,
@@ -836,8 +797,6 @@ marlin_text_renderer_populate_popup (GtkEntry           *entry,
     g_signal_connect (G_OBJECT (menu), "unmap", G_CALLBACK (marlin_text_renderer_popup_unmap), text_renderer);
 }
 
-
-
 static void
 marlin_text_renderer_popup_unmap (GtkMenu            *menu,
                                   MarlinTextRenderer *text_renderer)
@@ -850,8 +809,6 @@ marlin_text_renderer_popup_unmap (GtkMenu            *menu,
                                                                          text_renderer, marlin_text_renderer_entry_menu_popdown_timer_destroy);
     }
 }
-
-
 
 static gboolean
 marlin_text_renderer_entry_menu_popdown_timer (gpointer user_data)
@@ -869,14 +826,12 @@ marlin_text_renderer_entry_menu_popdown_timer (gpointer user_data)
     return FALSE;
 }
 
-
-
 static void
 marlin_text_renderer_entry_menu_popdown_timer_destroy (gpointer user_data)
 {
     MARLIN_TEXT_RENDERER (user_data)->entry_menu_popdown_timer_id = -1;
 }
-//#endif
+
 
 
 /**

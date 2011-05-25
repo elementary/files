@@ -194,8 +194,8 @@ cell_renderer_editing_started_cb (GtkCellRenderer *renderer,
 
     icon_view->details->original_name = g_strdup (eel_editable_label_get_text (label));
 
-    g_signal_connect (label, "focus-out-event",
-                      G_CALLBACK (editable_focus_out_cb), icon_view);
+    /*g_signal_connect (label, "focus-out-event",
+                      G_CALLBACK (editable_focus_out_cb), icon_view);*/
     /*g_signal_connect (entry, "populate-popup", 
                       G_CALLBACK (editable_populate_popup), text_renderer);*/
 
@@ -206,7 +206,7 @@ cell_renderer_editing_started_cb (GtkCellRenderer *renderer,
       FALSE);*/
 }
 
-#if 0
+//#if 0
 static void
 cell_renderer_editing_canceled (GtkCellRenderer *cell,
                                 FMIconView      *view)
@@ -214,9 +214,13 @@ cell_renderer_editing_canceled (GtkCellRenderer *cell,
     printf ("%s\n", G_STRFUNC);
     view->details->editable_widget = NULL;
 
-    //fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+    fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+    
+    /*We're done editing - make the filename-cells readonly again.*/
+    g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer,
+                  "mode", GTK_CELL_RENDERER_MODE_INERT, NULL);
 }
-#endif
+//#endif
 
 static void
 cell_renderer_edited (GtkCellRenderer   *cell,
@@ -759,7 +763,7 @@ fm_icon_view_init (FMIconView *view)
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, "text", FM_LIST_MODEL_FILENAME);
 
     g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "edited", G_CALLBACK (cell_renderer_edited), view);
-	//g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "editing-canceled", G_CALLBACK (cell_renderer_editing_canceled), view);
+	g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "editing-canceled", G_CALLBACK (cell_renderer_editing_canceled), view);
 	g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "editing-started", G_CALLBACK (cell_renderer_editing_started_cb), view);
 
 

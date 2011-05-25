@@ -63,8 +63,7 @@ struct _MarlinTextRenderer
     gboolean      follow_prelit;
 
     /* cell editing support */
-    GtkWidget    *entry; //TODO remove this var and cleanup
-    GtkWidget    *rename_widget;
+    GtkWidget    *entry; 
     gboolean      entry_menu_active;
     gint          entry_menu_popdown_timer_id;
 };
