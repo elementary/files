@@ -377,6 +377,9 @@ marlin_text_renderer_get_size (GtkCellRenderer      *cell,
 
     /* setup the new widget */
     marlin_text_renderer_set_widget (text_renderer, widget);
+    
+    gfloat xalign, yalign;
+    gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);
 
     /* we can guess the dimensions if we don't wrap */
     if (text_renderer->wrap_width < 0)
@@ -399,6 +402,9 @@ marlin_text_renderer_get_size (GtkCellRenderer      *cell,
         pango_layout_set_width (text_renderer->layout, text_renderer->wrap_width * PANGO_SCALE);
         pango_layout_set_wrap (text_renderer->layout, text_renderer->wrap_mode);
         pango_layout_set_text (text_renderer->layout, text_renderer->text, -1);
+        if (xalign == 0.5f)
+            pango_layout_set_alignment (text_renderer->layout, PANGO_ALIGN_CENTER);
+    
         pango_layout_get_pixel_size (text_renderer->layout, &text_width, &text_height);
     }
 
@@ -421,9 +427,8 @@ marlin_text_renderer_get_size (GtkCellRenderer      *cell,
     /* update the x/y offsets */
     if (G_LIKELY (cell_area != NULL))
     {
-        gfloat xalign, yalign;
-
-        gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);
+        /*gfloat xalign, yalign;
+        gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);*/
         if (G_LIKELY (x_offset != NULL))
         {
             *x_offset = ((gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL) ? 
@@ -585,9 +590,9 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
 
     /* draw the text */
     if (xalign == 0.5f)
-        x_offset = text_renderer->focus_width;
+        x_offset = (cell_area->width - text_renderer->wrap_width)/2;
     
-    gtk_render_layout (context, cr,                                      
+    gtk_render_layout (context, cr, 
                        cell_area->x + x_offset + xpad,
                        cell_area->y + y_offset + ypad,
                        text_renderer->layout);
