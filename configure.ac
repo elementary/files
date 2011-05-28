@@ -133,11 +133,8 @@ fi
 
 dnl ===========================================================================
 
-PKG_CHECK_MODULES(DBUS, dbus-glib-1, HAVE_DBUS=yes, HAVE_DBUS=no)
-if test $HAVE_DBUS = yes; then
-    AC_DEFINE(HAVE_DBUS, [1], DBus support enabled)
-    AC_SUBST(DBUS_LIBS)
-fi
+PKG_CHECK_MODULES(DBUS, dbus-glib-1)
+AC_SUBST(DBUS_LIBS)
 
 dnl ===========================================================================
 dnl AS_AC_EXPAND(DATADIR, $datadir)
