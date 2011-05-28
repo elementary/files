@@ -1,9 +1,15 @@
+marlin (0.0.1-0ubuntu5) natty; urgency=low
+
+  * Disabled dh_auto_test: build servers don't have X and fail these tests
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Sat, 28 May 2011 18:31:17 +0400
+
 marlin (0.0.1-0ubuntu4) natty; urgency=low
 
   * Updated build dependecies
   * Mostly fixed packaging
 
- -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Thu, 12 May 2011 21:13:16 +0400
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Sat, 28 May 2011 15:47:31 +0400
 
 marlin (0.0.1-0ubuntu3) maverick; urgency=low
 
