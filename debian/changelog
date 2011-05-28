@@ -1,3 +1,22 @@
+marlin (0.0.1-0ubuntu4) natty; urgency=low
+
+  * Updated build dependecies
+  * Mostly fixed packaging
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Thu, 12 May 2011 21:13:16 +0400
+
+marlin (0.0.1-0ubuntu3) maverick; urgency=low
+
+  * Fixed build dependecies
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Thu, 12 May 2011 21:13:16 +0400
+
+marlin (0.0.1-0ubuntu2) maverick; urgency=low
+
+  * Hopefully fixed binary dependecies
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Tue, 10 May 2011 17:20:56 +0400
+
 marlin (0.0.1-0ubuntu1) maverick; urgency=low
 
   * Initial packaging
