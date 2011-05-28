@@ -1,5 +1,11 @@
 marlin (0.0.1-0ubuntu5) natty; urgency=low
 
+  * Updated dependencies according to the recent fixes in autogen.sh
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Sat, 28 May 2011 19:33:08 +0400
+
+marlin (0.0.1-0ubuntu5) natty; urgency=low
+
   * Disabled dh_auto_test: build servers don't have X and fail these tests
 
  -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Sat, 28 May 2011 18:31:17 +0400
