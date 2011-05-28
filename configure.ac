@@ -135,7 +135,7 @@ dnl ===========================================================================
 
 PKG_CHECK_MODULES(DBUS, dbus-glib-1)
 AC_SUBST(DBUS_LIBS)
-
+AC_DEFINE(HAVE_DBUS, [1], DBus support enabled)
 dnl ===========================================================================
 dnl AS_AC_EXPAND(DATADIR, $datadir)
 
