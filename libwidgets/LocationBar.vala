@@ -217,10 +217,10 @@ namespace Marlin.View.Chrome
                 }
             });
             entry.up.connect(() => {
-            autocomplete.selected --;
+                autocomplete.selected --;
             });
             entry.down.connect(() => {
-            autocomplete.selected ++;
+                autocomplete.selected ++;
             });
 
             entry.left_full.connect(() => {
@@ -1204,7 +1204,7 @@ namespace Marlin.View.Chrome
         {
             int first = selected_start > selected_end ? selected_end : selected_start;
             int second = selected_start > selected_end ? selected_start : selected_end;
-            if(first != second)
+            if(first != second && second > 0)
             {
                 text = text.slice(0, first) + to_insert + text.slice(second, text.length);
                 selected_start = -1;
@@ -1396,8 +1396,8 @@ namespace Marlin.View.Chrome
             else if(event.x >= -20)
             {
                 is_selecting = true;
-                selection_mouse_start = 0;
-                selection_mouse_end = 0;
+                selection_mouse_start = -1;
+                selection_mouse_end = -1;
             }
             need_draw();
         }
@@ -1450,8 +1450,8 @@ namespace Marlin.View.Chrome
                     if(Math.fabs(selection_mouse_end - get_width(layout)) < last_diff)
                     {
                         last_diff = Math.fabs(selection_mouse_end - get_width(layout));
-                        selected_end = i;
                         selection_end = get_width(layout);
+                        selected_end = i;
                         cursor = i;
                     }
                 }
