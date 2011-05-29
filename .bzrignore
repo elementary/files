@@ -128,3 +128,6 @@ libwidgets/PopupLocationBar.c
 libwidgets/libmarlinwidgets_la-PopupLocationBar.lo
 po/eo.gmo
 libcore/libmarlincore_la-eel-accessibility.lo
+libwidgets/tests/marlinwidgets_tests_vala.stamp
+libwidgets/tests/tests-libwidgets.c
+libwidgets/tests/marlinwidgets_tests

@@ -1,5 +1,4 @@
 noinst_LTLIBRARIES = libmarlinwidgets.la
-
 libmarlinwidgets_la_VALAFLAGS = \
     -C \
     -H marlinwidgets-vala.h \
@@ -32,3 +31,5 @@ libmarlinwidgets_la_CFLAGS = \
     -DUI_DIR=\""$(datadir)/marlin/ui/"\"            \
     -DPLUGIN_DIR=\""$(datadir)/marlin/plugins"\"    \
     $(NULL)
+
+SUBDIRS = tests

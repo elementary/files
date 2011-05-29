@@ -95,7 +95,6 @@ src/mysignal.c
 src/mysignal.h
 src/View/Animations.vala
 src/View/Browser.vala
-libwidgets/AdvancedMenuToolButton.vala
 libwidgets/AppMenu.vala
 libwidgets/CollapsablePaned.vala
 src/View/Chrome/ColorWidget.vala
@@ -112,3 +111,4 @@ src/View/ViewContainer.vala
 src/View/ViewMode.vala
 src/View/Window.vala
 data/marlin.desktop.in
+src/eel-editable-label.c

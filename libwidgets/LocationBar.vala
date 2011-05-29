@@ -1101,11 +1101,11 @@ namespace Marlin.View.Chrome
         }
     }
     
-    class BreadcrumbsEntry : GLib.Object
+    public class BreadcrumbsEntry : GLib.Object
     {
         IMContext im_context;
         public string text = "";
-        internal int cursor = 0;
+        public int cursor = 0;
         internal string completion = "";
         uint timeout;
         bool blink = true;
