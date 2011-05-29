@@ -892,7 +892,7 @@ namespace Marlin.View.Chrome
             entry.hide();
             if(can_remove_popup)
             {
-                Timeout.add(75, () => { if(!focus) { autocomplete_showed = false; autocomplete.hide(); autocomplete.set_transient_for(null); autocomplete.destroy(); autocomplete = null; } return false;});
+                Timeout.add(75, () => { if(!focus) { autocomplete_showed = false; autocomplete.hide(); autocomplete.destroy(); autocomplete = null; } return false;});
             }
             can_remove_popup = true;
             merge_out_clipboard_actions ();
@@ -1135,12 +1135,13 @@ namespace Marlin.View.Chrome
         double selection_mouse_end = -1;
         double selection_start = 0;
         double selection_end = 0;
-        int selected_start = 0;
-        int selected_end = 0;
+        int selected_start = -1;
+        int selected_end = -1;
         internal bool hover = false;
         new bool focus = false;
         
         bool is_selecting = false;
+        bool need_selection_update = false;
         
         public signal void enter();
         public signal void backspace();
@@ -1197,8 +1198,8 @@ namespace Marlin.View.Chrome
             if(first != second)
             {
                 text = text.slice(0, first) + to_insert + text.slice(second, text.length);
-                selected_start = 0;
-                selected_end = 0;
+                selected_start = -1;
+                selected_end = -1;
                 selection_start = 0;
                 selection_end = 0;
                 cursor = first + to_insert.length;
@@ -1219,24 +1220,68 @@ namespace Marlin.View.Chrome
         public void key_press_event(Gdk.EventKey event)
         {
             /* FIXME: I can't find the vapi to not use hardcoded key value. */
+            /* FIXME: we should use Gtk.BindingSet, but the vapi file seems buggy */
+            
+            /* FIXME: all this block is hackish (but it works ^^) */
+            bool control_pressed = (event.state & Gdk.ModifierType.CONTROL_MASK) == 4;
+            bool shift_pressed = ! ((event.state & Gdk.ModifierType.SHIFT_MASK) == 0);
+
             switch(event.keyval)
             {
             case 0xff51: /* left */
-                if(cursor > 0 && ! ((event.state & Gdk.ModifierType.CONTROL_MASK) == 4))
+                if(cursor > 0 && !control_pressed && !shift_pressed)
                 {
                     cursor --; /* No control pressed, the cursor is not at the begin */
                     reset_selection();
                 }
-                else if( cursor == 0 && (event.state & Gdk.ModifierType.CONTROL_MASK) == 4)
+                else if(cursor == 0 && control_pressed)
+                {
                     left_full(); /* Control pressed, the cursor is at the begin */
-                else if((event.state & Gdk.ModifierType.CONTROL_MASK) == 4) cursor = 0;
-                else left();
+                }
+                else if(control_pressed)
+                {
+                    cursor = 0;
+                }
+                else if(cursor > 0 && shift_pressed)
+                {
+                    if(selected_start < 0)
+                    {
+                        selected_start = cursor;
+                    }
+                    if(selected_end < 0)
+                    {
+                        selected_end = cursor;
+                    }
+
+                    cursor--;
+                    selected_start = cursor;
+                    need_selection_update = true;
+                }
+                else
+                {
+                    left();
+                }
                 break;
             case 0xff53: /* right */
-                if(cursor < text.length)
+                if(cursor < text.length && !shift_pressed)
                 {
                     cursor ++;
                     reset_selection();
+                }
+                else if(cursor < text.length && shift_pressed)
+                {
+                    if(selected_start < 0)
+                    {
+                        selected_start = cursor;
+                    }
+                    if(selected_end < 0)
+                    {
+                        selected_end = cursor;
+                    }
+
+                    cursor++;
+                    selected_start = cursor;
+                    need_selection_update = true;
                 }
                 else if(completion != "")
                 {
@@ -1353,8 +1398,8 @@ namespace Marlin.View.Chrome
         
         private void reset_selection()
         {
-            selected_start = 0;
-            selected_end = 0;
+            selected_start = -1;
+            selected_end = -1;
             selection_start = 0;
             selection_end = 0;
         }
@@ -1365,7 +1410,7 @@ namespace Marlin.View.Chrome
             Pango.Layout layout = widget.create_pango_layout(text);
             if(selection_mouse_start > 0)
             {
-                selected_start = 0;
+                selected_start = -1;
                 selection_start = 0;
                 cursor = text.length;
                 for(int i = 0; i <= text.length; i++)
@@ -1384,7 +1429,7 @@ namespace Marlin.View.Chrome
             if(selection_mouse_end > 0)
             {
                 last_diff = double.MAX;
-                selected_end = 0;
+                selected_end = -1;
                 selection_end = 0;
                 cursor = text.length;
                 for(int i = 0; i <= text.length; i++)
@@ -1419,14 +1464,29 @@ namespace Marlin.View.Chrome
             pango.get_size(out text_width, out text_height);
             return Pango.units_to_double(text_width);
         }
+        
+        private void update_selection_key(Cairo.Context cr, Gtk.Widget widget)
+        {
+            Pango.Layout layout = widget.create_pango_layout(text);
+            layout.set_text(text.slice(0, selected_end), -1);
+            selection_end = get_width(layout);
+            layout.set_text(text.slice(0, selected_start), -1);
+            selection_start = get_width(layout);
+            need_selection_update = false;
+        }
 
-        public void draw(Cairo.Context cr, double x, double height, double width, Gtk.Widget widget, Gtk.StyleContext button_context)
+        public void draw(Cairo.Context cr,
+                         double x, double height, double width,
+                         Gtk.Widget widget, Gtk.StyleContext button_context)
         {
             cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
             cr.set_font_size(font_size);
             cr.set_source_rgba(0,0,0,0.8);
 
             update_selection(cr, widget);
+            
+            if(need_selection_update)
+                update_selection_key(cr, widget);
 
             cr.set_source_rgba(0,0,0,0.8);
 
@@ -1461,7 +1521,7 @@ namespace Marlin.View.Chrome
             Pango.cairo_show_layout(cr, layout);
             
             /* draw selection */
-            if(focus)
+            if(focus && selected_start >= 0 && selected_end >= 0)
             {
                 cr.rectangle(x + selection_start, height/4, selection_end - selection_start, height/2);
                 cr.set_source_rgba(0,0,0,0.5);
