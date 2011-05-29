@@ -846,11 +846,6 @@ namespace Marlin.View.Chrome
             double x_render = 0;
             double x_previous = -10;
             selected = -1;
-            if(event.y > get_allocated_height() - 5 || event.y < 5)
-            {
-                queue_draw();
-                return true;
-            }
             set_tooltip_text("");
             foreach(BreadcrumbsElement element in elements)
             {

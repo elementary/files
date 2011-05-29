@@ -127,3 +127,4 @@ libcore/libmarlin.vala.stamp
 libwidgets/PopupLocationBar.c
 libwidgets/libmarlinwidgets_la-PopupLocationBar.lo
 po/eo.gmo
+libcore/libmarlincore_la-eel-accessibility.lo
