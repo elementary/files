@@ -1524,8 +1524,15 @@ namespace Marlin.View.Chrome
             if(focus && selected_start >= 0 && selected_end >= 0)
             {
                 cr.rectangle(x + selection_start, height/4, selection_end - selection_start, height/2);
-                cr.set_source_rgba(0,0,0,0.5);
+                button_context.get_background_color(Gtk.StateFlags.SELECTED, color);
+                cr.set_source_rgba(color.red, color.green, color.blue, color.alpha);
                 cr.fill();
+                
+                layout.set_text(get_selection(), -1);
+                button_context.get_color(Gtk.StateFlags.SELECTED, color);
+                cr.set_source_rgba(color.red, color.green, color.blue, color.alpha);
+                cr.move_to(x + Math.fmin(selection_start, selection_end), height/4);
+                Pango.cairo_show_layout(cr, layout);
             }
         }
         
