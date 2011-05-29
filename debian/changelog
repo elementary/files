@@ -1,3 +1,9 @@
+marlin (0.1-0ubuntu7) natty; urgency=low
+
+  * Changed upstream version from 0.0.1 to 0.1, like in Help > About dialog
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Sun, 29 May 2011 18:32:25 +0400
+
 marlin (0.0.1-0ubuntu6) natty; urgency=low
 
   * Added tumbler to recommends; thumbnails should work now
