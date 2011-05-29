@@ -105,11 +105,9 @@ namespace Marlin.View.Chrome
         string text = "";
 
         int selected = -1;
-        string gtk_font_name;
         int space_breads = 12;
         int x;
         int y;
-        int gtk_font_size;
         string protocol = "";
 
         Gtk.StyleContext button_context;
@@ -177,15 +175,6 @@ namespace Marlin.View.Chrome
             
             this.win = win;
 
-            /* Loade default font */
-            var gtk_settings = Gtk.Settings.get_for_screen (get_screen ());
-            gtk_settings.get ("gtk-font-name", out gtk_font_name);
-            var font = Pango.FontDescription.from_string (gtk_font_name);
-            /* FIXME: This is hackish */
-            gtk_font_size = (int)(int.parse(gtk_font_name.split(" ")[1]) * 1.3);
-
-            gtk_font_name = font.get_family();
-
             button_context = new Gtk.Button().get_style_context();
             entry_context = new Gtk.Entry().get_style_context();
 
@@ -199,7 +188,7 @@ namespace Marlin.View.Chrome
             
             elements = new Gee.ArrayList<BreadcrumbsElement>();
 
-            entry = new BreadcrumbsEntry(gtk_font_name, gtk_font_size, button_context);
+            entry = new BreadcrumbsEntry();
 
             entry.enter.connect(on_entry_enter);
 
@@ -646,12 +635,12 @@ namespace Marlin.View.Chrome
             var breads = text.split("/");
             var newelements = new Gee.ArrayList<BreadcrumbsElement>();
             if(breads[0] == "")
-                newelements.add(new BreadcrumbsElement("/", gtk_font_name, gtk_font_size));
+                newelements.add(new BreadcrumbsElement("/"));
             
             foreach(string dir in breads)
             {
                 if(dir != "")
-                newelements.add(new BreadcrumbsElement(dir, gtk_font_name, gtk_font_size));
+                newelements.add(new BreadcrumbsElement(dir));
             }
             
             newelements[0].text = protocol + newelements[0].text;
@@ -1041,18 +1030,14 @@ namespace Marlin.View.Chrome
     class BreadcrumbsElement : GLib.Object
     {
         public string text;
-        string font_name;
-        int font_size;
         public int offset = 0;
         public double text_width = -1;
         public double text_height = -1;
         Gdk.Pixbuf icon;
         public bool display = true;
-        public BreadcrumbsElement(string text_, string font_name_, int font_size_)
+        public BreadcrumbsElement(string text_)
         {
             text = text_;
-            font_name = font_name_;
-            font_size = font_size_;
         }
         
         public void set_icon(Gdk.Pixbuf icon_)
@@ -1071,8 +1056,6 @@ namespace Marlin.View.Chrome
         public void draw(Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, Gtk.Widget widget)
         {
             cr.set_source_rgb(0,0,0);
-            cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
-            cr.set_font_size(font_size);
             Pango.Layout layout = widget.create_pango_layout(text);
             if(text_width < 0 && icon == null)
             {
@@ -1123,12 +1106,9 @@ namespace Marlin.View.Chrome
         IMContext im_context;
         public string text = "";
         internal int cursor = 0;
-        string font_name;
         internal string completion = "";
-        int font_size;
         uint timeout;
         bool blink = true;
-        Gtk.StyleContext context;
         internal Gdk.Pixbuf arrow_img;
         
         double selection_mouse_start = -1;
@@ -1142,6 +1122,9 @@ namespace Marlin.View.Chrome
         
         bool is_selecting = false;
         bool need_selection_update = false;
+
+        double text_width;
+        double text_height;
         
         public signal void enter();
         public signal void backspace();
@@ -1153,26 +1136,44 @@ namespace Marlin.View.Chrome
         public signal void paste();
         public signal void need_completion();
         
-        public BreadcrumbsEntry(string font_name, int font_size, Gtk.StyleContext context_)
+        /**
+         * Create a new BreadcrumbsEntry object. It is used to display the entry
+         * which is a the left of the pathbar. It is *not* a Gtk.Widget, it is
+         * only a class which holds some data and draws an entry to a given
+         * Cairo.Context.
+         * Events must be sent to the appropriate function (key_press_event,
+         * key_release_event, mouse_motion_event, etc...). These events must be
+         * relative to the widget, so, you need to do some things like
+         * event.x -= entry_x before sending the events.
+         * It can be drawn using the draw() function.
+         **/
+        public BreadcrumbsEntry()
         {
             im_context = new IMMulticontext();
             im_context.commit.connect(commit);
-            this.font_name = font_name;
-            this.font_size = font_size;
-            context = context_;
             
             /* Load arrow image */
-            try {
+            try
+            {
                 arrow_img = IconTheme.get_default ().load_icon ("go-jump-symbolic", 16, 0);
-            } catch (Error err) {
-                try {
+            }
+            catch(Error err)
+            {
+                try
+                {
                     arrow_img = IconTheme.get_default ().load_icon ("go-jump", 16, 0);
-                } catch (Error err) {
+                }
+                catch (Error err)
+                {
                     stderr.printf ("Unable to load home icon: %s", err.message);
                 }
             }
         }
-        
+
+        /**
+         * Call this function if the parent widgets has the focus, it will start
+         * computing the blink cursor, will enable cursor and selection drawing.
+         **/
         public void show()
         {
             focus = true;
@@ -1181,6 +1182,9 @@ namespace Marlin.View.Chrome
             timeout = Timeout.add(700, () => {blink = !blink;  need_draw(); return true;});
         }
 
+        /**
+         * Delete the text selected.
+         **/
         public void delete_selection()
         {
             int first = selected_start > selected_end ? selected_end : selected_start;
@@ -1190,7 +1194,12 @@ namespace Marlin.View.Chrome
             reset_selection();
             cursor = first;
         }
-        
+
+        /**
+         * Insert some text at the cursor position.
+         *
+         * @param to_insert The text you want to insert.
+         **/
         public void insert(string to_insert)
         {
             int first = selected_start > selected_end ? selected_end : selected_start;
@@ -1211,12 +1220,15 @@ namespace Marlin.View.Chrome
             }
             need_completion();
         }
-        
+
+        /**
+         * A callback from our im_context.
+         **/
         private void commit(string character)
         {
             insert(character);
         }
-        
+
         public void key_press_event(Gdk.EventKey event)
         {
             /* FIXME: I can't find the vapi to not use hardcoded key value. */
@@ -1446,9 +1458,6 @@ namespace Marlin.View.Chrome
                 selection_mouse_end = -1;
             }
         }
-
-        double text_width;
-        double text_height;        
         
         private void computetext_width(Pango.Layout pango)
         {
@@ -1457,7 +1466,14 @@ namespace Marlin.View.Chrome
             this.text_width = Pango.units_to_double(text_width);
             this.text_height = Pango.units_to_double(text_height);
         }
-        
+
+        /**
+         * A utility function to get the width of a Pango.Layout. Maybe it could
+         * be moved to a less specific file/lib.
+         *
+         * @param pango a pango layout
+         * @return the width of the layout
+         **/
         private double get_width(Pango.Layout pango)
         {
             int text_width, text_height;
@@ -1479,9 +1495,6 @@ namespace Marlin.View.Chrome
                          double x, double height, double width,
                          Gtk.Widget widget, Gtk.StyleContext button_context)
         {
-            cr.select_font_face(font_name, Cairo.FontSlant.NORMAL, Cairo.FontWeight.NORMAL);
-            cr.set_font_size(font_size);
-            cr.set_source_rgba(0,0,0,0.8);
 
             update_selection(cr, widget);
             
