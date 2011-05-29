@@ -10,6 +10,7 @@ Standards-Version: 3.8.4
 Package: marlin
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, libglib2.0-0 (>= 2.28.0), libpango1.0-0 (>= 1.1.2), libgtk-3-0 (>= 3.0.3), libgee2, libsqlite3-0, libnotify4 (>= 0.7.2), libgail-3-0, libdbus-glib-1-2
+Recommends: tumbler
 Description: The sexiest fish in the large sea of file-browsers
  A file manager which created to be fast, and easy to use.
  An elementary Team project.

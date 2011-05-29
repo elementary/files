@@ -1,3 +1,9 @@
+marlin (0.0.1-0ubuntu6) natty; urgency=low
+
+  * Added tumbler to recommends; thumbnails should work now
+
+ -- Sergey "Shnatsel" Davidoff <shnatsel@gmail.com>  Sun, 29 May 2011 17:23:22 +0400
+
 marlin (0.0.1-0ubuntu5) natty; urgency=low
 
   * Updated dependencies according to the recent fixes in autogen.sh
