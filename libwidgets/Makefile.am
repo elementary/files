@@ -20,8 +20,8 @@ libmarlinwidgets_la_SOURCES = \
     LocationBar.vala            \
     ModeButton.vala             \
     CollapsablePaned.vala       \
-    PopupLocationBar.vala
-
+    PopupLocationBar.vala       \
+    $(NULL)
 
 libmarlinwidgets_la_CFLAGS = \
     -I$(top_srcdir)/libcore/ \
@@ -31,5 +31,7 @@ libmarlinwidgets_la_CFLAGS = \
     -DUI_DIR=\""$(datadir)/marlin/ui/"\"            \
     -DPLUGIN_DIR=\""$(datadir)/marlin/plugins"\"    \
     $(NULL)
+
+CLEANFILES = *.h *.c *.vapi
 
 SUBDIRS = tests

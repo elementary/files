@@ -6,11 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-05-15 13:52+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-31 01:04+0200\n"
 "PO-Revision-Date: 2011-05-15 04:59+0000\n"
 "Last-Translator: 英华 <wantinghard@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -45,7 +46,7 @@ msgstr "链接到 %s"
 #. * between the "%" and any numeric directive will turn
 #. * off zero padding, and putting a "_" there will use
 #. * space padding instead of zero padding.
-#. 
+#.
 #: ../libcore/gof-file.c:727
 msgid "today at 00:00:00 PM"
 msgstr "今天下午 00:00:00"
@@ -76,7 +77,7 @@ msgstr "今天"
 
 #. Yesterday, use special word.
 #. * Note to localizers: Same issues as "today" string.
-#. 
+#.
 #: ../libcore/gof-file.c:746
 msgid "yesterday at 00:00:00 PM"
 msgstr "昨天下午 00:00:00"
@@ -109,7 +110,7 @@ msgstr "昨天"
 #. * Note to localizers: Same issues as "today" string.
 #. * The width measurement templates correspond to
 #. * the day/month name with the most letters.
-#. 
+#.
 #: ../libcore/gof-file.c:767
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
 msgstr "0000年九月00日星期三，下午 00:00:00"
@@ -210,32 +211,32 @@ msgstr "创建到 URL “%s”的链接失败"
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2799
+#: ../src/fm-directory-view.c:2821
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr "使用“粘贴”命令准备要移动的所选文件"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2803
+#: ../src/fm-directory-view.c:2825
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr "使用“粘贴”命令准备要复制的所选文件"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2807
+#: ../src/fm-directory-view.c:2829
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr "移动或复制先前通过“剪切”或“复制”命令选择的文件"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2810
+#: ../src/fm-directory-view.c:2832
 msgid "Paste Into Folder"
 msgstr "粘贴到文件夹"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2811
+#: ../src/fm-directory-view.c:2833
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -243,64 +244,70 @@ msgstr "将先前通过“剪切”或“复制”命令选择的文件移动或
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2814
+#: ../src/fm-directory-view.c:2836
 msgid "_Rename..."
 msgstr "重命名(_R)..."
 
 #. tooltip
-#: ../src/fm-directory-view.c:2815
+#: ../src/fm-directory-view.c:2837
 msgid "Rename selected item"
 msgstr "重命名选择的项目"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2818
+#: ../src/fm-directory-view.c:2840
 msgid "Create New _Folder"
 msgstr "创建新文件夹(_F)"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2819
+#: ../src/fm-directory-view.c:2841
 msgid "Create a new empty folder inside this folder"
 msgstr "在此文件夹中创建一个新的空文件夹"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2822
+#: ../src/fm-directory-view.c:2844
 msgid "Mo_ve to Trash"
 msgstr "移到回收站(_V)"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2823
+#: ../src/fm-directory-view.c:2845
 msgid "Move each selected item to the Trash"
 msgstr "将每个选择项移到回收站"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2826
+#: ../src/fm-directory-view.c:2848
 msgid "_Delete"
 msgstr "删除(_D)"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2827
+#: ../src/fm-directory-view.c:2849
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "不移到回收站，直接删除每个选择项"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2830
+#: ../src/fm-directory-view.c:2852
 msgid "_Restore"
 msgstr "恢复(_R)"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2834
+#: ../src/fm-directory-view.c:2856
 msgid "_Properties"
 msgstr "属性(_P)"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2835
+#: ../src/fm-directory-view.c:2857
 msgid "View or modify the properties of each selected item"
 msgstr "查看或修改每个选择项的属性"
+
+#. append insensitive label 'Set Color'
+#: ../src/fm-directory-view.c:2953
+#, fuzzy
+msgid "Set Color:"
+msgstr "选择框颜色"
 
 #: ../src/fm-list-model.c:457
 msgid "(Empty)"
@@ -314,15 +321,16 @@ msgstr "正在加载..."
 msgid "Filename"
 msgstr "文件名"
 
-#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:185
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:265
 msgid "Size"
 msgstr "大小"
 
-#: ../src/fm-list-view.c:54
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:260
 msgid "Type"
 msgstr "类型"
 
-#: ../src/fm-list-view.c:54
+#. localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso ..
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:267
 msgid "Modified"
 msgstr "已修改"
 
@@ -609,7 +617,7 @@ msgstr "另一个到 %s 的链接"
 #. Localizers: Feel free to leave out the "st" suffix
 #. * if there's no way to do that nicely for a
 #. * particular language.
-#. 
+#.
 #: ../libcore/marlin-file-operations.c:418
 #, c-format
 msgid "%'dst link to %s"
@@ -636,7 +644,7 @@ msgstr "到 %2$s 的第 %1$'d 个链接"
 #. Localizers:
 #. * Feel free to leave out the st, nd, rd and th suffix or
 #. * make some or all of them match.
-#. 
+#.
 #. localizers: tag used to detect the first copy of a file
 #: ../libcore/marlin-file-operations.c:468
 msgid " (copy)"
@@ -700,7 +708,7 @@ msgstr "%s (第 %'d 个副本)%s"
 #. localizers: if in your language there's no difference between 1st, 2nd, 3rd and nth
 #. * plurals, you can leave the st, nd, rd suffixes out and just make all the translated
 #. * strings look like "%s (copy %'d)%s".
-#. 
+#.
 #. localizers: appended to x1st file copy
 #: ../libcore/marlin-file-operations.c:518
 #, c-format
@@ -763,21 +771,21 @@ msgstr "回收站中的所有项目将永久删除。"
 #. G_CALLBACK (rescan_shortcut_cb), sidebar);
 #. gtk_widget_show (item);
 #. gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-#. 
+#.
 #. item = gtk_menu_item_new_with_mnemonic (_("_Format"));
 #. sidebar->popup_menu_format_item = item;
 #. g_signal_connect (item, "activate",
 #. G_CALLBACK (format_shortcut_cb), sidebar);
 #. gtk_widget_show (item);
 #. gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-#. 
+#.
 #. item = gtk_menu_item_new_with_mnemonic (_("_Start"));
 #. sidebar->popup_menu_start_item = item;
 #. g_signal_connect (item, "activate",
 #. G_CALLBACK (start_shortcut_cb), sidebar);
 #. gtk_widget_show (item);
 #. gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-#. 
+#.
 #. item = gtk_menu_item_new_with_mnemonic (_("_Stop"));
 #. sidebar->popup_menu_stop_item = item;
 #. g_signal_connect (item, "activate",
@@ -815,7 +823,7 @@ msgstr[0] "还有 %'d 个文件要删除"
 
 #. To translators: %T will expand to a time like "2 minutes".
 #. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#. 
+#.
 #: ../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
@@ -910,7 +918,9 @@ msgstr "您想在卸载前清空回收站吗？"
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
-msgstr "为了重新获取该卷上的剩余空间，必须清空回收站。该卷上所有移到回收站的项目将永远消失。"
+msgstr ""
+"为了重新获取该卷上的剩余空间，必须清空回收站。该卷上所有移到回收站的项目将永"
+"远消失。"
 
 #: ../libcore/marlin-file-operations.c:2291
 msgid "Do _not Empty Trash"
@@ -1075,7 +1085,7 @@ msgstr "%S / %S"
 #. * "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. *
 #. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#. 
+#.
 #: ../libcore/marlin-file-operations.c:3097
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
@@ -1466,7 +1476,7 @@ msgstr "可用项目"
 msgid "Displayed Items"
 msgstr "已显示的项目"
 
-#: ../libwidgets/LocationBar.vala:841
+#: ../libwidgets/LocationBar.vala:847
 #, c-format
 msgid "Go to %s"
 msgstr "转到 %s"
@@ -1474,33 +1484,48 @@ msgstr "转到 %s"
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:961
+#: ../libwidgets/LocationBar.vala:1001
 msgid "Cut the selected text to the clipboard"
 msgstr "剪切选择的文本到剪贴板"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:965
+#: ../libwidgets/LocationBar.vala:1005
 msgid "Copy the selected text to the clipboard"
 msgstr "复制选择的文件到剪贴板"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:969
+#: ../libwidgets/LocationBar.vala:1009 ../libwidgets/LocationBar.vala:1013
 msgid "Paste the text stored on the clipboard"
 msgstr "粘贴剪贴板中保存的文本"
 
-#: ../src/View/ContextView.vala:226
+#. TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
+#. we are in listview: size, type, modified
+#: ../src/View/ContextView.vala:259
+msgid "Name"
+msgstr ""
+
+#: ../src/View/ContextView.vala:263
+#, fuzzy
+msgid "Target"
+msgstr "大"
+
+#: ../src/View/ContextView.vala:268
+msgid "Owner"
+msgstr ""
+
+#: ../src/View/ContextView.vala:305
 msgid "Other..."
 msgstr "其他..."
 
-#: ../src/View/ContextView.vala:229
+#: ../src/View/ContextView.vala:308
 msgid "Set as default"
 msgstr "设为默认"
 
-#: ../src/View/ContextView.vala:323
+#: ../src/View/ContextView.vala:415 ../src/View/ContextView.vala:470
 msgid "Open with:"
 msgstr "打开方式："
 
@@ -1804,14 +1829,76 @@ msgstr "列表视图"
 msgid "Columns View"
 msgstr "列视图"
 
+#: ../src/eel-editable-label.c:344
+msgid "Text"
+msgstr ""
+
+#: ../src/eel-editable-label.c:345
+msgid "The text of the label."
+msgstr ""
+
+#: ../src/eel-editable-label.c:351
+msgid "Justification"
+msgstr ""
+
+#: ../src/eel-editable-label.c:352
+msgid ""
+"The alignment of the lines in the text of the label relative to each other. "
+"This does NOT affect the alignment of the label within its allocation. See "
+"GtkMisc::xalign for that."
+msgstr ""
+
+#: ../src/eel-editable-label.c:360
+msgid "Line wrap"
+msgstr ""
+
+#: ../src/eel-editable-label.c:361
+msgid "If set, wrap lines if the text becomes too wide."
+msgstr ""
+
+#: ../src/eel-editable-label.c:368
+msgid "Small size"
+msgstr ""
+
+#: ../src/eel-editable-label.c:369
+msgid "If set, use small size text."
+msgstr ""
+
+#: ../src/eel-editable-label.c:376
+msgid "Cursor Position"
+msgstr ""
+
+#: ../src/eel-editable-label.c:377
+msgid "The current position of the insertion cursor in chars."
+msgstr ""
+
+#: ../src/eel-editable-label.c:386
+#, fuzzy
+msgid "Selection Bound"
+msgstr "选择模式"
+
+#: ../src/eel-editable-label.c:387
+msgid ""
+"The position of the opposite end of the selection from the cursor in chars."
+msgstr ""
+
+#: ../src/eel-editable-label.c:3188
+#, fuzzy
+msgid "Select All"
+msgstr "选择框透明度"
+
+#: ../src/eel-editable-label.c:3199
+msgid "Input Methods"
+msgstr ""
+
 #~ msgid ""
-#~ "Select items to be displayed on the toolbar. Items can be reodered by drag "
-#~ "and drop."
+#~ "Select items to be displayed on the toolbar. Items can be reodered by "
+#~ "drag and drop."
 #~ msgstr "选择要显示在工具栏上的项目。可以通过拖放对项目重新排序。"
 
 #~ msgid ""
-#~ "A string containing the saved geometry and coordinates string for navigation "
-#~ "windows."
+#~ "A string containing the saved geometry and coordinates string for "
+#~ "navigation windows."
 #~ msgstr "一个包含了保存导航窗口几何属性和坐标字符串的字符串。"
 
 #~ msgid "Confirm trash"
@@ -1833,21 +1920,25 @@ msgstr "列视图"
 #~ msgstr "展开/收缩个人分类"
 
 #~ msgid ""
-#~ "If set to true, hidden files will also be shown (files starting with a \".\" "
-#~ "for example)"
+#~ "If set to true, hidden files will also be shown (files starting with a \"."
+#~ "\" for example)"
 #~ msgstr "如果设为 true，将显示隐藏的文件(如以“.”开头的文件)"
 
 #~ msgid ""
 #~ "If set to true, rgba will be enabled, you'll need a gtk engine supporting "
-#~ "rgba, like murrine. Compiz can have some problems like drawings shadows ..."
+#~ "rgba, like murrine. Compiz can have some problems like drawings "
+#~ "shadows ..."
 #~ msgstr ""
-#~ "如果设为 true，将启用 rgba；您需要一个支持 rgba 的 gtk 引擎，如 murrine。Compiz 会有一些诸如绘制阴影方面的问题..."
+#~ "如果设为 true，将启用 rgba；您需要一个支持 rgba 的 gtk 引擎，如 murrine。"
+#~ "Compiz 会有一些诸如绘制阴影方面的问题..."
 
 #~ msgid ""
-#~ "Path of the previewer or executable name (if path already definied in PATH "
-#~ "environnment variable). If no path is set, then the space bindkey would just "
-#~ "activate the selected items instead of previewing them"
-#~ msgstr "预览程序的路径或可执行的名称(若 PATH 环境变量中已定义了其路径)。如果没有设置路径，则空格键只是激活所选项目，而不是预览它们"
+#~ "Path of the previewer or executable name (if path already definied in "
+#~ "PATH environnment variable). If no path is set, then the space bindkey "
+#~ "would just activate the selected items instead of previewing them"
+#~ msgstr ""
+#~ "预览程序的路径或可执行的名称(若 PATH 环境变量中已定义了其路径)。如果没有设"
+#~ "置路径，则空格键只是激活所选项目，而不是预览它们"
 
 #~ msgid "Path of the previewer."
 #~ msgstr "预览程序的路径。"
@@ -1878,7 +1969,8 @@ msgstr "列视图"
 #~ msgid "The geometry string for a navigation window."
 #~ msgstr "导航窗口的几何属性字符串。"
 
-#~ msgid "Whether items are activated by single clicks instead of dubble clicks"
+#~ msgid ""
+#~ "Whether items are activated by single clicks instead of dubble clicks"
 #~ msgstr "通过单击还是双击来激活项目"
 
 #~ msgid "Whether the navigation window should be maximized by default."
@@ -1907,9 +1999,6 @@ msgstr "列视图"
 
 #~ msgid "toolbar css style"
 #~ msgstr "工具栏 css 样式"
-
-#~ msgid "Selection mode"
-#~ msgstr "选择模式"
 
 #~ msgid "The selection mode"
 #~ msgstr "选择模式"
@@ -1998,14 +2087,8 @@ msgstr "列视图"
 #~ msgid "The GtkCellArea used to layout cells"
 #~ msgstr "用于排列单元格的 GtkCellArea"
 
-#~ msgid "Selection Box Color"
-#~ msgstr "选择框颜色"
-
 #~ msgid "Color of the selection box"
 #~ msgstr "选择框的颜色"
-
-#~ msgid "Selection Box Alpha"
-#~ msgstr "选择框透明度"
 
 #~ msgid "Opacity of the selection box"
 #~ msgstr "选择框的透明度"

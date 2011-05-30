@@ -6,11 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-05-15 13:52+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-31 01:04+0200\n"
 "PO-Revision-Date: 2011-05-15 22:08+0000\n"
 "Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -45,7 +46,7 @@ msgstr "enlace a %s"
 #. * between the "%" and any numeric directive will turn
 #. * off zero padding, and putting a "_" there will use
 #. * space padding instead of zero padding.
-#. 
+#.
 #: ../libcore/gof-file.c:727
 msgid "today at 00:00:00 PM"
 msgstr "hoy a las 00:00:00 pm"
@@ -76,7 +77,7 @@ msgstr "hoy"
 
 #. Yesterday, use special word.
 #. * Note to localizers: Same issues as "today" string.
-#. 
+#.
 #: ../libcore/gof-file.c:746
 msgid "yesterday at 00:00:00 PM"
 msgstr "ayer a las 00:00:00 pm"
@@ -109,7 +110,7 @@ msgstr "ayer"
 #. * Note to localizers: Same issues as "today" string.
 #. * The width measurement templates correspond to
 #. * the day/month name with the most letters.
-#. 
+#.
 #: ../libcore/gof-file.c:767
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
 msgstr "Miércoles, 00 de septiembre de 0000 a las 00:00:00 pm"
@@ -210,7 +211,7 @@ msgstr "No se pudo crear el enlace a la URL «%s»"
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2799
+#: ../src/fm-directory-view.c:2821
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 "Prepara los archivos seleccionados para moverlos con un comando «Pegar»"
@@ -218,7 +219,7 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2803
+#: ../src/fm-directory-view.c:2825
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 "Prepara los archivos seleccionados para copiarse con un comando «Pegar»"
@@ -226,7 +227,7 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2807
+#: ../src/fm-directory-view.c:2829
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 "Mover o copiar los archivos previamente seleccionados por un comando "
@@ -234,12 +235,12 @@ msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2810
+#: ../src/fm-directory-view.c:2832
 msgid "Paste Into Folder"
 msgstr "Pegar en carpeta"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2811
+#: ../src/fm-directory-view.c:2833
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -249,65 +250,71 @@ msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2814
+#: ../src/fm-directory-view.c:2836
 msgid "_Rename..."
 msgstr "_Renombrar..."
 
 #. tooltip
-#: ../src/fm-directory-view.c:2815
+#: ../src/fm-directory-view.c:2837
 msgid "Rename selected item"
 msgstr "Renombra el elemento seleccionado"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2818
+#: ../src/fm-directory-view.c:2840
 msgid "Create New _Folder"
 msgstr "Crear una c_arpeta nueva"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2819
+#: ../src/fm-directory-view.c:2841
 msgid "Create a new empty folder inside this folder"
 msgstr "Crea una carpeta nueva vacía dentro de esta carpeta"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2822
+#: ../src/fm-directory-view.c:2844
 msgid "Mo_ve to Trash"
 msgstr "_Mover a la papelera"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2823
+#: ../src/fm-directory-view.c:2845
 msgid "Move each selected item to the Trash"
 msgstr "Mueve cada elemento seleccionado a la papelera"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2826
+#: ../src/fm-directory-view.c:2848
 msgid "_Delete"
 msgstr "_Eliminar"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2827
+#: ../src/fm-directory-view.c:2849
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "Elimina cada elemento seleccionado, sin moverlo a la papelera"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2830
+#: ../src/fm-directory-view.c:2852
 msgid "_Restore"
 msgstr "_Restaurar"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2834
+#: ../src/fm-directory-view.c:2856
 msgid "_Properties"
 msgstr "_Propiedades"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2835
+#: ../src/fm-directory-view.c:2857
 msgid "View or modify the properties of each selected item"
 msgstr ""
 "Muestra o permite modificar las propiedades de cada elemento seleccionado"
+
+#. append insensitive label 'Set Color'
+#: ../src/fm-directory-view.c:2953
+#, fuzzy
+msgid "Set Color:"
+msgstr "Color del cuadro de selección"
 
 #: ../src/fm-list-model.c:457
 msgid "(Empty)"
@@ -321,15 +328,16 @@ msgstr "Cargando..."
 msgid "Filename"
 msgstr "Nombre de archivo"
 
-#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:185
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:265
 msgid "Size"
 msgstr "Tamaño"
 
-#: ../src/fm-list-view.c:54
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:260
 msgid "Type"
 msgstr "Tipo"
 
-#: ../src/fm-list-view.c:54
+#. localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso ..
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:267
 msgid "Modified"
 msgstr "Modificado"
 
@@ -624,7 +632,7 @@ msgstr "Otro enlace hacia %s"
 #. Localizers: Feel free to leave out the "st" suffix
 #. * if there's no way to do that nicely for a
 #. * particular language.
-#. 
+#.
 #: ../libcore/marlin-file-operations.c:418
 #, c-format
 msgid "%'dst link to %s"
@@ -651,7 +659,7 @@ msgstr "%'dº enlace hacia %s"
 #. Localizers:
 #. * Feel free to leave out the st, nd, rd and th suffix or
 #. * make some or all of them match.
-#. 
+#.
 #. localizers: tag used to detect the first copy of a file
 #: ../libcore/marlin-file-operations.c:468
 msgid " (copy)"
@@ -715,7 +723,7 @@ msgstr "%s (%'dª copia)%s"
 #. localizers: if in your language there's no difference between 1st, 2nd, 3rd and nth
 #. * plurals, you can leave the st, nd, rd suffixes out and just make all the translated
 #. * strings look like "%s (copy %'d)%s".
-#. 
+#.
 #. localizers: appended to x1st file copy
 #: ../libcore/marlin-file-operations.c:518
 #, c-format
@@ -784,21 +792,21 @@ msgstr "Todos los elementos de la papelera se eliminarán permanentemente."
 #. G_CALLBACK (rescan_shortcut_cb), sidebar);
 #. gtk_widget_show (item);
 #. gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-#. 
+#.
 #. item = gtk_menu_item_new_with_mnemonic (_("_Format"));
 #. sidebar->popup_menu_format_item = item;
 #. g_signal_connect (item, "activate",
 #. G_CALLBACK (format_shortcut_cb), sidebar);
 #. gtk_widget_show (item);
 #. gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-#. 
+#.
 #. item = gtk_menu_item_new_with_mnemonic (_("_Start"));
 #. sidebar->popup_menu_start_item = item;
 #. g_signal_connect (item, "activate",
 #. G_CALLBACK (start_shortcut_cb), sidebar);
 #. gtk_widget_show (item);
 #. gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-#. 
+#.
 #. item = gtk_menu_item_new_with_mnemonic (_("_Stop"));
 #. sidebar->popup_menu_stop_item = item;
 #. g_signal_connect (item, "activate",
@@ -841,7 +849,7 @@ msgstr[1] "quedan %'d archivos por eliminar"
 
 #. To translators: %T will expand to a time like "2 minutes".
 #. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#. 
+#.
 #: ../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
@@ -1129,7 +1137,7 @@ msgstr "%S de %S"
 #. * "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. *
 #. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#. 
+#.
 #: ../libcore/marlin-file-operations.c:3097
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
@@ -1222,8 +1230,7 @@ msgstr "El archivo de origen se sobrescribirá por el de destino."
 #: ../libcore/marlin-file-operations.c:4394
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
-"No se pudo eliminar el archivo ya existente con el mismo nombre en %F."
+msgstr "No se pudo eliminar el archivo ya existente con el mismo nombre en %F."
 
 #: ../libcore/marlin-file-operations.c:4464
 #, c-format
@@ -1532,7 +1539,7 @@ msgstr "Elementos disponibles"
 msgid "Displayed Items"
 msgstr "Elementos mostrados"
 
-#: ../libwidgets/LocationBar.vala:841
+#: ../libwidgets/LocationBar.vala:847
 #, c-format
 msgid "Go to %s"
 msgstr "Ir a %s"
@@ -1540,33 +1547,48 @@ msgstr "Ir a %s"
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:961
+#: ../libwidgets/LocationBar.vala:1001
 msgid "Cut the selected text to the clipboard"
 msgstr "Corta el texto seleccionado y lo coloca en el portapapeles"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:965
+#: ../libwidgets/LocationBar.vala:1005
 msgid "Copy the selected text to the clipboard"
 msgstr "Copia el texto seleccionado y lo coloca en el portapapeles"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:969
+#: ../libwidgets/LocationBar.vala:1009 ../libwidgets/LocationBar.vala:1013
 msgid "Paste the text stored on the clipboard"
 msgstr "Pega el texto almacenado en el portapapeles"
 
-#: ../src/View/ContextView.vala:226
+#. TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
+#. we are in listview: size, type, modified
+#: ../src/View/ContextView.vala:259
+msgid "Name"
+msgstr ""
+
+#: ../src/View/ContextView.vala:263
+#, fuzzy
+msgid "Target"
+msgstr "grande"
+
+#: ../src/View/ContextView.vala:268
+msgid "Owner"
+msgstr ""
+
+#: ../src/View/ContextView.vala:305
 msgid "Other..."
 msgstr "Otros..."
 
-#: ../src/View/ContextView.vala:229
+#: ../src/View/ContextView.vala:308
 msgid "Set as default"
 msgstr "Establecer como predeterminado"
 
-#: ../src/View/ContextView.vala:323
+#: ../src/View/ContextView.vala:415 ../src/View/ContextView.vala:470
 msgid "Open with:"
 msgstr "Abrir con:"
 
@@ -1870,33 +1892,96 @@ msgstr "Ver en lista"
 msgid "Columns View"
 msgstr "Ver en columnas"
 
+#: ../src/eel-editable-label.c:344
+msgid "Text"
+msgstr ""
+
+#: ../src/eel-editable-label.c:345
+msgid "The text of the label."
+msgstr ""
+
+#: ../src/eel-editable-label.c:351
+msgid "Justification"
+msgstr ""
+
+#: ../src/eel-editable-label.c:352
+msgid ""
+"The alignment of the lines in the text of the label relative to each other. "
+"This does NOT affect the alignment of the label within its allocation. See "
+"GtkMisc::xalign for that."
+msgstr ""
+
+#: ../src/eel-editable-label.c:360
+msgid "Line wrap"
+msgstr ""
+
+#: ../src/eel-editable-label.c:361
+msgid "If set, wrap lines if the text becomes too wide."
+msgstr ""
+
+#: ../src/eel-editable-label.c:368
+msgid "Small size"
+msgstr ""
+
+#: ../src/eel-editable-label.c:369
+msgid "If set, use small size text."
+msgstr ""
+
+#: ../src/eel-editable-label.c:376
+msgid "Cursor Position"
+msgstr ""
+
+#: ../src/eel-editable-label.c:377
+msgid "The current position of the insertion cursor in chars."
+msgstr ""
+
+#: ../src/eel-editable-label.c:386
+#, fuzzy
+msgid "Selection Bound"
+msgstr "Modo de selección"
+
+#: ../src/eel-editable-label.c:387
+msgid ""
+"The position of the opposite end of the selection from the cursor in chars."
+msgstr ""
+
+#: ../src/eel-editable-label.c:3188
+#, fuzzy
+msgid "Select All"
+msgstr "Alfa del cuadro de selección"
+
+#: ../src/eel-editable-label.c:3199
+msgid "Input Methods"
+msgstr ""
+
 #~ msgid ""
-#~ "Select items to be displayed on the toolbar. Items can be reodered by drag "
-#~ "and drop."
+#~ "Select items to be displayed on the toolbar. Items can be reodered by "
+#~ "drag and drop."
 #~ msgstr ""
-#~ "Seleccione los elementos que se mostrarán en la barra de herramientas. Los "
-#~ "elementos pueden reordenarse arrastrando y colocando."
+#~ "Seleccione los elementos que se mostrarán en la barra de herramientas. "
+#~ "Los elementos pueden reordenarse arrastrando y colocando."
 
 #~ msgid "Confirm trash"
 #~ msgstr "Confirmar mover a la papelera"
 
 #~ msgid ""
-#~ "A string containing the saved geometry and coordinates string for navigation "
-#~ "windows."
+#~ "A string containing the saved geometry and coordinates string for "
+#~ "navigation windows."
 #~ msgstr ""
-#~ "Una cadena que contiene la cadena de geometría y coordenadas guardadas para "
-#~ "las ventanas de navegación."
+#~ "Una cadena que contiene la cadena de geometría y coordenadas guardadas "
+#~ "para las ventanas de navegación."
 
 #~ msgid ""
-#~ "If set to true, hidden files will also be shown (files starting with a \".\" "
-#~ "for example)"
+#~ "If set to true, hidden files will also be shown (files starting with a \"."
+#~ "\" for example)"
 #~ msgstr ""
 #~ "Si se activa, también se mosstrarán los archivos ocultos (por ejemplo, "
 #~ "aquellos que comienzan con un «.»)"
 
 #~ msgid ""
 #~ "If set to true, rgba will be enabled, you'll need a gtk engine supporting "
-#~ "rgba, like murrine. Compiz can have some problems like drawings shadows ..."
+#~ "rgba, like murrine. Compiz can have some problems like drawings "
+#~ "shadows ..."
 #~ msgstr ""
 #~ "Si se activa, se habilitará el RGB/A. Necesitará activar un motor GTK que "
 #~ "permita RGB/A, como Murrine. Compiz podría presentar problemas."
@@ -1912,9 +1997,9 @@ msgstr "Ver en columnas"
 #~ "Establecer el estilo CSS de la barra de herramientas a primary-toolbar."
 
 #~ msgid ""
-#~ "Path of the previewer or executable name (if path already definied in PATH "
-#~ "environnment variable). If no path is set, then the space bindkey would just "
-#~ "activate the selected items instead of previewing them"
+#~ "Path of the previewer or executable name (if path already definied in "
+#~ "PATH environnment variable). If no path is set, then the space bindkey "
+#~ "would just activate the selected items instead of previewing them"
 #~ msgstr ""
 #~ "Ruta del previsualizador o nombre del ejecutable (si la ruta ya está "
 #~ "definida en la variable de entorno PATH). Si no se establece una ruta, la "
@@ -1951,10 +2036,11 @@ msgstr "Ver en columnas"
 #~ "Indica si la ventana de navegación debería maximizarse de forma "
 #~ "predeterminada."
 
-#~ msgid "Whether items are activated by single clicks instead of dubble clicks"
+#~ msgid ""
+#~ "Whether items are activated by single clicks instead of dubble clicks"
 #~ msgstr ""
-#~ "Indica si los elementos se activan con una pulsación del ratón en lugar de "
-#~ "dos"
+#~ "Indica si los elementos se activan con una pulsación del ratón en lugar "
+#~ "de dos"
 
 #~ msgid "Whether the navigation window should be maximized."
 #~ msgstr "Indica si la ventana de navegación debería maximizarse."
@@ -1969,8 +2055,8 @@ msgstr "Ver en columnas"
 #~ "The format of file dates. Possible values are \"locale\", \"iso\", and "
 #~ "\"informal\"."
 #~ msgstr ""
-#~ "El formato de las fechas de los archivos. Los valores posibles son «locale» "
-#~ "(local), «iso» e «informal»."
+#~ "El formato de las fechas de los archivos. Los valores posibles son "
+#~ "«locale» (local), «iso» e «informal»."
 
 #~ msgid "The selection mode"
 #~ msgstr "El modo de selección"
@@ -1999,9 +2085,6 @@ msgstr "Ver en columnas"
 #~ msgid "Single Click"
 #~ msgstr "Pulsación sencilla"
 
-#~ msgid "Selection mode"
-#~ msgstr "Modo de selección"
-
 #~ msgid "Icon View Model"
 #~ msgstr "Modelo de vista de icono"
 
@@ -2025,8 +2108,9 @@ msgstr "Ver en columnas"
 #~ "The amount of time after which the item under the mouse cursor will be "
 #~ "selected automatically in single click mode"
 #~ msgstr ""
-#~ "La cantidad de tiempo que hay que mantener el ratón sobre el elemento hasta "
-#~ "que sea seleccionado automáticamente en el modo de pulsación sencilla"
+#~ "La cantidad de tiempo que hay que mantener el ratón sobre el elemento "
+#~ "hasta que sea seleccionado automáticamente en el modo de pulsación "
+#~ "sencilla"
 
 #~ msgid "Pixbuf column"
 #~ msgstr "Columna de pixbuf"
@@ -2075,7 +2159,8 @@ msgstr "Ver en columnas"
 
 #~ msgid "The column in the model containing the tooltip texts for the items"
 #~ msgstr ""
-#~ "La columna del modelo que contiene los textos de consejo para los elementos"
+#~ "La columna del modelo que contiene los textos de consejo para los "
+#~ "elementos"
 
 #~ msgid "Item Padding"
 #~ msgstr "Separación del elemento"
@@ -2105,14 +2190,8 @@ msgstr "Ver en columnas"
 #~ msgid "Padding around icon view items"
 #~ msgstr "Separación alrededor de la vista de iconos"
 
-#~ msgid "Selection Box Color"
-#~ msgstr "Color del cuadro de selección"
-
 #~ msgid "The GtkCellArea used to layout cells"
 #~ msgstr "El GtkCellArea usado para la distribución de las celdas"
-
-#~ msgid "Selection Box Alpha"
-#~ msgstr "Alfa del cuadro de selección"
 
 #~ msgid "Color of the selection box"
 #~ msgstr "Color del cuadro de selección"
