@@ -70,7 +70,7 @@
       </_description>
     </key>
     <key name="single-click-timeout" type="i">
-      <default>290</default>
+      <default>0</default>
       <range min="0" max="1000" />
       <summary>single click timeout</summary>
       <description>
@@ -92,7 +92,7 @@
       </_description>
     </key>
     <key name="toolbar-items" type="as">
-      <default>[ 'Back', 'Forward', 'Up', 'LocationEntry', 'ViewSwitcher']</default>
+      <default>[ 'Back', 'Forward', 'LocationEntry', 'ViewSwitcher']</default>
       <summary>List of actions present in the toolbar</summary>
       <description>
         List of actions present in the toolbar
