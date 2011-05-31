@@ -216,7 +216,7 @@ namespace Marlin.View {
 
         private void update_icon()
         {
-            int w_height, w_width;
+            //int w_height, w_width;
             Allocation alloc;
             Nautilus.IconInfo icon_info;
             int icon_size_req;
@@ -224,22 +224,25 @@ namespace Marlin.View {
             if (last_geof_cache == null)
                 return;
 
-            window.get_size(out w_width, out w_height);
+            //window.get_size(out w_width, out w_height);
             get_allocation(out alloc);
             cv_alloc = alloc;
             //stdout.printf ("$$$$$$$$$ real alloc %d %d\n", alloc.width, alloc.height);
            
             if (orientation == Orientation.VERTICAL) {
-                icon_size_req = int.min (alloc.width, w_width/2);
+                //icon_size_req = int.min (alloc.width, w_width/2);
+                icon_size_req = int.min (alloc.width, 256);
             } else {
-                icon_size_req = int.min (alloc.height, w_height/2);
+                //icon_size_req = int.min (alloc.height, w_height/2);
+                icon_size_req = int.min (alloc.height, 256);
             }
 
             icon_info = last_geof_cache.get_icon(icon_size_req, GOF.FileIconFlags.USE_THUMBNAILS);
             icon = icon_info.get_pixbuf_nodefault();
-                        
-            if (should_sync && (icon_size_req > w_width/2 || icon_size_req > w_height/2))
-                window.main_box.set_position (window.main_box.max_position - icon_size_req);
+            
+            /* TODO ask tumbler a LARGE thumb for size > 128 */
+            /*if (should_sync && (icon_size_req > w_width/2 || icon_size_req > w_height/2))
+                window.main_box.set_position (window.main_box.max_position - icon_size_req);*/
         }
 
         public void update(GOF.File gof_file){
