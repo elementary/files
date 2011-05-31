@@ -213,6 +213,7 @@ namespace Marlin.View.Chrome
                             entry.text = element.text + entry.text;
                             entry.cursor = element.text.length;
                         }
+                        entry.reset_selection();
                     }
                 }
             });
@@ -1377,7 +1378,7 @@ namespace Marlin.View.Chrome
                 hover = true;
             if(is_selecting)
             {
-                selection_mouse_end = event.x;
+                selection_mouse_end = event.x > 0 ? event.x : 1;
             }
         }
         
@@ -1407,8 +1408,13 @@ namespace Marlin.View.Chrome
             selection_mouse_end = event.x;
             is_selecting = false;
         }
-        
-        private void reset_selection()
+
+        /**
+         * Reset the current selection. This function won't ask for re-drawing,
+         * so, you will need to re-draw your entry by hand. It can be used after
+         * a #text set, to avoid weird things.
+         **/
+        public void reset_selection()
         {
             selected_start = -1;
             selected_end = -1;

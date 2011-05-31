@@ -20,7 +20,7 @@
 using Marlin.View.Chrome;
 void add_pathbar_tests()
 {
-    Test.add_func ("/marlin/pathbar", () => {
+    Test.add_func ("/marlin/pathbar/general", () => {
         Test.log_set_fatal_handler( () => { return false; });
         var breads = new Breadcrumbs(new Gtk.UIManager(), new Gtk.Window());
         var bread_entry = new BreadcrumbsEntry();
@@ -103,6 +103,22 @@ void add_pathbar_tests()
         event.keyval = 0xff51; /* left */
         bread_entry.key_press_event(event);
         assert(bread_entry.get_selection() == "");
+    });
+    
+    Test.add_func ("/marlin/pathbar/start-selection", () => {
+        Test.log_set_fatal_handler( () => { return false; });
+        var breads = new Breadcrumbs(new Gtk.UIManager(), new Gtk.Window());
+        var bread_entry = new BreadcrumbsEntry();
+        assert(bread_entry is BreadcrumbsEntry);
+        assert(bread_entry.text == "");
+        bread_entry.text = "abdcefghij/";
+        bread_entry.cursor = ("abdcefghij/").length;
+        Gdk.EventKey event = Gdk.EventKey();
+        event.state = Gdk.ModifierType.SHIFT_MASK;
+        event.window = breads.get_window();
+        event.keyval = 0xff51; /* left */
+        bread_entry.key_press_event(event);
+        assert(bread_entry.get_selection() == "/");
     });
 }
  
