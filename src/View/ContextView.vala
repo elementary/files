@@ -393,6 +393,10 @@ namespace Marlin.View {
             }
             box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
 
+            var spacer_box = new VBox(false, 0);
+            spacer_box.set_size_request (-1, 15);
+            box.pack_start(spacer_box, false, false);
+
             var information = new VBox (false, key_value_padding);
             var alignment_ = new Gtk.Alignment(0.5f, 0, 0, 0);
 
@@ -411,6 +415,10 @@ namespace Marlin.View {
             alignment_.add(information);
             box.pack_start(alignment_, false, false);
             
+            spacer_box = new VBox(false, 0);
+            spacer_box.set_size_request (-1, 15);
+            box.pack_start(spacer_box, false, false);
+
             box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
 
             if(!last_geof_cache.is_directory)
