@@ -120,6 +120,19 @@ void add_pathbar_tests()
         bread_entry.key_press_event(event);
         assert(bread_entry.get_selection() == "/");
     });
+    
+    Test.add_func ("/marlin/pathbar/backspace-without-text", () => {
+        Test.log_set_fatal_handler( () => { return false; });
+        var breads = new Breadcrumbs(new Gtk.UIManager(), new Gtk.Window());
+        var bread_entry = new BreadcrumbsEntry();
+        assert(bread_entry is BreadcrumbsEntry);
+        assert(bread_entry.text == "");
+        Gdk.EventKey event = Gdk.EventKey();
+        event.window = breads.get_window();
+        event.keyval = 0xff08; /* backspace */
+        bread_entry.key_press_event(event);
+        assert(bread_entry.get_selection() == null);
+    });
 }
  
 void main(string[] args)

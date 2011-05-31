@@ -1188,12 +1188,15 @@ namespace Marlin.View.Chrome
          **/
         public void delete_selection()
         {
-            int first = selected_start > selected_end ? selected_end : selected_start;
-            int second = selected_start > selected_end ? selected_start : selected_end;
+            if(selected_start > 0 && selected_end > 0)
+            {
+                int first = selected_start > selected_end ? selected_end : selected_start;
+                int second = selected_start > selected_end ? selected_start : selected_end;
 
-            text = text.slice(0, first) + text.slice(second, text.length);
-            reset_selection();
-            cursor = first;
+                text = text.slice(0, first) + text.slice(second, text.length);
+                reset_selection();
+                cursor = first;
+            }
         }
 
         /**
@@ -1308,7 +1311,7 @@ namespace Marlin.View.Chrome
                 enter();
                 break;
             case 0xff08: /* backspace */
-                if(get_selection() != "")
+                if(get_selection() != null)
                 {
                     delete_selection();
                 }
@@ -1359,11 +1362,16 @@ namespace Marlin.View.Chrome
             //print("%x\n", event.keyval);
         }
         
-        public string get_selection()
+        public string? get_selection()
         {
             int first = selected_start > selected_end ? selected_end : selected_start;
             int second = selected_start > selected_end ? selected_start : selected_end;
-            return text.slice(first,second);
+
+            if(!(first < 0 || second < 0))
+            {
+                return text.slice(first,second);
+            }
+            return null;
         }
         
         public void key_release_event(Gdk.EventKey event)

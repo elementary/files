@@ -69,7 +69,7 @@ class PopupDraw : Gtk.DrawingArea
     internal Gee.ArrayList<PopupDrawItem> items;
     internal int selected;
     public signal void select(string path);
-    Gtk.StyleContext style;
+    new Gtk.StyleContext style;
     Gtk.StyleContext style_;
     Gtk.MenuItem menuitem;
     public PopupDraw()
@@ -166,7 +166,7 @@ class PopupDrawItem : Object
             Gtk.render_background(style, cr, border, y + border, width - border*2, height - border*2);
         }
         else
-            style.set_state(Gtk.StateFlags.ACTIVE);
+            style.set_state(Gtk.StateFlags.NORMAL);
             
         Pango.Layout layout = widget.create_pango_layout(title);
         layout.set_ellipsize(Pango.EllipsizeMode.END);
