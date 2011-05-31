@@ -34,7 +34,6 @@ libcore/gof-file.c
 libcore/gof-file.h
 libcore/gof-monitor.c
 libcore/gof-monitor.h
-libcore/log.vala
 src/fm-columns-view.c
 src/fm-columns-view.h
 src/fm-directory-view.c
