@@ -131,3 +131,4 @@ libcore/libmarlincore_la-eel-accessibility.lo
 libwidgets/tests/marlinwidgets_tests_vala.stamp
 libwidgets/tests/tests-libwidgets.c
 libwidgets/tests/marlinwidgets_tests
+src/Logger.c

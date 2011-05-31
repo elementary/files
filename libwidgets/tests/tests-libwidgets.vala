@@ -72,6 +72,37 @@ void add_pathbar_tests()
         event.keyval = 0xff08; /* backspace */
         bread_entry.key_press_event(event);
         assert(bread_entry.text == "aba");
+        event.keyval = 0xff53; /* right */
+        bread_entry.key_press_event(event);
+        event.keyval = 0x063; /* c */
+        bread_entry.key_press_event(event);
+        assert(bread_entry.text == "abac");
+        event.keyval = 0xff51; /* left */
+        bread_entry.key_press_event(event);
+        
+        /* selection */
+        event.state = Gdk.ModifierType.SHIFT_MASK;
+        event.keyval = 0xff51; /* left */
+        bread_entry.key_press_event(event);
+        assert(bread_entry.get_selection() == "a");
+        bread_entry.key_press_event(event);
+        assert(bread_entry.get_selection() == "ba");
+        bread_entry.key_press_event(event);
+        assert(bread_entry.get_selection() == "aba");
+        bread_entry.key_press_event(event);
+        assert(bread_entry.get_selection() == "aba");
+        event.keyval = 0xff53; /* right */
+        bread_entry.key_press_event(event);
+        assert(bread_entry.get_selection() == "ba");
+        bread_entry.key_press_event(event);
+        assert(bread_entry.get_selection() == "a");
+        bread_entry.key_press_event(event);
+        assert(bread_entry.get_selection() == "");
+        bread_entry.key_press_event(event);
+        assert(bread_entry.get_selection() == "c");
+        event.keyval = 0xff51; /* left */
+        bread_entry.key_press_event(event);
+        assert(bread_entry.get_selection() == "");
     });
 }
  
