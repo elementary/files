@@ -564,7 +564,7 @@ fm_directory_view_destroy (GtkWidget *object)
     //GList *node, *next;
 
     view = FM_DIRECTORY_VIEW (object);
-    log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
+    g_warning ("%s\n", G_STRFUNC);
 
     //disconnect_model_handlers (view);
 
@@ -606,7 +606,7 @@ fm_directory_view_finalize (GObject *object)
 {
     FMDirectoryView *view = FM_DIRECTORY_VIEW (object);
 
-    log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
+    g_warning ("%s\n", G_STRFUNC);
 
     GOFWindowSlot *slot = view->details->slot;
 
@@ -716,7 +716,7 @@ void
 fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, 
                                         GdkScreen *screen, gboolean open_in_tab)
 {
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    g_message ("%s\n", G_STRFUNC);
     if (file->is_directory) {
         if (open_in_tab)
             marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), file->location);

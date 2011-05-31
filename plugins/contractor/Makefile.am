@@ -6,7 +6,7 @@ libmarlin_contractor_la_VALAFLAGS = \
     -g
 
 libdir=$(prefix)/share/marlin/plugins
-libmarlin_contractor_la_SOURCES = plugin.vala $(top_srcdir)/libcore/marlincore.vapi $(top_srcdir)/libcore/marlin-core.vapi
+libmarlin_contractor_la_SOURCES = plugin.vala $(top_srcdir)/libcore/marlin-core.vapi
 
 
 libmarlin_contractor_la_CFLAGS = \

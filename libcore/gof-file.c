@@ -168,7 +168,7 @@ void gof_file_update (GOFFile *file)
     /*if (file->info == NULL && file->location != NULL)
         gof_set_custom_display_name (file, file->basename);*/
 
-    //log_printf (LOG_LEVEL_UNDEFINED, "test parent_dir %s\n", g_file_get_uri(file->location));
+    //g_message ("test parent_dir %s\n", g_file_get_uri(file->location));
 
     file->display_name = g_file_info_get_display_name (file->info);
     file->is_hidden = g_file_info_get_is_hidden (file->info) || g_file_info_get_is_backup (file->info);
@@ -373,7 +373,7 @@ static void gof_file_finalize (GObject* obj) {
     GOFFile *file;
 
     file = GOF_FILE (obj);
-    log_printf (LOG_LEVEL_UNDEFINED, "%s %s\n", G_STRFUNC, file->name);
+    g_warning ("%s %s\n", G_STRFUNC, file->name);
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
     g_free(file->basename);
@@ -590,7 +590,7 @@ gof_file_compare_for_sort (GOFFile *file1,
     }
 
     result = gof_file_compare_for_sort_internal (file1, file2, directories_first, reversed);
-    //log_printf (LOG_LEVEL_UNDEFINED, "res %d %s %s\n", result, file1->name, file2->name);
+    //g_message ("res %d %s %s\n", result, file1->name, file2->name);
 
     if (result == 0) {
         switch (sort_type) {

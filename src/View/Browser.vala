@@ -76,7 +76,7 @@ namespace Marlin.View {
 
         public string? go_back (uint n = 1)
         {
-            Log.println(Log.Level.DEBUG, "[Browser] go back %i places", n);
+            debug ("[Browser] go back %i places", (int) n);
 
             var uri = back_stack.pop();
             if (uri != null)
@@ -97,7 +97,7 @@ namespace Marlin.View {
 
         public string? go_forward (uint n = 1)
         {
-            Log.println(Log.Level.DEBUG, "[Browser] go forward %i places", n);
+            debug ("[Browser] go forward %i places", (int) n);
 
             var uri = forward_stack.pop();
             if (uri != null)

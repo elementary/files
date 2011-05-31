@@ -354,7 +354,7 @@ nautilus_icon_info_lookup (GIcon *icon, int size)
                                        size,
                                        NULL, NULL, NULL);
         if (stream) {
-            //log_printf (LOG_LEVEL_UNDEFINED, "%s stream\n", G_STRFUNC);
+            //g_message ("%s stream\n", G_STRFUNC);
             pixbuf = eel_gdk_pixbuf_load_from_stream_at_size (stream, size);
             g_object_unref (stream);
         }

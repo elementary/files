@@ -21,7 +21,6 @@ marlin_VALAFLAGS = \
     --pkg gio-2.0 \
     --pkg gee-1.0 \
     --vapidir=$(top_srcdir)/libcore/ \
-    --pkg marlincore \
     --vapidir=$(top_srcdir)/libwidgets/ \
     --pkg marlin-widgets \
     --pkg marlin-core \
@@ -31,6 +30,7 @@ marlin_VALAFLAGS = \
     $(NULL)
 
 marlin_VALASOURCES = \
+    Logger.vala                             \
     View/SettingsDialog.vala                \
     View/DirectoryNotFound.vala             \
     View/Window.vala 	                    \

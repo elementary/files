@@ -228,37 +228,6 @@ eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window,
     eel_gtk_window_set_initial_geometry (window, geometry_flags, left, top, width, height);
 }
 
-#if 0
-/* The standard gtk_adjustment_set_value ignores page size, which
- * disagrees with the logic used by scroll bars, for example.
- */
-void
-eel_gtk_adjustment_set_value (GtkAdjustment *adjustment,
-                              float value)
-{
-    float upper_page_start, clamped_value;
-
-    g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
-
-    upper_page_start = MAX (gtk_adjustment_get_upper (adjustment) -
-                            gtk_adjustment_get_page_size (adjustment),
-                            gtk_adjustment_get_lower (adjustment));
-    log_printf (LOG_LEVEL_UNDEFINED, ">> upper: %f page_size: %f lower: %f value: %f upper_page_start %f\n",
-                gtk_adjustment_get_upper (adjustment),
-                gtk_adjustment_get_page_size (adjustment),
-                gtk_adjustment_get_lower (adjustment),
-                gtk_adjustment_get_value (adjustment),
-                upper_page_start);
-    clamped_value = CLAMP (value, gtk_adjustment_get_lower (adjustment), upper_page_start);
-    log_printf (LOG_LEVEL_UNDEFINED, ">>clamped %f\n", clamped_value);
-    log_printf (LOG_LEVEL_UNDEFINED, "CLAMP test: %f\n", CLAMP (value, 0.0, 100.0));
-    if (clamped_value != gtk_adjustment_get_value (adjustment)) {
-        gtk_adjustment_set_value (adjustment, clamped_value);
-        gtk_adjustment_value_changed (adjustment);
-    }
-}
-#endif
-
 GtkMenuItem *
 eel_gtk_menu_insert_separator (GtkMenu *menu, int index)
 {

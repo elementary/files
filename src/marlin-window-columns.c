@@ -101,7 +101,7 @@ static gboolean marlin_window_columns_key_pressed(GtkWidget* box, GdkEventKey* e
 MarlinWindowColumns *
 marlin_window_columns_new (GFile *location, GObject *ctab)
 {
-    log_printf (LOG_LEVEL_UNDEFINED, "%s %s\n", G_STRFUNC, g_file_get_uri(location));
+    g_message ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
     MarlinWindowColumns *mwcols;
     mwcols = g_object_new (MARLIN_TYPE_WINDOW_COLUMNS, NULL);
     mwcols->location = g_object_ref (location);
@@ -198,7 +198,7 @@ static void
 marlin_window_columns_finalize (GObject *object)
 {
     MarlinWindowColumns *mwcols = MARLIN_WINDOW_COLUMNS (object);
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    g_message ("%s\n", G_STRFUNC);
 
     g_signal_handlers_disconnect_by_func (mwcols->colpane,
                                           G_CALLBACK (marlin_window_columns_key_pressed),

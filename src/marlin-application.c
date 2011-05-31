@@ -624,11 +624,13 @@ marlin_application_startup (GApplication *app)
      */
     G_APPLICATION_CLASS (marlin_application_parent_class)->startup (app);
 
-    //log_level = LOG_LEVEL_DEBUG;
-    log_level = LOG_LEVEL_UNDEFINED;
-    log_println (LOG_LEVEL_INFO, "Welcome to Marlin");
-    log_println (LOG_LEVEL_INFO, "Version: %s", PACKAGE_VERSION);
-    log_println (LOG_LEVEL_INFO, "Report any issues/bugs you might find to lp:marlin");
+    granite_services_logger_initialize ("marlin");
+    //granite_services_logger_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_INFO);
+    granite_services_logger_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_DEBUG);
+
+    g_message ("Welcome to Marlin");
+    g_message ("Version: %s", PACKAGE_VERSION);
+    g_message ("Report any issues/bugs you might find to lp:marlin");
 
     /* create an undo manager */
     //self->undo_manager = marlin_undo_manager_new ();

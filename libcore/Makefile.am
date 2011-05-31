@@ -12,7 +12,7 @@ libmarlincore_la_VALAFLAGS = \
     --vapi=marlincore.vapi
     $(NULL)
 
-libmarlincore_la_VALASOURCES = log.vala
+libmarlincore_la_VALASOURCES = $(NULL)
 
 BUILT_SOURCES = libmarlin.vala.stamp
 

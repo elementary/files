@@ -102,7 +102,7 @@ fm_icon_view_selection_changed (GtkIconView *iconview, gpointer user_data)
 static void
 fm_icon_view_item_activated (ExoIconView *exo_icon, GtkTreePath *path, FMIconView *view)
 {
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    g_message ("%s\n", G_STRFUNC);
     //activate_selected_items (view);
     fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view));    
 }
@@ -710,7 +710,7 @@ fm_icon_view_finalize (GObject *object)
 {
     FMIconView *view = FM_ICON_VIEW (object);
 
-    log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
+    g_warning ("%s\n", G_STRFUNC);
 
     g_free (view->details->original_name);
     view->details->original_name = NULL;

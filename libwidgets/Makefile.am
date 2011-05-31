@@ -10,7 +10,6 @@ libmarlinwidgets_la_VALAFLAGS = \
     --library marlinwidgets \
     --vapidir=$(top_srcdir)/libcore \
     --pkg marlin-core \
-    --pkg marlincore \
     $(NULL)
 
 

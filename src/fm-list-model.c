@@ -1401,7 +1401,7 @@ fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter)
                          file_entry->subdirectory);
     file_entry->loaded = 0;
 
-    log_printf (LOG_LEVEL_UNDEFINED, "remove all children\n"); 	
+    g_message ("remove all children\n"); 	
     //log_printf (LOG_LEVEL_UNDEFINED, "remove all children %d\n", g_sequence_get_length (file_entry->files));
     /* Remove all children */
     while (g_sequence_get_length (file_entry->files) > 0) {
@@ -1704,7 +1704,7 @@ fm_list_model_finalize (GObject *object)
 {
     FMListModel *model = FM_LIST_MODEL (object);
 
-    log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
+    g_warning ("%s\n", G_STRFUNC);
     g_free (model->details);
 
     G_OBJECT_CLASS (fm_list_model_parent_class)->finalize (object);

@@ -62,13 +62,13 @@ dir_changed (GFileMonitor* gfile_monitor,
     case G_FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED:
     case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
         //nautilus_file_changes_queue_file_changed (child);
-        log_printf (LOG_LEVEL_UNDEFINED, "file changed %s\n", uri);
+        g_message ("file changed %s\n", uri);
         file = gof_file_get (child);
         g_signal_emit_by_name (dir, "file_changed", file);
         break;
     case G_FILE_MONITOR_EVENT_DELETED:
         //nautilus_file_changes_queue_file_removed (child);
-        log_printf (LOG_LEVEL_UNDEFINED, "file deleted %s\n", uri);
+        g_message ("file deleted %s\n", uri);
         file = gof_file_get (child);
         if (file->info != NULL) {
             if (!file->is_hidden)
@@ -81,7 +81,7 @@ dir_changed (GFileMonitor* gfile_monitor,
         break;
     case G_FILE_MONITOR_EVENT_CREATED:
         //nautilus_file_changes_queue_file_added (child);
-        log_printf (LOG_LEVEL_UNDEFINED, "file added %s\n", uri);
+        g_message ("file added %s\n", uri);
         file = gof_file_get (child);
         if(!g_strcmp0(g_file_get_path(child), g_file_get_path(dir->location)))
         {

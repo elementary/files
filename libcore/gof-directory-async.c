@@ -78,7 +78,7 @@ directory_load_done (GOFDirectoryAsync *dir, GFileEnumerator *enumerator, GError
         g_object_unref (enumerator);
     }
 
-    log_printf (LOG_LEVEL_UNDEFINED, "%s ended\n", G_STRFUNC);
+    g_message ("%s ended\n", G_STRFUNC);
     if (error == NULL)
         dir->loaded = TRUE;
     else 
@@ -304,7 +304,7 @@ gof_directory_async_load (GOFDirectoryAsync *dir)
         dir->loading = TRUE;
 
         char *uri = g_file_get_uri(dir->location);
-        log_printf( LOG_LEVEL_UNDEFINED, "Start loading directory %s \n", uri);
+        g_message ("Start loading directory %s\n", uri);
         g_free (uri);
 
         p->monitor = gof_monitor_directory (dir);
@@ -378,7 +378,7 @@ GOFDirectoryAsync *gof_directory_async_new_from_file (GOFFile *file)
     } else {
         printf (">>>>>>>> %s create dir %s\n", G_STRFUNC, g_file_get_uri (file->location));
         dir = g_object_new (GOF_TYPE_DIRECTORY_ASYNC, NULL);
-        //log_printf (LOG_LEVEL_UNDEFINED, "test %s %s\n", file->name, g_file_get_uri(file->directory));
+        //g_message ("test %s %s\n", file->name, g_file_get_uri(file->directory));
         dir->location = g_object_ref (file->location);
         dir->priv->parent = g_object_ref (file->directory);
         dir->file = gof_file_get (dir->location);
@@ -465,7 +465,7 @@ gof_directory_async_finalize (GObject *object)
     //load_dir_async_cancel (dir);
     //gof_directory_async_cancel (dir);
     char *uri = g_file_get_uri(dir->location);
-    log_printf (LOG_LEVEL_UNDEFINED, ">> %s %s\n", G_STRFUNC, uri);
+    g_warning ("%s %s\n", G_STRFUNC, uri);
     g_free (uri);
 
     if (dir->priv->monitor)

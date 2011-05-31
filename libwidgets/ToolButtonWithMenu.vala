@@ -84,7 +84,7 @@ namespace Gtk {
                 }
             set {
                     if(has_fetcher)
-                        Log.println(Log.Level.WARN, "Don't set the menu property on a ToolMenuButton when there is allready a menu fetcher");
+                        warning ("Don't set the menu property on a ToolMenuButton when there is allready a menu fetcher");
                     else{
                         _menu = value;
                         update_menu_properties();

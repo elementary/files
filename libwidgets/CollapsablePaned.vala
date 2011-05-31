@@ -68,13 +68,13 @@ namespace Gtk{
 
                 int requested_position;
                 if( current_position == 0 ){
-                    Log.println( Log.Level.INFO, "[CollapsablePaned] expand");
+                    message ("[CollapsablePaned] expand");
 
                     requested_position = saved_state;
                 }
                 else{
                     saved_state = current_position;
-                    Log.println( Log.Level.INFO, "[CollapsablePaned] shrink" );
+                    message ("[CollapsablePaned] shrink");
 
                     requested_position = 0;
                 }

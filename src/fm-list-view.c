@@ -182,7 +182,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMListView *view)
 {
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    g_message ("%s\n", G_STRFUNC);
     fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view));
 }
 
@@ -400,7 +400,7 @@ subdirectory_unloaded_callback (FMListModel *model,
                                 GOFDirectoryAsync *directory,
                                 gpointer callback_data)
 {
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    g_message ("%s\n", G_STRFUNC);
     FMListView *view;
 
     g_return_if_fail (FM_IS_LIST_MODEL (model));
@@ -1082,7 +1082,7 @@ fm_list_view_finalize (GObject *object)
 {
     FMListView *view = FM_LIST_VIEW (object);
 
-    log_printf (LOG_LEVEL_UNDEFINED, "$$ %s\n", G_STRFUNC);
+    g_warning ("%s\n", G_STRFUNC);
 
     g_free (view->details->original_name);
 	view->details->original_name = NULL;

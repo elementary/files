@@ -140,7 +140,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMColumnsView *view)
 {
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    g_message ("%s\n", G_STRFUNC);
     fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view));
 }
 
@@ -833,7 +833,7 @@ fm_columns_view_finalize (GObject *object)
 {
     FMColumnsView *view = FM_COLUMNS_VIEW (object);
 
-    log_printf (LOG_LEVEL_UNDEFINED, "%s\n", G_STRFUNC);
+    g_warning ("%s\n", G_STRFUNC);
 
     if (view->details->new_selection_path) 
         gtk_tree_path_free (view->details->new_selection_path);
