@@ -15,9 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 
-using Gee;
-
-namespace Granite.Services {
+namespace Marlin {
 
 	public enum LogLevel {
 		DEBUG,
@@ -40,38 +38,19 @@ namespace Granite.Services {
 	}
 	
 	public class Logger : GLib.Object {
-	
-		class LogMessage : GLib.Object {
-		
-			public LogLevel Level { get; private set; }
-			public string Message { get; private set; }
-			
-			public LogMessage (LogLevel level, string message) {
-				Level = level;
-				Message = message;
-			}
-			
-		}
 		
 		public static LogLevel DisplayLevel { get; set; default = LogLevel.WARN; }
 		
 		static string AppName { get; set; }
-		
-		static Object queue_lock = null;
-		
-		static ArrayList<LogMessage> log_queue;
-		static bool is_writing;
 		
 		static Regex re;
 		
 		public static void initialize (string app_name) {
 		
 			AppName = app_name;
-			is_writing = false;
-			log_queue = new ArrayList<LogMessage> ();
-			try {
+			/*try {
 				re = new Regex ("""(.*)\.vala(:\d+): (.*)""");
-			} catch { }
+			} catch { }*/
 			
 			Log.set_default_handler (glib_log_func);
 		}
@@ -99,35 +78,12 @@ namespace Granite.Services {
 		
 			if (level < DisplayLevel)
 				return;
-			
-			if (is_writing) {
-				lock (queue_lock)
-					log_queue.add (new LogMessage (level, msg));
-			} else {
-				is_writing = true;
 				
-				if (log_queue.size > 0) {
-					var logs = log_queue;
-					lock (queue_lock)
-						log_queue = new ArrayList<LogMessage> ();
-					
-					foreach (var log in logs)
-						print_log (log);
-				}
-				
-				print_log (new LogMessage (level, msg));
-				
-				is_writing = false;
-			}
-		}
-		
-		static void print_log (LogMessage log) {
-		
-			set_color_for_level (log.Level);
-			stdout.printf ("[%s %s]", log.Level.to_string ().substring (25), get_time ());
+			set_color_for_level (level);
+			stdout.printf ("[%s %s]", level.to_string ().substring (17), get_time ());
 			
 			reset_color ();
-			stdout.printf (" %s\n", log.Message);
+			stdout.printf (" %s\n", msg);
 		}
 		
 		static void set_color_for_level (LogLevel level) {

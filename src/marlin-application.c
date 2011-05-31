@@ -628,11 +628,11 @@ marlin_application_startup (GApplication *app)
      */
     G_APPLICATION_CLASS (marlin_application_parent_class)->startup (app);
 
-    granite_services_logger_initialize ("marlin");
+    marlin_logger_initialize ("marlin");
     if (self->priv->debug)
-        granite_services_logger_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_DEBUG);
+        marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_DEBUG);
     else
-        granite_services_logger_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_INFO);
+        marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_INFO);
 
     g_message ("Welcome to Marlin");
     g_message ("Version: %s", PACKAGE_VERSION);
