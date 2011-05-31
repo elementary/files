@@ -108,7 +108,7 @@ row_collapsed_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 static void
 show_selected_files (GOFFile *file)
 {
-    log_printf (LOG_LEVEL_UNDEFINED, "selected: %s\n", file->name);
+    g_message ("selected: %s\n", file->name);
 }
 
 static void

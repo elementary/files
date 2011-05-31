@@ -23,7 +23,6 @@
 #include "gof-file.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
 #include "marlin-global-preferences.h"
-#include "marlincore-vala.h"
 
 struct GOFDirectoryAsyncPrivate {
     //GTimer          *timer;

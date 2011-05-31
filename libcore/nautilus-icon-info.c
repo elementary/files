@@ -20,7 +20,6 @@
 //#include <config.h>
 #include <string.h>
 #include "nautilus-icon-info.h"
-#include "marlincore-vala.h"
 //#include "nautilus-default-file-icon.h"
 #include <gtk/gtk.h>
 #include <gio/gio.h>

@@ -22,7 +22,6 @@
 //#include "gof-directory-async.h"
 //#include "fm-list-view.h"
 #include "fm-columns-view.h"
-#include "marlincore-vala.h"
 
 /*static void gof_window_slot_init       (GOFWindowSlot *slot);
   static void gof_window_slot_class_init (GOFWindowSlotClass *class);
