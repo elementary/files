@@ -476,20 +476,23 @@ namespace Marlin.View {
             var vbox = new VBox(false, 0);
             vbox.pack_start(table, true, true);
 
+            /* TODO open with take too much space in horizontal panel
+               wating for a better implementation if any or just ditch it */
+            /*
             if(!last_geof_cache.is_directory)
             {
                 var label = new Label(N_("Open with:"));
                 var hbox = new HBox(false, 5);
                 label.set_sensitive(false);
                 hbox.pack_start(label, false, false);
-                /*var vbox = new VBox(false, 3);*/
+                //var vbox = new VBox(false, 3);
                 hbox.pack_start(apps, false, false);
                 hbox.pack_start(app_chooser, false, false);
-                /*box.pack_start(vbox, false, false);
-                vbox.set_margin_left(2);
-                vbox.set_margin_right(2);*/
+                //box.pack_start(vbox, false, false);
+                //vbox.set_margin_left(2);
+                //vbox.set_margin_right(2);
                 vbox.pack_start(hbox);
-            }
+            }*/
 
             /*var alignment = new Gtk.Alignment(0, 0.5f, 0, 0);
             alignment.set_padding(0, 4, 0, 0);
