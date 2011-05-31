@@ -286,11 +286,13 @@ convert_lines_to_gfile_list (char **lines)
 	return g_list_reverse (result);
 }
 
+#if 0
 void plop(gpointer data)
 {
     GFile *file = data;
     printf("%s\n", g_file_get_uri(file));
 }
+#endif
 
 static void
 marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
@@ -436,7 +438,7 @@ marlin_clipboard_file_list_to_string (MarlinClipboardManager *manager,
 	GString *uris;
 	char *uri, *tmp;
 	GFile *f;
-        guint i;
+    guint i;
 	GList *l;
 
 	if (format_for_text) {

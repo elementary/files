@@ -189,7 +189,7 @@ static void load_dir_info_async_callback (GObject *source_object, GAsyncResult *
     }
 
     //amtest
-    printf ("$$$$$$$$$$$file_query_info_finish %s\n", g_file_get_uri (dir->location));
+    g_debug ("$$$$$$$$$$$file_query_info_finish %s\n", dir->file->uri);
     dir->file->info = g_file_query_info_finish (G_FILE (source_object), res, &error);
     print_error(error);
 
@@ -302,9 +302,7 @@ gof_directory_async_load (GOFDirectoryAsync *dir)
         printf ("%s LOADED FALSE\n", G_STRFUNC);
         dir->loading = TRUE;
 
-        char *uri = g_file_get_uri(dir->location);
-        g_message ("Start loading directory %s\n", uri);
-        g_free (uri);
+        g_message ("Start loading directory %s\n", dir->file->uri);
 
         p->monitor = gof_monitor_directory (dir);
         //amtest
@@ -373,14 +371,14 @@ GOFDirectoryAsync *gof_directory_async_new_from_file (GOFFile *file)
     if (dir != NULL) {
         /* take a reference for the caller */
         g_object_ref (dir);
-        printf (">>>>>>>> %s reuse cached dir %s\n", G_STRFUNC, g_file_get_uri (dir->location));
+        g_debug (">>>>>>>> %s reuse cached dir %s\n", G_STRFUNC, dir->file->uri);
     } else {
-        printf (">>>>>>>> %s create dir %s\n", G_STRFUNC, g_file_get_uri (file->location));
         dir = g_object_new (GOF_TYPE_DIRECTORY_ASYNC, NULL);
         //g_message ("test %s %s\n", file->name, g_file_get_uri(file->directory));
         dir->location = g_object_ref (file->location);
         dir->priv->parent = g_object_ref (file->directory);
         dir->file = gof_file_get (dir->location);
+        g_debug (">>>>>>>> %s create dir %s\n", G_STRFUNC, dir->file->uri);
         G_LOCK (directory_cache_mutex);
         g_hash_table_insert (directory_cache, g_object_ref (dir->location), dir);
         G_UNLOCK (directory_cache_mutex);
@@ -418,10 +416,10 @@ GOFDirectoryAsync *gof_directory_async_new_from_gfile (GFile *location)
     if (dir != NULL) {
         /* take a reference for the caller */
         g_object_ref (dir);
-        printf (">>>>>>>> %s reuse cached dir %s\n", G_STRFUNC, g_file_get_uri (dir->location));
+        g_debug (">>>>>>>> %s reuse cached dir %s\n", G_STRFUNC, dir->file->uri);
     } else {
-        printf (">>>>>>>> %s create dir %s\n", G_STRFUNC, g_file_get_uri (location));
         dir = gof_directory_async_new (location);
+        g_debug (">>>>>>>> %s create dir %s\n", G_STRFUNC, dir->file->uri);
         G_LOCK (directory_cache_mutex);
         g_hash_table_insert (directory_cache, g_object_ref (dir->location), dir);
         G_UNLOCK (directory_cache_mutex);
@@ -463,9 +461,7 @@ gof_directory_async_finalize (GObject *object)
        }*/
     //load_dir_async_cancel (dir);
     //gof_directory_async_cancel (dir);
-    char *uri = g_file_get_uri(dir->location);
-    g_warning ("%s %s\n", G_STRFUNC, uri);
-    g_free (uri);
+    g_warning ("%s %s\n", G_STRFUNC, dir->file->uri);
 
     if (dir->priv->monitor)
         gof_monitor_cancel (dir->priv->monitor);

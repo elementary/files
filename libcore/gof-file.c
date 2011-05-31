@@ -31,19 +31,6 @@
 #include "marlin-icons.h"
 
 
-/*struct _GOFFilePrivate {
-  GFileInfo* _file_info;
-  };*/
-
-
-//#define gof_FILE_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), GOF_TYPE_FILE, GOFFilePrivate))
-/*enum  {
-  gof_FILE_DUMMY_PROPERTY,
-  gof_FILE_NAME,
-  gof_FILE_SIZE,
-  gof_FILE_DIRECTORY
-  };*/
-
 enum {
     FM_LIST_MODEL_FILE_COLUMN,
     FM_LIST_MODEL_ICON,
@@ -52,22 +39,6 @@ enum {
     FM_LIST_MODEL_SIZE,
     FM_LIST_MODEL_TYPE,
     FM_LIST_MODEL_MODIFIED,
-    /*FM_LIST_MODEL_SUBDIRECTORY_COLUMN,
-      FM_LIST_MODEL_SMALLEST_ICON_COLUMN,
-      FM_LIST_MODEL_SMALLER_ICON_COLUMN,
-      FM_LIST_MODEL_SMALL_ICON_COLUMN,
-      FM_LIST_MODEL_STANDARD_ICON_COLUMN,
-      FM_LIST_MODEL_LARGE_ICON_COLUMN,
-      FM_LIST_MODEL_LARGER_ICON_COLUMN,
-      FM_LIST_MODEL_LARGEST_ICON_COLUMN,
-      FM_LIST_MODEL_SMALLEST_EMBLEM_COLUMN,
-      FM_LIST_MODEL_SMALLER_EMBLEM_COLUMN,
-      FM_LIST_MODEL_SMALL_EMBLEM_COLUMN,
-      FM_LIST_MODEL_STANDARD_EMBLEM_COLUMN,
-      FM_LIST_MODEL_LARGE_EMBLEM_COLUMN,
-      FM_LIST_MODEL_LARGER_EMBLEM_COLUMN,
-      FM_LIST_MODEL_LARGEST_EMBLEM_COLUMN,
-      FM_LIST_MODEL_FILE_NAME_IS_EDITABLE_COLUMN,*/
     FM_LIST_MODEL_NUM_COLUMNS
 };
 
@@ -135,9 +106,11 @@ GOFFile    *gof_file_new (GFile *location, GFile *dir)
 
     file = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
     file->location = g_object_ref (location);
+    file->uri = g_file_get_uri (location);
     file->directory = g_object_ref (dir);
     file->basename = g_file_get_basename (file->location);
     //file->parent_dir = g_file_enumerator_get_container (enumerator);
+    file->color = NULL;
 
     return (file);
 }
@@ -245,10 +218,8 @@ void gof_file_update (GOFFile *file)
 
     if (file->is_directory && !file->is_hidden)
     {
-        char *uri = g_file_get_uri (file->location);
-        char *path = g_filename_from_uri (uri, NULL, NULL);
+        char *path = g_filename_from_uri (file->uri, NULL, NULL);
         file->icon = get_icon_user_special_dirs(path);
-        g_free (uri);
         g_free (path);
 
         if (file->icon == NULL && !g_file_is_native (file->location))
@@ -279,7 +250,6 @@ void gof_file_update (GOFFile *file)
     } else {
         file->formated_type = g_content_type_get_description (file->ftype);
     }
-    file->color = NULL;
 
     gof_file_update_trash_info (file);
 }
@@ -375,6 +345,7 @@ static void gof_file_finalize (GObject* obj) {
     g_warning ("%s %s\n", G_STRFUNC, file->name);
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
+    g_free (file->uri);
     g_free(file->basename);
     g_free(file->utf8_collation_key);
     g_free(file->formated_type);
@@ -1150,7 +1121,7 @@ GOFFile* gof_file_get (GFile *location)
         if(file != NULL)
         {
 #ifdef ENABLE_DEBUG
-            g_debug ("!!!!!!!!!!!!file_query_info %s\n", g_file_get_uri (location));
+            g_debug ("!!!!!!!!!!!!file_query_info %s\n", file->uri);
 #endif
             file->info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
                                             0, NULL, &err);
@@ -1179,13 +1150,12 @@ GOFFile* gof_file_get_by_uri (const char *uri)
 
     location = g_file_new_for_uri (uri);
     if(location == NULL)
-    {
         return NULL;
-    }
-#ifdef ENABLE_DEBUG
-    g_debug ("%s %s", G_STRFUNC, g_file_get_uri (location));
-#endif
+    
     file = gof_file_get (location);
+#ifdef ENABLE_DEBUG
+    g_debug ("%s %s", G_STRFUNC, file->uri);
+#endif
     g_object_unref (location);
 
     return file;
@@ -1243,10 +1213,7 @@ gof_file_list_to_string (GList *list, gsize *len)
 
     for (lp = list; lp != NULL; lp = lp->next)
     {
-        uri = g_file_get_uri (GOF_FILE(lp->data)->location);
-        string = g_string_append (string, uri);
-        g_free (uri);
-
+        string = g_string_append (string, GOF_FILE(lp->data)->uri);
         string = g_string_append (string, "\r\n");
     }
 
@@ -1320,7 +1287,10 @@ gof_file_accepts_drop (GOFFile          *file,
     /* default to whatever GTK+ thinks for the suggested action */
     suggested_action = gdk_drag_context_get_suggested_action (context);
 
-    printf ("%s %s %s\n", G_STRFUNC, g_file_get_uri (file->location), g_file_get_uri (file_list->data));
+    char *uri = g_file_get_uri (file_list->data);
+    g_debug ("%s %s %s\n", G_STRFUNC, file->uri, uri);
+    g_free (uri);
+
     /* check if we have a writable directory here or an executable file */
     if (file->is_directory && gof_file_is_writable (file))
     {
@@ -1336,7 +1306,10 @@ gof_file_accepts_drop (GOFFile          *file,
          */
         for (lp = file_list, n = 0; lp != NULL && n < 100; lp = lp->next, ++n)
         {
-            printf ("%s %s %s\n", G_STRFUNC, g_file_get_uri (file->location), g_file_get_uri (lp->data));
+            uri = g_file_get_uri (lp->data);
+            g_debug ("%s %s %s\n", G_STRFUNC, file->uri, uri);
+            g_free (uri);
+
             /* we cannot drop a file on itself */
             if (G_UNLIKELY (g_file_equal (file->location, lp->data)))
                 return 0;

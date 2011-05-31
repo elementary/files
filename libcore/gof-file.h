@@ -75,6 +75,7 @@ struct _GOFFile {
     const gchar     *name;
     const gchar     *display_name;
     gchar           *custom_display_name;
+    gchar           *uri;
     char            *basename;
     const gchar     *ftype;
     gchar           *formated_type;

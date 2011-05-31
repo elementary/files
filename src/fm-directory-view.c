@@ -269,14 +269,14 @@ fm_directory_view_load_file_hash (GOFDirectoryAsync *dir, FMDirectoryView *view)
 static void
 file_loaded_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-    printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
+    g_debug ("%s %s\n", G_STRFUNC, file->uri);
     g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
 }
 
 static void
 file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-    printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
+    g_debug ("%s %s\n", G_STRFUNC, file->uri);
     g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
 }
 
@@ -293,7 +293,7 @@ file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 static void
 file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-    printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
+    g_debug ("%s %s\n", G_STRFUNC, file->uri);
     g_signal_emit (view, signals[REMOVE_FILE], 0, file, directory);
 }
 
@@ -609,7 +609,6 @@ fm_directory_view_finalize (GObject *object)
 
     GOFWindowSlot *slot = view->details->slot;
 
-    //printf ("%s %s\n", G_STRFUNC, g_file_get_uri(slot->directory->location));
     /* disconnect all listeners */
     g_signal_handlers_disconnect_by_func (slot->directory, file_loaded_callback, view);
     g_signal_handlers_disconnect_by_func (slot->directory, file_added_callback, view);
@@ -977,7 +976,7 @@ fm_directory_view_get_drop_file (FMDirectoryView *view,
         printf ("%s path %s\n", G_STRFUNC, gtk_tree_path_to_string (path));
         /* determine the file for the path */
         file = fm_list_model_file_for_path (view->model, path);
-        printf ("%s %s\n", G_STRFUNC, g_file_get_uri (file->location));
+        printf ("%s %s\n", G_STRFUNC, file->uri);
 
         /* we can only drop to directories and executable files */
         if (!file->is_directory && !gof_file_is_executable (file))
@@ -1023,7 +1022,7 @@ fm_directory_view_get_dest_actions (FMDirectoryView     *view,
 
     /* determine the file and path for the given coordinates */
     file = fm_directory_view_get_drop_file (view, x, y, &path);
-    printf ("%s %s\n", G_STRFUNC, g_file_get_uri (file->location));
+    printf ("%s %s\n", G_STRFUNC, file->uri);
 
     /* check if we can drop there */
     if (G_LIKELY (file != NULL))
@@ -1416,7 +1415,7 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
         {
             /* determine the file for the given coordinates */
             file = fm_directory_view_get_drop_file (view, x, y, &path);
-            printf ("%s file %s\n", G_STRFUNC, g_file_get_uri (file->location));
+            printf ("%s file %s\n", G_STRFUNC, file->uri);
 
             /* check if we can save here */
             //TODO
@@ -1957,7 +1956,7 @@ fm_directory_view_request_thumbnails (FMDirectoryView *view)
         {
             /* prepend the file to the visible items list */
             file = fm_list_model_file_for_iter (view->model, &iter);
-            //printf ("%s %s\n", G_STRFUNC, g_file_get_uri (file->location));
+            //printf ("%s %s\n", G_STRFUNC, file->uri);
             visible_files = g_list_prepend (visible_files, file);
 
             /* check if we've reached the end of the visible range */

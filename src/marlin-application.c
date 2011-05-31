@@ -74,6 +74,7 @@ struct _MarlinApplicationPriv {
     MarlinClipboardManager *clipboard;
 
     gboolean initialized;
+    gboolean debug;
 };
 
 static void
@@ -469,6 +470,7 @@ static gint
 marlin_application_command_line (GApplication *app,
                                  GApplicationCommandLine *command_line)
 {
+    MarlinApplication *self = MARLIN_APPLICATION (app);
     gboolean version = FALSE;
     gboolean no_default_window = FALSE;
     gboolean no_desktop = FALSE;
@@ -486,13 +488,14 @@ marlin_application_command_line (GApplication *app,
             N_("Open uri(s) in new tab"), NULL },
         { "quit", 'q', 0, G_OPTION_ARG_NONE, &kill_shell, 
             N_("Quit Marlin."), NULL },
+        { "debug", 'd', 0, G_OPTION_ARG_NONE, &(self->priv->debug),
+            N_("Enable debug logging"), NULL },
         { G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_STRING_ARRAY, &remaining, NULL,  N_("[URI...]") },
 
         { NULL }
     };
     GOptionContext *context;
     GError *error = NULL;
-    MarlinApplication *self = MARLIN_APPLICATION (app);
     gint argc = 0;
     gchar **argv = NULL, **uris = NULL;
     gint retval = EXIT_SUCCESS;
@@ -534,6 +537,7 @@ marlin_application_command_line (GApplication *app,
         no_default_window = TRUE;
         no_desktop = FALSE;
     }
+    
 
     if (kill_shell) {
         marlin_application_quit (self);
@@ -581,6 +585,7 @@ marlin_application_command_line (GApplication *app,
 
             uris_array = g_ptr_array_new ();
 
+            //TODO check this
             for (i = 0; remaining[i] != NULL; i++) {
                 file = g_file_new_for_commandline_arg (remaining[i]);
                 if (file != NULL) {
@@ -624,8 +629,10 @@ marlin_application_startup (GApplication *app)
     G_APPLICATION_CLASS (marlin_application_parent_class)->startup (app);
 
     granite_services_logger_initialize ("marlin");
-    //granite_services_logger_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_INFO);
-    granite_services_logger_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_DEBUG);
+    if (self->priv->debug)
+        granite_services_logger_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_DEBUG);
+    else
+        granite_services_logger_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_INFO);
 
     g_message ("Welcome to Marlin");
     g_message ("Version: %s", PACKAGE_VERSION);

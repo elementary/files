@@ -816,7 +816,7 @@ fm_list_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *
 static void
 fm_list_view_remove_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
 {
-    printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
+    printf ("%s %s\n", G_STRFUNC, file->uri);
     GtkTreePath *path;
     GtkTreePath *file_path;
     GtkTreeIter iter;

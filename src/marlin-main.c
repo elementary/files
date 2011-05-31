@@ -11,6 +11,8 @@
 
 #include "marlin-application.h"
 
+#define APP_NAME "marlin"
+
 int
 main (int argc, char *argv[])
 {
@@ -26,8 +28,8 @@ main (int argc, char *argv[])
     bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
     textdomain (GETTEXT_PACKAGE);
 
-    g_set_application_name ("marlin");
-    g_set_prgname ("marlin");
+    g_set_application_name (APP_NAME);
+    g_set_prgname (APP_NAME);
 
     application = marlin_application_new ();
     ret = g_application_run (G_APPLICATION (application), argc, argv);

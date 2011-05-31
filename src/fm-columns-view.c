@@ -157,6 +157,7 @@ fm_columns_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
         file = file_list->data;
         //log_printf (LOG_LEVEL_UNDEFINED, "colorize %s %d\n", file->name, ncolor);
         file->color = tags_colors[ncolor];
+        //TODO check mem alloc
         uri = g_file_get_uri(file->location);
         marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
         g_free (uri);
@@ -685,7 +686,7 @@ fm_columns_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsyn
 static void
 fm_columns_view_remove_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
 {
-    printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
+    printf ("%s %s\n", G_STRFUNC, file->uri);
     GtkTreePath *path;
     GtkTreePath *file_path;
     GtkTreeIter iter;

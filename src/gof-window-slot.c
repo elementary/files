@@ -73,7 +73,7 @@ static void
 gof_window_slot_finalize (GObject *object)
 {
     GOFWindowSlot *slot = GOF_WINDOW_SLOT (object);
-    g_warning ("%s %s\n", G_STRFUNC, g_file_get_uri (slot->directory->location));
+    g_warning ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
 
     //load_dir_async_cancel(slot->directory);
     g_object_unref(slot->directory);
@@ -138,13 +138,13 @@ gof_window_columns_add_preview (GOFWindowSlot *slot, GtkWidget *context_view)
 GOFWindowSlot *
 gof_window_slot_new (GFile *location, GObject *ctab)
 {
-    g_message ("%s %s\n", G_STRFUNC, g_file_get_uri (location));
     GOFWindowSlot *slot;
     slot = g_object_new (GOF_TYPE_WINDOW_SLOT, NULL);
     slot->location = g_object_ref (location);
     slot->ctab = ctab;
 
     slot->directory = gof_directory_async_new_from_gfile (slot->location);
+    g_message ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
 
     return slot;
 }

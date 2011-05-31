@@ -266,7 +266,7 @@ static void
 update_places (MarlinPlacesSidebar *sidebar)
 {
     //amtest
-    printf ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
 
     MarlinBookmark *bookmark;
     GtkTreeSelection *selection;
@@ -574,6 +574,7 @@ update_places (MarlinPlacesSidebar *sidebar)
                 network_mounts = g_list_prepend (network_mounts, g_object_ref (mount));
                 continue;
             }
+            g_free (scheme);
         }
 
         icon = g_mount_get_icon (mount);
@@ -1156,7 +1157,7 @@ drag_motion_callback (GtkTreeView *tree_view,
                 //TODO use GOFFILE instead of uri
                 if (uri != NULL) {
                     GOFFile *file = gof_file_get_by_uri (uri);
-                    printf ("%s %s\n", G_STRFUNC, g_file_get_uri (file->location));
+                    printf ("%s %s\n", G_STRFUNC, file->uri);
                     gof_file_accepts_drop (file, sidebar->drag_list, context, &action);
                     g_object_unref (file);
                     g_free (uri);
@@ -1398,7 +1399,11 @@ drag_data_received_callback (GtkWidget *widget,
             switch (info) {
             case TEXT_URI_LIST:
                 printf ("file_operation_copy_move: drop_uri %s action %d\n", drop_uri, real_action);
-                printf ("%s %s\n", G_STRFUNC, g_file_get_uri (sidebar->drag_list->data));
+
+                char *uri = g_file_get_uri (sidebar->drag_list->data);
+                printf ("%s %s\n", G_STRFUNC, uri);
+                g_free (uri);
+                
                 GFile *drop_file = g_file_new_for_uri (drop_uri);
                 marlin_file_operations_copy_move (sidebar->drag_list, NULL, drop_file,
                                                   real_action, GTK_WIDGET (tree_view),
@@ -1657,7 +1662,12 @@ volume_mounted_cb (GVolume *volume,
         location = g_mount_get_default_location (mount);
 
         if (sidebar->go_to_after_mount_slot != NULL) {
-            printf("%s: go_to %s %s\n", G_STRFUNC, g_file_get_uri (sidebar->go_to_after_mount_slot->location), g_file_get_uri (location));
+            
+            char *uri1 = g_file_get_uri (sidebar->go_to_after_mount_slot->location);
+            char *uri2 = g_file_get_uri (location);
+            printf("%s: go_to %s %s\n", G_STRFUNC, uri1, uri2);
+            g_free (uri1);
+            g_free (uri2);
             
             if ((sidebar->go_to_after_mount_flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW) == 0) { 
                 g_signal_emit_by_name (sidebar->go_to_after_mount_slot->ctab, "path-changed", location);
