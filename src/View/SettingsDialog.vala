@@ -28,7 +28,7 @@ namespace Marlin.View
         {
             set_title(_("Marlin Settings"));
             /*height_request = 600;*/
-            width_request = 500;
+            //width_request = 500;
             set_resizable(false);
 
             var mai_notebook = new Gtk.Notebook();
@@ -99,7 +99,7 @@ namespace Marlin.View
 
             spin_icon_size.mode_changed.connect(spin_icon_size_changed);
 
-            hbox_single_click = new Gtk.HBox(false, 0);
+            hbox_single_click = new Gtk.HBox(false, 10);
 
             label = new Gtk.Label(_("Sidebar icon size:"));
             label.set_alignment(0, 0.5f);

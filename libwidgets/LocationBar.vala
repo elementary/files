@@ -160,6 +160,9 @@ namespace Marlin.View.Chrome
         Window win;
         private int timeout = -1;
 
+        int left_padding;
+        int right_padding;
+
         public Breadcrumbs(UIManager ui, Window win)
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
@@ -177,6 +180,12 @@ namespace Marlin.View.Chrome
 
             button_context = new Gtk.Button().get_style_context();
             entry_context = new Gtk.Entry().get_style_context();
+            button_context.add_class("marlin-pathbar");
+            Gtk.Border border = new Gtk.Border();
+            button_context.get_padding(Gtk.StateFlags.NORMAL, border);
+
+            left_padding = border.left;
+            right_padding = border.right;
 
             set_can_focus(true);
             set_visible_window (false);
@@ -455,7 +464,7 @@ namespace Marlin.View.Chrome
             {
                 if(element.display)
                 {
-                    x_render += element.text_width + space_breads;
+                    x_render += element.width;
                     newpath += element.text + "/";
                     if(x <= x_render + 5 && x > x_previous + 5)
                     {
@@ -553,7 +562,7 @@ namespace Marlin.View.Chrome
                 {
                     if(element.display)
                     {
-                        x_render += element.text_width + space_breads;
+                        x_render += element.width;
                         newpath += element.text + "/";
                         if(x <= x_render + 5 && x > x_previous + 5)
                         {
@@ -636,12 +645,12 @@ namespace Marlin.View.Chrome
             var breads = text.split("/");
             var newelements = new Gee.ArrayList<BreadcrumbsElement>();
             if(breads[0] == "")
-                newelements.add(new BreadcrumbsElement("/"));
+                newelements.add(new BreadcrumbsElement("/", left_padding, right_padding));
             
             foreach(string dir in breads)
             {
                 if(dir != "")
-                newelements.add(new BreadcrumbsElement(dir));
+                newelements.add(new BreadcrumbsElement(dir, left_padding, right_padding));
             }
             
             newelements[0].text = protocol + newelements[0].text;
@@ -773,19 +782,17 @@ namespace Marlin.View.Chrome
             /* If a dir is selected (= mouse hover)*/
             if(selected != -1)
             {
-                y++;
                 int height = get_allocated_height();
                 /* FIXME: this block could be cleaned up, +7 and +5 are
                  * hardcoded. */
-                double x_hl = y;
+                double x_hl = y + right_padding + left_padding;
                 if(selected > 0)
                 {
                     foreach(BreadcrumbsElement element in elements)
                     {
                         if(element.display)
                         {
-                            x_hl += element.text_width;
-                            x_hl += space_breads;
+                            x_hl += element.width;
                         }
                         if(element == elements[selected - 1])
                         {
@@ -800,22 +807,22 @@ namespace Marlin.View.Chrome
                 x_hl += 7;
                 double first_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
                 cr.move_to(first_stop,
-                           y);
+                           y + 1);
                 cr.line_to(x_hl + 3,
                            height/2);
                 cr.line_to(first_stop,
-                           height - y);
+                           height - y - 1);
                 if(selected > 0)
                     x_hl += elements[selected].text_width;
                 else
                     x_hl = elements[selected].text_width + space_breads/2 + y;
                 double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
                 cr.line_to(second_stop,
-                           height - y);
+                           height - y - 1);
                 cr.line_to(x_hl + 3,
                            height/2);
                 cr.line_to(second_stop,
-                           y);
+                           y + 1);
                 cr.close_path();
                 Gdk.RGBA color = Gdk.RGBA();
                 button_context.get_background_color(Gtk.StateFlags.SELECTED, color);
@@ -826,7 +833,6 @@ namespace Marlin.View.Chrome
 
                 cr.set_source(pat);
                 cr.fill();
-                y--;
             }
         }
 
@@ -841,7 +847,7 @@ namespace Marlin.View.Chrome
             {
                 if(element.display)
                 {
-                    x_render += element.text_width + space_breads;
+                    x_render += element.width;
                     if(x <= x_render + 5 && x > x_previous + 5)
                     {
                         selected = elements.index_of(element);
@@ -954,8 +960,7 @@ namespace Marlin.View.Chrome
             {
                 if(element.display)
                 {
-                    element.draw(cr, x_render, margin, height-margin*2, button_context, this);
-                    x_render += element.text_width + space_breads;
+                    x_render = element.draw(cr, x_render, margin, height-margin*2, button_context, this);
                 }
                 i++;
             }
@@ -965,8 +970,7 @@ namespace Marlin.View.Chrome
                 {
                     if(element.display)
                     {
-                        element.draw(cr, x_render, margin, height - margin*2, button_context, this);
-                        x_render += element.text_width + space_breads;
+                        x_render = element.draw(cr, x_render, margin, height - margin*2, button_context, this);
                     }
                 }
             }
@@ -1032,13 +1036,19 @@ namespace Marlin.View.Chrome
     {
         public string text;
         public int offset = 0;
+        double last_height = 0;
         public double text_width = -1;
         public double text_height = -1;
+        public int left_padding = 1;
+        public int right_padding = 1;
+        public double width { get { return text_width + left_padding + right_padding + last_height/2; }}
         Gdk.Pixbuf icon;
         public bool display = true;
-        public BreadcrumbsElement(string text_)
+        public BreadcrumbsElement(string text_, int left_padding, int right_padding)
         {
             text = text_;
+            this.left_padding = left_padding;
+            this.right_padding = right_padding;
         }
         
         public void set_icon(Gdk.Pixbuf icon_)
@@ -1054,8 +1064,9 @@ namespace Marlin.View.Chrome
             this.text_height = Pango.units_to_double(text_height);
         }
         
-        public void draw(Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, Gtk.Widget widget)
+        public double draw(Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, Gtk.Widget widget)
         {
+            last_height = height;
             cr.set_source_rgb(0,0,0);
             Pango.Layout layout = widget.create_pango_layout(text);
             if(text_width < 0 && icon == null)
@@ -1066,6 +1077,7 @@ namespace Marlin.View.Chrome
             {
                 text_width = icon.get_width();
             }
+            x += left_padding;
             
             if(offset != 0)
             {
@@ -1079,26 +1091,30 @@ namespace Marlin.View.Chrome
                 cr.clip();
             }
             
+            x -= offset*5;
             if(icon == null)
             {
-                Gtk.render_layout(button_context, cr, x - offset*5,
+                Gtk.render_layout(button_context, cr, x,
                             y + height/2 - text_height/2, layout);
             }
             else
             {
-                Gdk.cairo_set_source_pixbuf(cr, icon, x - offset*5,
+                Gdk.cairo_set_source_pixbuf(cr, icon, x,
                            y + height/2 - icon.get_height()/2);
                 cr.paint();
             }
             cr.save();
             cr.set_source_rgba(0,0,0,0.5);
+            x += right_padding + text_width;
             /* Draw the separator */
-            cr.translate(x  - offset*5 + text_width - height/4, y + height/2);
+            cr.translate(x - height/4, y + height/2);
             cr.rectangle(0, -height/2 + 2, height, height - 4);
             cr.clip();
             cr.rotate(Math.PI/4);
             Gtk.render_frame(button_context, cr, -height/2, -height/2, Math.sqrt(height*height), Math.sqrt(height*height));
             cr.restore();
+            x += height/2;
+            return x;
         }
     }
     
