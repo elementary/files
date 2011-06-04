@@ -132,3 +132,9 @@ libwidgets/tests/marlinwidgets_tests_vala.stamp
 libwidgets/tests/tests-libwidgets.c
 libwidgets/tests/marlinwidgets_tests
 src/Logger.c
+./*.gmo
+po/ar.gmo
+po/he.gmo
+po/nl.gmo
+po/ru.gmo
+po/sk.gmo

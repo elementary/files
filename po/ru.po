@@ -1,4 +1,4 @@
-# Ukrainian translation for marlin
+# Russian translation for marlin
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the marlin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
@@ -6,11 +6,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-06-01 17:50+0200\n"
-"PO-Revision-Date: 2011-05-19 06:43+0000\n"
-"Last-Translator: xapantu <Unknown>\n"
-"Language-Team: Ukrainian <uk@li.org>\n"
+"PO-Revision-Date: 2011-05-30 12:43+0000\n"
+"Last-Translator: Vadim Rutkovsky <roignac@gmail.com>\n"
+"Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,20 +18,19 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2011-06-02 05:19+0000\n"
 "X-Generator: Launchpad (build 12959)\n"
-"Language: uk\n"
 
 #: ../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Показати додаткові _подробиці"
+msgstr "Показать по_дробности"
 
 #: ../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr " (некоректний символ Unicode)"
+msgstr " (некорректные символы)"
 
 #: ../libcore/gof-file.c:248
 #, c-format
 msgid "link to %s"
-msgstr "посилання на %s"
+msgstr "ссылка на %s"
 
 #. Today, use special word.
 #. * strftime patterns preceeded with the widest
@@ -50,62 +49,62 @@ msgstr "посилання на %s"
 #. 
 #: ../libcore/gof-file.c:697
 msgid "today at 00:00:00 PM"
-msgstr "сьогодні о 00:00:00"
+msgstr "сегодня в 00:00:00"
 
 #: ../libcore/gof-file.c:698
 msgid "today at %-I:%M:%S %p"
-msgstr "сьогодні о %-H:%M:%S %p"
+msgstr "сегодня в %-H:%M:%S %p"
 
 #: ../libcore/gof-file.c:700
 msgid "today at 00:00 PM"
-msgstr "сьогодні о 00:00"
+msgstr "сегодня в 00:00"
 
 #: ../libcore/gof-file.c:701
 msgid "today at %-I:%M %p"
-msgstr ""
+msgstr "сегодня в %-H:%M %p"
 
 #: ../libcore/gof-file.c:703
 msgid "today, 00:00 PM"
-msgstr ""
+msgstr "сегодня, 00:00"
 
 #: ../libcore/gof-file.c:704
 msgid "today, %-I:%M %p"
-msgstr "сьогодні, %-H:%M %p"
+msgstr "сегодня, %-H:%M %p"
 
 #: ../libcore/gof-file.c:706 ../libcore/gof-file.c:707
 msgid "today"
-msgstr "сьогодні"
+msgstr "сегодня"
 
 #. Yesterday, use special word.
 #. * Note to localizers: Same issues as "today" string.
 #. 
 #: ../libcore/gof-file.c:716
 msgid "yesterday at 00:00:00 PM"
-msgstr "вчора о 00:00:00"
+msgstr "вчера в 00:00:00"
 
 #: ../libcore/gof-file.c:717
 msgid "yesterday at %-I:%M:%S %p"
-msgstr "вчора о %-H:%M:%S"
+msgstr "вчера в %-H:%M:%S"
 
 #: ../libcore/gof-file.c:719
 msgid "yesterday at 00:00 PM"
-msgstr "вчора о 00:00"
+msgstr "вчера в 00:00"
 
 #: ../libcore/gof-file.c:720
 msgid "yesterday at %-I:%M %p"
-msgstr ""
+msgstr "вчера в %-H:%M"
 
 #: ../libcore/gof-file.c:722
 msgid "yesterday, 00:00 PM"
-msgstr "вчора, 00:00"
+msgstr "вчера, 00:00"
 
 #: ../libcore/gof-file.c:723
 msgid "yesterday, %-I:%M %p"
-msgstr ""
+msgstr "вчера, %-H:%M"
 
 #: ../libcore/gof-file.c:725 ../libcore/gof-file.c:726
 msgid "yesterday"
-msgstr "вчора"
+msgstr "вчера"
 
 #. Current week, include day of week.
 #. * Note to localizers: Same issues as "today" string.
@@ -114,15 +113,15 @@ msgstr "вчора"
 #. 
 #: ../libcore/gof-file.c:737
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr "Середа, Вересень 00 0000 о 00:00:00"
+msgstr "Воскресенье, 00 сентября 0000 в 00:00:00"
 
 #: ../libcore/gof-file.c:738
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-msgstr ""
+msgstr "%A, %-d %B %Y в %-H:%M:%S"
 
 #: ../libcore/gof-file.c:740
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr "Пнд, 00 Жов 0000 о 00:00:00"
+msgstr "Пон, 00 окт 0000 в 00:00:00"
 
 #: ../libcore/gof-file.c:741
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
@@ -130,7 +129,7 @@ msgstr ""
 
 #: ../libcore/gof-file.c:743
 msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr "Пнд, 00 Жов 0000 о 00:00"
+msgstr ""
 
 #: ../libcore/gof-file.c:744
 msgid "%a, %b %-d %Y at %-I:%M %p"
@@ -1618,9 +1617,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fedik https://launchpad.net/~fedikw\n"
-"  Fitoschido https://launchpad.net/~fitoschido\n"
-"  xapantu https://launchpad.net/~xapantu"
+"  Vadim Rutkovsky https://launchpad.net/~roignac"
 
 #. name, stock id, label
 #: ../src/View/Window.vala:532
@@ -1911,12 +1908,3 @@ msgstr ""
 #: ../src/eel-editable-label.c:3199
 msgid "Input Methods"
 msgstr ""
-
-#~ msgid "Selection mode"
-#~ msgstr "Режим вибору"
-
-#~ msgid "The selection mode"
-#~ msgstr "Режим вибору"
-
-#~ msgid "Single Click"
-#~ msgstr "Одинарний клік"

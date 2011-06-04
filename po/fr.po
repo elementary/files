@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-31 01:04+0200\n"
-"PO-Revision-Date: 2011-05-15 20:18+0000\n"
-"Last-Translator: Adnane Belmadiaf <adnane002@gmail.com>\n"
+"POT-Creation-Date: 2011-06-01 17:50+0200\n"
+"PO-Revision-Date: 2011-06-01 05:21+0000\n"
+"Last-Translator: Devil505 <Unknown>\n"
 "Language-Team: Fr <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2011-05-16 04:53+0000\n"
+"X-Launchpad-Export-Date: 2011-06-02 05:19+0000\n"
 "X-Generator: Launchpad (build 12959)\n"
+"Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: ../libcore/eel-stock-dialogs.c:35
@@ -28,7 +28,7 @@ msgstr "Afficher plus de _détails"
 msgid " (invalid Unicode)"
 msgstr " (Unicode non valide)"
 
-#: ../libcore/gof-file.c:278
+#: ../libcore/gof-file.c:248
 #, c-format
 msgid "link to %s"
 msgstr "lien vers %s"
@@ -47,164 +47,164 @@ msgstr "lien vers %s"
 #. * between the "%" and any numeric directive will turn
 #. * off zero padding, and putting a "_" there will use
 #. * space padding instead of zero padding.
-#.
-#: ../libcore/gof-file.c:727
+#. 
+#: ../libcore/gof-file.c:697
 msgid "today at 00:00:00 PM"
 msgstr "aujourd'hui à 00:00:00"
 
-#: ../libcore/gof-file.c:728
+#: ../libcore/gof-file.c:698
 msgid "today at %-I:%M:%S %p"
-msgstr "Aujourd'hui à %-H:%M:%S"
+msgstr "aujourd'hui à %-H:%M:%S"
 
-#: ../libcore/gof-file.c:730
+#: ../libcore/gof-file.c:700
 msgid "today at 00:00 PM"
-msgstr "Aujourd'hui à 00:00"
+msgstr "aujourd'hui à 00:00"
 
-#: ../libcore/gof-file.c:731
+#: ../libcore/gof-file.c:701
 msgid "today at %-I:%M %p"
-msgstr "Aujourd'hui à %-H:%M"
+msgstr "aujourd'hui à %-H:%M"
 
-#: ../libcore/gof-file.c:733
+#: ../libcore/gof-file.c:703
 msgid "today, 00:00 PM"
-msgstr "Aujourd'hui, 00:00"
+msgstr "aujourd'hui, 00:00"
 
-#: ../libcore/gof-file.c:734
+#: ../libcore/gof-file.c:704
 msgid "today, %-I:%M %p"
-msgstr "Aujourd'hui, %-H:%M"
+msgstr "aujourd'hui, %-H:%M"
 
-#: ../libcore/gof-file.c:736 ../libcore/gof-file.c:737
+#: ../libcore/gof-file.c:706 ../libcore/gof-file.c:707
 msgid "today"
-msgstr "Aujourd'hui"
+msgstr "aujourd'hui"
 
 #. Yesterday, use special word.
 #. * Note to localizers: Same issues as "today" string.
-#.
-#: ../libcore/gof-file.c:746
+#. 
+#: ../libcore/gof-file.c:716
 msgid "yesterday at 00:00:00 PM"
-msgstr "Hier à 00:00:00"
+msgstr "hier à 00:00:00"
 
-#: ../libcore/gof-file.c:747
+#: ../libcore/gof-file.c:717
 msgid "yesterday at %-I:%M:%S %p"
-msgstr "Hier à %-H:%M:%S"
+msgstr "hier à %-H:%M:%S"
 
-#: ../libcore/gof-file.c:749
+#: ../libcore/gof-file.c:719
 msgid "yesterday at 00:00 PM"
-msgstr "Hier à 00:00"
+msgstr "hier à 00:00"
 
-#: ../libcore/gof-file.c:750
+#: ../libcore/gof-file.c:720
 msgid "yesterday at %-I:%M %p"
-msgstr "Hier à %-H:%M"
+msgstr "hier à %-H:%M"
 
-#: ../libcore/gof-file.c:752
+#: ../libcore/gof-file.c:722
 msgid "yesterday, 00:00 PM"
-msgstr "Hier, 00:00"
+msgstr "hier, 00:00"
 
-#: ../libcore/gof-file.c:753
+#: ../libcore/gof-file.c:723
 msgid "yesterday, %-I:%M %p"
-msgstr "Hier, %-H:%M"
+msgstr "hier, %-H:%M"
 
-#: ../libcore/gof-file.c:755 ../libcore/gof-file.c:756
+#: ../libcore/gof-file.c:725 ../libcore/gof-file.c:726
 msgid "yesterday"
-msgstr "Hier"
+msgstr "hier"
 
 #. Current week, include day of week.
 #. * Note to localizers: Same issues as "today" string.
 #. * The width measurement templates correspond to
 #. * the day/month name with the most letters.
-#.
-#: ../libcore/gof-file.c:767
+#. 
+#: ../libcore/gof-file.c:737
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
 msgstr "Vendredi 00 septembre 0000 à 00:00:00"
 
-#: ../libcore/gof-file.c:768
+#: ../libcore/gof-file.c:738
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
 msgstr "%A %-d %B %Y à %-H:%M:%S"
 
-#: ../libcore/gof-file.c:770
+#: ../libcore/gof-file.c:740
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
 msgstr "Lun 00 Oct 0000 à 00:00:00"
 
-#: ../libcore/gof-file.c:771
+#: ../libcore/gof-file.c:741
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
 msgstr "%a %-d %b %Y à %-H:%M:%S"
 
-#: ../libcore/gof-file.c:773
+#: ../libcore/gof-file.c:743
 msgid "Mon, Oct 00 0000 at 00:00 PM"
 msgstr "Lun 00 Oct 0000 à 00:00"
 
-#: ../libcore/gof-file.c:774
+#: ../libcore/gof-file.c:744
 msgid "%a, %b %-d %Y at %-I:%M %p"
 msgstr "%a %-d %b %Y à %-H:%M"
 
-#: ../libcore/gof-file.c:776
+#: ../libcore/gof-file.c:746
 msgid "Oct 00 0000 at 00:00 PM"
 msgstr "00 Oct 0000 à 00:00"
 
-#: ../libcore/gof-file.c:777
+#: ../libcore/gof-file.c:747
 msgid "%b %-d %Y at %-I:%M %p"
 msgstr "%-d %b %Y à %-H:%M"
 
-#: ../libcore/gof-file.c:779
+#: ../libcore/gof-file.c:749
 msgid "Oct 00 0000, 00:00 PM"
 msgstr "00 Oct 0000, 00:00"
 
-#: ../libcore/gof-file.c:780
+#: ../libcore/gof-file.c:750
 msgid "%b %-d %Y, %-I:%M %p"
 msgstr "%-d %b %Y, %-H:%M"
 
-#: ../libcore/gof-file.c:782
+#: ../libcore/gof-file.c:752
 msgid "00/00/00, 00:00 PM"
 msgstr "00/00/00, 00:00"
 
-#: ../libcore/gof-file.c:783
+#: ../libcore/gof-file.c:753
 msgid "%m/%-d/%y, %-I:%M %p"
 msgstr "%-d/%m/%y, %-H:%M"
 
-#: ../libcore/gof-file.c:785
+#: ../libcore/gof-file.c:755
 msgid "00/00/00"
 msgstr "00/00/00"
 
-#: ../libcore/gof-file.c:786
+#: ../libcore/gof-file.c:756
 msgid "%m/%d/%y"
 msgstr "%d/%m/%y"
 
-#: ../libcore/gof-file.c:1533
+#: ../libcore/gof-file.c:1505
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "Échec d'analyse du fichier desktop : %s"
+msgstr "Échec d'analyse du fichier bureau : %s"
 
-#: ../libcore/gof-file.c:1571
+#: ../libcore/gof-file.c:1543
 #, c-format
 msgid "No Exec field specified"
 msgstr "Aucun champ Exec spécifié"
 
-#: ../libcore/gof-file.c:1591
+#: ../libcore/gof-file.c:1563
 #, c-format
 msgid "No URL field specified"
 msgstr "Aucune URL spécifiée"
 
-#: ../libcore/gof-file.c:1597
+#: ../libcore/gof-file.c:1569
 #, c-format
 msgid "Invalid desktop file"
 msgstr "Fichier de bureau non valide"
 
-#: ../libcore/gof-file.c:1821
+#: ../libcore/gof-file.c:1793
 #, c-format
 msgid "Slashes are not allowed in filenames"
 msgstr "Les barres obliques ne sont pas autorisées dans les noms de fichiers"
 
-#: ../libcore/gof-file.c:1841
+#: ../libcore/gof-file.c:1813
 #, c-format
 msgid "Toplevel files cannot be renamed"
 msgstr "Impossible de renommer les fichiers racines"
 
 #. tell the user that the file name provided by the X Direct Save source is invalid
-#: ../src/fm-directory-view.c:1139
+#: ../src/fm-directory-view.c:1137
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "Nom de fichier invalide fourni par le glisser du site XDS"
 
 #. display an error dialog to the user
-#: ../src/fm-directory-view.c:1300
+#: ../src/fm-directory-view.c:1298
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "Échec lors de la création du lien pour \"%s\""
@@ -212,7 +212,7 @@ msgstr "Échec lors de la création du lien pour \"%s\""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2821
+#: ../src/fm-directory-view.c:2819
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 "Prépare le déplacement des fichiers sélectionnés avec la commande « Coller »"
@@ -220,25 +220,26 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2825
+#: ../src/fm-directory-view.c:2823
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "Prépare la copie des fichiers sélectionnés avec la commande « Coller »"
+msgstr ""
+"Prépare la copie des fichiers sélectionnés avec la commande « Coller »"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/fm-directory-view.c:2829
+#: ../src/fm-directory-view.c:2827
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr "Déplacer ou copier les fichiers précédemment coupés ou copiés"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2832
+#: ../src/fm-directory-view.c:2830
 msgid "Paste Into Folder"
 msgstr "Coller dans le dossier"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2833
+#: ../src/fm-directory-view.c:2831
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -248,71 +249,70 @@ msgstr ""
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2836
+#: ../src/fm-directory-view.c:2834
 msgid "_Rename..."
 msgstr "_Renommer..."
 
 #. tooltip
-#: ../src/fm-directory-view.c:2837
+#: ../src/fm-directory-view.c:2835
 msgid "Rename selected item"
-msgstr "Renommer l'objet sélectionné"
+msgstr "Renommer l'élément sélectionné"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2840
+#: ../src/fm-directory-view.c:2838
 msgid "Create New _Folder"
 msgstr "Créer un nouveau _dossier"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2841
+#: ../src/fm-directory-view.c:2839
 msgid "Create a new empty folder inside this folder"
 msgstr "Créer un nouveau dossier vide dans ce dossier"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2844
+#: ../src/fm-directory-view.c:2842
 msgid "Mo_ve to Trash"
 msgstr "Déplacer vers la _corbeille"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2845
+#: ../src/fm-directory-view.c:2843
 msgid "Move each selected item to the Trash"
-msgstr "Met chaque élément sélectionné à la corbeille"
+msgstr "Déplacer chaque élément sélectionné dans la corbeille"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2848
+#: ../src/fm-directory-view.c:2846
 msgid "_Delete"
 msgstr "_Supprimer"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2849
+#: ../src/fm-directory-view.c:2847
 msgid "Delete each selected item, without moving to the Trash"
 msgstr ""
 "Supprime tous les éléments sélectionnés, sans les mettre à la corbeille"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2852
+#: ../src/fm-directory-view.c:2850
 msgid "_Restore"
 msgstr "_Restaurer"
 
 #. name, stock id
 #. label, accelerator
-#: ../src/fm-directory-view.c:2856
+#: ../src/fm-directory-view.c:2854
 msgid "_Properties"
 msgstr "_Propriétés"
 
 #. tooltip
-#: ../src/fm-directory-view.c:2857
+#: ../src/fm-directory-view.c:2855
 msgid "View or modify the properties of each selected item"
 msgstr "Affiche ou modifie les propriétés de chaque élément sélectionné"
 
 #. append insensitive label 'Set Color'
-#: ../src/fm-directory-view.c:2953
-#, fuzzy
+#: ../src/fm-directory-view.c:2951
 msgid "Set Color:"
-msgstr "Sélection de la couleur de la boite"
+msgstr "définir une couleur :"
 
 #: ../src/fm-list-model.c:457
 msgid "(Empty)"
@@ -326,24 +326,24 @@ msgstr "Chargement..."
 msgid "Filename"
 msgstr "Nom"
 
-#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:265
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:268
 msgid "Size"
 msgstr "Taille"
 
-#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:260
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:263
 msgid "Type"
 msgstr "Type"
 
 #. localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso ..
-#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:267
+#: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:270
 msgid "Modified"
 msgstr "Modifié"
 
-#: ../src/marlin-application.c:483
+#: ../src/marlin-application.c:484
 msgid "Show the version of the program."
 msgstr "Affiche la version du programme."
 
-#: ../src/marlin-application.c:485
+#: ../src/marlin-application.c:486
 msgid ""
 "Do not manage the desktop (ignore the preference set in the preferences "
 "dialog)."
@@ -351,19 +351,23 @@ msgstr ""
 "Ne pas gérer le bureau (ignore l'option choisie dans la boîte de dialogue "
 "Préférences)."
 
-#: ../src/marlin-application.c:487
+#: ../src/marlin-application.c:488
 msgid "Open uri(s) in new tab"
 msgstr "Ouvrir l'adresse(s) dans un nouvel onglet"
 
-#: ../src/marlin-application.c:489
+#: ../src/marlin-application.c:490
 msgid "Quit Marlin."
 msgstr "Quitter Marlin"
 
-#: ../src/marlin-application.c:490
+#: ../src/marlin-application.c:492
+msgid "Enable debug logging"
+msgstr "Activer la connexion en mode debug"
+
+#: ../src/marlin-application.c:493
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/marlin-application.c:501
+#: ../src/marlin-application.c:503
 msgid ""
 "\n"
 "\n"
@@ -373,12 +377,12 @@ msgstr ""
 "\n"
 "Parcourt le système de fichiers avec le gestionnaire de fichiers"
 
-#: ../src/marlin-application.c:526
+#: ../src/marlin-application.c:528
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit ne peut pas être utilisée avec des URI."
 
 #. tell the user that we cannot paste
-#: ../src/marlin-clipboard-manager.c:378
+#: ../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
 msgstr "Il n'y a rien à coller dans le presse-papier"
 
@@ -433,13 +437,13 @@ msgstr "Un répertoire plus ancien avec ce nom existe déjà dans \"%s\""
 #: ../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Un répertoire plus récent avec ce nom existe déjà dans \"%s\""
+msgstr "Un dossier plus récent portant le même nom existe déjà dans « %s »."
 
 #: ../libcore/marlin-file-conflict-dialog.c:160
 #: ../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "un autre répertoire avec ce nom existe déjà dans \"%s\""
+msgstr "Un autre dossier portant le même nom existe déjà dans « %s »."
 
 #: ../libcore/marlin-file-conflict-dialog.c:165
 #: ../libcore/marlin-file-conflict-dialog.c:378
@@ -456,7 +460,7 @@ msgstr "Remplacer le dossier « %s » ?"
 #: ../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Un répertoire avec ce nom existe déjà dans \"%s\""
+msgstr "Un dossier portant le même nom existe déjà dans « %s »."
 
 #: ../libcore/marlin-file-conflict-dialog.c:174
 #: ../libcore/marlin-file-conflict-dialog.c:387
@@ -530,7 +534,7 @@ msgstr "Choi_sissez un nouveau nom pour la destination"
 
 #: ../libcore/marlin-file-conflict-dialog.c:712
 msgid "Reset"
-msgstr ""
+msgstr "Réinitialiser"
 
 #. Setup the checkbox to apply the action to all files
 #: ../libcore/marlin-file-conflict-dialog.c:724
@@ -630,7 +634,7 @@ msgstr "Un autre lien vers %s"
 #. Localizers: Feel free to leave out the "st" suffix
 #. * if there's no way to do that nicely for a
 #. * particular language.
-#.
+#. 
 #: ../libcore/marlin-file-operations.c:418
 #, c-format
 msgid "%'dst link to %s"
@@ -640,24 +644,24 @@ msgstr "%'der lien vers %s"
 #: ../libcore/marlin-file-operations.c:422
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "%'de lien vers %s"
 
 #. appended to new link file
 #: ../libcore/marlin-file-operations.c:426
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "%'de lien vers %s"
 
 #. appended to new link file
 #: ../libcore/marlin-file-operations.c:430
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "%'de lien vers %s"
 
 #. Localizers:
 #. * Feel free to leave out the st, nd, rd and th suffix or
 #. * make some or all of them match.
-#.
+#. 
 #. localizers: tag used to detect the first copy of a file
 #: ../libcore/marlin-file-operations.c:468
 msgid " (copy)"
@@ -677,22 +681,22 @@ msgstr " (autre copie)"
 #: ../libcore/marlin-file-operations.c:477
 #: ../libcore/marlin-file-operations.c:487
 msgid "th copy)"
-msgstr ""
+msgstr "ème copie)"
 
 #. localizers: tag used to detect the x1st copy of a file
 #: ../libcore/marlin-file-operations.c:480
 msgid "st copy)"
-msgstr ""
+msgstr "ère copie)"
 
 #. localizers: tag used to detect the x2nd copy of a file
 #: ../libcore/marlin-file-operations.c:482
 msgid "nd copy)"
-msgstr ""
+msgstr "ème copie)"
 
 #. localizers: tag used to detect the x3rd copy of a file
 #: ../libcore/marlin-file-operations.c:484
 msgid "rd copy)"
-msgstr ""
+msgstr "ème copie)"
 
 #. localizers: appended to first file copy
 #: ../libcore/marlin-file-operations.c:501
@@ -716,29 +720,29 @@ msgstr "%s (autre copie)%s"
 #: ../libcore/marlin-file-operations.c:524
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'dème copie)%s"
 
 #. localizers: if in your language there's no difference between 1st, 2nd, 3rd and nth
 #. * plurals, you can leave the st, nd, rd suffixes out and just make all the translated
 #. * strings look like "%s (copy %'d)%s".
-#.
+#. 
 #. localizers: appended to x1st file copy
 #: ../libcore/marlin-file-operations.c:518
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'dère copie)%s"
 
 #. localizers: appended to x2nd file copy
 #: ../libcore/marlin-file-operations.c:520
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'dème copie)%s"
 
 #. localizers: appended to x3rd file copy
 #: ../libcore/marlin-file-operations.c:522
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'dème copie)%s"
 
 #. localizers: opening parentheses to match the "th copy)" string
 #: ../libcore/marlin-file-operations.c:622
@@ -749,7 +753,7 @@ msgstr " ("
 #: ../libcore/marlin-file-operations.c:630
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
@@ -790,21 +794,21 @@ msgstr "Tout les éléments dans la corbeille seront définitivement supprimés.
 #. G_CALLBACK (rescan_shortcut_cb), sidebar);
 #. gtk_widget_show (item);
 #. gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-#.
+#. 
 #. item = gtk_menu_item_new_with_mnemonic (_("_Format"));
 #. sidebar->popup_menu_format_item = item;
 #. g_signal_connect (item, "activate",
 #. G_CALLBACK (format_shortcut_cb), sidebar);
 #. gtk_widget_show (item);
 #. gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-#.
+#. 
 #. item = gtk_menu_item_new_with_mnemonic (_("_Start"));
 #. sidebar->popup_menu_start_item = item;
 #. g_signal_connect (item, "activate",
 #. G_CALLBACK (start_shortcut_cb), sidebar);
 #. gtk_widget_show (item);
 #. gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-#.
+#. 
 #. item = gtk_menu_item_new_with_mnemonic (_("_Stop"));
 #. sidebar->popup_menu_stop_item = item;
 #. g_signal_connect (item, "activate",
@@ -814,7 +818,7 @@ msgstr "Tout les éléments dans la corbeille seront définitivement supprimés.
 #. Empty Trash menu item
 #: ../libcore/marlin-file-operations.c:1422
 #: ../libcore/marlin-file-operations.c:2293
-#: ../src/marlin-places-sidebar.c:2480
+#: ../src/marlin-places-sidebar.c:2490
 msgid "Empty _Trash"
 msgstr "_Vider la corbeille"
 
@@ -847,7 +851,7 @@ msgstr[1] "Encore %'d fichiers à supprimer"
 
 #. To translators: %T will expand to a time like "2 minutes".
 #. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#.
+#. 
 #: ../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
@@ -1138,7 +1142,7 @@ msgstr "%S sur %S"
 #. * "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. *
 #. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#.
+#. 
 #: ../libcore/marlin-file-operations.c:3097
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
@@ -1246,7 +1250,7 @@ msgstr "Copie des fichiers"
 
 #: ../libcore/marlin-file-operations.c:4708
 msgid "Preparing to move to \"%B\""
-msgstr ""
+msgstr "Préparation pour se déplacer vers « %B »"
 
 #: ../libcore/marlin-file-operations.c:4720
 #, c-format
@@ -1353,7 +1357,7 @@ msgstr "Votre lieux communs et des signets"
 #. tooltip
 #: ../src/marlin-places-sidebar.c:337 ../src/View/Window.vala:572
 msgid "Open your personal folder"
-msgstr "Ouvre votre dossier personnel"
+msgstr "Ouvrir votre dossier personnel"
 
 #: ../src/marlin-places-sidebar.c:399
 msgid "Trash"
@@ -1361,7 +1365,7 @@ msgstr "Corbeille"
 
 #: ../src/marlin-places-sidebar.c:401
 msgid "Open the trash"
-msgstr "Ouvre la corbeille"
+msgstr "Ouvrir la corbeille"
 
 #: ../src/marlin-places-sidebar.c:411
 msgid "Devices"
@@ -1377,122 +1381,122 @@ msgstr "Système de fichier"
 
 #: ../src/marlin-places-sidebar.c:425
 msgid "Open the contents of the File System"
-msgstr "Ouvre le contenu du système de fichiers"
+msgstr "Ouvrir le contenu du système de fichiers"
 
 #: ../src/marlin-places-sidebar.c:473 ../src/marlin-places-sidebar.c:496
 #, c-format
 msgid "Mount and open %s"
 msgstr "Monter et ouvrir %s"
 
-#: ../src/marlin-places-sidebar.c:603
+#: ../src/marlin-places-sidebar.c:604
 msgid "Network"
 msgstr "Réseau"
 
-#: ../src/marlin-places-sidebar.c:608
+#: ../src/marlin-places-sidebar.c:609
 msgid "Your network places"
 msgstr "Vos emplacements réseau"
 
-#: ../src/marlin-places-sidebar.c:639
+#: ../src/marlin-places-sidebar.c:640
 msgid "Entire network"
 msgstr "Tout le réseau"
 
-#: ../src/marlin-places-sidebar.c:641
+#: ../src/marlin-places-sidebar.c:642
 msgid "Browse the contents of the network"
 msgstr "Parcourir le réseau"
 
 #. Adjust start/stop items to reflect the type of the drive
-#: ../src/marlin-places-sidebar.c:1601
+#: ../src/marlin-places-sidebar.c:1606
 msgid "_Start"
 msgstr "_Démarrer"
 
-#: ../src/marlin-places-sidebar.c:1602
+#: ../src/marlin-places-sidebar.c:1607
 msgid "_Stop"
 msgstr "_Arrêter"
 
 #. start() for type G_DRIVE_START_STOP_TYPE_SHUTDOWN is normally not used
-#: ../src/marlin-places-sidebar.c:1607
+#: ../src/marlin-places-sidebar.c:1612
 msgid "_Power On"
 msgstr "_Allumer"
 
-#: ../src/marlin-places-sidebar.c:1608
+#: ../src/marlin-places-sidebar.c:1613
 msgid "_Safely Remove Drive"
 msgstr "_Retirer le volume sans risque"
 
-#: ../src/marlin-places-sidebar.c:1611
+#: ../src/marlin-places-sidebar.c:1616
 msgid "_Connect Drive"
 msgstr "_Connecter le volume"
 
-#: ../src/marlin-places-sidebar.c:1612
+#: ../src/marlin-places-sidebar.c:1617
 msgid "_Disconnect Drive"
 msgstr "_Déconnecter le volume"
 
-#: ../src/marlin-places-sidebar.c:1615
+#: ../src/marlin-places-sidebar.c:1620
 msgid "_Start Multi-disk Device"
 msgstr "_Démarrer le périphérique multidisque"
 
-#: ../src/marlin-places-sidebar.c:1616
+#: ../src/marlin-places-sidebar.c:1621
 msgid "_Stop Multi-disk Device"
 msgstr "_Arrêter le périphérique multidisque"
 
 #. stop() for type G_DRIVE_START_STOP_TYPE_PASSWORD is normally not used
-#: ../src/marlin-places-sidebar.c:1620
+#: ../src/marlin-places-sidebar.c:1625
 msgid "_Unlock Drive"
 msgstr "Déverro_uiller le volume"
 
-#: ../src/marlin-places-sidebar.c:1621
+#: ../src/marlin-places-sidebar.c:1626
 msgid "_Lock Drive"
 msgstr "Verroui_ller le volume"
 
-#: ../src/marlin-places-sidebar.c:1690 ../src/marlin-places-sidebar.c:2237
+#: ../src/marlin-places-sidebar.c:1700 ../src/marlin-places-sidebar.c:2247
 #, c-format
 msgid "Unable to start %s"
 msgstr "Impossible de démarrer %s"
 
-#: ../src/marlin-places-sidebar.c:1980 ../src/marlin-places-sidebar.c:2009
-#: ../src/marlin-places-sidebar.c:2038
+#: ../src/marlin-places-sidebar.c:1990 ../src/marlin-places-sidebar.c:2019
+#: ../src/marlin-places-sidebar.c:2048
 #, c-format
 msgid "Unable to eject %s"
 msgstr "Impossible d'éjecter %s"
 
-#: ../src/marlin-places-sidebar.c:2183
+#: ../src/marlin-places-sidebar.c:2193
 #, c-format
 msgid "Unable to poll %s for media changes"
 msgstr "Impossible de vérifier des changements sur le support %s"
 
-#: ../src/marlin-places-sidebar.c:2293
+#: ../src/marlin-places-sidebar.c:2303
 #, c-format
 msgid "Unable to stop %s"
 msgstr "Impossible d'arrêter %s"
 
-#: ../src/marlin-places-sidebar.c:2385
+#: ../src/marlin-places-sidebar.c:2395
 msgid "_Open"
 msgstr "_Ouvrir"
 
-#: ../src/marlin-places-sidebar.c:2393
+#: ../src/marlin-places-sidebar.c:2403
 msgid "Open in New _Tab"
 msgstr "Ouvrir dans un nouvel _onglet"
 
-#: ../src/marlin-places-sidebar.c:2400
+#: ../src/marlin-places-sidebar.c:2410
 msgid "Open in New _Window"
 msgstr "Ouvrir dans une nouvelle _fenêtre"
 
-#: ../src/marlin-places-sidebar.c:2409
+#: ../src/marlin-places-sidebar.c:2419
 msgid "Remove"
 msgstr "Retirer"
 
-#: ../src/marlin-places-sidebar.c:2418
+#: ../src/marlin-places-sidebar.c:2428
 msgid "Rename..."
 msgstr "Renommer…"
 
-#: ../src/marlin-places-sidebar.c:2430
+#: ../src/marlin-places-sidebar.c:2440
 msgid "_Mount"
 msgstr "_Monter"
 
-#: ../src/marlin-places-sidebar.c:2437
+#: ../src/marlin-places-sidebar.c:2447
 msgid "_Unmount"
 msgstr "_Démonter"
 
-#: ../src/marlin-places-sidebar.c:2444
+#: ../src/marlin-places-sidebar.c:2454
 msgid "_Eject"
 msgstr "É_jecter"
 
@@ -1543,7 +1547,7 @@ msgstr "Éléments disponibles"
 msgid "Displayed Items"
 msgstr "Éléments affichés"
 
-#: ../libwidgets/LocationBar.vala:847
+#: ../libwidgets/LocationBar.vala:854
 #, c-format
 msgid "Go to %s"
 msgstr "Aller à %s"
@@ -1551,48 +1555,47 @@ msgstr "Aller à %s"
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:1001
+#: ../libwidgets/LocationBar.vala:1006
 msgid "Cut the selected text to the clipboard"
 msgstr "Couper le texte sélectionné dans le presse-papiers"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:1005
+#: ../libwidgets/LocationBar.vala:1010
 msgid "Copy the selected text to the clipboard"
 msgstr "Copie le texte sélectionné dans le presse-papiers"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:1009 ../libwidgets/LocationBar.vala:1013
+#: ../libwidgets/LocationBar.vala:1014 ../libwidgets/LocationBar.vala:1018
 msgid "Paste the text stored on the clipboard"
 msgstr "Coller le texte contenu dans le presse-papiers"
 
 #. TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
 #. we are in listview: size, type, modified
-#: ../src/View/ContextView.vala:259
+#: ../src/View/ContextView.vala:262
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
-#: ../src/View/ContextView.vala:263
-#, fuzzy
+#: ../src/View/ContextView.vala:266
 msgid "Target"
-msgstr "large"
+msgstr "Cible"
 
-#: ../src/View/ContextView.vala:268
+#: ../src/View/ContextView.vala:271
 msgid "Owner"
-msgstr ""
+msgstr "Propriétaire"
 
-#: ../src/View/ContextView.vala:305
+#: ../src/View/ContextView.vala:308
 msgid "Other..."
 msgstr "Autre ..."
 
-#: ../src/View/ContextView.vala:308
+#: ../src/View/ContextView.vala:311
 msgid "Set as default"
 msgstr "Définir comme valeur par défaut"
 
-#: ../src/View/ContextView.vala:415 ../src/View/ContextView.vala:470
+#: ../src/View/ContextView.vala:426
 msgid "Open with:"
 msgstr "Ouvrir avec :"
 
@@ -1606,7 +1609,7 @@ msgstr "Un seul click pour ouvrir :"
 
 #: ../src/View/SettingsDialog.vala:59
 msgid "Mouse auto-selection speed:"
-msgstr ""
+msgstr "La vitesse d'auto-sélection de la souris :"
 
 #: ../src/View/SettingsDialog.vala:72
 msgid "Behavior"
@@ -1634,15 +1637,15 @@ msgstr "Taille d'icône du panneau latéral"
 
 #: ../src/View/SettingsDialog.vala:115
 msgid "locale"
-msgstr ""
+msgstr "locale"
 
 #: ../src/View/SettingsDialog.vala:116
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: ../src/View/SettingsDialog.vala:117
 msgid "informal"
-msgstr ""
+msgstr "informelle"
 
 #: ../src/View/SettingsDialog.vala:136
 msgid "Date format:"
@@ -1665,6 +1668,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Adnane Belmadiaf https://launchpad.net/~daker\n"
+"  Devil505 https://launchpad.net/~devil505\n"
 "  Pierre Slamich https://launchpad.net/~pierre-slamich\n"
 "  xapantu https://launchpad.net/~xapantu"
 
@@ -1691,7 +1695,7 @@ msgstr "A_ller à"
 #. name, stock id, label
 #: ../src/View/Window.vala:536
 msgid "_Help"
-msgstr "_Aide"
+msgstr "Aid_e"
 
 #. { "ColorMenu", null, N_("Set _Color") },
 #. name, stock id, label
@@ -1712,7 +1716,7 @@ msgstr "Nouvel _onglet"
 #. tooltip
 #: ../src/View/Window.vala:543
 msgid "Open another tab for the displayed location"
-msgstr "Ouvre un nouvel onglet de Nautilus pour cet emplacement"
+msgstr "Ouvrir un nouvel onglet pour cet emplacement"
 
 #. name, stock id
 #. label, accelerator
@@ -1750,7 +1754,7 @@ msgstr "Ouvrir le dossier _parent"
 
 #: ../src/View/Window.vala:561
 msgid "Open the parent folder"
-msgstr "Ouvre le dossier parent"
+msgstr "Ouvrir le dossier parent"
 
 #: ../src/View/Window.vala:563
 msgid "_Back"
@@ -1838,7 +1842,7 @@ msgstr "A _propos de..."
 #. tooltip
 #: ../src/View/Window.vala:608
 msgid "Display credits"
-msgstr ""
+msgstr "Afficher les credits"
 
 #. name, stock id
 #. label, accelerator
@@ -1900,15 +1904,15 @@ msgstr "Vue en colonnes"
 
 #: ../src/eel-editable-label.c:344
 msgid "Text"
-msgstr ""
+msgstr "Texte"
 
 #: ../src/eel-editable-label.c:345
 msgid "The text of the label."
-msgstr ""
+msgstr "Le texte de l'étiquette."
 
 #: ../src/eel-editable-label.c:351
 msgid "Justification"
-msgstr ""
+msgstr "Justification"
 
 #: ../src/eel-editable-label.c:352
 msgid ""
@@ -1916,53 +1920,58 @@ msgid ""
 "This does NOT affect the alignment of the label within its allocation. See "
 "GtkMisc::xalign for that."
 msgstr ""
+"L'alignement des lignes dans le texte de l'étiquette par rapport aux autres. "
+"Cela n'affecte pas l'alignement de l'étiquette à l'intérieur de son "
+"allocation. Voir GtkMisc::xalign pour cela."
 
 #: ../src/eel-editable-label.c:360
 msgid "Line wrap"
-msgstr ""
+msgstr "Coupure des lignes"
 
 #: ../src/eel-editable-label.c:361
 msgid "If set, wrap lines if the text becomes too wide."
-msgstr ""
+msgstr "Si défini, coupe les lignes si le texte devient trop long."
 
 #: ../src/eel-editable-label.c:368
 msgid "Small size"
-msgstr ""
+msgstr "Petite taille"
 
 #: ../src/eel-editable-label.c:369
 msgid "If set, use small size text."
-msgstr ""
+msgstr "Si défini, utilise un texte de petite taille."
 
 #: ../src/eel-editable-label.c:376
 msgid "Cursor Position"
-msgstr ""
+msgstr "Position du curseur"
 
 #: ../src/eel-editable-label.c:377
 msgid "The current position of the insertion cursor in chars."
-msgstr ""
+msgstr "La position actuelle du curseur d'insertion, en caractères."
 
 #: ../src/eel-editable-label.c:386
-#, fuzzy
 msgid "Selection Bound"
-msgstr "Mode de sélection"
+msgstr "Limite de la sélection"
 
 #: ../src/eel-editable-label.c:387
 msgid ""
 "The position of the opposite end of the selection from the cursor in chars."
 msgstr ""
+"La position du coin opposé de la sélection depuis le curseur, en caractères."
 
 #: ../src/eel-editable-label.c:3188
 msgid "Select All"
-msgstr ""
+msgstr "Tout sélectionner"
 
 #: ../src/eel-editable-label.c:3199
 msgid "Input Methods"
-msgstr ""
+msgstr "Méthodes de saisie"
 
 #~ msgid "Whether the items in the view can be activated with single clicks"
 #~ msgstr ""
-#~ "Si les éléments dans la vue peuvent être activés ou non avec un simple "
-#~ "clique"
+#~ "Si les éléments dans la vue peuvent être activés ou non avec un simple clique"
+
+#~ msgid "Selection mode"
+#~ msgstr "Mode de sélection"
 
 #~ msgid "The selection mode"
 #~ msgstr "Le mode de sélection"
@@ -1993,6 +2002,9 @@ msgstr ""
 
 #~ msgid "Space which is inserted between cells of an item"
 #~ msgstr "Espace inséré entre les cellules d'un élément"
+
+#~ msgid "Selection Box Color"
+#~ msgstr "Sélection de la couleur de la boite"
 
 #~ msgid "Color of the selection box"
 #~ msgstr "Couleur de la boite de sélection"
@@ -2033,8 +2045,8 @@ msgstr ""
 #~ msgid ""
 #~ "How the text and icon of each item are positioned relative to each other"
 #~ msgstr ""
-#~ "Comment le texte et l'icône sont positionnés relativement l'un par "
-#~ "rapport à l'autre"
+#~ "Comment le texte et l'icône sont positionnés relativement l'un par rapport à "
+#~ "l'autre"
 
 #~ msgid "Space which is inserted between grid columns"
 #~ msgstr "Espace inséré entre les colonnes de la grille"

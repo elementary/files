@@ -1,4 +1,4 @@
-# Ukrainian translation for marlin
+# Arabic translation for marlin
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the marlin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
@@ -6,32 +6,31 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-06-01 17:50+0200\n"
-"PO-Revision-Date: 2011-05-19 06:43+0000\n"
-"Last-Translator: xapantu <Unknown>\n"
-"Language-Team: Ukrainian <uk@li.org>\n"
+"PO-Revision-Date: 2011-05-18 21:56+0000\n"
+"Last-Translator: Adnane Belmadiaf <adnane002@gmail.com>\n"
+"Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
+"3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
 "X-Launchpad-Export-Date: 2011-06-02 05:19+0000\n"
 "X-Generator: Launchpad (build 12959)\n"
-"Language: uk\n"
 
 #: ../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Показати додаткові _подробиці"
+msgstr "أظهر _تفاصيل أكثر"
 
 #: ../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr " (некоректний символ Unicode)"
+msgstr " (يونيكود غير صحيح)"
 
 #: ../libcore/gof-file.c:248
 #, c-format
 msgid "link to %s"
-msgstr "посилання на %s"
+msgstr "وصلة إلى %s"
 
 #. Today, use special word.
 #. * strftime patterns preceeded with the widest
@@ -50,62 +49,62 @@ msgstr "посилання на %s"
 #. 
 #: ../libcore/gof-file.c:697
 msgid "today at 00:00:00 PM"
-msgstr "сьогодні о 00:00:00"
+msgstr "اليوم في 00:00:00 م"
 
 #: ../libcore/gof-file.c:698
 msgid "today at %-I:%M:%S %p"
-msgstr "сьогодні о %-H:%M:%S %p"
+msgstr "اليوم في %-OI:%OM:%OS %p"
 
 #: ../libcore/gof-file.c:700
 msgid "today at 00:00 PM"
-msgstr "сьогодні о 00:00"
+msgstr "اليوم في 00:00 م"
 
 #: ../libcore/gof-file.c:701
 msgid "today at %-I:%M %p"
-msgstr ""
+msgstr "اليوم في %-OI:%OM %p"
 
 #: ../libcore/gof-file.c:703
 msgid "today, 00:00 PM"
-msgstr ""
+msgstr "اليوم، 00:00 م"
 
 #: ../libcore/gof-file.c:704
 msgid "today, %-I:%M %p"
-msgstr "сьогодні, %-H:%M %p"
+msgstr "اليوم، %-OI:%OM %p"
 
 #: ../libcore/gof-file.c:706 ../libcore/gof-file.c:707
 msgid "today"
-msgstr "сьогодні"
+msgstr "اليوم"
 
 #. Yesterday, use special word.
 #. * Note to localizers: Same issues as "today" string.
 #. 
 #: ../libcore/gof-file.c:716
 msgid "yesterday at 00:00:00 PM"
-msgstr "вчора о 00:00:00"
+msgstr "أمس في 00:00:00 م"
 
 #: ../libcore/gof-file.c:717
 msgid "yesterday at %-I:%M:%S %p"
-msgstr "вчора о %-H:%M:%S"
+msgstr "أمس في %-OI:%OM:%OS %p"
 
 #: ../libcore/gof-file.c:719
 msgid "yesterday at 00:00 PM"
-msgstr "вчора о 00:00"
+msgstr "أمس في 00:00 م"
 
 #: ../libcore/gof-file.c:720
 msgid "yesterday at %-I:%M %p"
-msgstr ""
+msgstr "أمس في %-OI:%OM %p"
 
 #: ../libcore/gof-file.c:722
 msgid "yesterday, 00:00 PM"
-msgstr "вчора, 00:00"
+msgstr "أمس، 00:00 م"
 
 #: ../libcore/gof-file.c:723
 msgid "yesterday, %-I:%M %p"
-msgstr ""
+msgstr "أمس، %-OI:%OM %p"
 
 #: ../libcore/gof-file.c:725 ../libcore/gof-file.c:726
 msgid "yesterday"
-msgstr "вчора"
+msgstr ""
 
 #. Current week, include day of week.
 #. * Note to localizers: Same issues as "today" string.
@@ -114,59 +113,59 @@ msgstr "вчора"
 #. 
 #: ../libcore/gof-file.c:737
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr "Середа, Вересень 00 0000 о 00:00:00"
+msgstr "الأربعاء، سبتمبر 00 0000 في 00:00:00 م"
 
 #: ../libcore/gof-file.c:738
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-msgstr ""
+msgstr "%A، %-Od %B %Y في %-OI:%OM:%OS %p"
 
 #: ../libcore/gof-file.c:740
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr "Пнд, 00 Жов 0000 о 00:00:00"
+msgstr "الإثنين، أكتوبر 00 0000 في 00:00:00 م"
 
 #: ../libcore/gof-file.c:741
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
-msgstr ""
+msgstr "%A، %-Od %b %Y في %-OI:%OM:%OS %p"
 
 #: ../libcore/gof-file.c:743
 msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr "Пнд, 00 Жов 0000 о 00:00"
+msgstr "الاثنين، أكتوبر 00 0000 عند الساعة 00:00 م"
 
 #: ../libcore/gof-file.c:744
 msgid "%a, %b %-d %Y at %-I:%M %p"
-msgstr ""
+msgstr "%A، %-Od %b %Y في %-OI:%OM %p"
 
 #: ../libcore/gof-file.c:746
 msgid "Oct 00 0000 at 00:00 PM"
-msgstr ""
+msgstr "أكتوبر 00 0000 عند الساعة 00:00 م"
 
 #: ../libcore/gof-file.c:747
 msgid "%b %-d %Y at %-I:%M %p"
-msgstr ""
+msgstr "%-Od %b %Y في %-OI:%OM %p"
 
 #: ../libcore/gof-file.c:749
 msgid "Oct 00 0000, 00:00 PM"
-msgstr ""
+msgstr "أكتوبر 00 0000، 00:00 م"
 
 #: ../libcore/gof-file.c:750
 msgid "%b %-d %Y, %-I:%M %p"
-msgstr ""
+msgstr "%-Od %b %Y، %-OI:%OM %p"
 
 #: ../libcore/gof-file.c:752
 msgid "00/00/00, 00:00 PM"
-msgstr ""
+msgstr "00/00/00، 00:00 م"
 
 #: ../libcore/gof-file.c:753
 msgid "%m/%-d/%y, %-I:%M %p"
-msgstr ""
+msgstr "%Om/%-Od/%Oy، %-OI:%OM %p"
 
 #: ../libcore/gof-file.c:755
 msgid "00/00/00"
-msgstr ""
+msgstr "00/00/00"
 
 #: ../libcore/gof-file.c:756
 msgid "%m/%d/%y"
-msgstr ""
+msgstr "%d‏/%m‏/%Y"
 
 #: ../libcore/gof-file.c:1505
 #, c-format
@@ -176,27 +175,27 @@ msgstr ""
 #: ../libcore/gof-file.c:1543
 #, c-format
 msgid "No Exec field specified"
-msgstr ""
+msgstr "لم يتم تحديد حقل Exec"
 
 #: ../libcore/gof-file.c:1563
 #, c-format
 msgid "No URL field specified"
-msgstr ""
+msgstr "لم يتم تحديد حقل URL"
 
 #: ../libcore/gof-file.c:1569
 #, c-format
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "ملف سطح المكتب غير صالح"
 
 #: ../libcore/gof-file.c:1793
 #, c-format
 msgid "Slashes are not allowed in filenames"
-msgstr ""
+msgstr "غير مسموح باستخدام الشرطات المائلة (/) في أسماء الملفات"
 
 #: ../libcore/gof-file.c:1813
 #, c-format
 msgid "Toplevel files cannot be renamed"
-msgstr ""
+msgstr "لا يمكن تغيير اسم ملفات المستوى الأول"
 
 #. tell the user that the file name provided by the X Direct Save source is invalid
 #: ../src/fm-directory-view.c:1137
@@ -207,28 +206,28 @@ msgstr ""
 #: ../src/fm-directory-view.c:1298
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr ""
+msgstr "فشل في تكوين وصلة للعنوان التالي\"%s\""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
 #: ../src/fm-directory-view.c:2819
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
+msgstr "جَهّز الملفات المختارة ليتم نقلها بأمر لصق"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
 #: ../src/fm-directory-view.c:2823
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
+msgstr "جَهّز الملفات المختارة ليتم نسخها بأمر لصق"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
 #: ../src/fm-directory-view.c:2827
 msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
+msgstr "انقل أو انسخ الملفات المختارة سابقا بأمر قص أو انسخ"
 
 #. name, stock id
 #. label, accelerator
@@ -247,34 +246,34 @@ msgstr ""
 #. label, accelerator
 #: ../src/fm-directory-view.c:2834
 msgid "_Rename..."
-msgstr ""
+msgstr "_غيّر الاسم..."
 
 #. tooltip
 #: ../src/fm-directory-view.c:2835
 msgid "Rename selected item"
-msgstr ""
+msgstr "غيّر اسم العنصر المختار"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/fm-directory-view.c:2838
 msgid "Create New _Folder"
-msgstr ""
+msgstr "أنشئ _مجلدا جديدا"
 
 #. tooltip
 #: ../src/fm-directory-view.c:2839
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "أنشئ مجلدا جديدا فارغا داخل هذا المجلد"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/fm-directory-view.c:2842
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "ا_نقل إلى المهملات"
 
 #. tooltip
 #: ../src/fm-directory-view.c:2843
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "انقل كل عنصر مختار إلى المهملات"
 
 #. name, stock id
 #. label, accelerator
@@ -285,24 +284,24 @@ msgstr ""
 #. tooltip
 #: ../src/fm-directory-view.c:2847
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "احذف كل عنصر مختار، دون نقله إلى المهملات"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/fm-directory-view.c:2850
 msgid "_Restore"
-msgstr ""
+msgstr "ا_ستعد"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/fm-directory-view.c:2854
 msgid "_Properties"
-msgstr ""
+msgstr "ال_خصائص"
 
 #. tooltip
 #: ../src/fm-directory-view.c:2855
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "اعرض أو عدّل خصائص كل عنصر مختار"
 
 #. append insensitive label 'Set Color'
 #: ../src/fm-directory-view.c:2951
@@ -311,19 +310,19 @@ msgstr ""
 
 #: ../src/fm-list-model.c:457
 msgid "(Empty)"
-msgstr ""
+msgstr "(فارغ)"
 
 #: ../src/fm-list-model.c:459
 msgid "Loading..."
-msgstr ""
+msgstr "يحمّل..."
 
 #: ../src/fm-list-view.c:54
 msgid "Filename"
-msgstr ""
+msgstr "اسم الملف"
 
 #: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:268
 msgid "Size"
-msgstr ""
+msgstr "الحجم"
 
 #: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:263
 msgid "Type"
@@ -336,13 +335,13 @@ msgstr ""
 
 #: ../src/marlin-application.c:484
 msgid "Show the version of the program."
-msgstr ""
+msgstr "اعرض إصدارة البرنامج."
 
 #: ../src/marlin-application.c:486
 msgid ""
 "Do not manage the desktop (ignore the preference set in the preferences "
 "dialog)."
-msgstr ""
+msgstr "لا تدِر سطح المكتب (تجاهل مجموعة التفضيلات في حوار التفضيلات)."
 
 #: ../src/marlin-application.c:488
 msgid "Open uri(s) in new tab"
@@ -358,7 +357,7 @@ msgstr ""
 
 #: ../src/marlin-application.c:493
 msgid "[URI...]"
-msgstr ""
+msgstr "[مسار...]"
 
 #: ../src/marlin-application.c:503
 msgid ""
@@ -366,6 +365,9 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"تصفح نظام الملفات بمدير الملفات"
 
 #: ../src/marlin-application.c:528
 msgid "--quit cannot be used with URIs."
@@ -374,23 +376,23 @@ msgstr ""
 #. tell the user that we cannot paste
 #: ../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "ﻻ يوجد شئ في الحافظة لنسخه"
 
 #: ../src/marlin-dnd.c:779
 msgid "_Move Here"
-msgstr ""
+msgstr "ان_قل هنا"
 
 #: ../src/marlin-dnd.c:784
 msgid "_Copy Here"
-msgstr ""
+msgstr "ان_سخ هنا"
 
 #: ../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr ""
+msgstr "ا_ربط هنا"
 
 #: ../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr ""
+msgstr "اجعلها ال_خلفية"
 
 #: ../src/marlin-dnd.c:801
 msgid "Cancel"
@@ -400,13 +402,13 @@ msgstr ""
 #: ../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr ""
+msgstr "فشل في تنفيذ الملف \"%s\""
 
 #: ../libcore/marlin-file-conflict-dialog.c:143
 #: ../libcore/marlin-file-conflict-dialog.c:356
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "أأدمج المجلد \"%s\"؟"
 
 #: ../libcore/marlin-file-conflict-dialog.c:147
 #: ../libcore/marlin-file-conflict-dialog.c:360
@@ -414,111 +416,113 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"الدمج سيسأل التأكيد قبل استبدال أي ملفات في المجلد تتعارض مع الملفات الجاري "
+"نقلها."
 
 #: ../libcore/marlin-file-conflict-dialog.c:152
 #: ../libcore/marlin-file-conflict-dialog.c:365
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "هناك مجلّد أقدم بنفس الاسم موجود في \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:156
 #: ../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "هناك مجلّد أحدث بنفس الاسم موجود في \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:160
 #: ../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "هناك مجلّد آخر بنفس الاسم موجود في \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:165
 #: ../libcore/marlin-file-conflict-dialog.c:378
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "استبداله سيحذف كل الملفات داخل المجلد."
 
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "أأستبدل المجلد \"%s\"؟"
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "هناك مجلّد بنفس الاسم موجود في \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:174
 #: ../libcore/marlin-file-conflict-dialog.c:387
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "أأستبدل الملف \"%s\"؟"
 
 #: ../libcore/marlin-file-conflict-dialog.c:176
 #: ../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "استبداله سيستبدل محتواه."
 
 #: ../libcore/marlin-file-conflict-dialog.c:180
 #: ../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "هناك ملف أقدم بنفس الاسم موجود في \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:184
 #: ../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "هناك ملف أحدث بنفس الاسم موجود في \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:188
 #: ../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "هناك ملف آخر بنفس الاسم موجود في \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:250
 #: ../libcore/marlin-file-conflict-dialog.c:456
 msgid "Original file"
-msgstr ""
+msgstr "الملف الأصلي"
 
 #: ../libcore/marlin-file-conflict-dialog.c:251
 #: ../libcore/marlin-file-conflict-dialog.c:282
 #: ../libcore/marlin-file-conflict-dialog.c:457
 #: ../libcore/marlin-file-conflict-dialog.c:478
 msgid "Size:"
-msgstr ""
+msgstr "الحجم:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:254
 #: ../libcore/marlin-file-conflict-dialog.c:285
 #: ../libcore/marlin-file-conflict-dialog.c:460
 #: ../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr ""
+msgstr "النوع:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:257
 #: ../libcore/marlin-file-conflict-dialog.c:288
 #: ../libcore/marlin-file-conflict-dialog.c:463
 #: ../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr ""
+msgstr "آخر تعديل:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:281
 #: ../libcore/marlin-file-conflict-dialog.c:477
 msgid "Replace with"
-msgstr ""
+msgstr "إستبدال بـ"
 
 #: ../libcore/marlin-file-conflict-dialog.c:310
 #: ../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr ""
+msgstr "إدمج"
 
 #. Setup the expander for the rename action
 #: ../libcore/marlin-file-conflict-dialog.c:698
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "_حدد اسما جديدا للوِجهة"
 
 #: ../libcore/marlin-file-conflict-dialog.c:712
 msgid "Reset"
@@ -1618,9 +1622,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fedik https://launchpad.net/~fedikw\n"
-"  Fitoschido https://launchpad.net/~fitoschido\n"
-"  xapantu https://launchpad.net/~xapantu"
+"  Adnane Belmadiaf https://launchpad.net/~daker"
 
 #. name, stock id, label
 #: ../src/View/Window.vala:532
@@ -1911,12 +1913,3 @@ msgstr ""
 #: ../src/eel-editable-label.c:3199
 msgid "Input Methods"
 msgstr ""
-
-#~ msgid "Selection mode"
-#~ msgstr "Режим вибору"
-
-#~ msgid "The selection mode"
-#~ msgstr "Режим вибору"
-
-#~ msgid "Single Click"
-#~ msgstr "Одинарний клік"

@@ -1,4 +1,4 @@
-# Ukrainian translation for marlin
+# Dutch translation for marlin
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the marlin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
@@ -6,32 +6,30 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-06-01 17:50+0200\n"
-"PO-Revision-Date: 2011-05-19 06:43+0000\n"
-"Last-Translator: xapantu <Unknown>\n"
-"Language-Team: Ukrainian <uk@li.org>\n"
+"PO-Revision-Date: 2011-05-30 17:19+0000\n"
+"Last-Translator: Mitch Dries <Unknown>\n"
+"Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2011-06-02 05:19+0000\n"
 "X-Generator: Launchpad (build 12959)\n"
-"Language: uk\n"
 
 #: ../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Показати додаткові _подробиці"
+msgstr "Toon meer _details"
 
 #: ../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr " (некоректний символ Unicode)"
+msgstr " (ongeldige Unicode)"
 
 #: ../libcore/gof-file.c:248
 #, c-format
 msgid "link to %s"
-msgstr "посилання на %s"
+msgstr "link naar %s"
 
 #. Today, use special word.
 #. * strftime patterns preceeded with the widest
@@ -50,62 +48,62 @@ msgstr "посилання на %s"
 #. 
 #: ../libcore/gof-file.c:697
 msgid "today at 00:00:00 PM"
-msgstr "сьогодні о 00:00:00"
+msgstr "vandaag om 00:00:00 PM"
 
 #: ../libcore/gof-file.c:698
 msgid "today at %-I:%M:%S %p"
-msgstr "сьогодні о %-H:%M:%S %p"
+msgstr "vandaag om %-I:%M:%S %p"
 
 #: ../libcore/gof-file.c:700
 msgid "today at 00:00 PM"
-msgstr "сьогодні о 00:00"
+msgstr "vandaag om 00:00 PM"
 
 #: ../libcore/gof-file.c:701
 msgid "today at %-I:%M %p"
-msgstr ""
+msgstr "vandaag om %-I:%M %p"
 
 #: ../libcore/gof-file.c:703
 msgid "today, 00:00 PM"
-msgstr ""
+msgstr "vandaag, 00:00 PM"
 
 #: ../libcore/gof-file.c:704
 msgid "today, %-I:%M %p"
-msgstr "сьогодні, %-H:%M %p"
+msgstr "vandaag, %-I:%M %p"
 
 #: ../libcore/gof-file.c:706 ../libcore/gof-file.c:707
 msgid "today"
-msgstr "сьогодні"
+msgstr "vandaag"
 
 #. Yesterday, use special word.
 #. * Note to localizers: Same issues as "today" string.
 #. 
 #: ../libcore/gof-file.c:716
 msgid "yesterday at 00:00:00 PM"
-msgstr "вчора о 00:00:00"
+msgstr "gisteren om 00:00:00 PM"
 
 #: ../libcore/gof-file.c:717
 msgid "yesterday at %-I:%M:%S %p"
-msgstr "вчора о %-H:%M:%S"
+msgstr "gisteren om %-I:%M:%S %p"
 
 #: ../libcore/gof-file.c:719
 msgid "yesterday at 00:00 PM"
-msgstr "вчора о 00:00"
+msgstr "gisteren om 00:00 PM"
 
 #: ../libcore/gof-file.c:720
 msgid "yesterday at %-I:%M %p"
-msgstr ""
+msgstr "gisteren om %-I:%M:%S %p"
 
 #: ../libcore/gof-file.c:722
 msgid "yesterday, 00:00 PM"
-msgstr "вчора, 00:00"
+msgstr "gisteren, 00:00 PM"
 
 #: ../libcore/gof-file.c:723
 msgid "yesterday, %-I:%M %p"
-msgstr ""
+msgstr "gisteren, %-I:%M:%S %p"
 
 #: ../libcore/gof-file.c:725 ../libcore/gof-file.c:726
 msgid "yesterday"
-msgstr "вчора"
+msgstr "gisteren"
 
 #. Current week, include day of week.
 #. * Note to localizers: Same issues as "today" string.
@@ -114,59 +112,59 @@ msgstr "вчора"
 #. 
 #: ../libcore/gof-file.c:737
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr "Середа, Вересень 00 0000 о 00:00:00"
+msgstr "Woensdag 00 september 0000 om 00:00:00 PM"
 
 #: ../libcore/gof-file.c:738
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-msgstr ""
+msgstr "%A, %B %-d %Y om %-I:%M:%S %p"
 
 #: ../libcore/gof-file.c:740
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr "Пнд, 00 Жов 0000 о 00:00:00"
+msgstr "Ma 00 okt 0000 om 00:00:00"
 
 #: ../libcore/gof-file.c:741
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
-msgstr ""
+msgstr "%a %-d %b %Y om %H:%M:%S"
 
 #: ../libcore/gof-file.c:743
 msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr "Пнд, 00 Жов 0000 о 00:00"
+msgstr "Ma 00 okt 0000 om 00:00"
 
 #: ../libcore/gof-file.c:744
 msgid "%a, %b %-d %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y om %H:%M"
 
 #: ../libcore/gof-file.c:746
 msgid "Oct 00 0000 at 00:00 PM"
-msgstr ""
+msgstr "00 okt 0000 om 00:00"
 
 #: ../libcore/gof-file.c:747
 msgid "%b %-d %Y at %-I:%M %p"
-msgstr ""
+msgstr "%-d %b %Y om %H:%M"
 
 #: ../libcore/gof-file.c:749
 msgid "Oct 00 0000, 00:00 PM"
-msgstr ""
+msgstr "00 okt 0000, 00:00"
 
 #: ../libcore/gof-file.c:750
 msgid "%b %-d %Y, %-I:%M %p"
-msgstr ""
+msgstr "%-d %b %Y, %H:%M"
 
 #: ../libcore/gof-file.c:752
 msgid "00/00/00, 00:00 PM"
-msgstr ""
+msgstr "00/00/00, 00:00"
 
 #: ../libcore/gof-file.c:753
 msgid "%m/%-d/%y, %-I:%M %p"
-msgstr ""
+msgstr "%-d/%m/%y, %H:%M"
 
 #: ../libcore/gof-file.c:755
 msgid "00/00/00"
-msgstr ""
+msgstr "00/00/00"
 
 #: ../libcore/gof-file.c:756
 msgid "%m/%d/%y"
-msgstr ""
+msgstr "%d/%m/%y"
 
 #: ../libcore/gof-file.c:1505
 #, c-format
@@ -176,38 +174,38 @@ msgstr ""
 #: ../libcore/gof-file.c:1543
 #, c-format
 msgid "No Exec field specified"
-msgstr ""
+msgstr "Geen Exec veld gespecificeerd"
 
 #: ../libcore/gof-file.c:1563
 #, c-format
 msgid "No URL field specified"
-msgstr ""
+msgstr "Geen URL-veld gespecifieerd"
 
 #: ../libcore/gof-file.c:1569
 #, c-format
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "Ongeldig desktop-bestand"
 
 #: ../libcore/gof-file.c:1793
 #, c-format
 msgid "Slashes are not allowed in filenames"
-msgstr ""
+msgstr "Slashes zijn niet toegestaan in bestandsnamen"
 
 #: ../libcore/gof-file.c:1813
 #, c-format
 msgid "Toplevel files cannot be renamed"
-msgstr ""
+msgstr "Toplevel bestanden kunnen niet hernoemd worden"
 
 #. tell the user that the file name provided by the X Direct Save source is invalid
 #: ../src/fm-directory-view.c:1137
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "Ongeldige bestandsnaam voorzien door XDS drag site"
 
 #. display an error dialog to the user
 #: ../src/fm-directory-view.c:1298
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr ""
+msgstr "Link voor de URL \"%s\" maken mislukt"
 
 #. name, stock id
 #. label, accelerator
@@ -215,6 +213,8 @@ msgstr ""
 #: ../src/fm-directory-view.c:2819
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
+"Bereid de geselecteerde bestanden voor om verplaatst te wordden met het plak-"
+"commando"
 
 #. name, stock id
 #. label, accelerator
@@ -222,6 +222,8 @@ msgstr ""
 #: ../src/fm-directory-view.c:2823
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
+"Bereid de geselecteerde bestanden voor om gekopieerd te wordden met het plak-"
+"commando"
 
 #. name, stock id
 #. label, accelerator
@@ -229,12 +231,14 @@ msgstr ""
 #: ../src/fm-directory-view.c:2827
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
+"Verplaats of kopieer de voorheen geselecteerde bestanden door een Knip of "
+"Kopieer commando"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/fm-directory-view.c:2830
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "Plak In Map"
 
 #. tooltip
 #: ../src/fm-directory-view.c:2831
@@ -242,115 +246,121 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Verplaats of kopieer de voorheen geselecteerde bestanden door een Knip of "
+"Kopieer commando in de geselecteerde map"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/fm-directory-view.c:2834
 msgid "_Rename..."
-msgstr ""
+msgstr "_Hernoem..."
 
 #. tooltip
 #: ../src/fm-directory-view.c:2835
 msgid "Rename selected item"
-msgstr ""
+msgstr "Hernoem geselecteerde bestand"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/fm-directory-view.c:2838
 msgid "Create New _Folder"
-msgstr ""
+msgstr "Maak Nieuwe _Map"
 
 #. tooltip
 #: ../src/fm-directory-view.c:2839
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "Maak een nieuwe lege map in deze map"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/fm-directory-view.c:2842
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "_Verplaats naar Prullenbak"
 
 #. tooltip
 #: ../src/fm-directory-view.c:2843
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "Verplaats elk geselecteerd bestand naar de Prullenbak"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/fm-directory-view.c:2846
 msgid "_Delete"
-msgstr ""
+msgstr "Ver_wijder"
 
 #. tooltip
 #: ../src/fm-directory-view.c:2847
 msgid "Delete each selected item, without moving to the Trash"
 msgstr ""
+"Verwijder elk geslecteerde bestand, zonder het naar de Prullenbak te "
+"verplaatsen"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/fm-directory-view.c:2850
 msgid "_Restore"
-msgstr ""
+msgstr "_Herstellen"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/fm-directory-view.c:2854
 msgid "_Properties"
-msgstr ""
+msgstr "_Eigenschappen"
 
 #. tooltip
 #: ../src/fm-directory-view.c:2855
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "Bekijk of bewerk de eigenschappen van elk geselecteerd bestand"
 
 #. append insensitive label 'Set Color'
 #: ../src/fm-directory-view.c:2951
 msgid "Set Color:"
-msgstr ""
+msgstr "Kies Kleur:"
 
 #: ../src/fm-list-model.c:457
 msgid "(Empty)"
-msgstr ""
+msgstr "(Leeg)"
 
 #: ../src/fm-list-model.c:459
 msgid "Loading..."
-msgstr ""
+msgstr "Laden..."
 
 #: ../src/fm-list-view.c:54
 msgid "Filename"
-msgstr ""
+msgstr "Bestandsnaam"
 
 #: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:268
 msgid "Size"
-msgstr ""
+msgstr "Grootte"
 
 #: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:263
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #. localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso ..
 #: ../src/fm-list-view.c:54 ../src/View/ContextView.vala:270
 msgid "Modified"
-msgstr ""
+msgstr "Bewerkt"
 
 #: ../src/marlin-application.c:484
 msgid "Show the version of the program."
-msgstr ""
+msgstr "Toon de versie van het programma."
 
 #: ../src/marlin-application.c:486
 msgid ""
 "Do not manage the desktop (ignore the preference set in the preferences "
 "dialog)."
 msgstr ""
+"Het werkblad niet beheren (negeer de ingestelde voorkeuren in het "
+"voorkeurenvenster)."
 
 #: ../src/marlin-application.c:488
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "Open uri('s) in een nieuwe tab"
 
 #: ../src/marlin-application.c:490
 msgid "Quit Marlin."
-msgstr ""
+msgstr "Sluit Marlin af."
 
 #: ../src/marlin-application.c:492
 msgid "Enable debug logging"
@@ -358,7 +368,7 @@ msgstr ""
 
 #: ../src/marlin-application.c:493
 msgid "[URI...]"
-msgstr ""
+msgstr "[URI...]"
 
 #: ../src/marlin-application.c:503
 msgid ""
@@ -366,47 +376,50 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"Bestandssysteem doorbladeren met het bestandsbeheer"
 
 #: ../src/marlin-application.c:528
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit kan niet gebruikt worden met URI's."
 
 #. tell the user that we cannot paste
 #: ../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "Er is niets op het klmebord om te plakken"
 
 #: ../src/marlin-dnd.c:779
 msgid "_Move Here"
-msgstr ""
+msgstr "Hierheen _Verplaatsen"
 
 #: ../src/marlin-dnd.c:784
 msgid "_Copy Here"
-msgstr ""
+msgstr "Hierheen _Kopiëren"
 
 #: ../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr ""
+msgstr "Hierheen Ver_wijzen"
 
 #: ../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr ""
+msgstr "Als _Achtergrond Instellen"
 
 #: ../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #. display an error to the user
 #: ../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr ""
+msgstr "Kon bestand \"%s\" niet uitvoeren"
 
 #: ../libcore/marlin-file-conflict-dialog.c:143
 #: ../libcore/marlin-file-conflict-dialog.c:356
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "Map ‘%s’ samenvoegen?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:147
 #: ../libcore/marlin-file-conflict-dialog.c:360
@@ -414,210 +427,213 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Bij samenvoegen zal eerst om bevestiging gevraagd worden voordat bestanden "
+"in de map die conflicteren met de verplaatste bestanden, vervangen worden."
 
 #: ../libcore/marlin-file-conflict-dialog.c:152
 #: ../libcore/marlin-file-conflict-dialog.c:365
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Er bestaat al een oudere map met dezelfde naam in \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:156
 #: ../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Er bestaat al een nieuwere map met dezelfde naam in \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:160
 #: ../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Er bestaat al een andere map met dezelfde naam in \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:165
 #: ../libcore/marlin-file-conflict-dialog.c:378
 msgid "Replacing it will remove all files in the folder."
 msgstr ""
+"Bij het vervangen ervan zullen alle bestanden in de map verwijderd worden."
 
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "Vervang map \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Er bestaat al een map met dezelfde naam in \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:174
 #: ../libcore/marlin-file-conflict-dialog.c:387
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "Vervang bestand \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:176
 #: ../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Vervangen zal de inhoud overschrijven."
 
 #: ../libcore/marlin-file-conflict-dialog.c:180
 #: ../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Er bestaat al een ouder bestand met dezelfde naam in \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:184
 #: ../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Er bestaat al een nieuwer bestand met dezelfde naam in \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:188
 #: ../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Er bestaat al een ander bestand met dezelfde naam in \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:250
 #: ../libcore/marlin-file-conflict-dialog.c:456
 msgid "Original file"
-msgstr ""
+msgstr "Origineel bestand"
 
 #: ../libcore/marlin-file-conflict-dialog.c:251
 #: ../libcore/marlin-file-conflict-dialog.c:282
 #: ../libcore/marlin-file-conflict-dialog.c:457
 #: ../libcore/marlin-file-conflict-dialog.c:478
 msgid "Size:"
-msgstr ""
+msgstr "Grootte:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:254
 #: ../libcore/marlin-file-conflict-dialog.c:285
 #: ../libcore/marlin-file-conflict-dialog.c:460
 #: ../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr ""
+msgstr "Type:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:257
 #: ../libcore/marlin-file-conflict-dialog.c:288
 #: ../libcore/marlin-file-conflict-dialog.c:463
 #: ../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr ""
+msgstr "Laatst bewerkt:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:281
 #: ../libcore/marlin-file-conflict-dialog.c:477
 msgid "Replace with"
-msgstr ""
+msgstr "Vervang met"
 
 #: ../libcore/marlin-file-conflict-dialog.c:310
 #: ../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr ""
+msgstr "Samenvoegen"
 
 #. Setup the expander for the rename action
 #: ../libcore/marlin-file-conflict-dialog.c:698
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "_Selecteer een nieuwe naam voor de bestemming"
 
 #: ../libcore/marlin-file-conflict-dialog.c:712
 msgid "Reset"
-msgstr ""
+msgstr "Herstel"
 
 #. Setup the checkbox to apply the action to all files
 #: ../libcore/marlin-file-conflict-dialog.c:724
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Pas deze actie toe op alle bestanden"
 
 #: ../libcore/marlin-file-conflict-dialog.c:735
 #: ../libcore/marlin-file-operations.c:205
 msgid "_Skip"
-msgstr ""
+msgstr "_Overslaan"
 
 #: ../libcore/marlin-file-conflict-dialog.c:740
 msgid "Re_name"
-msgstr ""
+msgstr "Her_noemen"
 
 #: ../libcore/marlin-file-conflict-dialog.c:746
 msgid "Replace"
-msgstr ""
+msgstr "Vervang"
 
 #: ../libcore/marlin-file-conflict-dialog.c:819
 msgid "File conflict"
-msgstr ""
+msgstr "Bestandsconflict"
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "S_kip All"
-msgstr ""
+msgstr "_Alles Overslaan"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "_Retry"
-msgstr ""
+msgstr "Opnieuw P_roberen"
 
 #: ../libcore/marlin-file-operations.c:208
 msgid "Delete _All"
-msgstr ""
+msgstr "Alles Ver_wijderen"
 
 #: ../libcore/marlin-file-operations.c:209
 msgid "_Replace"
-msgstr ""
+msgstr "Ve_rvangen"
 
 #: ../libcore/marlin-file-operations.c:210
 msgid "Replace _All"
-msgstr ""
+msgstr "_AllesVervangen"
 
 #: ../libcore/marlin-file-operations.c:211
 msgid "_Merge"
-msgstr ""
+msgstr "Sa_menvoegen"
 
 #: ../libcore/marlin-file-operations.c:212
 msgid "Merge _All"
-msgstr ""
+msgstr "_Alles Samenvoegen"
 
 #: ../libcore/marlin-file-operations.c:213
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "_Toch Kopiëren"
 
 #: ../libcore/marlin-file-operations.c:299
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d seconde"
+msgstr[1] "%'d seconden"
 
 #: ../libcore/marlin-file-operations.c:304
 #: ../libcore/marlin-file-operations.c:315
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d minuut"
+msgstr[1] "%'d minuten"
 
 #: ../libcore/marlin-file-operations.c:314
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d uur"
+msgstr[1] "%'d uren"
 
 #: ../libcore/marlin-file-operations.c:322
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ongeveer %'d uur"
+msgstr[1] "ongeveer %'d uren"
 
 #. appended to new link file
 #: ../libcore/marlin-file-operations.c:398
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "Verwijzing naar %s"
 
 #. appended to new link file
 #: ../libcore/marlin-file-operations.c:402
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "Nog een verwijzing naar %s"
 
 #. Localizers: Feel free to leave out the "st" suffix
 #. * if there's no way to do that nicely for a
@@ -626,25 +642,25 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:418
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "%'de verwijzing naar %s"
 
 #. appended to new link file
 #: ../libcore/marlin-file-operations.c:422
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "%'de verwijzing naar %s"
 
 #. appended to new link file
 #: ../libcore/marlin-file-operations.c:426
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "%'de verwijzing naar %s"
 
 #. appended to new link file
 #: ../libcore/marlin-file-operations.c:430
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "%'de verwijzing naar %s"
 
 #. Localizers:
 #. * Feel free to leave out the st, nd, rd and th suffix or
@@ -653,12 +669,12 @@ msgstr ""
 #. localizers: tag used to detect the first copy of a file
 #: ../libcore/marlin-file-operations.c:468
 msgid " (copy)"
-msgstr ""
+msgstr " (kopie)"
 
 #. localizers: tag used to detect the second copy of a file
 #: ../libcore/marlin-file-operations.c:470
 msgid " (another copy)"
-msgstr ""
+msgstr " (nog een kopie)"
 
 #. localizers: tag used to detect the x11th copy of a file
 #. localizers: tag used to detect the x12th copy of a file
@@ -669,34 +685,34 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:477
 #: ../libcore/marlin-file-operations.c:487
 msgid "th copy)"
-msgstr ""
+msgstr "e kopie"
 
 #. localizers: tag used to detect the x1st copy of a file
 #: ../libcore/marlin-file-operations.c:480
 msgid "st copy)"
-msgstr ""
+msgstr "ste kopie)"
 
 #. localizers: tag used to detect the x2nd copy of a file
 #: ../libcore/marlin-file-operations.c:482
 msgid "nd copy)"
-msgstr ""
+msgstr "e kopie)"
 
 #. localizers: tag used to detect the x3rd copy of a file
 #: ../libcore/marlin-file-operations.c:484
 msgid "rd copy)"
-msgstr ""
+msgstr "e kopie"
 
 #. localizers: appended to first file copy
 #: ../libcore/marlin-file-operations.c:501
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (kopie)%s"
 
 #. localizers: appended to second file copy
 #: ../libcore/marlin-file-operations.c:503
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (nog een kopie)%s"
 
 #. localizers: appended to x11th file copy
 #. localizers: appended to x12th file copy
@@ -708,7 +724,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:524
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'de kopie)%s"
 
 #. localizers: if in your language there's no difference between 1st, 2nd, 3rd and nth
 #. * plurals, you can leave the st, nd, rd suffixes out and just make all the translated
@@ -718,34 +734,35 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:518
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'de kopie)%s"
 
 #. localizers: appended to x2nd file copy
 #: ../libcore/marlin-file-operations.c:520
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'de kopie)%s"
 
 #. localizers: appended to x3rd file copy
 #: ../libcore/marlin-file-operations.c:522
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'de kopie)%s"
 
 #. localizers: opening parentheses to match the "th copy)" string
 #: ../libcore/marlin-file-operations.c:622
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #. localizers: opening parentheses of the "th copy)" string
 #: ../libcore/marlin-file-operations.c:630
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
+"Bent u zeker dat u \"%B\" definitief uit de prullenbak wilt verwijderen?"
 
 #: ../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -756,20 +773,24 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
+"Weet u zeker dat u het geselecteerde item blijvend wilt verwijderen uit de "
+"prullenbak?"
 msgstr[1] ""
+"Weet u zeker dat u de %'d geselecteerde items blijvend wilt verwijderen uit "
+"de prullenbak?"
 
 #: ../libcore/marlin-file-operations.c:1394
 #: ../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "Als u een bestand verwijdert, zal het definitief verloren gaan."
 
 #: ../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Verwijder alle bestanden van de Prullenbak?"
 
 #: ../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Alle bestanden in de Prullenbak zullen definitief verwijderd worden."
 
 #. item = gtk_menu_item_new_with_mnemonic (_("_Detect Media"));
 #. sidebar->popup_menu_rescan_item = item;
@@ -803,11 +824,11 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:2293
 #: ../src/marlin-places-sidebar.c:2490
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Leeg _Prullenbak"
 
 #: ../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "Bent u zeker dat u het bestand \"%B\" definitief wilt verwijderen?"
 
 #: ../libcore/marlin-file-operations.c:1453
 #, c-format
@@ -815,19 +836,21 @@ msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] ""
+"Weet u zeker dat u het geselecteerde item blijvend wilt verwijderen?"
 msgstr[1] ""
+"Weet u zeker dat u de %'d geselecteerde items permanent wilt verwijderen?"
 
 #: ../libcore/marlin-file-operations.c:1478
 #: ../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr ""
+msgstr "Bestanden verwijderen"
 
 #: ../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d te verwijderen bestand over"
+msgstr[1] "%'d te verwijderen bestanden over"
 
 #. To translators: %T will expand to a time like "2 minutes".
 #. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
@@ -835,8 +858,8 @@ msgstr[1] ""
 #: ../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%T resterend"
+msgstr[1] "%T resterend"
 
 #: ../libcore/marlin-file-operations.c:1592
 #: ../libcore/marlin-file-operations.c:1626
@@ -844,13 +867,15 @@ msgstr[1] ""
 #: ../libcore/marlin-file-operations.c:1742
 #: ../libcore/marlin-file-operations.c:2556
 msgid "Error while deleting."
-msgstr ""
+msgstr "Fout bij het verwijderen."
 
 #: ../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"Bestanden in de map ‘%B’ kunnen niet worden gewist omdat u geen rechten "
+"heeft om ze te zien."
 
 #: ../libcore/marlin-file-operations.c:1599
 #: ../libcore/marlin-file-operations.c:2615
@@ -858,246 +883,265 @@ msgstr ""
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
+"Er is een fout opgetreden bij het ophalen van de informatie van de bestanden "
+"in de map \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:1608
 #: ../libcore/marlin-file-operations.c:3615
 msgid "_Skip files"
-msgstr ""
+msgstr "Bestanden _overslaan"
 
 #: ../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
+"De map \"%B\" can niet verwijderd worden omdat u geen permissies om te lezen "
+"heeft."
 
 #: ../libcore/marlin-file-operations.c:1632
 #: ../libcore/marlin-file-operations.c:2654
 #: ../libcore/marlin-file-operations.c:3651
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "Er is een fout opgetreden bij het lezen van de map \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "Kon de map %B niet verwijderen."
 
 #: ../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "Er is een fout opgetreden bij het verwijderen van %B."
 
 #: ../libcore/marlin-file-operations.c:1819
 #: ../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
-msgstr ""
+msgstr "Bestanden in de prullenbak gooien"
 
 #: ../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d bestand over om in de prullenbak te gooien"
+msgstr[1] "%'d bestanden over om in de prullenbak te gooien"
 
 #: ../libcore/marlin-file-operations.c:1884
 msgid "Cannot move file to trash, do you want to delete immediately?"
 msgstr ""
+"Kan bestand niet naar de prullenbak verplaatsen, wilt u het direct "
+"verwijderen?"
 
 #: ../libcore/marlin-file-operations.c:1885
 msgid "The file \"%B\" cannot be moved to the trash."
-msgstr ""
+msgstr "Het bestand ‘%B’ kan niet in de prullenbak worden gegooid."
 
 #: ../libcore/marlin-file-operations.c:2061
 msgid "Trashing Files"
-msgstr ""
+msgstr "Bestanden in prullenbak gooien"
 
 #: ../libcore/marlin-file-operations.c:2063
 msgid "Deleting Files"
-msgstr ""
+msgstr "Bestanden wissen"
 
 #: ../libcore/marlin-file-operations.c:2126
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "Kan %V niet uitwerpen"
 
 #: ../libcore/marlin-file-operations.c:2128
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "Kan %V niet ontkoppelen"
 
 #: ../libcore/marlin-file-operations.c:2283
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "Wilt u de prullenbak legen vóór het ontkoppelen?"
 
 #: ../libcore/marlin-file-operations.c:2285
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"Om vrije ruimte op het volume te verkrijgen, moet de prullenbak geleegd "
+"worden. Alle verwijderde bestanden op dit volume zullen definitief verloren "
+"gaan."
 
 #: ../libcore/marlin-file-operations.c:2291
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "Prullenbak _niet legen"
 
 #: ../libcore/marlin-file-operations.c:2346
 msgid "Emptying the trash"
-msgstr ""
+msgstr "Prullenbak wordt geleegd"
 
 #: ../libcore/marlin-file-operations.c:2413
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "Kon %s niet aankoppelen"
 
 #: ../libcore/marlin-file-operations.c:2491
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kopiëren van %'d bestand voorbereiden (%S)"
+msgstr[1] "Kopiëren van %'d bestanden voorbereiden (%S)"
 
 #: ../libcore/marlin-file-operations.c:2497
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Verplaatsen van %'d bestand voorbereiden (%S)"
+msgstr[1] "Verplaatsen van %'d bestanden voorbereiden (%S)"
 
 #: ../libcore/marlin-file-operations.c:2503
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Verwijderen van %'d bestand voorbereiden (%S)"
+msgstr[1] "Verwijderen van %'d bestanden voorbereiden (%S)"
 
 #: ../libcore/marlin-file-operations.c:2509
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "In prullenbak gooien van %'d bestand voorbereiden"
+msgstr[1] "In prullenbak gooien van %'d bestanden voorbereiden"
 
 #: ../libcore/marlin-file-operations.c:2552
 #: ../libcore/marlin-file-operations.c:3472
 #: ../libcore/marlin-file-operations.c:3598
 #: ../libcore/marlin-file-operations.c:3643
 msgid "Error while copying."
-msgstr ""
+msgstr "Fout bij het kopiëren."
 
 #: ../libcore/marlin-file-operations.c:2554
 #: ../libcore/marlin-file-operations.c:3596
 #: ../libcore/marlin-file-operations.c:3641
 msgid "Error while moving."
-msgstr ""
+msgstr "Fout bij het verplaatsen."
 
 #: ../libcore/marlin-file-operations.c:2558
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "Fout bij het verplaatsen naar de prullenbak."
 
 #: ../libcore/marlin-file-operations.c:2612
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
+"Bestanden in de map ‘%B’ kunnen niet worden afgehandeld omdat u geen rechten "
+"heeft om ze te zien."
 
 #: ../libcore/marlin-file-operations.c:2651
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
+"De map ‘%B’ kan niet worden afgehandeld omdat u er geen leesrechten voor "
+"heeft"
 
 #: ../libcore/marlin-file-operations.c:2728
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
+"Het bestand ‘%B’ kan niet worden afgehandeld omdat u er geen leesrechten "
+"voor heeft."
 
 #: ../libcore/marlin-file-operations.c:2731
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "Er is een fout opgetreden bij het ophalen van informatie over ‘%B’."
 
 #: ../libcore/marlin-file-operations.c:2831
 #: ../libcore/marlin-file-operations.c:2873
 #: ../libcore/marlin-file-operations.c:2906
 #: ../libcore/marlin-file-operations.c:2936
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "Fout bij het kopiëren naar \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:2835
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "U heeft geen permissies om de doelmap te benaderen."
 
 #: ../libcore/marlin-file-operations.c:2837
 msgid "There was an error getting information about the destination."
 msgstr ""
+"Er is een fout opgetreden bij het ophalen van de informatie over de "
+"bestemming."
 
 #: ../libcore/marlin-file-operations.c:2874
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "De bestemming is geen map."
 
 #: ../libcore/marlin-file-operations.c:2907
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
+"Er is niet genoeg ruimte op de bestemming. Probeer bestanden te verwijderen "
+"om ruimte vrij te maken."
 
 #: ../libcore/marlin-file-operations.c:2909
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "Er is %S beschikbaar, maar %S is vereist."
 
 #: ../libcore/marlin-file-operations.c:2937
 msgid "The destination is read-only."
-msgstr ""
+msgstr "De bestemming is alleen-lezen."
 
 #: ../libcore/marlin-file-operations.c:2998
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "Verplaatsen van ‘%B’ naar ‘%B’"
 
 #: ../libcore/marlin-file-operations.c:2999
 msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+msgstr "Kopiëren van ‘%B’ naar ‘%B’"
 
 #: ../libcore/marlin-file-operations.c:3003
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "Dupliceren van ‘%B’"
 
 #: ../libcore/marlin-file-operations.c:3007
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Verplaatsen van %'d bestand (in ‘%B’) naar ‘%B’"
+msgstr[1] "Verplaatsen van %'d bestanden (in ‘%B’) naar ‘%B’"
 
 #: ../libcore/marlin-file-operations.c:3010
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kopiëren van %'d bestand (in ‘%B’) naar ‘%B’"
+msgstr[1] "Kopiëren van %'d bestanden (in ‘%B’) naar ‘%B’"
 
 #: ../libcore/marlin-file-operations.c:3017
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Dupliceren van %'d bestand (in ‘%B’)"
+msgstr[1] "Dupliceren van %'d bestanden (in ‘%B’)"
 
 #: ../libcore/marlin-file-operations.c:3026
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Verplaatsen van %'d bestand naar ‘%B’"
+msgstr[1] "Verplaatsen van %'d bestanden naar ‘%B’"
 
 #: ../libcore/marlin-file-operations.c:3030
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kopiëren van %'d bestand naar ‘%B’"
+msgstr[1] "Kopiëren van %'d bestanden naar ‘%B’"
 
 #: ../libcore/marlin-file-operations.c:3035
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Dupliceren van %'d bestand"
+msgstr[1] "Dupliceren van %'d bestanden"
 
 #. To translators: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
 #: ../libcore/marlin-file-operations.c:3086
 #, c-format
 msgid "%S of %S"
-msgstr ""
+msgstr "%S van %S"
 
 #. To translators: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
 #. * "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
@@ -1107,201 +1151,209 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:3097
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%S van %S — %T resterend (%S/sec)"
+msgstr[1] "%S van %S — %T resterend (%S/sec)"
 
 #: ../libcore/marlin-file-operations.c:3476
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
+"Kan de map ‘%B’ niet kopiëren omdat u geen rechten heeft om deze aan te "
+"maken in het doel."
 
 #: ../libcore/marlin-file-operations.c:3479
 msgid "There was an error creating the folder \"%B\"."
-msgstr ""
+msgstr "Er is een fout opgetreden bij het aanmaken van de map ‘%B’."
 
 #: ../libcore/marlin-file-operations.c:3603
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
+"Kan bestanden in de map ‘%B’ niet kopiëren omdat u geen rechten heeft om ze "
+"te zien."
 
 #: ../libcore/marlin-file-operations.c:3648
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Kan de map ‘%B’ niet kopiëren omdat u er geen leesrechten voor heeft"
 
 #: ../libcore/marlin-file-operations.c:3693
 #: ../libcore/marlin-file-operations.c:4390
 #: ../libcore/marlin-file-operations.c:4964
 msgid "Error while moving \"%B\"."
-msgstr ""
+msgstr "Fout bij het verplaatsen van '%B'."
 
 #: ../libcore/marlin-file-operations.c:3694
 msgid "Could not remove the source folder."
-msgstr ""
+msgstr "Kon de bronmap niet verwijderen."
 
 #: ../libcore/marlin-file-operations.c:3779
 #: ../libcore/marlin-file-operations.c:3820
 #: ../libcore/marlin-file-operations.c:4392
 #: ../libcore/marlin-file-operations.c:4463
 msgid "Error while copying \"%B\"."
-msgstr ""
+msgstr "Fout bij het kopiëren van ‘%B’."
 
 #: ../libcore/marlin-file-operations.c:3780
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr ""
+msgstr "Kon bestanden niet verwijderen uit de reeds bestaande map %F."
 
 #: ../libcore/marlin-file-operations.c:3821
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr ""
+msgstr "Kon het reeds bestaande bestand %F niet verwijderen."
 
 #. the run_warning() frees all strings passed in automatically
 #: ../libcore/marlin-file-operations.c:4150
 #: ../libcore/marlin-file-operations.c:4808
 msgid "You cannot move a folder into itself."
-msgstr ""
+msgstr "Een map kan niet naar zichzelf verplaatst worden."
 
 #: ../libcore/marlin-file-operations.c:4151
 #: ../libcore/marlin-file-operations.c:4809
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "Een map kan niet naar zichzelf gekopieerd worden."
 
 #: ../libcore/marlin-file-operations.c:4152
 #: ../libcore/marlin-file-operations.c:4810
 msgid "The destination folder is inside the source folder."
-msgstr ""
+msgstr "De doelmap bevindt zich binnenin de bronmap."
 
 #. the run_warning() frees all strings passed in automatically
 #: ../libcore/marlin-file-operations.c:4183
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "Een bestand kan niet naar zichzelf verplaatst worden."
 
 #: ../libcore/marlin-file-operations.c:4184
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "Een bestand kan niet naar zichzelf gekopieerd worden."
 
 #: ../libcore/marlin-file-operations.c:4185
 msgid "The source file would be overwritten by the destination."
-msgstr ""
+msgstr "Het bronbestand zou door het doelbestand overschreven worden."
 
 #: ../libcore/marlin-file-operations.c:4394
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
+msgstr "Kon het bestaande bestand met dezelfde naam in %F niet verwijderen."
 
 #: ../libcore/marlin-file-operations.c:4464
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr ""
+"Er is een fout opgetreden tijdens het kopiëren van het bestand naar %F."
 
 #: ../libcore/marlin-file-operations.c:4692
 msgid "Copying Files"
-msgstr ""
+msgstr "Bestanden kopiëren"
 
 #: ../libcore/marlin-file-operations.c:4708
 msgid "Preparing to move to \"%B\""
-msgstr ""
+msgstr "Verplaatsen naar \"%B\" voorbereiden"
 
 #: ../libcore/marlin-file-operations.c:4720
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Verplaatsen van %'d bestand voorbereiden"
+msgstr[1] "Verplaatsen van %'d bestanden voorbereiden"
 
 #: ../libcore/marlin-file-operations.c:4965
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr ""
+"Er is een fout opgetreden tijdens het verplaatsten van het bestand naar %F."
 
 #: ../libcore/marlin-file-operations.c:5228
 msgid "Moving Files"
-msgstr ""
+msgstr "Verplaatsen van bestanden"
 
 #: ../libcore/marlin-file-operations.c:5244
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "Aanmaken van verwijzingen in ‘%B’."
 
 #: ../libcore/marlin-file-operations.c:5255
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Aanmaken van verwijzing naar %'d bestand"
+msgstr[1] "Aanmaken van verwijzingen naar %'d bestanden"
 
 #: ../libcore/marlin-file-operations.c:5385
 msgid "Error while creating link to %B."
-msgstr ""
+msgstr "Fout bij het aanmaken van een verwijzing naar %B."
 
 #: ../libcore/marlin-file-operations.c:5387
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "Symbolische verwijzingen alleen ondersteund voor lokale bestanden"
 
 #: ../libcore/marlin-file-operations.c:5390
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "Dit doel ondersteunt geen symbolische verwijzingen."
 
 #: ../libcore/marlin-file-operations.c:5393
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr ""
+"Er is een fout opgetreden bij het aanmaken van de symbolische verwijzing in "
+"%F."
 
 #: ../libcore/marlin-file-operations.c:5696
 #: ../libcore/marlin-file-operations.c:5699
 msgid "Setting permissions"
-msgstr ""
+msgstr "Toegangsrechten instellen"
 
 #. localizers: the initial name of a new folder
 #: ../libcore/marlin-file-operations.c:5941
 msgid "untitled folder"
-msgstr ""
+msgstr "naamloze map"
 
 #. localizers: the initial name of a new empty file
 #: ../libcore/marlin-file-operations.c:5949
 msgid "new file"
-msgstr ""
+msgstr "nieuw bestand"
 
 #: ../libcore/marlin-file-operations.c:6099
 msgid "Error while creating directory %B."
-msgstr ""
+msgstr "Er is een fout opgetreden bij het aanmaken van de map %B"
 
 #: ../libcore/marlin-file-operations.c:6101
 msgid "Error while creating file %B."
-msgstr ""
+msgstr "Fout bij het maken van het bestand %B."
 
 #: ../libcore/marlin-file-operations.c:6103
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr ""
+msgstr "Er is een fout opgetreden bij het aanmaken van de map %F."
 
 #. job->should_confirm = TRUE;
 #: ../libcore/marlin-file-operations.c:6399
 msgid "Emptying Trash"
-msgstr ""
+msgstr "Bezig met prullenbak legen"
 
 #: ../libcore/marlin-file-operations.c:6447
 #: ../libcore/marlin-file-operations.c:6488
 #: ../libcore/marlin-file-operations.c:6523
 #: ../libcore/marlin-file-operations.c:6558
 msgid "Unable to mark launcher trusted (executable)"
-msgstr ""
+msgstr "Kan starter niet markeren als vertrouwd (uitvoerbaar bestand)"
 
 #: ../libcore/marlin-file-utilities.c:265
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "Kan de oorspronkelijke locatie van ‘%s’ niet bepalen "
 
 #: ../libcore/marlin-file-utilities.c:268
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
 
 #: ../src/marlin-places-sidebar.c:316
 msgid "Personal"
-msgstr ""
+msgstr "Persoonlijk"
 
 #: ../src/marlin-places-sidebar.c:321
 msgid "Your common places and bookmarks"
@@ -1310,559 +1362,560 @@ msgstr ""
 #. tooltip
 #: ../src/marlin-places-sidebar.c:337 ../src/View/Window.vala:572
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Open uw persoonlijke map"
 
 #: ../src/marlin-places-sidebar.c:399
 msgid "Trash"
-msgstr ""
+msgstr "Prullenbak"
 
 #: ../src/marlin-places-sidebar.c:401
 msgid "Open the trash"
-msgstr ""
+msgstr "Open de prullenbak."
 
 #: ../src/marlin-places-sidebar.c:411
 msgid "Devices"
-msgstr ""
+msgstr "Apparaten"
 
 #: ../src/marlin-places-sidebar.c:416
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "Uw lokale partities en apparaten"
 
 #: ../src/marlin-places-sidebar.c:423
 msgid "File System"
-msgstr ""
+msgstr "Bestandssysteem"
 
 #: ../src/marlin-places-sidebar.c:425
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "De inhoud van het bestandssysteem openen"
 
 #: ../src/marlin-places-sidebar.c:473 ../src/marlin-places-sidebar.c:496
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "%s aankoppelen en openen"
 
 #: ../src/marlin-places-sidebar.c:604
 msgid "Network"
-msgstr ""
+msgstr "Netwerk"
 
 #: ../src/marlin-places-sidebar.c:609
 msgid "Your network places"
-msgstr ""
+msgstr "Uw netwerkplaatsen"
 
 #: ../src/marlin-places-sidebar.c:640
 msgid "Entire network"
-msgstr ""
+msgstr "Volledige netwerk"
 
 #: ../src/marlin-places-sidebar.c:642
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Door de inhoud van het netwerk bladeren"
 
 #. Adjust start/stop items to reflect the type of the drive
 #: ../src/marlin-places-sidebar.c:1606
 msgid "_Start"
-msgstr ""
+msgstr "_Starten"
 
 #: ../src/marlin-places-sidebar.c:1607
 msgid "_Stop"
-msgstr ""
+msgstr "_Stoppen"
 
 #. start() for type G_DRIVE_START_STOP_TYPE_SHUTDOWN is normally not used
 #: ../src/marlin-places-sidebar.c:1612
 msgid "_Power On"
-msgstr ""
+msgstr "_Aanzetten"
 
 #: ../src/marlin-places-sidebar.c:1613
 msgid "_Safely Remove Drive"
-msgstr ""
+msgstr "_Station veilig verwijderen"
 
 #: ../src/marlin-places-sidebar.c:1616
 msgid "_Connect Drive"
-msgstr ""
+msgstr "Station _verbinden"
 
 #: ../src/marlin-places-sidebar.c:1617
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "Stationverbinding ver_breken"
 
 #: ../src/marlin-places-sidebar.c:1620
 msgid "_Start Multi-disk Device"
-msgstr ""
+msgstr "Multischijf-apparaat _starten"
 
 #: ../src/marlin-places-sidebar.c:1621
 msgid "_Stop Multi-disk Device"
-msgstr ""
+msgstr "Multischijf-apparaat _stoppen"
 
 #. stop() for type G_DRIVE_START_STOP_TYPE_PASSWORD is normally not used
 #: ../src/marlin-places-sidebar.c:1625
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "Station vrij_geven"
 
 #: ../src/marlin-places-sidebar.c:1626
 msgid "_Lock Drive"
-msgstr ""
+msgstr "Station ver_grendelen"
 
 #: ../src/marlin-places-sidebar.c:1700 ../src/marlin-places-sidebar.c:2247
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "Niet in staat %s te starten"
 
 #: ../src/marlin-places-sidebar.c:1990 ../src/marlin-places-sidebar.c:2019
 #: ../src/marlin-places-sidebar.c:2048
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "Kan %s niet uitwerpen"
 
 #: ../src/marlin-places-sidebar.c:2193
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "Niet in staat %s te bevragen voor veranderingen in media"
 
 #: ../src/marlin-places-sidebar.c:2303
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "Niet in staat %s te stoppen"
 
 #: ../src/marlin-places-sidebar.c:2395
 msgid "_Open"
-msgstr ""
+msgstr "_Open"
 
 #: ../src/marlin-places-sidebar.c:2403
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Open in Nieuwe _Tab"
 
 #: ../src/marlin-places-sidebar.c:2410
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Open in Nieuw _Venster"
 
 #: ../src/marlin-places-sidebar.c:2419
 msgid "Remove"
-msgstr ""
+msgstr "Verwijder"
 
 #: ../src/marlin-places-sidebar.c:2428
 msgid "Rename..."
-msgstr ""
+msgstr "Hernoem..."
 
 #: ../src/marlin-places-sidebar.c:2440
 msgid "_Mount"
-msgstr ""
+msgstr "_Koppelen"
 
 #: ../src/marlin-places-sidebar.c:2447
 msgid "_Unmount"
-msgstr ""
+msgstr "_Ontkoppelen"
 
 #: ../src/marlin-places-sidebar.c:2454
 msgid "_Eject"
-msgstr ""
+msgstr "Uitw_erpen"
 
 #: ../libcore/marlin-progress-info.c:191 ../libcore/marlin-progress-info.c:209
 msgid "Preparing"
-msgstr ""
+msgstr "Bezig met voorbereiden"
 
 #: ../libcore/marlin-progress-ui-handler.c:105
 #: ../libcore/marlin-progress-ui-handler.c:155
 #: ../libcore/marlin-progress-ui-handler.c:213
 #: ../libcore/marlin-progress-ui-handler.c:269
 msgid "File Operations"
-msgstr ""
+msgstr "Bestandsbewerkingen"
 
 #: ../libcore/marlin-progress-ui-handler.c:114
 msgid "Show Details"
-msgstr ""
+msgstr "_Details tonen"
 
 #: ../libcore/marlin-progress-ui-handler.c:149
 #: ../libcore/marlin-progress-ui-handler.c:171
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d bestandsbewerking actief"
+msgstr[1] "%'d bestandsbewerkingen actief"
 
 #: ../libcore/marlin-progress-ui-handler.c:270
 msgid "All file operations have been successfully completed"
-msgstr ""
+msgstr "Alle bestandsoperaties zijn succesvol voltooid"
 
 #: ../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
-msgstr ""
+msgstr "Werkbalk Aanpassen"
 
 #: ../src/marlin-toolbar-editor.c:465
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
+"Selecteer de te vertonen onderdelen voor de werkbalk. Onderdelen kunnen "
+"opnieuw geordend worden door ze te verslepen."
 
 #: ../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
-msgstr ""
+msgstr "Beschikbare Items"
 
 #: ../src/marlin-toolbar-editor.c:502
 msgid "Displayed Items"
-msgstr ""
+msgstr "Getoonde Items"
 
 #: ../libwidgets/LocationBar.vala:854
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "Ga naar %s"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
 #: ../libwidgets/LocationBar.vala:1006
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "Knip de geselecteerde tekst naar het klembord"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
 #: ../libwidgets/LocationBar.vala:1010
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Kopieer de geselecteerde tekst naar het klembord"
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
 #: ../libwidgets/LocationBar.vala:1014 ../libwidgets/LocationBar.vala:1018
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Plak de tekst bewaard op het klembord"
 
 #. TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
 #. we are in listview: size, type, modified
 #: ../src/View/ContextView.vala:262
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: ../src/View/ContextView.vala:266
 msgid "Target"
-msgstr ""
+msgstr "Doel"
 
 #: ../src/View/ContextView.vala:271
 msgid "Owner"
-msgstr ""
+msgstr "Eigenaar"
 
 #: ../src/View/ContextView.vala:308
 msgid "Other..."
-msgstr ""
+msgstr "Andere..."
 
 #: ../src/View/ContextView.vala:311
 msgid "Set as default"
-msgstr ""
+msgstr "Als standaard instellen"
 
 #: ../src/View/ContextView.vala:426
 msgid "Open with:"
-msgstr ""
+msgstr "Openen met:"
 
 #: ../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
-msgstr ""
+msgstr "Marlin Instellingen"
 
 #: ../src/View/SettingsDialog.vala:46
 msgid "Single click to open:"
-msgstr ""
+msgstr "Enkel klikken om te openen:"
 
 #: ../src/View/SettingsDialog.vala:59
 msgid "Mouse auto-selection speed:"
-msgstr ""
+msgstr "Autoselectiesnelheid van de muis:"
 
 #: ../src/View/SettingsDialog.vala:72
 msgid "Behavior"
-msgstr ""
+msgstr "Gedrag"
 
 #: ../src/View/SettingsDialog.vala:80
 msgid "small"
-msgstr ""
+msgstr "klein"
 
 #: ../src/View/SettingsDialog.vala:81
 msgid "medium"
-msgstr ""
+msgstr "gemiddeld"
 
 #: ../src/View/SettingsDialog.vala:82
 msgid "large"
-msgstr ""
+msgstr "groot"
 
 #: ../src/View/SettingsDialog.vala:83
 msgid "extra-large"
-msgstr ""
+msgstr "extra groot"
 
 #: ../src/View/SettingsDialog.vala:104
 msgid "Sidebar icon size:"
-msgstr ""
+msgstr "Icoongrotte van zijbalk"
 
 #: ../src/View/SettingsDialog.vala:115
 msgid "locale"
-msgstr ""
+msgstr "lokalisatie"
 
 #: ../src/View/SettingsDialog.vala:116
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: ../src/View/SettingsDialog.vala:117
 msgid "informal"
-msgstr ""
+msgstr "informeel"
 
 #: ../src/View/SettingsDialog.vala:136
 msgid "Date format:"
-msgstr ""
+msgstr "Datumformaat:"
 
 #: ../src/View/SettingsDialog.vala:151
 msgid "Show applications names in the context pane:"
-msgstr ""
+msgstr "Toon applicatienamen in contextpaneel"
 
 #: ../src/View/SettingsDialog.vala:159
 msgid "Display"
-msgstr ""
+msgstr "Weergave"
 
 #: ../src/View/SettingsDialog.vala:230
 msgid "Plugins"
-msgstr ""
+msgstr "Plug-ins"
 
 #: ../src/View/Window.vala:527
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fedik https://launchpad.net/~fedikw\n"
-"  Fitoschido https://launchpad.net/~fitoschido\n"
-"  xapantu https://launchpad.net/~xapantu"
+"  Mitch Dries https://launchpad.net/~mitch-dries"
 
 #. name, stock id, label
 #: ../src/View/Window.vala:532
 msgid "_File"
-msgstr ""
+msgstr "_Bestand"
 
 #. name, stock id, label
 #: ../src/View/Window.vala:533
 msgid "_Edit"
-msgstr ""
+msgstr "_Bewerken"
 
 #. name, stock id, label
 #: ../src/View/Window.vala:534
 msgid "_View"
-msgstr ""
+msgstr "_Beeld"
 
 #. name, stock id, label
 #: ../src/View/Window.vala:535
 msgid "_Go"
-msgstr ""
+msgstr "_Ga"
 
 #. name, stock id, label
 #: ../src/View/Window.vala:536
 msgid "_Help"
-msgstr ""
+msgstr "_Help"
 
 #. { "ColorMenu", null, N_("Set _Color") },
 #. name, stock id, label
 #: ../src/View/Window.vala:538
 msgid "New _Window"
-msgstr ""
+msgstr "Nieuw _Venster"
 
 #: ../src/View/Window.vala:539
 msgid "Open another Marlin window for the displayed location"
-msgstr ""
+msgstr "Nieuw Marlin-venster openen voor de weergegeven locatie"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:542
 msgid "New _Tab"
-msgstr ""
+msgstr "Nieuwe _Tab"
 
 #. tooltip
 #: ../src/View/Window.vala:543
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Nieuw tabblad openen voor de weergegeven locatie"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:546
 msgid "_Close"
-msgstr ""
+msgstr "_Sluiten"
 
 #. tooltip
 #: ../src/View/Window.vala:547
 msgid "Close this folder"
-msgstr ""
+msgstr "Sluit deze map"
 
 #: ../src/View/Window.vala:550
 msgid "Customize _Toolbar..."
-msgstr ""
+msgstr "Werkbalk _Aanpassen"
 
 #: ../src/View/Window.vala:551
 msgid "Easily edit the toolbar layout"
-msgstr ""
+msgstr "Werkbalkindeling eenvoudig aanpassen"
 
 #: ../src/View/Window.vala:554
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: ../src/View/Window.vala:555
 msgid "Change Marlin's settings"
-msgstr ""
+msgstr "Verander Marlin's instellingen"
 
 #. { Chrome.ColorAction, null, "ColorAction"),
 #. null, null,
 #. null },
 #: ../src/View/Window.vala:560
 msgid "Open _Parent"
-msgstr ""
+msgstr "O_pen bovenliggende map"
 
 #: ../src/View/Window.vala:561
 msgid "Open the parent folder"
-msgstr ""
+msgstr "De bovenliggende map openen"
 
 #: ../src/View/Window.vala:563
 msgid "_Back"
-msgstr ""
+msgstr "_Terug"
 
 #: ../src/View/Window.vala:564
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Naar de vorige bezochte locatie gaan"
 
 #: ../src/View/Window.vala:567
 msgid "_Forward"
-msgstr ""
+msgstr "_Verder"
 
 #: ../src/View/Window.vala:568
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Naar de volgende bezochte locatie gaan"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:571
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Persoonlijke map"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:575
 msgid "_Trash"
-msgstr ""
+msgstr "_Prullenbak"
 
 #. tooltip
 #: ../src/View/Window.vala:576
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Open uw persoonlijke prullenbak"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:579
 msgid "_Network"
-msgstr ""
+msgstr "_Netwerk"
 
 #. tooltip
 #: ../src/View/Window.vala:580
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "Bladeren door opgeslagen en lokale netwerklocaties"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:583
 msgid "Zoom _In"
-msgstr ""
+msgstr "Zoom _In"
 
 #. tooltip
 #: ../src/View/Window.vala:584
 msgid "Increase the view size"
-msgstr ""
+msgstr "Het beeld vergroten"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:595
 msgid "Zoom _Out"
-msgstr ""
+msgstr "Zoom _Uit"
 
 #. tooltip
 #: ../src/View/Window.vala:596
 msgid "Decrease the view size"
-msgstr ""
+msgstr "Het beeld verkleinen"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:603
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "Normale Gr_ootte"
 
 #. tooltip
 #: ../src/View/Window.vala:604
 msgid "Use the normal view size"
-msgstr ""
+msgstr "Gebruik de normale beeldgrootte"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:607
 msgid "_About"
-msgstr ""
+msgstr "_Over"
 
 #. tooltip
 #: ../src/View/Window.vala:608
 msgid "Display credits"
-msgstr ""
+msgstr "Toon credits"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:616
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Verbo_rgen bestanden tonen"
 
 #. tooltip
 #: ../src/View/Window.vala:617
 msgid "Toggle the display of hidden files in the current window"
 msgstr ""
+"De weergave van verborgen bestanden in het huidige venster aan-/uitschakelen"
 
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:621
 msgid "_Context Pane"
-msgstr ""
+msgstr "_Contextpaneel"
 
 #. tooltip
 #: ../src/View/Window.vala:622
 msgid "Change the visibility of the context pane"
-msgstr ""
+msgstr "Het contextpaneel wel of niet tonen"
 
 #. is_active
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:626
 msgid "_Menubar"
-msgstr ""
+msgstr "_Menubalk"
 
 #. tooltip
 #: ../src/View/Window.vala:627
 msgid "Change the visibility of this window's menubar"
-msgstr ""
+msgstr "Verander de zichtbaarheid van de menubalk van dit venster"
 
 #. is_active
 #. name, stock id
 #. label, accelerator
 #: ../src/View/Window.vala:631
 msgid "_Side Pane"
-msgstr ""
+msgstr "_Zijpaneel"
 
 #. tooltip
 #: ../src/View/Window.vala:632
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "Zichtbaarheid van het zijpaneel van dit venster veranderen"
 
 #: ../src/View/Window.vala:640
 msgid "Icon View"
-msgstr ""
+msgstr "Pictogrammenweergave"
 
 #: ../src/View/Window.vala:643
 msgid "List View"
-msgstr ""
+msgstr "Lijstweergave"
 
 #: ../src/View/Window.vala:646
 msgid "Columns View"
-msgstr ""
+msgstr "Kolomweergave"
 
 #: ../src/eel-editable-label.c:344
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: ../src/eel-editable-label.c:345
 msgid "The text of the label."
-msgstr ""
+msgstr "De tekst van het label."
 
 #: ../src/eel-editable-label.c:351
 msgid "Justification"
-msgstr ""
+msgstr "Uitvulling"
 
 #: ../src/eel-editable-label.c:352
 msgid ""
@@ -1870,30 +1923,33 @@ msgid ""
 "This does NOT affect the alignment of the label within its allocation. See "
 "GtkMisc::xalign for that."
 msgstr ""
+"De uitlijning van de regels in de tekst van het label, relatief tot elkaar. "
+"Dit beïnvloedt NIET de uitlijning van het label binnen de ruimte waar het in "
+"zit. Zie daarvoor GtkMisc::xalign."
 
 #: ../src/eel-editable-label.c:360
 msgid "Line wrap"
-msgstr ""
+msgstr "Regelafbreking"
 
 #: ../src/eel-editable-label.c:361
 msgid "If set, wrap lines if the text becomes too wide."
-msgstr ""
+msgstr "Indien ingeschakeld worden regels afgebroken als ze te lang worden."
 
 #: ../src/eel-editable-label.c:368
 msgid "Small size"
-msgstr ""
+msgstr "Kleine grootte"
 
 #: ../src/eel-editable-label.c:369
 msgid "If set, use small size text."
-msgstr ""
+msgstr "Indien ingesteld kleine grootte gebruiken."
 
 #: ../src/eel-editable-label.c:376
 msgid "Cursor Position"
-msgstr ""
+msgstr "Aanwijzerpositie"
 
 #: ../src/eel-editable-label.c:377
 msgid "The current position of the insertion cursor in chars."
-msgstr ""
+msgstr "De huidige positie van de cursor (in karakters)."
 
 #: ../src/eel-editable-label.c:386
 msgid "Selection Bound"
@@ -1903,20 +1959,12 @@ msgstr ""
 msgid ""
 "The position of the opposite end of the selection from the cursor in chars."
 msgstr ""
+"De positie van het uiteinde van de selectie, in tekens vanaf de aanwijzer."
 
 #: ../src/eel-editable-label.c:3188
 msgid "Select All"
-msgstr ""
+msgstr "Alles Selecteren"
 
 #: ../src/eel-editable-label.c:3199
 msgid "Input Methods"
-msgstr ""
-
-#~ msgid "Selection mode"
-#~ msgstr "Режим вибору"
-
-#~ msgid "The selection mode"
-#~ msgstr "Режим вибору"
-
-#~ msgid "Single Click"
-#~ msgstr "Одинарний клік"
+msgstr "Invoermethodes"
