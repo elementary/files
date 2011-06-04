@@ -156,4 +156,5 @@ Icon=marlin
 Terminal=false
 StartupNotify=true
 Type=Application
+MimeType=x-directory/gnome-default-handler;x-directory/normal;inode/directory;
 Categories=System;Utility;Core;GTK;FileTools;FileManager;
