@@ -88,6 +88,16 @@ namespace Marlin.View.Chrome
             }
         }
     }
+    
+    public struct IconDirectory
+    {
+        string path;
+        string icon_name;
+        string fallback_icon;
+        bool protocol;
+        Gdk.Pixbuf icon;
+        string[] exploded;
+    }
 
     public class Breadcrumbs : Gtk.EventBox
     {
@@ -101,6 +111,10 @@ namespace Marlin.View.Chrome
          * in the integrated entry
          **/
         public signal void changed(string changed);
+        
+        const int dir_number = 6;
+        
+        IconDirectory[] icons = new IconDirectory[dir_number];
 
         string text = "";
 
@@ -175,6 +189,31 @@ namespace Marlin.View.Chrome
             /* grab the UIManager */
             this.ui = ui;
             init_clipboard ();
+            icons[0] = {"trash://", "user-trash", "computer", true, null, null};
+            make_icon(ref icons[0]);
+            icons[1] = {"network://", "network", "computer", true, null, null};
+            make_icon(ref icons[1]);
+            /* music */
+            icons[2] = {Environment.get_user_special_dir(UserDirectory.MUSIC), "folder-music", "folder", false, null, null};
+            icons[2].exploded = Environment.get_user_special_dir(UserDirectory.MUSIC).split("/");
+            icons[2].exploded[0] = "/";
+            make_icon(ref icons[2]);
+    
+            /* image */
+            icons[3] = {Environment.get_user_special_dir(UserDirectory.PICTURES), "folder-images", "folder-pictures", false, null, null};
+            icons[3].exploded = Environment.get_user_special_dir(UserDirectory.PICTURES).split("/");
+            icons[3].exploded[0] = "/";
+            make_icon(ref icons[3]);
+
+            icons[dir_number - 2] = {Environment.get_home_dir(), "go-home-symbolic", "go-home", false, null, null};
+            icons[dir_number - 2].exploded = Environment.get_home_dir().split("/");
+            icons[dir_number - 2].exploded[0] = "/";
+            make_icon(ref icons[dir_number - 2]);
+
+            
+            icons[dir_number - 1] = {"/", "drive-harddisk", "computer", false, null, null};
+            icons[dir_number - 1].exploded = {"/"};
+            make_icon(ref icons[dir_number - 1]);
             
             this.win = win;
 
@@ -315,11 +354,6 @@ namespace Marlin.View.Chrome
             } catch (Error err) {
                 stderr.printf ("Unable to load home icon: %s", err.message);
             }
-            try {
-                network_img = IconTheme.get_default ().load_icon ("network", 16, 0);
-            } catch (Error err) {
-                stderr.printf ("Unable to load home icon: %s", err.message);
-            }
 
             /* FIXME: This won't work if the user dir is not in /home/ */
             home = new string[2];
@@ -328,6 +362,19 @@ namespace Marlin.View.Chrome
             menu = new Menu();
             menu.show_all();
 
+        }
+        
+        private void make_icon(ref IconDirectory icon)
+        {
+            try {
+                icon.icon = IconTheme.get_default ().load_icon (icon.icon_name, 16, 0);
+            } catch (Error err) {
+                try {
+                    icon.icon = IconTheme.get_default ().load_icon (icon.fallback_icon, 16, 0);
+                } catch (Error err) {
+                    stderr.printf ("Unable to load home icon: %s", err.message);
+                }
+            }
         }
 
         private void action_paste()
@@ -386,12 +433,7 @@ namespace Marlin.View.Chrome
          **/
         private void on_file_loaded(GOF.File file)
         {
-            /*if(file.name == to_search)
-            {
-                autocompleted = true;
-                entry.completion = "";
-            }
-            else*/ if(file.is_directory && file.name.length > to_search.length)
+            if(file.is_directory && file.name.length > to_search.length)
             {
                 if(file.name.slice(0, to_search.length) == to_search)
                 {
@@ -675,25 +717,48 @@ namespace Marlin.View.Chrome
                 }
             }
 
-            if(newelements.size > 2)
+            /*if(newelements.size > 2)
             if(newelements[1].text == home[0] && newelements[2].text == home[1])
             {
                 newelements[2].set_icon(home_img);
                 newelements[2].text = "/home/" + home[1];
-                newelements[1].display = false;;
+                newelements[1].display = false;
                 newelements[0].display = false;
-            }
+            }*/
             
-            switch(protocol)
+            foreach(IconDirectory icon in icons)
             {
-            case "trash://":
-                newelements[0].set_icon(trash_img);
-                break;
-            case "network://":
-                newelements[0].set_icon(network_img);
-                break;
-            default:
-                break;
+                if(icon.protocol && icon.path == protocol)
+                {
+                    newelements[0].set_icon(icon.icon);
+                    break;
+                }
+                else if(!icon.protocol && icon.exploded.length <= newelements.size)
+                {
+                    bool found = true;
+                    int h = 0;
+                    for(int i = 0; i < icon.exploded.length; i++)
+                    {
+                        print("here: %s\n", icon.exploded[i]);
+                        if(icon.exploded[i] != newelements[i].text)
+                        {
+                            found = false;
+                            break;
+                        }
+                        h = i;
+                    }
+                    if(found)
+                    {
+                        for(int j = 0; j < h; j++)
+                        {
+                            newelements[j].display = false;
+                        }
+                        newelements[h].text = icon.path;
+                        newelements[h].set_icon(icon.icon);
+                        //print("yeah2 %d\n\n\n\n\n", h);
+                        break;
+                    }
+                }
             }
 
             if(newelements.size > elements.size)
