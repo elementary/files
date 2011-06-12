@@ -113,7 +113,7 @@ namespace Marlin.View.Chrome
          **/
         public signal void changed(string changed);
         
-        const int dir_number = 7;
+        const int dir_number = 9;
         
         IconDirectory[] icons = new IconDirectory[dir_number];
 
@@ -137,8 +137,6 @@ namespace Marlin.View.Chrome
         
         /* This list will contain the BreadcrumbsElement which are animated */
         Gee.List<BreadcrumbsElement> newbreads;
-
-        string[] home;
         
         /* A flag to know when the animation is finished */
         int anim_state = 0;
@@ -161,12 +159,6 @@ namespace Marlin.View.Chrome
         /* Used to decide if this button press event must be send to the
          * integrated entry or not. */
         double x_render_saved = 0;
-
-        /* The custom icons
-         * FIXME: they shouldn't be hardcoded. */
-        Gdk.Pixbuf home_img;
-        Gdk.Pixbuf trash_img;
-        Gdk.Pixbuf network_img;
 
         /* if we have the focus or not
          * FIXME: this should be replaced with some nice Gtk.Widget method. */
@@ -207,10 +199,22 @@ namespace Marlin.View.Chrome
             make_icon(ref icons[3]);
 
             /* movie */
-            icons[3] = {Environment.get_user_special_dir(UserDirectory.VIDEOS), "folder-videos", "folder", false, null, null, false};
-            icons[3].exploded = Environment.get_user_special_dir(UserDirectory.VIDEOS).split("/");
-            icons[3].exploded[0] = "/";
-            make_icon(ref icons[3]);
+            icons[4] = {Environment.get_user_special_dir(UserDirectory.VIDEOS), "folder-videos", "folder", false, null, null, false};
+            icons[4].exploded = Environment.get_user_special_dir(UserDirectory.VIDEOS).split("/");
+            icons[4].exploded[0] = "/";
+            make_icon(ref icons[4]);
+    
+            /* downloads */
+            icons[5] = {Environment.get_user_special_dir(UserDirectory.DOWNLOAD), "folder-downloads", "folder_download", false, null, null, false};
+            icons[5].exploded = Environment.get_user_special_dir(UserDirectory.DOWNLOAD).split("/");
+            icons[5].exploded[0] = "/";
+            make_icon(ref icons[5]);
+    
+            /* documents */
+            icons[6] = {Environment.get_user_special_dir(UserDirectory.DOCUMENTS), "folder-documents", "folder_download", false, null, null, false};
+            icons[6].exploded = Environment.get_user_special_dir(UserDirectory.DOCUMENTS).split("/");
+            icons[6].exploded[0] = "/";
+            make_icon(ref icons[6]);
 
             icons[dir_number - 2] = {Environment.get_home_dir(), "go-home-symbolic", "go-home", false, null, null, true};
             icons[dir_number - 2].exploded = Environment.get_home_dir().split("/");
@@ -345,27 +349,7 @@ namespace Marlin.View.Chrome
             });
 
             entry.hide();
-            
-            /* Load custom icons */
-            try {
-                home_img = IconTheme.get_default ().load_icon ("go-home-symbolic", 16, 0);
-            } catch (Error err) {
-                try {
-                    home_img = IconTheme.get_default ().load_icon ("go-home", 16, 0);
-                } catch (Error err) {
-                    stderr.printf ("Unable to load home icon: %s", err.message);
-                }
-            }
-            try {
-                trash_img = IconTheme.get_default ().load_icon ("user-trash", 16, 0);
-            } catch (Error err) {
-                stderr.printf ("Unable to load home icon: %s", err.message);
-            }
 
-            /* FIXME: This won't work if the user dir is not in /home/ */
-            home = new string[2];
-            home[0] = "home";
-            home[1] = Environment.get_home_dir().split("/")[2];
             menu = new Menu();
             menu.show_all();
 
@@ -723,15 +707,6 @@ namespace Marlin.View.Chrome
                     break;
                 }
             }
-
-            /*if(newelements.size > 2)
-            if(newelements[1].text == home[0] && newelements[2].text == home[1])
-            {
-                newelements[2].set_icon(home_img);
-                newelements[2].text = "/home/" + home[1];
-                newelements[1].display = false;
-                newelements[0].display = false;
-            }*/
             
             foreach(IconDirectory icon in icons)
             {
@@ -746,7 +721,6 @@ namespace Marlin.View.Chrome
                     int h = 0;
                     for(int i = 0; i < icon.exploded.length; i++)
                     {
-                        print("here: %s\n", icon.exploded[i]);
                         if(icon.exploded[i] != newelements[i].text)
                         {
                             found = false;
@@ -763,11 +737,9 @@ namespace Marlin.View.Chrome
                         newelements[h].display = true;
                         newelements[h].set_icon(icon.icon);
                         newelements[h].display_text = !icon.break_loop;
-                        //print("yeah2 %d\n\n\n\n\n", h);
                         if(icon.break_loop)
                         {
                             newelements[h].text = icon.path;
-                            print("here\n\n");
                             break;
                         }
                     }
