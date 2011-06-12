@@ -113,7 +113,7 @@ namespace Marlin.View.Chrome
          **/
         public signal void changed(string changed);
         
-        const int dir_number = 6;
+        const int dir_number = 7;
         
         IconDirectory[] icons = new IconDirectory[dir_number];
 
@@ -206,13 +206,19 @@ namespace Marlin.View.Chrome
             icons[3].exploded[0] = "/";
             make_icon(ref icons[3]);
 
+            /* movie */
+            icons[3] = {Environment.get_user_special_dir(UserDirectory.VIDEOS), "folder-videos", "folder", false, null, null, false};
+            icons[3].exploded = Environment.get_user_special_dir(UserDirectory.VIDEOS).split("/");
+            icons[3].exploded[0] = "/";
+            make_icon(ref icons[3]);
+
             icons[dir_number - 2] = {Environment.get_home_dir(), "go-home-symbolic", "go-home", false, null, null, true};
             icons[dir_number - 2].exploded = Environment.get_home_dir().split("/");
             icons[dir_number - 2].exploded[0] = "/";
             make_icon(ref icons[dir_number - 2]);
 
             
-            icons[dir_number - 1] = {"/", "drive-harddisk", "computer", false, null, null};
+            icons[dir_number - 1] = {"/", "drive-harddisk", "computer", false, null, null, true};
             icons[dir_number - 1].exploded = {"/"};
             make_icon(ref icons[dir_number - 1]);
             
