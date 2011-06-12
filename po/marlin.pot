@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-04 19:35+0200\n"
+"POT-Creation-Date: 2011-06-12 18:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1504,21 +1504,21 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:1006
+#: ../libwidgets/LocationBar.vala:1046
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:1010
+#: ../libwidgets/LocationBar.vala:1050
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:1014 ../libwidgets/LocationBar.vala:1018
+#: ../libwidgets/LocationBar.vala:1054 ../libwidgets/LocationBar.vala:1058
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
@@ -1844,6 +1844,24 @@ msgstr ""
 
 #: ../src/View/Window.vala:646
 msgid "Columns View"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.c:255
+msgid "Folder does not exist"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.c:261
+#, c-format
+msgid "Marlin can't find the folder %s"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.c:274
+msgid "Create"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.c:275
+#, c-format
+msgid "Create the folder %s"
 msgstr ""
 
 #: ../src/eel-editable-label.c:344

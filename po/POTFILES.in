@@ -109,5 +109,6 @@ src/View/SettingsDialog.vala
 src/View/ViewContainer.vala
 src/View/ViewMode.vala
 src/View/Window.vala
+src/View/DirectoryNotFound.c
 data/marlin.desktop.in
 src/eel-editable-label.c
