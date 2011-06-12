@@ -97,6 +97,7 @@ namespace Marlin.View.Chrome
         bool protocol;
         Gdk.Pixbuf icon;
         string[] exploded;
+        bool break_loop;
     }
 
     public class Breadcrumbs : Gtk.EventBox
@@ -189,23 +190,23 @@ namespace Marlin.View.Chrome
             /* grab the UIManager */
             this.ui = ui;
             init_clipboard ();
-            icons[0] = {"trash://", "user-trash", "computer", true, null, null};
+            icons[0] = {"trash://", "user-trash", "computer", true, null, null, true};
             make_icon(ref icons[0]);
-            icons[1] = {"network://", "network", "computer", true, null, null};
+            icons[1] = {"network://", "network", "computer", true, null, null, true};
             make_icon(ref icons[1]);
             /* music */
-            icons[2] = {Environment.get_user_special_dir(UserDirectory.MUSIC), "folder-music", "folder", false, null, null};
+            icons[2] = {Environment.get_user_special_dir(UserDirectory.MUSIC), "folder-music", "folder", false, null, null, false};
             icons[2].exploded = Environment.get_user_special_dir(UserDirectory.MUSIC).split("/");
             icons[2].exploded[0] = "/";
             make_icon(ref icons[2]);
     
             /* image */
-            icons[3] = {Environment.get_user_special_dir(UserDirectory.PICTURES), "folder-images", "folder-pictures", false, null, null};
+            icons[3] = {Environment.get_user_special_dir(UserDirectory.PICTURES), "folder-images", "folder-pictures", false, null, null, false};
             icons[3].exploded = Environment.get_user_special_dir(UserDirectory.PICTURES).split("/");
             icons[3].exploded[0] = "/";
             make_icon(ref icons[3]);
 
-            icons[dir_number - 2] = {Environment.get_home_dir(), "go-home-symbolic", "go-home", false, null, null};
+            icons[dir_number - 2] = {Environment.get_home_dir(), "go-home-symbolic", "go-home", false, null, null, true};
             icons[dir_number - 2].exploded = Environment.get_home_dir().split("/");
             icons[dir_number - 2].exploded[0] = "/";
             make_icon(ref icons[dir_number - 2]);
@@ -753,10 +754,16 @@ namespace Marlin.View.Chrome
                         {
                             newelements[j].display = false;
                         }
-                        newelements[h].text = icon.path;
+                        newelements[h].display = true;
                         newelements[h].set_icon(icon.icon);
+                        newelements[h].display_text = !icon.break_loop;
                         //print("yeah2 %d\n\n\n\n\n", h);
-                        break;
+                        if(icon.break_loop)
+                        {
+                            newelements[h].text = icon.path;
+                            print("here\n\n");
+                            break;
+                        }
                     }
                 }
             }
@@ -1151,6 +1158,7 @@ namespace Marlin.View.Chrome
         public double real_width { get { return (max_width > 0 ? max_width : text_width) + left_padding + right_padding + last_height/2; }}
         Gdk.Pixbuf icon;
         public bool display = true;
+        public bool display_text = true;
         public BreadcrumbsElement(string text_, int left_padding, int right_padding)
         {
             text = text_;
@@ -1180,9 +1188,14 @@ namespace Marlin.View.Chrome
             {
                 computetext_width(layout);
             }
-            else
+            else if(!display_text)
             {
                 text_width = icon.get_width();
+            }
+            else
+            {
+                computetext_width(layout);
+                text_width += icon.get_width() + 5;
             }
             if(max_width > 0)
             {
@@ -1209,11 +1222,19 @@ namespace Marlin.View.Chrome
                 Gtk.render_layout(button_context, cr, x,
                             y + height/2 - text_height/2, layout);
             }
+            else if(!display_text)
+            {
+                Gdk.cairo_set_source_pixbuf(cr, icon, x,
+                           y + height/2 - icon.get_height()/2);
+                cr.paint();
+            }
             else
             {
                 Gdk.cairo_set_source_pixbuf(cr, icon, x,
                            y + height/2 - icon.get_height()/2);
                 cr.paint();
+                Gtk.render_layout(button_context, cr, x + icon.get_width() + 5,
+                            y + height/2 - text_height/2, layout);
             }
             cr.save();
             cr.set_source_rgba(0,0,0,0.5);
