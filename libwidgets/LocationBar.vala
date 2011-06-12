@@ -411,7 +411,6 @@ namespace Marlin.View.Chrome
                             else
                                 break;
                         }
-                        print(to_add + "\n");
                         entry.completion = to_add;
                     }
                     autocomplete.add_item(file.location.get_path());
@@ -464,7 +463,7 @@ namespace Marlin.View.Chrome
             {
                 if(element.display)
                 {
-                    x_render += element.width;
+                    x_render += element.real_width;
                     newpath += element.text + "/";
                     if(x <= x_render + 5 && x > x_previous + 5)
                     {
@@ -562,7 +561,7 @@ namespace Marlin.View.Chrome
                 {
                     if(element.display)
                     {
-                        x_render += element.width;
+                        x_render += element.real_width;
                         newpath += element.text + "/";
                         if(x <= x_render + 5 && x > x_previous + 5)
                         {
@@ -792,7 +791,7 @@ namespace Marlin.View.Chrome
                     {
                         if(element.display)
                         {
-                            x_hl += element.width;
+                            x_hl += element.real_width;
                         }
                         if(element == elements[selected - 1])
                         {
@@ -806,6 +805,7 @@ namespace Marlin.View.Chrome
                 }
                 x_hl += 7;
                 double first_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
+                double text_width = (elements[selected].max_width > 0 ? elements[selected].max_width : elements[selected].text_width);
                 cr.move_to(first_stop,
                            y + 1);
                 cr.line_to(x_hl + 3,
@@ -813,9 +813,9 @@ namespace Marlin.View.Chrome
                 cr.line_to(first_stop,
                            height - y - 1);
                 if(selected > 0)
-                    x_hl += elements[selected].text_width;
+                    x_hl += text_width;
                 else
-                    x_hl = elements[selected].text_width + space_breads/2 + y;
+                    x_hl = text_width + space_breads/2 + y;
                 double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
                 cr.line_to(second_stop,
                            height - y - 1);
@@ -847,7 +847,7 @@ namespace Marlin.View.Chrome
             {
                 if(element.display)
                 {
-                    x_render += element.width;
+                    x_render += element.real_width;
                     if(x <= x_render + 5 && x > x_previous + 5)
                     {
                         selected = elements.index_of(element);
@@ -955,7 +955,47 @@ namespace Marlin.View.Chrome
 
             double x_render = y;
             int i = 0;
-
+            double max_width = 0.0;
+            foreach(BreadcrumbsElement element in elements)
+            {
+                if(element.display)
+                {
+                    max_width += element.width;
+                    element.max_width = -1;
+                    i++;
+                }
+            }
+            if(max_width > (get_allocated_width() - margin*2))
+            {
+                double max_element_width = (get_allocated_width() - margin *2)/(i);
+                
+                foreach(BreadcrumbsElement element in elements)
+                {
+                    if(element.display)
+                    {
+                        if(element.width < max_element_width)
+                        {
+                            i--;
+                            max_element_width += (max_element_width - element.width)/(i);
+                        }
+                        else
+                        {
+                            //element.max_width = max_element_width;
+                        }
+                    }
+                }
+                foreach(BreadcrumbsElement element in elements)
+                {
+                    if(element.display)
+                    {
+                        if(element.width > max_element_width)
+                        {
+                            element.max_width = max_element_width - element.left_padding - element.right_padding - element.last_height/2;
+                        }
+                    }
+                }
+            }
+            i = 0;
             foreach(BreadcrumbsElement element in elements)
             {
                 if(element.display)
@@ -1036,12 +1076,14 @@ namespace Marlin.View.Chrome
     {
         public string text;
         public int offset = 0;
-        double last_height = 0;
+        internal double last_height = 0;
         public double text_width = -1;
         public double text_height = -1;
         public int left_padding = 1;
         public int right_padding = 1;
+        public double max_width = -1;
         public double width { get { return text_width + left_padding + right_padding + last_height/2; }}
+        public double real_width { get { return (max_width > 0 ? max_width : text_width) + left_padding + right_padding + last_height/2; }}
         Gdk.Pixbuf icon;
         public bool display = true;
         public BreadcrumbsElement(string text_, int left_padding, int right_padding)
@@ -1069,13 +1111,18 @@ namespace Marlin.View.Chrome
             last_height = height;
             cr.set_source_rgb(0,0,0);
             Pango.Layout layout = widget.create_pango_layout(text);
-            if(text_width < 0 && icon == null)
+            if(icon == null)
             {
                 computetext_width(layout);
             }
-            else if(icon != null)
+            else
             {
                 text_width = icon.get_width();
+            }
+            if(max_width > 0)
+            {
+                layout.set_width(Pango.units_from_double(max_width));
+                layout.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
             }
             x += left_padding;
             
@@ -1105,7 +1152,7 @@ namespace Marlin.View.Chrome
             }
             cr.save();
             cr.set_source_rgba(0,0,0,0.5);
-            x += right_padding + text_width;
+            x += right_padding + (max_width > 0 ? max_width : text_width);
             /* Draw the separator */
             cr.translate(x - height/4, y + height/2);
             cr.rectangle(0, -height/2 + 2, height, height - 4);
