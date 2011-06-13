@@ -397,23 +397,30 @@ namespace Marlin.View {
             spacer_box.set_size_request (-1, 15);
             box.pack_start(spacer_box, false, false);
 
-            var information = new VBox (false, key_value_padding);
+            var information = new Grid();
+            information.row_spacing = 10;
             var alignment_ = new Gtk.Alignment(0.5f, 0, 0, 0);
 
             int n = 0;
             foreach(var pair in item_info){
                 /* skip the firs parameter "name" for vertical panel */
                 if (n>0) {
-                    var key_value_pair = new HBox (false, key_value_padding);
-                    key_value_pair.set_size_request(key_value_width, -1);
-                    populate_key_value_pair(key_value_pair, pair, true);
 
-                    information.add(key_value_pair);
+                    var value_label = new Gtk.Label(pair.value);
+                    var key_label = new Gtk.Label(pair.key);
+                    key_label.set_sensitive(false);
+                    key_label.set_alignment(1, 0.5f);
+                    value_label.set_alignment(0, 0.5f);
+                    key_label.set_ellipsize(Pango.EllipsizeMode.START);
+                    value_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
+
+                    information.attach(key_label, 0, n, 1, 1);
+                    information.attach(value_label, 1, n, 1, 1);
                 }
                 n++;
             }
             alignment_.add(information);
-            box.pack_start(alignment_, false, false);
+            box.pack_start(alignment_);
             
             spacer_box = new VBox(false, 0);
             spacer_box.set_size_request (-1, 15);

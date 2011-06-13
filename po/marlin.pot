@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-12 18:26+0200\n"
+"POT-Creation-Date: 2011-06-13 11:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1496,7 +1496,7 @@ msgstr ""
 msgid "Displayed Items"
 msgstr ""
 
-#: ../libwidgets/LocationBar.vala:854
+#: ../libwidgets/LocationBar.vala:908
 #, c-format
 msgid "Go to %s"
 msgstr ""
@@ -1504,21 +1504,21 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:1046
+#: ../libwidgets/LocationBar.vala:1100
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:1050
+#: ../libwidgets/LocationBar.vala:1104
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../libwidgets/LocationBar.vala:1054 ../libwidgets/LocationBar.vala:1058
+#: ../libwidgets/LocationBar.vala:1108 ../libwidgets/LocationBar.vala:1112
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
