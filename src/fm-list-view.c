@@ -21,7 +21,7 @@
 #include "fm-list-model.h"
 #include "fm-directory-view.h"
 #include "marlin-global-preferences.h"
-#include "eel-i18n.h"
+#include <glib/gi18n.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 
@@ -679,46 +679,16 @@ create_and_set_up_tree_view (FMListView *view)
     int k;
     GtkTreeViewColumn       *col;
     GtkCellRenderer         *renderer;
-    //GtkTreeSortable         *sortable;
-    //GtkBindingSet *binding_set;
 
-    //view->details->m_store = gtk_list_store_new  (GOF_DIR_COLS_MAX, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_STRING);
-    //view->model = g_object_new (FM_TYPE_LIST_MODEL, "has-child", TRUE, NULL);
     view->model = FM_DIRECTORY_VIEW (view)->model;
     g_object_set (G_OBJECT (view->model), "has-child", TRUE, NULL);
-    //view->details->customlist = custom_list_new();
 
-    //#if 0
-    //sortable = GTK_TREE_SORTABLE(view->model);
-    //sortable = GTK_TREE_SORTABLE(view->details->m_store);
-    /*gtk_tree_sortable_set_sort_func(sortable, GOF_DIR_COL_FILENAME, sort_iter_compare_func,
-      GINT_TO_POINTER(GOF_DIR_COL_FILENAME), NULL);
-      gtk_tree_sortable_set_sort_func(sortable, GOF_DIR_COL_SIZE, sort_iter_compare_func,
-      GINT_TO_POINTER(GOF_DIR_COL_SIZE), NULL);*/
-    /* set initial sort order */
-    //gtk_tree_sortable_set_sort_column_id(sortable, GOF_DIR_COL_FILENAME, GTK_SORT_ASCENDING);
-    //#endif
-    //view->tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (view->details->m_store));
-    //view->tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (view->details->customlist));
-    //view->tree = GTK_TREE_VIEW (gtk_tree_view_new_with_model (GTK_TREE_MODEL (view->model)));
     view->tree = GTK_TREE_VIEW (exo_tree_view_new ());
     gtk_tree_view_set_model (view->tree, GTK_TREE_MODEL (view->model));
 
-    /*exo_tree_view_set_single_click (EXO_TREE_VIEW (view->tree), TRUE);
-      exo_tree_view_set_single_click_timeout (EXO_TREE_VIEW (view->tree), 350);*/
-
-    //view->tree = gtk_tree_view_new();
-    //gtk_tree_view_set_rules_hint(GTK_TREE_VIEW (view->tree), TRUE);
-    //gtk_tree_view_set_fixed_height_mode (GTK_TREE_VIEW (view->tree), TRUE);
-    //gtk_tree_view_set_enable_search (GTK_TREE_VIEW (view->tree), FALSE);
     gtk_tree_view_set_search_column (view->tree, FM_LIST_MODEL_FILENAME);
     gtk_tree_view_set_rubber_banding (view->tree, TRUE);
 
-    /*gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(view->details->m_store), 
-      GOF_DIR_COL_FILENAME, GTK_SORT_ASCENDING);*/
-
-    /*binding_set = gtk_binding_set_by_class (GTK_WIDGET_GET_CLASS (view->details->tree_view));
-      gtk_binding_entry_remove (binding_set, GDK_BackSpace, 0);*/
 
     g_signal_connect_object (gtk_tree_view_get_selection (view->tree), "changed",
                              G_CALLBACK (list_selection_changed_callback), view, 0);
@@ -739,30 +709,15 @@ create_and_set_up_tree_view (FMListView *view)
     g_signal_connect_object (view->model, "subdirectory_unloaded",
                              G_CALLBACK (subdirectory_unloaded_callback), view, 0);
 
-    //for(k=0; k< GOF_DIR_COLS_MAX; k++) {
     for(k=3; k< FM_LIST_MODEL_NUM_COLUMNS; k++) {
-        /*if(k == FM_LIST_MODEL_ICON) {
-          renderer = gtk_cell_renderer_pixbuf_new( ); 
-          col = gtk_tree_view_column_new_with_attributes (NULL, renderer, "pixbuf", k, NULL);
-        //gtk_tree_view_column_set_fixed_width (col, 22);
-        //gtk_tree_view_column_set_expand (col, TRUE);
-        }*/ 
         if (k == FM_LIST_MODEL_FILENAME) {
             col = gtk_tree_view_column_new ();
             view->details->file_name_column = col;
             gtk_tree_view_column_set_sort_column_id  (col,k);
             gtk_tree_view_column_set_resizable (col, TRUE);
-            gtk_tree_view_column_set_title (col, _(col_title[k-3]));
+            gtk_tree_view_column_set_title (col, gettext(col_title[k-3]));
             gtk_tree_view_column_set_expand (col, TRUE);
-#if 0
-            renderer = gtk_cell_renderer_pixbuf_new (); 
-            gtk_tree_view_column_pack_start (col, renderer, FALSE);
-            gtk_tree_view_column_set_attributes (col,
-                                                 renderer,
-                                                 "pixbuf", FM_LIST_MODEL_ICON,
-                                                 //"pixbuf_emblem", FM_LIST_MODEL_SMALLEST_EMBLEM_COLUMN,
-                                                 NULL);
-#endif
+
             /* add the icon renderer */
             gtk_tree_view_column_pack_start (col, FM_DIRECTORY_VIEW (view)->icon_renderer, FALSE);
             gtk_tree_view_column_set_attributes (col, FM_DIRECTORY_VIEW (view)->icon_renderer,
@@ -780,7 +735,7 @@ create_and_set_up_tree_view (FMListView *view)
                                                      NULL, NULL);
         } else {
             renderer = gtk_cell_renderer_text_new( );
-            col = gtk_tree_view_column_new_with_attributes(_(col_title[k-3]), renderer, "text", k, NULL);
+            col = gtk_tree_view_column_new_with_attributes(gettext(col_title[k-3]), renderer, "text", k, NULL);
             gtk_tree_view_column_set_sort_column_id  (col,k);
             gtk_tree_view_column_set_resizable (col, TRUE);
             //gtk_tree_view_column_set_fixed_width (col, 240);
@@ -789,18 +744,10 @@ create_and_set_up_tree_view (FMListView *view)
                                                      (GtkTreeCellDataFunc) color_row_func,
                                                      NULL, NULL);
         }
-        //g_object_set(renderer, "cell-background", "red", NULL);
-        /*GList *lrenderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT(col));
-          GList *l;
-          for (l=lrenderers; l != NULL; l=l->next)
-          g_object_set(l->data, "cell-background", "red", NULL);*/
 
-
-        //gtk_tree_view_column_set_sizing (col, GTK_TREE_VIEW_COLUMN_FIXED);
         gtk_tree_view_append_column(view->tree, col);
     }
     gtk_widget_show (GTK_WIDGET (view->tree));
-    //g_signal_connect (dir, "done-loading", G_CALLBACK (done_loading), NULL);
     gtk_container_add (GTK_CONTAINER (view), GTK_WIDGET (view->tree));
 }
 
