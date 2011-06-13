@@ -96,6 +96,7 @@ class PopupDraw : Gtk.DrawingArea
     
     public override bool button_press_event(Gdk.EventButton event)
     {
+        if(selected < items.size && selected >= 0)
         select(items[selected].title);
         return true;
     }
@@ -166,12 +167,12 @@ class PopupDrawItem : Object
             Gtk.render_background(style, cr, border, y + border, width - border*2, height - border*2);
         }
         else
-            style.set_state(Gtk.StateFlags.NORMAL);
+            style.set_state(Gtk.StateFlags.PRELIGHT);
             
         Pango.Layout layout = widget.create_pango_layout(title);
         layout.set_ellipsize(Pango.EllipsizeMode.END);
         layout.set_width(Pango.units_from_double(width));
         
-        Gtk.render_layout(style, cr, 0, y + margins, layout);
+        Gtk.render_layout(style, cr, border + margins, y + border + margins, layout);
     }
 }
