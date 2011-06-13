@@ -312,6 +312,10 @@ namespace Marlin.View.Chrome
                 }
             });
 
+            entry.escape.connect(() => {
+                change_breadcrumbs(text);
+            });
+
             entry.need_completion.connect(() => {
                 show_autocomplete();
                 string path = "";
@@ -1263,6 +1267,7 @@ namespace Marlin.View.Chrome
         public signal void need_draw();
         public signal void paste();
         public signal void need_completion();
+        public signal void escape();
         
         /**
          * Create a new BreadcrumbsEntry object. It is used to display the entry
@@ -1480,6 +1485,9 @@ namespace Marlin.View.Chrome
                 break;
             case 0xff52: /* up */
                 up();
+                break;
+            case 0xff1b: /* escape */
+                escape();
                 break;
             default:
                 im_context.filter_keypress(event);
