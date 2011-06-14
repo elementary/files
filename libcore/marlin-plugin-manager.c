@@ -67,7 +67,6 @@ void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin)
     GFileInfo* file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
     while(file_info != NULL)
     {
-        printf("%s\n", g_file_info_get_content_type(file_info));
         if(!g_strcmp0(g_file_info_get_content_type(file_info), "text/plain"))
         {
             marlin_plugin_manager_add_plugin(plugins, g_strdup_printf("%s/%s", PLUGIN_DIR, g_file_info_get_name(file_info)));
