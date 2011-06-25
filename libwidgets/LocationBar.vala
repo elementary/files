@@ -187,40 +187,64 @@ namespace Marlin.View.Chrome
             icons[1] = {"network://", "network", "computer", true, null, null, true};
             make_icon(ref icons[1]);
             /* music */
-            icons[2] = {Environment.get_user_special_dir(UserDirectory.MUSIC), "folder-music", "folder", false, null, null, false};
-            icons[2].exploded = Environment.get_user_special_dir(UserDirectory.MUSIC).split("/");
-            icons[2].exploded[0] = "/";
-            make_icon(ref icons[2]);
+            string dir;
+            dir = Environment.get_user_special_dir(UserDirectory.MUSIC);
+            if(dir.contains("/"))
+            {
+                icons[2] = {dir, "folder-music", "folder", false, null, null, false};
+                icons[2].exploded = dir.split("/");
+                icons[2].exploded[0] = "/";
+                make_icon(ref icons[2]);
+            }
     
             /* image */
-            icons[3] = {Environment.get_user_special_dir(UserDirectory.PICTURES), "folder-images", "folder-pictures", false, null, null, false};
-            icons[3].exploded = Environment.get_user_special_dir(UserDirectory.PICTURES).split("/");
-            icons[3].exploded[0] = "/";
-            make_icon(ref icons[3]);
+            dir = Environment.get_user_special_dir(UserDirectory.PICTURES);
+            if(dir.contains("/"))
+            {
+                icons[3] = {dir, "folder-images", "folder-pictures", false, null, null, false};
+                icons[3].exploded = dir.split("/");
+                icons[3].exploded[0] = "/";
+                make_icon(ref icons[3]);
+            }
 
             /* movie */
-            icons[4] = {Environment.get_user_special_dir(UserDirectory.VIDEOS), "folder-videos", "folder", false, null, null, false};
-            icons[4].exploded = Environment.get_user_special_dir(UserDirectory.VIDEOS).split("/");
-            icons[4].exploded[0] = "/";
-            make_icon(ref icons[4]);
+            dir = Environment.get_user_special_dir(UserDirectory.VIDEOS);
+            if(dir.contains("/"))
+            {
+                icons[4] = {dir, "folder-videos", "folder", false, null, null, false};
+                icons[4].exploded = dir.split("/");
+                icons[4].exploded[0] = "/";
+                make_icon(ref icons[4]);
+            }
     
             /* downloads */
-            icons[5] = {Environment.get_user_special_dir(UserDirectory.DOWNLOAD), "folder-downloads", "folder_download", false, null, null, false};
-            icons[5].exploded = Environment.get_user_special_dir(UserDirectory.DOWNLOAD).split("/");
-            icons[5].exploded[0] = "/";
-            make_icon(ref icons[5]);
+            dir = Environment.get_user_special_dir(UserDirectory.DOWNLOAD);
+            if(dir.contains("/"))
+            {
+                icons[5] = {dir, "folder-downloads", "folder_download", false, null, null, false};
+                icons[5].exploded = dir.split("/");
+                icons[5].exploded[0] = "/";
+                make_icon(ref icons[5]);
+            }
     
             /* documents */
-            icons[6] = {Environment.get_user_special_dir(UserDirectory.DOCUMENTS), "folder-documents", "folder_download", false, null, null, false};
-            icons[6].exploded = Environment.get_user_special_dir(UserDirectory.DOCUMENTS).split("/");
-            icons[6].exploded[0] = "/";
-            make_icon(ref icons[6]);
+            dir = Environment.get_user_special_dir(UserDirectory.DOCUMENTS);
+            if(dir.contains("/"))
+            {
+                icons[6] = {dir, "folder-documents", "folder_download", false, null, null, false};
+                icons[6].exploded = dir.split("/");
+                icons[6].exploded[0] = "/";
+                make_icon(ref icons[6]);
+            }
 
-            icons[dir_number - 2] = {Environment.get_home_dir(), "go-home-symbolic", "go-home", false, null, null, true};
-            icons[dir_number - 2].exploded = Environment.get_home_dir().split("/");
-            icons[dir_number - 2].exploded[0] = "/";
-            make_icon(ref icons[dir_number - 2]);
-
+            dir = Environment.get_home_dir();
+            if(dir.contains("/"))
+            {
+                icons[dir_number - 2] = {dir, "go-home-symbolic", "go-home", false, null, null, true};
+                icons[dir_number - 2].exploded = dir.split("/");
+                icons[dir_number - 2].exploded[0] = "/";
+                make_icon(ref icons[dir_number - 2]);
+            }
             
             icons[dir_number - 1] = {"/", "drive-harddisk", "computer", false, null, null, true};
             icons[dir_number - 1].exploded = {"/"};
