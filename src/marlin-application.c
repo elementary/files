@@ -475,9 +475,7 @@ marlin_application_command_line (GApplication *app,
     gboolean no_default_window = FALSE;
     gboolean no_desktop = FALSE;
     gboolean kill_shell = FALSE;
-    gboolean autostart_mode = FALSE;
     gboolean tab = FALSE;
-    const gchar *autostart_id;
     gchar **remaining = NULL;
     const GOptionEntry options[] = {
         { "version", '\0', 0, G_OPTION_ARG_NONE, &version,
@@ -506,11 +504,6 @@ marlin_application_command_line (GApplication *app,
 
     argv = g_application_command_line_get_arguments (command_line, &argc);
 
-    autostart_id = g_getenv ("DESKTOP_AUTOSTART_ID");
-    if (autostart_id != NULL && *autostart_id != '\0') {
-        autostart_mode = TRUE;
-    }
-
     if (!g_option_context_parse (context, &argc, &argv, &error)) {
         g_printerr ("Could not parse arguments: %s\n", error->message);
         g_error_free (error);
@@ -529,15 +522,6 @@ marlin_application_command_line (GApplication *app,
         retval = EXIT_FAILURE;
         goto out;
     }
-
-    /* If in autostart mode (aka started by gnome-session), we need to ensure 
-     * nautilus starts with the correct options.
-     */
-    if (autostart_mode) {
-        no_default_window = TRUE;
-        no_desktop = FALSE;
-    }
-    
 
     if (kill_shell) {
         marlin_application_quit (self);
