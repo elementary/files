@@ -227,7 +227,7 @@ namespace Marlin.View {
             foreach(var path in list){
                 int cn = n++; // For explenation look up
                 var item = new MenuItem.with_label (path.replace("file://", "")); //TODO add `real' escaping/serializing
-                item.activate.connect(() => forward(-cn));
+                item.activate.connect(() => forward(cn));
                 forward_menu.insert(item, -1);
             }
 
