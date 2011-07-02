@@ -255,8 +255,12 @@ namespace Marlin.View.Chrome
             button_context = new Gtk.Button().get_style_context();
             entry_context = new Gtk.Entry().get_style_context();
             button_context.add_class("marlin-pathbar");
+#if VALA_0_14
+            Gtk.Border border = button_context.get_padding(Gtk.StateFlags.NORMAL);
+#else
             Gtk.Border border = new Gtk.Border();
             button_context.get_padding(Gtk.StateFlags.NORMAL, border);
+#endif
 
             left_padding = border.left;
             right_padding = border.right;
@@ -902,8 +906,12 @@ namespace Marlin.View.Chrome
                 cr.line_to(second_stop,
                            y + 1);
                 cr.close_path();
+#if VALA_0_14
+                Gdk.RGBA color = button_context.get_background_color(Gtk.StateFlags.SELECTED);
+#else
                 Gdk.RGBA color = Gdk.RGBA();
                 button_context.get_background_color(Gtk.StateFlags.SELECTED, color);
+#endif
                 
                 Cairo.Pattern pat = new Cairo.Pattern.linear(first_stop, y, second_stop, y);
                 pat.add_color_stop_rgba(0.7, color.red, color.green, color.blue, 0);
@@ -1701,8 +1709,12 @@ namespace Marlin.View.Chrome
             /* draw completion */
             cr.move_to(x + text_width, height/2 - text_height/2);
             layout.set_text(completion, -1);
+#if VALA_0_14
+            Gdk.RGBA color = button_context.get_color(Gtk.StateFlags.NORMAL);
+#else
             Gdk.RGBA color = Gdk.RGBA();
             button_context.get_color(Gtk.StateFlags.NORMAL, color);
+#endif
             cr.set_source_rgba(color.red, color.green, color.blue, color.alpha - 0.3);
             Pango.cairo_show_layout(cr, layout);
             
@@ -1710,12 +1722,20 @@ namespace Marlin.View.Chrome
             if(focus && selected_start >= 0 && selected_end >= 0)
             {
                 cr.rectangle(x + selection_start, height/4, selection_end - selection_start, height/2);
+#if VALA_0_14
+                color = button_context.get_background_color(Gtk.StateFlags.SELECTED);
+#else
                 button_context.get_background_color(Gtk.StateFlags.SELECTED, color);
+#endif
                 cr.set_source_rgba(color.red, color.green, color.blue, color.alpha);
                 cr.fill();
                 
                 layout.set_text(get_selection(), -1);
+#if VALA_0_14
+                color = button_context.get_color(Gtk.StateFlags.SELECTED);
+#else
                 button_context.get_color(Gtk.StateFlags.SELECTED, color);
+#endif
                 cr.set_source_rgba(color.red, color.green, color.blue, color.alpha);
                 cr.move_to(x + Math.fmin(selection_start, selection_end), height/4);
                 Pango.cairo_show_layout(cr, layout);
