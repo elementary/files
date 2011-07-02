@@ -31,7 +31,12 @@ namespace Marlin.View.Chrome
         public bool state
         {
             get { return _state; }
-            set { _state = value; update_widget(); }
+            set {
+                if (_state != value) {
+                    _state = value;
+                    update_widget();
+                }
+            }
         }
 
         public new string path{
