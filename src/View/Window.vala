@@ -365,7 +365,11 @@ namespace Marlin.View {
             tabs.remove(view_container);
         }
 
+#if VALA_0_14
+        private void resized(Gtk.Allocation allocation){
+#else
         private void resized(Gdk.Rectangle allocation){
+#endif
             Orientation current_state = main_box.orientation;
 
             Orientation future_state = Orientation.VERTICAL; // Becouse how Paned class works, this is inverted

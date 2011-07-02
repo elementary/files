@@ -171,7 +171,11 @@ namespace Marlin.View {
             window.main_box.reset_style ();
         }
 
+#if VALA_0_14
+        private void size_allocate_changed (Gtk.Allocation s)
+#else
         private void size_allocate_changed (Widget w, Gdk.Rectangle s)
+#endif
         {
             /* first allocations can be tricky ignore all allocations different 
                than the panel requested size at first */
