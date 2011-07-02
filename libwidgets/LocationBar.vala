@@ -719,7 +719,10 @@ namespace Marlin.View.Chrome
             }
             
             newelements[0].text = protocol + newelements[0].text;
-            
+            if (newelements[0].text == "trash:///") 
+            {
+                newelements[0].text = N_("Trash");
+            }
             int max_path = 0;
             if(newelements.size > elements.size)
             {
