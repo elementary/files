@@ -225,13 +225,13 @@ namespace Marlin.View
             }
 
             first_vbox.pack_start(view);
-
-
+            
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Plugins")));
-            Gtk.Alignment alignment = new Gtk.Alignment(0.5f, 0.5f, 1.0f, 1.0f);
-            alignment.set_padding(6, 6, 6, 6);
-            alignment.add(mai_notebook);
-            ((Gtk.Box)get_content_area()).pack_start(alignment);
+            mai_notebook.set_margin_left(6);
+            mai_notebook.set_margin_right(6);
+            mai_notebook.set_margin_top(6);
+            mai_notebook.set_margin_bottom(12);
+            ((Gtk.Box)get_content_area()).pack_start(mai_notebook);
 
             this.show_all();
 
