@@ -9,6 +9,9 @@ namespace Resources {
         "ammonkey <am.monkeyd@gmail.com>",
         "Mathijs Henquet <mathijs.henquet@gmail.com>",
         "Lucas Baudin <xapantu@gmail.com>",
+        "Robert Roth",
+        "Vadim Rutkovsky",
+        "Rico Tzschichholz",
         null
     };
     
