@@ -201,7 +201,8 @@ fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
     {
         file = file_list->data;
         //log_printf (LOG_LEVEL_UNDEFINED, "colorize %s %d\n", file->name, ncolor);
-        file->color = tags_colors[ncolor];
+        g_free(file->color);
+        file->color = g_strdup(tags_colors[ncolor]);
         uri = g_file_get_uri(file->location);
         //*array = uri;
         marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
