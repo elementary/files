@@ -228,8 +228,10 @@ namespace Marlin.View
 
 
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Plugins")));
-
-            ((Gtk.Box)get_content_area()).pack_start(mai_notebook);
+            Gtk.Alignment alignment = new Gtk.Alignment(0.5f, 0.5f, 1.0f, 1.0f);
+            alignment.set_padding(6, 6, 6, 6);
+            alignment.add(mai_notebook);
+            ((Gtk.Box)get_content_area()).pack_start(alignment);
 
             this.show_all();
 
