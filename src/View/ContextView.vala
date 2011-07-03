@@ -27,36 +27,6 @@ using Gee;
 
 namespace Marlin.View {
 
-    class AppButton : Gtk.Button
-    {
-        AppInfo app_info;
-        GOF.File file;
-        HBox hbox;
-        public AppButton(AppInfo app_info, GOF.File file)
-        {
-            this.app_info = app_info;
-            this.file = file;
-            Image image;
-            if(app_info.get_icon() == null)
-                image = new Image.from_stock(Gtk.Stock.EXECUTE, IconSize.BUTTON);
-            else
-                image = new Image.from_gicon(app_info.get_icon(), IconSize.BUTTON);
-            //set_image(image);
-            hbox = new HBox(false, 5);
-            hbox.pack_start(image, false, false);
-            set_tooltip_text(app_info.get_name());
-            if((bool)Preferences.settings.get_value("show-open-with-text"))
-            {
-                var label = new Label(app_info.get_name());
-                label.ellipsize = Pango.EllipsizeMode.END;
-                label.set_alignment(0, 0.5f);
-                hbox.pack_start(label, true, true);
-            }
-            add(hbox);
-            pressed.connect(() => { file.launch_with(get_screen(), app_info); } );
-        }
-    }
-
     public class ContextView : Gtk.EventBox
     {
         public const int height = 50;
@@ -64,7 +34,6 @@ namespace Marlin.View {
         public const int key_value_padding = 8;
         public const int key_value_width = 90;
         public Gtk.Menu toolbar_menu;
-        private Box apps;
 
         public int panel_size{
             get{
@@ -276,73 +245,8 @@ namespace Marlin.View {
 
             label.label = gof_file.name;
 
-            /* Apps list */
-            if((bool)Preferences.settings.get_value("show-open-with-text"))
-            {
-                apps = new VBox(false, 5);
-            }
-            else
-            {
-                apps = new HBox(true, 5);
-            }
-
-            if (!(gof_file.is_symlink() && !gof_file.link_known_target) && 
-                gof_file.ftype != "application/octet-stream") 
-            {
-                var button = new AppButton(AppInfo.get_default_for_type(gof_file.ftype, false), gof_file);
-                string name = AppInfo.get_default_for_type(gof_file.ftype, false).get_name();
-
-                apps.pack_start(button, false, false);
-                int i = 0;
-                foreach(AppInfo app_info in AppInfo.get_all_for_type(gof_file.ftype))
-                {
-                    if(app_info.get_name() != name)
-                    {
-                        button = new AppButton(app_info, gof_file);
-                        apps.pack_start(button, false, false);
-                    }
-                    if(i > 3)
-                        break;
-                    i++;
-                }
-            }
-
-            set_as_default = false;
-            
-            app_chooser = new Button.with_label(N_("Other..."));
-            app_chooser.pressed.connect(() => {
-                dial = new AppChooserDialog(window, 0, gof_file.location);
-                var check_button = new CheckButton.with_label(N_("Set as default"));
-                check_button.toggled.connect( () => {set_as_default = ! set_as_default; });
-                ((Box)dial.get_content_area()).pack_start(check_button);
-                dial.get_content_area().show_all();
-                dial.response.connect(launch_gof);
-                dial.run();
-            });
-
             update_info_panel();
             show();
-        }
-        AppChooserDialog dial;
-        Button app_chooser;
-        bool set_as_default;
-        
-        private void launch_gof(int response)
-        {
-            if(response == -5)
-                last_geof_cache.launch_with(get_screen(), dial.get_app_info());
-            if(set_as_default)
-            {
-                try
-                {
-                    dial.get_app_info().set_as_default_for_type(last_geof_cache.ftype);
-                }
-                catch(Error e)
-                {
-                    print("Can't set the default app: %s\n", e.message);
-                }
-            }
-            dial.destroy();
         }
 
         private void populate_key_value_pair(Box box, Pair<string, string> pair, bool limit_width = false){
@@ -438,8 +342,6 @@ namespace Marlin.View {
                 label.set_sensitive(false);
                 box.pack_start(label, false, false);
                 var vbox = new VBox(false, 3);
-                vbox.pack_start(apps, false, false);
-                vbox.pack_start(app_chooser, false, false);
                 box.pack_start(vbox, false, false);
                 vbox.set_margin_left(2);
                 vbox.set_margin_right(2);
@@ -487,29 +389,6 @@ namespace Marlin.View {
             var vbox = new VBox(false, 0);
             vbox.pack_start(table, true, true);
 
-            /* TODO open with take too much space in horizontal panel
-               wating for a better implementation if any or just ditch it */
-            /*
-            if(!last_geof_cache.is_directory)
-            {
-                var label = new Label(N_("Open with:"));
-                var hbox = new HBox(false, 5);
-                label.set_sensitive(false);
-                hbox.pack_start(label, false, false);
-                //var vbox = new VBox(false, 3);
-                hbox.pack_start(apps, false, false);
-                hbox.pack_start(app_chooser, false, false);
-                //box.pack_start(vbox, false, false);
-                //vbox.set_margin_left(2);
-                //vbox.set_margin_right(2);
-                vbox.pack_start(hbox);
-            }*/
-
-            /*var alignment = new Gtk.Alignment(0, 0.5f, 0, 0);
-            alignment.set_padding(0, 4, 0, 0);
-            alignment.add(vbox);*/
-
-    
             box.pack_start(vbox, true, true);
             box.show_all();
 
