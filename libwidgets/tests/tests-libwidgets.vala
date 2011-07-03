@@ -133,6 +133,14 @@ void add_pathbar_tests()
         bread_entry.key_press_event(event);
         assert(bread_entry.get_selection() == null);
     });
+    
+    Test.add_func ("/marlin/pathbar/go-to-trash", () => {
+        Test.log_set_fatal_handler( () => { return false; });
+        var breads = new Breadcrumbs(new Gtk.UIManager(), new Gtk.Window());
+        breads.change_breadcrumbs("trash:///");
+        breads.change_breadcrumbs("/home/there");
+    });
+
 }
  
 void main(string[] args)
