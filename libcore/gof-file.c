@@ -342,7 +342,7 @@ static void gof_file_finalize (GObject* obj) {
     GOFFile *file;
 
     file = GOF_FILE (obj);
-    g_warning ("%s %s\n", G_STRFUNC, file->name);
+    //g_warning ("%s %s\n", G_STRFUNC, file->name);
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
     g_free (file->uri);

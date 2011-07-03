@@ -103,6 +103,7 @@ namespace Marlin.View.Chrome
         Gdk.Pixbuf icon;
         string[] exploded;
         bool break_loop;
+        string? text_displayed;
     }
 
     public class Breadcrumbs : Gtk.EventBox
@@ -187,7 +188,7 @@ namespace Marlin.View.Chrome
             /* grab the UIManager */
             this.ui = ui;
             init_clipboard ();
-            icons[0] = {"trash://", "user-trash", "computer", true, null, null, true};
+            icons[0] = {"trash://", "user-trash", "computer", true, null, null, true, "Trash"};
             make_icon(ref icons[0]);
             icons[1] = {"network://", "network", "computer", true, null, null, true};
             make_icon(ref icons[1]);
@@ -196,7 +197,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.MUSIC);
             if(dir.contains("/"))
             {
-                icons[2] = {dir, "folder-music", "folder", false, null, null, false};
+                icons[2] = {dir, "folder-music", "folder", false, null, null, false, null};
                 icons[2].exploded = dir.split("/");
                 icons[2].exploded[0] = "/";
                 make_icon(ref icons[2]);
@@ -206,7 +207,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.PICTURES);
             if(dir.contains("/"))
             {
-                icons[3] = {dir, "folder-images", "folder-pictures", false, null, null, false};
+                icons[3] = {dir, "folder-images", "folder-pictures", false, null, null, false, null};
                 icons[3].exploded = dir.split("/");
                 icons[3].exploded[0] = "/";
                 make_icon(ref icons[3]);
@@ -216,7 +217,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.VIDEOS);
             if(dir.contains("/"))
             {
-                icons[4] = {dir, "folder-videos", "folder", false, null, null, false};
+                icons[4] = {dir, "folder-videos", "folder", false, null, null, false, null};
                 icons[4].exploded = dir.split("/");
                 icons[4].exploded[0] = "/";
                 make_icon(ref icons[4]);
@@ -226,7 +227,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.DOWNLOAD);
             if(dir.contains("/"))
             {
-                icons[5] = {dir, "folder-downloads", "folder_download", false, null, null, false};
+                icons[5] = {dir, "folder-downloads", "folder_download", false, null, null, false, null};
                 icons[5].exploded = dir.split("/");
                 icons[5].exploded[0] = "/";
                 make_icon(ref icons[5]);
@@ -236,7 +237,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.DOCUMENTS);
             if(dir.contains("/"))
             {
-                icons[6] = {dir, "folder-documents", "folder_download", false, null, null, false};
+                icons[6] = {dir, "folder-documents", "folder_download", false, null, null, false, null};
                 icons[6].exploded = dir.split("/");
                 icons[6].exploded[0] = "/";
                 make_icon(ref icons[6]);
@@ -245,13 +246,13 @@ namespace Marlin.View.Chrome
             dir = Environment.get_home_dir();
             if(dir.contains("/"))
             {
-                icons[dir_number - 2] = {dir, "go-home-symbolic", "go-home", false, null, null, true};
+                icons[dir_number - 2] = {dir, "go-home-symbolic", "go-home", false, null, null, true, null};
                 icons[dir_number - 2].exploded = dir.split("/");
                 icons[dir_number - 2].exploded[0] = "/";
                 make_icon(ref icons[dir_number - 2]);
             }
             
-            icons[dir_number - 1] = {"/", "drive-harddisk", "computer", false, null, null, true};
+            icons[dir_number - 1] = {"/", "drive-harddisk", "computer", false, null, null, true, null};
             icons[dir_number - 1].exploded = {"/"};
             make_icon(ref icons[dir_number - 1]);
             
@@ -723,10 +724,6 @@ namespace Marlin.View.Chrome
             }
             
             newelements[0].text = protocol + newelements[0].text;
-            if (newelements[0].text == "trash:///") 
-            {
-                newelements[0].text = N_("Trash");
-            }
             int max_path = 0;
             if(newelements.size > elements.size)
             {
@@ -753,6 +750,7 @@ namespace Marlin.View.Chrome
                 if(icon.protocol && icon.path == protocol)
                 {
                     newelements[0].set_icon(icon.icon);
+                    newelements[0].text_displayed = icon.text_displayed;
                     break;
                 }
                 else if(!icon.protocol && icon.exploded.length <= newelements.size)
@@ -777,6 +775,7 @@ namespace Marlin.View.Chrome
                         newelements[h].display = true;
                         newelements[h].set_icon(icon.icon);
                         newelements[h].display_text = !icon.break_loop;
+                        newelements[h].text_displayed = icon.text_displayed;
                         if(icon.break_loop)
                         {
                             newelements[h].text = icon.path;
@@ -797,6 +796,10 @@ namespace Marlin.View.Chrome
                 view_old = true;
                 newbreads = elements.slice(max_path, elements.size);
                 animate_old_breads();
+            }
+            else
+            {
+                queue_draw();
             }
             
             elements.clear();
@@ -1168,7 +1171,7 @@ namespace Marlin.View.Chrome
     
     class BreadcrumbsElement : GLib.Object
     {
-        public string text;
+        public string? text;
         public int offset = 0;
         internal double last_height = 0;
         public double text_width = -1;
@@ -1181,6 +1184,7 @@ namespace Marlin.View.Chrome
         Gdk.Pixbuf icon;
         public bool display = true;
         public bool display_text = true;
+        internal string? text_displayed = null;
         public BreadcrumbsElement(string text_, int left_padding, int right_padding)
         {
             text = text_;
@@ -1205,6 +1209,7 @@ namespace Marlin.View.Chrome
         {
             last_height = height;
             cr.set_source_rgb(0,0,0);
+            string text = text_displayed ?? this.text;
             Pango.Layout layout = widget.create_pango_layout(text);
             if(icon == null)
             {
