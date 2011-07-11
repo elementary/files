@@ -237,7 +237,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.DOCUMENTS);
             if(dir.contains("/"))
             {
-                icons[6] = {dir, "folder-documents-symbolic", "folder_document", false, null, null, false, null};
+                icons[6] = {dir, "folder-documents-symbolic", "folder-documents", false, null, null, false, null};
                 icons[6].exploded = dir.split("/");
                 icons[6].exploded[0] = "/";
                 make_icon(ref icons[6]);
