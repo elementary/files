@@ -268,7 +268,7 @@ void on_bus_aquired (DBusConnection conn) {
     try {
         conn.register_object ("/org/elementary/marlin/db", new MarlinTags ());
     } catch (IOError e) {
-        stderr.printf ("Could not register service\n");
+        error ("Could not register service");
     }
 }
 
@@ -276,7 +276,7 @@ void main () {
     Bus.own_name (BusType.SESSION, "org.elementary.marlin.db", BusNameOwnerFlags.NONE,
                   on_bus_aquired,
                   () => {},
-                  () => stderr.printf ("Could not aquire name\n"));
+                  () => error ("Could not aquire name"));
 
     new MainLoop ().run ();
 }
