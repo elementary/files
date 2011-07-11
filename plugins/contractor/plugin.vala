@@ -22,7 +22,7 @@ ArrayList<MenuItem> menus;
 UIManager ui;
 Menu menu;
 string mime;
-string path;
+string uri;
 
 string get_app_display_name(GLib.HashTable<string,string> app__)
 {
@@ -38,7 +38,7 @@ void print_apps()
     menus.clear();
     var cont = new Contracts();
     
-    foreach(var app__ in cont.get_contract(mime))
+    foreach(var app__ in cont.get_contract(uri, mime))
     {
         var menuitem = new MenuItem.with_label(get_app_display_name(app__));
         menu.append(menuitem);
@@ -55,12 +55,17 @@ public void contract_activated()
     print(app_menu + "\n");
     var cont = new Contracts();
     
-    foreach(var app__ in cont.get_contract(mime))
+    foreach(var app__ in cont.get_contract(uri, mime))
     {
         if(app_menu == get_app_display_name(app__))
         {
-            string to_exec = app__.lookup("Exec").printf(path);
-            GLib.Process.spawn_command_line_async(to_exec);
+            var cmd = app__.lookup("Exec");
+            try {
+                GLib.Process.spawn_command_line_async(cmd);
+            } catch (SpawnError e) {
+                stderr.printf ("error spawn command line %s: %s", cmd, e.message);
+            }
+
             break;
         }
     }
@@ -70,7 +75,8 @@ public void contract_activated()
 [DBus (name = "org.elementary.contractor")]
 public interface Contractor : Object
 {
-    public abstract GLib.HashTable<string,string>[] GetServicesByMime (string mime) throws IOError;
+    //public abstract GLib.HashTable<string,string>[] GetServicesByMime (string mime) throws IOError;
+    public abstract GLib.HashTable<string,string>[] GetServicesByLocation (string strlocation, string? file_mime="")    throws IOError;
 }
 
 public class Contracts : Object
@@ -92,9 +98,17 @@ public class Contracts : Object
         }
     }
 
-    public GLib.HashTable<string,string>[] get_contract(string mime)
+    public GLib.HashTable<string,string>[] get_contract(string uri, string mime)
     {
-        return contract.GetServicesByMime(mime);
+        GLib.HashTable<string,string>[] contracts = null;
+
+        try {
+            contracts = contract.GetServicesByLocation(uri, mime);
+        }catch (IOError e) {
+            stderr.printf ("%s\n", e.message);
+        }
+
+        return contracts;
     }
 }
 
@@ -104,6 +118,10 @@ public void receive_all_hook(void* user_data, int hook)
     {
     case 1:
         /* context menu */
+        /*unowned GLib.List<GOF.File> file_list = ((GLib.List<GOF.File>) user_data).copy ();
+
+        foreach (var goffile in file_list)
+            message ("hook: %s", goffile.name);*/
         print_apps();
         break;
     case 2: /* ui */
@@ -118,7 +136,10 @@ public void receive_all_hook(void* user_data, int hook)
         {
             GOF.File file = (GOF.File)user_data;
             mime = file.ftype;
-            path = file.location.get_path();
+            /* recheck unknown mime in contractor */
+            if (mime == "application/octet-stream")
+                mime = "";
+            uri = file.uri;
         }
         break;
     case 7:

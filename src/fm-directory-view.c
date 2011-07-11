@@ -1841,7 +1841,7 @@ static void fm_directory_view_remove_menuitems(GList* openwith_items /* Some Gtk
     }
 }
 
-    void
+void
 fm_directory_view_context_menu (FMDirectoryView *view,
                                 guint           button,
                                 GdkEventButton  *event)

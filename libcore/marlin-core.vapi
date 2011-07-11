@@ -76,6 +76,7 @@ namespace GOF {
         public GLib.Icon? icon;
         public GLib.FileInfo? info;
         public string name;
+        public string uri;
         public string format_size;
         public string color;
         public string formated_modified;
