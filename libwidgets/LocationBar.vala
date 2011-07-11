@@ -197,7 +197,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.MUSIC);
             if(dir.contains("/"))
             {
-                icons[2] = {dir, "folder-music", "folder", false, null, null, false, null};
+                icons[2] = {dir, "folder-music-symbolic", "folder", false, null, null, false, null};
                 icons[2].exploded = dir.split("/");
                 icons[2].exploded[0] = "/";
                 make_icon(ref icons[2]);
@@ -207,7 +207,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.PICTURES);
             if(dir.contains("/"))
             {
-                icons[3] = {dir, "folder-images", "folder-pictures", false, null, null, false, null};
+                icons[3] = {dir, "folder-images-symbolic", "folder-pictures", false, null, null, false, null};
                 icons[3].exploded = dir.split("/");
                 icons[3].exploded[0] = "/";
                 make_icon(ref icons[3]);
@@ -217,7 +217,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.VIDEOS);
             if(dir.contains("/"))
             {
-                icons[4] = {dir, "folder-videos", "folder", false, null, null, false, null};
+                icons[4] = {dir, "folder-videos-symbolic", "folder", false, null, null, false, null};
                 icons[4].exploded = dir.split("/");
                 icons[4].exploded[0] = "/";
                 make_icon(ref icons[4]);
@@ -227,7 +227,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.DOWNLOAD);
             if(dir.contains("/"))
             {
-                icons[5] = {dir, "folder-downloads", "folder_download", false, null, null, false, null};
+                icons[5] = {dir, "folder-downloads-symbolic", "folder_download", false, null, null, false, null};
                 icons[5].exploded = dir.split("/");
                 icons[5].exploded[0] = "/";
                 make_icon(ref icons[5]);
@@ -237,7 +237,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.DOCUMENTS);
             if(dir.contains("/"))
             {
-                icons[6] = {dir, "folder-documents", "folder_download", false, null, null, false, null};
+                icons[6] = {dir, "folder-documents-symbolic", "folder_download", false, null, null, false, null};
                 icons[6].exploded = dir.split("/");
                 icons[6].exploded[0] = "/";
                 make_icon(ref icons[6]);
