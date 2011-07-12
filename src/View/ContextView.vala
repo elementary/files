@@ -161,19 +161,20 @@ namespace Marlin.View {
                 return;*/
 
             //amtest
-            stdout.printf ("::::: %d %d :: %d %d\n", cv_alloc.width, cv_alloc.height,
-                           s.width, s.height);
+            /*stdout.printf ("::::: %d %d :: %d %d\n", cv_alloc.width, cv_alloc.height,
+                           s.width, s.height);*/
             if ((orientation == Orientation.VERTICAL && cv_alloc.width != s.width) ||
                 (orientation == Orientation.HORIZONTAL && cv_alloc.height != s.height)) {
                 //stdout.printf ("$$$$$$$$$$$ img alloc %d\n", s.width);
-                    message ("zz");
+                /* TODO don't create/destroy the contextview in miller */
+                //message ("zz");
                 if(timeout != 0){
                     Source.remove(timeout);
                     timeout = 0;
                 }
                 timeout = Timeout.add(300, () => {
                     timeout = 0;
-                    message ("wwwwwwwwwwwww");
+                    //message ("wwwwwwwwwwwww");
                     update_icon();
 
                     return false;
@@ -207,17 +208,14 @@ namespace Marlin.View {
             cv_alloc = alloc;
             //stdout.printf ("$$$$$$$$$ real alloc %d %d\n", alloc.width, alloc.height);
            
+            /* fixing a minimum and maximum value */
             if (orientation == Orientation.VERTICAL) {
-                //icon_size_req = int.min (alloc.width, w_width/2);
-                icon_size_req = int.min (alloc.width, 256);
+                icon_size_req = alloc.width.clamp (height, 256);
             } else {
-                //icon_size_req = int.min (alloc.height, w_height/2);
-                icon_size_req = int.min (alloc.height, 256);
+                icon_size_req = alloc.height.clamp (height, 256);
             }
 
-            /* FIXME problem with thumbs */
             icon_info = last_gof.get_icon(icon_size_req, GOF.FileIconFlags.USE_THUMBNAILS);
-            //icon_info = last_gof.get_icon(icon_size_req, GOF.FileIconFlags.NONE);
             icon = icon_info.get_pixbuf_nodefault();
             
             /* TODO ask tumbler a LARGE thumb for size > 128 */
