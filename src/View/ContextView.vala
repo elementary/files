@@ -311,9 +311,8 @@ namespace Marlin.View {
                 if (image.parent != null)
                     image.parent.remove(image);
                 image.set_tooltip_text (last_gof.name);
-                //box.pack_start(image, false, false, 0);
+                box.pack_start(image, false, false, 0);
                 //box.pack_start(image, false, true, 0);
-                box.pack_start(image);
             }
             if (label != null) {
                 if (label.parent != null)
@@ -322,8 +321,7 @@ namespace Marlin.View {
                 label.set_tooltip_text (last_gof.name);
                 box.pack_start(label, false, false);
             }
-            //box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
-            box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL));
+            box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
 
             var spacer_box = new VBox(false, 0);
             spacer_box.set_size_request (-1, 15);
@@ -353,23 +351,6 @@ namespace Marlin.View {
             }
             alignment_.add(information);
             box.pack_start(alignment_);
-            
-            spacer_box = new VBox(false, 0);
-            spacer_box.set_size_request (-1, 15);
-            box.pack_start(spacer_box, false, false);
-
-            box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
-
-            if(!last_gof.is_directory)
-            {
-                var label = new Label(N_("Open with:"));
-                label.set_sensitive(false);
-                box.pack_start(label, false, false);
-                var vbox = new VBox(false, 3);
-                box.pack_start(vbox, false, false);
-                vbox.set_margin_left(2);
-                vbox.set_margin_right(2);
-            }
             
             box.show_all();
             set_content(box);
