@@ -69,7 +69,7 @@ namespace Marlin.View {
         }
         
         //public signal void refresh();
-        public signal void selection_changed(GOF.File gof_file);
+        public signal void selection_changed(GLib.List<GOF.File> gof_file);
 
         public signal void reload_tabs();
 

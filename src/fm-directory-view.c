@@ -677,10 +677,10 @@ fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location)
 }
 
 void
-fm_directory_view_column_add_preview (FMDirectoryView *dview, GOFFile *file)
+fm_directory_view_column_add_preview (FMDirectoryView *dview, GList *selection)
 {
     MarlinViewContextView *contextview = marlin_view_context_view_new (MARLIN_VIEW_WINDOW (dview->details->window), FALSE, GTK_ORIENTATION_HORIZONTAL);
-    marlin_view_context_view_update (contextview, file);
+    marlin_view_context_view_update (contextview, selection);
     /* resize context view to match the default columns size 180+2 border px */
     gtk_widget_set_size_request (GTK_WIDGET (contextview), 182, -1);
     gof_window_columns_add_preview(dview->details->slot, GTK_WIDGET (contextview));
@@ -2635,12 +2635,7 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
     }
     update_menus_common (view);
 
-    /* if empty selection then pass the currentslot folder */
-    if (file == NULL)
-        file = view->details->slot->directory->file;
-
-    /* TODO maybe pass the entire selection in the signal */
-    g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", file);
+    g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", selection);
 }
 
 static void
