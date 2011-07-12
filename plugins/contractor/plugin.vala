@@ -134,7 +134,9 @@ public void receive_all_hook(void* user_data, int hook)
     case 5:
         if(user_data != null)
         {
-            GOF.File file = (GOF.File)user_data;
+            unowned GLib.List<GOF.File> selection = (GLib.List<GOF.File>) user_data;
+            //GOF.File file = (GOF.File)user_data;
+            GOF.File file = selection.data;
             mime = file.ftype;
             /* recheck unknown mime in contractor */
             if (mime == "application/octet-stream")
