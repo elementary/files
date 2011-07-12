@@ -50,11 +50,11 @@ namespace Marlin.View {
         private Window window;
         private Gdk.Pixbuf icon{
             set{
-                image.pixbuf = value;
+                evbox.set_from_pixbuf (value);
             }
         }
 
-        private Image image;
+        private ImgEventBox evbox;
         private Label label;
         private Gee.List<Pair<string, string>> info;
         private uint timeout = 0;
@@ -118,7 +118,7 @@ namespace Marlin.View {
             label.ellipsize = Pango.EllipsizeMode.MIDDLE;
             label.set_padding(key_value_padding, -1);
 
-            image = new Image ();
+            evbox = new ImgEventBox(Orientation.HORIZONTAL);
 
             info = new LinkedList<Pair<string, string>>();
         
@@ -157,8 +157,7 @@ namespace Marlin.View {
                     s.height > 1 && s.height <= panel_size)
                     first_alloc = false;
             }
-            /*if (first_alloc && should_sync)*/ 
-            /*if (should_sync) 
+            /*if (first_alloc && !should_sync) 
                 return;*/
 
             //amtest
@@ -172,7 +171,7 @@ namespace Marlin.View {
                     Source.remove(timeout);
                     timeout = 0;
                 }
-                timeout = Timeout.add(500, () => {
+                timeout = Timeout.add(300, () => {
                     timeout = 0;
                     message ("wwwwwwwwwwwww");
                     update_icon();
@@ -217,8 +216,8 @@ namespace Marlin.View {
             }
 
             /* FIXME problem with thumbs */
-            //icon_info = last_gof.get_icon(icon_size_req, GOF.FileIconFlags.USE_THUMBNAILS);
-            icon_info = last_gof.get_icon(icon_size_req, GOF.FileIconFlags.NONE);
+            icon_info = last_gof.get_icon(icon_size_req, GOF.FileIconFlags.USE_THUMBNAILS);
+            //icon_info = last_gof.get_icon(icon_size_req, GOF.FileIconFlags.NONE);
             icon = icon_info.get_pixbuf_nodefault();
             
             /* TODO ask tumbler a LARGE thumb for size > 128 */
@@ -286,8 +285,10 @@ namespace Marlin.View {
             if(limit_width)
                 value_label.set_size_request(key_value_width, -1);
             value_label.size_allocate.connect((l, s) => l.set_size_request(s.width, -1));
-            value_label.wrap = true;
-            value_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
+            if (orientation == Orientation.VERTICAL) {
+                value_label.wrap = true;
+                value_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
+            }
             value_label.set_justify(Justification.LEFT);
 
             box.pack_start(value_label, true, true, 0);
@@ -307,12 +308,11 @@ namespace Marlin.View {
             blank_box.set_size_request (-1, 20);
             box.pack_start(blank_box, false, false, 0);*/
 
-            if (image != null) {
-                if (image.parent != null)
-                    image.parent.remove(image);
-                image.set_tooltip_text (last_gof.name);
-                box.pack_start(image, false, false, 0);
-                //box.pack_start(image, false, true, 0);
+            if (evbox != null) {
+                if (evbox.parent != null)
+                    evbox.parent.remove(evbox);
+                evbox.orientation = convert_parent_orientation(orientation);
+                box.pack_start(evbox, false, true, 0);
             }
             if (label != null) {
                 if (label.parent != null)
@@ -359,16 +359,13 @@ namespace Marlin.View {
         private void construct_info_panel_horizontal(Gee.List<Pair<string, string>> item_info){
             var box = new HBox(false, 0);
 
-            var alignment_img = new Gtk.Alignment(0.5f, 0.5f, 0, 0);
-            alignment_img.set_padding(0, 0, 5, 0); 
-
-            if (image != null) {
-                if (image.parent != null)
-                    image.parent.remove(image);
-                image.set_tooltip_text (last_gof.name);
-                alignment_img.add(image);
+            set_size_request (-1, height);
+            if (evbox != null) {
+                if (evbox.parent != null)
+                    evbox.parent.remove(evbox);
+                evbox.orientation = convert_parent_orientation(orientation);
+                box.pack_start(evbox, false, true, 0);
             }
-            box.pack_start(alignment_img, false, false);
 
             //box.pack_start(label, false, false);
             //box.pack_start(new Gtk.Separator(Orientation.VERTICAL), false, false);
@@ -383,7 +380,7 @@ namespace Marlin.View {
                 var row = n % 2;
 
                 var key_value_pair = new HBox (false, key_value_padding);
-                key_value_pair.set_size_request(key_value_width, -1);
+                //key_value_pair.set_size_request(key_value_width, -1);
                 populate_key_value_pair(key_value_pair, pair);
 
                 table.attach(key_value_pair, column, column+1, row, row+1, AttachOptions.FILL, AttachOptions.FILL, key_value_padding/2, key_value_padding/4);
