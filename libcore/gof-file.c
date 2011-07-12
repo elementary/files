@@ -910,7 +910,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
         && file->flags == GOF_FILE_THUMB_STATE_LOADING) {
         gicon = g_themed_icon_new (ICON_NAME_THUMBNAIL_LOADING);
-        printf ("thumbnail loading\n");
+        //printf ("thumbnail loading\n");
     } else { 
         gicon = g_object_ref (file->icon);
     }
