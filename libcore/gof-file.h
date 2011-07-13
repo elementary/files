@@ -92,7 +92,7 @@ struct _GOFFile {
     GdkPixbuf       *pix;
     guint64         modified;
     gchar           *formated_modified;
-    const gchar     *color;
+    gchar           *color;
     gboolean        is_mounted;
 
     const gchar     *thumbnail_path;

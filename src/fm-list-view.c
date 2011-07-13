@@ -32,6 +32,12 @@
 #include "eel-gtk-extensions.h"
 #include "marlin-tags.h"
 
+enum
+{
+    PROP_0,
+    PROP_ZOOM_LEVEL,
+};
+
 struct FMListViewDetails {
     GList       *selection;
     GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
@@ -1057,13 +1063,63 @@ fm_list_view_init (FMListView *view)
                      EXO_TREE_VIEW (view->tree), "single-click", 0);
     g_settings_bind (settings, "single-click-timeout", 
                      EXO_TREE_VIEW (view->tree), "single-click-timeout", 0);
+    g_settings_bind (marlin_list_view_settings, "zoom-level", 
+                     view, "zoom-level", 0);
+}
 
+static void
+fm_list_view_zoom_level_changed (FMListView *view)
+{
     /* set the new "size" for the icon renderer */
-    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "size", 16, NULL);
-    //TODO clean up this "hack"
-    gtk_cell_renderer_set_fixed_size (FM_DIRECTORY_VIEW (view)->icon_renderer, 18, 18);
+    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "size", marlin_zoom_level_to_icon_size (view->zoom_level), NULL);
+    gint xpad, ypad;
 
-    //fm_list_view_zoom_level_changed (view);
+    gtk_cell_renderer_get_padding (FM_DIRECTORY_VIEW (view)->icon_renderer, &xpad, &ypad);
+    gtk_cell_renderer_set_fixed_size (FM_DIRECTORY_VIEW (view)->icon_renderer, 
+                                      marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * xpad,
+                                      marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * ypad);
+    gtk_tree_view_columns_autosize (view->tree);
+}
+
+static void
+fm_list_view_get_property (GObject    *object,
+                           guint       prop_id,
+                           GValue     *value,
+                           GParamSpec *pspec)
+{
+    FMListView *view = FM_LIST_VIEW (object);
+
+    switch (prop_id)
+    {
+    case PROP_ZOOM_LEVEL:
+        g_value_set_enum (value, view->zoom_level);
+        break;
+
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }   
+}
+
+static void
+fm_list_view_set_property (GObject    *object,
+                           guint       prop_id,
+                           GValue     *value,
+                           GParamSpec *pspec)
+{
+    FMListView *view = FM_LIST_VIEW (object);
+
+    switch (prop_id)
+    {
+    case PROP_ZOOM_LEVEL:
+        view->zoom_level = g_value_get_enum (value);
+        fm_list_view_zoom_level_changed (view);
+        break;
+
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }   
 }
 
 static void
@@ -1071,11 +1127,10 @@ fm_list_view_class_init (FMListViewClass *klass)
 {
     FMDirectoryViewClass *fm_directory_view_class;
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
-    //GParamSpec   *pspec;
 
     object_class->finalize     = fm_list_view_finalize;
-    /*object_class->get_property = _get_property;
-      object_class->set_property = _set_property;*/
+    object_class->get_property = fm_list_view_get_property;
+    object_class->set_property = fm_list_view_set_property;
 
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
@@ -1091,6 +1146,12 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class->get_visible_range = fm_list_view_get_visible_range;
     fm_directory_view_class->start_renaming_file = fm_list_view_start_renaming_file;
 
-    //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
+    g_object_class_install_property (object_class,
+                                     PROP_ZOOM_LEVEL,
+                                     g_param_spec_enum ("zoom-level", "zoom-level", "zoom-level",
+                                                        MARLIN_TYPE_ZOOM_LEVEL,
+                                                        MARLIN_ZOOM_LEVEL_SMALLEST,
+                                                        G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+
 }
 

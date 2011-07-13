@@ -52,7 +52,7 @@
       <default>false</default>
       <_summary>enable rgba window</_summary>
       <_description>
-        If set to true, rgba will be enabled, you'll need a gtk engine supporting rgba, like murrine. Compiz can have some problems like drawings shadows ... 
+        If set to true, rgba will be enabled, you'll need a gtk engine supporting rgba, like murrine. Compiz can have some problems like drawings shadows ...
       </_description>
     </key>
     <key name="date-format" type="s">
@@ -172,6 +172,32 @@
       <default>'normal'</default>
       <_summary>icon zoom level</_summary>
       <_description>Zoom level used by the icon view.</_description>
+    </key>
+  </schema>
+
+  <schema id="org.gnome.marlin.list-view" path="/apps/marlin/list-view/">
+    <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
+      <default>'smallest'</default>
+      <_summary>icon default zoom level</_summary>
+      <_description>Default Zoom level used by the list view.</_description>
+    </key>
+    <key name="zoom-level" enum="org.gnome.marlin.ZoomLevel">
+      <default>'smallest'</default>
+      <_summary>icon zoom level</_summary>
+      <_description>Zoom level used by the list view.</_description>
+    </key>
+  </schema>
+
+  <schema id="org.gnome.marlin.column-view" path="/apps/marlin/column-view/">
+    <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
+      <default>'smallest'</default>
+      <_summary>icon default zoom level</_summary>
+      <_description>Default Zoom level used by the column view.</_description>
+    </key>
+    <key name="zoom-level" enum="org.gnome.marlin.ZoomLevel">
+      <default>'smallest'</default>
+      <_summary>icon zoom level</_summary>
+      <_description>Zoom level used by the column view.</_description>
     </key>
   </schema>
 

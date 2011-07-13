@@ -146,7 +146,6 @@ marlin_icon_renderer_class_init (MarlinIconRendererClass *klass)
      * The size at which icons should be rendered by this
      * #MarlinIconRenderer instance.
     **/
-    //TODO
     g_object_class_install_property (gobject_class,
                                      PROP_SIZE,
                                      g_param_spec_enum ("size", "size", "size",

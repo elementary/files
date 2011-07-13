@@ -628,6 +628,8 @@ marlin_application_startup (GApplication *app)
     /* gsettings parameters */
     settings = g_settings_new ("org.gnome.marlin.preferences");
     marlin_icon_view_settings = g_settings_new ("org.gnome.marlin.icon-view");
+    marlin_list_view_settings = g_settings_new ("org.gnome.marlin.list-view");
+    marlin_column_view_settings = g_settings_new ("org.gnome.marlin.column-view");
     tags = marlin_view_tags_new ();
 
     plugins = marlin_plugin_manager_new ();

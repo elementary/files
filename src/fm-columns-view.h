@@ -24,6 +24,7 @@
 #include "fm-list-model.h"
 #include "fm-directory-view.h"
 #include "marlin-vala.h"
+#include "marlin-enum-types.h"
 
 G_BEGIN_DECLS
 
@@ -45,6 +46,8 @@ typedef struct {
     FMDirectoryViewClass parent_instance;
     GtkTreeView             *tree;
     FMListModel             *model;
+    MarlinZoomLevel         zoom_level;
+
     FMColumnsViewDetails    *details;
 } FMColumnsView;
 
