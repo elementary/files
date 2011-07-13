@@ -22,7 +22,8 @@ ArrayList<MenuItem> menus;
 UIManager ui;
 Menu menu;
 string mime;
-string uri;
+/*string uri;*/
+GLib.HashTable<string, string>[] locations;
 
 string get_app_display_name(GLib.HashTable<string,string> app__)
 {
@@ -37,8 +38,8 @@ void print_apps()
     }
     menus.clear();
     var cont = new Contracts();
-    
-    foreach(var app__ in cont.get_contract(uri, mime))
+   
+    foreach(var app__ in cont.get_selection_contracts(locations))
     {
         var menuitem = new MenuItem.with_label(get_app_display_name(app__));
         menu.append(menuitem);
@@ -55,7 +56,7 @@ public void contract_activated()
     print(app_menu + "\n");
     var cont = new Contracts();
     
-    foreach(var app__ in cont.get_contract(uri, mime))
+    foreach(var app__ in cont.get_selection_contracts(locations))
     {
         if(app_menu == get_app_display_name(app__))
         {
@@ -69,7 +70,6 @@ public void contract_activated()
             break;
         }
     }
-
 }
 
 [DBus (name = "org.elementary.contractor")]
@@ -77,6 +77,7 @@ public interface Contractor : Object
 {
     //public abstract GLib.HashTable<string,string>[] GetServicesByMime (string mime) throws IOError;
     public abstract GLib.HashTable<string,string>[] GetServicesByLocation (string strlocation, string? file_mime="")    throws IOError;
+    public abstract GLib.HashTable<string,string>[] GetServicesByLocationsList (GLib.HashTable<string,string>[] locations)  throws IOError;
 }
 
 public class Contracts : Object
@@ -110,6 +111,19 @@ public class Contracts : Object
 
         return contracts;
     }
+
+    public GLib.HashTable<string,string>[] get_selection_contracts (GLib.HashTable<string, string>[] locations)
+    {
+        GLib.HashTable<string,string>[] contracts = null;
+
+        try {
+            contracts = contract.GetServicesByLocationsList (locations);
+        }catch (IOError e) {
+            stderr.printf ("%s\n", e.message);
+        }
+        
+        return contracts;
+    }
 }
 
 public void receive_all_hook(void* user_data, int hook)
@@ -118,10 +132,6 @@ public void receive_all_hook(void* user_data, int hook)
     {
     case 1:
         /* context menu */
-        /*unowned GLib.List<GOF.File> file_list = ((GLib.List<GOF.File>) user_data).copy ();
-
-        foreach (var goffile in file_list)
-            message ("hook: %s", goffile.name);*/
         print_apps();
         break;
     case 2: /* ui */
@@ -135,13 +145,13 @@ public void receive_all_hook(void* user_data, int hook)
         if(user_data != null)
         {
             unowned GLib.List<GOF.File> selection = (GLib.List<GOF.File>) user_data;
-            //GOF.File file = (GOF.File)user_data;
-            GOF.File file = selection.data;
-            mime = file.ftype;
+            locations = build_hash_from_list (selection);
+            /*GOF.File file = (GOF.File) selection.data;
+            mime = file.ftype;*/
             /* recheck unknown mime in contractor */
-            if (mime == "application/octet-stream")
+            /*if (mime == "application/octet-stream")
                 mime = "";
-            uri = file.uri;
+            uri = file.uri;*/
         }
         break;
     case 7:
@@ -150,4 +160,31 @@ public void receive_all_hook(void* user_data, int hook)
         print("Contractor doesn't know this hook: %d\n", hook);
         break;
     }
+}
+
+private GLib.HashTable<string,string> add_location_entry (GOF.File file)
+{
+    GLib.HashTable<string,string> entry;
+            
+    entry = new GLib.HashTable<string,string> (str_hash, str_equal);
+    entry.insert ("uri", file.uri);
+    if (file.ftype == "application/octet-stream")
+        entry.insert ("mimetype", "");
+    else
+        entry.insert ("mimetype", file.ftype);
+
+    return entry;
+}
+
+private GLib.HashTable<string, string>[] build_hash_from_list (GLib.List<GOF.File> selection)
+{
+    GLib.HashTable<string,string>[] locations = null;
+
+    foreach (GOF.File file in selection) {
+        if (file != null)
+            locations += add_location_entry (file);
+        //message ("file %s", file.name);
+    }
+
+    return locations;
 }
