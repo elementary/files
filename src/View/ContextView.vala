@@ -50,26 +50,27 @@ namespace Marlin.View {
         private Window window;
         private Gdk.Pixbuf icon{
             set{
-                image.pixbuf = value;
+                evbox.set_from_pixbuf (value);
             }
         }
 
-        private Image image;
+        private ImgEventBox evbox;
         private Label label;
         private Gee.List<Pair<string, string>> info;
-        private int timeout = -1;
+        private uint timeout = 0;
         private bool first_alloc = true;
         private Allocation cv_alloc;    /* last allocation of the contextview */
         private bool should_sync;
 
-        private GOF.File? last_geof_cache = null;
+        private GOF.File? last_gof = null;
+        private unowned GLib.List<GOF.File>? last_selection = null;
 
         private Orientation _orientation = Orientation.HORIZONTAL;
         public Orientation orientation{
             set{
-                if(timeout != -1){
-                    Source.remove((uint) timeout);
-                    timeout = -1;
+                if(timeout != 0){
+                    Source.remove(timeout);
+                    timeout = 0;
                 }
                 first_alloc = true;
                 
@@ -77,7 +78,7 @@ namespace Marlin.View {
                 change_css_class ();
                 /* reset pane position to original values */
                 window.main_box.set_position (window.main_box.max_position - panel_size);
-                update(last_geof_cache);
+                update(last_selection);
             }
             get{
                 return _orientation;
@@ -117,7 +118,7 @@ namespace Marlin.View {
             label.ellipsize = Pango.EllipsizeMode.MIDDLE;
             label.set_padding(key_value_padding, -1);
 
-            image = new Image ();
+            evbox = new ImgEventBox(Orientation.HORIZONTAL);
 
             info = new LinkedList<Pair<string, string>>();
         
@@ -125,7 +126,7 @@ namespace Marlin.View {
             button_press_event.connect(right_click);
             size_allocate.connect(size_allocate_changed);
         }
-
+        
         private void change_css_class () {
             var ctx = window.main_box.get_style_context();
 
@@ -156,8 +157,8 @@ namespace Marlin.View {
                     s.height > 1 && s.height <= panel_size)
                     first_alloc = false;
             }
-            if (first_alloc && should_sync) 
-                return;
+            /*if (first_alloc && !should_sync) 
+                return;*/
 
             //amtest
             /*stdout.printf ("::::: %d %d :: %d %d\n", cv_alloc.width, cv_alloc.height,
@@ -165,14 +166,19 @@ namespace Marlin.View {
             if ((orientation == Orientation.VERTICAL && cv_alloc.width != s.width) ||
                 (orientation == Orientation.HORIZONTAL && cv_alloc.height != s.height)) {
                 //stdout.printf ("$$$$$$$$$$$ img alloc %d\n", s.width);
-                if(timeout == -1) {
-                    timeout = (int) Timeout.add(500, () => {
-                        timeout = -1;
-                        update_icon();
-
-                        return false;
-                    });
+                /* TODO don't create/destroy the contextview in miller */
+                //message ("zz");
+                if(timeout != 0){
+                    Source.remove(timeout);
+                    timeout = 0;
                 }
+                timeout = Timeout.add(300, () => {
+                    timeout = 0;
+                    //message ("wwwwwwwwwwwww");
+                    update_icon();
+
+                    return false;
+                });
             }
         
         }
@@ -194,7 +200,7 @@ namespace Marlin.View {
             Nautilus.IconInfo icon_info;
             int icon_size_req;
     		
-            if (last_geof_cache == null)
+            if (last_gof == null)
                 return;
 
             //window.get_size(out w_width, out w_height);
@@ -202,15 +208,14 @@ namespace Marlin.View {
             cv_alloc = alloc;
             //stdout.printf ("$$$$$$$$$ real alloc %d %d\n", alloc.width, alloc.height);
            
+            /* fixing a minimum and maximum value */
             if (orientation == Orientation.VERTICAL) {
-                //icon_size_req = int.min (alloc.width, w_width/2);
-                icon_size_req = int.min (alloc.width, 256);
+                icon_size_req = alloc.width.clamp (height, 256);
             } else {
-                //icon_size_req = int.min (alloc.height, w_height/2);
-                icon_size_req = int.min (alloc.height, 256);
+                icon_size_req = alloc.height.clamp (height, 256);
             }
 
-            icon_info = last_geof_cache.get_icon(icon_size_req, GOF.FileIconFlags.USE_THUMBNAILS);
+            icon_info = last_gof.get_icon(icon_size_req, GOF.FileIconFlags.USE_THUMBNAILS);
             icon = icon_info.get_pixbuf_nodefault();
             
             /* TODO ask tumbler a LARGE thumb for size > 128 */
@@ -218,13 +223,26 @@ namespace Marlin.View {
                 window.main_box.set_position (window.main_box.max_position - icon_size_req);*/
         }
 
-        public void update(GOF.File gof_file){
-            last_geof_cache = gof_file;
+        public void update(GLib.List<GOF.File> selection){
+            if (selection != null && selection.data != null) {
+                last_gof = selection.data as GOF.File;
+                last_selection = selection;
+            } else {
+                last_gof = null;
+                /* if empty selection then pass the currentslot folder */
+                if (window.current_tab != null)
+                    last_gof = window.current_tab.slot.directory.file;
+                last_selection = null;
+            }
+            if (last_gof == null)
+                return;
 
-            var file_info = gof_file.info;
+            var file_info = last_gof.info;
 
-            /* !should_sync = we are in column view */
-            if (!first_alloc || !should_sync) 
+            /* don't update icon if we are in column view as the preview pane is 
+               built/destroyed foreach selection changed */
+            //if (!first_alloc || !should_sync) 
+            if (should_sync) 
                 update_icon();
 
             info.clear();
@@ -232,18 +250,18 @@ namespace Marlin.View {
 
             /* TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
                we are in listview: size, type, modified */
-            info.add(new Pair<string, string>(_("Name"), gof_file.name));
-            info.add(new Pair<string, string>(_("Type"), gof_file.formated_type));
+            info.add(new Pair<string, string>(_("Name"), last_gof.name));
+            info.add(new Pair<string, string>(_("Type"), last_gof.formated_type));
 
             if (file_info.get_is_symlink())
                 info.add(new Pair<string, string>(_("Target"), file_info.get_symlink_target()));
             if(raw_type != FileType.DIRECTORY)
-                info.add(new Pair<string, string>(_("Size"), gof_file.format_size));
+                info.add(new Pair<string, string>(_("Size"), last_gof.format_size));
             /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
-            info.add(new Pair<string, string>(_("Modified"), gof_file.formated_modified));
+            info.add(new Pair<string, string>(_("Modified"), last_gof.formated_modified));
             info.add(new Pair<string, string>(_("Owner"), file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
 
-            label.label = gof_file.name;
+            label.label = last_gof.name;
 
             update_info_panel();
             show();
@@ -265,8 +283,10 @@ namespace Marlin.View {
             if(limit_width)
                 value_label.set_size_request(key_value_width, -1);
             value_label.size_allocate.connect((l, s) => l.set_size_request(s.width, -1));
-            value_label.wrap = true;
-            value_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
+            if (orientation == Orientation.VERTICAL) {
+                value_label.wrap = true;
+                value_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
+            }
             value_label.set_justify(Justification.LEFT);
 
             box.pack_start(value_label, true, true, 0);
@@ -286,17 +306,17 @@ namespace Marlin.View {
             blank_box.set_size_request (-1, 20);
             box.pack_start(blank_box, false, false, 0);*/
 
-            if (image != null) {
-                if (image.parent != null)
-                    image.parent.remove(image);
-                image.set_tooltip_text (last_geof_cache.name);
-                box.pack_start(image, false, false, 0);
+            if (evbox != null) {
+                if (evbox.parent != null)
+                    evbox.parent.remove(evbox);
+                evbox.orientation = convert_parent_orientation(orientation);
+                box.pack_start(evbox, false, true, 0);
             }
             if (label != null) {
                 if (label.parent != null)
                     label.parent.remove(label);
                 label.set_selectable(true);
-                label.set_tooltip_text (last_geof_cache.name);
+                label.set_tooltip_text (last_gof.name);
                 box.pack_start(label, false, false);
             }
             box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
@@ -330,23 +350,6 @@ namespace Marlin.View {
             alignment_.add(information);
             box.pack_start(alignment_);
             
-            spacer_box = new VBox(false, 0);
-            spacer_box.set_size_request (-1, 15);
-            box.pack_start(spacer_box, false, false);
-
-            box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
-
-            if(!last_geof_cache.is_directory)
-            {
-                var label = new Label(N_("Open with:"));
-                label.set_sensitive(false);
-                box.pack_start(label, false, false);
-                var vbox = new VBox(false, 3);
-                box.pack_start(vbox, false, false);
-                vbox.set_margin_left(2);
-                vbox.set_margin_right(2);
-            }
-            
             box.show_all();
             set_content(box);
         }
@@ -354,16 +357,13 @@ namespace Marlin.View {
         private void construct_info_panel_horizontal(Gee.List<Pair<string, string>> item_info){
             var box = new HBox(false, 0);
 
-            var alignment_img = new Gtk.Alignment(0.5f, 0.5f, 0, 0);
-            alignment_img.set_padding(0, 0, 5, 0); 
-
-            if (image != null) {
-                if (image.parent != null)
-                    image.parent.remove(image);
-                image.set_tooltip_text (last_geof_cache.name);
-                alignment_img.add(image);
+            set_size_request (-1, height);
+            if (evbox != null) {
+                if (evbox.parent != null)
+                    evbox.parent.remove(evbox);
+                evbox.orientation = convert_parent_orientation(orientation);
+                box.pack_start(evbox, false, true, 0);
             }
-            box.pack_start(alignment_img, false, false);
 
             //box.pack_start(label, false, false);
             //box.pack_start(new Gtk.Separator(Orientation.VERTICAL), false, false);
@@ -378,7 +378,7 @@ namespace Marlin.View {
                 var row = n % 2;
 
                 var key_value_pair = new HBox (false, key_value_padding);
-                key_value_pair.set_size_request(key_value_width, -1);
+                //key_value_pair.set_size_request(key_value_width, -1);
                 populate_key_value_pair(key_value_pair, pair);
 
                 table.attach(key_value_pair, column, column+1, row, row+1, AttachOptions.FILL, AttachOptions.FILL, key_value_padding/2, key_value_padding/4);

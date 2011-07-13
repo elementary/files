@@ -29,7 +29,7 @@ namespace Gtk{
         RIGHT=2, BOTTOM=2, LAST=2
     }
 
-    public class CollapsablePaned : HPaned{
+    public class CollapsablePaned : Paned{
         private int saved_state = 10;
         private uint last_click_time = 0;
 

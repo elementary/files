@@ -901,7 +901,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     //printf ("%s %s %s\n", G_STRFUNC, file->name, file->thumbnail_path);
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS) {
         if (file->thumbnail_path != NULL) {
-            //printf("show thumb\n");
+            //printf("show thumb %d\n", size);
             icon = nautilus_icon_info_lookup_from_path (file->thumbnail_path, size);
             return icon;
         }

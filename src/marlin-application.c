@@ -96,9 +96,9 @@ finish_startup (MarlinApplication *application,
 }
 
 
-static void selection_changed_plugin(GtkWidget* window, GOFFile* file)
+static void selection_changed_plugin(GtkWidget* window, GList *selection)
 {
-    marlin_plugin_manager_hook_send(plugins, file, MARLIN_PLUGIN_HOOK_FILE);
+    marlin_plugin_manager_hook_send(plugins, selection, MARLIN_PLUGIN_HOOK_FILE);
 }
 
 static void

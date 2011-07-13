@@ -20,6 +20,7 @@ libmarlinwidgets_la_SOURCES = \
     ModeButton.vala             \
     CollapsablePaned.vala       \
     PopupLocationBar.vala       \
+    ImgEventBox.vala            \
     $(NULL)
 
 libmarlinwidgets_la_CFLAGS = \
