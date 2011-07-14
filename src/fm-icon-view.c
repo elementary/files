@@ -787,6 +787,8 @@ fm_icon_view_init (FMIconView *view)
                      view->icons, "single-click-timeout", 0);
     g_settings_bind (settings, "single-click", 
                      FM_DIRECTORY_VIEW (view)->name_renderer, "follow-prelit", 0); 
+    g_settings_bind (settings, "single-click", 
+                     FM_DIRECTORY_VIEW (view)->icon_renderer, "selection-helpers", 0);
 
     g_signal_connect_object (view->icons, "button-press-event",
                              G_CALLBACK (button_press_callback), view, 0);

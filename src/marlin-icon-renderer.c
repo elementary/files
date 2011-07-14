@@ -71,6 +71,7 @@ enum {
     PROP_STOCK_DETAIL,
     PROP_EMBLEMS,
     PROP_FOLLOW_STATE,
+    PROP_SELECTION_HELPERS,
     PROP_ICON_NAME,
     PROP_GICON
 };
@@ -88,6 +89,7 @@ struct _MarlinIconRendererPrivate
 
     gboolean emblems;
     gboolean follow_state;
+    gboolean selection_helpers;
 
     gchar *stock_id;
     gchar *stock_detail;
@@ -223,6 +225,13 @@ marlin_icon_renderer_class_init (MarlinIconRendererClass *class)
                                                            FALSE,
                                                            EXO_PARAM_READWRITE));
 
+    g_object_class_install_property (object_class,
+                                     PROP_SELECTION_HELPERS,
+                                     g_param_spec_boolean ("selection-helpers",
+                                                           "Selection Helpers",
+                                                           "Whether the selection helpers +/- aree rendered",
+                                                           FALSE,
+                                                           EXO_PARAM_READWRITE));
     /**
      * MarlinIconRenderer:gicon:
      *
@@ -300,6 +309,9 @@ marlin_icon_renderer_get_property (GObject        *object,
         break;
     case PROP_FOLLOW_STATE:
         g_value_set_boolean (value, priv->follow_state);
+        break;
+    case PROP_SELECTION_HELPERS:
+        g_value_set_boolean (value, priv->selection_helpers);
         break;
     case PROP_ICON_NAME:
         g_value_set_string (value, priv->icon_name);
@@ -442,6 +454,9 @@ marlin_icon_renderer_set_property (GObject      *object,
         break;
     case PROP_FOLLOW_STATE:
         priv->follow_state = g_value_get_boolean (value);
+        break;
+    case PROP_SELECTION_HELPERS:
+        priv->selection_helpers = g_value_get_boolean (value);
         break;
     case PROP_GICON:
         if (priv->gicon)
@@ -839,7 +854,8 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GdkPixbuf *pix;
     NautilusIconInfo *nicon;
 
-    if ((flags & GTK_CELL_RENDERER_PRELIT) != 0)
+    if (priv->selection_helpers &&
+        (flags & GTK_CELL_RENDERER_PRELIT) != 0)
     {
         if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
             nicon = nautilus_icon_info_lookup_from_name ("remove", 16);

@@ -2517,6 +2517,7 @@ exo_icon_view_update_rubberband_selection (ExoIconView *icon_view)
 //amtest
 //#if 0
 typedef struct {
+    ExoIconView *icon_view;
     ExoIconViewItem *item;
     GtkWidget *widget;
     GdkRectangle hit_rect;
@@ -2559,7 +2560,7 @@ exo_icon_view_item_hit_test (ExoIconView      *icon_view,
                              gint              width,
                              gint              height)
 {
-    HitTestData data = { item, GTK_WIDGET (icon_view), { x, y, width, height }, FALSE };
+    HitTestData data = { icon_view, item, GTK_WIDGET (icon_view), { x, y, width, height }, FALSE };
     GtkCellAreaContext *context;
     GdkRectangle *item_area = (GdkRectangle *)item;
 
@@ -3442,6 +3443,7 @@ hit_test_pos (GtkCellRenderer    *renderer,
     gtk_cell_renderer_get_aligned_area (renderer, data->widget, GTK_CELL_RENDERER_FOCUSED, cell_area, &box);
 
     if (MARLIN_IS_ICON_RENDERER (renderer) &&
+        data->icon_view->priv->single_click &&
         data->hit_rect.x >= box.x && data->hit_rect.x <= box.x + 18 &&
         data->hit_rect.y >= box.y && data->hit_rect.y <= box.y + 18) 
     {
@@ -3476,7 +3478,7 @@ exo_icon_view_get_item_at_coords (ExoIconView          *icon_view,
         if (x >= item->cell_area.x - icon_view->priv->row_spacing / 2 && x <= item->cell_area.x + item->cell_area.width + icon_view->priv->row_spacing / 2 &&
           y >= item->cell_area.y - icon_view->priv->column_spacing / 2 && y <= item->cell_area.y + item->cell_area.height + icon_view->priv->column_spacing / 2)
         {
-            HitTestData data = { item, GTK_WIDGET (icon_view), { x, y, 0, 0 }, FALSE };
+            HitTestData data = { icon_view, item, GTK_WIDGET (icon_view), { x, y, 0, 0 }, FALSE };
             GtkCellAreaContext *context;
             GdkRectangle *item_area = (GdkRectangle *)item;
 
