@@ -16,7 +16,7 @@
 
   <schema id="org.gnome.marlin.preferences" path="/apps/marlin/preferences/">
     <key name="show-menubar" type="b">
-      <default>true</default>
+      <default>false</default>
       <_summary>Show the menubar</_summary>
       <_description>
         Show the menubar
