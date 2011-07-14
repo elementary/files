@@ -749,12 +749,14 @@ fm_icon_view_init (FMIconView *view)
     /*exo_icon_view_set_enable_search (view->icons, TRUE);*/
     
     /* add the icon renderer */
-    /*g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer),
-                  "follow-state", TRUE, "ypad", 3u, NULL);*/
+    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer),
+                  "follow-state", TRUE, "ypad", 3u, NULL);
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer),
                   "follow-state", TRUE, "yalign", 1.0f, NULL);
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, FALSE);
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, "file", FM_LIST_MODEL_FILE_COLUMN);
+    //gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, "pixbuf", FM_LIST_MODEL_ICON);
+    //exo_icon_view_set_pixbuf_column (view->icons, FM_LIST_MODEL_ICON);
 
     /* add the name renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->name_renderer), 
@@ -907,18 +909,31 @@ fm_icon_view_zoom_level_changed (FMDirectoryView *view)
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->name_renderer), "wrap-width", wrap_width, "zoom-level", zoom_level, NULL);
     /* set the new "size" for the icon renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "size", marlin_zoom_level_to_icon_size (zoom_level), NULL);
-   
+
+#if 0
     /* TODO move this to icon renderer ? */
     gint xpad, ypad;
 
     gtk_cell_renderer_get_padding (view->icon_renderer, &xpad, &ypad);
     gtk_cell_renderer_set_fixed_size (GTK_CELL_RENDERER (view->icon_renderer),
                                       marlin_zoom_level_to_icon_size (zoom_level)+ 2 * xpad,
+                                      //-1,
                                       marlin_zoom_level_to_icon_size (zoom_level)+ 2 * ypad);
+                                      //-1);
+#endif
     /*exo_icon_view_set_spacing (FM_ICON_VIEW (view)->icons, 0);
     exo_icon_view_set_column_spacing (FM_ICON_VIEW (view)->icons, 0);
     exo_icon_view_set_row_spacing (FM_ICON_VIEW (view)->icons, 0);*/
     //gtk_widget_queue_draw (GTK_WIDGET (view));
+    //exo_icon_view_invalidate_sizes (FM_ICON_VIEW (view)->icons);
+    //gtk_widget_queue_draw (GTK_WIDGET (FM_ICON_VIEW (view)->icons));
+
+    /*gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (GTK_BIN (abstract_icon_view)->child),
+                                      THUNAR_STANDARD_VIEW (abstract_icon_view)->icon_renderer,
+                                      NULL, NULL, NULL);*/
+    /*gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (FM_ICON_VIEW (view)->icons),
+                                      view->icon_renderer,
+                                      NULL, NULL, NULL);*/
     exo_icon_view_invalidate_sizes (FM_ICON_VIEW (view)->icons);
     //gtk_widget_queue_draw (GTK_WIDGET (FM_ICON_VIEW (view)->icons));
 }

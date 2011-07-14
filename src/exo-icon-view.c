@@ -59,6 +59,7 @@
 #include "eel-i18n.h"
 #include "marlin-marshal.h"
 #include "nautilus-icon-info.h"
+#include "marlin-icon-renderer.h"
 
 
 /**
@@ -3440,9 +3441,9 @@ hit_test_pos (GtkCellRenderer    *renderer,
 
     gtk_cell_renderer_get_aligned_area (renderer, data->widget, GTK_CELL_RENDERER_FOCUSED, cell_area, &box);
 
-    if (GTK_IS_CELL_RENDERER_PIXBUF (renderer) &&
-        data->hit_rect.x >= box.x && data->hit_rect.x <= box.x + 16 &&
-        data->hit_rect.y >= box.y && data->hit_rect.y <= box.y + 16) 
+    if (MARLIN_IS_ICON_RENDERER (renderer) &&
+        data->hit_rect.x >= box.x && data->hit_rect.x <= box.x + 18 &&
+        data->hit_rect.y >= box.y && data->hit_rect.y <= box.y + 18) 
     {
         data->item->add_remove_helper = TRUE;
         return (data->hit = TRUE);
@@ -7836,7 +7837,7 @@ get_pixbuf_foreach (GtkCellRenderer    *renderer,
                     const GdkRectangle *cell_background,
                     GetPixbufBoxData   *data)
 {
-    if (GTK_IS_CELL_RENDERER_PIXBUF (renderer))
+    if (MARLIN_IS_ICON_RENDERER (renderer))
     {
         data->box = *cell_area;
         data->pixbuf_found = TRUE;
