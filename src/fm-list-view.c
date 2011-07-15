@@ -695,7 +695,7 @@ create_and_set_up_tree_view (FMListView *view)
 
     gtk_tree_view_set_search_column (view->tree, FM_LIST_MODEL_FILENAME);
     gtk_tree_view_set_rubber_banding (view->tree, TRUE);
-
+    gtk_tree_view_set_rules_hint (view->tree, TRUE);
 
     g_signal_connect_object (gtk_tree_view_get_selection (view->tree), "changed",
                              G_CALLBACK (list_selection_changed_callback), view, 0);
