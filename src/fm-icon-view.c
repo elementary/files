@@ -716,6 +716,7 @@ fm_icon_view_finalize (GObject *object)
 
     /*g_signal_handlers_disconnect_by_func (marlin_icon_view_settings,
                                           fm_icon_view_zoom_level_changed, view);*/
+    g_settings_unbind (view, "zoom-level");
 
     g_object_unref (view->model);
     g_free (view->details);
@@ -909,7 +910,7 @@ fm_icon_view_zoom_level_changed (FMIconView *view)
 
     g_return_if_fail (FM_IS_ICON_VIEW (view));
 
-    g_warning ("%s %d", G_STRFUNC, marlin_zoom_level_to_icon_size (view->zoom_level));
+    //g_warning ("%s %d", G_STRFUNC, marlin_zoom_level_to_icon_size (view->zoom_level));
     /* determine the "wrap-width" depending on the "zoom-level" */
     switch (view->zoom_level)
     {

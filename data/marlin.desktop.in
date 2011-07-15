@@ -159,3 +159,21 @@ StartupNotify=true
 Type=Application
 MimeType=x-directory/gnome-default-handler;x-directory/normal;inode/directory;
 Categories=System;Utility;Core;GTK;FileTools;FileManager;
+
+X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Root
+
+[TabNew Shortcut Group]
+Name=New _Tab
+Exec=marlin -t
+TargetEnvironment=Unity
+
+[WindowNew Shortcut Group]
+Name=New _Window
+Exec=marlin
+TargetEnvironment=Unity
+
+[Root Shortcut Group]
+Name=New Window as _Root
+Exec=gksu marlin
+TargetEnvironment=Unity
+
