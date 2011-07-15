@@ -95,7 +95,7 @@ gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
     slot->colpane = vbox2;
     slot->hpane = hpane;
 
-    gtk_widget_set_size_request (column, 180, -1);
+    gtk_widget_set_size_request (column, slot->mwcols->preferred_column_width, -1);
 
     gtk_paned_pack1 (GTK_PANED (hpane), column, FALSE, FALSE);
     gtk_paned_pack2 (GTK_PANED (hpane), vbox2, TRUE, FALSE);

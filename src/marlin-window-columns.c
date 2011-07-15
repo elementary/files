@@ -22,10 +22,8 @@
 //#include "gof-directory-async.h"
 //#include "fm-list-view.h"
 #include "fm-columns-view.h"
+#include "marlin-global-preferences.h"
 
-/*static void gof_window_slot_init       (GOFWindowSlot *slot);
-  static void gof_window_slot_class_init (GOFWindowSlotClass *class);
-  static void gof_window_slot_finalize   (GObject *object);*/
 static void marlin_window_columns_finalize   (GObject *object);
 
 G_DEFINE_TYPE (MarlinWindowColumns, marlin_window_columns, G_TYPE_OBJECT)
@@ -179,6 +177,7 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
 static void
 marlin_window_columns_init (MarlinWindowColumns *mwcol)
 {
+    mwcol->preferred_column_width = g_settings_get_int (marlin_column_view_settings, "preferred-column-width");
 }
 
 static void

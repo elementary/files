@@ -199,6 +199,11 @@
       <_summary>icon zoom level</_summary>
       <_description>Zoom level used by the column view.</_description>
     </key>
+    <key name="preferred-column-width" type="i">
+      <default>180</default>
+      <_summary>prefered column width</_summary>
+      <_description>The column width preferred by the miller column view.</_description>
+    </key>
   </schema>
 
 </schemalist>

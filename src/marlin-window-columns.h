@@ -91,6 +91,7 @@ typedef struct {
       GCancellable *find_mount_cancellable;
 
       gboolean visible;*/
+    gint preferred_column_width;
 } MarlinWindowColumns;
 
 typedef struct {
