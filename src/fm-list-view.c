@@ -1016,6 +1016,15 @@ fm_list_view_get_visible_range (FMDirectoryView *view,
                                             start_path, end_path);
 }
 
+static void
+fm_list_view_zoom_normal (FMDirectoryView *view)
+{
+    MarlinZoomLevel     zoom;
+    
+    zoom = g_settings_get_enum (marlin_list_view_settings, "default-zoom-level");
+    g_settings_set_enum (marlin_list_view_settings, "zoom-level", zoom);
+}
+
 #if 0
 static void
 fm_list_view_zoom_level_changed (FMListView *view)
@@ -1070,6 +1079,7 @@ fm_list_view_init (FMListView *view)
 static void
 fm_list_view_zoom_level_changed (FMListView *view)
 {
+    g_warning ("%s", G_STRFUNC);
     /* set the new "size" for the icon renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "size", marlin_zoom_level_to_icon_size (view->zoom_level), NULL);
     gint xpad, ypad;
@@ -1102,10 +1112,10 @@ fm_list_view_get_property (GObject    *object,
 }
 
 static void
-fm_list_view_set_property (GObject    *object,
-                           guint       prop_id,
-                           GValue     *value,
-                           GParamSpec *pspec)
+fm_list_view_set_property (GObject      *object,
+                           guint        prop_id,
+                           const GValue *value,
+                           GParamSpec   *pspec)
 {
     FMListView *view = FM_LIST_VIEW (object);
 
@@ -1145,13 +1155,14 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class->highlight_path = fm_list_view_highlight_path;
     fm_directory_view_class->get_visible_range = fm_list_view_get_visible_range;
     fm_directory_view_class->start_renaming_file = fm_list_view_start_renaming_file;
+    fm_directory_view_class->zoom_normal = fm_list_view_zoom_normal;
 
     g_object_class_install_property (object_class,
                                      PROP_ZOOM_LEVEL,
                                      g_param_spec_enum ("zoom-level", "zoom-level", "zoom-level",
                                                         MARLIN_TYPE_ZOOM_LEVEL,
                                                         MARLIN_ZOOM_LEVEL_SMALLEST,
-                                                        G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+                                                        G_PARAM_READWRITE));
 
 }
 

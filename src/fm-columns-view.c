@@ -836,6 +836,16 @@ fm_columns_view_get_visible_range (FMDirectoryView *view,
 }
 
 static void
+fm_columns_view_zoom_normal (FMDirectoryView *view)
+{
+    MarlinZoomLevel     zoom;
+    
+    zoom = g_settings_get_enum (marlin_column_view_settings, "default-zoom-level");
+    g_settings_set_enum (marlin_column_view_settings, "zoom-level", zoom);
+}
+
+
+static void
 fm_columns_view_finalize (GObject *object)
 {
     FMColumnsView *view = FM_COLUMNS_VIEW (object);
@@ -901,10 +911,10 @@ fm_columns_view_get_property (GObject    *object,
 }
 
 static void
-fm_columns_view_set_property (GObject    *object,
-                              guint       prop_id,
-                              GValue     *value,
-                              GParamSpec *pspec)
+fm_columns_view_set_property (GObject       *object,
+                              guint         prop_id,
+                              const GValue  *value,
+                              GParamSpec    *pspec)
 {
     FMColumnsView *view = FM_COLUMNS_VIEW (object);
 
@@ -944,13 +954,14 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class->highlight_path = fm_columns_view_highlight_path;
     fm_directory_view_class->get_visible_range = fm_columns_view_get_visible_range;
     fm_directory_view_class->start_renaming_file = fm_columns_view_start_renaming_file;
+    fm_directory_view_class->zoom_normal = fm_columns_view_zoom_normal;
 
     g_object_class_install_property (object_class,
                                      PROP_ZOOM_LEVEL,
                                      g_param_spec_enum ("zoom-level", "zoom-level", "zoom-level",
                                                         MARLIN_TYPE_ZOOM_LEVEL,
                                                         MARLIN_ZOOM_LEVEL_SMALLEST,
-                                                        G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+                                                        G_PARAM_READWRITE));
 
 }
 

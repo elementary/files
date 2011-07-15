@@ -45,6 +45,8 @@ typedef struct {
     FMDirectoryViewClass parent_instance;
     ExoIconView         *icons;
     FMListModel         *model;
+    MarlinZoomLevel     zoom_level;
+
     FMIconViewDetails   *details;
 } FMIconView;
 

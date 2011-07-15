@@ -31,7 +31,13 @@
 #include "eel-gtk-extensions.h"
 #include "eel-editable-label.h"
 #include "marlin-tags.h"
-#include "marlin-enum-types.h"
+
+enum
+{
+    PROP_0,
+    PROP_ZOOM_LEVEL,
+    PROP_TEXT_BESIDE_ICONS
+};
 
 struct FMIconViewDetails {
     GList       *selection;
@@ -55,31 +61,11 @@ G_DEFINE_TYPE (FMIconView, fm_icon_view, FM_TYPE_DIRECTORY_VIEW);
 
 #define parent_class fm_icon_view_parent_class
 
-/*struct SelectionForeachData {
-  GList *list;
-  GtkTreeSelection *selection;
-  };*/
-
-/* Property identifiers */
-enum
-{
-    PROP_0,
-    PROP_TEXT_BESIDE_ICONS,
-};
-
-
-
-static void
-fm_icon_view_set_property (GObject      *object,
-                           guint         prop_id,
-                           const GValue *value,
-                           GParamSpec   *pspec);
-
 /* Declaration Prototypes */
 static GList    *fm_icon_view_get_selection (FMDirectoryView *view);
 static GList    *get_selection (FMIconView *view);
 //static void     fm_icon_view_clear (FMIconView *view);
-static void     fm_icon_view_zoom_level_changed (FMDirectoryView *view);
+static void     fm_icon_view_zoom_level_changed (FMIconView *view);
 
 /*static void
   show_selected_files (GOFFile *file)
@@ -704,6 +690,14 @@ fm_icon_view_get_visible_range (FMDirectoryView *view,
     return exo_icon_view_get_visible_range (FM_ICON_VIEW (view)->icons, start_path, end_path);
 }
 
+static void
+fm_icon_view_zoom_normal (FMDirectoryView *view)
+{
+    MarlinZoomLevel     zoom;
+    
+    zoom = g_settings_get_enum (marlin_icon_view_settings, "default-zoom-level");
+    g_settings_set_enum (marlin_icon_view_settings, "zoom-level", zoom);
+}
 
 static void
 fm_icon_view_finalize (GObject *object)
@@ -720,8 +714,8 @@ fm_icon_view_finalize (GObject *object)
     if (view->details->selection)
         gof_file_list_free (view->details->selection);
 
-    g_signal_handlers_disconnect_by_func (marlin_icon_view_settings,
-                                          fm_icon_view_zoom_level_changed, view);
+    /*g_signal_handlers_disconnect_by_func (marlin_icon_view_settings,
+                                          fm_icon_view_zoom_level_changed, view);*/
 
     g_object_unref (view->model);
     g_free (view->details);
@@ -789,6 +783,9 @@ fm_icon_view_init (FMIconView *view)
                      FM_DIRECTORY_VIEW (view)->name_renderer, "follow-prelit", 0); 
     g_settings_bind (settings, "single-click", 
                      FM_DIRECTORY_VIEW (view)->icon_renderer, "selection-helpers", 0);
+    g_settings_bind (marlin_icon_view_settings, "zoom-level", 
+                     view, "zoom-level", 0);
+
 
     g_signal_connect_object (view->icons, "button-press-event",
                              G_CALLBACK (button_press_callback), view, 0);
@@ -800,14 +797,76 @@ fm_icon_view_init (FMIconView *view)
 }
 
 static void
+fm_icon_view_get_property (GObject      *object,
+                           guint         prop_id,
+                           GValue       *value,
+                           GParamSpec   *pspec)
+{
+    FMIconView *view = FM_ICON_VIEW (object);
+
+    switch (prop_id)
+    {
+    case PROP_ZOOM_LEVEL:
+        g_value_set_enum (value, view->zoom_level);
+        break;
+
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }   
+}
+
+static void
+fm_icon_view_set_property (GObject      *object,
+                           guint         prop_id,
+                           const GValue       *value,
+                           GParamSpec   *pspec)
+{
+    FMIconView *view = FM_ICON_VIEW (object);
+
+    switch (prop_id)
+    {
+    case PROP_TEXT_BESIDE_ICONS:
+        if (G_UNLIKELY (g_value_get_boolean (value)))
+        {
+            exo_icon_view_set_item_orientation (view->icons, GTK_ORIENTATION_HORIZONTAL);
+            //g_object_set (G_OBJECT (view->name_renderer), "wrap-width", 128, "yalign", 0.5f, NULL);
+            g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer, "wrap-width", 128, "xalign", 0.0f, "yalign", 0.5f, NULL);
+
+            /* disconnect the "zoom-level" signal handler, since we're using a fixed wrap-width here */
+            /*g_signal_handlers_disconnect_by_func (marlin_icon_view_settings,
+                                                  fm_icon_view_zoom_level_changed, view);*/
+        }
+        else
+        {
+            exo_icon_view_set_item_orientation (view->icons, GTK_ORIENTATION_VERTICAL);
+            g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer, "xalign", 0.5f, "yalign", 0.0f, NULL);
+
+            /* connect the "zoom-level" signal handler as the wrap-width is now synced with the "zoom-level" */
+            /*g_signal_connect_swapped (marlin_icon_view_settings, "changed::zoom-level",
+                                      G_CALLBACK (fm_icon_view_zoom_level_changed), view);
+            fm_icon_view_zoom_level_changed (view);*/
+        }
+        break;
+    case PROP_ZOOM_LEVEL:
+        view->zoom_level = g_value_get_enum (value);
+        fm_icon_view_zoom_level_changed (view);
+        break;
+
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+static void
 fm_icon_view_class_init (FMIconViewClass *klass)
 {
     FMDirectoryViewClass *fm_directory_view_class;
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
-    //GParamSpec   *pspec;
 
     object_class->finalize     = fm_icon_view_finalize;
-    /*object_class->get_property = _get_property;*/
+    object_class->get_property = fm_icon_view_get_property;
     object_class->set_property = fm_icon_view_set_property;
 
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
@@ -823,6 +882,7 @@ fm_icon_view_class_init (FMIconViewClass *klass)
     fm_directory_view_class->highlight_path = fm_icon_view_highlight_path;
     fm_directory_view_class->get_visible_range = fm_icon_view_get_visible_range;
     fm_directory_view_class->start_renaming_file = fm_icon_view_start_renaming_file;
+    fm_directory_view_class->zoom_normal = fm_icon_view_zoom_normal;
 
     g_object_class_install_property (object_class,
                                      PROP_TEXT_BESIDE_ICONS,
@@ -832,59 +892,26 @@ fm_icon_view_class_init (FMIconViewClass *klass)
                                                            FALSE,
                                                            (G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS)));
 
-    //g_type_class_add_private (object_class, sizeof (GOFDirectoryAsyncPrivate));
+    g_object_class_install_property (object_class,
+                                     PROP_ZOOM_LEVEL,
+                                     g_param_spec_enum ("zoom-level", "zoom-level", "zoom-level",
+                                                        MARLIN_TYPE_ZOOM_LEVEL,
+                                                        MARLIN_ZOOM_LEVEL_NORMAL,
+                                                        G_PARAM_READWRITE));
+                                                        //G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
+
 }
 
 static void
-fm_icon_view_set_property (GObject      *object,
-                           guint         prop_id,
-                           const GValue *value,
-                           GParamSpec   *pspec)
+fm_icon_view_zoom_level_changed (FMIconView *view)
 {
-    FMDirectoryView *view = FM_DIRECTORY_VIEW (object);
-
-    switch (prop_id)
-    {
-    case PROP_TEXT_BESIDE_ICONS:
-        if (G_UNLIKELY (g_value_get_boolean (value)))
-        {
-            exo_icon_view_set_item_orientation (FM_ICON_VIEW (view)->icons, GTK_ORIENTATION_HORIZONTAL);
-            //g_object_set (G_OBJECT (view->name_renderer), "wrap-width", 128, "yalign", 0.5f, NULL);
-            g_object_set (G_OBJECT (view->name_renderer), "wrap-width", 128, "xalign", 0.0f, "yalign", 0.5f, NULL);
-
-            /* disconnect the "zoom-level" signal handler, since we're using a fixed wrap-width here */
-            g_signal_handlers_disconnect_by_func (marlin_icon_view_settings,
-                                                  fm_icon_view_zoom_level_changed, view);
-        }
-        else
-        {
-            exo_icon_view_set_item_orientation (FM_ICON_VIEW (view)->icons, GTK_ORIENTATION_VERTICAL);
-            g_object_set (G_OBJECT (view->name_renderer), "xalign", 0.5f, "yalign", 0.0f, NULL);
-
-            /* connect the "zoom-level" signal handler as the wrap-width is now synced with the "zoom-level" */
-            g_signal_connect_swapped (marlin_icon_view_settings, "changed::zoom-level",
-                                      G_CALLBACK (fm_icon_view_zoom_level_changed), view);
-            fm_icon_view_zoom_level_changed (view);
-        }
-        break;
-
-    default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-        break;
-    }
-}
-
-static void
-fm_icon_view_zoom_level_changed (FMDirectoryView *view)
-{
-    MarlinZoomLevel zoom_level;
     gint wrap_width;
 
-    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    g_return_if_fail (FM_IS_ICON_VIEW (view));
 
-    zoom_level = g_settings_get_enum (marlin_icon_view_settings, "zoom-level");
+    g_warning ("%s %d", G_STRFUNC, marlin_zoom_level_to_icon_size (view->zoom_level));
     /* determine the "wrap-width" depending on the "zoom-level" */
-    switch (zoom_level)
+    switch (view->zoom_level)
     {
     case MARLIN_ZOOM_LEVEL_SMALLEST:
         wrap_width = 48;
@@ -908,9 +935,9 @@ fm_icon_view_zoom_level_changed (FMDirectoryView *view)
     }
 
     /* set the new "wrap-width" for the text renderer */
-    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->name_renderer), "wrap-width", wrap_width, "zoom-level", zoom_level, NULL);
+    g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer, "wrap-width", wrap_width, "zoom-level", view->zoom_level, NULL);
     /* set the new "size" for the icon renderer */
-    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "size", marlin_zoom_level_to_icon_size (zoom_level), NULL);
+    g_object_set (FM_DIRECTORY_VIEW (view)->icon_renderer, "size", marlin_zoom_level_to_icon_size (view->zoom_level), NULL);
 
 #if 0
     /* TODO move this to icon renderer ? */

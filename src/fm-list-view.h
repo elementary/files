@@ -23,7 +23,6 @@
 #include <gtk/gtk.h>
 #include "fm-list-model.h"
 #include "fm-directory-view.h"
-#include "marlin-enum-types.h"
 
 G_BEGIN_DECLS
 

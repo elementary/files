@@ -36,6 +36,8 @@
 #include "marlin-clipboard-manager.h"
 #include "fm-list-model.h"
 #include "marlin-plugin-manager.h"
+#include "marlin-enum-types.h"
+
 
 typedef struct FMDirectoryView FMDirectoryView;
 typedef struct FMDirectoryViewClass FMDirectoryViewClass;
@@ -372,7 +374,7 @@ struct FMDirectoryViewClass {
     /* Returns the visible range */
     gboolean     (*get_visible_range)   (FMDirectoryView *view, GtkTreePath **start_path,
                                          GtkTreePath **end_path);
-
+    void         (*zoom_normal)         (FMDirectoryView *view);
 };
 
 /* GObject support */
@@ -403,5 +405,8 @@ void    fm_directory_view_context_menu (FMDirectoryView *view,
 gboolean fm_directory_view_is_drag_pending (FMDirectoryView *view);
 void    fm_directory_view_freeze_updates (FMDirectoryView *view);
 void    fm_directory_view_unfreeze_updates (FMDirectoryView *view);
+void    fm_directory_view_zoom_in (FMDirectoryView *view);
+void    fm_directory_view_zoom_out (FMDirectoryView *view);
+void    fm_directory_view_zoom_normal (FMDirectoryView *view);
 
 #endif /* FM_DIRECTORY_VIEW_H */

@@ -789,30 +789,39 @@ fm_directory_view_preview_selected_items (FMDirectoryView *view)
     }
 }
 
-static void 
-fm_directory_view_zoom_in (FMDirectoryView *view)
+void 
+fm_directory_view_zoom_normal (FMDirectoryView *view)
 {
-    GtkActionGroup *main_actions;
-    GtkAction *action = NULL;
-
-    main_actions = MARLIN_VIEW_WINDOW (view->details->window)->main_actions;
-    action = gtk_action_group_get_action (main_actions, "Zoom In");
-
-    if (G_UNLIKELY (action != NULL))
-        gtk_action_activate (action);
+    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->zoom_normal) (view);
 }
 
-static void 
+void 
+fm_directory_view_zoom_in (FMDirectoryView *view)
+{
+    MarlinZoomLevel zoom;
+
+    g_object_get (view, "zoom-level", &zoom, NULL);
+    zoom++;
+    if (zoom >= MARLIN_ZOOM_LEVEL_SMALLEST 
+        && zoom <= MARLIN_ZOOM_LEVEL_LARGEST)
+    {
+        g_object_set (G_OBJECT (view), "zoom-level", zoom, NULL);
+    }
+
+}
+
+void 
 fm_directory_view_zoom_out (FMDirectoryView *view)
 {
-    GtkActionGroup *main_actions;
-    GtkAction *action = NULL;
+    MarlinZoomLevel zoom;
 
-    main_actions = MARLIN_VIEW_WINDOW (view->details->window)->main_actions;
-    action = gtk_action_group_get_action (main_actions, "Zoom Out");
-
-    if (G_UNLIKELY (action != NULL))
-        gtk_action_activate (action);
+    g_object_get (view, "zoom-level", &zoom, NULL);
+    zoom--;
+    if (zoom >= MARLIN_ZOOM_LEVEL_SMALLEST 
+        && zoom <= MARLIN_ZOOM_LEVEL_LARGEST)
+    {
+        g_object_set (view, "zoom-level", zoom, NULL);
+    }
 }
 
 static gboolean

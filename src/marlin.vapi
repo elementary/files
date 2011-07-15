@@ -12,6 +12,9 @@ namespace FM {
             public signal void sync_selection ();
             public void merge_menus ();
             public void unmerge_menus ();
+            public void zoom_in ();
+            public void zoom_out ();
+            public void zoom_normal ();
         }
     }
 }

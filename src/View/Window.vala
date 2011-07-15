@@ -488,26 +488,18 @@ namespace Marlin.View {
         }
         
         private void action_zoom_in_callback (Gtk.Action action) {
-            var zoom = Preferences.marlin_icon_view_settings.get_enum ("zoom-level") + 1;
-            if (zoom >= MarlinZoomLevel.MARLIN_ZOOM_LEVEL_SMALLEST 
-                && zoom <= MarlinZoomLevel.MARLIN_ZOOM_LEVEL_LARGEST)
-            {
-                    Preferences.marlin_icon_view_settings.set_enum ("zoom-level", zoom);
-            }
+            if (current_tab != null && current_tab.slot != null) 
+                ((FM.Directory.View) current_tab.slot.view_box).zoom_in ();
         }
         
         private void action_zoom_out_callback (Gtk.Action action) {
-            var zoom = Preferences.marlin_icon_view_settings.get_enum ("zoom-level") - 1;
-            if (zoom >= MarlinZoomLevel.MARLIN_ZOOM_LEVEL_SMALLEST 
-                && zoom <= MarlinZoomLevel.MARLIN_ZOOM_LEVEL_LARGEST)
-            {
-                    Preferences.marlin_icon_view_settings.set_enum ("zoom-level", zoom);
-            }
+            if (current_tab != null && current_tab.slot != null) 
+                ((FM.Directory.View) current_tab.slot.view_box).zoom_out ();
         }
 
         private void action_zoom_normal_callback (Gtk.Action action) {
-            var zoom = Preferences.marlin_icon_view_settings.get_enum ("default-zoom-level");
-            Preferences.marlin_icon_view_settings.set_enum ("zoom-level", zoom);
+            if (current_tab != null && current_tab.slot != null) 
+                ((FM.Directory.View) current_tab.slot.view_box).zoom_normal ();
         }
 
         protected void show_about() {
