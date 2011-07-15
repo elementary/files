@@ -34,8 +34,6 @@ namespace Marlin.View {
         public Chrome.TopMenu top_menu;
         public Notebook tabs;
         public Marlin.Places.Sidebar sidebar;
-        private IconSize isize15;
-        public IconSize isize128;
 
         public ViewContainer? current_tab;
         public CollapsablePaned main_box;
@@ -155,12 +153,6 @@ namespace Marlin.View {
             tabs.show_tabs = false;
             tabs.set_scrollable(true);
             tabs.show();
-
-            //view = new View();
-            /* register icon sizes */
-            /* TODO move this */
-            isize15 = icon_size_register ("15px", 15, 15);
-            isize128 = icon_size_register ("128px", 128, 128);
 
             /* Sidebar */
             sidebar = new Marlin.Places.Sidebar ((Gtk.Widget) this);
@@ -310,19 +302,10 @@ namespace Marlin.View {
 
             var hbox = new HBox(false, 0);
             hbox.pack_start(content.label, true, true, 0);
-            //var image = new Image.from_stock(Stock.CLOSE, IconSize.MENU);
-            //var image = new Image.from_stock(Stock.CLOSE, IconSize.BUTTON);
-            /* TODO reduce the size of the tab */
-            var image = new Image.from_stock(Stock.CLOSE, isize15);
             var button = new Button();
+            button.set_image(new Image.from_stock(Stock.CLOSE, IconSize.MENU));
             button.set_relief(ReliefStyle.NONE);
             button.set_focus_on_click(false);
-            //button.set_name("marlin-tab-close-button");
-            button.add(image);
-            var style = new RcStyle();
-            style.xthickness = 0;
-            style.ythickness = 0;
-            button.modify_style(style);
             hbox.pack_start(button, false, false, 0);
 
             button.clicked.connect(() => {
