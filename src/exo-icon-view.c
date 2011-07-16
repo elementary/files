@@ -57,7 +57,6 @@
 
 #include "exo-icon-view.h"
 #include "eel-i18n.h"
-#include "marlin-marshal.h"
 #include "nautilus-icon-info.h"
 #include "marlin-icon-renderer.h"
 
@@ -1138,8 +1137,7 @@ exo_icon_view_class_init (ExoIconViewClass *klass)
                       G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                       G_STRUCT_OFFSET (ExoIconViewClass, activate_cursor_item),
                       NULL, NULL,
-                      //_gtk_marshal_BOOLEAN__VOID,
-                      marlin_marshal_BOOLEAN__VOID,
+                      g_cclosure_marshal_generic,
                       G_TYPE_BOOLEAN, 0);
 
     /**
@@ -1172,8 +1170,7 @@ exo_icon_view_class_init (ExoIconViewClass *klass)
                       G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                       G_STRUCT_OFFSET (ExoIconViewClass, move_cursor),
                       NULL, NULL,
-                      //_gtk_marshal_BOOLEAN__ENUM_INT,
-                      marlin_marshal_BOOLEAN__ENUM_INT,
+                      g_cclosure_marshal_generic,
                       G_TYPE_BOOLEAN, 2,
                       GTK_TYPE_MOVEMENT_STEP,
                       G_TYPE_INT);

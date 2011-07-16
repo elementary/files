@@ -29,7 +29,6 @@
 
 #include "eel-editable-label.h"
 #include "eel-pango-extensions.h"
-#include "marlin-marshal.h"
 #include "eel-accessibility.h"
 #include <libgail-util/gailmisc.h>
 #include <libgail-util/gailtextutil.h>
@@ -280,7 +279,7 @@ eel_editable_label_class_init (EelEditableLabelClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (EelEditableLabelClass, move_cursor),
 		  NULL, NULL,
-		  marlin_marshal_VOID__ENUM_INT_BOOLEAN,
+          g_cclosure_marshal_generic,
 		  G_TYPE_NONE, 3, GTK_TYPE_MOVEMENT_STEP, G_TYPE_INT, G_TYPE_BOOLEAN);
   
   signals[COPY_CLIPBOARD] =
@@ -307,7 +306,7 @@ eel_editable_label_class_init (EelEditableLabelClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (EelEditableLabelClass, delete_from_cursor),
 		  NULL, NULL, 
-		  marlin_marshal_VOID__ENUM_INT,
+          g_cclosure_marshal_generic,
 		  G_TYPE_NONE, 2, GTK_TYPE_DELETE_TYPE, G_TYPE_INT);
   
   signals[CUT_CLIPBOARD] =

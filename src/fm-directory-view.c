@@ -38,7 +38,6 @@
 #include "marlin-file-operations.h"
 //#include "fm-list-view.h"
 #include "eel-gtk-macros.h"
-#include "marlin-marshal.h"
 #include "fm-columns-view.h"
 #include "marlin-dnd.h"
 #include "marlin-file-utilities.h"
@@ -2448,7 +2447,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (FMDirectoryViewClass, add_file),
                       NULL, NULL,
-                      marlin_marshal_VOID__OBJECT_OBJECT,
+                      g_cclosure_marshal_generic,
                       G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
     signals[REMOVE_FILE] =
         g_signal_new ("remove_file",
@@ -2456,7 +2455,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (FMDirectoryViewClass, remove_file),
                       NULL, NULL,
-                      marlin_marshal_VOID__OBJECT_OBJECT,
+                      g_cclosure_marshal_generic,
                       G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
     signals[COLORIZE_SELECTION] =
         g_signal_new ("colorize_selection",
@@ -2604,7 +2603,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                       G_STRUCT_OFFSET (FMDirectoryViewClass, trash),
                       g_signal_accumulator_true_handled, NULL,
-                      marlin_marshal_BOOLEAN__VOID,
+                      g_cclosure_marshal_generic,
                       G_TYPE_BOOLEAN, 0);
     signals[DELETE] =
         g_signal_new ("delete",
@@ -2612,7 +2611,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                       G_STRUCT_OFFSET (FMDirectoryViewClass, delete),
                       g_signal_accumulator_true_handled, NULL,
-                      marlin_marshal_BOOLEAN__VOID,
+                      g_cclosure_marshal_generic,
                       G_TYPE_BOOLEAN, 0);
 
     binding_set = gtk_binding_set_by_class (klass);

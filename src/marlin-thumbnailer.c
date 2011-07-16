@@ -29,7 +29,6 @@
 /*#include <thunar/thunar-marshal.h>
 #include <thunar/thunar-private.h>
 #include <thunar/thunar-thumbnailer.h>*/
-#include "marlin-marshal.h"
 #include "marlin-thumbnailer.h"
 
 
@@ -334,7 +333,7 @@ marlin_thumbnailer_init_thumbnailer_proxy (MarlinThumbnailer *thumbnailer,
                                    "org.freedesktop.thumbnails.Thumbnailer1");
 
     /* TODO this should actually be VOID:UINT,BOXED,INT,STRING */
-    dbus_g_object_register_marshaller (marlin_marshal_VOID__UINT_BOXED_UINT_STRING, 
+    dbus_g_object_register_marshaller (g_cclosure_marshal_generic,
                                        G_TYPE_NONE,
                                        G_TYPE_UINT, 
                                        G_TYPE_STRV, 
@@ -342,7 +341,7 @@ marlin_thumbnailer_init_thumbnailer_proxy (MarlinThumbnailer *thumbnailer,
                                        G_TYPE_STRING,
                                        G_TYPE_INVALID);
 
-    dbus_g_object_register_marshaller ((GClosureMarshal) marlin_marshal_VOID__UINT_BOXED,
+    dbus_g_object_register_marshaller ((GClosureMarshal) g_cclosure_marshal_generic,
                                        G_TYPE_NONE,
                                        G_TYPE_UINT,
                                        G_TYPE_STRV,

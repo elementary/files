@@ -28,7 +28,6 @@
 #include "eel-pango-extensions.h"
 #include "eel-editable-label.h"
 #include "marlin-text-renderer.h"
-#include "marlin-marshal.h"
 
 #define EXO_PARAM_READWRITE (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)
 
@@ -227,7 +226,7 @@ marlin_text_renderer_class_init (MarlinTextRendererClass *klass)
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (MarlinTextRendererClass, edited),
                       NULL, NULL,
-                      marlin_marshal_VOID__STRING_STRING,
+                      g_cclosure_marshal_generic,
                       G_TYPE_NONE, 2, G_TYPE_STRING, G_TYPE_STRING);
 }
 

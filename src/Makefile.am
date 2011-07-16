@@ -58,8 +58,6 @@ marlin_LDADD = \
 
 BUILT_SOURCES = \
     marlin.vala.stamp \
-    marlin-marshal.c \
-    marlin-marshal.h \
     $(NULL)
 
 marlin_CSOURCES = \
@@ -99,24 +97,6 @@ nodist_marlin_SOURCES = \
     $(BUILT_SOURCES) \
 	$(NULL)
 
-marlin-marshal.list: $(marlin_CSOURCES) Makefile.am
-	$(AM_V_GEN)( cd $(srcdir) && \
-	sed -n -e 's/.*marlin_marshal_\([[:upper:][:digit:]]*__[[:upper:][:digit:]_]*\).*/\1/p' \
-	$(marlin_CSOURCES) ) \
-	| sed -e 's/__/:/' -e 'y/_/,/' | sort -u > $@.tmp
-	@if cmp -s $@.tmp $@; then \
-		rm $@.tmp; \
-	else \
-		mv $@.tmp $@; \
-	fi
-
-%-marshal.c: %-marshal.list Makefile
-	$(AM_V_GEN)echo "#include \"marlin-marshal.h\"" > $@ && \
-	$(GLIB_GENMARSHAL) --body --prefix=$(subst -,_,$*)_marshal $< >> $*-marshal.c
-
-%-marshal.h: %-marshal.list Makefile
-	$(AM_V_GEN)$(GLIB_GENMARSHAL) --header --prefix=$(subst -,_,$*)_marshal $< > $*-marshal.h
-
 uidir = $(datadir)/marlin/ui
 ui_DATA = \
 	marlin-ui.xml \
@@ -124,13 +104,11 @@ ui_DATA = \
 	$(NULL)
 
 EXTRA_DIST = \
-    marlin-marshall.list \
 	marlin.vala.stamp \
 	$(marlin_VALASOURCES) \
 	$(NULL)
 
 CLEANFILES = \
-    marlin-marshall.list \
     $(BUILT_SOURCES) \
 	$(marlin_VALASOURCES:.vala=.c) \
 	$(NULL)
