@@ -485,6 +485,12 @@ namespace Marlin.View {
                 ((FM.Directory.View) current_tab.slot.view_box).zoom_normal ();
         }
 
+        private void action_connect_to_server_callback (Gtk.Action action)
+        {
+            Widget dialog = new Marlin.ConnectServer.Dialog ((Gtk.Window) this);
+            dialog.show ();
+        }
+
         protected void show_about() {
             Gdk.Pixbuf logo = null;
             try {
@@ -582,6 +588,10 @@ namespace Marlin.View {
   /* label, accelerator */       N_("Normal Si_ze"), "<control>0",
   /* tooltip */                  N_("Use the normal view size"),
                                  action_zoom_normal_callback },
+  /* name, stock id */         { "Connect to Server", null, 
+  /* label, accelerator */       N_("Connect to _Server..."), null,
+  /* tooltip */                  N_("Connect to a remote computer or shared disk"),
+                                 action_connect_to_server_callback },
   /* name, stock id */         { "About", Stock.ABOUT,
   /* label, accelerator */       N_("_About"), null,
   /* tooltip */                  N_("Display credits"),

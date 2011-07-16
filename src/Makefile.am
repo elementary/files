@@ -85,6 +85,8 @@ marlin_CSOURCES = \
     fm-list-view.c                          \
     fm-columns-view.c                       \
     marlin-toolbar-editor.c                 \
+    marlin-connect-server-dialog.c          \
+    marlin-connect-server-operation.c       \
     $(NULL)
 
 marlin_SOURCES = \

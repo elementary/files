@@ -62,7 +62,7 @@ print_error(GError *error)
 {
     if (error != NULL)
     {
-        g_print ("%s\n", error->message);
+        g_warning ("%s [code %d]\n", error->message, error->code);
         g_error_free (error);
     }
 }
@@ -83,7 +83,8 @@ directory_load_done (GOFDirectoryAsync *dir, GFileEnumerator *enumerator, GError
     else 
         g_cancellable_cancel (dir->priv->cancellable);
 
-    if(error != NULL & error->code == 1) /* 1 is hardcoded, I can't find the good enum, FIXME */
+    /* TODO emit the error errod with DONE_LOADING and manage error code */
+    if(error != NULL && (error->code == G_IO_ERROR_NOT_FOUND || error->code == G_IO_ERROR_NOT_DIRECTORY)) 
     {
         dir->exists = FALSE;
     }

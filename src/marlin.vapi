@@ -38,6 +38,14 @@ namespace Marlin {
             public Widget get_view ();*/
         }
     }
+    [CCode (cprefix = "MarlinConnectServer", lower_case_cprefix = "marlin_connect_server_")]
+    namespace ConnectServer {
+        [CCode (cheader_filename = "marlin-connect-server-dialog.h")]
+        public class Dialog : Gtk.Dialog {
+            //public Dialog (Marlin.View.Window window);
+            public Dialog (Gtk.Window window);
+        }
+    }
     [CCode (cprefix = "MarlinPlaces", lower_case_cprefix = "marlin_places_")]
     namespace Places {
         [CCode (cheader_filename = "marlin-places-sidebar.h")]

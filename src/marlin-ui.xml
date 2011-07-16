@@ -5,13 +5,14 @@
 <menubar name="MenuBar">
 	<menu action="File">
         <placeholder name="New Items Placeholder">
-<!--		<menuitem name="Connect to Server" action="Connect to Server"/>-->
             <menuitem name="New Tab" action="New Tab"/>
 	    	<menuitem name="New Window" action="New Window"/>
 		    <separator/>
         </placeholder>
-		<!--<separator/>
-                <placeholder name="Close Items Placeholder"/>-->
+		<separator/>
+		<menuitem name="Connect to Server" action="Connect to Server"/>
+		<separator/>
+		<!--<placeholder name="Close Items Placeholder"/>-->
 		<menuitem name="Close" action="Close"/>
 	</menu>
 	<menu name="Edit" action="Edit">
