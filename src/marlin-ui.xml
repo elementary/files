@@ -128,6 +128,8 @@
 	<menuitem name="New Tab" action="New Tab"/>
 	<menuitem name="New Window" action="New Window"/>
 	<separator/>
+	<menuitem name="Connect to Server" action="Connect to Server"/>
+	<separator/>
     <!--
         <menuitem name="Undo" action="Undo"/>
         <menuitem name="Redo" action="Redo"/>
