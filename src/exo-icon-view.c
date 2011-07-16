@@ -1294,7 +1294,7 @@ exo_icon_view_init (ExoIconView *icon_view)
     icon_view->priv->margin = 6;
     icon_view->priv->item_padding = 6;
 
-    icon_view->priv->draw_focus = TRUE;
+    icon_view->priv->draw_focus = FALSE;
 
     icon_view->priv->enable_search = TRUE;
     icon_view->priv->search_column = -1;
@@ -4136,7 +4136,7 @@ exo_icon_view_real_move_cursor (ExoIconView     *icon_view,
     icon_view->priv->ctrl_pressed = FALSE;
     icon_view->priv->shift_pressed = FALSE;
 
-    icon_view->priv->draw_focus = TRUE;
+    icon_view->priv->draw_focus = FALSE;
 
     return TRUE;
 }
