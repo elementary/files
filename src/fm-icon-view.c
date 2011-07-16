@@ -735,6 +735,8 @@ fm_icon_view_init (FMIconView *view)
     view->icons = EXO_ICON_VIEW (exo_icon_view_new());
     exo_icon_view_set_model (view->icons, GTK_TREE_MODEL (view->model));
 
+    exo_icon_view_set_search_column (view->icons, FM_LIST_MODEL_FILENAME);
+
     /*g_signal_connect (G_OBJECT (view->icons), "notify::model", G_CALLBACK (fm_icon_view_notify_model), view);*/
     g_signal_connect (G_OBJECT (view->icons), "item-activated", G_CALLBACK (fm_icon_view_item_activated), view);
     g_signal_connect (G_OBJECT (view->icons), "selection-changed", G_CALLBACK (fm_icon_view_selection_changed), view);

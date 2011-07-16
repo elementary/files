@@ -62,6 +62,33 @@ typedef void (* ExoIconViewForeachFunc)     (ExoIconView      *icon_view,
                                              GtkTreePath      *path,
                                              gpointer          data);
 
+typedef void (* ExoIconViewSearchPositionFunc) (ExoIconView  *icon_view,
+                                                GtkWidget    *search_dialog,
+                                                gpointer      user_data);
+
+/**
+ * ExoIconViewSearchEqualFunc:
+ * @model: the #GtkTreeModel being searched
+ * @column: the search column set by exo_icon_view_set_search_column()
+ * @key: the key string to compare with
+ * @iter: a #GtkTreeIter pointing the row of @model that should be compared
+ *  with @key.
+ * @search_data: (closure): user data from exo_icon_view_set_search_equal_func()
+ *
+ * A function used for checking whether a row in @model matches
+ * a search key string entered by the user. Note the return value
+ * is reversed from what you would normally expect, though it
+ * has some similarity to strcmp() returning 0 for equal strings.
+ *
+ * Returns: %FALSE if the row matches, %TRUE otherwise.
+ */
+typedef gboolean (*ExoIconViewSearchEqualFunc) (GtkTreeModel    *model,
+                                                gint            column,
+                                                const gchar     *key,
+                                                GtkTreeIter     *iter,
+                                                gpointer        search_data);
+
+
 /**
  * ExoIconViewDropPosition:
  * @EXO_ICON_VIEW_NO_DROP: no drop possible
@@ -264,11 +291,34 @@ gboolean exo_icon_view_get_tooltip_context                    (ExoIconView      
                                                                GtkTreeModel     **model,
                                                                GtkTreePath      **path,
                                                                GtkTreeIter       *iter);
-void     exo_icon_view_set_tooltip_column                     (ExoIconView       *icon_view,
+void    exo_icon_view_set_tooltip_column                     (ExoIconView       *icon_view,
                                                                gint               column);
-gint     exo_icon_view_get_tooltip_column                     (ExoIconView       *icon_view);
+gint    exo_icon_view_get_tooltip_column                     (ExoIconView       *icon_view);
 
-void     exo_icon_view_invalidate_sizes                       (ExoIconView       *icon_view);
+void    exo_icon_view_invalidate_sizes                       (ExoIconView       *icon_view);
+
+/* Interactive search */
+void        exo_icon_view_set_enable_search     (ExoIconView    *icon_view,
+                                                 gboolean       enable_search);
+gboolean    exo_icon_view_get_enable_search     (ExoIconView    *icon_view);
+gint        exo_icon_view_get_search_column     (ExoIconView    *icon_view);
+void        exo_icon_view_set_search_column     (ExoIconView    *icon_view,
+                                                 gint           column);
+ExoIconViewSearchEqualFunc exo_icon_view_get_search_equal_func (ExoIconView     *icon_view);
+void        exo_icon_view_set_search_equal_func (ExoIconView                    *icon_view,
+                                                 ExoIconViewSearchEqualFunc     search_equal_func,
+                                                 gpointer                       search_user_data,
+                                                 GDestroyNotify                 search_destroy);
+
+GtkEntry    *exo_icon_view_get_search_entry     (ExoIconView    *icon_view);
+void        exo_icon_view_set_search_entry      (ExoIconView    *icon_view,
+                                                 GtkEntry       *entry);
+ExoIconViewSearchPositionFunc exo_icon_view_get_search_position_func (ExoIconView   *icon_view);
+void        exo_icon_view_set_search_position_func (ExoIconView                     *icon_view,
+                                                    ExoIconViewSearchPositionFunc   func,
+                                                    gpointer                        data,
+                                                    GDestroyNotify                  destroy);
+
 
 G_END_DECLS
 

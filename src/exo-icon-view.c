@@ -93,6 +93,9 @@
 
 #define EXO_ICON_VIEW_PRIORITY_LAYOUT (GDK_PRIORITY_REDRAW + 5)
 
+#define EXO_ICON_VIEW_SEARCH_DIALOG_TIMEOUT 5000
+#define GTK_DEFAULT_ACCEL_MOD_MASK GDK_CONTROL_MASK
+
 typedef struct _ExoIconViewItem ExoIconViewItem;
 
 
@@ -228,6 +231,26 @@ struct _ExoIconViewPrivate
     guint single_click_timeout;
     guint single_click_timeout_id;
     guint single_click_timeout_state;
+
+    /* Interactive search */
+    gint selected_iter;
+    gint search_column;
+    ExoIconViewSearchPositionFunc search_position_func;
+    ExoIconViewSearchEqualFunc search_equal_func;
+    gpointer search_user_data;
+    GDestroyNotify search_destroy;
+    gpointer search_position_user_data;
+    GDestroyNotify search_position_destroy;
+    GtkWidget *search_window;
+    GtkWidget *search_entry;
+    gulong search_entry_changed_id;
+    guint typeselect_flush_timeout;
+
+    guint enable_search : 1;
+    guint disable_popdown : 1;
+    guint search_custom_entry_set : 1;
+    guint imcontext_changed : 1;
+
 };
 
 /* Signals */
@@ -261,6 +284,8 @@ enum
     PROP_COLUMN_SPACING,
     PROP_MARGIN,
     PROP_REORDERABLE,
+    PROP_ENABLE_SEARCH,
+    PROP_SEARCH_COLUMN,
     PROP_TOOLTIP_COLUMN,
     PROP_ITEM_PADDING,
     PROP_CELL_AREA,
@@ -480,6 +505,76 @@ static void     remove_scroll_timeout            (ExoIconView *icon_view);
 /* single-click autoselection support */
 static gboolean exo_icon_view_single_click_timeout          (gpointer user_data);
 static void     exo_icon_view_single_click_timeout_destroy  (gpointer user_data);
+
+/* interactive search */
+static void     exo_icon_view_ensure_interactive_directory (ExoIconView *icon_view);
+static void     exo_icon_view_search_dialog_hide        (GtkWidget        *search_dialog,
+                                                         ExoIconView      *icon_view,
+                                                         GdkDevice        *device);
+static void     exo_icon_view_search_position_func      (ExoIconView      *icon_view,
+							 GtkWidget        *search_dialog,
+							 gpointer          user_data);
+static void     exo_icon_view_search_disable_popdown    (GtkEntry         *entry,
+							 GtkMenu          *menu,
+							 gpointer          data);
+static void     exo_icon_view_search_preedit_changed    (GtkIMContext     *im_context,
+							 ExoIconView      *icon_view);
+static void     exo_icon_view_search_activate           (GtkEntry         *entry,
+							 ExoIconView      *icon_view);
+static gboolean exo_icon_view_real_search_enable_popdown(gpointer          data);
+static void     exo_icon_view_search_enable_popdown     (GtkWidget        *widget,
+							 gpointer          data);
+static gboolean exo_icon_view_search_delete_event       (GtkWidget        *widget,
+							 GdkEventAny      *event,
+							 ExoIconView      *icon_view);
+static gboolean exo_icon_view_search_button_press_event (GtkWidget        *widget,
+							 GdkEventButton   *event,
+							 ExoIconView      *icon_view);
+static gboolean exo_icon_view_search_scroll_event       (GtkWidget        *entry,
+							 GdkEventScroll   *event,
+							 ExoIconView      *icon_view);
+static gboolean exo_icon_view_search_key_press_event    (GtkWidget        *entry,
+							 GdkEventKey      *event,
+							 ExoIconView      *icon_view);
+static gboolean exo_icon_view_search_move               (GtkWidget        *window,
+							 ExoIconView      *icon_view,
+							 gboolean          up);
+static gboolean exo_icon_view_search_equal_func         (GtkTreeModel     *model,
+							 gint              column,
+							 const gchar      *key,
+							 GtkTreeIter      *iter,
+							 gpointer          search_data);
+/*static gboolean exo_icon_view_search_iter               (GtkTreeModel     *model,
+							 GtkTreeSelection *selection,
+							 GtkTreeIter      *iter,
+							 const gchar      *text,
+							 gint             *count,
+							 gint              n);*/
+static gboolean exo_icon_view_search_iter (ExoIconView  *icon_view,
+                           GtkTreeModel *model,
+                           GtkTreeIter  *iter,
+                           const gchar  *text,
+                           gint         *count,
+                           gint          n);
+static void     exo_icon_view_search_init               (GtkWidget        *entry,
+							 ExoIconView      *icon_view);
+static void     exo_icon_view_put                       (ExoIconView      *icon_view,
+							 GtkWidget        *child_widget,
+							 gint              x,
+							 gint              y,
+							 gint              width,
+							 gint              height);
+static gboolean exo_icon_view_start_editing             (ExoIconView      *icon_view,
+							 GtkTreePath      *cursor_path,
+							 gboolean          edit_only);
+static void exo_icon_view_stop_editing                  (ExoIconView *icon_view,
+							 gboolean     cancel_editing);
+static gboolean exo_icon_view_real_start_interactive_search (ExoIconView *icon_view,
+                                                             GdkDevice   *device,
+							     gboolean     keybinding);
+static gboolean exo_icon_view_start_interactive_search      (ExoIconView *icon_view);
+
+static void send_focus_change (GtkWidget *widget, GdkDevice *device, gboolean in);
 
 
 /* GtkBuildable */
@@ -809,6 +904,24 @@ exo_icon_view_class_init (ExoIconViewClass *klass)
                                                            _("View is reorderable"),
                                                            FALSE,
                                                            G_PARAM_READWRITE));
+
+    g_object_class_install_property (gobject_class,
+				     PROP_ENABLE_SEARCH,
+				     g_param_spec_boolean ("enable-search",
+							   _("Enable Search"),
+							   _("View allows user to search through columns interactively"),
+							   TRUE,
+							   EXO_PARAM_READWRITE));
+
+    g_object_class_install_property (gobject_class,
+				     PROP_SEARCH_COLUMN,
+				     g_param_spec_int ("search-column",
+						       _("Search Column"),
+						       _("Model column to search through during interactive search"),
+						       -1,
+						       G_MAXINT,
+						       -1,
+						       EXO_PARAM_READWRITE));
 
     g_object_class_install_property (gobject_class,
                                      PROP_TOOLTIP_COLUMN,
@@ -1183,6 +1296,11 @@ exo_icon_view_init (ExoIconView *icon_view)
 
     icon_view->priv->draw_focus = TRUE;
 
+    icon_view->priv->enable_search = TRUE;
+    icon_view->priv->search_column = -1;
+    icon_view->priv->search_equal_func = exo_icon_view_search_equal_func;
+    icon_view->priv->search_position_func = exo_icon_view_search_position_func;
+
     icon_view->priv->row_contexts = 
         g_ptr_array_new_with_free_func ((GDestroyNotify)g_object_unref);
 }
@@ -1304,6 +1422,12 @@ exo_icon_view_set_property (GObject      *object,
     case PROP_REORDERABLE:
         exo_icon_view_set_reorderable (icon_view, g_value_get_boolean (value));
         break;
+    case PROP_ENABLE_SEARCH:
+        exo_icon_view_set_enable_search (icon_view, g_value_get_boolean (value));
+        break;
+    case PROP_SEARCH_COLUMN:
+        exo_icon_view_set_search_column (icon_view, g_value_get_int (value));
+        break;
 
     case PROP_TOOLTIP_COLUMN:
         exo_icon_view_set_tooltip_column (icon_view, g_value_get_int (value));
@@ -1406,6 +1530,12 @@ exo_icon_view_get_property (GObject      *object,
         break;
     case PROP_REORDERABLE:
         g_value_set_boolean (value, icon_view->priv->reorderable);
+        break;
+    case PROP_ENABLE_SEARCH:
+        g_value_set_boolean (value, icon_view->priv->enable_search);
+        break;
+    case PROP_SEARCH_COLUMN:
+        g_value_set_int (value, icon_view->priv->search_column);
         break;
     case PROP_TOOLTIP_COLUMN:
         g_value_set_int (value, icon_view->priv->tooltip_column);
@@ -2328,6 +2458,77 @@ exo_icon_view_key_press (GtkWidget      *widget,
             exo_icon_view_stop_rubberbanding (icon_view);
 
         return TRUE;
+    }
+
+    //aminteractive
+    //g_message ("%s", G_STRFUNC);
+
+    /* We pass the event to the search_entry.  If its text changes, then we start
+     * the typeahead find capabilities. */
+    if (gtk_widget_has_focus (GTK_WIDGET (icon_view))
+        && icon_view->priv->enable_search
+        && !icon_view->priv->search_custom_entry_set)
+    {
+        GdkEvent *new_event;
+        char *old_text;
+        const char *new_text;
+        gboolean retval;
+        GdkScreen *screen;
+        gboolean text_modified;
+        gulong popup_menu_id;
+
+        exo_icon_view_ensure_interactive_directory (icon_view);
+
+        /* Make a copy of the current text */
+        old_text = g_strdup (gtk_entry_get_text (GTK_ENTRY (icon_view->priv->search_entry)));
+        new_event = gdk_event_copy ((GdkEvent *) event);
+        g_object_unref (((GdkEventKey *) new_event)->window);
+        ((GdkEventKey *) new_event)->window = g_object_ref (gtk_widget_get_window (icon_view->priv->search_window));
+        gtk_widget_realize (icon_view->priv->search_window);
+
+        popup_menu_id = g_signal_connect (icon_view->priv->search_entry, 
+                                          "popup-menu", G_CALLBACK (gtk_true),
+                                          NULL);
+
+        /* Move the entry off screen */
+        screen = gtk_widget_get_screen (GTK_WIDGET (icon_view));
+        gtk_window_move (GTK_WINDOW (icon_view->priv->search_window),
+                         gdk_screen_get_width (screen) + 1,
+                         gdk_screen_get_height (screen) + 1);
+        gtk_widget_show (icon_view->priv->search_window);
+
+        /* Send the event to the window.  If the preedit_changed signal is emitted
+         * during this event, we will set priv->imcontext_changed  */
+        icon_view->priv->imcontext_changed = FALSE;
+        retval = gtk_widget_event (icon_view->priv->search_window, new_event);
+        gdk_event_free (new_event);
+        gtk_widget_hide (icon_view->priv->search_window);
+
+        g_signal_handler_disconnect (icon_view->priv->search_entry, 
+                                     popup_menu_id);
+
+        /* We check to make sure that the entry tried to handle the text, and that
+         * the text has changed.
+         */
+        new_text = gtk_entry_get_text (GTK_ENTRY (icon_view->priv->search_entry));
+        text_modified = strcmp (old_text, new_text) != 0;
+        g_free (old_text);
+        if (icon_view->priv->imcontext_changed ||    /* we're in a preedit */
+            (retval && text_modified))               /* ...or the text was modified */
+        {
+            if (exo_icon_view_real_start_interactive_search (icon_view,
+                                                             gdk_event_get_device ((GdkEvent *) event),
+                                                             FALSE))
+            {
+                gtk_widget_grab_focus (GTK_WIDGET (icon_view));
+                return TRUE;
+            }
+            else
+            {
+                gtk_entry_set_text (GTK_ENTRY (icon_view->priv->search_entry), "");
+                return FALSE;
+            }
+        }
     }
 
     return GTK_WIDGET_CLASS (exo_icon_view_parent_class)->key_press_event (widget, event);
@@ -9972,3 +10173,1190 @@ exo_icon_view_buildable_custom_tag_end (GtkBuildable *buildable,
         parent_buildable_iface->custom_tag_end (buildable, builder, child, tagname,
                                                 data);
 }
+
+
+/*
+ * Interactive search
+ */
+
+/**
+ * exo_icon_view_set_enable_search:
+ * @icon_view: A #ExoIconView
+ * @enable_search: %TRUE, if the user can search interactively
+ *
+ * If @enable_search is set, then the user can type in text to search through
+ * the tree interactively (this is sometimes called "typeahead find").
+ * 
+ * Note that even if this is %FALSE, the user can still initiate a search 
+ * using the "start-interactive-search" key binding.
+ */
+void
+exo_icon_view_set_enable_search (ExoIconView *icon_view,
+				 gboolean     enable_search)
+{
+  g_return_if_fail (EXO_IS_ICON_VIEW (icon_view));
+
+  enable_search = !!enable_search;
+  
+  if (icon_view->priv->enable_search != enable_search)
+    {
+       icon_view->priv->enable_search = enable_search;
+       g_object_notify (G_OBJECT (icon_view), "enable-search");
+    }
+}
+
+/**
+ * exo_icon_view_get_enable_search:
+ * @icon_view: A #ExoIconView
+ *
+ * Returns whether or not the tree allows to start interactive searching 
+ * by typing in text.
+ *
+ * Return value: whether or not to let the user search interactively
+ */
+gboolean
+exo_icon_view_get_enable_search (ExoIconView *icon_view)
+{
+  g_return_val_if_fail (EXO_IS_ICON_VIEW (icon_view), FALSE);
+
+  return icon_view->priv->enable_search;
+}
+
+
+/**
+ * exo_icon_view_get_search_column:
+ * @icon_view: A #ExoIconView
+ *
+ * Gets the column searched on by the interactive search code.
+ *
+ * Return value: the column the interactive search code searches in.
+ */
+gint
+exo_icon_view_get_search_column (ExoIconView *icon_view)
+{
+  g_return_val_if_fail (EXO_IS_ICON_VIEW (icon_view), -1);
+
+  return (icon_view->priv->search_column);
+}
+
+/**
+ * exo_icon_view_set_search_column:
+ * @icon_view: A #ExoIconView
+ * @column: the column of the model to search in, or -1 to disable searching
+ *
+ * Sets @column as the column where the interactive search code should
+ * search in for the current model. 
+ * 
+ * If the search column is set, users can use the "start-interactive-search"
+ * key binding to bring up search popup. The enable-search property controls
+ * whether simply typing text will also start an interactive search.
+ *
+ * Note that @column refers to a column of the current model. The search 
+ * column is reset to -1 when the model is changed.
+ */
+void
+exo_icon_view_set_search_column (ExoIconView *icon_view,
+				 gint         column)
+{
+  g_return_if_fail (EXO_IS_ICON_VIEW (icon_view));
+  g_return_if_fail (column >= -1);
+
+  if (icon_view->priv->search_column == column)
+    return;
+
+  icon_view->priv->search_column = column;
+  g_object_notify (G_OBJECT (icon_view), "search-column");
+}
+
+/**
+ * exo_icon_view_get_search_equal_func: (skip)
+ * @icon_view: A #ExoIconView
+ *
+ * Returns the compare function currently in use.
+ *
+ * Return value: the currently used compare function for the search code.
+ */
+
+ExoIconViewSearchEqualFunc
+exo_icon_view_get_search_equal_func (ExoIconView *icon_view)
+{
+  g_return_val_if_fail (EXO_IS_ICON_VIEW (icon_view), NULL);
+
+  return icon_view->priv->search_equal_func;
+}
+
+/**
+ * exo_icon_view_set_search_equal_func:
+ * @icon_view: A #ExoIconView
+ * @search_equal_func: the compare function to use during the search
+ * @search_user_data: (allow-none): user data to pass to @search_equal_func, or %NULL
+ * @search_destroy: (allow-none): Destroy notifier for @search_user_data, or %NULL
+ *
+ * Sets the compare function for the interactive search capabilities; note
+ * that somewhat like strcmp() returning 0 for equality
+ * #ExoIconViewSearchEqualFunc returns %FALSE on matches.
+ **/
+void
+exo_icon_view_set_search_equal_func (ExoIconView                *icon_view,
+				     ExoIconViewSearchEqualFunc  search_equal_func,
+				     gpointer                    search_user_data,
+				     GDestroyNotify              search_destroy)
+{
+  g_return_if_fail (EXO_IS_ICON_VIEW (icon_view));
+  g_return_if_fail (search_equal_func != NULL);
+
+  if (icon_view->priv->search_destroy)
+    icon_view->priv->search_destroy (icon_view->priv->search_user_data);
+
+  icon_view->priv->search_equal_func = search_equal_func;
+  icon_view->priv->search_user_data = search_user_data;
+  icon_view->priv->search_destroy = search_destroy;
+  if (icon_view->priv->search_equal_func == NULL)
+    icon_view->priv->search_equal_func = exo_icon_view_search_equal_func;
+}
+
+/**
+ * exo_icon_view_get_search_entry:
+ * @icon_view: A #ExoIconView
+ *
+ * Returns the #GtkEntry which is currently in use as interactive search
+ * entry for @icon_view.  In case the built-in entry is being used, %NULL
+ * will be returned.
+ *
+ * Return value: (transfer none): the entry currently in use as search entry.
+ *
+ * Since: 2.10
+ */
+GtkEntry *
+exo_icon_view_get_search_entry (ExoIconView *icon_view)
+{
+  g_return_val_if_fail (EXO_IS_ICON_VIEW (icon_view), NULL);
+
+  if (icon_view->priv->search_custom_entry_set)
+    return GTK_ENTRY (icon_view->priv->search_entry);
+
+  return NULL;
+}
+
+/**
+ * exo_icon_view_set_search_entry:
+ * @icon_view: A #ExoIconView
+ * @entry: (allow-none): the entry the interactive search code of @icon_view should use or %NULL
+ *
+ * Sets the entry which the interactive search code will use for this
+ * @icon_view.  This is useful when you want to provide a search entry
+ * in our interface at all time at a fixed position.  Passing %NULL for
+ * @entry will make the interactive search code use the built-in popup
+ * entry again.
+ *
+ * Since: 2.10
+ */
+void
+exo_icon_view_set_search_entry (ExoIconView *icon_view,
+				GtkEntry    *entry)
+{
+  g_return_if_fail (EXO_IS_ICON_VIEW (icon_view));
+  g_return_if_fail (entry == NULL || GTK_IS_ENTRY (entry));
+
+  if (icon_view->priv->search_custom_entry_set)
+    {
+      if (icon_view->priv->search_entry_changed_id)
+        {
+	  g_signal_handler_disconnect (icon_view->priv->search_entry,
+				       icon_view->priv->search_entry_changed_id);
+	  icon_view->priv->search_entry_changed_id = 0;
+	}
+      g_signal_handlers_disconnect_by_func (icon_view->priv->search_entry,
+					    G_CALLBACK (exo_icon_view_search_key_press_event),
+					    icon_view);
+
+      g_object_unref (icon_view->priv->search_entry);
+    }
+  else if (icon_view->priv->search_window)
+    {
+      gtk_widget_destroy (icon_view->priv->search_window);
+
+      icon_view->priv->search_window = NULL;
+    }
+
+  if (entry)
+    {
+      icon_view->priv->search_entry = g_object_ref (entry);
+      icon_view->priv->search_custom_entry_set = TRUE;
+
+      if (icon_view->priv->search_entry_changed_id == 0)
+        {
+          icon_view->priv->search_entry_changed_id =
+	    g_signal_connect (icon_view->priv->search_entry, "changed",
+			      G_CALLBACK (exo_icon_view_search_init),
+			      icon_view);
+	}
+      
+        g_signal_connect (icon_view->priv->search_entry, "key-press-event",
+		          G_CALLBACK (exo_icon_view_search_key_press_event),
+		          icon_view);
+
+	exo_icon_view_search_init (icon_view->priv->search_entry, icon_view);
+    }
+  else
+    {
+      icon_view->priv->search_entry = NULL;
+      icon_view->priv->search_custom_entry_set = FALSE;
+    }
+}
+
+/**
+ * exo_icon_view_set_search_position_func:
+ * @icon_view: A #ExoIconView
+ * @func: (allow-none): the function to use to position the search dialog, or %NULL
+ *    to use the default search position function
+ * @data: (allow-none): user data to pass to @func, or %NULL
+ * @destroy: (allow-none): Destroy notifier for @data, or %NULL
+ *
+ * Sets the function to use when positioning the search dialog.
+ *
+ * Since: 2.10
+ **/
+void
+exo_icon_view_set_search_position_func (ExoIconView                   *icon_view,
+                                        ExoIconViewSearchPositionFunc  func,
+                                        gpointer                       user_data,
+                                        GDestroyNotify                 destroy)
+{
+  g_return_if_fail (EXO_IS_ICON_VIEW (icon_view));
+
+  if (icon_view->priv->search_position_destroy)
+    icon_view->priv->search_position_destroy (icon_view->priv->search_position_user_data);
+
+  icon_view->priv->search_position_func = func;
+  icon_view->priv->search_position_user_data = user_data;
+  icon_view->priv->search_position_destroy = destroy;
+  if (icon_view->priv->search_position_func == NULL)
+    icon_view->priv->search_position_func = exo_icon_view_search_position_func;
+}
+
+/**
+ * exo_icon_view_get_search_position_func: (skip)
+ * @icon_view: A #ExoIconView
+ *
+ * Returns the positioning function currently in use.
+ *
+ * Return value: the currently used function for positioning the search dialog.
+ *
+ * Since: 2.10
+ */
+ExoIconViewSearchPositionFunc
+exo_icon_view_get_search_position_func (ExoIconView *icon_view)
+{
+  g_return_val_if_fail (EXO_IS_ICON_VIEW (icon_view), NULL);
+
+  return icon_view->priv->search_position_func;
+}
+
+
+
+
+static void
+exo_icon_view_search_dialog_hide (GtkWidget   *search_dialog,
+                                  ExoIconView *icon_view,
+                                  GdkDevice   *device)
+{
+  if (icon_view->priv->disable_popdown)
+    return;
+
+  if (icon_view->priv->search_entry_changed_id)
+    {
+      g_signal_handler_disconnect (icon_view->priv->search_entry,
+				   icon_view->priv->search_entry_changed_id);
+      icon_view->priv->search_entry_changed_id = 0;
+    }
+  if (icon_view->priv->typeselect_flush_timeout)
+    {
+      g_source_remove (icon_view->priv->typeselect_flush_timeout);
+      icon_view->priv->typeselect_flush_timeout = 0;
+    }
+	
+  if (gtk_widget_get_visible (search_dialog))
+    {
+      /* send focus-in event */
+      send_focus_change (GTK_WIDGET (icon_view->priv->search_entry), device, FALSE);
+      gtk_widget_hide (search_dialog);
+      gtk_entry_set_text (GTK_ENTRY (icon_view->priv->search_entry), "");
+      send_focus_change (GTK_WIDGET (icon_view), device, TRUE);
+    }
+}
+
+static void
+exo_icon_view_search_position_func (ExoIconView *icon_view,
+				    GtkWidget   *search_dialog,
+				    gpointer     user_data)
+{
+  gint x, y;
+  gint tree_x, tree_y;
+  gint tree_width, tree_height;
+  GdkWindow *tree_window = gtk_widget_get_window (GTK_WIDGET (icon_view));
+  GdkScreen *screen = gdk_window_get_screen (tree_window);
+  GtkRequisition requisition;
+  gint monitor_num;
+  GdkRectangle monitor;
+
+  monitor_num = gdk_screen_get_monitor_at_window (screen, tree_window);
+  gdk_screen_get_monitor_geometry (screen, monitor_num, &monitor);
+
+  gtk_widget_realize (search_dialog);
+
+  gdk_window_get_origin (tree_window, &tree_x, &tree_y);
+  tree_width = gdk_window_get_width (tree_window);
+  tree_height = gdk_window_get_height (tree_window);
+  gtk_widget_get_preferred_size (search_dialog, &requisition, NULL);
+
+  if (tree_x + tree_width > gdk_screen_get_width (screen))
+    x = gdk_screen_get_width (screen) - requisition.width;
+  else if (tree_x + tree_width - requisition.width < 0)
+    x = 0;
+  else
+    x = tree_x + tree_width - requisition.width;
+
+  if (tree_y + tree_height + requisition.height > gdk_screen_get_height (screen))
+    y = gdk_screen_get_height (screen) - requisition.height;
+  else if (tree_y + tree_height < 0) /* isn't really possible ... */
+    y = 0;
+  else
+    y = tree_y + tree_height;
+
+  gtk_window_move (GTK_WINDOW (search_dialog), x, y);
+}
+
+static void
+exo_icon_view_search_disable_popdown (GtkEntry *entry,
+				      GtkMenu  *menu,
+				      gpointer  data)
+{
+  ExoIconView *icon_view = (ExoIconView *)data;
+
+  icon_view->priv->disable_popdown = 1;
+  g_signal_connect (menu, "hide",
+		    G_CALLBACK (exo_icon_view_search_enable_popdown), data);
+}
+
+static gboolean
+exo_icon_view_search_entry_flush_timeout (ExoIconView *tree_view)
+{
+  exo_icon_view_search_dialog_hide (tree_view->priv->search_window, tree_view, NULL);
+  tree_view->priv->typeselect_flush_timeout = 0;
+
+  return FALSE;
+}
+
+/* Cut and paste from gtkwindow.c */
+static void
+send_focus_change (GtkWidget *widget,
+                   GdkDevice *device,
+                   gboolean   in)
+{
+  GdkDeviceManager *device_manager;
+  GList *devices, *d;
+
+  device_manager = gdk_display_get_device_manager (gtk_widget_get_display (widget));
+  devices = gdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_MASTER);
+  devices = g_list_concat (devices, gdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_SLAVE));
+  devices = g_list_concat (devices, gdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_FLOATING));
+
+  for (d = devices; d; d = d->next)
+    {
+      GdkDevice *dev = d->data;
+      GdkEvent *fevent;
+      GdkWindow *window;
+
+      if (gdk_device_get_source (dev) != GDK_SOURCE_KEYBOARD)
+        continue;
+
+      window = gtk_widget_get_window (widget);
+
+      /* Skip non-master keyboards that haven't
+       * selected for events from this window
+       */
+      if (gdk_device_get_device_type (dev) != GDK_DEVICE_TYPE_MASTER &&
+          !gdk_window_get_device_events (window, dev))
+        continue;
+
+      fevent = gdk_event_new (GDK_FOCUS_CHANGE);
+
+      fevent->focus_change.type = GDK_FOCUS_CHANGE;
+      fevent->focus_change.window = g_object_ref (window);
+      fevent->focus_change.in = in;
+      gdk_event_set_device (fevent, device);
+
+      gtk_widget_send_focus_change (widget, fevent);
+
+      gdk_event_free (fevent);
+    }
+
+  g_list_free (devices);
+}
+
+static void
+exo_icon_view_ensure_interactive_directory (ExoIconView *icon_view)
+{
+  GtkWidget *frame, *vbox, *toplevel;
+  GdkScreen *screen;
+
+  if (icon_view->priv->search_custom_entry_set)
+    return;
+
+  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (icon_view));
+  screen = gtk_widget_get_screen (GTK_WIDGET (icon_view));
+
+   if (icon_view->priv->search_window != NULL)
+     {
+       if (gtk_window_has_group (GTK_WINDOW (toplevel)))
+         gtk_window_group_add_window (gtk_window_get_group (GTK_WINDOW (toplevel)),
+                                      GTK_WINDOW (icon_view->priv->search_window));
+       else if (gtk_window_has_group (GTK_WINDOW (icon_view->priv->search_window)))
+         gtk_window_group_remove_window (gtk_window_get_group (GTK_WINDOW (icon_view->priv->search_window)),
+                                         GTK_WINDOW (icon_view->priv->search_window));
+
+       gtk_window_set_screen (GTK_WINDOW (icon_view->priv->search_window), screen);
+
+       return;
+     }
+   
+  icon_view->priv->search_window = gtk_window_new (GTK_WINDOW_POPUP);
+  gtk_window_set_screen (GTK_WINDOW (icon_view->priv->search_window), screen);
+
+  if (gtk_window_has_group (GTK_WINDOW (toplevel)))
+    gtk_window_group_add_window (gtk_window_get_group (GTK_WINDOW (toplevel)),
+				 GTK_WINDOW (icon_view->priv->search_window));
+
+  gtk_window_set_type_hint (GTK_WINDOW (icon_view->priv->search_window),
+			    GDK_WINDOW_TYPE_HINT_UTILITY);
+  gtk_window_set_modal (GTK_WINDOW (icon_view->priv->search_window), TRUE);
+  g_signal_connect (icon_view->priv->search_window, "delete-event",
+		    G_CALLBACK (exo_icon_view_search_delete_event),
+		    icon_view);
+  g_signal_connect (icon_view->priv->search_window, "key-press-event",
+		    G_CALLBACK (exo_icon_view_search_key_press_event),
+		    icon_view);
+  g_signal_connect (icon_view->priv->search_window, "button-press-event",
+		    G_CALLBACK (exo_icon_view_search_button_press_event),
+		    icon_view);
+  g_signal_connect (icon_view->priv->search_window, "scroll-event",
+		    G_CALLBACK (exo_icon_view_search_scroll_event),
+		    icon_view);
+
+  frame = gtk_frame_new (NULL);
+  gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_ETCHED_IN);
+  gtk_widget_show (frame);
+  gtk_container_add (GTK_CONTAINER (icon_view->priv->search_window), frame);
+
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  gtk_widget_show (vbox);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 3);
+
+  /* add entry */
+  icon_view->priv->search_entry = gtk_entry_new ();
+  gtk_widget_show (icon_view->priv->search_entry);
+  g_signal_connect (icon_view->priv->search_entry, "populate-popup",
+		    G_CALLBACK (exo_icon_view_search_disable_popdown),
+		    icon_view);
+  g_signal_connect (icon_view->priv->search_entry,
+		    "activate", G_CALLBACK (exo_icon_view_search_activate),
+		    icon_view);
+
+  //aminteractive
+  //g_signal_connect (_gtk_entry_get_im_context (GTK_ENTRY (icon_view->priv->search_entry)),
+  g_signal_connect (GTK_ENTRY (icon_view->priv->search_entry),
+                    "preedit-changed",
+                    G_CALLBACK (exo_icon_view_search_preedit_changed),
+                    icon_view);
+
+  gtk_container_add (GTK_CONTAINER (vbox), icon_view->priv->search_entry);
+
+  gtk_widget_realize (icon_view->priv->search_entry);
+}
+
+/* Pops up the interactive search entry.  If keybinding is TRUE then the user
+ * started this by typing the start_interactive_search keybinding.  Otherwise, it came from 
+ */
+static gboolean
+exo_icon_view_real_start_interactive_search (ExoIconView *icon_view,
+                                             GdkDevice   *device,
+					     gboolean     keybinding)
+{
+  /* We only start interactive search if we have focus or the columns
+   * have focus.  If one of our children have focus, we don't want to
+   * start the search.
+   */
+  GList *list;
+  gboolean found_focus = FALSE;
+  GtkWidgetClass *entry_parent_class;
+  
+  if (!icon_view->priv->enable_search && !keybinding)
+    return FALSE;
+
+  if (icon_view->priv->search_custom_entry_set)
+    return FALSE;
+
+  if (icon_view->priv->search_window != NULL &&
+      gtk_widget_get_visible (icon_view->priv->search_window))
+    return TRUE;
+
+  //aminteractive
+#if 0
+  for (list = icon_view->priv->columns; list; list = list->next)
+    {
+      GtkTreeViewColumn *column;
+      GtkWidget         *button;
+
+      column = list->data;
+      if (!exo_icon_view_column_get_visible (column))
+	continue;
+
+      button = exo_icon_view_column_get_button (column);
+      if (gtk_widget_has_focus (button))
+	{
+	  found_focus = TRUE;
+	  break;
+	}
+    }
+#endif
+  
+  if (gtk_widget_has_focus (GTK_WIDGET (icon_view)))
+    found_focus = TRUE;
+
+  if (!found_focus)
+    return FALSE;
+
+  if (icon_view->priv->search_column < 0)
+    return FALSE;
+
+  exo_icon_view_ensure_interactive_directory (icon_view);
+
+  if (keybinding)
+    gtk_entry_set_text (GTK_ENTRY (icon_view->priv->search_entry), "");
+
+  /* done, show it */
+  icon_view->priv->search_position_func (icon_view, icon_view->priv->search_window, icon_view->priv->search_position_user_data);
+  gtk_widget_show (icon_view->priv->search_window);
+  if (icon_view->priv->search_entry_changed_id == 0)
+    {
+      icon_view->priv->search_entry_changed_id =
+	g_signal_connect (icon_view->priv->search_entry, "changed",
+			  G_CALLBACK (exo_icon_view_search_init),
+			  icon_view);
+    }
+
+  icon_view->priv->typeselect_flush_timeout =
+    gdk_threads_add_timeout (EXO_ICON_VIEW_SEARCH_DIALOG_TIMEOUT,
+		   (GSourceFunc) exo_icon_view_search_entry_flush_timeout,
+		   icon_view);
+
+  /* Grab focus will select all the text.  We don't want that to happen, so we
+   * call the parent instance and bypass the selection change.  This is probably
+   * really non-kosher. */
+  entry_parent_class = g_type_class_peek_parent (GTK_ENTRY_GET_CLASS (icon_view->priv->search_entry));
+  (entry_parent_class->grab_focus) (icon_view->priv->search_entry);
+
+  /* send focus-in event */
+  send_focus_change (icon_view->priv->search_entry, device, TRUE);
+
+  /* search first matching iter */
+  exo_icon_view_search_init (icon_view->priv->search_entry, icon_view);
+
+  return TRUE;
+}
+
+
+/* Because we're visible but offscreen, we just set a flag in the preedit
+ * callback.
+ */
+static void
+exo_icon_view_search_preedit_changed (GtkIMContext *im_context,
+                                      ExoIconView  *icon_view)
+{
+  icon_view->priv->imcontext_changed = 1;
+  if (icon_view->priv->typeselect_flush_timeout)
+    {
+      g_source_remove (icon_view->priv->typeselect_flush_timeout);
+      icon_view->priv->typeselect_flush_timeout =
+          gdk_threads_add_timeout (EXO_ICON_VIEW_SEARCH_DIALOG_TIMEOUT,
+		       (GSourceFunc) exo_icon_view_search_entry_flush_timeout,
+		       icon_view);
+    }
+
+}
+
+static void
+exo_icon_view_search_activate (GtkEntry    *entry,
+                               ExoIconView *icon_view)
+{
+  GtkTreePath *path;
+
+  /* hide the interactive search dialog */
+  /*exo_icon_view_search_dialog_hide (icon_view->priv->search_window, icon_view);*/
+  exo_icon_view_search_dialog_hide (icon_view->priv->search_window, icon_view,
+                                    gtk_get_current_event_device ());
+
+  /* check if we have a cursor item, and if so, activate it */
+  if (exo_icon_view_get_cursor (icon_view, &path, NULL))
+    {
+      /* only activate the cursor item if it's selected */
+      if (exo_icon_view_path_is_selected (icon_view, path))
+        exo_icon_view_item_activated (icon_view, path);
+      gtk_tree_path_free (path);
+    }
+}
+
+//aminteractive
+#if 0
+static void
+exo_icon_view_search_activate (GtkEntry    *entry,
+                               ExoIconView *icon_view)
+{
+  GtkTreePath *path;
+  GtkRBNode *node;
+  GtkRBTree *tree;
+
+  exo_icon_view_search_dialog_hide (icon_view->priv->search_window, icon_view,
+                                    gtk_get_current_event_device ());
+
+  /* If we have a row selected and it's the cursor row, we activate
+   * the row XXX */
+  if (gtk_tree_row_reference_valid (icon_view->priv->cursor))
+    {
+      path = gtk_tree_row_reference_get_path (icon_view->priv->cursor);
+      
+      _exo_icon_view_find_node (icon_view, path, &tree, &node);
+      
+      if (node && GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_IS_SELECTED))
+	exo_icon_view_row_activated (icon_view, path, icon_view->priv->focus_column);
+      
+      gtk_tree_path_free (path);
+    }
+}
+#endif
+
+static gboolean
+exo_icon_view_real_search_enable_popdown (gpointer data)
+{
+  ExoIconView *icon_view = (ExoIconView *)data;
+
+  icon_view->priv->disable_popdown = 0;
+
+  return FALSE;
+}
+
+static void
+exo_icon_view_search_enable_popdown (GtkWidget *widget,
+				     gpointer   data)
+{
+  gdk_threads_add_timeout_full (G_PRIORITY_HIGH, 200, exo_icon_view_real_search_enable_popdown, g_object_ref (data), g_object_unref);
+}
+
+static gboolean
+exo_icon_view_search_delete_event (GtkWidget *widget,
+				   GdkEventAny *event,
+				   ExoIconView *icon_view)
+{
+  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+
+  exo_icon_view_search_dialog_hide (widget, icon_view, NULL);
+
+  return TRUE;
+}
+
+static gboolean
+exo_icon_view_search_button_press_event (GtkWidget *widget,
+					 GdkEventButton *event,
+					 ExoIconView *icon_view)
+{
+  GdkDevice *keyb_device;
+
+  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+
+  keyb_device = gdk_device_get_associated_device (event->device);
+  exo_icon_view_search_dialog_hide (widget, icon_view, keyb_device);
+
+  if (event->window == icon_view->priv->bin_window)
+    exo_icon_view_button_press (GTK_WIDGET (icon_view), event);
+
+  return TRUE;
+}
+
+static gboolean
+exo_icon_view_search_scroll_event (GtkWidget *widget,
+				   GdkEventScroll *event,
+				   ExoIconView *icon_view)
+{
+  gboolean retval = FALSE;
+
+  if (event->direction == GDK_SCROLL_UP)
+    {
+      exo_icon_view_search_move (widget, icon_view, TRUE);
+      retval = TRUE;
+    }
+  else if (event->direction == GDK_SCROLL_DOWN)
+    {
+      exo_icon_view_search_move (widget, icon_view, FALSE);
+      retval = TRUE;
+    }
+
+  /* renew the flush timeout */
+  if (retval && icon_view->priv->typeselect_flush_timeout
+      && !icon_view->priv->search_custom_entry_set)
+    {
+      g_source_remove (icon_view->priv->typeselect_flush_timeout);
+      icon_view->priv->typeselect_flush_timeout =
+	gdk_threads_add_timeout (EXO_ICON_VIEW_SEARCH_DIALOG_TIMEOUT,
+		       (GSourceFunc) exo_icon_view_search_entry_flush_timeout,
+		       icon_view);
+    }
+
+  return retval;
+}
+
+static gboolean
+exo_icon_view_search_key_press_event (GtkWidget *widget,
+				      GdkEventKey *event,
+				      ExoIconView *icon_view)
+{
+  gboolean retval = FALSE;
+
+  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (EXO_IS_ICON_VIEW (icon_view), FALSE);
+
+  /* close window and cancel the search */
+  if (!icon_view->priv->search_custom_entry_set
+      && (event->keyval == GDK_KEY_Escape ||
+          event->keyval == GDK_KEY_Tab ||
+	    event->keyval == GDK_KEY_KP_Tab ||
+	    event->keyval == GDK_KEY_ISO_Left_Tab))
+    {
+      exo_icon_view_search_dialog_hide (widget, icon_view,
+                                        gdk_event_get_device ((GdkEvent *) event));
+      return TRUE;
+    }
+
+  /* select previous matching iter */
+  if (event->keyval == GDK_KEY_Up || event->keyval == GDK_KEY_KP_Up)
+    {
+      if (!exo_icon_view_search_move (widget, icon_view, TRUE))
+        gtk_widget_error_bell (widget);
+
+      retval = TRUE;
+    }
+
+  if (((event->state & (GTK_DEFAULT_ACCEL_MOD_MASK | GDK_SHIFT_MASK)) == (GTK_DEFAULT_ACCEL_MOD_MASK | GDK_SHIFT_MASK))
+      && (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
+    {
+      if (!exo_icon_view_search_move (widget, icon_view, TRUE))
+        gtk_widget_error_bell (widget);
+
+      retval = TRUE;
+    }
+
+  /* select next matching iter */
+  if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_KP_Down)
+    {
+      if (!exo_icon_view_search_move (widget, icon_view, FALSE))
+        gtk_widget_error_bell (widget);
+
+      retval = TRUE;
+    }
+
+  if (((event->state & (GTK_DEFAULT_ACCEL_MOD_MASK | GDK_SHIFT_MASK)) == GTK_DEFAULT_ACCEL_MOD_MASK)
+      && (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
+    {
+      if (!exo_icon_view_search_move (widget, icon_view, FALSE))
+        gtk_widget_error_bell (widget);
+
+      retval = TRUE;
+    }
+
+  /* renew the flush timeout */
+  if (retval && icon_view->priv->typeselect_flush_timeout
+      && !icon_view->priv->search_custom_entry_set)
+    {
+      g_source_remove (icon_view->priv->typeselect_flush_timeout);
+      icon_view->priv->typeselect_flush_timeout =
+	gdk_threads_add_timeout (EXO_ICON_VIEW_SEARCH_DIALOG_TIMEOUT,
+		       (GSourceFunc) exo_icon_view_search_entry_flush_timeout,
+		       icon_view);
+    }
+
+  return retval;
+}
+
+/*  this function returns FALSE if there is a search string but
+ *  nothing was found, and TRUE otherwise.
+ */
+static gboolean
+exo_icon_view_search_move (GtkWidget   *widget,
+                           ExoIconView *icon_view,
+                           gboolean     move_up)
+{
+  GtkTreeModel *model;
+  const gchar  *text;
+  GtkTreeIter   iter;
+  gboolean      retval;
+  gint          length;
+  gint          count = 0;
+
+  /* determine the current text for the search entry */
+  text = gtk_entry_get_text (GTK_ENTRY (icon_view->priv->search_entry));
+  if (G_UNLIKELY (text == NULL))
+    return FALSE;
+
+  /* if we already selected the first item, we cannot go up */
+  if (move_up && icon_view->priv->selected_iter == 1)
+      return strlen (text) < 1;
+    //return ;
+
+  /* determine the length of the search text */
+  length = strlen (text);
+  if (G_UNLIKELY (length < 1))
+    return TRUE;
+
+  /* unselect all items */
+  exo_icon_view_unselect_all (icon_view);
+
+  /* verify that we have a valid model */
+  model = exo_icon_view_get_model (icon_view);
+  if (G_UNLIKELY (model == NULL))
+    return FALSE;
+
+  /* determine the iterator to the first item */
+  if (!gtk_tree_model_get_iter_first (model, &iter))
+    return TRUE;
+
+  /* first attempt to search */
+  retval = exo_icon_view_search_iter (icon_view, model, &iter, text, &count, move_up
+                                      ? (icon_view->priv->selected_iter - 1)
+                                      : (icon_view->priv->selected_iter + 1));
+
+  /* check if we found something */
+  if (G_LIKELY (retval))
+    {
+      /* match found */
+      icon_view->priv->selected_iter += move_up ? -1 : 1;
+      return TRUE;
+    }
+  else
+    {
+      /* return to old iter */
+      if (gtk_tree_model_get_iter_first (model, &iter))
+        {
+          count = 0;
+          exo_icon_view_search_iter (icon_view, model, &iter, text, &count,
+                                     icon_view->priv->selected_iter);
+        }
+      return FALSE;
+    }
+}
+
+#if 0
+static gboolean
+exo_icon_view_search_move (GtkWidget   *window,
+			   ExoIconView *icon_view,
+			   gboolean     up)
+{
+  gboolean ret;
+  gint len;
+  gint count = 0;
+  const gchar *text;
+  GtkTreeIter iter;
+  GtkTreeModel *model;
+  GtkTreeSelection *selection;
+
+  text = gtk_entry_get_text (GTK_ENTRY (icon_view->priv->search_entry));
+
+  g_return_val_if_fail (text != NULL, FALSE);
+
+  len = strlen (text);
+
+  if (up && icon_view->priv->selected_iter == 1)
+    return strlen (text) < 1;
+
+  len = strlen (text);
+
+  if (len < 1)
+    return TRUE;
+
+  model = exo_icon_view_get_model (icon_view);
+  selection = exo_icon_view_get_selection (icon_view);
+
+  /* search */
+  gtk_tree_selection_unselect_all (selection);
+  if (!gtk_tree_model_get_iter_first (model, &iter))
+    return TRUE;
+
+  ret = exo_icon_view_search_iter (model, selection, &iter, text,
+				   &count, up?((icon_view->priv->selected_iter) - 1):((icon_view->priv->selected_iter + 1)));
+
+  if (ret)
+    {
+      /* found */
+      icon_view->priv->selected_iter += up?(-1):(1);
+      return TRUE;
+    }
+  else
+    {
+      /* return to old iter */
+      count = 0;
+      gtk_tree_model_get_iter_first (model, &iter);
+      exo_icon_view_search_iter (model, selection,
+				 &iter, text,
+				 &count, icon_view->priv->selected_iter);
+      return FALSE;
+    }
+}
+#endif
+
+static gboolean
+exo_icon_view_search_equal_func (GtkTreeModel *model,
+				 gint          column,
+				 const gchar  *key,
+				 GtkTreeIter  *iter,
+				 gpointer      search_data)
+{
+  gboolean retval = TRUE;
+  const gchar *str;
+  gchar *normalized_string;
+  gchar *normalized_key;
+  gchar *case_normalized_string = NULL;
+  gchar *case_normalized_key = NULL;
+  GValue value = {0,};
+  GValue transformed = {0,};
+
+  gtk_tree_model_get_value (model, iter, column, &value);
+
+  g_value_init (&transformed, G_TYPE_STRING);
+
+  if (!g_value_transform (&value, &transformed))
+    {
+      g_value_unset (&value);
+      return TRUE;
+    }
+
+  g_value_unset (&value);
+
+  str = g_value_get_string (&transformed);
+  if (!str)
+    {
+      g_value_unset (&transformed);
+      return TRUE;
+    }
+
+  normalized_string = g_utf8_normalize (str, -1, G_NORMALIZE_ALL);
+  normalized_key = g_utf8_normalize (key, -1, G_NORMALIZE_ALL);
+
+  if (normalized_string && normalized_key)
+    {
+      case_normalized_string = g_utf8_casefold (normalized_string, -1);
+      case_normalized_key = g_utf8_casefold (normalized_key, -1);
+
+      if (strncmp (case_normalized_key, case_normalized_string, strlen (case_normalized_key)) == 0)
+        retval = FALSE;
+    }
+
+  g_value_unset (&transformed);
+  g_free (normalized_key);
+  g_free (normalized_string);
+  g_free (case_normalized_key);
+  g_free (case_normalized_string);
+
+  return retval;
+}
+
+static gboolean
+exo_icon_view_search_iter (ExoIconView  *icon_view,
+                           GtkTreeModel *model,
+                           GtkTreeIter  *iter,
+                           const gchar  *text,
+                           gint         *count,
+                           gint          n)
+{
+  GtkTreePath *path;
+
+  g_return_val_if_fail (EXO_IS_ICON_VIEW (icon_view), FALSE);
+  g_return_val_if_fail (GTK_IS_TREE_MODEL (model), FALSE);
+  g_return_val_if_fail (count != NULL, FALSE);
+
+  /* search for a matching item */
+  do
+    {
+      if (!(*icon_view->priv->search_equal_func) (model, icon_view->priv->search_column, text, iter, icon_view->priv->search_user_data))
+        {
+          (*count) += 1;
+          if (*count == n)
+            {
+              /* place cursor on the item and select it */
+              path = gtk_tree_model_get_path (model, iter);
+              exo_icon_view_select_path (icon_view, path);
+              exo_icon_view_set_cursor (icon_view, path, NULL, FALSE);
+              gtk_tree_path_free (path);
+              return TRUE;
+            }
+        }
+    }
+  while (gtk_tree_model_iter_next (model, iter));
+
+  /* no match */
+  return FALSE;
+}
+
+//aminteractive
+#if 0
+static gboolean
+exo_icon_view_search_iter (GtkTreeModel     *model,
+			   GtkTreeSelection *selection,
+			   GtkTreeIter      *iter,
+			   const gchar      *text,
+			   gint             *count,
+			   gint              n)
+{
+  GtkRBTree *tree = NULL;
+  GtkRBNode *node = NULL;
+  GtkTreePath *path;
+
+  ExoIconView *icon_view = gtk_tree_selection_get_icon_view (selection);
+
+  path = gtk_tree_model_get_path (model, iter);
+  _exo_icon_view_find_node (icon_view, path, &tree, &node);
+
+  do
+    {
+      if (! icon_view->priv->search_equal_func (model, icon_view->priv->search_column, text, iter, icon_view->priv->search_user_data))
+        {
+          (*count)++;
+          if (*count == n)
+            {
+              exo_icon_view_scroll_to_cell (icon_view, path, NULL,
+					    TRUE, 0.5, 0.0);
+              gtk_tree_selection_select_iter (selection, iter);
+              exo_icon_view_real_set_cursor (icon_view, path, FALSE, TRUE);
+
+	      if (path)
+		gtk_tree_path_free (path);
+
+              return TRUE;
+            }
+        }
+
+      if (node->children)
+	{
+	  gboolean has_child;
+	  GtkTreeIter tmp;
+
+	  tree = node->children;
+	  node = tree->root;
+
+	  while (node->left != tree->nil)
+	    node = node->left;
+
+	  tmp = *iter;
+	  has_child = gtk_tree_model_iter_children (model, iter, &tmp);
+	  gtk_tree_path_down (path);
+
+	  /* sanity check */
+	  icon_view_INTERNAL_ASSERT (has_child, FALSE);
+	}
+      else
+	{
+	  gboolean done = FALSE;
+
+	  do
+	    {
+	      node = _gtk_rbtree_next (tree, node);
+
+	      if (node)
+		{
+		  gboolean has_next;
+
+		  has_next = gtk_tree_model_iter_next (model, iter);
+
+		  done = TRUE;
+		  gtk_tree_path_next (path);
+
+		  /* sanity check */
+		  icon_view_INTERNAL_ASSERT (has_next, FALSE);
+		}
+	      else
+		{
+		  gboolean has_parent;
+		  GtkTreeIter tmp_iter = *iter;
+
+		  node = tree->parent_node;
+		  tree = tree->parent_tree;
+
+		  if (!tree)
+		    {
+		      if (path)
+			gtk_tree_path_free (path);
+
+		      /* we've run out of tree, done with this func */
+		      return FALSE;
+		    }
+
+		  has_parent = gtk_tree_model_iter_parent (model,
+							   iter,
+							   &tmp_iter);
+		  gtk_tree_path_up (path);
+
+		  /* sanity check */
+		  icon_view_INTERNAL_ASSERT (has_parent, FALSE);
+		}
+	    }
+	  while (!done);
+	}
+    }
+  while (1);
+
+  return FALSE;
+}
+#endif
+
+static void
+exo_icon_view_search_init (GtkWidget   *entry,
+                           ExoIconView *icon_view)
+{
+  gint ret;
+  gint count = 0;
+  const gchar *text;
+  GtkTreeIter iter;
+  GtkTreeModel *model;
+
+  g_return_if_fail (GTK_IS_ENTRY (entry));
+  g_return_if_fail (EXO_IS_ICON_VIEW (icon_view));
+
+  text = gtk_entry_get_text (GTK_ENTRY (entry));
+
+  model = exo_icon_view_get_model (icon_view);
+
+  /* search */
+  exo_icon_view_unselect_all (icon_view);
+  if (icon_view->priv->typeselect_flush_timeout
+      && !icon_view->priv->search_custom_entry_set)
+    {
+      g_source_remove (icon_view->priv->typeselect_flush_timeout);
+      icon_view->priv->typeselect_flush_timeout =
+	gdk_threads_add_timeout (EXO_ICON_VIEW_SEARCH_DIALOG_TIMEOUT,
+		       (GSourceFunc) exo_icon_view_search_entry_flush_timeout,
+		       icon_view);
+    }
+
+  if (*text == '\0')
+    return;
+
+  if (!gtk_tree_model_get_iter_first (model, &iter))
+    return;
+
+  ret = exo_icon_view_search_iter (icon_view, model,
+                                   &iter, text,
+                                   &count, 1);
+
+  if (ret)
+    icon_view->priv->selected_iter = 1;
+}
+
