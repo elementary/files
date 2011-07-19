@@ -19,7 +19,6 @@
 
 #include "marlin-window-columns.h"
 #include <gdk/gdkkeysyms.h>
-//#include "gof-directory-async.h"
 //#include "fm-list-view.h"
 #include "fm-columns-view.h"
 #include "marlin-global-preferences.h"
@@ -184,12 +183,6 @@ static void
 marlin_window_columns_class_init (MarlinWindowColumnsClass *class)
 {
     G_OBJECT_CLASS (class)->finalize = marlin_window_columns_finalize;
-}
-
-GFile *
-marlin_window_columns_get_location (MarlinWindowColumns *mwcols)
-{
-    return mwcols->location;
 }
 
 static void

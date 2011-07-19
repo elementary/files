@@ -1866,6 +1866,7 @@ fm_directory_view_context_menu (FMDirectoryView *view,
     menu = (selection != NULL) ? view->details->menu_selection : view->details->menu_background;
 
     gpointer old_menuitems = g_object_get_data(view->details->menu_selection, "other_selection");
+        g_warning ("testtttttttttttttttt");
   
     fm_directory_view_remove_menuitems(old_menuitems);
     g_object_set_data(view->details->menu_selection, "other_selection", NULL); /* Clear the list to avoid any problem */
