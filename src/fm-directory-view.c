@@ -2633,6 +2633,8 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
     GOFFile *file = NULL;
 
     view->details->selection_was_removed = FALSE;
+    if (!gtk_widget_get_realized (view))
+        return;
 
     selection = fm_directory_view_get_selection (view);
     if (selection != NULL) {
