@@ -1189,12 +1189,12 @@ exo_icon_view_class_init (ExoIconViewClass *klass)
                                   "activate-cursor-item", 0);
     gtk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Space, 0,
                                   "activate-cursor-item", 0);
-    gtk_binding_entry_add_signal (binding_set, GDK_KEY_Return, 0, 
+    /*gtk_binding_entry_add_signal (binding_set, GDK_KEY_Return, 0, 
                                   "activate-cursor-item", 0);
     gtk_binding_entry_add_signal (binding_set, GDK_KEY_ISO_Enter, 0, 
                                   "activate-cursor-item", 0);
     gtk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter, 0, 
-                                  "activate-cursor-item", 0);
+                                  "activate-cursor-item", 0);*/
 
     exo_icon_view_add_move_binding (binding_set, GDK_KEY_Up, 0,
                                     GTK_MOVEMENT_DISPLAY_LINES, -1);
@@ -2458,7 +2458,14 @@ exo_icon_view_key_press (GtkWidget      *widget,
     }
 
     //aminteractive
-    //g_message ("%s", G_STRFUNC);
+    /* we can't bind the return key directly as the search_entry emit an activate signal 
+    without consuming the event */
+    if (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_KP_Enter ||
+        event->keyval == GDK_KEY_ISO_Enter) 
+    {
+        exo_icon_view_real_activate_cursor_item (icon_view);
+        return TRUE;
+    }
 
     /* We pass the event to the search_entry.  If its text changes, then we start
      * the typeahead find capabilities. */
@@ -10794,7 +10801,6 @@ exo_icon_view_search_activate (GtkEntry    *entry,
   /*exo_icon_view_search_dialog_hide (icon_view->priv->search_window, icon_view);*/
   exo_icon_view_search_dialog_hide (icon_view->priv->search_window, icon_view,
                                     gtk_get_current_event_device ());
-
   /* check if we have a cursor item, and if so, activate it */
   if (exo_icon_view_get_cursor (icon_view, &path, NULL))
     {
