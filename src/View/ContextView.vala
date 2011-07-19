@@ -301,6 +301,8 @@ namespace Marlin.View {
 
         private void construct_info_panel_vertical(Gee.List<Pair<string, string>> item_info){
             var box = new VBox(false, 0);
+            
+            set_size_request (width, -1);
 
             /*var blank_box = new VBox(false, 0);
             blank_box.set_size_request (-1, 20);
