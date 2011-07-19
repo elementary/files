@@ -654,9 +654,6 @@ fm_directory_view_finalize (GObject *object)
     /* release the reference on the icon renderer */
     g_object_unref (G_OBJECT (view->icon_renderer));
 
-    /* release the reference on the action group */
-    g_object_unref (G_OBJECT (view->details->dir_action_group));
-
     g_free (view->details->previewer);
 
     /*if (slot != NULL)

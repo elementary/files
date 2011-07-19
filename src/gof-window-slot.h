@@ -21,8 +21,6 @@
 #define GOF_WINDOW_SLOT_H
 
 #include <gtk/gtk.h>
-//#include <glib/gi18n.h>
-//#include "fm-list-view.h"
 #include "gof-directory-async.h"
 #include "marlin-window-columns.h"
 
@@ -32,16 +30,6 @@
 #define GOF_IS_WINDOW_SLOT(obj)      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GOF_TYPE_WINDOW_SLOT))
 #define GOF_IS_WINDOW_SLOT_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GOF_TYPE_WINDOW_SLOT))
 #define GOF_WINDOW_SLOT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GOF_TYPE_WINDOW_SLOT, GOFWindowSlotClass))
-
-/*
-   typedef enum {
-   GOF_LOCATION_CHANGE_STANDARD,
-   GOF_LOCATION_CHANGE_BACK,
-   GOF_LOCATION_CHANGE_FORWARD,
-   GOF_LOCATION_CHANGE_RELOAD,
-   GOF_LOCATION_CHANGE_REDIRECT,
-   GOF_LOCATION_CHANGE_FALLBACK
-   } GOFLocationChangeType;*/
 
 struct GOFWindowSlot {
     GObject parent;
@@ -60,37 +48,12 @@ struct GOFWindowSlot {
 
     /* Current location. */
     GFile *location;
-    char *title;
-    char *status_text;
 
     //GtkWidget *window;
     GObject *ctab;
     GOFDirectoryAsync *directory;
 
     MarlinWindowColumns *mwcols;
-
-    /*NautilusFile *viewed_file;
-      gboolean viewed_file_seen;
-      gboolean viewed_file_in_trash;*/
-
-    gboolean allow_stop;
-
-    //NautilusQueryEditor *query_editor;
-
-    /* New location. */
-    //GOFLocationChangeType location_change_type;
-    /*guint location_change_distance;
-      GFile *pending_location;
-      char *pending_scroll_to;
-      GList *pending_selection;
-      NautilusFile *determine_view_file;
-      GCancellable *mount_cancellable;
-      GError *mount_error;
-      gboolean tried_mount;
-
-      GCancellable *find_mount_cancellable;
-
-      gboolean visible;*/
 };
 
 struct GOFWindowSlotClass {
@@ -99,21 +62,16 @@ struct GOFWindowSlotClass {
     /* wrapped GOFWindowInfo signals, for overloading */
     void (* active)   (GOFWindowSlot *slot);
     void (* inactive) (GOFWindowSlot *slot);
-
-    //void (* update_query_editor) (NautilusWindowSlot *slot);
 };
 
 
 GType           gof_window_slot_get_type (void);
 
 GOFWindowSlot   *gof_window_slot_new (GFile *location, GObject *ctab);
-//void            gof_window_slot_change_location (GOFWindowSlot *slot, GFile *location);
 
 void            gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column);
 void            gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location);
 void            gof_window_columns_add_preview (GOFWindowSlot *slot, GtkWidget *context_view);
-GFile           *gof_window_slot_get_location (GOFWindowSlot *slot);
-char            *gof_window_slot_get_location_uri (GOFWindowSlot *slot);
 
 void            gof_window_slot_make_icon_view (GOFWindowSlot *slot);
 void            gof_window_slot_make_list_view (GOFWindowSlot *slot);

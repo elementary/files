@@ -38,6 +38,7 @@ eel_ui_unmerge_ui (GtkUIManager *ui_manager,
     if (*action_group != NULL) {
         gtk_ui_manager_remove_action_group (ui_manager,
                                             *action_group);
+        g_object_unref (*action_group);
         *action_group = NULL;
     }
 }

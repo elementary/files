@@ -18,7 +18,6 @@
  */
 
 #include "gof-window-slot.h"
-//#include "gof-directory-async.h"
 #include "fm-icon-view.h"
 #include "fm-list-view.h"
 #include "fm-columns-view.h"
@@ -187,22 +186,6 @@ gof_window_slot_make_column_view (GOFWindowSlot *slot)
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COLUMNS_VIEW,
                                                "window-slot", slot, NULL));
     gof_directory_async_load (slot->directory);
-}
-GFile *
-gof_window_slot_get_location (GOFWindowSlot *slot)
-{
-    return slot->location;
-}
-
-char *
-gof_window_slot_get_location_uri (GOFWindowSlot *slot)
-{
-    g_assert (GOF_IS_WINDOW_SLOT (slot));
-
-    if (slot->location) {
-        return g_file_get_uri (slot->location);
-    }
-    return NULL;
 }
 
 void

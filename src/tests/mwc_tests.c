@@ -53,8 +53,8 @@ void marlin_window_columns_tests(void)
     GOFWindowSlot* gof = gof_window_slot_new(g_file_new_for_path("/home/"), NULL);
 
     /* Check if the two functions returns the same result */
-    g_assert_cmpstr(gof_window_slot_get_location_uri(gof), ==, "file:///home");
-    g_assert_cmpstr(g_file_get_path(gof_window_slot_get_location(gof)), ==, "/home");
+    g_assert_cmpstr(g_file_get_uri(gof->location), ==, "file:///home");
+    g_assert_cmpstr(g_file_get_path(gof->location), ==, "/home");
 
     g_assert_cmpint(g_list_length(mwcols->slot), ==, 1);
 
