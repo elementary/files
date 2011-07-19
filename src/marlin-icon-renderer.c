@@ -363,13 +363,18 @@ marlin_icon_renderer_set_property (GObject      *object,
         }
         break;
     case PROP_FILE:
-        if (G_LIKELY (priv->file != NULL))
+        if (G_LIKELY (priv->file != NULL)) {
             g_object_unref (G_OBJECT (priv->file));
-        priv->file = (gpointer) g_value_dup_object (value);
-        if (priv->pixbuf)
+        }
+        if (priv->pixbuf) {
             g_object_unref (priv->pixbuf);
-        gof_file_update_icon (priv->file, priv->size);
-        priv->pixbuf = g_object_ref (priv->file->pix);
+            priv->pixbuf = NULL;
+        }
+        priv->file = (gpointer) g_value_dup_object (value);
+        if (G_LIKELY (priv->file != NULL)) {
+            gof_file_update_icon (priv->file, priv->size);
+            priv->pixbuf = g_object_ref (priv->file->pix);
+        } 
         break;
     case PROP_SIZE:
         priv->size = g_value_get_enum (value);
