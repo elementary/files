@@ -132,6 +132,7 @@ namespace Marlin.View {
 
             /* Menubar */
             menu_bar = ui.get_widget("/MenuBar");
+            menu_bar.hide ();
 
             /* Topmenu */
             top_menu = new Chrome.TopMenu(this);
