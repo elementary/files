@@ -38,14 +38,21 @@ void print_apps()
     }
     menus.clear();
     var cont = new Contracts();
-   
+  
+    uint i = 0;
     foreach(var app__ in cont.get_selection_contracts(locations))
     {
+        /* insert separator if we got at least 1 contract */
+        if (i == 0) {
+            var item = new SeparatorMenuItem ();
+            menu.append(item);
+        }
         var menuitem = new MenuItem.with_label(get_app_display_name(app__));
         menu.append(menuitem);
         menuitem.show();
         menuitem.activate.connect(contract_activated);
         menus.add(menuitem);
+        i++;
     }
 }
 
