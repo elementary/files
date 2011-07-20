@@ -139,7 +139,10 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     fm_directory_view_merge_menus (FM_DIRECTORY_VIEW (view));*/
     fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view));
 
-    if (view->details->selection == NULL)
+    if (view->details->selection == NULL) 
+        return;
+    /* dont show preview or load directory if we got more than 1 element selected */
+    if (view->details->selection->next)
         return;
     file = view->details->selection->data;
     if (file->is_directory)
@@ -647,7 +650,7 @@ create_and_set_up_tree_view (FMColumnsView *view)
     g_signal_connect_object (view->tree, "row-activated",
                              G_CALLBACK (row_activated_callback), view, 0);
 
-    gtk_tree_selection_set_mode (gtk_tree_view_get_selection (view->tree), GTK_SELECTION_SINGLE);
+    gtk_tree_selection_set_mode (gtk_tree_view_get_selection (view->tree), GTK_SELECTION_MULTIPLE);
 
     col = gtk_tree_view_column_new ();
     view->details->file_name_column = col;
