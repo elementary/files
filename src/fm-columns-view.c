@@ -122,12 +122,10 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     FMColumnsView *view = FM_COLUMNS_VIEW (user_data);
     GOFFile *file;
 
+    g_warning ("%s", G_STRFUNC);
     if (view->details->selection != NULL)
         gof_file_list_free (view->details->selection);
     view->details->selection = get_selection (view);
-    if (view->details->selection == NULL)
-        return;
-    file = view->details->selection->data;
     //show_selected_files (file);
 
     /* don't update column if we got a drag_begin started */
@@ -135,7 +133,15 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
         return;
 
     /* setup the current active slot */
-    //fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
+    fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
+    //fm_directory_view_unmerge_menus (FM_DIRECTORY_VIEW (view));
+    /*g_signal_emit_by_name (FM_DIRECTORY_VIEW (view)slot->mwcols->active_slot, "inactive");
+    fm_directory_view_merge_menus (FM_DIRECTORY_VIEW (view));*/
+    fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view));
+
+    if (view->details->selection == NULL)
+        return;
+    file = view->details->selection->data;
     if (file->is_directory)
         fm_directory_view_column_add_location (FM_DIRECTORY_VIEW (view), file->location);
     else
@@ -397,6 +403,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
 
             /* queue the menu popup */
             printf ("thunar_standard_view_queue_popup (THUNAR_STANDARD_VIEW (view), event)\n");
+            fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
             fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
         }
         else
@@ -404,6 +411,8 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
             /* open the context menu */
             //thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (view), event->button, event->time);
             printf ("thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (view), event->button, event->time)\n");
+            fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
+            fm_directory_view_context_menu (FM_DIRECTORY_VIEW (view), event->button, event);
         }
 
         return TRUE;

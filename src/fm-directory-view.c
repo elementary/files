@@ -388,6 +388,7 @@ view->model = g_object_new (FM_TYPE_LIST_MODEL, NULL);
 view->details = g_new0 (FMDirectoryViewDetails, 1);
 view->details->drag_scroll_timer_id = -1;
 view->details->drag_timer_id = -1;
+view->details->dir_action_group = NULL;
 
 /* create a thumbnailer */
 view->details->thumbnailer = marlin_thumbnailer_get ();
@@ -1646,7 +1647,7 @@ dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gbool
 static void
 update_menus_common (FMDirectoryView *view)
 {
-    if (marlin_clipboard_manager_get_can_paste (view->clipboard)) {
+    if (view->clipboard != NULL && marlin_clipboard_manager_get_can_paste (view->clipboard)) {
         dir_action_set_sensitive (view, "Paste", TRUE);
     } else {
         dir_action_set_sensitive (view, "Paste", FALSE);
@@ -1866,7 +1867,6 @@ fm_directory_view_context_menu (FMDirectoryView *view,
     menu = (selection != NULL) ? view->details->menu_selection : view->details->menu_background;
 
     gpointer old_menuitems = g_object_get_data(view->details->menu_selection, "other_selection");
-        g_warning ("testtttttttttttttttt");
   
     fm_directory_view_remove_menuitems(old_menuitems);
     g_object_set_data(view->details->menu_selection, "other_selection", NULL); /* Clear the list to avoid any problem */
@@ -2154,6 +2154,7 @@ fm_directory_view_realize (GtkWidget *widget)
     //GtkIconTheme       *icon_theme;
     GdkDisplay         *display;
 
+    g_message ("%s", G_STRFUNC);
     /* let the GtkWidget do its work */
     GTK_WIDGET_CLASS (parent_class)->realize (widget);
 
@@ -2205,7 +2206,8 @@ fm_directory_view_grab_focus (GtkWidget *widget)
 static void
 slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 {
-    g_assert (!view->details->active);
+    g_warning ("%s", G_STRFUNC);
+    /*g_assert (!view->details->active);*/
     view->details->active = TRUE;
 
     fm_directory_view_merge_menus (view);
@@ -2215,8 +2217,8 @@ slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 static void
 slot_inactive (GOFWindowSlot *slot, FMDirectoryView *view)
 {
-    g_assert (view->details->active ||
-              gtk_widget_get_parent (GTK_WIDGET (view)) == NULL);
+    /*g_assert (view->details->active ||
+              gtk_widget_get_parent (GTK_WIDGET (view)) == NULL);*/
     view->details->active = FALSE;
 
     fm_directory_view_unmerge_menus (view);
@@ -2624,25 +2626,31 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
     klass->delete = real_delete;
 }
 
+static void
+update_menus (FMDirectoryView *view)
+{
+    g_warning ("%s", G_STRFUNC);
+    GList *selection = fm_directory_view_get_selection (view);
+
+    if (selection != NULL) {
+        update_menus_selection (view);
+    } else {
+        update_menus_empty_selection (view);
+    }
+    update_menus_common (view);
+}
+
 void
 fm_directory_view_notify_selection_changed (FMDirectoryView *view)
 {
     GList *selection;
-    GOFFile *file = NULL;
 
     view->details->selection_was_removed = FALSE;
     if (!gtk_widget_get_realized (view))
         return;
 
     selection = fm_directory_view_get_selection (view);
-    if (selection != NULL) {
-        file = selection->data;
-        update_menus_selection (view);
-    } else {
-        update_menus_empty_selection (view);
-    }
-    update_menus_common (view);
-
+    update_menus (view);
     g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", selection);
 }
 
@@ -2658,6 +2666,21 @@ fm_directory_view_clipboard_changed (FMDirectoryView *view)
     gtk_widget_queue_draw (GTK_WIDGET (view));
 }
 
+void
+fm_directory_view_set_active_slot (FMDirectoryView *view)
+{
+    if (!view->details->slot->mwcols)
+        return;
+    if (view->details->slot->mwcols->active_slot == view->details->slot)
+        return;
+
+    g_warning ("%s", G_STRFUNC);
+    g_signal_emit_by_name (view->details->slot->mwcols->active_slot, "inactive");
+    /* make sure to grab focus as right click menus don't automaticly get it */
+    fm_directory_view_grab_focus (GTK_WIDGET (view));
+    fm_directory_view_merge_menus (FM_DIRECTORY_VIEW (view));
+}
+
 /**
  * fm_directory_view_merge_menus:
  *
@@ -2667,7 +2690,6 @@ fm_directory_view_clipboard_changed (FMDirectoryView *view)
 void
 fm_directory_view_merge_menus (FMDirectoryView *view)
 {
-    printf ("%s\n", G_STRFUNC);
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
     EEL_CALL_METHOD
@@ -2947,17 +2969,21 @@ static const GtkActionEntry directory_view_entries[] = {
 static void
 real_unmerge_menus (FMDirectoryView *view)
 {
-    printf("%s\n", G_STRFUNC);
     GtkUIManager *ui_manager;
 
     if (view->details->window == NULL) 
         return;
+    if (view->details->dir_action_group == NULL)
+        return;
 
+    printf("%s\n", G_STRFUNC);
     ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
     eel_ui_unmerge_ui (ui_manager,
                        &view->details->dir_merge_id,
                        &view->details->dir_action_group);
-    
+    if (view->details->dir_action_group != NULL)
+        g_object_unref (view->details->dir_action_group);
+
     /*eel_ui_unmerge_ui (ui_manager,
       &view->details->extensions_menu_merge_id,
       &view->details->extensions_menu_action_group);
@@ -2976,6 +3002,9 @@ real_unmerge_menus (FMDirectoryView *view)
 static void
 real_merge_menus (FMDirectoryView *view)
 {
+    if (view->details->dir_action_group != NULL)
+        return;
+
     printf("%s\n", G_STRFUNC);
     GtkActionGroup *action_group;
     GtkUIManager *ui_manager;
@@ -3049,5 +3078,7 @@ real_merge_menus (FMDirectoryView *view)
     
     //view->details->scripts_invalid = TRUE;
     //view->details->templates_invalid = TRUE;
+    
+    update_menus (view);
 }
 
