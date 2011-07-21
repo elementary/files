@@ -64,6 +64,10 @@ G_DEFINE_TYPE (FMIconView, fm_icon_view, FM_TYPE_DIRECTORY_VIEW);
 /* Declaration Prototypes */
 static GList    *fm_icon_view_get_selection (FMDirectoryView *view);
 static GList    *get_selection (FMIconView *view);
+static GList    *fm_icon_view_get_selected_paths (FMDirectoryView *view);
+static void     fm_icon_view_select_path (FMDirectoryView *view, GtkTreePath *path);
+static void     fm_icon_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing);
+
 //static void     fm_icon_view_clear (FMIconView *view);
 static void     fm_icon_view_zoom_level_changed (FMIconView *view);
 
@@ -626,6 +630,28 @@ fm_icon_view_get_selection_for_file_transfer (FMDirectoryView *view)
     return list;
 }
 
+static GList *
+fm_icon_view_get_selected_paths (FMDirectoryView *view)
+{
+    return exo_icon_view_get_selected_items (FM_ICON_VIEW (view)->icons);
+}
+
+static void
+fm_icon_view_select_path (FMDirectoryView *view, GtkTreePath *path)
+{
+    exo_icon_view_select_path (FM_ICON_VIEW (view)->icons, path);
+}
+
+static void
+fm_icon_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing)
+{
+    FMIconView *icon_view = FM_ICON_VIEW (view);
+
+    exo_icon_view_set_cursor (icon_view->icons, path,
+                              view->name_renderer,
+                              start_editing);
+}
+
 #if 0
 static void
 fm_icon_view_reset_selection (FMDirectoryView *view)
@@ -880,6 +906,9 @@ fm_icon_view_class_init (FMIconViewClass *klass)
     fm_directory_view_class->sync_selection = fm_icon_view_sync_selection;
     fm_directory_view_class->get_selection = fm_icon_view_get_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_icon_view_get_selection_for_file_transfer;
+    fm_directory_view_class->get_selected_paths = fm_icon_view_get_selected_paths;
+    fm_directory_view_class->select_path = fm_icon_view_select_path;
+    fm_directory_view_class->set_cursor = fm_icon_view_set_cursor;
 
     fm_directory_view_class->get_path_at_pos = fm_icon_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_icon_view_highlight_path;

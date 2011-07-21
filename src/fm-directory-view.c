@@ -141,6 +141,10 @@ struct FMDirectoryViewDetails
     guint               thumbnail_request;
     guint               thumbnail_source_id;
     gboolean            thumbnailing_scheduled;
+   
+    /* Tree path for restoring the selection after selecting and 
+     * deleting an item */
+    GtkTreePath     *selection_before_delete;
 
     gchar           *previewer;
     GtkWidget       *menu_selection;
@@ -207,6 +211,10 @@ static void     fm_directory_view_drag_end (GtkWidget       *widget,
                                             GdkDragContext  *context,
                                             FMDirectoryView *view);
 static void     fm_directory_view_clipboard_changed (FMDirectoryView *view);
+
+static void     fm_directory_view_row_deleted (FMListModel *model, GtkTreePath *path, FMDirectoryView *view);
+static void
+fm_directory_view_restore_selection (FMListModel *model, GtkTreePath *path, FMDirectoryView *view);
 
 static void     fm_directory_view_cancel_thumbnailing        (FMDirectoryView *view);
 static void     fm_directory_view_schedule_thumbnail_timeout (FMDirectoryView *view);
@@ -470,6 +478,11 @@ gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (view),
       G_CALLBACK(undo_redo_menu_update_callback), view, 0);
 
       nautilus_undostack_manager_request_menu_update (nautilus_undostack_manager_instance());*/
+
+    /* setup the list model */
+    g_signal_connect (view->model, "row-deleted", G_CALLBACK (fm_directory_view_row_deleted), view);
+    g_signal_connect_after (view->model, "row-deleted", G_CALLBACK (fm_directory_view_restore_selection), view);
+
 
     //thumbtest
     /* connect to size allocation signals for generating thumbnail requests */
@@ -1625,9 +1638,9 @@ dir_action_set_visible (FMDirectoryView *view, const gchar *action_name, gboolea
 
     action = gtk_action_group_get_action (view->details->dir_action_group, action_name);
     if (action != NULL) {
-        gtk_action_set_visible (action, visible);
         /* enable/disable action too */
         gtk_action_set_sensitive (action, visible);
+        gtk_action_set_visible (action, visible);
     }
 }
 
@@ -1921,6 +1934,67 @@ fm_directory_view_context_menu (FMDirectoryView *view,
     g_object_unref (G_OBJECT (view));
 }
 
+static void
+fm_directory_view_row_deleted (FMListModel *model, GtkTreePath *path, FMDirectoryView *view)
+{
+    GtkTreePath *path_copy = NULL;
+    GList       *selected_paths;
+
+    g_return_if_fail (FM_IS_LIST_MODEL (model));
+    g_return_if_fail (path != NULL);
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    g_return_if_fail (view->model == model);
+
+    /* Get tree paths of selected files */
+    selected_paths = (*FM_DIRECTORY_VIEW_GET_CLASS (view)->get_selected_paths) (view);
+
+    /* Do nothing if the deleted row is not selected or there is more than one file selected */
+    if (G_UNLIKELY (g_list_find_custom (selected_paths, path, (GCompareFunc) gtk_tree_path_compare) == NULL || g_list_length (selected_paths) != 1))
+    {
+        /*g_list_foreach (selected_paths, (GFunc) gtk_tree_path_free, NULL);
+        g_list_free (selected_paths);*/
+        g_list_free_full (selected_paths, (GDestroyNotify) gtk_tree_path_free);
+        return;
+    }
+
+    /* Create a copy the path (we're not allowed to modify it in this handler) */
+    path_copy = gtk_tree_path_copy (path);
+
+    /* Remember the selected path so that it can be restored after the row has 
+     * been removed. If the first row is removed, select the first row after the
+     * removal, if any other row is removed, select the row before that one */
+    gtk_tree_path_prev (path_copy);
+    view->details->selection_before_delete = gtk_tree_path_copy (path_copy);
+
+    /* Free path list */
+    /*g_list_foreach (selected_paths, (GFunc) gtk_tree_path_free, NULL);
+    g_list_free (selected_paths);*/
+    g_list_free_full (selected_paths, (GDestroyNotify) gtk_tree_path_free);
+}
+
+static void
+fm_directory_view_restore_selection (FMListModel *model, GtkTreePath *path, FMDirectoryView *view)
+{
+    g_return_if_fail (FM_IS_LIST_MODEL (model));
+    g_return_if_fail (path != NULL);
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    g_return_if_fail (view->model == model);
+
+    /* Check if there was only one file selected before the row was deleted. The 
+     * path is set by thunar_standard_view_row_deleted() if this is the case */
+    if (G_LIKELY (view->details->selection_before_delete != NULL))
+    {
+        /* Restore the selection by selecting either the row before or the new first row */
+        (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, view->details->selection_before_delete);
+
+        /* place the cursor on the selected path */
+        (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, view->details->selection_before_delete, FALSE);
+
+        /* Free the tree path */
+        gtk_tree_path_free (view->details->selection_before_delete);
+        view->details->selection_before_delete = NULL;
+    }
+}
 
 /* Thumbnails fonctions */
 

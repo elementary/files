@@ -169,6 +169,22 @@ struct FMDirectoryViewClass {
      */
     GList *	(* get_selection_for_file_transfer)(FMDirectoryView *view);
 
+    /* Returns the list of currently selected GtkTreePath's, where
+     * both the list and the items are owned by the caller. */
+    GList *	(* get_selected_paths)  (FMDirectoryView *view);
+
+    /* Selects the given item */
+    void    (*select_path)          (FMDirectoryView *view, GtkTreePath *path);
+
+    /* Place the cursor on the item/row referred to by path. If
+     * start_editing is TRUE, the derived class should also start
+     * editing that item/row.
+     */
+    void    (*set_cursor)           (FMDirectoryView    *view,
+                                     GtkTreePath        *path,
+                                     gboolean            start_editing);
+
+
 #if 0
     /* select_all is a function pointer that subclasses must override to
      * select all of the items in the view */

@@ -81,6 +81,10 @@ struct SelectionForeachData {
 /* Declaration Prototypes */
 static GList    *fm_list_view_get_selection (FMDirectoryView *view);
 static GList    *get_selection (FMListView *view);
+static GList    *fm_list_view_get_selected_paths (FMDirectoryView *view);
+static void     fm_list_view_select_path (FMDirectoryView *view, GtkTreePath *path);
+static void     fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing);
+
 //static void     fm_list_view_clear (FMListView *view);
 
 #if 0
@@ -873,6 +877,35 @@ fm_list_view_get_selection (FMDirectoryView *view)
     return FM_LIST_VIEW (view)->details->selection;
 }
 
+static GList *
+fm_list_view_get_selected_paths (FMDirectoryView *view)
+{
+    GtkTreeSelection *selection;
+
+    selection = gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree);
+    return gtk_tree_selection_get_selected_rows (selection, NULL);
+}
+
+static void
+fm_list_view_select_path (FMDirectoryView *view, GtkTreePath *path)
+{
+    GtkTreeSelection *selection;
+
+    selection = gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree);
+    gtk_tree_selection_select_path (selection, path);
+}
+
+static void
+fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing)
+{
+    FMListView *list_view = FM_LIST_VIEW (view);
+
+    gtk_tree_view_set_cursor_on_cell (list_view->tree, path, 
+                                      list_view->details->file_name_column,
+                                      (GtkCellRenderer *) list_view->details->file_name_cell,
+                                      start_editing);
+}
+
 /*static void
   fm_list_view_set_selection (FMListView *list_view, GList *selection)
   {
@@ -1150,6 +1183,9 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class->sync_selection = fm_list_view_sync_selection;
     fm_directory_view_class->get_selection = fm_list_view_get_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_list_view_get_selection_for_file_transfer;
+    fm_directory_view_class->get_selected_paths = fm_list_view_get_selected_paths;
+    fm_directory_view_class->select_path = fm_list_view_select_path;
+    fm_directory_view_class->set_cursor = fm_list_view_set_cursor;
 
     fm_directory_view_class->get_path_at_pos = fm_list_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_list_view_highlight_path;

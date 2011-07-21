@@ -73,6 +73,10 @@ struct UnloadDelayData {
 /* Declaration Prototypes */
 static GList    *get_selection (FMColumnsView *view);
 static GList    *fm_columns_view_get_selection (FMDirectoryView *view);
+static GList    *fm_columns_view_get_selected_paths (FMDirectoryView *view);
+static void     fm_columns_view_select_path (FMDirectoryView *view, GtkTreePath *path);
+static void     fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing);
+
 //static void     fm_columns_view_clear (FMColumnsView *view);
 
 #if 0
@@ -815,6 +819,35 @@ fm_columns_view_get_selection_for_file_transfer (FMDirectoryView *view)
     return list;
 }
 
+static GList *
+fm_columns_view_get_selected_paths (FMDirectoryView *view)
+{
+    GtkTreeSelection *selection;
+
+    selection = gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree);
+    return gtk_tree_selection_get_selected_rows (selection, NULL);
+}
+
+static void
+fm_columns_view_select_path (FMDirectoryView *view, GtkTreePath *path)
+{
+    GtkTreeSelection *selection;
+
+    selection = gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree);
+    gtk_tree_selection_select_path (selection, path);
+}
+
+static void
+fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing)
+{
+    FMColumnsView *cols_view = FM_COLUMNS_VIEW (view);
+
+    gtk_tree_view_set_cursor_on_cell (cols_view->tree, path, 
+                                      cols_view->details->file_name_column,
+                                      (GtkCellRenderer *) cols_view->details->file_name_cell,
+                                      start_editing);
+}
+
 static GtkTreePath*
 fm_columns_view_get_path_at_pos (FMDirectoryView *view, gint x, gint y)
 {
@@ -960,7 +993,10 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class->colorize_selection = fm_columns_view_colorize_selected_items;
     //fm_directory_view_class->sync_selection = fm_columns_view_sync_selection;
     fm_directory_view_class->get_selection = fm_columns_view_get_selection; 
-    fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer; 
+    fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer;
+    fm_directory_view_class->get_selected_paths = fm_columns_view_get_selected_paths;
+    fm_directory_view_class->select_path = fm_columns_view_select_path;
+    fm_directory_view_class->set_cursor = fm_columns_view_set_cursor;
 
     fm_directory_view_class->get_path_at_pos = fm_columns_view_get_path_at_pos;
     fm_directory_view_class->highlight_path = fm_columns_view_highlight_path;
