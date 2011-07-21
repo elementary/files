@@ -95,7 +95,7 @@ static gboolean marlin_window_columns_key_pressed(GtkWidget* box, GdkEventKey* e
  *
  **/
 MarlinWindowColumns *
-marlin_window_columns_new (GFile *location, GObject *ctab)
+marlin_window_columns_new (GFile *location, GtkEventBox *ctab)
 {
     g_message ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
     MarlinWindowColumns *mwcols;
@@ -141,7 +141,7 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
 
     gof_window_column_add(slot, slot->view_box);
 
-    marlin_view_view_container_set_content (mwcols->ctab, mwcols->view_box);
+    marlin_view_view_container_set_content ((MarlinViewViewContainer *) mwcols->ctab, mwcols->view_box);
     
     /* Left/Right events */
     gtk_widget_add_events (GTK_WIDGET(mwcols->colpane), GDK_KEY_RELEASE_MASK);

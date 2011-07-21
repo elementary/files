@@ -135,7 +135,7 @@ gof_window_columns_add_preview (GOFWindowSlot *slot, GtkWidget *context_view)
 }
 
 GOFWindowSlot *
-gof_window_slot_new (GFile *location, GObject *ctab)
+gof_window_slot_new (GFile *location, GtkEventBox *ctab)
 {
     GOFWindowSlot *slot;
     slot = g_object_new (GOF_TYPE_WINDOW_SLOT, NULL);
@@ -158,7 +158,7 @@ gof_window_slot_make_icon_view (GOFWindowSlot *slot)
 {
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_ICON_VIEW,
                                                "window-slot", slot, NULL));
-    marlin_view_view_container_set_content (slot->ctab, slot->view_box);
+    marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->view_box);
     gof_directory_async_load (slot->directory);
 }
 
@@ -167,7 +167,7 @@ gof_window_slot_make_list_view (GOFWindowSlot *slot)
 {
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
                                                "window-slot", slot, NULL));
-    marlin_view_view_container_set_content (slot->ctab, slot->view_box);
+    marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->view_box);
     gof_directory_async_load (slot->directory);
 }
 

@@ -61,14 +61,14 @@ void hook_context_menu(GtkWidget* menu)
 
 static void put_right_click_menu(GtkUIManager* ui_manager)
 {
-    GtkMenu* menu = gtk_ui_manager_get_widget (ui_manager, "/background");
+    GtkWidget *menu = gtk_ui_manager_get_widget (ui_manager, "/background");
     
-    GtkWidget* menuitem = gtk_menu_item_new_with_label("Open a terminal here");
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
-    g_signal_connect(menuitem, "activate", on_open_terminal_activated, NULL);
+    GtkWidget *menuitem = gtk_menu_item_new_with_label("Open a terminal here");
+    gtk_menu_shell_append (GTK_MENU_SHELL(menu), menuitem);
+    g_signal_connect (menuitem, "activate", (GCallback) on_open_terminal_activated, NULL);
     menu = gtk_ui_manager_get_widget (ui_manager, "/background");
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), menuitem);
-    gtk_widget_show (GTK_WIDGET (menuitem));
+    gtk_menu_shell_append (GTK_MENU_SHELL(menu), menuitem);
+    gtk_widget_show (menuitem);
 }
 
 void receive_all_hook(void* user_data, int hook)

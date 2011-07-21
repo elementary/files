@@ -31,7 +31,8 @@ namespace Marlin {
     namespace Window {
         [CCode (cheader_filename = "marlin-window-columns.h")]
         public class Columns : GLib.Object {
-            public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
+            //public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
+            public Columns (GLib.File f, Gtk.EventBox ctab);
             public void make_view ();
             public GOF.Window.Slot active_slot;
             /*public Directory.Async directory;
