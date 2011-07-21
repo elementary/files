@@ -192,7 +192,7 @@ namespace Marlin.View {
             /*set_default_size(760, 450);
             set_position(WindowPosition.CENTER);*/
             var geometry = Preferences.settings.get_string("geometry");
-            set_initial_geometry_from_string (this, geometry, 300, 100, false);
+            set_initial_geometry_from_string (this, geometry, 760, 450, false);
             if (Preferences.settings.get_boolean("maximized")) {
                 maximize();
             }
