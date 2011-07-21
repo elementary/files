@@ -668,6 +668,12 @@ fm_directory_view_finalize (GObject *object)
     /* release the reference on the icon renderer */
     g_object_unref (G_OBJECT (view->icon_renderer));
 
+    /* release the context menu references */
+    gpointer old_menuitems = g_object_get_data(G_OBJECT (view->details->menu_selection), "other_selection");
+    g_list_free_full (old_menuitems, (GDestroyNotify) gtk_widget_destroy); 
+    g_object_set_data (G_OBJECT (view->details->menu_selection), "other_selection", NULL); 
+
+
     g_free (view->details->previewer);
 
     /*if (slot != NULL)
@@ -1815,49 +1821,33 @@ fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event)
     }
 }
 
-static void on_menuitem_openwith_activate(GtkMenuItem* file, GOFFile* item)
+static void on_menuitem_openwith_activate(GtkMenuItem *item, GOFFile *file)
 {
-    g_return_if_fail(GTK_IS_WIDGET(file));
-    g_return_if_fail(GOF_IS_FILE(item));
-    gof_file_launch_with(GOF_FILE(item), gtk_widget_get_screen(file), g_object_get_data(file, "next_app_info"));
+    g_return_if_fail(GOF_IS_FILE (file));
+
+    gof_file_launch_with (file, gtk_widget_get_screen(GTK_WIDGET (item)), g_object_get_data(G_OBJECT (item), "next_app_info"));
 }
 
-static void on_menuitem_openwith_other_activate(GtkMenuItem* item, GOFFile* file)
+static void on_menuitem_openwith_other_activate (GtkMenuItem *item, GOFFile *file)
 {
-    GtkDialog* dialog = gtk_app_chooser_dialog_new(NULL, 0, file->location);
-    GtkCheckButton* check_default = gtk_check_button_new_with_label(_("Set as default"));
-    gtk_box_pack_start(gtk_dialog_get_content_area(dialog), check_default, FALSE, FALSE, 0);
-    gtk_widget_show_all(dialog);
-    int response = gtk_dialog_run(dialog);
+    GtkDialog *dialog = gtk_app_chooser_dialog_new (NULL, 0, file->location);
+    GtkWidget *check_default = gtk_check_button_new_with_label(_("Set as default"));
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (dialog)), check_default, FALSE, FALSE, 0);
+    gtk_widget_show_all (GTK_WIDGET (dialog));
+    int response = gtk_dialog_run (dialog);
     if(response == GTK_RESPONSE_OK)
     {
-        if(gtk_toggle_button_get_active(check_default) == TRUE)
+        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check_default)))
         {
             GError* error = NULL;
-            if(!g_app_info_set_as_default_for_type(gtk_app_chooser_get_app_info(dialog),
-                    file->ftype, &error))
+            if(!g_app_info_set_as_default_for_type (gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (dialog)), file->ftype, &error))
             {
-                g_critical("Couldn't set as default");
-                g_critical("%s", error->message);
+                g_critical("Couldn't set as default: %s", error->message);
             }
         }
-        gof_file_launch_with(file, gtk_widget_get_screen(item), gtk_app_chooser_get_app_info(dialog));
+        gof_file_launch_with(file, gtk_widget_get_screen (GTK_WIDGET (item)), gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (dialog)));
     }
-    gtk_widget_destroy(dialog);
-}
-
-static void fm_directory_view_remove_menuitems(GList* openwith_items /* Some GtkMenuItem */)
-{
-    /* Let's reset the list…*/
-    openwith_items = g_list_first(openwith_items);
-    
-    /* Browse the list to destroy it content
-     * FIXME: maybe we can do a forall() */
-    while(openwith_items != NULL)
-    {
-        gtk_widget_destroy(GTK_WIDGET(openwith_items->data));
-        openwith_items = g_list_next(openwith_items);
-    }
+    gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
 void
@@ -1866,9 +1856,9 @@ fm_directory_view_context_menu (FMDirectoryView *view,
                                 GdkEventButton  *event)
                                 //int32         timestamp)
 {
-    GtkWidget *menu;
-    GList     *selection;
-    GList* openwith_items = NULL;
+    GtkWidget   *menu;
+    GList       *selection;
+    GList       *openwith_items = NULL;
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     selection = fm_directory_view_get_selection (view);
@@ -1878,57 +1868,59 @@ fm_directory_view_context_menu (FMDirectoryView *view,
 
     /* run the menu on the view's screen (figuring out whether to use the file or the folder context menu) */
     menu = (selection != NULL) ? view->details->menu_selection : view->details->menu_background;
-
-    gpointer old_menuitems = g_object_get_data(view->details->menu_selection, "other_selection");
-  
-    fm_directory_view_remove_menuitems(old_menuitems);
-    g_object_set_data(view->details->menu_selection, "other_selection", NULL); /* Clear the list to avoid any problem */
-
-    if(selection != NULL && g_list_length(selection) == 1)
-    {
-        GtkMenuItem* item;
-
-        /* add a separator between applications and actions */
-        item = gtk_separator_menu_item_new();
-        gtk_menu_shell_append(menu, item);
-        openwith_items = g_list_append(openwith_items, item);
  
-        GList* apps = g_app_info_get_all_for_type(GOF_FILE(selection->data)->ftype);
+    /* Clear the list and empty the menu */
+    gpointer old_menuitems = g_object_get_data(G_OBJECT (view->details->menu_selection), "other_selection");
+    g_list_free_full (old_menuitems, (GDestroyNotify) gtk_widget_destroy); 
+    g_object_set_data (G_OBJECT (view->details->menu_selection), "other_selection", NULL); 
+
+    //if (selection != NULL && g_list_length(selection) == 1)
+    if (selection != NULL && selection->next == NULL)
+    {
+        //GtkMenuItem* item;
+        GtkWidget *item;
+
+        GList* apps = g_app_info_get_all_for_type (GOF_FILE(selection->data)->ftype);
         int i = 0;
-        for(i = 0; i < 5 && apps != NULL; i++) /* a maximum of 5 is enough */
+        for(; i < 5 && apps != NULL; i++) /* a maximum of 5 is enough */
         {
-            item = gtk_menu_item_new_with_label(g_app_info_get_name(G_APP_INFO(apps->data)));
-            g_object_set_data(item, "next_app_info", apps->data);
-            g_signal_connect(item, "activate", on_menuitem_openwith_activate, selection->data);
+            /* add a separator between applications and actions if we got 1 element */
+            if (i == 0) {
+                item = gtk_separator_menu_item_new ();
+                gtk_menu_shell_append(GTK_MENU_SHELL (menu), item);
+                openwith_items = g_list_append(openwith_items, item);
+            }
+ 
+            item = gtk_menu_item_new_with_label (g_app_info_get_name(G_APP_INFO(apps->data)));
+            g_object_set_data (G_OBJECT (item), "next_app_info", apps->data);
+            g_signal_connect (item, "activate", (GCallback) on_menuitem_openwith_activate, selection->data);
 
-            gtk_menu_shell_append(menu, item);
-            openwith_items = g_list_append(openwith_items, item);
-            apps = g_list_next(apps);
+            gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+            openwith_items = g_list_append (openwith_items, item);
+            apps = g_list_next (apps);
         }
-        item = gtk_separator_menu_item_new();
-        gtk_menu_shell_append(menu, item);
-        openwith_items = g_list_append(openwith_items, item);
+        item = gtk_separator_menu_item_new ();
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+        openwith_items = g_list_append (openwith_items, item);
         
-        item = gtk_menu_item_new_with_label(_("Open with…"));
-        gtk_menu_shell_append(menu, item);
+        item = gtk_menu_item_new_with_label (_("Open with…"));
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
         openwith_items = g_list_append(openwith_items, item);
 
-        g_signal_connect(item, "activate", on_menuitem_openwith_other_activate, selection->data);
+        g_signal_connect(item, "activate", (GCallback) on_menuitem_openwith_other_activate, selection->data);
    
         /* save the menuitems list, we'll destroy them at the next popup */
-        g_object_set_data(view->details->menu_selection, "other_selection", openwith_items);
+        g_object_set_data(G_OBJECT (view->details->menu_selection), "other_selection", openwith_items);
     }
 
     gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (view)));
-	gtk_widget_show (GTK_WIDGET (menu));
 	marlin_plugin_manager_hook_context_menu(plugins, menu);
     gtk_widget_show_all(menu);
 
-    eel_pop_up_context_menu (GTK_MENU(menu),
+    eel_pop_up_context_menu (GTK_MENU (menu),
                              EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
                              EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
                              event);
-
 
     /* release the additional reference on the view */
     g_object_unref (G_OBJECT (view));
@@ -2720,7 +2712,7 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
     GList *selection;
 
     view->details->selection_was_removed = FALSE;
-    if (!gtk_widget_get_realized (view))
+    if (!gtk_widget_get_realized (GTK_WIDGET (view)))
         return;
 
     selection = fm_directory_view_get_selection (view);
