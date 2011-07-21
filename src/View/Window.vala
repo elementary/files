@@ -157,7 +157,6 @@ namespace Marlin.View {
 
             /* Sidebar */
             sidebar = new Marlin.Places.Sidebar ((Gtk.Widget) this);
-            sidebar.set_size_request(Preferences.settings.get_int("sidebar-width"), -1);
 
             /* Devide main views into sidebars */
             main_box = new CollapsablePaned(Orientation.VERTICAL);
@@ -166,7 +165,7 @@ namespace Marlin.View {
             var lside_pane = new HCollapsablePaned();
             lside_pane.show();
 
-            lside_pane.pack1(sidebar, false, true);
+            lside_pane.pack1(sidebar, false, false);
             lside_pane.pack2(main_box, true, true);
             lside_pane.collapse_mode = CollapseMode.LEFT;
 
@@ -187,6 +186,9 @@ namespace Marlin.View {
             window_box.pack_start(lside_pane, true, true, 0);
 
             add(window_box);
+
+            lside_pane.set_position (Preferences.settings.get_int("sidebar-width"));
+
             /*set_default_size(760, 450);
             set_position(WindowPosition.CENTER);*/
             var geometry = Preferences.settings.get_string("geometry");
