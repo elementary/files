@@ -74,7 +74,6 @@ struct _MarlinApplicationPriv {
     MarlinClipboardManager *clipboard;
 
     gboolean initialized;
-    gboolean debug;
 };
 
 static void
@@ -476,6 +475,7 @@ marlin_application_command_line (GApplication *app,
     gboolean no_desktop = FALSE;
     gboolean kill_shell = FALSE;
     gboolean tab = FALSE;
+    gboolean debug = FALSE;
     gchar **remaining = NULL;
     const GOptionEntry options[] = {
         { "version", '\0', 0, G_OPTION_ARG_NONE, &version,
@@ -486,7 +486,7 @@ marlin_application_command_line (GApplication *app,
             N_("Open uri(s) in new tab"), NULL },
         { "quit", 'q', 0, G_OPTION_ARG_NONE, &kill_shell, 
             N_("Quit Marlin."), NULL },
-        { "debug", 'd', 0, G_OPTION_ARG_NONE, &(self->priv->debug),
+        { "debug", 'd', 0, G_OPTION_ARG_NONE, &debug,
             N_("Enable debug logging"), NULL },
         { G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_STRING_ARRAY, &remaining, NULL,  N_("[URI...]") },
 
@@ -585,6 +585,9 @@ marlin_application_command_line (GApplication *app,
             uris = (char **) g_ptr_array_free (uris_array, FALSE);
             g_strfreev (remaining);
         }
+    
+        if (debug)
+            marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_DEBUG);
 
         /* Create the other windows. */
         if (uris != NULL || !no_default_window) {
@@ -613,10 +616,7 @@ marlin_application_startup (GApplication *app)
     G_APPLICATION_CLASS (marlin_application_parent_class)->startup (app);
 
     marlin_logger_initialize ("marlin");
-    if (self->priv->debug)
-        marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_DEBUG);
-    else
-        marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_INFO);
+    marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_INFO);
 
     g_message ("Welcome to Marlin");
     g_message ("Version: %s", PACKAGE_VERSION);
