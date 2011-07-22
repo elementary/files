@@ -418,7 +418,9 @@ update_places (MarlinPlacesSidebar *sidebar)
 
 
     mount_uri = "file:///"; /* No need to strdup */
-    icon = g_themed_icon_new (MARLIN_ICON_FILESYSTEM);
+    //icon = g_themed_icon_new (MARLIN_ICON_FILESYSTEM);
+    icon = g_themed_icon_new ("distributor-logo");
+    //icon = g_themed_icon_new ("start-here");
     last_iter = add_place (sidebar, PLACES_BUILT_IN, &iter,
                            _("File System"), icon,
                            mount_uri, NULL, NULL, NULL, 0,
