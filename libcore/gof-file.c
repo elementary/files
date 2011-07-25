@@ -1132,7 +1132,6 @@ GOFFile* gof_file_get (GFile *location)
                 {
                     if (err->code == G_IO_ERROR_NOT_MOUNTED) {
                         file->is_mounted = FALSE;
-                        g_clear_error (&err);
                     }
                     if (err->code == G_IO_ERROR_NOT_FOUND
                         || err->code == G_IO_ERROR_NOT_DIRECTORY) {
