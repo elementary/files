@@ -1,7 +1,13 @@
 lib_LTLIBRARIES = libmarlin-openterminal.la
 #libmarlin_openterminal_la_LIBADD = $(top_srcdir)/libcore/libmarlincore.la
+libmarlin_contractor_la_VALAFLAGS = \
+    --pkg gtk+-3.0 \
+    --pkg gio-2.0 \
+    --pkg gee-1.0 \
+    -g
+
 libdir=$(prefix)/share/marlin/plugins
-libmarlin_openterminal_la_SOURCES = plugin.c
+libmarlin_openterminal_la_SOURCES = plugin.vala $(top_srcdir)/libcore/marlin-core.vapi
 
 
 libmarlin_openterminal_la_CFLAGS = \
