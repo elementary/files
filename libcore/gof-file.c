@@ -278,7 +278,7 @@ print_error(GError *error)
 {
     if (error != NULL)
     {
-        g_print ("%s\n", error->message);
+        g_warning ("%s [code %d]\n", error->message, error->code);
         g_clear_error (&error);
     }
 }
@@ -336,6 +336,7 @@ static void gof_file_init (GOFFile *file) {
 
     /* assume the file is mounted by default */
     file->is_mounted = TRUE;
+    file->exists = TRUE;
 }
 
 static void gof_file_finalize (GObject* obj) {
@@ -1125,21 +1126,28 @@ GOFFile* gof_file_get (GFile *location)
 #endif
             file->info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
                                             0, NULL, &err);
-            gof_file_update (file);
 
             if (err != NULL) {
-                if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED)
+                if (err->domain == G_IO_ERROR)
                 {
-                    file->is_mounted = FALSE;
-                    g_clear_error (&err);
-                }
+                    if (err->code == G_IO_ERROR_NOT_MOUNTED) {
+                        file->is_mounted = FALSE;
+                        g_clear_error (&err);
+                    }
+                    if (err->code == G_IO_ERROR_NOT_FOUND
+                        || err->code == G_IO_ERROR_NOT_DIRECTORY) {
+                        file->exists = FALSE;
+                    }
+                }    
                 print_error (err);
+            } else {
+                gof_file_update (file);
             }
         }
     }
+
     if (parent != NULL)
         g_object_unref (parent);
-
     return (file);
 }
 

@@ -72,9 +72,9 @@ static void
 gof_window_slot_finalize (GObject *object)
 {
     GOFWindowSlot *slot = GOF_WINDOW_SLOT (object);
-    g_warning ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
 
     //load_dir_async_cancel(slot->directory);
+    g_warning ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
     g_object_unref(slot->directory);
     g_object_unref(slot->location);
     G_OBJECT_CLASS (parent_class)->finalize (object);

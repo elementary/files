@@ -69,9 +69,9 @@ namespace Marlin {
     [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_")]
     namespace FileOperations {
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void new_folder(out Gtk.Widget parent_view, out Gdk.Point target_point, File file, void* callback, void* data_callback);
+        public void new_folder(Gtk.Widget? parent_view, Gdk.Point? target_point, File file, void* callback, void* data_callback);
         [CCode (cheader_filename = "marlin-file-operations.h")]
-        public void new_folder_with_name(out Gtk.Widget parent_view, out Gdk.Point target_point, File file, string name, void* callback, void* data_callback);
+        public void new_folder_with_name(Gtk.Widget? parent_view, Gdk.Point? target_point, File file, string name, void* callback, void* data_callback);
     }
 }
 

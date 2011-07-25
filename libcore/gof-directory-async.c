@@ -83,10 +83,10 @@ directory_load_done (GOFDirectoryAsync *dir, GFileEnumerator *enumerator, GError
     else 
         g_cancellable_cancel (dir->priv->cancellable);
 
-    /* TODO emit the error errod with DONE_LOADING and manage error code */
+    /* TODO emit the error code with DONE_LOADING */
     if(error != NULL && (error->code == G_IO_ERROR_NOT_FOUND || error->code == G_IO_ERROR_NOT_DIRECTORY)) 
     {
-        dir->exists = FALSE;
+        dir->file->exists = FALSE;
     }
     g_signal_emit (dir, signals[DONE_LOADING], 0);
     dir->loading = FALSE;
@@ -296,7 +296,6 @@ gof_directory_async_load (GOFDirectoryAsync *dir)
 
     GMountOperation *mount_operation;
     GOFDirectoryAsyncPrivate *p = dir->priv;
-    p->cancellable = g_cancellable_new ();
 
     if (!dir->loaded && !dir->loading)
     {
@@ -379,10 +378,12 @@ GOFDirectoryAsync *gof_directory_async_new_from_file (GOFFile *file)
         dir->location = g_object_ref (file->location);
         dir->priv->parent = g_object_ref (file->directory);
         dir->file = gof_file_get (dir->location);
-        g_debug (">>>>>>>> %s create dir %s\n", G_STRFUNC, dir->file->uri);
-        G_LOCK (directory_cache_mutex);
-        g_hash_table_insert (directory_cache, g_object_ref (dir->location), dir);
-        G_UNLOCK (directory_cache_mutex);
+        if (dir->file->exists) {
+            g_debug (">>>>>>>> %s create dir %s\n", G_STRFUNC, dir->file->uri);
+            G_LOCK (directory_cache_mutex);
+            g_hash_table_insert (directory_cache, g_object_ref (dir->location), dir);
+            G_UNLOCK (directory_cache_mutex);
+        }
     }
 
     return (dir);
@@ -420,10 +421,13 @@ GOFDirectoryAsync *gof_directory_async_new_from_gfile (GFile *location)
         g_debug (">>>>>>>> %s reuse cached dir %s\n", G_STRFUNC, dir->file->uri);
     } else {
         dir = gof_directory_async_new (location);
-        g_debug (">>>>>>>> %s create dir %s\n", G_STRFUNC, dir->file->uri);
-        G_LOCK (directory_cache_mutex);
-        g_hash_table_insert (directory_cache, g_object_ref (dir->location), dir);
-        G_UNLOCK (directory_cache_mutex);
+        if (dir->file->exists) 
+        {
+            g_debug (">>>>>>>> %s create dir %s\n", G_STRFUNC, dir->file->uri);
+            G_LOCK (directory_cache_mutex);
+            g_hash_table_insert (directory_cache, g_object_ref (dir->location), dir);
+            G_UNLOCK (directory_cache_mutex);
+        }
     }
 
     return (dir);
@@ -436,8 +440,8 @@ gof_directory_async_init (GOFDirectoryAsync *dir)
     dir->priv = g_new0(GOFDirectoryAsyncPrivate, 1);
     dir->loading = FALSE;
     dir->loaded = FALSE;
-    dir->exists = TRUE;
     dir->priv->show_hiddenfiles = g_settings_get_boolean (settings, "show-hiddenfiles");
+    dir->priv->cancellable = g_cancellable_new ();
         
     dir->file_hash = g_hash_table_new_full (g_file_hash, 
                                             (GEqualFunc) g_file_equal, 

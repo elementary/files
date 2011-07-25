@@ -288,14 +288,16 @@ namespace Marlin.View {
                 /* update radio action view state */
                 update_action_radio_view(current_tab.view_mode);
                 /* sync selection */
-                ((FM.Directory.View) current_tab.slot.view_box).sync_selection();
+                if (current_tab.slot.view_box != null)
+                    ((FM.Directory.View) current_tab.slot.view_box).sync_selection();
                 /* sync ContextView */
                 current_tab.sync_contextview();
                 /* set window title to current title */
                 set_title(current_tab.tab_name);
 
                 /* focus the main view */
-                ((FM.Directory.View) current_tab.slot.view_box).grab_focus();
+                //((FM.Directory.View) current_tab.slot.view_box).grab_focus();
+                current_tab.content.grab_focus();
             }
         }
 

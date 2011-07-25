@@ -87,7 +87,7 @@ dir_changed (GFileMonitor* gfile_monitor,
             /* in rare case, we can monitor a directory which doesn't exist yet,
              * and this is our dir which has been created, so, we mustn't say
              * that it is a new file in this dir */
-             dir->exists = TRUE;
+             dir->file->exists = TRUE;
         }
         else if (file->info != NULL) {
             if (!file->is_hidden)

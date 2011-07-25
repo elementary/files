@@ -94,6 +94,7 @@ struct _GOFFile {
     gchar           *formated_modified;
     gchar           *color;
     gboolean        is_mounted;
+    gboolean        exists;
 
     const gchar     *thumbnail_path;
     gboolean        is_thumbnailing;

@@ -89,6 +89,9 @@ namespace GOF {
         public bool link_known_target;
         public string thumbnail_path;
         public Nautilus.IconInfo get_icon(int size, FileIconFlags flags);
+
+        public bool is_mounted;
+        public bool exists;
     }
 
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]

@@ -50,15 +50,22 @@ namespace Marlin.View
         }
     }
 
+    static void make_and_jump_to_new_dir (File new_folder, void *data) {
+        ViewContainer tab = (ViewContainer) data;
+        //message ("make and jump %s", new_folder.get_uri ());
+        tab.path_changed (new_folder);
+    }
+
     public class DirectoryNotFound : Alignment
     {
-        GOF.Directory.Async dir_saved;
-        ViewContainer window;
-        public DirectoryNotFound(GOF.Directory.Async dir, ViewContainer win)
+        public GOF.Directory.Async dir_saved;
+        public ViewContainer ctab;
+
+        public DirectoryNotFound(GOF.Directory.Async dir, ViewContainer tab)
         {
             set(0.5f,0.4f,0,0.1f);
             dir_saved = dir;
-            window = win;
+            ctab = tab;
             var box = new VBox(false, 5);
             var label = new Label("");
 
@@ -75,11 +82,7 @@ namespace Marlin.View
                 Marlin.FileOperations.new_folder_with_name(null, null,
                                                            dir_saved.location.get_parent(),
                                                            dir_saved.location.get_basename(),
-                                                           null, null);
-                dir_saved.exists = true;
-                window.reload();
-                dir_saved.cancel();
-                
+                                                           (void *) make_and_jump_to_new_dir, tab);
             });
             box.pack_start(create_button, false, false);
             

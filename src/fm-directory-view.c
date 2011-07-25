@@ -312,15 +312,6 @@ if (view->details->loading) {
     fm_directory_view_load_file_hash (directory, view);
 }
 
-/* the directory doesn't exist */
-if(!directory->exists)
-{
-    marlin_view_view_container_sync_contextview(MARLIN_VIEW_WINDOW(view->details->window)->current_tab);
-    gtk_widget_destroy(gtk_bin_get_child (GTK_BIN (view)));
-    gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW (view), GTK_WIDGET (marlin_view_directory_not_found_new(directory, MARLIN_VIEW_WINDOW(view->details->window)->current_tab)));
-    gtk_widget_show_all(GTK_WIDGET (view));
-}
-
 marlin_plugin_manager_directory_loaded(plugins, gof_file_get(directory->location));
 view->details->loading = FALSE;
 }
@@ -3115,6 +3106,8 @@ real_merge_menus (FMDirectoryView *view)
 
     view->details->menu_selection = gtk_ui_manager_get_widget (ui_manager, "/selection");
     view->details->menu_background = gtk_ui_manager_get_widget (ui_manager, "/background");
+    marlin_plugin_manager_hook_send(plugins, ui_manager, MARLIN_PLUGIN_HOOK_UI);
+
 
     /* we have to make sure that we add our custom widget once in the menu */
     static gboolean selection_menu_builded = FALSE;

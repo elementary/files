@@ -18,7 +18,7 @@
 using Gtk;
 using Gee;
 
-ArrayList<MenuItem> menus;
+ArrayList<MenuItem>? menus = null;
 UIManager ui;
 Menu menu;
 string mime;
@@ -32,6 +32,8 @@ string get_app_display_name(GLib.HashTable<string,string> app__)
 
 void print_apps()
 {
+    if (menus == null)
+        menus = new ArrayList<MenuItem>();
     foreach(var menu in menus)
     {
         menu.destroy();
@@ -143,7 +145,6 @@ public void receive_all_hook(void* user_data, int hook)
         print_apps();
         break;
     case 2: /* ui */
-        menus = new ArrayList<MenuItem>();
         ui = (UIManager)user_data;
         
         menu = (Menu)ui.get_widget("/selection");

@@ -60,7 +60,8 @@ namespace Marlin.View {
 
             path_changed.connect((myfile) => {
                 /* location didn't change, do nothing */
-                if (slot != null && myfile != null && slot.location.equal (myfile))
+                if (slot != null && myfile != null && slot.directory.file.exists
+                    && slot.location.equal (myfile))
                     return;
                 change_view(view_mode, myfile);
                 update_location_state(true);
@@ -121,7 +122,7 @@ namespace Marlin.View {
             view_mode = nview;
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
-            if (slot != null) {
+            if (slot != null && slot.directory.file.exists) {
                 slot.directory.cancel();
             }
 
@@ -129,27 +130,41 @@ namespace Marlin.View {
             case ViewMode.LIST:
                 slot = new GOF.Window.Slot(location, this);
                 connect_available_info();
-                slot.make_list_view();
+                if (slot.directory.file.exists)
+                    slot.make_list_view();
                 break;
             case ViewMode.MILLER:
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;
                 connect_available_info();
-                mwcol.make_view();
+                if (slot.directory.file.exists)
+                    mwcol.make_view();
                 break;
             default:
                 slot = new GOF.Window.Slot(location, this);
                 connect_available_info();
-                slot.make_icon_view();
+                if (slot.directory.file.exists) 
+                    slot.make_icon_view();
                 break;
             }
+            if (!slot.directory.file.exists)
+                content = new DirectoryNotFound (slot.directory, this);
             /* focus the main view */
-            ((FM.Directory.View) slot.view_box).grab_focus();
+            //((FM.Directory.View) slot.view_box).grab_focus();
+            content.grab_focus();
             sync_contextview();
         }
 
         /* TODO save selections in slot or fmdirectoryview and set the ContextView */
         public void sync_contextview(){
+            if (!slot.directory.file.exists) {
+                if (window.contextview != null) {
+                    window.main_box.remove (window.contextview);
+                    window.contextview = null;
+                }
+                return;
+            }
+
             switch (view_mode) {
             case ViewMode.MILLER:
                 /* reset the panes style */
@@ -177,10 +192,6 @@ namespace Marlin.View {
                 }
                 break;
             }
-            if (!slot.directory.exists) {
-                window.main_box.remove (window.contextview);
-                window.contextview = null;
-            }
         }
 
         public void reload(){
@@ -189,6 +200,9 @@ namespace Marlin.View {
 
         public void update_location_state(bool save_history)
         {
+            if (!slot.directory.file.exists)
+                return;
+
             window.can_go_up = slot.directory.has_parent();
             if (window.top_menu.location_bar != null)
                     window.top_menu.location_bar.path = slot.location.get_parse_name();
