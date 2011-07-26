@@ -40,7 +40,7 @@ AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
 AC_CHECK_LIB(m, floor)
 
 PKG_CHECK_MODULES(ALL, [
-	glib-2.0	>= 2.28.0
+	glib-2.0	>= 2.29.0
 	gthread-2.0
 	gio-2.0	
 	pango		>= 1.1.2
