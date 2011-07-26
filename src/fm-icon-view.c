@@ -726,6 +726,18 @@ fm_icon_view_zoom_normal (FMDirectoryView *view)
 }
 
 static void
+fm_icon_view_destroy (GtkWidget *object)
+{
+    FMIconView *icon_view = FM_ICON_VIEW (object);
+
+    g_warning ("%s", G_STRFUNC);
+
+    g_settings_unbind (icon_view, "zoom-level");
+
+    GTK_WIDGET_CLASS (fm_icon_view_parent_class)->destroy (object);
+}
+
+static void
 fm_icon_view_finalize (GObject *object)
 {
     FMIconView *view = FM_ICON_VIEW (object);
@@ -742,7 +754,6 @@ fm_icon_view_finalize (GObject *object)
 
     /*g_signal_handlers_disconnect_by_func (marlin_icon_view_settings,
                                           fm_icon_view_zoom_level_changed, view);*/
-    g_settings_unbind (view, "zoom-level");
 
     g_object_unref (view->model);
     g_free (view->details);
@@ -897,6 +908,7 @@ fm_icon_view_class_init (FMIconViewClass *klass)
     object_class->finalize     = fm_icon_view_finalize;
     object_class->get_property = fm_icon_view_get_property;
     object_class->set_property = fm_icon_view_set_property;
+    GTK_WIDGET_CLASS (klass)->destroy = fm_icon_view_destroy;
 
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
