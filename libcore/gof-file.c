@@ -291,15 +291,17 @@ void gof_file_query_update (GOFFile *file)
     //printf ("!!!!!!!!!!!!file_query_info %s\n", g_file_get_uri (file->location));
     file->info = g_file_query_info (file->location, GOF_GIO_DEFAULT_ATTRIBUTES,
                                     0, NULL, &err);
-    gof_file_update (file);
-
     if (err != NULL) {
-        if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED)
-        {
+        if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED) {
             file->is_mounted = FALSE;
-            g_clear_error (&err);
+        }
+        if (err->code == G_IO_ERROR_NOT_FOUND
+            || err->code == G_IO_ERROR_NOT_DIRECTORY) {
+            file->exists = FALSE;
         }
         print_error (err);
+    } else {
+        gof_file_update (file);
     }
 }
 
@@ -343,7 +345,7 @@ static void gof_file_finalize (GObject* obj) {
     GOFFile *file;
 
     file = GOF_FILE (obj);
-    //g_warning ("%s %s\n", G_STRFUNC, file->name);
+    g_warning ("%s %s\n", G_STRFUNC, file->name);
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
     g_free (file->uri);

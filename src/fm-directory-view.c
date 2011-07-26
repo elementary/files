@@ -289,11 +289,12 @@ g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
 static void
 file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-//printf ("%s %s %d\n", G_STRFUNC, g_file_get_uri(file->location), file->flags);
+    printf ("%s %s %d\n", G_STRFUNC, g_file_get_uri(file->location), file->flags);
 /*gchar *md5_hash = g_compute_checksum_for_string (G_CHECKSUM_MD5, g_file_get_uri(file->location), -1);
 printf ("md5_hash %s\n", md5_hash);*/
-gof_file_query_update (file);
-fm_list_model_file_changed (view->model, file, directory);
+    gof_file_query_update (file);
+    if (file->exists) 
+        fm_list_model_file_changed (view->model, file, directory);
 }
 
 static void

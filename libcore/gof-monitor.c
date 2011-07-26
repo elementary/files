@@ -64,19 +64,18 @@ dir_changed (GFileMonitor* gfile_monitor,
         g_message ("file changed %s\n", uri);
         file = gof_file_get (child);
         g_signal_emit_by_name (dir, "file_changed", file);
+        gof_file_unref (file);
         break;
     case G_FILE_MONITOR_EVENT_DELETED:
         //nautilus_file_changes_queue_file_removed (child);
         g_message ("file deleted %s\n", uri);
         file = gof_file_get (child);
-        if (file->info != NULL) {
-            if (!file->is_hidden)
-                g_hash_table_remove (dir->file_hash, child);
-            else
-                g_hash_table_remove (dir->hidden_file_hash, child);
-            g_signal_emit_by_name (dir, "file_deleted", file);
-            g_object_unref (file);
-        }
+        if (!file->is_hidden)
+            g_hash_table_remove (dir->file_hash, child);
+        else
+            g_hash_table_remove (dir->hidden_file_hash, child);
+        g_signal_emit_by_name (dir, "file_deleted", file);
+        g_object_unref (file);
         break;
     case G_FILE_MONITOR_EVENT_CREATED:
         //nautilus_file_changes_queue_file_added (child);
@@ -89,14 +88,15 @@ dir_changed (GFileMonitor* gfile_monitor,
              * that it is a new file in this dir */
              dir->file->exists = TRUE;
         }
-        else if (file->info != NULL) {
+        if (file->exists) {
             if (!file->is_hidden)
                 g_hash_table_insert (dir->file_hash, g_object_ref (child), file);
             else
                 g_hash_table_insert (dir->hidden_file_hash, g_object_ref (child), file);
             g_signal_emit_by_name (dir, "file_added", file);
-        } else
+        } else {
             gof_file_unref (file);
+        }
         break;
 
     case G_FILE_MONITOR_EVENT_PRE_UNMOUNT:
