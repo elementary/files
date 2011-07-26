@@ -365,6 +365,7 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
 	}
 
 	if (!fm_list_model_get_first_iter_for_file (list_view->model, file, &iter)) {
+        g_message ("%s FAILED", G_STRFUNC);
 		return;
 	}
 

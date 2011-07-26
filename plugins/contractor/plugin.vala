@@ -21,7 +21,6 @@ using Gee;
 ArrayList<MenuItem>? menus = null;
 UIManager ui;
 Menu menu;
-string mime;
 /*string uri;*/
 GLib.HashTable<string, string>[] locations;
 
@@ -30,8 +29,10 @@ string get_app_display_name(GLib.HashTable<string,string> app__)
     return app__.lookup("Description");
 }
 
-void print_apps()
+void print_apps(Menu _menu)
 {
+    if (menu != _menu)
+        return;
     if (menus == null)
         menus = new ArrayList<MenuItem>();
     foreach(var menu in menus)
@@ -142,13 +143,11 @@ public void receive_all_hook(void* user_data, int hook)
     {
     case 1:
         /* context menu */
-        print_apps();
+        print_apps((Menu) user_data);
         break;
     case 2: /* ui */
         ui = (UIManager)user_data;
-        
         menu = (Menu)ui.get_widget("/selection");
-        mime = "image/png";
         break;
     case 5:
         if(user_data != null)

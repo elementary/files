@@ -16,13 +16,15 @@
  */
 
 #include <gtk/gtk.h>
+#include <glib/gi18n.h>
 #include "gof-file.h"
 #include "marlin-plugins-hook.h"
 
 static gchar* current_path = NULL;
 static gboolean menu_added = FALSE;
 static GSettings* settings = NULL;
-
+static GList *menus = NULL;
+static GtkWidget *menu;
 
 void hook_interface_loaded(void* win_)
 {
@@ -54,21 +56,25 @@ static void on_open_terminal_activated(GtkWidget* widget, gpointer data)
     g_app_info_launch(term_app,NULL,NULL,NULL);
 }
 
-void hook_context_menu(GtkWidget* menu)
+void hook_context_menu(GtkWidget* _menu)
 {
+    if (_menu != menu)
+        return;
     g_debug("Open Terminal");
+   
+    g_list_free_full (menus, (GDestroyNotify) gtk_widget_destroy);
+    menus = NULL;
+
+    GtkWidget *menuitem = gtk_menu_item_new_with_label(_("Open a terminal here"));
+    gtk_menu_shell_append (GTK_MENU_SHELL(menu), menuitem);
+    menus = g_list_prepend (menus, menuitem);
+    g_signal_connect (menuitem, "activate", (GCallback) on_open_terminal_activated, NULL);
+    gtk_widget_show (menuitem);
 }
 
 static void put_right_click_menu(GtkUIManager* ui_manager)
 {
-    GtkWidget *menu = gtk_ui_manager_get_widget (ui_manager, "/background");
-    
-    GtkWidget *menuitem = gtk_menu_item_new_with_label("Open a terminal here");
-    gtk_menu_shell_append (GTK_MENU_SHELL(menu), menuitem);
-    g_signal_connect (menuitem, "activate", (GCallback) on_open_terminal_activated, NULL);
     menu = gtk_ui_manager_get_widget (ui_manager, "/background");
-    gtk_menu_shell_append (GTK_MENU_SHELL(menu), menuitem);
-    gtk_widget_show (menuitem);
 }
 
 void receive_all_hook(void* user_data, int hook)

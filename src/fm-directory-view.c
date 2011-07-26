@@ -1904,9 +1904,9 @@ fm_directory_view_context_menu (FMDirectoryView *view,
         g_object_set_data(G_OBJECT (view->details->menu_selection), "other_selection", openwith_items);
     }
 
-    gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (view)));
 	marlin_plugin_manager_hook_context_menu(plugins, menu);
-    gtk_widget_show_all(menu);
+    gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (view)));
+    //gtk_widget_show_all(menu);
 
     eel_pop_up_context_menu (GTK_MENU (menu),
                              EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
@@ -3106,7 +3106,6 @@ real_merge_menus (FMDirectoryView *view)
 
     view->details->menu_selection = gtk_ui_manager_get_widget (ui_manager, "/selection");
     view->details->menu_background = gtk_ui_manager_get_widget (ui_manager, "/background");
-    marlin_plugin_manager_hook_send(plugins, ui_manager, MARLIN_PLUGIN_HOOK_UI);
 
 
     /* we have to make sure that we add our custom widget once in the menu */
@@ -3135,6 +3134,7 @@ real_merge_menus (FMDirectoryView *view)
         selection_menu_builded = TRUE;
     }
     
+    marlin_plugin_manager_hook_send(plugins, ui_manager, MARLIN_PLUGIN_HOOK_UI);
     //view->details->scripts_invalid = TRUE;
     //view->details->templates_invalid = TRUE;
     

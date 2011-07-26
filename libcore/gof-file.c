@@ -1117,31 +1117,28 @@ GOFFile* gof_file_get (GFile *location)
         //printf (">>>>reuse file\n");
         g_object_ref (file);
     } else {
-        //amtest
         file = gof_file_new (location, parent);
-        if(file != NULL)
-        {
 #ifdef ENABLE_DEBUG
-            g_debug ("!!!!!!!!!!!!file_query_info %s\n", file->uri);
+        g_debug ("!!!!!!!!!!!!file_query_info %s\n", file->uri);
 #endif
-            file->info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                            0, NULL, &err);
+        g_debug (">>!!!!!!!!!!!!file_query_info %s\n", file->uri);
+        file->info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
+                                        0, NULL, &err);
 
-            if (err != NULL) {
-                if (err->domain == G_IO_ERROR)
-                {
-                    if (err->code == G_IO_ERROR_NOT_MOUNTED) {
-                        file->is_mounted = FALSE;
-                    }
-                    if (err->code == G_IO_ERROR_NOT_FOUND
-                        || err->code == G_IO_ERROR_NOT_DIRECTORY) {
-                        file->exists = FALSE;
-                    }
-                }    
-                print_error (err);
-            } else {
-                gof_file_update (file);
-            }
+        if (err != NULL) {
+            if (err->domain == G_IO_ERROR)
+            {
+                if (err->code == G_IO_ERROR_NOT_MOUNTED) {
+                    file->is_mounted = FALSE;
+                }
+                if (err->code == G_IO_ERROR_NOT_FOUND
+                    || err->code == G_IO_ERROR_NOT_DIRECTORY) {
+                    file->exists = FALSE;
+                }
+            }    
+            print_error (err);
+        } else {
+            gof_file_update (file);
         }
     }
 
