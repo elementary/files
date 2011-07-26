@@ -49,6 +49,7 @@ void print_apps(Menu _menu)
         if (i == 0) {
             var item = new SeparatorMenuItem ();
             menu.append(item);
+            item.show();
             menus.add(item);
         }
         var menuitem = new MenuItem.with_label(get_app_display_name(app__));

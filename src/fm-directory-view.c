@@ -1879,6 +1879,7 @@ fm_directory_view_context_menu (FMDirectoryView *view,
             if (i == 0) {
                 item = gtk_separator_menu_item_new ();
                 gtk_menu_shell_append(GTK_MENU_SHELL (menu), item);
+                gtk_widget_show (item);
                 openwith_items = g_list_append(openwith_items, item);
             }
  
@@ -1887,15 +1888,18 @@ fm_directory_view_context_menu (FMDirectoryView *view,
             g_signal_connect (item, "activate", (GCallback) on_menuitem_openwith_activate, selection->data);
 
             gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+            gtk_widget_show (item);
             openwith_items = g_list_append (openwith_items, item);
             apps = g_list_next (apps);
         }
         item = gtk_separator_menu_item_new ();
         gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+        gtk_widget_show (item);
         openwith_items = g_list_append (openwith_items, item);
         
         item = gtk_menu_item_new_with_label (_("Open with…"));
         gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+        gtk_widget_show (item);
         openwith_items = g_list_append(openwith_items, item);
 
         g_signal_connect(item, "activate", (GCallback) on_menuitem_openwith_other_activate, selection->data);
