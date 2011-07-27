@@ -681,3 +681,10 @@ marlin_application_new (void)
                          "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
                          NULL);
 }
+
+/* Doublon of application_new used for naming conveniance */
+MarlinApplication *
+marlin_application_get (void)
+{
+    return marlin_application_new ();
+}

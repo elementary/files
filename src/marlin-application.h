@@ -51,6 +51,7 @@ typedef struct {
 GType marlin_application_get_type (void);
 
 MarlinApplication *marlin_application_new (void);
+MarlinApplication *marlin_application_get (void);
 
 void    marlin_application_create_window (MarlinApplication *application,
                                           const char *uri, GdkScreen *screen);

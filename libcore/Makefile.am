@@ -16,12 +16,10 @@ libmarlincore_la_SOURCES = \
     eel-string.c                            \
     eel-accessibility.c                     \
     marlin-file-operations.c                \
-    marlin-progress-info.c                  \
     marlin-file-utilities.c                 \
     marlin-file-conflict-dialog.c           \
+    marlin-progress-info.c                  \
     marlin-progress-info-manager.c          \
-    marlin-progress-ui-handler.c            \
-    marlin-progress-info-widget.c           \
     eel-ui.c                                \
     gof-directory-async.c                   \
     marlin-exec.c                           \

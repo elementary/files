@@ -87,6 +87,8 @@ marlin_CSOURCES = \
     marlin-toolbar-editor.c                 \
     marlin-connect-server-dialog.c          \
     marlin-connect-server-operation.c       \
+    marlin-progress-ui-handler.c            \
+    marlin-progress-info-widget.c           \
     $(NULL)
 
 marlin_SOURCES = \

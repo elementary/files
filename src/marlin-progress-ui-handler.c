@@ -27,7 +27,7 @@
 
 #include "marlin-progress-ui-handler.h"
 
-/*#include "nautilus-application.h"*/
+#include "marlin-application.h"
 #include "marlin-progress-info-widget.h"
 
 #include "marlin-progress-info.h"
@@ -375,35 +375,30 @@ new_op_started_timeout (TimeoutData *data)
     return FALSE;
 }
 
-/* TODO */
 static void
 release_application (MarlinProgressInfo *info,
 		     MarlinProgressUIHandler *self)
 {
-#if 0
     MarlinApplication *app;
 
     /* release the GApplication hold we acquired */
-    app = marlin_application_dup_singleton ();
+    app = marlin_application_get ();
     g_application_release (G_APPLICATION (app));
 
-    g_object_unref (app);
-#endif
-    printf ("%s\n", G_STRFUNC);
+    //amtest
+    g_message ("%s", G_STRFUNC);
 }
 
 static void
 progress_info_started_cb (MarlinProgressInfo *info,
 			  MarlinProgressUIHandler *self)
 {
-    /* TODO */
-    //MarlinApplication *app;
+    MarlinApplication *app;
     TimeoutData *data;
 
     /* hold GApplication so we never quit while there's an operation pending */
-    /*app = marlin_application_dup_singleton ();
+    app = marlin_application_get ();
     g_application_hold (G_APPLICATION (app));
-    g_object_unref (app);*/
 
     g_signal_connect (info, "finished",
 		      G_CALLBACK (release_application), self);
