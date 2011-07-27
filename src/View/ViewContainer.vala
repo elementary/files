@@ -110,6 +110,7 @@ namespace Marlin.View {
                 tab_name = slot.directory.file.info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
                 if(window.current_tab == this){
                     window.set_title(tab_name);
+                    window.loading_uri (slot.directory.file.uri, window.sidebar);
                 }
 
                 Source.remove((uint) file_info_callback);

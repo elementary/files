@@ -69,6 +69,8 @@ namespace Marlin.View {
         //public signal void refresh();
         public signal void selection_changed(GLib.List<GOF.File> gof_file);
 
+        public signal void loading_uri (string location, Widget sidebar);
+
         public signal void reload_tabs();
 
         public void update_action_radio_view(int n) {

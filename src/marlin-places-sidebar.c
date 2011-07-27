@@ -243,11 +243,8 @@ compare_for_selection (MarlinPlacesSidebar *sidebar,
                        GtkTreeIter *iter,
                        GtkTreePath **path)
 {
-    int res;
 
-    res = eel_strcmp (added_uri, last_uri);
-
-    if (res == 0) {
+    if (eel_strcmp (added_uri, last_uri) == 0) {
         /* last_uri always comes first */
         if (*path != NULL) {
             gtk_tree_path_free (*path);
@@ -840,12 +837,9 @@ loading_uri_callback (GtkWidget *window,
     gboolean 	 child_valid;
     char  		 *uri;
 
-    if (strcmp (sidebar->uri, location) != 0) {
+    if (eel_strcmp (sidebar->uri, location) != 0) {
         g_free (sidebar->uri);
         sidebar->uri = g_strdup (location);
-
-        //amtest
-        //printf ("%s %s\n", G_STRFUNC, sidebar->uri);
 
         /* set selection if any place matches location */
         selection = gtk_tree_view_get_selection (sidebar->tree_view);
@@ -2898,6 +2892,7 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     GtkCellRenderer   *cell;
     GtkTreeSelection  *selection;
 
+    sidebar->uri = NULL;
     sidebar->volume_monitor = g_volume_monitor_get ();
 
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sidebar),
@@ -3155,23 +3150,23 @@ marlin_places_sidebar_set_parent_window (MarlinPlacesSidebar *sidebar,
 
     sidebar->window = window;
 
-    slot = marlin_view_window_get_active_slot (MARLIN_VIEW_WINDOW (window));
+    //slot = marlin_view_window_get_active_slot (MARLIN_VIEW_WINDOW (window));
 
-    //TODO
+    //TODO remove
     sidebar->bookmarks = marlin_bookmark_list_new ();
     /* maybe store the uri in slot structure */
-    if (slot) {
+    /*if (slot) {
         sidebar->uri = g_file_get_uri (slot->location);
         g_object_unref (slot);
-    }
+    }*/
 
     g_signal_connect_object (sidebar->bookmarks, "contents_changed",
                              G_CALLBACK (update_places),
                              sidebar, G_CONNECT_SWAPPED);
 
-    /*g_signal_connect_object (window, "loading_uri",
-      G_CALLBACK (loading_uri_callback),
-      sidebar, 0);*/
+    g_signal_connect_object (window, "loading_uri",
+                             G_CALLBACK (loading_uri_callback),
+                             sidebar, 0);
 
     g_signal_connect_object (sidebar->volume_monitor, "volume_added",
                              G_CALLBACK (volume_added_callback), sidebar, 0);
