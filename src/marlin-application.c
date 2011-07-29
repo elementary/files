@@ -49,24 +49,14 @@
 
 static MarlinApplication *singleton = NULL;
 
-/* Keeps track of all the desktop windows. */
-//static GList *marlin_application_desktop_windows;
-
 /* The saving of the accelerator map was requested  */
 static gboolean save_of_accel_map_requested = FALSE;
 
-/*static void     mount_removed_callback            (GVolumeMonitor            *monitor,
-  GMount                    *mount,
-  MarlinApplication       *application);
-  static void     mount_added_callback              (GVolumeMonitor            *monitor,
-  GMount                    *mount,
-  MarlinApplication       *application);*/
 
 G_DEFINE_TYPE (MarlinApplication, marlin_application, GTK_TYPE_APPLICATION);
 
 struct _MarlinApplicationPriv {
-    /* TODO */
-    //GVolumeMonitor *volume_monitor;
+    GVolumeMonitor *volume_monitor;
     MarlinProgressUIHandler *progress_handler;
     MarlinClipboardManager  *clipboard;
     gboolean                debug;
@@ -371,7 +361,7 @@ marlin_application_finalize (GObject *object)
     /* TODO check bookmarks */
     //marlin_bookmarks_exiting ();
 
-    //g_clear_object (&application->priv->volume_monitor);
+    g_clear_object (&application->priv->volume_monitor);
     g_clear_object (&application->priv->progress_handler);
     g_clear_object (&application->priv->clipboard);
 
@@ -512,6 +502,57 @@ out:
 }
 
 static void
+mount_removed_callback (GVolumeMonitor *monitor,
+                        GMount *mount,
+                        MarlinApplication *application)
+{
+    GList *window_list, *node;
+    MarlinViewWindow *window;
+    GOFWindowSlot *slot;
+    GFile *root, *location, *home;
+
+    /* Check and see if any of the open windows are displaying contents from the unmounted mount */
+    window_list = gtk_application_get_windows (GTK_APPLICATION (application));
+
+    root = g_mount_get_root (mount);
+    home = g_file_new_for_path (g_get_home_dir ());
+
+    /*gchar *uri = g_file_get_uri (root);
+    g_debug ("Removed mount at uri %s", uri);
+    g_free (uri);*/
+
+    /* We browse each slot from each windows, loading home for current tabs and closing the rest */
+    for (node = window_list; node != NULL; node = node->next) {
+        window = MARLIN_VIEW_WINDOW (node->data);
+        if (window != NULL) {
+            GList *tabs, *l;
+            GFile *location;
+
+            tabs = gtk_container_get_children (GTK_CONTAINER (window->tabs));
+            for (l = tabs; l != NULL; l = l->next) {
+                slot = MARLIN_VIEW_VIEW_CONTAINER (l->data)->slot;
+                location = slot->location;
+                if (location == NULL ||
+                    g_file_has_prefix (location, root) ||
+                    g_file_equal (location, root)) 
+                {
+                    //g_warning ("%s %s", G_STRFUNC, g_file_get_uri (location));
+                    if (l->data == window->current_tab) {
+                         g_signal_emit_by_name (l->data, "path-changed", home);
+                        //g_debug ("DON T close %s", g_file_get_uri (location));
+                    } else {
+                        marlin_view_window_remove_tab (window, l->data);
+                    }
+                }
+            }
+        }
+    }
+
+    g_object_unref (root);
+    g_object_unref (home);
+}
+
+static void
 init_schemas (void)
 {
     /* gsettings parameters */
@@ -581,10 +622,10 @@ marlin_application_startup (GApplication *app)
 
     /* TODO move the volume manager here? */
     /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
-    /*application->priv->volume_monitor = g_volume_monitor_get ();
-      g_signal_connect_object (application->priv->volume_monitor, "mount_removed",
-      G_CALLBACK (mount_removed_callback), application, 0);
-      g_signal_connect_object (application->priv->volume_monitor, "mount_added",
+    self->priv->volume_monitor = g_volume_monitor_get ();
+    g_signal_connect_object (self->priv->volume_monitor, "mount_removed",
+                             G_CALLBACK (mount_removed_callback), self, 0);
+    /*g_signal_connect_object (application->priv->volume_monitor, "mount_added",
       G_CALLBACK (mount_added_callback), application, 0);*/
 }
 
