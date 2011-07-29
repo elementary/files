@@ -40,9 +40,6 @@
 #include <glib/gstdio.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
-/*#include <eel/eel-gtk-extensions.h>
-#include <eel/eel-gtk-macros.h>
-#include <eel/eel-stock-dialogs.h>*/
 #include <libnotify/notify.h>
 
 #include <gdk/gdkx.h>
@@ -71,29 +68,10 @@ struct _MarlinApplicationPriv {
     /* TODO */
     //GVolumeMonitor *volume_monitor;
     MarlinProgressUIHandler *progress_handler;
-    MarlinClipboardManager *clipboard;
-
-    gboolean initialized;
+    MarlinClipboardManager  *clipboard;
+    gboolean                debug;
+    gboolean                open_intab;
 };
-
-static void
-finish_startup (MarlinApplication *application,
-                gboolean no_desktop)
-{
-    /* Initialize the UI handler singleton for file operations */
-    notify_init (GETTEXT_PACKAGE);
-    application->priv->progress_handler = marlin_progress_ui_handler_new ();
-    application->priv->clipboard = marlin_clipboard_manager_new_get_for_display (gdk_display_get_default());
-
-    /* TODO move the volume manager here? */
-    /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
-    /*application->priv->volume_monitor = g_volume_monitor_get ();
-      g_signal_connect_object (application->priv->volume_monitor, "mount_removed",
-      G_CALLBACK (mount_removed_callback), application, 0);
-      g_signal_connect_object (application->priv->volume_monitor, "mount_added",
-      G_CALLBACK (mount_added_callback), application, 0);*/
-}
-
 
 static void selection_changed_plugin(GtkWidget* window, GList *selection)
 {
@@ -101,19 +79,9 @@ static void selection_changed_plugin(GtkWidget* window, GList *selection)
 }
 
 static void
-open_window (MarlinApplication *application,
-             const char *uri, GdkScreen *screen)
+open_window (MarlinApplication *application, GFile *location, GdkScreen *screen)
 {
-    GFile *location;
     MarlinViewWindow *window;
-
-    if (uri == NULL) {
-        location = g_file_new_for_path (g_get_home_dir ());
-    } else {
-        location = g_file_new_for_uri (uri);
-    }
-
-    //DEBUG ("Opening new window at uri %s", uri);
 
     window = marlin_view_window_new (application, screen);
     g_signal_connect(window, "selection_changed", (GCallback) selection_changed_plugin, NULL);
@@ -122,49 +90,36 @@ open_window (MarlinApplication *application,
     gtk_application_add_window (GTK_APPLICATION (application),
                                 GTK_WINDOW (window));
     marlin_view_window_add_tab (window, location);
-
-    g_object_unref (location);
 }
 
 static void
-open_windows (MarlinApplication *application, char **uris, GdkScreen *screen)
+open_windows (MarlinApplication *application, GFile **files,
+              gint n_files, GdkScreen *screen)
 {
     guint i;
 
-    if (uris == NULL || uris[0] == NULL) {
+    if (files == NULL) {
         /* Open a window pointing at the default location. */
-        open_window (application, NULL, screen);
+        GFile *location = g_file_new_for_path (g_get_home_dir ());
+        open_window (application, location, screen);
+        g_object_unref (location);
     } else {
         /* Open windows at each requested location. */
-        for (i = 0; uris[i] != NULL; i++) {
-            open_window (application, uris[i], screen);
+        for (i = 0; i < n_files; i++) {
+            open_window (application, files[i], screen);
         }
     }
 }
 
 static void
-open_tab (MarlinViewWindow *window, const char *uri)
-{
-    GFile *location;
-
-    if (uri == NULL) {
-        location = g_file_new_for_path (g_get_home_dir ());
-    } else {
-        location = g_file_new_for_uri (uri);
-    }
-
-    //DEBUG ("Opening new tab at uri %s", uri);
-    marlin_view_window_add_tab (window, location);
-    g_object_unref (location);
-}
-
-static void
-open_tabs (MarlinApplication *application, char **uris, GdkScreen *screen)
+open_tabs (MarlinApplication *application, GFile **files,
+           gint n_files, GdkScreen *screen)
 {
     MarlinViewWindow *window;
     GList *list;
     guint i;
 
+    g_message ("%s", G_STRFUNC);
     /* get the first windows if any */
     list = gtk_application_get_windows (GTK_APPLICATION (application));
     if (list != NULL && list->data != NULL) {
@@ -173,15 +128,18 @@ open_tabs (MarlinApplication *application, char **uris, GdkScreen *screen)
         window = marlin_view_window_new (application, screen);
         gtk_application_add_window (GTK_APPLICATION (application),
                                     GTK_WINDOW (window));
-       marlin_plugin_manager_interface_loaded(plugins, window);
+        marlin_plugin_manager_interface_loaded(plugins, window);
     }
 
-    if (uris == NULL || uris[0] == NULL) { 
-        open_tab (window, NULL);
+    if (files == NULL) {
+        /* Open a tab pointing at the default location. */
+        GFile *location = g_file_new_for_path (g_get_home_dir ());
+        marlin_view_window_add_tab (window, location);
+        g_object_unref (location);
     } else {
         /* Open tabs at each requested location. */
-        for (i = 0; uris[i] != NULL; i++)
-            open_tab (window, uris[i]);
+        for (i = 0; i < n_files; i++)
+            marlin_view_window_add_tab (window, files[i]);
     }
 }
 
@@ -424,34 +382,27 @@ marlin_application_finalize (GObject *object)
 }
 
 void
-marlin_application_create_window_from_gfile (MarlinApplication *application, 
-                                             GFile *location, GdkScreen *screen)
+marlin_application_create_window (MarlinApplication *application,
+                                  GFile *location, GdkScreen *screen)
 {
-    MarlinViewWindow *window;
-
-    if (location == NULL)
-        location = g_file_new_for_path (g_get_home_dir ());
-    else
-        g_object_ref (location);
-
-    //DEBUG ("Opening new window at uri %s", uri);
-
-    window = marlin_view_window_new (application, screen);
-    
-    g_signal_connect(window, "selection_changed", (GCallback) selection_changed_plugin, NULL);
-
-    gtk_application_add_window (GTK_APPLICATION (application),
-                                GTK_WINDOW (window));
-    marlin_view_window_add_tab (window, location);
-
-    g_object_unref (location);
+    open_window (application, location, screen);
 }
 
-void
-marlin_application_create_window (MarlinApplication *application,
-                                  const char *uri, GdkScreen *screen)
+static void
+marlin_application_open_location (GApplication *app, GFile **files, gint n_files)
 {
-    open_window (application, uri, screen);
+    MarlinApplication *self = MARLIN_APPLICATION (app);
+
+    //g_debug ("%s %d files", G_STRFUNC, n_files);
+
+    if (self->priv->debug)
+        marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_DEBUG);
+
+    /* Create windows. */
+    if (self->priv->open_intab)
+        open_tabs (self, files, n_files, gdk_screen_get_default ());
+    else
+        open_windows (self, files, n_files, gdk_screen_get_default ());
 }
 
 void
@@ -464,44 +415,39 @@ marlin_application_quit (MarlinApplication *self)
     g_list_foreach (windows, (GFunc) gtk_widget_destroy, NULL);
 }
 
-static gint
-marlin_application_command_line (GApplication *app,
-                                 GApplicationCommandLine *command_line)
+static int
+marlin_application_cmd (GApplication *app, GApplicationCommandLine *cmd)
 {
     MarlinApplication *self = MARLIN_APPLICATION (app);
     gboolean version = FALSE;
-    gboolean no_default_window = FALSE;
-    gboolean no_desktop = FALSE;
+    //gboolean no_desktop = FALSE;
     gboolean kill_shell = FALSE;
-    gboolean tab = FALSE;
-    gboolean debug = FALSE;
     gchar **remaining = NULL;
     const GOptionEntry options[] = {
         { "version", '\0', 0, G_OPTION_ARG_NONE, &version,
             N_("Show the version of the program."), NULL },
-        { "no-desktop", '\0', 0, G_OPTION_ARG_NONE, &no_desktop,
-            N_("Do not manage the desktop (ignore the preference set in the preferences dialog)."), NULL },
-        { "tab", 't', 0, G_OPTION_ARG_NONE, &tab,
+        /*{ "no-desktop", '\0', 0, G_OPTION_ARG_NONE, &no_desktop,
+          N_("Do not manage the desktop (ignore the preference set in the preferences dialog)."), NULL },*/
+        { "tab", 't', 0, G_OPTION_ARG_NONE, &self->priv->open_intab,
             N_("Open uri(s) in new tab"), NULL },
         { "quit", 'q', 0, G_OPTION_ARG_NONE, &kill_shell, 
             N_("Quit Marlin."), NULL },
-        { "debug", 'd', 0, G_OPTION_ARG_NONE, &debug,
+        { "debug", 'd', 0, G_OPTION_ARG_NONE, &self->priv->debug,
             N_("Enable debug logging"), NULL },
         { G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_STRING_ARRAY, &remaining, NULL,  N_("[URI...]") },
-
         { NULL }
     };
     GOptionContext *context;
     GError *error = NULL;
     gint argc = 0;
-    gchar **argv = NULL, **uris = NULL;
+    gchar **argv = NULL;
     gint retval = EXIT_SUCCESS;
 
     context = g_option_context_new (_("\n\nBrowse the file system with the file manager"));
     g_option_context_add_main_entries (context, options, NULL);
     g_option_context_add_group (context, gtk_get_option_group (TRUE));
 
-    argv = g_application_command_line_get_arguments (command_line, &argc);
+    argv = g_application_command_line_get_arguments (cmd, &argc);
 
     if (!g_option_context_parse (context, &argc, &argv, &error)) {
         g_printerr ("Could not parse arguments: %s\n", error->message);
@@ -512,11 +458,11 @@ marlin_application_command_line (GApplication *app,
     }
 
     if (version) {
-        g_application_command_line_print (command_line, "marlin " PACKAGE_VERSION "\n");
+        g_application_command_line_print (cmd, "marlin " PACKAGE_VERSION "\n");
         goto out;
     }
     if (kill_shell && remaining != NULL) {
-        g_application_command_line_printerr (command_line, "%s\n",
+        g_application_command_line_printerr (cmd, "%s\n",
                                              _("--quit cannot be used with URIs."));
         retval = EXIT_FAILURE;
         goto out;
@@ -524,84 +470,71 @@ marlin_application_command_line (GApplication *app,
 
     if (kill_shell) {
         marlin_application_quit (self);
-    } else {
-        if (!self->priv->initialized) {
-            char *accel_map_filename;
+        goto out;
+    } 
 
-            /* TODO */
-            /*if (!no_desktop &&
-              !g_settings_get_boolean (gnome_background_preferences,
-              MARLIN_PREFERENCES_SHOW_DESKTOP)) {
-              no_desktop = TRUE;
-              }
+    GFile **files;
+    gint i, len;
 
-              if (!no_desktop) {
-              marlin_application_open_desktop (self);
-              }*/
+    len = 0;
+    files = NULL;
 
-            finish_startup (self, no_desktop);
+    /* Convert remaining args to GFiles */
+    if (remaining != NULL) {
+        GFile *file;
+        GPtrArray *file_array = g_ptr_array_new ();
 
-            /* Monitor the preference to show or hide the desktop */
-            /*g_signal_connect_swapped (gnome_background_preferences, "changed::" MARLIN_PREFERENCES_SHOW_DESKTOP,
-              G_CALLBACK (desktop_changed_callback),
-              self);*/
-
-            /* load accelerator map, and register save callback */
-            accel_map_filename = marlin_get_accel_map_file ();
-            if (accel_map_filename) {
-                gtk_accel_map_load (accel_map_filename);
-                g_free (accel_map_filename);
+        for (i = 0; remaining[i] != NULL; i++) {
+            file = g_file_new_for_commandline_arg (remaining[i]);
+            if (file != NULL) {
+                g_ptr_array_add (file_array, file);
             }
-
-            g_signal_connect (gtk_accel_map_get (), "changed",
-                              G_CALLBACK (queue_accel_map_save_callback), NULL);
-
-            self->priv->initialized = TRUE;
         }
 
-        /* Convert args to URIs */
-        if (remaining != NULL) {
-            GFile *file;
-            GPtrArray *uris_array;
-            gint i;
-            gchar *uri;
-
-            uris_array = g_ptr_array_new ();
-
-            //TODO check this
-            for (i = 0; remaining[i] != NULL; i++) {
-                file = g_file_new_for_commandline_arg (remaining[i]);
-                if (file != NULL) {
-                    uri = g_file_get_uri (file);
-                    g_object_unref (file);
-                    if (uri) {
-                        g_ptr_array_add (uris_array, uri);
-                    }
-                }
-            }
-
-            g_ptr_array_add (uris_array, NULL);
-            uris = (char **) g_ptr_array_free (uris_array, FALSE);
-            g_strfreev (remaining);
-        }
-    
-        if (debug)
-            marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_DEBUG);
-
-        /* Create the other windows. */
-        if (uris != NULL || !no_default_window) {
-            if (!tab)
-                open_windows (self, uris, gdk_screen_get_default ());
-            else
-                open_tabs (self, uris, gdk_screen_get_default ());
-        }
+        len = file_array->len;
+        files = (GFile **) g_ptr_array_free (file_array, FALSE);
+        g_strfreev (remaining);
     }
+
+    /* Open application */
+    marlin_application_open_location (app, files, len);
+
+    for (i = 0; i < len; i++) {
+        g_object_unref (files[i]);
+    }
+    g_free (files);
 
 out:
     g_option_context_free (context);
     g_strfreev (argv);
 
     return retval;
+}
+
+static void
+init_schemas (void)
+{
+    /* gsettings parameters */
+    settings = g_settings_new ("org.gnome.marlin.preferences");
+    marlin_icon_view_settings = g_settings_new ("org.gnome.marlin.icon-view");
+    marlin_list_view_settings = g_settings_new ("org.gnome.marlin.list-view");
+    marlin_column_view_settings = g_settings_new ("org.gnome.marlin.column-view");
+}
+
+static void
+init_gtk_accels (void)
+{
+    char *accel_map_filename;
+
+    /* load accelerator map, and register save callback */
+    accel_map_filename = marlin_get_accel_map_file ();
+    if (accel_map_filename) {
+        gtk_accel_map_load (accel_map_filename);
+        g_free (accel_map_filename);
+    }
+
+    g_signal_connect (gtk_accel_map_get (), "changed",
+                      G_CALLBACK (queue_accel_map_save_callback), NULL);
 }
 
 static void
@@ -619,38 +552,48 @@ marlin_application_startup (GApplication *app)
 
     g_message ("Welcome to Marlin");
     g_message ("Version: %s", PACKAGE_VERSION);
-    g_message ("Report any issues/bugs you might find to lp:marlin");
+    g_message ("Report any issues/bugs you might find to http://bugs.launchpad.net/marlin");
+
+    if (self->priv->debug)
+        marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_DEBUG);
+
+    init_schemas ();
+    init_gtk_accels ();
 
     /* create an undo manager */
     //self->undo_manager = marlin_undo_manager_new ();
-
-    /* gsettings parameters */
-    settings = g_settings_new ("org.gnome.marlin.preferences");
-    marlin_icon_view_settings = g_settings_new ("org.gnome.marlin.icon-view");
-    marlin_list_view_settings = g_settings_new ("org.gnome.marlin.list-view");
-    marlin_column_view_settings = g_settings_new ("org.gnome.marlin.column-view");
-    tags = marlin_view_tags_new ();
-
-    plugins = marlin_plugin_manager_new ();
-    marlin_plugin_manager_load_plugins (plugins);
-
-    /* register property pages */
-    //marlin_image_properties_page_register ();
 
     /* initialize search path for custom icons */
     /*gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
       MARLIN_DATADIR G_DIR_SEPARATOR_S "icons");*/
 
     //marlin_dbus_manager_start (app);
+
+    /* Initialize the UI handler singleton for file operations */
+    notify_init (GETTEXT_PACKAGE);
+    self->priv->progress_handler = marlin_progress_ui_handler_new ();
+    self->priv->clipboard = marlin_clipboard_manager_new_get_for_display (gdk_display_get_default());
+
+    tags = marlin_view_tags_new ();
+
+    plugins = marlin_plugin_manager_new ();
+    marlin_plugin_manager_load_plugins (plugins);
+
+    /* TODO move the volume manager here? */
+    /* TODO-gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
+    /*application->priv->volume_monitor = g_volume_monitor_get ();
+      g_signal_connect_object (application->priv->volume_monitor, "mount_removed",
+      G_CALLBACK (mount_removed_callback), application, 0);
+      g_signal_connect_object (application->priv->volume_monitor, "mount_added",
+      G_CALLBACK (mount_added_callback), application, 0);*/
 }
 
 static void
 marlin_application_quit_mainloop (GApplication *app)
 {
-    //DEBUG ("Quitting mainloop");
+    g_debug ("Quitting mainloop");
 
     //marlin_icon_info_clear_caches ();
-    //marlin_application_save_accel_map (NULL);
 
     G_APPLICATION_CLASS (marlin_application_parent_class)->quit_mainloop (app);
 }
@@ -667,7 +610,7 @@ marlin_application_class_init (MarlinApplicationClass *class)
 
     application_class = G_APPLICATION_CLASS (class);
     application_class->startup = marlin_application_startup;
-    application_class->command_line = marlin_application_command_line;
+    application_class->command_line = marlin_application_cmd;
     application_class->quit_mainloop = marlin_application_quit_mainloop;
 
     g_type_class_add_private (class, sizeof (MarlinApplication));

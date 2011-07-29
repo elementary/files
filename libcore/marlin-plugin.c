@@ -72,7 +72,7 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
             g_debug("Plugin debug:\n Plugin dir: %s\n Keyfile file: %s\n Plugin path: %s\n All the path: %s\n", PLUGIN_DIR, path, g_key_file_get_value(keyfile, "Plugin", "File", NULL), g_build_filename(PLUGIN_DIR, g_key_file_get_value(keyfile, "Plugin", "File", NULL), NULL));
             if(! plugin->plugin_handle)
             {
-                g_warning("Can't load plugin: %s %s", path, dlerror());
+                g_debug ("Can't load plugin: %s %s", path, dlerror());
                 g_object_unref(plugin);
                 return NULL;
             }
@@ -80,7 +80,7 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
             plugin->hook_receive = dlsym(plugin->plugin_handle, "receive_all_hook");
             if((dl_error = dlerror()) != NULL)
             {
-                g_warning("Can't load plugin: %s, %s", path, dl_error);
+                g_debug ("Can't load plugin: %s, %s", path, dl_error);
             }
 
             plugin->hook_receive(NULL, MARLIN_PLUGIN_HOOK_INIT);
@@ -88,7 +88,7 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
             return plugin;
         }
     }
-    g_warning("Plugin not enabled: %s", path);
+    g_debug ("Plugin not enabled: %s", path);
     g_object_unref(plugin);
     return NULL;
 }

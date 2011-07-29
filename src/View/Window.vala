@@ -378,7 +378,7 @@ namespace Marlin.View {
         }
 
         private void action_new_window (Gtk.Action action) {
-            ((Marlin.Application) application).create_window_from_gfile (current_tab.slot.location, screen);
+            ((Marlin.Application) application).create_window (current_tab.slot.location, screen);
         }
 
         private void action_new_tab (Gtk.Action action) {

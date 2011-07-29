@@ -54,8 +54,7 @@ MarlinApplication *marlin_application_new (void);
 MarlinApplication *marlin_application_get (void);
 
 void    marlin_application_create_window (MarlinApplication *application,
-                                          const char *uri, GdkScreen *screen);
-void    marlin_application_create_window_from_gfile (MarlinApplication *application, GFile *location, GdkScreen *screen);
+                                          GFile *location, GdkScreen *screen);
 void    marlin_application_quit (MarlinApplication *self);
 
 //void marlin_application_close_all_windows (MarlinApplication *self);

@@ -23,8 +23,7 @@ namespace Marlin {
     [CCode (cheader_filename = "marlin-application.h")]
     public class Application : Gtk.Application {
         public Application ();
-        public void create_window (string uri, Gdk.Screen screen);
-        public void create_window_from_gfile (GLib.File location, Gdk.Screen screen);
+        public void create_window (GLib.File location, Gdk.Screen screen);
         public void quit ();
     }
     [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
