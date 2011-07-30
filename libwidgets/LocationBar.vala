@@ -464,7 +464,10 @@ namespace Marlin.View.Chrome
         {
             if(file.is_directory && file.name.length > to_search.length)
             {
+                //amtest
+                /* FIXME completion should be case unsensitive */
                 if(file.name.slice(0, to_search.length) == to_search)
+                //if(file.name.ascii_ncasecmp (to_search, to_search.length) == 0)
                 {
                     if(!autocompleted)
                     {
@@ -1008,6 +1011,9 @@ namespace Marlin.View.Chrome
                 get_allocation(out alloc);
                 autocomplete.move(x_win + alloc.x, y_win + alloc.y + get_allocated_height() - 6);
                 win.present();
+                //amtest
+                /* FIXME nasty bug here the popup steal focus and the pathbar can grab keyboard event anymore resulting in: can only type one letter in the pathbar - grab_focus doesn't help */
+                message ("zzz");
                 autocomplete_showed = true;
             }
         }
@@ -1331,20 +1337,10 @@ namespace Marlin.View.Chrome
             im_context.commit.connect(commit);
             
             /* Load arrow image */
-            try
-            {
-                arrow_img = IconTheme.get_default ().load_icon ("go-jump-symbolic", 16, 0);
-            }
-            catch(Error err)
-            {
-                try
-                {
-                    arrow_img = IconTheme.get_default ().load_icon ("go-jump", 16, 0);
-                }
-                catch (Error err)
-                {
-                    stderr.printf ("Unable to load home icon: %s", err.message);
-                }
+            try {
+                arrow_img = IconTheme.get_default ().load_icon ("go-jump-symbolic", 16, IconLookupFlags.GENERIC_FALLBACK);
+            } catch(Error err) {
+                stderr.printf ("Unable to load home icon: %s", err.message);
             }
         }
 
