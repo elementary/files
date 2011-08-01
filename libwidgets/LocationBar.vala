@@ -311,13 +311,9 @@ namespace Marlin.View.Chrome
                 }
             });
             entry.up.connect(() => {
-                //amtest
-                /* TODO set max min */
-                warning ("up");
                 autocomplete.selected --;
             });
             entry.down.connect(() => {
-                warning ("down");
                 autocomplete.selected ++;
             });
 

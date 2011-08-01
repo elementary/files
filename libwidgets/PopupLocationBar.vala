@@ -66,7 +66,15 @@ class PopupDraw : Gtk.DrawingArea
 {
     internal const double height = 30;
     internal Gee.ArrayList<PopupDrawItem> items;
-    internal int selected;
+    private int _selected = -1;
+    public int selected { 
+        get { return _selected; } 
+        set { if (_selected != value) {
+                _selected = value.clamp (-1, items.size - 1); 
+                queue_draw(); 
+              }
+        } 
+    }
     public signal void select(string path);
     new Gtk.StyleContext style;
     Gtk.StyleContext style_;
@@ -90,14 +98,13 @@ class PopupDraw : Gtk.DrawingArea
     {
         if((int)(event.y/height) < items.size)
             selected = (int)(event.y/height);
-        queue_draw();
         return true;
     }
     
     public override bool button_press_event(Gdk.EventButton event)
     {
         if(selected < items.size && selected >= 0)
-        select(items[selected].title);
+            select(items[selected].title);
         return true;
     }
     
