@@ -1005,9 +1005,6 @@ namespace Marlin.View.Chrome
                 Allocation alloc;
                 get_allocation(out alloc);
                 autocomplete.move(x_win + alloc.x, y_win + alloc.y + get_allocated_height() - 6);
-                //win.present();
-                //amtest
-                /* FIXME nasty bug here the popup steal focus and the pathbar can grab keyboard event anymore resulting in: can only type one letter in the pathbar - grab_focus doesn't help */
                 autocomplete_showed = true;
             }
         }
