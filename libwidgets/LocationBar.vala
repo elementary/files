@@ -1514,8 +1514,8 @@ namespace Marlin.View.Chrome
                 reset_selection();
                 if(completion != "")
                 {
-                    text += completion + "/";
-                    cursor += completion.length + 1;
+                    text += completion;
+                    cursor += completion.length;
                     completion = "";
                 }
                 break;
