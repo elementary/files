@@ -88,7 +88,8 @@ class PopupDraw : Gtk.DrawingArea
                   | Gdk.EventMask.BUTTON_RELEASE_MASK
                   | Gdk.EventMask.KEY_PRESS_MASK
                   | Gdk.EventMask.KEY_RELEASE_MASK
-                  | Gdk.EventMask.POINTER_MOTION_MASK);
+                  | Gdk.EventMask.POINTER_MOTION_MASK
+                  | Gdk.EventMask.LEAVE_NOTIFY_MASK);
         menuitem = new Gtk.MenuItem();
         style = menuitem.get_style_context();
         style_ = new Gtk.Menu().get_style_context();
@@ -101,6 +102,12 @@ class PopupDraw : Gtk.DrawingArea
         return true;
     }
     
+    public override bool leave_notify_event(Gdk.EventCrossing event)
+    {
+        selected = -1;
+        return true;
+    }
+
     public override bool button_press_event(Gdk.EventButton event)
     {
         if(selected < items.size && selected >= 0)
