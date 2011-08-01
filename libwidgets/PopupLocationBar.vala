@@ -64,7 +64,7 @@ public class Marlin.View.PopupLocationBar : Gtk.Window
 
 class PopupDraw : Gtk.DrawingArea
 {
-    internal const double height = 30;
+    internal const double height = 20;
     internal Gee.ArrayList<PopupDrawItem> items;
     private int _selected = -1;
     public int selected { 
@@ -126,7 +126,7 @@ class PopupDraw : Gtk.DrawingArea
     
     public void update_size_request()
     {
-        height_request = (int)height * items.size + 6;
+        height_request = (int)height * items.size;
         width_request = 100;
     }
     
