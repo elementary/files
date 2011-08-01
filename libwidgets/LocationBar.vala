@@ -73,6 +73,7 @@ namespace Marlin.View.Chrome
         {
              entry.text = changed;
              activate();
+             bread.popdown ();
         }
 
         private void update_widget()
@@ -972,6 +973,16 @@ namespace Marlin.View.Chrome
         }
         
         bool autocomplete_showed = false;
+
+        public void popdown ()
+        {
+            if (autocomplete != null) {
+                autocomplete_showed = false; 
+                autocomplete.hide(); 
+                autocomplete.destroy(); 
+                autocomplete = null; 
+            }
+        }
         
         public override bool focus_out_event(Gdk.EventFocus event)
         {
@@ -979,7 +990,7 @@ namespace Marlin.View.Chrome
             entry.hide();
             if(can_remove_popup)
             {
-                Timeout.add(75, () => { if(!focus) { autocomplete_showed = false; autocomplete.hide(); autocomplete.destroy(); autocomplete = null; } return false;});
+                Timeout.add(75, () => { if (!focus) { popdown (); } return false;});
             }
             can_remove_popup = true;
             merge_out_clipboard_actions ();
