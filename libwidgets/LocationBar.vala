@@ -410,36 +410,26 @@ namespace Marlin.View.Chrome
             }
         }
 
-        private void action_paste()
+        private void action_paste(Gtk.Action action)
         {
-            if(focus)
-            {
-                var display = get_display();
-                Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
-                Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
-                clipboard.request_text(request_text);
-            }
+            var display = get_display();
+            Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
+            Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
+            clipboard.request_text(request_text);
         }
 
-        private void action_copy()
+        private void action_copy(Gtk.Action action)
         {
-            if(focus)
-            {
-                var display = get_display();
-                Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
-                Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
-                clipboard.set_text(entry.get_selection(), entry.get_selection().length);
-            }
+            var display = get_display();
+            Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
+            Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
+            clipboard.set_text(entry.get_selection(), entry.get_selection().length);
         }
         
-        private void action_cut()
+        private void action_cut(Gtk.Action action)
         {
-            //TODO check
-            if(focus)
-            {
-                action_copy();
-                entry.delete_selection();
-            }
+            action_copy(action);
+            entry.delete_selection();
         }
 
         /**
