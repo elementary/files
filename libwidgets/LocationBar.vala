@@ -446,6 +446,8 @@ namespace Marlin.View.Chrome
         
         bool autocompleted = false;
 
+        /*TODO use a model for autcompletion present sorted results in the popup */
+
         /**
          * This function can be called by load_file_hash or it is used as a
          * callback for files.file_loaded. We check that the file can be used
@@ -458,10 +460,7 @@ namespace Marlin.View.Chrome
         {
             if(file.is_directory && file.name.length > to_search.length)
             {
-                //amtest
-                /* FIXME completion should be case unsensitive */
-                if(file.name.slice(0, to_search.length) == to_search)
-                //if(file.name.ascii_ncasecmp (to_search, to_search.length) == 0)
+                if(file.name.ascii_ncasecmp (to_search, to_search.length) == 0)
                 {
                     if(!autocompleted)
                     {
@@ -481,6 +480,7 @@ namespace Marlin.View.Chrome
                         }
                         entry.completion = to_add;
                     }
+                    entry.text = file.name.slice(0, to_search.length);
                     autocomplete.add_item(file.location.get_path());
                 }
             }
