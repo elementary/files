@@ -620,6 +620,7 @@ namespace Marlin.View.Chrome
         {
             x = (int)menu_x_root;
             y = (int)menu_y_root;
+            push_in = true;
         }
 
         public override bool button_release_event(Gdk.EventButton event)
@@ -1304,7 +1305,7 @@ namespace Marlin.View.Chrome
         int selected_start = -1;
         int selected_end = -1;
         internal bool hover = false;
-        new bool focus = false;
+        bool focus = false;
         
         bool is_selecting = false;
         bool need_selection_update = false;
