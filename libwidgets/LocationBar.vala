@@ -311,9 +311,13 @@ namespace Marlin.View.Chrome
                 }
             });
             entry.up.connect(() => {
+                //amtest
+                /* TODO set max min */
+                warning ("up");
                 autocomplete.selected --;
             });
             entry.down.connect(() => {
+                warning ("down");
                 autocomplete.selected ++;
             });
 
@@ -1010,10 +1014,9 @@ namespace Marlin.View.Chrome
                 Allocation alloc;
                 get_allocation(out alloc);
                 autocomplete.move(x_win + alloc.x, y_win + alloc.y + get_allocated_height() - 6);
-                win.present();
+                //win.present();
                 //amtest
                 /* FIXME nasty bug here the popup steal focus and the pathbar can grab keyboard event anymore resulting in: can only type one letter in the pathbar - grab_focus doesn't help */
-                message ("zzz");
                 autocomplete_showed = true;
             }
         }

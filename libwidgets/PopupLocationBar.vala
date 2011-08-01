@@ -25,18 +25,17 @@ public class Marlin.View.PopupLocationBar : Gtk.Window
     public int selected { get { return popup.selected; } set { popup.selected = value; queue_draw(); } }
     public PopupLocationBar(int width)
     {
-        ///Object(type: Gtk.WindowType.POPUP, type_hint: Gdk.WindowTypeHint.TOOLTIP);
+        Object(type: Gtk.WindowType.POPUP, type_hint: Gdk.WindowTypeHint.COMBO);
         var scrolled = new Gtk.ScrolledWindow(null, null);
         popup = new PopupDraw();
         scrolled.add_with_viewport(popup);
-        get_style_context().add_class("menu");
+        //get_style_context().add_class("menu");
         add(scrolled);
         set_resizable(false);
-        set_decorated(false);
         width_request = width;
-        set_keep_above(true);
         popup.select.connect(select_);
     }
+
     public void select_(string text)
     {
         print(text + "\n");
@@ -72,6 +71,7 @@ class PopupDraw : Gtk.DrawingArea
     new Gtk.StyleContext style;
     Gtk.StyleContext style_;
     Gtk.MenuItem menuitem;
+
     public PopupDraw()
     {
         items = new Gee.ArrayList<PopupDrawItem>();
@@ -106,7 +106,7 @@ class PopupDraw : Gtk.DrawingArea
         var item = new PopupDrawItem(title, style);
         items.add(item);
         update_size_request();
-        print("%s\n", title);
+        print("add_item %s\n", title);
         queue_draw();
     }
     
