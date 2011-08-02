@@ -191,8 +191,8 @@ libwidgets/Makefile
 plugins/Makefile
 plugins/open-terminal/Makefile
 plugins/contractor/Makefile
-libwidgets/tests/Makefile
 libcore/tests/Makefile
+src/View/tests/Makefile
 ])
 AC_OUTPUT
 

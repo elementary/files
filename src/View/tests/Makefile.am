@@ -19,7 +19,7 @@ marlinwidgets_tests_VALAFLAGS = \
     $(NULL)
 
 marlinwidgets_tests_SOURCES = \
-    tests-libwidgets.vala \
+    tests-pathbar.vala \
     $(NULL)
 
 marlinwidgets_tests_LDADD = $(CORE_LIBS) $(top_srcdir)/libcore/libmarlincore.la $(top_srcdir)/libwidgets/libmarlinwidgets.la

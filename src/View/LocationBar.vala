@@ -348,7 +348,11 @@ namespace Marlin.View.Chrome
             });
 
             entry.escape.connect(() => {
-                change_breadcrumbs(text);
+                //change_breadcrumbs(text);
+                /*focus = false;
+                entry.hide();
+                popdown ();
+                merge_out_clipboard_actions ();*/
             });
 
             entry.need_completion.connect(() => {

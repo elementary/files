@@ -43,7 +43,9 @@ marlin_VALASOURCES = \
     View/Animations.vala                    \
     View/Chrome/TopMenu.vala                \
     View/Chrome/ViewSwicher.vala            \
-    View/Chrome/ColorWidget.vala
+    View/Chrome/ColorWidget.vala            \
+    View/LocationBar.vala                   \
+    View/PopupLocationBar.vala
 
 
 marlin.vala.stamp: $(marlin_VALASOURCES)
@@ -117,4 +119,5 @@ CLEANFILES = \
 	$(marlin_VALASOURCES:.vala=.c) \
 	$(NULL)
 
+SUBDIRS = View/tests
 
