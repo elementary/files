@@ -374,8 +374,9 @@ namespace Marlin.View.Chrome
                 if(to_search != "")
                     path = Marlin.Utils.get_parent(path);
 
-                    var directory = File.new_for_path(path +"");
-                files = new GOF.Directory.Async (directory);
+                /* FIXME new_for_path ?? we got to work with uris */
+                var directory = File.new_for_path(path);
+                files = new GOF.Directory.Async.from_gfile (directory);
                 if (files.load())
                     files.file_loaded.connect(on_file_loaded);
                 else
@@ -559,7 +560,8 @@ namespace Marlin.View.Chrome
         private void load_right_click_menu()
         {
             menu = new Menu();
-            var directory = File.new_for_path(current_right_click_root +"/");
+            /* FIXME new_for_path ?? we got to work with uris */
+            var directory = File.new_for_path(current_right_click_root);
             files_menu = new GOF.Directory.Async.from_gfile (directory);
             if (files_menu.load())
                 files_menu.file_loaded.connect(on_file_loaded_menu);
