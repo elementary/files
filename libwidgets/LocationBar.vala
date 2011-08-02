@@ -1409,7 +1409,6 @@ namespace Marlin.View.Chrome
             /* FIXME: I can't find the vapi to not use hardcoded key value. */
             /* FIXME: we should use Gtk.BindingSet, but the vapi file seems buggy */
             
-            /* FIXME: all this block is hackish (but it works ^^) */
             bool control_pressed = (event.state & Gdk.ModifierType.CONTROL_MASK) == 4;
             bool shift_pressed = ! ((event.state & Gdk.ModifierType.SHIFT_MASK) == 0);
 
@@ -1498,16 +1497,13 @@ namespace Marlin.View.Chrome
                 need_completion();
                 break;
             case 0xffff: /* delete */
-                if(get_selection() == "" && cursor < text.length && !((event.state & Gdk.ModifierType.CONTROL_MASK) == 4))
-                {
+                if(get_selection() == null && cursor < text.length && control_pressed) {
+                    text = text.slice(0,cursor);
+                } else if(get_selection() == null && cursor < text.length) {
                     text = text.slice(0,cursor) + text.slice(cursor + 1, text.length);
-                }
-                else if(get_selection() != "")
-                {
+                } else if(get_selection() != null) {
                     delete_selection();
                 }
-                else if(cursor < text.length)
-                    text = text.slice(0,cursor);
                 need_completion();
                 break;
             case 0xff09: /* tab */
@@ -1528,6 +1524,13 @@ namespace Marlin.View.Chrome
             case 0xff1b: /* escape */
                 escape();
                 break;
+            case 0xff50: /* Home */
+                cursor = 0;
+                break;
+            case 0xff57: /* End */
+                cursor = text.length;
+                break;
+
             default:
                 im_context.filter_keypress(event);
                 break;
