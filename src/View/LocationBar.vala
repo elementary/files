@@ -349,10 +349,8 @@ namespace Marlin.View.Chrome
 
             entry.escape.connect(() => {
                 //change_breadcrumbs(text);
-                /*focus = false;
-                entry.hide();
-                popdown ();
-                merge_out_clipboard_actions ();*/
+                /* focus the main view */
+                ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus();
             });
 
             entry.need_completion.connect(() => {
@@ -507,7 +505,6 @@ namespace Marlin.View.Chrome
             }
         }
         PopupLocationBar autocomplete;
-        bool can_remove_popup = false;
 
         /**
          * Select the breadcrumb to make a right click. This function check
@@ -521,8 +518,6 @@ namespace Marlin.View.Chrome
          **/
         private bool select_bread_from_coord(double x, Gdk.EventButton event)
         {
-            can_remove_popup = false;
-
             double x_previous = -10;
             double x_render = 0;
             string newpath = "";
@@ -992,11 +987,7 @@ namespace Marlin.View.Chrome
         {
             focus = false;
             entry.hide();
-            if(can_remove_popup)
-            {
-                Timeout.add(75, () => { if (!focus) { popdown (); } return false;});
-            }
-            can_remove_popup = true;
+            Timeout.add(75, () => { if (!focus) { popdown (); } return false;});
             merge_out_clipboard_actions ();
             return true;
         }
