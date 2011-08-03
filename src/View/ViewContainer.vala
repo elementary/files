@@ -89,7 +89,7 @@ namespace Marlin.View {
                     remove(content_item);
                 add(value);
                 content_item = value;
-                content_item.show();
+                show_all ();
             }
             get{
                 return content_item;
@@ -148,8 +148,9 @@ namespace Marlin.View {
                     slot.make_icon_view();
                 break;
             }
-            if (!slot.directory.file.exists)
+            if (!slot.directory.file.exists) 
                 content = new DirectoryNotFound (slot.directory, this);
+            
             /* focus the main view */
             //((FM.Directory.View) slot.view_box).grab_focus();
             content.grab_focus();

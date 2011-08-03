@@ -27,10 +27,11 @@
 
 #include "marlin-view-window.h"
 #include "marlin-vala.h"
-#include "marlin-progress-ui-handler.h"
-#include "marlin-clipboard-manager.h"
 #include "marlin-file-utilities.h"
 #include "marlin-global-preferences.h"
+#include "marlin-progress-ui-handler.h"
+#include "marlin-clipboard-manager.h"
+#include "marlin-thumbnailer.h"
 #include "marlin-tags.h"
 #include "marlin-plugin-manager.h"
 
@@ -59,6 +60,7 @@ struct _MarlinApplicationPriv {
     GVolumeMonitor *volume_monitor;
     MarlinProgressUIHandler *progress_handler;
     MarlinClipboardManager  *clipboard;
+    MarlinThumbnailer       *thumbnailer;
     gboolean                debug;
     gboolean                open_intab;
 };
@@ -364,6 +366,7 @@ marlin_application_finalize (GObject *object)
     g_clear_object (&application->priv->volume_monitor);
     g_clear_object (&application->priv->progress_handler);
     g_clear_object (&application->priv->clipboard);
+    g_clear_object (&application->priv->thumbnailer);
 
     //marlin_dbus_manager_stop ();
     notify_uninit ();
@@ -614,6 +617,7 @@ marlin_application_startup (GApplication *app)
     notify_init (GETTEXT_PACKAGE);
     self->priv->progress_handler = marlin_progress_ui_handler_new ();
     self->priv->clipboard = marlin_clipboard_manager_new_get_for_display (gdk_display_get_default());
+    self->priv->thumbnailer = marlin_thumbnailer_get ();
 
     tags = marlin_view_tags_new ();
 

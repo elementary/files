@@ -358,29 +358,58 @@ namespace Marlin.View.Chrome
                 string path = "";
                 foreach(BreadcrumbsElement element in elements)
                 {
-                    if(element.display)
+                    if(element.display) 
                         path += element.text + "/"; /* sometimes, + "/" is useless
                                                      * but we are never careful enough */
                 }
-                if(entry.text.split("/").length > 0)
-                    to_search = entry.text.split("/")[entry.text.split("/").length - 1];
-                else
+                warning ("need_completion path %s", path);
+                warning ("need_completion entry_text %s", entry.text);
+
+                string[] stext = entry.text.split("/");
+                int ssize = stext.length;
+                if(ssize > 0) {
+                    if (ssize > 1) {
+                        string spath = path;
+                        int i;
+                        for (i=0; i< ssize-1; i++) {
+                            spath += stext[i];
+                            if (i != ssize-2)
+                                spath += "/";
+                        }
+                        warning ("spath = %s", spath);
+                        change_breadcrumbs(spath);
+                        /*File location = File.new_for_commandline_arg (spath);
+                        win.current_tab.path_changed (location);
+                        grab_focus ();*/
+                        //entry.need_completion();
+                        return;
+                    } else
+                        to_search = stext[0];
+                        //to_search = stext[ssize - 1];
+                } else {
                     to_search = "";
+                }
+                warning ("zz need_completion to_search %s", to_search);
                 entry.completion = "";
                 autocompleted = false;
                 autocomplete.clear();
                 autocomplete.selected = -1;
-                path += "/" +  entry.text;
+                //path += "/" +  entry.text;
+                path += entry.text;
+                warning ("zz need_completion path %s", path);
                 if(to_search != "")
                     path = Marlin.Utils.get_parent(path);
+                warning ("zz2 need_completion path %s", path);
 
                 /* FIXME new_for_path ?? we got to work with uris */
                 var directory = File.new_for_path(path);
                 files = new GOF.Directory.Async.from_gfile (directory);
-                if (files.load())
-                    files.file_loaded.connect(on_file_loaded);
-                else
-                    Idle.add ((SourceFunc) load_file_hash, Priority.DEFAULT_IDLE);
+                if (files.file.exists) {
+                    if (files.load())
+                        files.file_loaded.connect(on_file_loaded);
+                    else
+                        Idle.add ((SourceFunc) load_file_hash, Priority.DEFAULT_IDLE);
+                }
             });
             
             entry.paste.connect( () => {
@@ -480,7 +509,17 @@ namespace Marlin.View.Chrome
                         }
                         entry.completion = to_add;
                     }
-                    entry.text = file.name.slice(0, to_search.length);
+                    /*warning ("on_file_loaded entry_text %s %d", entry.text, entry.text.length);
+                    warning ("on_file_loaded to_search %s %d", to_search, to_search.length);*/
+                    //entry.text = file.name.slice(0, to_search.length);
+                    /* autocompletion is case insensitive so we have to change the first completed 
+                     * parts: the entry.text.
+                     */
+                    string str = entry.text.slice(0, entry.text.length - to_search.length);
+                    if (str == null)
+                        str = "";
+                    entry.text = str + file.name.slice(0, to_search.length);
+
                     autocomplete.add_item(file.location.get_path());
                 }
             }
