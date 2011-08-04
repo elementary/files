@@ -198,7 +198,7 @@ namespace Marlin.View {
             if (Preferences.settings.get_boolean("maximized")) {
                 maximize();
             }
-            title = Resources.APP_TITLE;
+            title = Marlin.APP_TITLE;
             //this.icon = DrawingService.GetIcon("system-file-manager", 32);
             //this.icon = IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
             try {
@@ -470,11 +470,11 @@ namespace Marlin.View {
         }
 
         private void action_go_to_trash_callback (Gtk.Action action) {
-                current_tab.path_changed(File.new_for_commandline_arg(Resources.MARLIN_TRASH_URI));
+                current_tab.path_changed(File.new_for_commandline_arg(Marlin.TRASH_URI));
         }
 
         private void action_go_to_network_callback (Gtk.Action action) {
-                current_tab.path_changed(File.new_for_commandline_arg(Resources.MARLIN_NETWORK_URI));
+                current_tab.path_changed(File.new_for_commandline_arg(Marlin.NETWORK_URI));
         }
         
         private void action_zoom_in_callback (Gtk.Action action) {
@@ -506,15 +506,15 @@ namespace Marlin.View {
                 stderr.printf ("Unable to load marlin icon: %s", err.message);
             }
             Gtk.show_about_dialog(this,
-                "program-name", Resources.APP_TITLE,
+                "program-name", Marlin.APP_TITLE,
                 "version", Config.VERSION,
-                "comments", Resources.COMMENTS,
-                "copyright", Resources.COPYRIGHT,
-                "license", Resources.LICENSE,
-                "website", Resources.ELEMENTARY_URL,
-                "website-label",  Resources.ELEMENTARY_LABEL,
-                "authors", Resources.AUTHORS,
-                "artists", Resources.ARTISTS,
+                "comments", Marlin.COMMENTS,
+                "copyright", Marlin.COPYRIGHT,
+                "license", Marlin.LICENSE,
+                "website", Marlin.ELEMENTARY_URL,
+                "website-label",  Marlin.ELEMENTARY_LABEL,
+                "authors", Marlin.AUTHORS,
+                "artists", Marlin.ARTISTS,
                 "logo", logo,
                 "translator-credits", _("translator-credits"),
                 null);
@@ -559,15 +559,15 @@ namespace Marlin.View {
                                { "Forward", Stock.GO_FORWARD, N_("_Forward"),
                                  "<alt>Right", N_("Go to the next visited location"),
                                  action_go_forward },
-  /* name, stock id */         { "Home", Resources.MARLIN_ICON_HOME,
+  /* name, stock id */         { "Home", Marlin.ICON_HOME,
   /* label, accelerator */       N_("_Home Folder"), "<alt>Home",
   /* tooltip */                  N_("Open your personal folder"),
                                  action_home_callback },
-  /* name, stock id */         { "Go to Trash", Resources.MARLIN_ICON_TRASH,
+  /* name, stock id */         { "Go to Trash", Marlin.ICON_TRASH,
   /* label, accelerator */       N_("_Trash"), null,
   /* tooltip */                  N_("Open your personal trash folder"),
                                  action_go_to_trash_callback },
-  /* name, stock id */         { "Go to Network", Resources.MARLIN_ICON_NETWORK,
+  /* name, stock id */         { "Go to Network", Marlin.ICON_NETWORK,
   /* label, accelerator */       N_("_Network"), null,
   /* tooltip */                  N_("Browse bookmarked and local network locations"),
                                  action_go_to_network_callback },

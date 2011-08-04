@@ -99,7 +99,6 @@ namespace Marlin.View.Chrome
     {
         string path;
         string icon_name;
-        string fallback_icon;
         bool protocol;
         Gdk.Pixbuf icon;
         string[] exploded;
@@ -189,16 +188,16 @@ namespace Marlin.View.Chrome
             /* grab the UIManager */
             this.ui = ui;
             init_clipboard ();
-            icons[0] = {"trash://", "user-trash", "computer", true, null, null, true, "Trash"};
+            icons[0] = { Marlin.TRASH_URI, Marlin.ICON_TRASH, true, null, null, true, "Trash"};
             make_icon(ref icons[0]);
-            icons[1] = {"network://", "network", "computer", true, null, null, true};
+            icons[1] = {"network://", "network", true, null, null, true};
             make_icon(ref icons[1]);
             /* music */
             string dir;
             dir = Environment.get_user_special_dir(UserDirectory.MUSIC);
             if(dir.contains("/"))
             {
-                icons[2] = {dir, "folder-music-symbolic", "folder", false, null, null, false, null};
+                icons[2] = {dir, "folder-music-symbolic", false, null, null, false, null};
                 icons[2].exploded = dir.split("/");
                 icons[2].exploded[0] = "/";
                 make_icon(ref icons[2]);
@@ -208,7 +207,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.PICTURES);
             if(dir.contains("/"))
             {
-                icons[3] = {dir, "folder-images-symbolic", "folder-pictures", false, null, null, false, null};
+                icons[3] = {dir, "folder-images-symbolic", false, null, null, false, null};
                 icons[3].exploded = dir.split("/");
                 icons[3].exploded[0] = "/";
                 make_icon(ref icons[3]);
@@ -218,7 +217,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.VIDEOS);
             if(dir.contains("/"))
             {
-                icons[4] = {dir, "folder-videos-symbolic", "folder", false, null, null, false, null};
+                icons[4] = {dir, "folder-videos-symbolic", false, null, null, false, null};
                 icons[4].exploded = dir.split("/");
                 icons[4].exploded[0] = "/";
                 make_icon(ref icons[4]);
@@ -228,7 +227,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.DOWNLOAD);
             if(dir.contains("/"))
             {
-                icons[5] = {dir, "folder-downloads-symbolic", "folder_download", false, null, null, false, null};
+                icons[5] = {dir, "folder-downloads-symbolic", false, null, null, false, null};
                 icons[5].exploded = dir.split("/");
                 icons[5].exploded[0] = "/";
                 make_icon(ref icons[5]);
@@ -238,7 +237,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.DOCUMENTS);
             if(dir.contains("/"))
             {
-                icons[6] = {dir, "folder-documents-symbolic", "folder-documents", false, null, null, false, null};
+                icons[6] = {dir, "folder-documents-symbolic", false, null, null, false, null};
                 icons[6].exploded = dir.split("/");
                 icons[6].exploded[0] = "/";
                 make_icon(ref icons[6]);
@@ -247,13 +246,13 @@ namespace Marlin.View.Chrome
             dir = Environment.get_home_dir();
             if(dir.contains("/"))
             {
-                icons[dir_number - 2] = {dir, "go-home-symbolic", "go-home", false, null, null, true, null};
+                icons[dir_number - 2] = {dir, "go-home-symbolic", false, null, null, true, null};
                 icons[dir_number - 2].exploded = dir.split("/");
                 icons[dir_number - 2].exploded[0] = "/";
                 make_icon(ref icons[dir_number - 2]);
             }
             
-            icons[dir_number - 1] = {"/", "drive-harddisk", "computer", false, null, null, true, null};
+            icons[dir_number - 1] = {"/", Marlin.ICON_FILESYSTEM, false, null, null, true, null};
             icons[dir_number - 1].exploded = {"/"};
             make_icon(ref icons[dir_number - 1]);
             
@@ -382,7 +381,7 @@ namespace Marlin.View.Chrome
                         win.current_tab.path_changed (location);
                         grab_focus ();*/
                         //entry.need_completion();
-                        return;
+                        //return;
                     } else
                         to_search = stext[0];
                         //to_search = stext[ssize - 1];
@@ -429,13 +428,9 @@ namespace Marlin.View.Chrome
         private void make_icon(ref IconDirectory icon)
         {
             try {
-                icon.icon = IconTheme.get_default ().load_icon (icon.icon_name, 16, 0);
+                icon.icon = IconTheme.get_default ().load_icon (icon.icon_name, 16, IconLookupFlags.GENERIC_FALLBACK);
             } catch (Error err) {
-                try {
-                    icon.icon = IconTheme.get_default ().load_icon (icon.fallback_icon, 16, 0);
-                } catch (Error err) {
-                    stderr.printf ("Unable to load home icon: %s", err.message);
-                }
+                stderr.printf ("Unable to load home icon: %s", err.message);
             }
         }
 

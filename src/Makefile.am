@@ -41,11 +41,11 @@ marlin_VALASOURCES = \
     View/Browser.vala                       \
     View/ViewMode.vala                      \
     View/Animations.vala                    \
+    View/LocationBar.vala                   \
+    View/PopupLocationBar.vala              \
     View/Chrome/TopMenu.vala                \
     View/Chrome/ViewSwicher.vala            \
-    View/Chrome/ColorWidget.vala            \
-    View/LocationBar.vala                   \
-    View/PopupLocationBar.vala
+    View/Chrome/ColorWidget.vala
 
 
 marlin.vala.stamp: $(marlin_VALASOURCES)

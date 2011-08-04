@@ -1,4 +1,4 @@
-namespace Resources {
+namespace Marlin {
     public const string APP_TITLE = "Marlin";
     public const string COPYRIGHT = "Copyright 2010 Elementary Developers";
     public const string ELEMENTARY_URL = "http://www.elementary-project.com";
@@ -53,14 +53,16 @@ along with Marlin; if not, write to the Free Software Foundation, Inc.,
         return scaled_pixbuf;
     }*/
 
-    //TODO remove and use marlin-icons.h
-    public const string MARLIN_ICON_HOME = "user-home";
-    public const string MARLIN_ICON_TRASH = "user-trash";
-    public const string MARLIN_ICON_TRASH_FULL = "user-trash-full";
-    public const string MARLIN_ICON_NETWORK = "network-workgroup";
-    public const string MARLIN_ICON_NETWORK_SERVER = "network-server";
-    public const string MARLIN_ICON_FILESYSTEM = "drive-harddisk";
+    public const string ICON_HOME = "user-home";
+    public const string ICON_TRASH = "user-trash";
+    public const string ICON_TRASH_FULL = "user-trash-full";
+    public const string ICON_NETWORK = "network-workgroup";
+    public const string ICON_NETWORK_SERVER = "network-server";
+    public const string ICON_FILESYSTEM = "drive-harddisk-system";
 
-    public const string MARLIN_TRASH_URI = "trash:///";
-    public const string MARLIN_NETWORK_URI = "network:///";
+    public const string ICON_FOLDER = "folder";
+    public const string ICON_FOLDER_REMOTE = "folder-remote";
+
+    public const string TRASH_URI = "trash://";
+    public const string NETWORK_URI = "network://";
 }

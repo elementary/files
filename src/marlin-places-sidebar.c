@@ -34,7 +34,6 @@
 #include "gof-file.h"
 #include "gof-window-slot.h"
 #include "nautilus-icon-info.h"
-#include "marlin-icons.h"
 #include "marlin-places-sidebar.h"
 #include "marlin-vala.h"
 #include "marlin-view-window.h"
@@ -415,9 +414,7 @@ update_places (MarlinPlacesSidebar *sidebar)
 
 
     mount_uri = "file:///"; /* No need to strdup */
-    //icon = g_themed_icon_new (MARLIN_ICON_FILESYSTEM);
-    icon = g_themed_icon_new ("distributor-logo");
-    //icon = g_themed_icon_new ("start-here");
+    icon = g_themed_icon_new (MARLIN_ICON_FILESYSTEM);
     last_iter = add_place (sidebar, PLACES_BUILT_IN, &iter,
                            _("File System"), icon,
                            mount_uri, NULL, NULL, NULL, 0,
