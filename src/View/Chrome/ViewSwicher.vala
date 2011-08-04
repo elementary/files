@@ -62,23 +62,24 @@ namespace Marlin.View.Chrome
         private Image list;
         private Image miller;
 
-        //Gdk.Pixbuf iconviewIcon = DrawingService.GetIcon("view-list-icons-symbolic;;view-list-icons", 16);
-        //Gdk.Pixbuf detailsviewIcon = DrawingService.GetIcon("view-list-details-symbolic;;view-list-details", 16);
-        //Gdk.Pixbuf compactviewIcon = DrawingService.GetIcon("view-list-compact-symbolic;;view-list-compact", 16);
-
         public ViewSwitcher (Gtk.ActionGroup action_group)
         {
             main_actions = action_group;
             border_width = 6;
 
             switcher = new ModeButton();
+            Gtk.IconTheme dtheme = IconTheme.get_default ();
 
-            icon = new Image.from_file(Config.PIXMAP_DIR + "view-list-icons-symbolic.svg");
-            switcher.append(icon);
-            list = new Image.from_file(Config.PIXMAP_DIR + "view-list-details-symbolic.svg");
-            switcher.append(list);
-            miller = new Image.from_file(Config.PIXMAP_DIR + "view-list-column-symbolic.svg");
-            switcher.append(miller);
+            try {
+                icon = new Image.from_pixbuf (dtheme.load_icon ("view-list-icons-symbolic", 16, IconLookupFlags.GENERIC_FALLBACK));
+                switcher.append(icon);
+                list = new Image.from_pixbuf (dtheme.load_icon ("view-list-details-symbolic", 16, IconLookupFlags.GENERIC_FALLBACK));
+                switcher.append(list);
+                miller = new Image.from_pixbuf (dtheme.load_icon ("view-list-column-symbolic", 16, IconLookupFlags.GENERIC_FALLBACK));
+                switcher.append(miller);
+            } catch (Error err) {
+                stderr.printf ("Unable to load ViewSwitcher icon: %s", err.message);
+            }
            
             switcher.mode_changed.connect((mode) => {
                 Gtk.Action action;
