@@ -138,3 +138,13 @@ po/he.gmo
 po/nl.gmo
 po/ru.gmo
 po/sk.gmo
+libwidgets/ImgEventBox.c
+libwidgets/libmarlinwidgets_la-ImgEventBox.lo
+src/marlin-src.vapi
+src/View/PopupLocationBar.c
+src/View/tests/marlinwidgets_tests
+src/View/tests/marlinwidgets_tests-LocationBar.o
+src/View/tests/marlinwidgets_tests-PopupLocationBar.o
+src/View/tests/marlinwidgets_tests-tests-pathbar.o
+src/View/tests/marlinwidgets_tests_vala.stamp
+src/View/tests/tests-pathbar.c
