@@ -148,3 +148,4 @@ src/View/tests/marlinwidgets_tests-PopupLocationBar.o
 src/View/tests/marlinwidgets_tests-tests-pathbar.o
 src/View/tests/marlinwidgets_tests_vala.stamp
 src/View/tests/tests-pathbar.c
+build
