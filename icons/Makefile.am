@@ -3,14 +3,15 @@ NULL=
 pixmapdir = $(datadir)/pixmaps/marlin
 pixmap_DATA =\
 	thumbnail_frame.png \
+	$(NULL)
+
+icondir = $(datadir)/icons/hicolor/scalable/apps
+icon_DATA = marlin.svg \
         view-list-icons-symbolic.svg \
         view-list-details-symbolic.svg \
         view-list-compact-symbolic.svg \
         view-list-column-symbolic.svg \
-	$(NULL)
-
-icondir = $(datadir)/icons/hicolor/scalable/apps
-icon_DATA = marlin.svg
+		$(NULL)
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 install-data-hook: update-icon-cache
