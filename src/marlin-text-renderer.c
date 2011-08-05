@@ -38,6 +38,7 @@ enum
     PROP_FOLLOW_PRELIT,
     PROP_FOLLOW_STATE,
     PROP_TEXT,
+    PROP_BACKGROUND,
     PROP_ZOOM_LEVEL,
     PROP_WRAP_MODE,
     PROP_WRAP_WIDTH,
@@ -168,6 +169,19 @@ marlin_text_renderer_class_init (MarlinTextRendererClass *klass)
                                                           EXO_PARAM_READWRITE));
 
     /**
+     * MarlinTextRenderer:background:
+     *
+     * The background to render.
+    **/
+    g_object_class_install_property (gobject_class,
+                                     PROP_BACKGROUND,
+                                     g_param_spec_string ("background",
+                                                          "background",
+                                                          "background",
+                                                          NULL,
+                                                          EXO_PARAM_READWRITE));
+
+    /**
      * MarlinTextRenderer:size:
      *
      * The zoom-level at which we have to render the text.
@@ -280,6 +294,10 @@ marlin_text_renderer_get_property (GObject    *object,
         g_value_set_string (value, text_renderer->text);
         break;
 
+    case PROP_BACKGROUND:
+        g_value_set_string (value, text_renderer->background);
+        break;
+
     case PROP_ZOOM_LEVEL:
         g_value_set_enum (value, text_renderer->zoom_level);
         break;
@@ -328,6 +346,12 @@ marlin_text_renderer_set_property (GObject      *object,
         text_renderer->text = (sval == NULL) ? "" : (gchar *)sval;
         if (!text_renderer->text_static)
             text_renderer->text = g_strdup (text_renderer->text);
+        break;
+
+    case PROP_BACKGROUND:
+        g_free (text_renderer->background);
+        sval = g_value_get_string (value);
+        text_renderer->background = g_strdup (sval);
         break;
 
     case PROP_ZOOM_LEVEL:
@@ -467,6 +491,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
 
     /* setup the new widget */
     marlin_text_renderer_set_widget (text_renderer, widget);
+    
 
     if ((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED)
     {
@@ -547,7 +572,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
     context = gtk_widget_get_style_context (widget);
 
     /* render the state indicator */
-    if ((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED && text_renderer->follow_state)
+    if (((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED && text_renderer->follow_state) || text_renderer->background != NULL)
     {
         /* calculate the text bounding box (including the focus padding/width) */
         x0 = cell_area->x + x_offset;
@@ -566,9 +591,21 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         cairo_curve_to (cr, x0, y0 + 5, x0, y0, x0 + 5, y0);
         
         GdkRGBA color;
-        gtk_style_context_get_background_color (context, state, &color);
-        gdk_cairo_set_source_rgba (cr, &color);
 
+        if(text_renderer->background != NULL)
+        {
+            if(!gdk_rgba_parse(&color, text_renderer->background))
+            {
+                g_critical("Can't parse this color value: %d", text_renderer->background);
+                gtk_style_context_get_background_color (context, state, &color);
+            }
+            
+        }
+        else
+        {
+            gtk_style_context_get_background_color (context, state, &color);
+        }
+        gdk_cairo_set_source_rgba (cr, &color);
         cairo_fill (cr);
     }
 

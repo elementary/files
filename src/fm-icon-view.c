@@ -502,97 +502,6 @@ fm_icon_view_remove_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsyn
     fm_list_model_remove_file (icon_view->model, file, directory);
 }
 
-#if 0
-static void
-fm_icon_view_remove_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
-{
-    printf ("%s %s\n", G_STRFUNC, g_file_get_uri(file->location));
-    
-    GtkTreePath *path;
-    GtkTreePath *file_path;
-    GtkTreeIter iter;
-    GtkTreeIter temp_iter;
-    GtkTreeRowReference* row_reference;
-    FMIconView *icon_view;
-    GtkTreeModel* tree_model; 
-    GtkTreeSelection *selection;
-
-    path = NULL;
-    row_reference = NULL;
-    icon_view = FM_ICON_VIEW (view);
-    tree_model = GTK_TREE_MODEL(icon_view->model);
-
-    if (fm_list_model_get_tree_iter_from_file (icon_view->model, file, directory, &iter))
-    {
-        selection =  exo_icon_view_get_selected_items (icon_view->icons);
-        file_path = gtk_tree_model_get_path (tree_model, &iter);
-
-        if (exo_icon_view_path_is_selected (icon_view->icons, file_path)) {
-            /* get reference for next element in the list view. If the element to be deleted is the 
-             * last one, get reference to previous element. If there is only one element in view
-             * no need to select anything.
-             */
-            temp_iter = iter;
-
-            if (gtk_tree_model_iter_next (tree_model, &iter)) {
-                path = gtk_tree_model_get_path (tree_model, &iter);
-                row_reference = gtk_tree_row_reference_new (tree_model, path);
-            } else {
-                path = gtk_tree_model_get_path (tree_model, &temp_iter);
-                if (gtk_tree_path_prev (path)) {
-                    row_reference = gtk_tree_row_reference_new (tree_model, path);
-                }
-            }
-            gtk_tree_path_free (path);
-        }
-
-        gtk_tree_path_free (file_path);
-
-        fm_list_model_remove_file (icon_view->model, file, directory);
-
-        if (gtk_tree_row_reference_valid (row_reference)) {
-            if (icon_view->details->new_selection_path) {
-                gtk_tree_path_free (icon_view->details->new_selection_path);
-            }
-            icon_view->details->new_selection_path = gtk_tree_row_reference_get_path (row_reference);
-        }
-
-        if (row_reference) {
-            gtk_tree_row_reference_free (row_reference);
-        }
-    }
-}
-#endif
-
-
-/*
-   static void
-   fm_icon_view_clear (FMIconView *view)
-   {
-   if (view->model != NULL) {
-//stop_cell_editing (view);
-fm_list_model_clear (view->model);
-}
-}*/
-
-/*
-   static void
-   get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
-   {
-   GList **list;
-   GOFFile *file;
-
-   list = data;
-
-   gtk_tree_model_get (model, iter,
-   FM_LIST_MODEL_FILE_COLUMN, &file,
-   -1);
-
-   if (file != NULL) {
-   (* list) = g_list_prepend ((* list), file);
-   }
-   }*/
-
 static GList *
 get_selection (FMIconView *view)
 {
@@ -652,46 +561,12 @@ fm_icon_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean star
                               start_editing);
 }
 
-#if 0
-static void
-fm_icon_view_reset_selection (FMDirectoryView *view)
-{
-    FMIconView *icon_view = FM_ICON_VIEW (view);
-    GList *lp, *selected_paths;
-    GtkTreePath *path;
-
-    g_signal_handlers_block_by_func (icon_view->icons, fm_icon_view_selection_changed, icon_view);
-
-    selected_paths = exo_icon_view_get_selected_items (icon_view->icons);
-    exo_icon_view_unselect_all (icon_view->icons);
-    
-    for (lp = selected_paths; lp != NULL; lp = lp->next)
-    {
-        path = lp->data;
-        exo_icon_view_select_path (icon_view->icons, path);
-
-        /* release the tree path... */
-        gtk_tree_path_free (path);
-    }
-    g_list_free (selected_paths);
-
-    g_signal_handlers_unblock_by_func (icon_view->icons, fm_icon_view_selection_changed, icon_view);
-}
-#endif
-
-/*static void
-fm_icon_view_select_all (FMIconView *view)
-{
-gtk_tree_selection_select_all (gtk_tree_view_get_selection (view->tree));
-}*/
-
 static GtkTreePath*
 fm_icon_view_get_path_at_pos (FMDirectoryView *view, gint x, gint y)
 {
     GtkTreePath *path;
 
     g_return_val_if_fail (FM_IS_ICON_VIEW (view), NULL);
-    //return exo_icon_view_get_path_at_pos (FM_ICON_VIEW (view)->icons, x, y);
 
     if (exo_icon_view_get_dest_item_at_pos  (FM_ICON_VIEW (view)->icons, x, y, &path, NULL))
         return path;
@@ -752,8 +627,6 @@ fm_icon_view_finalize (GObject *object)
     if (view->details->selection)
         gof_file_list_free (view->details->selection);
 
-    /*g_signal_handlers_disconnect_by_func (marlin_icon_view_settings,
-                                          fm_icon_view_zoom_level_changed, view);*/
 
     g_object_unref (view->model);
     g_free (view->details);
@@ -789,14 +662,13 @@ fm_icon_view_init (FMIconView *view)
                   "follow-state", TRUE, "yalign", 1.0f, NULL);
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, FALSE);
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, "file", FM_LIST_MODEL_FILE_COLUMN);
-    //gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->icon_renderer, "pixbuf", FM_LIST_MODEL_ICON);
-    //exo_icon_view_set_pixbuf_column (view->icons, FM_LIST_MODEL_ICON);
 
     /* add the name renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->name_renderer), 
                   "follow-state", TRUE, "wrap-mode", PANGO_WRAP_WORD_CHAR, NULL);
     gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, TRUE);
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, "text", FM_LIST_MODEL_FILENAME);
+    gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, "background", FM_LIST_MODEL_COLOR);
 
     g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "edited", G_CALLBACK (cell_renderer_edited), view);
 	g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "editing-canceled", G_CALLBACK (cell_renderer_editing_canceled), view);

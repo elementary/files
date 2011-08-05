@@ -5509,21 +5509,23 @@ update_text_cell (ExoIconView *icon_view)
     {
         if (icon_view->priv->text_cell == NULL)
         {
-            icon_view->priv->text_cell = gtk_cell_renderer_text_new ();
+            //icon_view->priv->text_cell = gtk_cell_renderer_text_new ();
 
             gtk_cell_layout_pack_end (GTK_CELL_LAYOUT (icon_view), icon_view->priv->text_cell, FALSE);
         }
 
-        if (icon_view->priv->markup_column != -1)
+        /*if (icon_view->priv->markup_column != -1)
             gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (icon_view),
                                             icon_view->priv->text_cell, 
-                                            "markup", icon_view->priv->markup_column, 
+                                            "markup", icon_view->priv->markup_column,
+                                            "background", 2,
                                             NULL);
         else
             gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (icon_view),
                                             icon_view->priv->text_cell, 
                                             "text", icon_view->priv->text_column, 
-                                            NULL);
+                                            "background", 2,
+                                            NULL);*/
 
         if (icon_view->priv->item_orientation == GTK_ORIENTATION_VERTICAL)
             g_object_set (icon_view->priv->text_cell,
