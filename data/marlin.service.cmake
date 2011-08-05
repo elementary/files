@@ -1,3 +1,3 @@
 [D-BUS Service]
 Name=org.elementary.marlin.db
-Exec=@bindir@/marlin-daemon
+Exec=@CMAKE_INSTALL_PREFIX@/bin/marlin-daemon
