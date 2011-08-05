@@ -81,6 +81,7 @@ namespace Marlin.View.Chrome
                 {
                     location_bar = new LocationBar (win.ui, win);
                     location_bar.show_all();
+                    location_bar.escape.connect( () => { ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); });
                     insert(location_bar, -1);
                     /* init the path if we got a curent tab with a valid slot
                        and a valid directory loaded */

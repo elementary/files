@@ -52,11 +52,13 @@ namespace Marlin.View.Chrome
         }
 
         public new signal void activate();
+        public signal void escape();
 
         public LocationBar (UIManager window, Window win)
         {
             entry = new Entry ();
             bread = new Breadcrumbs(window);
+            bread.escape.connect( () => { escape(); });
 
             bread.activate_entry.connect( () => { state = false; });
 
