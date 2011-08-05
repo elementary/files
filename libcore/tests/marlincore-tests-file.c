@@ -39,7 +39,7 @@ static void quit(gpointer data, gpointer data_)
 
 static void second_load_done(GOFDirectoryAsync* dir, gpointer data)
 {
-    g_assert_cmpint(dir->exists, ==, TRUE);
+    g_assert_cmpint(dir->file->exists, ==, TRUE);
     /* use a marlin function would show a dialog, FIXME */
     system("rm /tmp/marlin-test -R");
     g_main_loop_quit(loop);
@@ -47,7 +47,7 @@ static void second_load_done(GOFDirectoryAsync* dir, gpointer data)
 
 static void first_load_done(GOFDirectoryAsync* dir, gpointer data)
 {
-    g_assert_cmpint(dir->exists, ==, FALSE);
+    g_assert_cmpint(dir->file->exists, ==, FALSE);
     marlin_file_operations_new_folder_with_name (NULL, NULL, g_file_new_for_path("/tmp"), "marlin-test", NULL, NULL);
     dir = gof_directory_async_new(g_file_new_for_path("/tmp/marlin-test"));
     g_signal_connect(dir, "done_loading", second_load_done, NULL);

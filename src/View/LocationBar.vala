@@ -56,7 +56,7 @@ namespace Marlin.View.Chrome
         public LocationBar (UIManager window, Window win)
         {
             entry = new Entry ();
-            bread = new Breadcrumbs(window, win);
+            bread = new Breadcrumbs(window);
 
             bread.activate_entry.connect( () => { state = false; });
 
@@ -119,6 +119,8 @@ namespace Marlin.View.Chrome
          **/
         public signal void changed(string changed);
         
+        public signal void escape();
+        
         const int dir_number = 9;
         
         IconDirectory[] icons = new IconDirectory[dir_number];
@@ -169,14 +171,13 @@ namespace Marlin.View.Chrome
         /* if we have the focus or not
          * FIXME: this should be replaced with some nice Gtk.Widget method. */
         new bool focus = false;
-        
-        Window win;
+
         private int timeout = -1;
 
         int left_padding;
         int right_padding;
 
-        public Breadcrumbs(UIManager ui, Window win)
+        public Breadcrumbs(UIManager ui)
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                       | Gdk.EventMask.BUTTON_RELEASE_MASK
@@ -255,8 +256,6 @@ namespace Marlin.View.Chrome
             icons[dir_number - 1] = {"/", Marlin.ICON_FILESYSTEM, false, null, null, true, null};
             icons[dir_number - 1].exploded = {"/"};
             make_icon(ref icons[dir_number - 1]);
-            
-            this.win = win;
 
             button_context = new Gtk.Button().get_style_context();
             entry_context = new Gtk.Entry().get_style_context();
@@ -349,7 +348,8 @@ namespace Marlin.View.Chrome
             entry.escape.connect(() => {
                 //change_breadcrumbs(text);
                 /* focus the main view */
-                ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus();
+                //((FM.Directory.View) win.current_tab.slot.view_box).grab_focus();
+                escape();
             });
 
             entry.need_completion.connect(() => {
@@ -388,17 +388,14 @@ namespace Marlin.View.Chrome
                 } else {
                     to_search = "";
                 }
-                warning ("zz need_completion to_search %s", to_search);
                 entry.completion = "";
                 autocompleted = false;
                 autocomplete.clear();
                 autocomplete.selected = -1;
                 //path += "/" +  entry.text;
                 path += entry.text;
-                warning ("zz need_completion path %s", path);
                 if(to_search != "")
                     path = Marlin.Utils.get_parent(path);
-                warning ("zz2 need_completion path %s", path);
 
                 /* FIXME new_for_path ?? we got to work with uris */
                 var directory = File.new_for_path(path);

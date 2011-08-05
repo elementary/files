@@ -75,10 +75,6 @@ libcore/marlin-progress-info.c
 libcore/marlin-progress-info.h
 libcore/marlin-progress-info-manager.c
 libcore/marlin-progress-info-manager.h
-libcore/marlin-progress-info-widget.c
-libcore/marlin-progress-info-widget.h
-libcore/marlin-progress-ui-handler.c
-libcore/marlin-progress-ui-handler.h
 src/marlin-tags.h
 src/marlin-text-renderer.c
 src/marlin-text-renderer.h
@@ -97,7 +93,7 @@ src/View/Browser.vala
 libwidgets/AppMenu.vala
 libwidgets/CollapsablePaned.vala
 src/View/Chrome/ColorWidget.vala
-libwidgets/LocationBar.vala
+src/View/LocationBar.vala
 libwidgets/ModeButton.vala
 libwidgets/ToolButtonWithMenu.vala
 src/View/Chrome/TopMenu.vala
@@ -112,3 +108,8 @@ src/View/Window.vala
 src/View/DirectoryNotFound.c
 data/marlin.desktop.in
 src/eel-editable-label.c
+src/marlin-connect-server-dialog.c
+src/marlin-progress-ui-handler.c
+plugins/open-terminal/plugin.c
+src/View/LocationBar.c
+src/View/PopupLocationBar.c

@@ -22,7 +22,7 @@ void add_pathbar_tests()
 {
     Test.add_func ("/marlin/pathbar/general", () => {
         Test.log_set_fatal_handler( () => { return false; });
-        var breads = new Breadcrumbs(new Gtk.UIManager(), new Gtk.Window());
+        var breads = new Breadcrumbs(new Gtk.UIManager());
         var bread_entry = new BreadcrumbsEntry();
         assert(bread_entry is BreadcrumbsEntry);
         assert(bread_entry.text == "");
@@ -107,7 +107,7 @@ void add_pathbar_tests()
     
     Test.add_func ("/marlin/pathbar/start-selection", () => {
         Test.log_set_fatal_handler( () => { return false; });
-        var breads = new Breadcrumbs(new Gtk.UIManager(), new Gtk.Window());
+        var breads = new Breadcrumbs(new Gtk.UIManager());
         var bread_entry = new BreadcrumbsEntry();
         assert(bread_entry is BreadcrumbsEntry);
         assert(bread_entry.text == "");
@@ -123,7 +123,7 @@ void add_pathbar_tests()
     
     Test.add_func ("/marlin/pathbar/backspace-without-text", () => {
         Test.log_set_fatal_handler( () => { return false; });
-        var breads = new Breadcrumbs(new Gtk.UIManager(), new Gtk.Window());
+        var breads = new Breadcrumbs(new Gtk.UIManager());
         var bread_entry = new BreadcrumbsEntry();
         assert(bread_entry is BreadcrumbsEntry);
         assert(bread_entry.text == "");
@@ -136,7 +136,7 @@ void add_pathbar_tests()
     
     Test.add_func ("/marlin/pathbar/go-to-trash", () => {
         Test.log_set_fatal_handler( () => { return false; });
-        var breads = new Breadcrumbs(new Gtk.UIManager(), new Gtk.Window());
+        var breads = new Breadcrumbs(new Gtk.UIManager());
         breads.change_breadcrumbs("trash:///");
         breads.change_breadcrumbs("/home/there");
     });

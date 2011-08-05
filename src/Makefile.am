@@ -26,6 +26,7 @@ marlin_VALAFLAGS = \
     --pkg marlin-core \
     --vapidir=$(top_srcdir)/src/ \
     --pkg marlin \
+    --vapi marlin-src.vapi \
     -g \
     $(NULL)
 
