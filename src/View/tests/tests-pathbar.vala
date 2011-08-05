@@ -134,6 +134,23 @@ void add_pathbar_tests()
         assert(bread_entry.get_selection() == null);
     });
     
+    Test.add_func ("/marlin/pathbar/backspace-keypress", () => {
+        Test.log_set_fatal_handler( () => { return false; });
+        var breads = new Breadcrumbs(new Gtk.UIManager());
+        BreadcrumbsEntry bread_entry = breads.entry;
+        assert(bread_entry is BreadcrumbsEntry);
+        assert(bread_entry.text == "");
+        Gdk.EventKey event = Gdk.EventKey();
+        event.window = breads.get_window();
+        event.keyval = 0xff08; /* backspace */
+        breads.key_press_event(event);
+        assert(bread_entry.get_selection() == null);
+
+        event.keyval = 0x061; /* a */
+        breads.change_breadcrumbs("");
+        breads.change_breadcrumbs("/");
+    });
+    
     Test.add_func ("/marlin/pathbar/go-to-trash", () => {
         Test.log_set_fatal_handler( () => { return false; });
         var breads = new Breadcrumbs(new Gtk.UIManager());
@@ -147,6 +164,7 @@ void main(string[] args)
 {
     Gtk.init(ref args);
     Test.init(ref args);
+    Preferences.settings = new GLib.Settings("org.gnome.marlin.preferences");
 
     add_pathbar_tests ();
 

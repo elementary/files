@@ -54,7 +54,7 @@ namespace Marlin.View.Chrome
         public new signal void activate();
         public signal void escape();
 
-        public LocationBar (UIManager window, Window win)
+        public LocationBar (UIManager window)
         {
             entry = new Entry ();
             bread = new Breadcrumbs(window);
@@ -137,7 +137,7 @@ namespace Marlin.View.Chrome
 
         Gtk.StyleContext button_context;
         Gtk.StyleContext entry_context;
-        BreadcrumbsEntry entry;
+        public BreadcrumbsEntry entry;
 
         private UIManager ui;
         public Gtk.ActionGroup clipboard_actions;
@@ -743,7 +743,7 @@ namespace Marlin.View.Chrome
             selected = -1;
             var breads = text.split("/");
             var newelements = new Gee.ArrayList<BreadcrumbsElement>();
-            if(breads[0] == "")
+            if(breads.length == 0 | breads[0] == "")
                 newelements.add(new BreadcrumbsElement("/", left_padding, right_padding));
             
             foreach(string dir in breads)
@@ -753,15 +753,7 @@ namespace Marlin.View.Chrome
             }
             
             newelements[0].text = protocol + newelements[0].text;
-            int max_path = 0;
-            if(newelements.size > elements.size)
-            {
-                max_path = elements.size;
-            }
-            else
-            {
-                max_path = newelements.size;
-            }
+            int max_path = int.min(elements.size, newelements.size);
             
             bool same = true;
             

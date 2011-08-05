@@ -15,14 +15,13 @@ marlinwidgets_tests_VALAFLAGS = \
     --vapidir $(top_srcdir)/libwidgets \
     --vapidir $(top_srcdir)/src \
     --pkg marlin-core \
-    --pkg marlin \
-    --pkg marlin-src \
     --pkg marlin-widgets \
     $(NULL)
 
 marlinwidgets_tests_SOURCES = \
     ../LocationBar.vala \
     ../PopupLocationBar.vala \
+    ../Resources.vala \
     tests-pathbar.vala \
     $(NULL)
 

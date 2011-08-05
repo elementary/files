@@ -79,7 +79,7 @@ namespace Marlin.View.Chrome
                 }
                 if (name == "LocationEntry")
                 {
-                    location_bar = new LocationBar (win.ui, win);
+                    location_bar = new LocationBar (win.ui);
                     location_bar.show_all();
                     location_bar.escape.connect( () => { ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); });
                     insert(location_bar, -1);

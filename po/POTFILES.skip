@@ -9,3 +9,6 @@ src/exo-tree-view.c
 libwidgets/LocationBar.c
 src/View/DirectoryNotFound.c
 libwidgets/PopupLocationBar.c
+src/View/tests/LocationBar.c
+src/View/tests/PopupLocationBar.c
+

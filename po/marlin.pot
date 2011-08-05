@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-05 12:16+0200\n"
+"POT-Creation-Date: 2011-08-05 17:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1475,7 +1475,8 @@ msgstr ""
 msgid "Displayed Items"
 msgstr ""
 
-#: ../src/View/LocationBar.vala:978
+#: ../src/View/LocationBar.vala:986
+#: /home/xapantu/marlin/src/View/LocationBar.vala:986
 #, c-format
 msgid "Go to %s"
 msgstr ""
@@ -1483,21 +1484,21 @@ msgstr ""
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/LocationBar.vala:1175
+#: ../src/View/LocationBar.vala:1183
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/LocationBar.vala:1179
+#: ../src/View/LocationBar.vala:1187
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
 #. name, stock id
 #. label, accelerator
 #. tooltip
-#: ../src/View/LocationBar.vala:1183 ../src/View/LocationBar.vala:1187
+#: ../src/View/LocationBar.vala:1191 ../src/View/LocationBar.vala:1195
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
@@ -1824,20 +1825,20 @@ msgstr ""
 msgid "Columns View"
 msgstr ""
 
-#: ../src/View/DirectoryNotFound.c:290
+#: /home/xapantu/marlin/src/View/DirectoryNotFound.vala:72
 msgid "Folder does not exist"
 msgstr ""
 
-#: ../src/View/DirectoryNotFound.c:296
+#: /home/xapantu/marlin/src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
 msgstr ""
 
-#: ../src/View/DirectoryNotFound.c:309
+#: /home/xapantu/marlin/src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr ""
 
-#: ../src/View/DirectoryNotFound.c:310
+#: /home/xapantu/marlin/src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr ""
@@ -1900,4 +1901,158 @@ msgstr ""
 
 #: ../src/eel-editable-label.c:3198
 msgid "Input Methods"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:124
+msgid "SSH"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:127
+msgid "Public FTP"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:129
+msgid "FTP (with login)"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:132
+msgid "Windows share"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:134
+msgid "WebDAV (HTTP)"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:136
+msgid "Secure WebDAV (HTTPS)"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:183
+msgid "Connecting..."
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:207
+msgid ""
+"Can't load the supported server method list.\n"
+"Please check your gvfs installation."
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:285
+#, c-format
+msgid "The folder \"%s\" cannot be opened on \"%s\"."
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:295
+#, c-format
+msgid "The server at \"%s\" cannot be found."
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:330
+msgid "Try Again"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:395
+msgid "Please verify your user details."
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:425
+msgid "Continue"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:750
+#: ../src/marlin-connect-server-dialog.c:1169
+msgid "C_onnect"
+msgstr ""
+
+#. set dialog properties
+#: ../src/marlin-connect-server-dialog.c:875
+msgid "Connect to Server"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:893
+msgid "Server Details"
+msgstr ""
+
+#. first row: server entry + port spinbutton
+#: ../src/marlin-connect-server-dialog.c:914
+msgid "_Server:"
+msgstr ""
+
+#. port
+#: ../src/marlin-connect-server-dialog.c:938
+msgid "_Port:"
+msgstr ""
+
+#. second row: type combobox
+#: ../src/marlin-connect-server-dialog.c:956
+msgid "_Type:"
+msgstr ""
+
+#. third row: share entry
+#: ../src/marlin-connect-server-dialog.c:1030
+msgid "Sh_are:"
+msgstr ""
+
+#. fourth row: folder entry
+#: ../src/marlin-connect-server-dialog.c:1050
+msgid "_Folder:"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:1073
+msgid "User Details"
+msgstr ""
+
+#. first row: domain entry
+#: ../src/marlin-connect-server-dialog.c:1093
+msgid "_Domain name:"
+msgstr ""
+
+#. second row: username entry
+#: ../src/marlin-connect-server-dialog.c:1112
+msgid "_User name:"
+msgstr ""
+
+#. third row: password entry
+#: ../src/marlin-connect-server-dialog.c:1132
+msgid "Pass_word:"
+msgstr ""
+
+#. fourth row: remember checkbox
+#: ../src/marlin-connect-server-dialog.c:1153
+msgid "_Remember this password"
+msgstr ""
+
+#: ../src/marlin-connect-server-dialog.c:1258
+msgid "Operation cancelled"
+msgstr ""
+
+#: ../src/marlin-progress-ui-handler.c:105
+#: ../src/marlin-progress-ui-handler.c:155
+#: ../src/marlin-progress-ui-handler.c:213
+#: ../src/marlin-progress-ui-handler.c:269
+msgid "File Operations"
+msgstr ""
+
+#: ../src/marlin-progress-ui-handler.c:114
+msgid "Show Details"
+msgstr ""
+
+#: ../src/marlin-progress-ui-handler.c:149
+#: ../src/marlin-progress-ui-handler.c:171
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/marlin-progress-ui-handler.c:270
+msgid "All file operations have been successfully completed"
+msgstr ""
+
+#: ../plugins/open-terminal/plugin.c:68
+msgid "Open a terminal here"
+msgstr ""
+
+#: /home/xapantu/marlin/src/View/PopupLocationBar.vala:156
+msgid "(no result found)"
 msgstr ""
