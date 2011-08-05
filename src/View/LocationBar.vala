@@ -149,7 +149,7 @@ namespace Marlin.View.Chrome
         Gee.List<BreadcrumbsElement> newbreads;
         
         /* A flag to know when the animation is finished */
-        int anim_state = 0;
+        double anim_state = 0;
 
         /* Used for auto-copmpletion */
         GOF.Directory.Async files;
@@ -835,6 +835,8 @@ namespace Marlin.View.Chrome
             elements = newelements;
             entry.reset();
         }
+        
+        uint anim = -1;
 
         /* A threaded function to animate the old BreadcrumbsElement */
         private void animate_old_breads()
@@ -844,8 +846,10 @@ namespace Marlin.View.Chrome
             {
                 bread.offset = anim_state;
             }
-            Timeout.add(1000/60, () => {
-                anim_state++;
+            if(anim > 0)
+                Source.remove(anim);
+            anim = Timeout.add(1000/60, () => {
+                anim_state += 0.05;
                 /* FIXME: Instead of this hacksih if( != null), we should use a
                  * nice mutex */
                 if(newbreads != null)
@@ -856,8 +860,12 @@ namespace Marlin.View.Chrome
                     }
                 }
                 queue_draw();
-                if(anim_state >= 10)
+                if(anim_state >= 1)
                 {
+                    foreach(BreadcrumbsElement bread in newbreads)
+                    {
+                        bread.offset = 1.0;
+                    }
                     newbreads = null;
                     view_old = false;
                     queue_draw();
@@ -870,13 +878,15 @@ namespace Marlin.View.Chrome
         /* A threaded function to animate the new BreadcrumbsElement */
         private void animate_new_breads()
         {
-            anim_state = 10;
+            anim_state = 1;
             foreach(BreadcrumbsElement bread in newbreads)
             {
                 bread.offset = anim_state;
             }
-            Timeout.add(1000/60, () => {
-                anim_state--;
+            if(anim > 0)
+                Source.remove(anim);
+            anim = Timeout.add(1000/60, () => {
+                anim_state -= 0.08;
                 /* FIXME: Instead of this hacksih if( != null), we should use a
                  * nice mutex */
                 if(newbreads != null)
@@ -889,6 +899,10 @@ namespace Marlin.View.Chrome
                 queue_draw();
                 if(anim_state <= 0)
                 {
+                    foreach(BreadcrumbsElement bread in newbreads)
+                    {
+                        bread.offset = 0.0;
+                    }
                     newbreads = null;
                     view_old = false;
                     queue_draw();
@@ -1206,7 +1220,7 @@ namespace Marlin.View.Chrome
     class BreadcrumbsElement : GLib.Object
     {
         public string? text;
-        public int offset = 0;
+        public double offset = 0;
         internal double last_height = 0;
         public double text_width = -1;
         public double text_height = -1;
@@ -1231,7 +1245,7 @@ namespace Marlin.View.Chrome
             icon = icon_;
         }
         
-        private void computetext_width(Pango.Layout pango)
+        void computetext_width(Pango.Layout pango)
         {
             int text_width, text_height;
             pango.get_size(out text_width, out text_height);
@@ -1241,6 +1255,8 @@ namespace Marlin.View.Chrome
         
         public double draw(Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, Gtk.Widget widget)
         {
+            cr.restore();
+            cr.save();
             last_height = height;
             cr.set_source_rgb(0,0,0);
             string text = text_displayed ?? this.text;
@@ -1263,13 +1279,12 @@ namespace Marlin.View.Chrome
                 layout.set_width(Pango.units_from_double(max_width));
                 layout.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
             }
-            x += left_padding;
             
-            if(offset != 0)
+            if(offset > 0.0)
             {
-                cr.move_to(x, y);
-                cr.line_to(x + 5, y + height/2);
-                cr.line_to(x, y + height);
+                cr.move_to(x - 5, y);
+                cr.line_to(x, y + height/2);
+                cr.line_to(x - 5, y + height);
                 cr.line_to(x + text_width + 5, y+ height);
                 cr.line_to(x + text_width + 10 + 5, y+height/2);
                 cr.line_to(x + text_width + 5, y);
@@ -1277,7 +1292,9 @@ namespace Marlin.View.Chrome
                 cr.clip();
             }
             
-            x -= offset*5;
+            x += left_padding;
+            
+            x -= Math.sin(offset*Math.PI/2)*width;
             if(icon == null)
             {
                 Gtk.render_layout(button_context, cr, x,
