@@ -1,1 +1,0 @@
-SUBDIRS = open-terminal contractor

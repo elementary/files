@@ -1,0 +1,5 @@
+install(FILES thumbnail_frame.png DESTINATION share/pixmaps/marlin/)
+install(FILES marlin.svg view-list-column-symbolic.svg view-list-compact-symbolic.svg view-list-details-symbolic.svg view-list-icons-symbolic.svg DESTINATION share/icons/hicolor/scalable/apps/)
+
+install (CODE "message(\"-- Update Gtk icon cache...\")")
+install (CODE "execute_process(COMMAND gtk-update-icon-cache -f -t ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor)")
