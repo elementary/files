@@ -9,7 +9,7 @@ set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../)
+include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
