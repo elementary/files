@@ -64,12 +64,51 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
     gchar* name = g_key_file_get_value(keyfile, "Plugin", "Name", NULL);
     gchar** plugins = g_settings_get_strv(settings, "plugins-enabled");
     int i;
+    
+    /* All plugins in system dirs are enabled by default */
+    
+    GFile* plugin_file = g_file_new_for_path(path);
+    GFile* parent = g_file_get_parent(plugin_file);
+    GFile* plugin_system_dir = g_file_new_for_path(PLUGIN_DIR);
+    
+    gboolean in_system_dir = g_file_equal(parent, plugin_system_dir);
+    
+    g_object_unref(plugin_file);
+    g_object_unref(parent);
+    g_object_unref(plugin_system_dir);
+    
+    if(in_system_dir == TRUE)
+    {
+        plugin->plugin_handle = dlopen(g_build_filename(PLUGIN_DIR,
+                                                        g_key_file_get_value(keyfile, "Plugin", "File", NULL),
+                                                        NULL),
+                                       RTLD_NOW | RTLD_GLOBAL);
+        if(! plugin->plugin_handle)
+        {
+            g_debug ("Can't load plugin: %s %s", path, dlerror());
+            g_object_unref(plugin);
+            return NULL;
+        }
+
+        plugin->hook_receive = dlsym(plugin->plugin_handle, "receive_all_hook");
+        if((dl_error = dlerror()) != NULL)
+        {
+            g_debug ("Can't load plugin: %s, %s", path, dl_error);
+        }
+
+        plugin->hook_receive(NULL, MARLIN_PLUGIN_HOOK_INIT);
+        return plugin;
+    }
+    
+    
     for(i = 0; i < g_strv_length(plugins); i++)
     {
         if(!g_strcmp0(name, plugins[i]))
         {
-            plugin->plugin_handle = dlopen (g_build_filename(PLUGIN_DIR, g_key_file_get_value(keyfile, "Plugin", "File", NULL), NULL), RTLD_NOW | RTLD_GLOBAL);
-            g_debug("Plugin debug:\n Plugin dir: %s\n Keyfile file: %s\n Plugin path: %s\n All the path: %s\n", PLUGIN_DIR, path, g_key_file_get_value(keyfile, "Plugin", "File", NULL), g_build_filename(PLUGIN_DIR, g_key_file_get_value(keyfile, "Plugin", "File", NULL), NULL));
+            plugin->plugin_handle = dlopen(g_build_filename(PLUGIN_DIR,
+                                                            g_key_file_get_value(keyfile, "Plugin", "File", NULL),
+                                                            NULL),
+                                           RTLD_NOW | RTLD_GLOBAL);
             if(! plugin->plugin_handle)
             {
                 g_debug ("Can't load plugin: %s %s", path, dlerror());
