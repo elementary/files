@@ -30,4 +30,6 @@ OPTIONS
 add_library(marlin-contractor SHARED
     ${VALA_C})
 
+target_link_libraries(marlin-contractor marlincore marlinwidgets)
+
 install(TARGETS marlin-contractor DESTINATION lib/marlin/plugins/)

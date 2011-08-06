@@ -19,4 +19,5 @@ link_directories(${LIB_PATHS})
 add_library(marlin-openterminal SHARED
     plugin.c)
 
+target_link_libraries(marlin-openterminal marlincore marlinwidgets)
 install(TARGETS marlin-openterminal DESTINATION lib/marlin/plugins/)
