@@ -325,7 +325,7 @@ update_places (MarlinPlacesSidebar *sidebar)
     char *display_name;
 
     mount_uri = g_filename_to_uri (g_get_home_dir (), NULL, NULL);
-    display_name = g_filename_display_basename (g_get_home_dir ());
+    display_name = _("Home");
     icon = g_themed_icon_new (MARLIN_ICON_HOME);
     last_iter = add_place (sidebar, PLACES_BUILT_IN, &iter,
                            display_name, icon, mount_uri, 
@@ -336,7 +336,6 @@ update_places (MarlinPlacesSidebar *sidebar)
                            &last_iter, &select_path);
     sidebar->n_builtins_before++;
     g_object_unref (icon);
-    g_free (display_name);
     g_free (mount_uri);
     /*}*/
 

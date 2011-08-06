@@ -107,7 +107,10 @@ namespace Marlin.View {
 
         private void connect_available_info() {
             file_info_callback = slot.directory.info_available.connect(() => {
-                tab_name = slot.directory.file.info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
+                if (slot.location.get_path () == Environment.get_home_dir ())
+                    tab_name = _("Home");
+                else
+                    tab_name = slot.directory.file.info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
                 if(window.current_tab == this){
                     window.set_title(tab_name);
                     window.loading_uri (slot.directory.file.uri, window.sidebar);
