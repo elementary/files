@@ -1659,7 +1659,7 @@ gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info)
     GdkAppLaunchContext *context;
     gboolean             succeed;
     GList                path_list;
-    GError              **error;
+    GError              *error = NULL;
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
     g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
@@ -1670,7 +1670,7 @@ gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info)
 
     context = gdk_app_launch_context_new ();
     gdk_app_launch_context_set_screen (context, screen);
-    succeed = g_app_info_launch (app_info, &path_list, G_APP_LAUNCH_CONTEXT (context), error);
+    succeed = g_app_info_launch (app_info, &path_list, G_APP_LAUNCH_CONTEXT (context), &error);
 
     g_object_unref (context);
     g_object_unref (G_OBJECT (app_info));
