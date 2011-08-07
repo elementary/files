@@ -107,7 +107,10 @@ GOFFile    *gof_file_new (GFile *location, GFile *dir)
     file = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
     file->location = g_object_ref (location);
     file->uri = g_file_get_uri (location);
-    file->directory = g_object_ref (dir);
+    if (dir != NULL)
+        file->directory = g_object_ref (dir);
+    else
+        file->directory = NULL;
     file->basename = g_file_get_basename (file->location);
     //file->parent_dir = g_file_enumerator_get_container (enumerator);
     file->color = NULL;
@@ -348,6 +351,7 @@ static void gof_file_finalize (GObject* obj) {
     //g_warning ("%s %s\n", G_STRFUNC, file->name);
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
+    _g_object_unref0 (file->directory);
     g_free (file->uri);
     g_free(file->basename);
     g_free(file->utf8_collation_key);
@@ -1120,10 +1124,7 @@ GOFFile* gof_file_get (GFile *location)
         g_object_ref (file);
     } else {
         file = gof_file_new (location, parent);
-#ifdef ENABLE_DEBUG
-        g_debug ("!!!!!!!!!!!!file_query_info %s\n", file->uri);
-#endif
-        g_debug (">>!!!!!!!!!!!!file_query_info %s\n", file->uri);
+        g_debug ("%s file_query_info %s\n", G_STRFUNC, file->uri);
         file->info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
                                         0, NULL, &err);
 

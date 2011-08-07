@@ -191,9 +191,9 @@ namespace Marlin.View.Chrome
             /* grab the UIManager */
             this.ui = ui;
             init_clipboard ();
-            icons[0] = { Marlin.TRASH_URI, Marlin.ICON_TRASH, true, null, null, true, "Trash"};
+            icons[0] = { Marlin.TRASH_URI, Marlin.ICON_TRASH, true, null, null, true, N_("Trash")};
             make_icon(ref icons[0]);
-            icons[1] = {"network://", "network", true, null, null, true};
+            icons[1] = { Marlin.NETWORK_URI, Marlin.ICON_NETWORK, true, null, null, true, N_("Network")};
             make_icon(ref icons[1]);
             /* music */
             string dir;
@@ -400,13 +400,16 @@ namespace Marlin.View.Chrome
                     path = Marlin.Utils.get_parent(path);
 
                 /* FIXME new_for_path ?? we got to work with uris */
-                var directory = File.new_for_path(path);
-                files = new GOF.Directory.Async.from_gfile (directory);
-                if (files.file.exists) {
-                    if (files.load())
-                        files.file_loaded.connect(on_file_loaded);
-                    else
-                        Idle.add ((SourceFunc) load_file_hash, Priority.DEFAULT_IDLE);
+                if (path != null && path.length > 0) {
+                    debug ("gof dir load path %s", path);
+                    var directory = File.new_for_path(path);
+                    files = new GOF.Directory.Async.from_gfile (directory);
+                    if (files.file.exists) {
+                        if (files.load())
+                            files.file_loaded.connect(on_file_loaded);
+                        else
+                            Idle.add ((SourceFunc) load_file_hash, Priority.DEFAULT_IDLE);
+                    }
                 }
             });
             
@@ -729,10 +732,10 @@ namespace Marlin.View.Chrome
          **/
         public void change_breadcrumbs(string newpath)
         {
-            var explode_protocol = newpath.split("://");
+            var explode_protocol = newpath.split(":///");
             if(explode_protocol.length > 1)
             {
-                protocol = explode_protocol[0] + "://";
+                protocol = explode_protocol[0] + ":///";
                 text = explode_protocol[1];
             }
             else

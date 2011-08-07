@@ -1580,8 +1580,7 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
      * TODO: hide unmount if the drive only has a single mountable volume 
      */
 
-    show_empty_trash = (uri != NULL) &&
-        (!strcmp (uri, "trash:///"));
+    show_empty_trash = (uri != NULL) && (!strcmp (uri, MARLIN_TRASH_URI));
 
     eel_gtk_widget_set_shown (sidebar->popup_menu_mount_item, show_mount);
     eel_gtk_widget_set_shown (sidebar->popup_menu_unmount_item, show_unmount);
