@@ -70,9 +70,10 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
     GFile* plugin_file = g_file_new_for_path(path);
     GFile* parent = g_file_get_parent(plugin_file);
     GFile* plugin_system_dir = g_file_new_for_path(PLUGIN_DIR);
-    
+
+#if 0    
     gboolean in_system_dir = g_file_equal(parent, plugin_system_dir);
-    
+
     g_object_unref(plugin_file);
     g_object_unref(parent);
     g_object_unref(plugin_system_dir);
@@ -99,6 +100,7 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
         plugin->hook_receive(NULL, MARLIN_PLUGIN_HOOK_INIT);
         return plugin;
     }
+#endif
     
     
     for(i = 0; i < g_strv_length(plugins); i++)
