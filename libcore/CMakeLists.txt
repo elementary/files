@@ -4,14 +4,12 @@ set (${PKGNAME_}_VERSION 0.1)
 # increase when you broke the API
 
 set (${PKGNAME_}_SOVERSION 0)
-
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
 
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
 # Check for the deps
@@ -40,7 +38,6 @@ set(LIB_PATHS
 	${DEPS_LIBRARY_DIRS}
 )
 link_directories(${LIB_PATHS})
-
 add_library (${PKGNAME} SHARED
     gof-file.c
     nautilus-icon-info.c
@@ -71,7 +68,7 @@ add_library (${PKGNAME} SHARED
     eel-vfs-extensions.c
 )
 if(BUILD_STATIC MATCHES "Yes")
-    add_library(${PKGNAME}-static STATIC
+add_library(${PKGNAME}-static STATIC
         gof-file.c
         nautilus-icon-info.c
         eel-fcts.c
@@ -100,16 +97,17 @@ if(BUILD_STATIC MATCHES "Yes")
         marlin-plugin-manager.c
         eel-vfs-extensions.c
     )
-    # The library target "foo" already has a default OUTPUT_NAME of "foo", so we
-    # don't need to change it.
+# The library target "foo" already has a default OUTPUT_NAME of "foo", so we
 
-    # The library target "foo-static" has a default OUTPUT_NAME of "foo-static",
-    #so change it.
+# don't need to change it.
 
-    SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES OUTPUT_NAME ${PKGNAME})
-    install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
+# The library target "foo-static" has a default OUTPUT_NAME of "foo-static",
+
+#so change it.
+
+SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES OUTPUT_NAME ${PKGNAME})
+install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 endif(BUILD_STATIC MATCHES "Yes")
-
 set_target_properties (${PKGNAME} PROPERTIES
     VERSION ${MARLINCORE_VERSION}
     SOVERSION ${MARLINCORE_SOVERSION}

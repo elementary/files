@@ -5,6 +5,7 @@ include(ValaVersion)
 ensure_vala_version("0.11.3" MINIMUM)
 include(ValaPrecompile)
 # pkgconfig, real C code
+
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -35,7 +36,6 @@ add_definitions(${CFLAGS}
     "-DUI_DIR=\"${CMAKE_INSTALL_PREFIX}/share/marlin/ui/\""
      -O2
     )
-
 vala_precompile(VALA_C
     Logger.vala
     View/SettingsDialog.vala
@@ -96,9 +96,7 @@ add_executable(marlin
     marlin-progress-ui-handler.c
     marlin-progress-info-widget.c
     ${VALA_C} )
-
 target_link_libraries(marlin marlincore marlinwidgets ${DEPS_LIBRARIES})
 install(TARGETS marlin RUNTIME DESTINATION bin)
-
 install(FILES marlin-ui.xml DESTINATION share/marlin/ui/)
 install(FILES fm-directory-view-ui.xml DESTINATION share/marlin/ui/)

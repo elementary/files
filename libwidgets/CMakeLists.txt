@@ -4,12 +4,12 @@ set (${PKGNAME_}_VERSION 0.1)
 # increase when you broke the API
 
 set (${PKGNAME_}_SOVERSION 0)
-
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
 
 #install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
+
 # Check for the deps
 
 find_package(PkgConfig)
@@ -33,21 +33,21 @@ include(ValaVersion)
 ensure_vala_version("0.12.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
-    ToolButtonWithMenu.vala
-    AppMenu.vala
-    ModeButton.vala
-    CollapsablePaned.vala
-    ImgEventBox.vala
+ToolButtonWithMenu.vala
+AppMenu.vala
+ModeButton.vala
+CollapsablePaned.vala
+ImgEventBox.vala
+StaticNotebook.vala
 PACKAGES
-    gtk+-3.0
+gtk+-3.0
 OPTIONS
-    --thread
+--thread
 GENERATE_VAPI
-    marlinwidgets
+marlinwidgets
 GENERATE_HEADER
-    marlinwidgets
+marlinwidgets
 )
-
 add_library (${PKGNAME} SHARED
     ${VALA_C}
 )

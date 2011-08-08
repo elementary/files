@@ -5,6 +5,7 @@ include(ValaVersion)
 ensure_vala_version("0.11.3" MINIMUM)
 include(ValaPrecompile)
 # pkgconfig, real C code
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -33,7 +34,6 @@ add_definitions(${CFLAGS}
     "-DGETTEXT_PACKAGE=\"marlin\""
      -O2
     )
-
 vala_precompile(VALA_C
     marlind-tagging.vala
 PACKAGES
@@ -45,6 +45,5 @@ OPTIONS
     --thread)
 add_executable(marlin-daemon
     ${VALA_C} )
-
 target_link_libraries(marlin-daemon ${DEPS_LIBRARIES})
 install(TARGETS marlin-daemon RUNTIME DESTINATION bin)
