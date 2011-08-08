@@ -44,6 +44,7 @@ add_library (${PKGNAME} SHARED
     eel-fcts.c
     eel-i18n.c
     eel-gtk-extensions.c
+    gof-abstract-slot.c
     eel-gdk-extensions.c
     eel-gdk-pixbuf-extensions.c
     eel-pango-extensions.c

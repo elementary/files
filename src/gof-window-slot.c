@@ -27,7 +27,7 @@ static void gof_window_slot_init       (GOFWindowSlot *slot);
 static void gof_window_slot_class_init (GOFWindowSlotClass *class);
 static void gof_window_slot_finalize   (GObject *object);
 
-G_DEFINE_TYPE (GOFWindowSlot, gof_window_slot, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GOFWindowSlot, gof_window_slot, GOF_TYPE_ABSTRACT_SLOT)
 #define parent_class gof_window_slot_parent_class
 
 enum {
@@ -43,8 +43,8 @@ static void
 gof_window_slot_init (GOFWindowSlot *slot)
 {
     slot->content_box = gtk_vbox_new(FALSE, 0);
-    slot->extra_location_widgets = gtk_vbox_new(FALSE, 0);
-    gtk_box_pack_start(slot->content_box, slot->extra_location_widgets, FALSE, FALSE, 0);
+    GOF_ABSTRACT_SLOT(slot)->extra_location_widgets = gtk_vbox_new(FALSE, 0);
+    gtk_box_pack_start(slot->content_box, GOF_ABSTRACT_SLOT(slot)->extra_location_widgets, FALSE, FALSE, 0);
 }
 
 static void
@@ -84,14 +84,6 @@ gof_window_slot_finalize (GObject *object)
     printf ("test %s\n", G_STRFUNC);
     /* avoid a warning in vala code: slot is freed in ViewContainer */
     //slot = NULL;
-}
-
-/**
- * Add a widget in the top part of the slot.
- **/
-void gof_window_slot_add_extra_widget (GOFWindowSlot* slot, GtkWidget* widget)
-{
-    gtk_box_pack_start(slot->extra_location_widgets, widget, FALSE, FALSE, 0);
 }
 
 void

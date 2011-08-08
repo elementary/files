@@ -21,6 +21,7 @@
 #define GOF_WINDOW_SLOT_H
 
 #include <gtk/gtk.h>
+#include "gof-abstract-slot.h"
 #include "gof-directory-async.h"
 #include "marlin-window-columns.h"
 
@@ -32,7 +33,7 @@
 #define GOF_WINDOW_SLOT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GOF_TYPE_WINDOW_SLOT, GOFWindowSlotClass))
 
 struct GOFWindowSlot {
-    GObject parent;
+    GOFAbstractSlot parent;
 
     /* content_box contains
      *  1) an event box containing extra_location_widgets
@@ -40,7 +41,6 @@ struct GOFWindowSlot {
      */
     GtkWidget *content_box;
     /*GtkWidget *extra_location_event_box;*/
-      GtkWidget *extra_location_widgets;
       /*GtkWidget *extra_location_separator;*/
     GtkWidget *view_box;
     GtkWidget *colpane;
@@ -79,6 +79,5 @@ void            gof_window_slot_make_column_view (GOFWindowSlot *slot);
 
 void            gof_window_slot_freeze_updates (GOFWindowSlot *slot);
 void            gof_window_slot_unfreeze_updates (GOFWindowSlot *slot);
-void            gof_window_slot_add_extra_widget (GOFWindowSlot* slot, GtkWidget* widget);
 
 #endif /* GOF_WINDOW_SLOT_H */
