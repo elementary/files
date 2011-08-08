@@ -7,26 +7,11 @@
 G_BEGIN_DECLS
 
 #define GOF_TYPE_ABSTRACT_SLOT gof_abstract_slot_get_type()
-
-#define GOF_ABSTRACT_SLOT(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST ((obj), \
-  GOF_TYPE_ABSTRACT_SLOT, GOFAbstractSlot))
-
-#define GOF_ABSTRACT_SLOT_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_CAST ((klass), \
-  GOF_TYPE_ABSTRACT_SLOT, GOFAbstractSlotClass))
-
-#define GOF_IS_ABSTRACT_SLOT(obj) \
-  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), \
-  GOF_TYPE_ABSTRACT_SLOT))
-
-#define GOF_IS_ABSTRACT_SLOT_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_TYPE ((klass), \
-  GOF_TYPE_ABSTRACT_SLOT))
-
-#define GOF_ABSTRACT_SLOT_GET_CLASS(obj) \
-  (G_TYPE_INSTANCE_GET_CLASS ((obj), \
-  GOF_TYPE_ABSTRACT_SLOT, GOFAbstractSlotClass))
+#define GOF_ABSTRACT_SLOT(obj)  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GOF_TYPE_ABSTRACT_SLOT, GOFAbstractSlot))
+#define GOF_ABSTRACT_SLOT_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), GOF_TYPE_ABSTRACT_SLOT, GOFAbstractSlotClass))
+#define GOF_IS_ABSTRACT_SLOT(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GOF_TYPE_ABSTRACT_SLOT))
+#define GOF_IS_ABSTRACT_SLOT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GOF_TYPE_ABSTRACT_SLOT))
+#define GOF_ABSTRACT_SLOT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GOF_TYPE_ABSTRACT_SLOT, GOFAbstractSlotClass))
 
 typedef struct _GOFAbstractSlot GOFAbstractSlot;
 typedef struct _GOFAbstractSlotClass GOFAbstractSlotClass;

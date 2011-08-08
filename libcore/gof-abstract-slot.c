@@ -16,6 +16,7 @@ struct _GOFAbstractSlotPrivate
 void gof_abstract_window_slot_add_extra_widget (GOFAbstractSlot* slot, GtkWidget* widget)
 {
     gtk_box_pack_start(slot->extra_location_widgets, widget, FALSE, FALSE, 0);
+    gtk_widget_show_all(slot->extra_location_widgets);
 }
 
 static void

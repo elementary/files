@@ -67,7 +67,7 @@ namespace Marlin.View {
                 update_location_state(true);
                 Object[] data = new Object[2];
                 data[0] = window;
-                data[1] = this;
+                data[1] = slot;
                 data[2] = GOF.File.get(myfile);
                 plugins.hook_send((void*)data, 4);
             });
