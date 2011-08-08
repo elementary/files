@@ -42,7 +42,7 @@ void hook_plugin_finish(void)
     printf("Shutdown\n");
 }
 
-void hook_directory_loaded(GOFFile* path)
+static void hook_directory_loaded(GOFFile* path)
 {
     current_path = g_strdup(g_file_get_path(path->location));
     g_debug("Current path: %s", current_path);
@@ -91,7 +91,7 @@ void receive_all_hook(void* user_data, int hook)
         put_right_click_menu(user_data);
         break;
     case MARLIN_PLUGIN_HOOK_DIRECTORY:
-        hook_directory_loaded(user_data);
+        hook_directory_loaded(((void**)user_data)[2]);
         break;
     case MARLIN_PLUGIN_HOOK_INIT:
         hook_plugin_init(user_data);

@@ -18,6 +18,23 @@ namespace FM {
         }
     }
 }
+[CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
+namespace GOF {
+    [CCode (cprefix = "GOFWindow", lower_case_cprefix = "gof_window_")]
+    namespace Window {
+        [CCode (cheader_filename = "gof-window-slot.h")]
+        public class Slot : GLib.Object {
+            public Slot (GLib.File f, Marlin.View.ViewContainer ctab);
+            public void make_icon_view ();
+            public void make_list_view ();
+            public Directory.Async directory;
+            public GLib.File location;
+            public Widget view_box;
+            public signal void active ();
+            public signal void inactive ();
+        }
+    }
+}
 
 namespace Marlin {
     [CCode (cheader_filename = "marlin-application.h")]
@@ -31,7 +48,7 @@ namespace Marlin {
         [CCode (cheader_filename = "marlin-window-columns.h")]
         public class Columns : GLib.Object {
             //public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
-            public Columns (GLib.File f, Gtk.EventBox ctab);
+            public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
             public void make_view ();
             public GOF.Window.Slot active_slot;
             /*public Directory.Async directory;

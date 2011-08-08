@@ -31,7 +31,7 @@ namespace Marlin.View
             //width_request = 500;
             set_resizable(false);
 
-            var mai_notebook = new Gtk.Notebook();
+            var mai_notebook = new Granite.Widgets.StaticNotebook();
 
             var first_vbox = new Gtk.VBox(false, 3);
             first_vbox.border_width = 5;
@@ -69,7 +69,7 @@ namespace Marlin.View
             first_vbox.pack_start(hbox_single_click, false);
             
             
-            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Behavior")));
+            mai_notebook.append_page(first_vbox, _("Behavior"));
 
             first_vbox = new Gtk.VBox(false, 3);
             first_vbox.border_width = 5;
@@ -156,7 +156,7 @@ namespace Marlin.View
 
             first_vbox.pack_start(hbox_single_click, false);
 
-            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Display")));
+            mai_notebook.append_page(first_vbox, _("Display"));
 
             first_vbox = new Gtk.VBox(false, 3);
             first_vbox.border_width = 5;
@@ -226,11 +226,11 @@ namespace Marlin.View
 
             first_vbox.pack_start(view);
             
-            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Plugins")));
-            mai_notebook.set_margin_left(6);
+            mai_notebook.append_page(first_vbox, _("Plugins"));
+            /*mai_notebook.set_margin_left(6);
             mai_notebook.set_margin_right(6);
             mai_notebook.set_margin_top(6);
-            mai_notebook.set_margin_bottom(12);
+            mai_notebook.set_margin_bottom(12);*/
             ((Gtk.Box)get_content_area()).pack_start(mai_notebook);
 
             this.show_all();

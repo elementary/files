@@ -307,14 +307,12 @@ g_signal_emit (view, signals[REMOVE_FILE], 0, file, directory);
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
-/* add the file_hash files for view which have been created during the directory loading */
-if (view->details->loading) {
-    printf(">> %s load the cached files\n", G_STRFUNC);
-    fm_directory_view_load_file_hash (directory, view);
-}
-
-marlin_plugin_manager_directory_loaded(plugins, gof_file_get(directory->location));
-view->details->loading = FALSE;
+    /* add the file_hash files for view which have been created during the directory loading */
+    if (view->details->loading) {
+        printf(">> %s load the cached files\n", G_STRFUNC);
+        fm_directory_view_load_file_hash (directory, view);
+    }
+    view->details->loading = FALSE;
 }
 
 void

@@ -47,30 +47,18 @@ namespace Marlin
     [CCode (cheader_filename = "marlin-plugin-manager.h")]
     class PluginManager : Object
     {
-       public static List<string> get_available_plugins(); 
+        public void hook_send(void* user_data, int hook);
+        public static List<string> get_available_plugins(); 
     }
 }
 
 [CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
 namespace GOF {
-    [CCode (cprefix = "GOFWindow", lower_case_cprefix = "gof_window_")]
-    namespace Window {
-        [CCode (cheader_filename = "gof-window-slot.h")]
-        public class Slot : GLib.Object {
-            public Slot (GLib.File f, Gtk.EventBox ctab);
-            public void make_icon_view ();
-            public void make_list_view ();
-            public Directory.Async directory;
-            public GLib.File location;
-            public Widget view_box;
-            public signal void active ();
-            public signal void inactive ();
-        }
-    }
 
     [CCode (cheader_filename = "gof-file.h")]
     public class File : GLib.Object {
         public File(GLib.File location, GLib.File dir);
+        public static File get(GLib.File location);
         public bool launch_with(Gdk.Screen screen, AppInfo app);
         public GLib.File location;
         public GLib.Icon? icon;
@@ -132,3 +120,5 @@ namespace GOF {
     }
 }
 
+[CCode (cheader_filename = "marlin-plugin-manager.h")]
+Marlin.PluginManager plugins;
