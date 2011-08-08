@@ -27,6 +27,7 @@ namespace GOF {
             public Slot (GLib.File f, Marlin.View.ViewContainer ctab);
             public void make_icon_view ();
             public void make_list_view ();
+            public void add_extra_widget(Gtk.Widget widget);
             public Directory.Async directory;
             public GLib.File location;
             public Widget view_box;

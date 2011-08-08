@@ -42,6 +42,9 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static void
 gof_window_slot_init (GOFWindowSlot *slot)
 {
+    slot->content_box = gtk_vbox_new(FALSE, 0);
+    slot->extra_location_widgets = gtk_vbox_new(FALSE, 0);
+    gtk_box_pack_start(slot->content_box, slot->extra_location_widgets, FALSE, FALSE, 0);
 }
 
 static void
@@ -81,6 +84,14 @@ gof_window_slot_finalize (GObject *object)
     printf ("test %s\n", G_STRFUNC);
     /* avoid a warning in vala code: slot is freed in ViewContainer */
     //slot = NULL;
+}
+
+/**
+ * Add a widget in the top part of the slot.
+ **/
+void gof_window_slot_add_extra_widget (GOFWindowSlot* slot, GtkWidget* widget)
+{
+    gtk_box_pack_start(slot->extra_location_widgets, widget, FALSE, FALSE, 0);
 }
 
 void
@@ -156,18 +167,29 @@ gof_window_slot_new (GFile *location, GtkEventBox *ctab)
 void
 gof_window_slot_make_icon_view (GOFWindowSlot *slot)
 {
+    if(slot->view_box != NULL)
+    {
+        gtk_widget_destroy(slot->view_box);
+    }
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_ICON_VIEW,
                                                "window-slot", slot, NULL));
-    marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->view_box);
+    gtk_box_pack_start(slot->content_box, slot->view_box, TRUE, TRUE, 0);
+    
+    marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->content_box);
     gof_directory_async_load (slot->directory);
 }
 
 void
 gof_window_slot_make_list_view (GOFWindowSlot *slot)
 {
+    if(slot->view_box != NULL)
+    {
+        gtk_widget_destroy(slot->view_box);
+    }
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
                                                "window-slot", slot, NULL));
-    marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->view_box);
+    gtk_box_pack_start(slot->content_box, slot->view_box, TRUE, TRUE, 0);
+    marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->content_box);
     gof_directory_async_load (slot->directory);
 }
 

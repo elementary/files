@@ -39,9 +39,9 @@ struct GOFWindowSlot {
      *  2) the view box for the content view
      */
     GtkWidget *content_box;
-    /*GtkWidget *extra_location_event_box;
+    /*GtkWidget *extra_location_event_box;*/
       GtkWidget *extra_location_widgets;
-      GtkWidget *extra_location_separator;*/
+      /*GtkWidget *extra_location_separator;*/
     GtkWidget *view_box;
     GtkWidget *colpane;
     GtkWidget *hpane;
@@ -79,5 +79,6 @@ void            gof_window_slot_make_column_view (GOFWindowSlot *slot);
 
 void            gof_window_slot_freeze_updates (GOFWindowSlot *slot);
 void            gof_window_slot_unfreeze_updates (GOFWindowSlot *slot);
+void            gof_window_slot_add_extra_widget (GOFWindowSlot* slot, GtkWidget* widget);
 
 #endif /* GOF_WINDOW_SLOT_H */
