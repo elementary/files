@@ -24,7 +24,7 @@
 using Gtk;
 
 namespace Marlin.View {
-    public class ViewContainer : Gtk.VBox {
+    public class ViewContainer : Gtk.EventBox {
         public Gtk.Widget? content_item;
         public Gtk.Label label;
         private Marlin.View.Window window;
@@ -33,8 +33,6 @@ namespace Marlin.View {
         Browser browser;
         public int view_mode = 0;
         private ulong file_info_callback;
-        
-        EventBox view_content;
 
         public signal void path_changed(File file);
         public signal void up();
@@ -42,8 +40,6 @@ namespace Marlin.View {
         public signal void forward(int n=1);
 
         public ViewContainer(Marlin.View.Window win, GLib.File location, int _view_mode = 0){
-            view_content = new Gtk.EventBox();
-            pack_end(view_content);
             window = win;
             view_mode = _view_mode;
             /* set active tab */
@@ -95,8 +91,8 @@ namespace Marlin.View {
         public Widget content{
             set{
                 if (content_item != null)
-                    view_content.remove(content_item);
-                view_content.add(value);
+                    remove(content_item);
+                add(value);
                 content_item = value;
                 show_all ();
             }
