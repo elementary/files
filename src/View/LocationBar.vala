@@ -25,31 +25,16 @@ namespace Marlin.View.Chrome
 {
     public class LocationBar : ToolItem
     {
-        //private Entry entry;
         private Breadcrumbs bread;
-        /*bool _state;
-        public bool state
-        {
-            get { return _state; }
-            set {
-                if (_state != value) {
-                    _state = value;
-                    update_widget();
-                }
-            }
-        }*/
 
         private string _path;
         public new string path{
             set{
                 var new_path = value;
-                //entry.text = new_path;
                 _path = new_path;
                 bread.change_breadcrumbs(new_path);
-                //state = true;
             }
             get{
-                //return entry.text;
                 return _path;
             }
         }
@@ -59,48 +44,22 @@ namespace Marlin.View.Chrome
 
         public LocationBar (UIManager ui, Window win)
         {
-            //entry = new Entry ();
             bread = new Breadcrumbs(ui, win);
             bread.escape.connect( () => { escape(); });
 
-            //bread.activate_entry.connect( () => { state = false; });
-
             bread.changed.connect(on_bread_changed);
-            //state = true;
 
             set_expand(true);
                 
             border_width = 0;
             add(bread);
-
-            /*entry.activate.connect(() => { activate(); state = true;});
-            entry.focus_out_event.connect(() => { if(!state) state = true; return true; });*/
         }
         
         private void on_bread_changed(string changed)
         {
-             //entry.text = changed;
              _path = changed;
              activate();
         }
-
-        /*private void update_widget()
-        {
-            var list = get_children();
-            foreach(Widget w in list)
-                remove(w);
-            if(_state)
-            {
-                border_width = 0;
-                add(bread);
-            }
-            else
-            {
-                add(entry);
-                show_all();
-                entry.grab_focus();
-            }
-        }*/
     }
     
     public struct IconDirectory
@@ -946,10 +905,6 @@ namespace Marlin.View.Chrome
                         }
                     }
                 }
-                else
-                {
-                    x_hl = -10;
-                }
                 x_hl += 7;
                 double first_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
                 double text_width = (elements[selected].max_width > 0 ? elements[selected].max_width : elements[selected].text_width);
@@ -959,10 +914,9 @@ namespace Marlin.View.Chrome
                            height/2);
                 cr.line_to(first_stop,
                            height - y - 1);
-                if(selected > 0)
-                    x_hl += text_width;
-                else
-                    x_hl = text_width + space_breads/2 + y;
+    
+                x_hl += text_width;
+    
                 double second_stop = x_hl - 7*(height/2 - y)/(height/2 - height/3) + 5;
                 cr.line_to(second_stop,
                            height - y - 1);
