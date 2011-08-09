@@ -486,6 +486,18 @@ namespace Marlin.View {
             if (current_tab != null && current_tab.slot != null) 
                 ((FM.Directory.View) current_tab.slot.view_box).zoom_out ();
         }
+        
+        void action_next_tab()
+        {
+            if(tabs.page == tabs.get_n_pages() - 1)
+                tabs.page = 0;
+            else
+                tabs.page++;
+        }
+        void action_previous_tab()
+        {
+            tabs.page --;
+        }
 
         private void action_zoom_normal_callback (Gtk.Action action) {
             if (current_tab != null && current_tab.slot != null) 
@@ -595,6 +607,14 @@ namespace Marlin.View {
   /* label, accelerator */       N_("Normal Si_ze"), "<control>0",
   /* tooltip */                  N_("Use the normal view size"),
                                  action_zoom_normal_callback },
+  /* name, stock id */         { "Next Tab", "",
+  /* label, accelerator */       N_("Next Tab"), "<control>Page_Down",
+  /* tooltip */                  "",
+                                 action_next_tab },
+  /* name, stock id */         { "Previous Tab", "",
+  /* label, accelerator */       N_("Previous Tab"), "<control>Page_Up",
+  /* tooltip */                  "",
+                                 action_previous_tab },
   /* name, stock id */         { "Connect to Server", null, 
   /* label, accelerator */       N_("Connect to _Server..."), null,
   /* tooltip */                  N_("Connect to a remote computer or shared disk"),
