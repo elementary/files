@@ -175,6 +175,7 @@ struct FMDirectoryViewClass {
 
     /* Selects the given item */
     void    (*select_path)          (FMDirectoryView *view, GtkTreePath *path);
+    void    (*select_all)          (FMDirectoryView *view);
 
     /* Place the cursor on the item/row referred to by path. If
      * start_editing is TRUE, the derived class should also start

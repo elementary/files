@@ -359,6 +359,10 @@ fm_columns_view_start_renaming_file (FMDirectoryView *view,
 	gtk_tree_path_free (path);
 }
 
+static void fm_columns_view_select_all(FMColumnsView* view)
+{
+    gtk_tree_selection_select_all (gtk_tree_view_get_selection (view->tree));
+}
 
 static gboolean
 button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsView *view)
@@ -996,6 +1000,7 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer;
     fm_directory_view_class->get_selected_paths = fm_columns_view_get_selected_paths;
     fm_directory_view_class->select_path = fm_columns_view_select_path;
+    fm_directory_view_class->select_all = fm_columns_view_select_all;
     fm_directory_view_class->set_cursor = fm_columns_view_set_cursor;
 
     fm_directory_view_class->get_path_at_pos = fm_columns_view_get_path_at_pos;

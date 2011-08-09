@@ -2385,6 +2385,12 @@ delete_selected_files (FMDirectoryView *view)
 }
 
 static void
+action_select_all (GtkAction *action, FMDirectoryView *view)
+{
+    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_all)(view);
+}
+
+static void
 action_delete_callback (GtkAction *action, gpointer data)
 {
     delete_selected_files (FM_DIRECTORY_VIEW (data));
@@ -3021,6 +3027,10 @@ static const GtkActionEntry directory_view_entries[] = {
     /* label, accelerator */       N_("_Restore"), NULL, 
                                    NULL,
             G_CALLBACK (action_restore_from_trash_callback) },
+    /* name, stock id */         { "Select All", NULL,
+    /* label, accelerator */       N_("Select All"), "<control>A", 
+                                   NULL,
+            G_CALLBACK (action_select_all) },
     /* name, stock id */         { "Properties", GTK_STOCK_PROPERTIES,
     /* label, accelerator */       N_("_Properties"), "<alt>Return",
     /* tooltip */                  N_("View or modify the properties of each selected item"),

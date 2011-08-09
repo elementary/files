@@ -262,6 +262,11 @@ cell_renderer_edited (GtkCellRenderer   *cell,
 
     fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
+static void
+fm_icon_view_select_all (FMIconView *view)
+{
+    exo_icon_view_select_all (view->icons);
+}
 
 static void
 fm_icon_view_start_renaming_file (FMDirectoryView *view,
@@ -792,6 +797,7 @@ fm_icon_view_class_init (FMIconViewClass *klass)
     fm_directory_view_class->get_selection_for_file_transfer = fm_icon_view_get_selection_for_file_transfer;
     fm_directory_view_class->get_selected_paths = fm_icon_view_get_selected_paths;
     fm_directory_view_class->select_path = fm_icon_view_select_path;
+    fm_directory_view_class->select_all = fm_icon_view_select_all;
     fm_directory_view_class->set_cursor = fm_icon_view_set_cursor;
 
     fm_directory_view_class->get_path_at_pos = fm_icon_view_get_path_at_pos;
