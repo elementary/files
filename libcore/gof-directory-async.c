@@ -557,7 +557,7 @@ gof_directory_async_class_init (GOFDirectoryAsyncClass *klass)
 char *
 gof_directory_async_get_uri (GOFDirectoryAsync *directory)
 {
-    return g_file_get_uri(directory->location);
+    return (directory->file->uri);
 }
 
 gboolean
@@ -569,6 +569,8 @@ gof_directory_async_has_parent(GOFDirectoryAsync *directory)
 GFile *
 gof_directory_async_get_parent(GOFDirectoryAsync *directory)
 {
-    return (g_object_ref (directory->priv->parent));
+    if (directory->priv->parent != NULL)
+        return (g_object_ref (directory->priv->parent));
+    return NULL;
 }
 

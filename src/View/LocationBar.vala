@@ -54,10 +54,10 @@ namespace Marlin.View.Chrome
         public new signal void activate();
         public signal void escape();
 
-        public LocationBar (UIManager window)
+        public LocationBar (UIManager ui, Window win)
         {
             entry = new Entry ();
-            bread = new Breadcrumbs(window);
+            bread = new Breadcrumbs(ui, win);
             bread.escape.connect( () => { escape(); });
 
             bread.activate_entry.connect( () => { state = false; });
@@ -133,7 +133,7 @@ namespace Marlin.View.Chrome
         int space_breads = 12;
         int x;
         int y;
-        string protocol = "";
+        string protocol;
 
         Gtk.StyleContext button_context;
         Gtk.StyleContext entry_context;
@@ -174,12 +174,13 @@ namespace Marlin.View.Chrome
          * FIXME: this should be replaced with some nice Gtk.Widget method. */
         new bool focus = false;
 
+        Window win;
         private int timeout = -1;
 
         int left_padding;
         int right_padding;
 
-        public Breadcrumbs(UIManager ui)
+        public Breadcrumbs(UIManager ui, Window win)
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                       | Gdk.EventMask.BUTTON_RELEASE_MASK
@@ -190,6 +191,7 @@ namespace Marlin.View.Chrome
 
             /* grab the UIManager */
             this.ui = ui;
+            this.win = win;
             init_clipboard ();
             icons[0] = { Marlin.TRASH_URI, Marlin.ICON_TRASH, true, null, null, true, N_("Trash")};
             make_icon(ref icons[0]);
@@ -320,49 +322,48 @@ namespace Marlin.View.Chrome
 
             entry.left_full.connect(() => {
                 string tmp = entry.text;
-                entry.text = "";
+                string tmp_entry = "";
+
                 foreach(BreadcrumbsElement element in elements)
                 {
                     if(element.display)
                     {
-                        if(entry.text[0] != '/')
+                        if(tmp_entry[0] != '/')
                         {
-                            entry.text += element.text + "/";
+                            tmp_entry += element.text + "/";
                         }
                         else
                         {
-                            entry.text += element.text;
+                            tmp_entry += element.text;
                         }
                     }
                 }
-                entry.text += tmp;
+                entry.text = tmp_entry + tmp;
                 elements.clear();
             });
 
             entry.backspace.connect(() => {
                 if(elements.size > 0)
                 {
-                    var element = elements[elements.size - 1];
-                    elements.remove(element);
+                    //warning ("BACKSPACE");
+                    string strloc = get_elements_path ();
+                    warning ("strloc %s", strloc);
+                    //File location = File.new_for_commandline_arg (strloc);
+                    location = location.get_parent ();
+                    if (location == null)
+                        location = File.new_for_commandline_arg (protocol);
+                    win.current_tab.path_changed (location);
+                    grab_focus();
                 }
             });
 
             entry.escape.connect(() => {
-                //change_breadcrumbs(text);
-                /* focus the main view */
-                //((FM.Directory.View) win.current_tab.slot.view_box).grab_focus();
                 escape();
             });
 
             entry.need_completion.connect(() => {
                 show_autocomplete();
-                string path = "";
-                foreach(BreadcrumbsElement element in elements)
-                {
-                    if(element.display) 
-                        path += element.text + "/"; /* sometimes, + "/" is useless
-                                                     * but we are never careful enough */
-                }
+                string path = get_elements_path ();
                 warning ("need_completion path %s", path);
                 warning ("need_completion entry_text %s", entry.text);
 
@@ -370,20 +371,8 @@ namespace Marlin.View.Chrome
                 int ssize = stext.length;
                 if(ssize > 0) {
                     if (ssize > 1) {
-                        string spath = path;
-                        int i;
-                        for (i=0; i< ssize-1; i++) {
-                            spath += stext[i];
-                            if (i != ssize-2)
-                                spath += "/";
-                        }
-                        warning ("spath = %s", spath);
-                        change_breadcrumbs(spath);
-                        /*File location = File.new_for_commandline_arg (spath);
-                        win.current_tab.path_changed (location);
-                        grab_focus ();*/
-                        //entry.need_completion();
-                        //return;
+                        update_breadcrumbs (entry.text, path);
+                        return;
                     } else
                         to_search = stext[0];
                         //to_search = stext[ssize - 1];
@@ -425,6 +414,20 @@ namespace Marlin.View.Chrome
             menu = new Menu();
             menu.show_all();
 
+        }
+
+        private string get_elements_path ()
+        {
+            string strpath = "";
+            foreach(BreadcrumbsElement element in elements)
+            {
+                if(element.display) 
+                    strpath += element.text + "/"; /* sometimes, + "/" is useless
+                                                 * but we are never careful enough */
+                /* FIXME make sure the comment never happen */
+            }
+            
+            return strpath;
         }
         
         private void make_icon(ref IconDirectory icon)
@@ -724,6 +727,32 @@ namespace Marlin.View.Chrome
             return true;
         }
 
+        public void update_breadcrumbs (string newpath, string breadpath)
+        {
+            string strloc;
+
+            warning ("change_breadcrumb text %s", newpath);
+            if (Posix.strncmp (newpath, "./", 2) == 0) {
+                entry.reset ();
+                return;
+            }
+
+            if (newpath[0] == '/') {
+                strloc = newpath;
+            } else if (Posix.strncmp (newpath, "~/", 2) == 0) {
+                strloc = Environment.get_home_dir ();
+            } else {
+                strloc = breadpath + newpath;
+            } 
+            
+            File location = File.new_for_commandline_arg (strloc);
+            string str = location.get_uri ();
+            debug ("update_breadcrumbs %s", str);
+            win.current_tab.path_changed (location);
+            grab_focus();
+
+        }
+
         /**
          * Change the Breadcrumbs content.
          *
@@ -733,29 +762,27 @@ namespace Marlin.View.Chrome
         public void change_breadcrumbs(string newpath)
         {
             var explode_protocol = newpath.split(":///");
-            if(explode_protocol.length > 1)
-            {
+            if(explode_protocol.length > 1) {
                 protocol = explode_protocol[0] + ":///";
                 text = explode_protocol[1];
-            }
-            else
-            {
+            } else {
                 text = newpath;
-                protocol = "";
+                protocol = Marlin.ROOT_FS_URI;
             }
             selected = -1;
             var breads = text.split("/");
             var newelements = new Gee.ArrayList<BreadcrumbsElement>();
-            if(breads.length == 0 | breads[0] == "")
-                newelements.add(new BreadcrumbsElement("/", left_padding, right_padding));
+            if(breads.length == 0 || breads[0] == "") 
+                newelements.add(new BreadcrumbsElement(protocol, left_padding, right_padding));
             
             foreach(string dir in breads)
             {
                 if(dir != "")
                 newelements.add(new BreadcrumbsElement(dir, left_padding, right_padding));
             }
-            
-            newelements[0].text = protocol + newelements[0].text;
+           
+            if (protocol == Marlin.ROOT_FS_URI)
+                newelements[0].text = "/";
             int max_path = int.min(elements.size, newelements.size);
             
             bool same = true;
@@ -1419,21 +1446,23 @@ namespace Marlin.View.Chrome
          **/
         public void insert(string to_insert)
         {
-            int first = selected_start > selected_end ? selected_end : selected_start;
-            int second = selected_start > selected_end ? selected_start : selected_end;
-            if(first != second && second > 0)
-            {
-                text = text.slice(0, first) + to_insert + text.slice(second, text.length);
-                selected_start = -1;
-                selected_end = -1;
-                selection_start = 0;
-                selection_end = 0;
-                cursor = first + to_insert.length;
-            }
-            else
-            {
-                text = text.slice(0,cursor) + to_insert + text.slice(cursor, text.length);
-                cursor += to_insert.length;
+            if (to_insert != null && to_insert.length > 0) {
+                int first = selected_start > selected_end ? selected_end : selected_start;
+                int second = selected_start > selected_end ? selected_start : selected_end;
+                if(first != second && second > 0)
+                {
+                    text = text.slice(0, first) + to_insert + text.slice(second, text.length);
+                    selected_start = -1;
+                    selected_end = -1;
+                    selection_start = 0;
+                    selection_end = 0;
+                    cursor = first + to_insert.length;
+                }
+                else
+                {
+                    text = text.slice(0,cursor) + to_insert + text.slice(cursor, text.length);
+                    cursor += to_insert.length;
+                }
             }
             need_completion();
         }

@@ -159,9 +159,6 @@ namespace Marlin.View {
             if (!slot.directory.file.exists) 
                 content = new DirectoryNotFound (slot.directory, this);
             
-            /* focus the main view */
-            //((FM.Directory.View) slot.view_box).grab_focus();
-            content.grab_focus();
             sync_contextview();
         }
 
@@ -215,7 +212,7 @@ namespace Marlin.View {
 
             window.can_go_up = slot.directory.has_parent();
             if (window.top_menu.location_bar != null)
-                    window.top_menu.location_bar.path = slot.location.get_parse_name();
+                window.top_menu.location_bar.path = slot.location.get_parse_name();
             if (save_history)
                 browser.record_uri(slot.directory.get_uri());
             window.can_go_back = browser.can_go_back();
