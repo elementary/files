@@ -81,13 +81,18 @@ namespace Marlin.View.Chrome
                 {
                     location_bar = new LocationBar (win.ui, win);
                     location_bar.show_all();
-                    location_bar.escape.connect( () => { ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); });
+
                     insert(location_bar, -1);
                     /* init the path if we got a curent tab with a valid slot
                        and a valid directory loaded */
                     if (win.current_tab != null && win.current_tab.slot != null
-                        && win.current_tab.slot.directory != null)
-                        location_bar.path = win.current_tab.slot.directory.get_uri();
+                        && win.current_tab.slot.directory != null) {
+                        location_bar.path = win.current_tab.slot.directory.location.get_parse_name ();
+                        //debug ("topmenu test path %s", location_bar.path);
+                    }
+
+                    location_bar.escape.connect( () => { ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); });
+                    location_bar.activate.connect(() => { win.current_tab.path_changed(File.new_for_commandline_arg(location_bar.path)); });
                     continue;
                 }
                 if (name == "ViewSwitcher")
@@ -122,6 +127,7 @@ namespace Marlin.View.Chrome
             }
 
             insert(app_menu, -1);
+            app_menu.right_click.connect(right_click_extern);
         }
 
         private void toolitems_destroy (Gtk.Widget? w) {

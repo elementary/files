@@ -214,7 +214,7 @@ namespace Marlin.View {
             if (window.top_menu.location_bar != null)
                 window.top_menu.location_bar.path = slot.location.get_parse_name();
             if (save_history)
-                browser.record_uri(slot.directory.get_uri());
+                browser.record_uri(slot.directory.location.get_parse_name ());
             window.can_go_back = browser.can_go_back();
             window.can_go_forward = browser.can_go_forward();
             if (window.top_menu.view_switcher != null)
