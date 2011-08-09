@@ -2035,14 +2035,10 @@ fm_directory_view_request_thumbnails (FMDirectoryView *view)
                                                                   &start_path,
                                                                   &end_path))
     {
-        /*printf ("%s start_path %s end_path %s\n", G_STRFUNC,
-                gtk_tree_path_to_string (start_path),
-                gtk_tree_path_to_string (end_path));*/
-
         /* iterate over the range to collect all files */
         valid_iter = gtk_tree_model_get_iter (GTK_TREE_MODEL (view->model),
                                               &iter, start_path);
-//thumbtest
+
         while (valid_iter)
         {
             /* prepend the file to the visible items list */

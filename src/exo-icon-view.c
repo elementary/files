@@ -2293,7 +2293,8 @@ exo_icon_view_button_press (GtkWidget      *widget,
                 {
                     //amtest
                     if (!item->add_remove_helper) {
-                        exo_icon_view_unselect_all_internal (icon_view);
+                        /* Check if we are on a selected item */
+                        if(!item->selected) exo_icon_view_unselect_all_internal (icon_view);
                         item->selected = TRUE;
                     } else {
                         item->selected = !item->selected;
