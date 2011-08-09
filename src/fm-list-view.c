@@ -204,25 +204,15 @@ fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
     char *uri;
 
     file_list = fm_list_view_get_selection (view);
-    /*guint array_length = MIN (g_list_length (file_list)*sizeof(char), 30);
-      char **array = malloc(array_length + 1);
-      char **l = array;*/
     for (; file_list != NULL; file_list=file_list->next)
     {
         file = file_list->data;
-        //log_printf (LOG_LEVEL_UNDEFINED, "colorize %s %d\n", file->name, ncolor);
         g_free(file->color);
         file->color = g_strdup(tags_colors[ncolor]);
         uri = g_file_get_uri(file->location);
-        //*array = uri;
         marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
         g_free (uri);
     }
-    /**array = NULL;
-      marlin_view_tags_uris_set_color (tags, l, array_length, ncolor, NULL);*/
-    /*for (; *l != NULL; l=l++)
-      log_printf (LOG_LEVEL_UNDEFINED, "array uri: %s\n", *l);*/
-    //g_strfreev(l);
 }
 
 static void
