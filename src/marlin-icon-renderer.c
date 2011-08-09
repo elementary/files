@@ -114,6 +114,7 @@ marlin_icon_renderer_init (MarlinIconRenderer *cellpixbuf)
 
     priv->stock_size = GTK_ICON_SIZE_MENU;
     priv->clipboard = marlin_clipboard_manager_new_get_for_display (gdk_display_get_default ());
+    priv->emblems = TRUE;
 }
 
 static void
@@ -766,6 +767,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GdkPixbuf *pixbuf, *stated;
     GdkPixbuf *temp;
     GdkRectangle pix_rect;
+    GdkRectangle emblem_area;
     GdkRectangle draw_rect;
     gint xpad, ypad;
     GtkStateFlags state;
@@ -873,102 +875,55 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         _g_object_unref0 (pix);
     }
 
-}
-
-//TODO emblem code snipped waiting to be integrated
-#if 0
     /* check if we should render emblems as well */
-    if (G_LIKELY (icon_renderer->emblems))
+    if (G_LIKELY (priv->emblems))
     {
-        /* display the primary emblem as well (if any) */
-        emblems = thunar_file_get_emblem_names (icon_renderer->file);
-        if (G_UNLIKELY (emblems != NULL))
+        int position = 0;
+        GList* emblems = g_list_first(priv->file->emblems_list);
+#define MARLIN_EMBLEM_SIZE 24
+        /* render the emblems */
+        while(emblems != NULL && position < 4)
         {
-            /* render up to four emblems for sizes from 48 onwards, else up to 2 emblems */
-            max_emblems = (icon_renderer->size < 48) ? 2 : 4;
-
-            /* render the emblems */
-            for (lp = emblems, position = 0; lp != NULL && position < max_emblems; lp = lp->next)
+            /* check if we have the emblem in the icon theme */
+            nicon = nautilus_icon_info_lookup_from_name (emblems->data, MARLIN_EMBLEM_SIZE);
+            pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+            if(nicon == NULL)
             {
-                /* check if we have the emblem in the icon theme */
-                emblem = thunar_icon_factory_load_icon (icon_factory, lp->data, icon_renderer->size, NULL, FALSE);
-                if (G_UNLIKELY (emblem == NULL))
-                    continue;
-
-                /* determine the dimensions of the emblem */
-                emblem_area.width = gdk_pixbuf_get_width (emblem);
-                emblem_area.height = gdk_pixbuf_get_height (emblem);
-
-                /* shrink insane emblems */
-                if (G_UNLIKELY (MAX (emblem_area.width, emblem_area.height) > (gint) MIN ((2 * icon_renderer->size) / 3, 36)))
-                {
-                    /* scale down the emblem */
-                    temp = exo_gdk_pixbuf_scale_ratio (emblem, MIN ((2 * icon_renderer->size) / 3, 36));
-                    g_object_unref (G_OBJECT (emblem));
-                    emblem = temp;
-
-                    /* determine the size again */
-                    emblem_area.width = gdk_pixbuf_get_width (emblem);
-                    emblem_area.height = gdk_pixbuf_get_height (emblem);
-                }
-
-                /* determine a good position for the emblem, depending on the position index */
-                switch (position)
-                {
-                case 0: /* right/bottom */
-                    emblem_area.x = MIN (icon_area.x + icon_area.width - emblem_area.width / 2,
-                                         cell_area->x + cell_area->width - emblem_area.width);
-                    emblem_area.y = MIN (icon_area.y + icon_area.height - emblem_area.height / 2,
-                                         cell_area->y + cell_area->height -emblem_area.height);
-                    break;
-
-                case 1: /* left/bottom */
-                    emblem_area.x = MAX (icon_area.x - emblem_area.width / 2,
-                                         cell_area->x);
-                    emblem_area.y = MIN (icon_area.y + icon_area.height - emblem_area.height / 2,
-                                         cell_area->y + cell_area->height -emblem_area.height);
-                    break;
-
-                case 2: /* left/top */
-                    emblem_area.x = MAX (icon_area.x - emblem_area.width / 2,
-                                         cell_area->x);
-                    emblem_area.y = MAX (icon_area.y - emblem_area.height / 2,
-                                         cell_area->y);
-                    break;
-
-                case 3: /* right/top */
-                    emblem_area.x = MIN (icon_area.x + icon_area.width - emblem_area.width / 2,
-                                         cell_area->x + cell_area->width - emblem_area.width);
-                    emblem_area.y = MAX (icon_area.y - emblem_area.height / 2,
-                                         cell_area->y);
-                    break;
-
-                default:
-                    _thunar_assert_not_reached ();
-                }
-
-                /* render the emblem */
-                if (gdk_rectangle_intersect (expose_area, &emblem_area, &draw_area))
-                {
-                    gdk_draw_pixbuf (window, widget->style->black_gc, emblem,
-                                     draw_area.x - emblem_area.x, draw_area.y - emblem_area.y,
-                                     draw_area.x, draw_area.y, draw_area.width, draw_area.height,
-                                     GDK_RGB_DITHER_NORMAL, 0, 0);
-                }
-
-                /* release the emblem */
-                g_object_unref (G_OBJECT (emblem));
-
-                /* advance the position index */
-                ++position;
+                g_critical("Can't load icon %s", emblems->data);
             }
 
-            /* release the emblem name list */
-            g_list_free (emblems);
+            /* determine the dimensions of the emblem */
+            emblem_area.width = gdk_pixbuf_get_width (pix);
+            emblem_area.height = gdk_pixbuf_get_height (pix);
+
+            /* determine a good position for the emblem, depending on the position index */
+            switch (position)
+            {
+            case 0: /* right/top */
+                emblem_area.x = cell_area->x + cell_area->width - MARLIN_EMBLEM_SIZE;
+                emblem_area.y = cell_area->y;
+                break;
+            case 1: /* left/top */
+                emblem_area.x = cell_area->x;
+                emblem_area.y = cell_area->y;
+                break;
+            case 2: /* left/bottom */
+                emblem_area.x = cell_area->x;
+                emblem_area.y = cell_area->y + cell_area->height - MARLIN_EMBLEM_SIZE;
+                break;
+            case 3: /* right/bottom */
+                emblem_area.x = cell_area->x + cell_area->width - MARLIN_EMBLEM_SIZE;
+                emblem_area.y = cell_area->y + cell_area->height - MARLIN_EMBLEM_SIZE;
+                break;
+            }
+
+            gdk_cairo_set_source_pixbuf (cr, pix, emblem_area.x, emblem_area.y);
+            cairo_paint (cr);
+            
+            position ++;
+
+            emblems = g_list_next(emblems);
+            g_object_unref(pix);
         }
     }
-
-    /* release our reference on the icon factory */
-    g_object_unref (G_OBJECT (icon_factory));
-#endif
-
+}

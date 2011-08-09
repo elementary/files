@@ -274,8 +274,24 @@ void gof_file_update_icon (GOFFile *file, gint size)
     _g_object_unref0 (file->pix);
     file->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
     _g_object_unref0 (nicon);
+
+    if(gof_file_is_symlink(file))
+    {
+        gof_file_add_emblem(file, "emblem-symbolic-link");
+    }
 }
 
+void gof_file_add_emblem(GOFFile* file, const gchar* emblem)
+{
+    GList* emblems = g_list_first(file->emblems_list);
+    while(emblems != NULL)
+    {
+        if(!g_strcmp0(emblems->data, emblem))
+            return;
+        emblems = g_list_next(emblems);
+    }
+    file->emblems_list = g_list_append(file->emblems_list, (void*)emblem);
+}
 static void
 print_error(GError *error)
 {
