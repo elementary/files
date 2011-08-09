@@ -30,31 +30,6 @@
 
 #include <atk/atk.h>
 
-/*#include "gtkaccessibleprivate.h"
-#include "gtkiconview.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrenderer.h"
-#include "gtkcellareabox.h"
-#include "gtkcellareacontext.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcellrendererpixbuf.h"
-#include "gtkorientable.h"
-#include "gtkmarshalers.h"
-#include "gtkbindings.h"
-#include "gtkdnd.h"
-#include "gtkmain.h"
-#include "gtkintl.h"
-#include "gtkaccessible.h"
-#include "gtkwindow.h"
-#include "gtkentry.h"
-#include "gtkcombobox.h"
-#include "gtktextbuffer.h"
-#include "gtkscrollable.h"
-#include "gtksizerequest.h"
-#include "gtktreednd.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"*/
-
 #include "exo-icon-view.h"
 #include "eel-i18n.h"
 #include "nautilus-icon-info.h"
@@ -3179,6 +3154,9 @@ exo_icon_view_layout_single_row (ExoIconView *icon_view,
         col ++;
         items = items->next;
     }
+    
+    /* Remove one spacing since the last spacing is not used */
+    *maximum_width = *maximum_width* - icon_view->priv->column_spacing;
 
     last_item = items;
 

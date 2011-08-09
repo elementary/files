@@ -368,53 +368,26 @@ g_signal_handlers_disconnect_by_func (directory,
 static void
 fm_directory_view_init (FMDirectoryView *view)
 {
-//static gboolean setup_autos = FALSE;
-//char *templates_uri;
-//
-#if 0
-if (!setup_autos) {
-    setup_autos = TRUE;
-    /*eel_preferences_add_auto_boolean (NAUTILUS_PREFERENCES_CONFIRM_TRASH,
-      &confirm_trash_auto_value);
-      eel_preferences_add_auto_boolean (NAUTILUS_PREFERENCES_ENABLE_DELETE,
-      &show_delete_command_auto_value);*/
-}
-#endif
 
-view->model = g_object_new (FM_TYPE_LIST_MODEL, NULL);
+    view->model = g_object_new (FM_TYPE_LIST_MODEL, NULL);
 
-view->details = g_new0 (FMDirectoryViewDetails, 1);
-view->details->drag_scroll_timer_id = -1;
-view->details->drag_timer_id = -1;
-view->details->dir_action_group = NULL;
+    view->details = g_new0 (FMDirectoryViewDetails, 1);
+    view->details->drag_scroll_timer_id = -1;
+    view->details->drag_timer_id = -1;
+    view->details->dir_action_group = NULL;
 
-/* create a thumbnailer */
-view->details->thumbnailer = marlin_thumbnailer_get ();
-view->details->thumbnailing_scheduled = FALSE;
+    /* create a thumbnailer */
+    view->details->thumbnailer = marlin_thumbnailer_get ();
+    view->details->thumbnailing_scheduled = FALSE;
 
-/* initialize the scrolled window */
-gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (view),
+    /* initialize the scrolled window */
+    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (view),
                                     GTK_POLICY_AUTOMATIC,
                                     GTK_POLICY_AUTOMATIC);
     gtk_scrolled_window_set_hadjustment (GTK_SCROLLED_WINDOW (view), NULL);
     gtk_scrolled_window_set_vadjustment (GTK_SCROLLED_WINDOW (view), NULL);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (view), GTK_SHADOW_NONE);
 
-    /*g_signal_connect_object (nautilus_signaller_get_current (),
-      "user_dirs_changed",
-      G_CALLBACK (user_dirs_changed),
-      view, G_CONNECT_SWAPPED);*/
-
-    /*g_signal_connect_object (nautilus_trash_monitor_get (), "trash_state_changed",
-      G_CALLBACK (fm_directory_view_trash_state_changed_callback), view, 0);*/
-
-    /* React to clipboard changes */
-    /*g_signal_connect_object (nautilus_clipboard_monitor_get (), "clipboard_changed",
-      G_CALLBACK (clipboard_changed_callback), view, 0);*/
-
-    /* Register to menu provider extension signal managing menu updates */
-    /*g_signal_connect_object (nautilus_signaller_get_current (), "popup_menu_changed",
-      G_CALLBACK (fm_directory_view_update_menus), view, G_CONNECT_SWAPPED);*/
 
 
     /* setup the icon renderer */
@@ -436,38 +409,7 @@ gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (view),
         view->details->previewer = NULL;
     g_free (previewer_path);
 
-
     gtk_widget_show (GTK_WIDGET (view));
-
-    /*eel_preferences_add_callback (NAUTILUS_PREFERENCES_CONFIRM_TRASH,
-      schedule_update_menus_callback, view);
-      eel_preferences_add_callback (NAUTILUS_PREFERENCES_ENABLE_DELETE,
-      schedule_update_menus_callback, view);
-      eel_preferences_add_callback (NAUTILUS_PREFERENCES_ICON_VIEW_CAPTIONS,
-      text_attribute_names_changed_callback, view);
-      eel_preferences_add_callback (NAUTILUS_PREFERENCES_SHOW_IMAGE_FILE_THUMBNAILS,
-      image_display_policy_changed_callback, view);
-      eel_preferences_add_callback (NAUTILUS_PREFERENCES_CLICK_POLICY,
-      click_policy_changed_callback, view);
-      eel_preferences_add_callback (NAUTILUS_PREFERENCES_SORT_DIRECTORIES_FIRST,
-      sort_directories_first_changed_callback, view);
-      eel_preferences_add_callback (NAUTILUS_PREFERENCES_LOCKDOWN_COMMAND_LINE,
-      lockdown_disable_command_line_changed_callback, view);*/
-
-    /* Update undo actions stuff and connect signals from the undostack manager */
-    /*view->details->undo_active = FALSE;
-      view->details->redo_active = FALSE;
-      view->details->undo_action_description = NULL;
-      view->details->undo_action_label = NULL;
-      view->details->redo_action_description = NULL;
-      view->details->redo_action_label = NULL;
-
-      NautilusUndoStackManager* manager = nautilus_undostack_manager_instance ();
-
-      g_signal_connect_object (G_OBJECT(manager), "request-menu-update",
-      G_CALLBACK(undo_redo_menu_update_callback), view, 0);
-
-      nautilus_undostack_manager_request_menu_update (nautilus_undostack_manager_instance());*/
 
     /* setup the list model */
     g_signal_connect (view->model, "row-deleted", G_CALLBACK (fm_directory_view_row_deleted), view);

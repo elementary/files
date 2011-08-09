@@ -652,13 +652,11 @@ fm_icon_view_init (FMIconView *view)
 
     exo_icon_view_set_search_column (view->icons, FM_LIST_MODEL_FILENAME);
 
-    /*g_signal_connect (G_OBJECT (view->icons), "notify::model", G_CALLBACK (fm_icon_view_notify_model), view);*/
     g_signal_connect (G_OBJECT (view->icons), "item-activated", G_CALLBACK (fm_icon_view_item_activated), view);
     g_signal_connect (G_OBJECT (view->icons), "selection-changed", G_CALLBACK (fm_icon_view_selection_changed), view);
 
 
     exo_icon_view_set_selection_mode (view->icons, GTK_SELECTION_MULTIPLE);
-    /*exo_icon_view_set_enable_search (view->icons, TRUE);*/
     
     /* add the icon renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer),
@@ -676,8 +674,8 @@ fm_icon_view_init (FMIconView *view)
     gtk_cell_layout_add_attribute (GTK_CELL_LAYOUT (view->icons), FM_DIRECTORY_VIEW (view)->name_renderer, "background", FM_LIST_MODEL_COLOR);
 
     g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "edited", G_CALLBACK (cell_renderer_edited), view);
-	g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "editing-canceled", G_CALLBACK (cell_renderer_editing_canceled), view);
-	g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "editing-started", G_CALLBACK (cell_renderer_editing_started_cb), view);
+    g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "editing-canceled", G_CALLBACK (cell_renderer_editing_canceled), view);
+    g_signal_connect (FM_DIRECTORY_VIEW (view)->name_renderer, "editing-started", G_CALLBACK (cell_renderer_editing_started_cb), view);
 
 
 
@@ -685,12 +683,6 @@ fm_icon_view_init (FMIconView *view)
     /* synchronize the "text-beside-icons" property with the global preference */
     /**/
     g_object_set (G_OBJECT (view), "text-beside-icons", FALSE, NULL);
-
-    /*g_signal_connect_swapped (marlin_icon_view_settings, "changed::zoom-level",
-      G_CALLBACK (zoom_level_changed), view);*/
-
-    /*g_settings_bind (marlin_icon_view_settings, "zoom-level", 
-      FM_DIRECTORY_VIEW (view)->icon_renderer, "size", 0);*/
 
     g_settings_bind (settings, "single-click", 
                      view->icons, "single-click", 0);
@@ -824,14 +816,12 @@ fm_icon_view_class_init (FMIconViewClass *klass)
 
 }
 
-static void
-fm_icon_view_zoom_level_changed (FMIconView *view)
+static void fm_icon_view_zoom_level_changed (FMIconView *view)
 {
     gint wrap_width;
 
     g_return_if_fail (FM_IS_ICON_VIEW (view));
 
-    //g_warning ("%s %d", G_STRFUNC, marlin_zoom_level_to_icon_size (view->zoom_level));
     /* determine the "wrap-width" depending on the "zoom-level" */
     switch (view->zoom_level)
     {
@@ -861,31 +851,6 @@ fm_icon_view_zoom_level_changed (FMIconView *view)
     /* set the new "size" for the icon renderer */
     g_object_set (FM_DIRECTORY_VIEW (view)->icon_renderer, "size", marlin_zoom_level_to_icon_size (view->zoom_level), NULL);
 
-#if 0
-    /* TODO move this to icon renderer ? */
-    gint xpad, ypad;
-
-    gtk_cell_renderer_get_padding (view->icon_renderer, &xpad, &ypad);
-    gtk_cell_renderer_set_fixed_size (GTK_CELL_RENDERER (view->icon_renderer),
-                                      marlin_zoom_level_to_icon_size (zoom_level)+ 2 * xpad,
-                                      //-1,
-                                      marlin_zoom_level_to_icon_size (zoom_level)+ 2 * ypad);
-                                      //-1);
-#endif
-    /*exo_icon_view_set_spacing (FM_ICON_VIEW (view)->icons, 0);
-    exo_icon_view_set_column_spacing (FM_ICON_VIEW (view)->icons, 0);
-    exo_icon_view_set_row_spacing (FM_ICON_VIEW (view)->icons, 0);*/
-    //gtk_widget_queue_draw (GTK_WIDGET (view));
-    //exo_icon_view_invalidate_sizes (FM_ICON_VIEW (view)->icons);
-    //gtk_widget_queue_draw (GTK_WIDGET (FM_ICON_VIEW (view)->icons));
-
-    /*gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (GTK_BIN (abstract_icon_view)->child),
-                                      THUNAR_STANDARD_VIEW (abstract_icon_view)->icon_renderer,
-                                      NULL, NULL, NULL);*/
-    /*gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (FM_ICON_VIEW (view)->icons),
-                                      view->icon_renderer,
-                                      NULL, NULL, NULL);*/
     exo_icon_view_invalidate_sizes (FM_ICON_VIEW (view)->icons);
-    //gtk_widget_queue_draw (GTK_WIDGET (FM_ICON_VIEW (view)->icons));
 }
 
