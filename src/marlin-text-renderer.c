@@ -599,7 +599,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         {
             if(!gdk_rgba_parse(&color, text_renderer->background))
             {
-                g_critical("Can't parse this color value: %d", text_renderer->background);
+                g_critical("Can't parse this color value: %s", text_renderer->background);
                 gtk_style_context_get_background_color (context, state, &color);
             }
             

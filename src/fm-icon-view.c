@@ -254,9 +254,9 @@ cell_renderer_edited (GtkCellRenderer   *cell,
     fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
 static void
-fm_icon_view_select_all (FMIconView *view)
+fm_icon_view_select_all (FMDirectoryView *view)
 {
-    exo_icon_view_select_all (view->icons);
+    exo_icon_view_select_all (FM_ICON_VIEW (view)->icons);
 }
 
 static void

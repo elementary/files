@@ -51,7 +51,7 @@ struct _MarlinTextRenderer
     GtkWidget    *widget;
     gboolean      text_static;
     gchar        *text;
-    gchar* background;
+    gchar        *background;
     gint          char_width;
     gint          char_height;
     PangoWrapMode wrap_mode;

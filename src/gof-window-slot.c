@@ -44,7 +44,7 @@ gof_window_slot_init (GOFWindowSlot *slot)
 {
     slot->content_box = gtk_vbox_new(FALSE, 0);
     GOF_ABSTRACT_SLOT(slot)->extra_location_widgets = gtk_vbox_new(FALSE, 0);
-    gtk_box_pack_start(slot->content_box, GOF_ABSTRACT_SLOT(slot)->extra_location_widgets, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX (slot->content_box), GOF_ABSTRACT_SLOT(slot)->extra_location_widgets, FALSE, FALSE, 0);
 }
 
 static void
@@ -165,7 +165,7 @@ gof_window_slot_make_icon_view (GOFWindowSlot *slot)
     }
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_ICON_VIEW,
                                                "window-slot", slot, NULL));
-    gtk_box_pack_start(slot->content_box, slot->view_box, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
     
     marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->content_box);
     gof_directory_async_load (slot->directory);
@@ -180,7 +180,7 @@ gof_window_slot_make_list_view (GOFWindowSlot *slot)
     }
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
                                                "window-slot", slot, NULL));
-    gtk_box_pack_start(slot->content_box, slot->view_box, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
     marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->content_box);
     gof_directory_async_load (slot->directory);
 }

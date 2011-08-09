@@ -956,9 +956,9 @@ fm_list_view_reset_selection (FMDirectoryView *view)
 #endif
 
 static void
-fm_list_view_select_all (FMListView *view)
+fm_list_view_select_all (FMDirectoryView *view)
 {
-    gtk_tree_selection_select_all (gtk_tree_view_get_selection (view->tree));
+    gtk_tree_selection_select_all (gtk_tree_view_get_selection (FM_LIST_VIEW (view)->tree));
 }
 
 static void

@@ -993,11 +993,6 @@ namespace Marlin.View.Chrome
             return true;
         }
         
-        private void select_(string path)
-        {
-            changed(path);
-        }
-        
         public override bool focus_in_event(Gdk.EventFocus event)
         {
             entry.show();
