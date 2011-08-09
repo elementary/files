@@ -488,6 +488,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
     gint y_offset;
     gint xpad, ypad;
     gfloat xalign, yalign;
+    gboolean selected;
 
     /* setup the new widget */
     marlin_text_renderer_set_widget (text_renderer, widget);
@@ -571,8 +572,10 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
 
     context = gtk_widget_get_style_context (widget);
 
+    selected = ((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED && text_renderer->follow_state);
+
     /* render the state indicator */
-    if (((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED && text_renderer->follow_state) || text_renderer->background != NULL)
+    if (selected || text_renderer->background != NULL)
     {
         /* calculate the text bounding box (including the focus padding/width) */
         x0 = cell_area->x + x_offset;
@@ -592,7 +595,7 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
         
         GdkRGBA color;
 
-        if(text_renderer->background != NULL)
+        if(text_renderer->background != NULL && !selected)
         {
             if(!gdk_rgba_parse(&color, text_renderer->background))
             {
