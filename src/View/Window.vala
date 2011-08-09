@@ -499,7 +499,7 @@ namespace Marlin.View {
 
         private void action_connect_to_server_callback (Gtk.Action action)
         {
-            Widget dialog = new Marlin.ConnectServer.Dialog ((Gtk.Window) this);
+            Widget dialog = new Marlin.ConnectServer.Dialog (this);
             dialog.show ();
         }
 

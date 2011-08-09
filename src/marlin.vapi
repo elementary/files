@@ -24,7 +24,7 @@ namespace GOF {
     namespace Window {
         [CCode (cheader_filename = "gof-window-slot.h")]
         public class Slot : GLib.Object {
-            public Slot (GLib.File f, Marlin.View.ViewContainer ctab);
+            public Slot (GLib.File f, Gtk.EventBox ctab);
             public void make_icon_view ();
             public void make_list_view ();
             public void add_extra_widget(Gtk.Widget widget);
@@ -49,7 +49,7 @@ namespace Marlin {
         [CCode (cheader_filename = "marlin-window-columns.h")]
         public class Columns : GLib.Object {
             //public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
-            public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
+            public Columns (GLib.File f, Gtk.EventBox ctab);
             public void make_view ();
             public GOF.Window.Slot active_slot;
             /*public Directory.Async directory;
@@ -60,7 +60,6 @@ namespace Marlin {
     namespace ConnectServer {
         [CCode (cheader_filename = "marlin-connect-server-dialog.h")]
         public class Dialog : Gtk.Dialog {
-            //public Dialog (Marlin.View.Window window);
             public Dialog (Gtk.Window window);
         }
     }
