@@ -532,6 +532,21 @@ namespace Marlin.View {
                 "translator-credits", _("translator-credits"),
                 null);
         }
+        
+        void show_report() {
+            try { Gtk.show_uri (Gdk.Screen.get_default(), Marlin.BUG_URL, -1); }
+            catch (Error e) { critical("Can't open the link"); }
+        }
+
+        void show_translate() {
+            try { Gtk.show_uri (Gdk.Screen.get_default(), Marlin.TRANSLATE_URL, -1); }
+            catch (Error e) { critical("Can't open the link"); }
+        }
+
+        void show_app_help() {
+            try { Gtk.show_uri (Gdk.Screen.get_default(), Marlin.HELP_URL, -1); }
+            catch (Error e) { critical("Can't open the link"); }
+        }
 
         static const Gtk.ActionEntry[] main_entries = {
   /* name, stock id, label */  { "File", null, N_("_File") },
@@ -623,7 +638,19 @@ namespace Marlin.View {
   /* name, stock id */         { "About", Stock.ABOUT,
   /* label, accelerator */       N_("_About"), null,
   /* tooltip */                  N_("Display credits"),
-                                 show_about }
+                                 show_about },
+  /* name, stock id */         { "ReportProblem", "",
+  /* label, accelerator */       N_("Report a Problem..."), null,
+  /* tooltip */                  N_("File a bug on Launchpad"),
+                                 show_report },
+  /* name, stock id */         { "GetHelp", "",
+  /* label, accelerator */       N_("Get Help Online..."), null,
+  /* tooltip */                  "",
+                                 show_app_help },
+  /* name, stock id */         { "Translate", "",
+  /* label, accelerator */       N_("Translate This Application..."), null,
+  /* tooltip */                  "",
+                                 show_translate }
 
 
         };

@@ -101,6 +101,10 @@
 		<placeholder name="Bookmarks Placeholder"/>
     </menu>-->
 	<menu action="Help">
+		<menuitem name="GetHelp" action="GetHelp"/>
+		<menuitem name="Translate" action="Translate"/>
+		<menuitem name="ReportProblem" action="ReportProblem"/>
+		<separator />
 		<menuitem name="About" action="About"/>
 	</menu>
 </menubar>
@@ -143,6 +147,11 @@
     <menuitem name="Show Hidden Files" action="Show Hidden Files"/>
 	<separator/>
     <menuitem name="MarlinSettings" action="MarlinSettings"/>
+    <separator />
+    <menuitem name="GetHelp" action="GetHelp"/>
+    <menuitem name="Translate" action="Translate"/>
+    <menuitem name="ReportProblem" action="ReportProblem"/>
+    <separator />
     <menuitem name="About" action="About"/>
 </popup>
 </ui>
