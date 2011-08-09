@@ -25,9 +25,9 @@ namespace Marlin.View.Chrome
 {
     public class LocationBar : ToolItem
     {
-        private Entry entry;
+        //private Entry entry;
         private Breadcrumbs bread;
-        bool _state;
+        /*bool _state;
         public bool state
         {
             get { return _state; }
@@ -37,48 +37,54 @@ namespace Marlin.View.Chrome
                     update_widget();
                 }
             }
-        }
+        }*/
 
+        private string _path;
         public new string path{
             set{
                 var new_path = value;
-                entry.text = new_path;
+                //entry.text = new_path;
+                _path = new_path;
                 bread.change_breadcrumbs(new_path);
-                state = true;
+                //state = true;
             }
             get{
-                return entry.text;
+                //return entry.text;
+                return _path;
             }
         }
 
         public new signal void activate();
         public signal void escape();
 
-        public LocationBar (UIManager window)
+        public LocationBar (UIManager ui, Window win)
         {
-            entry = new Entry ();
-            bread = new Breadcrumbs(window);
+            //entry = new Entry ();
+            bread = new Breadcrumbs(ui, win);
             bread.escape.connect( () => { escape(); });
 
-            bread.activate_entry.connect( () => { state = false; });
+            //bread.activate_entry.connect( () => { state = false; });
 
             bread.changed.connect(on_bread_changed);
-            state = true;
+            //state = true;
 
             set_expand(true);
+                
+            border_width = 0;
+            add(bread);
 
-            entry.activate.connect(() => { activate(); state = true;});
-            entry.focus_out_event.connect(() => { if(!state) state = true; return true; });
+            /*entry.activate.connect(() => { activate(); state = true;});
+            entry.focus_out_event.connect(() => { if(!state) state = true; return true; });*/
         }
         
         private void on_bread_changed(string changed)
         {
-             entry.text = changed;
+             //entry.text = changed;
+             _path = changed;
              activate();
-             bread.popdown ();
         }
 
-        private void update_widget()
+        /*private void update_widget()
         {
             var list = get_children();
             foreach(Widget w in list)
@@ -94,7 +100,7 @@ namespace Marlin.View.Chrome
                 show_all();
                 entry.grab_focus();
             }
-        }
+        }*/
     }
     
     public struct IconDirectory
@@ -133,7 +139,7 @@ namespace Marlin.View.Chrome
         int space_breads = 12;
         int x;
         int y;
-        string protocol = "";
+        string protocol;
 
         Gtk.StyleContext button_context;
         Gtk.StyleContext entry_context;
@@ -174,12 +180,13 @@ namespace Marlin.View.Chrome
          * FIXME: this should be replaced with some nice Gtk.Widget method. */
         new bool focus = false;
 
+        Window win;
         private int timeout = -1;
 
         int left_padding;
         int right_padding;
 
-        public Breadcrumbs(UIManager ui)
+        public Breadcrumbs(UIManager ui, Window win)
         {
             add_events(Gdk.EventMask.BUTTON_PRESS_MASK
                       | Gdk.EventMask.BUTTON_RELEASE_MASK
@@ -190,6 +197,7 @@ namespace Marlin.View.Chrome
 
             /* grab the UIManager */
             this.ui = ui;
+            this.win = win;
             init_clipboard ();
             icons[0] = { Marlin.TRASH_URI, Marlin.ICON_TRASH, true, null, null, true, N_("Trash")};
             make_icon(ref icons[0]);
@@ -312,57 +320,54 @@ namespace Marlin.View.Chrome
                 }
             });
             entry.up.connect(() => {
-                autocomplete.selected --;
             });
             entry.down.connect(() => {
-                autocomplete.selected ++;
+                ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); 
             });
 
             entry.left_full.connect(() => {
                 string tmp = entry.text;
-                entry.text = "";
+                string tmp_entry = "";
+
                 foreach(BreadcrumbsElement element in elements)
                 {
                     if(element.display)
                     {
-                        if(entry.text[0] != '/')
+                        if(tmp_entry[0] != '/')
                         {
-                            entry.text += element.text + "/";
+                            tmp_entry += element.text + "/";
                         }
                         else
                         {
-                            entry.text += element.text;
+                            tmp_entry += element.text;
                         }
                     }
                 }
-                entry.text += tmp;
+                entry.text = tmp_entry + tmp;
                 elements.clear();
             });
 
             entry.backspace.connect(() => {
                 if(elements.size > 0)
                 {
-                    var element = elements[elements.size - 1];
-                    elements.remove(element);
+                    //warning ("BACKSPACE");
+                    string strloc = get_elements_path ();
+                    warning ("strloc %s", strloc);
+                    File location = File.new_for_commandline_arg (strloc);
+                    location = location.get_parent ();
+                    if (location == null)
+                        location = File.new_for_commandline_arg (protocol);
+                    win.current_tab.path_changed (location);
+                    grab_focus();
                 }
             });
 
             entry.escape.connect(() => {
-                //change_breadcrumbs(text);
-                /* focus the main view */
-                //((FM.Directory.View) win.current_tab.slot.view_box).grab_focus();
                 escape();
             });
 
             entry.need_completion.connect(() => {
-                show_autocomplete();
-                string path = "";
-                foreach(BreadcrumbsElement element in elements)
-                {
-                    if(element.display) 
-                        path += element.text + "/"; /* sometimes, + "/" is useless
-                                                     * but we are never careful enough */
-                }
+                string path = get_elements_path ();
                 warning ("need_completion path %s", path);
                 warning ("need_completion entry_text %s", entry.text);
 
@@ -370,20 +375,8 @@ namespace Marlin.View.Chrome
                 int ssize = stext.length;
                 if(ssize > 0) {
                     if (ssize > 1) {
-                        string spath = path;
-                        int i;
-                        for (i=0; i< ssize-1; i++) {
-                            spath += stext[i];
-                            if (i != ssize-2)
-                                spath += "/";
-                        }
-                        warning ("spath = %s", spath);
-                        change_breadcrumbs(spath);
-                        /*File location = File.new_for_commandline_arg (spath);
-                        win.current_tab.path_changed (location);
-                        grab_focus ();*/
-                        //entry.need_completion();
-                        //return;
+                        update_breadcrumbs (entry.text, path);
+                        return;
                     } else
                         to_search = stext[0];
                         //to_search = stext[ssize - 1];
@@ -392,8 +385,6 @@ namespace Marlin.View.Chrome
                 }
                 entry.completion = "";
                 autocompleted = false;
-                autocomplete.clear();
-                autocomplete.selected = -1;
                 //path += "/" +  entry.text;
                 path += entry.text;
                 if(to_search != "")
@@ -425,6 +416,20 @@ namespace Marlin.View.Chrome
             menu = new Menu();
             menu.show_all();
 
+        }
+
+        private string get_elements_path ()
+        {
+            string strpath = "";
+            foreach(BreadcrumbsElement element in elements)
+            {
+                if(element.display) 
+                    strpath += element.text + "/"; /* sometimes, + "/" is useless
+                                                 * but we are never careful enough */
+                /* FIXME make sure the comment never happen */
+            }
+            
+            return strpath;
         }
         
         private void make_icon(ref IconDirectory icon)
@@ -516,8 +521,6 @@ namespace Marlin.View.Chrome
                     if (str == null)
                         str = "";
                     entry.text = str + file.name.slice(0, to_search.length);
-
-                    autocomplete.add_item(file.location.get_path());
                 }
             }
         }
@@ -541,7 +544,6 @@ namespace Marlin.View.Chrome
                 menu.show_all();
             }
         }
-        PopupLocationBar autocomplete;
 
         /**
          * Select the breadcrumb to make a right click. This function check
@@ -691,21 +693,11 @@ namespace Marlin.View.Chrome
 
         private void on_entry_enter()
         {
-            if(autocomplete.selected >= 0)
-                autocomplete.enter();
+            text = get_elements_path ();
+            if(text != "")
+                changed(text + "/" + entry.text + entry.completion);
             else
-            {
-                text = "";
-                foreach(BreadcrumbsElement element in elements)
-                {
-                    if(element.display)
-                        text += element.text + "/";
-                }
-                if(text != "")
-                    changed(text + "/" + entry.text + entry.completion);
-                else
-                    changed(entry.text + entry.completion);
-            }
+                changed(entry.text + entry.completion);
                 
             entry.reset();
         }
@@ -724,6 +716,32 @@ namespace Marlin.View.Chrome
             return true;
         }
 
+        public void update_breadcrumbs (string newpath, string breadpath)
+        {
+            string strloc;
+
+            warning ("change_breadcrumb text %s", newpath);
+            if (Posix.strncmp (newpath, "./", 2) == 0) {
+                entry.reset ();
+                return;
+            }
+
+            if (newpath[0] == '/') {
+                strloc = newpath;
+            } else if (Posix.strncmp (newpath, "~/", 2) == 0) {
+                strloc = Environment.get_home_dir ();
+            } else {
+                strloc = breadpath + newpath;
+            } 
+            
+            File location = File.new_for_commandline_arg (strloc);
+            string str = location.get_uri ();
+            debug ("update_breadcrumbs %s", str);
+            win.current_tab.path_changed (location);
+            grab_focus();
+
+        }
+
         /**
          * Change the Breadcrumbs content.
          *
@@ -733,29 +751,27 @@ namespace Marlin.View.Chrome
         public void change_breadcrumbs(string newpath)
         {
             var explode_protocol = newpath.split(":///");
-            if(explode_protocol.length > 1)
-            {
+            if(explode_protocol.length > 1) {
                 protocol = explode_protocol[0] + ":///";
                 text = explode_protocol[1];
-            }
-            else
-            {
+            } else {
                 text = newpath;
-                protocol = "";
+                protocol = Marlin.ROOT_FS_URI;
             }
             selected = -1;
             var breads = text.split("/");
             var newelements = new Gee.ArrayList<BreadcrumbsElement>();
-            if(breads.length == 0 | breads[0] == "")
-                newelements.add(new BreadcrumbsElement("/", left_padding, right_padding));
+            if(breads.length == 0 || breads[0] == "") 
+                newelements.add(new BreadcrumbsElement(protocol, left_padding, right_padding));
             
             foreach(string dir in breads)
             {
                 if(dir != "")
                 newelements.add(new BreadcrumbsElement(dir, left_padding, right_padding));
             }
-            
-            newelements[0].text = protocol + newelements[0].text;
+           
+            if (protocol == Marlin.ROOT_FS_URI)
+                newelements[0].text = "/";
             int max_path = int.min(elements.size, newelements.size);
             
             bool same = true;
@@ -1015,23 +1031,10 @@ namespace Marlin.View.Chrome
             return false;
         }
         
-        bool autocomplete_showed = false;
-
-        public void popdown ()
-        {
-            if (autocomplete != null) {
-                autocomplete_showed = false; 
-                autocomplete.hide(); 
-                autocomplete.destroy(); 
-                autocomplete = null; 
-            }
-        }
-        
         public override bool focus_out_event(Gdk.EventFocus event)
         {
             focus = false;
             entry.hide();
-            Timeout.add(75, () => { if (!focus) { popdown (); } return false;});
             merge_out_clipboard_actions ();
             return true;
         }
@@ -1041,28 +1044,8 @@ namespace Marlin.View.Chrome
             changed(path);
         }
         
-        private void show_autocomplete()
-        {
-            if(!autocomplete_showed)
-            {
-                int x_win, y_win;
-                get_window().get_position(out x_win, out y_win);
-                autocomplete.show_all();
-                Allocation alloc;
-                get_allocation(out alloc);
-                autocomplete.move(x_win + alloc.x, y_win + alloc.y + get_allocated_height() - 6);
-                autocomplete_showed = true;
-            }
-        }
-        
         public override bool focus_in_event(Gdk.EventFocus event)
         {
-            if(autocomplete == null)
-            {
-                autocomplete = new PopupLocationBar(get_allocated_width());
-                autocomplete.select.connect(select_);
-            }
-            
             entry.show();
             focus = true;
             merge_in_clipboard_actions ();
@@ -1419,21 +1402,23 @@ namespace Marlin.View.Chrome
          **/
         public void insert(string to_insert)
         {
-            int first = selected_start > selected_end ? selected_end : selected_start;
-            int second = selected_start > selected_end ? selected_start : selected_end;
-            if(first != second && second > 0)
-            {
-                text = text.slice(0, first) + to_insert + text.slice(second, text.length);
-                selected_start = -1;
-                selected_end = -1;
-                selection_start = 0;
-                selection_end = 0;
-                cursor = first + to_insert.length;
-            }
-            else
-            {
-                text = text.slice(0,cursor) + to_insert + text.slice(cursor, text.length);
-                cursor += to_insert.length;
+            if (to_insert != null && to_insert.length > 0) {
+                int first = selected_start > selected_end ? selected_end : selected_start;
+                int second = selected_start > selected_end ? selected_start : selected_end;
+                if(first != second && second > 0)
+                {
+                    text = text.slice(0, first) + to_insert + text.slice(second, text.length);
+                    selected_start = -1;
+                    selected_end = -1;
+                    selection_start = 0;
+                    selection_end = 0;
+                    cursor = first + to_insert.length;
+                }
+                else
+                {
+                    text = text.slice(0,cursor) + to_insert + text.slice(cursor, text.length);
+                    cursor += to_insert.length;
+                }
             }
             need_completion();
         }

@@ -63,6 +63,7 @@ along with Marlin; if not, write to the Free Software Foundation, Inc.,
     public const string ICON_FOLDER = "folder";
     public const string ICON_FOLDER_REMOTE = "folder-remote";
 
+    public const string ROOT_FS_URI = "file:///";
     public const string TRASH_URI = "trash:///";
     public const string NETWORK_URI = "network:///";
 }

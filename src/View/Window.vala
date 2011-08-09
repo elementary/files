@@ -422,7 +422,8 @@ namespace Marlin.View {
         }
 
         private void action_edit_path () {
-            top_menu.location_bar.state = false;
+            //top_menu.location_bar.state = false;
+            top_menu.location_bar.get_child ().grab_focus ();
         }
 
         private void action_go_back (Gtk.Action action) {

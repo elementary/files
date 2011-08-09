@@ -2233,6 +2233,9 @@ fm_directory_view_realize (GtkWidget *widget)
 
     /* we need to redraw whenever the "show-thumbnails" property is toggled */
     //g_signal_connect_swapped (G_OBJECT (view->icon_factory), "notify::show-thumbnails", G_CALLBACK (gtk_widget_queue_draw), view);
+
+    /* grab focus */
+    gtk_widget_grab_focus (widget);
 }
 
 static void

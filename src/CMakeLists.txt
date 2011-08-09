@@ -60,6 +60,7 @@ CUSTOM_VAPIS
 PACKAGES
     gtk+-3.0
     gio-2.0
+    posix
     gee-1.0
 GENERATE_HEADER
     marlin-vala
