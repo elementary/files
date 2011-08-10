@@ -3157,7 +3157,7 @@ exo_icon_view_layout_single_row (ExoIconView *icon_view,
     }
     
     /* Remove one spacing since the last spacing is not used */
-    *maximum_width = *maximum_width* - icon_view->priv->column_spacing;
+    *maximum_width = *maximum_width - icon_view->priv->column_spacing;
 
     last_item = items;
 
