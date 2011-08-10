@@ -324,8 +324,6 @@ update_places (MarlinPlacesSidebar *sidebar)
     /* add built in bookmarks */
 
     /* home folder if different from desktop directory */
-    /*desktop_path = marlin_get_desktop_directory ();
-      if (strcmp (g_get_home_dir(), desktop_path) != 0) {*/
     char *display_name;
 
     mount_uri = g_filename_to_uri (g_get_home_dir (), NULL, NULL);
@@ -341,25 +339,6 @@ update_places (MarlinPlacesSidebar *sidebar)
     sidebar->n_builtins_before++;
     g_object_unref (icon);
     g_free (mount_uri);
-    /*}*/
-
-    /* desktop directory if show_desktop */
-    /*if (eel_preferences_get_boolean (MARLIN_PREFERENCES_SHOW_DESKTOP))
-      {
-      mount_uri = g_filename_to_uri (desktop_path, NULL, NULL);
-      icon = g_themed_icon_new (MARLIN_ICON_DESKTOP);
-      last_iter = add_place (sidebar, PLACES_BUILT_IN, &iter,
-      _("Desktop"), icon, mount_uri, 
-      NULL, NULL, NULL, 1,
-      _       ("Open the contents of your desktop in a folder"));
-      g_object_unref (icon);
-      compare_for_selection (sidebar,
-      location, mount_uri, last_uri,
-      &last_iter, &select_path);
-      sidebar->n_builtins_before++;
-      g_free (mount_uri);
-      }
-      g_free (desktop_path);*/
 
     /* add bookmarks */
 
@@ -483,7 +462,9 @@ update_places (MarlinPlacesSidebar *sidebar)
                 g_object_unref (volume);
             }
             g_list_free (volumes);
-        } else {
+        }
+        else
+        {
             if (g_drive_is_media_removable (drive) && !g_drive_is_media_check_automatic (drive)) {
                 /* If the drive has no mountable volumes and we cannot detect media change.. we
                  * display the drive in the sidebar so the user can manually poll the drive by

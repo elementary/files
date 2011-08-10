@@ -23,7 +23,7 @@ namespace GOF {
     [CCode (cprefix = "GOFWindow", lower_case_cprefix = "gof_window_")]
     namespace Window {
         [CCode (cheader_filename = "gof-window-slot.h")]
-        public class Slot : GLib.Object {
+        public class Slot : GOF.AbstractSlot {
             public Slot (GLib.File f, Gtk.EventBox ctab);
             public void make_icon_view ();
             public void make_list_view ();

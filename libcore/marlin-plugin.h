@@ -42,6 +42,7 @@ struct _MarlinPluginClass
 struct _MarlinPlugin
 {
     GObject parent_instance;
+    gchar* name;
     void* plugin_handle;
     void (*hook_receive)(void*, int);
 };

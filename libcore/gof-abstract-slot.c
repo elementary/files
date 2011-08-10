@@ -13,7 +13,7 @@ struct _GOFAbstractSlotPrivate
 /**
  * Add a widget in the top part of the slot.
  **/
-void gof_abstract_window_slot_add_extra_widget (GOFAbstractSlot* slot, GtkWidget* widget)
+void gof_abstract_slot_add_extra_widget (GOFAbstractSlot* slot, GtkWidget* widget)
 {
     gtk_box_pack_start(GTK_BOX (slot->extra_location_widgets), widget, FALSE, FALSE, 0);
     gtk_widget_show_all(slot->extra_location_widgets);

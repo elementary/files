@@ -12,6 +12,44 @@ include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
+install (FILES marlin-core.vapi DESTINATION share/vala/vapi)
+
+
+install (FILES
+    eel-accessibility.h
+    eel-debug.h
+    eel-fcts.h
+    eel-gdk-extensions.h
+    eel-gdk-pixbuf-extensions.h
+    eel-gio-extensions.h
+    eel-glib-extensions.h
+    eel-gtk-extensions.h
+    eel-gtk-macros.h
+    eel-i18n.h
+    eel-pango-extensions.h
+    eel-stock-dialogs.h
+    eel-string.h
+    eel-ui.h
+    eel-vfs-extensions.h
+    gof-abstract-slot.h
+    gof-directory-async.h
+    gof-file.h
+    gof-monitor.h
+    marlin-exec.h
+    marlin-file-conflict-dialog.h
+    marlin-file-operations.h
+    marlin-file-utilities.h
+    marlin-global-preferences.h
+    marlin-icons.h
+    marlin-plugin.h
+    marlin-plugin-manager.h
+    marlin-plugins-hook.h
+    marlin-progress-info.h
+    marlin-progress-info-manager.h
+    nautilus-cell-renderer-text-ellipsized.h
+    nautilus-icon-info.h
+    DESTINATION include/marlincore/)
+
 # Check for the deps
 
 find_package(PkgConfig)

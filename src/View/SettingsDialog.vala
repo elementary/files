@@ -161,71 +161,49 @@ namespace Marlin.View
             first_vbox = new Gtk.VBox(false, 3);
             first_vbox.border_width = 5;
             
-           var view = new Gtk.TreeView(); 
-        var listmodel = new Gtk.ListStore (2, typeof (string), typeof (bool));
-        view.set_model (listmodel);
+            var view = new Gtk.TreeView(); 
+            var listmodel = new Gtk.ListStore (2, typeof (string), typeof (bool));
+            view.set_model (listmodel);
+            var column = new Gtk.TreeViewColumn();
 
-        view.insert_column_with_attributes (-1, "Plugin Name", new Gtk.CellRendererText (), "text", 0);
-        var toggle = new Gtk.CellRendererToggle();
-        toggle.toggled.connect ((toggle, path) => {
-            var tree_path = new Gtk.TreePath.from_string (path);
-            Gtk.TreeIter iter;
-            listmodel.get_iter (out iter, tree_path);
-            listmodel.set (iter, 1, !toggle.active);
-            if(toggle.active == true)
+            var text_renderer = new Gtk.CellRendererText();
+            column.pack_start(text_renderer, true);
+            column.set_attributes(text_renderer, "text", 0);
+            var toggle = new Gtk.CellRendererToggle();
+            toggle.toggled.connect_after ((toggle, path) => 
             {
-                string[] plugs = new string[Preferences.settings.get_strv("plugins-enabled").length - 1];
-                string[] current_plugins = Preferences.settings.get_strv("plugins-enabled");
-
-                int offset = 0;
-                for(int i = 0; i <= plugs.length; i++)
-                {
-                    print(current_plugins[i] + "\n");
-                    var name = Value(typeof(string));
-                    listmodel.get_value(iter, 0, out name);
-                    if(current_plugins[i] == (string)name)
-                    {
-                        print("to remove\n");
-                        offset ++;
-                    }
-                    else
-                    {
-                        plugs[i - offset] = current_plugins[i];
-                        print("add plugin: %s\n", current_plugins[i]);
-                    }
-                }
-                Preferences.settings.set_strv("plugins-enabled", plugs);
-            }
-            else
-            {
-                string[] plugs = new string[Preferences.settings.get_strv("plugins-enabled").length + 1];
-                string[] current_plugins = Preferences.settings.get_strv("plugins-enabled");
-
-                for(int i = 0; i < current_plugins.length; i++)
-                {
-                    plugs[i] = current_plugins[i];
-                }
+                var tree_path = new Gtk.TreePath.from_string (path);
+                Gtk.TreeIter iter;
+                listmodel.get_iter (out iter, tree_path);
                 var name = Value(typeof(string));
+                var active = Value(typeof(bool));
                 listmodel.get_value(iter, 0, out name);
-                plugs[plugs.length - 1] = name.get_string();
-                Preferences.settings.set_strv("plugins-enabled", plugs);
+                listmodel.get_value(iter, 1, out active);
+                listmodel.set (iter, 1, !active.get_boolean());
+                if(active.get_boolean() == false)
+                {
+                    enable_plugin(name.get_string());
+                }
+                else
+                {
+                    disable_plugin(name.get_string());
+                }
+            });
+            column.pack_start(toggle, false);
+            column.set_attributes(toggle, "active", 1);
+            
+            view.insert_column(column, -1);
 
-            }
-        }); 
-        view.insert_column_with_attributes (-1, "Active", toggle, "active", 1);
-
-        Gtk.TreeIter iter;
+            Gtk.TreeIter iter;
 
             foreach(string plugin_name in Marlin.PluginManager.get_available_plugins())
             {
-                print(plugin_name + "\n");
-                        listmodel.append (out iter);
-        listmodel.set (iter, 0, plugin_name, 1, plugin_name in Preferences.settings.get_strv("plugins-enabled"));
-
+                listmodel.append (out iter);
+                listmodel.set (iter, 0, plugin_name, 1, plugin_name in Preferences.settings.get_strv("plugins-enabled"));
             }
 
             first_vbox.pack_start(view);
-            
+
             mai_notebook.append_page(first_vbox, _("Plugins"));
             /*mai_notebook.set_margin_left(6);
             mai_notebook.set_margin_right(6);
@@ -240,6 +218,46 @@ namespace Marlin.View
             add_buttons("gtk-close", Gtk.ResponseType.DELETE_EVENT);
 
             run();
+        }
+        
+        void disable_plugin(string name)
+        {
+            string[] plugs = new string[Preferences.settings.get_strv("plugins-enabled").length - 1];
+            string[] current_plugins = Preferences.settings.get_strv("plugins-enabled");
+
+            int offset = 0;
+            for(int i = 0; i <= plugs.length; i++)
+            {
+                if(current_plugins[i] == name)
+                {
+                    offset ++;
+                }
+                else
+                {
+                    plugs[i - offset] = current_plugins[i];
+                }
+            }
+            Preferences.settings.set_strv("plugins-enabled", plugs);
+            
+            if(!plugins.disable_plugin(name))
+            {
+                critical("Can't properly disable the plugin %s!", name);
+            }
+        }
+        
+        void enable_plugin(string name)
+        {
+            string[] plugs = new string[Preferences.settings.get_strv("plugins-enabled").length + 1];
+            string[] current_plugins = Preferences.settings.get_strv("plugins-enabled");
+
+            for(int i = 0; i < current_plugins.length; i++)
+            {
+                plugs[i] = current_plugins[i];
+            }
+            plugs[plugs.length - 1] = name;
+            Preferences.settings.set_strv("plugins-enabled", plugs);
+
+            plugins.load_plugin(name);
         }
 
         private void spin_icon_size_changed(Gtk.Widget widget)

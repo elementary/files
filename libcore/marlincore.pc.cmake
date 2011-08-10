@@ -1,7 +1,7 @@
 prefix=@PREFIX@
 exec_prefix=@DOLLAR@{prefix}
 libdir=@DOLLAR@{prefix}/lib
-includedir=@DOLLAR@{prefix}/include
+includedir=@DOLLAR@{prefix}/include/
 
 Name: @PKGNAME@
 Description: Marlin core library

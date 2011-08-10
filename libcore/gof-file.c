@@ -1196,36 +1196,7 @@ GOFFile* gof_file_get_by_commandline_arg (const char *arg)
     return file;
 }
 
-/* Return value: the string representation of @list conforming to the
- *               text/uri-list mime type defined in RFC 2483.
- */
-#if 0
-gchar *
-gof_g_file_list_to_string (GList *list, gsize *len)
-{
-    GString *string;
-    gchar   *uri;
-    GList   *lp;
-
-    /* allocate initial string */
-    string = g_string_new (NULL);
-
-    for (lp = list; lp != NULL; lp = lp->next)
-    {
-        uri = g_file_get_uri (lp->data);
-        string = g_string_append (string, uri);
-        g_free (uri);
-
-        string = g_string_append (string, "\r\n");
-    }
-
-    *len = string->len;
-    return g_string_free (string, FALSE);
-}
-#endif
-
-gchar *
-gof_file_list_to_string (GList *list, gsize *len)
+gchar* gof_file_list_to_string (GList *list, gsize *len)
 {
     GString *string;
     gchar   *uri;
@@ -1244,8 +1215,7 @@ gof_file_list_to_string (GList *list, gsize *len)
     return g_string_free (string, FALSE); 
 }
 
-gboolean
-gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b)
+gboolean gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b)
 {
     const gchar *filesystem_id_a;
     const gchar *filesystem_id_b;

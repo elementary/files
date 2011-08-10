@@ -48,7 +48,21 @@ namespace Marlin
     class PluginManager : Object
     {
         public void hook_send(void* user_data, int hook);
+        public void add_plugin(string name);
+        public void load_plugin(string name);
+        public bool disable_plugin(string name);
         public static List<string> get_available_plugins(); 
+    }
+    [CCode (cheader_filename = "marlin-plugins-hook.h")]
+    public enum PluginHook
+    {
+        INTERFACE,
+        MENU,
+        UI,
+        FINISH,
+        DIRECTORY, /* {window, viewcontainer, directory name } */
+        FILE,
+        INIT
     }
 }
 
@@ -117,6 +131,14 @@ namespace GOF {
     {
         NONE,
         USE_THUMBNAILS
+    }
+}
+
+[CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
+namespace GOF {
+    [CCode (cheader_filename = "gof-abstract-slot.h")]
+    public class AbstractSlot : GLib.Object {
+        public void add_extra_widget(Gtk.Widget widget);
     }
 }
 
