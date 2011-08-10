@@ -39,6 +39,7 @@ add_definitions(${CFLAGS}
 vala_precompile(VALA_C
     Logger.vala
     View/SettingsDialog.vala
+    View/DiskRenderer.vala
     View/DirectoryNotFound.vala
     View/Window.vala
     View/Resources.vala

@@ -60,6 +60,8 @@ enum {
     PLACES_SIDEBAR_COLUMN_BOOKMARK,
     PLACES_SIDEBAR_COLUMN_TOOLTIP,
     PLACES_SIDEBAR_COLUMN_EJECT_ICON,
+    PLACES_SIDEBAR_COLUMN_FREE_SPACE,
+    PLACES_SIDEBAR_COLUMN_DISK_SIZE,
 
     PLACES_SIDEBAR_COLUMN_COUNT
 };
@@ -226,6 +228,8 @@ add_place (MarlinPlacesSidebar *sidebar,
                         PLACES_SIDEBAR_COLUMN_BOOKMARK, place_type != PLACES_BOOKMARK,
                         PLACES_SIDEBAR_COLUMN_TOOLTIP, tooltip,
                         PLACES_SIDEBAR_COLUMN_EJECT_ICON, eject,
+                        PLACES_SIDEBAR_COLUMN_FREE_SPACE, 0,
+                        PLACES_SIDEBAR_COLUMN_DISK_SIZE, 0,
                         -1);
 
     if (pixbuf != NULL) {
@@ -445,6 +449,7 @@ update_places (MarlinPlacesSidebar *sidebar)
                     last_iter = add_place (sidebar, PLACES_MOUNTED_VOLUME, &iter,
                                            name, icon, mount_uri,
                                            drive, volume, mount, 0, tooltip);
+                    //gtk_tree_store_set(sidebar->store, &last_iter, PLACES_SIDEBAR_COLUMN_FREE_SPACE, 50, PLACES_SIDEBAR_COLUMN_DISK_SIZE, 100, -1);
                     compare_for_selection (sidebar,
                                            location, mount_uri, last_uri,
                                            &last_iter, &select_path);
@@ -454,7 +459,9 @@ update_places (MarlinPlacesSidebar *sidebar)
                     g_free (tooltip);
                     g_free (name);
                     g_free (mount_uri);
-                } else {
+                }
+                else
+                {
                     /* Do show the unmounted volumes in the sidebar;
                      * this is so the user can mount it (in case automounting
                      * is off).
@@ -2896,7 +2903,6 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     gtk_scrolled_window_set_hadjustment (GTK_SCROLLED_WINDOW (sidebar), NULL);
     gtk_scrolled_window_set_vadjustment (GTK_SCROLLED_WINDOW (sidebar), NULL);
     /* remove ugly shadow from Places */
-    //gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sidebar), GTK_SHADOW_IN);
 
     /* tree view */
     tree_view = GTK_TREE_VIEW (gtk_tree_view_new ());
@@ -2923,12 +2929,14 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                                              sidebar,
                                              NULL);
 
-    cell = gtk_cell_renderer_text_new ();
+    cell = marlin_cell_renderer_disk_new ();
     sidebar->eject_text_cell_renderer = cell;
     gtk_tree_view_column_pack_start (col, cell, TRUE);
     gtk_tree_view_column_set_attributes (col, cell,
                                          "text", PLACES_SIDEBAR_COLUMN_NAME,
                                          "visible", PLACES_SIDEBAR_COLUMN_EJECT,
+                                         "free_space", PLACES_SIDEBAR_COLUMN_FREE_SPACE,
+                                         "disk_size", PLACES_SIDEBAR_COLUMN_DISK_SIZE,
                                          NULL);
     g_object_set (cell,
                   "ellipsize", PANGO_ELLIPSIZE_END,
@@ -3007,7 +3015,10 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                                          G_TYPE_BOOLEAN,
                                          G_TYPE_BOOLEAN,
                                          G_TYPE_STRING,
-                                         GDK_TYPE_PIXBUF
+                                         GDK_TYPE_PIXBUF,
+                                         G_TYPE_INT, /* For disks, total size */
+                                         G_TYPE_INT, /* Free space */
+                                         -1
                                         );
 
     gtk_tree_view_set_tooltip_column (tree_view, PLACES_SIDEBAR_COLUMN_TOOLTIP);
