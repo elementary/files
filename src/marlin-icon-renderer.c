@@ -923,7 +923,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             position ++;
 
             emblems = g_list_next(emblems);
-            g_object_unref(pix);
+            _g_object_unref0 (pix);
         }
     }
 }
