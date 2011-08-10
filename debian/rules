@@ -9,11 +9,5 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-override_dh_auto_configure:
-	./autogen.sh --prefix=/usr
-
-override_dh_auto_test:
-	#disabled; build servers usually don't have X server running
-
 %:
 	dh $@ 
