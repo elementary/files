@@ -526,17 +526,17 @@ namespace Marlin.View {
         }
         
         void show_report() {
-            try { Gtk.show_uri (Gdk.Screen.get_default(), Marlin.BUG_URL, -1); }
+            try { Gtk.show_uri (screen, Marlin.BUG_URL, -1); }
             catch (Error e) { critical("Can't open the link"); }
         }
 
         void show_translate() {
-            try { Gtk.show_uri (Gdk.Screen.get_default(), Marlin.TRANSLATE_URL, -1); }
+            try { Gtk.show_uri (screen, Marlin.TRANSLATE_URL, -1); }
             catch (Error e) { critical("Can't open the link"); }
         }
 
         void show_app_help() {
-            try { Gtk.show_uri (Gdk.Screen.get_default(), Marlin.HELP_URL, -1); }
+            try { Gtk.show_uri (screen, Marlin.HELP_URL, -1); }
             catch (Error e) { critical("Can't open the link"); }
         }
 
