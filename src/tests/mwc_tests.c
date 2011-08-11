@@ -38,7 +38,7 @@ void marlin_window_columns_tests(void)
      * This code is used to enable warnings, it shouldn't be required either :( */
     g_test_log_set_fatal_handler(marlin_mwc_fatal_handler, NULL);
     win = marlin_view_window_new(marlin_application_new(), gdk_screen_get_default());
-    view_container = marlin_view_view_container_new(win, g_file_new_for_path("/usr/"));
+    view_container = marlin_view_view_container_new(win, g_file_new_for_path("/usr/"), 0);
 
     g_assert(win != NULL);
 

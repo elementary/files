@@ -1,3 +1,4 @@
+include(Tests)
 set (PKGNAME marlincore)
 set (PKGNAME_ MARLINCORE)
 set (${PKGNAME_}_VERSION 0.1)
@@ -152,3 +153,13 @@ set_target_properties (${PKGNAME} PROPERTIES
     SOVERSION ${MARLINCORE_SOVERSION}
                        )
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
+
+add_executable(marlincore_tests
+    tests/tests.c
+    tests/marlincore-tests-gof.c
+    tests/marlincore-tests-file.c
+)
+
+add_test_executable(marlincore_tests)
+
+target_link_libraries(marlincore_tests marlincore ${DEPS_LIBRARIES})
