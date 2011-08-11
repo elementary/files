@@ -50,7 +50,6 @@ vala_precompile(VALA_C
     View/ViewMode.vala
     View/Animations.vala
     View/LocationBar.vala
-    View/PopupLocationBar.vala
     View/Chrome/TopMenu.vala
     View/Chrome/ViewSwicher.vala
     View/Chrome/ColorWidget.vala
