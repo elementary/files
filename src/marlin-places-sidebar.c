@@ -428,10 +428,18 @@ update_places (MarlinPlacesSidebar *sidebar)
                     last_iter = add_place (sidebar, PLACES_MOUNTED_VOLUME, &iter,
                                            name, icon, mount_uri,
                                            drive, volume, mount, 0, tooltip);
-                    //gtk_tree_store_set(sidebar->store, &last_iter, PLACES_SIDEBAR_COLUMN_FREE_SPACE, 50, PLACES_SIDEBAR_COLUMN_DISK_SIZE, 100, -1);
+                    //amtestfree
+                    GFileInfo *info;
+                    info = g_file_query_filesystem_info (root, "filesystem::*", NULL, NULL);
+                    guint64 fs_capacity = g_file_info_get_attribute_uint64 (info, G_FILE_ATTRIBUTE_FILESYSTEM_SIZE);
+                    guint64 fs_free = g_file_info_get_attribute_uint64 (info, G_FILE_ATTRIBUTE_FILESYSTEM_FREE);
+                    //g_message ("%s fs_cap %s fs_free %s", G_STRFUNC, g_format_size (fs_capacity), g_format_size (fs_free));
+
+                    gtk_tree_store_set(sidebar->store, &last_iter, PLACES_SIDEBAR_COLUMN_FREE_SPACE, fs_free, PLACES_SIDEBAR_COLUMN_DISK_SIZE, fs_capacity, -1);
                     compare_for_selection (sidebar,
                                            location, mount_uri, last_uri,
                                            &last_iter, &select_path);
+                    g_object_unref (info);
                     g_object_unref (root);
                     g_object_unref (mount);
                     g_object_unref (icon);
@@ -2997,8 +3005,8 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                                          G_TYPE_BOOLEAN,
                                          G_TYPE_STRING,
                                          GDK_TYPE_PIXBUF,
-                                         G_TYPE_INT, /* For disks, total size */
-                                         G_TYPE_INT, /* Free space */
+                                         G_TYPE_UINT64, /* For disks, total size */
+                                         G_TYPE_UINT64, /* Free space */
                                          -1
                                         );
 

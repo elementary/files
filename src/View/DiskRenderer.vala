@@ -1,8 +1,8 @@
 
 public class Marlin.CellRendererDisk : Gtk.CellRendererText {
 
-    public int free_space { set; get; }
-    public int disk_size { set; get; }
+    public uint64 free_space { set; get; }
+    public uint64 disk_size { set; get; }
 
     public CellRendererDisk () {
     }
@@ -15,6 +15,8 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
                                    out int width, out int height) {
         height = 50;
         width = 250; /* Hardcoded, maybe it should be configurable */
+        x_offset = 0;
+        y_offset = 0;
     }
 
     /**
@@ -36,7 +38,7 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
             Gdk.cairo_set_source_rgba(cr, context.get_color(Gtk.StateFlags.SELECTED));
             cr.set_line_width(2);
             cr.move_to(area.x, area.y + area.height);
-            cr.line_to(area.x + (int)(((double)free_space)/((double)disk_size)*((double)area.width)), area.y + area.height);
+            cr.line_to(area.x + area.width - (int)(((double)free_space)/((double)disk_size)*((double)area.width)), area.y + area.height);
             cr.stroke();
         }
     }
