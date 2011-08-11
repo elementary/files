@@ -65,7 +65,7 @@ namespace Marlin.View.Chrome
         public ViewSwitcher (Gtk.ActionGroup action_group)
         {
             main_actions = action_group;
-            border_width = 6;
+            border_width = 4;
 
             switcher = new ModeButton();
             Gtk.IconTheme dtheme = IconTheme.get_default ();

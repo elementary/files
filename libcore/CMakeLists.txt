@@ -14,8 +14,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
 install (FILES marlin-core.vapi DESTINATION share/vala/vapi)
-
-
 install (FILES
     eel-accessibility.h
     eel-debug.h
@@ -50,7 +48,6 @@ install (FILES
     nautilus-cell-renderer-text-ellipsized.h
     nautilus-icon-info.h
     DESTINATION include/marlincore/)
-
 # Check for the deps
 
 find_package(PkgConfig)
@@ -153,13 +150,10 @@ set_target_properties (${PKGNAME} PROPERTIES
     SOVERSION ${MARLINCORE_SOVERSION}
                        )
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
-
 add_executable(marlincore_tests
     tests/tests.c
     tests/marlincore-tests-gof.c
     tests/marlincore-tests-file.c
 )
-
 add_test_executable(marlincore_tests)
-
 target_link_libraries(marlincore_tests marlincore ${DEPS_LIBRARIES})

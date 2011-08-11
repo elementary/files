@@ -13,7 +13,7 @@ set (DOLLAR "$")
 # Check for the deps
 
 find_package(PkgConfig)
-pkg_check_modules(DEPS REQUIRED gtk-3.0)
+pkg_check_modules(DEPS REQUIRED gtk-3.0 gee-1.0)
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
@@ -39,8 +39,13 @@ ModeButton.vala
 CollapsablePaned.vala
 ImgEventBox.vala
 StaticNotebook.vala
+LocationBar.vala
+BreadcrumbsElements.vala
+BreadcrumbsEntry.vala
 PACKAGES
 gtk+-3.0
+gee-1.0
+posix
 OPTIONS
 --thread
 GENERATE_VAPI

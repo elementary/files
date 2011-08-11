@@ -10,9 +10,7 @@ set(GNOMELOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
 set(UI_DIR "${CMAKE_INSTALL_PREFIX}/share/marlin/ui/")
 set(PACKAGE_VERSION 0.1)
 set(VERSION 0.1)
-
 add_custom_target(check)
-
 configure_file (${CMAKE_SOURCE_DIR}/config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 add_subdirectory (src)
 add_subdirectory (data)
@@ -23,4 +21,3 @@ add_subdirectory (libwidgets)
 add_subdirectory (plugins)
 add_subdirectory (schemas)
 add_subdirectory (po)
-
