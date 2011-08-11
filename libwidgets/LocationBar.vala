@@ -83,7 +83,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     int x;
     int y;
     string protocol;
-    string to_search;
 
     public signal void escape();
 
