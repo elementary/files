@@ -101,8 +101,9 @@ namespace Marlin.View {
             }
         }
 
-        public ContextView(Window window, bool _should_sync, Gtk.
-        Orientation parent_orientation = Gtk.Orientation.VERTICAL) {
+        public ContextView(Window window, bool _should_sync, 
+                           Gtk.Orientation parent_orientation = Gtk.Orientation.VERTICAL) 
+        {
             this.window = window;
             _orientation = convert_parent_orientation(parent_orientation);
 
@@ -402,7 +403,6 @@ namespace Marlin.View {
             var lw = get_child();
             if (lw != null)
                 remove(lw);
-            w.valign = Gtk.Align.CENTER;
             add(w);
         }
     }
