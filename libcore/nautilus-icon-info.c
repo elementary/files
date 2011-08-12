@@ -325,7 +325,7 @@ NautilusIconInfo *
 nautilus_icon_info_lookup (GIcon *icon, int size)
 {
     NautilusIconInfo *icon_info;
-    GdkPixbuf *pixbuf;
+    GdkPixbuf *pixbuf = NULL;
 
     if (G_IS_LOADABLE_ICON (icon)) {
         LoadableIconKey lookup_key;
@@ -348,7 +348,6 @@ nautilus_icon_info_lookup (GIcon *icon, int size)
             return g_object_ref (icon_info);
         }
 
-        pixbuf = NULL;
         stream = g_loadable_icon_load (G_LOADABLE_ICON (icon),
                                        size,
                                        NULL, NULL, NULL);
