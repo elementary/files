@@ -114,6 +114,8 @@ namespace Marlin.View {
             file_info_callback = slot.directory.info_available.connect(() => {
                 if (slot.location.get_path () == Environment.get_home_dir ())
                     tab_name = _("Home");
+                else if (slot.location.get_path () == "/")
+                    tab_name = _("File System");
                 else
                     tab_name = slot.directory.file.info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
                 if(window.current_tab == this){
