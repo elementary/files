@@ -64,6 +64,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     double anim_state = 0;
 
     Gtk.StyleContext button_context;
+    Gtk.StyleContext button_widget_context;
     Gtk.StyleContext entry_context;
     public BreadcrumbsEntry entry;
 
@@ -103,7 +104,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         icons = new List<IconDirectory?>();
 
         button_context = new Button().get_style_context();
-        entry_context = button_context;
+        button_widget_context = button_context;
+        entry_context = new Entry().get_style_context();
 
         button_context.add_class("marlin-pathbar");
 #if VALA_0_14
@@ -743,7 +745,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     public override bool focus_out_event(Gdk.EventFocus event)
     {
         focus = false;
-        button_context.set_state(StateFlags.PRELIGHT);
+        button_context = button_widget_context;
         entry.hide();
         return true;
     }
@@ -751,7 +753,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     public override bool focus_in_event(Gdk.EventFocus event)
     {
         entry.show();
-        button_context.set_state(StateFlags.ACTIVE);
+        button_context = entry_context;
         focus = true;
         return true;
     }
