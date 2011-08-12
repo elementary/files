@@ -1,0 +1,3 @@
+[Plugin]
+Name=Empty the trash!
+File=libmarlintrash.so

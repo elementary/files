@@ -49,10 +49,65 @@ marlin_plugin_class_init (MarlinPluginClass *klass)
     object_class->finalize = marlin_plugin_finalize;
 }
 
-MarlinPlugin* marlin_plugin_new(const gchar* path)
+static MarlinPlugin* marlin_plugin_load(MarlinPlugin* plugin, GKeyFile* keyfile, const gchar* path)
 {
     gchar* dl_error;
+    gchar* library_file = g_key_file_get_value(keyfile, "Plugin", "File", NULL);
+    gchar* library_path = g_build_filename(path, library_file, NULL);
+
+    plugin->plugin_handle = dlopen(library_path, RTLD_NOW | RTLD_GLOBAL);
+    
+    g_free(library_file);
+    g_free(library_path);
+
+    if(!plugin->plugin_handle)
+    {
+        g_warning ("Can't load plugin: %s %s", path, dlerror());
+        g_object_unref(plugin);
+        return NULL;
+    }
+
+    plugin->hook_receive = dlsym(plugin->plugin_handle, "receive_all_hook");
+    if((dl_error = dlerror()) != NULL)
+    {
+        g_warning ("Can't load plugin: %s, %s", path, dl_error);
+        g_object_unref(plugin);
+        return NULL;
+    }
+
+    plugin->hook_receive(NULL, MARLIN_PLUGIN_HOOK_INIT);
+    return plugin;
+}
+
+static gboolean marlin_plugin_is_in_system_plugin_dir(const gchar* path, gchar** parent_path)
+{
+    gchar* core_plugins_path = g_build_filename(PLUGIN_DIR, "core", NULL);
+    GFile* plugin_file, *parent, *plugin_system_dir;
+    
+    /* All plugins in system dirs are enabled by default */
+    plugin_file = g_file_new_for_path(path);
+    parent = g_file_get_parent(plugin_file);
+
+    plugin_system_dir = g_file_new_for_path(core_plugins_path);
+
+    *parent_path = g_file_get_path(parent);
+    
+    gboolean success = g_file_equal(parent, plugin_system_dir);
+
+    g_free(core_plugins_path);
+    g_object_unref(plugin_file);
+    g_object_unref(parent);
+    g_object_unref(plugin_system_dir);
+    
+    return success;
+}
+
+MarlinPlugin* marlin_plugin_new(const gchar* path)
+{
     GKeyFile* keyfile;
+    gchar* parent_path;
+    MarlinPlugin* plugin_loaded = NULL;
+
     MarlinPlugin* plugin = g_object_new(MARLIN_TYPE_PLUGIN, NULL);
 
     /* Creating a new keyfile object, to load the plugin config in it. */
@@ -64,71 +119,27 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
                               G_KEY_FILE_NONE,
                               NULL);
     plugin->name = g_key_file_get_value(keyfile, "Plugin", "Name", NULL);
-    gchar** plugins = g_settings_get_strv(settings, "plugins-enabled");
-    int i;
-    
-    /* All plugins in system dirs are enabled by default */
-    
-    GFile* plugin_file = g_file_new_for_path(path);
-    GFile* parent = g_file_get_parent(plugin_file);
-    GFile* plugin_system_dir = g_file_new_for_path(g_build_filename(PLUGIN_DIR, "core", NULL));
 
-    gboolean in_system_dir = g_file_equal(parent, plugin_system_dir);
-
-    g_object_unref(plugin_file);
-    g_object_unref(parent);
-    g_object_unref(plugin_system_dir);
+    gboolean in_system_dir = marlin_plugin_is_in_system_plugin_dir(path, &parent_path);
     
     if(in_system_dir == TRUE)
     {
-        plugin->plugin_handle = dlopen(g_build_filename(PLUGIN_DIR,
-                                                        g_key_file_get_value(keyfile, "Plugin", "File", NULL),
-                                                        NULL),
-                                       RTLD_NOW | RTLD_GLOBAL);
-        if(! plugin->plugin_handle)
-        {
-            g_warning ("Can't load plugin: %s %s", path, dlerror());
-            g_object_unref(plugin);
-            return NULL;
-        }
-
-        plugin->hook_receive = dlsym(plugin->plugin_handle, "receive_all_hook");
-        if((dl_error = dlerror()) != NULL)
-        {
-            g_warning ("Can't load plugin: %s, %s", path, dl_error);
-        }
-
-        plugin->hook_receive(NULL, MARLIN_PLUGIN_HOOK_INIT);
-        return plugin;
+        plugin_loaded = marlin_plugin_load(plugin, keyfile, parent_path);
+        g_free(parent_path);
+        return plugin_loaded;
     }
-    
+
+    gchar** plugins = g_settings_get_strv(settings, "plugins-enabled");
+        
+    int i;
     for(i = 0; i < g_strv_length(plugins); i++)
     {
         if(!g_strcmp0(plugin->name, plugins[i]))
         {
-            plugin->plugin_handle = dlopen(g_build_filename(PLUGIN_DIR,
-                                                            g_key_file_get_value(keyfile, "Plugin", "File", NULL),
-                                                            NULL),
-                                           RTLD_NOW | RTLD_GLOBAL);
-            if(! plugin->plugin_handle)
-            {
-                g_warning ("Can't load plugin: %s %s", path, dlerror());
-                g_object_unref(plugin);
-                return NULL;
-            }
-
-            plugin->hook_receive = dlsym(plugin->plugin_handle, "receive_all_hook");
-            if((dl_error = dlerror()) != NULL)
-            {
-                g_warning ("Can't load plugin: %s, %s", path, dl_error);
-            }
-
-            plugin->hook_receive(NULL, MARLIN_PLUGIN_HOOK_INIT);
-
-            return plugin;
+            plugin_loaded = marlin_plugin_load(plugin, keyfile, parent_path);
         }
     }
-    g_debug ("Plugin not enabled: %s", path);
-    g_object_unref(plugin);
-    return NULL;
+    if(plugin_loaded == NULL) g_warning ("Plugin not enabled: %s", path);
+    g_free(parent_path);
+    return plugin_loaded;
 }

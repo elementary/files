@@ -19,6 +19,11 @@ namespace Preferences {
     public string tags_colors[10];
 }
 
+[CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_", cheader_filename = "marlin-file-operations.h")]
+namespace Marlin.FileOperations {
+    static void empty_trash(Gtk.Widget widget);
+}
+
 public static uint action_new (GLib.Type type, string signal_name);
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]

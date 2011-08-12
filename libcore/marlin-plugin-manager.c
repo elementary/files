@@ -125,7 +125,6 @@ void marlin_plugin_manager_add_plugin(MarlinPluginManager* plugins, const gchar*
     MarlinPlugin* plugin = marlin_plugin_new(path);
     if(plugin != NULL)
     {
-        g_warning("%s enabled\n", path);
         plugins->plugins_list = g_list_append(plugins->plugins_list, plugin);
     }
 }
@@ -142,8 +141,28 @@ void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin)
         {
             marlin_plugin_manager_add_plugin(plugins, g_strdup_printf("%s/%s", PLUGIN_DIR, g_file_info_get_name(file_info)));
         }
+        g_object_unref(file_info);
         file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
     }
+
+    g_object_unref(dir);
+    g_object_unref(enumerator);
+
+    dir = g_file_new_for_path(g_build_filename(PLUGIN_DIR, "core", NULL));
+    enumerator = g_file_enumerate_children(dir, "standard::*", 0, NULL, NULL);
+    file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
+
+    while(file_info != NULL)
+    {
+        if(!g_strcmp0(g_file_info_get_content_type(file_info), "text/plain"))
+        {
+            marlin_plugin_manager_add_plugin(plugins, g_build_filename(PLUGIN_DIR, "core", g_file_info_get_name(file_info), NULL));
+        }
+        g_object_unref(file_info);
+        file_info = g_file_enumerator_next_file(enumerator, NULL, NULL);
+    }
+    g_object_unref(dir);
+    g_object_unref(enumerator);
 }
 
 /* This functions needs some tests, it is just a draft */
@@ -208,13 +227,14 @@ void marlin_plugin_manager_hook_context_menu(MarlinPluginManager* plugin, GtkWid
 
 void marlin_plugin_manager_hook_send(MarlinPluginManager* plugin, void* user_data, int hook)
 {
-    g_debug("Plugin Hook: %d", hook);
+    g_warning("Plugin Hook: %d", hook);
 
     GList* item = g_list_first(plugin->plugins_list);
 
     while(item != NULL)
     {
-        ((MarlinPlugin*)item->data)->hook_receive(user_data, hook);
+        g_assert(MARLIN_PLUGIN(item->data)->hook_receive != NULL);
+        MARLIN_PLUGIN(item->data)->hook_receive(user_data, hook);
         item = g_list_next(item);
     }
 
