@@ -1,32 +1,30 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Danish translation for marlin
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the marlin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: marlin 0.1\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: marlin\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-06 23:13+0000\n"
-"Last-Translator: Cedrick Sangare <cedrick@mail2web.com>\n"
-"Language-Team: Fr <LL@li.org>\n"
+"PO-Revision-Date: 2011-08-08 14:44+0000\n"
+"Last-Translator: Simon <Unknown>\n"
+"Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2011-08-12 04:46+0000\n"
 "X-Generator: Launchpad (build 13662)\n"
-"Language: \n"
-"X-Poedit-SourceCharset: utf-8\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
-msgstr "(pas de résultat trouvé)"
+msgstr "(intet resultat fundet)"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:255
 msgid "Name"
-msgstr "Nom"
+msgstr "Navn"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:256
 msgid "Type"
@@ -34,43 +32,43 @@ msgstr "Type"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:259
 msgid "Target"
-msgstr "Cible"
+msgstr "Destination"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:261
 msgid "Size"
-msgstr "Taille"
+msgstr "Størrelse"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:263
 msgid "Modified"
-msgstr "Modifié"
+msgstr "Ændret"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:264
 msgid "Owner"
-msgstr "Propriétaire"
+msgstr "Ejer"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "Le dossier n'existe pas."
+msgstr "Mappen findes ikke"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr "Marlin ne trouve pas le dossier %s"
+msgstr "Marlin kan ikke finde mappen %s"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr "Créer"
+msgstr "Opret"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "Créer le dossier %s"
+msgstr "Opret mappen %s"
 
 #: /home/xapantu/marlin/po/../src/View/LocationBar.vala:959
 #, c-format
 msgid "Go to %s"
-msgstr "Aller à %s"
+msgstr "Gå til %s"
 
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
@@ -81,48 +79,48 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Pierre Slamich https://launchpad.net/~pierre-slamich\n"
-"  xapantu https://launchpad.net/~xapantu"
+"  Anders Etzerodt Salling Pedersen https://launchpad.net/~anders.etzerodt\n"
+"  Simon https://launchpad.net/~sims73"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
-msgstr "Paramètres de Marlin"
+msgstr "Marlin indstillinger"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:46
 msgid "Single click to open:"
-msgstr "Un seul click pour ouvrir :"
+msgstr "Enkeltklik for at åbne:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:59
 msgid "Mouse auto-selection speed:"
-msgstr "La vitesse d'auto-sélection de la souris :"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:72
 msgid "Behavior"
-msgstr "Comportement"
+msgstr "Opførsel"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:80
 msgid "small"
-msgstr "petit"
+msgstr "lille"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:81
 msgid "medium"
-msgstr "moyen"
+msgstr "mellem"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:82
 msgid "large"
-msgstr "large"
+msgstr "stor"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "extra-large"
-msgstr "extra-large"
+msgstr "ekstra stor"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "Sidebar icon size:"
-msgstr "Taille d'icône du panneau latéral"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:115
 msgid "locale"
-msgstr "locale"
+msgstr "lokalitet"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:116
 msgid "iso"
@@ -130,46 +128,46 @@ msgstr "iso"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:117
 msgid "informal"
-msgstr "informelle"
+msgstr "uformel"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:136
 msgid "Date format:"
-msgstr "Format de la date :"
+msgstr "Datoformat:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:151
 msgid "Show applications names in the context pane:"
-msgstr "Afficher les noms d'applications dans le panneau contextuel :"
+msgstr "Vis program navne i kontekstpanel:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:159
 msgid "Display"
-msgstr "Affichage"
+msgstr "Vis"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:207
 msgid "Plugins"
-msgstr "Greffons"
+msgstr "Udvidelsesmoduler"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:105
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:155
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:213
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:269
 msgid "File Operations"
-msgstr "Opérations sur les fichiers"
+msgstr "Filhandlinger"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:114
 msgid "Show Details"
-msgstr "Afficher les détails"
+msgstr "Vis detaljer"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:149
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:171
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] "%'d opération de fichier active"
-msgstr[1] "%'d opérations de fichier actives"
+msgstr[0] "%'d filoperation aktiv"
+msgstr[1] "%'d filoperationer aktive"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:270
 msgid "All file operations have been successfully completed"
-msgstr "Toutes les opérations de fichier ont terminé avec succès"
+msgstr "Alle filoperationer er fuldført"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
@@ -356,89 +354,89 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
-msgstr "Personnaliser la barre d'outils"
+msgstr "Tilpas værktøjslinje"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:465
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
-"Sélectionnez les éléments à afficher dans la barre d'outils. Les éléments "
-"peuvent être réordonnés par glisser-déposer."
+"Markér elementer der skal vises på værktøjslinjen. Elementerne kan "
+"omstruktureres ved træk og slip."
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
-msgstr "Éléments disponibles"
+msgstr "Tilgængelige elementer"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:502
 msgid "Displayed Items"
-msgstr "Éléments affichés"
+msgstr "Viste elementer"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1093
 msgid "Invalid filename provided by XDS drag site"
-msgstr "Nom de fichier invalide fourni par le glisser du site XDS"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1254
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Échec lors de la création du lien pour \"%s\""
+msgstr "Kunne ikke oprette et link til URL \"%s\""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1766
 msgid "Set as default"
-msgstr "Définir comme valeur par défaut"
+msgstr "Indstil som standard"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1841
 msgid "Open with…"
-msgstr "Ouvrir avec..."
+msgstr "Åbn med..."
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:3078
 msgid "Set Color:"
-msgstr "définir une couleur :"
+msgstr "Angiv farve:"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
-msgstr "_Déplacer ici"
+msgstr "_Flyt hertil"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:784
 msgid "_Copy Here"
-msgstr "_Copier ici"
+msgstr "_Kopiér hertil"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr "Créer un lien ici"
+msgstr "_Kæd hertil"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr "Définir comme _arrière-plan"
+msgstr "Anvend som _baggrund"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Annullér"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "Échec d'exécution du fichier \"%s\""
+msgstr "Kunne ikke køre fil \"%s\""
 
 #: /home/xapantu/marlin/po/../src/fm-list-model.c:457
 msgid "(Empty)"
-msgstr "(Vide)"
+msgstr "(Tom)"
 
 #: /home/xapantu/marlin/po/../src/fm-list-model.c:459
 msgid "Loading..."
-msgstr "Chargement..."
+msgstr "Indlæser..."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:343
 msgid "Text"
-msgstr "Texte"
+msgstr "Tekst"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:344
 msgid "The text of the label."
-msgstr "Le texte de l'étiquette."
+msgstr "Teksten for etiketten"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:350
 msgid "Justification"
-msgstr "Justification"
+msgstr "Begrundelse"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:351
 msgid ""
@@ -446,214 +444,214 @@ msgid ""
 "This does NOT affect the alignment of the label within its allocation. See "
 "GtkMisc::xalign for that."
 msgstr ""
-"L'alignement des lignes dans le texte de l'étiquette par rapport aux autres. "
-"Cela n'affecte pas l'alignement de l'étiquette à l'intérieur de son "
-"allocation. Voir GtkMisc::xalign pour cela."
+"Den indbyrdes justering af tekstlinjerne i mærkaten. Dette påvirker IKKE "
+"justeringen af mærkaten inden for dens allokering. Se GtkMisc::xalign "
+"angående dette."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:359
 msgid "Line wrap"
-msgstr "Coupure des lignes"
+msgstr "Linjeombrydning"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:360
 msgid "If set, wrap lines if the text becomes too wide."
-msgstr "Si défini, coupe les lignes si le texte devient trop long."
+msgstr "Hvis sat, ombryd linjer hvis teksten bliver for bred."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:367
 msgid "Small size"
-msgstr "Petite taille"
+msgstr "Lille størrelse"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:368
 msgid "If set, use small size text."
-msgstr "Si défini, utilise un texte de petite taille."
+msgstr "Hvis sat, brug lille størrelse text."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:375
 msgid "Cursor Position"
-msgstr "Position du curseur"
+msgstr "Markørposition"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:376
 msgid "The current position of the insertion cursor in chars."
-msgstr "La position actuelle du curseur d'insertion, en caractères."
+msgstr "Den aktuelle position af indsættelsesmarkøren, målt i tegn."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:385
 msgid "Selection Bound"
-msgstr "Limite de la sélection"
+msgstr "Markeringsgrænse"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:386
 msgid ""
 "The position of the opposite end of the selection from the cursor in chars."
 msgstr ""
-"La position du coin opposé de la sélection depuis le curseur, en caractères."
+"Placeringen af den modsatte ende af markeringen fra markøren, målt i tegn."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:3187
 msgid "Select All"
-msgstr "Tout sélectionner"
+msgstr "Vælg alle"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:3198
 msgid "Input Methods"
-msgstr "Méthodes de saisie"
+msgstr "Input metoder"
 
 #: /home/xapantu/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr "Il n'y a rien à coller dans le presse-papier"
+msgstr "Der er intet i udklipsholderen at indsætte"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:316
 msgid "Personal"
-msgstr "Personnel"
+msgstr "Personlig"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:321
 msgid "Your common places and bookmarks"
-msgstr "Votre lieux communs et des signets"
+msgstr "Dine almindelige steder og bogmærker"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:335
 msgid "Open your personal folder"
-msgstr "Ouvrir votre dossier personnel"
+msgstr "Åbn din personlige mappe"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:377
 msgid "Trash"
-msgstr "Corbeille"
+msgstr "Papirkurven"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:379
 msgid "Open the trash"
-msgstr "Ouvrir la corbeille"
+msgstr "Åbn papirkurven"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:389
 msgid "Devices"
-msgstr "Périphériques"
+msgstr "Enheder"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:394
 msgid "Your local partitions and devices"
-msgstr "Vos partitions et périphériques locaux"
+msgstr "Dine lokale partitioner og enheder"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:401
 msgid "File System"
-msgstr "Système de fichier"
+msgstr "Filsystem"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:403
 msgid "Open the contents of the File System"
-msgstr "Ouvrir le contenu du système de fichiers"
+msgstr "Åbn indholdet af filsystemet"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:462
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:487
 #, c-format
 msgid "Mount and open %s"
-msgstr "Monter et ouvrir %s"
+msgstr "Montér og åbn %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:595
 msgid "Network"
-msgstr "Réseau"
+msgstr "Netværk"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:600
 msgid "Your network places"
-msgstr "Vos emplacements réseau"
+msgstr "Dine netværkssteder"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:631
 msgid "Entire network"
-msgstr "Tout le réseau"
+msgstr "Hele netværket"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:633
 msgid "Browse the contents of the network"
-msgstr "Parcourir le réseau"
+msgstr "Gennemse indholdet af netværket"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1593
 msgid "_Start"
-msgstr "_Démarrer"
+msgstr "_Start"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1594
 msgid "_Stop"
-msgstr "_Arrêter"
+msgstr "_Stop"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1599
 msgid "_Power On"
-msgstr "_Allumer"
+msgstr "_Tænd"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Safely Remove Drive"
-msgstr "_Retirer le volume sans risque"
+msgstr "Fjern drev _sikkert"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1603
 msgid "_Connect Drive"
-msgstr "_Connecter le volume"
+msgstr "_Tilslut drev"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1604
 msgid "_Disconnect Drive"
-msgstr "_Déconnecter le volume"
+msgstr "_Frakobl drev"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1607
 msgid "_Start Multi-disk Device"
-msgstr "_Démarrer le périphérique multidisque"
+msgstr "_Start flerdiskenhed"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1608
 msgid "_Stop Multi-disk Device"
-msgstr "_Arrêter le périphérique multidisque"
+msgstr "_Stop flerdiskenhed"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1612
 msgid "_Unlock Drive"
-msgstr "Déverro_uiller le volume"
+msgstr "Lås drev _op"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1613
 msgid "_Lock Drive"
-msgstr "Verroui_ller le volume"
+msgstr "_Lås drev"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1687
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2234
 #, c-format
 msgid "Unable to start %s"
-msgstr "Impossible de démarrer %s"
+msgstr "Kan ikke starte %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1977
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2006
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2035
 #, c-format
 msgid "Unable to eject %s"
-msgstr "Impossible d'éjecter %s"
+msgstr "Kan ikke skubbe %s ud"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2180
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr "Impossible de vérifier des changements sur le support %s"
+msgstr "Kan ikke hente information fra %s om medieændringer"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2290
 #, c-format
 msgid "Unable to stop %s"
-msgstr "Impossible d'arrêter %s"
+msgstr "Kan ikke stoppe %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2382
 msgid "_Open"
-msgstr "_Ouvrir"
+msgstr "_Åbn"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2390
 msgid "Open in New _Tab"
-msgstr "Ouvrir dans un nouvel _onglet"
+msgstr "Åbn i nyt _faneblad"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2397
 msgid "Open in New _Window"
-msgstr "Ouvrir dans une nouvelle _fenêtre"
+msgstr "Åbn i nyt _vindue"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2406
 msgid "Remove"
-msgstr "Retirer"
+msgstr "Fjern"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2415
 msgid "Rename..."
-msgstr "Renommer…"
+msgstr "Omdøb..."
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2427
 msgid "_Mount"
-msgstr "_Monter"
+msgstr "_Montér"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2434
 msgid "_Unmount"
-msgstr "_Démonter"
+msgstr "_Afmontér"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2441
 msgid "_Eject"
-msgstr "É_jecter"
+msgstr "_Skub ud"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2477
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1422
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2293
 msgid "Empty _Trash"
-msgstr "_Vider la corbeille"
+msgstr "_Tøm papirkurv"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -661,15 +659,15 @@ msgstr "SSH"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr "FTP publique"
+msgstr "Offentlig FTP"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr "FTP (avec identification)"
+msgstr "FTP (med logind)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr "Partage Windows"
+msgstr "Windows delt mappe"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
@@ -677,99 +675,96 @@ msgstr "WebDAV (HTTP)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr "WebDAV sécurisé (HTTPS)"
+msgstr "Sikker WebDAV (HTTPS)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr "Connexion en cours..."
+msgstr "Tilslutter..."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"Impossible de charger la liste des méthodes prises en charge par le "
-"serveur.\n"
-"Veuillez vérifier votre installation de gvfs."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Impossible d'ouvrir le dossier \"%s\" sur \"%s\"."
+msgstr "Mappen \"%s\" kan ikke åbnes på \"%s\"."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Le serveur sur \"%s\" reste introuvable."
+msgstr "Serveren på \"%s\" kan ikke findes."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr "Essayez encore"
+msgstr "Forsøg igen"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr "Veuillez vérifier vos paramètres utilisateur."
+msgstr "Kontrollér venligst dine brugerdetajler."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr "Continuer"
+msgstr "Fortsæt"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1169
 msgid "C_onnect"
-msgstr "Se connecter"
+msgstr "_Tilslut"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr "Se connecter au serveur"
+msgstr "Forbind til server"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr "Détails du serveur"
+msgstr "Serverdetaljer"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
-msgstr "Serveur"
+msgstr "_Server:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
-msgstr "_Port :"
+msgstr "_Port:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
-msgstr "_Type :"
+msgstr "_Type:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr "Partage:"
+msgstr "_Deling:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr "_Dossier:"
+msgstr "_Mappe:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr "Détails de l'utilisateur"
+msgstr "Brugerdetaljer"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr "Nom de domaine:"
+msgstr "_Domænenavn:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_User name:"
-msgstr "Nom d'utilisateur:"
+msgstr "_Brugernavn:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
-msgstr "Mot de passe:"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr "Se souvenir du mot de passe"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr "Opération annulée"
+msgstr "Handlingen blev afbrudt"
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -779,107 +774,107 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Parcourt le système de fichiers avec le gestionnaire de fichiers"
+"Navigér filsystemet med filhåndteringen"
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr "--quit ne peut pas être utilisée avec des URI."
+msgstr "--quit kan ikke bruges med URI'er."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:205
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:735
 msgid "_Skip"
-msgstr "_Ignorer"
+msgstr "_Spring over"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "S_kip All"
-msgstr "Tout i_gnorer"
+msgstr "Spring _alle over"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "_Retry"
-msgstr "_Réessayer"
+msgstr "_Prøv igen"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:208
 msgid "Delete _All"
-msgstr "Tout _supprimer"
+msgstr "Slet _alle"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:209
 msgid "_Replace"
-msgstr "_Remplacer"
+msgstr "_Erstat"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:210
 msgid "Replace _All"
-msgstr "_Tout remplacer"
+msgstr "Erstat _alle"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:211
 msgid "_Merge"
-msgstr "_Fusionner"
+msgstr "_Flet"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:212
 msgid "Merge _All"
-msgstr "_Tout fusionner"
+msgstr "Flet _alle"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:213
 msgid "Copy _Anyway"
-msgstr "Copier _quand même"
+msgstr "Kopiér _alligevel"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:299
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] "%'d seconde"
-msgstr[1] "%'d secondes"
+msgstr[0] "%'d sekund"
+msgstr[1] "%'d sekunder"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:304
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:315
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] "%'d minute"
-msgstr[1] "%'d minutes"
+msgstr[0] "%'d minut"
+msgstr[1] "%'d minutter"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:314
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] "%'d heure"
-msgstr[1] "%'d heures"
+msgstr[0] "%'d time"
+msgstr[1] "%'d timer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:322
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] "environ %'d heure"
-msgstr[1] "environ %'d heures"
+msgstr[0] "ca. %'d time"
+msgstr[1] "ca. %'d timer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:398
 #, c-format
 msgid "Link to %s"
-msgstr "Lien vers %s"
+msgstr "Henvisning til %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:402
 #, c-format
 msgid "Another link to %s"
-msgstr "Un autre lien vers %s"
+msgstr "Anden henvisning til %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:418
 #, c-format
 msgid "%'dst link to %s"
-msgstr "%'der lien vers %s"
+msgstr "%'d. henvisning til %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:422
 #, c-format
 msgid "%'dnd link to %s"
-msgstr "%'de lien vers %s"
+msgstr "%'d. henvisning til %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:426
 #, c-format
 msgid "%'drd link to %s"
-msgstr "%'de lien vers %s"
+msgstr "%'d. henvisning til %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:430
 #, c-format
 msgid "%'dth link to %s"
-msgstr "%'de lien vers %s"
+msgstr "%'d. henvisning til %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:622
 msgid " ("
@@ -892,8 +887,7 @@ msgstr " (%'d"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
-"Souhaitez-vous vraiment supprimer définitivement « %B » de la corbeille ?"
+msgstr "Er du sikker på at du vil slette \"%B\" permanent fra papirkurven?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -904,57 +898,54 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Souhaitez-vous vraiment supprimer définitivement l'élément sélectionné de la "
-"corbeille ?"
+"Er du sikker på at du vil slette %'d valgt element fra papirkurven permanent?"
 msgstr[1] ""
-"Souhaitez-vous vraiment supprimer définitivement les %'d éléments "
-"sélectionnés de la corbeille ?"
+"Er du sikker på at du vil slette de %'d valgte elementer fra papirkurven "
+"permanent?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1394
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Si vous supprimez un élément, il sera définitivement perdu."
+msgstr "Hvis du sletter et element, vil det gå tabt permanent."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr "Supprimer tous les éléments de la corbeille ?"
+msgstr "Slet alle elementer i papirkurven?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Tout les éléments dans la corbeille seront définitivement supprimés."
+msgstr "Alle elementer i papirkurven vil blive slettet permanent."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Souhaitez-vous vraiment supprimer définitivement « %B » ?"
+msgstr "Er du sikker, på at du permanent vil slette \"%B\"?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-"Souhaitez-vous vraiment supprimer définitivement l'élément sélectionné ?"
+msgstr[0] "Er du sikker på, at du permanent vil slette %'d valgt element?"
 msgstr[1] ""
-"Souhaitez-vous vraiment supprimer définitivement les %'d éléments "
-"sélectionnés ?"
+"Er du sikker på, at du permanent vil slette de %'d valgte elementer?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1478
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr "Suppression de fichiers"
+msgstr "Sletter filer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "Encore %'d fichier à supprimer"
-msgstr[1] "Encore %'d fichiers à supprimer"
+msgstr[0] "%'d resterende fil at slette"
+msgstr[1] "%'d resterende filer at slette"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] "%T restante"
-msgstr[1] "%T restantes"
+msgstr[0] "%T tilbage"
+msgstr[1] "%T tilbage"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1592
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1626
@@ -962,15 +953,15 @@ msgstr[1] "%T restantes"
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1742
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2556
 msgid "Error while deleting."
-msgstr "Erreur lors de la suppression."
+msgstr "Fejl ved sletning."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Les fichiers dans le dossier « %B » ne peuvent être supprimés car vous "
-"n'avez pas la permission de les lire."
+"Filer i mappen \"%B\" kan ikke slettes fordi du ikke har rettigheder til at "
+"se dem."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1599
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2615
@@ -978,457 +969,454 @@ msgstr ""
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
-"Une erreur est survenue lors de l'obtention des informations concernant les "
-"fichiers dans le dossier « %B »."
+"Der opstod en fejl ved indhenting af informationer om filerne i mappen "
+"\"%B\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1608
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3615
 msgid "_Skip files"
-msgstr "_Ignorer les fichiers"
+msgstr "_Spring filer over"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"Le dossier « %B » ne peut être supprimé car vous n'avez pas la permission de "
-"le lire."
+"Mappen \"%B\" kan ikke slettes fordi du ikke har rettigheder til at læse den."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1632
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2654
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3651
 msgid "There was an error reading the folder \"%B\"."
-msgstr "Une erreur s'est produite lors de la lecture du dossier « %B »."
+msgstr "Der opstod en fejl under læsning af mappen \"%B\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
-msgstr "Impossible de supprimer le dossier %B."
+msgstr "Kunne ikke fjerne mappen %B."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr "Une erreur s'est produite lors de la suppression de %B."
+msgstr "Der opstod en fejl under sletning af %B."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1819
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
-msgstr "Mise à la corbeille des fichiers"
+msgstr "Flytter filer til papirkurven"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "Encore %'d fichier à mettre à la corbeille"
-msgstr[1] "Encore %'d fichiers à mettre à la corbeille"
+msgstr[0] "%'d fil tilbage at smide i papirkurv"
+msgstr[1] "%'d filer tilbage at smide i papirkurv"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1884
 msgid "Cannot move file to trash, do you want to delete immediately?"
 msgstr ""
-"Impossible de mettre le fichier à la corbeille. Voulez-vous le supprimer "
-"immédiatement ?"
+"Kan ikke flytte fil til papirkurven. Ønsker du at slette den med det samme?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1885
 msgid "The file \"%B\" cannot be moved to the trash."
-msgstr "Impossible de mettre le fichier « %B » à la corbeille."
+msgstr "Filen \"%B\" kan ikke flyttes til papirkurven."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2061
 msgid "Trashing Files"
-msgstr "Mise à la corbeille des fichiers"
+msgstr "Smider filer ud"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2063
 msgid "Deleting Files"
-msgstr "Suppression des fichiers"
+msgstr "Sletter filer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2126
 msgid "Unable to eject %V"
-msgstr "Impossible d'éjecter %V"
+msgstr "Kan ikke skubbe %V ud"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2128
 msgid "Unable to unmount %V"
-msgstr "Impossible de démonter %V"
+msgstr "Kunne ikke afmontere %V"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2283
 msgid "Do you want to empty the trash before you unmount?"
-msgstr "Souhaitez-vous vider la corbeille avant de démonter ?"
+msgstr "Ønsker du at tømme papirkurven før du afmonterer?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2285
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
-"Afin de récupérer de l'espace libre sur ce périphérique, la corbeille doit "
-"être vidée. Tous les éléments dans la corbeille seront définitivement "
-"supprimés."
+"For at få den frie plads tilbage på enheden skal papirkurven tømmes. Alle "
+"elementer i papirkurven på denne enhed vil permanent gå tabt."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2291
 msgid "Do _not Empty Trash"
-msgstr "Ne _pas vider la corbeille"
+msgstr "Tøm _ikke papirkurven"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2346
 msgid "Emptying the trash"
-msgstr "Vidage de la corbeille"
+msgstr "Tømmer papirkurven"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2413
 #, c-format
 msgid "Unable to mount %s"
-msgstr "Impossible de monter %s"
+msgstr "Kan ikke montere %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2491
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "Préparation de la copie de %'d fichier (%S)"
-msgstr[1] "Préparation de la copie de %'d fichiers (%S)"
+msgstr[0] "Forbereder kopiering af %'d fil (%S)"
+msgstr[1] "Forbereder kopiering af %'d filer (%S)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2497
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "Préparation du déplacement de %'d fichier (%S)"
-msgstr[1] "Préparation du déplacement de %'d fichiers (%S)"
+msgstr[0] "Forbereder flytning af %'d fil (%S)"
+msgstr[1] "Forbereder flytning af %'d filer (%S)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2503
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Préparation de la suppression de %'d fichier (%S)"
-msgstr[1] "Préparation de la suppression de %'d fichiers (%S)"
+msgstr[0] "Forbereder sletning af %'d fil (%S)"
+msgstr[1] "Forbereder sletning af %'d filer (%S)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2509
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Préparation de la mise à la corbeille de %'d fichier"
-msgstr[1] "Préparation de la mise à la corbeille de %'d fichiers"
+msgstr[0] "Forbereder kassering af %'d fil"
+msgstr[1] "Forbereder kassering af %'d filer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2552
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3472
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3598
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3643
 msgid "Error while copying."
-msgstr "Erreur lors de la copie."
+msgstr "Fejl ved kopiering."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2554
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3596
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3641
 msgid "Error while moving."
-msgstr "Erreur lors du déplacement."
+msgstr "Fejl ved flytning."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2558
 msgid "Error while moving files to trash."
-msgstr "Erreur lors de la mise à la corbeille des fichiers."
+msgstr "Fejl ved flytning af filer til papirkurven."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2612
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Impossible de traiter les fichiers du dossier « %B » car vous n'avez pas la "
-"permission de les lire."
+"Filer i mappen \"%B\" kan ikke håndteres fordi du ikke har rettigheder til "
+"at se dem."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2651
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Impossible de traiter le dossier « %B » car vous n'avez pas la permission de "
-"le lire."
+"Mappen \"%B\" kan ikke håndteres fordi du ikke har rettigheder til at læse "
+"den."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2728
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Impossible de traiter le fichier \"%B\" car vous n'avez pas la permission de "
-"le lire."
+"Filen \"%B\" kan ikke håndteres fordi du ikke har rettigheder til at læse "
+"den."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2731
 msgid "There was an error getting information about \"%B\"."
-msgstr "Erreur lors de l'obtention d'informations concernant « %B »."
+msgstr "Der opstod en fejl ved indhentning af information om \"%B\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2831
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2873
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2906
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2936
 msgid "Error while copying to \"%B\"."
-msgstr "Erreur lors de la copie vers « %B »."
+msgstr "Fejl ved kopiering til \"%B\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2835
 msgid "You do not have permissions to access the destination folder."
-msgstr "Vous n'avez pas la permission d'accéder au dossier de destination."
+msgstr "Du har ikke rettigheder til at tilgå destinationsmappen."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2837
 msgid "There was an error getting information about the destination."
-msgstr "Erreur lors de l'obtention d'informations concernant la destination."
+msgstr "Der opstod en fejl ved indhentning af information om destinationen."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2874
 msgid "The destination is not a folder."
-msgstr "La destination n'est pas un dossier."
+msgstr "Destinationen er ikke en mappe."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2907
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
-"La destination n'a plus assez d'espace libre. Essayez de supprimer des "
-"fichiers pour libérer de l'espace."
+"Der er ikke tilstrækkelig plads på destinationen. Prøv at fjerne filer for "
+"at gøre plads."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2909
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr "%S est disponible, mais %S est requis."
+msgstr "Der er %S tilgængelig, men %S kræves."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2937
 msgid "The destination is read-only."
-msgstr "La destination est en lecture seule."
+msgstr "Destinationen er skrivebeskyttet."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2998
 msgid "Moving \"%B\" to \"%B\""
-msgstr "Déplacement de « %B » vers « %B »"
+msgstr "Flytter \"%B\" til \"%B\""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2999
 msgid "Copying \"%B\" to \"%B\""
-msgstr "Copie de « %B » vers « %B »"
+msgstr "Kopierer \"%B\" til \"%B\""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3003
 msgid "Duplicating \"%B\""
-msgstr "Duplication de « %B »"
+msgstr "Duplikerer \"%B\""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3007
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Déplacement de %'d fichier (de « %B ») vers « %B »"
-msgstr[1] "Déplacement de %'d fichiers (de « %B ») vers « %B »"
+msgstr[0] "Flytter %'d fil (i \"%B\") til \"%B\""
+msgstr[1] "Flytter %'d filer (i \"%B\") til \"%B\""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3010
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Copie de %'d fichier (de « %B ») vers « %B »"
-msgstr[1] "Copie de %'d fichiers (de « %B ») vers « %B »"
+msgstr[0] "Kopierer %'d fil (i \"%B\") til \"%B\""
+msgstr[1] "Kopierer %'d filer (i \"%B\") til \"%B\""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3017
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Duplication de %'d fichier (de « %B »)"
-msgstr[1] "Duplication de %'d fichiers (de « %B »)"
+msgstr[0] "Duplikerer %'d fil (i \"%B\")"
+msgstr[1] "Duplikerer %'d filer (i \"%B\")"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3026
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "Déplacement de %'d fichier vers « %B »"
-msgstr[1] "Déplacement de %'d fichiers vers « %B »"
+msgstr[0] "Flytter %'d fil til \"%B\""
+msgstr[1] "Flytter %'d filer til \"%B\""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3030
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "Copie %'d fichier vers «%B»"
-msgstr[1] "Copie %'d fichiers vers «%B»"
+msgstr[0] "Kopierer %'d fil til \"%B\""
+msgstr[1] "Kopierer %'d filer til \"%B\""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3035
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "Duplication de %'d fichier"
-msgstr[1] "Duplication de %'d fichiers"
+msgstr[0] "Duplikerer %'d fil"
+msgstr[1] "Duplikerer %'d filer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3086
 #, c-format
 msgid "%S of %S"
-msgstr "%S sur %S"
+msgstr "%S af %S"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3097
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S sur %S—%T restante (%S/s)"
-msgstr[1] "%S sur %S—%T restantes (%S/s)"
+msgstr[0] "%S af %S - %T tilbage (%S/sek)"
+msgstr[1] "%S af %S - %T tilbage (%S/sek)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3476
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Impossible de copier le dossier « %B » car vous n'avez pas la permission de "
-"le créer dans la destination."
+"Mappen \"%B\" kan ikke kopieres fordi du ikke har rettigheder til at oprette "
+"den på destinationen."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3479
 msgid "There was an error creating the folder \"%B\"."
-msgstr "Une erreur s'est produite lors de la création du dossier « %B »."
+msgstr "Der opstod en fejl under oprettelse af mappen \"%B\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3603
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Impossible de copier les fichiers du dossier « %B » car vous n'avez pas la "
-"permission de les lire."
+"Filer i mappen \"%B\" kan ikke kopieres fordi du ikke har rettigheder til at "
+"se dem."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3648
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"Impossible de copier le dossier « %B » car vous n'avez pas la permission de "
-"le lire."
+"Mappen \"%B\" kan ikke kopieres fordi du ikke har rettigheder til at læse "
+"den."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3693
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4390
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4964
 msgid "Error while moving \"%B\"."
-msgstr "Erreur lors du déplacement de « %B »."
+msgstr "Fejl ved flytning af \"%B\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3694
 msgid "Could not remove the source folder."
-msgstr "Impossible de supprimer le dossier source."
+msgstr "Kunne ikke fjerne kildemappen."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3779
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3820
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4392
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4463
 msgid "Error while copying \"%B\"."
-msgstr "Erreur lors de la copie de « %B »."
+msgstr "Fejl ved kopiering af \"%B\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3780
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr "Impossible de supprimer les fichiers du dossier préexistant %F."
+msgstr "Kunne ikke fjerne filer fra den allerede eksisterende mappe %F."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3821
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr "Impossible de supprimer le fichier préexistant « %F »."
+msgstr "Kunne ikke fjerne den allerede eksisterende fil %F."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4150
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4808
 msgid "You cannot move a folder into itself."
-msgstr "Impossible de déplacer un dossier vers lui-même."
+msgstr "Du kan ikke flytte en mappe ind i den selv."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4151
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4809
 msgid "You cannot copy a folder into itself."
-msgstr "Impossible de copier un dossier vers lui-même."
+msgstr "Du kan ikke kopiere en mappe ind i den selv."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4152
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4810
 msgid "The destination folder is inside the source folder."
-msgstr "Le dossier de destination se trouve à l'intérieur du dossier source."
+msgstr "Destinationsmappen er inden i kildemappen."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4183
 msgid "You cannot move a file over itself."
-msgstr "Impossible de déplacer un fichier sur lui-même."
+msgstr "Du kan ikke flytte en fil ind i den selv."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4184
 msgid "You cannot copy a file over itself."
-msgstr "Impossible de copier un fichier sur lui-même."
+msgstr "Du kan ikke kopiere en fil ind i den selv."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4185
 msgid "The source file would be overwritten by the destination."
-msgstr "Le fichier source serait écrasé par la destination."
+msgstr "Kildefilen ville blive overskrevet af destinationen."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4394
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
-"Impossible de supprimer le fichier préexistant portant le même nom dans %F."
+"Kunne ikke fjerne den allerede eksisterende fil med det samme navn i %F."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4464
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr "Erreur lors de la copie du fichier dans %F."
+msgstr "Der opstod en fejl under kopiering af filen ind i %F."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4692
 msgid "Copying Files"
-msgstr "Copie des fichiers"
+msgstr "Kopierer filer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4708
 msgid "Preparing to move to \"%B\""
-msgstr "Préparation pour se déplacer vers « %B »"
+msgstr "Forbereder flytning til \"%B\""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4720
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] "Préparation du déplacement de %'d fichier"
-msgstr[1] "Préparation du déplacement de %'d fichiers"
+msgstr[0] "Forbereder flytning af %'d fil"
+msgstr[1] "Forbereder flytning af %'d filer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4965
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr "Erreur lors du déplacement du fichier dans %F."
+msgstr "Der opstod en fejl under flytning af filen ind i %F."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5228
 msgid "Moving Files"
-msgstr "Déplacement des fichiers"
+msgstr "Flytter filer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5244
 msgid "Creating links in \"%B\""
-msgstr "Création des liens dans « %B »"
+msgstr "Opretter henvisninger i \"%B\""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5255
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] "Création d'un lien vers %'d fichier"
-msgstr[1] "Création des liens vers %'d fichiers"
+msgstr[0] "Opretter henvisning til %'d fil"
+msgstr[1] "Opretter henvisninger til %'d filer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5385
 msgid "Error while creating link to %B."
-msgstr "Erreur lors de la création du lien vers %B."
+msgstr "Fejl ved oprettelse af henvisning i %B."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5387
 msgid "Symbolic links only supported for local files"
-msgstr ""
-"Les liens symboliques ne sont pris en charge que pour des fichiers locaux."
+msgstr "Symbolske henvisninger understøttes kun for lokale filer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5390
 msgid "The target doesn't support symbolic links."
-msgstr "La cible ne prend pas en charge les liens symboliques."
+msgstr "Destinationen understøtter ikke symbolske henvisninger."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5393
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr "Erreur lors de la création du lien symbolique dans %F."
+msgstr ""
+"Der opstod en fejl under oprettelse af den symbolske henvisning i %F."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5696
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5699
 msgid "Setting permissions"
-msgstr "Définition des permissions"
+msgstr "Ændrer rettigheder"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5941
 msgid "untitled folder"
-msgstr "nouveau dossier"
+msgstr "mappe uden navn"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5949
 msgid "new file"
-msgstr "nouveau fichier"
+msgstr "ny fil"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6099
 msgid "Error while creating directory %B."
-msgstr "Erreur lors de la création du répertoire %B."
+msgstr "Fejl ved oprettelse af mappen %B."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6101
 msgid "Error while creating file %B."
-msgstr "Erreur lors de la création du fichier %B."
+msgstr "Fejl ved oprettelse af filen %B."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6103
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Erreur lors de la création du répertoire dans %F."
+msgstr "Der opstod en fejl under oprettelse af mappen i %F."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6399
 msgid "Emptying Trash"
-msgstr "Vidage de la corbeille"
+msgstr "Tømmer papirkurven"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6447
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6488
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6523
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6558
 msgid "Unable to mark launcher trusted (executable)"
-msgstr "Impossible de marquer ce lanceur comme fiable (exécutable)"
+msgstr "Kan ikke markere opstarter som betroet (eksekverbar)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:143
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Fusionner le dossier « %s » ?"
+msgstr "Flet mappen \"%s\"?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:147
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
@@ -1436,181 +1424,181 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"La fusion demandera une confirmation avant chaque remplacement de fichier du "
-"dossier qui entre en conflit avec les fichiers en cours de copie."
+"Ved fletning vil der blive bedt om bekræftelse før der overskrives filer i "
+"mappen, som er i konflikt med dem, der flyttes."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:152
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Un répertoire plus ancien avec ce nom existe déjà dans \"%s\""
+msgstr "En ældre mappe med det samme navn findes allerede i \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:156
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Un dossier plus récent portant le même nom existe déjà dans « %s »."
+msgstr "En nyere mappe med det samme navn findes allerede i \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:160
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Un autre dossier portant le même nom existe déjà dans « %s »."
+msgstr "En anden mappe med det samme navn findes allerede i \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:165
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
 msgid "Replacing it will remove all files in the folder."
-msgstr "Le remplacement va effacer tous les fichiers dans ce répertoire"
+msgstr "Ved erstatning vil alle filer i mappen blive fjernet."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:167
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Remplacer le dossier « %s » ?"
+msgstr "Erstat mappen \"%s\"?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:169
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Un dossier portant le même nom existe déjà dans « %s »."
+msgstr "En mappe med det samme navn findes allerede i \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:174
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "Remplacer le fichier « %s » ?"
+msgstr "Erstat filen \"%s\"?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:176
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr "Le remplacer va écraser son contenu"
+msgstr "Ved erstatning vil dens indhold blive overskrevet."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:180
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Un fichier plus ancien portant le même nom existe déjà dans « %s »."
+msgstr "En ældre fil med det samme navn findes allerede i \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:184
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Un fichier plus récent portant le même nom existe déjà dans « %s »."
+msgstr "En nyere fil med det samme navn findes allerede i \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:188
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Un autre fichier portant le même nom existe déjà dans « %s »."
+msgstr "En anden fil med det samme navn findes allerede i \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:250
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
 msgid "Original file"
-msgstr "Fichier original"
+msgstr "Oprindelig fil"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:251
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:282
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
 msgid "Size:"
-msgstr "Taille :"
+msgstr "Størrelse:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr "Type :"
+msgstr "Type:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr "Dernière modification :"
+msgstr "Senest ændret:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:281
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
 msgid "Replace with"
-msgstr "Remplacer par"
+msgstr "Erstat med"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:310
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr "Fusionner"
+msgstr "Flet"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:698
 msgid "_Select a new name for the destination"
-msgstr "Choi_sissez un nouveau nom pour la destination"
+msgstr "_Vælg et nyt navn til destinationen"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:712
 msgid "Reset"
-msgstr "Réinitialiser"
+msgstr "Nulstil"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:724
 msgid "Apply this action to all files"
-msgstr "Appliquer cette action pour tous les fichiers"
+msgstr "Udfør denne handling på alle filer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:740
 msgid "Re_name"
-msgstr "Re_nommer"
+msgstr "_Omdøb"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:746
 msgid "Replace"
-msgstr "Remplacer"
+msgstr "Erstat"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:819
 msgid "File conflict"
-msgstr "Conflit de fichier"
+msgstr "Filkonflikt"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:251
 #, c-format
 msgid "link to %s"
-msgstr "lien vers %s"
+msgstr "link til %s"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1498
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "Échec d'analyse du fichier bureau : %s"
+msgstr "Kunne ikke fortolke desktop filen: %s"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1536
 msgid "No Exec field specified"
-msgstr "Aucun champ Exec spécifié"
+msgstr "Intet 'Exec' felt angivet"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1556
 msgid "No URL field specified"
-msgstr "Aucune URL spécifiée"
+msgstr "Intet URL-felt angivet"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1562
 msgid "Invalid desktop file"
-msgstr "Fichier de bureau non valide"
+msgstr "Ugyldig skrivebords fil"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1786
 msgid "Slashes are not allowed in filenames"
-msgstr "Les barres obliques ne sont pas autorisées dans les noms de fichiers"
+msgstr "Skråstreger ikke tilladt i filnavne"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1806
 msgid "Toplevel files cannot be renamed"
-msgstr "Impossible de renommer les fichiers racines"
+msgstr "Topniveau-filer kan ikke omdøbes"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-utilities.c:265
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr "Impossible de déterminer l'emplacement d'origine de « %s » "
+msgstr "Kunne ikke bestemme den originale placering af \"%s\" "
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-utilities.c:268
 msgid "The item cannot be restored from trash"
-msgstr "Impossible de restaurer l'élément depuis la corbeille"
+msgstr "Elementet kan ikke genskabes fra papirkurven"
 
 #: /home/xapantu/marlin/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Afficher plus de _détails"
+msgstr "Vis flere _detaljer"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:191
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:209
 msgid "Preparing"
-msgstr "En préparation"
+msgstr "Forbereder"
 
 #: /home/xapantu/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr " (Unicode non valide)"
+msgstr " (ugyldig Unicode)"
