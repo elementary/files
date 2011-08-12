@@ -1,11 +1,11 @@
 namespace Marlin {
     public const string APP_TITLE = "Marlin";
-    public const string COPYRIGHT = "Copyright 2010 Elementary Developers";
-    public const string ELEMENTARY_URL = "http://www.elementary-project.com";
+    public const string COPYRIGHT = "Copyright 2010-2011 Elementary Developers";
+    public const string ELEMENTARY_URL = "http://elementaryos.org";
     public const string HELP_URL = "http://elementaryos.org/support";
     public const string BUG_URL = "https://bugs.launchpad.net/marlin/+filebug";
     public const string TRANSLATE_URL = "https://translations.launchpad.net/marlin";
-    public const string ELEMENTARY_LABEL = "elementary-project.com";
+    public const string ELEMENTARY_LABEL = "elementaryos.org";
     public const string COMMENTS = "File Manager";
     
     public const string[] AUTHORS = { 
