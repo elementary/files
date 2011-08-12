@@ -164,6 +164,7 @@ namespace Marlin.View
             var view = new Gtk.TreeView(); 
             var listmodel = new Gtk.ListStore (2, typeof (string), typeof (bool));
             view.set_model (listmodel);
+            view.set_headers_visible (false);
             var column = new Gtk.TreeViewColumn();
 
             var text_renderer = new Gtk.CellRendererText();
