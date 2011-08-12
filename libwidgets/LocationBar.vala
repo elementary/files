@@ -103,12 +103,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         icons = new List<IconDirectory?>();
 
         button_context = new Button().get_style_context();
-        button_context.get_path().prepend_type(typeof(Toolbar));
-        button_context.get_path().iter_add_class(0, "primary-toolbar");
-        button_context.get_path().iter_add_class(0, "toolbar");
-
-        button_context.set_state(Gtk.StateFlags.PRELIGHT);
-
         entry_context = button_context;
 
         button_context.add_class("marlin-pathbar");
