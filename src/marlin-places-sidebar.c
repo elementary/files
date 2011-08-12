@@ -2875,6 +2875,13 @@ category_row_collapsed_event_cb (GtkTreeView             *tree,
 }
 
 static void
+icon_theme_changed_callback (GtkIconTheme *icon_theme,
+                             MarlinPlacesSidebar *sidebar)
+{
+    update_places (sidebar);
+}
+
+static void
 marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
 {
     GtkTreeView       *tree_view;
@@ -3082,6 +3089,11 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     g_signal_connect_object (marlin_trash_monitor_get (),
                              "trash_state_changed",
                              G_CALLBACK (trash_state_changed_cb),
+                             sidebar, 0);
+
+    g_signal_connect_object (gtk_icon_theme_get_default (),
+                             "changed",
+                             G_CALLBACK (icon_theme_changed_callback),
                              sidebar, 0);
 }
 

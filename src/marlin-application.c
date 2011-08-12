@@ -582,6 +582,14 @@ init_gtk_accels (void)
 }
 
 static void
+icon_theme_changed_callback (GtkIconTheme *icon_theme,
+                             MarlinPlacesSidebar *sidebar)
+{
+	/* Clear all pixmap caches as the icon => pixmap lookup changed */
+	nautilus_icon_info_clear_caches ();
+}
+
+static void
 marlin_application_startup (GApplication *app)
 {
     MarlinApplication *self = MARLIN_APPLICATION (app);
@@ -610,6 +618,10 @@ marlin_application_startup (GApplication *app)
     /* initialize search path for custom icons */
     /*gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
       MARLIN_DATADIR G_DIR_SEPARATOR_S "icons");*/
+    g_signal_connect_object (gtk_icon_theme_get_default (),
+                             "changed",
+                             G_CALLBACK (icon_theme_changed_callback),
+                             NULL, 0);
 
     //marlin_dbus_manager_start (app);
 
@@ -638,7 +650,7 @@ marlin_application_quit_mainloop (GApplication *app)
 {
     g_debug ("Quitting mainloop");
 
-    //marlin_icon_info_clear_caches ();
+    nautilus_icon_info_clear_caches ();
 
     G_APPLICATION_CLASS (marlin_application_parent_class)->quit_mainloop (app);
 }
