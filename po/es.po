@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-08 00:32+0000\n"
-"Last-Translator: Aldo Mann <Unknown>\n"
+"PO-Revision-Date: 2011-08-12 07:57+0000\n"
+"Last-Translator: Cody Garver <codygarver@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-08-12 04:47+0000\n"
-"X-Generator: Launchpad (build 13662)\n"
+"X-Launchpad-Export-Date: 2011-08-13 05:13+0000\n"
+"X-Generator: Launchpad (build 13674)\n"
 "Language: es\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
@@ -74,7 +74,7 @@ msgstr "Ir a %s"
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
 msgid "Home"
-msgstr ""
+msgstr "Carpeta personal"
 
 #: /home/xapantu/marlin/po/../src/View/Window.vala:524
 msgid "translator-credits"
@@ -82,7 +82,9 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Aldo Mann https://launchpad.net/~aldomann\n"
 "  Algalord https://launchpad.net/~erasmo-marin\n"
+"  Cody Garver https://launchpad.net/~codygarver\n"
 "  René Mujica Moreau https://launchpad.net/~rene-mujica\n"
+"  Rubén Vera https://launchpad.net/~rmvercan\n"
 "  xapantu https://launchpad.net/~xapantu"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
@@ -174,26 +176,26 @@ msgstr "Todas las operaciones sobre archivos se han completado con éxito"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
-msgstr ""
+msgstr "Modo de selección"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:648
 msgid "The selection mode"
-msgstr ""
+msgstr "El modo de selección"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:663
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:161
 msgid "Single Click"
-msgstr ""
+msgstr "Pulsación sencilla"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:664
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:162
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
+msgstr "Si los elementos en la vista se pueden activar con clics solo"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:680
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:178
 msgid "Single Click Timeout"
-msgstr ""
+msgstr "Tiempo de pulsación sencilla"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:681
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:179
@@ -201,159 +203,167 @@ msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
+"La cantidad de tiempo que hay que mantener el ratón sobre el elemento hasta "
+"que sea seleccionado automáticamente en el modo de clic sencilla"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:699
 msgid "Pixbuf column"
-msgstr ""
+msgstr "Columna de pixbuf"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
-msgstr ""
+msgstr "Columna modelo usada para obtener el pixbuf del icono"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
-msgstr ""
+msgstr "Columna de texto"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
-msgstr ""
+msgstr "Columna modelo usada para obtener el texto"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:737
 msgid "Markup column"
-msgstr ""
+msgstr "Columna de marcado"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:738
 msgid "Model column used to retrieve the text if using Pango markup"
-msgstr ""
+msgstr "Columna modelo usada para obtener el texto si se usa marcado Pango"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:745
 msgid "Icon View Model"
-msgstr ""
+msgstr "Modelo de vista de icono"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:746
 msgid "The model for the icon view"
-msgstr ""
+msgstr "El modelo para la vista de icono"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:762
 msgid "Number of columns"
-msgstr ""
+msgstr "Número de columnas"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:763
 msgid "Number of columns to display"
-msgstr ""
+msgstr "Numero de columnas para mostrar"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:780
 msgid "Width for each item"
-msgstr ""
+msgstr "Ancho de cada elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr ""
+msgstr "La anchura usada por cada elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
-msgstr ""
+msgstr "Espaciado"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:797
 msgid "Space which is inserted between cells of an item"
-msgstr ""
+msgstr "Espacio que se introduce entre las celdas de un elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
-msgstr ""
+msgstr "Espaciado de filas"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
-msgstr ""
+msgstr "Espacio que se introduce entre las filas de la rejilla"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
-msgstr ""
+msgstr "Espaciado de columnas"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
-msgstr ""
+msgstr "Espacio que se inserta entre las columnas de la rejilla"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:844
 msgid "Margin"
-msgstr ""
+msgstr "Margen"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:845
 msgid "Space which is inserted at the edges of the icon view"
-msgstr ""
+msgstr "Espacio que se introduce entre los bordes de la vista de icono"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
-msgstr ""
+msgstr "Orientación del elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:861
 msgid ""
 "How the text and icon of each item are positioned relative to each other"
 msgstr ""
+"Cómo se sitúan el texto y el icono para cada elemento relativo a los demás"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:877
 msgid "Reorderable"
-msgstr ""
+msgstr "Reordenable"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:878
 msgid "View is reorderable"
-msgstr ""
+msgstr "La vista es reordenable"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:885
 msgid "Enable Search"
-msgstr ""
+msgstr "Activar búsqueda"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:886
 msgid "View allows user to search through columns interactively"
 msgstr ""
+"La vista permite a los usuarios buscar de forma interactiva a través de las "
+"columnas"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:893
 msgid "Search Column"
-msgstr ""
+msgstr "Columna de búsqueda"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:894
 msgid "Model column to search through during interactive search"
 msgstr ""
+"Columna modelo para buscar a través de ella en una búsqueda interactiva"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
-msgstr ""
+msgstr "Columna de sugerencia"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:904
 msgid "The column in the model containing the tooltip texts for the items"
 msgstr ""
+"La columna del modelo que contiene los textos de sugerencia para los "
+"elementos"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:921
 msgid "Item Padding"
-msgstr ""
+msgstr "Separación del elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:922
 msgid "Padding around icon view items"
-msgstr ""
+msgstr "Separación alrededor de la vista de iconos"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:939
 msgid "Cell Area"
-msgstr ""
+msgstr "Área de la celda"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:940
 msgid "The GtkCellArea used to layout cells"
-msgstr ""
+msgstr "El GtkCellArea usado para la distribución de las celdas"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:953
 msgid "Selection Box Color"
-msgstr ""
+msgstr "Color de la caja de selección"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:954
 msgid "Color of the selection box"
-msgstr ""
+msgstr "Color de la caja de selección"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:960
 msgid "Selection Box Alpha"
-msgstr ""
+msgstr "Alfa de la caja de selección"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:961
 msgid "Opacity of the selection box"
-msgstr ""
+msgstr "Opacidad de la caja de selección"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
