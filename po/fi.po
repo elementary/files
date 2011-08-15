@@ -8,23 +8,23 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-07-12 14:02+0000\n"
-"Last-Translator: Petri Hämäläinen <Unknown>\n"
+"PO-Revision-Date: 2011-08-14 18:34+0000\n"
+"Last-Translator: sampo555 <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-08-12 04:46+0000\n"
-"X-Generator: Launchpad (build 13662)\n"
+"X-Launchpad-Export-Date: 2011-08-15 04:42+0000\n"
+"X-Generator: Launchpad (build 13674)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
-msgstr ""
+msgstr "(kohteita ei löytynyt)"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:255
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:256
 msgid "Type"
@@ -32,7 +32,7 @@ msgstr "Tyyppi"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:259
 msgid "Target"
-msgstr ""
+msgstr "Kohde"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:261
 msgid "Size"
@@ -44,31 +44,31 @@ msgstr "Muokattu"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:264
 msgid "Owner"
-msgstr ""
+msgstr "Omistaja"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr ""
+msgstr "Kansiota ei ole olemassa"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr ""
+msgstr "Marlin ei löydä kansiota %s"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr ""
+msgstr "Luo"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr ""
+msgstr "Luo kansio %s"
 
 #: /home/xapantu/marlin/po/../src/View/LocationBar.vala:959
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "Siirry kohteeseen %s"
 
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
@@ -78,6 +78,8 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/View/Window.vala:524
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  sampo555 https://launchpad.net/~sampo555"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
