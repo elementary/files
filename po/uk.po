@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-19 07:59+0000\n"
+"PO-Revision-Date: 2011-08-21 07:48+0000\n"
 "Last-Translator: Fedik <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-08-20 05:05+0000\n"
+"X-Launchpad-Export-Date: 2011-08-22 04:47+0000\n"
 "X-Generator: Launchpad (build 13697)\n"
 "Language: uk\n"
 
@@ -153,46 +153,47 @@ msgstr "Додатки"
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:213
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:269
 msgid "File Operations"
-msgstr ""
+msgstr "Дії над файлами"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:114
 msgid "Show Details"
-msgstr ""
+msgstr "Показувати подробиці"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:149
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:171
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Триває %'d дія над файлом"
+msgstr[1] "Тривають %'d дії над файлом"
+msgstr[2] "Тривають %'d дій над файлом"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:270
 msgid "All file operations have been successfully completed"
-msgstr ""
+msgstr "Всі дії над файлами успішно виконано"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
-msgstr ""
+msgstr "Режим виділення"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:648
 msgid "The selection mode"
-msgstr ""
+msgstr "Режим виділення"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:663
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:161
 msgid "Single Click"
-msgstr ""
+msgstr "Одинарний клік"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:664
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:162
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
+msgstr "Чи буде елемент активовано при одинарному кліку"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:680
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:178
 msgid "Single Click Timeout"
-msgstr ""
+msgstr "Затримка одинарного кліку"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:681
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:179
@@ -200,6 +201,8 @@ msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
+"Кількість часу, після якого, елемент під курсором мишки, буде автоматично "
+"виділено для режиму одинарного кліку"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:699
 msgid "Pixbuf column"
@@ -208,119 +211,125 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
 msgstr ""
+"Модель стовпця, що використовується для отримання зображення (pixbuf) значка"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
-msgstr ""
+msgstr "Стовпчик тексту"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
-msgstr ""
+msgstr "Модель стовпчика, що використовується для отримання з неї тексту"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:737
 msgid "Markup column"
-msgstr ""
+msgstr "Стовпчик розмітки"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:738
 msgid "Model column used to retrieve the text if using Pango markup"
 msgstr ""
+"Модель стовпчика, що використовується для тримання з неї тексту, якщо "
+"використовується розмітка Pango"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:745
 msgid "Icon View Model"
-msgstr ""
+msgstr "Модель Показ Значків"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:746
 msgid "The model for the icon view"
-msgstr ""
+msgstr "Модель для перегляду у вигляді значків"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:762
 msgid "Number of columns"
-msgstr ""
+msgstr "Кількість стовпчиків"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:763
 msgid "Number of columns to display"
-msgstr ""
+msgstr "Кількість стовпчиків, які буде показано"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:780
 msgid "Width for each item"
-msgstr ""
+msgstr "Ширина кожного елемента"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr ""
+msgstr "Ширина, що використовується для кожного елемента"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
-msgstr ""
+msgstr "Проміжки"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:797
 msgid "Space which is inserted between cells of an item"
-msgstr ""
+msgstr "Простір, що вставляється між комірками елемента"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
-msgstr ""
+msgstr "Рядкові проміжки"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
-msgstr ""
+msgstr "Простір, що вставляється між рядками сітки"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
-msgstr ""
+msgstr "Проміжки для стовпців"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
-msgstr ""
+msgstr "Простір, що вставляється між стовпчиками сітки"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:844
 msgid "Margin"
-msgstr ""
+msgstr "Відступ"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:845
 msgid "Space which is inserted at the edges of the icon view"
-msgstr ""
+msgstr "Простір, що вставляється на краях перегляду піктограми"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
-msgstr ""
+msgstr "Орієнтація елементу"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:861
 msgid ""
 "How the text and icon of each item are positioned relative to each other"
 msgstr ""
+"Як текст та значки кожного елемента розташовуються один відносно іншого"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:877
 msgid "Reorderable"
-msgstr ""
+msgstr "Пересортування"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:878
 msgid "View is reorderable"
-msgstr ""
+msgstr "Елементи можна перегрупувати"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:885
 msgid "Enable Search"
-msgstr ""
+msgstr "Увімкнути пошук"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:886
 msgid "View allows user to search through columns interactively"
 msgstr ""
+"Перегляд дозволяє користувачу виконувати пошук у стовпчиках в інтерактивному "
+"режимі"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:893
 msgid "Search Column"
-msgstr ""
+msgstr "Стовпчик пошуку"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:894
 msgid "Model column to search through during interactive search"
-msgstr ""
+msgstr "Стовпчик, в якому слід виконати інтерактивний пошук по мірі набору"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
-msgstr ""
+msgstr "Стовпчик підказки"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:904
 msgid "The column in the model containing the tooltip texts for the items"
-msgstr ""
+msgstr "Стовпчик у моделі, що містить текстову підказку для елементів"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:921
 msgid "Item Padding"
