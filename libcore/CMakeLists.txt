@@ -42,6 +42,7 @@ install (FILES
     marlin-icons.h
     marlin-plugin.h
     marlin-plugin-manager.h
+    marlin-abstract-sidebar.h
     marlin-plugins-hook.h
     marlin-progress-info.h
     marlin-progress-info-manager.h
@@ -79,6 +80,7 @@ add_library (${PKGNAME} SHARED
     nautilus-icon-info.c
     eel-fcts.c
     eel-i18n.c
+    marlin-abstract-sidebar.c
     eel-gtk-extensions.c
     gof-abstract-slot.c
     eel-gdk-extensions.c

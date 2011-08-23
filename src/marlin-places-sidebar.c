@@ -42,6 +42,7 @@
 #include "marlin-trash-monitor.h"
 #include "marlin-dnd.h"
 
+
 #define EJECT_BUTTON_XPAD 4
 #define TEXT_XPAD 5
 #define ICON_XPAD 6
@@ -75,7 +76,6 @@ typedef enum {
     PLACES_STORAGE_CATEGORY
 } PlaceType;
 
-static GType marlin_places_sidebar_provider_get_type   (void);
 static void  open_selected_bookmark                    (MarlinPlacesSidebar         *sidebar,
                                                         GtkTreeModel                *model,
                                                         GtkTreePath                 *path,
@@ -111,7 +111,7 @@ static const GtkTargetEntry marlin_shortcuts_drop_targets [] = {
     { "text/uri-list", 0, TEXT_URI_LIST }
 };
 
-G_DEFINE_TYPE (MarlinPlacesSidebar, marlin_places_sidebar, GTK_TYPE_SCROLLED_WINDOW);
+G_DEFINE_TYPE (MarlinPlacesSidebar, marlin_places_sidebar, MARLIN_TYPE_ABSTRACT_SIDEBAR);
 
 static GdkPixbuf *
 get_eject_icon (gboolean highlighted)
@@ -2925,7 +2925,7 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                                              sidebar,
                                              NULL);
 
-    cell = marlin_cell_renderer_disk_new ();
+    cell = GTK_CELL_RENDERER(marlin_cell_renderer_disk_new ());
     sidebar->eject_text_cell_renderer = cell;
     gtk_tree_view_column_pack_start (col, cell, TRUE);
     gtk_tree_view_column_set_attributes (col, cell,
