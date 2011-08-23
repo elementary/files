@@ -71,7 +71,7 @@ namespace Marlin.View.Chrome
         GOF.Directory.Async files;
         /* The string which contains the text we search in the file. e.g, if the
          * user enter /home/user/a, we will search for "a". */
-        string to_search;
+        string to_search = "";
 
         /* Used for the context menu we show when there is a right click */
         GOF.Directory.Async files_menu;
