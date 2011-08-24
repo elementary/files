@@ -140,21 +140,6 @@ namespace Marlin.View
             hbox_single_click.pack_start(mode_date_format, false, false);
             
             first_vbox.pack_start(hbox_single_click, false);
-            
-            
-            /* Show text in the sidebar */
-            hbox_single_click = new Gtk.HBox(false, 0);
-            checkbox = new Gtk.Switch();
-
-            Preferences.settings.bind("show-open-with-text", checkbox , "active", SettingsBindFlags.DEFAULT);
-
-            label = new Gtk.Label(_("Show applications names in the context pane:"));
-            label.set_alignment(0, 0.5f);
-
-            hbox_single_click.pack_start(label);
-            hbox_single_click.pack_start(checkbox, false, false);
-
-            first_vbox.pack_start(hbox_single_click, false);
 
             mai_notebook.append_page(first_vbox, _("Display"));
 
