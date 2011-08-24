@@ -2244,17 +2244,8 @@ action_restore_from_trash_callback (GtkAction *action, gpointer data)
 static gboolean
 real_delete (FMDirectoryView *view)
 {
-    //TODO
-    /*GtkAction *action;
-
-      action = gtk_action_group_get_action (view->details->dir_action_group,
-      NAUTILUS_ACTION_DELETE);
-      if (gtk_action_get_sensitive (action) &&
-      gtk_action_get_visible (action)) {*/
     delete_selected_files (view);
     return TRUE;
-    /*}
-      return FALSE;*/
 }
 
 
@@ -2373,120 +2364,8 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__VOID,
                       G_TYPE_NONE, 0);
-
-    /*signals[BEGIN_FILE_CHANGES] =
-      g_signal_new ("begin_file_changes",
-      G_TYPE_FROM_CLASS (klass),
-      G_SIGNAL_RUN_LAST,
-      G_STRUCT_OFFSET (FMDirectoryViewClass, begin_file_changes),
-      NULL, NULL,
-      g_cclosure_marshal_VOID__VOID,
-      G_TYPE_NONE, 0);
-      signals[BEGIN_LOADING] =
-      g_signal_new ("begin_loading",
-      G_TYPE_FROM_CLASS (klass),
-      G_SIGNAL_RUN_LAST,
-      G_STRUCT_OFFSET (FMDirectoryViewClass, begin_loading),
-      NULL, NULL,
-      g_cclosure_marshal_VOID__VOID,
-      G_TYPE_NONE, 0);*/
-    /*	signals[CLEAR] =
-        g_signal_new ("clear",
-        G_TYPE_FROM_CLASS (klass),
-        G_SIGNAL_RUN_LAST,
-        G_STRUCT_OFFSET (FMDirectoryViewClass, clear),
-        NULL, NULL,
-        g_cclosure_marshal_VOID__VOID,
-        G_TYPE_NONE, 0);*/
-    /*signals[END_FILE_CHANGES] =
-      g_signal_new ("end_file_changes",
-      G_TYPE_FROM_CLASS (klass),
-      G_SIGNAL_RUN_LAST,
-      G_STRUCT_OFFSET (FMDirectoryViewClass, end_file_changes),
-      NULL, NULL,
-      g_cclosure_marshal_VOID__VOID,
-      G_TYPE_NONE, 0);
-      signals[FLUSH_ADDED_FILES] =
-      g_signal_new ("flush_added_files",
-      G_TYPE_FROM_CLASS (klass),
-      G_SIGNAL_RUN_LAST,
-      G_STRUCT_OFFSET (FMDirectoryViewClass, flush_added_files),
-      NULL, NULL,
-      g_cclosure_marshal_VOID__VOID,
-      G_TYPE_NONE, 0);*/
-#if 0
-    signals[END_LOADING] =
-        g_signal_new ("end_loading",
-                      G_TYPE_FROM_CLASS (klass),
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (FMDirectoryViewClass, end_loading),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__BOOLEAN,
-                      G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
-    signals[FILE_CHANGED] =
-        g_signal_new ("file_changed",
-                      G_TYPE_FROM_CLASS (klass),
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (FMDirectoryViewClass, file_changed),
-                      NULL, NULL,
-                      nautilus_marshal_VOID__OBJECT_OBJECT,
-                      G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
-    signals[LOAD_ERROR] =
-        g_signal_new ("load_error",
-                      G_TYPE_FROM_CLASS (klass),
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (FMDirectoryViewClass, load_error),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__POINTER,
-                      G_TYPE_NONE, 1, G_TYPE_POINTER);
-    signals[REMOVE_FILE] =
-        g_signal_new ("remove_file",
-                      G_TYPE_FROM_CLASS (klass),
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (FMDirectoryViewClass, remove_file),
-                      NULL, NULL,
-                      nautilus_marshal_VOID__OBJECT_OBJECT,
-                      G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
-#endif
-    //klass->accepts_dragged_files = real_accepts_dragged_files;
-    //klass->file_limit_reached = real_file_limit_reached;
-    //klass->file_still_belongs = real_file_still_belongs;
-    //klass->get_emblem_names_to_exclude = real_get_emblem_names_to_exclude;
-    /*klass->get_selected_icon_locations = real_get_selected_icon_locations;
-      klass->is_read_only = real_is_read_only;
-      klass->load_error = real_load_error;
-      klass->can_rename_file = can_rename_file;
-      klass->start_renaming_file = start_renaming_file;
-      klass->supports_creating_files = real_supports_creating_files;
-      klass->supports_properties = real_supports_properties;
-      klass->supports_zooming = real_supports_zooming;
-      klass->using_manual_layout = real_using_manual_layout;*/
     klass->merge_menus = fm_directory_view_real_merge_menus;
     klass->unmerge_menus = fm_directory_view_real_unmerge_menus;
-    /* klass->update_menus = real_update_menus;
-       klass->set_is_active = real_set_is_active;*/
-
-    /* Function pointers that subclasses must override */
-    //EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, add_file);
-    /*EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, bump_zoom_level);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, can_zoom_in);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, can_zoom_out);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, clear);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, file_changed);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, get_background_widget);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, get_selection);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, get_selection_for_file_transfer);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, get_item_count);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, is_empty);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, reset_to_defaults);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, restore_default_zoom_level);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, select_all);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, set_selection);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, invert_selection);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, zoom_to_level);
-      EEL_ASSIGN_MUST_OVERRIDE_SIGNAL (klass, fm_directory_view, get_zoom_level);*/
-
-    //copied_files_atom = gdk_atom_intern ("x-special/gnome-copied-files", FALSE);
 
     g_object_class_install_property (G_OBJECT_CLASS (klass),
                                      PROP_WINDOW_SLOT,
