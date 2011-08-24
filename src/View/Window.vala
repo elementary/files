@@ -66,7 +66,6 @@ namespace Marlin.View {
             }
         }
         
-        //public signal void refresh();
         public signal void selection_changed(GLib.List<GOF.File> gof_file);
 
         public signal void loading_uri (string location, Widget sidebar);
@@ -74,14 +73,12 @@ namespace Marlin.View {
         public signal void reload_tabs();
 
         public void update_action_radio_view(int n) {
-            //Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
             assert(action != null);
             action.set_current_value(n);
         }
 
         protected virtual void action_radio_change_view(){
-            //Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-detailed-list");
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
             assert(action != null);
             int n = action.get_current_value();
@@ -90,23 +87,8 @@ namespace Marlin.View {
                 current_tab.change_view(n, null);
         }
 
-        /*protected virtual void action_radio_set_color_changed(){
-            Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("set-color-clear");
-            assert(action != null);
-            int n = action.get_current_value();
-
-            print("Color changed: %i\n",n);
-            ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
-	    }*/
-
         public Window (Marlin.Application app, Gdk.Screen myscreen)
         {
-            //Timeout.add(6*1000, () => { Log.println(Log.Level.DEBUG, "To horizontal"); main_box.orientation = Orientation.VERTICAL; return true; });
-            //Timeout.add(3*1000, () => {
-            //    Timeout.add(6*1000, () => { Log.println(Log.Level.DEBUG, "To vertical"); main_box.orientation = Orientation.HORIZONTAL; return true; });
-            //    return false;
-            //});
-
             application = app;
             screen = myscreen;
 
@@ -151,6 +133,7 @@ namespace Marlin.View {
 
             /* Sidebar */
             sidebar = new Marlin.Places.Sidebar ((Gtk.Widget) this);
+            Preferences.settings.bind("sidebar-icon-size", sidebar, "icon-size", SettingsBindFlags.DEFAULT);
 
             /* Devide main views into sidebars */
             main_box = new CollapsablePaned(Orientation.VERTICAL);

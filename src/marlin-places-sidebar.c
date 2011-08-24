@@ -47,6 +47,11 @@
 #define TEXT_XPAD 5
 #define ICON_XPAD 6
 
+enum
+{
+    PROP_0,
+    PROP_ICON_SIZE
+};
 
 typedef enum {
     PLACES_BUILT_IN,
@@ -165,7 +170,8 @@ add_place (MarlinPlacesSidebar *sidebar,
     gboolean show_eject_button;
 
     pixbuf = NULL;
-    icon_size = g_settings_get_int (settings, MARLIN_PREFERENCES_SIDEBAR_ICON_SIZE);
+    g_object_get(sidebar, "icon-size", &icon_size, NULL);
+    //g_settings_get_int (settings, MARLIN_PREFERENCES_SIDEBAR_ICON_SIZE);
     if (icon_size <= 0)
         icon_size = nautilus_get_icon_size_for_stock_size (GTK_ICON_SIZE_MENU);
     if (icon) {
@@ -629,6 +635,39 @@ update_places (MarlinPlacesSidebar *sidebar)
     g_free (last_uri);
 }
 
+static void marlin_places_sidebar_set_property (GObject *object,
+                                                guint prop_id,
+                                                const GValue *value,
+                                                GParamSpec *pspec)
+{
+    switch (prop_id)
+    {
+    case PROP_ICON_SIZE:
+        MARLIN_PLACES_SIDEBAR (object)->icon_size = g_value_get_int (value);
+        update_places(MARLIN_PLACES_SIDEBAR(object));
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+static void marlin_places_sidebar_get_property (GObject      *object,
+                                        guint         prop_id,
+                                        GValue       *value,
+                                        GParamSpec   *pspec)
+{
+    switch (prop_id)
+    {
+    case PROP_ICON_SIZE:
+        g_value_set_int(value, MARLIN_PLACES_SIDEBAR (object)->icon_size);
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
 static void
 mount_added_callback (GVolumeMonitor *volume_monitor,
                       GMount *mount,
@@ -787,17 +826,6 @@ row_activated_callback (GtkTreeView *tree_view,
     printf ("%s\n", G_STRFUNC);
     open_selected_bookmark (sidebar, GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), path, 0);
 }
-
-/*
-   static void
-   desktop_location_changed_callback (gpointer user_data)
-   {
-   MarlinPlacesSidebar *sidebar;
-
-   sidebar = MARLIN_PLACES_SIDEBAR (user_data);
-
-   update_places (sidebar);
-   }*/
 
 static void
 loading_uri_callback (GtkWidget *window,
@@ -3107,8 +3135,18 @@ static void
 marlin_places_sidebar_class_init (MarlinPlacesSidebarClass *class)
 {
     G_OBJECT_CLASS (class)->dispose = marlin_places_sidebar_dispose;
-
+    G_OBJECT_CLASS (class)->set_property = marlin_places_sidebar_set_property;
+    G_OBJECT_CLASS (class)->get_property = marlin_places_sidebar_get_property;
     GTK_WIDGET_CLASS (class)->style_set = marlin_places_sidebar_style_set;
+    
+    g_object_class_install_property (class,
+                                     PROP_ICON_SIZE,
+                                     g_param_spec_int ("icon-size",
+                                                       _("Icon Size"),
+                                                       _("Icon size"),
+                                                       0, 250, 6,
+                                                       G_PARAM_READWRITE));
+    
 }
 
 static void
@@ -3119,16 +3157,7 @@ marlin_places_sidebar_set_parent_window (MarlinPlacesSidebar *sidebar,
 
     sidebar->window = window;
 
-    //slot = marlin_view_window_get_active_slot (MARLIN_VIEW_WINDOW (window));
-
-    //TODO remove
-    sidebar->bookmarks = marlin_bookmark_list_new ();
-    /* maybe store the uri in slot structure */
-    /*if (slot) {
-        sidebar->uri = g_file_get_uri (slot->location);
-        g_object_unref (slot);
-    }*/
-
+    sidebar->bookmarks = marlin_bookmark_list_new (); /* TODO: remove */
     g_signal_connect_object (sidebar->bookmarks, "contents_changed",
                              G_CALLBACK (update_places),
                              sidebar, G_CONNECT_SWAPPED);

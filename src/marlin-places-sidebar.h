@@ -63,6 +63,7 @@ typedef struct {
     GdkDragContext      *drag_context;
     gboolean            drag_data_received;
     int                 drag_data_info;
+    int                 icon_size;
     gboolean            drop_occured;
 
     GtkWidget *popup_menu;
