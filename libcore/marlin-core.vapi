@@ -67,7 +67,14 @@ namespace Marlin
         FINISH,
         DIRECTORY, /* {window, viewcontainer, directory name } */
         FILE,
-        INIT
+        INIT,
+        SIDEBAR /* { sidebar } */
+    }
+
+    [CCode (cheader_filename = "marlin-abstract-sidebar.h")]
+    public abstract class AbstractSidebar : Gtk.ScrolledWindow
+    {
+        public void add_extra_item(string text);
     }
 }
 

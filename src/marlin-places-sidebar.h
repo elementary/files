@@ -52,7 +52,6 @@ typedef struct {
     GtkCellRenderer     *eject_icon_cell_renderer;
     GtkCellRenderer	    *expander_renderer;
     char 	            *uri;
-    GtkTreeStore        *store;
     GtkWidget           *window;
     MarlinBookmarkList  *bookmarks;
     GVolumeMonitor      *volume_monitor;
@@ -96,6 +95,7 @@ typedef struct {
 GType marlin_places_sidebar_get_type (void);
 
 MarlinPlacesSidebar *marlin_places_sidebar_new (GtkWidget *window);
+void marlin_abstract_sidebar_add_extra_item(MarlinAbstractSidebar* self, gchar* text);
 
 G_END_DECLS
 

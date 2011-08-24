@@ -38,15 +38,36 @@ typedef struct _MarlinAbstractSidebarPrivate MarlinAbstractSidebarPrivate;
 struct _MarlinAbstractSidebar
 {
     GtkScrolledWindow parent;
+    GtkTreeStore        *store;
 };
 
 struct _MarlinAbstractSidebarClass
 {
-  GtkScrolledWindowClass parent_class;
+    GtkScrolledWindowClass parent_class;
 };
 
 GType marlin_abstract_sidebar_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
+
+enum {
+    PLACES_SIDEBAR_COLUMN_ROW_TYPE,
+    PLACES_SIDEBAR_COLUMN_URI,
+    PLACES_SIDEBAR_COLUMN_DRIVE,
+    PLACES_SIDEBAR_COLUMN_VOLUME,
+    PLACES_SIDEBAR_COLUMN_MOUNT,
+    PLACES_SIDEBAR_COLUMN_NAME,
+    PLACES_SIDEBAR_COLUMN_ICON,
+    PLACES_SIDEBAR_COLUMN_INDEX,
+    PLACES_SIDEBAR_COLUMN_EJECT,
+    PLACES_SIDEBAR_COLUMN_NO_EJECT,
+    PLACES_SIDEBAR_COLUMN_BOOKMARK,
+    PLACES_SIDEBAR_COLUMN_TOOLTIP,
+    PLACES_SIDEBAR_COLUMN_EJECT_ICON,
+    PLACES_SIDEBAR_COLUMN_FREE_SPACE,
+    PLACES_SIDEBAR_COLUMN_DISK_SIZE,
+
+    PLACES_SIDEBAR_COLUMN_COUNT
+};
 
 #endif /* _MARLIN_ABSTRACT_SIDEBAR_H */

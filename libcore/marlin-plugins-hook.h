@@ -26,6 +26,7 @@ enum
     MARLIN_PLUGIN_HOOK_FINISH,
     MARLIN_PLUGIN_HOOK_DIRECTORY, /* {window, viewcontainer, directory name } */
     MARLIN_PLUGIN_HOOK_FILE,
-    MARLIN_PLUGIN_HOOK_INIT
+    MARLIN_PLUGIN_HOOK_INIT,
+    MARLIN_PLUGIN_HOOK_SIDEBAR /* { sidebar } */
 };
 #endif

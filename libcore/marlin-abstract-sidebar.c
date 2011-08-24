@@ -40,13 +40,43 @@ struct _MarlinAbstractSidebarPrivate
 {
 };
 
-static void
-marlin_abstract_sidebar_class_init (MarlinAbstractSidebarClass *klass)
+void marlin_abstract_sidebar_add_extra_item(MarlinAbstractSidebar* self, gchar* text)
+{
+    printf("%s\n", __FUNCTION__);
+    GtkTreeIter iter;
+    gtk_tree_store_append (self->store, &iter, NULL);
+    gtk_tree_store_set (self->store, &iter,
+                        PLACES_SIDEBAR_COLUMN_ICON, NULL,
+                        PLACES_SIDEBAR_COLUMN_NAME, text,
+                        PLACES_SIDEBAR_COLUMN_URI, "test://",
+                        -1);
+}
+
+static void marlin_abstract_sidebar_class_init (MarlinAbstractSidebarClass *klass)
 {
   GtkScrolledWindowClass *object_class = GTK_SCROLLED_WINDOW_CLASS (klass);
 }
 
-static void
-marlin_abstract_sidebar_init (MarlinAbstractSidebar *self)
+static void marlin_abstract_sidebar_init (MarlinAbstractSidebar *self)
 {
+    /* this is required to set the category cells to bold and higher than the other ones */
+    self->store = gtk_tree_store_new (PLACES_SIDEBAR_COLUMN_COUNT,
+                                      G_TYPE_INT, 
+                                      G_TYPE_STRING,
+                                      G_TYPE_DRIVE,
+                                      G_TYPE_VOLUME,
+                                      G_TYPE_MOUNT,
+                                      G_TYPE_STRING,
+                                      GDK_TYPE_PIXBUF,
+                                      G_TYPE_INT,
+                                      G_TYPE_BOOLEAN,
+                                      G_TYPE_BOOLEAN,
+                                      G_TYPE_BOOLEAN,
+                                      G_TYPE_STRING,
+                                      GDK_TYPE_PIXBUF,
+                                      G_TYPE_UINT64, /* For disks, total size */
+                                      G_TYPE_UINT64, /* Free space */
+                                      -1
+                                     );
+
 }
