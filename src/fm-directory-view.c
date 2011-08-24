@@ -79,20 +79,10 @@ enum
 
 static guint signals[LAST_SIGNAL];
 
-//static GdkAtom copied_files_atom;
-
-//static gboolean show_delete_command_auto_value;
-//static gboolean confirm_trash_auto_value;
-
-//static char *scripts_directory_uri;
-//static int scripts_directory_uri_length;
-
 struct FMDirectoryViewDetails
 {
     GtkWidget *window;
     GOFWindowSlot *slot;
-    //GOFDirectoryAsync *directory;
-    //GOFFile *directory_as_file;
 
     /* whether we are in the active slot */
     gboolean active;
@@ -108,15 +98,9 @@ struct FMDirectoryViewDetails
      * This is a workaround for bug #87701 that prevents the list view from
      * losing focus when the underlying GtkTreeView is updated.
      */
-    //gboolean show_hidden_files;
 
     GtkActionGroup *dir_action_group;
     guint dir_merge_id;
-
-    /*gchar* undo_action_description;
-      gchar* undo_action_label;
-      gchar* redo_action_description;
-      gchar* redo_action_label;*/
 
     /* right-click drag/popup support */
     GList           *drag_file_list;
@@ -153,19 +137,11 @@ struct FMDirectoryViewDetails
 
 /* forward declarations */
 
-static void     fm_directory_view_class_init    (FMDirectoryViewClass *klass);
-static void     fm_directory_view_init          (FMDirectoryView      *view);
-/*static void     fm_directory_view_create_links_for_files       (FMDirectoryView      *view,
-  GList                *files,
-  GArray               *item_locations);
-  static void     trash_or_delete_files                          (GtkWindow            *parent_window,
-  const GList          *files,
-  gboolean              delete_if_all_already_in_trash,
-  FMDirectoryView      *view);*/
-//static void     fm_directory_view_merge_menus   (FMDirectoryView      *view);
-//static void     fm_directory_view_unmerge_menus (FMDirectoryView      *view);
-static void     real_merge_menus (FMDirectoryView *view);
-static void     real_unmerge_menus (FMDirectoryView *view);
+static void     fm_directory_view_class_init (FMDirectoryViewClass *klass);
+static void     fm_directory_view_init (FMDirectoryView      *view);
+
+static void     fm_directory_view_real_merge_menus (FMDirectoryView *view);
+static void     fm_directory_view_real_unmerge_menus (FMDirectoryView *view);
 static void     fm_directory_view_grab_focus (GtkWidget *widget);
 
 static gboolean fm_directory_view_button_press_event (GtkWidget         *widget,
@@ -212,19 +188,19 @@ static void     fm_directory_view_drag_end (GtkWidget       *widget,
                                             FMDirectoryView *view);
 static void     fm_directory_view_clipboard_changed (FMDirectoryView *view);
 
-static void     fm_directory_view_row_deleted (FMListModel *model, GtkTreePath *path, FMDirectoryView *view);
-static void
-fm_directory_view_restore_selection (FMListModel *model, GtkTreePath *path, FMDirectoryView *view);
+static void     fm_directory_view_row_deleted (FMListModel *model,
+                                               GtkTreePath *path,
+                                               FMDirectoryView *view);
+static void     fm_directory_view_restore_selection (FMListModel *model,
+                                                     GtkTreePath *path,
+                                                     FMDirectoryView *view);
 
 static void     fm_directory_view_cancel_thumbnailing        (FMDirectoryView *view);
 static void     fm_directory_view_schedule_thumbnail_timeout (FMDirectoryView *view);
-//static void     fm_directory_view_schedule_thumbnail_idle    (FMDirectoryView *view);
 static gboolean fm_directory_view_request_thumbnails         (FMDirectoryView *view);
 
 static void     fm_directory_view_scrolled (GtkAdjustment *adjustment, FMDirectoryView *view);
 static void     fm_directory_view_size_allocate (FMDirectoryView *view, GtkAllocation *allocation);
-
-
 
 EEL_CLASS_BOILERPLATE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW)
 
@@ -253,45 +229,45 @@ static const GtkTargetEntry drop_targets[] =
 void
 fm_directory_view_load_file_hash (GOFDirectoryAsync *dir, FMDirectoryView *view)
 {
-/* TODO this should be threaded */
-//g_hash_table_foreach (dir->file_hash, (GHFunc) load_file_from_file_hash_cb, view);
-GHashTableIter iter;
-GFile *location;
-GOFFile *file;
+    /* TODO this should be threaded */
+    GHashTableIter iter;
+    GFile *location;
+    GOFFile *file;
 
-g_hash_table_iter_init (&iter, dir->file_hash);
-while (g_hash_table_iter_next (&iter, (gpointer) &location, (gpointer) &file)) {
-    g_signal_emit (view, signals[ADD_FILE], 0, file, dir);
-}
-
-if (g_settings_get_boolean (settings, "show-hiddenfiles")) {
-    g_hash_table_iter_init (&iter, dir->hidden_file_hash);
-    while (g_hash_table_iter_next (&iter, (gpointer) &location, (gpointer) &file)) {
+    g_hash_table_iter_init (&iter, dir->file_hash);
+    while (g_hash_table_iter_next (&iter, (gpointer) &location, (gpointer) &file))
+    {
         g_signal_emit (view, signals[ADD_FILE], 0, file, dir);
     }
-}
+
+    if (g_settings_get_boolean (settings, "show-hiddenfiles"))
+    {
+        g_hash_table_iter_init (&iter, dir->hidden_file_hash);
+        while (g_hash_table_iter_next (&iter, (gpointer) &location, (gpointer) &file))
+        {
+            g_signal_emit (view, signals[ADD_FILE], 0, file, dir);
+        }
+    }
 }
 
 static void
 file_loaded_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-g_debug ("%s %s\n", G_STRFUNC, file->uri);
-g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
+    g_debug ("%s %s\n", G_STRFUNC, file->uri);
+    g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
 }
 
 static void
 file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-g_debug ("%s %s\n", G_STRFUNC, file->uri);
-g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
+    g_debug ("%s %s\n", G_STRFUNC, file->uri);
+    g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
 }
 
 static void
 file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
     printf ("%s %s %d\n", G_STRFUNC, g_file_get_uri(file->location), file->flags);
-/*gchar *md5_hash = g_compute_checksum_for_string (G_CHECKSUM_MD5, g_file_get_uri(file->location), -1);
-printf ("md5_hash %s\n", md5_hash);*/
     gof_file_query_update (file);
     if (file->exists) 
         fm_list_model_file_changed (view->model, file, directory);
@@ -300,15 +276,17 @@ printf ("md5_hash %s\n", md5_hash);*/
 static void
 file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-g_debug ("%s %s\n", G_STRFUNC, file->uri);
-g_signal_emit (view, signals[REMOVE_FILE], 0, file, directory);
+    g_debug ("%s %s\n", G_STRFUNC, file->uri);
+    g_signal_emit (view, signals[REMOVE_FILE], 0, file, directory);
 }
 
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
-    /* add the file_hash files for view which have been created during the directory loading */
-    if (view->details->loading) {
+    /* add the file_hash files for view which have been created during the
+     * directory loading */
+    if (view->details->loading)
+    {
         printf(">> %s load the cached files\n", G_STRFUNC);
         fm_directory_view_load_file_hash (directory, view);
     }
@@ -318,50 +296,30 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
 void
 fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory)
 {
-/*nautilus_directory_file_monitor_add (directory,
-  &view->details->model,
-  view->details->show_hidden_files,
-  view->details->show_backup_files,
-  attributes,
-  files_added_callback, view);*/
+    if (!(directory->loading && directory->loaded))
+        g_signal_connect (directory, "file_loaded", G_CALLBACK (file_loaded_callback), view);
+    g_signal_connect (directory, "file_added", G_CALLBACK (file_added_callback), view);
 
-if (!(directory->loading && directory->loaded))
-    g_signal_connect (directory, "file_loaded", G_CALLBACK (file_loaded_callback), view);
-g_signal_connect (directory, "file_added", G_CALLBACK (file_added_callback), view);
-
-gof_directory_async_load (directory);
-if (!directory->loading && directory->loaded)
-    fm_directory_view_load_file_hash (directory, view);
-
-/* TODO */
-/*g_signal_connect
-  (directory, "files_changed",
-  G_CALLBACK (files_changed_callback), view);*/
-
-/*view->details->subdirectory_list = g_list_prepend (
-  view->details->subdirectory_list, directory);*/
+    gof_directory_async_load (directory);
+    if (!directory->loading && directory->loaded)
+        fm_directory_view_load_file_hash (directory, view);
 }
 
 void
 fm_directory_view_remove_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory)
 {
-/*g_assert (g_list_find (view->details->subdirectory_list, directory));
+    g_signal_handlers_disconnect_by_func (directory,
+                                          G_CALLBACK (file_loaded_callback),
+                                          view);
+    g_signal_handlers_disconnect_by_func (directory,
+                                          G_CALLBACK (file_added_callback),
+                                          view);
+    /* TODO */
+    /*g_signal_handlers_disconnect_by_func (directory,
+      G_CALLBACK (files_changed_callback),
+      view);*/
 
-  view->details->subdirectory_list = g_list_remove (
-  view->details->subdirectory_list, directory);*/
-
-g_signal_handlers_disconnect_by_func (directory,
-                                      G_CALLBACK (file_loaded_callback),
-                                      view);
-g_signal_handlers_disconnect_by_func (directory,
-                                      G_CALLBACK (file_added_callback),
-                                      view);
-/* TODO */
-/*g_signal_handlers_disconnect_by_func (directory,
-  G_CALLBACK (files_changed_callback),
-  view);*/
-
-/*nautilus_directory_file_monitor_remove (directory, &view->details->model);*/
+    /*nautilus_directory_file_monitor_remove (directory, &view->details->model);*/
 }
 
 
@@ -393,13 +351,10 @@ fm_directory_view_init (FMDirectoryView *view)
     /* setup the icon renderer */
     view->icon_renderer = marlin_icon_renderer_new ();
     g_object_ref_sink (G_OBJECT (view->icon_renderer));
-    //exo_binding_new (G_OBJECT (standard_view), "zoom-level", G_OBJECT (standard_view->icon_renderer), "size");
-    //g_object_set (G_OBJECT (view->icon_renderer), "size", 16, NULL);
 
     /* setup the name renderer */
     view->name_renderer = marlin_text_renderer_new ();
     g_object_ref_sink (G_OBJECT (view->name_renderer));
-    //exo_binding_new (G_OBJECT (standard_view->preferences), "misc-single-click", G_OBJECT (standard_view->name_renderer), "follow-prelit");
     
     /* get the previewer_path if any */
     gchar *previewer_path = g_settings_get_string (settings, "previewer-path");
@@ -415,8 +370,6 @@ fm_directory_view_init (FMDirectoryView *view)
     g_signal_connect (view->model, "row-deleted", G_CALLBACK (fm_directory_view_row_deleted), view);
     g_signal_connect_after (view->model, "row-deleted", G_CALLBACK (fm_directory_view_restore_selection), view);
 
-
-    //thumbtest
     /* connect to size allocation signals for generating thumbnail requests */
     g_signal_connect_after (G_OBJECT (view), "size-allocate",
                             G_CALLBACK (fm_directory_view_size_allocate), NULL);
@@ -428,9 +381,6 @@ fm_directory_view_constructor (GType                  type,
                                GObjectConstructParam *construct_properties)
 {
     FMDirectoryView     *view;
-    //ThunarZoomLevel     zoom_level;
-    //ThunarColumn        sort_column;
-    //GtkSortType         sort_order;
     GtkWidget           *widget;
     GtkAdjustment       *adjustment;
     GObject             *object;
@@ -443,34 +393,11 @@ fm_directory_view_constructor (GType                  type,
     /* cast to view for convenience */
     view = FM_DIRECTORY_VIEW (object);
 
-    /* setup the default zoom-level, determined from the "last-<widget>-zoom-level" preference */
-    /*g_object_get (G_OBJECT (view->preferences), THUNAR_view_GET_CLASS (standard_view)->zoom_level_property_name, &zoom_level, NULL);
-      thunar_widget_set_zoom_level (THUNAR_VIEW (view), zoom_level);*/
-
     /* determine the real widget widget (treeview or iconview) */
     widget = gtk_bin_get_child (GTK_BIN (object));
 
-    /* apply our list model to the real widget (the child of the scrolled window),
-     * we therefore assume that all real widgets have the "model" property.
-     */
-    //g_object_set (G_OBJECT (widget), "model", view->model, NULL);
-
-    /* apply the single-click settings to the widget */
-    /*exo_binding_new (G_OBJECT (view->preferences), "misc-single-click", G_OBJECT (view), "single-click");
-      exo_binding_new (G_OBJECT (view->preferences), "misc-single-click-timeout", G_OBJECT (view), "single-click-timeout");*/
-
-    /* apply the default sort column and sort order */
-    /*g_object_get (G_OBJECT (view->preferences), "last-sort-column", &sort_column, "last-sort-order", &sort_order, NULL);
-      gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (view->model), sort_column, sort_order);*/
-
-    /* stay informed about changes to the sort column/order */
-    //g_signal_connect (G_OBJECT (view->model), "sort-column-changed", G_CALLBACK (thunar_view_sort_column_changed), standard_view);
-
     /* setup support to navigate using a horizontal mouse wheel and the back and forward buttons */
     g_signal_connect (G_OBJECT (widget), "button-press-event", G_CALLBACK (fm_directory_view_button_press_event), object);
-
-    /* need to catch certain keys for the internal widget widget */
-    //g_signal_connect (G_OBJECT (widget), "key-press-event", G_CALLBACK (thunar_view_key_press_event), object);
 
     /* setup the real widget as drop site */
     gtk_drag_dest_set (widget, 0, drop_targets, G_N_ELEMENTS (drop_targets), GDK_ACTION_ASK | GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_MOVE);
@@ -504,23 +431,13 @@ static void
 fm_directory_view_destroy (GtkWidget *object)
 {
     FMDirectoryView *view;
-    //GList *node, *next;
 
     view = FM_DIRECTORY_VIEW (object);
-    g_warning ("%s\n", G_STRFUNC);
-
-    //disconnect_model_handlers (view);
 
     fm_directory_view_unmerge_menus (view);
 
     /* We don't own the window, so no unref */
     view->details->window = NULL;
-
-    /*fm_directory_view_stop (view);
-      fm_directory_view_clear (view);*/
-
-    /*remove_update_menus_timeout_callback (view);
-      remove_update_status_idle_callback (view);*/
 
     EEL_CALL_PARENT (GTK_WIDGET_CLASS, destroy, (object));
 }
@@ -561,28 +478,6 @@ fm_directory_view_finalize (GObject *object)
     g_signal_handlers_disconnect_by_func (slot->directory, directory_done_loading_callback, view);
     g_object_unref (slot);
 
-    /*eel_preferences_remove_callback (NAUTILUS_PREFERENCES_CONFIRM_TRASH,
-      schedule_update_menus_callback, view);
-      eel_preferences_remove_callback (NAUTILUS_PREFERENCES_ENABLE_DELETE,
-      schedule_update_menus_callback, view);
-      eel_preferences_remove_callback (NAUTILUS_PREFERENCES_ICON_VIEW_CAPTIONS,
-      text_attribute_names_changed_callback, view);
-      eel_preferences_remove_callback (NAUTILUS_PREFERENCES_SHOW_IMAGE_FILE_THUMBNAILS,
-      image_display_policy_changed_callback, view);
-      eel_preferences_remove_callback (NAUTILUS_PREFERENCES_CLICK_POLICY,
-      click_policy_changed_callback, view);
-      eel_preferences_remove_callback (NAUTILUS_PREFERENCES_SORT_DIRECTORIES_FIRST,
-      sort_directories_first_changed_callback, view);
-      eel_preferences_remove_callback (NAUTILUS_PREFERENCES_LOCKDOWN_COMMAND_LINE,
-      lockdown_disable_command_line_changed_callback, view);*/
-
-    /*unschedule_pop_up_location_context_menu (view);
-      if (view->details->location_popup_event != NULL) {
-      gdk_event_free ((GdkEvent *) view->details->location_popup_event);
-      }
-
-      g_hash_table_destroy (view->details->non_ready_files);*/
-
     /* release the thumbnailer */
     g_object_unref (view->details->thumbnailer);
 
@@ -619,8 +514,6 @@ fm_directory_view_finalize (GObject *object)
 void
 fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location)
 {
-    //marlin_window_columns_set_active_slot(dview->details->slot);
-    //marlin_window_columns_add(dview->details->slot->mwcols, location);
     gof_window_columns_add_location(dview->details->slot, location);
 }
 
@@ -2568,8 +2461,8 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
       klass->supports_properties = real_supports_properties;
       klass->supports_zooming = real_supports_zooming;
       klass->using_manual_layout = real_using_manual_layout;*/
-    klass->merge_menus = real_merge_menus;
-    klass->unmerge_menus = real_unmerge_menus;
+    klass->merge_menus = fm_directory_view_real_merge_menus;
+    klass->unmerge_menus = fm_directory_view_real_unmerge_menus;
     /* klass->update_menus = real_update_menus;
        klass->set_is_active = real_set_is_active;*/
 
@@ -2978,7 +2871,7 @@ static const GtkActionEntry directory_view_entries[] = {
 
 
 static void
-real_unmerge_menus (FMDirectoryView *view)
+fm_directory_view_real_unmerge_menus (FMDirectoryView *view)
 {
     GtkUIManager *ui_manager;
 
@@ -3011,7 +2904,7 @@ real_unmerge_menus (FMDirectoryView *view)
 }
 
 static void
-real_merge_menus (FMDirectoryView *view)
+fm_directory_view_real_merge_menus (FMDirectoryView *view)
 {
     if (view->details->dir_action_group != NULL)
         return;
