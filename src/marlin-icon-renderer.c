@@ -695,6 +695,7 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
     gtk_cell_renderer_get_padding (cell, &xpad, &ypad);
     calc_width  = (gint) xpad * 2 + pixbuf_width;
     calc_height = (gint) ypad * 2 + pixbuf_height;
+    calc_width = calc_height = MAX(calc_width, calc_height);
 
     if (cell_area && pixbuf_width > 0 && pixbuf_height > 0)
     {
@@ -722,10 +723,10 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
     }
 
     if (width)
-        *width = calc_width;
+        *width = MAX(calc_height, calc_width);
 
     if (height)
-        *height = calc_height;
+        *height = MAX(calc_width, calc_height);
 }
 
 static GdkPixbuf *
@@ -852,7 +853,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     }*/
 
     gtk_render_icon (context, cr, pixbuf,
-                     pix_rect.x, pix_rect.y);
+                     pix_rect.x, pix_rect.y + (pix_rect.height - gdk_pixbuf_get_height(pixbuf))/2);
 
     gtk_style_context_restore (context);
     g_object_unref (pixbuf);
@@ -900,20 +901,20 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             switch (position)
             {
             case 0: /* right/top */
-                emblem_area.x = cell_area->x + cell_area->width - MARLIN_EMBLEM_SIZE;
-                emblem_area.y = cell_area->y;
+                emblem_area.x = pix_rect.x + pix_rect.width - MARLIN_EMBLEM_SIZE;
+                emblem_area.y = MAX(pix_rect.y - MARLIN_EMBLEM_SIZE, background_area->y);
                 break;
             case 1: /* left/top */
-                emblem_area.x = cell_area->x;
-                emblem_area.y = cell_area->y;
+                emblem_area.x = MAX(pix_rect.x - MARLIN_EMBLEM_SIZE, 0);
+                emblem_area.y = MAX(pix_rect.y - MARLIN_EMBLEM_SIZE, background_area->y);
                 break;
             case 2: /* left/bottom */
-                emblem_area.x = cell_area->x;
-                emblem_area.y = cell_area->y + cell_area->height - MARLIN_EMBLEM_SIZE;
+                emblem_area.x = MAX(pix_rect.x - MARLIN_EMBLEM_SIZE, 0);
+                emblem_area.y = pix_rect.y + pix_rect.height - MARLIN_EMBLEM_SIZE;
                 break;
             case 3: /* right/bottom */
-                emblem_area.x = cell_area->x + cell_area->width - MARLIN_EMBLEM_SIZE;
-                emblem_area.y = cell_area->y + cell_area->height - MARLIN_EMBLEM_SIZE;
+                emblem_area.x = pix_rect.x + pix_rect.width - MARLIN_EMBLEM_SIZE;
+                emblem_area.y = pix_rect.y + pix_rect.height - MARLIN_EMBLEM_SIZE;
                 break;
             }
 
