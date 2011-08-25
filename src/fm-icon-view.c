@@ -468,17 +468,26 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
     return handled;
 }
 
-#if 0
-static void
-fm_icon_view_notify_model (ExoIconView *exo_icon, GParamSpec *pspec, FMIconView *view)
+static gboolean fm_icon_view_draw(GtkWidget* view_, cairo_t* cr, FMIconView* view)
 {
-    /* We need to set the search column here, as ExoIconView resets it
-     * whenever a new model is set.
-     */
-    exo_icon_view_set_search_column (exo_icon, FM_LIST_MODEL_FILENAME);
+    g_return_if_fail(FM_IS_ICON_VIEW(view));
+    GtkTreeIter iter;
+    gboolean folder_empty = !gtk_tree_model_get_iter_first(view->model, &iter);
+    if(folder_empty && !fm_directory_view_get_loading(FM_DIRECTORY_VIEW(view)))
+    {
+        PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), "This folder is empty");
+        PangoRectangle extents;
+        /* Get hayout height and width */
+        pango_layout_get_extents(layout, NULL, &extents);
+        gdouble width = pango_units_to_double(extents.width);
+        gdouble height = pango_units_to_double(extents.height);
+        gtk_render_layout(gtk_widget_get_style_context(GTK_WIDGET(view)), cr,
+                (double)gtk_widget_get_allocated_width(GTK_WIDGET(view))/2 - width/2,
+                (double)gtk_widget_get_allocated_height(GTK_WIDGET(view))/2 - height/2,
+                layout);
+    }
+    return FALSE;
 }
-#endif
-
 
 static void
 fm_icon_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
@@ -691,7 +700,8 @@ fm_icon_view_init (FMIconView *view)
                              G_CALLBACK (button_press_callback), view, 0);
     g_signal_connect_object (view->icons, "key_press_event",
                              G_CALLBACK (key_press_callback), view, 0);
-
+    g_signal_connect (view->icons, "draw",
+                             G_CALLBACK (fm_icon_view_draw), view);
     gtk_widget_show (GTK_WIDGET (view->icons));
     gtk_container_add (GTK_CONTAINER (view), GTK_WIDGET (view->icons));
 }

@@ -67,13 +67,14 @@ enum {
     DELETE,
     COLORIZE_SELECTION,
     SYNC_SELECTION,
+    DIRECTORY_LOADED,
     LAST_SIGNAL
 };
 
 enum
 {
     PROP_0,
-    PROP_WINDOW_SLOT
+    PROP_WINDOW_SLOT,
 };
 
 
@@ -267,7 +268,7 @@ file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryVie
 static void
 file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-    printf ("%s %s %d\n", G_STRFUNC, g_file_get_uri(file->location), file->flags);
+    g_debug ("%s %s %d\n", G_STRFUNC, g_file_get_uri(file->location), file->flags);
     gof_file_query_update (file);
     if (file->exists) 
         fm_list_model_file_changed (view->model, file, directory);
@@ -291,6 +292,7 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
         fm_directory_view_load_file_hash (directory, view);
     }
     view->details->loading = FALSE;
+    g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
 }
 
 void
@@ -1843,8 +1845,7 @@ fm_directory_view_cancel_thumbnailing (FMDirectoryView *view)
     }
 }
 
-static gboolean
-fm_directory_view_get_loading (FMDirectoryView *view)
+gboolean fm_directory_view_get_loading (FMDirectoryView *view)
 {
     if (view->details->slot && view->details->slot->directory)
         return view->details->slot->directory->loading;
@@ -2181,8 +2182,6 @@ real_trash (FMDirectoryView *view)
       gtk_action_get_visible (action)) {*/
     trash_or_delete_selected_files (view);
     return TRUE;
-    /*}
-      return FALSE;*/
 }
 
 static void
@@ -2248,7 +2247,19 @@ real_delete (FMDirectoryView *view)
     return TRUE;
 }
 
-
+static void
+fm_directory_view_get_property (GObject         *object,
+                                guint            prop_id,
+                                const GValue    *value,
+                                GParamSpec      *pspec)
+{
+    switch (prop_id)
+    {
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
 static void
 fm_directory_view_set_property (GObject         *object,
                                 guint            prop_id,
@@ -2292,11 +2303,6 @@ fm_directory_view_set_property (GObject         *object,
                                  G_CALLBACK (slot_active), directory_view, 0);
         g_signal_connect_object (directory_view->details->slot, "inactive", 
                                  G_CALLBACK (slot_inactive), directory_view, 0);
-
-        /*g_signal_connect_object (directory_view->details->window,
-          "hidden-files-mode-changed", G_CALLBACK (hidden_files_mode_changed),
-          directory_view, 0);*/
-        //fm_directory_view_init_show_hidden_files (directory_view);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -2318,6 +2324,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
     G_OBJECT_CLASS (klass)->dispose = fm_directory_view_dispose;
     G_OBJECT_CLASS (klass)->finalize = fm_directory_view_finalize;
     G_OBJECT_CLASS (klass)->set_property = fm_directory_view_set_property;
+    G_OBJECT_CLASS (klass)->get_property = fm_directory_view_get_property;
 
     widget_class->destroy = fm_directory_view_destroy;
     widget_class->scroll_event = fm_directory_view_scroll_event;
@@ -2340,6 +2347,14 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_generic,
                       G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
+    signals[DIRECTORY_LOADED] =
+        g_signal_new ("directory_loaded",
+                      G_TYPE_FROM_CLASS (klass),
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (FMDirectoryViewClass, directory_loaded),
+                      NULL, NULL,
+                      g_cclosure_marshal_generic,
+                      G_TYPE_NONE, 1, GOF_TYPE_DIRECTORY_ASYNC);
     signals[REMOVE_FILE] =
         g_signal_new ("remove_file",
                       G_TYPE_FROM_CLASS (klass),

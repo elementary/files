@@ -114,6 +114,27 @@ row_collapsed_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 }
 #endif
 
+static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsView* view)
+{
+    g_return_if_fail(FM_IS_COLUMNS_VIEW(view));
+    GtkTreeIter iter;
+    gboolean folder_empty = !gtk_tree_model_get_iter_first(view->model, &iter);
+    if(folder_empty && !fm_directory_view_get_loading(FM_DIRECTORY_VIEW(view)))
+    {
+        PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), "This folder is empty");
+        PangoRectangle extents;
+        /* Get hayout height and width */
+        pango_layout_get_extents(layout, NULL, &extents);
+        gdouble width = pango_units_to_double(extents.width);
+        gdouble height = pango_units_to_double(extents.height);
+        gtk_render_layout(gtk_widget_get_style_context(GTK_WIDGET(view)), cr,
+                (double)gtk_widget_get_allocated_width(GTK_WIDGET(view))/2 - width/2,
+                (double)gtk_widget_get_allocated_height(GTK_WIDGET(view))/2 - height/2,
+                layout);
+    }
+    return FALSE;
+}
+
 static void
 show_selected_files (GOFFile *file)
 {
@@ -657,6 +678,8 @@ create_and_set_up_tree_view (FMColumnsView *view)
                              G_CALLBACK (key_press_callback), view, 0);
     g_signal_connect_object (view->tree, "row-activated",
                              G_CALLBACK (row_activated_callback), view, 0);
+    g_signal_connect (view->tree, "draw",
+                             G_CALLBACK (fm_columns_view_draw), view);
 
     gtk_tree_selection_set_mode (gtk_tree_view_get_selection (view->tree), GTK_SELECTION_MULTIPLE);
 
