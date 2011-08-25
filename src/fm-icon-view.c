@@ -475,7 +475,7 @@ static gboolean fm_icon_view_draw(GtkWidget* view_, cairo_t* cr, FMIconView* vie
     gboolean folder_empty = !gtk_tree_model_get_iter_first(view->model, &iter);
     if(folder_empty && !fm_directory_view_get_loading(FM_DIRECTORY_VIEW(view)))
     {
-        PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), "This folder is empty");
+        PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), _("This folder is empty."));
         PangoRectangle extents;
         /* Get hayout height and width */
         pango_layout_get_extents(layout, NULL, &extents);
