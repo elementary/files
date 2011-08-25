@@ -139,7 +139,7 @@ MarlinPlugin* marlin_plugin_new(const gchar* path)
             plugin_loaded = marlin_plugin_load(plugin, keyfile, parent_path);
         }
     }
-    if(plugin_loaded == NULL) g_warning ("Plugin not enabled: %s", path);
+    if(plugin_loaded == NULL) g_debug ("Plugin not enabled: %s", path);
     g_free(parent_path);
     return plugin_loaded;
 }

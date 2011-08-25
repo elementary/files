@@ -105,7 +105,7 @@ void marlin_plugin_manager_load_plugin(MarlinPluginManager* plugins, const gchar
             if(!g_strcmp0(keyfile_value, path))
             {
                 marlin_plugin_manager_add_plugin(plugins, plugin_path);
-                g_warning("Loading: %s", plugin_path);
+                g_debug("Loading: %s", plugin_path);
                 break;
             }
             g_key_file_free(keyfile);
@@ -227,7 +227,7 @@ void marlin_plugin_manager_hook_context_menu(MarlinPluginManager* plugin, GtkWid
 
 void marlin_plugin_manager_hook_send(MarlinPluginManager* plugin, void* user_data, int hook)
 {
-    g_warning("Plugin Hook: %d", hook);
+    g_debug("Plugin Hook: %d", hook);
 
     GList* item = g_list_first(plugin->plugins_list);
 

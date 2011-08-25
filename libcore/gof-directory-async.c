@@ -77,7 +77,7 @@ directory_load_done (GOFDirectoryAsync *dir, GFileEnumerator *enumerator, GError
         g_object_unref (enumerator);
     }
 
-    g_message ("%s ended\n", G_STRFUNC);
+    g_debug ("%s ended\n", G_STRFUNC);
     if (error == NULL)
         dir->loaded = TRUE;
     else 
@@ -301,16 +301,14 @@ gof_directory_async_load (GOFDirectoryAsync *dir)
 
     if (!dir->loaded && !dir->loading)
     {
-        printf ("%s LOADED FALSE\n", G_STRFUNC);
         dir->loading = TRUE;
 
-        g_message ("Start loading directory %s\n", dir->file->uri);
+        g_debug ("Start loading directory %s\n", dir->file->uri);
 
         p->monitor = gof_monitor_directory (dir);
-        //amtest
-        //dir->file = gof_file_get (dir->location);
 
-        if (!dir->file->is_mounted) {
+        if (!dir->file->is_mounted)
+        {
             mount_operation = gof_mount_operation_new (NULL);
             if (dir->file->file_type == G_FILE_TYPE_MOUNTABLE) {
                 g_file_mount_mountable (dir->location, 
@@ -324,7 +322,9 @@ gof_directory_async_load (GOFDirectoryAsync *dir)
                                                gof_directory_async_enclosing_volume_finish, dir);
             }
             g_object_unref (mount_operation);
-        } else {
+        }
+        else
+        {
             if (dir->file->info != NULL)
                 g_signal_emit (dir, signals[INFO_AVAILABLE], 0);
 
@@ -337,8 +337,10 @@ gof_directory_async_load (GOFDirectoryAsync *dir)
                                              dir);
         }
         return TRUE;
-    } else {
-        printf ("%s ALREADY LOADED\n", G_STRFUNC);
+    }
+    else
+    {
+        g_debug ("%s ALREADY LOADED\n", G_STRFUNC);
         g_signal_emit (dir, signals[INFO_AVAILABLE], 0);
     }
     return FALSE;

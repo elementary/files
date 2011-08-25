@@ -48,7 +48,7 @@ public void receive_all_hook(void* user_data, int hook)
         }
         break;
     default:
-        print("%s doesn't know this hook: %d\n", PLUGIN_NAME, hook);
+        debug("%s doesn't know this hook: %d\n", PLUGIN_NAME, hook);
         break;
     }
 }

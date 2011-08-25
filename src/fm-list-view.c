@@ -192,7 +192,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMListView *view)
 {
-    g_message ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
     fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view));
 }
 
@@ -355,7 +355,7 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
 	}
 
 	if (!fm_list_model_get_first_iter_for_file (list_view->model, file, &iter)) {
-        g_message ("%s FAILED", G_STRFUNC);
+        g_debug ("%s FAILED", G_STRFUNC);
 		return;
 	}
 
@@ -402,7 +402,7 @@ subdirectory_unloaded_callback (FMListModel *model,
                                 GOFDirectoryAsync *directory,
                                 gpointer callback_data)
 {
-    g_message ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
     FMListView *view;
 
     g_return_if_fail (FM_IS_LIST_MODEL (model));
@@ -1061,27 +1061,12 @@ fm_list_view_zoom_normal (FMDirectoryView *view)
     g_settings_set_enum (marlin_list_view_settings, "zoom-level", zoom);
 }
 
-#if 0
-static void
-fm_list_view_zoom_level_changed (FMListView *view)
-{
-    GList *cols, *l;
-
-    cols =  gtk_tree_view_get_columns (view->tree);
-    for(l=cols; l != NULL; l=l->next) {
-        /* just queue a resize on this column */
-        if (gtk_tree_view_column_get_visible (l->data))
-            gtk_tree_view_column_queue_resize (l->data);
-    }
-}
-#endif
-
 static void
 fm_list_view_finalize (GObject *object)
 {
     FMListView *view = FM_LIST_VIEW (object);
 
-    g_warning ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
 
     g_free (view->details->original_name);
 	view->details->original_name = NULL;
@@ -1115,7 +1100,7 @@ fm_list_view_init (FMListView *view)
 static void
 fm_list_view_zoom_level_changed (FMListView *view)
 {
-    g_warning ("%s", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     /* set the new "size" for the icon renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "size", marlin_zoom_level_to_icon_size (view->zoom_level), NULL);
     gint xpad, ypad;

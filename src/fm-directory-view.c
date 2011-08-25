@@ -468,8 +468,6 @@ fm_directory_view_finalize (GObject *object)
 {
     FMDirectoryView *view = FM_DIRECTORY_VIEW (object);
 
-    g_warning ("%s\n", G_STRFUNC);
-
     GOFWindowSlot *slot = view->details->slot;
 
     /* disconnect all listeners */
@@ -556,7 +554,7 @@ void
 fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, 
                                         GdkScreen *screen, gboolean open_in_tab)
 {
-    g_message ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
     if (file->is_directory) {
         if (open_in_tab)
             marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), file->location);
@@ -2046,7 +2044,7 @@ fm_directory_view_realize (GtkWidget *widget)
     //GtkIconTheme       *icon_theme;
     GdkDisplay         *display;
 
-    g_message ("%s", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     /* let the GtkWidget do its work */
     GTK_WIDGET_CLASS (parent_class)->realize (widget);
 
@@ -2101,7 +2099,7 @@ fm_directory_view_grab_focus (GtkWidget *widget)
 static void
 slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 {
-    g_warning ("%s", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     /*g_assert (!view->details->active);*/
     view->details->active = TRUE;
 
@@ -2280,8 +2278,6 @@ fm_directory_view_set_property (GObject         *object,
         window = marlin_view_view_container_get_window (MARLIN_VIEW_VIEW_CONTAINER(slot->ctab));
 
         directory_view->details->slot = g_object_ref(slot);
-        //debugtest
-        printf ("!!!! %s window\n", G_STRFUNC);
         directory_view->details->window = window;
         /* store the loading state of the directory */
         directory_view->details->loading = slot->directory->loading;
@@ -2423,7 +2419,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
 static void
 update_menus (FMDirectoryView *view)
 {
-    g_warning ("%s", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     GList *selection = fm_directory_view_get_selection (view);
 
     if (selection != NULL) {
@@ -2774,7 +2770,6 @@ fm_directory_view_real_unmerge_menus (FMDirectoryView *view)
     if (view->details->dir_action_group == NULL)
         return;
 
-    printf("%s\n", G_STRFUNC);
     ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
     eel_ui_unmerge_ui (ui_manager,
                        &view->details->dir_merge_id,
@@ -2803,7 +2798,7 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
     if (view->details->dir_action_group != NULL)
         return;
 
-    printf("%s\n", G_STRFUNC);
+    g_debug("%s\n", G_STRFUNC);
     GtkActionGroup *action_group;
     GtkUIManager *ui_manager;
     const char *ui;

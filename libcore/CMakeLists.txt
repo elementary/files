@@ -65,7 +65,8 @@ pkg_check_modules(DEPS REQUIRED
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
-add_definitions(${CFLAGS} "-DUI_DIR=\"${CMAKE_INSTALL_PREFIX}/share/marlin/ui/\"")
+add_definitions(${CFLAGS} "-DUI_DIR=\"${CMAKE_INSTALL_PREFIX}/share/marlin/ui/\""
+    -Wall )
 add_definitions("-DPLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/marlin/plugins/\"")
 set(LIBS
 	${DEP_LIBRARIES}

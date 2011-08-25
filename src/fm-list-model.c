@@ -1705,7 +1705,7 @@ fm_list_model_finalize (GObject *object)
 {
     FMListModel *model = FM_LIST_MODEL (object);
 
-    g_warning ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
     g_free (model->details);
 
     G_OBJECT_CLASS (fm_list_model_parent_class)->finalize (object);
