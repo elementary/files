@@ -157,7 +157,9 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
 static void
 load_dir_async_callback (GObject *source_object, GAsyncResult *res, gpointer user_data)
 {
-    GOFDirectoryAsync *dir = user_data;
+    g_return_if_fail(GOF_IS_DIRECTORY_ASYNC(user_data));
+    g_return_if_fail(G_IS_FILE(source_object));
+    GOFDirectoryAsync *dir = GOF_DIRECTORY_ASYNC(user_data);
     GFileEnumerator *enumerator;
     GError *error = NULL;
 

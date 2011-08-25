@@ -229,9 +229,15 @@ namespace Marlin.View {
             action_new (typeof (Marlin.View.Window), "edit_path");
             Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
             Signal.connect (this, "go_up",
-                    (GLib.Callback)action_go_up, null);
+                    (GLib.Callback)cb_go_up, this);
             Signal.connect (this, "edit_path",
                     (GLib.Callback)action_edit_path, null);
+        }
+
+        static void cb_go_up(Window data)
+        {
+            assert(data is Window);
+            data.action_go_up();
         }
 
         public void colorize_current_tab_selection (int n) {

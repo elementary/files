@@ -2008,7 +2008,7 @@ fm_directory_view_parent_set (GtkWidget *widget,
         GTK_WIDGET_CLASS (parent_class)->parent_set (widget, old_parent);
     }
 
-    printf("%s\n", G_STRFUNC);
+    g_debug("%s\n", G_STRFUNC);
     view = FM_DIRECTORY_VIEW (widget);
     dir = view->details->slot->directory;
 
