@@ -288,7 +288,7 @@ update_places (MarlinPlacesSidebar *sidebar)
                             PLACES_SIDEBAR_COLUMN_URI, &last_uri, -1);
     }
     gtk_tree_store_clear (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store);
-    marlin_plugin_manager_hook_send(plugins, sidebar, MARLIN_PLUGIN_HOOK_SIDEBAR);
+    marlin_plugin_manager_update_sidebar(plugins, sidebar);
 
     slot = marlin_view_window_get_active_slot (MARLIN_VIEW_WINDOW (sidebar->window));
     if (slot) {

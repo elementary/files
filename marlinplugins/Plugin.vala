@@ -8,4 +8,8 @@ public class Marlin.Plugins.Base
     {
         print("interface\n");
     }
+    public virtual void directory_loaded(void* data) { }
+    public virtual void context_menu(Gtk.Widget? widget) { }
+    public virtual void ui(Gtk.UIManager? widget) { }
+    public virtual void update_sidebar(Gtk.Widget sidebar) { }
 }

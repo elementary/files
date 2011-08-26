@@ -69,7 +69,7 @@ namespace Marlin.View {
                 data[0] = window;
                 data[1] = slot;
                 data[2] = GOF.File.get(myfile);
-                plugins.hook_send((void*)data, 4);
+                plugins.directory_loaded((void*)data);
             });
             up.connect(() => {
                 if (slot.directory.has_parent()) {

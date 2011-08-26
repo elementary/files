@@ -131,7 +131,6 @@ public class Marlin.PluginManager : GLib.Object
             if(plug != null)
             {
                 plugin_hash[name] = plug;
-                plug.interface_loaded(null);
             }
         }
         catch(Error e)
@@ -142,18 +141,27 @@ public class Marlin.PluginManager : GLib.Object
     
     public void hook_context_menu(Gtk.Widget win)
     {
+        foreach(var plugin in plugin_hash.values) plugin.context_menu(win);
+    }
+    
+    public void ui(Gtk.UIManager data)
+    {
+        foreach(var plugin in plugin_hash.values) plugin.ui(data);
     }
     
     public void directory_loaded(void* path)
     {
+        foreach(var plugin in plugin_hash.values) plugin.directory_loaded(path);
     }
     
     public void interface_loaded(Gtk.Widget win)
     {
+        foreach(var plugin in plugin_hash.values) plugin.interface_loaded(win);
     }
     
-    public void hook_send(void* user_data, int hook)
+    public void udpate_sidebar(Gtk.Widget win)
     {
+        foreach(var plugin in plugin_hash.values) plugin.update_sidebar(win);
     }
     
     public void add_plugin(string path)
