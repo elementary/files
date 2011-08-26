@@ -9,11 +9,33 @@ set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
 
+find_package(Vala REQUIRED)
+include(ValaVersion)
+ensure_vala_version("0.12.0" MINIMUM)
+include(ValaPrecompile)
+vala_precompile(VALA_C
+Plugin.vala
+PluginManager.vala
+module.vapi
+PACKAGES
+gio-2.0
+gtk+-3.0
+gee-1.0
+gio-2.0
+OPTIONS
+--thread
+GENERATE_VAPI
+marlin-type-plugin
+GENERATE_HEADER
+marlin-type-plugin
+)
 include_directories(${CMAKE_BINARY_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
 install (FILES marlin-core.vapi DESTINATION share/vala/vapi)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlin-type-plugin.vapi DESTINATION share/vala/vapi)
 install (FILES
     eel-accessibility.h
     eel-debug.h
@@ -48,6 +70,7 @@ install (FILES
     marlin-progress-info-manager.h
     nautilus-cell-renderer-text-ellipsized.h
     nautilus-icon-info.h
+    ${CMAKE_CURRENT_BINARY_DIR}/marlin-type-plugin.h
     DESTINATION include/marlincore/)
 # Check for the deps
 
@@ -106,6 +129,7 @@ add_library (${PKGNAME} SHARED
 	marlin-plugin.c
 	marlin-plugin-manager.c
     eel-vfs-extensions.c
+    ${VALA_C}
 )
 if(BUILD_STATIC MATCHES "Yes")
 add_library(${PKGNAME}-static STATIC
@@ -136,6 +160,7 @@ add_library(${PKGNAME}-static STATIC
         marlin-plugin.c
         marlin-plugin-manager.c
         eel-vfs-extensions.c
+        ${VALA_C}
     )
 # The library target "foo" already has a default OUTPUT_NAME of "foo", so we
 
@@ -147,7 +172,7 @@ add_library(${PKGNAME}-static STATIC
 
 SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES OUTPUT_NAME ${PKGNAME})
 install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
-endif(BUILD_STATIC MATCHES "Yes")
+endif(BUILD_STATI²C MATCHES "Yes")
 set_target_properties (${PKGNAME} PROPERTIES
     VERSION ${MARLINCORE_VERSION}
     SOVERSION ${MARLINCORE_SOVERSION}
