@@ -26,6 +26,8 @@ public class Marlin.PluginManager : GLib.Object
     Settings settings;
     string settings_field;
     string plugin_dir;
+    List<string> names = null;
+    bool in_available = false;
     public PluginManager(Settings settings, string field, string plugin_dir)
     {
         settings_field = field;
@@ -40,7 +42,7 @@ public class Marlin.PluginManager : GLib.Object
         load_modules_from_dir(plugin_dir);
     } 
     
-    private async void load_modules_from_dir (string path, bool force = false)
+    private void load_modules_from_dir (string path, bool force = false)
     {
         File dir = File.new_for_path(path);
 
@@ -48,20 +50,16 @@ public class Marlin.PluginManager : GLib.Object
                             FILE_ATTRIBUTE_STANDARD_TYPE + "," +
                             FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE;
 
-        GLib.List<FileInfo> infos;
+        FileInfo info;
         FileEnumerator enumerator;
 
         try
         {
-            enumerator = yield dir.enumerate_children_async
+            enumerator = dir.enumerate_children
                                         (attributes,
-                                         FileQueryInfoFlags.NONE,
-                                         Priority.DEFAULT,
-                                         null);
+                                         FileQueryInfoFlags.NONE);
 
-            infos = yield enumerator.next_files_async (int.MAX,
-                                                       Priority.DEFAULT,
-                                                       null);
+            info = enumerator.next_file ();
         }
         catch(Error error)
         {
@@ -72,7 +70,7 @@ public class Marlin.PluginManager : GLib.Object
             return;
         }
 
-        foreach(var info in infos)
+        while(info != null)
         {
             string file_name = info.get_name ();
             string file_path = Path.build_filename (dir.get_path (), file_name);
@@ -81,9 +79,9 @@ public class Marlin.PluginManager : GLib.Object
 
             if(file_name.has_suffix(".plug"))
             {
-                print("%s\n", file_name);
-                load_plugin_keyfile(file_path, dir.get_path ());
+                load_plugin_keyfile(file_path, dir.get_path (), force);
             }
+            info = enumerator.next_file ();
         }
     }
 
@@ -119,17 +117,24 @@ public class Marlin.PluginManager : GLib.Object
         return base_;
     }
     
-    void load_plugin_keyfile(string path, string parent)
+    void load_plugin_keyfile(string path, string parent, bool force)
     {
         var keyfile = new KeyFile();
         try
         {
             keyfile.load_from_file(path, KeyFileFlags.NONE);
             string name = keyfile.get_string("Plugin", "Name");
-            Plugins.Base plug = load_module(Path.build_filename(parent, keyfile.get_string("Plugin", "File")));
-            if(plug != null)
+            if(in_available)
             {
-                plugin_hash[name] = plug;
+                names.append(name);
+            }
+            else if(force || name in settings.get_strv(settings_field))
+            {
+                Plugins.Base plug = load_module(Path.build_filename(parent, keyfile.get_string("Plugin", "File")));
+                if(plug != null)
+                {
+                    plugin_hash[name] = plug;
+                }
             }
         }
         catch(Error e)
@@ -176,13 +181,31 @@ public class Marlin.PluginManager : GLib.Object
     {
     }
     
-    public static List<string> get_available_plugins()
+    public List<string> get_available_plugins()
     {
-        return new List<string>();
+        names = new List<string>();
+        in_available = true;
+        load_modules_from_dir(plugin_dir, false);
+        in_available = false;
+        return names.copy();
     }
     
     public bool disable_plugin(string path)
     {
-        return false;
+        string[] plugs = settings.get_strv(settings_field);
+        string[] plugs_ = new string[plugs.length - 1];
+        bool found = false;
+        int i = 0;
+        foreach(var name in plugs)
+        {
+            if(name != path)
+            {
+                plugs[i] = name;
+            }
+            else found = true;
+            i++;
+        }
+        if(found) settings.set_strv(settings_field, plugs_);
+        return found;
     }
 }

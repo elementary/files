@@ -182,7 +182,7 @@ namespace Marlin.View
 
             Gtk.TreeIter iter;
 
-            foreach(string plugin_name in Marlin.PluginManager.get_available_plugins())
+            foreach(string plugin_name in (plugins.get_available_plugins()))
             {
                 listmodel.append (out iter);
                 listmodel.set (iter, 0, plugin_name, 1, plugin_name in Preferences.settings.get_strv("plugins-enabled"));
@@ -208,22 +208,6 @@ namespace Marlin.View
         
         void disable_plugin(string name)
         {
-            string[] plugs = new string[Preferences.settings.get_strv("plugins-enabled").length - 1];
-            string[] current_plugins = Preferences.settings.get_strv("plugins-enabled");
-
-            int offset = 0;
-            for(int i = 0; i <= plugs.length; i++)
-            {
-                if(current_plugins[i] == name)
-                {
-                    offset ++;
-                }
-                else
-                {
-                    plugs[i - offset] = current_plugins[i];
-                }
-            }
-            Preferences.settings.set_strv("plugins-enabled", plugs);
             
             if(!plugins.disable_plugin(name))
             {
