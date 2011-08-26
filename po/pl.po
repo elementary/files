@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-19 11:48+0000\n"
-"Last-Translator: Marcin Falkiewicz <Unknown>\n"
+"PO-Revision-Date: 2011-08-25 17:47+0000\n"
+"Last-Translator: Piotr Sokół <Unknown>\n"
 "Language-Team: Polish <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-08-20 05:05+0000\n"
-"X-Generator: Launchpad (build 13697)\n"
+"X-Launchpad-Export-Date: 2011-08-26 04:45+0000\n"
+"X-Generator: Launchpad (build 13779)\n"
 "Language: pl\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
-msgstr ""
+msgstr "(brak wyników)"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:255
 msgid "Name"
@@ -70,7 +70,7 @@ msgstr "Tworzy katalog „%s”"
 #: /home/xapantu/marlin/po/../src/View/LocationBar.vala:959
 #, c-format
 msgid "Go to %s"
-msgstr "Idź do „%s”"
+msgstr "Przechodzi do położenia „%s”"
 
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
@@ -97,7 +97,7 @@ msgstr "Otwieranie pojedynczym kliknięciem:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:59
 msgid "Mouse auto-selection speed:"
-msgstr "Prędkość zaznaczania:"
+msgstr "Czas automatycznego zaznaczania:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:72
 msgid "Behavior"
@@ -105,27 +105,27 @@ msgstr "Zachowanie"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:80
 msgid "small"
-msgstr "mały"
+msgstr "Mały"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:81
 msgid "medium"
-msgstr "średni"
+msgstr "Średni"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:82
 msgid "large"
-msgstr "duży"
+msgstr "Duży"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "extra-large"
-msgstr "bardzo duży"
+msgstr "Bardzo duży"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "Sidebar icon size:"
-msgstr "Rozmiar ikon w panelu bocznym:"
+msgstr "Rozmiar ikon panelu bocznego:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:115
 msgid "locale"
-msgstr "język"
+msgstr "Regionalny"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:116
 msgid "iso"
@@ -149,18 +149,18 @@ msgstr "Wygląd"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:207
 msgid "Plugins"
-msgstr "Rozszerzenia"
+msgstr "Wtyczki"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:105
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:155
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:213
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:269
 msgid "File Operations"
-msgstr "Operacje na plikach"
+msgstr "Operacje plikowe"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:114
 msgid "Show Details"
-msgstr "Wyświetl szczegóły"
+msgstr "Pokaż szczegóły"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:149
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:171
@@ -177,11 +177,11 @@ msgstr "Zakończono wszystkie operacje plikowe"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
-msgstr "Tryb zaznaczania"
+msgstr "Tryb wyboru"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:648
 msgid "The selection mode"
-msgstr "Tryb zaznaczania"
+msgstr "Tryb wyboru"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:663
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:161
@@ -191,12 +191,12 @@ msgstr "Pojedyncze kliknięcie"
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:664
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:162
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Czy jedno kliknięcie ma aktywować element"
+msgstr "Czy elementy w widoku można aktywować za pomocą jednego kliknięcia"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:680
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:178
 msgid "Single Click Timeout"
-msgstr ""
+msgstr "Limit czasowy pojedynczego kliknięcia"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:681
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:179
@@ -204,54 +204,57 @@ msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
+"Opóźnienie czasowe, po którym element zostanie automatycznie zaznaczony "
+"przez stojący nad nim kursor myszy"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:699
 msgid "Pixbuf column"
-msgstr ""
+msgstr "Kolumna ikon"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
-msgstr ""
+msgstr "Kolumna modelowa używana do pobierania ikon"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
-msgstr ""
+msgstr "Kolumna tekstowa"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
-msgstr ""
+msgstr "Użyty model kolumny do pobierania tekstu"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:737
 msgid "Markup column"
-msgstr ""
+msgstr "Kolumna znaczników"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:738
 msgid "Model column used to retrieve the text if using Pango markup"
 msgstr ""
+"Model kolumny użyty do pobierania tekstu przy użyciu znaczników Pango"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:745
 msgid "Icon View Model"
-msgstr ""
+msgstr "Model widoku ikon"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:746
 msgid "The model for the icon view"
-msgstr ""
+msgstr "Model dla widoku ikon"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:762
 msgid "Number of columns"
-msgstr ""
+msgstr "Ilość kolumn"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:763
 msgid "Number of columns to display"
-msgstr ""
+msgstr "Ilość wyświetlanych kolumn"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:780
 msgid "Width for each item"
-msgstr ""
+msgstr "Szerokość każdego elementu"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr ""
+msgstr "Szerokość używana dla każdego elementu"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"

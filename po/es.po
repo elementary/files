@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-12 07:57+0000\n"
-"Last-Translator: Cody Garver <codygarver@gmail.com>\n"
+"PO-Revision-Date: 2011-08-25 10:55+0000\n"
+"Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-08-13 05:13+0000\n"
-"X-Generator: Launchpad (build 13674)\n"
+"X-Launchpad-Export-Date: 2011-08-26 04:45+0000\n"
+"X-Generator: Launchpad (build 13779)\n"
 "Language: es\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
-msgstr "(no se ha obtenido ningún resultado)"
+msgstr "(no se obtuvo ningún resultado)"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:255
 msgid "Name"
@@ -80,9 +80,10 @@ msgstr "Carpeta personal"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Aldo Mann https://launchpad.net/~aldomann\n"
+"  Alfredo Hernández https://launchpad.net/~aldomann\n"
 "  Algalord https://launchpad.net/~erasmo-marin\n"
 "  Cody Garver https://launchpad.net/~codygarver\n"
+"  Fitoschido https://launchpad.net/~fitoschido\n"
 "  René Mujica Moreau https://launchpad.net/~rene-mujica\n"
 "  Rubén Vera https://launchpad.net/~rmvercan\n"
 "  xapantu https://launchpad.net/~xapantu"
@@ -117,7 +118,7 @@ msgstr "grande"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "extra-large"
-msgstr "extra grande"
+msgstr "muy grande"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "Sidebar icon size:"
@@ -212,7 +213,7 @@ msgstr "Columna de pixbuf"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
-msgstr "Columna modelo usada para obtener el pixbuf del icono"
+msgstr "Modelo de columna desde donde recuperar el icono pixbuf"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
@@ -220,7 +221,7 @@ msgstr "Columna de texto"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
-msgstr "Columna modelo usada para obtener el texto"
+msgstr "Modelo de columna desde donde recuperar el texto"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:737
 msgid "Markup column"
@@ -228,7 +229,7 @@ msgstr "Columna de marcado"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:738
 msgid "Model column used to retrieve the text if using Pango markup"
-msgstr "Columna modelo usada para obtener el texto si se usa marcado Pango"
+msgstr "Modelo de columna usado para recuperar el texto, si usa Pango"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:745
 msgid "Icon View Model"
@@ -236,7 +237,7 @@ msgstr "Modelo de vista de icono"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:746
 msgid "The model for the icon view"
-msgstr "El modelo para la vista de icono"
+msgstr "El modelo de vista de icono"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:762
 msgid "Number of columns"
@@ -244,7 +245,7 @@ msgstr "Número de columnas"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:763
 msgid "Number of columns to display"
-msgstr "Numero de columnas para mostrar"
+msgstr "Número de columnas a mostrar"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:780
 msgid "Width for each item"
@@ -252,7 +253,7 @@ msgstr "Ancho de cada elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr "La anchura usada por cada elemento"
+msgstr "El ancho usado para cada elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
@@ -264,7 +265,7 @@ msgstr "Espacio que se introduce entre las celdas de un elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
-msgstr "Espaciado de filas"
+msgstr "Espaciado entre filas"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
@@ -272,7 +273,7 @@ msgstr "Espacio que se introduce entre las filas de la rejilla"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
-msgstr "Espaciado de columnas"
+msgstr "Espaciado entre columnas"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
@@ -330,7 +331,7 @@ msgstr "Columna de sugerencia"
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:904
 msgid "The column in the model containing the tooltip texts for the items"
 msgstr ""
-"La columna del modelo que contiene los textos de sugerencia para los "
+"La columna en el modelo que contiene los textos de sugerencias para los "
 "elementos"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:921
