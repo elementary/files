@@ -17,17 +17,14 @@
 
 using Gtk;
 
-const string PLUGIN_NAME = "MarlinTrash";
 
-public void receive_all_hook(void* user_data, int hook)
+public class Marlin.Plugins.Trash : Marlin.Plugins.Base
 {
-    switch(hook)
+    public Trash()
     {
-    case Marlin.PluginHook.INTERFACE:
-        break;
-    case Marlin.PluginHook.INIT:
-        break;
-    case Marlin.PluginHook.DIRECTORY:
+    }
+    public override void directory_loaded(void* user_data)
+    {
         GOF.File file = ((Object[])user_data)[2] as GOF.File;
         var trash_file = File.new_for_uri("trash://");
         if(file.location.has_parent(trash_file) || file.location.equal(trash_file))
@@ -46,9 +43,11 @@ public void receive_all_hook(void* user_data, int hook)
             slot.add_extra_widget(infobar);
             infobar.show_all();
         }
-        break;
-    default:
-        debug("%s doesn't know this hook: %d\n", PLUGIN_NAME, hook);
-        break;
     }
+}
+
+
+public Marlin.Plugins.Base module_init()
+{
+    return new Marlin.Plugins.Trash();
 }

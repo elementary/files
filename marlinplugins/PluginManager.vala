@@ -116,7 +116,6 @@ public class Marlin.PluginManager : GLib.Object
         debug ("Loaded module source: '%s'", module.name());
 
         Plugins.Base base_ = module_init();
-        assert(base_ != null);
         return base_;
     }
     
@@ -159,9 +158,14 @@ public class Marlin.PluginManager : GLib.Object
         foreach(var plugin in plugin_hash.values) plugin.interface_loaded(win);
     }
     
-    public void udpate_sidebar(Gtk.Widget win)
+    public void update_sidebar(Gtk.Widget win)
     {
         foreach(var plugin in plugin_hash.values) plugin.update_sidebar(win);
+    }
+    
+    public void file(List<Object> files)
+    {
+        foreach(var plugin in plugin_hash.values) plugin.file(files);
     }
     
     public void add_plugin(string path)

@@ -19,9 +19,11 @@ vala_precompile(VALA_C
 PACKAGES
     gtk+-3.0
     marlin-core
+    marlinplugins
 OPTIONS
     --thread
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
+    --vapidir=${CMAKE_BINARY_DIR}/marlinplugins/
 )
 add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
@@ -30,3 +32,5 @@ add_library(marlintrash SHARED
 target_link_libraries(marlintrash ${DEPS_LIBRARIES} marlincore)
 install(TARGETS marlintrash DESTINATION lib/marlin/plugins/core/)
 install(FILES marlintrash.plug DESTINATION lib/marlin/plugins/core/)
+
+include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)

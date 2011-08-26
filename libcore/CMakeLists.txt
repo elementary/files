@@ -9,20 +9,6 @@ set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
 
-find_package(Vala REQUIRED)
-include(ValaVersion)
-ensure_vala_version("0.12.0" MINIMUM)
-include(ValaPrecompile)
-vala_precompile(VALA_C
-PACKAGES
-gio-2.0
-OPTIONS
---thread
-GENERATE_VAPI
-marlin-type-plugin
-GENERATE_HEADER
-marlin-type-plugin
-)
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
@@ -56,7 +42,6 @@ install (FILES
     marlin-file-utilities.h
     marlin-global-preferences.h
     marlin-icons.h
-    marlin-plugin.h
     marlin-plugin-manager.h
     marlin-abstract-sidebar.h
     marlin-plugins-hook.h
@@ -122,7 +107,6 @@ add_library (${PKGNAME} SHARED
     nautilus-cell-renderer-text-ellipsized.c
     marlin-plugin-manager.c
     eel-vfs-extensions.c
-    ${VALA_C}
 )
 if(BUILD_STATIC MATCHES "Yes")
 add_library(${PKGNAME}-static STATIC
@@ -153,7 +137,6 @@ add_library(${PKGNAME}-static STATIC
         marlin-plugin.c
         marlin-plugin-manager.c
         eel-vfs-extensions.c
-        ${VALA_C}
     )
 # The library target "foo" already has a default OUTPUT_NAME of "foo", so we
 

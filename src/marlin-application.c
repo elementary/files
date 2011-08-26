@@ -67,7 +67,7 @@ struct _MarlinApplicationPriv {
 
 static void selection_changed_plugin(GtkWidget* window, GList *selection)
 {
-    marlin_plugin_manager_hook_send(plugins, selection, MARLIN_PLUGIN_HOOK_FILE);
+    marlin_plugin_manager_file(plugins, selection);
 }
 
 static void
