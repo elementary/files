@@ -98,6 +98,7 @@ add_executable(marlin
     marlin-progress-ui-handler.c
     marlin-progress-info-widget.c
     ${VALA_C} )
+add_definitions("-DPLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/marlin/plugins/\"")
 target_link_libraries(marlin marlincore marlinwidgets marlinplugins ${DEPS_LIBRARIES})
 install(TARGETS marlin RUNTIME DESTINATION bin)
 install(FILES marlin-ui.xml DESTINATION share/marlin/ui/)

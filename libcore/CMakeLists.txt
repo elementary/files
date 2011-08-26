@@ -120,8 +120,7 @@ add_library (${PKGNAME} SHARED
     marlin-exec.c
     gof-monitor.c
     nautilus-cell-renderer-text-ellipsized.c
-	marlin-plugin.c
-	marlin-plugin-manager.c
+    marlin-plugin-manager.c
     eel-vfs-extensions.c
     ${VALA_C}
 )

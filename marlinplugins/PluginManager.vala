@@ -23,17 +23,24 @@ public class Marlin.PluginManager : GLib.Object
 {
     delegate Plugins.Base ModuleInitFunc ();
     Gee.HashMap<string,Plugins.Base> plugin_hash;
-    public PluginManager()
+    Settings settings;
+    string settings_field;
+    string plugin_dir;
+    public PluginManager(Settings settings, string field, string plugin_dir)
     {
+        settings_field = field;
+        this.settings = settings;
+        this.plugin_dir = plugin_dir;
         plugin_hash = new Gee.HashMap<string,Plugins.Base>();
     }
     
     public void load_plugins()
     {
-        load_modules_from_dir("/usr/local/lib/marlin/gioplugins/");
+        load_modules_from_dir(plugin_dir + "/core/", true);
+        load_modules_from_dir(plugin_dir);
     } 
     
-    private async void load_modules_from_dir (string path)
+    private async void load_modules_from_dir (string path, bool force = false)
     {
         File dir = File.new_for_path(path);
 
@@ -80,7 +87,7 @@ public class Marlin.PluginManager : GLib.Object
         }
     }
 
-    Plugins.Base load_module(string file_path)
+    Plugins.Base? load_module(string file_path)
     {
         Module? module = Module.open (file_path, ModuleFlags.BIND_LOCAL);
         if (module == null)
