@@ -17,7 +17,7 @@
  */
 
 #include "marlin-plugins-hook.h"
-#include "marlin-type-plugin.h"
+#include "marlinplugins.h"
 
 #if 0
 

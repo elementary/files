@@ -14,13 +14,7 @@ include(ValaVersion)
 ensure_vala_version("0.12.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
-Plugin.vala
-PluginManager.vala
-module.vapi
 PACKAGES
-gio-2.0
-gtk+-3.0
-gee-1.0
 gio-2.0
 OPTIONS
 --thread
@@ -30,7 +24,7 @@ GENERATE_HEADER
 marlin-type-plugin
 )
 include_directories(${CMAKE_BINARY_DIR})
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
@@ -170,6 +164,7 @@ add_library(${PKGNAME}-static STATIC
 
 #so change it.
 
+SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES LINK_DEPENDS marlinplugins)
 SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES OUTPUT_NAME ${PKGNAME})
 install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 endif(BUILD_STATI²C MATCHES "Yes")
@@ -184,4 +179,5 @@ add_executable(marlincore_tests
     tests/marlincore-tests-file.c
 )
 add_test_executable(marlincore_tests)
+SET_TARGET_PROPERTIES(${PKGNAME} PROPERTIES LINK_DEPENDS marlinplugins)
 target_link_libraries(marlincore_tests marlincore ${DEPS_LIBRARIES})

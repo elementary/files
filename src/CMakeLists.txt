@@ -7,10 +7,10 @@ include(ValaPrecompile)
 # pkgconfig, real C code
 
 include_directories(${CMAKE_BINARY_DIR})
+include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/)
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
@@ -98,66 +98,9 @@ add_executable(marlin
     marlin-progress-ui-handler.c
     marlin-progress-info-widget.c
     ${VALA_C} )
-target_link_libraries(marlin marlincore marlinwidgets ${DEPS_LIBRARIES})
+target_link_libraries(marlin marlincore marlinwidgets marlinplugins ${DEPS_LIBRARIES})
 install(TARGETS marlin RUNTIME DESTINATION bin)
 install(FILES marlin-ui.xml DESTINATION share/marlin/ui/)
 install(FILES fm-directory-view-ui.xml DESTINATION share/marlin/ui/)
 include(Tests)
-#vala_precompile(VALA_TESTS
-
-#    View/tests/tests-pathbar.vala
-
-#    View/LocationBar.vala
-
-#    View/Window.vala
-
-#    View/Chrome/TopMenu.vala
-
-#    View/ViewContainer.vala
-
-#    View/ViewMode.vala
-
-#    View/Chrome/ViewSwicher.vala
-
-#    View/ContextView.vala
-
-#    View/Browser.vala
-
-#    View/Resources.vala
-
-#    View/SettingsDialog.vala
-
-#    View/DirectoryNotFound.vala
-
-#CUSTOM_VAPIS
-
-#    ${CMAKE_CURRENT_SOURCE_DIR}/../libcore/marlin-core.vapi
-
-#    ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
-
-#    marlin.vapi
-
-#PACKAGES
-
-#    gtk+-3.0
-
-#    gio-2.0
-
-#    posix
-
-#    gee-1.0
-
-#OPTIONS
-
-#    --thread)
-
-#add_executable(marlin_c_tests
-
-#    ${VALA_TESTS}
-
-#)
-
-#add_test_executable(marlin_c_tests)
-
-#target_link_libraries(marlin_c_tests marlincore ${DEPS_LIBRARIES})
 
