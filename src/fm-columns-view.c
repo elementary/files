@@ -23,7 +23,6 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 
-//#include "gof-directory-async.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
 #include "marlin-global-preferences.h"
 #include "eel-gtk-extensions.h"
@@ -52,16 +51,9 @@ struct FMColumnsViewDetails {
 /* Wait for the rename to end when activating a file being renamed */
 #define WAIT_FOR_RENAME_ON_ACTIVATE 200
 
-//static gchar *col_title = _("Filename");
-
-//G_DEFINE_TYPE (FMColumnsView, fm_columns_view, G_TYPE_OBJECT)
-/*#define GOF_DIRECTORY_ASYNC_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, GOF_TYPE_DIRECTORY_ASYNC, GOFDirectoryAsyncPrivate))*/
-
 G_DEFINE_TYPE (FMColumnsView, fm_columns_view, FM_TYPE_DIRECTORY_VIEW);
 
 #define parent_class fm_columns_view_parent_class
-
 
 struct UnloadDelayData {
     FMColumnsView *view;
@@ -75,43 +67,6 @@ static GList    *fm_columns_view_get_selection (FMDirectoryView *view);
 static GList    *fm_columns_view_get_selected_paths (FMDirectoryView *view);
 static void     fm_columns_view_select_path (FMDirectoryView *view, GtkTreePath *path);
 static void     fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing);
-
-//static void     fm_columns_view_clear (FMColumnsView *view);
-
-#if 0
-static void
-row_expanded_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, gpointer callback_data)
-{
-    FMColumnsView *view;
-    GOFDirectoryAsync *directory;
-
-    view = FM_COLUMNS_VIEW (callback_data);
-
-    if (fm_list_model_load_subdirectory (view->model, path, &directory)) {
-        fm_directory_view_add_subdirectory (FM_DIRECTORY_VIEW (view), directory);
-    }
-}
-
-static void
-row_collapsed_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, gpointer callback_data)
-{
-    FMColumnsView *view;
-    struct UnloadDelayData *unload_data;
-
-    view = FM_COLUMNS_VIEW (callback_data);
-    unload_data = g_new (struct UnloadDelayData, 1);
-    unload_data->view = view;
-
-    fm_list_model_get_directory_file (view->model, path, &unload_data->directory, &unload_data->file);
-
-    //log_printf (LOG_LEVEL_UNDEFINED, "collapsed %s %s\n", unload_data->file->name, gof_directory_get_uri(unload_data->directory));
-    g_timeout_add_seconds (COLLAPSE_TO_UNLOAD_DELAY,
-                           unload_file_timeout,
-                           unload_data);
-
-    //fm_list_model_unload_subdirectory (view->model, iter);
-}
-#endif
 
 static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsView* view)
 {
@@ -158,9 +113,6 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 
     /* setup the current active slot */
     fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
-    //fm_directory_view_unmerge_menus (FM_DIRECTORY_VIEW (view));
-    /*g_signal_emit_by_name (FM_DIRECTORY_VIEW (view)slot->mwcols->active_slot, "inactive");
-    fm_directory_view_merge_menus (FM_DIRECTORY_VIEW (view));*/
     fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view));
 
     if (view->details->selection == NULL) 
@@ -234,12 +186,6 @@ cell_renderer_editing_started_cb (GtkCellRenderer *renderer,
 
 	g_signal_connect (entry, "focus-out-event",
                       G_CALLBACK (editable_focus_out_cb), col_view);
-
-    //TODO
-	/*nautilus_clipboard_set_up_editable
-		(GTK_EDITABLE (entry),
-		 nautilus_view_get_ui_manager (NAUTILUS_VIEW (col_view)),
-		 FALSE);*/
 }
 
 static void
@@ -494,18 +440,6 @@ button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumn
     return TRUE;
 }
 
-/*static gboolean
-  popup_menu_callback (GtkWidget *widget, gpointer callback_data)
-  {
-  FMListView *view;
-
-  view = FM_LIST_VIEW (callback_data);
-
-  do_popup_menu (widget, view, NULL);
-
-  return TRUE;
-  }*/
-
 static gboolean
 key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_data)
 {
@@ -596,21 +530,7 @@ filename_cell_data_func (GtkTreeViewColumn *column,
                         FM_LIST_MODEL_COLOR, &color,
                         -1);
 
-    /*if (click_policy_auto_value == NAUTILUS_CLICK_POLICY_SINGLE) {
-      path = gtk_tree_model_get_path (model, iter);
-
-      if (view->details->hover_path == NULL ||
-      gtk_tree_path_compare (path, view->details->hover_path)) {
-      underline = PANGO_UNDERLINE_NONE;
-      } else {
-      underline = PANGO_UNDERLINE_SINGLE;
-      }
-
-      gtk_tree_path_free (path);
-      } else {*/
     underline = PANGO_UNDERLINE_NONE;
-    //underline = PANGO_UNDERLINE_SINGLE;
-    //}
 
     g_object_set (G_OBJECT (renderer),
                   "text", text,
@@ -624,25 +544,15 @@ filename_cell_data_func (GtkTreeViewColumn *column,
 static void
 create_and_set_up_tree_view (FMColumnsView *view)
 {
-    //int k;
     GtkTreeViewColumn       *col;
     GtkCellRenderer         *renderer;
-    //GtkTreeSortable         *sortable;
-    //GtkBindingSet *binding_set;
 
     view->model = FM_DIRECTORY_VIEW (view)->model;
     g_object_set (G_OBJECT (view->model), "has-child", FALSE, NULL);
 
     view->tree = g_object_new (GTK_TYPE_TREE_VIEW, "model", GTK_TREE_MODEL (view->model),
                                "headers-visible", FALSE, NULL);
-    //gtk_tree_view_set_rules_hint(GTK_TREE_VIEW (view->tree), TRUE);
-    //gtk_tree_view_set_fixed_height_mode (GTK_TREE_VIEW (view->tree), TRUE);
-    //gtk_tree_view_set_enable_search (GTK_TREE_VIEW (view->tree), FALSE);
     gtk_tree_view_set_search_column (view->tree, FM_LIST_MODEL_FILENAME);
-    //gtk_tree_view_set_reorderable (view->tree, FALSE);
-
-    /*binding_set = gtk_binding_set_by_class (GTK_WIDGET_GET_CLASS (view->details->tree_view));
-      gtk_binding_entry_remove (binding_set, GDK_BackSpace, 0);*/
 
     g_signal_connect_object (gtk_tree_view_get_selection (view->tree), "changed",
                              G_CALLBACK (list_selection_changed_callback), view, 0);
@@ -663,19 +573,8 @@ create_and_set_up_tree_view (FMColumnsView *view)
     col = gtk_tree_view_column_new ();
     view->details->file_name_column = col;
     gtk_tree_view_column_set_sort_column_id  (col, FM_LIST_MODEL_FILENAME);
-    //gtk_tree_view_column_set_resizable (col, TRUE);
-    //gtk_tree_view_column_set_title (col, col_title);
     gtk_tree_view_column_set_expand (col, TRUE);
 
-#if 0
-    renderer = gtk_cell_renderer_pixbuf_new( ); 
-    gtk_tree_view_column_pack_start (col, renderer, FALSE);
-    gtk_tree_view_column_set_attributes (col,
-                                         renderer,
-                                         "pixbuf", FM_LIST_MODEL_ICON,
-                                         //"pixbuf_emblem", FM_LIST_MODEL_SMALLEST_EMBLEM_COLUMN,
-                                         NULL);
-#endif
     /* add the icon renderer */
     gtk_tree_view_column_pack_start (col, FM_DIRECTORY_VIEW (view)->icon_renderer, FALSE);
     gtk_tree_view_column_set_attributes (col, FM_DIRECTORY_VIEW (view)->icon_renderer,
@@ -922,7 +821,6 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
     fm_directory_view_class->add_file = fm_columns_view_add_file;
-    //fm_directory_view_class->sync_selection = fm_columns_view_sync_selection;
     fm_directory_view_class->get_selection = fm_columns_view_get_selection; 
     fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer;
     fm_directory_view_class->get_selected_paths = fm_columns_view_get_selected_paths;

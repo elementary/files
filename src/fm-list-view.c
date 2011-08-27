@@ -84,29 +84,6 @@ static GList    *fm_list_view_get_selected_paths (FMDirectoryView *view);
 static void     fm_list_view_select_path (FMDirectoryView *view, GtkTreePath *path);
 static void     fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing);
 
-//static void     fm_list_view_clear (FMListView *view);
-
-#if 0
-static gboolean
-unload_file_timeout (gpointer data)
-{
-    struct UnloadDelayData *unload_data = data;
-    FMListView *view = unload_data->view;
-    GtkTreeIter *iter = &(unload_data->iter);
-    GtkTreePath *path;
-
-    path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), iter);
-    if (!gtk_tree_view_row_expanded (view->tree, path)) {
-        log_printf (LOG_LEVEL_UNDEFINED, "unloadn");
-        fm_list_model_unload_subdirectory (view->model, iter);
-    }
-    if (path != NULL)
-        gtk_tree_path_free (path);
-    g_free (unload_data);
-    return FALSE;
-}
-#endif
-
 static gboolean
 unload_file_timeout (gpointer data)
 {
@@ -160,21 +137,11 @@ row_collapsed_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 
     fm_list_model_get_directory_file (view->model, path, &unload_data->directory, &unload_data->file);
 
-    //log_printf (LOG_LEVEL_UNDEFINED, "collapsed %s %s\n", unload_data->file->name, gof_directory_get_uri(unload_data->directory));
-
     eel_add_weak_pointer (&unload_data->view);
     g_timeout_add_seconds (COLLAPSE_TO_UNLOAD_DELAY,
                            unload_file_timeout,
                            unload_data);
-
-    //fm_list_model_unload_subdirectory (view->model, iter);
 }
-
-/*static void
-  show_selected_files (GOFFile *file)
-  {
-  log_printf (LOG_LEVEL_UNDEFINED, "selected: %s\n", file->name);
-  }*/
 
 static void
 list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data)
@@ -390,23 +357,8 @@ subdirectory_unloaded_callback (FMListModel *model,
 
     view = FM_LIST_VIEW(callback_data);
 
-    /*g_signal_handlers_disconnect_by_func (directory,
-      G_CALLBACK (subdirectory_done_loading_callback),
-      view);*/
     fm_directory_view_remove_subdirectory (FM_DIRECTORY_VIEW (view), directory);
 }
-
-/*static void
-  do_popup_menu (GtkWidget *widget, FMListView *view, GdkEventButton *event)
-  {
-  if (tree_view_has_selection (GTK_TREE_VIEW (widget))) {
-//fm_directory_view_pop_up_selection_context_menu (FM_DIRECTORY_VIEW (view), event);
-printf ("popup_selection_menu\n");
-} else {
-//fm_directory_view_pop_up_background_context_menu (FM_DIRECTORY_VIEW (view), event);
-printf ("popup_background_menu\n");
-}
-}*/
 
 static gboolean
 button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView *view)
@@ -829,64 +781,6 @@ fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean star
                                       (GtkCellRenderer *) list_view->details->file_name_cell,
                                       start_editing);
 }
-
-/*static void
-  fm_list_view_set_selection (FMListView *list_view, GList *selection)
-  {
-  GtkTreeSelection *tree_selection;
-  GList *node;
-  GList *iters, *l;
-  GOFFile *file;
-
-  tree_selection = gtk_tree_view_get_selection (list_view->tree);
-
-//g_signal_handlers_block_by_func (tree_selection, list_selection_changed_callback, view);
-
-gtk_tree_selection_unselect_all (tree_selection);
-for (node = selection; node != NULL; node = node->next) {
-file = node->data;
-iters = fm_list_model_get_all_iters_for_file (list_view->model, file);
-
-for (l = iters; l != NULL; l = l->next) {
-gtk_tree_selection_select_iter (tree_selection,
-(GtkTreeIter *)l->data);
-}
-//eel_g_list_free_deep (iters);
-}
-
-//g_signal_handlers_unblock_by_func (tree_selection, list_selection_changed_callback, view);
-//fm_directory_view_notify_selection_changed (view);
-}*/
-
-#if 0
-static void
-fm_list_view_reset_selection (FMDirectoryView *view)
-{
-    FMListView *list_view = FM_LIST_VIEW (view);
-    GtkTreeSelection *tree_selection;
-    GList *lp, *selected_paths;
-    GtkTreePath *path;
-
-    g_signal_handlers_block_by_func (list_view->tree, list_selection_changed_callback, list_view);
-
-    tree_selection = gtk_tree_view_get_selection (list_view->tree);
-    GtkTreeModel *model = GTK_TREE_MODEL (list_view->model);
-    selected_paths = gtk_tree_selection_get_selected_rows (tree_selection, &model);
-    gtk_tree_selection_unselect_all (tree_selection);
-    
-    for (lp = selected_paths; lp != NULL; lp = lp->next)
-    {
-        path = lp->data;
-        gtk_tree_selection_select_path (tree_selection, path);
-
-        /* release the tree path... */
-        gtk_tree_path_free (path);
-    }
-    g_list_free (selected_paths);
-
-    g_signal_handlers_unblock_by_func (list_view->tree, list_selection_changed_callback, list_view);
-}
-#endif
 
 static void
 fm_list_view_select_all (FMDirectoryView *view)
