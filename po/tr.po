@@ -1,4 +1,4 @@
-# Arabic translation for marlin
+# Turkish translation for marlin
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the marlin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
@@ -8,85 +8,83 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-12 22:43+0000\n"
-"Last-Translator: omernomer <Unknown>\n"
-"Language-Team: Arabic <ar@li.org>\n"
+"PO-Revision-Date: 2011-08-06 14:34+0000\n"
+"Last-Translator: Fatih Dayioglu <fatihdy@gmail.com>\n"
+"Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
-"3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2011-08-13 05:13+0000\n"
-"X-Generator: Launchpad (build 13674)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Launchpad-Export-Date: 2011-08-12 04:47+0000\n"
+"X-Generator: Launchpad (build 13662)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
-msgstr "لم توجد أي نتيجة"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:255
 msgid "Name"
-msgstr "الإسم"
+msgstr "İsim"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:256
 msgid "Type"
-msgstr "النّوع"
+msgstr "Tür"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:259
 msgid "Target"
-msgstr "هدف"
+msgstr "Hedef"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:261
 msgid "Size"
-msgstr "الحجم"
+msgstr "Boyut"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:263
 msgid "Modified"
-msgstr "عُدِّل"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:264
 msgid "Owner"
-msgstr "المالك"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "المجلّد ليس موجودًا"
+msgstr "Klasör mevcut değil"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr ""
+msgstr "Marlin, %s klasörünü bulamıyor"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr "إنشاء"
+msgstr "Oluştur"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "أنشاء مجلد %s"
+msgstr "%s klasörünü oluştur"
 
 #: /home/xapantu/marlin/po/../src/View/LocationBar.vala:959
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "%s git"
 
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
 msgid "Home"
-msgstr "البداية"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/Window.vala:524
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Adnane Belmadiaf https://launchpad.net/~daker\n"
-"  Saifallah https://launchpad.net/~saifallah\n"
-"  omernomer https://launchpad.net/~num4rf"
+"  Fatih Dayioglu https://launchpad.net/~fthd\n"
+"  aries https://launchpad.net/~sonagirbas"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
-msgstr "إعدادات‎"
+msgstr "Marlin Ayarları"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:46
 msgid "Single click to open:"
@@ -102,15 +100,15 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:80
 msgid "small"
-msgstr ""
+msgstr "küçük"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:81
 msgid "medium"
-msgstr ""
+msgstr "orta"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:82
 msgid "large"
-msgstr ""
+msgstr "büyük"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "extra-large"
@@ -134,7 +132,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:136
 msgid "Date format:"
-msgstr ""
+msgstr "Tarih biçimi:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:151
 msgid "Show applications names in the context pane:"
@@ -146,30 +144,29 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:207
 msgid "Plugins"
-msgstr ""
+msgstr "Eklentiler"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:105
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:155
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:213
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:269
 msgid "File Operations"
-msgstr ""
+msgstr "Dosya İşlemleri"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:114
 msgid "Show Details"
-msgstr "عرض التفاصيل"
+msgstr "Ayrıntıları Göster"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:149
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:171
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya işlemi etkin"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:270
 msgid "All file operations have been successfully completed"
-msgstr "جميع العمليات اكتملت بنجاح"
+msgstr "Tüm dosya işlemleri başarı ile tamamlandı"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
@@ -356,21 +353,23 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
-msgstr ""
+msgstr "Araç Çubuğunu Özelleştir"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:465
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
+"Araç çubuğunda gösterilecek öğeleri seçin. Öğeler sürükle bırak ile "
+"düzenlenebilir."
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
-msgstr ""
+msgstr "Kullanılabilir Öğeler"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:502
 msgid "Displayed Items"
-msgstr ""
+msgstr "Gösterilen Öğeler"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1093
 msgid "Invalid filename provided by XDS drag site"
@@ -379,60 +378,60 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1254
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "فشل في تكوين وصلة للعنوان التالي\"%s\""
+msgstr "\"%s\" URL'i için bir bağ oluşturulamadı"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1766
 msgid "Set as default"
-msgstr "تعيين كقيمة الافتراضية"
+msgstr "Varsayılan olarak ayarla"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1841
 msgid "Open with…"
-msgstr "إفتح بإستعمال..."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:3078
 msgid "Set Color:"
-msgstr "عيّن اللّون:"
+msgstr "Rengi Ayarla"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
-msgstr "ان_قل هنا"
+msgstr "Buraya _Taşı"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:784
 msgid "_Copy Here"
-msgstr "ان_سخ هنا"
+msgstr "Buraya _Kopyala"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr "ا_ربط هنا"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr "اجعلها ال_خلفية"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr "ألغِ"
+msgstr "İptal"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "فشل في تنفيذ الملف \"%s\""
+msgstr "\"%s\" dosyası çalıştırılamadı"
 
 #: /home/xapantu/marlin/po/../src/fm-list-model.c:457
 msgid "(Empty)"
-msgstr "(فارغ)"
+msgstr "(Boş)"
 
 #: /home/xapantu/marlin/po/../src/fm-list-model.c:459
 msgid "Loading..."
-msgstr "يحمّل..."
+msgstr "Yükleniyor..."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:343
 msgid "Text"
-msgstr ""
+msgstr "Metin"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:344
 msgid "The text of the label."
-msgstr ""
+msgstr "Etiketin metni."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:350
 msgid "Justification"
@@ -447,52 +446,52 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:359
 msgid "Line wrap"
-msgstr ""
+msgstr "Satır bölme"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:360
 msgid "If set, wrap lines if the text becomes too wide."
-msgstr ""
+msgstr "Seçili ise, satırlar çok geniş olduğunda bölünür."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:367
 msgid "Small size"
-msgstr ""
+msgstr "Küçük boyut"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:368
 msgid "If set, use small size text."
-msgstr ""
+msgstr "Seçili ise, küçük boyutlu metin kullanılır."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:375
 msgid "Cursor Position"
-msgstr ""
+msgstr "İmleç Konumu"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:376
 msgid "The current position of the insertion cursor in chars."
-msgstr ""
+msgstr "Ekleme imlecinin karakter cinsinden şu anki konumu."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:385
 msgid "Selection Bound"
-msgstr ""
+msgstr "Seçim Sınırları"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:386
 msgid ""
 "The position of the opposite end of the selection from the cursor in chars."
-msgstr ""
+msgstr "İmlecin, seçimin diğer tarafı ile karakter cinsinden konumu."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:3187
 msgid "Select All"
-msgstr ""
+msgstr "Tümünü Seç"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:3198
 msgid "Input Methods"
-msgstr ""
+msgstr "Girdi Yöntemleri"
 
 #: /home/xapantu/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr "ﻻ يوجد شئ في الحافظة لنسخه"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:316
 msgid "Personal"
-msgstr ""
+msgstr "Kişisel"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:321
 msgid "Your common places and bookmarks"
@@ -504,19 +503,19 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:377
 msgid "Trash"
-msgstr ""
+msgstr "Çöp Kutusu"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:379
 msgid "Open the trash"
-msgstr ""
+msgstr "Çöpü aç"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:389
 msgid "Devices"
-msgstr ""
+msgstr "Aygıtlar"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:394
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "Yerel bölüm ve aygıtlarınız"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:401
 msgid "File System"
@@ -534,27 +533,27 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:595
 msgid "Network"
-msgstr ""
+msgstr "Ağ"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:600
 msgid "Your network places"
-msgstr ""
+msgstr "Ağ Bağlantılarım"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:631
 msgid "Entire network"
-msgstr ""
+msgstr "Tüm Ağ"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:633
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Ağ içeriğini tara"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1593
 msgid "_Start"
-msgstr ""
+msgstr "_Başlat"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1594
 msgid "_Stop"
-msgstr ""
+msgstr "_Durdur"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1599
 msgid "_Power On"
@@ -562,7 +561,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Safely Remove Drive"
-msgstr ""
+msgstr "_Sürücüyü Güvenle Kaldır"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1603
 msgid "_Connect Drive"
@@ -592,14 +591,14 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2234
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "%s başlatılamadı"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1977
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2006
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2035
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "%s çıkartılamadı"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2180
 #, c-format
@@ -609,11 +608,11 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2290
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "%s durdurulamadı"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2382
 msgid "_Open"
-msgstr ""
+msgstr "_Aç"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2390
 msgid "Open in New _Tab"
@@ -621,33 +620,33 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2397
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Yeni _Pencerede Aç"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2406
 msgid "Remove"
-msgstr ""
+msgstr "Sil"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2415
 msgid "Rename..."
-msgstr ""
+msgstr "Yeniden Adlandır..."
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2427
 msgid "_Mount"
-msgstr ""
+msgstr "_Bağla"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2434
 msgid "_Unmount"
-msgstr ""
+msgstr "Bağı Ka_ldır"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2441
 msgid "_Eject"
-msgstr ""
+msgstr "_Çıkart"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2477
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1422
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2293
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Çöpü _Boşalt"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -756,11 +755,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr ""
+msgstr "_Bu parolayı anımsa"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr "الغيت العملية"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -770,7 +769,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"تصفح نظام الملفات بمدير الملفات"
+"Dosya yöneticisi ile dosya sistemine gözat"
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
@@ -791,7 +790,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:208
 msgid "Delete _All"
-msgstr ""
+msgstr "Hepsini _Sil"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:209
 msgid "_Replace"
@@ -803,11 +802,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:211
 msgid "_Merge"
-msgstr ""
+msgstr "_Birleştir"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:212
 msgid "Merge _All"
-msgstr ""
+msgstr "_Hepsini Birleştir"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:213
 msgid "Copy _Anyway"
@@ -817,23 +816,20 @@ msgstr ""
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d saniye"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:304
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:315
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dakika"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:314
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d saat"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:322
 #, c-format
@@ -879,7 +875,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:630
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (%'d"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
@@ -903,15 +899,15 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Çöp Kutusu boşaltılsın mı?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Çöp Kutusu'ndaki tüm öğeler kalıcı olarak silinecek."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "\"%B\" dosyasını kalıcı olarak silmek istediğinize emin misiniz?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1453
 #, c-format
@@ -919,25 +915,23 @@ msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] ""
-msgstr[1] ""
+"%'d seçili öğeyi kalıcı olarak silmek istediğinizden emin misiniz?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1478
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr ""
+msgstr "Dosyalar siliniyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya silinmek için bekliyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%T kaldı"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1592
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1626
@@ -945,7 +939,7 @@ msgstr[1] ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1742
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2556
 msgid "Error while deleting."
-msgstr ""
+msgstr "Silinirken hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1596
 msgid ""
@@ -958,7 +952,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3606
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "\"%B\" klasöründeki dosyalar hakkında bilgi alınırken hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1608
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3615
@@ -975,20 +969,20 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2654
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3651
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "\"%B\" klasörü okunurken hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "%B klasörü silinemedi."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "%B silinirken bir hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1819
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
-msgstr ""
+msgstr "Dosyalar çöpe taşınıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1833
 #, c-format
@@ -999,7 +993,7 @@ msgstr[1] ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1884
 msgid "Cannot move file to trash, do you want to delete immediately?"
-msgstr ""
+msgstr "Dosya çöp kutusuna taşınamadı, kalıcı olarak silmek ister misiniz?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1885
 msgid "The file \"%B\" cannot be moved to the trash."
@@ -1007,23 +1001,23 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2061
 msgid "Trashing Files"
-msgstr ""
+msgstr "Dosyalar Çöpe Atılıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2063
 msgid "Deleting Files"
-msgstr ""
+msgstr "Dosyalar Siliniyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2126
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "%V çıkartılamadı"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2128
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "%V bağı kaldırılamadı"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2283
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "Bağı kaldırmadan önce çöpü boşaltmak istiyor musunuz?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2285
 msgid ""
@@ -1037,7 +1031,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2346
 msgid "Emptying the trash"
-msgstr ""
+msgstr "Çöp boşaltılıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2413
 #, c-format
@@ -1048,46 +1042,42 @@ msgstr ""
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya kopyalanmak için hazırlanıyor (%S)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2497
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya taşınmak için hazırlanıyor (%S)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2503
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya silinmek için hazırlanıyor (%S)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2509
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya çöpe atılmak için hazırlanıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2552
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3472
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3598
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3643
 msgid "Error while copying."
-msgstr ""
+msgstr "Kopyalarken hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2554
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3596
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3641
 msgid "Error while moving."
-msgstr ""
+msgstr "Taşınırken hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2558
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "Dosyalar çöpe taşınırken hata."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2612
 msgid ""
@@ -1109,32 +1099,33 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2731
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "\"%B\" hakkında bilgi alırken bir hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2831
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2873
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2906
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2936
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "\"%B\" hedefine kopyalanırken hata."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2835
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "Hedef klasöre erişim için gerekli izne sahip değilsiniz."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2837
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "Hedef hakkında bilgi alırken bir hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2874
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "Hedef bir klasör değil."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2907
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
+"Hedefte yeterli boş alan yok. Dosyaları silerek boş alan açmayı deneyin."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2909
 #, c-format
@@ -1143,11 +1134,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2937
 msgid "The destination is read-only."
-msgstr ""
+msgstr "Hedef salt okunur."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2998
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "\"%B\", \"%B\" hedefine taşınıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2999
 msgid "Copying \"%B\" to \"%B\""
@@ -1178,14 +1169,12 @@ msgstr[1] ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3026
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya \"%B\" hedefine taşınıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3030
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya \"%B\" hedefine kopyalanıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3035
 #, c-format
@@ -1213,7 +1202,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3479
 msgid "There was an error creating the folder \"%B\"."
-msgstr ""
+msgstr "\"%B\" klasörü oluşturulurken hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3603
 msgid ""
@@ -1231,18 +1220,18 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4390
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4964
 msgid "Error while moving \"%B\"."
-msgstr ""
+msgstr "\"%B\" taşınırken hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3694
 msgid "Could not remove the source folder."
-msgstr ""
+msgstr "Hedef klasör silinemedi."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3779
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3820
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4392
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4463
 msgid "Error while copying \"%B\"."
-msgstr ""
+msgstr "\"%B\" kopyalanırken hata."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3780
 #, c-format
@@ -1289,11 +1278,11 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4464
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr ""
+msgstr "Dosya %F içerisine kopyalanırken bir hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4692
 msgid "Copying Files"
-msgstr ""
+msgstr "Dosyalar Kopyalanıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4708
 msgid "Preparing to move to \"%B\""
@@ -1303,8 +1292,7 @@ msgstr ""
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya taşınmak için hazırlanıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4965
 #, c-format
@@ -1313,7 +1301,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5228
 msgid "Moving Files"
-msgstr ""
+msgstr "Dosyalar Taşınıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5244
 msgid "Creating links in \"%B\""
@@ -1336,7 +1324,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5390
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "Hedef sembolik bağları desteklemiyor."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5393
 #, c-format
@@ -1346,7 +1334,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5696
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5699
 msgid "Setting permissions"
-msgstr ""
+msgstr "İzinler atanıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5941
 msgid "untitled folder"
@@ -1354,7 +1342,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5949
 msgid "new file"
-msgstr ""
+msgstr "Yeni Dosya"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6099
 msgid "Error while creating directory %B."
@@ -1362,7 +1350,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6101
 msgid "Error while creating file %B."
-msgstr ""
+msgstr "%B dosyası oluştururken hata."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6103
 #, c-format
@@ -1371,20 +1359,20 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6399
 msgid "Emptying Trash"
-msgstr ""
+msgstr "Çöp Boşaltılıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6447
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6488
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6523
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6558
 msgid "Unable to mark launcher trusted (executable)"
-msgstr ""
+msgstr "Başlatıcı güvenilir olarak işaretlenemedi (çalıştırılabilir)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:143
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "أأدمج المجلد \"%s\"؟"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:147
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
@@ -1392,137 +1380,135 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"الدمج سيسأل التأكيد قبل استبدال أي ملفات في المجلد تتعارض مع الملفات الجاري "
-"نقلها."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:152
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد أقدم بنفس الاسم موجود في \"%s\"."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:156
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد أحدث بنفس الاسم موجود في \"%s\"."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:160
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد آخر بنفس الاسم موجود في \"%s\"."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:165
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
 msgid "Replacing it will remove all files in the folder."
-msgstr "استبداله سيحذف كل الملفات داخل المجلد."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:167
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "أأستبدل المجلد \"%s\"؟"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:169
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد بنفس الاسم موجود في \"%s\"."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:174
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "أأستبدل الملف \"%s\"؟"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:176
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr "استبداله سيستبدل محتواه."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:180
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "هناك ملف أقدم بنفس الاسم موجود في \"%s\"."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:184
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "هناك ملف أحدث بنفس الاسم موجود في \"%s\"."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:188
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "هناك ملف آخر بنفس الاسم موجود في \"%s\"."
+msgstr "\"%s\" içinde aynı isme sahip başka bir dosya mevcut."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:250
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
 msgid "Original file"
-msgstr "الملف الأصلي"
+msgstr "Özgün dosya"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:251
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:282
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
 msgid "Size:"
-msgstr "الحجم:"
+msgstr "Boyut:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr "النوع:"
+msgstr "Tür:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr "آخر تعديل:"
+msgstr "Son düzenlenme tarihi:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:281
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
 msgid "Replace with"
-msgstr "إستبدال بـ"
+msgstr "Bununla değiştir"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:310
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr "إدمج"
+msgstr "Birleştir"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:698
 msgid "_Select a new name for the destination"
-msgstr "_حدد اسما جديدا للوِجهة"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:712
 msgid "Reset"
-msgstr "أعد ضبط"
+msgstr "Sıfırla"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:724
 msgid "Apply this action to all files"
-msgstr "طبق هذا الإجراء على كل الملفات"
+msgstr "Bu eylemi tüm dosyalara uygula"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:740
 msgid "Re_name"
-msgstr "إعادة تسمية"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:746
 msgid "Replace"
-msgstr "إستبدل"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:819
 msgid "File conflict"
-msgstr "تعارض الملف"
+msgstr "Dosya çakışması"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:251
 #, c-format
 msgid "link to %s"
-msgstr "وصلة إلى %s"
+msgstr "%s'e bağla"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1498
 #, c-format
@@ -1531,23 +1517,23 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1536
 msgid "No Exec field specified"
-msgstr "لم يتم تحديد حقل Exec"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1556
 msgid "No URL field specified"
-msgstr "لم يتم تحديد حقل URL"
+msgstr "URL alanı belirtilmemiş"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1562
 msgid "Invalid desktop file"
-msgstr "ملف سطح المكتب غير صالح"
+msgstr "Geçersiz masaüstü dosyası"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1786
 msgid "Slashes are not allowed in filenames"
-msgstr "غير مسموح باستخدام الشرطات المائلة (/) في أسماء الملفات"
+msgstr "Dosya isimlerinde taksim işareti kullanılamaz"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1806
 msgid "Toplevel files cannot be renamed"
-msgstr "لا يمكن تغيير اسم ملفات المستوى الأول"
+msgstr "Üst düzey dosyalar yeniden adlandırılamıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-utilities.c:265
 #, c-format
@@ -1560,13 +1546,13 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "أظهر _تفاصيل أكثر"
+msgstr "Daha _fazla ayrıntı göster"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:191
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:209
 msgid "Preparing"
-msgstr ""
+msgstr "Hazırlanıyor"
 
 #: /home/xapantu/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr " (يونيكود غير صحيح)"
+msgstr " (geçersiz Unikod)"

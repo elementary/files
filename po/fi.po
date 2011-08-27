@@ -1,4 +1,4 @@
-# Arabic translation for marlin
+# Finnish translation for marlin
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the marlin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
@@ -8,85 +8,82 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-12 22:43+0000\n"
-"Last-Translator: omernomer <Unknown>\n"
-"Language-Team: Arabic <ar@li.org>\n"
+"PO-Revision-Date: 2011-08-14 18:34+0000\n"
+"Last-Translator: sampo555 <Unknown>\n"
+"Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
-"3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2011-08-13 05:13+0000\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2011-08-15 04:42+0000\n"
 "X-Generator: Launchpad (build 13674)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
-msgstr "لم توجد أي نتيجة"
+msgstr "(kohteita ei löytynyt)"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:255
 msgid "Name"
-msgstr "الإسم"
+msgstr "Nimi"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:256
 msgid "Type"
-msgstr "النّوع"
+msgstr "Tyyppi"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:259
 msgid "Target"
-msgstr "هدف"
+msgstr "Kohde"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:261
 msgid "Size"
-msgstr "الحجم"
+msgstr "Koko"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:263
 msgid "Modified"
-msgstr "عُدِّل"
+msgstr "Muokattu"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:264
 msgid "Owner"
-msgstr "المالك"
+msgstr "Omistaja"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "المجلّد ليس موجودًا"
+msgstr "Kansiota ei ole olemassa"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr ""
+msgstr "Marlin ei löydä kansiota %s"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr "إنشاء"
+msgstr "Luo"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "أنشاء مجلد %s"
+msgstr "Luo kansio %s"
 
 #: /home/xapantu/marlin/po/../src/View/LocationBar.vala:959
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "Siirry kohteeseen %s"
 
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
 msgid "Home"
-msgstr "البداية"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/Window.vala:524
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Adnane Belmadiaf https://launchpad.net/~daker\n"
-"  Saifallah https://launchpad.net/~saifallah\n"
-"  omernomer https://launchpad.net/~num4rf"
+"  sampo555 https://launchpad.net/~sampo555"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
-msgstr "إعدادات‎"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:46
 msgid "Single click to open:"
@@ -157,7 +154,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:114
 msgid "Show Details"
-msgstr "عرض التفاصيل"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:149
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:171
@@ -169,7 +166,7 @@ msgstr[1] ""
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:270
 msgid "All file operations have been successfully completed"
-msgstr "جميع العمليات اكتملت بنجاح"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
@@ -374,57 +371,57 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1093
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "XDS lähteen tarjoama tiedostonimi ei kelpaa"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1254
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "فشل في تكوين وصلة للعنوان التالي\"%s\""
+msgstr "Linkin luominen URL:iin \"%s\" epäonnistui"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1766
 msgid "Set as default"
-msgstr "تعيين كقيمة الافتراضية"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1841
 msgid "Open with…"
-msgstr "إفتح بإستعمال..."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:3078
 msgid "Set Color:"
-msgstr "عيّن اللّون:"
+msgstr "Valitse Väri:"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
-msgstr "ان_قل هنا"
+msgstr "_Siirrä tähän"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:784
 msgid "_Copy Here"
-msgstr "ان_سخ هنا"
+msgstr "_Kopioi tähän"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr "ا_ربط هنا"
+msgstr "_Linkitä tähän"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr "اجعلها ال_خلفية"
+msgstr "Aseta _taustaksi"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr "ألغِ"
+msgstr "Peruuta"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "فشل في تنفيذ الملف \"%s\""
+msgstr "Tiedoston \"%s\" suorittaminen epäonnistui"
 
 #: /home/xapantu/marlin/po/../src/fm-list-model.c:457
 msgid "(Empty)"
-msgstr "(فارغ)"
+msgstr "[Tyhjä]"
 
 #: /home/xapantu/marlin/po/../src/fm-list-model.c:459
 msgid "Loading..."
-msgstr "يحمّل..."
+msgstr "Ladataan..."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:343
 msgid "Text"
@@ -488,7 +485,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr "ﻻ يوجد شئ في الحافظة لنسخه"
+msgstr "Leikepöydällä ei ole liitettävää"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:316
 msgid "Personal"
@@ -647,7 +644,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1422
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2293
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Tyhjennä _roskakori"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -760,7 +757,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr "الغيت العملية"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -770,120 +767,120 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"تصفح نظام الملفات بمدير الملفات"
+"Selaa tiedostojärjestelmää tiedostonhallinnasta"
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit ei voida käyttää URI:n kanssa"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:205
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:735
 msgid "_Skip"
-msgstr ""
+msgstr "_Ohita"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "S_kip All"
-msgstr ""
+msgstr "_Ohita kaikki"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "_Retry"
-msgstr ""
+msgstr "_Yritä uudelleen"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:208
 msgid "Delete _All"
-msgstr ""
+msgstr "Poista _Kaikki"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:209
 msgid "_Replace"
-msgstr ""
+msgstr "_Korvaa"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:210
 msgid "Replace _All"
-msgstr ""
+msgstr "Korvaa _Kaikki"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:211
 msgid "_Merge"
-msgstr ""
+msgstr "_Yhdistä"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:212
 msgid "Merge _All"
-msgstr ""
+msgstr "Yhdistä _Kaikki"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:213
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "Kopioi kaikesta _huolimatta"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:299
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d sekunti"
+msgstr[1] "%'d sekuntia"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:304
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:315
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d minuutti"
+msgstr[1] "%'d minuuttia"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:314
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d tunti"
+msgstr[1] "%'d tuntia"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:322
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "arviolta %'d tunti"
+msgstr[1] "arviolta %'d tuntia"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:398
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "Linkki kohteeseen %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:402
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "Toinen linkki kohteeseen %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:418
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "%d'd. linkki kohteeseen %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:422
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "%'d. linkki kohteeseen %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:426
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "%'d. linkki kohteeseen %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:430
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "%'d. linkki kohteeseen %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:622
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:630
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (%'d."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa pysyvästi ”%B” roskakorista?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -894,37 +891,39 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
+"Haluatko varmasti poistaa pysyvästi %'d valitun kohteen roskakorista?"
 msgstr[1] ""
+"Haluatko varmasti poistaa pysyvästi %'d valittua kohdetta roskakorista?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1394
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "Jos poistat kohteen, se häviää pysyvästi."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Tyhjennetäänkö kaikki kohteet roskakorista?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Kaikki roskakorin kohteet poistetaan pysyvästi."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "Haluatko varmasti poistaa kohteen ”%B”?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Haluatko varmasti poistaa %'d valitun kohteen?"
+msgstr[1] "Haluatko varmasti poistaa %'d valittua kohdetta?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1478
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr ""
+msgstr "Poistetaan tiedostoja"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1504
 #, c-format
@@ -1384,7 +1383,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "أأدمج المجلد \"%s\"؟"
+msgstr "Yhdistetäänkö kansio \"%s\"?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:147
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
@@ -1392,137 +1391,137 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"الدمج سيسأل التأكيد قبل استبدال أي ملفات في المجلد تتعارض مع الملفات الجاري "
-"نقلها."
+"Yhdistäessä kysytään varmistusta, ennen kuin mitään kyseisen kansion "
+"tiedostoja korvataan kopioitavilla tiedostoilla."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:152
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد أقدم بنفس الاسم موجود في \"%s\"."
+msgstr "Vanhempi kansio samalla nimellä on jo olemassa kansiossa \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:156
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد أحدث بنفس الاسم موجود في \"%s\"."
+msgstr "Uudempi samanniminen kansio on jo olemassa kansiossa \"%s\""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:160
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد آخر بنفس الاسم موجود في \"%s\"."
+msgstr "Toinen samanniminen kansio on jo olemassa kansiossa \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:165
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
 msgid "Replacing it will remove all files in the folder."
-msgstr "استبداله سيحذف كل الملفات داخل المجلد."
+msgstr "Sen korvaaminen poistaa kaikki kansiossa olevat tiedostot."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:167
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "أأستبدل المجلد \"%s\"؟"
+msgstr "Korvataanko kansio \"%s\"?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:169
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد بنفس الاسم موجود في \"%s\"."
+msgstr "Samanniminen kansio on jo olemassa kansiossa \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:174
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "أأستبدل الملف \"%s\"؟"
+msgstr "Korvataanko tiedosto \"%s\"?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:176
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr "استبداله سيستبدل محتواه."
+msgstr "Sen korvaaminen ylikirjoittaa sisällön."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:180
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "هناك ملف أقدم بنفس الاسم موجود في \"%s\"."
+msgstr "Vanhempi tiedosto samalla nimellä on jo olemassa kansiossa \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:184
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "هناك ملف أحدث بنفس الاسم موجود في \"%s\"."
+msgstr "Uudempi tiedosto samalla nimellä on jo olemassa kansiossa \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:188
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "هناك ملف آخر بنفس الاسم موجود في \"%s\"."
+msgstr "Toinen samanniminen tiedosto on jo olemassa kansiossa \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:250
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
 msgid "Original file"
-msgstr "الملف الأصلي"
+msgstr "Alkuperäinen tiedosto"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:251
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:282
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
 msgid "Size:"
-msgstr "الحجم:"
+msgstr "Koko:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr "النوع:"
+msgstr "Tyyppi:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr "آخر تعديل:"
+msgstr "Viimeksi muokattu:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:281
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
 msgid "Replace with"
-msgstr "إستبدال بـ"
+msgstr "Korvaa"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:310
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr "إدمج"
+msgstr "Yhdistä"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:698
 msgid "_Select a new name for the destination"
-msgstr "_حدد اسما جديدا للوِجهة"
+msgstr "_Valitse määränpäälle uusi nimi"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:712
 msgid "Reset"
-msgstr "أعد ضبط"
+msgstr "Nollaa"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:724
 msgid "Apply this action to all files"
-msgstr "طبق هذا الإجراء على كل الملفات"
+msgstr "Käytä samaa toimintoa kaikille tiedostoille"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:740
 msgid "Re_name"
-msgstr "إعادة تسمية"
+msgstr "_Nimeä uudelleen"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:746
 msgid "Replace"
-msgstr "إستبدل"
+msgstr "Korvaa"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:819
 msgid "File conflict"
-msgstr "تعارض الملف"
+msgstr "Tiedostoristiriita"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:251
 #, c-format
 msgid "link to %s"
-msgstr "وصلة إلى %s"
+msgstr "linkki kohteeseen %s"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1498
 #, c-format
@@ -1531,23 +1530,23 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1536
 msgid "No Exec field specified"
-msgstr "لم يتم تحديد حقل Exec"
+msgstr "Exec-kenttää ei ole määritetty"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1556
 msgid "No URL field specified"
-msgstr "لم يتم تحديد حقل URL"
+msgstr "URL-kenttää ei ole määritetty"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1562
 msgid "Invalid desktop file"
-msgstr "ملف سطح المكتب غير صالح"
+msgstr "Epäkelpo desktop-tiedosto"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1786
 msgid "Slashes are not allowed in filenames"
-msgstr "غير مسموح باستخدام الشرطات المائلة (/) في أسماء الملفات"
+msgstr "Kauttaviivat eivät ole sallittuja tiedostonimissä"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1806
 msgid "Toplevel files cannot be renamed"
-msgstr "لا يمكن تغيير اسم ملفات المستوى الأول"
+msgstr "Päätason tiedostoja ei voi nimetä uudestaan"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-utilities.c:265
 #, c-format
@@ -1560,7 +1559,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "أظهر _تفاصيل أكثر"
+msgstr "Näytä _lisätietoja"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:191
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:209
@@ -1569,4 +1568,4 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr " (يونيكود غير صحيح)"
+msgstr " (virheellistä Unicodea)"

@@ -1,4 +1,4 @@
-# Arabic translation for marlin
+# Indonesian translation for marlin
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the marlin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
@@ -8,49 +8,48 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-12 22:43+0000\n"
-"Last-Translator: omernomer <Unknown>\n"
-"Language-Team: Arabic <ar@li.org>\n"
+"PO-Revision-Date: 2011-07-31 08:51+0000\n"
+"Last-Translator: Sahri Riza Umami <Unknown>\n"
+"Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
-"3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2011-08-13 05:13+0000\n"
-"X-Generator: Launchpad (build 13674)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Launchpad-Export-Date: 2011-08-12 04:47+0000\n"
+"X-Generator: Launchpad (build 13662)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
-msgstr "لم توجد أي نتيجة"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:255
 msgid "Name"
-msgstr "الإسم"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:256
 msgid "Type"
-msgstr "النّوع"
+msgstr "Tipe"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:259
 msgid "Target"
-msgstr "هدف"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:261
 msgid "Size"
-msgstr "الحجم"
+msgstr "Ukuran"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:263
 msgid "Modified"
-msgstr "عُدِّل"
+msgstr "Telah dimodifikasi."
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:264
 msgid "Owner"
-msgstr "المالك"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "المجلّد ليس موجودًا"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
@@ -59,12 +58,12 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr "إنشاء"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "أنشاء مجلد %s"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/LocationBar.vala:959
 #, c-format
@@ -74,19 +73,15 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
 msgid "Home"
-msgstr "البداية"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/Window.vala:524
 msgid "translator-credits"
 msgstr ""
-"Launchpad Contributions:\n"
-"  Adnane Belmadiaf https://launchpad.net/~daker\n"
-"  Saifallah https://launchpad.net/~saifallah\n"
-"  omernomer https://launchpad.net/~num4rf"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
-msgstr "إعدادات‎"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:46
 msgid "Single click to open:"
@@ -157,7 +152,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:114
 msgid "Show Details"
-msgstr "عرض التفاصيل"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:149
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:171
@@ -169,7 +164,7 @@ msgstr[1] ""
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:270
 msgid "All file operations have been successfully completed"
-msgstr "جميع العمليات اكتملت بنجاح"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
@@ -374,57 +369,57 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1093
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "Nama berkas yang disediakan oleh XDS drag site salah"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1254
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "فشل في تكوين وصلة للعنوان التالي\"%s\""
+msgstr "Gagal membuat tautan untuk URL \"%s\""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1766
 msgid "Set as default"
-msgstr "تعيين كقيمة الافتراضية"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1841
 msgid "Open with…"
-msgstr "إفتح بإستعمال..."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:3078
 msgid "Set Color:"
-msgstr "عيّن اللّون:"
+msgstr "Tentukan Warna:"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
-msgstr "ان_قل هنا"
+msgstr "_Pindahkan ke Sini"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:784
 msgid "_Copy Here"
-msgstr "ان_سخ هنا"
+msgstr "_Salin ke Sini"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr "ا_ربط هنا"
+msgstr "_Tautkan ke sini"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr "اجعلها ال_خلفية"
+msgstr "Jadikan Latar _Belakang"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr "ألغِ"
+msgstr "Batalkan"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "فشل في تنفيذ الملف \"%s\""
+msgstr "Gagal mengeksekusi berkas \"%s\""
 
 #: /home/xapantu/marlin/po/../src/fm-list-model.c:457
 msgid "(Empty)"
-msgstr "(فارغ)"
+msgstr "(Kosong)"
 
 #: /home/xapantu/marlin/po/../src/fm-list-model.c:459
 msgid "Loading..."
-msgstr "يحمّل..."
+msgstr "Memuat"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:343
 msgid "Text"
@@ -488,7 +483,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr "ﻻ يوجد شئ في الحافظة لنسخه"
+msgstr "Tidak ada yang dapat direkatkan dari dalam clipboard"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:316
 msgid "Personal"
@@ -760,7 +755,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr "الغيت العملية"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -770,92 +765,88 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"تصفح نظام الملفات بمدير الملفات"
+"Rambah sistem berkas dengan pengelola berkas"
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit tidak dapat digunakan dengan URI."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:205
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:735
 msgid "_Skip"
-msgstr ""
+msgstr "_Lewati"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "S_kip All"
-msgstr ""
+msgstr "L_ewati Semua"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "_Retry"
-msgstr ""
+msgstr "_Ulangi"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:208
 msgid "Delete _All"
-msgstr ""
+msgstr "Hapus Semu_a"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:209
 msgid "_Replace"
-msgstr ""
+msgstr "_Gantikan"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:210
 msgid "Replace _All"
-msgstr ""
+msgstr "Ganti Semu_a"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:211
 msgid "_Merge"
-msgstr ""
+msgstr "_Digabung"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:212
 msgid "Merge _All"
-msgstr ""
+msgstr "Gabung Semu_a"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:213
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "Salin S_aja"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:299
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d detik"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:304
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:315
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d menit"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:314
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d jam"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:322
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "sekitar %'d jam"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:398
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "Tautan ke %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:402
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "Tautan lain ke %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:418
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "link %'d ke %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:422
 #, c-format
@@ -865,12 +856,12 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:426
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "link %'d ke %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:430
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "link %'d ke %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:622
 msgid " ("
@@ -924,7 +915,7 @@ msgstr[1] ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1478
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr ""
+msgstr "Menghapus berkas"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1504
 #, c-format
@@ -945,7 +936,7 @@ msgstr[1] ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1742
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2556
 msgid "Error while deleting."
-msgstr ""
+msgstr "Galat sewaktu menghapus."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1596
 msgid ""
@@ -1384,7 +1375,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "أأدمج المجلد \"%s\"؟"
+msgstr "Gabungkan map \"%s\"?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:147
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
@@ -1392,162 +1383,162 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"الدمج سيسأل التأكيد قبل استبدال أي ملفات في المجلد تتعارض مع الملفات الجاري "
-"نقلها."
+"Penggabungan akan meminta konfirmasi sebelum menggantikan berkas di dalam "
+"folder yang konflik dengan berkas yang sedang disalin."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:152
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد أقدم بنفس الاسم موجود في \"%s\"."
+msgstr "Sebuah folder dengan nama sama sudah ada berada pada \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:156
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد أحدث بنفس الاسم موجود في \"%s\"."
+msgstr "Sebuah folder baru dengan nama sama telah ada di \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:160
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد آخر بنفس الاسم موجود في \"%s\"."
+msgstr "Folder lain dengan nama sama telah ada di \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:165
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
 msgid "Replacing it will remove all files in the folder."
-msgstr "استبداله سيحذف كل الملفات داخل المجلد."
+msgstr "Mengganti ini akan menghilangkan semua file pada folder."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:167
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "أأستبدل المجلد \"%s\"؟"
+msgstr "Timpa map \"%s\"?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:169
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "هناك مجلّد بنفس الاسم موجود في \"%s\"."
+msgstr "Sebuah folder dengan nama yang sama telah ada di \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:174
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "أأستبدل الملف \"%s\"؟"
+msgstr "Gantikan berkas \"%s\"?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:176
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr "استبداله سيستبدل محتواه."
+msgstr "Menggantinya akan menimpa isinya."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:180
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "هناك ملف أقدم بنفس الاسم موجود في \"%s\"."
+msgstr "Sebuah berkas lebih tua dengan nama sama telah ada di \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:184
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "هناك ملف أحدث بنفس الاسم موجود في \"%s\"."
+msgstr "Sebuah file baru dengan nama yang sama telah berada di \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:188
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "هناك ملف آخر بنفس الاسم موجود في \"%s\"."
+msgstr "File lain dengan nama yang sama berada di \"%s\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:250
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
 msgid "Original file"
-msgstr "الملف الأصلي"
+msgstr "Berkas asli"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:251
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:282
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
 msgid "Size:"
-msgstr "الحجم:"
+msgstr "Ukuran:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr "النوع:"
+msgstr "Jenis:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr "آخر تعديل:"
+msgstr "Terakhir diubah:"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:281
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
 msgid "Replace with"
-msgstr "إستبدال بـ"
+msgstr "Ganti dengan"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:310
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr "إدمج"
+msgstr "Gabungkan"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:698
 msgid "_Select a new name for the destination"
-msgstr "_حدد اسما جديدا للوِجهة"
+msgstr "_Pilih nama baru"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:712
 msgid "Reset"
-msgstr "أعد ضبط"
+msgstr "Atur Ulang"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:724
 msgid "Apply this action to all files"
-msgstr "طبق هذا الإجراء على كل الملفات"
+msgstr "Terapkan aksi ini untuk semua berkas"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:740
 msgid "Re_name"
-msgstr "إعادة تسمية"
+msgstr "Ganti_nama"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:746
 msgid "Replace"
-msgstr "إستبدل"
+msgstr "Gantikan"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:819
 msgid "File conflict"
-msgstr "تعارض الملف"
+msgstr "Konflik pada berkas"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:251
 #, c-format
 msgid "link to %s"
-msgstr "وصلة إلى %s"
+msgstr "taut ke %s"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1498
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr ""
+msgstr "Gagal untuk mendapatkan berkas desktop: %s"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1536
 msgid "No Exec field specified"
-msgstr "لم يتم تحديد حقل Exec"
+msgstr "Kolom exec tidak disebutkan"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1556
 msgid "No URL field specified"
-msgstr "لم يتم تحديد حقل URL"
+msgstr "Kolom URL tidak disebutkan"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1562
 msgid "Invalid desktop file"
-msgstr "ملف سطح المكتب غير صالح"
+msgstr "Bukan berkas desktop yang benar"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1786
 msgid "Slashes are not allowed in filenames"
-msgstr "غير مسموح باستخدام الشرطات المائلة (/) في أسماء الملفات"
+msgstr "Tidak boleh ada garis miring dalam nama berkas"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1806
 msgid "Toplevel files cannot be renamed"
-msgstr "لا يمكن تغيير اسم ملفات المستوى الأول"
+msgstr "Nama berkas di tingkat atas tidak dapat diubah"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-utilities.c:265
 #, c-format
@@ -1560,7 +1551,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "أظهر _تفاصيل أكثر"
+msgstr "Tampilkan _rinciannya"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:191
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:209
@@ -1569,4 +1560,4 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr " (يونيكود غير صحيح)"
+msgstr " (unicode tidak benar)"
