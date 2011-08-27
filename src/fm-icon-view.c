@@ -466,15 +466,6 @@ static gboolean fm_icon_view_draw(GtkWidget* view_, cairo_t* cr, FMIconView* vie
     return FALSE;
 }
 
-static void
-fm_icon_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
-{
-    FMListModel *model;
-
-    model = FM_ICON_VIEW (view)->model;
-    fm_list_model_add_file (model, file, directory);
-}
-
 static GList *
 get_selection (FMIconView *view)
 {
@@ -601,7 +592,6 @@ fm_icon_view_finalize (GObject *object)
         gof_file_list_free (view->details->selection);
 
 
-    g_object_unref (view->model);
     g_free (view->details);
     G_OBJECT_CLASS (fm_icon_view_parent_class)->finalize (object); 
 }
@@ -750,7 +740,6 @@ fm_icon_view_class_init (FMIconViewClass *klass)
 
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
-    fm_directory_view_class->add_file = fm_icon_view_add_file;
     fm_directory_view_class->sync_selection = fm_icon_view_sync_selection;
     fm_directory_view_class->get_selection = fm_icon_view_get_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_icon_view_get_selection_for_file_transfer;

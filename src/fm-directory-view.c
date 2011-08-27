@@ -246,6 +246,13 @@ void fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor)
     }
 }
 
+static void
+fm_directory_view_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
+{
+    fm_list_model_add_file (view->model, file, directory);
+}
+
+
 void
 fm_directory_view_load_file_hash (GOFDirectoryAsync *dir, FMDirectoryView *view)
 {
@@ -494,6 +501,7 @@ fm_directory_view_finalize (GObject *object)
     g_signal_handlers_disconnect_by_func (slot->directory, file_changed_callback, view);
     g_signal_handlers_disconnect_by_func (slot->directory, file_deleted_callback, view);
     g_signal_handlers_disconnect_by_func (slot->directory, directory_done_loading_callback, view);
+    g_object_unref (view->model);
     g_object_unref (slot);
 
     /* release the thumbnailer */
@@ -2333,6 +2341,8 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
 
     widget_class = GTK_WIDGET_CLASS (klass);
     scrolled_window_class = GTK_SCROLLED_WINDOW_CLASS (klass);
+    
+    klass->add_file = fm_directory_view_view_add_file;
 
     G_OBJECT_CLASS (klass)->constructor = fm_directory_view_constructor;
     G_OBJECT_CLASS (klass)->dispose = fm_directory_view_dispose;

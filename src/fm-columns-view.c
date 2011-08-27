@@ -600,15 +600,6 @@ create_and_set_up_tree_view (FMColumnsView *view)
 }
 
 static void
-fm_columns_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
-{
-    FMListModel *model;
-
-    model = FM_COLUMNS_VIEW (view)->model;
-    fm_list_model_add_file (model, file, directory);
-}
-
-static void
 get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
 {
     GList **list;
@@ -734,7 +725,6 @@ fm_columns_view_finalize (GObject *object)
     if (view->details->selection)
         gof_file_list_free (view->details->selection);
 
-    g_object_unref (view->model);
     g_free (view->details);
     G_OBJECT_CLASS (fm_columns_view_parent_class)->finalize (object); 
 }
@@ -820,7 +810,6 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
 
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
-    fm_directory_view_class->add_file = fm_columns_view_add_file;
     fm_directory_view_class->get_selection = fm_columns_view_get_selection; 
     fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer;
     fm_directory_view_class->get_selected_paths = fm_columns_view_get_selected_paths;
