@@ -92,30 +92,7 @@ fm_icon_view_selection_changed (GtkIconView *iconview, gpointer user_data)
 static void
 fm_icon_view_item_activated (ExoIconView *exo_icon, GtkTreePath *path, FMIconView *view)
 {
-    g_message ("%s\n", G_STRFUNC);
-    //activate_selected_items (view);
     fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view));    
-}
-
-static void
-fm_icon_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
-{
-    GList *file_list;
-    GOFFile *file;
-    char *uri;
-
-    file_list = fm_icon_view_get_selection (view);
-
-    for (; file_list != NULL; file_list=file_list->next)
-    {
-        file = file_list->data;
-        g_free(file->color);
-        file->color = g_strdup(tags_colors[ncolor]);
-        uri = g_file_get_uri(file->location);
-
-        marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
-        g_free (uri);
-    }
 }
 
 static void
@@ -784,7 +761,6 @@ fm_icon_view_class_init (FMIconViewClass *klass)
 
     fm_directory_view_class->add_file = fm_icon_view_add_file;
     fm_directory_view_class->remove_file = fm_icon_view_remove_file;
-    fm_directory_view_class->colorize_selection = fm_icon_view_colorize_selected_items;        
     fm_directory_view_class->sync_selection = fm_icon_view_sync_selection;
     fm_directory_view_class->get_selection = fm_icon_view_get_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_icon_view_get_selection_for_file_transfer;

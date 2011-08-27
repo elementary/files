@@ -184,28 +184,6 @@ row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 }
 
 static void
-fm_columns_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
-{
-    GList *file_list;
-    GOFFile *file;
-    char *uri;
-
-    file_list = fm_columns_view_get_selection (view);
-    for (; file_list != NULL; file_list=file_list->next)
-    {
-        file = file_list->data;
-        //log_printf (LOG_LEVEL_UNDEFINED, "colorize %s %d\n", file->name, ncolor);
-        g_free(file->color);
-        file->color = g_strdup(tags_colors[ncolor]);
-        //TODO check mem alloc
-        uri = g_file_get_uri(file->location);
-        marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
-        g_free (uri);
-    }
-}
-
-
-static void
 fm_columns_view_rename_callback (GOFFile *file,
                               GFile *result_location,
                               GError *error,
@@ -1017,7 +995,6 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
 
     fm_directory_view_class->add_file = fm_columns_view_add_file;
     fm_directory_view_class->remove_file = fm_columns_view_remove_file;
-    fm_directory_view_class->colorize_selection = fm_columns_view_colorize_selected_items;
     //fm_directory_view_class->sync_selection = fm_columns_view_sync_selection;
     fm_directory_view_class->get_selection = fm_columns_view_get_selection; 
     fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer;

@@ -49,6 +49,7 @@
 #include "marlin-icon-renderer.h"
 #include "marlin-text-renderer.h"
 #include "marlin-thumbnailer.h"
+#include "marlin-tags.h"
 
 
 enum {
@@ -226,6 +227,26 @@ static const GtkTargetEntry drop_targets[] =
     { "XdndDirectSave0", 0, TARGET_XDND_DIRECT_SAVE0, },
     { "_NETSCAPE_URL", 0, TARGET_NETSCAPE_URL, },
 };
+
+void fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor)
+{
+    GList *file_list;
+    GOFFile *file;
+    char *uri;
+
+    file_list = fm_directory_view_get_selection (view);
+
+    for (; file_list != NULL; file_list=file_list->next)
+    {
+        file = file_list->data;
+        g_free(file->color);
+        file->color = g_strdup(tags_colors[ncolor]);
+        uri = g_file_get_uri(file->location);
+
+        marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
+        g_free (uri);
+    }
+}
 
 void
 fm_directory_view_load_file_hash (GOFDirectoryAsync *dir, FMDirectoryView *view)
@@ -2359,14 +2380,6 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_generic,
                       G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
-    signals[COLORIZE_SELECTION] =
-        g_signal_new ("colorize_selection",
-                      G_TYPE_FROM_CLASS (klass),
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (FMDirectoryViewClass, colorize_selection),
-                      NULL, NULL,
-                      g_cclosure_marshal_VOID__INT,
-                      G_TYPE_NONE, 1, G_TYPE_INT);
     signals[SYNC_SELECTION] =
         g_signal_new ("sync_selection",
                       G_TYPE_FROM_CLASS (klass),
