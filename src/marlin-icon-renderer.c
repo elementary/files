@@ -695,7 +695,6 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
     gtk_cell_renderer_get_padding (cell, &xpad, &ypad);
     calc_width  = (gint) xpad * 2 + pixbuf_width;
     calc_height = (gint) ypad * 2 + pixbuf_height;
-    calc_width = calc_height = MAX(calc_width, calc_height);
 
     if (cell_area && pixbuf_width > 0 && pixbuf_height > 0)
     {
@@ -723,10 +722,10 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
     }
 
     if (width)
-        *width = MAX(calc_height, calc_width);
+        *width = calc_width;
 
     if (height)
-        *height = MAX(calc_width, calc_height);
+        *height = calc_height;
 }
 
 static GdkPixbuf *
@@ -853,7 +852,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     }*/
 
     gtk_render_icon (context, cr, pixbuf,
-                     pix_rect.x, pix_rect.y + (pix_rect.height - gdk_pixbuf_get_height(pixbuf))/2);
+                     pix_rect.x, pix_rect.y);
 
     gtk_style_context_restore (context);
     g_object_unref (pixbuf);
