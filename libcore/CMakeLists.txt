@@ -10,10 +10,12 @@ set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
 
 include_directories(${CMAKE_BINARY_DIR})
+include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
 install (FILES marlin-core.vapi DESTINATION share/vala/vapi)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlin-type-plugin.vapi DESTINATION share/vala/vapi)
 install (FILES
     eel-accessibility.h
     eel-debug.h
@@ -40,7 +42,6 @@ install (FILES
     marlin-file-utilities.h
     marlin-global-preferences.h
     marlin-icons.h
-    marlin-plugin.h
     marlin-plugin-manager.h
     marlin-abstract-sidebar.h
     marlin-plugins-hook.h
@@ -48,6 +49,7 @@ install (FILES
     marlin-progress-info-manager.h
     nautilus-cell-renderer-text-ellipsized.h
     nautilus-icon-info.h
+    ${CMAKE_CURRENT_BINARY_DIR}/marlin-type-plugin.h
     DESTINATION include/marlincore/)
 # Check for the deps
 
@@ -103,8 +105,7 @@ add_library (${PKGNAME} SHARED
     marlin-exec.c
     gof-monitor.c
     nautilus-cell-renderer-text-ellipsized.c
-	marlin-plugin.c
-	marlin-plugin-manager.c
+    marlin-plugin-manager.c
     eel-vfs-extensions.c
 )
 if(BUILD_STATIC MATCHES "Yes")
@@ -145,9 +146,10 @@ add_library(${PKGNAME}-static STATIC
 
 #so change it.
 
+SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES LINK_DEPENDS marlinplugins)
 SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES OUTPUT_NAME ${PKGNAME})
 install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
-endif(BUILD_STATIC MATCHES "Yes")
+endif(BUILD_STATI²C MATCHES "Yes")
 set_target_properties (${PKGNAME} PROPERTIES
     VERSION ${MARLINCORE_VERSION}
     SOVERSION ${MARLINCORE_SOVERSION}
@@ -159,4 +161,5 @@ add_executable(marlincore_tests
     tests/marlincore-tests-file.c
 )
 add_test_executable(marlincore_tests)
+SET_TARGET_PROPERTIES(${PKGNAME} PROPERTIES LINK_DEPENDS marlinplugins)
 target_link_libraries(marlincore_tests marlincore ${DEPS_LIBRARIES})

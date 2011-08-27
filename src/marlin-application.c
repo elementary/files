@@ -67,7 +67,7 @@ struct _MarlinApplicationPriv {
 
 static void selection_changed_plugin(GtkWidget* window, GList *selection)
 {
-    marlin_plugin_manager_hook_send(plugins, selection, MARLIN_PLUGIN_HOOK_FILE);
+    marlin_plugin_manager_file(plugins, selection);
 }
 
 static void
@@ -633,7 +633,7 @@ marlin_application_startup (GApplication *app)
 
     tags = marlin_view_tags_new ();
 
-    plugins = marlin_plugin_manager_new ();
+    plugins = marlin_plugin_manager_new (settings, "plugins-enabled", PLUGIN_DIR);
     marlin_plugin_manager_load_plugins (plugins);
 
     /* TODO move the volume manager here? */

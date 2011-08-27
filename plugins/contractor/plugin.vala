@@ -18,70 +18,145 @@
 using Gtk;
 using Gee;
 
-ArrayList<MenuItem>? menus = null;
-UIManager ui;
-Menu menu;
-/*string uri;*/
-GLib.HashTable<string, string>[] locations;
 
-string get_app_display_name(GLib.HashTable<string,string> app__)
+public void receive_all_hook(void* user_data, int hook)
 {
-    return app__.lookup("Description");
-}
-
-void print_apps(Menu _menu)
-{
-    if (menu != _menu)
-        return;
-    if (menus == null)
-        menus = new ArrayList<MenuItem>();
-    foreach(var menu in menus)
+    switch(hook)
     {
-        menu.destroy();
-    }
-    menus.clear();
-    var cont = new Contracts();
-  
-    uint i = 0;
-    foreach(var app__ in cont.get_selection_contracts(locations))
-    {
-        /* insert separator if we got at least 1 contract */
-        if (i == 0) {
-            var item = new SeparatorMenuItem ();
-            menu.append(item);
-            item.show();
-            menus.add(item);
-        }
-        var menuitem = new MenuItem.with_label(get_app_display_name(app__));
-        menu.append(menuitem);
-        menuitem.show();
-        menuitem.activate.connect(contract_activated);
-        menus.add(menuitem);
-        i++;
+    case 1:
+        /* context menu */
+        break;
+    case 2: /* ui */
+        break;
+    case 5:
+        break;
+    case 7:
+        break;
+    default:
+        print("Contractor doesn't know this hook: %d\n", hook);
+        break;
     }
 }
-
-public void contract_activated()
+public class Marlin.Plugins.Contractor : Marlin.Plugins.Base
 {
-    MenuItem menuitem = (MenuItem)menu.get_active();
-    string app_menu = menuitem.get_label();
-    print(app_menu + "\n");
-    var cont = new Contracts();
-    
-    foreach(var app__ in cont.get_selection_contracts(locations))
+    ArrayList<MenuItem>? menus = null;
+    UIManager ui_manager;
+    Menu menu;
+    /*string uri;*/
+    GLib.HashTable<string, string>[] locations;
+    public Contractor()
     {
-        if(app_menu == get_app_display_name(app__))
+    }
+
+    string get_app_display_name(GLib.HashTable<string,string> app__)
+    {
+        return app__.lookup("Description");
+    }
+
+    void print_apps(Menu menu)
+    {
+        /*if (menu != _menu)
+            return;*/
+        if (menus == null)
+            menus = new ArrayList<MenuItem>();
+        foreach(var _menu in menus)
         {
-            var cmd = app__.lookup("Exec");
-            try {
-                GLib.Process.spawn_command_line_async(cmd);
-            } catch (SpawnError e) {
-                stderr.printf ("error spawn command line %s: %s", cmd, e.message);
+            _menu.destroy();
+        }
+        menus.clear();
+        var cont = new Contracts();
+      
+        uint i = 0;
+        foreach(var app__ in cont.get_selection_contracts(locations))
+        {
+            /* insert separator if we got at least 1 contract */
+            if (i == 0) {
+                var item = new SeparatorMenuItem ();
+                menu.append(item);
+                item.show();
+                menus.add(item);
             }
-
-            break;
+            var menuitem = new MenuItem.with_label(get_app_display_name(app__));
+            menu.append(menuitem);
+            menuitem.show();
+            menuitem.activate.connect(contract_activated);
+            menus.add(menuitem);
+            i++;
         }
     }
+
+    private GLib.HashTable<string,string> add_location_entry (GOF.File file)
+    {
+        GLib.HashTable<string,string> entry;
+                
+        entry = new GLib.HashTable<string,string> (str_hash, str_equal);
+        entry.insert ("uri", file.uri);
+        if (file.ftype == "application/octet-stream")
+            entry.insert ("mimetype", "");
+        else
+            entry.insert ("mimetype", file.ftype);
+
+        return entry;
+    }
+
+    private GLib.HashTable<string, string>[] build_hash_from_list (GLib.List<GOF.File> selection)
+    {
+        GLib.HashTable<string,string>[] locations = null;
+
+        foreach (GOF.File file in selection) {
+            if (file != null)
+                locations += add_location_entry (file);
+            //message ("file %s", file.name);
+        }
+
+        return locations;
+    }
+
+    public void contract_activated()
+    {
+        MenuItem menuitem = (MenuItem)menu.get_active();
+        string app_menu = menuitem.get_label();
+        print(app_menu + "\n");
+        var cont = new Contracts();
+        
+        foreach(var app__ in cont.get_selection_contracts(locations))
+        {
+            if(app_menu == get_app_display_name(app__))
+            {
+                var cmd = app__.lookup("Exec");
+                try {
+                    GLib.Process.spawn_command_line_async(cmd);
+                } catch (SpawnError e) {
+                    stderr.printf ("error spawn command line %s: %s", cmd, e.message);
+                }
+
+                break;
+            }
+        }
+    }
+
+    public override void context_menu(Gtk.Widget? widget)
+    {
+        print_apps(widget as Menu);
+    }
+    public override void ui(Gtk.UIManager? widget)
+    {
+        ui_manager = widget;
+        menu = (Menu)ui_manager.get_widget("/selection");
+    }
+    public override void file(GLib.List<Object> files)
+    {
+        if(files != null)
+        {
+            unowned GLib.List<GOF.File> selection = (GLib.List<GOF.File>) files;
+            locations = build_hash_from_list (selection);
+        }
+    }
+}
+
+public Marlin.Plugins.Base module_init()
+{
+    return new Marlin.Plugins.Contractor();
 }
 
 [DBus (name = "org.elementary.contractor")]
@@ -136,64 +211,4 @@ public class Contracts : Object
         
         return contracts;
     }
-}
-
-public void receive_all_hook(void* user_data, int hook)
-{
-    switch(hook)
-    {
-    case 1:
-        /* context menu */
-        print_apps((Menu) user_data);
-        break;
-    case 2: /* ui */
-        ui = (UIManager)user_data;
-        menu = (Menu)ui.get_widget("/selection");
-        break;
-    case 5:
-        if(user_data != null)
-        {
-            unowned GLib.List<GOF.File> selection = (GLib.List<GOF.File>) user_data;
-            locations = build_hash_from_list (selection);
-            /*GOF.File file = (GOF.File) selection.data;
-            mime = file.ftype;*/
-            /* recheck unknown mime in contractor */
-            /*if (mime == "application/octet-stream")
-                mime = "";
-            uri = file.uri;*/
-        }
-        break;
-    case 7:
-        break;
-    default:
-        print("Contractor doesn't know this hook: %d\n", hook);
-        break;
-    }
-}
-
-private GLib.HashTable<string,string> add_location_entry (GOF.File file)
-{
-    GLib.HashTable<string,string> entry;
-            
-    entry = new GLib.HashTable<string,string> (str_hash, str_equal);
-    entry.insert ("uri", file.uri);
-    if (file.ftype == "application/octet-stream")
-        entry.insert ("mimetype", "");
-    else
-        entry.insert ("mimetype", file.ftype);
-
-    return entry;
-}
-
-private GLib.HashTable<string, string>[] build_hash_from_list (GLib.List<GOF.File> selection)
-{
-    GLib.HashTable<string,string>[] locations = null;
-
-    foreach (GOF.File file in selection) {
-        if (file != null)
-            locations += add_location_entry (file);
-        //message ("file %s", file.name);
-    }
-
-    return locations;
 }

@@ -49,28 +49,6 @@ namespace Nautilus {
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
-    [CCode (cheader_filename = "marlin-plugin-manager.h")]
-    class PluginManager : Object
-    {
-        public void hook_send(void* user_data, int hook);
-        public void add_plugin(string name);
-        public void load_plugin(string name);
-        public bool disable_plugin(string name);
-        public static List<string> get_available_plugins(); 
-    }
-    [CCode (cheader_filename = "marlin-plugins-hook.h")]
-    public enum PluginHook
-    {
-        INTERFACE,
-        MENU,
-        UI,
-        FINISH,
-        DIRECTORY, /* {window, viewcontainer, directory name } */
-        FILE,
-        INIT,
-        SIDEBAR /* { sidebar } */
-    }
-
     [CCode (cheader_filename = "marlin-abstract-sidebar.h")]
     public abstract class AbstractSidebar : Gtk.ScrolledWindow
     {

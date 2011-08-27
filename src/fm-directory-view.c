@@ -2870,7 +2870,7 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
         selection_menu_builded = TRUE;
     }
     
-    marlin_plugin_manager_hook_send(plugins, ui_manager, MARLIN_PLUGIN_HOOK_UI);
+    marlin_plugin_manager_ui(plugins, ui_manager);
     //view->details->scripts_invalid = TRUE;
     //view->details->templates_invalid = TRUE;
     
