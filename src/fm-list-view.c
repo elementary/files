@@ -58,10 +58,6 @@ struct FMListViewDetails {
 
 static gchar *col_title[4] = { N_("Filename"), N_("Size"), N_("Type"), N_("Modified") };
 
-//G_DEFINE_TYPE (FMListView, fm_list_view, G_TYPE_OBJECT)
-/*#define GOF_DIRECTORY_ASYNC_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, GOF_TYPE_DIRECTORY_ASYNC, GOFDirectoryAsyncPrivate))*/
-
 G_DEFINE_TYPE (FMListView, fm_list_view, FM_TYPE_DIRECTORY_VIEW);
 
 #define parent_class fm_list_view_parent_class
@@ -611,7 +607,7 @@ static gboolean fm_list_view_draw(GtkWidget* view_, cairo_t* cr, FMListView* vie
 {
     g_return_if_fail(FM_IS_LIST_VIEW(view));
     GtkTreeIter iter;
-    gboolean folder_empty = !gtk_tree_model_get_iter_first(view->model, &iter);
+    gboolean folder_empty = !gtk_tree_model_get_iter_first(GTK_TREE_MODEL(view->model), &iter);
     if(folder_empty && !fm_directory_view_get_loading(FM_DIRECTORY_VIEW(view)))
     {
         PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), _("This folder is empty."));

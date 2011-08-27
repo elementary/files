@@ -72,7 +72,7 @@ static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsVie
 {
     g_return_if_fail(FM_IS_COLUMNS_VIEW(view));
     GtkTreeIter iter;
-    gboolean folder_empty = !gtk_tree_model_get_iter_first(view->model, &iter);
+    gboolean folder_empty = !gtk_tree_model_get_iter_first(GTK_TREE_MODEL(view->model), &iter);
     if(folder_empty && !fm_directory_view_get_loading(FM_DIRECTORY_VIEW(view)))
     {
         PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), _("This folder is empty."));
