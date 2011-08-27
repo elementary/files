@@ -15,7 +15,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
 install (FILES marlin-core.vapi DESTINATION share/vala/vapi)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlin-type-plugin.vapi DESTINATION share/vala/vapi)
 install (FILES
     eel-accessibility.h
     eel-debug.h
