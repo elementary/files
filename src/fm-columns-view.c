@@ -37,7 +37,6 @@ enum
 
 struct FMColumnsViewDetails {
     GList       *selection;
-    GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
 
     GtkCellEditable     *editable_widget;
     GtkTreeViewColumn   *file_name_column;
@@ -711,75 +710,6 @@ fm_columns_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsyn
 }
 
 static void
-fm_columns_view_remove_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
-{
-    printf ("%s %s\n", G_STRFUNC, file->uri);
-    GtkTreePath *path;
-    GtkTreePath *file_path;
-    GtkTreeIter iter;
-    GtkTreeIter temp_iter;
-    GtkTreeRowReference* row_reference;
-    FMColumnsView *col_view;
-    GtkTreeModel* tree_model; 
-    GtkTreeSelection *selection;
-
-    path = NULL;
-    row_reference = NULL;
-    col_view = FM_COLUMNS_VIEW (view);
-    tree_model = GTK_TREE_MODEL(col_view->model);
-
-    if (fm_list_model_get_tree_iter_from_file (col_view->model, file, directory, &iter))
-    {
-        selection = gtk_tree_view_get_selection (col_view->tree);
-        file_path = gtk_tree_model_get_path (tree_model, &iter);
-
-        if (gtk_tree_selection_path_is_selected (selection, file_path)) {
-            /* get reference for next element in the list view. If the element to be deleted is the 
-             * last one, get reference to previous element. If there is only one element in view
-             * no need to select anything.
-             */
-            temp_iter = iter;
-
-            if (gtk_tree_model_iter_next (tree_model, &iter)) {
-                path = gtk_tree_model_get_path (tree_model, &iter);
-                row_reference = gtk_tree_row_reference_new (tree_model, path);
-            } else {
-                path = gtk_tree_model_get_path (tree_model, &temp_iter);
-                if (gtk_tree_path_prev (path)) {
-                    row_reference = gtk_tree_row_reference_new (tree_model, path);
-                }
-            }
-            gtk_tree_path_free (path);
-        }
-
-        gtk_tree_path_free (file_path);
-
-        fm_list_model_remove_file (col_view->model, file, directory);
-
-        if (gtk_tree_row_reference_valid (row_reference)) {
-            if (col_view->details->new_selection_path) {
-                gtk_tree_path_free (col_view->details->new_selection_path);
-            }
-            col_view->details->new_selection_path = gtk_tree_row_reference_get_path (row_reference);
-        }
-
-        if (row_reference) {
-            gtk_tree_row_reference_free (row_reference);
-        }
-    }   
-}
-
-
-/*static void
-  fm_columns_view_clear (FMColumnsView *view)
-  {
-  if (view->model != NULL) {
-//stop_cell_editing (view);
-fm_list_model_clear (view->model);
-}
-}*/
-
-static void
 get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
 {
     GList **list;
@@ -902,8 +832,6 @@ fm_columns_view_finalize (GObject *object)
 
     g_warning ("%s\n", G_STRFUNC);
 
-    if (view->details->new_selection_path) 
-        gtk_tree_path_free (view->details->new_selection_path);
     if (view->details->selection)
         gof_file_list_free (view->details->selection);
 
@@ -994,7 +922,6 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
     fm_directory_view_class->add_file = fm_columns_view_add_file;
-    fm_directory_view_class->remove_file = fm_columns_view_remove_file;
     //fm_directory_view_class->sync_selection = fm_columns_view_sync_selection;
     fm_directory_view_class->get_selection = fm_columns_view_get_selection; 
     fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer;

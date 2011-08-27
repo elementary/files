@@ -475,15 +475,6 @@ fm_icon_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *
     fm_list_model_add_file (model, file, directory);
 }
 
-//TODO move this to fm_directory_view
-static void
-fm_icon_view_remove_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
-{
-    FMIconView *icon_view = FM_ICON_VIEW (view);
-        
-    fm_list_model_remove_file (icon_view->model, file, directory);
-}
-
 static GList *
 get_selection (FMIconView *view)
 {
@@ -760,7 +751,6 @@ fm_icon_view_class_init (FMIconViewClass *klass)
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
     fm_directory_view_class->add_file = fm_icon_view_add_file;
-    fm_directory_view_class->remove_file = fm_icon_view_remove_file;
     fm_directory_view_class->sync_selection = fm_icon_view_sync_selection;
     fm_directory_view_class->get_selection = fm_icon_view_get_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_icon_view_get_selection_for_file_transfer;

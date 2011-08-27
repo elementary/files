@@ -89,9 +89,6 @@ struct FMDirectoryViewClass {
                                           GOFDirectoryAsync *directory);
     void    (* directory_loaded) (FMDirectoryView *view, 
                                           GOFDirectoryAsync *directory);
-    void    (* remove_file)		 (FMDirectoryView *view, 
-                                          GOFFile *file,
-                                          GOFDirectoryAsync *directory);
     void    (* sync_selection)	         (FMDirectoryView *view);
 
 

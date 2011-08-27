@@ -63,10 +63,8 @@ enum {
     FILE_CHANGED,
     LOAD_ERROR,
     MOVE_COPY_ITEMS,
-    REMOVE_FILE,
     TRASH,
     DELETE,
-    COLORIZE_SELECTION,
     SYNC_SELECTION,
     DIRECTORY_LOADED,
     LAST_SIGNAL
@@ -298,8 +296,7 @@ file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 static void
 file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-    g_debug ("%s %s\n", G_STRFUNC, file->uri);
-    g_signal_emit (view, signals[REMOVE_FILE], 0, file, directory);
+    fm_list_model_remove_file (view->model, file, directory);
 }
 
 static void
@@ -2372,14 +2369,6 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_generic,
                       G_TYPE_NONE, 1, GOF_TYPE_DIRECTORY_ASYNC);
-    signals[REMOVE_FILE] =
-        g_signal_new ("remove_file",
-                      G_TYPE_FROM_CLASS (klass),
-                      G_SIGNAL_RUN_LAST,
-                      G_STRUCT_OFFSET (FMDirectoryViewClass, remove_file),
-                      NULL, NULL,
-                      g_cclosure_marshal_generic,
-                      G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
     signals[SYNC_SELECTION] =
         g_signal_new ("sync_selection",
                       G_TYPE_FROM_CLASS (klass),
