@@ -48,7 +48,6 @@ install (FILES
     marlin-progress-info-manager.h
     nautilus-cell-renderer-text-ellipsized.h
     nautilus-icon-info.h
-    ${CMAKE_CURRENT_BINARY_DIR}/marlin-type-plugin.h
     DESTINATION include/marlincore/)
 # Check for the deps
 
