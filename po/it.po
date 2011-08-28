@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-11 12:49+0000\n"
-"Last-Translator: Enrico \"eNry\" Carafa <Unknown>\n"
+"PO-Revision-Date: 2011-08-27 18:04+0000\n"
+"Last-Translator: xapantu <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-08-12 04:47+0000\n"
-"X-Generator: Launchpad (build 13662)\n"
+"X-Launchpad-Export-Date: 2011-08-28 05:25+0000\n"
+"X-Generator: Launchpad (build 13794)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -84,7 +84,8 @@ msgstr ""
 "  Mirko Narciso https://launchpad.net/~narciso-91\n"
 "  Nicola Moretto https://launchpad.net/~nicola88\n"
 "  Pietro Pecchi https://launchpad.net/~pietro-pecchi\n"
-"  Roberto Ghislanzoni https://launchpad.net/~japh51"
+"  Roberto Ghislanzoni https://launchpad.net/~japh51\n"
+"  xapantu https://launchpad.net/~xapantu"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
@@ -267,7 +268,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
-msgstr ""
+msgstr "Spazio inserito tra le righe della griglia"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
@@ -275,7 +276,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
-msgstr ""
+msgstr "Spazio inserito tra le colonne della griglia"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:844
 msgid "Margin"
@@ -287,7 +288,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
-msgstr ""
+msgstr "Orientamento elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:861
 msgid ""
@@ -322,7 +323,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
-msgstr ""
+msgstr "Colonna suggerimenti"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:904
 msgid "The column in the model containing the tooltip texts for the items"
@@ -359,7 +360,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:961
 msgid "Opacity of the selection box"
-msgstr ""
+msgstr "Opacità del riquadro di selezione"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
