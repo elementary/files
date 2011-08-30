@@ -88,7 +88,6 @@ add_executable(marlin
     fm-directory-view.c
     exo-icon-view.c
     exo-tree-view.c
-    fm-list-model.c
     marlin-main.c
     fm-icon-view.c
     fm-list-view.c

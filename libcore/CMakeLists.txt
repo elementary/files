@@ -96,6 +96,7 @@ add_library (${PKGNAME} SHARED
     marlin-file-operations.c
     marlin-file-utilities.c
     marlin-file-conflict-dialog.c
+    fm-list-model.c
     marlin-progress-info.c
     marlin-progress-info-manager.c
     eel-ui.c
@@ -114,6 +115,7 @@ add_library(${PKGNAME}-static STATIC
         eel-i18n.c
         eel-gtk-extensions.c
         eel-gdk-extensions.c
+        fm-list-model.c
         eel-gdk-pixbuf-extensions.c
         eel-pango-extensions.c
         eel-glib-extensions.c

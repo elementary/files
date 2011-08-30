@@ -250,6 +250,9 @@ static void
 fm_directory_view_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
 {
     fm_list_model_add_file (view->model, file, directory);
+    char *uri = g_file_get_uri(file->location);
+    marlin_view_tags_get_color (tags, uri, file, NULL, NULL);
+    g_free(uri);
 }
 
 
