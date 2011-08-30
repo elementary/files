@@ -48,6 +48,7 @@ install (FILES
     marlin-progress-info-manager.h
     nautilus-cell-renderer-text-ellipsized.h
     nautilus-icon-info.h
+    fm-list-model.h
     DESTINATION include/marlincore/)
 # Check for the deps
 

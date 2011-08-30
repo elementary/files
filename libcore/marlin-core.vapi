@@ -12,6 +12,15 @@ namespace Config {
       public const string VERSION;*/
 }
 
+[CCode (cprefix = "FM", lower_case_cprefix = "fm_", cheader_filename = "fm-list-model.h")]
+namespace FM
+{
+    public class ListModel : Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.TreeSortable
+    {
+        public void add_file(GOF.File file, GOF.Directory.Async dir);
+    }
+}
+
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
 namespace Preferences {
     public GLib.Settings settings;
@@ -84,6 +93,7 @@ namespace GOF {
 
         public bool is_mounted;
         public bool exists;
+        public void update_icon(int size);
     }
 
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]
@@ -132,5 +142,3 @@ namespace GOF {
     }
 }
 
-[CCode (cheader_filename = "marlin-plugin-manager.h")]
-Marlin.PluginManager plugins;

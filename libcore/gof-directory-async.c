@@ -444,7 +444,7 @@ gof_directory_async_init (GOFDirectoryAsync *dir)
     dir->priv = g_new0(GOFDirectoryAsyncPrivate, 1);
     dir->loading = FALSE;
     dir->loaded = FALSE;
-    dir->priv->show_hiddenfiles = g_settings_get_boolean (settings, "show-hiddenfiles");
+    if(settings != NULL) dir->priv->show_hiddenfiles = g_settings_get_boolean (settings, "show-hiddenfiles");
     dir->priv->cancellable = g_cancellable_new ();
         
     dir->file_hash = g_hash_table_new_full (g_file_hash, 
