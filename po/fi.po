@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-30 09:02+0000\n"
+"PO-Revision-Date: 2011-08-31 12:52+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-08-31 04:55+0000\n"
-"X-Generator: Launchpad (build 13815)\n"
+"X-Launchpad-Export-Date: 2011-09-01 05:01+0000\n"
+"X-Generator: Launchpad (build 13827)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -157,7 +157,7 @@ msgstr "Tiedostotoiminnot"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:114
 msgid "Show Details"
-msgstr "Näytä yksityiskohdat"
+msgstr "Näytä tiedot"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:149
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:171
@@ -457,11 +457,11 @@ msgstr "Jos asetettu, rivitä liian pitkät rivit."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:367
 msgid "Small size"
-msgstr ""
+msgstr "Pieni koko"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:368
 msgid "If set, use small size text."
-msgstr ""
+msgstr "Jos asetettu, käytetään pienikokoista tekstiä."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:375
 msgid "Cursor Position"
@@ -688,7 +688,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "Kansiota \"%s\" palvelimella \"%s\" ei voi avata."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
