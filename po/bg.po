@@ -8,112 +8,114 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-06-18 21:47+0000\n"
+"PO-Revision-Date: 2011-09-01 10:05+0000\n"
 "Last-Translator: SvinqVmraka <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-08-12 04:46+0000\n"
-"X-Generator: Launchpad (build 13662)\n"
+"X-Launchpad-Export-Date: 2011-09-02 04:52+0000\n"
+"X-Generator: Launchpad (build 13830)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
-msgstr ""
+msgstr "(няма намерен резултат)"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:255
 msgid "Name"
-msgstr ""
+msgstr "Име"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:256
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:259
 msgid "Target"
-msgstr ""
+msgstr "Цел"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:261
 msgid "Size"
-msgstr ""
+msgstr "Размер"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:263
 msgid "Modified"
-msgstr ""
+msgstr "Последна промяна"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:264
 msgid "Owner"
-msgstr ""
+msgstr "Притежател"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr ""
+msgstr "Папката не съществува"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr ""
+msgstr "Marlin не може да намери папката %s"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr ""
+msgstr "Създаване"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr ""
+msgstr "Създаване на папка %s"
 
 #: /home/xapantu/marlin/po/../src/View/LocationBar.vala:959
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "Отиди в %s"
 
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
 msgid "Home"
-msgstr ""
+msgstr "Домашна папка"
 
 #: /home/xapantu/marlin/po/../src/View/Window.vala:524
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  SvinqVmraka https://launchpad.net/~svinqvmraka"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
-msgstr ""
+msgstr "Настройки на Marlin"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:46
 msgid "Single click to open:"
-msgstr ""
+msgstr "Отваряне с единичен клик:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:59
 msgid "Mouse auto-selection speed:"
-msgstr ""
+msgstr "Скорост на автоматичното селектиране:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:72
 msgid "Behavior"
-msgstr ""
+msgstr "Поведение"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:80
 msgid "small"
-msgstr ""
+msgstr "малък"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:81
 msgid "medium"
-msgstr ""
+msgstr "среден"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:82
 msgid "large"
-msgstr ""
+msgstr "голям"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "extra-large"
-msgstr ""
+msgstr "много голям"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "Sidebar icon size:"
-msgstr ""
+msgstr "Размер на иконите в страничния панел:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:115
 msgid "locale"
@@ -121,19 +123,19 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:116
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:117
 msgid "informal"
-msgstr ""
+msgstr "неофициално"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:136
 msgid "Date format:"
-msgstr ""
+msgstr "Формат на датата:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:151
 msgid "Show applications names in the context pane:"
-msgstr ""
+msgstr "Показвай имената на приложенията в контекстното меню:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:159
 msgid "Display"
@@ -141,7 +143,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:207
 msgid "Plugins"
-msgstr ""
+msgstr "Добавки /plugins/"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:105
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:155

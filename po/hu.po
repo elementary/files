@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-27 18:04+0000\n"
-"Last-Translator: xapantu <Unknown>\n"
+"PO-Revision-Date: 2011-09-01 09:35+0000\n"
+"Last-Translator: Robert Roth <evfool@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-08-28 05:25+0000\n"
-"X-Generator: Launchpad (build 13794)\n"
+"X-Launchpad-Export-Date: 2011-09-02 04:52+0000\n"
+"X-Generator: Launchpad (build 13830)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:255
 msgid "Name"
-msgstr ""
+msgstr "Név"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:256
 msgid "Type"
@@ -44,12 +44,12 @@ msgstr "Módosítva"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:264
 msgid "Owner"
-msgstr ""
+msgstr "Tulajdonos"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr ""
+msgstr "A mappa nem létezik"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
@@ -58,7 +58,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr ""
+msgstr "Létrehozás"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
@@ -73,18 +73,19 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
 msgid "Home"
-msgstr ""
+msgstr "Saját mappa"
 
 #: /home/xapantu/marlin/po/../src/View/Window.vala:524
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  ManDressedMoose https://launchpad.net/~elod83\n"
+"  Robert Roth https://launchpad.net/~evfool\n"
 "  xapantu https://launchpad.net/~xapantu"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
-msgstr ""
+msgstr "Marlin beállítások"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:46
 msgid "Single click to open:"
@@ -96,19 +97,19 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:72
 msgid "Behavior"
-msgstr ""
+msgstr "Működés"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:80
 msgid "small"
-msgstr ""
+msgstr "kicsi"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:81
 msgid "medium"
-msgstr ""
+msgstr "közepes"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:82
 msgid "large"
-msgstr ""
+msgstr "nagy"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "extra-large"
@@ -128,11 +129,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:117
 msgid "informal"
-msgstr ""
+msgstr "informális"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:136
 msgid "Date format:"
-msgstr ""
+msgstr "Dátumformátum:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:151
 msgid "Show applications names in the context pane:"
@@ -144,43 +145,43 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:207
 msgid "Plugins"
-msgstr ""
+msgstr "Bővítmények"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:105
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:155
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:213
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:269
 msgid "File Operations"
-msgstr ""
+msgstr "Fájlműveletek"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:114
 msgid "Show Details"
-msgstr ""
+msgstr "Részletek megjelenítése"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:149
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:171
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d fájlművelet aktív"
+msgstr[1] "%'d fájlművelet aktív"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:270
 msgid "All file operations have been successfully completed"
-msgstr ""
+msgstr "Minden fájlművelet sikeresen befejeződött"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
-msgstr ""
+msgstr "Kijelölési mód"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:648
 msgid "The selection mode"
-msgstr ""
+msgstr "A kijelölés módja"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:663
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:161
 msgid "Single Click"
-msgstr ""
+msgstr "Egyszeres kattintás"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:664
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:162
@@ -201,7 +202,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:699
 msgid "Pixbuf column"
-msgstr ""
+msgstr "Képoszlop"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
@@ -209,7 +210,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
-msgstr ""
+msgstr "Szövegoszlop"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
@@ -217,7 +218,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:737
 msgid "Markup column"
-msgstr ""
+msgstr "Jelölőoszlop"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:738
 msgid "Model column used to retrieve the text if using Pango markup"
@@ -233,43 +234,43 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:762
 msgid "Number of columns"
-msgstr ""
+msgstr "Oszlopok száma"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:763
 msgid "Number of columns to display"
-msgstr ""
+msgstr "A megjelenítendő oszlopok száma"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:780
 msgid "Width for each item"
-msgstr ""
+msgstr "Az egyes elemek szélessége"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr ""
+msgstr "Az egyes elemekhez használt szélesség"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
-msgstr ""
+msgstr "Térköz"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:797
 msgid "Space which is inserted between cells of an item"
-msgstr ""
+msgstr "Az elem cellái közötti távolság"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
-msgstr ""
+msgstr "Sorköz"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
-msgstr ""
+msgstr "A rács sorai közötti távolság"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
-msgstr ""
+msgstr "Oszlopköz"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
-msgstr ""
+msgstr "A rács oszlopai közötti távolság"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:844
 msgid "Margin"
@@ -281,7 +282,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
-msgstr ""
+msgstr "Elem tájolása"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:861
 msgid ""
@@ -290,15 +291,15 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:877
 msgid "Reorderable"
-msgstr ""
+msgstr "Átrendezhető"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:878
 msgid "View is reorderable"
-msgstr ""
+msgstr "A nézet átrendezhető"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:885
 msgid "Enable Search"
-msgstr ""
+msgstr "Keresés engedélyezése"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:886
 msgid "View allows user to search through columns interactively"
@@ -306,15 +307,15 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:893
 msgid "Search Column"
-msgstr ""
+msgstr "Keresési oszlop"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:894
 msgid "Model column to search through during interactive search"
-msgstr ""
+msgstr "Az interaktív kereséskor keresendő modelloszlop"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
-msgstr ""
+msgstr "Eszköztipposzlop"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:904
 msgid "The column in the model containing the tooltip texts for the items"
@@ -338,37 +339,39 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:953
 msgid "Selection Box Color"
-msgstr ""
+msgstr "Választómező színe"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:954
 msgid "Color of the selection box"
-msgstr ""
+msgstr "A választómező színe"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:960
 msgid "Selection Box Alpha"
-msgstr ""
+msgstr "A választómező átlátszósága"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:961
 msgid "Opacity of the selection box"
-msgstr ""
+msgstr "A választómező átlátszósága"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
-msgstr ""
+msgstr "Eszköztár testreszabása"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:465
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
+"Válassza ki, mely elemek jelenjenek meg az eszköztáron. A sorrendet húzással "
+"állíthatja be."
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
-msgstr ""
+msgstr "Elérhető elemek"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:502
 msgid "Displayed Items"
-msgstr ""
+msgstr "Megjelenített elemek"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1093
 msgid "Invalid filename provided by XDS drag site"
@@ -381,7 +384,7 @@ msgstr "Hivatkozás létesítése \"%s\" URL-hez sikertelen"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1766
 msgid "Set as default"
-msgstr ""
+msgstr "Beállítás alapértelmezettként"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1841
 msgid "Open with…"
@@ -426,11 +429,11 @@ msgstr "Betöltés…"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:343
 msgid "Text"
-msgstr ""
+msgstr "Szöveg"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:344
 msgid "The text of the label."
-msgstr ""
+msgstr "A címke szövege."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:350
 msgid "Justification"
@@ -445,7 +448,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:359
 msgid "Line wrap"
-msgstr ""
+msgstr "Sortörés"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:360
 msgid "If set, wrap lines if the text becomes too wide."
@@ -453,15 +456,15 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:367
 msgid "Small size"
-msgstr ""
+msgstr "Kis méret"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:368
 msgid "If set, use small size text."
-msgstr ""
+msgstr "Ha ki van választva, kis szövegméretet használ"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:375
 msgid "Cursor Position"
-msgstr ""
+msgstr "Kurzorpozíció"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:376
 msgid "The current position of the insertion cursor in chars."
@@ -478,11 +481,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:3187
 msgid "Select All"
-msgstr ""
+msgstr "Összes kijelölése"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:3198
 msgid "Input Methods"
-msgstr ""
+msgstr "Beviteli módok"
 
 #: /home/xapantu/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
@@ -490,61 +493,61 @@ msgstr "A vágólapról nincs mit beilleszteni"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:316
 msgid "Personal"
-msgstr ""
+msgstr "Személyes"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:321
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "Saját mappái és könyvjelzői"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:335
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Személyes mappa megnyitása"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:377
 msgid "Trash"
-msgstr ""
+msgstr "Kuka"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:379
 msgid "Open the trash"
-msgstr ""
+msgstr "A Kuka megnyitása"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:389
 msgid "Devices"
-msgstr ""
+msgstr "Eszközök"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:394
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "Helyi partíciók és eszközök"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:401
 msgid "File System"
-msgstr ""
+msgstr "Fájlrendszer"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:403
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "A fájlrendszer tartalmának megjelenítése"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:462
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:487
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "%s csatolása és megnyitása"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:595
 msgid "Network"
-msgstr ""
+msgstr "Hálózat"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:600
 msgid "Your network places"
-msgstr ""
+msgstr "Hálózati helyek"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:631
 msgid "Entire network"
-msgstr ""
+msgstr "Teljes hálózat"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:633
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "A hálózat tartalmának tallózása"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1593
 msgid "_Start"
@@ -556,58 +559,58 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1599
 msgid "_Power On"
-msgstr ""
+msgstr "Be_kapcsolás"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Safely Remove Drive"
-msgstr ""
+msgstr "Meghajtó _biztonságos eltávolítása"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1603
 msgid "_Connect Drive"
-msgstr ""
+msgstr "Meghajtó _csatlakoztatása"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1604
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "_Kapcsolat bontása a meghajtóval"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1607
 msgid "_Start Multi-disk Device"
-msgstr ""
+msgstr "_Többlemezes eszköz indítása"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1608
 msgid "_Stop Multi-disk Device"
-msgstr ""
+msgstr "_Többlemezes eszköz leállítása"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1612
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "Meghajtó fel_oldása"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1613
 msgid "_Lock Drive"
-msgstr ""
+msgstr "Meghajtó _zárolása"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1687
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2234
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "A(z) %s nem indítható"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1977
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2006
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2035
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "Nem adható ki: %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2180
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "A(z) %s adathordozó változásai nem kérdezhetők le"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2290
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "A(z) %s nem állítható le"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2382
 msgid "_Open"
@@ -615,11 +618,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2390
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Megnyitás új _lapon"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2397
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Megnyitás új _ablakban"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2406
 msgid "Remove"
@@ -631,73 +634,75 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2427
 msgid "_Mount"
-msgstr ""
+msgstr "_Csatolás"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2434
 msgid "_Unmount"
-msgstr ""
+msgstr "_Leválasztás"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2441
 msgid "_Eject"
-msgstr ""
+msgstr "_Kiadás"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2477
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1422
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2293
 msgid "Empty _Trash"
-msgstr ""
+msgstr "_Kuka ürítése"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "Nyilvános FTP"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (bejelentkezéssel)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "Windows-megosztás"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Biztonságos WebDAV (HTTPS)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr ""
+msgstr "Kapcsolódás…"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"A támogatott kiszolgálómódszerek listája nem tölthető be.\n"
+"Ellenőrizze a gvfs telepítését."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "A(z) „%s” mappa nem nyitható meg ezen: „%s”."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "A kiszolgáló nem található itt: „%s”."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr ""
+msgstr "Próbálja újra"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Ellenőrizze a felhasználói adatait."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
@@ -714,7 +719,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr ""
+msgstr "Kiszolgáló részletei"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
@@ -722,23 +727,23 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
-msgstr ""
+msgstr "_Port:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
-msgstr ""
+msgstr "_Típus:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr ""
+msgstr "Meg_osztás:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr ""
+msgstr "_Mappa:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr ""
+msgstr "Felhasználói adatok"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
@@ -746,19 +751,19 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_User name:"
-msgstr ""
+msgstr "_Felhasználónév:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
-msgstr ""
+msgstr "_Jelszó:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr ""
+msgstr "_Emlékezzen erre a jelszóra"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr ""
+msgstr "A művelet megszakítva"
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -766,6 +771,9 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"A fájlrendszer böngészése a fájlkezelővel"
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
@@ -774,19 +782,19 @@ msgstr "a --quit nem használható URI-címekkel."
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:205
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:735
 msgid "_Skip"
-msgstr ""
+msgstr "_Kihagyás"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "S_kip All"
-msgstr ""
+msgstr "Összes ki_hagyása"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "_Retry"
-msgstr ""
+msgstr "_Újra"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:208
 msgid "Delete _All"
-msgstr ""
+msgstr "Öss_zes törlése"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:209
 msgid "_Replace"
@@ -798,87 +806,87 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:211
 msgid "_Merge"
-msgstr ""
+msgstr "Össz_efésülés"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:212
 msgid "Merge _All"
-msgstr ""
+msgstr "Összes össze_fésülése"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:213
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "Másolás mi_ndenképp"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:299
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d másodperc"
+msgstr[1] "%'d másodperc"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:304
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:315
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d perc"
+msgstr[1] "%'d perc"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:314
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d óra"
+msgstr[1] "%'d óra"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:322
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "megközelítőleg %'d óra"
+msgstr[1] "megközelítőleg %'d óra"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:398
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "Link erre: %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:402
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "Még egy link erre: %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:418
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "%'d. link erre: %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:422
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "%'d. link erre: %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:426
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "%'d. link erre: %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:430
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "%'d. link erre: %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:622
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:630
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (%'d"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
+msgstr "Biztosan véglegesen törölni akarja a következőt a Kukából: „%B”?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -889,50 +897,52 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
+"Biztosan véglegesen törölni akarja a kijelölt %'d elemet a Kukából?"
 msgstr[1] ""
+"Biztosan véglegesen törölni akarja a kijelölt %'d elemet a Kukából?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1394
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "Ha töröl egy elemet, akkor az véglegesen elvész."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Törölni kívánja az összes elemet a kukából?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "A kuka összes eleme véglegesen törölve lesz."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "Biztosan véglegesen törölni akarja a következőt: „%B”?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet?"
+msgstr[1] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1478
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr ""
+msgstr "Fájlok törlése folyamatban"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d fájl törlése van hátra"
+msgstr[1] "%'d fájl törlése van hátra"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%T van hátra"
+msgstr[1] "%T van hátra"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1592
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1626
@@ -940,13 +950,14 @@ msgstr[1] ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1742
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2556
 msgid "Error while deleting."
-msgstr ""
+msgstr "Hiba törléskor."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"A(z) „%B” mappa fájljai nem törölhetők, mert nincs jogosultsága látni azokat."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1599
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2615
@@ -954,31 +965,32 @@ msgstr ""
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
+"Hiba történt a(z) „%B” mappa fájljaival kapcsolatos információk lekérésekor."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1608
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3615
 msgid "_Skip files"
-msgstr ""
+msgstr "Fájlok _kihagyása"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "A(z) „%B” mappa nem törölhető, mert nincs rá olvasási joga."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1632
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2654
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3651
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "Hiba történt a(z) „%B” mappa olvasása közben."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "A(z) %B mappa nem távolítható el."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "Hiba történt a(z) %B törlése közben."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1819
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1831
@@ -1006,15 +1018,15 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2063
 msgid "Deleting Files"
-msgstr ""
+msgstr "Fájlok törlése"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2126
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "A eszköz (%V) nem adható ki"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2128
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "A kötet (%V) nem választható le"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2283
 msgid "Do you want to empty the trash before you unmount?"
@@ -1032,33 +1044,33 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2346
 msgid "Emptying the trash"
-msgstr ""
+msgstr "A kuka ürítése folyamatban"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2413
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "A(z) %s nem csatolható"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2491
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Felkészülés %'d fájl másolására (%S)"
+msgstr[1] "Felkészülés %'d fájl másolására (%S)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2497
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Felkészülés %'d fájl áthelyezésére (%S)"
+msgstr[1] "Felkészülés %'d fájl áthelyezésére (%S)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2503
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Felkészülés %'d fájl törlésére (%S)"
+msgstr[1] "Felkészülés %'d fájl törlésére (%S)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2509
 #, c-format
@@ -1072,13 +1084,13 @@ msgstr[1] ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3598
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3643
 msgid "Error while copying."
-msgstr ""
+msgstr "Hiba másoláskor."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2554
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3596
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3641
 msgid "Error while moving."
-msgstr ""
+msgstr "Hiba áthelyezéskor."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2558
 msgid "Error while moving files to trash."
@@ -1089,86 +1101,90 @@ msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
+"A(z) \"%B\" mappa fájljai nem másolhatók, mert nincs jogosultsága látni "
+"azokat."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2651
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "A(z) \"%B\" mappa nem kezelhető, mert nincs rá olvasási joga."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2728
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "A(z) \"%B\" fájl nem kezelhető, mert nincs rá olvasási joga."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2731
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "Hiba történt az információkéréskor a következőről: \"%B\"."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2831
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2873
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2906
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2936
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "Hiba a(z) \"%B\" helyre másoláskor."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2835
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "Nincs jogosultsága elérni a célmappát."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2837
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "Hiba történt információk kérésekor a célról."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2874
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "A cél nem egy mappa."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2907
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
+"A célon nincs elég hely. Próbáljon meg néhány fájl eltávolításával helyet "
+"felszabadítani."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2909
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "%S érhető el, de %S szükséges."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2937
 msgid "The destination is read-only."
-msgstr ""
+msgstr "A cél írásvédett."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2998
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "„%B” áthelyezése ide: „%B”"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2999
 msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+msgstr "„%B” másolása ide: „%B”"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3003
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "„%B” kettőzése"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3007
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d fájl áthelyezése (ebben: „%B”) a következőbe: „%B”"
+msgstr[1] "%'d fájl áthelyezése (ebben: „%B”) a következőbe: „%B”"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3010
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d fájl másolása (ebben: „%B”) a következőbe: „%B”"
+msgstr[1] "%'d fájl másolása (ebben: „%B”) a következőbe: „%B”"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3017
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d fájl kettőzése (ebben: „%B”)"
+msgstr[1] "%'d fájl kettőzése (ebben: „%B”))"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3026
 msgid "Moving %'d file to \"%B\""
