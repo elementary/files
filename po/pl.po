@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-29 20:36+0000\n"
-"Last-Translator: Piotr Sokół <Unknown>\n"
+"PO-Revision-Date: 2011-09-06 11:44+0000\n"
+"Last-Translator: Łukasz Serafinowski <Unknown>\n"
 "Language-Team: Polish <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-08-30 04:58+0000\n"
-"X-Generator: Launchpad (build 13794)\n"
+"X-Launchpad-Export-Date: 2011-09-07 04:50+0000\n"
+"X-Generator: Launchpad (build 13861)\n"
 "Language: pl\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
@@ -85,7 +85,8 @@ msgstr ""
 "  Marcin Falkiewicz https://launchpad.net/~avalatron\n"
 "  Piotr Filipek https://launchpad.net/~piotrek290\n"
 "  Piotr Sokół https://launchpad.net/~psokol\n"
-"  xapantu https://launchpad.net/~xapantu"
+"  xapantu https://launchpad.net/~xapantu\n"
+"  Łukasz Serafinowski https://launchpad.net/~lukasz-serafinowski"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
@@ -258,44 +259,44 @@ msgstr "Szerokość używana dla każdego elementu"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
-msgstr ""
+msgstr "Odstęp"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:797
 msgid "Space which is inserted between cells of an item"
-msgstr ""
+msgstr "Odstęp pomiędzy komórkami elementu"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
-msgstr ""
+msgstr "Odstępy wierszy"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
-msgstr ""
+msgstr "Odstęp pomiędzy wierszami siatki"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
-msgstr ""
+msgstr "Odstępy kolumn"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
-msgstr ""
+msgstr "Odstęp pomiędzy kolumnami siatki"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:844
 msgid "Margin"
-msgstr ""
+msgstr "Margines"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:845
 msgid "Space which is inserted at the edges of the icon view"
-msgstr ""
+msgstr "Odstęp na krawędziach widoku ikon"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
-msgstr ""
+msgstr "Ułożenie elementów"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:861
 msgid ""
 "How the text and icon of each item are positioned relative to each other"
-msgstr ""
+msgstr "Pozycjonowanie tekstu i ikony każdego elementu względem innych"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:877
 msgid "Reorderable"
@@ -307,15 +308,15 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:885
 msgid "Enable Search"
-msgstr ""
+msgstr "Włącz wyszukiwanie"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:886
 msgid "View allows user to search through columns interactively"
-msgstr ""
+msgstr "Widok umożliwia interaktywne wyszukiwanie w kolumnach"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:893
 msgid "Search Column"
-msgstr ""
+msgstr "Kolumna wyszukiwania"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:894
 msgid "Model column to search through during interactive search"
@@ -323,7 +324,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
-msgstr ""
+msgstr "Kolumna podpowiedzi"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:904
 msgid "The column in the model containing the tooltip texts for the items"
@@ -339,7 +340,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:939
 msgid "Cell Area"
-msgstr ""
+msgstr "Obszar komórki"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:940
 msgid "The GtkCellArea used to layout cells"
@@ -355,7 +356,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:960
 msgid "Selection Box Alpha"
-msgstr ""
+msgstr "Wybór przezroczystości"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:961
 msgid "Opacity of the selection box"
@@ -398,7 +399,7 @@ msgstr "Ustawienie jako domyślny"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1841
 msgid "Open with…"
-msgstr ""
+msgstr "Otwórz z..."
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:3078
 msgid "Set Color:"
@@ -671,11 +672,11 @@ msgstr "SSH"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "Publiczne FTP"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (z logowaniem)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
@@ -683,7 +684,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
@@ -707,11 +708,11 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "Nie można odnaleźć serwera w \"%s\""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr ""
+msgstr "Spróbuj ponownie"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
@@ -719,7 +720,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr ""
+msgstr "Dalej"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1169
@@ -728,7 +729,7 @@ msgstr "_Połącz"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr ""
+msgstr "Połącz z serwerem"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
