@@ -49,6 +49,7 @@ install (FILES
     nautilus-cell-renderer-text-ellipsized.h
     nautilus-icon-info.h
     fm-list-model.h
+    marlin-trash-monitor.h
     DESTINATION include/marlincore/)
 # Check for the deps
 
@@ -78,13 +79,9 @@ set(LIB_PATHS
 )
 link_directories(${LIB_PATHS})
 add_library (${PKGNAME} SHARED
-    gof-file.c
-    nautilus-icon-info.c
     eel-fcts.c
     eel-i18n.c
-    marlin-abstract-sidebar.c
     eel-gtk-extensions.c
-    gof-abstract-slot.c
     eel-gdk-extensions.c
     eel-gdk-pixbuf-extensions.c
     eel-pango-extensions.c
@@ -94,51 +91,58 @@ add_library (${PKGNAME} SHARED
     eel-debug.c
     eel-string.c
     eel-accessibility.c
+    eel-ui.c
+    eel-vfs-extensions.c
     marlin-file-operations.c
     marlin-file-utilities.c
     marlin-file-conflict-dialog.c
     fm-list-model.c
     marlin-progress-info.c
     marlin-progress-info-manager.c
-    eel-ui.c
-    gof-directory-async.c
+    marlin-abstract-sidebar.c
     marlin-exec.c
+    gof-abstract-slot.c
+    gof-file.c
+    gof-directory-async.c
     gof-monitor.c
+    nautilus-icon-info.c
     nautilus-cell-renderer-text-ellipsized.c
     marlin-plugin-manager.c
-    eel-vfs-extensions.c
+    marlin-trash-monitor.c
 )
 if(BUILD_STATIC MATCHES "Yes")
 add_library(${PKGNAME}-static STATIC
-        gof-file.c
-        nautilus-icon-info.c
-        eel-fcts.c
-        eel-i18n.c
-        eel-gtk-extensions.c
-        eel-gdk-extensions.c
-        fm-list-model.c
-        eel-gdk-pixbuf-extensions.c
-        eel-pango-extensions.c
-        eel-glib-extensions.c
-        eel-gio-extensions.c
-        eel-stock-dialogs.c
-        eel-debug.c
-        eel-string.c
-        eel-accessibility.c
-        marlin-file-operations.c
-        marlin-file-utilities.c
-        marlin-file-conflict-dialog.c
-        marlin-progress-info.c
-        marlin-progress-info-manager.c
-        eel-ui.c
-        gof-directory-async.c
-        marlin-exec.c
-        gof-monitor.c
-        nautilus-cell-renderer-text-ellipsized.c
-        marlin-plugin.c
-        marlin-plugin-manager.c
-        eel-vfs-extensions.c
-    )
+    eel-fcts.c
+    eel-i18n.c
+    eel-gtk-extensions.c
+    eel-gdk-extensions.c
+    eel-gdk-pixbuf-extensions.c
+    eel-pango-extensions.c
+    eel-glib-extensions.c
+    eel-gio-extensions.c
+    eel-stock-dialogs.c
+    eel-debug.c
+    eel-string.c
+    eel-accessibility.c
+    eel-ui.c
+    eel-vfs-extensions.c
+    marlin-file-operations.c
+    marlin-file-utilities.c
+    marlin-file-conflict-dialog.c
+    fm-list-model.c
+    marlin-progress-info.c
+    marlin-progress-info-manager.c
+    marlin-abstract-sidebar.c
+    marlin-exec.c
+    gof-abstract-slot.c
+    gof-file.c
+    gof-directory-async.c
+    gof-monitor.c
+    nautilus-icon-info.c
+    nautilus-cell-renderer-text-ellipsized.c
+    marlin-plugin-manager.c
+    marlin-trash-monitor.c
+)
 # The library target "foo" already has a default OUTPUT_NAME of "foo", so we
 
 # don't need to change it.

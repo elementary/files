@@ -16,13 +16,24 @@
  */
 
 using Gtk;
+using Marlin;
 
 
 public class Marlin.Plugins.Trash : Marlin.Plugins.Base
 {
+    private TrashMonitor trash_monitor;
+    private InfoBar? infobar = null;
+
     public Trash()
     {
+        trash_monitor = TrashMonitor.get ();
+        trash_monitor.trash_state_changed.connect ((state) => {
+            /* state true = empty trash */
+            if (infobar != null)
+                infobar.set_response_sensitive (0, !state);
+        });
     }
+
     public override void directory_loaded(void* user_data)
     {
         GOF.File file = ((Object[])user_data)[2] as GOF.File;
@@ -32,13 +43,15 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base
             assert(((Object[])user_data)[1] is GOF.AbstractSlot);
             GOF.AbstractSlot slot = ((Object[])user_data)[1] as GOF.AbstractSlot;
             
-            var infobar = new InfoBar();
+            infobar = new InfoBar();
             (infobar.get_content_area() as Gtk.Box).add(new Gtk.Label("This is the trash."));
             infobar.add_button("Empty the trash", 0);
             infobar.response.connect( (self, response) => {
                 Marlin.FileOperations.empty_trash(self);
                 });
             infobar.set_message_type(Gtk.MessageType.INFO);
+
+            infobar.set_response_sensitive (0, !TrashMonitor.is_empty ());
 
             slot.add_extra_widget(infobar);
             infobar.show_all();

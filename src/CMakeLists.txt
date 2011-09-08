@@ -74,7 +74,6 @@ add_executable(marlin
     mysignal.c
     gossip-cell-renderer-expander.c
     marlin-enum-types.c
-    marlin-trash-monitor.c
     marlin-bookmark.c
     marlin-bookmark-list.c
     marlin-dnd.c

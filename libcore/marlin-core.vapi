@@ -33,6 +33,12 @@ namespace Marlin.FileOperations {
     static void empty_trash(Gtk.Widget widget);
 }
 
+/*[CCode (cprefix = "MarlinTrashMonitor", lower_case_cprefix = "marlin_trash_monitor_", cheader_filename = "marlin-trash-monitor.h")]
+namespace Marlin.TrashMonitor {
+    static bool is_empty ();
+}*/
+
+
 public static uint action_new (GLib.Type type, string signal_name);
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -62,6 +68,14 @@ namespace Marlin
     public abstract class AbstractSidebar : Gtk.ScrolledWindow
     {
         public void add_extra_item(string text);
+    }
+    [CCode (cheader_filename = "marlin-trash-monitor.h")]
+    public abstract class TrashMonitor : Object
+    {
+        public static TrashMonitor get();
+        public static bool is_empty ();
+
+        public signal void trash_state_changed (bool new_state);
     }
 }
 
