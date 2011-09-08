@@ -373,12 +373,12 @@ eel_gtk_tree_view_set_activate_on_single_click (GtkTreeView *tree_view,
 GdkScreen *
 eel_gtk_widget_get_screen (GtkWidget *widget)
 {
-    GdkScreen *screen;
+    GdkScreen *screen = NULL;
 
     if (G_UNLIKELY (widget == NULL))
         screen = gdk_screen_get_default ();
     else if (GTK_IS_WIDGET (widget))
         screen = gtk_widget_get_screen (widget);
-    else
-        return NULL;
+        
+    return screen;
 }

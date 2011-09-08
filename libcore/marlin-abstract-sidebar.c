@@ -54,7 +54,6 @@ void marlin_abstract_sidebar_add_extra_item(MarlinAbstractSidebar* self, gchar* 
 
 static void marlin_abstract_sidebar_class_init (MarlinAbstractSidebarClass *klass)
 {
-  GtkScrolledWindowClass *object_class = GTK_SCROLLED_WINDOW_CLASS (klass);
 }
 
 static void marlin_abstract_sidebar_init (MarlinAbstractSidebar *self)

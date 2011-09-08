@@ -889,7 +889,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
             if(nicon == NULL)
             {
-                g_critical("Can't load icon %s", emblems->data);
+                g_critical("Can't load icon %s", (char *) emblems->data);
             }
 
             /* determine the dimensions of the emblem */

@@ -77,7 +77,7 @@ open_window (MarlinApplication *application, GFile *location, GdkScreen *screen)
 
     window = marlin_view_window_new (application, screen);
     g_signal_connect(window, "selection_changed", (GCallback) selection_changed_plugin, NULL);
-    marlin_plugin_manager_interface_loaded(plugins, window);
+    marlin_plugin_manager_interface_loaded(plugins, GTK_WIDGET (window));
 
     gtk_application_add_window (GTK_APPLICATION (application),
                                 GTK_WINDOW (window));
@@ -120,7 +120,7 @@ open_tabs (MarlinApplication *application, GFile **files,
         window = marlin_view_window_new (application, screen);
         gtk_application_add_window (GTK_APPLICATION (application),
                                     GTK_WINDOW (window));
-        marlin_plugin_manager_interface_loaded(plugins, window);
+        marlin_plugin_manager_interface_loaded(plugins, GTK_WIDGET (window));
     }
 
     if (files == NULL) {

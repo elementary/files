@@ -288,7 +288,7 @@ update_places (MarlinPlacesSidebar *sidebar)
                             PLACES_SIDEBAR_COLUMN_URI, &last_uri, -1);
     }
     gtk_tree_store_clear (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store);
-    marlin_plugin_manager_update_sidebar(plugins, sidebar);
+    marlin_plugin_manager_update_sidebar(plugins, GTK_WIDGET (sidebar));
 
     slot = marlin_view_window_get_active_slot (MARLIN_VIEW_WINDOW (sidebar->window));
     if (slot) {
@@ -3139,7 +3139,7 @@ marlin_places_sidebar_class_init (MarlinPlacesSidebarClass *class)
     G_OBJECT_CLASS (class)->get_property = marlin_places_sidebar_get_property;
     GTK_WIDGET_CLASS (class)->style_set = marlin_places_sidebar_style_set;
     
-    g_object_class_install_property (class,
+    g_object_class_install_property (G_OBJECT_CLASS (class),
                                      PROP_ICON_SIZE,
                                      g_param_spec_int ("icon-size",
                                                        _("Icon Size"),

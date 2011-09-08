@@ -17,16 +17,17 @@
  *
  */
 
-#include <gio/gio.h>
+#include <stdlib.h>
 #include <gtk/gtk.h>
 #include <glib.h>
+#include <gio/gio.h>
 #include "marlincore-tests-gof.h"
 
 
-static fatal_handler(const gchar* log_domain,
-                               GLogLevelFlags log_level,
-                               const gchar* message,
-                               gpointer user_data)
+static gboolean fatal_handler(const gchar* log_domain,
+                              GLogLevelFlags log_level,
+                              const gchar* message,
+                              gpointer user_data)
 {
     return FALSE;
 }
