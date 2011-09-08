@@ -33,15 +33,12 @@ G_BEGIN_DECLS
 
 typedef struct _GOFAbstractSlot GOFAbstractSlot;
 typedef struct _GOFAbstractSlotClass GOFAbstractSlotClass;
-typedef struct _GOFAbstractSlotPrivate GOFAbstractSlotPrivate;
 
 struct _GOFAbstractSlot
 {
     GObject parent;
 
     GtkWidget* extra_location_widgets;
-
-    GOFAbstractSlotPrivate *priv;
 };
 
 struct _GOFAbstractSlotClass
