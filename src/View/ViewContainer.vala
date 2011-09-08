@@ -51,6 +51,7 @@ namespace Marlin.View {
             label.set_alignment(0.0f, 0.5f);
             label.set_padding(0, 0);
             update_location_state(true);
+            plugin_directory_loaded ();
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
@@ -65,11 +66,7 @@ namespace Marlin.View {
                     return;
                 change_view(view_mode, myfile);
                 update_location_state(true);
-                Object[] data = new Object[2];
-                data[0] = window;
-                data[1] = slot;
-                data[2] = GOF.File.get(myfile);
-                plugins.directory_loaded((void*)data);
+                plugin_directory_loaded ();
             });
             up.connect(() => {
                 if (slot.directory.has_parent()) {
@@ -108,6 +105,16 @@ namespace Marlin.View {
             get{
                 return label.label;
             }
+        }
+
+        private void plugin_directory_loaded () 
+        {
+            Object[] data = new Object[2];
+            data[0] = window;
+            data[1] = slot;
+            //data[2] = GOF.File.get(slot.location);
+            data[2] = slot.directory.file;
+            plugins.directory_loaded((void*)data);
         }
 
         private void connect_available_info() {
