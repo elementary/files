@@ -51,8 +51,7 @@ public class Marlin.PluginManager : GLib.Object
         File dir = File.new_for_path(path);
 
         string attributes = FILE_ATTRIBUTE_STANDARD_NAME + "," +
-                            FILE_ATTRIBUTE_STANDARD_TYPE + "," +
-                            FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE;
+                            FILE_ATTRIBUTE_STANDARD_TYPE;
 
         FileInfo info;
         FileEnumerator enumerator;
