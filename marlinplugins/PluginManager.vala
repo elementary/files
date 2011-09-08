@@ -75,8 +75,6 @@ public class Marlin.PluginManager : GLib.Object
             string file_name = info.get_name ();
             string file_path = Path.build_filename (dir.get_path (), file_name);
 
-            File file = File.new_for_path (file_path);
-
             if(file_name.has_suffix(".plug"))
             {
                 load_plugin_keyfile(file_path, dir.get_path (), force);
