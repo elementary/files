@@ -3,6 +3,7 @@
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
 	gtk+-3.0
+    gee-1.0
 )
 set(CFLAGS
 	${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
@@ -18,6 +19,7 @@ vala_precompile(VALA_C
     plugin.vala
 PACKAGES
     gtk+-3.0
+    gee-1.0
     marlin-core
     marlinplugins
 OPTIONS

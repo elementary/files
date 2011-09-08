@@ -26,20 +26,24 @@ public class Marlin.PluginManager : GLib.Object
     Settings settings;
     string settings_field;
     string plugin_dir;
-    List<string> names = null;
+    Gee.List<string> names;
     bool in_available = false;
+
     public PluginManager(Settings settings, string field, string plugin_dir)
     {
         settings_field = field;
         this.settings = settings;
         this.plugin_dir = plugin_dir;
         plugin_hash = new Gee.HashMap<string,Plugins.Base>();
+        names = new Gee.ArrayList<string>();
     }
     
     public void load_plugins()
     {
         load_modules_from_dir(plugin_dir + "/core/", true);
+        in_available = true;
         load_modules_from_dir(plugin_dir);
+        in_available = false;
     } 
     
     private void load_modules_from_dir (string path, bool force = false)
@@ -112,6 +116,7 @@ public class Marlin.PluginManager : GLib.Object
         Plugins.Base plug = module_init();
 
         debug ("Loaded module source: '%s'", module.name());
+        //message ("Loaded module source: '%s'", module.name());
         
         if(plug != null)
             plugin_hash.set (file_path, plug);
@@ -126,9 +131,9 @@ public class Marlin.PluginManager : GLib.Object
             string name = keyfile.get_string("Plugin", "Name");
             if(in_available)
             {
-                names.append(name);
+                names.add(name);
             }
-            else if(force || name in settings.get_strv(settings_field))
+            if(force || name in settings.get_strv(settings_field))
             {
                 load_module(Path.build_filename(parent, keyfile.get_string("Plugin", "File")));
             }
@@ -177,13 +182,9 @@ public class Marlin.PluginManager : GLib.Object
     {
     }
     
-    public List<string> get_available_plugins()
+    public Gee.List<string> get_available_plugins()
     {
-        names = new List<string>();
-        in_available = true;
-        load_modules_from_dir(plugin_dir, false);
-        in_available = false;
-        return names.copy();
+        return names;
     }
     
     public bool disable_plugin(string path)
