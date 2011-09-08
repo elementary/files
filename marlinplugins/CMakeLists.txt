@@ -35,11 +35,11 @@ ensure_vala_version("0.12.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
 PluginManager.vala
-module.vapi
 Plugin.vala
 PACKAGES
 gtk+-3.0
 gee-1.0
+gmodule-2.0
 OPTIONS
 --thread
 GENERATE_VAPI

@@ -85,16 +85,15 @@ public class Marlin.PluginManager : GLib.Object
         }
     }
 
-    Plugins.Base? load_module(string file_path)
+    void load_module(string file_path)
     {
-        Module? module = Module.open (file_path, ModuleFlags.BIND_LOCAL);
+        Module module = Module.open (file_path, ModuleFlags.BIND_LOCAL);
         if (module == null)
         {
             warning ("Failed to load module from path '%s': %s",
                      file_path,
                      Module.error ());
-
-            return null;
+            return;
         }
 
         void* function;
@@ -104,17 +103,20 @@ public class Marlin.PluginManager : GLib.Object
                      "module_init",
                      file_path,
                      Module.error ());
-
-            return null;
+            return;
         }
 
-        unowned ModuleInitFunc module_init = (ModuleInitFunc) function;
+        ModuleInitFunc module_init = (ModuleInitFunc) function;
         assert (module_init != null);
 
-        debug ("Loaded module source: '%s'", module.name());
+        /* We don't want our modules to ever unload */
+        module.make_resident ();
+        Plugins.Base plug = module_init();
 
-        Plugins.Base base_ = module_init();
-        return base_;
+        debug ("Loaded module source: '%s'", module.name());
+        
+        if(plug != null)
+            plugin_hash.set (file_path, plug);
     }
     
     void load_plugin_keyfile(string path, string parent, bool force)
@@ -130,11 +132,7 @@ public class Marlin.PluginManager : GLib.Object
             }
             else if(force || name in settings.get_strv(settings_field))
             {
-                Plugins.Base plug = load_module(Path.build_filename(parent, keyfile.get_string("Plugin", "File")));
-                if(plug != null)
-                {
-                    plugin_hash[name] = plug;
-                }
+                load_module(Path.build_filename(parent, keyfile.get_string("Plugin", "File")));
             }
         }
         catch(Error e)
