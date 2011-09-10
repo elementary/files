@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-31 09:45+0000\n"
-"Last-Translator: Irmak Bıçakçıgil <Unknown>\n"
+"PO-Revision-Date: 2011-09-09 10:08+0000\n"
+"Last-Translator: Fatih Dayioglu <fatihdy@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-09-01 05:01+0000\n"
-"X-Generator: Launchpad (build 13827)\n"
+"X-Launchpad-Export-Date: 2011-09-10 05:14+0000\n"
+"X-Generator: Launchpad (build 13900)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -97,7 +97,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:72
 msgid "Behavior"
-msgstr ""
+msgstr "Davranış"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:80
 msgid "small"
@@ -129,7 +129,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:117
 msgid "informal"
-msgstr ""
+msgstr "gayri resmi"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:136
 msgid "Date format:"
@@ -201,7 +201,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:699
 msgid "Pixbuf column"
-msgstr ""
+msgstr "Pixbuf sütunu"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
@@ -209,7 +209,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
-msgstr ""
+msgstr "Metin sütunu"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
@@ -1131,7 +1131,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2909
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "%S kullanılabilir alan var, ancak %S gerekli."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2937
 msgid "The destination is read-only."
@@ -1143,11 +1143,11 @@ msgstr "\"%B\", \"%B\" hedefine taşınıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2999
 msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+msgstr "\"%B\", \"%B\" hedefine kopyalanıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3003
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "\"%B\" çoğaltılıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3007
 msgid "Moving %'d file (in \"%B\") to \"%B\""
@@ -1181,19 +1181,17 @@ msgstr[0] "%'d dosya \"%B\" hedefine kopyalanıyor"
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya çoğaltılıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3086
 #, c-format
 msgid "%S of %S"
-msgstr ""
+msgstr "%S / %S"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3097
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%S / %S — %T kaldı (%S/sn)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3476
 msgid ""
@@ -1261,11 +1259,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4183
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "Bir dosyayı kendi üzerine taşıyamazsınız."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4184
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "Bir dosyayı kendi üzerine kopyalayamazsınız."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4185
 msgid "The source file would be overwritten by the destination."
@@ -1298,7 +1296,7 @@ msgstr[0] "%'d dosya taşınmak için hazırlanıyor"
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:4965
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr ""
+msgstr "Dosya %F içerisine taşınırken hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5228
 msgid "Moving Files"
@@ -1339,7 +1337,7 @@ msgstr "İzinler atanıyor"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5941
 msgid "untitled folder"
-msgstr ""
+msgstr "isimsiz klasör"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5949
 msgid "new file"
@@ -1347,7 +1345,7 @@ msgstr "Yeni Dosya"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6099
 msgid "Error while creating directory %B."
-msgstr ""
+msgstr "%B dizini oluştururken hata."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6101
 msgid "Error while creating file %B."
@@ -1356,7 +1354,7 @@ msgstr "%B dosyası oluştururken hata."
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6103
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr ""
+msgstr "%F içerisinde dizin oluştururken bir hata oluştu."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:6399
 msgid "Emptying Trash"
@@ -1415,13 +1413,13 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" içinde aynı isme sahip başka bir klasör mevcut."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:174
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "%s dosyasını yenisiyle değiştir?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:176
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
