@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-27 18:04+0000\n"
-"Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
+"PO-Revision-Date: 2011-09-13 21:15+0000\n"
+"Last-Translator: Cody Garver <codygarver@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-08-28 05:26+0000\n"
-"X-Generator: Launchpad (build 13794)\n"
+"X-Launchpad-Export-Date: 2011-09-14 04:58+0000\n"
+"X-Generator: Launchpad (build 13921)\n"
 "Language: es\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
@@ -37,7 +37,7 @@ msgstr "Destino"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:261
 msgid "Size"
-msgstr "Tamaño"
+msgstr "Tamaño"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:263
 msgid "Modified"
@@ -86,6 +86,7 @@ msgstr ""
 "  Fitoschido https://launchpad.net/~fitoschido\n"
 "  René Mujica Moreau https://launchpad.net/~rene-mujica\n"
 "  Rubén Vera https://launchpad.net/~rmvercan\n"
+"  kernal https://launchpad.net/~kerunaru\n"
 "  xapantu https://launchpad.net/~xapantu"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
@@ -94,7 +95,7 @@ msgstr "Opciones de Marlin"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:46
 msgid "Single click to open:"
-msgstr "Pulse para abrir:"
+msgstr "Un sólo clic para abrir:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:59
 msgid "Mouse auto-selection speed:"
@@ -157,7 +158,7 @@ msgstr "Complementos"
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:213
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:269
 msgid "File Operations"
-msgstr "Operaciones sobre archivos"
+msgstr "Operaciones con archivos"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:114
 msgid "Show Details"
@@ -186,17 +187,17 @@ msgstr "El modo de selección"
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:663
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:161
 msgid "Single Click"
-msgstr "Pulsación sencilla"
+msgstr "Un clic"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:664
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:162
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Si los elementos en la vista se pueden activar con clics solo"
+msgstr "Si los elementos en la vista se pueden activar con un solo clic"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:680
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:178
 msgid "Single Click Timeout"
-msgstr "Tiempo de pulsación sencilla"
+msgstr "Tiempo de clic"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:681
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:179
@@ -205,7 +206,7 @@ msgid ""
 "selected automatically in single click mode"
 msgstr ""
 "La cantidad de tiempo que hay que mantener el ratón sobre el elemento hasta "
-"que sea seleccionado automáticamente en el modo de clic sencilla"
+"que sea seleccionado automáticamente en el modo de un solo clic"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:699
 msgid "Pixbuf column"
@@ -213,7 +214,7 @@ msgstr "Columna de pixbuf"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
-msgstr "Modelo de columna desde donde recuperar el icono pixbuf"
+msgstr "Columna modelo usada para obtener el pixbuf del icono"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
@@ -221,7 +222,7 @@ msgstr "Columna de texto"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
-msgstr "Modelo de columna desde donde recuperar el texto"
+msgstr "Columna modelo usada para obtener el texto"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:737
 msgid "Markup column"

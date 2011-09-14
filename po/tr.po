@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-09 10:08+0000\n"
-"Last-Translator: Fatih Dayioglu <fatihdy@gmail.com>\n"
+"PO-Revision-Date: 2011-09-13 14:43+0000\n"
+"Last-Translator: Irmak Bıçakçıgil <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-09-10 05:14+0000\n"
-"X-Generator: Launchpad (build 13900)\n"
+"X-Launchpad-Export-Date: 2011-09-14 04:58+0000\n"
+"X-Generator: Launchpad (build 13921)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -40,7 +40,7 @@ msgstr "Boyut"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:263
 msgid "Modified"
-msgstr ""
+msgstr "Değiştirildi"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:264
 msgid "Owner"
@@ -73,7 +73,7 @@ msgstr "%s git"
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
 msgid "Home"
-msgstr ""
+msgstr "Ana Sayfa"
 
 #: /home/xapantu/marlin/po/../src/View/Window.vala:524
 msgid "translator-credits"
@@ -121,11 +121,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:115
 msgid "locale"
-msgstr ""
+msgstr "yerel"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:116
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:117
 msgid "informal"
@@ -171,7 +171,7 @@ msgstr "Tüm dosya işlemleri başarı ile tamamlandı"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
-msgstr ""
+msgstr "Seçim modu"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:648
 msgid "The selection mode"
@@ -225,7 +225,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:745
 msgid "Icon View Model"
-msgstr ""
+msgstr "Simge Görünümü Modeli"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:746
 msgid "The model for the icon view"
@@ -233,23 +233,23 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:762
 msgid "Number of columns"
-msgstr ""
+msgstr "Sütun sayısı"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:763
 msgid "Number of columns to display"
-msgstr ""
+msgstr "Gösterilecek sütunların sayısı"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:780
 msgid "Width for each item"
-msgstr ""
+msgstr "Her öğe için genişlik"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr ""
+msgstr "Her öğe için kullanılacak genişlik"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
-msgstr ""
+msgstr "Aralık"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:797
 msgid "Space which is inserted between cells of an item"
@@ -257,7 +257,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
-msgstr ""
+msgstr "Satır Aralığı"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
@@ -265,7 +265,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
-msgstr ""
+msgstr "Sütun Aralığı"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
@@ -290,15 +290,15 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:877
 msgid "Reorderable"
-msgstr ""
+msgstr "Sıralanabilir"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:878
 msgid "View is reorderable"
-msgstr ""
+msgstr "Görünüm yeniden sıralanabilir"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:885
 msgid "Enable Search"
-msgstr ""
+msgstr "Aramayı Etkinleştir"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:886
 msgid "View allows user to search through columns interactively"
@@ -306,7 +306,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:893
 msgid "Search Column"
-msgstr ""
+msgstr "Arama Sütunu"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:894
 msgid "Model column to search through during interactive search"
@@ -330,7 +330,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:939
 msgid "Cell Area"
-msgstr ""
+msgstr "Hücre Alanı"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:940
 msgid "The GtkCellArea used to layout cells"
@@ -342,7 +342,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:954
 msgid "Color of the selection box"
-msgstr ""
+msgstr "Seçim kutusu rengi"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:960
 msgid "Selection Box Alpha"
@@ -350,7 +350,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:961
 msgid "Opacity of the selection box"
-msgstr ""
+msgstr "Seçim kutusu matlığı"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
@@ -387,7 +387,7 @@ msgstr "Varsayılan olarak ayarla"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1841
 msgid "Open with…"
-msgstr ""
+msgstr "İle aç..."
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:3078
 msgid "Set Color:"
@@ -407,7 +407,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr ""
+msgstr "_Arkaplan Olarak Ayarla"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
@@ -500,7 +500,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:335
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Kişisel klasörünüzü açın"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:377
 msgid "Trash"
@@ -520,7 +520,7 @@ msgstr "Yerel bölüm ve aygıtlarınız"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:401
 msgid "File System"
-msgstr ""
+msgstr "Dosya Sistemi"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:403
 msgid "Open the contents of the File System"
@@ -530,7 +530,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:487
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "%s'i bağla ve aç"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:595
 msgid "Network"
@@ -558,7 +558,7 @@ msgstr "_Durdur"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1599
 msgid "_Power On"
-msgstr ""
+msgstr "_Güç Açık"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Safely Remove Drive"
@@ -566,27 +566,27 @@ msgstr "_Sürücüyü Güvenle Kaldır"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1603
 msgid "_Connect Drive"
-msgstr ""
+msgstr "Sürücüyü _Bağla"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1604
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "Sürücünün Bağlantısını _Kes"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1607
 msgid "_Start Multi-disk Device"
-msgstr ""
+msgstr "_Çoklu-disk Aygıtını Başlat"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1608
 msgid "_Stop Multi-disk Device"
-msgstr ""
+msgstr "Çoklu-disk Aygıtını _Durdur"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1612
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "Sürücü Kilidini K_aldır"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1613
 msgid "_Lock Drive"
-msgstr ""
+msgstr "Sürücüyü K_ilitle"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1687
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2234
@@ -617,7 +617,7 @@ msgstr "_Aç"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2390
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Yeni S_ekmede Aç"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2397
 msgid "Open in New _Window"
@@ -651,7 +651,7 @@ msgstr "Çöpü _Boşalt"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
