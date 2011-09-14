@@ -7,12 +7,14 @@ pkg_check_modules(DEPS REQUIRED
 set(CFLAGS
 	${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
 )
+include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
 vala_precompile(VALA_C
     plugin.vala
 CUSTOM_VAPIS
+    ${CMAKE_BINARY_DIR}/marlinplugins/marlinplugins.vapi
     ${CMAKE_SOURCE_DIR}/libcore/marlin-core.vapi
     ${CMAKE_BINARY_DIR}/libwidgets/marlinwidgets.vapi
 PACKAGES

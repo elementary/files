@@ -15,14 +15,14 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 #include "marlin-plugin-manager.h"
+MarlinPluginManager* plugins = NULL;
 
+#if 0
 
 
 G_DEFINE_TYPE (MarlinPluginManager, marlin_plugin_manager, G_TYPE_OBJECT);
 
-MarlinPluginManager* plugins = NULL;
 
 static void marlin_plugin_manager_init (MarlinPluginManager *object)
 {
@@ -51,6 +51,7 @@ MarlinPluginManager* marlin_plugin_manager_new (void)
 
 gboolean marlin_plugin_manager_disable_plugin(MarlinPluginManager* plugins, const gchar* path)
 {
+#if 0
     GList* all_plugins = g_list_first(plugins->plugins_list);
     while(all_plugins != NULL)
     {
@@ -62,6 +63,7 @@ gboolean marlin_plugin_manager_disable_plugin(MarlinPluginManager* plugins, cons
         }
         all_plugins = g_list_next(all_plugins);
     }
+#endif
     return FALSE;
 }
 
@@ -73,6 +75,7 @@ gboolean marlin_plugin_manager_disable_plugin(MarlinPluginManager* plugins, cons
  **/
 void marlin_plugin_manager_load_plugin(MarlinPluginManager* plugins, const gchar* path)
 {
+#if 0
     /* We should use GOF File here */
     GFile* dir = g_file_new_for_path(PLUGIN_DIR);
     GFileEnumerator* enumerator = g_file_enumerate_children(dir, "standard::*", 0, NULL, NULL);
@@ -105,7 +108,7 @@ void marlin_plugin_manager_load_plugin(MarlinPluginManager* plugins, const gchar
             if(!g_strcmp0(keyfile_value, path))
             {
                 marlin_plugin_manager_add_plugin(plugins, plugin_path);
-                g_warning("Loading: %s", plugin_path);
+                g_debug("Loading: %s", plugin_path);
                 break;
             }
             g_key_file_free(keyfile);
@@ -118,19 +121,26 @@ void marlin_plugin_manager_load_plugin(MarlinPluginManager* plugins, const gchar
 
     g_object_unref(dir);
     g_object_unref(enumerator);
+#endif
 }
 
 void marlin_plugin_manager_add_plugin(MarlinPluginManager* plugins, const gchar* path)
 {
+#if 0
     MarlinPlugin* plugin = marlin_plugin_new(path);
     if(plugin != NULL)
     {
         plugins->plugins_list = g_list_append(plugins->plugins_list, plugin);
     }
+#endif
 }
 
 void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin)
 {
+    GIOModule* module = NULL;
+    /*GList* all_modules = g_io_modules_load_all_in_directory("/usr/local/lib/marlin/gioplugins/");
+    g_assert_cmpint(g_list_length(all_modules), ==, 1);*/
+#if 0
     /* FIXME: We should use GOF File here */
     GFile* dir = g_file_new_for_path(PLUGIN_DIR);
     GFileEnumerator* enumerator = g_file_enumerate_children(dir, "standard::*", 0, NULL, NULL);
@@ -163,11 +173,13 @@ void marlin_plugin_manager_load_plugins(MarlinPluginManager* plugin)
     }
     g_object_unref(dir);
     g_object_unref(enumerator);
+#endif
 }
 
 /* This functions needs some tests, it is just a draft */
 GList* marlin_plugin_manager_get_available_plugins(void)
 {
+#if 0
     GList* plugins = NULL;
     /* We should use GOF File here */
     GFile* dir = g_file_new_for_path(PLUGIN_DIR);
@@ -208,6 +220,8 @@ GList* marlin_plugin_manager_get_available_plugins(void)
     g_object_unref(enumerator);
 
     return plugins;
+#endif
+    return NULL;
 }
 
 void marlin_plugin_manager_interface_loaded(MarlinPluginManager* plugin, GtkWidget* win)
@@ -227,15 +241,16 @@ void marlin_plugin_manager_hook_context_menu(MarlinPluginManager* plugin, GtkWid
 
 void marlin_plugin_manager_hook_send(MarlinPluginManager* plugin, void* user_data, int hook)
 {
-    g_warning("Plugin Hook: %d", hook);
+    g_debug("Plugin Hook: %d", hook);
 
     GList* item = g_list_first(plugin->plugins_list);
 
     while(item != NULL)
     {
-        g_assert(MARLIN_PLUGIN(item->data)->hook_receive != NULL);
-        MARLIN_PLUGIN(item->data)->hook_receive(user_data, hook);
+        /*g_assert(MARLIN_PLUGIN(item->data)->hook_receive != NULL);
+        MARLIN_PLUGIN(item->data)->hook_receive(user_data, hook);*/
         item = g_list_next(item);
     }
 
 }
+#endif

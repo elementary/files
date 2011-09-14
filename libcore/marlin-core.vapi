@@ -12,6 +12,15 @@ namespace Config {
       public const string VERSION;*/
 }
 
+[CCode (cprefix = "FM", lower_case_cprefix = "fm_", cheader_filename = "fm-list-model.h")]
+namespace FM
+{
+    public class ListModel : Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.TreeSortable
+    {
+        public void add_file(GOF.File file, GOF.Directory.Async dir);
+    }
+}
+
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
 namespace Preferences {
     public GLib.Settings settings;
@@ -23,6 +32,12 @@ namespace Preferences {
 namespace Marlin.FileOperations {
     static void empty_trash(Gtk.Widget widget);
 }
+
+/*[CCode (cprefix = "MarlinTrashMonitor", lower_case_cprefix = "marlin_trash_monitor_", cheader_filename = "marlin-trash-monitor.h")]
+namespace Marlin.TrashMonitor {
+    static bool is_empty ();
+}*/
+
 
 public static uint action_new (GLib.Type type, string signal_name);
 
@@ -49,25 +64,18 @@ namespace Nautilus {
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
-    [CCode (cheader_filename = "marlin-plugin-manager.h")]
-    class PluginManager : Object
+    [CCode (cheader_filename = "marlin-abstract-sidebar.h")]
+    public abstract class AbstractSidebar : Gtk.ScrolledWindow
     {
-        public void hook_send(void* user_data, int hook);
-        public void add_plugin(string name);
-        public void load_plugin(string name);
-        public bool disable_plugin(string name);
-        public static List<string> get_available_plugins(); 
+        public void add_extra_item(string text);
     }
-    [CCode (cheader_filename = "marlin-plugins-hook.h")]
-    public enum PluginHook
+    [CCode (cheader_filename = "marlin-trash-monitor.h")]
+    public abstract class TrashMonitor : Object
     {
-        INTERFACE,
-        MENU,
-        UI,
-        FINISH,
-        DIRECTORY, /* {window, viewcontainer, directory name } */
-        FILE,
-        INIT
+        public static TrashMonitor get();
+        public static bool is_empty ();
+
+        public signal void trash_state_changed (bool new_state);
     }
 }
 
@@ -99,6 +107,7 @@ namespace GOF {
 
         public bool is_mounted;
         public bool exists;
+        public void update_icon(int size);
     }
 
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]
@@ -147,5 +156,3 @@ namespace GOF {
     }
 }
 
-[CCode (cheader_filename = "marlin-plugin-manager.h")]
-Marlin.PluginManager plugins;

@@ -7,6 +7,7 @@ include(ValaPrecompile)
 # pkgconfig, real C code
 
 include_directories(${CMAKE_BINARY_DIR})
+include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
@@ -56,6 +57,7 @@ vala_precompile(VALA_C
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_SOURCE_DIR}/../libcore/marlin-core.vapi
     ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
+    ${CMAKE_BINARY_DIR}/marlinplugins/marlinplugins.vapi
     marlin.vapi
 PACKAGES
     gtk+-3.0
@@ -72,7 +74,6 @@ add_executable(marlin
     mysignal.c
     gossip-cell-renderer-expander.c
     marlin-enum-types.c
-    marlin-trash-monitor.c
     marlin-bookmark.c
     marlin-bookmark-list.c
     marlin-dnd.c
@@ -86,7 +87,6 @@ add_executable(marlin
     fm-directory-view.c
     exo-icon-view.c
     exo-tree-view.c
-    fm-list-model.c
     marlin-main.c
     fm-icon-view.c
     fm-list-view.c
@@ -97,66 +97,14 @@ add_executable(marlin
     marlin-progress-ui-handler.c
     marlin-progress-info-widget.c
     ${VALA_C} )
-target_link_libraries(marlin marlincore marlinwidgets ${DEPS_LIBRARIES})
+
+
+SET_TARGET_PROPERTIES(marlin PROPERTIES LINK_DEPENDS marlinplugins)
+
+add_definitions("-DPLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/marlin/plugins/\"")
+target_link_libraries(marlin marlincore marlinwidgets marlinplugins ${DEPS_LIBRARIES})
 install(TARGETS marlin RUNTIME DESTINATION bin)
 install(FILES marlin-ui.xml DESTINATION share/marlin/ui/)
 install(FILES fm-directory-view-ui.xml DESTINATION share/marlin/ui/)
 include(Tests)
-#vala_precompile(VALA_TESTS
-
-#    View/tests/tests-pathbar.vala
-
-#    View/LocationBar.vala
-
-#    View/Window.vala
-
-#    View/Chrome/TopMenu.vala
-
-#    View/ViewContainer.vala
-
-#    View/ViewMode.vala
-
-#    View/Chrome/ViewSwicher.vala
-
-#    View/ContextView.vala
-
-#    View/Browser.vala
-
-#    View/Resources.vala
-
-#    View/SettingsDialog.vala
-
-#    View/DirectoryNotFound.vala
-
-#CUSTOM_VAPIS
-
-#    ${CMAKE_CURRENT_SOURCE_DIR}/../libcore/marlin-core.vapi
-
-#    ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
-
-#    marlin.vapi
-
-#PACKAGES
-
-#    gtk+-3.0
-
-#    gio-2.0
-
-#    posix
-
-#    gee-1.0
-
-#OPTIONS
-
-#    --thread)
-
-#add_executable(marlin_c_tests
-
-#    ${VALA_TESTS}
-
-#)
-
-#add_test_executable(marlin_c_tests)
-
-#target_link_libraries(marlin_c_tests marlincore ${DEPS_LIBRARIES})
 

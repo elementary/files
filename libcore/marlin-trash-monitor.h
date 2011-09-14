@@ -56,9 +56,9 @@ struct MarlinTrashMonitorClass {
 GType	            marlin_trash_monitor_get_type                   (void);
 
 MarlinTrashMonitor  *marlin_trash_monitor_get                       (void);
-gboolean	    marlin_trash_monitor_is_empty                   (void);
+gboolean	        marlin_trash_monitor_is_empty                   (void);
 GIcon               *marlin_trash_monitor_get_icon                  (void);
 
-void		    marlin_trash_monitor_add_new_trash_directories  (void);
+void		        marlin_trash_monitor_add_new_trash_directories  (void);
 
 #endif

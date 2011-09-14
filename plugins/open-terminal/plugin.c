@@ -18,7 +18,7 @@
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include "gof-file.h"
-#include "marlin-plugins-hook.h"
+#include "marlinplugins.h"
 
 static gchar* current_path = NULL;
 static gboolean menu_added = FALSE;
@@ -26,6 +26,13 @@ static GSettings* settings = NULL;
 static GList *menus = NULL;
 static GtkWidget *menu;
 
+
+MarlinPluginsBase* module_init()
+{
+    return NULL;
+}
+
+/*
 void hook_interface_loaded(void* win_)
 {
     printf("Interface Loaded\n");
@@ -99,5 +106,5 @@ void receive_all_hook(void* user_data, int hook)
     default:
         g_debug("Don't know this hook: %d", hook);
     }
-}
+}*/
 

@@ -16,6 +16,11 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "marlin-plugins-hook.h"
+#include "marlinplugins.h"
+
+#if 0
+
 #ifndef _MARLIN_PLUGIN_MANAGER_H_
 #define _MARLIN_PLUGIN_MANAGER_H_
 
@@ -23,7 +28,6 @@
 #include <gtk/gtk.h>
 #include "marlin-plugin.h"
 #include "gof-file.h"
-#include "marlin-plugins-hook.h"
 
 G_BEGIN_DECLS
 
@@ -57,8 +61,9 @@ void marlin_plugin_manager_directory_loaded(MarlinPluginManager* plugin, GOFFile
 void marlin_plugin_manager_hook_send(MarlinPluginManager* plugin, void* user_data, int hook);
 void marlin_plugin_manager_add_plugin(MarlinPluginManager* plugins, const gchar* path);
 gboolean marlin_plugin_manager_disable_plugin(MarlinPluginManager* plugins, const gchar* path);
-extern MarlinPluginManager* plugins;
 
 G_END_DECLS
 
 #endif /* _MARLIN_PLUGIN_MANAGER_H_ */
+#endif
+extern MarlinPluginManager* plugins;

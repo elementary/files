@@ -87,10 +87,8 @@ struct FMDirectoryViewClass {
     void    (* add_file) 		 (FMDirectoryView *view, 
                                           GOFFile *file,
                                           GOFDirectoryAsync *directory);
-    void    (* remove_file)		 (FMDirectoryView *view, 
-                                          GOFFile *file,
+    void    (* directory_loaded) (FMDirectoryView *view, 
                                           GOFDirectoryAsync *directory);
-    void    (* colorize_selection)	 (FMDirectoryView *view, int color);
     void    (* sync_selection)	         (FMDirectoryView *view);
 
 
@@ -426,5 +424,7 @@ void    fm_directory_view_unfreeze_updates (FMDirectoryView *view);
 void    fm_directory_view_zoom_in (FMDirectoryView *view);
 void    fm_directory_view_zoom_out (FMDirectoryView *view);
 void    fm_directory_view_zoom_normal (FMDirectoryView *view);
+gboolean fm_directory_view_get_loading (FMDirectoryView *view);
+void fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor);
 
 #endif /* FM_DIRECTORY_VIEW_H */

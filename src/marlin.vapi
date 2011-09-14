@@ -8,7 +8,7 @@ namespace FM {
     namespace Directory {
         [CCode (cheader_filename = "fm-directory-view.h")]
         public class View : Gtk.ScrolledWindow {
-            public signal void colorize_selection (int color);
+            public void colorize_selection (int color);
             public signal void sync_selection ();
             public void merge_menus ();
             public void unmerge_menus ();
@@ -91,3 +91,5 @@ namespace Marlin {
     }
 }
 
+[CCode (cheader_filename = "marlin-plugin-manager.h")]
+Marlin.PluginManager plugins;

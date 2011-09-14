@@ -82,7 +82,7 @@ eel_gdk_pixbuf_load_from_stream_at_size (GInputStream  *stream, int size)
             break;
         }
         if (!gdk_pixbuf_loader_write (loader,
-                                      buffer,
+                                      (const guchar *) buffer,
                                       bytes_read,
                                       NULL)) {
             break;

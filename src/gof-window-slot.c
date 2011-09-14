@@ -77,11 +77,10 @@ gof_window_slot_finalize (GObject *object)
     GOFWindowSlot *slot = GOF_WINDOW_SLOT (object);
 
     //load_dir_async_cancel(slot->directory);
-    g_warning ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
+    g_debug ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
     g_object_unref(slot->directory);
     g_object_unref(slot->location);
     G_OBJECT_CLASS (parent_class)->finalize (object);
-    printf ("test %s\n", G_STRFUNC);
     /* avoid a warning in vala code: slot is freed in ViewContainer */
     //slot = NULL;
 }
@@ -146,7 +145,7 @@ gof_window_slot_new (GFile *location, GtkEventBox *ctab)
     slot->ctab = ctab;
 
     slot->directory = gof_directory_async_new_from_gfile (slot->location);
-    g_message ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
+    g_debug ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
 
     return slot;
 }

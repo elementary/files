@@ -23,7 +23,6 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 
-//#include "gof-directory-async.h"
 #include "nautilus-cell-renderer-text-ellipsized.h"
 #include "marlin-global-preferences.h"
 #include "eel-gtk-extensions.h"
@@ -37,7 +36,6 @@ enum
 
 struct FMColumnsViewDetails {
     GList       *selection;
-    GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
 
     GtkCellEditable     *editable_widget;
     GtkTreeViewColumn   *file_name_column;
@@ -53,16 +51,9 @@ struct FMColumnsViewDetails {
 /* Wait for the rename to end when activating a file being renamed */
 #define WAIT_FOR_RENAME_ON_ACTIVATE 200
 
-//static gchar *col_title = _("Filename");
-
-//G_DEFINE_TYPE (FMColumnsView, fm_columns_view, G_TYPE_OBJECT)
-/*#define GOF_DIRECTORY_ASYNC_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, GOF_TYPE_DIRECTORY_ASYNC, GOFDirectoryAsyncPrivate))*/
-
 G_DEFINE_TYPE (FMColumnsView, fm_columns_view, FM_TYPE_DIRECTORY_VIEW);
 
 #define parent_class fm_columns_view_parent_class
-
 
 struct UnloadDelayData {
     FMColumnsView *view;
@@ -77,42 +68,26 @@ static GList    *fm_columns_view_get_selected_paths (FMDirectoryView *view);
 static void     fm_columns_view_select_path (FMDirectoryView *view, GtkTreePath *path);
 static void     fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing);
 
-//static void     fm_columns_view_clear (FMColumnsView *view);
-
-#if 0
-static void
-row_expanded_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, gpointer callback_data)
+static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsView* view)
 {
-    FMColumnsView *view;
-    GOFDirectoryAsync *directory;
-
-    view = FM_COLUMNS_VIEW (callback_data);
-
-    if (fm_list_model_load_subdirectory (view->model, path, &directory)) {
-        fm_directory_view_add_subdirectory (FM_DIRECTORY_VIEW (view), directory);
+    g_return_if_fail(FM_IS_COLUMNS_VIEW(view));
+    GtkTreeIter iter;
+    gboolean folder_empty = !gtk_tree_model_get_iter_first(GTK_TREE_MODEL(view->model), &iter);
+    if(folder_empty && !fm_directory_view_get_loading(FM_DIRECTORY_VIEW(view)))
+    {
+        PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), _("This folder is empty."));
+        PangoRectangle extents;
+        /* Get hayout height and width */
+        pango_layout_get_extents(layout, NULL, &extents);
+        gdouble width = pango_units_to_double(extents.width);
+        gdouble height = pango_units_to_double(extents.height);
+        gtk_render_layout(gtk_widget_get_style_context(GTK_WIDGET(view)), cr,
+                (double)gtk_widget_get_allocated_width(GTK_WIDGET(view))/2 - width/2,
+                (double)gtk_widget_get_allocated_height(GTK_WIDGET(view))/2 - height/2,
+                layout);
     }
+    return FALSE;
 }
-
-static void
-row_collapsed_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, gpointer callback_data)
-{
-    FMColumnsView *view;
-    struct UnloadDelayData *unload_data;
-
-    view = FM_COLUMNS_VIEW (callback_data);
-    unload_data = g_new (struct UnloadDelayData, 1);
-    unload_data->view = view;
-
-    fm_list_model_get_directory_file (view->model, path, &unload_data->directory, &unload_data->file);
-
-    //log_printf (LOG_LEVEL_UNDEFINED, "collapsed %s %s\n", unload_data->file->name, gof_directory_get_uri(unload_data->directory));
-    g_timeout_add_seconds (COLLAPSE_TO_UNLOAD_DELAY,
-                           unload_file_timeout,
-                           unload_data);
-
-    //fm_list_model_unload_subdirectory (view->model, iter);
-}
-#endif
 
 static void
 show_selected_files (GOFFile *file)
@@ -138,9 +113,6 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 
     /* setup the current active slot */
     fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
-    //fm_directory_view_unmerge_menus (FM_DIRECTORY_VIEW (view));
-    /*g_signal_emit_by_name (FM_DIRECTORY_VIEW (view)slot->mwcols->active_slot, "inactive");
-    fm_directory_view_merge_menus (FM_DIRECTORY_VIEW (view));*/
     fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view));
 
     if (view->details->selection == NULL) 
@@ -161,28 +133,6 @@ row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
     g_message ("%s\n", G_STRFUNC);
     fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view));
 }
-
-static void
-fm_columns_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
-{
-    GList *file_list;
-    GOFFile *file;
-    char *uri;
-
-    file_list = fm_columns_view_get_selection (view);
-    for (; file_list != NULL; file_list=file_list->next)
-    {
-        file = file_list->data;
-        //log_printf (LOG_LEVEL_UNDEFINED, "colorize %s %d\n", file->name, ncolor);
-        g_free(file->color);
-        file->color = g_strdup(tags_colors[ncolor]);
-        //TODO check mem alloc
-        uri = g_file_get_uri(file->location);
-        marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
-        g_free (uri);
-    }
-}
-
 
 static void
 fm_columns_view_rename_callback (GOFFile *file,
@@ -236,12 +186,6 @@ cell_renderer_editing_started_cb (GtkCellRenderer *renderer,
 
 	g_signal_connect (entry, "focus-out-event",
                       G_CALLBACK (editable_focus_out_cb), col_view);
-
-    //TODO
-	/*nautilus_clipboard_set_up_editable
-		(GTK_EDITABLE (entry),
-		 nautilus_view_get_ui_manager (NAUTILUS_VIEW (col_view)),
-		 FALSE);*/
 }
 
 static void
@@ -496,18 +440,6 @@ button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumn
     return TRUE;
 }
 
-/*static gboolean
-  popup_menu_callback (GtkWidget *widget, gpointer callback_data)
-  {
-  FMListView *view;
-
-  view = FM_LIST_VIEW (callback_data);
-
-  do_popup_menu (widget, view, NULL);
-
-  return TRUE;
-  }*/
-
 static gboolean
 key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_data)
 {
@@ -598,21 +530,7 @@ filename_cell_data_func (GtkTreeViewColumn *column,
                         FM_LIST_MODEL_COLOR, &color,
                         -1);
 
-    /*if (click_policy_auto_value == NAUTILUS_CLICK_POLICY_SINGLE) {
-      path = gtk_tree_model_get_path (model, iter);
-
-      if (view->details->hover_path == NULL ||
-      gtk_tree_path_compare (path, view->details->hover_path)) {
-      underline = PANGO_UNDERLINE_NONE;
-      } else {
-      underline = PANGO_UNDERLINE_SINGLE;
-      }
-
-      gtk_tree_path_free (path);
-      } else {*/
     underline = PANGO_UNDERLINE_NONE;
-    //underline = PANGO_UNDERLINE_SINGLE;
-    //}
 
     g_object_set (G_OBJECT (renderer),
                   "text", text,
@@ -626,25 +544,15 @@ filename_cell_data_func (GtkTreeViewColumn *column,
 static void
 create_and_set_up_tree_view (FMColumnsView *view)
 {
-    //int k;
     GtkTreeViewColumn       *col;
     GtkCellRenderer         *renderer;
-    //GtkTreeSortable         *sortable;
-    //GtkBindingSet *binding_set;
 
     view->model = FM_DIRECTORY_VIEW (view)->model;
     g_object_set (G_OBJECT (view->model), "has-child", FALSE, NULL);
 
     view->tree = g_object_new (GTK_TYPE_TREE_VIEW, "model", GTK_TREE_MODEL (view->model),
                                "headers-visible", FALSE, NULL);
-    //gtk_tree_view_set_rules_hint(GTK_TREE_VIEW (view->tree), TRUE);
-    //gtk_tree_view_set_fixed_height_mode (GTK_TREE_VIEW (view->tree), TRUE);
-    //gtk_tree_view_set_enable_search (GTK_TREE_VIEW (view->tree), FALSE);
     gtk_tree_view_set_search_column (view->tree, FM_LIST_MODEL_FILENAME);
-    //gtk_tree_view_set_reorderable (view->tree, FALSE);
-
-    /*binding_set = gtk_binding_set_by_class (GTK_WIDGET_GET_CLASS (view->details->tree_view));
-      gtk_binding_entry_remove (binding_set, GDK_BackSpace, 0);*/
 
     g_signal_connect_object (gtk_tree_view_get_selection (view->tree), "changed",
                              G_CALLBACK (list_selection_changed_callback), view, 0);
@@ -657,25 +565,16 @@ create_and_set_up_tree_view (FMColumnsView *view)
                              G_CALLBACK (key_press_callback), view, 0);
     g_signal_connect_object (view->tree, "row-activated",
                              G_CALLBACK (row_activated_callback), view, 0);
+    g_signal_connect (view->tree, "draw",
+                             G_CALLBACK (fm_columns_view_draw), view);
 
     gtk_tree_selection_set_mode (gtk_tree_view_get_selection (view->tree), GTK_SELECTION_MULTIPLE);
 
     col = gtk_tree_view_column_new ();
     view->details->file_name_column = col;
     gtk_tree_view_column_set_sort_column_id  (col, FM_LIST_MODEL_FILENAME);
-    //gtk_tree_view_column_set_resizable (col, TRUE);
-    //gtk_tree_view_column_set_title (col, col_title);
     gtk_tree_view_column_set_expand (col, TRUE);
 
-#if 0
-    renderer = gtk_cell_renderer_pixbuf_new( ); 
-    gtk_tree_view_column_pack_start (col, renderer, FALSE);
-    gtk_tree_view_column_set_attributes (col,
-                                         renderer,
-                                         "pixbuf", FM_LIST_MODEL_ICON,
-                                         //"pixbuf_emblem", FM_LIST_MODEL_SMALLEST_EMBLEM_COLUMN,
-                                         NULL);
-#endif
     /* add the icon renderer */
     gtk_tree_view_column_pack_start (col, FM_DIRECTORY_VIEW (view)->icon_renderer, FALSE);
     gtk_tree_view_column_set_attributes (col, FM_DIRECTORY_VIEW (view)->icon_renderer,
@@ -699,84 +598,6 @@ create_and_set_up_tree_view (FMColumnsView *view)
     gtk_widget_show (GTK_WIDGET (view->tree));
     gtk_container_add (GTK_CONTAINER (view), GTK_WIDGET (view->tree));
 }
-
-static void
-fm_columns_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
-{
-    FMListModel *model;
-
-    model = FM_COLUMNS_VIEW (view)->model;
-    fm_list_model_add_file (model, file, directory);
-}
-
-static void
-fm_columns_view_remove_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
-{
-    printf ("%s %s\n", G_STRFUNC, file->uri);
-    GtkTreePath *path;
-    GtkTreePath *file_path;
-    GtkTreeIter iter;
-    GtkTreeIter temp_iter;
-    GtkTreeRowReference* row_reference;
-    FMColumnsView *col_view;
-    GtkTreeModel* tree_model; 
-    GtkTreeSelection *selection;
-
-    path = NULL;
-    row_reference = NULL;
-    col_view = FM_COLUMNS_VIEW (view);
-    tree_model = GTK_TREE_MODEL(col_view->model);
-
-    if (fm_list_model_get_tree_iter_from_file (col_view->model, file, directory, &iter))
-    {
-        selection = gtk_tree_view_get_selection (col_view->tree);
-        file_path = gtk_tree_model_get_path (tree_model, &iter);
-
-        if (gtk_tree_selection_path_is_selected (selection, file_path)) {
-            /* get reference for next element in the list view. If the element to be deleted is the 
-             * last one, get reference to previous element. If there is only one element in view
-             * no need to select anything.
-             */
-            temp_iter = iter;
-
-            if (gtk_tree_model_iter_next (tree_model, &iter)) {
-                path = gtk_tree_model_get_path (tree_model, &iter);
-                row_reference = gtk_tree_row_reference_new (tree_model, path);
-            } else {
-                path = gtk_tree_model_get_path (tree_model, &temp_iter);
-                if (gtk_tree_path_prev (path)) {
-                    row_reference = gtk_tree_row_reference_new (tree_model, path);
-                }
-            }
-            gtk_tree_path_free (path);
-        }
-
-        gtk_tree_path_free (file_path);
-
-        fm_list_model_remove_file (col_view->model, file, directory);
-
-        if (gtk_tree_row_reference_valid (row_reference)) {
-            if (col_view->details->new_selection_path) {
-                gtk_tree_path_free (col_view->details->new_selection_path);
-            }
-            col_view->details->new_selection_path = gtk_tree_row_reference_get_path (row_reference);
-        }
-
-        if (row_reference) {
-            gtk_tree_row_reference_free (row_reference);
-        }
-    }   
-}
-
-
-/*static void
-  fm_columns_view_clear (FMColumnsView *view)
-  {
-  if (view->model != NULL) {
-//stop_cell_editing (view);
-fm_list_model_clear (view->model);
-}
-}*/
 
 static void
 get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
@@ -901,12 +722,9 @@ fm_columns_view_finalize (GObject *object)
 
     g_warning ("%s\n", G_STRFUNC);
 
-    if (view->details->new_selection_path) 
-        gtk_tree_path_free (view->details->new_selection_path);
     if (view->details->selection)
         gof_file_list_free (view->details->selection);
 
-    g_object_unref (view->model);
     g_free (view->details);
     G_OBJECT_CLASS (fm_columns_view_parent_class)->finalize (object); 
 }
@@ -992,10 +810,6 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
 
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
-    fm_directory_view_class->add_file = fm_columns_view_add_file;
-    fm_directory_view_class->remove_file = fm_columns_view_remove_file;
-    fm_directory_view_class->colorize_selection = fm_columns_view_colorize_selected_items;
-    //fm_directory_view_class->sync_selection = fm_columns_view_sync_selection;
     fm_directory_view_class->get_selection = fm_columns_view_get_selection; 
     fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer;
     fm_directory_view_class->get_selected_paths = fm_columns_view_get_selected_paths;

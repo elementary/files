@@ -92,30 +92,7 @@ fm_icon_view_selection_changed (GtkIconView *iconview, gpointer user_data)
 static void
 fm_icon_view_item_activated (ExoIconView *exo_icon, GtkTreePath *path, FMIconView *view)
 {
-    g_message ("%s\n", G_STRFUNC);
-    //activate_selected_items (view);
     fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view));    
-}
-
-static void
-fm_icon_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
-{
-    GList *file_list;
-    GOFFile *file;
-    char *uri;
-
-    file_list = fm_icon_view_get_selection (view);
-
-    for (; file_list != NULL; file_list=file_list->next)
-    {
-        file = file_list->data;
-        g_free(file->color);
-        file->color = g_strdup(tags_colors[ncolor]);
-        uri = g_file_get_uri(file->location);
-
-        marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
-        g_free (uri);
-    }
 }
 
 static void
@@ -468,34 +445,25 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
     return handled;
 }
 
-#if 0
-static void
-fm_icon_view_notify_model (ExoIconView *exo_icon, GParamSpec *pspec, FMIconView *view)
+static gboolean fm_icon_view_draw(GtkWidget* view_, cairo_t* cr, FMIconView* view)
 {
-    /* We need to set the search column here, as ExoIconView resets it
-     * whenever a new model is set.
-     */
-    exo_icon_view_set_search_column (exo_icon, FM_LIST_MODEL_FILENAME);
-}
-#endif
-
-
-static void
-fm_icon_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
-{
-    FMListModel *model;
-
-    model = FM_ICON_VIEW (view)->model;
-    fm_list_model_add_file (model, file, directory);
-}
-
-//TODO move this to fm_directory_view
-static void
-fm_icon_view_remove_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
-{
-    FMIconView *icon_view = FM_ICON_VIEW (view);
-        
-    fm_list_model_remove_file (icon_view->model, file, directory);
+    g_return_if_fail(FM_IS_ICON_VIEW(view));
+    GtkTreeIter iter;
+    gboolean folder_empty = !gtk_tree_model_get_iter_first(GTK_TREE_MODEL(view->model), &iter);
+    if(folder_empty && !fm_directory_view_get_loading(FM_DIRECTORY_VIEW(view)))
+    {
+        PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), _("This folder is empty."));
+        PangoRectangle extents;
+        /* Get hayout height and width */
+        pango_layout_get_extents(layout, NULL, &extents);
+        gdouble width = pango_units_to_double(extents.width);
+        gdouble height = pango_units_to_double(extents.height);
+        gtk_render_layout(gtk_widget_get_style_context(GTK_WIDGET(view)), cr,
+                (double)gtk_widget_get_allocated_width(GTK_WIDGET(view))/2 - width/2,
+                (double)gtk_widget_get_allocated_height(GTK_WIDGET(view))/2 - height/2,
+                layout);
+    }
+    return FALSE;
 }
 
 static GList *
@@ -624,7 +592,6 @@ fm_icon_view_finalize (GObject *object)
         gof_file_list_free (view->details->selection);
 
 
-    g_object_unref (view->model);
     g_free (view->details);
     G_OBJECT_CLASS (fm_icon_view_parent_class)->finalize (object); 
 }
@@ -691,7 +658,8 @@ fm_icon_view_init (FMIconView *view)
                              G_CALLBACK (button_press_callback), view, 0);
     g_signal_connect_object (view->icons, "key_press_event",
                              G_CALLBACK (key_press_callback), view, 0);
-
+    g_signal_connect (view->icons, "draw",
+                             G_CALLBACK (fm_icon_view_draw), view);
     gtk_widget_show (GTK_WIDGET (view->icons));
     gtk_container_add (GTK_CONTAINER (view), GTK_WIDGET (view->icons));
 }
@@ -772,9 +740,6 @@ fm_icon_view_class_init (FMIconViewClass *klass)
 
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
-    fm_directory_view_class->add_file = fm_icon_view_add_file;
-    fm_directory_view_class->remove_file = fm_icon_view_remove_file;
-    fm_directory_view_class->colorize_selection = fm_icon_view_colorize_selected_items;        
     fm_directory_view_class->sync_selection = fm_icon_view_sync_selection;
     fm_directory_view_class->get_selection = fm_icon_view_get_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_icon_view_get_selection_for_file_transfer;

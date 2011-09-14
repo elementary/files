@@ -34,7 +34,7 @@
 //#include <glib/gi18n.h>
 //#include <libnautilus-private/nautilus-dnd.h>
 #include "fm-list-model.h"
-#include "marlin-tags.h"
+//#include "marlin-tags.h"
 
 enum {
     SUBDIRECTORY_UNLOADED,
@@ -1089,7 +1089,7 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     char *uri = g_file_get_uri(file->location);
     //file->color = tags_colors[marlin_view_tags_get_color (tags, uri, NULL)];
     //tags_colors[marlin_view_tags_get_color (tags, uri, file, NULL)];
-    marlin_view_tags_get_color (tags, uri, file, NULL, NULL);
+    //marlin_view_tags_get_color (tags, uri, file, NULL, NULL);
     g_free (uri);
 
     //file_entry_free (file_entry);
@@ -1705,7 +1705,7 @@ fm_list_model_finalize (GObject *object)
 {
     FMListModel *model = FM_LIST_MODEL (object);
 
-    g_warning ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
     g_free (model->details);
 
     G_OBJECT_CLASS (fm_list_model_parent_class)->finalize (object);

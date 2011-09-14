@@ -41,29 +41,16 @@
 #include "marlin-bookmark.h"
 #include "marlin-trash-monitor.h"
 #include "marlin-dnd.h"
+#include "marlin-plugin-manager.h"
 
 #define EJECT_BUTTON_XPAD 4
 #define TEXT_XPAD 5
 #define ICON_XPAD 6
 
-enum {
-    PLACES_SIDEBAR_COLUMN_ROW_TYPE,
-    PLACES_SIDEBAR_COLUMN_URI,
-    PLACES_SIDEBAR_COLUMN_DRIVE,
-    PLACES_SIDEBAR_COLUMN_VOLUME,
-    PLACES_SIDEBAR_COLUMN_MOUNT,
-    PLACES_SIDEBAR_COLUMN_NAME,
-    PLACES_SIDEBAR_COLUMN_ICON,
-    PLACES_SIDEBAR_COLUMN_INDEX,
-    PLACES_SIDEBAR_COLUMN_EJECT,
-    PLACES_SIDEBAR_COLUMN_NO_EJECT,
-    PLACES_SIDEBAR_COLUMN_BOOKMARK,
-    PLACES_SIDEBAR_COLUMN_TOOLTIP,
-    PLACES_SIDEBAR_COLUMN_EJECT_ICON,
-    PLACES_SIDEBAR_COLUMN_FREE_SPACE,
-    PLACES_SIDEBAR_COLUMN_DISK_SIZE,
-
-    PLACES_SIDEBAR_COLUMN_COUNT
+enum
+{
+    PROP_0,
+    PROP_ICON_SIZE
 };
 
 typedef enum {
@@ -75,7 +62,6 @@ typedef enum {
     PLACES_STORAGE_CATEGORY
 } PlaceType;
 
-static GType marlin_places_sidebar_provider_get_type   (void);
 static void  open_selected_bookmark                    (MarlinPlacesSidebar         *sidebar,
                                                         GtkTreeModel                *model,
                                                         GtkTreePath                 *path,
@@ -111,7 +97,7 @@ static const GtkTargetEntry marlin_shortcuts_drop_targets [] = {
     { "text/uri-list", 0, TEXT_URI_LIST }
 };
 
-G_DEFINE_TYPE (MarlinPlacesSidebar, marlin_places_sidebar, GTK_TYPE_SCROLLED_WINDOW);
+G_DEFINE_TYPE (MarlinPlacesSidebar, marlin_places_sidebar, MARLIN_TYPE_ABSTRACT_SIDEBAR);
 
 static GdkPixbuf *
 get_eject_icon (gboolean highlighted)
@@ -184,7 +170,8 @@ add_place (MarlinPlacesSidebar *sidebar,
     gboolean show_eject_button;
 
     pixbuf = NULL;
-    icon_size = g_settings_get_int (settings, MARLIN_PREFERENCES_SIDEBAR_ICON_SIZE);
+    g_object_get(sidebar, "icon-size", &icon_size, NULL);
+    //g_settings_get_int (settings, MARLIN_PREFERENCES_SIDEBAR_ICON_SIZE);
     if (icon_size <= 0)
         icon_size = nautilus_get_icon_size_for_stock_size (GTK_ICON_SIZE_MENU);
     if (icon) {
@@ -213,8 +200,8 @@ add_place (MarlinPlacesSidebar *sidebar,
         eject = NULL;
     }
 
-    gtk_tree_store_append (sidebar->store, &iter, parent);
-    gtk_tree_store_set (sidebar->store, &iter,
+    gtk_tree_store_append (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter, parent);
+    gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter,
                         PLACES_SIDEBAR_COLUMN_ICON, pixbuf,
                         PLACES_SIDEBAR_COLUMN_NAME, name,
                         PLACES_SIDEBAR_COLUMN_URI, uri,
@@ -252,11 +239,11 @@ compare_for_selection (MarlinPlacesSidebar *sidebar,
         if (*path != NULL) {
             gtk_tree_path_free (*path);
         }
-        *path = gtk_tree_model_get_path (GTK_TREE_MODEL (sidebar->store),
+        *path = gtk_tree_model_get_path (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
                                          iter);
     } else if (eel_strcmp (location, added_uri) == 0) {
         if (*path == NULL) {
-            *path = gtk_tree_model_get_path (GTK_TREE_MODEL (sidebar->store),
+            *path = gtk_tree_model_get_path (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
                                              iter);
         }
     }
@@ -300,7 +287,8 @@ update_places (MarlinPlacesSidebar *sidebar)
                             &last_iter,
                             PLACES_SIDEBAR_COLUMN_URI, &last_uri, -1);
     }
-    gtk_tree_store_clear (sidebar->store);
+    gtk_tree_store_clear (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store);
+    marlin_plugin_manager_update_sidebar(plugins, GTK_WIDGET (sidebar));
 
     slot = marlin_view_window_get_active_slot (MARLIN_VIEW_WINDOW (sidebar->window));
     if (slot) {
@@ -310,8 +298,8 @@ update_places (MarlinPlacesSidebar *sidebar)
 
     /* add bookmarks category */
 
-    gtk_tree_store_append (sidebar->store, &iter, NULL);
-    gtk_tree_store_set (sidebar->store, &iter,
+    gtk_tree_store_append (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter, NULL);
+    gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter,
                         PLACES_SIDEBAR_COLUMN_ICON, NULL,
                         PLACES_SIDEBAR_COLUMN_NAME, _("Personal"),
                         PLACES_SIDEBAR_COLUMN_ROW_TYPE, PLACES_BOOKMARKS_CATEGORY,
@@ -383,8 +371,8 @@ update_places (MarlinPlacesSidebar *sidebar)
     g_object_unref (icon);
 
     /* add storage category */
-    gtk_tree_store_append (sidebar->store, &iter, NULL);
-    gtk_tree_store_set (sidebar->store, &iter,
+    gtk_tree_store_append (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter, NULL);
+    gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter,
                         PLACES_SIDEBAR_COLUMN_ICON, NULL,
                         PLACES_SIDEBAR_COLUMN_NAME, _("Devices"),
                         PLACES_SIDEBAR_COLUMN_ROW_TYPE, PLACES_STORAGE_CATEGORY,
@@ -435,7 +423,7 @@ update_places (MarlinPlacesSidebar *sidebar)
                     guint64 fs_free = g_file_info_get_attribute_uint64 (info, G_FILE_ATTRIBUTE_FILESYSTEM_FREE);
                     //g_message ("%s fs_cap %s fs_free %s", G_STRFUNC, g_format_size (fs_capacity), g_format_size (fs_free));
 
-                    gtk_tree_store_set(sidebar->store, &last_iter, PLACES_SIDEBAR_COLUMN_FREE_SPACE, fs_free, PLACES_SIDEBAR_COLUMN_DISK_SIZE, fs_capacity, -1);
+                    gtk_tree_store_set(MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &last_iter, PLACES_SIDEBAR_COLUMN_FREE_SPACE, fs_free, PLACES_SIDEBAR_COLUMN_DISK_SIZE, fs_capacity, -1);
                     compare_for_selection (sidebar,
                                            location, mount_uri, last_uri,
                                            &last_iter, &select_path);
@@ -589,8 +577,8 @@ update_places (MarlinPlacesSidebar *sidebar)
 
     /* add network category */
 
-    gtk_tree_store_append (sidebar->store, &iter, NULL);
-    gtk_tree_store_set (sidebar->store, &iter,
+    gtk_tree_store_append (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter, NULL);
+    gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store, &iter,
                         PLACES_SIDEBAR_COLUMN_ICON, NULL,
                         PLACES_SIDEBAR_COLUMN_NAME, _("Network"),
                         PLACES_SIDEBAR_COLUMN_ROW_TYPE, PLACES_PERSONAL_CATEGORY,
@@ -645,6 +633,39 @@ update_places (MarlinPlacesSidebar *sidebar)
         gtk_tree_path_free (select_path);
     }
     g_free (last_uri);
+}
+
+static void marlin_places_sidebar_set_property (GObject *object,
+                                                guint prop_id,
+                                                const GValue *value,
+                                                GParamSpec *pspec)
+{
+    switch (prop_id)
+    {
+    case PROP_ICON_SIZE:
+        MARLIN_PLACES_SIDEBAR (object)->icon_size = g_value_get_int (value);
+        update_places(MARLIN_PLACES_SIDEBAR(object));
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+static void marlin_places_sidebar_get_property (GObject      *object,
+                                        guint         prop_id,
+                                        GValue       *value,
+                                        GParamSpec   *pspec)
+{
+    switch (prop_id)
+    {
+    case PROP_ICON_SIZE:
+        g_value_set_int(value, MARLIN_PLACES_SIDEBAR (object)->icon_size);
+        break;
+    default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
 }
 
 static void
@@ -737,8 +758,8 @@ over_eject_button (MarlinPlacesSidebar *sidebar,
                                        x, y,
                                        path, &column, NULL, NULL)) {
 
-        gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store), &iter, *path);
-        gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+        gtk_tree_model_get_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter, *path);
+        gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                             PLACES_SIDEBAR_COLUMN_EJECT, &show_eject,
                             -1);
 
@@ -752,7 +773,7 @@ over_eject_button (MarlinPlacesSidebar *sidebar,
 
         /* Reload cell attributes for this particular row */
 		/*gtk_tree_view_column_cell_set_cell_data (column,
-							 GTK_TREE_MODEL (sidebar->store), &iter, FALSE, FALSE);*/
+							 GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter, FALSE, FALSE);*/
 
 		gtk_tree_view_column_cell_get_position (column,
 							sidebar->eject_icon_cell_renderer,
@@ -803,19 +824,8 @@ row_activated_callback (GtkTreeView *tree_view,
 
     //amtest
     printf ("%s\n", G_STRFUNC);
-    open_selected_bookmark (sidebar, GTK_TREE_MODEL (sidebar->store), path, 0);
+    open_selected_bookmark (sidebar, GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), path, 0);
 }
-
-/*
-   static void
-   desktop_location_changed_callback (gpointer user_data)
-   {
-   MarlinPlacesSidebar *sidebar;
-
-   sidebar = MARLIN_PLACES_SIDEBAR (user_data);
-
-   update_places (sidebar);
-   }*/
 
 static void
 loading_uri_callback (GtkWidget *window,
@@ -836,14 +846,14 @@ loading_uri_callback (GtkWidget *window,
         /* set selection if any place matches location */
         selection = gtk_tree_view_get_selection (sidebar->tree_view);
         gtk_tree_selection_unselect_all (selection);
-        valid = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (sidebar->store), &iter);
+        valid = gtk_tree_model_get_iter_first (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter);
 
         while (valid) {
-            child_valid = gtk_tree_model_iter_children (GTK_TREE_MODEL (sidebar->store), &child_iter, &iter);
+            child_valid = gtk_tree_model_iter_children (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &child_iter, &iter);
             while (child_valid)
             {
-                //printf ("test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), &child_iter));
-                gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &child_iter, 
+                //printf ("test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &child_iter));
+                gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &child_iter, 
                                     PLACES_SIDEBAR_COLUMN_URI, &uri,
                                     -1);
                 if (uri != NULL) {
@@ -854,9 +864,9 @@ loading_uri_callback (GtkWidget *window,
                     }
                     g_free (uri);
                 }
-                child_valid = gtk_tree_model_iter_next (GTK_TREE_MODEL (sidebar->store), &child_iter);
+                child_valid = gtk_tree_model_iter_next (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &child_iter);
             }
-            valid = gtk_tree_model_iter_next (GTK_TREE_MODEL (sidebar->store), &iter);
+            valid = gtk_tree_model_iter_next (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter);
         }
     }
 }
@@ -913,9 +923,9 @@ compute_drop_position (GtkTreeView *tree_view,
     GtkTreeIter iter;
 
     //amtest
-    num_rows = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (sidebar->store), NULL);
-    /*gtk_tree_model_get_iter_first (GTK_TREE_MODEL (sidebar->store), &iter);
-      num_rows = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (sidebar->store), &iter);*/
+    num_rows = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), NULL);
+    /*gtk_tree_model_get_iter_first (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter);
+      num_rows = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter);*/
     //printf ("num rows %d\n", num_rows);
 
     if (!gtk_tree_view_get_dest_row_at_pos (tree_view,
@@ -1129,14 +1139,14 @@ drag_motion_callback (GtkTreeView *tree_view,
         } else {
             if (path != NULL)
             {
-                gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store),
+                gtk_tree_model_get_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
                                          &iter, path);
-                gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store),
+                gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
                                     &iter,
                                     PLACES_SIDEBAR_COLUMN_URI, &uri,
                                     -1);
                 //printf ("%s %s\n", G_STRFUNC, uri);
-                //printf ("test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), &child_iter));
+                //printf ("test child: %s\n", gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &child_iter));
                 /*marlin_drag_default_drop_action_for_icons (context, uri,
                   sidebar->drag_list,
                   &action);*/
@@ -1243,7 +1253,7 @@ get_selected_iter (MarlinPlacesSidebar *sidebar,
         return FALSE;
     }
     //amtest
-    //printf ("TEST %s: %s\n", G_STRFUNC, gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (sidebar->store), iter));
+    //printf ("TEST %s: %s\n", G_STRFUNC, gtk_tree_model_get_string_from_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), iter));
     return TRUE;
 }
 
@@ -1262,7 +1272,7 @@ reorder_bookmarks (MarlinPlacesSidebar *sidebar, int new_position)
         //g_assert_not_reached ();
     }
 
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                         PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type,
                         PLACES_SIDEBAR_COLUMN_INDEX, &old_position,
                         -1);
@@ -1549,7 +1559,7 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
     }
 
     if (get_selected_iter (sidebar, &iter)) {
-        gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+        gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                             PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type,
                             PLACES_SIDEBAR_COLUMN_DRIVE, &drive,
                             PLACES_SIDEBAR_COLUMN_VOLUME, &volume,
@@ -1825,7 +1835,7 @@ rename_selected_bookmark (MarlinPlacesSidebar *sidebar)
     GList *renderers;
 
     if (get_selected_iter (sidebar, &iter)) {
-        path = gtk_tree_model_get_path (GTK_TREE_MODEL (sidebar->store), &iter);
+        path = gtk_tree_model_get_path (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter);
         column = gtk_tree_view_get_column (GTK_TREE_VIEW (sidebar->tree_view), 0);
         renderers = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT (column));
         cell = g_list_nth_data (renderers, 4);
@@ -1856,7 +1866,7 @@ remove_selected_bookmarks (MarlinPlacesSidebar *sidebar)
         return;
     }
 
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                         PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type,
                         -1);
 
@@ -1864,7 +1874,7 @@ remove_selected_bookmarks (MarlinPlacesSidebar *sidebar)
         return;
     }
 
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                         PLACES_SIDEBAR_COLUMN_INDEX, &index,
                         -1);
     index = index - sidebar->n_builtins_before;
@@ -1889,7 +1899,7 @@ mount_shortcut_cb (GtkMenuItem           *item,
         return;
     }
 
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                         PLACES_SIDEBAR_COLUMN_VOLUME, &volume,
                         -1);
 
@@ -1938,7 +1948,7 @@ do_unmount_selection (MarlinPlacesSidebar *sidebar)
         return;
     }
 
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                         PLACES_SIDEBAR_COLUMN_MOUNT, &mount,
                         -1);
 
@@ -2083,7 +2093,7 @@ eject_shortcut_cb (GtkMenuItem           *item,
         return;
     }
 
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                         PLACES_SIDEBAR_COLUMN_MOUNT, &mount,
                         PLACES_SIDEBAR_COLUMN_VOLUME, &volume,
                         PLACES_SIDEBAR_COLUMN_DRIVE, &drive,
@@ -2104,7 +2114,7 @@ eject_or_unmount_bookmark (MarlinPlacesSidebar *sidebar,
     GDrive *drive;
     gboolean ret;
 
-    model = GTK_TREE_MODEL (sidebar->store);
+    model = GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store);
 
     if (!path) {
         return FALSE;
@@ -2152,7 +2162,7 @@ eject_or_unmount_selection (MarlinPlacesSidebar *sidebar)
         return FALSE;
     }
 
-    path = gtk_tree_model_get_path (GTK_TREE_MODEL (sidebar->store), &iter);
+    path = gtk_tree_model_get_path (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter);
     if (path == NULL) {
         return FALSE;
     }
@@ -2201,7 +2211,7 @@ rescan_shortcut_cb (GtkMenuItem           *item,
         return;
     }
 
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                         PLACES_SIDEBAR_COLUMN_DRIVE, &drive,
                         -1);
 
@@ -2253,7 +2263,7 @@ start_shortcut_cb (GtkMenuItem           *item,
         return;
     }
 
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                         PLACES_SIDEBAR_COLUMN_DRIVE, &drive,
                         -1);
 
@@ -2309,7 +2319,7 @@ stop_shortcut_cb (GtkMenuItem           *item,
         return;
     }
 
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                         PLACES_SIDEBAR_COLUMN_DRIVE, &drive,
                         -1);
 
@@ -2620,11 +2630,11 @@ update_eject_buttons (MarlinPlacesSidebar   *sidebar,
     }
 
     if (path) {
-        gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store),
+        gtk_tree_model_get_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
                                  &iter,
                                  path);
 
-        gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store),
+        gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
                             &iter,
                             PLACES_SIDEBAR_COLUMN_EJECT, &icon_visible,
                             -1);
@@ -2635,15 +2645,15 @@ update_eject_buttons (MarlinPlacesSidebar   *sidebar,
          * an eject button area.
          */
         if (sidebar->eject_highlight_path) {
-            gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store),
+            gtk_tree_model_get_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
                                      &iter,
                                      sidebar->eject_highlight_path);
 
-            gtk_tree_store_set (sidebar->store,
+            gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store,
                                 &iter,
                                 PLACES_SIDEBAR_COLUMN_EJECT_ICON, get_eject_icon (FALSE),
                                 -1);
-            //gtk_tree_model_row_changed (GTK_TREE_MODEL (sidebar->store), path, &iter);
+            //gtk_tree_model_row_changed (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), path, &iter);
 
             gtk_tree_path_free (sidebar->eject_highlight_path);
             sidebar->eject_highlight_path = NULL;
@@ -2658,14 +2668,14 @@ update_eject_buttons (MarlinPlacesSidebar   *sidebar,
         /* add highlighting to the selected path, as the icon is visible and
          * we're hovering it.
          */
-        gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store),
+        gtk_tree_model_get_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
                                  &iter,
                                  path);
-        gtk_tree_store_set (sidebar->store,
+        gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store,
                             &iter,
                             PLACES_SIDEBAR_COLUMN_EJECT_ICON, get_eject_icon (TRUE),
                             -1);
-        //gtk_tree_model_row_changed (GTK_TREE_MODEL (sidebar->store), path, &iter);
+        //gtk_tree_model_row_changed (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), path, &iter);
 
         sidebar->eject_highlight_path = gtk_tree_path_copy (path);
     }
@@ -2679,7 +2689,7 @@ bookmarks_motion_event_cb (GtkWidget            *widget,
     GtkTreePath *path;
     GtkTreeModel *model;
 
-    model = GTK_TREE_MODEL (sidebar->store);
+    model = GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store);
     path = NULL;
 
     if (over_eject_button (sidebar, event->x, event->y, &path)) {
@@ -2708,8 +2718,8 @@ bookmarks_edited (GtkCellRenderer       *cell,
     g_object_set (cell, "editable", FALSE, NULL);
 
     path = gtk_tree_path_new_from_string (path_string);
-    gtk_tree_model_get_iter (GTK_TREE_MODEL (sidebar->store), &iter, path);
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), &iter,
+    gtk_tree_model_get_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter, path);
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter,
                         PLACES_SIDEBAR_COLUMN_INDEX, &index,
                         -1);
     index = index - sidebar->n_builtins_before;
@@ -2859,7 +2869,7 @@ category_row_expanded_event_cb (GtkTreeView             *tree,
                                 MarlinPlacesSidebar *sidebar)
 {
     PlaceType type;
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), iter, PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type, -1);
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), iter, PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type, -1);
     expander_update_pref_state (type, TRUE);
 }
 
@@ -2870,7 +2880,7 @@ category_row_collapsed_event_cb (GtkTreeView             *tree,
                                  MarlinPlacesSidebar *sidebar)
 {
     PlaceType type;
-    gtk_tree_model_get (GTK_TREE_MODEL (sidebar->store), iter, PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type, -1);
+    gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), iter, PLACES_SIDEBAR_COLUMN_ROW_TYPE, &type, -1);
     expander_update_pref_state (type, FALSE);
 }
 
@@ -2925,7 +2935,7 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                                              sidebar,
                                              NULL);
 
-    cell = marlin_cell_renderer_disk_new ();
+    cell = GTK_CELL_RENDERER(marlin_cell_renderer_disk_new ());
     sidebar->eject_text_cell_renderer = cell;
     gtk_tree_view_column_pack_start (col, cell, TRUE);
     gtk_tree_view_column_set_attributes (col, cell,
@@ -2997,29 +3007,9 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     gtk_tree_view_column_set_expand(col, TRUE);
     gtk_tree_view_append_column (tree_view, col);
 
-    /* this is required to set the category cells to bold and higher than the other ones */
-    sidebar->store = gtk_tree_store_new (PLACES_SIDEBAR_COLUMN_COUNT,
-                                         G_TYPE_INT, 
-                                         G_TYPE_STRING,
-                                         G_TYPE_DRIVE,
-                                         G_TYPE_VOLUME,
-                                         G_TYPE_MOUNT,
-                                         G_TYPE_STRING,
-                                         GDK_TYPE_PIXBUF,
-                                         G_TYPE_INT,
-                                         G_TYPE_BOOLEAN,
-                                         G_TYPE_BOOLEAN,
-                                         G_TYPE_BOOLEAN,
-                                         G_TYPE_STRING,
-                                         GDK_TYPE_PIXBUF,
-                                         G_TYPE_UINT64, /* For disks, total size */
-                                         G_TYPE_UINT64, /* Free space */
-                                         -1
-                                        );
-
     gtk_tree_view_set_tooltip_column (tree_view, PLACES_SIDEBAR_COLUMN_TOOLTIP);
 
-    gtk_tree_view_set_model (tree_view, GTK_TREE_MODEL (sidebar->store));
+    gtk_tree_view_set_model (tree_view, GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store));
 
     gtk_container_add (GTK_CONTAINER (sidebar), GTK_WIDGET (tree_view));
 
@@ -3117,9 +3107,9 @@ marlin_places_sidebar_dispose (GObject *object)
         sidebar->eject_highlight_path = NULL;
     }
 
-    if (sidebar->store != NULL) {
-        g_object_unref (sidebar->store);
-        sidebar->store = NULL;
+    if (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store != NULL) {
+        g_object_unref (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store);
+        MARLIN_ABSTRACT_SIDEBAR(sidebar)->store = NULL;
     }
 
     if (sidebar->volume_monitor != NULL) {
@@ -3145,8 +3135,18 @@ static void
 marlin_places_sidebar_class_init (MarlinPlacesSidebarClass *class)
 {
     G_OBJECT_CLASS (class)->dispose = marlin_places_sidebar_dispose;
-
+    G_OBJECT_CLASS (class)->set_property = marlin_places_sidebar_set_property;
+    G_OBJECT_CLASS (class)->get_property = marlin_places_sidebar_get_property;
     GTK_WIDGET_CLASS (class)->style_set = marlin_places_sidebar_style_set;
+    
+    g_object_class_install_property (G_OBJECT_CLASS (class),
+                                     PROP_ICON_SIZE,
+                                     g_param_spec_int ("icon-size",
+                                                       _("Icon Size"),
+                                                       _("Icon size"),
+                                                       0, 250, 6,
+                                                       G_PARAM_READWRITE));
+    
 }
 
 static void
@@ -3157,16 +3157,7 @@ marlin_places_sidebar_set_parent_window (MarlinPlacesSidebar *sidebar,
 
     sidebar->window = window;
 
-    //slot = marlin_view_window_get_active_slot (MARLIN_VIEW_WINDOW (window));
-
-    //TODO remove
-    sidebar->bookmarks = marlin_bookmark_list_new ();
-    /* maybe store the uri in slot structure */
-    /*if (slot) {
-        sidebar->uri = g_file_get_uri (slot->location);
-        g_object_unref (slot);
-    }*/
-
+    sidebar->bookmarks = marlin_bookmark_list_new (); /* TODO: remove */
     g_signal_connect_object (sidebar->bookmarks, "contents_changed",
                              G_CALLBACK (update_places),
                              sidebar, G_CONNECT_SWAPPED);

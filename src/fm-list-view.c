@@ -40,7 +40,6 @@ enum
 
 struct FMListViewDetails {
     GList       *selection;
-    GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
 
     GtkCellEditable     *editable_widget;
     GtkTreeViewColumn   *file_name_column;
@@ -58,10 +57,6 @@ struct FMListViewDetails {
 #define WAIT_FOR_RENAME_ON_ACTIVATE 200
 
 static gchar *col_title[4] = { N_("Filename"), N_("Size"), N_("Type"), N_("Modified") };
-
-//G_DEFINE_TYPE (FMListView, fm_list_view, G_TYPE_OBJECT)
-/*#define GOF_DIRECTORY_ASYNC_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, GOF_TYPE_DIRECTORY_ASYNC, GOFDirectoryAsyncPrivate))*/
 
 G_DEFINE_TYPE (FMListView, fm_list_view, FM_TYPE_DIRECTORY_VIEW);
 
@@ -84,29 +79,6 @@ static GList    *get_selection (FMListView *view);
 static GList    *fm_list_view_get_selected_paths (FMDirectoryView *view);
 static void     fm_list_view_select_path (FMDirectoryView *view, GtkTreePath *path);
 static void     fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing);
-
-//static void     fm_list_view_clear (FMListView *view);
-
-#if 0
-static gboolean
-unload_file_timeout (gpointer data)
-{
-    struct UnloadDelayData *unload_data = data;
-    FMListView *view = unload_data->view;
-    GtkTreeIter *iter = &(unload_data->iter);
-    GtkTreePath *path;
-
-    path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), iter);
-    if (!gtk_tree_view_row_expanded (view->tree, path)) {
-        log_printf (LOG_LEVEL_UNDEFINED, "unloadn");
-        fm_list_model_unload_subdirectory (view->model, iter);
-    }
-    if (path != NULL)
-        gtk_tree_path_free (path);
-    g_free (unload_data);
-    return FALSE;
-}
-#endif
 
 static gboolean
 unload_file_timeout (gpointer data)
@@ -161,21 +133,11 @@ row_collapsed_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 
     fm_list_model_get_directory_file (view->model, path, &unload_data->directory, &unload_data->file);
 
-    //log_printf (LOG_LEVEL_UNDEFINED, "collapsed %s %s\n", unload_data->file->name, gof_directory_get_uri(unload_data->directory));
-
     eel_add_weak_pointer (&unload_data->view);
     g_timeout_add_seconds (COLLAPSE_TO_UNLOAD_DELAY,
                            unload_file_timeout,
                            unload_data);
-
-    //fm_list_model_unload_subdirectory (view->model, iter);
 }
-
-/*static void
-  show_selected_files (GOFFile *file)
-  {
-  log_printf (LOG_LEVEL_UNDEFINED, "selected: %s\n", file->name);
-  }*/
 
 static void
 list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data)
@@ -192,27 +154,8 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMListView *view)
 {
-    g_message ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
     fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view));
-}
-
-static void
-fm_list_view_colorize_selected_items (FMDirectoryView *view, int ncolor)
-{
-    GList *file_list;
-    GOFFile *file;
-    char *uri;
-
-    file_list = fm_list_view_get_selection (view);
-    for (; file_list != NULL; file_list=file_list->next)
-    {
-        file = file_list->data;
-        g_free(file->color);
-        file->color = g_strdup(tags_colors[ncolor]);
-        uri = g_file_get_uri(file->location);
-        marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
-        g_free (uri);
-    }
 }
 
 static void
@@ -355,7 +298,7 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
 	}
 
 	if (!fm_list_model_get_first_iter_for_file (list_view->model, file, &iter)) {
-        g_message ("%s FAILED", G_STRFUNC);
+        g_debug ("%s FAILED", G_STRFUNC);
 		return;
 	}
 
@@ -402,7 +345,7 @@ subdirectory_unloaded_callback (FMListModel *model,
                                 GOFDirectoryAsync *directory,
                                 gpointer callback_data)
 {
-    g_message ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
     FMListView *view;
 
     g_return_if_fail (FM_IS_LIST_MODEL (model));
@@ -410,23 +353,8 @@ subdirectory_unloaded_callback (FMListModel *model,
 
     view = FM_LIST_VIEW(callback_data);
 
-    /*g_signal_handlers_disconnect_by_func (directory,
-      G_CALLBACK (subdirectory_done_loading_callback),
-      view);*/
     fm_directory_view_remove_subdirectory (FM_DIRECTORY_VIEW (view), directory);
 }
-
-/*static void
-  do_popup_menu (GtkWidget *widget, FMListView *view, GdkEventButton *event)
-  {
-  if (tree_view_has_selection (GTK_TREE_VIEW (widget))) {
-//fm_directory_view_pop_up_selection_context_menu (FM_DIRECTORY_VIEW (view), event);
-printf ("popup_selection_menu\n");
-} else {
-//fm_directory_view_pop_up_background_context_menu (FM_DIRECTORY_VIEW (view), event);
-printf ("popup_background_menu\n");
-}
-}*/
 
 static gboolean
 button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView *view)
@@ -675,6 +603,27 @@ color_row_func (GtkTreeViewColumn *column,
     g_free (color);
 }
 
+static gboolean fm_list_view_draw(GtkWidget* view_, cairo_t* cr, FMListView* view)
+{
+    g_return_if_fail(FM_IS_LIST_VIEW(view));
+    GtkTreeIter iter;
+    gboolean folder_empty = !gtk_tree_model_get_iter_first(GTK_TREE_MODEL(view->model), &iter);
+    if(folder_empty && !fm_directory_view_get_loading(FM_DIRECTORY_VIEW(view)))
+    {
+        PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), _("This folder is empty."));
+        PangoRectangle extents;
+        /* Get hayout height and width */
+        pango_layout_get_extents(layout, NULL, &extents);
+        gdouble width = pango_units_to_double(extents.width);
+        gdouble height = pango_units_to_double(extents.height);
+        gtk_render_layout(gtk_widget_get_style_context(GTK_WIDGET(view)), cr,
+                (double)gtk_widget_get_allocated_width(GTK_WIDGET(view))/2 - width/2,
+                (double)gtk_widget_get_allocated_height(GTK_WIDGET(view))/2 - height/2,
+                layout);
+    }
+    return FALSE;
+}
+
 static void
 create_and_set_up_tree_view (FMListView *view)
 {
@@ -697,6 +646,8 @@ create_and_set_up_tree_view (FMListView *view)
 
     g_signal_connect_object (view->tree, "button-press-event",
                              G_CALLBACK (button_press_callback), view, 0);
+    g_signal_connect (view->tree, "draw",
+                             G_CALLBACK (fm_list_view_draw), view);
     g_signal_connect_object (view->tree, "key_press_event",
                              G_CALLBACK (key_press_callback), view, 0);
     g_signal_connect_object (view->tree, "row_expanded",
@@ -752,85 +703,6 @@ create_and_set_up_tree_view (FMListView *view)
     gtk_widget_show (GTK_WIDGET (view->tree));
     gtk_container_add (GTK_CONTAINER (view), GTK_WIDGET (view->tree));
 }
-
-static void
-fm_list_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
-{
-    FMListModel *model;
-
-    model = FM_LIST_VIEW (view)->model;
-    fm_list_model_add_file (model, file, directory);
-}
-
-static void
-fm_list_view_remove_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
-{
-    printf ("%s %s\n", G_STRFUNC, file->uri);
-    GtkTreePath *path;
-    GtkTreePath *file_path;
-    GtkTreeIter iter;
-    GtkTreeIter temp_iter;
-    GtkTreeRowReference* row_reference;
-    FMListView *list_view;
-    GtkTreeModel* tree_model; 
-    GtkTreeSelection *selection;
-
-    path = NULL;
-    row_reference = NULL;
-    list_view = FM_LIST_VIEW (view);
-    tree_model = GTK_TREE_MODEL(list_view->model);
-
-    if (fm_list_model_get_tree_iter_from_file (list_view->model, file, directory, &iter))
-    {
-        selection = gtk_tree_view_get_selection (list_view->tree);
-        file_path = gtk_tree_model_get_path (tree_model, &iter);
-
-        if (gtk_tree_selection_path_is_selected (selection, file_path)) {
-            /* get reference for next element in the list view. If the element to be deleted is the 
-             * last one, get reference to previous element. If there is only one element in view
-             * no need to select anything.
-             */
-            temp_iter = iter;
-
-            if (gtk_tree_model_iter_next (tree_model, &iter)) {
-                path = gtk_tree_model_get_path (tree_model, &iter);
-                row_reference = gtk_tree_row_reference_new (tree_model, path);
-            } else {
-                path = gtk_tree_model_get_path (tree_model, &temp_iter);
-                if (gtk_tree_path_prev (path)) {
-                    row_reference = gtk_tree_row_reference_new (tree_model, path);
-                }
-            }
-            gtk_tree_path_free (path);
-        }
-
-        gtk_tree_path_free (file_path);
-
-        fm_list_model_remove_file (list_view->model, file, directory);
-
-        if (gtk_tree_row_reference_valid (row_reference)) {
-            if (list_view->details->new_selection_path) {
-                gtk_tree_path_free (list_view->details->new_selection_path);
-            }
-            list_view->details->new_selection_path = gtk_tree_row_reference_get_path (row_reference);
-        }
-
-        if (row_reference) {
-            gtk_tree_row_reference_free (row_reference);
-        }
-    }   
-}
-
-
-/*
-   static void
-   fm_list_view_clear (FMListView *view)
-   {
-   if (view->model != NULL) {
-//stop_cell_editing (view);
-fm_list_model_clear (view->model);
-}
-}*/
 
 static void
 get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter, gpointer data)
@@ -896,64 +768,6 @@ fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean star
                                       (GtkCellRenderer *) list_view->details->file_name_cell,
                                       start_editing);
 }
-
-/*static void
-  fm_list_view_set_selection (FMListView *list_view, GList *selection)
-  {
-  GtkTreeSelection *tree_selection;
-  GList *node;
-  GList *iters, *l;
-  GOFFile *file;
-
-  tree_selection = gtk_tree_view_get_selection (list_view->tree);
-
-//g_signal_handlers_block_by_func (tree_selection, list_selection_changed_callback, view);
-
-gtk_tree_selection_unselect_all (tree_selection);
-for (node = selection; node != NULL; node = node->next) {
-file = node->data;
-iters = fm_list_model_get_all_iters_for_file (list_view->model, file);
-
-for (l = iters; l != NULL; l = l->next) {
-gtk_tree_selection_select_iter (tree_selection,
-(GtkTreeIter *)l->data);
-}
-//eel_g_list_free_deep (iters);
-}
-
-//g_signal_handlers_unblock_by_func (tree_selection, list_selection_changed_callback, view);
-//fm_directory_view_notify_selection_changed (view);
-}*/
-
-#if 0
-static void
-fm_list_view_reset_selection (FMDirectoryView *view)
-{
-    FMListView *list_view = FM_LIST_VIEW (view);
-    GtkTreeSelection *tree_selection;
-    GList *lp, *selected_paths;
-    GtkTreePath *path;
-
-    g_signal_handlers_block_by_func (list_view->tree, list_selection_changed_callback, list_view);
-
-    tree_selection = gtk_tree_view_get_selection (list_view->tree);
-    GtkTreeModel *model = GTK_TREE_MODEL (list_view->model);
-    selected_paths = gtk_tree_selection_get_selected_rows (tree_selection, &model);
-    gtk_tree_selection_unselect_all (tree_selection);
-    
-    for (lp = selected_paths; lp != NULL; lp = lp->next)
-    {
-        path = lp->data;
-        gtk_tree_selection_select_path (tree_selection, path);
-
-        /* release the tree path... */
-        gtk_tree_path_free (path);
-    }
-    g_list_free (selected_paths);
-
-    g_signal_handlers_unblock_by_func (list_view->tree, list_selection_changed_callback, list_view);
-}
-#endif
 
 static void
 fm_list_view_select_all (FMDirectoryView *view)
@@ -1049,37 +863,19 @@ fm_list_view_zoom_normal (FMDirectoryView *view)
     g_settings_set_enum (marlin_list_view_settings, "zoom-level", zoom);
 }
 
-#if 0
-static void
-fm_list_view_zoom_level_changed (FMListView *view)
-{
-    GList *cols, *l;
-
-    cols =  gtk_tree_view_get_columns (view->tree);
-    for(l=cols; l != NULL; l=l->next) {
-        /* just queue a resize on this column */
-        if (gtk_tree_view_column_get_visible (l->data))
-            gtk_tree_view_column_queue_resize (l->data);
-    }
-}
-#endif
-
 static void
 fm_list_view_finalize (GObject *object)
 {
     FMListView *view = FM_LIST_VIEW (object);
 
-    g_warning ("%s\n", G_STRFUNC);
+    g_debug ("%s\n", G_STRFUNC);
 
     g_free (view->details->original_name);
 	view->details->original_name = NULL;
 
-    if (view->details->new_selection_path)
-        gtk_tree_path_free (view->details->new_selection_path);
     if (view->details->selection)
         gof_file_list_free (view->details->selection);
 
-    g_object_unref (view->model);
     g_free (view->details);
     G_OBJECT_CLASS (fm_list_view_parent_class)->finalize (object); 
 }
@@ -1103,7 +899,7 @@ fm_list_view_init (FMListView *view)
 static void
 fm_list_view_zoom_level_changed (FMListView *view)
 {
-    g_warning ("%s", G_STRFUNC);
+    g_debug ("%s", G_STRFUNC);
     /* set the new "size" for the icon renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "size", marlin_zoom_level_to_icon_size (view->zoom_level), NULL);
     gint xpad, ypad;
@@ -1168,9 +964,6 @@ fm_list_view_class_init (FMListViewClass *klass)
 
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
-    fm_directory_view_class->add_file = fm_list_view_add_file;
-    fm_directory_view_class->remove_file = fm_list_view_remove_file;
-    fm_directory_view_class->colorize_selection = fm_list_view_colorize_selected_items;        
     fm_directory_view_class->sync_selection = fm_list_view_sync_selection;
     fm_directory_view_class->get_selection = fm_list_view_get_selection;
     fm_directory_view_class->get_selection_for_file_transfer = fm_list_view_get_selection_for_file_transfer;

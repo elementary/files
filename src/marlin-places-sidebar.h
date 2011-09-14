@@ -25,7 +25,10 @@
 
 #include "marlin-bookmark-list.h"
 #include "gof-window-slot.h"
+#include "marlin-abstract-sidebar.h"
 #include <gtk/gtk.h>
+
+G_BEGIN_DECLS
 
 #define MARLIN_TYPE_PLACES_SIDEBAR marlin_places_sidebar_get_type()
 #define MARLIN_PLACES_SIDEBAR(obj) \
@@ -41,7 +44,7 @@
 
 
 typedef struct {
-    GtkScrolledWindow   parent;
+    MarlinAbstractSidebar  parent;
     GtkTreeView         *tree_view;
     GtkCellRenderer     *indent_renderer;
     GtkCellRenderer     *icon_cell_renderer;
@@ -49,7 +52,6 @@ typedef struct {
     GtkCellRenderer     *eject_icon_cell_renderer;
     GtkCellRenderer	    *expander_renderer;
     char 	            *uri;
-    GtkTreeStore        *store;
     GtkWidget           *window;
     MarlinBookmarkList  *bookmarks;
     GVolumeMonitor      *volume_monitor;
@@ -61,6 +63,7 @@ typedef struct {
     GdkDragContext      *drag_context;
     gboolean            drag_data_received;
     int                 drag_data_info;
+    int                 icon_size;
     gboolean            drop_occured;
 
     GtkWidget *popup_menu;
@@ -87,12 +90,14 @@ typedef struct {
 } MarlinPlacesSidebar;
 
 typedef struct {
-    GtkScrolledWindowClass parent;
+    MarlinAbstractSidebarClass parent;
 } MarlinPlacesSidebarClass;
 
 GType marlin_places_sidebar_get_type (void);
-void marlin_places_sidebar_register (void);
 
 MarlinPlacesSidebar *marlin_places_sidebar_new (GtkWidget *window);
+void marlin_abstract_sidebar_add_extra_item(MarlinAbstractSidebar* self, gchar* text);
+
+G_END_DECLS
 
 #endif

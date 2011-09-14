@@ -798,7 +798,9 @@ gof_file_get_date_as_string (guint64 d)
 
     file_time = localtime (&d);
 
-    gchar *date_format_pref = g_settings_get_string(settings, MARLIN_PREFERENCES_DATE_FORMAT);
+    gchar *date_format_pref = "iso";
+    if(settings != NULL)
+        date_format_pref = g_settings_get_string(settings, MARLIN_PREFERENCES_DATE_FORMAT);
 
     if (!strcmp (date_format_pref, "locale"))
         return eel_strdup_strftime ("%c", file_time);

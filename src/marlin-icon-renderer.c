@@ -889,7 +889,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
             if(nicon == NULL)
             {
-                g_critical("Can't load icon %s", emblems->data);
+                g_critical("Can't load icon %s", (char *) emblems->data);
             }
 
             /* determine the dimensions of the emblem */
@@ -900,20 +900,20 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             switch (position)
             {
             case 0: /* right/top */
-                emblem_area.x = cell_area->x + cell_area->width - MARLIN_EMBLEM_SIZE;
-                emblem_area.y = cell_area->y;
+                emblem_area.x = pix_rect.x + pix_rect.width - MARLIN_EMBLEM_SIZE;
+                emblem_area.y = MAX(pix_rect.y - MARLIN_EMBLEM_SIZE, background_area->y);
                 break;
             case 1: /* left/top */
-                emblem_area.x = cell_area->x;
-                emblem_area.y = cell_area->y;
+                emblem_area.x = MAX(pix_rect.x - MARLIN_EMBLEM_SIZE, 0);
+                emblem_area.y = MAX(pix_rect.y - MARLIN_EMBLEM_SIZE, background_area->y);
                 break;
             case 2: /* left/bottom */
-                emblem_area.x = cell_area->x;
-                emblem_area.y = cell_area->y + cell_area->height - MARLIN_EMBLEM_SIZE;
+                emblem_area.x = MAX(pix_rect.x - MARLIN_EMBLEM_SIZE, 0);
+                emblem_area.y = pix_rect.y + pix_rect.height - MARLIN_EMBLEM_SIZE;
                 break;
             case 3: /* right/bottom */
-                emblem_area.x = cell_area->x + cell_area->width - MARLIN_EMBLEM_SIZE;
-                emblem_area.y = cell_area->y + cell_area->height - MARLIN_EMBLEM_SIZE;
+                emblem_area.x = pix_rect.x + pix_rect.width - MARLIN_EMBLEM_SIZE;
+                emblem_area.y = pix_rect.y + pix_rect.height - MARLIN_EMBLEM_SIZE;
                 break;
             }
 

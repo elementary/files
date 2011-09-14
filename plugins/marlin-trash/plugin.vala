@@ -16,18 +16,26 @@
  */
 
 using Gtk;
+using Marlin;
 
-const string PLUGIN_NAME = "MarlinTrash";
 
-public void receive_all_hook(void* user_data, int hook)
+public class Marlin.Plugins.Trash : Marlin.Plugins.Base
 {
-    switch(hook)
+    private TrashMonitor trash_monitor;
+    private InfoBar? infobar = null;
+
+    public Trash()
     {
-    case Marlin.PluginHook.INTERFACE:
-        break;
-    case Marlin.PluginHook.INIT:
-        break;
-    case Marlin.PluginHook.DIRECTORY:
+        trash_monitor = TrashMonitor.get ();
+        trash_monitor.trash_state_changed.connect ((state) => {
+            /* state true = empty trash */
+            if (infobar != null)
+                infobar.set_response_sensitive (0, !state);
+        });
+    }
+
+    public override void directory_loaded(void* user_data)
+    {
         GOF.File file = ((Object[])user_data)[2] as GOF.File;
         var trash_file = File.new_for_uri("trash://");
         if(file.location.has_parent(trash_file) || file.location.equal(trash_file))
@@ -35,7 +43,7 @@ public void receive_all_hook(void* user_data, int hook)
             assert(((Object[])user_data)[1] is GOF.AbstractSlot);
             GOF.AbstractSlot slot = ((Object[])user_data)[1] as GOF.AbstractSlot;
             
-            var infobar = new InfoBar();
+            infobar = new InfoBar();
             (infobar.get_content_area() as Gtk.Box).add(new Gtk.Label("This is the trash."));
             infobar.add_button("Empty the trash", 0);
             infobar.response.connect( (self, response) => {
@@ -43,12 +51,16 @@ public void receive_all_hook(void* user_data, int hook)
                 });
             infobar.set_message_type(Gtk.MessageType.INFO);
 
+            infobar.set_response_sensitive (0, !TrashMonitor.is_empty ());
+
             slot.add_extra_widget(infobar);
             infobar.show_all();
         }
-        break;
-    default:
-        print("%s doesn't know this hook: %d\n", PLUGIN_NAME, hook);
-        break;
     }
+}
+
+
+public Marlin.Plugins.Base module_init()
+{
+    return new Marlin.Plugins.Trash();
 }
