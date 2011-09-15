@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-01 10:05+0000\n"
-"Last-Translator: SvinqVmraka <Unknown>\n"
+"PO-Revision-Date: 2011-09-14 09:02+0000\n"
+"Last-Translator: Arvigeus <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-09-02 04:52+0000\n"
-"X-Generator: Launchpad (build 13830)\n"
+"X-Launchpad-Export-Date: 2011-09-15 05:07+0000\n"
+"X-Generator: Launchpad (build 13921)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -79,6 +79,7 @@ msgstr "Домашна папка"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Arvigeus https://launchpad.net/~arvigeus\n"
 "  SvinqVmraka https://launchpad.net/~svinqvmraka"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
@@ -313,7 +314,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
-msgstr ""
+msgstr "Колона с подсказки"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:904
 msgid "The column in the model containing the tooltip texts for the items"
@@ -1523,32 +1524,32 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1536
 msgid "No Exec field specified"
-msgstr ""
+msgstr "Не е посочено Exec поле"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1556
 msgid "No URL field specified"
-msgstr ""
+msgstr "Не е посочено URL поле"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1562
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "Невалиден файл за работната площ"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1786
 msgid "Slashes are not allowed in filenames"
-msgstr ""
+msgstr "Файловите имена не могат да съдържат знака „/“"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1806
 msgid "Toplevel files cannot be renamed"
-msgstr ""
+msgstr "Файловете от най-високо ниво не могат да бъдат преименувани"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-utilities.c:265
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "Първоначалното местоположение на „%s“ не може да бъде определено. "
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-utilities.c:268
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "Обектът може да бъде изваден от кошчето."
 
 #: /home/xapantu/marlin/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
@@ -1557,8 +1558,8 @@ msgstr "Показване на повече _подробности"
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:191
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:209
 msgid "Preparing"
-msgstr ""
+msgstr "Подготвяне"
 
 #: /home/xapantu/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr ""
+msgstr " (неправилен Уникод)"

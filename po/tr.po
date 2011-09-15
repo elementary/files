@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-13 14:43+0000\n"
+"PO-Revision-Date: 2011-09-14 18:06+0000\n"
 "Last-Translator: Irmak Bıçakçıgil <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-09-14 04:58+0000\n"
+"X-Launchpad-Export-Date: 2011-09-15 05:07+0000\n"
 "X-Generator: Launchpad (build 13921)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
@@ -117,7 +117,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "Sidebar icon size:"
-msgstr ""
+msgstr "Kenar çubuğu simge boyutu:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:115
 msgid "locale"
