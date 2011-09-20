@@ -10,6 +10,7 @@ Standards-Version: 3.8.4
 Package: marlin
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Pre-Depends: dpkg (>= 1.15.6)
 Recommends: tumbler
 Description: The sexiest fish in the large sea of file-browsers
  A file manager created by elementary Team to be fast and easy to use.
