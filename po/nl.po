@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-03 11:23+0000\n"
-"Last-Translator: Jonathan Moerman <Unknown>\n"
+"PO-Revision-Date: 2011-09-20 12:25+0000\n"
+"Last-Translator: Hans Metzke <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-09-04 04:52+0000\n"
-"X-Generator: Launchpad (build 13830)\n"
+"X-Launchpad-Export-Date: 2011-09-21 05:22+0000\n"
+"X-Generator: Launchpad (build 13996)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -80,6 +80,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Ben VanMeggelen https://launchpad.net/~ben-vanmeggelen\n"
+"  Hans Metzke https://launchpad.net/~openmetz\n"
 "  Jon Koops https://launchpad.net/~jonkoops\n"
 "  Jonathan Moerman https://launchpad.net/~jonathanmoerman\n"
 "  Mitch Dries https://launchpad.net/~mitch-dries\n"
@@ -177,16 +178,16 @@ msgstr "Alle bestandsoperaties zijn succesvol voltooid"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
-msgstr ""
+msgstr "Selectiemodus"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:648
 msgid "The selection mode"
-msgstr ""
+msgstr "De selectiemodus"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:663
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:161
 msgid "Single Click"
-msgstr ""
+msgstr "Enkele klik"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:664
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:162
@@ -196,7 +197,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:680
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:178
 msgid "Single Click Timeout"
-msgstr ""
+msgstr "Enkele Klik Timeout"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:681
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:179
@@ -207,7 +208,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:699
 msgid "Pixbuf column"
-msgstr ""
+msgstr "Pixbufkolom"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
@@ -215,7 +216,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
-msgstr ""
+msgstr "Tekstkolom"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
@@ -223,7 +224,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:737
 msgid "Markup column"
-msgstr ""
+msgstr "Opmaakkolom"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:738
 msgid "Model column used to retrieve the text if using Pango markup"
@@ -231,7 +232,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:745
 msgid "Icon View Model"
-msgstr ""
+msgstr "Pictogramweergave-model"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:746
 msgid "The model for the icon view"
@@ -239,7 +240,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:762
 msgid "Number of columns"
-msgstr ""
+msgstr "Aantal kolommen"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:763
 msgid "Number of columns to display"
@@ -247,88 +248,89 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:780
 msgid "Width for each item"
-msgstr ""
+msgstr "Breedte voor elk item"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr ""
+msgstr "De gebruikte breedte voor elk item"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
-msgstr ""
+msgstr "Spatiëring"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:797
 msgid "Space which is inserted between cells of an item"
-msgstr ""
+msgstr "Ruimte die tussen cellen geplaatst wordt"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
-msgstr ""
+msgstr "Rij-spatiëring"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
-msgstr ""
+msgstr "Ruimte die tussen rijen van het rooster geplaatst wordt"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
-msgstr ""
+msgstr "Kolom-spatiëring"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
-msgstr ""
+msgstr "Ruimte die tussen kolommen van het rooster geplaatst wordt"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:844
 msgid "Margin"
-msgstr ""
+msgstr "Marge"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:845
 msgid "Space which is inserted at the edges of the icon view"
-msgstr ""
+msgstr "Ruimte die aan de randen van de pictogramweergave geplaatst wordt"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
-msgstr ""
+msgstr "Objectoriëntatie"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:861
 msgid ""
 "How the text and icon of each item are positioned relative to each other"
 msgstr ""
+"Hoe de tekst en pictogram van elk item ten opzichte van elkaar zijn geplaatst"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:877
 msgid "Reorderable"
-msgstr ""
+msgstr "Herschikbaar"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:878
 msgid "View is reorderable"
-msgstr ""
+msgstr "Of de items in het beeld van volgorde te veranderen zijn"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:885
 msgid "Enable Search"
-msgstr ""
+msgstr "Zoeken inschakelen"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:886
 msgid "View allows user to search through columns interactively"
-msgstr ""
+msgstr "Weergave biedt mogelijkheid kolommen interactief te doorzoeken"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:893
 msgid "Search Column"
-msgstr ""
+msgstr "Zoekkolom"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:894
 msgid "Model column to search through during interactive search"
-msgstr ""
+msgstr "Modelkolom om te doorzoeken gedurende interactief zoeken"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
-msgstr ""
+msgstr "Tooltipkolom"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:904
 msgid "The column in the model containing the tooltip texts for the items"
-msgstr ""
+msgstr "De kolom van het model met de tooltip-teksten voor de items"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:921
 msgid "Item Padding"
-msgstr ""
+msgstr "Item-opvulling"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:922
 msgid "Padding around icon view items"

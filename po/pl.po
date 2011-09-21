@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-06 11:44+0000\n"
-"Last-Translator: Łukasz Serafinowski <Unknown>\n"
+"PO-Revision-Date: 2011-09-20 19:08+0000\n"
+"Last-Translator: Grzegorz G. <Unknown>\n"
 "Language-Team: Polish <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-09-07 04:50+0000\n"
-"X-Generator: Launchpad (build 13861)\n"
+"X-Launchpad-Export-Date: 2011-09-21 05:22+0000\n"
+"X-Generator: Launchpad (build 13996)\n"
 "Language: pl\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
@@ -82,6 +82,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Cinkowskiw https://launchpad.net/~cinkowskiw\n"
+"  Grzegorz G. https://launchpad.net/~grzesiek1e5\n"
 "  Marcin Falkiewicz https://launchpad.net/~avalatron\n"
 "  Piotr Filipek https://launchpad.net/~piotrek290\n"
 "  Piotr Sokół https://launchpad.net/~psokol\n"
@@ -300,11 +301,11 @@ msgstr "Pozycjonowanie tekstu i ikony każdego elementu względem innych"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:877
 msgid "Reorderable"
-msgstr ""
+msgstr "Zmienny porządek"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:878
 msgid "View is reorderable"
-msgstr ""
+msgstr "Możliwa jest zmiana porządku w widoku"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:885
 msgid "Enable Search"
@@ -320,7 +321,7 @@ msgstr "Kolumna wyszukiwania"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:894
 msgid "Model column to search through during interactive search"
-msgstr ""
+msgstr "Kolumna modelu przeszukiwana podczas wyszukiwania interaktywnego"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
@@ -328,15 +329,15 @@ msgstr "Kolumna podpowiedzi"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:904
 msgid "The column in the model containing the tooltip texts for the items"
-msgstr ""
+msgstr "Kolumna modelu zawierająca dymki podpowiedzi dla elementów"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:921
 msgid "Item Padding"
-msgstr ""
+msgstr "Odstęp wewnętrzny (padding)"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:922
 msgid "Padding around icon view items"
-msgstr ""
+msgstr "Odstęp wewnętrzny (padding) dookoła elementów widoku ikon"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:939
 msgid "Cell Area"
@@ -344,27 +345,27 @@ msgstr "Obszar komórki"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:940
 msgid "The GtkCellArea used to layout cells"
-msgstr ""
+msgstr "GtkCellArea używane do układania komórek"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:953
 msgid "Selection Box Color"
-msgstr ""
+msgstr "Kolor obszaru zaznaczania"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:954
 msgid "Color of the selection box"
-msgstr ""
+msgstr "Kolor obszaru zaznaczania"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:960
 msgid "Selection Box Alpha"
-msgstr "Wybór przezroczystości"
+msgstr "Przezroczystość obszaru zaznaczania"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:961
 msgid "Opacity of the selection box"
-msgstr ""
+msgstr "Przezroczystość obszaru zaznaczenia"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
-msgstr "Dostosowywanie paska narzędziowego"
+msgstr "Dostosuj pasek narzędzi"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:465
 msgid ""
