@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-22 10:33+0000\n"
+"PO-Revision-Date: 2011-09-27 07:30+0000\n"
 "Last-Translator: Thomas Berends <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-09-23 04:49+0000\n"
-"X-Generator: Launchpad (build 14012)\n"
+"X-Launchpad-Export-Date: 2011-09-28 05:55+0000\n"
+"X-Generator: Launchpad (build 14049)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -73,7 +73,7 @@ msgstr "Ga naar %s"
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: /home/xapantu/marlin/po/../src/View/Window.vala:524
 msgid "translator-credits"
@@ -206,6 +206,8 @@ msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
+"De tijd waarna een item onder de muiscursor automatisch wordt geselecteerd "
+"in enkele klik-modus."
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:699
 msgid "Pixbuf column"
@@ -245,7 +247,7 @@ msgstr "Aantal kolommen"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:763
 msgid "Number of columns to display"
-msgstr ""
+msgstr "Het aantal weer te geven kolommen"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:780
 msgid "Width for each item"
@@ -339,27 +341,27 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:939
 msgid "Cell Area"
-msgstr ""
+msgstr "Celruimte"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:940
 msgid "The GtkCellArea used to layout cells"
-msgstr ""
+msgstr "De GtkCellArea welke wordt gebruikt om cellen te plaatsen"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:953
 msgid "Selection Box Color"
-msgstr ""
+msgstr "Selectieveld kleur"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:954
 msgid "Color of the selection box"
-msgstr ""
+msgstr "De kleur van het selectieveld"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:960
 msgid "Selection Box Alpha"
-msgstr ""
+msgstr "Selectieveld alpha"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:961
 msgid "Opacity of the selection box"
-msgstr ""
+msgstr "Doorzichtigheid van het selectieveld"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
@@ -676,7 +678,7 @@ msgstr "FTP (met aanmelding)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "Windows-netwerk"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
