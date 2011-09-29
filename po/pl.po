@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-23 09:59+0000\n"
-"Last-Translator: Wojciech Zylinski <Unknown>\n"
+"PO-Revision-Date: 2011-09-28 19:11+0000\n"
+"Last-Translator: Adrian Widerski <Unknown>\n"
 "Language-Team: Polish <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-09-24 05:16+0000\n"
-"X-Generator: Launchpad (build 14012)\n"
+"X-Launchpad-Export-Date: 2011-09-29 04:45+0000\n"
+"X-Generator: Launchpad (build 14049)\n"
 "Language: pl\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
@@ -81,6 +81,7 @@ msgstr "Katalog użytkownika"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Adrian Widerski https://launchpad.net/~adrian-widerski\n"
 "  Cinkowskiw https://launchpad.net/~cinkowskiw\n"
 "  Grzegorz G. https://launchpad.net/~grzesiek1e5\n"
 "  Marcin Falkiewicz https://launchpad.net/~avalatron\n"
@@ -682,7 +683,7 @@ msgstr "FTP (z logowaniem)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "Zasób Windows"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
@@ -690,7 +691,7 @@ msgstr "WebDAV (HTTP)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Bezpieczny WebDAV (HTTPS)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
@@ -701,11 +702,13 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Nie można wczytać listy obsługiwanych metod serwerów.\n"
+"Proszę sprawdzić instalację programu gvfs."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "Nie można otworzyć pliku \"%s\" w \"%s\"."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
@@ -718,7 +721,7 @@ msgstr "Spróbuj ponownie"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Proszę sprawdzić informacje o użytkowniku."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
@@ -735,7 +738,7 @@ msgstr "Połącz z serwerem"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr ""
+msgstr "Informacje o serwerze"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
@@ -759,7 +762,7 @@ msgstr "_Katalog:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr ""
+msgstr "O użytkowniku"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
@@ -1026,6 +1029,8 @@ msgstr "Przenoszenie plików do kosza"
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "pozostał %'d element do usunięcia"
+msgstr[1] "Pozostały %'d pliki do usunięcia"
+msgstr[2] "Pozostało %'d plików do usunięcia"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1884
 msgid "Cannot move file to trash, do you want to delete immediately?"
