@@ -13,7 +13,7 @@ install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INS
 # Check for the deps
 
 find_package(PkgConfig)
-set(PKG_DEPS gtk+-3.0 gio-unix-2.0 gee-1.0)
+set(PKG_DEPS gtk+-3.0 gio-unix-2.0 gee-1.0 marlincore)
 pkg_check_modules(DEPS REQUIRED ${PKG_DEPS})
 # Link all
 
@@ -27,6 +27,7 @@ set(LIB_PATHS
 	${DEPS_LIBRARY_DIRS}
 )
 link_directories(${LIB_PATHS})
+include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 #VALA stuff
 
 find_package(Vala REQUIRED)
@@ -40,6 +41,7 @@ PACKAGES
 gtk+-3.0
 gee-1.0
 gmodule-2.0
+marlin-core
 OPTIONS
 --thread
 GENERATE_VAPI

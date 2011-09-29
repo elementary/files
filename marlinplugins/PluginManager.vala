@@ -173,6 +173,11 @@ public class Marlin.PluginManager : GLib.Object
         foreach(var plugin in plugin_hash.values) plugin.file(files);
     }
     
+    public void update_file_info(GOF.File file)
+    {
+        foreach(var plugin in plugin_hash.values) plugin.update_file_info(file);
+    }
+
     public void add_plugin(string path)
     {
     }

@@ -30,7 +30,6 @@
 #include "marlin-exec.h"
 #include "marlin-icons.h"
 
-
 enum {
     FM_LIST_MODEL_FILE_COLUMN,
     FM_LIST_MODEL_ICON,

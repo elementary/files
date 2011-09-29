@@ -285,6 +285,7 @@ file_loaded_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryVi
 {
     g_debug ("%s %s\n", G_STRFUNC, file->uri);
     g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
+    marlin_plugin_manager_update_file_info (plugins, file);
 }
 
 static void
@@ -292,6 +293,7 @@ file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryVie
 {
     g_debug ("%s %s\n", G_STRFUNC, file->uri);
     g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
+    marlin_plugin_manager_update_file_info (plugins, file);
 }
 
 static void
