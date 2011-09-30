@@ -320,12 +320,16 @@ file_watcher_add_file (FileWatcher *watcher, GOFFile *file)
 				SYNCDAEMON_FILESYSTEM_INTERFACE (interface), path, is_dir);
 			if (SYNCDAEMON_IS_METADATA (metadata)) {
 				if (syncdaemon_metadata_get_is_synced (metadata))
-                    //FIXME
-					//nautilus_file_info_add_emblem (file, "ubuntuone-synchronized");
-					g_message ("U1: %s %s", file->uri, "ubuntuone-synchronized");
+                {
+                    //FIXME remove the debug msg
+					g_debug ("U1: %s %s", file->uri, "ubuntuone-synchronized");
+					gof_file_add_emblem (file, "emblem-ubuntuone-synchronized");
+                }
 				else
-					//nautilus_file_info_add_emblem (file, "ubuntuone-updating");
-					g_message ("U1: %s %s", file->uri, "ubuntuone-updating");
+                {
+					g_debug ("U1: %s %s", file->uri, "ubuntuone-updating");
+					gof_file_add_emblem (file, "emblem-ubuntuone-updating");
+                }
 
 				if (is_dir) {
 					/* If it's a directory, check shares */
@@ -334,8 +338,8 @@ file_watcher_add_file (FileWatcher *watcher, GOFFile *file)
 								     syncdaemon_shares_interface_get_shared (SYNCDAEMON_SHARES_INTERFACE (interface))) ||
 					    check_for_shared_folder ((const gchar *) path,
 								     syncdaemon_shares_interface_get_shares (SYNCDAEMON_SHARES_INTERFACE (interface)))) {
-						//nautilus_file_info_add_emblem (file, "shared");
-					    g_message ("U1: %s %s", file->uri, "shared");
+					    g_debug ("U1: %s %s", file->uri, "shared");
+					    gof_file_add_emblem (file, "emblem-shared");
 					}
 				} else {
 					GSList *public_files, *l;
@@ -350,8 +354,8 @@ file_watcher_add_file (FileWatcher *watcher, GOFFile *file)
 							continue;
 
 						if (g_strcmp0 (path, syncdaemon_file_info_get_path (file_info)) == 0) {
-							//nautilus_file_info_add_emblem (file, "ubuntuone-public");
-					        g_message ("U1: %s %s", file->uri, "ubuntuone-public");
+					        g_debug ("U1: %s %s", file->uri, "ubuntuone-public");
+					        gof_file_add_emblem (file, "emblem-ubuntuone-public");
 							break;
 						}
 					}

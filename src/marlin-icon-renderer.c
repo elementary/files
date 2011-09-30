@@ -887,9 +887,9 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             /* check if we have the emblem in the icon theme */
             nicon = nautilus_icon_info_lookup_from_name (emblems->data, MARLIN_EMBLEM_SIZE);
             pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
-            if(nicon == NULL)
-            {
+            if(pix == NULL) {
                 g_critical("Can't load icon %s", (char *) emblems->data);
+                return;
             }
 
             /* determine the dimensions of the emblem */

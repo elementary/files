@@ -296,6 +296,7 @@ void gof_file_add_emblem(GOFFile* file, const gchar* emblem)
     }
     file->emblems_list = g_list_append(file->emblems_list, (void*)emblem);
 }
+
 static void
 print_error(GError *error)
 {
