@@ -277,6 +277,11 @@ void gof_file_update_icon (GOFFile *file, gint size)
     if(gof_file_is_symlink(file))
     {
         gof_file_add_emblem(file, "emblem-symbolic-link");
+        
+        /* testing up to 4 emblems */
+        /*gof_file_add_emblem(file, "emblem-generic");
+        gof_file_add_emblem(file, "emblem-important");
+        gof_file_add_emblem(file, "emblem-favorite");*/
     }
 }
 
