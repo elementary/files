@@ -258,6 +258,12 @@ void gof_file_update (GOFFile *file)
 
     /* update emblems */
 
+    g_critical ("update emblem");
+    /* erase previous stored emblems */
+    if (file->emblems_list != NULL) {
+        g_list_free (file->emblems_list);
+        file->emblems_list = NULL;
+    }
     marlin_plugin_manager_update_file_info (plugins, file);
     if(gof_file_is_symlink(file))
     {
@@ -1703,6 +1709,7 @@ gof_file_operation_new (GOFFile *file,
 	op->callback_data = callback_data;
 	op->cancellable = g_cancellable_new ();
 
+    /* FIXME check this Glist */
 	op->file->operations_in_progress = g_list_prepend
 		(op->file->operations_in_progress, op);
 
