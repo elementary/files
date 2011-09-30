@@ -11,10 +11,10 @@ set(CFLAGS
 )
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
-include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)
+include_directories(${CMAKE_BINARY_DIR}/libcore/)
 add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
 add_library(marlin-ubuntuone SHARED
     plugin.c file-watcher.c)
-target_link_libraries(marlin-ubuntuone marlincore marlinplugins marlinwidgets ${UBUNTUONE_LIBRARIES})
+target_link_libraries(marlin-ubuntuone marlincore marlinwidgets ${UBUNTUONE_LIBRARIES})
 install(TARGETS marlin-ubuntuone DESTINATION lib/marlin/plugins/)

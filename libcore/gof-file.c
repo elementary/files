@@ -29,6 +29,7 @@
 #include "gof-directory-async.h"
 #include "marlin-exec.h"
 #include "marlin-icons.h"
+#include "marlin-plugin-manager.h"
 
 enum {
     FM_LIST_MODEL_FILE_COLUMN,
@@ -274,6 +275,7 @@ void gof_file_update_icon (GOFFile *file, gint size)
     file->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
     _g_object_unref0 (nicon);
 
+    marlin_plugin_manager_update_file_info (plugins, file);
     if(gof_file_is_symlink(file))
     {
         gof_file_add_emblem(file, "emblem-symbolic-link");

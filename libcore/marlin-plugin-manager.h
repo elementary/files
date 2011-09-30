@@ -16,8 +16,8 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "marlin-plugins-hook.h"
-#include "marlinplugins.h"
+//#include "marlin-plugins-hook.h"
+#include <marlinplugins.h>
 
 #if 0
 
