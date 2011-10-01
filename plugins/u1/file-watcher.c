@@ -302,12 +302,12 @@ file_watcher_add_file (FileWatcher *watcher, GOFFile *file)
 				     (GWeakNotify) observed_file_unrefed, watcher);
 	}
 
-	g_object_weak_ref (G_OBJECT (file),
-			   (GWeakNotify) observed_file_unrefed, watcher);
-	g_hash_table_insert (watcher->files, g_strdup (path), file);
-
 	/* Retrieve metadata */
 	if (syncdaemon_daemon_is_folder_enabled (watcher->uon->syncdaemon, path, &is_root)) {
+	    g_object_weak_ref (G_OBJECT (file),
+                           (GWeakNotify) observed_file_unrefed, watcher);
+        g_hash_table_insert (watcher->files, g_strdup (path), file);
+
 		SyncdaemonInterface *interface;
 
 		interface = syncdaemon_daemon_get_filesystem_interface (watcher->uon->syncdaemon);
@@ -339,6 +339,7 @@ file_watcher_add_file (FileWatcher *watcher, GOFFile *file)
 					    check_for_shared_folder ((const gchar *) path,
 								     syncdaemon_shares_interface_get_shares (SYNCDAEMON_SHARES_INTERFACE (interface)))) {
 					    g_debug ("U1: %s %s", file->uri, "shared");
+					    //gof_file_add_emblem (file, "emblem-shared-symbolic");
 					    gof_file_add_emblem (file, "emblem-shared");
 					}
 				} else {
@@ -355,7 +356,8 @@ file_watcher_add_file (FileWatcher *watcher, GOFFile *file)
 
 						if (g_strcmp0 (path, syncdaemon_file_info_get_path (file_info)) == 0) {
 					        g_debug ("U1: %s %s", file->uri, "ubuntuone-public");
-					        gof_file_add_emblem (file, "emblem-ubuntuone-public");
+					        //gof_file_add_emblem (file, "emblem-ubuntuone-public");
+					        gof_file_add_emblem (file, "gnome-globe");
 							break;
 						}
 					}
@@ -382,9 +384,11 @@ file_watcher_update_path (FileWatcher *watcher, const gchar *path)
 	g_return_if_fail (IS_FILE_WATCHER (watcher));
 
 	/* Remove emblems from all files in the specified path */
-	/*g_hash_table_iter_init (&iter, watcher->files);
+	g_hash_table_iter_init (&iter, watcher->files);
 	while (g_hash_table_iter_next (&iter, (gpointer *) &key, (gpointer *) &file)) {
-		if (g_str_has_prefix (key, path) || g_strcmp0 (key, path) == 0)
-			nautilus_file_info_invalidate_extension_info (file);
-	}*/
+		if (g_str_has_prefix (key, path) || g_strcmp0 (key, path) == 0) {
+            //g_debug ("found %s %s\n", key, file->uri);
+            gof_monitor_file_changed (file); 
+        }
+	}
 }

@@ -63,6 +63,8 @@ enum {
 static guint    signals[LAST_SIGNAL];
 static guint32  effective_user_id;
 
+static void     gof_file_update_emblem (GOFFile *file);
+
 static GIcon *
 get_icon_user_special_dirs(char *path)
 {
@@ -255,25 +257,7 @@ void gof_file_update (GOFFile *file)
     }
 
     gof_file_update_trash_info (file);
-
-    /* update emblems */
-
-    g_critical ("update emblem");
-    /* erase previous stored emblems */
-    if (file->emblems_list != NULL) {
-        g_list_free (file->emblems_list);
-        file->emblems_list = NULL;
-    }
-    marlin_plugin_manager_update_file_info (plugins, file);
-    if(gof_file_is_symlink(file))
-    {
-        gof_file_add_emblem(file, "emblem-symbolic-link");
-        
-        /* testing up to 4 emblems */
-        /*gof_file_add_emblem(file, "emblem-generic");
-        gof_file_add_emblem(file, "emblem-important");
-        gof_file_add_emblem(file, "emblem-favorite");*/
-    }
+    gof_file_update_emblem (file);
 }
 
 void gof_file_update_icon (GOFFile *file, gint size)
@@ -293,6 +277,27 @@ void gof_file_update_icon (GOFFile *file, gint size)
     _g_object_unref0 (file->pix);
     file->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
     _g_object_unref0 (nicon);
+}
+
+static void 
+gof_file_update_emblem (GOFFile *file)
+{
+    //g_critical ("update emblem");
+    /* erase previous stored emblems */
+    if (file->emblems_list != NULL) {
+        g_list_free (file->emblems_list);
+        file->emblems_list = NULL;
+    }
+    marlin_plugin_manager_update_file_info (plugins, file);
+    if(gof_file_is_symlink(file))
+    {
+        gof_file_add_emblem(file, "emblem-symbolic-link");
+        
+        /* testing up to 4 emblems */
+        /*gof_file_add_emblem(file, "emblem-generic");
+        gof_file_add_emblem(file, "emblem-important");
+        gof_file_add_emblem(file, "emblem-favorite");*/
+    }
 }
 
 void gof_file_add_emblem(GOFFile* file, const gchar* emblem)

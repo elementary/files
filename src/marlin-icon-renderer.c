@@ -880,7 +880,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     {
         int position = 0;
         GList* emblems = g_list_first(priv->file->emblems_list);
-#define MARLIN_EMBLEM_SIZE 24
+#define MARLIN_EMBLEM_SIZE 18
         /* render the emblems */
         while(emblems != NULL && position < 4)
         {
