@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-08-27 18:06+0000\n"
-"Last-Translator: xapantu <Unknown>\n"
+"PO-Revision-Date: 2011-10-02 14:08+0000\n"
+"Last-Translator: Stefan Ivanović <Unknown>\n"
 "Language-Team: Bosnian <bs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-08-28 05:25+0000\n"
-"X-Generator: Launchpad (build 13794)\n"
+"X-Launchpad-Export-Date: 2011-10-03 04:44+0000\n"
+"X-Generator: Launchpad (build 14071)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -64,17 +64,17 @@ msgstr "Napravi"
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr ""
+msgstr "Kreiraj direktorij %s"
 
 #: /home/xapantu/marlin/po/../src/View/LocationBar.vala:959
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "Idi u %s"
 
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
 msgid "Home"
-msgstr ""
+msgstr "Početna"
 
 #: /home/xapantu/marlin/po/../src/View/Window.vala:524
 msgid "translator-credits"
@@ -85,55 +85,55 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
-msgstr ""
+msgstr "Postavke Marlina"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:46
 msgid "Single click to open:"
-msgstr ""
+msgstr "Jedan klik da otvorite:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:59
 msgid "Mouse auto-selection speed:"
-msgstr ""
+msgstr "Brzina autoselekcije mišem:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:72
 msgid "Behavior"
-msgstr ""
+msgstr "Ponašanje"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:80
 msgid "small"
-msgstr ""
+msgstr "malo"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:81
 msgid "medium"
-msgstr ""
+msgstr "srednje"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:82
 msgid "large"
-msgstr ""
+msgstr "veliko"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "extra-large"
-msgstr ""
+msgstr "extra-veliko"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "Sidebar icon size:"
-msgstr ""
+msgstr "veličina ikonica sajdbara"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:115
 msgid "locale"
-msgstr ""
+msgstr "lokalni"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:116
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:117
 msgid "informal"
-msgstr ""
+msgstr "informativni"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:136
 msgid "Date format:"
-msgstr ""
+msgstr "Oblik datuma:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:151
 msgid "Show applications names in the context pane:"
@@ -141,57 +141,58 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:159
 msgid "Display"
-msgstr ""
+msgstr "Prikaz"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:207
 msgid "Plugins"
-msgstr ""
+msgstr "Dodaci"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:105
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:155
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:213
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:269
 msgid "File Operations"
-msgstr ""
+msgstr "Operacije sa datotekama"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:114
 msgid "Show Details"
-msgstr ""
+msgstr "Prikaži Detalje"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:149
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:171
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d datotečna operacija aktivna"
+msgstr[1] "%'d datotečne operacije aktivne"
+msgstr[2] "%'d datotečnih operacija aktivno"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:270
 msgid "All file operations have been successfully completed"
-msgstr ""
+msgstr "Sve radnje nad datotekama su uspješno završene"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
-msgstr ""
+msgstr "Režim izbora"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:648
 msgid "The selection mode"
-msgstr ""
+msgstr "Režim izbora"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:663
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:161
 msgid "Single Click"
-msgstr ""
+msgstr "Jedan klik"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:664
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:162
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
+msgstr "Da li se stavke u pregledu mogu aktivirati jednim klikom"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:680
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:178
 msgid "Single Click Timeout"
-msgstr ""
+msgstr "Rok za jednostruki klik"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:681
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:179
@@ -199,90 +200,93 @@ msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
+"Dužina vremena nakon koga će stavka pod kursorom miša biti sama izabrana u "
+"režimu jednostrukog klika"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:699
 msgid "Pixbuf column"
-msgstr ""
+msgstr "Pixbuf kolona"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
-msgstr ""
+msgstr "Kolona u modelu iz koje se izvlači sličica ikonice"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
-msgstr ""
+msgstr "Tekstualna kolona"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
-msgstr ""
+msgstr "Kolona u modelu iz kojeg se izvlači tekst"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:737
 msgid "Markup column"
-msgstr ""
+msgstr "Kolona oznake"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:738
 msgid "Model column used to retrieve the text if using Pango markup"
 msgstr ""
+"Kolona u modelu iz koje se izvlači tekst ukoliko se koriste Pango oznake"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:745
 msgid "Icon View Model"
-msgstr ""
+msgstr "Model pregleda ikona"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:746
 msgid "The model for the icon view"
-msgstr ""
+msgstr "Model za pregled pomoću ikona"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:762
 msgid "Number of columns"
-msgstr ""
+msgstr "Broj kolona"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:763
 msgid "Number of columns to display"
-msgstr ""
+msgstr "Broj kolona koje želite da prikažete"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:780
 msgid "Width for each item"
-msgstr ""
+msgstr "Širina svake stavke"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr ""
+msgstr "Širina za svaku stavku"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
-msgstr ""
+msgstr "Razmak"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:797
 msgid "Space which is inserted between cells of an item"
-msgstr ""
+msgstr "Razmak koji se ubacuje između ćelija stavke"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
-msgstr ""
+msgstr "Razmak između redova"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
-msgstr ""
+msgstr "Razmak koji se ubacuje između redova mreže"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
-msgstr ""
+msgstr "Razmak između kolona"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
-msgstr ""
+msgstr "Razmak koji se ubacuje između kolona mreže"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:844
 msgid "Margin"
-msgstr ""
+msgstr "Margina"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:845
 msgid "Space which is inserted at the edges of the icon view"
-msgstr ""
+msgstr "Razmak koji se ubacuje na krajevima pregleda ikona"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
-msgstr ""
+msgstr "Orijentacija stavke"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:861
 msgid ""
