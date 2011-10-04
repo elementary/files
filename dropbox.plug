@@ -1,0 +1,3 @@
+[Plugin]
+Name=Dropbox
+File=libmarlin-dropbox.so
