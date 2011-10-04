@@ -144,7 +144,7 @@ toggle_publicity_cb (GtkWidget * item, gpointer user_data)
 }
 
 //FIXME implement this
-#if 0
+//#if 0
 static void
 share_folder_cb (GtkWidget *item, gpointer user_data)
 {
@@ -165,7 +165,7 @@ unshare_folder_cb (GtkWidget *item, gpointer user_data)
     if (interface != NULL)
         syncdaemon_shares_interface_delete (interface, data->path);
 }
-#endif
+//#endif
 
 gboolean
 check_share_offer_pending (MarlinPluginsUbuntuOne *uon, const gchar *path)
@@ -274,8 +274,8 @@ context_menu_new (MarlinPluginsUbuntuOne *u1, GtkWidget *menu)
         if (is_pending)
             g_object_set (menu_item, "sensitive", FALSE, NULL);
 
-        /*g_signal_connect (menu_item, "activate",
-          G_CALLBACK (share_folder_cb), cb_data);*/
+        g_signal_connect (menu_item, "activate",
+                          G_CALLBACK (share_folder_cb), cb_data);
     } else {
         g_object_set (menu_item, "sensitive", FALSE, NULL);
     }
@@ -288,8 +288,8 @@ context_menu_new (MarlinPluginsUbuntuOne *u1, GtkWidget *menu)
         if (is_pending || is_share_offer_pending)
             g_object_set (menu_item, "sensitive", FALSE, NULL);
 
-        /*g_signal_connect (menu_item, "activate",
-          G_CALLBACK (unshare_folder_cb), cb_data);*/
+        g_signal_connect (menu_item, "activate",
+                          G_CALLBACK (unshare_folder_cb), cb_data);
         gtk_menu_shell_append (GTK_MENU_SHELL (submenu), menu_item);
     }
 
