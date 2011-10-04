@@ -40,7 +40,6 @@ install (FILES
     marlin-file-utilities.h
     marlin-global-preferences.h
     marlin-icons.h
-    marlin-plugin-manager.h
     marlin-abstract-sidebar.h
     marlin-plugins-hook.h
     marlin-progress-info.h
@@ -125,7 +124,6 @@ add_library (${PKGNAME} SHARED
     gof-monitor.c
     nautilus-icon-info.c
     nautilus-cell-renderer-text-ellipsized.c
-    marlin-plugin-manager.c
     marlin-trash-monitor.c
     ${VALA_C}
 )
@@ -159,7 +157,6 @@ add_library(${PKGNAME}-static STATIC
     gof-monitor.c
     nautilus-icon-info.c
     nautilus-cell-renderer-text-ellipsized.c
-    marlin-plugin-manager.c
     marlin-trash-monitor.c
     ${VALA_C}
 )

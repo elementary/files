@@ -91,5 +91,3 @@ namespace Marlin {
     }
 }
 
-[CCode (cheader_filename = "marlin-plugin-manager.h")]
-Marlin.PluginManager plugins;

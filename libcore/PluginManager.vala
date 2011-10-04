@@ -19,6 +19,8 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+public static Marlin.PluginManager plugins;
+
 public class Marlin.PluginManager : GLib.Object
 {
     delegate Plugins.Base ModuleInitFunc ();
@@ -28,6 +30,7 @@ public class Marlin.PluginManager : GLib.Object
     string plugin_dir;
     Gee.List<string> names;
     bool in_available = false;
+    public GLib.List<Gtk.Widget>? menus;
 
     public PluginManager(Settings settings, string field, string plugin_dir)
     {
@@ -143,9 +146,12 @@ public class Marlin.PluginManager : GLib.Object
         }
     }
     
-    public void hook_context_menu(Gtk.Widget win)
+    public void hook_context_menu(Gtk.Widget menu)
     {
-        foreach(var plugin in plugin_hash.values) plugin.context_menu(win);
+        foreach (var item in menus)
+            item.destroy ();
+        menus = null;
+        foreach(var plugin in plugin_hash.values) plugin.context_menu(menu);
     }
     
     public void ui(Gtk.UIManager data)

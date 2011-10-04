@@ -22,7 +22,6 @@
 #ifndef __FILE_WATCHER_H__
 #define __FILE_WATCHER_H__
 
-//#include <libnautilus-extension/nautilus-file-info.h>
 #include <gof-file.h>
 
 #define TYPE_FILE_WATCHER                (file_watcher_get_type ())

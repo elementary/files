@@ -41,7 +41,7 @@
 #include "marlin-bookmark.h"
 #include "marlin-trash-monitor.h"
 #include "marlin-dnd.h"
-#include "marlin-plugin-manager.h"
+#include "marlinplugins.h"
 
 #define EJECT_BUTTON_XPAD 4
 #define TEXT_XPAD 5

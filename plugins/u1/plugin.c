@@ -130,6 +130,28 @@ marlin_plugins_ubuntuone_update_file_info (MarlinPluginsBase *base, GOFFile *fil
 }
 
 static void 
+marlin_plugins_ubuntuone_context_menu (MarlinPluginsBase *base, GtkWidget *menu) 
+{
+    MarlinPluginsUbuntuOne *u1 = MARLIN_PLUGINS_UBUNTUONE (base);
+
+    g_message ("%s", G_STRFUNC);
+    context_menu_new (u1, menu);
+}
+
+static void marlin_plugins_ubuntuone_real_file (MarlinPluginsBase *base, GList *files) {
+    MarlinPluginsUbuntuOne *u1 = MARLIN_PLUGINS_UBUNTUONE (base);
+
+    u1->selection = files;
+
+    /*GList *l;
+    GOFFile *goffile;
+    for (l=files; l != NULL; l=l->next) {
+        goffile = (GOFFile *) l->data;
+        g_message ("selection %s", goffile->uri);
+    }*/
+}
+
+static void 
 marlin_plugins_ubuntuone_class_init (MarlinPluginsUbuntuOneClass *klass) {
     MarlinPluginsBaseClass *object_class = MARLIN_PLUGINS_BASE_CLASS (klass);
 	//g_type_class_add_private (klass, sizeof (MarlinPluginsUbuntuOnePrivate));
@@ -137,6 +159,8 @@ marlin_plugins_ubuntuone_class_init (MarlinPluginsUbuntuOneClass *klass) {
 	object_class->finalize = marlin_plugins_ubuntuone_finalize;
 	object_class->directory_loaded = marlin_plugins_ubuntuone_real_directory_loaded;
 	object_class->update_file_info = marlin_plugins_ubuntuone_update_file_info;
+	object_class->context_menu = marlin_plugins_ubuntuone_context_menu;
+	object_class->file = marlin_plugins_ubuntuone_real_file;
 }
 
 

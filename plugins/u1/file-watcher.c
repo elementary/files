@@ -70,8 +70,6 @@ transfer_started_cb (SyncdaemonDaemon *daemon,
 		   gchar *path,
 		   gpointer user_data)
 {
-    //amtest
-    g_message ("!!!!!!!!! %s %s", G_STRFUNC, path);
 	FileWatcher *watcher = FILE_WATCHER (user_data);
 
 	file_watcher_update_path (watcher, path);

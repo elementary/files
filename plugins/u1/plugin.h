@@ -34,6 +34,8 @@ typedef struct _MarlinPluginsUbuntuOneClass MarlinPluginsUbuntuOneClass;
 typedef struct _MarlinPluginsUbuntuOnePrivate MarlinPluginsUbuntuOnePrivate;
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
 
+#define UPDATE_PENDING "pending"
+
 struct _MarlinPluginsUbuntuOne {
 	MarlinPluginsBase parent_instance;
 	//MarlinPluginsUbuntuOnePrivate * priv;
@@ -54,6 +56,8 @@ struct _MarlinPluginsUbuntuOne {
 	/* Lists of public files and user defined folders */
 	GHashTable * public;
 	GHashTable * udfs;
+
+    GList *selection;
 };
 
 struct _MarlinPluginsUbuntuOneClass {

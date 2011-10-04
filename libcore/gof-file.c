@@ -29,7 +29,7 @@
 #include "gof-directory-async.h"
 #include "marlin-exec.h"
 #include "marlin-icons.h"
-#include "marlin-plugin-manager.h"
+#include "marlinplugins.h"
 
 enum {
     FM_LIST_MODEL_FILE_COLUMN,
