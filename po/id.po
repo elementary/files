@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-06 15:43+0000\n"
-"Last-Translator: mpugandrik <mpugandrik@gmail.com>\n"
+"PO-Revision-Date: 2011-10-04 01:03+0000\n"
+"Last-Translator: Sahri Riza Umami <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-09-07 04:50+0000\n"
-"X-Generator: Launchpad (build 13861)\n"
+"X-Launchpad-Export-Date: 2011-10-04 05:07+0000\n"
+"X-Generator: Launchpad (build 14071)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -620,7 +620,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2290
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "Tidak dapat menghentikan %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2382
 msgid "_Open"
@@ -652,7 +652,7 @@ msgstr "_Lepas"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2441
 msgid "_Eject"
-msgstr ""
+msgstr "_Keluarkan"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2477
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1422
@@ -869,7 +869,7 @@ msgstr "link %'d ke %s"
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:422
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "Tautan ke-%'d ke %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:426
 #, c-format
@@ -1039,6 +1039,8 @@ msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"Untuk memperoleh kembali ruang bebas pada volume ini, maka tempat sampah "
+"harus dikosongkan. Semua objek yang tersimpan di sana akan hilang permanen."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2291
 msgid "Do _not Empty Trash"
