@@ -1,9 +1,11 @@
 /*
- * UbuntuOne Nautilus plugin
+ * UbuntuOne Marlin plugin
  *
  * Authors: Rodrigo Moya <rodrigo.moya@canonical.com>
+ *          ammonkey <am.monkeyd@gmail.com>
  *
- * Copyright 2009-2010 Canonical Ltd.
+ * Copyright 2009-2010  Canonical Ltd.
+ *           20011      ammonkey
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -22,8 +24,6 @@
 #ifndef __CONTEXT_MENU_H__
 #define __CONTEXT_MENU_H__
 
-//#include <libnautilus-extension/nautilus-menu-provider.h>
-//#include "ubuntuone-nautilus.h"
 #include "plugin.h"
 
 /*NautilusMenuItem *context_menu_new (MarlinPluginsUbuntuOne *uon,

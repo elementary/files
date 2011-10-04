@@ -1,9 +1,11 @@
 /*
- * UbuntuOne Nautilus plugin
+ * UbuntuOne Marlin plugin
  *
  * Authors: Rodrigo Moya <rodrigo.moya@canonical.com>
+ *          ammonkey <am.monkeyd@gmail.com>
  *
- * Copyright 2009-2010 Canonical Ltd.
+ * Copyright 2009-2010  Canonical Ltd.
+ *           20011      ammonkey
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 3, as published
@@ -24,7 +26,7 @@
 #include <gio/gio.h>
 #include <libsyncdaemon/libsyncdaemon.h>
 #include "context-menu.h"
-//#include "share-dialog.h"
+#include "share-dialog.h"
 
 static gpointer _g_object_ref0 (gpointer self) {
 	return self ? g_object_ref (self) : NULL;
@@ -143,8 +145,6 @@ toggle_publicity_cb (GtkWidget * item, gpointer user_data)
     file_watcher_update_path (data->uon->file_watcher, data->path);
 }
 
-//FIXME implement this
-//#if 0
 static void
 share_folder_cb (GtkWidget *item, gpointer user_data)
 {
@@ -165,7 +165,6 @@ unshare_folder_cb (GtkWidget *item, gpointer user_data)
     if (interface != NULL)
         syncdaemon_shares_interface_delete (interface, data->path);
 }
-//#endif
 
 gboolean
 check_share_offer_pending (MarlinPluginsUbuntuOne *uon, const gchar *path)
