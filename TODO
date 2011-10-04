@@ -1,7 +1,5 @@
 This is a short TODO list.
 
-- add emblems
-- add easy multiple selection with only the mouse +/- like in dolphin for all the views, use the pixbuff cellrenderer in list_view, use it to start rubberbanding too.
 - change focus in the icon view: draw focus only via the text renderer
 - check dropbox support
 - files operations must implement an undo/redo mechanism.
