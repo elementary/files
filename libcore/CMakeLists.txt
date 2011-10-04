@@ -23,7 +23,8 @@ PACKAGES
 gtk+-3.0
 gee-1.0
 gmodule-2.0
-marlin-core
+CUSTOM_VAPIS
+    ${CMAKE_CURRENT_SOURCE_DIR}/marlin-core.vapi
 OPTIONS
 --thread
 GENERATE_VAPI
