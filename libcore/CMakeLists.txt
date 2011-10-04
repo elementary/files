@@ -11,8 +11,30 @@ set (DOLLAR "$")
 
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
+find_package(Vala REQUIRED)
+include(ValaVersion)
+ensure_vala_version("0.12.0" MINIMUM)
+include(ValaPrecompile)
+vala_precompile(VALA_C
+PluginManager.vala
+Plugin.vala
+PACKAGES
+gtk+-3.0
+gee-1.0
+gmodule-2.0
+marlin-core
+OPTIONS
+--thread
+GENERATE_VAPI
+marlinplugins
+GENERATE_HEADER
+marlinplugins
+)
+
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlinplugins.h DESTINATION include/marlincore/)
 install (FILES marlin-core.vapi DESTINATION share/vala/vapi)
 install (FILES
     eel-accessibility.h
@@ -50,26 +72,6 @@ install (FILES
     marlin-trash-monitor.h
     DESTINATION include/marlincore/)
 # Check for the deps
-
-find_package(Vala REQUIRED)
-include(ValaVersion)
-ensure_vala_version("0.12.0" MINIMUM)
-include(ValaPrecompile)
-vala_precompile(VALA_C
-PluginManager.vala
-Plugin.vala
-PACKAGES
-gtk+-3.0
-gee-1.0
-gmodule-2.0
-marlin-core
-OPTIONS
---thread
-GENERATE_VAPI
-marlinplugins
-GENERATE_HEADER
-marlinplugins
-)
 
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
