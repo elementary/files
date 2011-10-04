@@ -11,6 +11,7 @@ include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/)
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
@@ -57,7 +58,7 @@ vala_precompile(VALA_C
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_SOURCE_DIR}/../libcore/marlin-core.vapi
     ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
-    ${CMAKE_BINARY_DIR}/marlinplugins/marlinplugins.vapi
+    ${CMAKE_CURRENT_BINARY_DIR}/../libcore/marlinplugins.vapi
     marlin.vapi
 PACKAGES
     gtk+-3.0
@@ -99,10 +100,8 @@ add_executable(marlin
     ${VALA_C} )
 
 
-SET_TARGET_PROPERTIES(marlin PROPERTIES LINK_DEPENDS marlinplugins)
-
 add_definitions("-DPLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/marlin/plugins/\"")
-target_link_libraries(marlin marlincore marlinwidgets marlinplugins ${DEPS_LIBRARIES})
+target_link_libraries(marlin marlincore marlinwidgets ${DEPS_LIBRARIES})
 install(TARGETS marlin RUNTIME DESTINATION bin)
 install(FILES marlin-ui.xml DESTINATION share/marlin/ui/)
 install(FILES fm-directory-view-ui.xml DESTINATION share/marlin/ui/)

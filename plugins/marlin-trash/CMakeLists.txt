@@ -9,6 +9,7 @@ set(CFLAGS
 	${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
 )
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
+include_directories(${CMAKE_BINARY_DIR}/libcore/)
 # Vala
 
 find_package(Vala REQUIRED)
@@ -25,7 +26,7 @@ PACKAGES
 OPTIONS
     --thread
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
-    --vapidir=${CMAKE_BINARY_DIR}/marlinplugins/
+    --vapidir=${CMAKE_BINARY_DIR}/libcore/
 )
 add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})

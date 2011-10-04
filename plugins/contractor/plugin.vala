@@ -39,7 +39,6 @@ public void receive_all_hook(void* user_data, int hook)
 }
 public class Marlin.Plugins.Contractor : Marlin.Plugins.Base
 {
-    ArrayList<MenuItem>? menus = null;
     UIManager ui_manager;
     Menu menu;
     /*string uri;*/
@@ -55,15 +54,6 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base
 
     void print_apps(Menu menu)
     {
-        /*if (menu != _menu)
-            return;*/
-        if (menus == null)
-            menus = new ArrayList<MenuItem>();
-        foreach(var _menu in menus)
-        {
-            _menu.destroy();
-        }
-        menus.clear();
         var cont = new Contracts();
       
         uint i = 0;
@@ -74,13 +64,13 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base
                 var item = new SeparatorMenuItem ();
                 menu.append(item);
                 item.show();
-                menus.add(item);
+                plugins.menus.prepend (item);
             }
             var menuitem = new MenuItem.with_label(get_app_display_name(app__));
             menu.append(menuitem);
             menuitem.show();
             menuitem.activate.connect(contract_activated);
-            menus.add(menuitem);
+            plugins.menus.prepend (menuitem);
             i++;
         }
     }

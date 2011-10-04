@@ -8,10 +8,10 @@ set(CFLAGS
 	${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
 )
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
-include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)
+include_directories(${CMAKE_BINARY_DIR}/libcore/)
 add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
 add_library(marlin-openterminal SHARED
     plugin.c)
-target_link_libraries(marlin-openterminal marlincore marlinplugins marlinwidgets)
+target_link_libraries(marlin-openterminal marlincore marlinwidgets)
 install(TARGETS marlin-openterminal DESTINATION lib/marlin/plugins/)

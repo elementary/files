@@ -35,7 +35,7 @@
 #include "gof-window-slot.h"
 #include "marlin-clipboard-manager.h"
 #include "fm-list-model.h"
-#include "marlin-plugin-manager.h"
+#include "marlinplugins.h"
 #include "marlin-enum-types.h"
 
 

@@ -10,7 +10,6 @@ set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
 
 include_directories(${CMAKE_BINARY_DIR})
-include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
@@ -41,7 +40,6 @@ install (FILES
     marlin-file-utilities.h
     marlin-global-preferences.h
     marlin-icons.h
-    marlin-plugin-manager.h
     marlin-abstract-sidebar.h
     marlin-plugins-hook.h
     marlin-progress-info.h
@@ -52,6 +50,26 @@ install (FILES
     marlin-trash-monitor.h
     DESTINATION include/marlincore/)
 # Check for the deps
+
+find_package(Vala REQUIRED)
+include(ValaVersion)
+ensure_vala_version("0.12.0" MINIMUM)
+include(ValaPrecompile)
+vala_precompile(VALA_C
+PluginManager.vala
+Plugin.vala
+PACKAGES
+gtk+-3.0
+gee-1.0
+gmodule-2.0
+marlin-core
+OPTIONS
+--thread
+GENERATE_VAPI
+marlinplugins
+GENERATE_HEADER
+marlinplugins
+)
 
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
@@ -69,7 +87,6 @@ pkg_check_modules(DEPS REQUIRED
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
 add_definitions(${CFLAGS} "-DUI_DIR=\"${CMAKE_INSTALL_PREFIX}/share/marlin/ui/\""
     -Wall )
-add_definitions("-DPLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/marlin/plugins/\"")
 set(LIBS
 	${DEP_LIBRARIES}
 )
@@ -107,8 +124,8 @@ add_library (${PKGNAME} SHARED
     gof-monitor.c
     nautilus-icon-info.c
     nautilus-cell-renderer-text-ellipsized.c
-    marlin-plugin-manager.c
     marlin-trash-monitor.c
+    ${VALA_C}
 )
 if(BUILD_STATIC MATCHES "Yes")
 add_library(${PKGNAME}-static STATIC
@@ -140,8 +157,8 @@ add_library(${PKGNAME}-static STATIC
     gof-monitor.c
     nautilus-icon-info.c
     nautilus-cell-renderer-text-ellipsized.c
-    marlin-plugin-manager.c
     marlin-trash-monitor.c
+    ${VALA_C}
 )
 # The library target "foo" already has a default OUTPUT_NAME of "foo", so we
 
@@ -151,7 +168,6 @@ add_library(${PKGNAME}-static STATIC
 
 #so change it.
 
-SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES LINK_DEPENDS marlinplugins)
 SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES OUTPUT_NAME ${PKGNAME})
 install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 endif(BUILD_STATI²C MATCHES "Yes")
@@ -166,5 +182,4 @@ add_executable(marlincore_tests
     tests/marlincore-tests-file.c
 )
 add_test_executable(marlincore_tests)
-SET_TARGET_PROPERTIES(${PKGNAME} PROPERTIES LINK_DEPENDS marlinplugins)
 target_link_libraries(marlincore_tests marlincore ${DEPS_LIBRARIES})

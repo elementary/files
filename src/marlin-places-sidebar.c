@@ -41,7 +41,7 @@
 #include "marlin-bookmark.h"
 #include "marlin-trash-monitor.h"
 #include "marlin-dnd.h"
-#include "marlin-plugin-manager.h"
+#include "marlinplugins.h"
 
 #define EJECT_BUTTON_XPAD 4
 #define TEXT_XPAD 5
@@ -104,11 +104,7 @@ get_eject_icon (gboolean highlighted)
 {
     GdkPixbuf *eject;
     NautilusIconInfo *eject_icon_info;
-    int icon_size;
-
-    //TODO
-    //icon_size = nautilus_get_icon_size_for_stock_size (GTK_ICON_SIZE_MENU);
-    icon_size = 16;
+    int icon_size = 16;
 
     eject_icon_info = nautilus_icon_info_lookup_from_name ("media-eject", icon_size);
     eject = nautilus_icon_info_get_pixbuf_at_size (eject_icon_info, icon_size);
