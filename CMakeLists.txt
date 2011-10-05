@@ -26,6 +26,6 @@ include_directories(${CMAKE_BINARY_DIR}/libcore/)
 add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
 add_library(marlin-dropbox SHARED
-    plugin.c )
+    plugin.c dropbox-client-util.c dropbox-command-client.c dropbox-client.c dropbox-hooks.c)
 target_link_libraries(marlin-dropbox marlincore marlinwidgets ${DROPBOX_LIBRARIES})
 install(TARGETS marlin-dropbox DESTINATION lib/marlin/plugins/)

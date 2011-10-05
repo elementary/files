@@ -23,6 +23,10 @@
 #include <marlinplugins.h>
 //#include <dbus/dbus-glib.h>
 
+#include "dropbox-command-client.h"
+#include "dropbox-hooks.h"
+#include "dropbox-client.h"
+
 #define MARLIN_TYPE_DROPBOX (marlin_dropbox_get_type ())
 #define MARLIN_DROPBOX(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), MARLIN_TYPE_DROPBOX, MarlinDropbox))
 #define MARLIN_DROPBOX_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), MARLIN_TYPE_DROPBOX, MarlinDropboxClass))
@@ -39,6 +43,12 @@ struct _MarlinDropbox {
 	MarlinPluginsBase parent_instance;
 	//MarlinDropboxPrivate * priv;
 
+    GHashTable *filename2obj;
+    GHashTable *obj2filename;
+    /*GMutex *emblem_paths_mutex;
+    GHashTable *emblem_paths;*/
+    DropboxClient dc;
+
     GList *selection;
 };
 
@@ -51,5 +61,7 @@ struct _MarlinDropboxPrivate {
 };
 
 GType marlin_dropbox_get_type (void) G_GNUC_CONST;
+
+//gboolean    marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr);
 
 #endif
