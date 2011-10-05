@@ -377,19 +377,12 @@ do_file_info_command(GIOChannel *chan, DropboxFileInfoCommand *dfic, GError **ge
     g_hash_table_insert(args, g_strdup("path"), path_arg);
 
     emblems_response = send_command_to_db(chan, "get_emblems", args, NULL);
-    if (emblems_response) {
-        /* Don't need to do the other calls. */
-        //FIXME
-        //g_hash_table_unref(args);
-        //goto exit;
-    }
-
-    /* send status command to server */
-    file_status_response = send_command_to_db(chan, "icon_overlay_file_status",
-                                              args, &tmp_gerr);
     
-    g_hash_table_unref(args);
-    args = NULL;
+    /* send status command to server */
+    //FIXME we doesn t really need this as get_emblems already provide the file status
+    /*file_status_response = send_command_to_db(chan, "icon_overlay_file_status",
+                                              args, &tmp_gerr);*/
+    
     if (tmp_gerr != NULL) {
         g_free(filename);
         g_assert(file_status_response == NULL);
@@ -398,27 +391,18 @@ do_file_info_command(GIOChannel *chan, DropboxFileInfoCommand *dfic, GError **ge
     }
 
     if (dfic->file->is_directory) {
-        args = g_hash_table_new_full((GHashFunc) g_str_hash,
-                                     (GEqualFunc) g_str_equal,
-                                     (GDestroyNotify) g_free,
-                                     (GDestroyNotify) g_strfreev);
-        gchar **paths_arg;
-        paths_arg = g_new(gchar *, 2);
-        paths_arg[0] = g_strdup(filename);
-        paths_arg[1] = NULL;
-        g_hash_table_insert(args, g_strdup("path"), paths_arg);
-
         folder_tag_response = send_command_to_db(chan, "get_folder_tag", args, &tmp_gerr);
-        g_hash_table_unref(args);
-        args = NULL;
         if (tmp_gerr != NULL) {
-            if (file_status_response != NULL)
-                g_hash_table_destroy(file_status_response);
+            //FIXME
+            /*if (file_status_response != NULL)
+                g_hash_table_destroy(file_status_response);*/
             g_assert(folder_tag_response == NULL);
             g_propagate_error(gerr, tmp_gerr);
             return;
         }
     }
+
+    g_hash_table_unref(args);
 
     /* great server responded perfectly,
        now let's get this request done,

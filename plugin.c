@@ -245,8 +245,8 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
         isdir = dficr->dfic->file->is_directory;
 
         //amtest
-        if (dficr->folder_tag_response != NULL)
-            g_critical ("hummmmmmmmmmmmmmm");
+        /*if (dficr->folder_tag_response != NULL)
+            g_critical ("hummmmmmmmmmmmmmm");*/
 
         /* if we have emblems just use them. */
         if (dficr->emblems_response != NULL &&
@@ -261,18 +261,22 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
             //result = NAUTILUS_OPERATION_COMPLETE;
         }
         /* if the file status command went okay */
-        //FIXME
+        //FIXME double check and clean this mess 
+        /* icon_overlay_file_status and get_emblems seems to both provide the file status */
+
         //else if ((dficr->file_status_response != NULL &&
-        if ((dficr->file_status_response != NULL &&
+        /*if ((dficr->file_status_response != NULL &&
                   (status =
                    g_hash_table_lookup(dficr->file_status_response, "status")) != NULL) &&
                  ((isdir == TRUE &&
-                   dficr->folder_tag_response != NULL) || isdir == FALSE)) {
+                   dficr->folder_tag_response != NULL) || isdir == FALSE)) {*/
+        if (isdir == TRUE && dficr->folder_tag_response != NULL) {
             gchar **tag = NULL;
 
             /* set the tag emblem */
-            if (isdir &&
-                (tag = g_hash_table_lookup(dficr->folder_tag_response, "tag")) != NULL) {
+            /*if (isdir &&
+                (tag = g_hash_table_lookup(dficr->folder_tag_response, "tag")) != NULL) {*/
+            if ((tag = g_hash_table_lookup(dficr->folder_tag_response, "tag")) != NULL) {
                 if (strcmp("public", tag[0]) == 0) {
                     gof_file_add_emblem(dficr->dfic->file, "emblem-web");
                 }
