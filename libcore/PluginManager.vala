@@ -181,7 +181,11 @@ public class Marlin.PluginManager : GLib.Object
     
     public void update_file_info(GOF.File file)
     {
-        foreach(var plugin in plugin_hash.values) plugin.update_file_info(file);
+        foreach(var plugin in plugin_hash.values) 
+            Idle.add (() => {
+                plugin.update_file_info(file);
+                return false;
+            });
     }
 
     public void add_plugin(string path)
