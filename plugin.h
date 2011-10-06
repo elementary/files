@@ -62,6 +62,4 @@ struct _MarlinDropboxPrivate {
 
 GType marlin_dropbox_get_type (void) G_GNUC_CONST;
 
-//gboolean    marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr);
-
 #endif

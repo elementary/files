@@ -349,15 +349,17 @@ do_file_info_command(GIOChannel *chan, DropboxFileInfoCommand *dfic, GError **ge
     GHashTable *file_status_response = NULL, *args, *folder_tag_response = NULL, *emblems_response = NULL;
     gchar *filename = NULL;
 
-    gchar *filename_un, *uri;
-    uri = dfic->file->uri;
-    filename_un = uri ? g_filename_from_uri(uri, NULL, NULL): NULL;
-    if (filename_un) {
-        filename = g_filename_to_utf8(filename_un, -1, NULL, NULL, NULL);
-        g_free(filename_un);
-        if (filename == NULL) {
-            /* oooh, filename wasn't correctly encoded. mark as  */
-            debug("file wasn't correctly encoded %s", filename_un);
+    {
+        gchar *filename_un, *uri;
+        uri = dfic->file->uri;
+        filename_un = uri ? g_filename_from_uri(uri, NULL, NULL): NULL;
+        if (filename_un) {
+            filename = g_filename_to_utf8(filename_un, -1, NULL, NULL, NULL);
+            g_free(filename_un);
+            if (filename == NULL) {
+                /* oooh, filename wasn't correctly encoded. mark as  */
+                debug("file wasn't correctly encoded %s", filename_un);
+            }
         }
     }
 
@@ -377,12 +379,17 @@ do_file_info_command(GIOChannel *chan, DropboxFileInfoCommand *dfic, GError **ge
     g_hash_table_insert(args, g_strdup("path"), path_arg);
 
     emblems_response = send_command_to_db(chan, "get_emblems", args, NULL);
-    
+    if (emblems_response) {
+        /* Don't need to do the other calls. */
+        g_hash_table_unref(args);
+        goto exit;
+    }
+
     /* send status command to server */
-    //FIXME we doesn t really need this as get_emblems already provide the file status
-    /*file_status_response = send_command_to_db(chan, "icon_overlay_file_status",
-                                              args, &tmp_gerr);*/
-    
+    file_status_response = send_command_to_db(chan, "icon_overlay_file_status",
+                                              args, &tmp_gerr);
+    g_hash_table_unref(args);
+    args = NULL;
     if (tmp_gerr != NULL) {
         g_free(filename);
         g_assert(file_status_response == NULL);
@@ -391,18 +398,28 @@ do_file_info_command(GIOChannel *chan, DropboxFileInfoCommand *dfic, GError **ge
     }
 
     if (dfic->file->is_directory) {
-        folder_tag_response = send_command_to_db(chan, "get_folder_tag", args, &tmp_gerr);
+        args = g_hash_table_new_full((GHashFunc) g_str_hash,
+                                     (GEqualFunc) g_str_equal,
+                                     (GDestroyNotify) g_free,
+                                     (GDestroyNotify) g_strfreev);
+        gchar **paths_arg;
+        paths_arg = g_new(gchar *, 2);
+        paths_arg[0] = g_strdup(filename);
+        paths_arg[1] = NULL;
+        g_hash_table_insert(args, g_strdup("path"), paths_arg);
+
+        folder_tag_response =
+            send_command_to_db(chan, "get_folder_tag", args, &tmp_gerr);
+        g_hash_table_unref(args);
+        args = NULL;
         if (tmp_gerr != NULL) {
-            //FIXME
-            /*if (file_status_response != NULL)
-                g_hash_table_destroy(file_status_response);*/
+            if (file_status_response != NULL)
+                g_hash_table_destroy(file_status_response);
             g_assert(folder_tag_response == NULL);
             g_propagate_error(gerr, tmp_gerr);
             return;
         }
     }
-
-    g_hash_table_unref(args);
 
     /* great server responded perfectly,
        now let's get this request done,
@@ -419,6 +436,7 @@ exit:
 
     return;
 }
+
 
 static gboolean
 finish_general_command(DropboxGeneralCommandResponse *dgcr) {

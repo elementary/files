@@ -27,8 +27,8 @@
 
 G_DEFINE_TYPE (MarlinDropbox, marlin_dropbox, MARLIN_PLUGINS_TYPE_BASE);
 
-static char *db_emblems[] = {"dropbox-uptodate", "dropbox-syncing", "dropbox-unsyncable"};
-static char *emblems[] = {"emblem-ubuntuone-synchronized", "emblem-ubuntuone-updating", "dropbox-unsyncable"};
+static char *db_emblems[] = {"dropbox-uptodate", "dropbox-syncing", "dropbox-unsyncable", "web", "people", "photos", "star"};
+static char *emblems[] = {"emblem-ubuntuone-synchronized", "emblem-ubuntuone-updating", "dropbox-unsyncable", "emblem-web", "emblem-people", "emblem-photos", "emblem-star"};
 //gchar *DEFAULT_EMBLEM_PATHS[2] = { EMBLEMDIR , NULL };
 
 static void marlin_dropbox_finalize (MarlinPluginsBase* obj);
@@ -66,6 +66,22 @@ canonicalize_path(gchar *path) {
     g_strfreev(elts);
 
     return toret;
+}
+
+static void
+reset_file(GOFFile *file) {
+    debug("resetting file %p", (void *) file);
+    gof_file_update_emblem (file);
+}
+
+gboolean
+reset_all_files(MarlinDropbox *cvs) {
+    /* Only run this on the main loop or you'll cause problems. */
+
+    /* this works because you can call a function pointer with
+       more arguments than it takes */
+    g_hash_table_foreach(cvs->obj2filename, (GHFunc) reset_file, NULL);
+    return FALSE;
 }
 
 static void
@@ -183,14 +199,13 @@ void get_emblem_paths_cb(GHashTable *emblem_paths_response, MarlinDropbox *cvs)
     g_mutex_unlock(cvs->emblem_paths_mutex);
 
     g_idle_add((GSourceFunc) add_emblem_paths, g_hash_table_ref(emblem_paths_response));
-    //FIXME
-    //g_idle_add((GSourceFunc) reset_all_files, cvs);
+    g_idle_add((GSourceFunc) reset_all_files, cvs);
 }
 #endif
 
 static void
 on_connect(MarlinDropbox *cvs) {
-    //reset_all_files(cvs);
+    reset_all_files(cvs);
 
     g_message ("%s", G_STRFUNC);
     //amtest
@@ -202,7 +217,7 @@ on_connect(MarlinDropbox *cvs) {
 
 static void
 on_disconnect(MarlinDropbox *cvs) {
-    //reset_all_files(cvs);
+    reset_all_files(cvs);
 
     //FIXME
     g_message ("%s", G_STRFUNC);
@@ -216,12 +231,39 @@ on_disconnect(MarlinDropbox *cvs) {
 #endif
 }
 
+static void
+handle_shell_touch(GHashTable *args, MarlinDropbox *cvs) {
+    gchar **path;
+
+    //  debug_enter();
+
+    if ((path = g_hash_table_lookup(args, "path")) != NULL &&
+        path[0][0] == '/') {
+        GOFFile *file;
+        gchar *filename;
+
+        filename = canonicalize_path(path[0]);
+
+        debug("shell touch for %s", filename);
+
+        file = g_hash_table_lookup(cvs->filename2obj, filename);
+
+        if (file != NULL) {
+            debug("gonna reset %s", filename);
+            reset_file(file);
+        }
+        g_free(filename);
+    }
+
+    return;
+}
+
 static char *
 translate_emblem (char *str)
 {
     int i=0;
 
-    for (i; i<3; i++) {
+    for (i; i<sizeof(emblems); i++) {
         if (strcmp (str, db_emblems[i]) == 0) {
             return emblems[i];
         }
@@ -244,39 +286,33 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
 
         isdir = dficr->dfic->file->is_directory;
 
-        //amtest
-        /*if (dficr->folder_tag_response != NULL)
-            g_critical ("hummmmmmmmmmmmmmm");*/
-
         /* if we have emblems just use them. */
         if (dficr->emblems_response != NULL &&
             (status = g_hash_table_lookup(dficr->emblems_response, "emblems")) != NULL) {
             int i;
             for ( i = 0; status[i] != NULL; i++) {
                 if (status[i][0]) {
+                    g_message ("emblem %s", status[i]);
                     if ((str_emblem = translate_emblem (status[i])) != NULL)
                         gof_file_add_emblem(dficr->dfic->file, str_emblem);
+                    else
+                        g_warning ("emblem %s not found - %s", status[i], dficr->dfic->file->uri);
                 }
             }
-            //result = NAUTILUS_OPERATION_COMPLETE;
         }
         /* if the file status command went okay */
-        //FIXME double check and clean this mess 
-        /* icon_overlay_file_status and get_emblems seems to both provide the file status */
-
-        //else if ((dficr->file_status_response != NULL &&
-        /*if ((dficr->file_status_response != NULL &&
+        else if ((dficr->file_status_response != NULL &&
                   (status =
                    g_hash_table_lookup(dficr->file_status_response, "status")) != NULL) &&
                  ((isdir == TRUE &&
-                   dficr->folder_tag_response != NULL) || isdir == FALSE)) {*/
-        if (isdir == TRUE && dficr->folder_tag_response != NULL) {
+                   dficr->folder_tag_response != NULL) || isdir == FALSE)) {
+            //FIXME
+            g_critical ("grrrr %s", G_STRFUNC);
             gchar **tag = NULL;
 
             /* set the tag emblem */
-            /*if (isdir &&
-                (tag = g_hash_table_lookup(dficr->folder_tag_response, "tag")) != NULL) {*/
-            if ((tag = g_hash_table_lookup(dficr->folder_tag_response, "tag")) != NULL) {
+            if (isdir &&
+                (tag = g_hash_table_lookup(dficr->folder_tag_response, "tag")) != NULL) {
                 if (strcmp("public", tag[0]) == 0) {
                     gof_file_add_emblem(dficr->dfic->file, "emblem-web");
                 }
@@ -291,7 +327,6 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
                 }
             }
 
-#if 0
             /* set the status emblem */
             int emblem_code = 0;
 
@@ -311,11 +346,10 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
                    g_filename_from_uri(dficr->dfic->file->uri,
                    NULL, NULL));
                    */
+                //FIXME
                 g_message ("emblem code %d", emblem_code);
                 gof_file_add_emblem(dficr->dfic->file, emblems[emblem_code-1]);
             }
-            //result = NAUTILUS_OPERATION_COMPLETE;
-#endif
         }
     }
 
@@ -327,6 +361,8 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
       (NautilusOperationHandle*) dficr->dfic,
       result);
       }*/
+    //reset_file (dficr->dfic->file);
+    gof_monitor_file_changed (dficr->dfic->file);
 
     /* destroy the objects we created */
     if (dficr->file_status_response != NULL)
@@ -393,9 +429,12 @@ marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
             //g_signal_handlers_disconnect_by_func(file, G_CALLBACK(changed_cb), cvs);
         }
         //FIXME check
-#if 0
+        /*else if (stored_filename == NULL) {
+            g_critical ("grrrrrrrrr");
+        }*/
+//#if 0
         else if (stored_filename == NULL) {
-            NautilusFileInfo *f2;
+            GOFFile *f2;
 
             if ((f2 = g_hash_table_lookup(cvs->filename2obj, filename)) != NULL) {
                 /* if the filename exists in the filename2obj hash
@@ -407,12 +446,12 @@ marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
                    just remove the association to the older file object, it's obsolete
                    */
                 g_object_weak_unref(G_OBJECT(f2), (GWeakNotify) when_file_dies, cvs);
-                g_signal_handlers_disconnect_by_func(f2, G_CALLBACK(changed_cb), cvs);
+                //g_signal_handlers_disconnect_by_func(f2, G_CALLBACK(changed_cb), cvs);
                 g_hash_table_remove(cvs->filename2obj, filename);
                 g_hash_table_remove(cvs->obj2filename, f2);
             }
         }
-#endif
+//#endif
 
         /* too chatty */
         /* debug("adding %s <-> 0x%p", filename, file);*/
@@ -505,9 +544,9 @@ marlin_dropbox_init (MarlinDropbox *cvs) {
     dropbox_client_setup(&(cvs->dc));
 
     /* our hooks */
-    //FIXME remove marlin monitor the directory too.
-    /*nautilus_dropbox_hooks_add(&(cvs->dc.hookserv), "shell_touch",
-      (DropboxUpdateHook) handle_shell_touch, cvs);*/
+    /* tricky name: shell_touch signal is used for real time events too (like transfert done event) */
+    marlin_dropbox_hooks_add(&(cvs->dc.hookserv), "shell_touch",
+                             (DropboxUpdateHook) handle_shell_touch, cvs);
 
     /* add connection handlers */
     dropbox_client_add_on_connect_hook(&(cvs->dc),
