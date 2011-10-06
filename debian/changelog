@@ -1,0 +1,5 @@
+marlin-plugin-dropbox (0.1-0ubuntu1) oneiric; urgency=low
+
+  * Initial packaging
+
+ -- ammonkey <am.monkeyd@gmail.com>  Thu, 06 Oct 2011 09:21:43 +0200

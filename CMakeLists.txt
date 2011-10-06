@@ -13,7 +13,6 @@ install(FILES dropbox.plug DESTINATION lib/marlin/plugins/)
 find_package(PkgConfig)
 pkg_check_modules(DROPBOX REQUIRED
     gtk+-3.0
-    gee-1.0
     glib-2.0
     marlincore
     )

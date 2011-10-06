@@ -1,0 +1,30 @@
+This package was re-debianized by ammonkey <am.monkeyd@gmail.com> on
+Thu, 06 Oct 2011 09:17:32 +0200
+
+Upstream Authors: 
+	ammonkey <am.monkeyd@gmail.com>
+
+Copyright:
+	© 2008, Evenflow, Inc.
+	© 2011 Elementary Devs
+	
+License: GPL-3
+ Marlin - The sexiest fish in the large sea of file-browsers.
+ Copyright (C) 2010 Elementary Devs
+ .
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+X-Comment: On Debian GNU/Linux systems, the complete text of the GNU General
+ Public License can be found in the /usr/share/common-licenses/GPL-3 file.
