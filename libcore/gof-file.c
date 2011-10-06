@@ -27,6 +27,7 @@
 #include "eel-gio-extensions.h"
 #include "eel-string.h"
 #include "gof-directory-async.h"
+#include "gof-monitor.h"
 #include "marlin-exec.h"
 #include "marlin-icons.h"
 #include "marlinplugins.h"
@@ -321,7 +322,8 @@ print_error(GError *error)
     }
 }
 
-void gof_file_query_update (GOFFile *file)
+static
+gboolean gof_file_query_info (GOFFile *file)
 {
     GError *err = NULL;
 
@@ -339,8 +341,23 @@ void gof_file_query_update (GOFFile *file)
         }
         print_error (err);
     } else {
-        gof_file_update (file);
+        return TRUE;
     }
+
+    return FALSE;
+}
+
+void gof_file_query_update (GOFFile *file)
+{
+    if (gof_file_query_info (file))
+        gof_file_update (file);
+}
+
+static
+void gof_file_query_thumbnail_update (GOFFile *file)
+{
+    if (gof_file_query_info (file))
+        file->thumbnail_path =  g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
 }
 
 void gof_file_update_trash_info (GOFFile *file)
@@ -1133,7 +1150,9 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 
     /* set the new thumbnail state */
     file->flags = (file->flags & ~GOF_FILE_THUMB_STATE_MASK) | (state);
-  
+    if (file->flags == GOF_FILE_THUMB_STATE_READY)
+        gof_file_query_thumbnail_update (file);
+
     /* notify others of this change, so that all components can update
     * their file information */
     gof_monitor_file_changed (file);
@@ -1161,25 +1180,8 @@ GOFFile* gof_file_get (GFile *location)
         g_object_ref (file);
     } else {
         file = gof_file_new (location, parent);
-        g_debug ("%s file_query_info %s\n", G_STRFUNC, file->uri);
-        file->info = g_file_query_info (location, GOF_GIO_DEFAULT_ATTRIBUTES,
-                                        0, NULL, &err);
-
-        if (err != NULL) {
-            if (err->domain == G_IO_ERROR)
-            {
-                if (err->code == G_IO_ERROR_NOT_MOUNTED) {
-                    file->is_mounted = FALSE;
-                }
-                if (err->code == G_IO_ERROR_NOT_FOUND
-                    || err->code == G_IO_ERROR_NOT_DIRECTORY) {
-                    file->exists = FALSE;
-                }
-            }    
-            print_error (err);
-        } else {
+        if (gof_file_query_info (file))
             gof_file_update (file);
-        }
     }
 
     if (parent != NULL)
