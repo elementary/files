@@ -63,8 +63,6 @@ enum {
 static guint    signals[LAST_SIGNAL];
 static guint32  effective_user_id;
 
-static void     gof_file_update_emblem (GOFFile *file);
-
 static GIcon *
 get_icon_user_special_dirs(char *path)
 {
@@ -279,8 +277,7 @@ void gof_file_update_icon (GOFFile *file, gint size)
     _g_object_unref0 (nicon);
 }
 
-static void 
-gof_file_update_emblem (GOFFile *file)
+void gof_file_update_emblem (GOFFile *file)
 {
     //g_critical ("update emblem");
     /* erase previous stored emblems */
@@ -298,6 +295,8 @@ gof_file_update_emblem (GOFFile *file)
         gof_file_add_emblem(file, "emblem-important");
         gof_file_add_emblem(file, "emblem-favorite");*/
     }
+
+    gof_monitor_file_changed (file); 
 }
 
 void gof_file_add_emblem(GOFFile* file, const gchar* emblem)

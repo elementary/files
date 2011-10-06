@@ -63,6 +63,7 @@ dir_changed (GFileMonitor* gfile_monitor,
         //nautilus_file_changes_queue_file_changed (child);
         g_message ("file changed %s\n", uri);
         file = gof_file_get (child);
+        gof_file_query_update (file);
         g_signal_emit_by_name (dir, "file_changed", file);
         gof_file_unref (file);
         break;
