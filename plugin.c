@@ -27,11 +27,30 @@
 
 G_DEFINE_TYPE (MarlinDropbox, marlin_dropbox, MARLIN_PLUGINS_TYPE_BASE);
 
+typedef struct {
+    MarlinDropbox   *cvs;
+    gchar           *verb;
+    GOFFile         *file;
+} MenuCallbackData;
+
+static void
+free_menu_cb_data (gpointer data, GObject *where_the_object_was)
+{
+    MenuCallbackData *cb_data = (MenuCallbackData *) data;
+
+    g_free (cb_data->verb);
+    g_free (cb_data);
+}
+
 static char *db_emblems[] = {"dropbox-uptodate", "dropbox-syncing", "dropbox-unsyncable", "web", "people", "photos", "star"};
 static char *emblems[] = {"emblem-ubuntuone-synchronized", "emblem-ubuntuone-updating", "dropbox-unsyncable", "emblem-web", "emblem-people", "emblem-photos", "emblem-star"};
 //gchar *DEFAULT_EMBLEM_PATHS[2] = { EMBLEMDIR , NULL };
 
 static void marlin_dropbox_finalize (MarlinPluginsBase* obj);
+
+static gpointer _g_object_ref0 (gpointer self) {
+    return self ? g_object_ref (self) : NULL;
+}
 
 /*static gchar* current_path = NULL;
   static gboolean menu_added = FALSE;
@@ -211,8 +230,8 @@ on_connect(MarlinDropbox *cvs) {
     //amtest
     /* We don't necessarly need the original dropbox icons */
     /*dropbox_command_client_send_command(&(cvs->dc.dcc),
-                                        (MarlinDropboxCommandResponseHandler) get_emblem_paths_cb,
-                                        cvs, "get_emblem_paths", NULL);*/
+      (MarlinDropboxCommandResponseHandler) get_emblem_paths_cb,
+      cvs, "get_emblem_paths", NULL);*/
 }
 
 static void
@@ -292,7 +311,7 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
             int i;
             for ( i = 0; status[i] != NULL; i++) {
                 if (status[i][0]) {
-                    g_message ("emblem %s", status[i]);
+                    //g_message ("emblem %s", status[i]);
                     if ((str_emblem = translate_emblem (status[i])) != NULL)
                         gof_file_add_emblem(dficr->dfic->file, str_emblem);
                     else
@@ -430,9 +449,9 @@ marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
         }
         //FIXME check
         /*else if (stored_filename == NULL) {
-            g_critical ("grrrrrrrrr");
-        }*/
-//#if 0
+          g_critical ("grrrrrrrrr");
+          }*/
+        //#if 0
         else if (stored_filename == NULL) {
             GOFFile *f2;
 
@@ -451,7 +470,7 @@ marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
                 g_hash_table_remove(cvs->obj2filename, f2);
             }
         }
-//#endif
+        //#endif
 
         /* too chatty */
         /* debug("adding %s <-> 0x%p", filename, file);*/
@@ -488,19 +507,261 @@ marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
     g_free (path);
 }
 
+static char from_hex(gchar ch) {
+    return isdigit(ch) ? ch - '0' : tolower(ch) - 'a' + 10;
+}
+
+// decode in --> out, but dont fill more than n chars into out
+// returns len of out if thing went well, -1 if n wasn't big enough
+// can be used in place (whoa!)
+int GhettoURLDecode(gchar* out, gchar* in, int n) {
+    char *out_initial;
+
+    for(out_initial = out; out-out_initial < n && *in != '\0'; out++) {
+        if (*in == '%') {
+            *out = from_hex(in[1]) << 4 | from_hex(in[2]);
+            in += 3;
+        }
+        else {
+            *out = *in;
+            in++;
+        }
+    }
+
+    if (out-out_initial < n) {
+        *out = '\0';
+        return out-out_initial;
+    }
+    return -1;
+}
+
+static void
+menu_item_cb(GtkWidget *item, MenuCallbackData *cb_data)
+{
+    MarlinDropbox *cvs = cb_data->cvs;
+    DropboxGeneralCommand *dcac;
+
+    dcac = g_new(DropboxGeneralCommand, 1);
+    dcac->dc.request_type = GENERAL_COMMAND;
+
+    /* build the argument list */
+    dcac->command_args = g_hash_table_new_full((GHashFunc) g_str_hash,
+                                               (GEqualFunc) g_str_equal,
+                                               (GDestroyNotify) g_free,
+                                               (GDestroyNotify) g_strfreev);
+    gchar **arglist;
+
+    arglist = g_new0(gchar *, 2);
+    arglist[0] = g_filename_from_uri(cb_data->file->uri, NULL, NULL);
+    arglist[1] = NULL;
+    g_hash_table_insert(dcac->command_args, g_strdup("paths"), arglist);
+
+    arglist = g_new(gchar *, 2);
+    arglist[0] = g_strdup(cb_data->verb);
+    arglist[1] = NULL;
+    g_hash_table_insert(dcac->command_args, g_strdup("verb"), arglist);
+
+    dcac->command_name = g_strdup("icon_overlay_context_action");
+    dcac->handler = NULL;
+    dcac->handler_ud = NULL;
+
+    dropbox_command_client_request(&(cvs->dc.dcc), (DropboxCommand *) dcac);
+}
+
+static void
+marlin_dropbox_parse_menu(gchar			    **options,
+                          GtkWidget		    *menu,
+                          MarlinPluginsBase *base,
+                          GOFFile           *file)
+{
+    MarlinDropbox *cvs = MARLIN_DROPBOX (base);
+    MenuCallbackData *cb_data;
+    int i;
+
+    for ( i = 0; options[i] != NULL; i++) {
+        gchar **option_info = g_strsplit(options[i], "~", 3);
+        /* if this is a valid string */
+        if (option_info[0] == NULL || option_info[1] == NULL ||
+            option_info[2] == NULL || option_info[3] != NULL) {
+            g_strfreev(option_info);
+            continue;
+        }
+
+        gchar* item_name = option_info[0];
+        gchar* item_inner = option_info[1];
+        gchar* verb = option_info[2];
+
+        GhettoURLDecode(item_name, item_name, strlen(item_name));
+        GhettoURLDecode(verb, verb, strlen(verb));
+        GhettoURLDecode(item_inner, item_inner, strlen(item_inner));
+
+        g_message ("menu %s", item_name);
+        g_message ("verb %s", verb);
+        g_message ("item_inner %s", item_inner);
+
+        cb_data = g_new0 (MenuCallbackData, 1);
+        cb_data->cvs = cvs;
+        cb_data->verb = g_strdup (verb);
+        cb_data->file = file;
+            
+        g_object_weak_ref (G_OBJECT (menu), (GWeakNotify) free_menu_cb_data, cb_data);
+
+        /* Deprecated ? */
+        // If the inner section has a menu in it then we create a submenu.  The verb will be ignored.
+        // Otherwise add the verb to our map and add the menu item to the list.
+        if (strchr(item_inner, '~') != NULL) {
+            g_critical ("Dropbox %s contain inner section - TODO implement this", G_STRFUNC);
+#if 0
+            GString *new_action_string = g_string_new(old_action_string->str);
+            gchar **suboptions = g_strsplit(item_inner, "|", -1);
+            NautilusMenuItem *item;
+            NautilusMenu *submenu = nautilus_menu_new();
+
+            g_string_append(new_action_string, item_name);
+            g_string_append(new_action_string, "::");
+
+            nautilus_dropbox_parse_menu(suboptions, submenu, base, files);
+
+            item = nautilus_menu_item_new(new_action_string->str,
+                                          item_name, "", NULL);
+            nautilus_menu_item_set_submenu(item, submenu);
+            nautilus_menu_append_item(menu, item);
+
+            g_strfreev(suboptions);
+            g_object_unref(item);
+            g_object_unref(submenu);
+            g_string_free(new_action_string, TRUE);
+#endif
+        } else {
+            gboolean grayed_out = FALSE;
+
+            if (item_name[0] == '!') {
+                item_name++;
+                grayed_out = TRUE;
+            }
+
+            GtkWidget *menu_item = gtk_menu_item_new_with_label (item_name);
+            if (grayed_out)
+                g_object_set (menu_item, "sensitive", FALSE, NULL);
+            gtk_widget_show (menu_item);
+
+            g_signal_connect (menu_item, "activate",
+                              G_CALLBACK (menu_item_cb), cb_data);
+            gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
+        }
+        g_strfreev(option_info);
+    }
+}
+
+static void
+get_file_items_callback(GHashTable *response, gpointer ud)
+{
+    GAsyncQueue *reply_queue = ud;
+
+    /* queue_push doesn't accept NULL as a value so we create an empty hash table
+     * if we got no response. */
+    g_async_queue_push(reply_queue, response ? g_hash_table_ref(response) :
+                       g_hash_table_new((GHashFunc) g_str_hash, (GEqualFunc) g_str_equal));
+    g_async_queue_unref(reply_queue);
+}
+
 static void 
 marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu) 
 {
-    MarlinDropbox *u1 = MARLIN_DROPBOX (base);
+    MarlinDropbox *cvs = MARLIN_DROPBOX (base);
+    GOFFile *file;
+    gchar *filename_un, *filename;
+    int file_count;
 
     g_message ("%s", G_STRFUNC);
     //context_menu_new (u1, menu);
+
+    if ((file_count = g_list_length (cvs->selection)) != 1)
+        return;
+
+    /*
+     * 1. Convert files to filenames.
+     */
+    file = GOF_FILE (g_list_nth_data (cvs->selection, 0));
+    filename_un = g_filename_from_uri (file->uri, NULL, NULL);
+    filename = filename_un ? g_filename_to_utf8(filename_un, -1, NULL, NULL, NULL) : NULL;
+
+    g_free(filename_un);
+    if (filename == NULL)
+        return;
+
+    gchar **paths = g_new0(gchar *, file_count + 1);
+    paths[0] = filename;
+
+    GAsyncQueue *reply_queue = g_async_queue_new_full((GDestroyNotify)g_hash_table_unref);
+
+    /*
+     * 2. Create a DropboxGeneralCommand to call "icon_overlay_context_options"
+     */
+
+    DropboxGeneralCommand *dgc = g_new0(DropboxGeneralCommand, 1);
+    dgc->dc.request_type = GENERAL_COMMAND;
+    dgc->command_name = g_strdup("icon_overlay_context_options");
+    dgc->command_args = g_hash_table_new_full((GHashFunc) g_str_hash,
+                                              (GEqualFunc) g_str_equal,
+                                              (GDestroyNotify) g_free,
+                                              (GDestroyNotify) g_strfreev);
+    g_hash_table_insert(dgc->command_args, g_strdup("paths"), paths);
+    //FIXME
+    dgc->handler = get_file_items_callback;
+    dgc->handler_ud = g_async_queue_ref(reply_queue);
+
+    /*
+     * 3. Queue it up for the helper thread to run it.
+     */
+    dropbox_command_client_request(&(cvs->dc.dcc), (DropboxCommand *) dgc);
+
+    GTimeVal gtv;
+
+    /*
+     * 4. We have to block until it's done because nautilus expects a reply.  But we will
+     * only block for 50 ms for a reply.
+     */
+
+    g_get_current_time(&gtv);
+    g_time_val_add(&gtv, 50000);
+
+    GHashTable *context_options_response = g_async_queue_timed_pop(reply_queue, &gtv);
+    g_async_queue_unref(reply_queue);
+
+    if (!context_options_response) 
+        return;
+
+    /*
+     * 5. Parse the reply.
+     */
+
+    char **options = g_hash_table_lookup(context_options_response, "options");
+    GList *toret = NULL;
+
+    if (options && *options && **options)  {
+        GtkWidget *submenu, *root_item;
+
+        root_item = gtk_menu_item_new_with_mnemonic (_("Dropbo_x"));
+        submenu = gtk_menu_new ();
+        gtk_widget_show (root_item);
+        gtk_menu_item_set_submenu ((GtkMenuItem *) root_item,submenu);
+        gtk_menu_shell_append ((GtkMenuShell*) menu, root_item);
+        plugins->menus = g_list_prepend (plugins->menus, _g_object_ref0 (root_item));
+
+        marlin_dropbox_parse_menu(options, submenu, base, file);
+    }
+
+    g_hash_table_unref(context_options_response);
+
+
+
 }
 
 static void marlin_dropbox_real_file (MarlinPluginsBase *base, GList *files) {
-    MarlinDropbox *u1 = MARLIN_DROPBOX (base);
+    MarlinDropbox *cvs = MARLIN_DROPBOX (base);
 
-    u1->selection = files;
+    cvs->selection = files;
 
     /*GList *l;
       GOFFile *goffile;
@@ -538,7 +799,7 @@ marlin_dropbox_init (MarlinDropbox *cvs) {
                                               (GDestroyNotify) g_free);
     //amtest
     /*cvs->emblem_paths_mutex = g_mutex_new();
-    cvs->emblem_paths = NULL;*/
+      cvs->emblem_paths = NULL;*/
 
     /* setup the connection obj*/
     dropbox_client_setup(&(cvs->dc));
