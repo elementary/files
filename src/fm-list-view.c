@@ -155,7 +155,7 @@ static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMListView *view)
 {
     g_debug ("%s\n", G_STRFUNC);
-    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view));
+    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
 }
 
 static void
@@ -421,9 +421,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
              */
             if (G_LIKELY (event->type == GDK_2BUTTON_PRESS || exo_tree_view_get_single_click (EXO_TREE_VIEW (tree_view))))
             {
-                file = fm_list_model_file_for_path (view->model, path);
-                fm_directory_view_activate_single_file (FM_DIRECTORY_VIEW (view), file, eel_gtk_widget_get_screen (GTK_WIDGET (view)), TRUE);
-                g_object_unref (file);
+                fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
             }
 
             /* cleanup */
@@ -495,9 +493,8 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
             break;
         }
         if ((event->state & GDK_SHIFT_MASK) != 0) {
-            //TODO
-            printf ("activate alternate\n"); 
-            //activate_selected_items_alternate (FM_LIST_VIEW (view), NULL, TRUE);
+            /* alternate */
+            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
         } else {
             fm_directory_view_preview_selected_items (view);
         }
@@ -505,11 +502,12 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
         break;
     case GDK_KEY_Return:
     case GDK_KEY_KP_Enter:
-        /*if ((event->state & GDK_SHIFT_MASK) != 0) {
-          activate_selected_items_alternate (FM_LIST_VIEW (view), NULL, TRUE);
-          } else {*/
-        fm_directory_view_activate_selected_items (view);
-        //}
+        if ((event->state & GDK_SHIFT_MASK) != 0) {
+            /* alternate */
+            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+        } else {
+            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
+        }
         handled = TRUE;
         break;
 

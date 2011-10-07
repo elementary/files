@@ -7,8 +7,10 @@
         <placeholder name="New Items Placeholder">
             <menuitem name="New Tab" action="New Tab"/>
 	    	<menuitem name="New Window" action="New Window"/>
-		    <separator/>
         </placeholder>
+		<separator/>
+        <placeholder name="Open Placeholder"/>
+		<separator/>
 		<separator/>
 		<menuitem name="Connect to Server" action="Connect to Server"/>
 		<separator/>

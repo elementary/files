@@ -35,6 +35,7 @@
 #include "gof-window-slot.h"
 #include "marlin-clipboard-manager.h"
 #include "fm-list-model.h"
+#include "marlin-view-window.h"
 #include "marlinplugins.h"
 #include "marlin-enum-types.h"
 
@@ -400,9 +401,7 @@ void    fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *lo
 void    fm_directory_view_column_add_preview (FMDirectoryView *dview, GList *selection);
 //void    fm_directory_view_set_active_slot (FMDirectoryView *dview);
 void    fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location);
-void    fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, 
-                                                GdkScreen *screen, gboolean open_in_tab);
-void    fm_directory_view_activate_selected_items (FMDirectoryView *view);
+void    fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWindowOpenFlags flags);
 void    fm_directory_view_preview_selected_items (FMDirectoryView *view);
 //void    fm_directory_view_colorize_selection (FMDirectoryView *view, int color);
 void    fm_directory_view_notify_selection_changed (FMDirectoryView *view);

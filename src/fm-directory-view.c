@@ -578,23 +578,32 @@ fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *locatio
 
 /* TODO remove screen if we don't create any new windows 
 ** (check if we have to) */
-void
-fm_directory_view_activate_single_file (FMDirectoryView *view, GOFFile *file, 
-                                        GdkScreen *screen, gboolean open_in_tab)
+static void
+fm_directory_view_activate_single_file (FMDirectoryView *view, 
+                                        GOFFile *file, 
+                                        GdkScreen *screen, 
+                                        MarlinViewWindowOpenFlags flags)
 {
     g_debug ("%s\n", G_STRFUNC);
     if (file->is_directory) {
-        if (open_in_tab)
+        switch (flags) {
+        case MARLIN_WINDOW_OPEN_FLAG_NEW_TAB:
             marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), file->location);
-        else
+            break;
+        case MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW:
+            marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), file->location);
+            break;
+        default:
             fm_directory_view_load_location (view, file->location);
+            break;
+        }
     } else {
         gof_file_open_single (file, screen);
     }
 }
 
 void
-fm_directory_view_activate_selected_items (FMDirectoryView *view)
+fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWindowOpenFlags flags)
 {
     GList *file_list;
     GdkScreen *screen;
@@ -604,19 +613,21 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view)
     /* TODO add mountable etc */
 
     screen = eel_gtk_widget_get_screen (GTK_WIDGET (view));
-    //TODO remove element count it must already be stored in a structure
     guint nb_elem = g_list_length (file_list);
-    if (nb_elem == 1)
-        fm_directory_view_activate_single_file(FM_DIRECTORY_VIEW (view), file_list->data, screen, FALSE);
-    else
-    {
+    if (nb_elem == 1) {
+        fm_directory_view_activate_single_file(FM_DIRECTORY_VIEW (view), file_list->data, screen, flags);
+    } else {
         /* ignore opening more than 10 elements at a time */
         if (nb_elem < 10)
             for (; file_list != NULL; file_list=file_list->next)
             {
                 file = file_list->data;
                 if (file->is_directory) {
-                    marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), file->location);
+                    if (!(flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW)) {
+                        marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), file->location);
+                    } else {
+                        marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), file->location);
+                    }
                 } else {
                     gof_file_open_single (file, screen);
                 }
@@ -634,10 +645,9 @@ fm_directory_view_preview_selected_items (FMDirectoryView *view)
 
     /* activate selected items if no previewer have been defined */
     if (view->details->previewer == NULL) {
-        fm_directory_view_activate_selected_items (view);
+        fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
         return;
     }
-
 
     selection = fm_directory_view_get_selection (view);
     /* FIXME only grab the first selection item as gloobus-preview is unable to handle 
@@ -2705,6 +2715,18 @@ action_new_folder_callback (GtkAction *action, gpointer data)
 }
 
 static void
+action_open_new_tab_callback (GtkAction *action, FMDirectoryView *view)
+{
+    fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+}
+
+static void
+action_open_alternate_callback (GtkAction *action, FMDirectoryView *view)
+{
+    fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW);
+}
+
+static void
 action_properties_callback (GtkAction *action, gpointer data)
 {
     //TODO
@@ -2757,6 +2779,14 @@ static const GtkActionEntry directory_view_entries[] = {
     /* label, accelerator */       N_("Create New _Folder"), "<control><shift>N",
     /* tooltip */                  N_("Create a new empty folder inside this folder"),
             G_CALLBACK (action_new_folder_callback) },
+    /* name, stock id */         { "OpenAlternate", NULL,
+    /* label, accelerator */       N_("Open in new Window"), "<control><shift>o",
+    /* tooltip */                  N_("Open each selected item in a new window"),
+	    	G_CALLBACK (action_open_alternate_callback) },
+    /* name, stock id */         { "OpenInNewTab", NULL,
+    /* label, accelerator */       N_("Open in New _Tab"), "<control>o",
+    /* tooltip */                  N_("Open each selected item in a new tab"),
+	        G_CALLBACK (action_open_new_tab_callback) },
     /* name, stock id */         { "Trash", NULL,
     /* label, accelerator */       N_("Mo_ve to Trash"), NULL,
     /* tooltip */                  N_("Move each selected item to the Trash"),

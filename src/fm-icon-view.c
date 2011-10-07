@@ -92,7 +92,8 @@ fm_icon_view_selection_changed (GtkIconView *iconview, gpointer user_data)
 static void
 fm_icon_view_item_activated (ExoIconView *exo_icon, GtkTreePath *path, FMIconView *view)
 {
-    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view));    
+    //TODO make alternate
+    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT); 
 }
 
 static void
@@ -368,9 +369,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMIconView
              */
             if (G_LIKELY (event->type == GDK_2BUTTON_PRESS ||  exo_icon_view_get_single_click (view->icons)))
             {
-                file = fm_list_model_file_for_path (view->model, path);
-                fm_directory_view_activate_single_file (FM_DIRECTORY_VIEW (view), file, eel_gtk_widget_get_screen (GTK_WIDGET (view)), TRUE);
-                g_object_unref (file);
+                fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
             }
 
             /* cleanup */

@@ -335,6 +335,10 @@ namespace Marlin.View {
 
             tabs.remove(view_container);
         }
+        
+        public void add_window(File location){
+            ((Marlin.Application) application).create_window (location, screen);
+        }
 
 #if VALA_0_14
         private void resized(Gtk.Allocation allocation){

@@ -8,13 +8,12 @@
         <placeholder name="New Items Placeholder">
             <menuitem name="New Folder" action="New Folder"/>
         </placeholder>
-        <!--<placeholder name="Open Placeholder">
-			<menuitem name="Open" action="Open"/>
+        <placeholder name="Open Placeholder">
+			<!--<menuitem name="Open" action="Open"/>-->
 			<menuitem name="OpenInNewTab" action="OpenInNewTab"/>
 			<menuitem name="OpenAlternate" action="OpenAlternate"/>
-			<placeholder name="Applications Placeholder">
-            </placeholder>
-			<menu action="Open With">
+        </placeholder>
+			<!--<menu action="Open With">
 				<placeholder name="Applications Placeholder"/>
 				<separator name="Open With Separator"/>
 				<menuitem name="OtherApplication" action="OtherApplication1"/>
@@ -122,6 +121,8 @@
 		</menu>
 	</placeholder>
 	<separator name="Clipboard separator"/>-->
+	<menuitem name="OpenInNewTab" action="OpenInNewTab"/>
+	<separator/>
 	<placeholder name="File Clipboard Actions">
 		<menuitem name="Cut" action="Cut"/>
 		<menuitem name="Copy" action="Copy"/>
