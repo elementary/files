@@ -406,11 +406,11 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
 static void 
 marlin_dropbox_real_directory_loaded (MarlinPluginsBase *base, void *user_data) 
 {
-    GOFFile *file;
+    /*GOFFile *file;
 
     GObject *obj = ((GObject**) user_data)[2];
     file = g_object_ref ((GOFFile *) obj);
-    g_message ("%s : %s", G_STRFUNC, file->uri);
+    g_message ("%s : %s", G_STRFUNC, file->uri);*/
 
     //unref file
 
