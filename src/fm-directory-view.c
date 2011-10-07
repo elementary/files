@@ -1497,6 +1497,21 @@ fm_directory_view_button_release_event (GtkWidget        *widget,
     return TRUE;
 }
 
+static gboolean 
+is_selection_contain_only_folders (GList *selection)
+{
+    GOFFile *file;
+    GList *l;
+
+    for (l = selection; l != NULL; l = l->next) {
+		file = GOF_FILE (l->data);
+        if (!file->is_directory)
+            return FALSE;
+    }
+
+    return TRUE;
+}
+
 static void
 dir_action_set_visible (FMDirectoryView *view, const gchar *action_name, gboolean visible)
 {
@@ -1551,6 +1566,10 @@ update_menus_empty_selection (FMDirectoryView *view)
     dir_action_set_sensitive (view, "Delete", FALSE);
     dir_action_set_visible (view, "Restore From Trash", FALSE);
 
+    dir_action_set_visible (view, "Open", FALSE);
+    dir_action_set_visible (view, "OpenAlternate", FALSE);
+    dir_action_set_visible (view, "OpenInNewTab", FALSE);
+    
     GOFWindowSlot *slot = view->details->slot;
 
     if (gof_file_is_trashed (slot->directory->file))
@@ -1591,6 +1610,16 @@ update_menus_selection (FMDirectoryView *view)
         dir_action_set_visible (view, "Trash", TRUE);
         dir_action_set_visible (view, "Delete", TRUE);
     }
+    
+    if (is_selection_contain_only_folders (selection)) {
+        dir_action_set_visible (view, "OpenAlternate", TRUE);
+        dir_action_set_visible (view, "OpenInNewTab", TRUE);
+    } else {
+        dir_action_set_visible (view, "Open", TRUE);
+        dir_action_set_visible (view, "OpenAlternate", FALSE);
+        dir_action_set_visible (view, "OpenInNewTab", FALSE);
+    }
+
 }
 
 static gboolean
@@ -2727,6 +2756,12 @@ action_open_alternate_callback (GtkAction *action, FMDirectoryView *view)
 }
 
 static void
+action_open_callback (GtkAction *action, FMDirectoryView *view)
+{
+    fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
+}
+
+static void
 action_properties_callback (GtkAction *action, gpointer data)
 {
     //TODO
@@ -2779,6 +2814,14 @@ static const GtkActionEntry directory_view_entries[] = {
     /* label, accelerator */       N_("Create New _Folder"), "<control><shift>N",
     /* tooltip */                  N_("Create a new empty folder inside this folder"),
             G_CALLBACK (action_new_folder_callback) },
+    /* name, stock id */         { "Open", NULL,
+    /* label, accelerator */       N_("_Open"), NULL,
+    /* tooltip */                  N_("Open the selected item"),
+            G_CALLBACK (action_open_callback) },
+    /* name, stock id */         { "OpenAccel", NULL,
+    /* label, accelerator */       "OpenAccel", "<alt>Down",
+    /* tooltip */                  NULL,
+			G_CALLBACK (action_open_callback) },
     /* name, stock id */         { "OpenAlternate", NULL,
     /* label, accelerator */       N_("Open in new Window"), "<control><shift>o",
     /* tooltip */                  N_("Open each selected item in a new window"),
