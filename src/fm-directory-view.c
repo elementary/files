@@ -1537,6 +1537,10 @@ update_menus_empty_selection (FMDirectoryView *view)
     dir_action_set_sensitive (view, "Copy", FALSE);
     dir_action_set_sensitive (view, "Rename", FALSE);
 
+    dir_action_set_sensitive (view, "Trash", FALSE);
+    dir_action_set_sensitive (view, "Delete", FALSE);
+    dir_action_set_visible (view, "Restore From Trash", FALSE);
+
     GOFWindowSlot *slot = view->details->slot;
 
     if (gof_file_is_trashed (slot->directory->file))
@@ -1570,10 +1574,12 @@ update_menus_selection (FMDirectoryView *view)
     if (gof_file_is_trashed(file)) {
         dir_action_set_visible (view, "Restore From Trash", TRUE);
         dir_action_set_visible (view, "Trash", FALSE);
+        dir_action_set_visible (view, "Delete", FALSE);
         dir_action_set_visible (view, "Rename", FALSE);
     } else {
         dir_action_set_visible (view, "Restore From Trash", FALSE);
         dir_action_set_visible (view, "Trash", TRUE);
+        dir_action_set_visible (view, "Delete", TRUE);
     }
 }
 
