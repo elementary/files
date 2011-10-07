@@ -20,12 +20,13 @@
 		<separator/>-->
 		<placeholder name="Clipboard Actions"/>
 		<separator/>
+		<!--<placeholder name="Select Items"/>-->
         <placeholder name="File Items Placeholder"/>
 		<separator/>
-		<!--<placeholder name="Select Items"/>-->
+        <placeholder name="Dangerous File Actions"/>
+		<separator/>
 		<menuitem name="ToolbarEditor" 	  action="ToolbarEditor"/>
 		<menuitem name="MarlinSettings"   action="MarlinSettings"/>
-		<separator/>
                 <!--<menu action="ColorMenu">-->
                 <!--    <menuitem action="set-color-clear" />
                     <menuitem action="set-color-butter" />
