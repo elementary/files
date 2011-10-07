@@ -1521,8 +1521,10 @@ update_menus_common (FMDirectoryView *view)
 {
     if (view->clipboard != NULL && marlin_clipboard_manager_get_can_paste (view->clipboard)) {
         dir_action_set_sensitive (view, "Paste", TRUE);
+        dir_action_set_sensitive (view, "Paste Into Folder", TRUE);
     } else {
         dir_action_set_sensitive (view, "Paste", FALSE);
+        dir_action_set_sensitive (view, "Paste Into Folder", FALSE);
     }
 }
 
@@ -1559,8 +1561,9 @@ update_menus_selection (FMDirectoryView *view)
     dir_action_set_sensitive (view, "Rename", TRUE);
 
     /* got only one element in selection */
-    if (selection->next == NULL && file->is_directory
-        && marlin_clipboard_manager_get_can_paste (view->clipboard)) {
+    /*if (selection->next == NULL && file->is_directory
+        && marlin_clipboard_manager_get_can_paste (view->clipboard)) {*/
+    if (selection->next == NULL && file->is_directory) {
         dir_action_set_visible (view, "Paste Into Folder", TRUE);
     } else {
         dir_action_set_visible (view, "Paste Into Folder", FALSE);
