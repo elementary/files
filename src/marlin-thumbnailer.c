@@ -645,7 +645,6 @@ marlin_thumbnailer_error_idle (gpointer user_data)
         file = gof_file_get (gfile);
         g_object_unref (gfile);
 
-//#if 0
         /* check if we have a file for this URI in the cache */
         if (file != NULL)
         {
@@ -654,7 +653,7 @@ marlin_thumbnailer_error_idle (gpointer user_data)
             if (gof_file_get_thumb_state (file) != GOF_FILE_THUMB_STATE_READY)
                 gof_file_set_thumb_state (file, GOF_FILE_THUMB_STATE_NONE);
         }
-//#endif
+        g_object_unref (file);
     }
 
     /* remove the idle struct */
@@ -690,14 +689,13 @@ marlin_thumbnailer_ready_idle (gpointer user_data)
         g_object_unref (gfile);
 
         //amtest
-//#if 0
         /* check if we have a file for this URI in the cache */
         if (file != NULL)
         {
             /* set thumbnail state to ready - we now have a thumbnail */
             gof_file_set_thumb_state (file, GOF_FILE_THUMB_STATE_READY);
         }
-//#endif
+        g_object_unref (file);
     }
 
     /* remove the idle struct */

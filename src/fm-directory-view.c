@@ -297,7 +297,7 @@ file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryVie
 static void
 file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-    g_debug ("%s %s %d\n", G_STRFUNC, g_file_get_uri(file->location), file->flags);
+    //g_debug ("%s %s %d\n", G_STRFUNC, g_file_get_uri(file->location), file->flags);
     if (file->exists) 
         fm_list_model_file_changed (view->model, file, directory);
 }

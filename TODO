@@ -1,7 +1,6 @@
 This is a short TODO list.
 
 - change focus in the icon view: draw focus only via the text renderer
-- check dropbox support
 - files operations must implement an undo/redo mechanism.
 - do the usual filecheck on files without extension of find a way that textfiles don't get detected as octet-stream
 - store typechecks in db together with last edited date
@@ -10,6 +9,8 @@ This is a short TODO list.
 - add drag support to the locationbar, we should be able to move a file by dragging it on the folder names
 ...
 
+Check:
+- gof_file_get is unrefed in gof-file.c
 
 Postponed:
 - use app indicator for showing the progress operation window.
