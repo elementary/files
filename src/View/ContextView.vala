@@ -212,7 +212,11 @@ namespace Marlin.View {
            
             /* fixing a minimum and maximum value */
             if (orientation == Orientation.VERTICAL) {
-                icon_size_req = alloc.width.clamp (height, 256);
+                /* add a little 16px padding for normal icons */
+                if (last_gof.thumbnail_path != null)
+                    icon_size_req = alloc.width.clamp (height, 256);
+                else
+                    icon_size_req = alloc.width.clamp (height, width-16);
             } else {
                 icon_size_req = alloc.height.clamp (height, 256);
             }
