@@ -38,6 +38,7 @@
 #include "marlin-file-operations.h"
 //#include "fm-list-view.h"
 #include "eel-gtk-macros.h"
+#include "eel-string.h"
 #include "fm-columns-view.h"
 #include "marlin-dnd.h"
 #include "marlin-file-utilities.h"
@@ -50,6 +51,7 @@
 #include "marlin-text-renderer.h"
 #include "marlin-thumbnailer.h"
 #include "marlin-tags.h"
+#include "marlin-mime-actions.h"
 
 
 enum {
@@ -1773,10 +1775,56 @@ fm_directory_view_context_menu (FMDirectoryView *view,
     g_list_free_full (old_menuitems, (GDestroyNotify) gtk_widget_destroy); 
     g_object_set_data (G_OBJECT (view->details->menu_selection), "other_selection", NULL); 
 
+
+    if (selection != NULL)
+    {
+        GtkAction *action;
+        GAppInfo *app = NULL;
+        GIcon *app_icon = NULL;
+        char *label_with_underscore = NULL;
+        GtkWidget *menuitem;
+
+        action = gtk_action_group_get_action (view->details->dir_action_group, "Open");
+        app = marlin_mime_get_default_application_for_files (selection);
+        if (app != NULL) {
+	    	char *escaped_app;
+
+            escaped_app = eel_str_double_underscores (g_app_info_get_display_name (app));
+            label_with_underscore = g_strdup_printf (_("_Open With %s"), escaped_app);
+            app_icon = g_app_info_get_icon (app);
+		    if (app_icon != NULL) {
+    			g_object_ref (app_icon);
+	    	}
+        
+            g_free (escaped_app);
+    		g_object_unref (app);
+        }
+
+        g_object_set (action, "label", 
+                      label_with_underscore ? label_with_underscore : _("_Open"), NULL);
+    
+    	menuitem = gtk_ui_manager_get_widget (
+	    				      MARLIN_VIEW_WINDOW (view->details->window)->ui,
+		    			      "/selection/Open");
+
+    	/* Only force displaying the icon if it is an application icon */
+	    gtk_image_menu_item_set_always_show_image (
+		    				   GTK_IMAGE_MENU_ITEM (menuitem), app_icon != NULL);
+
+    	if (app_icon == NULL) {
+	    	app_icon = g_themed_icon_new (GTK_STOCK_OPEN);
+    	}
+
+	    gtk_action_set_gicon (action, app_icon);
+    	g_object_unref (app_icon);
+	
+	    g_free (label_with_underscore);
+    }
+
+
     //if (selection != NULL && g_list_length(selection) == 1)
     if (selection != NULL && selection->next == NULL)
     {
-        //GtkMenuItem* item;
         GtkWidget *item;
 
         GList* apps = g_app_info_get_all_for_type (GOF_FILE(selection->data)->ftype);

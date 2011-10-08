@@ -263,6 +263,7 @@ eel_str_to_int (const char *string, int *integer)
     *integer = result;
     return TRUE;
 }
+#endif
 
 char *
 eel_str_double_underscores (const char *string)
@@ -298,6 +299,7 @@ eel_str_double_underscores (const char *string)
     return escaped;
 }
 
+#if 0
 char *
 eel_str_capitalize (const char *string)
 {

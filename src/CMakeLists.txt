@@ -85,6 +85,7 @@ add_executable(marlin
     marlin-thumbnailer.c
     marlin-icon-renderer.c
     marlin-text-renderer.c
+    marlin-mime-actions.c
     fm-directory-view.c
     exo-icon-view.c
     exo-tree-view.c

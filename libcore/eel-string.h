@@ -74,10 +74,11 @@ gboolean eel_istr_has_suffix               (const char    *target,
 /* Conversions to and from strings. */
 gboolean eel_str_to_int                    (const char    *str,
                                             int           *integer);
-
+#endif
 /* Escape function for '_' character. */
 char *   eel_str_double_underscores        (const char    *str);
 
+#if 0
 /* Capitalize a string */
 char *   eel_str_capitalize                (const char    *str);
 #endif
