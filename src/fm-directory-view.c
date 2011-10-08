@@ -1585,10 +1585,12 @@ static void
 update_menus_selection (FMDirectoryView *view)
 {
     GList       *selection;
+    guint       selection_count;
     GOFFile     *file;
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     selection = fm_directory_view_get_selection (view);
+    selection_count = g_list_length (selection);
     file = GOF_FILE (selection->data);
 
     dir_action_set_sensitive (view, "Cut", TRUE);
@@ -1622,6 +1624,7 @@ update_menus_selection (FMDirectoryView *view)
         dir_action_set_visible (view, "OpenInNewTab", FALSE);
     }
 
+    /* Open default */
     GtkAction *action;
     GAppInfo *app = NULL;
     GIcon *app_icon = NULL;
@@ -1652,8 +1655,7 @@ update_menus_selection (FMDirectoryView *view)
                                           "/selection/Open");
 
     /* Only force displaying the icon if it is an application icon */
-    gtk_image_menu_item_set_always_show_image (
-                                               GTK_IMAGE_MENU_ITEM (menuitem), app_icon != NULL);
+    gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (menuitem), app_icon != NULL);
 
     if (app_icon == NULL) {
         app_icon = g_themed_icon_new (GTK_STOCK_OPEN);
@@ -1663,6 +1665,24 @@ update_menus_selection (FMDirectoryView *view)
     g_object_unref (app_icon);
 
     g_free (label_with_underscore);
+
+    /* OpenInNewTab label update */
+    if (selection_count > 1) {
+        label_with_underscore = g_strdup_printf (_("Open in %'d New _Tabs"),
+                                                 selection_count);
+        action = gtk_action_group_get_action (view->details->dir_action_group, "OpenInNewTab");
+        g_object_set (action, "label", label_with_underscore, NULL);
+        g_free (label_with_underscore);
+    }
+
+    /* OpenAlternate label update */
+    if (selection_count > 1) {
+        label_with_underscore = g_strdup_printf (_("Open in %'d New _Windows"),
+                                                 selection_count);
+        action = gtk_action_group_get_action (view->details->dir_action_group, "OpenAlternate");
+        g_object_set (action, "label", label_with_underscore, NULL);
+        g_free (label_with_underscore);
+    }
 
 
 }
