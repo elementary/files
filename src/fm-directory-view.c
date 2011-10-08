@@ -2901,7 +2901,7 @@ static const GtkActionEntry directory_view_entries[] = {
         /* tooltip */                  N_("Move each selected item to the Trash"),
         G_CALLBACK (action_trash_callback) },
     /* name, stock id */         { "Delete", NULL,
-        /* label, accelerator */       N_("_Delete"), "<shift>Delete",
+        /* label, accelerator */       N_("_Delete Permanently"), "<shift>Delete",
         /* tooltip */                  N_("Delete each selected item, without moving to the Trash"),
         G_CALLBACK (action_delete_callback) },
     /* name, stock id */         { "Restore From Trash", NULL,
