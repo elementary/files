@@ -155,7 +155,7 @@ static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMListView *view)
 {
     g_debug ("%s\n", G_STRFUNC);
-    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+    fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
 }
 
 static void
