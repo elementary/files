@@ -127,7 +127,7 @@ struct FMDirectoryViewDetails
     guint               thumbnail_request;
     guint               thumbnail_source_id;
     gboolean            thumbnailing_scheduled;
-   
+
     /* Tree path for restoring the selection after selecting and 
      * deleting an item */
     GtkTreePath     *selection_before_delete;
@@ -206,8 +206,8 @@ static void     fm_directory_view_size_allocate (FMDirectoryView *view, GtkAlloc
 
 EEL_CLASS_BOILERPLATE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW)
 
-/* Identifiers for DnD target types */
-enum
+    /* Identifiers for DnD target types */
+    enum
 {
     TARGET_TEXT_URI_LIST,
     TARGET_XDND_DIRECT_SAVE0,
@@ -386,7 +386,7 @@ fm_directory_view_init (FMDirectoryView *view)
     /* setup the name renderer */
     view->name_renderer = marlin_text_renderer_new ();
     g_object_ref_sink (G_OBJECT (view->name_renderer));
-    
+
     /* get the previewer_path if any */
     gchar *previewer_path = g_settings_get_string (settings, "previewer-path");
     if (strlen (previewer_path) > 0)
@@ -653,7 +653,7 @@ fm_directory_view_preview_selected_items (FMDirectoryView *view)
 
     selection = fm_directory_view_get_selection (view);
     /* FIXME only grab the first selection item as gloobus-preview is unable to handle 
-    multiple selection */
+       multiple selection */
     if (selection != NULL) {
         file = selection->data;
         file_list = g_list_prepend (file_list, file->location);
@@ -1506,7 +1506,7 @@ is_selection_contain_only_folders (GList *selection)
     GList *l;
 
     for (l = selection; l != NULL; l = l->next) {
-		file = GOF_FILE (l->data);
+        file = GOF_FILE (l->data);
         if (!file->is_directory)
             return FALSE;
     }
@@ -1571,7 +1571,7 @@ update_menus_empty_selection (FMDirectoryView *view)
     dir_action_set_visible (view, "Open", FALSE);
     dir_action_set_visible (view, "OpenAlternate", FALSE);
     dir_action_set_visible (view, "OpenInNewTab", FALSE);
-    
+
     GOFWindowSlot *slot = view->details->slot;
 
     if (gof_file_is_trashed (slot->directory->file))
@@ -1612,7 +1612,7 @@ update_menus_selection (FMDirectoryView *view)
         dir_action_set_visible (view, "Trash", TRUE);
         dir_action_set_visible (view, "Delete", TRUE);
     }
-    
+
     if (is_selection_contain_only_folders (selection)) {
         dir_action_set_visible (view, "OpenAlternate", TRUE);
         dir_action_set_visible (view, "OpenInNewTab", TRUE);
@@ -1621,6 +1621,49 @@ update_menus_selection (FMDirectoryView *view)
         dir_action_set_visible (view, "OpenAlternate", FALSE);
         dir_action_set_visible (view, "OpenInNewTab", FALSE);
     }
+
+    GtkAction *action;
+    GAppInfo *app = NULL;
+    GIcon *app_icon = NULL;
+    char *label_with_underscore = NULL;
+    GtkWidget *menuitem;
+
+    action = gtk_action_group_get_action (view->details->dir_action_group, "Open");
+    app = marlin_mime_get_default_application_for_files (selection);
+    if (app != NULL) {
+        char *escaped_app;
+
+        escaped_app = eel_str_double_underscores (g_app_info_get_display_name (app));
+        label_with_underscore = g_strdup_printf (_("_Open With %s"), escaped_app);
+        app_icon = g_app_info_get_icon (app);
+        if (app_icon != NULL) {
+            g_object_ref (app_icon);
+        }
+
+        g_free (escaped_app);
+        g_object_unref (app);
+    }
+
+    g_object_set (action, "label", 
+                  label_with_underscore ? label_with_underscore : _("_Open"), NULL);
+
+    menuitem = gtk_ui_manager_get_widget (
+                                          MARLIN_VIEW_WINDOW (view->details->window)->ui,
+                                          "/selection/Open");
+
+    /* Only force displaying the icon if it is an application icon */
+    gtk_image_menu_item_set_always_show_image (
+                                               GTK_IMAGE_MENU_ITEM (menuitem), app_icon != NULL);
+
+    if (app_icon == NULL) {
+        app_icon = g_themed_icon_new (GTK_STOCK_OPEN);
+    }
+
+    gtk_action_set_gicon (action, app_icon);
+    g_object_unref (app_icon);
+
+    g_free (label_with_underscore);
+
 
 }
 
@@ -1755,7 +1798,7 @@ void
 fm_directory_view_context_menu (FMDirectoryView *view,
                                 guint           button,
                                 GdkEventButton  *event)
-                                //int32         timestamp)
+//int32         timestamp)
 {
     GtkWidget   *menu;
     GList       *selection;
@@ -1769,57 +1812,12 @@ fm_directory_view_context_menu (FMDirectoryView *view,
 
     /* run the menu on the view's screen (figuring out whether to use the file or the folder context menu) */
     menu = (selection != NULL) ? view->details->menu_selection : view->details->menu_background;
- 
+
     /* Clear the list and empty the menu */
     gpointer old_menuitems = g_object_get_data(G_OBJECT (view->details->menu_selection), "other_selection");
     g_list_free_full (old_menuitems, (GDestroyNotify) gtk_widget_destroy); 
     g_object_set_data (G_OBJECT (view->details->menu_selection), "other_selection", NULL); 
 
-
-    if (selection != NULL)
-    {
-        GtkAction *action;
-        GAppInfo *app = NULL;
-        GIcon *app_icon = NULL;
-        char *label_with_underscore = NULL;
-        GtkWidget *menuitem;
-
-        action = gtk_action_group_get_action (view->details->dir_action_group, "Open");
-        app = marlin_mime_get_default_application_for_files (selection);
-        if (app != NULL) {
-	    	char *escaped_app;
-
-            escaped_app = eel_str_double_underscores (g_app_info_get_display_name (app));
-            label_with_underscore = g_strdup_printf (_("_Open With %s"), escaped_app);
-            app_icon = g_app_info_get_icon (app);
-		    if (app_icon != NULL) {
-    			g_object_ref (app_icon);
-	    	}
-        
-            g_free (escaped_app);
-    		g_object_unref (app);
-        }
-
-        g_object_set (action, "label", 
-                      label_with_underscore ? label_with_underscore : _("_Open"), NULL);
-    
-    	menuitem = gtk_ui_manager_get_widget (
-	    				      MARLIN_VIEW_WINDOW (view->details->window)->ui,
-		    			      "/selection/Open");
-
-    	/* Only force displaying the icon if it is an application icon */
-	    gtk_image_menu_item_set_always_show_image (
-		    				   GTK_IMAGE_MENU_ITEM (menuitem), app_icon != NULL);
-
-    	if (app_icon == NULL) {
-	    	app_icon = g_themed_icon_new (GTK_STOCK_OPEN);
-    	}
-
-	    gtk_action_set_gicon (action, app_icon);
-    	g_object_unref (app_icon);
-	
-	    g_free (label_with_underscore);
-    }
 
 
     //if (selection != NULL && g_list_length(selection) == 1)
@@ -1838,7 +1836,7 @@ fm_directory_view_context_menu (FMDirectoryView *view,
                 gtk_widget_show (item);
                 openwith_items = g_list_append(openwith_items, item);
             }
- 
+
             item = gtk_menu_item_new_with_label (g_app_info_get_name(G_APP_INFO(apps->data)));
             g_object_set_data (G_OBJECT (item), "next_app_info", apps->data);
             g_signal_connect (item, "activate", (GCallback) on_menuitem_openwith_activate, selection->data);
@@ -1852,19 +1850,19 @@ fm_directory_view_context_menu (FMDirectoryView *view,
         gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
         gtk_widget_show (item);
         openwith_items = g_list_append (openwith_items, item);
-        
+
         item = gtk_menu_item_new_with_label (_("Open with…"));
         gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
         gtk_widget_show (item);
         openwith_items = g_list_append(openwith_items, item);
 
         g_signal_connect(item, "activate", (GCallback) on_menuitem_openwith_other_activate, selection->data);
-   
+
         /* save the menuitems list, we'll destroy them at the next popup */
         g_object_set_data(G_OBJECT (view->details->menu_selection), "other_selection", openwith_items);
     }
 
-	marlin_plugin_manager_hook_context_menu(plugins, menu);
+    marlin_plugin_manager_hook_context_menu(plugins, menu);
     gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (view)));
     //gtk_widget_show_all(menu);
 
@@ -1895,7 +1893,7 @@ fm_directory_view_row_deleted (FMListModel *model, GtkTreePath *path, FMDirector
     if (G_UNLIKELY (g_list_find_custom (selected_paths, path, (GCompareFunc) gtk_tree_path_compare) == NULL || g_list_length (selected_paths) != 1))
     {
         /*g_list_foreach (selected_paths, (GFunc) gtk_tree_path_free, NULL);
-        g_list_free (selected_paths);*/
+          g_list_free (selected_paths);*/
         g_list_free_full (selected_paths, (GDestroyNotify) gtk_tree_path_free);
         return;
     }
@@ -1911,7 +1909,7 @@ fm_directory_view_row_deleted (FMListModel *model, GtkTreePath *path, FMDirector
 
     /* Free path list */
     /*g_list_foreach (selected_paths, (GFunc) gtk_tree_path_free, NULL);
-    g_list_free (selected_paths);*/
+      g_list_free (selected_paths);*/
     g_list_free_full (selected_paths, (GDestroyNotify) gtk_tree_path_free);
 }
 
@@ -2233,7 +2231,7 @@ static void
 slot_inactive (GOFWindowSlot *slot, FMDirectoryView *view)
 {
     /*g_assert (view->details->active ||
-              gtk_widget_get_parent (GTK_WIDGET (view)) == NULL);*/
+      gtk_widget_get_parent (GTK_WIDGET (view)) == NULL);*/
     view->details->active = FALSE;
 
     fm_directory_view_unmerge_menus (view);
@@ -2437,7 +2435,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
 
     widget_class = GTK_WIDGET_CLASS (klass);
     scrolled_window_class = GTK_SCROLLED_WINDOW_CLASS (klass);
-    
+
     klass->add_file = fm_directory_view_view_add_file;
 
     G_OBJECT_CLASS (klass)->constructor = fm_directory_view_constructor;
@@ -2642,7 +2640,7 @@ fm_directory_view_unfreeze_updates (FMDirectoryView *view)
 {
     /* unblock thumbnails request on size allocate */
     g_signal_handlers_unblock_by_func (G_OBJECT (view), fm_directory_view_size_allocate, NULL);
-    
+
     /* unblock key-press events on column view (if any) */
     gof_window_slot_unfreeze_updates (view->details->slot);
 }
@@ -2839,65 +2837,65 @@ action_properties_callback (GtkAction *action, gpointer data)
 //TODO complete this list
 static const GtkActionEntry directory_view_entries[] = {
     /* name, stock id */        { "Cut", GTK_STOCK_CUT,
-    /* label, accelerator */      NULL, NULL,
-    /* tooltip */                 N_("Prepare the selected files to be moved with a Paste command"),
-            G_CALLBACK (action_cut_files) },
+        /* label, accelerator */      NULL, NULL,
+        /* tooltip */                 N_("Prepare the selected files to be moved with a Paste command"),
+        G_CALLBACK (action_cut_files) },
     /* name, stock id */        { "Copy", GTK_STOCK_COPY,
-    /* label, accelerator */      NULL, NULL,
-    /* tooltip */                 N_("Prepare the selected files to be copied with a Paste command"),
-            G_CALLBACK (action_copy_files) },
+        /* label, accelerator */      NULL, NULL,
+        /* tooltip */                 N_("Prepare the selected files to be copied with a Paste command"),
+        G_CALLBACK (action_copy_files) },
     /* name, stock id */        { "Paste", GTK_STOCK_PASTE,
-    /* label, accelerator */      NULL, NULL,
-    /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command"),
-            G_CALLBACK (action_paste_files) },
+        /* label, accelerator */      NULL, NULL,
+        /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command"),
+        G_CALLBACK (action_paste_files) },
     /* name, stock id */        { "Paste Into Folder", GTK_STOCK_PASTE,
-    /* label, accelerator */      N_("Paste Into Folder"), NULL,
-    /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command into selected folder"),
-            G_CALLBACK (action_paste_into_folder) },
+        /* label, accelerator */      N_("Paste Into Folder"), NULL,
+        /* tooltip */                 N_("Move or copy files previously selected by a Cut or Copy command into selected folder"),
+        G_CALLBACK (action_paste_into_folder) },
     /* name, stock id */         { "Rename", NULL,
-    /* label, accelerator */       N_("_Rename..."), "F2",
-    /* tooltip */                  N_("Rename selected item"),
-            G_CALLBACK (action_rename_callback) },
+        /* label, accelerator */       N_("_Rename..."), "F2",
+        /* tooltip */                  N_("Rename selected item"),
+        G_CALLBACK (action_rename_callback) },
     /* name, stock id */         { "New Folder", "folder-new",
-    /* label, accelerator */       N_("Create New _Folder"), "<control><shift>N",
-    /* tooltip */                  N_("Create a new empty folder inside this folder"),
-            G_CALLBACK (action_new_folder_callback) },
+        /* label, accelerator */       N_("Create New _Folder"), "<control><shift>N",
+        /* tooltip */                  N_("Create a new empty folder inside this folder"),
+        G_CALLBACK (action_new_folder_callback) },
     /* name, stock id */         { "Open", NULL,
-    /* label, accelerator */       N_("_Open"), NULL,
-    /* tooltip */                  N_("Open the selected item"),
-            G_CALLBACK (action_open_callback) },
+        /* label, accelerator */       N_("_Open"), NULL,
+        /* tooltip */                  N_("Open the selected item"),
+        G_CALLBACK (action_open_callback) },
     /* name, stock id */         { "OpenAccel", NULL,
-    /* label, accelerator */       "OpenAccel", "<alt>Down",
-    /* tooltip */                  NULL,
-			G_CALLBACK (action_open_callback) },
+        /* label, accelerator */       "OpenAccel", "<alt>Down",
+        /* tooltip */                  NULL,
+        G_CALLBACK (action_open_callback) },
     /* name, stock id */         { "OpenAlternate", NULL,
-    /* label, accelerator */       N_("Open in new Window"), "<control><shift>o",
-    /* tooltip */                  N_("Open each selected item in a new window"),
-	    	G_CALLBACK (action_open_alternate_callback) },
+        /* label, accelerator */       N_("Open in new Window"), "<control><shift>o",
+        /* tooltip */                  N_("Open each selected item in a new window"),
+        G_CALLBACK (action_open_alternate_callback) },
     /* name, stock id */         { "OpenInNewTab", NULL,
-    /* label, accelerator */       N_("Open in New _Tab"), "<control>o",
-    /* tooltip */                  N_("Open each selected item in a new tab"),
-	        G_CALLBACK (action_open_new_tab_callback) },
+        /* label, accelerator */       N_("Open in New _Tab"), "<control>o",
+        /* tooltip */                  N_("Open each selected item in a new tab"),
+        G_CALLBACK (action_open_new_tab_callback) },
     /* name, stock id */         { "Trash", NULL,
-    /* label, accelerator */       N_("Mo_ve to Trash"), NULL,
-    /* tooltip */                  N_("Move each selected item to the Trash"),
-            G_CALLBACK (action_trash_callback) },
+        /* label, accelerator */       N_("Mo_ve to Trash"), NULL,
+        /* tooltip */                  N_("Move each selected item to the Trash"),
+        G_CALLBACK (action_trash_callback) },
     /* name, stock id */         { "Delete", NULL,
-    /* label, accelerator */       N_("_Delete"), "<shift>Delete",
-    /* tooltip */                  N_("Delete each selected item, without moving to the Trash"),
-            G_CALLBACK (action_delete_callback) },
+        /* label, accelerator */       N_("_Delete"), "<shift>Delete",
+        /* tooltip */                  N_("Delete each selected item, without moving to the Trash"),
+        G_CALLBACK (action_delete_callback) },
     /* name, stock id */         { "Restore From Trash", NULL,
-    /* label, accelerator */       N_("_Restore"), NULL, 
-                                   NULL,
-            G_CALLBACK (action_restore_from_trash_callback) },
+        /* label, accelerator */       N_("_Restore"), NULL, 
+        NULL,
+        G_CALLBACK (action_restore_from_trash_callback) },
     /* name, stock id */         { "Select All", NULL,
-    /* label, accelerator */       N_("Select All"), "<control>A", 
-                                   NULL,
-            G_CALLBACK (action_select_all) },
+        /* label, accelerator */       N_("Select All"), "<control>A", 
+        NULL,
+        G_CALLBACK (action_select_all) },
     /* name, stock id */         { "Properties", GTK_STOCK_PROPERTIES,
-    /* label, accelerator */       N_("_Properties"), "<alt>Return",
-    /* tooltip */                  N_("View or modify the properties of each selected item"),
-            G_CALLBACK (action_properties_callback) }
+        /* label, accelerator */       N_("_Properties"), "<alt>Return",
+        /* tooltip */                  N_("View or modify the properties of each selected item"),
+        G_CALLBACK (action_properties_callback) }
 
 };
 
@@ -2992,7 +2990,7 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
     if (!selection_menu_builded) 
     {
         GtkWidget *item;
-    
+
         /* append a menu separator */
         item = gtk_separator_menu_item_new ();
         gtk_menu_shell_append (GTK_MENU_SHELL (view->details->menu_selection), item);
@@ -3003,19 +3001,19 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
         gtk_widget_set_sensitive (item, FALSE);
         gtk_menu_shell_append (GTK_MENU_SHELL (view->details->menu_selection), item);
         gtk_widget_show (item);
-    
+
         /* append menu color selection */
         item = GTK_WIDGET (marlin_view_chrome_color_widget_new (MARLIN_VIEW_WINDOW (view->details->window)));
         gtk_menu_shell_append (GTK_MENU_SHELL (view->details->menu_selection), item);
         gtk_widget_show (item);
-    
+
         selection_menu_builded = TRUE;
     }
-    
+
     marlin_plugin_manager_ui(plugins, ui_manager);
     //view->details->scripts_invalid = TRUE;
     //view->details->templates_invalid = TRUE;
-    
+
     update_menus (view);
 }
 
