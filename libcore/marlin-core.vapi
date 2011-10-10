@@ -17,7 +17,9 @@ namespace FM
 {
     public class ListModel : Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.TreeSortable
     {
+        public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
         public void add_file(GOF.File file, GOF.Directory.Async dir);
+        public GOF.File file_for_path(Gtk.TreePath path);
     }
 }
 

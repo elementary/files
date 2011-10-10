@@ -286,7 +286,7 @@ void gof_file_update_emblem (GOFFile *file)
         g_list_free (file->emblems_list);
         file->emblems_list = NULL;
     }
-    marlin_plugin_manager_update_file_info (plugins, file);
+    if(plugins != NULL) marlin_plugin_manager_update_file_info (plugins, file);
     if(gof_file_is_symlink(file))
     {
         gof_file_add_emblem(file, "emblem-symbolic-link");
