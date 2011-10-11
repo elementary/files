@@ -28,10 +28,9 @@
 #include <gio/gio.h>
 #include <gof-file.h>
 
-GAppInfo *             marlin_mime_get_default_application_for_file     (GOFFile            *file);
-//GList *                marlin_mime_get_applications_for_file            (GOFFile            *file);
-
-GAppInfo *             marlin_mime_get_default_application_for_files    (GList                   *files);
-/*GList *                marlin_mime_get_applications_for_files           (GList                   *file);*/
+GAppInfo *             marlin_mime_get_default_application_for_file     (GOFFile    *file);
+GAppInfo *             marlin_mime_get_default_application_for_files    (GList      *files);
+GList *                marlin_mime_get_applications_for_file            (GOFFile    *file);
+GList *                marlin_mime_get_applications_for_files           (GList      *file);
 
 #endif /* MARLIN_MIME_ACTIONS_H */

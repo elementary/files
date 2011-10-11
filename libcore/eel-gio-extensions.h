@@ -27,5 +27,7 @@ gchar       *eel_g_file_get_location (GFile *file);
 GFile       *eel_g_file_get_trash_original_file (const gchar *string);
 gboolean    eel_g_file_is_trashed (GFile *file);
 GKeyFile    *eel_g_file_query_key_file (GFile *file, GCancellable *cancellable, GError **error);
+GFile       *eel_g_file_ref (GFile *file);
+void        eel_g_file_unref (GFile *file);
 
 #endif /* !__EEL_GIO_EXTENSIONS_H__ */

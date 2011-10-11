@@ -29,6 +29,10 @@
 void        eel_ui_unmerge_ui               (GtkUIManager      *ui_manager,
                                              guint             *merge_id,
                                              GtkActionGroup   **action_group);
+void        eel_ui_prepare_merge_ui         (GtkUIManager       *ui_manager,
+                                             const char         *name,
+                                             guint              *merge_id,
+                                             GtkActionGroup    **action_group);
 const char *eel_ui_string_get               (const char        *filename);
 
 #endif /* EEL_UI_H */

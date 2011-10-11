@@ -42,6 +42,20 @@ eel_ui_unmerge_ui (GtkUIManager *ui_manager,
     }
 }
 
+void
+eel_ui_prepare_merge_ui (GtkUIManager *ui_manager,
+                         const char *name,
+                         guint *merge_id,
+                         GtkActionGroup **action_group)
+{
+	*merge_id = gtk_ui_manager_new_merge_id (ui_manager);
+	*action_group = gtk_action_group_new (name);
+	gtk_action_group_set_translation_domain (*action_group, GETTEXT_PACKAGE);
+	gtk_ui_manager_insert_action_group (ui_manager, *action_group, 0);
+	g_object_unref (*action_group); /* owned by ui manager */
+}
+
+
 const char *
 eel_ui_string_get (const char *filename)
 {
@@ -68,4 +82,6 @@ eel_ui_string_get (const char *filename)
 
     return ui;
 }
+
+
 

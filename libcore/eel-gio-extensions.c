@@ -129,3 +129,26 @@ eel_g_file_query_key_file (GFile *file, GCancellable *cancellable, GError **erro
     }
 }
 
+GFile *
+eel_g_file_ref (GFile *file)
+{
+    if (file == NULL) {
+        return NULL;
+    }
+    g_return_val_if_fail (G_FILE (file), NULL);
+
+    return g_object_ref (file);
+}
+
+void
+eel_g_file_unref (GFile *file)
+{
+    if (file == NULL) {
+        return;
+    }
+
+    g_return_if_fail (G_FILE (file));
+
+    g_object_unref (file);
+}
+

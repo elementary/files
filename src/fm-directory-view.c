@@ -104,6 +104,9 @@ struct FMDirectoryViewDetails
     GtkActionGroup *dir_action_group;
     guint dir_merge_id;
 
+    GtkActionGroup *open_with_action_group;
+    guint open_with_merge_id;
+
     /* right-click drag/popup support */
     GList           *drag_file_list;
     gint            drag_scroll_timer_id;
@@ -404,6 +407,11 @@ fm_directory_view_init (FMDirectoryView *view)
     /* connect to size allocation signals for generating thumbnail requests */
     g_signal_connect_after (G_OBJECT (view), "size-allocate",
                             G_CALLBACK (fm_directory_view_size_allocate), NULL);
+                       
+    view->details->dir_action_group = NULL;
+    view->details->dir_merge_id = 0;
+    view->details->open_with_action_group = NULL;
+    view->details->open_with_merge_id = 0;
 }
 
 static GObject*
@@ -661,8 +669,10 @@ fm_directory_view_preview_selected_items (FMDirectoryView *view)
         screen = eel_gtk_widget_get_screen (GTK_WIDGET (view));
         GdkAppLaunchContext *context = gdk_app_launch_context_new ();
         gdk_app_launch_context_set_screen (context, screen);
-        GAppInfo* previewer_app = g_app_info_create_from_commandline(view->details->previewer, NULL, 0, NULL);
-        g_app_info_launch(previewer_app, file_list, G_APP_LAUNCH_CONTEXT (context), NULL);
+        GAppInfo* previewer_app = g_app_info_create_from_commandline (view->details->previewer, NULL, 0, NULL);
+        //FIXME
+        if (!g_app_info_launch (previewer_app, file_list, G_APP_LAUNCH_CONTEXT (context), NULL))
+            g_critical ("no previewer !!!!!!!!!!");
 
         g_list_free (file_list);
         g_object_unref (context);
@@ -1466,7 +1476,6 @@ fm_directory_view_drag_timer (gpointer user_data)
     GDK_THREADS_ENTER ();
     //thunar_standard_view_context_menu (standard_view, 3, gtk_get_current_event_time ());
     //fm_directory_view_context_menu (view, 3, gtk_get_current_event_time ());
-    //fm_directory_view_context_menu (view, 3, (GdkEventButton *) gtk_get_current_event ());
     fm_directory_view_context_menu (view, 3, (GdkEventButton *) gtk_get_current_event ());
     printf ("fire up the context menu 3\n");
     GDK_THREADS_LEAVE ();
@@ -1578,17 +1587,179 @@ update_menus_empty_selection (FMDirectoryView *view)
         dir_action_set_visible (view, "New Folder", FALSE);
     else
         dir_action_set_visible (view, "New Folder", TRUE);
+}
 
+typedef struct {
+    GAppInfo *application;
+    GList *files;
+    GtkWidget *widget;
+} ApplicationLaunchParameters;
+
+static ApplicationLaunchParameters *
+application_launch_parameters_new (GAppInfo *application,
+                                   GList *files,
+                                   FMDirectoryView *view)
+{
+    ApplicationLaunchParameters *result;
+
+    result = g_new0 (ApplicationLaunchParameters, 1);
+    result->application = g_object_ref (application);
+    result->files = gof_file_list_copy (files);
+
+    if (view != NULL) {
+        g_object_ref (view);
+        result->widget = GTK_WIDGET (view);
+    }
+
+    return result;
+}
+
+static void
+application_launch_parameters_free (ApplicationLaunchParameters *parameters)
+{
+    g_object_unref (parameters->application);
+    g_list_free_full (parameters->files, (GDestroyNotify) gof_file_unref);
+
+    if (parameters->widget != NULL) {
+        g_object_unref (parameters->widget);
+    }
+
+    g_free (parameters);
+}
+
+static void
+open_with_launch_application_callback (GtkAction *action, gpointer callback_data)
+{
+    ApplicationLaunchParameters *launch_parameters;
+
+    launch_parameters = (ApplicationLaunchParameters *) callback_data;
+    gof_files_launch_with (launch_parameters->files,
+                           eel_gtk_widget_get_screen (launch_parameters->widget),
+                           launch_parameters->application);
+}
+
+static void
+add_application_to_open_with_menu (FMDirectoryView *view,
+                                   GAppInfo *application, 
+                                   GList *files,
+                                   int index,
+                                   const char *menu_placeholder,
+                                   const char *popup_placeholder)
+{
+    ApplicationLaunchParameters *launch_parameters;
+    char *tip;
+    char *label;
+    char *action_name;
+    char *escaped_app;
+    char *path;
+    GtkAction       *action;
+    GIcon           *app_icon;
+    GtkWidget       *menuitem;
+    GtkUIManager    *ui_manager;
+
+    ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
+    launch_parameters = application_launch_parameters_new (application, files, view);
+    escaped_app = eel_str_double_underscores (g_app_info_get_display_name (application));
+    label = g_strdup_printf ("%s", escaped_app);
+
+    tip = g_strdup_printf (ngettext ("Use \"%s\" to open the selected item",
+                                     "Use \"%s\" to open the selected items",
+                                     g_list_length (files)),
+                           escaped_app);
+    g_free (escaped_app);
+
+    action_name = g_strdup_printf ("open_with_%d", index);
+
+    action = gtk_action_new (action_name, label, tip, NULL);
+
+    app_icon = g_app_info_get_icon (application);
+    if (app_icon != NULL) {
+        g_object_ref (app_icon);
+    } else {
+        app_icon = g_themed_icon_new ("application-x-executable");
+    }
+
+    gtk_action_set_gicon (action, app_icon);
+    g_object_unref (app_icon);
+
+    g_signal_connect_data (action, "activate",
+                           G_CALLBACK (open_with_launch_application_callback),
+                           launch_parameters, 
+                           (GClosureNotify)application_launch_parameters_free, 0);
+
+    gtk_action_group_add_action (view->details->open_with_action_group,
+                                 action);
+    g_object_unref (action);
+
+    gtk_ui_manager_add_ui (ui_manager,
+                           view->details->open_with_merge_id,
+                           menu_placeholder,
+                           action_name,
+                           action_name,
+                           GTK_UI_MANAGER_MENUITEM,
+                           FALSE);
+
+    path = g_strdup_printf ("%s/%s", menu_placeholder, action_name);
+    menuitem = gtk_ui_manager_get_widget (ui_manager, path);
+    gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (menuitem), TRUE);
+    g_free (path);
+
+    gtk_ui_manager_add_ui (ui_manager,
+                           view->details->open_with_merge_id,
+                           popup_placeholder,
+                           action_name,
+                           action_name,
+                           GTK_UI_MANAGER_MENUITEM,
+                           FALSE);
+
+    path = g_strdup_printf ("%s/%s", popup_placeholder, action_name);
+    menuitem = gtk_ui_manager_get_widget (ui_manager, path);
+    gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (menuitem), TRUE);
+    g_free (path);
+
+    g_free (action_name);
+    g_free (label);
+    g_free (tip);
+}
+
+static GList*
+filter_default_app (GList *apps, GAppInfo *default_app)
+{
+    GList *l;
+    GAppInfo *app;
+    const char *id1, *id2;
+
+    id2 = g_app_info_get_id (default_app);
+    for (l=apps; l != NULL; l=l->next) {
+        app = (GAppInfo *) l->data;
+        id1 = g_app_info_get_id (app);
+        if (id1 != NULL && id2 != NULL 
+            && strcmp (id1, id2) == 0) 
+        {
+			g_object_unref (app);
+            apps = g_list_delete_link (apps, l); 
+        }
+    }
+
+    return apps;
 }
 
 static void
 update_menus_selection (FMDirectoryView *view)
 {
-    GList       *selection;
-    guint       selection_count;
-    GOFFile     *file;
+    GList           *selection;
+    guint           selection_count;
+    GOFFile         *file;
+    GtkUIManager    *ui_manager;
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
+    ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
+    eel_ui_prepare_merge_ui (ui_manager,
+                             "OpenWithGroup",
+                             &view->details->open_with_merge_id,
+                             &view->details->open_with_action_group);
+
     selection = fm_directory_view_get_selection (view);
     selection_count = g_list_length (selection);
     file = GOF_FILE (selection->data);
@@ -1626,33 +1797,29 @@ update_menus_selection (FMDirectoryView *view)
 
     /* Open default */
     GtkAction *action;
-    GAppInfo *app = NULL;
+    GAppInfo *default_app = NULL;
     GIcon *app_icon = NULL;
-    char *label_with_underscore = NULL;
+    char *mnemonic = NULL;
     GtkWidget *menuitem;
 
     action = gtk_action_group_get_action (view->details->dir_action_group, "Open");
-    app = marlin_mime_get_default_application_for_files (selection);
-    if (app != NULL) {
+    default_app = marlin_mime_get_default_application_for_files (selection);
+    if (default_app != NULL) {
         char *escaped_app;
 
-        escaped_app = eel_str_double_underscores (g_app_info_get_display_name (app));
-        label_with_underscore = g_strdup_printf (_("_Open With %s"), escaped_app);
-        app_icon = g_app_info_get_icon (app);
+        escaped_app = eel_str_double_underscores (g_app_info_get_display_name (default_app));
+        mnemonic = g_strdup_printf (_("_Open With %s"), escaped_app);
+        app_icon = g_app_info_get_icon (default_app);
         if (app_icon != NULL) {
             g_object_ref (app_icon);
         }
 
         g_free (escaped_app);
-        g_object_unref (app);
     }
 
-    g_object_set (action, "label", 
-                  label_with_underscore ? label_with_underscore : _("_Open"), NULL);
+    g_object_set (action, "label", mnemonic ? mnemonic : _("_Open"), NULL);
 
-    menuitem = gtk_ui_manager_get_widget (
-                                          MARLIN_VIEW_WINDOW (view->details->window)->ui,
-                                          "/selection/Open");
+    menuitem = gtk_ui_manager_get_widget (ui_manager, "/selection/Open Placeholder/Open");
 
     /* Only force displaying the icon if it is an application icon */
     gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (menuitem), app_icon != NULL);
@@ -1664,27 +1831,47 @@ update_menus_selection (FMDirectoryView *view)
     gtk_action_set_gicon (action, app_icon);
     g_object_unref (app_icon);
 
-    g_free (label_with_underscore);
+    g_free (mnemonic);
 
     /* OpenInNewTab label update */
-    if (selection_count > 1) {
-        label_with_underscore = g_strdup_printf (_("Open in %'d New _Tabs"),
-                                                 selection_count);
-        action = gtk_action_group_get_action (view->details->dir_action_group, "OpenInNewTab");
-        g_object_set (action, "label", label_with_underscore, NULL);
-        g_free (label_with_underscore);
-    }
+    if (selection_count > 1)
+        mnemonic = g_strdup_printf (_("Open in %'d New _Tabs"), selection_count);
+    else
+        mnemonic = NULL;
+    action = gtk_action_group_get_action (view->details->dir_action_group, "OpenInNewTab");
+    g_object_set (action, "label", mnemonic ? mnemonic : _("Open in New _Tab"), NULL);
+    g_free (mnemonic);
 
     /* OpenAlternate label update */
-    if (selection_count > 1) {
-        label_with_underscore = g_strdup_printf (_("Open in %'d New _Windows"),
-                                                 selection_count);
-        action = gtk_action_group_get_action (view->details->dir_action_group, "OpenAlternate");
-        g_object_set (action, "label", label_with_underscore, NULL);
-        g_free (label_with_underscore);
+    if (selection_count > 1) 
+        mnemonic = g_strdup_printf (_("Open in %'d New _Windows"), selection_count);
+    else
+        mnemonic = NULL;
+    action = gtk_action_group_get_action (view->details->dir_action_group, "OpenAlternate");
+    g_object_set (action, "label", mnemonic ? mnemonic : _("Open in New _Window"), NULL);
+    g_free (mnemonic);
+
+    /* Open With */
+    GList *apps, *l;
+    int index;
+    const char *menu_path = "/MenuBar/File/Open Placeholder/Open With/Applications Placeholder";
+    const char *popup_path = "/selection/Open Placeholder/Open With/Applications Placeholder";
+
+    apps = marlin_mime_get_applications_for_files (selection);
+    /* we need to remove the default app from open with menu */
+    apps = filter_default_app (apps, default_app);
+    for (l = apps, index=0; l != NULL && index <4; l=l->next, index++) {
+        add_application_to_open_with_menu (view, 
+                                           l->data, 
+                                           selection,
+                                           index,
+                                           menu_path, popup_path);
     }
-
-
+    g_list_free_full (apps, g_object_unref);
+    _g_object_unref0 (default_app);
+    
+    if (selection_count == 1)
+        dir_action_set_visible (view, "OtherApplication", TRUE);
 }
 
 static gboolean
@@ -1768,7 +1955,7 @@ fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event)
         view_box = gtk_bin_get_child (GTK_BIN (view));
 
         /* we use the menu popup delay here, which should give us good values */
-        settings = gtk_settings_get_for_screen (gtk_widget_get_screen (view_box));
+        settings = gtk_settings_get_for_screen (eel_gtk_widget_get_screen (view_box));
         g_object_get (G_OBJECT (settings), "gtk-menu-popup-delay", &delay, NULL);
 
         /* schedule the timer */
@@ -1785,46 +1972,20 @@ fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event)
     }
 }
 
-static void on_menuitem_openwith_activate(GtkMenuItem *item, GOFFile *file)
-{
-    g_return_if_fail(GOF_IS_FILE (file));
-
-    gof_file_launch_with (file, gtk_widget_get_screen(GTK_WIDGET (item)), g_object_get_data(G_OBJECT (item), "next_app_info"));
-}
-
-static void on_menuitem_openwith_other_activate (GtkMenuItem *item, GOFFile *file)
-{
-    GtkDialog *dialog = gtk_app_chooser_dialog_new (NULL, 0, file->location);
-    GtkWidget *check_default = gtk_check_button_new_with_label(_("Set as default"));
-    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (dialog)), check_default, FALSE, FALSE, 0);
-    gtk_widget_show_all (GTK_WIDGET (dialog));
-    int response = gtk_dialog_run (dialog);
-    if(response == GTK_RESPONSE_OK)
-    {
-        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check_default)))
-        {
-            GError* error = NULL;
-            if(!g_app_info_set_as_default_for_type (gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (dialog)), file->ftype, &error))
-            {
-                g_critical("Couldn't set as default: %s", error->message);
-            }
-        }
-        gof_file_launch_with(file, gtk_widget_get_screen (GTK_WIDGET (item)), gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (dialog)));
-    }
-    gtk_widget_destroy (GTK_WIDGET (dialog));
-}
-
 void
 fm_directory_view_context_menu (FMDirectoryView *view,
                                 guint           button,
                                 GdkEventButton  *event)
 //int32         timestamp)
 {
-    GtkWidget   *menu;
-    GList       *selection;
-    GList       *openwith_items = NULL;
+    GtkWidget       *menu;
+    GList           *selection, *l;
+    GList           *openwith_items = NULL;
+    GtkUIManager    *ui_manager;
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
+    ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
     selection = fm_directory_view_get_selection (view);
 
     /* grab an additional reference on the view */
@@ -1833,58 +1994,8 @@ fm_directory_view_context_menu (FMDirectoryView *view,
     /* run the menu on the view's screen (figuring out whether to use the file or the folder context menu) */
     menu = (selection != NULL) ? view->details->menu_selection : view->details->menu_background;
 
-    /* Clear the list and empty the menu */
-    gpointer old_menuitems = g_object_get_data(G_OBJECT (view->details->menu_selection), "other_selection");
-    g_list_free_full (old_menuitems, (GDestroyNotify) gtk_widget_destroy); 
-    g_object_set_data (G_OBJECT (view->details->menu_selection), "other_selection", NULL); 
-
-
-
-    //if (selection != NULL && g_list_length(selection) == 1)
-    if (selection != NULL && selection->next == NULL)
-    {
-        GtkWidget *item;
-
-        GList* apps = g_app_info_get_all_for_type (GOF_FILE(selection->data)->ftype);
-        int i = 0;
-        for(; i < 5 && apps != NULL; i++) /* a maximum of 5 is enough */
-        {
-            /* add a separator between applications and actions if we got 1 element */
-            if (i == 0) {
-                item = gtk_separator_menu_item_new ();
-                gtk_menu_shell_append(GTK_MENU_SHELL (menu), item);
-                gtk_widget_show (item);
-                openwith_items = g_list_append(openwith_items, item);
-            }
-
-            item = gtk_menu_item_new_with_label (g_app_info_get_name(G_APP_INFO(apps->data)));
-            g_object_set_data (G_OBJECT (item), "next_app_info", apps->data);
-            g_signal_connect (item, "activate", (GCallback) on_menuitem_openwith_activate, selection->data);
-
-            gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-            gtk_widget_show (item);
-            openwith_items = g_list_append (openwith_items, item);
-            apps = g_list_next (apps);
-        }
-        item = gtk_separator_menu_item_new ();
-        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-        gtk_widget_show (item);
-        openwith_items = g_list_append (openwith_items, item);
-
-        item = gtk_menu_item_new_with_label (_("Open with…"));
-        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-        gtk_widget_show (item);
-        openwith_items = g_list_append(openwith_items, item);
-
-        g_signal_connect(item, "activate", (GCallback) on_menuitem_openwith_other_activate, selection->data);
-
-        /* save the menuitems list, we'll destroy them at the next popup */
-        g_object_set_data(G_OBJECT (view->details->menu_selection), "other_selection", openwith_items);
-    }
-
     marlin_plugin_manager_hook_context_menu(plugins, menu);
-    gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (view)));
-    //gtk_widget_show_all(menu);
+    gtk_menu_set_screen (GTK_MENU (menu), eel_gtk_widget_get_screen (GTK_WIDGET (view)));
 
     eel_pop_up_context_menu (GTK_MENU (menu),
                              EEL_DEFAULT_POPUP_MENU_DISPLACEMENT,
@@ -2387,8 +2498,8 @@ real_delete (FMDirectoryView *view)
 
 static void
 fm_directory_view_get_property (GObject         *object,
-                                guint            prop_id,
-                                const GValue    *value,
+                                guint           prop_id,
+                                GValue          *value,
                                 GParamSpec      *pspec)
 {
     switch (prop_id)
@@ -2400,7 +2511,7 @@ fm_directory_view_get_property (GObject         *object,
 }
 static void
 fm_directory_view_set_property (GObject         *object,
-                                guint            prop_id,
+                                guint           prop_id,
                                 const GValue    *value,
                                 GParamSpec      *pspec)
 {
@@ -2547,6 +2658,12 @@ update_menus (FMDirectoryView *view)
 {
     g_debug ("%s", G_STRFUNC);
     GList *selection = fm_directory_view_get_selection (view);
+    GtkUIManager *ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
+
+    eel_ui_unmerge_ui (ui_manager,
+                       &view->details->open_with_merge_id,
+                       &view->details->open_with_action_group);
+    dir_action_set_visible (view, "OtherApplication", FALSE);
 
     if (selection != NULL) {
         update_menus_selection (view);
@@ -2828,6 +2945,51 @@ action_open_callback (GtkAction *action, FMDirectoryView *view)
 }
 
 static void
+action_other_application_callback (GtkAction *action, FMDirectoryView *view)
+{
+    GList *selection;
+    GtkWidget *dialog;
+    GAppInfo *app;
+    GOFFile *file;
+
+    g_assert (FM_IS_DIRECTORY_VIEW (view));
+
+    selection = fm_directory_view_get_selection (view);
+
+    g_assert (selection != NULL);
+
+    file = GOF_FILE (selection->data);
+	gof_file_ref (file);
+
+	dialog = gtk_app_chooser_dialog_new (GTK_WINDOW (view->details->window), 0, file->location);
+    GtkWidget *check_default = gtk_check_button_new_with_label(_("Set as default"));
+    gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), check_default, FALSE, FALSE, 0);
+	gtk_widget_show_all (dialog);
+
+    int response = gtk_dialog_run (GTK_DIALOG (dialog));
+    if(response == GTK_RESPONSE_OK)
+    {
+	    app = gtk_app_chooser_get_app_info (GTK_APP_CHOOSER (GTK_DIALOG (dialog)));
+        if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check_default)))
+        {
+            GError* error = NULL;
+            if(!g_app_info_set_as_default_for_type (app, file->ftype, &error))
+            {
+                g_critical("Couldn't set as default: %s", error->message);
+                g_clear_error (&error);
+            }
+        }
+        
+        gof_files_launch_with (selection,
+                               eel_gtk_widget_get_screen (GTK_WIDGET (view)),
+                               app);
+    }
+
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+	gof_file_unref (file);
+}
+
+static void
 action_properties_callback (GtkAction *action, gpointer data)
 {
     //TODO
@@ -2896,6 +3058,12 @@ static const GtkActionEntry directory_view_entries[] = {
         /* label, accelerator */       N_("Open in New _Tab"), "<control>o",
         /* tooltip */                  N_("Open each selected item in a new tab"),
         G_CALLBACK (action_open_new_tab_callback) },
+    /* name, stock id, label */  { "Open With", NULL, N_("Open Wit_h"),
+        NULL, N_("Choose a program with which to open the selected item") },
+    /* name, stock id */         { "OtherApplication", NULL,
+        /* label, accelerator */       N_("Other _Application..."), NULL,
+        /* tooltip */                  N_("Choose another application with which to open the selected item"),
+        G_CALLBACK (action_other_application_callback) },
     /* name, stock id */         { "Trash", NULL,
         /* label, accelerator */       N_("Mo_ve to Trash"), NULL,
         /* tooltip */                  N_("Move each selected item to the Trash"),
@@ -2936,6 +3104,9 @@ fm_directory_view_real_unmerge_menus (FMDirectoryView *view)
                        &view->details->dir_action_group);
     if (view->details->dir_action_group != NULL)
         g_object_unref (view->details->dir_action_group);
+    eel_ui_unmerge_ui (ui_manager,
+                       &view->details->open_with_merge_id,
+                       &view->details->open_with_action_group);
 
     /*eel_ui_unmerge_ui (ui_manager,
       &view->details->extensions_menu_merge_id,

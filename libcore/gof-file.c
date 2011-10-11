@@ -64,6 +64,7 @@ enum {
 static guint    signals[LAST_SIGNAL];
 static guint32  effective_user_id;
 
+
 static GIcon *
 get_icon_user_special_dirs(char *path)
 {
@@ -735,6 +736,24 @@ gof_file_unref (GOFFile *file)
     g_return_if_fail (GOF_IS_FILE (file));
 
     g_object_unref (file);
+}
+
+GList *
+gof_files_get_location_list (GList *files)
+{
+    GList *gfile_list = NULL;
+    GList *l;
+    GOFFile *file;
+
+    for (l=files; l != NULL; l=l->next) {
+        file = (GOFFile *) l->data;
+        if (file != NULL && file->location != NULL) {
+            gfile_list = g_list_prepend (gfile_list, eel_g_file_ref (file->location));
+        }
+    } 
+    //gfile_list = g_list_reverse (gfile_list);
+
+    return (gfile_list);
 }
 
 static const char *TODAY_TIME_FORMATS [] = {
@@ -1688,6 +1707,31 @@ gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info)
     return succeed;
 }
 
+gboolean
+gof_files_launch_with (GList *files, GdkScreen *screen, GAppInfo* app_info)
+{
+    GdkAppLaunchContext *context;
+    gboolean             succeed;
+    GList               *gfiles;
+    GError              *error = NULL;
+
+    g_return_val_if_fail (files != NULL, FALSE);
+    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
+
+    context = gdk_app_launch_context_new ();
+    gdk_app_launch_context_set_screen (context, screen);
+
+    gfiles = gof_files_get_location_list (files);
+
+    succeed = g_app_info_launch (app_info, gfiles, G_APP_LAUNCH_CONTEXT (context), &error);
+    print_error (error);
+
+    g_list_free_full (gfiles, (GDestroyNotify) eel_g_file_unref);
+    g_object_unref (context);
+
+    return succeed;
+}
+
 void
 gof_file_open_single (GOFFile *file, GdkScreen *screen)
 {
@@ -1700,6 +1744,20 @@ gof_file_list_free (GList *list)
     g_list_foreach (list, (GFunc) gof_file_unref, NULL);
     g_list_free (list);
 }
+
+GList *
+gof_file_list_ref (GList *list)
+{
+	g_list_foreach (list, (GFunc) gof_file_ref, NULL);
+	return list;
+}
+
+GList *
+gof_file_list_copy (GList *list)
+{
+	return g_list_copy (gof_file_list_ref (list));
+}
+
 
 /* TODO move this mini job to marlin-file-operations? */
 GOFFileOperation *

@@ -170,9 +170,12 @@ int             gof_file_compare_for_sort (GOFFile *file_1,
                                            gboolean reversed);
 GOFFile*        gof_file_ref (GOFFile *file);
 void            gof_file_unref (GOFFile *file);
+GList           *gof_file_get_location_list (GList *files);
 char *          gof_file_get_date_as_string (guint64 d);
 
 void            gof_file_list_free (GList *list);
+GList           *gof_file_list_ref (GList *list);
+GList           *gof_file_list_copy (GList *list);
 NautilusIconInfo    *gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags);
 GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileIconFlags flags);
 gboolean        gof_file_is_writable (GOFFile *file);
@@ -189,6 +192,7 @@ GdkDragAction   gof_file_accepts_drop (GOFFile          *file,
                                        GdkDragAction    *suggested_action_return);
 void            gof_file_open_single (GOFFile *file, GdkScreen *screen);
 gboolean        gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info);
+gboolean        gof_files_launch_with (GList *files, GdkScreen *screen, GAppInfo* app_info);
 gboolean        gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error);
 gboolean        gof_file_launch (GOFFile  *file, GdkScreen *screen);
 GAppInfo        *gof_file_get_default_handler (const GOFFile *file);
