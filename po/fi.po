@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-20 13:48+0000\n"
-"Last-Translator: Erkka Juhaninmäki <Unknown>\n"
+"PO-Revision-Date: 2011-10-10 14:07+0000\n"
+"Last-Translator: Teemu Kielinen <teemu.kielinen@gmail.com>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-09-21 05:22+0000\n"
-"X-Generator: Launchpad (build 13996)\n"
+"X-Launchpad-Export-Date: 2011-10-11 05:44+0000\n"
+"X-Generator: Launchpad (build 14123)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -82,6 +82,7 @@ msgstr ""
 "  Erkka Juhaninmäki https://launchpad.net/~3rp3\n"
 "  Jiri Grönroos https://launchpad.net/~jiri-gronroos\n"
 "  Petri Hämäläinen https://launchpad.net/~petri-hamalainen\n"
+"  Teemu Kielinen https://launchpad.net/~teemu-kielinen\n"
 "  sampo555 https://launchpad.net/~sampo555\n"
 "  xapantu https://launchpad.net/~xapantu"
 
@@ -95,7 +96,7 @@ msgstr "Avaa kertanapsautuksella:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:59
 msgid "Mouse auto-selection speed:"
-msgstr ""
+msgstr "Hiiren automaattisen valinnan nopeus:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:72
 msgid "Behavior"
@@ -123,15 +124,15 @@ msgstr "Sivupalkin kuvakkeiden koko:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:115
 msgid "locale"
-msgstr ""
+msgstr "paikka-asetukset"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:116
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:117
 msgid "informal"
-msgstr ""
+msgstr "vapaamuotoinen"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:136
 msgid "Date format:"
@@ -139,7 +140,7 @@ msgstr "Päivämäärän muoto:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:151
 msgid "Show applications names in the context pane:"
-msgstr "Näytä sovellusten nimet"
+msgstr "Näytä sovellusten nimet viitekehyksessä:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:159
 msgid "Display"
@@ -206,11 +207,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:699
 msgid "Pixbuf column"
-msgstr ""
+msgstr "Pixbuf-sarake"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
-msgstr ""
+msgstr "Mallisarake, josta noudetaan kuvakkeen pixbuf"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
@@ -218,15 +219,15 @@ msgstr "Tekstisarake"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
-msgstr ""
+msgstr "Mallisarake, josta noudetaan teksti"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:737
 msgid "Markup column"
-msgstr ""
+msgstr "Merkintäsarake"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:738
 msgid "Model column used to retrieve the text if using Pango markup"
-msgstr ""
+msgstr "Mallisarake, josta noudetaan teksti Pango-merkintöjä käytettäessä"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:745
 msgid "Icon View Model"
@@ -250,15 +251,15 @@ msgstr "Kohteiden leveys"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr ""
+msgstr "Jokaiselle kohteelle käytettävä leveys"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
-msgstr ""
+msgstr "Välistys"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:797
 msgid "Space which is inserted between cells of an item"
-msgstr ""
+msgstr "Tila, joka lisätään kohteiden solujen väliin"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
@@ -266,7 +267,7 @@ msgstr "Riviväli"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
-msgstr ""
+msgstr "Ruudukon rivien välinen tyhjä tila"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
@@ -274,7 +275,7 @@ msgstr "Sarakeväli"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
-msgstr ""
+msgstr "Ristikon sarakkeiden välinen jätettävä tila"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:844
 msgid "Margin"
@@ -286,7 +287,7 @@ msgstr "Tila, joka lisätään kuvakenäkymän reunoihin"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
-msgstr ""
+msgstr "Kohteen suunta"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:861
 msgid ""
@@ -303,19 +304,19 @@ msgstr "Näkymä on uudelleenjärjesteltävä"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:885
 msgid "Enable Search"
-msgstr ""
+msgstr "Salli haku"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:886
 msgid "View allows user to search through columns interactively"
-msgstr ""
+msgstr "Näkymä sallii käyttäjän hakea sarakkeista vuorovaikutteisesti"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:893
 msgid "Search Column"
-msgstr ""
+msgstr "Hakusarake"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:894
 msgid "Model column to search through during interactive search"
-msgstr ""
+msgstr "Mallisarake, josta etsitään vuorovaikutteisen haun aikana"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
@@ -327,15 +328,15 @@ msgstr "Mallin sarake, joka sisältää kohtien vinkkitekstit"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:921
 msgid "Item Padding"
-msgstr ""
+msgstr "Kohteen täyte"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:922
 msgid "Padding around icon view items"
-msgstr ""
+msgstr "Täyte kuvakenäkymäkohteiden ympärillä"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:939
 msgid "Cell Area"
-msgstr ""
+msgstr "Solun alue"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:940
 msgid "The GtkCellArea used to layout cells"
@@ -351,7 +352,7 @@ msgstr "Valintalaatikon väri"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:960
 msgid "Selection Box Alpha"
-msgstr ""
+msgstr "Valintalaatikon alfa"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:961
 msgid "Opacity of the selection box"
@@ -371,11 +372,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
-msgstr ""
+msgstr "Saatavilla olevat kohteet"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:502
 msgid "Displayed Items"
-msgstr ""
+msgstr "Näytetyt kohteet"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1093
 msgid "Invalid filename provided by XDS drag site"
@@ -437,11 +438,11 @@ msgstr "Teksti"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:344
 msgid "The text of the label."
-msgstr ""
+msgstr "Nimiön teksti."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:350
 msgid "Justification"
-msgstr ""
+msgstr "Tasaus"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:351
 msgid ""
@@ -449,6 +450,8 @@ msgid ""
 "This does NOT affect the alignment of the label within its allocation. See "
 "GtkMisc::xalign for that."
 msgstr ""
+"Nimiön tekstirivien tasaus toisiinsa nähden. Tämä EI vaikuta nimiön "
+"tasaukseen sen alueen sisällä. (Kts. GtkMisc::xalign)"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:359
 msgid "Line wrap"
@@ -472,7 +475,7 @@ msgstr "Kohdistimen sijainti"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:376
 msgid "The current position of the insertion cursor in chars."
-msgstr ""
+msgstr "Syöttökohdistimen nykyinen sijainti merkkeinä."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:385
 msgid "Selection Bound"
@@ -481,7 +484,7 @@ msgstr "Valinnan raja"
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:386
 msgid ""
 "The position of the opposite end of the selection from the cursor in chars."
-msgstr ""
+msgstr "Valinnan vastakkaisen pään sijainti merkkeinä kohdistimesta lukien."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:3187
 msgid "Select All"
@@ -604,12 +607,12 @@ msgstr "Asemaa %s ei voi käynnistää"
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2035
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "Asemaa %s ei voi avata"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2180
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "Asemaa %s ei voida tarkkailla mediamuutosten varalta"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2290
 #, c-format
@@ -646,7 +649,7 @@ msgstr "_Irrota"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2441
 msgid "_Eject"
-msgstr ""
+msgstr "_Avaa asema"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2477
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1422
@@ -687,6 +690,8 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Tuettujen yhdistämismenetelmien luetteloa ei voida ladata.\n"
+"Tarkista gvfs -asennus."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
@@ -1025,11 +1030,11 @@ msgstr "Poistetaan tiedostoja"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2126
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "Asemaa %V ei voi avata"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2128
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "Osiota %V ei voi irrottaa"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2283
 msgid "Do you want to empty the trash before you unmount?"
@@ -1040,6 +1045,8 @@ msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"Jotta vapaa tila laitteella oikeasti vapautuisi, sen roskakori täytyy "
+"tyhjentää. Kaikki taltion roskakorissa olevat tiedostot poistetaan pysyvästi."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2291
 msgid "Do _not Empty Trash"
@@ -1052,7 +1059,7 @@ msgstr "Tyhjennetään roskakoria"
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2413
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "Kohdetta %s ei voi liittää"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2491
 #, c-format
@@ -1171,7 +1178,7 @@ msgstr "Kopioidaan ”%B” kohteeseen ”%B”."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3003
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "Kahdennetaan \"%B\""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3007
 msgid "Moving %'d file (in \"%B\") to \"%B\""
