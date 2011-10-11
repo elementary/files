@@ -1859,7 +1859,8 @@ update_menus_selection (FMDirectoryView *view)
 
     apps = marlin_mime_get_applications_for_files (selection);
     /* we need to remove the default app from open with menu */
-    apps = filter_default_app (apps, default_app);
+    if (default_app != NULL)
+        apps = filter_default_app (apps, default_app);
     for (l = apps, index=0; l != NULL && index <4; l=l->next, index++) {
         add_application_to_open_with_menu (view, 
                                            l->data, 
