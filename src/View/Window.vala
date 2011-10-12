@@ -42,8 +42,8 @@ namespace Marlin.View {
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
 
-        public ToolButtonWithMenu button_forward;
-        public ToolButtonWithMenu button_back;
+        public Granite.Widgets.ToolButtonWithMenu button_forward;
+        public Granite.Widgets.ToolButtonWithMenu button_back;
 
         private const int horizontal_contextplane_max_width = 910;
         private const int horizontal_contextplane_max_height = 380; // after which we will go vertical
