@@ -497,25 +497,18 @@ namespace Marlin.View {
         }
 
         protected void show_about() {
-            Gdk.Pixbuf logo = null;
-            try {
-                logo = IconTheme.get_default ().load_icon ("marlin", 64, 0);
-            } catch (Error err) {
-                stderr.printf ("Unable to load marlin icon: %s", err.message);
-            }
-            Gtk.show_about_dialog(this,
+            Granite.Widgets.show_about_dialog (this,
                 "program-name", Marlin.APP_TITLE,
                 "version", Config.VERSION,
                 "comments", Marlin.COMMENTS,
                 "copyright", Marlin.COPYRIGHT,
-                "license", Marlin.LICENSE,
+                "license-type", Gtk.License.GPL_3_0,
                 "website", Marlin.ELEMENTARY_URL,
                 "website-label",  Marlin.ELEMENTARY_LABEL,
                 "authors", Marlin.AUTHORS,
                 "artists", Marlin.ARTISTS,
-                "logo", logo,
-                "translator-credits", _("translator-credits"),
-                null);
+                "logo-icon-name", "marlin",
+                "translator-credits", _("translator-credits"));
         }
         
         void show_report() {

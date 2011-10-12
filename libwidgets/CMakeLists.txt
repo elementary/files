@@ -38,7 +38,6 @@ AppMenu.vala
 ModeButton.vala
 CollapsablePaned.vala
 ImgEventBox.vala
-StaticNotebook.vala
 LocationBar.vala
 BreadcrumbsElements.vala
 BreadcrumbsEntry.vala

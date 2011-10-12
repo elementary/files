@@ -69,7 +69,7 @@ namespace Marlin.View
             first_vbox.pack_start(hbox_single_click, false);
             
             
-            mai_notebook.append_page(first_vbox, _("Behavior"));
+            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Behavior")));
 
             first_vbox = new Gtk.VBox(false, 3);
             first_vbox.border_width = 5;
@@ -140,7 +140,7 @@ namespace Marlin.View
             
             first_vbox.pack_start(hbox_single_click, false);
 
-            mai_notebook.append_page(first_vbox, _("Display"));
+            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Display")));
 
             first_vbox = new Gtk.VBox(false, 3);
             first_vbox.border_width = 5;
@@ -189,7 +189,7 @@ namespace Marlin.View
 
             first_vbox.pack_start(view);
 
-            mai_notebook.append_page(first_vbox, _("Plugins"));
+            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Plugins")));
             /*mai_notebook.set_margin_left(6);
             mai_notebook.set_margin_right(6);
             mai_notebook.set_margin_top(6);
