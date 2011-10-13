@@ -508,7 +508,10 @@ namespace Marlin.View {
                 "authors", Marlin.AUTHORS,
                 "artists", Marlin.ARTISTS,
                 "logo-icon-name", "marlin",
-                "translator-credits", _("translator-credits"));
+                "translator-credits", _("translator-credits"),
+                "help", Marlin.HELP_URL,
+                "translate", Marlin.TRANSLATE_URL,
+                "bug", Marlin.BUG_URL);
         }
         
         void show_report() {
