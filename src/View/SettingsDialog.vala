@@ -38,14 +38,13 @@ namespace Marlin.View
 
 
             /* Single click */
-            var hbox_single_click = new Gtk.HBox(false, 0);
             var checkbox = new Gtk.Switch();
 
             Preferences.settings.bind("single-click", checkbox , "active", SettingsBindFlags.DEFAULT);
 
+            var hbox_single_click = new Gtk.HBox(false, 0);
             var label = new Gtk.Label(_("Single click to open:"));
             label.set_alignment(0, 0.5f);
-
             hbox_single_click.pack_start(label);
             hbox_single_click.pack_start(checkbox, false, false);
 
@@ -55,10 +54,8 @@ namespace Marlin.View
             var spi_click_speed = new Gtk.HScale.with_range(0, 1000, 1);
 
             hbox_single_click = new Gtk.HBox(false, 0);
-
             label = new Gtk.Label(_("Mouse auto-selection speed:"));
             label.set_alignment(0, 0.5f);
-
             hbox_single_click.pack_start(label);
             hbox_single_click.pack_start(spi_click_speed, true, true);
 
@@ -68,7 +65,18 @@ namespace Marlin.View
             
             first_vbox.pack_start(hbox_single_click, false);
             
+            hbox_single_click = new Gtk.HBox(false, 0);
+            label = new Gtk.Label(_("Default File Manager:"));
+            label.set_alignment(0, 0.5f);
+            hbox_single_click.pack_start(label);
+            var make_default_btn = new Gtk.Button.with_label (_("make Marlin my default File Manager"));
+            make_default_btn.set_sensitive (!is_marlin_mydefault_fm ());
+            hbox_single_click.pack_start(make_default_btn, false, false);
+        
+            make_default_btn.clicked.connect (make_marlin_default_fm);
             
+            first_vbox.pack_start(hbox_single_click, false);
+                        
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Behavior")));
 
             first_vbox = new Gtk.VBox(false, 3);
@@ -275,6 +283,32 @@ namespace Marlin.View
             case Gtk.ResponseType.DELETE_EVENT:
                 destroy();
                 break;
+            }
+        }
+            
+        private bool is_marlin_mydefault_fm ()
+        {
+            bool trash_uri_is_default = false;
+            bool foldertype_is_default = "marlin.desktop" == AppInfo.get_default_for_type("inode/directory", false).get_id();
+            AppInfo? app_trash_handler = AppInfo.get_default_for_type("x-scheme-handler/trash", true);
+            if (app_trash_handler != null)
+                trash_uri_is_default = "marlin.desktop" == app_trash_handler.get_id();
+
+            return foldertype_is_default && trash_uri_is_default;
+        }
+
+        private void make_marlin_default_fm (Gtk.Button btn)
+        {
+            AppInfo marlin_app = (AppInfo) new DesktopAppInfo ("marlin.desktop");
+            if (marlin_app != null) {
+                try {
+                    marlin_app.set_as_default_for_type ("inode/directory");
+                    marlin_app.set_as_default_for_type ("x-scheme-handler/trash");
+                } catch (GLib.Error e) {
+                    critical ("Can't set Marlin default FM: %s", e.message);
+                    return;
+                }
+                btn.set_sensitive (false);
             }
         }
     }
