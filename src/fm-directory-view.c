@@ -303,8 +303,12 @@ static void
 file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
     //g_debug ("%s %s %d\n", G_STRFUNC, g_file_get_uri(file->location), file->flags);
-    if (file->exists) 
-        fm_list_model_file_changed (view->model, file, directory);
+    if (!file->exists) 
+        return;
+
+    fm_list_model_file_changed (view->model, file, directory);
+    /*marlin_thumbnailer_queue_file (view->details->thumbnailer, file,
+                                   &view->details->thumbnail_request);*/
 }
 
 static void
@@ -1857,7 +1861,14 @@ update_menus_selection (FMDirectoryView *view)
     const char *menu_path = "/MenuBar/File/Open Placeholder/Open With/Applications Placeholder";
     const char *popup_path = "/selection/Open Placeholder/Open With/Applications Placeholder";
 
-    apps = marlin_mime_get_applications_for_files (selection);
+    apps = NULL;
+    /* if there s no default app then there s no common possible type to get other applications.
+    checking the first file is enought to determine if we have a full directory selection
+    as the only possible common type for a directory is a directory. 
+    We don't want File Managers applications list in the open with menu for a directory(ies) 
+    selection */
+    if (default_app != NULL && !file->is_directory)
+        apps = marlin_mime_get_applications_for_files (selection);
     /* we need to remove the default app from open with menu */
     if (default_app != NULL)
         apps = filter_default_app (apps, default_app);
@@ -1871,7 +1882,7 @@ update_menus_selection (FMDirectoryView *view)
     g_list_free_full (apps, g_object_unref);
     _g_object_unref0 (default_app);
     
-    if (selection_count == 1)
+    if (selection_count == 1 && !file->is_directory)
         dir_action_set_visible (view, "OtherApplication", TRUE);
 }
 

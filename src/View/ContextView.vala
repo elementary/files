@@ -48,9 +48,10 @@ namespace Marlin.View {
         }
 
         private Window window;
-        private Gdk.Pixbuf icon{
+        private Gdk.Pixbuf? icon {
             set{
-                evbox.set_from_pixbuf (value);
+                if (value != null)
+                    evbox.set_from_pixbuf (value);
             }
         }
 
@@ -199,7 +200,6 @@ namespace Marlin.View {
         {
             //int w_height, w_width;
             Allocation alloc;
-            Nautilus.IconInfo icon_info;
             int icon_size_req;
     		
             if (last_gof == null)
@@ -221,8 +221,8 @@ namespace Marlin.View {
                 icon_size_req = alloc.height.clamp (height, 256);
             }
 
-            icon_info = last_gof.get_icon(icon_size_req, GOF.FileIconFlags.USE_THUMBNAILS);
-            icon = icon_info.get_pixbuf_nodefault();
+            last_gof.update_icon (icon_size_req);
+            icon = last_gof.pix;
             
             /* TODO ask tumbler a LARGE thumb for size > 128 */
             /*if (should_sync && (icon_size_req > w_width/2 || icon_size_req > w_height/2))
