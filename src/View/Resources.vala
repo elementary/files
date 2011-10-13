@@ -5,7 +5,7 @@ namespace Marlin {
     public const string HELP_URL = "http://elementaryos.org/support";
     public const string BUG_URL = "https://bugs.launchpad.net/marlin/+filebug";
     public const string TRANSLATE_URL = "https://translations.launchpad.net/marlin";
-    public const string ELEMENTARY_LABEL = "elementaryos.org";
+    public const string ELEMENTARY_LABEL = "Website";
     public const string COMMENTS = "File Manager";
     
     public const string[] AUTHORS = { 
