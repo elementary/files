@@ -33,12 +33,9 @@ include(ValaVersion)
 ensure_vala_version("0.12.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
-ToolButtonWithMenu.vala
-AppMenu.vala
 ModeButton.vala
 CollapsablePaned.vala
 ImgEventBox.vala
-StaticNotebook.vala
 LocationBar.vala
 BreadcrumbsElements.vala
 BreadcrumbsEntry.vala
