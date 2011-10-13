@@ -26,7 +26,7 @@ namespace Marlin.View
     {
         public SettingsDialog(Window win)
         {
-            set_title(_("Marlin Settings"));
+            set_title(_("Marlin Preferences"));
             /*height_request = 600;*/
             //width_request = 500;
             set_resizable(false);

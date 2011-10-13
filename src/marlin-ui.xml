@@ -150,7 +150,6 @@
     <menuitem name="Show Hidden Files" action="Show Hidden Files"/>
 	<separator/>
     <menuitem name="MarlinSettings" action="MarlinSettings"/>
-    <separator />
     <menuitem name="About" action="About"/>
 </popup>
 </ui>
