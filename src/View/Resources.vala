@@ -23,6 +23,8 @@ namespace Marlin {
         null
     };
 
+    public const string TRANSLATORS = "Launchpad Translators";
+
     public const string ICON_ABOUT_LOGO = "system-file-manager";
 
     public const string ICON_HOME = "user-home";
