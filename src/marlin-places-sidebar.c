@@ -106,7 +106,7 @@ get_eject_icon (gboolean highlighted)
     NautilusIconInfo *eject_icon_info;
     int icon_size = 16;
 
-    eject_icon_info = nautilus_icon_info_lookup_from_name ("media-eject", icon_size);
+    eject_icon_info = nautilus_icon_info_lookup_from_name ("media-eject-symbolic", icon_size);
     eject = nautilus_icon_info_get_pixbuf_at_size (eject_icon_info, icon_size);
 
     if (highlighted) {
