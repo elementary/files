@@ -260,6 +260,7 @@ void gof_file_update (GOFFile *file)
     gof_file_update_emblem (file);
 }
 
+/* TODO check this fct we shouldn't store the pixbuf in GOF */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
     NautilusIconInfo *nicon;
@@ -936,48 +937,10 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 {
     NautilusIconInfo *icon;
     GIcon *gicon;
-    //GdkPixbuf *raw_pixbuf, *scaled_pixbuf;
-    //int modified_size;
 
     if (file == NULL) 
         return NULL;
 
-    /*gicon = get_custom_icon (file);
-      if (gicon) {
-      icon = nautilus_icon_info_lookup (gicon, size);
-      g_object_unref (gicon);
-      return icon;
-      }*/
-
-#if 0
-    if (flags & NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS &&
-        nautilus_file_should_show_thumbnail (file)) {
-        if (file->details->thumbnail) {
-            int w, h, s;
-            double scale;
-
-            /*scaled_pixbuf = gdk_pixbuf_scale_simple (raw_pixbuf,
-              w * scale, h * scale,
-              GDK_INTERP_BILINEAR);*/
-
-            /* We don't want frames around small icons */
-            /*if (!gdk_pixbuf_get_has_alpha(raw_pixbuf) || s >= 128) {
-              nautilus_thumbnail_frame_image (&scaled_pixbuf);
-              }*/
-
-            /*icon = nautilus_icon_info_new_for_pixbuf (scaled_pixbuf);
-              g_object_unref (scaled_pixbuf);
-              return icon;*/
-            /*} else if (file->details->thumbnail_path == NULL &&
-              file->details->can_read &&				
-              !file->details->is_thumbnailing &&
-              !file->details->thumbnailing_failed) {
-              if (nautilus_can_thumbnail (file)) {
-              nautilus_create_thumbnail (file);
-              }
-              }*/
-    }
-#endif
     //printf ("%s %s %s\n", G_STRFUNC, file->name, file->thumbnail_path);
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS) {
         if (file->thumbnail_path != NULL) {

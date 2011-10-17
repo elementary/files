@@ -106,6 +106,7 @@ namespace GOF {
         public bool link_known_target;
         public string thumbnail_path;
         public Nautilus.IconInfo get_icon(int size, FileIconFlags flags);
+        public Gdk.Pixbuf get_icon_pixbuf(int size, bool forced_size, FileIconFlags flags);
 
         public bool is_mounted;
         public bool exists;

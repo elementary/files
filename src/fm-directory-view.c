@@ -3002,8 +3002,15 @@ action_other_application_callback (GtkAction *action, FMDirectoryView *view)
 }
 
 static void
-action_properties_callback (GtkAction *action, gpointer data)
+action_properties_callback (GtkAction *action, FMDirectoryView *view)
 {
+    GList *selection;
+    
+    g_assert (FM_IS_DIRECTORY_VIEW (view));
+
+    selection = fm_directory_view_get_selection (view);
+    marlin_view_properties_window_new (selection, GTK_WINDOW (view->details->window));
+
     //TODO
 #if 0
     FMDirectoryView *view;
