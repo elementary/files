@@ -22,6 +22,7 @@ using Gtk;
 public class Marlin.View.PropertiesWindow : Gtk.Dialog
 {
     private Gee.LinkedList<Pair<string, string>> info;
+    private ImgEventBox evbox;
 
     public PropertiesWindow (GLib.List<GOF.File> files, Gtk.Window parent)
     {
@@ -100,23 +101,25 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         /* Info */
         var info_vbox = new VBox(false, 0);
         construct_info_panel (info_vbox, info);
+        add_section (content_vbox, _("Info"), info_vbox);
 
         /* Permissions */
         var perm_vbox = new VBox(false, 0);
-        var name_label = new Label("blabla");
+        /*var name_label = new Label("blabla");
         name_label.xalign = 0;
         name_label.set_line_wrap(true);
-        perm_vbox.pack_start(name_label);
+        perm_vbox.pack_start(name_label);*/
+        construct_perm_panel (perm_vbox);
+        add_section (content_vbox, _("Permissions"), perm_vbox);
 
         /* Preview */
         var preview_box = new VBox(false, 0);
+        construct_preview_panel (preview_box, gof);
+        add_section (content_vbox, _("Preview"), preview_box);
 
         /* Open With */
         var openw_box = new VBox (false, 0);
 
-        add_section (content_vbox, _("Info"), info_vbox);
-        add_section (content_vbox, _("Permissions"), perm_vbox);
-        add_section (content_vbox, _("Preview"), preview_box);
         add_section (content_vbox, _("Open With"), openw_box);
 
         var close_button = new Button.from_stock(Stock.CLOSE);
@@ -174,7 +177,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
         info.add(new Pair<string, string>(_("Created") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_CREATED)));
         info.add(new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
-        info.add(new Pair<string, string>(_("Last Opened") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_ACCESS)));
+        info.add(new Pair<string, string>(_("Last Access") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_ACCESS)));
+        /* print deletion date if trashed file */
+        //TODO format trash deletion date string
+        if (file.is_trashed())
+            info.add(new Pair<string, string>(_("Deleted") + (": "), file_info.get_attribute_as_string("trash::deletion-date")));
         if (file_info.get_is_symlink())
             info.add(new Pair<string, string>(_("Target") + (": "), file_info.get_symlink_target()));
         string path = file.location.get_parse_name ();
@@ -182,6 +189,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             info.add(new Pair<string, string>(_("Location") + (": "), path));
         else
             info.add(new Pair<string, string>(_("Location") + (": "), file.uri));
+        /* print orig location of trashed files */
+        if (file.is_trashed() && file.trash_orig_path != null)
+            info.add(new Pair<string, string>(_("Origin Location") + (": "), file.trash_orig_path));
 
 
     }
@@ -196,11 +206,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             if (n>0) {
                 var value_label = new Granite.Widgets.WrapLabel(pair.value);
                 //value_label.set_line_wrap (true);
-                var key_label = new Gtk.Label(pair.key);
+                /*var key_label = new Gtk.Label(pair.key);
                 key_label.set_sensitive(false);
                 key_label.set_halign(Align.END);
                 key_label.set_valign(Align.START);
-                key_label.margin_right = 5;
+                key_label.margin_right = 5;*/
+                Gtk.Label key_label = create_label_key(pair.key);
                 /*key_label.set_ellipsize(Pango.EllipsizeMode.START);*/
                 //value_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
                 value_label.set_selectable(true);
@@ -212,5 +223,76 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             n++;
         }
         box.pack_start(information);
+    }
+
+    private Gtk.Label create_label_key (string str, Gtk.Align valign = Align.START) {
+        Gtk.Label key_label = new Gtk.Label(str);
+        key_label.set_sensitive(false);
+        key_label.set_halign(Align.END);
+        key_label.set_valign(valign);
+        key_label.margin_right = 5;
+
+        return key_label;
+    }
+
+    private void toggle_button_add_label (Gtk.ToggleButton btn, string str) {
+        var l_read = new Gtk.Label("<span size='small'>"+ str + "</span>");
+        l_read.set_use_markup (true);
+        btn.add (l_read);
+    }
+
+    private Gtk.HBox create_perm_choice () {
+        Gtk.HBox hbox;
+
+        hbox = new Gtk.HBox(true, 0);
+        var btn_read = new Gtk.ToggleButton();
+        toggle_button_add_label (btn_read, _("Read"));
+        //btn_read.set_relief (Gtk.ReliefStyle.NONE); 
+        var btn_write = new Gtk.ToggleButton();
+        toggle_button_add_label (btn_write, _("Write"));
+        //btn_write.set_relief (Gtk.ReliefStyle.NONE); 
+        var btn_exe = new Gtk.ToggleButton();
+        toggle_button_add_label (btn_exe, _("Execute"));
+        //btn_exe.set_relief (Gtk.ReliefStyle.NONE); 
+        hbox.pack_start(btn_read);
+        hbox.pack_start(btn_write);
+        hbox.pack_start(btn_exe);
+
+        return hbox;
+    }
+    
+    private void construct_perm_panel (Box box) {
+        var grid = new Grid();
+                
+        Gtk.Label key_label;
+        Gtk.HBox value_label;
+        
+        key_label = create_label_key(_("Owner") + ": ");
+        grid.attach(key_label, 0, 1, 1, 1);
+        key_label = create_label_key(_("Group") + ": ");
+        grid.attach(key_label, 0, 2, 1, 1);
+        key_label = create_label_key(_("Owner") + ": ", Align.CENTER);
+        value_label = create_perm_choice();
+        grid.attach(key_label, 0, 3, 1, 1);
+        grid.attach(value_label, 1, 3, 1, 1);
+        key_label = create_label_key(_("Group") + ": ", Align.CENTER);
+        value_label = create_perm_choice();
+        grid.attach(key_label, 0, 4, 1, 1);
+        grid.attach(value_label, 1, 4, 1, 1);
+        key_label = create_label_key(_("Everyone") + ": ", Align.CENTER);
+        value_label = create_perm_choice();
+        grid.attach(key_label, 0, 5, 1, 1);
+        grid.attach(value_label, 1, 5, 1, 1);
+        
+        box.pack_start(grid);
+    }
+    
+    private void construct_preview_panel (Box box, GOF.File file) {
+        evbox = new ImgEventBox(Orientation.HORIZONTAL);
+        file.update_icon (256);
+        if (file.pix != null)
+            evbox.set_from_pixbuf (file.pix);
+
+        box.pack_start(evbox, false, true, 0);
     }
 }

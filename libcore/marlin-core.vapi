@@ -105,9 +105,11 @@ namespace GOF {
         public string formated_type;
         public string ftype;
         public Gdk.Pixbuf pix;
+        public string trash_orig_path;
 
         public bool is_directory;
         public bool is_symlink();
+        public bool is_trashed();
         public bool link_known_target;
         public string thumbnail_path;
         public string get_formated_time (string attr);
