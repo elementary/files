@@ -21,6 +21,8 @@ using Gtk;
 
 public class Marlin.View.PropertiesWindow : Gtk.Dialog
 {
+    private Gee.LinkedList<Pair<string, string>> info;
+
     public PropertiesWindow (GLib.List<GOF.File> files, Gtk.Window parent)
     {
         title = _("Properties");
@@ -40,17 +42,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         // Adjust sizes
         //content_vbox.margin = 12;
         /*content_vbox.margin_right = 12;
-        content_vbox.margin_left = 12;
-        content_vbox.margin_bottom = 12;*/
+          content_vbox.margin_left = 12;
+          content_vbox.margin_bottom = 12;*/
         //content_vbox.height_request = 160;
         content_vbox.width_request = 288;
-  
+
         GOF.File? gof = (GOF.File) files.data;
+        get_info (gof);
 
         /* Basic */
         var basic_box = new HBox (false, 9);
         //basic_vbox.set_size_request (0, 40); 
-        
+
         var file_pix = gof.get_icon_pixbuf (32, false, GOF.FileIconFlags.NONE);
         var file_img = new Image.from_pixbuf (file_pix);
         basic_box.pack_start(file_img, false, false);
@@ -63,8 +66,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         var basic_modified = new Label ("<span weight='light'>Modified: " + gof.formated_modified + "</span>");
 
         /*var font_style = new Pango.FontDescription();
-        font_style.set_size(12 * 1000);
-        basic_filename.modify_font(font_style);*/
+          font_style.set_size(12 * 1000);
+          basic_filename.modify_font(font_style);*/
 
         basic_filename.set_halign (Align.START);
         basic_filename.set_use_markup (true);
@@ -90,6 +93,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         /* Info */
         var info_vbox = new VBox(false, 0);
+        construct_info_panel (info_vbox, info);
 
         /* Permissions */
         var perm_vbox = new VBox(false, 0);
@@ -150,20 +154,50 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             exp.add (content);
     }
 
-    /*private void add_section (VBox vbox, string title, Box content) {
-        var hbox = new HBox (false, 0);
-        //var exp = new Expander("<span weight='semibold' size='large'>" + title + "</span>");
-        var exp = new Expander("<span weight='semibold'>" + title + "</span>");
-        exp.set_use_markup(true);
-        exp.expanded = true;
-        
-        var sep = new Separator (Orientation.HORIZONTAL);
-        sep.set_valign (Align.CENTER);
+    private void get_info (GOF.File file) {
+        var file_info = file.info;
+        info = new Gee.LinkedList<Pair<string, string>>();
 
-        hbox.pack_start(exp, false, false, 0);
-        hbox.pack_start(sep);
-        if (content != null)
-            exp.add (content);
-        vbox.pack_start(hbox, false, false, 0);
-    }*/
+        info.add(new Pair<string, string>(_("Name") + (": "), file.name));
+        info.add(new Pair<string, string>(_("Type") + (": "), file.formated_type));
+
+        if (file_info.get_is_symlink())
+            info.add(new Pair<string, string>(_("Target") + (": "), file_info.get_symlink_target()));
+        var raw_type = file_info.get_file_type();
+        if(raw_type != FileType.DIRECTORY)
+            info.add(new Pair<string, string>(_("Size") + (": "), file.format_size));
+        /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
+        //info.add(new Pair<string, string>(_("Created") + (": "), file.get_date_as_string (file_info.get_attributestring(FILE_ATTRIBUTE_TIME_CREATED))));
+        info.add(new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
+        //info.add(new Pair<string, string>(_("Last Opened") + (": "), file.get_date_as_string (file_info.get_attributestring(FILE_ATTRIBUTE_TIME_ACCESS))));
+        info.add(new Pair<string, string>(_("Owner") + (": "), file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
+
+    }
+
+    private void construct_info_panel (Box box, Gee.LinkedList<Pair<string, string>> item_info) {
+        var information = new Grid();
+        //information.row_spacing = 10;
+
+        int n = 0;
+        foreach(var pair in item_info){
+            /* skip the firs parameter "name" for vertical panel */
+            if (n>0) {
+                var value_label = new Gtk.Label(pair.value);
+                //var value_label = new Granite.Widgets.WrapLabel(pair.value);
+                var key_label = new Gtk.Label(pair.key);
+                key_label.set_sensitive(false);
+                key_label.set_halign(Align.END);
+                key_label.margin_right = 5;
+                value_label.set_halign(Align.START);
+                /*key_label.set_ellipsize(Pango.EllipsizeMode.START);
+                value_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);*/
+                value_label.set_selectable(true);
+
+                information.attach(key_label, 0, n, 1, 1);
+                information.attach(value_label, 1, n, 1, 1);
+            }
+            n++;
+        }
+        box.pack_start(information);
+    }
 }

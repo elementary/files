@@ -53,6 +53,11 @@ namespace Eel {
     public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
 }
 
+[CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-fcts.h")]
+namespace Eel {
+    public string? get_date_as_string (uint64 d, string format);
+}
+
 [CCode (cprefix = "Nautilus", lower_case_cprefix = "nautilus_")]
 namespace Nautilus {
     [CCode (cheader_filename = "nautilus-icon-info.h")]
