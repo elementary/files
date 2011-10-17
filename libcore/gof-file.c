@@ -159,7 +159,7 @@ void gof_file_update (GOFFile *file)
         file->format_size = g_strdup ("--");
     else
         file->format_size = g_format_size_for_display(file->size);
-    /* TODO create an object to store all the preferences */
+    /* TODO prefs: create an object to store all the preferences */
     gchar *date_format_pref = g_settings_get_string(settings, MARLIN_PREFERENCES_DATE_FORMAT);
     file->formated_modified = eel_get_date_as_string (file->modified, date_format_pref);
     g_free (date_format_pref);
@@ -866,6 +866,17 @@ gof_file_is_symlink (GOFFile *file)
         return FALSE;
 
     return g_file_info_get_is_symlink (file->info);
+}
+
+gchar * 
+gof_file_get_formated_time (GOFFile *file, const char *attr)
+{
+    g_return_val_if_fail (file != NULL, NULL);
+    g_return_val_if_fail (file->info != NULL, NULL);
+
+    guint64 date = g_file_info_get_attribute_uint64 (file->info, attr);
+    //TODO prefs
+    return eel_get_date_as_string (date, "iso");
 }
 
 

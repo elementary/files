@@ -171,7 +171,6 @@ int             gof_file_compare_for_sort (GOFFile *file_1,
 GOFFile*        gof_file_ref (GOFFile *file);
 void            gof_file_unref (GOFFile *file);
 GList           *gof_file_get_location_list (GList *files);
-char *          gof_file_get_date_as_string (guint64 d);
 
 void            gof_file_list_free (GList *list);
 GList           *gof_file_list_ref (GList *list);
@@ -181,6 +180,7 @@ GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean for
 gboolean        gof_file_is_writable (GOFFile *file);
 gboolean        gof_file_is_trashed (GOFFile *file);
 const gchar     *gof_file_get_symlink_target (GOFFile *file);
+gchar           *gof_file_get_formated_time (GOFFile *file, const char *attr);
 gboolean        gof_file_is_symlink (GOFFile *file);
 gboolean        gof_file_is_desktop_file (const GOFFile *file);
 gchar           *gof_file_list_to_string (GList *list, gsize *len);

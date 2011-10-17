@@ -26,8 +26,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     public PropertiesWindow (GLib.List<GOF.File> files, Gtk.Window parent)
     {
         title = _("Properties");
-        resizable = false;
+        //resizable = false;
         set_default_response(ResponseType.CANCEL);
+        set_default_size (220, -1);
 
         // Set the default containers
         Box content_area = (Box)get_content_area();
@@ -56,12 +57,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         var file_pix = gof.get_icon_pixbuf (32, false, GOF.FileIconFlags.NONE);
         var file_img = new Image.from_pixbuf (file_pix);
+        file_img.set_valign (Align.START);
         basic_box.pack_start(file_img, false, false);
 
         var vvbox = new VBox (false, 0);
         basic_box.pack_start(vvbox);
         var hhbox1 = new HBox (false, 0);
-        var basic_filename = new Label ("<span weight='semibold' size='large'>" + gof.name + "</span>");
+        //var basic_filename = new Label ("<span weight='semibold' size='large'>" + gof.name + "</span>");
+        var basic_filename = new Granite.Widgets.WrapLabel ("<span weight='semibold' size='large'>" + gof.name + "</span>");
         //var basic_filename = new Label (gof.name);
         var basic_modified = new Label ("<span weight='light'>Modified: " + gof.formated_modified + "</span>");
 
@@ -69,17 +72,20 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
           font_style.set_size(12 * 1000);
           basic_filename.modify_font(font_style);*/
 
-        basic_filename.set_halign (Align.START);
+        //basic_filename.set_halign (Align.START);
+        //basic_filename.set_size_request (200, -1);
         basic_filename.set_use_markup (true);
-        basic_filename.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
+        //basic_filename.set_use_markup (true);
+        //basic_filename.set_line_wrap (true);
+        //basic_filename.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
         basic_modified.set_halign (Align.START);
         basic_modified.set_use_markup (true);
         hhbox1.pack_start(basic_filename);
         if (!gof.is_directory) {
             var basic_size = new Label ("<span weight='semibold' size='large'>" + gof.format_size + "</span>");
-            basic_size.set_halign (Align.START);
             basic_size.set_use_markup (true);
             basic_size.set_halign (Align.END);
+            basic_size.set_valign (Align.START);
             hhbox1.pack_start(basic_size);
         }
         vvbox.pack_start(hhbox1);
@@ -160,17 +166,23 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         info.add(new Pair<string, string>(_("Name") + (": "), file.name));
         info.add(new Pair<string, string>(_("Type") + (": "), file.formated_type));
+        info.add(new Pair<string, string>(_("MimeType") + (": "), file.ftype));
 
-        if (file_info.get_is_symlink())
-            info.add(new Pair<string, string>(_("Target") + (": "), file_info.get_symlink_target()));
         var raw_type = file_info.get_file_type();
         if(raw_type != FileType.DIRECTORY)
             info.add(new Pair<string, string>(_("Size") + (": "), file.format_size));
         /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
-        //info.add(new Pair<string, string>(_("Created") + (": "), file.get_date_as_string (file_info.get_attributestring(FILE_ATTRIBUTE_TIME_CREATED))));
+        info.add(new Pair<string, string>(_("Created") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_CREATED)));
         info.add(new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
-        //info.add(new Pair<string, string>(_("Last Opened") + (": "), file.get_date_as_string (file_info.get_attributestring(FILE_ATTRIBUTE_TIME_ACCESS))));
-        info.add(new Pair<string, string>(_("Owner") + (": "), file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
+        info.add(new Pair<string, string>(_("Last Opened") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_ACCESS)));
+        if (file_info.get_is_symlink())
+            info.add(new Pair<string, string>(_("Target") + (": "), file_info.get_symlink_target()));
+        string path = file.location.get_parse_name ();
+        if (path != null)
+            info.add(new Pair<string, string>(_("Location") + (": "), path));
+        else
+            info.add(new Pair<string, string>(_("Location") + (": "), file.uri));
+
 
     }
 
@@ -182,16 +194,17 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         foreach(var pair in item_info){
             /* skip the firs parameter "name" for vertical panel */
             if (n>0) {
-                var value_label = new Gtk.Label(pair.value);
-                //var value_label = new Granite.Widgets.WrapLabel(pair.value);
+                var value_label = new Granite.Widgets.WrapLabel(pair.value);
+                //value_label.set_line_wrap (true);
                 var key_label = new Gtk.Label(pair.key);
                 key_label.set_sensitive(false);
                 key_label.set_halign(Align.END);
+                key_label.set_valign(Align.START);
                 key_label.margin_right = 5;
-                value_label.set_halign(Align.START);
-                /*key_label.set_ellipsize(Pango.EllipsizeMode.START);
-                value_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);*/
+                /*key_label.set_ellipsize(Pango.EllipsizeMode.START);*/
+                //value_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
                 value_label.set_selectable(true);
+                value_label.set_size_request(200, -1);
 
                 information.attach(key_label, 0, n, 1, 1);
                 information.attach(value_label, 1, n, 1, 1);
