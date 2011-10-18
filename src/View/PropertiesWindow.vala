@@ -23,6 +23,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 {
     private Gee.LinkedList<Pair<string, string>> info;
     private ImgEventBox evbox;
+    private XsEntry perm_code;
 
     public PropertiesWindow (GLib.List<GOF.File> files, Gtk.Window parent)
     {
@@ -241,26 +242,83 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         btn.add (l_read);
     }
 
-    private Gtk.HBox create_perm_choice () {
+    private enum OwnerType {
+        OWNER,
+        GROUP,
+        EVERYONE
+    }
+
+    private int owner_perm_code = 0;
+    private int group_perm_code = 0;
+    private int everyone_perm_code = 0;
+
+    private void update_perm_codes (OwnerType ot, int val, int mult) {
+        switch (ot) {
+        case OwnerType.OWNER:
+            owner_perm_code += mult*val;
+            break;
+        case OwnerType.GROUP:
+            group_perm_code += mult*val;
+            break;
+        case OwnerType.EVERYONE:
+            everyone_perm_code += mult*val;
+            break;
+        }
+    }
+
+    private void action_toggled_read (Gtk.ToggleButton btn) {
+        unowned OwnerType ot = btn.get_data ("ownertype");
+        int mult = 1;
+        if (!btn.get_active())
+            mult = -1;
+        update_perm_codes (ot, 4, mult);
+        perm_code.set_text("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
+    }
+
+    private void action_toggled_write (Gtk.ToggleButton btn) {
+        unowned OwnerType ot = btn.get_data ("ownertype");
+        int mult = 1;
+        if (!btn.get_active())
+            mult = -1;
+        update_perm_codes (ot, 2, mult);
+        perm_code.set_text("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
+    }
+    
+    private void action_toggled_execute (Gtk.ToggleButton btn) {
+        unowned OwnerType ot = btn.get_data ("ownertype");
+        int mult = 1;
+        if (!btn.get_active())
+            mult = -1;
+        update_perm_codes (ot, 1, mult);
+        perm_code.set_text("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
+    }
+    
+    private Gtk.HBox create_perm_choice (OwnerType ot) {
         Gtk.HBox hbox;
 
         hbox = new Gtk.HBox(true, 0);
         var btn_read = new Gtk.ToggleButton();
         toggle_button_add_label (btn_read, _("Read"));
-        //btn_read.set_relief (Gtk.ReliefStyle.NONE); 
+        //btn_read.set_relief (Gtk.ReliefStyle.NONE);
+        btn_read.set_data ("ownertype", ot);
+        btn_read.toggled.connect (action_toggled_read);
         var btn_write = new Gtk.ToggleButton();
         toggle_button_add_label (btn_write, _("Write"));
         //btn_write.set_relief (Gtk.ReliefStyle.NONE); 
+        btn_write.set_data ("ownertype", ot);
+        btn_write.toggled.connect (action_toggled_write);
         var btn_exe = new Gtk.ToggleButton();
         toggle_button_add_label (btn_exe, _("Execute"));
         //btn_exe.set_relief (Gtk.ReliefStyle.NONE); 
+        btn_exe.set_data ("ownertype", ot);
+        btn_exe.toggled.connect (action_toggled_execute);
         hbox.pack_start(btn_read);
         hbox.pack_start(btn_write);
         hbox.pack_start(btn_exe);
 
         return hbox;
     }
-    
+   
     private void construct_perm_panel (Box box) {
         var grid = new Grid();
                 
@@ -272,22 +330,22 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         key_label = create_label_key(_("Group") + ": ");
         grid.attach(key_label, 0, 2, 1, 1);
         key_label = create_label_key(_("Owner") + ": ", Align.CENTER);
-        value_label = create_perm_choice();
+        value_label = create_perm_choice(OwnerType.OWNER);
         grid.attach(key_label, 0, 3, 1, 1);
         grid.attach(value_label, 1, 3, 1, 1);
         key_label = create_label_key(_("Group") + ": ", Align.CENTER);
-        value_label = create_perm_choice();
+        value_label = create_perm_choice(OwnerType.GROUP);
         grid.attach(key_label, 0, 4, 1, 1);
         grid.attach(value_label, 1, 4, 1, 1);
         key_label = create_label_key(_("Everyone") + ": ", Align.CENTER);
-        value_label = create_perm_choice();
+        value_label = create_perm_choice(OwnerType.EVERYONE);
         grid.attach(key_label, 0, 5, 1, 1);
         grid.attach(value_label, 1, 5, 1, 1);
         
-        var perm_code = new XsEntry();
+        perm_code = new XsEntry();
         //var perm_code = new Label("705");
         //perm_code.margin_right = 2;
-        perm_code.set_text("755");
+        perm_code.set_text("000");
         perm_code.set_max_length(3);
         //perm_code.set_has_frame (false);
         perm_code.set_size_request(35, -1);
