@@ -113,12 +113,13 @@ namespace GOF {
         public bool link_known_target;
         public string thumbnail_path;
         public string get_formated_time (string attr);
-        public Nautilus.IconInfo get_icon(int size, FileIconFlags flags);
-        public Gdk.Pixbuf get_icon_pixbuf(int size, bool forced_size, FileIconFlags flags);
+        public Nautilus.IconInfo get_icon (int size, FileIconFlags flags);
+        public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
 
         public bool is_mounted;
         public bool exists;
-        public void update_icon(int size);
+        public void update_icon (int size);
+        public bool can_set_permissions ();
     }
 
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]

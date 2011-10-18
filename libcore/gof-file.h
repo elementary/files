@@ -98,6 +98,8 @@ struct _GOFFile {
 
     gboolean        has_permissions;
     guint32         permissions;
+    int             uid;
+    int             gid;
 
     const gchar     *thumbnail_path;
     gboolean        is_thumbnailing;
@@ -219,6 +221,7 @@ void            gof_file_add_emblem(GOFFile* file, const gchar* emblem);
  **/
 #define gof_file_get_thumb_state(file) (GOF_FILE ((file))->flags & GOF_FILE_THUMB_STATE_MASK)
 
+gboolean        gof_file_can_set_permissions (GOFFile *file);
 
 G_END_DECLS
 

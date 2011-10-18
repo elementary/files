@@ -120,14 +120,11 @@ GOFFile    *gof_file_new (GFile *location, GFile *dir)
     return (file);
 }
 
-void gof_file_update (GOFFile *file)
+static void 
+gof_file_clear_info (GOFFile *file)
 {
-    GKeyFile *key_file;
-    gchar *p;
+    g_return_if_fail (file != NULL);
 
-    g_return_if_fail (file->info != NULL);
-
-    /* free previously allocated */
     g_free(file->utf8_collation_key);
     g_free(file->formated_type);
     g_free(file->format_size);
@@ -138,6 +135,20 @@ void gof_file_update (GOFFile *file)
     g_free (file->custom_icon_name);
     file->custom_display_name = NULL;
 
+    file->uid = -1;
+    file->gid = -1;
+    file->has_permissions = FALSE;
+}
+
+void gof_file_update (GOFFile *file)
+{
+    GKeyFile *key_file;
+    gchar *p;
+
+    /* free previously allocated */
+    gof_file_clear_info (file);
+    
+    g_return_if_fail (file->info != NULL);
 
     file->name = g_file_info_get_name (file->info);
 
@@ -262,6 +273,11 @@ void gof_file_update (GOFFile *file)
     /* permissions */
     file->has_permissions = g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
 	file->permissions = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_UID))
+        file->uid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_UID);
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_GID))
+        file->gid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_GID);
+
 
     gof_file_update_trash_info (file);
     gof_file_update_emblem (file);
@@ -1712,3 +1728,45 @@ gof_file_rename (GOFFile *file,
                                    rename_callback,
                                    op);
 }
+
+
+/**
+ * gof_file_can_set_permissions:
+ * 
+ * Check whether the current user is allowed to change
+ * the permissions of a file.
+ * 
+ * @file: The file in question.
+ * 
+ * Return value: TRUE if the current user can change the
+ * permissions of @file, FALSE otherwise. It's always possible
+ * that when you actually try to do it, you will fail.
+ */
+gboolean
+gof_file_can_set_permissions (GOFFile *file)
+{
+	uid_t user_id;
+
+	if (file->uid != -1 && g_file_is_native (file->location)) 
+    {
+		/* Check the user. */
+		user_id = geteuid();
+
+		/* Owner is allowed to set permissions. */
+		if (user_id == (uid_t) file->uid) 
+			return TRUE;
+
+		/* Root is also allowed to set permissions. */
+		if (user_id == 0) 
+			return TRUE;
+
+		/* Nobody else is allowed. */
+		return FALSE;
+	}
+
+	/* pretend to have full chmod rights when no info is available, relevant when
+	 * the FS can't provide ownership info, for instance for FTP */
+	return TRUE;
+}
+
+

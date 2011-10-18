@@ -112,6 +112,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         perm_vbox.pack_start(name_label);*/
         construct_perm_panel (perm_vbox);
         add_section (content_vbox, _("Permissions"), perm_vbox);
+        if (!gof.can_set_permissions ()) {
+            foreach (var widget in perm_vbox.get_children())
+                widget.set_sensitive (false);
+        }
 
         /* Preview */
         var preview_box = new VBox(false, 0);
