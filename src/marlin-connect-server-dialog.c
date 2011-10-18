@@ -1109,7 +1109,7 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
     bind_visibility (dialog, dialog->details->domain_entry, label);
 
     /* second row: username entry */
-    label = gtk_label_new_with_mnemonic (_("_User name:"));
+    label = gtk_label_new_with_mnemonic (_("_Username:"));
     gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
     gtk_table_attach (GTK_TABLE (table), label,
                       0, 1,
