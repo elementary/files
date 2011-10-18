@@ -284,6 +284,20 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         grid.attach(key_label, 0, 5, 1, 1);
         grid.attach(value_label, 1, 5, 1, 1);
         
+        var perm_code = new XsEntry();
+        //var perm_code = new Label("705");
+        //perm_code.margin_right = 2;
+        perm_code.set_text("755");
+        perm_code.set_max_length(3);
+        //perm_code.set_has_frame (false);
+        perm_code.set_size_request(35, -1);
+        var perm_code_hbox = new HBox(false, 10);
+        var l_perm = new Label("-rwxr-xr-x");
+        perm_code_hbox.pack_start(l_perm, true, true, 0);
+        perm_code_hbox.pack_start(perm_code, false, false, 0);
+
+        grid.attach(perm_code_hbox, 1, 6, 1, 1);
+        
         box.pack_start(grid);
     }
     

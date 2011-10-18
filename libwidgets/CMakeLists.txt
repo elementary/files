@@ -39,6 +39,7 @@ ImgEventBox.vala
 LocationBar.vala
 BreadcrumbsElements.vala
 BreadcrumbsEntry.vala
+XsEntry.vala
 PACKAGES
 gtk+-3.0
 gee-1.0
