@@ -260,8 +260,8 @@ void gof_file_update (GOFFile *file)
     }
 
     /* permissions */
-    file->has_permissions = g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_UNIX_MODE);
-	file->permissions = g_file_info_get_attribute_uint32 (info, G_FILE_ATTRIBUTE_UNIX_MODE);
+    file->has_permissions = g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
+	file->permissions = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
 
     gof_file_update_trash_info (file);
     gof_file_update_emblem (file);
