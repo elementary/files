@@ -96,6 +96,9 @@ struct _GOFFile {
     gboolean        is_mounted;
     gboolean        exists;
 
+    gboolean        has_permissions;
+    guint32         permissions;
+
     const gchar     *thumbnail_path;
     gboolean        is_thumbnailing;
 
