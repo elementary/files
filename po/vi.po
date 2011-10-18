@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-10-16 11:14+0000\n"
-"Last-Translator: Lê Hoàng Phương <Unknown>\n"
+"PO-Revision-Date: 2011-10-18 02:41+0000\n"
+"Last-Translator: Cody Garver <codygarver@gmail.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-10-17 04:55+0000\n"
-"X-Generator: Launchpad (build 14155)\n"
+"X-Launchpad-Export-Date: 2011-10-18 05:01+0000\n"
+"X-Generator: Launchpad (build 14157)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -79,6 +79,7 @@ msgstr "Thư mục chính"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Cody Garver https://launchpad.net/~codygarver\n"
 "  Lê Hoàng Phương https://launchpad.net/~herophuong93"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
@@ -205,7 +206,7 @@ msgstr "Cột Pixbuf"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
-msgstr ""
+msgstr "Cột mô hình từ đó cần gọi đệm điểm ảnh của biểu tượng"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
@@ -213,23 +214,23 @@ msgstr "Cột văn bản"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
-msgstr ""
+msgstr "Cột mô hình từ đó cần gọi văn bản"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:737
 msgid "Markup column"
-msgstr ""
+msgstr "Cột mã định dạng"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:738
 msgid "Model column used to retrieve the text if using Pango markup"
-msgstr ""
+msgstr "Cột mô hình từ đó cần gọi văn bản nếu đang dùng mã định dạng Pango"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:745
 msgid "Icon View Model"
-msgstr ""
+msgstr "Mô hình xem biểu tượng"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:746
 msgid "The model for the icon view"
-msgstr ""
+msgstr "Mô hình cho khung xem theo biểu tượng"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:762
 msgid "Number of columns"
@@ -241,43 +242,43 @@ msgstr "Số cột được hiển thị"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:780
 msgid "Width for each item"
-msgstr ""
+msgstr "Độ rộng cho mỗi mục"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr ""
+msgstr "Độ rộng được dùng cho mỗi mục"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
-msgstr ""
+msgstr "Khoảng cách"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:797
 msgid "Space which is inserted between cells of an item"
-msgstr ""
+msgstr "Khoảng cách được chèn giữa các ô của mục"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
-msgstr ""
+msgstr "Khoảng cách hàng"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
-msgstr ""
+msgstr "Khoảng cách được chèn giữa các hàng lưới"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
-msgstr ""
+msgstr "Khoảng cách cột"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
-msgstr ""
+msgstr "Khoảng cách được chèn giữa các cột lưới"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:844
 msgid "Margin"
-msgstr ""
+msgstr "Lề"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:845
 msgid "Space which is inserted at the edges of the icon view"
-msgstr ""
+msgstr "Khoảng cách được chèn tại các cạnh của khung xem theo biểu tượng"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
@@ -286,15 +287,15 @@ msgstr ""
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:861
 msgid ""
 "How the text and icon of each item are positioned relative to each other"
-msgstr ""
+msgstr "Cách định vị chữ và biểu tượng của mỗi mục, tượng ứng với nhau"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:877
 msgid "Reorderable"
-msgstr ""
+msgstr "Có thể sắp xếp lại"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:878
 msgid "View is reorderable"
-msgstr ""
+msgstr "Có thể sắp xếp lại khung xem"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:885
 msgid "Enable Search"
@@ -302,31 +303,31 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:886
 msgid "View allows user to search through columns interactively"
-msgstr ""
+msgstr "Khung xem cho phép người dùng tìm kiếm qua cột một cách tương tác"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:893
 msgid "Search Column"
-msgstr ""
+msgstr "Cột tìm kiếm"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:894
 msgid "Model column to search through during interactive search"
-msgstr ""
+msgstr "Cột mô hình qua đó cần tìm kiếm qua trong khi tìm kiếm tương tác"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
-msgstr ""
+msgstr "Cột mẹo công cụ"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:904
 msgid "The column in the model containing the tooltip texts for the items"
-msgstr ""
+msgstr "Cột của mô hình chứa các chuỗi mẹo công cụ cho các mục"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:921
 msgid "Item Padding"
-msgstr ""
+msgstr "Đệm mục"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:922
 msgid "Padding around icon view items"
-msgstr ""
+msgstr "Độ đệm chung quanh các mục xem biểu tượng"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:939
 msgid "Cell Area"
@@ -338,19 +339,19 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:953
 msgid "Selection Box Color"
-msgstr ""
+msgstr "Màu hộp chọn"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:954
 msgid "Color of the selection box"
-msgstr ""
+msgstr "Màu của hộp chọn"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:960
 msgid "Selection Box Alpha"
-msgstr ""
+msgstr "Anfa hộp chọn"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:961
 msgid "Opacity of the selection box"
-msgstr ""
+msgstr "Độ đục của hộp chọn"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
@@ -381,7 +382,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1766
 msgid "Set as default"
-msgstr ""
+msgstr "Đặt làm mặc định"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1841
 msgid "Open with…"
@@ -409,7 +410,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr ""
+msgstr "Thôi"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:893
 #, c-format
@@ -430,11 +431,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:344
 msgid "The text of the label."
-msgstr ""
+msgstr "Nội dung nhãn."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:350
 msgid "Justification"
-msgstr ""
+msgstr "Canh đều"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:351
 msgid ""
@@ -442,14 +443,17 @@ msgid ""
 "This does NOT affect the alignment of the label within its allocation. See "
 "GtkMisc::xalign for that."
 msgstr ""
+"Cân chỉnh hàng văn bản trong nhãn so với những hàng khác. Nó KHÔNG tác động "
+"lên cân chỉnh hàng nhãn trong vùng cấp phát của nó. Xem GtkMisc::xalign để "
+"làm điều đó."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:359
 msgid "Line wrap"
-msgstr ""
+msgstr "Ngắt dòng"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:360
 msgid "If set, wrap lines if the text becomes too wide."
-msgstr ""
+msgstr "Nếu bật, sẽ ngắt dòng khi văn bản quá dài."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:367
 msgid "Small size"
@@ -461,28 +465,28 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:375
 msgid "Cursor Position"
-msgstr ""
+msgstr "Vị trí con trỏ"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:376
 msgid "The current position of the insertion cursor in chars."
-msgstr ""
+msgstr "Vị trí hiện thời của con trỏ chèn, tính theo kí tự."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:385
 msgid "Selection Bound"
-msgstr ""
+msgstr "Biên vùng chọn"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:386
 msgid ""
 "The position of the opposite end of the selection from the cursor in chars."
-msgstr ""
+msgstr "Vị trí đuôi vùng chọn từ chỗ con trỏ, tính theo kí tự."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:3187
 msgid "Select All"
-msgstr ""
+msgstr "Chọn hết"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:3198
 msgid "Input Methods"
-msgstr ""
+msgstr "Cách gõ"
 
 #: /home/xapantu/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
@@ -490,7 +494,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:316
 msgid "Personal"
-msgstr ""
+msgstr "Cá nhân"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:321
 msgid "Your common places and bookmarks"
@@ -498,19 +502,19 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:335
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Mở thư mục cá nhân"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:377
 msgid "Trash"
-msgstr ""
+msgstr "Sọt rác"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:379
 msgid "Open the trash"
-msgstr ""
+msgstr "Mở sọt rác"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:389
 msgid "Devices"
-msgstr ""
+msgstr "Thiết bị"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:394
 msgid "Your local partitions and devices"
@@ -518,21 +522,21 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:401
 msgid "File System"
-msgstr ""
+msgstr "Hệ thống tệp"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:403
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "Mở nội dung bên trong của Hệ thống tập tin"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:462
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:487
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "Gắn kết và mở %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:595
 msgid "Network"
-msgstr ""
+msgstr "Mạng"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:600
 msgid "Your network places"
@@ -544,74 +548,74 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:633
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Duyệt nội dung bên trong của mạng"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1593
 msgid "_Start"
-msgstr ""
+msgstr "_Chạy"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1594
 msgid "_Stop"
-msgstr ""
+msgstr "_Dừng"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1599
 msgid "_Power On"
-msgstr ""
+msgstr "_Bật nguồn điện"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Safely Remove Drive"
-msgstr ""
+msgstr "_Gỡ bỏ ổ đĩa một cách an toàn"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1603
 msgid "_Connect Drive"
-msgstr ""
+msgstr "_Kết nối ổ đĩa"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1604
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "_Ngắt kết nối ổ đĩa"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1607
 msgid "_Start Multi-disk Device"
-msgstr ""
+msgstr "_Chạy ổ nhiều đĩa"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1608
 msgid "_Stop Multi-disk Device"
-msgstr ""
+msgstr "_Dừng ổ nhiều đĩa"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1612
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "_Mở khoá ổ đĩa"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1613
 msgid "_Lock Drive"
-msgstr ""
+msgstr "_Khoá ổ đĩa"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1687
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2234
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "Không thể chạy %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1977
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2006
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2035
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "Không thể đẩy %s ra"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2180
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "Không thể thăm dò %s để tìm thay đổi trong vật chứa"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2290
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "Không thể dừng %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2382
 msgid "_Open"
-msgstr ""
+msgstr "_Mở"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2390
 msgid "Open in New _Tab"

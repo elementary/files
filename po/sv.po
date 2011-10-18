@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-03 18:21+0000\n"
+"PO-Revision-Date: 2011-10-17 18:44+0000\n"
 "Last-Translator: David <david.skagersten@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-09-04 04:52+0000\n"
-"X-Generator: Launchpad (build 13830)\n"
+"X-Launchpad-Export-Date: 2011-10-18 05:01+0000\n"
+"X-Generator: Launchpad (build 14157)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -80,6 +80,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  David https://launchpad.net/~david-skagersten\n"
+"  Joachim Johansson https://launchpad.net/~joachim-j\n"
 "  Simon Hammarström https://launchpad.net/~simmeson"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
@@ -96,7 +97,7 @@ msgstr "Tidsgräns för automarkering med muspekaren:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:72
 msgid "Behavior"
-msgstr "Uppförande"
+msgstr "Beteende"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:80
 msgid "small"
@@ -293,11 +294,11 @@ msgstr "Hur texten och ikonen i varje objekt placeras relativt till varandra"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:877
 msgid "Reorderable"
-msgstr "Omarrangeringsbar"
+msgstr "Ordningen kan ändras"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:878
 msgid "View is reorderable"
-msgstr "Vyn är omarrangeringsbar"
+msgstr "Ordningen i vyn kan ändras"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:885
 msgid "Enable Search"
@@ -531,7 +532,7 @@ msgstr "Filsystem"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:403
 msgid "Open the contents of the File System"
-msgstr "Öppna innehållet för filsystemet"
+msgstr "Öppna filsystemets innehåll"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:462
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:487
@@ -725,7 +726,7 @@ msgstr "Anslut till server"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr "Serverdetaljer"
+msgstr "Serverinformation"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
@@ -892,7 +893,7 @@ msgstr " (%'d"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Är du säker att du vill permanent ta bort \"%B\" från papperskorgen?"
+msgstr "Vill du permanent radera \"%B\"?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -902,12 +903,8 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-"Är du säker på att du vill permanent ta bort det markerade objektet från "
-"papperskorgen?"
-msgstr[1] ""
-"Är du säker på att du vill permanent ta bort de %'d markerade objekten i "
-"papperskorgen?"
+msgstr[0] "Vill du permanent radera det markerade objektet?"
+msgstr[1] "Vill du permanent radera de markerade objekten?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1394
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1462
