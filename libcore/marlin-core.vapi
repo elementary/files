@@ -118,8 +118,12 @@ namespace GOF {
 
         public bool is_mounted;
         public bool exists;
+        public bool has_permissions;
+        public int32 permissions;
+
         public void update_icon (int size);
         public bool can_set_permissions ();
+        public string get_permissions_as_string ();
     }
 
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]

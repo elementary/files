@@ -18,6 +18,7 @@
  */ 
 
 using Gtk;
+using Posix;
 
 public class Marlin.View.PropertiesWindow : Gtk.Dialog
 {
@@ -110,9 +111,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         name_label.xalign = 0;
         name_label.set_line_wrap(true);
         perm_vbox.pack_start(name_label);*/
-        construct_perm_panel (perm_vbox);
+        construct_perm_panel (perm_vbox, gof);
         add_section (content_vbox, _("Permissions"), perm_vbox);
-        if (!gof.can_set_permissions ()) {
+        if (!gof.can_set_permissions()) {
             foreach (var widget in perm_vbox.get_children())
                 widget.set_sensitive (false);
         }
@@ -252,6 +253,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         EVERYONE
     }
 
+    private Gtk.Grid perm_grid;
     private int owner_perm_code = 0;
     private int group_perm_code = 0;
     private int everyone_perm_code = 0;
@@ -322,29 +324,57 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         return hbox;
     }
+
+    private void update_owner_type_buttons (Gtk.HBox hbox, int32 permissions, mode_t *owner_rwx) {
+        int i=0;
+        foreach (var widget in hbox.get_children()) {
+            Gtk.ToggleButton btn = (Gtk.ToggleButton) widget;
+            ((permissions & owner_rwx[i]) != 0) ? btn.active = true : btn.active = false;
+            i++;
+        }
+    }
+
+    private void update_perm_grid_toggle_states (GOF.File file) {
+        Gtk.HBox hbox;
+
+        /* update USR row */
+        hbox = (Gtk.HBox) perm_grid.get_child_at (1,3);
+        const mode_t usr_rwx[3] = { S_IRUSR, S_IWUSR, S_IXUSR };
+        update_owner_type_buttons (hbox, file.permissions, usr_rwx);
+        
+        /* update GRP row */
+        hbox = (Gtk.HBox) perm_grid.get_child_at (1,4);
+        const mode_t grp_rwx[3] = { S_IRGRP, S_IWGRP, S_IXGRP };
+        update_owner_type_buttons (hbox, file.permissions, grp_rwx);
+        
+        /* update OTHER row */
+        hbox = (Gtk.HBox) perm_grid.get_child_at (1,5);
+        const mode_t oth_rwx[3] = { S_IROTH, S_IWOTH, S_IXOTH };
+        update_owner_type_buttons (hbox, file.permissions, oth_rwx);
+    }
    
-    private void construct_perm_panel (Box box) {
-        var grid = new Grid();
+    private void construct_perm_panel (Box box, GOF.File file) {
+        perm_grid = new Grid();
                 
         Gtk.Label key_label;
         Gtk.HBox value_label;
         
         key_label = create_label_key(_("Owner") + ": ");
-        grid.attach(key_label, 0, 1, 1, 1);
+        perm_grid.attach(key_label, 0, 1, 1, 1);
         key_label = create_label_key(_("Group") + ": ");
-        grid.attach(key_label, 0, 2, 1, 1);
+        perm_grid.attach(key_label, 0, 2, 1, 1);
         key_label = create_label_key(_("Owner") + ": ", Align.CENTER);
         value_label = create_perm_choice(OwnerType.OWNER);
-        grid.attach(key_label, 0, 3, 1, 1);
-        grid.attach(value_label, 1, 3, 1, 1);
+        perm_grid.attach(key_label, 0, 3, 1, 1);
+        perm_grid.attach(value_label, 1, 3, 1, 1);
         key_label = create_label_key(_("Group") + ": ", Align.CENTER);
         value_label = create_perm_choice(OwnerType.GROUP);
-        grid.attach(key_label, 0, 4, 1, 1);
-        grid.attach(value_label, 1, 4, 1, 1);
+        perm_grid.attach(key_label, 0, 4, 1, 1);
+        perm_grid.attach(value_label, 1, 4, 1, 1);
         key_label = create_label_key(_("Everyone") + ": ", Align.CENTER);
         value_label = create_perm_choice(OwnerType.EVERYONE);
-        grid.attach(key_label, 0, 5, 1, 1);
-        grid.attach(value_label, 1, 5, 1, 1);
+        perm_grid.attach(key_label, 0, 5, 1, 1);
+        perm_grid.attach(value_label, 1, 5, 1, 1);
         
         perm_code = new XsEntry();
         //var perm_code = new Label("705");
@@ -354,13 +384,15 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         //perm_code.set_has_frame (false);
         perm_code.set_size_request(35, -1);
         var perm_code_hbox = new HBox(false, 10);
-        var l_perm = new Label("-rwxr-xr-x");
+        //var l_perm = new Label("-rwxr-xr-x");
+        var l_perm = new Label(file.get_permissions_as_string());
         perm_code_hbox.pack_start(l_perm, true, true, 0);
         perm_code_hbox.pack_start(perm_code, false, false, 0);
 
-        grid.attach(perm_code_hbox, 1, 6, 1, 1);
+        perm_grid.attach(perm_code_hbox, 1, 6, 1, 1);
         
-        box.pack_start(grid);
+        box.pack_start(perm_grid);
+        update_perm_grid_toggle_states (file);
     }
     
     private void construct_preview_panel (Box box, GOF.File file) {
