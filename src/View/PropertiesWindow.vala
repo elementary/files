@@ -279,7 +279,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     }
 
     private void action_toggled_read (Gtk.ToggleButton btn) {
-        unowned PermissionType pt = btn.get_data ("ownertype");
+        unowned PermissionType pt = btn.get_data ("permissiontype");
         int mult = 1;
         if (!btn.get_active())
             mult = -1;
@@ -288,7 +288,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     }
 
     private void action_toggled_write (Gtk.ToggleButton btn) {
-        unowned PermissionType pt = btn.get_data ("ownertype");
+        unowned PermissionType pt = btn.get_data ("permissiontype");
         int mult = 1;
         if (!btn.get_active())
             mult = -1;
@@ -297,7 +297,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     }
     
     private void action_toggled_execute (Gtk.ToggleButton btn) {
-        unowned PermissionType pt = btn.get_data ("ownertype");
+        unowned PermissionType pt = btn.get_data ("permissiontype");
         int mult = 1;
         if (!btn.get_active())
             mult = -1;
@@ -312,17 +312,17 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         var btn_read = new Gtk.ToggleButton();
         toggle_button_add_label (btn_read, _("Read"));
         //btn_read.set_relief (Gtk.ReliefStyle.NONE);
-        btn_read.set_data ("ownertype", pt);
+        btn_read.set_data ("permissiontype", pt);
         btn_read.toggled.connect (action_toggled_read);
         var btn_write = new Gtk.ToggleButton();
         toggle_button_add_label (btn_write, _("Write"));
         //btn_write.set_relief (Gtk.ReliefStyle.NONE); 
-        btn_write.set_data ("ownertype", pt);
+        btn_write.set_data ("permissiontype", pt);
         btn_write.toggled.connect (action_toggled_write);
         var btn_exe = new Gtk.ToggleButton();
         toggle_button_add_label (btn_exe, _("Execute"));
         //btn_exe.set_relief (Gtk.ReliefStyle.NONE); 
-        btn_exe.set_data ("ownertype", pt);
+        btn_exe.set_data ("permissiontype", pt);
         btn_exe.toggled.connect (action_toggled_execute);
         hbox.pack_start(btn_read);
         hbox.pack_start(btn_write);
