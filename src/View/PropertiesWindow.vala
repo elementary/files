@@ -259,6 +259,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         EXE = (1<<2)
     }
 
+    private mode_t[,] vfs_perms = {
+        { S_IRUSR, S_IWUSR, S_IXUSR },
+        { S_IRGRP, S_IWGRP, S_IXGRP },
+        { S_IROTH, S_IWOTH, S_IXOTH }
+    };
+
     private Gtk.Grid perm_grid;
     private int owner_perm_code = 0;
     private int group_perm_code = 0;
@@ -331,13 +337,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         return hbox;
     }
 
-    private mode_t[,] vfs_perms = {
-        { S_IRUSR, S_IWUSR, S_IXUSR },
-        { S_IRGRP, S_IWGRP, S_IXGRP },
-        { S_IROTH, S_IWOTH, S_IXOTH }
-    };
-
-    private void update_owner_type_buttons (Gtk.HBox hbox, int32 permissions, PermissionType pt) {
+    private void update_permission_type_buttons (Gtk.HBox hbox, int32 permissions, PermissionType pt) {
         int i=0;
         foreach (var widget in hbox.get_children()) {
             Gtk.ToggleButton btn = (Gtk.ToggleButton) widget;
@@ -351,15 +351,15 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         /* update USR row */
         hbox = (Gtk.HBox) perm_grid.get_child_at (1,3);
-        update_owner_type_buttons (hbox, file.permissions, PermissionType.USER);
+        update_permission_type_buttons (hbox, file.permissions, PermissionType.USER);
         
         /* update GRP row */
         hbox = (Gtk.HBox) perm_grid.get_child_at (1,4);
-        update_owner_type_buttons (hbox, file.permissions, PermissionType.GROUP);
+        update_permission_type_buttons (hbox, file.permissions, PermissionType.GROUP);
         
         /* update OTHER row */
         hbox = (Gtk.HBox) perm_grid.get_child_at (1,5);
-        update_owner_type_buttons (hbox, file.permissions, PermissionType.OTHER);
+        update_permission_type_buttons (hbox, file.permissions, PermissionType.OTHER);
     }
    
     private void construct_perm_panel (Box box, GOF.File file) {
