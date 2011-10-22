@@ -443,7 +443,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         }
     }
 
-    private async void store_info (uint32 perm) {
+    private async void store_perm_info (uint32 perm) {
         GLib.FileInfo info = new FileInfo ();
 
         try {
@@ -467,11 +467,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
                 perm_code_should_update = false;
                 update_perm_grid_toggle_states (perm);
                 perm_code_should_update = true;
-                if (goffile.can_set_permissions()) {
+                if (goffile.can_set_permissions() && goffile.permissions != perm) {
                     goffile.permissions = perm;
                     l_perm.set_text(goffile.get_permissions_as_string());
                     /* real update permissions */
-                    store_info(perm); 
+                    store_perm_info(perm); 
                 }
                 timeout_perm = 0;
 
