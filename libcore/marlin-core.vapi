@@ -119,7 +119,7 @@ namespace GOF {
         public bool is_mounted;
         public bool exists;
         public bool has_permissions;
-        public int32 permissions;
+        public uint32 permissions;
 
         public void update_icon (int size);
         public bool can_set_permissions ();

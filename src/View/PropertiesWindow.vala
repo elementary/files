@@ -25,6 +25,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     private Gee.LinkedList<Pair<string, string>> info;
     private ImgEventBox evbox;
     private XsEntry perm_code;
+    private bool perm_code_should_update = true;
+    private Gtk.Label l_perm;
+    private GOF.File goffile;
+
+    private uint timeout_perm = 0;
+    private GLib.Cancellable? cancellable;
 
     public PropertiesWindow (GLib.List<GOF.File> files, Gtk.Window parent)
     {
@@ -51,8 +57,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         //content_vbox.height_request = 160;
         content_vbox.width_request = 288;
 
+        /* TODO fix this mess */
+        goffile = (GOF.File) files.data;
         GOF.File? gof = (GOF.File) files.data;
         get_info (gof);
+        cancellable = new GLib.Cancellable ();
 
         /* Basic */
         var basic_box = new HBox (false, 9);
@@ -287,28 +296,37 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     private void action_toggled_read (Gtk.ToggleButton btn) {
         unowned PermissionType pt = btn.get_data ("permissiontype");
         int mult = 1;
+        
+        reset_and_cancel_perm_timeout();
         if (!btn.get_active())
             mult = -1;
         update_perm_codes (pt, 4, mult);
-        perm_code.set_text("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
+        if (perm_code_should_update)
+            perm_code.set_text("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
     }
 
     private void action_toggled_write (Gtk.ToggleButton btn) {
         unowned PermissionType pt = btn.get_data ("permissiontype");
         int mult = 1;
+        
+        reset_and_cancel_perm_timeout();
         if (!btn.get_active())
             mult = -1;
         update_perm_codes (pt, 2, mult);
-        perm_code.set_text("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
+        if (perm_code_should_update)
+            perm_code.set_text("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
     }
     
     private void action_toggled_execute (Gtk.ToggleButton btn) {
         unowned PermissionType pt = btn.get_data ("permissiontype");
         int mult = 1;
+        
+        reset_and_cancel_perm_timeout();
         if (!btn.get_active())
             mult = -1;
         update_perm_codes (pt, 1, mult);
-        perm_code.set_text("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
+        if (perm_code_should_update)
+            perm_code.set_text("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
     }
     
     private Gtk.HBox create_perm_choice (PermissionType pt) {
@@ -337,7 +355,47 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         return hbox;
     }
 
-    private void update_permission_type_buttons (Gtk.HBox hbox, int32 permissions, PermissionType pt) {
+    private uint32 get_perm_from_chmod_unit (uint32 vfs_perm, int nb, 
+                                             int chmod, PermissionType pt)
+    {
+        //message ("chmod code %d %d", chmod, nb);
+        if (nb > 7 || nb < 0)
+            critical ("erroned chmod code %d %d", chmod, nb);
+        
+        int[] chmod_types = { 4, 2, 1};
+        
+        int i = 0;
+        for (; i<3; i++) {
+            int div = nb / chmod_types[i];
+            int modulo = nb % chmod_types[i];
+            if (div >= 1)
+                vfs_perm |= vfs_perms[pt,i];
+            nb = modulo;
+            //message ("div %d modulo %d", div, modulo);
+        }
+
+        return vfs_perm;
+    }
+
+    private uint32 chmod_to_vfs (int chmod)
+    {
+        uint32 vfs_perm = 0;
+
+        /* user */
+        vfs_perm = get_perm_from_chmod_unit (vfs_perm, (int) chmod / 100, 
+                                             chmod, PermissionType.USER);
+        /* group */
+        vfs_perm = get_perm_from_chmod_unit (vfs_perm, (int) (chmod / 10) % 10, 
+                                             chmod, PermissionType.GROUP);
+        /* other */
+        vfs_perm = get_perm_from_chmod_unit (vfs_perm, (int) chmod % 10, 
+                                             chmod, PermissionType.OTHER);
+
+        return vfs_perm;
+    }
+
+    private void update_permission_type_buttons (Gtk.HBox hbox, uint32 permissions, PermissionType pt) 
+    {
         int i=0;
         foreach (var widget in hbox.get_children()) {
             Gtk.ToggleButton btn = (Gtk.ToggleButton) widget;
@@ -346,20 +404,80 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         }
     }
 
-    private void update_perm_grid_toggle_states (GOF.File file) {
+    private void update_perm_grid_toggle_states (uint32 permissions) {
         Gtk.HBox hbox;
 
         /* update USR row */
         hbox = (Gtk.HBox) perm_grid.get_child_at (1,3);
-        update_permission_type_buttons (hbox, file.permissions, PermissionType.USER);
+        update_permission_type_buttons (hbox, permissions, PermissionType.USER);
         
         /* update GRP row */
         hbox = (Gtk.HBox) perm_grid.get_child_at (1,4);
-        update_permission_type_buttons (hbox, file.permissions, PermissionType.GROUP);
+        update_permission_type_buttons (hbox, permissions, PermissionType.GROUP);
         
         /* update OTHER row */
         hbox = (Gtk.HBox) perm_grid.get_child_at (1,5);
-        update_permission_type_buttons (hbox, file.permissions, PermissionType.OTHER);
+        update_permission_type_buttons (hbox, permissions, PermissionType.OTHER);
+    }
+
+    private bool is_chmod_code (string str) {
+        try {
+            var regex = new GLib.Regex ("^[0-7]{3}$");
+            if (regex.match (str))
+                return true;
+        } catch (GLib.RegexError e) {
+			GLib.assert_not_reached ();
+		}
+
+        return false;
+    }
+
+    private void reset_and_cancel_perm_timeout () {
+        if (cancellable != null) {
+            cancellable.cancel();
+            cancellable.reset();
+        }
+        if (timeout_perm != 0) {
+            Source.remove(timeout_perm);
+            timeout_perm = 0;
+        }
+    }
+
+    private async void store_info (uint32 perm) {
+        GLib.FileInfo info = new FileInfo ();
+
+        try {
+            info.set_attribute_uint32(FILE_ATTRIBUTE_UNIX_MODE, perm);
+            yield goffile.location.set_attributes_async (info, 
+                                                         GLib.FileQueryInfoFlags.NONE,
+                                                         GLib.Priority.DEFAULT, 
+                                                         cancellable, null);
+        } catch (GLib.Error e) {
+            GLib.warning ("Could not store file attribute: %s", e.message);
+        }
+    }
+
+    private void entry_changed () {
+        var str = perm_code.get_text();
+        if (is_chmod_code(str)) {
+            reset_and_cancel_perm_timeout();
+            timeout_perm = Timeout.add(60, () => {
+                //message ("changed %s", str);
+                uint32 perm = chmod_to_vfs (int.parse (str));
+                perm_code_should_update = false;
+                update_perm_grid_toggle_states (perm);
+                perm_code_should_update = true;
+                if (goffile.can_set_permissions()) {
+                    goffile.permissions = perm;
+                    l_perm.set_text(goffile.get_permissions_as_string());
+                    /* real update permissions */
+                    store_info(perm); 
+                }
+                timeout_perm = 0;
+
+                return false;
+            });
+        }
     }
    
     private void construct_perm_panel (Box box, GOF.File file) {
@@ -392,16 +510,37 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         perm_code.set_max_length(3);
         //perm_code.set_has_frame (false);
         perm_code.set_size_request(35, -1);
+
+        perm_code.changed.connect (entry_changed);
+
         var perm_code_hbox = new HBox(false, 10);
         //var l_perm = new Label("-rwxr-xr-x");
-        var l_perm = new Label(file.get_permissions_as_string());
+        l_perm = new Label(file.get_permissions_as_string());
         perm_code_hbox.pack_start(l_perm, true, true, 0);
         perm_code_hbox.pack_start(perm_code, false, false, 0);
 
         perm_grid.attach(perm_code_hbox, 1, 6, 1, 1);
         
         box.pack_start(perm_grid);
-        update_perm_grid_toggle_states (file);
+
+        /*uint32 perm = chmod_to_vfs (702);
+        update_perm_grid_toggle_states (perm);*/
+        update_perm_grid_toggle_states (file.permissions);
+                                        
+        /*int nbb;
+        
+        nbb = 702;
+        goffile.permissions = chmod_to_vfs(nbb);
+        message ("test chmod %d %s", nbb, goffile.get_permissions_as_string());
+        nbb = 343;
+        goffile.permissions = chmod_to_vfs(nbb);
+        message ("test chmod %d %s", nbb, goffile.get_permissions_as_string());
+        nbb = 206;
+        goffile.permissions = chmod_to_vfs(nbb);
+        message ("test chmod %d %s", nbb, goffile.get_permissions_as_string());
+        nbb = 216;
+        goffile.permissions = chmod_to_vfs(nbb);
+        message ("test chmod %d %s", nbb, goffile.get_permissions_as_string());*/
     }
     
     private void construct_preview_panel (Box box, GOF.File file) {
