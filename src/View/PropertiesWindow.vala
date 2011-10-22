@@ -173,6 +173,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         var exp = new Expander("<span weight='semibold'>" + title + "</span>");
         exp.set_use_markup(true);
         exp.expanded = true;
+        exp.margin_bottom = 5;
         vbox.pack_start(exp, false, false, 0);
         if (content != null)
             exp.add (content);
