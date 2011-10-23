@@ -557,13 +557,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         perm_grid.attach(key_label, 0, 1, 1, 1);
         value_label = create_owner_choice();
         perm_grid.attach(value_label, 1, 1, 1, 1);
-        ((Gtk.ComboBox) value_label).changed.connect (combo_owner_changed);
         
         key_label = create_label_key(_("Group") + ": ", Align.CENTER);
         perm_grid.attach(key_label, 0, 2, 1, 1);
         value_label = create_group_choice();
         perm_grid.attach(value_label, 1, 2, 1, 1);
-        ((Gtk.ComboBox) value_label).changed.connect (combo_group_changed);
 
         /* make a separator with margins */
         key_label.margin_bottom = 7;
@@ -589,8 +587,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         //perm_code.set_has_frame (false);
         perm_code.set_size_request(35, -1);
 
-        perm_code.changed.connect (entry_changed);
-
         var perm_code_hbox = new HBox(false, 10);
         //var l_perm = new Label("-rwxr-xr-x");
         l_perm = new Label(file.get_permissions_as_string());
@@ -605,6 +601,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         update_perm_grid_toggle_states (perm);*/
         update_perm_grid_toggle_states (file.permissions);
                                         
+        perm_code.changed.connect (entry_changed);
+
         /*int nbb;
         
         nbb = 702;
@@ -660,6 +658,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             else 
                 combo.set_active(owner_index);
 
+            combo.changed.connect (combo_owner_changed);
+
             choice = (Gtk.Widget) combo;
         } else {
             choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER));
@@ -710,6 +710,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             else 
                 combo.set_active(group_index);
             
+            combo.changed.connect (combo_group_changed);
+
             choice = (Gtk.Widget) combo;
         } else {
             choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_GROUP));
