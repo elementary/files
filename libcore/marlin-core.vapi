@@ -57,6 +57,8 @@ namespace Eel {
 namespace Eel {
     public string? get_date_as_string (uint64 d, string format);
     public GLib.List? get_user_names ();
+    public bool get_group_id_from_group_name (string *group_name, out int gid);
+    public bool get_id_from_digit_string (string digit_str, out int id);
 }
 
 [CCode (cprefix = "EelPango", lower_case_cprefix = "eel_pango_", cheader_filename = "eel-pango-extensions.h")]
@@ -125,10 +127,13 @@ namespace GOF {
 
         public bool is_mounted;
         public bool exists;
-        public bool has_permissions;
-        public uint32 permissions;
+
+        public int uid;
+        public int gid;
         public string owner;
         public string group;
+        public bool has_permissions;
+        public uint32 permissions;
 
         public void update_icon (int size);
         public bool can_set_owner ();

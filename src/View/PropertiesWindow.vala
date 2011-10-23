@@ -19,6 +19,7 @@
 
 using Gtk;
 using Posix;
+using GLib;
 
 public class Marlin.View.PropertiesWindow : Gtk.Dialog
 {
@@ -27,6 +28,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     private XsEntry perm_code;
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
+    private Gtk.ListStore store_groups;
     private GOF.File goffile;
 
     private uint timeout_perm = 0;
@@ -444,17 +446,19 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         }
     }
 
-    private async void store_perm_info (uint32 perm) {
+    private async void file_set_attributes (GOF.File file, string attr, 
+                                            uint32 val, GLib.Cancellable? _cancellable = null) 
+    {
         GLib.FileInfo info = new FileInfo ();
 
         try {
-            info.set_attribute_uint32(FILE_ATTRIBUTE_UNIX_MODE, perm);
-            yield goffile.location.set_attributes_async (info, 
-                                                         GLib.FileQueryInfoFlags.NONE,
-                                                         GLib.Priority.DEFAULT, 
-                                                         cancellable, null);
+            info.set_attribute_uint32(attr, val);
+            yield file.location.set_attributes_async (info, 
+                                                      GLib.FileQueryInfoFlags.NONE,
+                                                      GLib.Priority.DEFAULT, 
+                                                      _cancellable, null);
         } catch (GLib.Error e) {
-            GLib.warning ("Could not store file attribute: %s", e.message);
+            GLib.warning ("Could not set file attribute %s: %s", attr, e.message);
         }
     }
 
@@ -472,13 +476,48 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
                     goffile.permissions = perm;
                     l_perm.set_text(goffile.get_permissions_as_string());
                     /* real update permissions */
-                    store_perm_info(perm); 
+                    file_set_attributes (goffile, FILE_ATTRIBUTE_UNIX_MODE, perm, cancellable);
                 }
                 timeout_perm = 0;
 
                 return false;
             });
         }
+    }
+
+    private async void combo_group_changed (Gtk.ComboBox combo) {
+        Gtk.TreeIter iter;
+        string group;
+        int gid;
+
+        if (!combo.get_active_iter(out iter))
+            return;
+        
+        store_groups.get (iter, 0, out group);
+        message ("combo_group changed: %s", group);
+
+        if (!goffile.can_set_group()) {
+            critical ("error can't set group");
+            //TODO
+            //_("Not allowed to set group"));
+            return;
+        }
+
+        /* If no match treating group_name_or_id as name, try treating
+         * it as id.
+         */
+        if (!Eel.get_group_id_from_group_name (group, out gid)
+            && !Eel.get_id_from_digit_string (group, out gid)) {
+            critical ("group doesn t exit");
+            //TODO
+            //_("Specified group '%s' doesn't exist"), group);
+            return;
+        }
+
+        if (gid == goffile.gid)
+            return;
+
+        file_set_attributes (goffile, FILE_ATTRIBUTE_UNIX_GID, gid);
     }
    
     private void construct_perm_panel (Box box, GOF.File file) {
@@ -496,6 +535,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         perm_grid.attach(key_label, 0, 2, 1, 1);
         value_label = create_group_choice();
         perm_grid.attach(value_label, 1, 2, 1, 1);
+
+        ((Gtk.ComboBox) value_label).changed.connect (combo_group_changed);
+
+        /* make a separator with margins */
+        key_label.margin_bottom = 7;
+        value_label.margin_bottom = 7;
         key_label = create_label_key(_("Owner") + ": ", Align.CENTER);
         value_hlabel = create_perm_choice(PermissionType.USER);
         perm_grid.attach(key_label, 0, 3, 1, 1);
@@ -606,10 +651,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         if (goffile.can_set_group()) {
             GLib.List<string> groups;
-            Gtk.ListStore store;
             Gtk.TreeIter iter;
 
-            store = new Gtk.ListStore (1, typeof (string)); 
+            store_groups = new Gtk.ListStore (1, typeof (string)); 
             groups = goffile.get_settable_group_names();
             int group_index = -1;
             int i = 0;
@@ -617,8 +661,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
                 if (group == goffile.owner) {
                     group_index = i;
                 }
-                store.append(out iter);
-                store.set(iter, 0, group);
+                store_groups.append(out iter);
+                store_groups.set(iter, 0, group);
                 i++;
             }
 
@@ -626,11 +670,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
              * It happens when the owner has no matching identifier in the password file.
              */
             if (group_index == -1) {
-                store.prepend(out iter);
-                store.set(iter, 0, goffile.owner);
+                store_groups.prepend(out iter);
+                store_groups.set(iter, 0, goffile.owner);
             }
             
-            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store);
+            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_groups);
             var renderer = new Gtk.CellRendererText ();
             combo.pack_start(renderer, true);
             combo.add_attribute(renderer, "text", 0);

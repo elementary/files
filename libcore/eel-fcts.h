@@ -22,9 +22,12 @@
 
 #include <glib-object.h>
 
-char    *eel_strdup_strftime (const char *format, struct tm *time_pieces);
-GDate   *eel_g_date_new_tm (struct tm *time_pieces);
-char    *eel_get_date_as_string (guint64 d, gchar *date_format);
-GList   *eel_get_user_names (void);
-GList   *eel_get_group_names_for_user (void);
-GList   *eel_get_all_group_names (void);
+char        *eel_strdup_strftime (const char *format, struct tm *time_pieces);
+GDate       *eel_g_date_new_tm (struct tm *time_pieces);
+char        *eel_get_date_as_string (guint64 d, gchar *date_format);
+GList       *eel_get_user_names (void);
+GList       *eel_get_group_names_for_user (void);
+GList       *eel_get_all_group_names (void);
+gboolean    eel_get_group_id_from_group_name (const char *group_name, uid_t *gid);
+gboolean    eel_get_id_from_digit_string (const char *digit_string, uid_t *id);
+

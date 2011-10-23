@@ -25,6 +25,7 @@
 
 #include <glib-object.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <time.h>
 #include <sys/types.h>
@@ -440,8 +441,6 @@ eel_get_group_names_for_user (void)
 }
 
 /**
- * nautilus_get_group_names:
- * 
  * Get a list of all group names.
  */
 GList *
@@ -460,5 +459,40 @@ eel_get_all_group_names (void)
 	endgrent ();
 	
 	return eel_g_str_list_alphabetize (list);
+}
+
+gboolean
+eel_get_group_id_from_group_name (const char *group_name, uid_t *gid)
+{
+	struct group *group;
+
+	g_assert (gid != NULL);
+
+	group = getgrnam (group_name);
+
+	if (group == NULL)
+		return FALSE;
+
+	*gid = group->gr_gid;
+
+	return TRUE;
+}
+
+gboolean
+eel_get_id_from_digit_string (const char *digit_string, uid_t *id)
+{
+	long scanned_id;
+	char c;
+
+	g_assert (id != NULL);
+
+	/* Only accept string if it has one integer with nothing
+	 * afterwards.
+	 */
+	if (sscanf (digit_string, "%ld%c", &scanned_id, &c) != 1) {
+		return FALSE;
+	}
+	*id = scanned_id;
+	return TRUE;
 }
 
