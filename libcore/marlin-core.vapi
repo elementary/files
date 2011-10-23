@@ -57,6 +57,7 @@ namespace Eel {
 namespace Eel {
     public string? get_date_as_string (uint64 d, string format);
     public GLib.List? get_user_names ();
+    public bool get_user_id_from_user_name (string *user_name, out int uid);
     public bool get_group_id_from_group_name (string *group_name, out int gid);
     public bool get_id_from_digit_string (string digit_str, out int id);
 }

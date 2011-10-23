@@ -479,6 +479,23 @@ eel_get_group_id_from_group_name (const char *group_name, uid_t *gid)
 }
 
 gboolean
+eel_get_user_id_from_user_name (const char *user_name, uid_t *uid)
+{
+	struct passwd *password_info;
+
+	g_assert (uid != NULL);
+
+	password_info = getpwnam (user_name);
+
+	if (password_info == NULL)
+        return FALSE;
+
+	*uid = password_info->pw_uid;
+
+	return TRUE;
+}
+
+gboolean
 eel_get_id_from_digit_string (const char *digit_string, uid_t *id)
 {
 	long scanned_id;

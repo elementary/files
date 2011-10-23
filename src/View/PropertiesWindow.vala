@@ -28,6 +28,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     private XsEntry perm_code;
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
+    private Gtk.ListStore store_users;
     private Gtk.ListStore store_groups;
     private GOF.File goffile;
 
@@ -484,8 +485,35 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             });
         }
     }
+    
+    private void combo_owner_changed (Gtk.ComboBox combo) {
+        Gtk.TreeIter iter;
+        string user;
+        int uid;
 
-    private async void combo_group_changed (Gtk.ComboBox combo) {
+        if (!combo.get_active_iter(out iter))
+            return;
+        
+        store_users.get (iter, 0, out user);
+        //message ("combo_user changed: %s", user);
+
+        if (!goffile.can_set_owner()) {
+            critical ("error can't set user");
+            return;
+        }
+
+        if (!Eel.get_user_id_from_user_name (user, out uid)
+            && !Eel.get_id_from_digit_string (user, out uid)) {
+            critical ("user doesn t exit");
+        }
+
+        if (uid == goffile.uid)
+            return;
+        
+        file_set_attributes (goffile, FILE_ATTRIBUTE_UNIX_UID, uid);
+    }
+
+    private void combo_group_changed (Gtk.ComboBox combo) {
         Gtk.TreeIter iter;
         string group;
         int gid;
@@ -494,7 +522,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             return;
         
         store_groups.get (iter, 0, out group);
-        message ("combo_group changed: %s", group);
+        //message ("combo_group changed: %s", group);
 
         if (!goffile.can_set_group()) {
             critical ("error can't set group");
@@ -503,9 +531,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             return;
         }
 
-        /* If no match treating group_name_or_id as name, try treating
-         * it as id.
-         */
+        /* match gid from name */
         if (!Eel.get_group_id_from_group_name (group, out gid)
             && !Eel.get_id_from_digit_string (group, out gid)) {
             critical ("group doesn t exit");
@@ -531,11 +557,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         perm_grid.attach(key_label, 0, 1, 1, 1);
         value_label = create_owner_choice();
         perm_grid.attach(value_label, 1, 1, 1, 1);
+        ((Gtk.ComboBox) value_label).changed.connect (combo_owner_changed);
+        
         key_label = create_label_key(_("Group") + ": ", Align.CENTER);
         perm_grid.attach(key_label, 0, 2, 1, 1);
         value_label = create_group_choice();
         perm_grid.attach(value_label, 1, 2, 1, 1);
-
         ((Gtk.ComboBox) value_label).changed.connect (combo_group_changed);
 
         /* make a separator with margins */
@@ -600,10 +627,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         if (goffile.can_set_owner()) {
             GLib.List<string> users;
-            Gtk.ListStore store;
             Gtk.TreeIter iter;
 
-            store = new Gtk.ListStore (1, typeof (string)); 
+            store_users = new Gtk.ListStore (1, typeof (string)); 
             users = Eel.get_user_names();
             int owner_index = -1;
             int i = 0;
@@ -611,8 +637,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
                 if (user == goffile.owner) {
                     owner_index = i;
                 }
-                store.append(out iter);
-                store.set(iter, 0, user);
+                store_users.append(out iter);
+                store_users.set(iter, 0, user);
                 i++;
             }
 
@@ -620,11 +646,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
              * It happens when the owner has no matching identifier in the password file.
              */
             if (owner_index == -1) {
-                store.prepend(out iter);
-                store.set(iter, 0, goffile.owner);
+                store_users.prepend(out iter);
+                store_users.set(iter, 0, goffile.owner);
             }
             
-            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store);
+            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_users);
             var renderer = new Gtk.CellRendererText ();
             combo.pack_start(renderer, true);
             combo.add_attribute(renderer, "text", 0);
