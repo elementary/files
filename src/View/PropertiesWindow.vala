@@ -485,24 +485,29 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         perm_grid = new Grid();
                 
         Gtk.Label key_label;
-        Gtk.HBox value_label;
+        Gtk.Widget value_label;
+        Gtk.HBox value_hlabel;
         
-        key_label = create_label_key(_("Owner") + ": ");
-        perm_grid.attach(key_label, 0, 1, 1, 1);
-        key_label = create_label_key(_("Group") + ": ");
-        perm_grid.attach(key_label, 0, 2, 1, 1);
         key_label = create_label_key(_("Owner") + ": ", Align.CENTER);
-        value_label = create_perm_choice(PermissionType.USER);
-        perm_grid.attach(key_label, 0, 3, 1, 1);
-        perm_grid.attach(value_label, 1, 3, 1, 1);
+        perm_grid.attach(key_label, 0, 1, 1, 1);
+        value_label = create_owner_choice();
+        perm_grid.attach(value_label, 1, 1, 1, 1);
         key_label = create_label_key(_("Group") + ": ", Align.CENTER);
-        value_label = create_perm_choice(PermissionType.GROUP);
+        perm_grid.attach(key_label, 0, 2, 1, 1);
+        value_label = create_group_choice();
+        perm_grid.attach(value_label, 1, 2, 1, 1);
+        key_label = create_label_key(_("Owner") + ": ", Align.CENTER);
+        value_hlabel = create_perm_choice(PermissionType.USER);
+        perm_grid.attach(key_label, 0, 3, 1, 1);
+        perm_grid.attach(value_hlabel, 1, 3, 1, 1);
+        key_label = create_label_key(_("Group") + ": ", Align.CENTER);
+        value_hlabel = create_perm_choice(PermissionType.GROUP);
         perm_grid.attach(key_label, 0, 4, 1, 1);
-        perm_grid.attach(value_label, 1, 4, 1, 1);
+        perm_grid.attach(value_hlabel, 1, 4, 1, 1);
         key_label = create_label_key(_("Everyone") + ": ", Align.CENTER);
-        value_label = create_perm_choice(PermissionType.OTHER);
+        value_hlabel = create_perm_choice(PermissionType.OTHER);
         perm_grid.attach(key_label, 0, 5, 1, 1);
-        perm_grid.attach(value_label, 1, 5, 1, 1);
+        perm_grid.attach(value_hlabel, 1, 5, 1, 1);
         
         perm_code = new XsEntry();
         //var perm_code = new Label("705");
@@ -542,6 +547,108 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         nbb = 216;
         goffile.permissions = chmod_to_vfs(nbb);
         message ("test chmod %d %s", nbb, goffile.get_permissions_as_string());*/
+    }
+        
+    private Gtk.Widget create_owner_choice() {
+        Gtk.Widget choice;
+        choice = null;
+
+        if (goffile.can_set_owner()) {
+            GLib.List<string> users;
+            Gtk.ListStore store;
+            Gtk.TreeIter iter;
+
+            store = new Gtk.ListStore (1, typeof (string)); 
+            users = Eel.get_user_names();
+            int owner_index = -1;
+            int i = 0;
+            foreach (var user in users) {
+                if (user == goffile.owner) {
+                    owner_index = i;
+                }
+                store.append(out iter);
+                store.set(iter, 0, user);
+                i++;
+            }
+
+            /* If ower is not known, we prepend it. 
+             * It happens when the owner has no matching identifier in the password file.
+             */
+            if (owner_index == -1) {
+                store.prepend(out iter);
+                store.set(iter, 0, goffile.owner);
+            }
+            
+            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store);
+            var renderer = new Gtk.CellRendererText ();
+            combo.pack_start(renderer, true);
+            combo.add_attribute(renderer, "text", 0);
+            //renderer.attributes = EelPango.attr_list_small();
+            if (owner_index == -1)
+                combo.set_active(0);
+            else 
+                combo.set_active(owner_index);
+
+            choice = (Gtk.Widget) combo;
+        } else {
+            choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER));
+            //choice.margin_left = 6;
+            choice.set_halign (Gtk.Align.START);
+        }
+
+        choice.set_valign (Gtk.Align.CENTER);
+
+        return choice;
+    }
+    
+    private Gtk.Widget create_group_choice() {
+        Gtk.Widget choice;
+
+        if (goffile.can_set_group()) {
+            GLib.List<string> groups;
+            Gtk.ListStore store;
+            Gtk.TreeIter iter;
+
+            store = new Gtk.ListStore (1, typeof (string)); 
+            groups = goffile.get_settable_group_names();
+            int group_index = -1;
+            int i = 0;
+            foreach (var group in groups) {
+                if (group == goffile.owner) {
+                    group_index = i;
+                }
+                store.append(out iter);
+                store.set(iter, 0, group);
+                i++;
+            }
+
+            /* If ower is not known, we prepend it. 
+             * It happens when the owner has no matching identifier in the password file.
+             */
+            if (group_index == -1) {
+                store.prepend(out iter);
+                store.set(iter, 0, goffile.owner);
+            }
+            
+            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store);
+            var renderer = new Gtk.CellRendererText ();
+            combo.pack_start(renderer, true);
+            combo.add_attribute(renderer, "text", 0);
+            //renderer.attributes = EelPango.attr_list_small();
+            if (group_index == -1)
+                combo.set_active(0);
+            else 
+                combo.set_active(group_index);
+            
+            choice = (Gtk.Widget) combo;
+        } else {
+            choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_GROUP));
+            choice.set_halign (Gtk.Align.START);
+        }
+
+        choice.set_valign (Gtk.Align.CENTER);
+
+        return choice;
     }
     
     private void construct_preview_panel (Box box, GOF.File file) {

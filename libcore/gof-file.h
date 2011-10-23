@@ -98,6 +98,8 @@ struct _GOFFile {
 
     gboolean        has_permissions;
     guint32         permissions;
+    gchar           *owner;
+    gchar           *group;
     int             uid;
     int             gid;
 
@@ -221,6 +223,9 @@ void            gof_file_add_emblem(GOFFile* file, const gchar* emblem);
  **/
 #define gof_file_get_thumb_state(file) (GOF_FILE ((file))->flags & GOF_FILE_THUMB_STATE_MASK)
 
+gboolean        gof_file_can_set_owner (GOFFile *file);
+gboolean        gof_file_can_set_group (GOFFile *file);
+GList           *gof_file_get_settable_group_names (GOFFile *file);
 gboolean        gof_file_can_set_permissions (GOFFile *file);
 char            *gof_file_get_permissions_as_string (GOFFile *file);
 

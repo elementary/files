@@ -1,9 +1,36 @@
+/* 
+ * Copyright (C) 1999, 2000, 2001 Eazel, Inc.
+ *
+ * The Gnome Library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * The Gnome Library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public
+ * License along with the Gnome Library; see the file COPYING.LIB.  If not,
+ * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+ *
+ * Authors: John Sullivan <sullivan@eazel.com>
+ *          Darin Adler <darin@bentspoon.com>
+ */
+
+
 #include "eel-fcts.h"
 
 #include <glib-object.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <sys/types.h>
+#include <pwd.h>
+#include <grp.h>
+#include "eel-glib-extensions.h"
 #include "eel-i18n.h"
 
 #define C_STANDARD_STRFTIME_CHARACTERS "aAbBcdHIjmMpSUwWxXyYZ"
@@ -361,5 +388,77 @@ eel_get_date_as_string (guint64 d, gchar *date_format)
     }
 
     return eel_strdup_strftime (format, file_time);
+}
+
+/**
+ * eel_get_user_names:
+ * 
+ * Get a list of user names. 
+ * The caller is responsible for freeing this list and its contents.
+ */
+GList *
+eel_get_user_names (void)
+{
+	GList *list;
+	struct passwd *user;
+
+	list = NULL;
+	setpwent ();
+	while ((user = getpwent ()) != NULL) {
+		list = g_list_prepend (list, g_strdup (user->pw_name));
+	}
+	endpwent ();
+
+	return eel_g_str_list_alphabetize (list);
+}
+
+/* Get a list of group names, filtered to only the ones
+ * that contain the given username. If the username is
+ * NULL, returns a list of all group names.
+ */
+GList *
+eel_get_group_names_for_user (void)
+{
+	GList *list;
+	struct group *group;
+	int count, i;
+	gid_t gid_list[NGROUPS_MAX + 1];
+	
+
+	list = NULL;
+
+	count = getgroups (NGROUPS_MAX + 1, gid_list);
+	for (i = 0; i < count; i++) {
+		group = getgrgid (gid_list[i]);
+		if (group == NULL)
+			break;
+		
+		list = g_list_prepend (list, g_strdup (group->gr_name));
+	}
+
+	return eel_g_str_list_alphabetize (list);
+}
+
+/**
+ * nautilus_get_group_names:
+ * 
+ * Get a list of all group names.
+ */
+GList *
+eel_get_all_group_names (void)
+{
+	GList *list;
+	struct group *group;
+	
+	list = NULL;
+
+	setgrent ();
+	
+	while ((group = getgrent ()) != NULL)
+		list = g_list_prepend (list, g_strdup (group->gr_name));
+	
+	endgrent ();
+	
+	return eel_g_str_list_alphabetize (list);
 }
 

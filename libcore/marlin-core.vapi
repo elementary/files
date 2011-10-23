@@ -56,6 +56,13 @@ namespace Eel {
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-fcts.h")]
 namespace Eel {
     public string? get_date_as_string (uint64 d, string format);
+    public GLib.List? get_user_names ();
+}
+
+[CCode (cprefix = "EelPango", lower_case_cprefix = "eel_pango_", cheader_filename = "eel-pango-extensions.h")]
+namespace EelPango {
+    public unowned Pango.AttrList attr_list_small();
+    public unowned Pango.AttrList attr_list_big();
 }
 
 [CCode (cprefix = "Nautilus", lower_case_cprefix = "nautilus_")]
@@ -120,10 +127,16 @@ namespace GOF {
         public bool exists;
         public bool has_permissions;
         public uint32 permissions;
+        public string owner;
+        public string group;
 
         public void update_icon (int size);
+        public bool can_set_owner ();
+        public bool can_set_group ();
         public bool can_set_permissions ();
         public string get_permissions_as_string ();
+
+        public GLib.List? get_settable_group_names ();
     }
 
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]

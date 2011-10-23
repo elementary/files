@@ -142,6 +142,21 @@ eel_g_object_list_copy (GList *list)
     return g_list_copy (eel_g_object_list_ref (list));
 }
 
+/**
+ * eel_g_str_list_alphabetize
+ *
+ * Sort a list of strings using locale-sensitive rules.
+ *
+ * @list: List of strings and/or NULLs.
+ * 
+ * Return value: @list, sorted.
+ **/
+GList *
+eel_g_str_list_alphabetize (GList *list)
+{
+	return g_list_sort (list, (GCompareFunc) g_utf8_collate);
+}
+
 int
 eel_round (double d)
 {

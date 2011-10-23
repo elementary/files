@@ -140,6 +140,8 @@ gof_file_clear_info (GOFFile *file)
     file->gid = -1;
     file->has_permissions = FALSE;
     file->permissions = 0;
+    g_free(file->owner);
+    g_free(file->group);
 }
 
 void gof_file_update (GOFFile *file)
@@ -275,10 +277,23 @@ void gof_file_update (GOFFile *file)
     /* permissions */
     file->has_permissions = g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
     file->permissions = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
-    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_UID))
+    const char *owner = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_OWNER_USER);
+    const char *group = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_OWNER_GROUP);
+    if (owner != NULL)
+        file->owner = strdup (owner);
+    if (group != NULL)
+        file->group = strdup (group);
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_UID)) {
         file->uid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_UID);
-    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_GID))
+        if (file->owner == NULL)
+            file->owner = g_strdup_printf ("%d", file->uid);
+    }
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_GID)) {
         file->gid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_GID);
+        if (file->group == NULL)
+            file->group = g_strdup_printf ("%d", file->gid);
+    }
+
 
 
     gof_file_update_trash_info (file);
@@ -1008,7 +1023,6 @@ GOFFile* gof_file_get (GFile *location)
     GFile *parent;
     GOFFile *file = NULL;
     GOFDirectoryAsync *dir = NULL;
-    GError *err = NULL;
 
     //printf ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
     if ((parent = g_file_get_parent (location)) != NULL)
@@ -1066,7 +1080,6 @@ GOFFile* gof_file_get_by_commandline_arg (const char *arg)
 gchar* gof_file_list_to_string (GList *list, gsize *len)
 {
     GString *string;
-    gchar   *uri;
     GList   *lp;
 
     /* allocate initial string */
@@ -1328,8 +1341,8 @@ gof_file_get_default_handler (const GOFFile *file)
 gboolean
 gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error)
 {
-    gboolean    snotify = FALSE;
-    gboolean    terminal;
+    /*gboolean    snotify = FALSE;
+    gboolean    terminal;*/
     gboolean    result = FALSE;
     GKeyFile    *key_file;
     GError      *err = NULL;
@@ -1342,9 +1355,6 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
 
     gchar       *cmd = NULL;
     gchar       *quoted_location;
-    gchar       *quoted_arg_location;
-    gchar       *arg_location;
-    GList       *lp;
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
     g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
@@ -1383,11 +1393,11 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
                 icon = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                               G_KEY_FILE_DESKTOP_KEY_ICON, NULL);
                 /* TODO use terminal snotify */
-                terminal = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                /*terminal = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                                    G_KEY_FILE_DESKTOP_KEY_TERMINAL, NULL);
                 snotify = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                                   G_KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY, 
-                                                  NULL);
+                                                  NULL);*/
 
                 cmd = marlin_exec_parse (exec, file_list, icon, name, location); 
 
@@ -1675,10 +1685,10 @@ gof_file_rename (GOFFile *file,
                  gpointer callback_data)
 {
     GOFFileOperation *op;
-    char *uri;
-    char *old_name;
-    char *new_file_name;
-    gboolean success, name_changed;
+    //char *uri;
+    //char *old_name;
+    //char *new_file_name;
+    //gboolean success, name_changed;
     GError *error;
 
     g_return_if_fail (GOF_IS_FILE (file));
@@ -1729,6 +1739,86 @@ gof_file_rename (GOFFile *file,
                                    op->cancellable,
                                    rename_callback,
                                    op);
+}
+
+
+gboolean
+gof_file_can_set_owner (GOFFile *file)
+{
+    /* unknown file uid */
+    if (file->uid == -1) 
+		return FALSE;
+
+	/* root */
+	return geteuid() == 0;
+}
+
+/* copied from nautilus-file.c */
+/**
+ * gof_file_can_set_group:
+ * 
+ * Check whether the current user is allowed to change
+ * the group of a file.
+ * 
+ * @file: The file in question.
+ * 
+ * Return value: TRUE if the current user can change the
+ * group of @file, FALSE otherwise. It's always possible
+ * that when you actually try to do it, you will fail.
+ */
+gboolean
+gof_file_can_set_group (GOFFile *file)
+{
+	uid_t user_id;
+
+	if (file->gid == -1)
+		return FALSE;
+
+	user_id = geteuid();
+
+	/* Owner is allowed to set group (with restrictions). */
+	if (user_id == (uid_t) file->uid) 
+		return TRUE;
+
+	/* Root is also allowed to set group. */
+	if (user_id == 0) 
+		return TRUE;
+
+	return FALSE;
+}
+
+/* copied from nautilus-file.c */
+/**
+ * nautilus_file_get_settable_group_names:
+ * 
+ * Get a list of all group names that the current user
+ * can set the group of a specific file to.
+ * 
+ * @file: The NautilusFile in question.
+ */
+GList *
+gof_file_get_settable_group_names (GOFFile *file)
+{
+	uid_t user_id;
+	GList *result = NULL;
+
+	if (!gof_file_can_set_group (file))
+		return NULL;
+
+	/* Check the user. */
+	user_id = geteuid();
+
+	if (user_id == 0) {
+		/* Root is allowed to set group to anything. */
+		result = eel_get_all_group_names ();
+	} else if (user_id == (uid_t) file->uid) {
+		/* Owner is allowed to set group to any that owner is member of. */
+		result = eel_get_group_names_for_user ();
+	} else {
+		g_warning ("unhandled case in %s", G_STRFUNC);
+	}
+
+	return result;
 }
 
 /* copied from nautilus-file.c */
