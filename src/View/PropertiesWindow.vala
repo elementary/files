@@ -31,6 +31,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     private Gtk.Label l_perm;
     private Gtk.ListStore store_users;
     private Gtk.ListStore store_groups;
+    private bool multi_selection = false;
     private GOF.File goffile;
 
     private uint timeout_perm = 0;
@@ -62,6 +63,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         content_vbox.width_request = 288;
 
         /* TODO fix this mess */
+        if (files.next != null)
+            multi_selection = true;
         goffile = (GOF.File) files.data;
         GOF.File? gof = (GOF.File) files.data;
         get_info (gof);
@@ -70,48 +73,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         /* Basic */
         var basic_box = new HBox (false, 9);
         //basic_vbox.set_size_request (0, 40); 
+        add_header_box (content_vbox, basic_box);
 
-        var file_pix = gof.get_icon_pixbuf (32, false, GOF.FileIconFlags.NONE);
-        var file_img = new Image.from_pixbuf (file_pix);
-        file_img.set_valign (Align.START);
-        basic_box.pack_start(file_img, false, false);
-
-        var vvbox = new VBox (false, 0);
-        basic_box.pack_start(vvbox);
-        var hhbox1 = new HBox (false, 0);
-        //var basic_filename = new Label ("<span weight='semibold' size='large'>" + gof.name + "</span>");
-        var basic_filename = new Granite.Widgets.WrapLabel ("<span weight='semibold' size='large'>" + gof.name + "</span>");
-        //var basic_filename = new Label (gof.name);
-        var basic_modified = new Label ("<span weight='light'>Modified: " + gof.formated_modified + "</span>");
-
-        /*var font_style = new Pango.FontDescription();
-          font_style.set_size(12 * 1000);
-          basic_filename.modify_font(font_style);*/
-
-        //basic_filename.set_halign (Align.START);
-        //basic_filename.set_size_request (200, -1);
-        basic_filename.set_use_markup (true);
-        //basic_filename.set_use_markup (true);
-        //basic_filename.set_line_wrap (true);
-        //basic_filename.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
-        basic_modified.set_halign (Align.START);
-        basic_modified.set_use_markup (true);
-        hhbox1.pack_start(basic_filename);
-        if (!gof.is_directory) {
-            var basic_size = new Label ("<span weight='semibold' size='large'>" + gof.format_size + "</span>");
-            basic_size.set_use_markup (true);
-            basic_size.set_halign (Align.END);
-            basic_size.set_valign (Align.START);
-            hhbox1.pack_start(basic_size);
-        }
-        vvbox.pack_start(hhbox1);
-        vvbox.pack_start(basic_modified);
-
-        content_vbox.pack_start(basic_box, false, false, 0);
+        /* Separator */
         var sep = new Separator (Orientation.HORIZONTAL);
         sep.margin = 7;
         content_vbox.pack_start(sep, false, false, 0);
-
 
         /* Info */
         var info_vbox = new VBox(false, 0);
@@ -173,6 +140,46 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             destroy ();
             break;
         }
+    }
+
+    private void add_header_box (VBox vbox, Box content) {
+        var file_pix = goffile.get_icon_pixbuf (32, false, GOF.FileIconFlags.NONE);
+        var file_img = new Image.from_pixbuf (file_pix);
+        file_img.set_valign (Align.START);
+        content.pack_start(file_img, false, false);
+
+        var vvbox = new VBox (false, 0);
+        content.pack_start(vvbox);
+        var hhbox1 = new HBox (false, 0);
+        //var basic_filename = new Label ("<span weight='semibold' size='large'>" + goffile.name + "</span>");
+        var basic_filename = new Granite.Widgets.WrapLabel ("<span weight='semibold' size='large'>" + goffile.name + "</span>");
+        //var basic_filename = new Label (goffile.name);
+        var basic_modified = new Label ("<span weight='light'>Modified: " + goffile.formated_modified + "</span>");
+
+        /*var font_style = new Pango.FontDescription();
+          font_style.set_size(12 * 1000);
+          basic_filename.modify_font(font_style);*/
+
+        //basic_filename.set_halign (Align.START);
+        //basic_filename.set_size_request (200, -1);
+        basic_filename.set_use_markup (true);
+        //basic_filename.set_use_markup (true);
+        //basic_filename.set_line_wrap (true);
+        //basic_filename.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
+        basic_modified.set_halign (Align.START);
+        basic_modified.set_use_markup (true);
+        hhbox1.pack_start(basic_filename);
+        if (!goffile.is_directory) {
+            var basic_size = new Label ("<span weight='semibold' size='large'>" + goffile.format_size + "</span>");
+            basic_size.set_use_markup (true);
+            basic_size.set_halign (Align.END);
+            basic_size.set_valign (Align.START);
+            hhbox1.pack_start(basic_size);
+        }
+        vvbox.pack_start(hhbox1);
+        vvbox.pack_start(basic_modified);
+
+        vbox.pack_start(content, false, false, 0);
     }
 
     private void add_section (VBox vbox, string title, Box content) {
