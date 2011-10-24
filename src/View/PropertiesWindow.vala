@@ -142,6 +142,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         }
     }
 
+    private string span_weight_light (string str) {
+        return "<span weight='light'>" + str + "</span>";
+    }
+
     private void add_header_box (VBox vbox, Box content) {
         var file_pix = goffile.get_icon_pixbuf (32, false, GOF.FileIconFlags.NONE);
         var file_img = new Image.from_pixbuf (file_pix);
@@ -150,34 +154,31 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         var vvbox = new VBox (false, 0);
         content.pack_start(vvbox);
-        var hhbox1 = new HBox (false, 0);
-        //var basic_filename = new Label ("<span weight='semibold' size='large'>" + goffile.name + "</span>");
+        
         var basic_filename = new Granite.Widgets.WrapLabel ("<span weight='semibold' size='large'>" + goffile.name + "</span>");
-        //var basic_filename = new Label (goffile.name);
-        var basic_modified = new Label ("<span weight='light'>Modified: " + goffile.formated_modified + "</span>");
+        basic_filename.set_use_markup (true);
+        
+        var header_desc = new Label (null);
+        header_desc.set_halign(Align.START);
+        header_desc.set_use_markup(true);
 
+        string header_desc_str = "";
+        if (!goffile.is_directory) {
+            header_desc_str += span_weight_light (goffile.format_size);
+        }
+        if (goffile.formated_type != null) {
+            if (!goffile.is_directory)
+                header_desc_str += span_weight_light(", ");
+            header_desc_str += span_weight_light(goffile.formated_type);
+        }
+
+        header_desc.set_markup(header_desc_str);
         /*var font_style = new Pango.FontDescription();
           font_style.set_size(12 * 1000);
           basic_filename.modify_font(font_style);*/
 
-        //basic_filename.set_halign (Align.START);
-        //basic_filename.set_size_request (200, -1);
-        basic_filename.set_use_markup (true);
-        //basic_filename.set_use_markup (true);
-        //basic_filename.set_line_wrap (true);
-        //basic_filename.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
-        basic_modified.set_halign (Align.START);
-        basic_modified.set_use_markup (true);
-        hhbox1.pack_start(basic_filename);
-        if (!goffile.is_directory) {
-            var basic_size = new Label ("<span weight='semibold' size='large'>" + goffile.format_size + "</span>");
-            basic_size.set_use_markup (true);
-            basic_size.set_halign (Align.END);
-            basic_size.set_valign (Align.START);
-            hhbox1.pack_start(basic_size);
-        }
-        vvbox.pack_start(hhbox1);
-        vvbox.pack_start(basic_modified);
+        vvbox.pack_start(basic_filename);
+        vvbox.pack_start(header_desc);
 
         vbox.pack_start(content, false, false, 0);
     }
@@ -197,13 +198,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         var file_info = file.info;
         info = new Gee.LinkedList<Pair<string, string>>();
 
-        info.add(new Pair<string, string>(_("Name") + (": "), file.name));
-        info.add(new Pair<string, string>(_("Type") + (": "), file.formated_type));
-        info.add(new Pair<string, string>(_("MimeType") + (": "), file.ftype));
-
-        var raw_type = file_info.get_file_type();
-        if(raw_type != FileType.DIRECTORY)
-            info.add(new Pair<string, string>(_("Size") + (": "), file.format_size));
         /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
         info.add(new Pair<string, string>(_("Created") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_CREATED)));
         info.add(new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
@@ -212,13 +206,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         //TODO format trash deletion date string
         if (file.is_trashed())
             info.add(new Pair<string, string>(_("Deleted") + (": "), file_info.get_attribute_as_string("trash::deletion-date")));
+        info.add(new Pair<string, string>(_("MimeType") + (": "), file.ftype));
+        info.add(new Pair<string, string>(_("Location") + (": "), file.directory.get_parse_name()));
         if (file_info.get_is_symlink())
             info.add(new Pair<string, string>(_("Target") + (": "), file_info.get_symlink_target()));
-        string path = file.location.get_parse_name ();
-        if (path != null)
-            info.add(new Pair<string, string>(_("Location") + (": "), path));
-        else
-            info.add(new Pair<string, string>(_("Location") + (": "), file.uri));
         /* print orig location of trashed files */
         if (file.is_trashed() && file.trash_orig_path != null)
             info.add(new Pair<string, string>(_("Origin Location") + (": "), file.trash_orig_path));
@@ -228,28 +219,17 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
     private void construct_info_panel (Box box, Gee.LinkedList<Pair<string, string>> item_info) {
         var information = new Grid();
-        //information.row_spacing = 10;
+        information.row_spacing = 3;
 
         int n = 0;
         foreach(var pair in item_info){
-            /* skip the firs parameter "name" for vertical panel */
-            if (n>0) {
-                var value_label = new Granite.Widgets.WrapLabel(pair.value);
-                //value_label.set_line_wrap (true);
-                /*var key_label = new Gtk.Label(pair.key);
-                key_label.set_sensitive(false);
-                key_label.set_halign(Align.END);
-                key_label.set_valign(Align.START);
-                key_label.margin_right = 5;*/
-                Gtk.Label key_label = create_label_key(pair.key);
-                /*key_label.set_ellipsize(Pango.EllipsizeMode.START);*/
-                //value_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
-                value_label.set_selectable(true);
-                value_label.set_size_request(200, -1);
+            var value_label = new Granite.Widgets.WrapLabel(pair.value);
+            var key_label = create_label_key(pair.key);
+            value_label.set_selectable(true);
+            value_label.set_size_request(200, -1);
 
-                information.attach(key_label, 0, n, 1, 1);
-                information.attach(value_label, 1, n, 1, 1);
-            }
+            information.attach(key_label, 0, n, 1, 1);
+            information.attach(value_label, 1, n, 1, 1);
             n++;
         }
         box.pack_start(information);

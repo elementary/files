@@ -105,6 +105,7 @@ namespace GOF {
         public static File get(GLib.File location);
         public bool launch_with(Gdk.Screen screen, AppInfo app);
         public GLib.File location;
+        public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;
         public GLib.FileInfo? info;
         public string name;
