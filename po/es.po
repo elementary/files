@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-10-23 04:57+0000\n"
+"PO-Revision-Date: 2011-10-23 06:03+0000\n"
 "Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-10-23 05:29+0000\n"
-"X-Generator: Launchpad (build 14170)\n"
+"X-Launchpad-Export-Date: 2011-10-24 05:19+0000\n"
+"X-Generator: Launchpad (build 14185)\n"
 "Language: es\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
@@ -668,7 +668,7 @@ msgstr "_Expulsar"
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1422
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2293
 msgid "Empty _Trash"
-msgstr "Vaciar la _papelera"
+msgstr "_Vaciar la papelera"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -907,7 +907,7 @@ msgstr " (%'d"
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
-"¿Está seguro que quiere eliminar permanentemente a «%B» de la papelera?"
+"¿Está seguro de que quiere eliminar permanentemente a «%B» de la papelera?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -939,7 +939,7 @@ msgstr "Todos los elementos de la papelera se eliminarán permanentemente."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "¿Está seguro que quiere eliminar permanentemente «%B»?"
+msgstr "¿Está seguro de que quiere eliminar permanentemente «%B»?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1453
 #, c-format
@@ -1464,7 +1464,7 @@ msgstr "Existe una carpeta más reciente con el mismo nombre en «%s»."
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Existe una carpeta con el mismo nombre en «%s»."
+msgstr "Ya existe una carpeta con el mismo nombre en «%s»."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:165
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
