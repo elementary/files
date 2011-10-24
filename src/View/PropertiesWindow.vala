@@ -31,13 +31,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     private Gtk.Label l_perm;
     private Gtk.ListStore store_users;
     private Gtk.ListStore store_groups;
-    private bool multi_selection = false;
+    private uint count;
+    private unowned GLib.List<GOF.File> files;
     private GOF.File goffile;
+
+    private Granite.Widgets.WrapLabel header_title;
+    private Gtk.Label header_desc;
+    private string ftype; /* common type */
 
     private uint timeout_perm = 0;
     private GLib.Cancellable? cancellable;
 
-    public PropertiesWindow (GLib.List<GOF.File> files, Gtk.Window parent)
+    public PropertiesWindow (GLib.List<GOF.File> _files, Gtk.Window parent)
     {
         title = _("Properties");
         //resizable = false;
@@ -62,18 +67,15 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         //content_vbox.height_request = 160;
         content_vbox.width_request = 288;
 
-        /* TODO fix this mess */
-        if (files.next != null)
-            multi_selection = true;
+        files = _files;
+        count = files.length();
         goffile = (GOF.File) files.data;
-        GOF.File? gof = (GOF.File) files.data;
-        get_info (gof);
+        get_info (goffile);
         cancellable = new GLib.Cancellable ();
 
-        /* Basic */
-        var basic_box = new HBox (false, 9);
-        //basic_vbox.set_size_request (0, 40); 
-        add_header_box (content_vbox, basic_box);
+        /* Header Box */
+        var header_box = new HBox (false, 9);
+        add_header_box (content_vbox, header_box);
 
         /* Separator */
         var sep = new Separator (Orientation.HORIZONTAL);
@@ -91,18 +93,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         name_label.xalign = 0;
         name_label.set_line_wrap(true);
         perm_vbox.pack_start(name_label);*/
-        construct_perm_panel (perm_vbox, gof);
+        construct_perm_panel (perm_vbox);
         add_section (content_vbox, _("Permissions"), perm_vbox);
-        if (!gof.can_set_permissions()) {
+        if (!goffile.can_set_permissions()) {
             foreach (var widget in perm_vbox.get_children())
                 widget.set_sensitive (false);
         }
 
         /* Preview */
         //message ("flag %d", (int) goffile.flags);
-        if (goffile.flags != 0) {
+        if (count == 1 && goffile.flags != 0) {
             var preview_box = new VBox(false, 0);
-            construct_preview_panel (preview_box, gof);
+            construct_preview_panel (preview_box);
             add_section (content_vbox, _("Preview"), preview_box);
         }
 
@@ -146,6 +148,29 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         return "<span weight='light'>" + str + "</span>";
     }
 
+    private void selection_size_update () {
+        string header_desc_str = "";
+        uint64 total_size = 0;
+        uint total_count = 0;
+
+        foreach (GOF.File gof in files)
+        {
+            if (gof.is_directory) {
+
+            } else {
+                total_size += gof.size;
+                total_count++;
+            }
+        }
+
+        header_desc_str += format_size_for_display ((int64) total_size);
+        if (ftype != null) {
+            header_desc_str += ", " + ftype;
+        }
+        
+        header_desc.set_markup (span_weight_light(header_desc_str));
+    }
+
     private void add_header_box (VBox vbox, Box content) {
         var file_pix = goffile.get_icon_pixbuf (32, false, GOF.FileIconFlags.NONE);
         var file_img = new Image.from_pixbuf (file_pix);
@@ -154,30 +179,27 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         var vvbox = new VBox (false, 0);
         content.pack_start(vvbox);
+       
+        header_title = new Granite.Widgets.WrapLabel ();
+        if (count > 1)
+            header_title.set_markup ("<span weight='semibold' size='large'>" + "%u selected items".printf(count) + "</span>");
+        else
+            header_title.set_markup ("<span weight='semibold' size='large'>" + goffile.name + "</span>");
         
-        var basic_filename = new Granite.Widgets.WrapLabel ("<span weight='semibold' size='large'>" + goffile.name + "</span>");
-        basic_filename.set_use_markup (true);
-        
-        var header_desc = new Label (null);
+        header_desc = new Label (null);
         header_desc.set_halign(Align.START);
         header_desc.set_use_markup(true);
 
-        string header_desc_str = "";
-        if (!goffile.is_directory) {
-            header_desc_str += span_weight_light (goffile.format_size);
+        if (ftype != null) {
+            header_desc.set_markup(span_weight_light(goffile.formated_type));
         }
-        if (goffile.formated_type != null) {
-            if (!goffile.is_directory)
-                header_desc_str += span_weight_light(", ");
-            header_desc_str += span_weight_light(goffile.formated_type);
-        }
+        selection_size_update();
 
-        header_desc.set_markup(header_desc_str);
         /*var font_style = new Pango.FontDescription();
           font_style.set_size(12 * 1000);
-          basic_filename.modify_font(font_style);*/
+          header_title.modify_font(font_style);*/
 
-        vvbox.pack_start(basic_filename);
+        vvbox.pack_start(header_title);
         vvbox.pack_start(header_desc);
 
         vbox.pack_start(content, false, false, 0);
@@ -194,27 +216,94 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             exp.add (content);
     }
 
+    private string? get_common_ftype () {
+        string? ftype = null;
+        if (files == null)
+            return null;
+
+        foreach (GOF.File gof in files)
+        {
+            if (ftype == null && gof != null) {
+                ftype = gof.ftype;
+                continue;
+            }
+            if (ftype != gof.ftype)
+                return null;
+        }
+
+        return ftype;
+    }
+
+    private bool got_common_location () {
+        File? loc = null;
+        foreach (GOF.File gof in files)
+        {
+            if (loc == null && gof != null) {
+                loc = gof.directory;
+                continue;
+            }
+            if (!loc.equal (gof.directory))
+                return false;            
+        }
+
+        return true;
+    }
+    
+    private GLib.File? get_parent_loc (string path) {
+        var loc = File.new_for_path(path);
+        return loc.get_parent();    
+    }
+
+    private string? get_common_trash_orig() {
+        File loc = null;
+        string path = null;
+
+        foreach (GOF.File gof in files)
+        {
+            if (loc == null && gof != null) {
+                loc = get_parent_loc(gof.trash_orig_path);
+                continue;
+            }
+            if (!loc.equal (get_parent_loc (gof.trash_orig_path)))
+                return null;
+        }
+
+        if (loc == null)
+            path = "/";
+        else
+            path = loc.get_parse_name();
+
+        return path;
+    }
+
     private void get_info (GOF.File file) {
         var file_info = file.info;
         info = new Gee.LinkedList<Pair<string, string>>();
 
         /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
-        info.add(new Pair<string, string>(_("Created") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_CREATED)));
-        info.add(new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
-        info.add(new Pair<string, string>(_("Last Access") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_ACCESS)));
-        /* print deletion date if trashed file */
-        //TODO format trash deletion date string
-        if (file.is_trashed())
-            info.add(new Pair<string, string>(_("Deleted") + (": "), file_info.get_attribute_as_string("trash::deletion-date")));
-        info.add(new Pair<string, string>(_("MimeType") + (": "), file.ftype));
-        info.add(new Pair<string, string>(_("Location") + (": "), file.directory.get_parse_name()));
-        if (file_info.get_is_symlink())
+        if (count == 1) {
+            info.add(new Pair<string, string>(_("Created") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_CREATED)));
+            info.add(new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
+            info.add(new Pair<string, string>(_("Last Access") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_ACCESS)));
+            /* print deletion date if trashed file */
+            //TODO format trash deletion date string
+            if (file.is_trashed())
+                info.add(new Pair<string, string>(_("Deleted") + (": "), file_info.get_attribute_as_string("trash::deletion-date")));
+        }
+        ftype = get_common_ftype();
+        if (ftype != null)
+            info.add(new Pair<string, string>(_("MimeType") + (": "), ftype));
+        if (got_common_location())
+            info.add(new Pair<string, string>(_("Location") + (": "), file.directory.get_parse_name()));
+        if (count == 1 && file_info.get_is_symlink())
             info.add(new Pair<string, string>(_("Target") + (": "), file_info.get_symlink_target()));
+
         /* print orig location of trashed files */
-        if (file.is_trashed() && file.trash_orig_path != null)
-            info.add(new Pair<string, string>(_("Origin Location") + (": "), file.trash_orig_path));
-
-
+        if (file.is_trashed() && file.trash_orig_path != null) {
+            var trash_orig_loc = get_common_trash_orig();
+            if (trash_orig_loc != null)
+                info.add(new Pair<string, string>(_("Origin Location") + (": "), trash_orig_loc));
+        }
     }
 
     private void construct_info_panel (Box box, Gee.LinkedList<Pair<string, string>> item_info) {
@@ -537,7 +626,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         file_set_attributes (goffile, FILE_ATTRIBUTE_UNIX_GID, gid);
     }
    
-    private void construct_perm_panel (Box box, GOF.File file) {
+    private void construct_perm_panel (Box box) {
         perm_grid = new Grid();
                 
         Gtk.Label key_label;
@@ -580,7 +669,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         var perm_code_hbox = new HBox(false, 10);
         //var l_perm = new Label("-rwxr-xr-x");
-        l_perm = new Label(file.get_permissions_as_string());
+        l_perm = new Label(goffile.get_permissions_as_string());
         perm_code_hbox.pack_start(l_perm, true, true, 0);
         perm_code_hbox.pack_start(perm_code, false, false, 0);
 
@@ -590,7 +679,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         /*uint32 perm = chmod_to_vfs (702);
         update_perm_grid_toggle_states (perm);*/
-        update_perm_grid_toggle_states (file.permissions);
+        update_perm_grid_toggle_states (goffile.permissions);
                                         
         perm_code.changed.connect (entry_changed);
 
@@ -714,19 +803,19 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         return choice;
     }
     
-    private void construct_preview_panel (Box box, GOF.File file) {
+    private void construct_preview_panel (Box box) {
         evbox = new ImgEventBox(Orientation.HORIZONTAL);
-        file.update_icon (256);
-        if (file.pix != null)
-            evbox.set_from_pixbuf (file.pix);
+        goffile.update_icon (256);
+        if (goffile.pix != null)
+            evbox.set_from_pixbuf (goffile.pix);
 
         box.pack_start(evbox, false, true, 0);
     }
     
-    /*private void construct_open_with_panel (Box box, GOF.File file) {
+    /*private void construct_open_with_panel (Box box) {
         Widget app_chooser;
 
-        app_chooser = new AppChooserWidget (file.ftype);
+        app_chooser = new AppChooserWidget (goffile.ftype);
         //app_chooser.set_size_request (-1, 120);
         box.pack_start(app_chooser);
 

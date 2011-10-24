@@ -110,6 +110,7 @@ namespace GOF {
         public GLib.FileInfo? info;
         public string name;
         public string uri;
+        public uint64 size;
         public string format_size;
         public string color;
         public string formated_modified;
