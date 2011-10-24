@@ -20,6 +20,7 @@
 using Gtk;
 using Posix;
 using GLib;
+using Marlin.View;
 
 public class Marlin.View.PropertiesWindow : Gtk.Dialog
 {
@@ -131,14 +132,17 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         }
 
         /* Preview */
-        var preview_box = new VBox(false, 0);
-        construct_preview_panel (preview_box, gof);
-        add_section (content_vbox, _("Preview"), preview_box);
+        //message ("flag %d", (int) goffile.flags);
+        if (goffile.flags != 0) {
+            var preview_box = new VBox(false, 0);
+            construct_preview_panel (preview_box, gof);
+            add_section (content_vbox, _("Preview"), preview_box);
+        }
 
         /* Open With */
-        var openw_box = new VBox (false, 0);
-
-        add_section (content_vbox, _("Open With"), openw_box);
+        /*var openw_box = new VBox (false, 0);
+        construct_open_with_panel (openw_box, gof);
+        add_section (content_vbox, _("Open With"), openw_box);*/
 
         var close_button = new Button.from_stock(Stock.CLOSE);
         close_button.clicked.connect(() => { response(ResponseType.CLOSE); });
@@ -731,4 +735,13 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         box.pack_start(evbox, false, true, 0);
     }
+    
+    /*private void construct_open_with_panel (Box box, GOF.File file) {
+        Widget app_chooser;
+
+        app_chooser = new AppChooserWidget (file.ftype);
+        //app_chooser.set_size_request (-1, 120);
+        box.pack_start(app_chooser);
+
+    }*/
 }

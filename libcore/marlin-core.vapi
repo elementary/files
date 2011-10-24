@@ -122,6 +122,7 @@ namespace GOF {
         public bool is_trashed();
         public bool link_known_target;
         public string thumbnail_path;
+        public uint flags;
         public string get_formated_time (string attr);
         public Nautilus.IconInfo get_icon (int size, FileIconFlags flags);
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
