@@ -3002,29 +3002,22 @@ action_other_application_callback (GtkAction *action, FMDirectoryView *view)
 }
 
 static void
-action_properties_callback (GtkAction *action, gpointer data)
+action_properties_callback (GtkAction *action, FMDirectoryView *view)
 {
-    //TODO
-#if 0
-    FMDirectoryView *view;
     GList *selection;
-    GList *files;
+    GList *file_list = NULL;
+    
+    g_assert (FM_IS_DIRECTORY_VIEW (view));
 
-    g_assert (FM_DIRECTORY_IS_VIEW (callback_data));
-
-    view = FM_DIRECTORY_VIEW (callback_data);
-    selection = nautilus_view_get_selection (view);
-    if (g_list_length (selection) == 0) {
-        if (view->details->directory_as_file != NULL) {
-            files = g_list_append (NULL, nautilus_file_ref (view->details->directory_as_file));
-            nautilus_properties_window_present (files, GTK_WIDGET (view));
-            gof_file_list_free (files);
-        }
+    selection = fm_directory_view_get_selection (view);
+    
+    if (selection != NULL) {
+        file_list = selection; 
     } else {
-        nautilus_properties_window_present (selection, GTK_WIDGET (view));
+        file_list = g_list_prepend (file_list, view->details->slot->directory->file);
     }
-    gof_file_list_free (selection);
-#endif
+
+    marlin_view_properties_window_new (file_list, GTK_WINDOW (view->details->window));
 }
 
 

@@ -53,6 +53,22 @@ namespace Eel {
     public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
 }
 
+[CCode (cprefix = "Eel", lower_case_cprefix = "eel_", cheader_filename = "eel-fcts.h")]
+namespace Eel {
+    public string? get_date_as_string (uint64 d, string format);
+    public GLib.List? get_user_names ();
+    public bool get_user_id_from_user_name (string *user_name, out int uid);
+    public bool get_group_id_from_group_name (string *group_name, out int gid);
+    public bool get_id_from_digit_string (string digit_str, out int id);
+    public string format_size (uint64 size);
+}
+
+[CCode (cprefix = "EelPango", lower_case_cprefix = "eel_pango_", cheader_filename = "eel-pango-extensions.h")]
+namespace EelPango {
+    public unowned Pango.AttrList attr_list_small();
+    public unowned Pango.AttrList attr_list_big();
+}
+
 [CCode (cprefix = "Nautilus", lower_case_cprefix = "nautilus_")]
 namespace Nautilus {
     [CCode (cheader_filename = "nautilus-icon-info.h")]
@@ -90,26 +106,47 @@ namespace GOF {
         public static File get(GLib.File location);
         public bool launch_with(Gdk.Screen screen, AppInfo app);
         public GLib.File location;
+        public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;
         public GLib.FileInfo? info;
         public string name;
         public string uri;
+        public uint64 size;
         public string format_size;
         public string color;
         public string formated_modified;
         public string formated_type;
         public string ftype;
         public Gdk.Pixbuf pix;
+        public string trash_orig_path;
 
         public bool is_directory;
         public bool is_symlink();
+        public bool is_trashed();
         public bool link_known_target;
         public string thumbnail_path;
-        public Nautilus.IconInfo get_icon(int size, FileIconFlags flags);
+        public uint flags;
+        public string get_formated_time (string attr);
+        public Nautilus.IconInfo get_icon (int size, FileIconFlags flags);
+        public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
 
         public bool is_mounted;
         public bool exists;
-        public void update_icon(int size);
+
+        public int uid;
+        public int gid;
+        public string owner;
+        public string group;
+        public bool has_permissions;
+        public uint32 permissions;
+
+        public void update_icon (int size);
+        public bool can_set_owner ();
+        public bool can_set_group ();
+        public bool can_set_permissions ();
+        public string get_permissions_as_string ();
+
+        public GLib.List? get_settable_group_names ();
     }
 
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]

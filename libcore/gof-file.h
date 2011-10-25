@@ -96,6 +96,13 @@ struct _GOFFile {
     gboolean        is_mounted;
     gboolean        exists;
 
+    gboolean        has_permissions;
+    guint32         permissions;
+    gchar           *owner;
+    gchar           *group;
+    int             uid;
+    int             gid;
+
     const gchar     *thumbnail_path;
     gboolean        is_thumbnailing;
 
@@ -122,7 +129,7 @@ struct _GOFFileClass {
 "standard::type,standard::is-hidden,standard::name,standard::display-name,standard::edit-name,standard::copy-name,standard::fast-content-type,standard::size,standard::allocated-size,access::*,mountable::*,time::*,unix::*,owner::*,selinux::*,thumbnail::*,id::filesystem,trash::orig-path,trash::deletion-date,metadata::*"
 */
 
-#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::uid,id::filesystem,thumbnail::*"
+#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*"
 
 typedef enum {
 	GOF_FILE_ICON_FLAGS_NONE = 0,
@@ -171,7 +178,6 @@ int             gof_file_compare_for_sort (GOFFile *file_1,
 GOFFile*        gof_file_ref (GOFFile *file);
 void            gof_file_unref (GOFFile *file);
 GList           *gof_file_get_location_list (GList *files);
-char *          gof_file_get_date_as_string (guint64 d);
 
 void            gof_file_list_free (GList *list);
 GList           *gof_file_list_ref (GList *list);
@@ -181,6 +187,7 @@ GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean for
 gboolean        gof_file_is_writable (GOFFile *file);
 gboolean        gof_file_is_trashed (GOFFile *file);
 const gchar     *gof_file_get_symlink_target (GOFFile *file);
+gchar           *gof_file_get_formated_time (GOFFile *file, const char *attr);
 gboolean        gof_file_is_symlink (GOFFile *file);
 gboolean        gof_file_is_desktop_file (const GOFFile *file);
 gchar           *gof_file_list_to_string (GList *list, gsize *len);
@@ -216,6 +223,11 @@ void            gof_file_add_emblem(GOFFile* file, const gchar* emblem);
  **/
 #define gof_file_get_thumb_state(file) (GOF_FILE ((file))->flags & GOF_FILE_THUMB_STATE_MASK)
 
+gboolean        gof_file_can_set_owner (GOFFile *file);
+gboolean        gof_file_can_set_group (GOFFile *file);
+GList           *gof_file_get_settable_group_names (GOFFile *file);
+gboolean        gof_file_can_set_permissions (GOFFile *file);
+char            *gof_file_get_permissions_as_string (GOFFile *file);
 
 G_END_DECLS
 

@@ -20,6 +20,7 @@
 #include "gof-file.h"
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 #include "marlin-global-preferences.h" 
 #include "eel-i18n.h"
 #include "eel-fcts.h"
@@ -54,12 +55,12 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 
 #define ICON_NAME_THUMBNAIL_LOADING   "image-loading"
 
-enum {
-    //CHANGED,
-    //UPDATED_DEEP_COUNT_IN_PROGRESS,
-    DESTROY,
-    LAST_SIGNAL
-};
+    enum {
+        //CHANGED,
+        //UPDATED_DEEP_COUNT_IN_PROGRESS,
+        DESTROY,
+        LAST_SIGNAL
+    };
 
 static guint    signals[LAST_SIGNAL];
 static guint32  effective_user_id;
@@ -120,14 +121,11 @@ GOFFile    *gof_file_new (GFile *location, GFile *dir)
     return (file);
 }
 
-void gof_file_update (GOFFile *file)
+static void 
+gof_file_clear_info (GOFFile *file)
 {
-    GKeyFile *key_file;
-    gchar *p;
+    g_return_if_fail (file != NULL);
 
-    g_return_if_fail (file->info != NULL);
-
-    /* free previously allocated */
     g_free(file->utf8_collation_key);
     g_free(file->formated_type);
     g_free(file->format_size);
@@ -138,12 +136,29 @@ void gof_file_update (GOFFile *file)
     g_free (file->custom_icon_name);
     file->custom_display_name = NULL;
 
+    file->uid = -1;
+    file->gid = -1;
+    file->has_permissions = FALSE;
+    file->permissions = 0;
+    g_free(file->owner);
+    g_free(file->group);
+}
+
+void gof_file_update (GOFFile *file)
+{
+    GKeyFile *key_file;
+    gchar *p;
+
+    /* free previously allocated */
+    gof_file_clear_info (file);
+
+    g_return_if_fail (file->info != NULL);
 
     file->name = g_file_info_get_name (file->info);
 
     //TODO ???
     /*if (file->info == NULL && file->location != NULL)
-        gof_set_custom_display_name (file, file->basename);*/
+      gof_set_custom_display_name (file, file->basename);*/
 
     //g_message ("test parent_dir %s\n", g_file_get_uri(file->location));
 
@@ -159,7 +174,10 @@ void gof_file_update (GOFFile *file)
         file->format_size = g_strdup ("--");
     else
         file->format_size = g_format_size_for_display(file->size);
-    file->formated_modified = gof_file_get_date_as_string (file->modified);
+    /* TODO prefs: create an object to store all the preferences */
+    gchar *date_format_pref = g_settings_get_string(settings, MARLIN_PREFERENCES_DATE_FORMAT);
+    file->formated_modified = eel_get_date_as_string (file->modified, date_format_pref);
+    g_free (date_format_pref);
 
     if ((file->is_desktop = gof_file_is_desktop_file (file)))
     {
@@ -256,10 +274,33 @@ void gof_file_update (GOFFile *file)
         file->formated_type = g_content_type_get_description (file->ftype);
     }
 
+    /* permissions */
+    file->has_permissions = g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
+    file->permissions = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
+    const char *owner = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_OWNER_USER);
+    const char *group = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_OWNER_GROUP);
+    if (owner != NULL)
+        file->owner = strdup (owner);
+    if (group != NULL)
+        file->group = strdup (group);
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_UID)) {
+        file->uid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_UID);
+        if (file->owner == NULL)
+            file->owner = g_strdup_printf ("%d", file->uid);
+    }
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_GID)) {
+        file->gid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_GID);
+        if (file->group == NULL)
+            file->group = g_strdup_printf ("%d", file->gid);
+    }
+
+
+
     gof_file_update_trash_info (file);
     gof_file_update_emblem (file);
 }
 
+/* TODO check this fct we shouldn't store the pixbuf in GOF */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
     NautilusIconInfo *nicon;
@@ -272,7 +313,7 @@ void gof_file_update_icon (GOFFile *file, gint size)
     } else {
         nicon = gof_file_get_icon (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     }
-    
+
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
     file->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
@@ -291,11 +332,11 @@ void gof_file_update_emblem (GOFFile *file)
     if(gof_file_is_symlink(file))
     {
         gof_file_add_emblem(file, "emblem-symbolic-link");
-        
+
         /* testing up to 4 emblems */
         /*gof_file_add_emblem(file, "emblem-generic");
-        gof_file_add_emblem(file, "emblem-important");
-        gof_file_add_emblem(file, "emblem-favorite");*/
+          gof_file_add_emblem(file, "emblem-important");
+          gof_file_add_emblem(file, "emblem-favorite");*/
     }
 
     gof_monitor_file_changed (file); 
@@ -364,18 +405,18 @@ void gof_file_query_thumbnail_update (GOFFile *file)
 void gof_file_update_trash_info (GOFFile *file)
 {
     GTimeVal g_trash_time;
-   	const char * time_string;
+    const char * time_string;
 
     g_return_if_fail (file->info != NULL);
 
-  	file->trash_time = 0;
+    file->trash_time = 0;
     time_string = g_file_info_get_attribute_string (file->info, "trash::deletion-date");
     if (time_string != NULL) {
-	    g_time_val_from_iso8601 (time_string, &g_trash_time);
-		file->trash_time = g_trash_time.tv_sec;
+        g_time_val_from_iso8601 (time_string, &g_trash_time);
+        file->trash_time = g_trash_time.tv_sec;
     }
 
-	file->trash_orig_path = g_file_info_get_attribute_byte_string (file->info, "trash::orig-path");
+    file->trash_orig_path = g_file_info_get_attribute_byte_string (file->info, "trash::orig-path");
 }
 
 GFileInfo* gof_file_get_file_info (GOFFile* self) {
@@ -756,228 +797,16 @@ gof_files_get_location_list (GList *files)
     return (gfile_list);
 }
 
-static const char *TODAY_TIME_FORMATS [] = {
-    /* Today, use special word.
-     * strftime patterns preceeded with the widest
-     * possible resulting string for that pattern.
-     *
-     * Note to localizers: You can look at man strftime
-     * for details on the format, but you should only use
-     * the specifiers from the C standard, not extensions.
-     * These include "%" followed by one of
-     * "aAbBcdHIjmMpSUwWxXyYZ". There are two extensions
-     * in the Nautilus version of strftime that can be
-     * used (and match GNU extensions). Putting a "-"
-     * between the "%" and any numeric directive will turn
-     * off zero padding, and putting a "_" there will use
-     * space padding instead of zero padding.
-     */
-    N_("today at 00:00:00 PM"),
-    N_("today at %-I:%M:%S %p"),
-
-    N_("today at 00:00 PM"),
-    N_("today at %-I:%M %p"),
-
-    N_("today, 00:00 PM"),
-    N_("today, %-I:%M %p"),
-
-    N_("today"),
-    N_("today"),
-
-    NULL
-};
-
-static const char *YESTERDAY_TIME_FORMATS [] = {
-    /* Yesterday, use special word.
-     * Note to localizers: Same issues as "today" string.
-     */
-    N_("yesterday at 00:00:00 PM"),
-    N_("yesterday at %-I:%M:%S %p"),
-
-    N_("yesterday at 00:00 PM"),
-    N_("yesterday at %-I:%M %p"),
-
-    N_("yesterday, 00:00 PM"),
-    N_("yesterday, %-I:%M %p"),
-
-    N_("yesterday"),
-    N_("yesterday"),
-
-    NULL
-};
-
-static const char *CURRENT_WEEK_TIME_FORMATS [] = {
-    /* Current week, include day of week.
-     * Note to localizers: Same issues as "today" string.
-     * The width measurement templates correspond to
-     * the day/month name with the most letters.
-     */
-    N_("Wednesday, September 00 0000 at 00:00:00 PM"),
-    N_("%A, %B %-d %Y at %-I:%M:%S %p"),
-
-    N_("Mon, Oct 00 0000 at 00:00:00 PM"),
-    N_("%a, %b %-d %Y at %-I:%M:%S %p"),
-
-    N_("Mon, Oct 00 0000 at 00:00 PM"),
-    N_("%a, %b %-d %Y at %-I:%M %p"),
-
-    N_("Oct 00 0000 at 00:00 PM"),
-    N_("%b %-d %Y at %-I:%M %p"),
-
-    N_("Oct 00 0000, 00:00 PM"),
-    N_("%b %-d %Y, %-I:%M %p"),
-
-    N_("00/00/00, 00:00 PM"),
-    N_("%m/%-d/%y, %-I:%M %p"),
-
-    N_("00/00/00"),
-    N_("%m/%d/%y"),
-
-    NULL
-};
-
-char *
-gof_file_get_date_as_string (guint64 d)
-{
-    //time_t file_time_raw;
-    struct tm *file_time;
-    const char **formats;
-    const char *width_template;
-    const char *format;
-    char *date_string;
-    //char *result;
-    GDate *today;
-    GDate *file_date;
-    guint32 file_date_age;
-    int i;
-
-    file_time = localtime (&d);
-
-    gchar *date_format_pref = "iso";
-    if(settings != NULL)
-        date_format_pref = g_settings_get_string(settings, MARLIN_PREFERENCES_DATE_FORMAT);
-
-    if (!strcmp (date_format_pref, "locale"))
-        return eel_strdup_strftime ("%c", file_time);
-    else if (!strcmp (date_format_pref, "iso"))
-        return eel_strdup_strftime ("%Y-%m-%d %H:%M:%S", file_time);
-
-    file_date = eel_g_date_new_tm (file_time);
-
-    today = g_date_new ();
-    g_date_set_time_t (today, time (NULL));
-
-    /* Overflow results in a large number; fine for our purposes. */
-    file_date_age = (g_date_get_julian (today) -
-                     g_date_get_julian (file_date));
-
-    g_date_free (file_date);
-    g_date_free (today);
-
-    /* Format varies depending on how old the date is. This minimizes
-     * the length (and thus clutter & complication) of typical dates
-     * while providing sufficient detail for recent dates to make
-     * them maximally understandable at a glance. Keep all format
-     * strings separate rather than combining bits & pieces for
-     * internationalization's sake.
-     */
-
-    if (file_date_age == 0)	{
-        formats = TODAY_TIME_FORMATS;
-    } else if (file_date_age == 1) {
-        formats = YESTERDAY_TIME_FORMATS;
-    } else if (file_date_age < 7) {
-        formats = CURRENT_WEEK_TIME_FORMATS;
-    } else {
-        formats = CURRENT_WEEK_TIME_FORMATS;
-    }
-
-    /* Find the date format that just fits the required width. Instead of measuring
-     * the resulting string width directly, measure the width of a template that represents
-     * the widest possible version of a date in a given format. This is done by using M, m
-     * and 0 for the variable letters/digits respectively.
-     */
-    format = NULL;
-
-    for (i = 0; ; i += 2) {
-        width_template = (formats [i] ? _(formats [i]) : NULL);
-        if (width_template == NULL) {
-            /* no more formats left */
-            g_assert (format != NULL);
-
-            /* Can't fit even the shortest format -- return an ellipsized form in the
-             * shortest format
-             */
-
-            date_string = eel_strdup_strftime (format, file_time);
-
-            return date_string;
-        }
-
-        format = _(formats [i + 1]);
-
-        /* don't care about fitting the width */
-        break;
-    }
-
-    return eel_strdup_strftime (format, file_time);
-}
-
-/*
-   self->icon = g_content_type_get_icon (self->ftype);
-
-   nicon = nautilus_icon_info_lookup (self->icon, 16);
-   self->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
-   g_object_unref (nicon);
-   */
 
 NautilusIconInfo *
 gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 {
     NautilusIconInfo *icon;
     GIcon *gicon;
-    //GdkPixbuf *raw_pixbuf, *scaled_pixbuf;
-    //int modified_size;
 
     if (file == NULL) 
         return NULL;
 
-    /*gicon = get_custom_icon (file);
-      if (gicon) {
-      icon = nautilus_icon_info_lookup (gicon, size);
-      g_object_unref (gicon);
-      return icon;
-      }*/
-
-#if 0
-    if (flags & NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS &&
-        nautilus_file_should_show_thumbnail (file)) {
-        if (file->details->thumbnail) {
-            int w, h, s;
-            double scale;
-
-            /*scaled_pixbuf = gdk_pixbuf_scale_simple (raw_pixbuf,
-              w * scale, h * scale,
-              GDK_INTERP_BILINEAR);*/
-
-            /* We don't want frames around small icons */
-            /*if (!gdk_pixbuf_get_has_alpha(raw_pixbuf) || s >= 128) {
-              nautilus_thumbnail_frame_image (&scaled_pixbuf);
-              }*/
-
-            /*icon = nautilus_icon_info_new_for_pixbuf (scaled_pixbuf);
-              g_object_unref (scaled_pixbuf);
-              return icon;*/
-            /*} else if (file->details->thumbnail_path == NULL &&
-              file->details->can_read &&				
-              !file->details->is_thumbnailing &&
-              !file->details->thumbnailing_failed) {
-              if (nautilus_can_thumbnail (file)) {
-              nautilus_create_thumbnail (file);
-              }
-              }*/
-    }
-#endif
     //printf ("%s %s %s\n", G_STRFUNC, file->name, file->thumbnail_path);
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS) {
         if (file->thumbnail_path != NULL) {
@@ -1076,6 +905,17 @@ gof_file_is_symlink (GOFFile *file)
     return g_file_info_get_is_symlink (file->info);
 }
 
+gchar * 
+gof_file_get_formated_time (GOFFile *file, const char *attr)
+{
+    g_return_val_if_fail (file != NULL, NULL);
+    g_return_val_if_fail (file->info != NULL, NULL);
+
+    guint64 date = g_file_info_get_attribute_uint64 (file->info, attr);
+    //TODO prefs
+    return eel_get_date_as_string (date, "iso");
+}
+
 
 /**
  * gof_file_is_desktop_file: imported from thunar
@@ -1161,7 +1001,7 @@ gof_file_is_executable (const GOFFile *file)
  * Sets the #GOFFileThumbState for @file to @thumb_state. 
  * This will cause a "file-changed" signal to be emitted from
  * #GOFMonitor. 
- **/ 
+**/ 
 void
 gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 {
@@ -1173,7 +1013,7 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
         gof_file_query_thumbnail_update (file);
 
     /* notify others of this change, so that all components can update
-    * their file information */
+     * their file information */
     gof_monitor_file_changed (file);
 }
 
@@ -1183,7 +1023,6 @@ GOFFile* gof_file_get (GFile *location)
     GFile *parent;
     GOFFile *file = NULL;
     GOFDirectoryAsync *dir = NULL;
-    GError *err = NULL;
 
     //printf ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
     if ((parent = g_file_get_parent (location)) != NULL)
@@ -1216,7 +1055,7 @@ GOFFile* gof_file_get_by_uri (const char *uri)
     location = g_file_new_for_uri (uri);
     if(location == NULL)
         return NULL;
-    
+
     file = gof_file_get (location);
 #ifdef ENABLE_DEBUG
     g_debug ("%s %s", G_STRFUNC, file->uri);
@@ -1241,7 +1080,6 @@ GOFFile* gof_file_get_by_commandline_arg (const char *arg)
 gchar* gof_file_list_to_string (GList *list, gsize *len)
 {
     GString *string;
-    gchar   *uri;
     GList   *lp;
 
     /* allocate initial string */
@@ -1503,8 +1341,8 @@ gof_file_get_default_handler (const GOFFile *file)
 gboolean
 gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error)
 {
-    gboolean    snotify = FALSE;
-    gboolean    terminal;
+    /*gboolean    snotify = FALSE;
+    gboolean    terminal;*/
     gboolean    result = FALSE;
     GKeyFile    *key_file;
     GError      *err = NULL;
@@ -1517,9 +1355,6 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
 
     gchar       *cmd = NULL;
     gchar       *quoted_location;
-    gchar       *quoted_arg_location;
-    gchar       *arg_location;
-    GList       *lp;
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
     g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
@@ -1558,11 +1393,11 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
                 icon = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                               G_KEY_FILE_DESKTOP_KEY_ICON, NULL);
                 /* TODO use terminal snotify */
-                terminal = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                /*terminal = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                                    G_KEY_FILE_DESKTOP_KEY_TERMINAL, NULL);
                 snotify = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                                   G_KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY, 
-                                                  NULL);
+                                                  NULL);*/
 
                 cmd = marlin_exec_parse (exec, file_list, icon, name, location); 
 
@@ -1748,14 +1583,14 @@ gof_file_list_free (GList *list)
 GList *
 gof_file_list_ref (GList *list)
 {
-	g_list_foreach (list, (GFunc) gof_file_ref, NULL);
-	return list;
+    g_list_foreach (list, (GFunc) gof_file_ref, NULL);
+    return list;
 }
 
 GList *
 gof_file_list_copy (GList *list)
 {
-	return g_list_copy (gof_file_list_ref (list));
+    return g_list_copy (gof_file_list_ref (list));
 }
 
 
@@ -1765,60 +1600,60 @@ gof_file_operation_new (GOFFile *file,
                         GOFFileOperationCallback callback,
                         gpointer callback_data)
 {
-	GOFFileOperation *op;
+    GOFFileOperation *op;
 
-	op = g_new0 (GOFFileOperation, 1);
-	op->file = gof_file_ref (file);
-	op->callback = callback;
-	op->callback_data = callback_data;
-	op->cancellable = g_cancellable_new ();
+    op = g_new0 (GOFFileOperation, 1);
+    op->file = gof_file_ref (file);
+    op->callback = callback;
+    op->callback_data = callback_data;
+    op->cancellable = g_cancellable_new ();
 
     /* FIXME check this Glist */
-	op->file->operations_in_progress = g_list_prepend
-		(op->file->operations_in_progress, op);
+    op->file->operations_in_progress = g_list_prepend
+        (op->file->operations_in_progress, op);
 
-	return op;
+    return op;
 }
 
 static void
 gof_file_operation_remove (GOFFileOperation *op)
 {
-	op->file->operations_in_progress = g_list_remove
-		(op->file->operations_in_progress, op);
+    op->file->operations_in_progress = g_list_remove
+        (op->file->operations_in_progress, op);
 }
 
 void
 gof_file_operation_free (GOFFileOperation *op)
 {
-	gof_file_operation_remove (op);
-	gof_file_unref (op->file);
-	g_object_unref (op->cancellable);
-	if (op->free_data) {
-		op->free_data (op->data);
-	}
-	g_free (op);
+    gof_file_operation_remove (op);
+    gof_file_unref (op->file);
+    g_object_unref (op->cancellable);
+    if (op->free_data) {
+        op->free_data (op->data);
+    }
+    g_free (op);
 }
 
 void
 gof_file_operation_complete (GOFFileOperation *op, GFile *result_file, GError *error)
 {
-	/* Claim that something changed even if the operation failed.
-	 * This makes it easier for some clients who see the "reverting"
-	 * as "changing back".
-	 */
-	gof_file_operation_remove (op);
-	//gof_file_changed (op->file);
-	if (op->callback) {
-		(* op->callback) (op->file, result_file, error, op->callback_data);
-	}
-	gof_file_operation_free (op);
+    /* Claim that something changed even if the operation failed.
+     * This makes it easier for some clients who see the "reverting"
+     * as "changing back".
+     */
+    gof_file_operation_remove (op);
+    //gof_file_changed (op->file);
+    if (op->callback) {
+        (* op->callback) (op->file, result_file, error, op->callback_data);
+    }
+    gof_file_operation_free (op);
 }
 
 void
 gof_file_operation_cancel (GOFFileOperation *op)
 {
-	/* Cancel the operation if it's still in progress. */
-	g_cancellable_cancel (op->cancellable);
+    /* Cancel the operation if it's still in progress. */
+    g_cancellable_cancel (op->cancellable);
 }
 
 static void
@@ -1826,19 +1661,19 @@ rename_callback (GObject *source_object,
                  GAsyncResult *res,
                  gpointer callback_data)
 {
-	GOFFileOperation *op;
-	GFile *new_file;
-	GError *error;
+    GOFFileOperation *op;
+    GFile *new_file;
+    GError *error;
 
-	op = callback_data;
-	error = NULL;
-	new_file = g_file_set_display_name_finish (G_FILE (source_object),
+    op = callback_data;
+    error = NULL;
+    new_file = g_file_set_display_name_finish (G_FILE (source_object),
                                                res, &error);
 
     gof_file_operation_complete (op, NULL, error);
-	if (new_file != NULL) {
+    if (new_file != NULL) {
         g_object_unref (new_file);
-	} else { 
+    } else { 
         g_error_free (error);
     }
 }
@@ -1849,59 +1684,225 @@ gof_file_rename (GOFFile *file,
                  GOFFileOperationCallback callback,
                  gpointer callback_data)
 {
-	GOFFileOperation *op;
-	char *uri;
-	char *old_name;
-	char *new_file_name;
-	gboolean success, name_changed;
-	GError *error;
-	
-	g_return_if_fail (GOF_IS_FILE (file));
-	g_return_if_fail (new_name != NULL);
-	g_return_if_fail (callback != NULL);
+    GOFFileOperation *op;
+    //char *uri;
+    //char *old_name;
+    //char *new_file_name;
+    //gboolean success, name_changed;
+    GError *error;
+
+    g_return_if_fail (GOF_IS_FILE (file));
+    g_return_if_fail (new_name != NULL);
+    g_return_if_fail (callback != NULL);
 
     //TODO rename .desktop files
-	/* Return an error for incoming names containing path separators.
-	 * But not for .desktop files as '/' are allowed for them */
-	if (strstr (new_name, "/") != NULL) {
-		error = g_error_new (G_IO_ERROR, G_IO_ERROR_INVALID_ARGUMENT,
-				     _("Slashes are not allowed in filenames"));
-		(* callback) (file, NULL, error, callback_data);
-		g_error_free (error);
-		return;
-	}
-	
+    /* Return an error for incoming names containing path separators.
+     * But not for .desktop files as '/' are allowed for them */
+    if (strstr (new_name, "/") != NULL) {
+        error = g_error_new (G_IO_ERROR, G_IO_ERROR_INVALID_ARGUMENT,
+                             _("Slashes are not allowed in filenames"));
+        (* callback) (file, NULL, error, callback_data);
+        g_error_free (error);
+        return;
+    }
+
     //TODO check
 
     /* Self-owned files can't be renamed. Test the name-not-actually-changing
-	 * case before this case.
-	 */
+     * case before this case.
+     */
 #if 0
-	if (nautilus_file_is_self_owned (file)) {
-       	/* Claim that something changed even if the rename
-		 * failed. This makes it easier for some clients who
-		 * see the "reverting" to the old name as "changing
-		 * back".
-		 */
-		nautilus_file_changed (file);
-		error = g_error_new (G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
+    if (nautilus_file_is_self_owned (file)) {
+        /* Claim that something changed even if the rename
+         * failed. This makes it easier for some clients who
+         * see the "reverting" to the old name as "changing
+         * back".
+         */
+        nautilus_file_changed (file);
+        error = g_error_new (G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
                              _("Toplevel files cannot be renamed"));
-		
-		(* callback) (file, NULL, error, callback_data);
-		g_error_free (error);
-		return;
-	}
+
+        (* callback) (file, NULL, error, callback_data);
+        g_error_free (error);
+        return;
+    }
 #endif
 
     /* Set up a renaming operation. */
-	op = gof_file_operation_new (file, callback, callback_data);
-	op->is_rename = TRUE;
+    op = gof_file_operation_new (file, callback, callback_data);
+    op->is_rename = TRUE;
 
-	/* Do the renaming. */
-	g_file_set_display_name_async (file->location,
+    /* Do the renaming. */
+    g_file_set_display_name_async (file->location,
                                    new_name,
                                    G_PRIORITY_DEFAULT,
                                    op->cancellable,
                                    rename_callback,
                                    op);
 }
+
+
+gboolean
+gof_file_can_set_owner (GOFFile *file)
+{
+    /* unknown file uid */
+    if (file->uid == -1) 
+		return FALSE;
+
+	/* root */
+	return geteuid() == 0;
+}
+
+/* copied from nautilus-file.c */
+/**
+ * gof_file_can_set_group:
+ * 
+ * Check whether the current user is allowed to change
+ * the group of a file.
+ * 
+ * @file: The file in question.
+ * 
+ * Return value: TRUE if the current user can change the
+ * group of @file, FALSE otherwise. It's always possible
+ * that when you actually try to do it, you will fail.
+ */
+gboolean
+gof_file_can_set_group (GOFFile *file)
+{
+	uid_t user_id;
+
+	if (file->gid == -1)
+		return FALSE;
+
+	user_id = geteuid();
+
+	/* Owner is allowed to set group (with restrictions). */
+	if (user_id == (uid_t) file->uid) 
+		return TRUE;
+
+	/* Root is also allowed to set group. */
+	if (user_id == 0) 
+		return TRUE;
+
+	return FALSE;
+}
+
+/* copied from nautilus-file.c */
+/**
+ * nautilus_file_get_settable_group_names:
+ * 
+ * Get a list of all group names that the current user
+ * can set the group of a specific file to.
+ * 
+ * @file: The NautilusFile in question.
+ */
+GList *
+gof_file_get_settable_group_names (GOFFile *file)
+{
+	uid_t user_id;
+	GList *result = NULL;
+
+	if (!gof_file_can_set_group (file))
+		return NULL;
+
+	/* Check the user. */
+	user_id = geteuid();
+
+	if (user_id == 0) {
+		/* Root is allowed to set group to anything. */
+		result = eel_get_all_group_names ();
+	} else if (user_id == (uid_t) file->uid) {
+		/* Owner is allowed to set group to any that owner is member of. */
+		result = eel_get_group_names_for_user ();
+	} else {
+		g_warning ("unhandled case in %s", G_STRFUNC);
+	}
+
+	return result;
+}
+
+/* copied from nautilus-file.c */
+/**
+ * gof_file_can_set_permissions:
+ * 
+ * Check whether the current user is allowed to change
+ * the permissions of a file.
+ * 
+ * @file: The file in question.
+ * 
+ * Return value: TRUE if the current user can change the
+ * permissions of @file, FALSE otherwise. It's always possible
+ * that when you actually try to do it, you will fail.
+ */
+gboolean
+gof_file_can_set_permissions (GOFFile *file)
+{
+    uid_t user_id;
+
+    if (file->uid != -1 && g_file_is_native (file->location)) 
+    {
+        /* Check the user. */
+        user_id = geteuid();
+
+        /* Owner is allowed to set permissions. */
+        if (user_id == (uid_t) file->uid) 
+            return TRUE;
+
+        /* Root is also allowed to set permissions. */
+        if (user_id == 0) 
+            return TRUE;
+
+        /* Nobody else is allowed. */
+        return FALSE;
+    }
+
+    /* pretend to have full chmod rights when no info is available, relevant when
+     * the FS can't provide ownership info, for instance for FTP */
+    return TRUE;
+}
+
+/* copied from nautilus-file.c */
+/**
+ * gof_file_get_permissions_as_string:
+ * 
+ * Get a user-displayable string representing a file's permissions. The caller
+ * is responsible for g_free-ing this string.
+ * @file: GOFFile representing the file in question.
+ * 
+ * Returns: Newly allocated string ready to display to the user.
+ * 
+ **/
+char *
+gof_file_get_permissions_as_string (GOFFile *file)
+{
+    gboolean is_link;
+    gboolean suid, sgid, sticky;
+
+    g_assert (GOF_IS_FILE (file));
+
+    is_link = gof_file_is_symlink (file);
+
+    /* We use ls conventions for displaying these three obscure flags */
+    suid = file->permissions & S_ISUID;
+    sgid = file->permissions & S_ISGID;
+    sticky = file->permissions & S_ISVTX;
+
+    return g_strdup_printf ("%c%c%c%c%c%c%c%c%c%c",
+                            is_link ? 'l' : file->is_directory ? 'd' : '-',
+                            file->permissions & S_IRUSR ? 'r' : '-',
+                            file->permissions & S_IWUSR ? 'w' : '-',
+                            file->permissions & S_IXUSR 
+                            ? (suid ? 's' : 'x') 
+                            : (suid ? 'S' : '-'),
+                            file->permissions & S_IRGRP ? 'r' : '-',
+                            file->permissions & S_IWGRP ? 'w' : '-',
+                            file->permissions & S_IXGRP
+                            ? (sgid ? 's' : 'x') 
+                            : (sgid ? 'S' : '-'),		
+                            file->permissions & S_IROTH ? 'r' : '-',
+                            file->permissions & S_IWOTH ? 'w' : '-',
+                            file->permissions & S_IXOTH
+                            ? (sticky ? 't' : 'x') 
+                            : (sticky ? 'T' : '-'));
+}
+

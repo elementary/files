@@ -42,6 +42,7 @@ add_definitions(${CFLAGS}
     )
 vala_precompile(VALA_C
     Logger.vala
+    marlin-deep-count.vala
     View/SettingsDialog.vala
     View/DiskRenderer.vala
     View/DirectoryNotFound.vala
@@ -50,6 +51,7 @@ vala_precompile(VALA_C
     View/DbusTags.vala
     View/ViewContainer.vala
     View/ContextView.vala
+    View/PropertiesWindow.vala
     View/Browser.vala
     View/ViewMode.vala
     View/Animations.vala
