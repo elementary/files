@@ -45,7 +45,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     public PropertiesWindow (GLib.List<GOF.File> _files, Gtk.Window parent)
     {
         title = _("Properties");
-        //resizable = false;
+        resizable = false;
         set_default_response(ResponseType.CANCEL);
         set_default_size (220, -1);
 
