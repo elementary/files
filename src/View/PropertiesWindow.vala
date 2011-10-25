@@ -148,27 +148,34 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         return "<span weight='light'>" + str + "</span>";
     }
 
-    private void selection_size_update () {
+    private void update_header_desc (uint64 total_size) {
         string header_desc_str = "";
+
+        header_desc_str += Eel.format_size (total_size);
+        if (ftype != null) {
+            header_desc_str += ", " + ftype;
+        } 
+        header_desc.set_markup (span_weight_light(header_desc_str));
+    }
+
+    private void selection_size_update () {
         uint64 total_size = 0;
         uint total_count = 0;
 
         foreach (GOF.File gof in files)
         {
             if (gof.is_directory) {
-
+                var d = new Marlin.DeepCount (gof.location);
+                d.finished.connect (() => { 
+                                    total_size += d.total_size;
+                                    update_header_desc (total_size);
+                                    });
             } else {
                 total_size += gof.size;
                 total_count++;
             }
         }
-
-        header_desc_str += format_size_for_display ((int64) total_size);
-        if (ftype != null) {
-            header_desc_str += ", " + ftype;
-        }
-        
-        header_desc.set_markup (span_weight_light(header_desc_str));
+        update_header_desc (total_size);
     }
 
     private void add_header_box (VBox vbox, Box content) {

@@ -60,6 +60,7 @@ namespace Eel {
     public bool get_user_id_from_user_name (string *user_name, out int uid);
     public bool get_group_id_from_group_name (string *group_name, out int gid);
     public bool get_id_from_digit_string (string digit_str, out int id);
+    public string format_size (uint64 size);
 }
 
 [CCode (cprefix = "EelPango", lower_case_cprefix = "eel_pango_", cheader_filename = "eel-pango-extensions.h")]

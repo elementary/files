@@ -173,7 +173,7 @@ void gof_file_update (GOFFile *file)
     if (file->is_directory)
         file->format_size = g_strdup ("--");
     else
-        file->format_size = g_format_size_for_display(file->size);
+        file->format_size = g_format_size (file->size);
     /* TODO prefs: create an object to store all the preferences */
     gchar *date_format_pref = g_settings_get_string(settings, MARLIN_PREFERENCES_DATE_FORMAT);
     file->formated_modified = eel_get_date_as_string (file->modified, date_format_pref);
