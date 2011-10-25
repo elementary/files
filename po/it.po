@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-10-18 20:34+0000\n"
+"PO-Revision-Date: 2011-10-24 18:59+0000\n"
 "Last-Translator: AntoninoArcudi <antonino.arcudi@gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-10-19 06:07+0000\n"
-"X-Generator: Launchpad (build 14157)\n"
+"X-Launchpad-Export-Date: 2011-10-25 04:58+0000\n"
+"X-Generator: Launchpad (build 14185)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -81,6 +81,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  :P !Leo! :P https://launchpad.net/~bboy-blackup\n"
 "  AntoninoArcudi https://launchpad.net/~antonino-arcudi\n"
+"  Elvis Dominguez https://launchpad.net/~elvisd79\n"
 "  Enrico \"eNry\" Carafa https://launchpad.net/~mr.tennents\n"
 "  Mirko Narciso https://launchpad.net/~narciso-91\n"
 "  Nicola Moretto https://launchpad.net/~nicola88\n"
@@ -260,7 +261,7 @@ msgstr "Larghezza di ogni elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr ""
+msgstr "La larghezza utilizzata per ciascun elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
@@ -272,7 +273,7 @@ msgstr "Spazio inserito tra le celle di un elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
-msgstr ""
+msgstr "Spaziatura righe"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
@@ -280,7 +281,7 @@ msgstr "Spazio inserito tra le righe della griglia"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
-msgstr ""
+msgstr "Spaziatura colonne"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
@@ -292,7 +293,7 @@ msgstr "Margine"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:845
 msgid "Space which is inserted at the edges of the icon view"
-msgstr ""
+msgstr "Spazio inserito ai bordi della vista icona"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
@@ -328,7 +329,7 @@ msgstr "Ricerca colonna"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:894
 msgid "Model column to search through during interactive search"
-msgstr ""
+msgstr "Modello di colonna in cui cercare quando si cerca interattivamente"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
@@ -341,11 +342,11 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:921
 msgid "Item Padding"
-msgstr ""
+msgstr "Riempimento elemento"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:922
 msgid "Padding around icon view items"
-msgstr ""
+msgstr "Riempimento attorno agli elementi della vista a icone"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:939
 msgid "Cell Area"
@@ -357,15 +358,15 @@ msgstr "Il GtkCellArea usato per disporre le celle"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:953
 msgid "Selection Box Color"
-msgstr ""
+msgstr "Colore box di selezione"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:954
 msgid "Color of the selection box"
-msgstr ""
+msgstr "Il colore del box di selezione"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:960
 msgid "Selection Box Alpha"
-msgstr ""
+msgstr "Alpha box di selezione"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:961
 msgid "Opacity of the selection box"

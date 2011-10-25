@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-17 08:55+0000\n"
+"PO-Revision-Date: 2011-10-24 07:16+0000\n"
 "Last-Translator: Fatih Dayioglu <fatihdy@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-09-18 05:04+0000\n"
-"X-Generator: Launchpad (build 13955)\n"
+"X-Launchpad-Export-Date: 2011-10-25 04:58+0000\n"
+"X-Generator: Launchpad (build 14185)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -655,11 +655,11 @@ msgstr "SSH"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "Herkese Açık FTP"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (giriş gerektiren)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
@@ -710,19 +710,19 @@ msgstr "Devam Et"
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1169
 msgid "C_onnect"
-msgstr ""
+msgstr "_Bağlan"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr ""
+msgstr "Sunucuya Bağlan"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr ""
+msgstr "Sunucu Ayrıntıları"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
-msgstr ""
+msgstr "_Sunucu:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
@@ -734,7 +734,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr ""
+msgstr "_Paylaş"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
@@ -742,7 +742,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr ""
+msgstr "Kullanıcı Ayrıntıları"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
@@ -750,7 +750,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_User name:"
-msgstr ""
+msgstr "_Kullanıcı adı:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
@@ -762,7 +762,7 @@ msgstr "_Bu parolayı anımsa"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr ""
+msgstr "İşlem iptal edildi"
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -781,7 +781,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:205
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:735
 msgid "_Skip"
-msgstr ""
+msgstr "_Atla"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "S_kip All"
@@ -1496,7 +1496,7 @@ msgstr "Bu eylemi tüm dosyalara uygula"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:740
 msgid "Re_name"
-msgstr ""
+msgstr "Ye_niden Adlandır"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:746
 msgid "Replace"
@@ -1518,7 +1518,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1536
 msgid "No Exec field specified"
-msgstr ""
+msgstr "Exec alanı belirtilmemiş"
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1556
 msgid "No URL field specified"
