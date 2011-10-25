@@ -111,6 +111,7 @@ sanity_check_window_dimensions (guint *width, guint *height)
  * GtkWindow is shown. It is an error to call this on a window that
  * is already on-screen. Takes into account screen size, and does
  * some sanity-checking on the passed-in values.
+ * If no originals coordinates are given the window would be centered
  * 
  * @window: A non-visible GtkWindow
  * @geometry_flags: A EelGdkGeometryFlags value defining which of
@@ -163,12 +164,13 @@ eel_gtk_window_set_initial_geometry (GtkWindow *window,
 
         sanity_check_window_position (&real_left, &real_top);
         gtk_window_move (window, real_left, real_top);
+    } else {
+        /* no position coordinates found, let's center the window */
+        gtk_window_set_position (window, GTK_WIN_POS_CENTER);
     }
 
-    if ((geometry_flags & EEL_GDK_WIDTH_VALUE) && (geometry_flags & EEL_GDK_HEIGHT_VALUE)) {
-        sanity_check_window_dimensions (&width, &height);
-        gtk_window_set_default_size (GTK_WINDOW (window), (int)width, (int)height);
-    }
+    sanity_check_window_dimensions (&width, &height);
+    gtk_window_set_default_size (GTK_WINDOW (window), (int)width, (int)height);
 }
 
 /**
@@ -208,17 +210,14 @@ eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window,
      */
     g_return_if_fail (!gtk_widget_get_visible (GTK_WIDGET (window)));
 
+    width = height = 0;
     geometry_flags = eel_gdk_parse_geometry (geometry_string, &left, &top, &width, &height);
 
     /* Make sure the window isn't smaller than makes sense for this window.
      * Other sanity checks are performed in set_initial_geometry.
      */
-    if (geometry_flags & EEL_GDK_WIDTH_VALUE) {
-        width = MAX (width, minimum_width);
-    }
-    if (geometry_flags & EEL_GDK_HEIGHT_VALUE) {
-        height = MAX (height, minimum_height);
-    }
+    width = MAX (width, minimum_width);
+    height = MAX (height, minimum_height);
 
     /* Ignore saved window position if requested. */
     if (ignore_position) {
