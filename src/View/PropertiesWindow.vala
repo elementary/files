@@ -89,10 +89,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         /* Permissions */
         var perm_vbox = new VBox(false, 0);
-        /*var name_label = new Label("blabla");
-        name_label.xalign = 0;
-        name_label.set_line_wrap(true);
-        perm_vbox.pack_start(name_label);*/
         construct_perm_panel (perm_vbox);
         add_section (content_vbox, _("Permissions"), perm_vbox);
         if (!goffile.can_set_permissions()) {
@@ -156,7 +152,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         //header_desc_str = Eel.format_size (total_size);
         header_desc_str = format_size_for_display ((int64) total_size);
         if (ftype != null) {
-            header_desc_str += ", " + ftype;
+            header_desc_str += ", " + goffile.formated_type;
         } 
         header_desc.set_markup (span_weight_light(header_desc_str));
     }
@@ -549,6 +545,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     {
         GLib.FileInfo info = new FileInfo ();
 
+        //TODO use marlin jobs
         try {
             info.set_attribute_uint32(attr, val);
             yield file.location.set_attributes_async (info, 
@@ -570,11 +567,21 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
                 perm_code_should_update = false;
                 update_perm_grid_toggle_states (perm);
                 perm_code_should_update = true;
-                if (goffile.can_set_permissions() && goffile.permissions != perm) {
-                    goffile.permissions = perm;
-                    l_perm.set_text(goffile.get_permissions_as_string());
-                    /* real update permissions */
-                    file_set_attributes (goffile, FILE_ATTRIBUTE_UNIX_MODE, perm, cancellable);
+                int n = 0;
+                foreach (GOF.File gof in files)
+                {
+                    if (gof.can_set_permissions() && gof.permissions != perm) {
+                        gof.permissions = perm;
+                        /* update permission label once */
+                        if (n<1)
+                            l_perm.set_text(goffile.get_permissions_as_string());
+                        /* real update permissions */
+                        file_set_attributes (gof, FILE_ATTRIBUTE_UNIX_MODE, perm, cancellable);
+                        n++;
+                    } else {
+                        //TODO add a list of permissions set errors in the property dialog.
+                        warning ("can't change permission on %s", gof.uri);
+                    }
                 }
                 timeout_perm = 0;
 
@@ -607,7 +614,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         if (uid == goffile.uid)
             return;
         
-        file_set_attributes (goffile, FILE_ATTRIBUTE_UNIX_UID, uid);
+        foreach (GOF.File gof in files)
+            file_set_attributes (gof, FILE_ATTRIBUTE_UNIX_UID, uid);
     }
 
     private void combo_group_changed (Gtk.ComboBox combo) {
@@ -640,7 +648,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         if (gid == goffile.gid)
             return;
 
-        file_set_attributes (goffile, FILE_ATTRIBUTE_UNIX_GID, gid);
+        foreach (GOF.File gof in files)
+            file_set_attributes (gof, FILE_ATTRIBUTE_UNIX_GID, gid);
     }
    
     private void construct_perm_panel (Box box) {
@@ -715,12 +724,65 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         goffile.permissions = chmod_to_vfs(nbb);
         message ("test chmod %d %s", nbb, goffile.get_permissions_as_string());*/
     }
+    
+    private bool selection_can_set_owner () {
+        foreach (GOF.File gof in files)
+            if (!gof.can_set_owner())
+                return false;            
+
+        return true;
+    }
         
+    private string? get_common_owner () {
+        int uid = -1;
+        if (files == null)
+            return null;
+
+        foreach (GOF.File gof in files)
+        {
+            if (uid == -1 && gof != null) {
+                uid = gof.uid;
+                continue;
+            }
+            if (uid != gof.uid)
+                return null;
+        }
+
+        return goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER);
+    }
+
+    private bool selection_can_set_group () {
+        foreach (GOF.File gof in files)
+            if (!gof.can_set_group())
+                return false;            
+
+        return true;
+    }
+        
+    private string? get_common_group () {
+        int gid = -1;
+        if (files == null)
+            return null;
+
+        foreach (GOF.File gof in files)
+        {
+            if (gid == -1 && gof != null) {
+                gid = gof.gid;
+                continue;
+            }
+            if (gid != gof.gid)
+                return null;
+        }
+
+        return goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_GROUP);
+    }
+
     private Gtk.Widget create_owner_choice() {
         Gtk.Widget choice;
         choice = null;
 
-        if (goffile.can_set_owner()) {
+        //if (goffile.can_set_owner()) {
+        if (selection_can_set_owner()) {
             GLib.List<string> users;
             Gtk.TreeIter iter;
 
@@ -759,7 +821,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
             choice = (Gtk.Widget) combo;
         } else {
-            choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER));
+            //choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER));
+            string? common_owner = get_common_owner ();
+            if (common_owner == null)
+                common_owner = "--";
+            choice = (Gtk.Widget) new Gtk.Label (common_owner);
             //choice.margin_left = 6;
             choice.set_halign (Gtk.Align.START);
         }
@@ -768,11 +834,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         return choice;
     }
-    
+   
     private Gtk.Widget create_group_choice() {
         Gtk.Widget choice;
 
-        if (goffile.can_set_group()) {
+        //if (goffile.can_set_group()) {
+        if (selection_can_set_group()) {
             GLib.List<string> groups;
             Gtk.TreeIter iter;
 
@@ -811,7 +878,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
             choice = (Gtk.Widget) combo;
         } else {
-            choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_GROUP));
+            //choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_GROUP));
+            string? common_group = get_common_group ();
+            if (common_group == null)
+                common_group = "--";
+            choice = (Gtk.Widget) new Gtk.Label (common_group);
             choice.set_halign (Gtk.Align.START);
         }
 
