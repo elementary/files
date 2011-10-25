@@ -148,34 +148,44 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         return "<span weight='light'>" + str + "</span>";
     }
 
-    private void update_header_desc (uint64 total_size) {
-        string header_desc_str = "";
+    private uint64 total_size = 0;
 
-        header_desc_str += Eel.format_size (total_size);
+    private void update_header_desc () {
+        string header_desc_str;
+
+        //header_desc_str = Eel.format_size (total_size);
+        header_desc_str = format_size_for_display ((int64) total_size);
         if (ftype != null) {
             header_desc_str += ", " + ftype;
         } 
         header_desc.set_markup (span_weight_light(header_desc_str));
     }
 
+    private Mutex mutex = new Mutex ();
+    private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
+
     private void selection_size_update () {
-        uint64 total_size = 0;
-        uint total_count = 0;
+        total_size = 0;
+        deep_count_directories = null;
 
         foreach (GOF.File gof in files)
         {
             if (gof.is_directory) {
                 var d = new Marlin.DeepCount (gof.location);
+                deep_count_directories.prepend (d);
                 d.finished.connect (() => { 
+                                    mutex.lock ();
+                                    deep_count_directories.remove (d);
                                     total_size += d.total_size;
-                                    update_header_desc (total_size);
+                                    update_header_desc ();
+                                    mutex.unlock ();
                                     });
-            } else {
-                total_size += gof.size;
-                total_count++;
-            }
+            } 
+            mutex.lock ();
+            total_size += gof.size;
+            mutex.unlock ();
         }
-        update_header_desc (total_size);
+        update_header_desc ();
     }
 
     private void add_header_box (VBox vbox, Box content) {

@@ -26,7 +26,7 @@ public class Marlin.DeepCount : Object
     private Cancellable cancellable;
     private List<File>? directories = null;
 
-    public uint64 total_size;
+    public uint64 total_size = 0;
     public uint files_count = 0;
     public uint dirs_count = 0;
     public uint directories_count = 0;
@@ -41,6 +41,8 @@ public class Marlin.DeepCount : Object
 
         process_directory (file);
     }
+
+    private Mutex mutex = new Mutex ();
 
     private async void process_directory (File directory)
     {
@@ -62,7 +64,9 @@ public class Marlin.DeepCount : Object
                     //message ("file: %s %s", name, location.get_uri ());
                     files_count++;
                 }
+                mutex.lock ();
                 total_size += f.get_size();
+                mutex.unlock ();
             }
         } catch (Error err) {
             warning ("%s", err.message);
@@ -72,7 +76,9 @@ public class Marlin.DeepCount : Object
         /*message ("----------------");
           foreach (var dir in directories)
           message ("dir %s", dir.get_uri ());*/
-        if (directories == null)
+        if (directories == null) {
+            //message ("DEEP COUNT dir %s size %s", file.get_uri (), format_size_for_display ((int64) total_size));
             finished ();
+        }
     }
 }

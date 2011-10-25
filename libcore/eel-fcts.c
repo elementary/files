@@ -513,6 +513,9 @@ eel_get_id_from_digit_string (const char *digit_string, uid_t *id)
 	return TRUE;
 }
 
+/* TODO check again sanity of g_format_size. 
+standby too much segfault from this function */
+
 /* TODO remove this once format_size has populated glib-2.0.vapi 
  * g_format_size_for_display is deprectaed since glib 2.30 
  */
