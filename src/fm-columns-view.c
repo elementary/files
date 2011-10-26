@@ -70,12 +70,16 @@ static void     fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *
 
 static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsView* view)
 {
-    g_return_if_fail(FM_IS_COLUMNS_VIEW(view));
-    GtkTreeIter iter;
-    gboolean folder_empty = !gtk_tree_model_get_iter_first(GTK_TREE_MODEL(view->model), &iter);
-    if(folder_empty && !fm_directory_view_get_loading(FM_DIRECTORY_VIEW(view)))
+    g_return_val_if_fail(FM_IS_COLUMNS_VIEW(view), FALSE);
+    
+    GOFDirectoryAsync *dir = fm_directory_view_get_current_directory (FM_DIRECTORY_VIEW (view));
+
+    if (gof_directory_is_empty (dir))
     {
-        PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), _("This folder is empty."));
+        PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), NULL);
+        gchar *str = g_strconcat("<span size='x-large'>", _("This folder is empty."), "</span>", NULL);
+        pango_layout_set_markup (layout, str, -1);
+
         PangoRectangle extents;
         /* Get hayout height and width */
         pango_layout_get_extents(layout, NULL, &extents);
@@ -86,6 +90,7 @@ static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsVie
                 (double)gtk_widget_get_allocated_height(GTK_WIDGET(view))/2 - height/2,
                 layout);
     }
+
     return FALSE;
 }
 

@@ -424,6 +424,7 @@ void    fm_directory_view_zoom_in (FMDirectoryView *view);
 void    fm_directory_view_zoom_out (FMDirectoryView *view);
 void    fm_directory_view_zoom_normal (FMDirectoryView *view);
 gboolean fm_directory_view_get_loading (FMDirectoryView *view);
-void fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor);
+void    fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor);
+GOFDirectoryAsync *fm_directory_view_get_current_directory (FMDirectoryView *view);
 
 #endif /* FM_DIRECTORY_VIEW_H */

@@ -328,6 +328,11 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
         fm_directory_view_load_file_hash (directory, view);
     }
     view->details->loading = FALSE;
+
+    /* Apparently we need a queu_draw sometimes, the view is not refreshed until an event */
+    if (gof_directory_is_empty (directory))
+        gtk_widget_queue_draw (view);
+
     g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
 }
 
@@ -2106,10 +2111,21 @@ fm_directory_view_cancel_thumbnailing (FMDirectoryView *view)
     }
 }
 
+GOFDirectoryAsync *fm_directory_view_get_current_directory (FMDirectoryView *view)
+{
+    g_return_val_if_fail (view != NULL, NULL);
+    g_return_val_if_fail (view->details->slot != NULL, NULL);
+
+    return view->details->slot->directory;
+}
+
 gboolean fm_directory_view_get_loading (FMDirectoryView *view)
 {
-    if (view->details->slot && view->details->slot->directory)
-        return view->details->slot->directory->loading;
+    GOFDirectoryAsync *dir;
+
+    dir = fm_directory_view_get_current_directory (view);
+    if (dir != NULL)
+        return dir->loading;
 
     return FALSE;
 }

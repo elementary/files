@@ -565,16 +565,33 @@ gof_directory_async_get_uri (GOFDirectoryAsync *directory)
 }
 
 gboolean
-gof_directory_async_has_parent(GOFDirectoryAsync *directory)
+gof_directory_async_has_parent (GOFDirectoryAsync *directory)
 {
     return (directory->priv->parent != NULL);
 }
 
 GFile *
-gof_directory_async_get_parent(GOFDirectoryAsync *directory)
+gof_directory_async_get_parent (GOFDirectoryAsync *directory)
 {
     if (directory->priv->parent != NULL)
         return (g_object_ref (directory->priv->parent));
     return NULL;
 }
 
+gboolean
+gof_directory_is_empty (GOFDirectoryAsync *directory)
+{
+    guint file_hash_count = 0;
+    guint hidden_file_hash_count = 0;
+
+    if (directory->file_hash != NULL)
+        file_hash_count = g_hash_table_size (directory->file_hash);
+    if (directory->hidden_file_hash != NULL)
+        hidden_file_hash_count = g_hash_table_size (directory->hidden_file_hash);
+
+    //if (!directory->loading && file_hash_count == 0 && hidden_file_hash_count == 0)
+    if (directory->loaded && file_hash_count == 0 && hidden_file_hash_count == 0)
+        return TRUE;
+
+    return FALSE;
+}

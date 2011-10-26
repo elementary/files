@@ -88,6 +88,8 @@ GFile                   *gof_directory_async_get_parent(GOFDirectoryAsync *direc
 /*GOFDirectoryAsync       *gof_directory_ref (GOFDirectoryAsync *directory);
   void                    gof_directory_unref (GOFDirectoryAsync *directory);*/
 
+gboolean                gof_directory_is_empty (GOFDirectoryAsync *directory);
+
 G_END_DECLS
 
 #endif /* GOF_DIRECTORY_ASYNC_H */
