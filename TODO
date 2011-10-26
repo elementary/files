@@ -1,11 +1,26 @@
 This is a short TODO list.
 
+Hotlist:
+- icon view context menu, add Orderby menus
+- make permissions change async operations use jobs.
+- PropertyWindow permissions change recursively for folders.
+- reshape file changed signals.
+- make ContextPane support multi selection like PropertyWindow.
+- files operations don't count on monitored changes fix bug in ftp etc.
+- fix rename bug, edit label ctrl c+v  bug
+- fix copy into bug since there s no ctrl+v shortcut for it (breadcrumbs regressions).
+- update freespace diskrenderers in sidebar: make a simple timer and update the information at the application level for a determined time delay, and maybe after some specifics files operations ?
+- use an overlay statusbar when ContextPane is off
+- fix the breadcrumbs for uri navigation (regressions)
+- store typechecks in db together with last edited date
+- don't store thumbs with normal icons in the cache.
+- sometimes marlin first launch is hanging, cut out all the non essential stuff (plugins marlin-daemon etc...) and check performances elements by elements.
+
+Various:
 - change focus in the icon view: draw focus only via the text renderer
 - files operations must implement an undo/redo mechanism.
 - do the usual filecheck on files without extension of find a way that textfiles don't get detected as octet-stream
-- store typechecks in db together with last edited date
 - interface for tagging system, an easy way to tag a file in the preview panel
-- dialog property of the selection.
 - add drag support to the locationbar, we should be able to move a file by dragging it on the folder names
 ...
 
