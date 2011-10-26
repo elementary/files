@@ -168,7 +168,6 @@ void            gof_file_update_emblem (GOFFile *file);
 GOFFile*        gof_file_get (GFile *location);
 GOFFile*        gof_file_get_by_uri (const char *uri);
 GOFFile*        gof_file_get_by_commandline_arg (const char *arg);
-GFileInfo*      gof_file_get_file_info (GOFFile* self);
 
 int             gof_file_compare_for_sort (GOFFile *file_1,
                                            GOFFile *file_2,

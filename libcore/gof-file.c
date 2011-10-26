@@ -265,6 +265,7 @@ void gof_file_update (GOFFile *file)
             target_location = g_file_get_child(file->directory, target_path);
         else
             target_location = g_file_new_for_commandline_arg (target_path);
+        //TODO make this async
         GOFFile *target_file = gof_file_get (target_location);
         gof_file_update (target_file);
         file->link_known_target = (target_file->formated_type != NULL);
@@ -389,6 +390,7 @@ gboolean gof_file_query_info (GOFFile *file)
     return FALSE;
 }
 
+/* TODO make this async */
 void gof_file_query_update (GOFFile *file)
 {
     if (gof_file_query_info (file))
@@ -417,13 +419,6 @@ void gof_file_update_trash_info (GOFFile *file)
     }
 
     file->trash_orig_path = g_file_info_get_attribute_byte_string (file->info, "trash::orig-path");
-}
-
-GFileInfo* gof_file_get_file_info (GOFFile* self) {
-    GFileInfo* result;
-    g_return_val_if_fail (self != NULL, NULL);
-    result = self->info;
-    return result;
 }
 
 static void gof_file_init (GOFFile *file) {
@@ -1038,8 +1033,9 @@ GOFFile* gof_file_get (GFile *location)
         g_object_ref (file);
     } else {
         file = gof_file_new (location, parent);
-        if (gof_file_query_info (file))
-            gof_file_update (file);
+        //SPOTTED!
+        /*if (gof_file_query_info (file))
+            gof_file_update (file);*/
     }
 
     if (parent != NULL)

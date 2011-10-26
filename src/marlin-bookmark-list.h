@@ -76,8 +76,5 @@ MarlinBookmark *        marlin_bookmark_list_item_at             (MarlinBookmark
 void                    marlin_bookmark_list_move_item           (MarlinBookmarkList *bookmarks,
                                                                   guint                 index,
                                                                   guint                 destination);
-/*void                    marlin_bookmark_list_set_window_geometry (MarlinBookmarkList   *bookmarks,
-                                                                  const char             *geometry);
-const char *            marlin_bookmark_list_get_window_geometry (MarlinBookmarkList   *bookmarks);*/
 
 #endif /* MARLIN_BOOKMARK_LIST_H */

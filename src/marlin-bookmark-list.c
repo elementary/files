@@ -27,11 +27,6 @@
 #include <config.h>
 #include "marlin-bookmark-list.h"
 
-/*#include <libnautilus-private/nautilus-file-utilities.h>
-#include <libnautilus-private/nautilus-file.h>
-#include <libnautilus-private/nautilus-icon-names.h>
-#include <eel/eel-glib-extensions.h>
-#include <eel/eel-string.h>*/
 #include <gio/gio.h>
 #include <string.h>
 #include "gof-file.h"
@@ -402,22 +397,6 @@ marlin_bookmark_list_delete_items_with_uri (MarlinBookmarkList *bookmarks,
 }
 
 /**
- * marlin_bookmark_list_get_window_geometry:
- * 
- * Get a string representing the bookmark_list's window's geometry.
- * This is the value set earlier by marlin_bookmark_list_set_window_geometry.
- * @bookmarks: the list of bookmarks associated with the window.
- * Return value: string representation of window's geometry, suitable for
- * passing to gnome_parse_geometry(), or NULL if
- * no window geometry has yet been saved for this bookmark list.
-**/
-/*const char *
-  marlin_bookmark_list_get_window_geometry (MarlinBookmarkList *bookmarks)
-  {
-  return window_geometry;
-  }*/
-
-/**
  * marlin_bookmark_list_insert_item:
  * 
  * Insert a bookmark at a specified position.
@@ -707,25 +686,3 @@ marlin_bookmark_list_new (void)
     return list;
 }
 
-/**
- * marlin_bookmark_list_set_window_geometry:
- * 
- * Set a bookmarks window's geometry (position & size), in string form. This is
- * stored to disk by this class, and can be retrieved later in
- * the same session or in a future session.
- * @bookmarks: the list of bookmarks associated with the window.
- * @geometry: the new window geometry string.
-**/
-/*void
-  marlin_bookmark_list_set_window_geometry (MarlinBookmarkList *bookmarks,
-  const char           *geometry)
-  {
-  g_return_if_fail (MARLIN_IS_BOOKMARK_LIST (bookmarks));
-  g_return_if_fail (geometry != NULL);
-
-  g_free (window_geometry);
-  window_geometry = g_strdup (geometry);
-
-  marlin_bookmark_list_save_file (bookmarks);
-  }
-  */

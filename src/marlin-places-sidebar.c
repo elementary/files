@@ -325,7 +325,6 @@ update_places (MarlinPlacesSidebar *sidebar)
     g_free (mount_uri);
 
     /* add bookmarks */
-
     bookmark_count = marlin_bookmark_list_length (sidebar->bookmarks);
     for (index = 0; index < bookmark_count; index++) {
         bookmark = marlin_bookmark_list_item_at (sidebar->bookmarks, index);
