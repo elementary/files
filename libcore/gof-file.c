@@ -27,11 +27,10 @@
 #include "eel-string.h"
 #include "eel-gio-extensions.h"
 #include "eel-string.h"
-#include "gof-directory-async.h"
 #include "gof-monitor.h"
 #include "marlin-exec.h"
 #include "marlin-icons.h"
-#include "marlinplugins.h"
+#include "marlincore.h"
 
 enum {
     FM_LIST_MODEL_FILE_COLUMN,
@@ -182,6 +181,8 @@ void gof_file_update (GOFFile *file)
     file->formated_modified = eel_get_date_as_string (file->modified, date_format_pref);
     _g_free0 (date_format_pref);
 
+    //SPOTTED!
+#if 0
     if ((file->is_desktop = gof_file_is_desktop_file (file)))
     {
         /* determine the custom icon and display name for .desktop files */
@@ -241,6 +242,7 @@ void gof_file_update (GOFFile *file)
             g_key_file_free (key_file);
         }
     }
+#endif
 
     if (file->is_directory && !file->is_hidden)
     {
@@ -932,7 +934,7 @@ gof_file_get_formated_time (GOFFile *file, const char *attr)
  * Return value: %TRUE if @file is a .desktop file.
 **/
 gboolean
-gof_file_is_desktop_file (const GOFFile *file)
+gof_file_is_desktop_file (GOFFile *file)
 {
     const gchar *content_type;
     gboolean     is_desktop_file = FALSE;
@@ -962,7 +964,7 @@ gof_file_is_desktop_file (const GOFFile *file)
  * Return value: %TRUE if @file can be executed.
 **/
 gboolean
-gof_file_is_executable (const GOFFile *file)
+gof_file_is_executable (GOFFile *file)
 {
     gboolean     can_execute = FALSE;
     const gchar *content_type;
@@ -1055,7 +1057,7 @@ GOFFile* gof_file_get (GFile *location)
 
     //printf ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
     if ((parent = g_file_get_parent (location)) != NULL)
-        dir = gof_directory_cache_lookup (parent);
+        dir = gof_directory_async_cache_lookup (parent);
     if (dir != NULL) {
         //printf (">>>>>>>>>>>>>>> dir already loaded %s\n", g_file_get_uri (parent));
         if ((file = g_hash_table_lookup (dir->file_hash, location)) == NULL)
@@ -1351,7 +1353,7 @@ gof_spawn_command_line_on_screen (char *cmd, GdkScreen *screen)
  * Return value: Default #GAppInfo for @file or %NULL if there is none.
 **/
 GAppInfo *
-gof_file_get_default_handler (const GOFFile *file) 
+gof_file_get_default_handler (GOFFile *file) 
 {
     const gchar *content_type;
     GAppInfo    *app_info = NULL;

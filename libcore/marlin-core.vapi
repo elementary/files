@@ -103,6 +103,7 @@ namespace GOF {
     [CCode (cheader_filename = "gof-file.h")]
     public class File : GLib.Object {
         public File(GLib.File location, GLib.File dir);
+        public static File cache_lookup (GLib.File file);
         public static File get(GLib.File location);
         public bool launch_with(Gdk.Screen screen, AppInfo app);
         public GLib.File location;
@@ -120,6 +121,7 @@ namespace GOF {
         public Gdk.Pixbuf pix;
         public unowned string trash_orig_path;
 
+        public bool is_hidden;
         public bool is_directory;
         public bool is_symlink();
         public bool is_trashed();
@@ -140,6 +142,7 @@ namespace GOF {
         public bool has_permissions;
         public uint32 permissions;
 
+        public void update ();
         public void update_icon (int size);
         public bool can_set_owner ();
         public bool can_set_group ();
@@ -149,6 +152,7 @@ namespace GOF {
         public GLib.List? get_settable_group_names ();
     }
 
+    /*
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]
     namespace Directory {
         [CCode (cheader_filename = "gof-directory-async.h")]
@@ -178,7 +182,7 @@ namespace GOF {
             public signal void done_loading ();
             public signal void info_available ();
         }
-    }
+    }*/
     [CCode (cheader_filename = "gof-file.h")]
     public enum FileIconFlags
     {

@@ -28,7 +28,7 @@
 
 #include <glib.h>
 #include <gio/gio.h>
-#include "gof-directory-async.h"
+#include <marlincore.h>
 
 typedef struct GOFMonitor GOFMonitor;
 

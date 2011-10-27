@@ -21,7 +21,7 @@
 #define MARLIN_WINDOW_COLUMNS_H
 
 #include <gtk/gtk.h>
-#include "gof-directory-async.h"
+#include "marlincore.h"
 //#include "gof-window-slot.h"
 #include "marlin-view-window.h"
 

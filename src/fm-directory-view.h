@@ -29,14 +29,13 @@
 
 #include <gtk/gtk.h>
 #include <gio/gio.h>
-#include "gof-directory-async.h"
 #include "gof-file.h"
 #include "marlin-window-columns.h"
 #include "gof-window-slot.h"
 #include "marlin-clipboard-manager.h"
 #include "fm-list-model.h"
 #include "marlin-view-window.h"
-#include "marlinplugins.h"
+#include "marlincore.h"
 #include "marlin-enum-types.h"
 
 

@@ -17,10 +17,12 @@ include(ValaVersion)
 ensure_vala_version("0.12.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
+gof-directory-async.vala
 PluginManager.vala
 Plugin.vala
 PACKAGES
 gtk+-3.0
+gio-2.0
 gee-1.0
 gmodule-2.0
 CUSTOM_VAPIS
@@ -28,14 +30,14 @@ CUSTOM_VAPIS
 OPTIONS
 --thread
 GENERATE_VAPI
-marlinplugins
+marlincore
 GENERATE_HEADER
-marlinplugins
+marlincore
 )
 
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlinplugins.h DESTINATION include/marlincore/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlincore.h DESTINATION include/marlincore/)
 install (FILES marlin-core.vapi DESTINATION share/vala/vapi)
 install (FILES
     eel-accessibility.h
@@ -54,7 +56,6 @@ install (FILES
     eel-ui.h
     eel-vfs-extensions.h
     gof-abstract-slot.h
-    gof-directory-async.h
     gof-file.h
     gof-monitor.h
     marlin-exec.h
@@ -123,7 +124,6 @@ add_library (${PKGNAME} SHARED
     marlin-exec.c
     gof-abstract-slot.c
     gof-file.c
-    gof-directory-async.c
     gof-monitor.c
     nautilus-icon-info.c
     nautilus-cell-renderer-text-ellipsized.c
@@ -156,7 +156,6 @@ add_library(${PKGNAME}-static STATIC
     marlin-exec.c
     gof-abstract-slot.c
     gof-file.c
-    gof-directory-async.c
     gof-monitor.c
     nautilus-icon-info.c
     nautilus-cell-renderer-text-ellipsized.c
@@ -186,3 +185,4 @@ add_executable(marlincore_tests
 )
 add_test_executable(marlincore_tests)
 target_link_libraries(marlincore_tests marlincore ${DEPS_LIBRARIES})
+#target_link_libraries(marlincore ${DEPS_LIBRARIES})

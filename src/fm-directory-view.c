@@ -34,7 +34,6 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gio/gio.h>
-#include "gof-directory-async.h"
 #include "marlin-file-operations.h"
 //#include "fm-list-view.h"
 #include "eel-gtk-macros.h"
@@ -330,7 +329,7 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     view->details->loading = FALSE;
 
     /* Apparently we need a queu_draw sometimes, the view is not refreshed until an event */
-    if (gof_directory_is_empty (directory))
+    if (gof_directory_async_is_empty (directory))
         gtk_widget_queue_draw (GTK_WIDGET (view));
 
     g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
@@ -2623,7 +2622,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       G_STRUCT_OFFSET (FMDirectoryViewClass, add_file),
                       NULL, NULL,
                       g_cclosure_marshal_generic,
-                      G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_TYPE_DIRECTORY_ASYNC);
+                      G_TYPE_NONE, 2, GOF_TYPE_FILE, GOF_DIRECTORY_TYPE_ASYNC);
     signals[DIRECTORY_LOADED] =
         g_signal_new ("directory_loaded",
                       G_TYPE_FROM_CLASS (klass),
@@ -2631,7 +2630,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                       G_STRUCT_OFFSET (FMDirectoryViewClass, directory_loaded),
                       NULL, NULL,
                       g_cclosure_marshal_generic,
-                      G_TYPE_NONE, 1, GOF_TYPE_DIRECTORY_ASYNC);
+                      G_TYPE_NONE, 1, GOF_DIRECTORY_TYPE_ASYNC);
     signals[SYNC_SELECTION] =
         g_signal_new ("sync_selection",
                       G_TYPE_FROM_CLASS (klass),

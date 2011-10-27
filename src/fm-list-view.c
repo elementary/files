@@ -349,7 +349,7 @@ subdirectory_unloaded_callback (FMListModel *model,
     FMListView *view;
 
     g_return_if_fail (FM_IS_LIST_MODEL (model));
-    g_return_if_fail (GOF_IS_DIRECTORY_ASYNC (directory));
+    g_return_if_fail (GOF_DIRECTORY_IS_ASYNC (directory));
 
     view = FM_LIST_VIEW(callback_data);
 
@@ -607,7 +607,7 @@ static gboolean fm_list_view_draw(GtkWidget* view_, cairo_t* cr, FMListView* vie
 
     GOFDirectoryAsync *dir = fm_directory_view_get_current_directory (FM_DIRECTORY_VIEW (view));
 
-    if (gof_directory_is_empty (dir))
+    if (gof_directory_async_is_empty (dir))
     {
         PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), NULL);
         gchar *str = g_strconcat("<span size='x-large'>", _("This folder is empty."), "</span>", NULL);

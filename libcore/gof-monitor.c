@@ -147,7 +147,7 @@ gof_monitor_file_changed (GOFFile *file)
     GOFDirectoryAsync *dir;
 
     /* get the DirectoryAsync associated to the file */
-    dir = gof_directory_cache_lookup (file->directory);
+    dir = gof_directory_async_cache_lookup (file->directory);
     if (dir != NULL)
         g_signal_emit_by_name (dir, "file_changed", file);
 }

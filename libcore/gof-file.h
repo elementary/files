@@ -187,7 +187,7 @@ gboolean        gof_file_is_trashed (GOFFile *file);
 const gchar     *gof_file_get_symlink_target (GOFFile *file);
 gchar           *gof_file_get_formated_time (GOFFile *file, const char *attr);
 gboolean        gof_file_is_symlink (GOFFile *file);
-gboolean        gof_file_is_desktop_file (const GOFFile *file);
+gboolean        gof_file_is_desktop_file (GOFFile *file);
 gchar           *gof_file_list_to_string (GList *list, gsize *len);
 
 gboolean        gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b);
@@ -200,7 +200,7 @@ gboolean        gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInf
 gboolean        gof_files_launch_with (GList *files, GdkScreen *screen, GAppInfo* app_info);
 gboolean        gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error);
 gboolean        gof_file_launch (GOFFile  *file, GdkScreen *screen);
-GAppInfo        *gof_file_get_default_handler (const GOFFile *file);
+GAppInfo        *gof_file_get_default_handler (GOFFile *file);
 
 void            gof_file_rename (GOFFile *file,
                                  const char *new_name,

@@ -1360,7 +1360,7 @@ fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirec
         return FALSE;
     }
 
-    file_entry->subdirectory = gof_directory_async_new_from_file (file_entry->file);
+    file_entry->subdirectory = gof_directory_async_from_file (file_entry->file);
 
     /* FIXME not sure the hash lookup is really needed gof_driectory_async_get_for_file is a always a new object */
     if (g_hash_table_lookup (model->details->directory_reverse_map,
@@ -1755,7 +1755,7 @@ fm_list_model_class_init (FMListModelClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__OBJECT,
                       G_TYPE_NONE, 1,
-                      GOF_TYPE_DIRECTORY_ASYNC);
+                      GOF_DIRECTORY_TYPE_ASYNC);
 }
 
 static void
