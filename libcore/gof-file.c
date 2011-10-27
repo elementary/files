@@ -1062,6 +1062,7 @@ GOFFile* gof_file_get (GFile *location)
         //printf (">>>>>>>>>>>>>>> dir already loaded %s\n", g_file_get_uri (parent));
         if ((file = g_hash_table_lookup (dir->file_hash, location)) == NULL)
             file = g_hash_table_lookup (dir->hidden_file_hash, location);
+        g_object_unref (dir);
     }
 
     if (file == NULL) {
