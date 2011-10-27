@@ -90,8 +90,8 @@ char *              marlin_bookmark_get_scroll_pos         (MarlinBookmark      
 */
 
 /* Helper functions for displaying bookmarks */
-GdkPixbuf *         marlin_bookmark_get_pixbuf             (MarlinBookmark      *bookmark,
-                                                            GtkIconSize            icon_size);
+/*GdkPixbuf *         marlin_bookmark_get_pixbuf             (MarlinBookmark      *bookmark,
+                                                            GtkIconSize            icon_size);*/
 GtkWidget *         marlin_bookmark_menu_item_new          (MarlinBookmark      *bookmark);
 
 #endif /* MARLIN_BOOKMARK_H */

@@ -24,14 +24,6 @@
 #include <config.h>
 #include "marlin-bookmark.h"
 
-/*#include "nautilus-file.h"
-#include <eel/eel-gdk-pixbuf-extensions.h>
-#include <eel/eel-gtk-extensions.h>
-#include <eel/eel-gtk-macros.h>
-#include <eel/eel-string.h>
-#include <eel/eel-vfs-extensions.h>*/
-/*#include <libnautilus-private/nautilus-file.h>
-#include <libnautilus-private/nautilus-icon-names.h>*/
 #include "nautilus-icon-info.h"
 #include "marlin-icons.h"
 
@@ -186,7 +178,7 @@ marlin_bookmark_get_has_custom_name (MarlinBookmark *bookmark)
     return (bookmark->label != NULL);
 }
 
-
+#if 0
 GdkPixbuf *	    
 marlin_bookmark_get_pixbuf (MarlinBookmark *bookmark,
                               GtkIconSize stock_size)
@@ -214,6 +206,7 @@ marlin_bookmark_get_pixbuf (MarlinBookmark *bookmark,
 
     return result;
 }
+#endif
 
 GIcon *
 marlin_bookmark_get_icon (MarlinBookmark *bookmark)
@@ -279,6 +272,7 @@ marlin_bookmark_set_name (MarlinBookmark *bookmark, char *new_name)
         return FALSE;
     } 
 
+    g_free (bookmark->label);
     bookmark->label = g_strdup (new_name);
     bookmark->name = bookmark->label;
 
@@ -526,12 +520,15 @@ marlin_bookmark_new (GOFFile *file, char *label)
     bookmark = MARLIN_BOOKMARK (g_object_new (MARLIN_TYPE_BOOKMARK, NULL));
     g_object_ref_sink (bookmark);
 
+    bookmark->name = NULL;
     bookmark->label = g_strdup (label);
     bookmark->file = g_object_ref (file);
-    if (label != NULL)
+    if (label != NULL) 
         bookmark->name = bookmark->label;
-    else
+    if (bookmark->name == NULL)
         bookmark->name = file->name;
+    if (bookmark->name == NULL)
+        bookmark->name = file->basename;
 
     //marlin_bookmark_connect_file (new_bookmark);
 

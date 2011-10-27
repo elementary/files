@@ -66,8 +66,6 @@ typedef struct _GOFFileClass GOFFileClass;
 struct _GOFFile {
     GObject parent_instance;
     //GOFFilePrivate * priv;
-    /*gboolean selected;
-      gboolean parent_directory_link;*/
 
     GFileInfo       *info;
     GFile           *location;

@@ -44,6 +44,9 @@ enum {
     FM_LIST_MODEL_NUM_COLUMNS
 };
 
+G_LOCK_DEFINE_STATIC (file_cache_mutex);
+
+static GHashTable   *file_cache;
 
 //static void gof_file_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec);
 //static void gof_file_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec);
@@ -166,7 +169,7 @@ void gof_file_update (GOFFile *file)
     file->is_hidden = g_file_info_get_is_hidden (file->info) || g_file_info_get_is_backup (file->info);
     file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
     file->size = (guint64) g_file_info_get_size (file->info);
-    file->file_type = g_file_info_get_file_type(file->info);
+    file->file_type = g_file_info_get_file_type (file->info);
     file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
     file->modified = g_file_info_get_attribute_uint64 (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
@@ -1012,6 +1015,27 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
     gof_monitor_file_changed (file);
 }
 
+static GOFFile
+*gof_file_cache_lookup (GFile *location)
+{
+    GOFFile *cached_file;
+
+    g_return_val_if_fail (G_IS_FILE (location), NULL);
+
+    /* allocate the GOFFile cache on-demand */
+    if (G_UNLIKELY (file_cache == NULL))
+    {
+        G_LOCK (file_cache_mutex);
+        file_cache = g_hash_table_new_full (g_file_hash, 
+                                            (GEqualFunc) g_file_equal, 
+                                            (GDestroyNotify) g_object_unref, 
+                                            NULL);
+        G_UNLOCK (file_cache_mutex);
+    }
+    cached_file = g_hash_table_lookup (file_cache, location);
+
+    return cached_file;
+}
 
 GOFFile* gof_file_get (GFile *location)
 {
@@ -1028,14 +1052,23 @@ GOFFile* gof_file_get (GFile *location)
             file = g_hash_table_lookup (dir->hidden_file_hash, location);
     }
 
-    if (file != NULL) {
-        //printf (">>>>reuse file\n");
-        g_object_ref (file);
-    } else {
+    if (file == NULL) {
+        file = gof_file_cache_lookup (location);
+    }
+    if (file == NULL) {
         file = gof_file_new (location, parent);
+        G_LOCK (file_cache_mutex);
+        g_hash_table_insert (file_cache, g_object_ref (location), file);
+        G_UNLOCK (file_cache_mutex);
+
+        g_critical ("%s INFO null %s file_cache items %d", G_STRFUNC, file->uri, 
+                    g_hash_table_size (file_cache));
         //SPOTTED!
         /*if (gof_file_query_info (file))
             gof_file_update (file);*/
+    } else  {
+        //printf (">>>>reuse file\n");
+        g_object_ref (file);
     }
 
     if (parent != NULL)
