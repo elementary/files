@@ -120,7 +120,15 @@ enumerator_files_callback (GObject *source_object, GAsyncResult *result, gpointe
     {
         GFileInfo *file_info = (GFileInfo *) f->data;
         GFile *location =  g_file_get_child (dir->location, g_file_info_get_name (file_info));
-        GOFFile *goff = gof_file_new (location, dir->location);
+        //GOFFile *goff = gof_file_new (location, dir->location);
+
+        GOFFile *goff;
+        goff = gof_file_cache_lookup (location);
+        if (goff != NULL)
+            g_object_ref (goff);
+        else
+            goff = gof_file_new (location, dir->location);
+
         goff->info = file_info;
         gof_file_update (goff);
         g_object_unref (location);
@@ -393,6 +401,13 @@ GOFDirectoryAsync *gof_directory_async_new_from_file (GOFFile *file)
     return (dir);
 }
 
+#define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
+
+static GDestroyNotify location_destroy (gpointer data)
+{
+    _g_object_unref0 (data);
+}
+
 GOFDirectoryAsync *gof_directory_cache_lookup (GFile *file)
 {
     GOFDirectoryAsync *cached_dir;
@@ -405,7 +420,7 @@ GOFDirectoryAsync *gof_directory_cache_lookup (GFile *file)
         G_LOCK (directory_cache_mutex);
         directory_cache = g_hash_table_new_full (g_file_hash, 
                                                  (GEqualFunc) g_file_equal, 
-                                                 (GDestroyNotify) g_object_unref, 
+                                                 location_destroy, 
                                                  NULL);
         G_UNLOCK (directory_cache_mutex);
     }

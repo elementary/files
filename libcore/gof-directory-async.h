@@ -37,6 +37,8 @@ G_BEGIN_DECLS
 #define GOF_DIRECTORY_ASYNC_GET_CLASS(obj) \
     (G_TYPE_INSTANCE_GET_CLASS ((obj), GOF_TYPE_DIRECTORY_ASYNC, GOFDirectoryAsyncClass))
 
+#define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
+
 #define FILES_PER_QUERY 100
 
 typedef struct GOFDirectoryAsyncPrivate GOFDirectoryAsyncPrivate;
