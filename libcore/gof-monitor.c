@@ -150,5 +150,6 @@ gof_monitor_file_changed (GOFFile *file)
     dir = gof_directory_async_cache_lookup (file->directory);
     if (dir != NULL)
         g_signal_emit_by_name (dir, "file_changed", file);
+    g_object_unref (dir);
 }
 

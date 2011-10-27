@@ -300,8 +300,6 @@ void gof_file_update (GOFFile *file)
             file->group = g_strdup_printf ("%d", file->gid);
     }
 
-
-
     gof_file_update_trash_info (file);
     gof_file_update_emblem (file);
 }
@@ -334,7 +332,8 @@ void gof_file_update_emblem (GOFFile *file)
         g_list_free (file->emblems_list);
         file->emblems_list = NULL;
     }
-    if(plugins != NULL) marlin_plugin_manager_update_file_info (plugins, file);
+    if(plugins != NULL) 
+        marlin_plugin_manager_update_file_info (plugins, file);
     if(gof_file_is_symlink(file))
     {
         gof_file_add_emblem(file, "emblem-symbolic-link");
@@ -345,6 +344,7 @@ void gof_file_update_emblem (GOFFile *file)
           gof_file_add_emblem(file, "emblem-favorite");*/
     }
 
+//SPOTTED!
     gof_monitor_file_changed (file); 
 }
 
@@ -1059,7 +1059,9 @@ GOFFile* gof_file_get (GFile *location)
     if ((parent = g_file_get_parent (location)) != NULL)
         dir = gof_directory_async_cache_lookup (parent);
     if (dir != NULL) {
-        //printf (">>>>>>>>>>>>>>> dir already loaded %s\n", g_file_get_uri (parent));
+        gchar *uri = g_file_get_uri (parent);
+        g_warning (">>>>>>>>>>>>>>> dir already loaded %s\n", uri);
+        g_free (uri);
         if ((file = g_hash_table_lookup (dir->file_hash, location)) == NULL)
             file = g_hash_table_lookup (dir->hidden_file_hash, location);
         g_object_unref (dir);
@@ -1070,10 +1072,11 @@ GOFFile* gof_file_get (GFile *location)
     } 
     
     if (file != NULL) {
-        //printf (">>>>reuse file\n");
+        //g_warning (">>>>reuse file %s\n", file->uri);
         g_object_ref (file);
     } else {
         file = gof_file_new (location, parent);
+        //g_warning (">>>>create file %s\n", file->uri);
         G_LOCK (file_cache_mutex);
         g_hash_table_insert (file_cache, g_object_ref (location), file);
         G_UNLOCK (file_cache_mutex);
