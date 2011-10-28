@@ -1027,7 +1027,6 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 
 GOFFile* gof_file_cache_lookup (GFile *location)
 {
-//#if 0
     GOFFile *cached_file;
 
     g_return_val_if_fail (G_IS_FILE (location), NULL);
@@ -1045,8 +1044,6 @@ GOFFile* gof_file_cache_lookup (GFile *location)
     cached_file = g_hash_table_lookup (file_cache, location);
 
     return cached_file;
-//#endif
-    //return NULL;
 }
 
 GOFFile* gof_file_get (GFile *location)
