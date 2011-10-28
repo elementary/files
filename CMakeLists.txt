@@ -4,7 +4,6 @@ cmake_minimum_required (VERSION 2.6)
 cmake_policy(VERSION 2.6)
 project(Marlin)
 enable_testing()
-
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
 set(GETTEXT_PACKAGE "marlin")
 set(PIXMAP_DIR "${CMAKE_INSTALL_PREFIX}/share/pixmaps/marlin/")

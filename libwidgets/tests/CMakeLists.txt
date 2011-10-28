@@ -12,15 +12,16 @@ PACKAGES
 OPTIONS
     --thread
     --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
-    --vapidir=../../libcore/
+    --vapidir=${CMAKE_SOURCE_DIR}/libcore/
 )
 
-pkg_check_modules(DEPS REQUIRED gtk-3.0 gee-1.0)
+find_package(PkgConfig)
+pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-1.0)
 
 add_definitions(${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
 
 add_executable(widgets-test ${VALA_C})
 
-link_directories(${DEPS_LIB_PATHS})
-target_link_libraries(widgets-test ${DEPS_LIBRARIES} marlinwidgets)
+link_directories(${DEPS_LIBRARY_DIRS})
+target_link_libraries(widgets-test marlinwidgets ${DEPS_LIBRARIES})
 add_test(widgets widgets-test)

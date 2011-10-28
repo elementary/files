@@ -18,10 +18,16 @@
  *
  */
 using Marlin.View.Chrome;
+
+public class Breadcrumbs : Marlin.View.Chrome.BasePathBar
+{
+    public Breadcrumbs(Gtk.UIManager ui) {}
+    public override void load_right_click_menu(double x, double y) {}
+}
+
 void add_pathbar_tests()
 {
 /* TODO: they are broken currently */
-#if 0
     Test.add_func ("/marlin/pathbar/general", () => {
         Test.log_set_fatal_handler( () => { return false; });
         var breads = new Breadcrumbs(new Gtk.UIManager());
@@ -159,7 +165,6 @@ void add_pathbar_tests()
         breads.change_breadcrumbs("trash:///");
         breads.change_breadcrumbs("/home/there");
     });
-#endif
 
 }
  

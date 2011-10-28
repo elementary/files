@@ -35,5 +35,4 @@ add_library(marlintrash SHARED
 target_link_libraries(marlintrash ${DEPS_LIBRARIES} marlincore)
 install(TARGETS marlintrash DESTINATION lib/marlin/plugins/core/)
 install(FILES marlintrash.plug DESTINATION lib/marlin/plugins/core/)
-
 include_directories(${CMAKE_BINARY_DIR}/marlinplugins/)

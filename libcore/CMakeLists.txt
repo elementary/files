@@ -11,7 +11,6 @@ set (DOLLAR "$")
 
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-
 find_package(Vala REQUIRED)
 include(ValaVersion)
 ensure_vala_version("0.12.0" MINIMUM)
@@ -32,7 +31,6 @@ marlinplugins
 GENERATE_HEADER
 marlinplugins
 )
-
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlinplugins.h DESTINATION include/marlincore/)
