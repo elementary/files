@@ -8,5 +8,5 @@
 #cmakedefine VERSION "@VERSION@"
 #cmakedefine GNOMELOCALEDIR "@GNOMELOCALEDIR@"
 
-#define HAVE_DBUS
+#define HAVE_DBUSSSS
 #endif

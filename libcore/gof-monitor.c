@@ -146,10 +146,12 @@ gof_monitor_file_changed (GOFFile *file)
 {
     GOFDirectoryAsync *dir;
 
+    //SPOTTED !
     /* get the DirectoryAsync associated to the file */
-    dir = gof_directory_async_cache_lookup (file->directory);
+    /*dir = gof_directory_async_cache_lookup (file->directory);
     if (dir != NULL)
         g_signal_emit_by_name (dir, "file_changed", file);
-    g_object_unref (dir);
+    g_object_unref (dir);*/
+    //g_message ("file has changed %s", file->uri);
 }
 

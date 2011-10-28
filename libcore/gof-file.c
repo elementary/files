@@ -246,9 +246,11 @@ void gof_file_update (GOFFile *file)
 
     if (file->is_directory && !file->is_hidden)
     {
-        char *path = g_filename_from_uri (file->uri, NULL, NULL);
-        file->icon = get_icon_user_special_dirs(path);
-        _g_free0 (path);
+        if (file->uri != NULL) {
+            char *path = g_filename_from_uri (file->uri, NULL, NULL);
+            file->icon = get_icon_user_special_dirs(path);
+            _g_free0 (path);
+        }
 
         if (file->icon == NULL && !g_file_is_native (file->location))
             file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER_REMOTE);
@@ -262,6 +264,8 @@ void gof_file_update (GOFFile *file)
 
     /* get the formated type of thesyminked target */
     GFile *target_location;
+    //SPOTTED!
+#if 0
     if (G_UNLIKELY (gof_file_is_symlink (file))) {
         /* TODO put this in a queue and launch async? */
         /* TODO check if we can have an infinite loop here link of link of link */
@@ -277,8 +281,9 @@ void gof_file_update (GOFFile *file)
         file->formated_type = g_strdup_printf (_("link to %s"), target_file->formated_type);
         gof_file_unref (target_file);
     } else {
+#endif
         file->formated_type = g_content_type_get_description (file->ftype);
-    }
+    //}
 
     /* permissions */
     file->has_permissions = g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
@@ -326,7 +331,6 @@ void gof_file_update_icon (GOFFile *file, gint size)
 
 void gof_file_update_emblem (GOFFile *file)
 {
-    //g_critical ("update emblem");
     /* erase previous stored emblems */
     if (file->emblems_list != NULL) {
         g_list_free (file->emblems_list);
@@ -344,7 +348,7 @@ void gof_file_update_emblem (GOFFile *file)
           gof_file_add_emblem(file, "emblem-favorite");*/
     }
 
-//SPOTTED!
+    //g_warning ("update emblem %s", file.uri);
     gof_monitor_file_changed (file); 
 }
 
@@ -1052,12 +1056,12 @@ GOFFile* gof_file_get (GFile *location)
     GOFFile *file = NULL;
     GOFDirectoryAsync *dir = NULL;
 
-    //printf ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
+    //parent = g_file_get_parent (location);
     if ((parent = g_file_get_parent (location)) != NULL)
         dir = gof_directory_async_cache_lookup (parent);
     if (dir != NULL) {
         gchar *uri = g_file_get_uri (parent);
-        g_warning (">>>>>>>>>>>>>>> dir already loaded %s\n", uri);
+        g_warning (">>>>>>>>>>>>>>> dir already cached %s\n", uri);
         g_free (uri);
         if ((file = g_hash_table_lookup (dir->file_hash, location)) == NULL)
             file = g_hash_table_lookup (dir->hidden_file_hash, location);
@@ -1069,11 +1073,11 @@ GOFFile* gof_file_get (GFile *location)
     } 
     
     if (file != NULL) {
-        //g_warning (">>>>reuse file %s\n", file->uri);
+        g_warning (">>>>reuse file %s\n", file->uri);
         g_object_ref (file);
     } else {
         file = gof_file_new (location, parent);
-        //g_warning (">>>>create file %s\n", file->uri);
+        g_warning (">>>>create file %s\n", file->uri);
         G_LOCK (file_cache_mutex);
         g_hash_table_insert (file_cache, g_object_ref (location), file);
         G_UNLOCK (file_cache_mutex);
