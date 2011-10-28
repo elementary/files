@@ -88,13 +88,6 @@ struct FMDirectoryViewDetails
     /* whether we are in the active slot */
     gboolean active;
 
-    /* loading indicates whether this view has begun loading a directory.
-     * This flag should need not be set inside subclasses. FMDirectoryView automatically
-     * sets 'loading' to TRUE before it begins loading a directory's contents and to FALSE
-     * after it finishes loading the directory and its view.
-     */
-    gboolean loading;
-
     /* flag to indicate that no file updates should be dispatched to subclasses.
      * This is a workaround for bug #87701 that prevents the list view from
      * losing focus when the underlying GtkTreeView is updated.
@@ -319,14 +312,15 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
+    //SPOTTED!
     /* add the file_hash files for view which have been created during the
      * directory loading */
-    if (view->details->loading)
+    /*if (view->details->loading)
     {
         printf(">> %s load the cached files\n", G_STRFUNC);
         fm_directory_view_load_file_hash (directory, view);
     }
-    view->details->loading = FALSE;
+    view->details->loading = FALSE;*/
 
     /* Apparently we need a queu_draw sometimes, the view is not refreshed until an event */
     if (gof_directory_async_is_empty (directory))
@@ -338,13 +332,15 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
 void
 fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory)
 {
-    if (!(directory->loading && directory->loaded))
+    g_critical ("%s", G_STRFUNC);
+    //SPOTTED! something weird here
+    /*if (!(directory->loading && directory->loaded))
         g_signal_connect (directory, "file_loaded", G_CALLBACK (file_loaded_callback), view);
     g_signal_connect (directory, "file_added", G_CALLBACK (file_added_callback), view);
 
     gof_directory_async_load (directory);
     if (!directory->loading && directory->loaded)
-        fm_directory_view_load_file_hash (directory, view);
+        fm_directory_view_load_file_hash (directory, view);*/
 }
 
 void
@@ -2124,7 +2120,7 @@ gboolean fm_directory_view_get_loading (FMDirectoryView *view)
 
     dir = fm_directory_view_get_current_directory (view);
     if (dir != NULL)
-        return dir->loading;
+        return dir->state == GOF_DIRECTORY_ASYNC_STATE_LOADING;
 
     return FALSE;
 }
@@ -2305,8 +2301,9 @@ fm_directory_view_parent_set (GtkWidget *widget,
             }
         }
 
-        if (!dir->loading && dir->loaded)
-            fm_directory_view_load_file_hash (dir, view);
+        //SPOTTED!
+        /*if (!dir->loading && dir->loaded)
+            fm_directory_view_load_file_hash (dir, view);*/
 
     } else {
         fm_directory_view_unmerge_menus (view);
@@ -2557,12 +2554,11 @@ fm_directory_view_set_property (GObject         *object,
 
         directory_view->details->slot = g_object_ref(slot);
         directory_view->details->window = window;
-        /* store the loading state of the directory */
-        directory_view->details->loading = slot->directory->loading;
 
-        if (!(directory_view->details->loading && slot->directory->loaded))
-            g_signal_connect (slot->directory, "file_loaded", 
-                              G_CALLBACK (file_loaded_callback), directory_view);
+        //SPOTTED!
+        //if (!(directory_view->details->loading && slot->directory->loaded))
+        g_signal_connect (slot->directory, "file_loaded", 
+                          G_CALLBACK (file_loaded_callback), directory_view);
 
         g_signal_connect (slot->directory, "file_added", 
                           G_CALLBACK (file_added_callback), directory_view);
