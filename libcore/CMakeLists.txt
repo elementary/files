@@ -173,7 +173,7 @@ add_library(${PKGNAME}-static STATIC
 
 SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES OUTPUT_NAME ${PKGNAME})
 install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
-endif(BUILD_STATI²C MATCHES "Yes")
+endif(BUILD_STATIC MATCHES "Yes")
 set_target_properties (${PKGNAME} PROPERTIES
     VERSION ${MARLINCORE_VERSION}
     SOVERSION ${MARLINCORE_SOVERSION}
@@ -184,5 +184,5 @@ add_executable(marlincore_tests
     tests/marlincore-tests-gof.c
     tests/marlincore-tests-file.c
 )
-add_test_executable(marlincore_tests)
+add_test(core marlincore_tests)
 target_link_libraries(marlincore_tests marlincore ${DEPS_LIBRARIES})

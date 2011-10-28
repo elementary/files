@@ -68,3 +68,4 @@ set_target_properties (${PKGNAME} PROPERTIES
     SOVERSION ${MARLINWIDGETS_SOVERSION}
                        )
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
+add_subdirectory(tests)
