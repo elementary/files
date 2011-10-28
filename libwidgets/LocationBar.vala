@@ -257,15 +257,17 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     /**
      * Get the current path of the PathBar, based on the elements that it contains
      **/
-    protected string get_elements_path ()
+    public string get_elements_path ()
     {
         string strpath = "";
+        strpath = protocol;
         foreach(BreadcrumbsElement element in elements)
         {
             if(element.display) 
                 strpath += element.text + "/"; /* sometimes, + "/" is useless
                                              * but we are never careful enough */
-            /* FIXME make sure the comment never happen */
+            /* FIXME make sure the comment never happen
+             * -> it seems to be necessary in all cases */
         }
         
         return strpath;
@@ -307,7 +309,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     {
         double x_previous = -10;
         double x_render = 0;
-        string newpath = "";
+        string newpath = protocol;
         bool found = false;
 
         foreach(BreadcrumbsElement element in elements)
@@ -375,7 +377,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             double x_previous = -10;
             double x = event.x;
             double x_render = 0;
-            string newpath = "";
+            string newpath = protocol;
             bool found = false;
             foreach(BreadcrumbsElement element in elements)
             {
@@ -466,9 +468,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
      **/
     public void change_breadcrumbs(string newpath)
     {
-        var explode_protocol = newpath.split(":///");
+        var explode_protocol = newpath.split("://");
         if(explode_protocol.length > 1) {
-            protocol = explode_protocol[0] + ":///";
+            protocol = explode_protocol[0] + "://";
             text = explode_protocol[1];
         } else {
             text = newpath;

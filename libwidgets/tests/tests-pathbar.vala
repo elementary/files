@@ -165,6 +165,16 @@ void add_pathbar_tests()
         breads.change_breadcrumbs("trash:///");
         breads.change_breadcrumbs("/home/there");
     });
+    
+    Test.add_func ("/marlin/pathbar/non-file-system-location", () => {
+        Test.log_set_fatal_handler( () => { return false; });
+        var breads = new Breadcrumbs(new Gtk.UIManager());
+        breads.change_breadcrumbs("trash://");
+        breads.change_breadcrumbs("trash://dir/folder/");
+        assert(breads.get_elements_path() == "trash://dir/folder/");
+        breads.change_breadcrumbs("ftp://test@test.com/dir/folder/");
+        assert(breads.get_elements_path() == "ftp://test@test.com/dir/folder/");
+    });
 
 }
  
