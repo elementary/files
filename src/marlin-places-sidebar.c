@@ -3152,7 +3152,7 @@ marlin_places_sidebar_set_parent_window (MarlinPlacesSidebar *sidebar,
 
     sidebar->window = window;
 
-    sidebar->bookmarks = marlin_bookmark_list_new (); /* TODO: remove */
+    sidebar->bookmarks = marlin_bookmark_list_new (); 
     g_signal_connect_object (sidebar->bookmarks, "contents_changed",
                              G_CALLBACK (update_places),
                              sidebar, G_CONNECT_SWAPPED);

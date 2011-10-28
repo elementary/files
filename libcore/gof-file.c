@@ -67,6 +67,9 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 static guint    signals[LAST_SIGNAL];
 static guint32  effective_user_id;
 
+static gpointer _g_object_ref0 (gpointer self) {
+	return self ? g_object_ref (self) : NULL;
+}
 
 static GIcon *
 get_icon_user_special_dirs(char *path)
@@ -454,7 +457,7 @@ static void gof_file_finalize (GObject* obj) {
     GOFFile *file;
 
     file = GOF_FILE (obj);
-    //g_warning ("%s %s\n", G_STRFUNC, file->name);
+    g_warning ("%s %s\n", G_STRFUNC, file->name);
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
     _g_object_unref0 (file->directory);
@@ -1047,7 +1050,7 @@ GOFFile* gof_file_cache_lookup (GFile *location)
     }
     cached_file = g_hash_table_lookup (file_cache, location);
 
-    return cached_file;
+    return _g_object_ref0 (cached_file);
 }
 
 GOFFile* gof_file_get (GFile *location)
@@ -1065,6 +1068,7 @@ GOFFile* gof_file_get (GFile *location)
         g_free (uri);
         if ((file = g_hash_table_lookup (dir->file_hash, location)) == NULL)
             file = g_hash_table_lookup (dir->hidden_file_hash, location);
+        _g_object_ref0 (file);
         g_object_unref (dir);
     }
 
@@ -1074,7 +1078,6 @@ GOFFile* gof_file_get (GFile *location)
     
     if (file != NULL) {
         g_warning (">>>>reuse file %s\n", file->uri);
-        g_object_ref (file);
     } else {
         file = gof_file_new (location, parent);
         g_warning (">>>>create file %s\n", file->uri);
