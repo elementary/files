@@ -40,7 +40,7 @@ public class GOF.Directory.Async : Object
     public HashTable<GLib.File,GOF.File> hidden_file_hash;
 
     private Cancellable cancellable;
-    private bool show_hidden_files = false;
+    public bool show_hidden_files = false;
 
 
     public uint files_count = 0;
@@ -82,9 +82,12 @@ public class GOF.Directory.Async : Object
             list_directory (location);
         } else {
             /* even if the directory is currently loading model_add_file manage duplicates */
-            warning ("directory %s load cached files", file.uri);
+            debug ("directory %s load cached files", file.uri);
             foreach (GOF.File gof in file_hash.get_values ())
                 file_loaded (gof);
+            if (show_hidden_files)
+                foreach (GOF.File gof in hidden_file_hash.get_values ())
+                    file_loaded (gof);
         }
         
         //FIXME
@@ -169,8 +172,6 @@ public class GOF.Directory.Async : Object
         if (directory_cache == null) {
             directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.file_hash, GLib.file_equal);
         }
-        //return directory_cache.lookup (file);
-        //return null;
         
         cached_dir = directory_cache.lookup (file);
         if (cached_dir != null)
