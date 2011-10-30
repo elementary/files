@@ -78,9 +78,9 @@ get_icon_user_special_dirs(char *path)
 
     if (!path)
         return NULL;
-    if (strcmp (path, g_get_home_dir ()) == 0)
+    if (g_strcmp0 (path, g_get_home_dir ()) == 0)
         icon = g_themed_icon_new ("user-home");
-    else if (strcmp (path, g_get_user_special_dir (G_USER_DIRECTORY_DESKTOP)) == 0)
+    else if (g_strcmp0 (path, g_get_user_special_dir (G_USER_DIRECTORY_DESKTOP)) == 0)
         icon = g_themed_icon_new ("user-desktop");
     else if (g_strcmp0 (path, g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS)) == 0)
         icon = g_themed_icon_new_with_default_fallbacks ("folder-documents");
@@ -263,6 +263,7 @@ void gof_file_update (GOFFile *file)
 
     file->thumbnail_path =  g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
 
+    /* SPOTTED! is that really usefull? */
     file->utf8_collation_key = g_utf8_collate_key (file->name, -1);
 
     /* get the formated type of thesyminked target */
@@ -587,7 +588,7 @@ compare_by_type (GOFFile *file1, GOFFile *file2)
         return -1;
     if (file2->is_directory)
         return +1;
-    return (strcmp (file1->utf8_collation_key, file2->utf8_collation_key));
+    return (g_strcmp0 (file1->utf8_collation_key, file2->utf8_collation_key));
 }
 
 static int
@@ -608,7 +609,9 @@ compare_by_display_name (GOFFile *file1, GOFFile *file2)
     } else if (!sort_last_1 && sort_last_2) {
         compare = -1;
     } else {
-        compare = strcmp (file1->utf8_collation_key, file2->utf8_collation_key);
+        //SPOTTED!
+        //compare = strcmp (file1->utf8_collation_key, file2->utf8_collation_key);
+        compare = g_strcmp0 (file1->utf8_collation_key, file2->utf8_collation_key);
     }
 
     return compare;

@@ -35,15 +35,14 @@ public class GOF.Directory.Async : Object
     }
     public State state = State.NOT_LOADED;
 
-
     public HashTable<GLib.File,GOF.File> file_hash;
     public HashTable<GLib.File,GOF.File> hidden_file_hash;
+    
+    public bool show_hidden_files = false;
+    public uint files_count = 0;
 
     private Cancellable cancellable;
-    public bool show_hidden_files = false;
-
-
-    public uint files_count = 0;
+    private FileMonitor monitor = null;
 
     /* signals */
     public signal void file_loaded (GOF.File file);
@@ -80,6 +79,12 @@ public class GOF.Directory.Async : Object
     {
         if (state == State.NOT_LOADED) {
             list_directory (location);
+            try {
+                monitor = location.monitor_directory (0);
+            } catch (IOError e) {
+                error ("directory monitor failed: %s %s", e.message, file.uri);
+            }
+            monitor.changed.connect (directory_changed);        
         } else {
             /* even if the directory is currently loading model_add_file manage duplicates */
             debug ("directory %s load cached files", file.uri);
@@ -89,7 +94,7 @@ public class GOF.Directory.Async : Object
                 foreach (GOF.File gof in hidden_file_hash.get_values ())
                     file_loaded (gof);
         }
-        
+
         //FIXME
         return true; 
     }
@@ -147,6 +152,53 @@ public class GOF.Directory.Async : Object
         state = State.LOADED;
         //TODO send err code
         done_loading ();
+    }
+
+    private delegate void func_signal (GOF.File gof);
+
+    private async void query_info_async (GOF.File gof, func_signal? f = null) {
+        try {
+            gof.info = yield gof.location.query_info_async (gio_default_attributes, 
+                                                            FileQueryInfoFlags.NONE, 
+                                                            Priority.DEFAULT);
+            if (f != null)
+                f (gof);
+        } catch (Error err) {
+            warning ("query info failed, %s %s", err.message, gof.uri);
+        }
+    }
+
+    private void changed_and_refresh (GOF.File gof) {
+        gof.update ();
+        file_changed (gof);
+    }
+
+    private void add_and_refresh (GOF.File gof) {
+        if (gof.info == null)
+            critical ("FILE INFO null");
+        gof.update ();
+        file_added (gof);
+    }
+
+    private void directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event)
+    {
+        GOF.File gof = GOF.File.get (_file);
+
+        switch (event) {
+        case FileMonitorEvent.ATTRIBUTE_CHANGED:
+        case FileMonitorEvent.CHANGES_DONE_HINT:
+            /*message ("file changed %s", gof.uri);
+            query_info_async (gof, changed_and_refresh);*/
+            break;
+        case FileMonitorEvent.DELETED:
+            message ("file deleted %s", gof.uri);
+            file_deleted (gof);
+            break;
+        case FileMonitorEvent.CREATED:
+            message ("file added %s", gof.uri);
+            query_info_async (gof, add_and_refresh);
+            break;            
+        }
     }
 
     public static Async from_gfile (GLib.File file)
