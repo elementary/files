@@ -33,8 +33,8 @@ int main (int argc, char* argv[])
     settings = g_settings_new ("org.gnome.marlin.preferences");
 
     /* these tests are not working, TODO */
-    //g_test_add_func("/marlin/goffile", marlincore_tests_goffile);
-    g_test_add_func("/marlin/goffile", marlincore_tests_file);
+    //g_test_add_func("/marlin/goffile", marlincore_tests_file);
+    g_test_add_func("/marlin/goffile", marlincore_tests_goffile);
     //g_test_add_func("/marlin/gof", marlin_location_bar_tests);
 
     return g_test_run();

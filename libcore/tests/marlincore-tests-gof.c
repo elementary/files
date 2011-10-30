@@ -37,8 +37,11 @@ void marlincore_tests_goffile(void)
 {
     GOFFile* file;
 
+    g_test_log_set_fatal_handler(fatal_handler, NULL);
     /* The URI is valid, the target exists */
     file = gof_file_get_by_uri("file:///usr/share");
+    g_assert(file != NULL);
+    gof_file_query_update (file);
     g_assert(file != NULL);
     g_assert_cmpstr(file->name, ==, "share");
     g_assert_cmpstr(file->display_name, ==, "share");
@@ -52,15 +55,33 @@ void marlincore_tests_goffile(void)
     g_assert_cmpstr(g_file_get_uri(file->location), ==, "file:///usr/share");
     g_assert_cmpstr(gof_file_get_uri(file), ==, "file:///usr/share");
 
+    /* some allocations tests */
+    int i;
+    for (i=0; i<5; i++) {
+        GFile *location = g_file_new_for_path ("/usr/share");
+        file = gof_file_get(location);
+        g_object_unref (location);
+        //file = gof_file_get_by_uri("file:///usr/share");
+    }
+    for (i=0; i<5; i++)
+        g_object_unref (file);
+    /* we got to remove the file from the cache other the next cache lookup */
+    gof_file_remove_from_caches (file);
+    g_object_unref (file);
+    file = gof_file_get_by_uri("file:///usr/share");
+    g_object_unref (file);
+
+
     /* The URI is valid, the target doesn't exist */
     g_test_log_set_fatal_handler(fatal_handler, NULL);
     file = gof_file_get_by_uri("file:///tmp/very/long/path/azerty");
     g_assert(file != NULL);
-    g_test_log_set_fatal_handler(NULL, NULL);
+    //g_test_log_set_fatal_handler(NULL, NULL);
     
-    system("rm /tmp/marlin_backup~ /tmp/marlin_sym -f && touch /tmp/marlin_backup~");
+    system("rm /tmp/.marlin_backup /tmp/marlin_sym -f && touch /tmp/.marlin_backup");
     /* The URI is valid, the target exists */
-    file = gof_file_get_by_uri("file:///tmp/marlin_backup~");
+    file = gof_file_get_by_uri("file:///tmp/.marlin_backup");
+    gof_file_query_update (file);
     g_assert(file != NULL);
     g_assert_cmpint(file->is_directory, ==, FALSE);
     g_assert_cmpint(file->is_hidden, ==, TRUE); /* it's a backup, so, it's hidden */
@@ -70,6 +91,7 @@ void marlincore_tests_goffile(void)
 
     /* a symlink */
     file = gof_file_get_by_uri("file:///tmp/marlin_sym");
+    gof_file_query_update (file);
     g_assert(file != NULL);
     g_assert_cmpstr(gof_file_get_symlink_target(file), ==, "/tmp/marlin_backup~");
     g_assert_cmpint(gof_file_is_symlink(file), ==, TRUE);

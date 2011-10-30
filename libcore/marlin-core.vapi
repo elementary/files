@@ -103,9 +103,9 @@ namespace GOF {
     [CCode (cheader_filename = "gof-file.h")]
     public class File : GLib.Object {
         public File(GLib.File location, GLib.File dir);
-        public static File cache_lookup (GLib.File file);
         public static File get(GLib.File location);
-        public bool launch_with(Gdk.Screen screen, AppInfo app);
+        public static File cache_lookup (GLib.File file);
+        public void remove_from_caches ();
         public GLib.File location;
         public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;
@@ -148,6 +148,7 @@ namespace GOF {
         public bool can_set_group ();
         public bool can_set_permissions ();
         public string get_permissions_as_string ();
+        public bool launch_with(Gdk.Screen screen, AppInfo app);
 
         public GLib.List? get_settable_group_names ();
     }

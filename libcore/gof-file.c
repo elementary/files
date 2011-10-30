@@ -434,6 +434,18 @@ void gof_file_update_trash_info (GOFFile *file)
     file->trash_orig_path = g_file_info_get_attribute_byte_string (file->info, "trash::orig-path");
 }
 
+void gof_file_remove_from_caches (GOFFile *file)
+{
+    /* remove from file_cache */
+    g_hash_table_remove (file_cache, file->location);
+
+    /* remove from directory_cache */
+    GOFDirectoryAsync *dir = NULL;
+    dir = gof_directory_async_cache_lookup (file->directory);
+    if (dir != NULL)
+        gof_directory_async_remove_from_cache (dir, file);
+}
+
 static void gof_file_init (GOFFile *file) {
     file->info = NULL;
     file->location = NULL;
@@ -459,6 +471,7 @@ static void gof_file_finalize (GObject* obj) {
 
     file = GOF_FILE (obj);
     g_warning ("%s %s\n", G_STRFUNC, file->name);
+
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
     _g_object_unref0 (file->directory);
@@ -1067,7 +1080,7 @@ GOFFile* gof_file_get (GFile *location)
         dir = gof_directory_async_cache_lookup (parent);
     if (dir != NULL) {
         gchar *uri = g_file_get_uri (parent);
-        g_warning (">>>>>>>>>>>>>>> dir already cached %s\n", uri);
+        //g_warning (">>>>>>>>>>>>>>> dir already cached %s\n", uri);
         g_free (uri);
         if ((file = g_hash_table_lookup (dir->file_hash, location)) == NULL)
             file = g_hash_table_lookup (dir->hidden_file_hash, location);
@@ -1080,23 +1093,21 @@ GOFFile* gof_file_get (GFile *location)
     } 
     
     if (file != NULL) {
-        g_warning (">>>>reuse file %s\n", file->uri);
+        g_debug (">>>>reuse file %s\n", file->uri);
     } else {
         file = gof_file_new (location, parent);
-        g_warning (">>>>create file %s\n", file->uri);
+        g_debug (">>>>create file %s\n", file->uri);
         G_LOCK (file_cache_mutex);
-        g_hash_table_insert (file_cache, g_object_ref (location), file);
+        if (file_cache != NULL)
+            g_hash_table_insert (file_cache, g_object_ref (location), file);
         G_UNLOCK (file_cache_mutex);
 
         /*g_critical ("%s INFO null %s file_cache items %d", G_STRFUNC, file->uri, 
                     g_hash_table_size (file_cache));*/
-        //SPOTTED!
-        /*if (gof_file_query_info (file))
-            gof_file_update (file);*/
     }
 
-    if (parent != NULL)
-        g_object_unref (parent);
+    _g_object_unref0 (parent);
+
     return (file);
 }
 

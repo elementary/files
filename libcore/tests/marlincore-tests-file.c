@@ -27,13 +27,13 @@
 
 GMainLoop* loop;
 
-static gboolean fatal_handler(const gchar* log_domain,
+/*static gboolean fatal_handler(const gchar* log_domain,
                               GLogLevelFlags log_level,
                               const gchar* message,
                               gpointer user_data)
 {
     return FALSE;
-}
+}*/
 
 /*static void quit(gpointer data, gpointer data_)
 {
@@ -93,7 +93,7 @@ void marlincore_tests_file(void)
 {
     GOFDirectoryAsync* dir;
     GOFDirectoryAsync *dir2;
-    g_test_log_set_fatal_handler(fatal_handler, NULL); 
+    //g_test_log_set_fatal_handler(fatal_handler, NULL); 
     system("rm -rf /tmp/marlin-test");
 
     dir = gof_directory_async_from_gfile(g_file_new_for_path("/tmp/marlin-test"));

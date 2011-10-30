@@ -127,13 +127,10 @@ public class GOF.Directory.Async : Object
                     gof.update ();
                     //debug ("file: %s", gof.name);
 
+                    add_to_hash_cache (gof);
                     if (!gof.is_hidden) {
-                        if (file_hash != null)
-                            file_hash.insert (loc, gof);
                         file_loaded (gof);
                     } else {
-                        if (hidden_file_hash != null)
-                            hidden_file_hash.insert (loc, gof);
                         if (show_hidden_files)
                             file_loaded (gof);
                     }
@@ -152,6 +149,16 @@ public class GOF.Directory.Async : Object
         state = State.LOADED;
         //TODO send err code
         done_loading ();
+    }
+
+    private void add_to_hash_cache (GOF.File gof) {
+        if (!gof.is_hidden) {
+            if (file_hash != null)
+                file_hash.insert (gof.location, gof);
+        } else {
+            if (hidden_file_hash != null)
+                hidden_file_hash.insert (gof.location, gof);
+        }
     }
 
     private delegate void func_signal (GOF.File gof);
@@ -177,6 +184,7 @@ public class GOF.Directory.Async : Object
         if (gof.info == null)
             critical ("FILE INFO null");
         gof.update ();
+        add_to_hash_cache (gof);
         file_added (gof);
     }
 
@@ -187,15 +195,16 @@ public class GOF.Directory.Async : Object
         switch (event) {
         case FileMonitorEvent.ATTRIBUTE_CHANGED:
         case FileMonitorEvent.CHANGES_DONE_HINT:
-            /*message ("file changed %s", gof.uri);
-            query_info_async (gof, changed_and_refresh);*/
+            //message ("file changed %s", gof.uri);
+            query_info_async (gof, changed_and_refresh);
             break;
         case FileMonitorEvent.DELETED:
-            message ("file deleted %s", gof.uri);
+            //message ("file deleted %s", gof.uri);
             file_deleted (gof);
+            gof.remove_from_caches ();
             break;
         case FileMonitorEvent.CREATED:
-            message ("file added %s", gof.uri);
+            //message ("file added %s", gof.uri);
             query_info_async (gof, add_and_refresh);
             break;            
         }
@@ -230,6 +239,21 @@ public class GOF.Directory.Async : Object
             debug ("found cached dir %s", cached_dir.file.uri);
 
         return cached_dir;
+    }
+
+    public bool remove_from_cache (GOF.File gof)
+    {
+        bool val = false;
+
+        if (!gof.is_hidden) {
+            if (file_hash != null)
+                val = file_hash.remove (gof.location);
+        } else {
+            if (hidden_file_hash != null)
+                val = hidden_file_hash.remove (gof.location);
+        } 
+
+        return val;
     }
     
     public bool has_parent ()

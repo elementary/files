@@ -223,9 +223,6 @@ static const GtkTargetEntry drop_targets[] =
     { "_NETSCAPE_URL", 0, TARGET_NETSCAPE_URL, },
 };
 
-static gpointer _g_object_ref0 (gpointer self) {
-	return self ? g_object_ref (self) : NULL;
-}
 
 void fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor)
 {
@@ -251,10 +248,7 @@ static void
 fm_directory_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
 {
     fm_list_model_add_file (view->model, file, directory);
-    //SPOTTED !
-    //marlin_view_tags_get_color (tags, uri, file, NULL, NULL);
-    g_message ("tags_get_color");
-    //marlin_view_tags_get_color (tags, g_object_ref (file), NULL, NULL);
+    marlin_view_tags_get_color (tags, file, NULL, NULL);
 }
 
 
@@ -299,9 +293,11 @@ file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryVie
 static void
 file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-    //g_debug ("%s %s %d\n", G_STRFUNC, g_file_get_uri(file->location), file->flags);
-    if (!file->exists) 
-        return;
+    g_debug ("%s %s %d\n", G_STRFUNC, file->uri, file->flags);
+    /*if (!file->exists) 
+        return;*/
+    g_return_if_fail (file != NULL);
+    g_return_if_fail (file->exists);
 
     fm_list_model_file_changed (view->model, file, directory);
     /*marlin_thumbnailer_queue_file (view->details->thumbnailer, file,
@@ -311,13 +307,14 @@ file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 static void
 file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
+    g_debug ("%s %s", G_STRFUNC, file->uri); 
     fm_list_model_remove_file (view->model, file, directory);
 }
 
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
-    /* Apparently we need a queu_draw sometimes, the view is not refreshed until an event */
+    /* Apparently we need a queue_draw sometimes, the view is not refreshed until an event */
     if (gof_directory_async_is_empty (directory))
         gtk_widget_queue_draw (GTK_WIDGET (view));
 
