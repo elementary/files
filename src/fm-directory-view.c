@@ -321,11 +321,36 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
 }
 
+static void
+fm_directory_view_connect_directory_handlers (FMDirectoryView *view, GOFDirectoryAsync *directory)
+{
+    g_signal_connect (directory, "file_loaded", 
+                      G_CALLBACK (file_loaded_callback), view);
+    g_signal_connect (directory, "file_added", 
+                      G_CALLBACK (file_added_callback), view);
+    g_signal_connect (directory, "file_changed", 
+                      G_CALLBACK (file_changed_callback), view);
+    g_signal_connect (directory, "file_deleted", 
+                      G_CALLBACK (file_deleted_callback), view);
+    g_signal_connect (directory, "done_loading", 
+                      G_CALLBACK (directory_done_loading_callback), view);
+}
+
+static void
+fm_directory_view_disconnect_directory_handlers (FMDirectoryView *view, 
+                                                 GOFDirectoryAsync *directory)
+{
+    g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
+    g_signal_handlers_disconnect_by_func (directory, file_added_callback, view);
+    g_signal_handlers_disconnect_by_func (directory, file_changed_callback, view);
+    g_signal_handlers_disconnect_by_func (directory, file_deleted_callback, view);
+    g_signal_handlers_disconnect_by_func (directory, directory_done_loading_callback, view);
+}
+
 void
 fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory)
 {
-    g_signal_connect (directory, "file_loaded", G_CALLBACK (file_loaded_callback), view);
-    g_signal_connect (directory, "file_added", G_CALLBACK (file_added_callback), view);
+    fm_directory_view_connect_directory_handlers (view, directory);
 
     gof_directory_async_load (directory);
 }
@@ -333,18 +358,7 @@ fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *di
 void
 fm_directory_view_remove_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory)
 {
-    g_signal_handlers_disconnect_by_func (directory,
-                                          G_CALLBACK (file_loaded_callback),
-                                          view);
-    g_signal_handlers_disconnect_by_func (directory,
-                                          G_CALLBACK (file_added_callback),
-                                          view);
-    /* TODO */
-    /*g_signal_handlers_disconnect_by_func (directory,
-      G_CALLBACK (files_changed_callback),
-      view);*/
-
-    /*nautilus_directory_file_monitor_remove (directory, &view->details->model);*/
+    fm_directory_view_disconnect_directory_handlers (view, directory);
 }
 
 
@@ -499,11 +513,7 @@ fm_directory_view_finalize (GObject *object)
     GOFWindowSlot *slot = view->details->slot;
 
     /* disconnect all listeners */
-    g_signal_handlers_disconnect_by_func (slot->directory, file_loaded_callback, view);
-    g_signal_handlers_disconnect_by_func (slot->directory, file_added_callback, view);
-    g_signal_handlers_disconnect_by_func (slot->directory, file_changed_callback, view);
-    g_signal_handlers_disconnect_by_func (slot->directory, file_deleted_callback, view);
-    g_signal_handlers_disconnect_by_func (slot->directory, directory_done_loading_callback, view);
+    fm_directory_view_disconnect_directory_handlers (view, slot->directory);
     g_object_unref (view->model);
     g_object_unref (slot);
 
@@ -2538,17 +2548,7 @@ fm_directory_view_set_property (GObject         *object,
         directory_view->details->slot = g_object_ref(slot);
         directory_view->details->window = window;
 
-        g_signal_connect (slot->directory, "file_loaded", 
-                          G_CALLBACK (file_loaded_callback), directory_view);
-
-        g_signal_connect (slot->directory, "file_added", 
-                          G_CALLBACK (file_added_callback), directory_view);
-        g_signal_connect (slot->directory, "file_changed", 
-                          G_CALLBACK (file_changed_callback), directory_view);
-        g_signal_connect (slot->directory, "file_deleted", 
-                          G_CALLBACK (file_deleted_callback), directory_view);
-        g_signal_connect (slot->directory, "done_loading", 
-                          G_CALLBACK (directory_done_loading_callback), directory_view);
+        fm_directory_view_connect_directory_handlers (directory_view, slot->directory);
 
         g_signal_connect_object (directory_view->details->slot, "active", 
                                  G_CALLBACK (slot_active), directory_view, 0);
