@@ -94,7 +94,7 @@ void    fm_list_model_remove_file (FMListModel *model, GOFFile *file,
 
 G_DEFINE_TYPE_WITH_CODE (FMListModel, fm_list_model, G_TYPE_OBJECT,
     G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_MODEL, fm_list_model_tree_model_init)
-    //G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_DRAG_DEST, fm_list_model_drag_dest_init)
+    G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_DRAG_DEST, fm_list_model_drag_dest_init)
     G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_SORTABLE, fm_list_model_sortable_init))
 
 
