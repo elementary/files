@@ -50,7 +50,6 @@ public class GOF.Directory.Async : Object
     public signal void file_changed (GOF.File file);
     public signal void file_deleted (GOF.File file);
     public signal void done_loading ();
-    public signal void info_available ();
 
     private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*";
 
@@ -60,6 +59,8 @@ public class GOF.Directory.Async : Object
         file = GOF.File.get (location);
         file.exists = true;
         cancellable = new Cancellable ();
+        
+        query_info_async (file, file_info_available);
 
         directory_cache.insert (location, this);
 
@@ -88,6 +89,9 @@ public class GOF.Directory.Async : Object
         } else {
             /* even if the directory is currently loading model_add_file manage duplicates */
             debug ("directory %s load cached files", file.uri);
+            /* send again the info_available signal for reused directories */
+            if (file.info != null)
+                file.info_available ();
             foreach (GOF.File gof in file_hash.get_values ())
                 file_loaded (gof);
             if (show_hidden_files)
@@ -186,6 +190,11 @@ public class GOF.Directory.Async : Object
         gof.update ();
         add_to_hash_cache (gof);
         file_added (gof);
+    }
+    
+    private void file_info_available (GOF.File gof) {
+        gof.update ();
+        gof.info_available ();
     }
 
     private void directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event)

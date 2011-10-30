@@ -118,6 +118,7 @@ struct _GOFFileClass {
 
     /* Called when the file notices any change. */
     //void            (* changed)             (GOFFile *file);
+    void            (* info_available)      (GOFFile *file);
     void            (* destroy)             (GOFFile *file);
 
 };

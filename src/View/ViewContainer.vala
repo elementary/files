@@ -118,7 +118,7 @@ namespace Marlin.View {
         }
 
         private void connect_available_info() {
-            file_info_callback = slot.directory.info_available.connect(() => {
+            file_info_callback = slot.directory.file.info_available.connect((gof) => {
                 if (slot.location.get_path () == Environment.get_home_dir ())
                     tab_name = _("Home");
                 else if (slot.location.get_path () == "/")
@@ -129,6 +129,9 @@ namespace Marlin.View {
                     window.set_title(tab_name);
                     window.loading_uri (slot.directory.file.uri, window.sidebar);
                 }
+                
+                if (window.contextview != null)
+                    window.contextview.update ();
 
                 Source.remove((uint) file_info_callback);
             });
@@ -165,8 +168,9 @@ namespace Marlin.View {
                     slot.make_icon_view();
                 break;
             }
-            if (!slot.directory.file.exists) 
-                content = new DirectoryNotFound (slot.directory, this);
+            //SPOTTED!
+            /*if (!slot.directory.file.exists) 
+                content = new DirectoryNotFound (slot.directory, this);*/
             
             sync_contextview();
         }
@@ -201,7 +205,7 @@ namespace Marlin.View {
                     window.contextview = new ContextView(window, true, window.main_box.orientation);
                     
                     window.main_box.notify.connect((prop) => {
-                        if(prop.name == "orientation")
+                        if(window.contextview != null && prop.name == "orientation")
                             window.contextview.parent_orientation = window.main_box.orientation;
                     });
                     window.main_box.pack2(window.contextview, false, true);

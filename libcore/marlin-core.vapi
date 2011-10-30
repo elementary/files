@@ -111,6 +111,7 @@ namespace GOF {
         public GLib.Icon? icon;
         public GLib.FileInfo? info;
         public unowned string name;
+        public string basename;
         public string uri;
         public uint64 size;
         public string format_size;
@@ -151,6 +152,8 @@ namespace GOF {
         public bool launch_with(Gdk.Screen screen, AppInfo app);
 
         public GLib.List? get_settable_group_names ();
+            
+        public signal void info_available ();
     }
 
     /*

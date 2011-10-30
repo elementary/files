@@ -60,6 +60,7 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
     enum {
         //CHANGED,
         //UPDATED_DEEP_COUNT_IN_PROGRESS,
+        INFO_AVAILABLE,
         DESTROY,
         LAST_SIGNAL
     };
@@ -501,7 +502,15 @@ static void gof_file_class_init (GOFFileClass * klass) {
       G_OBJECT_CLASS (klass)->set_property = gof_file_set_property;*/
     G_OBJECT_CLASS (klass)->finalize = gof_file_finalize;
 
-    signals[DESTROY] =g_signal_new ("destroy",
+    signals[INFO_AVAILABLE] = g_signal_new ("info_available",
+                                    G_TYPE_FROM_CLASS (klass),
+                                    G_SIGNAL_RUN_LAST,
+                                    G_STRUCT_OFFSET (GOFFileClass, info_available),
+                                    NULL, NULL,
+                                    g_cclosure_marshal_VOID__VOID,
+                                    G_TYPE_NONE, 0);
+
+    signals[DESTROY] = g_signal_new ("destroy",
                                     G_TYPE_FROM_CLASS (klass),
                                     G_SIGNAL_RUN_LAST,
                                     G_STRUCT_OFFSET (GOFFileClass, destroy),
@@ -622,8 +631,6 @@ compare_by_display_name (GOFFile *file1, GOFFile *file2)
     } else if (!sort_last_1 && sort_last_2) {
         compare = -1;
     } else {
-        //SPOTTED!
-        //compare = strcmp (file1->utf8_collation_key, file2->utf8_collation_key);
         compare = g_strcmp0 (file1->utf8_collation_key, file2->utf8_collation_key);
     }
 
