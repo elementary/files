@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-10-26 07:33+0000\n"
+"PO-Revision-Date: 2011-10-29 21:06+0000\n"
 "Last-Translator: Victor Eduardo <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-10-27 05:29+0000\n"
+"X-Launchpad-Export-Date: 2011-10-30 05:22+0000\n"
 "X-Generator: Launchpad (build 14197)\n"
 "Language: es\n"
 
@@ -280,7 +280,7 @@ msgstr "Espaciado entre columnas"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
-msgstr "Espacio que se inserta entre las columnas de la rejilla"
+msgstr "Espacio introducido entre las columnas de la lista"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:844
 msgid "Margin"
@@ -463,7 +463,7 @@ msgid ""
 "GtkMisc::xalign for that."
 msgstr ""
 "Alineación entre las líneas de las etiquetas. Esto NO afecta la alineación "
-"de la etiqueta dentro de su espacio; para eso ver GtkMisc::xalign."
+"de la etiqueta dentro del espacio asignado. Para ello ver GtkMisc::xalign."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:359
 msgid "Line wrap"
@@ -586,7 +586,7 @@ msgstr "_Encender"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Safely Remove Drive"
-msgstr "_Extraer unidad en forma segura"
+msgstr "_Extraer unidad de forma segura"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1603
 msgid "_Connect Drive"
@@ -930,11 +930,11 @@ msgstr[1] ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1394
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Si elimina un elemento, éste se perderá para siempre."
+msgstr "Si borra un elemento, éste se perderá para siempre."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr "¿Borrar todos los elementos en la papelera?"
+msgstr "Borrar todos los elementos contenidos en la papelera"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
@@ -959,14 +959,14 @@ msgstr[1] ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1478
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr "Eliminando archivos"
+msgstr "Borrando archivos"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "Queda %'d archivo por eliminar"
-msgstr[1] "Quedan %'d archivos por eliminar"
+msgstr[0] "Queda %'d archivo por borrar"
+msgstr[1] "Quedan %'d archivos por borrar"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"

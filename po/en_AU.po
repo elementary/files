@@ -1,4 +1,4 @@
-# Ukrainian translation for marlin
+# English (Australia) translation for marlin
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the marlin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
@@ -6,125 +6,120 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-10-29 18:43+0000\n"
-"Last-Translator: Victor Markin <Unknown>\n"
-"Language-Team: Ukrainian <uk@li.org>\n"
+"PO-Revision-Date: 2011-10-30 02:22+0000\n"
+"Last-Translator: Adam Brenecki <Unknown>\n"
+"Language-Team: English (Australia) <en_AU@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2011-10-30 05:22+0000\n"
 "X-Generator: Launchpad (build 14197)\n"
-"Language: uk\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
-msgstr "(результати відсутні)"
+msgstr "(no result found)"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:255
 msgid "Name"
-msgstr "Назва"
+msgstr "Name"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:256
 msgid "Type"
-msgstr "Тип"
+msgstr "Type"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:259
 msgid "Target"
-msgstr "Ціль"
+msgstr "Target"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:261
 msgid "Size"
-msgstr "Розмір"
+msgstr "Size"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:263
 msgid "Modified"
-msgstr "Змінено"
+msgstr "Modified"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:264
 msgid "Owner"
-msgstr "Власник"
+msgstr "Owner"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "Тека не існує"
+msgstr "Folder does not exist"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr "Marlin не може знайти каталог %s"
+msgstr "Marlin can't find the folder %s"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr "Створити"
+msgstr "Create"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "Створити теку %s"
+msgstr "Create the folder %s"
 
 #: /home/xapantu/marlin/po/../src/View/LocationBar.vala:959
 #, c-format
 msgid "Go to %s"
-msgstr "Перейти до %s"
+msgstr "Go to %s"
 
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
 msgid "Home"
-msgstr "Домашня папка"
+msgstr "Home"
 
 #: /home/xapantu/marlin/po/../src/View/Window.vala:524
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fedik https://launchpad.net/~fedikw\n"
-"  Krya https://launchpad.net/~sinedone\n"
-"  Victor Markin https://launchpad.net/~psixovaniy\n"
-"  xapantu https://launchpad.net/~xapantu"
+"  Adam Brenecki https://launchpad.net/~adambrenecki"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:29
 msgid "Marlin Settings"
-msgstr "Налаштування Марлін"
+msgstr "Marlin Settings"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:46
 msgid "Single click to open:"
-msgstr "Відкриття одним кліком:"
+msgstr "Single click to open:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:59
 msgid "Mouse auto-selection speed:"
-msgstr "Швидкість автовибору мишкою:"
+msgstr "Mouse auto-selection speed:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:72
 msgid "Behavior"
-msgstr "Поведінка"
+msgstr "Behaviour"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:80
 msgid "small"
-msgstr "малий"
+msgstr "small"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:81
 msgid "medium"
-msgstr "середній"
+msgstr "medium"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:82
 msgid "large"
-msgstr "великий"
+msgstr "large"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "extra-large"
-msgstr "дуже великий"
+msgstr "extra-large"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "Sidebar icon size:"
-msgstr "Розмір мініатюр бічної панелі:"
+msgstr "Sidebar icon size:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:115
 msgid "locale"
-msgstr "розташування"
+msgstr "locale"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:116
 msgid "iso"
@@ -132,70 +127,69 @@ msgstr "iso"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:117
 msgid "informal"
-msgstr "неформальний"
+msgstr "informal"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:136
 msgid "Date format:"
-msgstr "Формат дати:"
+msgstr "Date format:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:151
 msgid "Show applications names in the context pane:"
-msgstr "Показати назви програм в контекстній панелі:"
+msgstr "Show applications names in the context pane:"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:159
 msgid "Display"
-msgstr "Вигляд"
+msgstr "Display"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:207
 msgid "Plugins"
-msgstr "Додатки"
+msgstr "Plugins"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:105
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:155
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:213
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:269
 msgid "File Operations"
-msgstr "Дії над файлами"
+msgstr "File Operations"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:114
 msgid "Show Details"
-msgstr "Показувати подробиці"
+msgstr "Show Details"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:149
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:171
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] "Триває %'d дія над файлом"
-msgstr[1] "Тривають %'d дії над файлом"
-msgstr[2] "Тривають %'d дій над файлом"
+msgstr[0] "%'d file operation active"
+msgstr[1] "%'d file operations active"
 
 #: /home/xapantu/marlin/po/../src/marlin-progress-ui-handler.c:270
 msgid "All file operations have been successfully completed"
-msgstr "Всі дії над файлами успішно виконано"
+msgstr "All file operations have been successfully completed"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:647
 msgid "Selection mode"
-msgstr "Режим виділення"
+msgstr "Selection mode"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:648
 msgid "The selection mode"
-msgstr "Режим виділення"
+msgstr "The selection mode"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:663
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:161
 msgid "Single Click"
-msgstr "Одинарний клік"
+msgstr "Single Click"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:664
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:162
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Чи буде елемент активовано при одинарному кліку"
+msgstr "Whether the items in the view can be activated with single clicks"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:680
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:178
 msgid "Single Click Timeout"
-msgstr "Затримка одинарного кліку"
+msgstr "Single Click Timeout"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:681
 #: /home/xapantu/marlin/po/../src/exo-tree-view.c:179
@@ -203,251 +197,248 @@ msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
-"Кількість часу, після якого, елемент під курсором мишки, буде автоматично "
-"виділено для режиму одинарного кліку"
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:699
 msgid "Pixbuf column"
-msgstr ""
+msgstr "Pixbuf column"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:700
 msgid "Model column used to retrieve the icon pixbuf from"
-msgstr ""
-"Модель стовпця, що використовується для отримання зображення (pixbuf) значка"
+msgstr "Model column used to retrieve the icon pixbuf from"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:717
 msgid "Text column"
-msgstr "Стовпчик тексту"
+msgstr "Text column"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:718
 msgid "Model column used to retrieve the text from"
-msgstr "Модель стовпчика, що використовується для отримання з неї тексту"
+msgstr "Model column used to retrieve the text from"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:737
 msgid "Markup column"
-msgstr "Стовпчик розмітки"
+msgstr "Markup column"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:738
 msgid "Model column used to retrieve the text if using Pango markup"
-msgstr ""
-"Модель стовпчика, що використовується для тримання з неї тексту, якщо "
-"використовується розмітка Pango"
+msgstr "Model column used to retrieve the text if using Pango markup"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:745
 msgid "Icon View Model"
-msgstr "Модель Показ Значків"
+msgstr "Icon View Model"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:746
 msgid "The model for the icon view"
-msgstr "Модель для перегляду у вигляді значків"
+msgstr "The model for the icon view"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:762
 msgid "Number of columns"
-msgstr "Кількість стовпчиків"
+msgstr "Number of columns"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:763
 msgid "Number of columns to display"
-msgstr "Кількість стовпчиків, які буде показано"
+msgstr "Number of columns to display"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:780
 msgid "Width for each item"
-msgstr "Ширина кожного елемента"
+msgstr "Width for each item"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:781
 msgid "The width used for each item"
-msgstr "Ширина, що використовується для кожного елемента"
+msgstr "The width used for each item"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:796
 msgid "Spacing"
-msgstr "Проміжки"
+msgstr "Spacing"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:797
 msgid "Space which is inserted between cells of an item"
-msgstr "Простір, що вставляється між комірками елемента"
+msgstr "Space which is inserted between cells of an item"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:812
 msgid "Row Spacing"
-msgstr "Рядкові проміжки"
+msgstr "Row Spacing"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:813
 msgid "Space which is inserted between grid rows"
-msgstr "Простір, що вставляється між рядками сітки"
+msgstr "Space which is inserted between grid rows"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:828
 msgid "Column Spacing"
-msgstr "Проміжки для стовпців"
+msgstr "Column Spacing"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:829
 msgid "Space which is inserted between grid columns"
-msgstr "Простір, що вставляється між стовпчиками сітки"
+msgstr "Space which is inserted between grid columns"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:844
 msgid "Margin"
-msgstr "Відступ"
+msgstr "Margin"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:845
 msgid "Space which is inserted at the edges of the icon view"
-msgstr "Простір, що вставляється на краях перегляду піктограми"
+msgstr "Space which is inserted at the edges of the icon view"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
-msgstr "Орієнтація елементу"
+msgstr "Item Orientation"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:861
 msgid ""
 "How the text and icon of each item are positioned relative to each other"
 msgstr ""
-"Як текст та значки кожного елемента розташовуються один відносно іншого"
+"How the text and icon of each item are positioned relative to each other"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:877
 msgid "Reorderable"
-msgstr "Пересортування"
+msgstr "Reorderable"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:878
 msgid "View is reorderable"
-msgstr "Елементи можна перегрупувати"
+msgstr "View is reorderable"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:885
 msgid "Enable Search"
-msgstr "Увімкнути пошук"
+msgstr "Enable Search"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:886
 msgid "View allows user to search through columns interactively"
-msgstr ""
-"Перегляд дозволяє користувачу виконувати пошук у стовпчиках в інтерактивному "
-"режимі"
+msgstr "View allows user to search through columns interactively"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:893
 msgid "Search Column"
-msgstr "Стовпчик пошуку"
+msgstr "Search Column"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:894
 msgid "Model column to search through during interactive search"
-msgstr "Стовпчик, в якому слід виконати інтерактивний пошук по мірі набору"
+msgstr "Model column to search through during interactive search"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:903
 msgid "Tooltip Column"
-msgstr "Стовпчик підказки"
+msgstr "Tooltip Column"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:904
 msgid "The column in the model containing the tooltip texts for the items"
-msgstr "Стовпчик у моделі, що містить текстову підказку для елементів"
+msgstr "The column in the model containing the tooltip texts for the items"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:921
 msgid "Item Padding"
-msgstr "Відступ елементу"
+msgstr "Item Padding"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:922
 msgid "Padding around icon view items"
-msgstr "Відступ навколо значків"
+msgstr "Padding around icon view items"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:939
 msgid "Cell Area"
-msgstr "Ділянка комірки"
+msgstr "Cell Area"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:940
 msgid "The GtkCellArea used to layout cells"
-msgstr "GtkCellArea для розташування комірок"
+msgstr "The GtkCellArea used to layout cells"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:953
 msgid "Selection Box Color"
-msgstr ""
+msgstr "Selection Box Colour"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:954
 msgid "Color of the selection box"
-msgstr ""
+msgstr "Colour of the selection box"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:960
 msgid "Selection Box Alpha"
-msgstr ""
+msgstr "Selection Box Alpha"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:961
 msgid "Opacity of the selection box"
-msgstr ""
+msgstr "Opacity of the selection box"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
-msgstr "Налаштування панелі інструментів"
+msgstr "Customise Toolbar"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:465
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
-msgstr "Доступні об'єкти"
+msgstr "Available Items"
 
 #: /home/xapantu/marlin/po/../src/marlin-toolbar-editor.c:502
 msgid "Displayed Items"
-msgstr "Відображувані елементи"
+msgstr "Displayed Items"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1093
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "Invalid filename provided by XDS drag site"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1254
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Не вдалося створити посилання на URL \"%s\""
+msgstr "Failed to create a link for the URL \"%s\""
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1766
 msgid "Set as default"
-msgstr "Установити за умовчанням"
+msgstr "Set as default"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:1841
 msgid "Open with…"
-msgstr "Відкрити за допомогою..."
+msgstr "Open with…"
 
 #: /home/xapantu/marlin/po/../src/fm-directory-view.c:3078
 msgid "Set Color:"
-msgstr "Вибрати колір"
+msgstr "Set Colour:"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
-msgstr "Пере_містити сюди"
+msgstr "_Move Here"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:784
 msgid "_Copy Here"
-msgstr "_Копіювати сюди"
+msgstr "_Copy Here"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr ""
+msgstr "_Link Here"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr "Встановити як фон"
+msgstr "Set as _Background"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr "Відміна"
+msgstr "Cancel"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "Не вдається виконати файл \"%s\""
+msgstr "Failed to execute file \"%s\""
 
 #: /home/xapantu/marlin/po/../src/fm-list-model.c:457
 msgid "(Empty)"
-msgstr "(Пусто)"
+msgstr "(Empty)"
 
 #: /home/xapantu/marlin/po/../src/fm-list-model.c:459
 msgid "Loading..."
-msgstr "Завантаження…"
+msgstr "Loading..."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:343
 msgid "Text"
-msgstr "Текст"
+msgstr "Text"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:344
 msgid "The text of the label."
-msgstr "Текст позначки."
+msgstr "The text of the label."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:350
 msgid "Justification"
-msgstr "Вирівнювання"
+msgstr "Justification"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:351
 msgid ""
@@ -455,213 +446,214 @@ msgid ""
 "This does NOT affect the alignment of the label within its allocation. See "
 "GtkMisc::xalign for that."
 msgstr ""
-"Вирівнювання рядків тексту мітки відносно один одного. Це не впливає на "
-"вирівнювання самої мітки. Для цього використовуйте властивість "
-"GtkMisc::xalign."
+"The alignment of the lines in the text of the label relative to each other. "
+"This does NOT affect the alignment of the label within its allocation. See "
+"GtkMisc::xalign for that."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:359
 msgid "Line wrap"
-msgstr "Перенос рядків"
+msgstr "Line wrap"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:360
 msgid "If set, wrap lines if the text becomes too wide."
-msgstr "Якщо встановлено, довгі рядки переносяться."
+msgstr "If set, wrap lines if the text becomes too wide."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:367
 msgid "Small size"
-msgstr "Маленький розмір"
+msgstr "Small size"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:368
 msgid "If set, use small size text."
-msgstr "Якщо встановлено, використовувати текс малого розміру."
+msgstr "If set, use small size text."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:375
 msgid "Cursor Position"
-msgstr "Позиція курсора"
+msgstr "Cursor Position"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:376
 msgid "The current position of the insertion cursor in chars."
-msgstr "Поточна позиція курсора у символах."
+msgstr "The current position of the insertion cursor in chars."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:385
 msgid "Selection Bound"
-msgstr "Границі виділення"
+msgstr "Selection Bound"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:386
 msgid ""
 "The position of the opposite end of the selection from the cursor in chars."
-msgstr "Позиція протилежного краю виділення від курсора в буквах."
+msgstr ""
+"The position of the opposite end of the selection from the cursor in chars."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:3187
 msgid "Select All"
-msgstr "Вибрати все"
+msgstr "Select All"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:3198
 msgid "Input Methods"
-msgstr "Способи вводу"
+msgstr "Input Methods"
 
 #: /home/xapantu/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr "Буфер обміну порожній"
+msgstr "There is nothing on the clipboard to paste"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:316
 msgid "Personal"
-msgstr ""
+msgstr "Personal"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:321
 msgid "Your common places and bookmarks"
-msgstr "Ваші загальні місця та закладки"
+msgstr "Your common places and bookmarks"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:335
 msgid "Open your personal folder"
-msgstr "Відкрити Ваш особистий каталог"
+msgstr "Open your personal folder"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:377
 msgid "Trash"
-msgstr "Кошик"
+msgstr "Rubbish Bin"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:379
 msgid "Open the trash"
-msgstr "Відкрити кошик"
+msgstr "Open the rubbish bin"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:389
 msgid "Devices"
-msgstr "Пристрої"
+msgstr "Devices"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:394
 msgid "Your local partitions and devices"
-msgstr "Ваші локальні розділи та пристрої"
+msgstr "Your local partitions and devices"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:401
 msgid "File System"
-msgstr "Файлова Система"
+msgstr "File System"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:403
 msgid "Open the contents of the File System"
-msgstr "Відкрити вміст файлової системи"
+msgstr "Open the contents of the File System"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:462
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:487
 #, c-format
 msgid "Mount and open %s"
-msgstr "Підключити та відкрити %s"
+msgstr "Mount and open %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:595
 msgid "Network"
-msgstr "Мережа"
+msgstr "Network"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:600
 msgid "Your network places"
-msgstr "Ваші мережеві місця"
+msgstr "Your network places"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:631
 msgid "Entire network"
-msgstr "Вся мережа"
+msgstr "Entire network"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:633
 msgid "Browse the contents of the network"
-msgstr "Перегляд вмісту мережі"
+msgstr "Browse the contents of the network"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1593
 msgid "_Start"
-msgstr "З_апустити"
+msgstr "_Start"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1594
 msgid "_Stop"
-msgstr "З_упинити"
+msgstr "_Stop"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1599
 msgid "_Power On"
-msgstr "_Увімкнути"
+msgstr "_Power On"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Safely Remove Drive"
-msgstr "_Безпечне вилучення пристрою"
+msgstr "_Safely Remove Drive"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1603
 msgid "_Connect Drive"
-msgstr "_Під'єднати привід"
+msgstr "_Connect Drive"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1604
 msgid "_Disconnect Drive"
-msgstr "В_ід'єднати привід"
+msgstr "_Disconnect Drive"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1607
 msgid "_Start Multi-disk Device"
-msgstr "З_апустити багатодисковий пристрій"
+msgstr "_Start Multi-disk Device"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1608
 msgid "_Stop Multi-disk Device"
-msgstr "З_упинити багатодисковий пристрій"
+msgstr "_Stop Multi-disk Device"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1612
 msgid "_Unlock Drive"
-msgstr "_Розблокувати привід"
+msgstr "_Unlock Drive"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1613
 msgid "_Lock Drive"
-msgstr "За_блокувати привід"
+msgstr "_Lock Drive"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1687
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2234
 #, c-format
 msgid "Unable to start %s"
-msgstr "Не вдається запустити %s"
+msgstr "Unable to start %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:1977
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2006
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2035
 #, c-format
 msgid "Unable to eject %s"
-msgstr "Не вдається від'єднати %s"
+msgstr "Unable to eject %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2180
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr "Не вдається опитати %s щодо змін носія"
+msgstr "Unable to poll %s for media changes"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2290
 #, c-format
 msgid "Unable to stop %s"
-msgstr "Не вдається зупинити %s"
+msgstr "Unable to stop %s"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2382
 msgid "_Open"
-msgstr "_Відкрити"
+msgstr "_Open"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2390
 msgid "Open in New _Tab"
-msgstr "Відкрити у новій в_кладці"
+msgstr "Open in New _Tab"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2397
 msgid "Open in New _Window"
-msgstr "Відкрити у новому _вікні"
+msgstr "Open in New _Window"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2406
 msgid "Remove"
-msgstr "Видалити"
+msgstr "Remove"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2415
 msgid "Rename..."
-msgstr "Перейменувати…"
+msgstr "Rename..."
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2427
 msgid "_Mount"
-msgstr "_Підключити"
+msgstr "_Mount"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2434
 msgid "_Unmount"
-msgstr "_Відключити"
+msgstr "_Unmount"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2441
 msgid "_Eject"
-msgstr "Ви_йняти"
+msgstr "_Eject"
 
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:2477
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1422
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2293
 msgid "Empty _Trash"
-msgstr "О_чистити кошик"
+msgstr "Empty _Rubbish Bin"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -669,15 +661,15 @@ msgstr "SSH"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr "Публічний FTP"
+msgstr "Public FTP"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr "FTP (з авторизацією)"
+msgstr "FTP (with login)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr "Ресурс Windows"
+msgstr "Windows share"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
@@ -685,96 +677,98 @@ msgstr "WebDAV (HTTP)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr "Захищений WebDAV (HTTPS)"
+msgstr "Secure WebDAV (HTTPS)"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr "З'єднання…"
+msgstr "Connecting..."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Can't load the supported server method list.\n"
+"Please check your gvfs installation."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Каталог «%s» неможливо відкрити на «%s»."
+msgstr "The folder \"%s\" cannot be opened on \"%s\"."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Неможливо знайти сервер на «%s»"
+msgstr "The server at \"%s\" cannot be found."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr "Спробувати знову"
+msgstr "Try Again"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr "Будь ласка, перевірте особисті дані користувача."
+msgstr "Please verify your user details."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr "Продовжити"
+msgstr "Continue"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1169
 msgid "C_onnect"
-msgstr "З'_єднатись"
+msgstr "C_onnect"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr "З'єднання з сервером"
+msgstr "Connect to Server"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr "Подробиці про сервер"
+msgstr "Server Details"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
-msgstr "_Сервер:"
+msgstr "_Server:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
-msgstr "П_орт:"
+msgstr "_Port:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
-msgstr "_Тип:"
+msgstr "_Type:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr "_Ресурс:"
+msgstr "Sh_are:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr "_Каталог:"
+msgstr "_Folder:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr "Відомості про користувача"
+msgstr "User Details"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr "_Доменна назва:"
+msgstr "_Domain name:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_User name:"
-msgstr "_Ім'я користувача:"
+msgstr "_User name:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
-msgstr "_Пароль:"
+msgstr "Pass_word:"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr "_Запам'ятати цей пароль"
+msgstr "_Remember this password"
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr "Операцію скасовано"
+msgstr "Operation cancelled"
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -784,91 +778,87 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Перегляд файлової системи менеджером файлів"
+"Browse the file system with the file manager"
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit cannot be used with URIs."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:205
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:735
 msgid "_Skip"
-msgstr "П_ропустити"
+msgstr "_Skip"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "S_kip All"
-msgstr "Пр_опустити все"
+msgstr "S_kip All"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "_Retry"
-msgstr "_Повторити"
+msgstr "_Retry"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:208
 msgid "Delete _All"
-msgstr "В_идалити все"
+msgstr "Delete _All"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:209
 msgid "_Replace"
-msgstr "_Замінити"
+msgstr "_Replace"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:210
 msgid "Replace _All"
-msgstr "Замінити вс_і"
+msgstr "Replace _All"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:211
 msgid "_Merge"
-msgstr "_Об'єднати"
+msgstr "_Merge"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:212
 msgid "Merge _All"
-msgstr "Об'єднати _всі"
+msgstr "Merge _All"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:213
 msgid "Copy _Anyway"
-msgstr "В_сеодно копіювати"
+msgstr "Copy _Anyway"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:299
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] "%'d секунда"
-msgstr[1] "%'d секунди"
-msgstr[2] "%'d секунд"
+msgstr[0] "%'d second"
+msgstr[1] "%'d seconds"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:304
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:315
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] "%'d хвилина"
-msgstr[1] "%'d хвилини"
-msgstr[2] "%'d хвилин"
+msgstr[0] "%'d minute"
+msgstr[1] "%'d minutes"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:314
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] "%'d година"
-msgstr[1] "%'d години"
-msgstr[2] "%'d годин"
+msgstr[0] "%'d hour"
+msgstr[1] "%'d hours"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:322
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] "приблизно %'d година"
-msgstr[1] "приблизно %'d години"
-msgstr[2] "приблизно %'d годин"
+msgstr[0] "approximately %'d hour"
+msgstr[1] "approximately %'d hours"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:398
 #, c-format
 msgid "Link to %s"
-msgstr "Посилання на %s"
+msgstr "Link to %s"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:402
 #, c-format
 msgid "Another link to %s"
-msgstr "Інше посилання на %s"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:418
 #, c-format
@@ -901,7 +891,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Ви дійсно хочете остаточно видалити \"%B\" з кошика?"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -912,28 +902,24 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Ви дійсно хочете остаточно видалити %'d виділений елемент з кошика?"
 msgstr[1] ""
-"Ви дійсно хочете остаточно видалити %'d виділених елементи з кошика?"
-msgstr[2] ""
-"Ви дійсно хочете остаточно видалити %'d виділених елементів з кошика?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1394
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Якщо ви видалите елемент, він буде остаточно втрачений."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr "Очистити кошик?"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Всі об’єкти з кошика будуть остаточно видалені."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Ви впевнені, що хочете остаточно видалити \"%B\"?"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1453
 #, c-format
@@ -967,7 +953,7 @@ msgstr[1] ""
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1742
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2556
 msgid "Error while deleting."
-msgstr "Помилка при видаленні."
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1596
 msgid ""
@@ -1542,7 +1528,7 @@ msgstr ""
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:251
 #, c-format
 msgid "link to %s"
-msgstr "посилання на %s"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/gof-file.c:1498
 #, c-format
@@ -1580,7 +1566,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Показати додаткові _подробиці"
+msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:191
 #: /home/xapantu/marlin/po/../libcore/marlin-progress-info.c:209
@@ -1589,4 +1575,4 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr " (некоректний символ Unicode)"
+msgstr ""
