@@ -1086,11 +1086,9 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     gtk_tree_path_free (path);
 
     //TODO check mem alloc
-    char *uri = g_file_get_uri(file->location);
     //file->color = tags_colors[marlin_view_tags_get_color (tags, uri, NULL)];
     //tags_colors[marlin_view_tags_get_color (tags, uri, file, NULL)];
     //marlin_view_tags_get_color (tags, uri, file, NULL, NULL);
-    g_free (uri);
 
     //file_entry_free (file_entry);
     //g_object_unref(file);

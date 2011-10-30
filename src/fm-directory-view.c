@@ -223,6 +223,10 @@ static const GtkTargetEntry drop_targets[] =
     { "_NETSCAPE_URL", 0, TARGET_NETSCAPE_URL, },
 };
 
+static gpointer _g_object_ref0 (gpointer self) {
+	return self ? g_object_ref (self) : NULL;
+}
+
 void fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor)
 {
     GList *file_list;
@@ -244,12 +248,13 @@ void fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor)
 }
 
 static void
-fm_directory_view_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
+fm_directory_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
 {
     fm_list_model_add_file (view->model, file, directory);
-    char *uri = g_file_get_uri(file->location);
-    marlin_view_tags_get_color (tags, uri, file, NULL, NULL);
-    g_free(uri);
+    //SPOTTED !
+    //marlin_view_tags_get_color (tags, uri, file, NULL, NULL);
+    g_message ("tags_get_color");
+    //marlin_view_tags_get_color (tags, g_object_ref (file), NULL, NULL);
 }
 
 
@@ -2569,7 +2574,7 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
     widget_class = GTK_WIDGET_CLASS (klass);
     scrolled_window_class = GTK_SCROLLED_WINDOW_CLASS (klass);
 
-    klass->add_file = fm_directory_view_view_add_file;
+    klass->add_file = fm_directory_view_add_file;
 
     G_OBJECT_CLASS (klass)->constructor = fm_directory_view_constructor;
     G_OBJECT_CLASS (klass)->dispose = fm_directory_view_dispose;
