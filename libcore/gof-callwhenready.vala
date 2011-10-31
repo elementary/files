@@ -68,6 +68,7 @@ public class GOF.CallWhenReady : Object
             if (f != null)
                 f (files);
             //f (files, obj);
+            callwhenready_cache.remove (this);
         }
     }
 
