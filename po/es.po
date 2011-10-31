@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-10-29 21:06+0000\n"
-"Last-Translator: Victor Eduardo <Unknown>\n"
+"PO-Revision-Date: 2011-10-30 19:50+0000\n"
+"Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-10-30 05:22+0000\n"
+"X-Launchpad-Export-Date: 2011-10-31 05:38+0000\n"
 "X-Generator: Launchpad (build 14197)\n"
 "Language: es\n"
 
@@ -288,7 +288,7 @@ msgstr "Margen"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:845
 msgid "Space which is inserted at the edges of the icon view"
-msgstr "Espacio agregado en los bordes de la vista de iconos"
+msgstr "Espacio introducido entre los bordes de la vista de iconos"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:860
 msgid "Item Orientation"
@@ -425,7 +425,7 @@ msgstr "En_lazar aquí"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr "Establecer como _fondo de pantalla"
+msgstr "Establecer como _fondo"
 
 #: /home/xapantu/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
@@ -707,7 +707,7 @@ msgid ""
 "Please check your gvfs installation."
 msgstr ""
 "No se puede cargar la lista de métodos soportada por el servidor.\n"
-"Verifique su instalación de gvfs."
+"Compruebe su instalación de gvfs."
 
 #: /home/xapantu/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
@@ -800,7 +800,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr "--quit no se puede usar con URIs."
+msgstr "--quit no se puede usar con URI."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:205
 #: /home/xapantu/marlin/po/../libcore/marlin-file-conflict-dialog.c:735
@@ -817,7 +817,7 @@ msgstr "_Reintentar"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:208
 msgid "Delete _All"
-msgstr "Borrar _todo"
+msgstr "Eliminar _todo"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:209
 msgid "_Replace"
@@ -910,7 +910,7 @@ msgstr " (%'d"
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
-"¿Está seguro de que desea borrar «%B» permanentemente de la papelera?"
+"¿Está seguro de que quiere eliminar permanentemente a «%B» de la papelera?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -921,29 +921,28 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"¿Está seguro de que desea borrar permanentemente el elemento seleccionado de "
-"la papelera?"
+"¿Está seguro de que quiere eliminar permanentemente el elemento seleccionado "
+"de la papelera?"
 msgstr[1] ""
-"¿Está seguro de que desea borrar permanentemente los %'d elementos "
+"¿Está seguro de que quiere eliminar permanentemente los %'d elementos "
 "seleccionados de la papelera?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1394
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Si borra un elemento, éste se perderá para siempre."
+msgstr "Si elimina un elemento, se perderá permanentemente."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr "Borrar todos los elementos contenidos en la papelera"
+msgstr "¿Eliminar todos los elementos en la papelera?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
-"Todos los elementos en la papelera serán borrados de forma permanente."
+msgstr "Todos los elementos de la papelera se eliminarán permanentemente."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "¿Está seguro de que quiere borrar «%B» de forma permanente?"
+msgstr "¿Está seguro de que quiere eliminar permanentemente «%B»?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1453
 #, c-format
@@ -951,22 +950,22 @@ msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] ""
-"¿Está seguro de que quiere borrar permanentemente el elemento seleccionado?"
+"¿Está seguro de que quiere eliminar permanentemente el elemento seleccionado?"
 msgstr[1] ""
-"¿Está seguro de que quiere borrar permanentemente los %'d elementos "
+"¿Está seguro de que quiere eliminar permanentemente los %'d elementos "
 "seleccionados?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1478
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr "Borrando archivos"
+msgstr "Eliminando archivos"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "Queda %'d archivo por borrar"
-msgstr[1] "Quedan %'d archivos por borrar"
+msgstr[0] "Queda %'d archivo por eliminar"
+msgstr[1] "Quedan %'d archivos por eliminar"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
@@ -980,15 +979,15 @@ msgstr[1] "Quedan %T"
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1742
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2556
 msgid "Error while deleting."
-msgstr "Error al borrar."
+msgstr "Error al eliminar."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Los archivos en la carpeta «%B» no se pueden borrar porque usted no posee "
-"los permisos para verlos."
+"Los archivos en la carpeta «%B» no se pueden eliminar porque no tiene "
+"permisos para verlos."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1599
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2615
@@ -1009,7 +1008,7 @@ msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"La carpeta «%s» no se puede borrar porque no tiene permiso para leerla."
+"La carpeta «%B» no se puede eliminar porque no tiene permisos para leerla."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1632
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2654
@@ -1019,11 +1018,11 @@ msgstr "Hubo un error al leer la carpeta «%B»."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
-msgstr "No se pudo borrar la carpeta %B."
+msgstr "No se pudo eliminar la carpeta %B."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr "Hubo un error al borrar %B."
+msgstr "Hubo un error al eliminar %B."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1819
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1831
@@ -1034,13 +1033,13 @@ msgstr "Moviendo archivos a la papelera"
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "queda %'d archivo por mover a la papelera"
-msgstr[1] "quedan %'d archivos por mover a la papelera"
+msgstr[0] "Queda %'d archivo por mover a la papelera"
+msgstr[1] "Quedan %'d archivos por mover a la papelera"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1884
 msgid "Cannot move file to trash, do you want to delete immediately?"
 msgstr ""
-"No se puede mover el archivo a la papelera, ¿Desea borrarlo permanentemente?"
+"No puede mover el archivo a la papelera. ¿Quiere eliminarlo inmediatamente?"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:1885
 msgid "The file \"%B\" cannot be moved to the trash."
@@ -1052,7 +1051,7 @@ msgstr "Moviendo archivos a la papelera"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2063
 msgid "Deleting Files"
-msgstr "Borrando archivos"
+msgstr "Eliminando archivos"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2126
 msgid "Unable to eject %V"
@@ -1072,7 +1071,7 @@ msgid ""
 "All trashed items on the volume will be permanently lost."
 msgstr ""
 "Con el fin de ganar espacio libre en este volumen, la papelera debe "
-"vaciarse. Todos los elementos de la papelera se perderán de forma permanente."
+"vaciarse. Todos los elementos de la papelera se perderán permanentemente."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2291
 msgid "Do _not Empty Trash"
@@ -1105,8 +1104,8 @@ msgstr[1] "Preparándose para mover %'d archivos (%S)"
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Preparándose para borrar %'d archivo (%S)"
-msgstr[1] "Preparándose para borrar %'d archivos (%S)"
+msgstr[0] "Preparándose para eliminar %'d archivo (%S)"
+msgstr[1] "Preparándose para eliminar %'d archivos (%S)"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2509
 #, c-format
@@ -1120,17 +1119,17 @@ msgstr[1] "Preparándose para mover a la papelera %'d archivos"
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3598
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3643
 msgid "Error while copying."
-msgstr "Error al copiar."
+msgstr "Se produjo un error al copiar."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2554
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3596
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:3641
 msgid "Error while moving."
-msgstr "Error al mover."
+msgstr "Se produjo un error al mover."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2558
 msgid "Error while moving files to trash."
-msgstr "Error al mover los archivos a la papelera."
+msgstr "Se produjo un error al mover los archivos a la papelera."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2612
 msgid ""
@@ -1152,19 +1151,18 @@ msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"El archivo «%B» no se puede gestionar porque usted no tiene permisos para "
-"leerlo."
+"El archivo «%B» no se puede gestionar porque no tiene permisos para leerlo."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2731
 msgid "There was an error getting information about \"%B\"."
-msgstr "Hubo un error al obtener la información acerca de «%B»."
+msgstr "Hubo un error al obtener la información sobre «%B»."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2831
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2873
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2906
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2936
 msgid "Error while copying to \"%B\"."
-msgstr "Error al copiar a «%B»."
+msgstr "Se produjo un error al copiar a «%B»."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2835
 msgid "You do not have permissions to access the destination folder."
@@ -1172,7 +1170,7 @@ msgstr "No tiene permisos para acceder a la carpeta de destino."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2837
 msgid "There was an error getting information about the destination."
-msgstr "Hubo un error al obtener la información acerca del destino."
+msgstr "Hubo un error al obtener la información sobre el destino."
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:2874
 msgid "The destination is not a folder."
