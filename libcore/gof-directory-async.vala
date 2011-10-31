@@ -165,9 +165,10 @@ public class GOF.Directory.Async : Object
         }
     }
 
-    private delegate void func_signal (GOF.File gof);
+    /* TODO move this to GOF.File */
+    private delegate void func_query_info (GOF.File gof);
 
-    private async void query_info_async (GOF.File gof, func_signal? f = null) {
+    private async void query_info_async (GOF.File gof, func_query_info? f = null) {
         try {
             gof.info = yield gof.location.query_info_async (gio_default_attributes, 
                                                             FileQueryInfoFlags.NONE, 

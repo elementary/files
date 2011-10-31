@@ -322,10 +322,10 @@ file_list_ready_cb (GList *files,
 #endif
 
 static void
-file_list_ready_cb (GList *files,
-                    gpointer user_data)
+file_list_ready_cb (GList *files, gpointer user_data)
 {
-    MarlinFileConflictDialog *fcd = user_data;
+    //MarlinFileConflictDialog *fcd = user_data;
+    MarlinFileConflictDialog *fcd = MARLIN_FILE_CONFLICT_DIALOG (user_data);
     GOFFile *src, *dest, *dest_dir;
     GtkDialog *dialog;
     gboolean should_show_type;
@@ -346,6 +346,11 @@ file_list_ready_cb (GList *files,
     dest_dir = g_list_nth_data (files, 0);
     dest = g_list_nth_data (files, 1);
     src = g_list_nth_data (files, 2);
+
+    //SPOTTED!
+    g_warning ("src %s %s", src->uri, src->ftype);
+    g_warning ("dest_dir %s %s", dest_dir->uri, dest_dir->ftype);
+    g_warning ("dest %s %s", dest->uri, dest->ftype);
 
     should_show_type = strcmp(src->ftype, dest->ftype);
 
@@ -513,6 +518,12 @@ file_list_ready_cb (GList *files,
 }
 
 static void
+zog_zog () 
+{
+    g_warning ("ZOG ZOG");
+}
+
+static void
 build_dialog_appearance (MarlinFileConflictDialog *fcd)
 {
     GList *files = NULL;
@@ -522,12 +533,23 @@ build_dialog_appearance (MarlinFileConflictDialog *fcd)
     files = g_list_prepend (files, details->destination);
     files = g_list_prepend (files, details->dest_dir);
 
+    //SPOTTED!
+    /*GOFFile *goftest = gof_file_get_by_commandline_arg ("/home/kitkat/Images/youtube.png");
+    files = g_list_prepend (files, goftest);*/
+    //gof_call_when_ready_new (files);
+    //gof_call_when_ready_new (files, zog_zog);
+    gof_call_when_ready_new (files, file_list_ready_cb, G_OBJECT (fcd));
+
+    /*gof_file_query_update (details->source);
+    gof_file_query_update (details->destination);
+    gof_file_query_update (details->dest_dir);*/
+
     //TODO
     /*marlin_file_list_call_when_ready (files,
       MARLIN_FILE_ATTRIBUTES_FOR_ICON,
       &details->handle, file_list_ready_cb, fcd);*/
-    file_list_ready_cb(files, fcd);
-    g_list_free (files);
+    //file_list_ready_cb(files, fcd);
+    //g_list_free (files);
 }
 
 static void
