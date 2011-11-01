@@ -2694,8 +2694,7 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
 static void
 fm_directory_view_clipboard_changed (FMDirectoryView *view)
 {
-    //SPOTTED! is this really needed?
-    //fm_directory_view_notify_selection_changed (view);
+    fm_directory_view_notify_selection_changed (view);
 
     /* We could optimize this by redrawing only the old and the new  
      * clipboard selection by emitting row-changed on the model but the icon view
