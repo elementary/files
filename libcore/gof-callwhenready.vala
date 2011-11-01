@@ -23,29 +23,24 @@ GLib.List<GOF.CallWhenReady>? callwhenready_cache = null;
 
 public class GOF.CallWhenReady : Object
 {
-    //public delegate void call_when_ready_func (GLib.List<GOF.File>files, Object obj);
     public delegate void call_when_ready_func (GLib.List<GOF.File>files);
     
     public GLib.List<GOF.File> files;
     private unowned call_when_ready_func? f;
-    //private Object obj;
     private GLib.List<GOF.File>? call_when_ready_list = null;
 
 
-    //public CallWhenReady (GLib.List<GOF.File> _files, call_when_ready_func? _f = null, Object _obj)
     public CallWhenReady (GLib.List<GOF.File> _files, call_when_ready_func? _f = null)
     {
         files = _files.copy ();
         f = _f;
-        //obj = _obj;
 
-        message ("call_when_ready_new");
         int count = 0;
         foreach (GOF.File gof in files) {
             if (gof.info == null || gof.name == null) {
                 call_when_ready_list.prepend (gof);
                 query_info_async (gof, file_ready);
-                message ("cwr %s", gof.uri);
+                //message ("cwr %s", gof.uri);
             } else {
                 count++;
             }
@@ -59,17 +54,8 @@ public class GOF.CallWhenReady : Object
     }
 
     private void file_ready (GOF.File gof) {
-        /* update and remove from list */
         gof.update ();
-        call_when_ready_list.remove (gof);
-        message ("file ready %s %s", gof.uri, gof.ftype);
-        if (call_when_ready_list == null) {
-            message ("call when ready OK - empty list");
-            if (f != null)
-                f (files);
-            //f (files, obj);
-            callwhenready_cache.remove (this);
-        }
+        //message ("file ready %s %s", gof.uri, gof.ftype);
     }
 
     /* TODO move this to GOF.File */
@@ -77,16 +63,28 @@ public class GOF.CallWhenReady : Object
 
     private delegate void func_query_info (GOF.File gof);
 
-    private async void query_info_async (GOF.File gof, func_query_info? f = null) {
+    private async void query_info_async (GOF.File gof, func_query_info? fqi = null) {
         try {
             gof.info = yield gof.location.query_info_async (gio_default_attributes, 
                                                             FileQueryInfoFlags.NONE, 
                                                             Priority.DEFAULT);
-            if (f != null)
-                f (gof);
+            if (fqi != null)
+                fqi (gof);
         } catch (Error err) {
             warning ("query info failed, %s %s", err.message, gof.uri);
+            if (err is IOError.NOT_FOUND)
+                gof.exists = false;
+            if (err is IOError.NOT_MOUNTED)
+                gof.is_mounted = false;
         }
+         
+        call_when_ready_list.remove (gof);
+        if (call_when_ready_list == null) {
+            message ("call when ready OK - empty list");
+            if (f != null)
+                f (files);
+        }
+        callwhenready_cache.remove (this);
     }
     /* --- */
 }

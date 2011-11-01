@@ -77,4 +77,5 @@ void                    marlin_bookmark_list_move_item           (MarlinBookmark
                                                                   guint                 index,
                                                                   guint                 destination);
 
+
 #endif /* MARLIN_BOOKMARK_LIST_H */

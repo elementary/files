@@ -316,7 +316,10 @@ marlin_bookmark_list_delete_item_at (MarlinBookmarkList *bookmarks,
 
     g_assert (MARLIN_IS_BOOKMARK (doomed->data));
     stop_monitoring_bookmark (bookmarks, MARLIN_BOOKMARK (doomed->data));
+    //SPOTTED!
     g_object_unref (doomed->data);
+    /*g_object_unref (doomed->data);
+    g_object_unref (doomed->data);*/
 
     g_list_free_1 (doomed);
 
@@ -453,6 +456,26 @@ marlin_bookmark_list_length (MarlinBookmarkList *bookmarks)
     return g_list_length (bookmarks->list);
 }
 
+static GList *
+marlin_bookmark_list_get_gof_files (MarlinBookmarkList *bookmarks)
+{
+    GList *files = NULL;
+    GList *p;
+
+    for (p = bookmarks->list; p!= NULL; p=p->next) {
+        GOFFile *gof = MARLIN_BOOKMARK (p->data)->file;
+        //g_message ("%s %s", G_STRFUNC, gof->uri);
+        files = g_list_prepend (files, gof); 
+    }
+
+    return files;
+}
+
+static void bookmark_list_content_changed (GList *files, MarlinBookmarkList *bookmarks)
+{
+    g_signal_emit (bookmarks, signals[CONTENTS_CHANGED], 0);
+}
+
 static void
 load_file_finish (MarlinBookmarkList *bookmarks,
                   GObject *source,
@@ -491,6 +514,12 @@ load_file_finish (MarlinBookmarkList *bookmarks,
         }
         g_free (contents);
         g_strfreev (lines);
+
+        //SPOTTED!
+        /* emit contents_changed once all bookmark are ready */
+        GList *files = marlin_bookmark_list_get_gof_files (bookmarks);
+        gof_call_when_ready_new (files, bookmark_list_content_changed, bookmarks);
+        g_list_free (files);
 
         g_signal_emit (bookmarks, signals[CONTENTS_CHANGED], 0);
     } else if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND)) {
@@ -668,6 +697,7 @@ marlin_bookmark_list_save_file (MarlinBookmarkList *bookmarks)
         process_next_op (bookmarks);
     }
 }
+
 
 /**
  * marlin_bookmark_list_new:

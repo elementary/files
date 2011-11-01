@@ -148,6 +148,8 @@ public class GOF.Directory.Async : Object
             warning ("%s %s", err.message, file.uri);
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)
                 file.exists = false;
+            if (err is IOError.NOT_MOUNTED)
+                file.is_mounted = false;
         }
 
         state = State.LOADED;
@@ -261,10 +263,15 @@ public class GOF.Directory.Async : Object
         } else {
             if (hidden_file_hash != null)
                 val = hidden_file_hash.remove (gof.location);
-        } 
+        }
 
         return val;
     }
+
+    /*public bool remove_directory_from_cache ()
+    {
+        return directory_cache.remove (location);
+    }*/
     
     public bool has_parent ()
     {
