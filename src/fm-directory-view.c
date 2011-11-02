@@ -1076,7 +1076,6 @@ fm_directory_view_drag_data_received (GtkWidget          *widget,
 {
     GdkDragAction actions;
     GdkDragAction action;
-    //ThunarFolder *folder;
     GOFFile     *file = NULL;
     GtkWidget   *toplevel;
     gboolean    succeed = FALSE;

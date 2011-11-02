@@ -1150,8 +1150,9 @@ drag_motion_callback (GtkTreeView *tree_view,
                 //TODO use GOFFILE instead of uri
                 if (uri != NULL) {
                     GOFFile *file = gof_file_get_by_uri (uri);
-                    printf ("%s %s\n", G_STRFUNC, file->uri);
-                    gof_file_accepts_drop (file, sidebar->drag_list, context, &action);
+                    //g_message ("%s %s\n", G_STRFUNC, file->uri);
+                    if (gof_file_ensure_query_info (file))
+                        gof_file_accepts_drop (file, sidebar->drag_list, context, &action);
                     g_object_unref (file);
                     g_free (uri);
                 }

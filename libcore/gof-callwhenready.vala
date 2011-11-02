@@ -52,6 +52,15 @@ public class GOF.CallWhenReady : Object
 
         callwhenready_cache.prepend (this);
     }
+    
+    /*public static CallWhenReady for_file (GOF.File gof, call_when_ready_func? _f = null)
+    {
+        GLib.List<GOF.File> list = null;
+
+        list.prepend (gof);
+
+        return new CallWhenReady (list, _f);
+    }*/
 
     private void file_ready (GOF.File gof) {
         gof.update ();

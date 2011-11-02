@@ -62,7 +62,8 @@ public class GOF.Directory.Async : Object
         
         query_info_async (file, file_info_available);
 
-        directory_cache.insert (location, this);
+        if (directory_cache != null)
+           directory_cache.insert (location, this);
 
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.file_hash, GLib.file_equal);
         hidden_file_hash = new HashTable<GLib.File,GOF.File> (GLib.file_hash, file_equal);
@@ -144,15 +145,16 @@ public class GOF.Directory.Async : Object
                     //mutex.unlock ();
                 }
             }
+            state = State.LOADED;
         } catch (Error err) {
             warning ("%s %s", err.message, file.uri);
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)
                 file.exists = false;
             if (err is IOError.NOT_MOUNTED)
                 file.is_mounted = false;
+            state = State.NOT_LOADED;
         }
 
-        state = State.LOADED;
         //TODO send err code
         done_loading ();
     }
@@ -238,15 +240,16 @@ public class GOF.Directory.Async : Object
         return from_gfile (gof.location);
     }
     
-    public static Async cache_lookup (GLib.File *file)
+    public static Async? cache_lookup (GLib.File *file)
     {
-        Async cached_dir;
+        Async? cached_dir = null;
 
         if (directory_cache == null) {
             directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.file_hash, GLib.file_equal);
         }
-        
-        cached_dir = directory_cache.lookup (file);
+       
+        if (directory_cache != null)
+            cached_dir = directory_cache.lookup (file);
         if (cached_dir != null)
             debug ("found cached dir %s", cached_dir.file.uri);
 

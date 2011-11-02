@@ -160,6 +160,7 @@ GOFFile         *gof_file_new (GFile *location, GFile *dir);
 
 void            gof_file_update (GOFFile *file);
 void            gof_file_query_update (GOFFile *file);
+gboolean        gof_file_ensure_query_info (GOFFile *file);
 void            gof_file_update_icon (GOFFile *file, gint size);
 void            gof_file_update_trash_info (GOFFile *file);
 void            gof_file_update_emblem (GOFFile *file);

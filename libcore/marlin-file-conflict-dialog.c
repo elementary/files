@@ -33,6 +33,7 @@
 
 #include "gof-file.h"
 #include "nautilus-icon-info.h"
+#include "marlincore.h"
 
 typedef void GOFFileListHandle;
 
@@ -521,7 +522,8 @@ build_dialog_appearance (MarlinFileConflictDialog *fcd)
     files = g_list_prepend (files, details->destination);
     files = g_list_prepend (files, details->dest_dir);
 
-    gof_call_when_ready_new (files, file_list_ready_cb, G_OBJECT (fcd));
+    GOFCallWhenReady *cwr = gof_call_when_ready_new (files, file_list_ready_cb, G_OBJECT (fcd));
+    g_object_unref (cwr);
 
     g_list_free (files);
 }

@@ -98,4 +98,5 @@ void marlincore_tests_goffile(void)
     g_assert_cmpint(file->is_directory, ==, FALSE);
     g_assert_cmpint(file->is_hidden, ==, FALSE);
     g_assert_cmpint(file->size, ==, 0); /* the file is empty since we just create it it */
+
 }

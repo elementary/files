@@ -27,13 +27,13 @@
 
 GMainLoop* loop;
 
-/*static gboolean fatal_handler(const gchar* log_domain,
+static gboolean fatal_handler(const gchar* log_domain,
                               GLogLevelFlags log_level,
                               const gchar* message,
                               gpointer user_data)
 {
     return FALSE;
-}*/
+}
 
 /*static void quit(gpointer data, gpointer data_)
 {
@@ -53,7 +53,16 @@ static void second_load_done(GOFDirectoryAsync* dir, gpointer data)
     g_assert_cmpint(dir->files_count, ==, dir2->files_count);
     g_message ("files_count %u", dir->files_count);
     g_object_unref (dir2);
+
+
+    /* some files testing inside a cached directory */
+    GOFFile *f1 = gof_file_get_by_uri ("file:///tmp/marlin-test/a");
+    g_object_unref (f1);
  
+    GOFFile *f2 = gof_file_get_by_uri ("file:///tmp/marlin-test/a");
+    g_object_unref (f2);
+
+
     /* use a marlin function would show a dialog, FIXME */
     system("rm -rf /tmp/marlin-test");
     /* free previously allocated dir */
@@ -93,7 +102,7 @@ void marlincore_tests_file(void)
 {
     GOFDirectoryAsync* dir;
     GOFDirectoryAsync *dir2;
-    //g_test_log_set_fatal_handler(fatal_handler, NULL); 
+    g_test_log_set_fatal_handler(fatal_handler, NULL); 
     system("rm -rf /tmp/marlin-test");
 
     dir = gof_directory_async_from_gfile(g_file_new_for_path("/tmp/marlin-test"));
