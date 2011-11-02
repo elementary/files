@@ -185,8 +185,8 @@ void gof_file_update (GOFFile *file)
     file->formated_modified = eel_get_date_as_string (file->modified, date_format_pref);
     _g_free0 (date_format_pref);
 
-    //SPOTTED!
-#if 0
+    /* TODO the key-files could be loaded async. 
+    <lazy>The performance gain would not be that great</lazy>*/
     if ((file->is_desktop = gof_file_is_desktop_file (file)))
     {
         /* determine the custom icon and display name for .desktop files */
@@ -246,7 +246,6 @@ void gof_file_update (GOFFile *file)
             g_key_file_free (key_file);
         }
     }
-#endif
 
     if (file->is_directory && !file->is_hidden)
     {
@@ -317,6 +316,22 @@ void gof_file_update (GOFFile *file)
     gof_file_update_emblem (file);
 }
 
+static GdkPixbuf 
+*ensure_pixbuf_from_nicon (GOFFile *file, gint size, NautilusIconInfo *nicon)
+{
+    GdkPixbuf *pix;
+    NautilusIconInfo *temp_nicon;
+
+    pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+    if (pix == NULL) {
+        temp_nicon = gof_file_get_icon (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
+        pix = nautilus_icon_info_get_pixbuf_nodefault (temp_nicon);
+        _g_object_unref0 (temp_nicon);
+    }
+
+    return pix;
+}
+
 /* TODO check this fct we shouldn't store the pixbuf in GOF */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
@@ -333,7 +348,8 @@ void gof_file_update_icon (GOFFile *file, gint size)
 
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
-    file->pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+    /* make sure we always got a non null pixbuf */
+    file->pix = ensure_pixbuf_from_nicon (file, size, nicon);
     _g_object_unref0 (nicon);
 }
 
