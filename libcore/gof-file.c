@@ -189,6 +189,11 @@ void gof_file_update (GOFFile *file)
     <lazy>The performance gain would not be that great</lazy>*/
     if ((file->is_desktop = gof_file_is_desktop_file (file)))
     {
+        /* The following code snippet about desktop files come from Thunar thunar-file.c,
+         * Copyright (c) 2005-2007 Benedikt Meurer <benny@xfce.org>
+         * Copyright (c) 2009-2011 Jannis Pohlmann <jannis@xfce.org> 
+         */
+
         /* determine the custom icon and display name for .desktop files */
 
         /* query a key file for the .desktop file */
