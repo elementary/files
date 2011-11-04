@@ -271,30 +271,15 @@ void gof_file_update (GOFFile *file)
     /* SPOTTED! is that really usefull? */
     file->utf8_collation_key = g_utf8_collate_key (file->name, -1);
 
-    /* get the formated type of thesyminked target */
-    GFile *target_location;
-    //SPOTTED!
-#if 0
-    if (G_UNLIKELY (gof_file_is_symlink (file))) {
-        /* TODO put this in a queue and launch async? */
-        /* TODO check if we can have an infinite loop here link of link of link */
-        const char *target_path = g_file_info_get_symlink_target (file->info);
-        if (!g_path_is_absolute (target_path))
-            target_location = g_file_get_child(file->directory, target_path);
-        else
-            target_location = g_file_new_for_commandline_arg (target_path);
-        //TODO make this async
-        GOFFile *target_file = gof_file_get (target_location);
-        gof_file_update (target_file);
-        file->link_known_target = (target_file->formated_type != NULL);
-        file->formated_type = g_strdup_printf (_("link to %s"), target_file->formated_type);
-        gof_file_unref (target_file);
-    } else {
-#endif
-    if (!gof_file_is_symlink (file)) {
-        //trash doesn t have a ftype
-        if (file->ftype != NULL)
-            file->formated_type = g_content_type_get_description (file->ftype);
+    //trash doesn't have a ftype
+    if (file->ftype != NULL) {
+        gchar *formated_type = g_content_type_get_description (file->ftype);
+        if (G_UNLIKELY (gof_file_is_symlink (file))) {
+            file->formated_type = g_strdup_printf (_("link to %s"), formated_type);
+        } else {
+            file->formated_type = g_strdup (formated_type);
+        }
+        g_free (formated_type);
     }
 
     /* permissions */

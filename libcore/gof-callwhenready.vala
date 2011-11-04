@@ -52,15 +52,6 @@ public class GOF.CallWhenReady : Object
 
         callwhenready_cache.prepend (this);
     }
-    
-    /*public static CallWhenReady for_file (GOF.File gof, call_when_ready_func? _f = null)
-    {
-        GLib.List<GOF.File> list = null;
-
-        list.prepend (gof);
-
-        return new CallWhenReady (list, _f);
-    }*/
 
     private void file_ready (GOF.File gof) {
         gof.update ();
@@ -95,5 +86,36 @@ public class GOF.CallWhenReady : Object
         }
         callwhenready_cache.remove (this);
     }
-    /* --- */
 }
+
+/*public class GOF.CallWhenReadyFile : Object
+{
+    public delegate void call_when_ready_func (GOF.File file);
+    
+    private GOF.File call_when_ready_list = null;
+
+
+    public CallWhenReadyFile (GOF.File file, call_when_ready_func? _f = null)
+    {
+        query_info_async (file, _f);
+        //message ("cwr %s", gof.uri);
+    }
+    
+    private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*";
+
+    private async void query_info_async (GOF.File gof, call_when_ready_func? fqi = null) {
+        try {
+            gof.info = yield gof.location.query_info_async (gio_default_attributes, 
+                                                            FileQueryInfoFlags.NONE, 
+                                                            Priority.DEFAULT);
+            if (fqi != null)
+                fqi (gof);
+        } catch (Error err) {
+            warning ("query info failed, %s %s", err.message, gof.uri);
+            if (err is IOError.NOT_FOUND)
+                gof.exists = false;
+            if (err is IOError.NOT_MOUNTED)
+                gof.is_mounted = false;
+        }
+    }
+}*/

@@ -77,7 +77,6 @@ struct _GOFFile {
     char            *basename;
     const gchar     *ftype;
     gchar           *formated_type;
-    gboolean        link_known_target;
     gchar           *utf8_collation_key;
     guint64         size;
     gchar           *format_size;

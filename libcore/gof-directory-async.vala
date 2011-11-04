@@ -114,7 +114,8 @@ public class GOF.Directory.Async : Object
 
         debug ("list directory %s", file.uri);
         try {
-            var e = yield directory.enumerate_children_async (gio_default_attributes, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, 0, cancellable);
+            //var e = yield directory.enumerate_children_async (gio_default_attributes, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, 0, cancellable);
+            var e = yield directory.enumerate_children_async (gio_default_attributes, 0, 0, cancellable);
             while (true) {
                 var files = yield e.next_files_async (200, 0, cancellable);
                 if (files == null)
