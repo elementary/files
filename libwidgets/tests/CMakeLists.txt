@@ -24,4 +24,4 @@ add_executable(widgets-test ${VALA_C})
 
 link_directories(${DEPS_LIBRARY_DIRS})
 target_link_libraries(widgets-test marlinwidgets ${DEPS_LIBRARIES})
-add_test(widgets widgets-test)
+add_test_executable(widgets-test)
