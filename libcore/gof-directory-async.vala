@@ -98,6 +98,7 @@ public class GOF.Directory.Async : Object
             if (show_hidden_files)
                 foreach (GOF.File gof in hidden_file_hash.get_values ())
                     file_loaded (gof);
+            done_loading ();
         }
 
         //FIXME
@@ -182,6 +183,8 @@ public class GOF.Directory.Async : Object
                 f (gof);
         } catch (Error err) {
             warning ("query info failed, %s %s", err.message, gof.uri);
+            if (err is IOError.NOT_FOUND)
+                gof.exists = false;
         }
     }
 

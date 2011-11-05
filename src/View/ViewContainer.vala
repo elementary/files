@@ -130,11 +130,17 @@ namespace Marlin.View {
                     window.loading_uri (slot.directory.file.uri, window.sidebar);
                 }
                 
-                if (window.contextview != null)
-                    window.contextview.update ();
-
                 Source.remove((uint) file_info_callback);
             });
+        }
+
+        public void directory_done_loading () {
+            if (!slot.directory.file.exists)
+                content = new DirectoryNotFound (slot.directory, this);
+            sync_contextview();
+                
+            if (window.contextview != null)
+                window.contextview.update ();
         }
 
         public void change_view(int nview, GLib.File? location){
@@ -151,28 +157,20 @@ namespace Marlin.View {
             case ViewMode.LIST:
                 slot = new GOF.Window.Slot(location, this);
                 connect_available_info();
-                if (slot.directory.file.exists)
-                    slot.make_list_view();
+                slot.make_list_view();
                 break;
             case ViewMode.MILLER:
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;
                 connect_available_info();
-                if (slot.directory.file.exists)
-                    mwcol.make_view();
+                mwcol.make_view();
                 break;
             default:
                 slot = new GOF.Window.Slot(location, this);
                 connect_available_info();
-                if (slot.directory.file.exists) 
-                    slot.make_icon_view();
+                slot.make_icon_view();
                 break;
             }
-            //SPOTTED!
-            /*if (!slot.directory.file.exists) 
-                content = new DirectoryNotFound (slot.directory, this);*/
-            
-            sync_contextview();
         }
 
         /* TODO save selections in slot or fmdirectoryview and set the ContextView */
@@ -183,7 +181,7 @@ namespace Marlin.View {
                     window.contextview = null;
                 }
                 return;
-            }
+            } 
 
             switch (view_mode) {
             case ViewMode.MILLER:

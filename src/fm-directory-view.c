@@ -318,7 +318,10 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     if (gof_directory_async_is_empty (directory))
         gtk_widget_queue_draw (GTK_WIDGET (view));
 
-    g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
+    /* handle directory not found, contextview */
+    marlin_view_view_container_directory_done_loading (view->details->slot->ctab);
+
+    //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
 }
 
 static void
