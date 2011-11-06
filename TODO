@@ -22,6 +22,7 @@ Various:
 - add drag support to the locationbar, we should be able to move a file by dragging it on the folder names
 ...
 
+
 Check:
 - gof_file_get is unrefed in gof-file.c
 
