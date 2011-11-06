@@ -131,7 +131,6 @@ void    gof_file_changed (GOFFile *file)
 {
     GOFDirectoryAsync *dir;
 
-    //SPOTTED !
     /* get the DirectoryAsync associated to the file */
     dir = gof_directory_async_cache_lookup (file->directory);
     if (dir != NULL) {
@@ -140,7 +139,6 @@ void    gof_file_changed (GOFFile *file)
         
         g_object_unref (dir);
     }
-    //g_message ("file has changed %s", file->uri);
 }
 
 static void 
