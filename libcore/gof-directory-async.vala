@@ -135,12 +135,8 @@ public class GOF.Directory.Async : Object
                     //debug ("file: %s", gof.name);
 
                     add_to_hash_cache (gof);
-                    if (!gof.is_hidden) {
+                    if (!gof.is_hidden || show_hidden_files)
                         file_loaded (gof);
-                    } else {
-                        if (show_hidden_files)
-                            file_loaded (gof);
-                    }
 
                     //mutex.lock ();
                     files_count++;
@@ -190,7 +186,8 @@ public class GOF.Directory.Async : Object
 
     private void changed_and_refresh (GOF.File gof) {
         gof.update ();
-        file_changed (gof);
+        if (!gof.is_hidden || show_hidden_files)
+            file_changed (gof);
     }
 
     private void add_and_refresh (GOF.File gof) {
@@ -198,7 +195,8 @@ public class GOF.Directory.Async : Object
             critical ("FILE INFO null");
         gof.update ();
         add_to_hash_cache (gof);
-        file_added (gof);
+        if (!gof.is_hidden || show_hidden_files)
+            file_added (gof);
     }
     
     private void file_info_available (GOF.File gof) {
@@ -218,7 +216,8 @@ public class GOF.Directory.Async : Object
             break;
         case FileMonitorEvent.DELETED:
             //message ("file deleted %s", gof.uri);
-            file_deleted (gof);
+            if (!gof.is_hidden || show_hidden_files)
+                file_deleted (gof);
             gof.remove_from_caches ();
             break;
         case FileMonitorEvent.CREATED:

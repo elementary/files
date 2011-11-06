@@ -127,6 +127,22 @@ GOFFile    *gof_file_new (GFile *location, GFile *dir)
     return (file);
 }
 
+void    gof_file_changed (GOFFile *file)
+{
+    GOFDirectoryAsync *dir;
+
+    //SPOTTED !
+    /* get the DirectoryAsync associated to the file */
+    dir = gof_directory_async_cache_lookup (file->directory);
+    if (dir != NULL) {
+        if (!file->is_hidden || dir->show_hidden_files)
+            g_signal_emit_by_name (dir, "file_changed", file);
+        
+        g_object_unref (dir);
+    }
+    //g_message ("file has changed %s", file->uri);
+}
+
 static void 
 gof_file_clear_info (GOFFile *file)
 {
@@ -150,7 +166,7 @@ gof_file_clear_info (GOFFile *file)
     _g_free0(file->group);
 }
 
-void gof_file_update (GOFFile *file)
+void    gof_file_update (GOFFile *file)
 {
     GKeyFile *key_file;
     gchar *p;
@@ -362,11 +378,13 @@ void gof_file_update_emblem (GOFFile *file)
           gof_file_add_emblem(file, "emblem-favorite");*/
     }
 
+    /* TODO update signal on real change */
     //g_warning ("update emblem %s", file.uri);
-    gof_monitor_file_changed (file); 
+    if (file->emblems_list != NULL)
+        gof_file_changed (file); 
 }
 
-void gof_file_add_emblem(GOFFile* file, const gchar* emblem)
+void gof_file_add_emblem (GOFFile* file, const gchar* emblem)
 {
     GList* emblems = g_list_first(file->emblems_list);
     while(emblems != NULL)
@@ -376,10 +394,11 @@ void gof_file_add_emblem(GOFFile* file, const gchar* emblem)
         emblems = g_list_next(emblems);
     }
     file->emblems_list = g_list_append(file->emblems_list, (void*)emblem);
+    gof_file_changed (file);
 }
 
 static void
-print_error(GError *error)
+print_error (GError *error)
 {
     if (error != NULL)
     {
@@ -1081,7 +1100,7 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 
     /* notify others of this change, so that all components can update
      * their file information */
-    gof_monitor_file_changed (file);
+    gof_file_changed (file);
 }
 
 GOFFile* gof_file_cache_lookup (GFile *location)

@@ -154,8 +154,8 @@ typedef struct {
 
 GType gof_file_get_type (void);
 
-//GOFFile*        gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir);
 GOFFile         *gof_file_new (GFile *location, GFile *dir);
+void            gof_file_changed (GOFFile *file);
 
 void            gof_file_update (GOFFile *file);
 void            gof_file_query_update (GOFFile *file);
