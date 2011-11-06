@@ -22,7 +22,7 @@ PACKAGES
     gtk+-3.0
     gee-1.0
     marlin-core
-    marlinplugins
+    marlincore
 OPTIONS
     --thread
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
