@@ -143,6 +143,7 @@ public class GOF.Directory.Async : Object
                     //mutex.unlock ();
                 }
             }
+            file.exists = true;
             state = State.LOADED;
         } catch (Error err) {
             warning ("%s %s", err.message, file.uri);
