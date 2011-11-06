@@ -27,7 +27,6 @@
 #include "eel-string.h"
 #include "eel-gio-extensions.h"
 #include "eel-string.h"
-#include "gof-monitor.h"
 #include "marlin-exec.h"
 #include "marlin-icons.h"
 #include "marlincore.h"

@@ -58,7 +58,6 @@ install (FILES
     eel-vfs-extensions.h
     gof-abstract-slot.h
     gof-file.h
-    gof-monitor.h
     marlin-exec.h
     marlin-file-conflict-dialog.h
     marlin-file-operations.h
@@ -125,7 +124,6 @@ add_library (${PKGNAME} SHARED
     marlin-exec.c
     gof-abstract-slot.c
     gof-file.c
-    gof-monitor.c
     nautilus-icon-info.c
     nautilus-cell-renderer-text-ellipsized.c
     marlin-trash-monitor.c
@@ -157,7 +155,6 @@ add_library(${PKGNAME}-static STATIC
     marlin-exec.c
     gof-abstract-slot.c
     gof-file.c
-    gof-monitor.c
     nautilus-icon-info.c
     nautilus-cell-renderer-text-ellipsized.c
     marlin-trash-monitor.c
