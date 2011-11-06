@@ -84,7 +84,7 @@ public class GOF.Directory.Async : Object
             try {
                 monitor = location.monitor_directory (0);
             } catch (IOError e) {
-                error ("directory monitor failed: %s %s", e.message, file.uri);
+                warning ("directory monitor failed: %s %s", e.message, file.uri);
             }
             monitor.changed.connect (directory_changed);        
         } else {
