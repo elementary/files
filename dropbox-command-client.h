@@ -24,7 +24,7 @@
 #ifndef DROPBOX_COMMAND_CLIENT_H
 #define DROPBOX_COMMAND_CLIENT_H
 
-#include <marlinplugins.h>
+#include <marlincore.h>
 #include <gof-file.h>
 
 G_BEGIN_DECLS

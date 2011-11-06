@@ -20,7 +20,7 @@
 
 #include <glib.h>
 #include <glib-object.h>
-#include <marlinplugins.h>
+#include <marlincore.h>
 //#include <dbus/dbus-glib.h>
 
 #include "dropbox-command-client.h"
