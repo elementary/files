@@ -33,7 +33,7 @@
 #include "marlin-clipboard-manager.h"
 #include "marlin-thumbnailer.h"
 #include "marlin-tags.h"
-#include "marlinplugins.h"
+#include "marlincore.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>

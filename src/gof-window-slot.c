@@ -22,6 +22,7 @@
 #include "fm-list-view.h"
 #include "fm-columns-view.h"
 #include "marlin-view-window.h"
+#include "marlin-global-preferences.h"
 
 static void gof_window_slot_init       (GOFWindowSlot *slot);
 static void gof_window_slot_class_init (GOFWindowSlotClass *class);
@@ -144,7 +145,8 @@ gof_window_slot_new (GFile *location, GtkEventBox *ctab)
     slot->location = g_object_ref (location);
     slot->ctab = ctab;
 
-    slot->directory = gof_directory_async_new_from_gfile (slot->location);
+    slot->directory = gof_directory_async_from_gfile (slot->location);
+    slot->directory->show_hidden_files = g_settings_get_boolean (settings, "show-hiddenfiles");
     g_debug ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
 
     return slot;

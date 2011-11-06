@@ -79,6 +79,7 @@ namespace Marlin.View {
                 change_css_class ();
                 /* reset pane position to original values */
                 window.main_box.set_position (window.main_box.max_position - panel_size);
+                //SPOTTED!
                 update(last_selection);
             }
             get{
@@ -229,7 +230,7 @@ namespace Marlin.View {
                 window.main_box.set_position (window.main_box.max_position - icon_size_req);*/
         }
 
-        public void update(GLib.List<GOF.File> selection){
+        public void update(GLib.List<GOF.File>? selection = null) {
             if (selection != null && selection.data != null) {
                 last_gof = selection.data as GOF.File;
                 last_selection = selection;
@@ -242,7 +243,11 @@ namespace Marlin.View {
             }
             if (last_gof == null)
                 return;
+            if (last_gof.info == null)
+                return;
 
+            //SPOTTED!
+            //critical ("ctx pane update");
             var file_info = last_gof.info;
 
             /* don't update icon if we are in column view as the preview pane is 

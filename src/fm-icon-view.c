@@ -450,7 +450,7 @@ static gboolean fm_icon_view_draw(GtkWidget* view_, cairo_t* cr, FMIconView* vie
 
     GOFDirectoryAsync *dir = fm_directory_view_get_current_directory (FM_DIRECTORY_VIEW (view));
 
-    if (gof_directory_is_empty (dir))
+    if (gof_directory_async_is_empty (dir))
     {
         PangoLayout* layout = gtk_widget_create_pango_layout(GTK_WIDGET(view), NULL);
         gchar *str = g_strconcat("<span size='x-large'>", _("This folder is empty."), "</span>", NULL);

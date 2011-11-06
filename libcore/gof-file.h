@@ -66,8 +66,6 @@ typedef struct _GOFFileClass GOFFileClass;
 struct _GOFFile {
     GObject parent_instance;
     //GOFFilePrivate * priv;
-    /*gboolean selected;
-      gboolean parent_directory_link;*/
 
     GFileInfo       *info;
     GFile           *location;
@@ -79,7 +77,6 @@ struct _GOFFile {
     char            *basename;
     const gchar     *ftype;
     gchar           *formated_type;
-    gboolean        link_known_target;
     gchar           *utf8_collation_key;
     guint64         size;
     gchar           *format_size;
@@ -120,6 +117,7 @@ struct _GOFFileClass {
 
     /* Called when the file notices any change. */
     //void            (* changed)             (GOFFile *file);
+    void            (* info_available)      (GOFFile *file);
     void            (* destroy)             (GOFFile *file);
 
 };
@@ -156,11 +154,12 @@ typedef struct {
 
 GType gof_file_get_type (void);
 
-//GOFFile*        gof_file_new (GFileInfo* file_info, GFile *location, GFile *dir);
 GOFFile         *gof_file_new (GFile *location, GFile *dir);
+void            gof_file_changed (GOFFile *file);
 
 void            gof_file_update (GOFFile *file);
 void            gof_file_query_update (GOFFile *file);
+gboolean        gof_file_ensure_query_info (GOFFile *file);
 void            gof_file_update_icon (GOFFile *file, gint size);
 void            gof_file_update_trash_info (GOFFile *file);
 void            gof_file_update_emblem (GOFFile *file);
@@ -168,7 +167,8 @@ void            gof_file_update_emblem (GOFFile *file);
 GOFFile*        gof_file_get (GFile *location);
 GOFFile*        gof_file_get_by_uri (const char *uri);
 GOFFile*        gof_file_get_by_commandline_arg (const char *arg);
-GFileInfo*      gof_file_get_file_info (GOFFile* self);
+GOFFile*        gof_file_cache_lookup (GFile *location);
+void            gof_file_remove_from_caches (GOFFile *file);
 
 int             gof_file_compare_for_sort (GOFFile *file_1,
                                            GOFFile *file_2,
@@ -189,7 +189,7 @@ gboolean        gof_file_is_trashed (GOFFile *file);
 const gchar     *gof_file_get_symlink_target (GOFFile *file);
 gchar           *gof_file_get_formated_time (GOFFile *file, const char *attr);
 gboolean        gof_file_is_symlink (GOFFile *file);
-gboolean        gof_file_is_desktop_file (const GOFFile *file);
+gboolean        gof_file_is_desktop_file (GOFFile *file);
 gchar           *gof_file_list_to_string (GList *list, gsize *len);
 
 gboolean        gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b);
@@ -202,7 +202,7 @@ gboolean        gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInf
 gboolean        gof_files_launch_with (GList *files, GdkScreen *screen, GAppInfo* app_info);
 gboolean        gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error);
 gboolean        gof_file_launch (GOFFile  *file, GdkScreen *screen);
-GAppInfo        *gof_file_get_default_handler (const GOFFile *file);
+GAppInfo        *gof_file_get_default_handler (GOFFile *file);
 
 void            gof_file_rename (GOFFile *file,
                                  const char *new_name,

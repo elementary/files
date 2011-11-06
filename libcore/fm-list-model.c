@@ -23,18 +23,11 @@
 */
 
 #include <config.h>
-//#include <libegg/eggtreemultidnd.h>
 
 #include <string.h>
-/*#include <eel/eel-gtk-macros.h>
-#include <eel/eel-glib-extensions.h>
-#include <eel/eel-gdk-pixbuf-extensions.h>*/
 #include <gtk/gtk.h>
 #include <glib.h>
-//#include <glib/gi18n.h>
-//#include <libnautilus-private/nautilus-dnd.h>
 #include "fm-list-model.h"
-//#include "marlin-tags.h"
 
 enum {
     SUBDIRECTORY_UNLOADED,
@@ -66,7 +59,6 @@ static int      fm_list_model_file_entry_compare_func (gconstpointer a,
 static void     fm_list_model_tree_model_init (GtkTreeModelIface *iface);
 static void     fm_list_model_drag_dest_init (GtkTreeDragDestIface *iface);
 static void     fm_list_model_sortable_init (GtkTreeSortableIface *iface);
-//static void fm_list_model_multi_drag_source_init (EggTreeMultiDragSourceIface *iface);
 
 struct FMListModelDetails {
     GSequence *files;
@@ -82,18 +74,8 @@ struct FMListModelDetails {
 
     gboolean sort_directories_first;
 
-    /*GtkTreeView *drag_view;
-      int drag_begin_x;
-      int drag_begin_y;*/
-
     //GPtrArray *columns;
 };
-
-/*typedef struct {
-  FMListModel *model;
-
-  GList *path_list;
-  } DragDataGetInfo;*/
 
 typedef struct FileEntry FileEntry;
 
@@ -115,15 +97,6 @@ G_DEFINE_TYPE_WITH_CODE (FMListModel, fm_list_model, G_TYPE_OBJECT,
     G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_DRAG_DEST, fm_list_model_drag_dest_init)
     G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_SORTABLE, fm_list_model_sortable_init))
 
-/*			 G_IMPLEMENT_INTERFACE (EGG_TYPE_TREE_MULTI_DRAG_SOURCE,
-                         fm_list_model_multi_drag_source_init));*/
-
-/*static const GtkTargetEntry drag_types [] = {
-  { NAUTILUS_ICON_DND_GNOME_ICON_LIST_TYPE, 0, NAUTILUS_ICON_DND_GNOME_ICON_LIST },
-  { NAUTILUS_ICON_DND_URI_LIST_TYPE, 0, NAUTILUS_ICON_DND_URI_LIST },
-  };*/
-
-//static GtkTargetList *drag_target_list = NULL;
 
 static void
 file_entry_free (FileEntry *file_entry)
@@ -280,7 +253,6 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
     FMListModel *model;
     FileEntry *file_entry;
     GOFFile *file;
-    //char *str;
     //GdkPixbuf *icon;
     //GdkPixbuf *pix;
     //int icon_size;
@@ -1035,6 +1007,8 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     files = model->details->files;
     parent_hash = model->details->top_reverse_map;
 
+//SPOTTED!
+//#if 0
     replace_dummy = FALSE;
 
     if (parent_ptr != NULL) {
@@ -1059,12 +1033,13 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
             }
         }
     }
-
+//#endif
     file_entry->ptr = g_sequence_insert_sorted (files, file_entry,
                                                 fm_list_model_file_entry_compare_func, model);
 
     g_hash_table_insert (parent_hash, file, file_entry->ptr);
 
+//#if 0
     iter.stamp = model->details->stamp;
     iter.user_data = file_entry->ptr;
 
@@ -1085,15 +1060,9 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     }
     gtk_tree_path_free (path);
 
-    //TODO check mem alloc
-    char *uri = g_file_get_uri(file->location);
-    //file->color = tags_colors[marlin_view_tags_get_color (tags, uri, NULL)];
-    //tags_colors[marlin_view_tags_get_color (tags, uri, file, NULL)];
-    //marlin_view_tags_get_color (tags, uri, file, NULL, NULL);
-    g_free (uri);
-
     //file_entry_free (file_entry);
     //g_object_unref(file);
+//#endif
 
     return TRUE;
 }
@@ -1360,7 +1329,7 @@ fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirec
         return FALSE;
     }
 
-    file_entry->subdirectory = gof_directory_async_new_from_file (file_entry->file);
+    file_entry->subdirectory = gof_directory_async_from_file (file_entry->file);
 
     /* FIXME not sure the hash lookup is really needed gof_driectory_async_get_for_file is a always a new object */
     if (g_hash_table_lookup (model->details->directory_reverse_map,
@@ -1755,7 +1724,7 @@ fm_list_model_class_init (FMListModelClass *klass)
                       NULL, NULL,
                       g_cclosure_marshal_VOID__OBJECT,
                       G_TYPE_NONE, 1,
-                      GOF_TYPE_DIRECTORY_ASYNC);
+                      GOF_DIRECTORY_TYPE_ASYNC);
 }
 
 static void

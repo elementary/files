@@ -17,8 +17,8 @@ namespace FM
 {
     public class ListModel : Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.TreeSortable
     {
-        public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
-        public void add_file(GOF.File file, GOF.Directory.Async dir);
+        /*public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
+        public void add_file(GOF.File file, GOF.Directory.Async dir);*/
         public GOF.File file_for_path(Gtk.TreePath path);
     }
 }
@@ -104,27 +104,30 @@ namespace GOF {
     public class File : GLib.Object {
         public File(GLib.File location, GLib.File dir);
         public static File get(GLib.File location);
-        public bool launch_with(Gdk.Screen screen, AppInfo app);
+        public static File cache_lookup (GLib.File file);
+        public void remove_from_caches ();
         public GLib.File location;
         public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;
         public GLib.FileInfo? info;
-        public string name;
+        public unowned string name;
+        public string basename;
         public string uri;
         public uint64 size;
         public string format_size;
         public string color;
         public string formated_modified;
         public string formated_type;
-        public string ftype;
+        public unowned string ftype;
         public Gdk.Pixbuf pix;
-        public string trash_orig_path;
+        public unowned string trash_orig_path;
 
+        public bool is_hidden;
         public bool is_directory;
         public bool is_symlink();
         public bool is_trashed();
         public bool link_known_target;
-        public string thumbnail_path;
+        public unowned string thumbnail_path;
         public uint flags;
         public string get_formated_time (string attr);
         public Nautilus.IconInfo get_icon (int size, FileIconFlags flags);
@@ -140,15 +143,20 @@ namespace GOF {
         public bool has_permissions;
         public uint32 permissions;
 
+        public void update ();
         public void update_icon (int size);
         public bool can_set_owner ();
         public bool can_set_group ();
         public bool can_set_permissions ();
         public string get_permissions_as_string ();
+        public bool launch_with(Gdk.Screen screen, AppInfo app);
 
         public GLib.List? get_settable_group_names ();
+            
+        public signal void info_available ();
     }
 
+    /*
     [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]
     namespace Directory {
         [CCode (cheader_filename = "gof-directory-async.h")]
@@ -178,7 +186,7 @@ namespace GOF {
             public signal void done_loading ();
             public signal void info_available ();
         }
-    }
+    }*/
     [CCode (cheader_filename = "gof-file.h")]
     public enum FileIconFlags
     {

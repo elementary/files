@@ -39,10 +39,10 @@ namespace Marlin.View {
                 yield tags.setColor(uri, n);
         }
 
-        public async void get_color (string uri, GOF.File myfile) throws IOError {
+        public async void get_color (GOF.File myfile) throws IOError {
             if (myfile == null) 
                 return;
-            int n = yield tags.getColor(uri);
+            int n = yield tags.getColor(myfile.uri);
             myfile.color = Preferences.tags_colors[n];            
         }
 

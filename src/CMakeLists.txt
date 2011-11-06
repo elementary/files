@@ -62,7 +62,7 @@ vala_precompile(VALA_C
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_SOURCE_DIR}/../libcore/marlin-core.vapi
     ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
-    ${CMAKE_CURRENT_BINARY_DIR}/../libcore/marlinplugins.vapi
+    ${CMAKE_CURRENT_BINARY_DIR}/../libcore/marlincore.vapi
     marlin.vapi
 PACKAGES
     gtk+-3.0

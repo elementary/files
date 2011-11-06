@@ -118,7 +118,7 @@ namespace Marlin.View {
         }
 
         private void connect_available_info() {
-            file_info_callback = slot.directory.info_available.connect(() => {
+            file_info_callback = slot.directory.file.info_available.connect((gof) => {
                 if (slot.location.get_path () == Environment.get_home_dir ())
                     tab_name = _("Home");
                 else if (slot.location.get_path () == "/")
@@ -129,9 +129,18 @@ namespace Marlin.View {
                     window.set_title(tab_name);
                     window.loading_uri (slot.directory.file.uri, window.sidebar);
                 }
-
+                
                 Source.remove((uint) file_info_callback);
             });
+        }
+
+        public void directory_done_loading () {
+            if (!slot.directory.file.exists)
+                content = new DirectoryNotFound (slot.directory, this);
+            sync_contextview();
+                
+            if (window.contextview != null)
+                window.contextview.update ();
         }
 
         public void change_view(int nview, GLib.File? location){
@@ -148,27 +157,20 @@ namespace Marlin.View {
             case ViewMode.LIST:
                 slot = new GOF.Window.Slot(location, this);
                 connect_available_info();
-                if (slot.directory.file.exists)
-                    slot.make_list_view();
+                slot.make_list_view();
                 break;
             case ViewMode.MILLER:
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;
                 connect_available_info();
-                if (slot.directory.file.exists)
-                    mwcol.make_view();
+                mwcol.make_view();
                 break;
             default:
                 slot = new GOF.Window.Slot(location, this);
                 connect_available_info();
-                if (slot.directory.file.exists) 
-                    slot.make_icon_view();
+                slot.make_icon_view();
                 break;
             }
-            if (!slot.directory.file.exists) 
-                content = new DirectoryNotFound (slot.directory, this);
-            
-            sync_contextview();
         }
 
         /* TODO save selections in slot or fmdirectoryview and set the ContextView */
@@ -179,7 +181,7 @@ namespace Marlin.View {
                     window.contextview = null;
                 }
                 return;
-            }
+            } 
 
             switch (view_mode) {
             case ViewMode.MILLER:
@@ -201,7 +203,7 @@ namespace Marlin.View {
                     window.contextview = new ContextView(window, true, window.main_box.orientation);
                     
                     window.main_box.notify.connect((prop) => {
-                        if(prop.name == "orientation")
+                        if(window.contextview != null && prop.name == "orientation")
                             window.contextview.parent_orientation = window.main_box.orientation;
                     });
                     window.main_box.pack2(window.contextview, false, true);

@@ -260,7 +260,8 @@ namespace Marlin.View.Chrome
             {
                 debug ("gof dir load path %s", path);
                 var directory = File.new_for_path(path);
-                files = new GOF.Directory.Async.from_gfile(directory);
+                //files = new GOF.Directory.Async.from_gfile(directory);
+                files = GOF.Directory.Async.from_gfile(directory);
                 if(files.file.exists)
                 {
                     if(files.load())
@@ -333,7 +334,8 @@ namespace Marlin.View.Chrome
             menu = new Menu();
             /* FIXME new_for_path ?? we got to work with uris */
             var directory = File.new_for_path(current_right_click_root);
-            files_menu = new GOF.Directory.Async.from_gfile (directory);
+            //files_menu = new GOF.Directory.Async.from_gfile (directory);
+            files_menu = GOF.Directory.Async.from_gfile (directory);
             if (files_menu.load())
                 files_menu.file_loaded.connect(on_file_loaded_menu);
             else

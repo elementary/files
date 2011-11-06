@@ -1,0 +1,121 @@
+/*  
+ * Copyright (C) 2011 Elementary Developers
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Author: ammonkey <am.monkeyd@gmail.com>
+ */
+
+using GLib;
+
+GLib.List<GOF.CallWhenReady>? callwhenready_cache = null;
+
+public class GOF.CallWhenReady : Object
+{
+    public delegate void call_when_ready_func (GLib.List<GOF.File>files);
+    
+    public GLib.List<GOF.File> files;
+    private unowned call_when_ready_func? f;
+    private GLib.List<GOF.File>? call_when_ready_list = null;
+
+
+    public CallWhenReady (GLib.List<GOF.File> _files, call_when_ready_func? _f = null)
+    {
+        files = _files.copy ();
+        f = _f;
+
+        int count = 0;
+        foreach (GOF.File gof in files) {
+            if (gof.info == null || gof.name == null) {
+                call_when_ready_list.prepend (gof);
+                query_info_async (gof, file_ready);
+                //message ("cwr %s", gof.uri);
+            } else {
+                count++;
+            }
+        }
+
+        /* we didn't need to queue anything, all the infos were available */
+        if (count > 0 && count == files.length () && f != null)
+            f (files);
+
+        callwhenready_cache.prepend (this);
+    }
+
+    private void file_ready (GOF.File gof) {
+        gof.update ();
+        //message ("file ready %s %s", gof.uri, gof.ftype);
+    }
+
+    /* TODO move this to GOF.File */
+    private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*";
+
+    private delegate void func_query_info (GOF.File gof);
+
+    private async void query_info_async (GOF.File gof, func_query_info? fqi = null) {
+        try {
+            gof.info = yield gof.location.query_info_async (gio_default_attributes, 
+                                                            FileQueryInfoFlags.NONE, 
+                                                            Priority.DEFAULT);
+            if (fqi != null)
+                fqi (gof);
+        } catch (Error err) {
+            warning ("query info failed, %s %s", err.message, gof.uri);
+            if (err is IOError.NOT_FOUND)
+                gof.exists = false;
+            if (err is IOError.NOT_MOUNTED)
+                gof.is_mounted = false;
+        }
+         
+        call_when_ready_list.remove (gof);
+        if (call_when_ready_list == null) {
+            message ("call when ready OK - empty list");
+            if (f != null)
+                f (files);
+        }
+        callwhenready_cache.remove (this);
+    }
+}
+
+/*public class GOF.CallWhenReadyFile : Object
+{
+    public delegate void call_when_ready_func (GOF.File file);
+    
+    private GOF.File call_when_ready_list = null;
+
+
+    public CallWhenReadyFile (GOF.File file, call_when_ready_func? _f = null)
+    {
+        query_info_async (file, _f);
+        //message ("cwr %s", gof.uri);
+    }
+    
+    private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*";
+
+    private async void query_info_async (GOF.File gof, call_when_ready_func? fqi = null) {
+        try {
+            gof.info = yield gof.location.query_info_async (gio_default_attributes, 
+                                                            FileQueryInfoFlags.NONE, 
+                                                            Priority.DEFAULT);
+            if (fqi != null)
+                fqi (gof);
+        } catch (Error err) {
+            warning ("query info failed, %s %s", err.message, gof.uri);
+            if (err is IOError.NOT_FOUND)
+                gof.exists = false;
+            if (err is IOError.NOT_MOUNTED)
+                gof.is_mounted = false;
+        }
+    }
+}*/

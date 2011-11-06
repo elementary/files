@@ -33,6 +33,7 @@
 
 #include "gof-file.h"
 #include "nautilus-icon-info.h"
+#include "marlincore.h"
 
 typedef void GOFFileListHandle;
 
@@ -322,10 +323,9 @@ file_list_ready_cb (GList *files,
 #endif
 
 static void
-file_list_ready_cb (GList *files,
-                    gpointer user_data)
+file_list_ready_cb (GList *files, gpointer user_data)
 {
-    MarlinFileConflictDialog *fcd = user_data;
+    MarlinFileConflictDialog *fcd = MARLIN_FILE_CONFLICT_DIALOG (user_data);
     GOFFile *src, *dest, *dest_dir;
     GtkDialog *dialog;
     gboolean should_show_type;
@@ -522,11 +522,9 @@ build_dialog_appearance (MarlinFileConflictDialog *fcd)
     files = g_list_prepend (files, details->destination);
     files = g_list_prepend (files, details->dest_dir);
 
-    //TODO
-    /*marlin_file_list_call_when_ready (files,
-      MARLIN_FILE_ATTRIBUTES_FOR_ICON,
-      &details->handle, file_list_ready_cb, fcd);*/
-    file_list_ready_cb(files, fcd);
+    GOFCallWhenReady *cwr = gof_call_when_ready_new (files, file_list_ready_cb, G_OBJECT (fcd));
+    g_object_unref (cwr);
+
     g_list_free (files);
 }
 

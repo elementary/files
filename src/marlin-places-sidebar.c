@@ -41,7 +41,7 @@
 #include "marlin-bookmark.h"
 #include "marlin-trash-monitor.h"
 #include "marlin-dnd.h"
-#include "marlinplugins.h"
+#include "marlincore.h"
 
 #define EJECT_BUTTON_XPAD 4
 #define TEXT_XPAD 5
@@ -325,7 +325,6 @@ update_places (MarlinPlacesSidebar *sidebar)
     g_free (mount_uri);
 
     /* add bookmarks */
-
     bookmark_count = marlin_bookmark_list_length (sidebar->bookmarks);
     for (index = 0; index < bookmark_count; index++) {
         bookmark = marlin_bookmark_list_item_at (sidebar->bookmarks, index);
@@ -1151,8 +1150,9 @@ drag_motion_callback (GtkTreeView *tree_view,
                 //TODO use GOFFILE instead of uri
                 if (uri != NULL) {
                     GOFFile *file = gof_file_get_by_uri (uri);
-                    printf ("%s %s\n", G_STRFUNC, file->uri);
-                    gof_file_accepts_drop (file, sidebar->drag_list, context, &action);
+                    //g_message ("%s %s\n", G_STRFUNC, file->uri);
+                    if (gof_file_ensure_query_info (file))
+                        gof_file_accepts_drop (file, sidebar->drag_list, context, &action);
                     g_object_unref (file);
                     g_free (uri);
                 }
@@ -3153,7 +3153,7 @@ marlin_places_sidebar_set_parent_window (MarlinPlacesSidebar *sidebar,
 
     sidebar->window = window;
 
-    sidebar->bookmarks = marlin_bookmark_list_new (); /* TODO: remove */
+    sidebar->bookmarks = marlin_bookmark_list_new (); 
     g_signal_connect_object (sidebar->bookmarks, "contents_changed",
                              G_CALLBACK (update_places),
                              sidebar, G_CONNECT_SWAPPED);
