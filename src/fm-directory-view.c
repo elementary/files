@@ -251,31 +251,6 @@ fm_directory_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAs
     marlin_view_tags_get_color (tags, file, NULL, NULL);
 }
 
-
-void
-fm_directory_view_load_file_hash (GOFDirectoryAsync *dir, FMDirectoryView *view)
-{
-    /* TODO this should be threaded */
-    GHashTableIter iter;
-    GFile *location;
-    GOFFile *file;
-
-    g_hash_table_iter_init (&iter, dir->file_hash);
-    while (g_hash_table_iter_next (&iter, (gpointer) &location, (gpointer) &file))
-    {
-        g_signal_emit (view, signals[ADD_FILE], 0, file, dir);
-    }
-
-    if (g_settings_get_boolean (settings, "show-hiddenfiles"))
-    {
-        g_hash_table_iter_init (&iter, dir->hidden_file_hash);
-        while (g_hash_table_iter_next (&iter, (gpointer) &location, (gpointer) &file))
-        {
-            g_signal_emit (view, signals[ADD_FILE], 0, file, dir);
-        }
-    }
-}
-
 static void
 file_loaded_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
@@ -317,6 +292,9 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     /* Apparently we need a queue_draw sometimes, the view is not refreshed until an event */
     if (gof_directory_async_is_empty (directory))
         gtk_widget_queue_draw (GTK_WIDGET (view));
+
+    /* disconnect the file_loaded signal once directory loaded */
+    g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
 
     /* handle directory not found, contextview */
     marlin_view_view_container_directory_done_loading (view->details->slot->ctab);
@@ -511,6 +489,7 @@ fm_directory_view_dispose (GObject *object)
 static void
 fm_directory_view_finalize (GObject *object)
 {
+    //g_warning ("%s", G_STRFUNC);
     FMDirectoryView *view = FM_DIRECTORY_VIEW (object);
 
     GOFWindowSlot *slot = view->details->slot;

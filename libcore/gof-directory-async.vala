@@ -300,6 +300,7 @@ public class GOF.Directory.Async : Object
         if (hidden_file_hash != null)
             hidden_file_hash_count = hidden_file_hash.size ();
 
+        //debug ("is_empty hash sizes file: %u  hidden: %u", file_hash_count, hidden_file_hash_count);
         if (state == State.LOADED && file_hash_count == 0 && hidden_file_hash_count == 0)
             return true;
 

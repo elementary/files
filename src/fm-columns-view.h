@@ -42,7 +42,7 @@ G_BEGIN_DECLS
 typedef struct FMColumnsViewDetails FMColumnsViewDetails;
 
 typedef struct {
-    FMDirectoryViewClass parent_instance;
+    FMDirectoryViewClass    parent_instance;
     GtkTreeView             *tree;
     FMListModel             *model;
     MarlinZoomLevel         zoom_level;
@@ -51,7 +51,7 @@ typedef struct {
 } FMColumnsView;
 
 typedef struct {
-    FMDirectoryViewClass parent_class;
+    FMDirectoryViewClass    parent_class;
 } FMColumnsViewClass;
 
 GType fm_columns_view_get_type (void);
