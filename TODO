@@ -11,10 +11,8 @@ Hotlist:
 - fix copy into bug since there s no ctrl+v shortcut for it (breadcrumbs regressions).
 - update freespace diskrenderers in sidebar: make a simple timer and update the information at the application level for a determined time delay, and maybe after some specifics files operations ?
 - use an overlay statusbar when ContextPane is off
-- fix the breadcrumbs for uri navigation (regressions)
 - store typechecks in db together with last edited date
 - don't store thumbs with normal icons in the cache.
-- sometimes marlin first launch is hanging, cut out all the non essential stuff (plugins marlin-daemon etc...) and check performances elements by elements.
 
 Various:
 - change focus in the icon view: draw focus only via the text renderer
