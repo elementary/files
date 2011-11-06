@@ -409,7 +409,6 @@ gboolean gof_file_query_info (GOFFile *file)
 {
     GError *err = NULL;
 
-    /* FIXME must be async */
     //printf ("!!!!!!!!!!!!file_query_info %s\n", g_file_get_uri (file->location));
     file->info = g_file_query_info (file->location, GOF_GIO_DEFAULT_ATTRIBUTES,
                                     0, NULL, &err);
