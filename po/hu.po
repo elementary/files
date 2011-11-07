@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-09-16 14:42+0000\n"
-"Last-Translator: Robert Roth <evfool@gmail.com>\n"
+"PO-Revision-Date: 2011-11-06 13:33+0000\n"
+"Last-Translator: Richard Somlói <ricsipontaz@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-09-17 05:20+0000\n"
-"X-Generator: Launchpad (build 13955)\n"
+"X-Launchpad-Export-Date: 2011-11-07 05:55+0000\n"
+"X-Generator: Launchpad (build 14231)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -68,7 +68,7 @@ msgstr "%s mappa létrehozása"
 #: /home/xapantu/marlin/po/../src/View/LocationBar.vala:959
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "Ugrás ide: %s"
 
 #: /home/xapantu/marlin/po/../src/View/ViewContainer.vala:116
 #: /home/xapantu/marlin/po/../src/marlin-places-sidebar.c:330
@@ -81,6 +81,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Erno Horvath https://launchpad.net/~szerencsefia\n"
 "  ManDressedMoose https://launchpad.net/~elod83\n"
+"  Richard Somlói https://launchpad.net/~ricsipontaz\n"
 "  Robert Roth https://launchpad.net/~evfool\n"
 "  xapantu https://launchpad.net/~xapantu"
 
@@ -330,7 +331,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:921
 msgid "Item Padding"
-msgstr ""
+msgstr "Elem térköze"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:922
 msgid "Padding around icon view items"
@@ -342,7 +343,7 @@ msgstr "Cellaterület"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:940
 msgid "The GtkCellArea used to layout cells"
-msgstr ""
+msgstr "A cellák elrendezéséhez használt GtkCellArea"
 
 #: /home/xapantu/marlin/po/../src/exo-icon-view.c:953
 msgid "Selection Box Color"
@@ -477,11 +478,11 @@ msgstr "Kurzorpozíció"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:376
 msgid "The current position of the insertion cursor in chars."
-msgstr ""
+msgstr "A beszúrási kurzor jelenlegi helyzete karakterben mérve."
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:385
 msgid "Selection Bound"
-msgstr ""
+msgstr "Kijelölés mérete"
 
 #: /home/xapantu/marlin/po/../src/eel-editable-label.c:386
 msgid ""
