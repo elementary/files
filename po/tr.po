@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-08-11 12:20+0200\n"
-"PO-Revision-Date: 2011-10-24 07:16+0000\n"
+"PO-Revision-Date: 2011-11-08 21:26+0000\n"
 "Last-Translator: Fatih Dayioglu <fatihdy@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-10-25 04:58+0000\n"
-"X-Generator: Launchpad (build 14185)\n"
+"X-Launchpad-Export-Date: 2011-11-09 05:10+0000\n"
+"X-Generator: Launchpad (build 14263)\n"
 
 #: /home/xapantu/marlin/po/../src/View/PopupLocationBar.vala:156
 msgid "(no result found)"
@@ -44,7 +44,7 @@ msgstr "Değiştirildi"
 
 #: /home/xapantu/marlin/po/../src/View/ContextView.vala:264
 msgid "Owner"
-msgstr ""
+msgstr "Sahibi"
 
 #: /home/xapantu/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -113,7 +113,7 @@ msgstr "büyük"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "extra-large"
-msgstr ""
+msgstr "çok büyük"
 
 #: /home/xapantu/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "Sidebar icon size:"
@@ -1321,7 +1321,7 @@ msgstr ""
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5387
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "Sembolik bağlar sadece yerel dosyalar için desteklenir"
 
 #: /home/xapantu/marlin/po/../libcore/marlin-file-operations.c:5390
 msgid "The target doesn't support symbolic links."
