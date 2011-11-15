@@ -61,6 +61,8 @@ void          marlin_progress_info_cancel          (MarlinProgressInfo *info);
 gboolean      marlin_progress_info_get_is_started  (MarlinProgressInfo *info);
 gboolean      marlin_progress_info_get_is_finished (MarlinProgressInfo *info);
 gboolean      marlin_progress_info_get_is_paused   (MarlinProgressInfo *info);
+double        marlin_progress_info_get_current     (MarlinProgressInfo *info);
+double        marlin_progress_info_get_total       (MarlinProgressInfo *info);
 
 void          marlin_progress_info_start           (MarlinProgressInfo *info);
 void          marlin_progress_info_finish          (MarlinProgressInfo *info);

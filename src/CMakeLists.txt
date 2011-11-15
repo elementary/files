@@ -33,6 +33,7 @@ set(CFLAGS
 set(LIB_PATHS
 	${DEPS_LIBRARY_DIRS}
 )
+
 link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS}
     "-DGETTEXT_PACKAGE=\"marlin\""
@@ -104,8 +105,19 @@ add_executable(marlin
     marlin-progress-ui-handler.c
     marlin-progress-info-widget.c
     ${VALA_C} )
+
 add_definitions("-DPLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/marlin/plugins/\"")
 target_link_libraries(marlin marlincore marlinwidgets ${DEPS_LIBRARIES})
+
+OPTION(WITH_UNITY "Add Unity launcher support" ON)
+pkg_check_modules(UNITY unity>=4.0.0)
+
+IF(WITH_UNITY AND UNITY_FOUND)
+    include_directories(${UNITY_INCLUDE_DIRS})
+    target_link_libraries (marlin marlincore marlinwidgets ${UNITY_LIBRARIES})
+    add_definitions("-DHAVE_UNITY=1")
+ENDIF(WITH_UNITY AND UNITY_FOUND)
+
 install(TARGETS marlin RUNTIME DESTINATION bin)
 install(FILES marlin-ui.xml DESTINATION share/marlin/ui/)
 install(FILES fm-directory-view-ui.xml DESTINATION share/marlin/ui/)

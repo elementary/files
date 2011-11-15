@@ -20,6 +20,7 @@
  *
  * Authors: Alexander Larsson <alexl@redhat.com>
  *          Cosimo Cecchi <cosimoc@redhat.com>
+ *          Marco Trevisan <3v1n0@ubuntu.com>
  *
  */
 
@@ -36,6 +37,10 @@
 
 #include <libnotify/notify.h>
 
+#ifdef HAVE_UNITY
+#include <unity.h>
+#endif
+
 struct _MarlinProgressUIHandlerPriv {
     MarlinProgressInfoManager *manager;
 
@@ -46,6 +51,9 @@ struct _MarlinProgressUIHandlerPriv {
     gboolean notification_supports_persistence;
     NotifyNotification *progress_notification;
     GtkStatusIcon *status_icon;
+#ifdef HAVE_UNITY
+    GList *launcher_entries;
+#endif
 };
 
 G_DEFINE_TYPE (MarlinProgressUIHandler, marlin_progress_ui_handler, G_TYPE_OBJECT);
@@ -178,6 +186,255 @@ progress_ui_handler_update_status_icon (MarlinProgressUIHandler *self)
     gtk_status_icon_set_visible (self->priv->status_icon, TRUE);
 }
 
+#ifdef HAVE_UNITY
+
+static void
+progress_ui_handler_unity_progress_changed (MarlinProgressInfo *info,
+                                            MarlinProgressUIHandler *self)
+{
+    g_return_if_fail (self);
+    g_return_if_fail (self->priv->launcher_entries);
+    g_return_if_fail (self->priv->manager);
+
+    GList *infos, *l;
+    double progress = 0;
+    double c, current = 0;
+    double t, total = 0;
+
+    infos = marlin_progress_info_manager_get_all_infos (self->priv->manager);
+
+    for (l = infos; l; l = l->next) {
+        MarlinProgressInfo *i = l->data;
+        c = marlin_progress_info_get_current (i);
+        t = marlin_progress_info_get_total (i);
+
+        if (c < 0) c = 0;
+        if (t <= 0) continue;
+
+        total += t;
+        current += c;
+    }
+
+    if (current >= 0 && total > 0)
+        progress = current / total;
+
+    if (progress > 1.0)
+        progress = 1.0;
+
+    for (l = self->priv->launcher_entries; l; l = l->next) {
+        UnityLauncherEntry *entry = l->data;
+        unity_launcher_entry_set_progress (entry, progress);
+    }
+}
+
+static void
+progress_ui_handler_disable_unity_urgency (UnityLauncherEntry *entry)
+{
+    g_return_if_fail (entry);
+    unity_launcher_entry_set_urgent (entry, FALSE);
+}
+
+static void
+progress_ui_handler_unity_quicklist_show_activated (DbusmenuMenuitem *menu,
+                                                    guint timestamp,
+                                                    MarlinProgressUIHandler *self)
+{
+    g_return_if_fail (self);
+
+    if (!gtk_widget_get_visible (self->priv->progress_window)) {
+        gtk_window_present (GTK_WINDOW (self->priv->progress_window));
+    } else {
+        gtk_window_set_keep_above (GTK_WINDOW (self->priv->progress_window), TRUE);
+        gtk_window_set_keep_above (GTK_WINDOW (self->priv->progress_window), FALSE);
+    }
+}
+
+static void
+progress_ui_handler_unity_quicklist_cancel_activated (DbusmenuMenuitem *menu,
+                                                      guint timestamp,
+                                                      MarlinProgressUIHandler *self)
+{
+    g_return_if_fail (self);
+    g_return_if_fail (self->priv->manager);
+
+    GList *infos, *l;
+    infos = marlin_progress_info_manager_get_all_infos (self->priv->manager);
+
+    for (l = infos; l; l = l->next) {
+        MarlinProgressInfo *info = l->data;
+        marlin_progress_info_cancel (info);
+    }
+}
+
+static DbusmenuMenuitem *
+progress_ui_handler_build_unity_quicklist (MarlinProgressUIHandler *self)
+{
+    DbusmenuMenuitem *ql = dbusmenu_menuitem_new ();
+    dbusmenu_menuitem_property_set_bool (ql,
+                                         DBUSMENU_MENUITEM_PROP_VISIBLE, FALSE);
+
+    DbusmenuMenuitem *quickmenu = dbusmenu_menuitem_new ();
+    dbusmenu_menuitem_property_set (quickmenu,
+                                    DBUSMENU_MENUITEM_PROP_LABEL,
+                                    _("Show copy dialog"));
+    dbusmenu_menuitem_property_set_bool (quickmenu,
+                                         DBUSMENU_MENUITEM_PROP_VISIBLE, FALSE);
+    dbusmenu_menuitem_child_append (ql, quickmenu);
+    g_signal_connect (quickmenu, DBUSMENU_MENUITEM_SIGNAL_ITEM_ACTIVATED,
+                      (GCallback) progress_ui_handler_unity_quicklist_show_activated,
+                      self);
+
+    quickmenu = dbusmenu_menuitem_new ();
+    dbusmenu_menuitem_property_set (quickmenu,
+                                    DBUSMENU_MENUITEM_PROP_LABEL,
+                                    _("Cancel all in-progress actions"));
+    dbusmenu_menuitem_property_set_bool (quickmenu,
+                                         DBUSMENU_MENUITEM_PROP_VISIBLE, FALSE);
+    dbusmenu_menuitem_child_append (ql, quickmenu);
+    g_signal_connect (quickmenu, DBUSMENU_MENUITEM_SIGNAL_ITEM_ACTIVATED,
+                      (GCallback) progress_ui_handler_unity_quicklist_cancel_activated,
+                      self);
+
+    return ql;
+}
+
+static DbusmenuMenuitem *
+progress_ui_handler_ensure_unity_entry_quicklist (MarlinProgressUIHandler *self,
+                                                  UnityLauncherEntry *entry)
+{
+    g_return_if_fail (self);
+    DbusmenuMenuitem *ql;
+
+    ql = unity_launcher_entry_get_quicklist (entry);
+
+    if (ql)
+        return ql;
+
+    ql = progress_ui_handler_build_unity_quicklist (self);
+    unity_launcher_entry_set_quicklist (entry, ql);
+
+    return ql;
+}
+
+static DbusmenuMenuitem *
+progress_ui_handler_ensure_unity_quicklist (MarlinProgressUIHandler *self)
+{
+    g_return_if_fail (self);
+    GList *l;
+
+    DbusmenuMenuitem *ql = progress_ui_handler_build_unity_quicklist (self);
+
+    for (l = self->priv->launcher_entries; l; l = l->next) {
+        UnityLauncherEntry *entry = l->data;
+        unity_launcher_entry_set_quicklist (entry, ql);
+    }
+}
+
+static void
+progress_ui_handler_show_unity_quicklist (MarlinProgressUIHandler *self,
+                                          UnityLauncherEntry *entry,
+                                          gboolean show)
+{
+    g_return_if_fail (self);
+    g_return_if_fail (entry);
+
+    DbusmenuMenuitem *ql;
+    GList *children, *l;
+
+    ql = progress_ui_handler_ensure_unity_entry_quicklist (self, entry);
+
+    dbusmenu_menuitem_property_set_bool (ql,
+                                         DBUSMENU_MENUITEM_PROP_VISIBLE, show);
+
+    children = dbusmenu_menuitem_get_children (ql);
+
+    for (l = children; l; l = l->next) {
+        DbusmenuMenuitem *child = l->data;
+        dbusmenu_menuitem_property_set_bool(child,
+                                        DBUSMENU_MENUITEM_PROP_VISIBLE, show);
+    }
+}
+
+static void
+progress_ui_handler_unity_launcher_entry_add (MarlinProgressUIHandler *self,
+                                              const gchar *entry_id)
+{
+    GList **entries;
+    UnityLauncherEntry *entry;
+
+    entries = &(self->priv->launcher_entries);
+    entry = unity_launcher_entry_get_for_desktop_id (entry_id);
+
+    if (entry) {
+        *entries = g_list_prepend (*entries, entry);
+    }
+}
+
+static void
+progress_ui_handler_update_unity_launcher_entry (MarlinProgressUIHandler *self,
+                                                 MarlinProgressInfo *info,
+                                                 UnityLauncherEntry *entry)
+{
+    g_return_if_fail (self);
+    g_return_if_fail (entry);
+
+    if (self->priv->active_infos > 0) {
+        unity_launcher_entry_set_progress_visible (entry, TRUE);
+        progress_ui_handler_show_unity_quicklist (self, entry, TRUE);
+        progress_ui_handler_unity_progress_changed (NULL, self);
+
+        if (self->priv->active_infos > 1) {
+            unity_launcher_entry_set_count (entry, self->priv->active_infos);
+            unity_launcher_entry_set_count_visible (entry, TRUE);
+        } else {
+            unity_launcher_entry_set_count_visible (entry, FALSE);
+        }
+    } else {
+        unity_launcher_entry_set_progress_visible (entry, FALSE);
+        unity_launcher_entry_set_progress (entry, 0.0);
+        unity_launcher_entry_set_count_visible (entry, FALSE);
+        progress_ui_handler_show_unity_quicklist (self, entry, FALSE);
+        GCancellable *pc = marlin_progress_info_get_cancellable (info);
+
+        if (!g_cancellable_is_cancelled (pc)) {
+            unity_launcher_entry_set_urgent (entry, TRUE);
+
+            g_timeout_add_seconds (2, (GSourceFunc)
+                                   progress_ui_handler_disable_unity_urgency,
+                                   entry);
+        }
+    }
+}
+
+static void
+progress_ui_handler_update_unity_launcher (MarlinProgressUIHandler *self,
+                                           MarlinProgressInfo *info,
+                                           gboolean added)
+{
+    g_return_if_fail (self);
+    GList *l;
+
+    if (!self->priv->launcher_entries) {
+        progress_ui_handler_unity_launcher_entry_add (self, "marlin.desktop");
+        //progress_ui_handler_unity_launcher_entry_add (self, "marlin-home.desktop");
+        g_return_if_fail (g_list_length (self->priv->launcher_entries) != 0);
+
+        progress_ui_handler_ensure_unity_quicklist (self);
+    }
+
+    for (l = self->priv->launcher_entries; l; l = l->next) {
+        UnityLauncherEntry *entry = l->data;
+        progress_ui_handler_update_unity_launcher_entry (self, info, entry);
+    }
+
+    if (added) {
+        g_signal_connect (info, "progress-changed",
+                          (GCallback) progress_ui_handler_unity_progress_changed,
+                          self);
+    }
+}
+#endif
+
 static gboolean
 progress_window_delete_event (GtkWidget *widget,
 			      GdkEvent *event,
@@ -305,6 +562,10 @@ progress_info_finished_cb (MarlinProgressInfo *info,
 	    progress_ui_handler_show_complete_notification (self);
 	}
     }
+
+#ifdef HAVE_UNITY
+    progress_ui_handler_update_unity_launcher (self, info, FALSE);
+#endif
 }
 
 static void
@@ -327,6 +588,10 @@ handle_new_progress_info (MarlinProgressUIHandler *self,
 	    progress_ui_handler_update_notification_or_status (self);
 	}
     }
+
+#ifdef HAVE_UNITY
+    progress_ui_handler_update_unity_launcher (self, info, TRUE);
+#endif
 }
 
 typedef struct {
