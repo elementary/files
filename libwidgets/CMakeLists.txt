@@ -47,9 +47,9 @@ posix
 OPTIONS
 --thread
 GENERATE_VAPI
-marlinwidgets
+    marlinwidgets
 GENERATE_HEADER
-marlinwidgets
+    marlinwidgets
 )
 add_library (${PKGNAME} SHARED
     ${VALA_C}

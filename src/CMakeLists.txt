@@ -61,9 +61,7 @@ vala_precompile(VALA_C
     View/Chrome/ViewSwicher.vala
     View/Chrome/ColorWidget.vala
 CUSTOM_VAPIS
-    ${CMAKE_CURRENT_SOURCE_DIR}/../libcore/marlin-core.vapi
     ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
-    ${CMAKE_CURRENT_BINARY_DIR}/../libcore/marlincore.vapi
     marlin.vapi
 PACKAGES
     gtk+-3.0
@@ -71,9 +69,13 @@ PACKAGES
     posix
     gee-1.0
     granite
+    marlincore
+    marlincore-C
 GENERATE_HEADER
     marlin-vala
 OPTIONS
+    --vapidir=${CMAKE_SOURCE_DIR}/libcore/
+    --vapidir=${CMAKE_BINARY_DIR}/libcore/
     --thread)
 add_executable(marlin
     eel-editable-label.c

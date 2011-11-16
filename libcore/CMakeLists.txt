@@ -16,28 +16,29 @@ include(ValaVersion)
 ensure_vala_version("0.12.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
-gof-callwhenready.vala
-gof-directory-async.vala
-PluginManager.vala
-Plugin.vala
+    gof-callwhenready.vala
+    gof-directory-async.vala
+    PluginManager.vala
+    Plugin.vala
+    marlincore-C.vapi
 PACKAGES
-gtk+-3.0
-gio-2.0
-gee-1.0
-gmodule-2.0
-CUSTOM_VAPIS
-    ${CMAKE_CURRENT_SOURCE_DIR}/marlin-core.vapi
+    gtk+-3.0
+    gio-2.0
+    gee-1.0
+    gmodule-2.0
 OPTIONS
---thread
+    --thread
 GENERATE_VAPI
-marlincore
+    marlincore
 GENERATE_HEADER
-marlincore
+    marlincore
 )
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlincore.h DESTINATION include/marlincore/)
-install (FILES marlin-core.vapi DESTINATION share/vala/vapi)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/marlincore.vapi DESTINATION share/vala/vapi)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/marlincore.deps DESTINATION share/vala/vapi)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/marlincore-C.vapi DESTINATION share/vala/vapi)
 install (FILES
     eel-accessibility.h
     eel-debug.h

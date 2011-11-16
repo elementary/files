@@ -8,11 +8,12 @@ PACKAGES
     gee-1.0
     posix
     marlinwidgets
+    marlincore
     marlin-core
 OPTIONS
     --thread
     --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
-    --vapidir=${CMAKE_SOURCE_DIR}/libcore/
+    --vapidir=${CMAKE_BINARY_DIR}/libcore/
 )
 
 find_package(PkgConfig)
