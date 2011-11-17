@@ -35,7 +35,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     private unowned GLib.List<GOF.File> files;
     private GOF.File goffile;
 
-    private Granite.Widgets.WrapLabel header_title;
+    private Varka.Widgets.WrapLabel header_title;
     private Gtk.Label header_desc;
     private string ftype; /* common type */
 
@@ -193,7 +193,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         var vvbox = new VBox (false, 0);
         content.pack_start(vvbox);
        
-        header_title = new Granite.Widgets.WrapLabel ();
+        header_title = new Varka.Widgets.WrapLabel ();
         if (count > 1)
             header_title.set_markup ("<span weight='semibold' size='large'>" + "%u selected items".printf(count) + "</span>");
         else
@@ -325,7 +325,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         int n = 0;
         foreach(var pair in item_info){
-            var value_label = new Granite.Widgets.WrapLabel(pair.value);
+            var value_label = new Varka.Widgets.WrapLabel(pair.value);
             var key_label = create_label_key(pair.key);
             value_label.set_selectable(true);
             value_label.set_size_request(200, -1);

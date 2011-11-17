@@ -42,8 +42,8 @@ namespace Marlin.View {
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
 
-        public Granite.Widgets.ToolButtonWithMenu button_forward;
-        public Granite.Widgets.ToolButtonWithMenu button_back;
+        public Varka.Widgets.ToolButtonWithMenu button_forward;
+        public Varka.Widgets.ToolButtonWithMenu button_back;
 
         private const int horizontal_contextplane_max_width = 910;
         private const int horizontal_contextplane_max_height = 380; // after which we will go vertical
@@ -498,7 +498,7 @@ namespace Marlin.View {
         }
 
         protected void show_about() {
-            Granite.Widgets.show_about_dialog (this,
+            Varka.Widgets.show_about_dialog (this,
                 "program-name", Marlin.APP_TITLE,
                 "version", Config.VERSION,
                 "comments", Marlin.COMMENTS,

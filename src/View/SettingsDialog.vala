@@ -31,7 +31,7 @@ namespace Marlin.View
             //width_request = 500;
             set_resizable(false);
 
-            var mai_notebook = new Granite.Widgets.StaticNotebook();
+            var mai_notebook = new Varka.Widgets.StaticNotebook();
 
             var first_vbox = new Gtk.VBox(false, 3);
             first_vbox.border_width = 5;

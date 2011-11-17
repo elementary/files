@@ -27,7 +27,7 @@ namespace Marlin.View.Chrome
         public ViewSwitcher? view_switcher;
         public Gtk.Menu compact_menu;
         public Gtk.Menu toolbar_menu;
-        public Granite.Widgets.AppMenu app_menu;
+        public Varka.Widgets.AppMenu app_menu;
         public LocationBar? location_bar;
         public Window win;
 
@@ -40,7 +40,7 @@ namespace Marlin.View.Chrome
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             toolbar_menu = (Gtk.Menu) win.ui.get_widget("/ToolbarMenu");
 
-            app_menu = new Granite.Widgets.AppMenu (compact_menu);
+            app_menu = new Varka.Widgets.AppMenu (compact_menu);
             setup_items();
             show();
             
@@ -110,12 +110,12 @@ namespace Marlin.View.Chrome
                 if (main_action != null)
                 {
                     if (name == "Forward"){
-                        win.button_forward = new Granite.Widgets.ToolButtonWithMenu.from_action(main_action);
+                        win.button_forward = new Varka.Widgets.ToolButtonWithMenu.from_action(main_action);
                         win.button_forward.show_all();
                         insert(win.button_forward, -1);
                     }
                     else if ( name == "Back"){
-                        win.button_back = new Granite.Widgets.ToolButtonWithMenu.from_action(main_action);
+                        win.button_back = new Varka.Widgets.ToolButtonWithMenu.from_action(main_action);
                         win.button_back.show_all();
                         insert(win.button_back, -1);
                     }else{
