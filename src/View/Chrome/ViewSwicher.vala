@@ -21,7 +21,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using Gtk;
-using Marlin.View;
+using Varka.Widgets;
 using Config;
 
 namespace Marlin.View.Chrome
@@ -32,6 +32,7 @@ namespace Marlin.View.Chrome
         
         private ViewMode _mode;
         public ViewMode mode{
+        //private ViewMode mode{
             set{
                 Widget target;
 
@@ -47,8 +48,9 @@ namespace Marlin.View.Chrome
                     break;
                 }
 
-                Preferences.settings.set_enum("default-viewmode", value);
-                switcher.focus(target);
+                Preferences.settings.set_enum ("default-viewmode", value);
+                //switcher.focus(target);
+                switcher.set_active_widget (target);
                 _mode = mode;
             }
             private get{
@@ -65,9 +67,10 @@ namespace Marlin.View.Chrome
         public ViewSwitcher (Gtk.ActionGroup action_group)
         {
             main_actions = action_group;
-            border_width = 6;
+            //border_width = 6;
+            margin = 6;
 
-            switcher = new ModeButton();
+            switcher = new ModeButton ();
             Gtk.IconTheme dtheme = IconTheme.get_default ();
 
             try {
@@ -99,7 +102,7 @@ namespace Marlin.View.Chrome
             });
 
             switcher.sensitive = true;
-            mode = (ViewMode)Preferences.settings.get_enum("default-viewmode");
+            //mode = (ViewMode)Preferences.settings.get_enum("default-viewmode");
 
             add (switcher);
         }

@@ -24,6 +24,7 @@ using Gtk;
 using Gdk;
 using Cairo;
 using Marlin.View.Chrome;
+using Varka.Widgets;
 using EelGtk.Window;
 
 namespace Marlin.View {
@@ -36,7 +37,7 @@ namespace Marlin.View {
         public Marlin.Places.Sidebar sidebar;
 
         public ViewContainer? current_tab;
-        public CollapsablePaned main_box;
+        public CollapsiblePaned main_box;
         public ContextView contextview;
 
         public Gtk.ActionGroup main_actions;
@@ -136,10 +137,10 @@ namespace Marlin.View {
             Preferences.settings.bind("sidebar-icon-size", sidebar, "icon-size", SettingsBindFlags.DEFAULT);
 
             /* Devide main views into sidebars */
-            main_box = new CollapsablePaned(Orientation.VERTICAL);
+            main_box = new CollapsiblePaned(Orientation.VERTICAL);
             main_box.show();
 
-            var lside_pane = new HCollapsablePaned();
+            var lside_pane = new HCollapsiblePaned();
             lside_pane.show();
 
             lside_pane.pack1(sidebar, false, false);

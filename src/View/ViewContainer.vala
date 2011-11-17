@@ -228,8 +228,9 @@ namespace Marlin.View {
                 browser.record_uri(slot.directory.location.get_parse_name ());
             window.can_go_back = browser.can_go_back();
             window.can_go_forward = browser.can_go_forward();
-            if (window.top_menu.view_switcher != null)
-                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
+            //SPOTTED!
+            /*if (window.top_menu.view_switcher != null)
+                window.top_menu.view_switcher.mode = (ViewMode) view_mode;*/
         }
 
         public Menu get_back_menu()  {

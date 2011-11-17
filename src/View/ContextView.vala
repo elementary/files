@@ -24,6 +24,7 @@ using Gtk;
 using Gdk;
 using Cairo;
 using Gee;
+using Varka.Widgets;
 
 namespace Marlin.View {
 

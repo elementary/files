@@ -20,7 +20,7 @@
 using Gtk;
 using Posix;
 using GLib;
-using Marlin.View;
+using Varka.Widgets;
 
 public class Marlin.View.PropertiesWindow : Gtk.Dialog
 {

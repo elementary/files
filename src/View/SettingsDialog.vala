@@ -19,6 +19,7 @@
  *
  */
 
+using Varka.Widgets;
 
 namespace Marlin.View
 {
@@ -84,7 +85,7 @@ namespace Marlin.View
 
             
             /* Sidebar icon size */
-            var spin_icon_size = new Chrome.ModeButton();
+            var spin_icon_size = new ModeButton();
             spin_icon_size.append(new Gtk.Label(_("small")));
             spin_icon_size.append(new Gtk.Label(_("medium")));
             spin_icon_size.append(new Gtk.Label(_("large")));
@@ -119,7 +120,7 @@ namespace Marlin.View
 
             
             /* Date format */
-            var mode_date_format = new Chrome.ModeButton();
+            var mode_date_format = new ModeButton();
             mode_date_format.append(new Gtk.Label(_("locale")));
             mode_date_format.append(new Gtk.Label(_("iso")));
             mode_date_format.append(new Gtk.Label(_("informal")));
