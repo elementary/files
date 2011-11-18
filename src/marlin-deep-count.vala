@@ -50,23 +50,29 @@ public class Marlin.DeepCount : Object
         try {
             /*bool exists = yield Utils.query_exists_async (directory);
               if (!exists) return;*/
-            var enumerator = yield directory.enumerate_children_async (deep_count_attrs, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, Priority.LOW, cancellable);
-            var files = yield enumerator.next_files_async (1024, Priority.LOW, cancellable);
-            foreach (var f in files)
-            {
-                unowned string name = f.get_name ();
-                File location = directory.get_child (name);
-                if (f.get_file_type () == FileType.DIRECTORY) {
-                    //message ("found: %s", name);
-                    yield process_directory (location);
-                    dirs_count++;
-                } else {
-                    //message ("file: %s %s", name, location.get_uri ());
-                    files_count++;
+            var e = yield directory.enumerate_children_async (deep_count_attrs, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, Priority.LOW, cancellable);
+
+            while (true) {
+                var files = yield e.next_files_async (1024, Priority.LOW, cancellable);
+                if (files == null)
+                    break;
+
+                foreach (var f in files)
+                {
+                    unowned string name = f.get_name ();
+                    File location = directory.get_child (name);
+                    if (f.get_file_type () == FileType.DIRECTORY) {
+                        //message ("found: %s", name);
+                        yield process_directory (location);
+                        dirs_count++;
+                    } else {
+                        //message ("file: %s %s", name, location.get_uri ());
+                        files_count++;
+                    }
+                    mutex.lock ();
+                    total_size += f.get_size();
+                    mutex.unlock ();
                 }
-                mutex.lock ();
-                total_size += f.get_size();
-                mutex.unlock ();
             }
         } catch (Error err) {
             warning ("%s", err.message);
