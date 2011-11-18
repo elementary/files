@@ -23,8 +23,5 @@ Various:
 ...
 
 
-Check:
-- gof_file_get is unrefed in gof-file.c
-
 Postponed:
 - use app indicator for showing the progress operation window.

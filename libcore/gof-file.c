@@ -1131,9 +1131,9 @@ GOFFile* gof_file_get (GFile *location)
     if ((parent = g_file_get_parent (location)) != NULL)
         dir = gof_directory_async_cache_lookup (parent);
     if (dir != NULL) {
-        gchar *uri = g_file_get_uri (parent);
-        //g_warning (">>>>>>>>>>>>>>> dir already cached %s", uri);
-        g_free (uri);
+        /*gchar *uri = g_file_get_uri (parent);
+        g_warning (">>>>>>>>>>>>>>> dir already cached %s", uri);
+        g_free (uri);*/
         if ((file = g_hash_table_lookup (dir->file_hash, location)) == NULL)
             file = g_hash_table_lookup (dir->hidden_file_hash, location);
         _g_object_ref0 (file);
