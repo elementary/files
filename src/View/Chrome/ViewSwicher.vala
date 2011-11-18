@@ -83,6 +83,8 @@ namespace Marlin.View.Chrome
             } catch (Error err) {
                 stderr.printf ("Unable to load ViewSwitcher icon: %s", err.message);
             }
+            
+            mode = (ViewMode)Preferences.settings.get_enum("default-viewmode");
            
             switcher.mode_changed.connect((mode) => {
                 Gtk.Action action;
@@ -102,7 +104,6 @@ namespace Marlin.View.Chrome
             });
 
             switcher.sensitive = true;
-            //mode = (ViewMode)Preferences.settings.get_enum("default-viewmode");
 
             add (switcher);
         }
