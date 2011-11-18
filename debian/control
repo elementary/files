@@ -2,9 +2,9 @@ Source: marlin-plugin-dropbox
 Section: gnome
 Priority: optional
 Maintainer: ammonkey <am.monkeyd@gmail.com>
-Vcs-Bzr: https://code.launchpad.net/~elementaryproject/marlin/dropbox-plugin
+Vcs-Bzr: lp:marlin-plugin-dropbox
 Build-Depends: debhelper (>= 7), pkg-config, cmake, libglib2.0-dev (>= 2.29.0), libgtk-3-dev (>= 3.0.3), libgee-dev, gnome-common, marlin
-Homepage: http://www.elementaryos.org/
+Homepage: https://launchpad.net/marlin-plugin-dropbox
 Standards-Version: 3.9.1
 
 Package: marlin-plugin-dropbox
