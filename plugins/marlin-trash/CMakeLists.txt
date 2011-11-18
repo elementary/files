@@ -21,7 +21,7 @@ vala_precompile(VALA_C
 PACKAGES
     gtk+-3.0
     gee-1.0
-    marlin-core
+    marlincore-C
     marlincore
 OPTIONS
     --thread

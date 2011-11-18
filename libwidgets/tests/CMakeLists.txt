@@ -8,8 +8,6 @@ PACKAGES
     gee-1.0
     posix
     marlinwidgets
-    marlincore
-    marlin-core
 OPTIONS
     --thread
     --vapidir=${CMAKE_BINARY_DIR}/libwidgets/

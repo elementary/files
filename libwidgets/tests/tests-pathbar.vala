@@ -182,7 +182,7 @@ void main(string[] args)
 {
     Gtk.init(ref args);
     Test.init(ref args);
-    Preferences.settings = new GLib.Settings("org.gnome.marlin.preferences");
+    //Preferences.settings = new GLib.Settings("org.gnome.marlin.preferences");
 
     add_pathbar_tests ();
 
