@@ -1,8 +1,9 @@
 //
 //  TopMenu.cs
 //
-//  Author:
+//  Authors:
 //       mathijshenquet <mathijs.henquet@gmail.com>
+//       ammonkey <am.monkeyd@gmail.com>
 //
 //  Copyright (c) 2010 mathijshenquet
 //
