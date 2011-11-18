@@ -389,7 +389,7 @@ marlin_application_open_location (GApplication *app, GFile **files, gint n_files
     //g_debug ("%s %d files", G_STRFUNC, n_files);
 
     if (self->priv->debug)
-        marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_DEBUG);
+        varka_logger_set_DisplayLevel (VARKA_LOG_LEVEL_DEBUG);
 
     /* Create windows. */
     if (self->priv->open_intab)
@@ -599,15 +599,15 @@ marlin_application_startup (GApplication *app)
      */
     G_APPLICATION_CLASS (marlin_application_parent_class)->startup (app);
 
-    marlin_logger_initialize ("marlin");
-    marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_INFO);
+    varka_logger_initialize ("marlin");
+    varka_logger_set_DisplayLevel (VARKA_LOG_LEVEL_INFO);
 
     g_message ("Welcome to Marlin");
     g_message ("Version: %s", PACKAGE_VERSION);
     g_message ("Report any issues/bugs you might find to http://bugs.launchpad.net/marlin");
 
     if (self->priv->debug)
-        marlin_logger_set_DisplayLevel (MARLIN_LOG_LEVEL_DEBUG);
+        varka_logger_set_DisplayLevel (VARKA_LOG_LEVEL_DEBUG);
 
     init_schemas ();
     init_gtk_accels ();

@@ -42,7 +42,6 @@ add_definitions(${CFLAGS}
      -O2
     )
 vala_precompile(VALA_C
-    Logger.vala
     marlin-deep-count.vala
     View/SettingsDialog.vala
     View/DiskRenderer.vala
