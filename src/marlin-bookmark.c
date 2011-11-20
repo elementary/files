@@ -219,12 +219,11 @@ marlin_bookmark_get_icon (MarlinBookmark *bookmark)
     /* Try to connect a file in case file exists now but didn't earlier. */
     //marlin_bookmark_connect_file (bookmark);
 
-    if (bookmark->file->icon) {
-        return g_object_ref (bookmark->file->icon);
+    if (bookmark->file->icon == NULL) {
+        gof_file_get_folder_icon_from_uri_or_path (bookmark->file);
     }
-    return g_themed_icon_new (MARLIN_ICON_FOLDER);
 
-    return NULL;
+    return g_object_ref (bookmark->file->icon);
 }
 
 GFile *

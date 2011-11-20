@@ -163,6 +163,7 @@ gboolean        gof_file_ensure_query_info (GOFFile *file);
 void            gof_file_update_icon (GOFFile *file, gint size);
 void            gof_file_update_trash_info (GOFFile *file);
 void            gof_file_update_emblem (GOFFile *file);
+void            gof_file_get_folder_icon_from_uri_or_path (GOFFile *file);
 
 GOFFile*        gof_file_get (GFile *location);
 GOFFile*        gof_file_get_by_uri (const char *uri);

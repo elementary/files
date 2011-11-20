@@ -163,6 +163,41 @@ gof_file_clear_info (GOFFile *file)
     _g_free0(file->group);
 }
 
+static gboolean
+gof_file_is_remote_uri_scheme (GOFFile *file)
+{
+    /* try to determinate what appear to be remote. This is quite hazardous but gio doesn't offer any better option */
+    char *scheme = g_file_get_uri_scheme (file->location);
+
+    //g_message ("%s %s", G_STRFUNC, scheme);
+    if (!strcmp (scheme, "trash")) {
+        g_free (scheme);
+        return FALSE;
+    }
+    if (!strcmp (scheme, "archive")) {
+        g_free (scheme);
+        return FALSE;
+    }
+
+    g_free (scheme);
+    return TRUE;
+}
+
+void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file) 
+{
+    if (!file->is_hidden && file->uri != NULL) {
+        char *path = g_filename_from_uri (file->uri, NULL, NULL);
+        file->icon = get_icon_user_special_dirs(path);
+        _g_free0 (path);
+    }
+
+    if (file->icon == NULL && !g_file_is_native (file->location)
+        && gof_file_is_remote_uri_scheme (file))
+        file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER_REMOTE);
+    if (file->icon == NULL)
+        file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER);
+}
+
 void    gof_file_update (GOFFile *file)
 {
     GKeyFile *key_file;
@@ -265,19 +300,11 @@ void    gof_file_update (GOFFile *file)
         }
     }
 
-    if (file->is_directory && !file->is_hidden)
-    {
-        if (file->uri != NULL) {
-            char *path = g_filename_from_uri (file->uri, NULL, NULL);
-            file->icon = get_icon_user_special_dirs(path);
-            _g_free0 (path);
-        }
-
-        if (file->icon == NULL && !g_file_is_native (file->location))
-            file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER_REMOTE);
-    }
-    if (file->icon == NULL)
+    if (file->is_directory) {
+        gof_file_get_folder_icon_from_uri_or_path (file);
+    } else {
         file->icon = g_content_type_get_icon (file->ftype);
+    }
 
     file->thumbnail_path =  g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
 
