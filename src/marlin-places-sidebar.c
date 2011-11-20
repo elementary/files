@@ -360,6 +360,8 @@ update_places (MarlinPlacesSidebar *sidebar)
                            _("Trash"), icon, mount_uri,
                            NULL, NULL, NULL, index + sidebar->n_builtins_before,
                            _("Open the trash"));
+    //SPOTTED!
+    g_message ("%s %s %s %s", G_STRFUNC, mount_uri, last_uri, location);
     compare_for_selection (sidebar,
                            location, mount_uri, last_uri,
                            &last_iter, &select_path);

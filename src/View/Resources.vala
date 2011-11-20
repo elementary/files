@@ -37,6 +37,6 @@ namespace Marlin {
     public const string ICON_FOLDER = "folder";
     public const string ICON_FOLDER_REMOTE = "folder-remote";
 
-    public const string TRASH_URI = "trash://";
-    public const string NETWORK_URI = "network://";
+    public const string TRASH_URI = "trash:///";
+    public const string NETWORK_URI = "network:///";
 }

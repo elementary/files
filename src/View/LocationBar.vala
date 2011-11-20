@@ -88,8 +88,11 @@ namespace Marlin.View.Chrome
             /* grab the UIManager */
             this.ui = ui;
             this.win = win;
-            add_icon({ Marlin.TRASH_URI, Marlin.ICON_TRASH, true, null, null, true, N_("Trash")});
-            add_icon({ Marlin.NETWORK_URI, Marlin.ICON_NETWORK, true, null, null, true, N_("Network")});
+            /*add_icon({ Marlin.TRASH_URI, Marlin.ICON_TRASH, true, null, null, true, N_("Trash")});
+            add_icon({ Marlin.NETWORK_URI, Marlin.ICON_NETWORK, true, null, null, true, N_("Network")});*/
+            /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
+            add_icon({ "trash://", Marlin.ICON_TRASH, true, null, null, true, N_("Trash")});
+            add_icon({ "network://", Marlin.ICON_NETWORK, true, null, null, true, N_("Network")});
 
             /* music */
             string dir;
