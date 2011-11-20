@@ -667,7 +667,7 @@ namespace Marlin.View {
                                  action_show_hide_menubar,
   /* is_active */                true },
   /* name, stock id */         { "Show Hide Sidebar", null,
-  /* label, accelerator */       N_("_Side Pane"), "F9",
+  /* label, accelerator */       N_("_Places"), "F9",
   /* tooltip */                  N_("Change the visibility of this window's side pane"),
                                  null,
   /* is_active */                true }
