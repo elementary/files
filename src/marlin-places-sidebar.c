@@ -639,7 +639,7 @@ static void marlin_places_sidebar_set_property (GObject *object,
     {
     case PROP_ICON_SIZE:
         MARLIN_PLACES_SIDEBAR (object)->icon_size = g_value_get_int (value);
-        update_places(MARLIN_PLACES_SIDEBAR(object));
+        update_places (MARLIN_PLACES_SIDEBAR(object));
         gtk_tree_view_columns_autosize (MARLIN_PLACES_SIDEBAR(object)->tree_view);
         break;
     default:

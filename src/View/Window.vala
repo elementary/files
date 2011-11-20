@@ -278,6 +278,8 @@ namespace Marlin.View {
                 current_tab.sync_contextview();
                 /* set window title to current title */
                 set_title(current_tab.tab_name);
+                /* sync sidebar selection */
+                loading_uri (current_tab.slot.directory.file.uri, sidebar);
 
                 /* focus the main view */
                 //((FM.Directory.View) current_tab.slot.view_box).grab_focus();
