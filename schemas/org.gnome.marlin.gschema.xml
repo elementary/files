@@ -64,6 +64,11 @@
         The amount of time which the item under the mouse cursor will be selected automatically in single click mode. A value of 0 disables the automatic selection.
       </description>
     </key>
+    <key type="b" name="dialog-property-modal">
+      <default>false</default>
+      <summary>dialog property modal</summary>
+      <description>If true the property dialog is a modal window</description>
+    </key>
     <key name="default-viewmode" enum="viewmode">
       <default>'list'</default>
       <summary>Default viewmode when browsing</summary>

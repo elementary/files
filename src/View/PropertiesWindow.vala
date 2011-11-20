@@ -122,7 +122,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         response.connect (on_response);
 
-        set_modal (true);
+        Preferences.settings.bind ("dialog-property-modal", this, "modal", 0);
         set_transient_for (parent);
         set_destroy_with_parent (true);
         present ();
