@@ -49,7 +49,6 @@ namespace Marlin.View
             label.set_alignment(0, 0.5f);
             hbox_single_click.pack_start(label);
             hbox_single_click.pack_start(checkbox, false, false);
-
             first_vbox.pack_start(hbox_single_click, false);
 
             /* Mouse selection speed */
@@ -66,7 +65,20 @@ namespace Marlin.View
             Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(), "value", SettingsBindFlags.DEFAULT);
             
             first_vbox.pack_start(hbox_single_click, false);
+
+            /* Dlg properties modal */
+            var check_dlg_properties = new Gtk.Switch ();
             
+            Preferences.settings.bind ("dialog-property-modal", check_dlg_properties, "active", 0);
+
+            var hbox_dlg_properties = new Gtk.HBox(false, 0);
+            var l1 = new Gtk.Label(_("Properties Dialog set modal:"));
+            l1.set_alignment(0, 0.5f);
+            hbox_dlg_properties.pack_start(l1);
+            hbox_dlg_properties.pack_start(check_dlg_properties, false, false);
+            first_vbox.pack_start(hbox_dlg_properties, false);
+            
+            /* Make default FM */
             hbox_single_click = new Gtk.HBox(false, 0);
             label = new Gtk.Label(_("Default File Manager:"));
             label.set_alignment(0, 0.5f);
