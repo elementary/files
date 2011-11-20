@@ -14,6 +14,11 @@
     <value value="5" nick="larger"/>
     <value value="6" nick="largest"/>
   </enum>
+  <enum id="contextviewmode">
+    <value value="0" nick="horizontal"/>
+    <value value="1" nick="vertical"/>
+    <value value="2" nick="auto"/>
+  </enum>
 
   <schema path="/apps/marlin/preferences/" id="org.gnome.marlin.preferences">
     <key type="b" name="show-menubar">
@@ -68,6 +73,13 @@
       <default>false</default>
       <summary>dialog property modal</summary>
       <description>If true the property dialog is a modal window</description>
+    </key>
+    <key name="contextview-orientation" enum="contextviewmode">
+      <default>'auto'</default>
+      <summary>Context View Panel orientation</summary>
+      <description>
+        Auto Context View Panel orientation means the panel would be horizontal or vertical depending on the size of your window.
+      </description>
     </key>
     <key name="default-viewmode" enum="viewmode">
       <default>'list'</default>

@@ -348,10 +348,22 @@ namespace Marlin.View {
 #endif
             Orientation current_state = main_box.orientation;
 
-            Orientation future_state = Orientation.VERTICAL; // Becouse how Paned class works, this is inverted
-            if(allocation.width  > horizontal_contextplane_max_width &&
-               allocation.height > horizontal_contextplane_max_height){
+            int ctxview_orientation = Preferences.settings.get_enum("contextview-orientation");
+
+            Orientation future_state = Orientation.VERTICAL; // Because how Paned class works, this is inverted
+            switch (ctxview_orientation) {
+            case 0:
+                future_state = Orientation.VERTICAL;
+                break;
+            case 1:
                 future_state = Orientation.HORIZONTAL;
+                break;
+            case 2:
+                if(allocation.width  > horizontal_contextplane_max_width &&
+                   allocation.height > horizontal_contextplane_max_height){
+                    future_state = Orientation.HORIZONTAL;
+                }
+                break;
             }
 
             if(current_state != future_state){
