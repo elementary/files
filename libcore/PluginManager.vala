@@ -66,6 +66,18 @@ public class Marlin.PluginManager : GLib.Object
                                          FileQueryInfoFlags.NONE);
 
             info = enumerator.next_file ();
+        
+            while(info != null)
+            {
+                string file_name = info.get_name ();
+                string file_path = Path.build_filename (dir.get_path (), file_name);
+
+                if(file_name.has_suffix(".plug"))
+                {
+                    load_plugin_keyfile(file_path, dir.get_path (), force);
+                }
+                info = enumerator.next_file ();
+            }
         }
         catch(Error error)
         {
@@ -73,19 +85,6 @@ public class Marlin.PluginManager : GLib.Object
                       dir.get_path (),
                       error.message);
 
-            return;
-        }
-
-        while(info != null)
-        {
-            string file_name = info.get_name ();
-            string file_path = Path.build_filename (dir.get_path (), file_name);
-
-            if(file_name.has_suffix(".plug"))
-            {
-                load_plugin_keyfile(file_path, dir.get_path (), force);
-            }
-            info = enumerator.next_file ();
         }
     }
 
@@ -110,7 +109,7 @@ public class Marlin.PluginManager : GLib.Object
             return;
         }
 
-        ModuleInitFunc module_init = (ModuleInitFunc) function;
+        unowned ModuleInitFunc module_init = (ModuleInitFunc) function;
         assert (module_init != null);
 
         /* We don't want our modules to ever unload */

@@ -119,7 +119,6 @@ marlin_exec_parse (const gchar *exec,
                    const gchar *uri)
 {
     const gchar *p;
-    gboolean     result = FALSE;
     GString     *command_line = g_string_new (NULL);
     gchar       *cmd;
     GList       *lp;

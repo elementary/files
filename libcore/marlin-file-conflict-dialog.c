@@ -327,7 +327,6 @@ file_list_ready_cb (GList *files, gpointer user_data)
 {
     MarlinFileConflictDialog *fcd = MARLIN_FILE_CONFLICT_DIALOG (user_data);
     GOFFile *src, *dest, *dest_dir;
-    GtkDialog *dialog;
     gboolean should_show_type;
     MarlinFileConflictDialogDetails *details;
     char *primary_text, *message, *secondary_text;
@@ -338,7 +337,6 @@ file_list_ready_cb (GList *files, gpointer user_data)
     GString *str;
     PangoFontDescription *desc;
 
-    dialog = GTK_DIALOG (fcd);
     details = fcd->details;
 
     details->handle = NULL;
