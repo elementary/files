@@ -80,13 +80,20 @@ public class GOF.Directory.Async : Object
     public bool load ()
     {
         if (state == State.NOT_LOADED) {
+            if (!file.is_mounted) {
+                mount_mountable ();
+                return false;
+            }
+
             list_directory (location);
             try {
                 monitor = location.monitor_directory (0);
+                monitor.changed.connect (directory_changed);  
             } catch (IOError e) {
-                warning ("directory monitor failed: %s %s", e.message, file.uri);
+                if (!(e is IOError.NOT_MOUNTED)) {
+                    warning ("directory monitor failed: %s %s", e.message, file.uri);
+                }
             }
-            monitor.changed.connect (directory_changed);        
         } else {
             /* even if the directory is currently loading model_add_file manage duplicates */
             debug ("directory %s load cached files", file.uri);
@@ -103,6 +110,24 @@ public class GOF.Directory.Async : Object
 
         //FIXME
         return true; 
+    }
+
+    private async void mount_mountable ()
+    {
+        debug ("mount_mountable %s", file.uri);
+
+        var mount_op = new MountOperation ();
+        try {
+            if (file.file_type != FileType.MOUNTABLE)
+                yield location.mount_enclosing_volume (0, mount_op, cancellable);
+            else
+                yield location.mount_mountable (0, mount_op, cancellable);
+            file.is_mounted = true;
+            query_info_async (file, file_info_available);
+            load ();
+        } catch (Error e) {
+            warning ("mount_mountable failed: %s %s", e.message, file.uri);
+        }
     }
 
     //private Mutex mutex = new Mutex ();

@@ -74,7 +74,7 @@ public class GOF.CallWhenReady : Object
             warning ("query info failed, %s %s", err.message, gof.uri);
             if (err is IOError.NOT_FOUND)
                 gof.exists = false;
-            if (err is IOError.NOT_MOUNTED)
+            if (err is IOError.NOT_MOUNTED) 
                 gof.is_mounted = false;
         }
          

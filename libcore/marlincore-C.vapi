@@ -122,6 +122,7 @@ namespace GOF {
         public Gdk.Pixbuf pix;
         public unowned string trash_orig_path;
 
+        public FileType file_type;
         public bool is_hidden;
         public bool is_directory;
         public bool is_symlink();
@@ -156,37 +157,6 @@ namespace GOF {
         public signal void info_available ();
     }
 
-    /*
-    [CCode (cprefix = "GOFDirectory", lower_case_cprefix = "gof_directory_")]
-    namespace Directory {
-        [CCode (cheader_filename = "gof-directory-async.h")]
-        public class Async : GLib.Object {
-            public GLib.File location;
-            public GOF.File file;
-            public bool loading;
-            public bool exists;
-            public bool loaded;
-            //public HashTable<GLib.File,GOF.File> file_hash;
-            public HashTable file_hash;
-            public HashTable hidden_file_hash;
-
-            public Async (GLib.File f);
-            public Async.from_file (GOF.File f);
-            public Async.from_gfile (GLib.File f);
-            public bool load ();
-            public void cancel ();
-            public string get_uri ();
-            public bool has_parent ();
-            public GLib.File get_parent ();
-            
-            public signal void file_loaded (GOF.File file);
-            public signal void file_added (GOF.File file);
-            public signal void file_changed (GOF.File file);
-            public signal void file_deleted (GOF.File file);
-            public signal void done_loading ();
-            public signal void info_available ();
-        }
-    }*/
     [CCode (cheader_filename = "gof-file.h")]
     public enum FileIconFlags
     {
