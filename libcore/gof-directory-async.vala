@@ -92,6 +92,7 @@ public class GOF.Directory.Async : Object
             } catch (IOError e) {
                 if (!(e is IOError.NOT_MOUNTED)) {
                     warning ("directory monitor failed: %s %s", e.message, file.uri);
+                    remove_directory_from_cache ();
                 }
             }
         } else {
@@ -169,11 +170,15 @@ public class GOF.Directory.Async : Object
             state = State.LOADED;
         } catch (Error err) {
             warning ("%s %s", err.message, file.uri);
+            state = State.NOT_LOADED;
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)
                 file.exists = false;
-            if (err is IOError.NOT_MOUNTED)
+            if (err is IOError.NOT_MOUNTED) {
                 file.is_mounted = false;
-            state = State.NOT_LOADED;
+                /* try again this time it shoould be mounted */
+                load ();
+                return;
+            }
         }
 
         //TODO send err code
@@ -297,10 +302,10 @@ public class GOF.Directory.Async : Object
         return val;
     }
 
-    /*public bool remove_directory_from_cache ()
+    private bool remove_directory_from_cache ()
     {
         return directory_cache.remove (location);
-    }*/
+    }
     
     public bool has_parent ()
     {
