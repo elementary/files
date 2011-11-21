@@ -77,12 +77,12 @@ public class GOF.Directory.Async : Object
         cancellable.reset ();
     }
 
-    public bool load ()
+    public void load ()
     {
         if (state == State.NOT_LOADED) {
             if (!file.is_mounted) {
                 mount_mountable ();
-                return false;
+                return;
             }
 
             list_directory (location);
@@ -107,9 +107,6 @@ public class GOF.Directory.Async : Object
                     file_loaded (gof);
             done_loading ();
         }
-
-        //FIXME
-        return true; 
     }
 
     private async void mount_mountable ()

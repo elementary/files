@@ -861,17 +861,13 @@ namespace Marlin.Utils
 {
     public string get_parent(string newpath)
     {
-        var path = File.new_for_uri(newpath);
-        if(!path.query_exists())
-            path = File.new_for_path(newpath);
-        return path.get_parent().get_path();
+        var file = File.new_for_commandline_arg (newpath);
+        return file.get_parent ().get_uri ();
     }
 
     public bool has_parent(string newpath)
     {
-        var path = File.new_for_uri(newpath);
-        if(!path.query_exists())
-            path = File.new_for_path(newpath);
-        return path.has_parent(null);
+        var file = File.new_for_commandline_arg (newpath);
+        return (file.get_parent () != null);
     }
 }

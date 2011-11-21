@@ -176,22 +176,9 @@ namespace Marlin.View.Chrome
             ui.ensure_update ();        
         }
         
-
         /**
-         * Load the file list for auto-completion.
-         **/
-        private bool load_file_hash ()
-        {
-            foreach (var file in files.file_hash.get_values())
-            {
-                on_file_loaded ((GOF.File) file);
-            }
-            return false;
-        }
-
-        /**
-         * This function can be called by load_file_hash or it is used as a
-         * callback for files.file_loaded. We check that the file can be used
+         * This function is used as a callback for files.file_loaded. 
+         * We check that the file can be used
          * in auto-completion, if yes we put it in our entry.
          *
          * @param file The file you want to load
@@ -254,37 +241,25 @@ namespace Marlin.View.Chrome
             entry.completion = "";
             autocompleted = false;
 
+                message ("zz1 path %s", path);
             path += entry.text;
+                message ("zz1 path %s %s", path, to_search);
             if(to_search != "")
                 path = Marlin.Utils.get_parent(path);
 
-            /* FIXME new_for_path ?? we got to work with uris */
             if (path != null && path.length > 0)
             {
                 debug ("gof dir load path %s", path);
-                var directory = File.new_for_path(path);
-                //files = new GOF.Directory.Async.from_gfile(directory);
-                files = GOF.Directory.Async.from_gfile(directory);
+                var directory = File.new_for_uri (path);
+                files = GOF.Directory.Async.from_gfile (directory);
                 if(files.file.exists)
                 {
-                    if(files.load())
-                        files.file_loaded.connect(on_file_loaded);
-                    else
-                        Idle.add ((SourceFunc) load_file_hash, Priority.DEFAULT_IDLE);
+                    files.file_loaded.connect(on_file_loaded);
+                    files.load();
                 }
             }
         }
         
-
-        private bool load_file_hash_menu ()
-        {
-            foreach (var file in files_menu.file_hash.get_values ())
-            {
-                on_file_loaded_menu ((GOF.File) file);
-            }
-            return false;
-        }
-
         private void on_file_loaded_menu(GOF.File file)
         {
             if(file.is_directory)
@@ -335,14 +310,10 @@ namespace Marlin.View.Chrome
             menu_x_root = x;
             menu_y_root = y;
             menu = new Menu();
-            /* FIXME new_for_path ?? we got to work with uris */
-            var directory = File.new_for_path(current_right_click_root);
-            //files_menu = new GOF.Directory.Async.from_gfile (directory);
+            var directory = File.new_for_uri (current_right_click_root);
             files_menu = GOF.Directory.Async.from_gfile (directory);
-            if (files_menu.load())
-                files_menu.file_loaded.connect(on_file_loaded_menu);
-            else
-                Idle.add ((SourceFunc) load_file_hash_menu, Priority.DEFAULT_IDLE);
+            files_menu.file_loaded.connect(on_file_loaded_menu);
+            files_menu.load();
 
             menu.popup (null,
                         null,
