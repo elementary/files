@@ -9,19 +9,6 @@
 
 G_BEGIN_DECLS
 
-/* Names for Nautilus's different zoom levels, from tiniest items to largest items */
-typedef enum {
-    NAUTILUS_ZOOM_LEVEL_SMALLEST,
-    NAUTILUS_ZOOM_LEVEL_SMALLER,
-    NAUTILUS_ZOOM_LEVEL_SMALL,
-    NAUTILUS_ZOOM_LEVEL_STANDARD,
-    NAUTILUS_ZOOM_LEVEL_LARGE,
-    NAUTILUS_ZOOM_LEVEL_LARGER,
-    NAUTILUS_ZOOM_LEVEL_LARGEST
-} NautilusZoomLevel;
-
-#define NAUTILUS_ZOOM_LEVEL_N_ENTRIES (NAUTILUS_ZOOM_LEVEL_LARGEST + 1)
-
 /* Nominal icon sizes for each Nautilus zoom level.
  * This scheme assumes that icons are designed to
  * fit in a square space, though each image needn't
@@ -67,29 +54,10 @@ gboolean              nautilus_icon_info_is_fallback                  (NautilusI
 GdkPixbuf *           nautilus_icon_info_get_pixbuf_nodefault         (NautilusIconInfo  *icon);
 /*GdkPixbuf *           nautilus_icon_info_get_pixbuf_nodefault_at_size (NautilusIconInfo  *icon,
                                                                        gsize              forced_size);*/
-GdkPixbuf *           nautilus_icon_info_get_pixbuf_at_size           (NautilusIconInfo  *icon,
-                                                                       gsize              forced_size);
-gboolean              nautilus_icon_info_get_embedded_rect            (NautilusIconInfo  *icon,
-                                                                       GdkRectangle      *rectangle);
-gboolean              nautilus_icon_info_get_attach_points            (NautilusIconInfo  *icon,
-                                                                       GdkPoint         **points,
-                                                                       gint              *n_points);
-G_CONST_RETURN char  *nautilus_icon_info_get_display_name             (NautilusIconInfo  *icon);
-G_CONST_RETURN char  *nautilus_icon_info_get_used_name                (NautilusIconInfo  *icon);
+/*GdkPixbuf *           nautilus_icon_info_get_pixbuf_at_size           (NautilusIconInfo  *icon,
+                                                                       gsize              forced_size);*/
 
 void                  nautilus_icon_info_clear_caches                 (void);
-
-/* Relationship between zoom levels and icons sizes. */
-guint nautilus_get_icon_size_for_zoom_level          (NautilusZoomLevel  zoom_level);
-float nautilus_get_relative_icon_size_for_zoom_level (NautilusZoomLevel  zoom_level);
-
-guint nautilus_icon_get_larger_icon_size             (guint              size);
-guint nautilus_icon_get_smaller_icon_size            (guint              size);
-
-gint  nautilus_get_icon_size_for_stock_size          (GtkIconSize        size);
-guint nautilus_icon_get_emblem_size_for_icon_size    (guint              size);
-
-//void                  nautilus_icon_info_clear_caches (void);
 
 G_END_DECLS
 

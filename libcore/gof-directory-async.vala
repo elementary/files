@@ -49,6 +49,7 @@ public class GOF.Directory.Async : Object
     public signal void file_added (GOF.File file);
     public signal void file_changed (GOF.File file);
     public signal void file_deleted (GOF.File file);
+    public signal void icon_changed (GOF.File file);
     public signal void done_loading ();
 
     private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*";
@@ -214,8 +215,10 @@ public class GOF.Directory.Async : Object
 
     private void changed_and_refresh (GOF.File gof) {
         gof.update ();
-        if (!gof.is_hidden || show_hidden_files)
+        if (!gof.is_hidden || show_hidden_files) {
             file_changed (gof);
+            gof.changed ();
+        }
     }
 
     private void add_and_refresh (GOF.File gof) {
@@ -237,9 +240,9 @@ public class GOF.Directory.Async : Object
         GOF.File gof = GOF.File.get (_file);
 
         switch (event) {
-        case FileMonitorEvent.ATTRIBUTE_CHANGED:
+        /*case FileMonitorEvent.ATTRIBUTE_CHANGED:*/
         case FileMonitorEvent.CHANGES_DONE_HINT:
-            //message ("file changed %s", gof.uri);
+            message ("file changed %s", gof.uri);
             query_info_async (gof, changed_and_refresh);
             break;
         case FileMonitorEvent.DELETED:

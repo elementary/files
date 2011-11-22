@@ -20,7 +20,6 @@
 //#include <config.h>
 #include <string.h>
 #include "nautilus-icon-info.h"
-//#include "nautilus-default-file-icon.h"
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 #include "eel-gdk-pixbuf-extensions.h"
@@ -120,10 +119,12 @@ nautilus_icon_info_new_for_pixbuf (GdkPixbuf *pixbuf)
     NautilusIconInfo *icon;
 
     icon = g_object_new (NAUTILUS_TYPE_ICON_INFO, NULL);
+    icon->pixbuf = pixbuf;
 
-    if (pixbuf) {
+    /* TODO remove this after test */
+    /*if (pixbuf) {
         icon->pixbuf = g_object_ref (pixbuf);
-    }
+    }*/
 
     return icon;
 }
@@ -343,26 +344,26 @@ nautilus_icon_info_lookup (GIcon *icon, int size)
         lookup_key.icon = icon;
         lookup_key.size = size;
 
-        icon_info = g_hash_table_lookup (loadable_icon_cache, &lookup_key);
+        /*icon_info = g_hash_table_lookup (loadable_icon_cache, &lookup_key);
         if (icon_info) {
             return g_object_ref (icon_info);
-        }
+        }*/
 
         stream = g_loadable_icon_load (G_LOADABLE_ICON (icon),
                                        size,
                                        NULL, NULL, NULL);
         if (stream) {
-            //g_message ("%s stream\n", G_STRFUNC);
+            //g_message ("%s stream %s\n", G_STRFUNC, g_icon_to_string (icon));
             pixbuf = eel_gdk_pixbuf_load_from_stream_at_size (stream, size);
             g_object_unref (stream);
         }
 
-        icon_info = nautilus_icon_info_new_for_pixbuf (pixbuf);
-
+        /*icon_info = nautilus_icon_info_new_for_pixbuf (pixbuf);
         key = loadable_icon_key_new (icon, size);
         g_hash_table_insert (loadable_icon_cache, key, icon_info);
 
-        return g_object_ref (icon_info);
+        return g_object_ref (icon_info);*/
+        return nautilus_icon_info_new_for_pixbuf (pixbuf);
     } else if (G_IS_THEMED_ICON (icon)) {
         const char * const *names;
         ThemedIconKey lookup_key;
@@ -553,146 +554,5 @@ nautilus_icon_info_get_pixbuf_at_size (NautilusIconInfo  *icon,
                                              GDK_INTERP_BILINEAR);
     g_object_unref (pixbuf);
     return scaled_pixbuf;
-}
-
-gboolean
-nautilus_icon_info_get_embedded_rect (NautilusIconInfo  *icon,
-                                      GdkRectangle      *rectangle)
-{
-    *rectangle = icon->embedded_rect;
-    return icon->got_embedded_rect;
-}
-
-gboolean
-nautilus_icon_info_get_attach_points (NautilusIconInfo  *icon,
-                                      GdkPoint         **points,
-                                      gint              *n_points)
-{
-    *n_points = icon->n_attach_points;
-    *points = icon->attach_points;
-    return icon->n_attach_points != 0;
-}
-
-G_CONST_RETURN char *
-nautilus_icon_info_get_display_name   (NautilusIconInfo  *icon)
-{
-    return icon->display_name;
-}
-
-G_CONST_RETURN char *
-nautilus_icon_info_get_used_name (NautilusIconInfo  *icon)
-{
-    return icon->icon_name;
-}
-
-/* Return nominal icon size for given zoom level.
- * @zoom_level: zoom level for which to find matching icon size.
- *
- * Return value: icon size between NAUTILUS_ICON_SIZE_SMALLEST and
- * NAUTILUS_ICON_SIZE_LARGEST, inclusive.
- */
-guint
-nautilus_get_icon_size_for_zoom_level (NautilusZoomLevel zoom_level)
-{
-    switch (zoom_level) {
-    case NAUTILUS_ZOOM_LEVEL_SMALLEST:
-        return NAUTILUS_ICON_SIZE_SMALLEST;
-    case NAUTILUS_ZOOM_LEVEL_SMALLER:
-        return NAUTILUS_ICON_SIZE_SMALLER;
-    case NAUTILUS_ZOOM_LEVEL_SMALL:
-        return NAUTILUS_ICON_SIZE_SMALL;
-    case NAUTILUS_ZOOM_LEVEL_STANDARD:
-        return NAUTILUS_ICON_SIZE_STANDARD;
-    case NAUTILUS_ZOOM_LEVEL_LARGE:
-        return NAUTILUS_ICON_SIZE_LARGE;
-    case NAUTILUS_ZOOM_LEVEL_LARGER:
-        return NAUTILUS_ICON_SIZE_LARGER;
-    case NAUTILUS_ZOOM_LEVEL_LARGEST:
-        return NAUTILUS_ICON_SIZE_LARGEST;
-    }
-    g_return_val_if_reached (NAUTILUS_ICON_SIZE_STANDARD);
-}
-
-float
-nautilus_get_relative_icon_size_for_zoom_level (NautilusZoomLevel zoom_level)
-{
-    return (float)nautilus_get_icon_size_for_zoom_level (zoom_level) / NAUTILUS_ICON_SIZE_STANDARD;
-}
-
-guint
-nautilus_icon_get_larger_icon_size (guint size)
-{
-    if (size < NAUTILUS_ICON_SIZE_SMALLEST) {
-        return NAUTILUS_ICON_SIZE_SMALLEST;
-    }
-    if (size < NAUTILUS_ICON_SIZE_SMALLER) {
-        return NAUTILUS_ICON_SIZE_SMALLER;
-    }
-    if (size < NAUTILUS_ICON_SIZE_SMALL) {
-        return NAUTILUS_ICON_SIZE_SMALL;
-    }
-    if (size < NAUTILUS_ICON_SIZE_STANDARD) {
-        return NAUTILUS_ICON_SIZE_STANDARD;
-    }
-    if (size < NAUTILUS_ICON_SIZE_LARGE) {
-        return NAUTILUS_ICON_SIZE_LARGE;
-    }
-    if (size < NAUTILUS_ICON_SIZE_LARGER) {
-        return NAUTILUS_ICON_SIZE_LARGER;
-    }
-    return NAUTILUS_ICON_SIZE_LARGEST;
-}
-
-guint
-nautilus_icon_get_smaller_icon_size (guint size)
-{
-    if (size > NAUTILUS_ICON_SIZE_LARGEST) {
-        return NAUTILUS_ICON_SIZE_LARGEST;
-    }
-    if (size > NAUTILUS_ICON_SIZE_LARGER) {
-        return NAUTILUS_ICON_SIZE_LARGER;
-    }
-    if (size > NAUTILUS_ICON_SIZE_LARGE) {
-        return NAUTILUS_ICON_SIZE_LARGE;
-    }
-    if (size > NAUTILUS_ICON_SIZE_STANDARD) {
-        return NAUTILUS_ICON_SIZE_STANDARD;
-    }
-    if (size > NAUTILUS_ICON_SIZE_SMALL) {
-        return NAUTILUS_ICON_SIZE_SMALL;
-    }
-    if (size > NAUTILUS_ICON_SIZE_SMALLER) {
-        return NAUTILUS_ICON_SIZE_SMALLER;
-    }
-    return NAUTILUS_ICON_SIZE_SMALLEST;
-}
-
-gint
-nautilus_get_icon_size_for_stock_size (GtkIconSize size)
-{
-    gint w, h;
-
-    if (gtk_icon_size_lookup (size, &w, &h)) {
-        return MAX (w, h);
-    }
-    return NAUTILUS_ZOOM_LEVEL_STANDARD;
-}
-
-
-guint
-nautilus_icon_get_emblem_size_for_icon_size (guint size)
-{
-    if (size >= 96)
-        return 48;
-    if (size >= 64)
-        return 32;
-    if (size >= 48)
-        return 24;
-    if (size >= 24)
-        return 16;
-    if (size >= 16)
-        return 12;
-
-    return 0; /* no emblems for smaller sizes */
 }
 

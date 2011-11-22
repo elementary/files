@@ -49,7 +49,7 @@ namespace Marlin.View {
         }
 
         private Window window;
-        private Gdk.Pixbuf? icon {
+        private Gdk.Pixbuf? pixbuf {
             set{
                 if (value != null)
                     evbox.set_from_pixbuf (value);
@@ -65,6 +65,7 @@ namespace Marlin.View {
         private bool should_sync;
 
         private GOF.File? last_gof = null;
+        private ulong icon_changed_callback = 0;
         private unowned GLib.List<GOF.File>? last_selection = null;
 
         private Orientation _orientation = Orientation.HORIZONTAL;
@@ -223,8 +224,14 @@ namespace Marlin.View {
                 icon_size_req = alloc.height.clamp (height, 256);
             }
 
+            /*if (last_gof.thumbnail_path != null) {
+                //pixbuf = yield Pixbuf from_stream_at_scale_async ();
+                pixbuf = new Pixbuf.from_file (last_gof.thumbnail_path);
+            }*/
+
             last_gof.update_icon (icon_size_req);
-            icon = last_gof.pix;
+            pixbuf = last_gof.pix;
+            //pixbuf = last_gof.get_icon_pixbuf (icon_size_req, false, GOF.FileIconFlags.USE_THUMBNAILS);
             
             /* TODO ask tumbler a LARGE thumb for size > 128 */
             /*if (should_sync && (icon_size_req > w_width/2 || icon_size_req > w_height/2))
@@ -232,6 +239,11 @@ namespace Marlin.View {
         }
 
         public void update(GLib.List<GOF.File>? selection = null) {
+            if (icon_changed_callback > 0) {
+                Source.remove((uint) icon_changed_callback);
+                icon_changed_callback = 0;
+            }
+
             if (selection != null && selection.data != null) {
                 last_gof = selection.data as GOF.File;
                 last_selection = selection;
@@ -246,6 +258,11 @@ namespace Marlin.View {
                 return;
             if (last_gof.info == null)
                 return;
+
+            icon_changed_callback = last_gof.icon_changed.connect (() => {
+                if (should_sync) 
+                    update_icon ();
+            });
 
             //SPOTTED!
             //critical ("ctx pane update");

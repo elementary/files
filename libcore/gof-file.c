@@ -57,9 +57,10 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 #define ICON_NAME_THUMBNAIL_LOADING   "image-loading"
 
     enum {
-        //CHANGED,
+        CHANGED,
         //UPDATED_DEEP_COUNT_IN_PROGRESS,
         INFO_AVAILABLE,
+        ICON_CHANGED,
         DESTROY,
         LAST_SIGNAL
     };
@@ -126,7 +127,8 @@ GOFFile    *gof_file_new (GFile *location, GFile *dir)
     return (file);
 }
 
-void    gof_file_changed (GOFFile *file)
+static void
+gof_file_icon_changed (GOFFile *file)
 {
     GOFDirectoryAsync *dir;
 
@@ -134,10 +136,11 @@ void    gof_file_changed (GOFFile *file)
     dir = gof_directory_async_cache_lookup (file->directory);
     if (dir != NULL) {
         if (!file->is_hidden || dir->show_hidden_files)
-            g_signal_emit_by_name (dir, "file_changed", file);
+            g_signal_emit_by_name (dir, "icon_changed", file);
         
         g_object_unref (dir);
     }
+    g_signal_emit_by_name (file, "icon_changed");
 }
 
 static void 
@@ -303,7 +306,8 @@ void    gof_file_update (GOFFile *file)
     if (file->is_directory) {
         gof_file_get_folder_icon_from_uri_or_path (file);
     } else {
-        file->icon = g_content_type_get_icon (file->ftype);
+        if (file->ftype != NULL)
+            file->icon = g_content_type_get_icon (file->ftype);
     }
 
     file->thumbnail_path =  g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
@@ -346,6 +350,45 @@ void    gof_file_update (GOFFile *file)
     gof_file_update_emblem (file);
 }
 
+static NautilusIconInfo *
+gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
+{
+    NautilusIconInfo *icon;
+    GIcon *gicon;
+
+    if (file == NULL) 
+        return NULL;
+
+    //printf ("%s %s %s\n", G_STRFUNC, file->name, file->thumbnail_path);
+    if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS) {
+        if (file->thumbnail_path != NULL) {
+            //printf("show thumb %d\n", size);
+            icon = nautilus_icon_info_lookup_from_path (file->thumbnail_path, size);
+            return icon;
+        }
+    }
+
+    if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
+        && file->flags == GOF_FILE_THUMB_STATE_LOADING) {
+        gicon = g_themed_icon_new (ICON_NAME_THUMBNAIL_LOADING);
+        //printf ("thumbnail loading\n");
+    } else { 
+        gicon = g_object_ref (file->icon);
+    }
+
+    if (gicon) {
+        icon = nautilus_icon_info_lookup (gicon, size);
+        if (nautilus_icon_info_is_fallback(icon)) {
+            g_object_unref (icon);
+            icon = nautilus_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
+        }
+        g_object_unref (gicon);
+        return icon;
+    } else {
+        return nautilus_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
+    }
+}
+
 static GdkPixbuf 
 *ensure_pixbuf_from_nicon (GOFFile *file, gint size, NautilusIconInfo *nicon)
 {
@@ -365,7 +408,7 @@ static GdkPixbuf
 /* TODO check this fct we shouldn't store the pixbuf in GOF */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
-    NautilusIconInfo *nicon;
+    NautilusIconInfo *nicon = NULL;
 
     if (file->custom_icon_name != NULL) {
         if (g_path_is_absolute (file->custom_icon_name)) 
@@ -405,7 +448,7 @@ void gof_file_update_emblem (GOFFile *file)
     /* TODO update signal on real change */
     //g_warning ("update emblem %s", file.uri);
     if (file->emblems_list != NULL)
-        gof_file_changed (file); 
+        gof_file_icon_changed (file); 
 }
 
 void gof_file_add_emblem (GOFFile* file, const gchar* emblem)
@@ -418,7 +461,7 @@ void gof_file_add_emblem (GOFFile* file, const gchar* emblem)
         emblems = g_list_next(emblems);
     }
     file->emblems_list = g_list_append(file->emblems_list, (void*)emblem);
-    gof_file_changed (file);
+    gof_file_icon_changed (file);
 }
 
 static void
@@ -536,6 +579,8 @@ static void gof_file_init (GOFFile *file) {
     /* assume the file is mounted by default */
     file->is_mounted = TRUE;
     file->exists = TRUE;
+    
+    file->flags = 0;
 }
 
 static void gof_file_finalize (GObject* obj) {
@@ -573,10 +618,10 @@ static void gof_file_class_init (GOFFileClass * klass) {
       G_OBJECT_CLASS (klass)->set_property = gof_file_set_property;*/
     G_OBJECT_CLASS (klass)->finalize = gof_file_finalize;
 
-    signals[INFO_AVAILABLE] = g_signal_new ("info_available",
+    signals[CHANGED] = g_signal_new ("changed",
                                     G_TYPE_FROM_CLASS (klass),
                                     G_SIGNAL_RUN_LAST,
-                                    G_STRUCT_OFFSET (GOFFileClass, info_available),
+                                    G_STRUCT_OFFSET (GOFFileClass, changed),
                                     NULL, NULL,
                                     g_cclosure_marshal_VOID__VOID,
                                     G_TYPE_NONE, 0);
@@ -589,6 +634,22 @@ static void gof_file_class_init (GOFFileClass * klass) {
                                     g_cclosure_marshal_VOID__VOID,
                                     G_TYPE_NONE, 0);
 
+
+    signals[INFO_AVAILABLE] = g_signal_new ("info_available",
+                                    G_TYPE_FROM_CLASS (klass),
+                                    G_SIGNAL_RUN_LAST,
+                                    G_STRUCT_OFFSET (GOFFileClass, info_available),
+                                    NULL, NULL,
+                                    g_cclosure_marshal_VOID__VOID,
+                                    G_TYPE_NONE, 0);
+
+    signals[ICON_CHANGED] = g_signal_new ("icon_changed",
+                                    G_TYPE_FROM_CLASS (klass),
+                                    G_SIGNAL_RUN_LAST,
+                                    G_STRUCT_OFFSET (GOFFileClass, icon_changed),
+                                    NULL, NULL,
+                                    g_cclosure_marshal_VOID__VOID,
+                                    G_TYPE_NONE, 0);
 
     /*g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_NAME, g_param_spec_string ("name", "name", "name", NULL, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));
       g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_SIZE, g_param_spec_uint64 ("size", "size", "size", 0, G_MAXUINT64, 0U, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));
@@ -907,44 +968,6 @@ gof_files_get_location_list (GList *files)
 }
 
 
-NautilusIconInfo *
-gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
-{
-    NautilusIconInfo *icon;
-    GIcon *gicon;
-
-    if (file == NULL) 
-        return NULL;
-
-    //printf ("%s %s %s\n", G_STRFUNC, file->name, file->thumbnail_path);
-    if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS) {
-        if (file->thumbnail_path != NULL) {
-            //printf("show thumb %d\n", size);
-            icon = nautilus_icon_info_lookup_from_path (file->thumbnail_path, size);
-            return icon;
-        }
-    }
-
-    if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
-        && file->flags == GOF_FILE_THUMB_STATE_LOADING) {
-        gicon = g_themed_icon_new (ICON_NAME_THUMBNAIL_LOADING);
-        //printf ("thumbnail loading\n");
-    } else { 
-        gicon = g_object_ref (file->icon);
-    }
-
-    if (gicon) {
-        icon = nautilus_icon_info_lookup (gicon, size);
-        if (nautilus_icon_info_is_fallback(icon)) {
-            g_object_unref (icon);
-            icon = nautilus_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
-        }
-        g_object_unref (gicon);
-        return icon;
-    } else {
-        return nautilus_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
-    }
-}
 
 GdkPixbuf *
 gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileIconFlags flags)
@@ -1118,12 +1141,12 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 
     /* set the new thumbnail state */
     file->flags = (file->flags & ~GOF_FILE_THUMB_STATE_MASK) | (state);
-    if (file->flags == GOF_FILE_THUMB_STATE_READY)
+    if (file->flags == GOF_FILE_THUMB_STATE_READY) 
         gof_file_query_thumbnail_update (file);
 
     /* notify others of this change, so that all components can update
      * their file information */
-    gof_file_changed (file);
+    gof_file_icon_changed (file);
 }
 
 GOFFile* gof_file_cache_lookup (GFile *location)
@@ -1786,7 +1809,7 @@ gof_file_operation_complete (GOFFileOperation *op, GFile *result_file, GError *e
      * as "changing back".
      */
     gof_file_operation_remove (op);
-    //gof_file_changed (op->file);
+    //gof_file_icon_changed (op->file);
     if (op->callback) {
         (* op->callback) (op->file, result_file, error, op->callback_data);
     }

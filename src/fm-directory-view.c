@@ -268,15 +268,15 @@ file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryVie
 static void
 file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-    g_debug ("%s %s %d\n", G_STRFUNC, file->uri, file->flags);
     /*if (!file->exists) 
         return;*/
     g_return_if_fail (file != NULL);
     g_return_if_fail (file->exists);
 
+    g_debug ("%s %s %d\n", G_STRFUNC, file->uri, file->flags);
     fm_list_model_file_changed (view->model, file, directory);
-    /*marlin_thumbnailer_queue_file (view->details->thumbnailer, file,
-                                   &view->details->thumbnail_request);*/
+    guint id;
+    marlin_thumbnailer_queue_file (view->details->thumbnailer, file, &id);
 }
 
 static void
@@ -303,6 +303,16 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
 }
 
 static void
+icon_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
+{
+    g_return_if_fail (file != NULL);
+    g_return_if_fail (file->exists);
+
+    g_debug ("%s %s %d\n", G_STRFUNC, file->uri, file->flags);
+    fm_list_model_file_changed (view->model, file, directory);
+}
+
+static void
 fm_directory_view_connect_directory_handlers (FMDirectoryView *view, GOFDirectoryAsync *directory)
 {
     g_signal_connect (directory, "file_loaded", 
@@ -315,6 +325,8 @@ fm_directory_view_connect_directory_handlers (FMDirectoryView *view, GOFDirector
                       G_CALLBACK (file_deleted_callback), view);
     g_signal_connect (directory, "done_loading", 
                       G_CALLBACK (directory_done_loading_callback), view);
+    g_signal_connect (directory, "icon_changed", 
+                      G_CALLBACK (icon_changed_callback), view);
 }
 
 static void
@@ -326,6 +338,7 @@ fm_directory_view_disconnect_directory_handlers (FMDirectoryView *view,
     g_signal_handlers_disconnect_by_func (directory, file_changed_callback, view);
     g_signal_handlers_disconnect_by_func (directory, file_deleted_callback, view);
     g_signal_handlers_disconnect_by_func (directory, directory_done_loading_callback, view);
+    g_signal_handlers_disconnect_by_func (directory, icon_changed_callback, view);
 }
 
 void
@@ -501,6 +514,7 @@ fm_directory_view_finalize (GObject *object)
 
     /* release the thumbnailer */
     g_object_unref (view->details->thumbnailer);
+
 
     //TODO
     /* release the drag path list (just in case the drag-end wasn't fired before) */
@@ -2162,7 +2176,7 @@ fm_directory_view_request_thumbnails (FMDirectoryView *view)
     GtkTreeIter  iter;
     GOFFile     *file;
     gboolean     valid_iter;
-    GList       *visible_files = NULL;
+    GList       *files = NULL;
 
     g_return_val_if_fail (FM_IS_DIRECTORY_VIEW (view), FALSE);
 
@@ -2170,7 +2184,7 @@ fm_directory_view_request_thumbnails (FMDirectoryView *view)
     /* reschedule the source if we're still loading the folder */
     if (fm_directory_view_get_loading (FM_DIRECTORY_VIEW (view)))
     {
-        g_debug ("weird, this should never happen");
+        g_debug ("%s: weird, this should never happen", G_STRFUNC);
         return TRUE;
     }
 
@@ -2188,7 +2202,11 @@ fm_directory_view_request_thumbnails (FMDirectoryView *view)
             /* prepend the file to the visible items list */
             file = fm_list_model_file_for_iter (view->model, &iter);
             //printf ("%s %s\n", G_STRFUNC, file->uri);
-            visible_files = g_list_prepend (visible_files, file);
+
+            /* only ask thumbnails once per file */
+            if (file->flags == 0) {
+                files = g_list_prepend (files, g_object_ref (file));
+            }
 
             /* check if we've reached the end of the visible range */
             path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), &iter);
@@ -2204,12 +2222,13 @@ fm_directory_view_request_thumbnails (FMDirectoryView *view)
             gtk_tree_path_free (path);
         }
 
-        /* queue a thumbnail request */
-        marlin_thumbnailer_queue_files (view->details->thumbnailer, visible_files,
-                                        &view->details->thumbnail_request);
-
-        /* release the file list */
-        g_list_free_full (visible_files, g_object_unref);
+        if (files != NULL) {
+            /* queue a thumbnail request */
+            marlin_thumbnailer_queue_files (view->details->thumbnailer, files,
+                                            &view->details->thumbnail_request);
+            /* release the file list */
+            g_list_free_full (files, g_object_unref);
+        }
 
         /* release the start and end path */
         gtk_tree_path_free (start_path);

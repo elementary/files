@@ -131,7 +131,6 @@ namespace GOF {
         public unowned string thumbnail_path;
         public uint flags;
         public string get_formated_time (string attr);
-        public Nautilus.IconInfo get_icon (int size, FileIconFlags flags);
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
 
         public bool is_mounted;
@@ -154,7 +153,9 @@ namespace GOF {
 
         public GLib.List? get_settable_group_names ();
             
+        public signal void changed ();
         public signal void info_available ();
+        public signal void icon_changed ();
     }
 
     [CCode (cheader_filename = "gof-file.h")]

@@ -167,9 +167,9 @@ add_place (MarlinPlacesSidebar *sidebar,
 
     pixbuf = NULL;
     g_object_get(sidebar, "icon-size", &icon_size, NULL);
-    //g_settings_get_int (settings, MARLIN_PREFERENCES_SIDEBAR_ICON_SIZE);
+
     if (icon_size <= 0)
-        icon_size = nautilus_get_icon_size_for_stock_size (GTK_ICON_SIZE_MENU);
+        icon_size = GTK_ICON_SIZE_MENU;
     if (icon) {
         icon_info = nautilus_icon_info_lookup (icon, icon_size);
 
@@ -215,9 +215,9 @@ add_place (MarlinPlacesSidebar *sidebar,
                         PLACES_SIDEBAR_COLUMN_DISK_SIZE, 0,
                         -1);
 
-    if (pixbuf != NULL) {
+    if (pixbuf != NULL)
         g_object_unref (pixbuf);
-    }
+    
     return iter;
 }
 

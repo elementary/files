@@ -116,9 +116,10 @@ struct _GOFFileClass {
     GObjectClass parent_class;
 
     /* Called when the file notices any change. */
-    //void            (* changed)             (GOFFile *file);
-    void            (* info_available)      (GOFFile *file);
+    void            (* changed)             (GOFFile *file);
     void            (* destroy)             (GOFFile *file);
+    void            (* info_available)      (GOFFile *file);
+    void            (* icon_changed)        (GOFFile *file);
 
 };
 
@@ -155,7 +156,6 @@ typedef struct {
 GType gof_file_get_type (void);
 
 GOFFile         *gof_file_new (GFile *location, GFile *dir);
-void            gof_file_changed (GOFFile *file);
 
 void            gof_file_update (GOFFile *file);
 void            gof_file_query_update (GOFFile *file);
@@ -183,7 +183,6 @@ GList           *gof_file_get_location_list (GList *files);
 void            gof_file_list_free (GList *list);
 GList           *gof_file_list_ref (GList *list);
 GList           *gof_file_list_copy (GList *list);
-NautilusIconInfo    *gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags);
 GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileIconFlags flags);
 gboolean        gof_file_is_writable (GOFFile *file);
 gboolean        gof_file_is_trashed (GOFFile *file);
