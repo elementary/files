@@ -33,7 +33,8 @@
 #include <libgail-util/gailmisc.h>
 #include <libgail-util/gailtextutil.h>
 
-#include <glib/gi18n-lib.h>
+//#include <glib/gi18n-lib.h>
+#include "marlin-intl.h"
 #include <pango/pango.h>
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
@@ -340,15 +341,15 @@ eel_editable_label_class_init (EelEditableLabelClass *class)
   g_object_class_install_property (gobject_class,
                                    PROP_TEXT,
                                    g_param_spec_string ("text",
-                                                        _("Text"),
-                                                        _("The text of the label."),
+                                                        P_("Text"),
+                                                        P_("The text of the label."),
                                                         NULL,
                                                         G_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
 				   PROP_JUSTIFY,
                                    g_param_spec_enum ("justify",
-                                                      _("Justification"),
-                                                      _("The alignment of the lines in the text of the label relative to each other. This does NOT affect the alignment of the label within its allocation. See GtkMisc::xalign for that."),
+                                                      P_("Justification"),
+                                                      P_("The alignment of the lines in the text of the label relative to each other. This does NOT affect the alignment of the label within its allocation. See GtkMisc::xalign for that."),
 						      GTK_TYPE_JUSTIFICATION,
 						      GTK_JUSTIFY_LEFT,
                                                       G_PARAM_READWRITE));
@@ -356,24 +357,24 @@ eel_editable_label_class_init (EelEditableLabelClass *class)
   g_object_class_install_property (gobject_class,
                                    PROP_WRAP,
                                    g_param_spec_boolean ("wrap",
-                                                        _("Line wrap"),
-                                                        _("If set, wrap lines if the text becomes too wide."),
+                                                        P_("Line wrap"),
+                                                        P_("If set, wrap lines if the text becomes too wide."),
                                                         FALSE,
                                                         G_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_SMALL_SIZE,
                                    g_param_spec_boolean ("small_size",
-                                                        _("Small size"),
-                                                        _("If set, use small size text."),
+                                                        P_("Small size"),
+                                                        P_("If set, use small size text."),
                                                         FALSE,
                                                         G_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
                                    PROP_CURSOR_POSITION,
                                    g_param_spec_int ("cursor_position",
-                                                     _("Cursor Position"),
-                                                     _("The current position of the insertion cursor in chars."),
+                                                     P_("Cursor Position"),
+                                                     P_("The current position of the insertion cursor in chars."),
                                                      0,
                                                      G_MAXINT,
                                                      0,
@@ -382,8 +383,8 @@ eel_editable_label_class_init (EelEditableLabelClass *class)
   g_object_class_install_property (gobject_class,
                                    PROP_SELECTION_BOUND,
                                    g_param_spec_int ("selection_bound",
-                                                     _("Selection Bound"),
-                                                     _("The position of the opposite end of the selection from the cursor in chars."),
+                                                     P_("Selection Bound"),
+                                                     P_("The position of the opposite end of the selection from the cursor in chars."),
                                                      0,
                                                      G_MAXINT,
                                                      0,
