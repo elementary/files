@@ -204,6 +204,7 @@ gboolean        gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_
 gboolean        gof_file_launch (GOFFile  *file, GdkScreen *screen);
 GAppInfo        *gof_file_get_default_handler (GOFFile *file);
 
+void            gof_file_icon_changed (GOFFile *file);
 void            gof_file_rename (GOFFile *file,
                                  const char *new_name,
                                  GOFFileOperationCallback callback,

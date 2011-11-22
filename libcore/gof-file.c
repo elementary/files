@@ -127,8 +127,7 @@ GOFFile    *gof_file_new (GFile *location, GFile *dir)
     return (file);
 }
 
-static void
-gof_file_icon_changed (GOFFile *file)
+void    gof_file_icon_changed (GOFFile *file)
 {
     GOFDirectoryAsync *dir;
 
