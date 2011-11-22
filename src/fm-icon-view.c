@@ -26,7 +26,6 @@
 #include <gdk/gdkkeysyms.h>
 
 //#include "gof-directory-async.h"
-#include "nautilus-cell-renderer-text-ellipsized.h"
 #include "eel-glib-extensions.h"
 #include "eel-gtk-extensions.h"
 #include "eel-editable-label.h"

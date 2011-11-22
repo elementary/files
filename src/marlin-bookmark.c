@@ -23,8 +23,6 @@
 
 #include <config.h>
 #include "marlin-bookmark.h"
-
-#include "nautilus-icon-info.h"
 #include "marlin-icons.h"
 
 enum {

@@ -33,7 +33,7 @@
 #include <gio/gio.h>
 #include "gof-file.h"
 #include "gof-window-slot.h"
-#include "nautilus-icon-info.h"
+#include "marlin-icon-info.h"
 #include "marlin-places-sidebar.h"
 #include "marlin-vala.h"
 #include "marlin-view-window.h"
@@ -103,11 +103,11 @@ static GdkPixbuf *
 get_eject_icon (gboolean highlighted)
 {
     GdkPixbuf *eject;
-    NautilusIconInfo *eject_icon_info;
+    MarlinIconInfo *eject_icon_info;
     int icon_size = 16;
 
-    eject_icon_info = nautilus_icon_info_lookup_from_name ("media-eject-symbolic", icon_size);
-    eject = nautilus_icon_info_get_pixbuf_at_size (eject_icon_info, icon_size);
+    eject_icon_info = marlin_icon_info_lookup_from_name ("media-eject-symbolic", icon_size);
+    eject = marlin_icon_info_get_pixbuf_at_size (eject_icon_info, icon_size);
 
     if (highlighted) {
         GdkPixbuf *high;
@@ -160,7 +160,7 @@ add_place (MarlinPlacesSidebar *sidebar,
     GdkPixbuf           *pixbuf;
     GtkTreeIter          iter, child_iter;
     GdkPixbuf	        *eject;
-    NautilusIconInfo    *icon_info;
+    MarlinIconInfo      *icon_info;
     gint icon_size;
     gboolean show_eject, show_unmount;
     gboolean show_eject_button;
@@ -171,9 +171,9 @@ add_place (MarlinPlacesSidebar *sidebar,
     if (icon_size <= 0)
         icon_size = GTK_ICON_SIZE_MENU;
     if (icon) {
-        icon_info = nautilus_icon_info_lookup (icon, icon_size);
+        icon_info = marlin_icon_info_lookup (icon, icon_size);
 
-        pixbuf = nautilus_icon_info_get_pixbuf_nodefault (icon_info);
+        pixbuf = marlin_icon_info_get_pixbuf_nodefault (icon_info);
         g_object_unref (icon_info);
     }
 
@@ -2999,8 +2999,9 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                                              sidebar,
                                              NULL);
 
+    /* TODO check eject/expander align */
     /* this is required to align the eject buttons to the right */
-    gtk_tree_view_column_set_max_width (GTK_TREE_VIEW_COLUMN (col), NAUTILUS_ICON_SIZE_SMALLER);
+    gtk_tree_view_column_set_max_width (GTK_TREE_VIEW_COLUMN (col), 24);
     gtk_tree_view_column_set_expand(col, TRUE);
     gtk_tree_view_append_column (tree_view, col);
 

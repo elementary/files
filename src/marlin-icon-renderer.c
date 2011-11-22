@@ -859,16 +859,16 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
     /* add remove helpers +/- */
     GdkPixbuf *pix;
-    NautilusIconInfo *nicon;
+    MarlinIconInfo *nicon;
 
     if (priv->selection_helpers &&
         (flags & GTK_CELL_RENDERER_PRELIT) != 0)
     {
         if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
-            nicon = nautilus_icon_info_lookup_from_name ("remove", 16);
+            nicon = marlin_icon_info_lookup_from_name ("remove", 16);
         else
-            nicon = nautilus_icon_info_lookup_from_name ("add", 16);
-        pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+            nicon = marlin_icon_info_lookup_from_name ("add", 16);
+        pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
         gdk_cairo_set_source_pixbuf (cr, pix, pix_rect.x, pix_rect.y);
         cairo_paint (cr);
         
@@ -885,8 +885,8 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         while(emblems != NULL && position < 4)
         {
             /* check if we have the emblem in the icon theme */
-            nicon = nautilus_icon_info_lookup_from_name (emblems->data, MARLIN_EMBLEM_SIZE);
-            pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+            nicon = marlin_icon_info_lookup_from_name (emblems->data, MARLIN_EMBLEM_SIZE);
+            pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
             if(pix == NULL) {
                 g_warning ("Can't load icon %s", (char *) emblems->data);
                 return;

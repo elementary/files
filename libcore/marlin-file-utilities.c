@@ -30,6 +30,8 @@
 #include <glib/gprintf.h>
 #include <glib/gi18n.h>
 
+#include "marlin-file-operations.h"
+
 /*#include "nautilus-global-preferences.h"
 #include "nautilus-lib-self-check-functions.h"
 #include "nautilus-metadata.h"

@@ -27,7 +27,7 @@
 
 #include "exo-tree-view.h"
 //#include "gof-directory-async.h"
-#include "nautilus-cell-renderer-text-ellipsized.h"
+#include "marlin-cell-renderer-text-ellipsized.h"
 #include "eel-glib-extensions.h"
 #include "eel-gtk-extensions.h"
 #include "marlin-tags.h"
@@ -679,7 +679,7 @@ create_and_set_up_tree_view (FMListView *view)
             gtk_tree_view_column_set_attributes (col, FM_DIRECTORY_VIEW (view)->icon_renderer,
                                                  "file",  FM_LIST_MODEL_FILE_COLUMN, NULL);
 
-            renderer = nautilus_cell_renderer_text_ellipsized_new ();
+            renderer = marlin_cell_renderer_text_ellipsized_new ();
            	view->details->file_name_cell = (GtkCellRendererText *) renderer;
             g_signal_connect (renderer, "edited", G_CALLBACK (cell_renderer_edited), view);
 			g_signal_connect (renderer, "editing-canceled", G_CALLBACK (cell_renderer_editing_canceled), view);

@@ -92,6 +92,7 @@ add_executable(marlin
     marlin-thumbnailer.c
     marlin-icon-renderer.c
     marlin-text-renderer.c
+    marlin-cell-renderer-text-ellipsized.c
     marlin-mime-actions.c
     fm-directory-view.c
     exo-icon-view.c

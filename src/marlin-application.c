@@ -586,7 +586,7 @@ icon_theme_changed_callback (GtkIconTheme *icon_theme,
                              MarlinPlacesSidebar *sidebar)
 {
 	/* Clear all pixmap caches as the icon => pixmap lookup changed */
-	nautilus_icon_info_clear_caches ();
+	marlin_icon_info_clear_caches ();
 }
 
 static void
@@ -650,7 +650,7 @@ marlin_application_quit_mainloop (GApplication *app)
 {
     g_debug ("Quitting mainloop");
 
-    nautilus_icon_info_clear_caches ();
+    marlin_icon_info_clear_caches ();
 
     G_APPLICATION_CLASS (marlin_application_parent_class)->quit_mainloop (app);
 }

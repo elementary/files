@@ -67,8 +67,7 @@ install (FILES
     marlin-plugins-hook.h
     marlin-progress-info.h
     marlin-progress-info-manager.h
-    nautilus-cell-renderer-text-ellipsized.h
-    nautilus-icon-info.h
+    marlin-icon-info.h
     fm-list-model.h
     marlin-trash-monitor.h
     DESTINATION include/marlincore/)
@@ -123,8 +122,7 @@ add_library (${PKGNAME} SHARED
     marlin-exec.c
     gof-abstract-slot.c
     gof-file.c
-    nautilus-icon-info.c
-    nautilus-cell-renderer-text-ellipsized.c
+    marlin-icon-info.c
     marlin-trash-monitor.c
     ${VALA_C}
 )
@@ -154,8 +152,7 @@ add_library(${PKGNAME}-static STATIC
     marlin-exec.c
     gof-abstract-slot.c
     gof-file.c
-    nautilus-icon-info.c
-    nautilus-cell-renderer-text-ellipsized.c
+    marlin-icon-info.c
     marlin-trash-monitor.c
     ${VALA_C}
 )

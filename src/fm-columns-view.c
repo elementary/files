@@ -23,7 +23,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "nautilus-cell-renderer-text-ellipsized.h"
+//#include "marlin-cell-renderer-text-ellipsized.h"
 #include "marlin-global-preferences.h"
 #include "eel-gtk-extensions.h"
 #include "marlin-tags.h"
@@ -585,7 +585,7 @@ create_and_set_up_tree_view (FMColumnsView *view)
     gtk_tree_view_column_set_attributes (col, FM_DIRECTORY_VIEW (view)->icon_renderer,
                                          "file",  FM_LIST_MODEL_FILE_COLUMN, NULL);
 
-    //renderer = nautilus_cell_renderer_text_ellipsized_new ();
+    //renderer = marlin_cell_renderer_text_ellipsized_new ();
     renderer = gtk_cell_renderer_text_new( );
     view->details->file_name_cell = (GtkCellRendererText *) renderer;
     g_signal_connect (renderer, "edited", G_CALLBACK (cell_renderer_edited), view);

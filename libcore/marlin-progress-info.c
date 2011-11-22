@@ -28,7 +28,6 @@
 /*#include <eel/eel-glib-extensions.h>*/
 #include "marlin-progress-info.h"
 #include "marlin-progress-info-manager.h"
-#include "nautilus-icon-info.h"
 
 enum {
     CHANGED,

@@ -59,6 +59,7 @@
 
 #include "eel-glib-extensions.h"
 #include "eel-string.h"
+#include "eel-stock-dialogs.h"
 
 /*
 #include "nautilus-file-changes-queue.h"
@@ -71,6 +72,7 @@
 #include "nautilus-trash-monitor.h"
 #include "nautilus-file-utilities.h"
 #include "nautilus-file-conflict-dialog.h"*/
+#include "marlin-file-utilities.h"
 #include "marlin-file-conflict-dialog.h"
 #include "marlin-global-preferences.h"
 

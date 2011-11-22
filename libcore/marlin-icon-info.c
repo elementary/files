@@ -19,12 +19,12 @@
 
 //#include <config.h>
 #include <string.h>
-#include "nautilus-icon-info.h"
+#include "marlin-icon-info.h"
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 #include "eel-gdk-pixbuf-extensions.h"
 
-struct _NautilusIconInfo
+struct _MarlinIconInfo
 {
     GObject         parent;
 
@@ -40,24 +40,24 @@ struct _NautilusIconInfo
     char            *icon_name;
 };
 
-struct _NautilusIconInfoClass
+struct _MarlinIconInfoClass
 {
     GObjectClass parent_class;
 };
 
 static void schedule_reap_cache (void);
 
-G_DEFINE_TYPE (NautilusIconInfo, nautilus_icon_info, G_TYPE_OBJECT);
+G_DEFINE_TYPE (MarlinIconInfo, marlin_icon_info, G_TYPE_OBJECT);
 
 static void
-nautilus_icon_info_init (NautilusIconInfo *icon)
+marlin_icon_info_init (MarlinIconInfo *icon)
 {
     icon->last_use_time = g_thread_gettime ();
     icon->sole_owner = TRUE;
 }
 
 gboolean
-nautilus_icon_info_is_fallback (NautilusIconInfo  *icon)
+marlin_icon_info_is_fallback (MarlinIconInfo  *icon)
 {
     return icon->pixbuf == NULL;
 }
@@ -67,7 +67,7 @@ pixbuf_toggle_notify (gpointer      info,
                       GObject      *object,
                       gboolean      is_last_ref)
 {
-    NautilusIconInfo  *icon = info;
+    MarlinIconInfo  *icon = info;
 
     if (is_last_ref) {
         icon->sole_owner = TRUE;
@@ -80,11 +80,11 @@ pixbuf_toggle_notify (gpointer      info,
 }
 
 static void
-nautilus_icon_info_finalize (GObject *object)
+marlin_icon_info_finalize (GObject *object)
 {
-    NautilusIconInfo *icon;
+    MarlinIconInfo *icon;
 
-    icon = NAUTILUS_ICON_INFO (object);
+    icon = MARLIN_ICON_INFO (object);
 
     if (!icon->sole_owner && icon->pixbuf) {
         g_object_remove_toggle_ref (G_OBJECT (icon->pixbuf),
@@ -99,26 +99,26 @@ nautilus_icon_info_finalize (GObject *object)
     g_free (icon->display_name);
     g_free (icon->icon_name);
 
-    G_OBJECT_CLASS (nautilus_icon_info_parent_class)->finalize (object);
+    G_OBJECT_CLASS (marlin_icon_info_parent_class)->finalize (object);
 }
 
 static void
-nautilus_icon_info_class_init (NautilusIconInfoClass *icon_info_class)
+marlin_icon_info_class_init (MarlinIconInfoClass *icon_info_class)
 {
     GObjectClass *gobject_class;
 
     gobject_class = (GObjectClass *) icon_info_class;
 
-    gobject_class->finalize = nautilus_icon_info_finalize;
+    gobject_class->finalize = marlin_icon_info_finalize;
 
 }
 
-NautilusIconInfo *
-nautilus_icon_info_new_for_pixbuf (GdkPixbuf *pixbuf)
+MarlinIconInfo *
+marlin_icon_info_new_for_pixbuf (GdkPixbuf *pixbuf)
 {
-    NautilusIconInfo *icon;
+    MarlinIconInfo *icon;
 
-    icon = g_object_new (NAUTILUS_TYPE_ICON_INFO, NULL);
+    icon = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
     icon->pixbuf = pixbuf;
 
     /* TODO remove this after test */
@@ -129,16 +129,16 @@ nautilus_icon_info_new_for_pixbuf (GdkPixbuf *pixbuf)
     return icon;
 }
 
-static NautilusIconInfo *
-nautilus_icon_info_new_for_icon_info (GtkIconInfo *icon_info)
+static MarlinIconInfo *
+marlin_icon_info_new_for_icon_info (GtkIconInfo *icon_info)
 {
-    NautilusIconInfo *icon;
+    MarlinIconInfo *icon;
     GdkPoint *points;
     gint n_points;
     const char *filename;
     char *basename, *p;
 
-    icon = g_object_new (NAUTILUS_TYPE_ICON_INFO, NULL);
+    icon = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
 
     icon->pixbuf = gtk_icon_info_load_icon (icon_info, NULL);
 
@@ -189,7 +189,7 @@ reap_old_icon (gpointer  key,
                gpointer  value,
                gpointer  user_info)
 {
-    NautilusIconInfo *icon = value;
+    MarlinIconInfo *icon = value;
     gboolean *reapable_icons_left = user_info;
 
     if (icon->sole_owner) {
@@ -245,7 +245,7 @@ schedule_reap_cache (void)
 }
 
 void
-nautilus_icon_info_clear_caches (void)
+marlin_icon_info_clear_caches (void)
 {
     if (loadable_icon_cache) {
         g_hash_table_remove_all (loadable_icon_cache);
@@ -322,10 +322,10 @@ themed_icon_key_free (ThemedIconKey *key)
     g_slice_free (ThemedIconKey, key);
 }
 
-NautilusIconInfo *
-nautilus_icon_info_lookup (GIcon *icon, int size)
+MarlinIconInfo *
+marlin_icon_info_lookup (GIcon *icon, int size)
 {
-    NautilusIconInfo *icon_info;
+    MarlinIconInfo *icon_info;
     GdkPixbuf *pixbuf = NULL;
 
     if (G_IS_LOADABLE_ICON (icon)) {
@@ -358,12 +358,12 @@ nautilus_icon_info_lookup (GIcon *icon, int size)
             g_object_unref (stream);
         }
 
-        /*icon_info = nautilus_icon_info_new_for_pixbuf (pixbuf);
+        /*icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
         key = loadable_icon_key_new (icon, size);
         g_hash_table_insert (loadable_icon_cache, key, icon_info);
 
         return g_object_ref (icon_info);*/
-        return nautilus_icon_info_new_for_pixbuf (pixbuf);
+        return marlin_icon_info_new_for_pixbuf (pixbuf);
     } else if (G_IS_THEMED_ICON (icon)) {
         const char * const *names;
         ThemedIconKey lookup_key;
@@ -386,7 +386,7 @@ nautilus_icon_info_lookup (GIcon *icon, int size)
         gtkicon_info = gtk_icon_theme_choose_icon (icon_theme, (const char **)names, size, 0);
 
         if (gtkicon_info == NULL) {
-            return nautilus_icon_info_new_for_pixbuf (NULL);
+            return marlin_icon_info_new_for_pixbuf (NULL);
         }
 
         filename = gtk_icon_info_get_filename (gtkicon_info);
@@ -400,7 +400,7 @@ nautilus_icon_info_lookup (GIcon *icon, int size)
             return g_object_ref (icon_info);
         }
 
-        icon_info = nautilus_icon_info_new_for_icon_info (gtkicon_info);
+        icon_info = marlin_icon_info_new_for_icon_info (gtkicon_info);
 
         key = themed_icon_key_new (filename, size);
         g_hash_table_insert (themed_icon_cache, key, icon_info);
@@ -423,42 +423,42 @@ nautilus_icon_info_lookup (GIcon *icon, int size)
             pixbuf = NULL;
         }
 
-        return nautilus_icon_info_new_for_pixbuf (pixbuf);
+        return marlin_icon_info_new_for_pixbuf (pixbuf);
     }
 }
 
-NautilusIconInfo *
-nautilus_icon_info_lookup_from_name (const char *name,
+MarlinIconInfo *
+marlin_icon_info_lookup_from_name (const char *name,
                                      int size)
 {
     GIcon *icon;
-    NautilusIconInfo *info;
+    MarlinIconInfo *info;
 
     icon = g_themed_icon_new (name);
-    info = nautilus_icon_info_lookup (icon, size);
+    info = marlin_icon_info_lookup (icon, size);
     g_object_unref (icon);
     return info;
 }
 
-NautilusIconInfo *
-nautilus_icon_info_lookup_from_path (const char *path,
+MarlinIconInfo *
+marlin_icon_info_lookup_from_path (const char *path,
                                      int size)
 {
     GFile *icon_file;
     GIcon *icon;
-    NautilusIconInfo *info;
+    MarlinIconInfo *info;
 
     icon_file = g_file_new_for_path (path);
     if ((icon = g_file_icon_new (icon_file)) == NULL)
         return NULL;
-    info = nautilus_icon_info_lookup (icon, size);
+    info = marlin_icon_info_lookup (icon, size);
     g_object_unref (icon);
     g_object_unref (icon_file);
     return info;
 }
 
 GdkPixbuf *
-nautilus_icon_info_get_pixbuf_nodefault (NautilusIconInfo  *icon)
+marlin_icon_info_get_pixbuf_nodefault (MarlinIconInfo  *icon)
 {
     GdkPixbuf *res;
 
@@ -480,19 +480,19 @@ nautilus_icon_info_get_pixbuf_nodefault (NautilusIconInfo  *icon)
 
 #if 0
 GdkPixbuf *
-nautilus_icon_info_get_pixbuf (NautilusIconInfo *icon)
+marlin_icon_info_get_pixbuf (MarlinIconInfo *icon)
 {
     GdkPixbuf *res;
 
-    res = nautilus_icon_info_get_pixbuf_nodefault (icon);
+    res = marlin_icon_info_get_pixbuf_nodefault (icon);
     if (res == NULL) {
-        res = gdk_pixbuf_new_from_data (nautilus_default_file_icon,
+        res = gdk_pixbuf_new_from_data (marlin_default_file_icon,
                                         GDK_COLORSPACE_RGB,
                                         TRUE,
                                         8,
-                                        nautilus_default_file_icon_width,
-                                        nautilus_default_file_icon_height,
-                                        nautilus_default_file_icon_width * 4, /* stride */
+                                        marlin_default_file_icon_width,
+                                        marlin_default_file_icon_height,
+                                        marlin_default_file_icon_width * 4, /* stride */
                                         NULL, /* don't destroy info */
                                         NULL);
     }
@@ -500,14 +500,14 @@ nautilus_icon_info_get_pixbuf (NautilusIconInfo *icon)
 }
 
 GdkPixbuf *
-nautilus_icon_info_get_pixbuf_nodefault_at_size (NautilusIconInfo  *icon,
+marlin_icon_info_get_pixbuf_nodefault_at_size (MarlinIconInfo  *icon,
                                                  gsize              forced_size)
 {
     GdkPixbuf *pixbuf, *scaled_pixbuf;
     int w, h, s;
     double scale;
 
-    pixbuf = nautilus_icon_info_get_pixbuf_nodefault (icon);
+    pixbuf = marlin_icon_info_get_pixbuf_nodefault (icon);
 
     if (pixbuf == NULL)
         return NULL;
@@ -529,15 +529,15 @@ nautilus_icon_info_get_pixbuf_nodefault_at_size (NautilusIconInfo  *icon,
 #endif
 
 GdkPixbuf *
-nautilus_icon_info_get_pixbuf_at_size (NautilusIconInfo  *icon,
+marlin_icon_info_get_pixbuf_at_size (MarlinIconInfo  *icon,
                                        gsize              forced_size)
 {
     GdkPixbuf *pixbuf, *scaled_pixbuf;
     int w, h, s;
     double scale;
 
-    //pixbuf = nautilus_icon_info_get_pixbuf (icon);
-    pixbuf = nautilus_icon_info_get_pixbuf_nodefault (icon);
+    //pixbuf = marlin_icon_info_get_pixbuf (icon);
+    pixbuf = marlin_icon_info_get_pixbuf_nodefault (icon);
     if (pixbuf == NULL)
         return NULL;
 

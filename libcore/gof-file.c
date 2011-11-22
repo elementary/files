@@ -350,10 +350,10 @@ void    gof_file_update (GOFFile *file)
     gof_file_update_emblem (file);
 }
 
-static NautilusIconInfo *
+static MarlinIconInfo *
 gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 {
-    NautilusIconInfo *icon;
+    MarlinIconInfo *icon;
     GIcon *gicon;
 
     if (file == NULL) 
@@ -363,7 +363,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS) {
         if (file->thumbnail_path != NULL) {
             //printf("show thumb %d\n", size);
-            icon = nautilus_icon_info_lookup_from_path (file->thumbnail_path, size);
+            icon = marlin_icon_info_lookup_from_path (file->thumbnail_path, size);
             return icon;
         }
     }
@@ -377,28 +377,28 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     }
 
     if (gicon) {
-        icon = nautilus_icon_info_lookup (gicon, size);
-        if (nautilus_icon_info_is_fallback(icon)) {
+        icon = marlin_icon_info_lookup (gicon, size);
+        if (marlin_icon_info_is_fallback(icon)) {
             g_object_unref (icon);
-            icon = nautilus_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
+            icon = marlin_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
         }
         g_object_unref (gicon);
         return icon;
     } else {
-        return nautilus_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
+        return marlin_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
     }
 }
 
 static GdkPixbuf 
-*ensure_pixbuf_from_nicon (GOFFile *file, gint size, NautilusIconInfo *nicon)
+*ensure_pixbuf_from_nicon (GOFFile *file, gint size, MarlinIconInfo *nicon)
 {
     GdkPixbuf *pix;
-    NautilusIconInfo *temp_nicon;
+    MarlinIconInfo *temp_nicon;
 
-    pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+    pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
     if (pix == NULL) {
         temp_nicon = gof_file_get_icon (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
-        pix = nautilus_icon_info_get_pixbuf_nodefault (temp_nicon);
+        pix = marlin_icon_info_get_pixbuf_nodefault (temp_nicon);
         _g_object_unref0 (temp_nicon);
     }
 
@@ -408,13 +408,13 @@ static GdkPixbuf
 /* TODO check this fct we shouldn't store the pixbuf in GOF */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
-    NautilusIconInfo *nicon = NULL;
+    MarlinIconInfo *nicon = NULL;
 
     if (file->custom_icon_name != NULL) {
         if (g_path_is_absolute (file->custom_icon_name)) 
-            nicon = nautilus_icon_info_lookup_from_path (file->custom_icon_name, size);
+            nicon = marlin_icon_info_lookup_from_path (file->custom_icon_name, size);
         else
-            nicon = nautilus_icon_info_lookup_from_name (file->custom_icon_name, size);
+            nicon = marlin_icon_info_lookup_from_name (file->custom_icon_name, size);
     } else {
         nicon = gof_file_get_icon (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     }
@@ -972,14 +972,14 @@ gof_files_get_location_list (GList *files)
 GdkPixbuf *
 gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileIconFlags flags)
 {
-    NautilusIconInfo *nicon;
+    MarlinIconInfo *nicon;
     GdkPixbuf *pix;
 
     nicon = gof_file_get_icon (file, size, flags);
     if (force_size) {
-        pix =  nautilus_icon_info_get_pixbuf_at_size (nicon, size);
+        pix = marlin_icon_info_get_pixbuf_at_size (nicon, size);
     } else {
-        pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+        pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
     }
     g_object_unref (nicon);
 

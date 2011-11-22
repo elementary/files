@@ -25,7 +25,7 @@
 #include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gio/gio.h>
-#include "nautilus-icon-info.h"
+#include "marlin-icon-info.h"
 
 G_BEGIN_DECLS
 

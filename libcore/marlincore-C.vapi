@@ -69,19 +69,15 @@ namespace EelPango {
     public unowned Pango.AttrList attr_list_big();
 }
 
-[CCode (cprefix = "Nautilus", lower_case_cprefix = "nautilus_")]
-namespace Nautilus {
-    [CCode (cheader_filename = "nautilus-icon-info.h")]
+[CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
+namespace Marlin
+{
+    [CCode (cheader_filename = "marlin-icon-info.h")]
     public class IconInfo : GLib.Object{
         public static IconInfo lookup(GLib.Icon icon, int size);
         public Gdk.Pixbuf get_pixbuf_nodefault();
         public Gdk.Pixbuf get_pixbuf_at_size(int size);
     }
-}
-
-[CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
-namespace Marlin
-{
     [CCode (cheader_filename = "marlin-abstract-sidebar.h")]
     public abstract class AbstractSidebar : Gtk.ScrolledWindow
     {

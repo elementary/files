@@ -32,8 +32,10 @@
 #include "eel-vfs-extensions.h"
 
 #include "gof-file.h"
-#include "nautilus-icon-info.h"
+#include "marlin-icon-info.h"
 #include "marlincore.h"
+
+#define FILE_ICON_SIZE_LARGE	    96
 
 typedef void GOFFileListHandle;
 
@@ -78,13 +80,13 @@ file_icons_changed (GOFFile *file,
 {
     GdkPixbuf *pixbuf;
 
-    pixbuf = gof_file_get_icon_pixbuf (fcd->details->destination, NAUTILUS_ICON_SIZE_LARGE,
+    pixbuf = gof_file_get_icon_pixbuf (fcd->details->destination, FILE_ICON_SIZE_LARGE,
                                        TRUE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
 
     gtk_image_set_from_pixbuf (GTK_IMAGE (fcd->details->dest_image), pixbuf);
     g_object_unref (pixbuf);
 
-    pixbuf = gof_file_get_icon_pixbuf (fcd->details->source, NAUTILUS_ICON_SIZE_LARGE,
+    pixbuf = gof_file_get_icon_pixbuf (fcd->details->source, FILE_ICON_SIZE_LARGE,
                                        TRUE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
 
     gtk_image_set_from_pixbuf (GTK_IMAGE (fcd->details->src_image), pixbuf);
@@ -221,7 +223,7 @@ file_list_ready_cb (GList *files,
     g_free (secondary_text);
 
     /* Set up file icons */
-    pixbuf = gof_file_get_icon_pixbuf (dest, NAUTILUS_ICON_SIZE_LARGE,
+    pixbuf = gof_file_get_icon_pixbuf (dest, FILE_ICON_SIZE_LARGE,
                                        TRUE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     details->dest_image = gtk_image_new_from_pixbuf (pixbuf);
     gtk_box_pack_start (GTK_BOX (details->first_hbox),
@@ -229,7 +231,7 @@ file_list_ready_cb (GList *files,
     gtk_widget_show (details->dest_image);
     g_object_unref (pixbuf);
 
-    pixbuf = marlin_file_get_icon_pixbuf (src, NAUTILUS_ICON_SIZE_LARGE,
+    pixbuf = marlin_file_get_icon_pixbuf (src, FILE_ICON_SIZE_LARGE,
                                           TRUE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     details->src_image = gtk_image_new_from_pixbuf (pixbuf);
     gtk_box_pack_start (GTK_BOX (details->second_hbox),
@@ -431,7 +433,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
     g_free (secondary_text);
 
     /* Set up file icons */
-    pixbuf = gof_file_get_icon_pixbuf (dest, NAUTILUS_ICON_SIZE_LARGE,
+    pixbuf = gof_file_get_icon_pixbuf (dest, FILE_ICON_SIZE_LARGE,
                                        TRUE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     details->dest_image = gtk_image_new_from_pixbuf (pixbuf);
     gtk_box_pack_start (GTK_BOX (details->first_hbox),
@@ -439,7 +441,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
     gtk_widget_show (details->dest_image);
     g_object_unref (pixbuf);
 
-    pixbuf = gof_file_get_icon_pixbuf (src, NAUTILUS_ICON_SIZE_LARGE,
+    pixbuf = gof_file_get_icon_pixbuf (src, FILE_ICON_SIZE_LARGE,
                                        TRUE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     details->src_image = gtk_image_new_from_pixbuf (pixbuf);
     gtk_box_pack_start (GTK_BOX (details->second_hbox),

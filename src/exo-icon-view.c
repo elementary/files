@@ -32,7 +32,7 @@
 
 #include "exo-icon-view.h"
 #include "eel-i18n.h"
-#include "nautilus-icon-info.h"
+//#include "marlin-icon-info.h"
 #include "marlin-icon-renderer.h"
 
 
@@ -3418,8 +3418,8 @@ exo_icon_view_paint_item (ExoIconView     *icon_view,
 
         //if (item !=)
         icon = g_themed_icon_new ("remove");
-        NautilusIconInfo *nicon = nautilus_icon_info_lookup (icon, 16);
-        GdkPixbuf *pix = nautilus_icon_info_get_pixbuf_nodefault (nicon);
+        NautilusIconInfo *nicon = marlin_icon_info_lookup (icon, 16);
+        GdkPixbuf *pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
 
         gdk_cairo_set_source_pixbuf (cr, pix, x, y);
         cairo_paint (cr);
