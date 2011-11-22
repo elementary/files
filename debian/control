@@ -13,3 +13,12 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, tumbler
 Pre-Depends: dpkg (>= 1.15.6)
 Description: The sexiest fish in the large sea of file managers, Marlin is well-designed with a focus on speed, simplicity, ease of use.
 
+Package: marlin-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: marlin (= ${binary:Version}), ${misc:Depends}
+Pre-Depends: dpkg (>= 1.15.6)
+Enhances: marlin
+Description: Debugging symbols for Marlin file manager.
+
