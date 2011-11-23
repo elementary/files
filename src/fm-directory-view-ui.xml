@@ -30,6 +30,7 @@
 			<menuitem name="Cut" action="Cut"/>
 			<menuitem name="Copy" action="Copy"/>
 			<menuitem name="Paste" action="Paste"/>
+		    <menuitem name="Paste Into Folder" action="Paste Into Folder"/>
             <separator/>
 		    <menuitem name="Select All" action="Select All"/>
 		</placeholder>

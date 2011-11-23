@@ -1549,14 +1549,30 @@ dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gbool
 }
 
 static void
-update_menus_common (FMDirectoryView *view)
+dir_action_set_visible_sensitive (FMDirectoryView *view, const gchar *action_name, 
+                                  gboolean visible, gboolean sensitive)
+{
+    GtkAction *action;
+
+    if (!view->details->dir_action_group)
+        return;
+
+    action = gtk_action_group_get_action (view->details->dir_action_group, action_name);
+    if (action != NULL) {
+        gtk_action_set_sensitive (action, sensitive);
+        gtk_action_set_visible (action, visible);
+    }
+}
+
+static void
+update_menus_pastes (FMDirectoryView *view, gboolean empty_selection)
 {
     if (view->clipboard != NULL && marlin_clipboard_manager_get_can_paste (view->clipboard)) {
-        dir_action_set_sensitive (view, "Paste", TRUE);
-        dir_action_set_sensitive (view, "Paste Into Folder", TRUE);
+        dir_action_set_visible (view, "Paste", empty_selection);
+        dir_action_set_visible (view, "Paste Into Folder", !empty_selection);
     } else {
-        dir_action_set_sensitive (view, "Paste", FALSE);
-        dir_action_set_sensitive (view, "Paste Into Folder", FALSE);
+        dir_action_set_visible_sensitive (view, "Paste", TRUE, FALSE);
+        dir_action_set_visible (view, "Paste Into Folder", FALSE);
     }
 }
 
@@ -1565,6 +1581,7 @@ update_menus_empty_selection (FMDirectoryView *view)
 {
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
+    update_menus_pastes (view, TRUE);
     dir_action_set_sensitive (view, "Cut", FALSE);
     dir_action_set_sensitive (view, "Copy", FALSE);
     dir_action_set_sensitive (view, "Rename", FALSE);
@@ -1766,9 +1783,9 @@ update_menus_selection (FMDirectoryView *view)
 
     /* got only one element in selection */
     if (selection->next == NULL && file->is_directory) {
-        dir_action_set_visible (view, "Paste Into Folder", TRUE);
+        update_menus_pastes (view, FALSE);
     } else {
-        dir_action_set_visible (view, "Paste Into Folder", FALSE);
+        update_menus_pastes (view, TRUE);
     }
 
     if (gof_file_is_trashed(file)) {
@@ -2674,7 +2691,6 @@ update_menus (FMDirectoryView *view)
     } else {
         update_menus_empty_selection (view);
     }
-    update_menus_common (view);
 }
 
 void
@@ -2821,6 +2837,7 @@ action_paste_files (GtkAction *action, FMDirectoryView *view)
 {
     GFile *current_directory;
 
+    //g_message ("%s", G_STRFUNC);
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
@@ -2839,6 +2856,7 @@ action_paste_into_folder (GtkAction *action, FMDirectoryView *view)
 {
     GOFFile *file;
 
+    //g_message ("%s", G_STRFUNC);
     g_return_if_fail (GTK_IS_ACTION (action));
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
