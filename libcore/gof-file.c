@@ -425,6 +425,16 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
     return pix;
 }
 
+static void 
+gof_file_update_icon_internal (GOFFile *file, gint size) 
+{
+    /* destroy pixbuff if already present */
+    _g_object_unref0 (file->pix);
+    /* make sure we always got a non null pixbuf */
+    file->pix = gof_file_get_icon_pixbuf (file, size, FALSE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
+    file->pix_size = size;
+}
+
 /* This function is used by the icon renderer and only by it. 
  * Store the pixbuf and update it only for size change.
  */
@@ -436,12 +446,7 @@ void gof_file_update_icon (GOFFile *file, gint size)
         return;
 
     //g_message ("%s %s", G_STRFUNC, file->uri);
-
-    /* destroy pixbuff if already present */
-    _g_object_unref0 (file->pix);
-    /* make sure we always got a non null pixbuf */
-    file->pix = gof_file_get_icon_pixbuf (file, size, FALSE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
-    file->pix_size = size;
+    gof_file_update_icon_internal (file, size);
 }
 
 void gof_file_update_emblem (GOFFile *file)
@@ -534,11 +539,13 @@ gboolean gof_file_ensure_query_info (GOFFile *file)
     return (file->info != NULL);
 }
 
-static
-void gof_file_query_thumbnail_update (GOFFile *file)
+static void 
+gof_file_query_thumbnail_update (GOFFile *file)
 {
-    if (gof_file_query_info (file))
+    if (gof_file_query_info (file)) {
         file->thumbnail_path =  g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
+        gof_file_update_icon_internal (file, file->pix_size);
+    }
 }
 
 void gof_file_update_trash_info (GOFFile *file)
