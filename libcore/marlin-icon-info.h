@@ -42,24 +42,28 @@ typedef struct _MarlinIconInfoClass MarlinIconInfoClass;
 
 GType    marlin_icon_info_get_type (void) G_GNUC_CONST;
 
-MarlinIconInfo *    marlin_icon_info_new_for_pixbuf               (GdkPixbuf         *pixbuf);
-MarlinIconInfo *    marlin_icon_info_lookup                       (GIcon             *icon,
-                                                                   int                size);
+MarlinIconInfo *    marlin_icon_info_new_for_pixbuf             (GdkPixbuf      *pixbuf);
+MarlinIconInfo *    marlin_icon_info_lookup                     (GIcon          *icon,
+                                                                 int            size);
 
-MarlinIconInfo *    marlin_icon_info_lookup_from_name             (const char        *name,
-                                                                   int                size);
-MarlinIconInfo *    marlin_icon_info_lookup_from_path             (const char        *path,
-                                                                   int                size);
+MarlinIconInfo *    marlin_icon_info_lookup_from_name           (const char     *name,
+                                                                 int            size);
+MarlinIconInfo *    marlin_icon_info_lookup_from_path           (const char     *path,
+                                                                 int            size);
+MarlinIconInfo *    marlin_icon_info_get_generic_icon           (int size);
 
-gboolean            marlin_icon_info_is_fallback                  (MarlinIconInfo  *icon);
-//GdkPixbuf *           marlin_icon_info_get_pixbuf                   (MarlinIconInfo  *icon);
-GdkPixbuf *         marlin_icon_info_get_pixbuf_nodefault         (MarlinIconInfo  *icon);
+gboolean            marlin_icon_info_is_fallback                (MarlinIconInfo *icon);
+//GdkPixbuf *         marlin_icon_info_get_pixbuf                 (MarlinIconInfo *icon);
+GdkPixbuf *         marlin_icon_info_get_pixbuf_nodefault       (MarlinIconInfo *icon);
+GdkPixbuf *         marlin_icon_info_get_pixbuf_force_size      (MarlinIconInfo *icon, 
+                                                                 gint           size, 
+                                                                 gboolean       force_size);
 /*GdkPixbuf *           marlin_icon_info_get_pixbuf_nodefault_at_size (MarlinIconInfo  *icon,
   gsize              forced_size);*/
-/*GdkPixbuf *           marlin_icon_info_get_pixbuf_at_size           (MarlinIconInfo  *icon,
-  gsize              forced_size);*/
+GdkPixbuf *         marlin_icon_info_get_pixbuf_at_size         (MarlinIconInfo *icon,
+                                                                 gsize          forced_size);
 
-void                marlin_icon_info_clear_caches                 (void);
+void                marlin_icon_info_clear_caches               (void);
 
 G_END_DECLS
 

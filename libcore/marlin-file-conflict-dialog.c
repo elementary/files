@@ -35,7 +35,7 @@
 #include "marlin-icon-info.h"
 #include "marlincore.h"
 
-#define FILE_ICON_SIZE_LARGE	    96
+#define FILE_ICON_SIZE_LARGE	    64
 
 typedef void GOFFileListHandle;
 
@@ -440,7 +440,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
                         details->dest_image, FALSE, FALSE, 0);
     gtk_widget_show (details->dest_image);
     g_object_unref (pixbuf);
-
+    
     pixbuf = gof_file_get_icon_pixbuf (src, FILE_ICON_SIZE_LARGE,
                                        TRUE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     details->src_image = gtk_image_new_from_pixbuf (pixbuf);

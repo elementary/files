@@ -229,9 +229,7 @@ namespace Marlin.View {
                 pixbuf = new Pixbuf.from_file (last_gof.thumbnail_path);
             }*/
 
-            last_gof.update_icon (icon_size_req);
-            pixbuf = last_gof.pix;
-            //pixbuf = last_gof.get_icon_pixbuf (icon_size_req, false, GOF.FileIconFlags.USE_THUMBNAILS);
+            pixbuf = last_gof.get_icon_pixbuf (icon_size_req, false, GOF.FileIconFlags.USE_THUMBNAILS);
             
             /* TODO ask tumbler a LARGE thumb for size > 128 */
             /*if (should_sync && (icon_size_req > w_width/2 || icon_size_req > w_height/2))

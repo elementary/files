@@ -87,6 +87,7 @@ struct _GOFFile {
     GIcon           *icon;
     gchar           *custom_icon_name;
     GdkPixbuf       *pix;
+    gint            *pix_size;
     guint64         modified;
     gchar           *formated_modified;
     gchar           *color;
@@ -183,7 +184,7 @@ GList           *gof_file_get_location_list (GList *files);
 void            gof_file_list_free (GList *list);
 GList           *gof_file_list_ref (GList *list);
 GList           *gof_file_list_copy (GList *list);
-GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileIconFlags flags);
+GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFileIconFlags flags);
 gboolean        gof_file_is_writable (GOFFile *file);
 gboolean        gof_file_is_trashed (GOFFile *file);
 const gchar     *gof_file_get_symlink_target (GOFFile *file);

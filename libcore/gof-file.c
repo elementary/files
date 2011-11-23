@@ -155,7 +155,6 @@ gof_file_clear_info (GOFFile *file)
     _g_object_unref0 (file->pix);
     _g_free0 (file->custom_display_name);
     _g_free0 (file->custom_icon_name);
-    file->custom_display_name = NULL;
 
     file->uid = -1;
     file->gid = -1;
@@ -352,7 +351,7 @@ void    gof_file_update (GOFFile *file)
 static MarlinIconInfo *
 gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 {
-    MarlinIconInfo *icon;
+    MarlinIconInfo *icon = NULL;
     GIcon *gicon;
 
     if (file == NULL) 
@@ -372,42 +371,44 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
         gicon = g_themed_icon_new (ICON_NAME_THUMBNAIL_LOADING);
         //printf ("thumbnail loading\n");
     } else { 
-        gicon = g_object_ref (file->icon);
+        gicon = _g_object_ref0 (file->icon);
     }
 
-    if (gicon) {
+    if (gicon != NULL) {
         icon = marlin_icon_info_lookup (gicon, size);
         if (marlin_icon_info_is_fallback(icon)) {
             g_object_unref (icon);
-            icon = marlin_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
+            icon = marlin_icon_info_get_generic_icon (size);
         }
         g_object_unref (gicon);
-        return icon;
     } else {
-        return marlin_icon_info_lookup (g_themed_icon_new ("text-x-generic"), size);
+        icon = marlin_icon_info_get_generic_icon (size);
     }
+        
+    return icon;
 }
 
 static GdkPixbuf 
-*ensure_pixbuf_from_nicon (GOFFile *file, gint size, MarlinIconInfo *nicon)
+*ensure_pixbuf_from_nicon (GOFFile *file, gint size, gboolean force_size, MarlinIconInfo *nicon)
 {
     GdkPixbuf *pix;
     MarlinIconInfo *temp_nicon;
 
-    pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
+    pix = marlin_icon_info_get_pixbuf_force_size (nicon, size, force_size);
     if (pix == NULL) {
         temp_nicon = gof_file_get_icon (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
-        pix = marlin_icon_info_get_pixbuf_nodefault (temp_nicon);
+        pix = marlin_icon_info_get_pixbuf_force_size (temp_nicon, size, force_size);
         _g_object_unref0 (temp_nicon);
     }
 
     return pix;
 }
 
-/* TODO check this fct we shouldn't store the pixbuf in GOF */
-void gof_file_update_icon (GOFFile *file, gint size)
+GdkPixbuf *
+gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFileIconFlags flags)
 {
-    MarlinIconInfo *nicon = NULL;
+    MarlinIconInfo *nicon;
+    GdkPixbuf *pix;
 
     if (file->custom_icon_name != NULL) {
         if (g_path_is_absolute (file->custom_icon_name)) 
@@ -415,14 +416,32 @@ void gof_file_update_icon (GOFFile *file, gint size)
         else
             nicon = marlin_icon_info_lookup_from_name (file->custom_icon_name, size);
     } else {
-        nicon = gof_file_get_icon (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
+        nicon = gof_file_get_icon (file, size, flags);
     }
+
+    pix = ensure_pixbuf_from_nicon (file, size, force_size, nicon);
+    _g_object_unref0 (nicon);
+
+    return pix;
+}
+
+/* This function is used by the icon renderer and only by it. 
+ * Store the pixbuf and update it only for size change.
+ */
+void gof_file_update_icon (GOFFile *file, gint size)
+{
+    MarlinIconInfo *nicon;
+
+    if (!(file->pix == NULL || file->pix_size != size))
+        return;
+
+    //g_message ("%s %s", G_STRFUNC, file->uri);
 
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
     /* make sure we always got a non null pixbuf */
-    file->pix = ensure_pixbuf_from_nicon (file, size, nicon);
-    _g_object_unref0 (nicon);
+    file->pix = gof_file_get_icon_pixbuf (file, size, FALSE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
+    file->pix_size = size;
 }
 
 void gof_file_update_emblem (GOFFile *file)
@@ -580,6 +599,7 @@ static void gof_file_init (GOFFile *file) {
     file->exists = TRUE;
     
     file->flags = 0;
+    file->pix_size = -1;
 }
 
 static void gof_file_finalize (GObject* obj) {
@@ -967,23 +987,6 @@ gof_files_get_location_list (GList *files)
 }
 
 
-
-GdkPixbuf *
-gof_file_get_icon_pixbuf (GOFFile *file, int size, gboolean force_size, GOFFileIconFlags flags)
-{
-    MarlinIconInfo *nicon;
-    GdkPixbuf *pix;
-
-    nicon = gof_file_get_icon (file, size, flags);
-    if (force_size) {
-        pix = marlin_icon_info_get_pixbuf_at_size (nicon, size);
-    } else {
-        pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
-    }
-    g_object_unref (nicon);
-
-    return pix;
-}
 
 /**
  * gof_file_is_writable: impoted from thunar
