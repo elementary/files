@@ -74,7 +74,7 @@ namespace Marlin.View.Chrome
         string to_search = "";
 
         /* Used for the context menu we show when there is a right click */
-        GOF.Directory.Async files_menu;
+        GOF.Directory.Async files_menu = null;
     
         bool autocompleted = false;
 
@@ -311,6 +311,8 @@ namespace Marlin.View.Chrome
             menu_y_root = y;
             menu = new Menu();
             var directory = File.new_for_uri (current_right_click_root);
+            if (files_menu != null)
+                files_menu.file_loaded.disconnect(on_file_loaded_menu);
             files_menu = GOF.Directory.Async.from_gfile (directory);
             files_menu.file_loaded.connect(on_file_loaded_menu);
             files_menu.load();
