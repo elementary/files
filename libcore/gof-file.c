@@ -310,8 +310,7 @@ void    gof_file_update (GOFFile *file)
 
     file->thumbnail_path =  g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
 
-    /* SPOTTED! is that really usefull? */
-    file->utf8_collation_key = g_utf8_collate_key (file->name, -1);
+    file->utf8_collation_key = g_utf8_collate_key_for_filename  (file->name, -1);
 
     //trash doesn't have a ftype
     if (file->ftype != NULL) {
@@ -757,6 +756,9 @@ compare_by_time (GOFFile *file1, GOFFile *file2)
 static int
 compare_by_type (GOFFile *file1, GOFFile *file2)
 {
+    gchar *key1, *key2;
+    int compare;
+
     /* Directories go first. Then, if mime types are identical,
      * don't bother getting strings (for speed). This assumes
      * that the string is dependent entirely on the mime type,
@@ -768,7 +770,14 @@ compare_by_type (GOFFile *file1, GOFFile *file2)
         return -1;
     if (file2->is_directory)
         return +1;
-    return (g_strcmp0 (file1->utf8_collation_key, file2->utf8_collation_key));
+    
+    key1 = g_utf8_collate_key (file1->formated_type, -1);
+    key2 = g_utf8_collate_key (file2->formated_type, -1);
+    compare = g_strcmp0 (key1, key2);
+    g_free (key1);
+    g_free (key2);
+
+    return compare;
 }
 
 static int
