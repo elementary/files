@@ -10,7 +10,6 @@ Hotlist:
 - update freespace diskrenderers in sidebar: make a simple timer and update the information at the application level for a determined time delay, and maybe after some specifics files operations ?
 - use an overlay statusbar when ContextPane is off
 - store typechecks in db together with last edited date
-- don't store thumbs with normal icons in the cache.
 
 Various:
 - change focus in the icon view: draw focus only via the text renderer

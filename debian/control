@@ -11,6 +11,7 @@ Package: marlin
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, tumbler
 Pre-Depends: dpkg (>= 1.15.6)
+Suggests: tumbler-plugins-extra
 Description: The sexiest fish in the large sea of file managers, Marlin is well-designed with a focus on speed, simplicity, ease of use.
 
 Package: marlin-dbg

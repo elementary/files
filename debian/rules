@@ -15,5 +15,11 @@ export DEB_BUILD_OPTIONS=nocheck
 %:
 	dh $@ 
 
+override_dh_strip:
+	dh_strip --dbg-package=marlin-dbg
+
 override_dh_builddeb:
 	dh_builddeb -- -Zxz
+
+override_dh_install:
+	dh_install --fail-missing
