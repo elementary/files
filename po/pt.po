@@ -2,41 +2,42 @@
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the marlin package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# André Carvalho <afecarvalho@gmail.com>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-22 15:28+0100\n"
-"PO-Revision-Date: 2011-08-27 18:05+0000\n"
-"Last-Translator: xapantu <Unknown>\n"
-"Language-Team: Portuguese <pt@li.org>\n"
+"PO-Revision-Date: 2011-11-23 11:56+0000\n"
+"Last-Translator: André Carvalho <Unknown>\n"
+"Language-Team: Português <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-11-23 05:56+0000\n"
+"X-Launchpad-Export-Date: 2011-11-24 05:37+0000\n"
 "X-Generator: Launchpad (build 14336)\n"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:47
 msgid "Properties"
-msgstr ""
+msgstr "Propriedades"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:88
 msgid "Info"
-msgstr ""
+msgstr "Informação"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:93
 msgid "Permissions"
-msgstr ""
+msgstr "Permissões"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:104
 msgid "Preview"
-msgstr ""
+msgstr "Pré-Visualizar"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:298
 msgid "Created"
-msgstr ""
+msgstr "Criado"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:299
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/ContextView.vala:290
@@ -45,19 +46,19 @@ msgstr "Modificado"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:300
 msgid "Last Access"
-msgstr ""
+msgstr "Último Acesso"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:304
 msgid "Deleted"
-msgstr ""
+msgstr "Eliminado"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:308
 msgid "MimeType"
-msgstr ""
+msgstr "Tipo de MIME"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Location"
-msgstr ""
+msgstr "Localização"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:312
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/ContextView.vala:286
@@ -66,19 +67,19 @@ msgstr "Destino"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:318
 msgid "Origin Location"
-msgstr ""
+msgstr "Localização Original"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
-msgstr ""
+msgstr "Ler"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:439
 msgid "Write"
-msgstr ""
+msgstr "Escrever"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:444
 msgid "Execute"
-msgstr ""
+msgstr "Executar"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:662
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:675
@@ -89,11 +90,11 @@ msgstr "Proprietário"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:667
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:679
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:683
 msgid "Everyone"
-msgstr ""
+msgstr "Todos"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/ContextView.vala:282
 msgid "Name"
@@ -110,12 +111,12 @@ msgstr "Tamanho"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "Pasta não existe"
+msgstr "A pasta não existe"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr "Marlin não consegue encontrar a pasta %s"
+msgstr "O Marlin não consegue encontrar a pasta %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -128,7 +129,7 @@ msgstr "Criar a pasta %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr ""
+msgstr "Preferências do Marlin"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
@@ -140,15 +141,15 @@ msgstr "Velocidade da auto-selecção do rato:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
-msgstr ""
+msgstr "Mostrar as propriedades como diálogo modal:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "Default File Manager:"
-msgstr ""
+msgstr "Gestor de Ficheiros pré-definido"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "make Marlin my default File Manager"
-msgstr ""
+msgstr "Tornar o Marlin no Gestor de Ficheiros pré-definido"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:94
 msgid "Behavior"
@@ -156,19 +157,19 @@ msgstr "Comportamento"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
-msgstr "pequeno"
+msgstr "Pequeno"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
-msgstr "médio"
+msgstr "Médio"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
-msgstr "grande"
+msgstr "Grande"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
-msgstr "muito grande"
+msgstr "Muito grande"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
@@ -176,15 +177,15 @@ msgstr "Tamanho dos ícones da barra lateral:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "locale"
-msgstr "locale"
+msgstr "Local"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:138
 msgid "iso"
-msgstr "iso"
+msgstr "ISO"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
-msgstr "informal"
+msgstr "Informal"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:157
 msgid "Date format:"
@@ -329,7 +330,7 @@ msgstr "Nome de _domínio:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
-msgstr ""
+msgstr "Nome de _Utilizador"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
@@ -347,7 +348,7 @@ msgstr "Operação cancelada"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-icon-view.c:455
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-list-view.c:613
 msgid "This folder is empty."
-msgstr ""
+msgstr "Esta pasta está vazia."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -372,7 +373,7 @@ msgstr "Cancelar"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "Falhou ao executar ficheiro \"%s\""
+msgstr "Falha ao executar ficheiro \"%s\""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
@@ -554,15 +555,15 @@ msgstr "Esvaziar _Lixo"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:3143
 msgid "Icon Size"
-msgstr ""
+msgstr "Tamanho dos Ícones"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:3144
 msgid "Icon size"
-msgstr ""
+msgstr "Tamanho dos Ícones"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1033
 msgid "Invalid filename provided by XDS drag site"
-msgstr "Nome de ficheiro especificado por drag-and-drop não é válido"
+msgstr "Nome de ficheiro especificado por \"arrastar e largar\" não é válido"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1193
 #, c-format
@@ -573,27 +574,27 @@ msgstr "Falhou ao criar um atalho para o URL \"%s\""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Utilizar \"%s\" para abrir o ficheiro seleccionado"
+msgstr[1] "Utilizar \"%s\" para abrir os ficheiros seleccionados"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1807
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Abrir com %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1834
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Abrir em %'d Separadores Novos"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1843
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Abrir em %'d Janelas Novas"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:2969
 msgid "Set as default"
-msgstr "Definir como omissão"
+msgstr "Definir como pré-defnido"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:3188
 msgid "Set Color:"
@@ -624,11 +625,11 @@ msgstr[1] "%'d operações de ficheiro activas"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
-msgstr ""
+msgstr "Mostrar diálogo de cópia"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
-msgstr ""
+msgstr "Cancelar todas as operações activas"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
