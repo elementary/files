@@ -1,26 +1,28 @@
 /* fm-list-model.h - a GtkTreeModel for file lists. 
-
-   Copyright (C) 2001, 2002 Anders Carlsson
-   Copyright (C) 2003, Soeren Sandmann
-   Copyright (C) 2004, Novell, Inc.
-
-   The Gnome Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License as
-   published by the Free Software Foundation; either version 2 of the
-   License, or (at your option) any later version.
-
-   The Gnome Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
-
-   You should have received a copy of the GNU Library General Public
-   License along with the Gnome Library; see the file COPYING.LIB.  If not,
-   write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-   Boston, MA 02111-1307, USA.
-
-   Authors: Anders Carlsson <andersca@gnu.org>, Soeren Sandmann (sandmann@daimi.au.dk), Dave Camp <dave@ximian.com>
-*/
+ *
+ * Copyright (C) 2001, 2002 Anders Carlsson
+ * Copyright (C) 2003, Soeren Sandmann
+ * Copyright (C) 2004, Novell, Inc.
+ *
+ * The Gnome Library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * The Gnome Library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public
+ * License along with the Gnome Library; see the file COPYING.LIB.  If not,
+ * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+ *
+ * Authors: Anders Carlsson <andersca@gnu.org>, 
+ *          Soeren Sandmann (sandmann@daimi.au.dk), 
+ *          Dave Camp <dave@ximian.com>
+ */
 
 #include <config.h>
 
@@ -93,9 +95,9 @@ void    fm_list_model_remove_file (FMListModel *model, GOFFile *file,
                                    GOFDirectoryAsync *directory);
 
 G_DEFINE_TYPE_WITH_CODE (FMListModel, fm_list_model, G_TYPE_OBJECT,
-    G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_MODEL, fm_list_model_tree_model_init)
-    G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_DRAG_DEST, fm_list_model_drag_dest_init)
-    G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_SORTABLE, fm_list_model_sortable_init))
+                         G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_MODEL, fm_list_model_tree_model_init)
+                         G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_DRAG_DEST, fm_list_model_drag_dest_init)
+                         G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_SORTABLE, fm_list_model_sortable_init))
 
 
 static void
@@ -137,25 +139,6 @@ fm_list_model_get_column_type (GtkTreeModel *tree_model, int index)
     switch (index) {
     case FM_LIST_MODEL_FILE_COLUMN:
         return GOF_TYPE_FILE;
-        /*case FM_LIST_MODEL_SUBDIRECTORY_COLUMN:
-          return NAUTILUS_TYPE_DIRECTORY;*/
-        /*case FM_LIST_MODEL_SMALLEST_ICON_COLUMN:
-          case FM_LIST_MODEL_SMALLER_ICON_COLUMN:
-          case FM_LIST_MODEL_SMALL_ICON_COLUMN:
-          case FM_LIST_MODEL_STANDARD_ICON_COLUMN:
-          case FM_LIST_MODEL_LARGE_ICON_COLUMN:
-          case FM_LIST_MODEL_LARGER_ICON_COLUMN:
-          case FM_LIST_MODEL_LARGEST_ICON_COLUMN:
-          case FM_LIST_MODEL_SMALLEST_EMBLEM_COLUMN:
-          case FM_LIST_MODEL_SMALLER_EMBLEM_COLUMN:
-          case FM_LIST_MODEL_SMALL_EMBLEM_COLUMN:
-          case FM_LIST_MODEL_STANDARD_EMBLEM_COLUMN:
-          case FM_LIST_MODEL_LARGE_EMBLEM_COLUMN:
-          case FM_LIST_MODEL_LARGER_EMBLEM_COLUMN:
-          case FM_LIST_MODEL_LARGEST_EMBLEM_COLUMN:
-          return GDK_TYPE_PIXBUF;
-          case FM_LIST_MODEL_FILE_NAME_IS_EDITABLE_COLUMN:
-          return G_TYPE_BOOLEAN;*/
     case FM_LIST_MODEL_ICON:
         return GDK_TYPE_PIXBUF;
     default:
@@ -253,27 +236,15 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
     FMListModel *model;
     FileEntry *file_entry;
     GOFFile *file;
-    //GdkPixbuf *icon;
-    //GdkPixbuf *pix;
-    //int icon_size;
-    //guint emblem_size;
-    //NautilusZoomLevel zoom_level;
-    //GList *emblem_pixbufs;
-    //GOFFile *parent_file;
-    //char *emblems_to_ignore[3];
-    //int i;
-    //GOFFileIconFlags flags;
 
     model = (FMListModel *)tree_model;
 
-    //amtest
-    //g_return_if_fail (model->details->stamp == iter->stamp);
     g_assert (model->details->stamp == iter->stamp);
     g_return_if_fail (!g_sequence_iter_is_end (iter->user_data));
 
     file_entry = g_sequence_get (iter->user_data);
     file = file_entry->file;
-    
+
     switch (column) {
     case FM_LIST_MODEL_FILE_COLUMN:
         g_value_init (value, GOF_TYPE_FILE);
@@ -318,124 +289,6 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
         break;
 
     }
-
-#if 0
-    /*	case FM_LIST_MODEL_SUBDIRECTORY_COLUMN:
-        g_value_init (value, NAUTILUS_TYPE_DIRECTORY);
-
-        g_value_set_object (value, file_entry->subdirectory);
-        break;*/
-case FM_LIST_MODEL_SMALLEST_ICON_COLUMN:
-case FM_LIST_MODEL_SMALLER_ICON_COLUMN:
-case FM_LIST_MODEL_SMALL_ICON_COLUMN:
-case FM_LIST_MODEL_STANDARD_ICON_COLUMN:
-case FM_LIST_MODEL_LARGE_ICON_COLUMN:
-case FM_LIST_MODEL_LARGER_ICON_COLUMN:
-case FM_LIST_MODEL_LARGEST_ICON_COLUMN:
-    g_value_init (value, GDK_TYPE_PIXBUF);
-
-    if (file != NULL) {
-        //zoom_level = fm_list_model_get_zoom_level_from_column_id (column);
-        //icon_size = nautilus_get_icon_size_for_zoom_level (zoom_level);
-        icon_size = 16;
-
-        /*flags = NAUTILUS_FILE_ICON_FLAGS_USE_THUMBNAILS |
-          NAUTILUS_FILE_ICON_FLAGS_FORCE_THUMBNAIL_SIZE |
-          NAUTILUS_FILE_ICON_FLAGS_USE_MOUNT_ICON_AS_EMBLEM;*/
-        /*if (model->details->drag_view != NULL) {
-          GtkTreePath *path_a, *path_b;
-
-          gtk_tree_view_get_drag_dest_row (model->details->drag_view,
-          &path_a,
-          NULL);
-          if (path_a != NULL) {
-          path_b = gtk_tree_model_get_path (tree_model, iter);
-
-          if (gtk_tree_path_compare (path_a, path_b) == 0) {
-          flags |= NAUTILUS_FILE_ICON_FLAGS_FOR_DRAG_ACCEPT;
-          }
-
-          gtk_tree_path_free (path_a);
-          gtk_tree_path_free (path_b);
-          }
-          }*/
-
-        //icon = nautilus_file_get_icon_pixbuf (file, icon_size, TRUE, flags);
-        icon = NULL;
-
-        g_value_set_object (value, icon);
-        g_object_unref (icon);
-    }
-    break;
-case FM_LIST_MODEL_SMALLEST_EMBLEM_COLUMN:
-case FM_LIST_MODEL_SMALLER_EMBLEM_COLUMN:
-case FM_LIST_MODEL_SMALL_EMBLEM_COLUMN:
-case FM_LIST_MODEL_STANDARD_EMBLEM_COLUMN:
-case FM_LIST_MODEL_LARGE_EMBLEM_COLUMN:
-case FM_LIST_MODEL_LARGER_EMBLEM_COLUMN:
-case FM_LIST_MODEL_LARGEST_EMBLEM_COLUMN:
-    g_value_init (value, GDK_TYPE_PIXBUF);
-    /*
-       if (file != NULL) {
-       parent_file = nautilus_file_get_parent (file);
-       i = 0;
-       emblems_to_ignore[i++] = NAUTILUS_FILE_EMBLEM_NAME_TRASH;
-       if (parent_file) {
-       if (!nautilus_file_can_write (parent_file)) {
-       emblems_to_ignore[i++] = NAUTILUS_FILE_EMBLEM_NAME_CANT_WRITE;
-       }
-       nautilus_file_unref (parent_file);
-       }
-       emblems_to_ignore[i++] = NULL;
-
-       zoom_level = fm_list_model_get_zoom_level_from_emblem_column_id (column);
-       icon_size = nautilus_get_icon_size_for_zoom_level (zoom_level);
-       emblem_size = nautilus_icon_get_emblem_size_for_icon_size (icon_size);
-       if (emblem_size != 0) {
-       emblem_pixbufs = nautilus_file_get_emblem_pixbufs (file,
-       emblem_size,
-       TRUE,
-       emblems_to_ignore);
-       if (emblem_pixbufs != NULL) {
-       icon = emblem_pixbufs->data;
-       g_value_set_object (value, icon);
-       }
-       eel_gdk_pixbuf_list_free (emblem_pixbufs);
-       }
-       }*/
-    g_value_set_object (value, NULL);
-    break;
-case FM_LIST_MODEL_FILE_NAME_IS_EDITABLE_COLUMN:
-    g_value_init (value, G_TYPE_BOOLEAN);
-
-    g_value_set_boolean (value, file != NULL && nautilus_file_can_rename (file));
-    break;
-default:
-    if (column >= FM_LIST_MODEL_NUM_COLUMNS || column < FM_LIST_MODEL_NUM_COLUMNS + model->details->columns->len) {
-        NautilusColumn *nautilus_column;
-        GQuark attribute;
-        nautilus_column = model->details->columns->pdata[column - FM_LIST_MODEL_NUM_COLUMNS];
-
-        g_value_init (value, G_TYPE_STRING);
-        g_object_get (nautilus_column, 
-                      "attribute_q", &attribute, 
-                      NULL);
-        if (file != NULL) {
-            str = nautilus_file_get_string_attribute_with_default_q (file, 
-                                                                     attribute);
-            g_value_take_string (value, str);
-        } else if (attribute == attribute_name_q) {
-            if (file_entry->parent->loaded) {
-                g_value_set_string (value, _("(Empty)"));
-            } else {
-                g_value_set_string (value, _("Loading..."));
-            }
-        }
-    } else {
-        g_assert_not_reached ();
-    }
-}
-#endif
 }
 
 static gboolean
@@ -576,7 +429,6 @@ lookup_file (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory)
     }
 
     if (parent_ptr) {
-        /* we re looking for a folder */
         if (file->is_directory)
             return parent_ptr;
         file_entry = g_sequence_get (parent_ptr);
@@ -695,37 +547,15 @@ fm_list_model_file_entry_compare_func (gconstpointer a,
     file_entry2 = (FileEntry *)b;
 
     if (file_entry1->file != NULL && file_entry2->file != NULL) {
-        /*result = nautilus_file_compare_for_sort_by_attribute_q (file_entry1->file, file_entry2->file,
-          model->details->sort_id,
-          model->details->sort_directories_first,
-          (model->details->order == GTK_SORT_DESCENDING));*/
         result = gof_file_compare_for_sort (file_entry1->file, file_entry2->file,
                                             model->details->sort_id,
-                                            //model->details->sort_directories_first,
                                             TRUE,
                                             (model->details->order == GTK_SORT_DESCENDING));
-        //result = 0;
     } else if (file_entry1->file == NULL) {
         return -1;
     } else {
         return 1;
     }
-
-    return result;
-}
-
-int
-fm_list_model_compare_func (FMListModel *model,
-                            GOFFile *file1,
-                            GOFFile *file2)
-{
-    int result;
-
-    /*result = nautilus_file_compare_for_sort_by_attribute_q (file1, file2,
-      model->details->sort_id,
-      model->details->sort_directories_first,
-      (model->details->order == GTK_SORT_DESCENDING));*/
-    result = 0;
 
     return result;
 }
@@ -851,104 +681,6 @@ fm_list_model_has_default_sort_func (GtkTreeSortable *sortable)
     return FALSE;
 }
 
-/*
-   static gboolean
-   fm_list_model_multi_row_draggable (EggTreeMultiDragSource *drag_source, GList *path_list)
-   {
-   return TRUE;
-   }*/
-
-#if 0
-static void
-each_path_get_data_binder (NautilusDragEachSelectedItemDataGet data_get,
-                           gpointer context,
-                           gpointer data)
-{
-    DragDataGetInfo *info;
-    GList *l;
-    GOFFile *file;
-    GtkTreeRowReference *row;
-    GtkTreePath *path;
-    char *uri;
-    GdkRectangle cell_area;
-    GtkTreeViewColumn *column;
-
-    info = context;
-
-    g_return_if_fail (info->model->details->drag_view);
-
-    column = gtk_tree_view_get_column (info->model->details->drag_view, 0);
-
-    for (l = info->path_list; l != NULL; l = l->next) {
-        row = l->data;
-
-        path = gtk_tree_row_reference_get_path (row);
-        file = fm_list_model_file_for_path (info->model, path);
-        if (file) {
-            gtk_tree_view_get_cell_area
-                (info->model->details->drag_view,
-                 path, 
-                 column,
-                 &cell_area);
-
-            uri = nautilus_file_get_uri (file);
-
-            (*data_get) (uri, 
-                         0,
-                         cell_area.y - info->model->details->drag_begin_y,
-                         cell_area.width, cell_area.height, 
-                         data);
-
-            g_free (uri);
-
-            nautilus_file_unref (file);
-        }
-
-        gtk_tree_path_free (path);
-    }
-}
-
-static gboolean
-fm_list_model_multi_drag_data_get (EggTreeMultiDragSource *drag_source, 
-                                   GList *path_list, 
-                                   GtkSelectionData *selection_data)
-{
-    FMListModel *model;
-    DragDataGetInfo context;
-    guint target_info;
-
-    model = FM_LIST_MODEL (drag_source);
-
-    context.model = model;
-    context.path_list = path_list;
-
-    if (!drag_target_list) {
-        drag_target_list = fm_list_model_get_drag_target_list ();
-    }
-
-    if (gtk_target_list_find (drag_target_list,
-                              selection_data->target,
-                              &target_info)) {
-        nautilus_drag_drag_data_get (NULL,
-                                     NULL,
-                                     selection_data,
-                                     target_info,
-                                     GDK_CURRENT_TIME,
-                                     &context,
-                                     each_path_get_data_binder);
-        return TRUE;
-    } else {
-        return FALSE;
-    }
-}
-
-static gboolean
-fm_list_model_multi_drag_data_delete (EggTreeMultiDragSource *drag_source, GList *path_list)
-{
-    return TRUE;
-}
-#endif
-
 static void
 add_dummy_row (FMListModel *model, FileEntry *parent_entry)
 {
@@ -1007,8 +739,8 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     files = model->details->files;
     parent_hash = model->details->top_reverse_map;
 
-//SPOTTED!
-//#if 0
+    //SPOTTED!
+    //#if 0
     replace_dummy = FALSE;
 
     if (parent_ptr != NULL) {
@@ -1033,13 +765,13 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
             }
         }
     }
-//#endif
+    //#endif
     file_entry->ptr = g_sequence_insert_sorted (files, file_entry,
                                                 fm_list_model_file_entry_compare_func, model);
 
     g_hash_table_insert (parent_hash, file, file_entry->ptr);
 
-//#if 0
+    //#if 0
     iter.stamp = model->details->stamp;
     iter.user_data = file_entry->ptr;
 
@@ -1062,7 +794,7 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
 
     //file_entry_free (file_entry);
     //g_object_unref(file);
-//#endif
+    //#endif
 
     return TRUE;
 }
@@ -1210,7 +942,7 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
                        list_model_signals[SUBDIRECTORY_UNLOADED], 0,
                        file_entry->subdirectory);
         g_hash_table_remove (model->details->directory_reverse_map,
-				     file_entry->subdirectory);
+                             file_entry->subdirectory);
     }
 
     path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), iter);
@@ -1238,7 +970,6 @@ fm_list_model_remove_file (FMListModel *model, GOFFile *file,
     GtkTreeIter iter;
 
     if (fm_list_model_get_tree_iter_from_file (model, file, directory, &iter)) {
-        //log_printf (LOG_LEVEL_UNDEFINED, "remove file %s\n", file->name);
         fm_list_model_remove (model, &iter);
     }
 }
@@ -1294,7 +1025,7 @@ fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter)
     file = NULL;
     gtk_tree_model_get (GTK_TREE_MODEL (model), iter, 
                         FM_LIST_MODEL_FILE_COLUMN, &file, -1);
-    
+
     return (file);
 }
 
@@ -1408,216 +1139,6 @@ fm_list_model_set_should_sort_directories_first (FMListModel *model, gboolean so
     model->details->sort_directories_first = sort_directories_first;
     fm_list_model_sort (model);
 }
-
-#if 0
-int
-fm_list_model_get_sort_column_id_from_attribute (FMListModel *model,
-                                                 GQuark attribute)
-{
-    guint i;
-
-    if (attribute == 0) {
-        return -1;
-    }
-
-    /* Hack - the preferences dialog sets modification_date for some 
-     * rather than date_modified for some reason.  Make sure that 
-     * works. */
-    if (attribute == attribute_modification_date_q) {
-        attribute = attribute_date_modified_q;
-    }
-
-    for (i = 0; i < model->details->columns->len; i++) {
-        NautilusColumn *column;
-        GQuark column_attribute;
-
-        column = 
-            NAUTILUS_COLUMN (model->details->columns->pdata[i]);
-        g_object_get (G_OBJECT (column), 
-                      "attribute_q", &column_attribute, 
-                      NULL);
-        if (column_attribute == attribute) {
-            return FM_LIST_MODEL_NUM_COLUMNS + i;
-        }
-    }
-
-    return -1;
-}
-
-GQuark
-fm_list_model_get_attribute_from_sort_column_id (FMListModel *model,
-                                                 int sort_column_id)
-{
-    NautilusColumn *column;
-    int index;
-    GQuark attribute;
-
-    index = sort_column_id - FM_LIST_MODEL_NUM_COLUMNS;
-
-    if (index < 0 || index >= model->details->columns->len) {
-        g_warning ("unknown sort column id: %d", sort_column_id);
-        return 0;
-    }
-
-    column = NAUTILUS_COLUMN (model->details->columns->pdata[index]);
-    g_object_get (G_OBJECT (column), "attribute_q", &attribute, NULL);
-
-    return attribute;
-}
-
-NautilusZoomLevel
-fm_list_model_get_zoom_level_from_column_id (int column)
-{
-    switch (column) {
-    case FM_LIST_MODEL_SMALLEST_ICON_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_SMALLEST;
-    case FM_LIST_MODEL_SMALLER_ICON_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_SMALLER;
-    case FM_LIST_MODEL_SMALL_ICON_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_SMALL;
-    case FM_LIST_MODEL_STANDARD_ICON_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_STANDARD;
-    case FM_LIST_MODEL_LARGE_ICON_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_LARGE;
-    case FM_LIST_MODEL_LARGER_ICON_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_LARGER;
-    case FM_LIST_MODEL_LARGEST_ICON_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_LARGEST;
-    }
-
-    g_return_val_if_reached (NAUTILUS_ZOOM_LEVEL_STANDARD);
-}
-
-int
-fm_list_model_get_column_id_from_zoom_level (NautilusZoomLevel zoom_level)
-{
-    switch (zoom_level) {
-    case NAUTILUS_ZOOM_LEVEL_SMALLEST:
-        return FM_LIST_MODEL_SMALLEST_ICON_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_SMALLER:
-        return FM_LIST_MODEL_SMALLER_ICON_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_SMALL:
-        return FM_LIST_MODEL_SMALL_ICON_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_STANDARD:
-        return FM_LIST_MODEL_STANDARD_ICON_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_LARGE:
-        return FM_LIST_MODEL_LARGE_ICON_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_LARGER:
-        return FM_LIST_MODEL_LARGER_ICON_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_LARGEST:
-        return FM_LIST_MODEL_LARGEST_ICON_COLUMN;
-    }
-
-    g_return_val_if_reached (FM_LIST_MODEL_STANDARD_ICON_COLUMN);
-}
-
-NautilusZoomLevel
-fm_list_model_get_zoom_level_from_emblem_column_id (int column)
-{
-    switch (column) {
-    case FM_LIST_MODEL_SMALLEST_EMBLEM_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_SMALLEST;
-    case FM_LIST_MODEL_SMALLER_EMBLEM_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_SMALLER;
-    case FM_LIST_MODEL_SMALL_EMBLEM_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_SMALL;
-    case FM_LIST_MODEL_STANDARD_EMBLEM_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_STANDARD;
-    case FM_LIST_MODEL_LARGE_EMBLEM_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_LARGE;
-    case FM_LIST_MODEL_LARGER_EMBLEM_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_LARGER;
-    case FM_LIST_MODEL_LARGEST_EMBLEM_COLUMN:
-        return NAUTILUS_ZOOM_LEVEL_LARGEST;
-    }
-
-    g_return_val_if_reached (NAUTILUS_ZOOM_LEVEL_STANDARD);
-}
-
-int
-fm_list_model_get_emblem_column_id_from_zoom_level (NautilusZoomLevel zoom_level)
-{
-    switch (zoom_level) {
-    case NAUTILUS_ZOOM_LEVEL_SMALLEST:
-        return FM_LIST_MODEL_SMALLEST_EMBLEM_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_SMALLER:
-        return FM_LIST_MODEL_SMALLER_EMBLEM_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_SMALL:
-        return FM_LIST_MODEL_SMALL_EMBLEM_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_STANDARD:
-        return FM_LIST_MODEL_STANDARD_EMBLEM_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_LARGE:
-        return FM_LIST_MODEL_LARGE_EMBLEM_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_LARGER:
-        return FM_LIST_MODEL_LARGER_EMBLEM_COLUMN;
-    case NAUTILUS_ZOOM_LEVEL_LARGEST:
-        return FM_LIST_MODEL_LARGEST_EMBLEM_COLUMN;
-    }
-
-    g_return_val_if_reached (FM_LIST_MODEL_STANDARD_EMBLEM_COLUMN);
-}
-#endif
-
-/*
-   void
-   fm_list_model_set_drag_view (FMListModel *model,
-   GtkTreeView *view,
-   int drag_begin_x,
-   int drag_begin_y)
-   {
-   g_return_if_fail (model != NULL);
-   g_return_if_fail (FM_IS_LIST_MODEL (model));
-   g_return_if_fail (!view || GTK_IS_TREE_VIEW (view));
-
-   model->details->drag_view = view;
-   model->details->drag_begin_x = drag_begin_x;
-   model->details->drag_begin_y = drag_begin_y;
-   }
-
-   GtkTargetList *
-   fm_list_model_get_drag_target_list ()
-   {
-   GtkTargetList *target_list;
-
-   target_list = gtk_target_list_new (drag_types, G_N_ELEMENTS (drag_types));
-   gtk_target_list_add_text_targets (target_list, NAUTILUS_ICON_DND_TEXT);
-
-   return target_list;
-   }*/
-/*
-   int               
-   fm_list_model_add_column (FMListModel *model,
-   NautilusColumn *column)
-   {
-   g_ptr_array_add (model->details->columns, column);
-   g_object_ref (column);
-
-   return FM_LIST_MODEL_NUM_COLUMNS + (model->details->columns->len - 1);
-   }
-
-   int
-   fm_list_model_get_column_number (FMListModel *model,
-   const char *column_name)
-   {
-   int i;
-
-   for (i = 0; i < model->details->columns->len; i++) {
-   NautilusColumn *column;
-   char *name;
-
-   column = model->details->columns->pdata[i];
-
-   g_object_get (G_OBJECT (column), "name", &name, NULL);
-
-   if (!strcmp (name, column_name)) {
-   g_free (name);
-   return FM_LIST_MODEL_NUM_COLUMNS + i;
-   }
-   g_free (name);
-   }
-
-   return -1;
-   }*/
 
 static gboolean
 fm_list_model_drag_data_received (GtkTreeDragDest  *dest,
@@ -1747,8 +1268,8 @@ fm_list_model_tree_model_init (GtkTreeModelIface *iface)
 static void
 fm_list_model_drag_dest_init (GtkTreeDragDestIface *iface)
 {
-  iface->drag_data_received = fm_list_model_drag_data_received;
-  iface->row_drop_possible = fm_list_model_row_drop_possible;
+    iface->drag_data_received = fm_list_model_drag_data_received;
+    iface->row_drop_possible = fm_list_model_row_drop_possible;
 }
 
 static void
@@ -1812,15 +1333,6 @@ fm_list_model_set_property (GObject      *object,
     }
 }
 
-
-/*
-   static void
-   fm_list_model_multi_drag_source_init (EggTreeMultiDragSourceIface *iface)
-   {
-   iface->row_draggable = fm_list_model_multi_row_draggable;
-   iface->drag_data_get = fm_list_model_multi_drag_data_get;
-   iface->drag_data_delete = fm_list_model_multi_drag_data_delete;
-   }*/
 
 #if 0
 void

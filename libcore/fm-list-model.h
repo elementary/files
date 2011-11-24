@@ -1,32 +1,34 @@
 /* fm-list-model.h - a GtkTreeModel for file lists. 
+ *
+ * Copyright (C) 2001, 2002 Anders Carlsson
+ * Copyright (C) 2003, Soeren Sandmann
+ * Copyright (C) 2004, Novell, Inc.
+ *
+ * The Gnome Library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public License as
+ * published by the Free Software Foundation; either version 2 of the
+ * License, or (at your option) any later version.
+ *
+ * The Gnome Library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public
+ * License along with the Gnome Library; see the file COPYING.LIB.  If not,
+ * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+ *
+ * Authors: Anders Carlsson <andersca@gnu.org>, 
+ *          Soeren Sandmann (sandmann@daimi.au.dk), 
+ *          Dave Camp <dave@ximian.com>
+ */
 
-   Copyright (C) 2001, 2002 Anders Carlsson
-
-   The Gnome Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License as
-   published by the Free Software Foundation; either version 2 of the
-   License, or (at your option) any later version.
-
-   The Gnome Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
-
-   You should have received a copy of the GNU Library General Public
-   License along with the Gnome Library; see the file COPYING.LIB.  If not,
-   write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-   Boston, MA 02111-1307, USA.
-
-   Authors: Anders Carlsson <andersca@gnu.org>
-*/
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include "gof-file.h"
 #include "marlincore.h"
-/*#include <libnautilus-private/nautilus-file.h>
-#include <libnautilus-private/nautilus-directory.h>
-#include <libnautilus-extension/nautilus-column.h>*/
 
 #ifndef FM_LIST_MODEL_H
 #define FM_LIST_MODEL_H
@@ -101,31 +103,12 @@ GList *  fm_list_model_get_all_iters_for_file            (FMListModel *model, GO
 gboolean fm_list_model_get_first_iter_for_file           (FMListModel *model, GOFFile *file, GtkTreeIter *iter);
 void     fm_list_model_set_should_sort_directories_first (FMListModel *model, gboolean sort_directories_first);
 
-int      fm_list_model_get_sort_column_id_from_attribute (FMListModel *model, GQuark attribute);
-GQuark   fm_list_model_get_attribute_from_sort_column_id (FMListModel *model, int sort_column_id);
-void     fm_list_model_sort_files                        (FMListModel *model, GList **files);
-
-//NautilusZoomLevel fm_list_model_get_zoom_level_from_column_id (int               column);
-//int               fm_list_model_get_column_id_from_zoom_level (NautilusZoomLevel zoom_level);
-//NautilusZoomLevel fm_list_model_get_zoom_level_from_emblem_column_id (int               column);
-//int               fm_list_model_get_emblem_column_id_from_zoom_level (NautilusZoomLevel zoom_level);
-
 GOFFile *       fm_list_model_file_for_path (FMListModel *model, GtkTreePath *path);
 GOFFile *       fm_list_model_file_for_iter (FMListModel *model, GtkTreeIter *iter);
 void            fm_list_model_get_directory_file (FMListModel *model, GtkTreePath *path, 
                                                   GOFDirectoryAsync **directory, GOFFile **file);
 gboolean        fm_list_model_load_subdirectory (FMListModel *model, GtkTreePath *path, GOFDirectoryAsync **directory);
 void            fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIter *iter);
-
-/*void              fm_list_model_set_drag_view (FMListModel *model,
-  GtkTreeView *view,
-  int begin_x, 
-  int begin_y);
-
-  GtkTargetList *   fm_list_model_get_drag_target_list (void);*/
-
-int             fm_list_model_compare_func (FMListModel *model, GOFFile *file1, GOFFile *file2);
-
 
 /*int               fm_list_model_add_column (FMListModel *model,
   NautilusColumn *column);*/
