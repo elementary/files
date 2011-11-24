@@ -43,6 +43,8 @@ public class GOF.Directory.Async : Object
 
     private Cancellable cancellable;
     private FileMonitor monitor = null;
+    
+    private List<GOF.File>? sorted_dirs = null;
 
     /* signals */
     public signal void file_loaded (GOF.File file);
@@ -335,6 +337,22 @@ public class GOF.Directory.Async : Object
             return true;
 
         return false;
+    }
+
+    public unowned List<GOF.File>? get_sorted_dirs ()
+    {
+        if (state != State.LOADED)
+            return null;
+        if (sorted_dirs != null)
+            return sorted_dirs;
+
+        foreach (var gof in file_hash.get_values()) {
+            if (gof.is_directory)
+                sorted_dirs.prepend (gof); 
+        }
+        sorted_dirs.sort (GOF.File.compare_by_display_name);
+
+        return sorted_dirs;
     }
 }
 

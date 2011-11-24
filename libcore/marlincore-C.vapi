@@ -97,10 +97,15 @@ namespace Marlin
 namespace GOF {
 
     [CCode (cheader_filename = "gof-file.h")]
-    public class File : GLib.Object {
+    public class File : GLib.Object { 
+        public signal void changed ();
+        public signal void info_available ();
+        public signal void icon_changed ();
+
         public File(GLib.File location, GLib.File dir);
         public static File get(GLib.File location);
         public static File cache_lookup (GLib.File file);
+
         public void remove_from_caches ();
         public GLib.File location;
         public GLib.File directory; /* parent directory location */
@@ -148,10 +153,7 @@ namespace GOF {
         public bool launch_with(Gdk.Screen screen, AppInfo app);
 
         public GLib.List? get_settable_group_names ();
-            
-        public signal void changed ();
-        public signal void info_available ();
-        public signal void icon_changed ();
+        public static int compare_by_display_name (File file1, File file2);
     }
 
     [CCode (cheader_filename = "gof-file.h")]

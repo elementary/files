@@ -20,6 +20,7 @@
  */
  
 using Gtk;
+using GLib;
 
 namespace Marlin.View.Chrome
 {
@@ -241,9 +242,9 @@ namespace Marlin.View.Chrome
             entry.completion = "";
             autocompleted = false;
 
-                message ("zz1 path %s", path);
+            //message ("zz1 path %s", path);
             path += entry.text;
-                message ("zz1 path %s %s", path, to_search);
+            //message ("zz1 path %s %s", path, to_search);
             if(to_search != "")
                 path = Marlin.Utils.get_parent(path);
 
@@ -260,16 +261,16 @@ namespace Marlin.View.Chrome
             }
         }
         
-        private void on_file_loaded_menu(GOF.File file)
+        private void on_files_loaded_menu()
         {
-            if(file.is_directory)
-            {
-                var menuitem = new Gtk.MenuItem.with_label(file.name);
+            unowned List<GOF.File>? sorted_dirs = files_menu.get_sorted_dirs ();
+            foreach (var gof in sorted_dirs) {
+                var menuitem = new Gtk.MenuItem.with_label(gof.name);
                 menu.append(menuitem);
                 menuitem.activate.connect(() => {
                     changed(current_right_click_root + "/" + ((MenuItem)menu.get_active()).get_label()); });
-                menu.show_all();
             }
+            menu.show_all();
         }
         
         public override string? update_breadcrumbs(string new_path, string base_path)
@@ -312,9 +313,9 @@ namespace Marlin.View.Chrome
             menu = new Menu();
             var directory = File.new_for_uri (current_right_click_root);
             if (files_menu != null)
-                files_menu.file_loaded.disconnect(on_file_loaded_menu);
+                files_menu.done_loading.disconnect(on_files_loaded_menu);
             files_menu = GOF.Directory.Async.from_gfile (directory);
-            files_menu.file_loaded.connect(on_file_loaded_menu);
+            files_menu.done_loading.connect (on_files_loaded_menu);
             files_menu.load();
 
             menu.popup (null,

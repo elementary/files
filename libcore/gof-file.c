@@ -2082,3 +2082,7 @@ gof_file_get_permissions_as_string (GOFFile *file)
                             : (sticky ? 'T' : '-'));
 }
 
+int gof_file_compare_by_display_name (GOFFile *file1, GOFFile *file2)
+{
+    compare_by_display_name (file1, file2);
+}

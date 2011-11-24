@@ -231,6 +231,8 @@ GList           *gof_file_get_settable_group_names (GOFFile *file);
 gboolean        gof_file_can_set_permissions (GOFFile *file);
 char            *gof_file_get_permissions_as_string (GOFFile *file);
 
+int             gof_file_compare_by_display_name (GOFFile *file1, GOFFile *file2);
+
 G_END_DECLS
 
 #endif /* GOF_DIRECTORY_ASYNC_H */
