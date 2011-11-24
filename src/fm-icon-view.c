@@ -29,6 +29,7 @@
 #include "eel-glib-extensions.h"
 #include "eel-gtk-extensions.h"
 #include "eel-editable-label.h"
+#include "eel-ui.h"
 #include "marlin-tags.h"
 
 enum
@@ -39,16 +40,21 @@ enum
 };
 
 struct FMIconViewDetails {
-    GList       *selection;
-    GtkTreePath *new_selection_path;   /* Path of the new selection after removing a file */
+    GList               *selection;
+
+    gint                sort_type;
+    gboolean            sort_reversed;
+
+    GtkActionGroup      *icon_action_group;
+    guint               icon_merge_id;
 
     GtkCellEditable     *editable_widget;
     GtkTreeViewColumn   *file_name_column;
     GtkCellRendererText *file_name_cell;
     char                *original_name;
 
-    GOFFile     *renaming_file;
-    gboolean    rename_done;
+    GOFFile             *renaming_file;
+    gboolean            rename_done;
 };
 
 /* Wait for the rename to end when activating a file being renamed */
@@ -128,7 +134,7 @@ editable_focus_out_cb (GtkWidget *widget, GdkEvent *event, gpointer user_data)
     //printf ("%s\n", G_STRFUNC);
     view->details->editable_widget = NULL;
     fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
-    
+
     /*We're done editing - make the filename-cells readonly again.*/
     g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer,
                   "mode", GTK_CELL_RENDERER_MODE_INERT, NULL);
@@ -153,9 +159,9 @@ cell_renderer_editing_started_cb (GtkCellRenderer *renderer,
     icon_view->details->original_name = g_strdup (eel_editable_label_get_text (label));
 
     /*g_signal_connect (label, "focus-out-event",
-                      G_CALLBACK (editable_focus_out_cb), icon_view);*/
+      G_CALLBACK (editable_focus_out_cb), icon_view);*/
     /*g_signal_connect (entry, "populate-popup", 
-                      G_CALLBACK (editable_populate_popup), text_renderer);*/
+      G_CALLBACK (editable_populate_popup), text_renderer);*/
 
     //TODO
     /*nautilus_clipboard_set_up_editable
@@ -173,7 +179,7 @@ cell_renderer_editing_canceled (GtkCellRenderer *cell,
     view->details->editable_widget = NULL;
 
     fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
-    
+
     /*We're done editing - make the filename-cells readonly again.*/
     g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer,
                   "mode", GTK_CELL_RENDERER_MODE_INERT, NULL);
@@ -230,6 +236,119 @@ cell_renderer_edited (GtkCellRenderer   *cell,
 
     fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
+
+static void
+action_sort_radio_callback (GtkAction *action, GtkRadioAction *current, FMIconView *view)
+{
+    view->details->sort_type = gtk_radio_action_get_current_value (current);
+    //g_message ("%s %d", G_STRFUNC, view->details->sort_type);
+
+    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (view->model), view->details->sort_type, (view->details->sort_reversed) ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING );
+}
+
+static void
+action_reversed_order_callback (GtkAction *action, FMIconView *view)
+{
+    gboolean active = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+    if (view->details->sort_reversed == active)
+        return;
+
+    //g_message ("%s", G_STRFUNC);
+    view->details->sort_reversed = active;
+    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (view->model), view->details->sort_type, (active) ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING );
+}
+
+static const GtkActionEntry icon_view_entries[] = {
+    /* name, stock id, label */  { "Arrange Items", NULL, N_("Arran_ge Items") }, 
+};
+
+static const GtkToggleActionEntry icon_view_toggle_entries[] = {
+    /* name, stock id */      { "Reversed Order", NULL,
+    /* label, accelerator */    N_("Re_versed Order"), NULL,
+    /* tooltip */               N_("Display icons in the opposite order"),
+                                G_CALLBACK (action_reversed_order_callback),
+                                0 },
+};
+
+static const GtkRadioActionEntry arrange_radio_entries[] = {
+    { "Sort by Name", NULL,
+        N_("By _Name"), NULL,
+        N_("Keep icons sorted by name in rows"),
+        FM_LIST_MODEL_FILENAME },
+    { "Sort by Size", NULL,
+        N_("By _Size"), NULL,
+        N_("Keep icons sorted by size in rows"),
+        FM_LIST_MODEL_SIZE },
+    { "Sort by Type", NULL,
+        N_("By _Type"), NULL,
+        N_("Keep icons sorted by type in rows"),
+        FM_LIST_MODEL_TYPE },
+    { "Sort by Modification Date", NULL,
+        N_("By Modification _Date"), NULL,
+        N_("Keep icons sorted by modification date in rows"),
+        FM_LIST_MODEL_MODIFIED },
+    /* TODO */
+    /*{ "Sort by Trash Time", NULL,
+      N_("By T_rash Time"), NULL,
+      N_("Keep icons sorted by trash time in rows"),
+      NAUTILUS_FILE_SORT_BY_TRASHED_TIME },*/
+};
+
+static void
+fm_icon_view_merge_menus (FMDirectoryView *view)
+{
+    FMIconView *icon_view;
+    GtkUIManager *ui_manager;
+    GtkActionGroup *action_group;
+    GtkAction *action;
+    const char *ui;
+
+    g_assert (FM_IS_ICON_VIEW (view));
+
+    FM_DIRECTORY_VIEW_CLASS (fm_icon_view_parent_class)->merge_menus (view);
+
+    icon_view = FM_ICON_VIEW (view);
+    ui_manager = fm_directory_view_get_ui_manager (view);
+
+    action_group = gtk_action_group_new ("IconViewActions");
+    icon_view->details->icon_action_group = action_group;
+    gtk_action_group_add_actions (action_group,
+                                  icon_view_entries, G_N_ELEMENTS (icon_view_entries),
+                                  icon_view);
+    gtk_action_group_add_toggle_actions (action_group, 
+                                         icon_view_toggle_entries, G_N_ELEMENTS (icon_view_toggle_entries),
+                                         icon_view);
+    gtk_action_group_add_radio_actions (action_group,
+                                        arrange_radio_entries,
+                                        G_N_ELEMENTS (arrange_radio_entries),
+                                        -1,
+                                        G_CALLBACK (action_sort_radio_callback),
+                                        icon_view);
+
+    gtk_ui_manager_insert_action_group (ui_manager, action_group, 0);
+    g_object_unref (action_group);
+
+    ui = eel_ui_string_get ("fm-icon-view-ui.xml");
+    icon_view->details->icon_merge_id = gtk_ui_manager_add_ui_from_string (ui_manager, ui, -1, NULL);
+}
+
+static void
+fm_icon_view_unmerge_menus (FMDirectoryView *view)
+{
+    FMIconView *icon_view;
+    GtkUIManager *ui_manager;
+
+    FM_DIRECTORY_VIEW_CLASS (fm_icon_view_parent_class)->unmerge_menus (view);
+
+    icon_view = FM_ICON_VIEW (view);
+    ui_manager = fm_directory_view_get_ui_manager (view);
+    if (ui_manager != NULL) {
+        eel_ui_unmerge_ui (ui_manager,
+                           &icon_view->details->icon_merge_id,
+                           &icon_view->details->icon_action_group);
+    }
+}
+
 static void
 fm_icon_view_select_all (FMDirectoryView *view)
 {
@@ -272,8 +391,8 @@ fm_icon_view_start_renaming_file (FMDirectoryView *view,
 
     //TODO
     /*gtk_tree_view_scroll_to_cell (icon_view->tree, NULL,
-                                  icon_view->details->file_name_column,
-                                  TRUE, 0.0, 0.0);*/
+      icon_view->details->file_name_column,
+      TRUE, 0.0, 0.0);*/
     /* set cursor also triggers editing-started, where we save the editable widget */
     /*gtk_tree_view_set_cursor (icon_view->tree, path,
       icon_view->details->file_name_column, TRUE);*/
@@ -282,9 +401,9 @@ fm_icon_view_start_renaming_file (FMDirectoryView *view,
                               view->name_renderer,
                               TRUE);
     /*gtk_tree_view_set_cursor_on_cell (icon_view->tree, path,
-                                      icon_view->details->file_name_column,
-                                      (GtkCellRenderer *) icon_view->details->file_name_cell,
-                                      TRUE);*/
+      icon_view->details->file_name_column,
+      (GtkCellRenderer *) icon_view->details->file_name_cell,
+      TRUE);*/
 
     if (icon_view->details->editable_widget != NULL) {
         eel_filename_get_rename_region (icon_view->details->original_name,
@@ -302,19 +421,6 @@ fm_icon_view_sync_selection (FMDirectoryView *view)
 {
     fm_directory_view_notify_selection_changed (view);
 }
-
-
-/*static void
-  do_popup_menu (GtkWidget *widget, FMIconView *view, GdkEventButton *event)
-  {
-  if (tree_view_has_selection (GTK_TREE_VIEW (widget))) {
-//fm_directory_view_pop_up_selection_context_menu (FM_DIRECTORY_VIEW (view), event);
-printf ("popup_selection_menu\n");
-} else {
-//fm_directory_view_pop_up_background_context_menu (FM_DIRECTORY_VIEW (view), event);
-printf ("popup_background_menu\n");
-}
-}*/
 
 static gboolean
 button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMIconView *view)
@@ -347,7 +453,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMIconView
             /* user clicked on an empty area, so we unselect everything
                to make sure that the folder context menu is opened. */
             exo_icon_view_unselect_all (view->icons);
-            
+
             /* open the context menu */
             fm_directory_view_context_menu (FM_DIRECTORY_VIEW (view), event->button, event);
         }
@@ -381,18 +487,6 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMIconView
     return FALSE;
 }
 
-/*static gboolean
-  popup_menu_callback (GtkWidget *widget, gpointer callback_data)
-  {
-  FMIconView *view;
-
-  view = FM_ICON_VIEW (callback_data);
-
-  do_popup_menu (widget, view, NULL);
-
-  return TRUE;
-  }*/
-
 static gboolean
 key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_data)
 {
@@ -404,7 +498,7 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
     handled = FALSE;
 
     switch (event->keyval) {
-    /*case GDK_F10:
+        /*case GDK_F10:
           if (event->state & GDK_CONTROL_MASK) {
           fm_directory_view_pop_up_background_context_menu (view, &button_event);
           handled = TRUE;
@@ -412,13 +506,13 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
           break;*/
     case GDK_KEY_space:
         if (event->state & GDK_CONTROL_MASK) {
-			handled = FALSE;
-			break;
-		}
-		if (!gtk_widget_has_focus (widget)) {
-			handled = FALSE;
-			break;
-		}
+            handled = FALSE;
+            break;
+        }
+        if (!gtk_widget_has_focus (widget)) {
+            handled = FALSE;
+            break;
+        }
         if ((event->state & GDK_SHIFT_MASK) != 0) {
             //TODO
             printf ("activate alternate\n"); 
@@ -428,13 +522,13 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
         }
         handled = TRUE;
         break;
-    /*case GDK_KEY_Return:
-    case GDK_KEY_KP_Enter:
-        if ((event->state & GDK_SHIFT_MASK) != 0) {
+        /*case GDK_KEY_Return:
+          case GDK_KEY_KP_Enter:
+          if ((event->state & GDK_SHIFT_MASK) != 0) {
           activate_selected_items_alternate (FM_ICON_VIEW (view), NULL, TRUE);
           handled = TRUE;
           }
-        break; */
+          break; */
 
     default:
         handled = FALSE;
@@ -461,9 +555,9 @@ static gboolean fm_icon_view_draw(GtkWidget* view_, cairo_t* cr, FMIconView* vie
         gdouble width = pango_units_to_double(extents.width);
         gdouble height = pango_units_to_double(extents.height);
         gtk_render_layout(gtk_widget_get_style_context(GTK_WIDGET(view)), cr,
-                (double)gtk_widget_get_allocated_width(GTK_WIDGET(view))/2 - width/2,
-                (double)gtk_widget_get_allocated_height(GTK_WIDGET(view))/2 - height/2,
-                layout);
+                          (double)gtk_widget_get_allocated_width(GTK_WIDGET(view))/2 - width/2,
+                          (double)gtk_widget_get_allocated_height(GTK_WIDGET(view))/2 - height/2,
+                          layout);
         g_free (str);
     }
 
@@ -563,7 +657,7 @@ static void
 fm_icon_view_zoom_normal (FMDirectoryView *view)
 {
     MarlinZoomLevel     zoom;
-    
+
     zoom = g_settings_get_enum (marlin_icon_view_settings, "default-zoom-level");
     g_settings_set_enum (marlin_icon_view_settings, "zoom-level", zoom);
 }
@@ -590,13 +684,11 @@ fm_icon_view_finalize (GObject *object)
     g_free (view->details->original_name);
     view->details->original_name = NULL;
 
-    if (view->details->new_selection_path)
-        gtk_tree_path_free (view->details->new_selection_path);
     if (view->details->selection)
         gof_file_list_free (view->details->selection);
 
-
     g_free (view->details);
+
     G_OBJECT_CLASS (fm_icon_view_parent_class)->finalize (object); 
 }
 
@@ -605,6 +697,8 @@ fm_icon_view_init (FMIconView *view)
 {
     view->details = g_new0 (FMIconViewDetails, 1);
     view->details->selection = NULL;
+    view->details->sort_type = FM_LIST_MODEL_FILENAME;
+    view->details->sort_reversed = GTK_SORT_ASCENDING;
 
     view->model = FM_DIRECTORY_VIEW (view)->model;
     g_object_set (G_OBJECT (view->model), "has-child", FALSE, NULL);
@@ -619,7 +713,7 @@ fm_icon_view_init (FMIconView *view)
 
 
     exo_icon_view_set_selection_mode (view->icons, GTK_SELECTION_MULTIPLE);
-    
+
     /* add the icon renderer */
     g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer),
                   "follow-state", TRUE, "ypad", 3u, NULL);
@@ -663,7 +757,7 @@ fm_icon_view_init (FMIconView *view)
     g_signal_connect_object (view->icons, "key_press_event",
                              G_CALLBACK (key_press_callback), view, 0);
     g_signal_connect (view->icons, "draw",
-                             G_CALLBACK (fm_icon_view_draw), view);
+                      G_CALLBACK (fm_icon_view_draw), view);
     gtk_widget_show (GTK_WIDGET (view->icons));
     gtk_container_add (GTK_CONTAINER (view), GTK_WIDGET (view->icons));
 }
@@ -707,7 +801,7 @@ fm_icon_view_set_property (GObject      *object,
 
             /* disconnect the "zoom-level" signal handler, since we're using a fixed wrap-width here */
             /*g_signal_handlers_disconnect_by_func (marlin_icon_view_settings,
-                                                  fm_icon_view_zoom_level_changed, view);*/
+              fm_icon_view_zoom_level_changed, view);*/
         }
         else
         {
@@ -716,8 +810,8 @@ fm_icon_view_set_property (GObject      *object,
 
             /* connect the "zoom-level" signal handler as the wrap-width is now synced with the "zoom-level" */
             /*g_signal_connect_swapped (marlin_icon_view_settings, "changed::zoom-level",
-                                      G_CALLBACK (fm_icon_view_zoom_level_changed), view);
-            fm_icon_view_zoom_level_changed (view);*/
+              G_CALLBACK (fm_icon_view_zoom_level_changed), view);
+              fm_icon_view_zoom_level_changed (view);*/
         }
         break;
     case PROP_ZOOM_LEVEL:
@@ -757,6 +851,9 @@ fm_icon_view_class_init (FMIconViewClass *klass)
     fm_directory_view_class->get_visible_range = fm_icon_view_get_visible_range;
     fm_directory_view_class->start_renaming_file = fm_icon_view_start_renaming_file;
     fm_directory_view_class->zoom_normal = fm_icon_view_zoom_normal;
+
+    fm_directory_view_class->merge_menus = fm_icon_view_merge_menus;
+    fm_directory_view_class->unmerge_menus = fm_icon_view_unmerge_menus;
 
     g_object_class_install_property (object_class,
                                      PROP_TEXT_BESIDE_ICONS,

@@ -405,6 +405,7 @@ void    fm_directory_view_preview_selected_items (FMDirectoryView *view);
 //void    fm_directory_view_colorize_selection (FMDirectoryView *view, int color);
 void    fm_directory_view_notify_selection_changed (FMDirectoryView *view);
 
+GtkUIManager *fm_directory_view_get_ui_manager (FMDirectoryView *view);
 void    fm_directory_view_merge_menus (FMDirectoryView *view);
 void    fm_directory_view_unmerge_menus (FMDirectoryView *view);
 void    fm_directory_view_set_active_slot (FMDirectoryView *view);

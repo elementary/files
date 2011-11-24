@@ -1210,6 +1210,7 @@ fm_list_model_init (FMListModel *model)
     model->details->directory_reverse_map = g_hash_table_new (g_direct_hash, g_direct_equal);
     model->details->stamp = g_random_int ();
     model->details->sort_id = FM_LIST_MODEL_FILENAME;
+    model->details->order = GTK_SORT_ASCENDING;
     //model->details->columns = g_ptr_array_new ();
 }
 

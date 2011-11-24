@@ -1670,7 +1670,7 @@ add_application_to_open_with_menu (FMDirectoryView *view,
     GtkWidget       *menuitem;
     GtkUIManager    *ui_manager;
 
-    ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
+    ui_manager = fm_directory_view_get_ui_manager (view);
     launch_parameters = application_launch_parameters_new (application, files, view);
     escaped_app = eel_str_double_underscores (g_app_info_get_display_name (application));
     label = g_strdup_printf ("%s", escaped_app);
@@ -1767,7 +1767,7 @@ update_menus_selection (FMDirectoryView *view)
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
-    ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
+    ui_manager = fm_directory_view_get_ui_manager (view);
     eel_ui_prepare_merge_ui (ui_manager,
                              "OpenWithGroup",
                              &view->details->open_with_merge_id,
@@ -2006,7 +2006,7 @@ fm_directory_view_context_menu (FMDirectoryView *view,
 
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
-    ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
+    ui_manager = fm_directory_view_get_ui_manager (view);
     selection = fm_directory_view_get_selection (view);
 
     /* grab an additional reference on the view */
@@ -2674,12 +2674,21 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
     klass->delete = real_delete;
 }
 
+GtkUIManager *
+fm_directory_view_get_ui_manager (FMDirectoryView *view)
+{
+    if (view->details->window == NULL) 
+        return NULL;
+
+    return MARLIN_VIEW_WINDOW (view->details->window)->ui;
+}
+
 static void
 update_menus (FMDirectoryView *view)
 {
     g_debug ("%s", G_STRFUNC);
     GList *selection = fm_directory_view_get_selection (view);
-    GtkUIManager *ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
+    GtkUIManager *ui_manager = fm_directory_view_get_ui_manager (view);
 
     eel_ui_unmerge_ui (ui_manager,
                        &view->details->open_with_merge_id,
@@ -3113,7 +3122,7 @@ fm_directory_view_real_unmerge_menus (FMDirectoryView *view)
     if (view->details->dir_action_group == NULL)
         return;
 
-    ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
+    ui_manager = fm_directory_view_get_ui_manager (view);
     eel_ui_unmerge_ui (ui_manager,
                        &view->details->dir_merge_id,
                        &view->details->dir_action_group);
@@ -3150,7 +3159,7 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
     const char *ui;
     char *tooltip;
 
-    ui_manager = MARLIN_VIEW_WINDOW (view->details->window)->ui;
+    ui_manager = fm_directory_view_get_ui_manager (view);
 
     action_group = gtk_action_group_new ("DirViewActions");
     //gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);

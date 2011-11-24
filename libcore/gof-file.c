@@ -891,73 +891,7 @@ gof_file_compare_for_sort (GOFFile *file1,
             result = -result;
         }
     }
-#if 0
-    if (result == 0) {
-        switch (sort_type) {
-        case NAUTILUS_FILE_SORT_BY_DISPLAY_NAME:
-            result = compare_by_display_name (file_1, file_2);
-            if (result == 0) {
-                result = compare_by_directory_name (file_1, file_2);
-            }
-            break;
-        case NAUTILUS_FILE_SORT_BY_DIRECTORY:
-            result = compare_by_full_path (file_1, file_2);
-            break;
-        case NAUTILUS_FILE_SORT_BY_SIZE:
-            /* Compare directory sizes ourselves, then if necessary
-             * use GnomeVFS to compare file sizes.
-             */
-            result = compare_by_size (file_1, file_2);
-            if (result == 0) {
-                result = compare_by_full_path (file_1, file_2);
-            }
-            break;
-        case NAUTILUS_FILE_SORT_BY_TYPE:
-            /* GnomeVFS doesn't know about our special text for certain
-             * mime types, so we handle the mime-type sorting ourselves.
-             */
-            result = compare_by_type (file_1, file_2);
-            if (result == 0) {
-                result = compare_by_full_path (file_1, file_2);
-            }
-            break;
-        case NAUTILUS_FILE_SORT_BY_MTIME:
-            result = compare_by_time (file_1, file_2, NAUTILUS_DATE_TYPE_MODIFIED);
-            if (result == 0) {
-                result = compare_by_full_path (file_1, file_2);
-            }
-            break;
-        case NAUTILUS_FILE_SORT_BY_ATIME:
-            result = compare_by_time (file_1, file_2, NAUTILUS_DATE_TYPE_ACCESSED);
-            if (result == 0) {
-                result = compare_by_full_path (file_1, file_2);
-            }
-            break;
-        case NAUTILUS_FILE_SORT_BY_TRASHED_TIME:
-            result = compare_by_time (file_1, file_2, NAUTILUS_DATE_TYPE_TRASHED);
-            if (result == 0) {
-                result = compare_by_full_path (file_1, file_2);
-            }
-            break;
-        case NAUTILUS_FILE_SORT_BY_EMBLEMS:
-            /* GnomeVFS doesn't know squat about our emblems, so
-             * we handle comparing them here, before falling back
-             * to tie-breakers.
-             */
-            result = compare_by_emblems (file_1, file_2);
-            if (result == 0) {
-                result = compare_by_full_path (file_1, file_2);
-            }
-            break;
-        default:
-            g_return_val_if_reached (0);
-        }
-
-        if (reversed) {
-            result = -result;
-        }
-    }
-#endif
+    
     return result;
 }
 
