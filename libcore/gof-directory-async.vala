@@ -230,6 +230,11 @@ public class GOF.Directory.Async : Object
         add_to_hash_cache (gof);
         if (!gof.is_hidden || show_hidden_files)
             file_added (gof);
+
+        if (!gof.is_hidden && gof.is_directory) {
+            /* add to sorted_dirs */
+            sorted_dirs.insert_sorted (gof, GOF.File.compare_by_display_name);
+        }
     }
     
     private void file_info_available (GOF.File gof) {
@@ -251,6 +256,10 @@ public class GOF.Directory.Async : Object
             //message ("file deleted %s", gof.uri);
             if (!gof.is_hidden || show_hidden_files)
                 file_deleted (gof);
+            if (!gof.is_hidden && gof.is_directory) {
+                /* remove from sorted_dirs */
+                sorted_dirs.remove (gof);
+            }
             gof.remove_from_caches ();
             break;
         case FileMonitorEvent.CREATED:
