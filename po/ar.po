@@ -8,32 +8,32 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-22 15:28+0100\n"
-"PO-Revision-Date: 2011-08-27 18:06+0000\n"
-"Last-Translator: xapantu <Unknown>\n"
+"PO-Revision-Date: 2011-11-24 14:27+0000\n"
+"Last-Translator: Wasfi <Unknown>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2011-11-23 05:55+0000\n"
-"X-Generator: Launchpad (build 14336)\n"
+"X-Launchpad-Export-Date: 2011-11-25 05:37+0000\n"
+"X-Generator: Launchpad (build 14376)\n"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:47
 msgid "Properties"
-msgstr ""
+msgstr "الخصائص"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:88
 msgid "Info"
-msgstr ""
+msgstr "معلومات"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:93
 msgid "Permissions"
-msgstr ""
+msgstr "الصلاحيات"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:104
 msgid "Preview"
-msgstr ""
+msgstr "معاينة"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:298
 msgid "Created"
@@ -50,7 +50,7 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:304
 msgid "Deleted"
-msgstr ""
+msgstr "محذوف"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:308
 msgid "MimeType"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Location"
-msgstr ""
+msgstr "المكان"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:312
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/ContextView.vala:286
@@ -71,15 +71,15 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
-msgstr ""
+msgstr "قراءة"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:439
 msgid "Write"
-msgstr ""
+msgstr "كتابة"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:444
 msgid "Execute"
-msgstr ""
+msgstr "تنفيذ"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:662
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:675
@@ -90,11 +90,11 @@ msgstr "المالك"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:667
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:679
 msgid "Group"
-msgstr ""
+msgstr "المجموعة"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:683
 msgid "Everyone"
-msgstr ""
+msgstr "الجميع"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/ContextView.vala:282
 msgid "Name"
@@ -111,12 +111,12 @@ msgstr "الحجم"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "المجلّد ليس موجودًا"
+msgstr "المجلّد عير موجود"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr ""
+msgstr "\"مارلين\" لا يستطيع العثور على المجلَّد %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -129,11 +129,11 @@ msgstr "أنشاء مجلد %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr ""
+msgstr "خيارات \"مارلين\""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
-msgstr ""
+msgstr "الفتح بنقرة واحدة:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
@@ -153,23 +153,23 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:94
 msgid "Behavior"
-msgstr ""
+msgstr "السّلوك"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
-msgstr ""
+msgstr "صغير"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
-msgstr ""
+msgstr "متوسط"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
-msgstr ""
+msgstr "كبير"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
-msgstr ""
+msgstr "ضخم"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
