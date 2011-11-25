@@ -66,7 +66,8 @@ static GList    *get_selection (FMColumnsView *view);
 static GList    *fm_columns_view_get_selection (FMDirectoryView *view);
 static GList    *fm_columns_view_get_selected_paths (FMDirectoryView *view);
 static void     fm_columns_view_select_path (FMDirectoryView *view, GtkTreePath *path);
-static void     fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing);
+static void     fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
+                                             gboolean start_editing, gboolean select);
 
 static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsView* view)
 {
@@ -668,7 +669,8 @@ fm_columns_view_select_path (FMDirectoryView *view, GtkTreePath *path)
 }
 
 static void
-fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing)
+fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, 
+                            gboolean start_editing, gboolean select)
 {
     FMColumnsView *cols_view = FM_COLUMNS_VIEW (view);
 
@@ -676,6 +678,12 @@ fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean s
                                       cols_view->details->file_name_column,
                                       (GtkCellRenderer *) cols_view->details->file_name_cell,
                                       start_editing);
+
+    /* the treeview select the path by default */
+    if (!select) {
+        GtkTreeSelection *selection = gtk_tree_view_get_selection (cols_view->tree);
+        gtk_tree_selection_unselect_path (selection, path);
+    }
 }
 
 static GtkTreePath*

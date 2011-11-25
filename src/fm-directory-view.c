@@ -2075,11 +2075,13 @@ fm_directory_view_restore_selection (FMListModel *model, GtkTreePath *path, FMDi
      * path is set by thunar_standard_view_row_deleted() if this is the case */
     if (G_LIKELY (view->details->selection_before_delete != NULL))
     {
+        /* TODO remove after some testing, we don't want to select the path
+        but position our cursor */
         /* Restore the selection by selecting either the row before or the new first row */
-        (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, view->details->selection_before_delete);
+        //(*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, view->details->selection_before_delete);
 
         /* place the cursor on the selected path */
-        (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, view->details->selection_before_delete, FALSE);
+        (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, view->details->selection_before_delete, FALSE, FALSE);
 
         /* Free the tree path */
         gtk_tree_path_free (view->details->selection_before_delete);

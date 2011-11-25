@@ -71,7 +71,8 @@ static GList    *fm_icon_view_get_selection (FMDirectoryView *view);
 static GList    *get_selection (FMIconView *view);
 static GList    *fm_icon_view_get_selected_paths (FMDirectoryView *view);
 static void     fm_icon_view_select_path (FMDirectoryView *view, GtkTreePath *path);
-static void     fm_icon_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing);
+static void     fm_icon_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
+                                         gboolean start_editing, gboolean select);
 
 //static void     fm_icon_view_clear (FMIconView *view);
 static void     fm_icon_view_zoom_level_changed (FMIconView *view);
@@ -629,13 +630,18 @@ fm_icon_view_select_path (FMDirectoryView *view, GtkTreePath *path)
 }
 
 static void
-fm_icon_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing)
+fm_icon_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
+                         gboolean start_editing, gboolean select)
 {
     FMIconView *icon_view = FM_ICON_VIEW (view);
 
     exo_icon_view_set_cursor (icon_view->icons, path,
                               view->name_renderer,
                               start_editing);
+
+    /* the icon view doesn't select by default*/
+    if (select) 
+         gtk_icon_view_select_path (icon_view, path);
 }
 
 static GtkTreePath*

@@ -181,7 +181,8 @@ struct FMDirectoryViewClass {
      */
     void    (*set_cursor)           (FMDirectoryView    *view,
                                      GtkTreePath        *path,
-                                     gboolean            start_editing);
+                                     gboolean            start_editing,
+                                     gboolean            select);
 
 
 #if 0

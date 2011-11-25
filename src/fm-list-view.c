@@ -78,7 +78,8 @@ static GList    *fm_list_view_get_selection (FMDirectoryView *view);
 static GList    *get_selection (FMListView *view);
 static GList    *fm_list_view_get_selected_paths (FMDirectoryView *view);
 static void     fm_list_view_select_path (FMDirectoryView *view, GtkTreePath *path);
-static void     fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing);
+static void     fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, 
+                                         gboolean start_editing, gboolean select);
 
 static gboolean
 unload_file_timeout (gpointer data)
@@ -762,7 +763,8 @@ fm_list_view_select_path (FMDirectoryView *view, GtkTreePath *path)
 }
 
 static void
-fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean start_editing)
+fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, 
+                         gboolean start_editing, gboolean select)
 {
     FMListView *list_view = FM_LIST_VIEW (view);
 
@@ -770,6 +772,12 @@ fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path, gboolean star
                                       list_view->details->file_name_column,
                                       (GtkCellRenderer *) list_view->details->file_name_cell,
                                       start_editing);
+
+    /* the treeview select the path by default */
+    if (!select) {
+        GtkTreeSelection *selection = gtk_tree_view_get_selection (list_view->tree);
+        gtk_tree_selection_unselect_path (selection, path);
+    }
 }
 
 static void
