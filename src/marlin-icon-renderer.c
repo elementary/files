@@ -33,6 +33,7 @@
 
 #define EXO_PARAM_READWRITE (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)
 
+#define MARLIN_EMBLEM_SIZE 18
 
 
 static void marlin_icon_renderer_get_property  (GObject                    *object,
@@ -64,6 +65,7 @@ static void marlin_icon_renderer_render     (GtkCellRenderer            *cell,
 enum {
     PROP_0,
     PROP_PIXBUF,
+    PROP_DROP_FILE,
     PROP_FILE,
     PROP_SIZE,
     PROP_STOCK_ID,
@@ -81,6 +83,7 @@ struct _MarlinIconRendererPrivate
 {
     GdkPixbuf *pixbuf;
     GOFFile   *file;
+    GOFFile   *drop_file;
     gint      size;
 
     GIcon *gicon;
@@ -145,6 +148,12 @@ marlin_icon_renderer_class_init (MarlinIconRendererClass *class)
                                                         MARLIN_TYPE_ICON_SIZE,
                                                         MARLIN_ICON_SIZE_SMALL,
                                                         G_PARAM_CONSTRUCT | EXO_PARAM_READWRITE));
+
+    g_object_class_install_property (object_class,
+                                     PROP_DROP_FILE,
+                                     g_param_spec_object ("drop-file", "drop-file", "drop-file",
+                                                          GOF_TYPE_FILE,
+                                                          EXO_PARAM_READWRITE));
 
     g_object_class_install_property (object_class,
                                      PROP_FILE,
@@ -263,6 +272,10 @@ marlin_icon_renderer_finalize (GObject *object)
 
     if (priv->pixbuf)
         g_object_unref (priv->pixbuf);
+    if (priv->file)
+        g_object_unref (priv->file);
+    if (priv->drop_file)
+        g_object_unref (priv->drop_file);
 
     g_free (priv->stock_id);
     g_free (priv->stock_detail);
@@ -289,6 +302,9 @@ marlin_icon_renderer_get_property (GObject        *object,
     {
     case PROP_PIXBUF:
         g_value_set_object (value, priv->pixbuf);
+        break;
+    case PROP_DROP_FILE:
+        g_value_set_object (value, priv->drop_file);
         break;
     case PROP_FILE:
         g_value_set_object (value, priv->file);
@@ -362,6 +378,11 @@ marlin_icon_renderer_set_property (GObject      *object,
                 g_object_notify (object, "gicon");
             }
         }
+        break;
+    case PROP_DROP_FILE:
+        if (G_LIKELY (priv->drop_file != NULL))
+            g_object_unref (G_OBJECT (priv->drop_file));
+        priv->drop_file = (gpointer) g_value_dup_object (value);
         break;
     case PROP_FILE:
         if (G_LIKELY (priv->file != NULL)) {
@@ -771,6 +792,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GdkRectangle draw_rect;
     gint xpad, ypad;
     GtkStateFlags state;
+    MarlinIconInfo *nicon;
 
     marlin_icon_renderer_get_size (cell, widget, (GdkRectangle *) cell_area,
                                    &pix_rect.x, 
@@ -792,6 +814,16 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         return;
 
     g_object_ref (pixbuf);
+
+    /* drop state */
+    if (priv->file == priv->drop_file) {
+        flags |= GTK_CELL_RENDERER_PRELIT;
+        nicon = marlin_icon_info_lookup_from_name ("folder-drag-accept", priv->size);
+        temp = marlin_icon_info_get_pixbuf_nodefault (nicon);
+        _g_object_unref0 (nicon);
+        g_object_unref (pixbuf);
+        pixbuf = temp;
+    }
 
     /* clipboard */
     if (marlin_clipboard_manager_has_cutted_file (priv->clipboard, priv->file))
@@ -859,10 +891,10 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
     /* add remove helpers +/- */
     GdkPixbuf *pix;
-    MarlinIconInfo *nicon;
 
     if (priv->selection_helpers &&
-        (flags & GTK_CELL_RENDERER_PRELIT) != 0)
+        (flags & GTK_CELL_RENDERER_PRELIT) != 0 &&
+        priv->file != priv->drop_file)
     {
         if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
             nicon = marlin_icon_info_lookup_from_name ("remove", 16);
@@ -872,6 +904,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         gdk_cairo_set_source_pixbuf (cr, pix, pix_rect.x, pix_rect.y);
         cairo_paint (cr);
         
+        _g_object_unref0 (nicon);
         _g_object_unref0 (pix);
     }
 
@@ -880,7 +913,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     {
         int position = 0;
         GList* emblems = g_list_first(priv->file->emblems_list);
-#define MARLIN_EMBLEM_SIZE 18
+        
         /* render the emblems */
         while(emblems != NULL && position < 4)
         {
@@ -923,6 +956,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             position ++;
 
             emblems = g_list_next(emblems);
+            _g_object_unref0 (nicon);
             _g_object_unref0 (pix);
         }
     }

@@ -939,7 +939,7 @@ fm_directory_view_get_dest_actions (FMDirectoryView     *view,
     /* setup the drop-file for the icon renderer, so the user
      * gets good visual feedback for the drop target.
      */
-    //g_object_set (G_OBJECT (view->icon_renderer), "drop-file", (action != 0) ? file : NULL, NULL);
+    g_object_set (G_OBJECT (view->icon_renderer), "drop-file", (action != 0) ? file : NULL, NULL);
 
     /* do the view highlighting */
     if (view->details->drop_highlight != (path == NULL && action != 0))
@@ -1256,8 +1256,7 @@ fm_directory_view_drag_leave (GtkWidget         *widget,
                               FMDirectoryView   *view)
 {
     /* reset the drop-file for the icon renderer */
-    //TODO
-    //g_object_set (G_OBJECT (view->icon_renderer), "drop-file", NULL, NULL);
+    g_object_set (G_OBJECT (view->icon_renderer), "drop-file", NULL, NULL);
 
     printf ("%s\n", G_STRFUNC);
     /* stop any running drag autoscroll timer */
@@ -1339,8 +1338,7 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
             }
 
             /* setup drop-file for the icon renderer to highlight the target */
-            //TODO
-            //g_object_set (G_OBJECT (view->icon_renderer), "drop-file", (action != 0) ? file : NULL, NULL);
+            g_object_set (G_OBJECT (view->icon_renderer), "drop-file", (action != 0) ? file : NULL, NULL);
 
             /* do the item highlighting */
             (*FM_DIRECTORY_VIEW_GET_CLASS (view)->highlight_path) (view, path);
