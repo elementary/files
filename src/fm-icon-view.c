@@ -238,12 +238,27 @@ cell_renderer_edited (GtkCellRenderer   *cell,
 }
 
 static void
+fm_icon_view_sort_changed (FMIconView *view)
+{
+    GtkTreePath *path = NULL;
+    /* store first selected item to reveal it after model sort */
+    GList *selected_files = exo_icon_view_get_selected_items (view->icons);
+    if (selected_files != NULL) 
+        path = selected_files->data;
+    
+    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (view->model), view->details->sort_type, (view->details->sort_reversed) ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING );
+
+    /* reveal first selected item */
+    if (path != NULL)
+        exo_icon_view_scroll_to_path (view->icons, path, FALSE, 0.0, 0.0);
+}
+
+static void
 action_sort_radio_callback (GtkAction *action, GtkRadioAction *current, FMIconView *view)
 {
     view->details->sort_type = gtk_radio_action_get_current_value (current);
-    //g_message ("%s %d", G_STRFUNC, view->details->sort_type);
 
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (view->model), view->details->sort_type, (view->details->sort_reversed) ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING );
+    fm_icon_view_sort_changed (view);
 }
 
 static void
@@ -253,9 +268,9 @@ action_reversed_order_callback (GtkAction *action, FMIconView *view)
     if (view->details->sort_reversed == active)
         return;
 
-    //g_message ("%s", G_STRFUNC);
     view->details->sort_reversed = active;
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (view->model), view->details->sort_type, (active) ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING );
+
+    fm_icon_view_sort_changed (view);
 }
 
 static const GtkActionEntry icon_view_entries[] = {
