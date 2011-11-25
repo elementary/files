@@ -855,13 +855,12 @@ fm_directory_view_drag_scroll_timer_destroy (gpointer user_data)
 
 
 static GOFFile*
-fm_directory_view_get_drop_file (FMDirectoryView *view,
+fm_directory_view_get_drop_file (FMDirectoryView    *view,
                                  gint                x,
                                  gint                y,
                                  GtkTreePath       **path_return)
 {
     GtkTreePath *path = NULL;
-    //GtkTreeIter iter;
     GOFFile *file = NULL;
 
     /* determine the path for the given coordinates */
@@ -869,7 +868,7 @@ fm_directory_view_get_drop_file (FMDirectoryView *view,
 
     if (G_LIKELY (path != NULL))
     {
-        printf ("%s path %s\n", G_STRFUNC, gtk_tree_path_to_string (path));
+        //printf ("%s path %s\n", G_STRFUNC, gtk_tree_path_to_string (path));
         /* determine the file for the path */
         file = fm_list_model_file_for_path (view->model, path);
         printf ("%s %s\n", G_STRFUNC, file->uri);
@@ -889,9 +888,6 @@ fm_directory_view_get_drop_file (FMDirectoryView *view,
     {
         /* determine the current directory */
         file = gof_file_get (view->details->slot->location);
-        //TODO check gof_file_get is already reffed
-        /*if (G_LIKELY (file != NULL))
-          g_object_ref (G_OBJECT (file));*/
     }
 
     /* return the path (if any) */
@@ -982,7 +978,6 @@ fm_directory_view_drag_drop (GtkWidget          *widget,
     gchar       *uri = NULL;
     gint        prop_len;
 
-    printf ("%s\n", G_STRFUNC);
     target = gtk_drag_dest_find_target (widget, context, NULL);
     if (G_UNLIKELY (target == GDK_NONE))
     {
@@ -991,15 +986,17 @@ fm_directory_view_drag_drop (GtkWidget          *widget,
     }
     else if (G_UNLIKELY (target == gdk_atom_intern_static_string ("XdndDirectSave0")))
     {
-        printf ("%s XdndDirectSave0\n", G_STRFUNC);
-#if 0
         /* determine the file for the drop position */
         file = fm_directory_view_get_drop_file (view, x, y, NULL);
+        g_debug ("%s XdndDirectSave0 %s", G_STRFUNC, file->uri);
+        
         if (G_LIKELY (file != NULL))
         {
             /* determine the file name from the DnD source window */
-            if (gdk_property_get (context->source_window, gdk_atom_intern_static_string ("XdndDirectSave0"),
-                                  gdk_atom_intern_static_string ("text/plain"), 0, 1024, FALSE, NULL, NULL,
+            if (gdk_property_get (gdk_drag_context_get_source_window (context), 
+                                  gdk_atom_intern_static_string ("XdndDirectSave0"),
+                                  gdk_atom_intern_static_string ("text/plain"), 
+                                  0, 1024, FALSE, NULL, NULL,
                                   &prop_len, &prop_text) && prop_text != NULL)
             {
                 /* zero-terminate the string */
@@ -1010,14 +1007,14 @@ fm_directory_view_drag_drop (GtkWidget          *widget,
                 if (G_LIKELY (*prop_text != '\0' && strchr ((const gchar *) prop_text, G_DIR_SEPARATOR) == NULL))
                 {
                     /* allocate the relative path for the target */
-                    path = g_file_resolve_relative_path (thunar_file_get_file (file),
+                    path = g_file_resolve_relative_path (file->location,
                                                          (const gchar *)prop_text);
 
                     /* determine the new URI */
                     uri = g_file_get_uri (path);
 
                     /* setup the property */
-                    gdk_property_change (GDK_DRAWABLE (context->source_window),
+                    gdk_property_change (gdk_drag_context_get_source_window (context),
                                          gdk_atom_intern_static_string ("XdndDirectSave0"),
                                          gdk_atom_intern_static_string ("text/plain"), 8,
                                          GDK_PROP_MODE_REPLACE, (const guchar *) uri,
@@ -1030,7 +1027,7 @@ fm_directory_view_drag_drop (GtkWidget          *widget,
                 else
                 {
                     /* tell the user that the file name provided by the X Direct Save source is invalid */
-                    thunar_dialogs_show_error (GTK_WIDGET (view), NULL, _("Invalid filename provided by XDS drag site"));
+                    marlin_dialogs_show_error (GTK_WIDGET (view), NULL, _("Invalid filename provided by XDS drag site"));
                 }
 
                 /* cleanup */
@@ -1040,7 +1037,7 @@ fm_directory_view_drag_drop (GtkWidget          *widget,
             /* release the file reference */
             g_object_unref (G_OBJECT (file));
         }
-#endif
+        
         /* if uri == NULL, we didn't set the property */
         if (G_UNLIKELY (uri == NULL))
             return FALSE;

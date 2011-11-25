@@ -30,13 +30,13 @@
 //#include "marlin-private.h"
 
 /* Drag & Drop target names. */
-#define MARLIN_ICON_DND_GNOME_ICON_LIST_TYPE	"x-special/gnome-icon-list"
-#define MARLIN_ICON_DND_URI_LIST_TYPE		"text/uri-list"
-#define MARLIN_ICON_DND_NETSCAPE_URL_TYPE	"_NETSCAPE_URL"
-#define MARLIN_ICON_DND_BGIMAGE_TYPE		"property/bgimage"
+#define MARLIN_ICON_DND_GNOME_ICON_LIST_TYPE    "x-special/gnome-icon-list"
+#define MARLIN_ICON_DND_URI_LIST_TYPE		    "text/uri-list"
+#define MARLIN_ICON_DND_NETSCAPE_URL_TYPE	    "_NETSCAPE_URL"
+#define MARLIN_ICON_DND_BGIMAGE_TYPE		    "property/bgimage"
 #define MARLIN_ICON_DND_ROOTWINDOW_DROP_TYPE	"application/x-rootwindow-drop"
-#define MARLIN_ICON_DND_XDNDDIRECTSAVE_TYPE	"XdndDirectSave0" /* XDS Protocol Type */
-#define MARLIN_ICON_DND_RAW_TYPE	        "application/octet-stream"
+#define MARLIN_ICON_DND_XDNDDIRECTSAVE_TYPE	    "XdndDirectSave0" /* XDS Protocol Type */
+#define MARLIN_ICON_DND_RAW_TYPE	            "application/octet-stream"
 
 /* Item of the drag selection list */
 /*typedef struct {
