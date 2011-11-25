@@ -43,6 +43,7 @@ namespace Marlin {
         public Application ();
         public void create_window (GLib.File location, Gdk.Screen screen);
         public void quit ();
+        public bool is_first_window (Gtk.Window win);
     }
     [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
     namespace Window {

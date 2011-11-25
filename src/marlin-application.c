@@ -688,3 +688,13 @@ marlin_application_get (void)
 {
     return marlin_application_new ();
 }
+
+gboolean
+marlin_application_is_first_window (MarlinApplication *application, GtkWindow *win)
+{
+    GList *list;
+
+    list = g_list_last (gtk_application_get_windows (GTK_APPLICATION (application)));
+
+    return (win == list->data);
+}

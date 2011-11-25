@@ -170,7 +170,8 @@ namespace Marlin.View {
             /*set_default_size(760, 450);
             set_position(WindowPosition.CENTER);*/
             var geometry = Preferences.settings.get_string("geometry");
-            set_initial_geometry_from_string (this, geometry, 700, 450, false);
+            /* only position the first window */
+            set_initial_geometry_from_string (this, geometry, 700, 450, !app.is_first_window ((Gtk.Window) this));
             if (Preferences.settings.get_boolean("maximized")) {
                 maximize();
             }

@@ -165,8 +165,10 @@ eel_gtk_window_set_initial_geometry (GtkWindow *window,
         sanity_check_window_position (&real_left, &real_top);
         gtk_window_move (window, real_left, real_top);
     } else {
-        /* no position coordinates found, let's center the window */
-        gtk_window_set_position (window, GTK_WIN_POS_CENTER);
+        if (left == -1 && top == -1) {
+            /* no position coordinates found, let's center the window */
+            gtk_window_set_position (window, GTK_WIN_POS_CENTER);
+        }
     }
 
     sanity_check_window_dimensions (&width, &height);
@@ -211,6 +213,7 @@ eel_gtk_window_set_initial_geometry_from_string (GtkWindow *window,
     g_return_if_fail (!gtk_widget_get_visible (GTK_WIDGET (window)));
 
     width = height = 0;
+    left = top = -1;
     geometry_flags = eel_gdk_parse_geometry (geometry_string, &left, &top, &width, &height);
 
     /* Make sure the window isn't smaller than makes sense for this window.
