@@ -2059,11 +2059,7 @@ fm_directory_view_row_deleted (FMListModel *model, GtkTreePath *path, FMDirector
     gtk_tree_path_prev (path_copy);
     view->details->selection_before_delete = gtk_tree_path_copy (path_copy);
 
-    /* TODO some path free are missing ? */
-
     /* Free path list */
-    /*g_list_foreach (selected_paths, (GFunc) gtk_tree_path_free, NULL);
-      g_list_free (selected_paths);*/
     g_list_free_full (selected_paths, (GDestroyNotify) gtk_tree_path_free);
 }
 
