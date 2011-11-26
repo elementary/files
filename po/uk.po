@@ -8,37 +8,37 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-22 15:28+0100\n"
-"PO-Revision-Date: 2011-10-29 18:43+0000\n"
-"Last-Translator: Victor Markin <Unknown>\n"
+"PO-Revision-Date: 2011-11-25 21:50+0000\n"
+"Last-Translator: Fedik <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-11-23 05:56+0000\n"
-"X-Generator: Launchpad (build 14336)\n"
+"X-Launchpad-Export-Date: 2011-11-26 06:04+0000\n"
+"X-Generator: Launchpad (build 14381)\n"
 "Language: uk\n"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:47
 msgid "Properties"
-msgstr ""
+msgstr "Параметри"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:88
 msgid "Info"
-msgstr ""
+msgstr "Інформація"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:93
 msgid "Permissions"
-msgstr ""
+msgstr "Права"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:104
 msgid "Preview"
-msgstr ""
+msgstr "Попередній перегляд"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:298
 msgid "Created"
-msgstr ""
+msgstr "Створено"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:299
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/ContextView.vala:290
@@ -47,19 +47,19 @@ msgstr "Змінено"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:300
 msgid "Last Access"
-msgstr ""
+msgstr "Останній доступ"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:304
 msgid "Deleted"
-msgstr ""
+msgstr "Видалено"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:308
 msgid "MimeType"
-msgstr ""
+msgstr "Тип MIME"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Location"
-msgstr ""
+msgstr "Розташування"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:312
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/ContextView.vala:286
@@ -68,19 +68,19 @@ msgstr "Ціль"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:318
 msgid "Origin Location"
-msgstr ""
+msgstr "Дійсне розташування"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
-msgstr ""
+msgstr "Читати"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:439
 msgid "Write"
-msgstr ""
+msgstr "Записати"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:444
 msgid "Execute"
-msgstr ""
+msgstr "Виконати"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:662
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:675
@@ -91,11 +91,11 @@ msgstr "Власник"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:667
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:679
 msgid "Group"
-msgstr ""
+msgstr "Група"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:683
 msgid "Everyone"
-msgstr ""
+msgstr "Будь-хто"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/ContextView.vala:282
 msgid "Name"
@@ -130,7 +130,7 @@ msgstr "Створити теку %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr ""
+msgstr "Налаштування Marlin"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
@@ -146,11 +146,11 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "Default File Manager:"
-msgstr ""
+msgstr "Стандартний файловий менеджер:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "make Marlin my default File Manager"
-msgstr ""
+msgstr "зробити Marlin стандартним файловий менеджером"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:94
 msgid "Behavior"
@@ -263,6 +263,8 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Неможливо завантажити список методів підтримуваних сервером.\n"
+"Будь ласка, перевірте встановлення gvfs."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
@@ -329,7 +331,7 @@ msgstr "_Доменна назва:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
-msgstr ""
+msgstr "_Ім'я користувача:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
@@ -347,7 +349,7 @@ msgstr "Операцію скасовано"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-icon-view.c:455
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-list-view.c:613
 msgid "This folder is empty."
-msgstr ""
+msgstr "Ця тека є порожньою."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -359,7 +361,7 @@ msgstr "_Копіювати сюди"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr ""
+msgstr "_Посилання сюди"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
@@ -383,6 +385,8 @@ msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
+"Виберіть елементи які буде розміщено на панелі інструментів. Елементи можна "
+"сортувати шляхом перетягування."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
@@ -394,7 +398,7 @@ msgstr "Відображувані елементи"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:300
 msgid "Personal"
-msgstr ""
+msgstr "Особисте"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:305
 msgid "Your common places and bookmarks"
@@ -552,11 +556,11 @@ msgstr "О_чистити кошик"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:3143
 msgid "Icon Size"
-msgstr ""
+msgstr "Розмір Піктограми"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:3144
 msgid "Icon size"
-msgstr ""
+msgstr "Розмір піктограми"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1033
 msgid "Invalid filename provided by XDS drag site"
@@ -577,17 +581,17 @@ msgstr[1] ""
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1807
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Відкрити у %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1834
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Відкрити в %'d Новій _Вкладці"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1843
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Відкрити в %'d Новому _Вікні"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:2969
 msgid "Set as default"
@@ -623,11 +627,11 @@ msgstr[2] "Тривають %'d дій над файлом"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
-msgstr ""
+msgstr "Показ діалогу копіювання"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
-msgstr ""
+msgstr "Скасувати всі поточні дії"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
@@ -658,7 +662,7 @@ msgstr ""
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-progress-info.c:192
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr ""
+msgstr "Приготування"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
@@ -755,31 +759,31 @@ msgstr "Інше посилання на %s"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:420
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "%'d-е посилання на %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:424
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "%'d посилання на %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:428
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "%'d-е посилання на %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:432
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "%'d-е посилання на %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:624
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:632
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (%'d"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
@@ -822,26 +826,29 @@ msgstr "Ви впевнені, що хочете остаточно видали
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ви дійсно хочете остаточно знищити %'d вибраний елемент?"
+msgstr[1] "Ви дійсно хочете остаточно знищити %'d вибрані елементи?"
+msgstr[2] "Ви дійсно хочете остаточно знищити %'d вибраних елементів?"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1480
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
-msgstr ""
+msgstr "Вилучення файлів"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1506
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "залишилось вилучити %'d файл"
+msgstr[1] "залишилось вилучити %'d файли"
+msgstr[2] "залишилось вилучити %'d файлів"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1526
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%T залишилась"
+msgstr[1] "%T залишились"
+msgstr[2] "%T залишилось"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1594
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1628
@@ -856,58 +863,62 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"Неможливо знищити файли з каталогу \"%B\", оскільки у вас немає прав на їх "
+"перегляд."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1601
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2617
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3608
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "Помилка при отриманні відомостей про файли у каталозі «%B»."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1610
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3617
 msgid "_Skip files"
-msgstr ""
+msgstr "_Пропустити файли"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1631
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
+"Неможливо вилучити теку «%B», оскільки у вас немає прав на її читання."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1634
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2656
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3653
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "Помилка при читанні теки «%B»."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1668
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "Не вдалось вилучити теку %B."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1745
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "Помилка при вилучені %B."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1821
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1833
 msgid "Moving files to trash"
-msgstr ""
+msgstr "Переміщення файлів у смітник"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1835
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "залишилось перемістити у смітник %'d файл"
+msgstr[1] "залишилось перемістити у смітник %'d файли"
+msgstr[2] "залишилось перемістити у смітник %'d файлів"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1886
 msgid "Cannot move file to trash, do you want to delete immediately?"
-msgstr ""
+msgstr "Неможливо перемістити файл у смітник, остаточно знищити його?"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1887
 msgid "The file \"%B\" cannot be moved to the trash."
-msgstr ""
+msgstr "Файл «%B» неможливо перемістити у смітник."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2063
 msgid "Trashing Files"
@@ -915,289 +926,313 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2065
 msgid "Deleting Files"
-msgstr ""
+msgstr "Вилучення файлів"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2128
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "Неможливо витягнути %V"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2130
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "Неможливо демонтувати %V"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2285
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "Очистити смітник перед демонтуванням?"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2287
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"Для звільнення місця на цьому пристрої треба очистити смітник. Всі елементи, "
+"що в смітнику на цьому носії, буде остаточно втрачено."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2293
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "_Не очищати смітник"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2348
 msgid "Emptying the trash"
-msgstr ""
+msgstr "Очищення кошика"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2415
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "Неможливо змонтувати %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2493
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Триває підготовка до копіювання %'d файлу (%S)"
+msgstr[1] "Триває підготовка до копіювання %'d файли (%S)"
+msgstr[2] "Триває підготовка до копіювання %'d файлів (%S)"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2499
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Триває підготовка до переміщення %'d файлу (%S)"
+msgstr[1] "Триває підготовка до переміщення %'d файли (%S)"
+msgstr[2] "Триває підготовка до переміщення %'d файлів (%S)"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2505
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Триває підготовка до видалення %'d файлу (%S)"
+msgstr[1] "Триває підготовка до видалення %'d файли (%S)"
+msgstr[2] "Триває підготовка до видалення %'d файлів (%S)"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2511
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Триває підготовка до переміщення %'d файлу до смітника"
+msgstr[1] "Триває підготовка до переміщення %'d файлів до смітника"
+msgstr[2] "Триває підготовка до переміщення %'d файлів до смітника"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2554
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3474
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3600
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3645
 msgid "Error while copying."
-msgstr ""
+msgstr "Помилка при копіюванні."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2556
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3598
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3643
 msgid "Error while moving."
-msgstr ""
+msgstr "Помилка при переміщенні."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2560
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "Помилка при переміщенні файлів до смітника."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2614
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
+"Неможливо обробити файли у теці «%B», оскільки ви не маєте прав на їхній "
+"перегляд."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2653
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
+"Неможливо обробити теку «%B», оскільки ви не маєте прав на її читання."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2730
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
+"Неможливо обробити файл «%B», оскільки ви не маєте прав на його читання."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2733
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "Помилка при отриманні інформації про «%B»."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2833
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2875
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2908
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2938
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "Помилка при копіюванні до «%B»."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2837
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "Ви не маєте прав доступу до цільової теки."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2839
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "Помилка при отриманні відомостей про місце призначення."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2876
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "Місце призначення не є текою."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2909
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
+"Недостатньо місця на цільовому пристрої. Спробуйте вилучити якісь файли, щоб "
+"звільнити місце."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2911
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "Доступно %S, проте потрібно %S."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2939
 msgid "The destination is read-only."
-msgstr ""
+msgstr "Пристрій призначенння доступний лише для читання."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3000
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "«%B» переміщується до «%B»"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3001
 msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+msgstr "«%B» копіюється до «%B»"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3005
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "Дублюється «%B»"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3009
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Переміщується %'d файл (з «%B») до «%B»"
+msgstr[1] "Переміщується %'d файли (з «%B») до «%B»"
+msgstr[2] "Переміщується %'d файлів (з «%B») до «%B»"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3012
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Копіюється %'d файл (з «%B») до «%B»"
+msgstr[1] "Копіюється %'d файли (з «%B») до «%B»"
+msgstr[2] "Копіюється %'d файлів (з «%B») до «%B»"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3019
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Дублюється %'d файл (у «%B»)"
+msgstr[1] "Дублюється %'d файли (у «%B»)"
+msgstr[2] "Дублюється %'d файлів (у «%B»)"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3028
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d файл переміщується до «%B»"
+msgstr[1] "%'d файли переміщується до «%B»"
+msgstr[2] "%'d файлів переміщується до «%B»"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3032
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d файл копіюється до «%B»"
+msgstr[1] "%'d файли копіюється до «%B»"
+msgstr[2] "%'d файлів копіюється до «%B»"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3037
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Дублюється %'d файл"
+msgstr[1] "Дублюється %'d файли"
+msgstr[2] "Дублюється %'d файлів"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3088
 #, c-format
 msgid "%S of %S"
-msgstr ""
+msgstr "%S з %S"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3099
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%S з %S — залишилась %T (%S/с)"
+msgstr[1] "%S з %S — залишилось %T (%S/с)"
+msgstr[2] "%S з %S — залишилось %T (%S/с)"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3478
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
+"Неможливо скопіювати теку «%B», оскільки ви не маєте прав на її створення за "
+"місцем призначення."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3481
 msgid "There was an error creating the folder \"%B\"."
-msgstr ""
+msgstr "Помилка при створенні теки «%B»."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3605
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
+"Неможливо скопіювати файли з теки «%B», оскільки у вас немає прав на їх "
+"перегляд."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3650
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
+"Неможливо скопіювати теку «%B», оскільки ви не маєте прав на її читання."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3695
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4392
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4966
 msgid "Error while moving \"%B\"."
-msgstr ""
+msgstr "Помилка при перенесенні «%B»."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3696
 msgid "Could not remove the source folder."
-msgstr ""
+msgstr "Неможливо вилучити первинну теку."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3781
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3822
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4394
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4465
 msgid "Error while copying \"%B\"."
-msgstr ""
+msgstr "Помилка при копіюванні «%B»."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3782
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr ""
+msgstr "Не вдається видалити файли з вже існуючої теки %F."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3823
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr ""
+msgstr "Не вдається видалити вже існуючий файл %F."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4152
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4810
 msgid "You cannot move a folder into itself."
-msgstr ""
+msgstr "Не можна переміщувати теку у саму себе."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4153
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4811
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "Не можна копіювати теку у саму себе."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4154
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4812
 msgid "The destination folder is inside the source folder."
-msgstr ""
+msgstr "Місце призначення знаходиться у середині первинної теки."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4185
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "Неможливо перемістити файл сам у себе."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4186
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "Неможливо скопіювати файл сам у себе."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4187
 msgid "The source file would be overwritten by the destination."
-msgstr ""
+msgstr "Початковий файл буде переписаний файлом призначення."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4396
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
+msgstr "Не вдалось вилучити вже наявний файл з такою ж назвою у %F."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4466
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr ""
+msgstr "Помилка при копіюванні файла в %F."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4694
 msgid "Copying Files"
-msgstr ""
+msgstr "Копіювання файлів"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4710
 msgid "Preparing to move to \"%B\""
