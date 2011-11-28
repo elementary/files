@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-22 15:28+0100\n"
-"PO-Revision-Date: 2011-11-25 20:35+0000\n"
+"PO-Revision-Date: 2011-11-27 18:54+0000\n"
 "Last-Translator: toms95 <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-11-26 06:04+0000\n"
+"X-Launchpad-Export-Date: 2011-11-28 05:25+0000\n"
 "X-Generator: Launchpad (build 14381)\n"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:47
@@ -348,7 +348,7 @@ msgstr "Действие отменено"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-icon-view.c:455
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-list-view.c:613
 msgid "This folder is empty."
-msgstr ""
+msgstr "Эта папка пуста."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -555,11 +555,11 @@ msgstr "О_чистить корзину"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:3143
 msgid "Icon Size"
-msgstr ""
+msgstr "Размер иконки"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:3144
 msgid "Icon size"
-msgstr ""
+msgstr "Размер значков"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1033
 msgid "Invalid filename provided by XDS drag site"
@@ -574,23 +574,24 @@ msgstr "Не удалось создать ссылку на адрес \"%s\""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Использовать приложение «%s» для открытия выбранного объекта"
+msgstr[1] "Использовать приложение «%s» для открытия выбранных объектов"
+msgstr[2] "Использовать приложение «%s» для открытия выбранных объектов"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1807
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Открыть с помощью %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1834
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Открыть в %'d Новой_Вкладке"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1843
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Открыть в %'d Новом_окне"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:2969
 msgid "Set as default"
@@ -626,7 +627,7 @@ msgstr[2] "Идут %'d действия над файлами"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
-msgstr ""
+msgstr "Показывать диалог копирования"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"

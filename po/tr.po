@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-22 15:28+0100\n"
-"PO-Revision-Date: 2011-11-16 15:16+0000\n"
-"Last-Translator: Irmak Bıçakçıgil <Unknown>\n"
+"PO-Revision-Date: 2011-11-27 14:26+0000\n"
+"Last-Translator: Mesut Yaver <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-11-23 05:56+0000\n"
-"X-Generator: Launchpad (build 14336)\n"
+"X-Launchpad-Export-Date: 2011-11-28 05:25+0000\n"
+"X-Generator: Launchpad (build 14381)\n"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:47
 msgid "Properties"
-msgstr ""
+msgstr "Özellikler"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:88
 msgid "Info"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:298
 msgid "Created"
-msgstr ""
+msgstr "Oluşturuldu"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:299
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/ContextView.vala:290
@@ -45,11 +45,11 @@ msgstr "Değiştirildi"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:300
 msgid "Last Access"
-msgstr ""
+msgstr "Son Erişim"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:304
 msgid "Deleted"
-msgstr ""
+msgstr "Silindi"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:308
 msgid "MimeType"
@@ -70,11 +70,11 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
-msgstr ""
+msgstr "Oku"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:439
 msgid "Write"
-msgstr ""
+msgstr "Yaz"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:444
 msgid "Execute"
@@ -89,11 +89,11 @@ msgstr "Sahibi"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:667
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:679
 msgid "Group"
-msgstr ""
+msgstr "Grup"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:683
 msgid "Everyone"
-msgstr ""
+msgstr "Herkes"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/ContextView.vala:282
 msgid "Name"
@@ -128,7 +128,7 @@ msgstr "%s klasörünü oluştur"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr ""
+msgstr "Marlin Tercihleri"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
@@ -144,7 +144,7 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "Default File Manager:"
-msgstr ""
+msgstr "Varsayılan Dosya Yöneticisi"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "make Marlin my default File Manager"
@@ -232,7 +232,7 @@ msgstr "SSH"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr "Herkese Açık FTP"
+msgstr "Halka Açık FTP"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
@@ -278,7 +278,7 @@ msgstr "Tekrar Deneyin"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr "Lütfen kullanıcı ayrıntılarınızı doğrulayın"
+msgstr "Lütfen kullanıcı ayrıntılarınızı doğrulayın."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
@@ -311,11 +311,11 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr "_Paylaş"
+msgstr "P_aylaş:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr ""
+msgstr "_Klasör:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
@@ -323,19 +323,19 @@ msgstr "Kullanıcı Ayrıntıları"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr "_Alan adı:"
+msgstr "Alan a_dı:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
-msgstr ""
+msgstr "K_ullanıcı Adı:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
-msgstr "_Parola:"
+msgstr "Par_ola:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr "_Bu parolayı anımsa"
+msgstr "Bu parolayı hatı_rla"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
@@ -345,7 +345,7 @@ msgstr "İşlem iptal edildi"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-icon-view.c:455
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-list-view.c:613
 msgid "This folder is empty."
-msgstr ""
+msgstr "Bu klasör boş."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -357,7 +357,7 @@ msgstr "Buraya _Kopyala"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr "Buraya _Bağla"
+msgstr "Buraya _Bağ Koy"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
@@ -406,7 +406,7 @@ msgstr "Kişisel klasörünüzü açın"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:360
 msgid "Trash"
-msgstr "Çöp Kutusu"
+msgstr "Çöp"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:362
 msgid "Open the trash"
@@ -436,11 +436,11 @@ msgstr "Ağ"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:583
 msgid "Your network places"
-msgstr "Ağ Bağlantılarım"
+msgstr "Ağ bağlantılarım"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:614
 msgid "Entire network"
-msgstr "Tüm Ağ"
+msgstr "Tüm ağ"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:616
 msgid "Browse the contents of the network"
@@ -464,7 +464,7 @@ msgstr "_Sürücüyü Güvenle Kaldır"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:1610
 msgid "_Connect Drive"
-msgstr "Sürücüyü _Bağla"
+msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:1611
 msgid "_Disconnect Drive"
@@ -552,11 +552,11 @@ msgstr "Çöpü _Boşalt"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:3143
 msgid "Icon Size"
-msgstr ""
+msgstr "Simge Boyutu"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-places-sidebar.c:3144
 msgid "Icon size"
-msgstr ""
+msgstr "Simge boyutu"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1033
 msgid "Invalid filename provided by XDS drag site"
@@ -599,7 +599,7 @@ msgstr "Rengi Ayarla"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr "Panoda yapıştıracak birşey yok"
+msgstr "Panoda yapıştırılacak birşey yok"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:113
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:163
@@ -625,11 +625,11 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
-msgstr ""
+msgstr "Devam etmekte olan tüm eylemleri iptal et"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
-msgstr "Tüm dosya işlemleri başarı ile tamamlandı"
+msgstr "Tüm dosya işlemleri başarıyla tamamlandı"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/eel-editable-label.c:3188
 msgid "Select All"
@@ -651,7 +651,7 @@ msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit URI adresleriyle birlikte kullanılamaz."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-progress-info.c:192
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-progress-info.c:210
@@ -677,11 +677,11 @@ msgstr "_Atla"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:208
 msgid "S_kip All"
-msgstr "_Tümünü Atla"
+msgstr "Tü_münü Atla"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:209
 msgid "_Retry"
-msgstr ""
+msgstr "_Tekrar Dene"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:210
 msgid "Delete _All"
@@ -730,38 +730,37 @@ msgstr[0] "%'d saat"
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "yaklaşık %'d saat"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:400
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "%s öğesine bağlantı"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:404
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "%s öğesine bir diğer bağlantı"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:420
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "%'d. %s bağlantısı"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:424
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "%'d. %s bağlantısı"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:428
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "%'d. %s bağlantısı"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:432
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "%'d. %s bağlantısı"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:624
 msgid " ("
@@ -775,6 +774,7 @@ msgstr " (%'d"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
+"\"%B\" dosyasını çöpten kalıcı olarak silmek istediğinize emin misiniz?"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1386
 #, c-format
@@ -785,16 +785,16 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-msgstr[1] ""
+"%'d seçili öğeyi kalıcı olarak çöpten silmek istediğinizden emin misiniz?"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1396
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1464
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "Eğer bir öğeyi silerseniz, o kalıcı olarak kaybolur."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1417
 msgid "Empty all items from Trash?"
-msgstr "Çöp Kutusu boşaltılsın mı?"
+msgstr "Çöpteki bütün öğeler boşaltılsın mı?"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1421
 msgid "All items in the Trash will be permanently deleted."
@@ -809,8 +809,7 @@ msgstr "\"%B\" dosyasını kalıcı olarak silmek istediğinize emin misiniz?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-"%'d seçili öğeyi kalıcı olarak silmek istediğinizden emin misiniz?"
+msgstr[0] "%'d seçili öğeyi kalıcı olarak silmek istediğinize emin misiniz?"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1480
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1512
@@ -841,6 +840,8 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"\"%B\" klasöründeki dosyalar silinemiyor çünkü onları görmek için yeterli "
+"erişim hakkınız yok."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1601
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2617
@@ -859,6 +860,7 @@ msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
+"\"%B\" klasörü silinemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1634
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2656
@@ -883,8 +885,7 @@ msgstr "Dosyalar çöpe taşınıyor"
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya çöpe gönderilmeyi bekliyor"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1886
 msgid "Cannot move file to trash, do you want to delete immediately?"
@@ -892,7 +893,7 @@ msgstr "Dosya çöp kutusuna taşınamadı, kalıcı olarak silmek ister misiniz
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:1887
 msgid "The file \"%B\" cannot be moved to the trash."
-msgstr ""
+msgstr "\"%B\" dosyası çöpe taşınamıyor."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2063
 msgid "Trashing Files"
@@ -919,10 +920,12 @@ msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"Bu birimde boş alan kazanmak için çöp boşaltılmak zorunda. Birimdeki tüm "
+"çöpe atılmış öğeler kalıcı olarak kaybolacak."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2293
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "Çöpü _Boşaltma"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2348
 msgid "Emptying the trash"
@@ -979,18 +982,22 @@ msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
+"\"%B\" klasöründeki dosyalar işlenemiyor çünkü onları okumak için yeterli "
+"erişim hakkınız yok."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2653
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
+"\"%B\" klasörü işlenemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2730
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
+"\"%B\" dosyası işlenemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2733
 msgid "There was an error getting information about \"%B\"."
@@ -1005,7 +1012,7 @@ msgstr "\"%B\" hedefine kopyalanırken hata."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2837
 msgid "You do not have permissions to access the destination folder."
-msgstr "Hedef klasöre erişim için gerekli izne sahip değilsiniz."
+msgstr ""
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:2839
 msgid "There was an error getting information about the destination."
@@ -1046,20 +1053,17 @@ msgstr "\"%B\" çoğaltılıyor"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3009
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya (\"%B\" içerisinde) \"%B\" hedefine taşınıyor"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3012
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya (\"%B\" içerisinde) \"%B\" hedefine kopyalanıyor"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3019
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosya (\"%B\" içerisinde) çoğaltılıyor"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3028
 msgid "Moving %'d file to \"%B\""
@@ -1092,6 +1096,8 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
+"\"%B\" klasörü kopyalanamıyor çünkü onu hedefte oluşturmak için yeterli "
+"erişim hakkınız yok."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3481
 msgid "There was an error creating the folder \"%B\"."
@@ -1102,12 +1108,16 @@ msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
+"\"%B\" klasörü içerisindeki dosyalar kopyalanamıyor çünkü onları görmek için "
+"yeterli erişim hakkınız yok."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3650
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
+"\"%B\" klasörü kopyalanamıyor çünkü onu okumak için yeterli erişim hakkınız "
+"yok."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3695
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4392
@@ -1129,12 +1139,12 @@ msgstr "\"%B\" kopyalanırken hata."
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3782
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr ""
+msgstr "Zaten mevcut olan %F klasöründen dosyalar silinemedi."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:3823
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr ""
+msgstr "Zaten mevcut olan %F dosyası silinemedi."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4152
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4810
@@ -1149,7 +1159,7 @@ msgstr "Bir klasörü kendi üzerine kopyalayamazsınız."
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4154
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4812
 msgid "The destination folder is inside the source folder."
-msgstr ""
+msgstr "Hedef klasör kaynak klasörünün içerisinde."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4185
 msgid "You cannot move a file over itself."
@@ -1161,12 +1171,12 @@ msgstr "Bir dosyayı kendi üzerine kopyalayamazsınız."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4187
 msgid "The source file would be overwritten by the destination."
-msgstr ""
+msgstr "Kaynak dosya hedef tarafından kendi üzerine yazılabilir."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4396
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
+msgstr "%F içerisinde aynı isimde zaten mevcut olan dosya silinemedi."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:4466
 #, c-format
@@ -1198,18 +1208,17 @@ msgstr "Dosyalar Taşınıyor"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:5246
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "\"%B\" içerisinde bağlar oluşturuluyor"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:5257
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosyaya bağ yapılıyor"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:5387
 msgid "Error while creating link to %B."
-msgstr ""
+msgstr "%B bağı oluşturulurken hata."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:5389
 msgid "Symbolic links only supported for local files"
@@ -1222,7 +1231,7 @@ msgstr "Hedef sembolik bağları desteklemiyor."
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:5395
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr ""
+msgstr "%F içerisinde sembolik bağ oluştururken hata oluştu."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:5698
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:5701
@@ -1235,7 +1244,7 @@ msgstr "isimsiz klasör"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:5951
 msgid "new file"
-msgstr "Yeni Dosya"
+msgstr "yeni dosya"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-operations.c:6101
 msgid "Error while creating directory %B."
@@ -1257,7 +1266,7 @@ msgstr "Çöp Boşaltılıyor"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-utilities.c:267
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "\"%s\" özgün konumu belirlenemedi "
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-utilities.c:270
 msgid "The item cannot be restored from trash"
@@ -1280,30 +1289,30 @@ msgstr ""
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" içinde aynı isme sahip daha eski bir klasör mevcut."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:159
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" içinde aynı isme sahip daha yeni bir klasör mevcut."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:163
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" içinde aynı isme sahip bir klasör mevcut."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Değiştirdiğinizde dizindeki tüm dosyalar kaldırılacak."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:170
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "%s dizinini yenisi ile değiştir?"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:172
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
@@ -1320,19 +1329,19 @@ msgstr "%s dosyasını yenisiyle değiştir?"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:179
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Yerine koymak, var olan içeriğin üzerine yazılmasına neden olacak."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:183
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" içinde aynı isme sahip daha eski bir dosya mevcut."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" içinde zaten aynı isimde daha yeni bir dosya var."
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
@@ -1378,7 +1387,7 @@ msgstr "Birleştir"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "Hedef için yeni bir isim _seçin"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:710
 msgid "Reset"

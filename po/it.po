@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-22 15:28+0100\n"
-"PO-Revision-Date: 2011-11-26 23:28+0000\n"
-"Last-Translator: DM74S <Unknown>\n"
+"PO-Revision-Date: 2011-11-27 20:51+0000\n"
+"Last-Translator: saccogen <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-11-27 05:35+0000\n"
+"X-Launchpad-Export-Date: 2011-11-28 05:25+0000\n"
 "X-Generator: Launchpad (build 14381)\n"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:47
@@ -66,7 +66,7 @@ msgstr "Destinazione"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:318
 msgid "Origin Location"
-msgstr ""
+msgstr "Luogo di Origine"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
@@ -128,7 +128,7 @@ msgstr "Crea la cartella %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr ""
+msgstr "Preferenze di Marlin"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
@@ -140,15 +140,15 @@ msgstr "Selezione automatica della velocità del mouse"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
-msgstr ""
+msgstr "Finestra di Dialogo delle Proprieta modale:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "Default File Manager:"
-msgstr ""
+msgstr "File Manager di Default:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "make Marlin my default File Manager"
-msgstr ""
+msgstr "Rendi Marlin il mio File Manager di default"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/View/SettingsDialog.vala:94
 msgid "Behavior"
@@ -575,23 +575,23 @@ msgstr "Impossibile creare un link per l'URL \"%s\""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Usa «%s» per aprire l'oggetto selezionato"
+msgstr[1] "Usa «%s» per aprire gli oggetti selezionati"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1807
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Apri con %s"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1834
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Apri in %'d Nuove _Schede"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:1843
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Apri in %'d Nuove _Finestre"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/fm-directory-view.c:2969
 msgid "Set as default"
@@ -626,11 +626,11 @@ msgstr[1] "%'d operazioni su file attive"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
-msgstr ""
+msgstr "Mostra la finestra di dialogo per la copia dei file"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
-msgstr ""
+msgstr "Annulla tutte le operazioni in corso"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
@@ -1413,7 +1413,7 @@ msgstr "Tipo:"
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr "Ultrima modifica:"
+msgstr "Ultima modifica:"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
@@ -1469,7 +1469,7 @@ msgstr "Campo Exec non inserito"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/gof-file.c:1600
 msgid "No URL field specified"
-msgstr "Caampo URL non specificato"
+msgstr "Campo URL non specificato"
 
 #: /home/kitkat/dev/marlin/marlin48/marlin/po/../libcore/gof-file.c:1606
 msgid "Invalid desktop file"
