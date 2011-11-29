@@ -69,6 +69,7 @@ struct _GOFFile {
 
     GFileInfo       *info;
     GFile           *location;
+    GFile           *target_location;
     GFile           *directory;
     const gchar     *name;
     const gchar     *display_name;
@@ -87,7 +88,7 @@ struct _GOFFile {
     GIcon           *icon;
     gchar           *custom_icon_name;
     GdkPixbuf       *pix;
-    gint            *pix_size;
+    gint            pix_size;
     guint64         modified;
     gchar           *formated_modified;
     gchar           *color;
@@ -129,7 +130,7 @@ struct _GOFFileClass {
 "standard::type,standard::is-hidden,standard::name,standard::display-name,standard::edit-name,standard::copy-name,standard::fast-content-type,standard::size,standard::allocated-size,access::*,mountable::*,time::*,unix::*,owner::*,selinux::*,thumbnail::*,id::filesystem,trash::orig-path,trash::deletion-date,metadata::*"
 */
 
-#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*"
+#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*"
 
 typedef enum {
 	GOF_FILE_ICON_FLAGS_NONE = 0,
@@ -232,6 +233,8 @@ gboolean        gof_file_can_set_permissions (GOFFile *file);
 char            *gof_file_get_permissions_as_string (GOFFile *file);
 
 int             gof_file_compare_by_display_name (GOFFile *file1, GOFFile *file2);
+gboolean        gof_file_target_location_is_directory (GOFFile *file);
+GFile           *gof_file_get_target_location (GOFFile *file);
 
 G_END_DECLS
 

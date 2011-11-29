@@ -880,8 +880,8 @@ marlin_dnd_perform (GtkWidget       *widget,
 #endif
     if (file->is_directory)
     {
-        printf ("%s marlin_file_oeration_copy_move\n", G_STRFUNC);
-        marlin_file_operations_copy_move (file_list, NULL, file->location,
+        printf ("%s marlin_file_operation_copy_move\n", G_STRFUNC);
+        marlin_file_operations_copy_move (file_list, NULL, gof_file_get_target_location (file),
                                           action, widget, NULL, NULL);
     }
     else if (gof_file_is_executable (file))

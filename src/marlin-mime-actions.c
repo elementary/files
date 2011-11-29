@@ -79,7 +79,7 @@ marlin_mime_get_default_application_for_file (GOFFile *file)
     GAppInfo *app;
     char *uri_scheme;
 
-    app = g_app_info_get_default_for_type (file->ftype, !file_has_local_path (file));
+    app = gof_file_get_default_handler (file);
 
     if (app == NULL) {
         uri_scheme = g_file_get_uri_scheme (file->location);

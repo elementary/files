@@ -591,17 +591,21 @@ fm_directory_view_activate_single_file (FMDirectoryView *view,
                                         GdkScreen *screen, 
                                         MarlinViewWindowOpenFlags flags)
 {
+    GFile *location;
+
     g_debug ("%s\n", G_STRFUNC);
+    location = gof_file_get_target_location (file);
+
     if (file->is_directory) {
         switch (flags) {
         case MARLIN_WINDOW_OPEN_FLAG_NEW_TAB:
-            marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), file->location);
+            marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location);
             break;
         case MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW:
-            marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), file->location);
+            marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), location);
             break;
         default:
-            fm_directory_view_load_location (view, file->location);
+            fm_directory_view_load_location (view, location);
             break;
         }
     } else {
@@ -1007,7 +1011,7 @@ fm_directory_view_drag_drop (GtkWidget          *widget,
                 if (G_LIKELY (*prop_text != '\0' && strchr ((const gchar *) prop_text, G_DIR_SEPARATOR) == NULL))
                 {
                     /* allocate the relative path for the target */
-                    path = g_file_resolve_relative_path (file->location,
+                    path = g_file_resolve_relative_path (gof_file_get_target_location (file),
                                                          (const gchar *)prop_text);
 
                     /* determine the new URI */
@@ -1149,10 +1153,8 @@ fm_directory_view_drag_data_received (GtkWidget          *widget,
                     {
                         /* determine the absolute path to the target directory */
                         //working_directory = g_file_get_uri (thunar_file_get_file (file));
-                        working_directory = g_file_get_uri (file->location);
-                        printf ("%s TARGET_NETSCAPE_URL %s\n", G_STRFUNC, working_directory);
+                        printf ("%s TARGET_NETSCAPE_URL %s\n", G_STRFUNC, file->uri);
 
-                        g_free (working_directory);
                         //TODO
 #if 0
                         /* prepare the basic part of the command */

@@ -147,6 +147,7 @@ gof_file_clear_info (GOFFile *file)
 {
     g_return_if_fail (file != NULL);
 
+    _g_object_unref0 (file->target_location);
     _g_free0(file->utf8_collation_key);
     _g_free0(file->formated_type);
     _g_free0(file->format_size);
@@ -199,6 +200,18 @@ void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file)
         file->icon = g_themed_icon_new (MARLIN_ICON_FOLDER);
 }
 
+static void 
+gof_file_target_location_update (GOFFile *file)
+{
+    if (file->target_location == NULL)
+        return;
+
+    GOFFile *gof = gof_file_get (file->target_location);
+    gof_file_query_update (gof);
+    file->is_directory = gof->is_directory;
+    file->ftype = gof->ftype;
+}
+
 void    gof_file_update (GOFFile *file)
 {
     GKeyFile *key_file;
@@ -225,14 +238,14 @@ void    gof_file_update (GOFFile *file)
     file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
     file->modified = g_file_info_get_attribute_uint64 (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
-    if (file->is_directory)
-        file->format_size = g_strdup ("--");
-    else
-        file->format_size = g_format_size_for_display(file->size);
-    /* TODO prefs: create an object to store all the preferences */
-    gchar *date_format_pref = g_settings_get_string(settings, MARLIN_PREFERENCES_DATE_FORMAT);
-    file->formated_modified = eel_get_date_as_string (file->modified, date_format_pref);
-    _g_free0 (date_format_pref);
+    if (file->file_type == G_FILE_TYPE_SHORTCUT || file->file_type == G_FILE_TYPE_MOUNTABLE) {
+        const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+        /*g_message ("%s target uri: %s", G_STRFUNC, target_uri);*/
+        if (target_uri != NULL) {
+            file->target_location = g_file_new_for_uri (target_uri);
+            gof_file_target_location_update (file);
+        }
+    }
 
     /* TODO the key-files could be loaded async. 
     <lazy>The performance gain would not be that great</lazy>*/
@@ -296,11 +309,42 @@ void    gof_file_update (GOFFile *file)
                 }
             }
 
+            /* check f we have a target location */
+            gchar *url;
+            gchar *type;
+
+            type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                          G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
+            if (eel_str_is_equal (type, "Link"))
+            {
+                url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                             G_KEY_FILE_DESKTOP_KEY_URL, NULL);
+                if (G_LIKELY (url != NULL))
+                {
+                    g_debug ("%s .desktop Link %s\n", G_STRFUNC, url);
+                    file->target_location = g_file_new_for_uri (url);
+                    gof_file_target_location_update (file);
+                    g_free (url);
+                }
+            }
+            _g_free0 (type);
+
             /* free the key file */
             g_key_file_free (key_file);
         }
     }
 
+    /* sizes */
+    if (file->is_directory)
+        file->format_size = g_strdup ("--");
+    else
+        file->format_size = g_format_size_for_display(file->size);
+    /* TODO prefs: create an object to store all the preferences */
+    gchar *date_format_pref = g_settings_get_string(settings, MARLIN_PREFERENCES_DATE_FORMAT);
+    file->formated_modified = eel_get_date_as_string (file->modified, date_format_pref);
+    _g_free0 (date_format_pref);
+
+    /* icon */
     if (file->is_directory) {
         gof_file_get_folder_icon_from_uri_or_path (file);
     } else {
@@ -439,8 +483,6 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
  */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
-    MarlinIconInfo *nicon;
-
     if (!(file->pix == NULL || file->pix_size != size))
         return;
 
@@ -588,6 +630,7 @@ void gof_file_remove_from_caches (GOFFile *file)
 static void gof_file_init (GOFFile *file) {
     file->info = NULL;
     file->location = NULL;
+    file->target_location = NULL;
     file->icon = NULL;
     file->pix = NULL;
 
@@ -616,6 +659,7 @@ static void gof_file_finalize (GObject* obj) {
 
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
+    _g_object_unref0 (file->target_location);
     _g_object_unref0 (file->directory);
     _g_free0 (file->uri);
     _g_free0(file->basename);
@@ -964,7 +1008,7 @@ gboolean
 gof_file_is_trashed (GOFFile *file)
 {
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-    return eel_g_file_is_trashed (file->location);
+    return eel_g_file_is_trashed (gof_file_get_target_location (file));
 }
 
 const gchar *
@@ -1303,14 +1347,14 @@ gof_file_accepts_drop (GOFFile          *file,
             _g_free0 (uri);
 
             /* we cannot drop a file on itself */
-            if (G_UNLIKELY (g_file_equal (file->location, lp->data)))
+            if (G_UNLIKELY (g_file_equal (gof_file_get_target_location (file), lp->data)))
                 return 0;
 
             /* check whether source and destination are the same */
             parent_file = g_file_get_parent (lp->data);
             if (G_LIKELY (parent_file != NULL))
             {
-                if (g_file_equal (file->location, parent_file))
+                if (g_file_equal (gof_file_get_target_location (file), parent_file))
                 {
                     g_object_unref (parent_file);
                     return 0;
@@ -1433,7 +1477,6 @@ GAppInfo *
 gof_file_get_default_handler (GOFFile *file) 
 {
     const gchar *content_type;
-    GAppInfo    *app_info = NULL;
     gboolean     must_support_uris = FALSE;
     gchar       *path;
 
@@ -1448,13 +1491,14 @@ gof_file_get_default_handler (GOFFile *file)
         must_support_uris = (path == NULL);
         _g_free0 (path);
 
-        app_info = g_app_info_get_default_for_type (content_type, must_support_uris);
+        return g_app_info_get_default_for_type (content_type, must_support_uris);
     }
 
-    if (app_info == NULL)
-        app_info = g_file_query_default_handler (file->location, NULL, NULL);
-
-    return app_info;
+    //g_app_info_get_default_for_uri_scheme
+    if (file->target_location != NULL)
+        return g_file_query_default_handler (file->target_location, NULL, NULL);
+    
+    return g_file_query_default_handler (file->location, NULL, NULL);
 }
 
 gboolean
@@ -1610,25 +1654,27 @@ gof_file_launch (GOFFile  *file, GdkScreen *screen)
         return TRUE;
     }
 
-    /* check if we're not trying to launch another file manager again, possibly
-     * ourselfs which will end in a loop */
-    /*if (g_strcmp0 (g_app_info_get_id (app_info), "exo-file-manager.desktop") == 0
-      || g_strcmp0 (g_app_info_get_id (app_info), "Thunar.desktop") == 0
-      || g_strcmp0 (g_app_info_get_name (app_info), "exo-file-manager") == 0)
-      {
-      g_object_unref (G_OBJECT (app_info));
-      thunar_show_chooser_dialog (parent, file, TRUE);
-      return TRUE;
-      }*/
+    /* check if we're not trying to launch our own file manager */
+    /*if (g_strcmp0 (g_app_info_get_id (app_info), "marlin.desktop") == 0
+        || g_strcmp0 (g_app_info_get_name (app_info), "marlin") == 0)
+    {
+        g_object_unref (G_OBJECT (app_info));
+        app_info = g_app_info_create_from_commandline ("marlin -t", "marlin", 0, NULL);
+    }*/
 
     /* TODO allow launch of multiples same content type files */
     /* fake a path list */
-    path_list.data = file->location;
+    if (file->target_location != NULL)
+        path_list.data = file->target_location;
+    else
+        path_list.data = file->location;
     path_list.next = path_list.prev = NULL;
 
     context = gdk_app_launch_context_new ();
     gdk_app_launch_context_set_screen (context, screen);
     succeed = g_app_info_launch (app_info, &path_list, G_APP_LAUNCH_CONTEXT (context), &error);
+
+    /* TODO error */ 
 
     g_object_unref (context);
     g_object_unref (G_OBJECT (app_info));
@@ -2027,5 +2073,13 @@ gof_file_get_permissions_as_string (GOFFile *file)
 
 int gof_file_compare_by_display_name (GOFFile *file1, GOFFile *file2)
 {
-    compare_by_display_name (file1, file2);
+    return compare_by_display_name (file1, file2);
+}
+
+GFile *gof_file_get_target_location (GOFFile *file)
+{
+    if (file->target_location != NULL)
+        return file->target_location;
+
+    return file->location;
 }
