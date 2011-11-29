@@ -101,14 +101,6 @@ get_icon_user_special_dirs(char *path)
     return (icon);
 }
 
-static void
-gof_set_custom_display_name (GOFFile *file, gchar *name)
-{
-    _g_free0 (file->custom_display_name);
-    file->custom_display_name = g_strdup (name);
-    file->name = file->custom_display_name;
-}
-
 GOFFile    *gof_file_new (GFile *location, GFile *dir)
 {
     GOFFile *file;
@@ -223,13 +215,6 @@ void    gof_file_update (GOFFile *file)
     gof_file_clear_info (file);
 
     file->name = g_file_info_get_name (file->info);
-
-    //TODO ???
-    /*if (file->info == NULL && file->location != NULL)
-      gof_set_custom_display_name (file, file->basename);*/
-
-    //g_message ("test parent_dir %s\n", g_file_get_uri(file->location));
-
     file->display_name = g_file_info_get_display_name (file->info);
     file->is_hidden = g_file_info_get_is_hidden (file->info) || g_file_info_get_is_backup (file->info);
     file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
@@ -292,10 +277,10 @@ void    gof_file_update (GOFFile *file)
 
             /* read the display name from the .desktop file (will be overwritten later
              * if it's undefined here) */
-            char *custom_display_name = g_key_file_get_string (key_file,
-                                                               G_KEY_FILE_DESKTOP_GROUP,
-                                                               G_KEY_FILE_DESKTOP_KEY_NAME,
-                                                               NULL);
+            gchar *custom_display_name = g_key_file_get_string (key_file,
+                                                                G_KEY_FILE_DESKTOP_GROUP,
+                                                                G_KEY_FILE_DESKTOP_KEY_NAME,
+                                                                NULL);
 
             /* check if we have a display name now */
             if (custom_display_name != NULL)
@@ -307,8 +292,7 @@ void    gof_file_update (GOFFile *file)
                     _g_free0 (custom_display_name);
                     custom_display_name = NULL;
                 } else {
-                    gof_set_custom_display_name (file, custom_display_name);
-                    _g_free0 (custom_display_name);
+                    file->custom_display_name = custom_display_name;
                 }
             }
 
@@ -357,7 +341,7 @@ void    gof_file_update (GOFFile *file)
 
     file->thumbnail_path =  g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
 
-    file->utf8_collation_key = g_utf8_collate_key_for_filename  (file->name, -1);
+    file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
 
     //trash doesn't have a ftype
     if (file->ftype != NULL) {
@@ -834,8 +818,8 @@ compare_by_display_name (GOFFile *file1, GOFFile *file2)
     gboolean sort_last_1, sort_last_2;
     int compare;
 
-    name_1 = file1->name;
-    name_2 = file2->name;
+    name_1 = gof_file_get_display_name (file1);
+    name_2 = gof_file_get_display_name (file2);
 
     sort_last_1 = name_1[0] == SORT_LAST_CHAR1 || name_1[0] == SORT_LAST_CHAR2;
     sort_last_2 = name_2[0] == SORT_LAST_CHAR1 || name_2[0] == SORT_LAST_CHAR2;
@@ -2085,4 +2069,12 @@ GFile *gof_file_get_target_location (GOFFile *file)
         return file->target_location;
 
     return file->location;
+}
+
+gchar *gof_file_get_display_name (GOFFile *file)
+{
+    if (file->custom_display_name != NULL)
+        return file->custom_display_name;
+
+    return file->display_name;
 }
