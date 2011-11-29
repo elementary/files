@@ -187,7 +187,7 @@ gof_file_is_remote_uri_scheme (GOFFile *file)
 
 void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file) 
 {
-    if (!file->is_hidden && file->uri != NULL) {
+    if (!file->is_hidden && file->uri != NULL && file->icon == NULL) {
         char *path = g_filename_from_uri (file->uri, NULL, NULL);
         file->icon = get_icon_user_special_dirs(path);
         _g_free0 (path);
@@ -238,13 +238,16 @@ void    gof_file_update (GOFFile *file)
     file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
     file->modified = g_file_info_get_attribute_uint64 (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON))
+        file->icon =  g_file_info_get_attribute_object (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON);
+
     if (file->file_type == G_FILE_TYPE_SHORTCUT || file->file_type == G_FILE_TYPE_MOUNTABLE) {
         const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
         /*g_message ("%s target uri: %s", G_STRFUNC, target_uri);*/
         if (target_uri != NULL) {
             file->target_location = g_file_new_for_uri (target_uri);
             gof_file_target_location_update (file);
-        }
+        } 
     }
 
     /* TODO the key-files could be loaded async. 
@@ -348,7 +351,7 @@ void    gof_file_update (GOFFile *file)
     if (file->is_directory) {
         gof_file_get_folder_icon_from_uri_or_path (file);
     } else {
-        if (file->ftype != NULL)
+        if (file->ftype != NULL && file->icon == NULL)
             file->icon = g_content_type_get_icon (file->ftype);
     }
 

@@ -48,7 +48,7 @@ file_has_local_path (GOFFile *file)
 static int
 file_compare_by_mime_type (GOFFile *a, GOFFile *b)
 {
-    return strcmp (a->ftype, b->ftype);
+    return g_strcmp0 (a->ftype, b->ftype);
 }
 
 static char *

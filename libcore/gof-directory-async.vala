@@ -54,7 +54,17 @@ public class GOF.Directory.Async : Object
     public signal void icon_changed (GOF.File file);
     public signal void done_loading ();
 
-    private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*";
+    private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*";
+
+    private unowned string gio_attrs {
+        get {
+            var scheme = location.get_uri_scheme ();
+            if (scheme == "network" || scheme == "computer")
+                return "*";
+            else
+                return gio_default_attributes;
+        }
+    }
 
     public Async (GLib.File _file)
     {
@@ -142,7 +152,7 @@ public class GOF.Directory.Async : Object
         debug ("list directory %s", file.uri);
         try {
             //var e = yield directory.enumerate_children_async (gio_default_attributes, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, 0, cancellable);
-            var e = yield directory.enumerate_children_async (gio_default_attributes, 0, 0, cancellable);
+            var e = yield directory.enumerate_children_async (gio_attrs, 0, 0, cancellable);
             while (true) {
                 var files = yield e.next_files_async (200, 0, cancellable);
                 if (files == null)
@@ -203,7 +213,7 @@ public class GOF.Directory.Async : Object
 
     private async void query_info_async (GOF.File gof, func_query_info? f = null) {
         try {
-            gof.info = yield gof.location.query_info_async (gio_default_attributes, 
+            gof.info = yield gof.location.query_info_async (gio_attrs, 
                                                             FileQueryInfoFlags.NONE, 
                                                             Priority.DEFAULT);
             if (f != null)
