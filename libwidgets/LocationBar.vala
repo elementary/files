@@ -22,7 +22,7 @@ using Gtk;
 
 namespace Marlin
 {
-    public const string ROOT_FS_URI = "file:///";
+    public const string ROOT_FS_URI = "file://";
 }
 
 public struct Marlin.View.Chrome.IconDirectory
