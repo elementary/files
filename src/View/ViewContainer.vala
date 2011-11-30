@@ -66,7 +66,6 @@ namespace Marlin.View {
                     return;
                 change_view(view_mode, myfile);
                 update_location_state(true);
-                plugin_directory_loaded ();
             });
             up.connect(() => {
                 if (slot.directory.has_parent()) {
@@ -171,6 +170,7 @@ namespace Marlin.View {
                 slot.make_icon_view();
                 break;
             }
+            plugin_directory_loaded ();
         }
 
         /* TODO save selections in slot or fmdirectoryview and set the ContextView */
