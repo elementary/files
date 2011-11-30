@@ -234,43 +234,43 @@ static const char *TODAY_TIME_FORMATS [] = {
      * off zero padding, and putting a "_" there will use
      * space padding instead of zero padding.
      */
-    N_("today at 00:00:00 PM"),
-    N_("today at %-I:%M:%S %p"),
+    N_("Today at 00:00:00 PM"),
+    N_("Today at %-I:%M:%S %p"),
 
-    N_("today at 00:00 PM"),
-    N_("today at %-I:%M %p"),
+    N_("Today at 00:00 PM"),
+    N_("Today at %-I:%M %p"),
 
-    N_("today, 00:00 PM"),
-    N_("today, %-I:%M %p"),
+    N_("Today, 00:00 PM"),
+    N_("Today, %-I:%M %p"),
 
-    N_("today"),
-    N_("today"),
+    N_("Today"),
+    N_("Today"),
 
     NULL
 };
 
 static const char *YESTERDAY_TIME_FORMATS [] = {
     /* Yesterday, use special word.
-     * Note to localizers: Same issues as "today" string.
+     * Note to localizers: Same issues as "Today" string.
      */
-    N_("yesterday at 00:00:00 PM"),
-    N_("yesterday at %-I:%M:%S %p"),
+    N_("Yesterday at 00:00:00 PM"),
+    N_("Yesterday at %-I:%M:%S %p"),
 
-    N_("yesterday at 00:00 PM"),
-    N_("yesterday at %-I:%M %p"),
+    N_("Yesterday at 00:00 PM"),
+    N_("Yesterday at %-I:%M %p"),
 
-    N_("yesterday, 00:00 PM"),
-    N_("yesterday, %-I:%M %p"),
+    N_("Yesterday, 00:00 PM"),
+    N_("Yesterday, %-I:%M %p"),
 
-    N_("yesterday"),
-    N_("yesterday"),
+    N_("Yesterday"),
+    N_("Yesterday"),
 
     NULL
 };
 
 static const char *CURRENT_WEEK_TIME_FORMATS [] = {
     /* Current week, include day of week.
-     * Note to localizers: Same issues as "today" string.
+     * Note to localizers: Same issues as "Today" string.
      * The width measurement templates correspond to
      * the day/month name with the most letters.
      */
