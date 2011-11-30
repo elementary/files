@@ -211,7 +211,7 @@ namespace Marlin.View
 
             first_vbox.pack_start(view);
 
-            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Plugins")));
+            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Extensions")));
             /*mai_notebook.set_margin_left(6);
             mai_notebook.set_margin_right(6);
             mai_notebook.set_margin_top(6);
