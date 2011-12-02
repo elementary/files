@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-11-27 19:24+0000\n"
-"Last-Translator: Kevin Owsianko <Unknown>\n"
+"PO-Revision-Date: 2011-12-01 20:48+0000\n"
+"Last-Translator: Arzach <Unknown>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2011-12-01 05:50+0000\n"
+"X-Launchpad-Export-Date: 2011-12-02 05:28+0000\n"
 "X-Generator: Launchpad (build 14414)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -65,19 +65,19 @@ msgstr "Préférences de Marlin"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
-msgstr "Un seul click pour ouvrir :"
+msgstr "Un seul clic pour ouvrir :"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
-msgstr "La vitesse d'auto-sélection de la souris :"
+msgstr "Vitesse d'auto-sélection de la souris :"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
-msgstr ""
+msgstr "Ouvrir les Préférences dans une fenêtre modale"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "Default File Manager:"
-msgstr "Gestionnaire de fichiers par default:"
+msgstr "Gestionnaire de fichiers par défault :"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "make Marlin my default File Manager"
@@ -89,23 +89,23 @@ msgstr "Comportement"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
-msgstr "petit"
+msgstr "petite"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
-msgstr "moyen"
+msgstr "moyenne"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
-msgstr "large"
+msgstr "grande"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
-msgstr "extra-large"
+msgstr "très grande"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
-msgstr "Taille d'icône du panneau latéral"
+msgstr "Taille des icônes du panneau latéral :"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "locale"
@@ -121,7 +121,7 @@ msgstr "informelle"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:157
 msgid "Date format:"
-msgstr "Format de la date :"
+msgstr "Format de date :"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:165
 msgid "Display"
@@ -129,7 +129,7 @@ msgstr "Affichage"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
 msgid "Extensions"
-msgstr ""
+msgstr "Extensions"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
 msgid "Name"
@@ -265,11 +265,11 @@ msgstr "Impossible d'ouvrir le dossier \"%s\" sur \"%s\"."
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Le serveur sur \"%s\" reste introuvable."
+msgstr "Le serveur sur \"%s\" n'a pas été trouvé."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr "Essayez encore"
+msgstr "Essayer à nouveau"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
@@ -294,31 +294,31 @@ msgstr "Détails du serveur"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
-msgstr "Serveur"
+msgstr "_Serveur :"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
-msgstr "_Port :"
+msgstr "_Port :"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
-msgstr "_Type :"
+msgstr "_Type :"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr "Partage:"
+msgstr "P_artage :"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr "_Dossier:"
+msgstr "_Dossier :"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr "Détails de l'utilisateur"
+msgstr "Détails relatifs à l'utilisateur"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr "Nom de domaine:"
+msgstr "Nom de _domaine :"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
@@ -326,11 +326,11 @@ msgstr "Nom d'_utilisateur :"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
-msgstr "Mot de passe:"
+msgstr "Mot de passe :"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr "Se souvenir du mot de passe"
+msgstr "Se souvenir du mot de passe :"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
@@ -348,7 +348,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr "--quit ne peut pas être utilisée avec des URI."
+msgstr "--quit ne peut pas être utilisé avec des URI."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:300
 msgid "Personal"
@@ -356,7 +356,7 @@ msgstr "Personnel"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:305
 msgid "Your common places and bookmarks"
-msgstr "Votre lieux communs et des signets"
+msgstr "Vos emplacements et vos signets"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:319
 msgid "Open your personal folder"
@@ -502,7 +502,7 @@ msgstr "_Vider la corbeille"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3143
 msgid "Icon Size"
-msgstr "Taille des Icônes"
+msgstr "Taille des icônes"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3144
 msgid "Icon size"
@@ -521,8 +521,8 @@ msgstr "Échec lors de la création du lien pour \"%s\""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Utiliser «%s»"
-msgstr[1] "Utiliser «%s» pour ouvrir les éléments séléctionnés"
+msgstr[0] "Utiliser « %s » pour ouvrir l'élément sélectionné"
+msgstr[1] "Utiliser « %s » pour ouvrir les éléments sélectionnés"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1821
 #, c-format
@@ -537,7 +537,7 @@ msgstr "Ouvrir dans %'d Nouveaux_Onglets"
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1857
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr "Ouvrir dans %'d Nouvelles_Fenêtres"
+msgstr "Ouvrir dans %'d Nouvelles _Fenêtres"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:2993
 msgid "Set as default"
@@ -545,7 +545,7 @@ msgstr "Définir comme valeur par défaut"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:3212
 msgid "Set Color:"
-msgstr "définir une couleur :"
+msgstr "Définir la couleur :"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
@@ -583,11 +583,11 @@ msgstr "Simple Clic"
 #: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:162
 msgid "Whether the items in the view can be activated with single clicks"
 msgstr ""
-"Si les éléments dans la vue peuvent être activés ou non avec un simple clique"
+"Si les éléments dans la vue peuvent être activés ou non avec un simple clic"
 
 #: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:178
 msgid "Single Click Timeout"
-msgstr "Temps maximum du simple clic"
+msgstr "Expiration du simple clic"
 
 #: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:179
 msgid ""

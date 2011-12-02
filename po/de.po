@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-11-27 19:04+0000\n"
-"Last-Translator: Raphael Michel <Unknown>\n"
+"PO-Revision-Date: 2011-12-02 04:01+0000\n"
+"Last-Translator: gunwald <gunwald@gmx.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-12-01 05:50+0000\n"
+"X-Launchpad-Export-Date: 2011-12-02 05:28+0000\n"
 "X-Generator: Launchpad (build 14414)\n"
 "Language: de\n"
 
@@ -41,7 +41,7 @@ msgstr "Ordner %s erstellen"
 #: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:95
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:360
 msgid "Trash"
-msgstr "Müll"
+msgstr "Papierkorb"
 
 #: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:96
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:578
@@ -51,7 +51,7 @@ msgstr "Netzwerk"
 #: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:122
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:314
 msgid "Home"
-msgstr "Persönlicher Ordner"
+msgstr "Heim"
 
 #: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:124
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:384
@@ -64,23 +64,23 @@ msgstr "Marlin Einstellungen"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
-msgstr "Ein-Klick zum Öffnen:"
+msgstr "Öffnen mit einem Klick"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
-msgstr "Autoauswahl Geschwindigkeit der Maus:"
+msgstr "Automatische Auswahlgeschwindigkeit der Maus"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
-msgstr ""
+msgstr "Modales Eigenschaftenfenster"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "Default File Manager:"
-msgstr "Standard Dateimanager:"
+msgstr "Standard-Dateimanager:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "make Marlin my default File Manager"
-msgstr "Marlin zum standard Dateimanager machen"
+msgstr "Marlin zum Standard-Dateimanager machen"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:94
 msgid "Behavior"
@@ -88,19 +88,19 @@ msgstr "Verhalten"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
-msgstr "Winzig"
+msgstr "klein"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
-msgstr "Mittel"
+msgstr "mittel"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
-msgstr "Groß"
+msgstr "groß"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
-msgstr "Extra-Groß"
+msgstr "riesig"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
@@ -108,7 +108,7 @@ msgstr "Symbolgröße der Seitenleiste:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "locale"
-msgstr "Lokalisierung"
+msgstr "lokal"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:138
 msgid "iso"
@@ -124,11 +124,11 @@ msgstr "Datumsformat:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:165
 msgid "Display"
-msgstr "Anzeigen"
+msgstr "Ansicht"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
 msgid "Extensions"
-msgstr ""
+msgstr "Erweiterungen"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
 msgid "Name"
@@ -160,7 +160,7 @@ msgstr "Besitzer"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:47
 msgid "Properties"
-msgstr "Einstellungen"
+msgstr "Eigenschaften"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:88
 msgid "Info"
@@ -221,7 +221,7 @@ msgstr "Jeder"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr "SSH-Verbindung"
+msgstr "SSH"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
@@ -258,7 +258,7 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Der Ordner \"%s\" kann nicht auf \"%s\" geöffnet werden."
+msgstr "Der Ordner »%s« auf »%s« kann nicht geöffnet werden."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
@@ -271,7 +271,7 @@ msgstr "Erneut versuchen"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr "Bitte überprüfen Sie Ihre Benutzerangaben."
+msgstr "Bitte überprüfen Sie Ihre Angaben."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
@@ -354,11 +354,11 @@ msgstr "Persönlich"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:305
 msgid "Your common places and bookmarks"
-msgstr "Ihre gemeinsamen Orte und Lesezeichen"
+msgstr "Ihre gewöhnlichen Orte und Lesezeichen"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:319
 msgid "Open your personal folder"
-msgstr "Den persönlichen Ordner öffnen"
+msgstr "Persönlichen Ordner öffnen"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:362
 msgid "Open the trash"
@@ -500,11 +500,11 @@ msgstr "_Mülleimer leeren"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3143
 msgid "Icon Size"
-msgstr "Größe der Symbole"
+msgstr "Symbolgröße"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3144
 msgid "Icon size"
-msgstr "Größe der Symbole"
+msgstr "Symbolgröße"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1034
 msgid "Invalid filename provided by XDS drag site"
@@ -547,8 +547,7 @@ msgstr "Farbe setzen:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
-"In der Zwischenablage befindet sich nichts, was hier eingefügt werden könnte"
+msgstr "Nichts zum Einfügen in der Zwischenablage"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -581,7 +580,7 @@ msgstr "Einfachklick"
 
 #: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:162
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Ob die Objekte mit einem einfachen Klick aktiviert werden sollen"
+msgstr "Objekte mit Einfachklick aktivieren?"
 
 #: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:178
 msgid "Single Click Timeout"
@@ -610,8 +609,8 @@ msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
-"Wählt die Symbole, die in der Werkzeugliste angezeigt werden. Die Symbole "
-"können per Maus in die richtige Position verschoben werden."
+"Symbole der Werkzeugliste auswählen. Die Symbole können mit der Maus neu "
+"angeordnet werden."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
@@ -672,8 +671,8 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"Während des Kopierprozesses nachfragen, ob bereits existierenden Dateien im "
-"Ordner überschrieben werden sollen."
+"Während des Zusammenführens fragen, ob gleichnamige Dateien im Zielordner "
+"überschrieben werden sollen."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
@@ -696,8 +695,7 @@ msgstr "Ein Ordner gleichen Namens existiert bereits in »%s«."
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
-"Wenn es ersetzt wird, werden alle Dateien in dem Verzeichnis gelöscht."
+msgstr "Das Ersetzen dieses Ordners löscht alle enthaltenen Dateien"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:170
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
@@ -774,7 +772,7 @@ msgstr "Ersetzen durch"
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr "Zusammenfassen"
+msgstr "Zusammenführen"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
 msgid "_Select a new name for the destination"
@@ -808,7 +806,7 @@ msgstr "Dateikonflikt"
 #: /media/dev/elementary/marlin/po/../libcore/marlin-progress-info.c:192
 #: /media/dev/elementary/marlin/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr "Vorbereitend"
+msgstr "In Vorbereitung"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-utilities.c:267
 #, c-format
@@ -831,11 +829,11 @@ msgstr "Das Lesen der Desktop-Datei ist fehlgeschlagen: %s"
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1563
 msgid "No Exec field specified"
-msgstr "kein Exec-Feld angegeben"
+msgstr "Kein Exec-Feld angegeben"
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1583
 msgid "No URL field specified"
-msgstr "kein Adress-Feld angegeben"
+msgstr "Kein Adressfeld angegeben"
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1589
 msgid "Invalid desktop file"
@@ -875,7 +873,7 @@ msgstr "_Alle ersetzen"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:213
 msgid "_Merge"
-msgstr "Zusammenfassen"
+msgstr "_Zusammenführen"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:214
 msgid "Merge _All"
@@ -998,8 +996,7 @@ msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "Soll das %'d gewählte Objekt dauerhaft gelöscht werden?"
-msgstr[1] ""
-"Sollen die %'d ausgewählten Objekte wirklich unwiderruflich gelöscht werden?"
+msgstr[1] "Sollen die %'d gewählten Objekte dauerhaft gelöscht werden?"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1480
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1512
