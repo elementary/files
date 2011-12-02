@@ -1585,6 +1585,8 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
 
     show_empty_trash = (uri != NULL) && (!strcmp (uri, MARLIN_TRASH_URI));
 
+    eel_gtk_widget_set_shown (sidebar->popup_menu_separator_item2,
+            show_eject || show_unmount || show_mount || show_empty_trash);
     eel_gtk_widget_set_shown (sidebar->popup_menu_mount_item, show_mount);
     eel_gtk_widget_set_shown (sidebar->popup_menu_unmount_item, show_unmount);
     eel_gtk_widget_set_shown (sidebar->popup_menu_eject_item, show_eject);
@@ -2451,34 +2453,6 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
                       G_CALLBACK (eject_shortcut_cb), sidebar);
     gtk_widget_show (item);
     gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-
-    /*item = gtk_menu_item_new_with_mnemonic (_("_Detect Media"));
-      sidebar->popup_menu_rescan_item = item;
-      g_signal_connect (item, "activate",
-      G_CALLBACK (rescan_shortcut_cb), sidebar);
-      gtk_widget_show (item);
-      gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-
-      item = gtk_menu_item_new_with_mnemonic (_("_Format"));
-      sidebar->popup_menu_format_item = item;
-      g_signal_connect (item, "activate",
-      G_CALLBACK (format_shortcut_cb), sidebar);
-      gtk_widget_show (item);
-      gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-
-      item = gtk_menu_item_new_with_mnemonic (_("_Start"));
-      sidebar->popup_menu_start_item = item;
-      g_signal_connect (item, "activate",
-      G_CALLBACK (start_shortcut_cb), sidebar);
-      gtk_widget_show (item);
-      gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
-
-      item = gtk_menu_item_new_with_mnemonic (_("_Stop"));
-      sidebar->popup_menu_stop_item = item;
-      g_signal_connect (item, "activate",
-      G_CALLBACK (stop_shortcut_cb), sidebar);
-      gtk_widget_show (item);
-      gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);*/
 
     /* Empty Trash menu item */
     item = gtk_menu_item_new_with_mnemonic (_("Empty _Trash"));
