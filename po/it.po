@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-11-27 20:51+0000\n"
-"Last-Translator: saccogen <Unknown>\n"
+"PO-Revision-Date: 2011-12-02 13:59+0000\n"
+"Last-Translator: Luigi Zanotti <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-12-01 05:51+0000\n"
-"X-Generator: Launchpad (build 14414)\n"
+"X-Launchpad-Export-Date: 2011-12-03 05:47+0000\n"
+"X-Generator: Launchpad (build 14418)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -95,7 +95,7 @@ msgstr "medio"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
-msgstr "largo"
+msgstr "grande"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
@@ -127,7 +127,7 @@ msgstr "Mostra"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
 msgid "Extensions"
-msgstr ""
+msgstr "Estensioni"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
 msgid "Name"
@@ -144,7 +144,7 @@ msgstr "Destinazione"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:286
 msgid "Size"
-msgstr "Dimensioni"
+msgstr "Dimensione"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:288
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:299
