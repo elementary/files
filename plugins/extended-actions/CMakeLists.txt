@@ -1,4 +1,3 @@
-install(FILES contractor.plug DESTINATION lib/marlin/plugins/)
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
 	gtk+-3.0
@@ -22,7 +21,8 @@ PACKAGES
     gee-1.0
 OPTIONS
     --thread)
-add_library(marlin-contractor SHARED
+add_library(marlin-extended-actions SHARED
     ${VALA_C})
-target_link_libraries(marlin-contractor marlincore marlinwidgets)
-install(TARGETS marlin-contractor DESTINATION lib/marlin/plugins/)
+target_link_libraries(marlin-extended-actions marlincore marlinwidgets)
+install(TARGETS marlin-extended-actions DESTINATION lib/marlin/plugins/core/)
+install(FILES extended-actions.plug DESTINATION lib/marlin/plugins/core/)

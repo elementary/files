@@ -27,7 +27,7 @@
       <description>Show the menubar</description>
     </key>
     <key type="as" name="plugins-enabled">
-      <default>['contractor']</default>
+      <default>[]</default>
       <summary>Enabled Plugins</summary>
       <description>Enabled Plugins</description>
     </key>
