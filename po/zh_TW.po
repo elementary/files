@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-02 00:11+0000\n"
-"Last-Translator: extraymond@gmail.com <extraymond@gmail.com>\n"
+"PO-Revision-Date: 2011-12-03 23:24+0000\n"
+"Last-Translator: TaiJan Huang <Unknown>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-12-03 05:47+0000\n"
+"X-Launchpad-Export-Date: 2011-12-04 05:07+0000\n"
 "X-Generator: Launchpad (build 14418)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
@@ -63,7 +63,7 @@ msgstr "Marlin 偏好設定"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
-msgstr ""
+msgstr "單擊開啟項目"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
@@ -79,7 +79,7 @@ msgstr "預設檔案瀏覽器:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "make Marlin my default File Manager"
-msgstr "使 Marlin 成為我的預設檔案瀏覽器"
+msgstr "將Marlin設為預設檔案管理員"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:94
 msgid "Behavior"
@@ -99,7 +99,7 @@ msgstr "大"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
-msgstr ""
+msgstr "特大"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
@@ -119,28 +119,28 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:157
 msgid "Date format:"
-msgstr ""
+msgstr "日期格式："
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:165
 msgid "Display"
-msgstr ""
+msgstr "顯示器"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
 msgid "Extensions"
-msgstr ""
+msgstr "擴展功能"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
 msgid "Name"
-msgstr ""
+msgstr "名稱"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:281
 msgid "Type"
-msgstr ""
+msgstr "類型"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:284
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:312
 msgid "Target"
-msgstr ""
+msgstr "目標"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:286
 msgid "Size"
@@ -149,33 +149,33 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:288
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:299
 msgid "Modified"
-msgstr ""
+msgstr "已修改"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:289
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:662
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:675
 msgid "Owner"
-msgstr ""
+msgstr "擁有者"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:47
 msgid "Properties"
-msgstr ""
+msgstr "屬性"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:88
 msgid "Info"
-msgstr ""
+msgstr "資訊"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:93
 msgid "Permissions"
-msgstr ""
+msgstr "權限"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:104
 msgid "Preview"
-msgstr ""
+msgstr "預覽"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:298
 msgid "Created"
-msgstr ""
+msgstr "已建立"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:300
 msgid "Last Access"
@@ -183,7 +183,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:304
 msgid "Deleted"
-msgstr ""
+msgstr "已刪除"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:308
 msgid "MimeType"
@@ -191,7 +191,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Location"
-msgstr ""
+msgstr "位置"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:318
 msgid "Origin Location"
@@ -199,24 +199,24 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
-msgstr ""
+msgstr "讀取"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:439
 msgid "Write"
-msgstr ""
+msgstr "寫入"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:444
 msgid "Execute"
-msgstr ""
+msgstr "執行"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:667
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:679
 msgid "Group"
-msgstr ""
+msgstr "群組"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:683
 msgid "Everyone"
-msgstr ""
+msgstr "所有人"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -224,15 +224,15 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "公共 FTP"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (需登入)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "Windows 分享"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
@@ -244,31 +244,33 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr ""
+msgstr "正在連線..."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"不能載入支援的伺服器方法清單。\n"
+"請檢查您的 gvfs 安裝。"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "資料夾「%s」不能在「%s」上開啟。"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "找不到在「%s」的伺服器。"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr ""
+msgstr "再試一次"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr ""
+msgstr "請檢驗您的使用者詳細資料。"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
@@ -281,11 +283,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr ""
+msgstr "連線至伺服器"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr ""
+msgstr "伺服器詳細資料"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
@@ -301,35 +303,35 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr ""
+msgstr "分享(_A):"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr ""
+msgstr "資料夾(_F):"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr ""
+msgstr "使用者詳細資料"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr ""
+msgstr "網域名稱(_D):"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
-msgstr ""
+msgstr "使用者名稱(_U):"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
-msgstr ""
+msgstr "密碼(_W):"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr ""
+msgstr "記住此密碼(_R)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr ""
+msgstr "操作程序已取消"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -337,14 +339,17 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"以檔案管理員瀏覽檔案系統"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit 不能與 URIs 一起使用。"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:300
 msgid "Personal"
-msgstr ""
+msgstr "個人資料夾"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:305
 msgid "Your common places and bookmarks"
@@ -352,41 +357,41 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:319
 msgid "Open your personal folder"
-msgstr ""
+msgstr "開啟個人資料夾"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:362
 msgid "Open the trash"
-msgstr ""
+msgstr "開啟回收筒"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:372
 msgid "Devices"
-msgstr ""
+msgstr "裝置"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:377
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "您的本地分割區和裝置"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:386
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "開啟檔案系統的內容"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:445
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:470
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "掛載並開啟 %s"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:583
 msgid "Your network places"
-msgstr ""
+msgstr "您的網路位置"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:614
 msgid "Entire network"
-msgstr ""
+msgstr "整個網路"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:616
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "瀏覽網路的內容"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Start"

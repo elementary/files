@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-02 17:57+0000\n"
-"Last-Translator: Mesut Yaver <Unknown>\n"
+"PO-Revision-Date: 2011-12-03 08:32+0000\n"
+"Last-Translator: Fatih Dayioglu <fatihdy@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-12-03 05:47+0000\n"
+"X-Launchpad-Export-Date: 2011-12-04 05:07+0000\n"
 "X-Generator: Launchpad (build 14418)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
@@ -295,7 +295,7 @@ msgstr "_Sunucu:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
-msgstr ""
+msgstr "_Port:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
@@ -1181,7 +1181,7 @@ msgstr "\"%B\" hedefine kopyalanırken hata."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2837
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "Hedef klasöre erişim için yeterli izne sahip değilsiniz."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2839
 msgid "There was an error getting information about the destination."
