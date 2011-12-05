@@ -27,14 +27,15 @@ public interface ExtendedActionsService : Object
 {
     //public abstract GLib.HashTable<string,string>[] GetServicesByMime (string mime) throws IOError;
     public abstract GLib.HashTable<string,string>[] GetServicesByLocation (string strlocation, string? file_mime="")    throws IOError;
-    public abstract GLib.HashTable<string,string>[] GetServicesByLocationsList (GLib.HashTable<string,string>[] locations)  throws IOError;
+    public abstract GLib.HashTable<string,string>[] GetServicesByLocationsList (GLib.HashTable<string, string>[] locations)  throws IOError;
 }
 
 public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
 {
     UIManager ui_manager;
     Menu menu;
-    GLib.HashTable<string, string>[] locations;
+    GOF.File current_directory = null;
+    unowned GLib.List<GOF.File> selection;
     GLib.HashTable<string,string>[] services = null;
     
     private ExtendedActionsService service_eactions;
@@ -55,34 +56,6 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
         return app__.lookup ("Description");
     }
 
-    private void print_apps (Menu menu)
-    {
-        try {
-            services = service_eactions.GetServicesByLocationsList (locations);
-        
-            uint i = 0;
-            foreach(var app__ in services)
-            {
-                /* insert separator if we got at least 1 action */
-                if (i == 0) {
-                    var item = new SeparatorMenuItem ();
-                    menu.append (item);
-                    item.show ();
-                    plugins.menus.prepend (item);
-                }
-                var menuitem = new MenuItem.with_label(get_app_display_name(app__));
-                menu.append (menuitem);
-                menuitem.set_data<GLib.HashTable<string,string>> ("app", app__);
-                menuitem.show ();
-                menuitem.activate.connect (action_activated);
-                plugins.menus.prepend (menuitem);
-                i++;
-            }
-        } catch (IOError e) {
-            stderr.printf ("%s\n", e.message);
-        }
-    }
-
     private GLib.HashTable<string,string> add_location_entry (GOF.File file)
     {
         GLib.HashTable<string,string> entry;
@@ -97,7 +70,7 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
         return entry;
     }
 
-    private GLib.HashTable<string, string>[] build_hash_from_list (GLib.List<GOF.File> selection)
+    private GLib.HashTable<string, string>[] build_hash_from_list_selection ()
     {
         GLib.HashTable<string,string>[] locations = null;
 
@@ -105,6 +78,9 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
             if (file != null)
                 locations += add_location_entry (file);
             //message ("file %s", file.name);
+        }
+        if (selection == null && current_directory != null) {
+            locations += add_location_entry (current_directory);
         }
 
         return locations;
@@ -131,7 +107,32 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
 
     public override void context_menu (Gtk.Widget? widget)
     {
-        print_apps(widget as Menu);
+        menu = widget as Menu;
+        
+        try {
+            services = service_eactions.GetServicesByLocationsList (build_hash_from_list_selection ());
+        
+            uint i = 0;
+            foreach(var app__ in services)
+            {
+                /* insert separator if we got at least 1 action */
+                if (i == 0) {
+                    var item = new SeparatorMenuItem ();
+                    menu.append (item);
+                    item.show ();
+                    plugins.menus.prepend (item);
+                }
+                var menuitem = new MenuItem.with_label(get_app_display_name(app__));
+                menu.append (menuitem);
+                menuitem.set_data<GLib.HashTable<string,string>> ("app", app__);
+                menuitem.show ();
+                menuitem.activate.connect (action_activated);
+                plugins.menus.prepend (menuitem);
+                i++;
+            }
+        } catch (IOError e) {
+            stderr.printf ("%s\n", e.message);
+        }
     }
 
     public override void ui (Gtk.UIManager? widget)
@@ -142,11 +143,12 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
     
     public override void file (GLib.List<Object> files)
     {
-        if (files != null)
-        {
-            unowned GLib.List<GOF.File> selection = (GLib.List<GOF.File>) files;
-            locations = build_hash_from_list (selection);
-        }
+        selection = (GLib.List<GOF.File>) files;
+    }
+
+    public override void directory_loaded (void* user_data)
+    {
+        current_directory = ((Object[])user_data)[2] as GOF.File;
     }
 }
 
