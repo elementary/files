@@ -596,7 +596,9 @@ fm_directory_view_activate_single_file (FMDirectoryView *view,
     g_debug ("%s\n", G_STRFUNC);
     location = gof_file_get_target_location (file);
 
-    if (file->is_directory) {
+    //g_message ("%s %s %s", G_STRFUNC, file->uri, g_file_get_uri(location));
+    if (file->is_directory || gof_file_is_remote_folder (file)) 
+    {
         switch (flags) {
         case MARLIN_WINDOW_OPEN_FLAG_NEW_TAB:
             marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location);
@@ -619,6 +621,7 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWind
     GList *file_list;
     GdkScreen *screen;
     GOFFile *file;
+    GFile *location;
 
     file_list = fm_directory_view_get_selection (view);
     /* TODO add mountable etc */
@@ -633,11 +636,12 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWind
             for (; file_list != NULL; file_list=file_list->next)
             {
                 file = file_list->data;
-                if (file->is_directory) {
+                if (file->is_directory || gof_file_is_remote_folder (file)) {
+                    location = gof_file_get_target_location (file);
                     if (!(flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW)) {
-                        marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), file->location);
+                        marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location);
                     } else {
-                        marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), file->location);
+                        marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), location);
                     }
                 } else {
                     gof_file_open_single (file, screen);

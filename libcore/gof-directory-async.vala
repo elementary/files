@@ -59,7 +59,7 @@ public class GOF.Directory.Async : Object
     private unowned string gio_attrs {
         get {
             var scheme = location.get_uri_scheme ();
-            if (scheme == "network" || scheme == "computer")
+            if (scheme == "network" || scheme == "computer" || scheme == "smb")
                 return "*";
             else
                 return gio_default_attributes;
@@ -127,12 +127,14 @@ public class GOF.Directory.Async : Object
     {
         debug ("mount_mountable %s", file.uri);
 
-        var mount_op = new MountOperation ();
+        /* TODO pass GtkWindow *parent to Gtk.MountOperation */
+        var mount_op = new Gtk.MountOperation (null);
         try {
-            if (file.file_type != FileType.MOUNTABLE)
+            if (file.file_type != FileType.MOUNTABLE) {
                 yield location.mount_enclosing_volume (0, mount_op, cancellable);
-            else
+            } else {
                 yield location.mount_mountable (0, mount_op, cancellable);
+            }
             file.is_mounted = true;
             query_info_async (file, file_info_available);
             load ();

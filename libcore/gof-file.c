@@ -2078,3 +2078,14 @@ gchar *gof_file_get_display_name (GOFFile *file)
 
     return file->display_name;
 }
+
+gboolean gof_file_is_remote_folder (GOFFile *file)
+{
+    if (file->file_type == G_FILE_TYPE_MOUNTABLE 
+        && file->target_location != NULL
+        && g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT))
+        return TRUE;
+
+    return FALSE;
+}
+
