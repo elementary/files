@@ -37,8 +37,7 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base
     public override void directory_loaded(void* user_data)
     {
         GOF.File file = ((Object[])user_data)[2] as GOF.File;
-        var trash_file = File.new_for_uri("trash://");
-        if(file.location.has_parent(trash_file) || file.location.equal(trash_file))
+        if (file.location.get_uri_scheme () == "trash")
         {
             assert(((Object[])user_data)[1] is GOF.AbstractSlot);
             GOF.AbstractSlot slot = ((Object[])user_data)[1] as GOF.AbstractSlot;
