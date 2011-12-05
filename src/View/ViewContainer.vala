@@ -51,7 +51,6 @@ namespace Marlin.View {
             label.set_alignment(0.0f, 0.5f);
             label.set_padding(0, 0);
             update_location_state(true);
-            plugin_directory_loaded ();
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
