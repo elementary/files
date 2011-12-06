@@ -116,6 +116,7 @@ struct FMDirectoryViewDetails
     GdkDragContext  *drag_context;
 
     gboolean        selection_was_removed;
+    gboolean        updates_frozen;
 
     /* support for generating thumbnails */
     MarlinThumbnailer  *thumbnailer;
@@ -2711,6 +2712,8 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
     view->details->selection_was_removed = FALSE;
     if (!gtk_widget_get_realized (GTK_WIDGET (view)))
         return;
+  	if (view->details->updates_frozen)
+        return;
 
     selection = fm_directory_view_get_selection (view);
     update_menus (view);
@@ -2793,20 +2796,37 @@ fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view)
 void
 fm_directory_view_freeze_updates (FMDirectoryView *view)
 {
+    view->details->updates_frozen = TRUE;
+    
+    /* disable clipboard actions */
+    dir_action_set_sensitive (view, "Cut", FALSE);
+    dir_action_set_sensitive (view, "Copy", FALSE);
+    dir_action_set_sensitive (view, "Paste", FALSE);
+    dir_action_set_sensitive (view, "Paste Into Folder", FALSE);
+
     /* block thumbnails request on size allocate */
-    g_signal_handlers_block_by_func (G_OBJECT (view), fm_directory_view_size_allocate, NULL);
+    g_signal_handlers_block_by_func (view, fm_directory_view_size_allocate, NULL);
+    
+    /* block clipboard change trigerring update_menus */
+    g_signal_handlers_block_by_func (view, fm_directory_view_clipboard_changed, NULL);
 
     /* block key-press events on column view (if any) */
     gof_window_slot_freeze_updates (view->details->slot);
 
-    /* TODO queue renamed file FILE_CHANGED */
+    /* TODO queue file changed/added/.. and freez their updates */
 }
 
 void
 fm_directory_view_unfreeze_updates (FMDirectoryView *view)
 {
+    view->details->updates_frozen = FALSE;
+    update_menus (view);
+
     /* unblock thumbnails request on size allocate */
-    g_signal_handlers_unblock_by_func (G_OBJECT (view), fm_directory_view_size_allocate, NULL);
+    g_signal_handlers_unblock_by_func (view, fm_directory_view_size_allocate, NULL);
+    
+    /* unblock clipboard change trigerring update_menus */
+    g_signal_handlers_unblock_by_func (view, fm_directory_view_clipboard_changed, NULL);
 
     /* unblock key-press events on column view (if any) */
     gof_window_slot_unfreeze_updates (view->details->slot);
@@ -2886,15 +2906,12 @@ real_action_rename (FMDirectoryView *view, gboolean select_all)
 
     selection = fm_directory_view_get_selection (view);
 
-    printf ("%s\n", G_STRFUNC);
+    //printf ("%s\n", G_STRFUNC);
     if (selection != NULL) {
         /* If there is more than one file selected, invoke a batch renamer */
         if (selection->next != NULL) {
             //TODO bulk rename tool
             printf ("TODO bulk rename tool\n");
-            /*if (have_bulk_rename_tool ()) {
-              invoke_external_bulk_rename_utility (view, selection);
-              }*/
         } else {
             file = GOF_FILE (selection->data);
             if (!select_all) {
