@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-01 15:49+0000\n"
-"Last-Translator: El Nando <Unknown>\n"
+"PO-Revision-Date: 2011-12-06 19:30+0000\n"
+"Last-Translator: Marti Bosch <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-12-02 05:28+0000\n"
-"X-Generator: Launchpad (build 14414)\n"
+"X-Launchpad-Export-Date: 2011-12-07 05:26+0000\n"
+"X-Generator: Launchpad (build 14435)\n"
 "Language: es\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "La carpeta no existe"
+msgstr "Folder does not exist"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
@@ -204,11 +204,11 @@ msgstr "Lectura"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:439
 msgid "Write"
-msgstr "Escribir"
+msgstr "Escritura"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:444
 msgid "Execute"
-msgstr "Ejecutar"
+msgstr "Ejecución"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:667
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:679
