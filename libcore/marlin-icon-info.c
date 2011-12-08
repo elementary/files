@@ -271,7 +271,7 @@ loadable_icon_key_equal (const LoadableIconKey *a,
         g_icon_equal (a->icon, b->icon);
 }
 
-static LoadableIconKey *
+/*static LoadableIconKey *
 loadable_icon_key_new (GIcon *icon, int size)
 {
     LoadableIconKey *key;
@@ -281,7 +281,7 @@ loadable_icon_key_new (GIcon *icon, int size)
     key->size = size;
 
     return key;
-}
+}*/
 
 static void
 loadable_icon_key_free (LoadableIconKey *key)
@@ -330,8 +330,8 @@ marlin_icon_info_lookup (GIcon *icon, int size)
     GdkPixbuf *pixbuf = NULL;
 
     if (G_IS_LOADABLE_ICON (icon)) {
-        LoadableIconKey lookup_key;
-        LoadableIconKey *key;
+        //LoadableIconKey lookup_key;
+        //LoadableIconKey *key;
         GInputStream *stream;
 
         if (loadable_icon_cache == NULL) {
@@ -342,8 +342,8 @@ marlin_icon_info_lookup (GIcon *icon, int size)
                                        (GDestroyNotify) g_object_unref);
         }
 
-        lookup_key.icon = icon;
-        lookup_key.size = size;
+        /*lookup_key.icon = icon;
+        lookup_key.size = size;*/
 
         /*icon_info = g_hash_table_lookup (loadable_icon_cache, &lookup_key);
         if (icon_info) {

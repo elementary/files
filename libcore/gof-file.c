@@ -241,7 +241,7 @@ void    gof_file_update (GOFFile *file)
     file->modified = g_file_info_get_attribute_uint64 (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON))
-        file->icon =  g_file_info_get_attribute_object (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON);
+        file->icon = (GIcon *) g_file_info_get_attribute_object (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON);
 
     if (file->file_type == G_FILE_TYPE_SHORTCUT || file->file_type == G_FILE_TYPE_MOUNTABLE) {
         const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
@@ -2125,7 +2125,7 @@ GFile *gof_file_get_target_location (GOFFile *file)
     return file->location;
 }
 
-gchar *gof_file_get_display_name (GOFFile *file)
+const gchar *gof_file_get_display_name (GOFFile *file)
 {
     if (file->custom_display_name != NULL)
         return file->custom_display_name;

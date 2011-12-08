@@ -235,7 +235,7 @@ char            *gof_file_get_permissions_as_string (GOFFile *file);
 int             gof_file_compare_by_display_name (GOFFile *file1, GOFFile *file2);
 gboolean        gof_file_target_location_is_directory (GOFFile *file);
 GFile           *gof_file_get_target_location (GOFFile *file);
-gchar           *gof_file_get_display_name (GOFFile *file);
+const gchar     *gof_file_get_display_name (GOFFile *file);
 gboolean        gof_file_is_remote_folder (GOFFile *file);
 
 G_END_DECLS

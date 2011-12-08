@@ -299,7 +299,7 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
 
     /* handle directory not found, contextview */
-    marlin_view_view_container_directory_done_loading (view->details->slot->ctab);
+    marlin_view_view_container_directory_done_loading (MARLIN_VIEW_VIEW_CONTAINER (view->details->slot->ctab));
 
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
 }

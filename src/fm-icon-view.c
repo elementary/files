@@ -642,7 +642,7 @@ fm_icon_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
 
     /* the icon view doesn't select by default*/
     if (select) 
-         gtk_icon_view_select_path (icon_view, path);
+         exo_icon_view_select_path (icon_view->icons, path);
 }
 
 static GtkTreePath*
