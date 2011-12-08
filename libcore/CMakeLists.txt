@@ -48,7 +48,6 @@ install (FILES
     eel-gio-extensions.h
     eel-glib-extensions.h
     eel-gtk-extensions.h
-    eel-gtk-macros.h
     eel-i18n.h
     eel-pango-extensions.h
     eel-stock-dialogs.h

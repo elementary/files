@@ -36,7 +36,6 @@
 #include <gio/gio.h>
 #include "marlin-file-operations.h"
 //#include "fm-list-view.h"
-#include "eel-gtk-macros.h"
 #include "eel-string.h"
 #include "fm-columns-view.h"
 #include "marlin-dnd.h"
@@ -201,10 +200,11 @@ static gboolean fm_directory_view_request_thumbnails         (FMDirectoryView *v
 static void     fm_directory_view_scrolled (GtkAdjustment *adjustment, FMDirectoryView *view);
 static void     fm_directory_view_size_allocate (FMDirectoryView *view, GtkAllocation *allocation);
 
-EEL_CLASS_BOILERPLATE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW)
+G_DEFINE_TYPE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW);
+#define parent_class fm_directory_view_parent_class
 
-    /* Identifiers for DnD target types */
-    enum
+/* Identifiers for DnD target types */
+enum
 {
     TARGET_TEXT_URI_LIST,
     TARGET_XDND_DIRECT_SAVE0,
@@ -480,7 +480,7 @@ fm_directory_view_destroy (GtkWidget *object)
     /* We don't own the window, so no unref */
     view->details->window = NULL;
 
-    EEL_CALL_PARENT (GTK_WIDGET_CLASS, destroy, (object));
+    GTK_WIDGET_CLASS (parent_class)->destroy (object);
 }
 
 static void
@@ -2762,9 +2762,7 @@ fm_directory_view_merge_menus (FMDirectoryView *view)
 {
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
-    EEL_CALL_METHOD
-        (FM_DIRECTORY_VIEW_CLASS, view,
-         merge_menus, (view));
+    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->merge_menus) (view);
 }
 
 void
@@ -2772,9 +2770,7 @@ fm_directory_view_unmerge_menus (FMDirectoryView *view)
 {
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
-    EEL_CALL_METHOD
-        (FM_DIRECTORY_VIEW_CLASS, view,
-         unmerge_menus, (view));
+    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->unmerge_menus) (view);
 }
 
 GList *
@@ -2782,9 +2778,7 @@ fm_directory_view_get_selection (FMDirectoryView *view)
 {
     g_return_val_if_fail (FM_IS_DIRECTORY_VIEW (view), NULL);
 
-    return EEL_CALL_METHOD_WITH_RETURN_VALUE
-        (FM_DIRECTORY_VIEW_CLASS, view,
-         get_selection, (view));
+    return (*FM_DIRECTORY_VIEW_GET_CLASS (view)->get_selection) (view);
 }
 
 GList *
@@ -2792,9 +2786,7 @@ fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view)
 {
     g_return_val_if_fail (FM_IS_DIRECTORY_VIEW (view), NULL);
 
-    return EEL_CALL_METHOD_WITH_RETURN_VALUE
-        (FM_DIRECTORY_VIEW_CLASS, view,
-         get_selection_for_file_transfer, (view));
+    return (*FM_DIRECTORY_VIEW_GET_CLASS (view)->get_selection_for_file_transfer) (view);
 }
 
 void
@@ -2923,7 +2915,7 @@ real_action_rename (FMDirectoryView *view, gboolean select_all)
                  * they are always pre-selected as a whole */
                 select_all = file->is_directory;
             }
-            EEL_CALL_METHOD (FM_DIRECTORY_VIEW_CLASS, view, start_renaming_file, (view, file, select_all));
+            (*FM_DIRECTORY_VIEW_GET_CLASS (view)->start_renaming_file) (view, file, select_all);
         }
     }
 }
