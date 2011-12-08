@@ -145,6 +145,7 @@ static void     fm_directory_view_grab_focus (GtkWidget *widget);
 static gboolean fm_directory_view_button_press_event (GtkWidget         *widget,
                                                       GdkEventButton    *event,
                                                       FMDirectoryView   *view);
+static void     popup_menu_callback (GtkWidget *widget, gpointer data);
 static gboolean fm_directory_view_drag_drop (GtkWidget          *widget,
                                              GdkDragContext     *context,
                                              gint                x,
@@ -439,6 +440,8 @@ fm_directory_view_constructor (GType                  type,
 
     /* setup support to navigate using a horizontal mouse wheel and the back and forward buttons */
     g_signal_connect (G_OBJECT (widget), "button-press-event", G_CALLBACK (fm_directory_view_button_press_event), object);
+    /* popup-menu signal when the Shift+F10 or Menu keys are pressed */
+    g_signal_connect_object (G_OBJECT (widget), "popup_menu", G_CALLBACK (popup_menu_callback), view, 0);
 
     /* setup the real widget as drop site */
     gtk_drag_dest_set (widget, 0, drop_targets, G_N_ELEMENTS (drop_targets), GDK_ACTION_ASK | GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_MOVE);
@@ -755,8 +758,7 @@ fm_directory_view_handle_scroll_event (FMDirectoryView *directory_view,
 
 /* handle Control+Scroll, which will cause a zoom-in/out */
 static gboolean
-fm_directory_view_scroll_event (GtkWidget *widget,
-                                GdkEventScroll *event)
+fm_directory_view_scroll_event (GtkWidget *widget, GdkEventScroll *event)
 {
     FMDirectoryView *directory_view;
 
@@ -766,6 +768,25 @@ fm_directory_view_scroll_event (GtkWidget *widget,
     }
 
     return GTK_WIDGET_CLASS (parent_class)->scroll_event (widget, event);
+}
+
+void
+fm_directory_view_do_popup_menu (FMDirectoryView *view, GdkEventButton *event)
+{
+    GList *selection = fm_directory_view_get_selection (view);
+
+    if (selection != NULL)
+        fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
+    else
+        fm_directory_view_context_menu (FM_DIRECTORY_VIEW (view), event);
+}
+
+static void
+popup_menu_callback (GtkWidget *widget, gpointer data)
+{
+    FMDirectoryView *view = FM_DIRECTORY_VIEW (data);
+
+    fm_directory_view_do_popup_menu (view, (GdkEventButton *) gtk_get_current_event ());
 }
 
 static gboolean
@@ -1478,7 +1499,7 @@ fm_directory_view_drag_timer (gpointer user_data)
     GDK_THREADS_ENTER ();
     //thunar_standard_view_context_menu (standard_view, 3, gtk_get_current_event_time ());
     //fm_directory_view_context_menu (view, 3, gtk_get_current_event_time ());
-    fm_directory_view_context_menu (view, 3, (GdkEventButton *) gtk_get_current_event ());
+    fm_directory_view_context_menu (view, (GdkEventButton *) gtk_get_current_event ());
     printf ("fire up the context menu 3\n");
     GDK_THREADS_LEAVE ();
 
@@ -1504,7 +1525,7 @@ fm_directory_view_button_release_event (GtkWidget        *widget,
 
     /* fire up the context menu */
     //thunar_standard_view_context_menu (standard_view, 0, event->time);
-    fm_directory_view_context_menu (view, 0, event);
+    fm_directory_view_context_menu (view, event);
     printf ("fire up the context menu 0\n");
 
     return TRUE;
@@ -2000,9 +2021,7 @@ fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event)
 }
 
 void
-fm_directory_view_context_menu (FMDirectoryView *view,
-                                guint           button,
-                                GdkEventButton  *event)
+fm_directory_view_context_menu (FMDirectoryView *view, GdkEventButton *event)
 //int32         timestamp)
 {
     GtkWidget       *menu;

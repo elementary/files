@@ -411,13 +411,12 @@ void    fm_directory_view_merge_menus (FMDirectoryView *view);
 void    fm_directory_view_unmerge_menus (FMDirectoryView *view);
 void    fm_directory_view_set_active_slot (FMDirectoryView *view);
 
+void    fm_directory_view_do_popup_menu (FMDirectoryView *view, GdkEventButton *event);
 void    fm_directory_view_queue_popup (FMDirectoryView *view, GdkEventButton *event);
 GList   *fm_directory_view_get_selection (FMDirectoryView *view);
 GList   *fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view);
 
-void    fm_directory_view_context_menu (FMDirectoryView *view,
-                                        guint           button,
-                                        GdkEventButton  *event);
+void    fm_directory_view_context_menu (FMDirectoryView *view, GdkEventButton *event);
 gboolean fm_directory_view_is_drag_pending (FMDirectoryView *view);
 void    fm_directory_view_freeze_updates (FMDirectoryView *view);
 void    fm_directory_view_unfreeze_updates (FMDirectoryView *view);
