@@ -1818,7 +1818,7 @@ update_menus_selection (FMDirectoryView *view)
     if (gof_file_is_trashed(file)) {
         dir_action_set_visible (view, "Restore From Trash", TRUE);
         dir_action_set_visible (view, "Trash", FALSE);
-        dir_action_set_visible (view, "Delete", FALSE);
+        dir_action_set_visible (view, "Delete", TRUE);
         dir_action_set_visible (view, "Rename", FALSE);
     } else {
         dir_action_set_visible (view, "Restore From Trash", FALSE);
