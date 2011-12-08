@@ -41,8 +41,6 @@ namespace Marlin.TrashMonitor {
 }*/
 
 
-public static uint action_new (GLib.Type type, string signal_name);
-
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
 namespace EelGtk.Window {
     public string get_geometry_string (Gtk.Window win);

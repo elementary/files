@@ -222,24 +222,22 @@ namespace Marlin.View {
 
             size_allocate.connect(resized);
 
-            /* Binding Backspace keyboard shortcut */
-            unowned Gtk.BindingSet binding_set;
-
-            binding_set = Gtk.BindingSet.by_class (typeof (Marlin.View.Window).class_ref ());
-            action_new (typeof (Marlin.View.Window), "go_up");
-            Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
-            action_new (typeof (Marlin.View.Window), "edit_path");
-            Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
-            Signal.connect (this, "go_up",
-                    (GLib.Callback)cb_go_up, this);
-            Signal.connect (this, "edit_path",
-                    (GLib.Callback)action_edit_path, null);
+            /* keyboard shortcuts bindings */
+            if (app.is_first_window ((Gtk.Window) this)) {
+                unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
+                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
+                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
+            }
         }
 
-        static void cb_go_up(Window data)
-        {
-            assert(data is Window);
-            data.action_go_up();
+        [Signal (action=true)]
+        public virtual signal void go_up () {
+            action_go_up ();
+        }
+        
+        [Signal (action=true)]
+        public virtual signal void edit_path () {
+            action_edit_path ();
         }
 
         public void colorize_current_tab_selection (int n) {

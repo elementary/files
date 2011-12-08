@@ -79,7 +79,6 @@ OPTIONS
 add_executable(marlin
     eel-editable-label.c
     marlin-application.c
-    mysignal.c
     gossip-cell-renderer-expander.c
     marlin-enum-types.c
     marlin-bookmark.c
