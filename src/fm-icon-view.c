@@ -115,6 +115,7 @@ fm_icon_view_rename_callback (GOFFile *file,
         view->details->rename_done = TRUE;
 
         if (error != NULL) {
+            marlin_dialogs_show_error (GTK_WIDGET (view), error, _("Failed to rename %s to %s"), file->name, view->details->original_name);
             /* If the rename failed (or was cancelled), kill renaming_file.
              * We won't get a change event for the rename, so otherwise
              * it would stay around forever.
@@ -383,7 +384,7 @@ fm_icon_view_start_renaming_file (FMDirectoryView *view,
 
     icon_view = FM_ICON_VIEW (view);
 
-    //printf ("%s\n", G_STRFUNC);
+    //g_message ("%s\n", G_STRFUNC);
     /* Select all if we are in renaming mode already */
     //if (icon_view->details->file_name_column && icon_view->details->editable_widget) {
     if (icon_view->details->editable_widget) {

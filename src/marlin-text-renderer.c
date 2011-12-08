@@ -657,7 +657,7 @@ marlin_text_renderer_start_editing (GtkCellRenderer     *cell,
     g_object_get (cell, "visible", &visible, "mode", &mode, NULL);
     if (!(visible && mode == GTK_CELL_RENDERER_MODE_EDITABLE))
         return NULL;
-    //printf ("%s\n", G_STRFUNC);
+    //g_message ("%s %s\n", G_STRFUNC, path);
     
     gtk_cell_renderer_get_alignment (cell, &xalign, &yalign);
 

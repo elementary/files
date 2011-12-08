@@ -42,7 +42,7 @@ public class GOF.Directory.Async : Object
     public uint files_count = 0;
 
     private Cancellable cancellable;
-    private FileMonitor monitor = null;
+    private FileMonitor? monitor = null;
     
     private List<GOF.File>? sorted_dirs = null;
 
@@ -105,7 +105,7 @@ public class GOF.Directory.Async : Object
             } catch (IOError e) {
                 if (!(e is IOError.NOT_MOUNTED)) {
                     warning ("directory monitor failed: %s %s", e.message, file.uri);
-                    remove_directory_from_cache ();
+                    //remove_directory_from_cache ();
                 }
             }
         } else {
@@ -200,7 +200,7 @@ public class GOF.Directory.Async : Object
         done_loading ();
     }
 
-    private void add_to_hash_cache (GOF.File gof) {
+    public void add_to_hash_cache (GOF.File gof) {
         if (!gof.is_hidden) {
             if (file_hash != null)
                 file_hash.insert (gof.location, gof);
@@ -254,6 +254,24 @@ public class GOF.Directory.Async : Object
         gof.info_available ();
     }
 
+    private void notify_file_changed (GOF.File gof) {
+        query_info_async (gof, changed_and_refresh);
+    }
+
+    private void notify_file_added (GOF.File gof) {
+        query_info_async (gof, add_and_refresh);
+    }
+
+    private void notify_file_removed (GOF.File gof) {
+        if (!gof.is_hidden || show_hidden_files)
+            file_deleted (gof);
+        if (!gof.is_hidden && gof.is_directory) {
+            /* remove from sorted_dirs */
+            sorted_dirs.remove (gof);
+        }
+        gof.remove_from_caches ();
+    }
+
     private void directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event)
     {
         GOF.File gof = GOF.File.get (_file);
@@ -261,23 +279,52 @@ public class GOF.Directory.Async : Object
         switch (event) {
         /*case FileMonitorEvent.ATTRIBUTE_CHANGED:*/
         case FileMonitorEvent.CHANGES_DONE_HINT:
-            message ("file changed %s", gof.uri);
-            query_info_async (gof, changed_and_refresh);
-            break;
-        case FileMonitorEvent.DELETED:
-            //message ("file deleted %s", gof.uri);
-            if (!gof.is_hidden || show_hidden_files)
-                file_deleted (gof);
-            if (!gof.is_hidden && gof.is_directory) {
-                /* remove from sorted_dirs */
-                sorted_dirs.remove (gof);
-            }
-            gof.remove_from_caches ();
+            //message ("file changed %s", gof.uri);
+            notify_file_changed (gof);
             break;
         case FileMonitorEvent.CREATED:
             //message ("file added %s", gof.uri);
-            query_info_async (gof, add_and_refresh);
+            notify_file_added (gof);
             break;            
+        case FileMonitorEvent.DELETED:
+            //message ("file deleted %s", gof.uri);
+            notify_file_removed (gof);
+            break;
+        }
+    }
+
+    public static void notify_files_changed (List<GLib.File> files)
+    {
+        foreach (var loc in files) {
+            GOF.File gof = GOF.File.get (loc);
+            Async? dir = cache_lookup (gof.directory);
+            
+            if (dir != null) 
+                dir.notify_file_changed (gof);
+        }
+    }
+
+    public static void notify_files_added (List<GLib.File> files)
+    {
+        foreach (var loc in files) {
+            GOF.File gof = GOF.File.get (loc);
+            Async? dir = cache_lookup (gof.directory);
+            
+            if (dir != null) 
+                dir.notify_file_added (gof);
+        }
+    }
+
+    public static void notify_files_removed (List<GLib.File> files)
+    {
+        foreach (var loc in files) {
+            GOF.File gof = GOF.File.get (loc);
+            Async? dir = cache_lookup (gof.directory);
+            
+            if (dir != null) {
+                //message ("notify removed %s", gof.uri);
+                dir.notify_file_removed (gof);
+            }
         }
     }
 

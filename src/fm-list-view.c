@@ -172,6 +172,7 @@ fm_list_view_rename_callback (GOFFile *file,
 		view->details->rename_done = TRUE;
 		
 		if (error != NULL) {
+            marlin_dialogs_show_error (GTK_WIDGET (view), error, _("Failed to rename %s to %s"), file->name, view->details->original_name);
 			/* If the rename failed (or was cancelled), kill renaming_file.
 			 * We won't get a change event for the rename, so otherwise
 			 * it would stay around forever.
@@ -264,10 +265,9 @@ cell_renderer_edited (GtkCellRendererText *cell,
 	if (strcmp (new_text, view->details->original_name) != 0) {
 		view->details->renaming_file = gof_file_ref (file);
 		view->details->rename_done = FALSE;
-		gof_file_rename (file, new_text, fm_list_view_rename_callback, g_object_ref (view));
-
 		g_free (view->details->original_name);
 		view->details->original_name = g_strdup (new_text);
+		gof_file_rename (file, new_text, fm_list_view_rename_callback, g_object_ref (view));
 	}
 	
 	gof_file_unref (file);

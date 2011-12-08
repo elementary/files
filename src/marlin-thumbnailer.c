@@ -380,6 +380,7 @@ marlin_thumbnailer_file_is_supported (MarlinThumbnailer *thumbnailer,
 
     g_return_val_if_fail (MARLIN_IS_THUMBNAILER (thumbnailer), FALSE);
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+    g_return_val_if_fail (G_IS_FILE (file->location), FALSE);
 
     /* acquire the thumbnailer lock */
     g_mutex_lock (thumbnailer->lock);

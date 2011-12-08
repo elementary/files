@@ -127,6 +127,7 @@ struct FMDirectoryViewDetails
     /* Tree path for restoring the selection after selecting and 
      * deleting an item */
     GtkTreePath     *selection_before_delete;
+    GOFFile         *newly_folder_added;
 
     gchar           *previewer;
     GtkWidget       *menu_selection;
@@ -367,6 +368,7 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details->drag_scroll_timer_id = -1;
     view->details->drag_timer_id = -1;
     view->details->dir_action_group = NULL;
+    view->details->newly_folder_added = NULL;
 
     /* create a thumbnailer */
     view->details->thumbnailer = marlin_thumbnailer_get ();
@@ -538,6 +540,8 @@ fm_directory_view_finalize (GObject *object)
 
 
     g_free (view->details->previewer);
+    
+    _g_object_unref0 (view->details->newly_folder_added);
 
     /*if (slot != NULL)
       g_object_unref (slot);*/
@@ -2040,14 +2044,13 @@ fm_directory_view_row_deleted (FMListModel *model, GtkTreePath *path, FMDirector
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (view->model == model);
 
+    g_message ("%s", G_STRFUNC);
     /* Get tree paths of selected files */
     selected_paths = (*FM_DIRECTORY_VIEW_GET_CLASS (view)->get_selected_paths) (view);
 
     /* Do nothing if the deleted row is not selected or there is more than one file selected */
     if (G_UNLIKELY (g_list_find_custom (selected_paths, path, (GCompareFunc) gtk_tree_path_compare) == NULL || g_list_length (selected_paths) != 1))
     {
-        /*g_list_foreach (selected_paths, (GFunc) gtk_tree_path_free, NULL);
-          g_list_free (selected_paths);*/
         g_list_free_full (selected_paths, (GDestroyNotify) gtk_tree_path_free);
         return;
     }
@@ -2073,6 +2076,7 @@ fm_directory_view_restore_selection (FMListModel *model, GtkTreePath *path, FMDi
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (view->model == model);
 
+    g_message ("%s", G_STRFUNC);
     /* Check if there was only one file selected before the row was deleted. The 
      * path is set by thunar_standard_view_row_deleted() if this is the case */
     if (G_LIKELY (view->details->selection_before_delete != NULL))
@@ -2931,20 +2935,52 @@ action_rename_callback (GtkAction *action, gpointer data)
 }
 
 static void
+rename_file (FMDirectoryView *view, GOFFile *file)
+{
+    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->start_renaming_file) (view, file, FALSE);
+}
+
+#if 0
+static void
+check_newly_file_added_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
+{
+    if (file->is_directory && g_file_equal (file->location, view->details->newly_folder_added->location)) 
+    {
+        g_signal_handlers_disconnect_by_func (directory,
+                                              G_CALLBACK (check_newly_file_added_callback),
+                                              view);
+        rename_file (view, file);
+        _g_object_unref0 (view->details->newly_folder_added);
+    }
+}
+#endif
+
+static gboolean
+rename_file_callback (FMDirectoryView *view) 
+{
+    rename_file (view, view->details->newly_folder_added);
+    _g_object_unref0 (view->details->newly_folder_added);
+
+    return FALSE;
+}
+
+static void
 new_folder_done (GFile *new_folder, gpointer data)
 {
     g_assert (FM_IS_DIRECTORY_VIEW (data));
 
     FMDirectoryView *view = FM_DIRECTORY_VIEW (data);
-    GOFFile *file = gof_file_get (new_folder);
+    _g_object_unref0 (view->details->newly_folder_added);
+    view->details->newly_folder_added = gof_file_get (new_folder);
 
-    //TODO
-    printf ("rename file\n");
-    //rename_file (view, file);
-    EEL_CALL_METHOD (FM_DIRECTORY_VIEW_CLASS, view, start_renaming_file, (view, file, FALSE));
-    //fm_directory_view_reveal_selection (view);
+    /*g_signal_connect_data (view->details->slot->directory, 
+                           "file_added", 
+                           G_CALLBACK (check_newly_file_added_callback), 
+                           g_object_ref (view),
+                           (GClosureNotify)g_object_unref,
+                           G_CONNECT_AFTER);*/
+    g_timeout_add (50, (GSourceFunc) rename_file_callback, view);
 
-    g_object_unref (file);
 }
 
 static void
@@ -2954,25 +2990,13 @@ action_new_folder_callback (GtkAction *action, gpointer data)
 
     FMDirectoryView *view = FM_DIRECTORY_VIEW (data);
 
-    //data = new_folder_data_new (view);
-
-    /*g_signal_connect_data (view,
-      "add_file",
-      G_CALLBACK (track_newly_added_locations),
-      data,
-      (GClosureNotify)NULL,
-      G_CONNECT_AFTER);*/
-
-    /* TODO usefull for desktop
+    /* TODO usefull for desktop?
        pos = context_menu_to_file_operation_position (directory_view);*/
 
-    printf ("%s\n", G_STRFUNC);
     marlin_file_operations_new_folder (GTK_WIDGET (view),
                                        //pos, parent_uri,
                                        NULL, view->details->slot->location,
-                                       //new_folder_done, data);
-                                      new_folder_done, view);
-
+                                       new_folder_done, view);
 }
 
 static void

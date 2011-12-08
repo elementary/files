@@ -153,6 +153,7 @@ fm_columns_view_rename_callback (GOFFile *file,
 		view->details->rename_done = TRUE;
 		
 		if (error != NULL) {
+            marlin_dialogs_show_error (GTK_WIDGET (view), error, _("Failed to rename %s to %s"), file->name, view->details->original_name);
 			/* If the rename failed (or was cancelled), kill renaming_file.
 			 * We won't get a change event for the rename, so otherwise
 			 * it would stay around forever.

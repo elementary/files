@@ -1690,7 +1690,7 @@ retry:
 skip:
             g_error_free (error);
         } else {
-            //marlin_file_changes_queue_file_removed  (dir);
+            marlin_file_changes_queue_file_removed (dir);
             transfer_info->num_files ++;
             report_delete_progress (job, source_info, transfer_info);
             return;
@@ -1720,7 +1720,7 @@ delete_file (CommonJob *job, GFile *file,
 
     error = NULL;
     if (g_file_delete (file, job->cancellable, &error)) {
-        //marlin_file_changes_queue_file_removed  (file);
+        marlin_file_changes_queue_file_removed (file);
         transfer_info->num_files ++;
         report_delete_progress (job, source_info, transfer_info);
         return;
@@ -1917,7 +1917,7 @@ skip:
             g_error_free (error);
             total_files--;
         } else {
-            //marlin_file_changes_queue_file_removed  (file);
+            marlin_file_changes_queue_file_removed (file);
 
             files_trashed++;
             report_trash_progress (job, files_trashed, total_files);
@@ -1949,7 +1949,7 @@ delete_job_done (gpointer user_data)
 
     finalize_common ((CommonJob *)job);
 
-    //marlin_file_changes_consume_changes (TRUE);
+    marlin_file_changes_consume_changes (TRUE);
 
     return FALSE;
 }
@@ -3503,7 +3503,7 @@ retry:
         }
         return CREATE_DEST_DIR_FAILED;
     }
-    //marlin_file_changes_queue_file_added (*dest);
+    marlin_file_changes_queue_file_added (*dest);
     return CREATE_DEST_DIR_SUCCESS;
 }
 
@@ -3849,7 +3849,7 @@ skip2:
 
         return FALSE;
     }
-    //marlin_file_changes_queue_file_removed  (file);
+    marlin_file_changes_queue_file_removed (file);
 
     return TRUE;
 
@@ -4253,11 +4253,11 @@ retry:
 
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
-        /*if (copy_job->is_move) {
-            //marlin_file_changes_queue_file_moved (src, dest);
+        if (copy_job->is_move) {
+            marlin_file_changes_queue_file_moved (src, dest);
         } else {
-            //marlin_file_changes_queue_file_added (dest);
-        }*/
+            marlin_file_changes_queue_file_added (dest);
+        }
 
         /* If copying a trusted desktop file to the desktop,
            mark it as trusted. */
@@ -4425,7 +4425,7 @@ retry:
                 g_error_free (error);
                 error = NULL;
             }
-            //marlin_file_changes_queue_file_removed  (dest);
+            marlin_file_changes_queue_file_removed (dest);
         }
 
         if (is_merge) {
@@ -4593,7 +4593,7 @@ copy_job_done (gpointer user_data)
 
     finalize_common ((CommonJob *)job);
 
-    //marlin_file_changes_consume_changes (TRUE);
+    marlin_file_changes_consume_changes (TRUE);
     return FALSE;
 }
 
@@ -4851,7 +4851,7 @@ retry:
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
 
-        //marlin_file_changes_queue_file_moved (src, dest);
+        marlin_file_changes_queue_file_moved (src, dest);
 
         /*if (position) {
             //marlin_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
@@ -5112,7 +5112,7 @@ move_job_done (gpointer user_data)
 
     finalize_common ((CommonJob *)job);
 
-    //marlin_file_changes_consume_changes (TRUE);
+    marlin_file_changes_consume_changes (TRUE);
     return FALSE;
 }
 
@@ -5334,7 +5334,7 @@ retry:
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
 
-        //marlin_file_changes_queue_file_added (dest);
+        marlin_file_changes_queue_file_added (dest);
         /*if (position) {
             //marlin_file_changes_queue_schedule_position_set (dest, *position, common->screen_num);
         } else {
@@ -5440,7 +5440,7 @@ link_job_done (gpointer user_data)
 
     finalize_common ((CommonJob *)job);
 
-    //marlin_file_changes_consume_changes (TRUE);
+    marlin_file_changes_consume_changes (TRUE);
     return FALSE;
 }
 
@@ -5881,7 +5881,7 @@ create_job_done (gpointer user_data)
 
     finalize_common ((CommonJob *)job);
 
-    //marlin_file_changes_consume_changes (TRUE);
+    marlin_file_changes_consume_changes (TRUE);
     return FALSE;
 }
 
@@ -6012,7 +6012,7 @@ retry:
 
     if (res) {
         job->created_file = g_object_ref (dest);
-        //marlin_file_changes_queue_file_added (dest);
+        marlin_file_changes_queue_file_added (dest);
         /*if (job->has_position) {
             //marlin_file_changes_queue_schedule_position_set (dest, job->position, common->screen_num);
         } else {

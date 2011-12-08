@@ -119,6 +119,23 @@ GOFFile    *gof_file_new (GFile *location, GFile *dir)
     return (file);
 }
 
+#if 0
+void    gof_file_changed (GOFFile *file)
+{
+    GOFDirectoryAsync *dir;
+
+    /* get the DirectoryAsync associated to the file */
+    dir = gof_directory_async_cache_lookup (file->directory);
+    if (dir != NULL) {
+        if (!file->is_hidden || dir->show_hidden_files)
+            g_signal_emit_by_name (dir, "file_changed", file);
+        
+        g_object_unref (dir);
+    }
+    g_signal_emit_by_name (file, "changed");
+}
+#endif
+
 void    gof_file_icon_changed (GOFFile *file)
 {
     GOFDirectoryAsync *dir;
@@ -458,6 +475,9 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
 static void 
 gof_file_update_icon_internal (GOFFile *file, gint size) 
 {
+    /*g_message ("%s %s %d", G_STRFUNC, file->uri, file->flags);
+    g_message ("%s thumb %s", G_STRFUNC, file->thumbnail_path);*/
+
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
     /* make sure we always got a non null pixbuf */
@@ -473,7 +493,7 @@ void gof_file_update_icon (GOFFile *file, gint size)
     if (!(file->pix == NULL || file->pix_size != size))
         return;
 
-    //g_message ("%s %s", G_STRFUNC, file->uri);
+    //g_message ("%s %s %d", G_STRFUNC, file->uri, file->flags);
     gof_file_update_icon_internal (file, size);
 }
 
@@ -1746,6 +1766,32 @@ gof_file_list_copy (GList *list)
 }
 
 
+static void
+gof_file_update_existing (GOFFile *file, GFile *new_location)
+{
+    GOFDirectoryAsync *dir = gof_directory_async_cache_lookup (file->directory);
+    if (dir != NULL) 
+        gof_directory_async_remove_from_cache (dir, file);
+
+    g_object_unref (file->location);
+    file->location = g_object_ref (new_location);
+    
+    if (dir != NULL) 
+        gof_directory_async_add_to_hash_cache (dir, file);
+
+    _g_free0 (file->uri);
+    _g_free0(file->basename);
+    file->uri = g_file_get_uri (new_location);
+    file->basename = g_file_get_basename (file->location);
+    /* TODO update color on rename ? */
+    file->color = NULL;
+    file->flags = 0;
+    file->pix_size = -1;
+    file->thumbnail_path = NULL;
+    
+    gof_file_query_update (file);
+}
+
 /* TODO move this mini job to marlin-file-operations? */
 GOFFileOperation *
 gof_file_operation_new (GOFFile *file,
@@ -1794,7 +1840,8 @@ gof_file_operation_complete (GOFFileOperation *op, GFile *result_file, GError *e
      * as "changing back".
      */
     gof_file_operation_remove (op);
-    //gof_file_icon_changed (op->file);
+    gof_file_icon_changed (op->file);
+    //marlin_file_changes_consume_changes (TRUE);
     if (op->callback) {
         (* op->callback) (op->file, result_file, error, op->callback_data);
     }
@@ -1821,6 +1868,13 @@ rename_callback (GObject *source_object,
     error = NULL;
     new_file = g_file_set_display_name_finish (G_FILE (source_object),
                                                res, &error);
+    //marlin_file_changes_queue_file_changed (new_file);
+    //marlin_file_changes_queue_file_removed (op->file->location);
+    //marlin_file_changes_queue_file_added (new_file);
+    if (error == NULL)
+        gof_file_update_existing (op->file, new_file);
+    /*else
+        marlin_dialogs_show_error (NULL, error, "Failed to rename %s", op->file->name);*/
 
     gof_file_operation_complete (op, NULL, error);
     if (new_file != NULL) {

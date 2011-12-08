@@ -60,6 +60,7 @@ install (FILES
     marlin-exec.h
     marlin-file-conflict-dialog.h
     marlin-file-operations.h
+    marlin-file-changes-queue.h
     marlin-file-utilities.h
     marlin-global-preferences.h
     marlin-icons.h
@@ -113,6 +114,7 @@ add_library (${PKGNAME} SHARED
     eel-ui.c
     eel-vfs-extensions.c
     marlin-file-operations.c
+    marlin-file-changes-queue.c
     marlin-file-utilities.c
     marlin-file-conflict-dialog.c
     fm-list-model.c
@@ -143,6 +145,7 @@ add_library(${PKGNAME}-static STATIC
     eel-ui.c
     eel-vfs-extensions.c
     marlin-file-operations.c
+    marlin-file-changes-queue.c
     marlin-file-utilities.c
     marlin-file-conflict-dialog.c
     fm-list-model.c
