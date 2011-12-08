@@ -255,7 +255,7 @@ marlin_file_changes_consume_changes (gboolean consume_all)
 {
     MarlinFileChange *change;
     GList *additions, *changes, *deletions, *moves;
-    GList *position_set_requests;
+    //GList *position_set_requests;
     //amtest
     GFilePair *pair;
     //MarlinFileChangesQueuePosition *position_set;

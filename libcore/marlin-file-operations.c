@@ -33,11 +33,7 @@
 #include <stdlib.h>
 
 #include "marlin-file-operations.h"
-/*
-#include "nautilus-debug-log.h"
-#include "nautilus-file-changes-queue.h"
-#include "nautilus-lib-self-check-functions.h"
-*/
+
 #ifdef ENABLE_TASKVIEW
 //#include <libtaskview-glib/taskview.h>
 #include <libtaskview/taskview.h>
@@ -45,11 +41,6 @@
 #include "marlin-progress-info.h"
 #endif
 
-/*#include <eel/eel-glib-extensions.h>
-#include <eel/eel-gtk-extensions.h>
-#include <eel/eel-stock-dialogs.h>
-#include <eel/eel-vfs-extensions.h>
-*/
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gdk/gdk.h>
@@ -72,6 +63,7 @@
 #include "nautilus-trash-monitor.h"
 #include "nautilus-file-utilities.h"
 #include "nautilus-file-conflict-dialog.h"*/
+#include "marlin-file-changes-queue.h"
 #include "marlin-file-utilities.h"
 #include "marlin-file-conflict-dialog.h"
 #include "marlin-global-preferences.h"

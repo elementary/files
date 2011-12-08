@@ -54,6 +54,8 @@ public class GOF.Directory.Async : Object
     public signal void icon_changed (GOF.File file);
     public signal void done_loading ();
 
+    private uint idle_consume_changes_id = 0;
+
     private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*";
 
     private unowned string gio_attrs {
@@ -274,23 +276,30 @@ public class GOF.Directory.Async : Object
 
     private void directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event)
     {
-        GOF.File gof = GOF.File.get (_file);
+        //GOF.File gof = GOF.File.get (_file);
 
         switch (event) {
         /*case FileMonitorEvent.ATTRIBUTE_CHANGED:*/
         case FileMonitorEvent.CHANGES_DONE_HINT:
             //message ("file changed %s", gof.uri);
-            notify_file_changed (gof);
+            MarlinFile.changes_queue_file_changed (_file);
             break;
         case FileMonitorEvent.CREATED:
             //message ("file added %s", gof.uri);
-            notify_file_added (gof);
+            MarlinFile.changes_queue_file_added (_file);
             break;            
         case FileMonitorEvent.DELETED:
             //message ("file deleted %s", gof.uri);
-            notify_file_removed (gof);
+            MarlinFile.changes_queue_file_removed (_file);
             break;
         }
+
+        if (idle_consume_changes_id == 0)
+            idle_consume_changes_id = Idle.add (() => {
+                                                MarlinFile.changes_consume_changes (true);
+                                                idle_consume_changes_id = 0;
+                                                return false;
+                                                });
     }
 
     public static void notify_files_changed (List<GLib.File> files)
@@ -375,10 +384,10 @@ public class GOF.Directory.Async : Object
         return val;
     }
 
-    private bool remove_directory_from_cache ()
+    /*private bool remove_directory_from_cache ()
     {
         return directory_cache.remove (location);
-    }
+    }*/
     
     public bool has_parent ()
     {
