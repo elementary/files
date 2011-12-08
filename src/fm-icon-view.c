@@ -531,21 +531,23 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
             break;
         }
         if ((event->state & GDK_SHIFT_MASK) != 0) {
-            //TODO
-            printf ("activate alternate\n"); 
-            //activate_selected_items_alternate (FM_ICON_VIEW (view), NULL, TRUE);
+            /* alternate */
+            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
         } else {
             fm_directory_view_preview_selected_items (view);
         }
         handled = TRUE;
         break;
-        /*case GDK_KEY_Return:
-          case GDK_KEY_KP_Enter:
-          if ((event->state & GDK_SHIFT_MASK) != 0) {
-          activate_selected_items_alternate (FM_ICON_VIEW (view), NULL, TRUE);
-          handled = TRUE;
-          }
-          break; */
+    case GDK_KEY_Return:
+    case GDK_KEY_KP_Enter:
+        if ((event->state & GDK_SHIFT_MASK) != 0) {
+            /* alternate */
+            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+        } else {
+            fm_directory_view_activate_selected_items (view, MARLIN_WINDOW_OPEN_FLAG_DEFAULT);
+        }
+        handled = TRUE;
+        break;
 
     default:
         handled = FALSE;
