@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-01 21:03+0000\n"
-"Last-Translator: Gustavo Guidorizzi <Unknown>\n"
+"PO-Revision-Date: 2011-12-09 02:34+0000\n"
+"Last-Translator: Breno Maia <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2011-12-02 05:28+0000\n"
-"X-Generator: Launchpad (build 14414)\n"
+"X-Launchpad-Export-Date: 2011-12-09 05:19+0000\n"
+"X-Generator: Launchpad (build 14450)\n"
 "Language: pt_BR\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
@@ -64,7 +64,7 @@ msgstr "Preferências do Marlin"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
-msgstr "Um clique para abrir:"
+msgstr "Clicar para abrir"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
@@ -72,7 +72,7 @@ msgstr "Velocidade de auto-seleção do mouse:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
-msgstr ""
+msgstr "Janela de propriedades deve ser modal:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "Default File Manager:"

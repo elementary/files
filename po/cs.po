@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-08-27 18:03+0000\n"
-"Last-Translator: xapantu <Unknown>\n"
+"PO-Revision-Date: 2011-12-08 19:36+0000\n"
+"Last-Translator: Jan Žárský <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-12-01 05:50+0000\n"
-"X-Generator: Launchpad (build 14414)\n"
+"X-Launchpad-Export-Date: 2011-12-09 05:19+0000\n"
+"X-Generator: Launchpad (build 14450)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -59,7 +59,7 @@ msgstr "Souborový systém"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr ""
+msgstr "Předvolby"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
@@ -75,11 +75,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "Default File Manager:"
-msgstr ""
+msgstr "Výchozí správce souborů:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "make Marlin my default File Manager"
-msgstr ""
+msgstr "nastavit Marlin jako výchozí správce souborů"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:94
 msgid "Behavior"
@@ -127,7 +127,7 @@ msgstr "Zobrazení"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
 msgid "Extensions"
-msgstr ""
+msgstr "Rozšíření"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
 msgid "Name"
@@ -159,64 +159,64 @@ msgstr "Vlastník"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:47
 msgid "Properties"
-msgstr ""
+msgstr "Vlastnosti"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:88
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:93
 msgid "Permissions"
-msgstr ""
+msgstr "Oprávnění"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:104
 msgid "Preview"
-msgstr ""
+msgstr "Náhled"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:298
 msgid "Created"
-msgstr ""
+msgstr "Vytvořeno"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:300
 msgid "Last Access"
-msgstr ""
+msgstr "Poslední přístup"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:304
 msgid "Deleted"
-msgstr ""
+msgstr "Smazáno"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:308
 msgid "MimeType"
-msgstr ""
+msgstr "MIME typ"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Location"
-msgstr ""
+msgstr "Umístění"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:318
 msgid "Origin Location"
-msgstr ""
+msgstr "Původní umístění"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
-msgstr ""
+msgstr "Čtení"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:439
 msgid "Write"
-msgstr ""
+msgstr "Zápis"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:444
 msgid "Execute"
-msgstr ""
+msgstr "Spouštění"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:667
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:679
 msgid "Group"
-msgstr ""
+msgstr "Skupina"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:683
 msgid "Everyone"
-msgstr ""
+msgstr "Kdokoli"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -319,7 +319,7 @@ msgstr "Název _domény:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
-msgstr ""
+msgstr "_Uživatelské jméno:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
@@ -499,11 +499,11 @@ msgstr "Vyprázdnit _koš"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3143
 msgid "Icon Size"
-msgstr ""
+msgstr "Velikost ikony"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3144
 msgid "Icon size"
-msgstr ""
+msgstr "Velikost ikony"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1034
 msgid "Invalid filename provided by XDS drag site"
@@ -518,13 +518,14 @@ msgstr "Nepodařilo se vytvořit odkaz pro adresu URL \"%s\""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Použít „%s“ k otevření vybrané položky"
+msgstr[1] "Použít „%s“ k otevření vybraných položek"
+msgstr[2] "Použít „%s“ k otevření vybraných položek"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1821
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Otevřít s %s"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1848
 #, c-format
@@ -597,7 +598,7 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../src/fm-list-view.c:614
 #: /media/dev/elementary/marlin/po/../src/fm-icon-view.c:565
 msgid "This folder is empty."
-msgstr ""
+msgstr "Tato složka je prázdná."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
@@ -641,11 +642,11 @@ msgstr[2] "%'d aktivních operací se soubory"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
-msgstr ""
+msgstr "Zobrazit dialog kopírování"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
-msgstr ""
+msgstr "Zrušit všechny probíhající akce"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
