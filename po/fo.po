@@ -8,34 +8,34 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-07 20:39+0000\n"
-"Last-Translator: Jógvan Olsen <jeggy@jebster.net>\n"
+"PO-Revision-Date: 2011-12-10 14:15+0000\n"
+"Last-Translator: Klæmint H. Poulsen <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-12-08 06:07+0000\n"
-"X-Generator: Launchpad (build 14443)\n"
+"X-Launchpad-Export-Date: 2011-12-11 06:06+0000\n"
+"X-Generator: Launchpad (build 14450)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr ""
+msgstr "Mappan finst ikki"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr ""
+msgstr "Marlin finnur ikki mappuna %s"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr ""
+msgstr "Stovna"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr ""
+msgstr "Stovna mappuna %s"
 
 #: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:95
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:360
@@ -45,7 +45,7 @@ msgstr "Rusk"
 #: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:96
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:578
 msgid "Network"
-msgstr "Net"
+msgstr "Netverk"
 
 #: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:122
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:314
@@ -63,7 +63,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
-msgstr ""
+msgstr "Trýst einaferð fyri at opna"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
@@ -83,23 +83,23 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:94
 msgid "Behavior"
-msgstr ""
+msgstr "Atburður"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
-msgstr ""
+msgstr "lítið"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
-msgstr ""
+msgstr "meðal"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
-msgstr ""
+msgstr "stórt"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
-msgstr ""
+msgstr "eyka-stórt"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
@@ -111,7 +111,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:138
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
@@ -123,7 +123,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:165
 msgid "Display"
-msgstr ""
+msgstr "Skíggi"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
 msgid "Extensions"
@@ -131,11 +131,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:281
 msgid "Type"
-msgstr ""
+msgstr "Slag"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:284
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:312
@@ -144,12 +144,12 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:286
 msgid "Size"
-msgstr ""
+msgstr "Stødd"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:288
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:299
 msgid "Modified"
-msgstr ""
+msgstr "Broytt"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:289
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:662
@@ -159,11 +159,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:47
 msgid "Properties"
-msgstr ""
+msgstr "Eginleikar"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:88
 msgid "Info"
-msgstr ""
+msgstr "Kunning"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:93
 msgid "Permissions"
@@ -171,7 +171,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:104
 msgid "Preview"
-msgstr ""
+msgstr "Undansýn"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:298
 msgid "Created"
@@ -191,7 +191,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Location"
-msgstr ""
+msgstr "Staður"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:318
 msgid "Origin Location"
@@ -199,11 +199,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
-msgstr ""
+msgstr "Les"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:439
 msgid "Write"
-msgstr ""
+msgstr "Skriva"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:444
 msgid "Execute"
@@ -212,19 +212,19 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:667
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:679
 msgid "Group"
-msgstr ""
+msgstr "Bólkur"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:683
 msgid "Everyone"
-msgstr ""
+msgstr "Øll"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "Almennur FTP"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
@@ -236,11 +236,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Trygt WebDAV (HTTPS)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
@@ -250,12 +250,12 @@ msgstr ""
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
-msgstr ""
+msgstr "."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "Mappan \"%s\" kann ikki opnast á \"%s\"."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
@@ -264,7 +264,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr ""
+msgstr "Royn umaftur"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
@@ -272,7 +272,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr ""
+msgstr "Halt áfram"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1169
@@ -297,7 +297,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
-msgstr ""
+msgstr "Slag"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
