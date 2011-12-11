@@ -79,23 +79,23 @@ namespace Marlin.View
             first_vbox.pack_start(hbox_dlg_properties, false);
             
             /* Make default FM */
-            hbox_single_click = new Gtk.HBox(false, 0);
-            label = new Gtk.Label(_("Default File Manager:"));
-            label.set_alignment(0, 0.5f);
-            hbox_single_click.pack_start(label);
-            var make_default_btn = new Gtk.Button.with_label (_("make Marlin my default File Manager"));
-            make_default_btn.set_sensitive (!is_marlin_mydefault_fm ());
-            hbox_single_click.pack_start(make_default_btn, false, false);
-        
-            make_default_btn.clicked.connect (make_marlin_default_fm);
+            var sw_fm_default = new Gtk.Switch ();
+            sw_fm_default.active = is_marlin_mydefault_fm ();
             
-            first_vbox.pack_start(hbox_single_click, false);
-                        
+            var hbox_fm_default = new Gtk.HBox(false, 0);
+            var l2 = new Gtk.Label(_("Default File Manager:"));
+            l2.set_alignment(0, 0.5f);
+            hbox_fm_default.pack_start(l2);
+            hbox_fm_default.pack_start(sw_fm_default, false, false);
+            first_vbox.pack_start(hbox_fm_default, false);
+            sw_fm_default.notify["active"].connect((s, p) => {
+                                                   make_marlin_default_fm (sw_fm_default.get_active ());
+                                                   });
+            
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Behavior")));
 
             first_vbox = new Gtk.VBox(false, 3);
             first_vbox.border_width = 5;
-
             
             /* Sidebar icon size */
             var spin_icon_size = new ModeButton();
@@ -203,7 +203,7 @@ namespace Marlin.View
 
             Gtk.TreeIter iter;
 
-            foreach(string plugin_name in (plugins.get_available_plugins()))
+            foreach(var plugin_name in (plugins.get_available_plugins()))
             {
                 listmodel.append (out iter);
                 listmodel.set (iter, 0, plugin_name, 1, plugin_name in Preferences.settings.get_strv("plugins-enabled"));
@@ -311,18 +311,21 @@ namespace Marlin.View
             return foldertype_is_default && trash_uri_is_default;
         }
 
-        private void make_marlin_default_fm (Gtk.Button btn)
+        private void make_marlin_default_fm (bool active)
         {
-            AppInfo marlin_app = (AppInfo) new DesktopAppInfo ("marlin.desktop");
-            if (marlin_app != null) {
-                try {
-                    marlin_app.set_as_default_for_type ("inode/directory");
-                    marlin_app.set_as_default_for_type ("x-scheme-handler/trash");
-                } catch (GLib.Error e) {
-                    critical ("Can't set Marlin default FM: %s", e.message);
-                    return;
+            if (active) {
+                AppInfo marlin_app = (AppInfo) new DesktopAppInfo ("marlin.desktop");
+                if (marlin_app != null) {
+                    try {
+                        marlin_app.set_as_default_for_type ("inode/directory");
+                        marlin_app.set_as_default_for_type ("x-scheme-handler/trash");
+                    } catch (GLib.Error e) {
+                        critical ("Can't set Marlin default FM: %s", e.message);
+                    }
                 }
-                btn.set_sensitive (false);
+            } else {
+                AppInfo.reset_type_associations ("inode/directory");
+                AppInfo.reset_type_associations ("x-scheme-handler/trash");            
             }
         }
     }
