@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-10 14:15+0000\n"
-"Last-Translator: Klæmint H. Poulsen <Unknown>\n"
+"PO-Revision-Date: 2011-12-11 17:43+0000\n"
+"Last-Translator: Gunleif Joensen <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-12-11 06:06+0000\n"
-"X-Generator: Launchpad (build 14450)\n"
+"X-Launchpad-Export-Date: 2011-12-12 05:48+0000\n"
+"X-Generator: Launchpad (build 14458)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -175,7 +175,7 @@ msgstr "Undansýn"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:298
 msgid "Created"
-msgstr ""
+msgstr "Stovnað"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:300
 msgid "Last Access"
@@ -183,7 +183,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:304
 msgid "Deleted"
-msgstr ""
+msgstr "Strikað"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:308
 msgid "MimeType"
@@ -191,7 +191,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Location"
-msgstr "Staður"
+msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:318
 msgid "Origin Location"
@@ -207,7 +207,7 @@ msgstr "Skriva"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:444
 msgid "Execute"
-msgstr ""
+msgstr "Inna"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:667
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:679
@@ -281,7 +281,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr ""
+msgstr "Sambind við ambætara"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
@@ -293,7 +293,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
-msgstr ""
+msgstr "_Portur:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
@@ -325,7 +325,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr ""
+msgstr "Minnst til hetta atlátið"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
@@ -356,11 +356,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:362
 msgid "Open the trash"
-msgstr ""
+msgstr "Opna ruskspannina"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:372
 msgid "Devices"
-msgstr ""
+msgstr "Tóleindir"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:377
 msgid "Your local partitions and devices"
@@ -368,37 +368,37 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:386
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "Opna innihaldið av fílukervinum"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:445
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:470
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "Set í og opna %s"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:583
 msgid "Your network places"
-msgstr ""
+msgstr "Tíni netstøð"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:614
 msgid "Entire network"
-msgstr ""
+msgstr "Alt netið"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:616
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Kaga í gjøgnum innihaldið á netinum"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Start"
-msgstr ""
+msgstr "_Byrja"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1601
 msgid "_Stop"
-msgstr ""
+msgstr "_Steðga"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1606
 msgid "_Power On"
-msgstr ""
+msgstr "_Tendra"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1607
 msgid "_Safely Remove Drive"
@@ -406,11 +406,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1610
 msgid "_Connect Drive"
-msgstr ""
+msgstr "_Sambind driv"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1611
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "_Loys driv"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1614
 msgid "_Start Multi-disk Device"
@@ -422,24 +422,24 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1619
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "Læs driv _upp"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1620
 msgid "_Lock Drive"
-msgstr ""
+msgstr "_Læs driv"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1694
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2241
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "Ikki før fyri at byrja %s"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1984
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2013
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2042
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "Ikki før fyri at skumpa út %s"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2187
 #, c-format
@@ -454,12 +454,12 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2389
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1830
 msgid "_Open"
-msgstr ""
+msgstr "_Opna"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2397
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1852
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Opna í nýggjum _teigi"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2404
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1861
@@ -468,11 +468,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2413
 msgid "Remove"
-msgstr ""
+msgstr "Bein burtir"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2422
 msgid "Rename..."
-msgstr ""
+msgstr "Nýnevn..."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2434
 msgid "_Mount"
@@ -484,21 +484,21 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2448
 msgid "_Eject"
-msgstr ""
+msgstr "_Skumpa út"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2484
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1424
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2295
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Tøm ruskspannina"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3143
 msgid "Icon Size"
-msgstr ""
+msgstr "Ímyndastødd"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3144
 msgid "Icon size"
-msgstr ""
+msgstr "Ímyndastødd"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1034
 msgid "Invalid filename provided by XDS drag site"
@@ -519,12 +519,12 @@ msgstr[1] ""
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1821
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Opna við %s"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1848
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Opna í %'d nýggjum _teigum"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1857
 #, c-format
@@ -545,15 +545,15 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
-msgstr ""
+msgstr "_Flyt hagar"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:784
 msgid "_Copy Here"
-msgstr ""
+msgstr "_Avrita hagar"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr ""
+msgstr "_Leinkja hagar"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
@@ -561,12 +561,12 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr ""
+msgstr "Ógilda"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr ""
+msgstr "Miseydnaðist at inna fíluna \"%s\""
 
 #: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:161
 msgid "Single Click"
@@ -604,11 +604,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
-msgstr ""
+msgstr "Tøkir liðir"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:502
 msgid "Displayed Items"
-msgstr ""
+msgstr "Sýndir liðir"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:113
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:163
@@ -619,7 +619,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:122
 msgid "Show Details"
-msgstr ""
+msgstr "Sýn smálutir"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:157
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:179
@@ -643,7 +643,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/eel-editable-label.c:3188
 msgid "Select All"
-msgstr ""
+msgstr "Vel alt"
 
 #: /media/dev/elementary/marlin/po/../src/eel-editable-label.c:3199
 msgid "Input Methods"
@@ -718,7 +718,7 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Ein nýggjari fíla við tí sama navninum, finnst longu í \"%s\"."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
@@ -743,14 +743,14 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr ""
+msgstr "Slag:"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:260
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:291
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr ""
+msgstr "Broytt seinast:"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
@@ -768,11 +768,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:710
 msgid "Reset"
-msgstr ""
+msgstr "Tómstilla"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:722
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Virkja hesa atgerð á øllum fílum"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:207
@@ -781,11 +781,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
 msgid "Re_name"
-msgstr ""
+msgstr "Ný_nevn"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:744
 msgid "Replace"
-msgstr ""
+msgstr "Set í staðin"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:817
 msgid "File conflict"
@@ -794,7 +794,7 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-progress-info.c:192
 #: /media/dev/elementary/marlin/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr ""
+msgstr "Fyrireiki"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-utilities.c:267
 #, c-format
@@ -808,7 +808,7 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:350
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "leinkja til %s"
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1525
 #, c-format
@@ -829,7 +829,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1855
 msgid "Slashes are not allowed in filenames"
-msgstr ""
+msgstr "Skákstrikur eru ikki loyvdar í fílunøvnum"
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1875
 msgid "Toplevel files cannot be renamed"
@@ -845,15 +845,15 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:209
 msgid "_Retry"
-msgstr ""
+msgstr "_Royn aftur"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:210
 msgid "Delete _All"
-msgstr ""
+msgstr "Strika _Allar"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:211
 msgid "_Replace"
-msgstr ""
+msgstr "_Set í staðin"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:212
 msgid "Replace _All"
@@ -869,36 +869,36 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:215
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "Avrita atlíkavæl"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:301
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d sekund"
+msgstr[1] "%'d sekund"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:306
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d minuttur"
+msgstr[1] "%'d minuttir"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:316
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d tími"
+msgstr[1] "%'d tímar"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:324
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "umleið %'d tími"
+msgstr[1] "umleið %'d tímar"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:400
 #, c-format
@@ -932,12 +932,12 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:624
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:632
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (%'d"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
@@ -961,11 +961,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1417
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Tøma allar liðirnar úr ruskspannini?"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1421
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Allir liðirnir í ruskspannini verða varðandi strikaðir."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1452
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -982,20 +982,20 @@ msgstr[1] ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1480
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
-msgstr ""
+msgstr "Striki fílur"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1506
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d fíla er eftir at strika"
+msgstr[1] "%'d fílur eru eftir at strika"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1526
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%T eftir"
+msgstr[1] "%T eftir"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1594
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1628
@@ -1046,30 +1046,31 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1821
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1833
 msgid "Moving files to trash"
-msgstr ""
+msgstr "Flyti fílur í ruskspannina"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1835
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d fíla væntar at koyra burtur"
+msgstr[1] "%'d fílur eru eftir at koyra burtur"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1886
 msgid "Cannot move file to trash, do you want to delete immediately?"
 msgstr ""
+"Kann ikki flyta fíluna í ruskspannina, vil tú strika hana beinanvegin?"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1887
 msgid "The file \"%B\" cannot be moved to the trash."
-msgstr ""
+msgstr "Fílan \"%B\" kann ikki flytast til ruskspannina."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2063
 msgid "Trashing Files"
-msgstr ""
+msgstr "Beini fílur burtur"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2065
 msgid "Deleting Files"
-msgstr ""
+msgstr "Striki fílur"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2128
 msgid "Unable to eject %V"
@@ -1091,11 +1092,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2293
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "Tøm _ikki ruskspannina"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2348
 msgid "Emptying the trash"
-msgstr ""
+msgstr "Tømi ruskspannina"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2415
 #, c-format
@@ -1135,13 +1136,13 @@ msgstr[1] ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3600
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3645
 msgid "Error while copying."
-msgstr ""
+msgstr "Brek undir avriting."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2556
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3598
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3643
 msgid "Error while moving."
-msgstr ""
+msgstr "Brek undir flyting."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2560
 msgid "Error while moving files to trash."
