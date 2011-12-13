@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-11 17:43+0000\n"
-"Last-Translator: Gunleif Joensen <Unknown>\n"
+"PO-Revision-Date: 2011-12-13 00:25+0000\n"
+"Last-Translator: Magnus Olsen <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-12-12 05:48+0000\n"
+"X-Launchpad-Export-Date: 2011-12-13 05:35+0000\n"
 "X-Generator: Launchpad (build 14458)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
@@ -59,7 +59,7 @@ msgstr "Fíluskipan"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr ""
+msgstr "Marlin eginleikar"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
@@ -79,7 +79,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "make Marlin my default File Manager"
-msgstr ""
+msgstr "Ger Marlin til mín vanliga fílu stjóra"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:94
 msgid "Behavior"
@@ -115,7 +115,7 @@ msgstr "iso"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
-msgstr ""
+msgstr "óformligur"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:157
 msgid "Date format:"
@@ -127,7 +127,7 @@ msgstr "Skíggi"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
 msgid "Extensions"
-msgstr ""
+msgstr "Víðkanir"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
 msgid "Name"
@@ -140,7 +140,7 @@ msgstr "Slag"
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:284
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:312
 msgid "Target"
-msgstr ""
+msgstr "Mál"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:286
 msgid "Size"
@@ -155,7 +155,7 @@ msgstr "Broytt"
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:662
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:675
 msgid "Owner"
-msgstr ""
+msgstr "Eigari"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:47
 msgid "Properties"
@@ -167,7 +167,7 @@ msgstr "Kunning"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:93
 msgid "Permissions"
-msgstr ""
+msgstr "Loyvi"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:104
 msgid "Preview"
@@ -179,7 +179,7 @@ msgstr "Stovnað"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:300
 msgid "Last Access"
-msgstr ""
+msgstr "seinasta atgongd"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:304
 msgid "Deleted"
@@ -191,11 +191,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Location"
-msgstr ""
+msgstr "Staður"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:318
 msgid "Origin Location"
-msgstr ""
+msgstr "Upprunastaður"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
@@ -228,7 +228,7 @@ msgstr "Almennur FTP"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (við innriting)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
@@ -244,7 +244,7 @@ msgstr "Trygt WebDAV (HTTPS)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr ""
+msgstr "Sambindi..."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
@@ -260,7 +260,7 @@ msgstr "Mappan \"%s\" kann ikki opnast á \"%s\"."
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "ambætarin í \"%s\" finnist ikki"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
@@ -268,7 +268,7 @@ msgstr "Royn umaftur"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Vinarliga vátta tínar brúkara upplýsingar"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
@@ -277,7 +277,7 @@ msgstr "Halt áfram"
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1169
 msgid "C_onnect"
-msgstr ""
+msgstr "S_ambind"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
@@ -285,11 +285,11 @@ msgstr "Sambind við ambætara"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr ""
+msgstr "Ambætara Upplýsningar"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
-msgstr ""
+msgstr "_Ambætari:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
@@ -297,15 +297,15 @@ msgstr "_Portur:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
-msgstr "Slag"
+msgstr "_Slag:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr ""
+msgstr "D_eil"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr ""
+msgstr "_Faldari"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
@@ -317,11 +317,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
-msgstr ""
+msgstr "_Brúkaranavn:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
-msgstr ""
+msgstr "_Atlát"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
@@ -344,7 +344,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:300
 msgid "Personal"
-msgstr ""
+msgstr "Egið"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:305
 msgid "Your common places and bookmarks"
@@ -364,7 +364,7 @@ msgstr "Tóleindir"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:377
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "Tínar lokalu deildir og tóleindir"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:386
 msgid "Open the contents of the File System"
@@ -402,7 +402,7 @@ msgstr "_Tendra"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1607
 msgid "_Safely Remove Drive"
-msgstr ""
+msgstr "_Tak drivið tryggliga burtur"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1610
 msgid "_Connect Drive"
@@ -533,7 +533,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:2993
 msgid "Set as default"
-msgstr ""
+msgstr "Set sum vanligu forritan"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:3212
 msgid "Set Color:"
@@ -647,13 +647,13 @@ msgstr "Vel alt"
 
 #: /media/dev/elementary/marlin/po/../src/eel-editable-label.c:3199
 msgid "Input Methods"
-msgstr ""
+msgstr "Inntakshættir"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "Samein faldara \"%s\"?"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
@@ -729,7 +729,7 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
 msgid "Original file"
-msgstr ""
+msgstr "Upprunafíla"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
@@ -760,7 +760,7 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr ""
+msgstr "Samein"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
 msgid "_Select a new name for the destination"
@@ -777,7 +777,7 @@ msgstr "Virkja hesa atgerð á øllum fílum"
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "_Skip"
-msgstr ""
+msgstr "_leyp um"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
 msgid "Re_name"
@@ -1003,7 +1003,7 @@ msgstr[1] "%T eftir"
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1744
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2558
 msgid "Error while deleting."
-msgstr ""
+msgstr "Brek meðan strikað varð."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1598
 msgid ""
@@ -1409,19 +1409,19 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5943
 msgid "untitled folder"
-msgstr ""
+msgstr "navnaleys mappa"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5951
 msgid "new file"
-msgstr ""
+msgstr "Nýggja fílu"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6101
 msgid "Error while creating directory %B."
-msgstr ""
+msgstr "Feilur við stovning av mappu %B"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6103
 msgid "Error while creating file %B."
-msgstr ""
+msgstr "Feilur við stovning av fíl %B"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6105
 #, c-format
@@ -1439,4 +1439,4 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../libwidgets/LocationBar.vala:718
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "Fær til %s"
