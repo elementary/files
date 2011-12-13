@@ -138,7 +138,7 @@ namespace GOF {
         public bool link_known_target;
         public unowned string thumbnail_path;
         public uint flags;
-        public string get_formated_time (string attr);
+        public string? get_formated_time (string attr);
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
 
         public bool is_mounted;

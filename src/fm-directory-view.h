@@ -394,7 +394,7 @@ struct FMDirectoryViewClass {
 };
 
 /* GObject support */
-GType   fm_directory_view_get_type                         (void);
+GType   fm_directory_view_get_type (void);
 void    fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory);
 void    fm_directory_view_remove_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory);
 void    fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location);
@@ -426,5 +426,8 @@ void    fm_directory_view_zoom_normal (FMDirectoryView *view);
 gboolean fm_directory_view_get_loading (FMDirectoryView *view);
 void    fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor);
 GOFDirectoryAsync *fm_directory_view_get_current_directory (FMDirectoryView *view);
+
+GList   *fm_directory_view_get_open_with_apps (FMDirectoryView *view);
+GAppInfo *fm_directory_view_get_default_app (FMDirectoryView *view);
 
 #endif /* FM_DIRECTORY_VIEW_H */

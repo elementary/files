@@ -31,9 +31,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     private Gtk.Label l_perm;
     private Gtk.ListStore store_users;
     private Gtk.ListStore store_groups;
+    private Gtk.ListStore store_apps;
     private uint count;
     private unowned GLib.List<GOF.File> files;
     private GOF.File goffile;
+    private FM.Directory.View view;
+    private Gee.Set<string>? mimes;
 
     private Varka.Widgets.WrapLabel header_title;
     private Gtk.Label header_desc;
@@ -42,22 +45,25 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     private uint timeout_perm = 0;
     private GLib.Cancellable? cancellable;
 
-    public PropertiesWindow (GLib.List<GOF.File> _files, Gtk.Window parent)
+    private SizeGroup sg;
+
+    public PropertiesWindow (GLib.List<GOF.File> _files, FM.Directory.View _view, Gtk.Window parent)
     {
         title = _("Properties");
         resizable = false;
-        set_default_response(ResponseType.CANCEL);
+        set_default_response (ResponseType.CANCEL);
         set_default_size (220, -1);
 
         // Set the default containers
-        Box content_area = (Box)get_content_area();
-        Box action_area = (Box)get_action_area();
+        Box content_area = (Box) get_content_area();
+        Box action_area = (Box) get_action_area();
         action_area.set_border_width (5);
         border_width = 5;
+        sg = new SizeGroup (SizeGroupMode.HORIZONTAL);
 
-        VBox content_vbox = new VBox(false, 0);
+        VBox content_vbox = new VBox (false, 0);
         //var content_vbox = new VBox(false, 12);
-        content_area.pack_start(content_vbox);
+        content_area.pack_start (content_vbox);
 
         // Adjust sizes
         //content_vbox.margin = 12;
@@ -65,11 +71,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
           content_vbox.margin_left = 12;
           content_vbox.margin_bottom = 12;*/
         //content_vbox.height_request = 160;
-        content_vbox.width_request = 288;
+        content_vbox.width_request = 220;
 
+        view = _view;
         files = _files;
         count = files.length();
         goffile = (GOF.File) files.data;
+
+        mimes = new Gee.HashSet<string> ();
+        foreach (var gof in files)
+            if (gof.ftype != null)
+                mimes.add (gof.ftype);
+
         get_info (goffile);
         cancellable = new GLib.Cancellable ();
 
@@ -91,8 +104,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         var perm_vbox = new VBox(false, 0);
         construct_perm_panel (perm_vbox);
         add_section (content_vbox, _("Permissions"), perm_vbox);
-        if (!goffile.can_set_permissions()) {
-            foreach (var widget in perm_vbox.get_children())
+        if (!goffile.can_set_permissions ()) {
+            foreach (var widget in perm_vbox.get_children ())
                 widget.set_sensitive (false);
         }
 
@@ -105,9 +118,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         }
 
         /* Open With */
-        /*var openw_box = new VBox (false, 0);
-        construct_open_with_panel (openw_box, gof);
-        add_section (content_vbox, _("Open With"), openw_box);*/
+        /*if (view.get_default_app () != null && !goffile.is_directory) {
+            var openw_box = new VBox (false, 3);
+            construct_open_with_panel (openw_box, view);
+            add_section (content_vbox, _("Open With"), openw_box);
+        }*/
 
         var close_button = new Button.from_stock(Stock.CLOSE);
         close_button.clicked.connect(() => { response(ResponseType.CLOSE); });
@@ -164,6 +179,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         total_size = 0;
         deep_count_directories = null;
 
+        /* TODO cancel deep_count when leaving the dialog */
         foreach (GOF.File gof in files)
         {
             if (gof.is_directory) {
@@ -225,8 +241,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         exp.expanded = true;
         exp.margin_bottom = 5;
         vbox.pack_start(exp, false, false, 0);
-        if (content != null)
+        if (content != null) {
+            content.set_border_width (5);
+            content.margin_right = 15;
+            content.margin_left = 15;
             exp.add (content);
+        }
     }
 
     private string? get_common_ftype () {
@@ -295,7 +315,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
         if (count == 1) {
-            info.add(new Pair<string, string>(_("Created") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_CREATED)));
+            var time_created = file.get_formated_time (FILE_ATTRIBUTE_TIME_CREATED);
+            if (time_created != null)
+                info.add(new Pair<string, string>(_("Created") + (": "), time_created));
             info.add(new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
             info.add(new Pair<string, string>(_("Last Access") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_ACCESS)));
             /* print deletion date if trashed file */
@@ -304,10 +326,20 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
                 info.add(new Pair<string, string>(_("Deleted") + (": "), file_info.get_attribute_as_string("trash::deletion-date")));
         }
         ftype = get_common_ftype();
-        if (ftype != null)
+        if (ftype != null) {
             info.add(new Pair<string, string>(_("MimeType") + (": "), ftype));
+        } else {
+            /* show list of mimetypes only if we got a default application in common */
+            if (view.get_default_app () != null && !goffile.is_directory) {
+                string str = null;
+                foreach (var mime in mimes) {
+                    (str == null) ? str = mime : str = string.join (", ", str, mime);
+                }
+                info.add(new Pair<string, string>(_("MimeTypes") + (": "), str));
+            }
+        }
         if (got_common_location())
-            info.add(new Pair<string, string>(_("Location") + (": "), file.directory.get_parse_name()));
+            info.add(new Pair<string, string>(_("Location") + (": "), "<a href=\"" + file.directory.get_uri () + "\">" + file.directory.get_parse_name() + "</a>"));
         if (count == 1 && file_info.get_is_symlink())
             info.add(new Pair<string, string>(_("Target") + (": "), file_info.get_symlink_target()));
 
@@ -315,7 +347,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         if (file.is_trashed() && file.trash_orig_path != null) {
             var trash_orig_loc = get_common_trash_orig();
             if (trash_orig_loc != null)
-                info.add(new Pair<string, string>(_("Origin Location") + (": "), trash_orig_loc));
+                info.add(new Pair<string, string>(_("Origin Location") + (": "), "<a href=\"" + get_parent_loc (file.trash_orig_path).get_uri () + "\">" + trash_orig_loc + "</a>"));
         }
     }
 
@@ -326,25 +358,93 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         int n = 0;
         foreach(var pair in item_info){
             var value_label = new Varka.Widgets.WrapLabel(pair.value);
-            var key_label = create_label_key(pair.key);
-            value_label.set_selectable(true);
-            value_label.set_size_request(200, -1);
+            var key_label = create_label_key (pair.key);
+            value_label.set_selectable (true);
+            //value_label.set_size_request (150, -1);
+            value_label.set_hexpand (true);
+            value_label.set_use_markup (true);
 
-            information.attach(key_label, 0, n, 1, 1);
-            information.attach(value_label, 1, n, 1, 1);
+            information.attach (key_label, 0, n, 1, 1);
+            information.attach (value_label, 1, n, 1, 1);
             n++;
         }
+
+        /* Open with */
+        if (view.get_default_app () != null && !goffile.is_directory) {
+            Gtk.TreeIter iter;
+
+            AppInfo default_app = view.get_default_app ();
+            store_apps = new Gtk.ListStore (3, typeof (AppInfo), typeof (string), typeof (Icon)); 
+            unowned List<AppInfo> apps = view.get_open_with_apps ();
+            foreach (var app in apps) {
+                store_apps.append (out iter);
+                store_apps.set (iter, 
+                                AppsColumn.APP_INFO, app,
+                                AppsColumn.LABEL, app.get_name (), 
+                                AppsColumn.ICON, ensure_icon (app));
+            }
+            store_apps.append (out iter);
+            store_apps.set (iter, 
+                            AppsColumn.LABEL, _("Other application..."));
+            store_apps.prepend (out iter);
+            store_apps.set (iter, 
+                            AppsColumn.APP_INFO, default_app,
+                            AppsColumn.LABEL, default_app.get_name (),
+                            AppsColumn.ICON, ensure_icon (default_app));
+
+            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_apps);
+            var renderer = new Gtk.CellRendererText ();
+            var pix_renderer = new Gtk.CellRendererPixbuf ();
+            combo.pack_start (pix_renderer, false);
+            combo.pack_start (renderer, true);
+        
+            combo.add_attribute (renderer, "text", AppsColumn.LABEL);
+            combo.add_attribute (pix_renderer, "gicon", AppsColumn.ICON);
+        
+            combo.set_active (0);
+            combo.set_valign (Gtk.Align.CENTER);
+        
+            var hcombo = new HBox (false, 0);
+            hcombo.pack_start (combo, false, false, 0);
+
+            combo.changed.connect (combo_open_with_changed);
+
+            var key_label = create_label_key (_("Open with: "), Align.CENTER);
+            information.attach(key_label, 0, n, 1, 1);
+            information.attach(hcombo, 1, n, 1, 1);
+            
+        }
+        
         box.pack_start(information);
     }
 
-    private Gtk.Label create_label_key (string str, Gtk.Align valign = Align.START) {
-        Gtk.Label key_label = new Gtk.Label(str);
-        key_label.set_sensitive(false);
-        key_label.set_halign(Align.END);
-        key_label.set_valign(valign);
-        key_label.margin_right = 5;
+    private float get_alignment_float_from_align (Gtk.Align align) {
+        switch (align) {
+        case Align.START:
+            return 0.0f;
+        case Align.END:
+            return 1.0f;
+        case Align.CENTER:
+            return 0.5f;
+        default:
+            return 0.0f;
+        }
+    }
 
-        return key_label;
+    private Gtk.Widget create_label_key (string str, Gtk.Align valign = Align.START) {
+        Gtk.Label key_label = new Gtk.Label(str);
+        key_label.set_sensitive (false);
+        /*key_label.set_halign (Align.END);
+        key_label.set_valign (valign);*/
+        //key_label.set_hexpand (true);
+        key_label.margin_right = 5;
+        var yalign = get_alignment_float_from_align (valign);
+
+        var align = new Alignment (1.0f, yalign, 0, 0);
+        align.add (key_label);
+        sg.add_widget (align);
+
+        return align;
     }
 
     private void toggle_button_add_label (Gtk.ToggleButton btn, string str) {
@@ -654,8 +754,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
    
     private void construct_perm_panel (Box box) {
         perm_grid = new Grid();
-                
-        Gtk.Label key_label;
+        
+        Gtk.Widget key_label;
         Gtk.Widget value_label;
         Gtk.HBox value_hlabel;
         
@@ -723,6 +823,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         nbb = 216;
         goffile.permissions = chmod_to_vfs(nbb);
         message ("test chmod %d %s", nbb, goffile.get_permissions_as_string());*/
+            
     }
     
     private bool selection_can_set_owner () {
@@ -896,15 +997,127 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         var pix = goffile.get_icon_pixbuf (256, false, GOF.FileIconFlags.USE_THUMBNAILS);
         evbox.set_from_pixbuf (pix);
 
-        box.pack_start(evbox, false, true, 0);
+        box.pack_start (evbox, false, true, 0);
     }
-    
-    /*private void construct_open_with_panel (Box box) {
-        Widget app_chooser;
+
+    private enum AppsColumn {
+        APP_INFO,
+        LABEL,
+        ICON
+    }
+
+    private Icon ensure_icon (AppInfo app) {
+        Icon icon = app.get_icon ();
+        if (icon == null)
+            icon = new ThemedIcon ("application-x-executable");
+
+        return icon;
+    }
+
+    private void combo_open_with_changed (Gtk.ComboBox combo) {
+        Gtk.TreeIter iter;
+        string app_label;
+        AppInfo? app;
+
+        if (!combo.get_active_iter(out iter))
+            return;
+        
+        store_apps.get (iter, 
+                        AppsColumn.LABEL, out app_label,
+                        AppsColumn.APP_INFO, out app);
+        //message ("combo_open_with changed: %s %s", app_label, app.get_name ());
+        if (app == null) {
+            var app_chooser_dlg = new AppChooserDialog (this, 0, goffile.location);
+            string str = null;
+            foreach (var mime in mimes) {
+                (str == null) ? str = mime : str = string.join (", ", str, mime);
+            }
+            app_chooser_dlg.set_heading (_("Select an aplication to open " + str));
+            app_chooser_dlg.show_all ();
+
+            int res = app_chooser_dlg.run ();
+            if (res == ResponseType.OK) {
+                var app_chosen = app_chooser_dlg.get_app_info ();
+                store_apps.prepend(out iter);
+                store_apps.set(iter, 
+                               AppsColumn.APP_INFO, app_chosen,
+                               AppsColumn.LABEL, app_chosen.get_name (),
+                               AppsColumn.ICON, ensure_icon (app_chosen));
+                combo.set_active(0);
+            }
+            app_chooser_dlg.destroy ();
+        } else {
+            try {
+                foreach (var mime in mimes) 
+                    app.set_as_default_for_type (mime);
+                view.notify_selection_changed ();
+            } catch (GLib.Error e) {
+                critical ("Couldn't set as default: %s", e.message);
+            }
+        }
+    }
+
+    /* TODO remove */
+#if 0
+    private void construct_open_with_panel (Box box, FM.Directory.View view) {
+        /*Widget app_chooser;
 
         app_chooser = new AppChooserWidget (goffile.ftype);
         //app_chooser.set_size_request (-1, 120);
-        box.pack_start(app_chooser);
+        box.pack_start(app_chooser);*/
 
-    }*/
+        //HBox vbox = new HBox(false, 0);
+        /*AppChooserButton button = new AppChooserButton (goffile.ftype);
+        button.set_show_default_item (true);
+        button.set_show_dialog_item (true);
+        box.pack_start (button);*/
+        
+
+
+        /*var label = new Varka.Widgets.WrapLabel(_("Always open MIMETYPE Files with"));
+        label.set_size_request(200, -1);
+        box.pack_start (label);*/
+
+        Gtk.TreeIter iter;
+
+        AppInfo default_app = view.get_default_app ();
+        store_apps = new Gtk.ListStore (3, typeof (AppInfo), typeof (string), typeof (Icon)); 
+        unowned List<AppInfo> apps = view.get_open_with_apps ();
+        foreach (var app in apps) {
+            store_apps.append(out iter);
+            store_apps.set(iter, 
+                           AppsColumn.APP_INFO, app,
+                           AppsColumn.LABEL, app.get_name (), 
+                           AppsColumn.ICON, ensure_icon (app));
+        }
+        store_apps.append(out iter);
+        store_apps.set(iter, 
+                       AppsColumn.LABEL, _("Other application..."));
+        store_apps.prepend(out iter);
+        store_apps.set(iter, 
+                       AppsColumn.APP_INFO, default_app,
+                       AppsColumn.LABEL, default_app.get_name (),
+                       AppsColumn.ICON, ensure_icon (default_app));
+
+        var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_apps);
+        var renderer = new Gtk.CellRendererText ();
+        var pix_renderer = new Gtk.CellRendererPixbuf ();
+        combo.pack_start(pix_renderer, false);
+        combo.pack_start(renderer, true);
+        combo.add_attribute(renderer, "text", AppsColumn.LABEL);
+        combo.add_attribute(pix_renderer, "gicon", AppsColumn.ICON);
+        combo.set_active(0);
+
+        combo.changed.connect (combo_open_with_changed);
+
+        var grid = new Grid();
+        var key_label = create_label_key(_("Default Application:"), Align.CENTER);
+        grid.attach(key_label, 0, 1, 1, 1);
+        grid.attach(combo, 1, 1, 1, 1);
+        
+        box.pack_start(grid);
+        //box.pack_start (combo);
+
+    }
+#endif
 }

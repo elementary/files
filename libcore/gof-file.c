@@ -1047,6 +1047,9 @@ gof_file_get_formated_time (GOFFile *file, const char *attr)
     g_return_val_if_fail (file->info != NULL, NULL);
 
     guint64 date = g_file_info_get_attribute_uint64 (file->info, attr);
+    if (date == 0)
+        return NULL;
+
     //TODO prefs
     return eel_get_date_as_string (date, "iso");
 }

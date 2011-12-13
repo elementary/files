@@ -127,6 +127,8 @@ struct FMDirectoryViewDetails
      * deleting an item */
     GtkTreePath     *selection_before_delete;
     GOFFile         *newly_folder_added;
+    GList           *open_with_apps;
+    GAppInfo        *default_app;
 
     gchar           *previewer;
     GtkWidget       *menu_selection;
@@ -225,6 +227,10 @@ static const GtkTargetEntry drop_targets[] =
     { "XdndDirectSave0", 0, TARGET_XDND_DIRECT_SAVE0, },
     { "_NETSCAPE_URL", 0, TARGET_NETSCAPE_URL, },
 };
+
+static gpointer _g_object_ref0 (gpointer self) {
+	return self ? g_object_ref (self) : NULL;
+}
 
 
 void fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor)
@@ -370,6 +376,8 @@ fm_directory_view_init (FMDirectoryView *view)
     view->details->drag_timer_id = -1;
     view->details->dir_action_group = NULL;
     view->details->newly_folder_added = NULL;
+    view->details->open_with_apps = NULL;
+    view->details->default_app = NULL;
 
     /* create a thumbnailer */
     view->details->thumbnailer = marlin_thumbnailer_get ();
@@ -1837,19 +1845,19 @@ update_menus_selection (FMDirectoryView *view)
 
     /* Open default */
     GtkAction *action;
-    GAppInfo *default_app = NULL;
     GIcon *app_icon = NULL;
     char *mnemonic = NULL;
     GtkWidget *menuitem;
 
     action = gtk_action_group_get_action (view->details->dir_action_group, "Open");
-    default_app = marlin_mime_get_default_application_for_files (selection);
-    if (default_app != NULL) {
+    _g_object_unref0 (view->details->default_app);
+    view->details->default_app = marlin_mime_get_default_application_for_files (selection);
+    if (view->details->default_app != NULL) {
         char *escaped_app;
 
-        escaped_app = eel_str_double_underscores (g_app_info_get_display_name (default_app));
+        escaped_app = eel_str_double_underscores (g_app_info_get_display_name (view->details->default_app));
         mnemonic = g_strdup_printf (_("_Open With %s"), escaped_app);
-        app_icon = g_app_info_get_icon (default_app);
+        app_icon = g_app_info_get_icon (view->details->default_app);
         if (app_icon != NULL) {
             g_object_ref (app_icon);
         }
@@ -1892,34 +1900,51 @@ update_menus_selection (FMDirectoryView *view)
     g_free (mnemonic);
 
     /* Open With */
-    GList *apps, *l;
+    GList *l;
     int index;
     const char *menu_path = "/MenuBar/File/Open Placeholder/Open With/Applications Placeholder";
     const char *popup_path = "/selection/Open Placeholder/Open With/Applications Placeholder";
 
-    apps = NULL;
     /* if there s no default app then there s no common possible type to get other applications.
     checking the first file is enought to determine if we have a full directory selection
     as the only possible common type for a directory is a directory. 
     We don't want File Managers applications list in the open with menu for a directory(ies) 
     selection */
-    if (default_app != NULL && !file->is_directory)
-        apps = marlin_mime_get_applications_for_files (selection);
+    if (view->details->open_with_apps != NULL) {
+        g_list_free_full (view->details->open_with_apps, g_object_unref);
+        view->details->open_with_apps = NULL;
+    }
+    if (view->details->default_app != NULL && !file->is_directory)
+        view->details->open_with_apps = marlin_mime_get_applications_for_files (selection);
     /* we need to remove the default app from open with menu */
-    if (default_app != NULL)
-        apps = filter_default_app (apps, default_app);
-    for (l = apps, index=0; l != NULL && index <4; l=l->next, index++) {
+    if (view->details->default_app != NULL)
+        view->details->open_with_apps = filter_default_app (view->details->open_with_apps, view->details->default_app);
+    for (l = view->details->open_with_apps, index=0; l != NULL && index <4; l=l->next, index++) {
         add_application_to_open_with_menu (view, 
                                            l->data, 
                                            selection,
                                            index,
                                            menu_path, popup_path);
     }
-    g_list_free_full (apps, g_object_unref);
-    _g_object_unref0 (default_app);
     
     if (selection_count == 1 && !file->is_directory)
         dir_action_set_visible (view, "OtherApplication", TRUE);
+}
+
+GList *
+fm_directory_view_get_open_with_apps (FMDirectoryView *view)
+{
+    g_return_val_if_fail (FM_IS_DIRECTORY_VIEW (view), NULL);
+
+    return (view->details->open_with_apps);
+}
+
+GAppInfo *
+fm_directory_view_get_default_app (FMDirectoryView *view)
+{
+    g_return_val_if_fail (FM_IS_DIRECTORY_VIEW (view), NULL);
+
+    return (_g_object_ref0 (view->details->default_app));
 }
 
 static gboolean
@@ -3076,20 +3101,18 @@ action_other_application_callback (GtkAction *action, FMDirectoryView *view)
 static void
 action_properties_callback (GtkAction *action, FMDirectoryView *view)
 {
-    GList *selection;
-    GList *file_list = NULL;
-    
     g_assert (FM_IS_DIRECTORY_VIEW (view));
 
-    selection = fm_directory_view_get_selection (view);
+    GList *selection = fm_directory_view_get_selection (view);
     
     if (selection != NULL) {
-        file_list = selection; 
+        marlin_view_properties_window_new (selection, view, GTK_WINDOW (view->details->window));
     } else {
+        GList *file_list = NULL;
         file_list = g_list_prepend (file_list, view->details->slot->directory->file);
+        marlin_view_properties_window_new (file_list, view, GTK_WINDOW (view->details->window));
+        g_list_free (file_list);
     }
-
-    marlin_view_properties_window_new (file_list, GTK_WINDOW (view->details->window));
 }
 
 
