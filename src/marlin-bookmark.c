@@ -525,9 +525,7 @@ marlin_bookmark_new (GOFFile *file, char *label)
     if (label != NULL) 
         bookmark->name = bookmark->label;
     if (bookmark->name == NULL)
-        bookmark->name = file->name;
-    if (bookmark->name == NULL)
-        bookmark->name = file->basename;
+        bookmark->name = gof_file_get_display_name (file);
 
     //marlin_bookmark_connect_file (new_bookmark);
 
