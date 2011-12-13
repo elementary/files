@@ -2133,7 +2133,7 @@ const gchar *gof_file_get_display_name (GOFFile *file)
     if (file->custom_display_name != NULL)
         return file->custom_display_name;
 
-    if (file->custom_display_name != NULL)
+    if (file->display_name != NULL)
         return file->display_name;
     
     return file->basename;
