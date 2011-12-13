@@ -57,7 +57,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         // Set the default containers
         Box content_area = (Box) get_content_area();
         Box action_area = (Box) get_action_area();
-        action_area.set_border_width (5);
         border_width = 5;
         sg = new SizeGroup (SizeGroupMode.HORIZONTAL);
 
@@ -66,12 +65,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         content_area.pack_start (content_vbox);
 
         // Adjust sizes
-        //content_vbox.margin = 12;
-        /*content_vbox.margin_right = 12;
-          content_vbox.margin_left = 12;
-          content_vbox.margin_bottom = 12;*/
-        //content_vbox.height_request = 160;
-        content_vbox.width_request = 220;
+        //content_vbox.margin = 5;
+        content_vbox.margin_right = 5;
+        content_vbox.margin_left = 5;
+        //content_vbox.margin_bottom = 12;
 
         view = _view;
         files = _files;
