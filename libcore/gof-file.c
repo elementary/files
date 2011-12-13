@@ -616,7 +616,7 @@ void gof_file_update_trash_info (GOFFile *file)
 void gof_file_remove_from_caches (GOFFile *file)
 {
     /* remove from file_cache */
-    if (g_hash_table_remove (file_cache, file->location))
+    if (file_cache != NULL && g_hash_table_remove (file_cache, file->location))
         g_debug ("remove from file_cache %s", file->uri);
     
     /* remove from directory_cache */
@@ -2133,7 +2133,10 @@ const gchar *gof_file_get_display_name (GOFFile *file)
     if (file->custom_display_name != NULL)
         return file->custom_display_name;
 
-    return file->display_name;
+    if (file->custom_display_name != NULL)
+        return file->display_name;
+    
+    return file->basename;
 }
 
 gboolean gof_file_is_remote_folder (GOFFile *file)

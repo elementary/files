@@ -241,9 +241,6 @@ public class GOF.Directory.Async : Object
         if (gof.info == null)
             critical ("FILE INFO null");
         gof.update ();
-        add_to_hash_cache (gof);
-        if (!gof.is_hidden || show_hidden_files)
-            file_added (gof);
 
         if (!gof.is_hidden && gof.is_directory) {
             /* add to sorted_dirs */
@@ -261,6 +258,9 @@ public class GOF.Directory.Async : Object
     }
 
     private void notify_file_added (GOF.File gof) {
+        add_to_hash_cache (gof);
+        if (!gof.is_hidden || show_hidden_files)
+            file_added (gof);
         query_info_async (gof, add_and_refresh);
     }
 
@@ -282,14 +282,17 @@ public class GOF.Directory.Async : Object
         /*case FileMonitorEvent.ATTRIBUTE_CHANGED:*/
         case FileMonitorEvent.CHANGES_DONE_HINT:
             //message ("file changed %s", gof.uri);
+            //notify_file_changed (gof);
             MarlinFile.changes_queue_file_changed (_file);
             break;
         case FileMonitorEvent.CREATED:
             //message ("file added %s", gof.uri);
+            //notify_file_added (gof);
             MarlinFile.changes_queue_file_added (_file);
             break;            
         case FileMonitorEvent.DELETED:
             //message ("file deleted %s", gof.uri);
+            //notify_file_removed (gof);
             MarlinFile.changes_queue_file_removed (_file);
             break;
         }
