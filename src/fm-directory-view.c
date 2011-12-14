@@ -2092,6 +2092,9 @@ fm_directory_view_row_deleted (FMListModel *model, GtkTreePath *path, FMDirector
     /* Get tree paths of selected files */
     selected_paths = (*FM_DIRECTORY_VIEW_GET_CLASS (view)->get_selected_paths) (view);
 
+    gtk_tree_path_free (view->details->selection_before_delete);
+    view->details->selection_before_delete = NULL;
+
     /* Do nothing if the deleted row is not selected or there is more than one file selected */
     if (G_UNLIKELY (g_list_find_custom (selected_paths, path, (GCompareFunc) gtk_tree_path_compare) == NULL || g_list_length (selected_paths) != 1))
     {
@@ -2844,6 +2847,7 @@ fm_directory_view_freeze_updates (FMDirectoryView *view)
     dir_action_set_sensitive (view, "Paste", FALSE);
     dir_action_set_sensitive (view, "Paste Into Folder", FALSE);
 
+    /* TODO remove this blocker */
     /* block thumbnails request on size allocate */
     g_signal_handlers_block_by_func (view, fm_directory_view_size_allocate, NULL);
     

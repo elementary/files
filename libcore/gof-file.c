@@ -1773,8 +1773,9 @@ static void
 gof_file_update_existing (GOFFile *file, GFile *new_location)
 {
     GOFDirectoryAsync *dir = gof_directory_async_cache_lookup (file->directory);
-    if (dir != NULL) 
-        gof_directory_async_remove_from_cache (dir, file);
+
+    gof_file_remove_from_caches (file);
+    file->is_gone = FALSE;
 
     g_object_unref (file->location);
     file->location = g_object_ref (new_location);
@@ -1783,8 +1784,8 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
         gof_directory_async_add_to_hash_cache (dir, file);
 
     _g_free0 (file->uri);
-    _g_free0(file->basename);
     file->uri = g_file_get_uri (new_location);
+    _g_free0(file->basename);
     file->basename = g_file_get_basename (file->location);
     /* TODO update color on rename ? */
     file->color = NULL;
