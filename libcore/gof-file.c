@@ -631,6 +631,7 @@ void gof_file_remove_from_caches (GOFFile *file)
             g_object_unref (dir);
         }
     }
+    file->is_gone = TRUE;
     g_warning ("end %s", G_STRFUNC);
 }
 
@@ -1190,8 +1191,7 @@ GOFFile* gof_file_get (GFile *location)
         /*gchar *uri = g_file_get_uri (parent);
         g_warning (">>>>>>>>>>>>>>> dir already cached %s", uri);
         g_free (uri);*/
-        if ((file = g_hash_table_lookup (dir->file_hash, location)) == NULL)
-            file = g_hash_table_lookup (dir->hidden_file_hash, location);
+        file = g_hash_table_lookup (dir->file_hash, location);
         _g_object_ref0 (file);
         g_object_unref (dir);
     }

@@ -114,6 +114,7 @@ namespace GOF {
         public static File cache_lookup (GLib.File file);
 
         public void remove_from_caches ();
+        public bool is_gone;
         public GLib.File location;
         public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;

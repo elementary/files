@@ -36,7 +36,6 @@ public class GOF.Directory.Async : Object
     public State state = State.NOT_LOADED;
 
     public HashTable<GLib.File,GOF.File> file_hash;
-    public HashTable<GLib.File,GOF.File> hidden_file_hash;
     
     public bool show_hidden_files = false;
     public uint files_count = 0;
@@ -81,7 +80,6 @@ public class GOF.Directory.Async : Object
            directory_cache.insert (location, this);
 
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.file_hash, GLib.file_equal);
-        hidden_file_hash = new HashTable<GLib.File,GOF.File> (GLib.file_hash, file_equal);
 
         //list_directory (location);
     }
@@ -116,11 +114,10 @@ public class GOF.Directory.Async : Object
             /* send again the info_available signal for reused directories */
             if (file.info != null)
                 file.info_available ();
-            foreach (GOF.File gof in file_hash.get_values ())
-                file_loaded (gof);
-            if (show_hidden_files)
-                foreach (GOF.File gof in hidden_file_hash.get_values ())
+            foreach (GOF.File gof in file_hash.get_values ()) {
+                if (gof.info != null && (!gof.is_hidden || show_hidden_files))
                     file_loaded (gof);
+            }
             done_loading ();
         }
     }
@@ -203,13 +200,8 @@ public class GOF.Directory.Async : Object
     }
 
     public void add_to_hash_cache (GOF.File gof) {
-        if (!gof.is_hidden) {
-            if (file_hash != null)
-                file_hash.insert (gof.location, gof);
-        } else {
-            if (hidden_file_hash != null)
-                hidden_file_hash.insert (gof.location, gof);
-        }
+        if (file_hash != null)
+            file_hash.insert (gof.location, gof);
     }
 
     /* TODO move this to GOF.File */
@@ -230,6 +222,8 @@ public class GOF.Directory.Async : Object
     }
 
     private void changed_and_refresh (GOF.File gof) {
+        if (gof.is_gone)
+            return;
         gof.update ();
         if (!gof.is_hidden || show_hidden_files) {
             file_changed (gof);
@@ -238,9 +232,13 @@ public class GOF.Directory.Async : Object
     }
 
     private void add_and_refresh (GOF.File gof) {
+        if (gof.is_gone)
+            return;
         if (gof.info == null)
             critical ("FILE INFO null");
         gof.update ();
+        if (gof.info != null && (!gof.is_hidden || show_hidden_files))
+            file_added (gof);
 
         if (!gof.is_hidden && gof.is_directory) {
             /* add to sorted_dirs */
@@ -259,8 +257,6 @@ public class GOF.Directory.Async : Object
 
     private void notify_file_added (GOF.File gof) {
         add_to_hash_cache (gof);
-        if (!gof.is_hidden || show_hidden_files)
-            file_added (gof);
         query_info_async (gof, add_and_refresh);
     }
 
@@ -281,17 +277,17 @@ public class GOF.Directory.Async : Object
         switch (event) {
         /*case FileMonitorEvent.ATTRIBUTE_CHANGED:*/
         case FileMonitorEvent.CHANGES_DONE_HINT:
-            //message ("file changed %s", gof.uri);
+            //message ("file changed %s", _file.get_uri ());
             //notify_file_changed (gof);
             MarlinFile.changes_queue_file_changed (_file);
             break;
         case FileMonitorEvent.CREATED:
-            //message ("file added %s", gof.uri);
+            //message ("file added %s", _file.get_uri ());
             //notify_file_added (gof);
             MarlinFile.changes_queue_file_added (_file);
             break;            
         case FileMonitorEvent.DELETED:
-            //message ("file deleted %s", gof.uri);
+            //message ("file deleted %s", _file.get_uri ());
             //notify_file_removed (gof);
             MarlinFile.changes_queue_file_removed (_file);
             break;
@@ -376,13 +372,8 @@ public class GOF.Directory.Async : Object
     {
         bool val = false;
 
-        if (!gof.is_hidden) {
-            if (file_hash != null)
-                val = file_hash.remove (gof.location);
-        } else {
-            if (hidden_file_hash != null)
-                val = hidden_file_hash.remove (gof.location);
-        }
+        if (file_hash != null)
+            val = file_hash.remove (gof.location);
 
         return val;
     }
@@ -405,15 +396,12 @@ public class GOF.Directory.Async : Object
     public bool is_empty ()
     {
         uint file_hash_count = 0;
-        uint hidden_file_hash_count = 0;
 
         if (file_hash != null)
             file_hash_count = file_hash.size ();
-        if (hidden_file_hash != null)
-            hidden_file_hash_count = hidden_file_hash.size ();
-
-        //debug ("is_empty hash sizes file: %u  hidden: %u", file_hash_count, hidden_file_hash_count);
-        if (state == State.LOADED && file_hash_count == 0 && hidden_file_hash_count == 0)
+        
+        //debug ("is_empty hash sizes file: %u", file_hash_count);
+        if (state == State.LOADED && file_hash_count == 0)
             return true;
 
         return false;

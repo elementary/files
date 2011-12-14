@@ -108,10 +108,11 @@ struct _GOFFile {
     const char      *trash_orig_path;
     time_t          trash_time; /* 0 is unknown */
 
-    GList *operations_in_progress;
+    GList           *operations_in_progress;
 
     guint           flags;
-    GList* emblems_list;
+    GList           *emblems_list;
+    gboolean        is_gone;
 };
 
 struct _GOFFileClass {
