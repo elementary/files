@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-13 00:25+0000\n"
-"Last-Translator: Magnus Olsen <Unknown>\n"
+"PO-Revision-Date: 2011-12-13 21:09+0000\n"
+"Last-Translator: Klæmint H. Poulsen <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-12-13 05:35+0000\n"
-"X-Generator: Launchpad (build 14458)\n"
+"X-Launchpad-Export-Date: 2011-12-14 05:26+0000\n"
+"X-Generator: Launchpad (build 14487)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -232,7 +232,7 @@ msgstr "FTP (við innriting)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "Glugga deiling"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
@@ -309,11 +309,11 @@ msgstr "_Faldari"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr ""
+msgstr "Brúkara Lýsingar"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr ""
+msgstr "_Økisnavn:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
@@ -329,7 +329,7 @@ msgstr "Minnst til hetta atlátið"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr ""
+msgstr "Atgerð strika"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -337,6 +337,9 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"Kaga ígjøgnum fílu skipanina við Fílu stjóranum"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
@@ -348,11 +351,11 @@ msgstr "Egið"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:305
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "Tíni vanligu støð og bókamerki"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:319
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Opna tína persónligu mappu"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:362
 msgid "Open the trash"
@@ -414,11 +417,11 @@ msgstr "_Loys driv"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1614
 msgid "_Start Multi-disk Device"
-msgstr ""
+msgstr "_Byrja Fleir-diskils tól"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1615
 msgid "_Stop Multi-disk Device"
-msgstr ""
+msgstr "_Stegga Fleir-diskils Tól"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1619
 msgid "_Unlock Drive"
@@ -449,7 +452,7 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2297
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "Ikki ført fyri at stegga %s"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2389
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1830
@@ -513,8 +516,8 @@ msgstr ""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Brúka \"%s\" til at opna tann valda lutin"
+msgstr[1] "Brúka \"%s\" til at opna teir valdu lutirnar"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1821
 #, c-format
@@ -537,7 +540,7 @@ msgstr "Set sum vanligu forritan"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:3212
 msgid "Set Color:"
-msgstr ""
+msgstr "Set Lit"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
@@ -557,7 +560,7 @@ msgstr "_Leinkja hagar"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr ""
+msgstr "Set sum _Bakgrund"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
@@ -1426,7 +1429,7 @@ msgstr "Feilur við stovning av fíl %B"
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6105
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr ""
+msgstr "Tað uppstóð ein feilur við stovning av mappu í %F."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6401
 msgid "Emptying Trash"
