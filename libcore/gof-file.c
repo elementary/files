@@ -29,18 +29,9 @@
 #include "eel-string.h"
 #include "marlin-exec.h"
 #include "marlin-icons.h"
+#include "fm-list-model.h"
 #include "marlincore.h"
 
-enum {
-    FM_LIST_MODEL_FILE_COLUMN,
-    FM_LIST_MODEL_ICON,
-    FM_LIST_MODEL_COLOR,
-    FM_LIST_MODEL_FILENAME,
-    FM_LIST_MODEL_SIZE,
-    FM_LIST_MODEL_TYPE,
-    FM_LIST_MODEL_MODIFIED,
-    FM_LIST_MODEL_NUM_COLUMNS
-};
 
 G_LOCK_DEFINE_STATIC (file_cache_mutex);
 
@@ -2127,9 +2118,9 @@ gof_file_get_permissions_as_string (GOFFile *file)
                             : (sticky ? 'T' : '-'));
 }
 
-int gof_file_compare_by_display_name (GOFFile *file1, GOFFile *file2)
+gint gof_file_compare_by_display_name (gconstpointer a, gconstpointer b)
 {
-    return compare_by_display_name (file1, file2);
+    return compare_by_display_name (GOF_FILE (a), GOF_FILE (b));
 }
 
 GFile *gof_file_get_target_location (GOFFile *file)

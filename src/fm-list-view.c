@@ -464,7 +464,7 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
     switch (event->keyval) {
     case GDK_KEY_F10:
         if (event->state & GDK_CONTROL_MASK) {
-            fm_directory_view_do_popup_menu (view, event);
+            fm_directory_view_do_popup_menu (view, (GdkEventButton *) event);
             handled = TRUE;
         }
         break;

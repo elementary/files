@@ -129,13 +129,13 @@ void marlin_file_operations_copy_move   (GList                  *files,
                                          GtkWidget              *parent_view,
                                          MarlinCopyCallback     done_callback,
                                          gpointer               done_callback_data);
-#if 0
 void marlin_file_operations_move      (GList                *files,
                                        GArray               *relative_item_points,
                                        GFile                *target_dir,
                                        GtkWindow            *parent_window,
                                        MarlinCopyCallback  done_callback,
                                        gpointer              done_callback_data);
+#if 0
 void marlin_file_operations_duplicate (GList                *files,
                                        GArray               *relative_item_points,
                                        GtkWindow            *parent_window,

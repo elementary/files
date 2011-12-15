@@ -1414,7 +1414,7 @@ fm_list_model_get_column_id_from_string (const gchar *colstr)
     if (hash == NULL) {
         hash = g_hash_table_new (g_str_hash, g_str_equal);
         for (i = 0; i < 4; i++)
-            g_hash_table_insert (hash, columnsview[i].name, GINT_TO_POINTER (columnsview[i].value));
+            g_hash_table_insert (hash, (gpointer) columnsview[i].name, GINT_TO_POINTER (columnsview[i].value));
     }
 
     return GPOINTER_TO_INT (g_hash_table_lookup (hash, colstr));
