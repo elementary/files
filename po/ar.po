@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-11-24 14:27+0000\n"
-"Last-Translator: Wasfi <Unknown>\n"
+"PO-Revision-Date: 2011-12-14 22:03+0000\n"
+"Last-Translator: Ibrahim Saed <ibraheem5000@hotmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2011-12-01 05:50+0000\n"
-"X-Generator: Launchpad (build 14414)\n"
+"X-Launchpad-Export-Date: 2011-12-15 05:54+0000\n"
+"X-Generator: Launchpad (build 14487)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -31,32 +31,32 @@ msgstr "\"مارلين\" لا يستطيع العثور على المجلَّد 
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr "إنشاء"
+msgstr "أنشئ"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "أنشاء مجلد %s"
+msgstr "أنشئ المجلد %s"
 
 #: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:95
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:360
 msgid "Trash"
-msgstr ""
+msgstr "المهملات"
 
 #: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:96
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:578
 msgid "Network"
-msgstr ""
+msgstr "الشبكة"
 
 #: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:122
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:314
 msgid "Home"
-msgstr "البداية"
+msgstr "المنزل"
 
 #: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:124
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:384
 msgid "File System"
-msgstr ""
+msgstr "نظام ملفات"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
@@ -68,7 +68,7 @@ msgstr "الفتح بنقرة واحدة:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
-msgstr ""
+msgstr "سرعة التحديد-التلقائي للفأرة:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
@@ -76,11 +76,11 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "Default File Manager:"
-msgstr ""
+msgstr "مدير الملفات الافتراضي:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "make Marlin my default File Manager"
-msgstr ""
+msgstr "اجعل \"مارلين\" مدير ملفاتي الافتراضي"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:94
 msgid "Behavior"
@@ -104,7 +104,7 @@ msgstr "ضخم"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
-msgstr ""
+msgstr "حجم أيقونات الشريط الجانبيّ"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "locale"
@@ -120,15 +120,15 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:157
 msgid "Date format:"
-msgstr ""
+msgstr "هيئة التاريخ:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:165
 msgid "Display"
-msgstr ""
+msgstr "العرض"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
 msgid "Extensions"
-msgstr ""
+msgstr "الامتدادات"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
 msgid "Name"
@@ -176,15 +176,15 @@ msgstr "معاينة"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:298
 msgid "Created"
-msgstr ""
+msgstr "تمّ الإنشاء"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:300
 msgid "Last Access"
-msgstr ""
+msgstr "آخِر تعامل"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:304
 msgid "Deleted"
-msgstr "محذوف"
+msgstr "تم الحذف"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:308
 msgid "MimeType"
@@ -196,7 +196,7 @@ msgstr "المكان"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:318
 msgid "Origin Location"
-msgstr ""
+msgstr "المكان الأصلي"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
@@ -225,112 +225,114 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "‏FTP عام"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "‏FTP (بتسجيل دخول)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "مشاركة ويندوز"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "وبداف آمن ((Secure WebDAV (HTTPS)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr ""
+msgstr "يتّصل..."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"تعذّر تحميل قائمة طُرق الخواديم المدعومة.\n"
+"تحقق من تثبيت gvfs."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "تعذّر فتح المجلد \"%s\" على \"%s\"."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "تعذّر العثور على الخادوم \"%s\"."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr ""
+msgstr "أعِد المحاولة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr ""
+msgstr "من فضلك راجع تفاصيل المستخدم."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr ""
+msgstr "تابع"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1169
 msgid "C_onnect"
-msgstr ""
+msgstr "_اتصل"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr ""
+msgstr "اتصل بالخادوم"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr ""
+msgstr "تفاصيل الخادوم"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
-msgstr ""
+msgstr "ال_خادم:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
-msgstr ""
+msgstr "ال_منفذ:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
-msgstr ""
+msgstr "ال_نوع:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr ""
+msgstr "المشا_ركة:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr ""
+msgstr "ال_مجلّد:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr ""
+msgstr "تفاصيل المستخدم"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr ""
+msgstr "اسم ال_نطاق:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
-msgstr ""
+msgstr "_اسم المستخدم"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
-msgstr ""
+msgstr "كلمة ال_سر:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr ""
+msgstr "_تذكّر كلمة السر هذه"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr "الغيت العملية"
+msgstr "أُُلغيت العملية"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -348,161 +350,161 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:300
 msgid "Personal"
-msgstr ""
+msgstr "شخصي"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:305
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "مجلداتك وعلاماتك الشائعة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:319
 msgid "Open your personal folder"
-msgstr ""
+msgstr "افتح مجلّدك الشخصي"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:362
 msgid "Open the trash"
-msgstr ""
+msgstr "افتح المهملات"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:372
 msgid "Devices"
-msgstr ""
+msgstr "الأجهزة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:377
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "اقراصك و أجهزتك المحلية"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:386
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "افتح محتويات نظام الملفات"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:445
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:470
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "أوصل وافتح %s"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:583
 msgid "Your network places"
-msgstr ""
+msgstr "شبكتك المحلية"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:614
 msgid "Entire network"
-msgstr ""
+msgstr "الشبكة كلها"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:616
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "تصفّح محتويات الشبكة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Start"
-msgstr ""
+msgstr "ا_بدأ"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1601
 msgid "_Stop"
-msgstr ""
+msgstr "_توقّف"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1606
 msgid "_Power On"
-msgstr ""
+msgstr "_شغّل"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1607
 msgid "_Safely Remove Drive"
-msgstr ""
+msgstr "أزِل السواقة بأ_مان"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1610
 msgid "_Connect Drive"
-msgstr ""
+msgstr "أ_وصل السواقة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1611
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "ا_فصل السواقة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1614
 msgid "_Start Multi-disk Device"
-msgstr ""
+msgstr "اب_دأ السواقة متعددة الأقراص"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1615
 msgid "_Stop Multi-disk Device"
-msgstr ""
+msgstr "أو_قف السواقة متعددة الأقراص"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1619
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "ا_فتح قفل السواقة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1620
 msgid "_Lock Drive"
-msgstr ""
+msgstr "أ_وصد السواقة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1694
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2241
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "تعذّر بدء %s"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1984
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2013
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2042
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "تعذّر إخراج %s"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2187
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "تعذّر جس %s للتأكد من التغيرات في الوسائط"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2297
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "تعذّر إيقاف %s"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2389
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1830
 msgid "_Open"
-msgstr ""
+msgstr "ا_فتح"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2397
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1852
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "افتح في _لسان جديد"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2404
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1861
 msgid "Open in New _Window"
-msgstr ""
+msgstr "افتح في _نافذة جديدة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2413
 msgid "Remove"
-msgstr ""
+msgstr "أزِل"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2422
 msgid "Rename..."
-msgstr ""
+msgstr "اعد تسمية..."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2434
 msgid "_Mount"
-msgstr ""
+msgstr "_صِل"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2441
 msgid "_Unmount"
-msgstr ""
+msgstr "ا_فصل"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2448
 msgid "_Eject"
-msgstr ""
+msgstr "أ_خرِج"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2484
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1424
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2295
 msgid "Empty _Trash"
-msgstr ""
+msgstr "أفرغ ال_مهملات"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3143
 msgid "Icon Size"
-msgstr ""
+msgstr "حجم الأيقونة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3144
 msgid "Icon size"
-msgstr ""
+msgstr "حجم الأيقونة"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1034
 msgid "Invalid filename provided by XDS drag site"
@@ -517,27 +519,31 @@ msgstr "فشل في تكوين وصلة للعنوان التالي\"%s\""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "استعمل \"%s\" لفتح العنصر المُختار"
+msgstr[1] "استعمل \"%s\" لفتح العنصر المُختار"
+msgstr[2] "استعمل \"%s\" لفتح العنصرين المُختارين"
+msgstr[3] "استعمل \"%s\" لفتح العناصر المُختارة"
+msgstr[4] "استعمل \"%s\" لفتح العناصر المُختارة"
+msgstr[5] "استعمل \"%s\" لفتح العناصر المُختارة"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1821
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "ا_فتح باستخدام %s"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1848
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "فتح في %'d أ_لسنة جديدة"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1857
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "فتح في %'d _نوافذ جديدة"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:2993
 msgid "Set as default"
-msgstr "تعيين كقيمة الافتراضية"
+msgstr "عيّن كافتراضي"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:3212
 msgid "Set Color:"
@@ -561,7 +567,7 @@ msgstr "ا_ربط هنا"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr "اجعلها ال_خلفية"
+msgstr "عيّن كخلفية"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
@@ -574,7 +580,7 @@ msgstr "فشل في تنفيذ الملف \"%s\""
 
 #: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:161
 msgid "Single Click"
-msgstr ""
+msgstr "نقرة واحدة"
 
 #: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:162
 msgid "Whether the items in the view can be activated with single clicks"
@@ -594,11 +600,11 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../src/fm-list-view.c:614
 #: /media/dev/elementary/marlin/po/../src/fm-icon-view.c:565
 msgid "This folder is empty."
-msgstr ""
+msgstr "هذا المجلد فارغ."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:449
 msgid "Customize Toolbar"
-msgstr ""
+msgstr "خصص شريط الأدوات"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:465
 msgid ""
@@ -608,50 +614,54 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:481
 msgid "Available Items"
-msgstr ""
+msgstr "العناصر المتاحه"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:502
 msgid "Displayed Items"
-msgstr ""
+msgstr "العناصر المعروضة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:113
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:163
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:470
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:526
 msgid "File Operations"
-msgstr ""
+msgstr "عمليات الملف"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:122
 msgid "Show Details"
-msgstr "عرض التفاصيل"
+msgstr "أظهر التفاصيل"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:157
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:179
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d عملية ملف نشطة"
+msgstr[1] "عملية ملف نشطة"
+msgstr[2] "عمليتا ملفات نشطتان"
+msgstr[3] "%'d عمليات ملفات نشطة"
+msgstr[4] "%'d عمليات ملفات نشطة"
+msgstr[5] "%'d عمليات ملفات نشطة"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
-msgstr ""
+msgstr "اعرض نافذة النسخ"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
-msgstr ""
+msgstr "إلغِ كافة الإجراءات قيد التنفيذ"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
-msgstr "جميع العمليات اكتملت بنجاح"
+msgstr "اكتملت جميع عمليات الملفات بنجاح"
 
 #: /media/dev/elementary/marlin/po/../src/eel-editable-label.c:3188
 msgid "Select All"
-msgstr ""
+msgstr "حدد الكل"
 
 #: /media/dev/elementary/marlin/po/../src/eel-editable-label.c:3199
 msgid "Input Methods"
-msgstr ""
+msgstr "طرق الإدخال"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
@@ -783,7 +793,7 @@ msgstr "طبق هذا الإجراء على كل الملفات"
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "_Skip"
-msgstr ""
+msgstr "_تخطَّ"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
 msgid "Re_name"
@@ -800,16 +810,16 @@ msgstr "تعارض الملف"
 #: /media/dev/elementary/marlin/po/../libcore/marlin-progress-info.c:192
 #: /media/dev/elementary/marlin/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr ""
+msgstr "يحضّر"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-utilities.c:267
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "تعذّر تحديد مكان \"%s\" الأصلي "
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-utilities.c:270
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "لا يمكن إستعادة العنصر من المهملات"
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:350
 #, c-format
@@ -819,7 +829,7 @@ msgstr "وصلة إلى %s"
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1525
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr ""
+msgstr "فشل في تحليل ملف سطح المكتب: %s"
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1563
 msgid "No Exec field specified"
@@ -847,94 +857,110 @@ msgstr "أظهر _تفاصيل أكثر"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:208
 msgid "S_kip All"
-msgstr ""
+msgstr "ت_خطى الكل"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:209
 msgid "_Retry"
-msgstr ""
+msgstr "أ_عد المحاولة"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:210
 msgid "Delete _All"
-msgstr ""
+msgstr "احذف الكل"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:211
 msgid "_Replace"
-msgstr ""
+msgstr "است_بدِل"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:212
 msgid "Replace _All"
-msgstr ""
+msgstr "إستبدل الكل"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:213
 msgid "_Merge"
-msgstr ""
+msgstr "ا_دمج"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:214
 msgid "Merge _All"
-msgstr ""
+msgstr "ادمج الكل"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:215
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "انسخ _على أي حال"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:301
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "أقل من ثانية"
+msgstr[1] "ثانية واحدة"
+msgstr[2] "ثانيتين"
+msgstr[3] "%'d ثوان"
+msgstr[4] "%'d ثانية"
+msgstr[5] "%'d ثانية"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:306
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "دقيقة"
+msgstr[1] "دقيقة واحدة"
+msgstr[2] "دقيقتان"
+msgstr[3] "%'d دقائق"
+msgstr[4] "%'d دقائق"
+msgstr[5] "%'d دقائق"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:316
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ساعة"
+msgstr[1] "ساعة واحدة"
+msgstr[2] "ساعتان"
+msgstr[3] "%'d ساعات"
+msgstr[4] "%'d ساعات"
+msgstr[5] "%'d ساعات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:324
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d ساعة تقريباً"
+msgstr[1] "ساعة واحدة تقريبا"
+msgstr[2] "ساعاتان تقريباً"
+msgstr[3] "%'d ساعات تقريبا"
+msgstr[4] "%'d ساعات تقريبا"
+msgstr[5] "%'d ساعات تقريبا"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:400
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "وصلة إلى %s"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:404
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "وصلة أخرى إلى %s"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:420
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "الوصلة %'d إلى %s"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:424
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "الوصلة %'d إلى %s"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:428
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "الوصلة %'d إلى %s"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:432
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "الوصلة %'d إلى %s"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:624
 msgid " ("
@@ -947,7 +973,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
+msgstr "أمتأكد أنك تريد حذف \"%B\" نهائيا من المهملات؟"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1386
 #, c-format
@@ -957,51 +983,67 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "أمتأكد أنّك تريد حذف العنصر المختار نهائيًّا من المهملات؟"
+msgstr[1] "أمتأكد أنّك تريد حذف العنصر المختار نهائيًّا من المهملات؟"
+msgstr[2] "أمتأكد أنّك تريد حذف العنصرين المختارين نهائيًّا من المهملات؟"
+msgstr[3] "أمتأكد أنّك تريد حذف الـ%I'd عناصر المختارة نهائيًّا من المهملات؟"
+msgstr[4] "أمتأكد أنّك تريد حذف الـ%I'd عنصرا المختارة نهائيًّا من المهملات؟"
+msgstr[5] "أمتأكد أنّك تريد حذف الـ%I'd عنصر المختارة نهائيًّا من المهملات؟"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1396
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1464
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "إذا حذفت عنصر، سيُفقد للأبد."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1417
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "إفراغ جميع العناصر من المُهملات؟"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1421
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "جميع العناصر في المُهملات سيتم حذفها نهائياً."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1452
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "أمتأكد من أنك تريد حذف \"%B\" نهائيا؟"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1455
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "أمتأكدٌ أنّك تريد حذف العنصر المختار نهائيًّا؟"
+msgstr[1] "أمتأكدٌ أنّك تريد حذف العنصر المختار نهائيًّا؟"
+msgstr[2] "أمتأكدٌ أنّك تريد حذف العنصرين المختارين نهائيًّا؟"
+msgstr[3] "أمتأكد أنّك تريد حذف الـ%I'd عناصر المختارة نهائيا؟"
+msgstr[4] "أمتأكد أنّك تريد حذف الـ%I'd عنصرا المختارة نهائيا؟"
+msgstr[5] "أمتأكد أنّك تريد حذف الـ%I'd عنصر المختارة نهائيا؟"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1480
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1512
 msgid "Deleting files"
-msgstr ""
+msgstr "تُحذف الملفات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1506
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "لم تتبق ملفات للحذف"
+msgstr[1] "تبقى ملف واحد للحذف"
+msgstr[2] "تبقى ملفان للحذف"
+msgstr[3] "تبقى %'d ملفات للحذف"
+msgstr[4] "تبقى %'d ملفاً للحذف"
+msgstr[5] "تبقى %'d ملف للحذف"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1526
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "بقى %T"
+msgstr[1] "بقى %T"
+msgstr[2] "بقى %T"
+msgstr[3] "بقى %T"
+msgstr[4] "بقى %T"
+msgstr[5] "بقى %T"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1594
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1628
@@ -1009,104 +1051,112 @@ msgstr[1] ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1744
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2558
 msgid "Error while deleting."
-msgstr ""
+msgstr "خطأ أثناء الحذف."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1598
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"لا يمكن حذف الملفات الموجودة بالمجلد \"%B\" لأنك لا تملك التصاريح الكافية "
+"لقراءتها."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1601
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2617
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3608
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "حدث خطأ في الحصول على معلومات حول الملفات في المجلد \"%B\"."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1610
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3617
 msgid "_Skip files"
-msgstr ""
+msgstr "ت_خطى الملفات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1631
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "لا يمكن حذف المجلد \"%B\" لأنك لا تملك التصاريح الكافية لقراءته."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1634
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2656
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3653
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "حدث خطأ أثناء قراءة المجلد \"%B\"."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1668
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "تعذّر حذف المجلد %B."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1745
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "حدث خطأ أثناء حذف المجلد %B."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1821
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1833
 msgid "Moving files to trash"
-msgstr ""
+msgstr "تُنقل الملفات إلى المُهملات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1835
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "لم يبقى أي ملفات لنقلها إلى المهملات"
+msgstr[1] "تبقى ملف واحد لنقله إلى المهملات"
+msgstr[2] "تبقى ملفان لنقلهما إلى المهملات"
+msgstr[3] "تبقى %'d ملفات لنقلها إلى المهملات"
+msgstr[4] "تبقى %'d ملفاً لنقلها إلى المهملات"
+msgstr[5] "تبقى %'d ملف لنقلها إلى المهملات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1886
 msgid "Cannot move file to trash, do you want to delete immediately?"
-msgstr ""
+msgstr "لا يمكن نقل الملف إلى المهملات، هل تريد حذفه فورا؟"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1887
 msgid "The file \"%B\" cannot be moved to the trash."
-msgstr ""
+msgstr "لا يمكن نقل الملف \"%B\" إلى المهملات."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2063
 msgid "Trashing Files"
-msgstr ""
+msgstr "إرسال الملفات للمهملات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2065
 msgid "Deleting Files"
-msgstr ""
+msgstr "تُحذف الملفات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2128
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "تعذر إخراج %V"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2130
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "تعذر فصْل %V"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2285
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "أترغب في إفراغ المهملات قبل الفصْل؟"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2287
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"لتستعيد المساحة الخالية على هذا الجزء يجب إفراغ المهملات. كل الملفات في "
+"المهملات ستُفقد للأبد."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2293
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "_لا تُفرغ المهملات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2348
 msgid "Emptying the trash"
-msgstr ""
+msgstr "تُفرغ المهملات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2415
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "تعذّر وصْل %s"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2493
 #, c-format
