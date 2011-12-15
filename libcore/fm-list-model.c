@@ -1375,3 +1375,47 @@ fm_list_model_subdirectory_done_loading (FMListModel *model, NautilusDirectory *
     }
 }
 #endif
+
+const gchar *
+fm_list_model_get_string_from_column_id (gint id)
+{
+    switch (id) {
+    case FM_LIST_MODEL_FILENAME:
+        return "name";
+    case FM_LIST_MODEL_SIZE:
+        return "size";
+    case FM_LIST_MODEL_TYPE:
+        return "type";
+    case FM_LIST_MODEL_MODIFIED:
+        return "modified";
+    }
+
+    g_return_val_if_reached ("name");
+}
+
+typedef struct {
+    const gchar *name;
+    gint	    value;
+} ColumnsEnum;
+
+static const ColumnsEnum columnsview[] = {
+    { "name", FM_LIST_MODEL_FILENAME },
+    { "size", FM_LIST_MODEL_SIZE },
+    { "type", FM_LIST_MODEL_TYPE },
+    { "modified", FM_LIST_MODEL_MODIFIED },
+};
+
+gint
+fm_list_model_get_column_id_from_string (const gchar *colstr)
+{
+    static GHashTable *hash;
+    int i;
+
+    if (hash == NULL) {
+        hash = g_hash_table_new (g_str_hash, g_str_equal);
+        for (i = 0; i < 4; i++)
+            g_hash_table_insert (hash, columnsview[i].name, GINT_TO_POINTER (columnsview[i].value));
+    }
+
+    return GPOINTER_TO_INT (g_hash_table_lookup (hash, colstr));
+}

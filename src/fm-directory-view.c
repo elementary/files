@@ -195,6 +195,7 @@ static void     fm_directory_view_row_deleted (FMListModel *model,
 static void     fm_directory_view_restore_selection (FMListModel *model,
                                                      GtkTreePath *path,
                                                      FMDirectoryView *view);
+static void     sort_column_changed_callback (GtkTreeSortable *sortable, FMDirectoryView *view);
 
 static void     fm_directory_view_cancel_thumbnailing        (FMDirectoryView *view);
 static void     fm_directory_view_schedule_thumbnail_timeout (FMDirectoryView *view);
@@ -414,6 +415,8 @@ fm_directory_view_init (FMDirectoryView *view)
     /* setup the list model */
     g_signal_connect (view->model, "row-deleted", G_CALLBACK (fm_directory_view_row_deleted), view);
     g_signal_connect_after (view->model, "row-deleted", G_CALLBACK (fm_directory_view_restore_selection), view);
+    
+    g_signal_connect (view->model, "sort_column_changed", G_CALLBACK (sort_column_changed_callback), view);
 
     /* connect to size allocation signals for generating thumbnail requests */
     g_signal_connect_after (G_OBJECT (view), "size-allocate",
@@ -2142,6 +2145,50 @@ fm_directory_view_restore_selection (FMListModel *model, GtkTreePath *path, FMDi
     }
 }
 
+static void
+set_metadata_callback (GObject *source_object, GAsyncResult *result, gpointer callback_data)
+{
+    GError *error;
+    gboolean res;
+
+    error = NULL;
+    res = g_file_set_attributes_finish (G_FILE (source_object), result, NULL, &error);
+
+	if (error != NULL) {
+        g_critical ("%s error, %s", G_STRFUNC, error->message);
+		g_error_free (error);
+	}
+}
+
+static void
+sort_column_changed_callback (GtkTreeSortable *sortable, FMDirectoryView *view)
+{
+    gint sort_column_id;
+    GtkSortType sort_order;
+    GFileInfo *info;
+    GOFDirectoryAsync *current_dir;
+    GFile *location;
+
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
+    gtk_tree_sortable_get_sort_column_id (sortable, &sort_column_id, &sort_order);
+    //g_message ("%s %d %d", G_STRFUNC, sort_column_id, sort_order);
+
+    info = g_file_info_new ();
+    g_file_info_set_attribute_string (info, "metadata::marlin-sort-column-id", fm_list_model_get_string_from_column_id (sort_column_id));
+    g_file_info_set_attribute_string (info, "metadata::marlin-sort-reversed", (sort_order == GTK_SORT_DESCENDING) ? "true" : "false");
+
+    current_dir = fm_directory_view_get_current_directory (view);
+    current_dir->file->sort_column_id = sort_column_id;
+    current_dir->file->sort_order = sort_order;
+    location = g_object_ref (current_dir->location);
+    g_file_set_attributes_async (location, info, 0, G_PRIORITY_DEFAULT, NULL, 
+                                 set_metadata_callback, NULL);
+    g_object_unref (location);
+    g_object_unref (info);
+}
+
+
 /* Thumbnails fonctions */
 
 static void
@@ -2602,28 +2649,34 @@ fm_directory_view_set_property (GObject         *object,
                                 const GValue    *value,
                                 GParamSpec      *pspec)
 {
-    FMDirectoryView *directory_view;
+    FMDirectoryView *view;
     GOFWindowSlot *slot;
     GtkWidget *window;
 
-    directory_view = FM_DIRECTORY_VIEW (object);
+    view = FM_DIRECTORY_VIEW (object);
 
     switch (prop_id)  {
     case PROP_WINDOW_SLOT:
-        g_assert (directory_view->details->slot == NULL);
+        g_assert (view->details->slot == NULL);
 
         slot = GOF_WINDOW_SLOT (g_value_get_object (value));
         window = marlin_view_view_container_get_window (MARLIN_VIEW_VIEW_CONTAINER(slot->ctab));
 
-        directory_view->details->slot = g_object_ref(slot);
-        directory_view->details->window = window;
+        view->details->slot = g_object_ref(slot);
+        view->details->window = window;
 
-        fm_directory_view_connect_directory_handlers (directory_view, slot->directory);
+        g_signal_handlers_block_by_func (view->model, sort_column_changed_callback, view);
+        gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (view->model), 
+                                              slot->directory->file->sort_column_id, 
+                                              slot->directory->file->sort_order);
+        g_signal_handlers_unblock_by_func (view->model, sort_column_changed_callback, view);
 
-        g_signal_connect_object (directory_view->details->slot, "active", 
-                                 G_CALLBACK (slot_active), directory_view, 0);
-        g_signal_connect_object (directory_view->details->slot, "inactive", 
-                                 G_CALLBACK (slot_inactive), directory_view, 0);
+        fm_directory_view_connect_directory_handlers (view, slot->directory);
+
+        g_signal_connect_object (view->details->slot, "active", 
+                                 G_CALLBACK (slot_active), view, 0);
+        g_signal_connect_object (view->details->slot, "inactive", 
+                                 G_CALLBACK (slot_inactive), view, 0);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);

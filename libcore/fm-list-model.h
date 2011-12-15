@@ -118,4 +118,7 @@ void            fm_list_model_unload_subdirectory (FMListModel *model, GtkTreeIt
 /*void              fm_list_model_subdirectory_done_loading (FMListModel       *model,
   NautilusDirectory *directory);*/
 
+const gchar     *fm_list_model_get_string_from_column_id (gint id);
+gint            fm_list_model_get_column_id_from_string (const gchar *colstr);
+
 #endif /* FM_LIST_MODEL_H */

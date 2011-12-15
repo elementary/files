@@ -109,6 +109,8 @@ namespace GOF {
         public signal void info_available ();
         public signal void icon_changed ();
 
+        public const string GIO_DEFAULT_ATTRIBUTES;
+
         public File(GLib.File location, GLib.File dir);
         public static File get(GLib.File location);
         public static File cache_lookup (GLib.File file);
@@ -154,6 +156,7 @@ namespace GOF {
 
         public void update ();
         public void update_icon (int size);
+        public void query_update ();
         public bool can_set_owner ();
         public bool can_set_group ();
         public bool can_set_permissions ();

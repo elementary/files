@@ -55,15 +55,13 @@ public class GOF.Directory.Async : Object
 
     private uint idle_consume_changes_id = 0;
 
-    private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*";
-
     private unowned string gio_attrs {
         get {
             var scheme = location.get_uri_scheme ();
             if (scheme == "network" || scheme == "computer" || scheme == "smb")
                 return "*";
             else
-                return gio_default_attributes;
+                return GOF.File.GIO_DEFAULT_ATTRIBUTES;
         }
     }
 
@@ -74,7 +72,9 @@ public class GOF.Directory.Async : Object
         file.exists = true;
         cancellable = new Cancellable ();
         
-        query_info_async (file, file_info_available);
+        //query_info_async (file, file_info_available);
+        file.query_update ();
+        file.info_available ();
 
         if (directory_cache != null)
            directory_cache.insert (location, this);

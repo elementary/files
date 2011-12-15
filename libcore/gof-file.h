@@ -113,6 +113,10 @@ struct _GOFFile {
     guint           flags;
     GList           *emblems_list;
     gboolean        is_gone;
+
+    /* directory view settings */
+    gint            sort_column_id;
+    GtkSortType     sort_order;
 };
 
 struct _GOFFileClass {
@@ -131,7 +135,7 @@ struct _GOFFileClass {
 "standard::type,standard::is-hidden,standard::name,standard::display-name,standard::edit-name,standard::copy-name,standard::fast-content-type,standard::size,standard::allocated-size,access::*,mountable::*,time::*,unix::*,owner::*,selinux::*,thumbnail::*,id::filesystem,trash::orig-path,trash::deletion-date,metadata::*"
 */
 
-#define GOF_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*"
+#define GOF_FILE_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed"
 
 typedef enum {
 	GOF_FILE_ICON_FLAGS_NONE = 0,

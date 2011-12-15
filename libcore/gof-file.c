@@ -240,6 +240,14 @@ void    gof_file_update (GOFFile *file)
     file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
     file->modified = g_file_info_get_attribute_uint64 (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
+    /* metadata */
+    if (file->is_directory) {
+        if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-column-id")) 
+            file->sort_column_id = fm_list_model_get_column_id_from_string (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-column-id"));
+        if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-reversed")) 
+            file->sort_order = !g_strcmp0 (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-reversed"), "true") ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING;
+    }
+
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON))
         file->icon = (GIcon *) g_file_info_get_attribute_object (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON);
 
@@ -551,7 +559,7 @@ gboolean gof_file_query_info (GOFFile *file)
     GError *err = NULL;
 
     //printf ("!!!!!!!!!!!!file_query_info %s\n", g_file_get_uri (file->location));
-    file->info = g_file_query_info (file->location, GOF_GIO_DEFAULT_ATTRIBUTES,
+    file->info = g_file_query_info (file->location, GOF_FILE_GIO_DEFAULT_ATTRIBUTES,
                                     0, NULL, &err);
     if (err != NULL) {
         if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED) {
@@ -657,6 +665,9 @@ static void gof_file_init (GOFFile *file) {
     
     file->flags = 0;
     file->pix_size = -1;
+    
+    file->sort_column_id = FM_LIST_MODEL_FILENAME;
+    file->sort_order = GTK_SORT_ASCENDING;
 }
 
 static void gof_file_finalize (GObject* obj) {
