@@ -82,7 +82,7 @@
       </description>
     </key>
     <key name="default-viewmode" enum="viewmode">
-      <default>'list'</default>
+      <default>'icon'</default>
       <summary>Default viewmode when browsing</summary>
       <description>
         The default viewmode to be used when opening a new tab or window
