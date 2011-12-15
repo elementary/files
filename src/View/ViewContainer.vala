@@ -116,7 +116,7 @@ namespace Marlin.View {
         }
 
         private void connect_available_info() {
-            file_info_callback = slot.directory.file.info_available.connect((gof) => {
+            //file_info_callback = slot.directory.file.info_available.connect((gof) => {
                 if (slot.location.get_path () == Environment.get_home_dir ())
                     tab_name = _("Home");
                 else if (slot.location.get_path () == "/")
@@ -128,8 +128,8 @@ namespace Marlin.View {
                     window.loading_uri (slot.directory.file.uri, window.sidebar);
                 }
                 
-                Source.remove((uint) file_info_callback);
-            });
+                /*Source.remove((uint) file_info_callback);
+            });*/
         }
 
         public void directory_done_loading () {
