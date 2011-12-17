@@ -10615,17 +10615,13 @@ exo_icon_view_ensure_interactive_directory (ExoIconView *icon_view)
 			    GDK_WINDOW_TYPE_HINT_UTILITY);
   gtk_window_set_modal (GTK_WINDOW (icon_view->priv->search_window), TRUE);
   g_signal_connect (icon_view->priv->search_window, "delete-event",
-		    G_CALLBACK (exo_icon_view_search_delete_event),
-		    icon_view);
+		    G_CALLBACK (exo_icon_view_search_delete_event), icon_view);
   g_signal_connect (icon_view->priv->search_window, "key-press-event",
-		    G_CALLBACK (exo_icon_view_search_key_press_event),
-		    icon_view);
+		    G_CALLBACK (exo_icon_view_search_key_press_event), icon_view);
   g_signal_connect (icon_view->priv->search_window, "button-press-event",
-		    G_CALLBACK (exo_icon_view_search_button_press_event),
-		    icon_view);
+		    G_CALLBACK (exo_icon_view_search_button_press_event), icon_view);
   g_signal_connect (icon_view->priv->search_window, "scroll-event",
-		    G_CALLBACK (exo_icon_view_search_scroll_event),
-		    icon_view);
+		    G_CALLBACK (exo_icon_view_search_scroll_event), icon_view);
 
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_ETCHED_IN);
@@ -10900,14 +10896,22 @@ exo_icon_view_search_scroll_event (GtkWidget *widget,
 
 static gboolean
 exo_icon_view_search_key_press_event (GtkWidget *widget,
-				      GdkEventKey *event,
-				      ExoIconView *icon_view)
+                                      GdkEventKey *event,
+                                      ExoIconView *icon_view)
 {
   gboolean retval = FALSE;
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (EXO_IS_ICON_VIEW (icon_view), FALSE);
 
+  /* consume left right keys when search entry don't have any focus 
+     this remove the annoying error bell */
+  if (!gtk_widget_has_focus (icon_view->priv->search_entry)
+      && (event->keyval == GDK_KEY_Left || event->keyval == GDK_KEY_KP_Left
+          || event->keyval == GDK_KEY_Right || event->keyval == GDK_KEY_KP_Right)) {
+      return TRUE;
+  }
+  
   /* close window and cancel the search */
   if (!icon_view->priv->search_custom_entry_set
       && (event->keyval == GDK_KEY_Escape ||
