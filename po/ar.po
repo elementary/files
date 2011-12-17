@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-14 22:03+0000\n"
+"PO-Revision-Date: 2011-12-16 22:20+0000\n"
 "Last-Translator: Ibrahim Saed <ibraheem5000@hotmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2011-12-15 05:54+0000\n"
-"X-Generator: Launchpad (build 14487)\n"
+"X-Launchpad-Export-Date: 2011-12-17 05:35+0000\n"
+"X-Generator: Launchpad (build 14525)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -675,8 +675,8 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"الدمج سيسأل التأكيد قبل استبدال أي ملفات في المجلد تتعارض مع الملفات الجاري "
-"نقلها."
+"الدمج سيطلب التأكيد قبل استبدال أي ملفات في المجلد تتعارض مع الملفات الجاري "
+"نسخها."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
@@ -964,12 +964,12 @@ msgstr "الوصلة %'d إلى %s"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:624
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:632
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (%I'd"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1383
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
@@ -1183,309 +1183,357 @@ msgstr[1] ""
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "يُحضر لنقل %'d ملف إلى المهملات"
+msgstr[1] "يُحضر لنقل ملف واحد إلى المهملات"
+msgstr[2] "يُحضر لنقل ملفين إلى المهملات"
+msgstr[3] "يُحضر لنقل %'d ملفات إلى المهملات"
+msgstr[4] "يُحضر لنقل %'d ملفاً إلى المهملات"
+msgstr[5] "يُحضر لنقل %'d ملف إلى المهملات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2554
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3474
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3600
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3645
 msgid "Error while copying."
-msgstr ""
+msgstr "خطأ أثناء النسخ."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2556
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3598
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3643
 msgid "Error while moving."
-msgstr ""
+msgstr "خطأ أثناء النقل."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2560
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "حدث خطأ أثناء نقل الملفات إلى المهملات."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2614
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
+"لا يمكن التعامل مع الملفات الموجودة بالمجلد \"%B\" لأنك لا تملك التصاريح "
+"الكافية لقراءتها ."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2653
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
+"لا يمكن التعامل مع المجلد \"%B\" لأنك لا تملك التصاريح الكافية لقراءته."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2730
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
+"لا يمكن التعامل مع الملف \"%B\" لأنك لا تملك التصاريح الكافية لقراءته."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2733
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "حدث خطأ أثناء جلب معلومات عن \"%B\"."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2833
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2875
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2908
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2938
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "خطأ أثناء النسخ إلى \"%B\"."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2837
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "لا تملك الصلاحيات الكافية للوصول إلى المجلد المقصود."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2839
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "حدث خطأ في جلب معلومات عن الوجهة."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2876
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "الوجهة ليست مجلدا."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2909
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr ""
+msgstr "لا توجد مساحة كافية في الوجهة. حاول إزالة ملفات لإفراغ مساحة."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2911
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "يتوفر %S، لكن %S مطلوب."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2939
 msgid "The destination is read-only."
-msgstr ""
+msgstr "الوِجهة قابلة للقراءة فقط."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3000
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "يجري نقل \"%B\" إلى \"%B\""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3001
 msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+msgstr "يُنسخ \"%B\" إلى \"%B\""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3005
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "يُنسخ \"%B\" مرة أخرى"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3009
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "يُنقل %I'd ملف (في \"%B\") إلى \"%B\""
+msgstr[1] "يُنقل ملف واحد (في \"%B\") إلى \"%B\""
+msgstr[2] "يُنقل ملفين (في \"%B\") إلى \"%B\""
+msgstr[3] "يُنقل %I'd ملفات (في \"%B\") إلى \"%B\""
+msgstr[4] "يُنقل %I'd ملفاً (في \"%B\") إلى \"%B\""
+msgstr[5] "يُنقل %I'd ملف (في \"%B\") إلى \"%B\""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3012
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "يُنسخ %I'd ملف (في \"%B\") إلى \"%B\""
+msgstr[1] "يُنسخ ملف واحد (في \"%B\") إلى \"%B\""
+msgstr[2] "يُنسخ ملفين (في \"%B\") إلى \"%B\""
+msgstr[3] "يُنسخ %I'd ملفات (في \"%B\") إلى \"%B\""
+msgstr[4] "يُنسخ %I'd ملفاً (في \"%B\") إلى \"%B\""
+msgstr[5] "يُنسخ %I'd ملف (في \"%B\") إلى \"%B\""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3019
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "يُضاعف %I'd ملف (في \"%B\")"
+msgstr[1] "يُضاعف ملف واحد (في \"%B\")"
+msgstr[2] "يُضاعف ملفين (في \"%B\")"
+msgstr[3] "يُضاعف %I'd ملفات (في \"%B\")"
+msgstr[4] "يُضاعف %I'd ملفاً (في \"%B\")"
+msgstr[5] "يُضاعف %I'd ملف (في \"%B\")"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3028
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "يُنقل %I'd ملف إلى \"%B\""
+msgstr[1] "يُنقل ملف واحد إلى \"%B\""
+msgstr[2] "يُنقل ملفين إلى \"%B\""
+msgstr[3] "يُنقل %I'd ملفات  إلى \"%B\""
+msgstr[4] "يُنقل %I'd ملفاً إلى \"%B\""
+msgstr[5] "يُنقل %I'd ملف إلى \"%B\""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3032
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "يُنسخ %I'd ملف إلى \"%B\""
+msgstr[1] "يُنسخ ملف واحد إلى \"%B\""
+msgstr[2] "يُنسخ ملفين إلى \"%B\""
+msgstr[3] "يُنسخ %I'd ملفات إلى \"%B\""
+msgstr[4] "يُنسخ %I'd ملفاً إلى \"%B\""
+msgstr[5] "يُنسخ %I'd ملف إلى \"%B\""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3037
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "يُضاعف %'d ملف"
+msgstr[1] "يُضاعف ملف واحد"
+msgstr[2] "يُضاعف ملفين"
+msgstr[3] "يُضاعف %I'd ملفات"
+msgstr[4] "يُضاعف %I'd ملفاً"
+msgstr[5] "يُضاعف %I'd ملف"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3088
 #, c-format
 msgid "%S of %S"
-msgstr ""
+msgstr "%S من %S"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3099
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%S من %S — تبقى %T (%S/ثانية)"
+msgstr[1] "%S من %S — تبقى %T (%S/ثانية)"
+msgstr[2] "%S من %S — تبقى %T (%S/ثانية)"
+msgstr[3] "%S من %S — تبقى %T (%S/ثانية)"
+msgstr[4] "%S من %S — تبقى %T (%S/ثانية)"
+msgstr[5] "%S من %S — تبقى %T (%S/ثانية)"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3478
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
+"لا يمكن نسخ المجلد \"%B\" لأنك لا تملك الصلاحيات الكافية لإنشائه في الوجهة "
+"المقصودة."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3481
 msgid "There was an error creating the folder \"%B\"."
-msgstr ""
+msgstr "حدث خطأ أثناء إنشاء المجلد \"%B\"."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3605
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
+"لا يمكن نسخ الملفات الموجودة بالمجلد \"%B\" لأنك لا تملك الصلاحيات الكافية "
+"لقراءتها."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3650
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "لا يمكن نسخ المجلد \"%B\" لأنك لا تملك الصلاحيات الكافية لقراءته."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3695
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4392
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4966
 msgid "Error while moving \"%B\"."
-msgstr ""
+msgstr "خطأ أثناء نقل \"%B\" ."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3696
 msgid "Could not remove the source folder."
-msgstr ""
+msgstr "تعذر حذف المجلد المصدر."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3781
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3822
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4394
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4465
 msgid "Error while copying \"%B\"."
-msgstr ""
+msgstr "خطأ أثناء نسخ \"%B\"."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3782
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr ""
+msgstr "لا يمكن إزالة الملفات من المجلد %F."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3823
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr ""
+msgstr "تعذّر إزالة الملف %F."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4152
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4810
 msgid "You cannot move a folder into itself."
-msgstr ""
+msgstr "لا يمكنك نقل مجلد إلى نفسه."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4153
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4811
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "لا يمكنك نسخ مجلد إلى نفسه."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4154
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4812
 msgid "The destination folder is inside the source folder."
-msgstr ""
+msgstr "المجلد الوِجهة داخل المجلد المصدر."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4185
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "لا يمكنك نقل مجلد إلى نفسه."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4186
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "لا يمكنك نسخ مجلد إلى نفسه."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4187
 msgid "The source file would be overwritten by the destination."
-msgstr ""
+msgstr "سيُستبدَل الملف المصدر بالملف الهدف."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4396
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
+msgstr "تعذّر إزالة الملف الموجود فعلا بنفس الاسم في %F."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4466
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr ""
+msgstr "حدث خطأ أثناء نسخ الملف إلى %F."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4694
 msgid "Copying Files"
-msgstr ""
+msgstr "نسخ الملفات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4710
 msgid "Preparing to move to \"%B\""
-msgstr ""
+msgstr "يُحضر للنقل إلى \"%B\""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4722
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "يُحضر لنقل %I'd ملف"
+msgstr[1] "يُحضر لنقل ملف واحد"
+msgstr[2] "يُحضر لنقل ملفين"
+msgstr[3] "يُحضر لنقل %I'd ملفات"
+msgstr[4] "يُحضر لنقل %I'd ملفاً"
+msgstr[5] "يُحضر لنقل %I'd ملف"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4967
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr ""
+msgstr "حدث خطأ عند نقل الملف إلى %F."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5230
 msgid "Moving Files"
-msgstr ""
+msgstr "نقل الملفات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5246
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "تُنشئ وصلات في \"%B\""
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5257
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "يُنشئ وصلات إلى %I'd ملف"
+msgstr[1] "يُنشئ وصلات إلى ملف واحد"
+msgstr[2] "يُنشئ وصلات إلى ملفين"
+msgstr[3] "يُنشئ وصلات إلى %I'd ملفات"
+msgstr[4] "يُنشئ وصلات إلى %I'd ملفاً"
+msgstr[5] "يُنشئ وصلات إلى %I'd ملف"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5387
 msgid "Error while creating link to %B."
-msgstr ""
+msgstr "خطأ أثناء إنشاء وصلة إلى %B."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5389
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "الوصلات الرمزية مدعومة في أنظمة الملفات المحلية فقط"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5392
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "الوِجهة لا تدعم الوصلات الرمزية."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5395
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr ""
+msgstr "حدث خطأ عند إنشاء الوصلة الرمزية في %F."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5698
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5701
 msgid "Setting permissions"
-msgstr ""
+msgstr "إعداد الصلاحيات"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5943
 msgid "untitled folder"
-msgstr ""
+msgstr "مجلد دون اسم"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5951
 msgid "new file"
-msgstr ""
+msgstr "ملف جديد"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6101
 msgid "Error while creating directory %B."
-msgstr ""
+msgstr "خطأ أثناء إنشاء المجلد %B."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6103
 msgid "Error while creating file %B."
-msgstr ""
+msgstr "خطأ أثناء إنشاء الملف %B."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6105
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr ""
+msgstr "حدث خطأ عند إنشاء المجلد في %F."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6401
 msgid "Emptying Trash"
-msgstr ""
+msgstr "إفراغ المهملات"
 
 #: /media/dev/elementary/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
@@ -1494,4 +1542,4 @@ msgstr " (يونيكود غير صحيح)"
 #: /media/dev/elementary/marlin/po/../libwidgets/LocationBar.vala:718
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "إذهب إلى %s"
