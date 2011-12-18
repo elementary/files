@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-16 22:20+0000\n"
+"PO-Revision-Date: 2011-12-17 07:58+0000\n"
 "Last-Translator: Ibrahim Saed <ibraheem5000@hotmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2011-12-17 05:35+0000\n"
+"X-Launchpad-Export-Date: 2011-12-18 04:43+0000\n"
 "X-Generator: Launchpad (build 14525)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
@@ -1162,8 +1162,12 @@ msgstr "تعذّر وصْل %s"
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
+msgstr[0] "يُحضر لنسخ %'d ملف (%S)"
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] "يُحضر لنسخ %'d ملفات (%S)"
+msgstr[4] "يُحضر لنسخ %'d ملفاً (%S)"
+msgstr[5] "يُحضر لنسخ %'d ملف (%S)"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2499
 #, c-format
