@@ -2917,6 +2917,7 @@ fm_directory_view_freeze_updates (FMDirectoryView *view)
     dir_action_set_sensitive (view, "Copy", FALSE);
     dir_action_set_sensitive (view, "Paste", FALSE);
     dir_action_set_sensitive (view, "Paste Into Folder", FALSE);
+    dir_action_set_sensitive (view, "Select All", FALSE);
 
     /* TODO remove this blocker */
     /* block thumbnails request on size allocate */
