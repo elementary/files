@@ -20,6 +20,7 @@
 #include "gof-window-slot.h"
 #include "fm-icon-view.h"
 #include "fm-list-view.h"
+#include "fm-compact-view.h"
 #include "fm-columns-view.h"
 #include "marlin-view-window.h"
 #include "marlin-global-preferences.h"
@@ -182,6 +183,21 @@ gof_window_slot_make_list_view (GOFWindowSlot *slot)
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_LIST_VIEW,
                                                "window-slot", slot, NULL));
     gtk_box_pack_start (GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
+    marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->content_box);
+    gof_directory_async_load (slot->directory);
+}
+
+void
+gof_window_slot_make_compact_view (GOFWindowSlot *slot)
+{
+    if(slot->view_box != NULL)
+    {
+        gtk_widget_destroy(slot->view_box);
+    }
+    slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COMPACT_VIEW,
+                                               "window-slot", slot, NULL));
+    gtk_box_pack_start(GTK_BOX (slot->content_box), slot->view_box, TRUE, TRUE, 0);
+    
     marlin_view_view_container_set_content ((MarlinViewViewContainer *) slot->ctab, slot->content_box);
     gof_directory_async_load (slot->directory);
 }

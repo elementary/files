@@ -62,6 +62,7 @@ struct FMDirectoryView {
     FMListModel             *model;
     GtkCellRenderer         *icon_renderer;
     GtkCellRenderer         *name_renderer;
+    MarlinZoomLevel         zoom_level;
 
     FMDirectoryViewDetails  *details;
 };
@@ -391,6 +392,7 @@ struct FMDirectoryViewClass {
     gboolean     (*get_visible_range)   (FMDirectoryView *view, GtkTreePath **start_path,
                                          GtkTreePath **end_path);
     void         (*zoom_normal)         (FMDirectoryView *view);
+    void         (*zoom_level_changed)  (FMDirectoryView *view);
 };
 
 /* GObject support */

@@ -17,45 +17,35 @@
  * Author: ammonkey <am.monkeyd@gmail.com>
  */
 
-#ifndef FM_ICON_VIEW_H
-#define FM_ICON_VIEW_H
+#ifndef __FM_ICON_VIEW_H__
+#define __FM_ICON_VIEW_H__
 
-#include <gtk/gtk.h>
-#include "exo-icon-view.h"
-#include "fm-list-model.h"
-#include "fm-directory-view.h"
+#include <fm-abstract-icon-view.h>
 
-G_BEGIN_DECLS
+G_BEGIN_DECLS;
 
-#define FM_TYPE_ICON_VIEW fm_icon_view_get_type()
-#define FM_ICON_VIEW(obj) \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), FM_TYPE_ICON_VIEW, FMIconView))
-#define FM_ICON_VIEW_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), FM_TYPE_ICON_VIEW, FMIconViewClass))
-#define FM_IS_ICON_VIEW(obj) \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), FM_TYPE_ICON_VIEW))
-#define FM_IS_ICON_VIEW_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), FM_TYPE_ICON_VIEW))
-#define FM_ICON_VIEW_GET_CLASS(obj) \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), FM_TYPE_ICON_VIEW, FMIconViewClass))
+typedef struct FMIconViewClass FMIconViewClass;
+typedef struct FMIconView      FMIconView;
 
-typedef struct FMIconViewDetails FMIconViewDetails;
+#define FM_TYPE_ICON_VIEW             (fm_icon_view_get_type ())
+#define FM_ICON_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), FM_TYPE_ICON_VIEW, FMIconView))
+#define FM_ICON_VIEW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), FM_TYPE_ICON_VIEW, FMIconViewClass))
+#define FM_IS_ICON_VIEW(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), FM_TYPE_ICON_VIEW))
+#define FM_IS_ICON_VIEW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((obj), FM_TYPE_ICON_VIEW))
+#define FM_ICON_VIEW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), FM_TYPE_ICON_VIEW, FMIconViewClass))
 
-typedef struct {
-    FMDirectoryViewClass parent_instance;
-    ExoIconView         *icons;
-    FMListModel         *model;
-    MarlinZoomLevel     zoom_level;
+struct FMIconView
+{
+    FMAbstractIconView parent;
+};
 
-    FMIconViewDetails   *details;
-} FMIconView;
+struct FMIconViewClass
+{
+    FMAbstractIconViewClass parent_class;
+};
 
-typedef struct {
-    FMDirectoryViewClass parent_class;
-} FMIconViewClass;
+GType fm_icon_view_get_type (void) G_GNUC_CONST;
 
-GType fm_icon_view_get_type (void);
+G_END_DECLS;
 
-G_END_DECLS
-
-#endif /* FM_ICON_VIEW_H */
+#endif /* !__FM_ICON_VIEW_H__ */

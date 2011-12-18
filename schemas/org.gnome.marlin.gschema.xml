@@ -3,7 +3,8 @@
   <enum id="viewmode">
     <value value="0" nick="icon"/>
     <value value="1" nick="list"/>
-    <value value="2" nick="miller_columns"/>
+    <value value="2" nick="compact"/>
+    <value value="3" nick="miller_columns"/>
   </enum>
   <enum id="org.gnome.marlin.ZoomLevel">
     <value value="0" nick="smallest"/>
@@ -172,6 +173,19 @@
       <default>'smallest'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the list view.</description>
+    </key>
+  </schema>
+
+  <schema path="/apps/marlin/compact-view/" id="org.gnome.marlin.compact-view">
+    <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
+      <default>'smallest'</default>
+      <summary>icon default zoom level</summary>
+      <description>Default Zoom level used by the compact view.</description>
+    </key>
+    <key name="zoom-level" enum="org.gnome.marlin.ZoomLevel">
+      <default>'smallest'</default>
+      <summary>icon zoom level</summary>
+      <description>Zoom level used by the compact view.</description>
     </key>
   </schema>
 

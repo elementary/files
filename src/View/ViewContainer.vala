@@ -157,6 +157,11 @@ namespace Marlin.View {
                 connect_available_info();
                 slot.make_list_view();
                 break;
+            case ViewMode.COMPACT:
+                slot = new GOF.Window.Slot(location, this);
+                connect_available_info();
+                slot.make_compact_view();
+                break;
             case ViewMode.MILLER:
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;

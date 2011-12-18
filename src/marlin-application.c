@@ -562,6 +562,7 @@ init_schemas (void)
     settings = g_settings_new ("org.gnome.marlin.preferences");
     marlin_icon_view_settings = g_settings_new ("org.gnome.marlin.icon-view");
     marlin_list_view_settings = g_settings_new ("org.gnome.marlin.list-view");
+    marlin_compact_view_settings = g_settings_new ("org.gnome.marlin.compact-view");
     marlin_column_view_settings = g_settings_new ("org.gnome.marlin.column-view");
 }
 

@@ -74,6 +74,7 @@ enum
 {
     PROP_0,
     PROP_WINDOW_SLOT,
+    PROP_ZOOM_LEVEL
 };
 
 
@@ -2636,8 +2637,13 @@ fm_directory_view_get_property (GObject         *object,
                                 GValue          *value,
                                 GParamSpec      *pspec)
 {
+    FMDirectoryView *view = FM_DIRECTORY_VIEW (object);
+
     switch (prop_id)
     {
+    case PROP_ZOOM_LEVEL:
+        g_value_set_enum (value, view->zoom_level);
+        break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
@@ -2678,6 +2684,11 @@ fm_directory_view_set_property (GObject         *object,
         g_signal_connect_object (view->details->slot, "inactive", 
                                  G_CALLBACK (slot_inactive), view, 0);
         break;
+    case PROP_ZOOM_LEVEL:
+        view->zoom_level = g_value_get_enum (value);
+        (*FM_DIRECTORY_VIEW_GET_CLASS (view)->zoom_level_changed) (view);
+        break;
+
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
@@ -2750,6 +2761,13 @@ fm_directory_view_class_init (FMDirectoryViewClass *klass)
                                                           GOF_TYPE_WINDOW_SLOT,
                                                           G_PARAM_WRITABLE |
                                                           G_PARAM_CONSTRUCT_ONLY));
+
+    g_object_class_install_property (G_OBJECT_CLASS (klass),
+                                     PROP_ZOOM_LEVEL,
+                                     g_param_spec_enum ("zoom-level", "zoom-level", "zoom-level",
+                                                        MARLIN_TYPE_ZOOM_LEVEL,
+                                                        MARLIN_ZOOM_LEVEL_NORMAL,
+                                                        G_PARAM_READWRITE));
 
     signals[TRASH] =
         g_signal_new ("trash",

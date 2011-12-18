@@ -32,11 +32,11 @@
 #include "eel-gtk-extensions.h"
 #include "marlin-tags.h"
 
-enum
+/*enum
 {
     PROP_0,
     PROP_ZOOM_LEVEL,
-};
+};*/
 
 struct FMListViewDetails {
     GList       *selection;
@@ -908,20 +908,20 @@ fm_list_view_init (FMListView *view)
 }
 
 static void
-fm_list_view_zoom_level_changed (FMListView *view)
+fm_list_view_zoom_level_changed (FMDirectoryView *view)
 {
-    g_debug ("%s", G_STRFUNC);
     /* set the new "size" for the icon renderer */
-    g_object_set (G_OBJECT (FM_DIRECTORY_VIEW (view)->icon_renderer), "size", marlin_zoom_level_to_icon_size (view->zoom_level), NULL);
+    g_object_set (G_OBJECT (view->icon_renderer), "size", marlin_zoom_level_to_icon_size (view->zoom_level), NULL);
     gint xpad, ypad;
 
-    gtk_cell_renderer_get_padding (FM_DIRECTORY_VIEW (view)->icon_renderer, &xpad, &ypad);
-    gtk_cell_renderer_set_fixed_size (FM_DIRECTORY_VIEW (view)->icon_renderer, 
+    gtk_cell_renderer_get_padding (view->icon_renderer, &xpad, &ypad);
+    gtk_cell_renderer_set_fixed_size (view->icon_renderer, 
                                       marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * xpad,
                                       marlin_zoom_level_to_icon_size (view->zoom_level) + 2 * ypad);
-    gtk_tree_view_columns_autosize (view->tree);
+    gtk_tree_view_columns_autosize (FM_LIST_VIEW (view)->tree);
 }
 
+#if 0
 static void
 fm_list_view_get_property (GObject    *object,
                            guint       prop_id,
@@ -932,9 +932,6 @@ fm_list_view_get_property (GObject    *object,
 
     switch (prop_id)
     {
-    case PROP_ZOOM_LEVEL:
-        g_value_set_enum (value, view->zoom_level);
-        break;
 
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -952,16 +949,13 @@ fm_list_view_set_property (GObject      *object,
 
     switch (prop_id)
     {
-    case PROP_ZOOM_LEVEL:
-        view->zoom_level = g_value_get_enum (value);
-        fm_list_view_zoom_level_changed (view);
-        break;
 
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
         break;
     }   
 }
+#endif
 
 static void
 fm_list_view_class_init (FMListViewClass *klass)
@@ -970,8 +964,8 @@ fm_list_view_class_init (FMListViewClass *klass)
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
     object_class->finalize     = fm_list_view_finalize;
-    object_class->get_property = fm_list_view_get_property;
-    object_class->set_property = fm_list_view_set_property;
+    /*object_class->get_property = fm_list_view_get_property;
+    object_class->set_property = fm_list_view_set_property;*/
 
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
@@ -988,13 +982,6 @@ fm_list_view_class_init (FMListViewClass *klass)
     fm_directory_view_class->get_visible_range = fm_list_view_get_visible_range;
     fm_directory_view_class->start_renaming_file = fm_list_view_start_renaming_file;
     fm_directory_view_class->zoom_normal = fm_list_view_zoom_normal;
-
-    g_object_class_install_property (object_class,
-                                     PROP_ZOOM_LEVEL,
-                                     g_param_spec_enum ("zoom-level", "zoom-level", "zoom-level",
-                                                        MARLIN_TYPE_ZOOM_LEVEL,
-                                                        MARLIN_ZOOM_LEVEL_SMALLEST,
-                                                        G_PARAM_READWRITE));
-
+    fm_directory_view_class->zoom_level_changed = fm_list_view_zoom_level_changed;
 }
 

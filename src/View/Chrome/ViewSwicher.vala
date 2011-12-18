@@ -40,6 +40,9 @@ namespace Marlin.View.Chrome
                 case ViewMode.LIST:
                     target = list;
                     break;
+                case ViewMode.COMPACT:
+                    target = compact;
+                    break;
                 case ViewMode.MILLER:
                     target = miller;
                     break;
@@ -62,6 +65,7 @@ namespace Marlin.View.Chrome
 
         private Image icon;
         private Image list;
+        private Image compact;
         private Image miller;
 
         public ViewSwitcher (Gtk.ActionGroup action_group)
@@ -78,6 +82,8 @@ namespace Marlin.View.Chrome
                 switcher.append(icon);
                 list = new Image.from_pixbuf (dtheme.load_icon ("view-list-details-symbolic", 16, IconLookupFlags.GENERIC_FALLBACK));
                 switcher.append(list);
+                compact = new Image.from_pixbuf (dtheme.load_icon ("view-list-compact-symbolic", 16, IconLookupFlags.GENERIC_FALLBACK));
+                switcher.append(compact);
                 miller = new Image.from_pixbuf (dtheme.load_icon ("view-list-column-symbolic", 16, IconLookupFlags.GENERIC_FALLBACK));
                 switcher.append(miller);
             } catch (Error err) {
@@ -92,6 +98,9 @@ namespace Marlin.View.Chrome
                 //You cannot do a switch here, only for int and string
                 if (mode == list){
                     action = main_actions.get_action("view-as-detailed-list");
+                    action.activate();
+                } else if (mode == compact){
+                    action = main_actions.get_action("view-as-compact");
                     action.activate();
                 } else if (mode == miller){
                     action = main_actions.get_action("view-as-columns");

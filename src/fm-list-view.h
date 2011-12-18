@@ -44,7 +44,6 @@ typedef struct {
     FMDirectoryViewClass parent_instance;
     GtkTreeView         *tree;
     FMListModel         *model;
-    MarlinZoomLevel     zoom_level;
 
     FMListViewDetails   *details;
 } FMListView;

@@ -97,8 +97,10 @@ add_executable(marlin
     exo-icon-view.c
     exo-tree-view.c
     marlin-main.c
+    fm-abstract-icon-view.c
     fm-icon-view.c
     fm-list-view.c
+    fm-compact-view.c
     fm-columns-view.c
     marlin-toolbar-editor.c
     marlin-connect-server-dialog.c

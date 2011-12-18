@@ -3,6 +3,7 @@ namespace Marlin.View{
     public enum ViewMode{
         ICON,
         LIST,
+        COMPACT,
         MILLER
     }
 

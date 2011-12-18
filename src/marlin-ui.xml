@@ -77,6 +77,7 @@
             <separator/>
             <menuitem action="view-as-icons" />
             <menuitem action="view-as-detailed-list" />
+            <menuitem action="view-as-compact" />
             <menuitem action="view-as-columns" />
             <separator />
             <menuitem action="Next Tab" />

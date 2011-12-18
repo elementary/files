@@ -49,6 +49,9 @@ typedef struct _ExoIconView           ExoIconView;
 typedef struct _ExoIconViewClass      ExoIconViewClass;
 typedef struct _ExoIconViewPrivate    ExoIconViewPrivate;
 
+GType exo_icon_view_layout_mode_get_type (void) G_GNUC_CONST;
+#define EXO_TYPE_ICON_VIEW_LAYOUT_MODE (exo_icon_view_layout_mode_get_type())
+
 /**
  * ExoIconViewForeachFunc:
  * @icon_view: a #ExoIconView
@@ -109,6 +112,22 @@ typedef enum
     EXO_ICON_VIEW_DROP_ABOVE,
     EXO_ICON_VIEW_DROP_BELOW
 } ExoIconViewDropPosition;
+
+/**
+ * ExoIconViewLayoutMode:
+ * @EXO_ICON_VIEW_LAYOUT_ROWS : layout items in rows.
+ * @EXO_ICON_VIEW_LAYOUT_COLS : layout items in columns.
+ *
+ * Specifies the layouting mode of an #ExoIconView. @EXO_ICON_VIEW_LAYOUT_ROWS
+ * is the default, which lays out items vertically in rows from top to bottom.
+ * @EXO_ICON_VIEW_LAYOUT_COLS lays out items horizontally in columns from left
+ * to right.
+ **/
+typedef enum
+{
+    EXO_ICON_VIEW_LAYOUT_ROWS,
+    EXO_ICON_VIEW_LAYOUT_COLS
+} ExoIconViewLayoutMode;
 
 struct _ExoIconView
 {
@@ -204,6 +223,10 @@ void           exo_icon_view_selected_foreach   (ExoIconView            *icon_vi
 void           exo_icon_view_set_selection_mode (ExoIconView            *icon_view,
                                                  GtkSelectionMode        mode);
 GtkSelectionMode exo_icon_view_get_selection_mode (ExoIconView            *icon_view);
+ExoIconViewLayoutMode exo_icon_view_get_layout_mode     (const ExoIconView        *icon_view);
+void                  exo_icon_view_set_layout_mode     (ExoIconView              *icon_view,
+                                                         ExoIconViewLayoutMode     layout_mode);
+
 gboolean         exo_icon_view_get_single_click (ExoIconView *icon_view);
 void             exo_icon_view_set_single_click (ExoIconView *icon_view,
                                                  gboolean     single_click);

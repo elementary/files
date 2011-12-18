@@ -677,13 +677,16 @@ namespace Marlin.View {
 
         static const Gtk.RadioActionEntry view_radio_entries[] = {
             { "view-as-icons", null,
-              N_("Icon View"), "<control>1", null,
+              N_("Icon"), "<control>1", null,
               ViewMode.ICON },
             { "view-as-detailed-list", null,
-              N_("List View"), "<control>2", null,
+              N_("List"), "<control>2", null,
               ViewMode.LIST },
+            { "view-as-compact", null,
+              N_("Compact"), "<control>3", null,
+              ViewMode.COMPACT },
             { "view-as-columns", null,
-              N_("Columns View"), "<control>3", null,
+              N_("Columns"), "<control>4", null,
               ViewMode.MILLER }
         };
 
