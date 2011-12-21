@@ -28,8 +28,8 @@ namespace Marlin.View {
         public Gtk.Widget? content_item;
         public Gtk.Label label;
         private Marlin.View.Window window;
-        public GOF.Window.Slot? slot;
-        public Marlin.Window.Columns? mwcol;
+        public GOF.Window.Slot? slot = null;
+        public Marlin.Window.Columns? mwcol = null;
         Browser browser;
         public int view_mode = 0;
         private ulong file_info_callback;
@@ -153,11 +153,13 @@ namespace Marlin.View {
 
             switch (nview) {
             case ViewMode.LIST:
+                mwcol = null;
                 slot = new GOF.Window.Slot(location, this);
                 connect_available_info();
                 slot.make_list_view();
                 break;
             case ViewMode.COMPACT:
+                mwcol = null;
                 slot = new GOF.Window.Slot(location, this);
                 connect_available_info();
                 slot.make_compact_view();
@@ -169,6 +171,7 @@ namespace Marlin.View {
                 mwcol.make_view();
                 break;
             default:
+                mwcol = null;
                 slot = new GOF.Window.Slot(location, this);
                 connect_available_info();
                 slot.make_icon_view();
@@ -218,6 +221,13 @@ namespace Marlin.View {
 
         public void reload(){
             change_view(view_mode, null);
+        }
+
+        public GOF.Window.Slot? get_active_slot () {
+            if (mwcol != null)
+                return mwcol.active_slot;
+            else
+                return slot;
         }
 
         public void update_location_state(bool save_history)

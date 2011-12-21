@@ -246,8 +246,8 @@ namespace Marlin.View {
 
 
         public GOF.Window.Slot? get_active_slot() {
-            if (current_tab != null && current_tab.slot != null)
-                return current_tab.slot;
+            if (current_tab != null) 
+                return current_tab.get_active_slot ();
             return null;
         }
 
@@ -262,27 +262,32 @@ namespace Marlin.View {
                 return;
             }
             if (old_tab != null) {
-                old_tab.slot.inactive();
+                var old_slot = old_tab.get_active_slot ();
+                if (old_slot != null)
+                    old_slot.inactive ();
             }
 
-            if (current_tab != null && current_tab.slot != null) {
-                current_tab.slot.active();
-                current_tab.update_location_state(false);
-                /* update radio action view state */
-                update_action_radio_view(current_tab.view_mode);
-                /* sync selection */
-                if (current_tab.slot.view_box != null)
-                    ((FM.Directory.View) current_tab.slot.view_box).sync_selection();
-                /* sync ContextView */
-                current_tab.sync_contextview();
-                /* set window title to current title */
-                set_title(current_tab.tab_name);
-                /* sync sidebar selection */
-                loading_uri (current_tab.slot.directory.file.uri, sidebar);
+            if (current_tab != null) {
+                var cur_slot = current_tab.get_active_slot ();
+                if (cur_slot != null) {
+                    cur_slot.active();
+                    current_tab.update_location_state(false);
+                    /* update radio action view state */
+                    update_action_radio_view(current_tab.view_mode);
+                    /* sync ContextView */
+                    current_tab.sync_contextview();
+                    /* sync selection */
+                    if (cur_slot.view_box != null)
+                        ((FM.Directory.View) cur_slot.view_box).sync_selection();
+                    /* set window title to current title */
+                    set_title(current_tab.tab_name);
+                    /* sync sidebar selection */
+                    loading_uri (cur_slot.directory.file.uri, sidebar);
 
-                /* focus the main view */
-                //((FM.Directory.View) current_tab.slot.view_box).grab_focus();
-                current_tab.content.grab_focus();
+                    /* focus the main view */
+                    //((FM.Directory.View) current_tab.slot.view_box).grab_focus();
+                    //current_tab.content.grab_focus();
+                }
             }
         }
 

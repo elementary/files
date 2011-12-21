@@ -85,9 +85,6 @@ struct FMDirectoryViewDetails
     GtkWidget *window;
     GOFWindowSlot *slot;
 
-    /* whether we are in the active slot */
-    gboolean active;
-
     /* flag to indicate that no file updates should be dispatched to subclasses.
      * This is a workaround for bug #87701 that prevents the list view from
      * losing focus when the underlying GtkTreeView is updated.
@@ -549,10 +546,11 @@ fm_directory_view_finalize (GObject *object)
     g_object_unref (G_OBJECT (view->icon_renderer));
 
     /* release the context menu references */
-    gpointer old_menuitems = g_object_get_data(G_OBJECT (view->details->menu_selection), "other_selection");
-    g_list_free_full (old_menuitems, (GDestroyNotify) gtk_widget_destroy); 
-    g_object_set_data (G_OBJECT (view->details->menu_selection), "other_selection", NULL); 
-
+    if (view->details->menu_selection) {
+        gpointer old_menuitems = g_object_get_data(G_OBJECT (view->details->menu_selection), "other_selection");
+        g_list_free_full (old_menuitems, (GDestroyNotify) gtk_widget_destroy); 
+        g_object_set_data (G_OBJECT (view->details->menu_selection), "other_selection", NULL); 
+    }
 
     g_free (view->details->previewer);
     
@@ -2409,9 +2407,9 @@ fm_directory_view_parent_set (GtkWidget *widget,
               printf ("view_details slot %s\n", g_file_get_uri(view->details->slot->location));*/
             if (view->details->slot ==
                 MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot) {
+                //coltest
+                g_message ("%s > merge menus", G_STRFUNC);
                 fm_directory_view_merge_menus (view);
-                view->details->active = TRUE;
-                update_menus_empty_selection (view);
                 //schedule_update_menus (view);
             }
         }
@@ -2485,10 +2483,10 @@ fm_directory_view_grab_focus (GtkWidget *widget)
 static void
 slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 {
-    g_debug ("%s", G_STRFUNC);
-    /*g_assert (!view->details->active);*/
-    view->details->active = TRUE;
+    g_message ("%s %s", G_STRFUNC, slot->directory->file->uri);
 
+    //coltest
+    g_message ("%s > merge menus", G_STRFUNC);
     fm_directory_view_merge_menus (view);
     //schedule_update_menus (view);
 }
@@ -2496,10 +2494,6 @@ slot_active (GOFWindowSlot *slot, FMDirectoryView *view)
 static void
 slot_inactive (GOFWindowSlot *slot, FMDirectoryView *view)
 {
-    /*g_assert (view->details->active ||
-      gtk_widget_get_parent (GTK_WIDGET (view)) == NULL);*/
-    view->details->active = FALSE;
-
     fm_directory_view_unmerge_menus (view);
     //remove_update_menus_timeout_callback (view);
 }
@@ -2857,16 +2851,19 @@ fm_directory_view_clipboard_changed (FMDirectoryView *view)
 void
 fm_directory_view_set_active_slot (FMDirectoryView *view)
 {
+    g_warning ("%s %s %s", G_STRFUNC, 
+               view->details->slot->mwcols->active_slot->directory->file->uri,
+               view->details->slot->directory->file->uri
+               );
     if (!view->details->slot->mwcols)
         return;
     if (view->details->slot->mwcols->active_slot == view->details->slot)
         return;
 
     g_warning ("%s", G_STRFUNC);
-    g_signal_emit_by_name (view->details->slot->mwcols->active_slot, "inactive");
+    gof_window_slot_active (view->details->slot);
     /* make sure to grab focus as right click menus don't automaticly get it */
-    fm_directory_view_grab_focus (GTK_WIDGET (view));
-    fm_directory_view_merge_menus (FM_DIRECTORY_VIEW (view));
+    //fm_directory_view_grab_focus (GTK_WIDGET (view));
 }
 
 /**
@@ -3363,11 +3360,13 @@ fm_directory_view_real_merge_menus (FMDirectoryView *view)
         gtk_menu_shell_append (GTK_MENU_SHELL (view->details->menu_selection), item);
         gtk_widget_show (item);
 
+#if 0
         /* append insensitive label 'Set Color' */
         item = gtk_menu_item_new_with_label (_("Set Color:"));
         gtk_widget_set_sensitive (item, FALSE);
         gtk_menu_shell_append (GTK_MENU_SHELL (view->details->menu_selection), item);
         gtk_widget_show (item);
+#endif
 
         /* append menu color selection */
         item = GTK_WIDGET (marlin_view_chrome_color_widget_new (MARLIN_VIEW_WINDOW (view->details->window)));

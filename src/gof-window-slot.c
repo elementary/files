@@ -109,22 +109,21 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
 {
     gint current_slot_position = 0;
     gint i;
-    GList* mwcols_slot_tmp = slot->mwcols->slot;
-    slot->mwcols->active_slot = slot;
+    GList* list_slot = slot->mwcols->slot;
+    
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
     
     current_slot_position = g_list_index(slot->mwcols->slot, slot);
-    if(current_slot_position == -1)
-    {
-        g_warning("Can't find the slot you are viewing, this should *not* happen.");
-    }
-    else
-    {
-        slot->mwcols->slot = NULL;
-        for(i = 0; i <= current_slot_position; i++)
-        {
-            slot->mwcols->slot = g_list_append(slot->mwcols->slot, g_list_nth_data(mwcols_slot_tmp, i));
+    if(current_slot_position == -1) {
+        g_warning ("Can't find the slot you are viewing, this should *not* happen.");
+    } else {
+        GList *l = NULL;
+        for(i = 0; i <= current_slot_position; i++) {
+            l = g_list_append(l, list_slot->data);
+            list_slot = list_slot->next;
         }
+        g_list_free (slot->mwcols->slot);
+        slot->mwcols->slot = l;
     }
     
     marlin_window_columns_add (slot->mwcols, location);
@@ -133,7 +132,6 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
 void
 gof_window_columns_add_preview (GOFWindowSlot *slot, GtkWidget *context_view)
 {
-    slot->mwcols->active_slot = slot;
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
     gtk_container_add(GTK_CONTAINER(slot->colpane), context_view);
 }
@@ -217,6 +215,16 @@ gof_window_slot_make_column_view (GOFWindowSlot *slot)
     slot->view_box = GTK_WIDGET (g_object_new (FM_TYPE_COLUMNS_VIEW,
                                                "window-slot", slot, NULL));
     gof_directory_async_load (slot->directory);
+}
+
+
+void
+gof_window_slot_active (GOFWindowSlot *slot)
+{
+    g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
+
+    if (slot->mwcols)
+        marlin_window_columns_active_slot (slot->mwcols, slot);
 }
 
 void

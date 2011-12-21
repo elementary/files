@@ -401,7 +401,6 @@ void    fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryA
 void    fm_directory_view_remove_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory);
 void    fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location);
 void    fm_directory_view_column_add_preview (FMDirectoryView *dview, GList *selection);
-//void    fm_directory_view_set_active_slot (FMDirectoryView *dview);
 void    fm_directory_view_load_location (FMDirectoryView *directory_view, GFile *location);
 void    fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWindowOpenFlags flags);
 void    fm_directory_view_preview_selected_items (FMDirectoryView *view);

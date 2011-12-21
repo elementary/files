@@ -19,7 +19,6 @@
 
 #include "marlin-window-columns.h"
 #include <gdk/gdkkeysyms.h>
-//#include "fm-list-view.h"
 #include "fm-columns-view.h"
 #include "marlin-global-preferences.h"
 
@@ -39,28 +38,28 @@ hadj_changed (GtkAdjustment *hadj, gpointer user_data)
 
 /**
  * Handle key release events, like the left and right keys to change the
- * active column. It is a GObject callback.
+ * active column.
  **/
-static gboolean marlin_window_columns_key_pressed(GtkWidget* box, GdkEventKey* event, MarlinWindowColumns* mwcols)
+static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* event, MarlinWindowColumns* mwcols)
 {
     GOFWindowSlot* to_active = NULL;
     /* The active slot position in the GList where there are all the slots */
     int active_position = 0;
+
     switch(event->keyval)
     {
     case GDK_KEY_Left:
         active_position = g_list_index(mwcols->slot, mwcols->active_slot);
         /* Get previous file list to grab_focus on it */
         if(active_position > 0)
-        {
             to_active = GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot, active_position-1));
-        }
+        
         /* If it has been found in the GList mwcols->slot (and if it is not the first) */
         if(to_active != NULL)
         {
             gtk_widget_grab_focus(to_active->view_box);
             printf("GRAB FOCUS on : %d\n", active_position-1);
-            mwcols->active_slot = to_active;
+            marlin_window_columns_active_slot (mwcols, to_active);
             return TRUE;
         }
         break;
@@ -69,14 +68,13 @@ static gboolean marlin_window_columns_key_pressed(GtkWidget* box, GdkEventKey* e
         active_position = g_list_index(mwcols->slot, mwcols->active_slot);
         /* Get previous file list to grab_focus on it */
         if(active_position < g_list_length(mwcols->slot))
-        {
             to_active =  GOF_WINDOW_SLOT(g_list_nth_data(mwcols->slot, active_position+1));
-        }
+        
         if(to_active != NULL)
         {
             gtk_widget_grab_focus(to_active->view_box);
             printf("GRAB FOCUS on : %d\n", active_position+1);
-            mwcols->active_slot = to_active;
+            marlin_window_columns_active_slot (mwcols, to_active);
             return TRUE;
         }
         break;
@@ -145,7 +143,7 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
     
     /* Left/Right events */
     gtk_widget_add_events (GTK_WIDGET(mwcols->colpane), GDK_KEY_RELEASE_MASK);
-    g_signal_connect(mwcols->colpane, "key_release_event", (GCallback)marlin_window_columns_key_pressed, mwcols);
+    g_signal_connect (mwcols->colpane, "key_release_event", (GCallback)marlin_window_columns_key_pressed, mwcols);
 }
 
 /**
@@ -171,6 +169,24 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
     /* Add it in our GList */
     mwcols->slot = g_list_append(mwcols->slot, slot);
     //gtk_widget_grab_focus(slot->view_box);
+}
+
+void
+marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot) 
+{
+    GList *l;
+
+    g_return_if_fail (MARLIN_IS_WINDOW_COLUMNS (mwcols));
+    g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
+    
+    mwcols->active_slot = slot;
+    for (l = mwcols->slot; l != NULL; l=l->next)
+    {
+        //g_message ("list >> %s", GOF_WINDOW_SLOT (l->data)->directory->file->uri);
+        if (l->data != slot)
+            g_signal_emit_by_name (GOF_WINDOW_SLOT (l->data), "inactive");
+    }
+    g_signal_emit_by_name (slot, "active");
 }
 
 static void

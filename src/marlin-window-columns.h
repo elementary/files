@@ -28,8 +28,8 @@
 #define MARLIN_TYPE_WINDOW_COLUMNS	 (marlin_window_columns_get_type())
 #define MARLIN_WINDOW_COLUMNS_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), MARLIN_TYPE_WINDOW_COLUMNS, MarlinWindowColumnsClass))
 #define MARLIN_WINDOW_COLUMNS(obj)	 (G_TYPE_CHECK_INSTANCE_CAST ((obj), MARLIN_TYPE_WINDOW_COLUMNS, MarlinWindowColumns))
-#define MARLIN_IS_WINDOW_SLOT(obj)      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MARLIN_TYPE_WINDOW_COLUMNS))
-#define MARLIN_IS_WINDOW_SLOT_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), MARLIN_TYPE_WINDOW_COLUMNS))
+#define MARLIN_IS_WINDOW_COLUMNS(obj)      (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MARLIN_TYPE_WINDOW_COLUMNS))
+#define MARLIN_IS_WINDOW_COLUMNS_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), MARLIN_TYPE_WINDOW_COLUMNS))
 #define MARLIN_WINDOW_COLUMNS_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), MARLIN_TYPE_WINDOW_COLUMNS, MarlinWindowColumnsClass))
 
 typedef struct {
@@ -76,5 +76,6 @@ void                    marlin_window_columns_add (MarlinWindowColumns *mwcols, 
 
 void                    marlin_window_columns_freeze_updates (MarlinWindowColumns *mwcols);
 void                    marlin_window_columns_unfreeze_updates (MarlinWindowColumns *mwcols);
+void                    marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot);
 
 #endif /* MARLIN_WINDOW_COLUMNS_H */

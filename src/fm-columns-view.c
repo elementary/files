@@ -42,10 +42,11 @@ struct FMColumnsViewDetails {
     GtkCellRendererText *file_name_cell;
     char                *original_name;
 
-    GOFFile     *renaming_file;
-    gboolean    rename_done;
+    GOFFile             *renaming_file;
+    gboolean            rename_done;
 
-    gint pressed_button;
+    gint                pressed_button;
+    gboolean            updates_frozen;
 };
 
 /* Wait for the rename to end when activating a file being renamed */
@@ -121,11 +122,14 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
     fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view));
 
-    if (view->details->selection == NULL) 
+    if (view->details->selection == NULL)
         return;
     /* dont show preview or load directory if we got more than 1 element selected */
     if (view->details->selection->next)
         return;
+    if (view->details->updates_frozen)
+        return;
+
     file = view->details->selection->data;
     if (file->is_directory)
         fm_directory_view_column_add_location (FM_DIRECTORY_VIEW (view), file->location);
@@ -141,10 +145,33 @@ row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 }
 
 static void
+fm_columns_view_freeze_updates (FMColumnsView *view)
+{
+    view->details->updates_frozen = TRUE;
+	
+    /* Make filename-cells editable. */
+	g_object_set (G_OBJECT (view->details->file_name_cell),
+                  "editable", TRUE, NULL);
+
+	fm_directory_view_freeze_updates (FM_DIRECTORY_VIEW (view));
+}
+
+static void
+fm_columns_view_unfreeze_updates (FMColumnsView *view)
+{
+    view->details->updates_frozen = FALSE;
+	
+    /*We're done editing - make the filename-cells readonly again.*/
+	g_object_set (G_OBJECT (view->details->file_name_cell),
+                  "editable", FALSE, NULL);
+	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+}
+
+static void
 fm_columns_view_rename_callback (GOFFile *file,
-                              GFile *result_location,
-                              GError *error,
-                              gpointer callback_data)
+                                 GFile *result_location,
+                                 GError *error,
+                                 gpointer callback_data)
 {
 	FMColumnsView *view = FM_COLUMNS_VIEW (callback_data);
 
@@ -171,7 +198,7 @@ editable_focus_out_cb (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
 	FMColumnsView *view = user_data;
 
-	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+	fm_columns_view_unfreeze_updates (view);
 	view->details->editable_widget = NULL;
 }
 
@@ -200,8 +227,7 @@ cell_renderer_editing_canceled (GtkCellRendererText *cell,
                                 FMColumnsView          *view)
 {
 	view->details->editable_widget = NULL;
-
-	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+	fm_columns_view_unfreeze_updates (view);
 }
 
 static void
@@ -221,9 +247,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 	 * without notifying the user.
 	 */
 	if (new_text[0] == '\0') {
-		g_object_set (G_OBJECT (view->details->file_name_cell),
-                      "editable", FALSE, NULL);
-		fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+		fm_columns_view_unfreeze_updates (view);
 		return;
 	}
 	
@@ -248,11 +272,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 	
 	gof_file_unref (file);
 
-	/*We're done editing - make the filename-cells readonly again.*/
-	g_object_set (G_OBJECT (view->details->file_name_cell),
-                  "editable", FALSE, NULL);
-
-	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+	fm_columns_view_unfreeze_updates (view);
 }
 
 static void
@@ -267,6 +287,7 @@ fm_columns_view_start_renaming_file (FMDirectoryView *view,
 
 	col_view = FM_COLUMNS_VIEW (view);
 
+    g_message ("%s", G_STRFUNC);
 	/* Select all if we are in renaming mode already */
 	if (col_view->details->file_name_column && col_view->details->editable_widget) {
 		gtk_editable_select_region (GTK_EDITABLE (col_view->details->editable_widget),
@@ -279,13 +300,9 @@ fm_columns_view_start_renaming_file (FMDirectoryView *view,
 	}
 
 	/* Freeze updates to the view to prevent losing rename focus when the tree view updates */
-	fm_directory_view_freeze_updates (view);
+	fm_columns_view_freeze_updates (col_view);
 
 	path = gtk_tree_model_get_path (GTK_TREE_MODEL (col_view->model), &iter);
-
-	/* Make filename-cells editable. */
-	g_object_set (G_OBJECT (col_view->details->file_name_cell),
-                  "editable", TRUE, NULL);
 
 	gtk_tree_view_scroll_to_cell (col_view->tree, NULL,
                                   col_view->details->file_name_column,
@@ -341,16 +358,19 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
     selection = gtk_tree_view_get_selection (tree_view);
     if (event->type == GDK_BUTTON_PRESS && event->button == 1) {
         /* save last pressed button */
-        if (view->details->pressed_button < 0)
+        if (view->details->pressed_button < 0) {
             view->details->pressed_button = event->button;
-
-        /* disconnect the selection changed signal to operate only on release button event */
-         g_signal_handlers_block_by_func (selection, list_selection_changed_callback, view);
+            view->details->updates_frozen = TRUE;
+        }
     }
 
     /* open the context menu on right clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 3)
     {
+        if (view->details->pressed_button < 0) {
+            view->details->pressed_button = event->button;
+            view->details->updates_frozen = TRUE;
+        }
         if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
         {
             /* select the path on which the user clicked if not selected yet */
@@ -364,15 +384,14 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsV
             gtk_tree_path_free (path);
 
             /* queue the menu popup */
-            printf ("thunar_standard_view_queue_popup (THUNAR_STANDARD_VIEW (view), event)\n");
+            printf ("menu queue_popup\n");
             fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
             fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
         }
         else
         {
             /* open the context menu */
-            //thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (view), event->button, event->time);
-            printf ("thunar_standard_view_context_menu (THUNAR_STANDARD_VIEW (view), event->button, event->time)\n");
+            printf ("context_menu\n");
             fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
             fm_directory_view_context_menu (FM_DIRECTORY_VIEW (view), event);
         }
@@ -434,15 +453,17 @@ button_release_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumn
     GtkTreeSelection    *selection;
     GtkTreePath         *path;
 
-    if (view->details->pressed_button == event->button) 
+    g_message ("%s", G_STRFUNC);
+    if (view->details->pressed_button == event->button && view->details->pressed_button != -1)
     {
+        view->details->updates_frozen = FALSE;
         selection = gtk_tree_view_get_selection (tree_view);
         list_selection_changed_callback (selection, view);
-        g_signal_handlers_unblock_by_func (selection, list_selection_changed_callback, view);
-
+        
         /* reset the pressed_button state */
         view->details->pressed_button = -1;
     }
+    
 
     return TRUE;
 }
@@ -467,20 +488,6 @@ key_press_callback (GtkWidget *widget, GdkEventKey *event, gpointer callback_dat
             fm_directory_view_do_popup_menu (view, (GdkEventButton *) event);
             handled = TRUE;
         }
-        break;
-    case GDK_KEY_Right:
-        gtk_tree_view_get_cursor (tree_view, &path, NULL);
-        if (path) {
-            gtk_tree_path_free (path);
-        }
-        handled = TRUE;
-        break;
-    case GDK_KEY_Left:
-        gtk_tree_view_get_cursor (tree_view, &path, NULL);
-        if (path) {
-            gtk_tree_path_free (path);
-        }
-        handled = TRUE;
         break;
     case GDK_KEY_space:
         if (event->state & GDK_CONTROL_MASK) {
@@ -674,16 +681,20 @@ fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
                             gboolean start_editing, gboolean select)
 {
     FMColumnsView *cols_view = FM_COLUMNS_VIEW (view);
+    GtkTreeSelection *selection = gtk_tree_view_get_selection (cols_view->tree);
 
+    /* the treeview select the path by default. */
+    if (!select)
+        g_signal_handlers_block_by_func (selection, list_selection_changed_callback, view);
     gtk_tree_view_set_cursor_on_cell (cols_view->tree, path, 
                                       cols_view->details->file_name_column,
                                       (GtkCellRenderer *) cols_view->details->file_name_cell,
                                       start_editing);
 
-    /* the treeview select the path by default */
     if (!select) {
         GtkTreeSelection *selection = gtk_tree_view_get_selection (cols_view->tree);
         gtk_tree_selection_unselect_path (selection, path);
+        g_signal_handlers_unblock_by_func (selection, list_selection_changed_callback, view);
     }
 }
 
