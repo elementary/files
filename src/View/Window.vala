@@ -279,10 +279,8 @@ namespace Marlin.View {
                     /* sync selection */
                     if (cur_slot.view_box != null)
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
-                    /* set window title to current title */
-                    set_title(current_tab.tab_name);
                     /* sync sidebar selection */
-                    loading_uri (cur_slot.directory.file.uri, sidebar);
+                    loading_uri (current_tab.slot.directory.file.uri, sidebar);
 
                     /* focus the main view */
                     //((FM.Directory.View) current_tab.slot.view_box).grab_focus();

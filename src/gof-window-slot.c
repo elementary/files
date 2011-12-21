@@ -50,6 +50,12 @@ gof_window_slot_init (GOFWindowSlot *slot)
 }
 
 static void
+real_active (GOFWindowSlot *slot) 
+{
+    marlin_view_view_container_refresh_slot_info (MARLIN_VIEW_VIEW_CONTAINER (slot->ctab));
+}
+
+static void
 gof_window_slot_class_init (GOFWindowSlotClass *class)
 {
     signals[ACTIVE] =
@@ -71,6 +77,7 @@ gof_window_slot_class_init (GOFWindowSlotClass *class)
 		      G_TYPE_NONE, 0);
 
     G_OBJECT_CLASS (class)->finalize = gof_window_slot_finalize;
+    class->active = real_active;
 }
 
 static void

@@ -32,7 +32,7 @@ namespace Marlin.View {
         public Marlin.Window.Columns? mwcol = null;
         Browser browser;
         public int view_mode = 0;
-        private ulong file_info_callback;
+        //private ulong file_info_callback;
 
         public signal void path_changed(File file);
         public signal void up();
@@ -117,19 +117,30 @@ namespace Marlin.View {
 
         private void connect_available_info() {
             //file_info_callback = slot.directory.file.info_available.connect((gof) => {
-                if (slot.location.get_path () == Environment.get_home_dir ())
-                    tab_name = _("Home");
-                else if (slot.location.get_path () == "/")
-                    tab_name = _("File System");
-                else
-                    tab_name = slot.directory.file.info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
-                if(window.current_tab == this){
-                    window.set_title(tab_name);
+                if(window.current_tab == this)
                     window.loading_uri (slot.directory.file.uri, window.sidebar);
-                }
                 
                 /*Source.remove((uint) file_info_callback);
             });*/
+        }
+
+        public void refresh_slot_info () {
+            var aslot = get_active_slot ();
+            var slot_path = aslot.directory.file.location.get_path ();
+            if (slot_path == Environment.get_home_dir ())
+                tab_name = _("Home");
+            else if (slot_path == "/")
+                tab_name = _("File System");
+            else
+                tab_name = aslot.directory.file.info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
+           
+            /* update window title */
+            if(window.current_tab == this) {
+                window.set_title(tab_name);
+                if (window.top_menu.location_bar != null)
+                    window.top_menu.location_bar.path = aslot.directory.file.location.get_parse_name(); 
+            }
+
         }
 
         public void directory_done_loading () {
@@ -177,6 +188,7 @@ namespace Marlin.View {
                 slot.make_icon_view();
                 break;
             }
+
             plugin_directory_loaded ();
         }
 
@@ -235,11 +247,9 @@ namespace Marlin.View {
             if (!slot.directory.file.exists)
                 return;
 
-            window.can_go_up = slot.directory.has_parent();
-            if (window.top_menu.location_bar != null)
-                window.top_menu.location_bar.path = slot.location.get_parse_name();
             if (save_history)
                 browser.record_uri(slot.directory.location.get_parse_name ());
+            window.can_go_up = slot.directory.has_parent();
             window.can_go_back = browser.can_go_back();
             window.can_go_forward = browser.can_go_forward();
             /* update ModeButton */

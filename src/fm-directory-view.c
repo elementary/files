@@ -2407,16 +2407,12 @@ fm_directory_view_parent_set (GtkWidget *widget,
               printf ("view_details slot %s\n", g_file_get_uri(view->details->slot->location));*/
             if (view->details->slot ==
                 MARLIN_VIEW_WINDOW (view->details->window)->current_tab->slot) {
-                //coltest
-                g_message ("%s > merge menus", G_STRFUNC);
-                fm_directory_view_merge_menus (view);
-                //schedule_update_menus (view);
+                g_signal_emit_by_name (view->details->slot, "active");
             }
         }
 
     } else {
-        fm_directory_view_unmerge_menus (view);
-        //remove_update_menus_timeout_callback (view);
+        g_signal_emit_by_name (view->details->slot, "inactive");
     }
 }
 
