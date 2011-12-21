@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-11-25 21:50+0000\n"
-"Last-Translator: Fedik <Unknown>\n"
+"PO-Revision-Date: 2011-12-21 03:46+0000\n"
+"Last-Translator: Victor Markin <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-12-01 05:51+0000\n"
-"X-Generator: Launchpad (build 14414)\n"
+"X-Launchpad-Export-Date: 2011-12-21 05:29+0000\n"
+"X-Generator: Launchpad (build 14538)\n"
 "Language: uk\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
@@ -129,7 +129,7 @@ msgstr "Вигляд"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
 msgid "Extensions"
-msgstr ""
+msgstr "Додатки"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
 msgid "Name"
@@ -665,7 +665,7 @@ msgstr "Способи вводу"
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "Об'єднати теку «%s»?"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
@@ -678,19 +678,19 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Старіша тека з такою ж назвою вже існує в «%s»."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:159
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Новіша тека з такою ж назвою вже існує в «%s»."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:163
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Інша тека з такою ж назвою вже існує в «%s»."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
@@ -701,24 +701,24 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "Замінити теку \"%s\"?"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:172
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Тека з таким ім’ям вже існує в «%s»."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:177
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "Замінити файл \"%s\"?"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:179
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "При заміні вміст буде перезаписано."
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:183
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
@@ -755,24 +755,24 @@ msgstr ""
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr ""
+msgstr "Тип:"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:260
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:291
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr ""
+msgstr "Востаннє змінено:"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
 msgid "Replace with"
-msgstr ""
+msgstr "Замінити на"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr ""
+msgstr "Об’єднати"
 
 #: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
 msgid "_Select a new name for the destination"
@@ -845,7 +845,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1875
 msgid "Toplevel files cannot be renamed"
-msgstr ""
+msgstr "Файли верхнього рівня не можна перейменовувати"
 
 #: /media/dev/elementary/marlin/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
