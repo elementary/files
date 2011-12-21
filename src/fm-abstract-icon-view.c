@@ -81,7 +81,7 @@ static void     fm_abstract_icon_view_set_cursor (FMDirectoryView *view, GtkTree
   }*/
 
 static void
-fm_abstract_icon_view_selection_changed (GtkIconView *iconview, gpointer user_data)
+fm_abstract_icon_view_selection_changed (ExoIconView *iconview, gpointer user_data)
 {
     FMAbstractIconView *view = FM_ABSTRACT_ICON_VIEW (user_data);
 
@@ -97,6 +97,24 @@ fm_abstract_icon_view_item_activated (ExoIconView *exo_icon, GtkTreePath *path, 
 {
     //TODO make alternate
     fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_DEFAULT); 
+}
+
+static void 
+fm_abstract_icon_view_freeze_updates (FMDirectoryView *view)
+{
+    /* Make marlin-text-renderer cells editable. */
+    g_object_set (view->name_renderer,
+                  "mode", GTK_CELL_RENDERER_MODE_EDITABLE, NULL);
+    fm_directory_view_freeze_updates (FM_DIRECTORY_VIEW (view));
+}
+
+static void 
+fm_abstract_icon_view_unfreeze_updates (FMDirectoryView *view)
+{
+    /*We're done editing - make the filename-cells readonly again.*/
+    g_object_set (view->name_renderer,
+                  "mode", GTK_CELL_RENDERER_MODE_INERT, NULL);
+    fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
 
 static void
@@ -132,12 +150,7 @@ editable_focus_out_cb (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 
     //printf ("%s\n", G_STRFUNC);
     view->details->editable_widget = NULL;
-    fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
-
-    /*We're done editing - make the filename-cells readonly again.*/
-    g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer,
-                  "mode", GTK_CELL_RENDERER_MODE_INERT, NULL);
-
+    fm_abstract_icon_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
 
 static void
@@ -176,12 +189,7 @@ cell_renderer_editing_canceled (GtkCellRenderer *cell,
 {
     //printf ("%s\n", G_STRFUNC);
     view->details->editable_widget = NULL;
-
-    fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
-
-    /*We're done editing - make the filename-cells readonly again.*/
-    g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer,
-                  "mode", GTK_CELL_RENDERER_MODE_INERT, NULL);
+    fm_abstract_icon_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
 //#endif
 
@@ -202,9 +210,7 @@ cell_renderer_edited (GtkCellRenderer   *cell,
      * without notifying the user.
      */
     if (new_text[0] == '\0') {
-        g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer,
-                      "mode", GTK_CELL_RENDERER_MODE_INERT, NULL);
-        fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+        fm_abstract_icon_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
         return;
     }
 
@@ -229,11 +235,7 @@ cell_renderer_edited (GtkCellRenderer   *cell,
 
     gof_file_unref (file);
 
-    /*We're done editing - make the filename-cells readonly again.*/
-    g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer,
-                  "mode", GTK_CELL_RENDERER_MODE_INERT, NULL);
-
-    fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+    fm_abstract_icon_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 }
 
 static void
@@ -395,13 +397,9 @@ fm_abstract_icon_view_start_renaming_file (FMDirectoryView *view,
     }
 
     /* Freeze updates to the view to prevent losing rename focus when the icon view updates */
-    fm_directory_view_freeze_updates (FM_DIRECTORY_VIEW (view));
+    fm_abstract_icon_view_freeze_updates (view);
 
     path = gtk_tree_model_get_path (GTK_TREE_MODEL (icon_view->model), &iter);
-
-    /* Make marlin-text-renderer cells editable. */
-    g_object_set (view->name_renderer,
-                  "mode", GTK_CELL_RENDERER_MODE_EDITABLE, NULL);
 
     //TODO
     /*gtk_tree_view_scroll_to_cell (icon_view->tree, NULL,

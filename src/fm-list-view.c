@@ -160,6 +160,24 @@ row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 }
 
 static void
+fm_list_view_freeze_updates (FMListView *view)
+{
+    /* Make filename-cells editable. */
+	g_object_set (G_OBJECT (view->details->file_name_cell),
+                  "editable", TRUE, NULL);
+    fm_directory_view_freeze_updates (FM_DIRECTORY_VIEW (view));
+}
+
+static void
+fm_list_view_unfreeze_updates (FMListView *view)
+{
+    /*We're done editing - make the filename-cells readonly again.*/
+	g_object_set (G_OBJECT (view->details->file_name_cell),
+                  "editable", FALSE, NULL);
+	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+}
+
+static void
 fm_list_view_rename_callback (GOFFile *file,
                               GFile *result_location,
                               GError *error,
@@ -190,8 +208,8 @@ editable_focus_out_cb (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 {
 	FMListView *view = user_data;
 
-	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
 	view->details->editable_widget = NULL;
+	fm_list_view_unfreeze_updates (view);
 }
 
 static void
@@ -225,8 +243,7 @@ cell_renderer_editing_canceled (GtkCellRendererText *cell,
                                 FMListView          *view)
 {
 	view->details->editable_widget = NULL;
-
-	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+	fm_list_view_unfreeze_updates (view);
 }
 
 static void
@@ -246,9 +263,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 	 * without notifying the user.
 	 */
 	if (new_text[0] == '\0') {
-		g_object_set (G_OBJECT (view->details->file_name_cell),
-                      "editable", FALSE, NULL);
-		fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+		fm_list_view_unfreeze_updates (view);
 		return;
 	}
 	
@@ -272,11 +287,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 	
 	gof_file_unref (file);
 
-	/*We're done editing - make the filename-cells readonly again.*/
-	g_object_set (G_OBJECT (view->details->file_name_cell),
-                  "editable", FALSE, NULL);
-
-	fm_directory_view_unfreeze_updates (FM_DIRECTORY_VIEW (view));
+	fm_list_view_unfreeze_updates (view);
 }
 
 static void
@@ -304,7 +315,7 @@ fm_list_view_start_renaming_file (FMDirectoryView *view,
 	}
 
 	/* Freeze updates to the view to prevent losing rename focus when the tree view updates */
-	fm_directory_view_freeze_updates (view);
+	fm_list_view_freeze_updates (FM_LIST_VIEW (view));
 
 	path = gtk_tree_model_get_path (GTK_TREE_MODEL (list_view->model), &iter);
 

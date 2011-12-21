@@ -152,7 +152,6 @@ fm_columns_view_freeze_updates (FMColumnsView *view)
     /* Make filename-cells editable. */
 	g_object_set (G_OBJECT (view->details->file_name_cell),
                   "editable", TRUE, NULL);
-
 	fm_directory_view_freeze_updates (FM_DIRECTORY_VIEW (view));
 }
 
