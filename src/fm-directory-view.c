@@ -2135,15 +2135,18 @@ fm_directory_view_restore_selection (FMListModel *model, GtkTreePath *path, FMDi
 }
 
 void 
-fm_directory_view_select_first (FMDirectoryView *view)
+fm_directory_view_select_first_for_empty_selection (FMDirectoryView *view)
 {
-    GtkTreePath *path;
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
-        
-    path = gtk_tree_path_new_from_indices (0, -1);
-    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->unselect_all) (view);
-    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, path);
-    gtk_tree_path_free (path);
+    
+    GList *selection = fm_directory_view_get_selection (view);
+
+    if (!selection) {
+        GtkTreePath *path = gtk_tree_path_new_from_indices (0, -1);
+        (*FM_DIRECTORY_VIEW_GET_CLASS (view)->unselect_all) (view);
+        (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, path);
+        gtk_tree_path_free (path);
+    }
 }
 
 static void

@@ -432,6 +432,6 @@ GOFDirectoryAsync *fm_directory_view_get_current_directory (FMDirectoryView *vie
 GList   *fm_directory_view_get_open_with_apps (FMDirectoryView *view);
 GAppInfo *fm_directory_view_get_default_app (FMDirectoryView *view);
 
-void    fm_directory_view_select_first (FMDirectoryView *view);
+void    fm_directory_view_select_first_for_empty_selection (FMDirectoryView *view);
 
 #endif /* FM_DIRECTORY_VIEW_H */
