@@ -263,25 +263,29 @@ namespace Marlin.View {
             if (last_gof.info == null)
                 return;
 
-            real_update ();
+            timed_update ();
         }
         
         public void update_hovered (GOF.File? file) {
             if (file != null) {
-                if(timeout_update != 0){
-                    Source.remove(timeout_update);
-                    timeout_update = 0;
-                }
-                timeout_update = Timeout.add(120, () => {
-                    last_gof = file;
-                    real_update ();
-                    timeout_update = 0;
-
-                    return false;
-                });
+                last_gof = file;
+                timed_update ();
             } else {
-                update (last_selection);            
+                update (last_selection);       
             }
+        }
+
+        private void timed_update () {
+            if(timeout_update != 0){
+                Source.remove(timeout_update);
+                timeout_update = 0;
+            }
+            timeout_update = Timeout.add(120, () => {
+                real_update ();
+                timeout_update = 0;
+
+                return false;
+            });
         }
 
         private void real_update () {
