@@ -76,7 +76,7 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
             printf("GRAB FOCUS on : %d\n", active_position+1);
             marlin_window_columns_active_slot (mwcols, to_active);
             fm_directory_view_select_first_for_empty_selection (FM_DIRECTORY_VIEW (to_active->view_box));
-            gtk_widget_grab_focus(to_active->view_box);
+            gtk_widget_grab_focus (to_active->view_box);
             return TRUE;
         }
         break;

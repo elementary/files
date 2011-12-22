@@ -131,8 +131,11 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
         return;
 
     file = view->details->selection->data;
-    if (file->is_directory)
+    if (file->is_directory) {
         fm_directory_view_column_add_location (FM_DIRECTORY_VIEW (view), file->location);
+        /* give back the focus to the active slot */
+        gtk_widget_grab_focus (GTK_WIDGET (view));
+    }
 }
 
 static void
