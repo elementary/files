@@ -2134,6 +2134,18 @@ fm_directory_view_restore_selection (FMListModel *model, GtkTreePath *path, FMDi
     }
 }
 
+void 
+fm_directory_view_select_first (FMDirectoryView *view)
+{
+    GtkTreePath *path;
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+        
+    path = gtk_tree_path_new_from_indices (0, -1);
+    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->unselect_all) (view);
+    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, path);
+    gtk_tree_path_free (path);
+}
+
 static void
 set_metadata_callback (GObject *source_object, GAsyncResult *result, gpointer callback_data)
 {

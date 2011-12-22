@@ -174,7 +174,8 @@ struct FMDirectoryViewClass {
 
     /* Selects the given item */
     void    (*select_path)          (FMDirectoryView *view, GtkTreePath *path);
-    void    (*select_all)          (FMDirectoryView *view);
+    void    (*select_all)           (FMDirectoryView *view);
+    void    (*unselect_all)         (FMDirectoryView *view);
 
     /* Place the cursor on the item/row referred to by path. If
      * start_editing is TRUE, the derived class should also start
@@ -430,5 +431,7 @@ GOFDirectoryAsync *fm_directory_view_get_current_directory (FMDirectoryView *vie
 
 GList   *fm_directory_view_get_open_with_apps (FMDirectoryView *view);
 GAppInfo *fm_directory_view_get_default_app (FMDirectoryView *view);
+
+void    fm_directory_view_select_first (FMDirectoryView *view);
 
 #endif /* FM_DIRECTORY_VIEW_H */

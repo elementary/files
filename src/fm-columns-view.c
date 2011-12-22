@@ -335,6 +335,11 @@ static void fm_columns_view_select_all(FMDirectoryView *view)
     gtk_tree_selection_select_all (gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree));
 }
 
+static void fm_columns_view_unselect_all(FMDirectoryView *view)
+{
+    gtk_tree_selection_unselect_all (gtk_tree_view_get_selection (FM_COLUMNS_VIEW (view)->tree));
+}
+
 static gboolean
 button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMColumnsView *view)
 {
@@ -839,6 +844,7 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
     fm_directory_view_class->get_selected_paths = fm_columns_view_get_selected_paths;
     fm_directory_view_class->select_path = fm_columns_view_select_path;
     fm_directory_view_class->select_all = fm_columns_view_select_all;
+    fm_directory_view_class->unselect_all = fm_columns_view_unselect_all;
     fm_directory_view_class->set_cursor = fm_columns_view_set_cursor;
 
     fm_directory_view_class->get_path_at_pos = fm_columns_view_get_path_at_pos;

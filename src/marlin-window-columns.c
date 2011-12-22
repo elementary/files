@@ -19,8 +19,9 @@
 
 #include "marlin-window-columns.h"
 #include <gdk/gdkkeysyms.h>
-#include "fm-columns-view.h"
 #include "marlin-global-preferences.h"
+#include "marlin-vala.h"
+#include "fm-directory-view.h"
 
 static void marlin_window_columns_finalize   (GObject *object);
 
@@ -72,9 +73,10 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
         
         if(to_active != NULL)
         {
-            gtk_widget_grab_focus(to_active->view_box);
             printf("GRAB FOCUS on : %d\n", active_position+1);
             marlin_window_columns_active_slot (mwcols, to_active);
+            fm_directory_view_select_first (FM_DIRECTORY_VIEW (to_active->view_box));
+            gtk_widget_grab_focus(to_active->view_box);
             return TRUE;
         }
         break;
