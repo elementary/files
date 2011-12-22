@@ -143,6 +143,8 @@ struct _ExoIconViewClass
 
     void    (* item_activated)         (ExoIconView      *icon_view,
                                         GtkTreePath      *path);
+    void    (* item_hovered)           (ExoIconView      *icon_view,
+                                        GtkTreePath      *path);
     void    (* selection_changed)      (ExoIconView      *icon_view);
 
     /* Key binding signals */

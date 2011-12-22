@@ -29,6 +29,7 @@
 #include <string.h>
 
 #include <atk/atk.h>
+#include <math.h>
 
 #include "exo-icon-view.h"
 //#include "marlin-icon-info.h"
@@ -231,6 +232,7 @@ struct _ExoIconViewPrivate
 enum
 {
     ITEM_ACTIVATED,
+    ITEM_HOVERED,
     SELECTION_CHANGED,
     SELECT_ALL,
     UNSELECT_ALL,
@@ -568,6 +570,8 @@ static gboolean exo_icon_view_real_start_interactive_search (ExoIconView *icon_v
 static gboolean exo_icon_view_start_interactive_search      (ExoIconView *icon_view);
 
 static void send_focus_change (GtkWidget *widget, GdkDevice *device, gboolean in);
+static void exo_icon_view_item_hovered (ExoIconView      *icon_view,
+                                        GtkTreePath      *path);
 
 
 /* GtkBuildable */
@@ -1020,6 +1024,23 @@ exo_icon_view_class_init (ExoIconViewClass *klass)
                       G_TYPE_FROM_CLASS (gobject_class),
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (ExoIconViewClass, item_activated),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__BOXED,
+                      G_TYPE_NONE, 1,
+                      GTK_TYPE_TREE_PATH);
+
+    /**
+     * ExoIconView::item-hovered:
+     * @iconview: the object on which the signal is emitted
+     * @path: the #GtkTreePath for the activated item
+     *
+     * The ::item-hovered signal is emitted when an item is hovered by the mouse.
+     */
+    icon_view_signals[ITEM_HOVERED] =
+        g_signal_new (I_("item-hovered"),
+                      G_TYPE_FROM_CLASS (gobject_class),
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ExoIconViewClass, item_hovered),
                       NULL, NULL,
                       g_cclosure_marshal_VOID__BOXED,
                       G_TYPE_NONE, 1,
@@ -2012,8 +2033,15 @@ exo_icon_view_motion (GtkWidget      *widget,
             if (G_LIKELY (icon_view->priv->prelit_item != NULL))
                 exo_icon_view_queue_draw_item (icon_view, icon_view->priv->prelit_item);
             icon_view->priv->prelit_item = item;
-            if (G_LIKELY (item != NULL))
+
+            GtkTreePath *path = NULL;
+
+            if (G_LIKELY (item != NULL)) {
+                path = gtk_tree_path_new_from_indices (item->index, -1);
                 exo_icon_view_queue_draw_item (icon_view, item);
+            }
+            exo_icon_view_item_hovered (icon_view, path);
+            gtk_tree_path_free (path);
 
             /* check if we are in single click mode right now */
             if (G_UNLIKELY (icon_view->priv->single_click))
@@ -4214,6 +4242,7 @@ exo_icon_view_row_deleted (GtkTreeModel *model,
     {
         /* reset the prelit item */
         icon_view->priv->prelit_item = NULL;
+        exo_icon_view_item_hovered (icon_view, path);
 
         /* cancel any pending single click timer */
         if (G_UNLIKELY (icon_view->priv->single_click_timeout_id != 0))
@@ -6365,6 +6394,15 @@ exo_icon_view_get_item_column (ExoIconView *icon_view,
         return -1;
 
     return item->col;
+}
+
+static void
+exo_icon_view_item_hovered (ExoIconView      *icon_view,
+                            GtkTreePath      *path)
+{
+    g_return_if_fail (EXO_IS_ICON_VIEW (icon_view));
+
+    g_signal_emit (icon_view, icon_view_signals[ITEM_HOVERED], 0, path);
 }
 
 /**

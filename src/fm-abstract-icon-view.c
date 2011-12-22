@@ -93,6 +93,12 @@ fm_abstract_icon_view_selection_changed (ExoIconView *iconview, gpointer user_da
 }
 
 static void
+fm_abstract_icon_view_item_hovered (ExoIconView *exo_icon, GtkTreePath *path, FMAbstractIconView *view)
+{
+    fm_directory_view_notify_item_hovered (FM_DIRECTORY_VIEW (view), path);
+}
+
+static void
 fm_abstract_icon_view_item_activated (ExoIconView *exo_icon, GtkTreePath *path, FMAbstractIconView *view)
 {
     //TODO make alternate
@@ -719,6 +725,7 @@ fm_abstract_icon_view_init (FMAbstractIconView *view)
     exo_icon_view_set_search_column (view->icons, FM_LIST_MODEL_FILENAME);
 
     g_signal_connect (G_OBJECT (view->icons), "item-activated", G_CALLBACK (fm_abstract_icon_view_item_activated), view);
+    g_signal_connect (G_OBJECT (view->icons), "item-hovered", G_CALLBACK (fm_abstract_icon_view_item_hovered), view);
     g_signal_connect (G_OBJECT (view->icons), "selection-changed", G_CALLBACK (fm_abstract_icon_view_selection_changed), view);
 
 

@@ -38,12 +38,12 @@ namespace Marlin.View {
 
         public int panel_size{
             get{
-                switch(orientation){
-                    case(orientation.HORIZONTAL):
-                        return height;
-                    case(orientation.VERTICAL):
-                    default:
-                        return width;
+                switch (orientation){
+                case orientation.HORIZONTAL:
+                    return height;
+                case orientation.VERTICAL:
+                default:
+                    return width;
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace Marlin.View {
         private unowned GLib.List<GOF.File>? last_selection = null;
 
         private Orientation _orientation = Orientation.HORIZONTAL;
-        public Orientation orientation{
+        public Orientation orientation {
             set{
                 if(timeout != 0){
                     Source.remove(timeout);
@@ -89,24 +89,24 @@ namespace Marlin.View {
             }
         }
 
-        public Orientation parent_orientation{
+        public Orientation parent_orientation {
             set{
                 orientation = convert_parent_orientation(value);
             }
         }
 
-        private Orientation convert_parent_orientation(Orientation o){
-            switch(o){
-                case(Orientation.HORIZONTAL):
-                    return orientation.VERTICAL;
-                case(Orientation.VERTICAL):
-                default:
-                    return orientation.HORIZONTAL;
+        private Orientation convert_parent_orientation (Orientation o) {
+            switch (o){
+            case Orientation.HORIZONTAL:
+                return orientation.VERTICAL;
+            case Orientation.VERTICAL:
+            default:
+                return orientation.HORIZONTAL;
             }
         }
 
         /* TODO remove should_sync? */
-        public ContextView(Window window, bool _should_sync, 
+        public ContextView (Window window, bool _should_sync, 
                            Gtk.Orientation parent_orientation = Gtk.Orientation.VERTICAL) 
         {
             this.window = window;
@@ -114,7 +114,8 @@ namespace Marlin.View {
 
             should_sync = _should_sync;
             if (should_sync) { 
-                window.selection_changed.connect(update);
+                window.selection_changed.connect (update);
+                window.item_hovered.connect (update_hovered);
                 change_css_class ();
             }
             
@@ -237,7 +238,7 @@ namespace Marlin.View {
                 window.main_box.set_position (window.main_box.max_position - icon_size_req);*/
         }
 
-        public void update(GLib.List<GOF.File>? selection = null) {
+        public void update (GLib.List<GOF.File>? selection = null) {
             if (icon_changed_callback > 0) {
                 Source.remove((uint) icon_changed_callback);
                 icon_changed_callback = 0;
@@ -261,20 +262,30 @@ namespace Marlin.View {
             if (last_gof.info == null)
                 return;
 
-            icon_changed_callback = last_gof.icon_changed.connect (() => {
-                if (should_sync) 
-                    update_icon ();
-            });
+            real_update ();
+        }
+        
+        public void update_hovered (GOF.File? file) {
+            if (file != null) {
+                last_gof = file;
+                real_update ();
+            } else {
+                update (last_selection);            
+            }
+        }
 
-            //SPOTTED!
-            //critical ("ctx pane update");
+        private void real_update () {
+            //warning ("ctx pane update");
             var file_info = last_gof.info;
 
             /* don't update icon if we are in column view as the preview pane is 
                built/destroyed foreach selection changed */
-            //if (!first_alloc || !should_sync) 
             if (should_sync) 
                 update_icon();
+            icon_changed_callback = last_gof.icon_changed.connect (() => {
+                if (should_sync) 
+                    update_icon ();
+            });
 
             info.clear();
             var raw_type = file_info.get_file_type();
