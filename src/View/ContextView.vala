@@ -60,6 +60,7 @@ namespace Marlin.View {
         private Label label;
         private Gee.List<Pair<string, string>> info;
         private uint timeout = 0;
+        private uint timeout_update = 0;
         private bool first_alloc = true;
         private Allocation cv_alloc;    /* last allocation of the contextview */
         private bool should_sync;
@@ -181,9 +182,9 @@ namespace Marlin.View {
                     timeout = 0;
                 }
                 timeout = Timeout.add(300, () => {
-                    timeout = 0;
                     //message ("wwwwwwwwwwwww");
                     update_icon();
+                    timeout = 0;
 
                     return false;
                 });
@@ -267,8 +268,17 @@ namespace Marlin.View {
         
         public void update_hovered (GOF.File? file) {
             if (file != null) {
-                last_gof = file;
-                real_update ();
+                if(timeout_update != 0){
+                    Source.remove(timeout_update);
+                    timeout_update = 0;
+                }
+                timeout_update = Timeout.add(120, () => {
+                    last_gof = file;
+                    real_update ();
+                    timeout_update = 0;
+
+                    return false;
+                });
             } else {
                 update (last_selection);            
             }
