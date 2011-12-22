@@ -280,7 +280,7 @@ namespace Marlin.View {
                 Source.remove(timeout_update);
                 timeout_update = 0;
             }
-            timeout_update = Timeout.add(90, () => {
+            timeout_update = Timeout.add(60, () => {
                 real_update ();
                 timeout_update = 0;
 
