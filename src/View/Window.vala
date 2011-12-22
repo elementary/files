@@ -38,7 +38,7 @@ namespace Marlin.View {
 
         public ViewContainer? current_tab;
         public CollapsiblePaned main_box;
-        public ContextView contextview;
+        public ContextView? contextview = null;
 
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
@@ -220,6 +220,10 @@ namespace Marlin.View {
                 return true;
             });
 
+            Gtk.Allocation win_alloc;
+            get_allocation (out win_alloc);
+            resized (win_alloc);
+            
             size_allocate.connect(resized);
 
             /* keyboard shortcuts bindings */
