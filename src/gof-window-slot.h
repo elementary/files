@@ -71,7 +71,6 @@ GOFWindowSlot   *gof_window_slot_new (GFile *location, GtkEventBox *ctab);
 
 void            gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column);
 void            gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location);
-void            gof_window_columns_add_preview (GOFWindowSlot *slot, GtkWidget *context_view);
 
 void            gof_window_slot_make_icon_view (GOFWindowSlot *slot);
 void            gof_window_slot_make_list_view (GOFWindowSlot *slot);

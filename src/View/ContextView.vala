@@ -105,6 +105,7 @@ namespace Marlin.View {
             }
         }
 
+        /* TODO remove should_sync? */
         public ContextView(Window window, bool _should_sync, 
                            Gtk.Orientation parent_orientation = Gtk.Orientation.VERTICAL) 
         {
@@ -248,8 +249,11 @@ namespace Marlin.View {
             } else {
                 last_gof = null;
                 /* if empty selection then pass the currentslot folder */
-                if (window.current_tab != null)
-                    last_gof = window.current_tab.slot.directory.file;
+                if (window.current_tab != null) {
+                    var aslot = window.current_tab.get_active_slot ();
+                    if (aslot != null)
+                        last_gof = aslot.directory.file;
+                }
                 last_selection = null;
             }
             if (last_gof == null)

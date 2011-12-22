@@ -117,7 +117,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     /* don't update column if we got a drag_begin started */
     if (fm_directory_view_is_drag_pending (FM_DIRECTORY_VIEW (view)))
         return;
-
+ 
     /* setup the current active slot */
     fm_directory_view_set_active_slot (FM_DIRECTORY_VIEW (view));
     fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view));
@@ -133,8 +133,12 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     file = view->details->selection->data;
     if (file->is_directory)
         fm_directory_view_column_add_location (FM_DIRECTORY_VIEW (view), file->location);
-    else
-        fm_directory_view_column_add_preview (FM_DIRECTORY_VIEW (view), view->details->selection);
+}
+
+static void
+fm_columns_view_sync_selection (FMDirectoryView *view)
+{
+    fm_directory_view_notify_selection_changed (view);
 }
 
 static void
@@ -829,6 +833,7 @@ fm_columns_view_class_init (FMColumnsViewClass *klass)
 
     fm_directory_view_class = FM_DIRECTORY_VIEW_CLASS (klass);
 
+    fm_directory_view_class->sync_selection = fm_columns_view_sync_selection;
     fm_directory_view_class->get_selection = fm_columns_view_get_selection; 
     fm_directory_view_class->get_selection_for_file_transfer = fm_columns_view_get_selection_for_file_transfer;
     fm_directory_view_class->get_selected_paths = fm_columns_view_get_selected_paths;

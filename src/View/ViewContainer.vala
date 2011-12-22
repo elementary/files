@@ -147,9 +147,10 @@ namespace Marlin.View {
             if (!slot.directory.file.exists)
                 content = new DirectoryNotFound (slot.directory, this);
             sync_contextview();
-                
-            if (window.contextview != null)
-                window.contextview.update ();
+
+            //coltest  TODO remove
+            /*if (window.contextview != null)
+                window.contextview.update ();*/
         }
 
         public void change_view(int nview, GLib.File? location){
@@ -201,33 +202,18 @@ namespace Marlin.View {
                 }
                 return;
             } 
-
-            switch (view_mode) {
-            case ViewMode.MILLER:
-                /* reset the panes style */
-                var ctx = window.main_box.get_style_context();
-                ctx.remove_class("contextview-horizontal");
-                ctx.remove_class("contextview-vertical");
-                window.main_box.reset_style ();
-
-                if (window.contextview != null) {
-                    window.main_box.remove (window.contextview);
-                    window.contextview = null;
-                }
-                break;
-            default:
-                if (window.contextview == null &&
-                    ((Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane")).get_active())
-                {
-                    window.contextview = new ContextView(window, true, window.main_box.orientation);
+                
+            if (window.contextview == null &&
+                ((Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane")).get_active())
+            {
+                window.contextview = new ContextView(window, true, window.main_box.orientation);
                     
-                    window.main_box.notify.connect((prop) => {
-                        if(window.contextview != null && prop.name == "orientation")
-                            window.contextview.parent_orientation = window.main_box.orientation;
-                    });
-                    window.main_box.pack2(window.contextview, false, true);
-                }
-                break;
+                window.main_box.notify.connect((prop) => {
+                    if(window.contextview != null && prop.name == "orientation")
+                        window.contextview.parent_orientation = window.main_box.orientation;
+                });
+                window.main_box.pack2(window.contextview, false, true);
+                window.contextview.show ();
             }
         }
 

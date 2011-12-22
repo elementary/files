@@ -297,15 +297,15 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 static void
 directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
 {
-    /* Apparently we need a queue_draw sometimes, the view is not refreshed until an event */
-    if (gof_directory_async_is_empty (directory))
-        gtk_widget_queue_draw (GTK_WIDGET (view));
-
     /* disconnect the file_loaded signal once directory loaded */
     g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
 
     /* handle directory not found, contextview */
     marlin_view_view_container_directory_done_loading (MARLIN_VIEW_VIEW_CONTAINER (view->details->slot->ctab));
+
+    /* Apparently we need a queue_draw sometimes, the view is not refreshed until an event */
+    if (gof_directory_async_is_empty (directory))
+        gtk_widget_queue_draw (GTK_WIDGET (view));
 
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
 }
@@ -568,16 +568,6 @@ void
 fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location)
 {
     gof_window_columns_add_location(dview->details->slot, location);
-}
-
-void
-fm_directory_view_column_add_preview (FMDirectoryView *dview, GList *selection)
-{
-    MarlinViewContextView *contextview = marlin_view_context_view_new (MARLIN_VIEW_WINDOW (dview->details->window), FALSE, GTK_ORIENTATION_HORIZONTAL);
-    marlin_view_context_view_update (contextview, selection);
-    /* resize context view to match the default columns size 180+2 border px */
-    gtk_widget_set_size_request (GTK_WIDGET (contextview), 182, -1);
-    gof_window_columns_add_preview(dview->details->slot, GTK_WIDGET (contextview));
 }
 
 void
@@ -2821,12 +2811,18 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
 {
     GList *selection;
 
+    //g_message ("-- %s %s", G_STRFUNC, view->details->slot->directory->file->uri);
     view->details->selection_was_removed = FALSE;
     if (!gtk_widget_get_realized (GTK_WIDGET (view)))
         return;
   	if (view->details->updates_frozen)
         return;
+    /* when we're in column view ignore selection changed from other slot than the active one */
+    if (view->details->slot->mwcols && 
+        view->details->slot->mwcols->active_slot != view->details->slot)
+        return;
 
+    //g_message ("%s %s", G_STRFUNC, view->details->slot->directory->file->uri);
     selection = fm_directory_view_get_selection (view);
     update_menus (view);
     g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "selection_changed", selection);
@@ -2858,6 +2854,7 @@ fm_directory_view_set_active_slot (FMDirectoryView *view)
 
     g_warning ("%s", G_STRFUNC);
     gof_window_slot_active (view->details->slot);
+
     /* make sure to grab focus as right click menus don't automaticly get it */
     //fm_directory_view_grab_focus (GTK_WIDGET (view));
 }
