@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-11-30 18:23+0000\n"
+"PO-Revision-Date: 2011-12-22 04:04+0000\n"
 "Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
 "Language-Team: Telugu <te@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-12-01 05:51+0000\n"
-"X-Generator: Launchpad (build 14414)\n"
+"X-Launchpad-Export-Date: 2011-12-22 05:33+0000\n"
+"X-Generator: Launchpad (build 14560)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -111,7 +111,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:138
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
@@ -127,7 +127,7 @@ msgstr "ప్రదర్శన"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
 msgid "Extensions"
-msgstr ""
+msgstr "పొడగింతలు"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
 msgid "Name"
@@ -251,16 +251,18 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"సహకరించు సేవక పద్ధతి జాబితాను లోడుచేయలేకపోతుంది.\n"
+"దయచేసి మీ gvfs స్థాపనను సరిచూడండి."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "\"%s\" అను సంచయము \"%s\" పై తెరవబడదు."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "\"%s\" వద్ద సేవకము కనిపించుటలేదు."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
@@ -268,7 +270,7 @@ msgstr "మళ్ళీ ప్రయత్నించు"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr ""
+msgstr "దయచేసి మీ వాడుకరి వివరాలను సరిచూచుకోండి."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
@@ -337,6 +339,9 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"ఫైల్ నిర్వాహకముతో ఫైల్ వ్యవస్థలో విహరించు"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
@@ -368,13 +373,13 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:386
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "ఫైల్ వ్యవస్థలో ఉన్న విషయములను తెరువు"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:445
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:470
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "%s ని మౌంటుచేసి తెరవండి"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:583
 msgid "Your network places"
@@ -386,7 +391,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:616
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "నెట్‌వర్క్ యొక్క విషయాలను అన్వేషించు"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Start"
@@ -444,7 +449,7 @@ msgstr "%s ను నెట్టివేయలేకపోతుంది"
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2187
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "మాధ్యమం మార్పుల కొరకు %s కు మద్దతు తెలుపలేకపోతోంది"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2297
 #, c-format
@@ -513,8 +518,8 @@ msgstr ""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ఎంచుకున్న అంశమును తెరుచుటకు \"%s\"ను వాడు"
+msgstr[1] "ఎంచుకున్న అంశములను తెరుచుటకు \"%s\"ను వాడు"
 
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1821
 #, c-format

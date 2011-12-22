@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-14 05:05+0000\n"
-"Last-Translator: Ярик Ермаков <Unknown>\n"
+"PO-Revision-Date: 2011-12-22 01:27+0000\n"
+"Last-Translator: Alexander Seleznev <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-12-15 05:54+0000\n"
-"X-Generator: Launchpad (build 14487)\n"
+"X-Launchpad-Export-Date: 2011-12-22 05:33+0000\n"
+"X-Generator: Launchpad (build 14560)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -56,7 +56,7 @@ msgstr "Домашняя папка"
 #: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:124
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:384
 msgid "File System"
-msgstr "Файловая Система"
+msgstr "Файловая система"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
@@ -72,7 +72,7 @@ msgstr "Скорость авто-выбора мыши:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
-msgstr "Свойства диалогового набора модальных:"
+msgstr "Выводить окно настроек в модальном режиме"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "Default File Manager:"
@@ -116,7 +116,7 @@ msgstr "iso"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
-msgstr "неформальный"
+msgstr "неофициальный"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:157
 msgid "Date format:"
@@ -168,7 +168,7 @@ msgstr "Информация"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:93
 msgid "Permissions"
-msgstr "Права"
+msgstr "Права доступа"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:104
 msgid "Preview"
@@ -176,7 +176,7 @@ msgstr "Предпросмотр"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:298
 msgid "Created"
-msgstr "Создано"
+msgstr "Создан"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:300
 msgid "Last Access"
@@ -188,27 +188,27 @@ msgstr "Удалено"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:308
 msgid "MimeType"
-msgstr "MimeType"
+msgstr "Тип MIME"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Location"
-msgstr "Расположение"
+msgstr "Адрес"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:318
 msgid "Origin Location"
-msgstr "Расположение"
+msgstr "Ссылка на"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
-msgstr "Прочитать"
+msgstr "Чтение"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:439
 msgid "Write"
-msgstr "Записать"
+msgstr "Запись"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:444
 msgid "Execute"
-msgstr "Запустить"
+msgstr "Выполнение"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:667
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:679
@@ -267,7 +267,7 @@ msgstr "Не удалось найти сервер на «%s»."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr "Попробовать снова"
+msgstr "Повторить"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
@@ -284,7 +284,7 @@ msgstr "_Подключиться"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr "Подключение к серверу"
+msgstr "Подключиться к серверу"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
@@ -308,7 +308,7 @@ msgstr "Р_есурс:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr "_Папка:"
+msgstr "_Каталог:"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
@@ -332,7 +332,7 @@ msgstr "_Запомнить этот пароль"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr "Действие отменено"
+msgstr "Операция отменена"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -350,7 +350,7 @@ msgstr "параметр --quit нельзя использовать с адр�
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:300
 msgid "Personal"
-msgstr "Личное"
+msgstr "Персональное"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:305
 msgid "Your common places and bookmarks"
@@ -358,7 +358,7 @@ msgstr "Ваши общие места и закладки"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:319
 msgid "Open your personal folder"
-msgstr "Открыть личную папку"
+msgstr "Открыть домашнюю папку"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:362
 msgid "Open the trash"
@@ -366,7 +366,7 @@ msgstr "Открыть корзину"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:372
 msgid "Devices"
-msgstr "Устройства"
+msgstr "Оборудование"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:377
 msgid "Your local partitions and devices"
@@ -374,7 +374,7 @@ msgstr "Ваши локальные разделы и устройства"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:386
 msgid "Open the contents of the File System"
-msgstr "Открыть содержимое файловой системы"
+msgstr "Показать содержимое файловой системы"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:445
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:470
@@ -392,47 +392,47 @@ msgstr "Вся сеть"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:616
 msgid "Browse the contents of the network"
-msgstr "Обзор содержимого сети"
+msgstr "Показать содержимое сети"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1600
 msgid "_Start"
-msgstr "_Начать"
+msgstr "_Запуск"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1601
 msgid "_Stop"
-msgstr "_Стоп"
+msgstr "_Остановить"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1606
 msgid "_Power On"
-msgstr "Подключить"
+msgstr "_Включить"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1607
 msgid "_Safely Remove Drive"
-msgstr "_Безопасно отключить носитель"
+msgstr "_Безопасно извлечь устройство"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1610
 msgid "_Connect Drive"
-msgstr "_Присоеденить диск"
+msgstr "_Подключить устройство"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1611
 msgid "_Disconnect Drive"
-msgstr "_Отсоединить диск"
+msgstr "_Отключить устройство"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1614
 msgid "_Start Multi-disk Device"
-msgstr "_Запустить мультидисковое устройство"
+msgstr "_Запустить многодисковое устройство"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1615
 msgid "_Stop Multi-disk Device"
-msgstr "О_становить мультидисковое устройство"
+msgstr "_Остановить многодисковое устройство"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1619
 msgid "_Unlock Drive"
-msgstr "_Разблокировать диск"
+msgstr "_Разблокировать устройство"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1620
 msgid "_Lock Drive"
-msgstr "_Заблокировать диск"
+msgstr "_Заблокировать устройство"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1694
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2241
@@ -465,7 +465,7 @@ msgstr "_Открыть"
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2397
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1852
 msgid "Open in New _Tab"
-msgstr "Открыть в новой вк_ладке"
+msgstr "Открыть в новой _вкладке"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2404
 #: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1861
@@ -482,11 +482,11 @@ msgstr "Переименовать…"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2434
 msgid "_Mount"
-msgstr "_Присоединить"
+msgstr "_Подключить"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2441
 msgid "_Unmount"
-msgstr "О_тсоединить том"
+msgstr "_Отключить"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2448
 msgid "_Eject"

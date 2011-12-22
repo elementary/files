@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-15 00:35+0000\n"
-"Last-Translator: Paulo Roberto de Oliveira Castro <Unknown>\n"
+"PO-Revision-Date: 2011-12-21 12:11+0000\n"
+"Last-Translator: Fitoschido <fitoschido@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2011-12-16 06:11+0000\n"
-"X-Generator: Launchpad (build 14523)\n"
+"X-Launchpad-Export-Date: 2011-12-22 05:33+0000\n"
+"X-Generator: Launchpad (build 14560)\n"
 "Language: pt_BR\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
@@ -41,7 +41,7 @@ msgstr "Criar a pasta %s"
 #: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:95
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:360
 msgid "Trash"
-msgstr ""
+msgstr "Lixeira"
 
 #: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:96
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:578
@@ -116,7 +116,7 @@ msgstr "padrão"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
-msgstr ""
+msgstr "informal"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:157
 msgid "Date format:"
@@ -136,7 +136,7 @@ msgstr "Nome"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:281
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:284
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:312
