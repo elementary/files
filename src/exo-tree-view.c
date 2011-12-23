@@ -63,6 +63,12 @@ enum
     PROP_SINGLE_CLICK_TIMEOUT,
 };
 
+/* Signals */
+enum
+{
+    ITEM_HOVERED,
+    LAST_SIGNAL
+};
 
 
 static void     exo_tree_view_finalize                      (GObject          *object);
@@ -113,7 +119,7 @@ struct _ExoTreeViewPrivate
     GtkTreePath *hover_path;
 };
 
-
+static guint tree_view_signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (ExoTreeView, exo_tree_view, GTK_TYPE_TREE_VIEW)
 
@@ -179,6 +185,24 @@ exo_tree_view_class_init (ExoTreeViewClass *klass)
                                                         _("The amount of time after which the item under the mouse cursor will be selected automatically in single click mode"),
                                                         0, G_MAXUINT, 0,
                                                         G_PARAM_READWRITE));
+
+    /**
+     * ExoTreeView::item-hovered:
+     * @treeview: the object on which the signal is emitted
+     * @path: the #GtkTreePath for the activated item
+     *
+     * The ::item-hovered signal is emitted when an item is hovered by the mouse.
+     */
+    tree_view_signals[ITEM_HOVERED] =
+        g_signal_new (I_("item-hovered"),
+                      G_TYPE_FROM_CLASS (gobject_class),
+                      G_SIGNAL_RUN_LAST,
+                      G_STRUCT_OFFSET (ExoTreeViewClass, item_hovered),
+                      NULL, NULL,
+                      g_cclosure_marshal_VOID__BOXED,
+                      G_TYPE_NONE, 1,
+                      GTK_TYPE_TREE_PATH);
+
 }
 
 
@@ -504,6 +528,14 @@ exo_tree_view_button_release_event (GtkWidget      *widget,
 }
 
 
+static void
+exo_tree_view_item_hovered (ExoTreeView      *tree_view,
+                            GtkTreePath      *path)
+{
+    g_return_if_fail (EXO_IS_TREE_VIEW (tree_view));
+
+    g_signal_emit (tree_view, tree_view_signals[ITEM_HOVERED], 0, path);
+}
 
 static gboolean
 exo_tree_view_motion_notify_event (GtkWidget      *widget,
@@ -540,6 +572,7 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
 
                 /* setup the new path */
                 tree_view->priv->hover_path = path;
+                exo_tree_view_item_hovered (tree_view, path);
 
                 /* check if we're over a row right now */
                 if (G_LIKELY (path != NULL))
@@ -569,9 +602,11 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
                     tree_view->priv->single_click_timeout_id = g_timeout_add_full (G_PRIORITY_LOW, tree_view->priv->single_click_timeout, exo_tree_view_single_click_timeout, tree_view, exo_tree_view_single_click_timeout_destroy);
                 }
             }
-            
-            /* release the path resources */
-            gtk_tree_path_free (path);
+            else
+            {            
+                /* release the path resources */
+                gtk_tree_path_free (path);
+            }
         }
     }
 
@@ -594,6 +629,7 @@ exo_tree_view_leave_notify_event (GtkWidget        *widget,
     /* release and reset the hover path (if any) */
     gtk_tree_path_free (tree_view->priv->hover_path);
     tree_view->priv->hover_path = NULL;
+    exo_tree_view_item_hovered (tree_view, NULL);
 
     /* reset the cursor for the tree view internal window */
     if (gtk_widget_get_realized (GTK_WIDGET (tree_view)))

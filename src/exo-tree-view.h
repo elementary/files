@@ -46,6 +46,10 @@ struct _ExoTreeViewClass
     /*< private >*/
     GtkTreeViewClass __parent__;
 
+    /* signals */
+    void    (* item_hovered)           (ExoTreeView      *tree_view,
+                                        GtkTreePath      *path);
+
     /*< private >*/
     void (*reserved1) (void);
     void (*reserved2) (void);
