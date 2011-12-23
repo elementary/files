@@ -43,18 +43,18 @@ typedef struct _ExoTreeView        ExoTreeView;
 
 struct _ExoTreeViewClass
 {
-  /*< private >*/
-  GtkTreeViewClass __parent__;
+    /*< private >*/
+    GtkTreeViewClass __parent__;
 
-  /*< private >*/
-  void (*reserved1) (void);
-  void (*reserved2) (void);
-  void (*reserved3) (void);
-  void (*reserved4) (void);
-  void (*reserved5) (void);
-  void (*reserved6) (void);
-  void (*reserved7) (void);
-  void (*reserved8) (void);
+    /*< private >*/
+    void (*reserved1) (void);
+    void (*reserved2) (void);
+    void (*reserved3) (void);
+    void (*reserved4) (void);
+    void (*reserved5) (void);
+    void (*reserved6) (void);
+    void (*reserved7) (void);
+    void (*reserved8) (void);
 };
 
 /**
@@ -62,14 +62,14 @@ struct _ExoTreeViewClass
  *
  * The #ExoIconView struct contains only private fields and should
  * not be directly accessed.
- **/
+**/
 struct _ExoTreeView
 {
-  /*< private >*/
-  GtkTreeView __parent__;
+    /*< private >*/
+    GtkTreeView __parent__;
 
-  /*< private >*/
-  ExoTreeViewPrivate *priv;
+    /*< private >*/
+    ExoTreeViewPrivate *priv;
 };
 
 GType      exo_tree_view_get_type                 (void) G_GNUC_CONST;
