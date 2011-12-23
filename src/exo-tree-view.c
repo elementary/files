@@ -203,8 +203,7 @@ exo_tree_view_finalize (GObject *object)
         g_source_remove (tree_view->priv->single_click_timeout_id);
 
     /* be sure to release the hover path */
-    if (G_UNLIKELY (tree_view->priv->hover_path == NULL))
-        gtk_tree_path_free (tree_view->priv->hover_path);
+    gtk_tree_path_free (tree_view->priv->hover_path);
 
     (*G_OBJECT_CLASS (exo_tree_view_parent_class)->finalize) (object);
 }
@@ -393,8 +392,7 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
     }
 
     /* release the path (if any) */
-    if (G_LIKELY (path != NULL))
-        gtk_tree_path_free (path);
+    gtk_tree_path_free (path);
 
     /* release the selected paths list */
     g_list_foreach (selected_paths, (GFunc) gtk_tree_path_free, NULL);
@@ -512,7 +510,7 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
                                    GdkEventMotion *event)
 {
     ExoTreeView *tree_view = EXO_TREE_VIEW (widget);
-    GtkTreePath *path;
+    GtkTreePath *path = NULL;
     GdkCursor   *cursor;
 
     /* check if the event occurred on the tree view internal window and we are in single-click mode */
@@ -530,16 +528,15 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
         else
         {
             /* determine the path at the event coordinates */
-            if (!gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tree_view), event->x, event->y, &path, NULL, NULL, NULL))
-                path = NULL;
+            gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tree_view), event->x, event->y, &path, NULL, NULL, NULL);
 
             /* check if we have a new path */
-            if ((path == NULL && tree_view->priv->hover_path != NULL) || (path != NULL && tree_view->priv->hover_path == NULL)
-                || (path != NULL && tree_view->priv->hover_path != NULL && gtk_tree_path_compare (path, tree_view->priv->hover_path) != 0))
+            if ((path == NULL && tree_view->priv->hover_path != NULL) || 
+                (path != NULL && tree_view->priv->hover_path == NULL) || 
+                (path != NULL && tree_view->priv->hover_path != NULL && gtk_tree_path_compare (path, tree_view->priv->hover_path) != 0))
             {
                 /* release the previous hover path */
-                if (tree_view->priv->hover_path != NULL)
-                    gtk_tree_path_free (tree_view->priv->hover_path);
+                gtk_tree_path_free (tree_view->priv->hover_path);
 
                 /* setup the new path */
                 tree_view->priv->hover_path = path;
@@ -569,17 +566,12 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
                     tree_view->priv->single_click_timeout_state = event->state;
 
                     /* schedule a new single-click timeout */
-                    tree_view->priv->single_click_timeout_id = g_timeout_add_full (G_PRIORITY_LOW, tree_view->priv->single_click_timeout,
-                                                                                   exo_tree_view_single_click_timeout, tree_view,
-                                                                                   exo_tree_view_single_click_timeout_destroy);
+                    tree_view->priv->single_click_timeout_id = g_timeout_add_full (G_PRIORITY_LOW, tree_view->priv->single_click_timeout, exo_tree_view_single_click_timeout, tree_view, exo_tree_view_single_click_timeout_destroy);
                 }
             }
-            else
-            {
-                /* release the path resources */
-                if (path != NULL)
-                    gtk_tree_path_free (path);
-            }
+            
+            /* release the path resources */
+            gtk_tree_path_free (path);
         }
     }
 
@@ -600,11 +592,8 @@ exo_tree_view_leave_notify_event (GtkWidget        *widget,
         g_source_remove (tree_view->priv->single_click_timeout_id);
 
     /* release and reset the hover path (if any) */
-    if (tree_view->priv->hover_path != NULL)
-    {
-        gtk_tree_path_free (tree_view->priv->hover_path);
-        tree_view->priv->hover_path = NULL;
-    }
+    gtk_tree_path_free (tree_view->priv->hover_path);
+    tree_view->priv->hover_path = NULL;
 
     /* reset the cursor for the tree view internal window */
     if (gtk_widget_get_realized (GTK_WIDGET (tree_view)))
@@ -646,11 +635,8 @@ exo_tree_view_move_cursor (GtkTreeView    *view,
         g_source_remove (tree_view->priv->single_click_timeout_id);
 
     /* release and reset the hover path (if any) */
-    if (tree_view->priv->hover_path != NULL)
-    {
-        gtk_tree_path_free (tree_view->priv->hover_path);
-        tree_view->priv->hover_path = NULL;
-    }
+    gtk_tree_path_free (tree_view->priv->hover_path);
+    tree_view->priv->hover_path = NULL;
 
     /* reset the cursor for the tree view internal window */
     if (gtk_widget_get_realized (GTK_WIDGET (tree_view)))
@@ -766,8 +752,7 @@ exo_tree_view_single_click_timeout (gpointer user_data)
             }
 
             /* cleanup */
-            if (G_LIKELY (cursor_path != NULL))
-                gtk_tree_path_free (cursor_path);
+            gtk_tree_path_free (cursor_path);
         }
     }
 
