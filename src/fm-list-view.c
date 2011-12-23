@@ -153,6 +153,12 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 }
 
 static void
+fm_list_view_item_hovered (ExoTreeView *exo_tree, GtkTreePath *path, FMListView *view)
+{
+    fm_directory_view_notify_item_hovered (FM_DIRECTORY_VIEW (view), path);
+}
+
+static void
 row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *path, FMListView *view)
 {
     g_debug ("%s\n", G_STRFUNC);
@@ -650,6 +656,7 @@ create_and_set_up_tree_view (FMListView *view)
     gtk_tree_view_set_rubber_banding (view->tree, TRUE);
     gtk_tree_view_set_rules_hint (view->tree, TRUE);
 
+    g_signal_connect (view->tree, "item-hovered", G_CALLBACK (fm_list_view_item_hovered), view);
     g_signal_connect_object (gtk_tree_view_get_selection (view->tree), "changed",
                              G_CALLBACK (list_selection_changed_callback), view, 0);
 
