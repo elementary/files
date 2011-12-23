@@ -1,8 +1,12 @@
-namespace Marlin.Animation{
-    static void smooth_adjustment_upper(Gtk.Adjustment adj) {
+namespace Marlin.Animation {
+    
+    static void smooth_adjustment_to (Gtk.Adjustment adj, int final) 
+    {
         var initial = adj.value;
-        var final = adj.upper - adj.page_size;
         var to_do = final - initial;
+        int factor;
+        (to_do > 0) ? factor = 1 : factor = -1;
+        to_do = (double) (((int) to_do).abs () + 1);
         var newvalue = 0;
         var old_adj_value = adj.value;
 
@@ -19,10 +23,11 @@ namespace Marlin.Animation{
 
             newvalue += 10;
 
-            adj.value = initial + Math.sin(((double)newvalue/(double)to_do)*Math.PI/2)*to_do;
+            adj.value = initial + factor * Math.sin(((double)newvalue/(double)to_do)*Math.PI/2)*to_do;
             old_adj_value = adj.value;
             return true;
         });
     }
+
 }
 

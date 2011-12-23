@@ -46,6 +46,7 @@ typedef struct {
     GtkWidget *view_box;
     GtkWidget *colpane;
     GtkAdjustment *hadj;
+    gint handle_size;
 
     /* Current location. */
     GFile *location;

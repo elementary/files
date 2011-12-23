@@ -29,14 +29,6 @@ G_DEFINE_TYPE (MarlinWindowColumns, marlin_window_columns, G_TYPE_OBJECT)
 
 #define parent_class marlin_window_columns_parent_class
 
-static void
-hadj_changed (GtkAdjustment *hadj, gpointer user_data)
-{
-    MarlinWindowColumns *mwcols = MARLIN_WINDOW_COLUMNS (user_data);
-    marlin_animation_smooth_adjustment_upper(hadj);
-    gtk_adjustment_value_changed (hadj);
-}
-
 /**
  * Handle key release events, like the left and right keys to change the
  * active column.
@@ -136,13 +128,13 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
 
     mwcols->hadj = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (slot->mwcols->view_box));
 
-    /* autoscroll Miller Columns */
-    g_signal_connect(mwcols->hadj, "changed", (GCallback) hadj_changed, mwcols);
-
-    gof_window_column_add(slot, slot->view_box);
+    gof_window_column_add (slot, slot->view_box);
 
     marlin_view_view_container_set_content ((MarlinViewViewContainer *) mwcols->ctab, mwcols->view_box);
     
+    /* store pane handle size*/
+    gtk_widget_style_get (GTK_WIDGET (slot->hpane), "handle-size", &mwcols->handle_size, NULL);
+
     /* Left/Right events */
     gtk_widget_add_events (GTK_WIDGET(mwcols->colpane), GDK_KEY_RELEASE_MASK);
     g_signal_connect (mwcols->colpane, "key_release_event", (GCallback)marlin_window_columns_key_pressed, mwcols);
@@ -166,7 +158,7 @@ marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location)
     gof_window_slot_make_column_view (slot);
     slot->mwcols = mwcols;
     slot->colpane = mwcols->active_slot->colpane;
-    gof_window_column_add(slot, slot->view_box);
+    gof_window_column_add (slot, slot->view_box);
     //mwcols->active_slot = slot;
     /* Add it in our GList */
     mwcols->slot = g_list_append(mwcols->slot, slot);
@@ -177,18 +169,23 @@ void
 marlin_window_columns_active_slot (MarlinWindowColumns *mwcols, GOFWindowSlot *slot) 
 {
     GList *l;
+    int slot_indice, i;
 
     g_return_if_fail (MARLIN_IS_WINDOW_COLUMNS (mwcols));
     g_return_if_fail (GOF_IS_WINDOW_SLOT (slot));
     
-    mwcols->active_slot = slot;
-    for (l = mwcols->slot; l != NULL; l=l->next)
+    for (i=0, l=mwcols->slot; l != NULL; l=l->next, i++)
     {
         //g_message ("list >> %s", GOF_WINDOW_SLOT (l->data)->directory->file->uri);
         if (l->data != slot)
             g_signal_emit_by_name (GOF_WINDOW_SLOT (l->data), "inactive");
+        else
+            slot_indice = i;
     }
+    mwcols->active_slot = slot;
     g_signal_emit_by_name (slot, "active");
+    /* autoscroll Miller Columns */
+    marlin_animation_smooth_adjustment_to (mwcols->hadj, slot_indice * (mwcols->preferred_column_width + mwcols->handle_size));
 }
 
 static void
