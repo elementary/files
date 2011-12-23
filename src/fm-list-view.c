@@ -377,6 +377,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
     GtkAction           *action;
     GOFFile             *file;
 
+    selection = gtk_tree_view_get_selection (tree_view);
     /* check if the event is for the bin window */
     if (G_UNLIKELY (event->window != gtk_tree_view_get_bin_window (tree_view)))
         return FALSE;
@@ -387,14 +388,12 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
     if ((event->state & gtk_accelerator_get_default_mod_mask ()) == 0
         && !gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL))
     {
-        selection = gtk_tree_view_get_selection (tree_view);
         gtk_tree_selection_unselect_all (selection);
     }
 
     /* open the context menu on right clicks */
     if (event->type == GDK_BUTTON_PRESS && event->button == 3)
     {
-        selection = gtk_tree_view_get_selection (tree_view);
         if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
         {
             /* select the path on which the user clicked if not selected yet */
@@ -420,7 +419,6 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
         if (gtk_tree_view_get_path_at_pos (tree_view, event->x, event->y, &path, NULL, NULL, NULL))
         {
             /* select only the path to the item on which the user clicked */
-            selection = gtk_tree_view_get_selection (tree_view);
             gtk_tree_selection_unselect_all (selection);
             gtk_tree_selection_select_path (selection, path);
 
