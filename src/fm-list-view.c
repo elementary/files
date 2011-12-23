@@ -403,18 +403,14 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
                 /* we don't unselect all other items if Control is active */
                 if ((event->state & GDK_CONTROL_MASK) == 0)
                     gtk_tree_selection_unselect_all (selection);
-                gtk_tree_selection_select_path (selection, path);
+                if (!gtk_tree_view_is_blank_at_pos (tree_view, event->x, event->y, NULL, NULL, NULL, NULL)	&& gtk_tree_path_get_depth (path) == 1) 
+                    gtk_tree_selection_select_path (selection, path);
             }
+            
             gtk_tree_path_free (path);
-
-            /* queue the menu popup */
-            fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
         }
-        else
-        {
-            /* open the context menu */
-            fm_directory_view_context_menu (FM_DIRECTORY_VIEW (view), event);
-        }
+        /* queue the menu popup */
+        fm_directory_view_queue_popup (FM_DIRECTORY_VIEW (view), event);
 
         return TRUE;
     }
@@ -438,7 +434,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
 
             /* cleanup */
             gtk_tree_path_free (path);
-        }
+        } 
 
         return TRUE;
     }
