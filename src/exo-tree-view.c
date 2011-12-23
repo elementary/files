@@ -289,7 +289,7 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
     if (G_LIKELY (event->window == gtk_tree_view_get_bin_window (GTK_TREE_VIEW (tree_view))))
     {
         /* determine the path at the event coordinates */
-        gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tree_view), event->x, event->y, &path, NULL, NULL, NULL)
+        gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (tree_view), event->x, event->y, &path, NULL, NULL, NULL);
 
         /* we unselect all selected items if the user clicks on an empty
          * area of the tree view and no modifier key is active.
