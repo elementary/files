@@ -991,8 +991,7 @@ fm_directory_view_get_dest_actions (FMDirectoryView     *view,
     /* clean up */
     if (G_LIKELY (file != NULL))
         g_object_unref (G_OBJECT (file));
-    if (G_LIKELY (path != NULL))
-        gtk_tree_path_free (path);
+    gtk_tree_path_free (path);
 
     return actions;
 }
@@ -1378,8 +1377,7 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
             /* cleanup */
             if (G_LIKELY (file != NULL))
                 g_object_unref (G_OBJECT (file));
-            if (G_LIKELY (path != NULL))
-                gtk_tree_path_free (path);
+            gtk_tree_path_free (path);
         }
         else
         {

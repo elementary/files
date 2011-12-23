@@ -232,9 +232,7 @@ compare_for_selection (MarlinPlacesSidebar *sidebar,
 
     if (eel_strcmp (added_uri, last_uri) == 0) {
         /* last_uri always comes first */
-        if (*path != NULL) {
-            gtk_tree_path_free (*path);
-        }
+        gtk_tree_path_free (*path);
         *path = gtk_tree_model_get_path (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
                                          iter);
     } else if (eel_strcmp (location, added_uri) == 0) {
@@ -787,10 +785,8 @@ over_eject_button (MarlinPlacesSidebar *sidebar,
     }
 
 out:
-    if (*path != NULL) {
-        gtk_tree_path_free (*path);
-        *path = NULL;
-    }
+    gtk_tree_path_free (*path);
+    *path = NULL;
 
     return FALSE;
 }
@@ -3074,10 +3070,8 @@ marlin_places_sidebar_dispose (GObject *object)
 
     free_drag_data (sidebar);
 
-    if (sidebar->eject_highlight_path != NULL) {
-        gtk_tree_path_free (sidebar->eject_highlight_path);
-        sidebar->eject_highlight_path = NULL;
-    }
+    gtk_tree_path_free (sidebar->eject_highlight_path);
+    sidebar->eject_highlight_path = NULL;
 
     if (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store != NULL) {
         g_object_unref (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store);

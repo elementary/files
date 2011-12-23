@@ -219,11 +219,8 @@ static void tb_editor_scroll_to_iter(GtkTreeView *treeview, GtkTreeIter *iter)
 
 static void tb_editor_free_path(TBEditorWidget *tbw)
 {
-    if (tbw->last_drag_path != NULL)
-    {
-        gtk_tree_path_free(tbw->last_drag_path);
-        tbw->last_drag_path = NULL;
-    }
+    gtk_tree_path_free(tbw->last_drag_path);
+    tbw->last_drag_path = NULL;
 }
 
 static void tb_editor_btn_remove_clicked_cb(GtkWidget *button, TBEditorWidget *tbw)
@@ -291,8 +288,7 @@ static void tb_editor_btn_add_clicked_cb(GtkWidget *button, TBEditorWidget *tbw)
 static gboolean tb_editor_drag_motion_cb(GtkWidget *widget, GdkDragContext *drag_context,
                                          gint x, gint y, guint ltime, TBEditorWidget *tbw)
 {
-    if (tbw->last_drag_path != NULL)
-        gtk_tree_path_free(tbw->last_drag_path);
+    gtk_tree_path_free(tbw->last_drag_path);
     gtk_tree_view_get_drag_dest_row(GTK_TREE_VIEW(widget),
                                     &(tbw->last_drag_path), &(tbw->last_drag_pos));
 
