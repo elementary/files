@@ -535,13 +535,13 @@ filename_cell_data_func (GtkTreeViewColumn *column,
                          GtkCellRenderer   *renderer,
                          GtkTreeModel      *model,
                          GtkTreeIter       *iter,
-                         gpointer          *data)
+                         FMListView        *view)
 {
     char *text;
     char *color;
     GdkRGBA rgba;
 
-    //GtkTreePath *path;
+    GtkTreePath *path, *hover_path;
     PangoUnderline underline;
 
     gtk_tree_model_get (model, iter,
@@ -565,21 +565,19 @@ filename_cell_data_func (GtkTreeViewColumn *column,
       }
       g_free (color);*/
 
-    /*if (click_policy_auto_value == NAUTILUS_CLICK_POLICY_SINGLE) {
-      path = gtk_tree_model_get_path (model, iter);
+	underline = PANGO_UNDERLINE_NONE;
+    if (exo_tree_view_get_single_click (EXO_TREE_VIEW (view->tree))) {
+		path = gtk_tree_model_get_path (model, iter);
+        hover_path = exo_tree_view_get_hover_path (EXO_TREE_VIEW (view->tree));
 
-      if (view->details->hover_path == NULL ||
-      gtk_tree_path_compare (path, view->details->hover_path)) {
-      underline = PANGO_UNDERLINE_NONE;
-      } else {
-      underline = PANGO_UNDERLINE_SINGLE;
-      }
+		if (hover_path == NULL || gtk_tree_path_compare (path, hover_path)) {
+			underline = PANGO_UNDERLINE_NONE;
+		} else {
+			underline = PANGO_UNDERLINE_SINGLE;
+		}
 
-      gtk_tree_path_free (path);
-      } else {*/
-    underline = PANGO_UNDERLINE_NONE;
-    //underline = PANGO_UNDERLINE_SINGLE;
-    //}
+		gtk_tree_path_free (path);
+	}
 
     g_object_set (G_OBJECT (renderer),
                   "text", text,
@@ -701,7 +699,7 @@ create_and_set_up_tree_view (FMListView *view)
             gtk_tree_view_column_pack_start (col, renderer, TRUE);
             gtk_tree_view_column_set_cell_data_func (col, renderer,
                                                      (GtkTreeCellDataFunc) filename_cell_data_func,
-                                                     NULL, NULL);
+                                                     view, NULL);
         } else {
             renderer = gtk_cell_renderer_text_new( );
             col = gtk_tree_view_column_new_with_attributes(gettext(col_title[k-3]), renderer, "text", k, NULL);

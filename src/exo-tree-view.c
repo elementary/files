@@ -835,7 +835,7 @@ exo_tree_view_new (void)
  * Since: 0.3.1.3
 **/
 gboolean
-exo_tree_view_get_single_click (const ExoTreeView *tree_view)
+exo_tree_view_get_single_click (ExoTreeView *tree_view)
 {
     g_return_val_if_fail (EXO_IS_TREE_VIEW (tree_view), FALSE);
     return tree_view->priv->single_click;
@@ -883,7 +883,7 @@ exo_tree_view_set_single_click (ExoTreeView *tree_view,
  * Since: 0.3.1.5
 **/
 guint
-exo_tree_view_get_single_click_timeout (const ExoTreeView *tree_view)
+exo_tree_view_get_single_click_timeout (ExoTreeView *tree_view)
 {
     g_return_val_if_fail (EXO_IS_TREE_VIEW (tree_view), 0u);
     return tree_view->priv->single_click_timeout;
@@ -926,6 +926,13 @@ exo_tree_view_set_single_click_timeout (ExoTreeView *tree_view,
         /* notify listeners */
         g_object_notify (G_OBJECT (tree_view), "single-click-timeout");
     }
+}
+
+GtkTreePath *
+exo_tree_view_get_hover_path (ExoTreeView *tree_view)
+{
+    g_return_val_if_fail (EXO_IS_TREE_VIEW (tree_view), NULL);
+    return tree_view->priv->hover_path;
 }
 
 
