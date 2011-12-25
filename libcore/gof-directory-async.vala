@@ -90,9 +90,22 @@ public class GOF.Directory.Async : Object
         cancellable.reset ();
     }
 
+    private void clear_directory_info ()
+    {
+        if (idle_consume_changes_id != 0)
+            Source.remove((uint) idle_consume_changes_id);
+        monitor = null;
+        sorted_dirs = null;
+        file_hash.remove_all ();
+        files_count = 0;
+    }
+
     public void load ()
     {
-        if (state == State.NOT_LOADED) {
+        if (state != State.LOADED) {
+            /* clear directory info if it's not fully loaded */
+            if (state == State.LOADING) 
+                clear_directory_info ();
             if (!file.is_mounted) {
                 mount_mountable ();
                 return;
@@ -115,6 +128,7 @@ public class GOF.Directory.Async : Object
             if (file.info != null)
                 file.info_available ();
             foreach (GOF.File gof in file_hash.get_values ()) {
+                //if (gof != null  && gof.info != null && (!gof.is_hidden || show_hidden_files))
                 if (gof.info != null && (!gof.is_hidden || show_hidden_files))
                     file_loaded (gof);
             }

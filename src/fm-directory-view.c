@@ -2147,6 +2147,22 @@ fm_directory_view_select_first_for_empty_selection (FMDirectoryView *view)
     }
 }
 
+void 
+fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file)
+{
+    GtkTreeIter iter;
+    GtkTreePath *path;
+
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
+    if (!fm_list_model_get_first_iter_for_file (view->model, file, &iter))
+		return;
+
+    path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), &iter);
+    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, path);
+    gtk_tree_path_free (path);
+}
+
 static void
 set_metadata_callback (GObject *source_object, GAsyncResult *result, gpointer callback_data)
 {

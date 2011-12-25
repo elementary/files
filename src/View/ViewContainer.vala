@@ -33,6 +33,7 @@ namespace Marlin.View {
         Browser browser;
         public int view_mode = 0;
         //private ulong file_info_callback;
+        private GLib.List<GOF.File> select_childs = null;
 
         public signal void path_changed(File file);
         public signal void up();
@@ -146,6 +147,10 @@ namespace Marlin.View {
         public void directory_done_loading () {
             if (!slot.directory.file.exists)
                 content = new DirectoryNotFound (slot.directory, this);
+            if (select_childs != null) {
+                foreach (var child in select_childs)
+                    ((FM.Directory.View) slot.view_box).select_gof_file (child);
+            }
             sync_contextview();
 
             //coltest  TODO remove
@@ -154,11 +159,27 @@ namespace Marlin.View {
         }
 
         public void change_view(int nview, GLib.File? location){
-            if (location == null)
-                location = slot.location;
             view_mode = nview;
+            select_childs = null;
             if (window.top_menu.view_switcher != null)
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
+            if (location == null) {
+                /* we re just changing view keep the same location */
+                location = slot.location;
+                /* store the old selection to restore it */
+                if (slot != null) {
+                    unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
+                    foreach (var elem in list)
+                        select_childs.prepend (elem);
+                }
+            } else {
+                /* check if the requested location is a parent of the previous one */
+                if (slot != null) {
+                    var parent = slot.location.get_parent ();
+                    if (parent != null && parent.equal (location))
+                        select_childs.prepend (slot.directory.file);
+                }
+            }
             if (slot != null && slot.directory.file.exists) {
                 slot.directory.cancel();
             }

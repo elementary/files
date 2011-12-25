@@ -11,6 +11,7 @@ namespace FM {
             public void colorize_selection (int color);
             public signal void sync_selection ();
             public void notify_selection_changed ();
+            public unowned List<GOF.File> get_selection ();
             public void merge_menus ();
             public void unmerge_menus ();
             public void zoom_in ();
@@ -18,6 +19,7 @@ namespace FM {
             public void zoom_normal ();
             public unowned List<AppInfo>? get_open_with_apps ();
             public AppInfo? get_default_app ();
+            public void select_gof_file (GOF.File file);
         }
     }
 }
