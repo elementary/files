@@ -92,6 +92,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     int left_padding;
     int right_padding;
 
+    private Varka.IconFactory icon_factory;
+
+
     construct
     {
         add_events(Gdk.EventMask.BUTTON_PRESS_MASK
@@ -101,6 +104,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                   | Gdk.EventMask.POINTER_MOTION_MASK
                   | Gdk.EventMask.LEAVE_NOTIFY_MASK);
         init_clipboard();
+        icon_factory = Varka.IconFactory.get_default ();
         icons = new List<IconDirectory?>();
 
         button_context = new Button().get_style_context();
@@ -212,21 +216,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     
     protected void add_icon(IconDirectory icon)
     {
-        IconDirectory data = icon;
-        make_icon(ref data);
-        icons.append(data);
-    }
-        
-    void make_icon(ref IconDirectory icon)
-    {
-        try
-        {
-            icon.icon = IconTheme.get_default ().load_icon (icon.icon_name, 16, IconLookupFlags.GENERIC_FALLBACK);
-        }
-        catch (Error err)
-        {
-            stderr.printf ("Unable to load home icon: %s", err.message);
-        }
+        icon.icon = icon_factory.load_symbolic_icon (button_context, icon.icon_name, 16);
+        icons.append(icon);
     }
 
     protected void init_clipboard ()

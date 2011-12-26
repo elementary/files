@@ -13,7 +13,7 @@ set (DOLLAR "$")
 # Check for the deps
 
 find_package(PkgConfig)
-pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-1.0)
+pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-1.0 varka>=0.1)
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
@@ -40,6 +40,7 @@ PACKAGES
 gtk+-3.0
 gee-1.0
 posix
+varka
 OPTIONS
 --thread
 GENERATE_VAPI

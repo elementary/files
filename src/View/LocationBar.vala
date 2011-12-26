@@ -109,7 +109,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.PICTURES);
             if(dir.contains("/"))
             {
-                IconDirectory icon = {dir, "folder-images-symbolic", false, null, dir.split("/"), false, null};
+                IconDirectory icon = {dir, "folder-pictures-symbolic", false, null, dir.split("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
@@ -140,6 +140,15 @@ namespace Marlin.View.Chrome
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
+            
+            /* templates */
+            dir = Environment.get_user_special_dir(UserDirectory.TEMPLATES);
+            if(dir.contains("/"))
+            {
+                IconDirectory icon = {dir, "folder-templates-symbolic", false, null, dir.split("/"), false, null};
+                icon.exploded[0] = "/";
+                add_icon(icon);
+            }
 
             dir = Environment.get_home_dir();
             if(dir.contains("/"))
@@ -148,6 +157,7 @@ namespace Marlin.View.Chrome
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
+
             
             IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM, false, null, null, true, null};
             icon.exploded = {"/"};

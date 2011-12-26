@@ -100,14 +100,26 @@ static const GtkTargetEntry marlin_shortcuts_drop_targets [] = {
 G_DEFINE_TYPE (MarlinPlacesSidebar, marlin_places_sidebar, MARLIN_TYPE_ABSTRACT_SIDEBAR);
 
 static GdkPixbuf *
-get_eject_icon (gboolean highlighted)
+get_eject_icon (MarlinPlacesSidebar *sidebar, gboolean highlighted)
 {
-    GdkPixbuf *eject;
-    MarlinIconInfo *eject_icon_info;
-    int icon_size = 16;
+	GdkPixbuf *eject;
+    VarkaIconFactory *icon_factory;
+	GtkStyleContext *style;
+	GtkStateFlags state;
 
-    eject_icon_info = marlin_icon_info_lookup_from_name ("media-eject-symbolic", icon_size);
-    eject = marlin_icon_info_get_pixbuf_at_size (eject_icon_info, icon_size);
+    icon_factory = varka_icon_factory_get_default ();
+	style = gtk_widget_get_style_context (GTK_WIDGET (sidebar));
+
+    /* if we want to play with css... */
+	/*gtk_style_context_save (style);
+	gtk_style_context_add_class (style, "enter_class_here");
+
+    if (highlighted) {
+        state |= GTK_STATE_FLAG_PRELIGHT;
+        gtk_style_context_set_state (style, state);
+    }*/
+
+    eject = varka_icon_factory_load_symbolic_icon (icon_factory, style, "media-eject-symbolic", 16);
 
     if (highlighted) {
         GdkPixbuf *high;
@@ -115,11 +127,11 @@ get_eject_icon (gboolean highlighted)
         g_object_unref (eject);
         eject = high;
     }
+	//gtk_style_context_restore (style);
 
-    g_object_unref (eject_icon_info);
-
-    return eject;
+	return eject;
 }
+
 
 static void
 category_renderer_func (GtkTreeViewColumn *column,
@@ -191,7 +203,7 @@ add_place (MarlinPlacesSidebar *sidebar,
     }
 
     if (show_eject_button) {
-        eject = get_eject_icon (FALSE);
+        eject = get_eject_icon (sidebar, FALSE);
     } else {
         eject = NULL;
     }
@@ -2618,7 +2630,7 @@ update_eject_buttons (MarlinPlacesSidebar   *sidebar,
 
             gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store,
                                 &iter,
-                                PLACES_SIDEBAR_COLUMN_EJECT_ICON, get_eject_icon (FALSE),
+                                PLACES_SIDEBAR_COLUMN_EJECT_ICON, get_eject_icon (sidebar, FALSE),
                                 -1);
             //gtk_tree_model_row_changed (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), path, &iter);
 
@@ -2640,7 +2652,7 @@ update_eject_buttons (MarlinPlacesSidebar   *sidebar,
                                  path);
         gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store,
                             &iter,
-                            PLACES_SIDEBAR_COLUMN_EJECT_ICON, get_eject_icon (TRUE),
+                            PLACES_SIDEBAR_COLUMN_EJECT_ICON, get_eject_icon (sidebar, TRUE),
                             -1);
         //gtk_tree_model_row_changed (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), path, &iter);
 
