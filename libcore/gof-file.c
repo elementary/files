@@ -291,46 +291,50 @@ void    gof_file_update (GOFFile *file)
                 }
             }
 
-            /* read the display name from the .desktop file (will be overwritten later
-             * if it's undefined here) */
-            gchar *custom_display_name = g_key_file_get_string (key_file,
-                                                                G_KEY_FILE_DESKTOP_GROUP,
-                                                                G_KEY_FILE_DESKTOP_KEY_NAME,
-                                                                NULL);
-
-            /* check if we have a display name now */
-            if (custom_display_name != NULL)
+            /* desktop files interpretations */
+            if (g_settings_get_boolean (settings, "interpret-desktop-files")) 
             {
-                /* drop the name if it's empty or has invalid encoding */
-                if (*custom_display_name == '\0' 
-                    || !g_utf8_validate (custom_display_name, -1, NULL))
-                {
-                    _g_free0 (custom_display_name);
-                    custom_display_name = NULL;
-                } else {
-                    file->custom_display_name = custom_display_name;
-                }
-            }
+                /* read the display name from the .desktop file (will be overwritten later
+                 * if it's undefined here) */
+                gchar *custom_display_name = g_key_file_get_string (key_file,
+                                                                    G_KEY_FILE_DESKTOP_GROUP,
+                                                                    G_KEY_FILE_DESKTOP_KEY_NAME,
+                                                                    NULL);
 
-            /* check f we have a target location */
-            gchar *url;
-            gchar *type;
-
-            type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                          G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
-            if (eel_str_is_equal (type, "Link"))
-            {
-                url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                             G_KEY_FILE_DESKTOP_KEY_URL, NULL);
-                if (G_LIKELY (url != NULL))
+                /* check if we have a display name now */
+                if (custom_display_name != NULL)
                 {
-                    g_debug ("%s .desktop Link %s\n", G_STRFUNC, url);
-                    file->target_location = g_file_new_for_uri (url);
-                    gof_file_target_location_update (file);
-                    g_free (url);
+                    /* drop the name if it's empty or has invalid encoding */
+                    if (*custom_display_name == '\0' 
+                        || !g_utf8_validate (custom_display_name, -1, NULL))
+                    {
+                        _g_free0 (custom_display_name);
+                        custom_display_name = NULL;
+                    } else {
+                        file->custom_display_name = custom_display_name;
+                    }
                 }
+
+                /* check f we have a target location */
+                gchar *url;
+                gchar *type;
+
+                type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                              G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
+                if (eel_str_is_equal (type, "Link"))
+                {
+                    url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                                 G_KEY_FILE_DESKTOP_KEY_URL, NULL);
+                    if (G_LIKELY (url != NULL))
+                    {
+                        g_debug ("%s .desktop Link %s\n", G_STRFUNC, url);
+                        file->target_location = g_file_new_for_uri (url);
+                        gof_file_target_location_update (file);
+                        g_free (url);
+                    }
+                }
+                _g_free0 (type);
             }
-            _g_free0 (type);
 
             /* free the key file */
             g_key_file_free (key_file);

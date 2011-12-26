@@ -75,6 +75,11 @@
       <summary>dialog property modal</summary>
       <description>If true the property dialog is a modal window</description>
     </key>
+    <key type="b" name="interpret-desktop-files">
+      <default>true</default>
+      <summary>interpret desktop files</summary>
+      <description>If true the desktop files would be interpreted, a desktop file can represent an executable, a directory etc. (their filename, type and some other properties would be the target ones)</description>
+    </key>
     <key name="contextview-orientation" enum="contextviewmode">
       <default>'auto'</default>
       <summary>Context View Panel orientation</summary>
