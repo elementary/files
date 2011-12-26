@@ -238,6 +238,7 @@ void fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor)
     GOFFile *file;
     char *uri;
 
+    g_return_if_fail (tags != NULL);
     file_list = fm_directory_view_get_selection (view);
 
     for (; file_list != NULL; file_list=file_list->next)
@@ -256,7 +257,8 @@ static void
 fm_directory_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
 {
     fm_list_model_add_file (view->model, file, directory);
-    marlin_view_tags_get_color (tags, file, NULL, NULL);
+    if (tags != NULL)
+        marlin_view_tags_get_color (tags, file, NULL, NULL);
 }
 
 static void
