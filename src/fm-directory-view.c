@@ -2159,7 +2159,7 @@ fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file)
 		return;
 
     path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), &iter);
-    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, path);
+    (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, path, FALSE, TRUE);
     gtk_tree_path_free (path);
 }
 
