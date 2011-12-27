@@ -2186,6 +2186,7 @@ fm_directory_view_select_gof_files (FMDirectoryView *view, GList *files)
         }
     }
     view->updates_frozen = FALSE;
+    fm_directory_view_notify_selection_changed (view);
 }
 
 static void
