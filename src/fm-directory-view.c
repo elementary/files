@@ -319,6 +319,37 @@ icon_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 }
 
 static void
+show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, FMDirectoryView *view)
+{
+    GOFDirectoryAsync *directory;
+
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    g_return_if_fail (view->details->slot);
+
+    g_message ("%s", G_STRFUNC);
+    directory = view->details->slot->directory;
+    if (prefs->pref_show_hidden_files) {
+        g_signal_connect (directory, "file_loaded", G_CALLBACK (file_loaded_callback), view);
+        gof_directory_async_load_hiddens (directory);
+        g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
+    } else {
+        g_signal_handlers_block_by_func (view->model, fm_directory_view_row_deleted, view);
+        g_signal_handlers_block_by_func (view->model, fm_directory_view_restore_selection, view);
+
+        /* clear the model */
+        fm_list_model_clear (view->model);
+
+        /* load directory */
+        g_signal_connect (directory, "file_loaded", G_CALLBACK (file_loaded_callback), view);
+        gof_directory_async_load (directory);
+        g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
+
+        g_signal_handlers_unblock_by_func (view->model, fm_directory_view_row_deleted, view);
+        g_signal_handlers_unblock_by_func (view->model, fm_directory_view_restore_selection, view);
+    }
+}
+
+static void
 fm_directory_view_connect_directory_handlers (FMDirectoryView *view, GOFDirectoryAsync *directory)
 {
     g_signal_connect (directory, "file_loaded", 
@@ -339,7 +370,7 @@ static void
 fm_directory_view_disconnect_directory_handlers (FMDirectoryView *view, 
                                                  GOFDirectoryAsync *directory)
 {
-    g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
+    /*g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);*/
     g_signal_handlers_disconnect_by_func (directory, file_added_callback, view);
     g_signal_handlers_disconnect_by_func (directory, file_changed_callback, view);
     g_signal_handlers_disconnect_by_func (directory, file_deleted_callback, view);
@@ -417,7 +448,7 @@ fm_directory_view_init (FMDirectoryView *view)
     /* connect to size allocation signals for generating thumbnail requests */
     g_signal_connect_after (G_OBJECT (view), "size-allocate",
                             G_CALLBACK (fm_directory_view_size_allocate), NULL);
-                       
+
     view->details->dir_action_group = NULL;
     view->details->dir_merge_id = 0;
     view->details->open_with_action_group = NULL;
@@ -2273,7 +2304,7 @@ gboolean fm_directory_view_get_loading (FMDirectoryView *view)
 
     dir = fm_directory_view_get_current_directory (view);
     if (dir != NULL)
-        return dir->state == GOF_DIRECTORY_ASYNC_STATE_LOADED;
+        return dir->state == GOF_DIRECTORY_ASYNC_STATE_LOADING;
 
     return FALSE;
 }
@@ -2718,6 +2749,11 @@ fm_directory_view_set_property (GObject         *object,
                                  G_CALLBACK (slot_active), view, 0);
         g_signal_connect_object (view->details->slot, "inactive", 
                                  G_CALLBACK (slot_inactive), view, 0);
+    
+        /* connect to GOFPrefences */
+        g_signal_connect_object (gof_preferences_get_default (), "notify::show-hidden-files",
+                                 G_CALLBACK (show_hidden_files_changed), view, 0);
+                       
         break;
     case PROP_ZOOM_LEVEL:
         view->zoom_level = g_value_get_enum (value);

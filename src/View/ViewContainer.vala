@@ -81,7 +81,6 @@ namespace Marlin.View {
                 change_view(view_mode, File.new_for_commandline_arg(browser.go_forward(n)));
                 update_location_state(false);
             });
-            win.reload_tabs.connect(() => { reload(); });
         }
 
         public Widget content{
@@ -239,10 +238,6 @@ namespace Marlin.View {
                 window.main_box.pack2(window.contextview, false, true);
                 window.contextview.show ();
             }
-        }
-
-        public void reload(){
-            change_view(view_mode, null);
         }
 
         public GOF.Window.Slot? get_active_slot () {

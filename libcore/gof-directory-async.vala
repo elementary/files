@@ -37,7 +37,6 @@ public class GOF.Directory.Async : Object
 
     public HashTable<GLib.File,GOF.File> file_hash;
     
-    public bool show_hidden_files = false;
     public uint files_count = 0;
 
     private Cancellable cancellable;
@@ -128,11 +127,24 @@ public class GOF.Directory.Async : Object
             if (file.info != null)
                 file.info_available ();
             foreach (GOF.File gof in file_hash.get_values ()) {
-                //if (gof != null  && gof.info != null && (!gof.is_hidden || show_hidden_files))
-                if (gof.info != null && (!gof.is_hidden || show_hidden_files))
+                //if (gof != null  && gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
+                if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
                     file_loaded (gof);
             }
             done_loading ();
+        }
+    }
+
+    public void load_hiddens () 
+    {
+        if (state != State.LOADED) {
+            load ();
+        } else {
+            foreach (GOF.File gof in file_hash.get_values ()) {
+                //if (gof != null  && gof.info != null && gof.is_hidden)
+                if (gof.info != null && gof.is_hidden)
+                    file_loaded (gof);
+            }
         }
     }
 
@@ -186,7 +198,7 @@ public class GOF.Directory.Async : Object
                     //debug ("file: %s", gof.name);
 
                     add_to_hash_cache (gof);
-                    if (!gof.is_hidden || show_hidden_files)
+                    if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)
                         file_loaded (gof);
 
                     //mutex.lock ();
@@ -239,7 +251,7 @@ public class GOF.Directory.Async : Object
         if (gof.is_gone)
             return;
         gof.update ();
-        if (!gof.is_hidden || show_hidden_files) {
+        if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files) {
             file_changed (gof);
             gof.changed ();
         }
@@ -251,7 +263,7 @@ public class GOF.Directory.Async : Object
         if (gof.info == null)
             critical ("FILE INFO null");
         gof.update ();
-        if (gof.info != null && (!gof.is_hidden || show_hidden_files))
+        if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
             file_added (gof);
 
         if (!gof.is_hidden && gof.is_directory) {
@@ -275,7 +287,7 @@ public class GOF.Directory.Async : Object
     }
 
     private void notify_file_removed (GOF.File gof) {
-        if (!gof.is_hidden || show_hidden_files)
+        if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)
             file_deleted (gof);
         if (!gof.is_hidden && gof.is_directory) {
             /* remove from sorted_dirs */

@@ -138,7 +138,7 @@ void    gof_file_icon_changed (GOFFile *file)
     /* get the DirectoryAsync associated to the file */
     dir = gof_directory_async_cache_lookup (file->directory);
     if (dir != NULL) {
-        if (!file->is_hidden || dir->show_hidden_files)
+        if (!file->is_hidden || gof_preferences_get_default ()->pref_show_hidden_files) 
             g_signal_emit_by_name (dir, "icon_changed", file);
         
         g_object_unref (dir);

@@ -21,6 +21,16 @@ namespace GOF {
 
     public class Preferences : GLib.Object {
    
+        public bool pref_show_hidden_files = false;
+        public bool show_hidden_files {
+            get {
+                return pref_show_hidden_files;
+            }
+            set {
+                pref_show_hidden_files = value;
+            }
+        }
+
         public bool pref_confirm_trash = true;
         public bool confirm_trash {
             get {

@@ -72,7 +72,6 @@ namespace Marlin.View {
 
         public signal void loading_uri (string location, Widget sidebar);
 
-        public signal void reload_tabs();
 
         public void update_action_radio_view(int n) {
             Gtk.RadioAction action = (Gtk.RadioAction) main_actions.get_action("view-as-icons");
@@ -441,12 +440,8 @@ namespace Marlin.View {
             current_tab.forward();
         }
 
-        private void action_show_hidden_files (Gtk.Action action) {
-            /*if (current_tab != null)
-                current_tab.reload();*/
-            /* simply reload the views as show-hiddenfiles is a binded settings */
-            this.reload_tabs();
-        }
+        /*private void action_show_hidden_files (Gtk.Action action) {
+        }*/
 
         private void action_show_hide_contextview (Gtk.Action action) {
             if (((Gtk.ToggleAction)action).get_active()) {
@@ -663,7 +658,8 @@ namespace Marlin.View {
   /* name, stock id */         { "Show Hidden Files", null,
   /* label, accelerator */       N_("Show _Hidden Files"), "<control>H",
   /* tooltip */                  N_("Toggle the display of hidden files in the current window"),
-                                 action_show_hidden_files,
+                                 null,
+                                 //action_show_hidden_files,
                                  true },
   /* name, stock id */         { "Show Hide Context Pane", null,
   /* label, accelerator */       N_("_Context Pane"), "F7",

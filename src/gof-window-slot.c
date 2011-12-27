@@ -146,7 +146,6 @@ gof_window_slot_new (GFile *location, GtkEventBox *ctab)
     slot->ctab = ctab;
 
     slot->directory = gof_directory_async_from_gfile (slot->location);
-    slot->directory->show_hidden_files = g_settings_get_boolean (settings, "show-hiddenfiles");
     g_debug ("%s %s\n", G_STRFUNC, slot->directory->file->uri);
 
     return slot;

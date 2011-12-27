@@ -566,6 +566,8 @@ init_schemas (void)
     marlin_column_view_settings = g_settings_new ("org.gnome.marlin.column-view");
 
     /* bind settings with GOFPreferences */
+    g_settings_bind (settings, "show-hiddenfiles", 
+                     gof_preferences_get_default (), "show-hidden-files", 0);
     g_settings_bind (settings, "confirm-trash", 
                      gof_preferences_get_default (), "confirm-trash", 0);
     g_settings_bind (settings, "date-format", 
