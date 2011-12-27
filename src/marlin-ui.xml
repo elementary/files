@@ -2,6 +2,8 @@
 <accelerator action="ZoomInAccel"/>
 <accelerator action="ZoomInAccel2"/>
 <accelerator action="ZoomOutAccel"/>
+<accelerator action="Next Tab" />
+<accelerator action="Previous Tab" />
 <menubar name="MenuBar">
 	<menu action="File">
         <placeholder name="New Items Placeholder">
@@ -79,10 +81,6 @@
             <menuitem action="view-as-detailed-list" />
             <menuitem action="view-as-compact" />
             <menuitem action="view-as-columns" />
-            <separator />
-            <menuitem action="Next Tab" />
-            <menuitem action="Previous Tab" />
-            <!--<menuitem action="view-as-compact-list" />-->
 	</menu>
 	<menu action="Go">
         <menuitem name="Up" action="Up"/>
