@@ -22,7 +22,7 @@
 #include <glib.h>
 #include "marlincore-tests-gof.h"
 #include "marlincore-tests-file.h"
-#include "marlin-global-preferences.h"
+#include "marlincore.h"
 
 int main (int argc, char* argv[])
 {
@@ -30,9 +30,6 @@ int main (int argc, char* argv[])
     g_thread_init (NULL);
     gtk_test_init (&argc, &argv);
 
-    settings = g_settings_new ("org.gnome.marlin.preferences");
-
-    /* these tests are not working, TODO */
     g_test_add_func("/marlin/goffile", marlincore_tests_file);
     g_test_add_func("/marlin/goffile", marlincore_tests_goffile);
     //g_test_add_func("/marlin/gof", marlin_location_bar_tests);

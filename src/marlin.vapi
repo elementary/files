@@ -3,6 +3,12 @@ using GLib;
 
 public void marlin_toolbar_editor_dialog_show (Marlin.View.Window mvw);
 
+[CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
+namespace Preferences {
+    public GLib.Settings settings;
+    public string tags_colors[10];
+}
+
 namespace FM {
     [CCode (cprefix = "FMDirectory", lower_case_cprefix = "fm_directory_")]
     namespace Directory {

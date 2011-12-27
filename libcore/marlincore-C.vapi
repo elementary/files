@@ -23,23 +23,10 @@ namespace FM
     }
 }
 
-[CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
-namespace Preferences {
-    public GLib.Settings settings;
-    public GLib.Settings marlin_icon_view_settings;
-    public string tags_colors[10];
-}
-
 [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_", cheader_filename = "marlin-file-operations.h")]
 namespace Marlin.FileOperations {
     static void empty_trash(Gtk.Widget widget);
 }
-
-/*[CCode (cprefix = "MarlinTrashMonitor", lower_case_cprefix = "marlin_trash_monitor_", cheader_filename = "marlin-trash-monitor.h")]
-namespace Marlin.TrashMonitor {
-    static bool is_empty ();
-}*/
-
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
 namespace EelGtk.Window {

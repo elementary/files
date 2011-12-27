@@ -134,21 +134,10 @@ namespace Marlin.View
             
             /* Date format */
             var mode_date_format = new ModeButton();
-            mode_date_format.append(new Gtk.Label(_("locale")));
             mode_date_format.append(new Gtk.Label(_("iso")));
+            mode_date_format.append(new Gtk.Label(_("locale")));
             mode_date_format.append(new Gtk.Label(_("informal")));
-            switch((string)Preferences.settings.get_value("date-format"))
-            {
-            case "locale":
-                mode_date_format.selected = 0;
-                break;
-            case "iso":
-                mode_date_format.selected = 1;
-                break;
-            case "informal":
-                mode_date_format.selected = 2;
-                break;
-            }
+            mode_date_format.selected = (int)Preferences.settings.get_enum ("date-format");
 
             mode_date_format.mode_changed.connect(date_format_changed);
 
@@ -274,20 +263,20 @@ namespace Marlin.View
 
         private void date_format_changed(Gtk.Widget widget)
         {
-            string value = "iso";
+            int value = 0; /* iso */
             switch(((Gtk.Label)widget).get_text())
             {
-            case "locale":
-                value = "locale";
-                break;
             case "iso":
-                value = "iso";
+                value = 0;
+                break;
+            case "locale":
+                value = 1;
                 break;
             case "informal":
-                value = "informal";
+                value = 2;
                 break;
             }
-            Preferences.settings.set_value("date-format", value);
+            Preferences.settings.set_enum ("date-format", value);
         }
 
         public override void response(int id)

@@ -564,6 +564,15 @@ init_schemas (void)
     marlin_list_view_settings = g_settings_new ("org.gnome.marlin.list-view");
     marlin_compact_view_settings = g_settings_new ("org.gnome.marlin.compact-view");
     marlin_column_view_settings = g_settings_new ("org.gnome.marlin.column-view");
+
+    /* bind settings with GOFPreferences */
+    g_settings_bind (settings, "confirm-trash", 
+                     gof_preferences_get_default (), "confirm-trash", 0);
+    g_settings_bind (settings, "date-format", 
+                     gof_preferences_get_default (), "date-format", 0);
+    g_settings_bind (settings, "interpret-desktop-files", 
+                     gof_preferences_get_default (), "interpret-desktop-files", 0);
+
 }
 
 static void

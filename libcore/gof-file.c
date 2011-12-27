@@ -21,7 +21,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-#include "marlin-global-preferences.h" 
 #include "eel-i18n.h"
 #include "eel-fcts.h"
 #include "eel-string.h"
@@ -47,16 +46,21 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 
 #define ICON_NAME_THUMBNAIL_LOADING   "image-loading"
 
-    enum {
-        CHANGED,
-        //UPDATED_DEEP_COUNT_IN_PROGRESS,
-        INFO_AVAILABLE,
-        ICON_CHANGED,
-        DESTROY,
-        LAST_SIGNAL
-    };
+enum {
+    CHANGED,
+    //UPDATED_DEEP_COUNT_IN_PROGRESS,
+    INFO_AVAILABLE,
+    ICON_CHANGED,
+    DESTROY,
+    LAST_SIGNAL
+};
 
 static guint    signals[LAST_SIGNAL];
+
+
+/*struct _GOFFilePrivate {
+};*/
+
 static guint32  effective_user_id;
 
 static gpointer _g_object_ref0 (gpointer self) {
@@ -292,7 +296,7 @@ void    gof_file_update (GOFFile *file)
             }
 
             /* desktop files interpretations */
-            if (g_settings_get_boolean (settings, "interpret-desktop-files")) 
+            if (gof_preferences_get_default ()->pref_interpret_desktop_files) 
             {
                 /* read the display name from the .desktop file (will be overwritten later
                  * if it's undefined here) */
@@ -346,10 +350,9 @@ void    gof_file_update (GOFFile *file)
         file->format_size = g_strdup ("--");
     else
         file->format_size = g_format_size_for_display(file->size);
-    /* TODO prefs: create an object to store all the preferences */
-    gchar *date_format_pref = g_settings_get_string(settings, MARLIN_PREFERENCES_DATE_FORMAT);
-    file->formated_modified = eel_get_date_as_string (file->modified, date_format_pref);
-    _g_free0 (date_format_pref);
+    
+    /* modified date */
+    file->formated_modified = eel_get_date_as_string (file->modified, gof_preferences_get_default ()->pref_date_format);
 
     /* icon */
     if (file->is_directory) {
@@ -639,6 +642,8 @@ void gof_file_remove_from_caches (GOFFile *file)
 }
 
 static void gof_file_init (GOFFile *file) {
+    /*file->priv = G_TYPE_INSTANCE_GET_PRIVATE (file, GOF_TYPE_FILE, GOFFilePrivate);*/
+
     file->info = NULL;
     file->location = NULL;
     file->target_location = NULL;
@@ -739,23 +744,6 @@ static void gof_file_class_init (GOFFileClass * klass) {
       g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_DIRECTORY, g_param_spec_boolean ("directory", "directory", "directory", FALSE, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));*/
 }
 
-/*
-   static void gof_file_instance_init (GOFFile * self) {
-   self->priv = gof_FILE_GET_PRIVATE (self);
-   }*/
-
-#if 0
-GType gof_file_get_type (void) {
-    static volatile gsize gof_file_type_id__volatile = 0;
-    if (g_once_init_enter (&gof_file_type_id__volatile)) {
-        static const GTypeInfo g_define_type_info = { sizeof (GOFFileClass), (GBaseInitFunc) NULL, (GBaseFinalizeFunc) NULL, (GClassInitFunc) gof_file_class_init, (GClassFinalizeFunc) NULL, NULL, sizeof (GOFFile), 0, (GInstanceInitFunc) gof_file_instance_init, NULL };
-        GType gof_file_type_id;
-        gof_file_type_id = g_type_register_static (G_TYPE_OBJECT, "GOFFile", &g_define_type_info, 0);
-        g_once_init_leave (&gof_file_type_id__volatile, gof_file_type_id);
-    }
-    return gof_file_type_id__volatile;
-}
-#endif
 
 #if 0
 static void gof_file_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec) {
@@ -1057,8 +1045,7 @@ gof_file_get_formated_time (GOFFile *file, const char *attr)
     if (date == 0)
         return NULL;
 
-    //TODO prefs
-    return eel_get_date_as_string (date, "iso");
+    return eel_get_date_as_string (date, gof_preferences_get_default ()->pref_date_format);
 }
 
 

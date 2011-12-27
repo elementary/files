@@ -20,6 +20,11 @@
     <value value="1" nick="vertical"/>
     <value value="2" nick="auto"/>
   </enum>
+  <enum id="dateformatmode">
+    <value value="0" nick="iso"/>
+    <value value="1" nick="locale"/>
+    <value value="2" nick="informal"/>
+  </enum>
 
   <schema path="/apps/marlin/preferences/" id="org.gnome.marlin.preferences">
     <key type="b" name="show-menubar">
@@ -52,7 +57,7 @@
       <summary>enable rgba window</summary>
       <description>If set to true, rgba will be enabled, you'll need a gtk engine supporting rgba, like murrine. Compiz can have some problems like drawings shadows ...</description>
     </key>
-    <key type="s" name="date-format">
+    <key name="date-format" enum="dateformatmode">
       <default>'iso'</default>
       <summary>Date Format</summary>
       <description>The format of file dates. Possible values are "locale", "iso", and "informal".</description>

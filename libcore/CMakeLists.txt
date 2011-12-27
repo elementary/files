@@ -18,6 +18,7 @@ include(ValaPrecompile)
 vala_precompile(VALA_C
     gof-callwhenready.vala
     gof-directory-async.vala
+    gof-preferences.vala
     PluginManager.vala
     Plugin.vala
     marlincore-C.vapi
@@ -61,7 +62,6 @@ install (FILES
     marlin-file-operations.h
     marlin-file-changes-queue.h
     marlin-file-utilities.h
-    marlin-global-preferences.h
     marlin-icons.h
     marlin-abstract-sidebar.h
     marlin-plugins-hook.h

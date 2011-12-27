@@ -66,7 +66,7 @@
 #include "marlin-file-changes-queue.h"
 #include "marlin-file-utilities.h"
 #include "marlin-file-conflict-dialog.h"
-#include "marlin-global-preferences.h"
+#include "marlincore.h"
 
 typedef struct {
     GIOSchedulerJob *io_job;	
@@ -1346,13 +1346,7 @@ job_aborted (CommonJob *job)
 static gboolean
 should_confirm_trash (void)
 {
-    GSettings *prefs;
-    gboolean confirm_trash;
-
-    prefs = g_settings_new ("org.gnome.marlin.preferences");
-    confirm_trash = g_settings_get_boolean (prefs, MARLIN_PREFERENCES_CONFIRM_TRASH);
-    g_object_unref (prefs);
-    return confirm_trash;
+    return gof_preferences_get_default ()->pref_confirm_trash;
 }
 
 static gboolean

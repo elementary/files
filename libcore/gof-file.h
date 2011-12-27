@@ -65,7 +65,7 @@ typedef struct _GOFFileClass GOFFileClass;
 
 struct _GOFFile {
     GObject parent_instance;
-    //GOFFilePrivate * priv;
+    //GOFFilePrivate  *priv;
 
     GFileInfo       *info;
     GFile           *location;
