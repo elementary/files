@@ -25,7 +25,7 @@ namespace FM {
             public void zoom_normal ();
             public unowned List<AppInfo>? get_open_with_apps ();
             public AppInfo? get_default_app ();
-            public void select_gof_file (GOF.File file);
+            public void select_gof_files (List files);
         }
     }
 }

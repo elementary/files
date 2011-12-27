@@ -144,12 +144,13 @@ namespace Marlin.View {
 
         }
 
+        /* handle directory not found, contextview */
         public void directory_done_loading () {
-            if (!slot.directory.file.exists)
+            if (!slot.directory.file.exists) {
                 content = new DirectoryNotFound (slot.directory, this);
-            if (select_childs != null) {
-                foreach (var child in select_childs)
-                    ((FM.Directory.View) slot.view_box).select_gof_file (child);
+            } else {
+                if (select_childs != null) 
+                    ((FM.Directory.View) slot.view_box).select_gof_files (select_childs);
             }
             sync_contextview();
 
@@ -211,6 +212,8 @@ namespace Marlin.View {
                 break;
             }
 
+            if (slot != null && slot.directory.file.exists)
+                slot.directory.done_loading.connect (directory_done_loading);
             plugin_directory_loaded ();
         }
 

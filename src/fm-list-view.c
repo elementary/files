@@ -781,16 +781,15 @@ fm_list_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
 
     /* the treeview select the path by default */
     if (!select)
-        g_signal_handlers_block_by_func (selection, list_selection_changed_callback, view);
+        g_signal_handlers_block_by_func (selection, list_selection_changed_callback, list_view);
     gtk_tree_view_set_cursor_on_cell (list_view->tree, path, 
                                       list_view->details->file_name_column,
                                       (GtkCellRenderer *) list_view->details->file_name_cell,
                                       start_editing);
 
     if (!select) {
-        GtkTreeSelection *selection = gtk_tree_view_get_selection (list_view->tree);
         gtk_tree_selection_unselect_path (selection, path);
-        g_signal_handlers_unblock_by_func (selection, list_selection_changed_callback, view);
+        g_signal_handlers_unblock_by_func (selection, list_selection_changed_callback, list_view);
     }
 }
 

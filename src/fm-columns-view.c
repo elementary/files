@@ -103,9 +103,8 @@ show_selected_files (GOFFile *file)
 }
 
 static void
-list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data)
+list_selection_changed_callback (GtkTreeSelection *selection, FMColumnsView *view)
 {
-    FMColumnsView *view = FM_COLUMNS_VIEW (user_data);
     GOFFile *file;
 
     g_warning ("%s", G_STRFUNC);
@@ -114,6 +113,8 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
     view->details->selection = get_selection (view);
     //show_selected_files (file);
 
+    if (FM_DIRECTORY_VIEW (view)->updates_frozen)
+        return;
     /* don't update column if we got a drag_begin started */
     if (fm_directory_view_is_drag_pending (FM_DIRECTORY_VIEW (view)))
         return;
@@ -154,8 +155,6 @@ row_activated_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *p
 static void
 fm_columns_view_freeze_updates (FMColumnsView *view)
 {
-    view->details->updates_frozen = TRUE;
-	
     /* Make filename-cells editable. */
 	g_object_set (G_OBJECT (view->details->file_name_cell),
                   "editable", TRUE, NULL);
@@ -165,8 +164,6 @@ fm_columns_view_freeze_updates (FMColumnsView *view)
 static void
 fm_columns_view_unfreeze_updates (FMColumnsView *view)
 {
-    view->details->updates_frozen = FALSE;
-	
     /*We're done editing - make the filename-cells readonly again.*/
 	g_object_set (G_OBJECT (view->details->file_name_cell),
                   "editable", FALSE, NULL);
@@ -695,18 +692,15 @@ fm_columns_view_set_cursor (FMDirectoryView *view, GtkTreePath *path,
     GtkTreeSelection *selection = gtk_tree_view_get_selection (cols_view->tree);
 
     /* the treeview select the path by default. */
-    if (!select)
-        g_signal_handlers_block_by_func (selection, list_selection_changed_callback, view);
+    g_signal_handlers_block_by_func (selection, list_selection_changed_callback, cols_view);
     gtk_tree_view_set_cursor_on_cell (cols_view->tree, path, 
                                       cols_view->details->file_name_column,
                                       (GtkCellRenderer *) cols_view->details->file_name_cell,
                                       start_editing);
 
-    if (!select) {
-        GtkTreeSelection *selection = gtk_tree_view_get_selection (cols_view->tree);
+    if (!select) 
         gtk_tree_selection_unselect_path (selection, path);
-        g_signal_handlers_unblock_by_func (selection, list_selection_changed_callback, view);
-    }
+    g_signal_handlers_unblock_by_func (selection, list_selection_changed_callback, cols_view);
 }
 
 static GtkTreePath*

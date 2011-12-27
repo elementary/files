@@ -117,7 +117,8 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
     gint current_slot_position = 0;
     gint i;
     GList* list_slot = slot->mwcols->slot;
-    
+   
+    g_return_if_fail (slot->colpane != NULL);
     gtk_container_foreach (GTK_CONTAINER (slot->colpane), (GtkCallback)gtk_widget_destroy, NULL);
     
     current_slot_position = g_list_index(slot->mwcols->slot, slot);

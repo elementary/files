@@ -113,7 +113,6 @@ struct FMDirectoryViewDetails
     GdkDragContext  *drag_context;
 
     gboolean        selection_was_removed;
-    gboolean        updates_frozen;
 
     /* support for generating thumbnails */
     MarlinThumbnailer  *thumbnailer;
@@ -301,9 +300,6 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
 {
     /* disconnect the file_loaded signal once directory loaded */
     g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
-
-    /* handle directory not found, contextview */
-    marlin_view_view_container_directory_done_loading (MARLIN_VIEW_VIEW_CONTAINER (view->details->slot->ctab));
 
     /* Apparently we need a queue_draw sometimes, the view is not refreshed until an event */
     if (gof_directory_async_is_empty (directory))
@@ -567,9 +563,11 @@ fm_directory_view_finalize (GObject *object)
 }
 
 void
-fm_directory_view_column_add_location (FMDirectoryView *dview, GFile *location)
+fm_directory_view_column_add_location (FMDirectoryView *view, GFile *location)
 {
-    gof_window_columns_add_location(dview->details->slot, location);
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
+    gof_window_columns_add_location(view->details->slot, location);
 }
 
 void
@@ -2149,6 +2147,7 @@ fm_directory_view_select_first_for_empty_selection (FMDirectoryView *view)
     }
 }
 
+#if 0
 void 
 fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file)
 {
@@ -2163,6 +2162,30 @@ fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file)
     path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), &iter);
     (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, path, FALSE, TRUE);
     gtk_tree_path_free (path);
+}
+#endif
+
+void 
+fm_directory_view_select_gof_files (FMDirectoryView *view, GList *files)
+{
+    GList *l;
+    GtkTreeIter iter;
+    GtkTreePath *path;
+    gint i;
+
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
+    view->updates_frozen = TRUE;
+    for (l=files, i=0; l != NULL; l=l->next, i++) {
+        if (fm_list_model_get_first_iter_for_file (view->model, GOF_FILE (l->data), &iter)) {
+            path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), &iter);
+            if (i == 0)
+                (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, path, FALSE, TRUE);
+            (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, path);
+            gtk_tree_path_free (path);
+        }
+    }
+    view->updates_frozen = FALSE;
 }
 
 static void
@@ -2249,7 +2272,7 @@ gboolean fm_directory_view_get_loading (FMDirectoryView *view)
 
     dir = fm_directory_view_get_current_directory (view);
     if (dir != NULL)
-        return dir->state == GOF_DIRECTORY_ASYNC_STATE_LOADING;
+        return dir->state == GOF_DIRECTORY_ASYNC_STATE_LOADED;
 
     return FALSE;
 }
@@ -2858,7 +2881,7 @@ fm_directory_view_notify_selection_changed (FMDirectoryView *view)
     view->details->selection_was_removed = FALSE;
     if (!gtk_widget_get_realized (GTK_WIDGET (view)))
         return;
-  	if (view->details->updates_frozen)
+  	if (view->updates_frozen)
         return;
     /* when we're in column view ignore selection changed from other slot than the active one */
     if (view->details->slot->mwcols && 
@@ -2943,7 +2966,7 @@ fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view)
 void
 fm_directory_view_freeze_updates (FMDirectoryView *view)
 {
-    view->details->updates_frozen = TRUE;
+    view->updates_frozen = TRUE;
     
     /* disable clipboard actions */
     dir_action_set_sensitive (view, "Cut", FALSE);
@@ -2968,7 +2991,7 @@ fm_directory_view_freeze_updates (FMDirectoryView *view)
 void
 fm_directory_view_unfreeze_updates (FMDirectoryView *view)
 {
-    view->details->updates_frozen = FALSE;
+    view->updates_frozen = FALSE;
     update_menus (view);
 
     /* unblock thumbnails request on size allocate */
