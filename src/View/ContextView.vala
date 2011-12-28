@@ -30,7 +30,7 @@ namespace Marlin.View {
 
     public class ContextView : Gtk.EventBox
     {
-        public const int height = 50;
+        public const int height = 48;
         public const int width = 190;
         public const int key_value_padding = 8;
         public const int key_value_width = 90;
@@ -124,7 +124,10 @@ namespace Marlin.View {
             var font_style = new Pango.FontDescription();
             font_style.set_size(14 * 1000);
             label.modify_font(font_style);
-            label.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            //label.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            label.set_line_wrap (true);
+            label.set_line_wrap_mode (Pango.WrapMode.CHAR);
+            label.set_width_chars (10);
             label.set_padding(key_value_padding, -1);
 
             evbox = new ImgEventBox(Orientation.HORIZONTAL);
@@ -323,31 +326,6 @@ namespace Marlin.View {
             show();
         }
 
-        private void populate_key_value_pair(Box box, Pair<string, string> pair, bool limit_width = false){
-            var key_label = new Label(pair.key);
-            key_label.set_state(StateType.INSENSITIVE);
-            key_label.set_size_request((int) (key_value_width * 0.618033f), -1);
-            key_label.set_justify(Justification.RIGHT);
-            key_label.size_allocate.connect((l, s) => l.set_size_request(s.width, -1));
-            key_label.set_alignment(1, 0);
-
-            box.pack_start(key_label, false, true, 0);
-
-            var value_label = new Label(((Pair<string, string>) pair).value);
-            value_label.set_alignment(0, 0);
-            value_label.set_selectable(true);
-            if(limit_width)
-                value_label.set_size_request(key_value_width, -1);
-            value_label.size_allocate.connect((l, s) => l.set_size_request(s.width, -1));
-            if (orientation == Orientation.VERTICAL) {
-                value_label.wrap = true;
-                value_label.wrap_mode = Pango.WrapMode.WORD_CHAR;
-            }
-            value_label.set_justify(Justification.LEFT);
-
-            box.pack_start(value_label, true, true, 0);
-        }
-
         public void update_info_panel(){
             if(orientation == Orientation.HORIZONTAL)
                 construct_info_panel_horizontal(info);
@@ -356,7 +334,7 @@ namespace Marlin.View {
         }
 
         private void construct_info_panel_vertical(Gee.List<Pair<string, string>> item_info){
-            var box = new VBox(false, 0);
+            var box = new Box (Orientation.VERTICAL, 0);
             
             set_size_request (width, -1);
 
@@ -377,14 +355,14 @@ namespace Marlin.View {
                 label.set_tooltip_text (last_gof.name);
                 box.pack_start(label, false, false);
             }
-            box.pack_start(new Gtk.Separator(Orientation.HORIZONTAL), false, false);
-
-            var spacer_box = new VBox(false, 0);
-            spacer_box.set_size_request (-1, 15);
-            box.pack_start(spacer_box, false, false);
+            
+            var sep = new Gtk.Separator(Orientation.HORIZONTAL);
+            sep.set_margin_top (4);
+            sep.set_margin_bottom (10);
+            box.pack_start(sep, false, false);
 
             var information = new Grid();
-            information.row_spacing = 10;
+            information.row_spacing = 3;
             var alignment_ = new Gtk.Alignment(0.5f, 0, 0, 0);
 
             int n = 0;
@@ -392,16 +370,18 @@ namespace Marlin.View {
                 /* skip the firs parameter "name" for vertical panel */
                 if (n>0) {
 
-                    var value_label = new Gtk.Label(pair.value);
-                    var key_label = new Gtk.Label(pair.key);
-                    key_label.set_sensitive(false);
-                    key_label.set_alignment(1, 0.5f);
-                    value_label.set_alignment(0, 0.5f);
-                    key_label.set_ellipsize(Pango.EllipsizeMode.START);
-                    value_label.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
+                    var lval = new Gtk.Label (pair.value);
+                    var lkey = new Gtk.Label (pair.key);
+                    lval.set_selectable(true);
+                    lkey.set_sensitive (false);
+                    lkey.set_alignment (1, 0);
+                    lval.set_alignment (0, 0);
+                    //lval.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
+                    lval.set_line_wrap (true);
+                    lval.set_width_chars (10);
 
-                    information.attach(key_label, 0, n, 1, 1);
-                    information.attach(value_label, 1, n, 1, 1);
+                    information.attach(lkey, 0, n, 1, 1);
+                    information.attach(lval, 1, n, 1, 1);
                 }
                 n++;
             }
@@ -413,7 +393,7 @@ namespace Marlin.View {
         }
 
         private void construct_info_panel_horizontal(Gee.List<Pair<string, string>> item_info){
-            var box = new HBox(false, 0);
+            var box = new Box (Orientation.HORIZONTAL, 0);
 
             set_size_request (-1, height);
             if (evbox != null) {
@@ -423,33 +403,36 @@ namespace Marlin.View {
                 box.pack_start(evbox, false, true, 0);
             }
 
-            //box.pack_start(label, false, false);
-            //box.pack_start(new Gtk.Separator(Orientation.VERTICAL), false, false);
+            var alignment = new Gtk.Alignment(0, 0.5f, 0, 0);
+            var grid = new Grid ();
+            grid.set_orientation (Orientation.HORIZONTAL);
+            alignment.add (grid);
+            box.add (alignment);
 
-            var table = new Table(2, (int) Math.ceil(item_info.size / 2), false);
-            //var columns = new HBox (false, 0);
-            //var column = new VBox (false, key_value_padding);
-
-            int n = 0;
+            var i = 0;
             foreach(var pair in item_info){
-                var column = (int) Math.floor(n/2);
-                var row = n % 2;
+                var left = (int) i/2 + i/2;
+                var top = i % 2;
+                //warning ("left %d top %d", left, top);
+            
+                var lkey = new Label (pair.key);
+                //lkey.set_size_request (65, -1);
+                lkey.set_state(StateType.INSENSITIVE);
+                //lkey.set_justify(Justification.RIGHT);
+                lkey.set_alignment(1, 0);
+                grid.attach (lkey, left, top, 1, 1);
 
-                var key_value_pair = new HBox (false, key_value_padding);
-                //key_value_pair.set_size_request(key_value_width, -1);
-                populate_key_value_pair(key_value_pair, pair);
-
-                table.attach(key_value_pair, column, column+1, row, row+1, AttachOptions.FILL, AttachOptions.FILL, key_value_padding/2, key_value_padding/4);
-
-                n++;
+                var lval = new Label (pair.value);
+                lval.set_selectable(true);
+                lval.set_margin_right (10);
+                lval.set_alignment(0, 0);
+                lval.set_width_chars (10);
+                lval.set_ellipsize (Pango.EllipsizeMode.END);
+                grid.attach (lval, left+1, top, 1, 1);
+                i++;
             }
             
-            var vbox = new VBox(false, 0);
-            vbox.pack_start(table, true, true);
-
-            box.pack_start(vbox, true, true);
             box.show_all();
-
             set_content(box);
         }
 
