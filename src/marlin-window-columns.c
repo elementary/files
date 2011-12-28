@@ -25,8 +25,7 @@
 
 static void marlin_window_columns_finalize   (GObject *object);
 
-G_DEFINE_TYPE (MarlinWindowColumns, marlin_window_columns, G_TYPE_OBJECT)
-
+G_DEFINE_TYPE (MarlinWindowColumns, marlin_window_columns, GOF_TYPE_ABSTRACT_SLOT)
 #define parent_class marlin_window_columns_parent_class
 
 /**
@@ -130,7 +129,9 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
 
     gof_window_column_add (slot, slot->view_box);
 
-    marlin_view_view_container_set_content ((MarlinViewViewContainer *) mwcols->ctab, mwcols->view_box);
+    gtk_box_pack_start(GTK_BOX (mwcols->content_box), mwcols->view_box, TRUE, TRUE, 0);
+    
+    marlin_view_view_container_set_content ((MarlinViewViewContainer *) mwcols->ctab, mwcols->content_box);
     
     /* store pane handle size*/
     gtk_widget_style_get (GTK_WIDGET (slot->hpane), "handle-size", &mwcols->handle_size, NULL);
@@ -192,6 +193,9 @@ static void
 marlin_window_columns_init (MarlinWindowColumns *mwcol)
 {
     mwcol->preferred_column_width = g_settings_get_int (marlin_column_view_settings, "preferred-column-width");
+    mwcol->content_box = gtk_vbox_new(FALSE, 0);
+    GOF_ABSTRACT_SLOT(mwcol)->extra_location_widgets = gtk_vbox_new(FALSE, 0);
+    gtk_box_pack_start(GTK_BOX (mwcol->content_box), GOF_ABSTRACT_SLOT(mwcol)->extra_location_widgets, FALSE, FALSE, 0);
 }
 
 static void

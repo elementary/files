@@ -60,7 +60,7 @@ namespace Marlin {
     [CCode (cprefix = "MarlinWindow", lower_case_cprefix = "marlin_window_")]
     namespace Window {
         [CCode (cheader_filename = "marlin-window-columns.h")]
-        public class Columns : GLib.Object {
+        public class Columns : GOF.AbstractSlot {
             //public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
             public Columns (GLib.File f, Gtk.EventBox ctab);
             public void make_view ();

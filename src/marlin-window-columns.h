@@ -21,6 +21,7 @@
 #define MARLIN_WINDOW_COLUMNS_H
 
 #include <gtk/gtk.h>
+#include "gof-abstract-slot.h"
 #include "marlincore.h"
 //#include "gof-window-slot.h"
 #include "marlin-view-window.h"
@@ -33,7 +34,7 @@
 #define MARLIN_WINDOW_COLUMNS_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), MARLIN_TYPE_WINDOW_COLUMNS, MarlinWindowColumnsClass))
 
 typedef struct {
-    GObject parent;
+    GOFAbstractSlot parent;
 
     /* content_box contains
      *  1) an event box containing extra_location_widgets
