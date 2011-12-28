@@ -165,7 +165,7 @@ namespace Marlin.View {
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
             if (location == null) {
                 /* we re just changing view keep the same location */
-                location = slot.location;
+                location = get_active_slot ().location;
                 /* store the old selection to restore it */
                 if (slot != null) {
                     unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
