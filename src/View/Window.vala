@@ -189,6 +189,7 @@ namespace Marlin.View {
             Preferences.settings.bind("show-menubar", main_actions.get_action("Show Hide Menubar"), "active", 0);
             //Preferences.settings.bind("show-menubar", top_menu.compact_menu_button, "visible", SettingsBindFlags.INVERT_BOOLEAN);
             Preferences.settings.bind("show-hiddenfiles", main_actions.get_action("Show Hidden Files"), "active", 0);
+            Preferences.settings.bind("interpret-desktop-files", main_actions.get_action("Show Desktop Files"), "active", SettingsBindFlags.INVERT_BOOLEAN);
             Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
             Preferences.settings.bind("show-sidebar", main_actions.get_action("Show Hide Sidebar"), "active", 0);
 
@@ -660,6 +661,11 @@ namespace Marlin.View {
   /* tooltip */                  N_("Toggle the display of hidden files in the current window"),
                                  null,
                                  //action_show_hidden_files,
+                                 true },
+  /* name, stock id */         { "Show Desktop Files", null,
+  /* label, accelerator */       N_("Show _Desktop Files"), "<control>D",
+  /* tooltip */                  N_("Toggle the display of desktop files"),
+                                 null,
                                  true },
   /* name, stock id */         { "Show Hide Context Pane", null,
   /* label, accelerator */       N_("_Context Pane"), "F7",

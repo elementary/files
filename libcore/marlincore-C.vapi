@@ -123,11 +123,16 @@ namespace GOF {
         public FileType file_type;
         public bool is_hidden;
         public bool is_directory;
+        public bool is_desktop;
+        public bool is_folder();
         public bool is_symlink();
         public bool is_trashed();
         public bool link_known_target;
         public unowned string thumbnail_path;
         public uint flags;
+        
+        public unowned string get_display_name ();
+        public unowned GLib.File get_target_location ();
         public string? get_formated_time (string attr);
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
 
@@ -143,6 +148,7 @@ namespace GOF {
 
         public void update ();
         public void update_icon (int size);
+        public void update_desktop_file ();
         public void query_update ();
         public bool can_set_owner ();
         public bool can_set_group ();

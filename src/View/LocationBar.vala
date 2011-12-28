@@ -197,18 +197,18 @@ namespace Marlin.View.Chrome
          **/
         private void on_file_loaded(GOF.File file)
         {
-            if(file.is_directory && file.name.length > to_search.length)
+            if(file.is_folder () && file.get_display_name ().length > to_search.length)
             {
-                if(file.name.ascii_ncasecmp (to_search, to_search.length) == 0)
+                if(file.get_display_name ().ascii_ncasecmp (to_search, to_search.length) == 0)
                 {
                     if(!autocompleted)
                     {
-                        entry.completion = file.name.slice(to_search.length, file.name.length);
+                        entry.completion = file.get_display_name ().slice(to_search.length, file.get_display_name ().length);
                         autocompleted = true;
                     }
                     else
                     {
-                        string file_complet = file.name.slice(to_search.length, file.name.length);
+                        string file_complet = file.get_display_name ().slice(to_search.length, file.get_display_name ().length);
                         string to_add = "";
                         for(int i = 0; i < (entry.completion.length > file_complet.length ? file_complet.length : entry.completion.length); i++)
                         {
@@ -225,7 +225,7 @@ namespace Marlin.View.Chrome
                     string str = entry.text.slice(0, entry.text.length - to_search.length);
                     if (str == null)
                         str = "";
-                    entry.text = str + file.name.slice(0, to_search.length);
+                    entry.text = str + file.get_display_name ().slice(0, to_search.length);
                 }
             }
         }
@@ -275,10 +275,13 @@ namespace Marlin.View.Chrome
         {
             unowned List<GOF.File>? sorted_dirs = files_menu.get_sorted_dirs ();
             foreach (var gof in sorted_dirs) {
-                var menuitem = new Gtk.MenuItem.with_label(gof.name);
+                var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
+                menuitem.set_data ("location", gof.get_target_location ());
                 menu.append(menuitem);
                 menuitem.activate.connect(() => {
-                    changed(current_right_click_root + "/" + ((MenuItem)menu.get_active()).get_label()); });
+                    unowned File loc = menu.get_active ().get_data ("location");
+                    win.current_tab.path_changed (loc);
+                });
             }
             menu.show_all();
         }

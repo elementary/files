@@ -326,7 +326,6 @@ show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, FMDirectory
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (view->details->slot);
 
-    g_message ("%s", G_STRFUNC);
     directory = view->details->slot->directory;
     if (prefs->pref_show_hidden_files) {
         g_signal_connect (directory, "file_loaded", G_CALLBACK (file_loaded_callback), view);
@@ -347,6 +346,15 @@ show_hidden_files_changed (GOFPreferences *prefs, GParamSpec *pspec, FMDirectory
         g_signal_handlers_unblock_by_func (view->model, fm_directory_view_row_deleted, view);
         g_signal_handlers_unblock_by_func (view->model, fm_directory_view_restore_selection, view);
     }
+}
+
+static void
+show_desktop_files_changed (GOFPreferences *prefs, GParamSpec *pspec, FMDirectoryView *view)
+{
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+    g_return_if_fail (view->details->slot);
+
+    gof_directory_async_update_desktop_files (view->details->slot->directory);
 }
 
 static void
@@ -636,7 +644,7 @@ fm_directory_view_activate_single_file (FMDirectoryView *view,
     location = gof_file_get_target_location (file);
 
     //g_message ("%s %s %s", G_STRFUNC, file->uri, g_file_get_uri(location));
-    if (file->is_directory || gof_file_is_remote_folder (file)) 
+    if (gof_file_is_folder (file)) 
     {
         switch (flags) {
         case MARLIN_WINDOW_OPEN_FLAG_NEW_TAB:
@@ -675,7 +683,7 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWind
             for (; file_list != NULL; file_list=file_list->next)
             {
                 file = file_list->data;
-                if (file->is_directory || gof_file_is_remote_folder (file)) {
+                if (gof_file_is_folder (file)) {
                     location = gof_file_get_target_location (file);
                     if (!(flags & MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW)) {
                         marlin_view_window_add_tab (MARLIN_VIEW_WINDOW (view->details->window), location);
@@ -939,7 +947,7 @@ fm_directory_view_get_drop_file (FMDirectoryView    *view,
         printf ("%s %s\n", G_STRFUNC, file->uri);
 
         /* we can only drop to directories and executable files */
-        if (!file->is_directory && !gof_file_is_executable (file))
+        if (!gof_file_is_folder (file) && !gof_file_is_executable (file))
         {
             /* drop to the folder instead */
             g_object_unref (G_OBJECT (file));
@@ -952,7 +960,8 @@ fm_directory_view_get_drop_file (FMDirectoryView    *view,
     if (G_UNLIKELY (path == NULL))
     {
         /* determine the current directory */
-        file = gof_file_get (view->details->slot->location);
+        //file = gof_file_get (view->details->slot->location);
+        file = g_object_ref (view->details->slot->directory->file);
     }
 
     /* return the path (if any) */
@@ -1379,7 +1388,7 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
               {
               action = gdk_drag_context_get_suggested_action (context);
               }*/
-            if (G_LIKELY (file != NULL && file->is_directory
+            if (G_LIKELY (file != NULL && gof_file_is_folder (file)
                           && gof_file_is_writable (file))) {
                 printf ("%s get_suggested_action for file = directory\n", file->name);
                 action = gdk_drag_context_get_suggested_action (context);
@@ -1568,7 +1577,7 @@ is_selection_contain_only_folders (GList *selection)
 
     for (l = selection; l != NULL; l = l->next) {
         file = GOF_FILE (l->data);
-        if (!file->is_directory)
+        if (!gof_file_is_folder (file))
             return FALSE;
     }
 
@@ -1838,7 +1847,7 @@ update_menus_selection (FMDirectoryView *view)
     dir_action_set_sensitive (view, "Rename", TRUE);
 
     /* got only one element in selection */
-    if (selection->next == NULL && file->is_directory) {
+    if (selection->next == NULL && gof_file_is_folder (file)) {
         update_menus_pastes (view, FALSE);
     } else {
         update_menus_pastes (view, TRUE);
@@ -1935,7 +1944,7 @@ update_menus_selection (FMDirectoryView *view)
         g_list_free_full (view->details->open_with_apps, g_object_unref);
         view->details->open_with_apps = NULL;
     }
-    if (view->details->default_app != NULL && !file->is_directory)
+    if (view->details->default_app != NULL && !gof_file_is_folder (file))
         view->details->open_with_apps = marlin_mime_get_applications_for_files (selection);
     /* we need to remove the default app from open with menu */
     if (view->details->default_app != NULL)
@@ -1948,7 +1957,7 @@ update_menus_selection (FMDirectoryView *view)
                                            menu_path, popup_path);
     }
     
-    if (selection_count == 1 && !file->is_directory)
+    if (selection_count == 1 && !gof_file_is_folder (file))
         dir_action_set_visible (view, "OtherApplication", TRUE);
 }
 
@@ -2753,6 +2762,8 @@ fm_directory_view_set_property (GObject         *object,
         /* connect to GOFPrefences */
         g_signal_connect_object (gof_preferences_get_default (), "notify::show-hidden-files",
                                  G_CALLBACK (show_hidden_files_changed), view, 0);
+        g_signal_connect_object (gof_preferences_get_default (), "notify::interpret-desktop-files",
+                                 G_CALLBACK (show_desktop_files_changed), view, 0);
                        
         break;
     case PROP_ZOOM_LEVEL:
@@ -3101,8 +3112,8 @@ action_paste_into_folder (GtkAction *action, FMDirectoryView *view)
 
     /* determine the first selected file and verify that it's a folder */
     file = g_list_nth_data (fm_directory_view_get_selection (view), 0);
-    if (G_LIKELY (file != NULL && file->is_directory))
-        marlin_clipboard_manager_paste_files (view->clipboard, file->location, GTK_WIDGET (view), NULL);
+    if (G_LIKELY (file != NULL && gof_file_is_folder (file)))
+        marlin_clipboard_manager_paste_files (view->clipboard, gof_file_get_target_location (file), GTK_WIDGET (view), NULL);
 }
 
 static void
@@ -3126,7 +3137,7 @@ real_action_rename (FMDirectoryView *view, gboolean select_all)
             if (!select_all) {
                 /* directories don't have a file extension, so
                  * they are always pre-selected as a whole */
-                select_all = file->is_directory;
+                select_all = gof_file_is_folder (file);
             }
             (*FM_DIRECTORY_VIEW_GET_CLASS (view)->start_renaming_file) (view, file, select_all);
         }

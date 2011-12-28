@@ -426,7 +426,7 @@ lookup_file (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory)
     }
 
     if (parent_ptr) {
-        if (file->is_directory)
+        if (gof_file_is_folder (file))
             return parent_ptr;
         file_entry = g_sequence_get (parent_ptr);
         ptr = g_hash_table_lookup (file_entry->reverse_map, file);
@@ -779,7 +779,7 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
         gtk_tree_model_row_inserted (GTK_TREE_MODEL (model), path, &iter);
     }
 
-    if (file->is_directory) {
+    if (gof_file_is_folder (file)) {
         file_entry->files = g_sequence_new ((GDestroyNotify)file_entry_free);
 
         add_dummy_row (model, file_entry);

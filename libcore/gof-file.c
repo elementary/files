@@ -210,10 +210,48 @@ gof_file_target_location_update (GOFFile *file)
     if (file->target_location == NULL)
         return;
 
-    GOFFile *gof = gof_file_get (file->target_location);
+    /*GOFFile *gof = gof_file_get (file->target_location);
     gof_file_query_update (gof);
     file->is_directory = gof->is_directory;
-    file->ftype = gof->ftype;
+    file->ftype = gof->ftype;*/
+    
+    file->target_gof = gof_file_get (file->target_location);
+    /* TODO make async */
+    gof_file_query_update (file->target_gof);
+}
+
+static void
+gof_file_update_size (GOFFile *file)
+{
+    g_free (file->format_size);
+    if (gof_file_is_folder (file))
+        file->format_size = g_strdup ("--");
+    else
+        file->format_size = g_format_size_for_display(file->size);
+}
+
+static void
+gof_file_update_type (GOFFile *file)
+{
+    gchar *formated_type = NULL;
+    
+    _g_free0 (file->formated_type);
+    if (gof_preferences_get_default ()->pref_interpret_desktop_files && file->target_gof && file->target_gof->ftype) {
+        file->formated_type = g_content_type_get_description (file->target_gof->ftype);
+    } else {
+        //trash doesn't have a ftype
+        if (file->ftype != NULL) {
+            formated_type = g_content_type_get_description (file->ftype);
+            if (G_UNLIKELY (gof_file_is_symlink (file))) {
+                file->formated_type = g_strdup_printf (_("link to %s"), formated_type);
+            } else {
+                file->formated_type = g_strdup (formated_type);
+            }
+        } else {
+            file->formated_type = g_strdup ("");
+        }
+    }
+    g_free (formated_type);
 }
 
 void    gof_file_update (GOFFile *file)
@@ -295,50 +333,46 @@ void    gof_file_update (GOFFile *file)
                 }
             }
 
-            /* desktop files interpretations */
-            if (gof_preferences_get_default ()->pref_interpret_desktop_files) 
+            /* read the display name from the .desktop file (will be overwritten later
+             * if it's undefined here) */
+            gchar *custom_display_name = g_key_file_get_string (key_file,
+                                                                G_KEY_FILE_DESKTOP_GROUP,
+                                                                G_KEY_FILE_DESKTOP_KEY_NAME,
+                                                                NULL);
+
+            /* check if we have a display name now */
+            if (custom_display_name != NULL)
             {
-                /* read the display name from the .desktop file (will be overwritten later
-                 * if it's undefined here) */
-                gchar *custom_display_name = g_key_file_get_string (key_file,
-                                                                    G_KEY_FILE_DESKTOP_GROUP,
-                                                                    G_KEY_FILE_DESKTOP_KEY_NAME,
-                                                                    NULL);
-
-                /* check if we have a display name now */
-                if (custom_display_name != NULL)
+                /* drop the name if it's empty or has invalid encoding */
+                if (*custom_display_name == '\0' 
+                    || !g_utf8_validate (custom_display_name, -1, NULL))
                 {
-                    /* drop the name if it's empty or has invalid encoding */
-                    if (*custom_display_name == '\0' 
-                        || !g_utf8_validate (custom_display_name, -1, NULL))
-                    {
-                        _g_free0 (custom_display_name);
-                        custom_display_name = NULL;
-                    } else {
-                        file->custom_display_name = custom_display_name;
-                    }
+                    _g_free0 (custom_display_name);
+                    custom_display_name = NULL;
+                } else {
+                    file->custom_display_name = custom_display_name;
                 }
-
-                /* check f we have a target location */
-                gchar *url;
-                gchar *type;
-
-                type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                              G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
-                if (eel_str_is_equal (type, "Link"))
-                {
-                    url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                                 G_KEY_FILE_DESKTOP_KEY_URL, NULL);
-                    if (G_LIKELY (url != NULL))
-                    {
-                        g_debug ("%s .desktop Link %s\n", G_STRFUNC, url);
-                        file->target_location = g_file_new_for_uri (url);
-                        gof_file_target_location_update (file);
-                        g_free (url);
-                    }
-                }
-                _g_free0 (type);
             }
+
+            /* check f we have a target location */
+            gchar *url;
+            gchar *type;
+
+            type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                          G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
+            if (eel_str_is_equal (type, "Link"))
+            {
+                url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
+                                             G_KEY_FILE_DESKTOP_KEY_URL, NULL);
+                if (G_LIKELY (url != NULL))
+                {
+                    g_debug ("%s .desktop Link %s\n", G_STRFUNC, url);
+                    file->target_location = g_file_new_for_uri (url);
+                    gof_file_target_location_update (file);
+                    g_free (url);
+                }
+            }
+            _g_free0 (type);
 
             /* free the key file */
             g_key_file_free (key_file);
@@ -346,16 +380,13 @@ void    gof_file_update (GOFFile *file)
     }
 
     /* sizes */
-    if (file->is_directory)
-        file->format_size = g_strdup ("--");
-    else
-        file->format_size = g_format_size_for_display(file->size);
+    gof_file_update_size (file);
     
     /* modified date */
     file->formated_modified = eel_get_date_as_string (file->modified, gof_preferences_get_default ()->pref_date_format);
 
     /* icon */
-    if (file->is_directory) {
+    if (file->is_directory && g_file_is_native (file->location)) {
         gof_file_get_folder_icon_from_uri_or_path (file);
     } else {
         if (file->ftype != NULL && file->icon == NULL)
@@ -366,16 +397,8 @@ void    gof_file_update (GOFFile *file)
 
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
 
-    //trash doesn't have a ftype
-    if (file->ftype != NULL) {
-        gchar *formated_type = g_content_type_get_description (file->ftype);
-        if (G_UNLIKELY (gof_file_is_symlink (file))) {
-            file->formated_type = g_strdup_printf (_("link to %s"), formated_type);
-        } else {
-            file->formated_type = g_strdup (formated_type);
-        }
-        g_free (formated_type);
-    }
+    /* formated type */
+    gof_file_update_type (file);
 
     /* permissions */
     file->has_permissions = g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
@@ -503,6 +526,15 @@ void gof_file_update_icon (GOFFile *file, gint size)
     gof_file_update_icon_internal (file, size);
 }
 
+void gof_file_update_desktop_file (GOFFile *file)
+{
+    g_free (file->utf8_collation_key);
+    file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
+    gof_file_update_type (file);
+    gof_file_update_size (file);
+    gof_file_icon_changed (file);
+}
+
 void gof_file_update_emblem (GOFFile *file)
 {
     /* erase previous stored emblems */
@@ -512,7 +544,7 @@ void gof_file_update_emblem (GOFFile *file)
     }
     if(plugins != NULL) 
         marlin_plugin_manager_update_file_info (plugins, file);
-    if(gof_file_is_symlink(file))
+    if(gof_file_is_symlink(file) || (file->is_desktop && file->target_gof))
     {
         gof_file_add_emblem(file, "emblem-symbolic-link");
 
@@ -678,7 +710,6 @@ static void gof_file_finalize (GObject* obj) {
 
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
-    _g_object_unref0 (file->target_location);
     _g_object_unref0 (file->directory);
     _g_free0 (file->uri);
     _g_free0(file->basename);
@@ -691,6 +722,9 @@ static void gof_file_finalize (GObject* obj) {
 
     _g_free0 (file->custom_display_name);
     _g_free0 (file->custom_icon_name);
+
+    _g_object_unref0 (file->target_location);
+    /* TODO remove the target_gof */
 
     G_OBJECT_CLASS (gof_file_parent_class)->finalize (obj);
 }
@@ -791,9 +825,9 @@ compare_files_by_time (GOFFile *file1, GOFFile *file2)
 static int
 compare_by_time (GOFFile *file1, GOFFile *file2)
 {
-    if (file1->is_directory && !file2->is_directory)
+    if (gof_file_is_folder (file1) && !gof_file_is_folder (file2)) 
         return -1;
-    if (file2->is_directory && !file1->is_directory)
+    if (gof_file_is_folder (file2) && !gof_file_is_folder (file1)) 
         return 1;
 
     return compare_files_by_time (file1, file2);
@@ -810,13 +844,13 @@ compare_by_type (GOFFile *file1, GOFFile *file2)
      * that the string is dependent entirely on the mime type,
      * which is true now but might not be later.
      */
-    if (file1->is_directory && file2->is_directory)
+    if (gof_file_is_folder (file1) && gof_file_is_folder (file2)) 
         return 0;
-    if (file1->is_directory)
+    if (gof_file_is_folder (file1))
         return -1;
-    if (file2->is_directory)
+    if (gof_file_is_folder (file2))
         return +1;
-    
+
     key1 = g_utf8_collate_key (file1->formated_type, -1);
     key2 = g_utf8_collate_key (file2->formated_type, -1);
     compare = g_strcmp0 (key1, key2);
@@ -866,9 +900,9 @@ compare_files_by_size (GOFFile *file1, GOFFile *file2)
 static int
 compare_by_size (GOFFile *file1, GOFFile *file2)
 {
-    if (file1->is_directory && !file2->is_directory)
+    if (gof_file_is_folder (file1) && !gof_file_is_folder (file2)) 
         return -1;
-    if (file2->is_directory && !file1->is_directory)
+    if (gof_file_is_folder (file2) && !gof_file_is_folder (file1)) 
         return 1;
 
     return compare_files_by_size (file1, file2);
@@ -881,12 +915,10 @@ gof_file_compare_for_sort_internal (GOFFile *file1,
                                     gboolean reversed)
 {
     if (directories_first) {
-        if (file1->is_directory && !file2->is_directory) {
+        if (gof_file_is_folder (file1) && !gof_file_is_folder (file2)) 
             return -1;
-        }
-        if (file2->is_directory && !file1->is_directory) {
+        if (gof_file_is_folder (file2) && !gof_file_is_folder (file1)) 
             return 1;
-        }
     }
 
     /*if (file1->details->sort_order < file2->details->sort_order) {
@@ -991,17 +1023,19 @@ gof_files_get_location_list (GList *files)
  * Determines whether the owner of the current process is allowed
  * to write the @file.
  *
- * Return value: %TRUE if @file can be read.
+ * Return value: %TRUE if @file can be written.
 **/
 gboolean
 gof_file_is_writable (GOFFile *file)
 {
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
+    if (file->target_gof)
+        return gof_file_is_writable (file->target_gof);
     if (file->info == NULL)
         return FALSE;
     if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-        return TRUE;
+        return FALSE;
 
     return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
 }
@@ -1095,6 +1129,8 @@ gof_file_is_executable (GOFFile *file)
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
+    if (file->target_gof)
+        return gof_file_is_executable (file->target_gof);
     if (file->info == NULL)
         return FALSE;
 
@@ -1331,7 +1367,7 @@ gof_file_accepts_drop (GOFFile          *file,
     _g_free0 (uri);
 
     /* check if we have a writable directory here or an executable file */
-    if (file->is_directory && gof_file_is_writable (file))
+    if (gof_file_is_folder (file) && gof_file_is_writable (file))
     {
         /* determine the possible actions */
         actions = gdk_drag_context_get_actions (context) & (GDK_ACTION_COPY | GDK_ACTION_MOVE | GDK_ACTION_LINK | GDK_ACTION_ASK);
@@ -2109,23 +2145,35 @@ gof_file_get_permissions_as_string (GOFFile *file)
                             : (sticky ? 'T' : '-'));
 }
 
-gint gof_file_compare_by_display_name (gconstpointer a, gconstpointer b)
+gint 
+gof_file_compare_by_display_name (gconstpointer a, gconstpointer b)
 {
     return compare_by_display_name (GOF_FILE (a), GOF_FILE (b));
 }
 
-GFile *gof_file_get_target_location (GOFFile *file)
+GFile *
+gof_file_get_target_location (GOFFile *file)
 {
+    /* when desktop files are not interpreted return the original loc, 
+     * this way we can copy/paste simple desktop files intead of their target */
+    if (file->is_desktop && !gof_preferences_get_default ()->pref_interpret_desktop_files)
+        return file->location;
     if (file->target_location != NULL)
         return file->target_location;
 
     return file->location;
 }
 
-const gchar *gof_file_get_display_name (GOFFile *file)
+const gchar *
+gof_file_get_display_name (GOFFile *file)
 {
-    if (file->custom_display_name != NULL)
-        return file->custom_display_name;
+    if (file->is_desktop) {
+        if (gof_preferences_get_default ()->pref_interpret_desktop_files && file->custom_display_name != NULL)
+            return file->custom_display_name;
+    } else {
+        if (file->custom_display_name != NULL)
+            return file->custom_display_name;
+    }
 
     if (file->display_name != NULL)
         return file->display_name;
@@ -2133,11 +2181,14 @@ const gchar *gof_file_get_display_name (GOFFile *file)
     return file->basename;
 }
 
-gboolean gof_file_is_remote_folder (GOFFile *file)
+gboolean 
+gof_file_is_folder (GOFFile *file)
 {
-    if (file->file_type == G_FILE_TYPE_MOUNTABLE 
-        && file->target_location != NULL
-        && g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT))
+    /* TODO check */
+    if (file->is_directory)
+        return TRUE;
+    if (file->target_location != NULL
+        && ( (file->file_type == G_FILE_TYPE_MOUNTABLE && g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT)) || (file->target_gof && file->target_gof->is_directory && gof_preferences_get_default ()->pref_interpret_desktop_files) ))
         return TRUE;
 
     return FALSE;

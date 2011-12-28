@@ -70,6 +70,7 @@ struct _GOFFile {
     GFileInfo       *info;
     GFile           *location;
     GFile           *target_location;
+    GOFFile         *target_gof;
     GFile           *directory;
     const gchar     *name;
     const gchar     *display_name;
@@ -168,6 +169,7 @@ void            gof_file_update (GOFFile *file);
 void            gof_file_query_update (GOFFile *file);
 gboolean        gof_file_ensure_query_info (GOFFile *file);
 void            gof_file_update_icon (GOFFile *file, gint size);
+void            gof_file_update_desktop_file (GOFFile *file);
 void            gof_file_update_trash_info (GOFFile *file);
 void            gof_file_update_emblem (GOFFile *file);
 void            gof_file_get_folder_icon_from_uri_or_path (GOFFile *file);
@@ -238,10 +240,9 @@ gboolean        gof_file_can_set_permissions (GOFFile *file);
 char            *gof_file_get_permissions_as_string (GOFFile *file);
 
 gint            gof_file_compare_by_display_name (gconstpointer a, gconstpointer b);
-gboolean        gof_file_target_location_is_directory (GOFFile *file);
 GFile           *gof_file_get_target_location (GOFFile *file);
 const gchar     *gof_file_get_display_name (GOFFile *file);
-gboolean        gof_file_is_remote_folder (GOFFile *file);
+gboolean        gof_file_is_folder (GOFFile *file);
 
 G_END_DECLS
 

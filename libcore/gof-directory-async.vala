@@ -141,10 +141,19 @@ public class GOF.Directory.Async : Object
             load ();
         } else {
             foreach (GOF.File gof in file_hash.get_values ()) {
-                //if (gof != null  && gof.info != null && gof.is_hidden)
-                if (gof.info != null && gof.is_hidden)
+                if (gof != null  && gof.info != null && gof.is_hidden)
                     file_loaded (gof);
             }
+        }
+    }
+
+    public void update_desktop_files () 
+    {
+        foreach (GOF.File gof in file_hash.get_values ()) {
+            if (gof != null && gof.info != null 
+                && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)
+                && gof.is_desktop)
+                gof.update_desktop_file ();
         }
     }
 
@@ -266,7 +275,7 @@ public class GOF.Directory.Async : Object
         if (gof.info != null && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
             file_added (gof);
 
-        if (!gof.is_hidden && gof.is_directory) {
+        if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
             sorted_dirs.insert_sorted (gof, GOF.File.compare_by_display_name);
         }
@@ -289,7 +298,7 @@ public class GOF.Directory.Async : Object
     private void notify_file_removed (GOF.File gof) {
         if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)
             file_deleted (gof);
-        if (!gof.is_hidden && gof.is_directory) {
+        if (!gof.is_hidden && gof.is_folder ()) {
             /* remove from sorted_dirs */
             sorted_dirs.remove (gof);
         }
@@ -375,7 +384,7 @@ public class GOF.Directory.Async : Object
 
     public static Async from_file (GOF.File gof)
     {
-        return from_gfile (gof.location);
+        return from_gfile (gof.get_target_location ());
     }
     
     public static Async? cache_lookup (GLib.File *file)
@@ -441,7 +450,7 @@ public class GOF.Directory.Async : Object
             return sorted_dirs;
 
         foreach (var gof in file_hash.get_values()) {
-            if (gof.info != null && !gof.is_hidden && gof.is_directory)
+            if (gof.info != null && !gof.is_hidden && gof.is_folder ())
                 sorted_dirs.prepend (gof); 
         }
         sorted_dirs.sort (GOF.File.compare_by_display_name);

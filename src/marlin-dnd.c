@@ -878,7 +878,7 @@ marlin_dnd_perform (GtkWidget       *widget,
         }
     }
 #endif
-    if (file->is_directory)
+    if (gof_file_is_folder (file))
     {
         printf ("%s marlin_file_operation_copy_move\n", G_STRFUNC);
         marlin_file_operations_copy_move (file_list, NULL, gof_file_get_target_location (file),
