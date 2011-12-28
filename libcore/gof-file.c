@@ -268,6 +268,7 @@ void    gof_file_update (GOFFile *file)
     file->display_name = g_file_info_get_display_name (file->info);
     file->is_hidden = g_file_info_get_is_hidden (file->info) || g_file_info_get_is_backup (file->info);
     file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
+    //file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
     file->size = (guint64) g_file_info_get_size (file->info);
     file->file_type = g_file_info_get_file_type (file->info);
     file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
@@ -1134,6 +1135,8 @@ gof_file_is_executable (GOFFile *file)
     if (file->info == NULL)
         return FALSE;
 
+    if (gof_file_is_desktop_file (file))
+        return TRUE;
     if (g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
     {
         /* get the content type of the file */
@@ -1158,7 +1161,7 @@ gof_file_is_executable (GOFFile *file)
         }
     }
 
-    return can_execute || gof_file_is_desktop_file (file);
+    return can_execute;
 }
 
 /**
@@ -1521,8 +1524,6 @@ gof_file_get_default_handler (GOFFile *file)
 
     g_return_val_if_fail (GOF_IS_FILE (file), NULL);
 
-    //TODO
-    //content_type = thunar_file_get_content_type (file);
     content_type = file->ftype;
     if (content_type != NULL)
     {
@@ -1623,7 +1624,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
             {
                 //printf ("%s Link %s\n", G_STRFUNC, url);
                 GOFFile *link = gof_file_get_by_commandline_arg (url);
-                result = gof_file_launch (link, screen);
+                result = gof_file_launch (link, screen, NULL);
                 g_object_unref (link);
                 return (result); 
             }
@@ -1663,65 +1664,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
     return result;
 }
 
-gboolean
-gof_file_launch (GOFFile  *file, GdkScreen *screen)
-{
-    GdkAppLaunchContext *context;
-    GAppInfo            *app_info;
-    gboolean             succeed;
-    GList                path_list;
-    GError              *error = NULL;
-
-    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
-
-    /* check if we should execute the file */
-    if (gof_file_is_executable (file))
-        return gof_file_execute (file, screen, NULL, &error);
-
-    /* determine the default application to open the file */
-    /* TODO We should probably add a cancellable argument to gof_file_launch() */
-    app_info = gof_file_get_default_handler (file);
-
-    /* display the application chooser if no application is defined for this file
-     * type yet */
-    if (G_UNLIKELY (app_info == NULL))
-    {
-        //TODO
-        /*thunar_show_chooser_dialog (parent, file, TRUE);*/
-        printf ("%s application show_chooser_dialog\n", G_STRFUNC);
-        return TRUE;
-    }
-
-    /* check if we're not trying to launch our own file manager */
-    /*if (g_strcmp0 (g_app_info_get_id (app_info), "marlin.desktop") == 0
-        || g_strcmp0 (g_app_info_get_name (app_info), "marlin") == 0)
-    {
-        g_object_unref (G_OBJECT (app_info));
-        app_info = g_app_info_create_from_commandline ("marlin -t", "marlin", 0, NULL);
-    }*/
-
-    /* TODO allow launch of multiples same content type files */
-    /* fake a path list */
-    if (file->target_location != NULL)
-        path_list.data = file->target_location;
-    else
-        path_list.data = file->location;
-    path_list.next = path_list.prev = NULL;
-
-    context = gdk_app_launch_context_new ();
-    gdk_app_launch_context_set_screen (context, screen);
-    succeed = g_app_info_launch (app_info, &path_list, G_APP_LAUNCH_CONTEXT (context), &error);
-
-    /* TODO error */ 
-
-    g_object_unref (context);
-    g_object_unref (G_OBJECT (app_info));
-
-    return succeed;
-}
-
-gboolean
+static gboolean
 gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info)
 {
     GdkAppLaunchContext *context;
@@ -1741,7 +1684,6 @@ gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info)
     succeed = g_app_info_launch (app_info, &path_list, G_APP_LAUNCH_CONTEXT (context), &error);
 
     g_object_unref (context);
-    g_object_unref (G_OBJECT (app_info));
 
     return succeed;
 }
@@ -1771,10 +1713,56 @@ gof_files_launch_with (GList *files, GdkScreen *screen, GAppInfo* app_info)
     return succeed;
 }
 
-void
-gof_file_open_single (GOFFile *file, GdkScreen *screen)
+gboolean
+gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info)
 {
-    gof_file_launch (file, screen);
+    GAppInfo    *app = NULL;
+    gboolean    succeed;
+    GError      *error = NULL;
+
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
+
+    /* check if we should execute the file */
+    if (gof_file_is_executable (file))
+        return gof_file_execute (file, screen, NULL, &error);
+
+    if (app_info != NULL)
+        app = g_app_info_dup (app_info);
+    if (app == NULL)
+        app = gof_file_get_default_handler (file);
+    if (app == NULL)
+    {
+        //TODO 
+        /* display the application chooser if no application is defined for this file
+         * type yet */
+        printf ("%s application show_chooser_dialog\n", G_STRFUNC);
+        return TRUE;
+    }
+
+    /* check if we're not trying to launch our own file manager */
+    /*if (g_strcmp0 (g_app_info_get_id (app_info), "marlin.desktop") == 0
+        || g_strcmp0 (g_app_info_get_name (app_info), "marlin") == 0)
+    {
+        g_object_unref (G_OBJECT (app_info));
+        app_info = g_app_info_create_from_commandline ("marlin -t", "marlin", 0, NULL);
+    }*/
+
+    /* TODO allow launch of multiples same content type files */
+
+    succeed = gof_file_launch_with (file, screen, app);
+
+    /* TODO error */ 
+
+    g_object_unref (G_OBJECT (app));
+
+    return succeed;
+}
+
+void
+gof_file_open_single (GOFFile *file, GdkScreen *screen, GAppInfo *app_info)
+{
+    gof_file_launch (file, screen, app_info);
 }
 
 void

@@ -658,7 +658,7 @@ fm_directory_view_activate_single_file (FMDirectoryView *view,
             break;
         }
     } else {
-        gof_file_open_single (file, screen);
+        gof_file_open_single (file, screen, view->details->default_app);
     }
 }
 
@@ -691,7 +691,7 @@ fm_directory_view_activate_selected_items (FMDirectoryView *view, MarlinViewWind
                         marlin_view_window_add_window (MARLIN_VIEW_WINDOW (view->details->window), location);
                     }
                 } else {
-                    gof_file_open_single (file, screen);
+                    gof_file_open_single (file, screen, view->details->default_app);
                 }
             }
     }
@@ -1882,15 +1882,12 @@ update_menus_selection (FMDirectoryView *view)
     action = gtk_action_group_get_action (view->details->dir_action_group, "Open");
     _g_object_unref0 (view->details->default_app);
     view->details->default_app = marlin_mime_get_default_application_for_files (selection);
-    if (view->details->default_app != NULL) {
+    if (view->details->default_app != NULL && !gof_file_is_executable (file)) {
         char *escaped_app;
 
         escaped_app = eel_str_double_underscores (g_app_info_get_display_name (view->details->default_app));
         mnemonic = g_strdup_printf (_("_Open With %s"), escaped_app);
-        app_icon = g_app_info_get_icon (view->details->default_app);
-        if (app_icon != NULL) {
-            g_object_ref (app_icon);
-        }
+        app_icon = _g_object_ref0 (g_app_info_get_icon (view->details->default_app));
 
         g_free (escaped_app);
     }
@@ -1898,17 +1895,15 @@ update_menus_selection (FMDirectoryView *view)
     g_object_set (action, "label", mnemonic ? mnemonic : _("_Open"), NULL);
 
     menuitem = gtk_ui_manager_get_widget (ui_manager, "/selection/Open Placeholder/Open");
-
     /* Only force displaying the icon if it is an application icon */
     gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (menuitem), app_icon != NULL);
 
-    if (app_icon == NULL) {
+    if (app_icon == NULL) 
         app_icon = g_themed_icon_new (GTK_STOCK_OPEN);
-    }
 
     gtk_action_set_gicon (action, app_icon);
-    g_object_unref (app_icon);
 
+    _g_object_unref0 (app_icon);
     g_free (mnemonic);
 
     /* OpenInNewTab label update */
@@ -1947,7 +1942,7 @@ update_menus_selection (FMDirectoryView *view)
     if (view->details->default_app != NULL && !gof_file_is_folder (file))
         view->details->open_with_apps = marlin_mime_get_applications_for_files (selection);
     /* we need to remove the default app from open with menu */
-    if (view->details->default_app != NULL)
+    if (view->details->default_app != NULL && !gof_file_is_executable (file)) 
         view->details->open_with_apps = filter_default_app (view->details->open_with_apps, view->details->default_app);
     for (l = view->details->open_with_apps, index=0; l != NULL && index <4; l=l->next, index++) {
         add_application_to_open_with_menu (view, 
