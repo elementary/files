@@ -207,6 +207,7 @@ G_DEFINE_TYPE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW);
 /* Identifiers for DnD target types */
 enum
 {
+    TARGET_STRING,
     TARGET_TEXT_URI_LIST,
     TARGET_XDND_DIRECT_SAVE0,
     TARGET_NETSCAPE_URL,
@@ -215,6 +216,7 @@ enum
 /* Target types for dragging from the view */
 static const GtkTargetEntry drag_targets[] =
 {
+    { "text/plain", 0, TARGET_STRING },
     { "text/uri-list", 0, TARGET_TEXT_URI_LIST, },
 };
 
