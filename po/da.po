@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-14 11:46+0000\n"
-"Last-Translator: KTW <Unknown>\n"
+"PO-Revision-Date: 2011-12-28 10:05+0000\n"
+"Last-Translator: Anders Etzerodt Salling Pedersen <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2011-12-15 05:54+0000\n"
-"X-Generator: Launchpad (build 14487)\n"
+"X-Launchpad-Export-Date: 2011-12-29 04:54+0000\n"
+"X-Generator: Launchpad (build 14560)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -836,11 +836,11 @@ msgstr "Intet URL-felt angivet"
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1589
 msgid "Invalid desktop file"
-msgstr "Ugyldig skrivebords fil"
+msgstr "Ugyldig skrivebordsfil"
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1855
 msgid "Slashes are not allowed in filenames"
-msgstr "Skråstreger ikke tilladt i filnavne"
+msgstr "Skråstreger er ikke tilladt i filnavne"
 
 #: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1875
 msgid "Toplevel files cannot be renamed"
