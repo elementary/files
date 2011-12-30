@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-08-27 18:05+0000\n"
-"Last-Translator: xapantu <Unknown>\n"
+"PO-Revision-Date: 2011-12-29 16:28+0000\n"
+"Last-Translator: Freddy <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2011-12-01 05:51+0000\n"
-"X-Generator: Launchpad (build 14414)\n"
+"X-Launchpad-Export-Date: 2011-12-30 05:53+0000\n"
+"X-Generator: Launchpad (build 14560)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -31,17 +31,17 @@ msgstr "Marlin nu poate gasi folderul %s"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr "Creează"
+msgstr "Crează"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "Creeaza folderul %s"
+msgstr "Creați directorul %s"
 
 #: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:95
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:360
 msgid "Trash"
-msgstr "Gunoi"
+msgstr "Coș de gunoi"
 
 #: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:96
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:578
@@ -51,7 +51,7 @@ msgstr "Reţea"
 #: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:122
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:314
 msgid "Home"
-msgstr ""
+msgstr "Acasă"
 
 #: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:124
 #: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:384
@@ -60,7 +60,7 @@ msgstr "Sistem de fișiere"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr ""
+msgstr "Preferințe Marlin"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:83
 msgid "Default File Manager:"
-msgstr ""
+msgstr "Manager de fișiere implicit:"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "make Marlin my default File Manager"
@@ -84,7 +84,7 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:94
 msgid "Behavior"
-msgstr "Comportare"
+msgstr "Comportament"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
@@ -96,11 +96,11 @@ msgstr "mediu"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
-msgstr "larg"
+msgstr "mare"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
-msgstr "extra-larg"
+msgstr "extra-mare"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
@@ -128,11 +128,11 @@ msgstr "Afișare"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
 msgid "Extensions"
-msgstr ""
+msgstr "Extensii"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
 msgid "Name"
-msgstr "Nume segment"
+msgstr "Nume"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:281
 msgid "Type"
@@ -141,7 +141,7 @@ msgstr "Tip"
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:284
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:312
 msgid "Target"
-msgstr ""
+msgstr "Țintă"
 
 #: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:286
 msgid "Size"
@@ -160,43 +160,43 @@ msgstr "Deținător"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:47
 msgid "Properties"
-msgstr ""
+msgstr "Proprietăţi"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:88
 msgid "Info"
-msgstr ""
+msgstr "Informații"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:93
 msgid "Permissions"
-msgstr ""
+msgstr "Permisiuni"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:104
 msgid "Preview"
-msgstr ""
+msgstr "Previzualizare"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:298
 msgid "Created"
-msgstr ""
+msgstr "Creat"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:300
 msgid "Last Access"
-msgstr ""
+msgstr "Ultimul acces"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:304
 msgid "Deleted"
-msgstr ""
+msgstr "Șters"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:308
 msgid "MimeType"
-msgstr ""
+msgstr "Tip MIME"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Location"
-msgstr ""
+msgstr "Locație"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:318
 msgid "Origin Location"
-msgstr ""
+msgstr "Locație originală"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:434
 msgid "Read"
@@ -208,72 +208,74 @@ msgstr ""
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:444
 msgid "Execute"
-msgstr ""
+msgstr "Execută"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:667
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:679
 msgid "Group"
-msgstr ""
+msgstr "Grup"
 
 #: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:683
 msgid "Everyone"
-msgstr ""
+msgstr "Toți"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "FTP Public"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (cu autentificare)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "Partajare Windows"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "WebDAV securizat (HTTPS)"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr ""
+msgstr "Se conectează..."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Nu se poate încărca lista de metode suportate de server.\n"
+"Verificați instalarea gvfs."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "Dosarul „%s” nu poate fi deschis pe „% s”."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "Serverul de la adresa „%s” nu a fost găsit."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr ""
+msgstr "Încearcă din nou"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Verificați detaliile utilizatorului."
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr ""
+msgstr "Continuați"
 
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1169

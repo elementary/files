@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-23 16:16+0000\n"
+"PO-Revision-Date: 2011-12-29 22:21+0000\n"
 "Last-Translator: Ibrahim Saed <ibraheem5000@hotmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2011-12-24 06:22+0000\n"
+"X-Launchpad-Export-Date: 2011-12-30 05:53+0000\n"
 "X-Generator: Launchpad (build 14560)\n"
 
 #: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
@@ -60,7 +60,7 @@ msgstr "نظام ملفات"
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr "خيارات \"مارلين\""
+msgstr "تفضيلات \"مارلِن\""
 
 #: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
