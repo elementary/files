@@ -108,7 +108,6 @@ namespace GOF {
         public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;
         public GLib.FileInfo? info;
-        public unowned string name;
         public string basename;
         public string uri;
         public uint64 size;
@@ -116,10 +115,8 @@ namespace GOF {
         public int color;
         public string formated_modified;
         public string formated_type;
-        public unowned string ftype;
         public string tagstype;
         public Gdk.Pixbuf pix;
-        public unowned string trash_orig_path;
 
         public FileType file_type;
         public bool is_hidden;
@@ -129,11 +126,11 @@ namespace GOF {
         public bool is_symlink();
         public bool is_trashed();
         public bool link_known_target;
-        public unowned string thumbnail_path;
         public uint flags;
         
         public unowned string get_display_name ();
         public unowned GLib.File get_target_location ();
+        public unowned string get_ftype ();
         public string? get_formated_time (string attr);
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
 

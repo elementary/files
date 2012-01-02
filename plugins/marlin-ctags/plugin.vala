@@ -143,7 +143,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
     {
         char* ptr_arr[4];
         ptr_arr[0] = gof.uri;
-        ptr_arr[1] = gof.ftype;
+        ptr_arr[1] = gof.get_ftype ();
         ptr_arr[2] = gof.info.get_attribute_uint64 (FILE_ATTRIBUTE_TIME_MODIFIED).to_string ();
         ptr_arr[3] = gof.color.to_string ();
 
@@ -202,7 +202,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
                 try {
                     //var info = gof.location.query_info (FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE, 0);
                     var info = yield gof.location.query_info_async (FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE, 0, 0, cancellable);
-                    warning ("--- unknown query_info %s", gof.name);
+                    warning ("--- unknown query_info %s", gof.info.get_name ());
                     add_to_knowns_queue (gof, info);
                 } catch (Error err2) {
                     warning ("query_info failed: %s %s", err2.message, gof.uri);
@@ -229,7 +229,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
     }
 
     private void add_to_unknowns_queue (GOF.File file) {
-        if (file.ftype == "application/octet-stream") {
+        if (file.get_ftype () == "application/octet-stream") {
             unknowns.push_head (file);
 
             if (idle_consume_unknowns == 0)
@@ -264,9 +264,11 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
                     add_to_unknowns_queue (file);
                     return;
                 }
-                if (type.length > 0 && file.ftype == "application/octet-stream") {
-                    file.tagstype = type;
-                    file.update_type ();
+                if (type.length > 0 && file.get_ftype () == "application/octet-stream") {
+                    if (type != "application/octet-stream") {
+                        file.tagstype = type;
+                        file.update_type ();
+                    }
                 }
                 //message ("grrrrrr %s %s %d %s", myfile.name, type, n, myfile.ftype);
             } else {

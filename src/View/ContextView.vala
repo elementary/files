@@ -222,7 +222,8 @@ namespace Marlin.View {
             /* fixing a minimum and maximum value */
             if (orientation == Orientation.VERTICAL) {
                 /* add a little 16px padding for normal icons */
-                if (last_gof.thumbnail_path != null)
+                if (last_gof.info.has_attribute (FILE_ATTRIBUTE_THUMBNAIL_PATH) &&
+                    last_gof.info.get_attribute_byte_string (FILE_ATTRIBUTE_THUMBNAIL_PATH) != null)
                     icon_size_req = alloc.width.clamp (height, 256);
                 else
                     icon_size_req = alloc.width.clamp (height, width-16);
@@ -309,18 +310,18 @@ namespace Marlin.View {
 
             /* TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
                we are in listview: size, type, modified */
-            info.add(new Pair<string, string>(_("Name") + (": "), last_gof.name));
+            info.add(new Pair<string, string>(_("Name") + (": "), last_gof.info.get_name ()));
             info.add(new Pair<string, string>(_("Type") + (": "), last_gof.formated_type));
 
             if (file_info.get_is_symlink())
-                info.add(new Pair<string, string>(_("Target") + (": "), file_info.get_symlink_target()));
+                info.add(new Pair<string, string>(_("Target") + (": "), file_info.get_symlink_target ()));
             if(raw_type != FileType.DIRECTORY)
                 info.add(new Pair<string, string>(_("Size") + (": "), last_gof.format_size));
             /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
             info.add(new Pair<string, string>(_("Modified") + (": "), last_gof.formated_modified));
             info.add(new Pair<string, string>(_("Owner") + (": "), file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
 
-            label.label = last_gof.name;
+            label.label = last_gof.info.get_name ();
 
             update_info_panel();
             show();
@@ -352,7 +353,7 @@ namespace Marlin.View {
                 if (label.parent != null)
                     label.parent.remove(label);
                 label.set_selectable(true);
-                label.set_tooltip_text (last_gof.name);
+                label.set_tooltip_text (last_gof.info.get_name ());
                 box.pack_start(label, false, false);
             }
             

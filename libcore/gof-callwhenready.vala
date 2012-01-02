@@ -37,7 +37,7 @@ public class GOF.CallWhenReady : Object
 
         int count = 0;
         foreach (GOF.File gof in files) {
-            if (gof.info == null || gof.name == null) {
+            if (gof.info == null) {
                 call_when_ready_list.prepend (gof);
                 query_info_async (gof, file_ready);
                 //message ("cwr %s", gof.uri);

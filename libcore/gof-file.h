@@ -242,9 +242,11 @@ gboolean        gof_file_can_set_permissions (GOFFile *file);
 char            *gof_file_get_permissions_as_string (GOFFile *file);
 
 gint            gof_file_compare_by_display_name (gconstpointer a, gconstpointer b);
+
 GFile           *gof_file_get_target_location (GOFFile *file);
 const gchar     *gof_file_get_display_name (GOFFile *file);
 gboolean        gof_file_is_folder (GOFFile *file);
+const gchar     *gof_file_get_ftype (GOFFile *file);
 
 G_END_DECLS
 

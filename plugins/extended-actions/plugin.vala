@@ -62,10 +62,11 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
                 
         entry = new GLib.HashTable<string,string> (str_hash, str_equal);
         entry.insert ("uri", file.uri);
-        if (file.ftype == "application/octet-stream" || file.ftype == null)
+        var ftype = file.get_ftype ();
+        if (ftype == "application/octet-stream" || ftype == null)
             entry.insert ("mimetype", "");
         else
-            entry.insert ("mimetype", file.ftype);
+            entry.insert ("mimetype", ftype);
 
         return entry;
     }

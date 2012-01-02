@@ -77,8 +77,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         mimes = new Gee.HashSet<string> ();
         foreach (var gof in files)
-            if (gof.ftype != null)
-                mimes.add (gof.ftype);
+        {
+            var ftype = gof.get_ftype ();
+            if (ftype != null)
+                mimes.add (ftype);
+        }
 
         get_info (goffile);
         cancellable = new GLib.Cancellable ();
@@ -203,7 +206,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         if (count > 1)
             header_title.set_markup ("<span weight='semibold' size='large'>" + "%u selected items".printf(count) + "</span>");
         else
-            header_title.set_markup ("<span weight='semibold' size='large'>" + goffile.name + "</span>");
+            header_title.set_markup ("<span weight='semibold' size='large'>" + goffile.info.get_name () + "</span>");
         
         header_desc = new Label (null);
         header_desc.set_halign(Align.START);
@@ -246,11 +249,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         foreach (GOF.File gof in files)
         {
+            var gof_ftype = gof.get_ftype ();
             if (ftype == null && gof != null) {
-                ftype = gof.ftype;
+                ftype = gof_ftype;
                 continue;
             }
-            if (ftype != gof.ftype)
+            if (ftype != gof_ftype)
                 return null;
         }
 
@@ -284,10 +288,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         foreach (GOF.File gof in files)
         {
             if (loc == null && gof != null) {
-                loc = get_parent_loc(gof.trash_orig_path);
+                loc = get_parent_loc (gof.info.get_attribute_byte_string (FILE_ATTRIBUTE_TRASH_ORIG_PATH));
                 continue;
             }
-            if (!loc.equal (get_parent_loc (gof.trash_orig_path)))
+            if (!loc.equal (get_parent_loc (gof.info.get_attribute_byte_string (FILE_ATTRIBUTE_TRASH_ORIG_PATH))))
                 return null;
         }
 
@@ -300,7 +304,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     }
 
     private void get_info (GOF.File file) {
-        var file_info = file.info;
         info = new Gee.LinkedList<Pair<string, string>>();
 
         /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
@@ -313,7 +316,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             /* print deletion date if trashed file */
             //TODO format trash deletion date string
             if (file.is_trashed())
-                info.add(new Pair<string, string>(_("Deleted") + (": "), file_info.get_attribute_as_string("trash::deletion-date")));
+                info.add(new Pair<string, string>(_("Deleted") + (": "), file.info.get_attribute_as_string("trash::deletion-date")));
         }
         ftype = get_common_ftype();
         if (ftype != null) {
@@ -330,14 +333,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         }
         if (got_common_location())
             info.add(new Pair<string, string>(_("Location") + (": "), "<a href=\"" + file.directory.get_uri () + "\">" + file.directory.get_parse_name() + "</a>"));
-        if (count == 1 && file_info.get_is_symlink())
-            info.add(new Pair<string, string>(_("Target") + (": "), file_info.get_symlink_target()));
+        if (count == 1 && file.info.get_is_symlink())
+            info.add(new Pair<string, string>(_("Target") + (": "), file.info.get_symlink_target()));
 
         /* print orig location of trashed files */
-        if (file.is_trashed() && file.trash_orig_path != null) {
+        if (file.is_trashed() && file.info.get_attribute_byte_string (FILE_ATTRIBUTE_TRASH_ORIG_PATH) != null) {
             var trash_orig_loc = get_common_trash_orig();
             if (trash_orig_loc != null)
-                info.add(new Pair<string, string>(_("Origin Location") + (": "), "<a href=\"" + get_parent_loc (file.trash_orig_path).get_uri () + "\">" + trash_orig_loc + "</a>"));
+                info.add(new Pair<string, string>(_("Origin Location") + (": "), "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FILE_ATTRIBUTE_TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>"));
         }
     }
 

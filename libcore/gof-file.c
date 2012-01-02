@@ -213,7 +213,7 @@ gof_file_target_location_update (GOFFile *file)
     gof_file_query_update (gof);
     file->is_directory = gof->is_directory;
     file->ftype = gof->ftype;*/
-    
+   
     file->target_gof = gof_file_get (file->target_location);
     /* TODO make async */
     gof_file_query_update (file->target_gof);
@@ -259,19 +259,14 @@ gof_file_update_icon_internal (GOFFile *file, gint size);
 void
 gof_file_update_type (GOFFile *file)
 {
-    const gchar *old_type = file->ftype;
-    file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
-    if (!g_strcmp0 (file->ftype, "application/octet-stream") && file->tagstype)
-        file->ftype = file->tagstype;
+    const gchar *ftype = gof_file_get_ftype (file);
 
-    if (g_strcmp0 (old_type, file->ftype)) {
-        gof_file_update_formated_type (file);
-        /* update icon */
-        //g_message ("%s build new icon", G_STRFUNC);
-        file->icon = g_content_type_get_icon (file->ftype);
-        gof_file_update_icon_internal (file, file->pix_size);
-        gof_file_icon_changed (file);
-    }
+    gof_file_update_formated_type (file);
+    /* update icon */
+    //g_message ("%s build new icon", G_STRFUNC);
+    file->icon = g_content_type_get_icon (ftype);
+    gof_file_update_icon_internal (file, file->pix_size);
+    gof_file_icon_changed (file);
 }
 
 void    gof_file_update (GOFFile *file)
@@ -723,6 +718,8 @@ static void gof_file_init (GOFFile *file) {
     
     file->flags = 0;
     file->pix_size = -1;
+    
+    file->target_gof = NULL;
     
     file->sort_column_id = FM_LIST_MODEL_FILENAME;
     file->sort_order = GTK_SORT_ASCENDING;
@@ -2207,3 +2204,19 @@ gof_file_is_folder (GOFFile *file)
     return FALSE;
 }
 
+const gchar *
+gof_file_get_ftype (GOFFile *file)
+{
+    g_return_val_if_fail (file->info != NULL, NULL);
+
+    const char *ftype = NULL;
+    
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
+        return g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE))
+        ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
+    if (!g_strcmp0 (ftype, "application/octet-stream") && file->tagstype)
+        return file->tagstype;
+
+    return ftype;
+}
