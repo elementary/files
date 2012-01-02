@@ -848,21 +848,16 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
         uris = g_new0 (gchar *, n_items + 1);
         mime_hints = g_new0 (const gchar *, n_items + 1);
 
-        //#if 0
         /* fill URI and MIME hint arrays with items from the wait queue */
         for (lp = g_list_last (supported_files), n = 0; lp != NULL; lp = lp->prev, ++n)
         {
             /* set the thumbnail state to loading */
             gof_file_set_thumb_state (lp->data, GOF_FILE_THUMB_STATE_LOADING);
 
-            //TODO
             /* save URI and MIME hint in the arrays */
-            //uris[n] = marlin_file_dup_uri (lp->data);
-            uris[n] = g_strdup (GOF_FILE (lp->data)->uri);
-            //mime_hints[n] = marlin_file_get_content_type (lp->data);
+            uris[n] = GOF_FILE (lp->data)->uri;
             mime_hints[n] = gof_file_get_ftype (GOF_FILE (lp->data));
         }
-        //#endif
 
         /* NULL-terminate both arrays */
         uris[n] = NULL;
@@ -880,6 +875,9 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
 
         /* free mime hints array */
         g_free (mime_hints);
+
+        /* free uri array */
+        g_free (uris);
 
         /* free the list of supported files */
         g_list_free (supported_files);
