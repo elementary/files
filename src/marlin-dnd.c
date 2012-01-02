@@ -890,7 +890,7 @@ marlin_dnd_perform (GtkWidget       *widget,
         if (G_UNLIKELY (!succeed))
         {
             /* display an error to the user */
-            marlin_dialogs_show_error (widget, error, _("Failed to execute file \"%s\""), file->display_name);
+            marlin_dialogs_show_error (widget, error, _("Failed to execute file \"%s\""), gof_file_get_display_name (file));
 
             /* release the error */
             g_error_free (error);

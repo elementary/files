@@ -72,8 +72,8 @@ struct _GOFFile {
     GFile           *target_location;
     GOFFile         *target_gof;
     GFile           *directory;
-    const gchar     *name;
-    const gchar     *display_name;
+    /*const gchar     *name;
+    const gchar     *display_name;*/
     gchar           *custom_display_name;
     gchar           *uri;
     char            *basename;

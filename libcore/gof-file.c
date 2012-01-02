@@ -235,12 +235,12 @@ gof_file_update_formated_type (GOFFile *file)
     gchar *formated_type = NULL;
     
     _g_free0 (file->formated_type);
-    if (gof_preferences_get_default ()->pref_interpret_desktop_files && file->target_gof && file->target_gof->ftype) {
-        file->formated_type = g_content_type_get_description (file->target_gof->ftype);
+    if (gof_preferences_get_default ()->pref_interpret_desktop_files && file->target_gof && gof_file_get_ftype (file->target_gof)) {
+        file->formated_type = g_content_type_get_description (gof_file_get_ftype (file->target_gof));
     } else {
         //trash doesn't have a ftype
         if (file->ftype != NULL) {
-            formated_type = g_content_type_get_description (file->ftype);
+            formated_type = g_content_type_get_description (gof_file_get_ftype (file));
             if (G_UNLIKELY (gof_file_is_symlink (file))) {
                 file->formated_type = g_strdup_printf (_("link to %s"), formated_type);
             } else {
@@ -279,8 +279,6 @@ void    gof_file_update (GOFFile *file)
     /* free previously allocated */
     gof_file_clear_info (file);
 
-    file->name = g_file_info_get_name (file->info);
-    file->display_name = g_file_info_get_display_name (file->info);
     file->is_hidden = g_file_info_get_is_hidden (file->info) || g_file_info_get_is_backup (file->info);
     file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
     //file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
@@ -2185,8 +2183,8 @@ gof_file_get_display_name (GOFFile *file)
             return file->custom_display_name;
     }
 
-    if (file->display_name != NULL)
-        return file->display_name;
+    if (file->info && g_file_info_get_display_name (file->info) != NULL)
+        return g_file_info_get_display_name (file->info);
     
     return file->basename;
 }

@@ -267,7 +267,7 @@ marlin_bookmark_set_name (MarlinBookmark *bookmark, char *new_name)
     g_return_val_if_fail (new_name != NULL, FALSE);
     g_return_val_if_fail (MARLIN_IS_BOOKMARK (bookmark), FALSE);
 
-    if (strcmp (new_name, bookmark->file->name) == 0) {
+    if (strcmp (new_name, bookmark->name) == 0) {
         return FALSE;
     } 
 

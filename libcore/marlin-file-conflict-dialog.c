@@ -349,12 +349,13 @@ file_list_ready_cb (GList *files, gpointer user_data)
 
     should_show_type = strcmp(src->ftype, dest->ftype);
 
+    const gchar *dest_display_name = gof_file_get_display_name (dest);
+    const gchar *dest_dir_display_name = gof_file_get_display_name (dest_dir);
+
     /* Set up the right labels */
     if (dest->is_directory) {
         if (src->is_directory) {
-            primary_text = g_strdup_printf
-                (_("Merge folder \"%s\"?"),
-                 dest->display_name);
+            primary_text = g_strdup_printf (_("Merge folder \"%s\"?"), dest_display_name);
 
             message_extra = 
                 _("Merging will ask for confirmation before replacing any files in "
@@ -363,43 +364,43 @@ file_list_ready_cb (GList *files, gpointer user_data)
             if (src->modified > dest->modified) {
                 message = g_strdup_printf (
                                            _("An older folder with the same name already exists in \"%s\"."),
-                                           dest_dir->display_name);
+                                           dest_dir_display_name);
             } else if (src->modified < dest->modified) {
                 message = g_strdup_printf (
                                            _("A newer folder with the same name already exists in \"%s\"."),
-                                           dest_dir->display_name);
+                                           dest_dir_display_name);
             } else {
                 message = g_strdup_printf (
                                            _("Another folder with the same name already exists in \"%s\"."),
-                                           dest_dir->display_name);
+                                           dest_dir_display_name);
             }
         } else {
             message_extra =
                 _("Replacing it will remove all files in the folder.");
             primary_text = g_strdup_printf
-                (_("Replace folder \"%s\"?"), dest->display_name);
+                (_("Replace folder \"%s\"?"), dest_display_name);
             message = g_strdup_printf
                 (_("A folder with the same name already exists in \"%s\"."),
-                 dest_dir->display_name);
+                 dest_dir_display_name);
         }
     } else {
         primary_text = g_strdup_printf
-            (_("Replace file \"%s\"?"), dest->display_name);
+            (_("Replace file \"%s\"?"), dest_display_name);
 
         message_extra = _("Replacing it will overwrite its content.");
 
         if (src->modified > dest->modified) {
             message = g_strdup_printf (
                                        _("An older file with the same name already exists in \"%s\"."),
-                                       dest_dir->display_name);
+                                       dest_dir_display_name);
         } else if (src->modified < dest->modified) {
             message = g_strdup_printf (
                                        _("A newer file with the same name already exists in \"%s\"."),
-                                       dest_dir->display_name);
+                                       dest_dir_display_name);
         } else {
             message = g_strdup_printf (
                                        _("Another file with the same name already exists in \"%s\"."),
-                                       dest_dir->display_name);
+                                       dest_dir_display_name);
         }
     }
 
@@ -493,7 +494,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
     g_free (label_text);
 
     /* Populate the entry */
-    details->conflict_name = g_strdup (dest->name);
+    details->conflict_name = g_strdup (dest_display_name);
 
     gtk_entry_set_text (GTK_ENTRY (details->entry), details->conflict_name);
 

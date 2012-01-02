@@ -43,8 +43,9 @@ void marlincore_tests_goffile(void)
     g_assert(file != NULL);
     gof_file_query_update (file);
     g_assert(file != NULL);
-    g_assert_cmpstr(file->name, ==, "share");
-    g_assert_cmpstr(file->display_name, ==, "share");
+    g_assert(file->info != NULL);
+    g_assert_cmpstr(g_file_info_get_name (file->info), ==, "share");
+    g_assert_cmpstr(g_file_info_get_display_name (file->info), ==, "share");
     g_assert_cmpstr(file->basename, ==, "share");
     g_assert_cmpint(file->is_directory, ==, TRUE);
     g_assert_cmpint(file->is_hidden, ==, FALSE);

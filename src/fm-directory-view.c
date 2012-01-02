@@ -1377,7 +1377,7 @@ fm_directory_view_drag_motion (GtkWidget        *widget,
               }*/
             if (G_LIKELY (file != NULL && gof_file_is_folder (file)
                           && gof_file_is_writable (file))) {
-                printf ("%s get_suggested_action for file = directory\n", file->name);
+                printf ("%s get_suggested_action for file = directory\n", gof_file_get_display_name (file));
                 action = gdk_drag_context_get_suggested_action (context);
             }
 

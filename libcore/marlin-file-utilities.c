@@ -264,7 +264,7 @@ marlin_restore_files_from_trash (GList *files, GtkWindow *parent_window)
 
 	for (l = unhandled_files; l != NULL; l = l->next) {
 		file = GOF_FILE (l->data);
-		message = g_strdup_printf (_("Could not determine original location of \"%s\" "), file->display_name);
+		message = g_strdup_printf (_("Could not determine original location of \"%s\" "), gof_file_get_display_name (file));
 
 		eel_show_warning_dialog (message,
                                  _("The item cannot be restored from trash"),

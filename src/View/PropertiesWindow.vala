@@ -640,7 +640,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         //TODO use marlin jobs
         try {
-            info.set_attribute_uint32(attr, val);
+            info.set_attribute_uint32 (attr, val);
             yield file.location.set_attributes_async (info, 
                                                       GLib.FileQueryInfoFlags.NONE,
                                                       GLib.Priority.DEFAULT, 

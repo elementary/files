@@ -99,7 +99,7 @@ static gboolean fm_columns_view_draw(GtkWidget* view_, cairo_t* cr, FMColumnsVie
 static void
 show_selected_files (GOFFile *file)
 {
-    g_message ("selected: %s\n", file->name);
+    g_message ("selected: %s\n", g_file_info_get_name (file->info));
 }
 
 static void
@@ -183,7 +183,7 @@ fm_columns_view_rename_callback (GOFFile *file,
 		view->details->rename_done = TRUE;
 		
 		if (error != NULL) {
-            marlin_dialogs_show_error (GTK_WIDGET (view), error, _("Failed to rename %s to %s"), file->name, view->details->original_name);
+            marlin_dialogs_show_error (GTK_WIDGET (view), error, _("Failed to rename %s to %s"), g_file_info_get_name (file->info), view->details->original_name);
 			/* If the rename failed (or was cancelled), kill renaming_file.
 			 * We won't get a change event for the rename, so otherwise
 			 * it would stay around forever.
