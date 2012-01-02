@@ -33,6 +33,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
     //GOF.Directory.Async directory;
     GOF.File directory;
     private bool is_user_dir;
+    private bool ignore_dir;
 
     private Queue<GOF.File> unknowns;
     private Queue<GOF.File> knowns;
@@ -105,6 +106,16 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
         return false;
     }
 
+    private bool f_ignore_dir (string uri) {
+        return_val_if_fail (uri != null, true);
+        
+        var idir = "file:///tmp";
+        if (Posix.strncmp (uri, idir, idir.length) == 0)
+            return true;
+
+        return false;
+    }
+
     public override void directory_loaded (void* user_data)
     {
         message  ("CANCEL");
@@ -124,6 +135,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
         //warning ("CTags Plugin dir %s", directory.file.uri);
         warning ("CTags Plugin dir %s", directory.uri);
         is_user_dir = f_is_user_dir (directory.uri);
+        ignore_dir = f_ignore_dir (directory.uri);
     }
 
     //private Variant add_entry (string uri, string content_type, int modified_time)
@@ -268,7 +280,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
     public override void update_file_info(GOF.File file) 
     {
         return_if_fail (file != null);
-        if (file != null && file.info != null
+        if (!ignore_dir
+            &&file != null && file.info != null
             && (!file.is_hidden || GOF.Preferences.get_default ().pref_show_hidden_files))
             /*&& file.ftype == "application/octet-stream")*/
             /*if (file.ftype == "application/octet-stream")*/
