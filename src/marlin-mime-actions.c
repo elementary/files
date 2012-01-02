@@ -48,7 +48,7 @@ file_has_local_path (GOFFile *file)
 static int
 file_compare_by_mime_type (GOFFile *a, GOFFile *b)
 {
-    return g_strcmp0 (a->ftype, b->ftype);
+    return g_strcmp0 (gof_file_get_ftype (a), gof_file_get_ftype (b));
 }
 
 static char *
@@ -203,7 +203,7 @@ marlin_mime_get_applications_for_file (GOFFile *file)
 	GList *result;
 	GAppInfo *uri_handler;
 
-	result = g_app_info_get_all_for_type (file->ftype);
+	result = g_app_info_get_all_for_type (gof_file_get_ftype (file));
 
     uri_scheme = g_file_get_uri_scheme (file->location);
 	if (uri_scheme != NULL) {

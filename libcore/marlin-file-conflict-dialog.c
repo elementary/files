@@ -347,7 +347,10 @@ file_list_ready_cb (GList *files, gpointer user_data)
     dest = g_list_nth_data (files, 1);
     src = g_list_nth_data (files, 2);
 
-    should_show_type = strcmp(src->ftype, dest->ftype);
+    const gchar *src_ftype = gof_file_get_ftype (src);
+    const gchar *dest_ftype = gof_file_get_ftype (dest);
+
+    should_show_type = strcmp(src_ftype, dest_ftype);
 
     const gchar *dest_display_name = gof_file_get_display_name (dest);
     const gchar *dest_dir_display_name = gof_file_get_display_name (dest_dir);
@@ -458,7 +461,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
     g_string_append_printf (str, "<i>%s</i> %s\n", _("Size:"), dest->format_size);
 
     if (should_show_type) {
-        g_string_append_printf (str, "<i>%s</i> %s\n", _("Type:"), dest->ftype);
+        g_string_append_printf (str, "<i>%s</i> %s\n", _("Type:"), dest_ftype);
     }
 
     g_string_append_printf (str, "<i>%s</i> %s", _("Last modified:"), dest->formated_modified);
@@ -479,7 +482,7 @@ file_list_ready_cb (GList *files, gpointer user_data)
     g_string_append_printf (str, "<i>%s</i> %s\n", _("Size:"), src->format_size);
 
     if (should_show_type) {
-        g_string_append_printf (str, "<i>%s</i> %s\n", _("Type:"), src->ftype);
+        g_string_append_printf (str, "<i>%s</i> %s\n", _("Type:"), src_ftype);
     }
 
     g_string_append_printf (str, "<i>%s</i> %s", _("Last modified:"), src->formated_modified);

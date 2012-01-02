@@ -3244,7 +3244,7 @@ action_other_application_callback (GtkAction *action, FMDirectoryView *view)
         if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check_default)))
         {
             GError* error = NULL;
-            if(!g_app_info_set_as_default_for_type (app, file->ftype, &error))
+            if(!g_app_info_set_as_default_for_type (app, gof_file_get_ftype (file), &error))
             {
                 g_critical("Couldn't set as default: %s", error->message);
                 g_clear_error (&error);

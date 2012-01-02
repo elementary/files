@@ -396,7 +396,7 @@ marlin_thumbnailer_file_is_supported (MarlinThumbnailer *thumbnailer,
     /* determine the content type of the passed file */
     //amtest
     //content_type = marlin_file_get_content_type (file);
-    content_type = file->ftype;
+    content_type = gof_file_get_ftype (file);
 
     /* abort if the content type is unknown */
     if (content_type == NULL)
@@ -858,9 +858,9 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
             //TODO
             /* save URI and MIME hint in the arrays */
             //uris[n] = marlin_file_dup_uri (lp->data);
-            uris[n] = g_file_get_uri (GOF_FILE (lp->data)->location);
+            uris[n] = g_strdup (GOF_FILE (lp->data)->uri);
             //mime_hints[n] = marlin_file_get_content_type (lp->data);
-            mime_hints[n] = GOF_FILE (lp->data)->ftype;
+            mime_hints[n] = gof_file_get_ftype (GOF_FILE (lp->data));
         }
         //#endif
 

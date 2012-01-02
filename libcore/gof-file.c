@@ -239,8 +239,9 @@ gof_file_update_formated_type (GOFFile *file)
         file->formated_type = g_content_type_get_description (gof_file_get_ftype (file->target_gof));
     } else {
         //trash doesn't have a ftype
-        if (file->ftype != NULL) {
-            formated_type = g_content_type_get_description (gof_file_get_ftype (file));
+        const gchar *ftype = gof_file_get_ftype (file);
+        if (ftype != NULL) {
+            formated_type = g_content_type_get_description (ftype);
             if (G_UNLIKELY (gof_file_is_symlink (file))) {
                 file->formated_type = g_strdup_printf (_("link to %s"), formated_type);
             } else {
@@ -280,10 +281,10 @@ void    gof_file_update (GOFFile *file)
     gof_file_clear_info (file);
 
     file->is_hidden = g_file_info_get_is_hidden (file->info) || g_file_info_get_is_backup (file->info);
-    file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
+    /*file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
     //file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
     if (!g_strcmp0 (file->ftype, "application/octet-stream") && file->tagstype)
-        file->ftype = file->tagstype;
+        file->ftype = file->tagstype;*/
     file->size = (guint64) g_file_info_get_size (file->info);
     file->file_type = g_file_info_get_file_type (file->info);
     file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
@@ -405,8 +406,9 @@ void    gof_file_update (GOFFile *file)
     if (file->is_directory && g_file_is_native (file->location)) {
         gof_file_get_folder_icon_from_uri_or_path (file);
     } else {
-        if (file->ftype != NULL && file->icon == NULL)
-            file->icon = g_content_type_get_icon (file->ftype);
+        const gchar *ftype = gof_file_get_ftype (file);
+        if (ftype != NULL && file->icon == NULL)
+            file->icon = g_content_type_get_icon (ftype);
     }
 
     file->thumbnail_path =  g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
@@ -1123,7 +1125,7 @@ gof_file_is_desktop_file (GOFFile *file)
     if (file->info == NULL)
         return FALSE;
 
-    content_type = file->ftype;
+    content_type = gof_file_get_ftype (file);
     if (content_type != NULL)
         is_desktop_file = g_content_type_equals (content_type, "application/x-desktop");
 
@@ -1162,7 +1164,7 @@ gof_file_is_executable (GOFFile *file)
         /* get the content type of the file */
         //TODO
         //content_type = g_file_info_get_content_type (file->info);
-        content_type = file->ftype;
+        content_type = gof_file_get_ftype (file);
         if (G_LIKELY (content_type != NULL))
         {
 #ifdef G_OS_WIN32
@@ -1544,7 +1546,7 @@ gof_file_get_default_handler (GOFFile *file)
 
     g_return_val_if_fail (GOF_IS_FILE (file), NULL);
 
-    content_type = file->ftype;
+    content_type = gof_file_get_ftype (file);
     if (content_type != NULL)
     {
         path = g_file_get_path (file->location);

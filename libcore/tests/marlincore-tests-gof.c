@@ -49,7 +49,7 @@ void marlincore_tests_goffile(void)
     g_assert_cmpstr(file->basename, ==, "share");
     g_assert_cmpint(file->is_directory, ==, TRUE);
     g_assert_cmpint(file->is_hidden, ==, FALSE);
-    g_assert_cmpstr(file->ftype, ==, "inode/directory");
+    g_assert_cmpstr(gof_file_get_ftype (file), ==, "inode/directory");
     g_assert_cmpint(gof_file_is_symlink(file), ==, FALSE);
     /* TODO: formated_type needs a test too, but there are some issues with
      * translations. */
