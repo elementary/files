@@ -210,6 +210,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
 
             }
         }
+        idle_consume_unknowns = 0;
     }
 
     private void add_to_knowns_queue (GOF.File file, FileInfo info) {
@@ -234,7 +235,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
             if (idle_consume_unknowns == 0)
                 idle_consume_unknowns = Idle.add (() => { 
                                                   consume_unknowns_queue ();
-                                                  idle_consume_unknowns = 0;
                                                   return false;
                                                   });
         }

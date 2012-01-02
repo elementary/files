@@ -3846,10 +3846,8 @@ layout_callback (gpointer user_data)
     ExoIconView *icon_view;
 
     icon_view = EXO_ICON_VIEW (user_data);
-
-    icon_view->priv->layout_idle_id = 0;
-
     exo_icon_view_layout (icon_view);
+    icon_view->priv->layout_idle_id = 0;
 
     return FALSE;
 }
@@ -4154,7 +4152,23 @@ exo_icon_view_row_changed (GtkTreeModel *model,
      * so just invalidate the whole thing when the model
      * changes.
      */
-    exo_icon_view_invalidate_sizes (icon_view);
+    //exo_icon_view_invalidate_sizes (icon_view);
+
+    /* TODO this could be refined */
+    //amtest
+    ExoIconViewItem *item;
+    item = g_list_nth_data (icon_view->priv->items, gtk_tree_path_get_indices(path)[0]);
+
+    if (!item)
+        return;
+
+    exo_icon_view_item_invalidate_size (item);
+    exo_icon_view_queue_layout (icon_view);
+    
+    /*exo_icon_view_set_cell_data (icon_view, item);
+    gtk_cell_area_get_preferred_width (icon_view->priv->cell_area, 
+                                       icon_view->priv->cell_area_context,
+                                       GTK_WIDGET (icon_view), NULL, NULL);*/
 
 #ifdef ENABLE_DEBUG
     verify_items (icon_view);
