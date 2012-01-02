@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-02 19:52+0100\n"
+"POT-Creation-Date: 2012-01-02 20:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,86 +34,81 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:317
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Created"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:318
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:311
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:320
 msgid "Modified"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:319
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:312
 msgid "Last Access"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:323
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:316
 msgid "Deleted"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:327
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:320
 msgid "MimeType"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:335
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:339
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:341
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:334
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:316
 msgid "Target"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:347
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:340
 msgid "Origin Location"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:385
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1092
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
 msgid "Other application..."
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:409
-msgid "Open with: "
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
+msgid "Open with"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:531
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:536
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:529
 msgid "Write"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:541
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:534
 msgid "Execute"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:759
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:772
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:752
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:765
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:321
 msgid "Owner"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:764
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:776
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:757
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:769
 msgid "Group"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:780
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:773
 msgid "Everyone"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1032
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1111
-msgid "Default Application:"
 msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
