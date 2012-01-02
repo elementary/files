@@ -153,9 +153,12 @@ namespace Marlin.View {
             }
             sync_contextview();
 
+            warning ("directory done loading");
             //coltest  TODO remove
             /*if (window.contextview != null)
                 window.contextview.update ();*/
+            
+            slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
         public void change_view(int nview, GLib.File? location){

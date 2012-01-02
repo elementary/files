@@ -109,7 +109,6 @@ GOFFile    *gof_file_new (GFile *location, GFile *dir)
         file->directory = NULL;
     file->basename = g_file_get_basename (file->location);
     //file->parent_dir = g_file_enumerator_get_container (enumerator);
-    file->color = NULL;
 
     return (file);
 }
@@ -231,7 +230,7 @@ gof_file_update_size (GOFFile *file)
 }
 
 static void
-gof_file_update_type (GOFFile *file)
+gof_file_update_formated_type (GOFFile *file)
 {
     gchar *formated_type = NULL;
     
@@ -254,6 +253,27 @@ gof_file_update_type (GOFFile *file)
     g_free (formated_type);
 }
 
+static void 
+gof_file_update_icon_internal (GOFFile *file, gint size);
+
+void
+gof_file_update_type (GOFFile *file)
+{
+    const gchar *old_type = file->ftype;
+    file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
+    if (!g_strcmp0 (file->ftype, "application/octet-stream") && file->tagstype)
+        file->ftype = file->tagstype;
+
+    if (g_strcmp0 (old_type, file->ftype)) {
+        gof_file_update_formated_type (file);
+        /* update icon */
+        //g_message ("%s build new icon", G_STRFUNC);
+        file->icon = g_content_type_get_icon (file->ftype);
+        gof_file_update_icon_internal (file, file->pix_size);
+        gof_file_icon_changed (file);
+    }
+}
+
 void    gof_file_update (GOFFile *file)
 {
     GKeyFile *key_file;
@@ -269,6 +289,8 @@ void    gof_file_update (GOFFile *file)
     file->is_hidden = g_file_info_get_is_hidden (file->info) || g_file_info_get_is_backup (file->info);
     file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
     //file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
+    if (!g_strcmp0 (file->ftype, "application/octet-stream") && file->tagstype)
+        file->ftype = file->tagstype;
     file->size = (guint64) g_file_info_get_size (file->info);
     file->file_type = g_file_info_get_file_type (file->info);
     file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
@@ -399,7 +421,7 @@ void    gof_file_update (GOFFile *file)
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
 
     /* formated type */
-    gof_file_update_type (file);
+    gof_file_update_formated_type (file);
 
     /* permissions */
     file->has_permissions = g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
@@ -531,7 +553,7 @@ void gof_file_update_desktop_file (GOFFile *file)
 {
     g_free (file->utf8_collation_key);
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
-    gof_file_update_type (file);
+    gof_file_update_formated_type (file);
     gof_file_update_size (file);
     gof_file_icon_changed (file);
 }
@@ -589,9 +611,11 @@ gboolean gof_file_query_info (GOFFile *file)
 {
     GError *err = NULL;
 
-    //printf ("!!!!!!!!!!!!file_query_info %s\n", g_file_get_uri (file->location));
+    /* FIXME CRITICAL */
+    //_g_object_unref0 (file->info);
     file->info = g_file_query_info (file->location, GOF_FILE_GIO_DEFAULT_ATTRIBUTES,
                                     0, NULL, &err);
+    //gof_file_update (file);
     if (err != NULL) {
         if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED) {
             file->is_mounted = FALSE;
@@ -682,6 +706,7 @@ static void gof_file_init (GOFFile *file) {
     file->target_location = NULL;
     file->icon = NULL;
     file->pix = NULL;
+    file->color = 0;
 
     file->utf8_collation_key = NULL;
     file->formated_type = NULL;
@@ -1805,7 +1830,7 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
     _g_free0(file->basename);
     file->basename = g_file_get_basename (file->location);
     /* TODO update color on rename ? */
-    file->color = NULL;
+    //file->color = 0;
     file->flags = 0;
     file->pix_size = -1;
     file->thumbnail_path = NULL;

@@ -1,0 +1,3 @@
+[Plugin]
+Name=Ctags
+File=libmarlinctags.so

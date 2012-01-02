@@ -78,6 +78,7 @@ struct _GOFFile {
     gchar           *uri;
     char            *basename;
     const gchar     *ftype;
+    gchar           *tagstype;
     gchar           *formated_type;
     gchar           *utf8_collation_key;
     guint64         size;
@@ -92,7 +93,7 @@ struct _GOFFile {
     gint            pix_size;
     guint64         modified;
     gchar           *formated_modified;
-    gchar           *color;
+    int             color;
     gboolean        is_mounted;
     gboolean        exists;
 
@@ -168,6 +169,7 @@ GOFFile         *gof_file_new (GFile *location, GFile *dir);
 void            gof_file_update (GOFFile *file);
 void            gof_file_query_update (GOFFile *file);
 gboolean        gof_file_ensure_query_info (GOFFile *file);
+void            gof_file_update_type (GOFFile *file);
 void            gof_file_update_icon (GOFFile *file, gint size);
 void            gof_file_update_desktop_file (GOFFile *file);
 void            gof_file_update_trash_info (GOFFile *file);

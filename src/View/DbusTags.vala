@@ -17,53 +17,83 @@
  * Author: ammonkey <am.monkeyd@gmail.com>
  */ 
 
+/* TODO merge with ctags plugin */
+
 [DBus (name = "org.elementary.marlin.db")]
 interface CTags : Object {
-    //public abstract bool   	showTable	(string table) 	throws IOError;
-    public abstract async int 	getColor 	(string uri) 	throws IOError;
-    public abstract async bool 	setColor 	(string uri, int color) 	throws IOError;
-    //public abstract async void 	uris_setColor 	(string[] uris, int color) 	throws IOError;
-    public abstract async bool 	deleteEntry	(string uri)	throws IOError;
-    //public abstract bool	clearDB		()				throws IOError;
+    public abstract async bool record_uris (Variant[] entries, string directory) 	throws IOError;
 }
 
 namespace Marlin.View {
+
     public class Tags : Object {
 
-        private CTags tags;
+        private CTags ctags;
 
         public Tags() {
             try {
-                tags = Bus.get_proxy_sync (BusType.SESSION, "org.elementary.marlin.db",
+                ctags = Bus.get_proxy_sync (BusType.SESSION, "org.elementary.marlin.db",
                                            "/org/elementary/marlin/db");
             } catch (IOError e) {
                 stderr.printf ("%s\n", e.message);
             }
-            //run();
         }
 
-        /*public async void run () throws IOError {
-                tags = yield Bus.get_proxy_sync (BusType.SESSION, "org.elementary.marlin.db",
-                                           "/org/elementary/marlin/db");
-        }*/
+        private Variant add_entry (GOF.File gof)
+        {
+            char* ptr_arr[4];
+            ptr_arr[0] = gof.uri;
+            ptr_arr[1] = gof.ftype;
+            ptr_arr[2] = gof.info.get_attribute_uint64 (FILE_ATTRIBUTE_TIME_MODIFIED).to_string ();
+            ptr_arr[3] = gof.color.to_string ();
 
-        /*public async void uris_set_color (string[] uris, int n) throws IOError {
-            yield tags.uris_setColor(uris, n);
-        }*/
-
-        public async void set_color (string uri, int n) throws IOError {
-            if (n == 0)
-                yield tags.deleteEntry(uri);
-            else
-                yield tags.setColor(uri, n);
+            return new Variant.strv ((string[]) ptr_arr);
         }
 
+        public async void set_color (FM.Directory.View view, int n) throws IOError {
+            Variant[] entries = null;
+            unowned List<GOF.File> files = view.get_selection ();
+            /*if (n == 0)
+              yield tags.deleteEntry(file.uri);
+              else*/
+            //yield tags.setColor(file.uri, n);
+            foreach (var file in files) {
+                file.color = n;
+                entries +=  add_entry (file);
+            }
+            if (entries != null) {
+                try {
+                    yield ctags.record_uris (entries, ((GOF.File) files.data).uri);
+                } catch (Error err) {
+                    warning ("%s", err.message);
+                }
+            }
+        }
+
+#if 0
         public async void get_color (GOF.File myfile) throws IOError {
             if (myfile == null) 
                 return;
-            int n = yield tags.getColor(myfile.uri);
-            myfile.color = Preferences.tags_colors[n];            
+            /*int n = yield tags.getColor(myfile.uri);
+              myfile.color = Preferences.tags_colors[n];*/
+            var rc = yield tags.get_uri_infos (myfile.uri);
+            VariantIter iter = rc.iterator ();
+            //warning ("iter n_children %d", (int) iter.n_children ());
+            assert (iter.n_children () == 1);
+            VariantIter row_iter = iter.next_value ().iterator ();
+            //warning ("row_iter n_children %d", (int) row_iter.n_children ());
+
+            if (row_iter.n_children () == 2) {
+                unowned string type = row_iter.next_value ().get_string ();
+                int n = int.parse (row_iter.next_value ().get_string ());
+                myfile.tagstype = type;
+                myfile.color = Preferences.tags_colors[n];
+                myfile.update_type ();
+                //message ("grrrrrr %s %s %d %s", myfile.name, type, n, myfile.ftype);
+            }
+
         }
+#endif   
 
     }
 }

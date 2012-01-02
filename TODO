@@ -6,11 +6,9 @@ Hotlist:
 - make ContextPane support multi selection like PropertyWindow.
 - update freespace diskrenderers in sidebar: make a simple timer and update the information at the application level for a determined time delay, and maybe after some specifics files operations ?
 - use an overlay statusbar when ContextPane is off
-- store typechecks in db together with last edited date
 
 Various:
 - files operations must implement an undo/redo mechanism.
-- do the usual filecheck on files without extension of find a way that textfiles don't get detected as octet-stream
 - interface for tagging system, an easy way to tag a file in the preview panel
 - add drag support to the locationbar, we should be able to move a file by dragging it on the folder names
 ...

@@ -86,7 +86,6 @@ public class GOF.Directory.Async : Object
     public void cancel ()
     {
         cancellable.cancel ();
-        cancellable.reset ();
     }
 
     private void clear_directory_info ()
@@ -99,8 +98,11 @@ public class GOF.Directory.Async : Object
         files_count = 0;
     }
 
+    private uint launch_id = 0;
+
     public void load ()
     {
+        cancellable.reset ();
         if (state != State.LOADED) {
             /* clear directory info if it's not fully loaded */
             if (state == State.LOADING) 
@@ -110,7 +112,10 @@ public class GOF.Directory.Async : Object
                 return;
             }
 
-            list_directory (location);
+            if (launch_id != 0)
+                Source.remove (launch_id);
+            launch_id = Idle.add (() => { list_directory (location); return false; });
+            //list_directory (location);
             try {
                 monitor = location.monitor_directory (0);
                 monitor.changed.connect (directory_changed);  

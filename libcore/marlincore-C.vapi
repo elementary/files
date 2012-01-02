@@ -113,10 +113,11 @@ namespace GOF {
         public string uri;
         public uint64 size;
         public string format_size;
-        public string color;
+        public int color;
         public string formated_modified;
         public string formated_type;
         public unowned string ftype;
+        public string tagstype;
         public Gdk.Pixbuf pix;
         public unowned string trash_orig_path;
 
@@ -147,6 +148,7 @@ namespace GOF {
         public uint32 permissions;
 
         public void update ();
+        public void update_type ();
         public void update_icon (int size);
         public void update_desktop_file ();
         public void query_update ();

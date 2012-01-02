@@ -18,9 +18,11 @@
 namespace GOF {
 
     public static Preferences? preferences = null;
-
+    
     public class Preferences : GLib.Object {
    
+        public const string TAGS_COLORS[10] = { null, "#fce94f", "#fcaf3e", "#997666", "#8ae234", "#729fcf", "#ad7fa8", "#ef2929", "#d3d7cf", "#888a85" };
+
         public bool pref_show_hidden_files = false;
         public bool show_hidden_files {
             get {

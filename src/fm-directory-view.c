@@ -235,31 +235,16 @@ static gpointer _g_object_ref0 (gpointer self) {
 
 void fm_directory_view_colorize_selection (FMDirectoryView *view, int ncolor)
 {
-    GList *file_list;
-    GOFFile *file;
-    char *uri;
-
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
     g_return_if_fail (tags != NULL);
-    file_list = fm_directory_view_get_selection (view);
-
-    for (; file_list != NULL; file_list=file_list->next)
-    {
-        file = file_list->data;
-        g_free(file->color);
-        file->color = g_strdup(tags_colors[ncolor]);
-        uri = g_file_get_uri(file->location);
-
-        marlin_view_tags_set_color (tags, uri, ncolor, NULL, NULL);
-        g_free (uri);
-    }
+        
+    marlin_view_tags_set_color (tags, view, ncolor, NULL, NULL);
 }
 
 static void
 fm_directory_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAsync *directory)
 {
     fm_list_model_add_file (view->model, file, directory);
-    if (tags != NULL)
-        marlin_view_tags_get_color (tags, file, NULL, NULL);
 }
 
 static void
