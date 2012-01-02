@@ -114,13 +114,6 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             add_section (content_vbox, _("Preview"), preview_box);
         }
 
-        /* Open With */
-        /*if (view.get_default_app () != null && !goffile.is_directory) {
-            var openw_box = new VBox (false, 3);
-            construct_open_with_panel (openw_box, view);
-            add_section (content_vbox, _("Open With"), openw_box);
-        }*/
-
         var close_button = new Button.from_stock(Stock.CLOSE);
         close_button.clicked.connect(() => { response(ResponseType.CLOSE); });
         action_area.pack_end (close_button, false, false, 0);
@@ -406,7 +399,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
             combo.changed.connect (combo_open_with_changed);
 
-            var key_label = create_label_key (_("Open with: "), Align.CENTER);
+            var key_label = create_label_key (_("Open with") + ": ", Align.CENTER);
             information.attach(key_label, 0, n, 1, 1);
             information.attach(hcombo, 1, n, 1, 1);
             
@@ -1053,68 +1046,4 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             }
         }
     }
-
-    /* TODO remove */
-#if 0
-    private void construct_open_with_panel (Box box, FM.Directory.View view) {
-        /*Widget app_chooser;
-
-        app_chooser = new AppChooserWidget (goffile.ftype);
-        //app_chooser.set_size_request (-1, 120);
-        box.pack_start(app_chooser);*/
-
-        //HBox vbox = new HBox(false, 0);
-        /*AppChooserButton button = new AppChooserButton (goffile.ftype);
-        button.set_show_default_item (true);
-        button.set_show_dialog_item (true);
-        box.pack_start (button);*/
-        
-
-
-        /*var label = new Varka.Widgets.WrapLabel(_("Always open MIMETYPE Files with"));
-        label.set_size_request(200, -1);
-        box.pack_start (label);*/
-
-        Gtk.TreeIter iter;
-
-        AppInfo default_app = view.get_default_app ();
-        store_apps = new Gtk.ListStore (3, typeof (AppInfo), typeof (string), typeof (Icon)); 
-        unowned List<AppInfo> apps = view.get_open_with_apps ();
-        foreach (var app in apps) {
-            store_apps.append(out iter);
-            store_apps.set(iter, 
-                           AppsColumn.APP_INFO, app,
-                           AppsColumn.LABEL, app.get_name (), 
-                           AppsColumn.ICON, ensure_icon (app));
-        }
-        store_apps.append(out iter);
-        store_apps.set(iter, 
-                       AppsColumn.LABEL, _("Other application..."));
-        store_apps.prepend(out iter);
-        store_apps.set(iter, 
-                       AppsColumn.APP_INFO, default_app,
-                       AppsColumn.LABEL, default_app.get_name (),
-                       AppsColumn.ICON, ensure_icon (default_app));
-
-        var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_apps);
-        var renderer = new Gtk.CellRendererText ();
-        var pix_renderer = new Gtk.CellRendererPixbuf ();
-        combo.pack_start(pix_renderer, false);
-        combo.pack_start(renderer, true);
-        combo.add_attribute(renderer, "text", AppsColumn.LABEL);
-        combo.add_attribute(pix_renderer, "gicon", AppsColumn.ICON);
-        combo.set_active(0);
-
-        combo.changed.connect (combo_open_with_changed);
-
-        var grid = new Grid();
-        var key_label = create_label_key(_("Default Application:"), Align.CENTER);
-        grid.attach(key_label, 0, 1, 1, 1);
-        grid.attach(combo, 1, 1, 1, 1);
-        
-        box.pack_start(grid);
-        //box.pack_start (combo);
-
-    }
-#endif
 }
