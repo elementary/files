@@ -411,6 +411,9 @@ void    gof_file_update (GOFFile *file)
 
 
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
+    /* mark the thumbl flags as ready as we already know the thumbnail path */
+    if (gof_file_get_thumbnail_path (file) != NULL)
+        file->flags = GOF_FILE_THUMB_STATE_READY;
 
     /* formated type */
     gof_file_update_formated_type (file);
@@ -450,6 +453,8 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS) {
         const gchar *thumb_path = gof_file_get_thumbnail_path (file);
+        /* TODO thumb test : Playing with the thumbs */
+        //if (file->flags != 0 && thumb_path != NULL) {
         if (thumb_path != NULL) {
             //g_message ("show thumb %s %s %d\n", file->uri, thumb_path, size);
             return marlin_icon_info_lookup_from_path (thumb_path, size);
@@ -648,15 +653,20 @@ gof_file_ensure_query_info (GOFFile *file)
 static void 
 gof_file_query_thumbnail_update (GOFFile *file)
 {
-    GFileInfo *info = NULL;
+    gchar    *base_name;
+    gchar    *md5_hash;
 
-    if ((info = gof_file_query_info (file)) != NULL) {
-        g_free (file->thumbnail_path);
-        file->thumbnail_path = g_strdup (g_file_info_get_attribute_byte_string (info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH));
-        g_message ("thumb path %s", file->thumbnail_path);
-        gof_file_update_icon_internal (file, file->pix_size);
-        g_object_unref (info);
+    if (gof_file_get_thumbnail_path (file) == NULL) {
+        /* get the thumbnail path from md5 filename */
+        md5_hash = g_compute_checksum_for_string (G_CHECKSUM_MD5, file->uri, -1);
+        base_name = g_strdup_printf ("%s.png", md5_hash);
+        file->thumbnail_path = g_build_filename (g_get_home_dir (), ".thumbnails", 
+                                                 "normal", base_name, NULL);
+        g_free (base_name);
+        g_free (md5_hash);
     }
+    
+    gof_file_update_icon_internal (file, file->pix_size);
 }
 
 void gof_file_update_trash_info (GOFFile *file)
@@ -1205,9 +1215,9 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 {
     g_return_if_fail (GOF_IS_FILE (file));
 
-    g_message ("%s %s", G_STRFUNC, file->uri);
     /* set the new thumbnail state */
     file->flags = (file->flags & ~GOF_FILE_THUMB_STATE_MASK) | (state);
+    g_message ("%s %s %u", G_STRFUNC, file->uri, file->flags);
     if (file->flags == GOF_FILE_THUMB_STATE_READY) 
         gof_file_query_thumbnail_update (file);
 
