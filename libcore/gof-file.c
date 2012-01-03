@@ -67,6 +67,8 @@ static gpointer _g_object_ref0 (gpointer self) {
 	return self ? g_object_ref (self) : NULL;
 }
 
+const gchar     *gof_file_get_thumbnail_path (GOFFile *file);
+
 static GIcon *
 get_icon_user_special_dirs(char *path)
 {
@@ -281,10 +283,6 @@ void    gof_file_update (GOFFile *file)
     gof_file_clear_info (file);
 
     file->is_hidden = g_file_info_get_is_hidden (file->info) || g_file_info_get_is_backup (file->info);
-    /*file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
-    //file->ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
-    if (!g_strcmp0 (file->ftype, "application/octet-stream") && file->tagstype)
-        file->ftype = file->tagstype;*/
     file->size = (guint64) g_file_info_get_size (file->info);
     file->file_type = g_file_info_get_file_type (file->info);
     file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
@@ -411,7 +409,6 @@ void    gof_file_update (GOFFile *file)
             file->icon = g_content_type_get_icon (ftype);
     }
 
-    file->thumbnail_path =  g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
 
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
 
@@ -451,12 +448,11 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     if (file == NULL) 
         return NULL;
 
-    //printf ("%s %s %s\n", G_STRFUNC, file->name, file->thumbnail_path);
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS) {
-        if (file->thumbnail_path != NULL) {
-            //printf("show thumb %d\n", size);
-            icon = marlin_icon_info_lookup_from_path (file->thumbnail_path, size);
-            return icon;
+        const gchar *thumb_path = gof_file_get_thumbnail_path (file);
+        if (thumb_path != NULL) {
+            //g_message ("show thumb %s %s %d\n", file->uri, thumb_path, size);
+            return marlin_icon_info_lookup_from_path (thumb_path, size);
         }
     }
 
@@ -522,8 +518,7 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
 static void 
 gof_file_update_icon_internal (GOFFile *file, gint size) 
 {
-    /*g_message ("%s %s %d", G_STRFUNC, file->uri, file->flags);
-    g_message ("%s thumb %s", G_STRFUNC, file->thumbnail_path);*/
+    /*g_message ("%s %s %d", G_STRFUNC, file->uri, file->flags);*/
 
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
@@ -601,16 +596,15 @@ print_error (GError *error)
     }
 }
 
-static
-gboolean gof_file_query_info (GOFFile *file)
+static GFileInfo * 
+gof_file_query_info (GOFFile *file)
 {
+    GFileInfo *info = NULL;
     GError *err = NULL;
 
-    /* FIXME CRITICAL */
-    //_g_object_unref0 (file->info);
-    file->info = g_file_query_info (file->location, GOF_FILE_GIO_DEFAULT_ATTRIBUTES,
-                                    0, NULL, &err);
-    //gof_file_update (file);
+    info = g_file_query_info (file->location, GOF_FILE_GIO_DEFAULT_ATTRIBUTES,
+                              0, NULL, &err);
+    
     if (err != NULL) {
         if (err->domain == G_IO_ERROR && err->code == G_IO_ERROR_NOT_MOUNTED) {
             file->is_mounted = FALSE;
@@ -620,22 +614,27 @@ gboolean gof_file_query_info (GOFFile *file)
             file->exists = FALSE;
         }
         print_error (err);
-    } else {
-        return TRUE;
-    }
+    } 
 
-    return FALSE;
+    return info;
 }
 
 /* query info and update. This call is synchronous */
-void gof_file_query_update (GOFFile *file)
+void 
+gof_file_query_update (GOFFile *file)
 {
-    if (gof_file_query_info (file))
+    GFileInfo *info = NULL;
+        
+    if ((info = gof_file_query_info (file)) != NULL) {
+        _g_object_unref0 (file->info);
+        file->info = info;
         gof_file_update (file);
+    }
 }
 
 /* ensure we got the file info */
-gboolean gof_file_ensure_query_info (GOFFile *file)
+gboolean 
+gof_file_ensure_query_info (GOFFile *file)
 {
     if (file->info == NULL) {
         g_warning ("info null need to query_update %s", file->uri);
@@ -645,12 +644,18 @@ gboolean gof_file_ensure_query_info (GOFFile *file)
     return (file->info != NULL);
 }
 
+/* only the thumbnail has changed (been generated) */ 
 static void 
 gof_file_query_thumbnail_update (GOFFile *file)
 {
-    if (gof_file_query_info (file)) {
-        file->thumbnail_path =  g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
+    GFileInfo *info = NULL;
+
+    if ((info = gof_file_query_info (file)) != NULL) {
+        g_free (file->thumbnail_path);
+        file->thumbnail_path = g_strdup (g_file_info_get_attribute_byte_string (info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH));
+        g_message ("thumb path %s", file->thumbnail_path);
         gof_file_update_icon_internal (file, file->pix_size);
+        g_object_unref (info);
     }
 }
 
@@ -667,8 +672,6 @@ void gof_file_update_trash_info (GOFFile *file)
         g_time_val_from_iso8601 (time_string, &g_trash_time);
         file->trash_time = g_trash_time.tv_sec;
     }
-
-    file->trash_orig_path = g_file_info_get_attribute_byte_string (file->info, "trash::orig-path");
 }
 
 void gof_file_remove_from_caches (GOFFile *file)
@@ -720,6 +723,7 @@ static void gof_file_init (GOFFile *file) {
     file->pix_size = -1;
     
     file->target_gof = NULL;
+    file->thumbnail_path = NULL;
     
     file->sort_column_id = FM_LIST_MODEL_FILENAME;
     file->sort_order = GTK_SORT_ASCENDING;
@@ -748,6 +752,7 @@ static void gof_file_finalize (GObject* obj) {
 
     _g_object_unref0 (file->target_location);
     /* TODO remove the target_gof */
+    _g_free0 (file->thumbnail_path);
 
     G_OBJECT_CLASS (gof_file_parent_class)->finalize (obj);
 }
@@ -1192,7 +1197,7 @@ gof_file_is_executable (GOFFile *file)
  * @thumb_state : the new #GOFFileThumbState.
  *
  * Sets the #GOFFileThumbState for @file to @thumb_state. 
- * This will cause a "file-changed" signal to be emitted from
+ * This will cause a "icon-changed" signal to be emitted from
  * #GOFMonitor. 
 **/ 
 void
@@ -1200,6 +1205,7 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
 {
     g_return_if_fail (GOF_IS_FILE (file));
 
+    g_message ("%s %s", G_STRFUNC, file->uri);
     /* set the new thumbnail state */
     file->flags = (file->flags & ~GOF_FILE_THUMB_STATE_MASK) | (state);
     if (file->flags == GOF_FILE_THUMB_STATE_READY) 
@@ -1824,13 +1830,13 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
 
     _g_free0 (file->uri);
     file->uri = g_file_get_uri (new_location);
-    _g_free0(file->basename);
+    _g_free0 (file->basename);
     file->basename = g_file_get_basename (file->location);
     /* TODO update color on rename ? */
     //file->color = 0;
     file->flags = 0;
     file->pix_size = -1;
-    file->thumbnail_path = NULL;
+    _g_free0 (file->thumbnail_path);
     
     gof_file_query_update (file);
 }
@@ -2219,4 +2225,15 @@ gof_file_get_ftype (GOFFile *file)
         return file->tagstype;
 
     return ftype;
+}
+
+const gchar *
+gof_file_get_thumbnail_path (GOFFile *file)
+{
+    if (file->thumbnail_path != NULL)
+        return file->thumbnail_path;
+    if (file->info != NULL && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH))
+        return g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
+
+    return NULL;
 }

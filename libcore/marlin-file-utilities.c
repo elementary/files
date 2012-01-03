@@ -216,8 +216,7 @@ marlin_trashed_files_get_original_directories (GList *files, GList **unhandled_f
 
 	for (l = files; l != NULL; l = l->next) {
 		file = GOF_FILE (l->data);
-		original_file = eel_g_file_get_trash_original_file (file->trash_orig_path);
-
+		original_file = eel_g_file_get_trash_original_file (g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_TRASH_ORIG_PATH));
 		original_dir = NULL;
 		if (original_file != NULL) {
 			original_dir = g_file_get_parent (original_file);

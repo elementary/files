@@ -75,7 +75,6 @@ struct _GOFFile {
     gchar           *custom_display_name;
     gchar           *uri;
     char            *basename;
-    //const gchar     *ftype;
     gchar           *tagstype;
     gchar           *formated_type;
     gchar           *utf8_collation_key;
@@ -102,10 +101,9 @@ struct _GOFFile {
     int             uid;
     int             gid;
 
-    const gchar     *thumbnail_path;
+    gchar           *thumbnail_path;
     gboolean        is_thumbnailing;
 
-    const char      *trash_orig_path;
     time_t          trash_time; /* 0 is unknown */
 
     GList           *operations_in_progress;
