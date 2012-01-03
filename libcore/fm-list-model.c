@@ -136,8 +136,6 @@ fm_list_model_get_column_type (GtkTreeModel *tree_model, int index)
     switch (index) {
     case FM_LIST_MODEL_FILE_COLUMN:
         return GOF_TYPE_FILE;
-    case FM_LIST_MODEL_ICON:
-        return GDK_TYPE_PIXBUF;
     default:
         if (index < FM_LIST_MODEL_NUM_COLUMNS) {
             return G_TYPE_STRING;
@@ -247,12 +245,6 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
         g_value_init (value, GOF_TYPE_FILE);
         if (file != NULL)
             g_value_set_object (value, file);
-        break;
-
-    case FM_LIST_MODEL_ICON:
-        g_value_init (value, GDK_TYPE_PIXBUF);
-        if (file != NULL)
-            g_value_set_object (value, file->pix);
         break;
 
     case FM_LIST_MODEL_COLOR:
