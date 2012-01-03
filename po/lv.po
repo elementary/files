@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-30 21:08+0100\n"
+"POT-Creation-Date: 2012-01-02 20:43+0100\n"
 "PO-Revision-Date: 2011-10-13 14:47+0000\n"
 "Last-Translator: Kārlis Lukstiņš <Unknown>\n"
 "Language-Team: Latvian <lv@li.org>\n"
@@ -15,238 +15,268 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2011-12-01 05:51+0000\n"
-"X-Generator: Launchpad (build 14414)\n"
+"X-Launchpad-Export-Date: 2012-01-03 05:02+0000\n"
+"X-Generator: Launchpad (build 14616)\n"
 
-#: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
+msgid "Properties"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:98
+msgid "Info"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:103
+msgid "Permissions"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:114
+msgid "Preview"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:310
+msgid "Created"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:311
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:320
+msgid "Modified"
+msgstr "Mainīts"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:312
+msgid "Last Access"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:316
+msgid "Deleted"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:320
+msgid "MimeType"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
+msgid "MimeTypes"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
+msgid "Location"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:334
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:316
+msgid "Target"
+msgstr "Mērķis"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:340
+msgid "Origin Location"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
+msgid "Other application..."
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
+msgid "Open with"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
+msgid "Read"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:529
+msgid "Write"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:534
+msgid "Execute"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:752
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:765
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:321
+msgid "Owner"
+msgstr "Īpašnieks"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:757
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:769
+msgid "Group"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:773
+msgid "Everyone"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
+msgid "Select an aplication to open "
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
+msgid "Name"
+msgstr "Nosaukums"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:313
+msgid "Type"
+msgstr "Tips"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:318
+msgid "Size"
+msgstr "Izmērs"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "Mape neeksistē"
 
-#: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:75
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
 msgstr "Marlin nevar atrast mapi %s"
 
-#: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:80
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "Izveidot"
 
-#: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:80
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "Izveidot mapi %s"
 
-#: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:95
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:360
-msgid "Trash"
-msgstr "Miskaste"
-
-#: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:96
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:578
-msgid "Network"
-msgstr "Tīkls"
-
-#: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:122
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:314
-msgid "Home"
-msgstr "Mājas mape"
-
-#: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:124
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:384
-msgid "File System"
-msgstr "Failu sistēma"
-
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:31
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
 msgstr ""
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:48
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
 msgstr "Viens klikšķis, lai atvērtu:"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:58
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
 msgstr "Peles automatiskās iezīmēšanas ātrums:"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:75
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
 msgstr ""
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:83
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "Default File Manager:"
 msgstr ""
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:86
-msgid "make Marlin my default File Manager"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:94
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:95
 msgid "Behavior"
 msgstr "Uzvedība:"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:102
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
 msgstr "maza"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:103
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
 msgstr "vidēja"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:104
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
 msgstr "liela"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:105
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
 msgstr "vēl lielāka"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:126
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
 msgstr "Sānu joslas ikonu izmērs:"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:137
-msgid "locale"
-msgstr "lokās"
-
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:138
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "iso"
 msgstr "iso"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:139
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:138
+msgid "locale"
+msgstr "lokās"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
 msgstr "informātisks"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:157
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:146
 msgid "Date format:"
 msgstr "Datuma formāts:"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:165
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:154
 msgid "Display"
 msgstr "Izskats"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:203
 msgid "Extensions"
 msgstr ""
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
-msgid "Name"
-msgstr "Nosaukums"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:95
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:370
+msgid "Trash"
+msgstr "Miskaste"
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:281
-msgid "Type"
-msgstr "Tips"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:96
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:588
+msgid "Network"
+msgstr "Tīkls"
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:284
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:312
-msgid "Target"
-msgstr "Mērķis"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:131
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "Mājas mape"
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:286
-msgid "Size"
-msgstr "Izmērs"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:133
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "Failu sistēma"
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:288
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:299
-msgid "Modified"
-msgstr "Mainīts"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Viens klikšķis"
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:289
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:662
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:675
-msgid "Owner"
-msgstr "Īpašnieks"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:47
-msgid "Properties"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
 msgstr ""
 
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:88
-msgid "Info"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
 msgstr ""
 
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:93
-msgid "Permissions"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
 msgstr ""
 
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:104
-msgid "Preview"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:298
-msgid "Created"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:300
-msgid "Last Access"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:304
-msgid "Deleted"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:308
-msgid "MimeType"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:310
-msgid "Location"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:318
-msgid "Origin Location"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:434
-msgid "Read"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:439
-msgid "Write"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:444
-msgid "Execute"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:667
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:679
-msgid "Group"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:683
-msgid "Everyone"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:124
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
 msgstr "SSH"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:127
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
 msgstr "Publisks FTP"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:129
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
 msgstr "FTP (ar pieteikšanos)"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:132
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
 msgstr "Windows koplietojums"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:134
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:136
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Drošs WebDAV (HTTPS)"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:183
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
 msgstr "Savienojas..."
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:207
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -254,86 +284,409 @@ msgstr ""
 "Nevar ielādēt atbalstīto serveru metožu sarakstu.\n"
 "Lūdzu, pārbaudiet savu gvfs instalāciju."
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:285
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "Mapi \"%s\" nevar atvērt uz \"%s\"."
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:295
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "Nevar atrast serveri pie \"%s\"."
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:330
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
 msgstr "Mēģināt atkal"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:395
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
 msgstr "Lūdzu, pārbaudiet lietotāja informāciju."
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:425
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
 msgstr "Turpināt"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:750
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1169
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:750
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1169
 msgid "C_onnect"
 msgstr "Sa_vienoties"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:875
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
 msgstr "Savienoties ar serveri"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:893
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
 msgstr "Sīkāka informācija par serveri"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:914
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
 msgstr "_Serveris:"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:938
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
 msgstr "_Ports:"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:956
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
 msgstr "_Tips:"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1030
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
 msgstr "Koplieto_jums:"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1050
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
 msgstr "_Mape:"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1073
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
 msgstr "Sīkāka informācija par lietotāju"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1093
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
 msgstr "_Domēna nosaukums:"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1112
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
 msgstr ""
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1132
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
 msgstr "Pa_role:"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1153
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
 msgstr "_Atcerēties šo paroli"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1258
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
 msgstr "Darbība atcelta"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-application.c:439
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:623
+msgid "This folder is empty."
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:186
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:139
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
+msgid "_Move Here"
+msgstr "_Pārvietot šeit"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:784
+msgid "_Copy Here"
+msgstr "_Kopēt šeit"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:789
+msgid "_Link Here"
+msgstr "_Saitēt šeit"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:794
+msgid "Set as _Background"
+msgstr "Ielikt kā _fona attēlu"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:801
+msgid "Cancel"
+msgstr "Atcelt"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:893
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Neizdevās izpildīt failu \"%s\""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
+msgid "Customize Toolbar"
+msgstr "Rediģēt rīkjoslu."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:461
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
+msgstr ""
+"Izvēlieties vienumus, kurus rādīt rīkjoslā. Vienumus var pārkārtot ar "
+"vilkšanu un nomešanu."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:477
+msgid "Available Items"
+msgstr "Pieejamie Vienumi"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:498
+msgid "Displayed Items"
+msgstr "Parādītie vienumi"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:310
+msgid "Personal"
+msgstr "Personisks"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:315
+msgid "Your common places and bookmarks"
+msgstr "Jūsu ierastās vietas un grāmatzīmes"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "Atvērt jūsu personisko mapi"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:372
+msgid "Open the trash"
+msgstr "Atvērt miskasti"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:382
+msgid "Devices"
+msgstr "Iekārtas"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:387
+msgid "Your local partitions and devices"
+msgstr "Jūsu lokālās partīcijas un iekārtas"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:396
+msgid "Open the contents of the File System"
+msgstr "Atvērt failu sistēmas saturu"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:455
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:480
+#, c-format
+msgid "Mount and open %s"
+msgstr "Montēt un atvērt %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:593
+msgid "Your network places"
+msgstr "Jūsu tīkla vietas"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:624
+msgid "Entire network"
+msgstr "Viss tīkls"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:626
+msgid "Browse the contents of the network"
+msgstr "Pārlūkot tīkla saturu"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1610
+msgid "_Start"
+msgstr "_Startēt"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1611
+msgid "_Stop"
+msgstr "_Apstādināt"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1616
+msgid "_Power On"
+msgstr "_Ieslēgt"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1617
+msgid "_Safely Remove Drive"
+msgstr "_Droši izņemt dzini"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1620
+msgid "_Connect Drive"
+msgstr "_Savienoties ar dzini"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1621
+msgid "_Disconnect Drive"
+msgstr "_Atvienot dzini"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1624
+msgid "_Start Multi-disk Device"
+msgstr "__Startēt vairākdisku ierīci"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1625
+msgid "_Stop Multi-disk Device"
+msgstr "_Apstādināt vairākdisku ierīci"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1629
+msgid "_Unlock Drive"
+msgstr "_Atslēgt dzini"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1630
+msgid "_Lock Drive"
+msgstr "_Slēgt dzini"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1704
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2251
+#, c-format
+msgid "Unable to start %s"
+msgstr "Neizdevās startēt %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1994
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2023
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2052
+#, c-format
+msgid "Unable to eject %s"
+msgstr "Neizdevās izgrūst %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2197
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "Neizdevās aptaujāt %s par datu nesēju izmaiņām"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2307
+#, c-format
+msgid "Unable to stop %s"
+msgstr "Neizdevās apstādināt %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2399
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1882
+msgid "_Open"
+msgstr "At_vērt"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2407
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1902
+msgid "Open in New _Tab"
+msgstr "Atvēr_t jaunā cilnē"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2414
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1911
+msgid "Open in New _Window"
+msgstr "Atvērt jaunā _logā"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2423
+msgid "Remove"
+msgstr "Izņemt"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2432
+msgid "Rename..."
+msgstr "Pārsaukt..."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2444
+msgid "_Mount"
+msgstr "_Montēt"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2451
+msgid "_Unmount"
+msgstr "_Atmontēt"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2458
+msgid "_Eject"
+msgstr "_Izgrūst"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2466
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1410
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2281
+msgid "Empty _Trash"
+msgstr "Iztukšot _miskasti"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3123
+msgid "Icon Size"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3124
+msgid "Icon size"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1090
+msgid "Invalid filename provided by XDS drag site"
+msgstr "XDS norādītais faila nosaukums ir nepareizs"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1248
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Neizdevās izveidot saiti uz URL \"%s\""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1730
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1876
+#, c-format
+msgid "_Open With %s"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1898
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1907
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3236
+msgid "Set as default"
+msgstr "Iestatīt kā noklusēto"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3454
+msgid "Set Color:"
+msgstr "Iestatīt krāsu:"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-clipboard-manager.c:380
+msgid "There is nothing on the clipboard to paste"
+msgstr "Starpliktuvē nav nekā, ko ielīmēt"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:113
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:163
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:470
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:526
+msgid "File Operations"
+msgstr "Darbības ar failiem"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:122
+msgid "Show Details"
+msgstr "Rādīt sīkāku informāciju"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:157
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:179
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "Aktīva %'d darbība ar failiem"
+msgstr[1] "Aktīvas %'d darbības ar failiem"
+msgstr[2] "Aktīvas %'d darbības ar failiem"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
+msgid "Show copy dialog"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:290
+msgid "Cancel all in-progress actions"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:527
+msgid "All file operations have been successfully completed"
+msgstr "Visas failu darbības ir veiksmīgi pabeigtas"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3188
+msgid "Select All"
+msgstr "Izvēlēties visus"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3199
+msgid "Input Methods"
+msgstr "Ievades metodes"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr ""
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:439
 msgid ""
 "\n"
 "\n"
@@ -343,545 +696,57 @@ msgstr ""
 "\n"
 "Pārlūkot failu sistēmu ar failu pārvaldnieku"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-application.c:459
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nevar lietot ar URI."
 
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:300
-msgid "Personal"
-msgstr "Personisks"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:305
-msgid "Your common places and bookmarks"
-msgstr "Jūsu ierastās vietas un grāmatzīmes"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:319
-msgid "Open your personal folder"
-msgstr "Atvērt jūsu personisko mapi"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:362
-msgid "Open the trash"
-msgstr "Atvērt miskasti"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:372
-msgid "Devices"
-msgstr "Iekārtas"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:377
-msgid "Your local partitions and devices"
-msgstr "Jūsu lokālās partīcijas un iekārtas"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:386
-msgid "Open the contents of the File System"
-msgstr "Atvērt failu sistēmas saturu"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:445
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:470
-#, c-format
-msgid "Mount and open %s"
-msgstr "Montēt un atvērt %s"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:583
-msgid "Your network places"
-msgstr "Jūsu tīkla vietas"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:614
-msgid "Entire network"
-msgstr "Viss tīkls"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:616
-msgid "Browse the contents of the network"
-msgstr "Pārlūkot tīkla saturu"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1600
-msgid "_Start"
-msgstr "_Startēt"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1601
-msgid "_Stop"
-msgstr "_Apstādināt"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1606
-msgid "_Power On"
-msgstr "_Ieslēgt"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1607
-msgid "_Safely Remove Drive"
-msgstr "_Droši izņemt dzini"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1610
-msgid "_Connect Drive"
-msgstr "_Savienoties ar dzini"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1611
-msgid "_Disconnect Drive"
-msgstr "_Atvienot dzini"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1614
-msgid "_Start Multi-disk Device"
-msgstr "__Startēt vairākdisku ierīci"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1615
-msgid "_Stop Multi-disk Device"
-msgstr "_Apstādināt vairākdisku ierīci"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1619
-msgid "_Unlock Drive"
-msgstr "_Atslēgt dzini"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1620
-msgid "_Lock Drive"
-msgstr "_Slēgt dzini"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1694
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2241
-#, c-format
-msgid "Unable to start %s"
-msgstr "Neizdevās startēt %s"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1984
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2013
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2042
-#, c-format
-msgid "Unable to eject %s"
-msgstr "Neizdevās izgrūst %s"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2187
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Neizdevās aptaujāt %s par datu nesēju izmaiņām"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2297
-#, c-format
-msgid "Unable to stop %s"
-msgstr "Neizdevās apstādināt %s"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2389
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1830
-msgid "_Open"
-msgstr "At_vērt"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2397
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1852
-msgid "Open in New _Tab"
-msgstr "Atvēr_t jaunā cilnē"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2404
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1861
-msgid "Open in New _Window"
-msgstr "Atvērt jaunā _logā"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2413
-msgid "Remove"
-msgstr "Izņemt"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2422
-msgid "Rename..."
-msgstr "Pārsaukt..."
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2434
-msgid "_Mount"
-msgstr "_Montēt"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2441
-msgid "_Unmount"
-msgstr "_Atmontēt"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2448
-msgid "_Eject"
-msgstr "_Izgrūst"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2484
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1424
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2295
-msgid "Empty _Trash"
-msgstr "Iztukšot _miskasti"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3143
-msgid "Icon Size"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3144
-msgid "Icon size"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1034
-msgid "Invalid filename provided by XDS drag site"
-msgstr "XDS norādītais faila nosaukums ir nepareizs"
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1192
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Neizdevās izveidot saiti uz URL \"%s\""
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1675
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1821
-#, c-format
-msgid "_Open With %s"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1848
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1857
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:2993
-msgid "Set as default"
-msgstr "Iestatīt kā noklusēto"
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:3212
-msgid "Set Color:"
-msgstr "Iestatīt krāsu:"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-clipboard-manager.c:380
-msgid "There is nothing on the clipboard to paste"
-msgstr "Starpliktuvē nav nekā, ko ielīmēt"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:779
-msgid "_Move Here"
-msgstr "_Pārvietot šeit"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:784
-msgid "_Copy Here"
-msgstr "_Kopēt šeit"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:789
-msgid "_Link Here"
-msgstr "_Saitēt šeit"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:794
-msgid "Set as _Background"
-msgstr "Ielikt kā _fona attēlu"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:801
-msgid "Cancel"
-msgstr "Atcelt"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:893
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Neizdevās izpildīt failu \"%s\""
-
-#: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:161
-msgid "Single Click"
-msgstr "Viens klikšķis"
-
-#: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:162
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:178
-msgid "Single Click Timeout"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:179
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/fm-columns-view.c:81
-#: /media/dev/elementary/marlin/po/../src/fm-list-view.c:614
-#: /media/dev/elementary/marlin/po/../src/fm-icon-view.c:565
-msgid "This folder is empty."
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:449
-msgid "Customize Toolbar"
-msgstr "Rediģēt rīkjoslu."
-
-#: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:465
-msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
-msgstr ""
-"Izvēlieties vienumus, kurus rādīt rīkjoslā. Vienumus var pārkārtot ar "
-"vilkšanu un nomešanu."
-
-#: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:481
-msgid "Available Items"
-msgstr "Pieejamie Vienumi"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:502
-msgid "Displayed Items"
-msgstr "Parādītie vienumi"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:113
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:163
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:470
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:526
-msgid "File Operations"
-msgstr "Darbības ar failiem"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:122
-msgid "Show Details"
-msgstr "Rādīt sīkāku informāciju"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:157
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:179
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "Aktīva %'d darbība ar failiem"
-msgstr[1] "Aktīvas %'d darbības ar failiem"
-msgstr[2] "Aktīvas %'d darbības ar failiem"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:279
-msgid "Show copy dialog"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:290
-msgid "Cancel all in-progress actions"
-msgstr ""
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:527
-msgid "All file operations have been successfully completed"
-msgstr "Visas failu darbības ir veiksmīgi pabeigtas"
-
-#: /media/dev/elementary/marlin/po/../src/eel-editable-label.c:3188
-msgid "Select All"
-msgstr "Izvēlēties visus"
-
-#: /media/dev/elementary/marlin/po/../src/eel-editable-label.c:3199
-msgid "Input Methods"
-msgstr "Ievades metodes"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Apvienot mapes \"%s\"?"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Apvienošanas laikā tiks vaicāts pēc apstiprinājuma pirms jebkādu esošu failu "
-"pārrakstīšanas, ja tie konfliktēs ar jaunajiem failiem."
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Vecāka mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Jaunāka mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Cita mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
-msgid "Replacing it will remove all files in the folder."
-msgstr "Aizvietošana izdzēsīs visus failus mapē."
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Aizvietot mapi \"%s\"?"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Aizvietot failu \"%s\"?"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
-msgid "Replacing it will overwrite its content."
-msgstr "Tā aizvietošana pārrakstīs visu tā saturu."
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Vecāks fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Jaunāks fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Cits fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
-msgid "Original file"
-msgstr "Sākotnējais fails"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
-msgid "Size:"
-msgstr "Izmērs:"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Type:"
-msgstr "Tips:"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
-msgid "Last modified:"
-msgstr "Pēdējo reizi mainīts:"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
-msgid "Replace with"
-msgstr "Aizvietot ar"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
-msgid "Merge"
-msgstr "Apvienot"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
-msgid "_Select a new name for the destination"
-msgstr "Izvēlētie_s jaunu nosaukumu galamērķim:"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:710
-msgid "Reset"
-msgstr "Atiestatīt"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:722
-msgid "Apply this action to all files"
-msgstr "Veikt šo darbību visiem failiem"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:207
-msgid "_Skip"
-msgstr "Izlai_st"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
-msgid "Re_name"
-msgstr "Pā_rsaukt"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:744
-msgid "Replace"
-msgstr "Aizvietot"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:817
-msgid "File conflict"
-msgstr "Failu konflikts"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-progress-info.c:192
-#: /media/dev/elementary/marlin/po/../libcore/marlin-progress-info.c:210
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:192
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
 msgstr "Sagatavo"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-utilities.c:267
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Neizdevās noteikt sākotnējo \"%s\" atrašanās vietu "
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (nederīgs unikods)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-utilities.c:270
-msgid "The item cannot be restored from trash"
-msgstr "Vienību nevar atjaunot no miskastes"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:199
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
+msgid "_Skip"
+msgstr "Izlai_st"
 
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:350
-#, c-format
-msgid "link to %s"
-msgstr "saite uz %s"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1525
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Nevarēja saprast darba virsmas failu: %s"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1563
-msgid "No Exec field specified"
-msgstr "Nav norādīts Exec lauks"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1583
-msgid "No URL field specified"
-msgstr "Nav norādīts URL lauks"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1589
-msgid "Invalid desktop file"
-msgstr "Nederīgs darbavirsmas fails"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1855
-msgid "Slashes are not allowed in filenames"
-msgstr "Slīpsvītras nav atļautas failu nosaukumos"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1875
-msgid "Toplevel files cannot be renamed"
-msgstr "Nevar pārsaukt augstākā līmeņa failus"
-
-#: /media/dev/elementary/marlin/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr "Rādīt _sīkāku informāciju"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:208
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
 msgstr "Iz_laist visu"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:209
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:201
 msgid "_Retry"
 msgstr "Vēl_reiz"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:210
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
 msgstr "Dzēst _visus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:211
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:203
 msgid "_Replace"
 msgstr "_Aizvietot"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:212
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
 msgstr "Aizvietot _visus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:213
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:205
 msgid "_Merge"
 msgstr "_Apvienot"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:214
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
 msgstr "Apvienot _visus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:215
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
 msgstr "Kopēt _tāpat"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:301
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:293
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -889,8 +754,8 @@ msgstr[0] "%'d sekunde"
 msgstr[1] "%'d sekundes"
 msgstr[2] "%'d sekunžu"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:306
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:317
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:298
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -898,7 +763,7 @@ msgstr[0] "%'d minūte"
 msgstr[1] "%'d minūtes"
 msgstr[2] "%'d minūšu"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:316
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:308
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -906,7 +771,7 @@ msgstr[0] "%'d stunda"
 msgstr[1] "%'d stundas"
 msgstr[2] "%'d stundu"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:324
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:316
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -914,51 +779,51 @@ msgstr[0] "aptuveni %'d stunda"
 msgstr[1] "aptuveni %'d stundas"
 msgstr[2] "aptuveni %'d stundu"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:400
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:392
 #, c-format
 msgid "Link to %s"
 msgstr "Saite uz %s"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:404
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:396
 #, c-format
 msgid "Another link to %s"
 msgstr "Vēl cita saite uz %s"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:420
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:412
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d. saite uz %s"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:424
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:416
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d. saite uz %s"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:428
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:420
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d. saite uz %s"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:432
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:424
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d. saite uz %s"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:624
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:616
 msgid " ("
 msgstr " ("
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:632
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:624
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1383
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1369
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
 "Vai esat pārliecināti, ka vēlaties neatgriezeniski dzēst \"%B\" no miskastes?"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1386
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1372
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -976,24 +841,24 @@ msgstr[2] ""
 "Vai esat pārliecināti, ka vēlaties neatgriezeniski dzēst %'d izvēlēto "
 "vienību no miskastes?"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1396
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1464
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1382
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Ja izdzēsīsiet vienību, tā tiks neatgriezeniski zaudēta."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1417
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1403
 msgid "Empty all items from Trash?"
 msgstr "Iztukšot visu miskasti?"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1421
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1407
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Viss miskastes saturs tiks neatgriezeniski dzēsts."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1452
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1438
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Vai esat pārliecināti, ka vēlaties neatgriezeniski izdzēst \"%B\"?"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1455
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1441
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1008,12 +873,12 @@ msgstr[2] ""
 "Vai esat pārliecināti, ka vēlaties neatgriezeniski dzēst %'d izvēlētās "
 "vienības?"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1480
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1512
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1466
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1498
 msgid "Deleting files"
 msgstr "Dzēš failus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1506
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1492
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
@@ -1021,66 +886,66 @@ msgstr[0] "Atlicis izdzēst %'d failu"
 msgstr[1] "Atlicis izdzēst %'d failus"
 msgstr[2] "Atlicis izdzēst %'d failus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1526
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1512
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "atlikusi %T"
 msgstr[1] "atlikušas %T"
 msgstr[2] "atlikušas %T"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1594
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1628
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1667
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1744
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2558
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1580
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1614
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1653
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1730
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2544
 msgid "Error while deleting."
 msgstr "Kļūda dzēšot."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1598
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1584
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
 "Failus mapē \"%B\" nevar izdzēst, jo jums nav nepieciešamās atļaujas."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1601
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2617
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3608
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1587
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2603
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3594
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "Gadījās kļūda iegūstot informāciju par failiem mapē \"%B\"."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1610
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3617
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1596
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3603
 msgid "_Skip files"
 msgstr "Izlai_st failus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1631
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1617
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "Mapi \"%B\" nevar izdzēst tāpēc, ka jums nav atļaujas to lasīt."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1634
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2656
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3653
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1620
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2642
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3639
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Gadījās kļūda nolasot mapi \"%B\"."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1668
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1654
 msgid "Could not remove the folder %B."
 msgstr "Neizdevās izdzēst mapi %B."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1745
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1731
 msgid "There was an error deleting %B."
 msgstr "Gadījās kļūda dzēšot %B."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1821
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1833
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1807
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1819
 msgid "Moving files to trash"
 msgstr "Izmet failus miskastē"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1835
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1821
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
@@ -1088,35 +953,35 @@ msgstr[0] "Miskastē vēl jāizmet %'d fails"
 msgstr[1] "Miskastē vēl jāizmet %'d faili"
 msgstr[2] "Miskastē vēl jāizmet %'d failu"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1886
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1872
 msgid "Cannot move file to trash, do you want to delete immediately?"
 msgstr "Failu nevar izmest miskastē. Vai vēlaties to dzēst nekavējoties?"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1887
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1873
 msgid "The file \"%B\" cannot be moved to the trash."
 msgstr "Failu \"%B\" neizdodas pārvietot uz miskasti."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2063
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2049
 msgid "Trashing Files"
 msgstr "Izmet failus miskastē"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2065
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2051
 msgid "Deleting Files"
 msgstr "Dzēš failus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2128
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2114
 msgid "Unable to eject %V"
 msgstr "Neizdevās izgrūst %V"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2130
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2116
 msgid "Unable to unmount %V"
 msgstr "Neizdevās atmontēt %V"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2285
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2271
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Vai vēlaties iztukšot miskasti pirms atmontēšanas?"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2287
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2273
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1124,20 +989,20 @@ msgstr ""
 "Lai atgūtu brīvo vietu šajā sējumā, ir jāiztukšo miskaste. Visas miskastē "
 "izmestas vienības tiks neatgriezeniski zaudētas."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2293
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2279
 msgid "Do _not Empty Trash"
 msgstr "_Neiztukšot miskasti"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2348
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2334
 msgid "Emptying the trash"
 msgstr "Iztukšo miskasti"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2415
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2401
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Neizdevās piemontēt %s"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2493
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2479
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
@@ -1145,7 +1010,7 @@ msgstr[0] "Gatavojas kopēt %'d failu (%S)"
 msgstr[1] "Gatavojas kopēt %'d failus (%S)"
 msgstr[2] "Gatavojas kopēt %'d failus (%S)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2499
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2485
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
@@ -1153,7 +1018,7 @@ msgstr[0] "Gatavojas pārvietot %'d failu (%S)"
 msgstr[1] "Gatavojas pārvietot %'d failus (%S)"
 msgstr[2] "Gatavojas pārvietot %'d failus (%S)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2505
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2491
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
@@ -1161,7 +1026,7 @@ msgstr[0] "Gatavojas dzēst %'d failu (%S)"
 msgstr[1] "Gatavojas dzēst %'d failus (%S)"
 msgstr[2] "Gatavojas dzēst %'d failus (%S)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2511
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2497
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
@@ -1169,24 +1034,24 @@ msgstr[0] "Gatavojas izmest miskastē %'d failu"
 msgstr[1] "Gatavojas izmest miskastē %'d failus"
 msgstr[2] "Gatavojas izmest miskastē %'d failus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2554
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3474
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3600
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3645
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2540
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3460
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3586
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3631
 msgid "Error while copying."
 msgstr "Kļūda kopējot."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2556
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3598
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3643
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2542
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3584
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3629
 msgid "Error while moving."
 msgstr "Kļūda pārvietojot."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2560
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2546
 msgid "Error while moving files to trash."
 msgstr "Kļūda izmetot miskastē."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2614
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2600
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1194,7 +1059,7 @@ msgstr ""
 "Failus mapē \"%B\" nevar apstrādāt tāpēc, ka jums nav nepieciešamās atļaujas "
 "skatīt tos."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2653
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2639
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1202,7 +1067,7 @@ msgstr ""
 "Mapi \"%B\" nevar apstrādāt tāpēc, ka jums nav nepieciešamās atļaujas to "
 "lasīt."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2730
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2716
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1210,30 +1075,30 @@ msgstr ""
 "Failu \"%B\" nevar apstrādāt tāpēc, ka jums nav nepieciešamās atļaujas to "
 "lasīt."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2733
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2719
 msgid "There was an error getting information about \"%B\"."
 msgstr "Notikusi kļūda iegūstot informāciju par \"%B\"."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2833
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2875
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2908
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2938
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2819
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2861
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2894
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2924
 msgid "Error while copying to \"%B\"."
 msgstr "Kļūda kopējot uz \"%B\"."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2837
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2823
 msgid "You do not have permissions to access the destination folder."
 msgstr "Jums nav nepieciešamo atļauju piekļūšanai gala mērķa mapei."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2839
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2825
 msgid "There was an error getting information about the destination."
 msgstr "Kļūda iegūstot informāciju par gala mērķi."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2876
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2862
 msgid "The destination is not a folder."
 msgstr "Gala mērķis nav mape."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2909
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2895
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1241,63 +1106,63 @@ msgstr ""
 "Uz gala mērķa nav pietiekami daudz brīvās vietas. Mēģiniet aizvākt kādus "
 "failus, lai atbrīvotu vietu."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2911
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2897
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Ir pieejami %S, taču pieprasīti ir %S."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2939
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2925
 msgid "The destination is read-only."
 msgstr "Gala mērķis ir tikai lasāms."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3000
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2986
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Pārvieto \"%B\" uz \"%B\""
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3001
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2987
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Kopē \"%B\" uz \"%B\""
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3005
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2991
 msgid "Duplicating \"%B\""
 msgstr "Dublē \"%B\""
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3009
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2995
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Pārvieto %'d failu (no \"%B\") uz \"%B\""
 msgstr[1] "Pārvieto %'d failus (no \"%B\") uz \"%B\""
 msgstr[2] "Pārvieto %'d failus (no \"%B\") uz \"%B\""
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3012
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2998
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Kopē %'d failu (no \"%B\") uz \"%B\""
 msgstr[1] "Kopē %'d failus (no \"%B\") uz \"%B\""
 msgstr[2] "Kopē %'d failus (no \"%B\") uz \"%B\""
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3019
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3005
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Dubulto %'d failu (no \"%B\")"
 msgstr[1] "Dubulto %'d failus (no \"%B\")"
 msgstr[2] "Dubulto %'d failus (no \"%B\")"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3028
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3014
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Pārvieto %'d failu uz \"%B\""
 msgstr[1] "Pārvieto %'d failus uz \"%B\""
 msgstr[2] "Pārvieto %'d failus uz \"%B\""
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3032
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3018
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Kopē %'d failu uz \"%B\""
 msgstr[1] "Kopē %'d failus uz \"%B\""
 msgstr[2] "Kopē %'d failus uz \"%B\""
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3037
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3023
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1305,19 +1170,19 @@ msgstr[0] "Dublē %'d failu"
 msgstr[1] "Dublē %'d failus"
 msgstr[2] "Dublē %'d failus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3088
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3074
 #, c-format
 msgid "%S of %S"
 msgstr "%S no %S"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3099
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3085
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S no %S — atlicis %T (%S/sek)"
 msgstr[1] "%S no %S — atlicis %T (%S/sek)"
 msgstr[2] "%S no %S — atlicis %T (%S/sek)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3478
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3464
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1325,96 +1190,96 @@ msgstr ""
 "Mapi \"%B\" nevar tikt nokopēt tāpēc, ka jums nav atļaujas to izveidot gala "
 "mērķī."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3481
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3467
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Kļūda veidojot mapi \"%B\"."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3605
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3591
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
 "Failus mapē \"%B\" nevar nokopēt tāpēc, ka jums nav atļaujas aplūkot tos."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3650
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3636
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "Mapi \"%B\" nevar nokopēt tāpēc, ka jums nav atļaujas to nolasīt."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3695
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4392
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4966
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3681
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4378
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4952
 msgid "Error while moving \"%B\"."
 msgstr "Kļūda pārvietojot \"%B\"."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3696
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3682
 msgid "Could not remove the source folder."
 msgstr "Neizdevās aizvākt sākotnējo mapi."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3781
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3822
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4394
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4465
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3767
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3808
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4380
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4451
 msgid "Error while copying \"%B\"."
 msgstr "Kļūda kopējot \"%B\"."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3782
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3768
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Neizdevās aizvākt failus no eksistējošas mapes %F."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3823
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3809
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Neizdevās dzēst eksistējošu failu %F."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4152
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4810
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4138
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4796
 msgid "You cannot move a folder into itself."
 msgstr "Jūs nevarat pārvietot mapi pašā mapē."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4153
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4811
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4139
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4797
 msgid "You cannot copy a folder into itself."
 msgstr "Jūs nevarat kopēt mapi pašā mapē."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4154
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4812
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4140
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4798
 msgid "The destination folder is inside the source folder."
 msgstr "Mērķa mape atrodas sākotnējajā mapē."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4185
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4171
 msgid "You cannot move a file over itself."
 msgstr "Jūs nevarat pārvietot failu pāri pašam failam."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4186
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4172
 msgid "You cannot copy a file over itself."
 msgstr "Jūs nevarat kopēt failu pāri pašam failam."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4187
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4173
 msgid "The source file would be overwritten by the destination."
 msgstr "Sākotnējais fails varētu būt mērķa pārrakstīts."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4396
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4382
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "Neizdevās dzēst eksistējošu failu ar tādu pat nosaukumu mapē %F."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4466
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4452
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Gadījās kļūda kopējot failu %F."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4694
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4680
 msgid "Copying Files"
 msgstr "Kopē failus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4710
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4696
 msgid "Preparing to move to \"%B\""
 msgstr "Gatavojas pārvietot uz \"%B\""
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4722
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4708
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1422,20 +1287,20 @@ msgstr[0] "Gatavojas pārvietot %'d failu"
 msgstr[1] "Gatavojas pārvietot %'d failus"
 msgstr[2] "Gatavojas pārvietot %'d failus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4967
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4953
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Gadījās kļūda pārvietojot failu uz %F."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5230
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5216
 msgid "Moving Files"
 msgstr "Pārvieto failus"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5246
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5232
 msgid "Creating links in \"%B\""
 msgstr "Veido saites \"%B\""
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5257
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5243
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1443,58 +1308,236 @@ msgstr[0] "Veido saiti uz %'d failu"
 msgstr[1] "Veido saites uz %'d failiem"
 msgstr[2] "Veido saites uz %'d failu"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5387
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5373
 msgid "Error while creating link to %B."
 msgstr "Kļūda veidojot saiti uz %B."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5389
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5375
 msgid "Symbolic links only supported for local files"
 msgstr "Simboliskās saites ir atbalstītas vienīgi lokāliem failiem"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5392
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5378
 msgid "The target doesn't support symbolic links."
 msgstr "Mērķis neatbalsta simboliskās saites."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5395
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5381
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Gadījās kļūda veidojot simbolisko saiti %F."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5698
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5701
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5684
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5687
 msgid "Setting permissions"
 msgstr "Iestata atļaujas"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5943
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5929
 msgid "untitled folder"
 msgstr "nenosaukta mape"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5951
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5937
 msgid "new file"
 msgstr "jauns fails"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6101
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6087
 msgid "Error while creating directory %B."
 msgstr "Kļūda veidojot direktoriju %B."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6103
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6089
 msgid "Error while creating file %B."
 msgstr "Kļūda veidojot failu %B."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6105
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6091
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Gadījās kļūda veidojot direktoriju %F."
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6401
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6387
 msgid "Emptying Trash"
 msgstr "Iztukšo miskasti"
 
-#: /media/dev/elementary/marlin/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (nederīgs unikods)"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:267
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Neizdevās noteikt sākotnējo \"%s\" atrašanās vietu "
 
-#: /media/dev/elementary/marlin/po/../libwidgets/LocationBar.vala:718
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:270
+msgid "The item cannot be restored from trash"
+msgstr "Vienību nevar atjaunot no miskastes"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Apvienot mapes \"%s\"?"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Apvienošanas laikā tiks vaicāts pēc apstiprinājuma pirms jebkādu esošu failu "
+"pārrakstīšanas, ja tie konfliktēs ar jaunajiem failiem."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Vecāka mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Jaunāka mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Cita mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
+msgid "Replacing it will remove all files in the folder."
+msgstr "Aizvietošana izdzēsīs visus failus mapē."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Aizvietot mapi \"%s\"?"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Aizvietot failu \"%s\"?"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
+msgid "Replacing it will overwrite its content."
+msgstr "Tā aizvietošana pārrakstīs visu tā saturu."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Vecāks fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Jaunāks fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Cits fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
+msgid "Original file"
+msgstr "Sākotnējais fails"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
+msgid "Size:"
+msgstr "Izmērs:"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Type:"
+msgstr "Tips:"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
+msgid "Last modified:"
+msgstr "Pēdējo reizi mainīts:"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
+msgid "Replace with"
+msgstr "Aizvietot ar"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
+msgid "Merge"
+msgstr "Apvienot"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
+msgid "_Select a new name for the destination"
+msgstr "Izvēlētie_s jaunu nosaukumu galamērķim:"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:710
+msgid "Reset"
+msgstr "Atiestatīt"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:722
+msgid "Apply this action to all files"
+msgstr "Veikt šo darbību visiem failiem"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
+msgid "Re_name"
+msgstr "Pā_rsaukt"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:744
+msgid "Replace"
+msgstr "Aizvietot"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:817
+msgid "File conflict"
+msgstr "Failu konflikts"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-stock-dialogs.c:35
+msgid "Show more _details"
+msgstr "Rādīt _sīkāku informāciju"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:245
+#, c-format
+msgid "link to %s"
+msgstr "saite uz %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1603
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Nevarēja saprast darba virsmas failu: %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1641
+msgid "No Exec field specified"
+msgstr "Nav norādīts Exec lauks"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1661
+msgid "No URL field specified"
+msgstr "Nav norādīts URL lauks"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1667
+msgid "Invalid desktop file"
+msgstr "Nederīgs darbavirsmas fails"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1955
+msgid "Slashes are not allowed in filenames"
+msgstr "Slīpsvītras nav atļautas failu nosaukumos"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1975
+msgid "Toplevel files cannot be renamed"
+msgstr "Nevar pārsaukt augstākā līmeņa failus"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libwidgets/LocationBar.vala:709
 #, c-format
 msgid "Go to %s"
 msgstr "Doties uz %s"
