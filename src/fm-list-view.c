@@ -676,13 +676,13 @@ create_and_set_up_tree_view (FMListView *view)
     g_signal_connect_object (view->model, "subdirectory_unloaded",
                              G_CALLBACK (subdirectory_unloaded_callback), view, 0);
 
-    for(k=3; k< FM_LIST_MODEL_NUM_COLUMNS; k++) {
+    for(k=FM_LIST_MODEL_FILENAME; k< FM_LIST_MODEL_NUM_COLUMNS; k++) {
         if (k == FM_LIST_MODEL_FILENAME) {
             col = gtk_tree_view_column_new ();
             view->details->file_name_column = col;
             gtk_tree_view_column_set_sort_column_id  (col,k);
             gtk_tree_view_column_set_resizable (col, TRUE);
-            gtk_tree_view_column_set_title (col, gettext(col_title[k-3]));
+            gtk_tree_view_column_set_title (col, gettext(col_title[k-FM_LIST_MODEL_FILENAME]));
             gtk_tree_view_column_set_expand (col, TRUE);
 
             /* add the icon renderer */
@@ -702,7 +702,7 @@ create_and_set_up_tree_view (FMListView *view)
                                                      view, NULL);
         } else {
             renderer = gtk_cell_renderer_text_new( );
-            col = gtk_tree_view_column_new_with_attributes(gettext(col_title[k-3]), renderer, "text", k, NULL);
+            col = gtk_tree_view_column_new_with_attributes(gettext(col_title[k-FM_LIST_MODEL_FILENAME]), renderer, "text", k, NULL);
             gtk_tree_view_column_set_sort_column_id  (col,k);
             gtk_tree_view_column_set_resizable (col, TRUE);
             //gtk_tree_view_column_set_fixed_width (col, 240);
