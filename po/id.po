@@ -8,27 +8,27 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2011-11-29 08:36+0000\n"
-"Last-Translator: Aziz Rahmad <Unknown>\n"
+"PO-Revision-Date: 2012-01-04 02:06+0000\n"
+"Last-Translator: herycp <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-01-03 05:02+0000\n"
+"X-Launchpad-Export-Date: 2012-01-04 05:18+0000\n"
 "X-Generator: Launchpad (build 14616)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
-msgstr "Properti"
+msgstr "Atribut"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:98
 msgid "Info"
-msgstr "Info"
+msgstr "Informasi"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:103
 msgid "Permissions"
-msgstr "Hak Akses"
+msgstr "Izin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:114
 msgid "Preview"
@@ -36,7 +36,7 @@ msgstr "Pratinjau"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Created"
-msgstr "Dibuat"
+msgstr "Telah dibuat"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:311
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:320
@@ -49,7 +49,7 @@ msgstr "Akses Terakhir"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:316
 msgid "Deleted"
-msgstr "Dihapus"
+msgstr "Terhapus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:320
 msgid "MimeType"
@@ -57,7 +57,7 @@ msgstr "MimeType"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr ""
+msgstr "MimeTypes"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
@@ -74,11 +74,11 @@ msgstr "Lokasi Asal"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
 msgid "Other application..."
-msgstr ""
+msgstr "Aplikasi lain..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
 msgid "Open with"
-msgstr ""
+msgstr "Buka dengan"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
@@ -105,11 +105,11 @@ msgstr "Kelompok"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:773
 msgid "Everyone"
-msgstr "Setiap Orang"
+msgstr "Semua orang"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Pilih aplikasi untuk membuka "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
@@ -148,7 +148,7 @@ msgstr "Preferensi Marlin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
-msgstr "Klik tunggal untuk buka:"
+msgstr "Klik sekali untuk buka:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
@@ -156,7 +156,7 @@ msgstr "kecepatan auto-seleksi tetikus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
-msgstr ""
+msgstr "Properti dialog set modal"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "Default File Manager:"
@@ -172,7 +172,7 @@ msgstr "kecil"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
-msgstr "sedang"
+msgstr "Sedang"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
@@ -208,7 +208,7 @@ msgstr "Tampilan"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:203
 msgid "Extensions"
-msgstr ""
+msgstr "Ekstensi"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:95
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:370

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2011-12-27 09:23+0000\n"
+"PO-Revision-Date: 2012-01-03 17:44+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-01-03 05:02+0000\n"
+"X-Launchpad-Export-Date: 2012-01-04 05:18+0000\n"
 "X-Generator: Launchpad (build 14616)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
@@ -58,7 +58,7 @@ msgstr "Mime vrsta"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr ""
+msgstr "Mime vrste"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
@@ -75,11 +75,11 @@ msgstr "Izvorna lokacija"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
 msgid "Other application..."
-msgstr ""
+msgstr "Druga aplikacija..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
 msgid "Open with"
-msgstr ""
+msgstr "Otvori s(a)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
@@ -110,7 +110,7 @@ msgstr "Ostali"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Odaberite aplaikaciju za otvaranje "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
@@ -368,11 +368,11 @@ msgstr "Izmjena otkazana"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr ""
+msgstr "Zbijen popis direktorija"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr ""
+msgstr "Zbijen pogled"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
@@ -385,7 +385,7 @@ msgstr "Ova mapa je prazna."
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Neuspjelo preimenovanje %s u %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -414,11 +414,11 @@ msgstr "Neuspjelo pokretanje datoteke \"%s\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Ikonski popis direktorija"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Ikonski pogled"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
