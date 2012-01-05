@@ -1,154 +1,154 @@
-# Faroese translation for marlin
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Japanese translation for marlin
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the marlin package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-01-05 04:54+0000\n"
-"Last-Translator: Gunleif Joensen <Unknown>\n"
-"Language-Team: Faroese <fo@li.org>\n"
+"PO-Revision-Date: 2012-01-04 10:02+0000\n"
+"Last-Translator: colon <Unknown>\n"
+"Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Launchpad-Export-Date: 2012-01-05 06:02+0000\n"
 "X-Generator: Launchpad (build 14625)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
-msgstr "Eginleikar"
+msgstr "プロパティ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:98
 msgid "Info"
-msgstr "Kunning"
+msgstr "詳細"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:103
 msgid "Permissions"
-msgstr "Loyvi"
+msgstr "アクセス権"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:114
 msgid "Preview"
-msgstr "Undansýn"
+msgstr "プレビュー"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Created"
-msgstr "Stovnað"
+msgstr "作成日時"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:311
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:320
 msgid "Modified"
-msgstr "Broytt"
+msgstr "変更日時"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:312
 msgid "Last Access"
-msgstr "seinasta atgongd"
+msgstr "アクセス日時"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:316
 msgid "Deleted"
-msgstr "Strikað"
+msgstr "削除日時"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:320
 msgid "MimeType"
-msgstr ""
+msgstr "MIMEタイプ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr ""
+msgstr "MIMEタイプ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
-msgstr "Staður"
+msgstr "場所"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:334
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:316
 msgid "Target"
-msgstr "Mál"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:340
 msgid "Origin Location"
-msgstr "Upprunastaður"
+msgstr "元の場所"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
 msgid "Other application..."
-msgstr "Onnur nýtsluskipan..."
+msgstr "他のアプリケーション..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
 msgid "Open with"
-msgstr "Opna við"
+msgstr "これで開く"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
-msgstr "Les"
+msgstr "読み込み"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:529
 msgid "Write"
-msgstr "Skriva"
+msgstr "書き込み"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:534
 msgid "Execute"
-msgstr "Inna"
+msgstr "実行"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:752
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:765
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:321
 msgid "Owner"
-msgstr "Eigari"
+msgstr "所有者"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:757
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:769
 msgid "Group"
-msgstr "Bólkur"
+msgstr "グループ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:773
 msgid "Everyone"
-msgstr "Øll"
+msgstr "その他"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr "Vel eina nýtsluskipan at opna "
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
-msgstr "Navn"
+msgstr "名前"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:313
 msgid "Type"
-msgstr "Slag"
+msgstr "種類"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:318
 msgid "Size"
-msgstr "Stødd"
+msgstr "Size"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "Mappan finst ikki"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr "Marlin finnur ikki mappuna %s"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr "Stovna"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "Stovna mappuna %s"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr "Marlin eginleikar"
+msgstr "Marlin の設定"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
-msgstr "Trýst einaferð fyri at opna"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
@@ -160,27 +160,27 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "Default File Manager:"
-msgstr "Standard Fílu Stjóri"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:95
 msgid "Behavior"
-msgstr "Atburður"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
-msgstr "lítið"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
-msgstr "meðal"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
-msgstr "stórt"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
-msgstr "eyka-stórt"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
@@ -188,51 +188,51 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "iso"
-msgstr "iso"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:138
 msgid "locale"
-msgstr "staður"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
-msgstr "óformligur"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:146
 msgid "Date format:"
-msgstr "Dato útsjónd:"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:154
 msgid "Display"
-msgstr "Skíggi"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:203
 msgid "Extensions"
-msgstr "Víðkanir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:95
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:370
 msgid "Trash"
-msgstr "Rusk"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:96
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:588
 msgid "Network"
-msgstr "Netverk"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:131
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:324
 msgid "Home"
-msgstr "Heim"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:133
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:394
 msgid "File System"
-msgstr "Fíluskipan"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:167
 msgid "Single Click"
-msgstr "Einkult klikk"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
@@ -250,116 +250,116 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr "SSH"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr "Almennur FTP"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr "FTP (við innriting)"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr "Glugga deiling"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr "Trygt WebDAV (HTTPS)"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr "Sambindi..."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
-msgstr "."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Mappan \"%s\" kann ikki opnast á \"%s\"."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "ambætarin í \"%s\" finnist ikki"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr "Royn umaftur"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr "Vinarliga vátta tínar brúkara upplýsingar"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr "Halt áfram"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1169
 msgid "C_onnect"
-msgstr "S_ambind"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr "Sambind við ambætara"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr "Ambætara Upplýsningar"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
-msgstr "_Ambætari:"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
-msgstr "_Portur:"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
-msgstr "_Slag:"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr "D_eil"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr "_Faldari"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr "Brúkara Lýsingar"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr "_Økisnavn:"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
-msgstr "_Brúkaranavn:"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
-msgstr "_Atlát"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr "Minnst til hetta atlátið"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr "Atgerð strika"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
@@ -367,7 +367,7 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr "Stappað sýning"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
@@ -384,28 +384,28 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
-msgstr "_Flyt hagar"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:784
 msgid "_Copy Here"
-msgstr "_Avrita hagar"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr "_Leinkja hagar"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr "Set sum _Bakgrund"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr "Ógilda"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "Miseydnaðist at inna fíluna \"%s\""
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
@@ -427,110 +427,110 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:477
 msgid "Available Items"
-msgstr "Tøkir liðir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:498
 msgid "Displayed Items"
-msgstr "Sýndir liðir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
-msgstr "Egið"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
-msgstr "Tíni vanligu støð og bókamerki"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
-msgstr "Opna tína persónligu mappu"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
-msgstr "Opna ruskspannina"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
-msgstr "Tóleindir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
-msgstr "Tínar lokalu deildir og tóleindir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
-msgstr "Opna innihaldið av fílukervinum"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:455
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:480
 #, c-format
 msgid "Mount and open %s"
-msgstr "Set í og opna %s"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
-msgstr "Tíni netstøð"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
-msgstr "Alt netið"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
-msgstr "Kaga í gjøgnum innihaldið á netinum"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
-msgstr "_Byrja"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1611
 msgid "_Stop"
-msgstr "_Steðga"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1616
 msgid "_Power On"
-msgstr "_Tendra"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1617
 msgid "_Safely Remove Drive"
-msgstr "_Tak drivið tryggliga burtur"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1620
 msgid "_Connect Drive"
-msgstr "_Sambind driv"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1621
 msgid "_Disconnect Drive"
-msgstr "_Loys driv"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
-msgstr "_Byrja Fleir-diskils tól"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1625
 msgid "_Stop Multi-disk Device"
-msgstr "_Stegga Fleir-diskils Tól"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1629
 msgid "_Unlock Drive"
-msgstr "Læs driv _upp"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1630
 msgid "_Lock Drive"
-msgstr "_Læs driv"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1704
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2251
 #, c-format
 msgid "Unable to start %s"
-msgstr "Ikki før fyri at byrja %s"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1994
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2023
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2052
 #, c-format
 msgid "Unable to eject %s"
-msgstr "Ikki før fyri at skumpa út %s"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2197
 #, c-format
@@ -540,30 +540,30 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2307
 #, c-format
 msgid "Unable to stop %s"
-msgstr "Ikki ført fyri at stegga %s"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2399
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1882
 msgid "_Open"
-msgstr "_Opna"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2407
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1902
 msgid "Open in New _Tab"
-msgstr "Opna í nýggjum _teigi"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2414
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1911
 msgid "Open in New _Window"
-msgstr "Opna í Nýggjum _Vindeyga"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
-msgstr "Bein burtir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
-msgstr "Nýnevn..."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
@@ -575,21 +575,21 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2458
 msgid "_Eject"
-msgstr "_Skumpa út"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2466
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1410
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2281
 msgid "Empty _Trash"
-msgstr "Tøm ruskspannina"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3123
 msgid "Icon Size"
-msgstr "Ímyndastødd"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3124
 msgid "Icon size"
-msgstr "Ímyndastødd"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1090
 msgid "Invalid filename provided by XDS drag site"
@@ -598,24 +598,24 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1248
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Tað miseydnaðist at skapa eina leinkju til URL \"%s\""
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1730
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Brúka \"%s\" til at opna tann valda lutin"
-msgstr[1] "Brúka \"%s\" til at opna teir valdu lutirnar"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1876
 #, c-format
 msgid "_Open With %s"
-msgstr "_Opna við %s"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1898
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr "Opna í %'d nýggjum _teigum"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1907
 #, c-format
@@ -624,11 +624,11 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3236
 msgid "Set as default"
-msgstr "Set sum vanligu forritan"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3454
 msgid "Set Color:"
-msgstr "Set Lit"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
@@ -639,11 +639,11 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:470
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:526
 msgid "File Operations"
-msgstr "Fílu atgerðir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:122
 msgid "Show Details"
-msgstr "Sýn smálutir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:157
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:179
@@ -655,7 +655,7 @@ msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
-msgstr "Sýn avritingarsamrøðu"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
@@ -667,11 +667,11 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3188
 msgid "Select All"
-msgstr "Vel alt"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3199
 msgid "Input Methods"
-msgstr "Inntakshættir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
@@ -687,9 +687,6 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
-"\n"
-"\n"
-"Kaga ígjøgnum fílu skipanina við Fílu stjóranum"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
@@ -698,7 +695,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:192
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr "Fyrireiki"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
@@ -707,23 +704,23 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:199
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
 msgid "_Skip"
-msgstr "_leyp um"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr "s_kippa alt"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr "_Royn aftur"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "Strika _Allar"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr "_Set í staðin"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
@@ -731,54 +728,54 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr "_Flætta"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr "Flætta _allar"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "Avrita atlíkavæl"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:293
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] "%'d sekund"
-msgstr[1] "%'d sekund"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:298
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] "%'d minuttur"
-msgstr[1] "%'d minuttir"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:308
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] "%'d tími"
-msgstr[1] "%'d tímar"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:316
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] "umleið %'d tími"
-msgstr[1] "umleið %'d tímar"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:392
 #, c-format
 msgid "Link to %s"
-msgstr "Leinkja til %s"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:396
 #, c-format
 msgid "Another link to %s"
-msgstr "Onnur leinkja til %s"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:412
 #, c-format
@@ -802,12 +799,12 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:616
 msgid " ("
-msgstr " ("
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:624
 #, c-format
 msgid " (%'d"
-msgstr " (%'d"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1369
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
@@ -831,11 +828,11 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1403
 msgid "Empty all items from Trash?"
-msgstr "Tøma allar liðirnar úr ruskspannini?"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1407
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Allir liðirnir í ruskspannini verða varðandi strikaðir."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1438
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -852,20 +849,20 @@ msgstr[1] ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1466
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1498
 msgid "Deleting files"
-msgstr "Striki fílur"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1492
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "%'d fíla er eftir at strika"
-msgstr[1] "%'d fílur eru eftir at strika"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1512
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] "%T eftir"
-msgstr[1] "%T eftir"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1580
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1614
@@ -873,7 +870,7 @@ msgstr[1] "%T eftir"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1730
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2544
 msgid "Error while deleting."
-msgstr "Brek meðan strikað varð."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1584
 msgid ""
@@ -891,7 +888,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1596
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3603
 msgid "_Skip files"
-msgstr "_skippa fílur"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1617
 msgid ""
@@ -916,35 +913,34 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1807
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1819
 msgid "Moving files to trash"
-msgstr "Flyti fílur í ruskspannina"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1821
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "%'d fíla væntar at koyra burtur"
-msgstr[1] "%'d fílur eru eftir at koyra burtur"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1872
 msgid "Cannot move file to trash, do you want to delete immediately?"
 msgstr ""
-"Kann ikki flyta fíluna í ruskspannina, vil tú strika hana beinanvegin?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1873
 msgid "The file \"%B\" cannot be moved to the trash."
-msgstr "Fílan \"%B\" kann ikki flytast til ruskspannina."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2049
 msgid "Trashing Files"
-msgstr "Beini fílur burtur"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2051
 msgid "Deleting Files"
-msgstr "Striki fílur"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2114
 msgid "Unable to eject %V"
-msgstr "Kann ikki skumpa %V út"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2116
 msgid "Unable to unmount %V"
@@ -962,11 +958,11 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2279
 msgid "Do _not Empty Trash"
-msgstr "Tøm _ikki ruskspannina"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2334
 msgid "Emptying the trash"
-msgstr "Tømi ruskspannina"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2401
 #, c-format
@@ -977,21 +973,22 @@ msgstr ""
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "Fyrireiki avritan av %'d fílu (%S)"
-msgstr[1] "Fyrireiki avritan av  %'d fílum (%S)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2485
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "Fyrireiki flutning av %'d fílu (%S)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2491
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Fyrireiki strikan av %'d fílu (%S)"
-msgstr[1] "Fyrireiki strikan av %'d fílum (%S)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2497
 #, c-format
@@ -1005,13 +1002,13 @@ msgstr[1] ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3586
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3631
 msgid "Error while copying."
-msgstr "Brek undir avriting."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2542
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3584
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3629
 msgid "Error while moving."
-msgstr "Brek undir flyting."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2546
 msgid "Error while moving files to trash."
@@ -1034,8 +1031,6 @@ msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Fílan \"%B\" kann ikki handfarast, av tí at tú ikki hevur rættindi til at "
-"lesa hana."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2719
 msgid "There was an error getting information about \"%B\"."
@@ -1046,7 +1041,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2894
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2924
 msgid "Error while copying to \"%B\"."
-msgstr "Brek undir avritan til \"%B\""
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2823
 msgid "You do not have permissions to access the destination folder."
@@ -1069,7 +1064,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2897
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr "Har er %S til taks, men %S er kravt."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2925
 msgid "The destination is read-only."
@@ -1077,63 +1072,63 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2986
 msgid "Moving \"%B\" to \"%B\""
-msgstr "Flyti \"%B\" til \"%B\""
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2987
 msgid "Copying \"%B\" to \"%B\""
-msgstr "Avriti \"%B\" til \"%B\""
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2991
 msgid "Duplicating \"%B\""
-msgstr "Tvífaldi \"%B\""
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2995
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Flyti %'d filu (úr \"%B\") til \"%B\""
-msgstr[1] "Flyti %'d fílur (úr \"%B\") til \"%B\""
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2998
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Avriti %'d fílu (úr \"%B\") til \"%B\""
-msgstr[1] "Avriti %'d fílur (úr \"%B\") til \"%B\""
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3005
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Tvífaldi %'d fílu (í \"%B\")"
-msgstr[1] "Tvífaldi %'d fílur (í \"%B\")"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3014
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "Flyti %'d fílu til \"%B\""
-msgstr[1] "Flyti %'d fílur til \"%B\""
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3018
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "Avriti %'d fílu til \"%B\""
-msgstr[1] "Avriti %'d fílur til \"%B\""
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3023
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "Tvífaldi %'d fílu"
-msgstr[1] "Tvífaldi %'d fílur"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3074
 #, c-format
 msgid "%S of %S"
-msgstr "%S av %S"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3085
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S av %S — %T er eftir (%S/sek)"
-msgstr[1] "%S av %S — %T eru eftir (%S/sek)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3464
 msgid ""
@@ -1161,7 +1156,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4378
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4952
 msgid "Error while moving \"%B\"."
-msgstr "Brek við flutningi av \"%B\"."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3682
 msgid "Could not remove the source folder."
@@ -1172,7 +1167,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4380
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4451
 msgid "Error while copying \"%B\"."
-msgstr "Brek við avritan av \"%B\"."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3768
 #, c-format
@@ -1201,11 +1196,11 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4171
 msgid "You cannot move a file over itself."
-msgstr "Tú kanst ikki flyta fíluna til seg sjálva."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4172
 msgid "You cannot copy a file over itself."
-msgstr "Tú kanst ikki avrita fíluna til seg sjálva."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4173
 msgid "The source file would be overwritten by the destination."
@@ -1223,18 +1218,18 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4680
 msgid "Copying Files"
-msgstr "Avriti fílur"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4696
 msgid "Preparing to move to \"%B\""
-msgstr "Fyrireiki flutning til \"%B\""
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4708
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] "Fyrireiki flutning av %'d fílu"
-msgstr[1] "Fyrireiki flutning av %'d fílum"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4953
 #, c-format
@@ -1243,18 +1238,18 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5216
 msgid "Moving Files"
-msgstr "Flyti fílur"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5232
 msgid "Creating links in \"%B\""
-msgstr "Stovni leinkjur í \"%B\""
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5243
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] "Stovni leinkju til %'d fílu"
-msgstr[1] "Stovni leinkjur til %'d fílur"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5373
 msgid "Error while creating link to %B."
@@ -1271,7 +1266,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5381
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr "Tað uppstóð ein feilur við stvoning av tí symbolsku ávísing í %F"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5684
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5687
@@ -1280,28 +1275,28 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5929
 msgid "untitled folder"
-msgstr "navnaleys mappa"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5937
 msgid "new file"
-msgstr "Nýggja fílu"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6087
 msgid "Error while creating directory %B."
-msgstr "Feilur við stovning av mappu %B"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6089
 msgid "Error while creating file %B."
-msgstr "Feilur við stovning av fíl %B"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6091
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Tað uppstóð ein feilur við stovning av mappu í %F."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6387
 msgid "Emptying Trash"
-msgstr "Tømir Ruskspannina"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:267
 #, c-format
@@ -1310,13 +1305,13 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:270
 msgid "The item cannot be restored from trash"
-msgstr "Liðurin kundi ikki endurstivnast úr ruskspannini"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Samein faldara \"%s\"?"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
@@ -1375,45 +1370,45 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Ein eldri fíla við sama navni finst longu í \"%s\"."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Ein nýggjari fíla við tí sama navninum, finnst longu í \"%s\"."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Ein onnur fíla við sama navni finst longu í \"%s\"."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
 msgid "Original file"
-msgstr "Upprunafíla"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
 msgid "Size:"
-msgstr "Stødd:"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr "Slag:"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:260
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:291
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr "Broytt seinast:"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
@@ -1423,7 +1418,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr "Samein"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
 msgid "_Select a new name for the destination"
@@ -1431,19 +1426,19 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:710
 msgid "Reset"
-msgstr "Tómstilla"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:722
 msgid "Apply this action to all files"
-msgstr "Virkja hesa atgerð á øllum fílum"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
 msgid "Re_name"
-msgstr "Ný_nevn"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:744
 msgid "Replace"
-msgstr "Set í staðin"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:817
 msgid "File conflict"
@@ -1456,7 +1451,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:245
 #, c-format
 msgid "link to %s"
-msgstr "leinkja til %s"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1603
 #, c-format
@@ -1477,7 +1472,7 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1955
 msgid "Slashes are not allowed in filenames"
-msgstr "Skákstrikur eru ikki loyvdar í fílunøvnum"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1975
 msgid "Toplevel files cannot be renamed"
@@ -1486,4 +1481,4 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libwidgets/LocationBar.vala:709
 #, c-format
 msgid "Go to %s"
-msgstr "Fær til %s"
+msgstr ""

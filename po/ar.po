@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2011-12-29 22:21+0000\n"
+"PO-Revision-Date: 2012-01-04 08:20+0000\n"
 "Last-Translator: Ibrahim Saed <ibraheem5000@hotmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2012-01-03 05:02+0000\n"
-"X-Generator: Launchpad (build 14616)\n"
+"X-Launchpad-Export-Date: 2012-01-05 06:02+0000\n"
+"X-Generator: Launchpad (build 14625)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -622,12 +622,12 @@ msgstr "ا_فتح باستخدام %s"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1898
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr "فتح في %'d أ_لسنة جديدة"
+msgstr "افتح في %'d أ_لسنة جديدة"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1907
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr "فتح في %'d _نوافذ جديدة"
+msgstr "افتح في %'d _نوافذ جديدة"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3236
 msgid "Set as default"
@@ -657,12 +657,12 @@ msgstr "أظهر التفاصيل"
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] "%'d عملية ملف نشطة"
-msgstr[1] "عملية ملف نشطة"
-msgstr[2] "عمليتا ملفات نشطتان"
-msgstr[3] "%'d عمليات ملفات نشطة"
-msgstr[4] "%'d عمليات ملفات نشطة"
-msgstr[5] "%'d عمليات ملفات نشطة"
+msgstr[0] "لا عمليات ملف نشطة"
+msgstr[1] "عملية ملف واحدة نشطة"
+msgstr[2] "عمليتا ملف نشطتان"
+msgstr[3] "%I'd عمليات ملف نشطة"
+msgstr[4] "%I'd عملية ملف نشطة"
+msgstr[5] "%I'd عملية ملف نشطة"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
@@ -674,7 +674,7 @@ msgstr "إلغِ كافة الإجراءات قيد التنفيذ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
-msgstr "اكتملت جميع عمليات الملفات بنجاح"
+msgstr "اكتملت كل عمليات الملف بنجاح"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3188
 msgid "Select All"
@@ -923,7 +923,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"لا يمكن حذف الملفات الموجودة بالمجلد \"%B\" لأنك لا تملك التصاريح الكافية "
+"لا يمكن حذف الملفات الموجودة بالمجلد \"%B\" لأنك لا تملك الصلاحيات الكافية "
 "لقراءتها."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1587
@@ -967,7 +967,7 @@ msgstr "تُنقل الملفات إلى المُهملات"
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "لم يبقى أي ملفات لنقلها إلى المهملات"
+msgstr[0] "لم تتبقَ أي ملفات لنقلها إلى المهملات"
 msgstr[1] "تبقى ملف واحد لنقله إلى المهملات"
 msgstr[2] "تبقى ملفان لنقلهما إلى المهملات"
 msgstr[3] "تبقى %'d ملفات لنقلها إلى المهملات"
@@ -976,7 +976,7 @@ msgstr[5] "تبقى %'d ملف لنقلها إلى المهملات"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1872
 msgid "Cannot move file to trash, do you want to delete immediately?"
-msgstr "لا يمكن نقل الملف إلى المهملات، هل تريد حذفه فورا؟"
+msgstr "لا يمكن نقل الملف للمهملات، هل ترغب بحذفه فورا؟"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1873
 msgid "The file \"%B\" cannot be moved to the trash."
