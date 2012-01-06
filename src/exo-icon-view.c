@@ -225,7 +225,7 @@ struct _ExoIconViewPrivate
     guint imcontext_changed : 1;
 
     gboolean add_remove_helper;
-
+    gboolean rubberbanding_shift;
 };
 
 /* Signals */
@@ -2440,13 +2440,18 @@ exo_icon_view_button_press (GtkWidget      *widget,
         else
         {
             if (icon_view->priv->selection_mode != GTK_SELECTION_BROWSE &&
-                !(event->state & GDK_CONTROL_MASK))
+                !((event->state & GDK_CONTROL_MASK) || (event->state & GDK_SHIFT_MASK)))
             {
                 dirty = exo_icon_view_unselect_all_internal (icon_view);
             }
 
-            if (icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE) 
+            if (icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE) {
+                if (event->state & GDK_SHIFT_MASK)
+                    icon_view->priv->rubberbanding_shift = TRUE;
+                else
+                    icon_view->priv->rubberbanding_shift = FALSE;
                 exo_icon_view_start_rubberbanding (icon_view, event->device, event->x, event->y);
+            }
         }
 
         /* don't draw keyboard focus around an clicked-on item */
@@ -2821,7 +2826,11 @@ exo_icon_view_update_rubberband_selection (ExoIconView *icon_view)
         is_in = exo_icon_view_item_hit_test (icon_view, item, 
                                              x, y, width, height);
 
-        selected = is_in ^ item->selected_before_rubberbanding;
+        /* shift has been pressed while rubberbanding use OR */
+        if (icon_view->priv->rubberbanding_shift)
+            selected = is_in | item->selected_before_rubberbanding;
+        else
+            selected = is_in ^ item->selected_before_rubberbanding;
 
         if (item->selected != selected)
         {
