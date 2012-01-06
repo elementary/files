@@ -335,6 +335,7 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
                                                      && (event->state & gtk_accelerator_get_default_mod_mask ()) == 0);
     }
 
+#if 0
     /* unfortunately GtkTreeView will unselect rows except the clicked one,
      * which makes dragging from a GtkTreeView problematic. That's why we
      * remember the selected paths here and restore them later.
@@ -351,6 +352,7 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
         else
             selected_paths = gtk_tree_selection_get_selected_rows (selection, NULL);
     }
+#endif
 
     /* Rubberbanding in GtkTreeView 2.9.0 and above is rather buggy, unfortunately, and
      * doesn't interact properly with GTKs own DnD mechanism. So we need to block all

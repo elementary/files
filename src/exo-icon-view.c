@@ -85,8 +85,6 @@ struct _ExoIconViewItem
 
     guint selected : 1;
     guint selected_before_rubberbanding : 1;
-    gboolean add_remove_helper;
-
 };
 
 typedef struct _ExoIconViewChild ExoIconViewChild;
@@ -225,6 +223,8 @@ struct _ExoIconViewPrivate
     guint disable_popdown : 1;
     guint search_custom_entry_set : 1;
     guint imcontext_changed : 1;
+
+    gboolean add_remove_helper;
 
 };
 
@@ -2396,13 +2396,11 @@ exo_icon_view_button_press (GtkWidget      *widget,
                 else
                 {
                     //amtest
-                    if (!item->add_remove_helper) {
-                        /* Check if we are on a selected item */
-                        if(!item->selected) exo_icon_view_unselect_all_internal (icon_view);
+                    if (!icon_view->priv->add_remove_helper) {
+                        exo_icon_view_unselect_all_internal (icon_view);
                         item->selected = TRUE;
                     } else {
                         item->selected = !item->selected;
-                        item->add_remove_helper = FALSE;
                     }
 
                     //item->selected = TRUE;
@@ -2455,7 +2453,7 @@ exo_icon_view_button_press (GtkWidget      *widget,
         icon_view->priv->draw_focus = FALSE;
     }
 
-    if (event->button == 1 && event->type == GDK_2BUTTON_PRESS)
+    if (!icon_view->priv->single_click && event->button == 1 && event->type == GDK_2BUTTON_PRESS)
     {
         item = exo_icon_view_get_item_at_coords (icon_view,
                                                  event->x, event->y,
@@ -2492,20 +2490,19 @@ exo_icon_view_button_release (GtkWidget      *widget,
     if (icon_view->priv->pressed_button == event->button)
     {
         /* check if we're in single click mode */
-        if (G_UNLIKELY (icon_view->priv->single_click && (event->state & (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) == 0))
+        if (icon_view->priv->single_click && (event->state & (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) == 0)
         {
             /* determine the item at the mouse coords and check if this is the last single clicked one */
             item = exo_icon_view_get_item_at_coords (icon_view, event->x, event->y, TRUE, NULL);
             if (G_LIKELY (item != NULL && item == icon_view->priv->last_single_clicked))
             {
-                /* emit an "item-activated" signal for this item */
-                path = gtk_tree_path_new_from_indices (g_list_index (icon_view->priv->items, item), -1);
                 //amtest
-                if (!item->add_remove_helper) {
+                if (!icon_view->priv->add_remove_helper) {
+                    path = gtk_tree_path_new_from_indices (g_list_index (icon_view->priv->items, item), -1);
+                    /* emit an "item-activated" signal for this item */
                     exo_icon_view_item_activated (icon_view, path);
+                    gtk_tree_path_free (path);
                 }
-
-                gtk_tree_path_free (path);
             }
 
             /* reset the last single clicked item */
@@ -3953,7 +3950,7 @@ hit_test_pos (GtkCellRenderer    *renderer,
         data->hit_rect.x >= box.x && data->hit_rect.x <= box.x + 18 &&
         data->hit_rect.y >= box.y && data->hit_rect.y <= box.y + 18) 
     {
-        data->item->add_remove_helper = TRUE;
+        data->icon_view->priv->add_remove_helper = TRUE;
         return (data->hit = TRUE);
     }
     if (data->hit_rect.x >= box.x && data->hit_rect.x <= box.x + box.width &&
@@ -3978,6 +3975,7 @@ exo_icon_view_get_item_at_coords (ExoIconView          *icon_view,
     if (cell_at_pos)
         *cell_at_pos = NULL;
 
+    icon_view->priv->add_remove_helper = FALSE;
     for (items = icon_view->priv->items; items; items = items->next)
     {
         ExoIconViewItem *item = items->data;
@@ -8189,17 +8187,16 @@ exo_icon_view_single_click_timeout (gpointer user_data)
               exo_icon_view_queue_draw_item (icon_view, item);
               dirty = TRUE;
             }
-          else if (!item->selected)
-          //else
+          //else if (!item->selected)
+          else
             {
               //amtest
-              if (!item->add_remove_helper) {
-                exo_icon_view_unselect_all_internal (icon_view);
-                item->selected = TRUE;
-              } else {
-                item->selected = !item->selected;
-                item->add_remove_helper = FALSE;
-              }
+                if (!icon_view->priv->add_remove_helper) {
+                    exo_icon_view_unselect_all_internal (icon_view);
+                    item->selected = TRUE;
+                } else {
+                    item->selected = !item->selected;
+                }
 
               //item->selected = TRUE;
               exo_icon_view_queue_draw_item (icon_view, item);
