@@ -428,13 +428,7 @@ button_press_callback (GtkTreeView *tree_view, GdkEventButton *event, FMListView
             gtk_tree_selection_unselect_all (selection);
             gtk_tree_selection_select_path (selection, path);
 
-            /* if the event was a double-click or we are in single-click mode, then
-             * we'll open the file or folder (folder's are opened in new windows)
-             */
-            if (G_LIKELY (event->type == GDK_2BUTTON_PRESS || exo_tree_view_get_single_click (EXO_TREE_VIEW (tree_view))))
-            {
-                fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
-            }
+            fm_directory_view_activate_selected_items (FM_DIRECTORY_VIEW (view), MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
 
             /* cleanup */
             gtk_tree_path_free (path);
