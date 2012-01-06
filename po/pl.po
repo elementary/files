@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2011-12-08 22:12+0000\n"
-"Last-Translator: kcpr <Unknown>\n"
+"PO-Revision-Date: 2012-01-05 13:17+0000\n"
+"Last-Translator: Filip Chabik <hadret@gmail.com>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-01-03 05:02+0000\n"
-"X-Generator: Launchpad (build 14616)\n"
+"X-Launchpad-Export-Date: 2012-01-06 05:24+0000\n"
+"X-Generator: Launchpad (build 14637)\n"
 "Language: pl\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
@@ -26,7 +26,7 @@ msgstr "Właściwości"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:98
 msgid "Info"
-msgstr "Informacja"
+msgstr "Informacje"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:103
 msgid "Permissions"
@@ -55,11 +55,11 @@ msgstr "Czas usunięcia"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:320
 msgid "MimeType"
-msgstr "Typ Mime"
+msgstr "Typ MIME"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr ""
+msgstr "Typy MIME"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
@@ -76,11 +76,11 @@ msgstr "Pierwotne położenie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
 msgid "Other application..."
-msgstr ""
+msgstr "Inny program..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
 msgid "Open with"
-msgstr ""
+msgstr "Otwórz za pomocą"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
@@ -111,7 +111,7 @@ msgstr "Wszyscy"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Wybierz aplikację do otwarcia "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
@@ -142,7 +142,7 @@ msgstr "Utwórz"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "Tworzy katalog „%s”"
+msgstr "Utwórz katalog %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
@@ -162,7 +162,7 @@ msgstr "Tryb modalny okna właściwości:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "Default File Manager:"
-msgstr "Manager plików:"
+msgstr "Menedżer plików"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:95
 msgid "Behavior"
@@ -170,19 +170,19 @@ msgstr "Zachowanie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
-msgstr "Mały"
+msgstr "mały"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
-msgstr "Średni"
+msgstr "średni"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
-msgstr "Duży"
+msgstr "duży"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
-msgstr "Bardzo duży"
+msgstr "bardzo duży"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
@@ -190,7 +190,7 @@ msgstr "Rozmiar ikon panelu bocznego:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "iso"
-msgstr "iso"
+msgstr "Iso"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:138
 msgid "locale"
@@ -225,7 +225,7 @@ msgstr "Sieć"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:131
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:324
 msgid "Home"
-msgstr "Katalog użytkownika"
+msgstr "Katalog domowy"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:133
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:394
@@ -238,7 +238,8 @@ msgstr "Pojedyncze kliknięcie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Czy elementy w widoku można aktywować za pomocą jednego kliknięcia"
+msgstr ""
+"Określa czy elementy w widoku można aktywować za pomocą jednego kliknięcia"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
@@ -258,7 +259,7 @@ msgstr "SSH"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr "Publiczne FTP"
+msgstr "Publiczny FTP"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
@@ -266,7 +267,7 @@ msgstr "FTP (z logowaniem)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr "Zasób Windows"
+msgstr "Udział Windows"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
@@ -278,25 +279,25 @@ msgstr "Bezpieczny WebDAV (HTTPS)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr "Nawiązywanie połączenia..."
+msgstr "Łączenie..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"Nie można wczytać listy obsługiwanych metod serwerów.\n"
+"Nie można wczytać listy obsługiwanych połączeń do serwerów.\n"
 "Proszę sprawdzić instalację programu gvfs."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Nie można otworzyć pliku \"%s\" w \"%s\"."
+msgstr "Folderu \"%s\" nie można otworzyć w \"%s\"."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Nie można odnaleźć serwera w \"%s\""
+msgstr "Nie można odnaleźć serwera w \"%s\"."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
@@ -345,7 +346,7 @@ msgstr "_Katalog:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr "O użytkowniku"
+msgstr "Informacje o użytkowniku"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
@@ -361,7 +362,7 @@ msgstr "_Hasło:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr "_Zapamiętanie hasła"
+msgstr "_Zapamiętanie tego hasła"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
@@ -369,11 +370,11 @@ msgstr "Operacja anulowana"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr ""
+msgstr "Zwarta lista katalogów"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr ""
+msgstr "Widok zwarty"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
@@ -386,7 +387,7 @@ msgstr "Ten katalog jest pusty."
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Zmiana nazwy z %s na %s się nie powiodła"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -398,7 +399,7 @@ msgstr "_Skopiuj tutaj"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr "_Dowiąż tutaj"
+msgstr "Utwórz d_owiązanie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
@@ -411,7 +412,7 @@ msgstr "Anuluj"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "Nie udało się uruchomić pliku „%s”"
+msgstr "Nie udało się uruchomić \"%s\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
@@ -419,19 +420,18 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Widok ikon"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
-msgstr "Dostosuj pasek narzędzi"
+msgstr "Dostosuj pasek narzędziowy"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:461
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
-"Proszę wybrać elementy, które mają być wyświetlane na pasku "
-"narzędziowym.\n"
+"Zaznacz elementy które mają być wyświetlone na pasku narzędziowym.\r\n"
 "Kolejność elementów można zmieniać przeciągając je na odpowiednie "
 "pozycje listy."
 
@@ -453,15 +453,15 @@ msgstr "Udostępnia często używane położenia i zakładki"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
-msgstr "Przechodzi do katalogu użytkownika"
+msgstr "Przejdź do katalogu użytkownika"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
-msgstr "Wyświetla zawartość kosza"
+msgstr "Otwiera kosz"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
-msgstr "Nośniki"
+msgstr "Urządzenia"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
@@ -475,7 +475,7 @@ msgstr "Wyświetla zawartość systemu plików"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:480
 #, c-format
 msgid "Mount and open %s"
-msgstr "Montuje i wyświetla zawartość nośnika „%s”"
+msgstr "Zamontuj i otwórz %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
@@ -595,11 +595,11 @@ msgstr "Opróżnij _kosz"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3123
 msgid "Icon Size"
-msgstr "Rozmiar Ikony"
+msgstr "Rozmiar ikon"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3124
 msgid "Icon size"
-msgstr "Rozmiar Ikony"
+msgstr "Rozmiar ikony"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1090
 msgid "Invalid filename provided by XDS drag site"
@@ -608,14 +608,14 @@ msgstr "Invalid filename provided by XDS drag site"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1248
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Nie udało się utworzyć odnośnika dla adresu URL „%s”"
+msgstr "Nie udało się utworzyć łącza do URLa \"%s\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1730
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Użycie programu \"%s\" do otwarcia zaznaczonego elementu"
-msgstr[1] "Używa programu \"%s\" do otwarcia zaznaczonych elementów"
+msgstr[0] "Używa \"%s\" do otwarcia zaznaczonych elementów"
+msgstr[1] "Używa \"%s\" do otwarcia zaznaczonych elementów"
 msgstr[2] "Używa programu \"%s\" do otwarcia zaznaczonych elementów"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1876
@@ -661,8 +661,8 @@ msgstr "Pokaż szczegóły"
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] "Trwa %'d operacja plikowa"
-msgstr[1] "Trwają %'d operacje plikowe"
+msgstr[0] "%'d aktywne działanie na plikach"
+msgstr[1] "%'d aktywne działania na plikach"
 msgstr[2] "Trwa %'d operacji plikowych"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
@@ -675,7 +675,7 @@ msgstr "Anuluj wszystkie operacje w toku"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
-msgstr "Zakończono wszystkie operacje plikowe"
+msgstr "Wszystkie działania na plikach zostały pomyślnie ukończone"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3188
 msgid "Select All"
@@ -687,11 +687,11 @@ msgstr "Metody wprowadzania"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "Tryb wyglądu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "Tryb wyglądu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -701,11 +701,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Umożliwia przeglądanie systemu plików i zarządza jego zawartością"
+"Przeglądaj system plików za pomocą menedżera plików"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr "Nie można użyć opcji --quit z adresem URI."
+msgstr "--quit nie może być użyte z adresami URI."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:192
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:210

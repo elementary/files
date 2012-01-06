@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-01-05 04:54+0000\n"
+"PO-Revision-Date: 2012-01-05 19:07+0000\n"
 "Last-Translator: Gunleif Joensen <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-01-05 06:02+0000\n"
-"X-Generator: Launchpad (build 14625)\n"
+"X-Launchpad-Export-Date: 2012-01-06 05:24+0000\n"
+"X-Generator: Launchpad (build 14637)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -380,7 +380,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Miseydnaðist at nýnevna %s til %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -413,7 +413,7 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Smámyndalisti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
@@ -620,7 +620,7 @@ msgstr "Opna í %'d nýggjum _teigum"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1907
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Opna í %'d nýggjum _vindeygum"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3236
 msgid "Set as default"
@@ -650,8 +650,8 @@ msgstr "Sýn smálutir"
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d fíluatgerð virkin"
+msgstr[1] "%'d fíluatgerðir virknar"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
@@ -783,7 +783,7 @@ msgstr "Onnur leinkja til %s"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:412
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "%'dst leinkja til %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:416
 #, c-format

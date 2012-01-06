@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-01-02 19:43+0000\n"
-"Last-Translator: ammonkey <am.monkeyd@gmail.com>\n"
+"PO-Revision-Date: 2012-01-05 08:29+0000\n"
+"Last-Translator: Christophe Bastin <Unknown>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-01-03 05:02+0000\n"
-"X-Generator: Launchpad (build 14616)\n"
+"X-Launchpad-Export-Date: 2012-01-06 05:24+0000\n"
+"X-Generator: Launchpad (build 14637)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -80,7 +80,7 @@ msgstr "Autre application..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
 msgid "Open with"
-msgstr ""
+msgstr "Ouvrir avec"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
@@ -111,7 +111,7 @@ msgstr "Tout le monde"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Sélectionnez une application pour ouvrir "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
@@ -371,11 +371,11 @@ msgstr "Opération annulée"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr ""
+msgstr "Liste compacte des répertoires"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr ""
+msgstr "Vue compacte"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
@@ -388,7 +388,7 @@ msgstr "Ce dossier est vide."
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Impossible de renommer %s en %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -421,7 +421,7 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Vue en icônes"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
@@ -685,11 +685,11 @@ msgstr "Méthodes de saisie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "Mode de disposition"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "Le mode de disposition"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:439
 msgid ""
