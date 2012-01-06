@@ -78,9 +78,30 @@ public class GOF.Directory.Async : Object
         if (directory_cache != null)
            directory_cache.insert (location, this);
 
+        //warning ("dir ref_count %u", this.ref_count);
+        this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+        this.unref ();
+        warning ("dir %s ref_count %u", this.file.uri, this.ref_count);
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.file_hash, GLib.file_equal);
 
         //list_directory (location);
+    }
+
+    /*~Async () {
+        warning ("Async finalize %s", this.file.uri);
+    }*/
+
+    private static void toggle_ref_notify(void* data, GLib.Object object, bool is_last)
+    {
+        warning ("Async toggle_ref_notify %s", (object as Async).file.uri);
+
+        /*foreach (var file in (object as Async).file_hash.get_values ()) {
+            message ("file %s %u", file.uri, file.ref_count);
+        }*/
+        //warning ("dir ref_count %u", object.ref_count);
+        directory_cache.remove (((Async) object).file.location);
+        /*object.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
+        warning ("dir ref_count %u", object.ref_count);*/
     }
 
     public void cancel ()

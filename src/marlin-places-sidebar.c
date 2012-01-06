@@ -185,7 +185,7 @@ add_place (MarlinPlacesSidebar *sidebar,
     if (icon) {
         icon_info = marlin_icon_info_lookup (icon, icon_size);
 
-        pixbuf = marlin_icon_info_get_pixbuf_nodefault (icon_info);
+        pixbuf = g_object_ref (marlin_icon_info_get_pixbuf_nodefault (icon_info));
         g_object_unref (icon_info);
     }
 
@@ -227,8 +227,8 @@ add_place (MarlinPlacesSidebar *sidebar,
                         PLACES_SIDEBAR_COLUMN_DISK_SIZE, 0,
                         -1);
 
-    if (pixbuf != NULL)
-        g_object_unref (pixbuf);
+    /*if (pixbuf != NULL)
+        g_object_unref (pixbuf);*/
     
     return iter;
 }
@@ -432,10 +432,10 @@ update_places (MarlinPlacesSidebar *sidebar)
                     compare_for_selection (sidebar,
                                            location, mount_uri, last_uri,
                                            &last_iter, &select_path);
-                    g_object_unref (info);
-                    g_object_unref (root);
-                    g_object_unref (mount);
-                    g_object_unref (icon);
+                    _g_object_unref0 (info);
+                    _g_object_unref0 (root);
+                    _g_object_unref0 (mount);
+                    _g_object_unref0 (icon);
                     g_free (tooltip);
                     g_free (name);
                     g_free (mount_uri);
@@ -460,7 +460,7 @@ update_places (MarlinPlacesSidebar *sidebar)
                     g_free (name);
                     g_free (tooltip);
                 }
-                g_object_unref (volume);
+                _g_object_unref0 (volume);
             }
             g_list_free (volumes);
         }
@@ -486,7 +486,7 @@ update_places (MarlinPlacesSidebar *sidebar)
                 g_free (name);
             }
         }
-        g_object_unref (drive);
+        _g_object_unref0 (drive);
     }
     g_list_free (drives);
 
@@ -571,8 +571,8 @@ update_places (MarlinPlacesSidebar *sidebar)
         compare_for_selection (sidebar,
                                location, mount_uri, last_uri,
                                &last_iter, &select_path);
-        g_object_unref (root);
-        g_object_unref (mount);
+        _g_object_unref0 (root);
+        _g_object_unref0 (mount);
         g_object_unref (icon);
         g_free (name);
         g_free (mount_uri);
@@ -607,8 +607,8 @@ update_places (MarlinPlacesSidebar *sidebar)
         compare_for_selection (sidebar,
                                location, mount_uri, last_uri,
                                &last_iter, &select_path);
-        g_object_unref (root);
-        g_object_unref (mount);
+        _g_object_unref0 (root);
+        _g_object_unref0 (mount);
         g_object_unref (icon);
         g_free (name);
         g_free (mount_uri);

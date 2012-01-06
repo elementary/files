@@ -104,6 +104,9 @@ struct _MarlinIconRendererPrivate
 
 G_DEFINE_TYPE (MarlinIconRenderer, marlin_icon_renderer, GTK_TYPE_CELL_RENDERER)
 
+static gpointer _g_object_ref0 (gpointer self) {
+	return self ? g_object_ref (self) : NULL;
+}
 
 static void
 marlin_icon_renderer_init (MarlinIconRenderer *cellpixbuf)
@@ -390,7 +393,6 @@ marlin_icon_renderer_set_property (GObject      *object,
         }
         if (priv->pixbuf) {
             g_object_unref (priv->pixbuf);
-            priv->pixbuf = NULL;
         }
         priv->file = (gpointer) g_value_dup_object (value);
         if (G_LIKELY (priv->file != NULL)) {
@@ -794,6 +796,9 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GtkStateFlags state;
     MarlinIconInfo *nicon;
 
+    pixbuf = _g_object_ref0 (priv->pixbuf);
+    g_return_if_fail (pixbuf);
+
     marlin_icon_renderer_get_size (cell, widget, (GdkRectangle *) cell_area,
                                    &pix_rect.x, 
                                    &pix_rect.y,
@@ -808,12 +813,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
     if (!gdk_rectangle_intersect (cell_area, &pix_rect, &draw_rect))
         return;
-
-    pixbuf = priv->pixbuf;
-    if (!pixbuf)
-        return;
-
-    g_object_ref (pixbuf);
+    //g_debug ("%s %s %u %u\n", G_STRFUNC, priv->file->uri, G_OBJECT (priv->file)->ref_count, G_OBJECT (priv->pixbuf)->ref_count);
 
     /* drop state */
     if (priv->file == priv->drop_file) {
@@ -843,7 +843,6 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
     context = gtk_widget_get_style_context (widget);
     gtk_style_context_save (context);
-
     state = GTK_STATE_FLAG_NORMAL;
 
     if (!gtk_widget_get_sensitive (widget) ||
@@ -882,7 +881,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         g_object_unref (pixbuf);
         pixbuf = stated;
     }*/
-
+    
     gtk_render_icon (context, cr, pixbuf,
                      pix_rect.x, pix_rect.y);
 

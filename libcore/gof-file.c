@@ -98,7 +98,8 @@ get_icon_user_special_dirs(char *path)
     return (icon);
 }
 
-GOFFile    *gof_file_new (GFile *location, GFile *dir)
+GOFFile *
+gof_file_new (GFile *location, GFile *dir)
 {
     GOFFile *file;
 
@@ -132,7 +133,8 @@ void    gof_file_changed (GOFFile *file)
 }
 #endif
 
-void    gof_file_icon_changed (GOFFile *file)
+void
+gof_file_icon_changed (GOFFile *file)
 {
     GOFDirectoryAsync *dir;
 
@@ -158,7 +160,6 @@ gof_file_clear_info (GOFFile *file)
     _g_free0(file->format_size);
     _g_free0(file->formated_modified);
     _g_object_unref0 (file->icon);
-    _g_object_unref0 (file->pix);
     _g_free0 (file->custom_display_name);
     _g_free0 (file->custom_icon_name);
 
@@ -479,7 +480,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     } else {
         icon = marlin_icon_info_get_generic_icon (size);
     }
-        
+     
     return icon;
 }
 
@@ -512,10 +513,14 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
             nicon = marlin_icon_info_lookup_from_name (file->custom_icon_name, size);
     } else {
         nicon = gof_file_get_icon (file, size, flags);
+        //nicon = gof_file_get_icon (file, size, 0);
     }
 
     pix = ensure_pixbuf_from_nicon (file, size, force_size, nicon);
     _g_object_unref0 (nicon);
+    //pix = gdk_pixbuf_new_from_file_at_size ("/usr/share/icons/hicolor/scalable/apps/marlin.svg", size, size, NULL);
+    /*if (pix && nicon)
+        g_message ("%s ref count %u %u", G_STRFUNC, G_OBJECT (nicon)->ref_count, G_OBJECT (pix)->ref_count);*/
 
     return pix;
 }
@@ -743,7 +748,9 @@ static void gof_file_finalize (GObject* obj) {
     GOFFile *file;
 
     file = GOF_FILE (obj);
-    g_warning ("%s %s", G_STRFUNC, file->basename);
+    //g_warning ("%s %s", G_STRFUNC, file->basename);
+    if (file->pix)
+        g_warning ("%s %s %u\n", G_STRFUNC, file->uri, G_OBJECT (file->pix)->ref_count);
 
     _g_object_unref0 (file->info);
     _g_object_unref0 (file->location);
@@ -1248,7 +1255,8 @@ GOFFile* gof_file_cache_lookup (GFile *location)
     return _g_object_ref0 (cached_file);
 }
 
-GOFFile* gof_file_get (GFile *location)
+GOFFile* 
+gof_file_get (GFile *location)
 {
     GFile *parent;
     GOFFile *file = NULL;

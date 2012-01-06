@@ -250,7 +250,8 @@ fm_directory_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAs
 static void
 file_loaded_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
-    g_debug ("%s %s\n", G_STRFUNC, file->uri);
+    //g_debug ("%s %s\n", G_STRFUNC, file->uri);
+    g_debug ("%s %s %u\n", G_STRFUNC, file->uri, G_OBJECT (file)->ref_count);
     g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
 }
 
@@ -293,6 +294,7 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
         gtk_widget_queue_draw (GTK_WIDGET (view));
 
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
+    marlin_icon_info_infos_caches ();
 }
 
 static void
@@ -2390,6 +2392,7 @@ fm_directory_view_request_thumbnails (FMDirectoryView *view)
             if (file->flags == 0) {
                 files = g_list_prepend (files, g_object_ref (file));
             }
+            g_object_unref (file);
 
             /* check if we've reached the end of the visible range */
             path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), &iter);
