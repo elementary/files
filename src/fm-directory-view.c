@@ -379,7 +379,6 @@ void
 fm_directory_view_add_subdirectory (FMDirectoryView *view, GOFDirectoryAsync *directory)
 {
     fm_directory_view_connect_directory_handlers (view, directory);
-
     gof_directory_async_load (directory);
 }
 
@@ -580,7 +579,8 @@ fm_directory_view_finalize (GObject *object)
 
     g_free (view->details->previewer);
     
-    _g_object_unref0 (view->details->newly_folder_added);
+    if (view->details->newly_folder_added)
+        g_object_unref (view->details->newly_folder_added);
 
     /*if (slot != NULL)
       g_object_unref (slot);*/
@@ -1869,7 +1869,8 @@ update_menus_selection (FMDirectoryView *view)
     GtkWidget *menuitem;
 
     action = gtk_action_group_get_action (view->details->dir_action_group, "Open");
-    _g_object_unref0 (view->details->default_app);
+    if (view->details->default_app)
+        g_object_unref (view->details->default_app);
     view->details->default_app = marlin_mime_get_default_application_for_files (selection);
     if (view->details->default_app != NULL && !gof_file_is_executable (file)) {
         char *escaped_app;
@@ -2905,7 +2906,8 @@ fm_directory_view_notify_item_hovered (FMDirectoryView *view, GtkTreePath *path)
         file = fm_list_model_file_for_path (view->model, path);
      
     g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "item_hovered", file);
-    _g_object_unref0 (file);
+    if (file != NULL)
+        g_object_unref (file);
 }
 
 void
@@ -3163,7 +3165,7 @@ static gboolean
 rename_file_callback (FMDirectoryView *view) 
 {
     rename_file (view, view->details->newly_folder_added);
-    _g_object_unref0 (view->details->newly_folder_added);
+    g_object_unref (view->details->newly_folder_added);
 
     return FALSE;
 }
@@ -3174,7 +3176,8 @@ new_folder_done (GFile *new_folder, gpointer data)
     g_assert (FM_IS_DIRECTORY_VIEW (data));
 
     FMDirectoryView *view = FM_DIRECTORY_VIEW (data);
-    _g_object_unref0 (view->details->newly_folder_added);
+    if (view->details->newly_folder_added)
+        g_object_unref (view->details->newly_folder_added);
     view->details->newly_folder_added = gof_file_get (new_folder);
 
     /*g_signal_connect_data (view->details->slot->directory, 

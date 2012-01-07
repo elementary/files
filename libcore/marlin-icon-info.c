@@ -92,7 +92,7 @@ marlin_icon_info_finalize (GObject *object)
         /*g_object_remove_toggle_ref (G_OBJECT (icon->pixbuf),
                                     pixbuf_toggle_notify,
                                     icon);*/
-        g_object_unref (icon->pixbuf);
+        g_clear_object (&icon->pixbuf);
     }
     
     //g_free (icon->attach_points);
@@ -379,7 +379,6 @@ marlin_icon_info_lookup (GIcon *icon, int size)
                                        NULL, NULL, NULL);
         if (stream) {
             //g_message ("%s stream %s\n", G_STRFUNC, g_icon_to_string (icon));
-            //g_critical ("%s stream %s\n", G_STRFUNC, g_icon_to_string (icon));
 
             /* sounds like from_stream_at scale is leaking ? */
             pixbuf = gdk_pixbuf_new_from_stream_at_scale (stream,
@@ -467,6 +466,8 @@ marlin_icon_info_lookup (GIcon *icon, int size)
 
         /*if (pixbuf != NULL)
             g_object_unref (pixbuf);*/
+        /* FIXME remove the extra ref and cache the icon_info */
+        g_object_ref (icon_info);
 
         return icon_info;
     }

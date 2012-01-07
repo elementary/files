@@ -249,7 +249,7 @@ namespace Marlin.View {
                 icon_changed_callback = 0;
             }
 
-            if (selection != null && selection.data != null) {
+            if (selection != null && selection.data != null && selection.data is GOF.File) {
                 last_gof = selection.data as GOF.File;
                 last_selection = selection;
             } else {
@@ -294,7 +294,7 @@ namespace Marlin.View {
 
         private void real_update () {
             //warning ("ctx pane update");
-            var file_info = last_gof.info;
+            return_if_fail (last_gof != null && last_gof.info != null);
 
             /* don't update icon if we are in column view as the preview pane is 
                built/destroyed foreach selection changed */
@@ -306,20 +306,20 @@ namespace Marlin.View {
             });
 
             info.clear();
-            var raw_type = file_info.get_file_type();
+            var raw_type = last_gof.info.get_file_type();
 
             /* TODO hide infos for ListView mode: we don't want the COLUMNS infos to show if
                we are in listview: size, type, modified */
             info.add(new Pair<string, string>(_("Name") + (": "), last_gof.info.get_name ()));
             info.add(new Pair<string, string>(_("Type") + (": "), last_gof.formated_type));
 
-            if (file_info.get_is_symlink())
-                info.add(new Pair<string, string>(_("Target") + (": "), file_info.get_symlink_target ()));
+            if (last_gof.info.get_is_symlink())
+                info.add(new Pair<string, string>(_("Target") + (": "), last_gof.info.get_symlink_target ()));
             if(raw_type != FileType.DIRECTORY)
                 info.add(new Pair<string, string>(_("Size") + (": "), last_gof.format_size));
             /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
             info.add(new Pair<string, string>(_("Modified") + (": "), last_gof.formated_modified));
-            info.add(new Pair<string, string>(_("Owner") + (": "), file_info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
+            info.add(new Pair<string, string>(_("Owner") + (": "), last_gof.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
 
             label.label = last_gof.info.get_name ();
 

@@ -388,16 +388,18 @@ marlin_icon_renderer_set_property (GObject      *object,
         priv->drop_file = (gpointer) g_value_dup_object (value);
         break;
     case PROP_FILE:
-        if (G_LIKELY (priv->file != NULL)) {
+        if (G_LIKELY (priv->file)) {
             g_object_unref (G_OBJECT (priv->file));
         }
         if (priv->pixbuf) {
             g_object_unref (priv->pixbuf);
         }
-        priv->file = (gpointer) g_value_dup_object (value);
+        if (value)
+            priv->file = (gpointer) g_value_dup_object (value);
+        //g_warning ("%s file %s %u", G_STRFUNC, priv->file->uri, G_OBJECT (priv->file)->ref_count);
         if (G_LIKELY (priv->file != NULL)) {
             gof_file_update_icon (priv->file, priv->size);
-            priv->pixbuf = g_object_ref (priv->file->pix);
+            priv->pixbuf = _g_object_ref0 (priv->file->pix);
         } 
         break;
     case PROP_SIZE:
@@ -796,8 +798,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GtkStateFlags state;
     MarlinIconInfo *nicon;
 
-    pixbuf = _g_object_ref0 (priv->pixbuf);
-    g_return_if_fail (pixbuf);
+    g_return_if_fail (priv->file && priv->pixbuf);
 
     marlin_icon_renderer_get_size (cell, widget, (GdkRectangle *) cell_area,
                                    &pix_rect.x, 
@@ -813,14 +814,18 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
     if (!gdk_rectangle_intersect (cell_area, &pix_rect, &draw_rect))
         return;
+    
+    pixbuf = _g_object_ref0 (priv->pixbuf);
+
     //g_debug ("%s %s %u %u\n", G_STRFUNC, priv->file->uri, G_OBJECT (priv->file)->ref_count, G_OBJECT (priv->pixbuf)->ref_count);
+    //g_warning ("%s file %s %u", G_STRFUNC, priv->file->uri, G_OBJECT (priv->file)->ref_count);
 
     /* drop state */
     if (priv->file == priv->drop_file) {
         flags |= GTK_CELL_RENDERER_PRELIT;
         nicon = marlin_icon_info_lookup_from_name ("folder-drag-accept", priv->size);
         temp = marlin_icon_info_get_pixbuf_nodefault (nicon);
-        _g_object_unref0 (nicon);
+        g_object_unref (nicon);
         g_object_unref (pixbuf);
         pixbuf = temp;
     }
@@ -903,8 +908,8 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         gdk_cairo_set_source_pixbuf (cr, pix, pix_rect.x, pix_rect.y);
         cairo_paint (cr);
         
-        _g_object_unref0 (nicon);
-        _g_object_unref0 (pix);
+        g_object_unref (nicon);
+        g_object_unref (pix);
     }
 
     /* check if we should render emblems as well */
@@ -955,8 +960,8 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             position ++;
 
             emblems = g_list_next(emblems);
-            _g_object_unref0 (nicon);
-            _g_object_unref0 (pix);
+            g_object_unref (nicon);
+            g_object_unref (pix);
         }
     }
 }

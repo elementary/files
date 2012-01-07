@@ -154,7 +154,8 @@ gof_file_clear_info (GOFFile *file)
 {
     g_return_if_fail (file != NULL);
 
-    _g_object_unref0 (file->target_location);
+    if (file->target_location)
+        g_object_unref (file->target_location);
     _g_free0(file->utf8_collation_key);
     _g_free0(file->formated_type);
     _g_free0(file->format_size);
@@ -494,7 +495,8 @@ static GdkPixbuf
     if (pix == NULL) {
         temp_nicon = gof_file_get_icon (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
         pix = marlin_icon_info_get_pixbuf_force_size (temp_nicon, size, force_size);
-        _g_object_unref0 (temp_nicon);
+        if (temp_nicon)
+            g_object_unref (temp_nicon);
     }
 
     return pix;
@@ -517,7 +519,8 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
     }
 
     pix = ensure_pixbuf_from_nicon (file, size, force_size, nicon);
-    _g_object_unref0 (nicon);
+    if (nicon)
+        g_object_unref (nicon);
     //pix = gdk_pixbuf_new_from_file_at_size ("/usr/share/icons/hicolor/scalable/apps/marlin.svg", size, size, NULL);
     /*if (pix && nicon)
         g_message ("%s ref count %u %u", G_STRFUNC, G_OBJECT (nicon)->ref_count, G_OBJECT (pix)->ref_count);*/
@@ -531,7 +534,9 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
     /*g_message ("%s %s %d", G_STRFUNC, file->uri, file->flags);*/
 
     /* destroy pixbuff if already present */
-    _g_object_unref0 (file->pix);
+    if (file->pix)
+        g_object_unref (file->pix);
+    //g_clear_object (&file->pix);
     /* make sure we always got a non null pixbuf */
     file->pix = gof_file_get_icon_pixbuf (file, size, FALSE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     file->pix_size = size;
@@ -636,7 +641,7 @@ gof_file_query_update (GOFFile *file)
     GFileInfo *info = NULL;
         
     if ((info = gof_file_query_info (file)) != NULL) {
-        _g_object_unref0 (file->info);
+        g_clear_object (&file->info);
         file->info = info;
         gof_file_update (file);
     }
@@ -748,13 +753,16 @@ static void gof_file_finalize (GObject* obj) {
     GOFFile *file;
 
     file = GOF_FILE (obj);
-    //g_warning ("%s %s", G_STRFUNC, file->basename);
     if (file->pix)
         g_warning ("%s %s %u\n", G_STRFUNC, file->uri, G_OBJECT (file->pix)->ref_count);
+    else
+        g_warning ("%s %s", G_STRFUNC, file->basename);
 
-    _g_object_unref0 (file->info);
-    _g_object_unref0 (file->location);
-    _g_object_unref0 (file->directory);
+    g_clear_object (&file->info);
+    if (file->location)
+        g_object_unref (file->location);
+    if (file->directory)
+        g_object_unref (file->directory);
     _g_free0 (file->uri);
     _g_free0(file->basename);
     _g_free0(file->utf8_collation_key);
@@ -762,12 +770,15 @@ static void gof_file_finalize (GObject* obj) {
     _g_free0(file->format_size);
     _g_free0(file->formated_modified);
     _g_object_unref0 (file->icon);
-    _g_object_unref0 (file->pix);
+    if (file->pix)
+        g_object_unref (file->pix);
+    //g_clear_object (&file->pix);
 
     _g_free0 (file->custom_display_name);
     _g_free0 (file->custom_icon_name);
 
-    _g_object_unref0 (file->target_location);
+    if (file->target_location)
+        g_object_unref (file->target_location);
     /* TODO remove the target_gof */
     _g_free0 (file->thumbnail_path);
 
@@ -1293,7 +1304,8 @@ gof_file_get (GFile *location)
                     g_hash_table_size (file_cache));*/
     }
 
-    _g_object_unref0 (parent);
+    if (parent)
+        g_object_unref (parent);
 
     return (file);
 }
@@ -1852,11 +1864,13 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
     file->basename = g_file_get_basename (file->location);
     /* TODO update color on rename ? */
     //file->color = 0;
-    file->flags = 0;
     file->pix_size = -1;
     _g_free0 (file->thumbnail_path);
+    file->flags = 0;
     
     gof_file_query_update (file);
+
+    g_object_unref (dir);
 }
 
 /* TODO move this mini job to marlin-file-operations? */
@@ -1943,6 +1957,7 @@ rename_callback (GObject *source_object,
     /*else
         marlin_dialogs_show_error (NULL, error, "Failed to rename %s", op->file->name);*/
 
+    //g_warning ("%s %u", G_STRFUNC, G_OBJECT (op->file)->ref_count);
     gof_file_operation_complete (op, NULL, error);
     if (new_file != NULL) {
         g_object_unref (new_file);
@@ -1964,6 +1979,7 @@ gof_file_rename (GOFFile *file,
     //gboolean success, name_changed;
     GError *error;
 
+    //g_warning ("%s %u", G_STRFUNC, G_OBJECT (file)->ref_count);
     g_return_if_fail (GOF_IS_FILE (file));
     g_return_if_fail (new_name != NULL);
     g_return_if_fail (callback != NULL);

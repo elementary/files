@@ -72,7 +72,8 @@ public class GOF.Directory.Async : Object
         cancellable = new Cancellable ();
         
         //query_info_async (file, file_info_available);
-        file.query_update ();
+        if (file.info == null)
+            file.query_update ();
         file.info_available ();
 
         if (directory_cache != null)

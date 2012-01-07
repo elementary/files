@@ -432,10 +432,10 @@ update_places (MarlinPlacesSidebar *sidebar)
                     compare_for_selection (sidebar,
                                            location, mount_uri, last_uri,
                                            &last_iter, &select_path);
-                    _g_object_unref0 (info);
-                    _g_object_unref0 (root);
-                    _g_object_unref0 (mount);
-                    _g_object_unref0 (icon);
+                    g_object_unref (info);
+                    g_object_unref (root);
+                    g_object_unref (mount);
+                    g_object_unref (icon);
                     g_free (tooltip);
                     g_free (name);
                     g_free (mount_uri);
@@ -460,7 +460,7 @@ update_places (MarlinPlacesSidebar *sidebar)
                     g_free (name);
                     g_free (tooltip);
                 }
-                _g_object_unref0 (volume);
+                g_object_unref (volume);
             }
             g_list_free (volumes);
         }
@@ -486,7 +486,7 @@ update_places (MarlinPlacesSidebar *sidebar)
                 g_free (name);
             }
         }
-        _g_object_unref0 (drive);
+        g_object_unref (drive);
     }
     g_list_free (drives);
 
@@ -571,8 +571,8 @@ update_places (MarlinPlacesSidebar *sidebar)
         compare_for_selection (sidebar,
                                location, mount_uri, last_uri,
                                &last_iter, &select_path);
-        _g_object_unref0 (root);
-        _g_object_unref0 (mount);
+        g_object_unref (root);
+        g_object_unref (mount);
         g_object_unref (icon);
         g_free (name);
         g_free (mount_uri);
@@ -607,8 +607,8 @@ update_places (MarlinPlacesSidebar *sidebar)
         compare_for_selection (sidebar,
                                location, mount_uri, last_uri,
                                &last_iter, &select_path);
-        _g_object_unref0 (root);
-        _g_object_unref0 (mount);
+        g_object_unref (root);
+        g_object_unref (mount);
         g_object_unref (icon);
         g_free (name);
         g_free (mount_uri);

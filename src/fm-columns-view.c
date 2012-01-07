@@ -188,8 +188,7 @@ fm_columns_view_rename_callback (GOFFile *file,
 			 * We won't get a change event for the rename, so otherwise
 			 * it would stay around forever.
 			 */
-			gof_file_unref (view->details->renaming_file);
-			view->details->renaming_file = NULL;
+            g_object_unref (view->details->renaming_file);
 		}
 	}
 	
