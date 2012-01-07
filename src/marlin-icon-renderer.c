@@ -45,8 +45,6 @@ static void marlin_icon_renderer_set_property  (GObject                    *obje
                                                 const GValue               *value,
                                                 GParamSpec                 *pspec);
 static void marlin_icon_renderer_finalize   (GObject                    *object);
-static void marlin_icon_renderer_create_stock_pixbuf (MarlinIconRenderer *cellpixbuf,
-                                                      GtkWidget             *widget);
 static void marlin_icon_renderer_get_size   (GtkCellRenderer            *cell,
                                              GtkWidget                  *widget,
                                              const GdkRectangle         *rectangle,
@@ -68,14 +66,9 @@ enum {
     PROP_DROP_FILE,
     PROP_FILE,
     PROP_SIZE,
-    PROP_STOCK_ID,
-    PROP_STOCK_SIZE,
-    PROP_STOCK_DETAIL,
     PROP_EMBLEMS,
     PROP_FOLLOW_STATE,
     PROP_SELECTION_HELPERS,
-    PROP_ICON_NAME,
-    PROP_GICON
 };
 
 
@@ -86,17 +79,9 @@ struct _MarlinIconRendererPrivate
     GOFFile   *drop_file;
     gint      size;
 
-    GIcon *gicon;
-
-    GtkIconSize stock_size;
-
     gboolean emblems;
     gboolean follow_state;
     gboolean selection_helpers;
-
-    gchar *stock_id;
-    gchar *stock_detail;
-    gchar *icon_name;
 
     MarlinClipboardManager *clipboard;
 };
@@ -118,7 +103,6 @@ marlin_icon_renderer_init (MarlinIconRenderer *cellpixbuf)
                                                     MarlinIconRendererPrivate);
     priv = cellpixbuf->priv;
 
-    priv->stock_size = GTK_ICON_SIZE_MENU;
     priv->clipboard = marlin_clipboard_manager_new_get_for_display (gdk_display_get_default ());
     priv->emblems = TRUE;
 }
@@ -164,49 +148,6 @@ marlin_icon_renderer_class_init (MarlinIconRendererClass *class)
                                                           GOF_TYPE_FILE,
                                                           EXO_PARAM_READWRITE));
 
-    g_object_class_install_property (object_class,
-                                     PROP_STOCK_ID,
-                                     g_param_spec_string ("stock-id",
-                                                          "Stock ID",
-                                                          "The stock ID of the stock icon to render",
-                                                          NULL,
-                                                          EXO_PARAM_READWRITE));
-
-    g_object_class_install_property (object_class,
-                                     PROP_STOCK_SIZE,
-                                     g_param_spec_uint ("stock-size",
-                                                        "Size",
-                                                        "The GtkIconSize value that specifies the size of the rendered icon",
-                                                        0,
-                                                        G_MAXUINT,
-                                                        GTK_ICON_SIZE_MENU,
-                                                        EXO_PARAM_READWRITE));
-
-    g_object_class_install_property (object_class,
-                                     PROP_STOCK_DETAIL,
-                                     g_param_spec_string ("stock-detail",
-                                                          "Detail",
-                                                          "Render detail to pass to the theme engine",
-                                                          NULL,
-                                                          EXO_PARAM_READWRITE));
-
-
-    /**
-     * MarlinIconRenderer:icon-name:
-     *
-     * The name of the themed icon to display.
-     * This property only has an effect if not overridden by "stock_id" 
-     * or "pixbuf" properties.
-     *
-     * Since: 2.8 
-     */
-    g_object_class_install_property (object_class,
-                                     PROP_ICON_NAME,
-                                     g_param_spec_string ("icon-name",
-                                                          "Icon Name",
-                                                          "The name of the icon from the icon theme",
-                                                          NULL,
-                                                          EXO_PARAM_READWRITE));
 
     /**
      * MarlinIconRenderer:emblems:
@@ -245,23 +186,6 @@ marlin_icon_renderer_class_init (MarlinIconRendererClass *class)
                                                            "Whether the selection helpers +/- aree rendered",
                                                            FALSE,
                                                            EXO_PARAM_READWRITE));
-    /**
-     * MarlinIconRenderer:gicon:
-     *
-     * The GIcon representing the icon to display.
-     * If the icon theme is changed, the image will be updated
-     * automatically.
-     *
-     * Since: 2.14
-     */
-    g_object_class_install_property (object_class,
-                                     PROP_GICON,
-                                     g_param_spec_object ("gicon",
-                                                          "Icon",
-                                                          "The GIcon being displayed",
-                                                          G_TYPE_ICON,
-                                                          EXO_PARAM_READWRITE));
-
 
 
     g_type_class_add_private (object_class, sizeof (MarlinIconRendererPrivate));
@@ -279,13 +203,6 @@ marlin_icon_renderer_finalize (GObject *object)
         g_object_unref (priv->file);
     if (priv->drop_file)
         g_object_unref (priv->drop_file);
-
-    g_free (priv->stock_id);
-    g_free (priv->stock_detail);
-    g_free (priv->icon_name);
-
-    if (priv->gicon)
-        g_object_unref (priv->gicon);
 
     g_object_unref (priv->clipboard);
 
@@ -315,15 +232,6 @@ marlin_icon_renderer_get_property (GObject        *object,
     case PROP_SIZE:
         g_value_set_enum (value, priv->size);
         break;
-    case PROP_STOCK_ID:
-        g_value_set_string (value, priv->stock_id);
-        break;
-    case PROP_STOCK_SIZE:
-        g_value_set_uint (value, priv->stock_size);
-        break;
-    case PROP_STOCK_DETAIL:
-        g_value_set_string (value, priv->stock_detail);
-        break;
     case PROP_EMBLEMS:
         g_value_set_boolean (value, priv->emblems);
         break;
@@ -332,12 +240,6 @@ marlin_icon_renderer_get_property (GObject        *object,
         break;
     case PROP_SELECTION_HELPERS:
         g_value_set_boolean (value, priv->selection_helpers);
-        break;
-    case PROP_ICON_NAME:
-        g_value_set_string (value, priv->icon_name);
-        break;
-    case PROP_GICON:
-        g_value_set_object (value, priv->gicon);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, param_id, pspec);
@@ -360,27 +262,6 @@ marlin_icon_renderer_set_property (GObject      *object,
         if (priv->pixbuf)
             g_object_unref (priv->pixbuf);
         priv->pixbuf = (GdkPixbuf*) g_value_dup_object (value);
-        if (priv->pixbuf)
-        {
-            if (priv->stock_id)
-            {
-                g_free (priv->stock_id);
-                priv->stock_id = NULL;
-                g_object_notify (object, "stock-id");
-            }
-            if (priv->icon_name)
-            {
-                g_free (priv->icon_name);
-                priv->icon_name = NULL;
-                g_object_notify (object, "icon-name");
-            }
-            if (priv->gicon)
-            {
-                g_object_unref (priv->gicon);
-                priv->gicon = NULL;
-                g_object_notify (object, "gicon");
-            }
-        }
         break;
     case PROP_DROP_FILE:
         if (G_LIKELY (priv->drop_file != NULL))
@@ -390,9 +271,11 @@ marlin_icon_renderer_set_property (GObject      *object,
     case PROP_FILE:
         if (G_LIKELY (priv->file)) {
             g_object_unref (G_OBJECT (priv->file));
+            priv->file = NULL;
         }
         if (priv->pixbuf) {
             g_object_unref (priv->pixbuf);
+            priv->pixbuf = NULL;
         }
         if (value)
             priv->file = (gpointer) g_value_dup_object (value);
@@ -400,85 +283,11 @@ marlin_icon_renderer_set_property (GObject      *object,
         if (G_LIKELY (priv->file != NULL)) {
             gof_file_update_icon (priv->file, priv->size);
             priv->pixbuf = _g_object_ref0 (priv->file->pix);
+            //g_object_notify (object, "pixbuf");
         } 
         break;
     case PROP_SIZE:
         priv->size = g_value_get_enum (value);
-        break;
-    case PROP_STOCK_ID:
-        if (priv->stock_id)
-        {
-            if (priv->pixbuf)
-            {
-                g_object_unref (priv->pixbuf);
-                priv->pixbuf = NULL;
-                g_object_notify (object, "pixbuf");
-            }
-            g_free (priv->stock_id);
-        }
-        priv->stock_id = g_value_dup_string (value);
-        if (priv->stock_id)
-        {
-            if (priv->pixbuf)
-            {
-                g_object_unref (priv->pixbuf);
-                priv->pixbuf = NULL;
-                g_object_notify (object, "pixbuf");
-            }
-            if (priv->icon_name)
-            {
-                g_free (priv->icon_name);
-                priv->icon_name = NULL;
-                g_object_notify (object, "icon-name");
-            }
-            if (priv->gicon)
-            {
-                g_object_unref (priv->gicon);
-                priv->gicon = NULL;
-                g_object_notify (object, "gicon");
-            }
-        }
-        break;
-    case PROP_STOCK_SIZE:
-        priv->stock_size = g_value_get_uint (value);
-        break;
-    case PROP_STOCK_DETAIL:
-        g_free (priv->stock_detail);
-        priv->stock_detail = g_value_dup_string (value);
-        break;
-    case PROP_ICON_NAME:
-        if (priv->icon_name)
-        {
-            if (priv->pixbuf)
-            {
-                g_object_unref (priv->pixbuf);
-                priv->pixbuf = NULL;
-                g_object_notify (object, "pixbuf");
-            }
-            g_free (priv->icon_name);
-        }
-        priv->icon_name = g_value_dup_string (value);
-        if (priv->icon_name)
-        {
-            if (priv->pixbuf)
-            {
-                g_object_unref (priv->pixbuf);
-                priv->pixbuf = NULL;
-                g_object_notify (object, "pixbuf");
-            }
-            if (priv->stock_id)
-            {
-                g_free (priv->stock_id);
-                priv->stock_id = NULL;
-                g_object_notify (object, "stock-id");
-            }
-            if (priv->gicon)
-            {
-                g_object_unref (priv->gicon);
-                priv->gicon = NULL;
-                g_object_notify (object, "gicon");
-            }
-        }
         break;
     case PROP_EMBLEMS:
         priv->emblems = g_value_get_boolean (value);
@@ -488,40 +297,6 @@ marlin_icon_renderer_set_property (GObject      *object,
         break;
     case PROP_SELECTION_HELPERS:
         priv->selection_helpers = g_value_get_boolean (value);
-        break;
-    case PROP_GICON:
-        if (priv->gicon)
-        {
-            if (priv->pixbuf)
-            {
-                g_object_unref (priv->pixbuf);
-                priv->pixbuf = NULL;
-                g_object_notify (object, "pixbuf");
-            }
-            g_object_unref (priv->gicon);
-        }
-        priv->gicon = (GIcon *) g_value_dup_object (value);
-        if (priv->gicon)
-        {
-            if (priv->pixbuf)
-            {
-                g_object_unref (priv->pixbuf);
-                priv->pixbuf = NULL;
-                g_object_notify (object, "pixbuf");
-            }
-            if (priv->stock_id)
-            {
-                g_free (priv->stock_id);
-                priv->stock_id = NULL;
-                g_object_notify (object, "stock-id");
-            }
-            if (priv->icon_name)
-            {
-                g_free (priv->icon_name);
-                priv->icon_name = NULL;
-                g_object_notify (object, "icon-name");
-            }
-        }
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, param_id, pspec);
@@ -549,144 +324,6 @@ marlin_icon_renderer_new (void)
 }
 
 static void
-marlin_icon_renderer_create_stock_pixbuf (MarlinIconRenderer *cellpixbuf,
-                                          GtkWidget             *widget)
-{
-    MarlinIconRendererPrivate *priv = cellpixbuf->priv;
-
-    if (priv->pixbuf)
-        g_object_unref (priv->pixbuf);
-
-    priv->pixbuf = gtk_widget_render_icon_pixbuf (widget,
-                                                  priv->stock_id,
-                                                  priv->stock_size);
-
-    g_object_notify (G_OBJECT (cellpixbuf), "pixbuf");
-}
-
-static void 
-marlin_icon_renderer_create_themed_pixbuf (MarlinIconRenderer *cellpixbuf,
-                                           GtkWidget             *widget)
-{
-    MarlinIconRendererPrivate *priv = cellpixbuf->priv;
-    GdkScreen *screen;
-    GtkIconTheme *icon_theme;
-    GtkSettings *settings;
-    gint width, height;
-    GtkIconInfo *info;
-
-    if (priv->pixbuf)
-    {
-        g_object_unref (priv->pixbuf);
-        priv->pixbuf = NULL;
-    }
-
-    screen = gtk_widget_get_screen (GTK_WIDGET (widget));
-    icon_theme = gtk_icon_theme_get_for_screen (screen);
-    settings = gtk_settings_get_for_screen (screen);
-
-    if (!gtk_icon_size_lookup_for_settings (settings,
-                                            priv->stock_size,
-                                            &width, &height))
-    {
-        g_warning ("Invalid icon size %u\n", priv->stock_size);
-        width = height = 24;
-    }
-
-    if (priv->icon_name)
-        info = gtk_icon_theme_lookup_icon (icon_theme,
-                                           priv->icon_name,
-                                           MIN (width, height),
-                                           GTK_ICON_LOOKUP_USE_BUILTIN);
-    else if (priv->gicon)
-        info = gtk_icon_theme_lookup_by_gicon (icon_theme,
-                                               priv->gicon,
-                                               MIN (width, height),
-                                               GTK_ICON_LOOKUP_USE_BUILTIN);
-    else
-        info = NULL;
-
-    if (info)
-    {
-        GtkStyleContext *context;
-
-        context = gtk_widget_get_style_context (GTK_WIDGET (widget));
-        priv->pixbuf = gtk_icon_info_load_symbolic_for_context (info,
-                                                                context,
-                                                                NULL,
-                                                                NULL);
-        gtk_icon_info_free (info);
-    }
-
-    g_object_notify (G_OBJECT (cellpixbuf), "pixbuf");
-}
-
-static GdkPixbuf *
-create_symbolic_pixbuf (MarlinIconRenderer *cellpixbuf,
-                        GtkWidget             *widget,
-                        GtkStateFlags          state)
-{
-    MarlinIconRendererPrivate *priv = cellpixbuf->priv;
-    GdkScreen *screen;
-    GtkIconTheme *icon_theme;
-    GtkSettings *settings;
-    gint width, height;
-    GtkIconInfo *info;
-    GdkPixbuf *pixbuf;
-    gboolean is_symbolic;
-
-    screen = gtk_widget_get_screen (GTK_WIDGET (widget));
-    icon_theme = gtk_icon_theme_get_for_screen (screen);
-    settings = gtk_settings_get_for_screen (screen);
-
-    if (!gtk_icon_size_lookup_for_settings (settings,
-                                            priv->stock_size,
-                                            &width, &height))
-    {
-        g_warning ("Invalid icon size %u\n", priv->stock_size);
-        width = height = 24;
-    }
-
-
-    if (priv->icon_name)
-        info = gtk_icon_theme_lookup_icon (icon_theme,
-                                           priv->icon_name,
-                                           MIN (width, height),
-                                           GTK_ICON_LOOKUP_USE_BUILTIN);
-    else if (priv->gicon)
-        info = gtk_icon_theme_lookup_by_gicon (icon_theme,
-                                               priv->gicon,
-                                               MIN (width, height),
-                                               GTK_ICON_LOOKUP_USE_BUILTIN);
-    else
-        return NULL;
-
-    if (info)
-    {
-        GtkStyleContext *context;
-
-        context = gtk_widget_get_style_context (GTK_WIDGET (widget));
-
-        gtk_style_context_save (context);
-        gtk_style_context_set_state (context, state);
-        pixbuf = gtk_icon_info_load_symbolic_for_context (info,
-                                                          context,
-                                                          &is_symbolic,
-                                                          NULL);
-
-        gtk_style_context_restore (context);
-        gtk_icon_info_free (info);
-
-        if (!is_symbolic)
-            g_clear_object (&pixbuf);
-
-        return pixbuf;
-    }
-
-    return NULL;
-}
-
-static void
 marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
                                GtkWidget          *widget,
                                const GdkRectangle *cell_area,
@@ -703,13 +340,7 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
     gint calc_height;
     gint xpad, ypad;
 
-    if (!priv->pixbuf)
-    {
-        if (priv->stock_id)
-            marlin_icon_renderer_create_stock_pixbuf (cellpixbuf, widget);
-        else if (priv->icon_name || priv->gicon)
-            marlin_icon_renderer_create_themed_pixbuf (cellpixbuf, widget);
-    }
+    g_return_if_fail (priv->pixbuf);
 
     if (priv->pixbuf)
     {
@@ -753,30 +384,6 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
         *height = calc_height;
 }
 
-static GdkPixbuf *
-transform_pixbuf_state (GdkPixbuf *pixbuf,
-                        GtkStyleContext *context)
-{
-    GtkIconSource *source;
-    GdkPixbuf *retval;
-
-    source = gtk_icon_source_new ();
-    gtk_icon_source_set_pixbuf (source, pixbuf);
-    /* The size here is arbitrary; since size isn't
-     * wildcarded in the source, it isn't supposed to be
-     * scaled by the engine function
-     */
-    gtk_icon_source_set_size (source, GTK_ICON_SIZE_SMALL_TOOLBAR);
-    gtk_icon_source_set_size_wildcarded (source, FALSE);
-
-    retval = gtk_render_icon_pixbuf (context, source,
-                                     (GtkIconSize) -1);
-
-    gtk_icon_source_free (source);
-
-    return retval;
-}
-
 static void
 marlin_icon_renderer_render (GtkCellRenderer      *cell,
                              cairo_t              *cr,
@@ -798,7 +405,9 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GtkStateFlags state;
     MarlinIconInfo *nicon;
 
-    g_return_if_fail (priv->file && priv->pixbuf);
+    //g_return_if_fail (priv->file && priv->pixbuf);
+    if (!(priv->file && priv->pixbuf))
+        return;
 
     marlin_icon_renderer_get_size (cell, widget, (GdkRectangle *) cell_area,
                                    &pix_rect.x, 

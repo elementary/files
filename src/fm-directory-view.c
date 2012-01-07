@@ -250,8 +250,9 @@ fm_directory_view_add_file (FMDirectoryView *view, GOFFile *file, GOFDirectoryAs
 static void
 file_loaded_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryView *view)
 {
+    if (file)
+        g_debug ("%s %s %u\n", G_STRFUNC, file->uri, G_OBJECT (file)->ref_count);
     //g_debug ("%s %s\n", G_STRFUNC, file->uri);
-    g_debug ("%s %s %u\n", G_STRFUNC, file->uri, G_OBJECT (file)->ref_count);
     g_signal_emit (view, signals[ADD_FILE], 0, file, directory);
 }
 

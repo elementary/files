@@ -703,7 +703,7 @@ void gof_file_remove_from_caches (GOFFile *file)
     /* remove from directory_cache */
     GOFDirectoryAsync *dir = NULL;
     //g_warning ("zz0 %s", g_file_get_uri (file->location));
-    if (file->directory != NULL && G_OBJECT (file->directory)->ref_count > 0) {
+    if (file->directory && G_OBJECT (file->directory)->ref_count > 0) {
         dir = gof_directory_async_cache_lookup (file->directory);
         //g_warning ("zz1 %s", g_file_get_uri (file->directory));
         if (dir != NULL) {
