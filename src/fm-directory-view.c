@@ -2190,9 +2190,10 @@ fm_directory_view_select_gof_file (FMDirectoryView *view, GOFFile *file)
 #endif
 
 void 
-fm_directory_view_select_gof_files (FMDirectoryView *view, GList *files)
+fm_directory_view_select_glib_files (FMDirectoryView *view, GList *files)
 {
     GList *l;
+    GOFFile *file;
     GtkTreeIter iter;
     GtkTreePath *path;
     gint i;
@@ -2201,13 +2202,15 @@ fm_directory_view_select_gof_files (FMDirectoryView *view, GList *files)
 
     view->updates_frozen = TRUE;
     for (l=files, i=0; l != NULL; l=l->next, i++) {
-        if (fm_list_model_get_first_iter_for_file (view->model, GOF_FILE (l->data), &iter)) {
+        file = gof_file_get (G_FILE (l->data));
+        if (fm_list_model_get_first_iter_for_file (view->model, file, &iter)) {
             path = gtk_tree_model_get_path (GTK_TREE_MODEL (view->model), &iter);
             if (i == 0)
                 (*FM_DIRECTORY_VIEW_GET_CLASS (view)->set_cursor) (view, path, FALSE, TRUE);
             (*FM_DIRECTORY_VIEW_GET_CLASS (view)->select_path) (view, path);
             gtk_tree_path_free (path);
         }
+        g_object_unref (file);
     }
     view->updates_frozen = FALSE;
     fm_directory_view_notify_selection_changed (view);

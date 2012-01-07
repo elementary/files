@@ -33,7 +33,7 @@ namespace Marlin.View {
         Browser browser;
         public int view_mode = 0;
         //private ulong file_info_callback;
-        private GLib.List<GOF.File> select_childs = null;
+        private GLib.List<GLib.File> select_childs = null;
 
         public signal void path_changed(File file);
         public signal void up();
@@ -149,7 +149,7 @@ namespace Marlin.View {
                 content = new DirectoryNotFound (slot.directory, this);
             } else {
                 if (select_childs != null) 
-                    ((FM.Directory.View) slot.view_box).select_gof_files (select_childs);
+                    ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
             }
             sync_contextview();
 
@@ -161,7 +161,7 @@ namespace Marlin.View {
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
-        public void change_view(int nview, GLib.File? location){
+        public void change_view (int nview, GLib.File? location) {
             view_mode = nview;
             select_childs = null;
             if (window.top_menu.view_switcher != null)
@@ -173,14 +173,14 @@ namespace Marlin.View {
                 if (slot != null) {
                     unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
                     foreach (var elem in list)
-                        select_childs.prepend (elem);
+                        select_childs.prepend (elem.location);
                 }
             } else {
                 /* check if the requested location is a parent of the previous one */
                 if (slot != null) {
                     var parent = slot.location.get_parent ();
-                    if (parent != null && parent.equal (location))
-                        select_childs.prepend (slot.directory.file);
+                    if (parent != null && parent.equal (location)) 
+                        select_childs.prepend (slot.directory.file.location);
                 }
             }
             if (slot != null && slot.directory.file.exists) {
