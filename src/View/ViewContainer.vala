@@ -190,13 +190,12 @@ namespace Marlin.View {
             if (nview == ViewMode.MILLER) {
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;
-                connect_available_info();
             } else {
                 mwcol = null;
                 slot = new GOF.Window.Slot(location, this);
-                connect_available_info();
             }
 
+            connect_available_info();
             if (slot != null && slot.directory.file.exists)
                 slot.directory.done_loading.connect (directory_done_loading);
             plugin_directory_loaded ();
