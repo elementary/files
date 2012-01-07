@@ -187,36 +187,35 @@ namespace Marlin.View {
                 slot.directory.cancel();
             }
 
-            switch (nview) {
-            case ViewMode.LIST:
-                mwcol = null;
-                slot = new GOF.Window.Slot(location, this);
-                connect_available_info();
-                slot.make_list_view();
-                break;
-            case ViewMode.COMPACT:
-                mwcol = null;
-                slot = new GOF.Window.Slot(location, this);
-                connect_available_info();
-                slot.make_compact_view();
-                break;
-            case ViewMode.MILLER:
+            if (nview == ViewMode.MILLER) {
                 mwcol = new Marlin.Window.Columns(location, this);
                 slot = mwcol.active_slot;
                 connect_available_info();
-                mwcol.make_view();
-                break;
-            default:
+            } else {
                 mwcol = null;
                 slot = new GOF.Window.Slot(location, this);
                 connect_available_info();
-                slot.make_icon_view();
-                break;
             }
 
             if (slot != null && slot.directory.file.exists)
                 slot.directory.done_loading.connect (directory_done_loading);
             plugin_directory_loaded ();
+
+            switch (nview) {
+            case ViewMode.LIST:
+                slot.make_list_view();
+                break;
+            case ViewMode.COMPACT:
+                slot.make_compact_view();
+                break;
+            case ViewMode.MILLER:
+                mwcol.make_view();
+                break;
+            default:
+                slot.make_icon_view();
+                break;
+            }
+
         }
 
         /* TODO save selections in slot or fmdirectoryview and set the ContextView */
