@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2011-12-02 13:59+0000\n"
-"Last-Translator: Luigi Zanotti <Unknown>\n"
+"PO-Revision-Date: 2012-01-07 09:11+0000\n"
+"Last-Translator: Guybrush88 <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-01-03 05:02+0000\n"
-"X-Generator: Launchpad (build 14616)\n"
+"X-Launchpad-Export-Date: 2012-01-08 05:28+0000\n"
+"X-Generator: Launchpad (build 14640)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -57,7 +57,7 @@ msgstr "Tipo MIME"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr ""
+msgstr "MimeTypes"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
@@ -74,11 +74,11 @@ msgstr "Luogo di Origine"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
 msgid "Other application..."
-msgstr ""
+msgstr "Altre applicazioni..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
 msgid "Open with"
-msgstr ""
+msgstr "Apri con"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
@@ -109,7 +109,7 @@ msgstr "Tutti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Seleziona un'applicazione da aprire "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
@@ -369,11 +369,11 @@ msgstr "Operazione annullata"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr ""
+msgstr "Elenco delle directory compatto"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr ""
+msgstr "Visualizzazione compatta"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
@@ -386,7 +386,7 @@ msgstr "Questa cartella è vuota."
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Impossibile rinominare %s in %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -415,11 +415,11 @@ msgstr "Impossibile eseguire il file\"%s\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Elenco delle directory a icone"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Visualizzazione a icone"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
@@ -683,11 +683,11 @@ msgstr "Metodi di inserimento"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "Modalità di layout"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "La mdalità di layout"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:439
 msgid ""
