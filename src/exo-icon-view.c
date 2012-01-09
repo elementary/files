@@ -2395,15 +2395,14 @@ exo_icon_view_button_press (GtkWidget      *widget,
                 }
                 else
                 {
-                    //amtest
                     if (!icon_view->priv->add_remove_helper) {
-                        exo_icon_view_unselect_all_internal (icon_view);
-                        item->selected = TRUE;
+                        if (!item->selected) {
+                            exo_icon_view_unselect_all_internal (icon_view);
+                            item->selected = TRUE;
+                        }
                     } else {
                         item->selected = !item->selected;
                     }
-
-                    //item->selected = TRUE;
                     exo_icon_view_queue_draw_item (icon_view, item);
                     dirty = TRUE;
                 }
@@ -2501,7 +2500,13 @@ exo_icon_view_button_release (GtkWidget      *widget,
             item = exo_icon_view_get_item_at_coords (icon_view, event->x, event->y, TRUE, NULL);
             if (G_LIKELY (item != NULL && item == icon_view->priv->last_single_clicked))
             {
-                //amtest
+                if (!icon_view->priv->add_remove_helper) {
+                    exo_icon_view_unselect_all_internal (icon_view);
+                    item->selected = TRUE;
+                } 
+                exo_icon_view_queue_draw_item (icon_view, item);
+                g_signal_emit (icon_view, icon_view_signals[SELECTION_CHANGED], 0);
+                
                 if (!icon_view->priv->add_remove_helper) {
                     path = gtk_tree_path_new_from_indices (g_list_index (icon_view->priv->items, item), -1);
                     /* emit an "item-activated" signal for this item */

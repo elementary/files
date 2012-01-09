@@ -335,7 +335,6 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
                                                      && (event->state & gtk_accelerator_get_default_mod_mask ()) == 0);
     }
 
-#if 0
     /* unfortunately GtkTreeView will unselect rows except the clicked one,
      * which makes dragging from a GtkTreeView problematic. That's why we
      * remember the selected paths here and restore them later.
@@ -346,13 +345,11 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
         /* if no custom select function is set, we simply use exo_noop_false here,
          * to tell the tree view that it may not alter the selection.
          */
-        //if (G_LIKELY (selection->user_func == NULL))
         if (G_LIKELY (gtk_tree_selection_get_select_function (selection) == NULL))
             gtk_tree_selection_set_select_function (selection, (GtkTreeSelectionFunc) exo_noop_false, NULL, NULL);
         else
             selected_paths = gtk_tree_selection_get_selected_rows (selection, NULL);
     }
-#endif
 
     /* Rubberbanding in GtkTreeView 2.9.0 and above is rather buggy, unfortunately, and
      * doesn't interact properly with GTKs own DnD mechanism. So we need to block all
@@ -397,7 +394,6 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
         && path != NULL && gtk_tree_selection_path_is_selected (selection, path))
     {
         /* check if we have to restore paths */
-        //if (G_LIKELY (selection->user_func != (GtkTreeSelectionFunc) exo_noop_false))
         if (G_LIKELY (gtk_tree_selection_get_select_function (selection) != (GtkTreeSelectionFunc) exo_noop_false))
         {
             /* select all previously selected paths */
@@ -407,13 +403,11 @@ exo_tree_view_button_press_event (GtkWidget      *widget,
     }
 
     /* see bug http://bugzilla.xfce.org/show_bug.cgi?id=6230 for more information */
-    //if (G_LIKELY (selection->user_func == (GtkTreeSelectionFunc) exo_noop_false))
     if (G_LIKELY (gtk_tree_selection_get_select_function (selection) == (GtkTreeSelectionFunc) exo_noop_false))
     {
         /* just reset the select function (previously set to exo_noop_false),
          * there's no clean way to do this, so what the heck.
          */
-        //selection->user_func = NULL;
         gtk_tree_selection_set_select_function (selection, NULL, NULL, NULL);
     }
 
@@ -472,6 +466,12 @@ exo_tree_view_button_release_event (GtkWidget      *widget,
                 }
 
                 if (!on_expander) {
+                    selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
+                    if (gtk_tree_selection_path_is_selected (selection, path))
+                    {
+                        gtk_tree_selection_unselect_all (selection);
+                        gtk_tree_view_set_cursor (GTK_TREE_VIEW (tree_view), path, column, FALSE);
+                    }
                     /* emit row-activated for the determined row */
                     gtk_tree_view_row_activated (GTK_TREE_VIEW (tree_view), path, column);
                 }
