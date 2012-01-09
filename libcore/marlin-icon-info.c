@@ -201,9 +201,11 @@ reap_old_icon (gpointer  key,
     MarlinIconInfo *icon = value;
     gboolean *reapable_icons_left = user_info;
 
+    g_return_val_if_fail (MARLIN_IS_ICON_INFO (icon), TRUE);
+
     //g_message ("%s %s %u %u\n", G_STRFUNC, icon->icon_name, time_now, icon->last_use_time);
     /* sole owner */
-    if (icon && icon->pixbuf && G_OBJECT (icon->pixbuf)->ref_count == 1) {
+    if (icon->pixbuf && G_IS_OBJECT (icon->pixbuf) && G_OBJECT (icon->pixbuf)->ref_count == 1) {
         if (time_now - icon->last_use_time > 30 * MICROSEC_PER_SEC) {
             /*g_warning ("DELETE %s %s %u ref_count %u\n", G_STRFUNC, icon->icon_name, 
               time_now - icon->last_use_time,
@@ -399,7 +401,7 @@ marlin_icon_info_lookup (GIcon *icon, int size)
                 g_input_stream_close (stream, NULL, NULL);
                 g_object_unref (stream);
             }
-            
+
             /* cache the raw pixbuf */
             key = loadable_icon_key_new (icon, MARLIN_ICON_SIZE_LARGEST);
             icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
