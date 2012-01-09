@@ -383,6 +383,7 @@ fm_directory_view_disconnect_directory_handlers (FMDirectoryView *view,
     g_signal_handlers_disconnect_by_func (directory, file_changed_callback, view);
     g_signal_handlers_disconnect_by_func (directory, file_deleted_callback, view);
     g_signal_handlers_disconnect_by_func (directory, directory_done_loading_callback, view);
+    g_signal_handlers_disconnect_by_func (directory, directory_thumbs_loaded_callback, view);
     g_signal_handlers_disconnect_by_func (directory, icon_changed_callback, view);
 }
 
