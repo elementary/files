@@ -277,10 +277,9 @@ marlin_icon_renderer_set_property (GObject      *object,
             g_object_unref (priv->pixbuf);
             priv->pixbuf = NULL;
         }
-        if (value)
-            priv->file = (gpointer) g_value_dup_object (value);
+        priv->file = (GOFFile*) g_value_dup_object (value);
         //g_warning ("%s file %s %u", G_STRFUNC, priv->file->uri, G_OBJECT (priv->file)->ref_count);
-        if (G_LIKELY (priv->file != NULL)) {
+        if (G_LIKELY (priv->file)) {
             gof_file_update_icon (priv->file, priv->size);
             priv->pixbuf = _g_object_ref0 (priv->file->pix);
             //g_object_notify (object, "pixbuf");

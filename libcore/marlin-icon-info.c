@@ -28,12 +28,13 @@ struct _MarlinIconInfo
     GObject         parent;
 
     guint64         last_use_time;
+    gboolean        is_first_ref;
     GdkPixbuf       *pixbuf;
 
     /*gboolean        got_embedded_rect;
-    GdkRectangle    embedded_rect;
-    gint            n_attach_points;
-    GdkPoint        *attach_points;*/
+      GdkRectangle    embedded_rect;
+      gint            n_attach_points;
+      GdkPoint        *attach_points;*/
     char            *display_name;
     char            *icon_name;
 };
@@ -52,6 +53,7 @@ marlin_icon_info_init (MarlinIconInfo *icon)
 {
     icon->last_use_time = g_get_monotonic_time ();
     icon->pixbuf = NULL;
+    icon->is_first_ref = TRUE;
 }
 
 gboolean
@@ -68,11 +70,11 @@ pixbuf_toggle_notify (gpointer      info,
     MarlinIconInfo  *icon = info;
 
     /*g_warning ("%s %s %s ref_count %u", G_STRFUNC, icon->display_name, 
-               icon->icon_name, G_OBJECT (icon->pixbuf)->ref_count);*/
+      icon->icon_name, G_OBJECT (icon->pixbuf)->ref_count);*/
     if (is_last_ref) {
         /*g_object_remove_toggle_ref (object,
-                                    pixbuf_toggle_notify,
-                                    info);*/
+          pixbuf_toggle_notify,
+          info);*/
         icon->last_use_time = g_get_monotonic_time ();
         schedule_reap_cache ();
     }
@@ -90,11 +92,11 @@ marlin_icon_info_finalize (GObject *object)
                    icon->icon_name, G_OBJECT (icon->pixbuf)->ref_count);
 
         /*g_object_remove_toggle_ref (G_OBJECT (icon->pixbuf),
-                                    pixbuf_toggle_notify,
-                                    icon);*/
+          pixbuf_toggle_notify,
+          icon);*/
         g_clear_object (&icon->pixbuf);
     }
-    
+
     //g_free (icon->attach_points);
     g_free (icon->display_name);
     g_free (icon->icon_name);
@@ -120,11 +122,12 @@ marlin_icon_info_new_for_pixbuf (GdkPixbuf *pixbuf)
 
     icon = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
     icon->pixbuf = pixbuf;
-    if (icon->pixbuf != NULL) {
+    /*if (icon->pixbuf != NULL) {*/
+    if (icon->pixbuf) {
         g_object_add_toggle_ref (G_OBJECT (icon->pixbuf),
                                  pixbuf_toggle_notify,
                                  icon);
-        g_object_unref (icon->pixbuf);
+        //g_object_unref (icon->pixbuf);
     }
 
     return icon;
@@ -135,25 +138,26 @@ marlin_icon_info_new_for_icon_info (GtkIconInfo *icon_info)
 {
     MarlinIconInfo *icon;
     /*GdkPoint *points;
-    gint n_points;*/
+      gint n_points;*/
     const char *filename;
     char *basename, *p;
 
     icon = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
 
     icon->pixbuf = gtk_icon_info_load_icon (icon_info, NULL);
-    g_object_add_toggle_ref (G_OBJECT (icon->pixbuf),
-                             pixbuf_toggle_notify,
-                             icon);
-    g_object_unref (icon->pixbuf);
+    if (icon->pixbuf)
+        g_object_add_toggle_ref (G_OBJECT (icon->pixbuf),
+                                 pixbuf_toggle_notify,
+                                 icon);
+    /*g_object_unref (icon->pixbuf);*/
 
     /*icon->got_embedded_rect = gtk_icon_info_get_embedded_rect (icon_info,
-                                                               &icon->embedded_rect);
+      &icon->embedded_rect);
 
-    if (gtk_icon_info_get_attach_points (icon_info, &points, &n_points)) {
-        icon->n_attach_points = n_points;
-        icon->attach_points = points;
-    }*/
+      if (gtk_icon_info_get_attach_points (icon_info, &points, &n_points)) {
+      icon->n_attach_points = n_points;
+      icon->attach_points = points;
+      }*/
 
     icon->display_name = g_strdup (gtk_icon_info_get_display_name (icon_info));
 
@@ -202,8 +206,8 @@ reap_old_icon (gpointer  key,
     if (icon->pixbuf && G_OBJECT (icon->pixbuf)->ref_count == 1) {
         if (time_now - icon->last_use_time > 30 * MICROSEC_PER_SEC) {
             /*g_warning ("DELETE %s %s %u ref_count %u\n", G_STRFUNC, icon->icon_name, 
-                       time_now - icon->last_use_time,
-                       G_OBJECT (icon->pixbuf)->ref_count);*/
+              time_now - icon->last_use_time,
+              G_OBJECT (icon->pixbuf)->ref_count);*/
             /* This went unused 30 secs ago. reap */
             return TRUE;
         } else {
@@ -345,11 +349,14 @@ themed_icon_key_free (ThemedIconKey *key)
     g_slice_free (ThemedIconKey, key);
 }
 
+#define MARLIN_ICON_SIZE_LARGEST 128
+
 MarlinIconInfo *
 marlin_icon_info_lookup (GIcon *icon, int size)
 {
     MarlinIconInfo *icon_info;
     GdkPixbuf *pixbuf = NULL;
+    GdkPixbuf *scaled_pixbuf = NULL;
 
     if (G_IS_LOADABLE_ICON (icon)) {
         LoadableIconKey lookup_key;
@@ -368,38 +375,44 @@ marlin_icon_info_lookup (GIcon *icon, int size)
         lookup_key.size = size;
 
         icon_info = g_hash_table_lookup (loadable_icon_cache, &lookup_key);
+
         if (icon_info) {
             //g_message ("CACHED %s stream %s\n", G_STRFUNC, g_icon_to_string (icon));
             return g_object_ref (icon_info);
+        } else {
+            lookup_key.size = MARLIN_ICON_SIZE_LARGEST;
+            icon_info = g_hash_table_lookup (loadable_icon_cache, &lookup_key);
         }
 
-//#if 0
-        stream = g_loadable_icon_load (G_LOADABLE_ICON (icon),
-                                       size,
-                                       NULL, NULL, NULL);
-        if (stream) {
-            //g_message ("%s stream %s\n", G_STRFUNC, g_icon_to_string (icon));
-
-            /* sounds like from_stream_at scale is leaking ? */
-            pixbuf = gdk_pixbuf_new_from_stream_at_scale (stream,
-                                                          size, size, TRUE,
-                                                          NULL, NULL);
-            //pixbuf = eel_gdk_pixbuf_load_from_stream_at_size (stream, size);
-            g_input_stream_close (stream, NULL, NULL);
-            g_object_unref (stream);
+        if (!icon_info) {
+            stream = g_loadable_icon_load (G_LOADABLE_ICON (icon),
+                                           size,
+                                           NULL, NULL, NULL);
+            if (stream) {
+                g_message ("%s stream %s\n", G_STRFUNC, g_icon_to_string (icon));
+                pixbuf = gdk_pixbuf_new_from_stream_at_scale (stream,
+                                                              MARLIN_ICON_SIZE_LARGEST, 
+                                                              MARLIN_ICON_SIZE_LARGEST, 
+                                                              TRUE,
+                                                              NULL, NULL);
+                //pixbuf = gdk_pixbuf_new_from_stream (stream,  NULL, NULL);
+                g_input_stream_close (stream, NULL, NULL);
+                g_object_unref (stream);
+            }
+            
+            /* cache the raw pixbuf */
+            key = loadable_icon_key_new (icon, MARLIN_ICON_SIZE_LARGEST);
+            icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
+            g_hash_table_insert (loadable_icon_cache, key, g_object_ref (icon_info));
         }
-//#endif
-        //pixbuf = gdk_pixbuf_new_from_file_at_size ("/usr/share/icons/hicolor/scalable/apps/marlin.svg", size, size, NULL);
-        /*gchar *icon_path = g_icon_to_string (icon);
-        pixbuf = gdk_pixbuf_new_from_file_at_size (icon_path, size, size, NULL);
-        //pixbuf = gdk_pixbuf_new_from_file (icon_path, NULL);
-        g_free (icon_path);*/
 
-        icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
+        scaled_pixbuf = marlin_icon_info_get_pixbuf_at_size (icon_info, size);
+
         key = loadable_icon_key_new (icon, size);
-        g_hash_table_insert (loadable_icon_cache, key, icon_info);
+        icon_info = marlin_icon_info_new_for_pixbuf (scaled_pixbuf);
+        g_hash_table_insert (loadable_icon_cache, key, g_object_ref (icon_info));
 
-        return g_object_ref (icon_info);
+        return icon_info;
     } else if (G_IS_THEMED_ICON (icon)) {
         const char * const *names;
         ThemedIconKey lookup_key;
@@ -427,9 +440,9 @@ marlin_icon_info_lookup (GIcon *icon, int size)
 
         filename = gtk_icon_info_get_filename (gtkicon_info);
         if (filename == NULL) {
-			gtk_icon_info_free (gtkicon_info);
-			return marlin_icon_info_new_for_pixbuf (NULL);
-		}
+            gtk_icon_info_free (gtkicon_info);
+            return marlin_icon_info_new_for_pixbuf (NULL);
+        }
 
         lookup_key.filename = (char *)filename;
         lookup_key.size = size;
@@ -465,7 +478,7 @@ marlin_icon_info_lookup (GIcon *icon, int size)
         icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
 
         /*if (pixbuf != NULL)
-            g_object_unref (pixbuf);*/
+          g_object_unref (pixbuf);*/
         /* FIXME remove the extra ref and cache the icon_info */
         g_object_ref (icon_info);
 
@@ -498,7 +511,7 @@ marlin_icon_info_lookup_from_path (const char *path, int size)
     info = marlin_icon_info_lookup (icon, size);
     g_object_unref (icon);
     g_object_unref (icon_file);
-    
+
     return info;
 }
 
@@ -519,11 +532,15 @@ marlin_icon_info_get_pixbuf_nodefault (MarlinIconInfo  *icon)
 {
     GdkPixbuf *res = NULL;
 
-    if (icon->pixbuf != NULL) 
-        res = g_object_ref (icon->pixbuf);
-
+    if (icon->pixbuf) {
+        /* don't ref the first toggled reference */
+        if (!icon->is_first_ref) 
+            g_object_ref (icon->pixbuf);
+        icon->is_first_ref = FALSE;
+        res = icon->pixbuf;
+    }
     /*if (icon->pixbuf)
-        g_warning ("%s ref count %u", G_STRFUNC, G_OBJECT (icon->pixbuf)->ref_count);*/
+      g_warning ("%s ref count %u", G_STRFUNC, G_OBJECT (icon->pixbuf)->ref_count);*/
 
     return res;
 }
@@ -551,7 +568,7 @@ marlin_icon_info_get_pixbuf (MarlinIconInfo *icon)
 
 GdkPixbuf *
 marlin_icon_info_get_pixbuf_nodefault_at_size (MarlinIconInfo  *icon,
-                                                 gsize              forced_size)
+                                               gsize              forced_size)
 {
     GdkPixbuf *pixbuf, *scaled_pixbuf;
     int w, h, s;
@@ -581,7 +598,8 @@ marlin_icon_info_get_pixbuf_nodefault_at_size (MarlinIconInfo  *icon,
 GdkPixbuf *
 marlin_icon_info_get_pixbuf_at_size (MarlinIconInfo *icon, gsize forced_size)
 {
-    GdkPixbuf *pixbuf, *scaled_pixbuf;
+    GdkPixbuf *scaled_pixbuf = NULL;
+    GdkPixbuf *pixbuf;
     int w, h, s;
     double scale;
 
@@ -598,9 +616,12 @@ marlin_icon_info_get_pixbuf_at_size (MarlinIconInfo *icon, gsize forced_size)
     }
 
     scale = (double)forced_size / s;
-    scaled_pixbuf = gdk_pixbuf_scale_simple (pixbuf,
-                                             w * scale, h * scale,
-                                             GDK_INTERP_BILINEAR);
+    int w_scaled = w * scale;
+    int h_scaled = h * scale;
+    if (w_scaled > 0 && h_scaled > 0)
+        scaled_pixbuf = gdk_pixbuf_scale_simple (pixbuf,
+                                                 w_scaled, h_scaled,
+                                                 GDK_INTERP_BILINEAR);
     g_object_unref (pixbuf);
     return scaled_pixbuf;
 }

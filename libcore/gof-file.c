@@ -413,9 +413,10 @@ void    gof_file_update (GOFFile *file)
 
 
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
-    /* mark the thumbl flags as ready as we already know the thumbnail path */
+    /* mark the thumb flags as state none, we'll load the thumbs once the directory 
+     * would be loaded on a thread */
     if (gof_file_get_thumbnail_path (file) != NULL)
-        file->flags = GOF_FILE_THUMB_STATE_READY;
+        file->flags = GOF_FILE_THUMB_STATE_NONE;
 
     /* formated type */
     gof_file_update_formated_type (file);
@@ -445,23 +446,40 @@ void    gof_file_update (GOFFile *file)
 }
 
 static MarlinIconInfo *
-gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
+gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 {
-    MarlinIconInfo *icon = NULL;
-    GIcon *gicon;
-
-    if (file == NULL) 
-        return NULL;
-
-    if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS) {
+    if (file->custom_icon_name != NULL) {
+        if (g_path_is_absolute (file->custom_icon_name)) 
+            return marlin_icon_info_lookup_from_path (file->custom_icon_name, size);
+        else
+            return marlin_icon_info_lookup_from_name (file->custom_icon_name, size);
+    }
+    if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
+        && file->flags == GOF_FILE_THUMB_STATE_READY) {
         const gchar *thumb_path = gof_file_get_thumbnail_path (file);
         /* TODO thumb test : Playing with the thumbs */
         //if (file->flags != 0 && thumb_path != NULL) {
         if (thumb_path != NULL) {
             //g_message ("show thumb %s %s %d\n", file->uri, thumb_path, size);
-            return marlin_icon_info_lookup_from_path (thumb_path, size);
+            return marlin_icon_info_lookup_from_path (thumb_path, size * 1.33);
         }
     }
+
+    return NULL;
+}
+
+MarlinIconInfo *
+gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
+{
+    MarlinIconInfo *icon = NULL;
+    GIcon *gicon;
+
+    g_return_val_if_fail (file, NULL);
+
+    icon = gof_file_get_special_icon (file, size, flags);
+    if (icon && !marlin_icon_info_is_fallback (icon))
+        return icon;
+    _g_object_unref0 (icon);
 
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
         && file->flags == GOF_FILE_THUMB_STATE_LOADING) {
@@ -485,6 +503,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     return icon;
 }
 
+#if 0
 static GdkPixbuf 
 *ensure_pixbuf_from_nicon (GOFFile *file, gint size, gboolean force_size, MarlinIconInfo *nicon)
 {
@@ -501,6 +520,7 @@ static GdkPixbuf
 
     return pix;
 }
+#endif
 
 GdkPixbuf *
 gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFileIconFlags flags)
@@ -508,17 +528,11 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
     MarlinIconInfo *nicon;
     GdkPixbuf *pix;
 
-    if (file->custom_icon_name != NULL) {
-        if (g_path_is_absolute (file->custom_icon_name)) 
-            nicon = marlin_icon_info_lookup_from_path (file->custom_icon_name, size);
-        else
-            nicon = marlin_icon_info_lookup_from_name (file->custom_icon_name, size);
-    } else {
-        nicon = gof_file_get_icon (file, size, flags);
-        //nicon = gof_file_get_icon (file, size, 0);
-    }
+    nicon = gof_file_get_icon (file, size, flags);
+    //nicon = gof_file_get_icon (file, size, 0);
 
-    pix = ensure_pixbuf_from_nicon (file, size, force_size, nicon);
+    //pix = ensure_pixbuf_from_nicon (file, size, force_size, nicon);
+    pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
     if (nicon)
         g_object_unref (nicon);
     //pix = gdk_pixbuf_new_from_file_at_size ("/usr/share/icons/hicolor/scalable/apps/marlin.svg", size, size, NULL);
@@ -660,7 +674,7 @@ gof_file_ensure_query_info (GOFFile *file)
 }
 
 /* only the thumbnail has changed (been generated) */ 
-static void 
+void 
 gof_file_query_thumbnail_update (GOFFile *file)
 {
     gchar    *base_name;

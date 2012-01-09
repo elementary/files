@@ -27,9 +27,6 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gdk/gdk.h>
 
-/* Loading a GdkPixbuf with a URI. */
-GdkPixbuf   *eel_gdk_pixbuf_load_from_stream_at_size    (GInputStream  *stream, int size);
-
 /* return a lightened pixbuf for pre-lighting */
 GdkPixbuf   *eel_create_spotlight_pixbuf (GdkPixbuf *source_pixbuf);
 

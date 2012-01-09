@@ -51,6 +51,7 @@ public class GOF.Directory.Async : Object
     public signal void file_deleted (GOF.File file);
     public signal void icon_changed (GOF.File file);
     public signal void done_loading ();
+    public signal void thumbs_loaded ();
 
     private uint idle_consume_changes_id = 0;
 
@@ -483,6 +484,33 @@ public class GOF.Directory.Async : Object
         sorted_dirs.sort (GOF.File.compare_by_display_name);
 
         return sorted_dirs;
+    }
+
+    
+    private void *load_thumbnails_func ()
+    {
+        foreach (var gof in file_hash.get_values()) {
+            if (cancellable.is_cancelled ())
+                return null;
+            if (gof.info != null && gof.flags == 1) {
+                gof.flags = 2; /* thumb ready */
+                gof.query_thumbnail_update ();
+            }
+        }
+        thumbs_loaded ();
+        
+        return null;
+    }
+
+    public void threaded_load_thumbnails ()
+    {
+        try {
+            //unowned Thread<void*> th = Thread.create<void*> (load_thumbnails_func, false);
+            Thread.create<void*> (load_thumbnails_func, false);
+        } catch (ThreadError e) {
+            stderr.printf ("%s\n", e.message);
+            return;
+        }
     }
 }
 

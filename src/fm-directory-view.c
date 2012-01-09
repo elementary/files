@@ -294,7 +294,15 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     if (gof_directory_async_is_empty (directory))
         gtk_widget_queue_draw (GTK_WIDGET (view));
 
+    gof_directory_async_threaded_load_thumbnails (view->details->slot->directory);
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
+}
+
+static void
+directory_thumbs_loaded_callback (GOFDirectoryAsync *directory, FMDirectoryView *view)
+{
+    if (view && GTK_IS_WIDGET (view) && gtk_widget_get_realized (GTK_WIDGET (view)));
+        gtk_widget_queue_draw (GTK_WIDGET (view));
     marlin_icon_info_infos_caches ();
 }
 
@@ -360,6 +368,8 @@ fm_directory_view_connect_directory_handlers (FMDirectoryView *view, GOFDirector
                       G_CALLBACK (file_deleted_callback), view);
     g_signal_connect (directory, "done_loading", 
                       G_CALLBACK (directory_done_loading_callback), view);
+    g_signal_connect (directory, "thumbs_loaded", 
+                      G_CALLBACK (directory_thumbs_loaded_callback), view);
     g_signal_connect (directory, "icon_changed", 
                       G_CALLBACK (icon_changed_callback), view);
 }
@@ -2396,7 +2406,7 @@ fm_directory_view_request_thumbnails (FMDirectoryView *view)
             /* only ask thumbnails once per file */
             if (file->flags == 0) {
                 files = g_list_prepend (files, g_object_ref (file));
-            }
+            } 
             g_object_unref (file);
 
             /* check if we've reached the end of the visible range */

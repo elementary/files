@@ -223,10 +223,11 @@ namespace Marlin.View {
             if (orientation == Orientation.VERTICAL) {
                 /* add a little 16px padding for normal icons */
                 if (last_gof.info.has_attribute (FILE_ATTRIBUTE_THUMBNAIL_PATH) &&
-                    last_gof.info.get_attribute_byte_string (FILE_ATTRIBUTE_THUMBNAIL_PATH) != null)
+                    last_gof.info.get_attribute_byte_string (FILE_ATTRIBUTE_THUMBNAIL_PATH) != null) {
                     icon_size_req = alloc.width.clamp (height, 256);
-                else
+                } else {
                     icon_size_req = alloc.width.clamp (height, width-16);
+                }
             } else {
                 icon_size_req = alloc.height.clamp (height, 256);
             }
@@ -236,7 +237,9 @@ namespace Marlin.View {
                 pixbuf = new Pixbuf.from_file (last_gof.thumbnail_path);
             }*/
 
-            pixbuf = last_gof.get_icon_pixbuf (icon_size_req, false, GOF.FileIconFlags.USE_THUMBNAILS);
+            //pixbuf = last_gof.get_icon_pixbuf (icon_size_req, false, GOF.FileIconFlags.USE_THUMBNAILS);
+            var micon = last_gof.get_icon (128, GOF.FileIconFlags.USE_THUMBNAILS);
+            pixbuf = micon.get_pixbuf_at_size (icon_size_req);
             
             /* TODO ask tumbler a LARGE thumb for size > 128 */
             /*if (should_sync && (icon_size_req > w_width/2 || icon_size_req > w_height/2))
