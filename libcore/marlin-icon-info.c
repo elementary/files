@@ -203,7 +203,7 @@ reap_old_icon (gpointer  key,
 
     //g_message ("%s %s %u %u\n", G_STRFUNC, icon->icon_name, time_now, icon->last_use_time);
     /* sole owner */
-    if (icon->pixbuf && G_OBJECT (icon->pixbuf)->ref_count == 1) {
+    if (icon && icon->pixbuf && G_OBJECT (icon->pixbuf)->ref_count == 1) {
         if (time_now - icon->last_use_time > 30 * MICROSEC_PER_SEC) {
             /*g_warning ("DELETE %s %s %u ref_count %u\n", G_STRFUNC, icon->icon_name, 
               time_now - icon->last_use_time,
