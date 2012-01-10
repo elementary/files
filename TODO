@@ -5,7 +5,6 @@ Hotlist:
 - PropertyWindow permissions change recursively for folders.
 - make ContextPane support multi selection like PropertyWindow.
 - update freespace diskrenderers in sidebar: make a simple timer and update the information at the application level for a determined time delay, and maybe after some specifics files operations ?
-- use an overlay statusbar when ContextPane is off
 
 Various:
 - files operations must implement an undo/redo mechanism.

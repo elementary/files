@@ -270,29 +270,21 @@ marlin_clipboard_manager_owner_changed (GtkClipboard           *clipboard,
 static GList *
 convert_lines_to_gfile_list (char **lines)
 {
-	int i;
-	GList *result;
+    int i;
+    GList *result;
 
-	if (lines[0] == NULL) {
-		return NULL;
-	}
+    if (lines[0] == NULL) {
+        return NULL;
+    }
 
-	result = NULL;
-	for (i=0; lines[i] != NULL; i++) {
-                //printf ("lines %d: %s\n", i, lines[i]);
-		//result = g_list_prepend (result, g_strdup (lines[i]));
-		result = g_list_prepend (result, g_file_new_for_uri (lines[i]));
-	}
-	return g_list_reverse (result);
+    result = NULL;
+    for (i=0; lines[i] != NULL; i++) {
+        //printf ("lines %d: %s\n", i, lines[i]);
+        //result = g_list_prepend (result, g_strdup (lines[i]));
+        result = g_list_prepend (result, g_file_new_for_uri (lines[i]));
+    }
+    return g_list_reverse (result);
 }
-
-#if 0
-void plop(gpointer data)
-{
-    GFile *file = data;
-    printf("%s\n", g_file_get_uri(file));
-}
-#endif
 
 static void
 marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
@@ -329,9 +321,9 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
         }
 
         /* get uris list from selection_data */
-	lines = g_strsplit (data, "\n", 0);
-	file_list = convert_lines_to_gfile_list (lines);
-	g_strfreev (lines);
+        lines = g_strsplit (data, "\n", 0);
+        file_list = convert_lines_to_gfile_list (lines);
+        g_strfreev (lines);
     }
 
     /* perform the action if possible */
@@ -343,9 +335,8 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
         {
             //marlin_application_copy_into (application, request->widget, file_list, request->target_file, request->new_files_closure);
             printf ("marlin_application_copy_into\n");
-            //g_list_foreach (file_list, (GFunc) plop, NULL);
             /*marlin_file_operations_copy (file_list, NULL, request->target_file,
-                                         NULL, NULL, NULL);*/
+              NULL, NULL, NULL);*/
             marlin_file_operations_copy_move (file_list, NULL, request->target_file,
                                               GDK_ACTION_COPY, NULL, NULL, NULL);
 
@@ -356,9 +347,7 @@ marlin_clipboard_manager_contents_received (GtkClipboard     *clipboard,
                                               GDK_ACTION_MOVE, NULL, NULL, NULL);
         }
         //g_object_unref (G_OBJECT (application));
-        //g_list_foreach (file_list, (GFunc) g_free, NULL);
-        g_list_foreach (file_list, (GFunc) g_object_unref, NULL);
-        g_list_free (file_list);
+        g_list_free_full (file_list, g_object_unref);
 
         /* clear the clipboard if it contained "cutted data"
          * (gtk_clipboard_clear takes care of not clearing
@@ -435,47 +424,47 @@ marlin_clipboard_file_list_to_string (MarlinClipboardManager *manager,
                                       gboolean format_for_text,
                                       gsize *len)
 {
-	GString *uris;
-	char *uri, *tmp;
-	GFile *f;
+    GString *uris;
+    char *uri, *tmp;
+    GFile *f;
     guint i;
-	GList *l;
+    GList *l;
 
-	if (format_for_text) {
-		uris = g_string_new (NULL);
-	} else {
-		uris = g_string_new (manager->files_cutted ? "cut" : "copy");
-	}
+    if (format_for_text) {
+        uris = g_string_new (NULL);
+    } else {
+        uris = g_string_new (manager->files_cutted ? "cut" : "copy");
+    }
 
-        for (i = 0, l = manager->files; l != NULL; l = l->next, i++) {
-		uri = g_file_get_uri(GOF_FILE(l->data)->location);
+    for (i = 0, l = manager->files; l != NULL; l = l->next, i++) {
+        uri = g_file_get_uri(GOF_FILE(l->data)->location);
 
-		if (format_for_text) {
-			f = g_file_new_for_uri (uri);
-			tmp = g_file_get_parse_name (f);
-			g_object_unref (f);
-			
-			if (tmp != NULL) {
-				g_string_append (uris, tmp);
-				g_free (tmp);
-			} else {
-				g_string_append (uris, uri);
-			}
+        if (format_for_text) {
+            f = g_file_new_for_uri (uri);
+            tmp = g_file_get_parse_name (f);
+            g_object_unref (f);
 
-			/* skip newline for last element */
-			if (i + 1 < g_list_length (manager->files)) {
-				g_string_append_c (uris, '\n');
-			}
-		} else {
-			g_string_append_c (uris, '\n');
-			g_string_append (uris, uri);
-		}
+            if (tmp != NULL) {
+                g_string_append (uris, tmp);
+                g_free (tmp);
+            } else {
+                g_string_append (uris, uri);
+            }
 
-		g_free (uri);
-	}
+            /* skip newline for last element */
+            if (i + 1 < g_list_length (manager->files)) {
+                g_string_append_c (uris, '\n');
+            }
+        } else {
+            g_string_append_c (uris, '\n');
+            g_string_append (uris, uri);
+        }
 
-        *len = uris->len;
-	return g_string_free (uris, FALSE);
+        g_free (uri);
+    }
+
+    *len = uris->len;
+    return g_string_free (uris, FALSE);
 }
 
 static void
