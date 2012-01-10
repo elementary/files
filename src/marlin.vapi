@@ -34,7 +34,7 @@ namespace GOF {
     namespace Window {
         [CCode (cheader_filename = "gof-window-slot.h")]
         public class Slot : GOF.AbstractSlot {
-            public Slot (GLib.File f, Gtk.EventBox ctab);
+            public Slot (GLib.File f, Gtk.Overlay ctab);
             public void make_icon_view ();
             public void make_list_view ();
             public void make_compact_view ();
@@ -61,7 +61,7 @@ namespace Marlin {
         [CCode (cheader_filename = "marlin-window-columns.h")]
         public class Columns : GOF.AbstractSlot {
             //public Columns (GLib.File f, Marlin.View.ViewContainer ctab);
-            public Columns (GLib.File f, Gtk.EventBox ctab);
+            public Columns (GLib.File f, Gtk.Overlay ctab);
             public void make_view ();
             public GOF.Window.Slot active_slot;
             /*public Directory.Async directory;

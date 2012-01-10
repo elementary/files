@@ -86,7 +86,7 @@ static gboolean marlin_window_columns_key_pressed (GtkWidget* box, GdkEventKey* 
  *
  **/
 MarlinWindowColumns *
-marlin_window_columns_new (GFile *location, GtkEventBox *ctab)
+marlin_window_columns_new (GFile *location, GtkOverlay *ctab)
 {
     g_message ("%s %s\n", G_STRFUNC, g_file_get_uri(location));
     MarlinWindowColumns *mwcols;

@@ -50,7 +50,7 @@ struct GOFWindowSlot {
     GFile *location;
 
     //GtkWidget *window;
-    GtkEventBox *ctab;
+    GtkOverlay *ctab;
     GOFDirectoryAsync *directory;
 
     MarlinWindowColumns *mwcols;
@@ -67,7 +67,7 @@ struct GOFWindowSlotClass {
 
 GType           gof_window_slot_get_type (void);
 
-GOFWindowSlot   *gof_window_slot_new (GFile *location, GtkEventBox *ctab);
+GOFWindowSlot   *gof_window_slot_new (GFile *location, GtkOverlay *ctab);
 
 void            gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column);
 void            gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location);

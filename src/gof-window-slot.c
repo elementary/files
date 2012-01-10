@@ -139,7 +139,7 @@ gof_window_columns_add_location (GOFWindowSlot *slot, GFile *location)
 }
 
 GOFWindowSlot *
-gof_window_slot_new (GFile *location, GtkEventBox *ctab)
+gof_window_slot_new (GFile *location, GtkOverlay *ctab)
 {
     GOFWindowSlot *slot;
     slot = g_object_new (GOF_TYPE_WINDOW_SLOT, NULL);

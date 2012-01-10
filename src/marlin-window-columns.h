@@ -52,7 +52,7 @@ typedef struct {
     /* Current location. */
     GFile *location;
 
-    GtkEventBox *ctab;
+    GtkOverlay *ctab;
     GOFDirectoryAsync *directory;
 
     GList *slot;
@@ -72,7 +72,7 @@ typedef struct {
 
 GType                   marlin_window_columns_get_type (void);
 
-MarlinWindowColumns     *marlin_window_columns_new (GFile *location, GtkEventBox *ctab);
+MarlinWindowColumns     *marlin_window_columns_new (GFile *location, GtkOverlay *ctab);
 void                    marlin_window_columns_make_view (MarlinWindowColumns *mwcols);
 void                    marlin_window_columns_add (MarlinWindowColumns *mwcols, GFile *location);
 

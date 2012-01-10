@@ -24,7 +24,7 @@
 using Gtk;
 
 namespace Marlin.View {
-    public class ViewContainer : Gtk.EventBox {
+    public class ViewContainer : Gtk.Overlay {
         public Gtk.Widget? content_item;
         public Gtk.Label label;
         private Marlin.View.Window window;
@@ -32,6 +32,8 @@ namespace Marlin.View {
         public Marlin.Window.Columns? mwcol = null;
         Browser browser;
         public int view_mode = 0;
+        public OverlayBar overlay_statusbar;
+
         //private ulong file_info_callback;
         private GLib.List<GLib.File> select_childs = null;
 
@@ -40,7 +42,8 @@ namespace Marlin.View {
         public signal void back(int n=1);
         public signal void forward(int n=1);
 
-        public ViewContainer(Marlin.View.Window win, GLib.File location, int _view_mode = 0){
+        public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0)
+        {
             window = win;
             view_mode = _view_mode;
             /* set active tab */
@@ -56,8 +59,15 @@ namespace Marlin.View {
             window.button_forward.fetcher = get_forward_menu;
 
             //add(content_item);
-
             this.show_all();
+
+            /* overlay statusbar */
+            set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
+            overlay_statusbar = new OverlayBar (win);
+            add_overlay (overlay_statusbar);
+            var action_showhide_context_pane = (Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane");
+            overlay_statusbar.showbar = !action_showhide_context_pane.get_active ();
+            action_showhide_context_pane.bind_property ("active", overlay_statusbar, "showbar", BindingFlags.INVERT_BOOLEAN);
 
             path_changed.connect((myfile) => {
                 /* location didn't change, do nothing */
@@ -302,6 +312,7 @@ namespace Marlin.View {
         {
             return ((Gtk.Widget) window);
         }
+
     }
 }
 
