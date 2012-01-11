@@ -31,6 +31,7 @@ namespace Marlin.View {
     public class Window : Gtk.Window
     {
         public UIManager ui;
+        private UndoManager undo_manager;
         public Widget menu_bar;
         public Chrome.TopMenu top_menu;
         public Notebook tabs;
@@ -233,6 +234,11 @@ namespace Marlin.View {
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
             }
+
+            /* UndoRedo */
+            undo_manager = Marlin.UndoManager.instance ();
+            undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
+
         }
 
         [Signal (action=true)]
@@ -379,6 +385,36 @@ namespace Marlin.View {
                 main_box.orientation = future_state;
             }
         }
+        
+        private void update_undo_actions (UndoMenuData? data = null) {
+            Gtk.Action action;
+
+            action = main_actions.get_action ("Undo");
+            if (data != null && data.undo_label != null && sensitive) {
+                action.set_label (data.undo_label);
+                action.set_tooltip (data.undo_description);
+            } else {
+                action.set_label (_("Undo"));
+                action.set_tooltip (_("Undo the last action"));
+            }
+            action.set_sensitive (data != null && data.undo_label != null);
+            
+            action = main_actions.get_action ("Redo");
+            if (data != null && data.redo_label != null && sensitive) {
+                action.set_label (data.redo_label);
+                action.set_tooltip (data.redo_description);
+            } else {
+                action.set_label (_("Redo"));
+                action.set_tooltip (_("Redo the last action"));
+            }
+            action.set_sensitive (data != null && data.redo_label != null);
+        }
+
+        private void undo_redo_menu_update_callback (UndoManager manager, UndoMenuData data) {
+            message ("!!!! undo_redo menu update callback");
+            message ("%s %s", data.undo_label, data.redo_label);
+            update_undo_actions (data);
+        }
 
         private void action_marlin_settings_callback (Gtk.Action action) {
             new SettingsDialog(this);
@@ -470,6 +506,21 @@ namespace Marlin.View {
             stdout.printf ("TODO\n");
         }*/
 
+        private void action_undo_callback (Gtk.Action action) {
+            message ("action_undo_callback");
+            
+            /*UndoMenuData data = manager.get_menu_data ();
+            update_undo_actions (data, false);*/
+            update_undo_actions ();
+            undo_manager.undo (null);
+        }
+        
+        private void action_redo_callback (Gtk.Action action) {
+            message ("action_redo_callback");
+            update_undo_actions ();
+            undo_manager.redo (null);
+        }
+        
         private void action_home_callback (Gtk.Action action) {
                 current_tab.path_changed(File.new_for_commandline_arg(Environment.get_home_dir()));
         }
@@ -577,6 +628,12 @@ namespace Marlin.View {
                              /*{ Chrome.ColorAction, null, "ColorAction"),
                                  null, null,
                                  null },*/
+                               { "Undo", Stock.UNDO, N_("_Undo"),
+                                 "<control>Z", N_("Undo the last action"),
+                                 action_undo_callback },
+                               { "Redo", Stock.REDO, N_("_Redo"),
+                                 "<control>Y", N_("Redo the last action"),
+                                 action_redo_callback },
                                { "Up", Stock.GO_UP, N_("Open _Parent"),
                                  "<alt>Up", N_("Open the parent folder"),
                                  action_go_up },

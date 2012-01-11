@@ -63,11 +63,13 @@ namespace Marlin
         public Gdk.Pixbuf get_pixbuf_nodefault();
         public Gdk.Pixbuf get_pixbuf_at_size(int size);
     }
+
     [CCode (cheader_filename = "marlin-abstract-sidebar.h")]
     public abstract class AbstractSidebar : Gtk.ScrolledWindow
     {
         public void add_extra_item(string text);
     }
+
     [CCode (cheader_filename = "marlin-trash-monitor.h")]
     public abstract class TrashMonitor : Object
     {
@@ -75,6 +77,30 @@ namespace Marlin
         public static bool is_empty ();
 
         public signal void trash_state_changed (bool new_state);
+    }
+
+    [CCode (cheader_filename = "marlin-undostack-manager.h")]
+    public struct UndoMenuData {
+        string undo_label;
+        string undo_description;
+        string redo_label;
+        string redo_description;
+    }
+
+    [CCode (cheader_filename = "marlin-undostack-manager.h")]
+    public delegate void UndoFinishCallback (UndoManager manager, Gtk.Widget? w);
+    /*public delegate void UndoFinishCallback (void *data);*/
+    /*public delegate void UndoFinishCallback ();*/
+
+    [CCode (cheader_filename = "marlin-undostack-manager.h")]
+    public abstract class UndoManager : Object
+    {
+        public static UndoManager instance ();
+
+        public signal void request_menu_update (UndoMenuData data);
+
+        public void undo (UndoFinishCallback? cb);
+        public void redo (UndoFinishCallback? cb);
     }
 }
 
