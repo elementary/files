@@ -238,6 +238,7 @@ namespace Marlin.View {
             /* UndoRedo */
             undo_manager = Marlin.UndoManager.instance ();
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
+            undo_actions_set_insensitive ();
 
         }
 
@@ -385,7 +386,16 @@ namespace Marlin.View {
                 main_box.orientation = future_state;
             }
         }
-        
+       
+        private void undo_actions_set_insensitive () {
+            Gtk.Action action;
+
+            action = main_actions.get_action ("Undo");
+            action.set_sensitive (false);
+            action = main_actions.get_action ("Redo");
+            action.set_sensitive (false);
+        }
+
         private void update_undo_actions (UndoMenuData? data = null) {
             Gtk.Action action;
 
@@ -411,8 +421,6 @@ namespace Marlin.View {
         }
 
         private void undo_redo_menu_update_callback (UndoManager manager, UndoMenuData data) {
-            message ("!!!! undo_redo menu update callback");
-            message ("%s %s", data.undo_label, data.redo_label);
             update_undo_actions (data);
         }
 
@@ -507,16 +515,11 @@ namespace Marlin.View {
         }*/
 
         private void action_undo_callback (Gtk.Action action) {
-            message ("action_undo_callback");
-            
-            /*UndoMenuData data = manager.get_menu_data ();
-            update_undo_actions (data, false);*/
             update_undo_actions ();
             undo_manager.undo (null);
         }
         
         private void action_redo_callback (Gtk.Action action) {
-            message ("action_redo_callback");
             update_undo_actions ();
             undo_manager.redo (null);
         }
