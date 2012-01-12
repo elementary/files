@@ -136,7 +136,7 @@ fm_icon_view_zoom_level_changed (FMDirectoryView *view)
     //g_object_set (FM_DIRECTORY_VIEW (view)->name_renderer, "zoom-level", view->zoom_level, NULL);
 
     /* set the new "size" for the icon renderer */
-    g_object_set (FM_DIRECTORY_VIEW (view)->icon_renderer, "size", marlin_zoom_level_to_icon_size (view->zoom_level), NULL);
+    g_object_set (FM_DIRECTORY_VIEW (view)->icon_renderer, "size", marlin_zoom_level_to_icon_size (view->zoom_level), "zoom-level", view->zoom_level, NULL);
 
     exo_icon_view_invalidate_sizes (FM_ABSTRACT_ICON_VIEW (view)->icons);
 }

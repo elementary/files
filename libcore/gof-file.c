@@ -461,7 +461,8 @@ gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
         //if (file->flags != 0 && thumb_path != NULL) {
         if (thumb_path != NULL) {
             //g_message ("show thumb %s %s %d\n", file->uri, thumb_path, size);
-            return marlin_icon_info_lookup_from_path (thumb_path, size * 1.33);
+            //return marlin_icon_info_lookup_from_path (thumb_path, size * 1.33);
+            return marlin_icon_info_lookup_from_path (thumb_path, size);
         }
     }
 

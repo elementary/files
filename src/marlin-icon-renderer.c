@@ -33,7 +33,8 @@
 
 #define EXO_PARAM_READWRITE (G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)
 
-#define MARLIN_EMBLEM_SIZE 18
+//#define MARLIN_EMBLEM_SIZE 18
+#define MARLIN_EMBLEM_MIN_SIZE 7
 
 
 static void marlin_icon_renderer_get_property  (GObject                    *object,
@@ -66,6 +67,7 @@ enum {
     PROP_DROP_FILE,
     PROP_FILE,
     PROP_SIZE,
+    PROP_ZOOM_LEVEL,
     PROP_EMBLEMS,
     PROP_FOLLOW_STATE,
     PROP_SELECTION_HELPERS,
@@ -78,6 +80,7 @@ struct _MarlinIconRendererPrivate
     GOFFile   *file;
     GOFFile   *drop_file;
     gint      size;
+    MarlinZoomLevel zoom_level;
 
     gboolean emblems;
     gboolean follow_state;
@@ -135,6 +138,13 @@ marlin_icon_renderer_class_init (MarlinIconRendererClass *class)
                                                         MARLIN_TYPE_ICON_SIZE,
                                                         MARLIN_ICON_SIZE_SMALL,
                                                         G_PARAM_CONSTRUCT | EXO_PARAM_READWRITE));
+
+    g_object_class_install_property (object_class,
+                                     PROP_ZOOM_LEVEL,
+                                     g_param_spec_enum ("zoom-level", "zoom-level", "zoom-level",
+                                                        MARLIN_TYPE_ZOOM_LEVEL,
+                                                        MARLIN_ZOOM_LEVEL_NORMAL,
+                                                        EXO_PARAM_READWRITE));
 
     g_object_class_install_property (object_class,
                                      PROP_DROP_FILE,
@@ -232,6 +242,9 @@ marlin_icon_renderer_get_property (GObject        *object,
     case PROP_SIZE:
         g_value_set_enum (value, priv->size);
         break;
+    case PROP_ZOOM_LEVEL:
+        g_value_set_enum (value, priv->zoom_level);
+        break;
     case PROP_EMBLEMS:
         g_value_set_boolean (value, priv->emblems);
         break;
@@ -287,6 +300,9 @@ marlin_icon_renderer_set_property (GObject      *object,
         break;
     case PROP_SIZE:
         priv->size = g_value_get_enum (value);
+        break;
+    case PROP_ZOOM_LEVEL:
+        priv->zoom_level = g_value_get_enum (value);
         break;
     case PROP_EMBLEMS:
         priv->emblems = g_value_get_boolean (value);
@@ -526,11 +542,12 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         int position = 0;
         GList* emblems = g_list_first(priv->file->emblems_list);
         
-        /* render the emblems */
-        while(emblems != NULL && position < 4)
+        /* render the emblems
+         * show number of emblems depending on the zoom lvl. */
+        while (emblems != NULL && position < priv->zoom_level + 1)
         {
             /* check if we have the emblem in the icon theme */
-            nicon = marlin_icon_info_lookup_from_name (emblems->data, MARLIN_EMBLEM_SIZE);
+            nicon = marlin_icon_info_lookup_from_name (emblems->data, MARLIN_EMBLEM_MIN_SIZE + 2 * priv->zoom_level);
             pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
             if(pix == NULL) {
                 g_warning ("Can't load icon %s", (char *) emblems->data);
@@ -541,26 +558,36 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
             emblem_area.width = gdk_pixbuf_get_width (pix);
             emblem_area.height = gdk_pixbuf_get_height (pix);
 
+            /* stack emblem on a vertical line begging from the bottom */
+            emblem_area.x = MIN (pix_rect.x + pix_rect.width - emblem_area.width + priv->zoom_level, background_area->x + background_area->width - emblem_area.width);
+            emblem_area.y = pix_rect.y + pix_rect.height - emblem_area.width * (position+1);
+            /* don't show cutted emblems */
+            if (emblem_area.y < background_area->y)
+                break;
+
+#if 0
+            /* nice square shape */
             /* determine a good position for the emblem, depending on the position index */
             switch (position)
             {
-            case 0: /* right/top */
-                emblem_area.x = pix_rect.x + pix_rect.width - MARLIN_EMBLEM_SIZE;
-                emblem_area.y = MAX(pix_rect.y - MARLIN_EMBLEM_SIZE, background_area->y);
+            case 0: /* bottom/right */
+                emblem_area.x = MIN (pix_rect.x + pix_rect.width - emblem_area.width/2, background_area->x + background_area->width - emblem_area.width);
+                emblem_area.y = pix_rect.y + pix_rect.height - emblem_area.width;
                 break;
-            case 1: /* right/bottom */
-                emblem_area.x = pix_rect.x + pix_rect.width - MARLIN_EMBLEM_SIZE;
-                emblem_area.y = pix_rect.y + pix_rect.height - MARLIN_EMBLEM_SIZE;
+            case 1: /* top/right */
+                emblem_area.x = MIN (pix_rect.x + pix_rect.width - emblem_area.width/2, background_area->x + background_area->width - emblem_area.width);
+                emblem_area.y = pix_rect.y + pix_rect.height - emblem_area.width * 2;
                 break;
-            case 2: /* left/bottom */
-                emblem_area.x = pix_rect.x;
-                emblem_area.y = pix_rect.y + pix_rect.height - MARLIN_EMBLEM_SIZE;
+            case 2: /* bottom/left */
+                emblem_area.x = MIN (pix_rect.x + pix_rect.width - emblem_area.width/2 - emblem_area.width, background_area->x + background_area->width - 2 * emblem_area.width);
+                emblem_area.y = pix_rect.y + pix_rect.height - emblem_area.width;
                 break;
-            case 3: /* left/top */
-                emblem_area.x = pix_rect.x;
-                emblem_area.y = MAX(pix_rect.y - MARLIN_EMBLEM_SIZE, background_area->y);
+            case 3: /* top/left */
+                emblem_area.x = MIN (pix_rect.x + pix_rect.width - emblem_area.width/2 - emblem_area.width, background_area->x + background_area->width - 2 * emblem_area.width);
+                emblem_area.y = pix_rect.y + pix_rect.height - emblem_area.width * 2;
                 break;
             }
+#endif
 
             gdk_cairo_set_source_pixbuf (cr, pix, emblem_area.x, emblem_area.y);
             cairo_paint (cr);

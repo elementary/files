@@ -351,8 +351,6 @@ themed_icon_key_free (ThemedIconKey *key)
     g_slice_free (ThemedIconKey, key);
 }
 
-#define MARLIN_ICON_SIZE_LARGEST 128
-
 MarlinIconInfo *
 marlin_icon_info_lookup (GIcon *icon, int size)
 {
@@ -382,7 +380,7 @@ marlin_icon_info_lookup (GIcon *icon, int size)
             //g_message ("CACHED %s stream %s\n", G_STRFUNC, g_icon_to_string (icon));
             return g_object_ref (icon_info);
         } else {
-            lookup_key.size = MARLIN_ICON_SIZE_LARGEST;
+            lookup_key.size = 0; /* get the raw pixbuf */
             icon_info = g_hash_table_lookup (loadable_icon_cache, &lookup_key);
         }
 
@@ -392,18 +390,18 @@ marlin_icon_info_lookup (GIcon *icon, int size)
                                            NULL, NULL, NULL);
             if (stream) {
                 g_message ("%s stream %s\n", G_STRFUNC, g_icon_to_string (icon));
-                pixbuf = gdk_pixbuf_new_from_stream_at_scale (stream,
+                /*pixbuf = gdk_pixbuf_new_from_stream_at_scale (stream,
                                                               MARLIN_ICON_SIZE_LARGEST, 
                                                               MARLIN_ICON_SIZE_LARGEST, 
                                                               TRUE,
-                                                              NULL, NULL);
-                //pixbuf = gdk_pixbuf_new_from_stream (stream,  NULL, NULL);
+                                                              NULL, NULL);*/
+                pixbuf = gdk_pixbuf_new_from_stream (stream,  NULL, NULL);
                 g_input_stream_close (stream, NULL, NULL);
                 g_object_unref (stream);
             }
 
             /* cache the raw pixbuf */
-            key = loadable_icon_key_new (icon, MARLIN_ICON_SIZE_LARGEST);
+            key = loadable_icon_key_new (icon, 0); /* store the raw pixbuf */
             icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
             g_hash_table_insert (loadable_icon_cache, key, g_object_ref (icon_info));
         }

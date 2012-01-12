@@ -917,7 +917,7 @@ static void
 fm_list_view_zoom_level_changed (FMDirectoryView *view)
 {
     /* set the new "size" for the icon renderer */
-    g_object_set (G_OBJECT (view->icon_renderer), "size", marlin_zoom_level_to_icon_size (view->zoom_level), NULL);
+    g_object_set (G_OBJECT (view->icon_renderer), "size", marlin_zoom_level_to_icon_size (view->zoom_level), "zoom-level", view->zoom_level, NULL);
     gint xpad, ypad;
 
     gtk_cell_renderer_get_padding (view->icon_renderer, &xpad, &ypad);
