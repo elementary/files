@@ -8,35 +8,35 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2011-10-18 02:41+0000\n"
-"Last-Translator: Cody Garver <codygarver@gmail.com>\n"
+"PO-Revision-Date: 2012-01-11 08:44+0000\n"
+"Last-Translator: Uoc Nguyen <Unknown>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-01-03 05:03+0000\n"
-"X-Generator: Launchpad (build 14616)\n"
+"X-Launchpad-Export-Date: 2012-01-12 06:07+0000\n"
+"X-Generator: Launchpad (build 14640)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
-msgstr ""
+msgstr "Thuộc tính"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:98
 msgid "Info"
-msgstr ""
+msgstr "Thông tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:103
 msgid "Permissions"
-msgstr ""
+msgstr "Quyền hạn"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:114
 msgid "Preview"
-msgstr ""
+msgstr "Xem trước"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Created"
-msgstr ""
+msgstr "Đã tạo"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:311
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:320
@@ -45,23 +45,23 @@ msgstr "Đã sửa đổi"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:312
 msgid "Last Access"
-msgstr ""
+msgstr "Truy cập lần cuối"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:316
 msgid "Deleted"
-msgstr ""
+msgstr "Đã xoá"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:320
 msgid "MimeType"
-msgstr ""
+msgstr "Loại mime"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr ""
+msgstr "Các loại mime"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
-msgstr ""
+msgstr "Vị trí"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:334
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:316
@@ -70,27 +70,27 @@ msgstr "Đích"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:340
 msgid "Origin Location"
-msgstr ""
+msgstr "Vị trí gốc"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
 msgid "Other application..."
-msgstr ""
+msgstr "Ứng dụng khác..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
 msgid "Open with"
-msgstr ""
+msgstr "Mở với"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
-msgstr ""
+msgstr "Đọc"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:529
 msgid "Write"
-msgstr ""
+msgstr "Ghi"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:534
 msgid "Execute"
-msgstr ""
+msgstr "Thực thi"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:752
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:765
@@ -101,15 +101,15 @@ msgstr "Chủ"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:757
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:769
 msgid "Group"
-msgstr ""
+msgstr "Nhóm"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:773
 msgid "Everyone"
-msgstr ""
+msgstr "Mọi người"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Chọn một ứng dụng để mở "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
@@ -144,7 +144,7 @@ msgstr "Tạo thư mục %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr ""
+msgstr "Tuỳ chọn"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
@@ -156,11 +156,11 @@ msgstr "Tốc độ tự động chọn bằng chuột:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
-msgstr ""
+msgstr "Dùng hộp thoại Thuộc tính dính"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "Default File Manager:"
-msgstr ""
+msgstr "Trình quản lý tệp tin mặc định"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:95
 msgid "Behavior"
@@ -188,15 +188,15 @@ msgstr "Kích thước biểu tượng thanh bên:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "iso"
-msgstr ""
+msgstr "chuẩn"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:138
 msgid "locale"
-msgstr ""
+msgstr "địa phương"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
-msgstr ""
+msgstr "không chính thức"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:146
 msgid "Date format:"
@@ -208,7 +208,7 @@ msgstr "Hiển thị"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:203
 msgid "Extensions"
-msgstr ""
+msgstr "Phần mở rộng"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:95
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:370
@@ -252,188 +252,192 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "FTP công cộng"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (kèm đăng nhập)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "Chia sẻ Windows"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "WebDAV An toàn (HTTPS)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr ""
+msgstr "Đang kết nối..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Không thể nạp danh sách phương thức máy chủ hỗ trợ.\n"
+"Vui lòng kiểm tra bản cài đặt gvfs."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "Không thể mở thư mục \"%s\" trên \"%s\"."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "Không tìm thấy máy chủ ở \"%s\"."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr ""
+msgstr "Thử lại"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Vui lòng kiểm tra chi tiết người dùng."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr ""
+msgstr "Tiếp tục"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1169
 msgid "C_onnect"
-msgstr ""
+msgstr "_Kết nối"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr ""
+msgstr "Kết nối tới máy chủ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr ""
+msgstr "Chi tiết máy chủ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
-msgstr ""
+msgstr "_Máy chủ:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
-msgstr ""
+msgstr "_Cổng:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
-msgstr ""
+msgstr "_Kiểu:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr ""
+msgstr "Chia _sẻ:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr ""
+msgstr "_Thư mục:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr ""
+msgstr "Chi tiết người dùng"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr ""
+msgstr "Tên _miền:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
-msgstr ""
+msgstr "Tên _người dùng:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
-msgstr ""
+msgstr "Mật k_hẩu:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr ""
+msgstr "_Nhớ mật khẩu này"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr ""
+msgstr "Thao tác bị hủy bỏ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr ""
+msgstr "Danh sách thư mục rút gọn"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr ""
+msgstr "Xem gọn"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:623
 msgid "This folder is empty."
-msgstr ""
+msgstr "Thư mục này trống"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:186
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:139
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Không thể đổi tên %s thành %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
-msgstr ""
+msgstr "_Chuyển vào đây"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:784
 msgid "_Copy Here"
-msgstr ""
+msgstr "_Chép vào đây"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr ""
+msgstr "_Liên kết vào đây"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr ""
+msgstr "Dùng làm hình _nền"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr "Thôi"
+msgstr "Huỷ bỏ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr ""
+msgstr "Không thể thực thi tệp \"%s\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Danh sách thư mục biểu tượng"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Xem biểu tượng"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
-msgstr ""
+msgstr "Tùy chỉnh thanh công cụ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:461
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
+"Hãy chọn những mục cần hiển thị trên thanh công cụ. Các mục cũng có thể được "
+"sắp đặt lại bằng cách kéo và thả."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:477
 msgid "Available Items"
-msgstr ""
+msgstr "Các mục có sẵn"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:498
 msgid "Displayed Items"
-msgstr ""
+msgstr "Các mục đã hiển thị"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
@@ -441,7 +445,7 @@ msgstr "Cá nhân"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "Các địa điểm thường dùng và đánh dấu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
@@ -453,11 +457,11 @@ msgstr "Mở sọt rác"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
-msgstr "Thiết bị"
+msgstr "Các thiết bị"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "Các phân vùng nội bộ và thiết bị"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
@@ -471,19 +475,19 @@ msgstr "Gắn kết và mở %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
-msgstr ""
+msgstr "Các vị trí mạng"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
-msgstr ""
+msgstr "Toàn bộ mạng"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
-msgstr "Duyệt nội dung bên trong của mạng"
+msgstr "Duyệt nội dung bên trong mạng"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
-msgstr "_Chạy"
+msgstr "_Bắt đầu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1611
 msgid "_Stop"
@@ -537,7 +541,7 @@ msgstr "Không thể đẩy %s ra"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2197
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr "Không thể thăm dò %s để tìm thay đổi trong vật chứa"
+msgstr "Không thể thăm dò %s để tìm thay đổi trong phương tiện"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2307
 #, c-format
@@ -552,77 +556,76 @@ msgstr "_Mở"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2407
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1902
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Mở trong t_hanh mới"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2414
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1911
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Mở trong cửa _sổ mới"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
-msgstr ""
+msgstr "Xoá"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
-msgstr ""
+msgstr "Đổi tên..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
-msgstr ""
+msgstr "_Gắn kết"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2451
 msgid "_Unmount"
-msgstr ""
+msgstr "Thá_o gắn kết"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2458
 msgid "_Eject"
-msgstr ""
+msgstr "Đẩy _ra"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2466
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1410
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2281
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Đổ _Rác"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3123
 msgid "Icon Size"
-msgstr ""
+msgstr "Kích cỡ Biểu tượng"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3124
 msgid "Icon size"
-msgstr ""
+msgstr "Kích cỡ biểu tượng"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1090
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "Tên tệp không hợp lệ được cung cấp bởi trang kéo XDS"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1248
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr ""
+msgstr "Không thể tạo một liên kết URL \"% s\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1730
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Dùng « %s » để mở mục đã chọn"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1876
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Mở bằng %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1898
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Mở %'d trong _thanh mới"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1907
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Mở %'d trong _cửa sổ mới"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3236
 msgid "Set as default"
@@ -630,11 +633,11 @@ msgstr "Đặt làm mặc định"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3454
 msgid "Set Color:"
-msgstr ""
+msgstr "Đặt mầu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "Không có gì trong clipboard để dán"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:113
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:163
@@ -656,11 +659,11 @@ msgstr[0] "%'d thao tác tập tin đang chạy"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
-msgstr ""
+msgstr "Hiện hộp thoại Chép"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
-msgstr ""
+msgstr "Hủy bỏ mọi hành động đang diễn ra"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
@@ -676,11 +679,11 @@ msgstr "Cách gõ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "Phương thức bố trí"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "Phương thức bố trí"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -688,128 +691,127 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"Duyệt hệ thống tập tin bằng trình quản lý tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "không thể dùng --quit với URI."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:192
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr ""
+msgstr "Đang chuẩn bị"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr ""
+msgstr " (Unicode không hợp lệ)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:199
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
 msgid "_Skip"
-msgstr ""
+msgstr "_Bỏ qua"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr ""
+msgstr "Bỏ qua _tất cả"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr ""
+msgstr "Thử _lại"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr ""
+msgstr "Xoá _tất cả"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr ""
+msgstr "_Thay thế"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr ""
+msgstr "Thay thế _tất cả"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr ""
+msgstr "_Trộn"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr ""
+msgstr "Trộn _tất cả"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "Chép bằng _mọi giá"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:293
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d giây"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:298
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d phút"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:308
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d giờ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:316
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "khoảng %'d giờ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:392
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "Liên kết đến %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:396
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "Liên kết khác đến %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:412
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "liên kết thứ %'d đến %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:416
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "liên kết thứ %'d đến %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:420
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "liên kết thứ %'d đến %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:424
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "liên kết thứ %'d đến %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:616
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:624
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " %'d)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1369
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
+msgstr "Bạn có chắc muốn xóa hoàn toàn « %B » khỏi sọt rác không?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1372
 #, c-format
@@ -820,50 +822,47 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-msgstr[1] ""
+"Bạn có chắc muốn xóa bỏ vĩnh viễn %'d mục đã chọn khỏi Sọt rác không?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1382
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "Nếu bạn xoá một mục, nó sẽ bị mất vĩnh viễn."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1403
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Xóa mọi thứ có trong Thùng rác?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1407
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Mọi thứ trong Thùng Rác sẽ được xóa vĩnh viễn"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1438
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "Bạn có chắc muốn xoá hoàn toàn « %B » không?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1441
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bạn có chắc muốn xóa bỏ hoàn toàn %'d mục đã chọn không?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1466
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1498
 msgid "Deleting files"
-msgstr ""
+msgstr "Đang xóa các tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1492
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d tập tin còn lại cần xoá"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1512
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%T còn lại"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1580
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1614
@@ -871,448 +870,446 @@ msgstr[1] ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1730
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2544
 msgid "Error while deleting."
-msgstr ""
+msgstr "Gặp lỗi trong khi xóa."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1584
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"Không thể xoá một số tập tin trong thư mục « %B », vì bạn không có quyền xem "
+"chúng."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1587
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2603
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3594
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "Gặp lỗi khi lấy thông tin về các tập tin trong thư mục « %B »."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1596
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3603
 msgid "_Skip files"
-msgstr ""
+msgstr "_Bỏ qua tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1617
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Không thể xoá thư mục « %B », vì bạn không có quyền đọc nó."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1620
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2642
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3639
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "Gặp lỗi khi đọc thư mục « %B »."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1654
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "Không thể gỡ bỏ thư mục %B."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1731
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "Gặp lỗi khi xoá %B."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1807
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1819
 msgid "Moving files to trash"
-msgstr ""
+msgstr "Đang chuyển tập tin vào sọt rác"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1821
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d tập tin còn lại cần chuyển vào sọt rác"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1872
 msgid "Cannot move file to trash, do you want to delete immediately?"
 msgstr ""
+"Không thể chuyển tập tin vào sọt rác, bạn có muốn xóa nó ngay lập tức không?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1873
 msgid "The file \"%B\" cannot be moved to the trash."
-msgstr ""
+msgstr "Không thể chuyển tập tin « %B » vào Sọt rác."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2049
 msgid "Trashing Files"
-msgstr ""
+msgstr "Đang bỏ tập tin vào sọt rác"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2051
 msgid "Deleting Files"
-msgstr ""
+msgstr "Đang xoá các tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2114
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "Không thể đẩy %V ra"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2116
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "Không thể tháo gắn kết %V"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2271
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "Bạn có muốn đổ sọt rác trước khi bỏ gắn kết không?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2273
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"Để lấy lại vùng trống trên phân vùng này, cần phải đổ sọt rác. Mọi thứ trong "
+"sọt rác sẽ bị xoá vĩnh viễn."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2279
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "_Không đổ rác"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2334
 msgid "Emptying the trash"
-msgstr ""
+msgstr "Đang đổ rác"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2401
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "Không thể gắn kết %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2479
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Chuẩn bị chép %'d tập tin (%S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2485
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Chuẩn bị chuyển %'d tập tin (%S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2491
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Chuẩn bị xoá %'d tập tin (%S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2497
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Chuẩn bị chuyển %'d tập tin vào sọt rác"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2540
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3460
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3586
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3631
 msgid "Error while copying."
-msgstr ""
+msgstr "Gặp lỗi trong khi sao chép."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2542
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3584
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3629
 msgid "Error while moving."
-msgstr ""
+msgstr "Gặp lỗi trong khi di chuyển."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2546
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "Gặp lỗi khi chuyển tập tin vào sọt rác"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2600
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
+"Không thể xử lý các tập tin trong thư mục « %B », vì bạn không có quyền xem "
+"chúng."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2639
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Không thể xử lý thư mục « %B », vì bạn không có quyền đọc nó."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2716
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Không thể xử lý tập tin « %B », vì bạn không có quyền đọc nó."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2719
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "Gặp lỗi khi lấy thông tin về « %B »."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2819
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2861
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2894
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2924
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "Gặp lỗi khi sao chép vào « %B »."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2823
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "Bạn không có quyền truy cập đến thư mục đích."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2825
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "Gặp lỗi khi lấy thông tin về đích đến."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2862
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "Đích đến không phải là một thư mục."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2895
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
+"Không đủ dung lượng ở đích đến. Hãy thử xóa một số tập tin để có thêm chỗ "
+"trống."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2897
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "Có sẵn %S, nhưng yêu cầu %S."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2925
 msgid "The destination is read-only."
-msgstr ""
+msgstr "Đích đến chỉ cho phép đọc."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2986
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "Đang di chuyển « %B » sang « %B »"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2987
 msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+msgstr "Đang sao chép « %B » sang « %B »"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2991
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "Đang nhân đôi « %B »"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2995
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Đang di chuyển %'d tập tin (trong \"%B\") sang \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2998
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Đang sao chép %'d tập tin (trong \"%B\") sang \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3005
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Đang nhân đôi %'d tập tin (trong \"%B\")"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3014
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Đang di chuyển %'d tập tin sang \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3018
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Đang sao chép %'d tập tin sang \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3023
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Đang nhân đôi %'d tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3074
 #, c-format
 msgid "%S of %S"
-msgstr ""
+msgstr "%S trên %S"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3085
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%S trên %S — %T còn lại (%S/giây)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3464
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
+"Không thể sao chép thư mục « %B », vì bạn không có quyền tạo nó ở đích đến."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3467
 msgid "There was an error creating the folder \"%B\"."
-msgstr ""
+msgstr "Gặp lỗi khi tạo thư mục « %B »."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3591
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
+"Không thể sao chép các tập tin trong thư mục « %B », vì bạn không có quyền "
+"xem chúng."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3636
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Không thể sao chép thư mục « %B », vì bạn không có quyền đọc nó."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3681
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4378
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4952
 msgid "Error while moving \"%B\"."
-msgstr ""
+msgstr "Gặp lỗi khi di chuyển « %B »."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3682
 msgid "Could not remove the source folder."
-msgstr ""
+msgstr "Không thể gỡ bỏ thư mục nguồn."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3767
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3808
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4380
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4451
 msgid "Error while copying \"%B\"."
-msgstr ""
+msgstr "Gặp lỗi khi sao chép « %B »."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3768
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr ""
+msgstr "Không thể gỡ bỏ tập tin khỏi thư mục đã tồn tại %F."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3809
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr ""
+msgstr "Không thể gỡ bỏ tập tin đã tồn tại %F."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4138
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4796
 msgid "You cannot move a folder into itself."
-msgstr ""
+msgstr "Bạn không thể di chuyển một thư mục vào chính nó."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4139
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4797
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "Bạn không thể sao chép một thư mục vào trong chính nó."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4140
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4798
 msgid "The destination folder is inside the source folder."
-msgstr ""
+msgstr "Thư mục đích nằm bên trong thư mục nguồn."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4171
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "Bạn không thể di chuyển một tập tin vào chính nó"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4172
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "Bạn không thể sao tập tin lên chính nó."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4173
 msgid "The source file would be overwritten by the destination."
-msgstr ""
+msgstr "Tập tin nguồn sẽ ghi đè vào tập tin đích."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4382
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
+msgstr "Không thể gỡ bỏ khỏi %F tập tin đã có cùng tên."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4452
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr ""
+msgstr "Gặp lỗi khi sao chép tập tin vào %F."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4680
 msgid "Copying Files"
-msgstr ""
+msgstr "Đang chép các tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4696
 msgid "Preparing to move to \"%B\""
-msgstr ""
+msgstr "Chuẩ bị di chuyển đến \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4708
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Chuẩn bị di chuyển %'d tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4953
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr ""
+msgstr "Gặp lỗi khi di chuyển tập tin vào %F."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5216
 msgid "Moving Files"
-msgstr ""
+msgstr "Đang di chuyển các tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5232
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "Đang tạo liên kết tới \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5243
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Đang tạo liên kết tới %'d tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5373
 msgid "Error while creating link to %B."
-msgstr ""
+msgstr "Gặp lỗi khi tạo liên kết tới « %B »."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5375
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "Chỉ hỗ trợ liên kết mềm cho tập tin cục bộ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5378
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "Đích đến này không hỗ trợ liên kết mềm."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5381
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr ""
+msgstr "Gặp lỗi khi tạo liên kết mềm trong %F."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5684
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5687
 msgid "Setting permissions"
-msgstr ""
+msgstr "Thiết lập quyền hạn"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5929
 msgid "untitled folder"
-msgstr ""
+msgstr "thư mục không tên"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5937
 msgid "new file"
-msgstr ""
+msgstr "tập tin mới"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6087
 msgid "Error while creating directory %B."
-msgstr ""
+msgstr "Gặp lỗi khi tạo thư mục %B."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6089
 msgid "Error while creating file %B."
-msgstr ""
+msgstr "Gặp lỗi khi tạo tập tin %B."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6091
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr ""
+msgstr "Gặp lỗi khi tạo thư mục trong %F."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6387
 msgid "Emptying Trash"
-msgstr ""
+msgstr "Đang làm trống sọt rác"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:267
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "Không thể xác định vị trí gốc của \"%s\" "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:270
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "Không thể khôi phục mục được chọn từ sọt rác"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "Gộp thư mục \"%s\"?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
@@ -1320,164 +1317,166 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Sẽ hỏi xác nhận thay thế tập tin đã có trong thư mục với tập tin mới trong "
+"khi gộp."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Đã có một thư mục khác cũ hơn có cùng tên trong \"%s\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:159
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Đã có một thư mục khác mới hơn có cùng tên trong \"%s\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:163
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Đã có một thư mục khác có cùng tên trong \"%s\"."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Việc thay thế sẽ xóa toàn bộ tập tin trong thư mục."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:170
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "Thay thế thư mục \"%s\"?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:172
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Đã có một thư mục khác có cùng tên trong \"%s\"."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:177
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "Thay thế tập tin \"%s\"?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:179
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Việc thay thế sẽ ghi chồng lên nội dung của nó."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:183
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Đã có một tập tin cũ hơn có cùng tên trong \"%s\"."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Đã có một tập tin khác mới hơn có cùng tên trong \"%s\"."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Đã có một tập tin khác có cùng tên trong \"%s\"."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
 msgid "Original file"
-msgstr ""
+msgstr "Tập tin gốc"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
 msgid "Size:"
-msgstr ""
+msgstr "Kích thước"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr ""
+msgstr "Loại:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:260
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:291
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr ""
+msgstr "Sửa cuối:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
 msgid "Replace with"
-msgstr ""
+msgstr "Thay thế bởi"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr ""
+msgstr "Gộp"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "_Chọn tên mới cho đích đến"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:710
 msgid "Reset"
-msgstr ""
+msgstr "Thiết lập lại"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:722
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Áp dụng cho tất cả tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
 msgid "Re_name"
-msgstr ""
+msgstr "_Đổi tên"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:744
 msgid "Replace"
-msgstr ""
+msgstr "Th_ay thế"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:817
 msgid "File conflict"
-msgstr ""
+msgstr "Mâu thuẫn tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr ""
+msgstr "Hiện _chi tiết hơn"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:245
 #, c-format
 msgid "link to %s"
-msgstr "liên kết tới %s"
+msgstr "liên kết tới « %s »"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1603
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr ""
+msgstr "Không thể phân tích tập tin desktop: %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1641
 msgid "No Exec field specified"
-msgstr ""
+msgstr "Trường Thực Thi chưa được xác định"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1661
 msgid "No URL field specified"
-msgstr ""
+msgstr "Chưa xác định trường URL"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1667
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "Tập tin desktop không hợp lệ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1955
 msgid "Slashes are not allowed in filenames"
-msgstr ""
+msgstr "Không cho phép dấu gạch chéo trong tên tập tin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1975
 msgid "Toplevel files cannot be renamed"
-msgstr ""
+msgstr "Không thể thay đổi tên của tập tin cấp đầu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libwidgets/LocationBar.vala:709
 #, c-format
