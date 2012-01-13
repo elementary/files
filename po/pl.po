@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-01-05 13:17+0000\n"
+"PO-Revision-Date: 2012-01-12 15:38+0000\n"
 "Last-Translator: Filip Chabik <hadret@gmail.com>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-01-06 05:24+0000\n"
-"X-Generator: Launchpad (build 14637)\n"
+"X-Launchpad-Export-Date: 2012-01-13 05:02+0000\n"
+"X-Generator: Launchpad (build 14664)\n"
 "Language: pl\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
@@ -603,7 +603,7 @@ msgstr "Rozmiar ikony"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1090
 msgid "Invalid filename provided by XDS drag site"
-msgstr "Invalid filename provided by XDS drag site"
+msgstr "Nazwa dostarczona przez XDS jest nieprawidłowa"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1248
 #, c-format
