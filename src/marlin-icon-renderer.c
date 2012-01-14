@@ -63,7 +63,7 @@ static void marlin_icon_renderer_render     (GtkCellRenderer            *cell,
 
 enum {
     PROP_0,
-    PROP_PIXBUF,
+    //PROP_PIXBUF,
     PROP_DROP_FILE,
     PROP_FILE,
     PROP_SIZE,
@@ -81,6 +81,7 @@ struct _MarlinIconRendererPrivate
     GOFFile   *drop_file;
     gint      size;
     MarlinZoomLevel zoom_level;
+    double scale;
 
     gboolean emblems;
     gboolean follow_state;
@@ -124,13 +125,13 @@ marlin_icon_renderer_class_init (MarlinIconRendererClass *class)
     cell_class->get_size = marlin_icon_renderer_get_size;
     cell_class->render = marlin_icon_renderer_render;
 
-    g_object_class_install_property (object_class,
+    /*g_object_class_install_property (object_class,
                                      PROP_PIXBUF,
                                      g_param_spec_object ("pixbuf",
                                                           "Pixbuf Object",
                                                           "The pixbuf to render",
                                                           GDK_TYPE_PIXBUF,
-                                                          EXO_PARAM_READWRITE));
+                                                          EXO_PARAM_READWRITE));*/
 
     g_object_class_install_property (object_class,
                                      PROP_SIZE,
@@ -207,8 +208,8 @@ marlin_icon_renderer_finalize (GObject *object)
     MarlinIconRenderer *cellpixbuf = MARLIN_ICON_RENDERER (object);
     MarlinIconRendererPrivate *priv = cellpixbuf->priv;
 
-    if (priv->pixbuf)
-        g_object_unref (priv->pixbuf);
+    /*if (priv->pixbuf)
+        g_object_unref (priv->pixbuf);*/
     if (priv->file)
         g_object_unref (priv->file);
     if (priv->drop_file)
@@ -230,9 +231,9 @@ marlin_icon_renderer_get_property (GObject        *object,
 
     switch (param_id)
     {
-    case PROP_PIXBUF:
+    /*case PROP_PIXBUF:
         g_value_set_object (value, priv->pixbuf);
-        break;
+        break;*/
     case PROP_DROP_FILE:
         g_value_set_object (value, priv->drop_file);
         break;
@@ -271,32 +272,24 @@ marlin_icon_renderer_set_property (GObject      *object,
 
     switch (param_id)
     {
-    case PROP_PIXBUF:
+    /*case PROP_PIXBUF:
         if (priv->pixbuf)
             g_object_unref (priv->pixbuf);
         priv->pixbuf = (GdkPixbuf*) g_value_dup_object (value);
-        break;
+        break;*/
     case PROP_DROP_FILE:
         if (G_LIKELY (priv->drop_file != NULL))
             g_object_unref (G_OBJECT (priv->drop_file));
         priv->drop_file = (gpointer) g_value_dup_object (value);
         break;
     case PROP_FILE:
-        if (G_LIKELY (priv->file)) {
-            g_object_unref (G_OBJECT (priv->file));
-            priv->file = NULL;
-        }
-        if (priv->pixbuf) {
-            g_object_unref (priv->pixbuf);
-            priv->pixbuf = NULL;
-        }
+        //_g_object_unref0 (priv->pixbuf);
+        _g_object_unref0 (priv->file);
         priv->file = (GOFFile*) g_value_dup_object (value);
-        //g_warning ("%s file %s %u", G_STRFUNC, priv->file->uri, G_OBJECT (priv->file)->ref_count);
-        if (G_LIKELY (priv->file)) {
+        if (priv->file) {
             gof_file_update_icon (priv->file, priv->size);
-            priv->pixbuf = _g_object_ref0 (priv->file->pix);
-            //g_object_notify (object, "pixbuf");
-        } 
+            priv->pixbuf = priv->file->pix;
+        }
         break;
     case PROP_SIZE:
         priv->size = g_value_get_enum (value);
@@ -339,6 +332,15 @@ marlin_icon_renderer_new (void)
 }
 
 static void
+invalidate_size (gint *width, gint *height)
+{
+    if (width)
+        *width = -1;
+    if (height)
+        *height = -1;
+}
+
+static void
 marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
                                GtkWidget          *widget,
                                const GdkRectangle *cell_area,
@@ -355,7 +357,11 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
     gint calc_height;
     gint xpad, ypad;
 
-    g_return_if_fail (priv->pixbuf);
+    //g_return_if_fail (priv->pixbuf);
+    if (!(priv->pixbuf && GDK_IS_PIXBUF (priv->pixbuf))) {
+        invalidate_size (width, height);
+        return;
+    }
 
     if (priv->pixbuf)
     {
@@ -392,11 +398,18 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
         if (y_offset) *y_offset = 0;
     }
 
+    /* Even if the last new pixbuf corresponding to the last requested size isn't generated 
+    yet, we can still determine its dimensions. This allow to asyncronously load the thumbnails 
+    pixbuf */
+    int s = MAX (pixbuf_width, pixbuf_height);
+    priv->scale = (double)priv->size / s;
+
     if (width)
-        *width = calc_width;
+        *width = calc_width * priv->scale;
 
     if (height)
-        *height = calc_height;
+        *height = calc_height * priv->scale;
+
 }
 
 static void
@@ -420,9 +433,9 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GtkStateFlags state;
     MarlinIconInfo *nicon;
 
-    //g_return_if_fail (priv->file && priv->pixbuf);
-    if (!(priv->file && priv->pixbuf))
-        return;
+    g_return_if_fail (priv->file && priv->pixbuf && GDK_IS_PIXBUF (priv->pixbuf));
+    /*if (!(priv->file && priv->pixbuf))
+        return;*/
 
     marlin_icon_renderer_get_size (cell, widget, (GdkRectangle *) cell_area,
                                    &pix_rect.x, 
@@ -439,10 +452,9 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     if (!gdk_rectangle_intersect (cell_area, &pix_rect, &draw_rect))
         return;
     
-    pixbuf = _g_object_ref0 (priv->pixbuf);
+    pixbuf = g_object_ref (priv->pixbuf);
 
     //g_debug ("%s %s %u %u\n", G_STRFUNC, priv->file->uri, G_OBJECT (priv->file)->ref_count, G_OBJECT (priv->pixbuf)->ref_count);
-    //g_warning ("%s file %s %u", G_STRFUNC, priv->file->uri, G_OBJECT (priv->file)->ref_count);
 
     /* drop state */
     if (priv->file == priv->drop_file) {
@@ -510,10 +522,10 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         g_object_unref (pixbuf);
         pixbuf = stated;
     }*/
-    
+   
     gtk_render_icon (context, cr, pixbuf,
                      pix_rect.x, pix_rect.y);
-
+    
     gtk_style_context_restore (context);
     g_object_unref (pixbuf);
 

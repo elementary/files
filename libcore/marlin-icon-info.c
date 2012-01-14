@@ -63,11 +63,14 @@ marlin_icon_info_is_fallback (MarlinIconInfo  *icon)
 }
 
 static void
-pixbuf_toggle_notify (gpointer      info,
-                      GObject      *object,
-                      gboolean      is_last_ref)
+pixbuf_toggle_notify (gpointer info, GObject *object, gboolean is_last_ref)
 {
-    MarlinIconInfo  *icon = info;
+    MarlinIconInfo *icon;
+    
+    g_return_if_fail (object != NULL);
+    g_return_if_fail (info != NULL && MARLIN_IS_ICON_INFO (info));
+
+    icon = (MarlinIconInfo *) info;
 
     /*g_warning ("%s %s %s ref_count %u", G_STRFUNC, icon->display_name, 
       icon->icon_name, G_OBJECT (icon->pixbuf)->ref_count);*/
@@ -83,17 +86,15 @@ pixbuf_toggle_notify (gpointer      info,
 static void
 marlin_icon_info_finalize (GObject *object)
 {
-    MarlinIconInfo *icon;
+    MarlinIconInfo *icon = MARLIN_ICON_INFO (object);
 
-    icon = MARLIN_ICON_INFO (object);
-
-    if (icon->pixbuf) {
+    if (icon->pixbuf != NULL) {
         g_warning ("%s %s %s ref_count %u", G_STRFUNC, icon->display_name, 
                    icon->icon_name, G_OBJECT (icon->pixbuf)->ref_count);
 
         /*g_object_remove_toggle_ref (G_OBJECT (icon->pixbuf),
-          pixbuf_toggle_notify,
-          icon);*/
+                                    pixbuf_toggle_notify,
+                                    icon);*/
         g_clear_object (&icon->pixbuf);
     }
 
@@ -122,12 +123,10 @@ marlin_icon_info_new_for_pixbuf (GdkPixbuf *pixbuf)
 
     icon = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
     icon->pixbuf = pixbuf;
-    /*if (icon->pixbuf != NULL) {*/
-    if (icon->pixbuf) {
-        g_object_add_toggle_ref (G_OBJECT (icon->pixbuf),
+    if (pixbuf != NULL) {
+        g_object_add_toggle_ref (G_OBJECT (pixbuf),
                                  pixbuf_toggle_notify,
                                  icon);
-        //g_object_unref (icon->pixbuf);
     }
 
     return icon;
@@ -145,11 +144,10 @@ marlin_icon_info_new_for_icon_info (GtkIconInfo *icon_info)
     icon = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
 
     icon->pixbuf = gtk_icon_info_load_icon (icon_info, NULL);
-    if (icon->pixbuf)
+    if (icon->pixbuf != NULL)
         g_object_add_toggle_ref (G_OBJECT (icon->pixbuf),
                                  pixbuf_toggle_notify,
                                  icon);
-    /*g_object_unref (icon->pixbuf);*/
 
     /*icon->got_embedded_rect = gtk_icon_info_get_embedded_rect (icon_info,
       &icon->embedded_rect);
@@ -194,22 +192,22 @@ static guint reap_cache_timeout = 0;
 static guint64 time_now;
 
 static gboolean
-reap_old_icon (gpointer  key,
-               gpointer  value,
-               gpointer  user_info)
+reap_old_icon (LoadableIconKey *key, gpointer value, gpointer user_info)
 {
-    MarlinIconInfo *icon = value;
+    MarlinIconInfo *icon;
     gboolean *reapable_icons_left = user_info;
 
-    g_return_val_if_fail (MARLIN_IS_ICON_INFO (icon), TRUE);
+    g_return_val_if_fail (value != NULL && MARLIN_IS_ICON_INFO (value), TRUE);
 
-    //g_message ("%s %s %u %u\n", G_STRFUNC, icon->icon_name, time_now, icon->last_use_time);
+    icon = (MarlinIconInfo *) value;
+    //g_return_val_if_fail (icon->pixbuf != NULL && GDK_IS_PIXBUF (icon->pixbuf), TRUE);
+
+    /*char *str_icon = g_icon_to_string (key->icon);
+    g_message ("%s %s %d %u\n", G_STRFUNC, str_icon, key->size, G_OBJECT (icon->pixbuf)->ref_count);
+    g_free (str_icon);*/
     /* sole owner */
     if (icon->pixbuf && G_IS_OBJECT (icon->pixbuf) && G_OBJECT (icon->pixbuf)->ref_count == 1) {
         if (time_now - icon->last_use_time > 30 * MICROSEC_PER_SEC) {
-            /*g_warning ("DELETE %s %s %u ref_count %u\n", G_STRFUNC, icon->icon_name, 
-              time_now - icon->last_use_time,
-              G_OBJECT (icon->pixbuf)->ref_count);*/
             /* This went unused 30 secs ago. reap */
             return TRUE;
         } else {
@@ -271,6 +269,17 @@ marlin_icon_info_infos_caches (void)
         g_warning (">>> %s themed_icon_cache %u", G_STRFUNC, 
                    g_hash_table_size (themed_icon_cache));
     }
+
+    /*GList *l, *p;
+    GList *list = g_hash_table_get_keys (loadable_icon_cache);
+    GList *lvals = g_hash_table_get_values (loadable_icon_cache);
+    for (l = list, p = lvals; l!= NULL && p!=NULL; l= l->next, p = p->next) {
+        LoadableIconKey *key = l->data;
+        MarlinIconInfo *icon_info = MARLIN_ICON_INFO (p->data);
+        char *str_icon = g_icon_to_string (key->icon);
+        g_message ("reamining key %d %s val ref_count %u", key->size, str_icon, G_OBJECT (icon_info)->ref_count);
+        g_free (str_icon);
+    }*/
 }
 
 void
@@ -351,6 +360,42 @@ themed_icon_key_free (ThemedIconKey *key)
     g_slice_free (ThemedIconKey, key);
 }
 
+static void destroy_cache_entry (MarlinIconInfo *icon_info)
+{
+    g_return_if_fail (icon_info != NULL);
+    g_clear_object (&icon_info);
+}
+
+#if 0
+GdkPixbuf *
+test_get_pixbuf_at_size_from_raw_pixbuf (GdkPixbuf *pixbuf, gsize forced_size);
+
+//static MarlinIconInfo *
+static GdkPixbuf *
+marlin_icon_info_get_and_cache_raw_pixbuf (GIcon *icon)
+{
+    MarlinIconInfo *icon_info = NULL;
+    GdkPixbuf *pixbuf;
+    char *str_icon = g_icon_to_string (icon);
+  
+    g_message ("%s stream %s\n", G_STRFUNC, str_icon);
+    pixbuf = gdk_pixbuf_new_from_file (str_icon, NULL);
+            
+    if (pixbuf != NULL) {
+        /* cache the raw pixbuf */
+        LoadableIconKey *key = loadable_icon_key_new (icon, 0);
+        icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
+        /*icon_info = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
+        icon_info->pixbuf = pixbuf;*/
+        g_hash_table_insert (loadable_icon_cache, key, icon_info);
+    }
+    g_free (str_icon);
+
+    //return icon_info;
+    return pixbuf;
+}
+#endif
+
 MarlinIconInfo *
 marlin_icon_info_lookup (GIcon *icon, int size)
 {
@@ -358,59 +403,67 @@ marlin_icon_info_lookup (GIcon *icon, int size)
     GdkPixbuf *pixbuf = NULL;
     GdkPixbuf *scaled_pixbuf = NULL;
 
+    g_return_val_if_fail (icon && G_IS_ICON (icon), NULL);
     if (G_IS_LOADABLE_ICON (icon)) {
         LoadableIconKey lookup_key;
         LoadableIconKey *key;
-        GInputStream *stream;
 
         if (loadable_icon_cache == NULL) {
             loadable_icon_cache =
                 g_hash_table_new_full ((GHashFunc)loadable_icon_key_hash,
                                        (GEqualFunc)loadable_icon_key_equal,
                                        (GDestroyNotify) loadable_icon_key_free,
-                                       (GDestroyNotify) g_object_unref);
+                                       //(GDestroyNotify) g_object_unref);
+                                       (GDestroyNotify) destroy_cache_entry);
         }
 
         lookup_key.icon = icon;
         lookup_key.size = size;
-
         icon_info = g_hash_table_lookup (loadable_icon_cache, &lookup_key);
-
-        if (icon_info) {
+        if (icon_info != NULL) {
             //g_message ("CACHED %s stream %s\n", G_STRFUNC, g_icon_to_string (icon));
             return g_object_ref (icon_info);
+        }
+#if 0
+            
+        /* get the raw pixbuf */
+        lookup_key.size = 0; 
+        icon_info = g_hash_table_lookup (loadable_icon_cache, &lookup_key);
+
+        if (icon_info == NULL) {
+            //icon_info = marlin_icon_info_get_and_cache_raw_pixbuf (icon);
+            pixbuf = marlin_icon_info_get_and_cache_raw_pixbuf (icon);
         } else {
-            lookup_key.size = 0; /* get the raw pixbuf */
-            icon_info = g_hash_table_lookup (loadable_icon_cache, &lookup_key);
+            //pixbuf = marlin_icon_info_get_pixbuf_nodefault (icon_info);
+            pixbuf = g_object_ref (icon_info->pixbuf);
+            icon_info->last_use_time = g_get_monotonic_time ();
         }
 
-        if (!icon_info) {
-            stream = g_loadable_icon_load (G_LOADABLE_ICON (icon),
-                                           size,
-                                           NULL, NULL, NULL);
-            if (stream) {
-                g_message ("%s stream %s\n", G_STRFUNC, g_icon_to_string (icon));
-                /*pixbuf = gdk_pixbuf_new_from_stream_at_scale (stream,
-                                                              MARLIN_ICON_SIZE_LARGEST, 
-                                                              MARLIN_ICON_SIZE_LARGEST, 
-                                                              TRUE,
-                                                              NULL, NULL);*/
-                pixbuf = gdk_pixbuf_new_from_stream (stream,  NULL, NULL);
-                g_input_stream_close (stream, NULL, NULL);
-                g_object_unref (stream);
-            }
+        if (pixbuf == NULL)
+            return marlin_icon_info_new_for_pixbuf (NULL);
 
-            /* cache the raw pixbuf */
-            key = loadable_icon_key_new (icon, 0); /* store the raw pixbuf */
-            icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
+        scaled_pixbuf = test_get_pixbuf_at_size_from_raw_pixbuf (pixbuf, size);
+        icon_info = marlin_icon_info_new_for_pixbuf (scaled_pixbuf);
+        /* destroy the rawpixbuf it has 30sec to be reused */
+        g_object_unref (pixbuf);
+
+        if (scaled_pixbuf != NULL) {
+            key = loadable_icon_key_new (icon, size);
             g_hash_table_insert (loadable_icon_cache, key, g_object_ref (icon_info));
         }
-
-        scaled_pixbuf = marlin_icon_info_get_pixbuf_at_size (icon_info, size);
-
-        key = loadable_icon_key_new (icon, size);
-        icon_info = marlin_icon_info_new_for_pixbuf (scaled_pixbuf);
-        g_hash_table_insert (loadable_icon_cache, key, g_object_ref (icon_info));
+#endif
+//#if 0
+        char *str_icon = g_icon_to_string (icon);
+        pixbuf = gdk_pixbuf_new_from_file_at_size (str_icon, size, size, NULL);
+        /*icon_info = g_object_new (MARLIN_TYPE_ICON_INFO, NULL);
+        icon_info->pixbuf = pixbuf;*/
+        icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
+        if (pixbuf != NULL) {
+            key = loadable_icon_key_new (icon, size);
+            g_hash_table_insert (loadable_icon_cache, key, g_object_ref (icon_info));
+            g_free (str_icon);
+        }
+//#endif
 
         return icon_info;
     } else if (G_IS_THEMED_ICON (icon)) {
@@ -595,6 +648,36 @@ marlin_icon_info_get_pixbuf_nodefault_at_size (MarlinIconInfo  *icon,
 }
 #endif
 
+#if 0
+GdkPixbuf *
+test_get_pixbuf_at_size_from_raw_pixbuf (GdkPixbuf *pixbuf, gsize forced_size)
+{
+    GdkPixbuf *scaled_pixbuf = NULL;
+    int w, h, s;
+    double scale;
+
+    g_return_val_if_fail (pixbuf != NULL && GDK_IS_PIXBUF (pixbuf), NULL);
+
+    w = gdk_pixbuf_get_width (pixbuf);
+    h = gdk_pixbuf_get_height (pixbuf);
+    s = MAX (w, h);
+    if (s == forced_size) {
+        /* we have to return an owned object */
+        return gdk_pixbuf_copy (pixbuf);
+    }
+
+    scale = (double)forced_size / s;
+    int w_scaled = w * scale;
+    int h_scaled = h * scale;
+    if (w_scaled > 0 && h_scaled > 0)
+        scaled_pixbuf = gdk_pixbuf_scale_simple (pixbuf,
+                                                 w_scaled, h_scaled,
+                                                 GDK_INTERP_BILINEAR);
+    //g_message ("scale: %f s: %d w_scaled: %d h_scaled: %d", scale, s, w_scaled, h_scaled);
+    return scaled_pixbuf;
+}
+#endif
+
 GdkPixbuf *
 marlin_icon_info_get_pixbuf_at_size (MarlinIconInfo *icon, gsize forced_size)
 {
@@ -603,7 +686,6 @@ marlin_icon_info_get_pixbuf_at_size (MarlinIconInfo *icon, gsize forced_size)
     int w, h, s;
     double scale;
 
-    //pixbuf = marlin_icon_info_get_pixbuf (icon);
     pixbuf = marlin_icon_info_get_pixbuf_nodefault (icon);
     if (pixbuf == NULL)
         return NULL;
@@ -612,7 +694,7 @@ marlin_icon_info_get_pixbuf_at_size (MarlinIconInfo *icon, gsize forced_size)
     h = gdk_pixbuf_get_height (pixbuf);
     s = MAX (w, h);
     if (s == forced_size) {
-        return pixbuf;
+        return g_object_ref (pixbuf);
     }
 
     scale = (double)forced_size / s;
@@ -623,6 +705,7 @@ marlin_icon_info_get_pixbuf_at_size (MarlinIconInfo *icon, gsize forced_size)
                                                  w_scaled, h_scaled,
                                                  GDK_INTERP_BILINEAR);
     g_object_unref (pixbuf);
+
     return scaled_pixbuf;
 }
 

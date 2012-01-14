@@ -294,7 +294,10 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     if (gof_directory_async_is_empty (directory))
         gtk_widget_queue_draw (GTK_WIDGET (view));
 
-    gof_directory_async_threaded_load_thumbnails (view->details->slot->directory);
+    MarlinZoomLevel zoom;
+    g_object_get (view, "zoom-level", &zoom, NULL);
+    int size = marlin_zoom_level_to_icon_size (zoom);
+    gof_directory_async_threaded_load_thumbnails (view->details->slot->directory, size);
     //g_signal_emit (view, signals[DIRECTORY_LOADED], 0, directory);
 }
 
@@ -400,6 +403,18 @@ fm_directory_view_remove_subdirectory (FMDirectoryView *view, GOFDirectoryAsync 
     fm_directory_view_disconnect_directory_handlers (view, directory);
 }
 
+static void
+zoom_level_changed (FMDirectoryView *view, GParamSpec *pspec)
+{
+    MarlinZoomLevel zoom;
+
+    if (!fm_directory_view_get_loading (view)) {
+        g_object_get (view, "zoom-level", &zoom, NULL);
+        gof_directory_async_queue_load_thumbnails (view->details->slot->directory, 
+                                                   marlin_zoom_level_to_icon_size (zoom));
+    }
+}
+
 
 static void
 fm_directory_view_init (FMDirectoryView *view)
@@ -456,6 +471,9 @@ fm_directory_view_init (FMDirectoryView *view)
     /* connect to size allocation signals for generating thumbnail requests */
     g_signal_connect_after (G_OBJECT (view), "size-allocate",
                             G_CALLBACK (fm_directory_view_size_allocate), NULL);
+
+    g_signal_connect (G_OBJECT (view), "notify::zoom-level", 
+                      G_CALLBACK (zoom_level_changed), NULL);
 
     view->details->dir_action_group = NULL;
     view->details->dir_merge_id = 0;

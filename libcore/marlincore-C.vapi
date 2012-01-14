@@ -143,6 +143,7 @@ namespace GOF {
         public string formated_type;
         public string tagstype;
         public Gdk.Pixbuf pix;
+        public int pix_size;
 
         public FileType file_type;
         public bool is_hidden;

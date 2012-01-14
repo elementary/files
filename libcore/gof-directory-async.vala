@@ -95,15 +95,11 @@ public class GOF.Directory.Async : Object
 
     private static void toggle_ref_notify(void* data, GLib.Object object, bool is_last)
     {
-        warning ("Async toggle_ref_notify %s", (object as Async).file.uri);
-
-        /*foreach (var file in (object as Async).file_hash.get_values ()) {
-            message ("file %s %u", file.uri, file.ref_count);
-        }*/
-        //warning ("dir ref_count %u", object.ref_count);
-        directory_cache.remove (((Async) object).file.location);
-        /*object.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
-        warning ("dir ref_count %u", object.ref_count);*/
+        if (is_last) {
+            warning ("Async toggle_ref_notify %s", (object as Async).file.uri);
+            directory_cache.remove (((Async) object).file.location);
+            /*object.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);*/
+        }
     }
 
     public void cancel ()
@@ -486,30 +482,64 @@ public class GOF.Directory.Async : Object
         return sorted_dirs;
     }
 
-    
+    private bool thumbs_stop;
+    private bool thumbs_thread_runing;
     private void *load_thumbnails_func ()
     {
+        thumbs_thread_runing = true;
+        thumbs_stop = false;
         foreach (var gof in file_hash.get_values()) {
-            if (cancellable.is_cancelled ())
+            if (cancellable.is_cancelled () || thumbs_stop) {
+                thumbs_thread_runing = false;
                 return null;
-            if (gof.info != null && gof.flags == 1) {
+            }
+            //if (gof.info != null && gof.flags == 1) {
+            if (gof.info != null && gof.flags != 0) {
                 gof.flags = 2; /* thumb ready */
+                gof.pix_size = icon_size;
                 gof.query_thumbnail_update ();
             }
         }
         thumbs_loaded ();
+        thumbs_thread_runing = false;
         
         return null;
     }
 
-    public void threaded_load_thumbnails ()
+    private int icon_size;
+    public void threaded_load_thumbnails (int size)
     {
         try {
+            icon_size = size;
+            thumbs_stop = false;
             //unowned Thread<void*> th = Thread.create<void*> (load_thumbnails_func, false);
             Thread.create<void*> (load_thumbnails_func, false);
         } catch (ThreadError e) {
             stderr.printf ("%s\n", e.message);
             return;
+        }
+    }
+
+    private uint timeout_thumbsq = 0;
+
+    private bool queue_thumbs_timeout_cb ()
+    {
+        if (!thumbs_thread_runing) {
+            threaded_load_thumbnails (icon_size);
+            timeout_thumbsq = 0;
+            return false;
+        }
+        return true;
+    }
+
+    public void queue_load_thumbnails (int size)
+    {
+        icon_size = size;
+
+        if (timeout_thumbsq == 0) {
+            if (thumbs_thread_runing)
+                thumbs_stop = true;
+            timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
         }
     }
 }

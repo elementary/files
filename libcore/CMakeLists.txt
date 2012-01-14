@@ -181,6 +181,7 @@ add_executable(marlincore_tests
     tests/tests.c
     tests/marlincore-tests-gof.c
     tests/marlincore-tests-file.c
+    tests/marlincore-tests-icon-info.c
 )
 add_test(core marlincore_tests)
 target_link_libraries(marlincore_tests marlincore ${DEPS_LIBRARIES})

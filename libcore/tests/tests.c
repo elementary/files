@@ -22,10 +22,12 @@
 #include <glib.h>
 #include "marlincore-tests-gof.h"
 #include "marlincore-tests-file.h"
+#include "marlincore-tests-icon-info.h"
 #include "marlincore.h"
 
 int main (int argc, char* argv[])
 {
+    //g_test_init (&argc, &argv, NULL);
     g_type_init ();
     g_thread_init (NULL);
     gtk_test_init (&argc, &argv);
@@ -33,6 +35,8 @@ int main (int argc, char* argv[])
     g_test_add_func("/marlin/goffile", marlincore_tests_file);
     g_test_add_func("/marlin/goffile", marlincore_tests_goffile);
     //g_test_add_func("/marlin/gof", marlin_location_bar_tests);
+    /* only used for local tests with local files */
+    //g_test_add_func ("/marlin/icon_info", marlincore_tests_icon_info);
 
     return g_test_run();
 }

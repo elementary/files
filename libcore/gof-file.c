@@ -478,7 +478,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     g_return_val_if_fail (file, NULL);
 
     icon = gof_file_get_special_icon (file, size, flags);
-    if (icon && !marlin_icon_info_is_fallback (icon))
+    if (icon != NULL && !marlin_icon_info_is_fallback (icon))
         return icon;
     _g_object_unref0 (icon);
 
@@ -549,8 +549,7 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
     /*g_message ("%s %s %d", G_STRFUNC, file->uri, file->flags);*/
 
     /* destroy pixbuff if already present */
-    if (file->pix)
-        g_object_unref (file->pix);
+    _g_object_unref0 (file->pix);
     //g_clear_object (&file->pix);
     /* make sure we always got a non null pixbuf */
     file->pix = gof_file_get_icon_pixbuf (file, size, FALSE, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
@@ -562,10 +561,16 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
  */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
+    //if (!(file->pix == NULL || size <= 0 || file->pix_size != size))
+    if (size <=0)
+        return;
     if (!(file->pix == NULL || file->pix_size != size))
         return;
+    /* Don't load thumbnails they would be loaded asyncronously */
+    if (!(file->flags == 0 || file->pix == NULL))
+        return;
 
-    //g_message ("%s %s %d", G_STRFUNC, file->uri, file->flags);
+    //g_message ("%s %s %d %d", G_STRFUNC, file->uri, file->flags, size);
     gof_file_update_icon_internal (file, size);
 }
 
