@@ -2934,10 +2934,10 @@ fm_directory_view_notify_item_hovered (FMDirectoryView *view, GtkTreePath *path)
 
     if (path != NULL) 
         file = fm_list_model_file_for_path (view->model, path);
-     
-    g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "item_hovered", file);
-    if (file != NULL)
+    if (file != NULL)  {
+        g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "item_hovered", file);
         g_object_unref (file);
+    }
 }
 
 void
