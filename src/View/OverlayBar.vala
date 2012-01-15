@@ -83,14 +83,16 @@ namespace Marlin.View {
             var provider = new Gtk.CssProvider();
             try {
                 provider.load_from_data ("""MarlinViewOverlayBar {
-                                         background-color: @info_bg_color;
+                                         background-color: #cecfcd;
                                          border-radius: 2 2 0 0;
                                          border-style: solid;
                                          border-width: 1;
-                                         border-color: darker (@info_bg_color);
+                                         border-color: darker (#cecfcd);
+                                         border-bottom-color: @transparent;
                                          
                                          -unico-border-gradient: none;
                                          }""", -1);
+
                 get_style_context ().add_provider (provider, 600);
             } catch (Error e) {
                 stderr.printf("Error style context add_provider: %s\n", e.message);
