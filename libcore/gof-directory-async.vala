@@ -486,6 +486,9 @@ public class GOF.Directory.Async : Object
     private bool thumbs_thread_runing;
     private void *load_thumbnails_func ()
     {
+        if (cancellable.is_cancelled () || file_hash == null)
+            return null;
+
         thumbs_thread_runing = true;
         thumbs_stop = false;
         foreach (var gof in file_hash.get_values()) {
