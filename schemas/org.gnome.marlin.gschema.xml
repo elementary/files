@@ -48,7 +48,7 @@
       <description>If set to true, hidden files will also be shown (files starting with a "." for example)</description>
     </key>
     <key type="b" name="start-with-contextview">
-      <default>true</default>
+      <default>false</default>
       <summary>Show the context view pane</summary>
       <description>Show the context view pane</description>
     </key>
