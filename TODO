@@ -7,11 +7,7 @@ Hotlist:
 - update freespace diskrenderers in sidebar: make a simple timer and update the information at the application level for a determined time delay, and maybe after some specifics files operations ?
 
 Various:
-- files operations must implement an undo/redo mechanism.
 - interface for tagging system, an easy way to tag a file in the preview panel
 - add drag support to the locationbar, we should be able to move a file by dragging it on the folder names
 ...
 
-
-Postponed:
-- use app indicator for showing the progress operation window.

@@ -100,6 +100,8 @@ struct _GOFFile {
     gchar           *group;
     int             uid;
     int             gid;
+    gboolean        can_unmount;
+    GMount          *mount;
 
     gchar           *thumbnail_path;
     gboolean        is_thumbnailing;
@@ -246,6 +248,7 @@ gboolean        gof_file_is_folder (GOFFile *file);
 const gchar     *gof_file_get_ftype (GOFFile *file);
 
 void            gof_file_query_thumbnail_update (GOFFile *file);
+gboolean        gof_file_can_unmount (GOFFile *file);
 
 G_END_DECLS
 

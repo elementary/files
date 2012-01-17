@@ -47,6 +47,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
     private SizeGroup sg;
 
+    private bool files_contain_a_directory;
+
     public PropertiesWindow (GLib.List<GOF.File> _files, FM.Directory.View _view, Gtk.Window parent)
     {
         title = _("Properties");
@@ -81,6 +83,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             var ftype = gof.get_ftype ();
             if (ftype != null)
                 mimes.add (ftype);
+            if (gof.is_directory)
+                files_contain_a_directory = true;
         }
 
         get_info (goffile);
@@ -403,12 +407,47 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             combo.changed.connect (combo_open_with_changed);
 
             var key_label = create_label_key (_("Open with") + ": ", Align.CENTER);
-            information.attach(key_label, 0, n, 1, 1);
-            information.attach(hcombo, 1, n, 1, 1);
+            information.attach (key_label, 0, n, 1, 1);
+            information.attach (hcombo, 1, n, 1, 1);
             
         }
+
+        /* Device Usage */
+        if (should_show_device_usage ()) {
+            try {
+                var info = goffile.get_target_location ().query_filesystem_info ("filesystem::*");
+                uint64 fs_capacity = info.get_attribute_uint64 (FILE_ATTRIBUTE_FILESYSTEM_SIZE);
+                uint64 fs_free = info.get_attribute_uint64 (FILE_ATTRIBUTE_FILESYSTEM_FREE);
+
+                n++;
+                var key_label = create_label_key (_("Device usage") + ": ", Align.CENTER);
+                information.attach (key_label, 0, n, 1, 1);
+                var progressbar = new ProgressBar ();
+                double used =  1.0 - (double) fs_free / (double) fs_capacity;
+                progressbar.set_fraction (used);
+                progressbar.set_show_text (true);
+                progressbar.set_text ("%s free of %s (%d%% used)".printf (format_size_for_display ((int64) fs_free), format_size_for_display ((int64) fs_capacity), (int) (used * 100)));
+                information.attach (progressbar, 1, n, 1, 1);
+            } catch (GLib.Error e) {
+                GLib.warning ("error: %s", e.message);
+            }
+        }
         
-        box.pack_start(information);
+        box.pack_start (information);
+    }
+
+    private bool should_show_device_usage () {
+        if (files_contain_a_directory)
+            return true;
+        if (count == 1) {
+            if (goffile.can_unmount ())
+                return true;
+            var rootfs_loc = File.new_for_uri ("file:///");
+            if (goffile.get_target_location ().equal (rootfs_loc))
+                return true;
+        }
+
+        return false;
     }
 
     private float get_alignment_float_from_align (Gtk.Align align) {

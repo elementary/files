@@ -68,6 +68,7 @@ static gpointer _g_object_ref0 (gpointer self) {
 }
 
 const gchar     *gof_file_get_thumbnail_path (GOFFile *file);
+static GMount   *get_mount_at (GFile *target);
 
 static GIcon *
 get_icon_user_special_dirs(char *path)
@@ -154,8 +155,8 @@ gof_file_clear_info (GOFFile *file)
 {
     g_return_if_fail (file != NULL);
 
-    if (file->target_location)
-        g_object_unref (file->target_location);
+    _g_object_unref0 (file->target_location);
+    _g_object_unref0 (file->mount);
     _g_free0(file->utf8_collation_key);
     _g_free0(file->formated_type);
     _g_free0(file->format_size);
@@ -170,6 +171,7 @@ gof_file_clear_info (GOFFile *file)
     file->permissions = 0;
     _g_free0(file->owner);
     _g_free0(file->group);
+    file->can_unmount = FALSE;
 }
 
 static gboolean
@@ -274,7 +276,8 @@ gof_file_update_type (GOFFile *file)
     gof_file_icon_changed (file);
 }
 
-void    gof_file_update (GOFFile *file)
+void
+gof_file_update (GOFFile *file)
 {
     GKeyFile *key_file;
     gchar *p;
@@ -307,6 +310,9 @@ void    gof_file_update (GOFFile *file)
         if (target_uri != NULL) {
             file->target_location = g_file_new_for_uri (target_uri);
             gof_file_target_location_update (file);
+            
+            if (file->file_type == G_FILE_TYPE_MOUNTABLE)
+                file->mount = get_mount_at (file->target_location);
         } 
     }
 
@@ -440,6 +446,10 @@ void    gof_file_update (GOFFile *file)
         if (file->group == NULL)
             file->group = g_strdup_printf ("%d", file->gid);
     }
+
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT)) {
+        file->can_unmount = g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT);
+	}
 
     gof_file_update_trash_info (file);
     gof_file_update_emblem (file);
@@ -631,6 +641,39 @@ print_error (GError *error)
     }
 }
 
+static GMount *
+get_mount_at (GFile *target)
+{
+    GVolumeMonitor *monitor;
+    GFile *root;
+    GList *mounts, *l;
+    GMount *found;
+
+    monitor = g_volume_monitor_get ();
+    mounts = g_volume_monitor_get_mounts (monitor);
+
+    found = NULL;
+    for (l = mounts; l != NULL; l = l->next) {
+        GMount *mount = G_MOUNT (l->data);
+
+        if (g_mount_is_shadowed (mount))
+            continue;
+
+        root = g_mount_get_root (mount);
+        if (g_file_equal (target, root)) {
+            found = g_object_ref (mount);
+            break;
+        }
+		
+        g_object_unref (root);
+    }
+
+    g_list_free_full (mounts, g_object_unref);
+	g_object_unref (monitor);
+
+	return found;
+}
+
 static GFileInfo * 
 gof_file_query_info (GOFFile *file)
 {
@@ -797,8 +840,8 @@ static void gof_file_finalize (GObject* obj) {
     _g_free0 (file->custom_display_name);
     _g_free0 (file->custom_icon_name);
 
-    if (file->target_location)
-        g_object_unref (file->target_location);
+    _g_object_unref0 (file->target_location);
+    _g_object_unref0 (file->mount);
     /* TODO remove the target_gof */
     _g_free0 (file->thumbnail_path);
 
@@ -2291,3 +2334,13 @@ gof_file_get_thumbnail_path (GOFFile *file)
 
     return NULL;
 }
+
+gboolean
+gof_file_can_unmount (GOFFile *file)
+{
+	g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+
+	return file->can_unmount || (file->mount != NULL && g_mount_can_unmount (file->mount));
+}
+
+
