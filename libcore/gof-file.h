@@ -250,6 +250,8 @@ const gchar     *gof_file_get_ftype (GOFFile *file);
 void            gof_file_query_thumbnail_update (GOFFile *file);
 gboolean        gof_file_can_unmount (GOFFile *file);
 
+gboolean        gof_file_is_remote_uri_scheme (GOFFile *file);
+
 G_END_DECLS
 
 #endif /* GOF_DIRECTORY_ASYNC_H */

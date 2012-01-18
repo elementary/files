@@ -100,17 +100,22 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         content_vbox.pack_start(sep, false, false, 0);
 
         /* Info */
-        var info_vbox = new VBox(false, 0);
-        construct_info_panel (info_vbox, info);
-        add_section (content_vbox, _("Info"), info_vbox);
+        if (info.size > 0) {
+            var info_vbox = new VBox(false, 0);
+            construct_info_panel (info_vbox, info);
+            add_section (content_vbox, _("Info"), info_vbox);
+        }
 
         /* Permissions */
-        var perm_vbox = new VBox(false, 0);
-        construct_perm_panel (perm_vbox);
-        add_section (content_vbox, _("Permissions"), perm_vbox);
-        if (!goffile.can_set_permissions ()) {
-            foreach (var widget in perm_vbox.get_children ())
-                widget.set_sensitive (false);
+        /* Don't show permissions for uri scheme trash and archives */
+        if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
+            var perm_vbox = new VBox(false, 0);
+            construct_perm_panel (perm_vbox);
+            add_section (content_vbox, _("Permissions"), perm_vbox);
+            if (!goffile.can_set_permissions ()) {
+                foreach (var widget in perm_vbox.get_children ())
+                    widget.set_sensitive (false);
+            }
         }
 
         /* Preview */
@@ -270,6 +275,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         foreach (GOF.File gof in files)
         {
             if (loc == null && gof != null) {
+                if (gof.directory == null)
+                    return false;
                 loc = gof.directory;
                 continue;
             }
@@ -315,12 +322,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             var time_created = file.get_formated_time (FILE_ATTRIBUTE_TIME_CREATED);
             if (time_created != null)
                 info.add(new Pair<string, string>(_("Created") + (": "), time_created));
-            info.add(new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
-            info.add(new Pair<string, string>(_("Last Access") + (": "), file.get_formated_time (FILE_ATTRIBUTE_TIME_ACCESS)));
+            if (file.formated_modified != null)
+                info.add(new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
+            var time_last_access = file.get_formated_time (FILE_ATTRIBUTE_TIME_ACCESS);
+            if (time_last_access != null)
+                info.add(new Pair<string, string>(_("Last Access") + (": "), time_last_access));
             /* print deletion date if trashed file */
             //TODO format trash deletion date string
-            if (file.is_trashed())
-                info.add(new Pair<string, string>(_("Deleted") + (": "), file.info.get_attribute_as_string("trash::deletion-date")));
+            if (file.is_trashed()) {
+                var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
+                if (deletion_date != null)
+                    info.add(new Pair<string, string>(_("Deleted") + (": "), deletion_date));
+            }
         }
         ftype = get_common_ftype();
         if (ftype != null) {
@@ -416,18 +429,21 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         if (should_show_device_usage ()) {
             try {
                 var info = goffile.get_target_location ().query_filesystem_info ("filesystem::*");
-                uint64 fs_capacity = info.get_attribute_uint64 (FILE_ATTRIBUTE_FILESYSTEM_SIZE);
-                uint64 fs_free = info.get_attribute_uint64 (FILE_ATTRIBUTE_FILESYSTEM_FREE);
+                if (info.has_attribute (FILE_ATTRIBUTE_FILESYSTEM_SIZE) && 
+                    info.has_attribute (FILE_ATTRIBUTE_FILESYSTEM_FREE)) {
+                    uint64 fs_capacity = info.get_attribute_uint64 (FILE_ATTRIBUTE_FILESYSTEM_SIZE);
+                    uint64 fs_free = info.get_attribute_uint64 (FILE_ATTRIBUTE_FILESYSTEM_FREE);
 
-                n++;
-                var key_label = create_label_key (_("Device usage") + ": ", Align.CENTER);
-                information.attach (key_label, 0, n, 1, 1);
-                var progressbar = new ProgressBar ();
-                double used =  1.0 - (double) fs_free / (double) fs_capacity;
-                progressbar.set_fraction (used);
-                progressbar.set_show_text (true);
-                progressbar.set_text ("%s free of %s (%d%% used)".printf (format_size_for_display ((int64) fs_free), format_size_for_display ((int64) fs_capacity), (int) (used * 100)));
-                information.attach (progressbar, 1, n, 1, 1);
+                    n++;
+                    var key_label = create_label_key (_("Device usage") + ": ", Align.CENTER);
+                    information.attach (key_label, 0, n, 1, 1);
+                    var progressbar = new ProgressBar ();
+                    double used =  1.0 - (double) fs_free / (double) fs_capacity;
+                    progressbar.set_fraction (used);
+                    progressbar.set_show_text (true);
+                    progressbar.set_text ("%s free of %s (%d%% used)".printf (format_size_for_display ((int64) fs_free), format_size_for_display ((int64) fs_capacity), (int) (used * 100)));
+                    information.attach (progressbar, 1, n, 1, 1);
+                }
             } catch (GLib.Error e) {
                 GLib.warning ("error: %s", e.message);
             }

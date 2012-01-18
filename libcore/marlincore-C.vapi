@@ -187,6 +187,8 @@ namespace GOF {
 
         public GLib.List? get_settable_group_names ();
         public static int compare_by_display_name (File file1, File file2);
+
+        public bool is_remote_uri_scheme ();
     }
 
     [CCode (cheader_filename = "gof-file.h")]

@@ -174,7 +174,7 @@ gof_file_clear_info (GOFFile *file)
     file->can_unmount = FALSE;
 }
 
-static gboolean
+gboolean
 gof_file_is_remote_uri_scheme (GOFFile *file)
 {
     /* try to determinate what appear to be remote. This is quite hazardous but gio doesn't offer any better option */
@@ -406,7 +406,7 @@ gof_file_update (GOFFile *file)
     gof_file_update_size (file);
     
     /* modified date */
-    file->formated_modified = eel_get_date_as_string (file->modified, gof_preferences_get_default ()->pref_date_format);
+    file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
     /* icon */
     if (file->is_directory && g_file_is_native (file->location)) {
