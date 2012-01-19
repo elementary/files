@@ -49,6 +49,12 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
     private bool files_contain_a_directory;
 
+    private enum PanelType {
+        INFO,
+        PERMISSIONS,
+        PREVIEW
+    }
+
     public PropertiesWindow (GLib.List<GOF.File> _files, FM.Directory.View _view, Gtk.Window parent)
     {
         title = _("Properties");
@@ -103,7 +109,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         if (info.size > 0) {
             var info_vbox = new VBox(false, 0);
             construct_info_panel (info_vbox, info);
-            add_section (content_vbox, _("Info"), info_vbox);
+            add_section (content_vbox, _("Info"), PanelType.INFO, info_vbox);
         }
 
         /* Permissions */
@@ -111,7 +117,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
             var perm_vbox = new VBox(false, 0);
             construct_perm_panel (perm_vbox);
-            add_section (content_vbox, _("Permissions"), perm_vbox);
+            add_section (content_vbox, _("Permissions"), PanelType.PERMISSIONS, perm_vbox);
             if (!goffile.can_set_permissions ()) {
                 foreach (var widget in perm_vbox.get_children ())
                     widget.set_sensitive (false);
@@ -123,7 +129,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         if (count == 1 && goffile.flags != 0) {
             var preview_box = new VBox(false, 0);
             construct_preview_panel (preview_box);
-            add_section (content_vbox, _("Preview"), preview_box);
+            add_section (content_vbox, _("Preview"), PanelType.PREVIEW, preview_box);
         }
 
         var close_button = new Button.from_stock(Stock.CLOSE);
@@ -249,11 +255,25 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         vbox.pack_start(content, false, false, 0);
     }
 
-    private void add_section (VBox vbox, string title, Box content) {
+    private void bind_panel_expansion (Gtk.Expander exp, PanelType type) {
+        switch (type) {
+        case PanelType.INFO:
+            Preferences.settings.bind ("properties-dlg-info", exp, "expanded", 0);
+            break;
+        case PanelType.PERMISSIONS:
+            Preferences.settings.bind ("properties-dlg-permissions", exp, "expanded", 0);
+            break;
+        case PanelType.PREVIEW:
+            Preferences.settings.bind ("properties-dlg-preview", exp, "expanded", 0);
+            break;
+        }
+    }
+
+    private void add_section (VBox vbox, string title, PanelType type, Box content) {
         //var exp = new Expander("<span weight='semibold' size='large'>" + title + "</span>");
         var exp = new Expander("<span weight='semibold'>" + title + "</span>");
         exp.set_use_markup(true);
-        exp.expanded = true;
+        bind_panel_expansion (exp, type);
         exp.margin_bottom = 5;
         vbox.pack_start(exp, false, false, 0);
         if (content != null) {

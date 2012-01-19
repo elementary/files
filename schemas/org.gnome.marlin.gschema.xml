@@ -133,6 +133,21 @@
       <summary>Categorie Network expander</summary>
       <description>Expand/Collapse categorie Network</description>
     </key>
+    <key type="b" name="properties-dlg-info">
+      <default>true</default>
+      <summary>Properties Info expander</summary>
+      <description>Expand/collapse Info panel</description>
+    </key>
+    <key type="b" name="properties-dlg-permissions">
+      <default>true</default>
+      <summary>Properties Permissions expander</summary>
+      <description>Expand/collapse Permissions panel</description>
+    </key>
+    <key type="b" name="properties-dlg-preview">
+      <default>true</default>
+      <summary>Properties Preview expander</summary>
+      <description>Expand/collapse Preview panel</description>
+    </key>
     <key type="s" name="geometry">
       <default>''</default>
       <summary>The geometry string for a navigation window.</summary>
