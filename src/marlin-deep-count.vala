@@ -87,4 +87,9 @@ public class Marlin.DeepCount : Object
             finished ();
         }
     }
+
+    public void cancel () 
+    {
+        cancellable.cancel ();
+    }
 }

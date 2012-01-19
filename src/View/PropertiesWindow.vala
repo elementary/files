@@ -146,7 +146,10 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
     }
 
-    private void on_response (Dialog source, int response_id) {
+    private void on_response (int response_id) {
+        /* cancel deepcount size calculations */
+        selection_size_cancel ();
+
         switch (response_id) {
         case ResponseType.HELP:
             // show_help ();
@@ -200,6 +203,16 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             mutex.unlock ();
         }
         update_header_desc ();
+    }
+
+    private void selection_size_cancel () {
+        foreach (var d in deep_count_directories) {
+            mutex.lock ();
+            d.cancel ();
+            deep_count_directories.remove (d);
+            mutex.unlock ();
+        }
+        deep_count_directories = null;
     }
 
     private void add_header_box (VBox vbox, Box content) {
