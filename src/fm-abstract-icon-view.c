@@ -351,6 +351,16 @@ fm_abstract_icon_view_merge_menus (FMDirectoryView *view)
 
     ui = eel_ui_string_get ("fm-icon-view-ui.xml");
     icon_view->details->icon_merge_id = gtk_ui_manager_add_ui_from_string (ui_manager, ui, -1, NULL);
+
+    /* init ArrangeItems actions */
+    GOFDirectoryAsync *current_dir = fm_directory_view_get_current_directory (view);
+    action = gtk_action_group_get_action (action_group, "Sort by Name");
+    gtk_radio_action_set_current_value (GTK_RADIO_ACTION (action),
+                                        current_dir->file->sort_column_id);
+    action = gtk_action_group_get_action (action_group, "Reversed Order");
+    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
+                                  current_dir->file->sort_order);
+
 }
 
 static void
