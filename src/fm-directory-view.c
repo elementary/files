@@ -2743,6 +2743,7 @@ fm_directory_view_get_property (GObject         *object,
         break;
     }
 }
+
 static void
 fm_directory_view_set_property (GObject         *object,
                                 guint           prop_id,
@@ -3004,7 +3005,9 @@ fm_directory_view_merge_menus (FMDirectoryView *view)
 {
     g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
 
+    g_signal_handlers_block_by_func (view->model, sort_column_changed_callback, view);
     (*FM_DIRECTORY_VIEW_GET_CLASS (view)->merge_menus) (view);
+    g_signal_handlers_unblock_by_func (view->model, sort_column_changed_callback, view);
 }
 
 void
