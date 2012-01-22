@@ -33,7 +33,7 @@ public interface ExtendedActionsService : Object
 public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
 {
     UIManager ui_manager;
-    Menu menu;
+    Gtk.Menu menu;
     GOF.File current_directory = null;
     unowned GLib.List<GOF.File> selection;
     GLib.HashTable<string,string>[] services = null;
@@ -92,7 +92,7 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
         Gtk.MenuItem menuitem;
         GLib.HashTable<string,string> app__;
                 
-        menuitem = (MenuItem) menu.get_active ();
+        menuitem = (Gtk.MenuItem) menu.get_active ();
         app__ = menuitem.get_data<GLib.HashTable<string,string>> ("app");
 
         if (app__ != null) {
@@ -108,7 +108,7 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
 
     public override void context_menu (Gtk.Widget? widget)
     {
-        menu = widget as Menu;
+        menu = widget as Gtk.Menu;
         
         try {
             services = service_eactions.GetServicesByLocationsList (build_hash_from_list_selection ());
@@ -118,12 +118,12 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
             {
                 /* insert separator if we got at least 1 action */
                 if (i == 0) {
-                    var item = new SeparatorMenuItem ();
+                    var item = new Gtk.SeparatorMenuItem ();
                     menu.append (item);
                     item.show ();
                     plugins.menus.prepend (item);
                 }
-                var menuitem = new MenuItem.with_label(get_app_display_name(app__));
+                var menuitem = new Gtk.MenuItem.with_label(get_app_display_name(app__));
                 menu.append (menuitem);
                 menuitem.set_data<GLib.HashTable<string,string>> ("app", app__);
                 menuitem.show ();
@@ -139,7 +139,7 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
     public override void ui (Gtk.UIManager? widget)
     {
         ui_manager = widget;
-        menu = (Menu)ui_manager.get_widget("/selection");
+        menu = (Gtk.Menu)ui_manager.get_widget("/selection");
     }
     
     public override void file (GLib.List<Object> files)
