@@ -65,7 +65,7 @@ namespace Marlin.View.Chrome
 
     public class Breadcrumbs : BasePathBar
     {
-        Menu menu;
+        Gtk.Menu menu;
         private UIManager ui;
 
         /* Used for auto-copmpletion */
@@ -167,7 +167,7 @@ namespace Marlin.View.Chrome
                 ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); 
             });
 
-            menu = new Menu();
+            menu = new Gtk.Menu();
             menu.show_all();
             
             need_completion.connect(on_need_completion);
@@ -312,7 +312,7 @@ namespace Marlin.View.Chrome
             return true;
         }
         
-        private void get_menu_position (Menu menu, out int x, out int y, out bool push_in)
+        private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in)
         {
             x = (int)menu_x_root;
             y = (int)menu_y_root;
@@ -323,7 +323,7 @@ namespace Marlin.View.Chrome
         {
             menu_x_root = x;
             menu_y_root = y;
-            menu = new Menu();
+            menu = new Gtk.Menu();
             var directory = File.new_for_uri (current_right_click_root);
             if (files_menu != null)
                 files_menu.done_loading.disconnect(on_files_loaded_menu);

@@ -273,7 +273,7 @@ namespace Marlin.View {
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
         }
 
-        public Menu get_back_menu()  {
+        public Gtk.Menu get_back_menu()  {
             /* Clear the back menu and re-add the correct entries. */
             var back_menu = new Gtk.Menu ();
             var list = browser.go_back_list();
@@ -283,7 +283,7 @@ namespace Marlin.View {
                               // You see if I would just use back(n) the reference to n would be passed
                               // in the clusure, restulting in a value of n which would always be n=1. So
                               // by introducting a new variable I can bypass this anoyance.
-                var item = new MenuItem.with_label (path); 
+                var item = new Gtk.MenuItem.with_label (path); 
                 item.activate.connect(() => { back(cn); });
                 back_menu.insert(item, -1);
             }
@@ -292,14 +292,14 @@ namespace Marlin.View {
             return back_menu;
         }
 
-        public Menu get_forward_menu() {
+        public Gtk.Menu get_forward_menu() {
             /* Same for the forward menu */
             var forward_menu = new Gtk.Menu ();
             var list = browser.go_forward_list();
             var n = 1;
             foreach(var path in list){
                 int cn = n++; // For explenation look up
-                var item = new MenuItem.with_label (path); 
+                var item = new Gtk.MenuItem.with_label (path); 
                 item.activate.connect(() => forward(cn));
                 forward_menu.insert(item, -1);
             }
