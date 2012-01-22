@@ -19,8 +19,8 @@
 
 using GLib;
 
-//HashTable<GLib.File,GOF.Directory.Async> directory_cache;
-extern HashTable<GLib.File,GOF.Directory.Async> directory_cache;
+public HashTable<GLib.File,GOF.Directory.Async> directory_cache;
+//extern HashTable<GLib.File,GOF.Directory.Async> directory_cache;
 /*  Mutex mutex = new Mutex ();*/
 
 public class GOF.Directory.Async : Object
