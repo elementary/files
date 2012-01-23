@@ -509,14 +509,20 @@ public class GOF.Directory.Async : Object
         return null;
     }
 
+    ~Async () {
+        if(thumbs_thread_runing)
+            th.join();
+    }
+
     private int icon_size;
+    unowned Thread<void*> th;
     public void threaded_load_thumbnails (int size)
     {
         try {
             icon_size = size;
             thumbs_stop = false;
             //unowned Thread<void*> th = Thread.create<void*> (load_thumbnails_func, false);
-            Thread.create<void*> (load_thumbnails_func, false);
+            th = Thread.create<void*> (load_thumbnails_func, true);
         } catch (ThreadError e) {
             stderr.printf ("%s\n", e.message);
             return;
