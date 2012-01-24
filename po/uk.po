@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-01-12 21:44+0000\n"
-"Last-Translator: John Ray <Unknown>\n"
+"PO-Revision-Date: 2012-01-24 01:29+0000\n"
+"Last-Translator: D3NMOH <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-01-13 05:02+0000\n"
-"X-Generator: Launchpad (build 14664)\n"
+"X-Launchpad-Export-Date: 2012-01-24 05:45+0000\n"
+"X-Generator: Launchpad (build 14713)\n"
 "Language: uk\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
-msgstr "Параметри"
+msgstr "Властивості"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:98
 msgid "Info"
@@ -30,11 +30,11 @@ msgstr "Інформація"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:103
 msgid "Permissions"
-msgstr "Права"
+msgstr "Права доступу"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:114
 msgid "Preview"
-msgstr "Попередній перегляд"
+msgstr "Перегляд"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Created"
@@ -59,7 +59,7 @@ msgstr "Тип MIME"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr ""
+msgstr "Типи файлів (MIME)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
@@ -76,23 +76,23 @@ msgstr "Дійсне розташування"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
 msgid "Other application..."
-msgstr ""
+msgstr "Інша програма…"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
 msgid "Open with"
-msgstr ""
+msgstr "Відкрити за допомогою"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
-msgstr "Читати"
+msgstr "Перегляд"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:529
 msgid "Write"
-msgstr "Записати"
+msgstr "Запис"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:534
 msgid "Execute"
-msgstr "Виконати"
+msgstr "Виконання"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:752
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:765
@@ -107,11 +107,11 @@ msgstr "Група"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:773
 msgid "Everyone"
-msgstr "Будь-хто"
+msgstr "Усі"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr "Виберіть програму для відкриття "
+msgstr "Оберіть програму "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
@@ -128,12 +128,12 @@ msgstr "Розмір"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "Тека не існує"
+msgstr "Папка не існує"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr "Marlin не може знайти каталог %s"
+msgstr "Marlin не може знайти папку %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -142,7 +142,7 @@ msgstr "Створити"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "Створити теку %s"
+msgstr "Створити папку %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
@@ -186,7 +186,7 @@ msgstr "дуже великий"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
-msgstr "Розмір мініатюр бічної панелі:"
+msgstr "Розмір значків на бічній панелі"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "iso"
@@ -194,7 +194,7 @@ msgstr "iso"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:138
 msgid "locale"
-msgstr "розташування"
+msgstr "мова"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
@@ -238,19 +238,19 @@ msgstr "Одинарний клік"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Чи буде елемент активовано при одинарному кліку"
+msgstr "Чи активуються об’єкти при одинарному кліку"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
-msgstr "Затримка одинарного кліку"
+msgstr "Тривалість одинарного кліку"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
-"Кількість часу, після якого, елемент під курсором мишки, буде автоматично "
-"виділено для режиму одинарного кліку"
+"Час, після якого пункт під курсором миші буде обраний автоматично в режимі "
+"одинарного кліку"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -285,18 +285,18 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"Неможливо завантажити список методів підтримуваних сервером.\n"
-"Будь ласка, перевірте встановлення gvfs."
+"Не вдалося завантажити список методів, що підтримуються сервером.\n"
+" Будь ласка, перевірте встановлення gvfs."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Каталог «%s» неможливо відкрити на «%s»."
+msgstr "Папка «%s» не може бути відкрита на «%s»."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Неможливо знайти сервер на «%s»"
+msgstr "Не вдалося знайти сервер на «%s»"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"

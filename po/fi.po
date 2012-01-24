@@ -8,35 +8,35 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2011-10-10 14:07+0000\n"
-"Last-Translator: Teemu Kielinen <teemu.kielinen@gmail.com>\n"
+"PO-Revision-Date: 2012-01-23 12:53+0000\n"
+"Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-01-03 05:02+0000\n"
-"X-Generator: Launchpad (build 14616)\n"
+"X-Launchpad-Export-Date: 2012-01-24 05:45+0000\n"
+"X-Generator: Launchpad (build 14713)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
-msgstr ""
+msgstr "Ominaisuudet"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:98
 msgid "Info"
-msgstr ""
+msgstr "Tiedot"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:103
 msgid "Permissions"
-msgstr ""
+msgstr "Oikeudet"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:114
 msgid "Preview"
-msgstr ""
+msgstr "Esikatselu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Created"
-msgstr ""
+msgstr "Luotu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:311
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:320
@@ -49,19 +49,19 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:316
 msgid "Deleted"
-msgstr ""
+msgstr "Poistettu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:320
 msgid "MimeType"
-msgstr ""
+msgstr "MIME-tyyppi"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr ""
+msgstr "MIME-tyypit"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
-msgstr ""
+msgstr "Sijainti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:334
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:316
@@ -70,27 +70,27 @@ msgstr "Kohde"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:340
 msgid "Origin Location"
-msgstr ""
+msgstr "Alkuperäinen sijainti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
 msgid "Other application..."
-msgstr ""
+msgstr "Muu sovellus..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
 msgid "Open with"
-msgstr ""
+msgstr "Avaa sovelluksella"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
-msgstr ""
+msgstr "Luku"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:529
 msgid "Write"
-msgstr ""
+msgstr "Kirjoitus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:534
 msgid "Execute"
-msgstr ""
+msgstr "Suoritus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:752
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:765
@@ -101,11 +101,11 @@ msgstr "Omistaja"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:757
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:769
 msgid "Group"
-msgstr ""
+msgstr "Ryhmä"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:773
 msgid "Everyone"
-msgstr ""
+msgstr "Kaikki"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
@@ -144,7 +144,7 @@ msgstr "Luo kansio %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr ""
+msgstr "Marlinin asetukset"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
@@ -160,7 +160,7 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "Default File Manager:"
-msgstr ""
+msgstr "TIedostonhallinnan oletussovellus:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:95
 msgid "Behavior"
@@ -208,7 +208,7 @@ msgstr "Näytä"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:203
 msgid "Extensions"
-msgstr ""
+msgstr "Laajennukset"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:95
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:370
@@ -377,7 +377,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:623
 msgid "This folder is empty."
-msgstr ""
+msgstr "Kansio on tyhjä."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:186
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:139
@@ -417,7 +417,7 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Kuvakenäkymä"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
@@ -591,11 +591,11 @@ msgstr "Tyhjennä _roskakori"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3123
 msgid "Icon Size"
-msgstr ""
+msgstr "Kuvakekoko"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3124
 msgid "Icon size"
-msgstr ""
+msgstr "Kuvakekoko"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1090
 msgid "Invalid filename provided by XDS drag site"
@@ -610,13 +610,13 @@ msgstr "Linkin luominen URL:iin \"%s\" epäonnistui"
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Käytä sovellusta ”%s” valitun kohteen avaamiseen"
+msgstr[1] "Käytä sovellusta ”%s” valittujen kohteiden avaamiseen"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1876
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Avaa sovelluksella %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1898
 #, c-format
@@ -661,11 +661,11 @@ msgstr[1] "%'d tiedostotoimintoa käynnissä"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
-msgstr ""
+msgstr "Näytä kopiointi-ikkuna"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
-msgstr ""
+msgstr "Peru kaikki meneillään olevat toiminnot"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
@@ -681,11 +681,11 @@ msgstr "Syöttötavat"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "Asettelutapa"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "Asettelutapa"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:439
 msgid ""
