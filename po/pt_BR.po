@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-01-22 21:06+0000\n"
-"Last-Translator: Wender Lopes Alves <Unknown>\n"
+"PO-Revision-Date: 2012-01-27 20:13+0000\n"
+"Last-Translator: Júnior Silva <junior.j77@hotmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-01-23 05:33+0000\n"
-"X-Generator: Launchpad (build 14700)\n"
+"X-Launchpad-Export-Date: 2012-01-28 05:11+0000\n"
+"X-Generator: Launchpad (build 14727)\n"
 "Language: pt_BR\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
@@ -58,11 +58,11 @@ msgstr "Tipo MIME"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr ""
+msgstr "Tipos MIME"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
-msgstr "Localização"
+msgstr "Local"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:334
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:316
