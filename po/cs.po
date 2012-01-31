@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-01-08 10:43+0000\n"
-"Last-Translator: Jakub Jezbera <Unknown>\n"
+"PO-Revision-Date: 2012-01-30 18:32+0000\n"
+"Last-Translator: Jan Žárský <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-01-09 05:09+0000\n"
-"X-Generator: Launchpad (build 14640)\n"
+"X-Launchpad-Export-Date: 2012-01-31 05:26+0000\n"
+"X-Generator: Launchpad (build 14734)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -148,7 +148,7 @@ msgstr "Předvolby"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
-msgstr "Otevírat jedním kliknutím"
+msgstr "Otevírat jedním kliknutím:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
@@ -184,7 +184,7 @@ msgstr "obří"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
-msgstr "Velikost ikon v postranním panelu"
+msgstr "Velikost ikon v postranním panelu:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "iso"
@@ -192,7 +192,7 @@ msgstr "iso"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:138
 msgid "locale"
-msgstr "jazyk"
+msgstr "místní"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
@@ -319,7 +319,7 @@ msgstr "Připojit k serveru"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr "Detaily o serveru"
+msgstr "Detaily serveru"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
@@ -367,11 +367,11 @@ msgstr "Operace byla zrušena"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr "Stručný výpis adresáře"
+msgstr "Stručný výpis složky"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr "Kompaktní pohled"
+msgstr "Kompaktní zobrazení"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
@@ -561,7 +561,7 @@ msgstr "Otevřít v nové kar_tě"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2414
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1911
 msgid "Open in New _Window"
-msgstr "Otevřít v novém _okně"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
@@ -683,11 +683,11 @@ msgstr "Vstupní metody"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr "Režim rozvržení"
+msgstr "Mód rozložení"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr "Režim rozvržení"
+msgstr "Mód rozložení"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -847,7 +847,7 @@ msgstr "Pokud odstraníte položku, bude natrvalo ztracena."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1403
 msgid "Empty all items from Trash?"
-msgstr "Vyprázdnit koš?"
+msgstr "Odstranit všechny položky z koše?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1407
 msgid "All items in the Trash will be permanently deleted."
@@ -869,7 +869,7 @@ msgstr[2] "Jste si jisti, že chcete trvale odstranit %'d vybraných položek?"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1466
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1498
 msgid "Deleting files"
-msgstr "Soubory se odstraňují"
+msgstr "Odstraňuji soubory"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1492
 #, c-format
