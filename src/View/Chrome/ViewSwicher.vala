@@ -72,19 +72,19 @@ namespace Marlin.View.Chrome
         {
             main_actions = action_group;
             //border_width = 6;
-            margin = 6;
+            margin = 3;
 
             switcher = new ModeButton ();
             Varka.IconFactory icon_factory = Varka.IconFactory.get_default ();
             Gtk.StyleContext style = get_style_context ();
 
-            icon = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-icons-symbolic", 16));
+            icon = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-icons-symbolic", 12));
             switcher.append(icon);
-            list = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-details-symbolic", 16));
+            list = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-details-symbolic", 12));
             switcher.append(list);
-            compact = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-compact-symbolic", 16));
+            compact = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-compact-symbolic", 12));
             switcher.append(compact);
-            miller = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-column-symbolic", 16));
+            miller = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-column-symbolic", 12));
             switcher.append(miller);
             
             mode = (ViewMode)Preferences.settings.get_enum("default-viewmode");

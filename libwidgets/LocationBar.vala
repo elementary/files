@@ -128,7 +128,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         /* x padding */
         x = 0;
         /* y padding */
-        y = 6;
+        y = 3;
             
         elements = new Gee.ArrayList<BreadcrumbsElement>();
 

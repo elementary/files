@@ -37,7 +37,7 @@ namespace Marlin.View.Chrome
             win = window;
             if (Preferences.settings.get_boolean("toolbar-primary-css-style"))
 	            get_style_context().add_class ("primary-toolbar");
-            //set_icon_size (Gtk.IconSize.SMALL_TOOLBAR);
+            set_icon_size (Gtk.IconSize.SMALL_TOOLBAR);
 
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             toolbar_menu = (Gtk.Menu) win.ui.get_widget("/ToolbarMenu");
