@@ -738,8 +738,7 @@ fm_directory_view_preview_selected_items (FMDirectoryView *view)
         file_list = g_list_prepend (file_list, file->location);
 
         screen = eel_gtk_widget_get_screen (GTK_WIDGET (view));
-        GdkAppLaunchContext *context = gdk_app_launch_context_new ();
-        gdk_app_launch_context_set_screen (context, screen);
+        GdkAppLaunchContext *context = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
         GAppInfo* previewer_app = g_app_info_create_from_commandline (view->details->previewer, NULL, 0, NULL);
         //FIXME
         if (!g_app_info_launch (previewer_app, file_list, G_APP_LAUNCH_CONTEXT (context), NULL))

@@ -158,7 +158,7 @@ namespace Marlin.View {
             /* Pack up all the view
             /*/
 
-            VBox window_box = new VBox(false, 0);
+            Box window_box = new Box(Gtk.Orientation.VERTICAL, 0);
             window_box.show();
             window_box.pack_start(menu_bar, false, false, 0);
             window_box.pack_start(top_menu, false, false, 0);
@@ -305,7 +305,7 @@ namespace Marlin.View {
             ViewContainer content = new View.ViewContainer(this, location,
                 current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
 
-            var hbox = new HBox(false, 0);
+            var hbox = new Box(Gtk.Orientation.HORIZONTAL, 0);
             hbox.pack_start(content.label, true, true, 0);
             var button = new Button();
             button.set_image(new Image.from_stock(Stock.CLOSE, IconSize.MENU));
@@ -565,7 +565,7 @@ namespace Marlin.View {
 
         private void action_connect_to_server_callback (Gtk.Action action)
         {
-            Widget dialog = new Marlin.ConnectServer.Dialog ((Gtk.Window) this);
+            var dialog = new Marlin.ConnectServer.Dialog ((Gtk.Window) this);
             dialog.show ();
         }
 

@@ -25,11 +25,11 @@ namespace Marlin.View
     {
         public ImageButton(string title, string subtitle, string icon_name)
         {
-            var hbox = new HBox(false, 15);
+            var hbox = new Box(Orientation.HORIZONTAL, 15);
             
             /* Image */
             hbox.pack_start(new Image.from_icon_name (icon_name, Gtk.IconSize.DIALOG), false, false);
-            var vbox = new VBox(false, 0);
+            var vbox = new Box(Orientation.VERTICAL, 0);
             
             /* Title */
             var label = new Label(title);
@@ -66,7 +66,7 @@ namespace Marlin.View
             set(0.5f,0.4f,0,0.1f);
             dir_saved = dir;
             ctab = tab;
-            var box = new VBox(false, 5);
+            var box = new Box(Orientation.VERTICAL, 5);
             var label = new Label("");
 
             label.set_markup("<span size=\"x-large\">%s</span>".printf(_("Folder does not exist")));

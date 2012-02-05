@@ -40,9 +40,9 @@ static gboolean fatal_handler(const gchar* log_domain,
     g_main_loop_quit(loop);
 }*/
 
-static void quit_mainloop (GOFDirectoryAsync *dir)
+/*static void quit_mainloop (GOFDirectoryAsync *dir)
 {
-}
+}*/
 
 static void second_load_done(GOFDirectoryAsync* dir, gpointer data)
 {
@@ -101,7 +101,7 @@ static void first_load_done(GOFDirectoryAsync* dir, gpointer data)
 void marlincore_tests_file(void)
 {
     GOFDirectoryAsync* dir;
-    GOFDirectoryAsync *dir2;
+    //GOFDirectoryAsync *dir2;
     g_test_log_set_fatal_handler(fatal_handler, NULL); 
     system("rm -rf /tmp/marlin-test");
 

@@ -230,13 +230,13 @@ reap_cache (gpointer data)
 
     if (loadable_icon_cache) {
         g_hash_table_foreach_remove (loadable_icon_cache,
-                                     reap_old_icon,
+                                     (GHRFunc) reap_old_icon,
                                      &reapable_icons_left);
     }
 
     if (themed_icon_cache) {
         g_hash_table_foreach_remove (themed_icon_cache,
-                                     reap_old_icon,
+                                     (GHRFunc) reap_old_icon,
                                      &reapable_icons_left);
     }
 
@@ -401,7 +401,7 @@ marlin_icon_info_lookup (GIcon *icon, int size)
 {
     MarlinIconInfo *icon_info;
     GdkPixbuf *pixbuf = NULL;
-    GdkPixbuf *scaled_pixbuf = NULL;
+    //GdkPixbuf *scaled_pixbuf = NULL;
 
     g_return_val_if_fail (icon && G_IS_ICON (icon), NULL);
     if (G_IS_LOADABLE_ICON (icon)) {

@@ -68,7 +68,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         border_width = 5;
         sg = new SizeGroup (SizeGroupMode.HORIZONTAL);
 
-        VBox content_vbox = new VBox (false, 0);
+        Box content_vbox = new Box (Gtk.Orientation.VERTICAL, 0);
         //var content_vbox = new VBox(false, 12);
         content_area.pack_start (content_vbox);
 
@@ -97,7 +97,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         cancellable = new GLib.Cancellable ();
 
         /* Header Box */
-        var header_box = new HBox (false, 9);
+        var header_box = new Box (Gtk.Orientation.HORIZONTAL, 9);
         add_header_box (content_vbox, header_box);
 
         /* Separator */
@@ -107,7 +107,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         /* Info */
         if (info.size > 0) {
-            var info_vbox = new VBox(false, 0);
+            var info_vbox = new Box (Gtk.Orientation.VERTICAL, 0);
             construct_info_panel (info_vbox, info);
             add_section (content_vbox, _("Info"), PanelType.INFO, info_vbox);
         }
@@ -115,7 +115,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         /* Permissions */
         /* Don't show permissions for uri scheme trash and archives */
         if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
-            var perm_vbox = new VBox(false, 0);
+            var perm_vbox = new Box (Gtk.Orientation.VERTICAL, 0);
             construct_perm_panel (perm_vbox);
             add_section (content_vbox, _("Permissions"), PanelType.PERMISSIONS, perm_vbox);
             if (!goffile.can_set_permissions ()) {
@@ -127,7 +127,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         /* Preview */
         //message ("flag %d", (int) goffile.flags);
         if (count == 1 && goffile.flags != 0) {
-            var preview_box = new VBox(false, 0);
+            var preview_box = new Box(Gtk.Orientation.VERTICAL, 0);
             construct_preview_panel (preview_box);
             add_section (content_vbox, _("Preview"), PanelType.PREVIEW, preview_box);
         }
@@ -221,13 +221,13 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         deep_count_directories = null;
     }
 
-    private void add_header_box (VBox vbox, Box content) {
+    private void add_header_box (Box vbox, Box content) {
         var file_pix = goffile.get_icon_pixbuf (32, false, GOF.FileIconFlags.NONE);
         var file_img = new Image.from_pixbuf (file_pix);
         file_img.set_valign (Align.START);
         content.pack_start(file_img, false, false);
 
-        var vvbox = new VBox (false, 0);
+        var vvbox = new Box (Gtk.Orientation.VERTICAL, 0);
         content.pack_start(vvbox);
        
         header_title = new Varka.Widgets.WrapLabel ();
@@ -269,7 +269,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         }
     }
 
-    private void add_section (VBox vbox, string title, PanelType type, Box content) {
+    private void add_section (Box vbox, string title, PanelType type, Box content) {
         //var exp = new Expander("<span weight='semibold' size='large'>" + title + "</span>");
         var exp = new Expander("<span weight='semibold'>" + title + "</span>");
         exp.set_use_markup(true);
@@ -447,7 +447,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             combo.set_active (0);
             combo.set_valign (Gtk.Align.CENTER);
         
-            var hcombo = new HBox (false, 0);
+            var hcombo = new Box (Gtk.Orientation.HORIZONTAL, 0);
             hcombo.pack_start (combo, false, false, 0);
 
             combo.changed.connect (combo_open_with_changed);
@@ -607,10 +607,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             perm_code.set_text("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
     }
     
-    private Gtk.HBox create_perm_choice (PermissionType pt) {
-        Gtk.HBox hbox;
+    private Gtk.Box create_perm_choice (PermissionType pt) {
+        Gtk.Box hbox;
 
-        hbox = new Gtk.HBox(true, 0);
+        hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+        hbox.homogeneous = true;
         var btn_read = new Gtk.ToggleButton();
         toggle_button_add_label (btn_read, _("Read"));
         //btn_read.set_relief (Gtk.ReliefStyle.NONE);
@@ -672,7 +673,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         return vfs_perm;
     }
 
-    private void update_permission_type_buttons (Gtk.HBox hbox, uint32 permissions, PermissionType pt) 
+    private void update_permission_type_buttons (Gtk.Box hbox, uint32 permissions, PermissionType pt) 
     {
         int i=0;
         foreach (var widget in hbox.get_children()) {
@@ -683,18 +684,18 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     }
 
     private void update_perm_grid_toggle_states (uint32 permissions) {
-        Gtk.HBox hbox;
+        Gtk.Box hbox;
 
         /* update USR row */
-        hbox = (Gtk.HBox) perm_grid.get_child_at (1,3);
+        hbox = (Gtk.Box) perm_grid.get_child_at (1,3);
         update_permission_type_buttons (hbox, permissions, PermissionType.USER);
         
         /* update GRP row */
-        hbox = (Gtk.HBox) perm_grid.get_child_at (1,4);
+        hbox = (Gtk.Box) perm_grid.get_child_at (1,4);
         update_permission_type_buttons (hbox, permissions, PermissionType.GROUP);
         
         /* update OTHER row */
-        hbox = (Gtk.HBox) perm_grid.get_child_at (1,5);
+        hbox = (Gtk.Box) perm_grid.get_child_at (1,5);
         update_permission_type_buttons (hbox, permissions, PermissionType.OTHER);
     }
 
@@ -838,7 +839,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         
         Gtk.Widget key_label;
         Gtk.Widget value_label;
-        Gtk.HBox value_hlabel;
+        Gtk.Box value_hlabel;
         
         key_label = create_label_key(_("Owner") + ": ", Align.CENTER);
         perm_grid.attach(key_label, 0, 1, 1, 1);
@@ -874,7 +875,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         //perm_code.set_has_frame (false);
         perm_code.set_size_request(35, -1);
 
-        var perm_code_hbox = new HBox(false, 10);
+        var perm_code_hbox = new Box(Gtk.Orientation.HORIZONTAL, 10);
         //var l_perm = new Label("-rwxr-xr-x");
         l_perm = new Label(goffile.get_permissions_as_string());
         perm_code_hbox.pack_start(l_perm, true, true, 0);
