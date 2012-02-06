@@ -45,7 +45,7 @@ typedef struct {
 typedef struct {
     GList *head;
     GList *tail;
-    GMutex *mutex;
+    GMutex mutex;
 } MarlinFileChangesQueue;
 
 typedef struct {
@@ -59,8 +59,7 @@ marlin_file_changes_queue_new (void)
     MarlinFileChangesQueue *result;
 
     result = g_new0 (MarlinFileChangesQueue, 1);
-    //g_mutex_init (&result->mutex);
-    result->mutex = g_mutex_new ();
+    g_mutex_init (&result->mutex);
 
     return result;
 }
@@ -82,13 +81,13 @@ marlin_file_changes_queue_add_common (MarlinFileChangesQueue *queue,
                                       MarlinFileChange *new_item)
 {
     /* enqueue the new queue item while locking down the list */
-    g_mutex_lock (queue->mutex);
+    g_mutex_lock (&queue->mutex);
 
     queue->head = g_list_prepend (queue->head, new_item);
     if (queue->tail == NULL)
         queue->tail = queue->head;
 
-    g_mutex_unlock (queue->mutex);
+    g_mutex_unlock (&queue->mutex);
 }
 
 void
@@ -190,7 +189,7 @@ marlin_file_changes_queue_get_change (MarlinFileChangesQueue *queue)
     g_assert (queue != NULL);
 
     /* dequeue the tail item while locking down the list */
-    g_mutex_lock (queue->mutex);
+    g_mutex_lock (&queue->mutex);
 
     if (queue->tail == NULL) {
         result = NULL;
@@ -203,7 +202,7 @@ marlin_file_changes_queue_get_change (MarlinFileChangesQueue *queue)
         queue->tail = new_tail;
     }
 
-    g_mutex_unlock (queue->mutex);
+    g_mutex_unlock (&queue->mutex);
 
     return result;
 }
