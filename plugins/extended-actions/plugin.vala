@@ -106,10 +106,11 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
         }
     }
 
-    public override void context_menu (Gtk.Widget? widget)
+    public override void context_menu (Gtk.Widget? widget, GLib.List<GOF.File> files)
     {
         menu = widget as Gtk.Menu;
         
+        selection = files;
         try {
             services = service_eactions.GetServicesByLocationsList (build_hash_from_list_selection ());
         
@@ -142,11 +143,6 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
         menu = (Gtk.Menu)ui_manager.get_widget("/selection");
     }
     
-    public override void file (GLib.List<Object> files)
-    {
-        selection = (GLib.List<GOF.File>) files;
-    }
-
     public override void directory_loaded (void* user_data)
     {
         current_directory = ((Object[])user_data)[2] as GOF.File;

@@ -99,7 +99,7 @@ namespace Marlin.View {
                     remove(content_item);
                 add(value);
                 content_item = value;
-                show_all ();
+                content_item.show_all ();
             }
             get{
                 return content_item;
