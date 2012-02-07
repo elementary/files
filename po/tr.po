@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-02-05 11:44+0000\n"
+"PO-Revision-Date: 2012-02-06 12:26+0000\n"
 "Last-Translator: Ebubekir KARUL <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-02-06 05:00+0000\n"
+"X-Launchpad-Export-Date: 2012-02-07 05:01+0000\n"
 "X-Generator: Launchpad (build 14747)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
@@ -618,12 +618,12 @@ msgstr "%s İle _Aç"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1898
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Yeni %'d _Sekmede Aç"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1907
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Yeni %'d _Pencerede Aç"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3236
 msgid "Set as default"
