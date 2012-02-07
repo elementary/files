@@ -666,7 +666,7 @@ get_file_items_callback(GHashTable *response, gpointer ud)
 }
 
 static void 
-marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu) 
+marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *files) 
 {
     MarlinDropbox *cvs = MARLIN_DROPBOX (base);
     GOFFile *file;
@@ -676,6 +676,7 @@ marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu)
     g_message ("%s", G_STRFUNC);
     //context_menu_new (u1, menu);
 
+    cvs->selection = files;
     if ((file_count = g_list_length (cvs->selection)) != 1)
         return;
 
@@ -758,19 +759,6 @@ marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu)
 
 }
 
-static void marlin_dropbox_real_file (MarlinPluginsBase *base, GList *files) {
-    MarlinDropbox *cvs = MARLIN_DROPBOX (base);
-
-    cvs->selection = files;
-
-    /*GList *l;
-      GOFFile *goffile;
-      for (l=files; l != NULL; l=l->next) {
-      goffile = (GOFFile *) l->data;
-      g_message ("selection %s", goffile->uri);
-      }*/
-}
-
 static void 
 marlin_dropbox_class_init (MarlinDropboxClass *klass) {
     MarlinPluginsBaseClass *object_class = MARLIN_PLUGINS_BASE_CLASS (klass);
@@ -780,7 +768,6 @@ marlin_dropbox_class_init (MarlinDropboxClass *klass) {
     object_class->directory_loaded = marlin_dropbox_real_directory_loaded;
     object_class->update_file_info = marlin_dropbox_update_file_info;
     object_class->context_menu = marlin_dropbox_context_menu;
-    object_class->file = marlin_dropbox_real_file;
 }
 
 
