@@ -84,9 +84,9 @@ namespace Marlin.View {
             try {
                 provider.load_from_data ("""MarlinViewOverlayBar {
                                          background-color: #cecfcd;
-                                         border-radius: 2 2 0 0;
+                                         border-radius: 2px 2px 0px 0px;
                                          border-style: solid;
-                                         border-width: 1;
+                                         border-width: 1px;
                                          border-color: darker (#cecfcd);
                                          border-bottom-color: @transparent;
                                          
