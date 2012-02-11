@@ -2340,4 +2340,16 @@ gof_file_can_unmount (GOFFile *file)
 	return file->can_unmount || (file->mount != NULL && g_mount_can_unmount (file->mount));
 }
 
+gboolean
+gof_file_thumb_can_frame (GOFFile *file)
+{
+    GOFDirectoryAsync *dir;
 
+    /* get the DirectoryAsync associated to the file */
+    dir = gof_directory_async_cache_lookup (file->directory);
+    if (dir != NULL) {
+       return !dir->uri_contain_keypath_icons; 
+    }
+
+    return FALSE;
+}

@@ -1644,6 +1644,14 @@ exo_icon_view_destroy (GtkWidget *widget)
     GTK_WIDGET_CLASS (exo_icon_view_parent_class)->destroy (widget);
 }
 
+#define EXO_ICON_VIEW_CSS_STYLE "\n" \
+    "ExoIconView.view.cell {\n " \
+    "   border-style: solid;\n" \
+    "   border-radius: 0px;\n" \
+    "   border-width: 1px;\n" \
+    "   border-color: alpha (grey, 0.4);\n" \
+    "}"
+
 static void
 exo_icon_view_realize (GtkWidget *widget)
 {
@@ -1700,6 +1708,20 @@ exo_icon_view_realize (GtkWidget *widget)
     gtk_style_context_save (context);
     gtk_style_context_add_class (context, GTK_STYLE_CLASS_VIEW);
     gtk_style_context_set_background (context, icon_view->priv->bin_window);
+
+    /* add default exo-icon-view style (may be overwritten by the theme) */
+    GtkCssProvider *css_provider;
+    GError *error = NULL;
+    
+    css_provider = gtk_css_provider_new ();
+    gtk_css_provider_load_from_data (css_provider, EXO_ICON_VIEW_CSS_STYLE, (gssize) (-1), &error);
+    if (error != NULL) {
+        g_warning ("exo-icon-view.c: Could not add css provider. Some widgets will not " \
+                   "look as intended. %s", error->message);
+        g_clear_error (&error);
+    }
+    gtk_style_context_add_provider (context, (GtkStyleProvider*) css_provider, (guint) 600);
+
     gtk_style_context_restore (context);
 
     gdk_window_show (icon_view->priv->bin_window);

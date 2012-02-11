@@ -412,6 +412,11 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
 
 }
 
+static void 
+cairo_make_shadow_for_rect (cairo_t* cr, 
+                            gdouble x1, gdouble y1, gdouble w, gdouble h, 
+                            gdouble rad, gdouble r, gdouble g, gdouble b, gdouble size);
+
 static void
 marlin_icon_renderer_render (GtkCellRenderer      *cell,
                              cairo_t              *cr,
@@ -522,10 +527,36 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         g_object_unref (pixbuf);
         pixbuf = stated;
     }*/
-   
+  
+    if (priv->file->flags == GOF_FILE_THUMB_STATE_READY
+        && gof_file_get_thumbnail_path (priv->file)
+        && gof_file_thumb_can_frame (priv->file))
+    {
+        cairo_make_shadow_for_rect (cr, pix_rect.x+4, pix_rect.y+4, 
+                                    pix_rect.width-4, pix_rect.height-6, 
+                                    4, 0, 0, 0, 8);
+        /* we need to mask the underlying shadows in case of transparent thumbs */
+        GdkRGBA bg_color;
+        gtk_style_context_get_background_color (context, GTK_STATE_FLAG_NORMAL, &bg_color);
+        gdk_cairo_set_source_rgba (cr, &bg_color);
+        cairo_rectangle (cr, pix_rect.x, pix_rect.y, 
+                         pix_rect.width, pix_rect.height);
+        cairo_fill (cr);
+    }
+    
     gtk_render_icon (context, cr, pixbuf,
                      pix_rect.x, pix_rect.y);
-    
+
+    /* let the theme draw a frame for loaded thumbnails */ 
+    if (priv->file->flags == GOF_FILE_THUMB_STATE_READY
+        && gof_file_get_thumbnail_path (priv->file)
+        && gof_file_thumb_can_frame (priv->file))
+    {
+        gtk_render_frame (context, cr, 
+                          pix_rect.x, pix_rect.y,
+                          pix_rect.width, pix_rect.height);
+    }
+
     gtk_style_context_restore (context);
     g_object_unref (pixbuf);
 
@@ -612,3 +643,152 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         }
     }
 }
+
+/*
+ * Shadows code snippet took from synapse (ui/utils.vala) and converted to C.
+ * Authored by Michal Hruby <michal.mhr@gmail.com>
+ *             Alberto Aldegheri <albyrock87+dev@gmail.com>
+ */
+
+#define _cairo_pattern_destroy0(var) ((var == NULL) ? NULL : (var = (cairo_pattern_destroy (var), NULL)))
+
+static void 
+add_shadow_stops (cairo_pattern_t* pat, gdouble r, gdouble g, gdouble b, gdouble size, gdouble alpha) 
+{
+	g_return_if_fail (pat != NULL);
+	
+    cairo_pattern_add_color_stop_rgba (pat, 1.0, r, g, b, (gdouble) 0);
+	cairo_pattern_add_color_stop_rgba (pat, 0.8, r, g, b, alpha * 0.07);
+	cairo_pattern_add_color_stop_rgba (pat, 0.6, r, g, b, alpha * 0.24);
+	cairo_pattern_add_color_stop_rgba (pat, 0.4, r, g, b, alpha * 0.46);
+	cairo_pattern_add_color_stop_rgba (pat, 0.2, r, g, b, alpha * 0.77);
+	cairo_pattern_add_color_stop_rgba (pat, 0.0, r, g, b, alpha);
+}
+
+
+static void 
+cairo_make_shadow_for_rect (cairo_t* cr, 
+                            gdouble x1, gdouble y1, gdouble w, gdouble h, 
+                            gdouble rad, gdouble r, gdouble g, gdouble b, gdouble size) 
+{
+	gdouble a;
+	gdouble x2;
+	gdouble x3;
+	gdouble x4;
+	gdouble y2;
+	gdouble y3;
+	gdouble y4;
+	gdouble thick;
+	cairo_pattern_t* pat = NULL;
+	
+    g_return_if_fail (cr != NULL);
+	if (size < ((gdouble) 1)) 
+		return;
+
+	cairo_save (cr);
+	a = 0.25;
+	cairo_translate (cr, 0.5, 0.5);
+	w -= 1;
+	h -= 1;
+    x2 = x1 + rad;
+    x3 = x1 + w - rad;
+    x4 = x1 + w;
+    y2 = y1 + rad;
+    y3 = y1 + h - rad;
+    y4 = y1 + h;
+    thick = size + rad;
+	
+    /* Top left corner */
+    cairo_save (cr);
+	_cairo_pattern_destroy0 (pat);
+	pat = cairo_pattern_create_radial (x2, y2, rad, x2, y2, thick);
+	add_shadow_stops (pat, r, g, b, size, a);
+	cairo_set_source (cr, pat);
+	cairo_rectangle (cr, x1-size, y1-size, thick, thick);
+	cairo_clip (cr);
+	cairo_paint (cr);
+	cairo_restore (cr);
+
+    /* Bottom left corner */
+	cairo_save (cr);
+	_cairo_pattern_destroy0 (pat);
+	pat = cairo_pattern_create_radial (x2, y3, rad, x2, y3, thick);
+	add_shadow_stops (pat, r, g, b, size, a);
+	cairo_set_source (cr, pat);
+	cairo_rectangle (cr, x1-size, y3, thick, thick);
+	cairo_clip (cr);
+	cairo_paint (cr);
+	cairo_restore (cr);
+	
+    /* Top right corner */
+    cairo_save (cr);
+	_cairo_pattern_destroy0 (pat);
+	pat = cairo_pattern_create_radial (x3, y2, rad, x3, y2, thick);
+	add_shadow_stops (pat, r, g, b, size, a);
+	cairo_set_source (cr, pat);
+	cairo_rectangle (cr, x3, y1-size, thick, thick);
+	cairo_clip (cr);
+	cairo_paint (cr);
+	cairo_restore (cr);
+	
+    /* Bottom right corner */
+    cairo_save (cr);
+	_cairo_pattern_destroy0 (pat);
+	pat = cairo_pattern_create_radial (x3, y3, rad, x3, y3, thick);
+	add_shadow_stops (pat, r, g, b, size, a);
+	cairo_set_source (cr, pat);
+	cairo_rectangle (cr, x3, y3, thick, thick);
+	cairo_clip (cr);
+	cairo_paint (cr);
+	cairo_restore (cr);
+	
+    /* Right */
+    cairo_save (cr);
+	_cairo_pattern_destroy0 (pat);
+	pat = cairo_pattern_create_linear (x4, 0, x4+size, 0);
+	add_shadow_stops (pat, r, g, b, size, a);
+	cairo_set_source (cr, pat);
+	cairo_rectangle (cr, x4, y2, size, y3-y2);
+	cairo_clip (cr);
+	cairo_paint (cr);
+	cairo_restore (cr);
+	
+    /* Left */
+    cairo_save (cr);
+	_cairo_pattern_destroy0 (pat);
+	pat = cairo_pattern_create_linear (x1, 0, x1-size, 0);
+	add_shadow_stops (pat, r, g, b, size, a);
+	cairo_set_source (cr, pat);
+	cairo_rectangle (cr, x1-size, y2, size, y3-y2);
+	cairo_clip (cr);
+	cairo_paint (cr);
+	cairo_restore (cr);
+	
+    /* Bottom */
+    cairo_save (cr);
+	_cairo_pattern_destroy0 (pat);
+	pat = cairo_pattern_create_linear (0, y4, 0, y4+size);
+	add_shadow_stops (pat, r, g, b, size, a);
+	cairo_set_source (cr, pat);
+	cairo_rectangle (cr, x2, y4, x3-x2, size);
+	cairo_clip (cr);
+	cairo_paint (cr);
+	cairo_restore (cr);
+	
+    /* Top */
+    cairo_save (cr);
+	_cairo_pattern_destroy0 (pat);
+	pat = cairo_pattern_create_linear (0, y1, 0, y1-size);
+	add_shadow_stops (pat, r, g, b, size, a);
+	cairo_set_source (cr, pat);
+	cairo_rectangle (cr, x2, y1-size, x3-x2, size);
+	cairo_clip (cr);
+	cairo_paint (cr);
+	cairo_restore (cr);
+	
+    cairo_restore (cr);
+	_cairo_pattern_destroy0 (pat);
+}
+
+
+

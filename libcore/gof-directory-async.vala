@@ -27,6 +27,9 @@ public class GOF.Directory.Async : Object
 {
     public GLib.File location;
     public GOF.File file;
+
+    /* we're looking for particular path keywords like *\/icons* .icons ... */
+    public bool uri_contain_keypath_icons;
     
     public enum State {
         NOT_LOADED,
@@ -85,6 +88,8 @@ public class GOF.Directory.Async : Object
         this.unref ();
         warning ("dir %s ref_count %u", this.file.uri, this.ref_count);
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.file_hash, GLib.file_equal);
+
+        uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
 
         //list_directory (location);
     }
