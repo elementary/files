@@ -91,10 +91,10 @@ struct _MarlinIconRendererPrivate
 };
 
 
-G_DEFINE_TYPE (MarlinIconRenderer, marlin_icon_renderer, GTK_TYPE_CELL_RENDERER)
+G_DEFINE_TYPE (MarlinIconRenderer, marlin_icon_renderer, GTK_TYPE_CELL_RENDERER);
 
 static gpointer _g_object_ref0 (gpointer self) {
-	return self ? g_object_ref (self) : NULL;
+    return self ? g_object_ref (self) : NULL;
 }
 
 static void
@@ -126,12 +126,12 @@ marlin_icon_renderer_class_init (MarlinIconRendererClass *class)
     cell_class->render = marlin_icon_renderer_render;
 
     /*g_object_class_install_property (object_class,
-                                     PROP_PIXBUF,
-                                     g_param_spec_object ("pixbuf",
-                                                          "Pixbuf Object",
-                                                          "The pixbuf to render",
-                                                          GDK_TYPE_PIXBUF,
-                                                          EXO_PARAM_READWRITE));*/
+      PROP_PIXBUF,
+      g_param_spec_object ("pixbuf",
+      "Pixbuf Object",
+      "The pixbuf to render",
+      GDK_TYPE_PIXBUF,
+      EXO_PARAM_READWRITE));*/
 
     g_object_class_install_property (object_class,
                                      PROP_SIZE,
@@ -209,7 +209,7 @@ marlin_icon_renderer_finalize (GObject *object)
     MarlinIconRendererPrivate *priv = cellpixbuf->priv;
 
     /*if (priv->pixbuf)
-        g_object_unref (priv->pixbuf);*/
+      g_object_unref (priv->pixbuf);*/
     if (priv->file)
         g_object_unref (priv->file);
     if (priv->drop_file)
@@ -231,9 +231,9 @@ marlin_icon_renderer_get_property (GObject        *object,
 
     switch (param_id)
     {
-    /*case PROP_PIXBUF:
-        g_value_set_object (value, priv->pixbuf);
-        break;*/
+        /*case PROP_PIXBUF:
+          g_value_set_object (value, priv->pixbuf);
+          break;*/
     case PROP_DROP_FILE:
         g_value_set_object (value, priv->drop_file);
         break;
@@ -272,11 +272,11 @@ marlin_icon_renderer_set_property (GObject      *object,
 
     switch (param_id)
     {
-    /*case PROP_PIXBUF:
-        if (priv->pixbuf)
-            g_object_unref (priv->pixbuf);
-        priv->pixbuf = (GdkPixbuf*) g_value_dup_object (value);
-        break;*/
+        /*case PROP_PIXBUF:
+          if (priv->pixbuf)
+          g_object_unref (priv->pixbuf);
+          priv->pixbuf = (GdkPixbuf*) g_value_dup_object (value);
+          break;*/
     case PROP_DROP_FILE:
         if (G_LIKELY (priv->drop_file != NULL))
             g_object_unref (G_OBJECT (priv->drop_file));
@@ -399,8 +399,8 @@ marlin_icon_renderer_get_size (GtkCellRenderer    *cell,
     }
 
     /* Even if the last new pixbuf corresponding to the last requested size isn't generated 
-    yet, we can still determine its dimensions. This allow to asyncronously load the thumbnails 
-    pixbuf */
+       yet, we can still determine its dimensions. This allow to asyncronously load the thumbnails 
+       pixbuf */
     int s = MAX (pixbuf_width, pixbuf_height);
     priv->scale = (double)priv->size / s;
 
@@ -440,7 +440,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
     g_return_if_fail (priv->file && priv->pixbuf && GDK_IS_PIXBUF (priv->pixbuf));
     /*if (!(priv->file && priv->pixbuf))
-        return;*/
+      return;*/
 
     marlin_icon_renderer_get_size (cell, widget, (GdkRectangle *) cell_area,
                                    &pix_rect.x, 
@@ -456,7 +456,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
     if (!gdk_rectangle_intersect (cell_area, &pix_rect, &draw_rect))
         return;
-    
+
     pixbuf = g_object_ref (priv->pixbuf);
 
     //g_debug ("%s %s %u %u\n", G_STRFUNC, priv->file->uri, G_OBJECT (priv->file)->ref_count, G_OBJECT (priv->pixbuf)->ref_count);
@@ -499,12 +499,12 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
                        GTK_CELL_RENDERER_PRELIT)) != 0) {
         if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
         {
-                state = gtk_widget_has_focus (widget) ? GTK_STATE_FLAG_SELECTED : GTK_STATE_FLAG_ACTIVE;
-                GdkRGBA color;
-                gtk_style_context_get_background_color (context, state, &color);
-                temp = eel_create_colorized_pixbuf (pixbuf, &color);
-                g_object_unref (pixbuf);
-                pixbuf = temp;
+            state = gtk_widget_has_focus (widget) ? GTK_STATE_FLAG_SELECTED : GTK_STATE_FLAG_ACTIVE;
+            GdkRGBA color;
+            gtk_style_context_get_background_color (context, state, &color);
+            temp = eel_create_colorized_pixbuf (pixbuf, &color);
+            g_object_unref (pixbuf);
+            pixbuf = temp;
         }
 
         if ((flags & GTK_CELL_RENDERER_PRELIT) != 0)
@@ -518,16 +518,16 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     }
 
     /*if (state != GTK_STATE_FLAG_NORMAL)
-    {
-        stated = create_symbolic_pixbuf (cellpixbuf, widget, state);
+      {
+      stated = create_symbolic_pixbuf (cellpixbuf, widget, state);
 
-        if (!stated)
-            stated = transform_pixbuf_state (pixbuf, context);
+      if (!stated)
+      stated = transform_pixbuf_state (pixbuf, context);
 
-        g_object_unref (pixbuf);
-        pixbuf = stated;
-    }*/
-  
+      g_object_unref (pixbuf);
+      pixbuf = stated;
+      }*/
+
     if (priv->file->flags == GOF_FILE_THUMB_STATE_READY
         && gof_file_get_thumbnail_path (priv->file)
         && gof_file_thumb_can_frame (priv->file))
@@ -543,7 +543,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
                          pix_rect.width, pix_rect.height);
         cairo_fill (cr);
     }
-    
+
     gtk_render_icon (context, cr, pixbuf,
                      pix_rect.x, pix_rect.y);
 
@@ -574,7 +574,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
         gdk_cairo_set_source_pixbuf (cr, pix, pix_rect.x, pix_rect.y);
         cairo_paint (cr);
-        
+
         g_object_unref (nicon);
         g_object_unref (pix);
     }
@@ -584,7 +584,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     {
         int position = 0;
         GList* emblems = g_list_first(priv->file->emblems_list);
-        
+
         /* render the emblems
          * show number of emblems depending on the zoom lvl. */
         while (emblems != NULL && position < priv->zoom_level + 1)
@@ -634,7 +634,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 
             gdk_cairo_set_source_pixbuf (cr, pix, emblem_area.x, emblem_area.y);
             cairo_paint (cr);
-            
+
             position ++;
 
             emblems = g_list_next(emblems);
@@ -655,14 +655,14 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
 static void 
 add_shadow_stops (cairo_pattern_t* pat, gdouble r, gdouble g, gdouble b, gdouble size, gdouble alpha) 
 {
-	g_return_if_fail (pat != NULL);
-	
+    g_return_if_fail (pat != NULL);
+
     cairo_pattern_add_color_stop_rgba (pat, 1.0, r, g, b, (gdouble) 0);
-	cairo_pattern_add_color_stop_rgba (pat, 0.8, r, g, b, alpha * 0.07);
-	cairo_pattern_add_color_stop_rgba (pat, 0.6, r, g, b, alpha * 0.24);
-	cairo_pattern_add_color_stop_rgba (pat, 0.4, r, g, b, alpha * 0.46);
-	cairo_pattern_add_color_stop_rgba (pat, 0.2, r, g, b, alpha * 0.77);
-	cairo_pattern_add_color_stop_rgba (pat, 0.0, r, g, b, alpha);
+    cairo_pattern_add_color_stop_rgba (pat, 0.8, r, g, b, alpha * 0.07);
+    cairo_pattern_add_color_stop_rgba (pat, 0.6, r, g, b, alpha * 0.24);
+    cairo_pattern_add_color_stop_rgba (pat, 0.4, r, g, b, alpha * 0.46);
+    cairo_pattern_add_color_stop_rgba (pat, 0.2, r, g, b, alpha * 0.77);
+    cairo_pattern_add_color_stop_rgba (pat, 0.0, r, g, b, alpha);
 }
 
 
@@ -671,25 +671,25 @@ cairo_make_shadow_for_rect (cairo_t* cr,
                             gdouble x1, gdouble y1, gdouble w, gdouble h, 
                             gdouble rad, gdouble r, gdouble g, gdouble b, gdouble size) 
 {
-	gdouble a;
-	gdouble x2;
-	gdouble x3;
-	gdouble x4;
-	gdouble y2;
-	gdouble y3;
-	gdouble y4;
-	gdouble thick;
-	cairo_pattern_t* pat = NULL;
-	
-    g_return_if_fail (cr != NULL);
-	if (size < ((gdouble) 1)) 
-		return;
+    gdouble a;
+    gdouble x2;
+    gdouble x3;
+    gdouble x4;
+    gdouble y2;
+    gdouble y3;
+    gdouble y4;
+    gdouble thick;
+    cairo_pattern_t* pat = NULL;
 
-	cairo_save (cr);
-	a = 0.25;
-	cairo_translate (cr, 0.5, 0.5);
-	w -= 1;
-	h -= 1;
+    g_return_if_fail (cr != NULL);
+    if (size < ((gdouble) 1)) 
+        return;
+
+    cairo_save (cr);
+    a = 0.25;
+    cairo_translate (cr, 0.5, 0.5);
+    w -= 1;
+    h -= 1;
     x2 = x1 + rad;
     x3 = x1 + w - rad;
     x4 = x1 + w;
@@ -697,97 +697,97 @@ cairo_make_shadow_for_rect (cairo_t* cr,
     y3 = y1 + h - rad;
     y4 = y1 + h;
     thick = size + rad;
-	
+
     /* Top left corner */
     cairo_save (cr);
-	_cairo_pattern_destroy0 (pat);
-	pat = cairo_pattern_create_radial (x2, y2, rad, x2, y2, thick);
-	add_shadow_stops (pat, r, g, b, size, a);
-	cairo_set_source (cr, pat);
-	cairo_rectangle (cr, x1-size, y1-size, thick, thick);
-	cairo_clip (cr);
-	cairo_paint (cr);
-	cairo_restore (cr);
+    _cairo_pattern_destroy0 (pat);
+    pat = cairo_pattern_create_radial (x2, y2, rad, x2, y2, thick);
+    add_shadow_stops (pat, r, g, b, size, a);
+    cairo_set_source (cr, pat);
+    cairo_rectangle (cr, x1-size, y1-size, thick, thick);
+    cairo_clip (cr);
+    cairo_paint (cr);
+    cairo_restore (cr);
 
     /* Bottom left corner */
-	cairo_save (cr);
-	_cairo_pattern_destroy0 (pat);
-	pat = cairo_pattern_create_radial (x2, y3, rad, x2, y3, thick);
-	add_shadow_stops (pat, r, g, b, size, a);
-	cairo_set_source (cr, pat);
-	cairo_rectangle (cr, x1-size, y3, thick, thick);
-	cairo_clip (cr);
-	cairo_paint (cr);
-	cairo_restore (cr);
-	
+    cairo_save (cr);
+    _cairo_pattern_destroy0 (pat);
+    pat = cairo_pattern_create_radial (x2, y3, rad, x2, y3, thick);
+    add_shadow_stops (pat, r, g, b, size, a);
+    cairo_set_source (cr, pat);
+    cairo_rectangle (cr, x1-size, y3, thick, thick);
+    cairo_clip (cr);
+    cairo_paint (cr);
+    cairo_restore (cr);
+
     /* Top right corner */
     cairo_save (cr);
-	_cairo_pattern_destroy0 (pat);
-	pat = cairo_pattern_create_radial (x3, y2, rad, x3, y2, thick);
-	add_shadow_stops (pat, r, g, b, size, a);
-	cairo_set_source (cr, pat);
-	cairo_rectangle (cr, x3, y1-size, thick, thick);
-	cairo_clip (cr);
-	cairo_paint (cr);
-	cairo_restore (cr);
-	
+    _cairo_pattern_destroy0 (pat);
+    pat = cairo_pattern_create_radial (x3, y2, rad, x3, y2, thick);
+    add_shadow_stops (pat, r, g, b, size, a);
+    cairo_set_source (cr, pat);
+    cairo_rectangle (cr, x3, y1-size, thick, thick);
+    cairo_clip (cr);
+    cairo_paint (cr);
+    cairo_restore (cr);
+
     /* Bottom right corner */
     cairo_save (cr);
-	_cairo_pattern_destroy0 (pat);
-	pat = cairo_pattern_create_radial (x3, y3, rad, x3, y3, thick);
-	add_shadow_stops (pat, r, g, b, size, a);
-	cairo_set_source (cr, pat);
-	cairo_rectangle (cr, x3, y3, thick, thick);
-	cairo_clip (cr);
-	cairo_paint (cr);
-	cairo_restore (cr);
-	
+    _cairo_pattern_destroy0 (pat);
+    pat = cairo_pattern_create_radial (x3, y3, rad, x3, y3, thick);
+    add_shadow_stops (pat, r, g, b, size, a);
+    cairo_set_source (cr, pat);
+    cairo_rectangle (cr, x3, y3, thick, thick);
+    cairo_clip (cr);
+    cairo_paint (cr);
+    cairo_restore (cr);
+
     /* Right */
     cairo_save (cr);
-	_cairo_pattern_destroy0 (pat);
-	pat = cairo_pattern_create_linear (x4, 0, x4+size, 0);
-	add_shadow_stops (pat, r, g, b, size, a);
-	cairo_set_source (cr, pat);
-	cairo_rectangle (cr, x4, y2, size, y3-y2);
-	cairo_clip (cr);
-	cairo_paint (cr);
-	cairo_restore (cr);
-	
+    _cairo_pattern_destroy0 (pat);
+    pat = cairo_pattern_create_linear (x4, 0, x4+size, 0);
+    add_shadow_stops (pat, r, g, b, size, a);
+    cairo_set_source (cr, pat);
+    cairo_rectangle (cr, x4, y2, size, y3-y2);
+    cairo_clip (cr);
+    cairo_paint (cr);
+    cairo_restore (cr);
+
     /* Left */
     cairo_save (cr);
-	_cairo_pattern_destroy0 (pat);
-	pat = cairo_pattern_create_linear (x1, 0, x1-size, 0);
-	add_shadow_stops (pat, r, g, b, size, a);
-	cairo_set_source (cr, pat);
-	cairo_rectangle (cr, x1-size, y2, size, y3-y2);
-	cairo_clip (cr);
-	cairo_paint (cr);
-	cairo_restore (cr);
-	
+    _cairo_pattern_destroy0 (pat);
+    pat = cairo_pattern_create_linear (x1, 0, x1-size, 0);
+    add_shadow_stops (pat, r, g, b, size, a);
+    cairo_set_source (cr, pat);
+    cairo_rectangle (cr, x1-size, y2, size, y3-y2);
+    cairo_clip (cr);
+    cairo_paint (cr);
+    cairo_restore (cr);
+
     /* Bottom */
     cairo_save (cr);
-	_cairo_pattern_destroy0 (pat);
-	pat = cairo_pattern_create_linear (0, y4, 0, y4+size);
-	add_shadow_stops (pat, r, g, b, size, a);
-	cairo_set_source (cr, pat);
-	cairo_rectangle (cr, x2, y4, x3-x2, size);
-	cairo_clip (cr);
-	cairo_paint (cr);
-	cairo_restore (cr);
-	
+    _cairo_pattern_destroy0 (pat);
+    pat = cairo_pattern_create_linear (0, y4, 0, y4+size);
+    add_shadow_stops (pat, r, g, b, size, a);
+    cairo_set_source (cr, pat);
+    cairo_rectangle (cr, x2, y4, x3-x2, size);
+    cairo_clip (cr);
+    cairo_paint (cr);
+    cairo_restore (cr);
+
     /* Top */
     cairo_save (cr);
-	_cairo_pattern_destroy0 (pat);
-	pat = cairo_pattern_create_linear (0, y1, 0, y1-size);
-	add_shadow_stops (pat, r, g, b, size, a);
-	cairo_set_source (cr, pat);
-	cairo_rectangle (cr, x2, y1-size, x3-x2, size);
-	cairo_clip (cr);
-	cairo_paint (cr);
-	cairo_restore (cr);
-	
+    _cairo_pattern_destroy0 (pat);
+    pat = cairo_pattern_create_linear (0, y1, 0, y1-size);
+    add_shadow_stops (pat, r, g, b, size, a);
+    cairo_set_source (cr, pat);
+    cairo_rectangle (cr, x2, y1-size, x3-x2, size);
+    cairo_clip (cr);
+    cairo_paint (cr);
     cairo_restore (cr);
-	_cairo_pattern_destroy0 (pat);
+
+    cairo_restore (cr);
+    _cairo_pattern_destroy0 (pat);
 }
 
 
