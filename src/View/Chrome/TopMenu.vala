@@ -37,7 +37,7 @@ namespace Marlin.View.Chrome
             win = window;
             if (Preferences.settings.get_boolean("toolbar-primary-css-style"))
 	            get_style_context().add_class ("primary-toolbar");
-            set_icon_size (Gtk.IconSize.SMALL_TOOLBAR);
+            //set_icon_size (Gtk.IconSize.SMALL_TOOLBAR);
 
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             toolbar_menu = (Gtk.Menu) win.ui.get_widget("/ToolbarMenu");
@@ -82,9 +82,7 @@ namespace Marlin.View.Chrome
                 if (name == "LocationEntry")
                 {
                     location_bar = new LocationBar (win.ui, win);
-                    location_bar.show_all();
 
-                    insert(location_bar, -1);
                     /* init the path if we got a curent tab with a valid slot
                        and a valid directory loaded */
                     if (win.current_tab != null && win.current_tab.slot != null
@@ -95,12 +93,21 @@ namespace Marlin.View.Chrome
 
                     location_bar.escape.connect( () => { ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); });
                     location_bar.activate.connect(() => { win.current_tab.path_changed(File.new_for_commandline_arg(location_bar.path)); });
+                    if (get_icon_size () == Gtk.IconSize.LARGE_TOOLBAR) {
+                        location_bar.margin_top = 6;
+                        location_bar.margin_bottom = 6;
+                    } 
+                    location_bar.show_all();
+                    insert(location_bar, -1);
                     continue;
                 }
                 if (name == "ViewSwitcher")
                 {
-                    view_switcher = new ViewSwitcher(win.main_actions);
-		            view_switcher.get_style_context().add_class ("raised");
+                    view_switcher = new ViewSwitcher (win.main_actions);
+                    if (get_icon_size () == Gtk.IconSize.LARGE_TOOLBAR) {
+                        view_switcher.margin_top = 6;
+                        view_switcher.margin_bottom = 6;
+                    } 
                     view_switcher.show_all();
                     insert(view_switcher, -1);
                     continue;

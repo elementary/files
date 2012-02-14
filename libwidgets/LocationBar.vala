@@ -64,8 +64,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     double anim_state = 0;
 
     Gtk.StyleContext button_context;
-    Gtk.StyleContext button_widget_context;
-    Gtk.StyleContext entry_context;
+    /*Gtk.StyleContext button_widget_context;
+    Gtk.StyleContext entry_context;*/
     public BreadcrumbsEntry entry;
 
     /**
@@ -107,11 +107,20 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         icon_factory = Varka.IconFactory.get_default ();
         icons = new List<IconDirectory?>();
 
-        button_context = new Button().get_style_context();
-        button_widget_context = button_context;
-        entry_context = new Entry().get_style_context();
+        button_context = get_style_context();
+        /*button_context = new StyleContext ();
+        var path = new Gtk.WidgetPath ();
+        path.append_type (typeof (BasePathBar));
+        path.append_type (typeof (Button));
+        button_context.set_path (path);*/
 
+        /*button_widget_context = button_context;
+        entry_context = new Entry().get_style_context();*/
+
+        button_context.add_class("button");
+        button_context.add_class("raised");
         button_context.add_class("marlin-pathbar");
+
 #if VALA_0_14
         Gtk.Border border = button_context.get_padding(Gtk.StateFlags.NORMAL);
 #else
@@ -128,7 +137,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         /* x padding */
         x = 0;
         /* y padding */
-        y = 3;
+        y = 0;
             
         elements = new Gee.ArrayList<BreadcrumbsElement>();
 
@@ -632,6 +641,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         } );
     }
 
+/* disabled, waiting for deletion or fix the hardcoded stuff 
+ * or just draw elements by elements with widgets state flags */
+#if 0
     private void draw_selection(Cairo.Context cr)
     {
         /* If a dir is selected (= mouse hover)*/
@@ -690,6 +702,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             cr.fill();
         }
     }
+#endif
 
     public override bool motion_notify_event(Gdk.EventMotion event)
     {
@@ -738,7 +751,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     public override bool focus_out_event(Gdk.EventFocus event)
     {
         focus = false;
-        button_context = button_widget_context;
+        //button_context = button_widget_context;
+        button_context.set_state (StateFlags.NORMAL);
         entry.hide();
         return true;
     }
@@ -746,7 +760,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     public override bool focus_in_event(Gdk.EventFocus event)
     {
         entry.show();
-        button_context = entry_context;
+        //button_context = entry_context;
+        button_context.set_state (StateFlags.ACTIVE);
         focus = true;
         return true;
     }
@@ -776,6 +791,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     public override bool draw(Cairo.Context cr)
     {
+        //propagate_draw (get_child (), cr);
         double height = get_allocated_height();
         double width = get_allocated_width();
         double margin = y;
@@ -836,10 +852,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             }
         }
 
-        draw_selection(cr);
+        //draw_selection(cr);
 
         x_render_saved = x_render + space_breads/2;
-        entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, focus ? entry_context : button_context);
+        //entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, focus ? entry_context : button_context);
+        entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, button_context);
         return false;
     }
 

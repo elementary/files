@@ -52,7 +52,10 @@ namespace Marlin.View.Chrome
 
             set_expand(true);
                 
-            border_width = 0;
+            //border_width = 0;
+            margin_top = 3;
+            margin_bottom = 3;
+            
             add(bread);
         }
         
