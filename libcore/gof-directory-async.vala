@@ -30,6 +30,7 @@ public class GOF.Directory.Async : Object
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
     public bool uri_contain_keypath_icons;
+    public int uri_keypath_size = 0;
     
     public enum State {
         NOT_LOADED,
@@ -90,6 +91,8 @@ public class GOF.Directory.Async : Object
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.file_hash, GLib.file_equal);
 
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
+        if (uri_contain_keypath_icons)
+            get_keypath_size ();
 
         //list_directory (location);
     }
@@ -549,6 +552,25 @@ public class GOF.Directory.Async : Object
             if (thumbs_thread_runing)
                 thumbs_stop = true;
             timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
+        }
+    }
+   
+    private Regex regex_num_size = null;
+
+    private void get_keypath_size ()
+    {
+        try {
+            if (regex_num_size == null)
+                regex_num_size = new Regex ("^[0-9]+$");
+            if (regex_num_size.match (file.basename)) {
+                uri_keypath_size = int.parse (file.basename);
+                if (!(uri_keypath_size >= 16 && uri_keypath_size <= 256))
+                    uri_keypath_size = 0;
+            } else {
+                uri_keypath_size = 0;
+            }
+        } catch (RegexError e) {
+            warning ("%s", e.message);
         }
     }
 }

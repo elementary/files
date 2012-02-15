@@ -172,10 +172,9 @@ namespace Marlin.View {
         }
 
         public void change_view (int nview, GLib.File? location) {
-            view_mode = nview;
+            /* if location is null then we have a user change view request */
+            bool user_change_rq = location == null;
             select_childs = null;
-            if (window.top_menu.view_switcher != null)
-                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
             if (location == null) {
                 /* we re just changing view keep the same location */
                 location = get_active_slot ().location;
@@ -204,6 +203,15 @@ namespace Marlin.View {
                 mwcol = null;
                 slot = new GOF.Window.Slot(location, this);
             }
+
+            /* automagicly enable icon view for icons keypath */
+            if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
+                nview = 0; /* icon view */
+
+            /* Setting up view_mode and its button */
+            view_mode = nview;
+            if (window.top_menu.view_switcher != null)
+                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
 
             connect_available_info();
             if (slot != null && slot.directory.file.exists)
