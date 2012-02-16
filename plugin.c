@@ -380,8 +380,6 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
       (NautilusOperationHandle*) dficr->dfic,
       result);
       }*/
-    //reset_file (dficr->dfic->file);
-    gof_file_icon_changed (dficr->dfic->file);
 
     /* destroy the objects we created */
     if (dficr->file_status_response != NULL)
