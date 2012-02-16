@@ -103,9 +103,13 @@ public class GOF.Directory.Async : Object
 
     private static void toggle_ref_notify(void* data, GLib.Object object, bool is_last)
     {
+        return_if_fail (object != null && object is Object);
+
         if (is_last) {
-            warning ("Async toggle_ref_notify %s", (object as Async).file.uri);
-            directory_cache.remove (((Async) object).file.location);
+            unowned Async dir = (Async) object;
+            warning ("Async toggle_ref_notify %s", dir.file.uri);
+            if (dir.location != null)
+                directory_cache.remove (dir.location);
             /*object.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);*/
         }
     }
@@ -495,14 +499,17 @@ public class GOF.Directory.Async : Object
     private void *load_thumbnails_func ()
     {
         return_val_if_fail (this is Async, null);
-        if (cancellable.is_cancelled () || file_hash == null)
+        if (cancellable.is_cancelled () || file_hash == null) {
+            this.unref ();
             return null;
+        }
 
         thumbs_thread_runing = true;
         thumbs_stop = false;
         foreach (var gof in file_hash.get_values()) {
             if (cancellable.is_cancelled () || thumbs_stop) {
                 thumbs_thread_runing = false;
+                this.unref ();
                 return null;
             }
             //if (gof.info != null && gof.flags == 1) {
@@ -515,6 +522,7 @@ public class GOF.Directory.Async : Object
         thumbs_loaded ();
         thumbs_thread_runing = false;
         
+        this.unref ();
         return null;
     }
 
@@ -525,6 +533,7 @@ public class GOF.Directory.Async : Object
             icon_size = size;
             thumbs_stop = false;
             //unowned Thread<void*> th = Thread.create<void*> (load_thumbnails_func, false);
+            this.ref ();
             Thread.create<void*> (load_thumbnails_func, false);
         } catch (ThreadError e) {
             stderr.printf ("%s\n", e.message);
