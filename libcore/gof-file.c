@@ -2348,7 +2348,9 @@ gof_file_thumb_can_frame (GOFFile *file)
     /* get the DirectoryAsync associated to the file */
     dir = gof_directory_async_cache_lookup (file->directory);
     if (dir != NULL) {
-       return !dir->uri_contain_keypath_icons; 
+        gboolean can_frame = !dir->uri_contain_keypath_icons; 
+        g_object_unref (dir);
+        return can_frame;
     }
 
     return FALSE;
