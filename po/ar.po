@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-01-04 08:20+0000\n"
-"Last-Translator: Ibrahim Saed <ibraheem5000@hotmail.com>\n"
+"PO-Revision-Date: 2012-02-16 16:39+0000\n"
+"Last-Translator: Ibrahim Saed <ibraheem5000@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2012-01-05 06:02+0000\n"
-"X-Generator: Launchpad (build 14625)\n"
+"X-Launchpad-Export-Date: 2012-02-17 05:14+0000\n"
+"X-Generator: Launchpad (build 14814)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -248,6 +248,8 @@ msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
+"مقدار الوقت الذي ينتظره العنصر لكي يتم تظليله تلقائيًا عند وضع مؤشر الفأرة "
+"عليه في وضع الفتح بنقرة واحدة."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -790,12 +792,12 @@ msgstr[5] "%'d ساعات"
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] "%'d ساعة تقريباً"
+msgstr[0] "أقل من ساعة تقريبًا"
 msgstr[1] "ساعة واحدة تقريبا"
-msgstr[2] "ساعاتان تقريباً"
-msgstr[3] "%'d ساعات تقريبا"
-msgstr[4] "%'d ساعات تقريبا"
-msgstr[5] "%'d ساعات تقريبا"
+msgstr[2] "ساعتين تقريبا"
+msgstr[3] "تقريبا %'d ساعات"
+msgstr[4] ""
+msgstr[5] "%'d ساعة تقريبًا"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:392
 #, c-format
@@ -866,7 +868,7 @@ msgstr "إفراغ جميع العناصر من المُهملات؟"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1407
 msgid "All items in the Trash will be permanently deleted."
-msgstr "جميع العناصر في المُهملات سيتم حذفها نهائياً."
+msgstr "جميع العناصر في المُهملات ستُحذف نهائيًا."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1438
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -897,7 +899,7 @@ msgstr[0] "لم تتبق ملفات للحذف"
 msgstr[1] "تبقى ملف واحد للحذف"
 msgstr[2] "تبقى ملفان للحذف"
 msgstr[3] "تبقى %'d ملفات للحذف"
-msgstr[4] "تبقى %'d ملفاً للحذف"
+msgstr[4] "تبقى %'d ملفًا للحذف"
 msgstr[5] "تبقى %'d ملف للحذف"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1512
@@ -971,7 +973,7 @@ msgstr[0] "لم تتبقَ أي ملفات لنقلها إلى المهملات"
 msgstr[1] "تبقى ملف واحد لنقله إلى المهملات"
 msgstr[2] "تبقى ملفان لنقلهما إلى المهملات"
 msgstr[3] "تبقى %'d ملفات لنقلها إلى المهملات"
-msgstr[4] "تبقى %'d ملفاً لنقلها إلى المهملات"
+msgstr[4] "تبقى %'d ملفًا لنقلها إلى المهملات"
 msgstr[5] "تبقى %'d ملف لنقلها إلى المهملات"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1872
@@ -1056,7 +1058,7 @@ msgstr[0] "يُحضر لنقل %'d ملف إلى المهملات"
 msgstr[1] "يُحضر لنقل ملف واحد إلى المهملات"
 msgstr[2] "يُحضر لنقل ملفين إلى المهملات"
 msgstr[3] "يُحضر لنقل %'d ملفات إلى المهملات"
-msgstr[4] "يُحضر لنقل %'d ملفاً إلى المهملات"
+msgstr[4] "يُحضر لنقل %'d ملفًا إلى المهملات"
 msgstr[5] "يُحضر لنقل %'d ملف إلى المهملات"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2540
@@ -1155,7 +1157,7 @@ msgstr[0] "يُنقل %I'd ملف (في \"%B\") إلى \"%B\""
 msgstr[1] "يُنقل ملف واحد (في \"%B\") إلى \"%B\""
 msgstr[2] "يُنقل ملفين (في \"%B\") إلى \"%B\""
 msgstr[3] "يُنقل %I'd ملفات (في \"%B\") إلى \"%B\""
-msgstr[4] "يُنقل %I'd ملفاً (في \"%B\") إلى \"%B\""
+msgstr[4] "يُنقل %I'd ملفًا (في \"%B\") إلى \"%B\""
 msgstr[5] "يُنقل %I'd ملف (في \"%B\") إلى \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2998
@@ -1165,7 +1167,7 @@ msgstr[0] "يُنسخ %I'd ملف (في \"%B\") إلى \"%B\""
 msgstr[1] "يُنسخ ملف واحد (في \"%B\") إلى \"%B\""
 msgstr[2] "يُنسخ ملفين (في \"%B\") إلى \"%B\""
 msgstr[3] "يُنسخ %I'd ملفات (في \"%B\") إلى \"%B\""
-msgstr[4] "يُنسخ %I'd ملفاً (في \"%B\") إلى \"%B\""
+msgstr[4] "يُنسخ %I'd ملفًا (في \"%B\") إلى \"%B\""
 msgstr[5] "يُنسخ %I'd ملف (في \"%B\") إلى \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3005
@@ -1175,7 +1177,7 @@ msgstr[0] "يُضاعف %I'd ملف (في \"%B\")"
 msgstr[1] "يُضاعف ملف واحد (في \"%B\")"
 msgstr[2] "يُضاعف ملفين (في \"%B\")"
 msgstr[3] "يُضاعف %I'd ملفات (في \"%B\")"
-msgstr[4] "يُضاعف %I'd ملفاً (في \"%B\")"
+msgstr[4] "يُضاعف %I'd ملفًا (في \"%B\")"
 msgstr[5] "يُضاعف %I'd ملف (في \"%B\")"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3014
@@ -1185,7 +1187,7 @@ msgstr[0] "يُنقل %I'd ملف إلى \"%B\""
 msgstr[1] "يُنقل ملف واحد إلى \"%B\""
 msgstr[2] "يُنقل ملفين إلى \"%B\""
 msgstr[3] "يُنقل %I'd ملفات  إلى \"%B\""
-msgstr[4] "يُنقل %I'd ملفاً إلى \"%B\""
+msgstr[4] "يُنقل %I'd ملفًا إلى \"%B\""
 msgstr[5] "يُنقل %I'd ملف إلى \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3018
@@ -1195,7 +1197,7 @@ msgstr[0] "يُنسخ %I'd ملف إلى \"%B\""
 msgstr[1] "يُنسخ ملف واحد إلى \"%B\""
 msgstr[2] "يُنسخ ملفين إلى \"%B\""
 msgstr[3] "يُنسخ %I'd ملفات إلى \"%B\""
-msgstr[4] "يُنسخ %I'd ملفاً إلى \"%B\""
+msgstr[4] "يُنسخ %I'd ملفًا إلى \"%B\""
 msgstr[5] "يُنسخ %I'd ملف إلى \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3023
@@ -1206,7 +1208,7 @@ msgstr[0] "يُضاعف %'d ملف"
 msgstr[1] "يُضاعف ملف واحد"
 msgstr[2] "يُضاعف ملفين"
 msgstr[3] "يُضاعف %I'd ملفات"
-msgstr[4] "يُضاعف %I'd ملفاً"
+msgstr[4] "يُضاعف %I'd ملفًا"
 msgstr[5] "يُضاعف %I'd ملف"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3074
@@ -1330,7 +1332,7 @@ msgstr[0] "يُحضر لنقل %I'd ملف"
 msgstr[1] "يُحضر لنقل ملف واحد"
 msgstr[2] "يُحضر لنقل ملفين"
 msgstr[3] "يُحضر لنقل %I'd ملفات"
-msgstr[4] "يُحضر لنقل %I'd ملفاً"
+msgstr[4] "يُحضر لنقل %I'd ملفًا"
 msgstr[5] "يُحضر لنقل %I'd ملف"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4953
@@ -1354,7 +1356,7 @@ msgstr[0] "يُنشئ وصلات إلى %I'd ملف"
 msgstr[1] "يُنشئ وصلات إلى ملف واحد"
 msgstr[2] "يُنشئ وصلات إلى ملفين"
 msgstr[3] "يُنشئ وصلات إلى %I'd ملفات"
-msgstr[4] "يُنشئ وصلات إلى %I'd ملفاً"
+msgstr[4] "يُنشئ وصلات إلى %I'd ملفًا"
 msgstr[5] "يُنشئ وصلات إلى %I'd ملف"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5373
