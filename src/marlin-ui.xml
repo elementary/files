@@ -22,12 +22,12 @@
 	<menu name="Edit" action="Edit">
         <!--<placeholder name="Undostack Actions"/>
 		<separator/>-->
-		<placeholder name="Clipboard Actions"/>
-		<separator/>
         <placeholder name="Undostack Actions">
             <menuitem name="Undo" action="Undo"/>
             <menuitem name="Redo" action="Redo"/>
         </placeholder>
+		<separator/>
+		<placeholder name="Clipboard Actions"/>
 		<separator/>
 		<!--<placeholder name="Select Items"/>-->
         <placeholder name="File Items Placeholder"/>
