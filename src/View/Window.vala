@@ -486,11 +486,13 @@ namespace Marlin.View {
         }
        
         private uint t_reload_cb = 0;
+        
         private bool real_reload_callback () {
             current_tab.reload ();
             t_reload_cb = 0;
             return false;
         }
+
         private void action_reload_callback (Gtk.Action action) {
             /* avoid spawning reload when key kept pressed */
             if (t_reload_cb == 0)
