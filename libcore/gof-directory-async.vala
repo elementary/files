@@ -121,8 +121,10 @@ public class GOF.Directory.Async : Object
 
     private void clear_directory_info ()
     {
-        if (idle_consume_changes_id != 0)
+        if (idle_consume_changes_id != 0) {
             Source.remove((uint) idle_consume_changes_id);
+            idle_consume_changes_id = 0;
+        }
         monitor = null;
         sorted_dirs = null;
         file_hash.remove_all ();
