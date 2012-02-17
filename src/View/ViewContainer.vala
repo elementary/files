@@ -192,7 +192,7 @@ namespace Marlin.View {
                         select_childs.prepend (slot.directory.file.location);
                 }
             }
-            if (slot != null && slot.directory.file.exists) {
+            if (slot != null && slot.directory != null && slot.directory.file.exists) {
                 slot.directory.cancel();
             }
 
@@ -235,7 +235,6 @@ namespace Marlin.View {
 
         }
 
-        /* TODO save selections in slot or fmdirectoryview and set the ContextView */
         public void sync_contextview(){
             if (!slot.directory.file.exists) {
                 if (window.contextview != null) {
@@ -264,6 +263,13 @@ namespace Marlin.View {
                 return mwcol.active_slot;
             else
                 return slot;
+        }
+
+        public void reload () {
+            GOF.Directory.Async dir = slot.directory;
+            dir.cancel ();
+            directory_cache.remove (dir.location);
+            change_view (view_mode, null);
         }
 
         public void update_location_state(bool save_history)

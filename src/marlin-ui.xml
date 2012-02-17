@@ -52,9 +52,9 @@
 		<!--<menuitem name="Preferences" action="Preferences"/>-->
 	</menu>
 	<menu action="View">
-		<!--<menuitem name="Stop" action="Stop"/>
+		<!--<menuitem name="Stop" action="Stop"/>-->
 		<menuitem name="Reload" action="Reload"/>
-		<separator/>-->
+		<separator/>
         <!--<menuitem name="Show Hide Toolbar" action="Show Hide Toolbar"/>-->
 	        <menuitem name="Show Hide Context Pane" action="Show Hide Context Pane"/>
 	        <menuitem name="Show Hide Menubar" action="Show Hide Menubar"/>

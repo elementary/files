@@ -106,17 +106,24 @@ public class GOF.Directory.Async : Object
         return_if_fail (object != null && object is Object);
 
         if (is_last) {
-            unowned Async dir = (Async) object;
+            Async dir = (Async) object;
             warning ("Async toggle_ref_notify %s", dir.file.uri);
-            if (dir.location != null)
-                directory_cache.remove (dir.location);
-            /*object.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);*/
+         
+            /* we got to increment the dir ref to remove the toggle_ref */
+            dir.ref ();
+            directory_cache.remove (dir.location);
+            dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
         }
     }
 
     public void cancel ()
     {
         cancellable.cancel ();
+        /* remove any pending thumbnail generation */
+        if (timeout_thumbsq != 0) {
+            Source.remove (timeout_thumbsq);
+            timeout_thumbsq = 0;
+        }
     }
 
     private void clear_directory_info ()
@@ -129,9 +136,10 @@ public class GOF.Directory.Async : Object
         sorted_dirs = null;
         file_hash.remove_all ();
         files_count = 0;
+        state = 0;
     }
 
-    private uint launch_id = 0;
+    //private uint launch_id = 0;
 
     public void load ()
     {
@@ -145,10 +153,10 @@ public class GOF.Directory.Async : Object
                 return;
             }
 
-            if (launch_id != 0)
+            /*if (launch_id != 0)
                 Source.remove (launch_id);
-            launch_id = Idle.add (() => { list_directory (location); return false; });
-            //list_directory (location);
+            launch_id = Idle.add (() => { list_directory (location); return false; });*/
+            list_directory (location);
             try {
                 monitor = location.monitor_directory (0);
                 monitor.changed.connect (directory_changed);  
@@ -559,9 +567,9 @@ public class GOF.Directory.Async : Object
     {
         icon_size = size;
 
+        if (thumbs_thread_runing)
+            thumbs_stop = true;
         if (timeout_thumbsq == 0) {
-            if (thumbs_thread_runing)
-                thumbs_stop = true;
             timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
         }
     }

@@ -484,6 +484,18 @@ namespace Marlin.View {
         private void action_go_forward (Gtk.Action action) {
             current_tab.forward();
         }
+       
+        private uint t_reload_cb = 0;
+        private bool real_reload_callback () {
+            current_tab.reload ();
+            t_reload_cb = 0;
+            return false;
+        }
+        private void action_reload_callback (Gtk.Action action) {
+            /* avoid spawning reload when key kept pressed */
+            if (t_reload_cb == 0)
+                t_reload_cb = Timeout.add (90, real_reload_callback );
+        }
 
         /*private void action_show_hidden_files (Gtk.Action action) {
         }*/
@@ -647,6 +659,9 @@ namespace Marlin.View {
                                { "Forward", Stock.GO_FORWARD, N_("_Forward"),
                                  "<alt>Right", N_("Go to the next visited location"),
                                  action_go_forward },
+                               { "Reload", Stock.REFRESH, N_("_Reload"),
+                                 "<control>R", N_("Reload the current location"),
+                                 action_reload_callback },
   /* name, stock id */         { "Home", Marlin.ICON_HOME,
   /* label, accelerator */       N_("_Home Folder"), "<alt>Home",
   /* tooltip */                  N_("Open your personal folder"),
