@@ -233,6 +233,7 @@ gof_window_slot_freeze_updates (GOFWindowSlot *slot)
 {
     if (slot->mwcols != NULL)
         marlin_window_columns_freeze_updates (slot->mwcols);
+    g_object_set (slot->directory, "freeze-update", TRUE, NULL);
 }
 
 void
@@ -240,5 +241,6 @@ gof_window_slot_unfreeze_updates (GOFWindowSlot *slot)
 {
     if (slot->mwcols != NULL)
         marlin_window_columns_unfreeze_updates (slot->mwcols);
+    g_object_set (slot->directory, "freeze-update", FALSE, NULL);
 }
 

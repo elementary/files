@@ -214,8 +214,10 @@ namespace Marlin.View {
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
 
             connect_available_info();
-            if (slot != null && slot.directory.file.exists)
+            if (slot != null && slot.directory.file.exists) {
                 slot.directory.done_loading.connect (directory_done_loading);
+                slot.directory.need_reload.connect (reload);
+            }
             plugin_directory_loaded ();
 
             switch (nview) {
@@ -268,7 +270,8 @@ namespace Marlin.View {
         public void reload () {
             GOF.Directory.Async dir = slot.directory;
             dir.cancel ();
-            directory_cache.remove (dir.location);
+            dir.need_reload.disconnect (reload);
+            dir.remove_dir_from_cache ();
             change_view (view_mode, null);
         }
 

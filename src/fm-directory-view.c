@@ -3055,6 +3055,8 @@ fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view)
 void
 fm_directory_view_freeze_updates (FMDirectoryView *view)
 {
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
     view->updates_frozen = TRUE;
     
     /* disable clipboard actions */
@@ -3080,6 +3082,8 @@ fm_directory_view_freeze_updates (FMDirectoryView *view)
 void
 fm_directory_view_unfreeze_updates (FMDirectoryView *view)
 {
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
     view->updates_frozen = FALSE;
     update_menus (view);
 

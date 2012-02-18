@@ -56,8 +56,10 @@ public class GOF.Directory.Async : Object
     public signal void icon_changed (GOF.File file);
     public signal void done_loading ();
     public signal void thumbs_loaded ();
+    public signal void need_reload ();
 
     private uint idle_consume_changes_id = 0;
+    private bool removed_from_cache;
 
     private unowned string gio_attrs {
         get {
@@ -109,9 +111,8 @@ public class GOF.Directory.Async : Object
             Async dir = (Async) object;
             warning ("Async toggle_ref_notify %s", dir.file.uri);
          
-            /* we got to increment the dir ref to remove the toggle_ref */
-            dir.ref ();
-            directory_cache.remove (dir.location);
+            if (!dir.removed_from_cache) 
+                dir.remove_dir_from_cache ();
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
         }
     }
@@ -351,10 +352,33 @@ public class GOF.Directory.Async : Object
         gof.remove_from_caches ();
     }
 
+    private struct fchanges {
+        GLib.File           file;
+        FileMonitorEvent    event;
+    }
+    private List <fchanges?> list_fchanges = null;
+    private uint list_fchanges_count = 0;
+    /* number of monitored changes to store after that simply reload the dir */
+    private const uint FCHANGES_MAX = 20; 
+
     private void directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event)
     {
         //GOF.File gof = GOF.File.get (_file);
+        if (freeze_update) {
+            if (list_fchanges_count < FCHANGES_MAX) {
+                var fc = fchanges ();
+                fc.file = _file;
+                fc.event = event;
+                list_fchanges.prepend (fc);
+                list_fchanges_count++;
+            }
+            return;
+        }
+        real_directory_changed (_file, other_file, event);
+    }
 
+    private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event)
+    {
         switch (event) {
         /*case FileMonitorEvent.ATTRIBUTE_CHANGED:*/
         case FileMonitorEvent.CHANGES_DONE_HINT:
@@ -380,6 +404,27 @@ public class GOF.Directory.Async : Object
                                                 idle_consume_changes_id = 0;
                                                 return false;
                                                 });
+    }
+
+    private bool _freeze_update;
+    public bool freeze_update {
+        get {
+            return _freeze_update;
+        }
+        set {
+            _freeze_update = value;
+            if (!value) {
+                if (list_fchanges_count >= FCHANGES_MAX) {
+                    need_reload ();
+                } else {
+                    list_fchanges.reverse ();
+                    foreach (var fchange in list_fchanges)
+                        real_directory_changed (fchange.file, null, fchange.event);
+                }
+            } 
+            list_fchanges_count = 0;
+            list_fchanges = null;
+        }
     }
 
     public static void notify_files_changed (List<GLib.File> files)
@@ -459,10 +504,13 @@ public class GOF.Directory.Async : Object
         return val;
     }
 
-    /*private bool remove_directory_from_cache ()
+    public bool remove_dir_from_cache ()
     {
+        /* we got to increment the dir ref to remove the toggle_ref */
+        this.ref ();
+        removed_from_cache = true;
         return directory_cache.remove (location);
-    }*/
+    }
     
     public bool has_parent ()
     {
