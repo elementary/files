@@ -1,6 +1,6 @@
 namespace Marlin {
     public const string APP_TITLE = "Marlin";
-    public const string COPYRIGHT = "2010-2011 Marlin Developers";
+    public const string COPYRIGHT = "2010-2012 Marlin Developers";
     public const string LAUNCHPAD_LABEL = "Website";
     public const string LAUNCHPAD_URL = "http://launchpad.net/marlin";
     public const string HELP_URL = "https://answers.launchpad.net/marlin";
