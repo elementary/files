@@ -30,8 +30,6 @@ typedef enum {
     CHANGE_FILE_CHANGED,
     CHANGE_FILE_REMOVED,
     CHANGE_FILE_MOVED
-/*    CHANGE_POSITION_SET,
-    CHANGE_POSITION_REMOVE*/
 } MarlinFileChangeKind;
 
 typedef struct {
@@ -148,38 +146,6 @@ marlin_file_changes_queue_file_moved (GFile *from,
     marlin_file_changes_queue_add_common (queue, new_item);
 }
 
-/*void
-marlin_file_changes_queue_schedule_position_set (GFile *location, 
-                                                 GdkPoint point,
-                                                 int screen)
-{
-    MarlinFileChange *new_item;
-    MarlinFileChangesQueue *queue;
-
-    queue = marlin_file_changes_queue_get ();
-
-    new_item = g_new (MarlinFileChange, 1);
-    new_item->kind = CHANGE_POSITION_SET;
-    new_item->from = g_object_ref (location);
-    new_item->point = point;
-    new_item->screen = screen;
-    marlin_file_changes_queue_add_common (queue, new_item);
-}
-
-void
-marlin_file_changes_queue_schedule_position_remove (GFile *location)
-{
-    MarlinFileChange *new_item;
-    MarlinFileChangesQueue *queue;
-
-    queue = marlin_file_changes_queue_get ();
-
-    new_item = g_new (MarlinFileChange, 1);
-    new_item->kind = CHANGE_POSITION_REMOVE;
-    new_item->from = g_object_ref (location);
-    marlin_file_changes_queue_add_common (queue, new_item);
-}*/
-
 static MarlinFileChange *
 marlin_file_changes_queue_get_change (MarlinFileChangesQueue *queue)
 {
@@ -230,22 +196,6 @@ pairs_list_free (GList *pairs)
     g_list_free_full (pairs, g_free);
 }
 
-#if 0
-static void
-position_set_list_free (GList *list)
-{
-    GList *p;
-    MarlinFileChangesQueuePosition *item;
-
-    for (p = list; p != NULL; p = p->next) {
-        item = p->data;
-        g_object_unref (item->location);
-    }
-    /* delete the list and the now empty structs */
-    g_list_free_full (list, g_free);
-}
-#endif
-
 /* go through changes in the change queue, send ones with the same kind
  * in a list to the different marlin_directory_notify calls
  */ 
@@ -254,10 +204,7 @@ marlin_file_changes_consume_changes (gboolean consume_all)
 {
     MarlinFileChange *change;
     GList *additions, *changes, *deletions, *moves;
-    //GList *position_set_requests;
-    //amtest
     GFilePair *pair;
-    //MarlinFileChangesQueuePosition *position_set;
     guint chunk_count;
     MarlinFileChangesQueue *queue;
     gboolean flush_needed;
@@ -267,7 +214,6 @@ marlin_file_changes_consume_changes (gboolean consume_all)
     changes = NULL;
     deletions = NULL;
     moves = NULL;
-    //position_set_requests = NULL;
 
     queue = marlin_file_changes_queue_get();
 
@@ -287,16 +233,12 @@ marlin_file_changes_consume_changes (gboolean consume_all)
         } else {
             flush_needed = additions != NULL
                 && change->kind != CHANGE_FILE_ADDED;
-                /*&& change->kind != CHANGE_POSITION_SET
-                && change->kind != CHANGE_POSITION_REMOVE;*/
 
             flush_needed |= changes != NULL
                 && change->kind != CHANGE_FILE_CHANGED;
 
             flush_needed |= moves != NULL
                 && change->kind != CHANGE_FILE_MOVED;
-                /*&& change->kind != CHANGE_POSITION_SET
-                && change->kind != CHANGE_POSITION_REMOVE;*/
 
             flush_needed |= deletions != NULL
                 && change->kind != CHANGE_FILE_REMOVED;
@@ -344,12 +286,6 @@ marlin_file_changes_consume_changes (gboolean consume_all)
                 g_list_free_full (changes, g_object_unref);
                 changes = NULL;
             }
-            /*if (position_set_requests != NULL) {
-              position_set_requests = g_list_reverse (position_set_requests);
-              marlin_directory_schedule_position_set (position_set_requests);
-              position_set_list_free (position_set_requests);
-              position_set_requests = NULL;
-              }*/
         }
 
         if (change == NULL) {
@@ -377,24 +313,6 @@ marlin_file_changes_consume_changes (gboolean consume_all)
             pair->to = change->to;
             moves = g_list_prepend (moves, pair);
             break;
-
-            /*case CHANGE_POSITION_SET:
-              position_set = g_new (MarlinFileChangesQueuePosition, 1);
-              position_set->location = change->from;
-              position_set->set = TRUE;
-              position_set->point = change->point;
-              position_set->screen = change->screen;
-              position_set_requests = g_list_prepend (position_set_requests,
-              position_set);
-              break;
-
-              case CHANGE_POSITION_REMOVE:
-              position_set = g_new (MarlinFileChangesQueuePosition, 1);
-              position_set->location = change->from;
-              position_set->set = FALSE;
-              position_set_requests = g_list_prepend (position_set_requests,
-              position_set);
-              break;*/
 
         default:
             g_assert_not_reached ();
