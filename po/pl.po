@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-01-12 15:38+0000\n"
-"Last-Translator: Filip Chabik <hadret@gmail.com>\n"
+"PO-Revision-Date: 2012-02-24 13:11+0000\n"
+"Last-Translator: Piotr Sokół <Unknown>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-01-13 05:02+0000\n"
-"X-Generator: Launchpad (build 14664)\n"
+"X-Launchpad-Export-Date: 2012-02-25 05:32+0000\n"
+"X-Generator: Launchpad (build 14860)\n"
 "Language: pl\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
@@ -111,7 +111,7 @@ msgstr "Wszyscy"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr "Wybierz aplikację do otwarcia "
+msgstr "Wybierz program do otwarcia "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
@@ -162,7 +162,7 @@ msgstr "Tryb modalny okna właściwości:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "Default File Manager:"
-msgstr "Menedżer plików"
+msgstr "Domyślny menedżer plików"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:95
 msgid "Behavior"
@@ -170,19 +170,19 @@ msgstr "Zachowanie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
-msgstr "mały"
+msgstr "Mały"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
-msgstr "średni"
+msgstr "Średni"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
-msgstr "duży"
+msgstr "Duży"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
-msgstr "bardzo duży"
+msgstr "Bardzo duży"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
@@ -238,8 +238,7 @@ msgstr "Pojedyncze kliknięcie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
-"Określa czy elementy w widoku można aktywować za pomocą jednego kliknięcia"
+msgstr "Uaktywnia elementy widoku za pomocą pojedynczego kliknięcia"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
@@ -251,7 +250,7 @@ msgid ""
 "selected automatically in single click mode"
 msgstr ""
 "Opóźnienie czasowe, po którym element zostanie automatycznie zaznaczony "
-"przez stojący nad nim kursor myszy"
+"wskazaniem kursora myszy"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -292,12 +291,12 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Folderu \"%s\" nie można otworzyć w \"%s\"."
+msgstr "Nie można otworzyć katalogu „%s” na „%s”."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Nie można odnaleźć serwera w \"%s\"."
+msgstr "Nie można odnaleźć serwera pod adresem „%s”."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
@@ -309,7 +308,7 @@ msgstr "Proszę sprawdzić informacje o użytkowniku."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr "Dalej"
+msgstr "Naprzód"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1169
@@ -362,11 +361,11 @@ msgstr "_Hasło:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr "_Zapamiętanie tego hasła"
+msgstr "_Zapamiętanie hasła"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr "Operacja anulowana"
+msgstr "Anulowano działanie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
@@ -387,7 +386,7 @@ msgstr "Ten katalog jest pusty."
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr "Zmiana nazwy z %s na %s się nie powiodła"
+msgstr "Nie udało się zmienić nazwy %s na %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -412,7 +411,7 @@ msgstr "Anuluj"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "Nie udało się uruchomić \"%s\""
+msgstr "Nie udało się uruchomić pliku „%s”"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
@@ -431,7 +430,7 @@ msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
-"Zaznacz elementy które mają być wyświetlone na pasku narzędziowym.\r\n"
+"Proszę wybrać elementy, które mają być wyświetlane na pasku narzędziowym.\r\n"
 "Kolejność elementów można zmieniać przeciągając je na odpowiednie "
 "pozycje listy."
 
@@ -453,11 +452,11 @@ msgstr "Udostępnia często używane położenia i zakładki"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
-msgstr "Przejdź do katalogu użytkownika"
+msgstr "Przechodzi do katalogu użytkownika"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
-msgstr "Otwiera kosz"
+msgstr "Przechodzi do katalogu kosza"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
@@ -608,15 +607,15 @@ msgstr "Nazwa dostarczona przez XDS jest nieprawidłowa"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1248
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Nie udało się utworzyć łącza do URLa \"%s\""
+msgstr "Nie udało się utworzyć łącza do adresu URL „%s”"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1730
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Używa \"%s\" do otwarcia zaznaczonych elementów"
-msgstr[1] "Używa \"%s\" do otwarcia zaznaczonych elementów"
-msgstr[2] "Używa programu \"%s\" do otwarcia zaznaczonych elementów"
+msgstr[0] "Otwiera zaznaczony element za pośrednictwem „%s”"
+msgstr[1] "Otwiera zaznaczone elementy za pośrednictwem „%s”"
+msgstr[2] "Otwiera zaznaczone elementy za pośrednictwem „%s”"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1876
 #, c-format
@@ -639,7 +638,7 @@ msgstr "Ustaw jako domyślną"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3454
 msgid "Set Color:"
-msgstr "Ustaw kolor:"
+msgstr "Przypisz kolor:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
@@ -661,9 +660,9 @@ msgstr "Pokaż szczegóły"
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] "%'d aktywne działanie na plikach"
-msgstr[1] "%'d aktywne działania na plikach"
-msgstr[2] "Trwa %'d operacji plikowych"
+msgstr[0] "Trwa %'d działanie na plikach"
+msgstr[1] "Trwają %'d działania na plikach"
+msgstr[2] "Trwa %'d działań na plikach"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
@@ -671,11 +670,11 @@ msgstr "Pokaż okno postępu kopiowania"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
-msgstr "Anuluj wszystkie operacje w toku"
+msgstr "Anuluj wszystkie aktywne działania"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
-msgstr "Wszystkie działania na plikach zostały pomyślnie ukończone"
+msgstr "Zakończono wszystkie działania na plikach"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3188
 msgid "Select All"
@@ -701,7 +700,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Przeglądaj system plików za pomocą menedżera plików"
+"Przegląda system plików za pomocą menedżera plików"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
@@ -782,9 +781,9 @@ msgstr[2] "%d godzin"
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] "w przybliżeniu %'d godzina"
-msgstr[1] "w przybliżeniu %'d godziny"
-msgstr[2] "w przybliżeniu %'d godzin"
+msgstr[0] "około %'d godziny"
+msgstr[1] "około %'d godzin"
+msgstr[2] "około %'d godzin"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:392
 #, c-format
@@ -893,15 +892,15 @@ msgstr[2] "Pozostało %T"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1730
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2544
 msgid "Error while deleting."
-msgstr "Wystąpił błąd podczas usuwania plików."
+msgstr "Błąd usuwania."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1584
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Pliki w folderze \"%B\" nie mogą być usunięte ponieważ nie masz uprawnień do "
-"ich oglądania"
+"Nie można usunąć plików z katalogu „%B” z powodu braku uprawnień do ich "
+"wyświetlania."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1587
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2603
@@ -946,9 +945,9 @@ msgstr "Przenoszenie plików do kosza"
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "pozostał %'d element do usunięcia"
-msgstr[1] "Pozostały %'d pliki do usunięcia"
-msgstr[2] "Pozostało %'d plików do usunięcia"
+msgstr[0] "Pozostał %'d plik do przeniesienia do kosza"
+msgstr[1] "Pozostały %'d pliki do przeniesienia do kosza"
+msgstr[2] "Pozostało %'d plików do przeniesienia do kosza"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1872
 msgid "Cannot move file to trash, do you want to delete immediately?"
@@ -1053,24 +1052,24 @@ msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Nie można przeprowadzić operacji na plikach w folderze \"%B\" ponieważ nie "
-"masz uprawnień do ich oglądania."
+"Nie można przeprowadzić działania na plikach w katalogu „%B” z powodu braku "
+"uprawnień do ich wyświetlania."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2639
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Nie można przeprowadzić operacji na folderze \"%B\" ponieważ nie masz "
-"uprawnień do jego odczytu."
+"Nie można przeprowadzić działania na katalogu „%B” z powodu braku uprawnień "
+"do jego odczytu."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2716
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Nie można przeprowadzić operacji na pliku \"%B\" ponieważ nie masz uprawnień "
-"do jego odczytu."
+"Nie można przeprowadzić działania na pliku „%B” z powodu braku uprawnień do "
+"jego odczytu."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2719
 msgid "There was an error getting information about \"%B\"."

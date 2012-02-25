@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-01-21 21:32+0000\n"
-"Last-Translator: Anducar <Unknown>\n"
+"PO-Revision-Date: 2012-02-24 21:06+0000\n"
+"Last-Translator: Daniel <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-01-22 05:38+0000\n"
-"X-Generator: Launchpad (build 14700)\n"
+"X-Launchpad-Export-Date: 2012-02-25 05:32+0000\n"
+"X-Generator: Launchpad (build 14860)\n"
 "Language: de\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
@@ -454,7 +454,7 @@ msgstr "Persönlichen Ordner öffnen"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
-msgstr "Mülleimer öffnen"
+msgstr "Papierkorb öffnen"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
@@ -588,7 +588,7 @@ msgstr "Aus_werfen"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1410
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2281
 msgid "Empty _Trash"
-msgstr "_Mülleimer leeren"
+msgstr "_Papierkorb leeren"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3123
 msgid "Icon Size"
@@ -819,7 +819,7 @@ msgstr " (%'d"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1369
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
-"Sind Sie sicher, dass Sie »%B« dauerhaft aus dem Müll entfernen möchten?"
+"Möchten Sie »%B« tatsächlich unwiderruflich aus dem Papierkorb löschen?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1372
 #, c-format
@@ -830,11 +830,11 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Sind Sie sicher, dass Sie das %'d gewählte Objekt dauerhaft aus dem Müll "
-"entfernen möchten?"
+"Möchten Sie das  %'d gewählte Objekt unwiderruflich aus dem Papierkorb "
+"löschen?"
 msgstr[1] ""
-"Sind Sie sicher, dass Sie die %'d gewählten Objekte dauerhaft aus dem Müll "
-"entfernen möchten?"
+"Möchten Sie die  %'d gewählten Objekt unwiderruflich aus dem Papierkorb "
+"löschen?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1382
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1450
@@ -843,11 +843,14 @@ msgstr "Sobald Sie ein Objekt entfernen, geht es dauerhaft verloren."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1403
 msgid "Empty all items from Trash?"
-msgstr "Alle Objekte aus dem Mülleimer entfernen?"
+msgstr ""
+"Möchten Sie tatsächlich alle Objekte aus dem Papierkorb unwiderruflich "
+"löschen?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1407
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Alle Objekte im Mülleimer werden dauerhaft entfernt werden."
+msgstr ""
+"Alle gelöschten Dateien können anschließend nicht wiederhergestellt werden."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1438
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -936,28 +939,28 @@ msgstr "Beim Entfernen von »%B« ist ein Fehler aufgetreten."
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1807
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1819
 msgid "Moving files to trash"
-msgstr "Dateien werden in den Müll verschoben"
+msgstr "Dateien werden in den Papierkorb verschoben"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1821
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "Noch %'d in den Müll zu verschiebende Datei"
-msgstr[1] "Noch %'d in den Müll zu verschiebende Dateien"
+msgstr[0] "Noch %'d in den Papierkorb zu verschiebende Datei"
+msgstr[1] "Noch %'d in den Papierkorb zu verschiebende Dateien"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1872
 msgid "Cannot move file to trash, do you want to delete immediately?"
 msgstr ""
-"Die Datei konnte nicht in den Müll verschoben werden. Soll sie sofort "
-"entfernt werden?"
+"Die Datei konnte nicht in den Papierkorb verschoben werden. Soll sie "
+"unwiderruflich gelöscht werden?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1873
 msgid "The file \"%B\" cannot be moved to the trash."
-msgstr "Die Datei »%B« konnte nicht in den Müll verschoben werden."
+msgstr "Die Datei »%B« konnte nicht in den Papierkorb verschoben werden."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2049
 msgid "Trashing Files"
-msgstr "Dateien werden in den Müll verschoben"
+msgstr "Dateien in den Papierkorb verschieben"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2051
 msgid "Deleting Files"
@@ -973,7 +976,7 @@ msgstr "%V kann nicht ausgehangen werden"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2271
 msgid "Do you want to empty the trash before you unmount?"
-msgstr "Möchten Sie den Müll vor dem Aushängen leeren?"
+msgstr "Möchten Sie vor dem Aushängen den Papierkorb entleeren?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2273
 msgid ""
@@ -981,16 +984,16 @@ msgid ""
 "All trashed items on the volume will be permanently lost."
 msgstr ""
 "Um den freien Speicherplatz auf diesem Datenträger verfügbar zu machen, muss "
-"der Müll geleert werden. Alle im Müll dieses Datenträgers enthaltene Objekte "
-"werden dauerhaft entfernt."
+"der Papierkorb geleert werden. Alle im Papierkorb dieses Datenträgers "
+"enthaltene Objekte werden unwiderruflich gelöscht."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2279
 msgid "Do _not Empty Trash"
-msgstr "Müll _nicht leeren"
+msgstr "Papierkorb_nicht leeren"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2334
 msgid "Emptying the trash"
-msgstr "Mülleimer wird geleert"
+msgstr "Papierkorb wird geleert"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2401
 #, c-format
@@ -1022,8 +1025,8 @@ msgstr[1] "Entfernen von %'d Dateien wird vorbereitet (%S)"
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Verschieben von %'d Datei in den Müll wird vorbereitet"
-msgstr[1] "Verschieben von %'d Dateien in den Müll wird vorbereitet"
+msgstr[0] "Verschieben von %'d Datei in den Papierkorb wird vorbereitet"
+msgstr[1] "Verschieben von %'d Dateien in den Papierkorb wird vorbereitet"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2540
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3460
@@ -1040,7 +1043,7 @@ msgstr "Fehler beim Verschieben."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2546
 msgid "Error while moving files to trash."
-msgstr "Fehler beim Verschieben von Objekten in den Müll."
+msgstr "Fehler beim Verschieben von Objekten in den Papierkorb."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2600
 msgid ""
@@ -1350,7 +1353,7 @@ msgstr "Beim Erstellen des Ordners in »%F« ist ein Fehler aufgetreten."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6387
 msgid "Emptying Trash"
-msgstr "Müll wird geleert"
+msgstr "Papierkorb wird geleert"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:267
 #, c-format
@@ -1359,7 +1362,7 @@ msgstr "Ursprünglicher Ort von »%s« konnte nicht ermittelt werden "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:270
 msgid "The item cannot be restored from trash"
-msgstr "Das Objekt kann aus dem Müll nicht wiederhergestellt werden"
+msgstr "Das Objekt kann aus dem Papierkorb nicht wiederhergestellt werden"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
