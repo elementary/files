@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-01-26 18:57+0000\n"
-"Last-Translator: Willem van de Krol <Unknown>\n"
+"PO-Revision-Date: 2012-03-07 18:16+0000\n"
+"Last-Translator: Vistaus <vistausss@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-01-27 05:37+0000\n"
-"X-Generator: Launchpad (build 14727)\n"
+"X-Launchpad-Export-Date: 2012-03-08 05:07+0000\n"
+"X-Generator: Launchpad (build 14914)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -57,7 +57,7 @@ msgstr "Mimetype"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr ""
+msgstr "Bestandstypen"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
@@ -109,7 +109,7 @@ msgstr "Iedereen"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Selecteer een applicatie om te openen "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
@@ -384,7 +384,7 @@ msgstr "Deze map is leeg."
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Hernoemen van %s naar %s is mislukt"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -413,11 +413,11 @@ msgstr "Kon bestand \"%s\" niet uitvoeren"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Iconiseer mappenlijst"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Pictogramweergave"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
@@ -621,12 +621,12 @@ msgstr "_Openen met %s"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1898
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Open in %'d Nieuwe_Tabbladen"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1907
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Open in %'d Nieuwe_Vensters"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3236
 msgid "Set as default"
@@ -681,11 +681,11 @@ msgstr "Invoermethodes"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "Layout-modus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "De layout-modus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:439
 msgid ""
