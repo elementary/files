@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-03-02 15:22+0000\n"
-"Last-Translator: Mesut Yaver <Unknown>\n"
+"PO-Revision-Date: 2012-03-12 04:39+0000\n"
+"Last-Translator: Özgür ÖZTÜRK <scneiashardevil@yahoo.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-03-03 05:34+0000\n"
-"X-Generator: Launchpad (build 14886)\n"
+"X-Launchpad-Export-Date: 2012-03-12 04:45+0000\n"
+"X-Generator: Launchpad (build 14933)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -156,7 +156,7 @@ msgstr "Fare oto-seçim hızı:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
-msgstr ""
+msgstr "Özellikler penceresini sabitle"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "Default File Manager:"
@@ -443,7 +443,7 @@ msgstr "Kişisel"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "Ortak yerler ve yer imleriniz."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
@@ -597,7 +597,7 @@ msgstr "Simge boyutu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1090
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "XDS sürükleme alanından sağlanan dosya adı geçersiz."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1248
 #, c-format
@@ -1459,7 +1459,7 @@ msgstr "%s'e bağla"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1603
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr ""
+msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1641
 msgid "No Exec field specified"
