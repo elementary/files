@@ -66,18 +66,6 @@ namespace Marlin.View
             
             first_vbox.pack_start(hbox_single_click, false);
 
-            /* Dlg properties modal */
-            var check_dlg_properties = new Gtk.Switch ();
-            
-            Preferences.settings.bind ("dialog-property-modal", check_dlg_properties, "active", 0);
-
-            var hbox_dlg_properties = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            var l1 = new Gtk.Label(_("Properties Dialog set modal:"));
-            l1.set_alignment(0, 0.5f);
-            hbox_dlg_properties.pack_start(l1);
-            hbox_dlg_properties.pack_start(check_dlg_properties, false, false);
-            first_vbox.pack_start(hbox_dlg_properties, false);
-            
             /* Make default FM */
             var sw_fm_default = new Gtk.Switch ();
             sw_fm_default.active = is_marlin_mydefault_fm ();
