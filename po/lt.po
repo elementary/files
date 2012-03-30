@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-03-28 14:17+0000\n"
+"PO-Revision-Date: 2012-03-29 14:59+0000\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-03-29 04:48+0000\n"
+"X-Launchpad-Export-Date: 2012-03-30 04:51+0000\n"
 "X-Generator: Launchpad (build 15032)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
@@ -189,7 +189,7 @@ msgstr "Šoninės juostos piktogramų dydis"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "iso"
-msgstr "iso"
+msgstr "ISO standarto"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:138
 msgid "locale"
@@ -205,11 +205,11 @@ msgstr "Datos formatas:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:154
 msgid "Display"
-msgstr "Rodyti"
+msgstr "Rodymas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:203
 msgid "Extensions"
-msgstr "Plėtiniai"
+msgstr "Papildiniai"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:95
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:370
@@ -233,23 +233,23 @@ msgstr "Failų sistema"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:167
 msgid "Single Click"
-msgstr "Spragtelėjimas"
+msgstr "Vienas spustelėjimas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Ar matomi elementai gali būti aktyvuoti juos spragtelėjus"
+msgstr "Ar matomus elementus aktyvinti vienu pelės paspaudimu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
-msgstr ""
+msgstr "Spustelėjimo laikotarpis"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
-"Laiko tarpas, per kurį elementas esantis po kursoriumi, spragtelėjimo režime "
-"bus pažymėtas automatiškai"
+"Laikotarpis, per kurį po pelės kursoriumi esantis elementas bus automatiškai "
+"pažymėtas (vieno spustelėjimo režime)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -261,7 +261,7 @@ msgstr "Viešas FTP"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr "FTP (su prisijungimu)"
+msgstr "FTP (su slaptažodžiu)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
@@ -303,7 +303,7 @@ msgstr "Bandyti dar kartą"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr "Patvirtinkite informaciją apie save."
+msgstr "Patikrinkite prisijungimo informaciją."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
@@ -312,7 +312,7 @@ msgstr "Tęsti"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1169
 msgid "C_onnect"
-msgstr "P_risijungti"
+msgstr "Prisi_jungti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
@@ -336,7 +336,7 @@ msgstr "_Tipas:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr "_Viešinti:"
+msgstr "_Išteklio pavadinimas:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
@@ -352,7 +352,7 @@ msgstr "_Srities (domain) pavadinimas:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
-msgstr "_Vartotojo vardas:"
+msgstr "Naudotojo _vardas:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
@@ -368,11 +368,11 @@ msgstr "Veiksmas nutrauktas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr "Talpus katalogų sąrašas"
+msgstr "Glaustesnis aplankų sąrašas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr "Suspaustas vaizdas"
+msgstr "Glaustesnis vaizdas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
@@ -405,7 +405,7 @@ msgstr "Padaryti darbastalio _fonu"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr "Atšaukti"
+msgstr "Atsisakyti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:893
 #, c-format
@@ -418,25 +418,27 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr "Piktograminis vaizdas"
+msgstr "Piktogramų vaizdas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
-msgstr "Pritaikyti įrankių juostą"
+msgstr "Įrankių juostos derinimas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:461
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
+"Pasirinkite piktogramas, kurias norite turėti įrankių juostoje. Jų vietos "
+"gali būti keičiamos pertempiant."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:477
 msgid "Available Items"
-msgstr ""
+msgstr "Prieinami elementai"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:498
 msgid "Displayed Items"
-msgstr ""
+msgstr "Rodomi elementai"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
@@ -444,7 +446,7 @@ msgstr "Asmeninis"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "Dažniausiai lankomos vietos ir žymelės"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
@@ -460,7 +462,7 @@ msgstr "Įrenginiai"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "Vidinės laikmenos bei įrenginiai"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
@@ -474,7 +476,7 @@ msgstr "Prijungti ir atverti %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
-msgstr ""
+msgstr "Tinklo vietos"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
@@ -482,7 +484,7 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Naršyti vietinį tinklą"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
@@ -494,19 +496,19 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1616
 msgid "_Power On"
-msgstr ""
+msgstr "Įjun_gti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1617
 msgid "_Safely Remove Drive"
-msgstr ""
+msgstr "_Saugiai išimti įrenginį"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1620
 msgid "_Connect Drive"
-msgstr ""
+msgstr "_Prijungti įrenginį"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1621
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "_Atjungti įrenginį"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
@@ -518,83 +520,83 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1629
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "_Atrakinti įrenginį"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1630
 msgid "_Lock Drive"
-msgstr ""
+msgstr "_Užrakinti įrenginį"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1704
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2251
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "Nepavyko paleisti %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1994
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2023
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2052
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "Nepavyko išimti %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2197
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "Nepavyko užklausti %s dėl laikmenų pokyčių"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2307
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "Nepavyko sustabdyti %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2399
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1882
 msgid "_Open"
-msgstr ""
+msgstr "_Atverti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2407
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1902
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Atverti naujoje _kortelėje"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2414
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1911
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Atverti naujame _lange"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
-msgstr ""
+msgstr "Šalinti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
-msgstr ""
+msgstr "Pervadinti..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
-msgstr ""
+msgstr "_Prijungti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2451
 msgid "_Unmount"
-msgstr ""
+msgstr "_Atjungti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2458
 msgid "_Eject"
-msgstr ""
+msgstr "_Išimti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2466
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1410
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2281
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Iš_valyti šiukšlinę"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3123
 msgid "Icon Size"
-msgstr ""
+msgstr "Piktogramos dydis"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3124
 msgid "Icon size"
-msgstr ""
+msgstr "Piktogramos dydis"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1090
 msgid "Invalid filename provided by XDS drag site"
@@ -603,19 +605,20 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1248
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr ""
+msgstr "Nepavyko sukurti nuorodos į URL „%s“"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1730
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Naudoti „%s“ pasirinkto elemento atvėrimui"
+msgstr[1] "Naudoti „%s“ pasirinktų elementų atvėrimui"
+msgstr[2] "Naudoti „%s“ pasirinktų elementų atvėrimui"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1876
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Atverti naudojant %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1898
 #, c-format
@@ -629,26 +632,26 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3236
 msgid "Set as default"
-msgstr ""
+msgstr "Nustatyti numatytuoju"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3454
 msgid "Set Color:"
-msgstr ""
+msgstr "Nustatyti spalvą:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "Nieko nėra nukopijuota - nėra ką įdėti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:113
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:163
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:470
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:526
 msgid "File Operations"
-msgstr ""
+msgstr "Veiksmai su failais"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:122
 msgid "Show Details"
-msgstr ""
+msgstr "Rodyti išsamiau"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:157
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:179
@@ -660,23 +663,23 @@ msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
-msgstr ""
+msgstr "Rodyti kopijavimo langą"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
-msgstr ""
+msgstr "Atsisakyti visų dabar vykdomų veiksmų"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
-msgstr ""
+msgstr "Visi veiksmai su failais sėkmingai užbaigti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3188
 msgid "Select All"
-msgstr ""
+msgstr "Pasirinkti viską"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3199
 msgid "Input Methods"
-msgstr ""
+msgstr "Įvesties metodai"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
@@ -692,36 +695,39 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"Naršyti failų sistemą su failų tvarkykle"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit negali būti naudojamas su URI."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:192
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr ""
+msgstr "Ruošiamasi"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr ""
+msgstr " (netinkamas Unikodas)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:199
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
 msgid "_Skip"
-msgstr ""
+msgstr "_Praleisti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr ""
+msgstr "Praleisti _visus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr ""
+msgstr "_Kartoti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr ""
+msgstr "Ištrinti _visus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:203
 msgid "_Replace"
