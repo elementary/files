@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-03-29 14:59+0000\n"
+"PO-Revision-Date: 2012-03-30 16:37+0000\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-03-30 04:51+0000\n"
+"X-Launchpad-Export-Date: 2012-03-31 05:17+0000\n"
 "X-Generator: Launchpad (build 15032)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
@@ -731,62 +731,66 @@ msgstr "Ištrinti _visus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr ""
+msgstr "_Pakeisti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr ""
+msgstr "Pakeisti _visus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr ""
+msgstr "_Sulieti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr ""
+msgstr "Sulieti _visus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "_Vis tiek kopijuoti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:293
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d sekundė"
+msgstr[1] "%'d sekundės"
+msgstr[2] "%'d sekundžių"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:298
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d minutė"
+msgstr[1] "%'d minutės"
+msgstr[2] "%'d minučių"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:308
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d valanda"
+msgstr[1] "%'d valandos"
+msgstr[2] "%'d valandų"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:316
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "maždaug %'d valanda"
+msgstr[1] "maždaug %'d valandos"
+msgstr[2] "maždaug %'d valandų"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:392
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "Nuoroda į %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:396
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "Kita nuoroda į %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:412
 #, c-format
@@ -810,16 +814,16 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:616
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:624
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (%'d"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1369
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
+msgstr "Ar tikrai norite negrąžinamai ištrinti „%B“ iš šiukšlinės?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1372
 #, c-format
@@ -830,50 +834,58 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
+"Ar tikrai norite negrąžinamai ištrinti %'d pasirinktą elementą iš šiukšlinės?"
 msgstr[1] ""
+"Ar tikrai norite negrąžinamai ištrinti %'d pasirinktus elementus iš "
+"šiukšlinės?"
+msgstr[2] ""
+"Ar tikrai norite negrąžinamai ištrinti %'d pasirinktų elementų iš šiukšlinės?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1382
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "Jeigu ištrinsite failą, jis bus prarastas visam laikui."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1403
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "Pašalinti visus elementus iš šiukšlinės?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1407
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "Visi elementai šiukšlinėje bus negrįžtamai ištrinti."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1438
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "Ar tikrai norite negrįžtamai ištrinti „%B“?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1441
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ar tikrai norite negrįžtamai ištrinti %'d pasirinktą elementą?"
+msgstr[1] "Ar tikrai norite negrįžtamai ištrinti %'d pasirinktus elementus?"
+msgstr[2] "Ar tikrai norite negrįžtamai ištrinti %'d pasirinktų elementų?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1466
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1498
 msgid "Deleting files"
-msgstr ""
+msgstr "Šalinami failai"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1492
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Liko ištrinti %'d failą"
+msgstr[1] "Liko ištrinti %'d failus"
+msgstr[2] "Liko ištrinti %'d failų"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1512
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "liko %T"
+msgstr[1] "liko %T"
+msgstr[2] "liko %T"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1580
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1614
@@ -881,20 +893,22 @@ msgstr[1] ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1730
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2544
 msgid "Error while deleting."
-msgstr ""
+msgstr "Klaida trinant."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1584
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"Aplanke „%B“ esančių failų negalima ištrinti, kadangi neturite teisų matyti "
+"aplanko failų."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1587
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2603
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3594
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "Klaida gaunant informaciją apie aplanke „%B“ esančius failus."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1596
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3603
