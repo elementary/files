@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-03-30 16:37+0000\n"
+"PO-Revision-Date: 2012-04-02 15:37+0000\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-03-31 05:17+0000\n"
-"X-Generator: Launchpad (build 15032)\n"
+"X-Launchpad-Export-Date: 2012-04-03 05:19+0000\n"
+"X-Generator: Launchpad (build 15052)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -913,32 +913,32 @@ msgstr "Klaida gaunant informaciją apie aplanke „%B“ esančius failus."
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1596
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3603
 msgid "_Skip files"
-msgstr ""
+msgstr "_Praleisti failus"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1617
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Aplanko „%B“ negalima ištrinti, nes neturite teisų jį skaityti."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1620
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2642
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3639
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "Klaida skaitant aplanką „%B“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1654
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "Nepavyko pašalinti aplanko %B."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1731
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "Klaida šalinant aplanką %B."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1807
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1819
 msgid "Moving files to trash"
-msgstr ""
+msgstr "Failai perkeliami į šiukšlinę"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1821
 #, c-format
@@ -950,94 +950,101 @@ msgstr[1] ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1872
 msgid "Cannot move file to trash, do you want to delete immediately?"
 msgstr ""
+"Failo nepavyko perkelti į šiukšlinę, ar norite jį negrįžtamai ištrinti?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1873
 msgid "The file \"%B\" cannot be moved to the trash."
-msgstr ""
+msgstr "Failo „%B“ negalima perkelti į šiukšlinę."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2049
 msgid "Trashing Files"
-msgstr ""
+msgstr "Failai perkeliami į šiukšlinę"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2051
 msgid "Deleting Files"
-msgstr ""
+msgstr "Šalinami failai"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2114
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "Nepavyko išstumti %V"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2116
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "Nepavyko atjungti %V"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2271
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "Ar norite išvalyti šiukšlinę prieš atjungdami skirsnį?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2273
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"Norint šiame skirsnyje atlaisvinti vietą reikia išvalyti šiukšlinę. Visi "
+"šiukšlinėje esantys failai bus negrįžtamai prarasti."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2279
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "_Neišvalyti šiukšlinės"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2334
 msgid "Emptying the trash"
-msgstr ""
+msgstr "Valoma šiukšlinė"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2401
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "Nepavyko prijungti %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2479
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ruošiamasi kopijuoti %'d failą (%S)"
+msgstr[1] "Ruošiamasi kopijuoti %'d failus (%S)"
+msgstr[2] "Ruošiamasi kopijuoti %'d failų (%S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2485
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ruošiamasi perkelti %'d failą (%S)"
+msgstr[1] "Ruošiamasi perkelti %'d failus (%S)"
+msgstr[2] "Ruošiamasi perkelti %'d failų (%S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2491
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ruošiamasi ištrinti %'d failą (%S)"
+msgstr[1] "Ruošiamasi ištrinti %'d failus (%S)"
+msgstr[2] "Ruošiamasi ištrinti %'d failų (%S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2497
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ruošiamasi perkelti į šiukšlinę %'d failą"
+msgstr[1] "Ruošiamasi perkelti į šiukšlinę %'d failus"
+msgstr[2] "Ruošiamasi perkelti į šiukšlinę %'d failų"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2540
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3460
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3586
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3631
 msgid "Error while copying."
-msgstr ""
+msgstr "Klaida kopijuojant."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2542
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3584
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3629
 msgid "Error while moving."
-msgstr ""
+msgstr "Klaida perkeliant."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2546
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "Klaida perkeliant failus į šiukšlinę."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2600
 msgid ""
@@ -1059,53 +1066,55 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2719
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "Gaunant informaciją apie „%B“ įvyko klaida."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2819
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2861
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2894
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2924
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "Klaida kopijuojant į „%B“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2823
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "Neturite teisės prieiti prie paskirties aplanko."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2825
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "Klaida gaunant informaciją apie paskirties vietą."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2862
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "Paskirties vieta nėra aplankas."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2895
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
+"Paskirties vietoje nepakanka laisvos vietos. Pabandykite iš ten pašalinti "
+"nereikalingus failus."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2897
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "Prieinama %S, tačiau reikia %S."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2925
 msgid "The destination is read-only."
-msgstr ""
+msgstr "Paskirties vieta skirta tik skaitymui."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2986
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "Perkeliama „%B“ į „%B“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2987
 msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+msgstr "Kopijuojama „%B“ į „%B“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2991
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "Kuriama „%B“ kopija"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2995
 msgid "Moving %'d file (in \"%B\") to \"%B\""
@@ -1128,60 +1137,67 @@ msgstr[1] ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3014
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d failas perkeliamas į „%B“"
+msgstr[1] "%'d failai perkeliami į „%B“"
+msgstr[2] "%'d failų perkeliama į „%B“"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3018
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d failas kopijuojamas į „%B“"
+msgstr[1] "%'d failai kopijuojami į „%B“"
+msgstr[2] "%'d failų kopijuojama į „%B“"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3023
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kuriama %'d failo kopija"
+msgstr[1] "Kuriamos %'d failų kopijos"
+msgstr[2] "Kuriamos %'d failų kopijos"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3074
 #, c-format
 msgid "%S of %S"
-msgstr ""
+msgstr "%S iš %S"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3085
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%S iš %S — liko %T (%S/sek)"
+msgstr[1] "%S iš %S — liko %T (%S/sek)"
+msgstr[2] "%S iš %S — liko %T (%S/sek)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3464
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
+"Aplanko „%s“ negalima nukopijuoti, kadangi neturite teisų jo sukurti "
+"paskirties vietoje."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3467
 msgid "There was an error creating the folder \"%B\"."
-msgstr ""
+msgstr "Klaida kuriant aplanką „%B“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3591
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
+"Aplanke „%B“ esančių failų neina nukopijuoti, nes neturite teisų jų skaityti."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3636
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Aplanko „%B“ neina nukopijuoti, nes neturite teisų jo peržiūrėti."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3681
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4378
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4952
 msgid "Error while moving \"%B\"."
-msgstr ""
+msgstr "Klaida perkeliant „%B“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3682
 msgid "Could not remove the source folder."
@@ -1192,27 +1208,27 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4380
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4451
 msgid "Error while copying \"%B\"."
-msgstr ""
+msgstr "Klaida kopijuojant „%B“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3768
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr ""
+msgstr "Nepavyko pašalinti failų iš jau esančio aplanko %F."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3809
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr ""
+msgstr "Nepavyko pašalinti jau esančio failo %F."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4138
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4796
 msgid "You cannot move a folder into itself."
-msgstr ""
+msgstr "Negalima perkelti aplanko į jį patį."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4139
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4797
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "Negalima kopijuoti aplanko į jį patį."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4140
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4798
@@ -1221,11 +1237,11 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4171
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "Negalima perkelti failo ant jo paties."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4172
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "Negalima kopijuoti failo į jį patį."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4173
 msgid "The source file would be overwritten by the destination."
@@ -1234,36 +1250,37 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4382
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
+msgstr "Nepavyko pašalinti to paties pavadinimo failo, esančio aplanke %F."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4452
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr ""
+msgstr "Kopijuojant failą į %F įvyko klaida."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4680
 msgid "Copying Files"
-msgstr ""
+msgstr "Kopijuojami failai"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4696
 msgid "Preparing to move to \"%B\""
-msgstr ""
+msgstr "Ruošiamasi perkelti į „%B“"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4708
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ruošiamasi perkelti %'d failą"
+msgstr[1] "Ruošiamasi perkelti %'d failus"
+msgstr[2] "Ruošiamasi perkelti %'d failų"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4953
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr ""
+msgstr "Perkeliant failą į %F įvyko klaida."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5216
 msgid "Moving Files"
-msgstr ""
+msgstr "Perkeliami failai"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5232
 msgid "Creating links in \"%B\""
@@ -1273,55 +1290,56 @@ msgstr ""
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kuriama nuoroda į %'d failą"
+msgstr[1] "Kuriamos nuorodos į %'d failus"
+msgstr[2] "Kuriamos nuorodos į %'d failų"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5373
 msgid "Error while creating link to %B."
-msgstr ""
+msgstr "Kuriant nuorodą į %B įvyko klaida."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5375
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "Simbolinės nuorodos palaikomos tik vietiniams failams"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5378
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "Paskirties vieta (failų sistema) nepalaiko simbolinių nuorodų."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5381
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr ""
+msgstr "Kuriant simbolinę nuorodą į %F įvyko klaida."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5684
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5687
 msgid "Setting permissions"
-msgstr ""
+msgstr "Nustatomi leidimai"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5929
 msgid "untitled folder"
-msgstr ""
+msgstr "bevardis aplankas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5937
 msgid "new file"
-msgstr ""
+msgstr "naujas failas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6087
 msgid "Error while creating directory %B."
-msgstr ""
+msgstr "Klaida kuriant aplanką %B."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6089
 msgid "Error while creating file %B."
-msgstr ""
+msgstr "Klaida kuriant failą %B."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6091
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr ""
+msgstr "Kuriant aplanką %F vietoje įvyko klaida."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6387
 msgid "Emptying Trash"
-msgstr ""
+msgstr "Išvaloma šiukšlinė"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:267
 #, c-format
@@ -1330,7 +1348,7 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:270
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "Šio elemento negalima atstatyti iš šiukšlinės"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
@@ -1349,24 +1367,24 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Senesnis aplankas tuo pačiu pavadinimu jau yra vietoje „%s“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:159
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Naujesnis aplankas tuo pačiu pavadinimu jau yra vietoje „%s“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:163
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Kitas aplankas tuo pačiu pavadinimu jau yra vietoje „%s“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "Pakeitus jį, bus pašalinti visi tame aplanke esantys failai."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:170
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
