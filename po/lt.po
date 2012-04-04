@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-04-02 15:37+0000\n"
+"PO-Revision-Date: 2012-04-03 10:51+0000\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-04-03 05:19+0000\n"
-"X-Generator: Launchpad (build 15052)\n"
+"X-Launchpad-Export-Date: 2012-04-04 04:51+0000\n"
+"X-Generator: Launchpad (build 15055)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -658,8 +658,9 @@ msgstr "Rodyti išsamiau"
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Vyksta %'d veiksmas su failais"
+msgstr[1] "Vyksta %'d veiksmai su failais"
+msgstr[2] "Vyksta %'d veiksmų su failais"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
@@ -1390,68 +1391,68 @@ msgstr "Pakeitus jį, bus pašalinti visi tame aplanke esantys failai."
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "Pakeisti aplanką „%s“?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:172
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Aplankas tuo pačiu pavadinimu jau yra vietoje „%s“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:177
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "Pakeisti failą „%s“?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:179
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Pakeitus jį, bus perrašytas jo turinys."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:183
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Senesnis failas tuo pačiu pavadinimu jau yra aplanke „%s“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Naujesnis failas tuo pačiu pavadinimu jau yra aplanke „%s“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Kitas failas tuo pačiu pavadinimu jau yra aplanke „%s“."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
 msgid "Original file"
-msgstr ""
+msgstr "Originalus failas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
 msgid "Size:"
-msgstr ""
+msgstr "Dydis:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr ""
+msgstr "Tipas:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:260
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:291
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr ""
+msgstr "Keitimo data:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
@@ -1461,7 +1462,7 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr ""
+msgstr "Sulieti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
 msgid "_Select a new name for the destination"
@@ -1473,28 +1474,28 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:722
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Pritaikyti šį veiksmą visiems failams"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
 msgid "Re_name"
-msgstr ""
+msgstr "Per_vadinti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:744
 msgid "Replace"
-msgstr ""
+msgstr "Pakeisti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:817
 msgid "File conflict"
-msgstr ""
+msgstr "Failų konfliktas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr ""
+msgstr "Rodyti _išsamiau"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:245
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "nuoroda į %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1603
 #, c-format
@@ -1511,11 +1512,11 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1667
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "Netinkamas leistuko (desktop) failas"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1955
 msgid "Slashes are not allowed in filenames"
-msgstr ""
+msgstr "Failų pavadinimuose dešininiai brūkšniai neleidžiami"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1975
 msgid "Toplevel files cannot be renamed"
@@ -1524,4 +1525,4 @@ msgstr ""
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libwidgets/LocationBar.vala:709
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "Eiti į %s"
