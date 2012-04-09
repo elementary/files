@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-04-07 09:07+0000\n"
+"PO-Revision-Date: 2012-04-08 21:48+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-04-08 05:01+0000\n"
+"X-Launchpad-Export-Date: 2012-04-09 05:03+0000\n"
 "X-Generator: Launchpad (build 15060)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
@@ -110,7 +110,7 @@ msgstr "Ostali"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr "Odaberite aplaikaciju za otvaranje "
+msgstr "Odaberite aplikaciju za otvaranje "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
@@ -253,7 +253,7 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr "Sigurna veza(SSH)"
+msgstr "Sigurna veza (SSH)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
@@ -303,7 +303,7 @@ msgstr "Pokušajte ponovo."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr "Provjerite svoje korisničke detalje."
+msgstr "Provjerite svoje korisničke pojedinosti."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
@@ -320,7 +320,7 @@ msgstr "Poveži se s poslužiteljem"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr "Detalji poslužitelja"
+msgstr "Pojedinosti poslužitelja"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
@@ -344,7 +344,7 @@ msgstr "_Mapa:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr "Korisnički detalji"
+msgstr "Korisničke pojedinosti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
@@ -428,7 +428,9 @@ msgstr "Prilagodi alatnu traku"
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
-msgstr "Odaberite stavke za prikaz na alatnoj traci."
+msgstr ""
+"Odaberite stavke za prikaz na alatnoj traci. Redoslijed stavaka se može "
+"promijeniti 'Povuci i ispusti' radnjom."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:477
 msgid "Available Items"
@@ -649,16 +651,16 @@ msgstr "Rad s datotekama"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:122
 msgid "Show Details"
-msgstr "Prikaži detalje"
+msgstr "Prikaži pojedinosti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:157
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:179
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] "%'d operacija nad datotekama se izvodi"
-msgstr[1] "%'d operacije nad datotekama  se izvode"
-msgstr[2] "%'d operacija nad datotekama  se izvodi"
+msgstr[0] "%'d radnja nad datotekama se izvodi"
+msgstr[1] "%'d radnje nad datotekama  se izvode"
+msgstr[2] "%'d radnja nad datotekama  se izvodi"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
@@ -670,7 +672,7 @@ msgstr "Otkaži sve aktivne radnje"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
-msgstr "Sve operacije nad datotekama su uspješno završene"
+msgstr "Sve radnje nad datotekama su uspješno završene"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3188
 msgid "Select All"
@@ -700,7 +702,7 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr "--quit nije moguće koristiti sa URI."
+msgstr "--quit nije moguće koristiti s URI-jima."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:192
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:210
@@ -843,11 +845,11 @@ msgstr "Ako obrišete stavku, biti će trajno izgubljena."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1403
 msgid "Empty all items from Trash?"
-msgstr "Ispraznizi sve stavke iz smeća?"
+msgstr "Isprazniti sve stavke iz smeća?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1407
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Sve stavke u smeću bit će trajno izbrisane."
+msgstr "Sve stavke u smeću bit će trajno obrisane."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1438
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -954,7 +956,7 @@ msgstr "Datoteka \"%B\" ne može biti premještena u smeće."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2049
 msgid "Trashing Files"
-msgstr "Datoteke se bacaju u smeće"
+msgstr "Bacanje datoteka u smeće"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2051
 msgid "Deleting Files"
@@ -1491,7 +1493,7 @@ msgstr "Sukob datoteka"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Prikaži više _detalja"
+msgstr "Prikaži više _pojedinosti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:245
 #, c-format
@@ -1513,7 +1515,7 @@ msgstr "URL polje nije definirano"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1667
 msgid "Invalid desktop file"
-msgstr "Neispravna desktop datoteka"
+msgstr "Neispravna datoteka radne površine"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1955
 msgid "Slashes are not allowed in filenames"
