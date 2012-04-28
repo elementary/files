@@ -1,190 +1,190 @@
-# Turkish translation for marlin
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Sinhalese translation for marlin
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the marlin package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-04-28 04:52+0000\n"
-"Last-Translator: kulkke <Unknown>\n"
-"Language-Team: Turkish <tr@li.org>\n"
+"PO-Revision-Date: 2012-04-27 21:34+0000\n"
+"Last-Translator: shamika <shamikaweerasekara@yahoo.com>\n"
+"Language-Team: Sinhalese <si@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2012-04-28 05:02+0000\n"
 "X-Generator: Launchpad (build 15149)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
-msgstr "Özellikler"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:98
 msgid "Info"
-msgstr "Bilgi"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:103
 msgid "Permissions"
-msgstr "İzinler"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:114
 msgid "Preview"
-msgstr "Önizleme"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Created"
-msgstr "Oluşturuldu"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:311
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:320
 msgid "Modified"
-msgstr "Değiştirildi"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:312
 msgid "Last Access"
-msgstr "Son Erişim"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:316
 msgid "Deleted"
-msgstr "Silindi"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:320
 msgid "MimeType"
-msgstr "MimeTürü"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr "MimeTürleri"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
-msgstr "Konum"
+msgstr "පිහිටුම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:334
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:316
 msgid "Target"
-msgstr "Hedef"
+msgstr "ඉලක්කය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:340
 msgid "Origin Location"
-msgstr "Kaynak Konum"
+msgstr "මුල් පිහිටුම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
 msgid "Other application..."
-msgstr "Dİğer uygulama..."
+msgstr "වෙනත් යෙදුම්..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
 msgid "Open with"
-msgstr "Birlikte aç"
+msgstr "සමග විවෘත කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
-msgstr "Oku"
+msgstr "කියවීම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:529
 msgid "Write"
-msgstr "Yaz"
+msgstr "ලිවීම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:534
 msgid "Execute"
-msgstr "Çalıştır"
+msgstr "ක්‍රියාකරවන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:752
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:765
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:321
 msgid "Owner"
-msgstr "Sahibi"
+msgstr "හිමිකරු"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:757
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:769
 msgid "Group"
-msgstr "Grup"
+msgstr "කණ්ඩායම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:773
 msgid "Everyone"
-msgstr "Herkes"
+msgstr "හැම දෙනාම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr "Açmak için bir uygulama seçin "
+msgstr "විවෘත කිරීමට යෙදුමක් තෝරාගන්න "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
-msgstr "İsim"
+msgstr "නම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:313
 msgid "Type"
-msgstr "Tür"
+msgstr "වර්ගය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:318
 msgid "Size"
-msgstr "Boyut"
+msgstr "ප්‍රමාණය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "Dizin mevcut değil"
+msgstr "ෆොල්ඩරය නොපවතී"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr "Marlin, %s klasörünü bulamıyor"
+msgstr "marlin හට ෆොල්ඩරය සොයා ගත නොහැක %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr "Oluştur"
+msgstr "නිර්මාණය කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "%s klasörünü oluştur"
+msgstr "ෆොල්ඩරය  නිර්මාණය කරන්න %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr "Marlin Tercihleri"
+msgstr "marlinහි අභිප්‍රාය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
-msgstr "Açmak için bir kez tıklayın:"
+msgstr "විවෘත කිරීමට තනි ක්ලිකය:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
-msgstr "Fare oto-seçim hızı:"
+msgstr "මූසිකයෙහි ස්වයං තෝරාගැනීමේ වේගය :"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
-msgstr "Özellikler penceresini sabitle"
+msgstr "දෙබසේ ගුණාංග අනුකෘතියක් පිහිටුවයි:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "Default File Manager:"
-msgstr "Varsayılan Dosya Yöneticisi:"
+msgstr "පෙරනිමිය ගොනු කළමනාකරු:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:95
 msgid "Behavior"
-msgstr "Davranış"
+msgstr "හැසිරිම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
-msgstr "küçük"
+msgstr "කුඩා"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
-msgstr "orta"
+msgstr "මධ්‍යම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
-msgstr "büyük"
+msgstr "විශාල"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
-msgstr "çok büyük"
+msgstr "අධික විශාල"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
-msgstr "Kenar çubuğu simge boyutu:"
+msgstr "පැති තීරුවේ නිරුපක විශාලත්වය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "iso"
@@ -192,61 +192,63 @@ msgstr "iso"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:138
 msgid "locale"
-msgstr "yerel"
+msgstr "පෙදෙසිය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
-msgstr "gayri resmi"
+msgstr "අවිධිමත්"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:146
 msgid "Date format:"
-msgstr "Tarih biçimi:"
+msgstr "දින අකෘතිය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:154
 msgid "Display"
-msgstr "Görünüm"
+msgstr "සංදර්ශනය කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:203
 msgid "Extensions"
-msgstr "Eklentiler"
+msgstr "විස්තීරණයන්"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:95
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:370
 msgid "Trash"
-msgstr "Çöp"
+msgstr "ඉවතලන බහලුම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:96
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:588
 msgid "Network"
-msgstr "Ağ"
+msgstr "ජාලය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:131
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:324
 msgid "Home"
-msgstr "Ev"
+msgstr "නිවහන"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:133
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:394
 msgid "File System"
-msgstr "Dosya Sistemi"
+msgstr "ගොනු පද්ධතිය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:167
 msgid "Single Click"
-msgstr "Tek Tıklama"
+msgstr "තනි ක්ලිකය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Görünen öğelerin tek tıklama ile etkinleştirilebilinmeleri"
+msgstr "දර්ශනය වන අයිතමයන් තනි ක්ලිකයෙන් ස්ක්‍රිය විය හැක."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
-msgstr "Tek Tıklama Zaman Aşımı"
+msgstr "තනි ක්ලිකයේ කාලය වැයවීම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
+"තනි ක්ලිකයට  මුසිකය යට ඇති අයිතමය ස්වයංක්‍රීයව තෝරාගැනීම සදහා කොපමණ වෙලාවක් "
+"යන්නේද"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -254,15 +256,15 @@ msgstr "SSH"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr "Herkese Açık FTP"
+msgstr "මහජන FTP"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr "FTP (giriş gerektiren)"
+msgstr "FTP (පිවිසීමක් සමඟ)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr "Windows paylaşımı"
+msgstr "කවුළු හුවමාරුව"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
@@ -270,418 +272,420 @@ msgstr "WebDAV (HTTP)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr "Güvenli WebDAV (HTTPS)"
+msgstr "ආරක්ෂිත WebDAV (HTTPS)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr "Bağlanıyor..."
+msgstr "සම්බන්ධ වෙමින්..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"Desteklenen sunucu yöntem listesi yüklenemiyor.\n"
-"Lütfen gvfs kurulumunuzu kontrol edin."
+"සහයෝගය දෙන විධික්‍රමය සහිත සේවදායක ප්‍රවේශනය කිරීමට නොපුලුවන.\n"
+" කරුණාකර gvfs ස්ථාපනය කිරීම පරීක්ෂා කර බලන්න."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "\"%s\" klasörü \"%s\" üzerinde açılamıyor."
+msgstr "\"%s\" ෆොල්ඩරය \"%s\" මගින් විවෘත කල නොහැක"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "\"%s\" konumundaki sunucu bulunamıyor."
+msgstr "සේවාදායකයාගේ  \"%s\" සොයා ගත නොහැක"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr "Tekrar Dene"
+msgstr "නැවත උත්සාහ කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr "Lütfen kullanıcı ayrıntılarınızı doğrulayın."
+msgstr "කරුණාකර ඔබගේ තොරතුරු නිවරදිද පරීක්ෂා කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr "Devam Et"
+msgstr "පවත්වාගෙන යන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:750
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1169
 msgid "C_onnect"
-msgstr "_Bağlan"
+msgstr "සම්බන්ධ (_o)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr "Sunucuya Bağlan"
+msgstr "සේවාදායකයට සම්බන්ද වන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr "Sunucu Ayrıntıları"
+msgstr "සේවාදායකයාගේ තොරතුරු"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
-msgstr "_Sunucu:"
+msgstr "සේවාදායකය(_S):"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
-msgstr "_Port:"
+msgstr "පේනුව(_P):"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
-msgstr "_Tür:"
+msgstr "වර්ගය (_T):"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
-msgstr "P_aylaş:"
+msgstr "බෙදාහදාලන්න (_a):"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
-msgstr "_Klasör:"
+msgstr "බහලුම (_F):"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr "Kullanıcı Ayrıntıları"
+msgstr "පරිශීලක තොරතුරු"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr "Alan a_dı:"
+msgstr "කළාප නම (_D):"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
-msgstr "K_ullanıcı Adı:"
+msgstr "පරිශීලක නාමය (_U):"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
-msgstr "Par_ola:"
+msgstr "මුරපදය (_W):"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
-msgstr "Bu parolayı hatı_rla"
+msgstr "මෙම රහස් පදය මතක තබා ගන්න (_R)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
-msgstr "İşlem iptal edildi"
+msgstr "මෙහෙයුම අහෝසියි"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr "Kompakt dizin listeleme"
+msgstr "සංගත ගොනු ලැයිස්තුගත කිරීම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr "Kompakt görünüm"
+msgstr "ගොනු  දක්වනය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:623
 msgid "This folder is empty."
-msgstr "Bu klasör boş."
+msgstr "මෙම බහාළුම හිස්."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:186
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:139
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr "Yeniden adlandırma başarısız: %s -> %s"
+msgstr "%s, %sබවට නැවත නාමකරණය කිරීමට අසමත් විය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
-msgstr "Buraya _Taşı"
+msgstr "මෙතනට ගෙනියන්න (_M)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:784
 msgid "_Copy Here"
-msgstr "Buraya _Kopyala"
+msgstr "මෙතනට පිටපත් කරන්න (_C)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:789
 msgid "_Link Here"
-msgstr "Buraya _Bağ Koy"
+msgstr "මෙතනට පුරුකක් සකසන්න (_L)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr "_Arkaplan Olarak Ayarla"
+msgstr "පසුබිම ලෙස සකසන්න (_B)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:801
 msgid "Cancel"
-msgstr "İptal"
+msgstr "අවලංගු කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "\"%s\" dosyası çalıştırılamadı"
+msgstr "%s  ක්‍රියකරවන ගොනුව අසමත් විය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr "Simge dizinini listeleme"
+msgstr "නිරූපක නමාවලිය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr "Simge görünümü"
+msgstr "නිරූපකය දර්ශනය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
-msgstr "Araç Çubuğunu Özelleştir"
+msgstr "අභිරුචිකරණය කල මෙවලම් තීරුව"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:461
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
-"Araç çubuğunda gösterilecek öğeleri seçin. Öğeler sürükle bırak ile "
-"düzenlenebilir."
+"තොරගත් අයිතමයන් මෙවලම් තීරුවෙහි දැක්විය. අයිතමයන්ට ඇදීම හා හෙලුම මගින් නැවත "
+"සකස්වෙයි"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:477
 msgid "Available Items"
-msgstr "Kullanılabilir Öğeler"
+msgstr "ප්‍රයෝජ්‍ය අයිතමයන්"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:498
 msgid "Displayed Items"
-msgstr "Gösterilen Öğeler"
+msgstr "සංදර්ශක අයිතමයන්"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
-msgstr "Kişisel"
+msgstr "පුද්ගලික"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
-msgstr "Ortak yerler ve yer imleriniz."
+msgstr "පොදු ස්ථාන හා පිටුසනයන්"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
-msgstr "Kişisel klasörünüzü açın"
+msgstr "ඔබගේ පෞද්ගලික බහලුම් විවෘත කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
-msgstr "Çöpü aç"
+msgstr "බහලුම විවෘත කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
-msgstr "Aygıtlar"
+msgstr "ආම්පන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
-msgstr "Yerel bölüm ve aygıtlarınız"
+msgstr "ඔබගේ ස්ථානීය පංගු සහ ආම්පන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
-msgstr "Dosya Sisteminin içeriğini aç"
+msgstr "ගොනු පද්ධතියෙහි අන්තර්ගතය විවෘත කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:455
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:480
 #, c-format
 msgid "Mount and open %s"
-msgstr "%s'i bağla ve aç"
+msgstr "%s නංවනවා සහ විවෘත කරනවා"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
-msgstr "Ağ bağlantılarım"
+msgstr "ඔබේ ජාලය පිහිටුවනවා"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
-msgstr "Tüm ağ"
+msgstr "සමස්ත ජාලය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
-msgstr "Ağ içeriğine gözat"
+msgstr "ජාල අන්තර්ගතය  පිරික්සීම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
-msgstr "_Başlat"
+msgstr "ආරම්භ කරන්න (_S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1611
 msgid "_Stop"
-msgstr "_Durdur"
+msgstr "නතර කරන්න (_S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1616
 msgid "_Power On"
-msgstr "_Güç Açık"
+msgstr "බලය අරම්භය(_p)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1617
 msgid "_Safely Remove Drive"
-msgstr "_Sürücüyü Güvenle Kaldır"
+msgstr "ධාවකය ආරක්ෂිතව ඉවත් කරනවා (_S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1620
 msgid "_Connect Drive"
-msgstr "Sürücüyü _Bağla"
+msgstr "ධාවකය සම්බන්ධ කරනවා (_C)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1621
 msgid "_Disconnect Drive"
-msgstr "Sürücünün Bağlantısını _Kes"
+msgstr "ධාවකය විසන්ධි කරනවා (_D)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
-msgstr "_Çoklu-disk Aygıtını Başlat"
+msgstr "බොහෝ-තැටි ආම්පන්න ආරම්භ කරනවා (_S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1625
 msgid "_Stop Multi-disk Device"
-msgstr "Çoklu-disk Aygıtını _Durdur"
+msgstr "බොහෝ-තැටි ආම්පන්න නතර කරනවා (_S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1629
 msgid "_Unlock Drive"
-msgstr "Sürücü Kilidini K_aldır"
+msgstr "අගුල් හැර ආම්පන්න මුදා හරිනවා (_U)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1630
 msgid "_Lock Drive"
-msgstr "Sürücüyü K_ilitle"
+msgstr "ආම්පන්නයන්හි අගුල් දමනවා"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1704
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2251
 #, c-format
 msgid "Unable to start %s"
-msgstr "%s başlatılamadı"
+msgstr "%s ආරම්භ කරන්න අසමත් විය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1994
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2023
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2052
 #, c-format
 msgid "Unable to eject %s"
-msgstr "%s çıkartılamadı"
+msgstr "%s ප්‍රතික්ෂේප කරන්න අසමත් විය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2197
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr "Ortam değişikliği için %s yoklanamadı"
+msgstr "%s  මාධ්‍යය වෙනස්වීමට ඡන්දය දීමට අසමත් විය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2307
 #, c-format
 msgid "Unable to stop %s"
-msgstr "%s durdurulamadı"
+msgstr "%s නැවැත්වීමට අසමත් විය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2399
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1882
 msgid "_Open"
-msgstr "_Aç"
+msgstr "විවෘත කරන්න (_O)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2407
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1902
 msgid "Open in New _Tab"
-msgstr "Yeni S_ekmede Aç"
+msgstr "නව පටිත්තක් විවෘත කරන්න (_T)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2414
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1911
 msgid "Open in New _Window"
-msgstr "Yeni _Pencerede Aç"
+msgstr "නව කවුළුවක විවෘත කරන්න (_W)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
-msgstr "Sil"
+msgstr "ඉවත්කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
-msgstr "Yeniden Adlandır..."
+msgstr "නැවත නාමකරණය..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
-msgstr "_Bağla"
+msgstr "ස්ඵාපනය (_M)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2451
 msgid "_Unmount"
-msgstr "Bağı Ka_ldır"
+msgstr "අස්ථාපනය (_U)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2458
 msgid "_Eject"
-msgstr "_Çıkart"
+msgstr "ඉවත් කරන්න (_E)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2466
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1410
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2281
 msgid "Empty _Trash"
-msgstr "Çöpü _Boşalt"
+msgstr "ඉවතලන බහලුම හිස් කරන්න (_T)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3123
 msgid "Icon Size"
-msgstr "Simge Boyutu"
+msgstr "නිරූපක ප්‍රමාණය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3124
 msgid "Icon size"
-msgstr "Simge boyutu"
+msgstr "නිරූපකයේ ප්‍රමාණය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1090
 msgid "Invalid filename provided by XDS drag site"
-msgstr "XDS sürükleme alanından sağlanan dosya adı geçersiz."
+msgstr "XDS අදුම් අඩවිය විසින් අවලංගු ගොනුනාම සැපයුම සිදු විය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1248
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "\"%s\" URL'i için bir bağ oluşturulamadı"
+msgstr "\"%s\"  URL අමුණුම සදහා සිදුකල නිර්මාණය අසමත් විය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1730
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Seçili öğeyi açmak için \"%s\" kullan"
+msgstr[0] "තොරාගත් අයිතමය විවෘත කිරීමට \"%s\" භාවිතා කරන්න"
+msgstr[1] "තොරාගත් අයිතමය විවෘත කිරීමට \"%s\" භාවිතා කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1876
 #, c-format
 msgid "_Open With %s"
-msgstr "%s İle _Aç"
+msgstr "%s සමග විවෘත කරන්න(_O)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1898
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr "Yeni %'d _Sekmede Aç"
+msgstr "%'d සමග නව-පටිත්තක් විවෘත කරන්න(_T)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1907
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr "Yeni %'d _Pencerede Aç"
+msgstr "%'d සමග නව-කවුළුවක් විවෘත කරන්න(_W)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3236
 msgid "Set as default"
-msgstr "Varsayılan olarak ayarla"
+msgstr "පෙරනිමිය ලෙස සකස් කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3454
 msgid "Set Color:"
-msgstr "Rengi Ayarla"
+msgstr "පාට සූදානම් කරනවා:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-clipboard-manager.c:380
 msgid "There is nothing on the clipboard to paste"
-msgstr "Panoda yapıştırılacak birşey yok"
+msgstr "ක්ලිප්පුවරුවෙහි කිසිම ඇලවීමක් නොමැත"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:113
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:163
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:470
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:526
 msgid "File Operations"
-msgstr "Dosya İşlemleri"
+msgstr "ගොනු මෙහෙයවීම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:122
 msgid "Show Details"
-msgstr "Ayrıntıları Göster"
+msgstr "තොරතුරු පෙන්වන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:157
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:179
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] "%'d dosya işlemi etkin"
+msgstr[0] "%'d ගොනු මෙහෙයවීම ක්‍රියශීලියි"
+msgstr[1] "%'d ගොනුව මෙහෙයවීම් ක්‍රියශීලියි"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
 msgid "Show copy dialog"
-msgstr "Kopyalama iletişim kutusunu göster"
+msgstr "දෙබස් පිටපත් පෙන්වනවා"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:290
 msgid "Cancel all in-progress actions"
-msgstr "Devam etmekte olan tüm eylemleri iptal et"
+msgstr "සියලුම දියණුවෙමින් පවතින ක්‍රියවලි අවලංගු කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:527
 msgid "All file operations have been successfully completed"
-msgstr "Tüm dosya işlemleri başarıyla tamamlandı"
+msgstr "සියලුම ගොනු ක්‍රියවලීන් සාර්ථකව සම්පූර්ණ විය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3188
 msgid "Select All"
-msgstr "Tümünü Seç"
+msgstr "සියල්ල තෝරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3199
 msgid "Input Methods"
-msgstr "Girdi Yöntemleri"
+msgstr "ඇතුලත් කරන ක්‍රම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr "Görünüş modu"
+msgstr "පිරිසැලසුම් ආකාරය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr "Görünüş modu"
+msgstr "පිරිසැලසුම් ආකාරය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:439
 msgid ""
@@ -691,112 +695,116 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Dosya yöneticisi ile dosya sistemine gözat"
+"ගොනු පද්ධතිය කළමණාකරු සමඟ ගවේශනය කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
-msgstr "--quit URI adresleriyle birlikte kullanılamaz."
+msgstr "--URI සමග quit භවිතා කිරීමට නුපුලුවන."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:192
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr "Hazırlanıyor"
+msgstr "සූදානම් කරමින්"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr " (geçersiz Unikod)"
+msgstr " (සාවද්‍ය යුනිකේතය)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:199
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
 msgid "_Skip"
-msgstr "_Atla"
+msgstr "මගහරින්න (_S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr "Tü_münü Atla"
+msgstr "සියල්ල මගහරින්න (_k)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr "_Tekrar Dene"
+msgstr "නැවත උත්සාහ කරන්න (_R)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "Hepsini _Sil"
+msgstr "සියල්ල මකන්න(_A)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr "_Değiştir"
+msgstr "ප්‍රතිස්ථාපනය කරන්න (_R)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr "_Tümünü Değiştir"
+msgstr "සියල්ල ප්‍රතිස්ථාපනය කරන්න(_A)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr "_Birleştir"
+msgstr "සංයුක්ත කරන්න(_M)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr "_Hepsini Birleştir"
+msgstr "සියල්ල  සංයුක්ත කරන්න(_A)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "Yine de _Kopyala"
+msgstr "කෙසේ හෝ පිටපත් කරන්න(_A)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:293
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] "%'d saniye"
+msgstr[0] "තත්පර %'d"
+msgstr[1] "තත්පර %'d"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:298
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] "%'d dakika"
+msgstr[0] "මිනිත්තු %'d"
+msgstr[1] "මිනිත්තු %'d"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:308
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] "%'d saat"
+msgstr[0] "පැය %'d"
+msgstr[1] "පැය %'d"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:316
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] "yaklaşık %'d saat"
+msgstr[0] "ආසන්න වශයෙන් පැය %'d"
+msgstr[1] "ආසන්න වශයෙන් පැය %'d"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:392
 #, c-format
 msgid "Link to %s"
-msgstr "%s öğesine bağlantı"
+msgstr "%s අමුණුම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:396
 #, c-format
 msgid "Another link to %s"
-msgstr "%s öğesine bir diğer bağlantı"
+msgstr "%s වෙත තවත් ඇමුණුමක්"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:412
 #, c-format
 msgid "%'dst link to %s"
-msgstr "%'d. %s bağlantısı"
+msgstr "%'dst ඇමුණුමක්  %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:416
 #, c-format
 msgid "%'dnd link to %s"
-msgstr "%'d. %s bağlantısı"
+msgstr "%'dnd ඇමුණුමක්  %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:420
 #, c-format
 msgid "%'drd link to %s"
-msgstr "%'d. %s bağlantısı"
+msgstr "%'drd ඇමුණුමක්  %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:424
 #, c-format
 msgid "%'dth link to %s"
-msgstr "%'d. %s bağlantısı"
+msgstr "%'dth ඇමුණුමක්  %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:616
 msgid " ("
@@ -809,8 +817,7 @@ msgstr " (%'d"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1369
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
-"\"%B\" dosyasını çöpten kalıcı olarak silmek istediğinize emin misiniz?"
+msgstr "\"%B\"  ඔබට  නිසැකයෙන්ම බහලුමෙහි ඇති ස්ථිර ගොනුව අවලංගු කල යුතුයිද ?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1372
 #, c-format
@@ -821,47 +828,52 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"%'d seçili öğeyi kalıcı olarak çöpten silmek istediğinizden emin misiniz?"
+"ඔබට  නිසැකයෙන්ම බහලුමෙහි ඇති   %'d ස්ථිර තොරාගත් අයිතමය අවලංගු කල යුතුයිද"
+msgstr[1] ""
+"ඔබට  නිසැකයෙන්ම බහලුමෙහි ඇති   %'d ස්ථිර තොරාගත් අයිතමයන් අවලංගු කල යුතුයිද"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1382
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Eğer bir öğeyi silerseniz, o kalıcı olarak kaybolur."
+msgstr "ඔබ අයිතමයක් මැකුවහොත් එය ස්ථිරවම නැතිවනු ඇත."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1403
 msgid "Empty all items from Trash?"
-msgstr "Çöpteki bütün öğeler boşaltılsın mı?"
+msgstr "බහලුමෙන් සියලුම අයිතමයන් ඉවත් කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1407
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Çöp Kutusu'ndaki tüm öğeler kalıcı olarak silinecek."
+msgstr "බහලුමෙන් සියලුම අයිතමයන් ඉවත් කරාවි"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1438
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "\"%B\" dosyasını kalıcı olarak silmek istediğinize emin misiniz?"
+msgstr "බහලුමෙන් සියලුම  \"%B\" නිසැකවම මැකීම අවශ්‍යද"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1441
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "%'d seçili öğeyi kalıcı olarak silmek istediğinize emin misiniz?"
+msgstr[0] "බහලුමෙන් සියලුම  %'d  තොරාගත් අයිතමය නිසැකවම මැකීම අවශ්‍යද?"
+msgstr[1] "බහලුමෙන් සියලුම  %'d  තොරාගත් අයිතමයන් නිසැකවම මැකීම අවශ්‍යද?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1466
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1498
 msgid "Deleting files"
-msgstr "Dosyalar siliniyor"
+msgstr "ගොනු මකමින්"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1492
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "%'d dosya silinmek için bekliyor"
+msgstr[0] "%'d ගොනුව වමට මැකීම"
+msgstr[1] "%'d ගොනු වමට මැකීම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1512
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] "%T kaldı"
+msgstr[0] "%T වමට"
+msgstr[1] "%T වමට"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1580
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1614
@@ -869,450 +881,459 @@ msgstr[0] "%T kaldı"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1730
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2544
 msgid "Error while deleting."
-msgstr "Silinirken hata oluştu."
+msgstr "මැකීමේදී දෝෂයකි."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1584
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"\"%B\" klasöründeki dosyalar silinemiyor çünkü onları görmek için yeterli "
-"erişim hakkınız yok."
+"ෆොල්ඩරයෙහි \"%B\"  හි ඇති ගොනු මැකිය නොහැක,ඔබට එවා බැලීම සදහා අවසරය නොමැති "
+"හෙතුවෙන්"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1587
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2603
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3594
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr "\"%B\" klasöründeki dosyalar hakkında bilgi alınırken hata oluştu."
+msgstr "ෆොල්ඩරයෙහි බ් ගෙන් එහි ගොනු පිලිබද තොරතුරු ගැනීමෙදී දෝශයක් ඇතිවේ."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1596
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3603
 msgid "_Skip files"
-msgstr "Dosyaları _atla"
+msgstr "මඟහරින ගොනුව(_S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1617
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
-"\"%B\" klasörü silinemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
+msgstr "ෆොල්ඩරය \"%B\" මැකිය නොහැක,ඔබට එය කියවීමට අවසර ලබා දී නැත."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1620
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2642
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3639
 msgid "There was an error reading the folder \"%B\"."
-msgstr "\"%B\" klasörü okunurken hata oluştu."
+msgstr "ෆොල්ඩරය \"%B\" කියවීමේදී දොශයක් ඇත"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1654
 msgid "Could not remove the folder %B."
-msgstr "%B klasörü silinemedi."
+msgstr "%B ෆොල්ඩරය ඉවත් කල නොහැක"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1731
 msgid "There was an error deleting %B."
-msgstr "%B silinirken bir hata oluştu."
+msgstr "%B ෆොල්ඩරය මැකීමේ දොශයක් ඇත."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1807
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1819
 msgid "Moving files to trash"
-msgstr "Dosyalar çöpe taşınıyor"
+msgstr "බහලුම දක්වා ගොනු එහා මෙහා කරනවා"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1821
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "%'d dosya çöpe gönderilmeyi bekliyor"
+msgstr[0] "%'d ගොනුව බහාලුම හැර යනවා"
+msgstr[1] "%'d ගොනු බහාලුම හැර යනවා"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1872
 msgid "Cannot move file to trash, do you want to delete immediately?"
-msgstr "Dosya çöp kutusuna taşınamadı, kalıcı olarak silmek ister misiniz?"
+msgstr "ගොනු බහාලුමට යැවිය නොහැක,ඔබට ඉතාම ඉක්මනින් මැකීමට අවශ්‍යද?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1873
 msgid "The file \"%B\" cannot be moved to the trash."
-msgstr "\"%B\" dosyası çöpe taşınamıyor."
+msgstr "\"%B\" ගොනුව බහාලුමට යැවිය නොහැක."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2049
 msgid "Trashing Files"
-msgstr "Dosyalar Çöpe Atılıyor"
+msgstr "බහාලුම් ගොනු"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2051
 msgid "Deleting Files"
-msgstr "Dosyalar Siliniyor"
+msgstr "ගොනු මැකීම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2114
 msgid "Unable to eject %V"
-msgstr "%V çıkartılamadı"
+msgstr "%V ස්ථාපිත කිරීමේ අසමර්ථය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2116
 msgid "Unable to unmount %V"
-msgstr "%V bağı kaldırılamadı"
+msgstr "%V ප්‍රතික්ෂේප නොකිරීමේ අසමර්ථය"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2271
 msgid "Do you want to empty the trash before you unmount?"
-msgstr "Bağı kaldırmadan önce çöpü boşaltmak istiyor musunuz?"
+msgstr "ස්ථාපිත නොකිරීමට පෙර ඔබට බහාලුම හිස් කිරීමට අවශ්‍යද?"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2273
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
-"Bu birimde boş alan kazanmak için çöp boşaltılmak zorunda. Birimdeki tüm "
-"çöpe atılmış öğeler kalıcı olarak kaybolacak."
+"ඊට අමතරව නිදහස් ඉඩකඩ ප්‍රමණය නැවත ලබාගැනීම සදහා බහාලුම හිස් විය යුතුයි. හැම "
+"බහලුමකම ඇති අයිතමයක්ම ස්ථිරවම නැති විය හැක"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2279
 msgid "Do _not Empty Trash"
-msgstr "Çöpü _Boşaltma"
+msgstr "බහාලුම හිස් නොකරන්න(_n)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2334
 msgid "Emptying the trash"
-msgstr "Çöp boşaltılıyor"
+msgstr "බහාලුම හිස් කරමින්"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2401
 #, c-format
 msgid "Unable to mount %s"
-msgstr "%s bağlanamıyor"
+msgstr "%s ස්ථාපිත කල නොහැක"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2479
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "%'d dosya kopyalanmak için hazırlanıyor (%S)"
+msgstr[0] "%'d ගොනුව පිටපත් කිරීමට සුදානම් වීම (%S)"
+msgstr[1] "%'d ගොනු පිටපත් කිරීමට සුදානම් වීම (%S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2485
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "%'d dosya taşınmak için hazırlanıyor (%S)"
+msgstr[0] "%'d ගොනුව එහා මෙහා කිරීමට සුදානම් වීම (%S)"
+msgstr[1] "%'d ගොනු එහා මෙහා කිරීමට සුදානම් වීම (%S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2491
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "%'d dosya silinmek için hazırlanıyor (%S)"
+msgstr[0] "%'d ගොනුව මකා දැමීමට සුදානම් වීම (%S)"
+msgstr[1] "%'d ගොනු මකා දැමීමට සුදානම් වීම (%S)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2497
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "%'d dosya çöpe atılmak için hazırlanıyor"
+msgstr[0] "%'dගොනුව බහාලුම් කිරීමට දැමීමට සුදානම් වීම"
+msgstr[1] "%'d ගොනුව බහාලුම් කිරීමට දැමීමට සුදානම් වීම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2540
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3460
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3586
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3631
 msgid "Error while copying."
-msgstr "Kopyalarken hata oluştu."
+msgstr "පිටපත් කිරීමේදි දෝෂයකි."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2542
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3584
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3629
 msgid "Error while moving."
-msgstr "Taşınırken hata oluştu."
+msgstr "ගෙන යාමේදි දෝෂයකි."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2546
 msgid "Error while moving files to trash."
-msgstr "Dosyalar çöpe taşınırken hata."
+msgstr "ගොනුව බහාලුමට රැගෙන යෑමේදි ඇති වන දෝශ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2600
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"\"%B\" klasöründeki dosyalar işlenemiyor çünkü onları okumak için yeterli "
-"erişim hakkınız yok."
+"\"%B\" ෆොල්ඩරය තුල ඇති ගොනු මෙහෙයවිය නොහැක, ඔබට අවසරය නෑ ගොනු නිරීක්ෂණයට"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2639
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
-"\"%B\" klasörü işlenemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
+msgstr "\"%B\" ෆොල්ඩරය  මෙහෙයවිය නොහැක, ඔබට අවසරය නෑ ෆොල්ඩරය නිරීක්ෂණයට"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2716
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
-"\"%B\" dosyası işlenemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
+msgstr "\"%B\" ගොනු මෙහෙයවිය නොහැක, ඔබට අවසරය නෑ ගොනු නිරීක්ෂණයට"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2719
 msgid "There was an error getting information about \"%B\"."
-msgstr "\"%B\" hakkında bilgi alırken bir hata oluştu."
+msgstr "\"%B\" ගැන තොරතුරු දැන ගැනීමට දෝශයක් ඇත."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2819
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2861
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2894
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2924
 msgid "Error while copying to \"%B\"."
-msgstr "\"%B\" hedefine kopyalanırken hata."
+msgstr "\"%B\" පිටපත් කරන අතරතුර ඇතිවන දොශයන්"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2823
 msgid "You do not have permissions to access the destination folder."
-msgstr "Hedef klasöre erişim için yeterli izne sahip değilsiniz."
+msgstr "ඔබට ඉලක්ක ගොනුවට ප්‍රවෙශ වීමට අවසර නොමැත."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2825
 msgid "There was an error getting information about the destination."
-msgstr "Hedef hakkında bilgi alırken bir hata oluştu."
+msgstr "ඉලක්කය පිලිබදව තොරතුරු ගැනීමේදී දොශයක් ඇත."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2862
 msgid "The destination is not a folder."
-msgstr "Hedef bir klasör değil."
+msgstr "ඉලක්කය ෆොල්ඩරයක් නොවේ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2895
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr ""
-"Hedefte yeterli boş alan yok. Dosyaları silerek boş alan açmayı deneyin."
+msgstr "ඉලක්කය තුල ප්‍රමණවත් හිඩැසක් නොමැත එම නිසා ගොනු මකා දැමිය  යුතුනොවේ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2897
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr "%S kullanılabilir alan var, ancak %S gerekli."
+msgstr "%S ලබාගත හැකිය, නමුත් %S අවශ්‍ය වේ."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2925
 msgid "The destination is read-only."
-msgstr "Hedef salt okunur."
+msgstr "ඉලක්කය කියවීමට පමණයි"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2986
 msgid "Moving \"%B\" to \"%B\""
-msgstr "\"%B\", \"%B\" hedefine taşınıyor"
+msgstr "චලනය වන්න \"%B\" සිට\"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2987
 msgid "Copying \"%B\" to \"%B\""
-msgstr "\"%B\", \"%B\" hedefine kopyalanıyor"
+msgstr "පිටපත් කිරීම \"%B\" සිට\"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2991
 msgid "Duplicating \"%B\""
-msgstr "\"%B\" çoğaltılıyor"
+msgstr "\"%B\" ද්වීකරණය කිරීම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2995
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "%'d dosya (\"%B\" içerisinde) \"%B\" hedefine taşınıyor"
+msgstr[0] "%'d ගොනුව චලනය වන්න(තුළ \"%B\") සිට\"%B\""
+msgstr[1] "%'d ගොනුව චලනය වන්න(තුළ \"%B\") සිට\"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2998
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "%'d dosya (\"%B\" içerisinde) \"%B\" hedefine kopyalanıyor"
+msgstr[0] "%'d ගොනුව පිටපත් කිරීම(තුළ\"%B\") සිට \"%B\""
+msgstr[1] "%'d ගොනු පිටපත් කිරීම(තුළ\"%B\") සිට \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3005
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "%'d dosya (\"%B\" içerisinde) çoğaltılıyor"
+msgstr[0] "%'d ගොනුව ද්වීකරණය කිරීම   (තුළ\"%B\")"
+msgstr[1] "%'d ගොනුව ද්වීකරණය කිරීම  (තුළ\"%B\")"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3014
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "%'d dosya \"%B\" hedefine taşınıyor"
+msgstr[0] "%'d ගොනු චලනය වන්න  තුළ\"%B\""
+msgstr[1] "%'d ගොනු චලනය වන්න  තුළ\"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3018
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "%'d dosya \"%B\" hedefine kopyalanıyor"
+msgstr[0] "%'d ගොනු  පිටපත් කිරීම  \"%B\""
+msgstr[1] "%'d  ගොනු  පිටපත් කිරීම \"%B\""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3023
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "%'d dosya çoğaltılıyor"
+msgstr[0] "%'d ගොනු  ද්වීකරණය කිරීම"
+msgstr[1] "%'d ගොනු  ද්වීකරණය කිරීම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3074
 #, c-format
 msgid "%S of %S"
-msgstr "%S / %S"
+msgstr "%S ගේ %S"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3085
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S / %S — %T kaldı (%S/sn)"
+msgstr[0] "%S ගෙන් %S — %T වමට (%S/sec)"
+msgstr[1] "%S ගෙන් %S — %T වමට (%S/sec)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3464
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"\"%B\" klasörü kopyalanamıyor çünkü onu hedefte oluşturmak için yeterli "
-"erişim hakkınız yok."
+"\"%B\" ෆොල්ඩරය පිටපත් කල නොහැක, ඔබට ඉලක්කයක් නිර්මාණය කිරීමට අවසර දී නොමැති "
+"නිසා."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3467
 msgid "There was an error creating the folder \"%B\"."
-msgstr "\"%B\" klasörü oluşturulurken hata oluştu."
+msgstr "\"%B\" ෆොල්ඩරය නිර්මාණය කිරීමෙදී දෝශ ඇතිවිය හැක."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3591
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"\"%B\" klasörü içerisindeki dosyalar kopyalanamıyor çünkü onları görmek için "
-"yeterli erişim hakkınız yok."
+"\"%B\" ෆොල්ඩරය ඇති ගොනු පිටපත් කල නොහැක,නිරීක්ෂණය කිරීමෙදී දෝශ ඇතිවිය හැක "
+"නිස අවසර දී නොමැත"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3636
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"\"%B\" klasörü kopyalanamıyor çünkü onu okumak için yeterli erişim hakkınız "
-"yok."
+"\"%B\" ෆොල්ඩරය ඇති ගොනු පිටපත් කල නොහැක,කියවීමෙදී දෝශ ඇතිවිය හැකි නිසා අවසර "
+"දී නොමැත"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3681
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4378
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4952
 msgid "Error while moving \"%B\"."
-msgstr "\"%B\" taşınırken hata oluştu."
+msgstr "\"%B\" චලනය වන අතරේදිත් දෝෂයක් ඇති විය හැක."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3682
 msgid "Could not remove the source folder."
-msgstr "Hedef klasör silinemedi."
+msgstr "මුලශ්‍ර ෆොල්ඩරය ඉවත් කල නොහැක"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3767
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3808
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4380
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4451
 msgid "Error while copying \"%B\"."
-msgstr "\"%B\" kopyalanırken hata."
+msgstr "\"%B\"පිටපත් වන අතරේදිත් දෝෂයක් ඇති විය හැක."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3768
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr "Zaten mevcut olan %F klasöründen dosyalar silinemedi."
+msgstr "%F දැනට තියෙන ෆොල්ඩර් වලින් ගොනු චලනය නොකරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3809
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr "Zaten mevcut olan %F dosyası silinemedi."
+msgstr "දැනට තියෙන  %F ගොනු චලනය නොකරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4138
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4796
 msgid "You cannot move a folder into itself."
-msgstr "Bir klasörü kendi üzerine taşıyamazsınız."
+msgstr "ෆොල්ඩරය තමන්විසින්ම චලනය කරන්න බෑ."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4139
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4797
 msgid "You cannot copy a folder into itself."
-msgstr "Bir klasörü kendi üzerine kopyalayamazsınız."
+msgstr "තමන්විසින්ම ෆොල්ඩරය පිටපත් කරන්න බෑ."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4140
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4798
 msgid "The destination folder is inside the source folder."
-msgstr "Hedef klasör kaynak klasörünün içerisinde."
+msgstr "මුලශ්‍ර ෆොල්ඩරය යටතේ ඉලක්ක ෆොල්ඩර ඇත."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4171
 msgid "You cannot move a file over itself."
-msgstr "Bir dosyayı kendi üzerine taşıyamazsınız."
+msgstr "තමන් විසින්ම ගොනු යැවීමේ හැකියව නැත."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4172
 msgid "You cannot copy a file over itself."
-msgstr "Bir dosyayı kendi üzerine kopyalayamazsınız."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4173
 msgid "The source file would be overwritten by the destination."
-msgstr "Kaynak dosya hedef tarafından kendi üzerine yazılabilir."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4382
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr "%F içerisinde aynı isimde zaten mevcut olan dosya silinemedi."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4452
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr "Dosya %F içerisine kopyalanırken bir hata oluştu."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4680
 msgid "Copying Files"
-msgstr "Dosyalar Kopyalanıyor"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4696
 msgid "Preparing to move to \"%B\""
-msgstr "\"%B\" içerisine taşımaya hazırlanıyor"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4708
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] "%'d dosya taşınmak için hazırlanıyor"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4953
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr "Dosya %F içerisine taşınırken hata oluştu."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5216
 msgid "Moving Files"
-msgstr "Dosyalar Taşınıyor"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5232
 msgid "Creating links in \"%B\""
-msgstr "\"%B\" içerisinde bağlar oluşturuluyor"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5243
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] "%'d dosyaya bağ yapılıyor"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5373
 msgid "Error while creating link to %B."
-msgstr "%B bağı oluşturulurken hata."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5375
 msgid "Symbolic links only supported for local files"
-msgstr "Sembolik bağlar sadece yerel dosyalar için desteklenir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5378
 msgid "The target doesn't support symbolic links."
-msgstr "Hedef sembolik bağları desteklemiyor."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5381
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr "%F içerisinde sembolik bağ oluştururken hata oluştu."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5684
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5687
 msgid "Setting permissions"
-msgstr "İzinler atanıyor"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5929
 msgid "untitled folder"
-msgstr "isimsiz klasör"
+msgstr "නිර්නාමික බහලුම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5937
 msgid "new file"
-msgstr "yeni dosya"
+msgstr "නව ගොනුව"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6087
 msgid "Error while creating directory %B."
-msgstr "%B dizini oluştururken hata."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6089
 msgid "Error while creating file %B."
-msgstr "%B dosyası oluştururken hata."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6091
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "%F içerisinde dizin oluştururken bir hata oluştu."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6387
 msgid "Emptying Trash"
-msgstr "Çöp Boşaltılıyor"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:267
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr "\"%s\" özgün konumu belirlenemedi "
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:270
 msgid "The item cannot be restored from trash"
-msgstr "Öge çöpten geri getirilemedi"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "\"%s\" klasörü birleştirilsin mi?"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
@@ -1320,168 +1341,166 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"Birleştirme işlemi klasörde kopyalanan dosyalarla çakışan dosyaların üzerine "
-"yazılacağı zaman onay için soracak."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip daha eski bir klasör mevcut."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:159
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip daha yeni bir klasör mevcut."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:163
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip bir klasör mevcut."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
 msgid "Replacing it will remove all files in the folder."
-msgstr "Değiştirdiğinizde dizindeki tüm dosyalar kaldırılacak."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:170
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "%s dizinini yenisi ile değiştir?"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:172
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip başka bir klasör mevcut."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:177
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "%s dosyasını yenisiyle değiştir?"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:179
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
 msgid "Replacing it will overwrite its content."
-msgstr "Yerine koymak, var olan içeriğin üzerine yazılmasına neden olacak."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:183
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip daha eski bir dosya mevcut."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde zaten aynı isimde daha yeni bir dosya var."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip başka bir dosya mevcut."
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
 msgid "Original file"
-msgstr "Özgün dosya"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
 msgid "Size:"
-msgstr "Boyut:"
+msgstr "ප්‍රමාණය:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Type:"
-msgstr "Tür:"
+msgstr "වර්ගය:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:260
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:291
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
 msgid "Last modified:"
-msgstr "Son düzenlenme tarihi:"
+msgstr "අවසාන වෙනස් කළ දිනය:"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
 msgid "Replace with"
-msgstr "Bununla değiştir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
 msgid "Merge"
-msgstr "Birleştir"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
 msgid "_Select a new name for the destination"
-msgstr "Hedef için yeni bir isim _seçin"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:710
 msgid "Reset"
-msgstr "Sıfırla"
+msgstr "යළි සකසන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:722
 msgid "Apply this action to all files"
-msgstr "Bu eylemi tüm dosyalara uygula"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
 msgid "Re_name"
-msgstr "Ye_niden Adlandır"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:744
 msgid "Replace"
-msgstr "Yerine Koy"
+msgstr "යළි පිහිටුවන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:817
 msgid "File conflict"
-msgstr "Dosya çakışması"
+msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Daha _fazla ayrıntı göster"
+msgstr "වැඩි විස්තර පෙන්වන්න (_d)"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:245
 #, c-format
 msgid "link to %s"
-msgstr "%s'e bağla"
+msgstr "%s වෙත ඇමුණුම"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1603
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
+msgstr "Failed to parse the desktop file: %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1641
 msgid "No Exec field specified"
-msgstr "Exec alanı belirtilmemiş"
+msgstr "ක්‍රියාකරවීමේ ක්ෂේත්‍රය නිරූපණය කර නැත"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1661
 msgid "No URL field specified"
-msgstr "URL alanı belirtilmemiş"
+msgstr "URL ක්ෂේත්‍රය නිරූපණය කර නැත"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1667
 msgid "Invalid desktop file"
-msgstr "Geçersiz masaüstü dosyası"
+msgstr "අවලංගු වැඩතලය ගොනුව"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1955
 msgid "Slashes are not allowed in filenames"
-msgstr "Dosya isimlerinde taksim işareti kullanılamaz"
+msgstr "දිගටි කැපුම් පහර‍ ගොනුනමට අදාල නැත"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1975
 msgid "Toplevel files cannot be renamed"
-msgstr "Üst düzey dosyalar yeniden adlandırılamıyor"
+msgstr "ඉහලමායිමේ ගොනු නැවත නමකරණය කල නොහැක"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../libwidgets/LocationBar.vala:709
 #, c-format
 msgid "Go to %s"
-msgstr "%s git"
+msgstr "%s ට යන්න"
