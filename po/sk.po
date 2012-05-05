@@ -8,60 +8,60 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2011-08-29 15:02+0000\n"
-"Last-Translator: Martin Maričák <Unknown>\n"
+"PO-Revision-Date: 2012-05-04 11:02+0000\n"
+"Last-Translator: MerlinSVK <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2012-01-03 05:02+0000\n"
-"X-Generator: Launchpad (build 14616)\n"
+"X-Launchpad-Export-Date: 2012-05-05 05:19+0000\n"
+"X-Generator: Launchpad (build 15195)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
-msgstr ""
+msgstr "Možnosti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:98
 msgid "Info"
-msgstr ""
+msgstr "Podrobnosti"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:103
 msgid "Permissions"
-msgstr ""
+msgstr "Oprávnenia"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:114
 msgid "Preview"
-msgstr ""
+msgstr "Náhľad"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:310
 msgid "Created"
-msgstr ""
+msgstr "Vytvorené"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:311
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:320
 msgid "Modified"
-msgstr "Zmena"
+msgstr "Zmenené"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:312
 msgid "Last Access"
-msgstr ""
+msgstr "Posledný prístup"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:316
 msgid "Deleted"
-msgstr ""
+msgstr "Odstránené"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:320
 msgid "MimeType"
-msgstr ""
+msgstr "Typ Mime"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
 msgid "MimeTypes"
-msgstr ""
+msgstr "Mime Typy"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
 msgid "Location"
-msgstr ""
+msgstr "Umiestnienie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:334
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:316
@@ -70,27 +70,27 @@ msgstr "Cieľ"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:340
 msgid "Origin Location"
-msgstr ""
+msgstr "Pôvodné umiestnenie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
 msgid "Other application..."
-msgstr ""
+msgstr "Iná aplikácia..."
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
 msgid "Open with"
-msgstr ""
+msgstr "Otvoriť pomocou"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
 msgid "Read"
-msgstr ""
+msgstr "Čítanie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:529
 msgid "Write"
-msgstr ""
+msgstr "Zápis"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:534
 msgid "Execute"
-msgstr ""
+msgstr "Spúšťanie"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:752
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:765
@@ -101,15 +101,15 @@ msgstr "Vlastník"
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:757
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:769
 msgid "Group"
-msgstr ""
+msgstr "Skupina"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:773
 msgid "Everyone"
-msgstr ""
+msgstr "Všetci"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Vyberte aplikáciu na otvorenie "
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
 msgid "Name"
@@ -144,7 +144,7 @@ msgstr "Vytvoriť priečinok %s"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
-msgstr ""
+msgstr "Nastavenia Marlina"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
@@ -160,7 +160,7 @@ msgstr ""
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "Default File Manager:"
-msgstr ""
+msgstr "Prednastavený správca súborov"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:95
 msgid "Behavior"
