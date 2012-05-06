@@ -9,7 +9,7 @@ Standards-Version: 3.8.4
 
 Package: marlin
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, tumbler, extended-actions
+Depends: ${shlibs:Depends}, ${misc:Depends}, tumbler, contractor
 Pre-Depends: dpkg (>= 1.15.6)
 Suggests: tumbler-plugins-extra
 Description: The sexiest fish in the large sea of file managers, Marlin is well-designed with a focus on speed, simplicity, ease of use.
