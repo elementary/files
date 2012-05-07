@@ -172,7 +172,7 @@ Exec=marlin
 TargetEnvironment=Unity
 
 [Root Shortcut Group]
-Name=New Window as _Root
+Name=New Window as _Administrator
 Exec=gksu marlin
 TargetEnvironment=Unity
 
