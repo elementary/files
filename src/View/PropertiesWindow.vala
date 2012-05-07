@@ -227,7 +227,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     }
 
     private void add_header_box (Box vbox, Box content) {
-        var file_pix = goffile.get_icon_pixbuf (32, false, GOF.FileIconFlags.NONE);
+        var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
         var file_img = new Image.from_pixbuf (file_pix);
         file_img.set_valign (Align.START);
         content.pack_start(file_img, false, false);
