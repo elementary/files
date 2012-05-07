@@ -251,7 +251,7 @@ namespace Marlin.View
 
         private void date_format_changed(Gtk.Widget widget)
         {
-            int value = 0; /* iso */
+            int value = 2; /* informal */
             switch(((Gtk.Label)widget).get_text())
             {
             case "iso":
