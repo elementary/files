@@ -139,7 +139,7 @@ namespace Marlin.View
             
             first_vbox.pack_start(hbox_single_click, false);
 
-            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Display")));
+            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Appearance")));
 
             first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
             first_vbox.border_width = 5;
