@@ -52,7 +52,7 @@ struct _MarlinConnectServerDialogClass {
 
 GType marlin_connect_server_dialog_get_type (void);
 
-GtkWidget* marlin_connect_server_dialog_new (GtkWindow *window);
+MarlinConnectServerDialog *marlin_connect_server_dialog_new (GtkWindow *window);
 
 void marlin_connect_server_dialog_display_location_async (MarlinConnectServerDialog *self,
                                                           GFile *location,

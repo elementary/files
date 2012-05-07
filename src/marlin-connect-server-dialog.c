@@ -40,7 +40,7 @@
 
 struct _MarlinConnectServerDialogDetails {
     GtkWindow *parent_window;
-    GtkWidget *primary_table;
+    GtkWidget *primary_grid;
     GtkWidget *user_details;
     GtkWidget *port_spinbutton;
 
@@ -210,7 +210,7 @@ connect_dialog_gvfs_error (MarlinConnectServerDialog *dialog)
     gtk_widget_show (label);
 
     gtk_widget_set_sensitive (dialog->details->connect_button, FALSE);
-    gtk_widget_set_sensitive (dialog->details->primary_table, FALSE);
+    gtk_widget_set_sensitive (dialog->details->primary_grid, FALSE);
 
     gtk_widget_show (dialog->details->info_bar);
 }
@@ -443,20 +443,20 @@ marlin_connect_server_dialog_display_location_async (MarlinConnectServerDialog *
                                                      GAsyncReadyCallback callback,
                                                      gpointer user_data)
 {
-	GtkWidget *widget = GTK_WIDGET (self);
+    GtkWidget *widget = GTK_WIDGET (self);
 
     display_location_res =
-		g_simple_async_result_new (G_OBJECT (self),
-					   callback, user_data,
-					   marlin_connect_server_dialog_display_location_async);
+        g_simple_async_result_new (G_OBJECT (self),
+                                   callback, user_data,
+                                   marlin_connect_server_dialog_display_location_async);
 
     //g_message ("ConnectServer display location %s", g_file_get_uri (location));
     //marlin_application_create_window_from_gfile (marlin_application_new (), location, gtk_widget_get_screen (widget));
     g_signal_emit_by_name (MARLIN_VIEW_WINDOW (self->details->parent_window)->current_tab, "path-changed", location);
 
     g_simple_async_result_complete (display_location_res);
-	g_object_unref (display_location_res);
-	display_location_res = NULL;
+    g_object_unref (display_location_res);
+    display_location_res = NULL;
 }
 
 gboolean
@@ -464,11 +464,11 @@ marlin_connect_server_dialog_display_location_finish (MarlinConnectServerDialog 
                                                       GAsyncResult *res,
                                                       GError **error)
 {
-	if (g_simple_async_result_propagate_error (G_SIMPLE_ASYNC_RESULT (res), error)) {
-		return FALSE;
-	}
+    if (g_simple_async_result_propagate_error (G_SIMPLE_ASYNC_RESULT (res), error)) {
+        return FALSE;
+    }
 
-	return TRUE;
+    return TRUE;
 }
 
 static void
@@ -723,17 +723,17 @@ connect_dialog_response_cb (MarlinConnectServerDialog *dialog,
     case GTK_RESPONSE_CANCEL:
         connect_dialog_destroy (dialog);
         break;
-    /*case GTK_RESPONSE_HELP :
-        error = NULL;
-        gtk_show_uri (gtk_window_get_screen (GTK_WINDOW (dialog)),
-                      "ghelp:gnome-help#nautilus-connect",
-                      gtk_get_current_event_time (), &error);
-        if (error) {
-            eel_show_error_dialog (_("There was an error displaying help."), error->message,
-                                   GTK_WINDOW (dialog));
-            g_error_free (error);
-        }
-        break;*/
+        /*case GTK_RESPONSE_HELP :
+          error = NULL;
+          gtk_show_uri (gtk_window_get_screen (GTK_WINDOW (dialog)),
+          "ghelp:gnome-help#nautilus-connect",
+          gtk_get_current_event_time (), &error);
+          if (error) {
+          eel_show_error_dialog (_("There was an error displaying help."), error->message,
+          GTK_WINDOW (dialog));
+          g_error_free (error);
+          }
+          break;*/
     default :
         g_assert_not_reached ();
     }
@@ -859,7 +859,7 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
     GtkWidget *label;
     GtkWidget *alignment;
     GtkWidget *content_area;
-    GtkWidget *combo ,* table;
+    GtkWidget *combo , *grid;
     GtkWidget *hbox, *connect_button, *checkbox;
     GtkListStore *store;
     GtkCellRenderer *renderer;
@@ -904,28 +904,27 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
     gtk_box_pack_start (GTK_BOX (content_area), alignment, TRUE, TRUE, 0);
     gtk_widget_show (alignment);
 
-    table = gtk_table_new (4, 2, FALSE);
-    gtk_container_add (GTK_CONTAINER (alignment), table);
-    gtk_widget_show (table);
+    grid = gtk_grid_new ();
+    gtk_orientable_set_orientation (GTK_ORIENTABLE (grid), GTK_ORIENTATION_VERTICAL);
+    gtk_grid_set_row_spacing (GTK_GRID (grid), 6);
+    gtk_grid_set_column_spacing (GTK_GRID (grid), 3);
+    gtk_container_add (GTK_CONTAINER (alignment), grid);
+    gtk_widget_show (grid);
 
-    dialog->details->primary_table = table;
+    dialog->details->primary_grid = grid;
 
     /* first row: server entry + port spinbutton */
     label = gtk_label_new_with_mnemonic (_("_Server:"));
     gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-    gtk_table_attach (GTK_TABLE (table), label,
-                      0, 1,
-                      0, 1,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_container_add (GTK_CONTAINER (grid), label);
     gtk_size_group_add_widget (dialog->details->labels_size_group, label);
     gtk_widget_show (label);
 
     hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
     gtk_widget_show (hbox);
-    gtk_table_attach (GTK_TABLE (table), hbox,
-                      1, 2,
-                      0, 1,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_grid_attach_next_to (GTK_GRID (grid), hbox, label,
+                             GTK_POS_RIGHT,
+                             1, 1);
     gtk_size_group_add_widget (dialog->details->contents_size_group, hbox);
 
     dialog->details->server_entry = gtk_entry_new ();
@@ -955,10 +954,7 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
     /* second row: type combobox */
     label = gtk_label_new_with_mnemonic (_("_Type:"));
     gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-    gtk_table_attach (GTK_TABLE (table), label,
-                      0, 1,
-                      1, 2,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_container_add (GTK_CONTAINER (grid), label);
     gtk_size_group_add_widget (dialog->details->labels_size_group, label);
     gtk_widget_show (label);
 
@@ -1017,11 +1013,9 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
     }
 
     gtk_widget_show (combo);
-    gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
-    gtk_table_attach (GTK_TABLE (table), combo,
-                      1, 2,
-                      1, 2,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND, 6, 3);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
+	gtk_grid_attach_next_to (GTK_GRID (grid), combo, label,
+                             GTK_POS_RIGHT, 1, 1);
     g_signal_connect_swapped (combo, "changed",
                               G_CALLBACK (connect_dialog_setup_for_type),
                               dialog);
@@ -1029,18 +1023,13 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
     /* third row: share entry */
     label = gtk_label_new_with_mnemonic (_("Sh_are:"));
     gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-    gtk_table_attach (GTK_TABLE (table), label,
-                      0, 1,
-                      2, 3,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_container_add (GTK_CONTAINER (grid), label);
     gtk_size_group_add_widget (dialog->details->labels_size_group, label);
 
     dialog->details->share_entry = gtk_entry_new ();
     gtk_entry_set_activates_default (GTK_ENTRY (dialog->details->share_entry), TRUE);
-    gtk_table_attach (GTK_TABLE (table), dialog->details->share_entry,
-                      1, 2,
-                      2, 3,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_grid_attach_next_to (GTK_GRID (grid), dialog->details->share_entry, label,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_size_group_add_widget (dialog->details->contents_size_group, dialog->details->share_entry);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), dialog->details->share_entry);
 
@@ -1049,10 +1038,7 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
     /* fourth row: folder entry */
     label = gtk_label_new_with_mnemonic (_("_Folder:"));
     gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-    gtk_table_attach (GTK_TABLE (table), label,
-                      0, 1,
-                      3, 4,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_container_add (GTK_CONTAINER (grid), label);
     gtk_size_group_add_widget (dialog->details->labels_size_group, label);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), dialog->details->share_entry);
     gtk_widget_show (label);
@@ -1060,10 +1046,8 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
     dialog->details->folder_entry = gtk_entry_new ();
     gtk_entry_set_text (GTK_ENTRY (dialog->details->folder_entry), "/");
     gtk_entry_set_activates_default (GTK_ENTRY (dialog->details->folder_entry), TRUE);
-    gtk_table_attach (GTK_TABLE (table), dialog->details->folder_entry,
-                      1, 2,
-                      3, 4,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_grid_attach_next_to (GTK_GRID (grid), dialog->details->folder_entry, label,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_size_group_add_widget (dialog->details->contents_size_group, dialog->details->folder_entry);
     gtk_widget_show (dialog->details->folder_entry);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), dialog->details->folder_entry);
@@ -1085,44 +1069,38 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
     bind_visibility (dialog, alignment, label);
     dialog->details->user_details = alignment;
 
-    table = gtk_table_new (4, 2, FALSE);
-    gtk_container_add (GTK_CONTAINER (alignment), table);
-    gtk_widget_show (table);
+    grid = gtk_grid_new ();
+    gtk_grid_set_row_spacing (GTK_GRID (grid), 6);
+    gtk_grid_set_column_spacing (GTK_GRID (grid), 3);
+    gtk_orientable_set_orientation (GTK_ORIENTABLE (grid), GTK_ORIENTATION_VERTICAL);
+    gtk_container_add (GTK_CONTAINER (alignment), grid);
+    gtk_widget_show (grid);
 
     /* first row: domain entry */
     label = gtk_label_new_with_mnemonic (_("_Domain name:"));
     gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-    gtk_table_attach (GTK_TABLE (table), label,
-                      0, 1,
-                      0, 1,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_container_add (GTK_CONTAINER (grid), label);
 
     dialog->details->domain_entry = gtk_entry_new ();
     gtk_entry_set_activates_default (GTK_ENTRY (dialog->details->domain_entry), TRUE);
     gtk_size_group_add_widget (dialog->details->labels_size_group, label);
-    gtk_table_attach (GTK_TABLE (table), dialog->details->domain_entry,
-                      1, 2,
-                      0, 1,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_grid_attach_next_to (GTK_GRID (grid), dialog->details->domain_entry, label,
+                             GTK_POS_RIGHT, 1, 1);
+
     gtk_size_group_add_widget (dialog->details->contents_size_group, dialog->details->domain_entry);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), dialog->details->domain_entry);
     bind_visibility (dialog, dialog->details->domain_entry, label);
 
     /* second row: username entry */
-    label = gtk_label_new_with_mnemonic (_("_Username:"));
+    label = gtk_label_new_with_mnemonic (_("_User name:"));
     gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-    gtk_table_attach (GTK_TABLE (table), label,
-                      0, 1,
-                      1, 2,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_container_add (GTK_CONTAINER (grid), label);
     gtk_size_group_add_widget (dialog->details->labels_size_group, label);
 
     dialog->details->user_entry = gtk_entry_new ();
     gtk_entry_set_activates_default (GTK_ENTRY (dialog->details->user_entry), TRUE);
-    gtk_table_attach (GTK_TABLE (table), dialog->details->user_entry,
-                      1, 2,
-                      1, 2,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_grid_attach_next_to (GTK_GRID (grid), dialog->details->user_entry, label,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_size_group_add_widget (dialog->details->contents_size_group, dialog->details->user_entry);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), dialog->details->user_entry);
 
@@ -1131,19 +1109,14 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
     /* third row: password entry */
     label = gtk_label_new_with_mnemonic (_("Pass_word:"));
     gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-    gtk_table_attach (GTK_TABLE (table), label,
-                      0, 1,
-                      2, 3,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_container_add (GTK_CONTAINER (grid), label);
     gtk_size_group_add_widget (dialog->details->labels_size_group, label);
 
     dialog->details->password_entry = gtk_entry_new ();
     gtk_entry_set_activates_default (GTK_ENTRY (dialog->details->password_entry), TRUE);
     gtk_entry_set_visibility (GTK_ENTRY (dialog->details->password_entry), FALSE);
-    gtk_table_attach (GTK_TABLE (table), dialog->details->password_entry,
-                      1, 2,
-                      2, 3,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 3);
+    gtk_grid_attach_next_to (GTK_GRID (grid), dialog->details->password_entry, label,
+                             GTK_POS_RIGHT, 1, 1);
     gtk_size_group_add_widget (dialog->details->contents_size_group, dialog->details->password_entry);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), dialog->details->password_entry);
 
@@ -1151,17 +1124,15 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
 
     /* fourth row: remember checkbox */
     checkbox = gtk_check_button_new_with_mnemonic (_("_Remember this password"));
-    gtk_table_attach (GTK_TABLE (table), checkbox,
-                      1, 2,
-                      3, 4,
-                      GTK_EXPAND | GTK_FILL, GTK_EXPAND | GTK_FILL, 6, 0);
+    gtk_grid_attach_next_to (GTK_GRID (grid), checkbox, dialog->details->password_entry,
+                             GTK_POS_BOTTOM, 1, 1);
     dialog->details->remember_checkbox = checkbox;
 
     bind_visibility (dialog, dialog->details->password_entry, checkbox);
 
     /*gtk_dialog_add_button (GTK_DIALOG (dialog),
-                           GTK_STOCK_HELP,
-                           GTK_RESPONSE_HELP);*/
+      GTK_STOCK_HELP,
+      GTK_RESPONSE_HELP);*/
     gtk_dialog_add_button (GTK_DIALOG (dialog),
                            GTK_STOCK_CANCEL,
                            GTK_RESPONSE_CANCEL);
@@ -1213,7 +1184,7 @@ marlin_connect_server_dialog_class_init (MarlinConnectServerDialogClass *class)
     g_type_class_add_private (class, sizeof (MarlinConnectServerDialogDetails));
 }
 
-GtkWidget *
+MarlinConnectServerDialog *
 marlin_connect_server_dialog_new (GtkWindow *window)
 {
     GtkWidget *dialog;
@@ -1228,7 +1199,7 @@ marlin_connect_server_dialog_new (GtkWindow *window)
                                gtk_window_get_screen (window));
     }
 
-    return dialog;
+    return MARLIN_CONNECT_SERVER_DIALOG (dialog);
 }
 
 gboolean

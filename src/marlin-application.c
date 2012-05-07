@@ -65,22 +65,15 @@ struct _MarlinApplicationPriv {
     gboolean                open_intab;
 };
 
-static void selection_changed_plugin(GtkWidget* window, GList *selection)
-{
-    marlin_plugin_manager_file(plugins, selection);
-}
-
 static void
 open_window (MarlinApplication *application, GFile *location, GdkScreen *screen)
 {
     MarlinViewWindow *window;
 
     window = marlin_view_window_new (application, screen);
-    g_signal_connect(window, "selection_changed", (GCallback) selection_changed_plugin, NULL);
     marlin_plugin_manager_interface_loaded(plugins, GTK_WIDGET (window));
 
-    gtk_application_add_window (GTK_APPLICATION (application),
-                                GTK_WINDOW (window));
+    gtk_application_add_window (GTK_APPLICATION (application), GTK_WINDOW (window));
     marlin_view_window_add_tab (window, location);
 }
 

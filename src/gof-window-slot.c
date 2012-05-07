@@ -44,9 +44,9 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static void
 gof_window_slot_init (GOFWindowSlot *slot)
 {
-    slot->content_box = gtk_vbox_new(FALSE, 0);
-    GOF_ABSTRACT_SLOT(slot)->extra_location_widgets = gtk_vbox_new(FALSE, 0);
-    gtk_box_pack_start(GTK_BOX (slot->content_box), GOF_ABSTRACT_SLOT(slot)->extra_location_widgets, FALSE, FALSE, 0);
+    slot->content_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    GOF_ABSTRACT_SLOT (slot)->extra_location_widgets = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    gtk_box_pack_start (GTK_BOX (slot->content_box), GOF_ABSTRACT_SLOT(slot)->extra_location_widgets, FALSE, FALSE, 0);
 }
 
 static void
@@ -98,10 +98,10 @@ gof_window_slot_finalize (GObject *object)
 void
 gof_window_column_add (GOFWindowSlot *slot, GtkWidget *column)
 {
-    GtkWidget *hpane = gtk_hpaned_new();
+    GtkWidget *hpane = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
     gtk_widget_show (hpane);
-    gtk_container_add(GTK_CONTAINER(slot->colpane), hpane);
-    GtkWidget *vbox2 = gtk_hbox_new(FALSE, 0);
+    gtk_container_add(GTK_CONTAINER (slot->colpane), hpane);
+    GtkWidget *vbox2 = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
     gtk_widget_show (vbox2);
     slot->colpane = vbox2;
     slot->hpane = hpane;
@@ -233,6 +233,7 @@ gof_window_slot_freeze_updates (GOFWindowSlot *slot)
 {
     if (slot->mwcols != NULL)
         marlin_window_columns_freeze_updates (slot->mwcols);
+    g_object_set (slot->directory, "freeze-update", TRUE, NULL);
 }
 
 void
@@ -240,5 +241,6 @@ gof_window_slot_unfreeze_updates (GOFWindowSlot *slot)
 {
     if (slot->mwcols != NULL)
         marlin_window_columns_unfreeze_updates (slot->mwcols);
+    g_object_set (slot->directory, "freeze-update", FALSE, NULL);
 }
 

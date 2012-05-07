@@ -111,7 +111,7 @@ marlin_window_columns_make_view (MarlinWindowColumns *mwcols)
 
     gof_window_slot_make_column_view (slot);
 
-    mwcols->colpane = gtk_hbox_new (FALSE, 0);
+    mwcols->colpane = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
     slot->colpane = mwcols->colpane;
     gtk_widget_show (mwcols->colpane);
     mwcols->view_box = gtk_scrolled_window_new (0, 0);
@@ -193,8 +193,8 @@ static void
 marlin_window_columns_init (MarlinWindowColumns *mwcol)
 {
     mwcol->preferred_column_width = g_settings_get_int (marlin_column_view_settings, "preferred-column-width");
-    mwcol->content_box = gtk_vbox_new(FALSE, 0);
-    GOF_ABSTRACT_SLOT(mwcol)->extra_location_widgets = gtk_vbox_new(FALSE, 0);
+    mwcol->content_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+    GOF_ABSTRACT_SLOT(mwcol)->extra_location_widgets = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
     gtk_box_pack_start(GTK_BOX (mwcol->content_box), GOF_ABSTRACT_SLOT(mwcol)->extra_location_widgets, FALSE, FALSE, 0);
 }
 

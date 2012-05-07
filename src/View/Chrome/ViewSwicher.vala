@@ -72,7 +72,7 @@ namespace Marlin.View.Chrome
         {
             main_actions = action_group;
             //border_width = 6;
-            margin = 6;
+            margin = 3;
 
             switcher = new ModeButton ();
             Varka.IconFactory icon_factory = Varka.IconFactory.get_default ();

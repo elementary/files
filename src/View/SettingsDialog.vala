@@ -35,7 +35,7 @@ namespace Marlin.View
 
             var mai_notebook = new Varka.Widgets.StaticNotebook();
 
-            var first_vbox = new Gtk.VBox(false, 3);
+            var first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
             first_vbox.border_width = 5;
 
 
@@ -44,7 +44,7 @@ namespace Marlin.View
 
             Preferences.settings.bind("single-click", checkbox , "active", SettingsBindFlags.DEFAULT);
 
-            var hbox_single_click = new Gtk.HBox(false, 0);
+            var hbox_single_click = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             var label = new Gtk.Label(_("Single click to open:"));
             label.set_alignment(0, 0.5f);
             hbox_single_click.pack_start(label);
@@ -52,9 +52,9 @@ namespace Marlin.View
             first_vbox.pack_start(hbox_single_click, false);
 
             /* Mouse selection speed */
-            var spi_click_speed = new Gtk.HScale.with_range(0, 1000, 1);
+            var spi_click_speed = new Gtk.Scale.with_range(Gtk.Orientation.HORIZONTAL, 0, 1000, 1);
 
-            hbox_single_click = new Gtk.HBox(false, 0);
+            hbox_single_click = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             label = new Gtk.Label(_("Mouse auto-selection speed:"));
             label.set_alignment(0, 0.5f);
             hbox_single_click.pack_start(label);
@@ -66,23 +66,11 @@ namespace Marlin.View
             
             first_vbox.pack_start(hbox_single_click, false);
 
-            /* Dlg properties modal */
-            var check_dlg_properties = new Gtk.Switch ();
-            
-            Preferences.settings.bind ("dialog-property-modal", check_dlg_properties, "active", 0);
-
-            var hbox_dlg_properties = new Gtk.HBox(false, 0);
-            var l1 = new Gtk.Label(_("Properties Dialog set modal:"));
-            l1.set_alignment(0, 0.5f);
-            hbox_dlg_properties.pack_start(l1);
-            hbox_dlg_properties.pack_start(check_dlg_properties, false, false);
-            first_vbox.pack_start(hbox_dlg_properties, false);
-            
             /* Make default FM */
             var sw_fm_default = new Gtk.Switch ();
             sw_fm_default.active = is_marlin_mydefault_fm ();
             
-            var hbox_fm_default = new Gtk.HBox(false, 0);
+            var hbox_fm_default = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             var l2 = new Gtk.Label(_("Default File Manager:"));
             l2.set_alignment(0, 0.5f);
             hbox_fm_default.pack_start(l2);
@@ -94,7 +82,7 @@ namespace Marlin.View
             
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Behavior")));
 
-            first_vbox = new Gtk.VBox(false, 3);
+            first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
             first_vbox.border_width = 5;
             
             /* Sidebar icon size */
@@ -121,7 +109,7 @@ namespace Marlin.View
 
             spin_icon_size.mode_changed.connect(spin_icon_size_changed);
 
-            hbox_single_click = new Gtk.HBox(false, 10);
+            hbox_single_click = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 10);
 
             label = new Gtk.Label(_("Sidebar icon size:"));
             label.set_alignment(0, 0.5f);
@@ -141,7 +129,7 @@ namespace Marlin.View
 
             mode_date_format.mode_changed.connect(date_format_changed);
 
-            hbox_single_click = new Gtk.HBox(false, 0);
+            hbox_single_click = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
 
             label = new Gtk.Label(_("Date format:"));
             label.set_alignment(0, 0.5f);
@@ -153,7 +141,7 @@ namespace Marlin.View
 
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Display")));
 
-            first_vbox = new Gtk.VBox(false, 3);
+            first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
             first_vbox.border_width = 5;
             
             var view = new Gtk.TreeView(); 

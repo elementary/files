@@ -56,8 +56,9 @@ typedef enum
     MARLIN_ZOOM_N_LEVELS,
 } MarlinZoomLevel;
 
-GType          marlin_zoom_level_get_type     (void) G_GNUC_CONST;
-MarlinIconSize marlin_zoom_level_to_icon_size (MarlinZoomLevel zoom_level) G_GNUC_CONST;
+GType           marlin_zoom_level_get_type     (void) G_GNUC_CONST;
+MarlinIconSize  marlin_zoom_level_to_icon_size (MarlinZoomLevel zoom_level) G_GNUC_CONST;
+MarlinZoomLevel marlin_zoom_level_get_nearest_from_value (int size);
 
 G_END_DECLS;
 

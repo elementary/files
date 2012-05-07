@@ -99,7 +99,7 @@ namespace Marlin.View {
                     remove(content_item);
                 add(value);
                 content_item = value;
-                show_all ();
+                content_item.show_all ();
             }
             get{
                 return content_item;
@@ -172,10 +172,9 @@ namespace Marlin.View {
         }
 
         public void change_view (int nview, GLib.File? location) {
-            view_mode = nview;
+            /* if location is null then we have a user change view request */
+            bool user_change_rq = location == null;
             select_childs = null;
-            if (window.top_menu.view_switcher != null)
-                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
             if (location == null) {
                 /* we re just changing view keep the same location */
                 location = get_active_slot ().location;
@@ -193,7 +192,7 @@ namespace Marlin.View {
                         select_childs.prepend (slot.directory.file.location);
                 }
             }
-            if (slot != null && slot.directory.file.exists) {
+            if (slot != null && slot.directory != null && slot.directory.file.exists) {
                 slot.directory.cancel();
             }
 
@@ -205,9 +204,20 @@ namespace Marlin.View {
                 slot = new GOF.Window.Slot(location, this);
             }
 
+            /* automagicly enable icon view for icons keypath */
+            if (!user_change_rq && slot.directory.uri_contain_keypath_icons)
+                nview = 0; /* icon view */
+
+            /* Setting up view_mode and its button */
+            view_mode = nview;
+            if (window.top_menu.view_switcher != null)
+                window.top_menu.view_switcher.mode = (ViewMode) view_mode;
+
             connect_available_info();
-            if (slot != null && slot.directory.file.exists)
+            if (slot != null && slot.directory.file.exists) {
                 slot.directory.done_loading.connect (directory_done_loading);
+                slot.directory.need_reload.connect (reload);
+            }
             plugin_directory_loaded ();
 
             switch (nview) {
@@ -227,7 +237,6 @@ namespace Marlin.View {
 
         }
 
-        /* TODO save selections in slot or fmdirectoryview and set the ContextView */
         public void sync_contextview(){
             if (!slot.directory.file.exists) {
                 if (window.contextview != null) {
@@ -256,6 +265,14 @@ namespace Marlin.View {
                 return mwcol.active_slot;
             else
                 return slot;
+        }
+
+        public void reload () {
+            GOF.Directory.Async dir = slot.directory;
+            dir.cancel ();
+            dir.need_reload.disconnect (reload);
+            dir.remove_dir_from_cache ();
+            change_view (view_mode, null);
         }
 
         public void update_location_state(bool save_history)

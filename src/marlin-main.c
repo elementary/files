@@ -20,7 +20,6 @@ main (int argc, char *argv[])
     gint ret;
 
     g_type_init ();
-    g_thread_init (NULL);
     
     /* Initialize gettext support */
     setlocale(LC_ALL, "" );

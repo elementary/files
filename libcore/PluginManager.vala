@@ -145,12 +145,12 @@ public class Marlin.PluginManager : GLib.Object
         }
     }
     
-    public void hook_context_menu(Gtk.Widget menu)
+    public void hook_context_menu(Gtk.Widget menu, List<GOF.File> files)
     {
         foreach (var item in menus)
             item.destroy ();
         menus = null;
-        foreach(var plugin in plugin_hash.values) plugin.context_menu(menu);
+        foreach(var plugin in plugin_hash.values) plugin.context_menu (menu, files);
     }
     
     public void ui(Gtk.UIManager data)
@@ -171,11 +171,6 @@ public class Marlin.PluginManager : GLib.Object
     public void update_sidebar(Gtk.Widget win)
     {
         foreach(var plugin in plugin_hash.values) plugin.update_sidebar(win);
-    }
-    
-    public void file(List<Object> files)
-    {
-        foreach(var plugin in plugin_hash.values) plugin.file(files);
     }
     
     public void update_file_info(GOF.File file)

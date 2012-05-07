@@ -65,7 +65,6 @@ install (FILES
     marlin-file-utilities.h
     marlin-icons.h
     marlin-abstract-sidebar.h
-    marlin-plugins-hook.h
     marlin-progress-info.h
     marlin-progress-info-manager.h
     marlin-icon-info.h

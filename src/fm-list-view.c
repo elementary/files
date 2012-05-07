@@ -147,7 +147,7 @@ list_selection_changed_callback (GtkTreeSelection *selection, gpointer user_data
 
     if (view->details->selection != NULL)
         gof_file_list_free (view->details->selection);
-    view->details->selection = get_selection(view);
+    view->details->selection = get_selection (view);
 
     fm_directory_view_notify_selection_changed (FM_DIRECTORY_VIEW (view));
 }
@@ -248,7 +248,7 @@ cell_renderer_editing_canceled (GtkCellRendererText *cell,
                                 FMListView          *view)
 {
 	view->details->editable_widget = NULL;
-	fm_list_view_unfreeze_updates (view);
+	//fm_list_view_unfreeze_updates (view);
 }
 
 static void
@@ -261,7 +261,7 @@ cell_renderer_edited (GtkCellRendererText *cell,
 	GOFFile *file;
 	GtkTreeIter iter;
 
-    printf ("%s\n", G_STRFUNC);
+    g_message ("%s\n", G_STRFUNC);
 	view->details->editable_widget = NULL;
 
 	/* Don't allow a rename with an empty string. Revert to original 
@@ -731,9 +731,7 @@ get_selection_foreach_func (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter 
 static GList *
 get_selection (FMListView *view)
 {
-    GList *list;
-
-    list = NULL;
+    GList *list = NULL;
 
     gtk_tree_selection_selected_foreach (gtk_tree_view_get_selection (view->tree),
                                          get_selection_foreach_func, &list);

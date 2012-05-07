@@ -89,13 +89,13 @@ struct _MarlinUndoActionData
 struct _MarlinUndoManagerPrivate
 {
     /* Private fields */
-    GQueue *stack;
-    guint undo_levels;
-    guint index;
-    GMutex *mutex;                /* Used to protect access to stack (because of async file ops) */
-    gboolean dispose_has_run;
-    gboolean undo_redo_flag;
-    gboolean confirm_delete;
+    GQueue      *stack;
+    guint       undo_levels;
+    guint       index;
+    GMutex      mutex;                /* Used to protect access to stack (because of async file ops) */
+    gboolean    dispose_has_run;
+    gboolean    undo_redo_flag;
+    gboolean    confirm_delete;
 };
 
 #define MARLIN_UNDO_MANAGER_GET_PRIVATE(o)  \
@@ -271,7 +271,7 @@ marlin_undo_manager_init (MarlinUndoManager *self)
 
     /* Initialize private fields */
     priv->stack = g_queue_new ();
-    priv->mutex = g_mutex_new ();
+    g_mutex_init (&priv->mutex);
     priv->index = 0;
     priv->dispose_has_run = FALSE;
     priv->undo_redo_flag = FALSE;
@@ -287,14 +287,14 @@ marlin_undo_manager_dispose (GObject *object)
     if (priv->dispose_has_run)
         return;
 
-    g_mutex_lock (priv->mutex);
+    g_mutex_lock (&priv->mutex);
 
     /* Free each undoable action in the stack and the stack itself */
     undostack_dispose_all (priv->stack);
     g_queue_free (priv->stack);
-    g_mutex_unlock (priv->mutex);
+    g_mutex_unlock (&priv->mutex);
 
-    g_mutex_free (priv->mutex);
+    g_mutex_clear (&priv->mutex);
 
     priv->dispose_has_run = TRUE;
 
@@ -325,9 +325,9 @@ marlin_undo_manager_set_property (GObject *object, guint prop_id,
         new_undo_levels = g_value_get_uint (value);
         if (new_undo_levels > 0 && (priv->undo_levels != new_undo_levels)) {
             priv->undo_levels = new_undo_levels;
-            g_mutex_lock (priv->mutex);
+            g_mutex_lock (&priv->mutex);
             stack_fix_size (priv);
-            g_mutex_unlock (priv->mutex);
+            g_mutex_unlock (&priv->mutex);
             do_menu_update (manager);
         }
         break;
@@ -411,7 +411,7 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
     GFile *fparent;
     MarlinUndoManagerPrivate *priv = manager->priv;
 
-    g_mutex_lock (priv->mutex);
+    g_mutex_lock (&priv->mutex);
 
     MarlinUndoActionData *action = stack_scroll_left (priv);
 
@@ -420,7 +420,7 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
         action->locked = TRUE;
     }
 
-    g_mutex_unlock (priv->mutex);
+    g_mutex_unlock (&priv->mutex);
 
     do_menu_update (manager);
 
@@ -561,7 +561,7 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
     char *new_name;
     MarlinUndoManagerPrivate *priv = manager->priv;
 
-    g_mutex_lock (priv->mutex);
+    g_mutex_lock (&priv->mutex);
 
     MarlinUndoActionData *action = stack_scroll_right (priv);
 
@@ -569,7 +569,7 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
         action->locked = TRUE;
     }
 
-    g_mutex_unlock (priv->mutex);
+    g_mutex_unlock (&priv->mutex);
 
     do_menu_update (manager);
 
@@ -730,9 +730,9 @@ marlin_undo_manager_add_action (MarlinUndoManager *manager,
 
     action->manager = manager;
 
-    g_mutex_lock (priv->mutex);
+    g_mutex_lock (&priv->mutex);
     stack_push_action (priv, action);
-    g_mutex_unlock (priv->mutex);
+    g_mutex_unlock (&priv->mutex);
 
     do_menu_update (manager);
 
@@ -788,7 +788,7 @@ marlin_undo_manager_trash_has_emptied (MarlinUndoManager *manager)
     MarlinUndoManagerPrivate *priv = manager->priv;
 
     /* Clear actions from the oldest to the newest move to trash */
-    g_mutex_lock (priv->mutex);
+    g_mutex_lock (&priv->mutex);
     clear_redo_actions (priv);
     MarlinUndoActionData *action = NULL;
 
@@ -814,7 +814,7 @@ marlin_undo_manager_trash_has_emptied (MarlinUndoManager *manager)
     }
 
     g_queue_free (tmp_stack);
-    g_mutex_unlock (priv->mutex);
+    g_mutex_unlock (&priv->mutex);
     do_menu_update (manager);
 }
 
@@ -1887,7 +1887,7 @@ do_menu_update (MarlinUndoManager *manager)
     MarlinUndoManagerPrivate *priv = manager->priv;
     MarlinUndoMenuData *data = g_slice_new0 (MarlinUndoMenuData);
 
-    g_mutex_lock (priv->mutex);
+    g_mutex_lock (&priv->mutex);
 
     action = get_next_undo_action (priv);
     if (action != NULL) {
@@ -1901,7 +1901,7 @@ do_menu_update (MarlinUndoManager *manager)
         data->redo_description = get_redo_description (action);
     }
 
-    g_mutex_unlock (priv->mutex);
+    g_mutex_unlock (&priv->mutex);
 
     /* Update menus */
     g_signal_emit (manager, signals[REQUEST_MENU_UPDATE], 0, data);

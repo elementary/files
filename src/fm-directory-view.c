@@ -201,6 +201,8 @@ static gboolean fm_directory_view_request_thumbnails         (FMDirectoryView *v
 static void     fm_directory_view_scrolled (GtkAdjustment *adjustment, FMDirectoryView *view);
 static void     fm_directory_view_size_allocate (FMDirectoryView *view, GtkAllocation *allocation);
 
+static int      fm_directory_view_get_uri_keypath_size (FMDirectoryView *view);
+
 G_DEFINE_TYPE (FMDirectoryView, fm_directory_view, GTK_TYPE_SCROLLED_WINDOW);
 #define parent_class fm_directory_view_parent_class
 
@@ -738,8 +740,7 @@ fm_directory_view_preview_selected_items (FMDirectoryView *view)
         file_list = g_list_prepend (file_list, file->location);
 
         screen = eel_gtk_widget_get_screen (GTK_WIDGET (view));
-        GdkAppLaunchContext *context = gdk_app_launch_context_new ();
-        gdk_app_launch_context_set_screen (context, screen);
+        GdkAppLaunchContext *context = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
         GAppInfo* previewer_app = g_app_info_create_from_commandline (view->details->previewer, NULL, 0, NULL);
         //FIXME
         if (!g_app_info_launch (previewer_app, file_list, G_APP_LAUNCH_CONTEXT (context), NULL))
@@ -2110,7 +2111,7 @@ fm_directory_view_context_menu (FMDirectoryView *view, GdkEventButton *event)
     /* run the menu on the view's screen (figuring out whether to use the file or the folder context menu) */
     menu = (selection != NULL) ? view->details->menu_selection : view->details->menu_background;
 
-    marlin_plugin_manager_hook_context_menu(plugins, menu);
+    marlin_plugin_manager_hook_context_menu (plugins, menu, selection);
     gtk_menu_set_screen (GTK_MENU (menu), eel_gtk_widget_get_screen (GTK_WIDGET (view)));
 
     eel_pop_up_context_menu (GTK_MENU (menu),
@@ -2323,6 +2324,16 @@ GOFDirectoryAsync *fm_directory_view_get_current_directory (FMDirectoryView *vie
     g_return_val_if_fail (view->details->slot != NULL, NULL);
 
     return view->details->slot->directory;
+}
+
+static int 
+fm_directory_view_get_uri_keypath_size (FMDirectoryView *view)
+{
+    GOFDirectoryAsync *dir = fm_directory_view_get_current_directory (view);
+    if (dir != NULL)
+        return dir->uri_keypath_size;
+
+    return 0;
 }
 
 gboolean fm_directory_view_get_loading (FMDirectoryView *view)
@@ -2762,7 +2773,7 @@ fm_directory_view_set_property (GObject         *object,
 
         slot = GOF_WINDOW_SLOT (g_value_get_object (value));
         window = marlin_view_view_container_get_window (MARLIN_VIEW_VIEW_CONTAINER(slot->ctab));
-
+        
         view->details->slot = g_object_ref(slot);
         view->details->window = window;
 
@@ -2772,19 +2783,27 @@ fm_directory_view_set_property (GObject         *object,
                                               slot->directory->file->sort_order);
         g_signal_handlers_unblock_by_func (view->model, sort_column_changed_callback, view);
 
-        fm_directory_view_connect_directory_handlers (view, slot->directory);
-
-        g_signal_connect_object (view->details->slot, "active", 
-                                 G_CALLBACK (slot_active), view, 0);
-        g_signal_connect_object (view->details->slot, "inactive", 
-                                 G_CALLBACK (slot_inactive), view, 0);
-    
         /* connect to GOFPrefences */
         g_signal_connect_object (gof_preferences_get_default (), "notify::show-hidden-files",
                                  G_CALLBACK (show_hidden_files_changed), view, 0);
         g_signal_connect_object (gof_preferences_get_default (), "notify::interpret-desktop-files",
                                  G_CALLBACK (show_desktop_files_changed), view, 0);
-                       
+        
+        /* automagicly zoom if we have a valid keypath_size */
+        int keypath_size = fm_directory_view_get_uri_keypath_size (view);
+        if (keypath_size != 0) {
+            MarlinZoomLevel zoom = marlin_zoom_level_get_nearest_from_value (keypath_size); 
+            g_object_set (G_OBJECT (view), "zoom-level", zoom, NULL);
+        }
+        
+        fm_directory_view_connect_directory_handlers (view, slot->directory);
+        
+        g_signal_connect_object (view->details->slot, "active", 
+                                 G_CALLBACK (slot_active), view, 0);
+        g_signal_connect_object (view->details->slot, "inactive", 
+                                 G_CALLBACK (slot_inactive), view, 0);
+    
+
         break;
     case PROP_ZOOM_LEVEL:
         view->zoom_level = g_value_get_enum (value);
@@ -2935,10 +2954,9 @@ fm_directory_view_notify_item_hovered (FMDirectoryView *view, GtkTreePath *path)
 
     if (path != NULL) 
         file = fm_list_model_file_for_path (view->model, path);
-    if (file != NULL)  {
-        g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "item_hovered", file);
+    g_signal_emit_by_name (MARLIN_VIEW_WINDOW (view->details->window), "item_hovered", file);
+    if (file != NULL) 
         g_object_unref (file);
-    }
 }
 
 void
@@ -3037,6 +3055,8 @@ fm_directory_view_get_selection_for_file_transfer (FMDirectoryView *view)
 void
 fm_directory_view_freeze_updates (FMDirectoryView *view)
 {
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
     view->updates_frozen = TRUE;
     
     /* disable clipboard actions */
@@ -3062,6 +3082,8 @@ fm_directory_view_freeze_updates (FMDirectoryView *view)
 void
 fm_directory_view_unfreeze_updates (FMDirectoryView *view)
 {
+    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
+
     view->updates_frozen = FALSE;
     update_menus (view);
 

@@ -84,9 +84,9 @@ namespace Marlin.View {
             try {
                 provider.load_from_data ("""MarlinViewOverlayBar {
                                          background-color: #cecfcd;
-                                         border-radius: 2 2 0 0;
+                                         border-radius: 2px 2px 0px 0px;
                                          border-style: solid;
-                                         border-width: 1;
+                                         border-width: 1px;
                                          border-color: darker (#cecfcd);
                                          border-bottom-color: @transparent;
                                          
@@ -115,11 +115,11 @@ namespace Marlin.View {
         private uint files_count = 0;
         private uint64 files_size = 0;
         private GOF.File? goffile = null;
-        private unowned GLib.List<GOF.File>? last_selection = null;
+        //private unowned GLib.List<GOF.File>? last_selection = null;
 
         private void update (GLib.List<GOF.File>? files = null) 
         {
-            last_selection = files;
+            //last_selection = files;
             real_update (files);
         }
 
@@ -130,7 +130,11 @@ namespace Marlin.View {
                 list.prepend (file);
                 real_update (list);
             } else {
-                real_update (last_selection);       
+                GOF.Window.Slot slot = window.current_tab.slot;
+                if (slot != null) {
+                    unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
+                    real_update (list);
+                }
             }
         }
 

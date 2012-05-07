@@ -107,3 +107,21 @@ marlin_zoom_level_to_icon_size (MarlinZoomLevel zoom_level)
     }
 }
 
+MarlinZoomLevel
+marlin_zoom_level_get_nearest_from_value (int size)
+{
+    if (size <= MARLIN_ICON_SIZE_SMALLEST)
+        return MARLIN_ZOOM_LEVEL_SMALLEST;
+    if (size <= MARLIN_ICON_SIZE_SMALLER)
+        return MARLIN_ZOOM_LEVEL_SMALLER;
+    if (size <= MARLIN_ICON_SIZE_SMALL)
+        return MARLIN_ZOOM_LEVEL_SMALL;
+    if (size <= MARLIN_ICON_SIZE_NORMAL)
+        return MARLIN_ZOOM_LEVEL_NORMAL;
+    if (size <= MARLIN_ICON_SIZE_LARGE)
+        return MARLIN_ZOOM_LEVEL_LARGE;
+    if (size <= MARLIN_ICON_SIZE_LARGER)
+        return MARLIN_ZOOM_LEVEL_LARGER;
+    if (size <= MARLIN_ICON_SIZE_LARGEST)
+        return MARLIN_ZOOM_LEVEL_LARGEST;
+}

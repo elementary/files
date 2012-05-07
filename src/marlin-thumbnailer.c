@@ -147,7 +147,7 @@ struct _MarlinThumbnailer
     /* hash table to map MarlinThumbnailer requests to DBusGProxyCalls */
     GHashTable *request_call_mapping;
 
-    GMutex     *lock;
+    GMutex     lock;
 
     /* cached arrays of URI schemes and MIME types for which thumbnails 
      * can be generated */
@@ -213,7 +213,7 @@ marlin_thumbnailer_init (MarlinThumbnailer *thumbnailer)
 #ifdef HAVE_DBUS
     DBusGConnection *connection;
 
-    thumbnailer->lock = g_mutex_new ();
+    g_mutex_init (&thumbnailer->lock);
     thumbnailer->supported_schemes = NULL;
     thumbnailer->supported_types = NULL;
     thumbnailer->last_request = 0;
@@ -255,7 +255,7 @@ marlin_thumbnailer_finalize (GObject *object)
     GList                 *lp;
 
     /* acquire the thumbnailer lock */
-    g_mutex_lock (thumbnailer->lock);
+    g_mutex_lock (&thumbnailer->lock);
 
     /* abort all pending idle functions */
     for (lp = thumbnailer->idles; lp != NULL; lp = lp->next)
@@ -302,10 +302,10 @@ marlin_thumbnailer_finalize (GObject *object)
     g_strfreev (thumbnailer->supported_types);
 
     /* release the thumbnailer lock */
-    g_mutex_unlock (thumbnailer->lock);
+    g_mutex_unlock (&thumbnailer->lock);
 
     /* release the mutex */
-    g_mutex_free (thumbnailer->lock);
+    g_mutex_clear (&thumbnailer->lock);
 #endif
 
     (*G_OBJECT_CLASS (marlin_thumbnailer_parent_class)->finalize) (object);
@@ -383,13 +383,13 @@ marlin_thumbnailer_file_is_supported (MarlinThumbnailer *thumbnailer,
     g_return_val_if_fail (G_IS_FILE (file->location), FALSE);
 
     /* acquire the thumbnailer lock */
-    g_mutex_lock (thumbnailer->lock);
+    g_mutex_lock (&thumbnailer->lock);
 
     /* no types are supported if we don't have a thumbnailer */
     if (thumbnailer->thumbnailer_proxy == NULL)
     {
         /* release the thumbnailer lock */
-        g_mutex_unlock (thumbnailer->lock);
+        g_mutex_unlock (&thumbnailer->lock);
         return FALSE;
     }
 
@@ -402,7 +402,7 @@ marlin_thumbnailer_file_is_supported (MarlinThumbnailer *thumbnailer,
     if (content_type == NULL)
     {
         /* release the thumbnailer lock */
-        g_mutex_unlock (thumbnailer->lock);
+        g_mutex_unlock (&thumbnailer->lock);
         return FALSE;
     }
 
@@ -438,7 +438,7 @@ marlin_thumbnailer_file_is_supported (MarlinThumbnailer *thumbnailer,
     }
 
     /* release the thumbnailer lock */
-    g_mutex_unlock (thumbnailer->lock);
+    g_mutex_unlock (&thumbnailer->lock);
 
     return supported;
 }
@@ -558,7 +558,7 @@ marlin_thumbnailer_queue_async_reply (DBusGProxy *proxy,
     g_return_if_fail (call != NULL);
     g_return_if_fail (MARLIN_IS_THUMBNAILER (thumbnailer));
 
-    g_mutex_lock (thumbnailer->lock);
+    g_mutex_lock (&thumbnailer->lock);
 
     if (error == NULL)
     {
@@ -574,7 +574,7 @@ marlin_thumbnailer_queue_async_reply (DBusGProxy *proxy,
 
     marlin_thumbnailer_call_free (call);
 
-    g_mutex_unlock (thumbnailer->lock);
+    g_mutex_unlock (&thumbnailer->lock);
 }
 
 
@@ -658,9 +658,9 @@ marlin_thumbnailer_error_idle (gpointer user_data)
     }
 
     /* remove the idle struct */
-    g_mutex_lock (idle->thumbnailer->lock);
+    g_mutex_lock (&idle->thumbnailer->lock);
     idle->thumbnailer->idles = g_list_remove (idle->thumbnailer->idles, idle);
-    g_mutex_unlock (idle->thumbnailer->lock);
+    g_mutex_unlock (&idle->thumbnailer->lock);
 
     /* remove the idle source, which also destroys the idle struct */
     return FALSE;
@@ -700,9 +700,9 @@ marlin_thumbnailer_ready_idle (gpointer user_data)
     }
 
     /* remove the idle struct */
-    g_mutex_lock (idle->thumbnailer->lock);
+    g_mutex_lock (&idle->thumbnailer->lock);
     idle->thumbnailer->idles = g_list_remove (idle->thumbnailer->idles, idle);
-    g_mutex_unlock (idle->thumbnailer->lock);
+    g_mutex_unlock (&idle->thumbnailer->lock);
 
     /* remove the idle source, which also destroys the idle struct */
     return FALSE;
@@ -817,17 +817,17 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
 
 #ifdef HAVE_DBUS
     /* acquire the thumbnailer lock */
-    g_mutex_lock (thumbnailer->lock);
+    g_mutex_lock (&thumbnailer->lock);
 
     if (thumbnailer->thumbnailer_proxy == NULL)
     {
         /* release the lock and abort */
-        g_mutex_unlock (thumbnailer->lock);
+        g_mutex_unlock (&thumbnailer->lock);
         return FALSE;
     }
 
     /* release the thumbnailer lock */
-    g_mutex_unlock (thumbnailer->lock);
+    g_mutex_unlock (&thumbnailer->lock);
 
     /* collect all supported files from the list that are neither in the
      * about to be queued (wait queue), nor already queued, nor already 
@@ -863,7 +863,7 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
         uris[n] = NULL;
         mime_hints[n] = NULL;
 
-        g_mutex_lock (thumbnailer->lock);
+        g_mutex_lock (&thumbnailer->lock);
 
         /* queue a thumbnail request for the URIs from the wait queue */
         if (request != NULL)
@@ -871,7 +871,7 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
         else
             marlin_thumbnailer_queue_async (thumbnailer, uris, mime_hints);
 
-        g_mutex_unlock (thumbnailer->lock);
+        g_mutex_unlock (&thumbnailer->lock);
 
         /* free mime hints array */
         g_free (mime_hints);
@@ -907,7 +907,7 @@ marlin_thumbnailer_dequeue (MarlinThumbnailer *thumbnailer,
     request_ptr = GUINT_TO_POINTER (request);
 
     /* acquire the thumbnailer lock */
-    g_mutex_lock (thumbnailer->lock);
+    g_mutex_lock (&thumbnailer->lock);
 
     /* check if we have a valid thumbnailer proxy */
     if (thumbnailer->thumbnailer_proxy != NULL)
@@ -928,6 +928,6 @@ marlin_thumbnailer_dequeue (MarlinThumbnailer *thumbnailer,
     }
 
     /* release the thumbnailer lock */
-    g_mutex_unlock (thumbnailer->lock);
+    g_mutex_unlock (&thumbnailer->lock);
 #endif
 }

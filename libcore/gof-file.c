@@ -232,7 +232,7 @@ gof_file_update_size (GOFFile *file)
     if (gof_file_is_folder (file))
         file->format_size = g_strdup ("--");
     else
-        file->format_size = g_format_size_for_display(file->size);
+        file->format_size = g_format_size (file->size);
 }
 
 static void
@@ -1607,8 +1607,7 @@ gof_spawn_command_line_on_screen (char *cmd, GdkScreen *screen)
     app = g_app_info_create_from_commandline (cmd, NULL, 0, &error);
 
     if (app != NULL && screen != NULL) {
-        ctx = gdk_app_launch_context_new ();
-        gdk_app_launch_context_set_screen (ctx, screen);
+        ctx = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
 
         succeed = g_app_info_launch (app, NULL, G_APP_LAUNCH_CONTEXT (ctx), &error);
 
@@ -1800,8 +1799,7 @@ gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info)
     path_list.data = file->location;
     path_list.next = path_list.prev = NULL;
 
-    context = gdk_app_launch_context_new ();
-    gdk_app_launch_context_set_screen (context, screen);
+    context = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
     succeed = g_app_info_launch (app_info, &path_list, G_APP_LAUNCH_CONTEXT (context), &error);
 
     g_object_unref (context);
@@ -1820,8 +1818,7 @@ gof_files_launch_with (GList *files, GdkScreen *screen, GAppInfo* app_info)
     g_return_val_if_fail (files != NULL, FALSE);
     g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
 
-    context = gdk_app_launch_context_new ();
-    gdk_app_launch_context_set_screen (context, screen);
+    context = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
 
     gfiles = gof_files_get_location_list (files);
 
@@ -2343,4 +2340,18 @@ gof_file_can_unmount (GOFFile *file)
 	return file->can_unmount || (file->mount != NULL && g_mount_can_unmount (file->mount));
 }
 
+gboolean
+gof_file_thumb_can_frame (GOFFile *file)
+{
+    GOFDirectoryAsync *dir;
 
+    /* get the DirectoryAsync associated to the file */
+    dir = gof_directory_async_cache_lookup (file->directory);
+    if (dir != NULL) {
+        gboolean can_frame = !dir->uri_contain_keypath_icons; 
+        g_object_unref (dir);
+        return can_frame;
+    }
+
+    return FALSE;
+}

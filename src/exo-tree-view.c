@@ -582,7 +582,7 @@ exo_tree_view_motion_notify_event (GtkWidget      *widget,
                     /* setup the hand cursor to indicate that the row at the pointer can be activated with a single click */
                     cursor = gdk_cursor_new (GDK_HAND2);
                     gdk_window_set_cursor (event->window, cursor);
-                    gdk_cursor_unref (cursor);
+                    g_object_unref (cursor);
                 }
                 else
                 {

@@ -27,6 +27,10 @@ public class GOF.Directory.Async : Object
 {
     public GLib.File location;
     public GOF.File file;
+
+    /* we're looking for particular path keywords like *\/icons* .icons ... */
+    public bool uri_contain_keypath_icons;
+    public int uri_keypath_size = 0;
     
     public enum State {
         NOT_LOADED,
@@ -52,8 +56,10 @@ public class GOF.Directory.Async : Object
     public signal void icon_changed (GOF.File file);
     public signal void done_loading ();
     public signal void thumbs_loaded ();
+    public signal void need_reload ();
 
     private uint idle_consume_changes_id = 0;
+    private bool removed_from_cache;
 
     private unowned string gio_attrs {
         get {
@@ -86,6 +92,10 @@ public class GOF.Directory.Async : Object
         warning ("dir %s ref_count %u", this.file.uri, this.ref_count);
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.file_hash, GLib.file_equal);
 
+        uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
+        if (uri_contain_keypath_icons)
+            get_keypath_size ();
+
         //list_directory (location);
     }
 
@@ -95,29 +105,42 @@ public class GOF.Directory.Async : Object
 
     private static void toggle_ref_notify(void* data, GLib.Object object, bool is_last)
     {
+        return_if_fail (object != null && object is Object);
+
         if (is_last) {
-            warning ("Async toggle_ref_notify %s", (object as Async).file.uri);
-            directory_cache.remove (((Async) object).file.location);
-            /*object.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);*/
+            Async dir = (Async) object;
+            warning ("Async toggle_ref_notify %s", dir.file.uri);
+         
+            if (!dir.removed_from_cache) 
+                dir.remove_dir_from_cache ();
+            dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
         }
     }
 
     public void cancel ()
     {
         cancellable.cancel ();
+        /* remove any pending thumbnail generation */
+        if (timeout_thumbsq != 0) {
+            Source.remove (timeout_thumbsq);
+            timeout_thumbsq = 0;
+        }
     }
 
     private void clear_directory_info ()
     {
-        if (idle_consume_changes_id != 0)
+        if (idle_consume_changes_id != 0) {
             Source.remove((uint) idle_consume_changes_id);
+            idle_consume_changes_id = 0;
+        }
         monitor = null;
         sorted_dirs = null;
         file_hash.remove_all ();
         files_count = 0;
+        state = 0;
     }
 
-    private uint launch_id = 0;
+    //private uint launch_id = 0;
 
     public void load ()
     {
@@ -131,10 +154,10 @@ public class GOF.Directory.Async : Object
                 return;
             }
 
-            if (launch_id != 0)
+            /*if (launch_id != 0)
                 Source.remove (launch_id);
-            launch_id = Idle.add (() => { list_directory (location); return false; });
-            //list_directory (location);
+            launch_id = Idle.add (() => { list_directory (location); return false; });*/
+            list_directory (location);
             try {
                 monitor = location.monitor_directory (0);
                 monitor.changed.connect (directory_changed);  
@@ -329,10 +352,33 @@ public class GOF.Directory.Async : Object
         gof.remove_from_caches ();
     }
 
+    private struct fchanges {
+        GLib.File           file;
+        FileMonitorEvent    event;
+    }
+    private List <fchanges?> list_fchanges = null;
+    private uint list_fchanges_count = 0;
+    /* number of monitored changes to store after that simply reload the dir */
+    private const uint FCHANGES_MAX = 20; 
+
     private void directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event)
     {
         //GOF.File gof = GOF.File.get (_file);
+        if (freeze_update) {
+            if (list_fchanges_count < FCHANGES_MAX) {
+                var fc = fchanges ();
+                fc.file = _file;
+                fc.event = event;
+                list_fchanges.prepend (fc);
+                list_fchanges_count++;
+            }
+            return;
+        }
+        real_directory_changed (_file, other_file, event);
+    }
 
+    private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event)
+    {
         switch (event) {
         /*case FileMonitorEvent.ATTRIBUTE_CHANGED:*/
         case FileMonitorEvent.CHANGES_DONE_HINT:
@@ -358,6 +404,27 @@ public class GOF.Directory.Async : Object
                                                 idle_consume_changes_id = 0;
                                                 return false;
                                                 });
+    }
+
+    private bool _freeze_update;
+    public bool freeze_update {
+        get {
+            return _freeze_update;
+        }
+        set {
+            _freeze_update = value;
+            if (!value) {
+                if (list_fchanges_count >= FCHANGES_MAX) {
+                    need_reload ();
+                } else {
+                    list_fchanges.reverse ();
+                    foreach (var fchange in list_fchanges)
+                        real_directory_changed (fchange.file, null, fchange.event);
+                }
+            } 
+            list_fchanges_count = 0;
+            list_fchanges = null;
+        }
     }
 
     public static void notify_files_changed (List<GLib.File> files)
@@ -437,10 +504,13 @@ public class GOF.Directory.Async : Object
         return val;
     }
 
-    /*private bool remove_directory_from_cache ()
+    public bool remove_dir_from_cache ()
     {
+        /* we got to increment the dir ref to remove the toggle_ref */
+        this.ref ();
+        removed_from_cache = true;
         return directory_cache.remove (location);
-    }*/
+    }
     
     public bool has_parent ()
     {
@@ -487,14 +557,17 @@ public class GOF.Directory.Async : Object
     private void *load_thumbnails_func ()
     {
         return_val_if_fail (this is Async, null);
-        if (cancellable.is_cancelled () || file_hash == null)
+        if (cancellable.is_cancelled () || file_hash == null) {
+            this.unref ();
             return null;
+        }
 
         thumbs_thread_runing = true;
         thumbs_stop = false;
         foreach (var gof in file_hash.get_values()) {
             if (cancellable.is_cancelled () || thumbs_stop) {
                 thumbs_thread_runing = false;
+                this.unref ();
                 return null;
             }
             //if (gof.info != null && gof.flags == 1) {
@@ -507,6 +580,7 @@ public class GOF.Directory.Async : Object
         thumbs_loaded ();
         thumbs_thread_runing = false;
         
+        this.unref ();
         return null;
     }
 
@@ -517,6 +591,7 @@ public class GOF.Directory.Async : Object
             icon_size = size;
             thumbs_stop = false;
             //unowned Thread<void*> th = Thread.create<void*> (load_thumbnails_func, false);
+            this.ref ();
             Thread.create<void*> (load_thumbnails_func, false);
         } catch (ThreadError e) {
             stderr.printf ("%s\n", e.message);
@@ -540,10 +615,29 @@ public class GOF.Directory.Async : Object
     {
         icon_size = size;
 
+        if (thumbs_thread_runing)
+            thumbs_stop = true;
         if (timeout_thumbsq == 0) {
-            if (thumbs_thread_runing)
-                thumbs_stop = true;
             timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
+        }
+    }
+   
+    private Regex regex_num_size = null;
+
+    private void get_keypath_size ()
+    {
+        try {
+            if (regex_num_size == null)
+                regex_num_size = new Regex ("^[0-9]+$");
+            if (regex_num_size.match (file.basename)) {
+                uri_keypath_size = int.parse (file.basename);
+                if (!(uri_keypath_size >= 16 && uri_keypath_size <= 256))
+                    uri_keypath_size = 0;
+            } else {
+                uri_keypath_size = 0;
+            }
+        } catch (RegexError e) {
+            warning ("%s", e.message);
         }
     }
 }

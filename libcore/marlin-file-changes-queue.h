@@ -30,10 +30,6 @@ void marlin_file_changes_queue_file_changed                    (GFile      *loca
 void marlin_file_changes_queue_file_removed                    (GFile      *location);
 void marlin_file_changes_queue_file_moved                      (GFile      *from,
                                                                 GFile      *to);
-/*void marlin_file_changes_queue_schedule_position_set           (GFile      *location,
-                                                                GdkPoint    point,
-                                                                int         screen);
-void marlin_file_changes_queue_schedule_position_remove        (GFile      *location);*/
 
 void marlin_file_changes_consume_changes                       (gboolean    consume_all);
 

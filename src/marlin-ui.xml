@@ -22,12 +22,12 @@
 	<menu name="Edit" action="Edit">
         <!--<placeholder name="Undostack Actions"/>
 		<separator/>-->
-		<placeholder name="Clipboard Actions"/>
-		<separator/>
         <placeholder name="Undostack Actions">
             <menuitem name="Undo" action="Undo"/>
             <menuitem name="Redo" action="Redo"/>
         </placeholder>
+		<separator/>
+		<placeholder name="Clipboard Actions"/>
 		<separator/>
 		<!--<placeholder name="Select Items"/>-->
         <placeholder name="File Items Placeholder"/>
@@ -52,9 +52,9 @@
 		<!--<menuitem name="Preferences" action="Preferences"/>-->
 	</menu>
 	<menu action="View">
-		<!--<menuitem name="Stop" action="Stop"/>
+		<!--<menuitem name="Stop" action="Stop"/>-->
 		<menuitem name="Reload" action="Reload"/>
-		<separator/>-->
+		<separator/>
         <!--<menuitem name="Show Hide Toolbar" action="Show Hide Toolbar"/>-->
 	        <menuitem name="Show Hide Context Pane" action="Show Hide Context Pane"/>
 	        <menuitem name="Show Hide Menubar" action="Show Hide Menubar"/>
