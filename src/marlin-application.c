@@ -344,6 +344,8 @@ marlin_application_init (MarlinApplication *application)
     application->priv =
         G_TYPE_INSTANCE_GET_PRIVATE (application, MARLIN_TYPE_APPLICATION,
                                      MarlinApplicationPriv);
+    /* Some app settings */
+    ((GraniteApplication*) application)->program_name = "Files";
 }
 
 static void
@@ -604,12 +606,12 @@ marlin_application_startup (GApplication *app)
      */
     G_APPLICATION_CLASS (marlin_application_parent_class)->startup (app);
 
-    varka_logger_initialize ("marlin");
+    varka_logger_initialize ("pantheon-files");
     varka_logger_set_DisplayLevel (VARKA_LOG_LEVEL_INFO);
 
-    g_message ("Welcome to Marlin");
+    g_message ("Welcome to Pantheon Files");
     g_message ("Version: %s", PACKAGE_VERSION);
-    g_message ("Report any issues/bugs you might find to http://bugs.launchpad.net/marlin");
+    g_message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
     if (self->priv->debug)
         varka_logger_set_DisplayLevel (VARKA_LOG_LEVEL_DEBUG);

@@ -1,11 +1,11 @@
 namespace Marlin {
-    public const string APP_TITLE = "Marlin";
+    public const string APP_TITLE = "Pantheon Files";
     public const string COPYRIGHT = "2010-2012 Marlin Developers";
     public const string LAUNCHPAD_LABEL = "Website";
-    public const string LAUNCHPAD_URL = "http://launchpad.net/marlin";
-    public const string HELP_URL = "https://answers.launchpad.net/marlin";
-    public const string BUG_URL = "https://bugs.launchpad.net/marlin/+filebug";
-    public const string TRANSLATE_URL = "https://translations.launchpad.net/marlin";
+    public const string LAUNCHPAD_URL = "http://launchpad.net/pantheon-files";
+    public const string HELP_URL = "https://answers.launchpad.net/pantheon-files";
+    public const string BUG_URL = "https://bugs.launchpad.net/pantheon-files/+filebug";
+    public const string TRANSLATE_URL = "https://translations.launchpad.net/pantheon-files";
     public const string COMMENTS = "File Manager";
     
     public const string[] AUTHORS = { 

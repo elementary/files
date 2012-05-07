@@ -1,56 +1,5 @@
 [Desktop Entry]
-Name=Marlin File Manager
-Name[ar]=مدير الملفات سونار
-Name[ast]=Alministrador de ficheros Marlin
-Name[be]=Кіраўнік файлаў Marlin
-Name[bn]=Marlin ফাইল ম্যানেজার
-Name[ca]=Gestor de fitxers Marlin
-Name[cs]=Správce souborů Marlin
-Name[da]=Marlin-filhåndtering
-Name[de]=Dateimanager Marlin
-Name[dz]=ཐུ་ནར་ཡིག་སྣོད་འཛིན་སྐྱོང་པ།
-Name[el]=Διαχειριστής αρχείων Marlin
-Name[en_GB]=Marlin
-Name[eo]=Marlin dosier-administrilo
-Name[es]=Administrador de archivos Marlin
-Name[et]=Failihaldur Marlin
-Name[eu]=Marlin fitxategi kudeatzailea
-Name[fi]=Marlin-tiedostonhallinta
-Name[fr]=Gestionnaire de Fichiers Marlin
-Name[gl]=Xestor de ficheiros Marlin
-Name[he]=מנהל הקבצים ‎Marlin
-Name[hr]=Marlin Upravitelj Datoteka
-Name[hu]=Marlin fájlkezelő
-Name[id]=Manajer Berkas Marlin
-Name[it]=Il gestore di file Marlin
-Name[ja]=Marlin ファイルマネージャ
-Name[kk]=Marlin файлдар басқарушысы
-Name[ko]=Marlin 화일 관리자
-Name[ku]=Marlin, Gerinendeyê Pelan
-Name[lt]=Marlin failų tvarkyklė
-Name[lv]=Marlin failu pārvaldnieks
-Name[mk]=Marlin менаџер на датотеки
-Name[nb]=Marlin Filbehandler
-Name[nl]=Marlin bestandsbeheerder
-Name[nn]=Marlin filhandsaming
-Name[pa]=ਥੰਨਰ ਫਾਇਲ ਮੈਨੇਜਰ
-Name[pl]=Menedżer plików Marlin
-Name[pt]=Gestor de Ficheiros Marlin
-Name[pt_BR]=Gerenciador de arquivos Marlin
-Name[ro]=Managerul de fișiere Marlin
-Name[ru]=Файловый менеджер Marlin
-Name[si]=Marlin ගොනු කළමණාකරු
-Name[sk]=Správca súborov Marlin
-Name[sq]=Përgjegjësi i Kartelave Marlin
-Name[sv]=Filhanteraren Marlin
-Name[tr]=Marlin Dosya Yöneticisi
-Name[ug]=Marlin ھۆججەت باشقۇرغۇ
-Name[uk]=Файловий менеджер Marlin
-Name[ur]=تھنر فائل منیجر
-Name[ur_PK]=تھنر فائل منیجر
-Name[vi]=Trình quản lý tập tin Marlin
-Name[zh_CN]=Marlin 文件管理器
-Name[zh_TW]=Marlin 檔案管理員
+Name=Files
 Comment=Browse your files
 Comment[ar]=تصفح ملفات النظام بمدير الملفات
 Comment[ast]=Restolar el sistema de ficheros col alministrador de ficheros
@@ -151,8 +100,8 @@ GenericName[ur]=فائل منیجر
 GenericName[ur_PK]=فائل منیجر
 GenericName[zh_CN]=文件管理器
 GenericName[zh_TW]=檔案管理員
-Exec=marlin %U
-Icon=marlin
+Exec=pantheon-files %U
+Icon=system-file-manager
 Terminal=false
 StartupNotify=true
 Type=Application
@@ -163,16 +112,16 @@ X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Root
 
 [TabNew Shortcut Group]
 Name=New _Tab
-Exec=marlin -t
+Exec=pantheon-files -t
 TargetEnvironment=Unity
 
 [WindowNew Shortcut Group]
 Name=New _Window
-Exec=marlin
+Exec=pantheon-files
 TargetEnvironment=Unity
 
 [Root Shortcut Group]
 Name=New Window as _Root
-Exec=gksu marlin
+Exec=gksu pantheon-files
 TargetEnvironment=Unity
 
