@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-05-07 05:16+0000\n"
-"X-Generator: Launchpad (build 15195)\n"
+"X-Launchpad-Export-Date: 2012-05-08 05:55+0000\n"
+"X-Generator: Launchpad (build 15204)\n"
 "Language: pt_BR\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
@@ -1523,6 +1523,3 @@ msgstr "Os arquivos do nível superior não podem ser renomeados"
 #, c-format
 msgid "Go to %s"
 msgstr "Ir para %s"
-
-#~ msgid "make Marlin my default File Manager"
-#~ msgstr "Faça o Marlin ser meu gerenciador de arquivos padrão"

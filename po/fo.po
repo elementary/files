@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-05-07 05:15+0000\n"
-"X-Generator: Launchpad (build 15195)\n"
+"X-Launchpad-Export-Date: 2012-05-08 05:54+0000\n"
+"X-Generator: Launchpad (build 15204)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -1486,6 +1486,3 @@ msgstr ""
 #, c-format
 msgid "Go to %s"
 msgstr "Fær til %s"
-
-#~ msgid "make Marlin my default File Manager"
-#~ msgstr "Ger Marlin til mín vanliga fílu stjóra"

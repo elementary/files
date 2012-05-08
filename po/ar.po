@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2012-05-07 05:15+0000\n"
-"X-Generator: Launchpad (build 15195)\n"
+"X-Launchpad-Export-Date: 2012-05-08 05:54+0000\n"
+"X-Generator: Launchpad (build 15204)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -1590,6 +1590,3 @@ msgstr "لا يمكن تغيير اسم ملفات المستوى الأول"
 #, c-format
 msgid "Go to %s"
 msgstr "إذهب إلى %s"
-
-#~ msgid "make Marlin my default File Manager"
-#~ msgstr "اجعل \"مارلين\" مدير ملفاتي الافتراضي"
