@@ -21,7 +21,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using Gtk;
-using Varka.Widgets;
+using Granite.Widgets;
 using Config;
 
 namespace Marlin.View.Chrome
@@ -53,7 +53,7 @@ namespace Marlin.View.Chrome
 
                 Preferences.settings.set_enum ("default-viewmode", value);
                 //switcher.focus(target);
-                switcher.set_active_widget (target);
+                //switcher.set_active_widget (target);
                 _mode = mode;
             }
             private get{

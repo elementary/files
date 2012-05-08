@@ -384,7 +384,7 @@ marlin_application_open_location (GApplication *app, GFile **files, gint n_files
     //g_debug ("%s %d files", G_STRFUNC, n_files);
 
     if (self->priv->debug)
-        varka_logger_set_DisplayLevel (VARKA_LOG_LEVEL_DEBUG);
+        granite_services_logger_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_DEBUG);
 
     /* Create windows. */
     if (self->priv->open_intab)
@@ -606,15 +606,15 @@ marlin_application_startup (GApplication *app)
      */
     G_APPLICATION_CLASS (marlin_application_parent_class)->startup (app);
 
-    varka_logger_initialize ("pantheon-files");
-    varka_logger_set_DisplayLevel (VARKA_LOG_LEVEL_INFO);
+    granite_services_initialize ("pantheon-files");
+    granite_services_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_INFO);
 
     g_message ("Welcome to Pantheon Files");
     g_message ("Version: %s", PACKAGE_VERSION);
     g_message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
     if (self->priv->debug)
-        varka_logger_set_DisplayLevel (VARKA_LOG_LEVEL_DEBUG);
+        granite_services_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_DEBUG);
 
     init_schemas ();
     init_gtk_accels ();

@@ -15,7 +15,8 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/)
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
-    varka>=0.1
+    varka
+    granite
 	glib-2.0>=2.29.0
 	gthread-2.0
 	gio-2.0
@@ -60,6 +61,9 @@ vala_precompile(VALA_C
     View/Chrome/TopMenu.vala
     View/Chrome/ViewSwicher.vala
     View/Chrome/ColorWidget.vala
+    View/Chrome/XsEntry.vala
+    View/Chrome/IconFactory.vala
+    View/Chrome/ImgEventBox.vala
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
     marlin.vapi
@@ -68,7 +72,7 @@ PACKAGES
     gio-2.0
     posix
     gee-1.0
-    varka
+    granite
     marlincore
     marlincore-C
 GENERATE_HEADER

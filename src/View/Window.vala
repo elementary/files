@@ -24,7 +24,8 @@ using Gtk;
 using Gdk;
 using Cairo;
 using Marlin.View.Chrome;
-using Varka.Widgets;
+using Granite;
+using Granite.Widgets;
 using EelGtk.Window;
 
 namespace Marlin.View {
@@ -44,8 +45,8 @@ namespace Marlin.View {
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
 
-        public Varka.Widgets.ToolButtonWithMenu button_forward;
-        public Varka.Widgets.ToolButtonWithMenu button_back;
+        public Granite.Widgets.ToolButtonWithMenu button_forward;
+        public Granite.Widgets.ToolButtonWithMenu button_back;
 
         private const int horizontal_contextplane_max_width = 910;
         private const int horizontal_contextplane_max_height = 380; // after which we will go vertical
@@ -141,7 +142,7 @@ namespace Marlin.View {
             main_box = new CollapsiblePaned(Orientation.VERTICAL);
             main_box.show();
 
-            var lside_pane = new HCollapsiblePaned();
+            var lside_pane = new HCollapsablePaned();
             lside_pane.show();
 
             lside_pane.pack1(sidebar, false, false);
@@ -584,7 +585,7 @@ namespace Marlin.View {
         }
 
         protected void show_about() {
-            Varka.Widgets.show_about_dialog ((Gtk.Window) this,
+            Granite.Widgets.show_about_dialog ((Gtk.Window) this,
                 "program-name", Marlin.APP_TITLE,
                 "version", Config.VERSION,
                 "comments", Marlin.COMMENTS,

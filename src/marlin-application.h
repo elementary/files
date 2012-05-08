@@ -40,13 +40,13 @@
 typedef struct _MarlinApplicationPriv MarlinApplicationPriv;
 
 typedef struct {
-    GraniteApplication parent;
+    GtkApplication parent;
 
     MarlinApplicationPriv *priv;
 } MarlinApplication;
 
 typedef struct {
-    GraniteApplicationClass parent_class;
+    GtkApplicationClass parent_class;
 } MarlinApplicationClass;
 
 GType marlin_application_get_type (void);
