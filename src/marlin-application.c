@@ -606,15 +606,15 @@ marlin_application_startup (GApplication *app)
      */
     G_APPLICATION_CLASS (marlin_application_parent_class)->startup (app);
 
-    granite_services_initialize ("pantheon-files");
-    granite_services_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_INFO);
+    granite_services_logger_initialize ("pantheon-files");
+    granite_services_logger_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_INFO);
 
     g_message ("Welcome to Pantheon Files");
     g_message ("Version: %s", PACKAGE_VERSION);
     g_message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
     if (self->priv->debug)
-        granite_services_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_DEBUG);
+        granite_services_logger_set_DisplayLevel (GRANITE_SERVICES_LOG_LEVEL_DEBUG);
 
     init_schemas ();
     init_gtk_accels ();

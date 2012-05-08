@@ -66,3 +66,4 @@ set_target_properties (${PKGNAME} PROPERTIES
                        )
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
 add_subdirectory(tests)
+target_link_libraries(marlinwidgets ${DEPS_LIBRARIES})
