@@ -142,18 +142,18 @@ namespace Marlin.View {
             main_box = new CollapsiblePaned(Orientation.VERTICAL);
             main_box.show();
 
-            var lside_pane = new HCollapsablePaned();
+            var lside_pane = new Varka.Widgets.HCollapsiblePaned();
             lside_pane.show();
 
             lside_pane.pack1(sidebar, false, false);
             lside_pane.pack2(main_box, true, true);
-            lside_pane.collapse_mode = CollapseMode.LEFT;
+            lside_pane.collapse_mode = Varka.Widgets.CollapseMode.LEFT;
 
             main_box.pack1(tabs, true, true);
 
             ((Gtk.ToggleAction) main_actions.get_action("Show Hide Context Pane")).set_active(Preferences.settings.get_boolean("start-with-contextview"));
 
-            main_box.collapse_mode = CollapseMode.RIGHT;
+            main_box.collapse_mode = CollapseMode.BOTTOM;
 
             /*/
             /* Pack up all the view

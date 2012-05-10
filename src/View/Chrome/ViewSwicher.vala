@@ -75,6 +75,8 @@ namespace Marlin.View.Chrome
             margin = 3;
 
             switcher = new ModeButton ();
+            switcher.set_margin_top (5);
+            switcher.set_margin_bottom (5);
             Varka.IconFactory icon_factory = Varka.IconFactory.get_default ();
             Gtk.StyleContext style = get_style_context ();
 
