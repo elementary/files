@@ -15,7 +15,8 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/)
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
-    varka>=0.1
+    varka
+    granite
 	glib-2.0>=2.29.0
 	gthread-2.0
 	gio-2.0
@@ -36,9 +37,9 @@ set(LIB_PATHS
 
 link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS}
-    "-DGETTEXT_PACKAGE=\"marlin\""
-    "-DPIXMAP_DIR=\"${CMAKE_INSTALL_PREFIX}/share/pixmaps/marlin/\""
-    "-DUI_DIR=\"${CMAKE_INSTALL_PREFIX}/share/marlin/ui/\""
+    "-DGETTEXT_PACKAGE=\"pantheon-files\""
+    "-DPIXMAP_DIR=\"${CMAKE_INSTALL_PREFIX}/share/pixmaps/pantheon-files/\""
+    "-DUI_DIR=\"${CMAKE_INSTALL_PREFIX}/share/pantheon-files/ui/\""
      -O2
     )
 vala_precompile(VALA_C
@@ -60,6 +61,10 @@ vala_precompile(VALA_C
     View/Chrome/TopMenu.vala
     View/Chrome/ViewSwicher.vala
     View/Chrome/ColorWidget.vala
+    View/Chrome/XsEntry.vala
+    View/Chrome/IconFactory.vala
+    View/Chrome/ImgEventBox.vala
+    View/Chrome/CollapsiblePaned.vala
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
     marlin.vapi
@@ -68,7 +73,7 @@ PACKAGES
     gio-2.0
     posix
     gee-1.0
-    varka
+    granite
     marlincore
     marlincore-C
 GENERATE_HEADER
@@ -77,7 +82,7 @@ OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
     --vapidir=${CMAKE_BINARY_DIR}/libcore/
     --thread)
-add_executable(marlin
+add_executable(pantheon-files
     eel-editable-label.c
     marlin-application.c
     gossip-cell-renderer-expander.c
@@ -110,19 +115,19 @@ add_executable(marlin
     marlin-progress-info-widget.c
     ${VALA_C} )
 
-add_definitions("-DPLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/marlin/plugins/\"")
-target_link_libraries(marlin marlincore marlinwidgets ${DEPS_LIBRARIES})
+add_definitions("-DPLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/pantheon-files/plugins/\"")
+target_link_libraries(pantheon-files marlincore marlinwidgets ${DEPS_LIBRARIES})
 
 OPTION(WITH_UNITY "Add Unity launcher support" ON)
 pkg_check_modules(UNITY unity>=4.0.0)
 
 IF(WITH_UNITY AND UNITY_FOUND)
     include_directories(${UNITY_INCLUDE_DIRS})
-    target_link_libraries (marlin marlincore marlinwidgets ${UNITY_LIBRARIES})
+    target_link_libraries (pantheon-files marlincore marlinwidgets ${UNITY_LIBRARIES})
     add_definitions("-DHAVE_UNITY=1")
 ENDIF(WITH_UNITY AND UNITY_FOUND)
 
-install(TARGETS marlin RUNTIME DESTINATION bin)
-install(FILES marlin-ui.xml DESTINATION share/marlin/ui/)
-install(FILES fm-directory-view-ui.xml fm-icon-view-ui.xml DESTINATION share/marlin/ui/)
+install(TARGETS pantheon-files RUNTIME DESTINATION bin)
+install(FILES pantheon-files-ui.xml DESTINATION share/pantheon-files/ui/)
+install(FILES fm-directory-view-ui.xml fm-icon-view-ui.xml DESTINATION share/pantheon-files/ui/)
 include(Tests)

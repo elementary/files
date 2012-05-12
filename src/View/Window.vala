@@ -24,7 +24,8 @@ using Gtk;
 using Gdk;
 using Cairo;
 using Marlin.View.Chrome;
-using Varka.Widgets;
+using Granite;
+using Granite.Widgets;
 using EelGtk.Window;
 
 namespace Marlin.View {
@@ -44,8 +45,8 @@ namespace Marlin.View {
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
 
-        public Varka.Widgets.ToolButtonWithMenu button_forward;
-        public Varka.Widgets.ToolButtonWithMenu button_back;
+        public Granite.Widgets.ToolButtonWithMenu button_forward;
+        public Granite.Widgets.ToolButtonWithMenu button_back;
 
         private const int horizontal_contextplane_max_width = 910;
         private const int horizontal_contextplane_max_height = 380; // after which we will go vertical
@@ -141,18 +142,18 @@ namespace Marlin.View {
             main_box = new CollapsiblePaned(Orientation.VERTICAL);
             main_box.show();
 
-            var lside_pane = new HCollapsiblePaned();
+            var lside_pane = new Varka.Widgets.HCollapsiblePaned();
             lside_pane.show();
 
             lside_pane.pack1(sidebar, false, false);
             lside_pane.pack2(main_box, true, true);
-            lside_pane.collapse_mode = CollapseMode.LEFT;
+            lside_pane.collapse_mode = Varka.Widgets.CollapseMode.LEFT;
 
             main_box.pack1(tabs, true, true);
 
             ((Gtk.ToggleAction) main_actions.get_action("Show Hide Context Pane")).set_active(Preferences.settings.get_boolean("start-with-contextview"));
 
-            main_box.collapse_mode = CollapseMode.RIGHT;
+            main_box.collapse_mode = CollapseMode.BOTTOM;
 
             /*/
             /* Pack up all the view
@@ -584,7 +585,7 @@ namespace Marlin.View {
         }
 
         protected void show_about() {
-            Varka.Widgets.show_about_dialog ((Gtk.Window) this,
+            Granite.Widgets.show_about_dialog ((Gtk.Window) this,
                 "program-name", Marlin.APP_TITLE,
                 "version", Config.VERSION,
                 "comments", Marlin.COMMENTS,
@@ -594,7 +595,7 @@ namespace Marlin.View {
                 "website-label",  Marlin.LAUNCHPAD_LABEL,
                 "authors", Marlin.AUTHORS,
                 "artists", Marlin.ARTISTS,
-                "logo-icon-name", "marlin",
+                "logo-icon-name", Marlin.ICON_ABOUT_LOGO,
                 "translator-credits",  Marlin.TRANSLATORS,
                 "help", Marlin.HELP_URL,
                 "translate", Marlin.TRANSLATE_URL,

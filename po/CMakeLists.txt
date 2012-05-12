@@ -1,6 +1,6 @@
 include(Translations)
-add_translations_directory("marlin")
-add_translations_catalog("marlin"
+add_translations_directory("pantheon-files")
+add_translations_catalog("pantheon-files"
     ../src/View
     ../src
     ../libcore

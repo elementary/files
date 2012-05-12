@@ -23,6 +23,7 @@ vala_precompile(VALA_C
     Plugin.vala
     marlincore-C.vapi
 PACKAGES
+    granite
     gtk+-3.0
     gio-2.0
     gee-1.0
@@ -184,4 +185,4 @@ add_executable(marlincore_tests
 )
 add_test(core marlincore_tests)
 target_link_libraries(marlincore_tests marlincore ${DEPS_LIBRARIES})
-#target_link_libraries(marlincore ${DEPS_LIBRARIES})
+target_link_libraries(marlincore ${DEPS_LIBRARIES})

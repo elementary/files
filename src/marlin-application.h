@@ -20,6 +20,7 @@
 #ifndef __MARLIN_APPLICATION_H__
 #define __MARLIN_APPLICATION_H__
 
+#include <granite/granite.h>
 #include <gdk/gdk.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
@@ -39,13 +40,13 @@
 typedef struct _MarlinApplicationPriv MarlinApplicationPriv;
 
 typedef struct {
-    GtkApplication parent;
+    GraniteApplication parent;
 
     MarlinApplicationPriv *priv;
 } MarlinApplication;
 
 typedef struct {
-    GtkApplicationClass parent_class;
+    GraniteApplicationClass parent_class;
 } MarlinApplicationClass;
 
 GType marlin_application_get_type (void);

@@ -21,7 +21,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using Gtk;
-using Varka.Widgets;
+using Granite.Widgets;
 using Config;
 
 namespace Marlin.View.Chrome
@@ -53,7 +53,7 @@ namespace Marlin.View.Chrome
 
                 Preferences.settings.set_enum ("default-viewmode", value);
                 //switcher.focus(target);
-                switcher.set_active_widget (target);
+                //switcher.set_active_widget (target);
                 _mode = mode;
             }
             private get{
@@ -75,6 +75,8 @@ namespace Marlin.View.Chrome
             margin = 3;
 
             switcher = new ModeButton ();
+            switcher.set_margin_top (5);
+            switcher.set_margin_bottom (5);
             Varka.IconFactory icon_factory = Varka.IconFactory.get_default ();
             Gtk.StyleContext style = get_style_context ();
 

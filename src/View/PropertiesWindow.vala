@@ -20,13 +20,13 @@
 using Gtk;
 using Posix;
 using GLib;
-using Varka.Widgets;
+using Granite.Widgets;
 
 public class Marlin.View.PropertiesWindow : Gtk.Dialog
 {
     private Gee.LinkedList<Pair<string, string>> info;
-    private ImgEventBox evbox;
-    private XsEntry perm_code;
+    private Varka.Widgets.ImgEventBox evbox;
+    private Varka.Widgets.XsEntry perm_code;
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
 
@@ -41,7 +41,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
     private Gee.Set<string>? mimes;
 
-    private Varka.Widgets.WrapLabel header_title;
+    private Granite.Widgets.WrapLabel header_title;
     private Gtk.Label header_desc;
     private string ftype; /* common type */
 
@@ -235,7 +235,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         var vvbox = new Box (Gtk.Orientation.VERTICAL, 0);
         content.pack_start(vvbox);
 
-        header_title = new Varka.Widgets.WrapLabel ();
+        header_title = new Granite.Widgets.WrapLabel ();
         if (count > 1)
             header_title.set_markup ("<span weight='semibold' size='large'>" + "%u selected items".printf(count) + "</span>");
         else
@@ -388,7 +388,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         int n = 0;
         foreach(var pair in item_info){
-            var value_label = new Varka.Widgets.WrapLabel(pair.value);
+            var value_label = new Granite.Widgets.WrapLabel(pair.value);
             var key_label = create_label_key (pair.key);
             value_label.set_selectable (true);
             //value_label.set_size_request (150, -1);
@@ -855,7 +855,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         perm_grid.attach(key_label, 0, 5, 1, 1);
         perm_grid.attach(value_hlabel, 1, 5, 1, 1);
 
-        perm_code = new XsEntry();
+        perm_code = new Varka.Widgets.XsEntry();
         //var perm_code = new Label("705");
         //perm_code.margin_right = 2;
         perm_code.set_text("000");
@@ -1063,7 +1063,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     }
 
     private void construct_preview_panel (Box box) {
-        evbox = new ImgEventBox(Orientation.HORIZONTAL);
+        evbox = new Varka.Widgets.ImgEventBox(Orientation.HORIZONTAL);
         var pix = goffile.get_icon_pixbuf (256, false, GOF.FileIconFlags.USE_THUMBNAILS);
         evbox.set_from_pixbuf (pix);
 
