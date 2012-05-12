@@ -21,7 +21,7 @@ using Gtk;
 using Gdk;
 using Cairo;
 
-namespace Varka.Widgets {
+namespace Granite.Widgets {
 
     public class ImgEventBox : EventBox 
     {

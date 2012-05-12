@@ -25,8 +25,8 @@ using Granite.Widgets;
 public class Marlin.View.PropertiesWindow : Gtk.Dialog
 {
     private Gee.LinkedList<Pair<string, string>> info;
-    private Varka.Widgets.ImgEventBox evbox;
-    private Varka.Widgets.XsEntry perm_code;
+    private Granite.Widgets.ImgEventBox evbox;
+    private Granite.Widgets.XsEntry perm_code;
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
 
@@ -855,7 +855,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         perm_grid.attach(key_label, 0, 5, 1, 1);
         perm_grid.attach(value_hlabel, 1, 5, 1, 1);
 
-        perm_code = new Varka.Widgets.XsEntry();
+        perm_code = new Granite.Widgets.XsEntry();
         //var perm_code = new Label("705");
         //perm_code.margin_right = 2;
         perm_code.set_text("000");
@@ -1063,7 +1063,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     }
 
     private void construct_preview_panel (Box box) {
-        evbox = new Varka.Widgets.ImgEventBox(Orientation.HORIZONTAL);
+        evbox = new Granite.Widgets.ImgEventBox(Orientation.HORIZONTAL);
         var pix = goffile.get_icon_pixbuf (256, false, GOF.FileIconFlags.USE_THUMBNAILS);
         evbox.set_from_pixbuf (pix);
 

@@ -21,7 +21,7 @@ using Gtk;
 
 /* Just a workarround Gtk.Entry which got a minimum fixed prefered width 
 With XsEntry we can set the exact width we want */
-public class Varka.Widgets.XsEntry : Entry 
+public class Granite.Widgets.XsEntry : Entry 
 {
     public int m_default_with = 25;
 
