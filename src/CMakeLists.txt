@@ -64,7 +64,6 @@ vala_precompile(VALA_C
     View/Chrome/XsEntry.vala
     View/Chrome/IconFactory.vala
     View/Chrome/ImgEventBox.vala
-    View/Chrome/CollapsiblePaned.vala
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
     marlin.vapi

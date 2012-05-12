@@ -24,8 +24,6 @@ using Gtk;
 using Gdk;
 using Cairo;
 using Marlin.View.Chrome;
-using Granite;
-using Granite.Widgets;
 using EelGtk.Window;
 
 namespace Marlin.View {
@@ -39,7 +37,7 @@ namespace Marlin.View {
         public Marlin.Places.Sidebar sidebar;
 
         public ViewContainer? current_tab;
-        public CollapsiblePaned main_box;
+        public Granite.Widgets.CollapsiblePaned main_box;
         public ContextView? contextview = null;
 
         public Gtk.ActionGroup main_actions;
@@ -139,21 +137,22 @@ namespace Marlin.View {
             Preferences.settings.bind("sidebar-icon-size", sidebar, "icon-size", SettingsBindFlags.DEFAULT);
 
             /* Devide main views into sidebars */
-            main_box = new CollapsiblePaned(Orientation.VERTICAL);
+            main_box = new Granite.Widgets.CollapsiblePaned (Orientation.VERTICAL);
             main_box.show();
 
-            var lside_pane = new Varka.Widgets.HCollapsiblePaned();
+            var lside_pane = new Granite.Widgets.CollapsiblePaned (Gtk.Orientation.HORIZONTAL);
+            lside_pane.get_style_context ().add_class ("sidebar-pane-separator");
             lside_pane.show();
 
             lside_pane.pack1(sidebar, false, false);
             lside_pane.pack2(main_box, true, true);
-            lside_pane.collapse_mode = Varka.Widgets.CollapseMode.LEFT;
+            lside_pane.collapse_mode = Granite.CollapseMode.LEFT;
 
             main_box.pack1(tabs, true, true);
 
             ((Gtk.ToggleAction) main_actions.get_action("Show Hide Context Pane")).set_active(Preferences.settings.get_boolean("start-with-contextview"));
 
-            main_box.collapse_mode = CollapseMode.BOTTOM;
+            main_box.collapse_mode = Granite.CollapseMode.BOTTOM;
 
             /*/
             /* Pack up all the view
