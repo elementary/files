@@ -26,7 +26,7 @@
     <value value="2" nick="informal"/>
   </enum>
 
-  <schema path="/apps/marlin/preferences/" id="org.gnome.marlin.preferences">
+  <schema path="/org/pantheon/pantheon-files/preferences/" id="org.gnome.marlin.preferences">
     <key type="b" name="show-menubar">
       <default>false</default>
       <summary>Show the menubar</summary>
@@ -175,7 +175,7 @@
     </key>
   </schema>
 
-  <schema path="/apps/marlin/icon-view/" id="org.gnome.marlin.icon-view">
+  <schema path="/org/pantheon/pantheon-files/icon-view/" id="org.gnome.marlin.icon-view">
     <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'normal'</default>
       <summary>icon default zoom level</summary>
@@ -188,7 +188,7 @@
     </key>
   </schema>
 
-  <schema path="/apps/marlin/list-view/" id="org.gnome.marlin.list-view">
+  <schema path="/org/pantheon/pantheon-files/list-view/" id="org.gnome.marlin.list-view">
     <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'smallest'</default>
       <summary>icon default zoom level</summary>
@@ -201,7 +201,7 @@
     </key>
   </schema>
 
-  <schema path="/apps/marlin/compact-view/" id="org.gnome.marlin.compact-view">
+  <schema path="/org/pantheon/pantheon-files/compact-view/" id="org.gnome.marlin.compact-view">
     <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'smallest'</default>
       <summary>icon default zoom level</summary>
@@ -214,7 +214,7 @@
     </key>
   </schema>
 
-  <schema path="/apps/marlin/column-view/" id="org.gnome.marlin.column-view">
+  <schema path="/org/pantheon/pantheon-files/column-view/" id="org.gnome.marlin.column-view">
     <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'smallest'</default>
       <summary>icon default zoom level</summary>
