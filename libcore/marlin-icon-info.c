@@ -261,14 +261,14 @@ schedule_reap_cache (void)
 void
 marlin_icon_info_infos_caches (void)
 {
-    if (loadable_icon_cache) {
+    /*if (loadable_icon_cache) {
         g_warning (">>> %s loadable_icon_cache %u", G_STRFUNC, 
                    g_hash_table_size (loadable_icon_cache));
     }
     if (themed_icon_cache) {
         g_warning (">>> %s themed_icon_cache %u", G_STRFUNC, 
                    g_hash_table_size (themed_icon_cache));
-    }
+    }*/
 
     /*GList *l, *p;
     GList *list = g_hash_table_get_keys (loadable_icon_cache);
