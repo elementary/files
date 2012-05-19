@@ -105,7 +105,7 @@
       <description>Set the toolbar css style to primary-toolbar.</description>
     </key>
     <key type="as" name="toolbar-items">
-      <default>[ 'Back', 'Forward', 'LocationEntry', 'ViewSwitcher']</default>
+      <default>[ 'Back', 'Forward', 'ViewSwitcher', 'LocationEntry']</default>
       <summary>List of actions present in the toolbar</summary>
       <description>
         List of actions present in the toolbar
