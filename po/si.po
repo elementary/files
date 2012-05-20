@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-04-27 21:34+0000\n"
-"Last-Translator: shamika <shamikaweerasekara@yahoo.com>\n"
+"PO-Revision-Date: 2012-05-19 13:44+0000\n"
+"Last-Translator: පසිඳු කාවින්ද <Unknown>\n"
 "Language-Team: Sinhalese <si@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-04-28 05:02+0000\n"
-"X-Generator: Launchpad (build 15149)\n"
+"X-Launchpad-Export-Date: 2012-05-20 04:49+0000\n"
+"X-Generator: Launchpad (build 15259)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
@@ -457,7 +457,7 @@ msgstr "බහලුම විවෘත කරන්න"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
-msgstr "ආම්පන්න"
+msgstr "උපාංග"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
