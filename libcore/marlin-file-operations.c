@@ -208,11 +208,11 @@ typedef struct {
 #define MERGE_ALL _("Merge _All")
 #define COPY_FORCE _("Copy _Anyway")
 
-static void
+/*static void
 mark_desktop_file_trusted (CommonJob *common,
                            GCancellable *cancellable,
                            GFile *file,
-                           gboolean interactive);
+                           gboolean interactive);*/
 
 static gboolean
 is_all_button_text (const char *button_text)
@@ -6365,6 +6365,7 @@ marlin_file_operations_new_file_from_template (GtkWidget *parent_view,
                              0,
                              job->common.cancellable);
 }
+#endif
 
 void 
 marlin_file_operations_new_file (GtkWidget *parent_view, 
@@ -6377,9 +6378,8 @@ marlin_file_operations_new_file (GtkWidget *parent_view,
                                  gpointer done_callback_data)
 {
     CreateJob *job;
-    GtkWindow *parent_window;
+    GtkWindow *parent_window = NULL;
 
-    parent_window = NULL;
     if (parent_view) {
         parent_window = (GtkWindow *)gtk_widget_get_ancestor (parent_view, GTK_TYPE_WINDOW);
     }
@@ -6388,17 +6388,17 @@ marlin_file_operations_new_file (GtkWidget *parent_view,
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
     job->dest_dir = g_file_new_for_uri (parent_dir);
-    if (target_point != NULL) {
+    /*if (target_point != NULL) {
         job->position = *target_point;
         job->has_position = TRUE;
-    }
+    }*/
     job->src_data = g_memdup (initial_contents, length);
     job->length = length;
     job->filename = g_strdup (target_filename);
 
     // Start UNDO-REDO
 	if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-		job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDOSTACK_CREATEEMPTYFILE, 1);
+		job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
 	}
 	// End UNDO-REDO
 
@@ -6408,7 +6408,6 @@ marlin_file_operations_new_file (GtkWidget *parent_view,
                              0,
                              job->common.cancellable);
 }
-#endif
 
 
 static void
@@ -6479,7 +6478,7 @@ empty_trash_job (GIOSchedulerJob *io_job,
     EmptyTrashJob *job = user_data;
     CommonJob *common;
     GList *l;
-    gboolean confirmed;
+    //gboolean confirmed;
 
     common = (CommonJob *)job;
     common->io_job = io_job;

@@ -468,6 +468,7 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
             g_object_unref (file);
             g_free (new_name);
             break;
+#endif
         case MARLIN_UNDO_CREATEEMPTYFILE:
             puri = get_uri_parent (action->target_uri);
             new_name = get_uri_basename (action->target_uri);
@@ -478,7 +479,6 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
             g_free (puri);
             g_free (new_name);
             break;
-#endif
         case MARLIN_UNDO_CREATEFOLDER:
             fparent = get_file_parent_from_uri (action->target_uri);
             marlin_file_operations_new_folder (NULL, NULL, fparent,
@@ -576,8 +576,8 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
     if (action != NULL) {
         priv->undo_redo_flag = TRUE;
         switch (action->type) {
-        /*case MARLIN_UNDO_CREATEEMPTYFILE:
-        case MARLIN_UNDO_CREATEFILEFROMTEMPLATE:*/
+        case MARLIN_UNDO_CREATEEMPTYFILE:
+        /*case MARLIN_UNDO_CREATEFILEFROMTEMPLATE:*/
         case MARLIN_UNDO_CREATEFOLDER:
             uris = construct_gfile_list_from_uri (action->target_uri);
         case MARLIN_UNDO_COPY:
@@ -1238,7 +1238,7 @@ get_undo_description (MarlinUndoActionData *action)
                     g_free (to_name);
                 }
                 break;
-            case MARLIN_UNDO_CREATEFILEFROMTEMPLATE:
+            /*case MARLIN_UNDO_CREATEFILEFROMTEMPLATE:*/
             case MARLIN_UNDO_CREATEEMPTYFILE:
             case MARLIN_UNDO_CREATEFOLDER:
                 {
