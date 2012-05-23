@@ -15,7 +15,6 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/)
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
-    varka
     granite
 	glib-2.0>=2.29.0
 	gthread-2.0
