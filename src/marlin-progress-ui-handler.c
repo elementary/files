@@ -227,11 +227,12 @@ progress_ui_handler_unity_progress_changed (MarlinProgressInfo *info,
     }
 }
 
-static void
+static bool
 progress_ui_handler_disable_unity_urgency (UnityLauncherEntry *entry)
 {
     g_return_if_fail (entry);
     unity_launcher_entry_set_urgent (entry, FALSE);
+    return FALSE;
 }
 
 static void
