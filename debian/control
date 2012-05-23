@@ -1,0 +1,25 @@
+Source: pantheon-files
+Section: x11
+Priority: optional
+Maintainer: Cody Garver <cody@elementaryos.org>
+Vcs-Bzr: https://code.launchpad.net/~elementary-apps/pantheon-files/trunk
+Build-Depends: debhelper (>= 7), pkg-config, cmake, valac (>= 0.11.2), libglib2.0-dev (>= 2.29.0), libpango1.0-dev (>= 1.1.2), libgtk-3-dev (>= 3.0.3), libgee-dev, libgranite-dev, libsqlite3-dev, libnotify4-dev (>= 0.7.2) | libnotify-dev (>= 0.7.2), gnome-common, libgail-3-dev, libdbus-glib-1-dev, libunity-dev (>= 4.0.0) 
+Homepage: https://launchpad.net/pantheon-files
+Standards-Version: 3.8.4
+
+Package: pantheon-files
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, tumbler, contractor
+Pre-Depends: dpkg (>= 1.15.6)
+Suggests: tumbler-plugins-extra
+Description: The file manager of the Pantheon desktop, Files is well-designed with a focus on speed, simplicity and ease of use.
+
+Package: pantheon-files-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: pantheon-files (= ${binary:Version}), ${misc:Depends}
+Pre-Depends: dpkg (>= 1.15.6)
+Enhances: pantheon-files
+Description: Debugging symbols for pantheon-files file manager.
+
