@@ -13,7 +13,7 @@ set (DOLLAR "$")
 # Check for the deps
 
 find_package(PkgConfig)
-pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-1.0 varka>=0.1)
+pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-1.0)
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
@@ -33,16 +33,16 @@ include(ValaVersion)
 ensure_vala_version("0.12.0" MINIMUM)
 include(ValaPrecompile)
 vala_precompile(VALA_C
-LocationBar.vala
-BreadcrumbsElements.vala
-BreadcrumbsEntry.vala
+    LocationBar.vala
+    BreadcrumbsElements.vala
+    BreadcrumbsEntry.vala
 PACKAGES
-gtk+-3.0
-gee-1.0
-posix
-varka
+    gtk+-3.0
+    granite
+    gee-1.0
+    posix
 OPTIONS
---thread
+    --thread
 GENERATE_VAPI
     marlinwidgets
 GENERATE_HEADER

@@ -92,7 +92,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     int left_padding;
     int right_padding;
 
-    private Varka.IconFactory icon_factory;
+    private Granite.Services.IconFactory icon_factory;
 
 
     construct
@@ -104,7 +104,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                   | Gdk.EventMask.POINTER_MOTION_MASK
                   | Gdk.EventMask.LEAVE_NOTIFY_MASK);
         init_clipboard();
-        icon_factory = Varka.IconFactory.get_default ();
+        icon_factory = Granite.Services.IconFactory.get_default ();
         icons = new List<IconDirectory?>();
 
         button_context = get_style_context();
@@ -862,7 +862,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     protected abstract void load_right_click_menu(double x, double y);
 }
-
 
 
 namespace Marlin.Utils
