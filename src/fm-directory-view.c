@@ -293,9 +293,13 @@ directory_done_loading_callback (GOFDirectoryAsync *directory, FMDirectoryView *
     g_signal_handlers_disconnect_by_func (directory, file_loaded_callback, view);
 
     /* Apparently we need a queue_draw sometimes, the view is not refreshed until an event */
-    if (gof_directory_async_is_empty (directory))
+    if (gof_directory_async_is_empty (directory)) {
         gtk_widget_queue_draw (GTK_WIDGET (view));
-
+        dir_action_set_sensitive (view, "Select All", FALSE);
+    }
+    else
+        dir_action_set_sensitive (view, "Select All", TRUE);
+            
     MarlinZoomLevel zoom;
     g_object_get (view, "zoom-level", &zoom, NULL);
     int size = marlin_zoom_level_to_icon_size (zoom);
@@ -1620,7 +1624,7 @@ dir_action_set_visible (FMDirectoryView *view, const gchar *action_name, gboolea
     }
 }
 
-static void
+void
 dir_action_set_sensitive (FMDirectoryView *view, const gchar *action_name, gboolean sensitive)
 {
     GtkAction *action;
