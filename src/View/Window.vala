@@ -96,7 +96,7 @@ namespace Marlin.View {
             ui = new UIManager();
 
             try {
-                ui.add_ui_from_file(Config.UI_DIR + "marlin-ui.xml");
+                ui.add_ui_from_file(Config.UI_DIR + "pantheon-files-ui.xml");
             } catch (Error e) {
                 stderr.printf ("Error loading UI: %s", e.message);
             }
