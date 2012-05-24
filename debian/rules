@@ -16,7 +16,7 @@ export DEB_BUILD_OPTIONS=nocheck
 	dh $@ 
 
 override_dh_strip:
-	dh_strip --dbg-package=marlin-dbg
+	dh_strip --dbg-package=pantheon-files-dbg
 
 override_dh_builddeb:
 	dh_builddeb -- -Zxz
