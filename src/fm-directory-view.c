@@ -791,6 +791,9 @@ static gboolean
 fm_directory_view_handle_scroll_event (FMDirectoryView *directory_view,
                                        GdkEventScroll *event)
 {
+    gdouble total_delta_y = 0;
+	gdouble delta_x, delta_y;
+
     if (event->state & GDK_CONTROL_MASK) {
         switch (event->direction) {
         case GDK_SCROLL_UP:
@@ -802,6 +805,28 @@ fm_directory_view_handle_scroll_event (FMDirectoryView *directory_view,
             /* Zoom Out */
             fm_directory_view_zoom_out (directory_view);
             return TRUE;
+
+        case GDK_SCROLL_SMOOTH:
+            gdk_event_get_scroll_deltas ((const GdkEvent *) event,
+                                         &delta_x, &delta_y);
+
+            /* try to emulate a normal scrolling event by summing deltas */
+            total_delta_y += delta_y;
+
+            if (total_delta_y >= 1) {
+                total_delta_y = 0;
+                /* emulate scroll down */
+                fm_directory_view_zoom_out (directory_view);
+                return TRUE;
+            } else if (total_delta_y <= - 1) {
+                total_delta_y = 0;
+                /* emulate scroll up */
+                fm_directory_view_zoom_in (directory_view);
+                return TRUE;				
+            } else {
+                /* eat event */
+                return TRUE;
+            }
 
         case GDK_SCROLL_LEFT:
         case GDK_SCROLL_RIGHT:
