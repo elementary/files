@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2012-01-03 05:02+0000\n"
-"X-Generator: Launchpad (build 14616)\n"
+"X-Launchpad-Export-Date: 2012-05-24 11:44+0000\n"
+"X-Generator: Launchpad (build 15288)\n"
 
 #: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
 msgid "Properties"
