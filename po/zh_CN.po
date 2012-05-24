@@ -7,247 +7,277 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-30 21:08+0100\n"
-"PO-Revision-Date: 2011-12-02 09:04+0000\n"
-"Last-Translator: 英华 <wantinghard@gmail.com>\n"
+"POT-Creation-Date: 2012-01-02 20:43+0100\n"
+"PO-Revision-Date: 2012-05-24 02:51+0000\n"
+"Last-Translator: Wylmer Wang <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2011-12-03 05:47+0000\n"
-"X-Generator: Launchpad (build 14418)\n"
+"X-Launchpad-Export-Date: 2012-05-24 11:45+0000\n"
+"X-Generator: Launchpad (build 15288)\n"
 "Language: \n"
 
-#: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:72
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
+msgid "Properties"
+msgstr "属性"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:98
+msgid "Info"
+msgstr "信息"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:103
+msgid "Permissions"
+msgstr "权限"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:114
+msgid "Preview"
+msgstr "预览"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:310
+msgid "Created"
+msgstr "创建时间"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:311
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:320
+msgid "Modified"
+msgstr "已修改"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:312
+msgid "Last Access"
+msgstr "上次访问"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:316
+msgid "Deleted"
+msgstr "已删除"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:320
+msgid "MimeType"
+msgstr "MIME 类型"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
+msgid "MimeTypes"
+msgstr "MIME 类型"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
+msgid "Location"
+msgstr "位置"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:334
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:316
+msgid "Target"
+msgstr "目标"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:340
+msgid "Origin Location"
+msgstr "原位置"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
+msgid "Other application..."
+msgstr "其他应用程序"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
+msgid "Open with"
+msgstr "打开方式"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
+msgid "Read"
+msgstr "读取"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:529
+msgid "Write"
+msgstr "写入"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:534
+msgid "Execute"
+msgstr "执行"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:752
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:765
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:321
+msgid "Owner"
+msgstr "所有者"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:757
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:769
+msgid "Group"
+msgstr "组"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:773
+msgid "Everyone"
+msgstr "所有人"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
+msgid "Select an aplication to open "
+msgstr "选择一个应用程序来打开 "
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
+msgid "Name"
+msgstr "名称"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:313
+msgid "Type"
+msgstr "类型"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:318
+msgid "Size"
+msgstr "大小"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "文件夹不存在"
 
-#: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:75
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
 msgstr "Marlin 找不到文件夹 %s"
 
-#: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:80
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "创建"
 
-#: /media/dev/elementary/marlin/po/../src/View/DirectoryNotFound.vala:80
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "创建文件夹 %s"
 
-#: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:95
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:360
-msgid "Trash"
-msgstr "回收站"
-
-#: /media/dev/elementary/marlin/po/../src/View/LocationBar.vala:96
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:578
-msgid "Network"
-msgstr "网络"
-
-#: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:122
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:314
-msgid "Home"
-msgstr "主目录"
-
-#: /media/dev/elementary/marlin/po/../src/View/ViewContainer.vala:124
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:384
-msgid "File System"
-msgstr "文件系统"
-
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:31
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:31
 msgid "Marlin Preferences"
 msgstr "Marlin 首选项"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:48
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:48
 msgid "Single click to open:"
 msgstr "单击打开："
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:58
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:58
 msgid "Mouse auto-selection speed:"
 msgstr "鼠标自动选择速度："
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:75
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:75
 msgid "Properties Dialog set modal:"
 msgstr "属性对话框为模态对话框："
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:83
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
 msgid "Default File Manager:"
 msgstr "默认文件管理器："
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:86
-msgid "make Marlin my default File Manager"
-msgstr "将 Marlin 设为我的默认文件管理器"
-
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:94
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:95
 msgid "Behavior"
 msgstr "行为"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:102
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:102
 msgid "small"
 msgstr "小"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:103
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:103
 msgid "medium"
 msgstr "中"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:104
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:104
 msgid "large"
 msgstr "大"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:105
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:105
 msgid "extra-large"
 msgstr "超大"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:126
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:126
 msgid "Sidebar icon size:"
 msgstr "边栏图标尺寸："
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:137
-msgid "locale"
-msgstr "区域"
-
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:138
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:137
 msgid "iso"
 msgstr "国际标准"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:139
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:138
+msgid "locale"
+msgstr "区域"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:139
 msgid "informal"
 msgstr "非正式"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:157
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:146
 msgid "Date format:"
 msgstr "日期格式："
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:165
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:154
 msgid "Display"
 msgstr "显示"
 
-#: /media/dev/elementary/marlin/po/../src/View/SettingsDialog.vala:214
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:203
 msgid "Extensions"
 msgstr "扩展"
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:280
-msgid "Name"
-msgstr "名称"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:95
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:370
+msgid "Trash"
+msgstr "回收站"
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:281
-msgid "Type"
-msgstr "类型"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:96
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:588
+msgid "Network"
+msgstr "网络"
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:284
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:312
-msgid "Target"
-msgstr "目标"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:131
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "主目录"
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:286
-msgid "Size"
-msgstr "大小"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:133
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "文件系统"
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:288
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:299
-msgid "Modified"
-msgstr "已修改"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "单击"
 
-#: /media/dev/elementary/marlin/po/../src/View/ContextView.vala:289
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:662
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:675
-msgid "Owner"
-msgstr "所有者"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "该视图中的项目是否可以通过单击激活"
 
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:47
-msgid "Properties"
-msgstr "属性"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "单击超时"
 
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:88
-msgid "Info"
-msgstr "信息"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr "单击模式中，激活鼠标光标下项目前的延迟时间"
 
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:93
-msgid "Permissions"
-msgstr "权限"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:104
-msgid "Preview"
-msgstr "预览"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:298
-msgid "Created"
-msgstr "创建时间"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:300
-msgid "Last Access"
-msgstr "上次访问"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:304
-msgid "Deleted"
-msgstr "已删除"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:308
-msgid "MimeType"
-msgstr "MIME 类型"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:310
-msgid "Location"
-msgstr "位置"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:318
-msgid "Origin Location"
-msgstr "原位置"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:434
-msgid "Read"
-msgstr "读取"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:439
-msgid "Write"
-msgstr "写入"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:444
-msgid "Execute"
-msgstr "执行"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:667
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:679
-msgid "Group"
-msgstr "组"
-
-#: /media/dev/elementary/marlin/po/../src/View/PropertiesWindow.vala:683
-msgid "Everyone"
-msgstr "所有人"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:124
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
 msgstr "SSH"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:127
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
 msgstr "公共 FTP"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:129
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
 msgstr "FTP (需登录)"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:132
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
 msgstr "Windows 共享"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:134
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:136
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
 msgstr "安全 WebDAV (HTTPS)"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:183
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
 msgstr "正在连接..."
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:207
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -255,86 +285,404 @@ msgstr ""
 "无法载入支持的服务器方式列表。\n"
 "请检查您的 gvfs 安装。"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:285
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "无法在“%s”打开文件夹“%s”。"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:295
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "无法找到位于“%s”的服务器。"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:330
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
 msgstr "重试"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:395
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
 msgstr "请确认您的用户详情。"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:425
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
 msgstr "继续"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:750
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1169
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:750
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1169
 msgid "C_onnect"
 msgstr "连接(_O)"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:875
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
 msgstr "连接到服务器"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:893
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
 msgstr "服务器详情"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:914
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:914
 msgid "_Server:"
 msgstr "服务器(_S)："
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:938
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:938
 msgid "_Port:"
 msgstr "端口(_P)"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:956
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:956
 msgid "_Type:"
 msgstr "类型(_T)："
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1030
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1030
 msgid "Sh_are:"
 msgstr "共享(_H)："
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1050
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1050
 msgid "_Folder:"
 msgstr "文件夹(_F)："
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1073
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
 msgstr "用户详情"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1093
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
 msgstr "域名(_D)："
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1112
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1112
 msgid "_Username:"
 msgstr "用户名(_U):"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1132
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1132
 msgid "Pass_word:"
 msgstr "密码(_W)："
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1153
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1153
 msgid "_Remember this password"
 msgstr "记住密码"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-connect-server-dialog.c:1258
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1258
 msgid "Operation cancelled"
 msgstr "操作已取消"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-application.c:439
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr "紧凑目录列表"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr "紧凑布局"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:623
+msgid "This folder is empty."
+msgstr "该文件夹为空。"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:186
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:139
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "无法将 %s 重命名为 %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
+msgid "_Move Here"
+msgstr "移到此处(_M)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:784
+msgid "_Copy Here"
+msgstr "复制到到处(_C)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:789
+msgid "_Link Here"
+msgstr "在此处创建链接(_L)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:794
+msgid "Set as _Background"
+msgstr "设置为背景(_B)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:801
+msgid "Cancel"
+msgstr "取消"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:893
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "执行“%s”文件失败"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "图标目录列表"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "图标视图"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
+msgid "Customize Toolbar"
+msgstr "自定义工具栏"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:461
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
+msgstr "选择在工具栏上显示的项目。用拖放可以排序项目。"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:477
+msgid "Available Items"
+msgstr "可用项目"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:498
+msgid "Displayed Items"
+msgstr "已显示的项目"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:310
+msgid "Personal"
+msgstr "个人"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:315
+msgid "Your common places and bookmarks"
+msgstr "您的常用位置和书签"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "打开您的个人文件夹"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:372
+msgid "Open the trash"
+msgstr "打开回收站"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:382
+msgid "Devices"
+msgstr "设备"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:387
+msgid "Your local partitions and devices"
+msgstr "您的本地分区和设备"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:396
+msgid "Open the contents of the File System"
+msgstr "打开文件系统的内容"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:455
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:480
+#, c-format
+msgid "Mount and open %s"
+msgstr "挂载并打开 %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:593
+msgid "Your network places"
+msgstr "您的网络位置"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:624
+msgid "Entire network"
+msgstr "整个网络"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:626
+msgid "Browse the contents of the network"
+msgstr "浏览网络内容"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1610
+msgid "_Start"
+msgstr "开始(_S)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1611
+msgid "_Stop"
+msgstr "停止(_S)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1616
+msgid "_Power On"
+msgstr "上电(_P)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1617
+msgid "_Safely Remove Drive"
+msgstr "安全移除驱动器(_S)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1620
+msgid "_Connect Drive"
+msgstr "连接驱动器(_C)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1621
+msgid "_Disconnect Drive"
+msgstr "断开驱动器(_D)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1624
+msgid "_Start Multi-disk Device"
+msgstr "启动多磁盘设备(_S)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1625
+msgid "_Stop Multi-disk Device"
+msgstr "停止多磁盘设备(_S)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1629
+msgid "_Unlock Drive"
+msgstr "解锁驱动器(_U)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1630
+msgid "_Lock Drive"
+msgstr "锁定驱动器(_L)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1704
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2251
+#, c-format
+msgid "Unable to start %s"
+msgstr "无法启动 %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1994
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2023
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2052
+#, c-format
+msgid "Unable to eject %s"
+msgstr "无法弹出 %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2197
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "无法轮询 %s 获取媒体更改"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2307
+#, c-format
+msgid "Unable to stop %s"
+msgstr "无法停止 %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2399
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1882
+msgid "_Open"
+msgstr "打开(_O)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2407
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1902
+msgid "Open in New _Tab"
+msgstr "在新标签中打开(_T)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2414
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1911
+msgid "Open in New _Window"
+msgstr "在新窗口中打开(_W)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2423
+msgid "Remove"
+msgstr "移除"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2432
+msgid "Rename..."
+msgstr "重命名..."
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2444
+msgid "_Mount"
+msgstr "挂载(_M)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2451
+msgid "_Unmount"
+msgstr "卸载(_U)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2458
+msgid "_Eject"
+msgstr "弹出(_E)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2466
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1410
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2281
+msgid "Empty _Trash"
+msgstr "清空回收站(_T)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3123
+msgid "Icon Size"
+msgstr "图标大小"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3124
+msgid "Icon size"
+msgstr "图标大小"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1090
+msgid "Invalid filename provided by XDS drag site"
+msgstr "来自XDS拖动站的无效文件名"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1248
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "创建到 URL “%s”的链接失败"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1730
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "用“%s”打开选中的项目"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1876
+#, c-format
+msgid "_Open With %s"
+msgstr "使用 %s 打开(_O)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1898
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "在 %'d 新标签中打开(_T)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1907
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "在 %'d 新窗口中打开(_W)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3236
+msgid "Set as default"
+msgstr "设为默认"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3454
+msgid "Set Color:"
+msgstr "设置颜色"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-clipboard-manager.c:380
+msgid "There is nothing on the clipboard to paste"
+msgstr "剪贴板中没有可粘贴的内容"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:113
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:163
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:470
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:526
+msgid "File Operations"
+msgstr "文件操作"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:122
+msgid "Show Details"
+msgstr "显示详情"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:157
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:179
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "有 %'d 项活动的文件操作"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
+msgid "Show copy dialog"
+msgstr "显示复制对话框"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:290
+msgid "Cancel all in-progress actions"
+msgstr "取消所有正在执行的操作"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:527
+msgid "All file operations have been successfully completed"
+msgstr "所有文件操作均已成功完成"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3188
+msgid "Select All"
+msgstr "全选"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3199
+msgid "Input Methods"
+msgstr "输入法"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "版面布局模式"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "布局模式"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:439
 msgid ""
 "\n"
 "\n"
@@ -344,606 +692,125 @@ msgstr ""
 "\n"
 "通过文件管理器浏览文件系统"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-application.c:459
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
 msgstr "--quit 不能与 URI 一起使用。"
 
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:300
-msgid "Personal"
-msgstr "个人"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:305
-msgid "Your common places and bookmarks"
-msgstr "您的常用位置和书签"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:319
-msgid "Open your personal folder"
-msgstr "打开您的个人文件夹"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:362
-msgid "Open the trash"
-msgstr "打开回收站"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:372
-msgid "Devices"
-msgstr "设备"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:377
-msgid "Your local partitions and devices"
-msgstr "您的本地分区和设备"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:386
-msgid "Open the contents of the File System"
-msgstr "打开文件系统的内容"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:445
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:470
-#, c-format
-msgid "Mount and open %s"
-msgstr "挂载并打开 %s"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:583
-msgid "Your network places"
-msgstr "您的网络位置"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:614
-msgid "Entire network"
-msgstr "整个网络"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:616
-msgid "Browse the contents of the network"
-msgstr "浏览网络内容"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1600
-msgid "_Start"
-msgstr "开始(_S)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1601
-msgid "_Stop"
-msgstr "停止(_S)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1606
-msgid "_Power On"
-msgstr "上电(_P)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1607
-msgid "_Safely Remove Drive"
-msgstr "安全移除驱动器(_S)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1610
-msgid "_Connect Drive"
-msgstr "连接驱动器(_C)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1611
-msgid "_Disconnect Drive"
-msgstr "断开驱动器(_D)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1614
-msgid "_Start Multi-disk Device"
-msgstr "启动多磁盘设备(_S)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1615
-msgid "_Stop Multi-disk Device"
-msgstr "停止多磁盘设备(_S)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1619
-msgid "_Unlock Drive"
-msgstr "解锁驱动器(_U)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1620
-msgid "_Lock Drive"
-msgstr "锁定驱动器(_L)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1694
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2241
-#, c-format
-msgid "Unable to start %s"
-msgstr "无法启动 %s"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:1984
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2013
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2042
-#, c-format
-msgid "Unable to eject %s"
-msgstr "无法弹出 %s"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2187
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "无法轮询 %s 获取媒体更改"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2297
-#, c-format
-msgid "Unable to stop %s"
-msgstr "无法停止 %s"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2389
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1830
-msgid "_Open"
-msgstr "打开(_O)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2397
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1852
-msgid "Open in New _Tab"
-msgstr "在新标签中打开(_T)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2404
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1861
-msgid "Open in New _Window"
-msgstr "在新窗口中打开(_W)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2413
-msgid "Remove"
-msgstr "移除"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2422
-msgid "Rename..."
-msgstr "重命名..."
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2434
-msgid "_Mount"
-msgstr "挂载(_M)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2441
-msgid "_Unmount"
-msgstr "卸载(_U)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2448
-msgid "_Eject"
-msgstr "弹出(_E)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:2484
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1424
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2295
-msgid "Empty _Trash"
-msgstr "清空回收站(_T)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3143
-msgid "Icon Size"
-msgstr "图标大小"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-places-sidebar.c:3144
-msgid "Icon size"
-msgstr "图标大小"
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1034
-msgid "Invalid filename provided by XDS drag site"
-msgstr "来自XDS拖动站的无效文件名"
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1192
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "创建到 URL “%s”的链接失败"
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1675
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "用“%s”打开选中的项目"
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1821
-#, c-format
-msgid "_Open With %s"
-msgstr "使用 %s 打开(_O)"
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1848
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "在 %'d 新标签中打开(_T)"
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:1857
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "在 %'d 新窗口中打开(_W)"
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:2993
-msgid "Set as default"
-msgstr "设为默认"
-
-#: /media/dev/elementary/marlin/po/../src/fm-directory-view.c:3212
-msgid "Set Color:"
-msgstr "设置颜色"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-clipboard-manager.c:380
-msgid "There is nothing on the clipboard to paste"
-msgstr "剪贴板中没有可粘贴的内容"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:779
-msgid "_Move Here"
-msgstr "移到此处(_M)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:784
-msgid "_Copy Here"
-msgstr "复制到到处(_C)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:789
-msgid "_Link Here"
-msgstr "在此处创建链接(_L)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:794
-msgid "Set as _Background"
-msgstr "设置为背景(_B)"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:801
-msgid "Cancel"
-msgstr "取消"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-dnd.c:893
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "执行“%s”文件失败"
-
-#: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:161
-msgid "Single Click"
-msgstr "单击"
-
-#: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:162
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "该视图中的项目是否可以通过单击激活"
-
-#: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:178
-msgid "Single Click Timeout"
-msgstr "单击超时"
-
-#: /media/dev/elementary/marlin/po/../src/exo-tree-view.c:179
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr "单击模式中，激活鼠标光标下项目前的延迟时间"
-
-#: /media/dev/elementary/marlin/po/../src/fm-columns-view.c:81
-#: /media/dev/elementary/marlin/po/../src/fm-list-view.c:614
-#: /media/dev/elementary/marlin/po/../src/fm-icon-view.c:565
-msgid "This folder is empty."
-msgstr "该文件夹为空。"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:449
-msgid "Customize Toolbar"
-msgstr "自定义工具栏"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:465
-msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
-msgstr "选择在工具栏上显示的项目。用拖放可以排序项目。"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:481
-msgid "Available Items"
-msgstr "可用项目"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-toolbar-editor.c:502
-msgid "Displayed Items"
-msgstr "已显示的项目"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:113
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:163
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:470
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:526
-msgid "File Operations"
-msgstr "文件操作"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:122
-msgid "Show Details"
-msgstr "显示详情"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:157
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:179
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "有 %'d 项活动的文件操作"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:279
-msgid "Show copy dialog"
-msgstr "显示复制对话框"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:290
-msgid "Cancel all in-progress actions"
-msgstr "取消所有正在执行的操作"
-
-#: /media/dev/elementary/marlin/po/../src/marlin-progress-ui-handler.c:527
-msgid "All file operations have been successfully completed"
-msgstr "所有文件操作均已成功完成"
-
-#: /media/dev/elementary/marlin/po/../src/eel-editable-label.c:3188
-msgid "Select All"
-msgstr "全选"
-
-#: /media/dev/elementary/marlin/po/../src/eel-editable-label.c:3199
-msgid "Input Methods"
-msgstr "输入法"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "合并文件夹“%s”吗？"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr "合并时，在替换目标文件夹中与待复制文件冲突的文件前会请求确认。"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的旧文件夹。"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的新文件夹。"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的文件夹。”"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
-msgid "Replacing it will remove all files in the folder."
-msgstr "若替换它，将移除其中的所有文件。"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "替换“%s”文件夹？"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的文件夹。”"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "替换“%s”文件？"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
-msgid "Replacing it will overwrite its content."
-msgstr "若替换它，将覆盖其内容。"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的旧文件。"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的新文件。”"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "“%s”中已经存在一个同名的文件。”"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
-msgid "Original file"
-msgstr "原文件"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
-msgid "Size:"
-msgstr "大小："
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Type:"
-msgstr "类型："
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
-msgid "Last modified:"
-msgstr "上次修改："
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
-msgid "Replace with"
-msgstr "替换为"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
-msgid "Merge"
-msgstr "合并"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
-msgid "_Select a new name for the destination"
-msgstr "为目标选择一个新名称(_S)"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:710
-msgid "Reset"
-msgstr "重设"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:722
-msgid "Apply this action to all files"
-msgstr "将此操作应用到所有文件"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:207
-msgid "_Skip"
-msgstr "跳过(_S)"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
-msgid "Re_name"
-msgstr "重命名(_N)"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:744
-msgid "Replace"
-msgstr "替换"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-conflict-dialog.c:817
-msgid "File conflict"
-msgstr "文件冲突"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-progress-info.c:192
-#: /media/dev/elementary/marlin/po/../libcore/marlin-progress-info.c:210
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:192
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
 msgstr "正在准备"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-utilities.c:267
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "无法确定“%s”的原位置 "
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (无效的 Unicode)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-utilities.c:270
-msgid "The item cannot be restored from trash"
-msgstr "无法从回收站中恢复该项目"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:199
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
+msgid "_Skip"
+msgstr "跳过(_S)"
 
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:350
-#, c-format
-msgid "link to %s"
-msgstr "链接到 %s"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1525
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "解析桌面文件 %s 失败"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1563
-msgid "No Exec field specified"
-msgstr "没有指定 Exec 字段"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1583
-msgid "No URL field specified"
-msgstr "没有指定 URL 字段"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1589
-msgid "Invalid desktop file"
-msgstr "无效的桌面文件"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1855
-msgid "Slashes are not allowed in filenames"
-msgstr "文件名中不能出现斜线"
-
-#: /media/dev/elementary/marlin/po/../libcore/gof-file.c:1875
-msgid "Toplevel files cannot be renamed"
-msgstr "无法重命名顶级文件"
-
-#: /media/dev/elementary/marlin/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr "显示更多细节(_D)"
-
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:208
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
 msgstr "全部跳过(_K)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:209
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:201
 msgid "_Retry"
 msgstr "重试(_R)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:210
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
 msgstr "全部删除(_A)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:211
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:203
 msgid "_Replace"
 msgstr "替换(_R)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:212
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
 msgstr "全部替换(_A)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:213
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:205
 msgid "_Merge"
 msgstr "合并(_M)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:214
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
 msgstr "全部合并(_A)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:215
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
 msgstr "强制复制(_A)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:301
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:293
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d 秒"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:306
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:317
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:298
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d 分钟"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:316
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:308
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d 小时"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:324
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:316
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "约 %'d 小时"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:400
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:392
 #, c-format
 msgid "Link to %s"
 msgstr "到 %s 的链接"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:404
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:396
 #, c-format
 msgid "Another link to %s"
 msgstr "另一个到 %s 的链接"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:420
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:412
 #, c-format
 msgid "%'dst link to %s"
 msgstr "到 %2$s 的第 %1$'d 个链接"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:424
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:416
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "到 %2$s 的第 %1$'d 个链接"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:428
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:420
 #, c-format
 msgid "%'drd link to %s"
 msgstr "到 %2$s 的第 %1$'d 个链接"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:432
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:424
 #, c-format
 msgid "%'dth link to %s"
 msgstr "到 %2$s 的第 %1$'d 个链接"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:624
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:616
 msgid " ("
 msgstr " ("
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:632
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:624
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1383
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1369
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "您确实想从回收站中永久删除“%B”吗？"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1386
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1372
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -953,471 +820,650 @@ msgid_plural ""
 "trash?"
 msgstr[0] "您确实想从回收站中永久删除所选的 %'d 项吗？"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1396
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1464
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1382
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1450
 msgid "If you delete an item, it will be permanently lost."
 msgstr "如果您删除一项，它会永远消失。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1417
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1403
 msgid "Empty all items from Trash?"
 msgstr "清空回收站中的所有项目？"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1421
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1407
 msgid "All items in the Trash will be permanently deleted."
 msgstr "回收站中的所有项目将永久删除。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1452
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1438
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "您确实想永久删除“%B”吗？"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1455
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1441
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "您确实想永久删除所选的 %'d 项吗？"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1480
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1512
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1466
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1498
 msgid "Deleting files"
 msgstr "正在删除文件"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1506
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1492
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "还有 %'d 个文件要删除"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1526
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1512
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "还剩 %T"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1594
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1628
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1667
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1744
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2558
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1580
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1614
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1653
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1730
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2544
 msgid "Error while deleting."
 msgstr "删除时出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1598
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1584
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr "“%B”文件夹中的文件无法删除，因为您没有查看它们的权限。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1601
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2617
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3608
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1587
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2603
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3594
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "在获取文件夹“%B”中的信息时出现了一个错误。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1610
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3617
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1596
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3603
 msgid "_Skip files"
 msgstr "跳过文件(_S)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1631
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1617
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "无法删除文件夹“%B”，因为您没有读它们的权限。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1634
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2656
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3653
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1620
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2642
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3639
 msgid "There was an error reading the folder \"%B\"."
 msgstr "读取文件夹“%B”时出现了一个错误。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1668
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1654
 msgid "Could not remove the folder %B."
 msgstr "无法移除文件夹 %B。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1745
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1731
 msgid "There was an error deleting %B."
 msgstr "删除 %B 时出现了一个错误。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1821
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1833
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1807
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1819
 msgid "Moving files to trash"
 msgstr "将文件移到回收站"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1835
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1821
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "还有 %'d 个文件要移到回收站"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1886
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1872
 msgid "Cannot move file to trash, do you want to delete immediately?"
 msgstr "无法将文件移到回收站，您想立即删除吗？"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:1887
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1873
 msgid "The file \"%B\" cannot be moved to the trash."
 msgstr "无法将文件“%B”移到回收站。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2063
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2049
 msgid "Trashing Files"
 msgstr "正在将文件移到回收站"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2065
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2051
 msgid "Deleting Files"
 msgstr "正在删除文件"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2128
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2114
 msgid "Unable to eject %V"
 msgstr "无法弹出 %V"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2130
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2116
 msgid "Unable to unmount %V"
 msgstr "无法卸载 %V"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2285
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2271
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "您想在卸载前清空回收站吗？"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2287
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2273
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr "为了重新获取该卷上的剩余空间，必须清空回收站。该卷上所有移到回收站的项目将永远消失。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2293
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2279
 msgid "Do _not Empty Trash"
 msgstr "不清空回收站(_N)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2348
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2334
 msgid "Emptying the trash"
 msgstr "清空回收站"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2415
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2401
 #, c-format
 msgid "Unable to mount %s"
 msgstr "无法卸载 %s"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2493
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2479
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "正在准备复制 %'d 个文件(%S)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2499
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2485
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "正在准备移动 %'d 个文件(%S)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2505
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2491
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "正在准备删除 %'d 个文件(%S)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2511
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2497
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "正在准备将 %'d 个文件移到回收站"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2554
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3474
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3600
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3645
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2540
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3460
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3586
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3631
 msgid "Error while copying."
 msgstr "复制出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2556
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3598
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3643
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2542
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3584
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3629
 msgid "Error while moving."
 msgstr "移动出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2560
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2546
 msgid "Error while moving files to trash."
 msgstr "在将文件移到回收站时出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2614
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2600
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr "无法操作文件夹“%B”中的文件，因为您没有查看它们的权限。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2653
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2639
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "无法操作文件夹“%B”，因为您没有读取它的权限。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2730
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2716
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "无法操作文件“%B”，因为您没有读取它的权限。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2733
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2719
 msgid "There was an error getting information about \"%B\"."
 msgstr "获取有关“%B”的信息时出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2833
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2875
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2908
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2938
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2819
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2861
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2894
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2924
 msgid "Error while copying to \"%B\"."
 msgstr "复制到“%B”时出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2837
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2823
 msgid "You do not have permissions to access the destination folder."
 msgstr "您没有访问目标文件夹的权限。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2839
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2825
 msgid "There was an error getting information about the destination."
 msgstr "获取目标信息时出现了一个错误。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2876
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2862
 msgid "The destination is not a folder."
 msgstr "目标不是一个文件夹。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2909
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2895
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr "目标位置没有足够的空间。尝试删除文件来腾出空间。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2911
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2897
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "可用空间为 %S，但需要 %S。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:2939
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2925
 msgid "The destination is read-only."
 msgstr "目标为只读。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3000
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2986
 msgid "Moving \"%B\" to \"%B\""
 msgstr "正在将“%B”移动到“%B”"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3001
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2987
 msgid "Copying \"%B\" to \"%B\""
 msgstr "正在将“%B”复制到“%B”"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3005
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2991
 msgid "Duplicating \"%B\""
 msgstr "正在复制“%B”"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3009
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2995
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "正在移动 %'d 个文件(位于“%B”)到“%B”"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3012
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2998
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "正在复制 %'d 个文件(位于“%B”)到“%B”"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3019
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3005
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "正在重复 %'d 个文件(位于“%B”)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3028
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3014
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "正在移动 %'d 个文件到“%B”"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3032
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3018
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "正在复制 %'d 个文件到“%B”"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3037
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3023
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "正在重复 %'d 个文件"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3088
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3074
 #, c-format
 msgid "%S of %S"
 msgstr "%S / %S"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3099
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3085
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S of %S — 剩余 %T(%S/秒)"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3478
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3464
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr "无法复制文件夹“%B”，因为您没有在目标位置创建它的权限。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3481
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3467
 msgid "There was an error creating the folder \"%B\"."
 msgstr "创建文件夹“%B”时出现了一个错误。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3605
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3591
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr "无法复制文件夹“%B”中的文件，因为您没有查看它们的权限。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3650
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3636
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "无法复制文件夹“%B”，因为您没有读取它的权限。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3695
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4392
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4966
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3681
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4378
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4952
 msgid "Error while moving \"%B\"."
 msgstr "移动“%B”时出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3696
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3682
 msgid "Could not remove the source folder."
 msgstr "无法移动源文件夹。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3781
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3822
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4394
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4465
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3767
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3808
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4380
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4451
 msgid "Error while copying \"%B\"."
 msgstr "复制“%B”时出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3782
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3768
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "无法从已存在的文件夹 %F 中移除文件。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:3823
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3809
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "无法移除已存在的文件 %F。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4152
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4810
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4138
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4796
 msgid "You cannot move a folder into itself."
 msgstr "您不能将文件夹移到它自己里面。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4153
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4811
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4139
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4797
 msgid "You cannot copy a folder into itself."
 msgstr "您不能将文件夹复制到它自己里面。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4154
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4812
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4140
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4798
 msgid "The destination folder is inside the source folder."
 msgstr "目标文件夹在源文件夹内。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4185
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4171
 msgid "You cannot move a file over itself."
 msgstr "您不能原地移动一个文件。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4186
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4172
 msgid "You cannot copy a file over itself."
 msgstr "您不能原地复制一个文件。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4187
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4173
 msgid "The source file would be overwritten by the destination."
 msgstr "源文件会被目标文件覆盖。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4396
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4382
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "无法移除 %F 中同名的现有文件。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4466
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4452
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "将文件复制到 %F 时出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4694
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4680
 msgid "Copying Files"
 msgstr "正在复制文件"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4710
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4696
 msgid "Preparing to move to \"%B\""
 msgstr "正在准备移到“%B”"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4722
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4708
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "正在准备移动 %'d 个文件"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:4967
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4953
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "将文件移到 %F 时出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5230
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5216
 msgid "Moving Files"
 msgstr "正在移动文件"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5246
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5232
 msgid "Creating links in \"%B\""
 msgstr "在“%B”中创建链接"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5257
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5243
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "正在创建到 %'d 个文件的链接"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5387
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5373
 msgid "Error while creating link to %B."
 msgstr "创建指向 %B 的链接时出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5389
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5375
 msgid "Symbolic links only supported for local files"
 msgstr "符号链接只支持本地文件"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5392
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5378
 msgid "The target doesn't support symbolic links."
 msgstr "目标不支持符号链接。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5395
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5381
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "在 %F 中创建符号链接时出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5698
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5701
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5684
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5687
 msgid "Setting permissions"
 msgstr "正在设置权限"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5943
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5929
 msgid "untitled folder"
 msgstr "无标题文件夹"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:5951
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5937
 msgid "new file"
 msgstr "新文件"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6101
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6087
 msgid "Error while creating directory %B."
 msgstr "创建目录 %B 出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6103
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6089
 msgid "Error while creating file %B."
 msgstr "创建文件 %B 出错。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6105
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6091
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "在 %F 中创建目录时出现了一个错误。"
 
-#: /media/dev/elementary/marlin/po/../libcore/marlin-file-operations.c:6401
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6387
 msgid "Emptying Trash"
 msgstr "正在清空回收站"
 
-#: /media/dev/elementary/marlin/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (无效的 Unicode)"
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:267
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "无法确定“%s”的原位置 "
 
-#: /media/dev/elementary/marlin/po/../libwidgets/LocationBar.vala:718
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:270
+msgid "The item cannot be restored from trash"
+msgstr "无法从回收站中恢复该项目"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "合并文件夹“%s”吗？"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr "合并时，在替换目标文件夹中与待复制文件冲突的文件前会请求确认。"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "“%s”中已经存在一个同名的旧文件夹。"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "“%s”中已经存在一个同名的新文件夹。"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "“%s”中已经存在一个同名的文件夹。”"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
+msgid "Replacing it will remove all files in the folder."
+msgstr "若替换它，将移除其中的所有文件。"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "替换“%s”文件夹？"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "“%s”中已经存在一个同名的文件夹。”"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "替换“%s”文件？"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
+msgid "Replacing it will overwrite its content."
+msgstr "若替换它，将覆盖其内容。"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "“%s”中已经存在一个同名的旧文件。"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "“%s”中已经存在一个同名的新文件。”"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "“%s”中已经存在一个同名的文件。"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
+msgid "Original file"
+msgstr "原始文件"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
+msgid "Size:"
+msgstr "大小："
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Type:"
+msgstr "类型："
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
+msgid "Last modified:"
+msgstr "上次修改："
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
+msgid "Replace with"
+msgstr "替换为"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
+msgid "Merge"
+msgstr "合并"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
+msgid "_Select a new name for the destination"
+msgstr "为目标选择一个新名称(_S)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:710
+msgid "Reset"
+msgstr "重设"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:722
+msgid "Apply this action to all files"
+msgstr "将此操作应用到所有文件"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
+msgid "Re_name"
+msgstr "重命名(_N)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:744
+msgid "Replace"
+msgstr "替换"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:817
+msgid "File conflict"
+msgstr "文件冲突"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-stock-dialogs.c:35
+msgid "Show more _details"
+msgstr "显示更多细节(_D)"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:245
+#, c-format
+msgid "link to %s"
+msgstr "链接到 %s"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1603
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "解析桌面文件 %s 失败"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1641
+msgid "No Exec field specified"
+msgstr "没有指定 Exec 字段"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1661
+msgid "No URL field specified"
+msgstr "没有指定 URL 字段"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1667
+msgid "Invalid desktop file"
+msgstr "无效的桌面文件"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1955
+msgid "Slashes are not allowed in filenames"
+msgstr "文件名中不能出现斜线"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1975
+msgid "Toplevel files cannot be renamed"
+msgstr "无法重命名顶级文件"
+
+#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libwidgets/LocationBar.vala:709
 #, c-format
 msgid "Go to %s"
 msgstr "转到 %s"
+
+#~ msgid "make Marlin my default File Manager"
+#~ msgstr "将 Marlin 设为我的默认文件管理器"
