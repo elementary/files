@@ -1685,10 +1685,13 @@ update_menus_empty_selection (FMDirectoryView *view)
 
     GOFWindowSlot *slot = view->details->slot;
 
-    if (gof_file_is_trashed (slot->directory->file))
+    if (gof_file_is_trashed (slot->directory->file)) {
         dir_action_set_visible (view, "New Folder", FALSE);
-    else
+        dir_action_set_visible (view, "New Empty Document", FALSE);
+    } else {
         dir_action_set_visible (view, "New Folder", TRUE);
+        dir_action_set_visible (view, "New Empty Document", TRUE);
+    }
 }
 
 typedef struct {
@@ -3250,6 +3253,76 @@ new_folder_done (GFile *new_folder, gpointer data)
 }
 
 static void
+fm_directory_view_new_file_with_initial_contents (FMDirectoryView *view,
+                                                  const char *parent_uri,
+                                                  const char *filename,
+                                                  const char *initial_contents,
+                                                  int length,
+                                                  GdkPoint *pos)
+{
+    //NewFolderData *data;
+
+    g_assert (parent_uri != NULL);
+
+    //data = setup_new_folder_data (view);
+
+    /*if (pos == NULL) {
+        pos = context_menu_to_file_operation_position (view);
+    }*/
+
+    marlin_file_operations_new_file (GTK_WIDGET (view),
+                                     pos, parent_uri, filename,
+                                     initial_contents, length,
+                                     //new_folder_done, data);
+                                     new_folder_done, view);
+}
+
+static void
+fm_directory_view_new_file (FMDirectoryView *view,
+                            const char *parent_uri,
+                            GOFFile *source)
+{
+    //GdkPoint *pos;
+	/*NewFolderData *data;
+    char *source_uri;*/
+    char *current_dir_uri;
+
+    if (parent_uri == NULL) {
+        GOFDirectoryAsync *current_dir = fm_directory_view_get_current_directory (view);
+        current_dir_uri = g_strdup (current_dir->file->uri);
+        g_assert (current_dir_uri != NULL);
+    }
+
+    if (source == NULL) {
+        fm_directory_view_new_file_with_initial_contents (view,
+                                                      parent_uri != NULL ? parent_uri : current_dir_uri,
+                                                      NULL,
+                                                      NULL,
+                                                      0,
+                                                      NULL);
+        g_free (current_dir_uri);
+        return;
+    }
+
+#if 0
+    g_return_if_fail (nautilus_file_is_local (source));
+    //pos = context_menu_to_file_operation_position (directory_view);
+	data = setup_new_folder_data (directory_view);
+	source_uri = nautilus_file_get_uri (source);
+
+	marlin_file_operations_new_file_from_template (GTK_WIDGET (directory_view),
+                                                   pos,
+                                                   parent_uri != NULL ? parent_uri : container_uri,
+                                                   NULL,
+                                                   source_uri,
+                                                   new_folder_done, data);
+
+    g_free (source_uri);
+    g_free (container_uri);
+#endif
+}
+
+static void
 action_new_folder_callback (GtkAction *action, gpointer data)
 {
     g_assert (FM_IS_DIRECTORY_VIEW (data));
@@ -3263,6 +3336,12 @@ action_new_folder_callback (GtkAction *action, gpointer data)
                                        //pos, parent_uri,
                                        NULL, view->details->slot->location,
                                        new_folder_done, view);
+}
+
+static void
+action_new_empty_file_callback (GtkAction *action, FMDirectoryView *view)
+{
+    fm_directory_view_new_file (view, NULL, NULL);
 }
 
 static void
@@ -3372,6 +3451,11 @@ static const GtkActionEntry directory_view_entries[] = {
         /* label, accelerator */       N_("Create New _Folder"), "<control><shift>N",
         /* tooltip */                  N_("Create a new empty folder inside this folder"),
         G_CALLBACK (action_new_folder_callback) },
+    /* name, stock id, label */  { "New Documents", "document-new", N_("Create New _Document") },
+    /* name, stock id */         { "New Empty Document", NULL,
+        /* label, accelerator */       N_("_Empty Document"), NULL,
+        /* tooltip */                  N_("Create a new empty document inside this folder"),
+        G_CALLBACK (action_new_empty_file_callback) },
     /* name, stock id */         { "Open", NULL,
         /* label, accelerator */       N_("_Open"), NULL,
         /* tooltip */                  N_("Open the selected item"),
