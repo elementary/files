@@ -1,0 +1,4 @@
+debian/tmp/usr/bin
+debian/tmp/usr/include
+debian/tmp/usr/lib
+debian/tmp/usr/share
