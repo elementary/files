@@ -291,7 +291,7 @@ namespace Marlin.View
         private void make_marlin_default_fm (bool active)
         {
             if (active) {
-                AppInfo marlin_app = (AppInfo) new DesktopAppInfo ("marlin.desktop");
+                AppInfo marlin_app = (AppInfo) new DesktopAppInfo ("pantheon-files.desktop");
                 if (marlin_app != null) {
                     try {
                         marlin_app.set_as_default_for_type ("inode/directory");
