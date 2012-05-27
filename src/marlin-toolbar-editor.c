@@ -447,6 +447,10 @@ static TBEditorWidget *tb_editor_create_dialog(MarlinViewWindow *mvw)
                                          GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
     vbox = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
+    gtk_widget_set_margin_left (GTK_WIDGET(vbox), 12);
+    gtk_widget_set_margin_right (GTK_WIDGET(vbox), 12);
+    gtk_widget_set_margin_top (GTK_WIDGET(vbox), 12);
+    gtk_widget_set_margin_bottom (GTK_WIDGET(vbox), 12);
     gtk_box_set_spacing(GTK_BOX(vbox), 6);
     gtk_widget_set_name(dialog, "GeanyDialog");
     gtk_window_set_default_size(GTK_WINDOW(dialog), -1, 400);
@@ -549,7 +553,7 @@ static TBEditorWidget *tb_editor_create_dialog(MarlinViewWindow *mvw)
     gtk_box_pack_start(GTK_BOX(hbox), vbox_buttons, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(hbox), swin_used, TRUE, TRUE, 0);
 
-    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 6);
+    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 12);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
 
     gtk_widget_show_all(vbox);

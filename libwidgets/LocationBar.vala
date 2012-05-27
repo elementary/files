@@ -133,7 +133,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
         set_can_focus(true);
         set_visible_window (false);
-
+        
         /* x padding */
         x = 0;
         /* y padding */

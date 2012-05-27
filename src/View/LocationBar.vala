@@ -55,6 +55,7 @@ namespace Marlin.View.Chrome
             //border_width = 0;
             margin_top = 5;
             margin_bottom = 5;
+            margin_left = 3;
             
             add(bread);
         }
