@@ -35,25 +35,30 @@ namespace Marlin.View.Chrome
         //private ViewMode mode{
             set{
                 Widget target;
-
+                int active_index;
+                
                 switch (value) {
                 case ViewMode.LIST:
                     target = list;
+                    active_index = 1;
                     break;
                 case ViewMode.COMPACT:
                     target = compact;
+                    active_index = 2;
                     break;
                 case ViewMode.MILLER:
                     target = miller;
+                    active_index = 3;
                     break;
                 default:
                     target = icon;
+                    active_index = 0;
                     break;
                 }
 
                 Preferences.settings.set_enum ("default-viewmode", value);
                 //switcher.focus(target);
-                //switcher.set_active_widget (target);
+                switcher.set_active (active_index);
                 _mode = mode;
             }
             private get{
