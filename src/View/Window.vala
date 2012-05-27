@@ -33,6 +33,7 @@ namespace Marlin.View {
         private UndoManager undo_manager;
         public Widget menu_bar;
         public Chrome.TopMenu top_menu;
+        public Gtk.InfoBar info_bar;
         public Notebook tabs;
         public Marlin.Places.Sidebar sidebar;
 
@@ -124,7 +125,41 @@ namespace Marlin.View {
 
             menu_bar.button_press_event.connect(top_menu.right_click);
 
+            /* Info Bar */
+            info_bar = new Gtk.InfoBar ();
+            
+            var label = new Gtk.Label ("Files isn't your default file manager.");
+            label.set_line_wrap (true);
+            
+            var expander = new Label ("");
+            expander.hexpand = true;
+            
+            var make_default = new Gtk.Button.with_label (_("Set as default"));
+            make_default.clicked.connect (() => {
+                make_marlin_default_fm (true);
+                info_bar.hide ();
+            });
+            var ignore = new Gtk.Button.with_label (_("Ignore"));
+            ignore.clicked.connect (() => {
+                make_marlin_default_fm (false);
+                info_bar.hide ();
+            });
+            
+            var bbox = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
+            bbox.set_spacing (3);
+            bbox.pack_start (make_default, true, true, 5);
+            bbox.pack_start (ignore, true, true, 5);
+            
+            ((Box)info_bar.get_content_area ()).add (label);
+            ((Box)info_bar.get_content_area ()).add (expander);
+            ((Box)info_bar.get_content_area ()).add (bbox);
 
+            
+            if (is_marlin_mydefault_fm ())
+                info_bar.hide ();
+            else
+                info_bar.show_all ();
+            
             /* Contents */
             tabs = new Notebook();
             tabs.show_border = false;
@@ -162,6 +197,7 @@ namespace Marlin.View {
             window_box.show();
             window_box.pack_start(menu_bar, false, false, 0);
             window_box.pack_start(top_menu, false, false, 0);
+            window_box.pack_start(info_bar, false, false, 0);
             window_box.pack_start(lside_pane, true, true, 0);
 
             add(window_box);
@@ -491,6 +527,35 @@ namespace Marlin.View {
             current_tab.reload ();
             t_reload_cb = 0;
             return false;
+        }
+        
+        private bool is_marlin_mydefault_fm ()
+        {
+            bool trash_uri_is_default = false;
+            bool foldertype_is_default = "marlin.desktop" == AppInfo.get_default_for_type("inode/directory", false).get_id();
+            AppInfo? app_trash_handler = AppInfo.get_default_for_type("x-scheme-handler/trash", true);
+            if (app_trash_handler != null)
+                trash_uri_is_default = "marlin.desktop" == app_trash_handler.get_id();
+
+            return foldertype_is_default && trash_uri_is_default;
+        }
+        
+        private void make_marlin_default_fm (bool active)
+        {
+            if (active) {
+                AppInfo marlin_app = (AppInfo) new DesktopAppInfo ("pantheon-files.desktop");
+                if (marlin_app != null) {
+                    try {
+                        marlin_app.set_as_default_for_type ("inode/directory");
+                        marlin_app.set_as_default_for_type ("x-scheme-handler/trash");
+                    } catch (GLib.Error e) {
+                        critical ("Can't set Marlin default FM: %s", e.message);
+                    }
+                }
+            } else {
+                AppInfo.reset_type_associations ("inode/directory");
+                AppInfo.reset_type_associations ("x-scheme-handler/trash");            
+            }
         }
 
         private void action_reload_callback (Gtk.Action action) {
