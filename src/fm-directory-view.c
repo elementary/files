@@ -3451,7 +3451,7 @@ static const GtkActionEntry directory_view_entries[] = {
         /* label, accelerator */       N_("Create New _Folder"), "<control><shift>N",
         /* tooltip */                  N_("Create a new empty folder inside this folder"),
         G_CALLBACK (action_new_folder_callback) },
-    /* name, stock id, label */  { "New Documents", "document-new", N_("Create New _Document") },
+    /* name, stock id, label */  { "New Files", "document-new", N_("Create New _File") },
     /* name, stock id */         { "New Empty Document", NULL,
         /* label, accelerator */       N_("_Empty Document"), NULL,
         /* tooltip */                  N_("Create a new empty document inside this folder"),

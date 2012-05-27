@@ -7,7 +7,7 @@
     <menu action="File">
         <placeholder name="New Items Placeholder">
             <menuitem name="New Folder" action="New Folder"/>
-            <menu action="New Documents">
+            <menu action="New Files">
                 <menuitem name="New Empty Document" action="New Empty Document"/>
             </menu>
         </placeholder>
@@ -64,7 +64,7 @@
 		<placeholder name="New Object Items">
 			<menuitem name="New Folder" action="New Folder"/>
 			<!--<menuitem name="New Launcher" action="New Launcher"/>-->
-			<menu action="New Documents">
+			<menu action="New Files">
 		        <!--<menuitem name="No Templates" action="No Templates"/>
 			 	<placeholder name="New Documents Placeholder"/>
 			 	<separator name="After New Documents"/>-->
