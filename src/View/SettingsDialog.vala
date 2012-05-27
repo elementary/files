@@ -32,7 +32,13 @@ namespace Marlin.View
             /*height_request = 600;*/
             //width_request = 500;
             set_resizable(false);
-
+            
+            /* Set proper spacing */
+            ((Gtk.Box)get_content_area()).left_maring = 12;
+            ((Gtk.Box)get_content_area()).right_maring = 12;
+            ((Gtk.Box)get_content_area()).top_maring = 12;
+            ((Gtk.Box)get_content_area()).bottom_maring = 12;
+            
             var mai_notebook = new Granite.Widgets.StaticNotebook();
 
             var first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
