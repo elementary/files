@@ -128,13 +128,13 @@ namespace Marlin.View {
             /* Info Bar */
             info_bar = new Gtk.InfoBar ();
             
-            var label = new Gtk.Label ("Files is not your default file manager. Do you want to make it your default file manager?");
+            var label = new Gtk.Label ("Files isn't your default file manager.");
             label.set_line_wrap (true);
             
             var expander = new Label ("");
             expander.hexpand = true;
             
-            var make_default = new Gtk.Button.with_label (_("Do it!"));
+            var make_default = new Gtk.Button.with_label (_("Set as default"));
             make_default.clicked.connect (() => {
                 make_marlin_default_fm (true);
                 info_bar.hide ();
@@ -146,7 +146,7 @@ namespace Marlin.View {
             });
             
             var bbox = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
-            bbox.set_spacing (5);
+            bbox.set_spacing (3);
             bbox.pack_start (make_default, true, true, 5);
             bbox.pack_start (ignore, true, true, 5);
             
