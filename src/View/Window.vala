@@ -342,19 +342,25 @@ namespace Marlin.View {
                 current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
 
             var hbox = new Box(Gtk.Orientation.HORIZONTAL, 0);
-            hbox.pack_start(content.label, true, true, 0);
             var button = new Button();
             button.set_image(new Image.from_stock(Stock.CLOSE, IconSize.MENU));
             button.set_relief(ReliefStyle.NONE);
             button.set_focus_on_click(false);
-            hbox.pack_start(button, false, false, 0);
 
             button.clicked.connect(() => {
                 remove_tab(content);
             });
+            
+            if (is_close_first ()) {
+                hbox.pack_start (button, false, false, 0);
+                hbox.pack_start (content.label, false, false, 0);
+            } else {
+                hbox.pack_start (content.label, false, false, 0);
+                hbox.pack_start (button, false, false, 0);
+            }
 
             hbox.show_all();
-
+            
             var eventbox = new EventBox();
             eventbox.add(hbox);
             eventbox.set_visible_window(false);
@@ -527,6 +533,29 @@ namespace Marlin.View {
             current_tab.reload ();
             t_reload_cb = 0;
             return false;
+        }
+        
+        private bool is_close_first () {
+
+            string path = "/apps/metacity/general/button_layout";
+            GConf.Client cl = GConf.Client.get_default ();
+            string key;
+
+            try {
+                if (cl.get (path) != null)
+                    key = cl.get_string (path);
+                else
+                    return false;
+            } catch (GLib.Error err) {
+                warning ("Unable to read metacity settings: %s", err.message);
+            }
+
+            string[] keys = key.split (":");
+            if ("close" in keys[0])
+                return true;
+            else
+                return false;
+
         }
         
         private bool is_marlin_mydefault_fm ()
