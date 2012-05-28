@@ -471,11 +471,12 @@ namespace Marlin.View {
         }
 
         private void action_new_window (Gtk.Action action) {
-            ((Marlin.Application) application).create_window (current_tab.slot.location, screen);
+            var location = File.new_for_commandline_arg(Environment.get_home_dir());
+            ((Marlin.Application) application).create_window (location, screen);
         }
 
         private void action_new_tab (Gtk.Action action) {
-            add_tab (current_tab.slot.location);
+            add_tab (File.new_for_commandline_arg(Environment.get_home_dir()));
         }
 
         private void action_remove_tab (Gtk.Action action) {
