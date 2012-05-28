@@ -154,7 +154,8 @@
 	<menuitem name="Reset to Defaults" action="Reset to Defaults"/>-->
     <menuitem name="Show Hidden Files" action="Show Hidden Files"/>
 	<separator/>
-    <menuitem name="About" action="About"/>
     <menuitem name="MarlinSettings" action="MarlinSettings"/>
+	<separator />
+    <menuitem name="About" action="About"/>
 </popup>
 </ui>
