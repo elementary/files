@@ -532,10 +532,10 @@ namespace Marlin.View {
         private bool is_marlin_mydefault_fm ()
         {
             bool trash_uri_is_default = false;
-            bool foldertype_is_default = "marlin.desktop" == AppInfo.get_default_for_type("inode/directory", false).get_id();
+            bool foldertype_is_default = "pantheon-files.desktop" == AppInfo.get_default_for_type("inode/directory", false).get_id();
             AppInfo? app_trash_handler = AppInfo.get_default_for_type("x-scheme-handler/trash", true);
             if (app_trash_handler != null)
-                trash_uri_is_default = "marlin.desktop" == app_trash_handler.get_id();
+                trash_uri_is_default = "pantheon-files.desktop" == app_trash_handler.get_id();
 
             return foldertype_is_default && trash_uri_is_default;
         }

@@ -122,6 +122,6 @@ TargetEnvironment=Unity
 
 [Root Shortcut Group]
 Name=New Window as _Administrator
-Exec=gksu marlin
+Exec=gksu pantheon-files
 TargetEnvironment=Unity
 
