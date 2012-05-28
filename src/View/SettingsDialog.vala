@@ -28,7 +28,7 @@ namespace Marlin.View
     {
         public SettingsDialog(Window win)
         {
-            set_title(_("Marlin Preferences"));
+            set_title(_("Files Preferences"));
             /*height_request = 600;*/
             //width_request = 500;
             set_resizable(false);

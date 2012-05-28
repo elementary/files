@@ -160,6 +160,11 @@ namespace Marlin.View {
             else
                 info_bar.show_all ();
             
+            GLib.Timeout.add (3500, () => { 
+                info_bar.hide ();
+                return false;
+            });
+            
             /* Contents */
             tabs = new Notebook();
             tabs.show_border = false;
