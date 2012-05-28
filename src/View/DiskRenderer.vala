@@ -47,17 +47,19 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         base.render(cr, widget, background_area, area, flags);
         if(free_space > 0)
         {
-            Gtk.StyleContext context = widget.get_style_context();
-            Gdk.cairo_set_source_rgba(cr, context.get_background_color(Gtk.StateFlags.SELECTED));
-            cr.set_line_width(2);
-            cr.move_to(area.x, area.y + area.height);
-            cr.line_to(area.x + area.width, area.y + area.height);
-            cr.stroke();
-
+            Gtk.StyleContext context = widget.get_parent().get_style_context();
+            var color_border = context.get_color(Gtk.StateFlags.NORMAL);
+            color_border.alpha -= 0.4;
+            Gdk.cairo_set_source_rgba(cr, color_border);
+            cr.set_line_width(1);
+            cr.rectangle(area.x, area.y + area.height - 3, area.width + 1, 4);
+            cr.fill();
             Gdk.cairo_set_source_rgba(cr, context.get_color(Gtk.StateFlags.SELECTED));
-            cr.set_line_width(2);
-            cr.move_to(area.x, area.y + area.height);
-            cr.line_to(area.x + area.width - (int)(((double)free_space)/((double)disk_size)*((double)area.width)), area.y + area.height);
+            cr.rectangle(area.x + 1, area.y + area.height - 2, area.width - 1, 2);
+            cr.fill();
+
+            Gdk.cairo_set_source_rgba(cr, context.get_background_color(Gtk.StateFlags.SELECTED));
+            cr.rectangle(area.x + 1, area.y + area.height - 2, area.width - (int)(((double)free_space)/((double)disk_size)*((double)area.width)) - 1, 2);
             cr.stroke();
         }
     }
