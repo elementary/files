@@ -448,8 +448,6 @@ fm_directory_view_init (FMDirectoryView *view)
     gtk_scrolled_window_set_vadjustment (GTK_SCROLLED_WINDOW (view), NULL);
     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (view), GTK_SHADOW_NONE);
 
-    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (view), GTK_SHADOW_NONE);
-
     /* setup the icon renderer */
     view->icon_renderer = marlin_icon_renderer_new ();
     g_object_ref_sink (G_OBJECT (view->icon_renderer));
