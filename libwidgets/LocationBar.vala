@@ -479,13 +479,33 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         selected = -1;
         var breads = text.split("/");
         var newelements = new Gee.ArrayList<BreadcrumbsElement>();
-        if(breads.length == 0 || breads[0] == "") 
-            newelements.add(new BreadcrumbsElement(protocol, left_padding, right_padding));
+        if(breads.length == 0 || breads[0] == "") {
+            var element = new BreadcrumbsElement(protocol, left_padding, right_padding);
+            newelements.add(element);
+        }
         
+        
+        /* Add every mounted volume in our IconDirectory in order to load them properly in the pathbar if needed */
+        var volume_monitor = VolumeMonitor.get();
+        var mount_list = volume_monitor.get_mounts();
+        var icons_list = icons.length();
+        foreach(var mount in mount_list) {
+            IconDirectory icon_directory = { mount.get_root().get_path(),
+                                             ((ThemedIcon)mount.get_icon()).get_names()[0], 
+                                             false, null, mount.get_root().get_path().split("/"),
+                                             true, mount.get_name()};
+            icon_directory.exploded[0] = "/";
+            add_icon(icon_directory);
+        }
+
+
         foreach(string dir in breads)
         {
             if(dir != "")
-            newelements.add(new BreadcrumbsElement(dir, left_padding, right_padding));
+            {
+                var element = new BreadcrumbsElement(dir, left_padding, right_padding);
+                newelements.add(element);
+            }
         }
        
         if (protocol == Marlin.ROOT_FS_URI)
@@ -532,7 +552,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                     }
                     newelements[h].display = true;
                     newelements[h].set_icon(icon.icon);
-                    newelements[h].display_text = !icon.break_loop;
+                    newelements[h].display_text = (icon.text_displayed != null) || !icon.break_loop;
                     newelements[h].text_displayed = icon.text_displayed;
                     if(icon.break_loop)
                     {
@@ -541,6 +561,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                     }
                 }
             }
+        }
+
+        /* Remove the volume icons we added just before. */
+        for(uint i = icons.length() - 1; i >= icons_list; i--) {
+            icons.remove(icons.nth_data(i));
         }
 
         if(newelements.size > elements.size)

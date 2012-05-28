@@ -86,7 +86,7 @@ namespace Marlin.View.Chrome
     
         double menu_x_root;
         double menu_y_root;
-
+        
         public Breadcrumbs(UIManager ui, Window win)
         {
             /* grab the UIManager */
@@ -162,7 +162,7 @@ namespace Marlin.View.Chrome
             }
 
             
-            IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM, false, null, null, true, null};
+            IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM, false, null, null, false, null};
             icon.exploded = {"/"};
             add_icon(icon);
 
@@ -174,6 +174,7 @@ namespace Marlin.View.Chrome
             menu.show_all();
             
             need_completion.connect(on_need_completion);
+
 
         }
         
