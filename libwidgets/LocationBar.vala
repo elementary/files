@@ -283,10 +283,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     private void action_copy(Gtk.Action action)
     {
-        var display = get_display();
-        Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
-        Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
-        clipboard.set_text(entry.get_selection(), entry.get_selection().length);
+        string? selection = entry.get_selection();
+        if(selection != null) { /* else, it means that there is no selection */
+            var display = get_display();
+            Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
+            Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
+            clipboard.set_text(entry.get_selection(), entry.get_selection().length);
+        }
     }
     
     private void action_cut(Gtk.Action action)
