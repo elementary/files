@@ -60,10 +60,10 @@
 	        <menuitem name="Show Hide Menubar" action="Show Hide Menubar"/>
             <menuitem name="Show Hide Sidebar" action="Show Hide Sidebar"/>
             <separator/>
-            <menuitem name="Show Hidden Files" action="Show Hidden Files"/>
+
             <menuitem name="Show Desktop Files" action="Show Desktop Files"/>
 		<placeholder name="View Preferences Placeholder"/>
-		<separator/>
+		<!--<separator/>-->
 		<placeholder name="View Items Placeholder"/>
 		<separator/>
 		    <placeholder name="Zoom Items Placeholder">
@@ -152,8 +152,6 @@
         <menuitem name="Connect to Server" action="Connect to Server"/>
 	<separator/>
 	<menuitem name="Reset to Defaults" action="Reset to Defaults"/>-->
-    <menuitem name="Show Hidden Files" action="Show Hidden Files"/>
-	<separator/>
     <menuitem name="MarlinSettings" action="MarlinSettings"/>
 	<separator />
     <menuitem name="About" action="About"/>
