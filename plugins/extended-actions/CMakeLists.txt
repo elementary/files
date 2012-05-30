@@ -24,5 +24,5 @@ OPTIONS
 add_library(marlin-extended-actions SHARED
     ${VALA_C})
 target_link_libraries(marlin-extended-actions marlincore marlinwidgets)
-install(TARGETS marlin-extended-actions DESTINATION lib/marlin/plugins/core/)
-install(FILES extended-actions.plug DESTINATION lib/marlin/plugins/core/)
+install(TARGETS marlin-extended-actions DESTINATION lib/pantheon-files/plugins/core/)
+install(FILES extended-actions.plug DESTINATION lib/pantheon-files/plugins/core/)
