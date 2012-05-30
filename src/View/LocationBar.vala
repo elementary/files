@@ -95,15 +95,15 @@ namespace Marlin.View.Chrome
             /*add_icon({ Marlin.TRASH_URI, Marlin.ICON_TRASH, true, null, null, true, N_("Trash")});
             add_icon({ Marlin.NETWORK_URI, Marlin.ICON_NETWORK, true, null, null, true, N_("Network")});*/
             /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
-            add_icon({ "trash://", Marlin.ICON_TRASH, true, null, null, true, _("Trash")});
-            add_icon({ "network://", Marlin.ICON_NETWORK, true, null, null, true, _("Network")});
+            add_icon({ "trash://", Marlin.ICON_TRASH, true, null, null, null, true, _("Trash")});
+            add_icon({ "network://", Marlin.ICON_NETWORK, true, null, null, null, true, _("Network")});
 
             /* music */
             string dir;
             dir = Environment.get_user_special_dir(UserDirectory.MUSIC);
             if(dir.contains("/"))
             {
-                IconDirectory icon = {dir, "folder-music-symbolic", false, null, dir.split("/"), false, null};
+                IconDirectory icon = {dir, "folder-music-symbolic", false, null, null, dir.split("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
@@ -112,7 +112,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.PICTURES);
             if(dir.contains("/"))
             {
-                IconDirectory icon = {dir, "folder-pictures-symbolic", false, null, dir.split("/"), false, null};
+                IconDirectory icon = {dir, "folder-pictures-symbolic", false, null, null, dir.split("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
@@ -121,7 +121,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.VIDEOS);
             if(dir.contains("/"))
             {
-                IconDirectory icon = {dir, "folder-videos-symbolic", false, null, dir.split("/"), false, null};
+                IconDirectory icon = {dir, "folder-videos-symbolic", false, null, null, dir.split("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
@@ -130,7 +130,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.DOWNLOAD);
             if(dir.contains("/"))
             {
-                IconDirectory icon = {dir, "folder-downloads-symbolic", false, null, dir.split("/"), false, null};
+                IconDirectory icon = {dir, "folder-downloads-symbolic", false, null, null, dir.split("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
@@ -139,7 +139,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.DOCUMENTS);
             if(dir.contains("/"))
             {
-                IconDirectory icon = {dir, "folder-documents-symbolic", false, null, dir.split("/"), false, null};
+                IconDirectory icon = {dir, "folder-documents-symbolic", false, null, null, dir.split("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
@@ -148,7 +148,7 @@ namespace Marlin.View.Chrome
             dir = Environment.get_user_special_dir(UserDirectory.TEMPLATES);
             if(dir.contains("/"))
             {
-                IconDirectory icon = {dir, "folder-templates-symbolic", false, null, dir.split("/"), false, null};
+                IconDirectory icon = {dir, "folder-templates-symbolic", false, null, null, dir.split("/"), false, null};
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
@@ -156,13 +156,13 @@ namespace Marlin.View.Chrome
             dir = Environment.get_home_dir();
             if(dir.contains("/"))
             {
-                IconDirectory icon = {dir, "go-home-symbolic", false, null, dir.split("/"), true, null};
+                IconDirectory icon = {dir, "go-home-symbolic", false, null, null, dir.split("/"), true, null};
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
 
             
-            IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM, false, null, null, false, null};
+            IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM, false, null, null, null, false, null};
             icon.exploded = {"/"};
             add_icon(icon);
 

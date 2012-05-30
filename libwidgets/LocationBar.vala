@@ -30,6 +30,7 @@ public struct Marlin.View.Chrome.IconDirectory
     string path;
     string icon_name;
     bool protocol;
+    GLib.Icon gicon;
     Gdk.Pixbuf icon;
     string[] exploded;
     bool break_loop;
@@ -225,7 +226,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     
     protected void add_icon(IconDirectory icon)
     {
-        icon.icon = icon_factory.load_symbolic_icon (button_context, icon.icon_name, 16);
+        if (icon.gicon != null)
+            icon.icon = icon_factory.load_symbolic_icon_from_gicon (button_context, icon.gicon, 16);
+        else
+            icon.icon = icon_factory.load_symbolic_icon (button_context, icon.icon_name, 16);
         icons.append(icon);
     }
 
@@ -494,9 +498,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         var icons_list = icons.length();
         foreach(var mount in mount_list) {
             IconDirectory icon_directory = { mount.get_root().get_path(),
-                                             ((ThemedIcon)mount.get_icon()).get_names()[0], 
-                                             false, null, mount.get_root().get_path().split("/"),
-                                             true, mount.get_name()};
+                                             null, false,
+                                             mount.get_icon(),
+                                             null, mount.get_root().get_path().split("/"),
+                                             true, mount.get_name() };
             icon_directory.exploded[0] = "/";
             add_icon(icon_directory);
         }
