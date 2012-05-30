@@ -234,6 +234,8 @@ void            gof_file_add_emblem(GOFFile* file, const gchar* emblem);
  **/
 #define gof_file_get_thumb_state(file) (GOF_FILE ((file))->flags & GOF_FILE_THUMB_STATE_MASK)
 
+const gchar* gof_file_get_thumbnail_path (GOFFile *file);
+const gchar* gof_file_get_preview_path (GOFFile *file);
 gboolean        gof_file_can_set_owner (GOFFile *file);
 gboolean        gof_file_can_set_group (GOFFile *file);
 GList           *gof_file_get_settable_group_names (GOFFile *file);

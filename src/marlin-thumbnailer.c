@@ -116,7 +116,8 @@ static void                   marlin_thumbnailer_thumbnailer_ready      (DBusGPr
                                                                          MarlinThumbnailer     *thumbnailer);
 static guint                  marlin_thumbnailer_queue_async            (MarlinThumbnailer     *thumbnailer,
                                                                          gchar                **uris,
-                                                                         const gchar          **mime_hints);
+                                                                         const gchar          **mime_hints,
+                                                                         gboolean large);
 static gboolean               marlin_thumbnailer_error_idle             (gpointer               user_data);
 static gboolean               marlin_thumbnailer_ready_idle             (gpointer               user_data);
 static void                   marlin_thumbnailer_call_free              (MarlinThumbnailerCall *call);
@@ -582,7 +583,7 @@ marlin_thumbnailer_queue_async_reply (DBusGProxy *proxy,
 static guint
 marlin_thumbnailer_queue_async (MarlinThumbnailer *thumbnailer,
                                 gchar            **uris,
-                                const gchar      **mime_hints)
+                                const gchar      **mime_hints, gboolean large)
 {
     MarlinThumbnailerCall *thumbnailer_call;
     DBusGProxyCall        *call;
@@ -610,11 +611,22 @@ marlin_thumbnailer_queue_async (MarlinThumbnailer *thumbnailer,
     thumbnailer_call->thumbnailer = g_object_ref (thumbnailer);
 
     /* queue thumbnails for the given URIs asynchronously */
-    call = marlin_thumbnailer_proxy_queue_async (thumbnailer->thumbnailer_proxy,
+    if(large)
+    {
+        call = marlin_thumbnailer_proxy_queue_async (thumbnailer->thumbnailer_proxy,
                                                  (const gchar **)uris, mime_hints, 
                                                  "normal", "foreground", 0, 
                                                  marlin_thumbnailer_queue_async_reply,
                                                  thumbnailer_call);
+    }
+    else
+    {
+        call = marlin_thumbnailer_proxy_queue_async (thumbnailer->thumbnailer_proxy,
+                                                 (const gchar **)uris, mime_hints, 
+                                                 "normal", "foreground", 0, 
+                                                 marlin_thumbnailer_queue_async_reply,
+                                                 thumbnailer_call);
+    }
 
     /* remember to which request the call struct belongs */
     g_hash_table_insert (thumbnailer->request_call_mapping, request, call);
@@ -622,7 +634,6 @@ marlin_thumbnailer_queue_async (MarlinThumbnailer *thumbnailer,
     /* return the request ID used for this request */
     return request_no;
 }
-
 
 
 static gboolean
@@ -779,7 +790,8 @@ marlin_thumbnailer_get (void)
 gboolean
 marlin_thumbnailer_queue_file (MarlinThumbnailer  *thumbnailer,
                                GOFFile            *file,
-                               guint              *request)
+                               guint              *request,
+                               gboolean large)
 {
     GList files;
 
@@ -792,7 +804,7 @@ marlin_thumbnailer_queue_file (MarlinThumbnailer  *thumbnailer,
     files.prev = NULL;
 
     /* queue a thumbnail request for the file */
-    return marlin_thumbnailer_queue_files (thumbnailer, &files, request);
+    return marlin_thumbnailer_queue_files (thumbnailer, &files, request, large);
 }
 
 
@@ -800,7 +812,7 @@ marlin_thumbnailer_queue_file (MarlinThumbnailer  *thumbnailer,
 gboolean
 marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
                                 GList             *files,
-                                guint             *request)
+                                guint             *request, gboolean large)
 {
     gboolean      success = FALSE;
 #ifdef HAVE_DBUS
@@ -867,9 +879,9 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
 
         /* queue a thumbnail request for the URIs from the wait queue */
         if (request != NULL)
-            *request = marlin_thumbnailer_queue_async (thumbnailer, uris, mime_hints);
+            *request = marlin_thumbnailer_queue_async (thumbnailer, uris, mime_hints, large);
         else
-            marlin_thumbnailer_queue_async (thumbnailer, uris, mime_hints);
+            marlin_thumbnailer_queue_async (thumbnailer, uris, mime_hints, large);
 
         g_mutex_unlock (&thumbnailer->lock);
 

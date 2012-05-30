@@ -42,10 +42,12 @@ MarlinThumbnailer *marlin_thumbnailer_get             (void) G_GNUC_MALLOC;
 
 gboolean           marlin_thumbnailer_queue_file      (MarlinThumbnailer  *thumbnailer,
                                                        GOFFile            *file,
-                                                       guint              *request);
+                                                       guint              *request,
+                                                       gboolean large);
 gboolean           marlin_thumbnailer_queue_files     (MarlinThumbnailer  *thumbnailer,
                                                        GList              *files,
-                                                       guint              *request);
+                                                       guint              *request,
+                                                       gboolean large);
 void               marlin_thumbnailer_dequeue         (MarlinThumbnailer  *thumbnailer,
                                                        guint               request);
 

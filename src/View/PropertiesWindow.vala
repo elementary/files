@@ -1076,6 +1076,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     
     private void construct_preview_panel (Box box) {
         evbox = new ImgEventBox(Orientation.HORIZONTAL);
+        /*var pix = new Gdk.Pixbuf.from_file_at_size (goffile.get_preview_path (), 256, 256);*/
         var pix = goffile.get_icon_pixbuf (256, false, GOF.FileIconFlags.USE_THUMBNAILS);
         evbox.set_from_pixbuf (pix);
 
