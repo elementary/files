@@ -2349,6 +2349,11 @@ gof_file_get_preview_path(GOFFile* file)
         if(g_strv_length(thumbnail_path_split) == 2)
         {
             new_thumbnail_path = g_strjoin(".thumbnails/large", thumbnail_path_split[0], thumbnail_path_split[1], NULL);
+            if(!g_file_test(new_thumbnail_path, G_FILE_TEST_EXISTS))
+            {
+                g_free(new_thumbnail_path);
+                new_thumbnail_path = NULL;
+            }
         }
         else
         {

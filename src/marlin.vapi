@@ -49,6 +49,12 @@ namespace GOF {
 }
 
 namespace Marlin {
+    [CCode (cheader_filename = "marlin-thumbnailer.h")]
+    public class Thumbnailer : Object {
+        public static Thumbnailer get();
+        public bool queue_file(GOF.File file, int? request, bool large);
+        
+    }
     [CCode (cheader_filename = "marlin-application.h")]
     public class Application : Gtk.Application {
         public Application ();

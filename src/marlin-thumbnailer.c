@@ -615,7 +615,7 @@ marlin_thumbnailer_queue_async (MarlinThumbnailer *thumbnailer,
     {
         call = marlin_thumbnailer_proxy_queue_async (thumbnailer->thumbnailer_proxy,
                                                  (const gchar **)uris, mime_hints, 
-                                                 "normal", "foreground", 0, 
+                                                 "large", "foreground", 0, 
                                                  marlin_thumbnailer_queue_async_reply,
                                                  thumbnailer_call);
     }
