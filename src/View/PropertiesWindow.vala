@@ -1078,6 +1078,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     private void construct_preview_panel (Box box) {
         evbox = new ImgEventBox(Orientation.HORIZONTAL);
         string? preview = goffile.get_preview_path();
+        Gdk.Pixbuf pix;
         if(preview == null)
         {
             debug("Thumbnailing large...");
@@ -1086,18 +1087,25 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
                 string? preview_ = goffile.get_preview_path();
                 if(preview_ != null)
                 {
-                    var pix = new Gdk.Pixbuf.from_file_at_size (preview_, 256, 256);
-                    evbox.set_from_pixbuf (pix);
+                    var pix_ = new Gdk.Pixbuf.from_file_at_size (preview_, 256, 256);
+                    evbox.set_from_pixbuf (pix_);
                 }
                 goffile.disconnect(thumbnail_handler_id);
             });
+            pix = goffile.get_icon_pixbuf (256, false, GOF.FileIconFlags.USE_THUMBNAILS);
         }
         else
         {
-            var pix = new Gdk.Pixbuf.from_file_at_size (preview, 256, 256);
-            /*var pix = goffile.get_icon_pixbuf (256, false, GOF.FileIconFlags.USE_THUMBNAILS);*/
-            evbox.set_from_pixbuf (pix);
+            try
+            {
+                pix = new Gdk.Pixbuf.from_file_at_size (preview, 256, 256);
+            }
+            catch(Error e)
+            {
+                pix = goffile.get_icon_pixbuf (256, false, GOF.FileIconFlags.USE_THUMBNAILS);
+            }
         }
+        evbox.set_from_pixbuf (pix);
 
         box.pack_start (evbox, false, true, 0);
     }

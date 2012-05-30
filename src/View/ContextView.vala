@@ -207,7 +207,6 @@ namespace Marlin.View {
 
         private void update_icon()
         {
-            //int w_height, w_width;
             Allocation alloc;
             int icon_size_req;
     		
@@ -238,8 +237,29 @@ namespace Marlin.View {
             }*/
 
             //pixbuf = last_gof.get_icon_pixbuf (icon_size_req, false, GOF.FileIconFlags.USE_THUMBNAILS);
-            var micon = last_gof.get_icon (128, GOF.FileIconFlags.USE_THUMBNAILS);
-            pixbuf = micon.get_pixbuf_at_size (icon_size_req);
+            string preview = last_gof.get_preview_path();
+            bool use_previewed = false;
+            if(preview != null)
+            {
+                try
+                {
+                    pixbuf = new Gdk.Pixbuf.from_file_at_size (preview, icon_size_req, -1); // FIXME need cache
+                    use_previewed = true;
+                }
+                catch(Error e)
+                {
+                }
+            }
+            else if(last_gof.get_thumbnail_path() != null && last_gof.flags == GOF.File.ThumbState.READY)
+            {
+                Marlin.Thumbnailer.get().queue_file(last_gof, null, true);
+            }
+            if(!use_previewed)
+            {
+                var micon = last_gof.get_icon (128, GOF.FileIconFlags.USE_THUMBNAILS);
+                pixbuf = micon.get_pixbuf_at_size (icon_size_req);
+            }
+
             
             /* TODO ask tumbler a LARGE thumb for size > 128 */
             /*if (should_sync && (icon_size_req > w_width/2 || icon_size_req > w_height/2))

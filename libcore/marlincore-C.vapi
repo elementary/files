@@ -118,6 +118,10 @@ namespace GOF {
 
     [CCode (cheader_filename = "gof-file.h")]
     public class File : GLib.Object { 
+        [CCode (cheader_filename = "gof-file.h")]
+        enum ThumbState {
+            READY
+        }
         public signal void changed ();
         public signal void info_available ();
         public signal void icon_changed ();
