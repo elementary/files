@@ -1063,13 +1063,9 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     }
 
     private void construct_preview_panel (Box box) {
-        evbox = new Granite.Widgets.ImgEventBox (Orientation.HORIZONTAL);
-        try {
-            var pix = new Gdk.Pixbuf.from_file_at_size (goffile.location.get_path (), 245, 256);
-            evbox.set_from_pixbuf (pix);
-        } catch (Error e) {
-            warning (e.message);
-        }
+        evbox = new Granite.Widgets.ImgEventBox(Orientation.HORIZONTAL);
+        var pix = goffile.get_icon_pixbuf (256, false, GOF.FileIconFlags.USE_THUMBNAILS);
+        evbox.set_from_pixbuf (pix);
 
         box.pack_start (evbox, false, true, 0);
     }
