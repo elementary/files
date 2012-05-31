@@ -118,6 +118,10 @@ namespace GOF {
 
     [CCode (cheader_filename = "gof-file.h")]
     public class File : GLib.Object { 
+        [CCode (cheader_filename = "gof-file.h")]
+        enum ThumbState {
+            READY
+        }
         public signal void changed ();
         public signal void info_available ();
         public signal void icon_changed ();
@@ -178,6 +182,8 @@ namespace GOF {
         public void update_desktop_file ();
         public void query_update ();
         public void query_thumbnail_update ();
+        public unowned string? get_thumbnail_path();
+        public string? get_preview_path();
         public bool can_set_owner ();
         public bool can_set_group ();
         public bool can_set_permissions ();

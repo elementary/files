@@ -2321,6 +2321,10 @@ gof_file_get_ftype (GOFFile *file)
     return ftype;
 }
 
+
+/**
+ * transfer: none
+ **/
 const gchar *
 gof_file_get_thumbnail_path (GOFFile *file)
 {
@@ -2330,6 +2334,35 @@ gof_file_get_thumbnail_path (GOFFile *file)
         return g_file_info_get_attribute_byte_string (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH);
 
     return NULL;
+}
+
+const gchar *
+gof_file_get_preview_path(GOFFile* file)
+{
+    gchar* thumbnail_path = gof_file_get_thumbnail_path(file);
+    gchar* new_thumbnail_path = NULL;
+    gchar** thumbnail_path_split = NULL;
+
+    if (thumbnail_path != NULL)
+    {
+        thumbnail_path_split = g_strsplit(thumbnail_path, ".thumbnails/normal", -1);
+        if(g_strv_length(thumbnail_path_split) == 2)
+        {
+            new_thumbnail_path = g_strjoin(".thumbnails/large", thumbnail_path_split[0], thumbnail_path_split[1], NULL);
+            if(!g_file_test(new_thumbnail_path, G_FILE_TEST_EXISTS))
+            {
+                g_free(new_thumbnail_path);
+                new_thumbnail_path = NULL;
+            }
+        }
+        else
+        {
+            g_critical("Thumbnailer is not FD.o compliant?");
+            new_thumbnail_path = g_strdup(thumbnail_path);
+        }
+        g_strfreev(thumbnail_path_split);
+    }
+    return new_thumbnail_path;
 }
 
 gboolean

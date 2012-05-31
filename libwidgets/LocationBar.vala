@@ -30,6 +30,7 @@ public struct Marlin.View.Chrome.IconDirectory
     string path;
     string icon_name;
     bool protocol;
+    GLib.Icon gicon;
     Gdk.Pixbuf icon;
     string[] exploded;
     bool break_loop;
@@ -225,7 +226,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     
     protected void add_icon(IconDirectory icon)
     {
-        icon.icon = icon_factory.load_symbolic_icon (button_context, icon.icon_name, 16);
+        if (icon.gicon != null)
+            icon.icon = icon_factory.load_symbolic_icon_from_gicon (button_context, icon.gicon, 16);
+        else
+            icon.icon = icon_factory.load_symbolic_icon (button_context, icon.icon_name, 16);
         icons.append(icon);
     }
 
@@ -283,10 +287,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     private void action_copy(Gtk.Action action)
     {
-        var display = get_display();
-        Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
-        Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
-        clipboard.set_text(entry.get_selection(), entry.get_selection().length);
+        string? selection = entry.get_selection();
+        if(selection != null) { /* else, it means that there is no selection */
+            var display = get_display();
+            Gdk.Atom atom = Gdk.SELECTION_CLIPBOARD;
+            Gtk.Clipboard clipboard = Gtk.Clipboard.get_for_display(display,atom);
+            clipboard.set_text(entry.get_selection(), entry.get_selection().length);
+        }
     }
     
     private void action_cut(Gtk.Action action)
@@ -479,13 +486,34 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         selected = -1;
         var breads = text.split("/");
         var newelements = new Gee.ArrayList<BreadcrumbsElement>();
-        if(breads.length == 0 || breads[0] == "") 
-            newelements.add(new BreadcrumbsElement(protocol, left_padding, right_padding));
+        if(breads.length == 0 || breads[0] == "") {
+            var element = new BreadcrumbsElement(protocol, left_padding, right_padding);
+            newelements.add(element);
+        }
         
+        
+        /* Add every mounted volume in our IconDirectory in order to load them properly in the pathbar if needed */
+        var volume_monitor = VolumeMonitor.get();
+        var mount_list = volume_monitor.get_mounts();
+        var icons_list = icons.length();
+        foreach(var mount in mount_list) {
+            IconDirectory icon_directory = { mount.get_root().get_path(),
+                                             null, false,
+                                             mount.get_icon(),
+                                             null, mount.get_root().get_path().split("/"),
+                                             true, mount.get_name() };
+            icon_directory.exploded[0] = "/";
+            add_icon(icon_directory);
+        }
+
+
         foreach(string dir in breads)
         {
             if(dir != "")
-            newelements.add(new BreadcrumbsElement(dir, left_padding, right_padding));
+            {
+                var element = new BreadcrumbsElement(dir, left_padding, right_padding);
+                newelements.add(element);
+            }
         }
        
         if (protocol == Marlin.ROOT_FS_URI)
@@ -532,7 +560,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                     }
                     newelements[h].display = true;
                     newelements[h].set_icon(icon.icon);
-                    newelements[h].display_text = !icon.break_loop;
+                    newelements[h].display_text = (icon.text_displayed != null) || !icon.break_loop;
                     newelements[h].text_displayed = icon.text_displayed;
                     if(icon.break_loop)
                     {
@@ -541,6 +569,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                     }
                 }
             }
+        }
+
+        /* Remove the volume icons we added just before. */
+        for(uint i = icons.length() - 1; i >= icons_list; i--) {
+            icons.remove(icons.nth_data(i));
         }
 
         if(newelements.size > elements.size)

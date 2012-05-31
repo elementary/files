@@ -276,7 +276,7 @@ file_changed_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
     g_debug ("%s %s %d\n", G_STRFUNC, file->uri, file->flags);
     fm_list_model_file_changed (view->model, file, directory);
     guint id;
-    marlin_thumbnailer_queue_file (view->details->thumbnailer, file, &id);
+    marlin_thumbnailer_queue_file (view->details->thumbnailer, file, &id, /* large */ FALSE);
 }
 
 static void
@@ -2488,7 +2488,7 @@ fm_directory_view_request_thumbnails (FMDirectoryView *view)
         if (files != NULL) {
             /* queue a thumbnail request */
             marlin_thumbnailer_queue_files (view->details->thumbnailer, files,
-                                            &view->details->thumbnail_request);
+                                            &view->details->thumbnail_request, FALSE /* large */);
             /* release the file list */
             g_list_free_full (files, g_object_unref);
         }
