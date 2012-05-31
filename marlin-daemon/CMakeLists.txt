@@ -31,7 +31,7 @@ set(LIB_PATHS
 )
 link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS}
-    "-DGETTEXT_PACKAGE=\"pantheon-files\""
+    "-DGETTEXT_PACKAGE=\"marlin\""
      -O2
     )
 vala_precompile(VALA_C
@@ -43,7 +43,7 @@ PACKAGES
     sqlite3
 OPTIONS
     --thread)
-add_executable(pantheon-files-daemon
+add_executable(marlin-daemon
     ${VALA_C} )
-target_link_libraries(pantheon-files-daemon ${DEPS_LIBRARIES})
-install(TARGETS pantheon-files-daemon RUNTIME DESTINATION bin)
+target_link_libraries(marlin-daemon ${DEPS_LIBRARIES})
+install(TARGETS marlin-daemon RUNTIME DESTINATION bin)
