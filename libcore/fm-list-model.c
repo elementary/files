@@ -243,7 +243,7 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
     switch (column) {
     case FM_LIST_MODEL_FILE_COLUMN:
         g_value_init (value, GOF_TYPE_FILE);
-        if (file != NULL)
+        if (file != NULL && GOF_IS_FILE(file))
             g_value_set_object (value, file);
         break;
 

@@ -982,6 +982,8 @@ compare_by_type (GOFFile *file1, GOFFile *file2)
 static int
 compare_by_display_name (GOFFile *file1, GOFFile *file2)
 {
+    g_return_val_if_fail (GOF_IS_FILE (file1), -1);
+    g_return_val_if_fail (GOF_IS_FILE (file2), -1);
     const char *name_1, *name_2;
     gboolean sort_last_1, sort_last_2;
     int compare;

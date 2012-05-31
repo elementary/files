@@ -198,12 +198,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             if(elements.size > 0)
             {
                 string strloc = get_elements_path ();
-                warning ("strloc %s", strloc);
                 File location = File.new_for_commandline_arg (strloc);
                 location = location.get_parent ();
                 if (location == null)
                     location = File.new_for_commandline_arg (protocol);
-                changed (location.get_path());
+                changed  (location.get_uri() + "/");
                 grab_focus();
             }
         });
@@ -395,6 +394,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                     if(x <= x_render + 5 && x > x_previous + 5)
                     {
                         selected = elements.index_of(element);
+                        print("%s\n\n\n", newpath);
                         changed(newpath);
                         found = true;
                         break;

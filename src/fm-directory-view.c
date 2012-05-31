@@ -2400,31 +2400,6 @@ fm_directory_view_schedule_thumbnail_timeout (FMDirectoryView *view)
                        view);
 }
 
-#if 0
-static void
-fm_directory_view_schedule_thumbnail_idle (FMDirectoryView *view)
-{
-    g_return_if_fail (FM_IS_DIRECTORY_VIEW (view));
-
-    /* delay creating the idle until the view has finished loading.
-     * this is done because we only can tell the visible range reliably after
-     * all items have been added, layouting has finished and we've perhaps 
-     * scrolled to the file remembered the last time */
-    if (fm_directory_view_get_loading (FM_DIRECTORY_VIEW (view)))
-    {
-        view->details->thumbnailing_scheduled = TRUE;
-        return;
-    }
-
-    /* cancel any pending thumbnail sources or requests */
-    fm_directory_view_cancel_thumbnailing (view);
-
-    /* schedule the timeout or idle handler */
-    view->details->thumbnail_source_id = 
-        g_idle_add ((GSourceFunc) fm_directory_view_request_thumbnails, view);
-}
-#endif
-
 static gboolean
 fm_directory_view_request_thumbnails (FMDirectoryView *view)
 {
