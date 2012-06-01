@@ -21,8 +21,8 @@ PACKAGES
     gee-1.0
 OPTIONS
     --thread)
-add_library(marlin-extended-actions SHARED
+add_library(marlin-contractor SHARED
     ${VALA_C})
-target_link_libraries(marlin-extended-actions marlincore marlinwidgets)
-install(TARGETS marlin-extended-actions DESTINATION lib/marlin/plugins/core/)
-install(FILES extended-actions.plug DESTINATION lib/marlin/plugins/core/)
+target_link_libraries(marlin-contractor marlincore marlinwidgets)
+install(TARGETS marlin-contractor DESTINATION lib/pantheon-files/plugins/core/)
+install(FILES contractor.plug DESTINATION lib/pantheon-files/plugins/core/)

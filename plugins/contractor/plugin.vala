@@ -22,7 +22,7 @@
 using Gtk;
 using Gee;
 
-[DBus (name = "org.magma.ExtendedActions")]
+[DBus (name = "org.elementary.contractor")]
 public interface ExtendedActionsService : Object
 {
     //public abstract GLib.HashTable<string,string>[] GetServicesByMime (string mime) throws IOError;
@@ -44,8 +44,8 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
     {
         try {
             service_eactions = Bus.get_proxy_sync (BusType.SESSION,
-                                                   "org.magma.ExtendedActions",
-                                                   "/org/magma/ExtendedActions");
+                                                   "org.elementary.contractor",
+                                                   "/org/elementary/contractor");
         } catch (IOError e) {
             stderr.printf ("%s\n", e.message);
         }
