@@ -53,6 +53,8 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
         this.text_width = Pango.units_to_double(text_width);
         this.text_height = Pango.units_to_double(text_height);
     }
+
+    public bool pressed = false;
     
     public double draw(Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, Gtk.Widget widget)
     {
@@ -63,34 +65,55 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
         string text = text_displayed ?? this.text;
         Pango.Layout layout = widget.create_pango_layout(text);
         if(icon == null)
-        {
             computetext_width(layout);
-        }
         else if(!display_text)
-        {
             text_width = icon.get_width();
-        }
-        else
-        {
+        else {
             computetext_width(layout);
             text_width += icon.get_width() + 5;
         }
-        if(max_width > 0)
-        {
+
+        if(max_width > 0) {
             layout.set_width(Pango.units_from_double(max_width));
             layout.set_ellipsize(Pango.EllipsizeMode.MIDDLE);
         }
         
-        if(offset > 0.0)
-        {
-            cr.move_to(x - 5, y);
+        if(offset > 0.0) {
+            int estimated_border_size = 3; /* to be under the borders properly. */
+            cr.move_to(x - height/2, y);
             cr.line_to(x, y + height/2);
-            cr.line_to(x - 5, y + height);
-            cr.line_to(x + text_width + 5, y+ height);
-            cr.line_to(x + text_width + 10 + 5, y+height/2);
-            cr.line_to(x + text_width + 5, y);
+            cr.line_to(x - height/2, y + height);
+            cr.line_to(x + text_width + estimated_border_size, y + height);
+            cr.line_to(x + text_width + height/2 + estimated_border_size, y+height/2);
+            cr.line_to(x + text_width + estimated_border_size, y);
             cr.close_path();
             cr.clip();
+        }
+        if(pressed) {
+            cr.save();
+            int estimated_border_size = 3; /* to be under the borders properly. */
+            double text_width = max_width > 0 ? max_width : text_width;
+            cr.move_to(x - height/2 - estimated_border_size, 0);
+            cr.line_to(x - height/2 - estimated_border_size, y);
+            cr.line_to(x - estimated_border_size, y + height/2);
+            cr.line_to(x - height/2 - estimated_border_size, y + height);
+            cr.line_to(x - height/2 - estimated_border_size, y + height + 3);
+            cr.line_to(x + text_width + estimated_border_size, y + height + 3);
+            cr.line_to(x + text_width + estimated_border_size, y + height);
+            cr.line_to(x + text_width + height/2 + estimated_border_size, y+height/2);
+            cr.line_to(x + text_width + estimated_border_size, y);
+            cr.line_to(x + text_width + estimated_border_size, 0);
+            cr.close_path();
+            //Gtk.render_background(widget.get_parent().get_style_context().get_background_color(Gtk.StateFlags.NORMAL), cr, 0, 0, );
+            //cr.fill_preserve();
+            //cr.set_source_rgba(0, 125, 0, 0.0);
+            cr.clip();
+            button_context.save();
+            button_context.set_state(Gtk.StateFlags.ACTIVE);
+            Gtk.render_background(button_context, cr, x - height/2 - estimated_border_size, y, text_width + 2*height/2 + 4*estimated_border_size, height);
+            Gtk.render_frame(button_context, cr, x - height/2 - 4*estimated_border_size, y, text_width + 2*height/2 + 8*estimated_border_size, height);
+            button_context.restore();
+            cr.restore();
         }
         
         x += left_padding;
@@ -115,16 +138,43 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
             Gtk.render_layout(button_context, cr, x + icon.get_width() + 5,
                         y + height/2 - text_height/2, layout);
         }
-        cr.save();
-        cr.set_source_rgba(0,0,0,0.5);
+
+        if (pressed) {
+            double text_width = max_width > 0 ? max_width : text_width;
+            int estimated_border_size = 3; /* to be under the borders properly. */
+            cr.restore();
+
+            cr.move_to(0, 0);
+            cr.line_to(x - height/2 - 2*estimated_border_size - 1, 0);
+            cr.line_to(x - estimated_border_size, y + height/2);
+            cr.line_to(x - height/2 - 2*estimated_border_size - 1, y + height + 3);
+            cr.line_to(0, y + height + 3);
+            cr.close_path();
+
+            cr.move_to(x + text_width, y + height + 3);
+            cr.line_to(x + text_width, y + height);
+            cr.line_to(x + text_width + height/2, y+height/2);
+            cr.line_to(x + text_width, y);
+            cr.line_to(x + text_width, 0);
+            cr.line_to(widget.get_allocated_width(), 0);
+            cr.line_to(widget.get_allocated_width(), y + height);
+            cr.line_to(widget.get_allocated_width(), y + height + 3);
+            cr.close_path();
+            cr.clip();
+            
+            cr.save();
+        }
         x += right_padding + (max_width > 0 ? max_width : text_width);
         /* Draw the separator */
+        cr.save();
+        cr.set_source_rgba(0,0,0,0.5);
         cr.translate(x - height/4, y + height/2);
-        cr.rectangle(0, -height/2 + 2, height, height - 4);
+        cr.rectangle(0, -height/2 + 2, height - 4, height - 4);
         cr.clip();
         cr.rotate(Math.PI/4);
         Gtk.render_frame(button_context, cr, -height/2, -height/2, Math.sqrt(height*height), Math.sqrt(height*height));
         cr.restore();
+
         x += height/2;
         return x;
     }

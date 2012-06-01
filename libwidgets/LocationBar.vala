@@ -353,12 +353,28 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     public override bool button_press_event(Gdk.EventButton event)
     {
+        foreach(BreadcrumbsElement element in elements)
+            element.pressed = false;
         if(timeout == -1 && event.button == 1){
             timeout = (int) Timeout.add(800, () => {
                 select_bread_from_coord(event.x, event);
                 timeout = -1;
                 return false;
             });
+            double x_render = 0;
+            foreach(BreadcrumbsElement element in elements)
+            {
+                if(element.display)
+                {
+                    x_render += element.real_width;
+                    if(event.x <= x_render + 5)
+                    {
+                        element.pressed = true;
+                        break;
+                    }
+                }
+            }
+            queue_draw();
         }
         if(event.button == 3)
         {
@@ -374,6 +390,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     public override bool button_release_event(Gdk.EventButton event)
     {
+        foreach(BreadcrumbsElement element in elements)
+            element.pressed = false;
         if(timeout != -1){
             Source.remove((uint) timeout);
             timeout = -1;
@@ -835,7 +853,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
         /* Draw toolbar background */
         Gtk.render_background(button_context, cr, 0, margin, width, height_marged);
-        Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
 
         int breadcrumbs_displayed = 0;
         double max_width = get_all_breadcrumbs_width(out breadcrumbs_displayed);
@@ -863,6 +880,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             }
         }
 
+        cr.save();
         /* Really draw the elements */
         foreach(BreadcrumbsElement element in elements)
         {
@@ -890,6 +908,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         x_render_saved = x_render + space_breads/2;
         //entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, focus ? entry_context : button_context);
         entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, button_context);
+        
+        cr.restore();
+        /* Draw frame: it must be done at the end to be on the background drawn by pressed breadcrumbs */
+        Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
         return false;
     }
 

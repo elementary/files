@@ -816,10 +816,12 @@ static void gof_file_finalize (GObject* obj) {
     GOFFile *file;
 
     file = GOF_FILE (obj);
+#if 0
     if (file->pix)
         g_warning ("%s %s %u\n", G_STRFUNC, file->uri, G_OBJECT (file->pix)->ref_count);
     else
         g_warning ("%s %s", G_STRFUNC, file->basename);
+#endif
 
     g_clear_object (&file->info);
     if (file->location)
