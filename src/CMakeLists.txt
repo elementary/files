@@ -43,7 +43,7 @@ add_definitions(${CFLAGS}
      -O2
     )
 vala_precompile(VALA_C
-    config.vala
+    ${CMAKE_BINARY_DIR}/src/config.vala
 
     marlin-deep-count.vala
     View/SettingsDialog.vala
