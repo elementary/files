@@ -111,7 +111,7 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
             button_context.save();
             button_context.set_state(Gtk.StateFlags.ACTIVE);
             Gtk.render_background(button_context, cr, x - height/2 - estimated_border_size, y, text_width + 2*height/2 + 4*estimated_border_size, height);
-            Gtk.render_frame(button_context, cr, x - height/2 - 4*estimated_border_size, y, text_width + 2*height/2 + 8*estimated_border_size, height);
+            Gtk.render_frame(button_context, cr, 0, y, widget.get_allocated_width(), height );
             button_context.restore();
             cr.restore();
         }
@@ -172,7 +172,10 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
         cr.rectangle(0, -height/2 + 2, height - 4, height - 4);
         cr.clip();
         cr.rotate(Math.PI/4);
+        button_context.save();
+        button_context.add_class("noradius-button");
         Gtk.render_frame(button_context, cr, -height/2, -height/2, Math.sqrt(height*height), Math.sqrt(height*height));
+        button_context.restore();
         cr.restore();
 
         x += height/2;

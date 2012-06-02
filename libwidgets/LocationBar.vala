@@ -128,6 +128,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         Gtk.Border border = new Gtk.Border();
         button_context.get_padding(Gtk.StateFlags.NORMAL, border);
 #endif
+        var css_provider = new Gtk.CssProvider();
+        css_provider.load_from_data(".noradius-button { border-radius:0px; }", -1);
+        button_context.add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         left_padding = border.left;
         right_padding = border.right;
@@ -357,6 +360,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             element.pressed = false;
         if(timeout == -1 && event.button == 1){
             timeout = (int) Timeout.add(800, () => {
+                foreach(BreadcrumbsElement element in elements)
+                    element.pressed = false;
                 select_bread_from_coord(event.x, event);
                 timeout = -1;
                 return false;
