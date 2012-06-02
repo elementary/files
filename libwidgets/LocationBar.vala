@@ -224,6 +224,89 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         });
 
         entry.hide();
+
+
+        /* Drag and drop */
+        Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, 0};
+        Gtk.drag_dest_set(this, Gtk.DestDefaults.ALL, {target_uri_list}, Gdk.DragAction.MOVE);
+        drag_begin.connect(on_drag_begin);
+        drag_leave.connect(on_drag_leave);
+        drag_motion.connect(on_drag_motion);
+        drag_data_received.connect(on_drag_data_received);
+    }
+
+    void on_drag_begin(Gdk.DragContext drag_context) {
+        critical("Start drag...");
+    }
+
+    void on_drag_leave(Gdk.DragContext drag_context, uint time) {
+        foreach(BreadcrumbsElement element in elements) {
+            if(element.pressed) {
+                element.pressed = false;
+                queue_draw();
+            }
+        }
+    }
+
+    void on_drag_data_received (Gdk.DragContext context, int x, int y, Gtk.SelectionData selection_data, uint info, uint time_) {
+        var real_action = context.get_selected_action();
+        List<GLib.File> uris = new List<GLib.File>();
+        foreach(var uri in selection_data.get_uris()) {
+            print("Path to move: %s\n", uri);
+            uris.append(File.new_for_uri(uri));
+        }
+
+
+
+        double x_render = 0;
+        string newpath = protocol;
+        bool found = false;
+        foreach(BreadcrumbsElement element in elements)
+        {
+            if(element.display)
+            {
+                newpath += element.text + "/";
+                if(x_render <= x <= x_render + element.real_width)
+                {
+                    found = true;
+                    break;
+                }
+                x_render += element.real_width;
+            }
+        }
+        if(found) {
+            print("Move to: %s\n", newpath);
+            var target_file = GLib.File.new_for_uri(newpath);
+            on_file_droped(uris, target_file, real_action);
+        }
+    }
+        
+    protected abstract void on_file_droped(List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action);
+
+
+    bool on_drag_motion(Gdk.DragContext drag_context, int x, int y, uint time) {
+        Gtk.drag_unhighlight(this);
+        
+        double x_render = 0;
+        foreach(BreadcrumbsElement element in elements)
+        {
+            if(element.display)
+            {
+                if(x_render <= x <= x_render + element.real_width)
+                {
+                    if(!element.pressed) {
+                        element.pressed = true;
+                        queue_draw();
+                    }
+                }
+                else if(element.pressed) {
+                    element.pressed = false;
+                    queue_draw();
+                }
+                x_render += element.real_width;
+            }
+        }
+        return false;
     }
     
     protected void add_icon(IconDirectory icon)

@@ -289,6 +289,10 @@ namespace Marlin.View.Chrome
             }
             menu.show_all();
         }
+
+        protected override void on_file_droped(List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action) {
+            Marlin.FileOperations.copy_move(uris, null, target_file, real_action);
+        }
         
         public override string? update_breadcrumbs(string new_path, string base_path)
         {
