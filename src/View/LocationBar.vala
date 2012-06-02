@@ -238,6 +238,7 @@ namespace Marlin.View.Chrome
         {
             string path = get_elements_path ();
 
+//#if 0
             string[] stext = entry.text.split("/");
 
             switch(stext.length)
@@ -252,19 +253,18 @@ namespace Marlin.View.Chrome
                 update_breadcrumbs (entry.text, path);
                 break;
             }
+//#endif
+//            to_search = entry.text;
 
             entry.completion = "";
             autocompleted = false;
 
-            //message ("zz1 path %s", path);
             path += entry.text;
-            //message ("zz1 path %s %s", path, to_search);
             if(to_search != "")
                 path = Marlin.Utils.get_parent(path);
 
             if (path != null && path.length > 0)
             {
-                debug ("gof dir load path %s", path);
                 var directory = File.new_for_uri (path);
                 files = GOF.Directory.Async.from_gfile (directory);
                 if(files.file.exists)

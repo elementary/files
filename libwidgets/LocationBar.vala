@@ -65,8 +65,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     double anim_state = 0;
 
     Gtk.StyleContext button_context;
-    /*Gtk.StyleContext button_widget_context;
-    Gtk.StyleContext entry_context;*/
     public BreadcrumbsEntry entry;
 
     /**
@@ -109,14 +107,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         icons = new List<IconDirectory?>();
 
         button_context = get_style_context();
-        /*button_context = new StyleContext ();
-        var path = new Gtk.WidgetPath ();
-        path.append_type (typeof (BasePathBar));
-        path.append_type (typeof (Button));
-        button_context.set_path (path);*/
-
-        /*button_widget_context = button_context;
-        entry_context = new Entry().get_style_context();*/
 
         button_context.add_class("button");
         button_context.add_class("raised");

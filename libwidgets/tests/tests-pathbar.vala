@@ -23,6 +23,7 @@ public class Breadcrumbs : Marlin.View.Chrome.BasePathBar
 {
     public Breadcrumbs(Gtk.UIManager ui) {}
     public override void load_right_click_menu(double x, double y) {}
+    protected override void on_file_droped(List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action) {}
 }
 
 void add_pathbar_tests()

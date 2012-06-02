@@ -208,7 +208,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object
                 selected_start = cursor;
                 need_selection_update = true;
             }
-            else
+            else if(!shift_pressed)
             {
                 complete();
             }
@@ -444,9 +444,8 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object
         layout.set_text(text.slice(0, cursor), -1);
         if(blink && focus)
         {
-            cr.move_to(x + get_width(layout), height/4);
-            cr.line_to(x + get_width(layout), height/2 + height/4);
-            cr.stroke();
+            cr.rectangle(x + get_width(layout), height/6, 1, 4*height/6);
+            cr.fill();
         }
         if(text != "")
         {
@@ -474,13 +473,13 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object
         /* draw selection */
         if(focus && selected_start >= 0 && selected_end >= 0)
         {
-            cr.rectangle(x + selection_start, height/4, selection_end - selection_start, height/2);
+            cr.rectangle(x + selection_start, height/6, selection_end - selection_start, 4*height/6);
 #if VALA_0_14
             color = button_context.get_background_color(Gtk.StateFlags.SELECTED);
 #else
             button_context.get_background_color(Gtk.StateFlags.SELECTED, color);
 #endif
-            cr.set_source_rgba(color.red, color.green, color.blue, color.alpha);
+            Gdk.cairo_set_source_rgba(cr, color);
             cr.fill();
             
             layout.set_text(get_selection(), -1);
@@ -489,8 +488,8 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object
 #else
             button_context.get_color(Gtk.StateFlags.SELECTED, color);
 #endif
-            cr.set_source_rgba(color.red, color.green, color.blue, color.alpha);
-            cr.move_to(x + Math.fmin(selection_start, selection_end), height/4);
+            Gdk.cairo_set_source_rgba(cr, color);
+            cr.move_to(x + Math.fmin(selection_start, selection_end), height/2 - text_height/2);
             Pango.cairo_show_layout(cr, layout);
         }
     }
