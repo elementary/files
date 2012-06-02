@@ -104,9 +104,7 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
             cr.line_to(x + text_width + estimated_border_size, y);
             cr.line_to(x + text_width + estimated_border_size, 0);
             cr.close_path();
-            //Gtk.render_background(widget.get_parent().get_style_context().get_background_color(Gtk.StateFlags.NORMAL), cr, 0, 0, );
-            //cr.fill_preserve();
-            //cr.set_source_rgba(0, 125, 0, 0.0);
+
             cr.clip();
             button_context.save();
             button_context.set_state(Gtk.StateFlags.ACTIVE);
@@ -164,10 +162,11 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
             
             cr.save();
         }
+        
         x += right_padding + (max_width > 0 ? max_width : text_width);
+        
         /* Draw the separator */
         cr.save();
-        cr.set_source_rgba(0,0,0,0.5);
         cr.translate(x - height/4, y + height/2);
         cr.rectangle(0, -height/2 + 2, height - 4, height - 4);
         cr.clip();
@@ -179,6 +178,7 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
         cr.restore();
 
         x += height/2;
+        
         return x;
     }
 }

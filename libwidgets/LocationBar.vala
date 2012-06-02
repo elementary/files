@@ -817,7 +817,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     {
         entry.show();
         //button_context = entry_context;
-        button_context.set_state (StateFlags.ACTIVE);
+        //button_context.set_state (StateFlags.ACTIVE);
         focus = true;
         return true;
     }
@@ -847,6 +847,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     public override bool draw(Cairo.Context cr)
     {
+        button_context.set_state (StateFlags.NORMAL);
         //propagate_draw (get_child (), cr);
         double height = get_allocated_height();
         double width = get_allocated_width();
@@ -911,12 +912,49 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         //draw_selection(cr);
 
         x_render_saved = x_render + space_breads/2;
-        //entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, focus ? entry_context : button_context);
-        entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, button_context);
         
         cr.restore();
         /* Draw frame: it must be done at the end to be on the background drawn by pressed breadcrumbs */
-        Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
+
+        if(focus) {
+            cr.save();
+            button_context.save();
+            x_render -= height_marged/2 + 3;
+
+            
+            cr.move_to(0, 0);
+            cr.line_to(0, y + height_marged + 3);
+            cr.line_to(x_render, y + height_marged + 3);
+            cr.line_to(x_render, y + height_marged);
+            cr.line_to(x_render + height_marged/2, y+height_marged/2);
+            cr.line_to(x_render, y);
+            cr.line_to(x_render, 0);
+            cr.close_path();
+            cr.clip();
+            Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
+            cr.restore();
+            cr.save();
+            button_context.set_state (StateFlags.ACTIVE);
+
+            cr.move_to(x_render, get_allocated_height());
+            cr.line_to(x_render, y + height_marged);
+            cr.line_to(x_render + height_marged/2, y+height_marged/2);
+            cr.line_to(x_render, y);
+            cr.line_to(x_render, 0);
+            cr.line_to(get_allocated_width(), 0);
+            cr.line_to(get_allocated_width(), y + height_marged);
+            cr.close_path();
+            cr.clip();
+            Gtk.render_background(button_context, cr, 0, margin, width, height_marged);
+            Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
+            cr.restore();
+            button_context.restore();
+            x_render += height_marged/2 + 3;
+        }
+        else {
+            Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
+        }
+        entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, button_context);
         return false;
     }
 
