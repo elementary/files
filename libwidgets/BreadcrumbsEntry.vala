@@ -221,17 +221,18 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object
             if(get_selection() != null)
             {
                 delete_selection();
+                need_completion();
             }
             else if(cursor > 0)
             {
                 text = text.slice(0,cursor - 1) + text.slice(cursor, text.length);
                 cursor --;
+                need_completion();
             }
             else
             {
                 backspace();
             }
-            need_completion();
             break;
         case 0xffff: /* delete */
             if(get_selection() == null && cursor < text.length && control_pressed) {

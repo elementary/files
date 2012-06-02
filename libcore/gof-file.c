@@ -816,10 +816,12 @@ static void gof_file_finalize (GObject* obj) {
     GOFFile *file;
 
     file = GOF_FILE (obj);
+#if 0
     if (file->pix)
         g_warning ("%s %s %u\n", G_STRFUNC, file->uri, G_OBJECT (file->pix)->ref_count);
     else
         g_warning ("%s %s", G_STRFUNC, file->basename);
+#endif
 
     g_clear_object (&file->info);
     if (file->location)
@@ -982,6 +984,8 @@ compare_by_type (GOFFile *file1, GOFFile *file2)
 static int
 compare_by_display_name (GOFFile *file1, GOFFile *file2)
 {
+    g_return_val_if_fail (GOF_IS_FILE (file1), -1);
+    g_return_val_if_fail (GOF_IS_FILE (file2), -1);
     const char *name_1, *name_2;
     gboolean sort_last_1, sort_last_2;
     int compare;

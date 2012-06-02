@@ -128,6 +128,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         Gtk.Border border = new Gtk.Border();
         button_context.get_padding(Gtk.StateFlags.NORMAL, border);
 #endif
+        var css_provider = new Gtk.CssProvider();
+        css_provider.load_from_data(".noradius-button { border-radius:0px; }", -1);
+        button_context.add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         left_padding = border.left;
         right_padding = border.right;
@@ -198,12 +201,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             if(elements.size > 0)
             {
                 string strloc = get_elements_path ();
-                warning ("strloc %s", strloc);
                 File location = File.new_for_commandline_arg (strloc);
                 location = location.get_parent ();
                 if (location == null)
                     location = File.new_for_commandline_arg (protocol);
-                changed (location.get_path());
+                changed  (location.get_uri() + "/");
                 grab_focus();
             }
         });
@@ -354,12 +356,30 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     public override bool button_press_event(Gdk.EventButton event)
     {
+        foreach(BreadcrumbsElement element in elements)
+            element.pressed = false;
         if(timeout == -1 && event.button == 1){
             timeout = (int) Timeout.add(800, () => {
+                foreach(BreadcrumbsElement element in elements)
+                    element.pressed = false;
                 select_bread_from_coord(event.x, event);
                 timeout = -1;
                 return false;
             });
+            double x_render = 0;
+            foreach(BreadcrumbsElement element in elements)
+            {
+                if(element.display)
+                {
+                    x_render += element.real_width;
+                    if(event.x <= x_render + 5)
+                    {
+                        element.pressed = true;
+                        break;
+                    }
+                }
+            }
+            queue_draw();
         }
         if(event.button == 3)
         {
@@ -375,6 +395,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     public override bool button_release_event(Gdk.EventButton event)
     {
+        foreach(BreadcrumbsElement element in elements)
+            element.pressed = false;
         if(timeout != -1){
             Source.remove((uint) timeout);
             timeout = -1;
@@ -395,6 +417,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                     if(x <= x_render + 5 && x > x_previous + 5)
                     {
                         selected = elements.index_of(element);
+                        print("%s\n\n\n", newpath);
                         changed(newpath);
                         found = true;
                         break;
@@ -794,7 +817,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     {
         entry.show();
         //button_context = entry_context;
-        button_context.set_state (StateFlags.ACTIVE);
+        //button_context.set_state (StateFlags.ACTIVE);
         focus = true;
         return true;
     }
@@ -824,6 +847,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     public override bool draw(Cairo.Context cr)
     {
+        button_context.set_state (StateFlags.NORMAL);
         //propagate_draw (get_child (), cr);
         double height = get_allocated_height();
         double width = get_allocated_width();
@@ -835,7 +859,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
         /* Draw toolbar background */
         Gtk.render_background(button_context, cr, 0, margin, width, height_marged);
-        Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
 
         int breadcrumbs_displayed = 0;
         double max_width = get_all_breadcrumbs_width(out breadcrumbs_displayed);
@@ -863,6 +886,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             }
         }
 
+        cr.save();
         /* Really draw the elements */
         foreach(BreadcrumbsElement element in elements)
         {
@@ -888,7 +912,48 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         //draw_selection(cr);
 
         x_render_saved = x_render + space_breads/2;
-        //entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, focus ? entry_context : button_context);
+        
+        cr.restore();
+        /* Draw frame: it must be done at the end to be on the background drawn by pressed breadcrumbs */
+
+        if(focus) {
+            cr.save();
+            button_context.save();
+            x_render -= height_marged/2 + 3;
+
+            
+            cr.move_to(0, 0);
+            cr.line_to(0, y + height_marged + 3);
+            cr.line_to(x_render, y + height_marged + 3);
+            cr.line_to(x_render, y + height_marged);
+            cr.line_to(x_render + height_marged/2, y+height_marged/2);
+            cr.line_to(x_render, y);
+            cr.line_to(x_render, 0);
+            cr.close_path();
+            cr.clip();
+            Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
+            cr.restore();
+            cr.save();
+            button_context.set_state (StateFlags.ACTIVE);
+
+            cr.move_to(x_render, get_allocated_height());
+            cr.line_to(x_render, y + height_marged);
+            cr.line_to(x_render + height_marged/2, y+height_marged/2);
+            cr.line_to(x_render, y);
+            cr.line_to(x_render, 0);
+            cr.line_to(get_allocated_width(), 0);
+            cr.line_to(get_allocated_width(), y + height_marged);
+            cr.close_path();
+            cr.clip();
+            Gtk.render_background(button_context, cr, 0, margin, width, height_marged);
+            Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
+            cr.restore();
+            button_context.restore();
+            x_render += height_marged/2 + 3;
+        }
+        else {
+            Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
+        }
         entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, button_context);
         return false;
     }
