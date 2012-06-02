@@ -23,14 +23,14 @@ using Gtk;
 using Gee;
 
 [DBus (name = "org.elementary.contractor")]
-public interface ExtendedActionsService : Object
+public interface ContractorService : Object
 {
     //public abstract GLib.HashTable<string,string>[] GetServicesByMime (string mime) throws IOError;
     public abstract GLib.HashTable<string,string>[] GetServicesByLocation (string strlocation, string? file_mime="")    throws IOError;
     public abstract GLib.HashTable<string,string>[] GetServicesByLocationsList (GLib.HashTable<string, string>[] locations)  throws IOError;
 }
 
-public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
+public class Marlin.Plugins.Contractor : Marlin.Plugins.Base
 {
     UIManager ui_manager;
     Gtk.Menu menu;
@@ -38,9 +38,9 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
     unowned GLib.List<GOF.File> selection;
     GLib.HashTable<string,string>[] services = null;
     
-    private ExtendedActionsService service_eactions;
+    private ContractorService service_eactions;
     
-    public ExtendedActions ()
+    public Contractor ()
     {
         try {
             service_eactions = Bus.get_proxy_sync (BusType.SESSION,
@@ -151,6 +151,6 @@ public class Marlin.Plugins.ExtendedActions : Marlin.Plugins.Base
 
 public Marlin.Plugins.Base module_init ()
 {
-    return new Marlin.Plugins.ExtendedActions ();
+    return new Marlin.Plugins.Contractor ();
 }
 
