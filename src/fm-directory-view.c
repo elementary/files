@@ -1708,10 +1708,10 @@ update_menus_empty_selection (FMDirectoryView *view)
 
     if (gof_file_is_trashed (slot->directory->file)) {
         dir_action_set_visible (view, "New Folder", FALSE);
-        dir_action_set_visible (view, "New Empty Document", FALSE);
+        dir_action_set_visible (view, "New Empty File", FALSE);
     } else {
         dir_action_set_visible (view, "New Folder", TRUE);
-        dir_action_set_visible (view, "New Empty Document", TRUE);
+        dir_action_set_visible (view, "New Empty File", TRUE);
     }
 }
 
@@ -3447,10 +3447,10 @@ static const GtkActionEntry directory_view_entries[] = {
         /* label, accelerator */       N_("Create New _Folder"), "<control><shift>N",
         /* tooltip */                  N_("Create a new empty folder inside this folder"),
         G_CALLBACK (action_new_folder_callback) },
-    /* name, stock id, label */  { "New Documents", "document-new", N_("Create New _Document") },
-    /* name, stock id */         { "New Empty Document", NULL,
-        /* label, accelerator */       N_("_Empty Document"), NULL,
-        /* tooltip */                  N_("Create a new empty document inside this folder"),
+    /* name, stock id, label */  { "New File", "file-new", N_("Create New _File") },
+    /* name, stock id */         { "New Empty File", NULL,
+        /* label, accelerator */       N_("_Empty File"), NULL,
+        /* tooltip */                  N_("Create a new empty file inside this folder"),
         G_CALLBACK (action_new_empty_file_callback) },
     /* name, stock id */         { "Open", NULL,
         /* label, accelerator */       N_("_Open"), NULL,
