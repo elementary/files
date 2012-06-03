@@ -218,10 +218,8 @@ namespace Marlin.View {
                 maximize();
             }
             title = Marlin.APP_TITLE;
-            //this.icon = DrawingService.GetIcon("system-file-manager", 32);
-            //this.icon = IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
             try {
-                this.icon = IconTheme.get_default ().load_icon ("marlin", 32, 0);
+                this.icon = IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
             } catch (Error err) {
                 stderr.printf ("Unable to load marlin icon: %s", err.message);
             }
