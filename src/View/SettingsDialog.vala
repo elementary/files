@@ -29,15 +29,12 @@ namespace Marlin.View
         public SettingsDialog(Window win)
         {
             set_title(_("Marlin Preferences"));
-            /*height_request = 600;*/
-            //width_request = 500;
             set_resizable(false);
+            //border_width = 5;
 
             var mai_notebook = new Varka.Widgets.StaticNotebook();
 
             var first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
-            first_vbox.border_width = 5;
-
 
             /* Single click */
             var checkbox = new Gtk.Switch();
@@ -95,7 +92,6 @@ namespace Marlin.View
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Behavior")));
 
             first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
-            first_vbox.border_width = 5;
             
             /* Sidebar icon size */
             var spin_icon_size = new ModeButton();
@@ -154,9 +150,13 @@ namespace Marlin.View
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Display")));
 
             first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
-            first_vbox.border_width = 5;
             
-            var view = new Gtk.TreeView(); 
+            var view = new Gtk.TreeView();
+            
+            Gdk.RGBA color = Gdk.RGBA();
+            first_vbox.get_style_context ().get_background_color (Gtk.StateFlags.NORMAL);
+            view.override_background_color (Gtk.StateFlags.NORMAL, color);
+
             var listmodel = new Gtk.ListStore (2, typeof (string), typeof (bool));
             view.set_model (listmodel);
             view.set_headers_visible (false);
@@ -201,19 +201,22 @@ namespace Marlin.View
             first_vbox.pack_start(view);
 
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Extensions")));
-            /*mai_notebook.set_margin_left(6);
-            mai_notebook.set_margin_right(6);
-            mai_notebook.set_margin_top(6);
-            mai_notebook.set_margin_bottom(12);*/
+
+            /* Margins
+             * we don't set the margin_top to get the staticnotebook the most upper possible
+             * otherwise we would have used the border-width property of the dialog */
+            get_content_area ().margin_left = 5;
+            get_content_area ().margin_right = 5;
+            get_content_area ().margin_bottom = 5;
+            mai_notebook.margin_left = 5;
+            mai_notebook.margin_right = 5;
+            mai_notebook.margin_bottom = 12;
+            
             ((Gtk.Box)get_content_area()).pack_start(mai_notebook);
 
             this.show_all();
 
-            this.delete_event.connect(() => { destroy(); return true; });
-
-            add_buttons("gtk-close", Gtk.ResponseType.DELETE_EVENT);
-
-            run();
+            add_buttons("gtk-close", Gtk.ResponseType.CLOSE);
         }
         
         void disable_plugin(string name)
@@ -283,7 +286,7 @@ namespace Marlin.View
         {
             switch(id)
             {
-            case Gtk.ResponseType.DELETE_EVENT:
+            case Gtk.ResponseType.CLOSE:
                 destroy();
                 break;
             }

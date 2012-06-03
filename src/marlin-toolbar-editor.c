@@ -447,9 +447,9 @@ static TBEditorWidget *tb_editor_create_dialog(MarlinViewWindow *mvw)
                                          GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
     vbox = gtk_dialog_get_content_area(GTK_DIALOG(dialog));
-    gtk_box_set_spacing(GTK_BOX(vbox), 6);
+    gtk_container_set_border_width (GTK_DIALOG (dialog), 5);
     gtk_widget_set_name(dialog, "GeanyDialog");
-    gtk_window_set_default_size(GTK_WINDOW(dialog), -1, 400);
+    gtk_window_set_default_size(GTK_WINDOW(dialog), 400, 300);
     gtk_dialog_set_default_response(GTK_DIALOG(dialog), GTK_RESPONSE_CLOSE);
 
     tbw->store_available = gtk_list_store_new(TB_EDITOR_COLS_MAX,
@@ -457,24 +457,21 @@ static TBEditorWidget *tb_editor_create_dialog(MarlinViewWindow *mvw)
     tbw->store_used = gtk_list_store_new(TB_EDITOR_COLS_MAX,
                                          G_TYPE_STRING, G_TYPE_STRING, GDK_TYPE_PIXBUF);
 
-    label = gtk_label_new(
-                          _("Select items to be displayed on the toolbar. Items can be reordered by drag and drop."));
+    label = gtk_label_new(_("Select items to be displayed on the toolbar. Items can be reordered by drag and drop."));
+    gtk_label_set_line_wrap (label, TRUE);
     gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
 
     tree_available = gtk_tree_view_new();
     gtk_tree_view_set_model(GTK_TREE_VIEW(tree_available), GTK_TREE_MODEL(tbw->store_available));
     gtk_tree_view_set_rules_hint(GTK_TREE_VIEW(tree_available), TRUE);
-    gtk_tree_sortable_set_sort_column_id(
-                                         GTK_TREE_SORTABLE(tbw->store_available), TB_EDITOR_COL_LABEL, GTK_SORT_ASCENDING);
+    gtk_tree_sortable_set_sort_column_id(GTK_TREE_SORTABLE(tbw->store_available), TB_EDITOR_COL_LABEL, GTK_SORT_ASCENDING);
 
     icon_renderer = gtk_cell_renderer_pixbuf_new();
-    column = gtk_tree_view_column_new_with_attributes(
-                                                      NULL, icon_renderer, "pixbuf", TB_EDITOR_COL_ICON, NULL);
+    column = gtk_tree_view_column_new_with_attributes(NULL, icon_renderer, "pixbuf", TB_EDITOR_COL_ICON, NULL);
     gtk_tree_view_append_column(GTK_TREE_VIEW(tree_available), column);
 
     text_renderer = gtk_cell_renderer_text_new();
-    column = gtk_tree_view_column_new_with_attributes(
-                                                      _("Available Items"), text_renderer, "text", TB_EDITOR_COL_LABEL, NULL);
+    column = gtk_tree_view_column_new_with_attributes(_("Available Items"), text_renderer, "text", TB_EDITOR_COL_LABEL, NULL);
     gtk_tree_view_append_column(GTK_TREE_VIEW(tree_available), column);
 
     swin_available = gtk_scrolled_window_new(NULL, NULL);
@@ -489,13 +486,11 @@ static TBEditorWidget *tb_editor_create_dialog(MarlinViewWindow *mvw)
     gtk_tree_view_set_reorderable(GTK_TREE_VIEW(tree_used), TRUE);
 
     icon_renderer = gtk_cell_renderer_pixbuf_new();
-    column = gtk_tree_view_column_new_with_attributes(
-                                                      NULL, icon_renderer, "pixbuf", TB_EDITOR_COL_ICON, NULL);
+    column = gtk_tree_view_column_new_with_attributes(NULL, icon_renderer, "pixbuf", TB_EDITOR_COL_ICON, NULL);
     gtk_tree_view_append_column(GTK_TREE_VIEW(tree_used), column);
 
     text_renderer = gtk_cell_renderer_text_new();
-    column = gtk_tree_view_column_new_with_attributes(
-                                                      _("Displayed Items"), text_renderer, "text", TB_EDITOR_COL_LABEL, NULL);
+    column = gtk_tree_view_column_new_with_attributes(_("Displayed Items"), text_renderer, "text", TB_EDITOR_COL_LABEL, NULL);
     gtk_tree_view_append_column(GTK_TREE_VIEW(tree_used), column);
 
     swin_used = gtk_scrolled_window_new(NULL, NULL);
@@ -549,7 +544,10 @@ static TBEditorWidget *tb_editor_create_dialog(MarlinViewWindow *mvw)
     gtk_box_pack_start(GTK_BOX(hbox), vbox_buttons, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(hbox), swin_used, TRUE, TRUE, 0);
 
-    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 6);
+    g_object_set (label, "margin", 5, NULL);
+    g_object_set (hbox, "margin", 5, NULL);
+
+    gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
 
     gtk_widget_show_all(vbox);
