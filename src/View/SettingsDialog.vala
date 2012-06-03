@@ -71,20 +71,6 @@ namespace Marlin.View
             Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(), "value", SettingsBindFlags.DEFAULT);
             
             first_vbox.pack_start(hbox_single_click, false);
-
-            /* Make default FM */
-            var sw_fm_default = new Gtk.Switch ();
-            sw_fm_default.active = is_marlin_mydefault_fm ();
-            
-            var hbox_fm_default = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            var l2 = new Gtk.Label(_("Default File Manager:"));
-            l2.set_alignment(0, 0.5f);
-            hbox_fm_default.pack_start(l2);
-            hbox_fm_default.pack_start(sw_fm_default, false, false);
-            first_vbox.pack_start(hbox_fm_default, false);
-            sw_fm_default.notify["active"].connect((s, p) => {
-                                                   make_marlin_default_fm (sw_fm_default.get_active ());
-                                                   });
             
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Behavior")));
 
@@ -282,34 +268,6 @@ namespace Marlin.View
                 break;
             }
         }
-            
-        private bool is_marlin_mydefault_fm ()
-        {
-            bool trash_uri_is_default = false;
-            bool foldertype_is_default = "marlin.desktop" == AppInfo.get_default_for_type("inode/directory", false).get_id();
-            AppInfo? app_trash_handler = AppInfo.get_default_for_type("x-scheme-handler/trash", true);
-            if (app_trash_handler != null)
-                trash_uri_is_default = "marlin.desktop" == app_trash_handler.get_id();
 
-            return foldertype_is_default && trash_uri_is_default;
-        }
-
-        private void make_marlin_default_fm (bool active)
-        {
-            if (active) {
-                AppInfo marlin_app = (AppInfo) new DesktopAppInfo ("pantheon-files.desktop");
-                if (marlin_app != null) {
-                    try {
-                        marlin_app.set_as_default_for_type ("inode/directory");
-                        marlin_app.set_as_default_for_type ("x-scheme-handler/trash");
-                    } catch (GLib.Error e) {
-                        critical ("Can't set Marlin default FM: %s", e.message);
-                    }
-                }
-            } else {
-                AppInfo.reset_type_associations ("inode/directory");
-                AppInfo.reset_type_associations ("x-scheme-handler/trash");            
-            }
-        }
     }
 }
