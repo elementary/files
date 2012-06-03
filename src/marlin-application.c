@@ -554,11 +554,11 @@ static void
 init_schemas (void)
 {
     /* gsettings parameters */
-    settings = g_settings_new ("org.pantheon.files.preferences");
-    marlin_icon_view_settings = g_settings_new ("org.pantheon.files.icon-view");
-    marlin_list_view_settings = g_settings_new ("org.pantheon.files.list-view");
-    marlin_compact_view_settings = g_settings_new ("org.pantheon.files.compact-view");
-    marlin_column_view_settings = g_settings_new ("org.pantheon.files.column-view");
+    settings = g_settings_new ("org.gnome.marlin.preferences");
+    marlin_icon_view_settings = g_settings_new ("org.gnome.marlin.icon-view");
+    marlin_list_view_settings = g_settings_new ("org.gnome.marlin.list-view");
+    marlin_compact_view_settings = g_settings_new ("org.gnome.marlin.compact-view");
+    marlin_column_view_settings = g_settings_new ("org.gnome.marlin.column-view");
 
     /* bind settings with GOFPreferences */
     g_settings_bind (settings, "show-hiddenfiles", 

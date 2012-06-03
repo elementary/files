@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema path="/org/pantheon/files/plugins/openterminal/" id="org.pantheon.files.plugins.openterminal">
+  <schema path="/apps/marlin/plugins/openterminal/" id="org.gnome.marlin.plugins.openterminal">
     <key type="s" name="default-terminal">
       <default>'gnome-terminal --working-directory='</default>
       <summary>Terminal</summary>

@@ -174,7 +174,7 @@ namespace Marlin.View {
 
             /* Sidebar */
             sidebar = new Marlin.Places.Sidebar ((Gtk.Widget) this);
-            Preferences.settings.bind("sidebar-icon-size", sidebar, "icon-size", SettingsBindFlags.DEFAULT);
+            Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.DEFAULT);
 
             /* Devide main views into sidebars */
             main_box = new Granite.Widgets.CollapsiblePaned (Orientation.VERTICAL);

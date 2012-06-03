@@ -26,6 +26,7 @@ namespace FM
 [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_", cheader_filename = "marlin-file-operations.h")]
 namespace Marlin.FileOperations {
     static void empty_trash(Gtk.Widget widget);
+    static void copy_move (List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, void* done_callback = null, void* done_callback_data = null);
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]

@@ -26,6 +26,7 @@
 #include "marlin-bookmark-list.h"
 #include "gof-window-slot.h"
 #include "marlin-abstract-sidebar.h"
+#include "marlin-enum-types.h"
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
@@ -63,7 +64,7 @@ typedef struct {
     GdkDragContext      *drag_context;
     gboolean            drag_data_received;
     int                 drag_data_info;
-    int                 icon_size;
+    MarlinZoomLevel     zoom_level;
     gboolean            drop_occured;
 
     GtkWidget *popup_menu;
@@ -90,7 +91,7 @@ typedef struct {
 } MarlinPlacesSidebar;
 
 typedef struct {
-    MarlinAbstractSidebarClass parent;
+    MarlinAbstractSidebarClass parent_class;
 } MarlinPlacesSidebarClass;
 
 GType marlin_places_sidebar_get_type (void);

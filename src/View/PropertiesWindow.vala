@@ -62,12 +62,11 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     {
         title = _("Properties");
         resizable = false;
-        set_default_response (ResponseType.CANCEL);
+        set_default_response (ResponseType.CLOSE);
         set_default_size (220, -1);
 
         // Set the default containers
         Box content_area = (Box) get_content_area();
-        Box action_area = (Box) get_action_area();
         border_width = 5;
         sg = new SizeGroup (SizeGroupMode.HORIZONTAL);
 
@@ -138,20 +137,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             add_section (notebook, _("Preview"), PanelType.PREVIEW, preview_box);
         }
 
-        var close_button = new Button.from_stock(Stock.CLOSE);
-        close_button.clicked.connect(() => { response(ResponseType.CLOSE); });
-        action_area.pack_end (close_button, false, false, 0);
-        //add_button (Stock.CLOSE, ResponseType.CLOSE);
+        add_button (Stock.CLOSE, ResponseType.CLOSE);
 
         content_vbox.show();
 
         content_area.show_all();
-        action_area.show_all();
-        close_button.grab_focus();
 
         response.connect (on_response);
 
-        Preferences.settings.bind ("dialog-property-modal", this, "modal", 0);
         set_transient_for (parent);
         set_destroy_with_parent (true);
         present ();

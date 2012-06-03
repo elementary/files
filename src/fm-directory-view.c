@@ -774,7 +774,6 @@ fm_directory_view_zoom_in (FMDirectoryView *view)
     {
         g_object_set (G_OBJECT (view), "zoom-level", zoom, NULL);
     }
-
 }
 
 void 
@@ -1712,10 +1711,10 @@ update_menus_empty_selection (FMDirectoryView *view)
 
     if (gof_file_is_trashed (slot->directory->file)) {
         dir_action_set_visible (view, "New Folder", FALSE);
-        dir_action_set_visible (view, "New Empty Document", FALSE);
+        dir_action_set_visible (view, "New Empty File", FALSE);
     } else {
         dir_action_set_visible (view, "New Folder", TRUE);
-        dir_action_set_visible (view, "New Empty Document", TRUE);
+        dir_action_set_visible (view, "New Empty File", TRUE);
     }
 }
 

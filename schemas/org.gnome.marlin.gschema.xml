@@ -6,7 +6,7 @@
     <value value="2" nick="compact"/>
     <value value="3" nick="miller_columns"/>
   </enum>
-  <enum id="org.pantheon.files.ZoomLevel">
+  <enum id="org.gnome.marlin.ZoomLevel">
     <value value="0" nick="smallest"/>
     <value value="1" nick="smaller"/>
     <value value="2" nick="small"/>
@@ -26,7 +26,7 @@
     <value value="2" nick="informal"/>
   </enum>
 
-  <schema path="/org/pantheon/pantheon-files/preferences/" id="org.pantheon.files.preferences">
+  <schema path="/apps/marlin/preferences/" id="org.gnome.marlin.preferences">
     <key type="b" name="show-menubar">
       <default>false</default>
       <summary>Show the menubar</summary>
@@ -75,11 +75,6 @@
         The amount of time which the item under the mouse cursor will be selected automatically in single click mode. A value of 0 disables the automatic selection.
       </description>
     </key>
-    <key type="b" name="dialog-property-modal">
-      <default>false</default>
-      <summary>dialog property modal</summary>
-      <description>If true the property dialog is a modal window</description>
-    </key>
     <key type="b" name="interpret-desktop-files">
       <default>true</default>
       <summary>interpret desktop files</summary>
@@ -111,12 +106,10 @@
         List of actions present in the toolbar
       </description>
     </key>
-    <key type="i" name="sidebar-icon-size">
-      <default>16</default>
+    <key name="sidebar-zoom-level" enum="org.gnome.marlin.ZoomLevel">
+      <default>'smallest'</default>
       <summary>Size of the icons in the Places sidebar</summary>
-      <description>
-        If set to a null or negative value, the default GTK_ICON_SIZE_MENU would be used.
-      </description>
+      <description>Zoom level used by the places sidebar.</description>
     </key>
     <key type="b" name="sidebar-cat-personal-expander">
       <default>true</default>
@@ -175,52 +168,52 @@
     </key>
   </schema>
 
-  <schema path="/org/pantheon/pantheon-files/icon-view/" id="org.pantheon.files.icon-view">
-    <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
+  <schema path="/apps/marlin/icon-view/" id="org.gnome.marlin.icon-view">
+    <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'normal'</default>
       <summary>icon default zoom level</summary>
       <description>Default Zoom level used by the icon view.</description>
     </key>
-    <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'normal'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the icon view.</description>
     </key>
   </schema>
 
-  <schema path="/org/pantheon/pantheon-files/list-view/" id="org.pantheon.files.list-view">
-    <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
+  <schema path="/apps/marlin/list-view/" id="org.gnome.marlin.list-view">
+    <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'smallest'</default>
       <summary>icon default zoom level</summary>
       <description>Default Zoom level used by the list view.</description>
     </key>
-    <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'smallest'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the list view.</description>
     </key>
   </schema>
 
-  <schema path="/org/pantheon/pantheon-files/compact-view/" id="org.pantheon.files.compact-view">
-    <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
+  <schema path="/apps/marlin/compact-view/" id="org.gnome.marlin.compact-view">
+    <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'smallest'</default>
       <summary>icon default zoom level</summary>
       <description>Default Zoom level used by the compact view.</description>
     </key>
-    <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'smallest'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the compact view.</description>
     </key>
   </schema>
 
-  <schema path="/org/pantheon/pantheon-files/column-view/" id="org.pantheon.files.column-view">
-    <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
+  <schema path="/apps/marlin/column-view/" id="org.gnome.marlin.column-view">
+    <key name="default-zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'smallest'</default>
       <summary>icon default zoom level</summary>
       <description>Default Zoom level used by the column view.</description>
     </key>
-    <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="zoom-level" enum="org.gnome.marlin.ZoomLevel">
       <default>'smallest'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the column view.</description>

@@ -29,8 +29,6 @@ namespace Marlin.View
         public SettingsDialog(Window win)
         {
             set_title(_("Files Preferences"));
-            /*height_request = 600;*/
-            //width_request = 500;
             set_resizable(false);
             
             /* Set proper spacing */
@@ -40,10 +38,10 @@ namespace Marlin.View
             get_content_area ().margin_bottom = 12;
             
             var mai_notebook = new Granite.Widgets.StaticNotebook();
+            set_size_request (360, -1);
+
 
             var first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
-            first_vbox.border_width = 5;
-
 
             /* Single click */
             var checkbox = new Gtk.Switch();
@@ -75,42 +73,6 @@ namespace Marlin.View
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Behavior")));
 
             first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
-            first_vbox.border_width = 5;
-            
-            /* Sidebar icon size */
-            var spin_icon_size = new ModeButton();
-            spin_icon_size.append(new Gtk.Label(_("small")));
-            spin_icon_size.append(new Gtk.Label(_("medium")));
-            spin_icon_size.append(new Gtk.Label(_("large")));
-            spin_icon_size.append(new Gtk.Label(_("extra-large")));
-            switch((int)Preferences.settings.get_value("sidebar-icon-size"))
-            {
-            case 16:
-                spin_icon_size.selected = 0;
-                break;
-            case 24:
-                spin_icon_size.selected = 1;
-                break;
-            case 32:
-                spin_icon_size.selected = 2;
-                break;
-            case 48:
-                spin_icon_size.selected = 3;
-                break;
-            }
-
-            spin_icon_size.mode_changed.connect(spin_icon_size_changed);
-
-            hbox_single_click = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 10);
-
-            label = new Gtk.Label(_("Sidebar icon size:"));
-            label.set_alignment(0, 0.5f);
-
-            hbox_single_click.pack_start(label);
-            hbox_single_click.pack_start(spin_icon_size, false, false);
-            
-            first_vbox.pack_start(hbox_single_click, false);
-
             
             /* Date format */
             var mode_date_format = new ModeButton();
@@ -134,9 +96,13 @@ namespace Marlin.View
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Appearance")));
 
             first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
-            first_vbox.border_width = 5;
             
-            var view = new Gtk.TreeView(); 
+            var view = new Gtk.TreeView();
+            
+            Gdk.RGBA color = Gdk.RGBA();
+            first_vbox.get_style_context ().get_background_color (Gtk.StateFlags.NORMAL);
+            view.override_background_color (Gtk.StateFlags.NORMAL, color);
+
             var listmodel = new Gtk.ListStore (2, typeof (string), typeof (bool));
             view.set_model (listmodel);
             view.set_headers_visible (false);
@@ -181,19 +147,22 @@ namespace Marlin.View
             first_vbox.pack_start(view);
 
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Extensions")));
-            /*mai_notebook.set_margin_left(6);
-            mai_notebook.set_margin_right(6);
-            mai_notebook.set_margin_top(6);
-            mai_notebook.set_margin_bottom(12);*/
+
+            /* Margins
+             * we don't set the margin_top to get the staticnotebook the most upper possible
+             * otherwise we would have used the border-width property of the dialog */
+            get_content_area ().margin_left = 5;
+            get_content_area ().margin_right = 5;
+            get_content_area ().margin_bottom = 5;
+            mai_notebook.margin_left = 5;
+            mai_notebook.margin_right = 5;
+            mai_notebook.margin_bottom = 12;
+            
             ((Gtk.Box)get_content_area()).pack_start(mai_notebook);
 
             this.show_all();
 
-            this.delete_event.connect(() => { destroy(); return true; });
-
-            add_buttons("gtk-close", Gtk.ResponseType.DELETE_EVENT);
-
-            run();
+            add_buttons("gtk-close", Gtk.ResponseType.CLOSE);
         }
         
         void disable_plugin(string name)
@@ -220,27 +189,6 @@ namespace Marlin.View
             plugins.load_plugin(name);
         }
 
-        private void spin_icon_size_changed(Gtk.Widget widget)
-        {
-            int value = 16;
-            switch(((Gtk.Label)widget).get_text())
-            {
-            case "small":
-                value = 16;
-                break;
-            case "medium":
-                value = 24;
-                break;
-            case "large":
-                value = 32;
-                break;
-            case "extra-large":
-                value = 48;
-                break;
-            }
-            Preferences.settings.set_value("sidebar-icon-size", value);
-        }
-
         private void date_format_changed(Gtk.Widget widget)
         {
             int value = 2; /* informal */
@@ -263,7 +211,7 @@ namespace Marlin.View
         {
             switch(id)
             {
-            case Gtk.ResponseType.DELETE_EVENT:
+            case Gtk.ResponseType.CLOSE:
                 destroy();
                 break;
             }

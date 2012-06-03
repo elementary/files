@@ -30,7 +30,7 @@ int main (int argc, char* argv[])
     g_thread_init (NULL);
     gtk_test_init (&argc, &argv);
 
-    settings = g_settings_new ("org.pantheon.files.preferences");
+    settings = g_settings_new ("org.gnome.marlin.preferences");
     
     /* FIXME: tags should be initialized. */
     //tags = marlin_view_tags_new ();
