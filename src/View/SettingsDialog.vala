@@ -30,6 +30,7 @@ namespace Marlin.View
         {
             set_title(_("Marlin Preferences"));
             set_resizable(false);
+            set_size_request (360, -1);
             //border_width = 5;
 
             var mai_notebook = new Varka.Widgets.StaticNotebook();
@@ -63,18 +64,6 @@ namespace Marlin.View
             
             first_vbox.pack_start(hbox_single_click, false);
 
-            /* Dlg properties modal */
-            var check_dlg_properties = new Gtk.Switch ();
-            
-            Preferences.settings.bind ("dialog-property-modal", check_dlg_properties, "active", 0);
-
-            var hbox_dlg_properties = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            var l1 = new Gtk.Label(_("Properties Dialog set modal:"));
-            l1.set_alignment(0, 0.5f);
-            hbox_dlg_properties.pack_start(l1);
-            hbox_dlg_properties.pack_start(check_dlg_properties, false, false);
-            first_vbox.pack_start(hbox_dlg_properties, false);
-            
             /* Make default FM */
             var sw_fm_default = new Gtk.Switch ();
             sw_fm_default.active = is_marlin_mydefault_fm ();
@@ -92,41 +81,6 @@ namespace Marlin.View
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Behavior")));
 
             first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
-            
-            /* Sidebar icon size */
-            var spin_icon_size = new ModeButton();
-            spin_icon_size.append(new Gtk.Label(_("small")));
-            spin_icon_size.append(new Gtk.Label(_("medium")));
-            spin_icon_size.append(new Gtk.Label(_("large")));
-            spin_icon_size.append(new Gtk.Label(_("extra-large")));
-            switch((int)Preferences.settings.get_value("sidebar-icon-size"))
-            {
-            case 16:
-                spin_icon_size.selected = 0;
-                break;
-            case 24:
-                spin_icon_size.selected = 1;
-                break;
-            case 32:
-                spin_icon_size.selected = 2;
-                break;
-            case 48:
-                spin_icon_size.selected = 3;
-                break;
-            }
-
-            spin_icon_size.mode_changed.connect(spin_icon_size_changed);
-
-            hbox_single_click = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 10);
-
-            label = new Gtk.Label(_("Sidebar icon size:"));
-            label.set_alignment(0, 0.5f);
-
-            hbox_single_click.pack_start(label);
-            hbox_single_click.pack_start(spin_icon_size, false, false);
-            
-            first_vbox.pack_start(hbox_single_click, false);
-
             
             /* Date format */
             var mode_date_format = new ModeButton();
@@ -241,27 +195,6 @@ namespace Marlin.View
             Preferences.settings.set_strv("plugins-enabled", plugs);
 
             plugins.load_plugin(name);
-        }
-
-        private void spin_icon_size_changed(Gtk.Widget widget)
-        {
-            int value = 16;
-            switch(((Gtk.Label)widget).get_text())
-            {
-            case "small":
-                value = 16;
-                break;
-            case "medium":
-                value = 24;
-                break;
-            case "large":
-                value = 32;
-                break;
-            case "extra-large":
-                value = 48;
-                break;
-            }
-            Preferences.settings.set_value("sidebar-icon-size", value);
         }
 
         private void date_format_changed(Gtk.Widget widget)

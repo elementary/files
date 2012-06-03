@@ -50,7 +50,7 @@
 enum
 {
     PROP_0,
-    PROP_ICON_SIZE
+    PROP_ZOOM_LEVEL
 };
 
 typedef enum {
@@ -98,6 +98,7 @@ static const GtkTargetEntry marlin_shortcuts_drop_targets [] = {
 };
 
 G_DEFINE_TYPE (MarlinPlacesSidebar, marlin_places_sidebar, MARLIN_TYPE_ABSTRACT_SIDEBAR);
+#define parent_class marlin_places_sidebar_parent_class
 
 static GdkPixbuf *
 get_eject_icon (MarlinPlacesSidebar *sidebar, gboolean highlighted)
@@ -173,15 +174,14 @@ add_place (MarlinPlacesSidebar *sidebar,
     GtkTreeIter          iter, child_iter;
     GdkPixbuf	        *eject;
     MarlinIconInfo      *icon_info;
-    gint icon_size;
+    MarlinZoomLevel     zoom;
     gboolean show_eject, show_unmount;
     gboolean show_eject_button;
 
     pixbuf = NULL;
-    g_object_get(sidebar, "icon-size", &icon_size, NULL);
+    g_object_get (sidebar, "zoom-level", &zoom, NULL);
+    int icon_size = marlin_zoom_level_to_icon_size (zoom);
 
-    if (icon_size <= 0)
-        icon_size = GTK_ICON_SIZE_MENU;
     if (icon) {
         icon_info = marlin_icon_info_lookup (icon, icon_size);
 
@@ -647,8 +647,8 @@ static void marlin_places_sidebar_set_property (GObject *object,
 {
     switch (prop_id)
     {
-    case PROP_ICON_SIZE:
-        MARLIN_PLACES_SIDEBAR (object)->icon_size = g_value_get_int (value);
+    case PROP_ZOOM_LEVEL:
+        MARLIN_PLACES_SIDEBAR (object)->zoom_level = g_value_get_enum (value);
         update_places (MARLIN_PLACES_SIDEBAR(object));
         gtk_tree_view_columns_autosize (MARLIN_PLACES_SIDEBAR(object)->tree_view);
         break;
@@ -659,14 +659,14 @@ static void marlin_places_sidebar_set_property (GObject *object,
 }
 
 static void marlin_places_sidebar_get_property (GObject      *object,
-                                        guint         prop_id,
-                                        GValue       *value,
-                                        GParamSpec   *pspec)
+                                                guint         prop_id,
+                                                GValue       *value,
+                                                GParamSpec   *pspec)
 {
     switch (prop_id)
     {
-    case PROP_ICON_SIZE:
-        g_value_set_int(value, MARLIN_PLACES_SIDEBAR (object)->icon_size);
+    case PROP_ZOOM_LEVEL:
+        g_value_set_enum (value, MARLIN_PLACES_SIDEBAR (object)->zoom_level);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -3110,21 +3110,106 @@ marlin_places_sidebar_dispose (GObject *object)
 }
 
 static void
+sidebar_zoom_in (GtkWidget *widget)
+{
+    MarlinZoomLevel zoom;
+
+    g_object_get (widget, "zoom-level", &zoom, NULL);
+    zoom++;
+    if (zoom >= MARLIN_ZOOM_LEVEL_SMALLEST 
+        && zoom <= MARLIN_ZOOM_LEVEL_NORMAL)
+    {
+        g_object_set (widget, "zoom-level", zoom, NULL);
+    }
+}
+
+static void
+sidebar_zoom_out (GtkWidget *widget)
+{
+    MarlinZoomLevel zoom;
+
+    g_object_get (widget, "zoom-level", &zoom, NULL);
+    zoom--;
+    if (zoom >= MARLIN_ZOOM_LEVEL_SMALLEST 
+        && zoom <= MARLIN_ZOOM_LEVEL_NORMAL)
+    {
+        g_object_set (widget, "zoom-level", zoom, NULL);
+    }
+
+}
+
+static gboolean
+handle_scroll_event (GtkWidget *widget, GdkEventScroll *event)
+{
+    gdouble total_delta_y = 0;
+	gdouble delta_x, delta_y;
+
+    if (event->state & GDK_CONTROL_MASK) {
+        switch (event->direction) {
+        case GDK_SCROLL_UP:
+            /* zoom in */
+            sidebar_zoom_in (widget);
+            return TRUE;
+
+        case GDK_SCROLL_DOWN:
+            /* zoom out */
+            sidebar_zoom_out (widget);
+            return TRUE;
+
+        case GDK_SCROLL_SMOOTH:
+            gdk_event_get_scroll_deltas ((const GdkEvent *) event,
+                                         &delta_x, &delta_y);
+
+            /* try to emulate a normal scrolling event by summing deltas */
+            total_delta_y += delta_y;
+
+            if (total_delta_y >= 1) {
+                total_delta_y = 0;
+                /* zoom out */
+                sidebar_zoom_out (widget);
+                return TRUE;
+            } else if (total_delta_y <= - 1) {
+                total_delta_y = 0;
+                /* zoom in */
+                sidebar_zoom_in (widget);
+                return TRUE;				
+            } else {
+                /* eat event */
+                return TRUE;
+            }
+        }
+
+    }
+
+    return FALSE;
+}
+
+/* handle Control+Scroll, which will cause a zoom-in/out */
+static gboolean
+marlin_places_sidebar_scroll_event (GtkWidget *widget, GdkEventScroll *event)
+{
+    if (handle_scroll_event (widget, event)) {
+        return TRUE;
+    }
+
+    return GTK_WIDGET_CLASS (parent_class)->scroll_event (widget, event);
+}
+
+static void
 marlin_places_sidebar_class_init (MarlinPlacesSidebarClass *class)
 {
     G_OBJECT_CLASS (class)->dispose = marlin_places_sidebar_dispose;
     G_OBJECT_CLASS (class)->set_property = marlin_places_sidebar_set_property;
     G_OBJECT_CLASS (class)->get_property = marlin_places_sidebar_get_property;
     GTK_WIDGET_CLASS (class)->style_set = marlin_places_sidebar_style_set;
+    GTK_WIDGET_CLASS (class)->scroll_event = marlin_places_sidebar_scroll_event;
     
     g_object_class_install_property (G_OBJECT_CLASS (class),
-                                     PROP_ICON_SIZE,
-                                     g_param_spec_int ("icon-size",
-                                                       _("Icon Size"),
-                                                       _("Icon size"),
-                                                       0, 250, 6,
-                                                       G_PARAM_READWRITE));
-    
+                                     PROP_ZOOM_LEVEL,
+                                     g_param_spec_enum ("zoom-level", "zoom-level", "zoom-level",
+                                                        MARLIN_TYPE_ZOOM_LEVEL,
+                                                        MARLIN_ZOOM_LEVEL_SMALLEST,
+                                                        G_PARAM_READWRITE));
 }
 
 static void

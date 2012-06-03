@@ -770,7 +770,6 @@ fm_directory_view_zoom_in (FMDirectoryView *view)
     {
         g_object_set (G_OBJECT (view), "zoom-level", zoom, NULL);
     }
-
 }
 
 void 

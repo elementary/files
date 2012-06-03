@@ -75,11 +75,6 @@
         The amount of time which the item under the mouse cursor will be selected automatically in single click mode. A value of 0 disables the automatic selection.
       </description>
     </key>
-    <key type="b" name="dialog-property-modal">
-      <default>false</default>
-      <summary>dialog property modal</summary>
-      <description>If true the property dialog is a modal window</description>
-    </key>
     <key type="b" name="interpret-desktop-files">
       <default>true</default>
       <summary>interpret desktop files</summary>
@@ -111,12 +106,10 @@
         List of actions present in the toolbar
       </description>
     </key>
-    <key type="i" name="sidebar-icon-size">
-      <default>16</default>
+    <key name="sidebar-zoom-level" enum="org.gnome.marlin.ZoomLevel">
+      <default>'smallest'</default>
       <summary>Size of the icons in the Places sidebar</summary>
-      <description>
-        If set to a null or negative value, the default GTK_ICON_SIZE_MENU would be used.
-      </description>
+      <description>Zoom level used by the places sidebar.</description>
     </key>
     <key type="b" name="sidebar-cat-personal-expander">
       <default>true</default>
