@@ -91,9 +91,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     int left_padding;
     int right_padding;
 
-    /* first displayed element */
-    BreadcrumbsElement? first_delem = null;
-
     private Varka.IconFactory icon_factory;
 
 
@@ -397,9 +394,11 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         if (el != null) {
             var newpath = get_path_from_element (el);
             current_right_click_root = Marlin.Utils.get_parent(newpath);
-            double menu_x_root = event.x_root - event.x + el.x;
-            if (el != first_delem)
-                menu_x_root -= space_breads;
+            double menu_x_root;
+            if (el.x - space_breads < 0)
+                menu_x_root = event.x_root - event.x + el.x;
+            else
+                menu_x_root = event.x_root - event.x + el.x - space_breads;
             double menu_y_root = event.y_root - event.y + get_allocated_height ();
             load_right_click_menu (menu_x_root, menu_y_root);
             return true;
@@ -535,7 +534,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             protocol = Marlin.ROOT_FS_URI;
         }
         selected = -1;
-        first_delem = null;
         var breads = text.split("/");
         var newelements = new Gee.ArrayList<BreadcrumbsElement>();
         if(breads.length == 0 || breads[0] == "") {
@@ -610,10 +608,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                     {
                         newelements[j].display = false;
                     }
-                    /* store the first displayed element */
-                    if (first_delem == null)
-                        first_delem = newelements[h];
-
                     newelements[h].display = true;
                     newelements[h].set_icon(icon.icon);
                     newelements[h].display_text = (icon.text_displayed != null) || !icon.break_loop;
