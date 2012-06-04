@@ -431,28 +431,27 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     {
         foreach(BreadcrumbsElement element in elements)
             element.pressed = false;
-        if(timeout == -1 && event.button == 1){
+        double x_render = 0;
+        foreach(BreadcrumbsElement element in elements)
+        {
+            if(element.display)
+            {
+                x_render += element.real_width;
+                if(event.x <= x_render + 5)
+                {
+                    element.pressed = true;
+                    break;
+                }
+            }
+        }
+        queue_draw();
+
+        if(timeout == -1 && event.button == 1) {
             timeout = (int) Timeout.add(800, () => {
-                foreach(BreadcrumbsElement element in elements)
-                    element.pressed = false;
                 select_bread_from_coord(event.x, event);
                 timeout = -1;
                 return false;
             });
-            double x_render = 0;
-            foreach(BreadcrumbsElement element in elements)
-            {
-                if(element.display)
-                {
-                    x_render += element.real_width;
-                    if(event.x <= x_render + 5)
-                    {
-                        element.pressed = true;
-                        break;
-                    }
-                }
-            }
-            queue_draw();
         }
         if(event.button == 3)
         {
@@ -468,8 +467,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     public override bool button_release_event(Gdk.EventButton event)
     {
-        foreach(BreadcrumbsElement element in elements)
-            element.pressed = false;
+        reset_elements_states ();
         if(timeout != -1){
             Source.remove((uint) timeout);
             timeout = -1;
@@ -876,7 +874,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         get_window().set_cursor(null);
         return false;
     }
-    
+
     public override bool focus_out_event(Gdk.EventFocus event)
     {
         focus = false;
@@ -916,6 +914,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             }
         }
         return max_width;
+    }
+
+    public void reset_elements_states ()
+    {
+        foreach(BreadcrumbsElement element in elements)
+            element.pressed = false;
+        queue_draw();
     }
 
     public override bool draw(Cairo.Context cr)

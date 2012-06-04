@@ -332,6 +332,8 @@ namespace Marlin.View.Chrome
             menu_x_root = x;
             menu_y_root = y;
             menu = new Gtk.Menu();
+            menu.cancel.connect (() => { reset_elements_states (); });
+            menu.deactivate.connect (() => { reset_elements_states (); });
             var directory = File.new_for_uri (current_right_click_root);
             if (files_menu != null)
                 files_menu.done_loading.disconnect(on_files_loaded_menu);
