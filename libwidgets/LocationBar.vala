@@ -71,6 +71,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
      * When the user click on a breadcrumb, or when he enters a path by hand
      * in the integrated entry
      **/
+    public signal void activate_alternate(string path);
     public signal void changed(string changed);
     public signal void need_completion();
 
@@ -424,7 +425,12 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             });
         }
         if(event.button == 2) {
-            message ("middle click");
+            if (el != null) {
+                selected = elements.index_of(el);
+                var newpath = get_path_from_element (el);
+                message ("middle clicki %s", newpath);
+                activate_alternate (newpath);
+            }
         }
         if(event.button == 3)
         {

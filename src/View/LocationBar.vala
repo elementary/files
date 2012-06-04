@@ -41,6 +41,7 @@ namespace Marlin.View.Chrome
         }
 
         public new signal void activate();
+        public signal void activate_alternate(string path);
         public signal void escape();
 
         public LocationBar (UIManager ui, Window win)
@@ -49,6 +50,7 @@ namespace Marlin.View.Chrome
             bread.escape.connect( () => { escape(); });
 
             bread.changed.connect(on_bread_changed);
+            bread.activate_alternate.connect((a) => { activate_alternate(a); });
 
             set_expand(true);
                 
