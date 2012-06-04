@@ -91,6 +91,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     int left_padding;
     int right_padding;
 
+    /* first displayed element */
+    BreadcrumbsElement? first_delem = null;
+
     private Varka.IconFactory icon_factory;
 
 
@@ -234,6 +237,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             if(element.pressed) {
                 element.pressed = false;
                 queue_draw();
+                break;
             }
         }
     }
@@ -246,25 +250,9 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             uris.append(File.new_for_uri(uri));
         }
 
-
-
-        double x_render = 0;
-        string newpath = protocol;
-        bool found = false;
-        foreach(BreadcrumbsElement element in elements)
-        {
-            if(element.display)
-            {
-                newpath += element.text + "/";
-                if(x_render <= x <= x_render + element.real_width)
-                {
-                    found = true;
-                    break;
-                }
-                x_render += element.real_width;
-            }
-        }
-        if(found) {
+        var el = get_element_from_coordinates (x, y);
+        if (el != null) {
+            var newpath = get_path_from_element (el);
             print("Move to: %s\n", newpath);
             var target_file = GLib.File.new_for_uri(newpath);
             on_file_droped(uris, target_file, real_action);
@@ -277,28 +265,45 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     bool on_drag_motion(Gdk.DragContext drag_context, int x, int y, uint time) {
         Gtk.drag_unhighlight(this);
         
-        double x_render = 0;
         foreach(BreadcrumbsElement element in elements)
-        {
-            if(element.display)
-            {
+            element.pressed = false;
+        var el = get_element_from_coordinates (x, y);
+        if (el != null) 
+            el.pressed = true;
+        queue_draw ();
+
+        return false;
+    }
+
+    private BreadcrumbsElement? get_element_from_coordinates (int x, int y) 
+    {
+        double x_render = 0;
+        foreach(BreadcrumbsElement element in elements) {
+            if(element.display) {
                 if(x_render <= x <= x_render + element.real_width)
-                {
-                    if(!element.pressed) {
-                        element.pressed = true;
-                        queue_draw();
-                    }
-                }
-                else if(element.pressed) {
-                    element.pressed = false;
-                    queue_draw();
-                }
+                    return element;
                 x_render += element.real_width;
             }
         }
-        return false;
+
+        return null;
     }
-    
+   
+    private string get_path_from_element (BreadcrumbsElement el)
+    {
+        string newpath = protocol;
+        
+        foreach(BreadcrumbsElement element in elements) {
+            if(element.display) {
+                newpath += element.text + "/";
+                if (element == el)
+                    break;
+            }
+        }
+
+        return newpath;
+    }
+
     protected void add_icon(IconDirectory icon)
     {
         if (icon.gicon != null)
@@ -383,79 +388,48 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
      * directory in it parent.
      * See load_right_click_menu() for the context menu.
      *
-     * @param x where the user click along the x axis
      * @param event a button event to compute the coords of the new menu.
      *
      **/
-    private bool select_bread_from_coord(double x, Gdk.EventButton event)
+    private bool select_bread_from_coord(Gdk.EventButton event)
     {
-        double x_previous = -10;
-        double x_render = 0;
-        string newpath = protocol;
-        bool found = false;
-
-        foreach(BreadcrumbsElement element in elements)
-        {
-            if(element.display)
-            {
-                x_render += element.real_width;
-                newpath += element.text + "/";
-                if(x <= x_render + 5 && x > x_previous + 5)
-                {
-                    right_click_root = x_previous;
-
-                    if(Marlin.Utils.has_parent(newpath))
-                    {
-                        /* Compute the coords of the menu, to show it at the
-                         * bottom of our pathbar. */
-                        if(x_previous < 0)
-                            x_previous = 0;
-                        double menu_x_root = event.x_root - event.x + x_previous;
-                        double menu_y_root = event.y_root + get_allocated_height() - event.y - 5;
-                        /* Let's remove the last directory since we only want the parent */
-                        current_right_click_root = Marlin.Utils.get_parent(newpath);
-
-                        load_right_click_menu(menu_x_root, menu_y_root);
-                    }
-                    found = true;
-
-                    break;
-                }
-                x_previous = x_render;
-            }
+        var el = get_element_from_coordinates ((int) event.x, (int) event.y);
+        if (el != null) {
+            var newpath = get_path_from_element (el);
+            current_right_click_root = Marlin.Utils.get_parent(newpath);
+            double menu_x_root = event.x_root - event.x + el.x;
+            if (el != first_delem)
+                menu_x_root -= space_breads;
+            double menu_y_root = event.y_root - event.y + get_allocated_height ();
+            load_right_click_menu (menu_x_root, menu_y_root);
+            return true;
         }
-        return found;
+
+        return false;
     }
 
     public override bool button_press_event(Gdk.EventButton event)
     {
         foreach(BreadcrumbsElement element in elements)
             element.pressed = false;
-        double x_render = 0;
-        foreach(BreadcrumbsElement element in elements)
-        {
-            if(element.display)
-            {
-                x_render += element.real_width;
-                if(event.x <= x_render + 5)
-                {
-                    element.pressed = true;
-                    break;
-                }
-            }
-        }
+        var el = get_element_from_coordinates ((int) event.x, (int) event.y);
+        if (el != null) 
+            el.pressed = true;
         queue_draw();
 
         if(timeout == -1 && event.button == 1) {
             timeout = (int) Timeout.add(800, () => {
-                select_bread_from_coord(event.x, event);
+                select_bread_from_coord(event);
                 timeout = -1;
                 return false;
             });
         }
+        if(event.button == 2) {
+            message ("middle click");
+        }
         if(event.button == 3)
         {
-            return select_bread_from_coord(event.x, event);
+            return select_bread_from_coord(event);
         }
         if(focus)
         {
@@ -474,31 +448,14 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         }
         if(event.button == 1)
         {
-            double x_previous = -10;
-            double x = event.x;
-            double x_render = 0;
-            string newpath = protocol;
-            bool found = false;
-            foreach(BreadcrumbsElement element in elements)
-            {
-                if(element.display)
-                {
-                    x_render += element.real_width;
-                    newpath += element.text + "/";
-                    if(x <= x_render + 5 && x > x_previous + 5)
-                    {
-                        selected = elements.index_of(element);
-                        print("%s\n\n\n", newpath);
-                        changed(newpath);
-                        found = true;
-                        break;
-                    }
-                    x_previous = x_render;
-                }
-            }
-            if(!found)
-            {
-                grab_focus();
+            var el = get_element_from_coordinates ((int) event.x, (int) event.y);
+            if (el != null) {
+                selected = elements.index_of(el);
+                var newpath = get_path_from_element (el);
+                print("%s\n\n\n", newpath);
+                changed(newpath);
+            } else {
+                grab_focus ();
             }
         }
         if(focus)
@@ -578,6 +535,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             protocol = Marlin.ROOT_FS_URI;
         }
         selected = -1;
+        first_delem = null;
         var breads = text.split("/");
         var newelements = new Gee.ArrayList<BreadcrumbsElement>();
         if(breads.length == 0 || breads[0] == "") {
@@ -615,7 +573,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         int max_path = int.min(elements.size, newelements.size);
         
         bool same = true;
-        
+       
         for(int i = 0; i < max_path; i++)
         {
             if(newelements[i].text != elements[i].text)
@@ -652,6 +610,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                     {
                         newelements[j].display = false;
                     }
+                    /* store the first displayed element */
+                    if (first_delem == null)
+                        first_delem = newelements[h];
+
                     newelements[h].display = true;
                     newelements[h].set_icon(icon.icon);
                     newelements[h].display_text = (icon.text_displayed != null) || !icon.break_loop;
@@ -846,6 +808,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                 if(x <= x_render + 5 && x > x_previous + 5)
                 {
                     selected = elements.index_of(element);
+                    //TODO doesn't work
                     set_tooltip_text(_("Go to %s").printf(element.text));
                     break;
                 }
@@ -971,6 +934,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             if(element.display)
             {
                 x_render = element.draw(cr, x_render, margin, height_marged, button_context, this);
+                /* save element x axis position */
+                element.x = x_render - element.real_width;
             }
 
         }

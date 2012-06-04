@@ -28,6 +28,7 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
     public int left_padding = 1;
     public int right_padding = 1;
     public double max_width = -1;
+    public double x = 0;
     public double width { get { return text_width + left_padding + right_padding + last_height/2; }}
     public double real_width { get { return (max_width > 0 ? max_width : text_width) + left_padding + right_padding + last_height/2; }}
     Gdk.Pixbuf icon;
@@ -58,6 +59,8 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
     
     public double draw(Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, Gtk.Widget widget)
     {
+        int estimated_border_size = 3; /* to be under the borders properly. */
+
         cr.restore();
         cr.save();
         last_height = height;
@@ -79,7 +82,6 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
         }
         
         if(offset > 0.0) {
-            int estimated_border_size = 3; /* to be under the borders properly. */
             cr.move_to(x - height/2, y);
             cr.line_to(x, y + height/2);
             cr.line_to(x - height/2, y + height);
@@ -91,7 +93,6 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
         }
         if(pressed) {
             cr.save();
-            int estimated_border_size = 3; /* to be under the borders properly. */
             double text_width = max_width > 0 ? max_width : text_width;
             cr.move_to(x - height/2 - estimated_border_size, 0);
             cr.line_to(x - height/2 - estimated_border_size, y);
@@ -139,7 +140,6 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
 
         if (pressed) {
             double text_width = max_width > 0 ? max_width : text_width;
-            int estimated_border_size = 3; /* to be under the borders properly. */
             cr.restore();
 
             cr.move_to(0, 0);
