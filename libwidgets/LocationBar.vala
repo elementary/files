@@ -260,7 +260,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     protected abstract void on_file_droped(List<GLib.File> uris, GLib.File target_file, Gdk.DragAction real_action);
 
 
-    bool on_drag_motion(Gdk.DragContext drag_context, int x, int y, uint time) {
+    bool on_drag_motion(Gdk.DragContext context, int x, int y, uint time) {
         Gtk.drag_unhighlight(this);
         
         foreach(BreadcrumbsElement element in elements)
@@ -268,6 +268,8 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         var el = get_element_from_coordinates (x, y);
         if (el != null) 
             el.pressed = true;
+        else
+            Gdk.drag_status (context, 0, time);
         queue_draw ();
 
         return false;
