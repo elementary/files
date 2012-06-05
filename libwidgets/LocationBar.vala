@@ -430,7 +430,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             if (el != null) {
                 selected = elements.index_of(el);
                 var newpath = get_path_from_element (el);
-                message ("middle clicki %s", newpath);
                 activate_alternate (newpath);
             }
         }

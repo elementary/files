@@ -41,12 +41,15 @@ namespace Marlin.View.Chrome
             }
         }
 
+        Window win;
+
         public new signal void activate();
         public signal void activate_alternate(string path);
         public signal void escape();
 
         public LocationBar (UIManager ui, Window win)
         {
+            this.win = win;
             bread = new Breadcrumbs(ui, win);
             bread.escape.connect( () => { escape(); });
 
@@ -64,8 +67,11 @@ namespace Marlin.View.Chrome
         
         private void on_bread_changed(string changed)
         {
-             _path = changed;
-             activate();
+            /* focus back the view */
+            ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); 
+            //_path = changed;
+            path = changed;
+            activate();
         }
     }
 
@@ -175,6 +181,7 @@ namespace Marlin.View.Chrome
             entry.completed.connect(() => {
                 string path = get_elements_path ();
                 update_breadcrumbs (entry.text, path);
+                grab_focus();
             });
 
             menu = new Gtk.Menu();
@@ -244,31 +251,8 @@ namespace Marlin.View.Chrome
         public void on_need_completion()
         {
             string path = get_elements_path ();
-            //to_search = "";
-
-//#if 0
             string[] stext = entry.text.split("/");
-
-            switch(stext.length)
-            {
-            case 0:
-                to_search = "";
-                break;
-            case 1:
-                to_search = stext[0];
-                break;
-            default: /* if it is > 1 */
-                to_search = stext[stext.length -1];
-                break;
-#if 0
-            default: /* if it is > 1 */
-                update_breadcrumbs (entry.text, path);
-                //to_search = stext[stext.length -1];
-                break;
-#endif
-            }
-//#endif
-//            to_search = entry.text;
+            to_search = stext[stext.length -1];
 
             entry.completion = "";
             autocompleted = false;
@@ -316,7 +300,6 @@ namespace Marlin.View.Chrome
             {
                 File location = File.new_for_commandline_arg (strloc);
                 win.current_tab.path_changed (location);
-                grab_focus();
             }
             return strloc;
         }
