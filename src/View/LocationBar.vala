@@ -252,9 +252,12 @@ namespace Marlin.View.Chrome
         
         public void on_need_completion()
         {
+            to_search = "";
             string path = get_elements_path ();
             string[] stext = entry.text.split("/");
-            to_search = stext[stext.length -1];
+            int stext_len = stext.length;
+            if (stext_len > 0)
+                to_search = stext[stext.length -1];
 
             entry.completion = "";
             autocompleted = false;
