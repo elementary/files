@@ -480,7 +480,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         else
             changed(entry.text + entry.completion);
             
-        entry.reset();
+        //entry.reset();
     }
 
     public override bool key_press_event(Gdk.EventKey event)

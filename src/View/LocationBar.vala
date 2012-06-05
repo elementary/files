@@ -33,8 +33,10 @@ namespace Marlin.View.Chrome
             set{
                 var new_path = value;
                 _path = new_path;
-                if (!bread.focus)
+                if (!bread.focus) {
+                    bread.entry.reset();
                     bread.change_breadcrumbs(new_path);
+                }
             }
             get{
                 return _path;
