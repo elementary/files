@@ -51,7 +51,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     /* if we have the focus or not
      * FIXME: this should be replaced with some nice Gtk.Widget method. */
-    new bool focus = false;
+    public new bool focus = false;
 
     public Gtk.ActionGroup clipboard_actions;
     

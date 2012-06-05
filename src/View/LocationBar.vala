@@ -33,7 +33,8 @@ namespace Marlin.View.Chrome
             set{
                 var new_path = value;
                 _path = new_path;
-                bread.change_breadcrumbs(new_path);
+                if (!bread.focus)
+                    bread.change_breadcrumbs(new_path);
             }
             get{
                 return _path;
@@ -239,6 +240,7 @@ namespace Marlin.View.Chrome
         public void on_need_completion()
         {
             string path = get_elements_path ();
+            //to_search = "";
 
 //#if 0
             string[] stext = entry.text.split("/");
@@ -252,8 +254,14 @@ namespace Marlin.View.Chrome
                 to_search = stext[0];
                 break;
             default: /* if it is > 1 */
-                update_breadcrumbs (entry.text, path);
+                to_search = stext[stext.length -1];
                 break;
+#if 0
+            default: /* if it is > 1 */
+                update_breadcrumbs (entry.text, path);
+                //to_search = stext[stext.length -1];
+                break;
+#endif
             }
 //#endif
 //            to_search = entry.text;
@@ -262,6 +270,7 @@ namespace Marlin.View.Chrome
             autocompleted = false;
 
             path += entry.text;
+            message ("path %s to_search %s", path, to_search);
             if(to_search != "")
                 path = Marlin.Utils.get_parent(path);
 
