@@ -53,6 +53,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object
     public signal void need_draw();
     public signal void paste();
     public signal void need_completion();
+    public signal void completed();
     public signal void escape();
     
     /**
@@ -279,6 +280,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object
             text += completion;
             cursor += completion.length;
             completion = "";
+            completed();
         }
     }
     

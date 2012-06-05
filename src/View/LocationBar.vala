@@ -172,6 +172,10 @@ namespace Marlin.View.Chrome
             entry.down.connect(() => {
                 ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); 
             });
+            entry.completed.connect(() => {
+                string path = get_elements_path ();
+                update_breadcrumbs (entry.text, path);
+            });
 
             menu = new Gtk.Menu();
             menu.show_all();
