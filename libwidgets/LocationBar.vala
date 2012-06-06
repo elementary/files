@@ -51,7 +51,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     /* if we have the focus or not
      * FIXME: this should be replaced with some nice Gtk.Widget method. */
-    new bool focus = false;
+    public new bool focus = false;
 
     public Gtk.ActionGroup clipboard_actions;
     
@@ -430,7 +430,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             if (el != null) {
                 selected = elements.index_of(el);
                 var newpath = get_path_from_element (el);
-                message ("middle clicki %s", newpath);
                 activate_alternate (newpath);
             }
         }
@@ -481,7 +480,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         else
             changed(entry.text + entry.completion);
             
-        entry.reset();
+        //entry.reset();
     }
 
     public override bool key_press_event(Gdk.EventKey event)
