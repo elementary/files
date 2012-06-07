@@ -198,6 +198,14 @@ namespace Marlin.View {
             /* Connect and abstract signals to local ones
             /*/
 
+            window_state_event.connect ((event) => {
+                if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
+                    Preferences.settings.set_boolean("maximized", 
+                                                     (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED);
+                }
+                return false;
+            });
+
             delete_event.connect(() => {
                 save_geometries();
                 destroy();
@@ -447,7 +455,7 @@ namespace Marlin.View {
                 Preferences.settings.set_int("sidebar-width", sidebar_alloc.width);
 
             var geometry = get_geometry_string (this);
-            bool is_maximized = get_window().get_state() == Gdk.WindowState.MAXIMIZED;
+            bool is_maximized = (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED;
             if (is_maximized == false)
                 Preferences.settings.set_string("geometry", geometry);
             Preferences.settings.set_boolean("maximized", is_maximized);
