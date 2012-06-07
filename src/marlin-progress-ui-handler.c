@@ -79,7 +79,7 @@ G_DEFINE_TYPE (MarlinProgressUIHandler, marlin_progress_ui_handler, G_TYPE_OBJEC
 
 static void
 status_icon_activate_cb (GtkStatusIcon *icon,
-			 MarlinProgressUIHandler *self)
+                         MarlinProgressUIHandler *self)
 {	
     gtk_status_icon_set_visible (icon, FALSE);
     gtk_window_present (GTK_WINDOW (self->priv->progress_window));
@@ -87,14 +87,14 @@ status_icon_activate_cb (GtkStatusIcon *icon,
 
 static void
 notification_show_details_cb (NotifyNotification *notification,
-			      char *action_name,
-			      gpointer user_data)
+                              char *action_name,
+                              gpointer user_data)
 {
     MarlinProgressUIHandler *self = user_data;
 
 
     if (g_strcmp0 (action_name, ACTION_DETAILS) != 0) {
-	return;
+        return;
     }
 
     notify_notification_close (self->priv->progress_notification, NULL);
@@ -107,22 +107,22 @@ progress_ui_handler_ensure_notification (MarlinProgressUIHandler *self)
     NotifyNotification *notify;
 
     if (self->priv->progress_notification) {
-	return;
+        return;
     }
 
     notify = notify_notification_new (_("File Operations"),
-				      NULL, NULL);
+                                      NULL, NULL);
     self->priv->progress_notification = notify;
 
     notify_notification_set_category (notify, "transfer");
     notify_notification_set_hint (notify, "resident",
-				  g_variant_new_boolean (TRUE));
+                                  g_variant_new_boolean (TRUE));
 
     notify_notification_add_action (notify, ACTION_DETAILS,
-				    _("Show Details"),
-				    notification_show_details_cb,
-				    self,
-				    NULL);
+                                    _("Show Details"),
+                                    notification_show_details_cb,
+                                    self,
+                                    NULL);
 }
 
 static void
@@ -132,14 +132,14 @@ progress_ui_handler_ensure_status_icon (MarlinProgressUIHandler *self)
     GtkStatusIcon *status_icon;
 
     if (self->priv->status_icon != NULL) {
-	return;
+        return;
     }
 
     icon = g_themed_icon_new_with_default_fallbacks ("system-file-manager-symbolic");
     status_icon = gtk_status_icon_new_from_gicon (icon);
     g_signal_connect (status_icon, "activate",
-		      (GCallback) status_icon_activate_cb,
-		      self);
+                      (GCallback) status_icon_activate_cb,
+                      self);
 
     gtk_status_icon_set_visible (status_icon, FALSE);
     g_object_unref (icon);
@@ -155,14 +155,14 @@ progress_ui_handler_update_notification (MarlinProgressUIHandler *self)
     progress_ui_handler_ensure_notification (self);
 
     body = g_strdup_printf (ngettext ("%'d file operation active",
-				      "%'d file operations active",
-				      self->priv->active_infos),
-			    self->priv->active_infos);
+                                      "%'d file operations active",
+                                      self->priv->active_infos),
+                            self->priv->active_infos);
 
     notify_notification_update (self->priv->progress_notification,
-				_("File Operations"),
-				body,
-				NULL);
+                                _("File Operations"),
+                                body,
+                                NULL);
 
     notify_notification_show (self->priv->progress_notification, NULL);
 
@@ -177,9 +177,9 @@ progress_ui_handler_update_status_icon (MarlinProgressUIHandler *self)
     progress_ui_handler_ensure_status_icon (self);
 
     tooltip = g_strdup_printf (ngettext ("%'d file operation active",
-					 "%'d file operations active",
-					 self->priv->active_infos),
-			       self->priv->active_infos);
+                                         "%'d file operations active",
+                                         self->priv->active_infos),
+                               self->priv->active_infos);
     gtk_status_icon_set_tooltip_text (self->priv->status_icon, tooltip);
     g_free (tooltip);
 
@@ -351,7 +351,7 @@ progress_ui_handler_show_unity_quicklist (MarlinProgressUIHandler *self,
     for (l = children; l; l = l->next) {
         DbusmenuMenuitem *child = l->data;
         dbusmenu_menuitem_property_set_bool(child,
-                                        DBUSMENU_MENUITEM_PROP_VISIBLE, show);
+                                            DBUSMENU_MENUITEM_PROP_VISIBLE, show);
     }
 }
 
@@ -437,15 +437,15 @@ progress_ui_handler_update_unity_launcher (MarlinProgressUIHandler *self,
 
 static gboolean
 progress_window_delete_event (GtkWidget *widget,
-			      GdkEvent *event,
-			      MarlinProgressUIHandler *self)
+                              GdkEvent *event,
+                              MarlinProgressUIHandler *self)
 {
     gtk_widget_hide (widget);
 
     if (self->priv->notification_supports_persistence) {
-	progress_ui_handler_update_notification (self);
+        progress_ui_handler_update_notification (self);
     } else {
-	progress_ui_handler_update_status_icon (self);
+        progress_ui_handler_update_status_icon (self);
     }
 
     return TRUE;
@@ -457,49 +457,49 @@ progress_ui_handler_ensure_window (MarlinProgressUIHandler *self)
     GtkWidget *vbox, *progress_window;
 
     if (self->priv->progress_window != NULL) {
-	return;
+        return;
     }
 
     progress_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     self->priv->progress_window = progress_window;
     gtk_window_set_resizable (GTK_WINDOW (progress_window),
-			      FALSE);
+                              FALSE);
     gtk_container_set_border_width (GTK_CONTAINER (progress_window), 10);
 
     gtk_window_set_title (GTK_WINDOW (progress_window),
-			  _("File Operations"));
+                          _("File Operations"));
     gtk_window_set_wmclass (GTK_WINDOW (progress_window),
-			    "file_progress", "Marlin");
+                            "file_progress", "Marlin");
     gtk_window_set_position (GTK_WINDOW (progress_window),
-			     GTK_WIN_POS_CENTER);
+                             GTK_WIN_POS_CENTER);
     gtk_window_set_icon_name (GTK_WINDOW (progress_window),
-			      "system-file-manager");
+                              "system-file-manager");
 
     vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
     gtk_box_set_spacing (GTK_BOX (vbox), 5);
     gtk_container_add (GTK_CONTAINER (progress_window),
-		       vbox);
+                       vbox);
     self->priv->window_vbox = vbox;
     gtk_widget_show (vbox);
 
     g_signal_connect (progress_window,
-		      "delete-event",
-		      (GCallback) progress_window_delete_event, self);
+                      "delete-event",
+                      (GCallback) progress_window_delete_event, self);
 }
 
 static void
 progress_ui_handler_update_notification_or_status (MarlinProgressUIHandler *self)
 {
     if (self->priv->notification_supports_persistence) {
-	progress_ui_handler_update_notification (self);
+        progress_ui_handler_update_notification (self);
     } else {
-	progress_ui_handler_update_status_icon (self);
+        progress_ui_handler_update_status_icon (self);
     }
 }
 
 static void
 progress_ui_handler_add_to_window (MarlinProgressUIHandler *self,
-				   MarlinProgressInfo *info)
+                                   MarlinProgressInfo *info)
 {
     GtkWidget *progress;
 
@@ -507,8 +507,8 @@ progress_ui_handler_add_to_window (MarlinProgressUIHandler *self,
     progress_ui_handler_ensure_window (self);
 
     gtk_box_pack_start (GTK_BOX (self->priv->window_vbox),
-			progress,
-			FALSE, FALSE, 6);
+                        progress,
+                        FALSE, FALSE, 6);
 
     gtk_widget_show (progress);
 }
@@ -520,12 +520,12 @@ progress_ui_handler_show_complete_notification (MarlinProgressUIHandler *self)
 
     /* don't display the notification if we'd be using a status icon */
     if (!self->priv->notification_supports_persistence) {
-	return;
+        return;
     }
 
     complete_notification = notify_notification_new (_("File Operations"),
-						     _("All file operations have been successfully completed"),
-						     NULL);
+                                                     _("All file operations have been successfully completed"),
+                                                     NULL);
     notify_notification_show (complete_notification, NULL);
 
     g_object_unref (complete_notification);
@@ -535,32 +535,32 @@ static void
 progress_ui_handler_hide_notification_or_status (MarlinProgressUIHandler *self)
 {
     if (self->priv->status_icon != NULL) {
-	gtk_status_icon_set_visible (self->priv->status_icon, FALSE);
+        gtk_status_icon_set_visible (self->priv->status_icon, FALSE);
     }
 
     if (self->priv->progress_notification != NULL) {
-	notify_notification_close (self->priv->progress_notification, NULL);
-	g_clear_object (&self->priv->progress_notification);
+        notify_notification_close (self->priv->progress_notification, NULL);
+        g_clear_object (&self->priv->progress_notification);
     }
 }
 
 static void
 progress_info_finished_cb (MarlinProgressInfo *info,
-			   MarlinProgressUIHandler *self)
+                           MarlinProgressUIHandler *self)
 {
     self->priv->active_infos--;
 
     if (self->priv->active_infos > 0) {
-	if (!gtk_widget_get_visible (self->priv->progress_window)) {
-	    progress_ui_handler_update_notification_or_status (self);
-	}
+        if (!gtk_widget_get_visible (self->priv->progress_window)) {
+            progress_ui_handler_update_notification_or_status (self);
+        }
     } else {
-	if (gtk_widget_get_visible (self->priv->progress_window)) {
-	    gtk_widget_hide (self->priv->progress_window);
-	} else {
-	    progress_ui_handler_hide_notification_or_status (self);
-	    progress_ui_handler_show_complete_notification (self);
-	}
+        if (gtk_widget_get_visible (self->priv->progress_window)) {
+            gtk_widget_hide (self->priv->progress_window);
+        } else {
+            progress_ui_handler_hide_notification_or_status (self);
+            progress_ui_handler_show_complete_notification (self);
+        }
     }
 
 #ifdef HAVE_UNITY
@@ -570,23 +570,23 @@ progress_info_finished_cb (MarlinProgressInfo *info,
 
 static void
 handle_new_progress_info (MarlinProgressUIHandler *self,
-			  MarlinProgressInfo *info)
+                          MarlinProgressInfo *info)
 {
     g_signal_connect (info, "finished",
-		      G_CALLBACK (progress_info_finished_cb), self);
+                      G_CALLBACK (progress_info_finished_cb), self);
 
     self->priv->active_infos++;
     progress_ui_handler_add_to_window (self, info);
 
     if (self->priv->active_infos == 1) {
-	/* this is the only active operation, present the window */
-	gtk_window_present (GTK_WINDOW (self->priv->progress_window));
+        /* this is the only active operation, present the window */
+        gtk_window_present (GTK_WINDOW (self->priv->progress_window));
     } else {
-	if (gtk_widget_get_visible (self->priv->progress_window)) {
-	    progress_ui_handler_add_to_window (self, info);
-	} else {
-	    progress_ui_handler_update_notification_or_status (self);
-	}
+        if (gtk_widget_get_visible (self->priv->progress_window)) {
+            progress_ui_handler_add_to_window (self, info);
+        } else {
+            progress_ui_handler_update_notification_or_status (self);
+        }
     }
 
 #ifdef HAVE_UNITY
@@ -610,7 +610,7 @@ timeout_data_free (TimeoutData *data)
 
 static TimeoutData *
 timeout_data_new (MarlinProgressUIHandler *self,
-		  MarlinProgressInfo *info)
+                  MarlinProgressInfo *info)
 {
     TimeoutData *retval;
 
@@ -628,11 +628,11 @@ new_op_started_timeout (TimeoutData *data)
     MarlinProgressUIHandler *self = data->self;
 
     if (marlin_progress_info_get_is_paused (info)) {
-	return TRUE;
+        return TRUE;
     }
 
     if (!marlin_progress_info_get_is_finished (info)) {
-	handle_new_progress_info (self, info);
+        handle_new_progress_info (self, info);
     }
 
     timeout_data_free (data);
@@ -642,7 +642,7 @@ new_op_started_timeout (TimeoutData *data)
 
 static void
 release_application (MarlinProgressInfo *info,
-		     MarlinProgressUIHandler *self)
+                     MarlinProgressUIHandler *self)
 {
     MarlinApplication *app;
 
@@ -656,7 +656,7 @@ release_application (MarlinProgressInfo *info,
 
 static void
 progress_info_started_cb (MarlinProgressInfo *info,
-			  MarlinProgressUIHandler *self)
+                          MarlinProgressUIHandler *self)
 {
     MarlinApplication *app;
     TimeoutData *data;
@@ -666,23 +666,23 @@ progress_info_started_cb (MarlinProgressInfo *info,
     g_application_hold (G_APPLICATION (app));
 
     g_signal_connect (info, "finished",
-		      G_CALLBACK (release_application), self);
+                      G_CALLBACK (release_application), self);
 
     data = timeout_data_new (self, info);
 
     /* timeout for the progress window to appear */
     g_timeout_add_seconds (2,
-			   (GSourceFunc) new_op_started_timeout,
-			   data);
+                           (GSourceFunc) new_op_started_timeout,
+                           data);
 }
 
 static void
 new_progress_info_cb (MarlinProgressInfoManager *manager,
-		      MarlinProgressInfo *info,
-		      MarlinProgressUIHandler *self)
+                      MarlinProgressInfo *info,
+                      MarlinProgressUIHandler *self)
 {
     g_signal_connect (info, "started",
-		      G_CALLBACK (progress_info_started_cb), self);
+                      G_CALLBACK (progress_info_started_cb), self);
 }
 
 static void
@@ -703,7 +703,7 @@ server_has_persistence (void)
 
     caps = notify_get_server_caps ();
     if (caps == NULL) {
-	return FALSE;
+        return FALSE;
     }
 
     l = g_list_find_custom (caps, "persistence", (GCompareFunc) g_strcmp0);
@@ -718,11 +718,11 @@ static void
 marlin_progress_ui_handler_init (MarlinProgressUIHandler *self)
 {
     self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self, MARLIN_TYPE_PROGRESS_UI_HANDLER,
-					      MarlinProgressUIHandlerPriv);
+                                              MarlinProgressUIHandlerPriv);
 
     self->priv->manager = marlin_progress_info_manager_new ();
     g_signal_connect (self->priv->manager, "new-progress-info",
-		      G_CALLBACK (new_progress_info_cb), self);
+                      G_CALLBACK (new_progress_info_cb), self);
 
     self->priv->notification_supports_persistence = server_has_persistence ();
 }
