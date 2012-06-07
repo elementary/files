@@ -33,94 +33,6 @@
 #include "eel-glib-extensions.h"
 #include "eel-i18n.h"
 
-static const char *TODAY_TIME_FORMATS [] = {
-    /* Today, use special word.
-     * strftime patterns preceeded with the widest
-     * possible resulting string for that pattern.
-     *
-     * Note to localizers: You can look at man strftime
-     * for details on the format, but you should only use
-     * the specifiers from the C standard, not extensions.
-     * These include "%" followed by one of
-     * "aAbBcdHIjmMpSUwWxXyYZ". There are two extensions
-     * in the Nautilus version of strftime that can be
-     * used (and match GNU extensions). Putting a "-"
-     * between the "%" and any numeric directive will turn
-     * off zero padding, and putting a "_" there will use
-     * space padding instead of zero padding.
-     */
-    N_("Today at 00:00:00 PM"),
-    N_("Today at %-I:%M:%S %p"),
-
-    N_("Today at 00:00:00 PM"),
-    N_("Today at %-I:%M:%S %p"),
-
-    N_("Today at 00:00 PM"),
-    N_("Today at %-I:%M %p"),
-
-    N_("Today, 00:00 PM"),
-    N_("Today, %-I:%M %p"),
-
-    N_("Today"),
-    N_("Today"),
-
-    NULL
-};
-
-static const char *YESTERDAY_TIME_FORMATS [] = {
-    /* Yesterday, use special word.
-     * Note to localizers: Same issues as "Today" string.
-     */
-    N_("Yesterday at 00:00:00 PM"),
-    N_("Yesterday at %-I:%M:%S %p"),
-
-    N_("Yesterday at 00:00:00 PM"),
-    N_("Yesterday at %-I:%M:%S %p"),
-
-    N_("Yesterday at 00:00 PM"),
-    N_("Yesterday at %-I:%M %p"),
-
-    N_("Yesterday, 00:00 PM"),
-    N_("Yesterday, %-I:%M %p"),
-
-    N_("Yesterday"),
-    N_("Yesterday"),
-
-    NULL
-};
-
-static const char *CURRENT_WEEK_TIME_FORMATS [] = {
-    /* Current week, include day of week.
-     * Note to localizers: Same issues as "Today" string.
-     * The width measurement templates correspond to
-     * the day/month name with the most letters.
-     */
-    N_("Wednesday, September 00 0000 at 00:00:00 PM"),
-    N_("%A, %B %-d %Y at %-I:%M:%S %p"),
-
-    N_("Mon, Oct 00 0000 at 00:00:00 PM"),
-    N_("%a, %b %-d %Y at %-I:%M:%S %p"),
-
-    /*N_("Mon, Oct 00 0000 at 00:00 PM"),
-    N_("%a, %b %-d %Y at %-I:%M %p"),*/
-    N_("Mon 00 Oct 0000 at 00:00 PM"),
-    N_("%a %-d %b %Y at %-I:%M %p"),
-
-    N_("Oct 00 0000 at 00:00 PM"),
-    N_("%b %-d %Y at %-I:%M %p"),
-
-    N_("Oct 00 0000, 00:00 PM"),
-    N_("%b %-d %Y, %-I:%M %p"),
-
-    N_("00/00/00, 00:00 PM"),
-    N_("%m/%-d/%y, %-I:%M %p"),
-
-    N_("00/00/00"),
-    N_("%m/%d/%y"),
-
-    NULL
-};
-
 /**
  * eel_get_date_as_string:
  * 
@@ -135,11 +47,8 @@ static const char *CURRENT_WEEK_TIME_FORMATS [] = {
 char *
 eel_get_date_as_string (guint64 d, gchar *date_format)
 {
-    const char **formats;
-    //const char *width_template;
     const char *format;
     gchar *result = NULL;
-    //int i;
     GDateTime *date_time, *today;
     GTimeSpan file_date_age;
 
@@ -167,45 +76,19 @@ eel_get_date_as_string (guint64 d, gchar *date_format)
      */
 
     if (file_date_age < G_TIME_SPAN_DAY) {
-        formats = TODAY_TIME_FORMATS;
+        //TODAY_TIME_FORMATS
+        //"Today at 00:00 PM"
+        format = _("Today at %-I:%M %p");
     } else if (file_date_age < 2 * G_TIME_SPAN_DAY) {
-        formats = YESTERDAY_TIME_FORMATS;
+        //YESTERDAY_TIME_FORMATS
+        //"Yesterday at 00:00 PM"
+        format = _("Yesterday at %-I:%M %p");
     } else {
-        formats = CURRENT_WEEK_TIME_FORMATS;
+        //CURRENT_WEEK_TIME_FORMATS
+        //"Mon 00 Oct 0000 at 00:00 PM"
+        format = _("%a %-d %b %Y at %-I:%M %p");
     }
 
-#if 0
-    /* Find the date format that just fits the required width. Instead of measuring
-     * the resulting string width directly, measure the width of a template that represents
-     * the widest possible version of a date in a given format. This is done by using M, m
-     * and 0 for the variable letters/digits respectively.
-     */
-    format = NULL;
-
-    for (i = 0; ; i += 2) {
-        width_template = (formats [i] ? _(formats [i]) : NULL);
-        if (width_template == NULL) {
-            /* no more formats left */
-            g_assert (format != NULL);
-
-            /* Can't fit even the shortest format -- return an ellipsized form in the
-             * shortest format
-             */
-
-            result = g_date_time_format (date_time, format);
-        }
-
-        format = _(formats [i + 1]);
-
-        /* don't care about fitting the width */
-        break;
-    }
-
-    if (result == NULL) {
-		result = g_date_time_format (date_time, format);
-	}
-#endif
-    format = _(formats [5]);
 	result = g_date_time_format (date_time, format);
 
  out:
