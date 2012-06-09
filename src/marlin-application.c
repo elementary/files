@@ -46,6 +46,10 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 
+#ifdef HAVE_UNITY
+#include "unity-quicklist-handler.h"
+#endif
+
 #define MARLIN_ACCEL_MAP_SAVE_DELAY 15
 
 static MarlinApplication *singleton = NULL;
@@ -648,6 +652,10 @@ marlin_application_startup (GApplication *app)
                              G_CALLBACK (mount_removed_callback), self, 0);
     /*g_signal_connect_object (application->priv->volume_monitor, "mount_added",
       G_CALLBACK (mount_added_callback), application, 0);*/
+
+    #ifdef HAVE_UNITY
+    unity_quicklist_handler_get_singleton ();
+    #endif
 }
 
 static void

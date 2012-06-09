@@ -112,11 +112,6 @@ Categories=System;Utility;Core;GTK;FileTools;FileManager;
 
 X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Root
 
-[TabNew Shortcut Group]
-Name=New _Tab
-Exec=marlin -t
-TargetEnvironment=Unity
-
 [WindowNew Shortcut Group]
 Name=New _Window
 Exec=marlin
