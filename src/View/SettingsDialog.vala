@@ -39,63 +39,17 @@ namespace Marlin.View
             
             var mai_notebook = new Granite.Widgets.StaticNotebook();
             set_size_request (360, -1);
+            
+            // Behavior
+            var behavior = new Gtk.Label(_("Behavior"));
+            mai_notebook.append_page(get_behavior_box(), behavior);
 
+            // Appearance
+            var appearance = new Gtk.Label(_("Appearance"));
+            mai_notebook.append_page(get_appearance_box(), appearance);
 
+			// Extensions
             var first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
-
-            /* Single click */
-            var checkbox = new Gtk.Switch();
-
-            Preferences.settings.bind("single-click", checkbox , "active", SettingsBindFlags.DEFAULT);
-
-            var hbox_single_click = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            var label = new Gtk.Label(_("Single click to open:"));
-            label.set_alignment(0, 0.5f);
-            hbox_single_click.pack_start(label);
-            hbox_single_click.pack_start(checkbox, false, false);
-            first_vbox.pack_start(hbox_single_click, false);
-
-            /* Mouse selection speed */
-            var spi_click_speed = new Gtk.Scale.with_range(Gtk.Orientation.HORIZONTAL, 0, 1000, 1);
-
-            hbox_single_click = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            label = new Gtk.Label(_("Mouse auto-selection speed:"));
-            label.set_alignment(0, 0.5f);
-            hbox_single_click.pack_start(label);
-            hbox_single_click.pack_start(spi_click_speed, true, true);
-
-            Preferences.settings.bind("single-click", hbox_single_click, "sensitive", SettingsBindFlags.DEFAULT);
-
-            Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(), "value", SettingsBindFlags.DEFAULT);
-            
-            first_vbox.pack_start(hbox_single_click, false);
-            
-            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Behavior")));
-
-            first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
-            
-            /* Date format */
-            var mode_date_format = new ModeButton();
-            mode_date_format.append(new Gtk.Label(_("iso")));
-            mode_date_format.append(new Gtk.Label(_("locale")));
-            mode_date_format.append(new Gtk.Label(_("informal")));
-            mode_date_format.selected = (int)Preferences.settings.get_enum ("date-format");
-
-            mode_date_format.mode_changed.connect(date_format_changed);
-
-            hbox_single_click = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-
-            label = new Gtk.Label(_("Date format:"));
-            label.set_alignment(0, 0.5f);
-
-            hbox_single_click.pack_start(label);
-            hbox_single_click.pack_start(mode_date_format, false, false);
-            
-            first_vbox.pack_start(hbox_single_click, false);
-
-            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Appearance")));
-
-            first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
             
             var view = new Gtk.TreeView();
             
@@ -151,12 +105,12 @@ namespace Marlin.View
             /* Margins
              * we don't set the margin_top to get the staticnotebook the most upper possible
              * otherwise we would have used the border-width property of the dialog */
-            get_content_area ().margin_left = 5;
+            /*get_content_area ().margin_left = 5;
             get_content_area ().margin_right = 5;
             get_content_area ().margin_bottom = 5;
             mai_notebook.margin_left = 5;
             mai_notebook.margin_right = 5;
-            mai_notebook.margin_bottom = 12;
+            mai_notebook.margin_bottom = 12;*/
             
             ((Gtk.Box)get_content_area()).pack_start(mai_notebook);
 
@@ -172,6 +126,24 @@ namespace Marlin.View
             {
                 critical("Can't properly disable the plugin %s!", name);
             }
+        }
+        
+        void add_option (Gtk.Grid grid, Gtk.Widget label, Gtk.Widget switcher, ref int row) {
+            label.hexpand = true;
+            label.halign = Gtk.Align.END;
+            label.margin_left = 20;
+            switcher.halign = Gtk.Align.FILL;
+            switcher.hexpand = true;
+            switcher.margin_right = 40;
+            
+            if (switcher is Gtk.Switch || switcher is Gtk.CheckButton
+                || switcher is Gtk.Entry) { /* then we don't want it to be expanded */
+                switcher.halign = Gtk.Align.START;
+            }
+            
+            grid.attach (label, 0, row, 1, 1);
+            grid.attach_next_to (switcher, label, Gtk.PositionType.RIGHT, 3, 1);
+            row ++;
         }
         
         void enable_plugin(string name)
@@ -217,5 +189,62 @@ namespace Marlin.View
             }
         }
 
+        private Gtk.Widget get_behavior_box()
+        {
+            var grid = new Gtk.Grid();
+            grid.row_spacing = 5;
+            grid.column_spacing = 5;
+            grid.margin_left = 15;
+            grid.margin_right = 5;
+            grid.margin_top = 15;
+            grid.margin_bottom = 15;
+            
+            int row = 0;
+
+            // Single click
+            var label = new Gtk.Label(_("Single click to open:"));
+            var checkbox = new Gtk.Switch();
+            Preferences.settings.bind("single-click", checkbox , "active", SettingsBindFlags.DEFAULT);
+
+            add_option(grid, label, checkbox, ref row);
+            
+            // Mouse selection speed
+            label = new Gtk.Label(_("Mouse auto-selection speed:"));
+            var spi_click_speed = new Gtk.Scale.with_range(Gtk.Orientation.HORIZONTAL, 0, 1000, 1);
+
+            Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(), "value", SettingsBindFlags.DEFAULT);
+            
+			add_option(grid, label, spi_click_speed, ref row);
+            
+            return grid;
+        }
+
+        private Gtk.Widget get_appearance_box()
+        {
+            var grid = new Gtk.Grid();
+            grid.row_spacing = 5;
+            grid.column_spacing = 5;
+            grid.margin_left = 15;
+            grid.margin_right = 5;
+            grid.margin_top = 15;
+            grid.margin_bottom = 15;
+            
+            int row = 0;
+
+			// Date format
+            var label = new Gtk.Label(_("Date format:"));
+
+            var mode_date_format = new ModeButton();
+            mode_date_format.append(new Gtk.Label(_("iso")));
+            mode_date_format.append(new Gtk.Label(_("locale")));
+            mode_date_format.append(new Gtk.Label(_("informal")));
+            mode_date_format.selected = (int)Preferences.settings.get_enum ("date-format");
+
+            mode_date_format.mode_changed.connect(date_format_changed);
+
+			add_option(grid, label, mode_date_format, ref row);
+
+			return grid;
+        }
     }
 }
