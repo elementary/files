@@ -214,7 +214,7 @@ namespace Marlin.View
 
             Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(), "value", SettingsBindFlags.DEFAULT);
             
-			add_option(grid, label, spi_click_speed, ref row);
+            add_option(grid, label, spi_click_speed, ref row);
             
             return grid;
         }
@@ -242,9 +242,9 @@ namespace Marlin.View
 
             mode_date_format.mode_changed.connect(date_format_changed);
 
-			add_option(grid, label, mode_date_format, ref row);
+            add_option(grid, label, mode_date_format, ref row);
 
-			return grid;
+            return grid;
         }
     }
 }
