@@ -27,6 +27,11 @@
   </enum>
 
   <schema path="/apps/marlin/preferences/" id="org.gnome.marlin.preferences">
+    <key type="b" name="auto-theme">
+      <default>true</default>
+      <summary>Auto-theme</summary>
+      <description>Automaticly theme Marlin's specific widgets</description>
+    </key>
     <key type="b" name="show-menubar">
       <default>false</default>
       <summary>Show the menubar</summary>
