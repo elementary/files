@@ -51,15 +51,6 @@ eel_g_settings_add_auto_boolean (GSettings *settings,
                       storage);
 }
 
-gint64
-eel_get_system_time (void)
-{
-    struct timeval tmp;
-
-    gettimeofday (&tmp, NULL);
-    return (gint64)tmp.tv_usec + (gint64)tmp.tv_sec * G_GINT64_CONSTANT (1000000);
-}
-
 /**
  * eel_add_weak_pointer
  *
@@ -157,21 +148,4 @@ eel_g_str_list_alphabetize (GList *list)
 	return g_list_sort (list, (GCompareFunc) g_utf8_collate);
 }
 
-int
-eel_round (double d)
-{
-    double val;
-
-    val = floor (d + .5);
-
-    /* The tests are needed because the result of floating-point to integral
-     * conversion is undefined if the floating point value is not representable
-     * in the new type. E.g. the magnititude is too large or a negative
-     * floating-point value being converted to an unsigned.
-     */
-    g_return_val_if_fail (val <= INT_MAX, INT_MAX);
-    g_return_val_if_fail (val >= INT_MIN, INT_MIN);
-
-    return val;
-}
 

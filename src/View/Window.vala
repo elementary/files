@@ -50,6 +50,21 @@ namespace Marlin.View {
         private const int horizontal_contextplane_max_width = 910;
         private const int horizontal_contextplane_max_height = 380; // after which we will go vertical
 
+        private Gtk.CssProvider css_provider = null;
+        private bool _auto_theme;
+        public bool auto_theme {
+            set {
+                _auto_theme = value;
+                if (value)
+                    load_css_style ();
+                else
+                    unload_css_style ();
+            }
+            get {
+                return _auto_theme;
+            }
+        }
+
         public bool can_go_up{
             set{
                 main_actions.get_action("Up").set_sensitive(value);
@@ -233,9 +248,23 @@ namespace Marlin.View {
             Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
             Preferences.settings.bind("show-sidebar", main_actions.get_action("Show Hide Sidebar"), "active", 0);
 
+            /* auto-theme Marlin's specific widgets.
+             * the css provider fix some incomplete gtk themes and|or some gtk bugs 
+             * ex: bug on selection state color of a cell when a new background-color color is defined.
+             */
+            Preferences.settings.bind("auto-theme", this, "auto-theme", SettingsBindFlags.DEFAULT);
+
             /*/
             /* Connect and abstract signals to local ones
             /*/
+
+            window_state_event.connect ((event) => {
+                if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
+                    Preferences.settings.set_boolean("maximized", 
+                                                     (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED);
+                }
+                return false;
+            });
 
             delete_event.connect(() => {
                 save_geometries();
@@ -279,6 +308,21 @@ namespace Marlin.View {
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
             undo_actions_set_insensitive ();
 
+        }
+
+        private void load_css_style () {
+            css_provider = new Gtk.CssProvider();
+            try {
+                css_provider.load_from_data (CSS_STYLE, -1);
+                StyleContext.add_provider_for_screen (screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            } catch (Error e) {
+                warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
+            }
+        }
+        
+        private void unload_css_style () {
+            if (css_provider != null)
+                StyleContext.remove_provider_for_screen (screen, css_provider);
         }
 
         [Signal (action=true)]
@@ -493,7 +537,7 @@ namespace Marlin.View {
                 Preferences.settings.set_int("sidebar-width", sidebar_alloc.width);
 
             var geometry = get_geometry_string (this);
-            bool is_maximized = get_window().get_state() == Gdk.WindowState.MAXIMIZED;
+            bool is_maximized = (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED;
             if (is_maximized == false)
                 Preferences.settings.set_string("geometry", geometry);
             Preferences.settings.set_boolean("maximized", is_maximized);
@@ -920,6 +964,39 @@ namespace Marlin.View {
               N_("Dark Gray"), null, null,
               RowColor.DARKGRAY }
         };*/
+
+        private const string CSS_STYLE = """
+            ExoIconView.view {
+                 background-color: @base_color;
+            }
+
+            .sidebar,
+            .sidebar .view {
+                background-color: @bg_color;
+            }
+
+            MarlinViewWindow * {
+                -GtkPaned-handle-size: 1;
+            }
+
+            /*MarlinViewWindow .pane-separator {*/
+            VarkaWidgetsCollapsiblePaned,
+            VarkaWidgetsCollapsiblePaned.pane-separator {
+                -GtkPaned-handle-size: 1;
+                background-color: shade (@bg_color, 0.95);
+                border-color: @dark_bg_color;
+                border-style: solid;
+                border-width: 0;
+            }
+
+            .cell:selected {
+                background-color: alpha (@selected_bg_color, 0.9);
+            }
+            .cell:active {
+                background-color: shade (@bg_color, 0.915);
+            }
+
+        """;
 
     }
 }

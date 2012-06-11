@@ -93,6 +93,7 @@ namespace Marlin.View.Chrome
 
                     location_bar.escape.connect( () => { ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); });
                     location_bar.activate.connect(() => { win.current_tab.path_changed(File.new_for_commandline_arg(location_bar.path)); });
+                    location_bar.activate_alternate.connect((a) => { win.add_tab(File.new_for_commandline_arg(a)); });
                     if (get_icon_size () == Gtk.IconSize.LARGE_TOOLBAR) {
                         location_bar.margin_top = 6;
                         location_bar.margin_bottom = 6;

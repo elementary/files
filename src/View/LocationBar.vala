@@ -33,22 +33,30 @@ namespace Marlin.View.Chrome
             set{
                 var new_path = value;
                 _path = new_path;
-                bread.change_breadcrumbs(new_path);
+                if (!bread.focus) {
+                    bread.entry.reset();
+                    bread.change_breadcrumbs(new_path);
+                }
             }
             get{
                 return _path;
             }
         }
 
+        Window win;
+
         public new signal void activate();
+        public signal void activate_alternate(string path);
         public signal void escape();
 
         public LocationBar (UIManager ui, Window win)
         {
+            this.win = win;
             bread = new Breadcrumbs(ui, win);
             bread.escape.connect( () => { escape(); });
 
             bread.changed.connect(on_bread_changed);
+            bread.activate_alternate.connect((a) => { activate_alternate(a); });
 
             set_expand(true);
                 
@@ -62,8 +70,11 @@ namespace Marlin.View.Chrome
         
         private void on_bread_changed(string changed)
         {
-             _path = changed;
-             activate();
+            /* focus back the view */
+            ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); 
+            //_path = changed;
+            path = changed;
+            activate();
         }
     }
 
@@ -170,6 +181,11 @@ namespace Marlin.View.Chrome
             entry.down.connect(() => {
                 ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); 
             });
+            entry.completed.connect(() => {
+                string path = get_elements_path ();
+                update_breadcrumbs (entry.text, path);
+                grab_focus();
+            });
 
             menu = new Gtk.Menu();
             menu.show_all();
@@ -237,30 +253,18 @@ namespace Marlin.View.Chrome
         
         public void on_need_completion()
         {
+            to_search = "";
             string path = get_elements_path ();
-
-//#if 0
             string[] stext = entry.text.split("/");
-
-            switch(stext.length)
-            {
-            case 0:
-                to_search = "";
-                break;
-            case 1:
-                to_search = stext[0];
-                break;
-            default: /* if it is > 1 */
-                update_breadcrumbs (entry.text, path);
-                break;
-            }
-//#endif
-//            to_search = entry.text;
+            int stext_len = stext.length;
+            if (stext_len > 0)
+                to_search = stext[stext.length -1];
 
             entry.completion = "";
             autocompleted = false;
 
             path += entry.text;
+            message ("path %s to_search %s", path, to_search);
             if(to_search != "")
                 path = Marlin.Utils.get_parent(path);
 
@@ -302,7 +306,6 @@ namespace Marlin.View.Chrome
             {
                 File location = File.new_for_commandline_arg (strloc);
                 win.current_tab.path_changed (location);
-                grab_focus();
             }
             return strloc;
         }
@@ -333,6 +336,8 @@ namespace Marlin.View.Chrome
             menu_x_root = x;
             menu_y_root = y;
             menu = new Gtk.Menu();
+            menu.cancel.connect (() => { reset_elements_states (); });
+            menu.deactivate.connect (() => { reset_elements_states (); });
             var directory = File.new_for_uri (current_right_click_root);
             if (files_menu != null)
                 files_menu.done_loading.disconnect(on_files_loaded_menu);

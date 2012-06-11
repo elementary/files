@@ -13,11 +13,14 @@ X-GNOME-Gettext-Domain=pantheon-files
 
 X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Root
 
+<<<<<<< TREE
 [TabNew Shortcut Group]
 Name=New _Tab
 Exec=pantheon-files -t
 TargetEnvironment=Unity
 
+=======
+>>>>>>> MERGE-SOURCE
 [WindowNew Shortcut Group]
 Name=New _Window
 Exec=pantheon-files

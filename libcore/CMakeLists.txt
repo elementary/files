@@ -80,7 +80,7 @@ pkg_check_modules(DEPS REQUIRED
 	gthread-2.0
 	gio-2.0
 	pango>=1.1.2
-	gtk+-3.0>=3.0.3
+	gtk+-3.0>=3.4.0
 	gail-3.0
     gee-1.0
 	sqlite3

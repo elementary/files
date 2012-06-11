@@ -64,7 +64,6 @@
 #include "nautilus-file-utilities.h"
 #include "nautilus-file-conflict-dialog.h"*/
 #include "marlin-file-changes-queue.h"
-#include "marlin-file-utilities.h"
 #include "marlin-file-conflict-dialog.h"
 #include "marlin-undostack-manager.h"
 #include "marlincore.h"
@@ -1005,7 +1004,8 @@ finalize_common (CommonJob *common)
     marlin_progress_info_finish (common->progress);
 #endif
     if (common->inhibit_cookie != -1) {
-        marlin_uninhibit_power_manager (common->inhibit_cookie);
+        gtk_application_uninhibit (GTK_APPLICATION (g_application_get_default ()),
+                                   common->inhibit_cookie);
     }
 
     common->inhibit_cookie = -1;
@@ -1334,7 +1334,11 @@ run_question (CommonJob *job,
 static void
 inhibit_power_manager (CommonJob *job, const char *message)
 {
-    job->inhibit_cookie = marlin_inhibit_power_manager (message);
+    job->inhibit_cookie = gtk_application_inhibit (GTK_APPLICATION (g_application_get_default ()),
+                                                   GTK_WINDOW (job->parent_window),
+                                                   GTK_APPLICATION_INHIBIT_LOGOUT |
+                                                   GTK_APPLICATION_INHIBIT_SUSPEND,
+                                                   message);
 }
 
 static void
