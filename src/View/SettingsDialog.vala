@@ -121,7 +121,6 @@ namespace Marlin.View
         
         void disable_plugin(string name)
         {
-            
             if(!plugins.disable_plugin(name))
             {
                 critical("Can't properly disable the plugin %s!", name);
@@ -231,7 +230,7 @@ namespace Marlin.View
             
             int row = 0;
 
-			// Date format
+            // Date format
             var label = new Gtk.Label(_("Date format:"));
 
             var mode_date_format = new ModeButton();
