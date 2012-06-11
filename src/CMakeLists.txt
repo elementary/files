@@ -91,6 +91,7 @@ add_executable(pantheon-files
     marlin-enum-types.c
     marlin-bookmark.c
     marlin-bookmark-list.c
+    unity-quicklist-handler.c
     marlin-dnd.c
     marlin-clipboard-manager.c
     marlin-places-sidebar.c

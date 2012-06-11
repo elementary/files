@@ -25,13 +25,11 @@
 
 void    eel_g_settings_add_auto_boolean (GSettings *settings, const char *key, 
                                          gboolean *storage);
-gint64  eel_get_system_time (void);
 void    eel_add_weak_pointer (gpointer pointer_location);
 void    eel_remove_weak_pointer (gpointer pointer_location);
 
 GList   *eel_g_object_list_ref (GList *list);
 GList   *eel_g_object_list_copy (GList *list);
 GList   *eel_g_str_list_alphabetize (GList *list);
-int     eel_round (double d);
 
 #endif /* EEL_GLIB_EXTENSIONS_H */
