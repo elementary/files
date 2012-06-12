@@ -674,6 +674,8 @@ eel_editable_label_init (EelEditableLabel *label)
   label->editing_canceled = FALSE;
   
   gtk_widget_set_can_focus (GTK_WIDGET (label), TRUE);
+  gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (label)),
+                               GTK_STYLE_CLASS_ENTRY);
 
   /* This object is completely private. No external entity can gain a reference
    * to it; so we create it here and destroy it in finalize().

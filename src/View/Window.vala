@@ -891,13 +891,6 @@ namespace Marlin.View {
                 border-width: 0;
             }
 
-            .cell:selected {
-                background-color: alpha (@selected_bg_color, 0.9);
-            }
-            .cell:active {
-                background-color: shade (@bg_color, 0.915);
-            }
-
         """;
 
     }
