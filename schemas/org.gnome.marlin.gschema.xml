@@ -28,7 +28,7 @@
 
   <schema path="/apps/marlin/preferences/" id="org.gnome.marlin.preferences">
     <key type="b" name="auto-theme">
-      <default>true</default>
+      <default>false</default>
       <summary>Auto-theme</summary>
       <description>Automaticly theme Marlin's specific widgets</description>
     </key>

@@ -209,10 +209,7 @@ namespace Marlin.View {
             Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
             Preferences.settings.bind("show-sidebar", main_actions.get_action("Show Hide Sidebar"), "active", 0);
 
-            /* auto-theme Marlin's specific widgets.
-             * the css provider fix some incomplete gtk themes and|or some gtk bugs 
-             * ex: bug on selection state color of a cell when a new background-color color is defined.
-             */
+            /* auto-theme Marlin's specific widgets. */
             Preferences.settings.bind("auto-theme", this, "auto-theme", SettingsBindFlags.DEFAULT);
 
             /*/
