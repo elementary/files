@@ -48,7 +48,7 @@ namespace Marlin.View
             var appearance = new Gtk.Label(_("Appearance"));
             mai_notebook.append_page(get_appearance_box(), appearance);
 
-			// Extensions
+            // Extensions
             var first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
             
             var view = new Gtk.TreeView();
