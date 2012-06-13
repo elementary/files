@@ -40,13 +40,9 @@ namespace Marlin.View
             var mai_notebook = new Granite.Widgets.StaticNotebook();
             set_size_request (360, -1);
             
-            // Behavior
-            var behavior = new Gtk.Label(_("Behavior"));
-            mai_notebook.append_page(get_behavior_box(), behavior);
-
-            // Appearance
-            var appearance = new Gtk.Label(_("Appearance"));
-            mai_notebook.append_page(get_appearance_box(), appearance);
+            // General
+            var behavior = new Gtk.Label(_("General"));
+            mai_notebook.append_page(get_general_box(), behavior);
 
             // Extensions
             var first_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 3);
@@ -188,7 +184,7 @@ namespace Marlin.View
             }
         }
 
-        private Gtk.Widget get_behavior_box()
+        private Gtk.Widget get_general_box()
         {
             var grid = new Gtk.Grid();
             grid.row_spacing = 5;
@@ -214,24 +210,9 @@ namespace Marlin.View
             Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(), "value", SettingsBindFlags.DEFAULT);
             
             add_option(grid, label, spi_click_speed, ref row);
-            
-            return grid;
-        }
-
-        private Gtk.Widget get_appearance_box()
-        {
-            var grid = new Gtk.Grid();
-            grid.row_spacing = 5;
-            grid.column_spacing = 5;
-            grid.margin_left = 15;
-            grid.margin_right = 5;
-            grid.margin_top = 15;
-            grid.margin_bottom = 15;
-            
-            int row = 0;
 
             // Date format
-            var label = new Gtk.Label(_("Date format:"));
+            label = new Gtk.Label(_("Date format:"));
 
             var mode_date_format = new ModeButton();
             mode_date_format.append(new Gtk.Label(_("iso")));
@@ -242,7 +223,7 @@ namespace Marlin.View
             mode_date_format.mode_changed.connect(date_format_changed);
 
             add_option(grid, label, mode_date_format, ref row);
-
+            
             return grid;
         }
     }
