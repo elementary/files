@@ -97,16 +97,6 @@ namespace Marlin.View
             first_vbox.pack_start(view);
 
             mai_notebook.append_page(first_vbox, new Gtk.Label(_("Extensions")));
-
-            /* Margins
-             * we don't set the margin_top to get the staticnotebook the most upper possible
-             * otherwise we would have used the border-width property of the dialog */
-            /*get_content_area ().margin_left = 5;
-            get_content_area ().margin_right = 5;
-            get_content_area ().margin_bottom = 5;
-            mai_notebook.margin_left = 5;
-            mai_notebook.margin_right = 5;
-            mai_notebook.margin_bottom = 12;*/
             
             ((Gtk.Box)get_content_area()).pack_start(mai_notebook);
 
@@ -129,7 +119,6 @@ namespace Marlin.View
             label.margin_left = 20;
             switcher.halign = Gtk.Align.FILL;
             switcher.hexpand = true;
-            //switcher.margin_right = 40;
             
             if (switcher is Gtk.Switch || switcher is Gtk.CheckButton
                 || switcher is Gtk.Entry) { /* then we don't want it to be expanded */
