@@ -129,7 +129,7 @@ namespace Marlin.View
             label.margin_left = 20;
             switcher.halign = Gtk.Align.FILL;
             switcher.hexpand = true;
-            switcher.margin_right = 40;
+            //switcher.margin_right = 40;
             
             if (switcher is Gtk.Switch || switcher is Gtk.CheckButton
                 || switcher is Gtk.Entry) { /* then we don't want it to be expanded */
