@@ -7,276 +7,528 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-01-02 20:43+0100\n"
-"PO-Revision-Date: 2012-05-07 02:51+0000\n"
-"Last-Translator: Cody Garver <codygarver@gmail.com>\n"
+"POT-Creation-Date: 2012-05-30 00:35-0700\n"
+"PO-Revision-Date: 2012-06-12 17:07+0000\n"
+"Last-Translator: honki <honkiaa@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-05-08 05:55+0000\n"
-"X-Generator: Launchpad (build 15204)\n"
+"X-Launchpad-Export-Date: 2012-06-13 05:34+0000\n"
+"X-Generator: Launchpad (build 15389)\n"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:52
-msgid "Properties"
-msgstr "屬性"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
+msgid "Files Preferences"
+msgstr "檔案偏好設定"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:98
-msgid "Info"
-msgstr "資訊"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:54
+msgid "Single click to open:"
+msgstr "單擊開啟項目"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:103
-msgid "Permissions"
-msgstr "權限"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:64
+msgid "Mouse auto-selection speed:"
+msgstr "滑鼠自動選擇速度:"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:114
-msgid "Preview"
-msgstr "預覽"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:80
+msgid "Default File Manager:"
+msgstr "預設檔案瀏覽器:"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:310
-msgid "Created"
-msgstr "已建立"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:89
+msgid "Behavior"
+msgstr "行為"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:311
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:320
-msgid "Modified"
-msgstr "已修改"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:96
+msgid "small"
+msgstr "小"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:312
-msgid "Last Access"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:97
+msgid "medium"
+msgstr "中"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:316
-msgid "Deleted"
-msgstr "已刪除"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:98
+msgid "large"
+msgstr "大"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:320
-msgid "MimeType"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:99
+msgid "extra-large"
+msgstr "特大"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:328
-msgid "MimeTypes"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:120
+msgid "Sidebar icon size:"
+msgstr "側邊欄圖示大小:"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:332
-msgid "Location"
-msgstr "位置"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:131
+msgid "iso"
+msgstr "iso"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:334
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:316
-msgid "Target"
-msgstr "目標"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:132
+msgid "locale"
+msgstr "語系"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:340
-msgid "Origin Location"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:133
+msgid "informal"
+msgstr "非正式用語"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:378
-msgid "Other application..."
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:140
+msgid "Date format:"
+msgstr "日期格式："
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:402
-msgid "Open with"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:148
+msgid "Appearance"
+msgstr "外觀"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:524
-msgid "Read"
-msgstr "讀取"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:197
+msgid "Extensions"
+msgstr "擴充套件"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:529
-msgid "Write"
-msgstr "寫入"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:534
-msgid "Execute"
-msgstr "執行"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:752
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:765
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:321
-msgid "Owner"
-msgstr "擁有者"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:757
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:769
-msgid "Group"
-msgstr "群組"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:773
-msgid "Everyone"
-msgstr "所有人"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/PropertiesWindow.vala:1025
-msgid "Select an aplication to open "
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:312
-msgid "Name"
-msgstr "名稱"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:313
-msgid "Type"
-msgstr "類型"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ContextView.vala:318
-msgid "Size"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:72
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "資料夾不存在"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:75
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
 msgstr "Marlin 找不到資料夾 %s"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "建立"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/DirectoryNotFound.vala:80
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "建立資料夾 %s"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:31
-msgid "Marlin Preferences"
-msgstr "Marlin 偏好設定"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:48
-msgid "Single click to open:"
-msgstr "單擊開啟項目"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:58
-msgid "Mouse auto-selection speed:"
-msgstr "滑鼠自動選擇速度:"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:75
-msgid "Properties Dialog set modal:"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:86
-msgid "Default File Manager:"
-msgstr "預設檔案瀏覽器:"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:95
-msgid "Behavior"
-msgstr "行為"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:102
-msgid "small"
-msgstr "小"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:103
-msgid "medium"
-msgstr "中"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:104
-msgid "large"
-msgstr "大"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:105
-msgid "extra-large"
-msgstr "特大"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:126
-msgid "Sidebar icon size:"
-msgstr "側邊欄圖示大小:"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:137
-msgid "iso"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:138
-msgid "locale"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:139
-msgid "informal"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:146
-msgid "Date format:"
-msgstr "日期格式："
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:154
-msgid "Display"
-msgstr "顯示器"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/SettingsDialog.vala:203
-msgid "Extensions"
-msgstr "擴展功能"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:95
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:370
-msgid "Trash"
-msgstr "回收筒"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/LocationBar.vala:96
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:588
-msgid "Network"
-msgstr "網路"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:131
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:324
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ViewContainer.vala:141
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:324
 msgid "Home"
 msgstr "家目錄"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/View/ViewContainer.vala:133
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:394
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ViewContainer.vala:143
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:394
 msgid "File System"
 msgstr "檔案系統"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:167
-msgid "Single Click"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:137
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3406
+msgid "Set as default"
+msgstr "設為預設值"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:142
+msgid "Ignore"
+msgstr "忽略"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:454
+msgid "Undo"
+msgstr "復原"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:455
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:749
+msgid "Undo the last action"
+msgstr "取消上個動作"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:464
+msgid "Redo"
+msgstr "取消復原"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:465
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:752
+msgid "Redo the last action"
+msgstr "復原上個動作"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:720
+msgid "_File"
+msgstr "檔案(_F)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:721
+msgid "_Edit"
+msgstr "編輯(_E)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:722
+msgid "_View"
+msgstr "檢視(_V)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:723
+msgid "_Go"
+msgstr "前往(_G)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:724
+msgid "_Help"
+msgstr "幫助(_H)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:726
+msgid "New _Window"
+msgstr "開啟新視窗 (_W)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:727
+msgid "Open another Marlin window for the displayed location"
+msgstr "在已顯示的位置中開啟另一個 Marlin 視窗"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:730
+msgid "New _Tab"
+msgstr "新增分頁(_T)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:731
+msgid "Open another tab for the displayed location"
+msgstr "在已顯示的位置中開啟另一個分頁"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:734
+msgid "_Close"
+msgstr "關閉(_C)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:735
+msgid "Close this folder"
+msgstr "關閉本資料夾"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:738
+msgid "Customize _Toolbar..."
+msgstr "自訂工具列(_T)…"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:739
+msgid "Easily edit the toolbar layout"
+msgstr "輕鬆編輯工具列配置"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:742
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:743
+msgid "Change Marlin's preferences"
+msgstr "改變 Marlin 的偏好設定"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:748
+msgid "_Undo"
+msgstr "復原(_U)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:751
+msgid "_Redo"
+msgstr "取消復原(_R)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:754
+msgid "Open _Parent"
+msgstr "開啟上一層(_P)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:755
+msgid "Open the parent folder"
+msgstr "開啟上層資料夾"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:757
+msgid "_Back"
+msgstr "返回(_B)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:758
+msgid "Go to the previous visited location"
+msgstr "回到上一個瀏覽過的位置"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:761
+msgid "_Forward"
+msgstr "下一步(_F)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:762
+msgid "Go to the next visited location"
+msgstr "前住下一個瀏覽過的位置"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:764
+msgid "_Reload"
+msgstr "重新載入(_R)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:765
+msgid "Reload the current location"
+msgstr "重新載入目前的位置"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:768
+msgid "_Home Folder"
+msgstr "個人資料夾(_H)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:769
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "開啟個人資料夾"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:772
+msgid "_Trash"
+msgstr "回收筒(_T)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:773
+msgid "Open your personal trash folder"
+msgstr "開啟個人回收筒資料夾"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:776
+msgid "_Network"
+msgstr "網路(_N)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:777
+msgid "Browse bookmarked and local network locations"
+msgstr "瀏覽已加入書籤及本地網路的位置"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:780
+msgid "Zoom _In"
+msgstr "拉近(_I)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:781
+msgid "Increase the view size"
+msgstr "增加檢視的大小"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:792
+msgid "Zoom _Out"
+msgstr "拉遠(_O)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:793
+msgid "Decrease the view size"
+msgstr "減少檢視的大小"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:800
+msgid "Normal Si_ze"
+msgstr "原來大小(_Z)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:801
+msgid "Use the normal view size"
+msgstr "使用一般的檢視大小"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:804
+msgid "Next Tab"
+msgstr "下一個分頁"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:808
+msgid "Previous Tab"
+msgstr "前一個分頁"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:812
+msgid "Connect to _Server..."
+msgstr "連接伺服器(_S)…"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:813
+msgid "Connect to a remote computer or shared disk"
+msgstr "連接遠端電腦或磁碟共享"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:816
+msgid "_About"
+msgstr "關於(_A)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:817
+msgid "Display credits"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:820
+msgid "Report a Problem..."
+msgstr "回報問題..."
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:821
+msgid "File a bug on Launchpad"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:824
+msgid "Get Help Online..."
+msgstr "取得線上幫助...."
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:828
+msgid "Translate This Application..."
+msgstr "翻譯這個應用程式..."
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:124
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:837
+msgid "Show _Hidden Files"
+msgstr "顯示隱藏檔(_H)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:838
+msgid "Toggle the display of hidden files in the current window"
+msgstr "在目前視窗中切換隱藏檔的顯示"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:843
+msgid "Show _Desktop Files"
+msgstr "顯示桌面檔案(_D)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:844
+msgid "Toggle the display of desktop files"
+msgstr "切換顯示桌面文件"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:848
+msgid "_Context Pane"
+msgstr "情境窗格(_C)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:849
+msgid "Change the visibility of the context pane"
+msgstr "變更情境窗格的可見性"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:853
+msgid "_Menubar"
+msgstr "選單列(_M)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:854
+msgid "Change the visibility of this window's menubar"
+msgstr "改變是否顯示本視窗的選單列"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:858
+msgid "_Places"
+msgstr "位置(_P)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:859
+msgid "Change the visibility of this window's side pane"
+msgstr "顯示或隱藏本視窗的側面窗格"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:867
+msgid "Icon"
+msgstr "圖示"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:870
+msgid "List"
+msgstr "列表"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:873
+msgid "Compact"
+msgstr "簡潔模式"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:876
+msgid "Columns"
+msgstr "列"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/LocationBar.vala:100
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:588
+msgid "Network"
+msgstr "網路"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:317
+msgid "Name"
+msgstr "名稱"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:318
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "類型"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:321
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:375
+msgid "Target"
+msgstr "目標"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:323
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "大小"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:325
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:347
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
+msgid "Modified"
+msgstr "已修改"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:326
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:832
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:845
+msgid "Owner"
+msgstr "擁有者"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "屬性"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:118
+msgid "Info"
+msgstr "資訊"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:126
+msgid "Permissions"
+msgstr "權限"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:138
+msgid "Preview"
+msgstr "預覽"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:345
+msgid "Created"
+msgstr "已建立"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:350
+msgid "Last Access"
+msgstr "最後取用"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:356
+msgid "Deleted"
+msgstr "已刪除"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:361
+msgid "MimeType"
+msgstr "Mime 類型"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:369
+msgid "MimeTypes"
+msgstr "Mime 類型"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:373
+msgid "Location"
+msgstr "位置"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:381
+msgid "Origin Location"
+msgstr "原始位置"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:419
+msgid "Other application..."
+msgstr "其他應用程式…"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:443
+msgid "Open with"
+msgstr "以此開啟"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:459
+msgid "Device usage"
+msgstr "裝置使用"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:604
+msgid "Read"
+msgstr "讀取"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:609
+msgid "Write"
+msgstr "寫入"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:614
+msgid "Execute"
+msgstr "執行"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:837
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:849
+msgid "Group"
+msgstr "群組"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:853
+msgid "Everyone"
+msgstr "所有人"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:1109
+msgid "Select an aplication to open "
+msgstr "選擇應用程式來開啟 "
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:127
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
 msgstr "公共 FTP"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:129
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
 msgstr "FTP (需登入)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:132
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
 msgstr "Windows 分享"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:134
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:136
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "安全式 WebDAV (HTTPS)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:183
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
 msgstr "正在連線..."
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:207
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -284,406 +536,140 @@ msgstr ""
 "不能載入支援的伺服器方法清單。\n"
 "請檢查您的 gvfs 安裝。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:285
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "資料夾「%s」不能在「%s」上開啟。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:295
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "找不到在「%s」的伺服器。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:330
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
 msgstr "再試一次"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:395
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
 msgstr "請檢驗您的使用者詳細資料。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:425
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr ""
+msgstr "繼續"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:750
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1169
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:750
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
-msgstr ""
+msgstr "連線(_O)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:875
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
 msgstr "連線至伺服器"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:893
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
 msgstr "伺服器詳細資料"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:914
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
-msgstr ""
+msgstr "伺服器(_S):"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:938
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
-msgstr ""
+msgstr "連接埠(_P):"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:956
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
-msgstr ""
+msgstr "類型(_T)："
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1030
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
 msgstr "分享(_A):"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1050
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
 msgstr "資料夾(_F):"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1073
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
 msgstr "使用者詳細資料"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1093
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
 msgstr "網域名稱(_D):"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1112
-msgid "_Username:"
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1095
+msgid "_User name:"
 msgstr "使用者名稱(_U):"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1132
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
 msgstr "密碼(_W):"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1153
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
 msgstr "記住此密碼(_R)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-connect-server-dialog.c:1258
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
 msgstr "操作程序已取消"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:86
-msgid "Compact directory listing"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-compact-view.c:87
-msgid "Compact view"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:82
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:569
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:623
-msgid "This folder is empty."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-columns-view.c:186
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-abstract-icon-view.c:139
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-list-view.c:199
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:779
-msgid "_Move Here"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:784
-msgid "_Copy Here"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:789
-msgid "_Link Here"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:794
-msgid "Set as _Background"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:801
-msgid "Cancel"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-dnd.c:893
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:445
-msgid "Customize Toolbar"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:461
-msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:477
-msgid "Available Items"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-toolbar-editor.c:498
-msgid "Displayed Items"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:310
-msgid "Personal"
-msgstr "個人資料夾"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:315
-msgid "Your common places and bookmarks"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:329
-msgid "Open your personal folder"
-msgstr "開啟個人資料夾"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:372
-msgid "Open the trash"
-msgstr "開啟回收筒"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:382
-msgid "Devices"
-msgstr "裝置"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:387
-msgid "Your local partitions and devices"
-msgstr "您的本地分割區和裝置"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:396
-msgid "Open the contents of the File System"
-msgstr "開啟檔案系統的內容"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:455
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:480
-#, c-format
-msgid "Mount and open %s"
-msgstr "掛載並開啟 %s"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:593
-msgid "Your network places"
-msgstr "您的網路位置"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:624
-msgid "Entire network"
-msgstr "整個網路"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:626
-msgid "Browse the contents of the network"
-msgstr "瀏覽網路的內容"
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1610
-msgid "_Start"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1611
-msgid "_Stop"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1616
-msgid "_Power On"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1617
-msgid "_Safely Remove Drive"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1620
-msgid "_Connect Drive"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1621
-msgid "_Disconnect Drive"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1624
-msgid "_Start Multi-disk Device"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1625
-msgid "_Stop Multi-disk Device"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1629
-msgid "_Unlock Drive"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1630
-msgid "_Lock Drive"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1704
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2251
-#, c-format
-msgid "Unable to start %s"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:1994
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2023
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2052
-#, c-format
-msgid "Unable to eject %s"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2197
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2307
-#, c-format
-msgid "Unable to stop %s"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2399
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1882
-msgid "_Open"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2407
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1902
-msgid "Open in New _Tab"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2414
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1911
-msgid "Open in New _Window"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2423
-msgid "Remove"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2432
-msgid "Rename..."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2444
-msgid "_Mount"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2451
-msgid "_Unmount"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2458
-msgid "_Eject"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:2466
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1410
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2281
-msgid "Empty _Trash"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3123
-msgid "Icon Size"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-places-sidebar.c:3124
-msgid "Icon size"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1090
-msgid "Invalid filename provided by XDS drag site"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1248
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1730
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1876
-#, c-format
-msgid "_Open With %s"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1898
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:1907
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3236
-msgid "Set as default"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/fm-directory-view.c:3454
-msgid "Set Color:"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-clipboard-manager.c:380
-msgid "There is nothing on the clipboard to paste"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:113
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:163
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:470
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:526
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:113
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:163
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:471
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:527
 msgid "File Operations"
-msgstr ""
+msgstr "檔案操作"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:122
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:122
 msgid "Show Details"
-msgstr ""
+msgstr "顯示詳細資料"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:157
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:179
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:157
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:179
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d 個檔案操作進行中"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:279
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:280
 msgid "Show copy dialog"
-msgstr ""
+msgstr "顯示複製對話框"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:290
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:291
 msgid "Cancel all in-progress actions"
-msgstr ""
+msgstr "取消所有正在進行的操作"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-progress-ui-handler.c:527
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:528
 msgid "All file operations have been successfully completed"
+msgstr "所有的檔案操作都已完成"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "剪貼簿中沒有東西可以貼上"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:416
+msgid "Show the version of the program."
+msgstr "顯示此程式的版本。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:420
+msgid "Open uri(s) in new tab"
+msgstr "在新的分頁開啟 uri"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:422
+msgid "Quit Marlin."
+msgstr "關閉 Marlin"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:424
+msgid "Enable debug logging"
 msgstr ""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3188
-msgid "Select All"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:425
+msgid "[URI...]"
+msgstr "[URI...]"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/eel-editable-label.c:3199
-msgid "Input Methods"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:439
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:434
 msgid ""
 "\n"
 "\n"
@@ -693,129 +679,1292 @@ msgstr ""
 "\n"
 "以檔案管理員瀏覽檔案系統"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../src/marlin-application.c:459
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:454
 msgid "--quit cannot be used with URIs."
 msgstr "--quit 不能與 URIs 一起使用。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:192
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-progress-info.c:210
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-columns-view.c:82
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:572
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:616
+msgid "This folder is empty."
+msgstr "這個資料夾是空的。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-columns-view.c:186
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:139
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:199
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "無法將 %s 更名為 %s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "圖示目錄清單"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "圖示檢視"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "項目排列方式(_G)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "相反次序(_V)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "以相反次序顯示圖示"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "依名稱(_N)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "以名稱排列圖示"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "依大小(_S)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "以大小排列圖示"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "依類型(_T)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "以檔案類型排列圖示"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "依修改日期(_D)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "以修改日期排列圖示"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:779
+msgid "_Move Here"
+msgstr "移至此(_M)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:784
+msgid "_Copy Here"
+msgstr "複製至此(_C)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:789
+msgid "_Link Here"
+msgstr "連結至此(_L)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:794
+msgid "Set as _Background"
+msgstr "設為背景(_B)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:801
+msgid "Cancel"
+msgstr "取消"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:893
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "無法執行檔案「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/eel-editable-label.c:3188
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3517
+msgid "Select All"
+msgstr "選取全部"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/eel-editable-label.c:3199
+msgid "Input Methods"
+msgstr "輸入法"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr "簡潔目錄清單"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr "簡潔檢視"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1150
+msgid "Invalid filename provided by XDS drag site"
+msgstr "來自  XDS 拖拉位置的無效檔案名稱"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1308
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "無法為 URL「%s」建立連結"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1793
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "使用「%s」來開啟選定的項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1940
+#, c-format
+msgid "_Open With %s"
+msgstr "以 %s 開啟(_O)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1946
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3483
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2399
+msgid "_Open"
+msgstr "開啟(_O)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1962
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "在 %'d 開啟新的分頁"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1966
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3495
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2407
+msgid "Open in New _Tab"
+msgstr "在新分頁中開啟(_T)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1971
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "在 %'d 開啟新的視窗"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1975
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2414
+msgid "Open in New _Window"
+msgstr "在新視窗中開啟(_W)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3455
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr "以「貼上」指令來準備移動選定的檔案"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3459
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr "以「貼上」指令來準備複製選定的檔案"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3463
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr "將剛才以「剪下」或「複製」指令選取的檔案移動或複製"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3466
+msgid "Paste Into Folder"
+msgstr "貼到資料夾內"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3467
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3470
+msgid "_Rename..."
+msgstr "重新命名(_R)…"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3471
+msgid "Rename selected item"
+msgstr "將選定的項目重新命名"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3474
+msgid "Create New _Folder"
+msgstr "建立新的資料夾(_F)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3475
+msgid "Create a new empty folder inside this folder"
+msgstr "在本資料夾中新增空白資料夾"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3477
+msgid "Create New _File"
+msgstr "建立新的檔案 (_F)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3479
+msgid "_Empty Document"
+msgstr "空的文件(_E)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3480
+msgid "Create a new empty document inside this folder"
+msgstr "在這個資料夾中新增空白的文件"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3484
+msgid "Open the selected item"
+msgstr "打開已選擇的項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3491
+msgid "Open in new Window"
+msgstr "在新視窗開啟"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3492
+msgid "Open each selected item in a new window"
+msgstr "在新的視窗分別開啟每個選取的項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3496
+msgid "Open each selected item in a new tab"
+msgstr "在新的分頁分別開啟每個選取的項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3498
+msgid "Open Wit_h"
+msgstr "以此開啟(_H)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3499
+msgid "Choose a program with which to open the selected item"
+msgstr "請選取程式來開啟選定的項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3501
+msgid "Other _Application..."
+msgstr "其他應用程式(_A)..."
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3502
+msgid "Choose another application with which to open the selected item"
+msgstr "請選取其它程式來開啟選定的項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3505
+msgid "Mo_ve to Trash"
+msgstr "丟進回收筒(_V)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3506
+msgid "Move each selected item to the Trash"
+msgstr "將每個選定的項目丟進回收筒"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3509
+msgid "_Delete Permanently"
+msgstr "永久刪除(_D)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3510
+msgid "Delete each selected item, without moving to the Trash"
+msgstr "將所有選定的項目直接刪除而不丟進回收筒"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3513
+msgid "_Restore"
+msgstr "還原(_R)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3521
+msgid "_Properties"
+msgstr "屬性(_P)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3522
+msgid "View or modify the properties of each selected item"
+msgstr "顯示或修改所有選定項目的屬性"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3629
+msgid "Set Color:"
+msgstr "設定顏色:"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:445
+msgid "Customize Toolbar"
+msgstr "自訂工具列"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:465
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
+msgstr "選擇要顯示在工具欄上的項目。可以通過拖放重新將項目排序。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:481
+msgid "Available Items"
+msgstr "可用的項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:502
+msgid "Displayed Items"
+msgstr "顯示的項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "佈局模式"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "佈局模式"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "單次點擊"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "是否可以用單點擊啟動檢視中的項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "超時的單點擊"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr "在單一點擊模式，滑鼠指標下的項目經過所需的時間後將自動被選取"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "檔案名稱"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:310
+msgid "Personal"
+msgstr "個人資料夾"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:315
+msgid "Your common places and bookmarks"
+msgstr "您的共同位置與書籤"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:370
+msgid "Trash"
+msgstr "回收筒"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:372
+msgid "Open the trash"
+msgstr "開啟回收筒"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:382
+msgid "Devices"
+msgstr "裝置"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:387
+msgid "Your local partitions and devices"
+msgstr "您的本地分割區和裝置"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:396
+msgid "Open the contents of the File System"
+msgstr "開啟檔案系統的內容"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:455
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:480
+#, c-format
+msgid "Mount and open %s"
+msgstr "掛載並開啟 %s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:593
+msgid "Your network places"
+msgstr "您的網路位置"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:624
+msgid "Entire network"
+msgstr "整個網路"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:626
+msgid "Browse the contents of the network"
+msgstr "瀏覽網路的內容"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1610
+msgid "_Start"
+msgstr "開始(_S)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1611
+msgid "_Stop"
+msgstr "停止(_S)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1616
+msgid "_Power On"
+msgstr "電源開啟(_P)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1617
+msgid "_Safely Remove Drive"
+msgstr "安全的移除裝置(_S)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1620
+msgid "_Connect Drive"
+msgstr "連接裝置(_C)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1621
+msgid "_Disconnect Drive"
+msgstr "中斷裝置(_D)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1624
+msgid "_Start Multi-disk Device"
+msgstr "開啟多磁碟裝置(_S)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1625
+msgid "_Stop Multi-disk Device"
+msgstr "關閉多磁碟裝置(_S)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1629
+msgid "_Unlock Drive"
+msgstr "解鎖裝置"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1630
+msgid "_Lock Drive"
+msgstr "鎖定裝置(_L)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1704
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2251
+#, c-format
+msgid "Unable to start %s"
+msgstr "無法開啟 %s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1994
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2023
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2052
+#, c-format
+msgid "Unable to eject %s"
+msgstr "無法退出 %s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2197
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "無法監測 %s 的媒體變更"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2307
+#, c-format
+msgid "Unable to stop %s"
+msgstr "無法關閉 %s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2423
+msgid "Remove"
+msgstr "刪除"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2432
+msgid "Rename..."
+msgstr "重新命名..."
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2444
+msgid "_Mount"
+msgstr "掛載(_M)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2451
+msgid "_Unmount"
+msgstr "卸載(_U)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2458
+msgid "_Eject"
+msgstr "退出(_E)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2466
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1418
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2306
+msgid "Empty _Trash"
+msgstr "清理回收筒(_T)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:3123
+msgid "Icon Size"
+msgstr "圖示大小"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:3124
+msgid "Icon size"
+msgstr "圖示大小"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:5
+msgid "Browse your files"
+msgstr "瀏覽您的檔案"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:6
+msgid "File Manager"
+msgstr "檔案管理員"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:237
+msgid "Today at 00:00:00 PM"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:238
+msgid "Today at %-I:%M:%S %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:240
+msgid "Today at 00:00 PM"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:241
+msgid "Today at %-I:%M %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:243
+msgid "Today, 00:00 PM"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:244
+msgid "Today, %-I:%M %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:246
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:247
+msgid "Today"
+msgstr "今天"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:256
+msgid "Yesterday at 00:00:00 PM"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:257
+msgid "Yesterday at %-I:%M:%S %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:259
+msgid "Yesterday at 00:00 PM"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:260
+msgid "Yesterday at %-I:%M %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:262
+msgid "Yesterday, 00:00 PM"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:263
+msgid "Yesterday, %-I:%M %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:265
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:266
+msgid "Yesterday"
+msgstr "昨天"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:277
+msgid "Wednesday, September 00 0000 at 00:00:00 PM"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:278
+msgid "%A, %B %-d %Y at %-I:%M:%S %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:280
+msgid "Mon, Oct 00 0000 at 00:00:00 PM"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:281
+msgid "%a, %b %-d %Y at %-I:%M:%S %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:283
+msgid "Mon, Oct 00 0000 at 00:00 PM"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:284
+msgid "%a, %b %-d %Y at %-I:%M %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:286
+msgid "Oct 00 0000 at 00:00 PM"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:287
+msgid "%b %-d %Y at %-I:%M %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:289
+msgid "Oct 00 0000, 00:00 PM"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:290
+msgid "%b %-d %Y, %-I:%M %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:292
+msgid "00/00/00, 00:00 PM"
+msgstr "00/00/00 下午 00:00"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:293
+msgid "%m/%-d/%y, %-I:%M %p"
+msgstr ""
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:295
+msgid "00/00/00"
+msgstr "00/00/00"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:296
+msgid "%m/%d/%y"
+msgstr "%y/%m/%d"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-stock-dialogs.c:35
+msgid "Show more _details"
+msgstr "顯示更多細節(_D)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "連結到 %s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1698
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "在桌面上的檔案解析失敗: %s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1736
+msgid "No Exec field specified"
+msgstr "Exec 欄並未指定"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1756
+msgid "No URL field specified"
+msgstr "URL 欄並未指定"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1762
+msgid "Invalid desktop file"
+msgstr "無效的桌面檔案"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:2052
+msgid "Slashes are not allowed in filenames"
+msgstr "檔案名稱中不能使用斜線( / )"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:2072
+msgid "Toplevel files cannot be renamed"
+msgstr "頂端層級檔案無法更改名稱"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:266
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "無法決定「%s」的原始位置 "
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:269
+msgid "The item cannot be restored from trash"
+msgstr "此項目不能自回收筒還原。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-progress-info.c:192
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr ""
+msgstr "準備中"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:361
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "合併資料夾「%s」？"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:199
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:733
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:364
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr "合併功能會在替換該資料夾中內任何與複製過來的檔案發生衝突的檔案前先要求確認。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "在「%s」已有一個相同名稱的舊資料夾。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "在「%s」已有一個相同名稱的新資料夾。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:377
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "在「%s」已有另一個相同名稱的資料夾。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:382
+msgid "Replacing it will remove all files in the folder."
+msgstr "取代它將會移除該資料夾中所有的檔案。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "取代資料夾「%s」？"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "在「%s」已有一個相同名稱的資料夾。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:391
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "取代檔案「%s」？"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will overwrite its content."
+msgstr "取代它將會覆蓋其內容。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "在「%s」已有一個相同名稱的舊檔案。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "在「%s」已有一個相同名稱的新檔案。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:405
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "在「%s」已有另一個相同名稱的檔案。"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:460
+msgid "Original file"
+msgstr "原始檔案"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:482
+msgid "Size:"
+msgstr "大小："
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:485
+msgid "Type:"
+msgstr "類型:"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:488
+msgid "Last modified:"
+msgstr "修改日期："
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Replace with"
+msgstr "替換為"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:506
+msgid "Merge"
+msgstr "合併"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:700
+msgid "_Select a new name for the destination"
+msgstr "為目的端選擇新的名稱(_S)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:714
+msgid "Reset"
+msgstr "重設"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:726
+msgid "Apply this action to all files"
+msgstr "將這個動作套用到所有檔案"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:201
 msgid "_Skip"
-msgstr ""
+msgstr "略過(_S)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:200
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:742
+msgid "Re_name"
+msgstr "重新命名(_N)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:748
+msgid "Replace"
+msgstr "取代"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:821
+msgid "File conflict"
+msgstr "檔案發生衝突"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " （無效的萬國碼）"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr "移除 %d 個複製項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "刪除「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "移除 %d 個重製項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "將 %d 個項目移回 「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "將「%s」移回「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "將「%s」重新命名為「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "從回收筒還原 %d 個項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "將「%s」還原為「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "將 %d 項目移回回收筒"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "移動「%s」回到回收筒"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "將 %d 項目刪除連結"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "刪除連結到「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "還原在「%s」中封入項目的原始權限"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "還原「%s」的原始權限"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "還原「%s」的群組為「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "將「%s」的擁有者還原為「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "複製 %d 個項目至「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "複製「%s」至「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "%d 個項目重製在「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "重製「%s」於「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "移動 %d 個項目至「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "移動「%s」至「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "從範本建立新檔案「%s」 "
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "建立空白檔案「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "建立新的資料夾「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "移動 %d 個項目至回收筒"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "移動「%s」至回收筒"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "從回收筒回復「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "為 %d 個物件建立連結"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "建立連結到「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "設定封入「%s」的項目的權限"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "設定「%s」的權限"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "設定「%s」的群組為「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "將「%s」的擁有者設定為「%s」"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "還原 %d 個項目複製（_U）"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "還原 %d 個項目重製"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "還原 %d 個項目移動"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "還原 %d 個項目重新命名"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "還原空白的檔案夾建立"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "還原來自模板的檔案建立"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "還原 %d 個檔案夾的建立"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "還原移到回收筒的 %d 個項目"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "還原來自回收筒 %d 個項目的恢復"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "還原給 %d 個項目建立的連結"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "還原 %d 個項目移除"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "還原 %d 個項目的遞迴改變權限"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "還原 %d 個項目的改變權限"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "還原 %d 個項目的群組改變"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "還原 %d 個項目的擁有者改變"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "重作 %d 個項目的複製"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "重作 %d 個項目的重製"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "重作 %d 個項目的移動"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "重作 %d 個項目的重新命名"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "重作建立一個空白檔案夾"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "重作建立來自模板的檔案"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "重作建立 %d 個檔案夾"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "重作移動 %d 個項目到回收筒"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "重作來自回收筒 %d 個項目的恢復"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "重作建立 %d 個項目的連結"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "重作 %d 個項目的移除"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "重作 %d 個項目的遞迴改變權限"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "重作 %d 個項目的改變權限"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "重作 %d 個項目的改變群組"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "重作 %d 個項目的改變擁有者"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:202
 msgid "S_kip All"
-msgstr ""
+msgstr "略過全部(_K)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:201
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:203
 msgid "_Retry"
-msgstr ""
+msgstr "重試(_R)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:202
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:204
 msgid "Delete _All"
-msgstr ""
+msgstr "全部刪除(_A)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:203
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:205
 msgid "_Replace"
-msgstr ""
+msgstr "取代(_R)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:204
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:206
 msgid "Replace _All"
-msgstr ""
+msgstr "全部取代(_A)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:205
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:207
 msgid "_Merge"
-msgstr ""
+msgstr "合併(_M)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:206
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:208
 msgid "Merge _All"
-msgstr ""
+msgstr "全部合併(_A)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:207
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:209
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "強制複製(_A)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:293
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:295
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d 秒"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:298
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:309
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:300
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d 分鐘"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:308
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d 小時"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:316
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:318
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "預估還有 %'d 小時"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:392
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:394
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "連結至 %s"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:396
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:398
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "另一個連結至 %s"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:412
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:414
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "第 %'d 個連至 %s 的連結"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:416
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:418
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "第 %'d 個連至 %s 的連結"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:420
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:422
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "第 %'d 個連至 %s 的連結"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:424
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:426
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "第 %'d 個連至 %s 的連結"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:616
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:464
+msgid " (copy)"
+msgstr " （副本）"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:466
+msgid " (another copy)"
+msgstr " (另一個副本)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:469
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:471
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:473
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:483
+msgid "th copy)"
+msgstr "個副本)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:476
+msgid "st copy)"
+msgstr "個副本)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:478
+msgid "nd copy)"
+msgstr "個副本)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:480
+msgid "rd copy)"
+msgstr "個副本)"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:497
+#, c-format
+msgid "%s (copy)%s"
+msgstr "%s (副本)%s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:499
+#, c-format
+msgid "%s (another copy)%s"
+msgstr "%s (另一個副本)%s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:502
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:504
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:506
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:520
+#, c-format
+msgid "%s (%'dth copy)%s"
+msgstr "%s (第 %'d 個副本)%s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:514
+#, c-format
+msgid "%s (%'dst copy)%s"
+msgstr "%s (第 %'d 個副本)%s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:516
+#, c-format
+msgid "%s (%'dnd copy)%s"
+msgstr "%s (第 %'d 個副本)%s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:518
+#, c-format
+msgid "%s (%'drd copy)%s"
+msgstr "%s (第 %'d 個副本)%s"
+
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:618
 msgid " ("
-msgstr ""
+msgstr " ("
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:624
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:626
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (第 %'d 個"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1369
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1377
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
+msgstr "確定要將「%B」從回收筒中永久刪除嗎？"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1372
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1380
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -823,667 +1972,484 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "確定要將 %'d 個已選的項目從回收筒中永久刪除嗎？"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1382
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1450
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1390
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1458
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "如果您直接刪除這個項目，它將會無法還原。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1403
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1411
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "要清空所有回收筒中的項目嗎？"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1407
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1415
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "所有在回收筒中的項目會永遠地被刪除。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1438
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1446
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "確定要將「%B」永久地刪除嗎？"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1441
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1449
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "確定要將 %'d 個已選的項目永久地刪除嗎？"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1466
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1498
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1474
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1506
 msgid "Deleting files"
-msgstr ""
+msgstr "正在刪除檔案"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1492
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1500
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "剩下 %'d 個檔案要刪除"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1512
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1520
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "剩下 %T"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1580
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1614
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1653
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1730
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2544
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1588
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1622
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1661
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1738
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2569
 msgid "Error while deleting."
-msgstr ""
+msgstr "刪除時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1584
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1592
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
-msgstr ""
+msgstr "無法刪除資料夾「%B」中的檔案，因為您沒有權限讀取它們。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1587
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2603
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3594
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1595
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2628
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3624
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "在取得資料夾「%s」中檔案的相關資訊時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1596
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3603
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1604
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3633
 msgid "_Skip files"
-msgstr ""
+msgstr "略過檔案(_S)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1617
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1625
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "無法刪除資料夾「%B」，因為您沒有權限讀取它。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1620
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2642
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3639
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1628
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2667
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3669
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "讀取資料夾「%B」時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1654
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1662
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "無法移除資料夾 %B。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1731
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1739
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "刪除 %B 時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1807
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1819
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1815
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1827
 msgid "Moving files to trash"
-msgstr ""
+msgstr "將檔案丟進回收筒"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1821
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1829
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "剩下 %'d 個檔案要丟進回收筒"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1872
-msgid "Cannot move file to trash, do you want to delete immediately?"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1884
+msgid "Cannot move file to trash. Delete Immediately?"
+msgstr "不能將檔案移到回收筒，要直接刪除嗎？"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:1873
-msgid "The file \"%B\" cannot be moved to the trash."
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1885
+msgid ""
+"This file is located on an external media and cannot be moved to the trash. "
+"Once deleted, it cannot be restored."
+msgstr "這檔案位於外部媒體並且不能移到回收筒。一旦刪除，就不能恢復。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2049
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2065
 msgid "Trashing Files"
-msgstr ""
+msgstr "正將檔案移至回收筒"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2051
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2067
 msgid "Deleting Files"
-msgstr ""
+msgstr "正在刪除檔案"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2114
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2139
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "無法退出 %V"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2116
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2141
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "無法卸載 %V"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2271
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2296
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "卸載前是否要清空回收筒？"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2273
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2298
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
-msgstr ""
+msgstr "要恢復此裝置的空間，必須清空回收筒。所有在回收筒的東西將會永久地刪除。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2279
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2304
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "不要清空回收筒(_N)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2334
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2359
 msgid "Emptying the trash"
-msgstr ""
+msgstr "正在清理回收筒"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2401
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2426
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "無法掛載 %s"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2479
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2504
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "準備複製 %'d 個檔案 (%S)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2485
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2510
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "準備移動 %'d 個檔案 (%S)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2491
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2516
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "準備刪除 %'d 個檔案 (%S)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2497
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2522
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "準備將 %'d 個檔案移至回收筒"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2540
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3460
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3586
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3631
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2565
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3485
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3616
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3661
 msgid "Error while copying."
-msgstr ""
+msgstr "複製時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2542
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3584
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3629
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2567
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3614
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3659
 msgid "Error while moving."
-msgstr ""
+msgstr "移動時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2546
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2571
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "移動檔案至回收筒時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2600
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2625
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
-msgstr ""
+msgstr "無法處理資料夾「%B」中的檔案，因為您沒有權限讀取它們。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2639
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2664
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "無法處理資料夾「%B」，因為您沒有權限讀取它。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2716
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2741
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "無法處理檔案「%B」，因為您沒有權限讀取它。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2719
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2744
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "取得關於「%B」的資訊時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2819
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2861
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2894
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2924
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2844
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2886
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2919
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2949
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "複製至「%B」時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2823
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2848
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "您沒有存取目的端資料夾的權限。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2825
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2850
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "取得關於目的地的資訊時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2862
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2887
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "該目的地並非資料夾。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2895
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2920
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr ""
+msgstr "目的地空間不足。請試著移除檔案以挪出空間。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2897
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2922
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "這裡有 %S，但需要 %S。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2925
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2950
 msgid "The destination is read-only."
-msgstr ""
+msgstr "目的地的磁碟是唯讀的。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2986
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3011
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "正將「%B」移動到「%B」。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2987
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3012
 msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+msgstr "正將「%B」複製到「%B」。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2991
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3016
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "正在重製「%B」"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2995
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3020
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "正移動 %'d 個檔案(於「%B」)到「%B」"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:2998
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3023
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "正複製 %'d 個檔案(於「%B」)到「%B」"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3005
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3030
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "正重製 %'d 個檔案(於「%B」)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3014
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3039
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "正在移動 %'d 個檔案到「%B」"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3018
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3043
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "正在複製 %'d 個檔案到「%B」"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3023
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3048
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "正在重製 %'d 個檔案"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3074
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3099
 #, c-format
 msgid "%S of %S"
-msgstr ""
+msgstr "%S / %S"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3085
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3110
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%S / %S — 剩餘 %T (%S/秒)"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3464
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3489
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
-msgstr ""
+msgstr "無法複製資料夾「%B」，因為您沒有權限在目的地建立它。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3467
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3492
 msgid "There was an error creating the folder \"%B\"."
-msgstr ""
+msgstr "建立資料夾「%B」時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3591
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3621
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
-msgstr ""
+msgstr "無法複製資料夾「%B」中的檔案，因為您沒有權限讀取它們。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3636
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3666
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "無法複製資料夾「%B」，因為您沒有權限讀取它。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3681
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4378
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4952
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3711
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4412
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5000
 msgid "Error while moving \"%B\"."
-msgstr ""
+msgstr "移動「%B」時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3682
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3712
 msgid "Could not remove the source folder."
-msgstr ""
+msgstr "無法移除來源資料夾。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3767
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3808
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4380
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4451
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3797
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3838
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4414
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4485
 msgid "Error while copying \"%B\"."
-msgstr ""
+msgstr "複製「%B」時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3768
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3798
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr ""
+msgstr "無法自既存的資料夾 %F 移除檔案。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:3809
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3839
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr ""
+msgstr "無法移除既存的檔案 %F。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4138
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4796
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4168
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4840
 msgid "You cannot move a folder into itself."
-msgstr ""
+msgstr "不可將資料夾移至資料夾本身之內。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4139
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4797
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4169
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4841
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "不可將資料夾複製至資料夾本身之內。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4140
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4798
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4170
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4842
 msgid "The destination folder is inside the source folder."
-msgstr ""
+msgstr "目的地資料夾在原始資料夾內。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4171
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4201
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "不可將檔案複製至同一位置之上。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4172
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4202
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "不可將檔案複製至同一位置之上。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4173
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4203
 msgid "The source file would be overwritten by the destination."
-msgstr ""
+msgstr "來源檔案會被目的端覆蓋。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4382
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4416
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
+msgstr "無法移除既存與 %F 中的檔案同名的檔案。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4452
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4486
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr ""
+msgstr "複製檔案到 %F 時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4680
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4714
 msgid "Copying Files"
-msgstr ""
+msgstr "正在複製檔案"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4696
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4740
 msgid "Preparing to move to \"%B\""
-msgstr ""
+msgstr "準備移動到\"%B\""
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4708
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4752
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "準備移動 %'d 個檔案"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:4953
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5001
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr ""
+msgstr "移動檔案到 %F 時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5216
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5264
 msgid "Moving Files"
-msgstr ""
+msgstr "正在移動檔案"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5232
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5294
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "正在「%B」中建立連結"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5243
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5305
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "正在建立到 %'d 個檔案的連結"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5373
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5440
 msgid "Error while creating link to %B."
-msgstr ""
+msgstr "建立連結 「%B」 時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5375
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5442
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "符號連結只支援本地端檔案"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5378
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5445
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "目標不支援符號連結。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5381
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5448
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr ""
+msgstr "在 %F 建立符號連結時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5684
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5687
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5776
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5779
 msgid "Setting permissions"
-msgstr ""
+msgstr "設定權限中"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5929
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6030
 msgid "untitled folder"
-msgstr ""
+msgstr "未命名資料夾"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:5937
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6038
 msgid "new file"
-msgstr ""
+msgstr "新檔案"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6087
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6209
 msgid "Error while creating directory %B."
-msgstr ""
+msgstr "建立目錄 %B 時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6089
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6211
 msgid "Error while creating file %B."
-msgstr ""
+msgstr "建立檔案 %B 時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6091
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6213
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr ""
+msgstr "在 %F 中建立目錄時發生錯誤。"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-operations.c:6387
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6530
 msgid "Emptying Trash"
-msgstr ""
+msgstr "正在清理回收筒"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:267
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:241
+msgid "Cut the selected text to the clipboard"
+msgstr "將選定的文字剪貼至剪貼簿"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-utilities.c:270
-msgid "The item cannot be restored from trash"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:245
+msgid "Copy the selected text to the clipboard"
+msgstr "將選取的文字複製至剪貼簿"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:356
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr ""
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:249
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:253
+msgid "Paste the text stored on the clipboard"
+msgstr "貼上存於剪貼簿內的文字"
 
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:360
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:365
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:378
-msgid "Replacing it will remove all files in the folder."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:382
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:387
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:389
-msgid "Replacing it will overwrite its content."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:393
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:456
-msgid "Original file"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:457
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:478
-msgid "Size:"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:460
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Type:"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:463
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:484
-msgid "Last modified:"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:477
-msgid "Replace with"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:502
-msgid "Merge"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:696
-msgid "_Select a new name for the destination"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:710
-msgid "Reset"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:722
-msgid "Apply this action to all files"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:738
-msgid "Re_name"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:744
-msgid "Replace"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/marlin-file-conflict-dialog.c:817
-msgid "File conflict"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:245
-#, c-format
-msgid "link to %s"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1603
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1641
-msgid "No Exec field specified"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1661
-msgid "No URL field specified"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1667
-msgid "Invalid desktop file"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1955
-msgid "Slashes are not allowed in filenames"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libcore/gof-file.c:1975
-msgid "Toplevel files cannot be renamed"
-msgstr ""
-
-#: /home/am_sav/dev/marlin/marlin51/marlin/po/../libwidgets/LocationBar.vala:709
+#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:722
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "達到 %s"
