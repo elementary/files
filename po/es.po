@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-09 13:15+0000\n"
-"Last-Translator: Juan David Angarita <Unknown>\n"
+"PO-Revision-Date: 2012-06-13 21:48+0000\n"
+"Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:34+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-06-14 04:58+0000\n"
+"X-Generator: Launchpad (build 15405)\n"
 "Language: es\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
@@ -541,7 +541,7 @@ msgstr ""
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "No se puede abrir la carpeta \"%s\" en \"%s\"."
+msgstr "No se puede abrir la carpeta «%s» en «%s»."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
@@ -774,7 +774,7 @@ msgstr "Cancelar"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "Fallo al ejecutar el archivo \"%s\""
+msgstr "No se pudo ejecutar el archivo «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/eel-editable-label.c:3188
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3517
@@ -1173,7 +1173,7 @@ msgstr "Hoy a las 00:00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:238
 msgid "Today at %-I:%M:%S %p"
-msgstr "Hoy a las %-I:%M:%S %p"
+msgstr "Hoy a las %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:240
 msgid "Today at 00:00 PM"
@@ -1181,7 +1181,7 @@ msgstr "Hoy a las 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:241
 msgid "Today at %-I:%M %p"
-msgstr "Hoy a las %-I:%M %p"
+msgstr "Hoy a las %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:243
 msgid "Today, 00:00 PM"
@@ -1189,7 +1189,7 @@ msgstr "Hoy, 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:244
 msgid "Today, %-I:%M %p"
-msgstr "Hoy, %-I:%M %p"
+msgstr "Hoy, %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:246
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:247
@@ -1202,7 +1202,7 @@ msgstr "Ayer a las 00:00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:257
 msgid "Yesterday at %-I:%M:%S %p"
-msgstr "Ayer a las %-I:%M:%S %p"
+msgstr "Ayer a las %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:259
 msgid "Yesterday at 00:00 PM"
@@ -1210,7 +1210,7 @@ msgstr "Ayer a las 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:260
 msgid "Yesterday at %-I:%M %p"
-msgstr "Ayer a las %-I:%M %p"
+msgstr "Ayer a las %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:262
 msgid "Yesterday, 00:00 PM"
@@ -1231,7 +1231,7 @@ msgstr "Miércoles, 00 de septiembre de 0000 a las 00:00:00 pm"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:278
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-msgstr "%A, %-d de %B de %Y a las %-I:%M:%S %p"
+msgstr "%A, %-d de %B del %Y a las %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:280
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
@@ -1239,7 +1239,7 @@ msgstr "Lun, 00 de oct de 0000 a las 00:00:00 pm"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:281
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
-msgstr "%a, %-d de %b de %Y a las %-I:%M:%S %p"
+msgstr "%a, %-d de %b del %Y a las %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:283
 msgid "Mon, Oct 00 0000 at 00:00 PM"
@@ -1247,7 +1247,7 @@ msgstr "Lun, 00 oct 0000 a las 00:00 pm"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:284
 msgid "%a, %b %-d %Y at %-I:%M %p"
-msgstr "%a, %-d %b %Y a las %-I:%M %p"
+msgstr "%a, %-d de %b del %Y a las %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:286
 msgid "Oct 00 0000 at 00:00 PM"
@@ -1255,7 +1255,7 @@ msgstr "00 oct 0000 a las 00:00 pm"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:287
 msgid "%b %-d %Y at %-I:%M %p"
-msgstr "%-d %b %Y a las %-I:%M %p"
+msgstr "%-d de %b del %Y a las %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:289
 msgid "Oct 00 0000, 00:00 PM"
@@ -1263,7 +1263,7 @@ msgstr "00 oct 0000, 00:00 pm"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:290
 msgid "%b %-d %Y, %-I:%M %p"
-msgstr "%-d %b %Y, %-I:%M %p"
+msgstr "%-d de %b del %Y, %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:292
 msgid "00/00/00, 00:00 PM"
@@ -1271,7 +1271,7 @@ msgstr "00/00/00, 00:00 pm"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:293
 msgid "%m/%-d/%y, %-I:%M %p"
-msgstr "%-d/%m/%y, %-I:%M %p"
+msgstr "%-d/%m/%y, %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:295
 msgid "00/00/00"
@@ -1371,7 +1371,7 @@ msgstr "Reemplazarla eliminará todos los archivos en la carpeta."
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "¿Reemplazar la carpeta \"%s\"?"
+msgstr "¿Reemplazar la carpeta «%s»?"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:172
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:386
@@ -1383,7 +1383,7 @@ msgstr "Ya existe una carpeta con el mismo nombre en «%s»."
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "¿Reemplazar el archivo \"%s\"?"
+msgstr "¿Reemplazar el archivo «%s»?"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:179
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:393
@@ -1394,19 +1394,19 @@ msgstr "Reemplazarlo sobreescribirá su contenido."
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Existe un archivo más antiguo con el mismo nombre en \"%s\"."
+msgstr "Existe un archivo más antiguo con el mismo nombre en «%s»."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Existe un archivo más reciente con el mismo nombre en \"%s\"."
+msgstr "Existe un archivo más reciente con el mismo nombre en «%s»."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Ya existe otro archivo con el mismo nombre en \"%s\"."
+msgstr "Ya existe otro archivo con el mismo nombre en «%s»."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:460
@@ -1487,7 +1487,7 @@ msgstr "Eliminar %d elementos copiados"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr "Eliminar '%s'"
+msgstr "Eliminar «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
@@ -1497,39 +1497,39 @@ msgstr "Eliminar %d elementos duplicados"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "Mover %d elementos de nuevo a '%s'"
+msgstr "Mover %d elementos de nuevo a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr "Devolver '%s' a '%s'"
+msgstr "Devolver «%s» a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "Renombrar '%s' como '%s'"
+msgstr "Renombrar «%s» como «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr "Restaurar '%d' elemento desde la papelera"
+msgstr "Restaurar %d elementos desde la papelera"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr "Restaurar '%s' a '%s'"
+msgstr "Restaurar «%s» a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "Devolver los elementos  '%d' a la papelera"
+msgstr "Devolver %d elementos a la papelera"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "Devolver '%s' a la papelera"
+msgstr "Devolver «%s» a la papelera"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
@@ -1545,82 +1545,82 @@ msgstr "Eliminar enlace a «%s»"
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr ""
-"Restaurar los permisos originales de los elementos contenidos en '%s'"
+"Restaurar los permisos originales de los elementos contenidos en «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr "Restaurar los permisos originales de '%s'"
+msgstr "Restaurar los permisos originales de «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "Restaurar el grupo de '%s' a '%s'"
+msgstr "Restaurar el grupo de «%s» a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr "Restaurar el propietario de '%s' a '%s'"
+msgstr "Restaurar el propietario de «%s» a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr "Copiar elementos '%d' a '%s'"
+msgstr "Copiar elementos «%d» a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr "Copiar '%s' a '%s'"
+msgstr "Copiar «%s» a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "Duplicar elementos '%d' en '%s\""
+msgstr "Duplicar elementos «%d» en «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr "Duplicar '%s' en '%s'"
+msgstr "Duplicar «%s» en «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr "Mover elementos \"%d' a '%s'"
+msgstr "Mover elementos «%d» a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr "Mover '%s' a '%s'"
+msgstr "Mover «%s» a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr "Crear un archivo nuevo '%s' a partir de la plantilla "
+msgstr "Crear un archivo nuevo «%s» a partir de la plantilla "
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr "Crear un archivo vacío '%s'"
+msgstr "Crear un archivo «%s» vacío"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr "Crear una carpeta nueva '%s'"
+msgstr "Crear una carpeta «%s» nueva"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr "Mover elementos '%d' a la papelera"
+msgstr "Mover %d elementos a la papelera"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "Mover '%s' a la papelera"
+msgstr "Mover «%s» a la papelera"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr "Restaurar '%s' desde la papelera"
+msgstr "Restaurar «%s» desde la papelera"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
@@ -1630,27 +1630,27 @@ msgstr "Crear enlace hacia los elementos %d"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr "Crear enlace hacia '%s'"
+msgstr "Crear enlace a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "Establecer los permisos de los elementos contenidos en '%s'"
+msgstr "Establecer los permisos de los elementos contenidos en «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr "Establecer los permisos de '%s'"
+msgstr "Establecer los permisos de «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr "Establecer el grupo de '%s' a '%s'"
+msgstr "Establecer el grupo de «%s» a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr "Establecer el propietario de '%s' a '%s'"
+msgstr "Establecer el propietario de «%s» a «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
@@ -2334,7 +2334,7 @@ msgstr[1] "Duplicando %'d archivos (en «%B»)"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3039
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "Moviendo %'d archivo a \"%B\""
+msgstr[0] "Moviendo %'d archivo a «%B»"
 msgstr[1] "Moviendo %'d archivos a «%B»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3043

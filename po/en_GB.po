@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-05 20:34+0000\n"
+"PO-Revision-Date: 2012-06-13 21:18+0000\n"
 "Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:34+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-06-14 04:58+0000\n"
+"X-Generator: Launchpad (build 15405)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
@@ -539,12 +539,12 @@ msgstr ""
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "The folder \"%s\" cannot be opened on \"%s\"."
+msgstr "The folder '%s' cannot be opened on '%s'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "The server at \"%s\" cannot be found."
+msgstr "The server at '%s' cannot be found."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
@@ -772,7 +772,7 @@ msgstr "Cancel"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:893
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "Failed to execute file \"%s\""
+msgstr "Failed to execute file '%s'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/eel-editable-label.c:3188
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3517
@@ -798,14 +798,14 @@ msgstr "Invalid filename provided by XDS drag site"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1308
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Failed to create a link for the URL \"%s\""
+msgstr "Failed to create a link for the URL '%s'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1793
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Use \"%s\" to open the selected item"
-msgstr[1] "Use \"%s\" to open the selected items"
+msgstr[0] "Use '%s' to open the selected item"
+msgstr[1] "Use '%s' to open the selected items"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1940
 #, c-format
@@ -1164,7 +1164,7 @@ msgstr "Today at 00:00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:238
 msgid "Today at %-I:%M:%S %p"
-msgstr "Today at %-I:%M:%S %p"
+msgstr "Today at %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:240
 msgid "Today at 00:00 PM"
@@ -1172,7 +1172,7 @@ msgstr "Today at 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:241
 msgid "Today at %-I:%M %p"
-msgstr "Today at %-I:%M %p"
+msgstr "Today at %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:243
 msgid "Today, 00:00 PM"
@@ -1180,7 +1180,7 @@ msgstr "Today, 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:244
 msgid "Today, %-I:%M %p"
-msgstr "Today, %-I:%M %p"
+msgstr "Today, %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:246
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:247
@@ -1193,7 +1193,7 @@ msgstr "Yesterday at 00:00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:257
 msgid "Yesterday at %-I:%M:%S %p"
-msgstr "Yesterday at %-I:%M:%S %p"
+msgstr "Yesterday at %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:259
 msgid "Yesterday at 00:00 PM"
@@ -1201,7 +1201,7 @@ msgstr "Yesterday at 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:260
 msgid "Yesterday at %-I:%M %p"
-msgstr "Yesterday at %-I:%M %p"
+msgstr "Yesterday at %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:262
 msgid "Yesterday, 00:00 PM"
@@ -1209,7 +1209,7 @@ msgstr "Yesterday, 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:263
 msgid "Yesterday, %-I:%M %p"
-msgstr "Yesterday, %-I:%M %p"
+msgstr "Yesterday, %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:265
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:266
@@ -1222,7 +1222,7 @@ msgstr "Wednesday, September 00 0000 at 00:00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:278
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-msgstr "%A, %B %-d %Y at %-I:%M:%S %p"
+msgstr "%A, %-d %B %Y at %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:280
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
@@ -1230,7 +1230,7 @@ msgstr "Mon, Oct 00 0000 at 00:00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:281
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
-msgstr "%a, %b %-d %Y at %-I:%M:%S %p"
+msgstr "%a, %-d %b %Y at %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:283
 msgid "Mon, Oct 00 0000 at 00:00 PM"
@@ -1238,7 +1238,7 @@ msgstr "Mon, Oct 00 0000 at 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:284
 msgid "%a, %b %-d %Y at %-I:%M %p"
-msgstr "%a, %b %-d %Y at %-I:%M %p"
+msgstr "%a, %-d %b %Y at %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:286
 msgid "Oct 00 0000 at 00:00 PM"
@@ -1246,7 +1246,7 @@ msgstr "Oct 00 0000 at 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:287
 msgid "%b %-d %Y at %-I:%M %p"
-msgstr "%b %-d %Y at %-I:%M %p"
+msgstr "%-d %-b %Y at %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:289
 msgid "Oct 00 0000, 00:00 PM"
@@ -1254,7 +1254,7 @@ msgstr "Oct 00 0000, 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:290
 msgid "%b %-d %Y, %-I:%M %p"
-msgstr "%b %-d %Y, %-I:%M %p"
+msgstr "%-d %b %Y, %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:292
 msgid "00/00/00, 00:00 PM"
@@ -1262,7 +1262,7 @@ msgstr "00/00/00, 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:293
 msgid "%m/%-d/%y, %-I:%M %p"
-msgstr "%m/%-d/%y, %-I:%M %p"
+msgstr "%-d/%m/%y, %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:295
 msgid "00/00/00"
@@ -1270,7 +1270,7 @@ msgstr "00/00/00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:296
 msgid "%m/%d/%y"
-msgstr "%m/%d/%y"
+msgstr "%d/%m/%y"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
@@ -1309,7 +1309,7 @@ msgstr "Toplevel files cannot be renamed"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:266
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr "Could not determine original location of \"%s\" "
+msgstr "Could not determine original location of '%s' "
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:269
 msgid "The item cannot be restored from trash"
@@ -1324,7 +1324,7 @@ msgstr "Preparing"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Merge folder \"%s\"?"
+msgstr "Merge folder '%s'?"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:364
@@ -1339,19 +1339,19 @@ msgstr ""
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "An older folder with the same name already exists in \"%s\"."
+msgstr "An older folder with the same name already exists in '%s'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:159
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "A newer folder with the same name already exists in \"%s\"."
+msgstr "A newer folder with the same name already exists in '%s'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:163
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Another folder with the same name already exists in \"%s\"."
+msgstr "Another folder with the same name already exists in '%s'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:382
@@ -1362,19 +1362,19 @@ msgstr "Replacing it will remove all files in the folder."
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Replace folder \"%s\"?"
+msgstr "Replace folder '%s'?"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:172
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "A folder with the same name already exists in \"%s\"."
+msgstr "A folder with the same name already exists in '%s'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:177
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "Replace file \"%s\"?"
+msgstr "Replace file '%s'?"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:179
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:393
@@ -1385,19 +1385,19 @@ msgstr "Replacing it will overwrite its content."
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "An older file with the same name already exists in \"%s\"."
+msgstr "An older file with the same name already exists in '%s'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "A newer file with the same name already exists in \"%s\"."
+msgstr "A newer file with the same name already exists in '%s'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Another file with the same name already exists in \"%s\"."
+msgstr "Another file with the same name already exists in '%s'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:460
@@ -2003,7 +2003,7 @@ msgstr " (%'d"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1377
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
-"Are you sure you want to permanently delete \"%B\" from the Rubbish Bin?"
+"Are you sure you want to permanently delete '%B' from the Rubbish Bin?"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1380
 #, c-format
@@ -2035,7 +2035,7 @@ msgstr "All items in the Rubbish Bin will be permanently deleted."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1446
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Are you sure you want to permanently delete \"%B\"?"
+msgstr "Are you sure you want to permanently delete '%B'?"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1449
 #, c-format
@@ -2078,7 +2078,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Files in the folder \"%B\" cannot be deleted because you do not have "
+"Files in the folder '%B' cannot be deleted because you do not have "
 "permissions to see them."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1595
@@ -2087,7 +2087,7 @@ msgstr ""
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
-"There was an error getting information about the files in the folder \"%B\"."
+"There was an error getting information about the files in the folder '%B'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1604
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3633
@@ -2099,14 +2099,14 @@ msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"The folder '%B' cannot be deleted because you do not have permissions to "
 "read it."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1628
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2667
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3669
 msgid "There was an error reading the folder \"%B\"."
-msgstr "There was an error reading the folder \"%B\"."
+msgstr "There was an error reading the folder '%B'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1662
 msgid "Could not remove the folder %B."
@@ -2231,7 +2231,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Files in the folder \"%B\" cannot be handled because you do not have "
+"Files in the folder '%B' cannot be handled because you do not have "
 "permissions to see them."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2664
@@ -2239,7 +2239,7 @@ msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"The folder \"%B\" cannot be handled because you do not have permissions to "
+"The folder '%B' cannot be handled because you do not have permissions to "
 "read it."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2741
@@ -2247,19 +2247,19 @@ msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"The file \"%B\" cannot be handled because you do not have permissions to "
-"read it."
+"The file '%B' cannot be handled because you do not have permissions to read "
+"it."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2744
 msgid "There was an error getting information about \"%B\"."
-msgstr "There was an error getting information about \"%B\"."
+msgstr "There was an error getting information about '%B'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2844
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2886
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2919
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2949
 msgid "Error while copying to \"%B\"."
-msgstr "Error while copying to \"%B\"."
+msgstr "Error while copying to '%B'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2848
 msgid "You do not have permissions to access the destination folder."
@@ -2292,45 +2292,45 @@ msgstr "The destination is read-only."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3011
 msgid "Moving \"%B\" to \"%B\""
-msgstr "Moving \"%B\" to \"%B\""
+msgstr "Moving '%B' to '%B'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3012
 msgid "Copying \"%B\" to \"%B\""
-msgstr "Copying \"%B\" to \"%B\""
+msgstr "Copying '%B' to '%B'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3016
 msgid "Duplicating \"%B\""
-msgstr "Duplicating \"%B\""
+msgstr "Duplicating '%B'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3020
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Moving %'d file (in \"%B\") to \"%B\""
+msgstr[0] "Moving %'d file (in '%B') to '%B'"
 msgstr[1] "Moving %'d files (in \"%B\") to \"%B\""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3023
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Copying %'d file (in \"%B\") to \"%B\""
-msgstr[1] "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Copying %'d file (in '%B') to '%B'"
+msgstr[1] "Copying %'d files (in '%B') to '%B'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3030
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Duplicating %'d file (in \"%B\")"
-msgstr[1] "Duplicating %'d files (in \"%B\")"
+msgstr[0] "Duplicating %'d file (in '%B')"
+msgstr[1] "Duplicating %'d files (in '%B')"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3039
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "Moving %'d file to \"%B\""
-msgstr[1] "Moving %'d files to \"%B\""
+msgstr[0] "Moving %'d file to '%B'"
+msgstr[1] "Moving %'d files to '%B'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3043
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "Copying %'d file to \"%B\""
-msgstr[1] "Copying %'d files to \"%B\""
+msgstr[0] "Copying %'d file to '%B'"
+msgstr[1] "Copying %'d files to '%B'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3048
 #, c-format
@@ -2355,19 +2355,19 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
+"The folder '%B' cannot be copied because you do not have permissions to "
 "create it in the destination."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3492
 msgid "There was an error creating the folder \"%B\"."
-msgstr "There was an error creating the folder \"%B\"."
+msgstr "There was an error creating the folder '%B'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3621
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
+"Files in the folder '%B' cannot be copied because you do not have "
 "permissions to see them."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3666
@@ -2375,14 +2375,14 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"read it."
+"The folder '%B' cannot be copied because you do not have permissions to read "
+"it."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3711
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4412
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5000
 msgid "Error while moving \"%B\"."
-msgstr "Error while moving \"%B\"."
+msgstr "Error while moving '%B'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3712
 msgid "Could not remove the source folder."
@@ -2393,7 +2393,7 @@ msgstr "Could not remove the source folder."
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4414
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4485
 msgid "Error while copying \"%B\"."
-msgstr "Error while copying \"%B\"."
+msgstr "Error while copying '%B'."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3798
 #, c-format
@@ -2448,7 +2448,7 @@ msgstr "Copying Files"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4740
 msgid "Preparing to move to \"%B\""
-msgstr "Preparing to move to \"%B\""
+msgstr "Preparing to move to '%B'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4752
 #, c-format
@@ -2468,7 +2468,7 @@ msgstr "Moving Files"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5294
 msgid "Creating links in \"%B\""
-msgstr "Creating links in \"%B\""
+msgstr "Creating links in '%B'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5305
 #, c-format
