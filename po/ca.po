@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-13 21:49+0000\n"
+"PO-Revision-Date: 2012-06-14 17:50+0000\n"
 "Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-14 04:58+0000\n"
-"X-Generator: Launchpad (build 15405)\n"
+"X-Launchpad-Export-Date: 2012-06-15 05:00+0000\n"
+"X-Generator: Launchpad (build 15414)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
@@ -76,7 +76,7 @@ msgstr "Format de la data:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:148
 msgid "Appearance"
-msgstr ""
+msgstr "Aparença"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:197
 msgid "Extensions"
@@ -118,11 +118,11 @@ msgstr "Estableix com a predeterminada"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:142
 msgid "Ignore"
-msgstr ""
+msgstr "Ignora"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:454
 msgid "Undo"
-msgstr ""
+msgstr "Desfés"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:455
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:749
@@ -148,19 +148,19 @@ msgstr "_Edita"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:722
 msgid "_View"
-msgstr ""
+msgstr "Vi_sualitza"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:723
 msgid "_Go"
-msgstr ""
+msgstr "_Vés"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:724
 msgid "_Help"
-msgstr ""
+msgstr "A_juda"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:726
 msgid "New _Window"
-msgstr ""
+msgstr "_Finestra nova"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:727
 msgid "Open another Marlin window for the displayed location"
@@ -168,27 +168,27 @@ msgstr "Obre una altra finestra del Files per a la ubicació mostrada"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:730
 msgid "New _Tab"
-msgstr ""
+msgstr "Pes_tanya nova"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:731
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Obre una altra pestanya per a la ubicació mostrada"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:734
 msgid "_Close"
-msgstr ""
+msgstr "_Tanca"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:735
 msgid "Close this folder"
-msgstr ""
+msgstr "Tanca aquesta carpeta"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:738
 msgid "Customize _Toolbar..."
-msgstr ""
+msgstr "Personalitza la _barra d'eines..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:739
 msgid "Easily edit the toolbar layout"
-msgstr ""
+msgstr "Edita la disposició de la barra d'eines"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:742
 msgid "Preferences"
@@ -200,35 +200,35 @@ msgstr "Canvia les preferències del Files"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:748
 msgid "_Undo"
-msgstr ""
+msgstr "_Desfés"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:751
 msgid "_Redo"
-msgstr ""
+msgstr "_Refés"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:754
 msgid "Open _Parent"
-msgstr ""
+msgstr "Obre el _pare"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:755
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Obre la carpeta pare"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:757
 msgid "_Back"
-msgstr ""
+msgstr "_Enrere"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:758
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Vés a la ubicació visitada anterior"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:761
 msgid "_Forward"
-msgstr ""
+msgstr "E_ndavant"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:762
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Vés a la ubicació visitada següent"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:764
 msgid "_Reload"
@@ -240,7 +240,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:768
 msgid "_Home Folder"
-msgstr ""
+msgstr "Carpeta de l'_usuari"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:769
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:329
@@ -249,15 +249,15 @@ msgstr "Obriu la vostra carpeta personal"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:772
 msgid "_Trash"
-msgstr ""
+msgstr "_Paperera"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:773
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Obriu la carpeta de la paperera"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:776
 msgid "_Network"
-msgstr ""
+msgstr "_Xarxa"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:777
 msgid "Browse bookmarked and local network locations"
