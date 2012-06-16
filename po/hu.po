@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-13 20:25+0000\n"
+"PO-Revision-Date: 2012-06-15 12:25+0000\n"
 "Last-Translator: Mark Lutring <marcus@elitemail.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-14 04:58+0000\n"
-"X-Generator: Launchpad (build 15405)\n"
+"X-Launchpad-Export-Date: 2012-06-16 05:18+0000\n"
+"X-Generator: Launchpad (build 15419)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
@@ -1473,7 +1473,7 @@ msgstr " (érvénytelen Unicode)"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "%d másolt elem törlése"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1215
@@ -1490,7 +1490,7 @@ msgstr "%d duplikált elem törlése"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "%d elem visszahelyezése ide: %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
@@ -1512,17 +1512,17 @@ msgstr "%d elem helyreállítása a kukából"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "„%s” visszaállítása erre: %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "%d elem visszahelyezése a kukába"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "„%s” visszahelyezése a kukába"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
@@ -1638,7 +1638,7 @@ msgstr "„%s” jogosultságainak beállítása"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "„%s” csoportjának beállítása erre: %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
@@ -1936,40 +1936,40 @@ msgstr "%'d. link erre: %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:464
 msgid " (copy)"
-msgstr ""
+msgstr " (másolat)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:466
 msgid " (another copy)"
-msgstr ""
+msgstr " (még egy másolat)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:469
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:471
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:473
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:483
 msgid "th copy)"
-msgstr ""
+msgstr ". másolat)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:476
 msgid "st copy)"
-msgstr ""
+msgstr ". másolat)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:478
 msgid "nd copy)"
-msgstr ""
+msgstr ". másolat)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:480
 msgid "rd copy)"
-msgstr ""
+msgstr ". másolat)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:497
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (másolat)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:499
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (még egy másolat)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:502
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:504
@@ -1977,22 +1977,22 @@ msgstr ""
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:520
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'d. másolat)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:514
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'d. másolat)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:516
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'d. másolat)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:518
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'d. másolat)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:618
 msgid " ("
@@ -2125,7 +2125,7 @@ msgstr[1] "%'d fájl maradt Kukába való áthelyezésből"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1884
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "Nem lehet a fájlt a kukába helyezni. Azonnal törli?"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1885
 msgid ""
@@ -2512,16 +2512,16 @@ msgstr "Kuka ürítése"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:241
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "A kijelölt szöveg áthelyezése a vágólapra"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:245
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "A kijelölt szöveg másolása a vágólapra"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:249
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:253
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Szöveg beillesztése a vágólapról"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:722
 #, c-format

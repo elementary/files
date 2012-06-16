@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-14 18:27+0000\n"
+"PO-Revision-Date: 2012-06-15 21:49+0000\n"
 "Last-Translator: Otto Robba <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-06-15 05:00+0000\n"
-"X-Generator: Launchpad (build 15414)\n"
+"X-Launchpad-Export-Date: 2012-06-16 05:18+0000\n"
+"X-Generator: Launchpad (build 15419)\n"
 "Language: pt_BR\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
@@ -1694,15 +1694,15 @@ msgstr[1] "_Desfazer criação de %d pastas"
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Desfazer movimentação para a lixeira de %d item"
+msgstr[1] "_Desfazer movimentação para a lixeira de %d itens"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Desfazer restauração da lixeira de %d item"
+msgstr[1] "_Desfazer restauração da lixeira de %d itens"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
@@ -1764,8 +1764,8 @@ msgstr[1] "_Refazer duplicata de %d itens"
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refazer movimentação de %d item"
+msgstr[1] "_Refazer movimentação de %d itens"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
@@ -1793,15 +1793,15 @@ msgstr[1] "_Refazer criação de %d pastas"
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refazer movimentação para a lixeira de %d item"
+msgstr[1] "_Refazer movimentação para a lixeira de %d itens"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refazer restauração da lixeira de %d item"
+msgstr[1] "_Refazer restauração da lixeira de %d itens"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
