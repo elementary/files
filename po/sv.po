@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-04 20:47+0000\n"
-"Last-Translator: Marcus Lundgren <marcus.lundgren@gmail.com>\n"
+"PO-Revision-Date: 2012-06-16 15:07+0000\n"
+"Last-Translator: Benjamin Bultman <bultman.ben@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:34+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-06-17 04:55+0000\n"
+"X-Generator: Launchpad (build 15419)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
-msgstr ""
+msgstr "Filens inställningar"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:54
 msgid "Single click to open:"
@@ -131,7 +131,7 @@ msgstr "Ångra senaste åtgärd"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:464
 msgid "Redo"
-msgstr ""
+msgstr "Gör om"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:465
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:752
@@ -140,15 +140,15 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:720
 msgid "_File"
-msgstr ""
+msgstr "_Fil"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:721
 msgid "_Edit"
-msgstr ""
+msgstr "_Redigera"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:722
 msgid "_View"
-msgstr ""
+msgstr "_Visa"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:723
 msgid "_Go"
@@ -240,7 +240,7 @@ msgstr "Uppdatera aktuell plats"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:768
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Hemmapp"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:769
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:329
@@ -321,15 +321,15 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:824
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Få hjälp online..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:828
 msgid "Translate This Application..."
-msgstr ""
+msgstr "Översätt den här applikationen"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:837
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Visa _dolda filer"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:838
 msgid "Toggle the display of hidden files in the current window"
@@ -357,7 +357,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:854
 msgid "Change the visibility of this window's menubar"
-msgstr ""
+msgstr "Ändra synligheten på detta fönsters menyrad"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:858
 msgid "_Places"
@@ -369,7 +369,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:867
 msgid "Icon"
-msgstr ""
+msgstr "Ikon"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:870
 msgid "List"
@@ -381,7 +381,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:876
 msgid "Columns"
-msgstr ""
+msgstr "Kolumner"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/LocationBar.vala:100
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:588
@@ -739,7 +739,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "Sortera ikoner radvis efter typ"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
