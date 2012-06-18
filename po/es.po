@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-13 21:48+0000\n"
+"PO-Revision-Date: 2012-06-17 21:55+0000\n"
 "Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-14 04:58+0000\n"
-"X-Generator: Launchpad (build 15405)\n"
+"X-Launchpad-Export-Date: 2012-06-18 05:45+0000\n"
+"X-Generator: Launchpad (build 15419)\n"
 "Language: es\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
@@ -1169,7 +1169,7 @@ msgstr "Administrador de archivos"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:237
 msgid "Today at 00:00:00 PM"
-msgstr "Hoy a las 00:00:00 PM"
+msgstr "Hoy a las 0:00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:238
 msgid "Today at %-I:%M:%S %p"
@@ -1177,7 +1177,7 @@ msgstr "Hoy a las %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:240
 msgid "Today at 00:00 PM"
-msgstr "Hoy a las 00:00 PM"
+msgstr "Hoy a las 0:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:241
 msgid "Today at %-I:%M %p"
@@ -1185,7 +1185,7 @@ msgstr "Hoy a las %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:243
 msgid "Today, 00:00 PM"
-msgstr "Hoy, 00:00 PM"
+msgstr "Hoy, 0:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:244
 msgid "Today, %-I:%M %p"
@@ -1198,7 +1198,7 @@ msgstr "Hoy"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:256
 msgid "Yesterday at 00:00:00 PM"
-msgstr "Ayer a las 00:00:00 PM"
+msgstr "Ayer a las 0:00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:257
 msgid "Yesterday at %-I:%M:%S %p"
@@ -1206,7 +1206,7 @@ msgstr "Ayer a las %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:259
 msgid "Yesterday at 00:00 PM"
-msgstr "Ayer a las 00:00 PM"
+msgstr "Ayer a las 0:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:260
 msgid "Yesterday at %-I:%M %p"
@@ -1214,7 +1214,7 @@ msgstr "Ayer a las %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:262
 msgid "Yesterday, 00:00 PM"
-msgstr "Ayer, 00:00 PM"
+msgstr "Ayer, 0:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:263
 msgid "Yesterday, %-I:%M %p"
@@ -1227,7 +1227,7 @@ msgstr "Ayer"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:277
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr "Miércoles, 00 de septiembre de 0000 a las 00:00:00 pm"
+msgstr "Miércoles, 0 de septiembre del 0000 a las 0:00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:278
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
@@ -1235,7 +1235,7 @@ msgstr "%A, %-d de %B del %Y a las %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:280
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr "Lun, 00 de oct de 0000 a las 00:00:00 pm"
+msgstr "Lun, 0 de oct del 0000 a las 0:00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:281
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
@@ -1243,7 +1243,7 @@ msgstr "%a, %-d de %b del %Y a las %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:283
 msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr "Lun, 00 oct 0000 a las 00:00 pm"
+msgstr "Lun, 0 de oct del 0000 a las 0:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:284
 msgid "%a, %b %-d %Y at %-I:%M %p"
@@ -1251,7 +1251,7 @@ msgstr "%a, %-d de %b del %Y a las %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:286
 msgid "Oct 00 0000 at 00:00 PM"
-msgstr "00 oct 0000 a las 00:00 pm"
+msgstr "0 de oct del 0000 a las 0:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:287
 msgid "%b %-d %Y at %-I:%M %p"
@@ -1259,7 +1259,7 @@ msgstr "%-d de %b del %Y a las %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:289
 msgid "Oct 00 0000, 00:00 PM"
-msgstr "00 oct 0000, 00:00 pm"
+msgstr "0 de oct del 0000, 0:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:290
 msgid "%b %-d %Y, %-I:%M %p"
@@ -1267,7 +1267,7 @@ msgstr "%-d de %b del %Y, %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:292
 msgid "00/00/00, 00:00 PM"
-msgstr "00/00/00, 00:00 pm"
+msgstr "00/00/00, 0:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:293
 msgid "%m/%-d/%y, %-I:%M %p"
