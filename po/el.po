@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-05-07 03:02+0000\n"
-"Last-Translator: Cody Garver <codygarver@gmail.com>\n"
+"PO-Revision-Date: 2012-06-18 14:23+0000\n"
+"Last-Translator: Nikos <nraptopoulos@gmail.com>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:33+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-06-19 05:13+0000\n"
+"X-Generator: Launchpad (build 15435)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
-msgstr ""
+msgstr "Επιλογές Αρχείων"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:54
 msgid "Single click to open:"
@@ -32,7 +32,7 @@ msgstr "Ταχύτητα αυτόματης επιλογής με το ποντ�
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:80
 msgid "Default File Manager:"
-msgstr "Προεπιλεγμένος  Διαχειριστής Αρχείων"
+msgstr "Προεπιλεγμένος  Διαχειριστής Αρχείων:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:89
 msgid "Behavior"
@@ -76,7 +76,7 @@ msgstr "Μορφή ημερομηνίας:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:148
 msgid "Appearance"
-msgstr ""
+msgstr "Εμφάνιση"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:197
 msgid "Extensions"
@@ -118,49 +118,49 @@ msgstr "Ορισμός ως προεπιλογή"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:142
 msgid "Ignore"
-msgstr ""
+msgstr "Παράβλεψη"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:454
 msgid "Undo"
-msgstr ""
+msgstr "Αναίρεση"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:455
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:749
 msgid "Undo the last action"
-msgstr ""
+msgstr "Αναίρεση της τελευταίας ενέργειας"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:464
 msgid "Redo"
-msgstr ""
+msgstr "Επανάληψη"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:465
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:752
 msgid "Redo the last action"
-msgstr ""
+msgstr "Επανάληψη της τελευταίας ενέργειας"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:720
 msgid "_File"
-msgstr ""
+msgstr "_Αρχείο"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:721
 msgid "_Edit"
-msgstr ""
+msgstr "_Επεξεργασία"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:722
 msgid "_View"
-msgstr ""
+msgstr "_Προβολή"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:723
 msgid "_Go"
-msgstr ""
+msgstr "_Μετάβαση"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:724
 msgid "_Help"
-msgstr ""
+msgstr "_Βοήθεια"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:726
 msgid "New _Window"
-msgstr ""
+msgstr "Νέο _Παράθυρο"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:727
 msgid "Open another Marlin window for the displayed location"
@@ -168,31 +168,31 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:730
 msgid "New _Tab"
-msgstr ""
+msgstr "Νέα _Καρτέλα"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:731
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Άνοιγμα της τρέχουσας τοποθεσίας σε νέα καρτέλα"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:734
 msgid "_Close"
-msgstr ""
+msgstr "_Κλείσιμο"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:735
 msgid "Close this folder"
-msgstr ""
+msgstr "Κλείσιμο αυτού του φακέλου"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:738
 msgid "Customize _Toolbar..."
-msgstr ""
+msgstr "Προσαρμογή _Εργαλειοθήκης..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:739
 msgid "Easily edit the toolbar layout"
-msgstr ""
+msgstr "Εύκολη επεξεργασία της εμφάνισης της εργαλειοθήκης"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:742
 msgid "Preferences"
-msgstr ""
+msgstr "Προτιμήσεις"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:743
 msgid "Change Marlin's preferences"
