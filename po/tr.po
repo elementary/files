@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-10 14:07+0000\n"
-"Last-Translator: kulkke <Unknown>\n"
+"PO-Revision-Date: 2012-06-21 16:31+0000\n"
+"Last-Translator: Ekkucukarpaci <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:34+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-06-22 05:15+0000\n"
+"X-Generator: Launchpad (build 15461)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
@@ -164,7 +164,7 @@ msgstr "Yeni _Pencere"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:727
 msgid "Open another Marlin window for the displayed location"
-msgstr ""
+msgstr "Gösterilen konum için yeni bir Marlin penceresi aç"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:730
 msgid "New _Tab"
@@ -317,7 +317,7 @@ msgstr "Bir problem bildir..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:821
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Launchpad'de sorun bildirin"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:824
 msgid "Get Help Online..."
@@ -341,11 +341,11 @@ msgstr "_Masaüstü Dosyalarını Göster"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:844
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "Masaüstü dosyalarının gösterimini aç/kapa"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:848
 msgid "_Context Pane"
-msgstr ""
+msgstr "_Bağlam Paneli"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:849
 msgid "Change the visibility of the context pane"
@@ -659,7 +659,7 @@ msgstr "Adres(ler)i yeni sekmede aç"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:422
 msgid "Quit Marlin."
-msgstr ""
+msgstr "Marlin'den çık"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:424
 msgid "Enable debug logging"
@@ -860,6 +860,8 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Daha önce bir Kes veya Kopyala komutuyla seçilmiş dosyaları seçilen dosyaya "
+"taşı veya kopyala"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3470
 msgid "_Rename..."
@@ -1150,7 +1152,7 @@ msgstr "Simge boyutu"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:5
 msgid "Browse your files"
-msgstr ""
+msgstr "Dosyalarınıza göz atın"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:6
 msgid "File Manager"
@@ -1158,7 +1160,7 @@ msgstr "Dosya Yöneticisi"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:237
 msgid "Today at 00:00:00 PM"
-msgstr ""
+msgstr "Bugün saat 00:00:00 da"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:238
 msgid "Today at %-I:%M:%S %p"
@@ -1216,7 +1218,7 @@ msgstr "Dün"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:277
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr ""
+msgstr "Eylül 00 0000 Çarşamba, saat 00:00:00 da"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:278
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
@@ -1224,7 +1226,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:280
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr ""
+msgstr "Eki 00 0000 Pzt, saat 00:00:00 da"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:281
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
@@ -1232,7 +1234,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:283
 msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr ""
+msgstr "Eki 00 0000 Pzt, saat 00:00:00 da"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:284
 msgid "%a, %b %-d %Y at %-I:%M %p"
@@ -1240,7 +1242,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:286
 msgid "Oct 00 0000 at 00:00 PM"
-msgstr ""
+msgstr "Eki 00 0000, saat 00:00 da"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:287
 msgid "%b %-d %Y at %-I:%M %p"
@@ -1248,7 +1250,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:289
 msgid "Oct 00 0000, 00:00 PM"
-msgstr ""
+msgstr "Eki 00 0000, saat 00:00 da"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:290
 msgid "%b %-d %Y, %-I:%M %p"
@@ -1256,7 +1258,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:292
 msgid "00/00/00, 00:00 PM"
-msgstr ""
+msgstr "00/00/00, saat 00:00 da"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:293
 msgid "%m/%-d/%y, %-I:%M %p"
@@ -1268,7 +1270,7 @@ msgstr "00/00/00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:296
 msgid "%m/%d/%y"
-msgstr ""
+msgstr "%d/%m/%y"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
@@ -1533,22 +1535,22 @@ msgstr "'%s'in bağlantısını sil"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "'%s' içine eklenmiş öğelerin özgün izinlerini geri yükle"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "'%s''nin özgün izinlerini geri yükle"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "'%s''nin grubunu '%s''ye geri yükle"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "'%s''nin sahibini '%s''ye geri yükle"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
@@ -1558,17 +1560,17 @@ msgstr "%d öğeyi şuraya kopyala: '%s'"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "'%s''i '%s''e kopyala"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "%d öğenin eşi '%s' içinde"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "'%s' öğesinin eşi '%s' içinde"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
@@ -1578,7 +1580,7 @@ msgstr "%d öğeyi şuraya taşı: '%s'"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "'%s''i '%s''e taşı"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
@@ -1623,7 +1625,7 @@ msgstr "'%s''e bağlantı oluştur"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "'%s' içerisine konulu öğelerin izinlerini ayarla"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format

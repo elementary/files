@@ -8,24 +8,24 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-11 15:05+0000\n"
-"Last-Translator: Thomas Pitlik <Unknown>\n"
+"PO-Revision-Date: 2012-06-21 20:31+0000\n"
+"Last-Translator: Marijo Mustac <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:33+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-06-22 05:14+0000\n"
+"X-Generator: Launchpad (build 15461)\n"
 "Language: de\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
-msgstr "Dateien Einstellungen"
+msgstr "Dateieneinstellungen"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:54
 msgid "Single click to open:"
-msgstr "Mit einem Klick öffnen:"
+msgstr "Öffnen mit einem Klick:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:64
 msgid "Mouse auto-selection speed:"
@@ -33,7 +33,7 @@ msgstr "Automatische Auswahlgeschwindigkeit der Maus:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:80
 msgid "Default File Manager:"
-msgstr "Standard Dateimanager:"
+msgstr "Standarddateiverwaltung:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:89
 msgid "Behavior"
@@ -185,7 +185,7 @@ msgstr "Diesen Ordner schließen"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:738
 msgid "Customize _Toolbar..."
-msgstr "_Werkzeugleiste anpassen ..."
+msgstr "_Werkzeugleiste anpassen …"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:739
 msgid "Easily edit the toolbar layout"
@@ -315,7 +315,7 @@ msgstr "Mitwirkende anzeigen"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:820
 msgid "Report a Problem..."
-msgstr "Ein Problem melden ..."
+msgstr "Ein Problem melden …"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:821
 msgid "File a bug on Launchpad"
@@ -327,7 +327,7 @@ msgstr "Online Hilfe erhalten …"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:828
 msgid "Translate This Application..."
-msgstr "Diese Anwendung übersetzen ..."
+msgstr "Diese Anwendung übersetzen …"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:837
 msgid "Show _Hidden Files"
@@ -467,7 +467,7 @@ msgstr "Herkunftsort"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:419
 msgid "Other application..."
-msgstr "Andere Anwendung ..."
+msgstr "Andere Anwendung …"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:443
 msgid "Open with"
@@ -925,7 +925,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3501
 msgid "Other _Application..."
-msgstr "_Andere Anwendung …"
+msgstr "Andere _Anwendung …"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3502
 msgid "Choose another application with which to open the selected item"
