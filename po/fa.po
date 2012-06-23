@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-05-07 03:00+0000\n"
-"Last-Translator: DaashAli <ali.sarchami@gmail.com>\n"
+"PO-Revision-Date: 2012-06-22 20:36+0000\n"
+"Last-Translator: Sajjad Husseini <toospool@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:34+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-06-23 05:25+0000\n"
+"X-Generator: Launchpad (build 15461)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
-msgstr ""
+msgstr "تنظیمات فایلز"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:54
 msgid "Single click to open:"
@@ -32,7 +32,7 @@ msgstr "سرعت انتخات خودکار توسط موشواره:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:80
 msgid "Default File Manager:"
-msgstr ""
+msgstr "برنامه مدیریت فایل پیشفرض"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:89
 msgid "Behavior"
@@ -76,11 +76,11 @@ msgstr "قالب تاریخ:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:148
 msgid "Appearance"
-msgstr ""
+msgstr "ظاهر"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:197
 msgid "Extensions"
-msgstr ""
+msgstr "افزونه‌ها"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -118,49 +118,49 @@ msgstr "تنظیم به عنوان پیش‌فرض"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:142
 msgid "Ignore"
-msgstr ""
+msgstr "چشم‌پوشی‌"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:454
 msgid "Undo"
-msgstr ""
+msgstr "واگرد"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:455
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:749
 msgid "Undo the last action"
-msgstr ""
+msgstr "واگرد آخرین فعالیت"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:464
 msgid "Redo"
-msgstr ""
+msgstr "انجام مجدد"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:465
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:752
 msgid "Redo the last action"
-msgstr ""
+msgstr "انجام مجدد آخرین فعالیت"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:720
 msgid "_File"
-msgstr ""
+msgstr "_پرونده"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:721
 msgid "_Edit"
-msgstr ""
+msgstr "_ويرايش"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:722
 msgid "_View"
-msgstr ""
+msgstr "_نمایش"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:723
 msgid "_Go"
-msgstr ""
+msgstr "_برو"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:724
 msgid "_Help"
-msgstr ""
+msgstr "_راهنما"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:726
 msgid "New _Window"
-msgstr ""
+msgstr "پنجره_جدید"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:727
 msgid "Open another Marlin window for the displayed location"
@@ -168,23 +168,23 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:730
 msgid "New _Tab"
-msgstr ""
+msgstr "_زبانه‌ی جدید"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:731
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "باز‌کردن یک زبانه‌ی دیگر برای مکان نمایش‌ داده‌شده"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:734
 msgid "_Close"
-msgstr ""
+msgstr "_بستن"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:735
 msgid "Close this folder"
-msgstr ""
+msgstr "بستن این پوشه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:738
 msgid "Customize _Toolbar..."
-msgstr ""
+msgstr "شخصی سازی_نوار ابزار..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:739
 msgid "Easily edit the toolbar layout"
@@ -192,55 +192,55 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:742
 msgid "Preferences"
-msgstr ""
+msgstr "تنظیمات"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:743
 msgid "Change Marlin's preferences"
-msgstr ""
+msgstr "تغییر تنظیمات مارلین"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:748
 msgid "_Undo"
-msgstr ""
+msgstr "_برگردان"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:751
 msgid "_Redo"
-msgstr ""
+msgstr "_انجام دوباره"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:754
 msgid "Open _Parent"
-msgstr ""
+msgstr "بازکردن _ سرشاخه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:755
 msgid "Open the parent folder"
-msgstr ""
+msgstr "بازکردن پوشه سرشاخه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:757
 msgid "_Back"
-msgstr ""
+msgstr "_بازگشت"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:758
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "رفتن به مکان بازدید‌شده‌ی قبلی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:761
 msgid "_Forward"
-msgstr ""
+msgstr "_جلو"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:762
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "رفتن به مکان بازدید‌شده‌ی بعدی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:764
 msgid "_Reload"
-msgstr ""
+msgstr "_بازآوری"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:765
 msgid "Reload the current location"
-msgstr ""
+msgstr "بازآوری مکان فعلی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:768
 msgid "_Home Folder"
-msgstr ""
+msgstr "_پوشه اصلی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:769
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:329
@@ -249,15 +249,15 @@ msgstr "باز کردن پوشه شخصی شما"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:772
 msgid "_Trash"
-msgstr ""
+msgstr "_زباله‌دان"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:773
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "بازکردن زباله‌دان شخصی شما"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:776
 msgid "_Network"
-msgstr ""
+msgstr "_شبکه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:777
 msgid "Browse bookmarked and local network locations"
@@ -265,19 +265,19 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:780
 msgid "Zoom _In"
-msgstr ""
+msgstr "_بزرگنمایی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:781
 msgid "Increase the view size"
-msgstr ""
+msgstr "افزایش اندازه‌ی نمایش"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:792
 msgid "Zoom _Out"
-msgstr ""
+msgstr "_کوچک نمایی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:793
 msgid "Decrease the view size"
-msgstr ""
+msgstr "کاهش اندازه‌ی نمایش"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:800
 msgid "Normal Si_ze"
@@ -285,27 +285,27 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:801
 msgid "Use the normal view size"
-msgstr ""
+msgstr "استفاده از اندازه‌ی نمایش عادی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:804
 msgid "Next Tab"
-msgstr ""
+msgstr "زبانه بعدی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:808
 msgid "Previous Tab"
-msgstr ""
+msgstr "زبانه قبلی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:812
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "اتصال به _کارگزار..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:813
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "اتصال به یک رایانه دوردست و یا یک دیسک به اشتراک گذاشته‌شده"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:816
 msgid "_About"
-msgstr ""
+msgstr "_درباره"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:817
 msgid "Display credits"
@@ -313,7 +313,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:820
 msgid "Report a Problem..."
-msgstr ""
+msgstr "مشکلی را گزارش دهید…"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:821
 msgid "File a bug on Launchpad"
@@ -321,27 +321,27 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:824
 msgid "Get Help Online..."
-msgstr ""
+msgstr "دریافت کمک آنلاین..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:828
 msgid "Translate This Application..."
-msgstr ""
+msgstr "این برنامه را ترجمه کنید..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:837
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "نمایش_پرونده های مخفی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:838
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "تغییر نمایش پرونده‌های مخفی در پنجره‌ فعلی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:843
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "نمایش_پرونده های میزکار"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:844
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "تغییر نمایش پرونده های میزکار"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:848
 msgid "_Context Pane"
@@ -353,7 +353,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:853
 msgid "_Menubar"
-msgstr ""
+msgstr "_نوار منو"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:854
 msgid "Change the visibility of this window's menubar"
@@ -361,27 +361,27 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:858
 msgid "_Places"
-msgstr ""
+msgstr "_محل‌ها"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:859
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "تغییر ‌نمایان بودن قاب کناری پنجره"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:867
 msgid "Icon"
-msgstr ""
+msgstr "آیکن"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:870
 msgid "List"
-msgstr ""
+msgstr "فهرست"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:873
 msgid "Compact"
-msgstr ""
+msgstr "فشرده"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:876
 msgid "Columns"
-msgstr ""
+msgstr "‌ستون‌ها"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/LocationBar.vala:100
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:588
@@ -421,35 +421,35 @@ msgstr "مالک"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
-msgstr ""
+msgstr "ویژگی‌ها"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:118
 msgid "Info"
-msgstr ""
+msgstr "اطلاعات"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:126
 msgid "Permissions"
-msgstr ""
+msgstr "مجوزها"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:138
 msgid "Preview"
-msgstr ""
+msgstr "پیش‌نمایش"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:345
 msgid "Created"
-msgstr ""
+msgstr "ساخته شده"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:350
 msgid "Last Access"
-msgstr ""
+msgstr "آخرین دسترسی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:356
 msgid "Deleted"
-msgstr ""
+msgstr "حذف شده"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:361
 msgid "MimeType"
-msgstr ""
+msgstr "نوع مایم"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:369
 msgid "MimeTypes"
@@ -457,19 +457,19 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:373
 msgid "Location"
-msgstr ""
+msgstr "مکان"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:381
 msgid "Origin Location"
-msgstr ""
+msgstr "مکان اصلی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:419
 msgid "Other application..."
-msgstr ""
+msgstr "برنامه‌های دیگر..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:443
 msgid "Open with"
-msgstr ""
+msgstr "باز کردن با"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:459
 msgid "Device usage"
@@ -477,40 +477,40 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:604
 msgid "Read"
-msgstr ""
+msgstr "خوانده ‌‌شده"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:609
 msgid "Write"
-msgstr ""
+msgstr "نوشتن"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:614
 msgid "Execute"
-msgstr ""
+msgstr "اجرا کردن"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:837
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:849
 msgid "Group"
-msgstr ""
+msgstr "گروه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:853
 msgid "Everyone"
-msgstr ""
+msgstr "همه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:1109
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "یک برنامه را برای باز کردن انتخاب کنید "
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "FTP عمومی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "‏FTP (با ورود به سیستم)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
@@ -518,100 +518,102 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "WebDAV امن (HTTPS)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr ""
+msgstr "درحال اتصال..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"نمی‌تواند فهرست روش‌های پشتیبانی‌شده کارگزار را بارگیری کند.\n"
+"لطفا نصب gvfs را بررسی کنید."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "پوشه «%s» نمی‌تواند در «%s» باز شود."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "کارگزار روی «%s» پیدا نشد."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr ""
+msgstr "سعی مجدد"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr ""
+msgstr "لطفا جزییات کاربریتان را بررسی کنید."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr ""
+msgstr "ادامه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:750
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
-msgstr ""
+msgstr "ا_تصال"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr ""
+msgstr "اتصال به کارگزار"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr ""
+msgstr "جزئیات کارگزار"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
-msgstr ""
+msgstr "_کارگزار:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
-msgstr ""
+msgstr "_درگاه:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
-msgstr ""
+msgstr "_نوع:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
-msgstr ""
+msgstr "ا_شتراک:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
-msgstr ""
+msgstr "_پوشه:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
-msgstr ""
+msgstr "جزئیات کاربر"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
-msgstr ""
+msgstr "_نام دامنه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
-msgstr ""
+msgstr "_نام کاربری"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
-msgstr ""
+msgstr "گذر_واژه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
-msgstr ""
+msgstr "_به خاطر سپردن این گذرواژه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
-msgstr ""
+msgstr "عملیات لغو شد"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:113
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:163
@@ -633,11 +635,11 @@ msgstr[0] "%I'd عملیات فعال است"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:280
 msgid "Show copy dialog"
-msgstr ""
+msgstr "نمایش پنجره کپی"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:291
 msgid "Cancel all in-progress actions"
-msgstr ""
+msgstr "لغو تمام فعالیت های در حال انجام"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:528
 msgid "All file operations have been successfully completed"
@@ -649,11 +651,11 @@ msgstr "موردی در حافظه جهت چسباندن وجود ندارد"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:416
 msgid "Show the version of the program."
-msgstr ""
+msgstr "نشان‌دادن شماره‌ی نسخه‌ی برنامه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:420
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "بازکردن آدرس(ها) در زبانه جدید"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:422
 msgid "Quit Marlin."
@@ -685,7 +687,7 @@ msgstr "نمی‌توان از quit-- برای نشانی‌ها استفاده 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:572
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:616
 msgid "This folder is empty."
-msgstr ""
+msgstr "این پوشه خالی است."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-columns-view.c:186
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:139
@@ -700,7 +702,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "نمای آیکن"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
@@ -716,7 +718,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "بر اساس _نام"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
@@ -724,15 +726,15 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "بر اساس _اندازه"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "مرتب کردن آیکن ها بر اساس اندازه در ردیف ها"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "بر اساس _نوع"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
@@ -744,7 +746,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "مرتب کردن آیکن ها بر اساس تاریخ تغییر در ردیف ها"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -801,13 +803,12 @@ msgstr "اشکال در ایجاد پیوند به آدرس \"%s\""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "استفاده از «%s» برای باز‌کردن مورد انتخاب‌شده"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1940
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_باز‌کردن با «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1946
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3483
