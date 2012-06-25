@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-11 16:28+0000\n"
-"Last-Translator: Dmitry Shachnev <Mitya57@gmail.com>\n"
+"PO-Revision-Date: 2012-06-25 03:32+0000\n"
+"Last-Translator: Igor Mamzov <igor.mamzov@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:34+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-06-25 05:35+0000\n"
+"X-Generator: Launchpad (build 15482)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
-msgstr "Параметры Files"
+msgstr "Параметры файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:54
 msgid "Single click to open:"
@@ -197,7 +197,7 @@ msgstr "Параметры"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:743
 msgid "Change Marlin's preferences"
-msgstr ""
+msgstr "Сменить настройки Marlin"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:748
 msgid "_Undo"
@@ -338,7 +338,7 @@ msgstr "Показывать ли скрытые файлы в текущем о
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:843
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "Показать файлы на рабочем столе"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:844
 msgid "Toggle the display of desktop files"
@@ -733,7 +733,7 @@ msgstr "по _размеру"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "Упорядочивать значки по размеру, выстраивая их в ряды"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
@@ -867,6 +867,8 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Перемещение или копирование ранее выбранных файлов с помощью команд Вырезать "
+"или Вставить в выбранную папку"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3470
 msgid "_Rename..."
@@ -886,7 +888,7 @@ msgstr "Создать новую пустую папку внутри этой 
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3477
 msgid "Create New _File"
-msgstr ""
+msgstr "Создать новый файл"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3479
 msgid "_Empty Document"
@@ -898,63 +900,63 @@ msgstr "Создать новый пустой документ в этой па
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3484
 msgid "Open the selected item"
-msgstr ""
+msgstr "Открыть выбранный элемент"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3491
 msgid "Open in new Window"
-msgstr ""
+msgstr "Открыть в новом окне"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3492
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "Открыть каждый выбранный элемент в новом окне"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3496
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "Открыть каждый выбранный объект в новой вкладке"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3498
 msgid "Open Wit_h"
-msgstr ""
+msgstr "Открыть в про_грамме"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3499
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "Выбрать программу для открытия выделенного объекта"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3501
 msgid "Other _Application..."
-msgstr ""
+msgstr "Другое _приложение..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3502
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "Выбрать другое приложение для открытия выделенного объекта"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3505
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "_Удалить"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3506
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "Переместить каждый выделенный объект в корзину"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3509
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "Удалить безвозвратно"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3510
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "Удалить каждый выделенный объект безвозвратно"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3513
 msgid "_Restore"
-msgstr ""
+msgstr "_Восстановить"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3521
 msgid "_Properties"
-msgstr ""
+msgstr "_Свойства"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3522
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "Просмотреть или изменить свойства каждого выделенного элемента"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3629
 msgid "Set Color:"
@@ -1010,7 +1012,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "Имя файла"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
@@ -1157,105 +1159,105 @@ msgstr "Размер значков"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:5
 msgid "Browse your files"
-msgstr ""
+msgstr "Обзор файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:6
 msgid "File Manager"
-msgstr ""
+msgstr "Файловый менеджер"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:237
 msgid "Today at 00:00:00 PM"
-msgstr ""
+msgstr "Сегодня в 00:00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:238
 msgid "Today at %-I:%M:%S %p"
-msgstr ""
+msgstr "Сегодня в %-I:%M:%S %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:240
 msgid "Today at 00:00 PM"
-msgstr ""
+msgstr "Сегодня в 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:241
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Сегодня в %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:243
 msgid "Today, 00:00 PM"
-msgstr ""
+msgstr "Сегодня, 00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:244
 msgid "Today, %-I:%M %p"
-msgstr ""
+msgstr "Сегодня, %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:246
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:247
 msgid "Today"
-msgstr ""
+msgstr "Сегодня"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:256
 msgid "Yesterday at 00:00:00 PM"
-msgstr ""
+msgstr "Вчера в 00:00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:257
 msgid "Yesterday at %-I:%M:%S %p"
-msgstr ""
+msgstr "Вчера в %-I:%M:%S %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:259
 msgid "Yesterday at 00:00 PM"
-msgstr ""
+msgstr "Вчера в 00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:260
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Вчера в %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:262
 msgid "Yesterday, 00:00 PM"
-msgstr ""
+msgstr "Вчера, 00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:263
 msgid "Yesterday, %-I:%M %p"
-msgstr ""
+msgstr "Вчера, %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:265
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:266
 msgid "Yesterday"
-msgstr ""
+msgstr "Вчера"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:277
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr ""
+msgstr "Среда, 00 сентября 0000 в 00:00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:278
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-msgstr ""
+msgstr "%A, %B %-d %Y в %-I:%M:%S %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:280
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr ""
+msgstr "Пон, 00 окт 0000 в 00:00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:281
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
-msgstr ""
+msgstr "%a %-d %b %Y в %-H:%M:%S"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:283
 msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr ""
+msgstr "Пон, 00 окт 0000 в 00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:284
 msgid "%a, %b %-d %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y в %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:286
 msgid "Oct 00 0000 at 00:00 PM"
-msgstr ""
+msgstr "00 окт 0000 в 00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:287
 msgid "%b %-d %Y at %-I:%M %p"
-msgstr ""
+msgstr "%-d %b %Y в %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:289
 msgid "Oct 00 0000, 00:00 PM"
-msgstr ""
+msgstr "00 окт 0000, 00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:290
 msgid "%b %-d %Y, %-I:%M %p"
@@ -1263,7 +1265,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:292
 msgid "00/00/00, 00:00 PM"
-msgstr ""
+msgstr "00.00.00, 00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:293
 msgid "%m/%-d/%y, %-I:%M %p"
@@ -1271,11 +1273,11 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:295
 msgid "00/00/00"
-msgstr ""
+msgstr "00.00.00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:296
 msgid "%m/%d/%y"
-msgstr ""
+msgstr "%d.%m.%y"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
@@ -1476,91 +1478,91 @@ msgstr " (некорректные символы)"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Удалить %d скопированных файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Удалить «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Удалить %d дубликатов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Переместить %d файлов обратно в '%s'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Переместить «%s» обратно в «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Переименовать «%s» в «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Восстановить %d файлов из корзины"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Восстановить «%s» в «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Переместить %d файлов обратно в корзину"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Переместить «%s» обратно в корзину"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Удалить ссылки на %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Удалить ссылку на «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Восстановить исходные права доступа к объектам, находящимся в «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Восстановить исходные права доступа к «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Восстановить «%s» группу «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Восстановить владельца '%s' на '%s'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Копировать %d файлов в '%s'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
