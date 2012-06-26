@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-25 03:32+0000\n"
-"Last-Translator: Igor Mamzov <igor.mamzov@gmail.com>\n"
+"PO-Revision-Date: 2012-06-25 19:38+0000\n"
+"Last-Translator: Sweetbubalekh <obatnin@yandex.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-06-25 05:35+0000\n"
+"X-Launchpad-Export-Date: 2012-06-26 05:48+0000\n"
 "X-Generator: Launchpad (build 15482)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
@@ -165,7 +165,7 @@ msgstr "Создать _окно"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:727
 msgid "Open another Marlin window for the displayed location"
-msgstr ""
+msgstr "Открыть новое окно Marlin для отображаемой локации"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:730
 msgid "New _Tab"
@@ -310,7 +310,7 @@ msgstr "_Сведения"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:817
 msgid "Display credits"
-msgstr ""
+msgstr "Об авторах"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:820
 msgid "Report a Problem..."
@@ -342,7 +342,7 @@ msgstr "Показать файлы на рабочем столе"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:844
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "Переключить отображение файлов на рабочем столе"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:848
 msgid "_Context Pane"
@@ -1261,7 +1261,7 @@ msgstr "00 окт 0000, 00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:290
 msgid "%b %-d %Y, %-I:%M %p"
-msgstr ""
+msgstr "%-d %b %Y, %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:292
 msgid "00/00/00, 00:00 PM"
@@ -1269,7 +1269,7 @@ msgstr "00.00.00, 00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:293
 msgid "%m/%-d/%y, %-I:%M %p"
-msgstr ""
+msgstr "%-d.%m.%y, %-H:%M"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:295
 msgid "00/00/00"
@@ -1567,108 +1567,108 @@ msgstr "Копировать %d файлов в '%s'"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Копировать «%s» в «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Поместить дубликаты %d элементов в «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Копировать '%s' в '%s'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Переместить %d файлов в '%s'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Переместить '%s' в '%s'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Создать новый файл «%s» из шаблона "
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Создать пустой файл «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Создать новую папку «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Переместить %d файлов в корзину"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Переместить «%s» в корзину"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Восстановить «%s» из корзины"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Создать ярлыки на %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Создать ярлык на «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Задать права доступа к объектам, находящимся в «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Установить права доступа для «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "Назначить «%s» группу «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Назначить владельцем «%s» «%s»"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отменить копирование %d файла"
+msgstr[1] "Отменить копирование %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отменить дублирование %d файла"
+msgstr[1] "Отменить дублирование %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отменить перемещение %d файла"
+msgstr[1] "Отменить перемещение %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
@@ -1710,8 +1710,7 @@ msgstr[1] ""
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отменить создание ссылки на %d файл"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
