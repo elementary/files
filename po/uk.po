@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-23 20:09+0000\n"
-"Last-Translator: Victor Markin <Unknown>\n"
+"PO-Revision-Date: 2012-06-26 14:30+0000\n"
+"Last-Translator: Robert Buckswheat <tarqinn@mail.ru>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-06-24 05:55+0000\n"
-"X-Generator: Launchpad (build 15461)\n"
+"X-Launchpad-Export-Date: 2012-06-27 06:15+0000\n"
+"X-Generator: Launchpad (build 15482)\n"
 "Language: uk\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
-msgstr ""
+msgstr "Параметри файлів"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:54
 msgid "Single click to open:"
@@ -58,7 +58,7 @@ msgstr "дуже великий"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:120
 msgid "Sidebar icon size:"
-msgstr "Розмір мініатюр бічної панелі:"
+msgstr "Розмір значків бічної панелі"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:131
 msgid "iso"
@@ -78,21 +78,21 @@ msgstr "Формат дати:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:148
 msgid "Appearance"
-msgstr ""
+msgstr "Зовнішній вигляд"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:197
 msgid "Extensions"
-msgstr "Додатки"
+msgstr "Доповнення"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "Тека не існує"
+msgstr "Каталогу не існує"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr "Marlin не може знайти каталог %s"
+msgstr "Марлін не може знайти каталог %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -101,7 +101,7 @@ msgstr "Створити"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "Створити теку %s"
+msgstr "Створити каталог %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ViewContainer.vala:141
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:324
@@ -120,125 +120,125 @@ msgstr "Установити за умовчанням"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:142
 msgid "Ignore"
-msgstr ""
+msgstr "Ігнорувати"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:454
 msgid "Undo"
-msgstr ""
+msgstr "Скасувати"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:455
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:749
 msgid "Undo the last action"
-msgstr ""
+msgstr "Скасувати останню дію"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:464
 msgid "Redo"
-msgstr ""
+msgstr "Поновити"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:465
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:752
 msgid "Redo the last action"
-msgstr ""
+msgstr "Поновити останню дію"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:720
 msgid "_File"
-msgstr ""
+msgstr "_Файл"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:721
 msgid "_Edit"
-msgstr ""
+msgstr "_Редагувати"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:722
 msgid "_View"
-msgstr ""
+msgstr "_Вигляд"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:723
 msgid "_Go"
-msgstr ""
+msgstr "_Перейти"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:724
 msgid "_Help"
-msgstr ""
+msgstr "_Допомога"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:726
 msgid "New _Window"
-msgstr ""
+msgstr "Нове _вікно"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:727
 msgid "Open another Marlin window for the displayed location"
-msgstr ""
+msgstr "Відкрити інше вікно Marlin для відображеної директорії"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:730
 msgid "New _Tab"
-msgstr ""
+msgstr "Нова _вкладка"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:731
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Відкрити іншу вкладку для відображеної директорії"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:734
 msgid "_Close"
-msgstr ""
+msgstr "_Закрити"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:735
 msgid "Close this folder"
-msgstr ""
+msgstr "Закрити цю папку"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:738
 msgid "Customize _Toolbar..."
-msgstr ""
+msgstr "Налаштувати _панель інструментів..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:739
 msgid "Easily edit the toolbar layout"
-msgstr ""
+msgstr "Легко редагувати формат панелі інструментів"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:742
 msgid "Preferences"
-msgstr ""
+msgstr "Параметри"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:743
 msgid "Change Marlin's preferences"
-msgstr ""
+msgstr "Змінити параметри Marlin"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:748
 msgid "_Undo"
-msgstr ""
+msgstr "_Відмінити дію"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:751
 msgid "_Redo"
-msgstr ""
+msgstr "_Повторити дію"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:754
 msgid "Open _Parent"
-msgstr ""
+msgstr "Відкрити _верхню"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:755
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Відкрити папку вище"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:757
 msgid "_Back"
-msgstr ""
+msgstr "_Назад"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:758
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Перейти до попереднього відвіданого місця"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:761
 msgid "_Forward"
-msgstr ""
+msgstr "_Вперед"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:762
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Перейти до наступного відвіданого місця"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:764
 msgid "_Reload"
-msgstr ""
+msgstr "_Перезавантажити"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:765
 msgid "Reload the current location"
-msgstr ""
+msgstr "Перезавантажити поточний каталог"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:768
 msgid "_Home Folder"
