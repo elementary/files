@@ -112,7 +112,7 @@ add_executable(marlin
     ${VALA_C} )
 
 add_definitions("-DPLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/marlin/plugins/\"")
-target_link_libraries(marlin marlincore marlinwidgets ${DEPS_LIBRARIES})
+target_link_libraries(marlin m marlincore marlinwidgets ${DEPS_LIBRARIES})
 
 OPTION(WITH_UNITY "Add Unity launcher support" ON)
 pkg_check_modules(UNITY unity>=4.0.0)
