@@ -487,7 +487,7 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
         pixbuf = temp;
     }
 
-    context = gtk_widget_get_style_context (widget);
+    context = gtk_widget_get_style_context (gtk_widget_get_parent (widget));
     gtk_style_context_save (context);
     state = GTK_STATE_FLAG_NORMAL;
 
@@ -499,7 +499,9 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
                        GTK_CELL_RENDERER_PRELIT)) != 0) {
         if ((flags & GTK_CELL_RENDERER_SELECTED) != 0)
         {
-            state = gtk_widget_has_focus (widget) ? GTK_STATE_FLAG_SELECTED : GTK_STATE_FLAG_ACTIVE;
+            state = GTK_STATE_FLAG_SELECTED;
+            /* compute the state with the state of the widget; this way we handle the backdrop */
+            state |= gtk_widget_get_state_flags (widget);
             GdkRGBA color;
             gtk_style_context_get_background_color (context, state, &color);
             temp = eel_create_colorized_pixbuf (pixbuf, &color);

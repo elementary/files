@@ -2,7 +2,7 @@
 
 find_package(Vala REQUIRED)
 include(ValaVersion)
-ensure_vala_version("0.11.3" MINIMUM)
+ensure_vala_version("0.16.0" MINIMUM)
 include(ValaPrecompile)
 # pkgconfig, real C code
 
@@ -119,7 +119,7 @@ add_executable(pantheon-files
     ${VALA_C} )
 
 add_definitions("-DPLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/pantheon-files/plugins/\"")
-target_link_libraries(pantheon-files marlincore marlinwidgets ${DEPS_LIBRARIES})
+target_link_libraries(pantheon-files m marlincore marlinwidgets ${DEPS_LIBRARIES})
 
 OPTION(WITH_UNITY "Add Unity launcher support" ON)
 pkg_check_modules(UNITY unity>=4.0.0)

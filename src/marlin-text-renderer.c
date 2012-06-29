@@ -493,10 +493,10 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
     /* setup the new widget */
     marlin_text_renderer_set_widget (text_renderer, widget);
     
-
+    state = gtk_widget_get_state_flags (widget);
     if ((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED)
     {
-        state = gtk_widget_has_focus (widget) ? GTK_STATE_FLAG_SELECTED : GTK_STATE_FLAG_ACTIVE;
+        state |= GTK_STATE_FLAG_SELECTED;
     }
     else if ((flags & GTK_CELL_RENDERER_PRELIT) == GTK_CELL_RENDERER_PRELIT
              && gtk_widget_get_state (widget) == GTK_STATE_PRELIGHT)
@@ -570,7 +570,9 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
     y_offset = yalign * (cell_area->height - text_height - (2 * ypad));
     y_offset = MAX (y_offset, 0);
 
-    context = gtk_widget_get_style_context (widget);
+    context = gtk_widget_get_style_context (gtk_widget_get_parent (widget));
+    gtk_style_context_save (context);
+    gtk_style_context_set_state (context, state);
 
     selected = ((flags & GTK_CELL_RENDERER_SELECTED) == GTK_CELL_RENDERER_SELECTED && text_renderer->follow_state);
 
@@ -635,6 +637,8 @@ marlin_text_renderer_render (GtkCellRenderer    *cell,
                        cell_area->x + x_offset + xpad,
                        cell_area->y + y_offset + ypad,
                        text_renderer->layout);
+	
+    gtk_style_context_restore (context);
 }
 
 
