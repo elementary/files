@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-27 14:15+0000\n"
+"PO-Revision-Date: 2012-06-28 07:34+0000\n"
 "Last-Translator: András Bognár <froccsmester@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-28 05:13+0000\n"
+"X-Launchpad-Export-Date: 2012-06-29 05:10+0000\n"
 "X-Generator: Launchpad (build 15505)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
@@ -24,11 +24,11 @@ msgstr "Fájlkezelő beállításai"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:54
 msgid "Single click to open:"
-msgstr "Egyszeri kattintásra megnyitni:"
+msgstr "Megnyitás egy kattintással:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:64
 msgid "Mouse auto-selection speed:"
-msgstr "Egér auto-kiválasztás sebesség:"
+msgstr "Egér automatikus kijelölési sebessége:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:80
 msgid "Default File Manager:"
@@ -52,7 +52,7 @@ msgstr "nagy"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:99
 msgid "extra-large"
-msgstr "Nagyon-nagy"
+msgstr "óriás"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:120
 msgid "Sidebar icon size:"
@@ -90,7 +90,7 @@ msgstr "A mappa nem létezik"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr "Marlin nem találja a %s mappát"
+msgstr "A Marlin nem találja a(z) %s mappát"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -118,7 +118,7 @@ msgstr "Beállítás alapértelmezettként"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:142
 msgid "Ignore"
-msgstr "Mellőz"
+msgstr "Mellőzés"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:454
 msgid "Undo"
@@ -131,7 +131,7 @@ msgstr "Utolsó művelet visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:464
 msgid "Redo"
-msgstr "Megismétlés"
+msgstr "Mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:465
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:752
@@ -204,7 +204,7 @@ msgstr "_Visszavonás"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:751
 msgid "_Redo"
-msgstr "_Újra"
+msgstr "Mé_gis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:754
 msgid "Open _Parent"
@@ -232,11 +232,11 @@ msgstr "Ugrás a következő meglátogatott helyre"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:764
 msgid "_Reload"
-msgstr "Új_ratöltés"
+msgstr "_Frissítés"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:765
 msgid "Reload the current location"
-msgstr "A jelenlegi hely újrabetöltése"
+msgstr "A jelenlegi hely újratöltése"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:768
 msgid "_Home Folder"
@@ -317,7 +317,7 @@ msgstr "Hiba jelentése..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:821
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Hibajelentés Launchpaden"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:824
 msgid "Get Help Online..."
@@ -353,11 +353,11 @@ msgstr "A kontextus ablaktábla láthatóságának megváltoztatása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:853
 msgid "_Menubar"
-msgstr "_Menüsáv"
+msgstr "_Menüsor"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:854
 msgid "Change the visibility of this window's menubar"
-msgstr "Az ablak menübár láthatóságának megváltoztatása"
+msgstr "Az ablak menüsor láthatóságának megváltoztatása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:858
 msgid "_Places"
@@ -421,7 +421,7 @@ msgstr "Tulajdonos"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
-msgstr "Tulajdonságok"
+msgstr "Beállítások"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:118
 msgid "Info"
@@ -441,7 +441,7 @@ msgstr "Létrehozva"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:350
 msgid "Last Access"
-msgstr ""
+msgstr "Utolsó hozzáférés"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:356
 msgid "Deleted"
@@ -449,11 +449,11 @@ msgstr "Törölve"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:361
 msgid "MimeType"
-msgstr "MIME-típus"
+msgstr "Mime-típus"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:369
 msgid "MimeTypes"
-msgstr "MimeTípusok"
+msgstr "Mime-típusok"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:373
 msgid "Location"
@@ -473,7 +473,7 @@ msgstr "Megnyitás ezzel"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:459
 msgid "Device usage"
-msgstr ""
+msgstr "Eszközhasználat"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:604
 msgid "Read"
@@ -498,7 +498,7 @@ msgstr "Mindenki"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:1109
 msgid "Select an aplication to open "
-msgstr "Válassz egy alkalmazást a megnyitáshoz "
+msgstr "Válasszon egy alkalmazást a megnyitáshoz "
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -656,7 +656,7 @@ msgstr "A program verziószámának megjelenítése."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:420
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "URI cím(ek) megjelenítése új lapon"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:422
 msgid "Quit Marlin."
@@ -699,7 +699,7 @@ msgstr "„%s” átnevezése sikertelen erre: %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr "Ikon könyvtár listázás"
+msgstr "Ikon könyvtár listázása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:87
 msgid "Icon view"
@@ -763,7 +763,7 @@ msgstr "_Hivatkozás ide"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:794
 msgid "Set as _Background"
-msgstr "Beállítás _háttérként"
+msgstr "Beállítás _háttérképként"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:801
 msgid "Cancel"
@@ -798,14 +798,14 @@ msgstr "Az XDS érvénytelen fájlnévet közöl"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1308
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Hivatkozás létesítése \"%s\" URL-hez sikertelen"
+msgstr "Hivatkozás létrehozása \"%s\" URL-hez sikertelen"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1793
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "Használja a következőt a kijelölt elem megnyitásához: \"%s\""
-msgstr[1] "Használja a következőt a kijelölt elem megnyitásához: \"%s\""
+msgstr[1] "Használja a következőt a kijelölt elemek megnyitásához: \"%s\""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1940
 #, c-format
@@ -842,27 +842,30 @@ msgstr "Megnyitás új _ablakban"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3455
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
-"A kijelölt fájlok előkészítése áthelyezésre egy „Beillesztés” paranccsal"
+"A kijelölt fájlok előkészítése áthelyezésre a \"Beillesztés\" paranccsal"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3459
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "A kijelölt fájlok előkészítése másolásra a „Beillesztés” paranccsal"
+msgstr ""
+"A kijelölt fájlok előkészítése másolásra a \"Beillesztés\" paranccsal"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3463
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
-"Egy „Kivágás„ vagy „Másolás” parancs által kiválasztott fájlok áthelyezése "
+"A \"Kivágás\" vagy \"Másolás\" parancs által kiválasztott fájlok áthelyezése "
 "vagy másolása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3466
 msgid "Paste Into Folder"
-msgstr "Beillesztés a mappába"
+msgstr "Mappába illesztés"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3467
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"A \"Kivágás\" vagy \"Másolás\" parancs által kiválasztott fájlok áthelyezése "
+"vagy másolása a kiválasztott mappába"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3470
 msgid "_Rename..."
@@ -979,15 +982,15 @@ msgstr "Megjelenített elemek"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr "Elrendezés mód"
+msgstr "Elrendezési mód"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr "Elrendezési mód"
+msgstr "Az elrendezési mód"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:167
 msgid "Single Click"
-msgstr "Egyszeres kattintás"
+msgstr "Egyszeri kattintás"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
