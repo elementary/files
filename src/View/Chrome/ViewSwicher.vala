@@ -90,7 +90,7 @@ namespace Marlin.View.Chrome
             switcher.append(list);
             compact = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-compact-symbolic", 16));
             compact.set_tooltip_text (_("View as compact list"));
-            switcher.append(compact);
+            //switcher.append(compact);
             miller = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-column-symbolic", 16));
             miller.set_tooltip_text(_("View as column"));
             switcher.append(miller);
