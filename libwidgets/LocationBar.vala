@@ -65,6 +65,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
     double anim_state = 0;
 
     Gtk.StyleContext button_context;
+    Gtk.StyleContext button_context_active;
     public BreadcrumbsEntry entry;
 
     /**
@@ -108,7 +109,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         icons = new List<IconDirectory?>();
 
         button_context = get_style_context();
-
         button_context.add_class("button");
         button_context.add_class("raised");
         button_context.add_class("marlin-pathbar");
@@ -889,7 +889,13 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
     public override bool draw(Cairo.Context cr)
     {
-        button_context.set_state (StateFlags.NORMAL);
+        if (button_context_active == null) {
+            button_context_active = new Gtk.StyleContext();
+            button_context_active.set_path(button_context.get_path());
+            button_context_active.set_state(Gtk.StateFlags.ACTIVE);
+        }
+
+        //button_context.set_state (StateFlags.NORMAL);
         //propagate_draw (get_child (), cr);
         double height = get_allocated_height();
         double width = get_allocated_width();
@@ -962,7 +968,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 
         if(focus) {
             cr.save();
-            button_context.save();
             x_render -= height_marged/2 + 3;
 
             
@@ -978,7 +983,6 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
             cr.restore();
             cr.save();
-            button_context.set_state (StateFlags.ACTIVE);
 
             cr.move_to(x_render, get_allocated_height());
             cr.line_to(x_render, y + height_marged);
@@ -989,17 +993,16 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
             cr.line_to(get_allocated_width(), y + height_marged);
             cr.close_path();
             cr.clip();
-            Gtk.render_background(button_context, cr, 0, margin, width, height_marged);
-            Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
+            Gtk.render_background(button_context_active, cr, 0, margin, width, height_marged);
+            Gtk.render_frame(button_context_active, cr, 0, margin, width, height_marged);
             cr.restore();
-            button_context.restore();
             x_render += height_marged/2 + 3;
         }
         else {
             Gtk.render_frame(button_context, cr, 0, margin, width, height_marged);
         }
         entry.draw(cr, x_render + space_breads/2, height, width - x_render, this, button_context);
-        return false;
+        return true;
     }
 
     protected abstract void load_right_click_menu(double x, double y);
