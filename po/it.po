@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-23 10:07+0000\n"
-"Last-Translator: Luca Andrea Rossi <Unknown>\n"
+"PO-Revision-Date: 2012-07-03 05:02+0000\n"
+"Last-Translator: Devid Antonio Filoni <Unknown>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-24 05:55+0000\n"
-"X-Generator: Launchpad (build 15461)\n"
+"X-Launchpad-Export-Date: 2012-07-03 06:29+0000\n"
+"X-Generator: Launchpad (build 15531)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
@@ -196,7 +196,7 @@ msgstr "Preferenze"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:743
 msgid "Change Marlin's preferences"
-msgstr "Modificare le preferenze di Marlin"
+msgstr "Modifica le preferenze di Marlin"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:748
 msgid "_Undo"
@@ -313,7 +313,7 @@ msgstr "Mostra i ringraziamenti"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:820
 msgid "Report a Problem..."
-msgstr "Segnala un Problema..."
+msgstr "Segnala un problema..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:821
 msgid "File a bug on Launchpad"
@@ -321,7 +321,7 @@ msgstr "Segnala un bug su Launchpad"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:824
 msgid "Get Help Online..."
-msgstr "Ottieni Aiuto Online..."
+msgstr "Ottieni aiuto online..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:828
 msgid "Translate This Application..."
@@ -353,7 +353,7 @@ msgstr "Cambia la visibilità del riquadro di contesto"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:853
 msgid "_Menubar"
-msgstr "_Barra dei Menù"
+msgstr "Barra dei _menu"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:854
 msgid "Change the visibility of this window's menubar"
@@ -449,7 +449,7 @@ msgstr "Eliminato"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:361
 msgid "MimeType"
-msgstr "Tipo MIME"
+msgstr "MimeType"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:369
 msgid "MimeTypes"
@@ -457,11 +457,11 @@ msgstr "MimeTypes"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:373
 msgid "Location"
-msgstr "Indirizzo"
+msgstr "Percorso"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:381
 msgid "Origin Location"
-msgstr "Luogo di Origine"
+msgstr "Luogo di origine"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:419
 msgid "Other application..."
@@ -526,7 +526,7 @@ msgstr "WebDAV  sicuro (HTTPS)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr "In connessione...."
+msgstr "Connessione in corso..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
@@ -534,7 +534,7 @@ msgid ""
 "Please check your gvfs installation."
 msgstr ""
 "Impossibile caricare l'elenco dei metodi per i server supportati.\n"
-"Controllarel'installazione di gvfs."
+"Controllare l'installazione di gvfs."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
@@ -544,7 +544,7 @@ msgstr "Impossibile aprire la cartella \"%s\" su \"%s\"."
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Impossibile trovare il server a \"%s\"."
+msgstr "Impossibile trovare il server presso \"%s\"."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
@@ -565,7 +565,7 @@ msgstr "C_onnetti"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr "Connetti al Server"
+msgstr "Connetti al server"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
@@ -573,11 +573,11 @@ msgstr "Dettagli server"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
-msgstr "_Server"
+msgstr "_Server:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
-msgstr "_Porta"
+msgstr "_Porta:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
@@ -585,7 +585,7 @@ msgstr "_Tipo:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
-msgstr "_Condivisione:"
+msgstr "C_ondivisione:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
@@ -609,7 +609,7 @@ msgstr "Pass_word:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
-msgstr "_Ricordare questa password"
+msgstr "_Ricorda questa password"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
@@ -620,11 +620,11 @@ msgstr "Operazione annullata"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:471
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:527
 msgid "File Operations"
-msgstr "Operazioni sui File"
+msgstr "Operazioni sui file"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:122
 msgid "Show Details"
-msgstr "Mostra Dettagli"
+msgstr "Mostra dettagli"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:157
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:179
@@ -632,7 +632,7 @@ msgstr "Mostra Dettagli"
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
 msgstr[0] "%'d operazione su file attiva"
-msgstr[1] "%'d operazioni su file attive"
+msgstr[1] "%'d operazioni sui file attive"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:280
 msgid "Show copy dialog"
@@ -660,7 +660,7 @@ msgstr "Apri uno o più indirizzi in una nuova scheda"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:422
 msgid "Quit Marlin."
-msgstr "Uscire da Marlin."
+msgstr "Esci da Marlin."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:424
 msgid "Enable debug logging"
@@ -699,7 +699,7 @@ msgstr "Impossibile rinominare %s in %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr "Elenco delle directory a icone"
+msgstr "Elenco delle icone nella cartella"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:87
 msgid "Icon view"
