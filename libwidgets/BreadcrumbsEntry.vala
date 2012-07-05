@@ -269,7 +269,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object
             break;
         }
         blink = true;
-        //print("%x\n", event.keyval);
+        print("%x\n", event.keyval);
     }
     
     public void complete()
@@ -277,8 +277,8 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object
         reset_selection();
         if(completion != "")
         {
-            text += completion;
-            cursor += completion.length;
+            text += completion + "/";
+            cursor += completion.length + 1;
             completion = "";
             completed();
         }
