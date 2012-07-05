@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-12 17:07+0000\n"
-"Last-Translator: honki <honkiaa@gmail.com>\n"
+"PO-Revision-Date: 2012-07-05 04:12+0000\n"
+"Last-Translator: leo  <shing80333@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:34+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-07-05 05:23+0000\n"
+"X-Generator: Launchpad (build 15544)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
@@ -317,7 +317,7 @@ msgstr "回報問題..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:821
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "在Launchpad上填寫問題"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:824
 msgid "Get Help Online..."
@@ -663,7 +663,7 @@ msgstr "關閉 Marlin"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:424
 msgid "Enable debug logging"
-msgstr ""
+msgstr "啟用除錯日誌"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:425
 msgid "[URI...]"
