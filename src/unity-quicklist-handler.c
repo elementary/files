@@ -197,7 +197,7 @@ unity_quicklist_handler_init (UnityQuicklistHandler *self)
     self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self, UNITY_TYPE_QUICKLIST_HANDLER,
                                               UnityQuicklistHandlerPriv);
 
-    unity_quicklist_handler_launcher_entry_add (self, "marlin.desktop");
+    unity_quicklist_handler_launcher_entry_add (self, "pantheon-files.desktop");
     g_return_if_fail (g_list_length (self->priv->launcher_entries) != 0);
 
     MarlinBookmarkList *bookmarks = marlin_bookmark_list_new ();
