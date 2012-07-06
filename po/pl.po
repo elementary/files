@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-15 11:27+0000\n"
-"Last-Translator: Jakub Grzeszczuk <jakub.grzeszczuk@gmail.com>\n"
+"PO-Revision-Date: 2012-07-05 18:08+0000\n"
+"Last-Translator: Adrian Widerski <Unknown>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-06-16 05:18+0000\n"
-"X-Generator: Launchpad (build 15419)\n"
+"X-Launchpad-Export-Date: 2012-07-06 05:34+0000\n"
+"X-Generator: Launchpad (build 15558)\n"
 "Language: pl\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
@@ -1661,22 +1661,25 @@ msgstr "Ustawia właściciela \"%s\" na \"%s\""
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Cofnij kopiowanie %d elementu"
+msgstr[1] "_Cofnij kopiowanie %d elementów"
+msgstr[2] "_Cofnij kopiowanie %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Cofnij duplikowanie %d elementu"
+msgstr[1] "_Cofnij duplikowanie %d elementów"
+msgstr[2] "_Cofnij duplikowanie %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Cofnij przeniesienie %d elementu"
+msgstr[1] "_Cofnij przeniesienie %d elementów"
+msgstr[2] "_Cofnij przeniesienie %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
@@ -1684,6 +1687,7 @@ msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "_Cofnij zmianę nazwy %d elementu"
 msgstr[1] "_Cofnij zmianę nazwy %d elementów"
+msgstr[2] "_Cofnij zmianę nazwy %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
@@ -1697,43 +1701,49 @@ msgstr "_Cofnij utworzenie pliku z szablonu"
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Cofnij utworzenie %d katalogu"
+msgstr[1] "_Cofnij utworzenie %d katalogów"
+msgstr[2] "_Cofnij utworzenie %d katalogów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Cofnij przeniesienie do kosza %d elementu"
+msgstr[1] "_Cofnij przeniesienie do kosza %d elementów"
+msgstr[2] "_Cofnij przeniesienie do kosza %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Cofnij przywrócenie z kosza %d elementu"
+msgstr[1] "_Cofnij przywrócenie z kosza %d elementów"
+msgstr[2] "_Cofnij przywrócenie z kosza %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Cofnij utworzenie aktywatora dla %d elementu"
+msgstr[1] "_Cofnij utworzenie aktywatora dla %d elementów"
+msgstr[2] "_Cofnij utworzenie aktywatora dla %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Cofnij usunięcie %d elementu"
+msgstr[1] "_Cofnij usunięcie %d elementów"
+msgstr[2] "_Cofnij usunięcie %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cofnij zmianę uprawnień dla %d elementu"
+msgstr[1] "Cofnij zmianę uprawnień dla %d elementów"
+msgstr[2] "Cofnij zmianę uprawnień dla %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
