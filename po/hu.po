@@ -1,22 +1,24 @@
 # Hungarian translation for marlin
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the marlin package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# Lukács Bence <lukacs.bence1 at gmail dot com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-28 07:34+0000\n"
-"Last-Translator: András Bognár <froccsmester@gmail.com>\n"
-"Language-Team: Hungarian <hu@li.org>\n"
+"PO-Revision-Date: 2012-07-07 22:54+0000\n"
+"Last-Translator: Bence Lukács <Unknown>\n"
+"Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-29 05:10+0000\n"
-"X-Generator: Launchpad (build 15505)\n"
+"X-Launchpad-Export-Date: 2012-07-08 05:02+0000\n"
+"X-Generator: Launchpad (build 15558)\n"
+"Language: hu\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
@@ -164,7 +166,7 @@ msgstr "Új _ablak"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:727
 msgid "Open another Marlin window for the displayed location"
-msgstr ""
+msgstr "Egy másik Marlin ablak megnyitása a megjelenített helyhez"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:730
 msgid "New _Tab"
@@ -309,7 +311,7 @@ msgstr "_Névjegy"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:817
 msgid "Display credits"
-msgstr ""
+msgstr "Közreműködők listájának megjelenítése"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:820
 msgid "Report a Problem..."
@@ -337,11 +339,11 @@ msgstr "A rejtett fájlok megjelenítésének átváltása a jelenlegi ablakban"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:843
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "_Asztal fájljainak megjelenítése"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:844
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "Az asztal fájljainak megjelenítésének átváltása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:848
 msgid "_Context Pane"
@@ -821,7 +823,7 @@ msgstr "_Megnyitás"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1962
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Megnyitás %'d új _lapon"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1966
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3495
@@ -832,7 +834,7 @@ msgstr "Megnyitás új _lapon"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1971
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Megnyitás %'d új _ablakban"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1975
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2414
@@ -1530,12 +1532,12 @@ msgstr "„%s” visszahelyezése a kukába"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Linkek törlése %d elemre"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Erre mutató link: „%s”"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
@@ -1576,7 +1578,7 @@ msgstr "%d duplikált elem itt: %s"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "„%s” kettőzése itt: „%s”"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
@@ -1652,86 +1654,86 @@ msgstr "„%s” tulajdonosának beállítása erre: %s"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ele_m másolásának visszavonása"
+msgstr[1] "%d ele_m másolásának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d fájl _kettőzésének visszavonása"
+msgstr[1] "%d fájl _kettőzésének visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem át_helyezésének visszavonása"
+msgstr[1] "%d elem át_helyezésének visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem át_nevezésének visszavonása"
+msgstr[1] "%d elem át_nevezésének visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "Ü_res fájl létrehozásának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "Ü_res sablonfájl létrehozásának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ü_res mappa létrehozásának visszavonása"
+msgstr[1] "%d ü_res mappa létrehozásának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem kukába át_helyezésének visszavonása"
+msgstr[1] "%d elem kukába át_helyezésének visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem kukából való _helyreállításának visszavonása"
+msgstr[1] "%d elem kukából való _helyreállításának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elemre mutató _link létrehozásának visszavonása"
+msgstr[1] "%d elemre mutató _link létrehozásának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem _törlésének visszavonása"
+msgstr[1] "%d elem _törlésének visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] ""
-msgstr[1] ""
+msgstr[1] "%d elemre vonatkozó jogok rekurzív módosításának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] ""
-msgstr[1] ""
+msgstr[1] "%d elemre vonatkozó jogok módosításának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
@@ -1751,72 +1753,72 @@ msgstr[1] ""
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d ele_m másolása mégis"
+msgstr[1] "%d ele_m másolása mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem _kettőzése mégis"
+msgstr[1] "%d elem _kettőzése mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem át_helyezése mégis"
+msgstr[1] "%d elem át_helyezése mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem át_nevezése mégis"
+msgstr[1] "%d elem át_nevezése mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "Ü_res fájl létrehozása mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "Ü_res sablonfájl létrehozása mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d _mappa létrehozása mégis"
+msgstr[1] "%d _mappa létrehozása mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem kukába át_helyezése mégis"
+msgstr[1] "%d elem kukába át_helyezése mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem kukából való _helyreállítása mégis"
+msgstr[1] "%d elem kukából való _helyreállítása mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elemre mutató _link létrehozása mégis"
+msgstr[1] "%d elemre mutató _link létrehozása mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem _törlése mégis"
+msgstr[1] "%d elem _törlése mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
@@ -2135,6 +2137,8 @@ msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
+"Ez a fájl egy külső adathordozón van, és nem lehet áthelyezni a kukába. Ha "
+"egyszer kitörli, már nem lehet visszaállítani."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2065
 msgid "Trashing Files"
