@@ -211,10 +211,13 @@ namespace Marlin.View
             Preferences.settings.bind("single-click", checkbox , "active", SettingsBindFlags.DEFAULT);
 
             add_option(grid, label, checkbox, ref row);
-
-            // Switch mouse selection speed
-            label = new Gtk.Label(_("Use mouse auto-selection:"));
             
+            // Mouse selection speed
+            label = new Gtk.Label(_("Mouse auto-selection speed:"));
+            spi_click_speed.sensitive = swi_click_speed.active;
+            Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(),
+                                      "value", SettingsBindFlags.DEFAULT);
+
             Preferences.settings.bind ("single-click-timeout-enabled", swi_click_speed,
                                        "active", SettingsBindFlags.DEFAULT);
             Preferences.settings.bind ("single-click-timeout-enabled", spi_click_speed,
@@ -222,17 +225,15 @@ namespace Marlin.View
 
             swi_click_speed.notify["active"].connect (use_mouse_selection_toggle);
 
-            add_option (grid, label, swi_click_speed, ref row);
+            var hbox = new Gtk.HBox(false, 0);
+            swi_click_speed.set_vexpand(false);
+            swi_click_speed.set_hexpand(false);
+            swi_click_speed.set_margin_top (11);
+            swi_click_speed.set_margin_bottom (10);
+            hbox.pack_start (swi_click_speed, false, false, 0);
+            hbox.pack_end (spi_click_speed, true, true, 0);
             
-            // Mouse selection speed
-            label = new Gtk.Label(_("Mouse auto-selection speed:"));
-            spi_click_speed.sensitive = swi_click_speed.active;
-            Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(),
-                                      "value", SettingsBindFlags.DEFAULT);
-            Preferences.settings.bind ("single-click-timeout-enabled", label,
-                                       "sensitive", SettingsBindFlags.DEFAULT);
-            
-            add_option(grid, label, spi_click_speed, ref row);
+            add_option(grid, label, hbox, ref row);
             
             // Date format
             label = new Gtk.Label(_("Date format:"));
