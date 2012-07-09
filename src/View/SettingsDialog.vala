@@ -230,8 +230,15 @@ namespace Marlin.View
 
             var hbox = new Gtk.HBox(false, 0);
             
-            Gtk.Label slow = new Gtk.Label(_("Slow"));
-            Gtk.Label fast = new Gtk.Label(_("Fast"));
+            Gtk.Label slow = new Gtk.Label(null);
+            slow.set_markup(_("<small><i>Slow</i></small>"));
+            Gtk.Label fast = new Gtk.Label(null);
+            fast.set_markup(_("<small><i>Fast</i></small>"));
+            
+            Preferences.settings.bind ("single-click-timeout-enabled", slow,
+                                       "sensitive", SettingsBindFlags.DEFAULT);
+            Preferences.settings.bind ("single-click-timeout-enabled", fast,
+                                       "sensitive", SettingsBindFlags.DEFAULT);
             
             hbox.pack_start (swi_click_speed, false, false, 0);
             hbox.pack_start (slow, false, false, 0);
