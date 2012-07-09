@@ -119,7 +119,6 @@ namespace Marlin.View
         void add_option (Gtk.Grid grid, Gtk.Widget label, Gtk.Widget switcher, ref int row) {
             label.hexpand = true;
             label.halign = Gtk.Align.END;
-            //label.margin_left = -20;
             switcher.halign = Gtk.Align.FILL;
             switcher.hexpand = true;
             
