@@ -221,18 +221,14 @@ namespace Marlin.View
                                        "sensitive", SettingsBindFlags.DEFAULT);
 
             swi_click_speed.notify["active"].connect (use_mouse_selection_toggle);
-            //swi_click_speed.notify["inactive"].connect (use_mouse_selection_toggle);
 
             add_option (grid, label, swi_click_speed, ref row);
             
             // Mouse selection speed
             label = new Gtk.Label(_("Mouse auto-selection speed:"));
-            //var spi_click_speed = new Gtk.Scale.with_range(Gtk.Orientation.HORIZONTAL, 0, 1000, 1);
             spi_click_speed.sensitive = swi_click_speed.active;
             Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(),
                                       "value", SettingsBindFlags.DEFAULT);
-            /*Preferences.settings.bind("single-click-timeout-old", spi_click_speed.get_adjustment(),
-              "value", SettingsBindFlags.DEFAULT);*/
             
             add_option(grid, label, spi_click_speed, ref row);
             
