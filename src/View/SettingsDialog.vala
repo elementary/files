@@ -40,7 +40,7 @@ namespace Marlin.View
             get_content_area ().margin_top = 12;
             get_content_area ().margin_bottom = 12;
             
-            var mai_notebook = new Granite.Widgets.StaticNotebook();
+            var mai_notebook = new Granite.Widgets.StaticNotebook(false);
             set_size_request (360, -1);
             
             // General
@@ -119,7 +119,7 @@ namespace Marlin.View
         void add_option (Gtk.Grid grid, Gtk.Widget label, Gtk.Widget switcher, ref int row) {
             label.hexpand = true;
             label.halign = Gtk.Align.END;
-            label.margin_left = 20;
+            //label.margin_left = -20;
             switcher.halign = Gtk.Align.FILL;
             switcher.hexpand = true;
             
@@ -211,7 +211,7 @@ namespace Marlin.View
             add_option(grid, label, checkbox, ref row);
             
             // Mouse selection speed
-            label = new Gtk.Label(_("Mouse auto-selection speed:"));
+            label = new Gtk.Label(_("Mouse auto-selection:"));
             spi_click_speed.sensitive = swi_click_speed.active;
             spi_click_speed.set_draw_value (false);
 
