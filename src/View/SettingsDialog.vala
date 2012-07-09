@@ -222,6 +222,9 @@ namespace Marlin.View
                                        "active", SettingsBindFlags.DEFAULT);
             Preferences.settings.bind ("single-click-timeout-enabled", spi_click_speed,
                                        "sensitive", SettingsBindFlags.DEFAULT);
+            
+            Preferences.settings.bind ("single-click-timeout-enabled", label,
+                                       "sensitive", SettingsBindFlags.DEFAULT);
 
             swi_click_speed.notify["active"].connect (use_mouse_selection_toggle);
 
