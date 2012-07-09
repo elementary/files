@@ -26,7 +26,7 @@ namespace Marlin.View
 {
     public class SettingsDialog : Gtk.Dialog
     {
-        Gtk.Scale spi_click_speed = new Gtk.Scale.with_range(Gtk.Orientation.HORIZONTAL, 0, 1000, 1);
+        Gtk.Scale spi_click_speed = new Gtk.Scale.with_range(Gtk.Orientation.HORIZONTAL, 1, 1000, 1);
         Gtk.Switch swi_click_speed = new Gtk.Switch ();
         
         public SettingsDialog(Window win)
@@ -173,13 +173,11 @@ namespace Marlin.View
             {
                 int value = Preferences.settings.get_int ("single-click-timeout-old");
                 Preferences.settings.set_int ("single-click-timeout", value);
-                spi_click_speed.set_value( value );
             // Deactivate auto-selection
             }else{
                 int value = Preferences.settings.get_int ("single-click-timeout");
                 Preferences.settings.set_int ("single-click-timeout-old", value);
                 Preferences.settings.set_int ("single-click-timeout", 0);
-                spi_click_speed.set_value( 0 );
             }
         }
 
@@ -215,6 +213,10 @@ namespace Marlin.View
             // Mouse selection speed
             label = new Gtk.Label(_("Mouse auto-selection speed:"));
             spi_click_speed.sensitive = swi_click_speed.active;
+            spi_click_speed.set_draw_value (false);
+
+            swi_click_speed.notify["active"].connect (use_mouse_selection_toggle);
+            
             Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(),
                                       "value", SettingsBindFlags.DEFAULT);
 
@@ -226,15 +228,15 @@ namespace Marlin.View
             Preferences.settings.bind ("single-click-timeout-enabled", label,
                                        "sensitive", SettingsBindFlags.DEFAULT);
 
-            swi_click_speed.notify["active"].connect (use_mouse_selection_toggle);
-
             var hbox = new Gtk.HBox(false, 0);
-            swi_click_speed.set_vexpand(false);
-            swi_click_speed.set_hexpand(false);
-            swi_click_speed.set_margin_top (11);
-            swi_click_speed.set_margin_bottom (10);
+            
+            Gtk.Label slow = new Gtk.Label(_("Slow"));
+            Gtk.Label fast = new Gtk.Label(_("Fast"));
+            
             hbox.pack_start (swi_click_speed, false, false, 0);
-            hbox.pack_end (spi_click_speed, true, true, 0);
+            hbox.pack_start (slow, false, false, 0);
+            hbox.pack_start (spi_click_speed, true, true, 0);
+            hbox.pack_start (fast, false, false, 0);
             
             add_option(grid, label, hbox, ref row);
             
