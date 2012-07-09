@@ -191,6 +191,13 @@ namespace Marlin.View
             Preferences.settings.bind("single-click", checkbox , "active", SettingsBindFlags.DEFAULT);
 
             add_option(grid, label, checkbox, ref row);
+
+            // Switch mouse selection speed
+            label = new Gtk.Label(_("Use mouse auto-selection:"));
+            var swi_click_speed = new Gtk.Switch ();
+            //Preferences.settings.bind();
+
+            add_option (grid, label, swi_click_speed, ref row);
             
             // Mouse selection speed
             label = new Gtk.Label(_("Mouse auto-selection speed:"));
