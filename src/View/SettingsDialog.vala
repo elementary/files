@@ -229,6 +229,8 @@ namespace Marlin.View
             spi_click_speed.sensitive = swi_click_speed.active;
             Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(),
                                       "value", SettingsBindFlags.DEFAULT);
+            Preferences.settings.bind ("single-click-timeout-enabled", label,
+                                       "sensitive", SettingsBindFlags.DEFAULT);
             
             add_option(grid, label, spi_click_speed, ref row);
             
