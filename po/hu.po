@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-07-07 22:54+0000\n"
-"Last-Translator: Bence Lukács <Unknown>\n"
+"PO-Revision-Date: 2012-07-08 09:58+0000\n"
+"Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-08 05:02+0000\n"
+"X-Launchpad-Export-Date: 2012-07-09 05:09+0000\n"
 "X-Generator: Launchpad (build 15558)\n"
 "Language: hu\n"
 
@@ -1725,29 +1725,29 @@ msgstr[1] "%d elem _törlésének visszavonása"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] "%d elemre vonatkozó jogok rekurzív módosításának visszavonása"
+msgstr[0] "%d elem rekurzív jogosultságmódosításának visszavonása"
+msgstr[1] "%d elem rekurzív jogosultságmódosításának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] "%d elemre vonatkozó jogok módosításának visszavonása"
+msgstr[0] "%d elem jogosultságmódosításának visszavonása"
+msgstr[1] "%d elem jogosultságmódosításának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem csoportmódosításának visszavonása"
+msgstr[1] "%d elem csoportmódosításának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem tulajdonosmódosításának visszavonása"
+msgstr[1] "%d elem tulajdonosmódosításának visszavonása"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
@@ -1824,29 +1824,29 @@ msgstr[1] "%d elem _törlése mégis"
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem rekurzív jogosultságmódosítása mégis"
+msgstr[1] "%d elem rekurzív jogosultságmódosítása mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem jogosultságmódosítása mégis"
+msgstr[1] "%d elem jogosultságmódosítása mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem csoportmódosítása mégis"
+msgstr[1] "%d elem csoportmódosítása mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d elem tulajdonosmódosítása mégis"
+msgstr[1] "%d elem tulajdonosmódosítása mégis"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:202
 msgid "S_kip All"
