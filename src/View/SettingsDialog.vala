@@ -26,6 +26,9 @@ namespace Marlin.View
 {
     public class SettingsDialog : Gtk.Dialog
     {
+        Gtk.Scale spi_click_speed = new Gtk.Scale.with_range(Gtk.Orientation.HORIZONTAL, 0, 1000, 1);
+        Gtk.Switch swi_click_speed = new Gtk.Switch ();
+        
         public SettingsDialog(Window win)
         {
             set_title(_("Files Preferences"));
@@ -163,6 +166,23 @@ namespace Marlin.View
             Preferences.settings.set_enum ("date-format", value);
         }
 
+        private void use_mouse_selection_toggle()
+        {
+            // Activate auto-selection
+            if (swi_click_speed.active)
+            {
+                int value = Preferences.settings.get_int ("single-click-timeout-old");
+                Preferences.settings.set_int ("single-click-timeout", value);
+                spi_click_speed.set_value( value );
+            // Deactivate auto-selection
+            }else{
+                int value = Preferences.settings.get_int ("single-click-timeout");
+                Preferences.settings.set_int ("single-click-timeout-old", value);
+                Preferences.settings.set_int ("single-click-timeout", 0);
+                spi_click_speed.set_value( 0 );
+            }
+        }
+
         public override void response(int id)
         {
             switch(id)
@@ -194,19 +214,28 @@ namespace Marlin.View
 
             // Switch mouse selection speed
             label = new Gtk.Label(_("Use mouse auto-selection:"));
-            var swi_click_speed = new Gtk.Switch ();
-            //Preferences.settings.bind();
+            
+            Preferences.settings.bind ("single-click-timeout-enabled", swi_click_speed,
+                                       "active", SettingsBindFlags.DEFAULT);
+            Preferences.settings.bind ("single-click-timeout-enabled", spi_click_speed,
+                                       "sensitive", SettingsBindFlags.DEFAULT);
+
+            swi_click_speed.notify["active"].connect (use_mouse_selection_toggle);
+            //swi_click_speed.notify["inactive"].connect (use_mouse_selection_toggle);
 
             add_option (grid, label, swi_click_speed, ref row);
             
             // Mouse selection speed
             label = new Gtk.Label(_("Mouse auto-selection speed:"));
-            var spi_click_speed = new Gtk.Scale.with_range(Gtk.Orientation.HORIZONTAL, 0, 1000, 1);
-
-            Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(), "value", SettingsBindFlags.DEFAULT);
+            //var spi_click_speed = new Gtk.Scale.with_range(Gtk.Orientation.HORIZONTAL, 0, 1000, 1);
+            spi_click_speed.sensitive = swi_click_speed.active;
+            Preferences.settings.bind("single-click-timeout", spi_click_speed.get_adjustment(),
+                                      "value", SettingsBindFlags.DEFAULT);
+            /*Preferences.settings.bind("single-click-timeout-old", spi_click_speed.get_adjustment(),
+              "value", SettingsBindFlags.DEFAULT);*/
             
             add_option(grid, label, spi_click_speed, ref row);
-
+            
             // Date format
             label = new Gtk.Label(_("Date format:"));
 
