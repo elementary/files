@@ -82,7 +82,7 @@ namespace Marlin.View.Chrome
             Varka.IconFactory icon_factory = Varka.IconFactory.get_default ();
             Gtk.StyleContext style = get_style_context ();
 
-            icon = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-icons-symbolic", 16));
+            icon = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-grid-symbolic", 16));
             icon.set_tooltip_text (_("View as Grid"));
             switcher.append(icon);
             list = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-details-symbolic", 16));
