@@ -195,8 +195,8 @@ namespace Marlin.View
             var grid = new Gtk.Grid();
             grid.row_spacing = 5;
             grid.column_spacing = 5;
-            grid.margin_left = 15;
-            grid.margin_right = 5;
+            //grid.margin_left = 5;
+            //grid.margin_right = 5;
             grid.margin_top = 15;
             grid.margin_bottom = 15;
             
