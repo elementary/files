@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-07-05 18:08+0000\n"
+"PO-Revision-Date: 2012-07-09 10:55+0000\n"
 "Last-Translator: Adrian Widerski <Unknown>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-07-06 05:34+0000\n"
+"X-Launchpad-Export-Date: 2012-07-10 05:55+0000\n"
 "X-Generator: Launchpad (build 15558)\n"
 "Language: pl\n"
 
@@ -1749,22 +1749,25 @@ msgstr[2] "Cofnij zmianę uprawnień dla %d elementów"
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cofnij zmianę uprawnień %d elementu"
+msgstr[1] "Cofnij zmianę uprawnień %d elementów"
+msgstr[2] "Confij zmianę uprawnień %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cofnij zmianę grupy %d elementu"
+msgstr[1] "Cofnij zmianę grupy %d elementów"
+msgstr[2] "Cofnij zmianę grupy %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Confij zmianę właściciela %d elementu"
+msgstr[1] "Confij zmianę właściciela %d elementów"
+msgstr[2] "Confij zmianę właściciela %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
