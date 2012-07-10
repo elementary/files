@@ -213,6 +213,7 @@ namespace Marlin.View
             label = new Gtk.Label(_("Mouse auto-selection:"));
             spi_click_speed.sensitive = swi_click_speed.active;
             spi_click_speed.set_draw_value (false);
+            spi_click_speed.set_inverted (true);
 
             swi_click_speed.notify["active"].connect (use_mouse_selection_toggle);
             
