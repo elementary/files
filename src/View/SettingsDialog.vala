@@ -224,9 +224,6 @@ namespace Marlin.View
                                        "active", SettingsBindFlags.DEFAULT);
             Preferences.settings.bind ("single-click-timeout-enabled", spi_click_speed,
                                        "sensitive", SettingsBindFlags.DEFAULT);
-            
-            Preferences.settings.bind ("single-click-timeout-enabled", label,
-                                       "sensitive", SettingsBindFlags.DEFAULT);
 
             var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
             hbox.set_homogeneous (false);
