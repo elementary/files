@@ -228,7 +228,8 @@ namespace Marlin.View
             Preferences.settings.bind ("single-click-timeout-enabled", label,
                                        "sensitive", SettingsBindFlags.DEFAULT);
 
-            var hbox = new Gtk.HBox(false, 0);
+            var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+            hbox.set_homogeneous (false);
             
             Gtk.Label slow = new Gtk.Label(null);
             slow.set_markup(_("<small><i>Slow</i></small>"));
