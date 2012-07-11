@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-16 15:07+0000\n"
-"Last-Translator: Benjamin Bultman <bultman.ben@gmail.com>\n"
+"PO-Revision-Date: 2012-07-10 09:38+0000\n"
+"Last-Translator: Marcus Lundgren <marcus.lundgren@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-17 04:55+0000\n"
-"X-Generator: Launchpad (build 15419)\n"
+"X-Launchpad-Export-Date: 2012-07-11 05:36+0000\n"
+"X-Generator: Launchpad (build 15593)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
@@ -361,11 +361,11 @@ msgstr "Ändra synligheten på detta fönsters menyrad"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:858
 msgid "_Places"
-msgstr ""
+msgstr "_Platser"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:859
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "Ändra synligheten på detta fönsters sidopanel"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:867
 msgid "Icon"
@@ -601,7 +601,7 @@ msgstr "_Domännamn:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
-msgstr ""
+msgstr "_Användarnamn:"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
@@ -652,11 +652,11 @@ msgstr "Det finns inget i Urklipp att klistra in"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:416
 msgid "Show the version of the program."
-msgstr ""
+msgstr "Visa versionen för programmet."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:420
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "Öppna uri(s) i en ny tab"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:422
 msgid "Quit Marlin."
