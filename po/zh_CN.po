@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-02 05:31+0000\n"
+"PO-Revision-Date: 2012-07-12 04:57+0000\n"
 "Last-Translator: Wang Dianjin <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:34+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-07-12 05:09+0000\n"
+"X-Generator: Launchpad (build 15593)\n"
 "Language: \n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
@@ -262,7 +262,7 @@ msgstr "网络(_N)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:777
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "浏览书签和局域网中的位置"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:780
 msgid "Zoom _In"
@@ -302,7 +302,7 @@ msgstr "连接到服务器(_S)..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:813
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "连接到远程计算机或共享磁盘"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:816
 msgid "_About"
@@ -346,11 +346,11 @@ msgstr "切换桌面文件的显示"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:848
 msgid "_Context Pane"
-msgstr ""
+msgstr "背景窗格(_C)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:849
 msgid "Change the visibility of the context pane"
-msgstr ""
+msgstr "改变背景窗格的可见性"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:853
 msgid "_Menubar"
@@ -358,7 +358,7 @@ msgstr "菜单栏(_M)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:854
 msgid "Change the visibility of this window's menubar"
-msgstr ""
+msgstr "更改此窗口菜单栏的可见性"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:858
 msgid "_Places"
@@ -366,7 +366,7 @@ msgstr "位置(_P)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:859
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "更改该窗口侧边栏的可见性"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:867
 msgid "Icon"
@@ -723,7 +723,7 @@ msgstr "按名称(_N)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "按名称排列图标"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
@@ -731,7 +731,7 @@ msgstr "按大小(_S)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "按大小排列图标"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
@@ -739,7 +739,7 @@ msgstr "按类型(_T)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "按类型排列图标"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
@@ -747,7 +747,7 @@ msgstr "按修改时间(_D)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "按修改时间排列图标"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -840,11 +840,11 @@ msgstr "在新窗口中打开(_W)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3455
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
+msgstr "准备将选中的文件用粘贴命令移动"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3459
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
+msgstr "准备将选中的文件用粘贴命令复制"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3463
 msgid "Move or copy files previously selected by a Cut or Copy command"
@@ -1479,7 +1479,7 @@ msgstr "删除 %d 个重复的项目"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "移动 %d 项目回到 '%s'"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
@@ -1506,7 +1506,7 @@ msgstr "将“%s”恢复到“%s”"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "移动 %d 个项目到回收站"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
@@ -1521,12 +1521,12 @@ msgstr ""
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "删除到“%s”的链接"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "恢复附加于 %s 的权限"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
