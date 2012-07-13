@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-06-25 19:38+0000\n"
-"Last-Translator: Sweetbubalekh <obatnin@yandex.ru>\n"
+"PO-Revision-Date: 2012-07-12 07:26+0000\n"
+"Last-Translator: Alexey <alextelepov@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-06-26 05:48+0000\n"
-"X-Generator: Launchpad (build 15482)\n"
+"X-Launchpad-Export-Date: 2012-07-13 05:16+0000\n"
+"X-Generator: Launchpad (build 15614)\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
 msgid "Files Preferences"
@@ -1655,196 +1655,223 @@ msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "Отменить копирование %d файла"
 msgstr[1] "Отменить копирование %d файлов"
+msgstr[2] "_Отменить копирование %d элементов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "Отменить дублирование %d файла"
-msgstr[1] "Отменить дублирование %d файлов"
+msgstr[0] "_Отменить дублирование %d файла"
+msgstr[1] "_Отменить дублирование %d файлов"
+msgstr[2] "_Отменить дублирование %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] "Отменить перемещение %d файла"
-msgstr[1] "Отменить перемещение %d файлов"
+msgstr[0] "_Отменить перемещение %d файла"
+msgstr[1] "_Отменить перемещение %d файлов"
+msgstr[2] "_Отменить перемещение %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отменить переименование %d файла"
+msgstr[1] "_Отменить переименование %d файлов"
+msgstr[2] "_Отменить переименование %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "Отменить создание пустого файла"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "Отменить создание файла из шаблона"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отменить создание %d папки"
+msgstr[1] "_Отменить создание %d папок"
+msgstr[2] "_Отменить создание %d папок"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отменить перемещение %d файла в корзину"
+msgstr[1] "_Отменить перемещение %d файлов в корзину"
+msgstr[2] "_Отменить перемещение %d файлов в корзину"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отменить восстановление %d файла"
+msgstr[1] "_Отменить восстановление %d файлов"
+msgstr[2] "_Отменить восстановление %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] "Отменить создание ссылки на %d файл"
+msgstr[0] "_Отменить создание ссылок на %d файл"
+msgstr[1] "_Отменить создание ссылок на %d файлы"
+msgstr[2] "_Отменить создание ссылок на %d файлы"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Отменить удаление %d файла"
+msgstr[1] "_Отменить удаление %d файлов"
+msgstr[2] "_Отменить удаление %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отменить рекурсивное изменение прав доступа к %d файлу"
+msgstr[1] "Отменить рекурсивное изменение прав доступа к %d файлам"
+msgstr[2] "Отменить рекурсивное изменение прав доступа к %d файлам"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отменить изменение прав доступа к %d файлу"
+msgstr[1] "Отменить изменение прав доступа к %d файлам"
+msgstr[2] "Отменить изменение прав доступа к %d файлам"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отменить изменение группы для %d файла"
+msgstr[1] "Отменить изменение группы для %d файлов"
+msgstr[2] "Отменить изменение группы для %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Отменить изменение владельца %d файла"
+msgstr[1] "Отменить изменение владельца %d файлов"
+msgstr[2] "Отменить изменение владельца %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторить копирование %d файла"
+msgstr[1] "_Повторить копирование %d файлов"
+msgstr[2] "_Повторить копирование %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторить дублирование %d файла"
+msgstr[1] "_Повторить дублирование %d файлов"
+msgstr[2] "_Повторить дублирование %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторить перемещение %d файла"
+msgstr[1] "_Повторить перемещение %d файлов"
+msgstr[2] "_Повторить перемещение %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторить переименование %d файла"
+msgstr[1] "_Повторить переименование %d файла"
+msgstr[2] "_Повторить переименование %d файла"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Повторить создание пустого файла"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_Повторить создание файла из шаблона"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторить создание %d папки"
+msgstr[1] "_Повторить создание %d папок"
+msgstr[2] "_Повторить создание %d папок"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторить перемещение %d файла в корзину"
+msgstr[1] "_Повторить перемещение %d файлов в корзину"
+msgstr[2] "_Повторить перемещение %d файлов в корзину"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторить восстановление %d файла"
+msgstr[1] "_Повторить восстановление %d файлов"
+msgstr[2] "_Повторить восстановление %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторить создание ссылок на %d файл"
+msgstr[1] "_Повторить создание ссылок на %d файл"
+msgstr[2] "_Повторить создание ссылок на %d файлы"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повторить удаление %d файла"
+msgstr[1] "_Повторить удаление %d файлов"
+msgstr[2] "_Повторить удаление %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Повторить рекурсивное изменение прав доступа к %d элементу"
+msgstr[1] "Повторить рекурсивное изменение прав доступа к %d элементам"
+msgstr[2] "Повторить рекурсивное изменение прав доступа к %d элементам"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Повторить изменение прав доступа к %d файлу"
+msgstr[1] "Повторить изменение прав доступа к %d файлам"
+msgstr[2] "Повторить изменение прав доступа к %d файлам"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Повторить изменение группы для %d файла"
+msgstr[1] "Повторить изменение группы для %d файлов"
+msgstr[2] "Повторить изменение группы для %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Повторить изменение владельца %d файла"
+msgstr[1] "Повторить изменение владельца на %d файлы"
+msgstr[2] "Повторить изменение владельца %d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:202
 msgid "S_kip All"
@@ -1943,40 +1970,40 @@ msgstr "%'d-я ссылка на %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:464
 msgid " (copy)"
-msgstr ""
+msgstr " (копия)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:466
 msgid " (another copy)"
-msgstr ""
+msgstr " (другая копия)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:469
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:471
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:473
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:483
 msgid "th copy)"
-msgstr ""
+msgstr "-я копия)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:476
 msgid "st copy)"
-msgstr ""
+msgstr "-я копия)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:478
 msgid "nd copy)"
-msgstr ""
+msgstr "-я копия)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:480
 msgid "rd copy)"
-msgstr ""
+msgstr "-я копия)"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:497
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (копия)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:499
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (другая копия)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:502
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:504
@@ -1984,22 +2011,22 @@ msgstr ""
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:520
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'d-я копия)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:514
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'d-я копия)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:516
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'d-я копия)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:518
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'d-я копия)%s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:618
 msgid " ("
@@ -2143,13 +2170,15 @@ msgstr[2] "осталось удалить в корзину %'d файлов"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1884
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "Не удается переместить файл в корзину. Удалить немедленно?"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1885
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
+"Этот файл находится на внешнем носителе и не может быть перемещен в корзину. "
+"После удаления его невозможно будет восстановить."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2065
 msgid "Trashing Files"
@@ -2548,16 +2577,16 @@ msgstr "Очистка корзины"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:241
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "Вырезать выделенный текст в буфер обмена"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:245
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Копировать выделенный текст в буфер обмена"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:249
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:253
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Вставить текст, сохраненный в буфере обмена"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:722
 #, c-format
