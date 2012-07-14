@@ -85,7 +85,7 @@ namespace Marlin.View.Chrome
             icon = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-grid-symbolic", 16));
             icon.set_tooltip_text (_("View as grid"));
             switcher.append(icon);
-            list = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-details-symbolic", 16));
+            list = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-symbolic", 16));
             list.set_tooltip_text (_("View as list"));
             switcher.append(list);
             compact = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-compact-symbolic", 16));
