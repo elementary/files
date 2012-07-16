@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-07-14 09:54+0000\n"
+"PO-Revision-Date: 2012-07-15 14:57+0000\n"
 "Last-Translator: Jakub Grzeszczuk <jakub.grzeszczuk@gmail.com>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-07-15 05:35+0000\n"
+"X-Launchpad-Export-Date: 2012-07-16 05:34+0000\n"
 "X-Generator: Launchpad (build 15614)\n"
 "Language: pl\n"
 
@@ -70,7 +70,7 @@ msgstr "Regionalny"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:133
 msgid "informal"
-msgstr "Nieformalny"
+msgstr "nieformalny"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:140
 msgid "Date format:"
@@ -92,7 +92,7 @@ msgstr "Katalog nie istnieje"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
-msgstr "Nie można odnaleźć katalogu „%s”"
+msgstr "Marlin nie może odnaleźć katalogu %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -101,7 +101,7 @@ msgstr "Utwórz"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "Tworzy katalog „%s”"
+msgstr "Utwórz katalog %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ViewContainer.vala:141
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:324
@@ -1773,29 +1773,33 @@ msgstr[2] "Confij zmianę właściciela %d elementów"
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Powtórz kopiowanie %d elementu"
+msgstr[1] "_Powtórz kopiowanie %d elementów"
+msgstr[2] "_Powtórz kopiowanie %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Powtórz duplikację %d elementu"
+msgstr[1] "_Powtórz duplikację %d elementów"
+msgstr[2] "_Powtórz duplikację %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Powtórz przeniesienie %d elementu"
+msgstr[1] "_Powtórz przeniesienie %d elementów"
+msgstr[2] "_Powtórz przeniesienie %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Powtórz zmianę nazwy %d elementu"
+msgstr[1] "_Powtórz zmianę nazwy %d elementów"
+msgstr[2] "_Powtórz zmianę nazwy %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
@@ -1809,64 +1813,73 @@ msgstr "_Powtórz utworzenie pliku z szablanu"
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Cofnij utworzenie %d folderu"
-msgstr[1] "_Cofnij utworzenie %d folderów"
+msgstr[0] "_Powtórz utworzenie %d folderu"
+msgstr[1] "_Powtórz utworzenie %d folderów"
+msgstr[2] "_Powtórz utworzenie %d folderów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Powtórz przeniesienie do kosza %d elementu"
+msgstr[1] "_Powtórz przeniesienie do kosza %d elementu"
+msgstr[2] "_Powtórz przeniesienie do kosza %d elementu"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Powtórz przywrócenie z kosza %d elementu"
+msgstr[1] "_Powtórz przywrócenie z kosza %d elementów"
+msgstr[2] "_Powtórz przywrócenie z kosza %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Powtórz utworzenie dowiązania do %d elementu"
+msgstr[1] "_Powtórz utworzenie dowiązania do %d elementów"
+msgstr[2] "_Powtórz utworzenie dowiązania do %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Powtórz usunięcie %d elementu"
+msgstr[1] "_Powtórz usunięcie %d elementów"
+msgstr[2] "_Powtórz usunięcie %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Powtórz rekurencyjną zmianę uprawnień %d elementu"
+msgstr[1] "Powtórz rekurencyjną zmianę uprawnień %d elementów"
+msgstr[2] "Powtórz rekurencyjną zmianę uprawnień %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Powtórz zmianę uprawnień %d elementu"
+msgstr[1] "Powtórz zmianę uprawnień %d elementów"
+msgstr[2] "Powtórz zmianę uprawnień %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Powtórz zmianę grupy %d elementu"
+msgstr[1] "Powtórz zmianę grupy %d elementów"
+msgstr[2] "Powtórz zmianę grupy %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Powtórz zmianę właściciela %d elementu"
+msgstr[1] "Powtórz zmianę właściciela %d elementów"
+msgstr[2] "Powtórz zmianę właściciela %d elementów"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:202
 msgid "S_kip All"
