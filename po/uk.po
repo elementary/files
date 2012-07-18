@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-05-30 00:35-0700\n"
-"PO-Revision-Date: 2012-07-15 09:43+0000\n"
-"Last-Translator: Max_ym <kontact.cat@gmail.com>\n"
+"PO-Revision-Date: 2012-07-17 12:06+0000\n"
+"Last-Translator: Sergey Koptev <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-07-16 05:34+0000\n"
-"X-Generator: Launchpad (build 15614)\n"
+"X-Launchpad-Export-Date: 2012-07-18 05:52+0000\n"
+"X-Generator: Launchpad (build 15637)\n"
 "Language: uk\n"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
@@ -339,11 +339,11 @@ msgstr "Перемикнути показ прихованих файлів у �
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:843
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "Показати _Файли Робочого столу"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:844
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "Включення відображення файлів Робочого столу"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:848
 msgid "_Context Pane"
@@ -455,7 +455,7 @@ msgstr "Тип MIME"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:369
 msgid "MimeTypes"
-msgstr ""
+msgstr "Типи MIME"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:373
 msgid "Location"
@@ -702,7 +702,7 @@ msgstr "Не вдалося перейменувати %s в %s"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Список у вигляді іконок"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:87
 msgid "Icon view"
@@ -750,7 +750,7 @@ msgstr "за датою _зміни"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "Лишити піктограми впорядкованими за датою зміни в рядках"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:779
 msgid "_Move Here"
@@ -788,11 +788,11 @@ msgstr "Способи вводу"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr ""
+msgstr "Компактний список директорії"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr ""
+msgstr "Компактний вигляд"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1150
 msgid "Invalid filename provided by XDS drag site"
@@ -807,8 +807,9 @@ msgstr "Не вдалося створити посилання на URL \"%s\""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Використати \"%s\" для відкривання вибраного елементу"
+msgstr[1] "Використати \"%s\" для відкривання вибраних елементів"
+msgstr[2] "Використати \"%s\" для відкривання вибраних елементів"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1940
 #, c-format
@@ -845,112 +846,118 @@ msgstr "Відкрити у новому _вікні"
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3455
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
+"Підготувати виділені файли до переносу за допомогою команди \"Вставити\""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3459
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
+"Підготувати виділені файли до копіювання за допомогою команди \"Вставити\""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3463
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
+"Перемістити чи скопіювати файли попередньо виділені командою \"Вирізати\" чи "
+"\"Копіювати\""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3466
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "Вставити в папку"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3467
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Перемістити чи скопіювати файли попередньо виділені командою \"Вирізати\" чи "
+"\"Копіювати\" у вибрану папку"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3470
 msgid "_Rename..."
-msgstr ""
+msgstr "_Перейменувати..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3471
 msgid "Rename selected item"
-msgstr ""
+msgstr "Перейменувати вибраний елемент"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3474
 msgid "Create New _Folder"
-msgstr ""
+msgstr "Створити Нову _Папку"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3475
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "Створити нову порожню папку всередині цієї папки"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3477
 msgid "Create New _File"
-msgstr ""
+msgstr "Створити Новий _Файл"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3479
 msgid "_Empty Document"
-msgstr ""
+msgstr "_Порожній документ"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3480
 msgid "Create a new empty document inside this folder"
-msgstr ""
+msgstr "Створити порожній документ всередині цієї папки"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3484
 msgid "Open the selected item"
-msgstr ""
+msgstr "Відкрити вибраний елемент"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3491
 msgid "Open in new Window"
-msgstr ""
+msgstr "Відкрити у новому вікні"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3492
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "Відкрити кожний вибраний елемент у новому вікні"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3496
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "Відкрити кожний вибраний елемент у новій вкладці"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3498
 msgid "Open Wit_h"
-msgstr ""
+msgstr "Відкрити у_"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3499
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "Виберіть програму, якою слід відкривати виділений елемент"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3501
 msgid "Other _Application..."
-msgstr ""
+msgstr "Інша _Програма..."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3502
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "Віберіть іншу програму, якою слід відкривати виділений елемент"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3505
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "Пере_містити у смітник"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3506
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "Перемістити всі вибрані елементи у смітник"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3509
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "_Видалити Назавжди"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3510
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "Видалити всі вибрані елементи без переносу в смітник"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3513
 msgid "_Restore"
-msgstr ""
+msgstr "_Відновити"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3521
 msgid "_Properties"
-msgstr ""
+msgstr "_Властивості"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3522
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "Переглянути чи змінити властивості кожного вибраного елементу"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3629
 msgid "Set Color:"
@@ -978,11 +985,11 @@ msgstr "Відображувані елементи"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "Режим перегляду"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "Режим перегляду"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:167
 msgid "Single Click"
@@ -1006,7 +1013,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "Ім'я файлу"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
@@ -1153,125 +1160,125 @@ msgstr "Розмір піктограми"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:5
 msgid "Browse your files"
-msgstr ""
+msgstr "Переглянути Ваші файли"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:6
 msgid "File Manager"
-msgstr ""
+msgstr "Файловий менеджер"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:237
 msgid "Today at 00:00:00 PM"
-msgstr ""
+msgstr "Сьогодні о 00:00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:238
 msgid "Today at %-I:%M:%S %p"
-msgstr ""
+msgstr "Сьогодні о %-I:%M:%S %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:240
 msgid "Today at 00:00 PM"
-msgstr ""
+msgstr "Сьогодні о 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:241
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Сьогодні о %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:243
 msgid "Today, 00:00 PM"
-msgstr ""
+msgstr "Сьогодні, 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:244
 msgid "Today, %-I:%M %p"
-msgstr ""
+msgstr "Сьогодні, %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:246
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:247
 msgid "Today"
-msgstr ""
+msgstr "Сьогодні"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:256
 msgid "Yesterday at 00:00:00 PM"
-msgstr ""
+msgstr "Вчора о 00:00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:257
 msgid "Yesterday at %-I:%M:%S %p"
-msgstr ""
+msgstr "Вчора о %-I:%M:%S %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:259
 msgid "Yesterday at 00:00 PM"
-msgstr ""
+msgstr "Вчора о 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:260
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Вчора о %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:262
 msgid "Yesterday, 00:00 PM"
-msgstr ""
+msgstr "Вчора, 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:263
 msgid "Yesterday, %-I:%M %p"
-msgstr ""
+msgstr "Вчора, %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:265
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:266
 msgid "Yesterday"
-msgstr ""
+msgstr "Вчора"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:277
 msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr ""
+msgstr "Середа, Вересень 00 0000 о 00:00:00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:278
 msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-msgstr ""
+msgstr "%A, %B %-d %Y at %-I:%M:%S %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:280
 msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr ""
+msgstr "Пн, Жов 00 0000 о 00:00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:281
 msgid "%a, %b %-d %Y at %-I:%M:%S %p"
-msgstr ""
+msgstr "%a, %b %-d %Y at %-I:%M:%S %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:283
 msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr ""
+msgstr "Пн, Жов 00 0000 о 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:284
 msgid "%a, %b %-d %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a, %b %-d %Y at %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:286
 msgid "Oct 00 0000 at 00:00 PM"
-msgstr ""
+msgstr "Жов 00 0000 о 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:287
 msgid "%b %-d %Y at %-I:%M %p"
-msgstr ""
+msgstr "%b %-d %Y at %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:289
 msgid "Oct 00 0000, 00:00 PM"
-msgstr ""
+msgstr "Жов 00 0000, 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:290
 msgid "%b %-d %Y, %-I:%M %p"
-msgstr ""
+msgstr "%b %-d %Y, %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:292
 msgid "00/00/00, 00:00 PM"
-msgstr ""
+msgstr "00/00/00, 00:00 PM"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:293
 msgid "%m/%-d/%y, %-I:%M %p"
-msgstr ""
+msgstr "%m/%-d/%y, %-I:%M %p"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:295
 msgid "00/00/00"
-msgstr ""
+msgstr "00/00/00"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:296
 msgid "%m/%d/%y"
-msgstr ""
+msgstr "%m/%d/%y"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
@@ -1301,7 +1308,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:2052
 msgid "Slashes are not allowed in filenames"
-msgstr ""
+msgstr "У назвах файлів не можна використовувати косу риску"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:2072
 msgid "Toplevel files cannot be renamed"
@@ -1310,11 +1317,11 @@ msgstr "Файли верхнього рівня не можна перейме�
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:266
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "Не вдається визначити початкове розташування \"%s\" "
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:269
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "Елемент неможливо відновити зі смітника"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-progress-info.c:192
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-progress-info.c:210
@@ -1355,7 +1362,7 @@ msgstr "Інша тека з такою ж назвою вже існує в «%
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "При заміні усі файли всередині папки будуть видалені."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:170
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:384
@@ -1384,31 +1391,31 @@ msgstr "При заміні вміст буде перезаписано."
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Старіший файл з такою ж назвою вже існує в «%s»."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Новіший файл з такою ж назвою вже існує в «%s»."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "Інший файл з такою ж назвою вже існує в «%s»."
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:460
 msgid "Original file"
-msgstr ""
+msgstr "Початковий файл"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:285
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:461
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:482
 msgid "Size:"
-msgstr ""
+msgstr "Розмір"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:257
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:288
@@ -1436,15 +1443,15 @@ msgstr "Об’єднати"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "_Оберіть нову назву для призначення"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
-msgstr ""
+msgstr "Відновити"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Застосувати цю дію для всіх файлів"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:737
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:201
@@ -1457,7 +1464,7 @@ msgstr ""
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
-msgstr ""
+msgstr "Замінити"
 
 #: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
