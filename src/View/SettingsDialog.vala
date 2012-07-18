@@ -171,6 +171,7 @@ namespace Marlin.View
             if (swi_click_speed.active)
             {
                 int value = Preferences.settings.get_int ("single-click-timeout-old");
+                value = value > 0 ? value : 1;
                 Preferences.settings.set_int ("single-click-timeout", value);
             // Deactivate auto-selection
             }else{
