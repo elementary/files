@@ -152,12 +152,12 @@ namespace Marlin.View {
             var make_default = new Gtk.Button.with_label (_("Set as default"));
             make_default.clicked.connect (() => {
                 make_marlin_default_fm (true);
-                info_bar.hide ();
+                show_infobar (false);
             });
             var ignore = new Gtk.Button.with_label (_("Ignore"));
             ignore.clicked.connect (() => {
                 make_marlin_default_fm (false);
-                info_bar.hide ();
+                show_infobar (false);
             });
             
             var bbox = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
@@ -168,15 +168,11 @@ namespace Marlin.View {
             ((Box)info_bar.get_content_area ()).add (label);
             ((Box)info_bar.get_content_area ()).add (expander);
             ((Box)info_bar.get_content_area ()).add (bbox);
-
             
-            if (is_marlin_mydefault_fm ())
-                info_bar.hide ();
-            else
-                info_bar.show_all ();
+            show_infobar (is_marlin_mydefault_fm ());
             
             GLib.Timeout.add (3500, () => { 
-                info_bar.hide ();
+                show_infobar (false);
                 return false;
             });
             
@@ -320,6 +316,14 @@ namespace Marlin.View {
         private void unload_css_style () {
             if (css_provider != null)
                 StyleContext.remove_provider_for_screen (screen, css_provider);
+        }
+
+        private void show_infobar (bool val) {
+            info_bar.no_show_all = !val;
+            if (val)
+                info_bar.show_all ();
+            else
+                info_bar.hide ();
         }
 
         [Signal (action=true)]
