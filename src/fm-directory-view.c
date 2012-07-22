@@ -1996,7 +1996,7 @@ update_menus_selection (FMDirectoryView *view)
     /* we need to remove the default app from open with menu */
     if (view->details->default_app != NULL && !gof_file_is_executable (file)) 
         view->details->open_with_apps = filter_default_app (view->details->open_with_apps, view->details->default_app);
-    for (l = view->details->open_with_apps, index=0; l != NULL && index <4; l=l->next, index++) {
+    for (l = view->details->open_with_apps, index=0; l != NULL && index <10; l=l->next, index++) {
         add_application_to_open_with_menu (view, 
                                            l->data, 
                                            selection,
