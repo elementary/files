@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-05-30 00:35-0700\n"
+"POT-Creation-Date: 2012-07-22 21:31-0500\n"
 "PO-Revision-Date: 2012-06-12 02:36+0000\n"
 "Last-Translator: Naoki Kephart <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -15,520 +15,847 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:33+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
+"X-Generator: Launchpad (build 15654)\n"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "ホーム"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:143
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "ファイルシステム"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "プロパティ"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:117
+msgid "Info"
+msgstr "情報"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:125
+msgid "Permissions"
+msgstr "アクセス権"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:137
+msgid "Preview"
+msgstr "プレビュー"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:338
+msgid "Created"
+msgstr "作成日時"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:340
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:345
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Modified"
+msgstr "変更日時"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:343
+msgid "Last Access"
+msgstr "アクセス日時"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:349
+msgid "Deleted"
+msgstr "削除日時"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:354
+msgid "MimeType"
+msgstr "MIMEタイプ"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:362
+msgid "MimeTypes"
+msgstr "MIMEタイプ"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
+msgid "Location"
+msgstr "場所"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:368
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
+msgid "Target"
+msgstr "リンク先"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:374
+msgid "Origin Location"
+msgstr "リンク元"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:412
+msgid "Other application..."
+msgstr "他のアプリケーション..."
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:436
+msgid "Open with"
+msgstr "他のアプリケーションで開く"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:452
+msgid "Device usage"
+msgstr "デバイスの使用状況"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
+msgid "Read"
+msgstr "読み込み"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:602
+msgid "Write"
+msgstr "書き込み"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:607
+msgid "Execute"
+msgstr "実行"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:825
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:838
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:346
+msgid "Owner"
+msgstr "所有者"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:830
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:842
+msgid "Group"
+msgstr "グループ"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:846
+msgid "Everyone"
+msgstr "その他"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:1126
+msgid "Select an aplication to open "
+msgstr "開くためのアプリケーションを選択 "
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
 msgstr "設定"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:54
-msgid "Single click to open:"
-msgstr "シングルクリックで開く:"
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
+msgid "General"
+msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:64
-msgid "Mouse auto-selection speed:"
-msgstr "自動選択までの時間:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:80
-msgid "Default File Manager:"
-msgstr "デフォルトのファイルマネージャに設定:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:89
-msgid "Behavior"
-msgstr "動作"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:96
-msgid "small"
-msgstr "小"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:97
-msgid "medium"
-msgstr "中"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:98
-msgid "large"
-msgstr "大"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:99
-msgid "extra-large"
-msgstr "特大"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:120
-msgid "Sidebar icon size:"
-msgstr "サイドバーのアイコンサイズ:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:131
-msgid "iso"
-msgstr "ISO"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:132
-msgid "locale"
-msgstr "ロケール"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:133
-msgid "informal"
-msgstr "略式"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:140
-msgid "Date format:"
-msgstr "日付の書式:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:148
-msgid "Appearance"
-msgstr "表示"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:197
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
 msgstr "拡張機能"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:72
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:207
+msgid "Single click to open:"
+msgstr "シングルクリックで開く:"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
+msgid "Mouse auto-selection:"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
+msgid "<small><i>Slow</i></small>"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:235
+msgid "<small><i>Fast</i></small>"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:250
+msgid "Date format:"
+msgstr "日付の書式:"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:253
+msgid "iso"
+msgstr "ISO"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:254
+msgid "locale"
+msgstr "ロケール"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:255
+msgid "informal"
+msgstr "略式"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
+msgid "Name"
+msgstr "名前"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "形式"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:343
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "サイズ"
+
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "フォルダが存在しません"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:75
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
 msgstr "%s のフォルダが見つかりません"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "作成"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "%s のフォルダを作成する"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ViewContainer.vala:141
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:324
-msgid "Home"
-msgstr "ホーム"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ViewContainer.vala:143
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:394
-msgid "File System"
-msgstr "ファイルシステム"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:137
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3406
-msgid "Set as default"
-msgstr "デフォルトに設定"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:142
-msgid "Ignore"
-msgstr "無視"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:454
-msgid "Undo"
-msgstr "元に戻す"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:455
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:749
-msgid "Undo the last action"
-msgstr "最後のアクションを元に戻す"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:464
-msgid "Redo"
-msgstr "やり直す"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:465
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:752
-msgid "Redo the last action"
-msgstr "最後のアクションをやり直す"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:720
-msgid "_File"
-msgstr "ファイル (_F)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:721
-msgid "_Edit"
-msgstr "編集 (_E)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:722
-msgid "_View"
-msgstr "ビュー (_V)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:723
-msgid "_Go"
-msgstr "移動 (_G)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:724
-msgid "_Help"
-msgstr "ヘルプ (_H)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:726
-msgid "New _Window"
-msgstr "新規ウィンドウ (_W)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:727
-msgid "Open another Marlin window for the displayed location"
-msgstr "表示されている場所を新しいウィンドウで開く"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:730
-msgid "New _Tab"
-msgstr "新規タブ (_T)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:731
-msgid "Open another tab for the displayed location"
-msgstr "表示されているタブを新しいタブで開く"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:734
-msgid "_Close"
-msgstr "閉じる (_C)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:735
-msgid "Close this folder"
-msgstr "このフォルダを閉じる"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:738
-msgid "Customize _Toolbar..."
-msgstr "ツールバーのカスタマイズ... (_T)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:739
-msgid "Easily edit the toolbar layout"
-msgstr "ツールバーのレイアウトを変更"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:742
-msgid "Preferences"
-msgstr "設定"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:743
-msgid "Change Marlin's preferences"
-msgstr "設定を変更"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:748
-msgid "_Undo"
-msgstr "元に戻す (_U)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:751
-msgid "_Redo"
-msgstr "やり直す (_R)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:754
-msgid "Open _Parent"
-msgstr "親フォルダを開く (_P)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:755
-msgid "Open the parent folder"
-msgstr "現在のフォルダの親フォルダを開く"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:757
-msgid "_Back"
-msgstr "戻る (_B)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:758
-msgid "Go to the previous visited location"
-msgstr "前に表示していた場所へ移動"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:761
-msgid "_Forward"
-msgstr "進む (_F)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:762
-msgid "Go to the next visited location"
-msgstr "次に表示していた場所へ移動"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:764
-msgid "_Reload"
-msgstr "再読み込み (_R)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:765
-msgid "Reload the current location"
-msgstr "この場所を再度読み込む"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:768
-msgid "_Home Folder"
-msgstr "ホームフォルダ (_H)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:769
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:329
-msgid "Open your personal folder"
-msgstr "ユーザのホームフォルダを開く"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:772
-msgid "_Trash"
-msgstr "ゴミ箱 (_T)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:773
-msgid "Open your personal trash folder"
-msgstr "ユーザのゴミ箱を開く"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:776
-msgid "_Network"
-msgstr "ネットワーク (_N)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:777
-msgid "Browse bookmarked and local network locations"
-msgstr "ローカルやブックマークされたネットワーク上の場所を参照"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:780
-msgid "Zoom _In"
-msgstr "拡大 (_I)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:781
-msgid "Increase the view size"
-msgstr "ビューの表示を拡大"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:792
-msgid "Zoom _Out"
-msgstr "縮小 (_O)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:793
-msgid "Decrease the view size"
-msgstr "ビューの表示を縮小"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:800
-msgid "Normal Si_ze"
-msgstr "通常のサイズ (_Z)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:801
-msgid "Use the normal view size"
-msgstr "通常の表示サイズに戻す"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:804
-msgid "Next Tab"
-msgstr "次のタブ"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:808
-msgid "Previous Tab"
-msgstr "前のタブ"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:812
-msgid "Connect to _Server..."
-msgstr "サーバに接続... (_S)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:813
-msgid "Connect to a remote computer or shared disk"
-msgstr "リモートのコンピュータや共有ディスクに接続"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:816
-msgid "_About"
-msgstr "このアプリケーションについて (_A)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:817
-msgid "Display credits"
-msgstr "クレジットを表示"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:820
-msgid "Report a Problem..."
-msgstr "問題の報告..."
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:821
-msgid "File a bug on Launchpad"
-msgstr "Launchpad でバグを報告"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:824
-msgid "Get Help Online..."
-msgstr "オンラインヘルプ..."
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:828
-msgid "Translate This Application..."
-msgstr "このアプリケーションを翻訳..."
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:837
-msgid "Show _Hidden Files"
-msgstr "隠しファイルを表示 (_H)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:838
-msgid "Toggle the display of hidden files in the current window"
-msgstr "ウィンドウ内で隠しファイルの表示を切り替える"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:843
-msgid "Show _Desktop Files"
-msgstr "デスクトップ・ファイルを表示 (_D)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:844
-msgid "Toggle the display of desktop files"
-msgstr "デスクトップ・ファイルの表示を切り替える"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:848
-msgid "_Context Pane"
-msgstr "情報パネル (_C)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:849
-msgid "Change the visibility of the context pane"
-msgstr "情報パネルの表示を切り替える"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:853
-msgid "_Menubar"
-msgstr "メニュー・バー"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:854
-msgid "Change the visibility of this window's menubar"
-msgstr "ウィンドウでのメニュー・バーの表示を切り替える"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:858
-msgid "_Places"
-msgstr "場所 (_P)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:859
-msgid "Change the visibility of this window's side pane"
-msgstr "ウィンドウでのサイドパネルの表示を切り替える"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:867
-msgid "Icon"
-msgstr "アイコン"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:870
-msgid "List"
-msgstr "リスト"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:873
-msgid "Compact"
-msgstr "コンパクト"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:876
-msgid "Columns"
-msgstr "カラム"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/LocationBar.vala:100
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:588
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:110
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:370
+msgid "Trash"
+msgstr "ゴミ箱"
+
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:111
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:588
 msgid "Network"
 msgstr "ネットワーク"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:317
-msgid "Name"
-msgstr "名前"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:152
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3382
+msgid "Set as default"
+msgstr "デフォルトに設定"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:318
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "形式"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:157
+msgid "Ignore"
+msgstr "無視"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:321
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:375
-msgid "Target"
-msgstr "リンク先"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:497
+msgid "Undo"
+msgstr "元に戻す"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:323
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "サイズ"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:498
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:792
+msgid "Undo the last action"
+msgstr "最後のアクションを元に戻す"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:325
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:347
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "変更日時"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:507
+msgid "Redo"
+msgstr "やり直す"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:326
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:832
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:845
-msgid "Owner"
-msgstr "所有者"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:508
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:795
+msgid "Redo the last action"
+msgstr "最後のアクションをやり直す"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "プロパティ"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:763
+msgid "_File"
+msgstr "ファイル (_F)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:118
-msgid "Info"
-msgstr "情報"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:764
+msgid "_Edit"
+msgstr "編集 (_E)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:126
-msgid "Permissions"
-msgstr "アクセス権"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:765
+msgid "_View"
+msgstr "ビュー (_V)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:138
-msgid "Preview"
-msgstr "プレビュー"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:766
+msgid "_Go"
+msgstr "移動 (_G)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:345
-msgid "Created"
-msgstr "作成日時"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:767
+msgid "_Help"
+msgstr "ヘルプ (_H)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:350
-msgid "Last Access"
-msgstr "アクセス日時"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:769
+msgid "New _Window"
+msgstr "新規ウィンドウ (_W)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:356
-msgid "Deleted"
-msgstr "削除日時"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:770
+msgid "Open another Marlin window for the displayed location"
+msgstr "表示されている場所を新しいウィンドウで開く"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:361
-msgid "MimeType"
-msgstr "MIMEタイプ"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:773
+msgid "New _Tab"
+msgstr "新規タブ (_T)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:369
-msgid "MimeTypes"
-msgstr "MIMEタイプ"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:774
+msgid "Open another tab for the displayed location"
+msgstr "表示されているタブを新しいタブで開く"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:373
-msgid "Location"
-msgstr "場所"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:777
+msgid "_Close"
+msgstr "閉じる (_C)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:381
-msgid "Origin Location"
-msgstr "リンク元"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:778
+msgid "Close this folder"
+msgstr "このフォルダを閉じる"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:419
-msgid "Other application..."
-msgstr "他のアプリケーション..."
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:781
+msgid "Customize _Toolbar..."
+msgstr "ツールバーのカスタマイズ... (_T)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:443
-msgid "Open with"
-msgstr "他のアプリケーションで開く"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:782
+msgid "Easily edit the toolbar layout"
+msgstr "ツールバーのレイアウトを変更"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:459
-msgid "Device usage"
-msgstr "デバイスの使用状況"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:785
+msgid "Preferences"
+msgstr "設定"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:604
-msgid "Read"
-msgstr "読み込み"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:786
+msgid "Change Marlin's preferences"
+msgstr "設定を変更"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:609
-msgid "Write"
-msgstr "書き込み"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:791
+msgid "_Undo"
+msgstr "元に戻す (_U)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:614
-msgid "Execute"
-msgstr "実行"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:794
+msgid "_Redo"
+msgstr "やり直す (_R)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:837
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:849
-msgid "Group"
-msgstr "グループ"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:797
+msgid "Open _Parent"
+msgstr "親フォルダを開く (_P)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:853
-msgid "Everyone"
-msgstr "その他"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:798
+msgid "Open the parent folder"
+msgstr "現在のフォルダの親フォルダを開く"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:1109
-msgid "Select an aplication to open "
-msgstr "開くためのアプリケーションを選択 "
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:800
+msgid "_Back"
+msgstr "戻る (_B)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:124
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:801
+msgid "Go to the previous visited location"
+msgstr "前に表示していた場所へ移動"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:804
+msgid "_Forward"
+msgstr "進む (_F)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:805
+msgid "Go to the next visited location"
+msgstr "次に表示していた場所へ移動"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:807
+msgid "_Reload"
+msgstr "再読み込み (_R)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:808
+msgid "Reload the current location"
+msgstr "この場所を再度読み込む"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:811
+msgid "_Home Folder"
+msgstr "ホームフォルダ (_H)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:812
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "ユーザのホームフォルダを開く"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:815
+msgid "_Trash"
+msgstr "ゴミ箱 (_T)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:816
+msgid "Open your personal trash folder"
+msgstr "ユーザのゴミ箱を開く"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:819
+msgid "_Network"
+msgstr "ネットワーク (_N)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:820
+msgid "Browse bookmarked and local network locations"
+msgstr "ローカルやブックマークされたネットワーク上の場所を参照"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:823
+msgid "Zoom _In"
+msgstr "拡大 (_I)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:824
+msgid "Increase the view size"
+msgstr "ビューの表示を拡大"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:835
+msgid "Zoom _Out"
+msgstr "縮小 (_O)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:836
+msgid "Decrease the view size"
+msgstr "ビューの表示を縮小"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:843
+msgid "Normal Si_ze"
+msgstr "通常のサイズ (_Z)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:844
+msgid "Use the normal view size"
+msgstr "通常の表示サイズに戻す"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:847
+msgid "Next Tab"
+msgstr "次のタブ"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:851
+msgid "Previous Tab"
+msgstr "前のタブ"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:855
+msgid "Connect to _Server..."
+msgstr "サーバに接続... (_S)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:856
+msgid "Connect to a remote computer or shared disk"
+msgstr "リモートのコンピュータや共有ディスクに接続"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:859
+msgid "_About"
+msgstr "このアプリケーションについて (_A)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:860
+msgid "Display credits"
+msgstr "クレジットを表示"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:863
+msgid "Report a Problem..."
+msgstr "問題の報告..."
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:864
+msgid "File a bug on Launchpad"
+msgstr "Launchpad でバグを報告"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:867
+msgid "Get Help Online..."
+msgstr "オンラインヘルプ..."
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:871
+msgid "Translate This Application..."
+msgstr "このアプリケーションを翻訳..."
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:880
+msgid "Show _Hidden Files"
+msgstr "隠しファイルを表示 (_H)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:881
+msgid "Toggle the display of hidden files in the current window"
+msgstr "ウィンドウ内で隠しファイルの表示を切り替える"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:886
+msgid "Show _Desktop Files"
+msgstr "デスクトップ・ファイルを表示 (_D)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:887
+msgid "Toggle the display of desktop files"
+msgstr "デスクトップ・ファイルの表示を切り替える"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:891
+msgid "_Context Pane"
+msgstr "情報パネル (_C)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:892
+msgid "Change the visibility of the context pane"
+msgstr "情報パネルの表示を切り替える"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:896
+msgid "_Menubar"
+msgstr "メニュー・バー"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:897
+msgid "Change the visibility of this window's menubar"
+msgstr "ウィンドウでのメニュー・バーの表示を切り替える"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:901
+msgid "_Places"
+msgstr "場所 (_P)"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:902
+msgid "Change the visibility of this window's side pane"
+msgstr "ウィンドウでのサイドパネルの表示を切り替える"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:910
+msgid "Icon"
+msgstr "アイコン"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:913
+msgid "List"
+msgstr "リスト"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:916
+msgid "Compact"
+msgstr "コンパクト"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:919
+msgid "Columns"
+msgstr "カラム"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "ディレクトリをアイコンで表示"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "アイコン表示"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1151
+msgid "Invalid filename provided by XDS drag site"
+msgstr "XDS で不正なファイル名をドラッグしています"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1309
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "URL \"%s\" のリンク作成に失敗しました"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1794
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "選択したアイテムを \"%s\" で開く"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1941
+#, c-format
+msgid "_Open With %s"
+msgstr "%sで開く (_O)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1947
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3459
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2399
+msgid "_Open"
+msgstr "開く ( _O )"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1963
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "%'d個の新しいタブで開く (_T)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1967
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3471
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2407
+msgid "Open in New _Tab"
+msgstr "新しいタブで開く (_T)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1972
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "%'d個の新しいウィンドウで開く (_T)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1976
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2414
+msgid "Open in New _Window"
+msgstr "新しいウィンドウで開く (_W)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3431
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr "選択されたファイルを「貼り付け」コマンドで移動する準備"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3435
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr "選択されたファイルを「貼り付け」コマンドでコピーする準備"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3439
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr "「切り取り」 または 「コピー」 のコマンドで選択されていたファイルを移動、もしくはコピー"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3442
+msgid "Paste Into Folder"
+msgstr "フォルダ内に貼り付け"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3443
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr "「切り取り」または「コピー」のコマンドで選択されていたファイルをフォルダ内に移動、もしくはコピー"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3446
+msgid "_Rename..."
+msgstr "名前の変更... (_R)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3447
+msgid "Rename selected item"
+msgstr "選択されたアイテムの名前を変更"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3450
+msgid "Create New _Folder"
+msgstr "新しいフォルダを作成 (_F)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3451
+msgid "Create a new empty folder inside this folder"
+msgstr "フォルダ内に空のフォルダを新たに作成"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3453
+msgid "Create New _File"
+msgstr "新しいファイルを作成 (_F)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3455
+msgid "_Empty Document"
+msgstr "空のドキュメント (_E)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3456
+msgid "Create a new empty document inside this folder"
+msgstr "フォルダ内に空のドキュメントを新たに作成"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3460
+msgid "Open the selected item"
+msgstr "選択したアイテムを開く"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3467
+msgid "Open in new Window"
+msgstr "新しいウィンドウで開く"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3468
+msgid "Open each selected item in a new window"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3472
+msgid "Open each selected item in a new tab"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3474
+msgid "Open Wit_h"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3475
+msgid "Choose a program with which to open the selected item"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3477
+msgid "Other _Application..."
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3478
+msgid "Choose another application with which to open the selected item"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3481
+msgid "Mo_ve to Trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3482
+msgid "Move each selected item to the Trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3485
+msgid "_Delete Permanently"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3486
+msgid "Delete each selected item, without moving to the Trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3489
+msgid "_Restore"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3493
+#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3190
+msgid "Select All"
+msgstr "すべて選択"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3497
+msgid "_Properties"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3498
+msgid "View or modify the properties of each selected item"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3605
+msgid "Set Color:"
+msgstr "色を設定:"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:199
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:139
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:186
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "%s の名前を %s に変更できませんでした"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:616
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:572
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:82
+msgid "This folder is empty."
+msgstr "このフォルダは空です。"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "クリップボード上に貼り付けるものがありません"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
+msgid "File Operations"
+msgstr "ファイル操作"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
+msgid "Show Details"
+msgstr "詳細を表示"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d 個のファイル操作を実行中"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
+msgid "Show Copy Dialog"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
+msgid "Cancel All In-progress Actions"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
+msgid "All file operations have been successfully completed"
+msgstr "すべてのファイル操作が正常に完了しました"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "アイテムの並べ替え (_G)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "順番を逆転 (_V)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "アイコンの表示順を逆転"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "名前順 (_N)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "アイコンを名前順に並べ替え"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "サイズ順 (_S)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "アイコンをサイズ順に並べ替え"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "種類順 (_T)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "アイコンを種類順に並べ替え"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "更新日時順 (_D)"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "アイコンを更新日時順に並べ替え"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr "ディレクトリをコンパクトに表示"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr "コンパクト表示"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:445
+msgid "Customize Toolbar"
+msgstr "ツールバーのカスタマイズ"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:464
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
+msgstr "ツールバーに表示する項目を選びます。ドラッグすることで順番を変えることができます。"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:478
+msgid "Available Items"
+msgstr "表示できる項目"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:497
+msgid "Displayed Items"
+msgstr "表示されている項目"
+
+#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "入力メソッド"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "シングルクリック"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "表示されているアイテムをシングルクリックで選択"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "シングルクリックのタイムアウト"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr "シングルクリックモードの時に、カーソルの下にあるアイテムが自動的に選択状態になるまでの時間"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "ここへ移動 (_M)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "ここへコピー (_C)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "リンクを作成 (_L)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "背景に設定 (_B)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "ファイル \"%s\" の実行に失敗しました"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:127
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
 msgstr "パブリック FTP"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:129
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
 msgstr "FTP (認証付き)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:132
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
 msgstr "Windows 共有"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:134
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:136
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
 msgstr "セキュア WebDAV (HTTPS)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:183
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
 msgstr "接続中..."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:207
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -536,140 +863,114 @@ msgstr ""
 "サポートされているサーバ形式のリストをロード出来ません。\n"
 "gvfs が正しくインストールされているか確認して下さい。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:285
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "フォルダ \"%s\" を \"%s\" 上で開けません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:295
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "\"%s\" のサーバーが見つかりません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:330
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
 msgstr "再試行"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:395
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
 msgstr "ユーザ情報が正しいか確認してください。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:425
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
 msgstr "続行"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:750
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1140
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
 msgstr "接続 (_C)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:875
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
 msgstr "サーバに接続"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:893
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
 msgstr "サーバ情報"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:917
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
 msgstr "サーバ名 (_S):"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:937
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
 msgstr "ポート番号 (_P):"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:955
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
 msgstr "方式 (_T):"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1024
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
 msgstr "共有する場所 (_A):"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1039
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
 msgstr "フォルダ (_F):"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1057
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
 msgstr "ユーザの詳細"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1080
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
 msgstr "ドメイン名 (_D):"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1095
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
 msgstr "ユーザ名 (_U):"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1110
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
 msgstr "パスワード (_W):"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1126
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
 msgstr "パスワードを記憶する (_R)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1229
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
 msgstr "操作がキャンセルされました"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:113
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:163
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:471
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:527
-msgid "File Operations"
-msgstr "ファイル操作"
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "レイアウトモード"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:122
-msgid "Show Details"
-msgstr "詳細を表示"
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "レイアウトのモード"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:157
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:179
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d 個のファイル操作を実行中"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:280
-msgid "Show copy dialog"
-msgstr "コピーダイアログを表示"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:291
-msgid "Cancel all in-progress actions"
-msgstr "進行中の処理をすべてキャンセル"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:528
-msgid "All file operations have been successfully completed"
-msgstr "すべてのファイル操作が正常に完了しました"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "クリップボード上に貼り付けるものがありません"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:416
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:420
 msgid "Show the version of the program."
 msgstr "バージョンを表示"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:420
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:424
 msgid "Open uri(s) in new tab"
 msgstr "URLを新しいタブで開く"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:422
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:426
 msgid "Quit Marlin."
 msgstr "アプリケーションを終了する。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:424
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
 msgstr "デバック・ログを有効化"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:425
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:429
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:434
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:438
 msgid ""
 "\n"
 "\n"
@@ -679,1318 +980,444 @@ msgstr ""
 "\n"
 "ファイルマネージャーでファイルシステムを閲覧します"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:454
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:458
 msgid "--quit cannot be used with URIs."
 msgstr "--quit オプションには URI を指定できません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-columns-view.c:82
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:572
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:616
-msgid "This folder is empty."
-msgstr "このフォルダは空です。"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-columns-view.c:186
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:139
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:199
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "%s の名前を %s に変更できませんでした"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "ディレクトリをアイコンで表示"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "アイコン表示"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "アイテムの並べ替え (_G)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "順番を逆転 (_V)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "アイコンの表示順を逆転"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "名前順 (_N)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "アイコンを名前順に並べ替え"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "サイズ順 (_S)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "アイコンをサイズ順に並べ替え"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "種類順 (_T)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "アイコンを種類順に並べ替え"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "更新日時順 (_D)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "アイコンを更新日時順に並べ替え"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:779
-msgid "_Move Here"
-msgstr "ここへ移動 (_M)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:784
-msgid "_Copy Here"
-msgstr "ここへコピー (_C)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:789
-msgid "_Link Here"
-msgstr "リンクを作成 (_L)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:794
-msgid "Set as _Background"
-msgstr "背景に設定 (_B)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:801
-msgid "Cancel"
-msgstr "キャンセル"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:893
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "ファイル \"%s\" の実行に失敗しました"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/eel-editable-label.c:3188
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3517
-msgid "Select All"
-msgstr "すべて選択"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/eel-editable-label.c:3199
-msgid "Input Methods"
-msgstr "入力メソッド"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-compact-view.c:86
-msgid "Compact directory listing"
-msgstr "ディレクトリをコンパクトに表示"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-compact-view.c:87
-msgid "Compact view"
-msgstr "コンパクト表示"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1150
-msgid "Invalid filename provided by XDS drag site"
-msgstr "XDS で不正なファイル名をドラッグしています"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1308
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "URL \"%s\" のリンク作成に失敗しました"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1793
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "選択したアイテムを \"%s\" で開く"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1940
-#, c-format
-msgid "_Open With %s"
-msgstr "%sで開く (_O)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1946
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3483
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2399
-msgid "_Open"
-msgstr "開く ( _O )"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1962
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "%'d個の新しいタブで開く (_T)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1966
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3495
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2407
-msgid "Open in New _Tab"
-msgstr "新しいタブで開く (_T)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1971
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "%'d個の新しいウィンドウで開く (_T)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1975
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2414
-msgid "Open in New _Window"
-msgstr "新しいウィンドウで開く (_W)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3455
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "選択されたファイルを「貼り付け」コマンドで移動する準備"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3459
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "選択されたファイルを「貼り付け」コマンドでコピーする準備"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3463
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr "「切り取り」 または 「コピー」 のコマンドで選択されていたファイルを移動、もしくはコピー"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3466
-msgid "Paste Into Folder"
-msgstr "フォルダ内に貼り付け"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3467
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr "「切り取り」または「コピー」のコマンドで選択されていたファイルをフォルダ内に移動、もしくはコピー"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3470
-msgid "_Rename..."
-msgstr "名前の変更... (_R)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3471
-msgid "Rename selected item"
-msgstr "選択されたアイテムの名前を変更"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3474
-msgid "Create New _Folder"
-msgstr "新しいフォルダを作成 (_F)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3475
-msgid "Create a new empty folder inside this folder"
-msgstr "フォルダ内に空のフォルダを新たに作成"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3477
-msgid "Create New _File"
-msgstr "新しいファイルを作成 (_F)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3479
-msgid "_Empty Document"
-msgstr "空のドキュメント (_E)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3480
-msgid "Create a new empty document inside this folder"
-msgstr "フォルダ内に空のドキュメントを新たに作成"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3484
-msgid "Open the selected item"
-msgstr "選択したアイテムを開く"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3491
-msgid "Open in new Window"
-msgstr "新しいウィンドウで開く"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3492
-msgid "Open each selected item in a new window"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3496
-msgid "Open each selected item in a new tab"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3498
-msgid "Open Wit_h"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3499
-msgid "Choose a program with which to open the selected item"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3501
-msgid "Other _Application..."
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3502
-msgid "Choose another application with which to open the selected item"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3505
-msgid "Mo_ve to Trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3506
-msgid "Move each selected item to the Trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3509
-msgid "_Delete Permanently"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3510
-msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3513
-msgid "_Restore"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3521
-msgid "_Properties"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3522
-msgid "View or modify the properties of each selected item"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3629
-msgid "Set Color:"
-msgstr "色を設定:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:445
-msgid "Customize Toolbar"
-msgstr "ツールバーのカスタマイズ"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:465
-msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
-msgstr "ツールバーに表示する項目を選びます。ドラッグすることで順番を変えることができます。"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:481
-msgid "Available Items"
-msgstr "表示できる項目"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:502
-msgid "Displayed Items"
-msgstr "表示されている項目"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "レイアウトモード"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "レイアウトのモード"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "シングルクリック"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "表示されているアイテムをシングルクリックで選択"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "シングルクリックのタイムアウト"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr "シングルクリックモードの時に、カーソルの下にあるアイテムが自動的に選択状態になるまでの時間"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:310
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
 msgstr "パーソナル"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:315
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
 msgstr "一般的な場所とブックマーク"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:370
-msgid "Trash"
-msgstr "ゴミ箱"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:372
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
 msgstr "ゴミ箱を開く"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:382
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
 msgstr "デバイス"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:387
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
 msgstr "ローカルのディスクドライブと接続されたデバイス"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:396
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
 msgstr "ファイルシステムの内容を表示"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:455
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:480
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:455
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:480
 #, c-format
 msgid "Mount and open %s"
 msgstr "%s をマウントして表示"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:593
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
 msgstr "ネットワーク上の場所"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:624
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
 msgstr "ネットワーク全体"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:626
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
 msgstr "ネットワークの内容を表示"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1610
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
 msgstr "開始 (_S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1611
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1611
 msgid "_Stop"
 msgstr "停止 (_S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1616
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1616
 msgid "_Power On"
 msgstr "電源オン (_P)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1617
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1617
 msgid "_Safely Remove Drive"
 msgstr "ドライブの安全な取り出し (_S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1620
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1620
 msgid "_Connect Drive"
 msgstr "ドライブを接続 (_C)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1621
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1621
 msgid "_Disconnect Drive"
 msgstr "ドライブを接続解除 (_D)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1624
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
 msgstr "マルチディスク・デバイスを起動 (_S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1625
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1625
 msgid "_Stop Multi-disk Device"
 msgstr "マルチディスク・デバイスを停止 (_S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1629
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1629
 msgid "_Unlock Drive"
 msgstr "ドライブのロック解除 (_U)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1630
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1630
 msgid "_Lock Drive"
 msgstr "ドライブのロック (_L)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1704
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2251
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1704
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2251
 #, c-format
 msgid "Unable to start %s"
 msgstr "%s を起動できません"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1994
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2023
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2052
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1994
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2023
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2052
 #, c-format
 msgid "Unable to eject %s"
 msgstr "%s を取り出せません"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2197
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2197
 #, c-format
 msgid "Unable to poll %s for media changes"
 msgstr "%s 上のメディア変更を監視できません"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2307
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2307
 #, c-format
 msgid "Unable to stop %s"
 msgstr "%s を停止できません"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2423
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
 msgstr "削除"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2432
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
 msgstr "名前を変更..."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2444
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
 msgstr "マウント (_M)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2451
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2451
 msgid "_Unmount"
 msgstr "アンマウント (_U)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2458
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2458
 msgid "_Eject"
 msgstr "取り出し (_E)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2466
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1418
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2306
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2466
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1422
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2310
 msgid "Empty _Trash"
 msgstr "ゴミ箱を空にする (_T)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:3123
-msgid "Icon Size"
-msgstr "アイコンのサイズ"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:3124
-msgid "Icon size"
-msgstr "アイコンのサイズ"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:5
-msgid "Browse your files"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:6
-msgid "File Manager"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:237
-msgid "Today at 00:00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:238
-msgid "Today at %-I:%M:%S %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:240
-msgid "Today at 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:241
-msgid "Today at %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:243
-msgid "Today, 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:244
-msgid "Today, %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:246
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:247
-msgid "Today"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:256
-msgid "Yesterday at 00:00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:257
-msgid "Yesterday at %-I:%M:%S %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:259
-msgid "Yesterday at 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:260
-msgid "Yesterday at %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:262
-msgid "Yesterday, 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:263
-msgid "Yesterday, %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:265
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:266
-msgid "Yesterday"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:277
-msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:278
-msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:280
-msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:281
-msgid "%a, %b %-d %Y at %-I:%M:%S %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:283
-msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:284
-msgid "%a, %b %-d %Y at %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:286
-msgid "Oct 00 0000 at 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:287
-msgid "%b %-d %Y at %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:289
-msgid "Oct 00 0000, 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:290
-msgid "%b %-d %Y, %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:292
-msgid "00/00/00, 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:293
-msgid "%m/%-d/%y, %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:295
-msgid "00/00/00"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:296
-msgid "%m/%d/%y"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr "詳細を表示(_D)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:252
-#, c-format
-msgid "link to %s"
-msgstr "%s へのリンク"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1698
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "デスクトップファイル \"%s\" を解析できませんでした"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1736
-msgid "No Exec field specified"
-msgstr "Exec フィールドが指定されていません"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1756
-msgid "No URL field specified"
-msgstr "URL フィールドが指定されていません"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1762
-msgid "Invalid desktop file"
-msgstr "不正なデスクトップファイル"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:2052
-msgid "Slashes are not allowed in filenames"
-msgstr "ファイル名にスラッシュは使えません"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:2072
-msgid "Toplevel files cannot be renamed"
-msgstr "トップレベルのファイル名は変更できません"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:266
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "\"%s\" の元の場所を特定できませんでした "
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:269
-msgid "The item cannot be restored from trash"
-msgstr "ゴミ箱からアイテムを復元できません"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-progress-info.c:192
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "準備中"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:361
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "フォルダ \"%s\" をマージしますか?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:364
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr "マージをする際に、重複するファイルを転送元のファイルで置き換えるか確認がなされます。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:369
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" 内に同じ名前のより古いフォルダが既に存在しています。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:373
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" 内に同じ名前のより新しいフォルダが既に存在しています。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:377
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" 内に同じ名前のフォルダが既に存在しています。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:382
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
 msgstr "置き換えることでフォルダ内のファイルがすべて削除されます。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:384
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "フォルダ \"%s\" を置き換えますか?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:386
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" 内に同じ名前のフォルダが既に存在しています。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:391
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "ファイル \"%s\" を置き換えますか？"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:393
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will overwrite its content."
 msgstr "置き換えることで内容が上書きされます。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:397
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "\"%s\" 内に同じ名前のより古いファイルが既に存在しています。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:401
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "\"%s\" 内に同じ名前のより新しいファイルが既に存在しています。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:405
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "\"%s\" 内に同じ名前のファイルが既に存在しています。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
 msgid "Original file"
 msgstr "元のファイル"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:482
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
 msgid "Size:"
 msgstr "サイズ:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:485
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
 msgid "Type:"
 msgstr "形式:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:488
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
 msgid "Last modified:"
 msgstr "最終更新日:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:481
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:506
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
 msgstr "併合"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:700
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:714
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
 msgstr "元に戻す"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:726
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
 msgstr "このアクションをすべてのファイルに適用"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:737
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:201
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:200
 msgid "_Skip"
 msgstr "スキップ(_S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:742
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
 msgid "Re_name"
 msgstr "名前の変更(_N)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:748
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
 msgstr "置き換え"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:821
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
 msgstr "ファイルの重複"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (不正な Unicode です)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:202
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "すべてスキップ(_K)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:203
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "再試行(_R)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:204
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "すべて削除(_A)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:205
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "置き換える(_R)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:206
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "すべて置き換える(_A)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:207
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "合わせる(_M)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:208
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "すべて合わせる(_A)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:209
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "それでもコピー(_A)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:295
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d 秒"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:300
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:311
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:299
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d 分"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:310
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d 時間"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:318
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "約 %'d 時間"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:394
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "%s へのリンク"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:398
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "%s への別のリンク"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:414
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d 番目の %s へのリンク"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:418
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d 番目の %s へのリンク"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:422
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d 番目の %s へのリンク"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:426
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d 番目の %s へのリンク"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:464
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:466
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:469
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:471
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:473
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:483
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:468
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:470
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:472
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:476
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:478
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:480
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:497
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:499
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:502
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:504
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:506
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:520
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:501
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:503
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:505
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:514
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:516
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:518
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:618
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:626
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1377
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "ゴミ箱から \"%B\" を完全に削除してもよろしいですか?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1380
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -2000,483 +1427,970 @@ msgid_plural ""
 "trash?"
 msgstr[0] "選択された %'d 個のアイテムをゴミ箱から完全に削除してもよろしいですか?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1390
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1458
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1394
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "アイテムを完全に削除すると、元に戻すことはできません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1411
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "ゴミ箱からすべてのアイテムを削除してもよろしいですか?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1415
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "ゴミ箱内のアイテムが完全に削除されます。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1446
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "\"%B\"を完全に削除してもよろしいですか?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1449
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "選択された %'d 個のアイテムを完全に削除してもよろしいですか?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1474
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1506
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1478
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "ファイルを削除中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1500
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "残り %'d 個のファイルを削除中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1520
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "残り %T"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1588
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1622
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1661
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1738
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2569
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1592
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1626
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1665
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1742
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
 msgstr "削除中にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1592
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないため削除できません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1595
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2628
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3624
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1599
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2632
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "フォルダ \"%B\" 内のファイルについて情報を取得する際にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1604
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3633
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1608
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
 msgstr "ファイルをスキップ(_S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1625
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "フォルダ \"%B\" を参照する権限がないためフォルダを削除できません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1628
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2667
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3669
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1632
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2671
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
 msgstr "フォルダ \"%B\" を読み込む際にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1662
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "フォルダ \"%B\" を削除できませんでした。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1739
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "%B を削除する際にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1815
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1827
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1819
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "ファイルをゴミ箱へ移動中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1829
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "残り %'d 個のファイルをゴミ箱へ移動中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1884
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1885
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2065
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
 msgstr "ファイルをゴミ箱へ移動中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2067
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
 msgstr "ファイルを削除中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2139
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
 msgstr "%V を取り出せません"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2141
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
 msgstr "%V をアンマウントできません"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2296
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "アンマウントする前にゴミ箱を空にしますか?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2298
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr "このデバイス上の空き領域を増やすにはゴミ箱を空にする必要があります。その際ゴミ箱内にあるすべてのアイテムは完全に削除されます。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2304
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
 msgstr "ゴミ箱を空にしない(_N)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2359
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
 msgstr "ゴミ箱を空にしています"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2426
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
 msgstr "%s をマウントできません"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2504
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "%'d 個のファイル (%S) をコピーする準備中..."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2510
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "%'d 個のファイル (%S) を移動する準備中..."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2516
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2522
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "%'d 個のファイルをゴミ箱に移動する準備中..."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2565
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3485
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3616
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3661
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2569
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3489
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3620
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
 msgstr "コピー中にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2567
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3614
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3659
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2571
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3618
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
 msgstr "移動中にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2571
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
 msgstr "ファイルをゴミ箱へ移動する際にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2625
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないため操作できません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2664
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "フォルダ \"%B\" を参照する権限がないため操作できません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2741
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "ファイル \"%B\" を参照する権限がないため操作できません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2744
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
 msgstr "\"%B\" の情報を取得する際にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2844
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2886
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2919
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2949
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2848
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2890
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2923
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
 msgstr "\"%B\" へのコピー中にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2848
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
 msgstr "転送先のフォルダにアクセスする権限がありません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2850
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
 msgstr "転送先の情報を取得する際にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2887
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
 msgstr "転送先がフォルダではありません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2920
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr "転送先の空き容量が足りません。容量を増やすためにはファイルを削除してみて下さい。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2922
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "利用可能な容量は %S ありますが、%S 必要です。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2950
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
 msgstr "転送先は読み込み専用です。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3011
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
 msgstr "\"%B\" を \"%B\" へ移動中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3012
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
 msgstr "\"%B\" を \"%B\" へコピー中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3016
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
 msgstr "\"%B\" の複製中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3020
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へ移動中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3023
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へコピー中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3030
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "%'d 個のファイルを \"%B\" 内で複製中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3039
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "%'d 個のファイルを \"%B\" へ移動中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3043
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "%'d 個のファイルを \"%B\" へコピー中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3048
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "%'d 個のファイルを複製中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3099
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
 msgstr "%S / %S"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3110
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S / %S — 残り %T (%S/秒)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3489
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr "フォルダ \"%B\" をコピー先に作成する権限がないためコピーできません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3492
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
 msgstr "フォルダ \"%B\" を作成する際にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3621
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないためコピーできません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3666
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3670
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "フォルダ \"%B\" を参照する権限がないためコピーできません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3711
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4412
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5000
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3715
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4416
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
 msgstr "\"%B\" の移動中にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3712
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
 msgstr "転送元のフォルダを削除できませんでした。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3797
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3838
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4414
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4485
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3801
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3842
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4418
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
 msgstr "\"%B\" のコピー中にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3798
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "既に存在しているフォルダ %F からファイルを削除できませんでした。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3839
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "既に存在しているファイル %F を削除できませんでした。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4168
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4840
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4172
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
 msgstr "フォルダを自身の中に移動することはできません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4169
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4841
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4173
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
 msgstr "フォルダを自身の中にコピーすることはできません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4170
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4842
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4174
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
 msgstr "転送先のフォルダが転送元のフォルダ内にあります。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4201
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
 msgstr "ファイルを自身の上に移動することはできません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4202
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot copy a file over itself."
 msgstr "ファイルを自身の上にコピーすることはできません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4203
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4207
 msgid "The source file would be overwritten by the destination."
 msgstr "転送元のファイルは転送先によって上書きされます。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4416
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "%F の中に存在する同名のファイルを削除できませんでした。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4486
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "ファイルを %F へコピーする際にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4714
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
 msgstr "ファイルをコピー中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4740
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
 msgstr "\"%B\" へ移動する準備中..."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4752
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "%'d 個のファイルを移動する準備中..."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5001
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "%F 内にファイルを移動する際にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5264
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
 msgstr "ファイルを移動中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5294
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
 msgstr "\"%B\" 内でリンクを作成中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5305
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "%'d 個のファイルへのリンクを作成中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5440
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
 msgstr "%B へのリンク作成中にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5442
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
 msgstr "シンボリック・リンクはローカルのファイルでのみサポートされています。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5445
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
 msgstr "リンクの作成先はシンボリック・リンクをサポートしていません。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5448
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "%F 内にシンボリック・リンクを作成する際にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5776
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5779
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5780
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
 msgstr "アクセス権の設定中"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6030
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
 msgstr "新しいフォルダ"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6038
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
 msgstr "新しいファイル"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6209
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
 msgstr "フォルダ %B の作成中にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6211
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
 msgstr "ファイル %B の作成中にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6213
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "%F 内にフォルダを作成する際にエラーが発生しました。"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6530
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
 msgstr "ゴミ箱を空にしています"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:241
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "%s へのリンク"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "デスクトップファイル \"%s\" を解析できませんでした"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1740
+msgid "No Exec field specified"
+msgstr "Exec フィールドが指定されていません"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1760
+msgid "No URL field specified"
+msgstr "URL フィールドが指定されていません"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1766
+msgid "Invalid desktop file"
+msgstr "不正なデスクトップファイル"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2056
+msgid "Slashes are not allowed in filenames"
+msgstr "ファイル名にスラッシュは使えません"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2076
+msgid "Toplevel files cannot be renamed"
+msgstr "トップレベルのファイル名は変更できません"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "準備中"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:119
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "\"%s\" の元の場所を特定できませんでした "
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "ゴミ箱からアイテムを復元できません"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (不正な Unicode です)"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
+msgid "Show more _details"
+msgstr "詳細を表示(_D)"
+
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:245
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:249
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:253
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:333
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:722
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
 msgstr "%s へ移動"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
+msgid "View as grid"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
+msgid "View as list"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
+msgid "View as column"
+msgstr ""
+
+#~ msgid "extra-large"
+#~ msgstr "特大"
+
+#~ msgid "Sidebar icon size:"
+#~ msgstr "サイドバーのアイコンサイズ:"
+
+#~ msgid "medium"
+#~ msgstr "中"
+
+#~ msgid "large"
+#~ msgstr "大"
+
+#~ msgid "Behavior"
+#~ msgstr "動作"
+
+#~ msgid "small"
+#~ msgstr "小"
+
+#~ msgid "Default File Manager:"
+#~ msgstr "デフォルトのファイルマネージャに設定:"
+
+#~ msgid "Mouse auto-selection speed:"
+#~ msgstr "自動選択までの時間:"
+
+#~ msgid "Icon Size"
+#~ msgstr "アイコンのサイズ"
+
+#~ msgid "Icon size"
+#~ msgstr "アイコンのサイズ"
+
+#~ msgid "Cancel all in-progress actions"
+#~ msgstr "進行中の処理をすべてキャンセル"
+
+#~ msgid "Show copy dialog"
+#~ msgstr "コピーダイアログを表示"
+
+#~ msgid "Appearance"
+#~ msgstr "表示"

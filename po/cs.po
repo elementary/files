@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-05-30 00:35-0700\n"
+"POT-Creation-Date: 2012-07-22 21:31-0500\n"
 "PO-Revision-Date: 2012-07-01 17:48+0000\n"
 "Last-Translator: Marek Suchánek <suchm@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -15,619 +15,689 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-07-02 05:02+0000\n"
-"X-Generator: Launchpad (build 15520)\n"
+"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
+"X-Generator: Launchpad (build 15654)\n"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "Domů"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:143
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "Souborový systém"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "Vlastnosti"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:117
+msgid "Info"
+msgstr "Info"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:125
+msgid "Permissions"
+msgstr "Oprávnění"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:137
+msgid "Preview"
+msgstr "Náhled"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:338
+msgid "Created"
+msgstr "Vytvořeno"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:340
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:345
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Modified"
+msgstr "Změněno"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:343
+msgid "Last Access"
+msgstr "Poslední přístup"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:349
+msgid "Deleted"
+msgstr "Smazáno"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:354
+msgid "MimeType"
+msgstr "MIME typ"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:362
+msgid "MimeTypes"
+msgstr "MIME typy"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
+msgid "Location"
+msgstr "Umístění"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:368
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
+msgid "Target"
+msgstr "Cíl"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:374
+msgid "Origin Location"
+msgstr "Původní umístění"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:412
+msgid "Other application..."
+msgstr "Jiná aplikace…"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:436
+msgid "Open with"
+msgstr "Otevřít pomocí"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:452
+msgid "Device usage"
+msgstr "Využití zařízení"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
+msgid "Read"
+msgstr "Čtení"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:602
+msgid "Write"
+msgstr "Zápis"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:607
+msgid "Execute"
+msgstr "Spouštění"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:825
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:838
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:346
+msgid "Owner"
+msgstr "Vlastník"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:830
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:842
+msgid "Group"
+msgstr "Skupina"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:846
+msgid "Everyone"
+msgstr "Kdokoli"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:1126
+msgid "Select an aplication to open "
+msgstr "Zvolte, kterou aplikací otevřít "
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
 msgstr "Nastavení Souborů"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:54
-msgid "Single click to open:"
-msgstr "Otevírat jedním kliknutím:"
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
+msgid "General"
+msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:64
-msgid "Mouse auto-selection speed:"
-msgstr "Rychlost automatického vybírání myší:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:80
-msgid "Default File Manager:"
-msgstr "Výchozí správce souborů:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:89
-msgid "Behavior"
-msgstr "Chování"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:96
-msgid "small"
-msgstr "malá"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:97
-msgid "medium"
-msgstr "střední"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:98
-msgid "large"
-msgstr "velká"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:99
-msgid "extra-large"
-msgstr "obří"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:120
-msgid "Sidebar icon size:"
-msgstr "Velikost ikon v postranním panelu:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:131
-msgid "iso"
-msgstr "iso"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:132
-msgid "locale"
-msgstr "jazyk"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:133
-msgid "informal"
-msgstr "neformální"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:140
-msgid "Date format:"
-msgstr "Formát data:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:148
-msgid "Appearance"
-msgstr "Vzhled"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:197
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
 msgstr "Rozšíření"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:72
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:207
+msgid "Single click to open:"
+msgstr "Otevírat jedním kliknutím:"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
+msgid "Mouse auto-selection:"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
+msgid "<small><i>Slow</i></small>"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:235
+msgid "<small><i>Fast</i></small>"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:250
+msgid "Date format:"
+msgstr "Formát data:"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:253
+msgid "iso"
+msgstr "iso"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:254
+msgid "locale"
+msgstr "jazyk"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:255
+msgid "informal"
+msgstr "neformální"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
+msgid "Name"
+msgstr "Název"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Typ"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:343
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Velikost"
+
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "Složka neexistuje"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:75
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
 msgstr "Marlin nemůže najít složku %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "Vytvořit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "Vytvořit složku %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ViewContainer.vala:141
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:324
-msgid "Home"
-msgstr "Domů"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ViewContainer.vala:143
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:394
-msgid "File System"
-msgstr "Souborový systém"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:137
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3406
-msgid "Set as default"
-msgstr "Nastavit jako výchozí"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:142
-msgid "Ignore"
-msgstr "Ignorovat"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:454
-msgid "Undo"
-msgstr "Zpět"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:455
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:749
-msgid "Undo the last action"
-msgstr "Vrátit zpět poslední úkon"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:464
-msgid "Redo"
-msgstr "Znovu"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:465
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:752
-msgid "Redo the last action"
-msgstr "Provést znovu poslední úkon"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:720
-msgid "_File"
-msgstr "_Soubor"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:721
-msgid "_Edit"
-msgstr "Ú_pravy"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:722
-msgid "_View"
-msgstr "_Zobrazit"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:723
-msgid "_Go"
-msgstr "_Přejít"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:724
-msgid "_Help"
-msgstr "_Nápověda"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:726
-msgid "New _Window"
-msgstr "Nové _okno"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:727
-msgid "Open another Marlin window for the displayed location"
-msgstr "Otevřít pro zobrazené umístění nové okno Marlina"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:730
-msgid "New _Tab"
-msgstr "Nová kar_ta"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:731
-msgid "Open another tab for the displayed location"
-msgstr "Otevřít pro zobrazené umístění novou kartu"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:734
-msgid "_Close"
-msgstr "_Zavřít"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:735
-msgid "Close this folder"
-msgstr "Zavřít složku"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:738
-msgid "Customize _Toolbar..."
-msgstr "Přizpůsobit _lištu..."
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:739
-msgid "Easily edit the toolbar layout"
-msgstr "Umožňuje snadno upravit rozložení lišty"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:742
-msgid "Preferences"
-msgstr "Nastaveni"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:743
-msgid "Change Marlin's preferences"
-msgstr "Změnit nastavení Marlina"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:748
-msgid "_Undo"
-msgstr "_Zpět"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:751
-msgid "_Redo"
-msgstr "Z_novu"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:754
-msgid "Open _Parent"
-msgstr "K n_adřazenému"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:755
-msgid "Open the parent folder"
-msgstr "Otevřít nadřazenou složku"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:757
-msgid "_Back"
-msgstr "_Zpět"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:758
-msgid "Go to the previous visited location"
-msgstr "Přejít na předchozí navštívené umístění"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:761
-msgid "_Forward"
-msgstr "_Vpřed"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:762
-msgid "Go to the next visited location"
-msgstr "Přejít na další navštívené umístění"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:764
-msgid "_Reload"
-msgstr "Zn_ovu načíst"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:765
-msgid "Reload the current location"
-msgstr "Znovu načíst současné umístění"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:768
-msgid "_Home Folder"
-msgstr "_Domovská složka"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:769
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:329
-msgid "Open your personal folder"
-msgstr "Otevřít osobní složku"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:772
-msgid "_Trash"
-msgstr "_Koš"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:773
-msgid "Open your personal trash folder"
-msgstr "Otevřít slořku koše"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:776
-msgid "_Network"
-msgstr "_Síť"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:777
-msgid "Browse bookmarked and local network locations"
-msgstr "Procházet sítě místní a zazáložkované"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:780
-msgid "Zoom _In"
-msgstr "Zvětš_it"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:781
-msgid "Increase the view size"
-msgstr "Zvětšit velikost zobrazení"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:792
-msgid "Zoom _Out"
-msgstr "Z_menšit"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:793
-msgid "Decrease the view size"
-msgstr "Zmenšit velikost zobrazení"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:800
-msgid "Normal Si_ze"
-msgstr "Běž_ná velikost"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:801
-msgid "Use the normal view size"
-msgstr "Použít běžnou velikost zobrazení"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:804
-msgid "Next Tab"
-msgstr "Další karta"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:808
-msgid "Previous Tab"
-msgstr "Předchozí karta"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:812
-msgid "Connect to _Server..."
-msgstr "Připojit k _serveru…"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:813
-msgid "Connect to a remote computer or shared disk"
-msgstr "Připojit se ke vzdálenému počítači nebo sdílenému disku"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:816
-msgid "_About"
-msgstr "_O aplikaci"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:817
-msgid "Display credits"
-msgstr "Ukázat zásluhy"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:820
-msgid "Report a Problem..."
-msgstr "Nahlásit problém..."
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:821
-msgid "File a bug on Launchpad"
-msgstr "Nahlásit na Launchpad chybu"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:824
-msgid "Get Help Online..."
-msgstr "Získat online nápovědu…"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:828
-msgid "Translate This Application..."
-msgstr "Přeložte aplikaci…"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:837
-msgid "Show _Hidden Files"
-msgstr "Zobrazit _skryté soubory"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:838
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Přepnout zobrazování skrytých souborů v aktuálním okně"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:843
-msgid "Show _Desktop Files"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:844
-msgid "Toggle the display of desktop files"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:848
-msgid "_Context Pane"
-msgstr "_Kontextový panel"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:849
-msgid "Change the visibility of the context pane"
-msgstr "Změnit viditelnost kontextového panelu"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:853
-msgid "_Menubar"
-msgstr "_Nabídka"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:854
-msgid "Change the visibility of this window's menubar"
-msgstr "Změnit viditelnost nabídky na okně"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:858
-msgid "_Places"
-msgstr "_Místa"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:859
-msgid "Change the visibility of this window's side pane"
-msgstr "Změnit viditelnost postranního panelu na okně"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:867
-msgid "Icon"
-msgstr "Ikona"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:870
-msgid "List"
-msgstr "Seznam"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:873
-msgid "Compact"
-msgstr "Kompaktní"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:876
-msgid "Columns"
-msgstr "Sloupce"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/LocationBar.vala:100
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:588
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:110
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:370
+msgid "Trash"
+msgstr "Koš"
+
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:111
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:588
 msgid "Network"
 msgstr "Síť"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:317
-msgid "Name"
-msgstr "Název"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:152
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3382
+msgid "Set as default"
+msgstr "Nastavit jako výchozí"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:318
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Typ"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:157
+msgid "Ignore"
+msgstr "Ignorovat"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:321
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:375
-msgid "Target"
-msgstr "Cíl"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:497
+msgid "Undo"
+msgstr "Zpět"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:323
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Velikost"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:498
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:792
+msgid "Undo the last action"
+msgstr "Vrátit zpět poslední úkon"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:325
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:347
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "Změněno"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:507
+msgid "Redo"
+msgstr "Znovu"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:326
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:832
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:845
-msgid "Owner"
-msgstr "Vlastník"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:508
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:795
+msgid "Redo the last action"
+msgstr "Provést znovu poslední úkon"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "Vlastnosti"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:763
+msgid "_File"
+msgstr "_Soubor"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:118
-msgid "Info"
-msgstr "Info"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:764
+msgid "_Edit"
+msgstr "Ú_pravy"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:126
-msgid "Permissions"
-msgstr "Oprávnění"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:765
+msgid "_View"
+msgstr "_Zobrazit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:138
-msgid "Preview"
-msgstr "Náhled"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:766
+msgid "_Go"
+msgstr "_Přejít"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:345
-msgid "Created"
-msgstr "Vytvořeno"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:767
+msgid "_Help"
+msgstr "_Nápověda"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:350
-msgid "Last Access"
-msgstr "Poslední přístup"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:769
+msgid "New _Window"
+msgstr "Nové _okno"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:356
-msgid "Deleted"
-msgstr "Smazáno"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:770
+msgid "Open another Marlin window for the displayed location"
+msgstr "Otevřít pro zobrazené umístění nové okno Marlina"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:361
-msgid "MimeType"
-msgstr "MIME typ"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:773
+msgid "New _Tab"
+msgstr "Nová kar_ta"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:369
-msgid "MimeTypes"
-msgstr "MIME typy"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:774
+msgid "Open another tab for the displayed location"
+msgstr "Otevřít pro zobrazené umístění novou kartu"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:373
-msgid "Location"
-msgstr "Umístění"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:777
+msgid "_Close"
+msgstr "_Zavřít"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:381
-msgid "Origin Location"
-msgstr "Původní umístění"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:778
+msgid "Close this folder"
+msgstr "Zavřít složku"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:419
-msgid "Other application..."
-msgstr "Jiná aplikace…"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:781
+msgid "Customize _Toolbar..."
+msgstr "Přizpůsobit _lištu..."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:443
-msgid "Open with"
-msgstr "Otevřít pomocí"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:782
+msgid "Easily edit the toolbar layout"
+msgstr "Umožňuje snadno upravit rozložení lišty"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:459
-msgid "Device usage"
-msgstr "Využití zařízení"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:785
+msgid "Preferences"
+msgstr "Nastaveni"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:604
-msgid "Read"
-msgstr "Čtení"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:786
+msgid "Change Marlin's preferences"
+msgstr "Změnit nastavení Marlina"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:609
-msgid "Write"
-msgstr "Zápis"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:791
+msgid "_Undo"
+msgstr "_Zpět"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:614
-msgid "Execute"
-msgstr "Spouštění"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:794
+msgid "_Redo"
+msgstr "Z_novu"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:837
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:849
-msgid "Group"
-msgstr "Skupina"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:797
+msgid "Open _Parent"
+msgstr "K n_adřazenému"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:853
-msgid "Everyone"
-msgstr "Kdokoli"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:798
+msgid "Open the parent folder"
+msgstr "Otevřít nadřazenou složku"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:1109
-msgid "Select an aplication to open "
-msgstr "Zvolte, kterou aplikací otevřít "
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:800
+msgid "_Back"
+msgstr "_Zpět"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:124
-msgid "SSH"
-msgstr "SSH"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:801
+msgid "Go to the previous visited location"
+msgstr "Přejít na předchozí navštívené umístění"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:127
-msgid "Public FTP"
-msgstr "Veřejné FTP"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:804
+msgid "_Forward"
+msgstr "_Vpřed"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:129
-msgid "FTP (with login)"
-msgstr "FTP (s přihlášením)"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:805
+msgid "Go to the next visited location"
+msgstr "Přejít na další navštívené umístění"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:132
-msgid "Windows share"
-msgstr "Sdílení Windows"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:807
+msgid "_Reload"
+msgstr "Zn_ovu načíst"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:134
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:808
+msgid "Reload the current location"
+msgstr "Znovu načíst současné umístění"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:136
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Zabezpečený WebDAV (HTTPS)"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:811
+msgid "_Home Folder"
+msgstr "_Domovská složka"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:183
-msgid "Connecting..."
-msgstr "Připojuji se..."
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:812
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "Otevřít osobní složku"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:207
-msgid ""
-"Can't load the supported server method list.\n"
-"Please check your gvfs installation."
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:815
+msgid "_Trash"
+msgstr "_Koš"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:816
+msgid "Open your personal trash folder"
+msgstr "Otevřít slořku koše"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:819
+msgid "_Network"
+msgstr "_Síť"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:820
+msgid "Browse bookmarked and local network locations"
+msgstr "Procházet sítě místní a zazáložkované"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:823
+msgid "Zoom _In"
+msgstr "Zvětš_it"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:824
+msgid "Increase the view size"
+msgstr "Zvětšit velikost zobrazení"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:835
+msgid "Zoom _Out"
+msgstr "Z_menšit"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:836
+msgid "Decrease the view size"
+msgstr "Zmenšit velikost zobrazení"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:843
+msgid "Normal Si_ze"
+msgstr "Běž_ná velikost"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:844
+msgid "Use the normal view size"
+msgstr "Použít běžnou velikost zobrazení"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:847
+msgid "Next Tab"
+msgstr "Další karta"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:851
+msgid "Previous Tab"
+msgstr "Předchozí karta"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:855
+msgid "Connect to _Server..."
+msgstr "Připojit k _serveru…"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:856
+msgid "Connect to a remote computer or shared disk"
+msgstr "Připojit se ke vzdálenému počítači nebo sdílenému disku"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:859
+msgid "_About"
+msgstr "_O aplikaci"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:860
+msgid "Display credits"
+msgstr "Ukázat zásluhy"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:863
+msgid "Report a Problem..."
+msgstr "Nahlásit problém..."
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:864
+msgid "File a bug on Launchpad"
+msgstr "Nahlásit na Launchpad chybu"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:867
+msgid "Get Help Online..."
+msgstr "Získat online nápovědu…"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:871
+msgid "Translate This Application..."
+msgstr "Přeložte aplikaci…"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:880
+msgid "Show _Hidden Files"
+msgstr "Zobrazit _skryté soubory"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:881
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Přepnout zobrazování skrytých souborů v aktuálním okně"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:886
+msgid "Show _Desktop Files"
 msgstr ""
-"Nelze načíst seznam podporovaných metod serverů.\n"
-"Zkontrolujte prosím svoji instalaci GVfs."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:285
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:887
+msgid "Toggle the display of desktop files"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:891
+msgid "_Context Pane"
+msgstr "_Kontextový panel"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:892
+msgid "Change the visibility of the context pane"
+msgstr "Změnit viditelnost kontextového panelu"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:896
+msgid "_Menubar"
+msgstr "_Nabídka"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:897
+msgid "Change the visibility of this window's menubar"
+msgstr "Změnit viditelnost nabídky na okně"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:901
+msgid "_Places"
+msgstr "_Místa"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:902
+msgid "Change the visibility of this window's side pane"
+msgstr "Změnit viditelnost postranního panelu na okně"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:910
+msgid "Icon"
+msgstr "Ikona"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:913
+msgid "List"
+msgstr "Seznam"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:916
+msgid "Compact"
+msgstr "Kompaktní"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:919
+msgid "Columns"
+msgstr "Sloupce"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Ikonové zobrazení složky"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Ikonové zobrazení"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1151
+msgid "Invalid filename provided by XDS drag site"
+msgstr "Neplatné jméno souboru bzlo poskytnuto službou XDG"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1309
 #, c-format
-msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Složku „%s“ se nepodařilo otevřít na „%s“."
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Nepodařilo se vytvořit odkaz pro adresu URL \"%s\""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:295
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1794
 #, c-format
-msgid "The server at \"%s\" cannot be found."
-msgstr "Server „%s“ nelze nalézt."
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Použít „%s“ k otevření vybrané položky"
+msgstr[1] "Použít „%s“ k otevření vybraných položek"
+msgstr[2] "Použít „%s“ k otevření vybraných položek"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:330
-msgid "Try Again"
-msgstr "Zkusit znovu"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1941
+#, c-format
+msgid "_Open With %s"
+msgstr "_Otevřít s %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:395
-msgid "Please verify your user details."
-msgstr "Zkontrolujte prosím své uživatelské údaje."
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1947
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3459
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2399
+msgid "_Open"
+msgstr "_Otevřít"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:425
-msgid "Continue"
-msgstr "Pokračovat"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1963
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:750
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1140
-msgid "C_onnect"
-msgstr "_Připojit"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1967
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3471
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2407
+msgid "Open in New _Tab"
+msgstr "Otevřít v nové kar_tě"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:875
-msgid "Connect to Server"
-msgstr "Připojit k serveru"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1972
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:893
-msgid "Server Details"
-msgstr "Detaily o serveru"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1976
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2414
+msgid "Open in New _Window"
+msgstr "Otevřít v novém _okně"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:917
-msgid "_Server:"
-msgstr "_Server:"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3431
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr "Připravit vybrané soubory k přesunutí příkazem Vložit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:937
-msgid "_Port:"
-msgstr "_Port:"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3435
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr "Připravit vybrané soubory ke kopírování příkazem Vložit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:955
-msgid "_Type:"
-msgstr "_Typ:"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3439
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Přesunout nebo kopírovat soubory dříve vybrané příkazem Vyjmout nebo "
+"Kopírovat"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1024
-msgid "Sh_are:"
-msgstr "Sdíl_ení:"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3442
+msgid "Paste Into Folder"
+msgstr "Vložit do složky"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1039
-msgid "_Folder:"
-msgstr "_Složka:"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3443
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Přesunout nebo kopírovat Vyjmuté či Zkopírované soubory do vybrané složky"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1057
-msgid "User Details"
-msgstr "Detaily o uživateli"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3446
+msgid "_Rename..."
+msgstr "_Přejmenovat…"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1080
-msgid "_Domain name:"
-msgstr "Název _domény:"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3447
+msgid "Rename selected item"
+msgstr "Přejmenovat vybranou položku"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1095
-msgid "_User name:"
-msgstr "_Uživatelské jméno:"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3450
+msgid "Create New _Folder"
+msgstr "Vytvořit novou _složku"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1110
-msgid "Pass_word:"
-msgstr "_Heslo:"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3451
+msgid "Create a new empty folder inside this folder"
+msgstr "Vytvořit v této složce novou prázdnou složku"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1126
-msgid "_Remember this password"
-msgstr "_Zapamatovat si heslo"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3453
+msgid "Create New _File"
+msgstr "Vytvořit nový _soubor"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1229
-msgid "Operation cancelled"
-msgstr "Operace byla zrušena"
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3455
+msgid "_Empty Document"
+msgstr "_Prázdný dokument"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:113
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:163
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:471
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:527
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3456
+msgid "Create a new empty document inside this folder"
+msgstr "Vytvořit v této složce nový prázdný dokument"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3460
+msgid "Open the selected item"
+msgstr "Otevřít vybranou položku"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3467
+msgid "Open in new Window"
+msgstr "Otevřít v novém okně"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3468
+msgid "Open each selected item in a new window"
+msgstr "Otevřít každou vybranou položku v novém okně"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3472
+msgid "Open each selected item in a new tab"
+msgstr "Otevřít každou vybranou položku v nové kartě"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3474
+msgid "Open Wit_h"
+msgstr "Otevřít _pomocí"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3475
+msgid "Choose a program with which to open the selected item"
+msgstr "Vyberte, kterým programem otevřít položku"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3477
+msgid "Other _Application..."
+msgstr "Jiná _aplikace…"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3478
+msgid "Choose another application with which to open the selected item"
+msgstr "Vyberte jinou aplikaci, kterou otevřít položku"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3481
+msgid "Mo_ve to Trash"
+msgstr "Pře_sunout do koše"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3482
+msgid "Move each selected item to the Trash"
+msgstr "Přesunout všechny vybrané položky do koše"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3485
+msgid "_Delete Permanently"
+msgstr "_Trvale smazet"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3486
+msgid "Delete each selected item, without moving to the Trash"
+msgstr "Smazet vybrané položky bez přesunutí do koše"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3489
+msgid "_Restore"
+msgstr "_Obnovit"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3493
+#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3190
+msgid "Select All"
+msgstr "Vybrat vše"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3497
+msgid "_Properties"
+msgstr "_Vlastnosti"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3498
+msgid "View or modify the properties of each selected item"
+msgstr "Zobrazit či upravit vlastnosti vybraných položek"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3605
+msgid "Set Color:"
+msgstr "Nastavit barvu:"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Název souboru"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:199
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:139
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:186
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "Selhalo přejmenování %s na %s"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:616
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:572
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:82
+msgid "This folder is empty."
+msgstr "Tato složka je prázdná."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Ve schránce se nenacházejí žádné položky"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
 msgid "File Operations"
 msgstr "Operace se soubory"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:122
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
 msgstr "Zobrazit detaily"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:157
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:179
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
@@ -635,43 +705,283 @@ msgstr[0] "%'d aktivní operace se soubory"
 msgstr[1] "%'d aktivní operace se soubory"
 msgstr[2] "%'d aktivních operací se soubory"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:280
-msgid "Show copy dialog"
-msgstr "Zobrazit dialog kopírování"
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
+msgid "Show Copy Dialog"
+msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:291
-msgid "Cancel all in-progress actions"
-msgstr "Zrušit všechny probíhající akce"
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
+msgid "Cancel All In-progress Actions"
+msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:528
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
 msgstr "Všechny operace se soubory byly úspěšně dokončeny"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Ve schránce se nenacházejí žádné položky"
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "_Rozmístit položky"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:416
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "_Opačné pořadí"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "Zobrazit ikony v opačném pořadí"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "Dle _názvu"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "Řadit ikony v řádcích dle názvu"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "Dle _velikosti"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "Řadit ikony v řádcích dle velikosti"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "Dle _typu"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "Řadit ikony v řádcích dle typu"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "Dle _data změny"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "Řadit ikony v řádcích dle data změny"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr "Stručný výpis složky"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr "Stručné zobrazení"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:445
+msgid "Customize Toolbar"
+msgstr "Přizpůsobit panel nástrojů"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:464
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
+msgstr ""
+"Vyberte položky k zobrazení v panelu nástrojů. Položky mohou být seřazeny "
+"přetahováním."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:478
+msgid "Available Items"
+msgstr "Dostupné položky"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:497
+msgid "Displayed Items"
+msgstr "Zobrazené položky"
+
+#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Vstupní metody"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Jednoduché kliknutí"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Zda mohou být zobrazené položky aktivovány jednoduchým kliknutím"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "Vypršení limitu pro jednoduché kliknutí"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr ""
+"Množství času, po kterém se položka pod kurzorem myši v módu jednoduchého "
+"kliknutí sama označí"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "_Přesunout sem"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "_Kopírovat sem"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "_Odkaz sem"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "Nastavit jako _pozadí"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Nepodařilo se spustit soubor \"%s\""
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
+msgid "SSH"
+msgstr "SSH"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
+msgid "Public FTP"
+msgstr "Veřejné FTP"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
+msgid "FTP (with login)"
+msgstr "FTP (s přihlášením)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
+msgid "Windows share"
+msgstr "Sdílení Windows"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Zabezpečený WebDAV (HTTPS)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
+msgid "Connecting..."
+msgstr "Připojuji se..."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
+msgid ""
+"Can't load the supported server method list.\n"
+"Please check your gvfs installation."
+msgstr ""
+"Nelze načíst seznam podporovaných metod serverů.\n"
+"Zkontrolujte prosím svoji instalaci GVfs."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
+#, c-format
+msgid "The folder \"%s\" cannot be opened on \"%s\"."
+msgstr "Složku „%s“ se nepodařilo otevřít na „%s“."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
+#, c-format
+msgid "The server at \"%s\" cannot be found."
+msgstr "Server „%s“ nelze nalézt."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
+msgid "Try Again"
+msgstr "Zkusit znovu"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
+msgid "Please verify your user details."
+msgstr "Zkontrolujte prosím své uživatelské údaje."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
+msgid "Continue"
+msgstr "Pokračovat"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
+msgid "C_onnect"
+msgstr "_Připojit"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
+msgid "Connect to Server"
+msgstr "Připojit k serveru"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
+msgid "Server Details"
+msgstr "Detaily o serveru"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
+msgid "_Server:"
+msgstr "_Server:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
+msgid "_Port:"
+msgstr "_Port:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
+msgid "_Type:"
+msgstr "_Typ:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
+msgid "Sh_are:"
+msgstr "Sdíl_ení:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
+msgid "_Folder:"
+msgstr "_Složka:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
+msgid "User Details"
+msgstr "Detaily o uživateli"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
+msgid "_Domain name:"
+msgstr "Název _domény:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
+msgid "_User name:"
+msgstr "_Uživatelské jméno:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
+msgid "Pass_word:"
+msgstr "_Heslo:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
+msgid "_Remember this password"
+msgstr "_Zapamatovat si heslo"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
+msgid "Operation cancelled"
+msgstr "Operace byla zrušena"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Mód rozložení"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "Mód rozložení"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:420
 msgid "Show the version of the program."
 msgstr "Zobrazit verzi programu."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:420
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:424
 msgid "Open uri(s) in new tab"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:422
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:426
 msgid "Quit Marlin."
 msgstr "Ukončit Marlina."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:424
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
 msgstr "Vypisovat ladicí zprávy"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:425
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:429
 msgid "[URI...]"
 msgstr "[URI…]"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:434
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:438
 msgid ""
 "\n"
 "\n"
@@ -681,656 +991,149 @@ msgstr ""
 "\n"
 "Procházet systém souborů správcem souborů"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:454
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:458
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nelze použít spolu s adresami URI."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-columns-view.c:82
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:572
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:616
-msgid "This folder is empty."
-msgstr "Tato složka je prázdná."
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-columns-view.c:186
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:139
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:199
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Selhalo přejmenování %s na %s"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Ikonové zobrazení složky"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Ikonové zobrazení"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "_Rozmístit položky"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "_Opačné pořadí"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Zobrazit ikony v opačném pořadí"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "Dle _názvu"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Řadit ikony v řádcích dle názvu"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "Dle _velikosti"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Řadit ikony v řádcích dle velikosti"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "Dle _typu"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Řadit ikony v řádcích dle typu"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "Dle _data změny"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "Řadit ikony v řádcích dle data změny"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:779
-msgid "_Move Here"
-msgstr "_Přesunout sem"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:784
-msgid "_Copy Here"
-msgstr "_Kopírovat sem"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:789
-msgid "_Link Here"
-msgstr "_Odkaz sem"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:794
-msgid "Set as _Background"
-msgstr "Nastavit jako _pozadí"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:801
-msgid "Cancel"
-msgstr "Zrušit"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:893
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Nepodařilo se spustit soubor \"%s\""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/eel-editable-label.c:3188
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3517
-msgid "Select All"
-msgstr "Vybrat vše"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/eel-editable-label.c:3199
-msgid "Input Methods"
-msgstr "Vstupní metody"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-compact-view.c:86
-msgid "Compact directory listing"
-msgstr "Stručný výpis složky"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-compact-view.c:87
-msgid "Compact view"
-msgstr "Stručné zobrazení"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1150
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Neplatné jméno souboru bzlo poskytnuto službou XDG"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1308
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Nepodařilo se vytvořit odkaz pro adresu URL \"%s\""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1793
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Použít „%s“ k otevření vybrané položky"
-msgstr[1] "Použít „%s“ k otevření vybraných položek"
-msgstr[2] "Použít „%s“ k otevření vybraných položek"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1940
-#, c-format
-msgid "_Open With %s"
-msgstr "_Otevřít s %s"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1946
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3483
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2399
-msgid "_Open"
-msgstr "_Otevřít"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1962
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1966
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3495
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2407
-msgid "Open in New _Tab"
-msgstr "Otevřít v nové kar_tě"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1971
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1975
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2414
-msgid "Open in New _Window"
-msgstr "Otevřít v novém _okně"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3455
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "Připravit vybrané soubory k přesunutí příkazem Vložit"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3459
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "Připravit vybrané soubory ke kopírování příkazem Vložit"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3463
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Přesunout nebo kopírovat soubory dříve vybrané příkazem Vyjmout nebo "
-"Kopírovat"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3466
-msgid "Paste Into Folder"
-msgstr "Vložit do složky"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3467
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Přesunout nebo kopírovat Vyjmuté či Zkopírované soubory do vybrané složky"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3470
-msgid "_Rename..."
-msgstr "_Přejmenovat…"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3471
-msgid "Rename selected item"
-msgstr "Přejmenovat vybranou položku"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3474
-msgid "Create New _Folder"
-msgstr "Vytvořit novou _složku"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3475
-msgid "Create a new empty folder inside this folder"
-msgstr "Vytvořit v této složce novou prázdnou složku"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3477
-msgid "Create New _File"
-msgstr "Vytvořit nový _soubor"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3479
-msgid "_Empty Document"
-msgstr "_Prázdný dokument"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3480
-msgid "Create a new empty document inside this folder"
-msgstr "Vytvořit v této složce nový prázdný dokument"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3484
-msgid "Open the selected item"
-msgstr "Otevřít vybranou položku"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3491
-msgid "Open in new Window"
-msgstr "Otevřít v novém okně"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3492
-msgid "Open each selected item in a new window"
-msgstr "Otevřít každou vybranou položku v novém okně"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3496
-msgid "Open each selected item in a new tab"
-msgstr "Otevřít každou vybranou položku v nové kartě"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3498
-msgid "Open Wit_h"
-msgstr "Otevřít _pomocí"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3499
-msgid "Choose a program with which to open the selected item"
-msgstr "Vyberte, kterým programem otevřít položku"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3501
-msgid "Other _Application..."
-msgstr "Jiná _aplikace…"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3502
-msgid "Choose another application with which to open the selected item"
-msgstr "Vyberte jinou aplikaci, kterou otevřít položku"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3505
-msgid "Mo_ve to Trash"
-msgstr "Pře_sunout do koše"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3506
-msgid "Move each selected item to the Trash"
-msgstr "Přesunout všechny vybrané položky do koše"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3509
-msgid "_Delete Permanently"
-msgstr "_Trvale smazet"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3510
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "Smazet vybrané položky bez přesunutí do koše"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3513
-msgid "_Restore"
-msgstr "_Obnovit"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3521
-msgid "_Properties"
-msgstr "_Vlastnosti"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3522
-msgid "View or modify the properties of each selected item"
-msgstr "Zobrazit či upravit vlastnosti vybraných položek"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3629
-msgid "Set Color:"
-msgstr "Nastavit barvu:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:445
-msgid "Customize Toolbar"
-msgstr "Přizpůsobit panel nástrojů"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:465
-msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
-msgstr ""
-"Vyberte položky k zobrazení v panelu nástrojů. Položky mohou být seřazeny "
-"přetahováním."
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:481
-msgid "Available Items"
-msgstr "Dostupné položky"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:502
-msgid "Displayed Items"
-msgstr "Zobrazené položky"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Mód rozložení"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "Mód rozložení"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Jednoduché kliknutí"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Zda mohou být zobrazené položky aktivovány jednoduchým kliknutím"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "Vypršení limitu pro jednoduché kliknutí"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-"Množství času, po kterém se položka pod kurzorem myši v módu jednoduchého "
-"kliknutí sama označí"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Název souboru"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:310
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
 msgstr "Osobní"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:315
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
 msgstr "Vaše často prohlížená místa a záložky"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:370
-msgid "Trash"
-msgstr "Koš"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:372
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
 msgstr "Otevřít koš"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:382
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
 msgstr "Zařízení"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:387
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
 msgstr "Vaše místní oddíly a zařízení"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:396
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
 msgstr "Otevřít obsah souborového systému"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:455
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:480
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:455
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:480
 #, c-format
 msgid "Mount and open %s"
 msgstr "Připojit a otevřít %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:593
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
 msgstr "Vaše síť"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:624
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
 msgstr "Celá síť"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:626
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
 msgstr "Procházet obsah sítě"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1610
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
 msgstr "_Aktivovat"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1611
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1611
 msgid "_Stop"
 msgstr "_Deaktivovat"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1616
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1616
 msgid "_Power On"
 msgstr "Za_pnout"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1617
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1617
 msgid "_Safely Remove Drive"
 msgstr "_Bezpečně odebrat zařízení"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1620
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1620
 msgid "_Connect Drive"
 msgstr "_Připojit zařízení"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1621
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1621
 msgid "_Disconnect Drive"
 msgstr "O_dpojit zařízení"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1624
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
 msgstr "_Aktivovat vícediskové zařízení"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1625
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1625
 msgid "_Stop Multi-disk Device"
 msgstr "_Deaktivovat vícediskové zařízení"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1629
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1629
 msgid "_Unlock Drive"
 msgstr "_Odemknout zařízení"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1630
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1630
 msgid "_Lock Drive"
 msgstr "_Uzamknout zařízení"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1704
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2251
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1704
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2251
 #, c-format
 msgid "Unable to start %s"
 msgstr "Nelze aktivovat %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1994
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2023
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2052
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1994
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2023
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2052
 #, c-format
 msgid "Unable to eject %s"
 msgstr "Nelze vysunout %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2197
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2197
 #, c-format
 msgid "Unable to poll %s for media changes"
 msgstr "Nelze se dotazovat %s ohledně změn média"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2307
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2307
 #, c-format
 msgid "Unable to stop %s"
 msgstr "Nelze zastavit %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2423
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
 msgstr "Odstranit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2432
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
 msgstr "Přejmenovat…"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2444
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
 msgstr "_Připojit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2451
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2451
 msgid "_Unmount"
 msgstr "_Odpojit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2458
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2458
 msgid "_Eject"
 msgstr "V_ysunout"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2466
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1418
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2306
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2466
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1422
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2310
 msgid "Empty _Trash"
 msgstr "Vyprázdnit _koš"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:3123
-msgid "Icon Size"
-msgstr "Velikost ikony"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:3124
-msgid "Icon size"
-msgstr "Velikost ikony"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:5
-msgid "Browse your files"
-msgstr "Procházet soubory"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:6
-msgid "File Manager"
-msgstr "Správce souborů"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:237
-msgid "Today at 00:00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:238
-msgid "Today at %-I:%M:%S %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:240
-msgid "Today at 00:00 PM"
-msgstr "Dnes v 00:00:00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:241
-msgid "Today at %-I:%M %p"
-msgstr "Dnes v %-I:%M"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:243
-msgid "Today, 00:00 PM"
-msgstr "Dnes, 00:00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:244
-msgid "Today, %-I:%M %p"
-msgstr "Dnes, %-I:%M"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:246
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:247
-msgid "Today"
-msgstr "Dnes"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:256
-msgid "Yesterday at 00:00:00 PM"
-msgstr "Včera v 00:00:00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:257
-msgid "Yesterday at %-I:%M:%S %p"
-msgstr "Včera v %-I:%M:%S"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:259
-msgid "Yesterday at 00:00 PM"
-msgstr "Včera v 00:00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:260
-msgid "Yesterday at %-I:%M %p"
-msgstr "Včera v %-I:%M"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:262
-msgid "Yesterday, 00:00 PM"
-msgstr "Včera, 00:00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:263
-msgid "Yesterday, %-I:%M %p"
-msgstr "Včera, %-I:%M"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:265
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:266
-msgid "Yesterday"
-msgstr "Včera"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:277
-msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr "Pondělí, 0. červenec 0000 v 00:00:00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:278
-msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-msgstr "%A, %-e. %B %Y v %-H:%M:%S"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:280
-msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr "Pá, 00. kvě 0000 v 00:00:00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:281
-msgid "%a, %b %-d %Y at %-I:%M:%S %p"
-msgstr "%a, %-e. %b %Y v %-H:%M:%S"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:283
-msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr "Pá, 0. kvě 0000 v 00:00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:284
-msgid "%a, %b %-d %Y at %-I:%M %p"
-msgstr "%a, %-e. %b %Y v %-H:%M"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:286
-msgid "Oct 00 0000 at 00:00 PM"
-msgstr "0. kvě 0000 v 00:00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:287
-msgid "%b %-d %Y at %-I:%M %p"
-msgstr "%-e. %b %Y v %-H:%M"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:289
-msgid "Oct 00 0000, 00:00 PM"
-msgstr "0. kvě 0000, 00:00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:290
-msgid "%b %-d %Y, %-I:%M %p"
-msgstr "%-e. %b %Y, %-H:%M"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:292
-msgid "00/00/00, 00:00 PM"
-msgstr "00.00.00, 00:00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:293
-msgid "%m/%-d/%y, %-I:%M %p"
-msgstr "%-d.%m.%y, %-H:%M"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:295
-msgid "00/00/00"
-msgstr "00.00.00"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:296
-msgid "%m/%d/%y"
-msgstr "%d.%m.%Y"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr "Zobrazit více _detailů"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:252
-#, c-format
-msgid "link to %s"
-msgstr "odkaz na %s"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1698
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Selhalo zpracování souboru vstupu pracovního prostředí: %s"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1736
-msgid "No Exec field specified"
-msgstr "Nebylo specifikováno pole Exec"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1756
-msgid "No URL field specified"
-msgstr "Nebyla zadána adresa URL"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1762
-msgid "Invalid desktop file"
-msgstr "Neplatný soubor pracovní plochy"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:2052
-msgid "Slashes are not allowed in filenames"
-msgstr "Lomítka nejsou v názvech souborů povolena"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:2072
-msgid "Toplevel files cannot be renamed"
-msgstr "Soubory v nejvyšší úrovni nelze přejmenovat"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:266
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nelze zjistit původní umístění „%s“ "
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:269
-msgid "The item cannot be restored from trash"
-msgstr "Soubor nelze z koše obnovit"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-progress-info.c:192
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "Připravuje se"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:361
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Sloučit složku „%s“?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:364
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1338,544 +1141,168 @@ msgstr ""
 "Pokud při slučování bude kterýkoliv ze souborů ve složce v konfliktu s "
 "kopírovanými soubory, budete před jeho nahrazením dotázáni na potvrzení."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:369
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Starší složka se stejným názvem již existuje v „%s“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:373
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Novější složka se stejným názvem již existuje v „%s“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:377
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Jiná složka se stejným názvem již existuje v „%s“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:382
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
 msgstr "Nahrazením se odstraní všechny soubory ve složce."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:384
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Nahradit složku „%s“?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:386
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Složka se stejným názvem již existuje v „%s“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:391
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Nahradit soubor „%s“?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:393
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will overwrite its content."
 msgstr "Při nahrazení se přepíše jeho obsah."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:397
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Starší soubor se stejným názvem již existuje v „%s“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:401
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Novější soubor se stejným názvem již existuje v „%s“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:405
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Jiný soubor se stejným názvem již existuje v „%s“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
 msgid "Original file"
 msgstr "Původní soubor"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:482
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
 msgid "Size:"
 msgstr "Velikost:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:485
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
 msgid "Type:"
 msgstr "Typ:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:488
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
 msgid "Last modified:"
 msgstr "Naposledy změněno:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:481
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
 msgstr "Nahradit s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:506
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
 msgstr "Sloučit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:700
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
 msgstr "Vybrat nový název pro _cíl"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:714
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
 msgstr "Obnovit výchozí"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:726
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
 msgstr "Použít tuto akci na všechny soubory"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:737
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:201
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:200
 msgid "_Skip"
 msgstr "Pře_skočit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:742
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
 msgid "Re_name"
 msgstr "Přejme_novat"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:748
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
 msgstr "Nahradit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:821
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
 msgstr "Konflikt souborů"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (neplatný Unicode)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "Smazat „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Smazat %d duplikátních položek"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Přesunout „%s“ zpět do „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Přejmenovat „%s“ na „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Obnovit „%s“ do „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Přesunout „%s“ zpět do koše"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Smazat odkaz k „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Obnovit původní oprávnění položek v „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Vrátit původní oprávnění „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Obnovit skupinu položky „%s“ na „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Obnovit vlastníka „%s“ na „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Kopírovat %d položek do „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Kopírovat „%s“ do „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Přesunout „%s“ do „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Vytvořit nový soubor „%s“ ze šablony "
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Vytvořit prázdný soubor „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Vytvořit novou složku „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Přesunout „%s“ do koše"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Obnovit „%s“ z koše"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Vytvořit odkazy k %d položkám"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Vytvořit odkaz k „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Nastavit oprávnění položek v „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Nastavit oprávnění „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Nastavit skupinu položky „%s“ na „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Nastavit vlastníka „%s“ na „%s“"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:202
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "Pře_skočit vše"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:203
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "Z_novu"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:204
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "Odstranit _vše"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:205
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "_Nahradit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:206
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "Nahradit _vše"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:207
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "_Sloučit"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:208
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "Sloučit _vše"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:209
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "Přesto kopírov_at"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:295
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -1883,8 +1310,8 @@ msgstr[0] "%'d sekunda"
 msgstr[1] "%'d sekundy"
 msgstr[2] "%'d sekund"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:300
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:311
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:299
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -1892,7 +1319,7 @@ msgstr[0] "%'d minuta"
 msgstr[1] "%'d minuty"
 msgstr[2] "%'d minut"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:310
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -1900,7 +1327,7 @@ msgstr[0] "%'d hodina"
 msgstr[1] "%'d hodiny"
 msgstr[2] "%'d hodin"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:318
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1908,110 +1335,110 @@ msgstr[0] "přibližně %'d hodina"
 msgstr[1] "přibližně %'d hodiny"
 msgstr[2] "přibližně %'d hodin"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:394
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "Odkaz na %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:398
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "Další odkaz na %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:414
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d. odkaz na %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:418
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d. odkaz na %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:422
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d. odkaz na %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:426
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d. odkaz na %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:464
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:466
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:469
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:471
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:473
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:483
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:468
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:470
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:472
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:476
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:478
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:480
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:497
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:499
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:502
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:504
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:506
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:520
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:501
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:503
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:505
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:514
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:516
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:518
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:618
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:626
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1377
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Jste si jisti, že chcete z koše trvale odstranit „%B“?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1380
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -2026,24 +1453,24 @@ msgstr[1] ""
 msgstr[2] ""
 "Jste si jisti, že chcete z koše trvale odstranit %'d vybraných položek?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1390
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1458
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1394
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Pokud odstraníte položku, bude natrvalo ztracena."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1411
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "Vyprázdnit koš?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1415
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Všechny položky v koši budou trvale odstraněny."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1446
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Jste si jisti, že chcete trvale odstranit „%B“?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1449
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -2052,12 +1479,12 @@ msgstr[0] "Jste si jisti, že chcete trvale odstranit %'d vybranou položku?"
 msgstr[1] "Jste si jisti, že chcete trvale odstranit %'d vybrané položky?"
 msgstr[2] "Jste si jisti, že chcete trvale odstranit %'d vybraných položek?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1474
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1506
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1478
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "Soubory se odstraňují"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1500
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
@@ -2065,22 +1492,22 @@ msgstr[0] "zbývá smazat %'d soubor"
 msgstr[1] "zbývá smazat %'d soubory"
 msgstr[2] "zbývá smazat %'d souborů"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1520
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "zbývá %T"
 msgstr[1] "zbývají %T"
 msgstr[2] "zbývá %T"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1588
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1622
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1661
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1738
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2569
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1592
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1626
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1665
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1742
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
 msgstr "Chyba při odstraňování."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1592
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -2088,45 +1515,45 @@ msgstr ""
 "Soubory ve složce „%B“ nelze odstranit, protože nemáte oprávnění na jejich "
 "zobrazení."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1595
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2628
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3624
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1599
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2632
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "Nastala chyba při zjišťování informací o souborech ve složce „%B“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1604
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3633
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1608
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
 msgstr "Pře_skočit soubory"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1625
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
 "Složku „%B“ nelze odstranit, protože nemáte oprávnění na její zobrazení."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1628
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2667
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3669
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1632
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2671
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Došlo k chybě při čtení složky „%B“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1662
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "Nelze odstranit složku %B."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1739
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "Došlo k chybě při odstraňování %B."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1815
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1827
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1819
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "Soubory se přesouvají do koše"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1829
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
@@ -2134,37 +1561,37 @@ msgstr[0] "zbývá %'d soubor k přesunutí do koše"
 msgstr[1] "zbývají %'d soubory k přesunutí do koše"
 msgstr[2] "zbývá %'d souborů k přesunutí do koše"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1884
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1885
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2065
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
 msgstr "Soubory se přesouvají do koše"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2067
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
 msgstr "Soubory se odstraňují"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2139
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
 msgstr "Nelze vysunout %V"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2141
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
 msgstr "Nelze odpojit %V"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2296
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Chcete před odpojením vysypat koš?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2298
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -2172,20 +1599,20 @@ msgstr ""
 "Aby bylo možné obnovit volný prostor na tomto svazku, je nutné vyprázdnit "
 "koš. Všechny položky v koši na tomto svazku budou trvale ztraceny."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2304
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
 msgstr "_Nevyprazdňovat koš"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2359
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
 msgstr "Vyprazdňuje se koš"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2426
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Nelze připojit %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2504
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
@@ -2193,7 +1620,7 @@ msgstr[0] "Připravuje se kopírování %'d souboru (%S)"
 msgstr[1] "Připravuje se kopírování %'d souborů (%S)"
 msgstr[2] "Připravuje se kopírování %'d souborů (%S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2510
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
@@ -2201,7 +1628,7 @@ msgstr[0] "Připravuje se přesun %'d souboru (%S)"
 msgstr[1] "Připravuje se přesun %'d souborů (%S)"
 msgstr[2] "Připravuje se přesun %'d souborů (%S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2516
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
@@ -2209,7 +1636,7 @@ msgstr[0] "Připravuje se odstranění %'d souboru (%S)"
 msgstr[1] "Připravuje se odstranění %'d souborů (%S)"
 msgstr[2] "Připravuje se odstranění %'d souborů (%S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2522
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
@@ -2217,24 +1644,24 @@ msgstr[0] "Připravuje se přesun %'d souboru do koše"
 msgstr[1] "Připravuje se přesun %'d souborů do koše"
 msgstr[2] "Připravuje se přesun %'d souborů do koše"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2565
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3485
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3616
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3661
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2569
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3489
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3620
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
 msgstr "Chyba při kopírování."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2567
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3614
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3659
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2571
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3618
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
 msgstr "Chyba při přesunu."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2571
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
 msgstr "Chyba při přesunu souborů do koše."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2625
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -2242,105 +1669,105 @@ msgstr ""
 "Soubory ve složce „%B“ nelze spravovat, protože nemáte oprávnění pro jejich "
 "zobrazení."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2664
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "Složku „%B“ nelze spravovat, protože nemáte oprávnění na její čtení."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2741
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "Soubor „%B“ nelze spravovat, protože nemáte oprávnění jej číst."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2744
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
 msgstr "Při získávání informací o „%B“ došlo k chybě."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2844
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2886
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2919
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2949
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2848
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2890
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2923
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
 msgstr "Chyba při kopírování do „%B“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2848
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
 msgstr "Nemáte oprávnění přistupovat k cílové složce."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2850
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
 msgstr "Při získávání informací o cíli došlo k chybě."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2887
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
 msgstr "Cílové umístění není složka."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2920
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
 "V cíli není dostatek místa. Zkuste uvolnit místo odstraněním souborů."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2922
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Dostupno je %S, ale vyžadováno je %S."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2950
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
 msgstr "Cílové umístění je pouze pro čtení."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3011
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Přesouvá se „%B“ do „%B“"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3012
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Kopíruje se „%B“ do „%B“"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3016
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
 msgstr "Zdvojuje se „%B“"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3020
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Přesouvá se %'d soubor (z „%B“) do „%B“"
 msgstr[1] "Přesouvají se %'d soubory (z „%B“) do „%B“"
 msgstr[2] "Přesouvá se %'d souborů (z „%B“) do „%B“"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3023
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Kopíruje se %'d soubor (z „%B“) do „%B“"
 msgstr[1] "Kopírují se %'d soubory (z „%B“) do „%B“"
 msgstr[2] "Kopíruje se %'d souborů (z „%B“) do „%B“"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3030
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Zdvojuje se %'d soubor (v „%B“)"
 msgstr[1] "Zdvojují se %'d soubory (v „%B“)"
 msgstr[2] "Zdvojuje se %'d souborů (v „%B“)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3039
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Přesouvá se %'d soubor do „%B“"
 msgstr[1] "Přesouvají se %'d soubory do „%B“"
 msgstr[2] "Přesouvá se %'d souborů do „%B“"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3043
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Kopíruje se %'d soubor do „%B“"
 msgstr[1] "Kopírují se %'d soubory do „%B“"
 msgstr[2] "Kopíruje se %'d souborů do „%B“"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3048
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -2348,19 +1775,19 @@ msgstr[0] "Zdvojuje se %'d soubor"
 msgstr[1] "Zdvojují se %'d soubory"
 msgstr[2] "Zdvojuje se %'d souborů"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3099
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
 msgstr "%S z %S"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3110
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S z %S — zbývá %T (%S/s)"
 msgstr[1] "%S z %S — zbývají %T (%S/s)"
 msgstr[2] "%S z %S — zbývá %T (%S/s)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3489
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -2368,11 +1795,11 @@ msgstr ""
 "Složku „%B“ nelze zkopírovat, protože nemáte oprávnění vytvořit ji v cílovém "
 "umístění."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3492
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Při vytváření složky „%B“ došlo k chybě."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3621
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -2380,86 +1807,86 @@ msgstr ""
 "Soubory ve složce „%B“ nelze zkopírovat, protože nemáte oprávnění na jejich "
 "zobrazení."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3666
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3670
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 "Složku „%B“ nelze zkopírovat, protože nemáte oprávnění na její čtení."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3711
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4412
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5000
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3715
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4416
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
 msgstr "Chyba při přesunu „%B“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3712
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
 msgstr "Nelze odstranit zdrojovou složku."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3797
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3838
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4414
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4485
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3801
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3842
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4418
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
 msgstr "Chyba při kopírování „%B“."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3798
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Nelze odstranit soubory z již existující složky %F."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3839
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Nelze odstranit již existující soubor %F."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4168
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4840
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4172
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
 msgstr "Složka nemůže být přesunuta sama do sebe."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4169
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4841
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4173
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
 msgstr "Složka nemůže být zkopírována sama do sebe."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4170
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4842
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4174
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
 msgstr "Cílové umístění je uvnitř zdrojové složky."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4201
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
 msgstr "Nelze přesunout soubor sám na sebe."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4202
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot copy a file over itself."
 msgstr "Nelze kopírovat soubor sám na sebe."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4203
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4207
 msgid "The source file would be overwritten by the destination."
 msgstr "Zdrojový soubor by byl přepsán cílovým."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4416
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "Nelze odstranit již existující soubor stejného názvu v %F."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4486
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Při kopírování souboru do %F došlo k chybě."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4714
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
 msgstr "Soubory se kopírují"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4740
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
 msgstr "Připravuje se přesun do „%B“"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4752
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -2467,20 +1894,20 @@ msgstr[0] "Připravuje se přesun %'d souboru"
 msgstr[1] "Připravuje se přesun %'d souborů"
 msgstr[2] "Připravuje se přesun %'d souborů"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5001
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Při přesunu souboru do %F došlo k chybě."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5264
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
 msgstr "Soubory se přesouvají"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5294
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
 msgstr "Vytváří se odkazy v „%B“"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5305
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -2488,67 +1915,632 @@ msgstr[0] "Vytváří se odkaz k %'d souboru"
 msgstr[1] "Vytváří se odkazy k %'d souborům"
 msgstr[2] "Vytváří se odkazy k %'d souborům"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5440
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
 msgstr "Chyba při vytváření odkazu na %B."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5442
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
 msgstr "Symbolické odkazy jsou podporovány pouze pro místní soubory"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5445
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
 msgstr "Tento cíl nepodporuje symbolické odkazy."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5448
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Při vytváření symbolického odkazu v %F došlo k chybě."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5776
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5779
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5780
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
 msgstr "Nastavuje se oprávnění"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6030
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
 msgstr "nepojmenovaná složka"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6038
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
 msgstr "nový soubor"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6209
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
 msgstr "Chyba při vytváření složky %B."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6211
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
 msgstr "Chyba při vytváření souboru %B."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6213
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Při vytváření složky v %F došlo k chybě."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6530
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
 msgstr "Vyprazdňuje se koš"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:241
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "odkaz na %s"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Selhalo zpracování souboru vstupu pracovního prostředí: %s"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1740
+msgid "No Exec field specified"
+msgstr "Nebylo specifikováno pole Exec"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1760
+msgid "No URL field specified"
+msgstr "Nebyla zadána adresa URL"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1766
+msgid "Invalid desktop file"
+msgstr "Neplatný soubor pracovní plochy"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2056
+msgid "Slashes are not allowed in filenames"
+msgstr "Lomítka nejsou v názvech souborů povolena"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2076
+msgid "Toplevel files cannot be renamed"
+msgstr "Soubory v nejvyšší úrovni nelze přejmenovat"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Dnes v %-I:%M"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Včera v %-I:%M"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "Připravuje se"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "Smazat „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Smazat %d duplikátních položek"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Přesunout „%s“ zpět do „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Přejmenovat „%s“ na „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Obnovit „%s“ do „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Přesunout „%s“ zpět do koše"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Smazat odkaz k „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Obnovit původní oprávnění položek v „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Vrátit původní oprávnění „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Obnovit skupinu položky „%s“ na „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Obnovit vlastníka „%s“ na „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Kopírovat %d položek do „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Kopírovat „%s“ do „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Přesunout „%s“ do „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Vytvořit nový soubor „%s“ ze šablony "
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Vytvořit prázdný soubor „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Vytvořit novou složku „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Přesunout „%s“ do koše"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Obnovit „%s“ z koše"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "Vytvořit odkazy k %d položkám"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Vytvořit odkaz k „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Nastavit oprávnění položek v „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Nastavit oprávnění „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Nastavit skupinu položky „%s“ na „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Nastavit vlastníka „%s“ na „%s“"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:119
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nelze zjistit původní umístění „%s“ "
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "Soubor nelze z koše obnovit"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (neplatný Unicode)"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
+msgid "Show more _details"
+msgstr "Zobrazit více _detailů"
+
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:245
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:249
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:253
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:333
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:722
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
 msgstr "Přejít do %s"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
+msgid "View as grid"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
+msgid "View as list"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
+msgid "View as column"
+msgstr ""
+
+#~ msgid "Mouse auto-selection speed:"
+#~ msgstr "Rychlost automatického vybírání myší:"
+
+#~ msgid "Default File Manager:"
+#~ msgstr "Výchozí správce souborů:"
+
+#~ msgid "Behavior"
+#~ msgstr "Chování"
+
+#~ msgid "small"
+#~ msgstr "malá"
+
+#~ msgid "medium"
+#~ msgstr "střední"
+
+#~ msgid "large"
+#~ msgstr "velká"
+
+#~ msgid "extra-large"
+#~ msgstr "obří"
+
+#~ msgid "Icon Size"
+#~ msgstr "Velikost ikony"
+
+#~ msgid "Icon size"
+#~ msgstr "Velikost ikony"
+
+#~ msgid "Show copy dialog"
+#~ msgstr "Zobrazit dialog kopírování"
+
+#~ msgid "Cancel all in-progress actions"
+#~ msgstr "Zrušit všechny probíhající akce"
+
+#~ msgid "Sidebar icon size:"
+#~ msgstr "Velikost ikon v postranním panelu:"
+
+#~ msgid "Appearance"
+#~ msgstr "Vzhled"
+
+#~ msgid "Browse your files"
+#~ msgstr "Procházet soubory"
+
+#~ msgid "File Manager"
+#~ msgstr "Správce souborů"
+
+#~ msgid "Today, 00:00 PM"
+#~ msgstr "Dnes, 00:00"
+
+#~ msgid "Today, %-I:%M %p"
+#~ msgstr "Dnes, %-I:%M"
+
+#~ msgid "Today at 00:00 PM"
+#~ msgstr "Dnes v 00:00:00"
+
+#~ msgid "Today"
+#~ msgstr "Dnes"
+
+#~ msgid "Yesterday at 00:00:00 PM"
+#~ msgstr "Včera v 00:00:00"
+
+#~ msgid "Yesterday at 00:00 PM"
+#~ msgstr "Včera v 00:00"
+
+#~ msgid "Yesterday, 00:00 PM"
+#~ msgstr "Včera, 00:00"
+
+#~ msgid "Yesterday at %-I:%M:%S %p"
+#~ msgstr "Včera v %-I:%M:%S"
+
+#~ msgid "Mon, Oct 00 0000 at 00:00 PM"
+#~ msgstr "Pá, 0. kvě 0000 v 00:00"
+
+#~ msgid "%a, %b %-d %Y at %-I:%M %p"
+#~ msgstr "%a, %-e. %b %Y v %-H:%M"
+
+#~ msgid "Oct 00 0000 at 00:00 PM"
+#~ msgstr "0. kvě 0000 v 00:00"
+
+#~ msgid "%b %-d %Y at %-I:%M %p"
+#~ msgstr "%-e. %b %Y v %-H:%M"
+
+#~ msgid "%a, %b %-d %Y at %-I:%M:%S %p"
+#~ msgstr "%a, %-e. %b %Y v %-H:%M:%S"
+
+#~ msgid "Mon, Oct 00 0000 at 00:00:00 PM"
+#~ msgstr "Pá, 00. kvě 0000 v 00:00:00"
+
+#~ msgid "%A, %B %-d %Y at %-I:%M:%S %p"
+#~ msgstr "%A, %-e. %B %Y v %-H:%M:%S"
+
+#~ msgid "Wednesday, September 00 0000 at 00:00:00 PM"
+#~ msgstr "Pondělí, 0. červenec 0000 v 00:00:00"
+
+#~ msgid "Yesterday"
+#~ msgstr "Včera"
+
+#~ msgid "Yesterday, %-I:%M %p"
+#~ msgstr "Včera, %-I:%M"
+
+#~ msgid "00/00/00"
+#~ msgstr "00.00.00"
+
+#~ msgid "%m/%d/%y"
+#~ msgstr "%d.%m.%Y"
+
+#~ msgid "Oct 00 0000, 00:00 PM"
+#~ msgstr "0. kvě 0000, 00:00"
+
+#~ msgid "%b %-d %Y, %-I:%M %p"
+#~ msgstr "%-e. %b %Y, %-H:%M"
+
+#~ msgid "%m/%-d/%y, %-I:%M %p"
+#~ msgstr "%-d.%m.%y, %-H:%M"
+
+#~ msgid "00/00/00, 00:00 PM"
+#~ msgstr "00.00.00, 00:00"

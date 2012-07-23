@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-05-30 00:35-0700\n"
+"POT-Creation-Date: 2012-07-22 21:31-0500\n"
 "PO-Revision-Date: 2012-06-09 18:36+0000\n"
 "Last-Translator: Quinten Schelfhout <dequicky@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -15,520 +15,853 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-06-13 05:33+0000\n"
-"X-Generator: Launchpad (build 15389)\n"
+"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
+"X-Generator: Launchpad (build 15654)\n"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:31
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "Home"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:143
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "Bestandssysteem"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "Eigenschappen"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:117
+msgid "Info"
+msgstr "Informatie"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:125
+msgid "Permissions"
+msgstr "Rechten"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:137
+msgid "Preview"
+msgstr "Voorbeeld"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:338
+msgid "Created"
+msgstr "Aangemaakt"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:340
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:345
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Modified"
+msgstr "Gewijzigd"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:343
+msgid "Last Access"
+msgstr "Laatst geopend"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:349
+msgid "Deleted"
+msgstr "Verwijderd"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:354
+msgid "MimeType"
+msgstr "Mimetype"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:362
+msgid "MimeTypes"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
+msgid "Location"
+msgstr "Locatie"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:368
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
+msgid "Target"
+msgstr "Doel"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:374
+msgid "Origin Location"
+msgstr "Oorspronkelijke lokatie"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:412
+msgid "Other application..."
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:436
+msgid "Open with"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:452
+msgid "Device usage"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
+msgid "Read"
+msgstr "Lees"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:602
+msgid "Write"
+msgstr "Schrijf"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:607
+msgid "Execute"
+msgstr "Uitvoeren"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:825
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:838
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:346
+msgid "Owner"
+msgstr "Eigenaar"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:830
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:842
+msgid "Group"
+msgstr "Groep"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:846
+msgid "Everyone"
+msgstr "Iedereen"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:1126
+msgid "Select an aplication to open "
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
 msgstr "Files Voorkeuren"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:54
-msgid "Single click to open:"
-msgstr "Enkel klikken om te openen:"
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
+msgid "General"
+msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:64
-msgid "Mouse auto-selection speed:"
-msgstr "Autoselectiesnelheid van de muis:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:80
-msgid "Default File Manager:"
-msgstr "Standaard bestandsverkenner"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:89
-msgid "Behavior"
-msgstr "Gedrag"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:96
-msgid "small"
-msgstr "klein"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:97
-msgid "medium"
-msgstr "gemiddeld"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:98
-msgid "large"
-msgstr "groot"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:99
-msgid "extra-large"
-msgstr "extra groot"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:120
-msgid "Sidebar icon size:"
-msgstr "Icoongrootte zijbalk"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:131
-msgid "iso"
-msgstr "iso"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:132
-msgid "locale"
-msgstr "lokalisatie"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:133
-msgid "informal"
-msgstr "informeel"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:140
-msgid "Date format:"
-msgstr "Datumformaat:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:148
-msgid "Appearance"
-msgstr "Uiterlijk"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/SettingsDialog.vala:197
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
 msgstr "Extensies"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:72
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:207
+msgid "Single click to open:"
+msgstr "Enkel klikken om te openen:"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
+msgid "Mouse auto-selection:"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
+msgid "<small><i>Slow</i></small>"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:235
+msgid "<small><i>Fast</i></small>"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:250
+msgid "Date format:"
+msgstr "Datumformaat:"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:253
+msgid "iso"
+msgstr "iso"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:254
+msgid "locale"
+msgstr "lokalisatie"
+
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:255
+msgid "informal"
+msgstr "informeel"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
+msgid "Name"
+msgstr "Naam"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Soort"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:343
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Grootte"
+
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "Map bestaat niet"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:75
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Marlin can't find the folder %s"
 msgstr "Marlin kan de map %s niet vinden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "Maken"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "De map %s aanmaken"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ViewContainer.vala:141
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:324
-msgid "Home"
-msgstr "Home"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ViewContainer.vala:143
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:394
-msgid "File System"
-msgstr "Bestandssysteem"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:137
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3406
-msgid "Set as default"
-msgstr "Als standaard instellen"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:142
-msgid "Ignore"
-msgstr "Negeren"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:454
-msgid "Undo"
-msgstr "Ongedaan Maken"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:455
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:749
-msgid "Undo the last action"
-msgstr "Laatste actie ongedaan maken"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:464
-msgid "Redo"
-msgstr "Opnieuw"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:465
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:752
-msgid "Redo the last action"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:720
-msgid "_File"
-msgstr "_Bestand"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:721
-msgid "_Edit"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:722
-msgid "_View"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:723
-msgid "_Go"
-msgstr "_Ga"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:724
-msgid "_Help"
-msgstr "_Help"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:726
-msgid "New _Window"
-msgstr "Nieuw _venster"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:727
-msgid "Open another Marlin window for the displayed location"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:730
-msgid "New _Tab"
-msgstr "Nieuw _tabblad"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:731
-msgid "Open another tab for the displayed location"
-msgstr "Nog een tabblad openen voor de weergegeven locatie"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:734
-msgid "_Close"
-msgstr "_Sluiten"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:735
-msgid "Close this folder"
-msgstr "Deze map sluiten"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:738
-msgid "Customize _Toolbar..."
-msgstr "_Werkbalk aanpassen"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:739
-msgid "Easily edit the toolbar layout"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:742
-msgid "Preferences"
-msgstr "Voorkeuren"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:743
-msgid "Change Marlin's preferences"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:748
-msgid "_Undo"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:751
-msgid "_Redo"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:754
-msgid "Open _Parent"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:755
-msgid "Open the parent folder"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:757
-msgid "_Back"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:758
-msgid "Go to the previous visited location"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:761
-msgid "_Forward"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:762
-msgid "Go to the next visited location"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:764
-msgid "_Reload"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:765
-msgid "Reload the current location"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:768
-msgid "_Home Folder"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:769
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:329
-msgid "Open your personal folder"
-msgstr "Open uw persoonlijke map"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:772
-msgid "_Trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:773
-msgid "Open your personal trash folder"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:776
-msgid "_Network"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:777
-msgid "Browse bookmarked and local network locations"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:780
-msgid "Zoom _In"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:781
-msgid "Increase the view size"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:792
-msgid "Zoom _Out"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:793
-msgid "Decrease the view size"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:800
-msgid "Normal Si_ze"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:801
-msgid "Use the normal view size"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:804
-msgid "Next Tab"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:808
-msgid "Previous Tab"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:812
-msgid "Connect to _Server..."
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:813
-msgid "Connect to a remote computer or shared disk"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:816
-msgid "_About"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:817
-msgid "Display credits"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:820
-msgid "Report a Problem..."
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:821
-msgid "File a bug on Launchpad"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:824
-msgid "Get Help Online..."
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:828
-msgid "Translate This Application..."
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:837
-msgid "Show _Hidden Files"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:838
-msgid "Toggle the display of hidden files in the current window"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:843
-msgid "Show _Desktop Files"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:844
-msgid "Toggle the display of desktop files"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:848
-msgid "_Context Pane"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:849
-msgid "Change the visibility of the context pane"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:853
-msgid "_Menubar"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:854
-msgid "Change the visibility of this window's menubar"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:858
-msgid "_Places"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:859
-msgid "Change the visibility of this window's side pane"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:867
-msgid "Icon"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:870
-msgid "List"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:873
-msgid "Compact"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/Window.vala:876
-msgid "Columns"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/LocationBar.vala:100
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:588
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:110
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:370
+msgid "Trash"
+msgstr "Prullenbak"
+
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:111
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:588
 msgid "Network"
 msgstr "Netwerk"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:317
-msgid "Name"
-msgstr "Naam"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:152
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3382
+msgid "Set as default"
+msgstr "Als standaard instellen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:318
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Soort"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:157
+msgid "Ignore"
+msgstr "Negeren"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:321
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:375
-msgid "Target"
-msgstr "Doel"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:497
+msgid "Undo"
+msgstr "Ongedaan Maken"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:323
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Grootte"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:498
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:792
+msgid "Undo the last action"
+msgstr "Laatste actie ongedaan maken"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:325
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:347
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "Gewijzigd"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:507
+msgid "Redo"
+msgstr "Opnieuw"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/ContextView.vala:326
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:832
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:845
-msgid "Owner"
-msgstr "Eigenaar"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "Eigenschappen"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:118
-msgid "Info"
-msgstr "Informatie"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:126
-msgid "Permissions"
-msgstr "Rechten"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:138
-msgid "Preview"
-msgstr "Voorbeeld"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:345
-msgid "Created"
-msgstr "Aangemaakt"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:350
-msgid "Last Access"
-msgstr "Laatst geopend"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:356
-msgid "Deleted"
-msgstr "Verwijderd"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:361
-msgid "MimeType"
-msgstr "Mimetype"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:369
-msgid "MimeTypes"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:508
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:795
+msgid "Redo the last action"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:373
-msgid "Location"
-msgstr "Locatie"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:763
+msgid "_File"
+msgstr "_Bestand"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:381
-msgid "Origin Location"
-msgstr "Oorspronkelijke lokatie"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:419
-msgid "Other application..."
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:764
+msgid "_Edit"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:443
-msgid "Open with"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:765
+msgid "_View"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:459
-msgid "Device usage"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:766
+msgid "_Go"
+msgstr "_Ga"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:767
+msgid "_Help"
+msgstr "_Help"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:769
+msgid "New _Window"
+msgstr "Nieuw _venster"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:770
+msgid "Open another Marlin window for the displayed location"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:604
-msgid "Read"
-msgstr "Lees"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:773
+msgid "New _Tab"
+msgstr "Nieuw _tabblad"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:609
-msgid "Write"
-msgstr "Schrijf"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:774
+msgid "Open another tab for the displayed location"
+msgstr "Nog een tabblad openen voor de weergegeven locatie"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:614
-msgid "Execute"
-msgstr "Uitvoeren"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:777
+msgid "_Close"
+msgstr "_Sluiten"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:837
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:849
-msgid "Group"
-msgstr "Groep"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:778
+msgid "Close this folder"
+msgstr "Deze map sluiten"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:853
-msgid "Everyone"
-msgstr "Iedereen"
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:781
+msgid "Customize _Toolbar..."
+msgstr "_Werkbalk aanpassen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/View/PropertiesWindow.vala:1109
-msgid "Select an aplication to open "
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:782
+msgid "Easily edit the toolbar layout"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:124
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:785
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:786
+msgid "Change Marlin's preferences"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:791
+msgid "_Undo"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:794
+msgid "_Redo"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:797
+msgid "Open _Parent"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:798
+msgid "Open the parent folder"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:800
+msgid "_Back"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:801
+msgid "Go to the previous visited location"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:804
+msgid "_Forward"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:805
+msgid "Go to the next visited location"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:807
+msgid "_Reload"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:808
+msgid "Reload the current location"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:811
+msgid "_Home Folder"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:812
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "Open uw persoonlijke map"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:815
+msgid "_Trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:816
+msgid "Open your personal trash folder"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:819
+msgid "_Network"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:820
+msgid "Browse bookmarked and local network locations"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:823
+msgid "Zoom _In"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:824
+msgid "Increase the view size"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:835
+msgid "Zoom _Out"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:836
+msgid "Decrease the view size"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:843
+msgid "Normal Si_ze"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:844
+msgid "Use the normal view size"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:847
+msgid "Next Tab"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:851
+msgid "Previous Tab"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:855
+msgid "Connect to _Server..."
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:856
+msgid "Connect to a remote computer or shared disk"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:859
+msgid "_About"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:860
+msgid "Display credits"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:863
+msgid "Report a Problem..."
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:864
+msgid "File a bug on Launchpad"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:867
+msgid "Get Help Online..."
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:871
+msgid "Translate This Application..."
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:880
+msgid "Show _Hidden Files"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:881
+msgid "Toggle the display of hidden files in the current window"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:886
+msgid "Show _Desktop Files"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:887
+msgid "Toggle the display of desktop files"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:891
+msgid "_Context Pane"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:892
+msgid "Change the visibility of the context pane"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:896
+msgid "_Menubar"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:897
+msgid "Change the visibility of this window's menubar"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:901
+msgid "_Places"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:902
+msgid "Change the visibility of this window's side pane"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:910
+msgid "Icon"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:913
+msgid "List"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:916
+msgid "Compact"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:919
+msgid "Columns"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1151
+msgid "Invalid filename provided by XDS drag site"
+msgstr "Ongeldige bestandsnaam voorzien door XDS drag site"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1309
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Link voor de URL \"%s\" maken mislukt"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1794
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Gebruik \"%s\" om het selecteerde item te openen"
+msgstr[1] "Gebruik \"%s\" om de geselecteerde items te openen"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1941
+#, c-format
+msgid "_Open With %s"
+msgstr "_Openen met %s"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1947
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3459
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2399
+msgid "_Open"
+msgstr "_Open"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1963
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1967
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3471
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2407
+msgid "Open in New _Tab"
+msgstr "Open in Nieuwe _Tab"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1972
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1976
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2414
+msgid "Open in New _Window"
+msgstr "Open in Nieuw _Venster"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3431
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3435
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3439
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3442
+msgid "Paste Into Folder"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3443
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3446
+msgid "_Rename..."
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3447
+msgid "Rename selected item"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3450
+msgid "Create New _Folder"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3451
+msgid "Create a new empty folder inside this folder"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3453
+msgid "Create New _File"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3455
+msgid "_Empty Document"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3456
+msgid "Create a new empty document inside this folder"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3460
+msgid "Open the selected item"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3467
+msgid "Open in new Window"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3468
+msgid "Open each selected item in a new window"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3472
+msgid "Open each selected item in a new tab"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3474
+msgid "Open Wit_h"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3475
+msgid "Choose a program with which to open the selected item"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3477
+msgid "Other _Application..."
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3478
+msgid "Choose another application with which to open the selected item"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3481
+msgid "Mo_ve to Trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3482
+msgid "Move each selected item to the Trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3485
+msgid "_Delete Permanently"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3486
+msgid "Delete each selected item, without moving to the Trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3489
+msgid "_Restore"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3493
+#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3190
+msgid "Select All"
+msgstr "Alles Selecteren"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3497
+msgid "_Properties"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3498
+msgid "View or modify the properties of each selected item"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3605
+msgid "Set Color:"
+msgstr "Kies Kleur:"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:199
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:139
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:186
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:616
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:572
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:82
+msgid "This folder is empty."
+msgstr "Deze map is leeg."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Er is niets op het klmebord om te plakken"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
+msgid "File Operations"
+msgstr "Bestandsbewerkingen"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
+msgid "Show Details"
+msgstr "_Details tonen"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d bestandsbewerking actief"
+msgstr[1] "%'d bestandsbewerkingen actief"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
+msgid "Show Copy Dialog"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
+msgid "Cancel All In-progress Actions"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
+msgid "All file operations have been successfully completed"
+msgstr "Alle bestandsoperaties zijn succesvol voltooid"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:445
+msgid "Customize Toolbar"
+msgstr "Werkbalk Aanpassen"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:464
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
+msgstr ""
+"Selecteer de te vertonen onderdelen voor de werkbalk. Onderdelen kunnen "
+"opnieuw geordend worden door ze te verslepen."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:478
+msgid "Available Items"
+msgstr "Beschikbare Items"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:497
+msgid "Displayed Items"
+msgstr "Getoonde Items"
+
+#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Invoermethodes"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Enkele klik"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Of de items geactiveerd kunnen worden met een enkele keer klikken"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "Enkele Klik Timeout"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr ""
+"De tijd waarna een item onder de muiscursor automatisch wordt geselecteerd "
+"in enkele klik-modus."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "Hierheen _Verplaatsen"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "Hierheen _Kopiëren"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "Hierheen Ver_wijzen"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "Als _Achtergrond Instellen"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Kon bestand \"%s\" niet uitvoeren"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:127
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
 msgstr "Publieke FTP"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:129
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
 msgstr "FTP (met aanmelding)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:132
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
 msgstr "Windows-netwerk"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:134
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:136
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Beveiligde WebDAV (HTTPS)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:183
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
 msgstr "Verbinden…"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:207
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -536,141 +869,114 @@ msgstr ""
 "Kon de lijst met ondersteunde servermethoden niet laden.\n"
 "Controleer de installatie van gvfs."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:285
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "De map \"%s\" kan niet worden geopend op \"%s\"."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:295
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "De server ‘%s’ kan niet gevonden worden."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:330
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
 msgstr "Opnieuw proberen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:395
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
 msgstr "Controleer de gebruikersgegevens."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:425
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
 msgstr "Ga verder"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:750
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1140
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
 msgstr "_Verbinden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:875
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
 msgstr "Verbinden met server"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:893
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
 msgstr "Serverdetails"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:917
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
 msgstr "_Server:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:937
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
 msgstr "_Poort:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:955
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
 msgstr "_Type:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1024
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
 msgstr "Gedeelde m_ap:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1039
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
 msgstr "_Map:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1057
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
 msgstr "Gebruikersgegevens"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1080
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
 msgstr "_Domeinnaam:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1095
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1110
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
 msgstr "Wacht_woord:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1126
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
 msgstr "Dit wachtwoo_rd onthouden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-connect-server-dialog.c:1229
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
 msgstr "Bewerking geannuleerd"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:113
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:163
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:471
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:527
-msgid "File Operations"
-msgstr "Bestandsbewerkingen"
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:122
-msgid "Show Details"
-msgstr "_Details tonen"
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:157
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:179
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d bestandsbewerking actief"
-msgstr[1] "%'d bestandsbewerkingen actief"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:280
-msgid "Show copy dialog"
-msgstr "Kopieervenster tonen"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:291
-msgid "Cancel all in-progress actions"
-msgstr "Annuleer alle acties die bezig zijn"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-progress-ui-handler.c:528
-msgid "All file operations have been successfully completed"
-msgstr "Alle bestandsoperaties zijn succesvol voltooid"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Er is niets op het klmebord om te plakken"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:416
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:420
 msgid "Show the version of the program."
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:420
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:424
 msgid "Open uri(s) in new tab"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:422
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:426
 msgid "Quit Marlin."
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:424
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:425
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:429
 msgid "[URI...]"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:434
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:438
 msgid ""
 "\n"
 "\n"
@@ -680,652 +986,149 @@ msgstr ""
 "\n"
 "Bestandssysteem doorbladeren met het bestandsbeheer"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-application.c:454
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:458
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan niet gebruikt worden met URI's."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-columns-view.c:82
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:572
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:616
-msgid "This folder is empty."
-msgstr "Deze map is leeg."
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-columns-view.c:186
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:139
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:199
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:779
-msgid "_Move Here"
-msgstr "Hierheen _Verplaatsen"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:784
-msgid "_Copy Here"
-msgstr "Hierheen _Kopiëren"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:789
-msgid "_Link Here"
-msgstr "Hierheen Ver_wijzen"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:794
-msgid "Set as _Background"
-msgstr "Als _Achtergrond Instellen"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:801
-msgid "Cancel"
-msgstr "Annuleren"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-dnd.c:893
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Kon bestand \"%s\" niet uitvoeren"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/eel-editable-label.c:3188
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3517
-msgid "Select All"
-msgstr "Alles Selecteren"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/eel-editable-label.c:3199
-msgid "Input Methods"
-msgstr "Invoermethodes"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-compact-view.c:86
-msgid "Compact directory listing"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-compact-view.c:87
-msgid "Compact view"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1150
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Ongeldige bestandsnaam voorzien door XDS drag site"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1308
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Link voor de URL \"%s\" maken mislukt"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1793
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Gebruik \"%s\" om het selecteerde item te openen"
-msgstr[1] "Gebruik \"%s\" om de geselecteerde items te openen"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1940
-#, c-format
-msgid "_Open With %s"
-msgstr "_Openen met %s"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1946
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3483
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2399
-msgid "_Open"
-msgstr "_Open"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1962
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1966
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3495
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2407
-msgid "Open in New _Tab"
-msgstr "Open in Nieuwe _Tab"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1971
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:1975
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2414
-msgid "Open in New _Window"
-msgstr "Open in Nieuw _Venster"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3455
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3459
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3463
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3466
-msgid "Paste Into Folder"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3467
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3470
-msgid "_Rename..."
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3471
-msgid "Rename selected item"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3474
-msgid "Create New _Folder"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3475
-msgid "Create a new empty folder inside this folder"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3477
-msgid "Create New _File"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3479
-msgid "_Empty Document"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3480
-msgid "Create a new empty document inside this folder"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3484
-msgid "Open the selected item"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3491
-msgid "Open in new Window"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3492
-msgid "Open each selected item in a new window"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3496
-msgid "Open each selected item in a new tab"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3498
-msgid "Open Wit_h"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3499
-msgid "Choose a program with which to open the selected item"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3501
-msgid "Other _Application..."
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3502
-msgid "Choose another application with which to open the selected item"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3505
-msgid "Mo_ve to Trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3506
-msgid "Move each selected item to the Trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3509
-msgid "_Delete Permanently"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3510
-msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3513
-msgid "_Restore"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3521
-msgid "_Properties"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3522
-msgid "View or modify the properties of each selected item"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-directory-view.c:3629
-msgid "Set Color:"
-msgstr "Kies Kleur:"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:445
-msgid "Customize Toolbar"
-msgstr "Werkbalk Aanpassen"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:465
-msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
-msgstr ""
-"Selecteer de te vertonen onderdelen voor de werkbalk. Onderdelen kunnen "
-"opnieuw geordend worden door ze te verslepen."
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:481
-msgid "Available Items"
-msgstr "Beschikbare Items"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-toolbar-editor.c:502
-msgid "Displayed Items"
-msgstr "Getoonde Items"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Enkele klik"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Of de items geactiveerd kunnen worden met een enkele keer klikken"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "Enkele Klik Timeout"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-"De tijd waarna een item onder de muiscursor automatisch wordt geselecteerd "
-"in enkele klik-modus."
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:310
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
 msgstr "Persoonlijk"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:315
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
 msgstr "Uw gebruikelijke plaatsen en bladwijzers"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:370
-msgid "Trash"
-msgstr "Prullenbak"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:372
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
 msgstr "Open de prullenbak."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:382
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
 msgstr "Apparaten"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:387
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
 msgstr "Uw lokale partities en apparaten"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:396
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
 msgstr "De inhoud van het bestandssysteem openen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:455
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:480
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:455
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:480
 #, c-format
 msgid "Mount and open %s"
 msgstr "%s aankoppelen en openen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:593
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
 msgstr "Uw netwerkplaatsen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:624
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
 msgstr "Volledige netwerk"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:626
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
 msgstr "Door de inhoud van het netwerk bladeren"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1610
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
 msgstr "_Starten"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1611
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1611
 msgid "_Stop"
 msgstr "_Stoppen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1616
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1616
 msgid "_Power On"
 msgstr "_Aanzetten"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1617
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1617
 msgid "_Safely Remove Drive"
 msgstr "_Station veilig verwijderen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1620
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1620
 msgid "_Connect Drive"
 msgstr "Station _verbinden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1621
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1621
 msgid "_Disconnect Drive"
 msgstr "Stationverbinding ver_breken"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1624
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
 msgstr "Multischijf-apparaat _starten"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1625
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1625
 msgid "_Stop Multi-disk Device"
 msgstr "Multischijf-apparaat _stoppen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1629
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1629
 msgid "_Unlock Drive"
 msgstr "Station vrij_geven"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1630
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1630
 msgid "_Lock Drive"
 msgstr "Station ver_grendelen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1704
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2251
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1704
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2251
 #, c-format
 msgid "Unable to start %s"
 msgstr "Niet in staat %s te starten"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:1994
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2023
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2052
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1994
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2023
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2052
 #, c-format
 msgid "Unable to eject %s"
 msgstr "Kan %s niet uitwerpen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2197
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2197
 #, c-format
 msgid "Unable to poll %s for media changes"
 msgstr "Niet in staat %s te bevragen voor veranderingen in media"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2307
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2307
 #, c-format
 msgid "Unable to stop %s"
 msgstr "Niet in staat %s te stoppen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2423
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
 msgstr "Verwijder"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2432
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
 msgstr "Hernoem..."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2444
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
 msgstr "_Koppelen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2451
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2451
 msgid "_Unmount"
 msgstr "_Ontkoppelen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2458
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2458
 msgid "_Eject"
 msgstr "Uitw_erpen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:2466
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1418
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2306
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2466
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1422
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2310
 msgid "Empty _Trash"
 msgstr "Leeg _Prullenbak"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:3123
-msgid "Icon Size"
-msgstr "Pictogram-grootte"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/marlin-places-sidebar.c:3124
-msgid "Icon size"
-msgstr "Pictogram-grootte"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:5
-msgid "Browse your files"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../src/config.vala:6
-msgid "File Manager"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:237
-msgid "Today at 00:00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:238
-msgid "Today at %-I:%M:%S %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:240
-msgid "Today at 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:241
-msgid "Today at %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:243
-msgid "Today, 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:244
-msgid "Today, %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:246
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:247
-msgid "Today"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:256
-msgid "Yesterday at 00:00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:257
-msgid "Yesterday at %-I:%M:%S %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:259
-msgid "Yesterday at 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:260
-msgid "Yesterday at %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:262
-msgid "Yesterday, 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:263
-msgid "Yesterday, %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:265
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:266
-msgid "Yesterday"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:277
-msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:278
-msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:280
-msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:281
-msgid "%a, %b %-d %Y at %-I:%M:%S %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:283
-msgid "Mon, Oct 00 0000 at 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:284
-msgid "%a, %b %-d %Y at %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:286
-msgid "Oct 00 0000 at 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:287
-msgid "%b %-d %Y at %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:289
-msgid "Oct 00 0000, 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:290
-msgid "%b %-d %Y, %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:292
-msgid "00/00/00, 00:00 PM"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:293
-msgid "%m/%-d/%y, %-I:%M %p"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:295
-msgid "00/00/00"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-fcts.c:296
-msgid "%m/%d/%y"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr "Toon meer _details"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:252
-#, c-format
-msgid "link to %s"
-msgstr "link naar %s"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1698
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Desktop-bestand verwerken is mislukt: %s"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1736
-msgid "No Exec field specified"
-msgstr "Geen Exec veld gespecificeerd"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1756
-msgid "No URL field specified"
-msgstr "Geen URL-veld opgegeven"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:1762
-msgid "Invalid desktop file"
-msgstr "Ongeldig desktop-bestand"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:2052
-msgid "Slashes are not allowed in filenames"
-msgstr "Slashes zijn niet toegestaan in bestandsnamen"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/gof-file.c:2072
-msgid "Toplevel files cannot be renamed"
-msgstr "Toplevel bestanden kunnen niet hernoemd worden"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:266
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Kan de oorspronkelijke locatie van ‘%s’ niet bepalen "
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-utilities.c:269
-msgid "The item cannot be restored from trash"
-msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-progress-info.c:192
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "Bezig met voorbereiden"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:361
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Map ‘%s’ samenvoegen?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:364
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1333,678 +1136,302 @@ msgstr ""
 "Bij samenvoegen zal eerst om bevestiging gevraagd worden voordat bestanden "
 "in de map die conflicteren met de verplaatste bestanden, vervangen worden."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:369
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een oudere map met dezelfde naam in \"%s\"."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:373
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een nieuwere map met dezelfde naam in \"%s\"."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:377
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een andere map met dezelfde naam in \"%s\"."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:382
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
 msgstr ""
 "Bij het vervangen ervan zullen alle bestanden in de map verwijderd worden."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:384
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Vervang map \"%s\"?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:386
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een map met dezelfde naam in \"%s\"."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:391
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Vervang bestand \"%s\"?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:393
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will overwrite its content."
 msgstr "Vervangen zal de inhoud overschrijven."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:397
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een ouder bestand met dezelfde naam in \"%s\"."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:401
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een nieuwer bestand met dezelfde naam in \"%s\"."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:405
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Er bestaat al een ander bestand met dezelfde naam in \"%s\"."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
 msgid "Original file"
 msgstr "Origineel bestand"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:482
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
 msgid "Size:"
 msgstr "Grootte:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:485
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
 msgid "Type:"
 msgstr "Type:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:488
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
 msgid "Last modified:"
 msgstr "Laatst bewerkt:"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:481
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
 msgstr "Vervang met"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:506
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
 msgstr "Samenvoegen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:700
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
 msgstr "_Selecteer een nieuwe naam voor de bestemming"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:714
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
 msgstr "Herstel"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:726
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
 msgstr "Pas deze actie toe op alle bestanden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:737
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:201
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:200
 msgid "_Skip"
 msgstr "_Overslaan"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:742
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
 msgid "Re_name"
 msgstr "Her_noemen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:748
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
 msgstr "Vervang"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-conflict-dialog.c:821
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
 msgstr "Bestandsconflict"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (ongeldige Unicode)"
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:202
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "_Alles Overslaan"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:203
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "Opnieuw P_roberen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:204
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "Alles Ver_wijderen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:205
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "Ve_rvangen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:206
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "_AllesVervangen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:207
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "Sa_menvoegen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:208
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "_Alles Samenvoegen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:209
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "_Toch Kopiëren"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:295
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d seconde"
 msgstr[1] "%'d seconden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:300
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:311
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:299
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minuut"
 msgstr[1] "%'d minuten"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:310
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d uur"
 msgstr[1] "%'d uren"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:318
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "ongeveer %'d uur"
 msgstr[1] "ongeveer %'d uren"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:394
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "Verwijzing naar %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:398
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "Nog een verwijzing naar %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:414
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'de verwijzing naar %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:418
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'de verwijzing naar %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:422
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'de verwijzing naar %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:426
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'de verwijzing naar %s"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:464
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:466
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:469
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:471
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:473
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:483
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:468
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:470
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:472
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:476
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:478
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:480
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:497
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:499
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:502
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:504
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:506
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:520
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:501
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:503
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:505
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:514
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:516
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:518
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:618
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:626
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1377
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
 "Bent u zeker dat u \"%B\" definitief uit de prullenbak wilt verwijderen?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1380
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -2019,24 +1446,24 @@ msgstr[1] ""
 "Weet u zeker dat u de %'d geselecteerde items blijvend wilt verwijderen uit "
 "de prullenbak?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1390
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1458
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1394
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Als u een bestand verwijdert, zal het definitief verloren gaan."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1411
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "Verwijder alle bestanden van de Prullenbak?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1415
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Alle bestanden in de Prullenbak zullen definitief verwijderd worden."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1446
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Bent u zeker dat u het bestand \"%B\" definitief wilt verwijderen?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1449
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -2046,33 +1473,33 @@ msgstr[0] ""
 msgstr[1] ""
 "Weet u zeker dat u de %'d geselecteerde items permanent wilt verwijderen?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1474
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1506
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1478
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "Bestanden verwijderen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1500
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d te verwijderen bestand over"
 msgstr[1] "%'d te verwijderen bestanden over"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1520
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T resterend"
 msgstr[1] "%T resterend"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1588
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1622
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1661
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1738
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2569
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1592
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1626
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1665
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1742
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
 msgstr "Fout bij het verwijderen."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1592
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -2080,21 +1507,21 @@ msgstr ""
 "Bestanden in de map ‘%B’ kunnen niet worden gewist omdat u geen rechten "
 "heeft om ze te zien."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1595
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2628
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3624
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1599
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2632
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "Er is een fout opgetreden bij het ophalen van de informatie van de bestanden "
 "in de map \"%B\"."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1604
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3633
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1608
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
 msgstr "Bestanden _overslaan"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1625
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
@@ -2102,63 +1529,63 @@ msgstr ""
 "De map \"%B\" can niet verwijderd worden omdat u geen permissies om te lezen "
 "heeft."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1628
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2667
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3669
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1632
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2671
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Er is een fout opgetreden bij het lezen van de map \"%B\"."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1662
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "Kon de map %B niet verwijderen."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1739
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "Er is een fout opgetreden bij het verwijderen van %B."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1815
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1827
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1819
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "Bestanden in de prullenbak gooien"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1829
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d bestand over om in de prullenbak te gooien"
 msgstr[1] "%'d bestanden over om in de prullenbak te gooien"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1884
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:1885
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2065
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
 msgstr "Bestanden in prullenbak gooien"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2067
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
 msgstr "Bestanden wissen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2139
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
 msgstr "Kan %V niet uitwerpen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2141
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
 msgstr "Kan %V niet ontkoppelen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2296
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Wilt u de prullenbak legen vóór het ontkoppelen?"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2298
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -2167,65 +1594,65 @@ msgstr ""
 "worden. Alle verwijderde bestanden op dit volume zullen definitief verloren "
 "gaan."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2304
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
 msgstr "Prullenbak _niet legen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2359
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
 msgstr "Prullenbak wordt geleegd"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2426
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Kon %s niet aankoppelen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2504
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Kopiëren van %'d bestand voorbereiden (%S)"
 msgstr[1] "Kopiëren van %'d bestanden voorbereiden (%S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2510
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Verplaatsen van %'d bestand voorbereiden (%S)"
 msgstr[1] "Verplaatsen van %'d bestanden voorbereiden (%S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2516
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Verwijderen van %'d bestand voorbereiden (%S)"
 msgstr[1] "Verwijderen van %'d bestanden voorbereiden (%S)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2522
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "In prullenbak gooien van %'d bestand voorbereiden"
 msgstr[1] "In prullenbak gooien van %'d bestanden voorbereiden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2565
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3485
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3616
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3661
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2569
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3489
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3620
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
 msgstr "Fout bij het kopiëren."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2567
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3614
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3659
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2571
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3618
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
 msgstr "Fout bij het verplaatsen."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2571
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
 msgstr "Fout bij het verplaatsen naar de prullenbak."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2625
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -2233,7 +1660,7 @@ msgstr ""
 "Bestanden in de map ‘%B’ kunnen niet worden afgehandeld omdat u geen rechten "
 "heeft om ze te zien."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2664
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -2241,7 +1668,7 @@ msgstr ""
 "De map ‘%B’ kan niet worden afgehandeld omdat u er geen leesrechten voor "
 "heeft"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2741
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -2249,32 +1676,32 @@ msgstr ""
 "Het bestand ‘%B’ kan niet worden afgehandeld omdat u er geen leesrechten "
 "voor heeft."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2744
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
 msgstr "Er is een fout opgetreden bij het ophalen van informatie over ‘%B’."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2844
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2886
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2919
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2949
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2848
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2890
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2923
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
 msgstr "Fout bij het kopiëren naar \"%B\"."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2848
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
 msgstr "U heeft geen permissies om de doelmap te benaderen."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2850
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
 msgstr ""
 "Er is een fout opgetreden bij het ophalen van de informatie over de "
 "bestemming."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2887
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
 msgstr "De bestemming is geen map."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2920
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -2282,76 +1709,76 @@ msgstr ""
 "Er is niet genoeg ruimte op de bestemming. Probeer bestanden te verwijderen "
 "om ruimte vrij te maken."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2922
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Er is %S beschikbaar, maar %S is vereist."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:2950
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
 msgstr "De bestemming is alleen-lezen."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3011
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Verplaatsen van ‘%B’ naar ‘%B’"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3012
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Kopiëren van ‘%B’ naar ‘%B’"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3016
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
 msgstr "Dupliceren van ‘%B’"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3020
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Verplaatsen van %'d bestand (in ‘%B’) naar ‘%B’"
 msgstr[1] "Verplaatsen van %'d bestanden (in ‘%B’) naar ‘%B’"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3023
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Kopiëren van %'d bestand (in ‘%B’) naar ‘%B’"
 msgstr[1] "Kopiëren van %'d bestanden (in ‘%B’) naar ‘%B’"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3030
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Dupliceren van %'d bestand (in ‘%B’)"
 msgstr[1] "Dupliceren van %'d bestanden (in ‘%B’)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3039
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Verplaatsen van %'d bestand naar ‘%B’"
 msgstr[1] "Verplaatsen van %'d bestanden naar ‘%B’"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3043
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Kopiëren van %'d bestand naar ‘%B’"
 msgstr[1] "Kopiëren van %'d bestanden naar ‘%B’"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3048
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Dupliceren van %'d bestand"
 msgstr[1] "Dupliceren van %'d bestanden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3099
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
 msgstr "%S van %S"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3110
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S van %S — %T resterend (%S/sec)"
 msgstr[1] "%S van %S — %T resterend (%S/sec)"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3489
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -2359,11 +1786,11 @@ msgstr ""
 "Kan de map ‘%B’ niet kopiëren omdat u geen rechten heeft om deze aan te "
 "maken in het doel."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3492
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Er is een fout opgetreden bij het aanmaken van de map ‘%B’."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3621
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -2371,176 +1798,663 @@ msgstr ""
 "Kan bestanden in de map ‘%B’ niet kopiëren omdat u geen rechten heeft om ze "
 "te zien."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3666
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3670
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "Kan de map ‘%B’ niet kopiëren omdat u er geen leesrechten voor heeft"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3711
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4412
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5000
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3715
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4416
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
 msgstr "Fout bij het verplaatsen van '%B'."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3712
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
 msgstr "Kon de bronmap niet verwijderen."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3797
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3838
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4414
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4485
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3801
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3842
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4418
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
 msgstr "Fout bij het kopiëren van ‘%B’."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3798
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Kon bestanden niet verwijderen uit de reeds bestaande map %F."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:3839
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Kon het reeds bestaande bestand %F niet verwijderen."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4168
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4840
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4172
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
 msgstr "Een map kan niet naar zichzelf verplaatst worden."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4169
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4841
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4173
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
 msgstr "Een map kan niet naar zichzelf gekopieerd worden."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4170
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4842
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4174
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
 msgstr "De doelmap bevindt zich binnenin de bronmap."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4201
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
 msgstr "Een bestand kan niet naar zichzelf verplaatst worden."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4202
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot copy a file over itself."
 msgstr "Een bestand kan niet naar zichzelf gekopieerd worden."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4203
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4207
 msgid "The source file would be overwritten by the destination."
 msgstr "Het bronbestand zou door het doelbestand overschreven worden."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4416
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "Kon het bestaande bestand met dezelfde naam in %F niet verwijderen."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4486
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr ""
 "Er is een fout opgetreden tijdens het kopiëren van het bestand naar %F."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4714
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
 msgstr "Bestanden kopiëren"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4740
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
 msgstr "Verplaatsen naar \"%B\" voorbereiden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:4752
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Verplaatsen van %'d bestand voorbereiden"
 msgstr[1] "Verplaatsen van %'d bestanden voorbereiden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5001
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr ""
 "Er is een fout opgetreden tijdens het verplaatsten van het bestand naar %F."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5264
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
 msgstr "Verplaatsen van bestanden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5294
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
 msgstr "Aanmaken van verwijzingen in ‘%B’."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5305
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Aanmaken van verwijzing naar %'d bestand"
 msgstr[1] "Aanmaken van verwijzingen naar %'d bestanden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5440
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
 msgstr "Fout bij het aanmaken van een verwijzing naar %B."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5442
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
 msgstr "Symbolische verwijzingen alleen ondersteund voor lokale bestanden"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5445
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
 msgstr "Dit doel ondersteunt geen symbolische verwijzingen."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5448
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr ""
 "Er is een fout opgetreden bij het aanmaken van de symbolische verwijzing in "
 "%F."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5776
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:5779
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5780
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
 msgstr "Toegangsrechten instellen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6030
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
 msgstr "naamloze map"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6038
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
 msgstr "nieuw bestand"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6209
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
 msgstr "Er is een fout opgetreden bij het aanmaken van de map %B"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6211
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
 msgstr "Fout bij het maken van het bestand %B."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6213
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Er is een fout opgetreden bij het aanmaken van de map %F."
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libcore/marlin-file-operations.c:6530
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
 msgstr "Bezig met prullenbak legen"
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:241
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "link naar %s"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Desktop-bestand verwerken is mislukt: %s"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1740
+msgid "No Exec field specified"
+msgstr "Geen Exec veld gespecificeerd"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1760
+msgid "No URL field specified"
+msgstr "Geen URL-veld opgegeven"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1766
+msgid "Invalid desktop file"
+msgstr "Ongeldig desktop-bestand"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2056
+msgid "Slashes are not allowed in filenames"
+msgstr "Slashes zijn niet toegestaan in bestandsnamen"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2076
+msgid "Toplevel files cannot be renamed"
+msgstr "Toplevel bestanden kunnen niet hernoemd worden"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "Bezig met voorbereiden"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:119
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Kan de oorspronkelijke locatie van ‘%s’ niet bepalen "
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (ongeldige Unicode)"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
+msgid "Show more _details"
+msgstr "Toon meer _details"
+
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:245
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:249
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:253
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:333
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
-#: /home/ttosttos/pantheon-files-fix-1004294/po/../libwidgets/LocationBar.vala:722
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
 msgstr "Ga naar %s"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
+msgid "View as grid"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
+msgid "View as list"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
+msgid "View as column"
+msgstr ""
+
+#~ msgid "Mouse auto-selection speed:"
+#~ msgstr "Autoselectiesnelheid van de muis:"
+
+#~ msgid "Default File Manager:"
+#~ msgstr "Standaard bestandsverkenner"
+
+#~ msgid "Behavior"
+#~ msgstr "Gedrag"
+
+#~ msgid "small"
+#~ msgstr "klein"
+
+#~ msgid "medium"
+#~ msgstr "gemiddeld"
+
+#~ msgid "large"
+#~ msgstr "groot"
+
+#~ msgid "extra-large"
+#~ msgstr "extra groot"
+
+#~ msgid "Icon Size"
+#~ msgstr "Pictogram-grootte"
+
+#~ msgid "Icon size"
+#~ msgstr "Pictogram-grootte"
+
+#~ msgid "Show copy dialog"
+#~ msgstr "Kopieervenster tonen"
+
+#~ msgid "Cancel all in-progress actions"
+#~ msgstr "Annuleer alle acties die bezig zijn"
+
+#~ msgid "Sidebar icon size:"
+#~ msgstr "Icoongrootte zijbalk"
+
+#~ msgid "Appearance"
+#~ msgstr "Uiterlijk"
