@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2432,24 +2432,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Peles automatiskās iezīmēšanas ātrums:"
-
-#~ msgid "Behavior"
-#~ msgstr "Uzvedība:"
-
-#~ msgid "small"
-#~ msgstr "maza"
-
-#~ msgid "medium"
-#~ msgstr "vidēja"
-
-#~ msgid "large"
-#~ msgstr "liela"
-
-#~ msgid "extra-large"
-#~ msgstr "vēl lielāka"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Sānu joslas ikonu izmērs:"

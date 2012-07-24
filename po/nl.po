@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2419,42 +2419,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Autoselectiesnelheid van de muis:"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "Standaard bestandsverkenner"
-
-#~ msgid "Behavior"
-#~ msgstr "Gedrag"
-
-#~ msgid "small"
-#~ msgstr "klein"
-
-#~ msgid "medium"
-#~ msgstr "gemiddeld"
-
-#~ msgid "large"
-#~ msgstr "groot"
-
-#~ msgid "extra-large"
-#~ msgstr "extra groot"
-
-#~ msgid "Icon Size"
-#~ msgstr "Pictogram-grootte"
-
-#~ msgid "Icon size"
-#~ msgstr "Pictogram-grootte"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "Kopieervenster tonen"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "Annuleer alle acties die bezig zijn"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Icoongrootte zijbalk"
-
-#~ msgid "Appearance"
-#~ msgstr "Uiterlijk"

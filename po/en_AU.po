@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:34+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2411,42 +2411,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Mouse auto-selection speed:"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "Default File Manager:"
-
-#~ msgid "Behavior"
-#~ msgstr "Behaviour"
-
-#~ msgid "small"
-#~ msgstr "small"
-
-#~ msgid "medium"
-#~ msgstr "medium"
-
-#~ msgid "large"
-#~ msgstr "large"
-
-#~ msgid "extra-large"
-#~ msgstr "extra-large"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Sidebar icon size:"
-
-#~ msgid "Icon Size"
-#~ msgstr "Icon Size"
-
-#~ msgid "Icon size"
-#~ msgstr "Icon size"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "Show copy dialogue"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "Cancel all in-progress actions"
-
-#~ msgid "Appearance"
-#~ msgstr "Appearance"

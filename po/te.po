@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:34+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2378,18 +2378,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Default File Manager:"
-#~ msgstr "అప్రమేయ దస్త్ర నిర్వాహకం:"
-
-#~ msgid "Behavior"
-#~ msgstr "ప్రవర్తన"
-
-#~ msgid "medium"
-#~ msgstr "మధ్యమం"
-
-#~ msgid "Icon Size"
-#~ msgstr "ప్రతీక పరిమాణం"
-
-#~ msgid "Icon size"
-#~ msgstr "ప్రతీక పరిమాణం"

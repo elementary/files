@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2407,39 +2407,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Kelajuan pemilihan-sendiri tetikus:"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "Pengurus Fail lalai:"
-
-#~ msgid "Behavior"
-#~ msgstr "Kelakuan"
-
-#~ msgid "small"
-#~ msgstr "kecil"
-
-#~ msgid "medium"
-#~ msgstr "sederhana"
-
-#~ msgid "large"
-#~ msgstr "besar"
-
-#~ msgid "extra-large"
-#~ msgstr "sangat-besar"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Saiz ikon palang sisi:"
-
-#~ msgid "Icon Size"
-#~ msgstr "Saiz Ikon"
-
-#~ msgid "Icon size"
-#~ msgstr "Saiz ikon"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "Papar dialog salin"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "Batal semua tindakan dalam-proses"

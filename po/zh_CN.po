@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:34+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 "Language: \n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
@@ -2355,57 +2355,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "鼠标自动选择速度："
-
-#~ msgid "Default File Manager:"
-#~ msgstr "默认文件管理器："
-
-#~ msgid "Behavior"
-#~ msgstr "行为"
-
-#~ msgid "small"
-#~ msgstr "小"
-
-#~ msgid "medium"
-#~ msgstr "中"
-
-#~ msgid "large"
-#~ msgstr "大"
-
-#~ msgid "extra-large"
-#~ msgstr "超大"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "边栏图标尺寸："
-
-#~ msgid "Icon Size"
-#~ msgstr "图标大小"
-
-#~ msgid "Icon size"
-#~ msgstr "图标大小"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "显示复制对话框"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "取消所有正在执行的操作"
-
-#~ msgid "Appearance"
-#~ msgstr "外观"
-
-#~ msgid "Browse your files"
-#~ msgstr "浏览您的文件"
-
-#~ msgid "File Manager"
-#~ msgstr "文件管理器"
-
-#~ msgid "Today"
-#~ msgstr "今天"
-
-#~ msgid "Yesterday"
-#~ msgstr "昨天"
-
-#~ msgid "%m/%d/%y"
-#~ msgstr "%m/%d/%y"

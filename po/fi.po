@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2403,54 +2403,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Hiiren automaattisen valinnan nopeus:"
-
-#~ msgid "Behavior"
-#~ msgstr "Toiminta"
-
-#~ msgid "small"
-#~ msgstr "pieni"
-
-#~ msgid "medium"
-#~ msgstr "keskitaso"
-
-#~ msgid "large"
-#~ msgstr "suuri"
-
-#~ msgid "extra-large"
-#~ msgstr "erittäin suuri"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Sivupalkin kuvakkeiden koko:"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "TIedostonhallinnan oletussovellus:"
-
-#~ msgid "Icon Size"
-#~ msgstr "Kuvakekoko"
-
-#~ msgid "Icon size"
-#~ msgstr "Kuvakekoko"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "Peru kaikki meneillään olevat toiminnot"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "Näytä kopiointi-ikkuna"
-
-#~ msgid "Appearance"
-#~ msgstr "Ulkoasu"
-
-#~ msgid "File Manager"
-#~ msgstr "Tiedostonhallinta"
-
-#~ msgid "Today"
-#~ msgstr "Tänään"
-
-#~ msgid "Yesterday"
-#~ msgstr "Eilen"
-
-#~ msgid "Browse your files"
-#~ msgstr "Selaa tiedostojasi"

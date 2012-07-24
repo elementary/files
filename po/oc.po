@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2411,30 +2411,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "La velocitat d'autoseleccion de la mirga :"
-
-#~ msgid "Behavior"
-#~ msgstr "Compòrtament"
-
-#~ msgid "small"
-#~ msgstr "pichon"
-
-#~ msgid "medium"
-#~ msgstr "mejan"
-
-#~ msgid "large"
-#~ msgstr "grand"
-
-#~ msgid "Icon Size"
-#~ msgstr "Talha de las icònas"
-
-#~ msgid "Icon size"
-#~ msgstr "Talha de las icònas"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "Afichar la fenèstra de còpia"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "Anullar totas las operacions en cors"

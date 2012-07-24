@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -2405,39 +2405,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Скорост на автоматичното селектиране:"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "Файлов мениджър по подразбиране:"
-
-#~ msgid "Behavior"
-#~ msgstr "Поведение"
-
-#~ msgid "small"
-#~ msgstr "малък"
-
-#~ msgid "medium"
-#~ msgstr "среден"
-
-#~ msgid "large"
-#~ msgstr "голям"
-
-#~ msgid "extra-large"
-#~ msgstr "много голям"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Размер на иконите в страничния панел:"
-
-#~ msgid "Icon Size"
-#~ msgstr "Размер на икона"
-
-#~ msgid "Icon size"
-#~ msgstr "Размер на иконa"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "Покажи диалога за копиране"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "Отмени всички стартирани действия"

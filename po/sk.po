@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:34+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2425,24 +2425,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Rýchlosť automatického výberu myšou:"
-
-#~ msgid "Behavior"
-#~ msgstr "Správanie"
-
-#~ msgid "small"
-#~ msgstr "malý"
-
-#~ msgid "medium"
-#~ msgstr "stredné"
-
-#~ msgid "large"
-#~ msgstr "veľké"
-
-#~ msgid "extra-large"
-#~ msgstr "veľmi veľké"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Veľkosť ikon v bočnom paneli"

@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2412,66 +2412,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Mus auto-vælger hastighed:"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "Standard filhåndteringsprogram:"
-
-#~ msgid "Behavior"
-#~ msgstr "Opførsel"
-
-#~ msgid "small"
-#~ msgstr "lille"
-
-#~ msgid "medium"
-#~ msgstr "mellem"
-
-#~ msgid "large"
-#~ msgstr "stor"
-
-#~ msgid "extra-large"
-#~ msgstr "ekstra stor"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Sidebar ikon størrelse:"
-
-#~ msgid "Icon Size"
-#~ msgstr "Ikonstørrelse"
-
-#~ msgid "Icon size"
-#~ msgstr "Ikonstørrelse"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "Vis kopieringsdialog"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "Afbryd alle igangværende handlinger"
-
-#~ msgid "Appearance"
-#~ msgstr "Udseende"
-
-#~ msgid "File Manager"
-#~ msgstr "Filhåndtering"
-
-#~ msgid "Today"
-#~ msgstr "I dag"
-
-#~ msgid "Yesterday"
-#~ msgstr "I går"
-
-#~ msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-#~ msgstr "onsdag d. 00. september 0000 kl. 00:00:00"
-
-#~ msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-#~ msgstr "man. d. 00. okt. 0000 kl. 00:00:00"
-
-#~ msgid "00/00/00"
-#~ msgstr "00/00/00"
-
-#~ msgid "%m/%d/%y"
-#~ msgstr "%m/%d/%y"
-
-#~ msgid "%m/%-d/%y, %-I:%M %p"
-#~ msgstr "%m/%-d/%y, %-I:%M %p"

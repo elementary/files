@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:32+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2481,42 +2481,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "سرعة التحديد-التلقائي للفأرة:"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "مدير الملفات الافتراضي:"
-
-#~ msgid "Behavior"
-#~ msgstr "السّلوك"
-
-#~ msgid "small"
-#~ msgstr "صغير"
-
-#~ msgid "medium"
-#~ msgstr "متوسط"
-
-#~ msgid "large"
-#~ msgstr "كبير"
-
-#~ msgid "extra-large"
-#~ msgstr "ضخم"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "حجم أيقونات الشريط الجانبيّ"
-
-#~ msgid "Icon Size"
-#~ msgstr "حجم الأيقونة"
-
-#~ msgid "Icon size"
-#~ msgstr "حجم الأيقونة"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "اعرض نافذة النسخ"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "إلغِ كافة الإجراءات قيد التنفيذ"
-
-#~ msgid "Browse your files"
-#~ msgstr "تصفح ملفات النظام بمدير الملفات"

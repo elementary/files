@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:34+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2359,108 +2359,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Fare oto-seçim hızı:"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "Varsayılan Dosya Yöneticisi:"
-
-#~ msgid "Behavior"
-#~ msgstr "Davranış"
-
-#~ msgid "small"
-#~ msgstr "küçük"
-
-#~ msgid "medium"
-#~ msgstr "orta"
-
-#~ msgid "large"
-#~ msgstr "büyük"
-
-#~ msgid "extra-large"
-#~ msgstr "çok büyük"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Kenar çubuğu simge boyutu:"
-
-#~ msgid "Icon Size"
-#~ msgstr "Simge Boyutu"
-
-#~ msgid "Icon size"
-#~ msgstr "Simge boyutu"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "Kopyalama iletişim kutusunu göster"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "Devam etmekte olan tüm eylemleri iptal et"
-
-#~ msgid "Appearance"
-#~ msgstr "Görünüm"
-
-#~ msgid "Today at %-I:%M:%S %p"
-#~ msgstr "Bügün %-I:%M:%S %p"
-
-#~ msgid "File Manager"
-#~ msgstr "Dosya Yöneticisi"
-
-#~ msgid "Today, 00:00 PM"
-#~ msgstr "Bügün, 00:00 OS"
-
-#~ msgid "Today at 00:00 PM"
-#~ msgstr "Bügün 00:00 OS"
-
-#~ msgid "Today"
-#~ msgstr "Bugün"
-
-#~ msgid "Yesterday at 00:00:00 PM"
-#~ msgstr "Dün 00:00:00 OS"
-
-#~ msgid "Yesterday at 00:00 PM"
-#~ msgstr "Dün 00:00 OS"
-
-#~ msgid "Yesterday, 00:00 PM"
-#~ msgstr "Dün, 00:00 OS"
-
-#~ msgid "Yesterday at %-I:%M:%S %p"
-#~ msgstr "Dün %-I:%M:%S %p"
-
-#~ msgid "Yesterday"
-#~ msgstr "Dün"
-
-#~ msgid "Yesterday, %-I:%M %p"
-#~ msgstr "Dün, %-I:%M %p"
-
-#~ msgid "00/00/00"
-#~ msgstr "00/00/00"
-
-#~ msgid "Today, %-I:%M %p"
-#~ msgstr "Bugün, %-I:%M %p"
-
-#~ msgid "Today at 00:00:00 PM"
-#~ msgstr "Bugün saat 00:00:00 da"
-
-#~ msgid "Mon, Oct 00 0000 at 00:00 PM"
-#~ msgstr "Eki 00 0000 Pzt, saat 00:00:00 da"
-
-#~ msgid "Browse your files"
-#~ msgstr "Dosyalarınıza göz atın"
-
-#~ msgid "Oct 00 0000 at 00:00 PM"
-#~ msgstr "Eki 00 0000, saat 00:00 da"
-
-#~ msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-#~ msgstr "Eylül 00 0000 Çarşamba, saat 00:00:00 da"
-
-#~ msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-#~ msgstr "Eki 00 0000 Pzt, saat 00:00:00 da"
-
-#~ msgid "%m/%d/%y"
-#~ msgstr "%d/%m/%y"
-
-#~ msgid "00/00/00, 00:00 PM"
-#~ msgstr "00/00/00, saat 00:00 da"
-
-#~ msgid "Oct 00 0000, 00:00 PM"
-#~ msgstr "Eki 00 0000, saat 00:00 da"

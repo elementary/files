@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:34+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2447,30 +2447,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Behavior"
-#~ msgstr "Obnašanje"
-
-#~ msgid "small"
-#~ msgstr "majhna"
-
-#~ msgid "medium"
-#~ msgstr "srednje"
-
-#~ msgid "large"
-#~ msgstr "veliko"
-
-#~ msgid "extra-large"
-#~ msgstr "exstremno"
-
-#~ msgid "Icon Size"
-#~ msgstr "Velikost ikon"
-
-#~ msgid "Icon size"
-#~ msgstr "Velikost ikon"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "Prikaži pogovorno okno ob kopiranju"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "Prekliči vsa trenutno izvajajoča se dejanja"

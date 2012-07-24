@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:34+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2417,39 +2417,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Automatski odabir brzine miša:"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "Uobičajeni preglednik datoteka:"
-
-#~ msgid "Behavior"
-#~ msgstr "Ponašanje"
-
-#~ msgid "small"
-#~ msgstr "mala"
-
-#~ msgid "medium"
-#~ msgstr "srednja"
-
-#~ msgid "large"
-#~ msgstr "velika"
-
-#~ msgid "extra-large"
-#~ msgstr "iznimno velika"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Veličina ikona bočne trake:"
-
-#~ msgid "Icon Size"
-#~ msgstr "Veličina ikone"
-
-#~ msgid "Icon size"
-#~ msgstr "Veličina ikone"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "Prikaži dijalog kopiranja"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "Otkaži sve aktivne radnje"

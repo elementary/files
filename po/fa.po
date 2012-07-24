@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2371,36 +2371,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "سرعت انتخات خودکار توسط موشواره:"
-
-#~ msgid "Behavior"
-#~ msgstr "رفتار"
-
-#~ msgid "small"
-#~ msgstr "کوچک"
-
-#~ msgid "medium"
-#~ msgstr "میانه"
-
-#~ msgid "large"
-#~ msgstr "بزرگ"
-
-#~ msgid "extra-large"
-#~ msgstr "بسیار بزرگ"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "اندازه نشانکهای نوار کناری:"
-
-#~ msgid "Appearance"
-#~ msgstr "ظاهر"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "برنامه مدیریت فایل پیشفرض"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "لغو تمام فعالیت های در حال انجام"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "نمایش پنجره کپی"

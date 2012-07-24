@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-22 21:31-0500\n"
-"PO-Revision-Date: 2012-07-05 06:54+0000\n"
-"Last-Translator: Thomas Pitlik <Unknown>\n"
+"PO-Revision-Date: 2012-07-23 13:28+0000\n"
+"Last-Translator: queckjap <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 "Language: de\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
@@ -133,7 +133,7 @@ msgstr "Files Einstellungen"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
 msgid "General"
-msgstr ""
+msgstr "Allgemein"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
@@ -141,7 +141,7 @@ msgstr "Erweiterungen"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:207
 msgid "Single click to open:"
-msgstr "Öffnen mit einem Klick:"
+msgstr "Einfacher Klick zum Öffnen:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
@@ -149,11 +149,11 @@ msgstr ""
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
-msgstr ""
+msgstr "<small><i>Langsam</i></small>"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
-msgstr ""
+msgstr "<small><i>Schnell</i></small>"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
@@ -714,11 +714,11 @@ msgstr[1] "%'d aktive Dateioperationen"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Kopieren-Dialog anzeigen"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Alle laufenden Aktionen abbrechen"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
@@ -2018,7 +2018,7 @@ msgstr "Gestern um %-I:%M Uhr"
 
 #: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d. %b %Y um %-H:%M Uhr"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
@@ -2436,135 +2436,12 @@ msgstr "Gehe zu %s"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr ""
+msgstr "Als Raster anzeigen"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "Als Liste anzeigen"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
-
-#~ msgid "Behavior"
-#~ msgstr "Verhalten"
-
-#~ msgid "small"
-#~ msgstr "klein"
-
-#~ msgid "medium"
-#~ msgstr "mittel"
-
-#~ msgid "large"
-#~ msgstr "groß"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Symbolgröße der Seitenleiste:"
-
-#~ msgid "Icon Size"
-#~ msgstr "Symbolgröße"
-
-#~ msgid "Icon size"
-#~ msgstr "Symbolgröße"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "Kopieren-Dialog anzeigen"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "Alle laufenden Aktionen abbrechen"
-
-#~ msgid "extra-large"
-#~ msgstr "sehr groß"
-
-#~ msgid "Appearance"
-#~ msgstr "Erscheinungsbild"
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Automatische Auswahlgeschwindigkeit der Maus:"
-
-#~ msgid "Today at 00:00:00 PM"
-#~ msgstr "Heute um 00:00:00 Uhr"
-
-#~ msgid "Today at %-I:%M:%S %p"
-#~ msgstr "Heute um %-I:%M:%S Uhr"
-
-#~ msgid "Browse your files"
-#~ msgstr "Durchsuchen Sie Ihre Dateien"
-
-#~ msgid "File Manager"
-#~ msgstr "Dateiverwaltung"
-
-#~ msgid "Today, 00:00 PM"
-#~ msgstr "Heute, 00:00 Uhr"
-
-#~ msgid "Today, %-I:%M %p"
-#~ msgstr "Heute, %-I:%M Uhr"
-
-#~ msgid "Today at 00:00 PM"
-#~ msgstr "Heute um 00:00 Uhr"
-
-#~ msgid "Today"
-#~ msgstr "Heute"
-
-#~ msgid "Yesterday at 00:00:00 PM"
-#~ msgstr "Gestern um 00:00:00 Uhr"
-
-#~ msgid "%a, %b %-d %Y at %-I:%M:%S %p"
-#~ msgstr "%a, %-d. %b %Y um %-H:%M:%S"
-
-#~ msgid "Mon, Oct 00 0000 at 00:00:00 PM"
-#~ msgstr "Mon, 00. Okt 0000 um 00:00:00"
-
-#~ msgid "Yesterday, 00:00 PM"
-#~ msgstr "Gestern, 00:00 Uhr"
-
-#~ msgid "Yesterday at 00:00 PM"
-#~ msgstr "Gestern um 00:00 Uhr"
-
-#~ msgid "Yesterday at %-I:%M:%S %p"
-#~ msgstr "Gestern um %-I:%M:%S Uhr"
-
-#~ msgid "%A, %B %-d %Y at %-I:%M:%S %p"
-#~ msgstr "%A, %-d. %B %Y um %-H:%M:%S"
-
-#~ msgid "Yesterday"
-#~ msgstr "Gestern"
-
-#~ msgid "Yesterday, %-I:%M %p"
-#~ msgstr "Gestern,"
-
-#~ msgid "00/00/00"
-#~ msgstr "00.00.00"
-
-#~ msgid "Mon, Oct 00 0000 at 00:00 PM"
-#~ msgstr "Mon, 00. Okt 0000 um 00.00"
-
-#~ msgid "Oct 00 0000 at 00:00 PM"
-#~ msgstr "00. Okt 0000 um 00.00"
-
-#~ msgid "%b %-d %Y at %-I:%M %p"
-#~ msgstr "%-d. %b %Y um %-H.%M"
-
-#~ msgid "Oct 00 0000, 00:00 PM"
-#~ msgstr "00. Okt 0000, 00.00"
-
-#~ msgid "%b %-d %Y, %-I:%M %p"
-#~ msgstr "%-d. %b %Y, %-H.%M"
-
-#~ msgid "00/00/00, 00:00 PM"
-#~ msgstr "00.00.00, 00.00"
-
-#~ msgid "%m/%-d/%y, %-I:%M %p"
-#~ msgstr "%-d.%m.%y, %-H.%M"
-
-#~ msgid "%m/%d/%y"
-#~ msgstr "%d.%m.%y"
-
-#~ msgid "%a, %b %-d %Y at %-I:%M %p"
-#~ msgstr "%a, %-d. %b %Y um %-H.%M"
-
-#~ msgid "Wednesday, September 00 0000 at 00:00:00 PM"
-#~ msgstr "Mittwoch, 00. September 0000 um 00:00:00"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "Standarddateiverwaltung:"
+msgstr "In Spalten anzeigen"

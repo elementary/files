@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2419,30 +2419,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Ταχύτητα αυτόματης επιλογής με το ποντίκι"
-
-#~ msgid "Behavior"
-#~ msgstr "Συμπεριφορά"
-
-#~ msgid "small"
-#~ msgstr "μικρή"
-
-#~ msgid "medium"
-#~ msgstr "μέση"
-
-#~ msgid "large"
-#~ msgstr "μεγάλη"
-
-#~ msgid "extra-large"
-#~ msgstr "πολύ μεγάλη"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Μέγεθος εικονιδίων πλευρικής μπάρας"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "Προεπιλεγμένος  Διαχειριστής Αρχείων:"
-
-#~ msgid "Appearance"
-#~ msgstr "Εμφάνιση"

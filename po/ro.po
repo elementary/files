@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:34+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2428,27 +2428,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "Auto-selectarea vitezei mouse-ului:"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "Manager de fișiere implicit:"
-
-#~ msgid "Behavior"
-#~ msgstr "Comportament"
-
-#~ msgid "small"
-#~ msgstr "mică"
-
-#~ msgid "medium"
-#~ msgstr "mediu"
-
-#~ msgid "large"
-#~ msgstr "mare"
-
-#~ msgid "extra-large"
-#~ msgstr "extra-mare"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "Marimea iconitelor de pe bara laterala"

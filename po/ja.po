@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-07-23 05:33+0000\n"
-"X-Generator: Launchpad (build 15654)\n"
+"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
+"X-Generator: Launchpad (build 15668)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -2355,42 +2355,3 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
-
-#~ msgid "extra-large"
-#~ msgstr "特大"
-
-#~ msgid "Sidebar icon size:"
-#~ msgstr "サイドバーのアイコンサイズ:"
-
-#~ msgid "medium"
-#~ msgstr "中"
-
-#~ msgid "large"
-#~ msgstr "大"
-
-#~ msgid "Behavior"
-#~ msgstr "動作"
-
-#~ msgid "small"
-#~ msgstr "小"
-
-#~ msgid "Default File Manager:"
-#~ msgstr "デフォルトのファイルマネージャに設定:"
-
-#~ msgid "Mouse auto-selection speed:"
-#~ msgstr "自動選択までの時間:"
-
-#~ msgid "Icon Size"
-#~ msgstr "アイコンのサイズ"
-
-#~ msgid "Icon size"
-#~ msgstr "アイコンのサイズ"
-
-#~ msgid "Cancel all in-progress actions"
-#~ msgstr "進行中の処理をすべてキャンセル"
-
-#~ msgid "Show copy dialog"
-#~ msgstr "コピーダイアログを表示"
-
-#~ msgid "Appearance"
-#~ msgstr "表示"
