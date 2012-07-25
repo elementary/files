@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-22 21:31-0500\n"
-"PO-Revision-Date: 2012-07-23 16:11+0000\n"
-"Last-Translator: Aluísio Augusto Silva Gonçalves <Unknown>\n"
+"PO-Revision-Date: 2012-07-24 12:24+0000\n"
+"Last-Translator: Leonardo Lemos <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-07-24 06:09+0000\n"
-"X-Generator: Launchpad (build 15668)\n"
+"X-Launchpad-Export-Date: 2012-07-25 05:05+0000\n"
+"X-Generator: Launchpad (build 15679)\n"
 "Language: pt_BR\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
@@ -145,7 +145,7 @@ msgstr "Clicar uma vez para abrir"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Auto-seleção de mouse:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
@@ -1997,7 +1997,7 @@ msgstr "Ontem às %-I:%M %p"
 
 #: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y em %-I:%M %p"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
