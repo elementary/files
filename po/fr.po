@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-22 21:31-0500\n"
-"PO-Revision-Date: 2012-07-23 11:02+0000\n"
-"Last-Translator: jibweb <Unknown>\n"
+"PO-Revision-Date: 2012-07-25 21:15+0000\n"
+"Last-Translator: Benoît LAMY <Unknown>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
-"X-Generator: Launchpad (build 15668)\n"
+"X-Launchpad-Export-Date: 2012-07-26 05:23+0000\n"
+"X-Generator: Launchpad (build 15679)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -2423,12 +2423,12 @@ msgstr "Aller à %s"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr ""
+msgstr "Afficher en grille"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "Afficher en liste"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
+msgstr "Afficher en colonnes"

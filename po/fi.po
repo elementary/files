@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-07-22 21:31-0500\n"
-"PO-Revision-Date: 2012-07-24 18:50+0000\n"
+"PO-Revision-Date: 2012-07-25 17:57+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-25 05:05+0000\n"
+"X-Launchpad-Export-Date: 2012-07-26 05:23+0000\n"
 "X-Generator: Launchpad (build 15679)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
@@ -93,7 +93,7 @@ msgstr "Avaa sovelluksella"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:452
 msgid "Device usage"
-msgstr ""
+msgstr "Laitteen käyttö"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
 msgid "Read"
@@ -132,7 +132,7 @@ msgstr "Files-tiedostonhallinnan asetukset"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
 msgid "General"
-msgstr ""
+msgstr "Yleiset"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
@@ -144,7 +144,7 @@ msgstr "Avaa kertanapsautuksella:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Kohteen automaattivalinta:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
