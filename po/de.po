@@ -7,125 +7,67 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-22 21:31-0500\n"
-"PO-Revision-Date: 2012-07-23 13:28+0000\n"
-"Last-Translator: queckjap <Unknown>\n"
+"POT-Creation-Date: 2012-07-26 14:06-0500\n"
+"PO-Revision-Date: 2012-07-26 18:31+0000\n"
+"Last-Translator: Thomas Pitlik <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
-"X-Generator: Launchpad (build 15668)\n"
+"X-Launchpad-Export-Date: 2012-07-27 05:38+0000\n"
+"X-Generator: Launchpad (build 15694)\n"
 "Language: de\n"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
-msgid "Home"
-msgstr "Persönlicher Ordner"
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
+msgid "Name"
+msgstr "Name"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:143
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:394
-msgid "File System"
-msgstr "Dateisystem"
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Typ"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "Eigenschaften"
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:368
+msgid "Target"
+msgstr "Ziel"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:117
-msgid "Info"
-msgstr "Über"
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:343
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Größe"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:125
-msgid "Permissions"
-msgstr "Berechtigungen"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:137
-msgid "Preview"
-msgstr "Vorschau"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:338
-msgid "Created"
-msgstr "Erstellt"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:340
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:345
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:340
 #: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Modified"
 msgstr "Verändert"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:343
-msgid "Last Access"
-msgstr "Letzter Zugriff"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:349
-msgid "Deleted"
-msgstr "Entfernt"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:354
-msgid "MimeType"
-msgstr "MIME-Typ"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:362
-msgid "MimeTypes"
-msgstr "MIME-Typen"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
-msgid "Location"
-msgstr "Ort"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:368
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
-msgid "Target"
-msgstr "Ziel"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:374
-msgid "Origin Location"
-msgstr "Herkunftsort"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:412
-msgid "Other application..."
-msgstr "Andere Anwendung …"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:436
-msgid "Open with"
-msgstr "Öffnen mit"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:452
-msgid "Device usage"
-msgstr "Geräte-Verwendung"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
-msgid "Read"
-msgstr "Lesen"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:602
-msgid "Write"
-msgstr "Schreiben"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:607
-msgid "Execute"
-msgstr "Ausführen"
-
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:346
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:825
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:838
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:346
 msgid "Owner"
 msgstr "Besitzer"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:830
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:842
-msgid "Group"
-msgstr "Gruppe"
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
+#, c-format
+msgid "Folder does not exist"
+msgstr "Ordner existiert nicht"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:846
-msgid "Everyone"
-msgstr "Jeder"
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
+#, c-format
+msgid "Marlin can't find the folder %s"
+msgstr "Marlin kann den Ordner %s nicht finden"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:1126
-msgid "Select an aplication to open "
-msgstr "Anwendung zum Öffnen wählen "
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
+msgid "Create"
+msgstr "Erstellen"
+
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
+#, c-format
+msgid "Create the folder %s"
+msgstr "Ordner %s erstellen"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -145,7 +87,7 @@ msgstr "Einfacher Klick zum Öffnen:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Automatische Auswahl (Maus):"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
@@ -171,48 +113,15 @@ msgstr "lokal"
 msgid "informal"
 msgstr "informell"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
-msgid "Name"
-msgstr "Name"
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "Persönlicher Ordner"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Typ"
-
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:343
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Größe"
-
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
-#, c-format
-msgid "Folder does not exist"
-msgstr "Ordner existiert nicht"
-
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
-#, c-format
-msgid "Marlin can't find the folder %s"
-msgstr "Marlin kann den Ordner %s nicht finden"
-
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
-msgid "Create"
-msgstr "Erstellen"
-
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
-#, c-format
-msgid "Create the folder %s"
-msgstr "Ordner %s erstellen"
-
-#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:370
-msgid "Trash"
-msgstr "Müll"
-
-#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:588
-msgid "Network"
-msgstr "Netzwerk"
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:143
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "Dateisystem"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:152
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3382
@@ -228,7 +137,7 @@ msgid "Undo"
 msgstr "Rückgängig"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:498
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:792
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:788
 msgid "Undo the last action"
 msgstr "Die letzte Aktion rückgängig machen"
 
@@ -237,7 +146,7 @@ msgid "Redo"
 msgstr "Wiederholen"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:508
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:795
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:791
 msgid "Redo the last action"
 msgstr "Die letzte Aktion wiederholen"
 
@@ -286,214 +195,445 @@ msgid "Close this folder"
 msgstr "Diesen Ordner schließen"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:781
-msgid "Customize _Toolbar..."
-msgstr "_Werkzeugleiste anpassen …"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:782
-msgid "Easily edit the toolbar layout"
-msgstr "Einfaches Bearbeiten der Werkzeugleisten-Anordnung"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:785
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:786
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:782
 msgid "Change Marlin's preferences"
 msgstr "Files' Einstellungen ändern"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:791
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:787
 msgid "_Undo"
 msgstr "_Rückgängig machen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:794
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:790
 msgid "_Redo"
 msgstr "_Wiederholen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:797
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:793
 msgid "Open _Parent"
 msgstr "_Übergeordnetes Verzeichnis öffnen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:798
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:794
 msgid "Open the parent folder"
 msgstr "Das übergeordnete Verzeichnis öffnen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:800
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:796
 msgid "_Back"
 msgstr "_Zurück"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:801
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:797
 msgid "Go to the previous visited location"
 msgstr "Zum zuvor besuchten Ort wechseln"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:804
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:800
 msgid "_Forward"
 msgstr "Vor"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:805
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:801
 msgid "Go to the next visited location"
 msgstr "Zum nächsten besuchten Ort wechseln"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:807
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:803
 msgid "_Reload"
 msgstr "_Aktualisieren"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:808
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:804
 msgid "Reload the current location"
 msgstr "Den aktuellen Ort aktualisieren"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:811
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:807
 msgid "_Home Folder"
 msgstr "_Persönlicher Ordner"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:812
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:808
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
 msgstr "Persönlichen Ordner öffnen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:815
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:811
 msgid "_Trash"
 msgstr "_Papierkorb"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:816
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:812
 msgid "Open your personal trash folder"
 msgstr "Papierkorb öffnen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:819
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:815
 msgid "_Network"
 msgstr "_Netzwerk"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:820
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:816
 msgid "Browse bookmarked and local network locations"
 msgstr "Lesezeichen und lokale Netzwerke durchsuchen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:823
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:819
 msgid "Zoom _In"
 msgstr "Her_einzoomen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:824
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:820
 msgid "Increase the view size"
 msgstr "Ansicht vergrößern"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:835
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:831
 msgid "Zoom _Out"
 msgstr "Ver_kleinern"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:836
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:832
 msgid "Decrease the view size"
 msgstr "Ansicht verkleinern"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:843
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:839
 msgid "Normal Si_ze"
 msgstr "_Normale Größe"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:844
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:840
 msgid "Use the normal view size"
 msgstr "Die normale Ansichtsgröße verwenden"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:847
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:843
 msgid "Next Tab"
 msgstr "Nächster Reiter"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:851
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:847
 msgid "Previous Tab"
 msgstr "Vorheriger Reiter"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:855
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:851
 msgid "Connect to _Server..."
 msgstr "Mit _Server verbinden …"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:856
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:852
 msgid "Connect to a remote computer or shared disk"
 msgstr ""
 "Mit einem entfernten Rechner oder einem freigegebenen Datenträger verbinden"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:859
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:855
 msgid "_About"
 msgstr "_Über"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:860
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:856
 msgid "Display credits"
 msgstr "Mitwirkende anzeigen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:863
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:859
 msgid "Report a Problem..."
 msgstr "Ein Problem melden …"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:864
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:860
 msgid "File a bug on Launchpad"
 msgstr "Einen Fehler auf Launchpad berichten"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:867
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:863
 msgid "Get Help Online..."
 msgstr "Online Hilfe erhalten …"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:871
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:867
 msgid "Translate This Application..."
 msgstr "Diese Anwendung übersetzen …"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:880
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:876
 msgid "Show _Hidden Files"
 msgstr "_Verborgene Dateien anzeigen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:881
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:877
 msgid "Toggle the display of hidden files in the current window"
 msgstr "Verborgene Dateien im momentan geöffneten Fenster anzeigen/verbergen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:886
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:882
 msgid "Show _Desktop Files"
 msgstr "_Desktop-Dateien anzeigen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:887
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:883
 msgid "Toggle the display of desktop files"
 msgstr "Anzeige von Desktop-Dateien aktivieren/deaktivieren"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:891
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:887
 msgid "_Context Pane"
 msgstr "_Kontextleiste"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:892
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:888
 msgid "Change the visibility of the context pane"
 msgstr "Sichtbarkeit der Kontextleiste verändern"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:896
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:892
 msgid "_Menubar"
 msgstr "_Menüleiste"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:897
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:893
 msgid "Change the visibility of this window's menubar"
 msgstr "Sichtbarkeit dieser Fenster-Menüleiste ändern"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:901
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:897
 msgid "_Places"
 msgstr "_Orte"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:902
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:898
 msgid "Change the visibility of this window's side pane"
 msgstr "Sichtbarkeit der Seitenleiste dieses Fensters ändern"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:910
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:906
 msgid "Icon"
 msgstr "Symbol"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:913
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:909
 msgid "List"
 msgstr "Liste"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:916
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:912
 msgid "Compact"
 msgstr "Kompakt"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:919
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:915
 msgid "Columns"
 msgstr "Spalten"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Ordner Symbolansicht"
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "Eigenschaften"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Symbolansicht"
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:117
+msgid "Info"
+msgstr "Über"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:125
+msgid "Permissions"
+msgstr "Berechtigungen"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:137
+msgid "Preview"
+msgstr "Vorschau"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:338
+msgid "Created"
+msgstr "Erstellt"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:343
+msgid "Last Access"
+msgstr "Letzter Zugriff"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:349
+msgid "Deleted"
+msgstr "Entfernt"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:354
+msgid "MimeType"
+msgstr "MIME-Typ"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:362
+msgid "MimeTypes"
+msgstr "MIME-Typen"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
+msgid "Location"
+msgstr "Ort"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:374
+msgid "Origin Location"
+msgstr "Herkunftsort"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:412
+msgid "Other application..."
+msgstr "Andere Anwendung …"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:436
+msgid "Open with"
+msgstr "Öffnen mit"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:452
+msgid "Device usage"
+msgstr "Geräte-Verwendung"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
+msgid "Read"
+msgstr "Lesen"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:602
+msgid "Write"
+msgstr "Schreiben"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:607
+msgid "Execute"
+msgstr "Ausführen"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:830
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:842
+msgid "Group"
+msgstr "Gruppe"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:846
+msgid "Everyone"
+msgstr "Jeder"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:1126
+msgid "Select an aplication to open "
+msgstr "Anwendung zum Öffnen wählen "
+
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:110
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:370
+msgid "Trash"
+msgstr "Müll"
+
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:111
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:588
+msgid "Network"
+msgstr "Netzwerk"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:82
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:616
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:572
+msgid "This folder is empty."
+msgstr "Dieser Ordner ist leer."
+
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:186
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:199
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:139
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "Umbenennen von %s in %s fehlgeschlagen."
+
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr "Kompakte Listenansicht"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr "Kompakte Ansicht"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
+msgid "SSH"
+msgstr "SSH"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
+msgid "Public FTP"
+msgstr "Öffentlicher FTP"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
+msgid "FTP (with login)"
+msgstr "FTP (mit Anmeldung)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
+msgid "Windows share"
+msgstr "Windows-Freigabe"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Sicheres WebDAV (HTTPS)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
+msgid "Connecting..."
+msgstr "Verbinde …"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
+msgid ""
+"Can't load the supported server method list.\n"
+"Please check your gvfs installation."
+msgstr ""
+"Die Liste der unterstützten Servermethoden kann nicht geladen werden.\n"
+"Bitte überprüfen Sie Ihre gvfs-Installation."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
+#, c-format
+msgid "The folder \"%s\" cannot be opened on \"%s\"."
+msgstr "Der Ordner »%s« auf »%s« kann nicht geöffnet werden."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
+#, c-format
+msgid "The server at \"%s\" cannot be found."
+msgstr "Der Server unter \"%s\" kann nicht gefunden werden."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
+msgid "Try Again"
+msgstr "Erneut versuchen"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
+msgid "Please verify your user details."
+msgstr "Bitte überprüfen Sie Ihre Angaben."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
+msgid "Continue"
+msgstr "Weiter"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
+msgid "C_onnect"
+msgstr "_Verbinde"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
+msgid "Connect to Server"
+msgstr "Mit Server verbinden"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
+msgid "Server Details"
+msgstr "Serverdetails"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
+msgid "_Server:"
+msgstr "_Server:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
+msgid "_Port:"
+msgstr "_Port:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
+msgid "_Type:"
+msgstr "_Typ:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
+msgid "Sh_are:"
+msgstr "Freig_abe:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
+msgid "_Folder:"
+msgstr "_Ordner:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
+msgid "User Details"
+msgstr "Benutzerangaben"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
+msgid "_Domain name:"
+msgstr "_Domain-Name:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
+msgid "_User name:"
+msgstr "Ben_utzername:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
+msgid "Pass_word:"
+msgstr "Pass_wort:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
+msgid "_Remember this password"
+msgstr "Dieses Passwort me_rken"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
+msgid "Operation cancelled"
+msgstr "Vorgang abgebrochen"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Einfachklick"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Objekte mit Einfachklick aktivieren?"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "Einfachklick-Verzögerung"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr ""
+"Zeitspanne, nach der im Einfachklick-Modus ein Objekt unter dem Mauszeiger "
+"automatisch ausgewählt wird"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1151
 msgid "Invalid filename provided by XDS drag site"
@@ -672,57 +812,25 @@ msgstr "Die Eigenschaften aller gewählten Objekte anzeigen/ändern"
 msgid "Set Color:"
 msgstr "Farbe setzen:"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Dateiname"
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Darstellungsmodus"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:199
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:139
-#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:186
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Umbenennen von %s in %s fehlgeschlagen."
-
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:616
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:572
-#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:82
-msgid "This folder is empty."
-msgstr "Dieser Ordner ist leer."
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "Der Darstellungsmodus"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
 msgstr "Nichts zum Einfügen in der Zwischenablage"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
-msgid "File Operations"
-msgstr "Dateioperationen"
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Dateiname"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
-msgid "Show Details"
-msgstr "Einzelheiten zeigen"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d aktive Dateioperation"
-msgstr[1] "%'d aktive Dateioperationen"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
-msgid "Show Copy Dialog"
-msgstr "Kopieren-Dialog anzeigen"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
-msgid "Cancel All In-progress Actions"
-msgstr "Alle laufenden Aktionen abbrechen"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
-msgid "All file operations have been successfully completed"
-msgstr "Alle Dateioperationen wurden erfolgreich abgeschlossen"
+#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Eingabemethoden"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
@@ -768,14 +876,6 @@ msgstr "Nach Änderungs_datum"
 msgid "Keep icons sorted by modification date in rows"
 msgstr "Symbole nach Änderungsdatum in Zeilen sortieren"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:86
-msgid "Compact directory listing"
-msgstr "Kompakte Listenansicht"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:87
-msgid "Compact view"
-msgstr "Kompakte Ansicht"
-
 #: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
 msgstr "Werkzeugleiste anpassen"
@@ -796,29 +896,13 @@ msgstr "Verfügbare Elemente"
 msgid "Displayed Items"
 msgstr "Angezeigte Elemente"
 
-#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Eingabemethoden"
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Ordner Symbolansicht"
 
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Einfachklick"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Objekte mit Einfachklick aktivieren?"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "Einfachklick-Verzögerung"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-"Zeitspanne, nach der im Einfachklick-Modus ein Objekt unter dem Mauszeiger "
-"automatisch ausgewählt wird"
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Symbolansicht"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
@@ -845,128 +929,36 @@ msgstr "Abbrechen"
 msgid "Failed to execute file \"%s\""
 msgstr "Konnte \"%s\" nicht ausführen"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
-msgid "SSH"
-msgstr "SSH"
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
+msgid "File Operations"
+msgstr "Dateioperationen"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
-msgid "Public FTP"
-msgstr "Öffentlicher FTP"
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
+msgid "Show Details"
+msgstr "Einzelheiten zeigen"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
-msgid "FTP (with login)"
-msgstr "FTP (mit Anmeldung)"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
-msgid "Windows share"
-msgstr "Windows-Freigabe"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Sicheres WebDAV (HTTPS)"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
-msgid "Connecting..."
-msgstr "Verbinde …"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
-msgid ""
-"Can't load the supported server method list.\n"
-"Please check your gvfs installation."
-msgstr ""
-"Die Liste der unterstützten Servermethoden kann nicht geladen werden.\n"
-"Bitte überprüfen Sie Ihre gvfs-Installation."
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
 #, c-format
-msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Der Ordner »%s« auf »%s« kann nicht geöffnet werden."
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d aktive Dateioperation"
+msgstr[1] "%'d aktive Dateioperationen"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
-#, c-format
-msgid "The server at \"%s\" cannot be found."
-msgstr "Der Server unter \"%s\" kann nicht gefunden werden."
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
+msgid "Show Copy Dialog"
+msgstr "Kopieren-Dialog anzeigen"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
-msgid "Try Again"
-msgstr "Erneut versuchen"
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
+msgid "Cancel All In-progress Actions"
+msgstr "Alle laufenden Aktionen abbrechen"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
-msgid "Please verify your user details."
-msgstr "Bitte überprüfen Sie Ihre Angaben."
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
-msgid "Continue"
-msgstr "Weiter"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
-msgid "C_onnect"
-msgstr "_Verbinde"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
-msgid "Connect to Server"
-msgstr "Mit Server verbinden"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
-msgid "Server Details"
-msgstr "Serverdetails"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
-msgid "_Server:"
-msgstr "_Server:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
-msgid "_Port:"
-msgstr "_Port:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
-msgid "_Type:"
-msgstr "_Typ:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
-msgid "Sh_are:"
-msgstr "Freig_abe:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
-msgid "_Folder:"
-msgstr "_Ordner:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
-msgid "User Details"
-msgstr "Benutzerangaben"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
-msgid "_Domain name:"
-msgstr "_Domain-Name:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
-msgid "_User name:"
-msgstr "Ben_utzername:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
-msgid "Pass_word:"
-msgstr "Pass_wort:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
-msgid "_Remember this password"
-msgstr "Dieses Passwort me_rken"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
-msgid "Operation cancelled"
-msgstr "Vorgang abgebrochen"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Darstellungsmodus"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "Der Darstellungsmodus"
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
+msgid "All file operations have been successfully completed"
+msgstr "Alle Dateioperationen wurden erfolgreich abgeschlossen"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-application.c:420
 msgid "Show the version of the program."
@@ -1133,149 +1125,23 @@ msgstr "Aus_werfen"
 msgid "Empty _Trash"
 msgstr "_Mülleimer leeren"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
+#: /home/codygarver/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
+msgid "Show more _details"
+msgstr "Weitere _Details anzeigen"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Ordner »%s« zusammenführen?"
+msgid "Could not determine original location of \"%s\" "
+msgstr "Ursprünglicher Ort von »%s« konnte nicht ermittelt werden "
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Während des Zusammenführens fragen, ob gleichnamige Dateien im Zielordner "
-"überschrieben werden sollen."
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "Das Objekt kann aus dem Müll nicht wiederhergestellt werden"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Ein älterer Ordner gleichen Namens existiert bereits in »%s«."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Ein neuerer Ordner gleichen Namens existiert bereits in »%s«."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Ein Ordner gleichen Namens existiert bereits in »%s«."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
-msgid "Replacing it will remove all files in the folder."
-msgstr "Das Ersetzen dieses Ordners löscht alle enthaltenen Dateien"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Ordner »%s« ersetzen?"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Ein Ordner gleichen Namens existiert bereits in »%s«."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Datei »%s« ersetzen?"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will overwrite its content."
-msgstr "Falls Sie sie ersetzen, wird ihr Inhalt überschrieben."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Eine ältere Datei gleichen Namens existiert bereits in »%s«."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Eine neuere Datei gleichen Namens existiert bereits in »%s«."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Eine Datei gleichen Namens existiert bereits in »%s«."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
-msgid "Original file"
-msgstr "Originaldatei"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
-msgid "Size:"
-msgstr "Größe:"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
-msgid "Type:"
-msgstr "Typ:"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
-msgid "Last modified:"
-msgstr "Zuletzt geändert am:"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Replace with"
-msgstr "Ersetzen durch"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
-msgid "Merge"
-msgstr "Zusammenführen"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
-msgid "_Select a new name for the destination"
-msgstr "Einen neuen Namen für das Ziel w_ählen"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
-msgid "Reset"
-msgstr "Zurücksetzen"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
-msgid "Apply this action to all files"
-msgstr "Diese Aktion auf alle Dateien anwenden"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:200
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
 msgid "_Skip"
 msgstr "Über_springen"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
-msgid "Re_name"
-msgstr "Umbe_nennen"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
-msgid "Replace"
-msgstr "Ersetzen"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
-msgid "File conflict"
-msgstr "Dateikonflikt"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
@@ -1978,53 +1844,6 @@ msgstr "Beim Erstellen des Ordners in »%F« ist ein Fehler aufgetreten."
 msgid "Emptying Trash"
 msgstr "Papierkorb wird geleert"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
-#, c-format
-msgid "link to %s"
-msgstr "Verweis nach %s"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Das Lesen der Desktop-Datei ist fehlgeschlagen: %s"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1740
-msgid "No Exec field specified"
-msgstr "Kein Exec-Feld angegeben"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1760
-msgid "No URL field specified"
-msgstr "Kein Adressfeld angegeben"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1766
-msgid "Invalid desktop file"
-msgstr "Ungültige .desktop-Datei"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2056
-msgid "Slashes are not allowed in filenames"
-msgstr "Schrägstriche sind in Dateinamen nicht erlaubt"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2076
-msgid "Toplevel files cannot be renamed"
-msgstr "Dateien im obersten Ordner können nicht umbenannt werden"
-
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Heute um %-I:%M Uhr"
-
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Gestern um %-I:%M Uhr"
-
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d. %b %Y um %-H:%M Uhr"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "In Vorbereitung"
-
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
@@ -2399,22 +2218,195 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Veränderung des Besitzers von %d Objekt wiede_rholen"
 msgstr[1] "Veränderung des Besitzers von %d Objekten wiede_rholen"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:119
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Ursprünglicher Ort von »%s« konnte nicht ermittelt werden "
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Heute um %-I:%M Uhr"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:122
-msgid "The item cannot be restored from trash"
-msgstr "Das Objekt kann aus dem Müll nicht wiederhergestellt werden"
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Gestern um %-I:%M Uhr"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d. %b %Y um %-H:%M Uhr"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "Verweis nach %s"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Das Lesen der Desktop-Datei ist fehlgeschlagen: %s"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1740
+msgid "No Exec field specified"
+msgstr "Kein Exec-Feld angegeben"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1760
+msgid "No URL field specified"
+msgstr "Kein Adressfeld angegeben"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1766
+msgid "Invalid desktop file"
+msgstr "Ungültige .desktop-Datei"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2056
+msgid "Slashes are not allowed in filenames"
+msgstr "Schrägstriche sind in Dateinamen nicht erlaubt"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2076
+msgid "Toplevel files cannot be renamed"
+msgstr "Dateien im obersten Ordner können nicht umbenannt werden"
 
 #: /home/codygarver/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
 msgstr " (ungültiger Unicode)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr "Weitere _Details anzeigen"
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "In Vorbereitung"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Ordner »%s« zusammenführen?"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Während des Zusammenführens fragen, ob gleichnamige Dateien im Zielordner "
+"überschrieben werden sollen."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Ein älterer Ordner gleichen Namens existiert bereits in »%s«."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Ein neuerer Ordner gleichen Namens existiert bereits in »%s«."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Ein Ordner gleichen Namens existiert bereits in »%s«."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
+msgid "Replacing it will remove all files in the folder."
+msgstr "Das Ersetzen dieses Ordners löscht alle enthaltenen Dateien"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Ordner »%s« ersetzen?"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Ein Ordner gleichen Namens existiert bereits in »%s«."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Datei »%s« ersetzen?"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will overwrite its content."
+msgstr "Falls Sie sie ersetzen, wird ihr Inhalt überschrieben."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Eine ältere Datei gleichen Namens existiert bereits in »%s«."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Eine neuere Datei gleichen Namens existiert bereits in »%s«."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Eine Datei gleichen Namens existiert bereits in »%s«."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
+msgid "Original file"
+msgstr "Originaldatei"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
+msgid "Size:"
+msgstr "Größe:"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
+msgid "Type:"
+msgstr "Typ:"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
+msgid "Last modified:"
+msgstr "Zuletzt geändert am:"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Replace with"
+msgstr "Ersetzen durch"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
+msgid "Merge"
+msgstr "Zusammenführen"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
+msgid "_Select a new name for the destination"
+msgstr "Einen neuen Namen für das Ziel w_ählen"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
+msgid "Apply this action to all files"
+msgstr "Diese Aktion auf alle Dateien anwenden"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
+msgid "Re_name"
+msgstr "Umbe_nennen"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
+msgid "Replace"
+msgstr "Ersetzen"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
+msgid "File conflict"
+msgstr "Dateikonflikt"
 
 #: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"

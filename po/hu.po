@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-07-22 21:31-0500\n"
+"POT-Creation-Date: 2012-07-26 14:06-0500\n"
 "PO-Revision-Date: 2012-07-08 09:58+0000\n"
 "Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
@@ -16,117 +16,59 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-07-24 06:08+0000\n"
-"X-Generator: Launchpad (build 15668)\n"
+"X-Launchpad-Export-Date: 2012-07-27 05:38+0000\n"
+"X-Generator: Launchpad (build 15694)\n"
 "Language: hu\n"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
-msgid "Home"
-msgstr "Saját mappa"
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
+msgid "Name"
+msgstr "Név"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:143
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:394
-msgid "File System"
-msgstr "Fájlrendszer"
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Típus"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "Beállítások"
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:368
+msgid "Target"
+msgstr "Cél"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:117
-msgid "Info"
-msgstr "Infó"
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:343
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Méret"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:125
-msgid "Permissions"
-msgstr "Jogosultságok"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:137
-msgid "Preview"
-msgstr "Előnézet"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:338
-msgid "Created"
-msgstr "Létrehozva"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:340
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:345
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:340
 #: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Modified"
 msgstr "Módosítva"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:343
-msgid "Last Access"
-msgstr "Utolsó hozzáférés"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:349
-msgid "Deleted"
-msgstr "Törölve"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:354
-msgid "MimeType"
-msgstr "Mime-típus"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:362
-msgid "MimeTypes"
-msgstr "Mime-típusok"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
-msgid "Location"
-msgstr "Hely"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:368
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
-msgid "Target"
-msgstr "Cél"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:374
-msgid "Origin Location"
-msgstr "Származási hely"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:412
-msgid "Other application..."
-msgstr "Más alkalmazás…"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:436
-msgid "Open with"
-msgstr "Megnyitás ezzel"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:452
-msgid "Device usage"
-msgstr "Eszközhasználat"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
-msgid "Read"
-msgstr "Olvasás"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:602
-msgid "Write"
-msgstr "Írás"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:607
-msgid "Execute"
-msgstr "Végrehajtás"
-
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:346
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:825
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:838
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:346
 msgid "Owner"
 msgstr "Tulajdonos"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:830
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:842
-msgid "Group"
-msgstr "Csoport"
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
+#, c-format
+msgid "Folder does not exist"
+msgstr "A mappa nem létezik"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:846
-msgid "Everyone"
-msgstr "Mindenki"
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
+#, c-format
+msgid "Marlin can't find the folder %s"
+msgstr "A Marlin nem találja a(z) %s mappát"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:1126
-msgid "Select an aplication to open "
-msgstr "Válasszon egy alkalmazást a megnyitáshoz "
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
+msgid "Create"
+msgstr "Létrehozás"
+
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
+#, c-format
+msgid "Create the folder %s"
+msgstr "%s mappa létrehozása"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -172,48 +114,15 @@ msgstr "területi"
 msgid "informal"
 msgstr "informális"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
-msgid "Name"
-msgstr "Név"
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "Saját mappa"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Típus"
-
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:343
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Méret"
-
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
-#, c-format
-msgid "Folder does not exist"
-msgstr "A mappa nem létezik"
-
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
-#, c-format
-msgid "Marlin can't find the folder %s"
-msgstr "A Marlin nem találja a(z) %s mappát"
-
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
-msgid "Create"
-msgstr "Létrehozás"
-
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
-#, c-format
-msgid "Create the folder %s"
-msgstr "%s mappa létrehozása"
-
-#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:370
-msgid "Trash"
-msgstr "Kuka"
-
-#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:588
-msgid "Network"
-msgstr "Hálózat"
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:143
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "Fájlrendszer"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:152
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3382
@@ -229,7 +138,7 @@ msgid "Undo"
 msgstr "Visszavonás"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:498
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:792
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:788
 msgid "Undo the last action"
 msgstr "Utolsó művelet visszavonása"
 
@@ -238,7 +147,7 @@ msgid "Redo"
 msgstr "Mégis"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:508
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:795
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:791
 msgid "Redo the last action"
 msgstr "Az utolsó művelet ismételt végrehajtása"
 
@@ -287,213 +196,444 @@ msgid "Close this folder"
 msgstr "Mappa bezárása"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:781
-msgid "Customize _Toolbar..."
-msgstr "_Eszköztár testreszabása..."
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:782
-msgid "Easily edit the toolbar layout"
-msgstr "Az eszköztár elrendezésének egyszerű szerkesztése"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:785
 msgid "Preferences"
 msgstr "Beállítások"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:786
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:782
 msgid "Change Marlin's preferences"
 msgstr "Marlin beállításainak modosítása"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:791
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:787
 msgid "_Undo"
 msgstr "_Visszavonás"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:794
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:790
 msgid "_Redo"
 msgstr "Mé_gis"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:797
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:793
 msgid "Open _Parent"
 msgstr "Szülő _megnyitása"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:798
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:794
 msgid "Open the parent folder"
 msgstr "Szülőmappa megnyitása"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:800
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:796
 msgid "_Back"
 msgstr "_Vissza"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:801
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:797
 msgid "Go to the previous visited location"
 msgstr "Ugrás az előző meglátogatott helyre"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:804
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:800
 msgid "_Forward"
 msgstr "_Előre"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:805
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:801
 msgid "Go to the next visited location"
 msgstr "Ugrás a következő meglátogatott helyre"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:807
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:803
 msgid "_Reload"
 msgstr "_Frissítés"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:808
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:804
 msgid "Reload the current location"
 msgstr "A jelenlegi hely újratöltése"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:811
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:807
 msgid "_Home Folder"
 msgstr "_Saját mappa"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:812
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:808
 #: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
 msgstr "Személyes mappa megnyitása"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:815
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:811
 msgid "_Trash"
 msgstr "_Kuka"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:816
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:812
 msgid "Open your personal trash folder"
 msgstr "A személyes kuka mappa megnyitása"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:819
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:815
 msgid "_Network"
 msgstr "_Hálózat"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:820
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:816
 msgid "Browse bookmarked and local network locations"
 msgstr "Könyvjelzőzött és helyi hálózati helyek tallózása"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:823
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:819
 msgid "Zoom _In"
 msgstr "_Nagyítás"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:824
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:820
 msgid "Increase the view size"
 msgstr "Megjelenési méret növelése"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:835
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:831
 msgid "Zoom _Out"
 msgstr "Kicsin_yítés"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:836
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:832
 msgid "Decrease the view size"
 msgstr "Megjelenési méret csökkentése"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:843
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:839
 msgid "Normal Si_ze"
 msgstr "Normál _méret"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:844
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:840
 msgid "Use the normal view size"
 msgstr "Normál méret használata"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:847
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:843
 msgid "Next Tab"
 msgstr "Következő lap"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:851
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:847
 msgid "Previous Tab"
 msgstr "Előző lap"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:855
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:851
 msgid "Connect to _Server..."
 msgstr "Kapcsolódás _kiszolgálóhoz..."
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:856
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:852
 msgid "Connect to a remote computer or shared disk"
 msgstr "Kapcsolódás távoli számítógéphez vagy megosztott lemezhez"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:859
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:855
 msgid "_About"
 msgstr "_Névjegy"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:860
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:856
 msgid "Display credits"
 msgstr "Közreműködők listájának megjelenítése"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:863
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:859
 msgid "Report a Problem..."
 msgstr "Hiba jelentése..."
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:864
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:860
 msgid "File a bug on Launchpad"
 msgstr "Hibajelentés Launchpaden"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:867
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:863
 msgid "Get Help Online..."
 msgstr "Online segítség kérése..."
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:871
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:867
 msgid "Translate This Application..."
 msgstr "Alkalmazás fordítása..."
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:880
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:876
 msgid "Show _Hidden Files"
 msgstr "Re_jtett fájlok megjelenítése"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:881
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:877
 msgid "Toggle the display of hidden files in the current window"
 msgstr "A rejtett fájlok megjelenítésének átváltása a jelenlegi ablakban"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:886
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:882
 msgid "Show _Desktop Files"
 msgstr "_Asztal fájljainak megjelenítése"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:887
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:883
 msgid "Toggle the display of desktop files"
 msgstr "Az asztal fájljainak megjelenítésének átváltása"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:891
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:887
 msgid "_Context Pane"
 msgstr "_Kontextus ablaktábla"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:892
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:888
 msgid "Change the visibility of the context pane"
 msgstr "A kontextus ablaktábla láthatóságának megváltoztatása"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:896
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:892
 msgid "_Menubar"
 msgstr "_Menüsor"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:897
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:893
 msgid "Change the visibility of this window's menubar"
 msgstr "Az ablak menüsor láthatóságának megváltoztatása"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:901
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:897
 msgid "_Places"
 msgstr "_Helyek"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:902
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:898
 msgid "Change the visibility of this window's side pane"
 msgstr "Megváltoztatja ezen ablak oldalsávjának láthatóságát"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:910
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:906
 msgid "Icon"
 msgstr "Ikon"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:913
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:909
 msgid "List"
 msgstr "Lista"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:916
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:912
 msgid "Compact"
 msgstr "Tömör"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:919
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:915
 msgid "Columns"
 msgstr "Oszlopok"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Ikon könyvtár listázása"
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "Beállítások"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Ikonnézet"
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:117
+msgid "Info"
+msgstr "Infó"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:125
+msgid "Permissions"
+msgstr "Jogosultságok"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:137
+msgid "Preview"
+msgstr "Előnézet"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:338
+msgid "Created"
+msgstr "Létrehozva"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:343
+msgid "Last Access"
+msgstr "Utolsó hozzáférés"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:349
+msgid "Deleted"
+msgstr "Törölve"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:354
+msgid "MimeType"
+msgstr "Mime-típus"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:362
+msgid "MimeTypes"
+msgstr "Mime-típusok"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
+msgid "Location"
+msgstr "Hely"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:374
+msgid "Origin Location"
+msgstr "Származási hely"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:412
+msgid "Other application..."
+msgstr "Más alkalmazás…"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:436
+msgid "Open with"
+msgstr "Megnyitás ezzel"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:452
+msgid "Device usage"
+msgstr "Eszközhasználat"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
+msgid "Read"
+msgstr "Olvasás"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:602
+msgid "Write"
+msgstr "Írás"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:607
+msgid "Execute"
+msgstr "Végrehajtás"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:830
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:842
+msgid "Group"
+msgstr "Csoport"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:846
+msgid "Everyone"
+msgstr "Mindenki"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:1126
+msgid "Select an aplication to open "
+msgstr "Válasszon egy alkalmazást a megnyitáshoz "
+
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:110
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:370
+msgid "Trash"
+msgstr "Kuka"
+
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:111
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:588
+msgid "Network"
+msgstr "Hálózat"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:82
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:616
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:572
+msgid "This folder is empty."
+msgstr "Ez a mappa üres."
+
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:186
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:199
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:139
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "„%s” átnevezése sikertelen erre: %s"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr "Tömör könyvtár listázás"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr "Tömör nézet"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
+msgid "SSH"
+msgstr "SSH"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
+msgid "Public FTP"
+msgstr "Nyilvános FTP"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
+msgid "FTP (with login)"
+msgstr "FTP (bejelentkezéssel)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
+msgid "Windows share"
+msgstr "Windows-megosztás"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Biztonságos WebDAV (HTTPS)"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
+msgid "Connecting..."
+msgstr "Kapcsolódás…"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
+msgid ""
+"Can't load the supported server method list.\n"
+"Please check your gvfs installation."
+msgstr ""
+"A támogatott kiszolgálómódszerek listája nem tölthető be.\n"
+"Ellenőrizze a gvfs telepítését."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
+#, c-format
+msgid "The folder \"%s\" cannot be opened on \"%s\"."
+msgstr "A(z) „%s” mappa nem nyitható meg ezen: „%s”."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
+#, c-format
+msgid "The server at \"%s\" cannot be found."
+msgstr "A kiszolgáló nem található itt: „%s”."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
+msgid "Try Again"
+msgstr "Próbálja újra"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
+msgid "Please verify your user details."
+msgstr "Ellenőrizze a felhasználói adatait."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
+msgid "Continue"
+msgstr "Folytatás"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
+msgid "C_onnect"
+msgstr "K_apcsolódás"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
+msgid "Connect to Server"
+msgstr "Kapcsolódás a kiszolgálóhoz"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
+msgid "Server Details"
+msgstr "Kiszolgáló részletei"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
+msgid "_Server:"
+msgstr "_Kiszolgáló:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
+msgid "_Port:"
+msgstr "_Port:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
+msgid "_Type:"
+msgstr "_Típus:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
+msgid "Sh_are:"
+msgstr "Meg_osztás:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
+msgid "_Folder:"
+msgstr "_Mappa:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
+msgid "User Details"
+msgstr "Felhasználói adatok"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
+msgid "_Domain name:"
+msgstr "_Tartománynév:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
+msgid "_User name:"
+msgstr "_Felhasználónév:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
+msgid "Pass_word:"
+msgstr "_Jelszó:"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
+msgid "_Remember this password"
+msgstr "_Emlékezzen erre a jelszóra"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
+msgid "Operation cancelled"
+msgstr "A művelet megszakítva"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Egyszeri kattintás"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Aktiválható-e az elem ebben a nézetben egyszeri kattintással"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "Egyszeri kattintás késleltetés"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr ""
+"Az időtartam miután az egér alatt lévő elem automatikusan kiválasztódik "
+"egyszeri kattintás módban"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1151
 msgid "Invalid filename provided by XDS drag site"
@@ -669,57 +809,25 @@ msgstr "Minden kijelölt elem tulajdonságainak megtekintése vagy módosítása
 msgid "Set Color:"
 msgstr "Szín beállítása:"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Fájlnév"
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Elrendezési mód"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:199
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:139
-#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:186
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "„%s” átnevezése sikertelen erre: %s"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:616
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:572
-#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:82
-msgid "This folder is empty."
-msgstr "Ez a mappa üres."
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "Az elrendezési mód"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
 msgstr "A vágólapról nincs mit beilleszteni"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
-msgid "File Operations"
-msgstr "Fájlműveletek"
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Fájlnév"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
-msgid "Show Details"
-msgstr "Részletek megjelenítése"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d fájlművelet aktív"
-msgstr[1] "%'d fájlművelet aktív"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
-msgid "Show Copy Dialog"
-msgstr ""
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
-msgid "Cancel All In-progress Actions"
-msgstr ""
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
-msgid "All file operations have been successfully completed"
-msgstr "Minden fájlművelet sikeresen befejeződött"
+#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Beviteli módok"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
@@ -765,14 +873,6 @@ msgstr "Módosítás _dátuma szerint"
 msgid "Keep icons sorted by modification date in rows"
 msgstr "Ikonok maradjanak a módosítás dátuma szerint rendezve"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:86
-msgid "Compact directory listing"
-msgstr "Tömör könyvtár listázás"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:87
-msgid "Compact view"
-msgstr "Tömör nézet"
-
 #: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
 msgstr "Eszköztár testreszabása"
@@ -793,29 +893,13 @@ msgstr "Elérhető elemek"
 msgid "Displayed Items"
 msgstr "Megjelenített elemek"
 
-#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Beviteli módok"
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Ikon könyvtár listázása"
 
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Egyszeri kattintás"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Aktiválható-e az elem ebben a nézetben egyszeri kattintással"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "Egyszeri kattintás késleltetés"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-"Az időtartam miután az egér alatt lévő elem automatikusan kiválasztódik "
-"egyszeri kattintás módban"
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Ikonnézet"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
@@ -842,128 +926,36 @@ msgstr "Mégse"
 msgid "Failed to execute file \"%s\""
 msgstr "Nem futtatható fájl: \"%s\""
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
-msgid "SSH"
-msgstr "SSH"
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
+msgid "File Operations"
+msgstr "Fájlműveletek"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
-msgid "Public FTP"
-msgstr "Nyilvános FTP"
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
+msgid "Show Details"
+msgstr "Részletek megjelenítése"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
-msgid "FTP (with login)"
-msgstr "FTP (bejelentkezéssel)"
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d fájlművelet aktív"
+msgstr[1] "%'d fájlművelet aktív"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
-msgid "Windows share"
-msgstr "Windows-megosztás"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Biztonságos WebDAV (HTTPS)"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
-msgid "Connecting..."
-msgstr "Kapcsolódás…"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
-msgid ""
-"Can't load the supported server method list.\n"
-"Please check your gvfs installation."
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
+msgid "Show Copy Dialog"
 msgstr ""
-"A támogatott kiszolgálómódszerek listája nem tölthető be.\n"
-"Ellenőrizze a gvfs telepítését."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
-#, c-format
-msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "A(z) „%s” mappa nem nyitható meg ezen: „%s”."
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
+msgid "Cancel All In-progress Actions"
+msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
-#, c-format
-msgid "The server at \"%s\" cannot be found."
-msgstr "A kiszolgáló nem található itt: „%s”."
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
-msgid "Try Again"
-msgstr "Próbálja újra"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
-msgid "Please verify your user details."
-msgstr "Ellenőrizze a felhasználói adatait."
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
-msgid "Continue"
-msgstr "Folytatás"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
-msgid "C_onnect"
-msgstr "K_apcsolódás"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
-msgid "Connect to Server"
-msgstr "Kapcsolódás a kiszolgálóhoz"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
-msgid "Server Details"
-msgstr "Kiszolgáló részletei"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
-msgid "_Server:"
-msgstr "_Kiszolgáló:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
-msgid "_Port:"
-msgstr "_Port:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
-msgid "_Type:"
-msgstr "_Típus:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
-msgid "Sh_are:"
-msgstr "Meg_osztás:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
-msgid "_Folder:"
-msgstr "_Mappa:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
-msgid "User Details"
-msgstr "Felhasználói adatok"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
-msgid "_Domain name:"
-msgstr "_Tartománynév:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
-msgid "_User name:"
-msgstr "_Felhasználónév:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
-msgid "Pass_word:"
-msgstr "_Jelszó:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
-msgid "_Remember this password"
-msgstr "_Emlékezzen erre a jelszóra"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
-msgid "Operation cancelled"
-msgstr "A művelet megszakítva"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Elrendezési mód"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "Az elrendezési mód"
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
+msgid "All file operations have been successfully completed"
+msgstr "Minden fájlművelet sikeresen befejeződött"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-application.c:420
 msgid "Show the version of the program."
@@ -1130,149 +1122,23 @@ msgstr "_Kiadás"
 msgid "Empty _Trash"
 msgstr "_Kuka ürítése"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
+#: /home/codygarver/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
+msgid "Show more _details"
+msgstr "Több _részlet megjelenítése"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Egyesíti a(z) „%s” mappát?"
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nem határozható meg „%s” eredeti helye "
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Az egyesítés a mappában található, a másolandó fájlokkal ütköző fájlok "
-"felülírása előtt megerősítést kér."
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "Az elem nem állítható helyre a Kukából"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Már létezik ilyen nevű régebbi mappa „%s” alatt."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy újabb, ugyan ilyen nevű mappa itt: „%s”."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy másik, ugyan ilyen nevű mappa itt: „%s”."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
-msgid "Replacing it will remove all files in the folder."
-msgstr "Cseréjével az összes fájl a mappában el lesz távolítva."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Lecseréli a(z) „%s” mappát?"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy ugyan ilyen nevű mappa itt: „%s”."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Felülírja a(z) \"%s\" fájlt?"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will overwrite its content."
-msgstr "Cseréjével a fájl tartalma felül lesz írva."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Már létezik egy régebbi, ugyanilyen nevű fájl itt: „%s”."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Már létezik egy újabb, ugyanilyen nevű fájl itt: „%s”."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Már létezik egy másik, ugyanilyen nevű fájl itt: „%s”."
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
-msgid "Original file"
-msgstr "Eredeti fájl"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
-msgid "Size:"
-msgstr "Méret:"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
-msgid "Type:"
-msgstr "Típus:"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
-msgid "Last modified:"
-msgstr "Utoljára módosítva:"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Replace with"
-msgstr "Cserélje erre"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
-msgid "Merge"
-msgstr "Egyesítés"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
-msgid "_Select a new name for the destination"
-msgstr "A_dja meg a cél új nevét"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
-msgid "Reset"
-msgstr "Alapállapot"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
-msgid "Apply this action to all files"
-msgstr "Művelet alkalmazása az összes fájlra"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:200
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
 msgid "_Skip"
 msgstr "_Kihagyás"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
-msgid "Re_name"
-msgstr "Át_nevezés"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
-msgid "Replace"
-msgstr "Felülírás"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
-msgid "File conflict"
-msgstr "Fájlütközés"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
@@ -1943,53 +1809,6 @@ msgstr "Hiba a könyvtár létrehozásakor a következőben: %F."
 msgid "Emptying Trash"
 msgstr "Kuka ürítése"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
-#, c-format
-msgid "link to %s"
-msgstr "link erre: %s"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "A fájl elemzése sikertelen: %s"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1740
-msgid "No Exec field specified"
-msgstr "Nincs Exec mező megadva"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1760
-msgid "No URL field specified"
-msgstr "Nincs URL megadva"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1766
-msgid "Invalid desktop file"
-msgstr "Érvénytelen .desktop fájl"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2056
-msgid "Slashes are not allowed in filenames"
-msgstr "A fájlnevek nem tartalmazhatnak osztásjelet"
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2076
-msgid "Toplevel files cannot be renamed"
-msgstr "A felső szintű fájlok nem nevezhetők át"
-
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Ma %-k.%M-kor"
-
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Tegnap %-k.%M-kor"
-
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "Felkészülés"
-
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
@@ -2363,22 +2182,195 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "%d elem tulajdonosmódosítása mégis"
 msgstr[1] "%d elem tulajdonosmódosítása mégis"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:119
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nem határozható meg „%s” eredeti helye "
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Ma %-k.%M-kor"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:122
-msgid "The item cannot be restored from trash"
-msgstr "Az elem nem állítható helyre a Kukából"
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Tegnap %-k.%M-kor"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "link erre: %s"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "A fájl elemzése sikertelen: %s"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1740
+msgid "No Exec field specified"
+msgstr "Nincs Exec mező megadva"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1760
+msgid "No URL field specified"
+msgstr "Nincs URL megadva"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1766
+msgid "Invalid desktop file"
+msgstr "Érvénytelen .desktop fájl"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2056
+msgid "Slashes are not allowed in filenames"
+msgstr "A fájlnevek nem tartalmazhatnak osztásjelet"
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2076
+msgid "Toplevel files cannot be renamed"
+msgstr "A felső szintű fájlok nem nevezhetők át"
 
 #: /home/codygarver/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
 msgstr " (érvénytelen Unicode)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr "Több _részlet megjelenítése"
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "Felkészülés"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Egyesíti a(z) „%s” mappát?"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Az egyesítés a mappában található, a másolandó fájlokkal ütköző fájlok "
+"felülírása előtt megerősítést kér."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Már létezik ilyen nevű régebbi mappa „%s” alatt."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Már létezik egy újabb, ugyan ilyen nevű mappa itt: „%s”."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Már létezik egy másik, ugyan ilyen nevű mappa itt: „%s”."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
+msgid "Replacing it will remove all files in the folder."
+msgstr "Cseréjével az összes fájl a mappában el lesz távolítva."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Lecseréli a(z) „%s” mappát?"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Már létezik egy ugyan ilyen nevű mappa itt: „%s”."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Felülírja a(z) \"%s\" fájlt?"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will overwrite its content."
+msgstr "Cseréjével a fájl tartalma felül lesz írva."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Már létezik egy régebbi, ugyanilyen nevű fájl itt: „%s”."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Már létezik egy újabb, ugyanilyen nevű fájl itt: „%s”."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Már létezik egy másik, ugyanilyen nevű fájl itt: „%s”."
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
+msgid "Original file"
+msgstr "Eredeti fájl"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
+msgid "Size:"
+msgstr "Méret:"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
+msgid "Type:"
+msgstr "Típus:"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
+msgid "Last modified:"
+msgstr "Utoljára módosítva:"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Replace with"
+msgstr "Cserélje erre"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
+msgid "Merge"
+msgstr "Egyesítés"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
+msgid "_Select a new name for the destination"
+msgstr "A_dja meg a cél új nevét"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
+msgid "Reset"
+msgstr "Alapállapot"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
+msgid "Apply this action to all files"
+msgstr "Művelet alkalmazása az összes fájlra"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
+msgid "Re_name"
+msgstr "Át_nevezés"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
+msgid "Replace"
+msgstr "Felülírás"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
+msgid "File conflict"
+msgstr "Fájlütközés"
 
 #: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
