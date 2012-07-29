@@ -1,15 +1,15 @@
-Source: marlin-plugin-dropbox
+Source: pantheon-files-plugin-dropbox
 Section: gnome
 Priority: optional
-Maintainer: ammonkey <am.monkeyd@gmail.com>
-Vcs-Bzr: lp:marlin-plugin-dropbox
-Build-Depends: debhelper (>= 7), pkg-config, cmake, libglib2.0-dev (>= 2.29.0), libgtk-3-dev (>= 3.0.3), libgee-dev, gnome-common, marlin
-Homepage: https://launchpad.net/marlin-plugin-dropbox
+Maintainer: Mario Guerriero <mefrio.g@gmail.com>
+Vcs-Bzr: lp:~elementary-apps/pantheon-files/pantheon-files-plugin-dropbox
+Build-Depends: debhelper (>= 7), pkg-config, cmake, libglib2.0-dev (>= 2.29.0), libgtk-3-dev (>= 3.0.3), libgee-dev, gnome-common, pantheon-files
+Homepage: https://launchpad.net/pantheon-files
 Standards-Version: 3.9.1
 
-Package: marlin-plugin-dropbox
+Package: pantheon-files-plugin-dropbox
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Pre-Depends: dpkg (>= 1.15.6)
-Description: Dropbox integration for Marlin
- Marlin Plugin Dropbox is an extension that integrates the Dropbox web service with your Desktop.
+Description: Dropbox integration for Files
+ Files Plugin Dropbox is an extension that integrates the Dropbox web service with your Desktop.

@@ -9,7 +9,7 @@ set(PACKAGE_VERSION 0.1)
 set(VERSION 0.1)
 configure_file (${CMAKE_SOURCE_DIR}/config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
-install(FILES dropbox.plug DESTINATION lib/marlin/plugins/)
+install(FILES dropbox.plug DESTINATION lib/pantheon-files/plugins/)
 find_package(PkgConfig)
 pkg_check_modules(DROPBOX REQUIRED
     gtk+-3.0
@@ -28,4 +28,4 @@ link_directories(${LIB_PATHS})
 add_library(marlin-dropbox SHARED
     plugin.c dropbox-client-util.c dropbox-command-client.c dropbox-client.c dropbox-hooks.c)
 target_link_libraries(marlin-dropbox marlincore marlinwidgets ${DROPBOX_LIBRARIES})
-install(TARGETS marlin-dropbox DESTINATION lib/marlin/plugins/)
+install(TARGETS marlin-dropbox DESTINATION lib/pantheon-files/plugins/)
