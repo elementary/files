@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-26 14:06-0500\n"
-"PO-Revision-Date: 2012-07-17 12:06+0000\n"
-"Last-Translator: Sergey Koptev <Unknown>\n"
+"PO-Revision-Date: 2012-07-31 18:30+0000\n"
+"Last-Translator: Max_ym <kontact.cat@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-07-27 05:39+0000\n"
-"X-Generator: Launchpad (build 15694)\n"
+"X-Launchpad-Export-Date: 2012-08-01 05:37+0000\n"
+"X-Generator: Launchpad (build 15719)\n"
 "Language: uk\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
@@ -76,7 +76,7 @@ msgstr "Параметри файлів"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
 msgid "General"
-msgstr ""
+msgstr "Загальний"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
@@ -92,11 +92,11 @@ msgstr ""
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
-msgstr ""
+msgstr "<small><i>Повільно</i></small>"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
-msgstr ""
+msgstr "<small><i>Швидше</i></small>"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
@@ -350,11 +350,11 @@ msgstr "Включення відображення файлів Робочог�
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:887
 msgid "_Context Pane"
-msgstr ""
+msgstr "_Контекстна панель"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:888
 msgid "Change the visibility of the context pane"
-msgstr ""
+msgstr "Змінити видимість контекстної панелі"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:892
 msgid "_Menubar"
@@ -637,7 +637,7 @@ msgstr ""
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1151
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "Джерело XDS надав некоректне ім'я файлу"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1309
 #, c-format
@@ -948,11 +948,11 @@ msgstr[2] "Тривають %'d дій над файлом"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Відобразити вікно копіювання"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Скасувати всі активні дії"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
@@ -1238,40 +1238,40 @@ msgstr "%'d-е посилання на %s"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
-msgstr ""
+msgstr " (копія)"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
-msgstr ""
+msgstr " (інша копія)"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:468
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:470
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:472
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
-msgstr ""
+msgstr "-а копія)"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
-msgstr ""
+msgstr "-а копія)"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
-msgstr ""
+msgstr "-а копія)"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
-msgstr ""
+msgstr "-я копія)"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (копія)%s"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (інша копія)%s"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:501
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:503
@@ -1279,22 +1279,22 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'d-а копія)%s"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'d-а копія)%s"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'d-а копія)%s"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'d-я копія)%s"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
@@ -1434,7 +1434,7 @@ msgstr[2] "залишилось перемістити у смітник %'d ф�
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "Не вдається перемістити файли у смітник. Видалити негайно?"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
@@ -1444,7 +1444,7 @@ msgstr ""
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
-msgstr ""
+msgstr "Переміщення файлів у смітник"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
@@ -1758,326 +1758,337 @@ msgstr "Копіювання файлів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
-msgstr ""
+msgstr "Пiдготовка до перемiщення у \"%B\""
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Підготовка до переміщення %'d файлу"
+msgstr[1] "Підготовка до переміщення %'d файлів"
+msgstr[2] "Підготовка до переміщення %'d файлів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr ""
+msgstr "Помилка при переміщенні файлу до %F."
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
-msgstr ""
+msgstr "Переміщення файлів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "Створення посилань у \"%B\""
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Створення посилання на %'d файл"
+msgstr[1] "Створення посилання на %'d файли"
+msgstr[2] "Створення посилань на %'d файлів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
-msgstr ""
+msgstr "Помилка при створенні посилання на %B."
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "Символьні посилання підтримуються лише для локальних файлів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "Ціль не підтримує символьні посилання."
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr ""
+msgstr "Помилка при створенні символьного посилання у %F."
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5780
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
-msgstr ""
+msgstr "Налаштування прав"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
-msgstr ""
+msgstr "неназвана тека"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
-msgstr ""
+msgstr "новий файл"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
-msgstr ""
+msgstr "Помилка при створенні теки %B."
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
-msgstr ""
+msgstr "Помилка при створенні файлу %B."
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr ""
+msgstr "Помилка при створенні каталогу в %F."
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
-msgstr ""
+msgstr "Очищення смітника"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Видалити %d скопійованих елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Видалити '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Видалити %d продубльованих елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Переміщення %d елементів назад у '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Перемістити '%s' назад у '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Перейменувати '%s' на '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Відновити %d елементів зі смітника"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Відновити '%s' до '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Перемістити %d елементів назад в смітник"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Перемістити '%s' назад у смітник"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Видалити посилання на %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Видалити посилання на '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Відновити початкові права на об'єкти у '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Відновити початкові права на '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Відновити групу з '%s' до '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Відновити власника з '%s' до '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Копіювати %d елементів до '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Скопіювати '%s' до '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Дублювати %d елементів у '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Дублювати '%s' у '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Перемістити %d елементів у '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Перемістити '%s' до '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Створити новий файл '%s' з шаблону "
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Створити порожній файл '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Створити нову теку '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Перемістити %d елементів у смітник"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Перемістити '%s' у смітник"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Відновити '%s' з смітника"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Створити посилання на %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Створити посилання на '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Вказати права на об'єкти у '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Вказати права на '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "Вказати групу з '%s' до '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Вказати власника з '%s' до '%s'"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Відмінити копіювання %d елемента"
+msgstr[1] "_Відмінити копіювання %d елементів"
+msgstr[2] "_Відмінити копіювання %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Відмінити дублювання %d елемента"
+msgstr[1] "_Відмінити дублювання %d елементів"
+msgstr[2] "_Відмінити дублювання %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Відмінити переміщення %d елемента"
+msgstr[1] "_Відмінити переміщення %d елементів"
+msgstr[2] "_Відмінити переміщення %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Відмінити перейменування %d елемента"
+msgstr[1] "_Відмінити перейменування %d елементів"
+msgstr[2] "_Відмінити перейменування %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_Відмінити створення порожнього файлу"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Відмінити створення файлу з шаблону"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Відмінити створення %d каталогу"
+msgstr[1] "_Відмінити створення %d каталогів"
+msgstr[2] "_Відмінити створення %d каталогів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Відмінити переміщення у смітник %d елемента"
+msgstr[1] "_Відмінити переміщення у смітник %d елементів"
+msgstr[2] "_Відмінити переміщення у смітник %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Відмінити відновлення %d елемента переміщених у смітник"
+msgstr[1] "_Відмінити відновлення %d елементів переміщених у смітник"
+msgstr[2] "_Відмінити відновлення %d елементів переміщених у смітник"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Відмінити створення посилання на %d елемент"
+msgstr[1] "_Відмінити створення посилання на %d елементів"
+msgstr[2] "_Відмінити створення посилання на %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Відмінити видалення %d елемента"
+msgstr[1] "_Відмінити видалення %d елементів"
+msgstr[2] "_Відмінити видалення %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
@@ -2090,93 +2101,105 @@ msgstr[1] ""
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Відмінити зміну прав на %d елемент"
+msgstr[1] "Відмінити зміну прав на %d елементів"
+msgstr[2] "Відмінити зміну прав на %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Відмінити зміну групи %d елемента"
+msgstr[1] "Відмінити зміну групи %d елементів"
+msgstr[2] "Відмінити зміну групи %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Відмінити зміну власника %d елемента"
+msgstr[1] "Відмінити зміну власника %d елементів"
+msgstr[2] "Відмінити зміну власника %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повернути копіювання %d елемента"
+msgstr[1] "_Повернути копіювання %d елементів"
+msgstr[2] "_Повернути копіювання %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повернути дублювання %d елемента"
+msgstr[1] "_Повернути дублювання %d елементів"
+msgstr[2] "_Повернути дублювання %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повернути переміщення %d елемента"
+msgstr[1] "_Повернути переміщення %d елементів"
+msgstr[2] "_Повернути переміщення %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повернути перейменування %d елемента"
+msgstr[1] "_Повернути перейменування %d елементів"
+msgstr[2] "_Повернути перейменування %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Повернути створення порожнього файлу"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_Повернути створення файлу зі шаблону"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повернути створення %d каталога"
+msgstr[1] "_Повернути створення %d каталогів"
+msgstr[2] "_Повернути створення %d каталогів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повернути перенесення у смітник %d елемента"
+msgstr[1] "_Повернути перенесення у смітник %d елементів"
+msgstr[2] "_Повернути перенесення у смітник %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повернути відновлення зі смітник %d елемента"
+msgstr[1] "_Повернути відновлення зі смітник %d елемента"
+msgstr[2] "_Повернути відновлення зі смітник %d елемента"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повернути створення посилання на %d елемент"
+msgstr[1] "_Повернути створення посилання на %d елементів"
+msgstr[2] "_Повернути створення посилання на %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Повернути видалення %d елемента"
+msgstr[1] "_Повернути видалення %d елементів"
+msgstr[2] "_Повернути видалення %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
@@ -2189,22 +2212,25 @@ msgstr[1] ""
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Повернути зміну прав на %d елемент"
+msgstr[1] "Повернути зміну прав на %d елементів"
+msgstr[2] "Повернути зміну прав на %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Повернути зміну групи %d елемента"
+msgstr[1] "Повернути зміну групи %d елементів"
+msgstr[2] "Повернути зміну групи %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Повернути зміну власника %d елемента"
+msgstr[1] "Повернути зміну власника %d елементів"
+msgstr[2] "Повернути зміну власника %d елементів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
@@ -2216,7 +2242,7 @@ msgstr "Вчора о %-I:%M %p"
 
 #: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y на %-I:%M %p"
 
 #: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
 #, c-format
@@ -2226,19 +2252,19 @@ msgstr "посилання на %s"
 #: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr ""
+msgstr "Неможливо обробити desktop-файл: %s"
 
 #: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1740
 msgid "No Exec field specified"
-msgstr ""
+msgstr "Не вказано поле Exec"
 
 #: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1760
 msgid "No URL field specified"
-msgstr ""
+msgstr "Не вказано URL"
 
 #: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1766
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "Некоректний файл .desktop"
 
 #: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2056
 msgid "Slashes are not allowed in filenames"
@@ -2269,6 +2295,8 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Якщо при об'єднанні виникнуть конфлікти із файлами, що копіюються, тоді буде "
+"запропоновано підтвердити заміну файлів."
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
@@ -2384,7 +2412,7 @@ msgstr "Застосувати цю дію для всіх файлів"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
 msgid "Re_name"
-msgstr ""
+msgstr "Перей_менувати"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
@@ -2392,20 +2420,20 @@ msgstr "Замінити"
 
 #: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
-msgstr ""
+msgstr "Конфлікт файлів"
 
 #: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "Вирізати виділений текст у буфер обміну"
 
 #: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Копіювати виділений текст у буфер обміну"
 
 #: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:333
 #: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Вставити текст з буферу обміну"
 
 #: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:813
 #, c-format
@@ -2414,12 +2442,12 @@ msgstr "Перейти до %s"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr ""
+msgstr "Перегляд таблицею"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "Перегляд списком"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
+msgstr "Перегляд колонками"

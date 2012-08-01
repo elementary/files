@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-26 14:06-0500\n"
-"PO-Revision-Date: 2012-07-22 19:42+0000\n"
-"Last-Translator: Piotr Sokół <Unknown>\n"
+"PO-Revision-Date: 2012-07-31 16:33+0000\n"
+"Last-Translator: Adrian Widerski <Unknown>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-07-27 05:38+0000\n"
-"X-Generator: Launchpad (build 15694)\n"
+"X-Launchpad-Export-Date: 2012-08-01 05:37+0000\n"
+"X-Generator: Launchpad (build 15719)\n"
 "Language: pl\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
@@ -76,7 +76,7 @@ msgstr "Preferencje Pliki"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
 msgid "General"
-msgstr ""
+msgstr "Ogólne"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
@@ -88,15 +88,15 @@ msgstr "Otwieranie pojedynczym kliknięciem:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Auto-zaznaczenie myszą"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
-msgstr ""
+msgstr "<small><i>Wolno</i></small>"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
-msgstr ""
+msgstr "<small><i>Szybko</i></small>"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
@@ -950,11 +950,11 @@ msgstr[2] "Trwa %'d operacji plikowych"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Pokaż okno kopiowania"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Anuluj wszystkie trwające akcje"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
@@ -2252,7 +2252,7 @@ msgstr "Wczoraj o %-I:%M %p"
 
 #: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
 #, c-format
@@ -2453,12 +2453,12 @@ msgstr "Przechodzi do położenia „%s”"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr ""
+msgstr "Wyświetlaj jako siatkę"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "Wyświetlaj jako listę"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
+msgstr "Wyświetlaj w kolumnach"
