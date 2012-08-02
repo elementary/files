@@ -26,6 +26,14 @@ using Cairo;
 using Marlin.View.Chrome;
 using EelGtk.Window;
 
+namespace DesktopLauncher {
+    /* Translatable launcher (.desktop) strings to be added to   */
+    /* template (.pot) file. These strings MUST reflect any      */
+    /* changes in these launcher keys in .desktop file.          */
+  /* Make launcher quicklist entry translateable */  public const string OPEN_AS_ADMIN = N_("New Window as _Administrator");
+}
+
+
 namespace Marlin.View {
     public class Window : Gtk.Window
     {
@@ -773,10 +781,6 @@ namespace Marlin.View {
   /* label, accelerator */       N_("New _Tab"), "<control>T",
   /* tooltip */                  N_("Open another tab for the displayed location"),
                                  action_new_tab },
-
-
-  /* Make launcher quicklist entry translateable */  public const string OPEN_AS_ADMIN = N_("New Window as _Administrator");
-
 
   /* name, stock id */         { "Close", Stock.CLOSE,
   /* label, accelerator */       N_("_Close"), "<control>W",
