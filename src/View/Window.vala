@@ -773,6 +773,11 @@ namespace Marlin.View {
   /* label, accelerator */       N_("New _Tab"), "<control>T",
   /* tooltip */                  N_("Open another tab for the displayed location"),
                                  action_new_tab },
+
+
+  /* Make launcher quicklist entry translateable */  public const string OPEN_AS_ADMIN = N_("New Window as _Administrator");
+
+
   /* name, stock id */         { "Close", Stock.CLOSE,
   /* label, accelerator */       N_("_Close"), "<control>W",
   /* tooltip */                  N_("Close this folder"),

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-02 23:57+0200\n"
+"POT-Creation-Date: 2012-08-03 00:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgid "Undo"
 msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:498
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:788
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:793
 msgid "Undo the last action"
 msgstr ""
 
@@ -41,7 +41,7 @@ msgid "Redo"
 msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:508
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
 msgid "Redo the last action"
 msgstr ""
 
@@ -81,204 +81,208 @@ msgstr ""
 msgid "Open another tab for the displayed location"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:777
-msgid "_Close"
-msgstr ""
-
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:778
-msgid "Close this folder"
-msgstr ""
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:781
-msgid "Preferences"
+msgid "New Window as _Administrator"
 msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:782
-msgid "Change Files preferences"
+msgid "_Close"
+msgstr ""
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:783
+msgid "Close this folder"
+msgstr ""
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:786
+msgid "Preferences"
 msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:787
+msgid "Change Files preferences"
+msgstr ""
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:792
 msgid "_Undo"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:790
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:795
 msgid "_Redo"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:793
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:798
 msgid "Open _Parent"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:794
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:799
 msgid "Open the parent folder"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:801
 msgid "_Back"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:797
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:802
 msgid "Go to the previous visited location"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:800
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:805
 msgid "_Forward"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:801
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:806
 msgid "Go to the next visited location"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:803
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:808
 msgid "_Reload"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:804
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:809
 msgid "Reload the current location"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:807
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:812
 msgid "_Home Folder"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:808
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:813
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:811
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:816
 msgid "_Trash"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:812
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:817
 msgid "Open your personal trash folder"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:815
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:820
 msgid "_Network"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:816
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:821
 msgid "Browse bookmarked and local network locations"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:819
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:824
 msgid "Zoom _In"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:820
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:825
 msgid "Increase the view size"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:831
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:836
 msgid "Zoom _Out"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:832
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:837
 msgid "Decrease the view size"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:839
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:844
 msgid "Normal Si_ze"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:840
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:845
 msgid "Use the normal view size"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:843
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:848
 msgid "Next Tab"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:847
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:852
 msgid "Previous Tab"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:851
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:856
 msgid "Connect to _Server..."
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:852
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:857
 msgid "Connect to a remote computer or shared disk"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:855
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:860
 msgid "_About"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:856
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:861
 msgid "Display credits"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:859
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:864
 msgid "Report a Problem..."
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:860
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:865
 msgid "File a bug on Launchpad"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:863
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:868
 msgid "Get Help Online..."
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:867
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:872
 msgid "Translate This Application..."
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:876
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:881
 msgid "Show _Hidden Files"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:877
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:882
 msgid "Toggle the display of hidden files in the current window"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:882
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:887
 msgid "Show _Desktop Files"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:883
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:888
 msgid "Toggle the display of desktop files"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:887
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:892
 msgid "_Context Pane"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:888
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:893
 msgid "Change the visibility of the context pane"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:892
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:897
 msgid "_Menubar"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:893
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:898
 msgid "Change the visibility of this window's menubar"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:897
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:902
 msgid "_Places"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:898
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:903
 msgid "Change the visibility of this window's side pane"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:906
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:911
 msgid "Icon"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:909
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:914
 msgid "List"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:912
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:917
 msgid "Compact"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:915
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:920
 msgid "Columns"
 msgstr ""
 
