@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-02 12:37+0200\n"
+"POT-Creation-Date: 2012-08-02 12:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -377,6 +377,11 @@ msgstr ""
 
 #: /home/gotwig/pantheon-files/po/../src/View/PropertiesWindow.vala:452
 msgid "Device usage"
+msgstr ""
+
+#: /home/gotwig/pantheon-files/po/../src/View/PropertiesWindow.vala:458
+#, c-format
+msgid "%s free of %s (%d%% used)"
 msgstr ""
 
 #: /home/gotwig/pantheon-files/po/../src/View/PropertiesWindow.vala:597
