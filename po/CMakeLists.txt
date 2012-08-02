@@ -5,4 +5,6 @@ add_translations_catalog("pantheon-files"
     ../src
     ../libcore
     ../libwidgets
-    ../src/View/Chrome)
+    ../src/View/Chrome
+    ../plugins/marlin-trash
+)
