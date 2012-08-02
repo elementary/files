@@ -767,7 +767,7 @@ namespace Marlin.View {
   /* name, stock id, label */  { "Help", null, N_("_Help") },
 /*                               { "ColorMenu", null, N_("Set _Color") },*/
   /* name, stock id, label */  { "New Window", "window-new", N_("New _Window"),
-                                 "<control>N", N_("Open another Marlin window for the displayed location"),
+                                 "<control>N", N_("Open another Files window for the displayed location"),
                                  action_new_window },
   /* name, stock id */         { "New Tab", "tab-new",
   /* label, accelerator */       N_("New _Tab"), "<control>T",
@@ -779,7 +779,7 @@ namespace Marlin.View {
                                  action_remove_tab },
                                { "MarlinSettings", Stock.PREFERENCES,
                                  N_("Preferences"),
-                                 null, N_("Change Marlin's preferences"),
+                                 null, N_("Change Files preferences"),
                                  action_marlin_settings_callback },
                              /*{ Chrome.ColorAction, null, "ColorAction"),
                                  null, null,

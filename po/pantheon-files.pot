@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-02 23:47+0200\n"
+"POT-Creation-Date: 2012-08-02 23:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,7 +70,7 @@ msgid "New _Window"
 msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:770
-msgid "Open another Marlin window for the displayed location"
+msgid "Open another Files window for the displayed location"
 msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:773
@@ -94,7 +94,7 @@ msgid "Preferences"
 msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:782
-msgid "Change Marlin's preferences"
+msgid "Change Files preferences"
 msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:787
@@ -416,7 +416,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
-msgid "Marlin can't find the folder %s"
+msgid "Files can't find the folder %s"
 msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:80
@@ -708,7 +708,7 @@ msgid "Open uri(s) in new tab"
 msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:426
-msgid "Quit Marlin."
+msgid "Quit Files."
 msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:428

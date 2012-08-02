@@ -72,7 +72,7 @@ namespace Marlin.View
             label.set_markup("<span size=\"x-large\">%s</span>".printf(_("Folder does not exist")));
             box.pack_start(label, false, false);
 
-            label = new Label(_("Marlin can't find the folder %s").printf(dir.location.get_basename()));
+            label = new Label(_("Files can't find the folder %s").printf(dir.location.get_basename()));
             label.set_sensitive(false);
             label.set_alignment(0.5f, 0.0f);
             box.pack_start(label, true, true);
