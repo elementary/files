@@ -423,7 +423,7 @@ marlin_application_cmd (GApplication *app, GApplicationCommandLine *cmd)
         { "tab", 't', 0, G_OPTION_ARG_NONE, &self->priv->open_intab,
             N_("Open uri(s) in new tab"), NULL },
         { "quit", 'q', 0, G_OPTION_ARG_NONE, &kill_shell, 
-            N_("Quit Marlin."), NULL },
+            N_("Quit Files."), NULL },
         { "debug", 'd', 0, G_OPTION_ARG_NONE, &self->priv->debug,
             N_("Enable debug logging"), NULL },
         { G_OPTION_REMAINING, 0, 0, G_OPTION_ARG_STRING_ARRAY, &remaining, NULL,  N_("[URI...]") },

@@ -43,8 +43,8 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base
             GOF.AbstractSlot slot = ((Object[])user_data)[1] as GOF.AbstractSlot;
             
             infobar = new InfoBar();
-            (infobar.get_content_area() as Gtk.Box).add(new Gtk.Label("These items may be deleted by emptying the trash."));
-            infobar.add_button("Empty the Trash", 0);
+            (infobar.get_content_area() as Gtk.Box).add(new Gtk.Label(_("These items may be deleted by emptying the trash.")));
+            infobar.add_button(_("Empty the Trash"), 0);
             infobar.response.connect( (self, response) => {
                 Marlin.FileOperations.empty_trash(self);
                 });

@@ -26,6 +26,14 @@ using Cairo;
 using Marlin.View.Chrome;
 using EelGtk.Window;
 
+namespace DesktopLauncher {
+    /* Translatable launcher (.desktop) strings to be added to   */
+    /* template (.pot) file. These strings MUST reflect any      */
+    /* changes in these launcher keys in .desktop file.          */
+  /* Make launcher quicklist entry translateable */  public const string OPEN_AS_ADMIN = N_("New Window as _Administrator");
+}
+
+
 namespace Marlin.View {
     public class Window : Gtk.Window
     {
@@ -767,19 +775,20 @@ namespace Marlin.View {
   /* name, stock id, label */  { "Help", null, N_("_Help") },
 /*                               { "ColorMenu", null, N_("Set _Color") },*/
   /* name, stock id, label */  { "New Window", "window-new", N_("New _Window"),
-                                 "<control>N", N_("Open another Marlin window for the displayed location"),
+                                 "<control>N", N_("Open another Files window for the displayed location"),
                                  action_new_window },
   /* name, stock id */         { "New Tab", "tab-new",
   /* label, accelerator */       N_("New _Tab"), "<control>T",
   /* tooltip */                  N_("Open another tab for the displayed location"),
                                  action_new_tab },
+
   /* name, stock id */         { "Close", Stock.CLOSE,
   /* label, accelerator */       N_("_Close"), "<control>W",
   /* tooltip */                  N_("Close this folder"),
                                  action_remove_tab },
                                { "MarlinSettings", Stock.PREFERENCES,
                                  N_("Preferences"),
-                                 null, N_("Change Marlin's preferences"),
+                                 null, N_("Change Files preferences"),
                                  action_marlin_settings_callback },
                              /*{ Chrome.ColorAction, null, "ColorAction"),
                                  null, null,
