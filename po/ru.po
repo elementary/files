@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-07-26 14:06-0500\n"
+"POT-Creation-Date: 2012-08-03 01:08+0200\n"
 "PO-Revision-Date: 2012-07-17 13:56+0000\n"
 "Last-Translator: Nikita Putko <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -16,928 +16,563 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-07-27 05:39+0000\n"
-"X-Generator: Launchpad (build 15694)\n"
+"X-Launchpad-Export-Date: 2012-08-04 05:45+0000\n"
+"X-Generator: Launchpad (build 15742)\n"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
+msgid "New Window as _Administrator"
+msgstr ""
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:160
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3382
+msgid "Set as default"
+msgstr "Установить по умолчанию"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:165
+msgid "Ignore"
+msgstr "Пропустить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:505
+msgid "Undo"
+msgstr "Отменить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:506
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:797
+msgid "Undo the last action"
+msgstr "Отменить последнее действие"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:515
+msgid "Redo"
+msgstr "Повторить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:516
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:800
+msgid "Redo the last action"
+msgstr "Возвратить последнее отменённое действие"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:771
+msgid "_File"
+msgstr "_Файл"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:772
+msgid "_Edit"
+msgstr "_Правка"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:773
+msgid "_View"
+msgstr "_Вид"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:774
+msgid "_Go"
+msgstr "П_ереход"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:775
+msgid "_Help"
+msgstr "_Справка"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:777
+msgid "New _Window"
+msgstr "Создать _окно"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:778
+msgid "Open another Files window for the displayed location"
+msgstr ""
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:781
+msgid "New _Tab"
+msgstr "Но_вая вкладка"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:782
+msgid "Open another tab for the displayed location"
+msgstr "Открыть ещё одну вкладку для текущего адреса"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:786
+msgid "_Close"
+msgstr "_Закрыть"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:787
+msgid "Close this folder"
+msgstr "Закрыть эту папку"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:790
+msgid "Preferences"
+msgstr "Параметры"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
+msgid "Change Files preferences"
+msgstr ""
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
+msgid "_Undo"
+msgstr "_Отменить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:799
+msgid "_Redo"
+msgstr "_Повторить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:802
+msgid "Open _Parent"
+msgstr "Открыть папку уровнем выше"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:803
+msgid "Open the parent folder"
+msgstr "Открыть папку уровнем выше"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:805
+msgid "_Back"
+msgstr "_Назад"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:806
+msgid "Go to the previous visited location"
+msgstr "Перейти к предыдущему посещённому адресу"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:809
+msgid "_Forward"
+msgstr "_Далее"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:810
+msgid "Go to the next visited location"
+msgstr "Перейти к следующему посещённому адресу"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:812
+msgid "_Reload"
+msgstr "Пе_резагрузить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:813
+msgid "Reload the current location"
+msgstr "Перезагрузить текущий адрес"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:816
+msgid "_Home Folder"
+msgstr "_Домашняя папка"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:817
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "Открыть домашнюю папку"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:820
+msgid "_Trash"
+msgstr "_Корзина"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:821
+msgid "Open your personal trash folder"
+msgstr "Открыть личную папку корзины"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:824
+msgid "_Network"
+msgstr "_Сеть"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:825
+msgid "Browse bookmarked and local network locations"
+msgstr "Просмотреть закладки и локальные сетевые ресурсы"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:828
+msgid "Zoom _In"
+msgstr "У_величить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:829
+msgid "Increase the view size"
+msgstr "Увеличить масштаб"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:840
+msgid "Zoom _Out"
+msgstr "Уме_ньшить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:841
+msgid "Decrease the view size"
+msgstr "Уменьшить масштаб"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:848
+msgid "Normal Si_ze"
+msgstr "_Нормальный размер"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:849
+msgid "Use the normal view size"
+msgstr "Использовать нормальный размер"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:852
+msgid "Next Tab"
+msgstr "Следующая вкладка"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:856
+msgid "Previous Tab"
+msgstr "Предыдущая вкладка"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:860
+msgid "Connect to _Server..."
+msgstr "Подключиться к _серверу…"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:861
+msgid "Connect to a remote computer or shared disk"
+msgstr "Соединиться с удалённым компьютером или общедоступным диском"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:864
+msgid "_About"
+msgstr "_Сведения"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:865
+msgid "Display credits"
+msgstr "Об авторах"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:868
+msgid "Report a Problem..."
+msgstr "Сообщить о неполадке..."
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:869
+msgid "File a bug on Launchpad"
+msgstr "Сообщить об ошибке в сервис Launchpad"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:872
+msgid "Get Help Online..."
+msgstr "Справка в интернете..."
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:876
+msgid "Translate This Application..."
+msgstr "Перевести это приложение..."
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:885
+msgid "Show _Hidden Files"
+msgstr "Показывать скрытые _файлы"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:886
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Показывать ли скрытые файлы в текущем окне"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:891
+msgid "Show _Desktop Files"
+msgstr "Показать файлы на рабочем столе"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:892
+msgid "Toggle the display of desktop files"
+msgstr "Переключить отображение файлов на рабочем столе"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:896
+msgid "_Context Pane"
+msgstr "_Сводная панель"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:897
+msgid "Change the visibility of the context pane"
+msgstr "Изменить видимость боковой панели"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:901
+msgid "_Menubar"
+msgstr "Панель _меню"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:902
+msgid "Change the visibility of this window's menubar"
+msgstr "Изменить видимость меню окна"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:906
+msgid "_Places"
+msgstr "_Места"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:907
+msgid "Change the visibility of this window's side pane"
+msgstr "Показывать ли боковую панель этого окна"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:915
+msgid "Icon"
+msgstr "Значок"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:918
+msgid "List"
+msgstr "Список"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:921
+msgid "Compact"
+msgstr "Компактный"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:924
+msgid "Columns"
+msgstr "Столбцы"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:337
 msgid "Name"
 msgstr "Имя"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:338
+#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:59
 msgid "Type"
 msgstr "Тип"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:368
+#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:341
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:368
 msgid "Target"
 msgstr "Объект"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:343
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:343
+#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:59
 msgid "Size"
 msgstr "Размер"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:345
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:340
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:345
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:340
+#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:59
 msgid "Modified"
 msgstr "Изменён"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:346
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:825
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:838
+#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:346
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:825
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:838
 msgid "Owner"
 msgstr "Владелец"
 
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
+#: /home/gotwig/translations-gen-fix/po/../src/View/ViewContainer.vala:141
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "Домашняя папка"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/ViewContainer.vala:143
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "Файловая система"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "Свойства"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:117
+msgid "Info"
+msgstr "Информация"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:125
+msgid "Permissions"
+msgstr "Права доступа"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:137
+msgid "Preview"
+msgstr "Предпросмотр"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:338
+msgid "Created"
+msgstr "Создан"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:343
+msgid "Last Access"
+msgstr "Последний доступ"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:349
+msgid "Deleted"
+msgstr "Удалено"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:354
+msgid "MimeType"
+msgstr "Тип MIME"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:362
+msgid "MimeTypes"
+msgstr "Типы MIME"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:366
+msgid "Location"
+msgstr "Адрес"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:374
+msgid "Origin Location"
+msgstr "Ссылка на"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:412
+msgid "Other application..."
+msgstr "Другое приложение…"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:436
+msgid "Open with"
+msgstr "Открыть в"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:452
+msgid "Device usage"
+msgstr "Использование устройства"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:458
+#, c-format
+msgid "%s free of %s (%d%% used)"
+msgstr ""
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:597
+msgid "Read"
+msgstr "Чтение"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:602
+msgid "Write"
+msgstr "Запись"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:607
+msgid "Execute"
+msgstr "Выполнение"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:830
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:842
+msgid "Group"
+msgstr "Группа"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:846
+msgid "Everyone"
+msgstr "Всем"
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:1126
+msgid "Select an aplication to open "
+msgstr "Выберите приложение "
+
+#: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "Папка не существует"
 
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
+#: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
-msgid "Marlin can't find the folder %s"
-msgstr "Marlin не может найти папку %s"
+msgid "Files can't find the folder %s"
+msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "Создать"
 
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "Создать папку %s"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:34
+#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
 msgstr "Параметры файлов"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
+#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:47
 msgid "General"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:102
+#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
 msgstr "Расширения"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:207
+#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:207
 msgid "Single click to open:"
 msgstr "Открытие одним щелчком:"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
+#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
+#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:235
+#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:250
+#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
 msgstr "Формат даты:"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:253
+#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:253
 msgid "iso"
 msgstr "iso"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:254
+#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:254
 msgid "locale"
 msgstr "язык"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:255
+#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:255
 msgid "informal"
 msgstr "неофициальный"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
-msgid "Home"
-msgstr "Домашняя папка"
-
-#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:143
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:394
-msgid "File System"
-msgstr "Файловая система"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:152
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3382
-msgid "Set as default"
-msgstr "Установить по умолчанию"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:157
-msgid "Ignore"
-msgstr "Пропустить"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:497
-msgid "Undo"
-msgstr "Отменить"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:498
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:788
-msgid "Undo the last action"
-msgstr "Отменить последнее действие"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:507
-msgid "Redo"
-msgstr "Повторить"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:508
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:791
-msgid "Redo the last action"
-msgstr "Возвратить последнее отменённое действие"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:763
-msgid "_File"
-msgstr "_Файл"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:764
-msgid "_Edit"
-msgstr "_Правка"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:765
-msgid "_View"
-msgstr "_Вид"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:766
-msgid "_Go"
-msgstr "П_ереход"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:767
-msgid "_Help"
-msgstr "_Справка"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:769
-msgid "New _Window"
-msgstr "Создать _окно"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:770
-msgid "Open another Marlin window for the displayed location"
-msgstr "Открыть новое окно Marlin для отображаемой локации"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:773
-msgid "New _Tab"
-msgstr "Но_вая вкладка"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:774
-msgid "Open another tab for the displayed location"
-msgstr "Открыть ещё одну вкладку для текущего адреса"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:777
-msgid "_Close"
-msgstr "_Закрыть"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:778
-msgid "Close this folder"
-msgstr "Закрыть эту папку"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:781
-msgid "Preferences"
-msgstr "Параметры"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:782
-msgid "Change Marlin's preferences"
-msgstr "Сменить настройки Marlin"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:787
-msgid "_Undo"
-msgstr "_Отменить"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:790
-msgid "_Redo"
-msgstr "_Повторить"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:793
-msgid "Open _Parent"
-msgstr "Открыть папку уровнем выше"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:794
-msgid "Open the parent folder"
-msgstr "Открыть папку уровнем выше"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:796
-msgid "_Back"
-msgstr "_Назад"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:797
-msgid "Go to the previous visited location"
-msgstr "Перейти к предыдущему посещённому адресу"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:800
-msgid "_Forward"
-msgstr "_Далее"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:801
-msgid "Go to the next visited location"
-msgstr "Перейти к следующему посещённому адресу"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:803
-msgid "_Reload"
-msgstr "Пе_резагрузить"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:804
-msgid "Reload the current location"
-msgstr "Перезагрузить текущий адрес"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:807
-msgid "_Home Folder"
-msgstr "_Домашняя папка"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:808
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:329
-msgid "Open your personal folder"
-msgstr "Открыть домашнюю папку"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:811
-msgid "_Trash"
-msgstr "_Корзина"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:812
-msgid "Open your personal trash folder"
-msgstr "Открыть личную папку корзины"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:815
-msgid "_Network"
-msgstr "_Сеть"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:816
-msgid "Browse bookmarked and local network locations"
-msgstr "Просмотреть закладки и локальные сетевые ресурсы"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:819
-msgid "Zoom _In"
-msgstr "У_величить"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:820
-msgid "Increase the view size"
-msgstr "Увеличить масштаб"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:831
-msgid "Zoom _Out"
-msgstr "Уме_ньшить"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:832
-msgid "Decrease the view size"
-msgstr "Уменьшить масштаб"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:839
-msgid "Normal Si_ze"
-msgstr "_Нормальный размер"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:840
-msgid "Use the normal view size"
-msgstr "Использовать нормальный размер"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:843
-msgid "Next Tab"
-msgstr "Следующая вкладка"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:847
-msgid "Previous Tab"
-msgstr "Предыдущая вкладка"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:851
-msgid "Connect to _Server..."
-msgstr "Подключиться к _серверу…"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:852
-msgid "Connect to a remote computer or shared disk"
-msgstr "Соединиться с удалённым компьютером или общедоступным диском"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:855
-msgid "_About"
-msgstr "_Сведения"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:856
-msgid "Display credits"
-msgstr "Об авторах"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:859
-msgid "Report a Problem..."
-msgstr "Сообщить о неполадке..."
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:860
-msgid "File a bug on Launchpad"
-msgstr "Сообщить об ошибке в сервис Launchpad"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:863
-msgid "Get Help Online..."
-msgstr "Справка в интернете..."
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:867
-msgid "Translate This Application..."
-msgstr "Перевести это приложение..."
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:876
-msgid "Show _Hidden Files"
-msgstr "Показывать скрытые _файлы"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:877
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Показывать ли скрытые файлы в текущем окне"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:882
-msgid "Show _Desktop Files"
-msgstr "Показать файлы на рабочем столе"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:883
-msgid "Toggle the display of desktop files"
-msgstr "Переключить отображение файлов на рабочем столе"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:887
-msgid "_Context Pane"
-msgstr "_Сводная панель"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:888
-msgid "Change the visibility of the context pane"
-msgstr "Изменить видимость боковой панели"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:892
-msgid "_Menubar"
-msgstr "Панель _меню"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:893
-msgid "Change the visibility of this window's menubar"
-msgstr "Изменить видимость меню окна"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:897
-msgid "_Places"
-msgstr "_Места"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:898
-msgid "Change the visibility of this window's side pane"
-msgstr "Показывать ли боковую панель этого окна"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:906
-msgid "Icon"
-msgstr "Значок"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:909
-msgid "List"
-msgstr "Список"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:912
-msgid "Compact"
-msgstr "Компактный"
-
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:915
-msgid "Columns"
-msgstr "Столбцы"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "Свойства"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:117
-msgid "Info"
-msgstr "Информация"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:125
-msgid "Permissions"
-msgstr "Права доступа"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:137
-msgid "Preview"
-msgstr "Предпросмотр"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:338
-msgid "Created"
-msgstr "Создан"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:343
-msgid "Last Access"
-msgstr "Последний доступ"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:349
-msgid "Deleted"
-msgstr "Удалено"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:354
-msgid "MimeType"
-msgstr "Тип MIME"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:362
-msgid "MimeTypes"
-msgstr "Типы MIME"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
-msgid "Location"
-msgstr "Адрес"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:374
-msgid "Origin Location"
-msgstr "Ссылка на"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:412
-msgid "Other application..."
-msgstr "Другое приложение…"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:436
-msgid "Open with"
-msgstr "Открыть в"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:452
-msgid "Device usage"
-msgstr "Использование устройства"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
-msgid "Read"
-msgstr "Чтение"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:602
-msgid "Write"
-msgstr "Запись"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:607
-msgid "Execute"
-msgstr "Выполнение"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:830
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:842
-msgid "Group"
-msgstr "Группа"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:846
-msgid "Everyone"
-msgstr "Всем"
-
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:1126
-msgid "Select an aplication to open "
-msgstr "Выберите приложение "
-
-#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:370
+#: /home/gotwig/translations-gen-fix/po/../src/View/LocationBar.vala:110
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:370
 msgid "Trash"
 msgstr "Корзина"
 
-#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:588
+#: /home/gotwig/translations-gen-fix/po/../src/View/LocationBar.vala:111
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:588
 msgid "Network"
 msgstr "Сеть"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:82
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:616
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:572
-msgid "This folder is empty."
-msgstr "Эта папка пуста."
+#: /home/gotwig/translations-gen-fix/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr "Компактный список папок"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:186
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:199
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:139
+#: /home/gotwig/translations-gen-fix/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr "Компактный вид"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:139
+#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:199
+#: /home/gotwig/translations-gen-fix/po/../src/fm-columns-view.c:186
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "Не удалось переименовать %s в %s"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:86
-msgid "Compact directory listing"
-msgstr "Компактный список папок"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:87
-msgid "Compact view"
-msgstr "Компактный вид"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
-msgid "SSH"
-msgstr "SSH"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
-msgid "Public FTP"
-msgstr "Общедоступный FTP"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
-msgid "FTP (with login)"
-msgstr "FTP (с авторизацией)"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
-msgid "Windows share"
-msgstr "Ресурс Windows"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Защищённый WebDAV (HTTPS)"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
-msgid "Connecting..."
-msgstr "Подключение…"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
-msgid ""
-"Can't load the supported server method list.\n"
-"Please check your gvfs installation."
-msgstr ""
-"Не удалось загрузить список поддерживаемых сервером методов.\n"
-"Проверьте установку gvfs."
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
-#, c-format
-msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Не удалось открыть папку «%s» на «%s»."
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
-#, c-format
-msgid "The server at \"%s\" cannot be found."
-msgstr "Не удалось найти сервер на «%s»."
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
-msgid "Try Again"
-msgstr "Повторить"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
-msgid "Please verify your user details."
-msgstr "Подтвердите данные о пользователе."
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
-msgid "Continue"
-msgstr "Продолжить"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
-msgid "C_onnect"
-msgstr "_Подключиться"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
-msgid "Connect to Server"
-msgstr "Подключиться к серверу"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
-msgid "Server Details"
-msgstr "Подробности о сервере"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
-msgid "_Server:"
-msgstr "_Сервер:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
-msgid "_Port:"
-msgstr "_Порт:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
-msgid "_Type:"
-msgstr "_Тип:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
-msgid "Sh_are:"
-msgstr "Р_есурс:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
-msgid "_Folder:"
-msgstr "_Каталог:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
-msgid "User Details"
-msgstr "Сведения о пользователе"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
-msgid "_Domain name:"
-msgstr "_Домен:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
-msgid "_User name:"
-msgstr "_Имя пользователя:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
-msgid "Pass_word:"
-msgstr "Паро_ль:"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
-msgid "_Remember this password"
-msgstr "_Запомнить этот пароль"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
-msgid "Operation cancelled"
-msgstr "Операция отменена"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Одиночный щелчок"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Будут ли объекты активироваться при одиночном щелчке"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "Длительность одиночного щелчка"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-"Промежуток времени в режиме одиночного щелчка, после которого элемент под "
-"курсором мыши будет выбран"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1151
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Источник XDS предоставил некорректное имя файла"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1309
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Не удалось создать ссылку на адрес \"%s\""
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1794
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Использовать приложение «%s» для открытия выбранного объекта"
-msgstr[1] "Использовать приложение «%s» для открытия выбранных объектов"
-msgstr[2] "Использовать приложение «%s» для открытия выбранных объектов"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1941
-#, c-format
-msgid "_Open With %s"
-msgstr "_Открыть с помощью %s"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1947
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3459
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2399
-msgid "_Open"
-msgstr "_Открыть"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1963
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "Открыть в %'d Новой_Вкладке"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1967
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3471
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2407
-msgid "Open in New _Tab"
-msgstr "Открыть в новой _вкладке"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1972
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "Открыть в %'d Новом_окне"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1976
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2414
-msgid "Open in New _Window"
-msgstr "Открыть в _новом окне"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3431
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-"Подготовить выделенные файлы к перемещению с помощью команды «Вставить»"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3435
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-"Подготовить выделенные файлы к копированию с помощью команды «Вставить»"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3439
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Переместить или скопировать файлы, выбранные ранее командой «Вырезать» или "
-"«Копировать»"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3442
-msgid "Paste Into Folder"
-msgstr "Вставить в папку"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3443
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Перемещение или копирование ранее выбранных файлов с помощью команд Вырезать "
-"или Вставить в выбранную папку"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3446
-msgid "_Rename..."
-msgstr "Переи_меновать…"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3447
-msgid "Rename selected item"
-msgstr "Переименовать выделенный объект"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3450
-msgid "Create New _Folder"
-msgstr "Создать новую _папку"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3451
-msgid "Create a new empty folder inside this folder"
-msgstr "Создать новую пустую папку внутри этой папки"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3453
-msgid "Create New _File"
-msgstr "Создать новый файл"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3455
-msgid "_Empty Document"
-msgstr "_Пустой документ"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3456
-msgid "Create a new empty document inside this folder"
-msgstr "Создать новый пустой документ в этой папке"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3460
-msgid "Open the selected item"
-msgstr "Открыть выбранный элемент"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3467
-msgid "Open in new Window"
-msgstr "Открыть в новом окне"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3468
-msgid "Open each selected item in a new window"
-msgstr "Открыть каждый выбранный элемент в новом окне"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3472
-msgid "Open each selected item in a new tab"
-msgstr "Открыть каждый выбранный объект в новой вкладке"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3474
-msgid "Open Wit_h"
-msgstr "Открыть в про_грамме"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3475
-msgid "Choose a program with which to open the selected item"
-msgstr "Выбрать программу для открытия выделенного объекта"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3477
-msgid "Other _Application..."
-msgstr "Другое _приложение..."
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3478
-msgid "Choose another application with which to open the selected item"
-msgstr "Выбрать другое приложение для открытия выделенного объекта"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3481
-msgid "Mo_ve to Trash"
-msgstr "_Удалить"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3482
-msgid "Move each selected item to the Trash"
-msgstr "Переместить каждый выделенный объект в корзину"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3485
-msgid "_Delete Permanently"
-msgstr "Удалить безвозвратно"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3486
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "Удалить каждый выделенный объект безвозвратно"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3489
-msgid "_Restore"
-msgstr "_Восстановить"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3493
-#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3190
-msgid "Select All"
-msgstr "Выделить всё"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3497
-msgid "_Properties"
-msgstr "_Свойства"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3498
-msgid "View or modify the properties of each selected item"
-msgstr "Просмотреть или изменить свойства каждого выделенного элемента"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3605
-msgid "Set Color:"
-msgstr "Установить цвет:"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Режим отображения"
-
-#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "Режим отображения"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Буфер обмена пуст"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Имя файла"
-
-#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Методы ввода"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:283
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
 msgstr "Выстраивать _объекты"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:288
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
 msgstr "В _обратном порядке"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:289
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
 msgstr "Показывать значки в обратном порядке"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:296
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
 msgstr "по _имени"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:297
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
 msgstr "Упорядочивать значки по имени, выстраивая их в ряды"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:300
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
 msgstr "по _размеру"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:301
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
 msgstr "Упорядочивать значки по размеру, выстраивая их в ряды"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:304
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
 msgstr "по _типу"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:305
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
 msgstr "Упорядочивать значки по типу, выстраивая их в ряды"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:308
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
 msgstr "по _дате изменения"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:309
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
 msgstr "Упорядочивать значки по дате изменения, выстраивая их в ряды"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:445
-msgid "Customize Toolbar"
-msgstr "Настроить панель инструментов"
+#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:572
+#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:616
+#: /home/gotwig/translations-gen-fix/po/../src/fm-columns-view.c:82
+msgid "This folder is empty."
+msgstr "Эта папка пуста."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:464
-msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
-msgstr ""
-"Выбор элементов, отображаемых на панели инструментов. Элементы можно "
-"располагать путем перетаскивания."
+#: /home/gotwig/translations-gen-fix/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Режим отображения"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:478
-msgid "Available Items"
-msgstr "Доступные элементы"
+#: /home/gotwig/translations-gen-fix/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "Режим отображения"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:497
-msgid "Displayed Items"
-msgstr "Отображаемые элементы"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Список папок в виде значков"
-
-#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Просмотр в виде значков"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:103
-msgid "_Move Here"
-msgstr "Пере_местить сюда"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:108
-msgid "_Copy Here"
-msgstr "С_копировать сюда"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:113
-msgid "_Link Here"
-msgstr "Создать здесь _ссылку"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:118
-msgid "Set as _Background"
-msgstr "Установить как _фон"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:125
-msgid "Cancel"
-msgstr "Отмена"
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:217
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Не удалось запустить файл \"%s\""
-
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:114
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:164
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:426
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:482
 msgid "File Operations"
 msgstr "Работа с файлами"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
 msgstr "Показать подробности"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:158
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:180
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
@@ -945,39 +580,154 @@ msgstr[0] "Идёт %'d действие над файлами"
 msgstr[1] "Идут %'d действия над файлами"
 msgstr[2] "Идут %'d действия над файлами"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
 msgstr "Все операции с файлами успешно завершены"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:420
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:124
+msgid "SSH"
+msgstr "SSH"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:127
+msgid "Public FTP"
+msgstr "Общедоступный FTP"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:129
+msgid "FTP (with login)"
+msgstr "FTP (с авторизацией)"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:132
+msgid "Windows share"
+msgstr "Ресурс Windows"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:134
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:136
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Защищённый WebDAV (HTTPS)"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:183
+msgid "Connecting..."
+msgstr "Подключение…"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:207
+msgid ""
+"Can't load the supported server method list.\n"
+"Please check your gvfs installation."
+msgstr ""
+"Не удалось загрузить список поддерживаемых сервером методов.\n"
+"Проверьте установку gvfs."
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:285
+#, c-format
+msgid "The folder \"%s\" cannot be opened on \"%s\"."
+msgstr "Не удалось открыть папку «%s» на «%s»."
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:295
+#, c-format
+msgid "The server at \"%s\" cannot be found."
+msgstr "Не удалось найти сервер на «%s»."
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:330
+msgid "Try Again"
+msgstr "Повторить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:395
+msgid "Please verify your user details."
+msgstr "Подтвердите данные о пользователе."
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:425
+msgid "Continue"
+msgstr "Продолжить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:750
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1140
+msgid "C_onnect"
+msgstr "_Подключиться"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:875
+msgid "Connect to Server"
+msgstr "Подключиться к серверу"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:893
+msgid "Server Details"
+msgstr "Подробности о сервере"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:917
+msgid "_Server:"
+msgstr "_Сервер:"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:937
+msgid "_Port:"
+msgstr "_Порт:"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:955
+msgid "_Type:"
+msgstr "_Тип:"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1024
+msgid "Sh_are:"
+msgstr "Р_есурс:"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1039
+msgid "_Folder:"
+msgstr "_Каталог:"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1057
+msgid "User Details"
+msgstr "Сведения о пользователе"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1080
+msgid "_Domain name:"
+msgstr "_Домен:"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1095
+msgid "_User name:"
+msgstr "_Имя пользователя:"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1110
+msgid "Pass_word:"
+msgstr "Паро_ль:"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1126
+msgid "_Remember this password"
+msgstr "_Запомнить этот пароль"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1229
+msgid "Operation cancelled"
+msgstr "Операция отменена"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:420
 msgid "Show the version of the program."
 msgstr "Показать версию программы."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:424
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:424
 msgid "Open uri(s) in new tab"
 msgstr "Открыть uri в новой вкладке"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:426
-msgid "Quit Marlin."
-msgstr "Выйти из Marlin"
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:426
+msgid "Quit Files."
+msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:428
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
 msgstr "Включить журналирование в целях отладки"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:429
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:429
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:438
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:438
 msgid ""
 "\n"
 "\n"
@@ -987,192 +737,856 @@ msgstr ""
 "\n"
 "Просмотр файловой системы в файловом менеджере"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:458
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:458
 msgid "--quit cannot be used with URIs."
 msgstr "параметр --quit нельзя использовать с адресами (URI)."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:310
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "Пере_местить сюда"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "С_копировать сюда"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "Создать здесь _ссылку"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "Установить как _фон"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "Отмена"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Не удалось запустить файл \"%s\""
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Буфер обмена пуст"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-toolbar-editor.c:445
+msgid "Customize Toolbar"
+msgstr "Настроить панель инструментов"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-toolbar-editor.c:464
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
+msgstr ""
+"Выбор элементов, отображаемых на панели инструментов. Элементы можно "
+"располагать путем перетаскивания."
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-toolbar-editor.c:478
+msgid "Available Items"
+msgstr "Доступные элементы"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-toolbar-editor.c:497
+msgid "Displayed Items"
+msgstr "Отображаемые элементы"
+
+#: /home/gotwig/translations-gen-fix/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Одиночный щелчок"
+
+#: /home/gotwig/translations-gen-fix/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Будут ли объекты активироваться при одиночном щелчке"
+
+#: /home/gotwig/translations-gen-fix/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "Длительность одиночного щелчка"
+
+#: /home/gotwig/translations-gen-fix/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr ""
+"Промежуток времени в режиме одиночного щелчка, после которого элемент под "
+"курсором мыши будет выбран"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Имя файла"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Список папок в виде значков"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Просмотр в виде значков"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
 msgstr "Персональное"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:315
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
 msgstr "Ваши общие места и закладки"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:372
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
 msgstr "Открыть корзину"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:382
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
 msgstr "Оборудование"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:387
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
 msgstr "Ваши локальные разделы и устройства"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:396
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
 msgstr "Показать содержимое файловой системы"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:455
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:480
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:455
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:480
 #, c-format
 msgid "Mount and open %s"
 msgstr "Подключить и открыть %s"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:593
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
 msgstr "Ваша сеть"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:624
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
 msgstr "Вся сеть"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:626
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
 msgstr "Показать содержимое сети"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1610
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
 msgstr "_Запуск"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1611
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1611
 msgid "_Stop"
 msgstr "_Остановить"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1616
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1616
 msgid "_Power On"
 msgstr "_Включить"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1617
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1617
 msgid "_Safely Remove Drive"
 msgstr "_Безопасно извлечь устройство"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1620
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1620
 msgid "_Connect Drive"
 msgstr "_Подключить устройство"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1621
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1621
 msgid "_Disconnect Drive"
 msgstr "_Отключить устройство"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1624
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
 msgstr "_Запустить многодисковое устройство"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1625
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1625
 msgid "_Stop Multi-disk Device"
 msgstr "_Остановить многодисковое устройство"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1629
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1629
 msgid "_Unlock Drive"
 msgstr "_Разблокировать устройство"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1630
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1630
 msgid "_Lock Drive"
 msgstr "_Заблокировать устройство"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1704
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2251
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1704
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2251
 #, c-format
 msgid "Unable to start %s"
 msgstr "Не удалось запустить %s"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1994
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2023
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2052
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1994
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2023
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2052
 #, c-format
 msgid "Unable to eject %s"
 msgstr "Не удалось извлечь %s"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2197
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2197
 #, c-format
 msgid "Unable to poll %s for media changes"
 msgstr "Не удалось опросить %s на предмет изменений носителя"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2307
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2307
 #, c-format
 msgid "Unable to stop %s"
 msgstr "Не удалось остановить %s"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2423
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2399
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1947
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3459
+msgid "_Open"
+msgstr "_Открыть"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2407
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1967
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3471
+msgid "Open in New _Tab"
+msgstr "Открыть в новой _вкладке"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2414
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1976
+msgid "Open in New _Window"
+msgstr "Открыть в _новом окне"
+
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
 msgstr "Удалить"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2432
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
 msgstr "Переименовать…"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2444
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
 msgstr "_Подключить"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2451
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2451
 msgid "_Unmount"
 msgstr "_Отключить"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2458
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2458
 msgid "_Eject"
 msgstr "_Извлечь"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2466
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1422
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2310
+#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2466
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1422
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2310
 msgid "Empty _Trash"
 msgstr "О_чистить корзину"
 
-#: /home/codygarver/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1151
+msgid "Invalid filename provided by XDS drag site"
+msgstr "Источник XDS предоставил некорректное имя файла"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1309
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Не удалось создать ссылку на адрес \"%s\""
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1794
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Использовать приложение «%s» для открытия выбранного объекта"
+msgstr[1] "Использовать приложение «%s» для открытия выбранных объектов"
+msgstr[2] "Использовать приложение «%s» для открытия выбранных объектов"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1941
+#, c-format
+msgid "_Open With %s"
+msgstr "_Открыть с помощью %s"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1963
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "Открыть в %'d Новой_Вкладке"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1972
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "Открыть в %'d Новом_окне"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3431
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr ""
+"Подготовить выделенные файлы к перемещению с помощью команды «Вставить»"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3435
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr ""
+"Подготовить выделенные файлы к копированию с помощью команды «Вставить»"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3439
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Переместить или скопировать файлы, выбранные ранее командой «Вырезать» или "
+"«Копировать»"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3442
+msgid "Paste Into Folder"
+msgstr "Вставить в папку"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3443
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Перемещение или копирование ранее выбранных файлов с помощью команд Вырезать "
+"или Вставить в выбранную папку"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3446
+msgid "_Rename..."
+msgstr "Переи_меновать…"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3447
+msgid "Rename selected item"
+msgstr "Переименовать выделенный объект"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3450
+msgid "Create New _Folder"
+msgstr "Создать новую _папку"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3451
+msgid "Create a new empty folder inside this folder"
+msgstr "Создать новую пустую папку внутри этой папки"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3453
+msgid "Create New _File"
+msgstr "Создать новый файл"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3455
+msgid "_Empty Document"
+msgstr "_Пустой документ"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3456
+msgid "Create a new empty document inside this folder"
+msgstr "Создать новый пустой документ в этой папке"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3460
+msgid "Open the selected item"
+msgstr "Открыть выбранный элемент"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3467
+msgid "Open in new Window"
+msgstr "Открыть в новом окне"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3468
+msgid "Open each selected item in a new window"
+msgstr "Открыть каждый выбранный элемент в новом окне"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3472
+msgid "Open each selected item in a new tab"
+msgstr "Открыть каждый выбранный объект в новой вкладке"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3474
+msgid "Open Wit_h"
+msgstr "Открыть в про_грамме"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3475
+msgid "Choose a program with which to open the selected item"
+msgstr "Выбрать программу для открытия выделенного объекта"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3477
+msgid "Other _Application..."
+msgstr "Другое _приложение..."
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3478
+msgid "Choose another application with which to open the selected item"
+msgstr "Выбрать другое приложение для открытия выделенного объекта"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3481
+msgid "Mo_ve to Trash"
+msgstr "_Удалить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3482
+msgid "Move each selected item to the Trash"
+msgstr "Переместить каждый выделенный объект в корзину"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3485
+msgid "_Delete Permanently"
+msgstr "Удалить безвозвратно"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3486
+msgid "Delete each selected item, without moving to the Trash"
+msgstr "Удалить каждый выделенный объект безвозвратно"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3489
+msgid "_Restore"
+msgstr "_Восстановить"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3493
+#: /home/gotwig/translations-gen-fix/po/../src/eel-editable-label.c:3190
+msgid "Select All"
+msgstr "Выделить всё"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3497
+msgid "_Properties"
+msgstr "_Свойства"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3498
+msgid "View or modify the properties of each selected item"
+msgstr "Просмотреть или изменить свойства каждого выделенного элемента"
+
+#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3605
+msgid "Set Color:"
+msgstr "Установить цвет:"
+
+#: /home/gotwig/translations-gen-fix/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Методы ввода"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Сегодня в %-I:%M %p"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Вчера в %-I:%M %p"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr ""
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Удалить %d скопированных файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "Удалить «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Удалить %d дубликатов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Переместить %d файлов обратно в '%s'"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Переместить «%s» обратно в «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Переименовать «%s» в «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Восстановить %d файлов из корзины"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Восстановить «%s» в «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Переместить %d файлов обратно в корзину"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Переместить «%s» обратно в корзину"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Удалить ссылки на %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Удалить ссылку на «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Восстановить исходные права доступа к объектам, находящимся в «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Восстановить исходные права доступа к «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Восстановить «%s» группу «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Восстановить владельца '%s' на '%s'"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Копировать %d файлов в '%s'"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Копировать «%s» в «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Поместить дубликаты %d элементов в «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Копировать '%s' в '%s'"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Переместить %d файлов в '%s'"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Переместить '%s' в '%s'"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Создать новый файл «%s» из шаблона "
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Создать пустой файл «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Создать новую папку «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Переместить %d файлов в корзину"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Переместить «%s» в корзину"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Восстановить «%s» из корзины"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "Создать ярлыки на %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Создать ярлык на «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Задать права доступа к объектам, находящимся в «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Установить права доступа для «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Назначить «%s» группу «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Назначить владельцем «%s» «%s»"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "Отменить копирование %d файла"
+msgstr[1] "Отменить копирование %d файлов"
+msgstr[2] "_Отменить копирование %d элементов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Отменить дублирование %d файла"
+msgstr[1] "_Отменить дублирование %d файлов"
+msgstr[2] "_Отменить дублирование %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Отменить перемещение %d файла"
+msgstr[1] "_Отменить перемещение %d файлов"
+msgstr[2] "_Отменить перемещение %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Отменить переименование %d файла"
+msgstr[1] "_Отменить переименование %d файлов"
+msgstr[2] "_Отменить переименование %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "Отменить создание пустого файла"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "Отменить создание файла из шаблона"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Отменить создание %d папки"
+msgstr[1] "_Отменить создание %d папок"
+msgstr[2] "_Отменить создание %d папок"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Отменить перемещение %d файла в корзину"
+msgstr[1] "_Отменить перемещение %d файлов в корзину"
+msgstr[2] "_Отменить перемещение %d файлов в корзину"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Отменить восстановление %d файла"
+msgstr[1] "_Отменить восстановление %d файлов"
+msgstr[2] "_Отменить восстановление %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Отменить создание ссылок на %d файл"
+msgstr[1] "_Отменить создание ссылок на %d файлы"
+msgstr[2] "_Отменить создание ссылок на %d файлы"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Отменить удаление %d файла"
+msgstr[1] "_Отменить удаление %d файлов"
+msgstr[2] "_Отменить удаление %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Отменить рекурсивное изменение прав доступа к %d файлу"
+msgstr[1] "Отменить рекурсивное изменение прав доступа к %d файлам"
+msgstr[2] "Отменить рекурсивное изменение прав доступа к %d файлам"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Отменить изменение прав доступа к %d файлу"
+msgstr[1] "Отменить изменение прав доступа к %d файлам"
+msgstr[2] "Отменить изменение прав доступа к %d файлам"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Отменить изменение группы для %d файла"
+msgstr[1] "Отменить изменение группы для %d файлов"
+msgstr[2] "Отменить изменение группы для %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Отменить изменение владельца %d файла"
+msgstr[1] "Отменить изменение владельца %d файлов"
+msgstr[2] "Отменить изменение владельца %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Повторить копирование %d файла"
+msgstr[1] "_Повторить копирование %d файлов"
+msgstr[2] "_Повторить копирование %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Повторить дублирование %d файла"
+msgstr[1] "_Повторить дублирование %d файлов"
+msgstr[2] "_Повторить дублирование %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Повторить перемещение %d файла"
+msgstr[1] "_Повторить перемещение %d файлов"
+msgstr[2] "_Повторить перемещение %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Повторить переименование %d файла"
+msgstr[1] "_Повторить переименование %d файла"
+msgstr[2] "_Повторить переименование %d файла"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "_Повторить создание пустого файла"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "_Повторить создание файла из шаблона"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Повторить создание %d папки"
+msgstr[1] "_Повторить создание %d папок"
+msgstr[2] "_Повторить создание %d папок"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Повторить перемещение %d файла в корзину"
+msgstr[1] "_Повторить перемещение %d файлов в корзину"
+msgstr[2] "_Повторить перемещение %d файлов в корзину"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Повторить восстановление %d файла"
+msgstr[1] "_Повторить восстановление %d файлов"
+msgstr[2] "_Повторить восстановление %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Повторить создание ссылок на %d файл"
+msgstr[1] "_Повторить создание ссылок на %d файл"
+msgstr[2] "_Повторить создание ссылок на %d файлы"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Повторить удаление %d файла"
+msgstr[1] "_Повторить удаление %d файлов"
+msgstr[2] "_Повторить удаление %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Повторить рекурсивное изменение прав доступа к %d элементу"
+msgstr[1] "Повторить рекурсивное изменение прав доступа к %d элементам"
+msgstr[2] "Повторить рекурсивное изменение прав доступа к %d элементам"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Повторить изменение прав доступа к %d файлу"
+msgstr[1] "Повторить изменение прав доступа к %d файлам"
+msgstr[2] "Повторить изменение прав доступа к %d файлам"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Повторить изменение группы для %d файла"
+msgstr[1] "Повторить изменение группы для %d файлов"
+msgstr[2] "Повторить изменение группы для %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Повторить изменение владельца %d файла"
+msgstr[1] "Повторить изменение владельца на %d файлы"
+msgstr[2] "Повторить изменение владельца %d файлов"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (некорректные символы)"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
 msgstr "Показать по_дробности"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:119
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Не удалось определить исходное расположение «%s» "
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:122
-msgid "The item cannot be restored from trash"
-msgstr "Объект не может быть восстановлен из корзины"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:200
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:200
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:737
 msgid "_Skip"
 msgstr "_Пропустить"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:201
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "Пропу_стить всё"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:202
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "Повто_рить"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:203
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "Удалить _всё"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:204
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "_Заменить"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:205
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "Заменить _всё"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:206
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "Сов_местить"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:207
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "Совместить _всё"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:208
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "Копировать _всё равно"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:294
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -1180,8 +1594,8 @@ msgstr[0] "%'d секунда"
 msgstr[1] "%'d секунды"
 msgstr[2] "%'d секунд"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:299
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:310
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:299
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -1189,7 +1603,7 @@ msgstr[0] "%'d минута"
 msgstr[1] "%'d минуты"
 msgstr[2] "%'d минут"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:309
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -1197,7 +1611,7 @@ msgstr[0] "%'d час"
 msgstr[1] "%'d часа"
 msgstr[2] "%'d часов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:317
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1205,110 +1619,110 @@ msgstr[0] "примерно %'d час"
 msgstr[1] "примерно %'d часа"
 msgstr[2] "примерно %'d часов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:393
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "Ссылка на %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:397
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "Другая ссылка на %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:413
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d-я ссылка на %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:417
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d-я ссылка на %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:421
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d-я ссылка на %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:425
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d-я ссылка на %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:463
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr " (копия)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:465
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr " (другая копия)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:468
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:470
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:472
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:482
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:468
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:470
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:472
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr "-я копия)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:475
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr "-я копия)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:477
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr "-я копия)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:479
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr "-я копия)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:496
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (копия)%s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:498
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (другая копия)%s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:501
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:503
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:505
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:519
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:501
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:503
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:505
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'d-я копия)%s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:513
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'d-я копия)%s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:515
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'d-я копия)%s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:517
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'d-я копия)%s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:617
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:625
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1381
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Вы действительно хотите безвозвратно удалить \"%B\" из корзины?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1384
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1326,24 +1740,24 @@ msgstr[2] ""
 "Вы действительно хотите безвозвратно удалить %'d выделенных элементов из "
 "корзины?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1394
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1462
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1394
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Если вы удалите элемент, вы больше не сможете его восстановить"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1415
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "Удалить все объекты из корзины?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1419
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Все элементы в корзине будут безвозвратно удалены."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1450
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Вы действительно хотите безвозвратно удалить \"%B\"?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1453
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1355,12 +1769,12 @@ msgstr[1] ""
 msgstr[2] ""
 "Вы действительно хотите безвозвратно удалить %'d выделенных элементов?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1478
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1510
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1478
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "Удаление файлов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1504
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
@@ -1368,66 +1782,66 @@ msgstr[0] "осталось удалить %'d файл"
 msgstr[1] "осталось удалить %'d файла"
 msgstr[2] "осталось удалить %'d файлов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1524
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "Осталось %T"
 msgstr[1] "%T осталось"
 msgstr[2] "%T осталось"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1592
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1626
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1665
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1742
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2573
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1592
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1626
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1665
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1742
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
 msgstr "Произошла ошибка при удалении."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1596
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
 "Нельзя удалить файлы в папке «%B», потому что у вас нет прав на их просмотр."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1599
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2632
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3628
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1599
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2632
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "Произошла ошибка при получении сведений о файлах в папке «%B»."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1608
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3637
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1608
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
 msgstr "_Пропустить файлы"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1629
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "Нельзя удалить папку «%B», потому что у вас нет прав на её чтение."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1632
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2671
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3673
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1632
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2671
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Произошла ошибка при чтении папки «%B»."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1666
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "Не удалось удалить папку %B."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1743
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "Произошла ошибка при удалении %B."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1819
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1831
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1819
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "Перемещение файлов в корзину"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1833
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
@@ -1435,11 +1849,11 @@ msgstr[0] "осталось удалить в корзину %'d файл"
 msgstr[1] "осталось удалить в корзину %'d файла"
 msgstr[2] "осталось удалить в корзину %'d файлов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1888
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr "Не удается переместить файл в корзину. Удалить немедленно?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1889
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1447,27 +1861,27 @@ msgstr ""
 "Этот файл находится на внешнем носителе и не может быть перемещен в корзину. "
 "После удаления его невозможно будет восстановить."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2069
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
 msgstr "Перемещение файлов в корзину"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2071
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
 msgstr "Удаление файлов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2143
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
 msgstr "Не удалось извлечь %V"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2145
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
 msgstr "Не удалось отсоединить %V"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2300
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Очистить корзину перед отсоединением?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2302
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1476,20 +1890,20 @@ msgstr ""
 "этом все объекты, находящиеся в корзине на этом носителе, будут утеряны "
 "безвозвратно."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2308
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
 msgstr "Не _очищать корзину"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2363
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
 msgstr "Очистка корзины"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2430
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Не удалось подключить %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2508
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
@@ -1497,7 +1911,7 @@ msgstr[0] "Идёт подготовка к копированию %'d файл�
 msgstr[1] "Идёт подготовка к копированию %'d файлов (%S)"
 msgstr[2] "Идёт подготовка к копированию %'d файлов (%S)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2514
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
@@ -1505,7 +1919,7 @@ msgstr[0] "Идёт подготовка к перемещению %'d файл�
 msgstr[1] "Идёт подготовка к перемещению %'d файлов (%S)"
 msgstr[2] "Идёт подготовка к перемещению %'d файлов (%S)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2520
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
@@ -1513,7 +1927,7 @@ msgstr[0] "Идёт подготовка к удалению %'d файла (%S)
 msgstr[1] "Идёт подготовка к удалению %'d файлов (%S)"
 msgstr[2] "Идёт подготовка к удалению %'d файлов (%S)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2526
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
@@ -1521,24 +1935,24 @@ msgstr[0] "Идёт подготовка к удалению %'d файла в �
 msgstr[1] "Идёт подготовка к удалению %'d файлов в корзину"
 msgstr[2] "Идёт подготовка к удалению %'d файлов в корзину"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2569
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3489
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3620
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3665
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2569
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3489
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3620
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
 msgstr "Ошибка при копирования."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2571
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3618
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3663
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2571
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3618
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
 msgstr "Произошла ошибка при перемещении."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2575
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
 msgstr "Произошла ошибка при удалении файлов в корзину."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2629
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1546,44 +1960,44 @@ msgstr ""
 "Нельзя обработать файлы в папке «%B», потому что у вас нет прав на их "
 "просмотр."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2668
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Нельзя обработать папку «%B», потому что у вас нет прав на её чтение."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2745
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Нельзя обработать файл «%B», потому что у вас нет прав на его чтение."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2748
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
 msgstr "Произошла ошибка при получении сведений о «%B»."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2848
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2890
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2923
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2953
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2848
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2890
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2923
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
 msgstr "Произошла ошибка при копировании в «%B»."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2852
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
 msgstr "У вас нет прав на доступ к папке назначения."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2854
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
 msgstr "Произошла ошибка при получении сведений о месте назначения."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2891
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
 msgstr "Место назначения не является папкой."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2924
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1591,63 +2005,63 @@ msgstr ""
 "Недостаточно места на устройстве назначения. Попробуйте удалить какие-нибудь "
 "файлы, чтобы освободить место."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2926
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Доступно %S, а требуется %S."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2954
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
 msgstr "Устройство назначения доступно только для чтения."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3015
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Перемещается «%B» в «%B»"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3016
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Копируется «%B» в «%B»"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3020
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
 msgstr "Создаётся копия «%B»"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3024
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Перемещается %'d файл (из «%B») в «%B»"
 msgstr[1] "Перемещаются %'d файла (из «%B») в «%B»"
 msgstr[2] "Перемещается %'d файлов (из «%B») в «%B»"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3027
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Копируется %'d файл (из «%B») в «%B»"
 msgstr[1] "Копируются %'d файла (из «%B») в «%B»"
 msgstr[2] "Копируется %'d файлов (из «%B») в «%B»"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3034
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Создаётся копия %'d файла (в «%B»)"
 msgstr[1] "Создаются копии %'d файлов (в «%B»)"
 msgstr[2] "Создаются копии %'d файлов (в «%B»)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3043
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "%'d файл перемещается в «%B»"
 msgstr[1] "%'d файла перемещаются в «%B»"
 msgstr[2] "%'d файлов перемещаются в «%B»"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3047
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "%'d файл копируется в «%B»"
 msgstr[1] "%'d файла копируются в «%B»"
 msgstr[2] "%'d файлов копируются в «%B»"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3052
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1655,19 +2069,19 @@ msgstr[0] "Создаётся копия %'d файла"
 msgstr[1] "Создаются копии %'d файлов"
 msgstr[2] "Создаются копии %'d файлов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3103
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
 msgstr "%S из %S"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3114
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S из %S — осталось %T (%S/с)"
 msgstr[1] "%S из %S — %T осталось (%S/с)"
 msgstr[2] "%S из %S — %T осталось (%S/с)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3493
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1675,11 +2089,11 @@ msgstr ""
 "Нельзя скопировать папку «%B», потому что у вас нет прав на создание её в "
 "месте назначения."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3496
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Произошла ошибка при создании папки «%B»."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3625
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1687,86 +2101,86 @@ msgstr ""
 "Нельзя скопировать файлы из папки «%B», потому что у вас нет прав на их "
 "просмотр."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3670
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3670
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 "Нельзя скопировать папку «%B», потому что у вас нет прав на её чтение."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3715
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4416
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5004
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3715
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4416
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
 msgstr "Произошла ошибка при перемещении «%B»."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3716
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
 msgstr "Невозможно удалить исходную папку."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3801
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3842
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4418
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4489
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3801
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3842
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4418
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
 msgstr "Произошла ошибка при копировании «%B»."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3802
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Невозможно удалить файлы из уже существующей папки %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3843
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3843
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Невозможно удалить уже существующий файл %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4172
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4844
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4172
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
 msgstr "Нельзя переместить папку саму в себя."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4173
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4845
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4173
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
 msgstr "Нельзя скопировать папку саму в себя."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4174
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4846
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4174
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
 msgstr "Папка назначения находится внутри исходной папки."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4205
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
 msgstr "Нельзя переместить файл сам в себя."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4206
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot copy a file over itself."
 msgstr "Нельзя скопировать файл сам в себя."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4207
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4207
 msgid "The source file would be overwritten by the destination."
 msgstr "Исходный файл будет переписан файлом назначения."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4420
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "Невозможно удалить уже существующий файл с тем же именем в %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4490
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Произошла ошибка при копировании файла в %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4718
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
 msgstr "Копирование файлов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4744
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
 msgstr "Идёт подготовка к перемещению в \"%B\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4756
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1774,20 +2188,20 @@ msgstr[0] "Идёт подготовка к перемещению %'d файл�
 msgstr[1] "Идёт подготовка к перемещению %'d файлов"
 msgstr[2] "Идёт подготовка к перемещению %'d файлов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5005
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Произошла ошибка при перемещении файла в %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5268
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
 msgstr "Перемещение файлов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5298
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
 msgstr "Идёт создание ссылок в «%B»"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5309
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1795,510 +2209,105 @@ msgstr[0] "Идёт создание ссылки на %'d файл"
 msgstr[1] "Идёт создание ссылок на %'d файла"
 msgstr[2] "Идёт создание ссылок на %'d файлов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5444
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
 msgstr "Произошла ошибка при создании ссылки на %B."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5446
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
 msgstr "Символьные ссылки поддерживаются только для локальных файлов"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5449
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
 msgstr "Место назначения не поддерживает символьные ссылки."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5452
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Произошла ошибка при создании символьной ссылки в %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5780
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5783
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5780
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
 msgstr "Идёт установка прав"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6034
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
 msgstr "новая папка"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6042
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
 msgstr "новый файл"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6213
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
 msgstr "Произошла ошибка при создании папки %B."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6215
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
 msgstr "Произошла ошибка при создании файла %B."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6217
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Произошла ошибка при создании папки в %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6534
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
 msgstr "Очистка корзины"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Удалить %d скопированных файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "Удалить «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Удалить %d дубликатов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Переместить %d файлов обратно в '%s'"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Переместить «%s» обратно в «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Переименовать «%s» в «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Восстановить %d файлов из корзины"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Восстановить «%s» в «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Переместить %d файлов обратно в корзину"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Переместить «%s» обратно в корзину"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Удалить ссылки на %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Удалить ссылку на «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Восстановить исходные права доступа к объектам, находящимся в «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Восстановить исходные права доступа к «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Восстановить «%s» группу «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Восстановить владельца '%s' на '%s'"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Копировать %d файлов в '%s'"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Копировать «%s» в «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Поместить дубликаты %d элементов в «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Копировать '%s' в '%s'"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Переместить %d файлов в '%s'"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Переместить '%s' в '%s'"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Создать новый файл «%s» из шаблона "
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Создать пустой файл «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Создать новую папку «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Переместить %d файлов в корзину"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Переместить «%s» в корзину"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Восстановить «%s» из корзины"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Создать ярлыки на %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Создать ярлык на «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Задать права доступа к объектам, находящимся в «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Установить права доступа для «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Назначить «%s» группу «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Назначить владельцем «%s» «%s»"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "Отменить копирование %d файла"
-msgstr[1] "Отменить копирование %d файлов"
-msgstr[2] "_Отменить копирование %d элементов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Отменить дублирование %d файла"
-msgstr[1] "_Отменить дублирование %d файлов"
-msgstr[2] "_Отменить дублирование %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Отменить перемещение %d файла"
-msgstr[1] "_Отменить перемещение %d файлов"
-msgstr[2] "_Отменить перемещение %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Отменить переименование %d файла"
-msgstr[1] "_Отменить переименование %d файлов"
-msgstr[2] "_Отменить переименование %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "Отменить создание пустого файла"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "Отменить создание файла из шаблона"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Отменить создание %d папки"
-msgstr[1] "_Отменить создание %d папок"
-msgstr[2] "_Отменить создание %d папок"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Отменить перемещение %d файла в корзину"
-msgstr[1] "_Отменить перемещение %d файлов в корзину"
-msgstr[2] "_Отменить перемещение %d файлов в корзину"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Отменить восстановление %d файла"
-msgstr[1] "_Отменить восстановление %d файлов"
-msgstr[2] "_Отменить восстановление %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Отменить создание ссылок на %d файл"
-msgstr[1] "_Отменить создание ссылок на %d файлы"
-msgstr[2] "_Отменить создание ссылок на %d файлы"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Отменить удаление %d файла"
-msgstr[1] "_Отменить удаление %d файлов"
-msgstr[2] "_Отменить удаление %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Отменить рекурсивное изменение прав доступа к %d файлу"
-msgstr[1] "Отменить рекурсивное изменение прав доступа к %d файлам"
-msgstr[2] "Отменить рекурсивное изменение прав доступа к %d файлам"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Отменить изменение прав доступа к %d файлу"
-msgstr[1] "Отменить изменение прав доступа к %d файлам"
-msgstr[2] "Отменить изменение прав доступа к %d файлам"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Отменить изменение группы для %d файла"
-msgstr[1] "Отменить изменение группы для %d файлов"
-msgstr[2] "Отменить изменение группы для %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Отменить изменение владельца %d файла"
-msgstr[1] "Отменить изменение владельца %d файлов"
-msgstr[2] "Отменить изменение владельца %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Повторить копирование %d файла"
-msgstr[1] "_Повторить копирование %d файлов"
-msgstr[2] "_Повторить копирование %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Повторить дублирование %d файла"
-msgstr[1] "_Повторить дублирование %d файлов"
-msgstr[2] "_Повторить дублирование %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Повторить перемещение %d файла"
-msgstr[1] "_Повторить перемещение %d файлов"
-msgstr[2] "_Повторить перемещение %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Повторить переименование %d файла"
-msgstr[1] "_Повторить переименование %d файла"
-msgstr[2] "_Повторить переименование %d файла"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "_Повторить создание пустого файла"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "_Повторить создание файла из шаблона"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Повторить создание %d папки"
-msgstr[1] "_Повторить создание %d папок"
-msgstr[2] "_Повторить создание %d папок"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Повторить перемещение %d файла в корзину"
-msgstr[1] "_Повторить перемещение %d файлов в корзину"
-msgstr[2] "_Повторить перемещение %d файлов в корзину"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Повторить восстановление %d файла"
-msgstr[1] "_Повторить восстановление %d файлов"
-msgstr[2] "_Повторить восстановление %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Повторить создание ссылок на %d файл"
-msgstr[1] "_Повторить создание ссылок на %d файл"
-msgstr[2] "_Повторить создание ссылок на %d файлы"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Повторить удаление %d файла"
-msgstr[1] "_Повторить удаление %d файлов"
-msgstr[2] "_Повторить удаление %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Повторить рекурсивное изменение прав доступа к %d элементу"
-msgstr[1] "Повторить рекурсивное изменение прав доступа к %d элементам"
-msgstr[2] "Повторить рекурсивное изменение прав доступа к %d элементам"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Повторить изменение прав доступа к %d файлу"
-msgstr[1] "Повторить изменение прав доступа к %d файлам"
-msgstr[2] "Повторить изменение прав доступа к %d файлам"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Повторить изменение группы для %d файла"
-msgstr[1] "Повторить изменение группы для %d файлов"
-msgstr[2] "Повторить изменение группы для %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Повторить изменение владельца %d файла"
-msgstr[1] "Повторить изменение владельца на %d файлы"
-msgstr[2] "Повторить изменение владельца %d файлов"
-
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Сегодня в %-I:%M %p"
-
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Вчера в %-I:%M %p"
-
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
-
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
+#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:252
 #, c-format
 msgid "link to %s"
 msgstr "ссылка на %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
+#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:1702
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Невозможно обработать файл запуска: %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1740
+#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:1740
 msgid "No Exec field specified"
 msgstr "Не указано поле Exec"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1760
+#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:1760
 msgid "No URL field specified"
 msgstr "Не указано поле URL"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1766
+#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:1766
 msgid "Invalid desktop file"
 msgstr "Некорректный .desktop-файл"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2056
+#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:2056
 msgid "Slashes are not allowed in filenames"
 msgstr "В именах файлов нельзя использовать прямую косую черту"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2076
+#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:2076
 msgid "Toplevel files cannot be renamed"
 msgstr "Файлы верхнего уровня нельзя переименовывать"
 
-#: /home/codygarver/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (некорректные символы)"
-
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-progress-info.c:192
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
 msgstr "Идёт подготовка"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-utilities.c:119
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Не удалось определить исходное расположение «%s» "
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "Объект не может быть восстановлен из корзины"
+
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Совместить папку \"%s\"?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:364
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -2306,156 +2315,164 @@ msgstr ""
 "Если при совмещении возникнут конфликты с копируемыми файлами, вам будет "
 "предложено подтвердить замену."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Более старая папка с таким именем уже существует в \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Более новая папка с таким именем уже существует в \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Папка с таким именем уже существует в \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
 msgstr "При замене все файлы в папке будут удалены."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Заменить папку \"%s\"?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Папка с таким именем уже существует в \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Заменить файл \"%s\"?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will overwrite its content."
 msgstr "При замене файла его содержимое будет перезаписано."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Более старый файл с таким именем уже существует в \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Более новый файл с таким именем уже существует в \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Другой файл с таким именем уже существует в \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:460
 msgid "Original file"
 msgstr "Исходный файл"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:482
 msgid "Size:"
 msgstr "Размер:"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:485
 msgid "Type:"
 msgstr "Тип:"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:488
 msgid "Last modified:"
 msgstr "Последнее изменение:"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
 msgstr "Заменить на"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
 msgstr "Объединить"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
 msgstr "Введите имя, которое вы хотите назначить"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
 msgstr "Перезапуск"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
 msgstr "Применить действие ко всем файлам"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:742
 msgid "Re_name"
 msgstr "Переи_меновать"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
 msgstr "Заменить"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
+#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
 msgstr "Конфликт файлов"
 
-#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:325
+#: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
 msgstr "Вырезать выделенный текст в буфер обмена"
 
-#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:329
+#: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
 msgstr "Копировать выделенный текст в буфер обмена"
 
-#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:333
-#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:337
+#: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:333
+#: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
 msgstr "Вставить текст, сохраненный в буфере обмена"
 
-#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:813
+#: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
 msgstr "Перейти к %s"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
+#: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
+#: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
+#: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
+msgstr ""
+
+#: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:46
+msgid "These items may be deleted by emptying the trash."
+msgstr ""
+
+#: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:47
+msgid "Empty the Trash"
 msgstr ""
