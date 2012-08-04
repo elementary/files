@@ -65,11 +65,14 @@
 			<menuitem name="New Folder" action="New Folder"/>
 			<!--<menuitem name="New Launcher" action="New Launcher"/>-->
 			<menu action="New Files">
-		        <!--<menuitem name="No Templates" action="No Templates"/>
+		        <menuitem name="No Templates" action="No Templates"/>
 			 	<placeholder name="New Documents Placeholder"/>
-			 	<separator name="After New Documents"/>-->
+			 	<separator name="After New Documents"/>
 			 	<menuitem name="New Empty File" action="New Empty File"/>
 			</menu>
+            <separator />
+	        <menuitem name="Show Hidden Files" action="Show Hidden Files"/>
+            <separator />
             <!--<menu action="Scripts">
 		        <placeholder name="Scripts Placeholder"/>
 			        <separator name="After Scripts"/>

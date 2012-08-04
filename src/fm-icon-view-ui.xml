@@ -31,8 +31,6 @@
 				<separator name="Layout separator"/>
 				<menuitem name="Reversed Order" action="Reversed Order"/>
 			</menu>
-	    <separator />
-	    <menuitem name="Show Hidden Files" action="Show Hidden Files"/>
 		</placeholder>
 	</placeholder>
 </popup>
