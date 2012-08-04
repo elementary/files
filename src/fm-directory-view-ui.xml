@@ -7,8 +7,8 @@
     <menu action="File">
         <placeholder name="New Items Placeholder">
             <menuitem name="New Folder" action="New Folder"/>
-            <menu action="New Files">
-                <menuitem name="New Empty Document" action="New Empty Document"/>
+            <menu action="New File">
+                <menuitem name="New Empty File" action="New Empty File"/>
             </menu>
         </placeholder>
         <placeholder name="Open Placeholder">
@@ -64,10 +64,10 @@
 		<placeholder name="New Object Items">
 			<menuitem name="New Folder" action="New Folder"/>
 			<!--<menuitem name="New Launcher" action="New Launcher"/>-->
-			<menu action="New Files">
-		        <menuitem name="No Templates" action="No Templates"/>
+			<menu action="New File">
+		        <!--<menuitem name="No Templates" action="No Templates"/>
 			 	<placeholder name="New Documents Placeholder"/>
-			 	<separator name="After New Documents"/>
+			 	<separator name="After New Documents"/>-->
 			 	<menuitem name="New Empty File" action="New Empty File"/>
 			</menu>
             <separator />

@@ -3305,6 +3305,7 @@ fm_directory_view_new_file (FMDirectoryView *view,
 
 #if 0
     g_return_if_fail (nautilus_file_is_local (source));
+g_return_if_fail (nautilus_file_is_local (source));
     //pos = context_menu_to_file_operation_position (directory_view);
 	data = setup_new_folder_data (directory_view);
 	source_uri = nautilus_file_get_uri (source);
@@ -3450,10 +3451,10 @@ static const GtkActionEntry directory_view_entries[] = {
         /* label, accelerator */       N_("Create New _Folder"), "<control><shift>N",
         /* tooltip */                  N_("Create a new empty folder inside this folder"),
         G_CALLBACK (action_new_folder_callback) },
-    /* name, stock id, label */  { "New Files", "document-new", N_("Create New _File") },
-    /* name, stock id */         { "New Empty Document", NULL,
-        /* label, accelerator */       N_("_Empty Document"), NULL,
-        /* tooltip */                  N_("Create a new empty document inside this folder"),
+    /* name, stock id, label */  { "New File", "file-new", N_("Create New _File") },
+    /* name, stock id */         { "New Empty File", "document-new",
+        /* label, accelerator */       N_("_Empty File"), NULL,
+        /* tooltip */                  N_("Create a new empty file inside this folder"),
         G_CALLBACK (action_new_empty_file_callback) },
     /* name, stock id */         { "Open", NULL,
         /* label, accelerator */       N_("_Open"), NULL,
