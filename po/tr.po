@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-06-21 16:31+0000\n"
-"Last-Translator: Ekkucukarpaci <Unknown>\n"
+"PO-Revision-Date: 2012-08-06 01:43+0000\n"
+"Last-Translator: Ferhat TUNÇTAN <ferhattnctn66@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-08-04 05:46+0000\n"
-"X-Generator: Launchpad (build 15742)\n"
+"X-Launchpad-Export-Date: 2012-08-06 05:20+0000\n"
+"X-Generator: Launchpad (build 15745)\n"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
@@ -75,7 +75,7 @@ msgstr "Yeni _Pencere"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:778
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Gösterilen konum için başka bir Files penceresi aç"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:781
 msgid "New _Tab"
@@ -99,7 +99,7 @@ msgstr "Tercihler"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Files ayarlarını değiştir"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
 msgid "_Undo"
@@ -438,7 +438,7 @@ msgstr "Dosya Tercihleri"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:47
 msgid "General"
-msgstr ""
+msgstr "Genel"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
@@ -450,7 +450,7 @@ msgstr "Açmak için bir kez tıklayın:"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Fare oto-seçim:"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
@@ -583,7 +583,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Devam Eden Tüm Eylemleri İptal Et"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
@@ -714,7 +714,7 @@ msgstr "Adres(ler)i yeni sekmede aç"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:426
 msgid "Quit Files."
-msgstr ""
+msgstr "Files'dan çık."
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
@@ -2351,15 +2351,15 @@ msgstr "%s git"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr ""
+msgstr "Izgara olarak göster"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "Liste olarak göster"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
+msgstr "Sütun olarak göster"
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
@@ -2367,4 +2367,4 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Çöpü boşalt"

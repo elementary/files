@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-05-07 02:58+0000\n"
+"PO-Revision-Date: 2012-08-05 19:06+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-08-04 05:45+0000\n"
-"X-Generator: Launchpad (build 15742)\n"
+"X-Launchpad-Export-Date: 2012-08-06 05:20+0000\n"
+"X-Generator: Launchpad (build 15745)\n"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
-msgstr ""
+msgstr "Novi prozor kao _Administrator"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:160
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3382
@@ -34,45 +34,45 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:505
 msgid "Undo"
-msgstr ""
+msgstr "Vrati"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:506
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:797
 msgid "Undo the last action"
-msgstr ""
+msgstr "Poništi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:515
 msgid "Redo"
-msgstr ""
+msgstr "Ponovi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:516
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:800
 msgid "Redo the last action"
-msgstr ""
+msgstr "Ponovi zadnju radnju"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:771
 msgid "_File"
-msgstr ""
+msgstr "_Datoteka"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:772
 msgid "_Edit"
-msgstr ""
+msgstr "_Uredi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:773
 msgid "_View"
-msgstr ""
+msgstr "_Pogled"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:774
 msgid "_Go"
-msgstr ""
+msgstr "_Idi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:775
 msgid "_Help"
-msgstr ""
+msgstr "_Pomoć"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:777
 msgid "New _Window"
-msgstr ""
+msgstr "Novi _prozor"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:778
 msgid "Open another Files window for the displayed location"
@@ -80,23 +80,23 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:781
 msgid "New _Tab"
-msgstr ""
+msgstr "Nova _kartica"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:782
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Otvori novu karticu za prikazanu lokaciju."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:786
 msgid "_Close"
-msgstr ""
+msgstr "_Zatvori"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:787
 msgid "Close this folder"
-msgstr ""
+msgstr "Zatvori ovu mapu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:790
 msgid "Preferences"
-msgstr ""
+msgstr "Osobitosti"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
 msgid "Change Files preferences"
@@ -104,47 +104,47 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
 msgid "_Undo"
-msgstr ""
+msgstr "_Poništi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:799
 msgid "_Redo"
-msgstr ""
+msgstr "_Ponovi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:802
 msgid "Open _Parent"
-msgstr ""
+msgstr "Otvori _nadređenu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:803
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Otvori nadređenu mapu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:805
 msgid "_Back"
-msgstr ""
+msgstr "_Natrag"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:806
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Vrati se na prethodno posjećenu lokaciju"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:809
 msgid "_Forward"
-msgstr ""
+msgstr "_Naprijed"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:810
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Idi na sljedeću posjećenu lokaciju"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:812
 msgid "_Reload"
-msgstr ""
+msgstr "_Učitaj ponovo"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:813
 msgid "Reload the current location"
-msgstr ""
+msgstr "Učitaj ponovo trenutnu lokaciju"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:816
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Osobna mapa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:817
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:329
@@ -153,139 +153,139 @@ msgstr "Otvorite svoju osobnu mapu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:820
 msgid "_Trash"
-msgstr ""
+msgstr "_Smeće"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:821
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Otvorite svoju mapu smeća"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:824
 msgid "_Network"
-msgstr ""
+msgstr "_Mreža"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:825
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "Pregledaj zabilježene i lokalne mrežne lokacije"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:828
 msgid "Zoom _In"
-msgstr ""
+msgstr "_Približi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:829
 msgid "Increase the view size"
-msgstr ""
+msgstr "Povećanje veličine pogleda"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:840
 msgid "Zoom _Out"
-msgstr ""
+msgstr "_Udalji"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:841
 msgid "Decrease the view size"
-msgstr ""
+msgstr "Smanjenje veličine pogleda"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:848
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "Normalna veli_čina"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:849
 msgid "Use the normal view size"
-msgstr ""
+msgstr "Koristi zadani pogled"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:852
 msgid "Next Tab"
-msgstr ""
+msgstr "Sljedeća kartica"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:856
 msgid "Previous Tab"
-msgstr ""
+msgstr "Prethodna kartica"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:860
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "Spoji se na _poslužitelj..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:861
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "Povežite se na udaljeno računalo ili dijeljeni disk"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:864
 msgid "_About"
-msgstr ""
+msgstr "_O programu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:865
 msgid "Display credits"
-msgstr ""
+msgstr "Prikaži zasluge"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:868
 msgid "Report a Problem..."
-msgstr ""
+msgstr "Prijavite problem..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:869
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Prijavite grešku na Launchpadu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:872
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Potražite pomoć na Internetu..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:876
 msgid "Translate This Application..."
-msgstr ""
+msgstr "Prevedite ovu aplikaciju..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:885
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Prikaži _skrivene datoteke"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:886
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "Uključi/Iskljući prikaz skrivenih datoteka u trenutnom prozoru"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:891
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "Prikaži _datoteke na Radnoj površini"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:892
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "Uključi/Iskljući prikaz datoteka na Radnoj površini"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:896
 msgid "_Context Pane"
-msgstr ""
+msgstr "_Okvir sadržaja"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:897
 msgid "Change the visibility of the context pane"
-msgstr ""
+msgstr "Promijeni vidljivost okvira sadržaja"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:901
 msgid "_Menubar"
-msgstr ""
+msgstr "_Traka izbornika"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:902
 msgid "Change the visibility of this window's menubar"
-msgstr ""
+msgstr "Promijeni vidljivost trake izbornika ovog prozora"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:906
 msgid "_Places"
-msgstr ""
+msgstr "_Mjesta"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:907
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "Promijeni vidljivosti bočnog okvira ovog prozora"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:915
 msgid "Icon"
-msgstr ""
+msgstr "Ikone"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:918
 msgid "List"
-msgstr ""
+msgstr "Popis"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:921
 msgid "Compact"
-msgstr ""
+msgstr "Zbijeno"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:924
 msgid "Columns"
-msgstr ""
+msgstr "Stupci"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -362,7 +362,7 @@ msgstr "Mime vrsta"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:362
 msgid "MimeTypes"
-msgstr ""
+msgstr "Mime vrste"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:366
 msgid "Location"
@@ -374,15 +374,15 @@ msgstr "Izvorna lokacija"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:412
 msgid "Other application..."
-msgstr ""
+msgstr "Druga aplikacija..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:436
 msgid "Open with"
-msgstr ""
+msgstr "Otvori s(a)"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:452
 msgid "Device usage"
-msgstr ""
+msgstr "Korištenje prostora"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:458
 #, c-format
@@ -412,7 +412,7 @@ msgstr "Ostali"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:1126
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Odaberite aplikaciju za otvaranje "
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -489,62 +489,62 @@ msgstr "Mreža"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr ""
+msgstr "Zbijen popis direktorija"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr ""
+msgstr "Zbijen pogled"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:139
 #: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:199
 #: /home/gotwig/translations-gen-fix/po/../src/fm-columns-view.c:186
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Neuspjelo preimenovanje %s u %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "Po_redaj stavke"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "O_brnuti poredak"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "Prikaži ikone u obrnutom poretku"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "Prema _imenu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "Drži ikone poredane prema imenu u retcima"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "Prema _veličini"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "Drži ikone poredane prema veličini u retcima"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "Prema _vrsti"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "Drži ikone poredane prema vrsti u retcima"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "Prema _datumu promjene"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "Drži ikone poredane prema datumu izmjene u retcima"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:572
 #: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:616
@@ -554,11 +554,11 @@ msgstr "Ova mapa je prazna."
 
 #: /home/gotwig/translations-gen-fix/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "Izlazni način"
 
 #: /home/gotwig/translations-gen-fix/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "Izlazni način"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:114
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:164
@@ -569,32 +569,32 @@ msgstr "Rad s datotekama"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
-msgstr "Prikaži detalje"
+msgstr "Prikaži pojedinosti"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:158
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:180
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] "%'d operacija nad datotekama se izvodi"
-msgstr[1] "%'d operacije nad datotekama  se izvode"
-msgstr[2] "%'d operacija nad datotekama  se izvodi"
+msgstr[0] "%'d radnja nad datotekama se izvodi"
+msgstr[1] "%'d radnje nad datotekama  se izvode"
+msgstr[2] "%'d radnja nad datotekama  se izvodi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Prikaži dijalog kopiranja"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Otkaži sve radnje u tijeku"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
-msgstr "Sve operacije nad datotekama su uspješno završene"
+msgstr "Sve radnje nad datotekama su uspješno završene"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr "Sigurna veza(SSH)"
+msgstr "Sigurna veza (SSH)"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
@@ -644,7 +644,7 @@ msgstr "Pokušajte ponovo."
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr "Provjerite svoje korisničke detalje."
+msgstr "Provjerite svoje korisničke pojedinosti."
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
@@ -661,7 +661,7 @@ msgstr "Poveži se s poslužiteljem"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr "Detalji poslužitelja"
+msgstr "Pojedinosti poslužitelja"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
@@ -685,7 +685,7 @@ msgstr "_Mapa:"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
-msgstr "Korisnički detalji"
+msgstr "Korisničke pojedinosti"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
@@ -693,7 +693,7 @@ msgstr "Naziv _domene:"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
-msgstr ""
+msgstr "_Korisničko ime:"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
@@ -709,7 +709,7 @@ msgstr "Izmjena otkazana"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:420
 msgid "Show the version of the program."
-msgstr ""
+msgstr "Prikaži inačicu programa."
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:424
 msgid "Open uri(s) in new tab"
@@ -721,11 +721,11 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Omogući zapis grešaka"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:429
 msgid "[URI...]"
-msgstr ""
+msgstr "[URI...]"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:438
 msgid ""
@@ -739,7 +739,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:458
 msgid "--quit cannot be used with URIs."
-msgstr "--quit nije moguće koristiti sa URI."
+msgstr "--quit nije moguće koristiti s URI-jima."
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
@@ -778,7 +778,9 @@ msgstr "Prilagodi alatnu traku"
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
-msgstr "Odaberite stavke za prikaz na alatnoj traci."
+msgstr ""
+"Odaberite stavke za prikaz na alatnoj traci. Redoslijed stavaka se može "
+"promijeniti 'Povuci i ispusti' radnjom."
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
@@ -810,15 +812,15 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "Naziv datoteke"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Ikonski popis direktorija"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Ikonski pogled"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
@@ -1003,32 +1005,38 @@ msgstr "Otvori u %'d nova(ih) _prozora"
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3431
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
+"Pripremi odabrane datoteke za premještanje naredbom \"Zaljepi - Ctrl+V\""
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3435
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
+"Pripremi odabrane datoteke za kopiranje naredbom \"Zaljepi - Ctrl+V\""
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3439
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
+"Premjesti ili kopiraj datoteke prethodno odabrane naredbom \"Izreži\" ili "
+"\"Kopiraj\""
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3442
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "Zalijepi u mapu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3443
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Premjesti ili kopiraj datoteke prethodno odabrane naredbom \"Izreži\" ili "
+"\"Kopiraj\" u odabranu mapu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3446
 msgid "_Rename..."
-msgstr ""
+msgstr "_Preimenuj..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3447
 msgid "Rename selected item"
-msgstr ""
+msgstr "Preimenuj odabranu stavku"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3450
 msgid "Create New _Folder"
@@ -1036,7 +1044,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3451
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "Stvaranje prazne mape unutar trenutne mape"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3453
 msgid "Create New _File"
@@ -1052,55 +1060,55 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3460
 msgid "Open the selected item"
-msgstr ""
+msgstr "Otvori odabranu stavku"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3467
 msgid "Open in new Window"
-msgstr ""
+msgstr "Otvori u novom prozoru"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3468
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "Otvori svaku odabranu stavku u novom prozoru"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3472
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "Otvori svaku odabranu stavku u novoj kartici"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3474
 msgid "Open Wit_h"
-msgstr ""
+msgstr "Otvori pomoć_u"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3475
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "Odaberite program za otvaranje odabrane stavke"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3477
 msgid "Other _Application..."
-msgstr ""
+msgstr "Druga _aplikacija..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3478
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "Izaberite aplikaciju za otvaranje odbrane stavke"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3481
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "Pre_mjesti u smeće"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3482
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "Premjesti svaku odabranu stavku u smeće"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3485
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "_Obriši trajno"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3486
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "Obriši odabranu stavku bez premještanja u smeće"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3489
 msgid "_Restore"
-msgstr ""
+msgstr "_Vrati"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3493
 #: /home/gotwig/translations-gen-fix/po/../src/eel-editable-label.c:3190
@@ -1109,11 +1117,11 @@ msgstr "Odaberi sve"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3497
 msgid "_Properties"
-msgstr ""
+msgstr "_Svojstva"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3498
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "Pogledaj ili promijeni svojstva svake odabrane stavke"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3605
 msgid "Set Color:"
@@ -1125,387 +1133,413 @@ msgstr "Načini unosa"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Danas u %-I:%M %p"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Jučer u %-I:%M %p"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y u %-I:%M %p"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Obriši %d kopiranih stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "'%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Obriši %d dupliciranih stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Premjesti %d stavki natrag u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Premjesti '%s' natrag u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Preimenuj '%s' kao '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Vrati %d stavki iz smeća"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Vrati '%s' u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Premjesti %d stavki natrag u smeće"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Premjesti '%s' natrag u smeće"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Obriši poveznice na %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Obriši poveznicu na '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Obnovi izvorne dozvole stavki sadržanih u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Obnovi izvorne dozvole '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Obnovi grupu '%s' u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Obnovi vlasnika '%s' u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Kopiraj %d stavki u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Kopiraj '%s' u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Duplikati od %d stavki u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Udvostruči '%s' u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Premjesti %d stavki u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Premjesti '%s' u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Stvori novu datoteku '%s' iz predloška "
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Stvori praznu datoteku '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Stvori novu mapu '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Premjesti %d stavki u smeće"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Premjesti '%s' u smeće"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Vrati '%s' iz smeća"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Napravi poveznicu na %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Napravi poveznicu na '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Postavi dozvole stavki sadržanih u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Postavi dozvole '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "Postavi grupu '%s' u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Postavi vlasnika '%s' u '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Poništi kopiranje %d stavke"
+msgstr[1] "_Poništi kopiranje %d stavke"
+msgstr[2] "_Poništi kopiranje %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Poništi udvostručenje %d stavke"
+msgstr[1] "_Poništi udvostručenje %d stavke"
+msgstr[2] "_Poništi udvostručenje %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Poništi premještanje %d stavke"
+msgstr[1] "_Poništi premještanje %d stavke"
+msgstr[2] "_Poništi premještanje %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Poništi preimenovanje %d stavke"
+msgstr[1] "_Poništi preimenovanje %d stavke"
+msgstr[2] "_Poništi preimenovanje %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_Poništi stvaranje prazne datoteke"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Poništi stvaranje datoteke iz predloška"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Poništi stvaranje %d mape"
+msgstr[1] "_Poništi stvaranje %d mape"
+msgstr[2] "_Poništi stvaranje %d mapa"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Poništi premještanje u smeće %d stavke"
+msgstr[1] "_Poništi premještanje u smeće %d stavke"
+msgstr[2] "_Poništi premještanje u smeće %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Poništi vraćanje iz smeće %d stavke"
+msgstr[1] "_Poništi vraćanje iz smeće %d stavke"
+msgstr[2] "_Poništi vraćanje iz smeće %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Poništi stvaranje poveznice na %d stavku"
+msgstr[1] "_Poništi stvaranje poveznice na %d stavke"
+msgstr[2] "_Poništi stvaranje poveznice na %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Poništi brisanje %d stavke"
+msgstr[1] "_Poništi brisanje %d stavke"
+msgstr[2] "_Poništi brisanje %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Poništi promjenu rekruzivne dozvole za %d stavku"
+msgstr[1] "Poništi promjenu rekruzivne dozvole za %d stavke"
+msgstr[2] "Poništi promjenu rekruzivne dozvole za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Poništi promjenu dozvole za %d stavku"
+msgstr[1] "Poništi promjenu dozvole za %d stavke"
+msgstr[2] "Poništi promjenu dozvole za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Poništi promjenu grupe za %d stavku"
+msgstr[1] "Poništi promjenu grupe za %d stavke"
+msgstr[2] "Poništi promjenu grupe za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Poništi promjenu vlasnika za %d stavku"
+msgstr[1] "Poništi promjenu vlasnika za %d stavke"
+msgstr[2] "Poništi promjenu vlasnika za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ponovi kopiranje za %d stavku"
+msgstr[1] "_Ponovi kopiranje za %d stavke"
+msgstr[2] "_Ponovi kopiranje za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ponovi udvostručenje za %d stavku"
+msgstr[1] "_Ponovi udvostručenje za %d stavke"
+msgstr[2] "_Ponovi udvostručenje za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ponovi premještanje za %d stavku"
+msgstr[1] "_Ponovi premještanje za %d stavke"
+msgstr[2] "_Ponovi premještanje za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ponovi preimenovanje za %d stavku"
+msgstr[1] "_Ponovi preimenovanje za %d stavke"
+msgstr[2] "_Ponovi preimenovanje za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Ponovi stvaranje prazne datoteke"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_Ponovi stvaranje datoteke iz predloška"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ponovi stvaranje za %d mapu"
+msgstr[1] "_Ponovi stvaranje za %d mape"
+msgstr[2] "_Ponovi stvaranje za %d mapa"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ponovi premještanje u smeće za %d stavku"
+msgstr[1] "_Ponovi premještanje u smeće za %d stavke"
+msgstr[2] "_Ponovi premještanje u smeće za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ponovi vraćanje iz smeća za %d stavku"
+msgstr[1] "_Ponovi vraćanje iz smeća za %d stavke"
+msgstr[2] "_Ponovi vraćanje iz smeća za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ponovi stvaranje poveznice za %d stavku"
+msgstr[1] "_Ponovi stvaranje poveznice za %d stavke"
+msgstr[2] "_Ponovi stvaranje poveznice za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ponovi brisanje za %d stavku"
+msgstr[1] "_Ponovi brisanje za %d stavke"
+msgstr[2] "_Ponovi brisanje za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ponovi promjenu rekruzivne dozvole za %d stavku"
+msgstr[1] "Ponovi promjenu rekruzivne dozvole za %d stavke"
+msgstr[2] "Ponovi promjenu rekruzivne dozvole za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ponovi promjenu dozvole za %d stavku"
+msgstr[1] "Ponovi promjenu dozvole za %d stavke"
+msgstr[2] "Ponovi promjenu dozvole za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ponovi promjenu grupe za %d stavku"
+msgstr[1] "Ponovi promjenu grupe za %d stavke"
+msgstr[2] "Ponovi promjenu grupe za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ponovi promjenu vlasnika za %d stavku"
+msgstr[1] "Ponovi promjenu vlasnika za %d stavke"
+msgstr[2] "Ponovi promjenu vlasnika za %d stavki"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
@@ -1513,7 +1547,7 @@ msgstr " (neispravan unicode)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Prikaži više _detalja"
+msgstr "Prikaži više _pojedinosti"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:200
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:737
@@ -1617,40 +1651,40 @@ msgstr "%'dth poveznica na %s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
-msgstr ""
+msgstr " (kopija)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
-msgstr ""
+msgstr " (dodatna kopija)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:468
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:470
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:472
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
-msgstr ""
+msgstr ". kopija)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
-msgstr ""
+msgstr ". kopija)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
-msgstr ""
+msgstr ". kopija)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
-msgstr ""
+msgstr ". kopija)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (kopija)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (dodatna kopija)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:501
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:503
@@ -1658,22 +1692,22 @@ msgstr ""
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (kopija %'d)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (kopija %'d)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (kopija %'d)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (kopija %'d)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:617
 msgid " ("
@@ -1707,11 +1741,11 @@ msgstr "Ako obrišete stavku, biti će trajno izgubljena."
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr "Ispraznizi sve stavke iz smeća?"
+msgstr "Isprazniti sve stavke iz smeća?"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Sve stavke u smeću bit će trajno izbrisane."
+msgstr "Sve stavke u smeću bit će trajno obrisane."
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1819,7 +1853,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
-msgstr "Datoteke se bacaju u smeće"
+msgstr "Bacanje datoteka u smeće"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
@@ -2226,7 +2260,7 @@ msgstr "URL polje nije definirano"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:1766
 msgid "Invalid desktop file"
-msgstr "Neispravna desktop datoteka"
+msgstr "Neispravna datoteka radne površine"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:2056
 msgid "Slashes are not allowed in filenames"
@@ -2391,16 +2425,16 @@ msgstr "Sukob datoteka"
 
 #: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "Izreži odabrani tekst i smijesti ga u međuspremnik"
 
 #: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Kopiraj odabrani tekst u međuspremnik"
 
 #: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:333
 #: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Zalijepi tekst iz međuspremnika"
 
 #: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:813
 #, c-format
@@ -2413,11 +2447,11 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "Pogled popisa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
+msgstr "Pogled u stupcu"
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."

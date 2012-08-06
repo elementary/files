@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-07-25 17:57+0000\n"
+"PO-Revision-Date: 2012-08-05 17:47+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-08-04 05:45+0000\n"
-"X-Generator: Launchpad (build 15742)\n"
+"X-Launchpad-Export-Date: 2012-08-06 05:20+0000\n"
+"X-Generator: Launchpad (build 15745)\n"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
-msgstr ""
+msgstr "Uusi ikkuna _pääkäyttäjän oikeuksin"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:160
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3382
@@ -83,7 +83,7 @@ msgstr "Uusi _välilehti"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:782
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Avaa nykyinen sijainti toisessa välilehdessä"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:786
 msgid "_Close"
@@ -99,7 +99,7 @@ msgstr "Asetukset"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Muuta Files-tiedostonhallinnan asetuksia"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
 msgid "_Undo"
@@ -135,11 +135,11 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:812
 msgid "_Reload"
-msgstr ""
+msgstr "P_äivitä"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:813
 msgid "Reload the current location"
-msgstr ""
+msgstr "Päivitä sijainnin sisältö"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:816
 msgid "_Home Folder"
@@ -421,7 +421,7 @@ msgstr "Kansiota ei ole olemassa"
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Files-tiedostonhallinta ei löydä kansiota %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -503,7 +503,7 @@ msgstr "%s:n uudelleennimeäminen %s:ksi epäonnistui"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "_Järjestä"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
@@ -515,7 +515,7 @@ msgstr "Näytä kuvakkeet käänteisessä järjestyksessä"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "_Nimen mukaan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
@@ -523,7 +523,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "_Koon mukaan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
@@ -531,7 +531,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "_Tyypin mukaan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
@@ -539,7 +539,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "Muokkaus_päivämäärän mukaan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
@@ -715,7 +715,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:426
 msgid "Quit Files."
-msgstr ""
+msgstr "Lopeta Files-tiedostonhallinta."
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
@@ -2411,4 +2411,4 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Tyhjennä roskakori"

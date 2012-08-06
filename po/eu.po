@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-05-07 03:01+0000\n"
-"Last-Translator: Cody Garver <codygarver@gmail.com>\n"
+"PO-Revision-Date: 2012-08-05 10:27+0000\n"
+"Last-Translator: KombuchaMushroom <enekosar@gmail.com>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-08-04 05:44+0000\n"
-"X-Generator: Launchpad (build 15742)\n"
+"X-Launchpad-Export-Date: 2012-08-06 05:20+0000\n"
+"X-Generator: Launchpad (build 15745)\n"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
-msgstr ""
+msgstr "Lehio Berria ireki _Administradore gisa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:160
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3382
@@ -29,121 +29,121 @@ msgstr "Ezarri lehenetsi gisa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:165
 msgid "Ignore"
-msgstr ""
+msgstr "Ezikusi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:505
 msgid "Undo"
-msgstr ""
+msgstr "Desegin"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:506
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:797
 msgid "Undo the last action"
-msgstr ""
+msgstr "Desegin azken ekintza"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:515
 msgid "Redo"
-msgstr ""
+msgstr "Berregin"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:516
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:800
 msgid "Redo the last action"
-msgstr ""
+msgstr "Berregin azken ekintza"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:771
 msgid "_File"
-msgstr ""
+msgstr "_Fitxategia"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:772
 msgid "_Edit"
-msgstr ""
+msgstr "_Editatu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:773
 msgid "_View"
-msgstr ""
+msgstr "_Ikusi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:774
 msgid "_Go"
-msgstr ""
+msgstr "_Joan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:775
 msgid "_Help"
-msgstr ""
+msgstr "_Laguntza"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:777
 msgid "New _Window"
-msgstr ""
+msgstr "Leiho _Berria"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:778
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Ireki beste Files lehio bat erakusten den helbidean"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:781
 msgid "New _Tab"
-msgstr ""
+msgstr "_Fitxa berria"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:782
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Bistaratutako helbidearentzat beste fitxa bat ireki"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:786
 msgid "_Close"
-msgstr ""
+msgstr "_Itxi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:787
 msgid "Close this folder"
-msgstr ""
+msgstr "Itxi karpeta hau"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:790
 msgid "Preferences"
-msgstr ""
+msgstr "Hobespenak"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Files-en hobespenak aldatu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
 msgid "_Undo"
-msgstr ""
+msgstr "_Desegin"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:799
 msgid "_Redo"
-msgstr ""
+msgstr "_Berregin"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:802
 msgid "Open _Parent"
-msgstr ""
+msgstr "Ireki g_urasoa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:803
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Ireki karpeta gurasoa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:805
 msgid "_Back"
-msgstr ""
+msgstr "_Atzera"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:806
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Bisitatutako aurreko helbidera joan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:809
 msgid "_Forward"
-msgstr ""
+msgstr "_Aurrera"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:810
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Bisitatutako hurrengo helbidera joan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:812
 msgid "_Reload"
-msgstr ""
+msgstr "_Birkargatu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:813
 msgid "Reload the current location"
-msgstr ""
+msgstr "Birkargatu uneko helbidea"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:816
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Karpeta Nagusia"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:817
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:329
@@ -152,111 +152,111 @@ msgstr "Ireki karpeta pertsonala"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:820
 msgid "_Trash"
-msgstr ""
+msgstr "_Zakarrontzia"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:821
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Ireki zakarrontziaren karpeta pertsonala"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:824
 msgid "_Network"
-msgstr ""
+msgstr "_Sarea"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:825
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "Arakatu laster-markatutako eta sare lokaleko kokalekuak"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:828
 msgid "Zoom _In"
-msgstr ""
+msgstr "Zooma ha_ndiagotu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:829
 msgid "Increase the view size"
-msgstr ""
+msgstr "Handiagotu ikuspegiaren tamaina"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:840
 msgid "Zoom _Out"
-msgstr ""
+msgstr "Zooma t_xikiagotu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:841
 msgid "Decrease the view size"
-msgstr ""
+msgstr "Gutxiagotu ikuspegiaren tamaina"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:848
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "Tamaina _normala"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:849
 msgid "Use the normal view size"
-msgstr ""
+msgstr "Erabili ikuspegi normalaren tamaina"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:852
 msgid "Next Tab"
-msgstr ""
+msgstr "Hurrengo Fitxa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:856
 msgid "Previous Tab"
-msgstr ""
+msgstr "Aurreko Fitxa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:860
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "Konektatu _zerbitzarira..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:861
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "Konektatu urruneko zerbitzari edo partekatutako disko batekin"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:864
 msgid "_About"
-msgstr ""
+msgstr "Honi _buruz"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:865
 msgid "Display credits"
-msgstr ""
+msgstr "Kredituak erakutsi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:868
 msgid "Report a Problem..."
-msgstr ""
+msgstr "Arazo baten berri eman..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:869
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Arazo bat erreportatu Launchpad-en"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:872
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Lortu laguntza linean..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:876
 msgid "Translate This Application..."
-msgstr ""
+msgstr "Itzuli aplikazio hau..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:885
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Erakutsi ezkutuko _fitxategiak"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:886
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "Txandakatu fitxategi ezkutuak bistaratzea uneko leihoan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:891
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "Erakutsi  _Mahaigaineko Fitxategiak"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:892
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "Gaitu mahaigaineko fitxategien ikuspegia"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:896
 msgid "_Context Pane"
-msgstr ""
+msgstr "_Testuinguruko panela"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:897
 msgid "Change the visibility of the context pane"
-msgstr ""
+msgstr "Aldatu testuinguruko panelaren ikusgaitasuna"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:901
 msgid "_Menubar"
-msgstr ""
+msgstr "_Menu-barra"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:902
 msgid "Change the visibility of this window's menubar"
@@ -264,27 +264,27 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:906
 msgid "_Places"
-msgstr ""
+msgstr "_Lekuak"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:907
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "Leiho honetako albo-panela erakusten/ezkutatzen du"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:915
 msgid "Icon"
-msgstr ""
+msgstr "Ikonoa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:918
 msgid "List"
-msgstr ""
+msgstr "Zerrenda"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:921
 msgid "Compact"
-msgstr ""
+msgstr "Trinkoa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:924
 msgid "Columns"
-msgstr ""
+msgstr "Zutabeak"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -329,68 +329,68 @@ msgstr "Fitxategi-sistema"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
-msgstr ""
+msgstr "Ezaugarriak"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:117
 msgid "Info"
-msgstr ""
+msgstr "Informazioa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:125
 msgid "Permissions"
-msgstr ""
+msgstr "Baimenak"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:137
 msgid "Preview"
-msgstr ""
+msgstr "Aurrebista"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:338
 msgid "Created"
-msgstr ""
+msgstr "Sortua"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:343
 msgid "Last Access"
-msgstr ""
+msgstr "Azken Atzipena"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:349
 msgid "Deleted"
-msgstr ""
+msgstr "Ezabatua"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:354
 msgid "MimeType"
-msgstr ""
+msgstr "Mime mota"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:362
 msgid "MimeTypes"
-msgstr ""
+msgstr "Mime motak"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:366
 msgid "Location"
-msgstr ""
+msgstr "Kokapena"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:374
 msgid "Origin Location"
-msgstr ""
+msgstr "Jatorrizko Kokapena"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:412
 msgid "Other application..."
-msgstr ""
+msgstr "Beste aplikazio bat..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:436
 msgid "Open with"
-msgstr ""
+msgstr "Ireki honekin"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:452
 msgid "Device usage"
-msgstr ""
+msgstr "Gailuaren erabilera"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:458
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s(e)k ez du %s(r)ik (%d%% erabilia)"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:597
 msgid "Read"
-msgstr ""
+msgstr "Irakurri"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:602
 msgid "Write"
