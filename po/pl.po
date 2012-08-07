@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-07-31 16:33+0000\n"
-"Last-Translator: Adrian Widerski <Unknown>\n"
+"PO-Revision-Date: 2012-08-06 19:22+0000\n"
+"Last-Translator: Przemysław Figura <przemyslaw.figura@hotmail.com>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-08-04 05:45+0000\n"
-"X-Generator: Launchpad (build 15742)\n"
+"X-Launchpad-Export-Date: 2012-08-07 06:32+0000\n"
+"X-Generator: Launchpad (build 15745)\n"
 "Language: pl\n"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
-msgstr ""
+msgstr "Nowe okno, jako _Administrator"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:160
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3382
@@ -77,7 +77,7 @@ msgstr "Nowe _okno"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:778
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Otwórz osobne okno Files dla wyświetlanej lokacji"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:781
 msgid "New _Tab"
@@ -101,7 +101,7 @@ msgstr "Preferencje"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Zmień ustawienia Files"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
 msgid "_Undo"
@@ -311,7 +311,7 @@ msgstr "Rozmiar"
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:340
 #: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr "Czas modyfikacji"
+msgstr "Zmodyfikowano"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:346
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:825
@@ -355,7 +355,7 @@ msgstr "Czas dostępu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:349
 msgid "Deleted"
-msgstr "Czas usunięcia"
+msgstr "Usunięto"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:354
 msgid "MimeType"
@@ -388,7 +388,7 @@ msgstr "Użycie urządzenia"
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:458
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s wolnego z %s (%d%% w użyciu)"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:597
 msgid "Read"
@@ -400,7 +400,7 @@ msgstr "Zapis"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:607
 msgid "Execute"
-msgstr "Uruchamianie"
+msgstr "Uruchom"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:830
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:842
@@ -423,7 +423,7 @@ msgstr "Katalog nie istnieje"
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Files nie może znaleźć folderu %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -718,7 +718,7 @@ msgstr "Otwiera adresy URI w nowych kartach"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:426
 msgid "Quit Files."
-msgstr ""
+msgstr "Wyjdź z Files"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
@@ -2474,8 +2474,8 @@ msgstr "Wyświetlaj w kolumnach"
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Te elementy mogą zostać usunięte poprzez opróżnienie kosza"
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Opróżnij kosz"

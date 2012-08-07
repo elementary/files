@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-07-25 21:15+0000\n"
-"Last-Translator: Benoît LAMY <Unknown>\n"
+"PO-Revision-Date: 2012-08-07 05:51+0000\n"
+"Last-Translator: Bouhlel Moez <Unknown>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-08-04 05:45+0000\n"
-"X-Generator: Launchpad (build 15742)\n"
+"X-Launchpad-Export-Date: 2012-08-07 06:32+0000\n"
+"X-Generator: Launchpad (build 15745)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
-msgstr ""
+msgstr "Nouvelle fenêtre en mode Administrateur"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:160
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3382
@@ -77,7 +77,7 @@ msgstr "Nouvelle fenêtre"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:778
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Ouvrir une nouvelle fenêtre Files de l'emplacement actuel"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:781
 msgid "New _Tab"
@@ -101,7 +101,7 @@ msgstr "Préférences"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Changer les préférences de Files"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
 msgid "_Undo"
@@ -388,7 +388,7 @@ msgstr "Utilisation du périphérique"
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:458
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s espace libre de %s (%d%% utilisé)"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:597
 msgid "Read"
@@ -423,7 +423,7 @@ msgstr "Le dossier n'existe pas"
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Files ne peut pas trouver le dossier %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -718,7 +718,7 @@ msgstr "Ouvrir le(s) uri(s) dans un nouvel onglet"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:426
 msgid "Quit Files."
-msgstr ""
+msgstr "Quiter Files"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
@@ -1422,15 +1422,15 @@ msgstr[1] "Annuler le changement de propriétaire de %d fichiers"
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Rétablir la copie de %d élément"
+msgstr[1] "_Rétablir la copie de %d éléments"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Rétablir la duplication de %d élément"
+msgstr[1] "_Rétablir la duplication de %d éléments"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
@@ -1443,8 +1443,8 @@ msgstr[1] "_Rétablir le déplacement des %d éléments"
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Rétablir le renommage de %d élément"
+msgstr[1] "_Rétablir le renommage de %d éléments"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
@@ -1479,8 +1479,8 @@ msgstr[1] "_Rétablir la restauration depuis la corbeille des %d éléments"
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Rétablir la création de raccourçi vers %d élément"
+msgstr[1] "_Rétablir la création de raccourçi vers %d éléments"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
@@ -2436,8 +2436,8 @@ msgstr "Afficher en colonnes"
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Ces éléments peuvent étre supprimés par vider la Corbeille"
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Vider la Corbeille"
