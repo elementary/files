@@ -105,10 +105,6 @@ namespace Marlin.View.Chrome
                 if (name == "ViewSwitcher")
                 {
                     view_switcher = new ViewSwitcher (win.main_actions);
-                    if (get_icon_size () == Gtk.IconSize.LARGE_TOOLBAR) {
-                        view_switcher.margin_top = 6;
-                        view_switcher.margin_bottom = 6;
-                    } 
                     view_switcher.show_all();
                     insert(view_switcher, -1);
                     continue;
