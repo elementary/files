@@ -78,6 +78,7 @@ open_window (MarlinApplication *application, GFile *location, GdkScreen *screen)
     marlin_plugin_manager_interface_loaded(plugins, GTK_WIDGET (window));
 
     gtk_application_add_window (GTK_APPLICATION (application), GTK_WINDOW (window));
+    gtk_widget_set_size_request(window, 300, 250);
     marlin_view_window_add_tab (window, location);
 }
 
