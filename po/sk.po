@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-05-07 02:53+0000\n"
-"Last-Translator: Cody Garver <codygarver@gmail.com>\n"
+"PO-Revision-Date: 2012-08-08 07:26+0000\n"
+"Last-Translator: Ľuboš Mudrák <Unknown>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2012-08-04 05:45+0000\n"
-"X-Generator: Launchpad (build 15742)\n"
+"X-Launchpad-Export-Date: 2012-08-09 05:28+0000\n"
+"X-Generator: Launchpad (build 15761)\n"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
@@ -25,7 +25,7 @@ msgstr ""
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:160
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3382
 msgid "Set as default"
-msgstr "Nastaviť ako predvolené"
+msgstr "Nastaviť ako predvolený"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:165
 msgid "Ignore"
@@ -42,24 +42,24 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:515
 msgid "Redo"
-msgstr ""
+msgstr "Znovu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:516
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:800
 msgid "Redo the last action"
-msgstr ""
+msgstr "Vrátiť poslednú akciu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:771
 msgid "_File"
-msgstr ""
+msgstr "Súbor(_F)"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:772
 msgid "_Edit"
-msgstr ""
+msgstr "_Upraviť"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:773
 msgid "_View"
-msgstr ""
+msgstr "_Zobraziť"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:774
 msgid "_Go"

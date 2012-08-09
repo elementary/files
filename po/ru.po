@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-07-17 13:56+0000\n"
-"Last-Translator: Nikita Putko <Unknown>\n"
+"PO-Revision-Date: 2012-08-08 18:39+0000\n"
+"Last-Translator: Sergey <e-gress@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-08-04 05:45+0000\n"
-"X-Generator: Launchpad (build 15742)\n"
+"X-Launchpad-Export-Date: 2012-08-09 05:28+0000\n"
+"X-Generator: Launchpad (build 15761)\n"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
@@ -100,7 +100,7 @@ msgstr "Параметры"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Изменить настройки файлов"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
 msgid "_Undo"
@@ -387,7 +387,7 @@ msgstr "Использование устройства"
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:458
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "Свободно %s из %s (%d%% использовано)"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:597
 msgid "Read"
@@ -422,7 +422,7 @@ msgstr "Папка не существует"
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Не найдены файлы в %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -439,7 +439,7 @@ msgstr "Параметры файлов"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:47
 msgid "General"
-msgstr ""
+msgstr "Общие"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
@@ -459,7 +459,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
-msgstr ""
+msgstr "<small><i>Быстрее</i></small>"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
@@ -582,7 +582,7 @@ msgstr[2] "Идут %'d действия над файлами"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Показывать диалог копирования"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
@@ -2459,15 +2459,15 @@ msgstr "Перейти к %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr ""
+msgstr "Просмотр в виде таблицы"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "Просмотр в виде списка"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
+msgstr "Показать одним столбцом"
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
@@ -2475,4 +2475,4 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Очистить корзину"

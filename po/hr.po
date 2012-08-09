@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-08-05 19:06+0000\n"
+"PO-Revision-Date: 2012-08-08 08:38+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-08-06 05:20+0000\n"
-"X-Generator: Launchpad (build 15745)\n"
+"X-Launchpad-Export-Date: 2012-08-09 05:28+0000\n"
+"X-Generator: Launchpad (build 15761)\n"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
@@ -30,7 +30,7 @@ msgstr "Postavi kao zadano"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:165
 msgid "Ignore"
-msgstr ""
+msgstr "Zanemari"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:505
 msgid "Undo"
@@ -76,7 +76,7 @@ msgstr "Novi _prozor"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:778
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Otvori dodatni Files prozor za prikazanu lokaciju"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:781
 msgid "New _Tab"
@@ -100,7 +100,7 @@ msgstr "Osobitosti"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Promjeni Files osobitosti"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
 msgid "_Undo"
@@ -387,7 +387,7 @@ msgstr "Korištenje prostora"
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:458
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s slobodno od %s (%d%% iskorišteno)"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:597
 msgid "Read"
@@ -422,7 +422,7 @@ msgstr "Mapa ne postoji"
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Files ne može pronaći mapu %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -435,11 +435,11 @@ msgstr "Napravi mapu %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr ""
+msgstr "Files osobitosti"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:47
 msgid "General"
-msgstr ""
+msgstr "Općenito"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
@@ -451,15 +451,15 @@ msgstr "Otvaranje jednim klikom:"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Automatski odabir mišem:"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
-msgstr ""
+msgstr "<small><i>Sporo</i></small>"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
-msgstr ""
+msgstr "<small><i>Brzo</i></small>"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
@@ -713,11 +713,11 @@ msgstr "Prikaži inačicu programa."
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:424
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "Ovori uri(e) u novoj kartici"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:426
 msgid "Quit Files."
-msgstr ""
+msgstr "Zatvori Files."
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
@@ -1040,7 +1040,7 @@ msgstr "Preimenuj odabranu stavku"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3450
 msgid "Create New _Folder"
-msgstr ""
+msgstr "Napravi novu  _mapu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3451
 msgid "Create a new empty folder inside this folder"
@@ -1048,15 +1048,15 @@ msgstr "Stvaranje prazne mape unutar trenutne mape"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3453
 msgid "Create New _File"
-msgstr ""
+msgstr "Napravi novu  _datoteku"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3455
 msgid "_Empty Document"
-msgstr ""
+msgstr "_Prazan dokument"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3456
 msgid "Create a new empty document inside this folder"
-msgstr ""
+msgstr "Napravite novi prazan dokument unutar ove mape"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3460
 msgid "Open the selected item"
@@ -1843,13 +1843,15 @@ msgstr[2] "%'d datoteka preostalo za baciti u smeće"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "Nemoguće premještanje datoteke u smeće. Obriši odmah?"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
+"Ova datoteka je locirana na vanjskom mediju i ne može se premjestiti u "
+"smeće. Jednom kada se obriše, ne može se vratiti."
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
@@ -2443,7 +2445,7 @@ msgstr "Idi na %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr ""
+msgstr "Pogled mreže"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
@@ -2455,8 +2457,8 @@ msgstr "Pogled u stupcu"
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Ove stavke mogu biti obrisane pražnjenjem smeća."
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Isprazni smeće"

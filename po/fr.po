@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-08-07 05:51+0000\n"
-"Last-Translator: Bouhlel Moez <Unknown>\n"
+"PO-Revision-Date: 2012-08-08 15:28+0000\n"
+"Last-Translator: André Fernandes <mkody@mail.com>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-08-08 05:15+0000\n"
-"X-Generator: Launchpad (build 15757)\n"
+"X-Launchpad-Export-Date: 2012-08-09 05:28+0000\n"
+"X-Generator: Launchpad (build 15761)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -452,11 +452,11 @@ msgstr "Un seul clic pour ouvrir :"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Selection automatique par souris"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
-msgstr ""
+msgstr "<small><i>Lente</i></small>"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
@@ -1143,7 +1143,7 @@ msgstr "Hier à %-kh%M"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y à %-I:%M %p"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format

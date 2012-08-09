@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-08-04 09:23+0000\n"
-"Last-Translator: kusoorz <Unknown>\n"
+"PO-Revision-Date: 2012-08-08 08:54+0000\n"
+"Last-Translator: Wang Dianjin <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-08-05 05:15+0000\n"
-"X-Generator: Launchpad (build 15742)\n"
+"X-Launchpad-Export-Date: 2012-08-09 05:28+0000\n"
+"X-Generator: Launchpad (build 15761)\n"
 "Language: \n"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
-msgstr ""
+msgstr "以管理员身份新建新窗口(_A)"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:160
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3382
@@ -213,7 +213,7 @@ msgstr "关于(_A)"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:865
 msgid "Display credits"
-msgstr ""
+msgstr "显示名单"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:868
 msgid "Report a Problem..."
@@ -387,7 +387,7 @@ msgstr "设备使用"
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:458
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s 空闲(共 %s)(已用 %d%%)"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:597
 msgid "Read"
@@ -422,7 +422,7 @@ msgstr "文件夹不存在"
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Files 无法找到文件夹 %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -715,7 +715,7 @@ msgstr "在新标签中打开 uri"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:426
 msgid "Quit Files."
-msgstr ""
+msgstr "退出 Files。"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
@@ -1004,7 +1004,7 @@ msgstr "准备将选中的文件用粘贴命令复制"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3439
 msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
+msgstr "移动或复制由前面的剪切或复制命令所选中的文件"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3442
 msgid "Paste Into Folder"
@@ -1119,11 +1119,11 @@ msgstr "输入法"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "今天 %-l:%M %p"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "昨天 %-l:%M %p"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1132,7 +1132,7 @@ msgstr ""
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "删除 %d 个已复制项目"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1215
@@ -1186,7 +1186,7 @@ msgstr "将 “%s” 移动回回收站"
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "删除 %d 个项目的链接"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
@@ -1201,22 +1201,22 @@ msgstr "恢复附加于 %s 的权限"
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "恢复“%s”的原始权限"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "将“%s”的组恢复为“%s”"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "将“%s”的属主恢复为“%s”"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "复制 %d 个项目到“%s”"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
@@ -1231,27 +1231,27 @@ msgstr ""
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "就地复制“%s”(“%s”中)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "移动 %d 个项目到“%s”"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "将“%s”移动到“%s”"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "根据模板创建新文档“%s” "
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "创建一个空文件“%s”"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
@@ -1276,75 +1276,70 @@ msgstr "从回收站恢复“%s”"
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "创建 %d 个项目的链接"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "创建“%s”链接"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "设置附加于“%s”的权限"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "设定“%s”的权限"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "将“%s”的组设置为“%s”"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "设置“%s”的属主为“%s”"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "撤销 %d 个项目的复制( _U )"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "撤销 %d 个项目的复制( _U)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "撤销 %d 个项目的移动( _U )"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "撤销 %d 个项目的重命名( _U )"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "撤销空文件的创建( _U )"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "撤销从模板创建的文件( _U )"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "撤销创建 %d 个文件夹( _U )"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
