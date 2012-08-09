@@ -29,7 +29,8 @@ Pre-Depends: dpkg (>= 1.15.6)
 Suggests: tumbler-plugins-extra
 Conflicts: marlin
 Replaces: marlin
-Description: The file manager of the Pantheon desktop, Files is well-designed with a focus on speed, simplicity and ease of use.
+Description: The file manager of the Pantheon desktop
+ Files is well-designed with a focus on speed, simplicity and ease of use.
 
 Package: pantheon-files-dbg
 Architecture: any
