@@ -22,7 +22,7 @@ using Posix;
 using GLib;
 using Granite.Widgets;
 
-public class Marlin.View.PropertiesWindow : Gtk.Dialog
+public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
 {
     private Gee.LinkedList<Pair<string, string>> info;
     private Granite.Widgets.ImgEventBox evbox;
@@ -62,14 +62,17 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     {
         title = _("Properties");
         resizable = false;
-        set_default_response (ResponseType.CLOSE);
         set_default_size (220, -1);
 
         // Set the default containers
-        Box content_area = (Box) get_content_area();
+        Box content_area = new Box (Orientation.VERTICAL, 12);
+        Box action_area = new Box (Orientation.VERTICAL, 12);
         border_width = 5;
         sg = new SizeGroup (SizeGroupMode.HORIZONTAL);
-
+        
+        add (content_area);
+        add (action_area);
+        
         Box content_vbox = new Box (Gtk.Orientation.VERTICAL, 0);
         //var content_vbox = new VBox(false, 12);
         content_area.pack_start (content_vbox);
@@ -102,19 +105,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
         /* Static Notebook */
         var notebook = new StaticNotebook ();
+        notebook.margin_bottom = 15;
         content_vbox.pack_start (notebook, true, true, 0);
-
-        /* Separator */
-        var sep = new Separator (Orientation.HORIZONTAL);
-        sep.margin_top = 12;
-        sep.margin_bottom = 3;
-        content_vbox.pack_start(sep, false, false, 0);
 
         /* Info */
         if (info.size > 0) {
             var info_vbox = new Box (Gtk.Orientation.VERTICAL, 0);
             construct_info_panel (info_vbox, info);
-            add_section (notebook, _("Info"), PanelType.INFO, info_vbox);
+            add_section (notebook, _("General"), PanelType.INFO, info_vbox);
         }
 
         /* Permissions */
@@ -122,7 +120,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
             var perm_vbox = new Box (Gtk.Orientation.VERTICAL, 0);
             construct_perm_panel (perm_vbox);
-            add_section (notebook, _("Permissions"), PanelType.PERMISSIONS, perm_vbox);
+            add_section (notebook, _("More"), PanelType.PERMISSIONS, perm_vbox);
             if (!goffile.can_set_permissions ()) {
                 foreach (var widget in perm_vbox.get_children ())
                     widget.set_sensitive (false);
@@ -137,32 +135,16 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
             add_section (notebook, _("Preview"), PanelType.PREVIEW, preview_box);
         }
 
-        add_button (Stock.CLOSE, ResponseType.CLOSE);
-
         content_vbox.show();
 
         content_area.show_all();
-
-        response.connect (on_response);
+        show_all();
 
         set_transient_for (parent);
         set_destroy_with_parent (true);
         present ();
     }
 
-    private void on_response (int response_id) {
-        /* cancel deepcount size calculations */
-        selection_size_cancel ();
-
-        switch (response_id) {
-        case ResponseType.HELP:
-            // show_help ();
-            break;
-        case ResponseType.CLOSE:
-            destroy ();
-            break;
-        }
-    }
 
     private string span_weight_light (string str) {
         return "<span weight='light'>" + str + "</span>";
@@ -250,8 +232,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         vvbox.pack_start(header_title);
         vvbox.pack_start(header_desc);
 
-    /* Bottom padding */
-    vvbox.margin_bottom = 12;
+        /* Bottom padding */
+        vvbox.margin_bottom = 12;
 
         vbox.pack_start(content, false, false, 0);
     }
@@ -260,7 +242,7 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         if (content != null) {
             content.set_border_width (5);
             content.margin_right = 15;
-            content.margin_left = 15;
+            content.margin_left = 0;
             notebook.append_page(content, new Label(title));
         }
     }
@@ -378,18 +360,25 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
     private void construct_info_panel (Box box, Gee.LinkedList<Pair<string, string>> item_info) {
         var information = new Grid();
         information.row_spacing = 3;
+        
+        var label = new Label ("");
+        label.use_markup = true;
+        label.set_markup ("<b>" + _("Info:") + "\t\t\t</b>"); //FIXME: find a better solution for this
+        information.attach (label, 0, 0, 1, 1);
 
-        int n = 0;
+        int n = 1;
+
         foreach(var pair in item_info){
             var value_label = new Granite.Widgets.WrapLabel(pair.value);
             var key_label = create_label_key (pair.key);
+            key_label.margin_left = 20;
             value_label.set_selectable (true);
-            //value_label.set_size_request (150, -1);
+            value_label.set_size_request (150, -1);
             value_label.set_hexpand (true);
             value_label.set_use_markup (true);
 
             information.attach (key_label, 0, n, 1, 1);
-            information.attach (value_label, 1, n, 1, 1);
+            information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
         }
 
@@ -433,7 +422,8 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
 
             combo.changed.connect (combo_open_with_changed);
 
-            var key_label = create_label_key (_("Open with") + ": ", Align.CENTER);
+            var key_label = create_label_key (_("Open with:"), Align.CENTER);
+            
             information.attach (key_label, 0, n, 1, 1);
             information.attach (hcombo, 1, n, 1, 1);
 
@@ -449,14 +439,24 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
                     uint64 fs_free = info.get_attribute_uint64 (FILE_ATTRIBUTE_FILESYSTEM_FREE);
 
                     n++;
-                    var key_label = create_label_key (_("Device usage") + ": ", Align.CENTER);
+                    
+                    debug ("%d", n);
+                    label = new Label ("");
+                    label.use_markup = true;
+                    label.set_markup ("<b>" + _("Usage:") + "\t\t\t</b>"); //FIXME: find a better solution for this
+                    information.attach (label, 0, n, 1, 1);
+                    
+                    n++;
+                    
+                    var key_label = create_label_key (_("Device usage:"), Align.CENTER);
                     information.attach (key_label, 0, n, 1, 1);
+                    debug ("%d", n);
                     var progressbar = new ProgressBar ();
                     double used =  1.0 - (double) fs_free / (double) fs_capacity;
                     progressbar.set_fraction (used);
                     progressbar.set_show_text (true);
-                    progressbar.set_text (_("%s free of %s (%d%% used)").printf (format_size_for_display ((int64) fs_free), format_size_for_display ((int64) fs_capacity), (int) (used * 100)));
-                    information.attach (progressbar, 1, n, 1, 1);
+                    progressbar.set_text ("%s free of %s (%d%% used)".printf (format_size_for_display ((int64) fs_free), format_size_for_display ((int64) fs_capacity), (int) (used * 100)));
+                    information.attach_next_to (progressbar, key_label, Gtk.PositionType.RIGHT, 3, 1);
                 }
             } catch (GLib.Error e) {
                 GLib.warning ("error: %s", e.message);
@@ -1055,38 +1055,14 @@ public class Marlin.View.PropertiesWindow : Gtk.Dialog
         return choice;
     }
 
-    ulong thumbnail_handler_id;
     private void construct_preview_panel (Box box) {
-        evbox = new Granite.Widgets.ImgEventBox(Orientation.HORIZONTAL);
-        string? preview = goffile.get_preview_path();
-        Gdk.Pixbuf pix;
-        if(preview == null)
-        {
-            debug("Thumbnailing large...");
-            Marlin.Thumbnailer.get().queue_file(goffile, null, true);
-            thumbnail_handler_id = goffile.icon_changed.connect(() => {
-                string? preview_ = goffile.get_preview_path();
-                if(preview_ != null)
-                {
-                    var pix_ = new Gdk.Pixbuf.from_file_at_size (preview_, 256, 256);
-                    evbox.set_from_pixbuf (pix_);
-                }
-                goffile.disconnect(thumbnail_handler_id);
-            });
-            pix = goffile.get_icon_pixbuf (256, false, GOF.FileIconFlags.USE_THUMBNAILS);
+        evbox = new Granite.Widgets.ImgEventBox (Orientation.HORIZONTAL);
+        try {
+            var pix = new Gdk.Pixbuf.from_file_at_size (goffile.location.get_path (), 245, 256);
+            evbox.set_from_pixbuf (pix);
+        } catch (Error e) {
+            warning (e.message);
         }
-        else
-        {
-            try
-            {
-                pix = new Gdk.Pixbuf.from_file_at_size (preview, 256, 256);
-            }
-            catch(Error e)
-            {
-                pix = goffile.get_icon_pixbuf (256, false, GOF.FileIconFlags.USE_THUMBNAILS);
-            }
-        }
-        evbox.set_from_pixbuf (pix);
 
         box.pack_start (evbox, false, true, 0);
     }
