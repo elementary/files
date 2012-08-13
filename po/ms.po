@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-08-03 01:08+0200\n"
-"PO-Revision-Date: 2012-06-01 04:52+0000\n"
+"PO-Revision-Date: 2012-08-12 10:57+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-08-04 05:45+0000\n"
-"X-Generator: Launchpad (build 15742)\n"
+"X-Launchpad-Export-Date: 2012-08-13 05:55+0000\n"
+"X-Generator: Launchpad (build 15791)\n"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
-msgstr ""
+msgstr "Tetingkap Baru sebagai Pent_adbir"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:160
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3382
@@ -29,49 +29,49 @@ msgstr "Tetapkan sebagai lalai"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:165
 msgid "Ignore"
-msgstr ""
+msgstr "Abai"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:505
 msgid "Undo"
-msgstr ""
+msgstr "Buat Asal"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:506
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:797
 msgid "Undo the last action"
-msgstr ""
+msgstr "Buat asal tindakan terakhir"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:515
 msgid "Redo"
-msgstr ""
+msgstr "Buat Semula"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:516
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:800
 msgid "Redo the last action"
-msgstr ""
+msgstr "Buat semula tindakan terakhir"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:771
 msgid "_File"
-msgstr ""
+msgstr "_Fail"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:772
 msgid "_Edit"
-msgstr ""
+msgstr "_Sunting"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:773
 msgid "_View"
-msgstr ""
+msgstr "_Papar"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:774
 msgid "_Go"
-msgstr ""
+msgstr "Per_gi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:775
 msgid "_Help"
-msgstr ""
+msgstr "Bant_uan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:777
 msgid "New _Window"
-msgstr ""
+msgstr "_Tetingkap Baru"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:778
 msgid "Open another Files window for the displayed location"
@@ -79,23 +79,23 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:781
 msgid "New _Tab"
-msgstr ""
+msgstr "_Tab Baru"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:782
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Buka tab lain untuk memaparkan lokasi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:786
 msgid "_Close"
-msgstr ""
+msgstr "_Tutup"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:787
 msgid "Close this folder"
-msgstr ""
+msgstr "Tutup folder ini"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:790
 msgid "Preferences"
-msgstr ""
+msgstr "Keutamaan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
 msgid "Change Files preferences"
@@ -103,47 +103,47 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
 msgid "_Undo"
-msgstr ""
+msgstr "Buat _Asal"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:799
 msgid "_Redo"
-msgstr ""
+msgstr "Buat _Semula"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:802
 msgid "Open _Parent"
-msgstr ""
+msgstr "Buka _Induk"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:803
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Buka folder induk"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:805
 msgid "_Back"
-msgstr ""
+msgstr "_Undur"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:806
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Pergi ke lokasi dilawati terdahulu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:809
 msgid "_Forward"
-msgstr ""
+msgstr "Ma_ju"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:810
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Pergi ke lokasi dilawati berikutnya"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:812
 msgid "_Reload"
-msgstr ""
+msgstr "Muat Sem_ula"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:813
 msgid "Reload the current location"
-msgstr ""
+msgstr "Muat semula lokasi semasa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:816
 msgid "_Home Folder"
-msgstr ""
+msgstr "Folder _Rumah"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:817
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:329
@@ -152,139 +152,139 @@ msgstr "Buka folder peribadi anda"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:820
 msgid "_Trash"
-msgstr ""
+msgstr "Tong _Sampah"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:821
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Buka folder tong sampah peribadi anda"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:824
 msgid "_Network"
-msgstr ""
+msgstr "_Rangkaian"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:825
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "Layar lokasi tanda buku dan rangkaian setempat"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:828
 msgid "Zoom _In"
-msgstr ""
+msgstr "Zum _Masuk"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:829
 msgid "Increase the view size"
-msgstr ""
+msgstr "Besarkan saiz paparan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:840
 msgid "Zoom _Out"
-msgstr ""
+msgstr "Zum _Keluar"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:841
 msgid "Decrease the view size"
-msgstr ""
+msgstr "Kecilkan saiz paparan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:848
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "Sai_z Biasa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:849
 msgid "Use the normal view size"
-msgstr ""
+msgstr "Guna saiz paparan biasa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:852
 msgid "Next Tab"
-msgstr ""
+msgstr "Tab Berikutnya"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:856
 msgid "Previous Tab"
-msgstr ""
+msgstr "Tab Terdahulu"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:860
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "Sambung ke _Pelayan..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:861
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "Sambung ke komputer jauh atau cakera dikongsi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:864
 msgid "_About"
-msgstr ""
+msgstr "Perih_al"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:865
 msgid "Display credits"
-msgstr ""
+msgstr "Papar penghargaan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:868
 msgid "Report a Problem..."
-msgstr ""
+msgstr "Laporkan Masalah..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:869
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Failkan pepijat di Launchpad"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:872
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Dapatkan Bantuan Atas Talian..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:876
 msgid "Translate This Application..."
-msgstr ""
+msgstr "Terjemahkan Aplikasi Ini..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:885
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Papar Fail _Tersembunyi"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:886
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "Togol paparan fail tersembunyi didalam tetigkap semasa"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:891
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "Papar Fail _Desktop"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:892
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "Togol paparan fail desktop"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:896
 msgid "_Context Pane"
-msgstr ""
+msgstr "Anak Tetingkap _Konteks"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:897
 msgid "Change the visibility of the context pane"
-msgstr ""
+msgstr "Ubah ketampakan anak tetingkan kandungan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:901
 msgid "_Menubar"
-msgstr ""
+msgstr "_Palang Alat"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:902
 msgid "Change the visibility of this window's menubar"
-msgstr ""
+msgstr "Ubah ketampakan bagi palang menu tetingkap ini"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:906
 msgid "_Places"
-msgstr ""
+msgstr "_Tempat"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:907
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "Ubah kebolehtampakan bagi tetingkap anak tetingkap sisi ini"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:915
 msgid "Icon"
-msgstr ""
+msgstr "Ikon"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:918
 msgid "List"
-msgstr ""
+msgstr "Senarai"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:921
 msgid "Compact"
-msgstr ""
+msgstr "Padat"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:924
 msgid "Columns"
-msgstr ""
+msgstr "Lajur"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -381,7 +381,7 @@ msgstr "Buka dengan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:452
 msgid "Device usage"
-msgstr ""
+msgstr "Penggunaan peranti"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:458
 #, c-format
@@ -438,7 +438,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:47
 msgid "General"
-msgstr ""
+msgstr "Am"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
@@ -454,11 +454,11 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
-msgstr ""
+msgstr "<small><i>Perlahan</i></small>"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
-msgstr ""
+msgstr "<small><i>Laju</i></small>"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
@@ -503,47 +503,47 @@ msgstr "Gagal menamakan semula %s ke %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "_Susun Item"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "Tertib _songsang"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "Papar ikon pada tertib bertentangan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "Berdasarkan _Nama"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "Biar ikon diisih mengikut nama dalam baris"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "Berdasarkan _Saiz"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "Biarkan ikon diisih mengikut saiz dalam baris"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "Berdasarkan _Jenis"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "Biarkan ikon diisih mengikut jenis dalam baris"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "Berdasarkan _Tarikh Ubahsuai"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "Biarkan ikon diisih mengikut tarikh ubahsuai dalam baris"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:572
 #: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:616
@@ -580,11 +580,11 @@ msgstr[1] "%'d operasi fail aktif"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Papar Dialog Salin"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Batal Semua TIndakan Dalam-proses"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
@@ -691,7 +691,7 @@ msgstr "Nama _domain:"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
-msgstr ""
+msgstr "_Nama pengguna:"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
@@ -707,7 +707,7 @@ msgstr "Operasi dibatalkan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:420
 msgid "Show the version of the program."
-msgstr ""
+msgstr "Papar versi program"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:424
 msgid "Open uri(s) in new tab"
@@ -719,11 +719,11 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:428
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Benarkan pengelogan nyahpepijat"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:429
 msgid "[URI...]"
-msgstr ""
+msgstr "[URI...]"
 
 #: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:438
 msgid ""
@@ -810,7 +810,7 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "Nama Fail"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
@@ -1001,41 +1001,45 @@ msgstr "Buka dalam %'d T_etingkap Baru"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3431
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
+msgstr "Sediakan folder pilihan untuk dialih menggunakan perintah Tampal"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3435
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
+msgstr "Sediakan folder pilihan untuk disalin menggunakan perintah Tampal"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3439
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
+"Alih atau salin fail terdahulu yang dipilih melalui perintah Potong atau "
+"Salin"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3442
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "Tampal Ke Dalam Folder"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3443
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Alih atau salin fail yang terdahulu dipilih dengan perintah Potong atau "
+"Salin kedalam folder terpilih"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3446
 msgid "_Rename..."
-msgstr ""
+msgstr "_Namakan semula..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3447
 msgid "Rename selected item"
-msgstr ""
+msgstr "Namakan semula item dipilih"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3450
 msgid "Create New _Folder"
-msgstr ""
+msgstr "Cipta _Folder Baru"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3451
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "Cipta folder kosong baru di dalam folder ini"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3453
 msgid "Create New _File"
@@ -1043,63 +1047,63 @@ msgstr ""
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3455
 msgid "_Empty Document"
-msgstr ""
+msgstr "Dokumen _Kosong"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3456
 msgid "Create a new empty document inside this folder"
-msgstr ""
+msgstr "Cipta dokumen kosong baru didalam folder ini"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3460
 msgid "Open the selected item"
-msgstr ""
+msgstr "Buka item terpilih"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3467
 msgid "Open in new Window"
-msgstr ""
+msgstr "Buka  dalam tetingkap baru"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3468
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "Buka setiap item dalam tetingkap baru"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3472
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "Buka setiap item terpilih ke tab baru"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3474
 msgid "Open Wit_h"
-msgstr ""
+msgstr "Buka _Dengan"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3475
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "Pilih program untuk membuka item terpilih"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3477
 msgid "Other _Application..."
-msgstr ""
+msgstr "_Aplikasi Lain..."
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3478
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "Pilih aplikasi lain untuk membuka item terpilih"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3481
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "_Alih ke Tong Sampah"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3482
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "Alihkan setiap item dipilih ke Tong Sampah"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3485
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "_Padam secara Kekal"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3486
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "Padam setiap item dipilih, tanpa memindahnya ke Tong Sampah"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3489
 msgid "_Restore"
-msgstr ""
+msgstr "_Pulih"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3493
 #: /home/gotwig/translations-gen-fix/po/../src/eel-editable-label.c:3190
@@ -1108,11 +1112,11 @@ msgstr "Pilih Semua"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3497
 msgid "_Properties"
-msgstr ""
+msgstr "Si_fat"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3498
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "Papar atau ubahsuai ciri setiap item dipilih"
 
 #: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3605
 msgid "Set Color:"
@@ -1124,387 +1128,387 @@ msgstr "Kaedah Masukan"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Hari ini pada %-I:%M %p"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Semalam pada %-I:%M %p"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y pada %-I:%M %p"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Padam %d item disalin"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Padam '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Padam %d item pendua"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Alih %d item kembali ke '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Alih '%s' kembali ke '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Nama semula '%s' sebagai '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Pulih %d item dari tong sampah"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Pulih '%s' ke '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Alih %d item kembali ke tong sampah"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Alih '%s' kembali ke tong sampah"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Padam pautan ke %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Padam pautan ke '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Pulih keizinan asal item yang terkurung dalam '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Pulih keizinan asal bagi '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Pulih kumpulan bagi '%s' hingga '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Pulih pemilik bagi '%s' hingga '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Salin %d item ke '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Salin '%s' ke '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Pendua dari %d item dalam '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Duakan '%s' dalam '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Alih %d item ke '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Alih '%s' ke '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Cipta fail baru '%s' dari templat "
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Cipta fail kosong '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Cipta folder baru '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Alih %d item ke tong sampah"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Alih '%s' ke tong sampah"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Pulih '%s' dari tong sampah"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Cipta pautan ke %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Cipta pautan ke '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Tetapkan keizinan item yang terkurung dalam '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Tetapkan keizinan bagi '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "Tetapkan kumpulan bagi '%s' hingga '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Tetapkan pemilik bagi '%s' hingga '%s'"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal salin %d item"
+msgstr[1] "B_uat asal salin %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal duakan %d item"
+msgstr[1] "B_uat asal duakan %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal alih %d item"
+msgstr[1] "B_uat asal alih %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal nama semula %d item"
+msgstr[1] "B_uat asal nama semula %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "B_uat asal penciptaan fail kosong"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "B_uat asal penciptaan fail dari templat"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal penciptaan %d folder"
+msgstr[1] "B_uat asal penciptaan %d folder"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal alih ke tong sampah bagi %d item"
+msgstr[1] "B_uat asal alih ke tong sampah bagi %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal pulih dari tong sampah bagi %d item"
+msgstr[1] "B_uat asal pulih dari tong sampah bagi %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal cipta pautan ke %d item"
+msgstr[1] "B_uat asal cipta pautan ke %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal padam %d item"
+msgstr[1] "B_uat asal padam %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal perubahan rekursif keizinan %d item"
+msgstr[1] "B_uat asal perubahan rekursif keizinan %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal ubah keizinan %d item"
+msgstr[1] "B_uat asal keizinan %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal ubah kumpulan dari %d item"
+msgstr[1] "B_uat asal ubah kumpulan dari %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat asal ubah pemilik bagi %d item"
+msgstr[1] "B_uat asal ubah pemilik bagi %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Buat se_mula salin %d item"
+msgstr[1] "Buat se_mula salin %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Buat se_mula duakan %d item"
+msgstr[1] "Buat se_mula duakan %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Buat se_mula alih %d item"
+msgstr[1] "Buat se_mula alih %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Buat se_mula nama semula %d item"
+msgstr[1] "Buat se_mula nama semula %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "Buat se_mula penciptaan fail kosong"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "Buat se_mula penciptaan fail dari templat"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Buat se_mula penciptaan %d folder"
+msgstr[1] "Buat se_mula penciptaan %d folder"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Buat se_mula alih ke tong sampah bagi %d item"
+msgstr[1] "Buat se_mula alih ke tong sampah bagi %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat semula pulih dari tong sampah bagi %d item"
+msgstr[1] "B_uat semula pulih dari tong sampah bagi %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat semula cipta pautan ke %d item"
+msgstr[1] "B_uat semula cipta pautan ke %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "B_uat semula padam %d item"
+msgstr[1] "B_uat semula padam %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Buat semula ubah secara rekursif keizinan bagi %d item"
+msgstr[1] "Buat semula ubah secara rekursif keizinan bagi %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Buat semula ubah keizinan bagi %d item"
+msgstr[1] "Buat semula ubah keizinan bagi %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Buat semula ubah kumpulan bagi %d item"
+msgstr[1] "Buat semula ubah kumpulan bagi %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Buat semula ubah pemilik bagi %d item"
+msgstr[1] "Buat semula ubah pemilik bagi %d item"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
@@ -1612,40 +1616,40 @@ msgstr "Ke %'d dipautkan ke %s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
-msgstr ""
+msgstr " (salinan)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
-msgstr ""
+msgstr " (salinan lain)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:468
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:470
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:472
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
-msgstr ""
+msgstr "salinan)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
-msgstr ""
+msgstr "salinan)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
-msgstr ""
+msgstr "salinan)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
-msgstr ""
+msgstr "salinan)"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (salinan)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (salinan lain)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:501
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:503
@@ -1653,22 +1657,22 @@ msgstr ""
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'d salinan)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'d salinan)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'d salinan)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'d salinan)%s"
 
 #: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:617
 msgid " ("
@@ -2381,16 +2385,16 @@ msgstr "Fail konflik"
 
 #: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "Potong teks dipilih ke papan keratan"
 
 #: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Salin teks dipilih ke papan keratan"
 
 #: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:333
 #: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Tampal teks yang disimpan pada papan keratan"
 
 #: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:813
 #, c-format
@@ -2399,15 +2403,15 @@ msgstr "Pergi ke %s"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr ""
+msgstr "Papar sebagai grid"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "Papar sebagai senarai"
 
 #: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
+msgstr "Papar sebagai lajur"
 
 #: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
