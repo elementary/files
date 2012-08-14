@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-08-03 01:08+0200\n"
+"POT-Creation-Date: 2012-08-13 00:57-0500\n"
 "PO-Revision-Date: 2012-06-12 17:30+0000\n"
 "Last-Translator: Dani Pratomo <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -15,609 +15,527 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-08-04 05:45+0000\n"
-"X-Generator: Launchpad (build 15742)\n"
+"X-Launchpad-Export-Date: 2012-08-14 05:22+0000\n"
+"X-Generator: Launchpad (build 15791)\n"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:33
-msgid "New Window as _Administrator"
-msgstr ""
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:160
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3382
-msgid "Set as default"
-msgstr "Jadikan bawaan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:165
-msgid "Ignore"
-msgstr "Abaikan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:505
-msgid "Undo"
-msgstr "Batalkan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:506
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:797
-msgid "Undo the last action"
-msgstr "Batalkan aksi terakhir"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:515
-msgid "Redo"
-msgstr "Ulangi"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:516
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:800
-msgid "Redo the last action"
-msgstr "Ulangi langkah terakhir"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:771
-msgid "_File"
-msgstr "_Berkas"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:772
-msgid "_Edit"
-msgstr "_Ubah"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:773
-msgid "_View"
-msgstr "_Tampilan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:774
-msgid "_Go"
-msgstr "_Ke"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:775
-msgid "_Help"
-msgstr "_Bantuan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:777
-msgid "New _Window"
-msgstr "_Jendela Baru"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:778
-msgid "Open another Files window for the displayed location"
-msgstr ""
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:781
-msgid "New _Tab"
-msgstr "_Tab Baru"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:782
-msgid "Open another tab for the displayed location"
-msgstr "Buka tab lain untuk lokasi yang ditampilkan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:786
-msgid "_Close"
-msgstr "_Tutup"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:787
-msgid "Close this folder"
-msgstr "Tutup folder ini"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:790
-msgid "Preferences"
-msgstr "Pengaturan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:791
-msgid "Change Files preferences"
-msgstr ""
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:796
-msgid "_Undo"
-msgstr "_Batalkan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:799
-msgid "_Redo"
-msgstr "_Ulangi"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:802
-msgid "Open _Parent"
-msgstr "_Naik"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:803
-msgid "Open the parent folder"
-msgstr "Buka folder atas"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:805
-msgid "_Back"
-msgstr "Kem_bali"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:806
-msgid "Go to the previous visited location"
-msgstr "Buka lokasi yang terakhir dibuka"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:809
-msgid "_Forward"
-msgstr "_Maju"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:810
-msgid "Go to the next visited location"
-msgstr "Buka lokasi yang pernah dikunjungi berikutnya"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:812
-msgid "_Reload"
-msgstr "Muat _Ulang"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:813
-msgid "Reload the current location"
-msgstr "Memuat ulang lokasi yang sekarang"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:816
-msgid "_Home Folder"
-msgstr "Folder _Rumah"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:817
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:329
-msgid "Open your personal folder"
-msgstr "Buka folder pribadi anda"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:820
-msgid "_Trash"
-msgstr "_Tempat Sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:821
-msgid "Open your personal trash folder"
-msgstr "Buka folder tempat sampah pribadi"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:824
-msgid "_Network"
-msgstr "Jari_ngan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:825
-msgid "Browse bookmarked and local network locations"
-msgstr "Menelusuri jaringan lokal maupun yang telah ditandai"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:828
-msgid "Zoom _In"
-msgstr "Perbesar Tamp_ilan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:829
-msgid "Increase the view size"
-msgstr "Memperbesar tampilan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:840
-msgid "Zoom _Out"
-msgstr "P_erkecil Tampilan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:841
-msgid "Decrease the view size"
-msgstr "Perkecil tampilan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:848
-msgid "Normal Si_ze"
-msgstr "Ukuran _Normal"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:849
-msgid "Use the normal view size"
-msgstr "Tampilan normal"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:852
-msgid "Next Tab"
-msgstr "Tab selanjutnya"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:856
-msgid "Previous Tab"
-msgstr "Tab sebelum"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:860
-msgid "Connect to _Server..."
-msgstr "Sambungkan ke _Server..."
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:861
-msgid "Connect to a remote computer or shared disk"
-msgstr "Menyambung ke komputer lain atau disk yang dipakai bersama"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:864
-msgid "_About"
-msgstr "Tent_ang"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:865
-msgid "Display credits"
-msgstr "Tampilkan kredit"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:868
-msgid "Report a Problem..."
-msgstr "Laporkan Masalah..."
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:869
-msgid "File a bug on Launchpad"
-msgstr "Tulis permasalahan program di Launchpad"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:872
-msgid "Get Help Online..."
-msgstr "Dapatkan Bantuan Online ..."
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:876
-msgid "Translate This Application..."
-msgstr "Terjemahkan Aplikasi Ini..."
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:885
-msgid "Show _Hidden Files"
-msgstr "_Tampilkan Berkas Tersembunyi"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:886
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Ubah penampakan berkas tersembunyi pada jendela yang aktif"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:891
-msgid "Show _Desktop Files"
-msgstr "Tampilkan berkas di Desktop"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:892
-msgid "Toggle the display of desktop files"
-msgstr "Ubah kemunculan berkas desktop"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:896
-msgid "_Context Pane"
-msgstr "Panel Keterangan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:897
-msgid "Change the visibility of the context pane"
-msgstr "Ubah kemunculan panel keterangan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:901
-msgid "_Menubar"
-msgstr "_Batang menu"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:902
-msgid "Change the visibility of this window's menubar"
-msgstr "Ubah kemunculan batang menu di jendela ini."
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:906
-msgid "_Places"
-msgstr "_Lokasi"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:907
-msgid "Change the visibility of this window's side pane"
-msgstr "Mengubah kemunculan panel samping"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:915
-msgid "Icon"
-msgstr "Ikon"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:918
-msgid "List"
-msgstr "Daftar"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:921
-msgid "Compact"
-msgstr "Ringkas"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/Window.vala:924
-msgid "Columns"
-msgstr "Kolom"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:337
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
 msgid "Name"
 msgstr "Nama"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:338
-#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:59
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Type"
 msgstr "Tipe"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:341
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:368
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:350
 msgid "Target"
 msgstr "Sasaran"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:343
-#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:59
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:343
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Size"
 msgstr "Ukuran"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:345
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:340
-#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:59
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:345
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:322
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Modified"
 msgstr "Telah dimodifikasi."
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/ContextView.vala:346
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:825
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:838
+#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:346
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:825
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:838
 msgid "Owner"
 msgstr "Pemilik"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/ViewContainer.vala:141
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:324
-msgid "Home"
-msgstr "Beranda"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/ViewContainer.vala:143
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:394
-msgid "File System"
-msgstr "Sistem Berkas"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "Properti"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:117
-msgid "Info"
-msgstr "Info"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:125
-msgid "Permissions"
-msgstr "Hak Akses"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:137
-msgid "Preview"
-msgstr "Pratinjau"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:338
-msgid "Created"
-msgstr "Dibuat"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:343
-msgid "Last Access"
-msgstr "Akses Terakhir"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:349
-msgid "Deleted"
-msgstr "Dihapus"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:354
-msgid "MimeType"
-msgstr "MimeType"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:362
-msgid "MimeTypes"
-msgstr "MimeTypes"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:366
-msgid "Location"
-msgstr "Lokasi"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:374
-msgid "Origin Location"
-msgstr "Lokasi Asal"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:412
-msgid "Other application..."
-msgstr "Aplikasi lain..."
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:436
-msgid "Open with"
-msgstr "Buka dengan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:452
-msgid "Device usage"
-msgstr "Penggunaan perangkat"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:458
-#, c-format
-msgid "%s free of %s (%d%% used)"
-msgstr ""
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:597
-msgid "Read"
-msgstr "Baca"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:602
-msgid "Write"
-msgstr "Tulis"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:607
-msgid "Execute"
-msgstr "Jalankan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:830
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:842
-msgid "Group"
-msgstr "Kelompok"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:846
-msgid "Everyone"
-msgstr "Setiap Orang"
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/PropertiesWindow.vala:1126
-msgid "Select an aplication to open "
-msgstr "Pilih aplikasi untuk membuka "
-
-#: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:72
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "Folder tidak ada"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:75
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "Buat"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "Buat folder %s"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:34
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
 msgstr "Pengaturan Berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:47
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:115
 msgid "General"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:102
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
 msgstr "Pengaya"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:207
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:207
 msgid "Single click to open:"
 msgstr "Klik tunggal untuk buka:"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:214
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:233
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:235
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:250
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
 msgstr "Format tanggal:"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:253
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "iso"
 msgstr "iso"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:254
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:254
 msgid "locale"
 msgstr "lokal"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/SettingsDialog.vala:255
+#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:255
 msgid "informal"
 msgstr "informal"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/LocationBar.vala:110
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:370
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "Beranda"
+
+#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:143
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "Sistem Berkas"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:33
+msgid "New Window as _Administrator"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:160
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3383
+msgid "Set as default"
+msgstr "Jadikan bawaan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:165
+msgid "Ignore"
+msgstr "Abaikan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:504
+msgid "Undo"
+msgstr "Batalkan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:505
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:796
+msgid "Undo the last action"
+msgstr "Batalkan aksi terakhir"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:514
+msgid "Redo"
+msgstr "Ulangi"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:515
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:799
+msgid "Redo the last action"
+msgstr "Ulangi langkah terakhir"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:770
+msgid "_File"
+msgstr "_Berkas"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:771
+msgid "_Edit"
+msgstr "_Ubah"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:772
+msgid "_View"
+msgstr "_Tampilan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:773
+msgid "_Go"
+msgstr "_Ke"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:774
+msgid "_Help"
+msgstr "_Bantuan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:776
+msgid "New _Window"
+msgstr "_Jendela Baru"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:777
+msgid "Open another Files window for the displayed location"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:780
+msgid "New _Tab"
+msgstr "_Tab Baru"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:781
+msgid "Open another tab for the displayed location"
+msgstr "Buka tab lain untuk lokasi yang ditampilkan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:785
+msgid "_Close"
+msgstr "_Tutup"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:786
+msgid "Close this folder"
+msgstr "Tutup folder ini"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:789
+msgid "Preferences"
+msgstr "Pengaturan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:790
+msgid "Change Files preferences"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:795
+msgid "_Undo"
+msgstr "_Batalkan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:798
+msgid "_Redo"
+msgstr "_Ulangi"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:801
+msgid "Open _Parent"
+msgstr "_Naik"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:802
+msgid "Open the parent folder"
+msgstr "Buka folder atas"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:804
+msgid "_Back"
+msgstr "Kem_bali"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:805
+msgid "Go to the previous visited location"
+msgstr "Buka lokasi yang terakhir dibuka"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:808
+msgid "_Forward"
+msgstr "_Maju"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:809
+msgid "Go to the next visited location"
+msgstr "Buka lokasi yang pernah dikunjungi berikutnya"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:811
+msgid "_Reload"
+msgstr "Muat _Ulang"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:812
+msgid "Reload the current location"
+msgstr "Memuat ulang lokasi yang sekarang"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:815
+msgid "_Home Folder"
+msgstr "Folder _Rumah"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:816
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "Buka folder pribadi anda"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:819
+msgid "_Trash"
+msgstr "_Tempat Sampah"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:820
+msgid "Open your personal trash folder"
+msgstr "Buka folder tempat sampah pribadi"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:823
+msgid "_Network"
+msgstr "Jari_ngan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:824
+msgid "Browse bookmarked and local network locations"
+msgstr "Menelusuri jaringan lokal maupun yang telah ditandai"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:827
+msgid "Zoom _In"
+msgstr "Perbesar Tamp_ilan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:828
+msgid "Increase the view size"
+msgstr "Memperbesar tampilan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:839
+msgid "Zoom _Out"
+msgstr "P_erkecil Tampilan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:840
+msgid "Decrease the view size"
+msgstr "Perkecil tampilan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:847
+msgid "Normal Si_ze"
+msgstr "Ukuran _Normal"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:848
+msgid "Use the normal view size"
+msgstr "Tampilan normal"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:851
+msgid "Next Tab"
+msgstr "Tab selanjutnya"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:855
+msgid "Previous Tab"
+msgstr "Tab sebelum"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:859
+msgid "Connect to _Server..."
+msgstr "Sambungkan ke _Server..."
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:860
+msgid "Connect to a remote computer or shared disk"
+msgstr "Menyambung ke komputer lain atau disk yang dipakai bersama"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:863
+msgid "_About"
+msgstr "Tent_ang"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:864
+msgid "Display credits"
+msgstr "Tampilkan kredit"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:867
+msgid "Report a Problem..."
+msgstr "Laporkan Masalah..."
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:868
+msgid "File a bug on Launchpad"
+msgstr "Tulis permasalahan program di Launchpad"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:871
+msgid "Get Help Online..."
+msgstr "Dapatkan Bantuan Online ..."
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:875
+msgid "Translate This Application..."
+msgstr "Terjemahkan Aplikasi Ini..."
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:884
+msgid "Show _Hidden Files"
+msgstr "_Tampilkan Berkas Tersembunyi"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:885
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Ubah penampakan berkas tersembunyi pada jendela yang aktif"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:890
+msgid "Show _Desktop Files"
+msgstr "Tampilkan berkas di Desktop"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:891
+msgid "Toggle the display of desktop files"
+msgstr "Ubah kemunculan berkas desktop"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:895
+msgid "_Context Pane"
+msgstr "Panel Keterangan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:896
+msgid "Change the visibility of the context pane"
+msgstr "Ubah kemunculan panel keterangan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:900
+msgid "_Menubar"
+msgstr "_Batang menu"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:901
+msgid "Change the visibility of this window's menubar"
+msgstr "Ubah kemunculan batang menu di jendela ini."
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:905
+msgid "_Places"
+msgstr "_Lokasi"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:906
+msgid "Change the visibility of this window's side pane"
+msgstr "Mengubah kemunculan panel samping"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:914
+msgid "Icon"
+msgstr "Ikon"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:917
+msgid "List"
+msgstr "Daftar"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:920
+msgid "Compact"
+msgstr "Ringkas"
+
+#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:923
+msgid "Columns"
+msgstr "Kolom"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "Properti"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:123
+msgid "More"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:135
+msgid "Preview"
+msgstr "Pratinjau"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:320
+msgid "Created"
+msgstr "Dibuat"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:325
+msgid "Last Access"
+msgstr "Akses Terakhir"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:331
+msgid "Deleted"
+msgstr "Dihapus"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:336
+msgid "MimeType"
+msgstr "MimeType"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:344
+msgid "MimeTypes"
+msgstr "MimeTypes"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:348
+msgid "Location"
+msgstr "Lokasi"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:356
+msgid "Origin Location"
+msgstr "Lokasi Asal"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
+msgid "Info:"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:401
+msgid "Other application..."
+msgstr "Aplikasi lain..."
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:425
+msgid "Open with:"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:446
+msgid "Usage:"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:451
+msgid "Device usage:"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
+msgid "Read"
+msgstr "Baca"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:602
+msgid "Write"
+msgstr "Tulis"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:607
+msgid "Execute"
+msgstr "Jalankan"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:830
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:842
+msgid "Group"
+msgstr "Kelompok"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:846
+msgid "Everyone"
+msgstr "Setiap Orang"
+
+#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:1102
+msgid "Select an aplication to open "
+msgstr "Pilih aplikasi untuk membuka "
+
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:110
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:370
 msgid "Trash"
 msgstr "Tong Sampah"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/LocationBar.vala:111
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:588
+#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:111
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:588
 msgid "Network"
 msgstr "Jaringan"
 
-#: /home/gotwig/translations-gen-fix/po/../src/fm-compact-view.c:86
-msgid "Compact directory listing"
-msgstr "Daftar direktori ringkas"
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:82
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:616
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:572
+msgid "This folder is empty."
+msgstr "Folder ini kosong."
 
-#: /home/gotwig/translations-gen-fix/po/../src/fm-compact-view.c:87
-msgid "Compact view"
-msgstr "Tampilan Ringkas"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:139
-#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:199
-#: /home/gotwig/translations-gen-fix/po/../src/fm-columns-view.c:186
+#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:186
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:199
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:139
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "Gagal mengubah nama %s menjadi %s"
 
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "_Susun Objek"
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr "Daftar direktori ringkas"
 
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "Urutan Ter_balik"
+#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr "Tampilan Ringkas"
 
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Tampilkan ikon dalam urutan sebaliknya"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "Berdasarkan _Nama"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Urutkan ikon berdasarkan namanya perbaris"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "Berda_sarkan Ukuran"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Urutkan ikon berdasarkan ukurannya per baris"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "Berdasarkan _Jenis"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Urutkan ikon berdasarkan tipenya per baris"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "Ber_dasarkan Tanggal Diubah"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "Urutkan ikon berdasarkan tanggal diubah"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-abstract-icon-view.c:572
-#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:616
-#: /home/gotwig/translations-gen-fix/po/../src/fm-columns-view.c:82
-msgid "This folder is empty."
-msgstr "Folder ini kosong."
-
-#: /home/gotwig/translations-gen-fix/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Mode tata letak"
-
-#: /home/gotwig/translations-gen-fix/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "Mode tata letak-nya"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:114
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:164
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:426
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:482
-msgid "File Operations"
-msgstr "Operasi Berkas"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:123
-msgid "Show Details"
-msgstr "Tampilkan rincian"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:158
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:180
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d operasi berkas aktif"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:286
-msgid "Show Copy Dialog"
-msgstr ""
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:298
-msgid "Cancel All In-progress Actions"
-msgstr ""
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-progress-ui-handler.c:483
-msgid "All file operations have been successfully completed"
-msgstr "Semua operasi berkas telah selesai"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:124
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:127
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
 msgstr "FTP Publik"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:129
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
 msgstr "FTP (dengan login)"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:132
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
 msgstr "Jaringan berbagi Windows"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:134
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:136
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV Aman (HTTPS)"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:183
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
 msgstr "Menyambung..."
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:207
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -625,106 +543,444 @@ msgstr ""
 "Tak bisa memuat daftar metoda server yang didukung.\n"
 "Silakan periksa instalasi gvfs Anda."
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:285
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "Folder \"%s\" tak bisa dibuka pada \"%s\"."
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:295
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "Server di \"%s\" tak ditemukan."
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:330
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
 msgstr "Coba Lagi"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:395
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
 msgstr "Silakan periksa rincian pengguna Anda."
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:425
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
 msgstr "Lanjutkan"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:750
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1140
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
 msgstr "_Sambung"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:875
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
 msgstr "Sambungkan ke Server"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:893
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
 msgstr "Rincian Server"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:917
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
 msgstr "_Server:"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:937
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
 msgstr "_Port:"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:955
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
 msgstr "_Tipe"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1024
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
 msgstr "N_ama Berbagi:"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1039
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
 msgstr "_Folder:"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1057
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
 msgstr "Rincian Pengguna"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1080
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
 msgstr "Nama _domain:"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1095
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
 msgstr "Nama pengg_una:"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1110
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
 msgstr "_Sandi:"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1126
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
 msgstr "_Ingat sandi ini"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-connect-server-dialog.c:1229
+#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
 msgstr "Operasi dibatalkan"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:420
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Klik Tunggal"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Apakah item yang tampil dapat diaktifkan dengan klik tunggal"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "Batas waktu klik tunggal"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr ""
+"Batasan waktu ketika item dibawah kursor tetikus akan dipilih otomatis "
+"dengan moda klik tunggal"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1151
+msgid "Invalid filename provided by XDS drag site"
+msgstr "Nama berkas yang disediakan oleh XDS drag site salah"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1309
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Gagal membuat tautan untuk URL \"%s\""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1794
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Gunakan \"%s\" untuk membuka butir terpilih"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1941
+#, c-format
+msgid "_Open With %s"
+msgstr "_Buka Dengan %s"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1947
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3460
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2399
+msgid "_Open"
+msgstr "Buk_a"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1963
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "Buka di %d Tab _Baru"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1967
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3472
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2407
+msgid "Open in New _Tab"
+msgstr "Buka di _Tab baru"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1972
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "Buka di %d Jendela _Baru"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1976
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2414
+msgid "Open in New _Window"
+msgstr "Buka di _Jendela Baru"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3432
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr "Siapkan berkas yang dipilih untuk dipindah dengan fungsi Tempel"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3436
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr "Siapkan berkas yang dipilih untuk disalin dengan fungsi Tempel"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3440
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Pindahkan atau salin berkas yang sebelumnya dipilih dengan menu Potong atau "
+"Salin"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3443
+msgid "Paste Into Folder"
+msgstr "Tempel Ke Dalam Folder"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3444
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Pindahkan atau salin berkas yang sebelumnya dipilih dengan menu Potong atau "
+"Salin ke dalam folder yang dipilih"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3447
+msgid "_Rename..."
+msgstr "_Ubah Nama..."
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3448
+msgid "Rename selected item"
+msgstr "Ubah nama objek yang dipilih"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3451
+msgid "Create New _Folder"
+msgstr "Buat _Folder Baru"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3452
+msgid "Create a new empty folder inside this folder"
+msgstr "Buat satu folder kosong"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3454
+msgid "Create New _File"
+msgstr "Buat _Berkas Baru"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3456
+msgid "_Empty File"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3457
+msgid "Create a new empty file inside this folder"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3461
+msgid "Open the selected item"
+msgstr "Buka object yang dipilih"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3468
+msgid "Open in new Window"
+msgstr "Buka dalam jendela baru"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3469
+msgid "Open each selected item in a new window"
+msgstr "Buka object yang terpilih di dalam jendela baru"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3473
+msgid "Open each selected item in a new tab"
+msgstr "Buka objek yang dipilih pada tab yang baru"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3475
+msgid "Open Wit_h"
+msgstr "Buka _Dengan"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3476
+msgid "Choose a program with which to open the selected item"
+msgstr "Pilih program untuk membuka objek yang dipilih"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3478
+msgid "Other _Application..."
+msgstr "_Aplikasi Lain..."
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3479
+msgid "Choose another application with which to open the selected item"
+msgstr "Pilih aplikasi lain untuk membuka objek yang dipilih"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3482
+msgid "Mo_ve to Trash"
+msgstr "Buang ke _Tempat Sampah"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3483
+msgid "Move each selected item to the Trash"
+msgstr "Pindahkan objek yang dipilih ke Tempat Sampah"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3486
+msgid "_Delete Permanently"
+msgstr "Ha_pus Selamanya"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3487
+msgid "Delete each selected item, without moving to the Trash"
+msgstr ""
+"Hapus objek yang dipilih, tanpa memindahkan lebih dulu ke Tempat Sampah"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3490
+msgid "_Restore"
+msgstr "_Kembalikan"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3494
+#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3190
+msgid "Select All"
+msgstr "Pilih Semua"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3498
+msgid "_Properties"
+msgstr "_Properti"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3499
+msgid "View or modify the properties of each selected item"
+msgstr "Lihat atau ubah properti objek yang dipilih"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3606
+msgid "Set Color:"
+msgstr "Tentukan Warna:"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Mode tata letak"
+
+#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "Mode tata letak-nya"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Tidak ada yang dapat direkatkan dari dalam clipboard"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Nama berkas"
+
+#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Metode Masukan"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "_Susun Objek"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "Urutan Ter_balik"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "Tampilkan ikon dalam urutan sebaliknya"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "Berdasarkan _Nama"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "Urutkan ikon berdasarkan namanya perbaris"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "Berda_sarkan Ukuran"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "Urutkan ikon berdasarkan ukurannya per baris"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "Berdasarkan _Jenis"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "Urutkan ikon berdasarkan tipenya per baris"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "Ber_dasarkan Tanggal Diubah"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "Urutkan ikon berdasarkan tanggal diubah"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:445
+msgid "Customize Toolbar"
+msgstr "Atur Toolbar"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:464
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
+msgstr ""
+"Pilih item untuk ditampilkan pada toolbar. Item dapat diatur kembali dengan "
+"seret dan taruh."
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:478
+msgid "Available Items"
+msgstr "Butir Tersedia"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:497
+msgid "Displayed Items"
+msgstr "Item ditampilkan"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "daftr direktori ikon"
+
+#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Tampilan ikon"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "_Pindahkan ke Sini"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "_Salin ke Sini"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "_Tautkan ke sini"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "Jadikan Latar _Belakang"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "Batal"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Gagal mengeksekusi berkas \"%s\""
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
+msgid "File Operations"
+msgstr "Operasi Berkas"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
+msgid "Show Details"
+msgstr "Tampilkan rincian"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d operasi berkas aktif"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
+msgid "Show Copy Dialog"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
+msgid "Cancel All In-progress Actions"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
+msgid "All file operations have been successfully completed"
+msgstr "Semua operasi berkas telah selesai"
+
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:421
 msgid "Show the version of the program."
 msgstr "Tampilkan versi program."
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:424
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:425
 msgid "Open uri(s) in new tab"
 msgstr "Bukan uri(s) di tab baru"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:426
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:427
 msgid "Quit Files."
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:428
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
 msgstr "Aktifkan pencatatan error"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:429
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:430
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:438
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:439
 msgid ""
 "\n"
 "\n"
@@ -734,929 +990,320 @@ msgstr ""
 "\n"
 "Rambah sistem berkas dengan pengelola berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-application.c:458
+#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
 msgstr "--quit tidak dapat digunakan dengan URI."
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:103
-msgid "_Move Here"
-msgstr "_Pindahkan ke Sini"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:108
-msgid "_Copy Here"
-msgstr "_Salin ke Sini"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:113
-msgid "_Link Here"
-msgstr "_Tautkan ke sini"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:118
-msgid "Set as _Background"
-msgstr "Jadikan Latar _Belakang"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:125
-msgid "Cancel"
-msgstr "Batal"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-dnd.c:217
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Gagal mengeksekusi berkas \"%s\""
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Tidak ada yang dapat direkatkan dari dalam clipboard"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-toolbar-editor.c:445
-msgid "Customize Toolbar"
-msgstr "Atur Toolbar"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-toolbar-editor.c:464
-msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
-msgstr ""
-"Pilih item untuk ditampilkan pada toolbar. Item dapat diatur kembali dengan "
-"seret dan taruh."
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-toolbar-editor.c:478
-msgid "Available Items"
-msgstr "Butir Tersedia"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-toolbar-editor.c:497
-msgid "Displayed Items"
-msgstr "Item ditampilkan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Klik Tunggal"
-
-#: /home/gotwig/translations-gen-fix/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Apakah item yang tampil dapat diaktifkan dengan klik tunggal"
-
-#: /home/gotwig/translations-gen-fix/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "Batas waktu klik tunggal"
-
-#: /home/gotwig/translations-gen-fix/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-"Batasan waktu ketika item dibawah kursor tetikus akan dipilih otomatis "
-"dengan moda klik tunggal"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Nama berkas"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "daftr direktori ikon"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Tampilan ikon"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:310
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
 msgstr "Pribadi"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:315
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
 msgstr "Tempat umum dan Penanda Anda"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:372
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
 msgstr "Buka tong sampah"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:382
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
 msgstr "Perangkat"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:387
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
 msgstr "Partisi dan perangkat lokal anda"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:396
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
 msgstr "Buka isi dari Sistem Berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:455
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:480
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:455
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:480
 #, c-format
 msgid "Mount and open %s"
 msgstr "Muat dan buka %s"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:593
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
 msgstr "Jaringan Anda."
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:624
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
 msgstr "Seluruh jaringan"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:626
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
 msgstr "Ramban isi dari jaringan"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1610
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
 msgstr "_Mulai"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1611
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1611
 msgid "_Stop"
 msgstr "_Hentikan"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1616
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1616
 msgid "_Power On"
 msgstr "_Nyalakan"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1617
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1617
 msgid "_Safely Remove Drive"
 msgstr "Lepa_s Media dengan Aman"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1620
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1620
 msgid "_Connect Drive"
 msgstr "_Pasang Media"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1621
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1621
 msgid "_Disconnect Drive"
 msgstr "Lepaskan _Drive"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1624
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
 msgstr "Jalankan Perangkat Multidi_ska"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1625
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1625
 msgid "_Stop Multi-disk Device"
 msgstr "_Hentikan Perangkat Multidiska"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1629
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1629
 msgid "_Unlock Drive"
 msgstr "Buka K_unci Drive"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1630
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1630
 msgid "_Lock Drive"
 msgstr "_Kunci Drive"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1704
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2251
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1704
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2251
 #, c-format
 msgid "Unable to start %s"
 msgstr "Tidak dapat menjalankan %s"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:1994
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2023
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2052
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1994
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2023
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2052
 #, c-format
 msgid "Unable to eject %s"
 msgstr "Tidak dapat melepas %s"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2197
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2197
 #, c-format
 msgid "Unable to poll %s for media changes"
 msgstr "Tak bisa poll %s untuk pergantian media"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2307
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2307
 #, c-format
 msgid "Unable to stop %s"
 msgstr "Tidak dapat menghentikan %s"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2399
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1947
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3459
-msgid "_Open"
-msgstr "Buk_a"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2407
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1967
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3471
-msgid "Open in New _Tab"
-msgstr "Buka di _Tab baru"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2414
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1976
-msgid "Open in New _Window"
-msgstr "Buka di _Jendela Baru"
-
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2423
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
 msgstr "Hapus"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2432
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
 msgstr "Ubah Nama..."
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2444
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
 msgstr "_Kait"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2451
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2451
 msgid "_Unmount"
 msgstr "_Lepas"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2458
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2458
 msgid "_Eject"
 msgstr "_Keluarkan"
 
-#: /home/gotwig/translations-gen-fix/po/../src/marlin-places-sidebar.c:2466
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1422
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2310
+#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2466
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1422
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2310
 msgid "Empty _Trash"
 msgstr "Kosongkan _Tong Sampah"
 
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1151
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Nama berkas yang disediakan oleh XDS drag site salah"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1309
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Gagal membuat tautan untuk URL \"%s\""
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1794
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Gunakan \"%s\" untuk membuka butir terpilih"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1941
-#, c-format
-msgid "_Open With %s"
-msgstr "_Buka Dengan %s"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1963
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "Buka di %d Tab _Baru"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:1972
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "Buka di %d Jendela _Baru"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3431
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "Siapkan berkas yang dipilih untuk dipindah dengan fungsi Tempel"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3435
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "Siapkan berkas yang dipilih untuk disalin dengan fungsi Tempel"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3439
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Pindahkan atau salin berkas yang sebelumnya dipilih dengan menu Potong atau "
-"Salin"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3442
-msgid "Paste Into Folder"
-msgstr "Tempel Ke Dalam Folder"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3443
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Pindahkan atau salin berkas yang sebelumnya dipilih dengan menu Potong atau "
-"Salin ke dalam folder yang dipilih"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3446
-msgid "_Rename..."
-msgstr "_Ubah Nama..."
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3447
-msgid "Rename selected item"
-msgstr "Ubah nama objek yang dipilih"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3450
-msgid "Create New _Folder"
-msgstr "Buat _Folder Baru"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3451
-msgid "Create a new empty folder inside this folder"
-msgstr "Buat satu folder kosong"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3453
-msgid "Create New _File"
-msgstr "Buat _Berkas Baru"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3455
-msgid "_Empty Document"
-msgstr "Dokum_en Kosong"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3456
-msgid "Create a new empty document inside this folder"
-msgstr "Membuat satu dokumen kosong baru di dalam folder ini"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3460
-msgid "Open the selected item"
-msgstr "Buka object yang dipilih"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3467
-msgid "Open in new Window"
-msgstr "Buka dalam jendela baru"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3468
-msgid "Open each selected item in a new window"
-msgstr "Buka object yang terpilih di dalam jendela baru"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3472
-msgid "Open each selected item in a new tab"
-msgstr "Buka objek yang dipilih pada tab yang baru"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3474
-msgid "Open Wit_h"
-msgstr "Buka _Dengan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3475
-msgid "Choose a program with which to open the selected item"
-msgstr "Pilih program untuk membuka objek yang dipilih"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3477
-msgid "Other _Application..."
-msgstr "_Aplikasi Lain..."
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3478
-msgid "Choose another application with which to open the selected item"
-msgstr "Pilih aplikasi lain untuk membuka objek yang dipilih"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3481
-msgid "Mo_ve to Trash"
-msgstr "Buang ke _Tempat Sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3482
-msgid "Move each selected item to the Trash"
-msgstr "Pindahkan objek yang dipilih ke Tempat Sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3485
-msgid "_Delete Permanently"
-msgstr "Ha_pus Selamanya"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3486
-msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
-"Hapus objek yang dipilih, tanpa memindahkan lebih dulu ke Tempat Sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3489
-msgid "_Restore"
-msgstr "_Kembalikan"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3493
-#: /home/gotwig/translations-gen-fix/po/../src/eel-editable-label.c:3190
-msgid "Select All"
-msgstr "Pilih Semua"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3497
-msgid "_Properties"
-msgstr "_Properti"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3498
-msgid "View or modify the properties of each selected item"
-msgstr "Lihat atau ubah properti objek yang dipilih"
-
-#: /home/gotwig/translations-gen-fix/po/../src/fm-directory-view.c:3605
-msgid "Set Color:"
-msgstr "Tentukan Warna:"
-
-#: /home/gotwig/translations-gen-fix/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Metode Masukan"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Hari ini jam %-I:%M %p"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Kemarin pukul %-I:%M %p"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Hapus %d objek yang tersalin"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "Hapus '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Hapus %d object yang terduplikasi"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Hapus %d berkas kembali ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Pindahkan '%s' kembali ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Ubah nama '%s' menjadi '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Kembalikan %d ke Tempat Sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Kembalikan '%s' ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "buang %d item ke sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "buang '%s' ke sampah lagi"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Hapus taut ke %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Hapus taut ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Pulihkan izin asli dari item di folder '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Pulihkan izin asli dari '%s\""
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Kembalikan kelompok '%s' to '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Kembalikan pemilik '%s' ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Salin %d item ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Salin '%s' ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "%d item ganda di '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Gandakan '%s' di '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Pindah %d item ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Pindah '%s' ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Buat berkas baru '%s' dari palet "
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Buat berkas kosong '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Buat folder baru '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Pindah %d item ke sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Pindah '%s' ke sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Ambil '%s' dari sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Buat tautan ke %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Buat tautan ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Atur izin dari item dalam folder '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Atur izin folder '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Atur kelompok '%s' ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Atur pemilik '%s' ke '%s'"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Batal salin %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Batal gandakan %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Batal pindah %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Batal ubah-nama %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "_Batal buat berkas kosong"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "_Batal buat berkas dari palet"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Batal buat %d folder"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Batal buang %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Batal ambil %d item dari sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Batal buat tautan ke %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Batal hapus %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Batalkan perubahan rekursif izin %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Batal ubah izin %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Batal ubah kelompok dari %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Batal ubah pemilik dari %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Salin lagi %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Gandakan lagi %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Pindah lagi %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Ubah lagi nama %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "_Buat lagi berkas kosong"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "_Buat lagi berkas dari palet"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Buat lagi %d folder"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Buang lagi %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Ambil lagi %d item dari sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "Buat lagi tautan ke %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Hapus lagi %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "_Ubah lagi izin rekursif %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "_Ubah lagi izin %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Ubah lagi kelompok %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Ubah lagi pemilik %d item"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (unicode tidak benar)"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/eel-stock-dialogs.c:35
+#: /home/codygarver/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
 msgstr "Tampilkan _rinciannya"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:200
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:119
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "Butir tidak bisa dipulihkan dari tong sampah"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:200
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
 msgid "_Skip"
 msgstr "_Lewati"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:201
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "L_ewati Semua"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:202
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "_Ulangi"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:203
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "Hapus Semu_a"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:204
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "_Gantikan"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:205
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "Ganti Semu_a"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:206
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "_Digabung"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:207
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "Gabung Semu_a"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:208
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "Salin S_aja"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:294
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d detik"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:299
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:310
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:299
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d menit"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:309
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d jam"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:317
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "sekitar %'d jam"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:393
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "Tautan ke %s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:397
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "Tautan lain ke %s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:413
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "link %'d ke %s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:417
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "Tautan ke-%'d ke %s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:421
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "link %'d ke %s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:425
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "link %'d ke %s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:463
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr " (salinan)"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:465
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr " (salinan lain)"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:468
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:470
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:472
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:482
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:468
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:470
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:472
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr "salinan)"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:475
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr "salinan)"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:477
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr "salinan)"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:479
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr "salinan)"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:496
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (salinan)%s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:498
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (salinan lain)%s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:501
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:503
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:505
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:519
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:501
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:503
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:505
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (salinan ke-%'d)%s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:513
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (salinan ke-%'d)%s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:515
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (salinan ke-%'d)%s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:517
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (salinan ke-%'d)%s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:617
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:625
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1381
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Yakin akan menghapus permanen \"%B\" dari tong sampah?"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1384
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1667,55 +1314,55 @@ msgid_plural ""
 msgstr[0] ""
 "Yakin akan menghapus permanen %'d butir terpilih dari tong sampah?"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1394
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1462
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1394
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Jika dihapus, maka benar-benar hilang."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1415
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "Kosongkan Tong Sampah?"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1419
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Semua butir dalam Tong Sampah akan dihapus permanen."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1450
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Yakin akan menghapus permanen \"%B\"?"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1453
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "Anda yakin akan menghapus %'d secara permanen?"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1478
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1510
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1478
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "Menghapus berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1504
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d berkas lagi akan dihapus"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1524
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "tersisa %T"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1592
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1626
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1665
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1742
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2573
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1592
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1626
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1665
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1742
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
 msgstr "Galat sewaktu menghapus."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1596
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -1723,55 +1370,55 @@ msgstr ""
 "Berkas di dalam folder \"%B\" tidak dapat dihapus, karena Anda tidak berhak "
 "melihatnya."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1599
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2632
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3628
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1599
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2632
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "Galat sewaktu mengambil informasi berkas pada folder \"%B\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1608
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3637
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1608
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
 msgstr "_Lewatkan berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1629
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
 "Folder \"%B\" tidak dapat dihapus, karena Anda tak berhak untuk membacanya."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1632
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2671
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3673
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1632
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2671
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Galat sewaktu membaca folder \"%B\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1666
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "Tidak dapat menghapus folder %B."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1743
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "Galat sewaktu menghapus %B."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1819
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1831
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1819
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "Memindahkan berkas ke tong sampah"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1833
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d berkas lagi untuk dibuang ke tong sampah"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1888
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr "Nggak bisa buang ke sampah. Hapus selamanya?"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:1889
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1779,27 +1426,27 @@ msgstr ""
 "Berkas ini ada di media eksternal dan nggak bisa dibuang ke sampah. Sekali "
 "dihapus, hilang selamanya."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2069
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
 msgstr "Membuang Berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2071
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
 msgstr "Menghapus Berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2143
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
 msgstr "Tidak dapat mengeluarkan %V"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2145
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
 msgstr "Tidak dapat melepaskan %V"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2300
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Kosongkan tong sampah sebelum melepas kait?"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2302
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1807,61 +1454,61 @@ msgstr ""
 "Untuk memperoleh kembali ruang bebas pada volume ini, maka tempat sampah "
 "harus dikosongkan. Semua objek yang tersimpan di sana akan hilang permanen."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2308
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
 msgstr "Janga_n Kosongkan Tong Sampah"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2363
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
 msgstr "Mengosongkan tong sampah"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2430
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Tidak dapat mengaitkan %s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2508
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Bersiap menyalin %'d berkas (%S)"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2514
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Bersiap memindahkan %'d berkas (%S)"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2520
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Bersiap menghapus %'d berkas (%S)"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2526
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Bersiap memindahkan %'d berkas ke tong sampah"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2569
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3489
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3620
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3665
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2569
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3489
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3620
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
 msgstr "Galat sewaktu menyalin."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2571
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3618
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3663
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2571
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3618
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
 msgstr "Galat sewaktu memindahkan."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2575
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
 msgstr "Galat sewaktu memindahkan berkas ke tong sampah."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2629
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1869,7 +1516,7 @@ msgstr ""
 "Berkas di dalam folder \"%B\" tidak dapat ditangani, karena Anda tidak "
 "berhak melihatnya."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2668
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1877,7 +1524,7 @@ msgstr ""
 "Folder \"%B\" tidak dapat ditangani, karena Anda tidak berhak untuk "
 "membacanya."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2745
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1885,30 +1532,30 @@ msgstr ""
 "Berkas \"%B\" tidak dapat ditangani, karena Anda tidak berhak untuk "
 "membacanya."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2748
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
 msgstr "Galat sewaktu mengambil informasi tentang \"%B\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2848
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2890
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2923
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2953
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2848
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2890
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2923
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
 msgstr "Galat sewaktu menyalin ke \"%B\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2852
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
 msgstr "Anda tidak berhak untuk mengakses folder yang dituju."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2854
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
 msgstr "Galat sewaktu mengambil informasi tujuan."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2891
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
 msgstr "Yang dituju bukan sebuah folder."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2924
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1916,69 +1563,69 @@ msgstr ""
 "Media yang dituju tidak memiliki ruang yang cukup. Cobalah untuk menghapus "
 "sejumlah berkas."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2926
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Tersedia %S, tetapi diperlukan %S."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:2954
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
 msgstr "Yang dituju hanya dapat dibaca."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3015
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Memindahkan \"%B\" ke \"%B\""
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3016
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Menyalin \"%B\" ke \"%B\""
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3020
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
 msgstr "Menggandakan \"%B\""
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3024
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Memindahkan %'d berkas (di \"%B\") ke \"%B\""
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3027
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Menyalin %'d berkas (di \"%B\") ke \"%B\""
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3034
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Menggandakan %'d berkas (di \"%B\")"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3043
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Memindahkan %'d berkas ke \"%B\""
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3047
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Menyalin %'d berkas ke \"%B\""
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3052
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Menggandakan %'d berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3103
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
 msgstr "%S dari %S"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3114
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S dari %S — tersisa %T (%S/det)"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3493
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1986,11 +1633,11 @@ msgstr ""
 "Folder \"%B\" tidak dapat disalin, karena Anda tidak berhak untuk membuatnya "
 "pada lokasi yang dituju."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3496
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Galat sewaktu membuat folder \"%B\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3625
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1998,210 +1645,563 @@ msgstr ""
 "Berkas di dalam folder \"%B\" tidak dapat disalin, karena Anda tidak berhak "
 "melihatnya."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3670
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3670
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 "Folder \"%B\" tidak dapat disalin, karena Anda tidak berhak untuk membacanya."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3715
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4416
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5004
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3715
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4416
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
 msgstr "Galat sewaktu memindahkan \"%B\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3716
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
 msgstr "Folder sumber tidak dapat dihapus."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3801
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3842
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4418
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4489
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3801
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3842
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4418
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
 msgstr "Galat sewaktu menyalin \"%B\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3802
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Tidak dapat menghapus berkas dari folder %F yang sudah ada."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:3843
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Tidak dapat menghapus berkas %F yang sudah ada."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4172
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4844
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4172
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
 msgstr "Anda tidak dapat memindahkan folder ke dalam folder itu sendiri."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4173
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4845
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4173
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
 msgstr "Anda tidak dapat menyalin folder ke dalam folder itu sendiri."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4174
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4846
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4174
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
 msgstr "Folder tujuan berada di dalam folder asal."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4205
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
 msgstr "Anda tidak dapat memindahkan berkas pada berkas itu sendiri."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4206
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot copy a file over itself."
 msgstr "Anda tidak dapat menyalin berkas pada berkas itu sendiri."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4207
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4207
 msgid "The source file would be overwritten by the destination."
 msgstr "Berkas sumber akan ditimpa oleh tujuan."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4420
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 "Tidak dapat menghapus berkas yang sudah ada dengan nama yang sama dalam %F."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4490
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Galat sewaktu menyalin berkas ke %F."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4718
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
 msgstr "Menyalin Berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4744
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
 msgstr "Bersiap memindahkan ke \"%B\""
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:4756
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Bersiap memindahkan %'d berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5005
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Galat sewaktu memindahkan berkas ke %F."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5268
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
 msgstr "Memindahkan Berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5298
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
 msgstr "Membuat taut di \"%B\""
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5309
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Membuat taut menuju %'d berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5444
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
 msgstr "Galat sewaktu membuat taut menuju %B."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5446
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
 msgstr "Taut simbolik hanya didukung untuk berkas lokal"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5449
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
 msgstr "Target tidak mendukung taut simbolik."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5452
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Galat sewaktu membuat taut simbolik pada %F."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5780
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:5783
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5780
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
 msgstr "Menyetel hak akses"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6034
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
 msgstr "folder tak berjudul"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6042
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
 msgstr "berkas baru"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6213
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
 msgstr "Galat sewaktu membuat direktori %B."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6215
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
 msgstr "Galat sewaktu membuat berkas %B."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6217
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Galat sewaktu membuat direktori pada %F."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-operations.c:6534
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
 msgstr "Mengosongkan Tong Sampah"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:252
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Hapus %d objek yang tersalin"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "Hapus '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Hapus %d object yang terduplikasi"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Hapus %d berkas kembali ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Pindahkan '%s' kembali ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Ubah nama '%s' menjadi '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Kembalikan %d ke Tempat Sampah"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Kembalikan '%s' ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "buang %d item ke sampah"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "buang '%s' ke sampah lagi"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Hapus taut ke %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Hapus taut ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Pulihkan izin asli dari item di folder '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Pulihkan izin asli dari '%s\""
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Kembalikan kelompok '%s' to '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Kembalikan pemilik '%s' ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Salin %d item ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Salin '%s' ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "%d item ganda di '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Gandakan '%s' di '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Pindah %d item ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Pindah '%s' ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Buat berkas baru '%s' dari palet "
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Buat berkas kosong '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Buat folder baru '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Pindah %d item ke sampah"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Pindah '%s' ke sampah"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Ambil '%s' dari sampah"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "Buat tautan ke %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Buat tautan ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Atur izin dari item dalam folder '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Atur izin folder '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Atur kelompok '%s' ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Atur pemilik '%s' ke '%s'"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Batal salin %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Batal gandakan %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Batal pindah %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Batal ubah-nama %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "_Batal buat berkas kosong"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "_Batal buat berkas dari palet"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Batal buat %d folder"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Batal buang %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Batal ambil %d item dari sampah"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Batal buat tautan ke %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Batal hapus %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Batalkan perubahan rekursif izin %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Batal ubah izin %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Batal ubah kelompok dari %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Batal ubah pemilik dari %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Salin lagi %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Gandakan lagi %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Pindah lagi %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Ubah lagi nama %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "_Buat lagi berkas kosong"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "_Buat lagi berkas dari palet"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Buat lagi %d folder"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Buang lagi %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Ambil lagi %d item dari sampah"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "Buat lagi tautan ke %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Hapus lagi %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "_Ubah lagi izin rekursif %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "_Ubah lagi izin %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Ubah lagi kelompok %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Ubah lagi pemilik %d item"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Hari ini jam %-I:%M %p"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Kemarin pukul %-I:%M %p"
+
+#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
 #, c-format
 msgid "link to %s"
 msgstr "taut ke %s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:1702
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Gagal untuk mendapatkan berkas desktop: %s"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:1740
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1740
 msgid "No Exec field specified"
 msgstr "Kolom exec tidak disebutkan"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:1760
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1760
 msgid "No URL field specified"
 msgstr "Kolom URL tidak disebutkan"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:1766
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1766
 msgid "Invalid desktop file"
 msgstr "Bukan berkas desktop yang benar"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:2056
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2056
 msgid "Slashes are not allowed in filenames"
 msgstr "Tidak boleh ada garis miring dalam nama berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/gof-file.c:2076
+#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2076
 msgid "Toplevel files cannot be renamed"
 msgstr "Nama berkas di tingkat atas tidak dapat diubah"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-progress-info.c:192
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-progress-info.c:210
+#: /home/codygarver/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (unicode tidak benar)"
+
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
 msgstr "Bersiap"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-utilities.c:119
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-utilities.c:122
-msgid "The item cannot be restored from trash"
-msgstr "Butir tidak bisa dipulihkan dari tong sampah"
-
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:361
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Gabungkan folder \"%s\"?"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:364
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -2209,164 +2209,164 @@ msgstr ""
 "Penggabungan akan meminta konfirmasi sebelum menggantikan berkas di dalam "
 "folder yang konflik dengan berkas yang sedang disalin."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:369
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Sebuah folder dengan nama sama telah ada pada \"%s\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:373
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Sebuah folder baru dengan nama sama telah ada di \"%s\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:377
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Folder lain dengan nama sama telah ada di \"%s\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:382
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
 msgstr "Mengganti ini akan menghilangkan semua file pada folder."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:384
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Timpa map \"%s\"?"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:386
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Sebuah folder dengan nama yang sama telah ada di \"%s\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:391
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Gantikan berkas \"%s\"?"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:393
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will overwrite its content."
 msgstr "Menggantinya akan menimpa isinya."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:397
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Sebuah berkas lebih tua dengan nama sama telah ada di \"%s\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:401
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Sebuah file baru dengan nama yang sama telah berada di \"%s\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:405
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "File lain dengan nama yang sama berada di \"%s\"."
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
 msgid "Original file"
 msgstr "Berkas asli"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:482
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
 msgid "Size:"
 msgstr "Ukuran:"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:485
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
 msgid "Type:"
 msgstr "Tipe:"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:488
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
 msgid "Last modified:"
 msgstr "Terakhir diubah:"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:481
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
 msgstr "Ganti dengan"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:506
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
 msgstr "Gabungkan"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:700
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
 msgstr "_Pilih nama baru"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:714
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
 msgstr "Atur Ulang"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:726
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
 msgstr "Terapkan aksi ini untuk semua berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:742
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
 msgid "Re_name"
 msgstr "Ganti_nama"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:748
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
 msgstr "Gantikan"
 
-#: /home/gotwig/translations-gen-fix/po/../libcore/marlin-file-conflict-dialog.c:821
+#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
 msgstr "Konflik pada berkas"
 
-#: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:325
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
 msgstr "Potong teks terpilih ke papan tempel"
 
-#: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:329
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
 msgstr "Salin teks terpilih ke papan tempel"
 
-#: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:333
-#: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:337
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:333
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
 msgstr "Tempel teks dari papan tempel"
 
-#: /home/gotwig/translations-gen-fix/po/../libwidgets/LocationBar.vala:813
+#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
 msgstr "Pergi ke %s"
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:86
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:89
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../src/View/Chrome/ViewSwicher.vala:95
+#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:46
+#: /home/codygarver/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
 msgstr ""
 
-#: /home/gotwig/translations-gen-fix/po/../plugins/marlin-trash/plugin.vala:47
+#: /home/codygarver/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr ""
