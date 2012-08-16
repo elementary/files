@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-13 00:57-0500\n"
-"PO-Revision-Date: 2012-07-27 01:26+0000\n"
-"Last-Translator: Cory Moulder <cormou@gmail.com>\n"
+"PO-Revision-Date: 2012-08-15 15:48+0000\n"
+"Last-Translator: Michael Moroni <michael.moroni@mailoo.org>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-08-14 05:21+0000\n"
-"X-Generator: Launchpad (build 15791)\n"
+"X-Launchpad-Export-Date: 2012-08-16 05:11+0000\n"
+"X-Generator: Launchpad (build 15810)\n"
 "Language: eo\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
@@ -26,7 +26,7 @@ msgstr "Nomo"
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
 #: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Type"
-msgstr "Tipo"
+msgstr "Speco"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:350
@@ -42,7 +42,7 @@ msgstr "Grando"
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:322
 #: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr "Modifite"
+msgstr "Modifita"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:346
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:825
@@ -53,12 +53,12 @@ msgstr "Posedanto"
 #: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "Mesaĝujo ne ekzistas"
+msgstr "Dosierujo ne ekzistas"
 
 #: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Filo ne trovas la dosierujon %s"
 
 #: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -71,16 +71,16 @@ msgstr "Krei la dosierujon %s"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr ""
+msgstr "Agordoj de Filo"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:115
 msgid "General"
-msgstr ""
+msgstr "Ĝenerala"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
-msgstr ""
+msgstr "Etendaĵoj"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:207
 msgid "Single click to open:"
