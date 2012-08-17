@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-13 00:57-0500\n"
-"PO-Revision-Date: 2012-08-15 15:48+0000\n"
-"Last-Translator: Michael Moroni <michael.moroni@mailoo.org>\n"
+"PO-Revision-Date: 2012-08-16 06:10+0000\n"
+"Last-Translator: Arturo Torres Sánchez <r2d2.art2005@gmail.com>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-08-16 05:11+0000\n"
+"X-Launchpad-Export-Date: 2012-08-17 05:12+0000\n"
 "X-Generator: Launchpad (build 15810)\n"
 "Language: eo\n"
 
@@ -2176,7 +2176,7 @@ msgstr ""
 #: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
 #, c-format
 msgid "link to %s"
-msgstr "ligas al %s"
+msgstr "ligo al  %s"
 
 #: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
 #, c-format
