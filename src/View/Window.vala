@@ -737,7 +737,7 @@ namespace Marlin.View {
             Granite.Widgets.show_about_dialog ((Gtk.Window) this,
                 "program-name", Marlin.APP_TITLE,
                 "version", Config.VERSION,
-                "comments", Marlin.COMMENTS,
+                // "comments", Marlin.COMMENTS,
                 "copyright", Marlin.COPYRIGHT,
                 "license-type", Gtk.License.GPL_3_0,
                 "website", Marlin.LAUNCHPAD_URL,
