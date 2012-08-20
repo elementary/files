@@ -64,6 +64,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         resizable = false;
         set_default_size (220, -1);
 
+
         // Set the default containers
         Box content_area = new Box (Orientation.VERTICAL, 12);
         Box action_area = new Box (Orientation.VERTICAL, 12);
@@ -134,14 +135,16 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
             construct_preview_panel (preview_box);
             add_section (notebook, _("Preview"), PanelType.PREVIEW, preview_box);
         }
-
+        
+        set_transient_for (parent);
+        set_position (WindowPosition.CENTER_ALWAYS);
+        set_destroy_with_parent (true);
+        
         content_vbox.show();
 
         content_area.show_all();
         show_all();
-
-        set_transient_for (parent);
-        set_destroy_with_parent (true);
+        
         present ();
     }
 
