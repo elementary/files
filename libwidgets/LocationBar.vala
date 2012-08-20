@@ -123,7 +123,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         css_provider.load_from_data(".noradius-button { border-radius:0px; }", -1);
         button_context.add_provider(css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        left_padding = border.left;
+        left_padding = 5;//border.left;
         right_padding = border.right;
 
         set_can_focus(true);
