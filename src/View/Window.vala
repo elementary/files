@@ -177,12 +177,7 @@ namespace Marlin.View {
             ((Box)info_bar.get_content_area ()).add (expander);
             ((Box)info_bar.get_content_area ()).add (bbox);
             
-            show_infobar (is_marlin_mydefault_fm ());
-            
-            GLib.Timeout.add (3500, () => { 
-                show_infobar (false);
-                return false;
-            });
+            show_infobar (!is_marlin_mydefault_fm ());
             
             /* Contents */
             tabs = new Notebook();
