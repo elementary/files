@@ -194,13 +194,11 @@ namespace Marlin.View {
             main_box = new Granite.Widgets.CollapsiblePaned (Orientation.VERTICAL);
             main_box.show();
 
-            var lside_pane = new Granite.Widgets.CollapsiblePaned (Gtk.Orientation.HORIZONTAL);
-            lside_pane.get_style_context ().add_class ("sidebar-pane-separator");
+            var lside_pane = new Granite.Widgets.SidebarPaned ();
             lside_pane.show();
 
             lside_pane.pack1(sidebar, false, false);
             lside_pane.pack2(main_box, true, true);
-            lside_pane.collapse_mode = Granite.CollapseMode.LEFT;
 
             main_box.pack1(tabs, true, true);
 
@@ -221,7 +219,7 @@ namespace Marlin.View {
 
             add(window_box);
 
-            lside_pane.set_position (Preferences.settings.get_int("sidebar-width"));
+            lside_pane.position = Preferences.settings.get_int ("sidebar-width");
 
             /*set_default_size(760, 450);
             set_position(WindowPosition.CENTER);*/
