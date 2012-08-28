@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-08-14 05:22+0000\n"
-"X-Generator: Launchpad (build 15791)\n"
+"X-Launchpad-Export-Date: 2012-08-28 10:26+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
 msgid "Name"

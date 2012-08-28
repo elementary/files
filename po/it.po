@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-08-13 00:57-0500\n"
-"PO-Revision-Date: 2012-08-04 19:50+0000\n"
-"Last-Translator: Alberto <Unknown>\n"
+"PO-Revision-Date: 2012-08-24 13:22+0000\n"
+"Last-Translator: Vesnar Teach <vesnarteach@gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-08-14 05:22+0000\n"
-"X-Generator: Launchpad (build 15791)\n"
+"X-Launchpad-Export-Date: 2012-08-28 10:26+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -397,7 +397,7 @@ msgstr "Proprietà"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:123
 msgid "More"
-msgstr ""
+msgstr "Ulteriore"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:135
 msgid "Preview"
@@ -433,7 +433,7 @@ msgstr "Luogo di origine"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
 msgid "Info:"
-msgstr ""
+msgstr "Info:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:401
 msgid "Other application..."
@@ -441,15 +441,15 @@ msgstr "Altre applicazioni..."
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:425
 msgid "Open with:"
-msgstr ""
+msgstr "Apri con:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:446
 msgid "Usage:"
-msgstr ""
+msgstr "Uso:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:451
 msgid "Device usage:"
-msgstr ""
+msgstr "Uso dispositivo:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
 msgid "Read"
@@ -742,11 +742,11 @@ msgstr "Crea nuovo_file"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3456
 msgid "_Empty File"
-msgstr ""
+msgstr "File _vuoto"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3457
 msgid "Create a new empty file inside this folder"
-msgstr ""
+msgstr "Crea un nuovo file vuoto all'interno di questa cartella"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3461
 msgid "Open the selected item"

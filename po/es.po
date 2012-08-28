@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-13 00:57-0500\n"
-"PO-Revision-Date: 2012-08-06 01:16+0000\n"
-"Last-Translator: Alonso Vargas <jovar06@gmail.com>\n"
+"PO-Revision-Date: 2012-08-22 09:24+0000\n"
+"Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-08-14 05:22+0000\n"
-"X-Generator: Launchpad (build 15791)\n"
+"X-Launchpad-Export-Date: 2012-08-28 10:27+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
 "Language: es\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
@@ -26,7 +26,7 @@ msgstr "Nombre"
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
 #: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Type"
-msgstr "Formato"
+msgstr "Tipo"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:350
@@ -58,7 +58,7 @@ msgstr "La carpeta no existe"
 #: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr "No se puede encontrar el directorio %s"
+msgstr "No se puede encontrar la carpeta %s"
 
 #: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -71,7 +71,7 @@ msgstr "Crear la carpeta %s"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr "Preferencias de Files"
+msgstr "Preferencias"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:115
@@ -88,7 +88,7 @@ msgstr "Abrir con un solo clic:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
-msgstr "Selección automática con el mouse"
+msgstr "Selección automática con el ratón:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
@@ -126,7 +126,7 @@ msgstr "Sistema de archivos"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
-msgstr "Nueva ventana como Administrador"
+msgstr "Ventana como _administrador nueva"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:160
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3383
@@ -177,15 +177,15 @@ msgstr "Ay_uda"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:776
 msgid "New _Window"
-msgstr "Nueva _ventana"
+msgstr "_Ventana nueva"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:777
 msgid "Open another Files window for the displayed location"
-msgstr "Abrir una nueva ventana para esta ubicación"
+msgstr "Abrir una ventana nueva para esta ubicación"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:780
 msgid "New _Tab"
-msgstr "Nueva _Pestaña"
+msgstr "Pes_taña nueva"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:781
 msgid "Open another tab for the displayed location"
@@ -205,7 +205,7 @@ msgstr "Preferencias"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:790
 msgid "Change Files preferences"
-msgstr "Cambiar preferencias de Files"
+msgstr "Cambiar preferencias"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:795
 msgid "_Undo"
@@ -398,7 +398,7 @@ msgstr "Propiedades"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:123
 msgid "More"
-msgstr ""
+msgstr "Más"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:135
 msgid "Preview"
@@ -434,23 +434,23 @@ msgstr "Ubicación de origen"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
 msgid "Info:"
-msgstr ""
+msgstr "Información:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:401
 msgid "Other application..."
-msgstr "Otra aplicación…"
+msgstr "Otra aplicación..."
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:425
 msgid "Open with:"
-msgstr ""
+msgstr "Abrir con:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:446
 msgid "Usage:"
-msgstr ""
+msgstr "Uso:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:451
 msgid "Device usage:"
-msgstr ""
+msgstr "Uso del dispositivo:"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
 msgid "Read"
@@ -730,7 +730,7 @@ msgstr "Renombra el elemento seleccionado"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3451
 msgid "Create New _Folder"
-msgstr "Crear una _Carpeta Nueva"
+msgstr "Crear una _carpeta Nueva"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3452
 msgid "Create a new empty folder inside this folder"
@@ -738,15 +738,15 @@ msgstr "Crea una carpeta nueva vacía dentro de esta carpeta"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3454
 msgid "Create New _File"
-msgstr "Crear un _Nuevo Archivo"
+msgstr "Crear un _archivo nuevo"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3456
 msgid "_Empty File"
-msgstr ""
+msgstr "Archivo _vacío"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3457
 msgid "Create a new empty file inside this folder"
-msgstr ""
+msgstr "Crear un archivo vacío nuevo dentro de esta carpeta"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3461
 msgid "Open the selected item"
@@ -754,7 +754,7 @@ msgstr "Abrir el elemento seleccionado"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3468
 msgid "Open in new Window"
-msgstr "Abrir en una Ventana nueva"
+msgstr "Abrir en una ventana nueva"
 
 #: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3469
 msgid "Open each selected item in a new window"
@@ -977,7 +977,7 @@ msgstr "Abrir URI(s) en una pestaña nueva"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-application.c:427
 msgid "Quit Files."
-msgstr "Salir"
+msgstr "Salir."
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
@@ -2430,8 +2430,8 @@ msgstr "Ver como columna"
 
 #: /home/codygarver/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr "Estos archivos pueden ser borrados al vaciar la papelera"
+msgstr "Estos archivos pueden ser eliminados al vaciar la papelera."
 
 #: /home/codygarver/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr "Vaciar la Papelera"
+msgstr "Vaciar la papelera"

@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-08-13 00:57-0500\n"
-"PO-Revision-Date: 2012-08-17 01:10+0000\n"
-"Last-Translator: leo  <shing80333@gmail.com>\n"
+"PO-Revision-Date: 2012-08-25 13:41+0000\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-08-17 05:13+0000\n"
-"X-Generator: Launchpad (build 15810)\n"
+"X-Launchpad-Export-Date: 2012-08-28 10:27+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -87,15 +87,15 @@ msgstr "單擊滑鼠來開啟："
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "滑鼠自動選取："
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
-msgstr ""
+msgstr "<small><i>慢</i></small>"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
-msgstr ""
+msgstr "<small><i>快</i></small>"
 
 #: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
@@ -180,7 +180,7 @@ msgstr "新增視窗(_W)"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:777
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "為顯示的位置開啟另一個「檔案」視窗"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:780
 msgid "New _Tab"
@@ -397,7 +397,7 @@ msgstr "屬性"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:123
 msgid "More"
-msgstr ""
+msgstr "更多"
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:135
 msgid "Preview"
@@ -445,11 +445,11 @@ msgstr "以此開啟："
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:446
 msgid "Usage:"
-msgstr ""
+msgstr "用量："
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:451
 msgid "Device usage:"
-msgstr ""
+msgstr "裝置用量："
 
 #: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
 msgid "Read"
@@ -961,7 +961,7 @@ msgstr "在新的分頁開啟 URI"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-application.c:427
 msgid "Quit Files."
-msgstr ""
+msgstr "退出「檔案」。"
 
 #: /home/codygarver/pantheon-files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
@@ -2122,7 +2122,7 @@ msgstr "昨日%p %-I:%M"
 
 #: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%Y年%b%-d日  %a %p %-I:%M"
 
 #: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
 #, c-format
