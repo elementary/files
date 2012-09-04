@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-08-13 00:57-0500\n"
-"PO-Revision-Date: 2012-08-22 09:24+0000\n"
-"Last-Translator: Alfredo Hernández <Unknown>\n"
+"PO-Revision-Date: 2012-09-04 00:35+0000\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitoschido@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-08-28 10:27+0000\n"
-"X-Generator: Launchpad (build 15864)\n"
+"X-Launchpad-Export-Date: 2012-09-04 05:08+0000\n"
+"X-Generator: Launchpad (build 15890)\n"
 "Language: es\n"
 
 #: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
@@ -334,7 +334,7 @@ msgstr "Obtener Ayuda en Línea..."
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:875
 msgid "Translate This Application..."
-msgstr "Traducir Esta Aplicación..."
+msgstr "Traducir esta aplicación…"
 
 #: /home/codygarver/pantheon-files/po/../src/View/Window.vala:884
 msgid "Show _Hidden Files"
