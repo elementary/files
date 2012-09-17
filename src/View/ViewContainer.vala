@@ -145,7 +145,7 @@ namespace Marlin.View {
                 tab_name = aslot.directory.file.info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
 
             if (Posix.getuid() == 0)
-                tab_name += _(" (as Administrator)");
+                tab_name = " " + _("(as Administrator)");
            
             /* update window title */
             if(window.current_tab == this) {
