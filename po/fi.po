@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-08-13 00:57-0500\n"
+"POT-Creation-Date: 2012-09-17 15:03-0500\n"
 "PO-Revision-Date: 2012-08-19 10:36+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -15,527 +15,531 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-08-28 10:25+0000\n"
-"X-Generator: Launchpad (build 15864)\n"
+"X-Launchpad-Export-Date: 2012-09-18 05:32+0000\n"
+"X-Generator: Launchpad (build 15966)\n"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:337
+#: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
 msgstr "Nimi"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:338
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+#: /home/codygarver/files/po/../src/View/ContextView.vala:338
+#: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Type"
 msgstr "Tyyppi"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:341
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:350
+#: /home/codygarver/files/po/../src/View/ContextView.vala:341
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:353
 msgid "Target"
 msgstr "Kohde"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:343
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+#: /home/codygarver/files/po/../src/View/ContextView.vala:343
+#: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Size"
 msgstr "Koko"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:345
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:322
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+#: /home/codygarver/files/po/../src/View/ContextView.vala:345
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:325
+#: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Modified"
 msgstr "Muokattu"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ContextView.vala:346
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:825
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:838
+#: /home/codygarver/files/po/../src/View/ContextView.vala:346
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:828
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:841
 msgid "Owner"
 msgstr "Omistaja"
 
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "Kansiota ei ole olemassa"
 
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
 msgstr "Files-tiedostonhallinta ei löydä kansiota %s"
 
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "Luo"
 
-#: /home/codygarver/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "Luo kansio %s"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:34
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
 msgstr "Files-tiedostonhallinnan asetukset"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:47
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:115
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
 msgid "General"
 msgstr "Yleiset"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:102
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
 msgstr "Laajennukset"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:207
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:207
 msgid "Single click to open:"
 msgstr "Avaa kertanapsautuksella:"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:214
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
 msgstr "Kohteen automaattivalinta:"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:233
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
 msgstr "<small><i>Hidas</i></small>"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:235
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
 msgstr "<small><i>Nopea</i></small>"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:250
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
 msgstr "Päivämäärän muoto:"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:253
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:253
 msgid "iso"
 msgstr "iso"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:254
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:254
 msgid "locale"
 msgstr "paikka-asetukset"
 
-#: /home/codygarver/pantheon-files/po/../src/View/SettingsDialog.vala:255
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:255
 msgid "informal"
 msgstr "vapaamuotoinen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:141
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:324
+#: /home/codygarver/files/po/../src/View/ViewContainer.vala:141
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:324
 msgid "Home"
 msgstr "Koti"
 
-#: /home/codygarver/pantheon-files/po/../src/View/ViewContainer.vala:143
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:394
+#: /home/codygarver/files/po/../src/View/ViewContainer.vala:143
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:394
 msgid "File System"
 msgstr "Tiedostojärjestelmä"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:33
+#: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
+msgid "(as Administrator)"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
 msgstr "Uusi ikkuna _pääkäyttäjän oikeuksin"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:160
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3383
+#: /home/codygarver/files/po/../src/View/Window.vala:160
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3383
 msgid "Set as default"
 msgstr "Aseta oletukseksi"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:165
+#: /home/codygarver/files/po/../src/View/Window.vala:165
 msgid "Ignore"
 msgstr "Ohita"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:504
+#: /home/codygarver/files/po/../src/View/Window.vala:497
 msgid "Undo"
 msgstr "Kumoa"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:505
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:796
+#: /home/codygarver/files/po/../src/View/Window.vala:498
+#: /home/codygarver/files/po/../src/View/Window.vala:789
 msgid "Undo the last action"
 msgstr "Kumoa viimeisin toiminto"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:514
+#: /home/codygarver/files/po/../src/View/Window.vala:507
 msgid "Redo"
 msgstr "Tee uudelleen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:515
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:799
+#: /home/codygarver/files/po/../src/View/Window.vala:508
+#: /home/codygarver/files/po/../src/View/Window.vala:792
 msgid "Redo the last action"
 msgstr "Tee viimeisin toiminto uudelleen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:770
+#: /home/codygarver/files/po/../src/View/Window.vala:763
 msgid "_File"
 msgstr "_Tiedosto"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:771
+#: /home/codygarver/files/po/../src/View/Window.vala:764
 msgid "_Edit"
 msgstr "_Muokkaa"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:772
+#: /home/codygarver/files/po/../src/View/Window.vala:765
 msgid "_View"
 msgstr "_Näytä"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:773
+#: /home/codygarver/files/po/../src/View/Window.vala:766
 msgid "_Go"
 msgstr "_Siirry"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:774
+#: /home/codygarver/files/po/../src/View/Window.vala:767
 msgid "_Help"
 msgstr "_Ohje"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:776
+#: /home/codygarver/files/po/../src/View/Window.vala:769
 msgid "New _Window"
 msgstr "Uusi i_kkuna"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:777
+#: /home/codygarver/files/po/../src/View/Window.vala:770
 msgid "Open another Files window for the displayed location"
 msgstr "Avaa nykyinen sijainti uuteen ikkunaan"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:780
+#: /home/codygarver/files/po/../src/View/Window.vala:773
 msgid "New _Tab"
 msgstr "Uusi _välilehti"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:781
+#: /home/codygarver/files/po/../src/View/Window.vala:774
 msgid "Open another tab for the displayed location"
 msgstr "Avaa nykyinen sijainti toisessa välilehdessä"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:785
+#: /home/codygarver/files/po/../src/View/Window.vala:778
 msgid "_Close"
 msgstr "_Sulje"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:786
+#: /home/codygarver/files/po/../src/View/Window.vala:779
 msgid "Close this folder"
 msgstr "Sulje tämän kansio"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:789
+#: /home/codygarver/files/po/../src/View/Window.vala:782
 msgid "Preferences"
 msgstr "Asetukset"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:790
+#: /home/codygarver/files/po/../src/View/Window.vala:783
 msgid "Change Files preferences"
 msgstr "Muuta Files-tiedostonhallinnan asetuksia"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:795
+#: /home/codygarver/files/po/../src/View/Window.vala:788
 msgid "_Undo"
 msgstr "K_umoa"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:798
+#: /home/codygarver/files/po/../src/View/Window.vala:791
 msgid "_Redo"
 msgstr "_Tee uudelleen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:801
+#: /home/codygarver/files/po/../src/View/Window.vala:794
 msgid "Open _Parent"
 msgstr "Avaa _yläkansio"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:802
+#: /home/codygarver/files/po/../src/View/Window.vala:795
 msgid "Open the parent folder"
 msgstr "Avaa yläkansio"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:804
+#: /home/codygarver/files/po/../src/View/Window.vala:797
 msgid "_Back"
 msgstr "_Edellinen"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:805
+#: /home/codygarver/files/po/../src/View/Window.vala:798
 msgid "Go to the previous visited location"
 msgstr "Siirry edelliseen sijaintiin"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:808
+#: /home/codygarver/files/po/../src/View/Window.vala:801
 msgid "_Forward"
 msgstr "_Seuraava"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:809
+#: /home/codygarver/files/po/../src/View/Window.vala:802
 msgid "Go to the next visited location"
 msgstr "Siirry seuraavaan sijaintiin"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:811
+#: /home/codygarver/files/po/../src/View/Window.vala:804
 msgid "_Reload"
 msgstr "P_äivitä"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:812
+#: /home/codygarver/files/po/../src/View/Window.vala:805
 msgid "Reload the current location"
 msgstr "Päivitä sijainnin sisältö"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:815
+#: /home/codygarver/files/po/../src/View/Window.vala:808
 msgid "_Home Folder"
 msgstr "_Kotikansio"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:816
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:329
+#: /home/codygarver/files/po/../src/View/Window.vala:809
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
 msgstr "Avaa henkilökohtainen kansiosi"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:819
+#: /home/codygarver/files/po/../src/View/Window.vala:812
 msgid "_Trash"
 msgstr "_Roskakori"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:820
+#: /home/codygarver/files/po/../src/View/Window.vala:813
 msgid "Open your personal trash folder"
 msgstr "Avaa henkilökohtainen roskakorisi"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:823
+#: /home/codygarver/files/po/../src/View/Window.vala:816
 msgid "_Network"
 msgstr "_Verkko"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:824
+#: /home/codygarver/files/po/../src/View/Window.vala:817
 msgid "Browse bookmarked and local network locations"
 msgstr "Selaa kirjanmerkittyjä ja paikallisia verkkosijainteja"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:827
+#: /home/codygarver/files/po/../src/View/Window.vala:820
 msgid "Zoom _In"
 msgstr "L_ähennä"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:828
+#: /home/codygarver/files/po/../src/View/Window.vala:821
 msgid "Increase the view size"
 msgstr "Kasvata näkymän kokoa"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:839
+#: /home/codygarver/files/po/../src/View/Window.vala:832
 msgid "Zoom _Out"
 msgstr "L_oitonna"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:840
+#: /home/codygarver/files/po/../src/View/Window.vala:833
 msgid "Decrease the view size"
 msgstr "Pienennä näkymän kokoa"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:847
+#: /home/codygarver/files/po/../src/View/Window.vala:840
 msgid "Normal Si_ze"
 msgstr "_Normaalikoko"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:848
+#: /home/codygarver/files/po/../src/View/Window.vala:841
 msgid "Use the normal view size"
 msgstr "Käytä näkymän oletuskokoa"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:851
+#: /home/codygarver/files/po/../src/View/Window.vala:844
 msgid "Next Tab"
 msgstr "Seuraava välilehti"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:855
+#: /home/codygarver/files/po/../src/View/Window.vala:848
 msgid "Previous Tab"
 msgstr "Edellinen välilehti"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:859
+#: /home/codygarver/files/po/../src/View/Window.vala:852
 msgid "Connect to _Server..."
 msgstr "_Yhdistä palvelimeen…"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:860
+#: /home/codygarver/files/po/../src/View/Window.vala:853
 msgid "Connect to a remote computer or shared disk"
 msgstr "Yhdistä toiseen tietokoneeseen tai jaettuun levyyn"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:863
+#: /home/codygarver/files/po/../src/View/Window.vala:856
 msgid "_About"
 msgstr "_Tietoja"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:864
+#: /home/codygarver/files/po/../src/View/Window.vala:857
 msgid "Display credits"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:867
+#: /home/codygarver/files/po/../src/View/Window.vala:860
 msgid "Report a Problem..."
 msgstr "Ilmoita ongelmasta..."
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:868
+#: /home/codygarver/files/po/../src/View/Window.vala:861
 msgid "File a bug on Launchpad"
 msgstr "Ilmoita ongelmasta Launchpad-sivustolla"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:871
+#: /home/codygarver/files/po/../src/View/Window.vala:864
 msgid "Get Help Online..."
 msgstr "Hae apua verkosta..."
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:875
+#: /home/codygarver/files/po/../src/View/Window.vala:868
 msgid "Translate This Application..."
 msgstr "Käännä tämä sovellus..."
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:884
+#: /home/codygarver/files/po/../src/View/Window.vala:877
 msgid "Show _Hidden Files"
 msgstr "Näytä _piilotiedostot"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:885
+#: /home/codygarver/files/po/../src/View/Window.vala:878
 msgid "Toggle the display of hidden files in the current window"
 msgstr "Näyttää tai piilottaa piilotiedostot nykyisessä ikkunassa"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:890
+#: /home/codygarver/files/po/../src/View/Window.vala:883
 msgid "Show _Desktop Files"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:891
+#: /home/codygarver/files/po/../src/View/Window.vala:884
 msgid "Toggle the display of desktop files"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:895
+#: /home/codygarver/files/po/../src/View/Window.vala:888
 msgid "_Context Pane"
 msgstr "_Viitepaneeli"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:896
+#: /home/codygarver/files/po/../src/View/Window.vala:889
 msgid "Change the visibility of the context pane"
 msgstr "Näytä tai piilota viitepaneeli"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:900
+#: /home/codygarver/files/po/../src/View/Window.vala:893
 msgid "_Menubar"
 msgstr "_Valikkopalkki"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:901
+#: /home/codygarver/files/po/../src/View/Window.vala:894
 msgid "Change the visibility of this window's menubar"
 msgstr "Näytä tai piilota ikkunan valikkopalkki"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:905
+#: /home/codygarver/files/po/../src/View/Window.vala:898
 msgid "_Places"
 msgstr "_Sijainnit"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:906
+#: /home/codygarver/files/po/../src/View/Window.vala:899
 msgid "Change the visibility of this window's side pane"
 msgstr "Näytä tai piilota ikkunan sivupaneeli"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:914
+#: /home/codygarver/files/po/../src/View/Window.vala:907
 msgid "Icon"
 msgstr "Kuvake"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:917
+#: /home/codygarver/files/po/../src/View/Window.vala:910
 msgid "List"
 msgstr "Luettelo"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:920
+#: /home/codygarver/files/po/../src/View/Window.vala:913
 msgid "Compact"
 msgstr "Tiivis"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Window.vala:923
+#: /home/codygarver/files/po/../src/View/Window.vala:916
 msgid "Columns"
 msgstr "Sarakkeet"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:63
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
 msgstr "Ominaisuudet"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:123
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
 msgstr "Lisää"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:135
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
 msgid "Preview"
 msgstr "Esikatselu"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:320
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:323
 msgid "Created"
 msgstr "Luotu"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:325
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:328
 msgid "Last Access"
 msgstr "Viimeksi käytetty"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:331
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:334
 msgid "Deleted"
 msgstr "Poistettu"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:336
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:339
 msgid "MimeType"
 msgstr "MIME-tyyppi"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:344
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:347
 msgid "MimeTypes"
 msgstr "MIME-tyypit"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:348
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:351
 msgid "Location"
 msgstr "Sijainti"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:356
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
 msgid "Origin Location"
 msgstr "Alkuperäinen sijainti"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:366
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
 msgstr "Tiedot:"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:401
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
 msgstr "Muu sovellus..."
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:425
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
 msgid "Open with:"
 msgstr "Avaa sovelluksella:"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:446
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
 msgid "Usage:"
 msgstr "Käyttö:"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:451
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
 msgstr "Laitteen tilankäyttö:"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:597
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
 msgstr "Luku"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:602
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:605
 msgid "Write"
 msgstr "Kirjoitus"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:607
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:610
 msgid "Execute"
 msgstr "Suoritus"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:830
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:842
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
 msgid "Group"
 msgstr "Ryhmä"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:846
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
 msgid "Everyone"
 msgstr "Kaikki"
 
-#: /home/codygarver/pantheon-files/po/../src/View/PropertiesWindow.vala:1102
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:1105
 msgid "Select an aplication to open "
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:370
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:110
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
 msgid "Trash"
 msgstr "Roskakori"
 
-#: /home/codygarver/pantheon-files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:588
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:111
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:588
 msgid "Network"
 msgstr "Verkko"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:82
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:616
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:572
+#: /home/codygarver/files/po/../src/fm-columns-view.c:82
+#: /home/codygarver/files/po/../src/fm-list-view.c:616
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:572
 msgid "This folder is empty."
 msgstr "Kansio on tyhjä."
 
-#: /home/codygarver/pantheon-files/po/../src/fm-columns-view.c:186
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:199
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:139
+#: /home/codygarver/files/po/../src/fm-columns-view.c:186
+#: /home/codygarver/files/po/../src/fm-list-view.c:199
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:139
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "%s:n uudelleennimeäminen %s:ksi epäonnistui"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:86
+#: /home/codygarver/files/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
 msgstr "Tiivis hakemistolistaus"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-compact-view.c:87
+#: /home/codygarver/files/po/../src/fm-compact-view.c:87
 msgid "Compact view"
 msgstr "Tiivis näkymä"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
 msgstr "Julkinen FTP"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
 msgstr "FTP (sisäänkirjautumisen vaativa)"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
 msgstr "Windows-jako"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Salattu WebDAV (HTTPS)"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
 msgstr "Yhdistetään..."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -543,98 +547,98 @@ msgstr ""
 "Tuettujen yhdistämismenetelmien luetteloa ei voida ladata.\n"
 "Tarkista gvfs -asennus."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "Kansiota \"%s\" palvelimella \"%s\" ei voi avata."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "Palvelinta \"%s\" ei löydy."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
 msgstr "Yritä uudelleen"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
 msgstr "Tarkista käyttäjätietosi."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
 msgstr "Jatka"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:750
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
 msgstr "_Yhdistä"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
 msgstr "Yhdistä palvelimeen"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
 msgstr "Palvelimen tiedot"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
 msgstr "_Palvelin:"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
 msgstr "P_ortti:"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
 msgstr "_Tyyppi:"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
 msgstr "_Jako:"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
 msgstr "_Kansio:"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
 msgstr "Käyttäjän tiedot"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
 msgstr "_Toimialueen nimi:"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
 msgstr "_Käyttäjätunnus:"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
 msgstr "Sala_sana:"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
 msgstr "_Muista salasana"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
 msgstr "Toiminto peruttu"
 
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:167
+#: /home/codygarver/files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
 msgstr "Kertanapsautus"
 
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:168
+#: /home/codygarver/files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
 msgstr "Voiko näkymän kohteet valita kertanapsautuksilla"
 
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:184
+#: /home/codygarver/files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
 msgstr "Kertanapsautusviive"
 
-#: /home/codygarver/pantheon-files/po/../src/exo-tree-view.c:185
+#: /home/codygarver/files/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
@@ -642,243 +646,243 @@ msgstr ""
 "Viive, jonka jälkeen hiiren osoittimen alla oleva kohde valitaan "
 "automaattisesti kertanapsautustilassa"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1151
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1151
 msgid "Invalid filename provided by XDS drag site"
 msgstr "XDS lähteen tarjoama tiedostonimi ei kelpaa"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1309
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1309
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "Linkin luominen URL:iin \"%s\" epäonnistui"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1794
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1794
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "Käytä sovellusta ”%s” valitun kohteen avaamiseen"
 msgstr[1] "Käytä sovellusta ”%s” valittujen kohteiden avaamiseen"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1941
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1941
 #, c-format
 msgid "_Open With %s"
 msgstr "_Avaa sovelluksella %s"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1947
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3460
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2399
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1947
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3460
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2399
 msgid "_Open"
 msgstr "_Avaa"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1963
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1963
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "Avaa %'d uudessa _välilehdessä"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1967
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3472
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2407
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1967
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3472
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2407
 msgid "Open in New _Tab"
 msgstr "Avaa uudessa _välilehdessä"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1972
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1972
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "Avaa %'d uudessa _ikkunassa"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:1976
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2414
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1976
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2414
 msgid "Open in New _Window"
 msgstr "Avaa uudessa _ikkunassa"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3432
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3432
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3436
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3436
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3440
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3440
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3443
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3443
 msgid "Paste Into Folder"
 msgstr "Liitä kansioon"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3444
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3444
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3447
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3447
 msgid "_Rename..."
 msgstr "Ni_meä uudelleen..."
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3448
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3448
 msgid "Rename selected item"
 msgstr "Nimeä valittu kohde uudelleen"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3451
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3451
 msgid "Create New _Folder"
 msgstr "Luo uusi _kansio"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3452
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3452
 msgid "Create a new empty folder inside this folder"
 msgstr "Luo uusi tyhjä kansio tähän kansioon"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3454
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3454
 msgid "Create New _File"
 msgstr "Luo uusi _tiedosto"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3456
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3456
 msgid "_Empty File"
 msgstr "_Tyhjä tiedosto"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3457
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3457
 msgid "Create a new empty file inside this folder"
 msgstr "Luo uusi tyhjä tiedosto tähän kansioon"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3461
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3461
 msgid "Open the selected item"
 msgstr "Avaa valittu kohde"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3468
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3468
 msgid "Open in new Window"
 msgstr "Avaa uudessa ikkunassa"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3469
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3469
 msgid "Open each selected item in a new window"
 msgstr "Avaa jokainen valittu kohde uudessa ikkunassa"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3473
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3473
 msgid "Open each selected item in a new tab"
 msgstr "Avaa kukin valittu kohde uudessa välilehdessä"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3475
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3475
 msgid "Open Wit_h"
 msgstr "Avaa sove_lluksella"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3476
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3476
 msgid "Choose a program with which to open the selected item"
 msgstr "Valitse sovellus, jolla valittu kohde avataan"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3478
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3478
 msgid "Other _Application..."
 msgstr "Muu _sovellus…"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3479
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3479
 msgid "Choose another application with which to open the selected item"
 msgstr "Valitse toinen sovellus, jolla valittu kohde avataan"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3482
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3482
 msgid "Mo_ve to Trash"
 msgstr "_Siirrä roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3483
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3483
 msgid "Move each selected item to the Trash"
 msgstr "Siirrä jokainen valittu kohde roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3486
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3486
 msgid "_Delete Permanently"
 msgstr "P_oista pysyvästi"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3487
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3487
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "Poista jokainen valittu kohde siirtämättä roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3490
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3490
 msgid "_Restore"
 msgstr "_Palauta"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3494
-#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3190
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3494
+#: /home/codygarver/files/po/../src/eel-editable-label.c:3190
 msgid "Select All"
 msgstr "Valitse kaikki"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3498
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3498
 msgid "_Properties"
 msgstr "_Ominaisuudet"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3499
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3499
 msgid "View or modify the properties of each selected item"
 msgstr "Katsele tai muokkaa jokaisen valitun kohteen ominaisuuksia"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-directory-view.c:3606
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3606
 msgid "Set Color:"
 msgstr "Valitse Väri:"
 
-#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:887
+#: /home/codygarver/files/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
 msgstr "Asettelutapa"
 
-#: /home/codygarver/pantheon-files/po/../src/exo-icon-view.c:888
+#: /home/codygarver/files/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
 msgstr "Asettelutapa"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-clipboard-manager.c:369
+#: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
 msgstr "Leikepöydällä ei ole liitettävää"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-list-view.c:59
+#: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Filename"
 msgstr "Tiedostonimi"
 
-#: /home/codygarver/pantheon-files/po/../src/eel-editable-label.c:3201
+#: /home/codygarver/files/po/../src/eel-editable-label.c:3201
 msgid "Input Methods"
 msgstr "Syöttötavat"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:283
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
 msgstr "_Järjestä"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:288
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
 msgstr "_Käänteinen järjestys"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:289
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
 msgstr "Näytä kuvakkeet käänteisessä järjestyksessä"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:296
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
 msgstr "_Nimen mukaan"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:297
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
 msgstr "Pidä kuvakkeet riveissä nimen mukaisessa järjestyksessä"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:300
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
 msgstr "_Koon mukaan"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:301
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
 msgstr "Pidä kuvakkeet riveissä koon mukaisessa järjestyksessä"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:304
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
 msgstr "_Tyypin mukaan"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:305
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
 msgstr "Pidä kuvakkeet riveissä tyypin mukaisessa järjestyksessä"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:308
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
 msgstr "Muokkaus_päivämäärän mukaan"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-abstract-icon-view.c:309
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
 msgstr ""
 "Pidä kuvakkeet riveissä muokkauspäivämäärän mukaisessa järjestyksessä"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:445
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
 msgstr "Muokkaa työkalupalkkia"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:464
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:464
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
@@ -886,99 +890,99 @@ msgstr ""
 "Valitse työkalupalkissa näytettävät kohteet. Niitä voi järjestellä "
 "raahaamalla ja pudottamalla."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:478
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
 msgstr "Saatavilla olevat kohteet"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-toolbar-editor.c:497
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:497
 msgid "Displayed Items"
 msgstr "Näytetyt kohteet"
 
-#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:86
+#: /home/codygarver/files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/fm-icon-view.c:87
+#: /home/codygarver/files/po/../src/fm-icon-view.c:87
 msgid "Icon view"
 msgstr "Kuvakenäkymä"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:103
+#: /home/codygarver/files/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
 msgstr "_Siirrä tähän"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:108
+#: /home/codygarver/files/po/../src/marlin-dnd.c:108
 msgid "_Copy Here"
 msgstr "_Kopioi tähän"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:113
+#: /home/codygarver/files/po/../src/marlin-dnd.c:113
 msgid "_Link Here"
 msgstr "_Linkitä tähän"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:118
+#: /home/codygarver/files/po/../src/marlin-dnd.c:118
 msgid "Set as _Background"
 msgstr "Aseta _taustaksi"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:125
+#: /home/codygarver/files/po/../src/marlin-dnd.c:125
 msgid "Cancel"
 msgstr "Peru"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-dnd.c:217
+#: /home/codygarver/files/po/../src/marlin-dnd.c:217
 #, c-format
 msgid "Failed to execute file \"%s\""
 msgstr "Tiedoston \"%s\" suorittaminen epäonnistui"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
+#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:426
+#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:482
 msgid "File Operations"
 msgstr "Tiedostotoiminnot"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
+#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
 msgstr "Näytä tiedot"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
+#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:180
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
 msgstr[0] "%'d tiedostotoiminto käynnissä"
 msgstr[1] "%'d tiedostotoimintoa käynnissä"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
+#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
 msgstr "Näytä kopiointi-ikkuna"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
+#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
 msgstr "Peru kaikki meneillään olevat toiminnot"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
+#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
 msgstr "Kaikki tiedostotoiminnot suoritettu onnistuneesti"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:421
+#: /home/codygarver/files/po/../src/marlin-application.c:421
 msgid "Show the version of the program."
 msgstr "Näytä ohjelman versio."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:425
+#: /home/codygarver/files/po/../src/marlin-application.c:425
 msgid "Open uri(s) in new tab"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:427
+#: /home/codygarver/files/po/../src/marlin-application.c:427
 msgid "Quit Files."
 msgstr "Lopeta Files-tiedostonhallinta."
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:429
+#: /home/codygarver/files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:430
+#: /home/codygarver/files/po/../src/marlin-application.c:430
 msgid "[URI...]"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:439
+#: /home/codygarver/files/po/../src/marlin-application.c:439
 msgid ""
 "\n"
 "\n"
@@ -988,324 +992,324 @@ msgstr ""
 "\n"
 "Selaa tiedostojärjestelmää tiedostonhallinnasta"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-application.c:459
+#: /home/codygarver/files/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
 msgstr "--quit ei voida käyttää URI:n kanssa"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:310
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
 msgstr "Henkilökohtaiset"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:315
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
 msgstr "Yleiset sijainnit ja kirjanmerkit"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:372
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
 msgstr "Avaa roskakori"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:382
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
 msgstr "Laitteet"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:387
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
 msgstr "Paikalliset osiot ja laitteet"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:396
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
 msgstr "Näytä tiedostojärjestelmän sisältö"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:455
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:480
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:455
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:480
 #, c-format
 msgid "Mount and open %s"
 msgstr "Liitä ja avaa %s"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:593
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
 msgstr "Verkkosijainnit"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:624
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
 msgstr "Koko verkko"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:626
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
 msgstr "Selaa verkon sisältöä"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1610
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
 msgstr "_Käynnistä"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1611
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1611
 msgid "_Stop"
 msgstr "_Pysäytä"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1616
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1616
 msgid "_Power On"
 msgstr "K_ytke virta"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1617
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1617
 msgid "_Safely Remove Drive"
 msgstr "_Sammuta asema turvallisesti"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1620
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1620
 msgid "_Connect Drive"
 msgstr "Y_hdistä asema"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1621
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1621
 msgid "_Disconnect Drive"
 msgstr "K_atkaise yhteys asemaan"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1624
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
 msgstr "Käy_nnistä usean levyn asema"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1625
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1625
 msgid "_Stop Multi-disk Device"
 msgstr "Py_säytä usean levyn asema"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1629
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1629
 msgid "_Unlock Drive"
 msgstr "_Avaa aseman lukitus"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1630
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1630
 msgid "_Lock Drive"
 msgstr "_Lukitse asema"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1704
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2251
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1704
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2251
 #, c-format
 msgid "Unable to start %s"
 msgstr "Asemaa %s ei voi käynnistää"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:1994
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2023
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2052
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1994
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2023
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2052
 #, c-format
 msgid "Unable to eject %s"
 msgstr "Asemaa %s ei voi avata"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2197
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2197
 #, c-format
 msgid "Unable to poll %s for media changes"
 msgstr "Asemaa %s ei voida tarkkailla mediamuutosten varalta"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2307
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2307
 #, c-format
 msgid "Unable to stop %s"
 msgstr "Asemaa %s ei voi pysäyttää"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2423
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
 msgstr "Poista"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2432
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
 msgstr "Nimeä uudelleen…"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2444
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
 msgstr "_Liitä"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2451
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2451
 msgid "_Unmount"
 msgstr "_Irrota"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2458
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2458
 msgid "_Eject"
 msgstr "_Avaa asema"
 
-#: /home/codygarver/pantheon-files/po/../src/marlin-places-sidebar.c:2466
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1422
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2310
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2466
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2310
 msgid "Empty _Trash"
 msgstr "Tyhjennä _roskakori"
 
-#: /home/codygarver/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
+#: /home/codygarver/files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
 msgstr "Näytä _lisätietoja"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:119
+#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Kohteen ”%s” alkuperäistä sijaintia ei voitu selvittää. "
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-utilities.c:122
+#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:122
 msgid "The item cannot be restored from trash"
 msgstr "Kohdetta ei voi palauttaa roskakorista."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:200
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:200
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:737
 msgid "_Skip"
 msgstr "_Ohita"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:201
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "_Ohita kaikki"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:202
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "_Yritä uudelleen"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:203
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "Poista _Kaikki"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:204
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "_Korvaa"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:205
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "Korvaa k_aikki"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:206
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "_Yhdistä"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:207
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "Yhdistä k_aikki"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:208
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "Kopioi _silti"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:294
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d sekunti"
 msgstr[1] "%'d sekuntia"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:299
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:310
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:299
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minuutti"
 msgstr[1] "%'d minuuttia"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:309
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d tunti"
 msgstr[1] "%'d tuntia"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:317
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "arviolta %'d tunti"
 msgstr[1] "arviolta %'d tuntia"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:393
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "Linkki kohteeseen %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:397
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "Toinen linkki kohteeseen %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:413
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%d'd. linkki kohteeseen %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:417
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d. linkki kohteeseen %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:421
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d. linkki kohteeseen %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:425
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d. linkki kohteeseen %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:463
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr " (kopio)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:465
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr " (toinen kopio)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:468
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:470
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:472
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:482
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:468
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:470
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:472
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr ". kopio)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:475
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr ". kopio)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:477
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr ". kopio)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:479
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr ". kopio)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:496
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (kopio)%s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:498
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (toinen kopio) %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:501
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:503
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:505
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:519
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:501
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:503
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:505
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:513
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:515
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:517
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:617
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:625
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1381
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Haluatko varmasti poistaa pysyvästi kohteen \"%B\" roskakorista?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1384
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1318,24 +1322,24 @@ msgstr[0] ""
 msgstr[1] ""
 "Haluatko varmasti poistaa pysyvästi %'d valittua kohdetta roskakorista?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1394
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1462
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1394
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Jos poistat kohteen, se häviää pysyvästi."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1415
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "Tyhjennetäänkö kaikki kohteet roskakorista?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1419
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Kaikki roskakorin kohteet poistetaan pysyvästi."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1450
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Haluatko varmasti poistaa kohteen ”%B”?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1453
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1343,33 +1347,33 @@ msgid_plural ""
 msgstr[0] "Haluatko varmasti poistaa %'d valitun kohteen?"
 msgstr[1] "Haluatko varmasti poistaa %'d valittua kohdetta?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1478
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1510
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1478
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "Poistetaan tiedostoja"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1504
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "vielä %'d poistettava tiedosto"
 msgstr[1] "vielä %'d poistettavaa tiedostoa"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1524
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T jäljellä"
 msgstr[1] "%T jäljellä"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1592
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1626
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1665
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1742
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2573
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1592
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1626
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1665
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1742
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
 msgstr "Virhe poistaessa."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1596
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -1377,57 +1381,57 @@ msgstr ""
 "Tiedostoja kansiossa ”%B” ei voi poistaa, koska sinulla ei ole oikeutta "
 "niiden lukemiseen."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1599
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2632
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3628
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1599
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2632
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "Virhe haettaessa tietoja tiedostoista kansiossa ”%B”."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1608
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3637
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1608
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
 msgstr "_Ohita tiedostot"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1629
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
 "Kansiota ”%B” ei voi poistaa, koska sinulla ei ole oikeutta sen lukemiseen."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1632
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2671
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3673
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1632
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2671
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Virhe luettaessa kansiota ”%B”."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1666
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "Kansiota %B ei voitu poistaa."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1743
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "Virhe poistettaessa kohdetta %B."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1819
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1831
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1819
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "Siirretään tiedostoja roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1833
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "vielä %'d tiedosto siirrettävä roskakoriin"
 msgstr[1] "vielä %'d tiedostoa siirrettävä roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1888
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr ""
 "Tiedostoa ei voi siirtää roskakoriin. Poistetaanko tiedosto välittömästi?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:1889
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1435,27 +1439,27 @@ msgstr ""
 "Tämä tiedosto sijaitsee erillisellä tallennusmedialla, eikä sitä voi siirtää "
 "roskakoriin. Kun tiedosto poistetaan, sitä ei voi palauttaa."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2069
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
 msgstr "Siirretään tiedostoja roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2071
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
 msgstr "Poistetaan tiedostoja"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2143
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
 msgstr "Asemaa %V ei voi avata"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2145
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
 msgstr "Osiota %V ei voi irrottaa"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2300
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Haluatko tyhjentää roskakorin ennen irrottamista?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2302
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1463,65 +1467,65 @@ msgstr ""
 "Jotta vapaa tila laitteella oikeasti vapautuisi, sen roskakori täytyy "
 "tyhjentää. Kaikki taltion roskakorissa olevat tiedostot poistetaan pysyvästi."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2308
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
 msgstr "Älä tyhje_nnä roskakoria"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2363
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
 msgstr "Tyhjennetään roskakoria"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2430
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Kohdetta %s ei voi liittää"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2508
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Valmistellaan %'d tiedoston kopiointia (%S)"
 msgstr[1] "Valmistellaan %'d tiedoston kopiointia (%S)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2514
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Valmistellaan %'d tiedoston siirtoa (%S)"
 msgstr[1] "Valmistellaan %'d tiedoston siirtoa (%S)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2520
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Valmistellaan %'d tiedoston poistamista (%S)"
 msgstr[1] "Valmistellaan %'d tiedoston poistamista (%S)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2526
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Valmistellaan %'d tiedoston siirtämistä roskakoriin"
 msgstr[1] "Valmistellaan %'d tiedoston siirtämistä roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2569
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3489
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3620
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3665
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2569
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3489
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3620
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
 msgstr "Virhe kopioidessa."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2571
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3618
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3663
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2571
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3618
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
 msgstr "Virhe siirtäessä."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2575
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
 msgstr "Virhe siirrettäessä tiedostoja roskakoriin."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2629
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1529,44 +1533,44 @@ msgstr ""
 "Tiedostoja kansiossa ”%B” ei voi käsitellä, koska sinulla ei ole oikeutta "
 "nähdä niitä."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2668
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Kansiota ”%B” ei voi käsitellä, koska sinulla ei ole oikeutta lukea sitä."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2745
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Tiedostoa ”%B” ei voi käsitellä, koska sinulla ei ole oikeutta lukea sitä."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2748
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
 msgstr "Virhe haettaessa tietoja kohteesta ”%B”."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2848
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2890
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2923
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2953
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2848
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2890
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2923
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
 msgstr "Virhe kohteeseen ”%B” kopioinnissa."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2852
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
 msgstr "Sinulla ei ole oikeuksia avata kohdekansiota."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2854
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
 msgstr "Virhe haettaessa tietoja kohteesta."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2891
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
 msgstr "Kohde ei ole kansio."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2924
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1574,76 +1578,76 @@ msgstr ""
 "Kohteessa ei ole tarpeeksi levytilaa jäljellä. Yritä tehdä tilaa poistamalla "
 "tiedostoja."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2926
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Saatavilla on %S, mutta %S vaaditaan."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:2954
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
 msgstr "Kohdetta voi vain lukea."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3015
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Siirretään ”%B” kohteeseen ”%B”."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3016
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Kopioidaan ”%B” kohteeseen ”%B”."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3020
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
 msgstr "Kahdennetaan \"%B\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3024
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Siirretään %'d tiedosto (lähteestä ”%B”) kohteeseen ”%B”"
 msgstr[1] "Siirretään %'d tiedostoa (lähteestä ”%B”) kohteeseen ”%B”"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3027
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Kopioidaan %'d tiedosto (lähteestä ”%B”) kohteeseen ”%B”"
 msgstr[1] "Kopioidaan %'d tiedostoa (lähteestä ”%B”) kohteeseen ”%B”"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3034
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Kahdennetaan %'d tiedosto (lähteestä ”%B”)"
 msgstr[1] "Kahdennetaan %'d tiedostoa (lähteestä ”%B”)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3043
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Siirretään %'d tiedosto kohteeseen ”%B”"
 msgstr[1] "Siirretään %'d tiedostoa kohteeseen ”%B”"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3047
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Kopioidaan %'d tiedosto kohteeseen ”%B”"
 msgstr[1] "Kopioidaan %'d tiedostoa kohteeseen ”%B”"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3052
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Kahdennetaan %'d tiedosto"
 msgstr[1] "Kahdennetaan %'d tiedostoa"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3103
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
 msgstr "%S / %S"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3114
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S / %S - %T jäljellä (%S/s)"
 msgstr[1] "%S / %S - %T jäljellä (%S/s)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3493
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1651,11 +1655,11 @@ msgstr ""
 "Kansiota ”%B” ei voida kopioida, koska sinulla ei ole oikeutta luoda sitä "
 "kohteeseen."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3496
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Virhe luotaessa kansiota ”%B”."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3625
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1663,591 +1667,591 @@ msgstr ""
 "Tiedostoja kansiossa ”%B” ei voi kopioida, koska sinulla ei ole oikeutta "
 "nähdä niitä."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3670
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3670
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 "Kansiota ”%B” ei voi kopioida, koska sinulla ei ole oikeutta sen lukemiseen."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3715
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4416
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5004
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3715
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4416
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
 msgstr "Virhe siirettäessä ”%B”."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3716
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
 msgstr "Lähdekansiota ei voitu poistaa."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3801
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3842
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4418
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4489
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3801
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3842
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4418
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
 msgstr "Virhe kopioitaessa ”%B”."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3802
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Tiedostoja ei voitu poistaa jo olemassa olevasta kansiosta %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:3843
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Ei voitu poistaa jo olemassa olevaa tiedostoa %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4172
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4844
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4172
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
 msgstr "Et voi siirtää kansiota itseensä."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4173
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4845
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4173
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
 msgstr "Et voi kopioida kansiota itseensä."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4174
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4846
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4174
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
 msgstr "Kohdekansio on lähdekansion sisällä."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4205
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
 msgstr "Et voi siirtää tiedostoa itseensä."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4206
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot copy a file over itself."
 msgstr "Et voi kopioida tiedostoa itseensä."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4207
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4207
 msgid "The source file would be overwritten by the destination."
 msgstr "Kohde kirjoittaisi lähdetiedoston päälle."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4420
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "Aiempaa samannimistä tiedostoa kohteessa %F ei voitu poistaa."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4490
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Virhe kopioitaessa tiedostoja kohteeseen %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4718
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
 msgstr "Kopioidaan tiedostoja"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4744
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
 msgstr "Valmistellaan siirtoa kohteeseen \"%B\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:4756
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Valmistellaan %'d tiedoston siirtoa"
 msgstr[1] "Valmistellaan %'d tiedoston siirtoa"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5005
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Tapahtui virhe siirrettäessä tiedostoa kohteeseen %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5268
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
 msgstr "Siirretään tiedostoja"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5298
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
 msgstr "Luodaan linkkejä kohteeseen ”%B”"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5309
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Luodaan linkki %'d tiedostoon"
 msgstr[1] "Luodaan linkki %'d tiedostoon"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5444
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
 msgstr "Virhe luotaessa linkkiä kohteeseen %B."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5446
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
 msgstr ""
 "Symbolisia linkkejä voi käyttää vain paikallisten tiedostojen kanssa."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5449
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
 msgstr "Kohde ei tue symbolisia linkkejä."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5452
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Virhe luotaessa symbolista linkkiä kohteeseen %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5780
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:5783
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5780
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
 msgstr "Asetetaan oikeuksia"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6034
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
 msgstr "nimetön kansio"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6042
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
 msgstr "uusi tiedosto"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6213
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
 msgstr "Virhe luotaessa kansiota %B."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6215
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
 msgstr "Virhe luotaessa tiedostoa %B."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6217
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Virhe luotaessa kansiota kohteeseen %F."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-operations.c:6534
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
 msgstr "Tyhjennetään roskakoria"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
 msgstr "Poista %d kopioitua kohdetta"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
 msgstr "Poista \"%s\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "Poista %d kohdennettua kohdetta"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "Siirrä \"%s\" takaisin sijaintiin \"%s\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "Nimeä \"%s\" muotoon \"%s\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "Palauta %d kohdetta roskakorista"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "Palauta \"%s\" sijaintiin \"%s\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "Siirrä %d kohdetta takaisin roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "Siirrä \"%s\" takaisin roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "Poista linkki kohteeseen \"%s\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "Palauta kohteen \"%s\" alkuperäiset käyttöoikeudet"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "Siirrä \"%s\" sijaintiin \"%s\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "Luo uusi tiedosto ”%s” asiakirjamallista "
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "Luo tyhjä tiedosto \"%s\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "Luo uusi kansio \"%s\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
 msgstr "Siirrä %d kohdetta roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "Siirrä \"%s\" roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "Palauta \"%s\" roskakorista"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
 msgstr "Luo linkki kohteeseen \"%s\""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "_Kumoa %d kohteen kopiointi"
 msgstr[1] "_Kumoa %d kohteen kopiointi"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "_Kumoa %d kohteen siirto"
 msgstr[1] "_Kumoa %d kohteen siirto"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
 msgstr "_Kumoa tyhjän tiedoston luonti"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "_Kumoa %d kansion luonti"
 msgstr[1] "_Kumoa %d kansion luonti"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "_Kumoa %d kohteen siirto roskakoriin"
 msgstr[1] "_Kumoa %d kohteen siirto roskakoriin"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] "_Kumoa %d kohteen palautus roskakorista"
 msgstr[1] "_Kumoa %d kohteen palautus roskakorista"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "_Kumoa %d kohteen poisto"
 msgstr[1] "_Kumoa %d kohteen poisto"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
+#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:81
+#: /home/codygarver/files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
 msgstr "Tänään %H:%M"
 
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:85
+#: /home/codygarver/files/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
 msgstr "Eilen %H:%M"
 
-#: /home/codygarver/pantheon-files/po/../libcore/eel-fcts.c:89
+#: /home/codygarver/files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
 msgstr ""
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:252
+#: /home/codygarver/files/po/../libcore/gof-file.c:252
 #, c-format
 msgid "link to %s"
 msgstr "linkki kohteeseen %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1702
+#: /home/codygarver/files/po/../libcore/gof-file.c:1702
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Desktop-tiedoston jäsennys epäonnistui: %s"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1740
+#: /home/codygarver/files/po/../libcore/gof-file.c:1740
 msgid "No Exec field specified"
 msgstr "Exec-kenttää ei ole määritetty"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1760
+#: /home/codygarver/files/po/../libcore/gof-file.c:1760
 msgid "No URL field specified"
 msgstr "URL-kenttää ei ole määritetty"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:1766
+#: /home/codygarver/files/po/../libcore/gof-file.c:1766
 msgid "Invalid desktop file"
 msgstr "Virheellinen desktop-tiedosto"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2056
+#: /home/codygarver/files/po/../libcore/gof-file.c:2056
 msgid "Slashes are not allowed in filenames"
 msgstr "Kauttaviivat eivät ole sallittuja tiedostonimissä"
 
-#: /home/codygarver/pantheon-files/po/../libcore/gof-file.c:2076
+#: /home/codygarver/files/po/../libcore/gof-file.c:2076
 msgid "Toplevel files cannot be renamed"
 msgstr "Päätason tiedostoja ei voi nimetä uudestaan"
 
-#: /home/codygarver/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
+#: /home/codygarver/files/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
 msgstr " (virheellistä Unicodea)"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-progress-info.c:210
+#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:192
+#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
 msgstr "Valmistellaan"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Yhdistetäänkö kansio \"%s\"?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:364
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -2255,164 +2259,164 @@ msgstr ""
 "Yhdistäessä kysytään varmistusta, ennen kuin mitään kyseisen kansion "
 "tiedostoja korvataan kopioitavilla tiedostoilla."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Vanhempi kansio samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Uudempi kansio samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Toinen kansio samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
 msgstr "Sen korvaaminen poistaa kaikki kansiossa olevat tiedostot."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Korvataanko kansio \"%s\"?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Kansio samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Korvataanko tiedosto \"%s\"?"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will overwrite its content."
 msgstr "Sen korvaaminen ylikirjoittaa sisällön."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Vanhempi tiedosto samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Uudempi tiedosto samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Toinen tiedosto samalla nimellä on jo olemassa kansiossa \"%s\"."
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:460
 msgid "Original file"
 msgstr "Alkuperäinen tiedosto"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:482
 msgid "Size:"
 msgstr "Koko:"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:485
 msgid "Type:"
 msgstr "Tyyppi:"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:488
 msgid "Last modified:"
 msgstr "Viimeksi muokattu:"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
 msgstr "Korvaa"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
 msgstr "Yhdistä"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
 msgstr "_Valitse määränpäälle uusi nimi"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
 msgstr "Nollaa"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
 msgstr "Käytä samaa toimintoa kaikille tiedostoille"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:742
 msgid "Re_name"
 msgstr "_Nimeä uudelleen"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
 msgstr "Korvaa"
 
-#: /home/codygarver/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
 msgstr "Tiedostoristiriita"
 
-#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:325
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
 msgstr "Leikkaa valittu teksti leikepöydälle"
 
-#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:329
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
 msgstr "Kopioi valittu teksti leikepöydälle"
 
-#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:333
-#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:337
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:333
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
 msgstr "Liitä leikepöydän sisältämä teksti"
 
-#: /home/codygarver/pantheon-files/po/../libwidgets/LocationBar.vala:813
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
 msgstr "Siirry kohteeseen %s"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
+#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
 msgstr "Näytä ruudukkona"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
+#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
 msgstr "Näytä luettelona"
 
-#: /home/codygarver/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
+#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr "Näytä sarakkeina"
 
-#: /home/codygarver/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
+#: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
 msgstr "Nämä kohteet voi poistaa tyhjentämällä roskakorin."
 
-#: /home/codygarver/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
+#: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Tyhjennä roskakori"
