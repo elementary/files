@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-17 15:03-0500\n"
-"PO-Revision-Date: 2012-08-19 10:36+0000\n"
+"PO-Revision-Date: 2012-09-18 11:18+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-09-18 05:32+0000\n"
+"X-Launchpad-Export-Date: 2012-09-19 05:08+0000\n"
 "X-Generator: Launchpad (build 15966)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -125,7 +125,7 @@ msgstr "Tiedostojärjestelmä"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(ylläpitäjänä)"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
@@ -349,11 +349,11 @@ msgstr "Näyttää tai piilottaa piilotiedostot nykyisessä ikkunassa"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:883
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "Näytä ty_öpöytätiedostot"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:884
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "Näytä/piilota työpöytätiedostot"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:888
 msgid "_Context Pane"
@@ -1279,22 +1279,22 @@ msgstr "%s (toinen kopio) %s"
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'d. kopio)%s"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'d. kopio)%s"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'d. kopio)%s"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'d. kopio)%s"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
@@ -1903,7 +1903,7 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Palauta kohteen \"%s\" omistajaksi \"%s\""
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
@@ -1913,7 +1913,7 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Kopioi \"%s\" sijaintiin \"%s\""
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
@@ -1983,7 +1983,7 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Aseta kohteen \"%s\" oikeudet"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
