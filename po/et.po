@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-17 15:03-0500\n"
-"PO-Revision-Date: 2012-09-02 11:47+0000\n"
-"Last-Translator: Tauno Erik <sedumacre@gmail.com>\n"
+"PO-Revision-Date: 2012-09-19 21:21+0000\n"
+"Last-Translator: Kristjan Vool <Unknown>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-09-18 05:32+0000\n"
-"X-Generator: Launchpad (build 15966)\n"
+"X-Launchpad-Export-Date: 2012-09-20 05:01+0000\n"
+"X-Generator: Launchpad (build 15985)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -41,7 +41,7 @@ msgstr "Suurus"
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:325
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr "Muudetud"
+msgstr "Muutmisaeg"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:346
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:828
@@ -70,12 +70,12 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr ""
+msgstr "Files'i eelistused"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
 msgid "General"
-msgstr ""
+msgstr "Üldine"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
@@ -83,7 +83,7 @@ msgstr "Laiendused"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:207
 msgid "Single click to open:"
-msgstr ""
+msgstr "Kausta avamine ühe hiire klõpsuga:"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
@@ -91,11 +91,11 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
-msgstr ""
+msgstr "<small><i>Aeglane</i></small>"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
-msgstr ""
+msgstr "<small><i>Kiire</i></small>"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
@@ -103,25 +103,25 @@ msgstr "Kuupäeva vorming:"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:253
 msgid "iso"
-msgstr ""
+msgstr "ISO"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:254
 msgid "locale"
-msgstr ""
+msgstr "Kohalik"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:255
 msgid "informal"
-msgstr ""
+msgstr "Mitteametlik"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:141
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:324
 msgid "Home"
-msgstr ""
+msgstr "Kodu"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:143
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:394
 msgid "File System"
-msgstr ""
+msgstr "Failisüsteem"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
 msgid "(as Administrator)"
@@ -134,7 +134,7 @@ msgstr ""
 #: /home/codygarver/files/po/../src/View/Window.vala:160
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3383
 msgid "Set as default"
-msgstr ""
+msgstr "Määra vaikimisi"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:165
 msgid "Ignore"
@@ -142,41 +142,41 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:497
 msgid "Undo"
-msgstr ""
+msgstr "Ennista"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:498
 #: /home/codygarver/files/po/../src/View/Window.vala:789
 msgid "Undo the last action"
-msgstr ""
+msgstr "Viimase tegevuse ennistamine"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:507
 msgid "Redo"
-msgstr ""
+msgstr "Taasta"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:508
 #: /home/codygarver/files/po/../src/View/Window.vala:792
 msgid "Redo the last action"
-msgstr ""
+msgstr "Ennistatud tegevuse taastamine"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:763
 msgid "_File"
-msgstr ""
+msgstr "_Fail"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:764
 msgid "_Edit"
-msgstr ""
+msgstr "_Redigeerimine"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:765
 msgid "_View"
-msgstr ""
+msgstr "_Vaade"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:766
 msgid "_Go"
-msgstr ""
+msgstr "_Mine"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:767
 msgid "_Help"
-msgstr ""
+msgstr "_Abi"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:769
 msgid "New _Window"
@@ -196,7 +196,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:778
 msgid "_Close"
-msgstr ""
+msgstr "_Välju"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:779
 msgid "Close this folder"
@@ -204,23 +204,23 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:782
 msgid "Preferences"
-msgstr ""
+msgstr "Eelistused"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:783
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Files'i eelistuste muutmine"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:788
 msgid "_Undo"
-msgstr ""
+msgstr "_Ennista"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:791
 msgid "_Redo"
-msgstr ""
+msgstr "_Taasta"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:794
 msgid "Open _Parent"
-msgstr ""
+msgstr "Ava _pealmine kaust"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:795
 msgid "Open the parent folder"
@@ -228,23 +228,23 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:797
 msgid "_Back"
-msgstr ""
+msgstr "_Tagasi"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:798
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Eelmise külastatud koha avamine"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:801
 msgid "_Forward"
-msgstr ""
+msgstr "_Edasi"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:802
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Järgmise külastatud koha avamine"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:804
 msgid "_Reload"
-msgstr ""
+msgstr "_Lae uuesti"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:805
 msgid "Reload the current location"
@@ -252,7 +252,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:808
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Kodukaust"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:809
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:329
@@ -269,7 +269,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:816
 msgid "_Network"
-msgstr ""
+msgstr "_Võrk"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:817
 msgid "Browse bookmarked and local network locations"
@@ -277,7 +277,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:820
 msgid "Zoom _In"
-msgstr ""
+msgstr "_Suurenda"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:821
 msgid "Increase the view size"
@@ -285,7 +285,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:832
 msgid "Zoom _Out"
-msgstr ""
+msgstr "_Vähenda"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:833
 msgid "Decrease the view size"
@@ -293,7 +293,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:840
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "_Normaalsuurus"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:841
 msgid "Use the normal view size"
@@ -309,7 +309,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:852
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "Ühendu _serveriga..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:853
 msgid "Connect to a remote computer or shared disk"
@@ -317,7 +317,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:856
 msgid "_About"
-msgstr ""
+msgstr "_Programmist"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:857
 msgid "Display credits"
@@ -325,7 +325,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:860
 msgid "Report a Problem..."
-msgstr ""
+msgstr "Teata probleemist..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:861
 msgid "File a bug on Launchpad"
@@ -333,15 +333,15 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:864
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Otsi abi Internetist..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:868
 msgid "Translate This Application..."
-msgstr ""
+msgstr "Aita seda rakendust tõlkida..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:877
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Näita _peidetud faile"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:878
 msgid "Toggle the display of hidden files in the current window"
@@ -349,7 +349,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:883
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "Näita _töölaua faile"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:884
 msgid "Toggle the display of desktop files"
@@ -365,7 +365,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:893
 msgid "_Menubar"
-msgstr ""
+msgstr "_Menüüriba"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:894
 msgid "Change the visibility of this window's menubar"
@@ -373,7 +373,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:898
 msgid "_Places"
-msgstr ""
+msgstr "_Külgpaneel"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:899
 msgid "Change the visibility of this window's side pane"
@@ -381,31 +381,31 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:907
 msgid "Icon"
-msgstr ""
+msgstr "Ikoonidena"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:910
 msgid "List"
-msgstr ""
+msgstr "Loendina"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:913
 msgid "Compact"
-msgstr ""
+msgstr "Kompaktselt"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:916
 msgid "Columns"
-msgstr ""
+msgstr "Veergudena"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
-msgstr ""
+msgstr "Omadused"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
-msgstr ""
+msgstr "Õigused"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
 msgid "Preview"
-msgstr ""
+msgstr "Eelvaade"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:323
 msgid "Created"
@@ -413,7 +413,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:328
 msgid "Last Access"
-msgstr ""
+msgstr "Viimatine kasutamine"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:334
 msgid "Deleted"
@@ -421,7 +421,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:339
 msgid "MimeType"
-msgstr ""
+msgstr "Tüüp"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:347
 msgid "MimeTypes"
@@ -429,7 +429,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:351
 msgid "Location"
-msgstr ""
+msgstr "Asukoht"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
 msgid "Origin Location"
@@ -437,7 +437,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
-msgstr ""
+msgstr "Teave:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
@@ -445,32 +445,32 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
 msgid "Open with:"
-msgstr ""
+msgstr "Ava rakendusega:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
 msgid "Usage:"
-msgstr ""
+msgstr "Kasutus:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
-msgstr ""
+msgstr "Seadme kasutus:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
-msgstr ""
+msgstr "Lugemine"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:605
 msgid "Write"
-msgstr ""
+msgstr "Muutmine"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:610
 msgid "Execute"
-msgstr ""
+msgstr "Käivitamine"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
 msgid "Group"
-msgstr ""
+msgstr "Grupp"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
 msgid "Everyone"
@@ -483,18 +483,18 @@ msgstr ""
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:110
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
 msgid "Trash"
-msgstr ""
+msgstr "Prügi"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:111
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:588
 msgid "Network"
-msgstr ""
+msgstr "Võrk"
 
 #: /home/codygarver/files/po/../src/fm-columns-view.c:82
 #: /home/codygarver/files/po/../src/fm-list-view.c:616
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:572
 msgid "This folder is empty."
-msgstr ""
+msgstr "Kaust ei sisalda faile."
 
 #: /home/codygarver/files/po/../src/fm-columns-view.c:186
 #: /home/codygarver/files/po/../src/fm-list-view.c:199
@@ -517,23 +517,23 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "Avalik FTP"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (sisselogimisega)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "Windowsi jagatud asukoht"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Turvaline WebDAV (HTTPS)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
@@ -544,6 +544,8 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Toetatud serverimeetodite nimekirja pole võimalik laadida.\n"
+"Palun kontrolli enda gvfs-i paigaldust."
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
@@ -553,7 +555,7 @@ msgstr ""
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "Serverit asukohas \"%s\" ei leitud."
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
@@ -574,19 +576,19 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr ""
+msgstr "Ühendu serveriga"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr ""
+msgstr "Serveri üksikasjad"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
-msgstr ""
+msgstr "_Server:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
-msgstr ""
+msgstr "_Port:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
@@ -598,19 +600,19 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
-msgstr ""
+msgstr "_Asukoht:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
-msgstr ""
+msgstr "Kasutaja üksikasjad"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
-msgstr ""
+msgstr "_Domeeni nimi:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
-msgstr ""
+msgstr "_Kasutaja nimi:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
@@ -618,7 +620,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
-msgstr ""
+msgstr "Seda _parooli peetakse meeles"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
@@ -661,34 +663,34 @@ msgstr[1] ""
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1941
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Ava rakendusegaa %s"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1947
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3460
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2399
 msgid "_Open"
-msgstr ""
+msgstr "_Ava"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1963
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Ava %'d uues _kaardis"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1967
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3472
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2407
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Ava uues _kaardis"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1972
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Ava %'d uues _aknas"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1976
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2414
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Ava uues _aknas"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3432
 msgid "Prepare the selected files to be moved with a Paste command"
@@ -714,7 +716,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3447
 msgid "_Rename..."
-msgstr ""
+msgstr "Muuda _nime..."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3448
 msgid "Rename selected item"
@@ -722,7 +724,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3451
 msgid "Create New _Folder"
-msgstr ""
+msgstr "Loo uus _kaust"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3452
 msgid "Create a new empty folder inside this folder"
@@ -730,7 +732,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3454
 msgid "Create New _File"
-msgstr ""
+msgstr "Loo us _fail"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3456
 msgid "_Empty File"
@@ -766,7 +768,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3478
 msgid "Other _Application..."
-msgstr ""
+msgstr "_Muu rakendus..."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3479
 msgid "Choose another application with which to open the selected item"
@@ -782,7 +784,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3486
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "Kustuta _jäädavalt"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3487
 msgid "Delete each selected item, without moving to the Trash"
@@ -795,11 +797,11 @@ msgstr ""
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3494
 #: /home/codygarver/files/po/../src/eel-editable-label.c:3190
 msgid "Select All"
-msgstr ""
+msgstr "Vali kõik"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3498
 msgid "_Properties"
-msgstr ""
+msgstr "_Omadused"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3499
 msgid "View or modify the properties of each selected item"
@@ -831,11 +833,11 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "_Korrasta"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "Vastupidises _järjestus"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
@@ -843,7 +845,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "_Nime järgi"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
@@ -851,7 +853,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "_Suuruse järgi"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
@@ -859,7 +861,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "_Tüübi järgi"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
@@ -867,7 +869,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "_Muutmisaja järgi"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
@@ -913,7 +915,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/marlin-dnd.c:118
 msgid "Set as _Background"
-msgstr ""
+msgstr "Määra _taustapildiks"
 
 #: /home/codygarver/files/po/../src/marlin-dnd.c:125
 msgid "Cancel"
@@ -933,7 +935,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
-msgstr ""
+msgstr "Näita üksikasju"
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:158
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:180
@@ -981,6 +983,9 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"Failisüsteemi sirvimine failihalduriga"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
@@ -988,45 +993,45 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
-msgstr ""
+msgstr "Isiklik"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "Üldised kaustad ja lemmikud"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
-msgstr ""
+msgstr "Ava prügikast"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
-msgstr ""
+msgstr "Kettad"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "Kohalikud partitsioonid ja seadmed."
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "Failisüsteemi kausta avamine"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:455
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:480
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "Haagi ja ava %s"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
-msgstr ""
+msgstr "Võrgus olevad asukohad"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
-msgstr ""
+msgstr "Kogu võrk"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Võrgus olevate ressursside sirvimine"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
@@ -1097,7 +1102,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
-msgstr ""
+msgstr "Muuda nime..."
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
@@ -1119,7 +1124,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr ""
+msgstr "_Näita üksikasjalisemalt"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
@@ -1766,7 +1771,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
-msgstr ""
+msgstr "Nimetu kaust"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
@@ -1866,7 +1871,7 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "'%s' grupi taastamine kohta '%s'"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
@@ -1956,7 +1961,7 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "'%s' grupi määramine asukohta '%s'"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
@@ -1967,199 +1972,199 @@ msgstr ""
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili kopeerimine"
+msgstr[1] "_Ennista %d faili kopeerimine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili paljundamine"
+msgstr[1] "_Ennista %d faili paljundamine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili liigutamine"
+msgstr[1] "_Ennista %d faili liigutamine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili ümbernimetamine"
+msgstr[1] "_Ennista %d faili ümbernimetamine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_Ennista faili loomine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Ennista faili loomine mallist"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d kausta loomine"
+msgstr[1] "_Ennista %d kausta loomine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili prügikasti tõstmine"
+msgstr[1] "_Ennista %d faili prügikasti tõstmine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili prügikastist taastamine"
+msgstr[1] "_Ennista %d faili prügikastist taastamine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili otsetee loomine"
+msgstr[1] "_Ennista %d faili otsetee loomine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili kustutamine"
+msgstr[1] "_Ennista %d faili kustutamine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili piirangute rekursiivne muutmine"
+msgstr[1] "_Ennista %d faili piirangute rekursiivne muutmine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili piirangute muutmine"
+msgstr[1] "_Ennista %d faili piirangute muutmine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili rühma muutmine"
+msgstr[1] "_Ennista %d faili rühma muutmine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Ennista %d faili omaniku muutmine"
+msgstr[1] "_Ennista %d faili omaniku muutmine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili kopeerimine"
+msgstr[1] "_Taasta %d faili kopeerimine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili paljundamine"
+msgstr[1] "_Taasta %d faili paljundamine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili liigutamine"
+msgstr[1] "_Taasta %d faili liigutamine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili ümbernimetamine"
+msgstr[1] "_Taasta %d faili ümbernimetamine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Taasta faili loomine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_Taasta faili loomine mallist"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d kausta loomine"
+msgstr[1] "_Taasta %d kausta loomine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili tõstmine prügikasti"
+msgstr[1] "_Taasta %d faili tõstmine prügikasti"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili taastamine prügikastist"
+msgstr[1] "_Taasta %d faili taastamine prügikastist"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili otsetee loomine"
+msgstr[1] "_Taasta %d faili otsetee loomine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili kustutamine"
+msgstr[1] "_Taasta %d faili kustutamine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili õiguste muutmine"
+msgstr[1] "_Taasta %d faili õiguste muutmine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili  õiguste muutmine"
+msgstr[1] "_Taasta %d faili  õiguste muutmine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili  rühma muutmine"
+msgstr[1] "_Taasta %d faili  rühma muutmine"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Taasta %d faili omaniku muutmine"
+msgstr[1] "_Taasta %d faili omaniku muutmine"
 
 #: /home/codygarver/files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
@@ -2365,24 +2370,24 @@ msgstr ""
 #: /home/codygarver/files/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "Mine %s"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr ""
+msgstr "Ikoonidena"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "Loendina"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
+msgstr "Veergudena"
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Järgnevad failid kustutatakse prügikasti tühjendamisel."
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Tühjenda prügikast"

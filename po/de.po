@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-17 15:03-0500\n"
-"PO-Revision-Date: 2012-09-03 07:27+0000\n"
-"Last-Translator: Marijo Mustac <Unknown>\n"
+"PO-Revision-Date: 2012-09-19 06:00+0000\n"
+"Last-Translator: Eduard Gotwig <eduardgotwig@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-09-18 05:32+0000\n"
-"X-Generator: Launchpad (build 15966)\n"
+"X-Launchpad-Export-Date: 2012-09-20 05:01+0000\n"
+"X-Generator: Launchpad (build 15985)\n"
 "Language: de\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -126,7 +126,7 @@ msgstr "Dateisystem"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(als Administrator)"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
