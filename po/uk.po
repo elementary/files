@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-09-17 15:03-0500\n"
-"PO-Revision-Date: 2012-09-05 08:08+0000\n"
+"PO-Revision-Date: 2012-09-20 09:19+0000\n"
 "Last-Translator: Sergey Koptev <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-09-18 05:33+0000\n"
-"X-Generator: Launchpad (build 15966)\n"
+"X-Launchpad-Export-Date: 2012-09-21 04:59+0000\n"
+"X-Generator: Launchpad (build 15985)\n"
 "Language: uk\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -89,7 +89,7 @@ msgstr "Відкриття одним кліком:"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Атовибір мишкою:"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
@@ -127,7 +127,7 @@ msgstr "Файлова Система"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(як Адміністратор)"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
