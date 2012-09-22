@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-17 15:03-0500\n"
-"PO-Revision-Date: 2012-09-20 13:17+0000\n"
-"Last-Translator: Ebubekir KARUL <Unknown>\n"
+"PO-Revision-Date: 2012-09-21 11:40+0000\n"
+"Last-Translator: Ferhat TUNÇTAN <ferhattnctn66@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-09-21 04:59+0000\n"
+"X-Launchpad-Export-Date: 2012-09-22 05:25+0000\n"
 "X-Generator: Launchpad (build 15985)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -1268,7 +1268,7 @@ msgstr "%s (kopya)%s"
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (başka kopya)%s"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:501
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:503
@@ -1420,7 +1420,7 @@ msgstr[0] "%'d dosya çöpe gönderilmeyi bekliyor"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "Dosya çöpe taşınamıyor. Doğrudan silinsin mi?"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
@@ -1968,7 +1968,7 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Sahibini belirle: '%s' > '%s'"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
