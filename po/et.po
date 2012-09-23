@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-17 15:03-0500\n"
-"PO-Revision-Date: 2012-09-21 22:57+0000\n"
+"PO-Revision-Date: 2012-09-22 14:10+0000\n"
 "Last-Translator: Kristjan Vool <Unknown>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-09-22 05:25+0000\n"
+"X-Launchpad-Export-Date: 2012-09-23 04:59+0000\n"
 "X-Generator: Launchpad (build 15985)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -232,7 +232,7 @@ msgstr "_Tagasi"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:798
 msgid "Go to the previous visited location"
-msgstr "Ava eelnevalt külastatud kaust"
+msgstr "Ava eelnevalt avatud kaust"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:801
 msgid "_Forward"
@@ -240,7 +240,7 @@ msgstr "_Edasi"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:802
 msgid "Go to the next visited location"
-msgstr "Ava järgnevalt külastatud kaust"
+msgstr "Ava järgnevalt avatud kaust"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:804
 msgid "_Reload"
@@ -273,7 +273,7 @@ msgstr "_Võrk"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:817
 msgid "Browse bookmarked and local network locations"
-msgstr "Kohalike ja lemmik võrgukohtade sirvimine"
+msgstr "Kohalike- ja lemmikvõrgukohtade sirvimine"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:820
 msgid "Zoom _In"
@@ -1251,19 +1251,19 @@ msgstr " (veel üks koopia)"
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:472
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
-msgstr ". koopia)"
+msgstr "koopia)"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
-msgstr ". koopia)"
+msgstr "koopia)"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
-msgstr ". koopia)"
+msgstr "koopia)"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
-msgstr ". koopia)"
+msgstr "koopia)"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:496
 #, c-format
@@ -1281,22 +1281,22 @@ msgstr "%s (veel üks koopia)%s"
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr "%s (%'d. koopia)%s"
+msgstr "%s (%'d koopia)%s"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr "%s (%'d. koopia)%s"
+msgstr "%s (%'d koopia)%s"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr "%s (%'d. koopia)%s"
+msgstr "%s (%'d koopia)%s"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr "%s (%'d. koopia)%s"
+msgstr "%s (%'d koopia)%s"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
@@ -2358,7 +2358,7 @@ msgstr "Viimati muudetud:"
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
-msgstr "Asenda koos"
+msgstr "Asendav fail"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:506
@@ -2367,7 +2367,7 @@ msgstr "Liida"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
-msgstr "_Vali sihtfailile uus nimi"
+msgstr "_Vali asendavale failile uus nimi"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
@@ -2409,15 +2409,15 @@ msgstr "Mine %s"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr "Võrgustik"
+msgstr "Kuva failid võrgustikuna"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr "Loend"
+msgstr "Kuva failid loendina"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr "Veerud"
+msgstr "Kuva failid veergudena"
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
