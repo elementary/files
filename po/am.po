@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-17 15:03-0500\n"
-"PO-Revision-Date: 2012-09-22 22:48+0000\n"
+"PO-Revision-Date: 2012-09-24 01:58+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-09-23 04:59+0000\n"
+"X-Launchpad-Export-Date: 2012-09-24 04:58+0000\n"
 "X-Generator: Launchpad (build 15985)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -184,15 +184,15 @@ msgstr "አዲስ _መስኮት"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:770
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "ለሚታየው አካባቢ አዲስ የፋይሎች መስኮት መክፈቻ"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:773
 msgid "New _Tab"
-msgstr ""
+msgstr "አዲስ _ንዑስ መስኮት"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:774
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "ለሚታየው አካባቢ አዲስ ንዑስ መስኮት መክፈቻ"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:778
 msgid "_Close"
@@ -301,11 +301,11 @@ msgstr "መደበኛ መመልከቻውን መጠን መጠቀሚያ"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:844
 msgid "Next Tab"
-msgstr ""
+msgstr "የሚቀጥለው ንዑስ መስኮት"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:848
 msgid "Previous Tab"
-msgstr ""
+msgstr "ቀደም ያለው ንዑስ መስኮት"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:852
 msgid "Connect to _Server..."
@@ -329,7 +329,7 @@ msgstr "ችግሩን ማመልከቻ..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:861
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "ችግሮችን ለ Launchpad ያሳውቁ"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:864
 msgid "Get Help Online..."
@@ -345,7 +345,7 @@ msgstr "_የተደበቁ ፋይሎችን ማሳያ"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:878
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "ለአሁኑ መስኮት የተደበቁ ፋይሎችን ማሳያ መቀያየሪያ"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:883
 msgid "Show _Desktop Files"
@@ -353,7 +353,7 @@ msgstr "_የዴስክቶፕ ፋይሎችን ማሳያ"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:884
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "የዴስክቶፕ ፋይሎችን ማሳያ መቀያየሪያ"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:888
 msgid "_Context Pane"
@@ -389,7 +389,7 @@ msgstr "ዝርዝር"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:913
 msgid "Compact"
-msgstr ""
+msgstr "በትንንሽ"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:916
 msgid "Columns"
@@ -421,11 +421,11 @@ msgstr "የተሰረዘ"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:339
 msgid "MimeType"
-msgstr ""
+msgstr "MimeType"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:347
 msgid "MimeTypes"
-msgstr ""
+msgstr "MimeTypes"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:351
 msgid "Location"
@@ -433,7 +433,7 @@ msgstr "አካባቢ"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
 msgid "Origin Location"
-msgstr ""
+msgstr "ዋናው አካባቢ"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
@@ -505,11 +505,11 @@ msgstr "እንደገና መሰየም አልተሳካም %s ወደ %s"
 
 #: /home/codygarver/files/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr ""
+msgstr "የዳይሬክቶሪ ዝርዝር በትንንሹ"
 
 #: /home/codygarver/files/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr ""
+msgstr "በትንንሹ መመልክቻ"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -525,15 +525,15 @@ msgstr "FTP (with login)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "የሚካፈሉዋቸው መስኮቶች"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Secure WebDAV (HTTPS)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
@@ -655,8 +655,8 @@ msgstr ""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ይጠቀሙ \"%s\" የተመረጠውን እቃ ለመክፈት"
+msgstr[1] "ይጠቀሙ \"%s\" የተመረጡትን እቃዎች ለመክፈት"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1941
 #, c-format
@@ -672,13 +672,13 @@ msgstr "_መክፈቻ"
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1963
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "መክፈቻ በ %'d አዲስ _ንዑስ መስኮት"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1967
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3472
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2407
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "በአዲስ _ንዑስ መስኮት መክፈቻ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1972
 #, c-format
@@ -726,7 +726,7 @@ msgstr "አዲስ _ፎልደር መፍጠሪያ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3452
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "በዚህ ፎልደር ውስጥ አዲስ ባዶ ፎልደር መፍጠሪያ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3454
 msgid "Create New _File"
@@ -738,7 +738,7 @@ msgstr "_ባዶ ፋይል"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3457
 msgid "Create a new empty file inside this folder"
-msgstr ""
+msgstr "በዚህ ፎልደር ውስጥ አዲስ ባዶ ፋይል መፍጠሪያ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3461
 msgid "Open the selected item"
@@ -762,7 +762,7 @@ msgstr "መክፈቻ _በ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3476
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "ለተመረጠውን እቃ መክፈቻ የሚሆን መተግበሪያ ይምረጡ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3478
 msgid "Other _Application..."
@@ -770,7 +770,7 @@ msgstr "ሌሎች _መተግበሪያዎች..."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3479
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "ለተመረጠውን እቃ መክፈቻ የሚሆን ሌላ መተግበሪያ ይምረጡ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3482
 msgid "Mo_ve to Trash"
@@ -778,7 +778,7 @@ msgstr "ወደ ቆሻሻ ማን_ቀሳቀሻ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3483
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "እያንዳንዱ የተመረጠውን እቃ ወደ ቆሻሻ ማንቀሳቀሻ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3486
 msgid "_Delete Permanently"
@@ -786,7 +786,7 @@ msgstr "በቋሚነት _ማጥፊያ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3487
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "እያንዳንዱ የተመረጠውን እቃ ማጥፊያ ወደ ቆሻሻ ሳያንቀሳቅሱ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3490
 msgid "_Restore"
@@ -803,7 +803,7 @@ msgstr "_ባህሪዎች"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3499
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "እያንዳንዱ የተመረጠውን እቃ ባህሪ መመልከቻ ወይንም ማረሚያ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3606
 msgid "Set Color:"
@@ -811,15 +811,15 @@ msgstr "ቀለም ማሰናጃ :"
 
 #: /home/codygarver/files/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "በእቅድ ዘዴ"
 
 #: /home/codygarver/files/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "የእቅዱ ዘዴ"
 
 #: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "በቁራጭ ሰሌዳው ላይ የሚለጠፍ ምንም ነገር የለም"
 
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Filename"
@@ -847,7 +847,7 @@ msgstr "በ _ስም"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "ምልክቶችን መለያ በስም በረድፎች ውስጥ"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
@@ -855,7 +855,7 @@ msgstr "በ _መጠን"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "ምልክቶችን መለያ በመጠን በረድፎች ውስጥ"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
@@ -863,7 +863,7 @@ msgstr "በ _አይነት"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "ምልክቶችን መለያ በአይነት በረድፎች ውስጥ"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
@@ -871,7 +871,7 @@ msgstr "በተቀየረበት _ቀን"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "ምልክቶችን መለያ በተሻሻሉበት ቀን በረድፎች ውስጥ"
 
 #: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
@@ -929,7 +929,7 @@ msgstr "ፋይሉን መፈጸም አልተቻለም \"%s\""
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:426
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:482
 msgid "File Operations"
-msgstr ""
+msgstr "የፋይል ተግባሮች"
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
@@ -940,12 +940,12 @@ msgstr "ዝርዝር ማሳያ"
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d የፋይል ተግባር ንቁ ነው"
+msgstr[1] "%'d የፋይል ተግባሮች ንቁ ናቸው"
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "የኮፒ ንግግር ማሳያ"
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
@@ -961,11 +961,11 @@ msgstr "የመተግበሪያውን እትም ማሳያ"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:425
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "መክፈቻ uri(s) በአዲስ ንዑስ መስኮት"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:427
 msgid "Quit Files."
-msgstr ""
+msgstr "ፋይሎች መዝጊያ"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
@@ -1053,7 +1053,7 @@ msgstr "ከአካሉ ጋር _መገናኛ"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1621
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "አካሉን _መለያያ"
 
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
@@ -1712,23 +1712,23 @@ msgstr ""
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
-msgstr ""
+msgstr "ፋይሎችን ኮፒ በማድረግ ላይ"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
-msgstr ""
+msgstr "በማዘጋጀት ላይ ለማንቀሳቀስ ወደ \"%B\""
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "በማዘጋጀት ላይ ለማንቀሳቀስ  ወደ %'d ፋይል"
+msgstr[1] "በማዘጋጀት ላይ ለማንቀሳቀስ ወደ %'d ፋይሎች"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr ""
+msgstr "ስህተት ተፈጥሯል ፋይሉን በማንቀሳቀስ ላይ እንዳለ %F."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
@@ -1765,7 +1765,7 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5780
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
-msgstr ""
+msgstr "ፍቃዶች በማሰናዳት ላይ"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
@@ -1807,34 +1807,34 @@ msgstr "ማጥፊያ '%s'"
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "ማጥፊያ %d የተባዙ እቃዎችን"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "ማንቀሳቀሻ %d እቃዎችን ወደ ነበሩበት '%s'"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "ማንቀሳቀሻ '%s' ወደ ነበሩበት '%s'"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "እንደገና መሰየሚያ '%s' እንደ '%s'"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "እንደ ነበር መመለሻ %d እቃዎችን ከቆሻሻ ማጠራቀሚያ ውስጥ"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "እንደ ነበር መመለሻ '%s' ወደ '%s'"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
@@ -1919,7 +1919,7 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "አዲስ ፎልደር መፍጠሪያ '%s'"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
@@ -1929,12 +1929,12 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "ማንቀሳቀሻ '%s' ወደ ቆሻሻ ማጠራቀሚያ"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "እንደ ነበር መመለሻ '%s' ከቆሻሻ ማጠራቀሚያ ውስጥ"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
@@ -2179,7 +2179,7 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/gof-file.c:252
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "አገናኝ ወደ %s"
 
 #: /home/codygarver/files/po/../libcore/gof-file.c:1702
 #, c-format
@@ -2213,13 +2213,13 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-progress-info.c:192
 #: /home/codygarver/files/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr ""
+msgstr "በማዘጋጀት ላይ"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "ፎልደር ማዋሀጃ \"%s\"?"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:364
