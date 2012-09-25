@@ -2,7 +2,6 @@
 Name=Files
 Comment=Browse your files
 GenericName=File Manager
-Comment=Browse Your Files
 Exec=pantheon-files %U
 Icon=system-file-manager
 Terminal=false
@@ -15,17 +14,17 @@ X-GNOME-Gettext-Domain=pantheon-files
 X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Root
 
 [TabNew Shortcut Group]
-Name=New _Tab
+Name=New _tab
 Exec=pantheon-files -t
 TargetEnvironment=Unity
 
 [WindowNew Shortcut Group]
-Name=New _Window
+Name=New _window
 Exec=pantheon-files
 TargetEnvironment=Unity
 
 [Root Shortcut Group]
-Name=New Window as _Administrator
+Name=New window as _administrator
 Exec=gksu pantheon-files
 TargetEnvironment=Unity
 
