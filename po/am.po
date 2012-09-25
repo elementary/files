@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-17 15:03-0500\n"
-"PO-Revision-Date: 2012-09-24 01:58+0000\n"
+"PO-Revision-Date: 2012-09-24 22:56+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-09-24 04:58+0000\n"
-"X-Generator: Launchpad (build 15985)\n"
+"X-Launchpad-Export-Date: 2012-09-25 05:17+0000\n"
+"X-Generator: Launchpad (build 16019)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -649,7 +649,7 @@ msgstr ""
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1309
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr ""
+msgstr "አገናኝ መፍጠር አልተቻለም ለ URL \"%s\""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1794
 #, c-format
@@ -692,11 +692,11 @@ msgstr "በአዲስ _መስኮት መክፈቻ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3432
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
+msgstr "የተመረጡትን ፋይሎች በመለጠፊያ ትእዛዝ  ለማንቀሳቀስ በማዘጋጀት ላይ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3436
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
+msgstr "የተመረጡትን ፋይሎች በመለጠፊያ ትእዛዝ  ኮፒ እንዲደረጉ በማዘጋጀት ላይ"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3440
 msgid "Move or copy files previously selected by a Cut or Copy command"
@@ -1131,7 +1131,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:122
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "ከቆሻሻ ማጠራቀሚያው ውስጥ እቃውን እንደነበር ማድረግ አይቻልም"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:200
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:737
@@ -1300,7 +1300,7 @@ msgstr " (%'d"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
+msgstr "በእርግጥ በቋሚነት ሊያጠፉት ይፈልጋሉ \"%B\" ከቆሻሻ ማጠራቀሚያው ውስጥ?"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -2376,11 +2376,11 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "እንደ ዝርዝር መመልከቻ"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
+msgstr "እንደ አምድ መመልከቻ"
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
@@ -2388,4 +2388,4 @@ msgstr ""
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "ቆሻሻ ማጠራቀሚያውን ባዶ ማድረጊያ"
