@@ -2,6 +2,7 @@
 Name=Files
 Comment=Browse your files
 GenericName=File Manager
+Comment=Browse Your Files
 Exec=pantheon-files %U
 Icon=system-file-manager
 Terminal=false
