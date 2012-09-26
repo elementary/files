@@ -14,17 +14,17 @@ X-GNOME-Gettext-Domain=pantheon-files
 X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Root
 
 [TabNew Shortcut Group]
-Name=New _tab
+Name=New _Tab
 Exec=pantheon-files -t
 TargetEnvironment=Unity
 
 [WindowNew Shortcut Group]
-Name=New _window
+Name=New _Window
 Exec=pantheon-files
 TargetEnvironment=Unity
 
 [Root Shortcut Group]
-Name=New window as _administrator
+Name=New Window As _Administrator
 Exec=gksu pantheon-files
 TargetEnvironment=Unity
 
