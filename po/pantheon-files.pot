@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-26 12:35+0100\n"
+"POT-Creation-Date: 2012-09-26 13:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,6 +177,7 @@ msgid "_Help"
 msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:769
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr ""
 
@@ -185,6 +186,7 @@ msgid "Open another Files window for the displayed location"
 msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:773
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr ""
 
@@ -1125,16 +1127,8 @@ msgstr ""
 msgid "File Manager"
 msgstr ""
 
-#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:8
-msgid "New tab"
-msgstr ""
-
-#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:9
-msgid "New window"
-msgstr ""
-
 #: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:10
-msgid "New window as administrator"
+msgid "New Window As _Administrator"
 msgstr ""
 
 #: /home/david/src/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
