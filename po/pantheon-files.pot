@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-25 21:23+0100\n"
+"POT-Creation-Date: 2012-09-26 12:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1126,15 +1126,15 @@ msgid "File Manager"
 msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:8
-msgid "New Tab"
+msgid "New tab"
 msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:9
-msgid "New Window"
+msgid "New window"
 msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:10
-msgid "New Window As Administrator"
+msgid "New window as administrator"
 msgstr ""
 
 #: /home/david/src/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
