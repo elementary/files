@@ -4641,15 +4641,13 @@ exo_icon_view_move_cursor_up_down (ExoIconView *icon_view,
         item = list ? list->data : NULL;
 
         /* Give focus to the first cell initially */
-        if (item == NULL)
-        {
-            return;
-        }
-        else
+        if (item != NULL)
         {
             exo_icon_view_set_cell_data (icon_view, item);
             gtk_cell_area_focus (icon_view->priv->cell_area, direction);
         }
+        else 
+            return;
     }
     else
     {
@@ -4805,15 +4803,13 @@ exo_icon_view_move_cursor_left_right (ExoIconView *icon_view,
         item = list ? list->data : NULL;
 
         /* Give focus to the first cell initially */
-        if (item == NULL)
-        {
-            return;
-        }
-        else
+        if (item != NULL)
         {
             exo_icon_view_set_cell_data (icon_view, item);
             gtk_cell_area_focus (icon_view->priv->cell_area, direction);
         }
+        else
+            return;
     }
     else
     {
