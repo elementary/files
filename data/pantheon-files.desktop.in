@@ -24,7 +24,7 @@ Exec=pantheon-files
 TargetEnvironment=Unity
 
 [Root Shortcut Group]
-Name=New Window as _Administrator
+Name=New Window As _Administrator
 Exec=gksu pantheon-files
 TargetEnvironment=Unity
 
