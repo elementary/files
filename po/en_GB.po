@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-09-17 15:03-0500\n"
+"POT-Creation-Date: 2012-09-26 13:11+0100\n"
 "PO-Revision-Date: 2012-09-25 15:20+0000\n"
 "Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
@@ -15,702 +15,552 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-09-26 05:11+0000\n"
-"X-Generator: Launchpad (build 16022)\n"
+"X-Launchpad-Export-Date: 2012-09-27 05:05+0000\n"
+"X-Generator: Launchpad (build 16033)\n"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:337
-msgid "Name"
-msgstr "Name"
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "Properties"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:338
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Type"
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:116
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:47
+msgid "General"
+msgstr "General"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:341
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:353
-msgid "Target"
-msgstr "Target"
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:124
+msgid "More"
+msgstr "More"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:343
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Size"
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:136
+msgid "Preview"
+msgstr "Preview"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:345
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:325
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:323
+msgid "Created"
+msgstr "Created"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:325
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:345
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Modified"
 msgstr "Modified"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:346
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:828
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:841
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:328
+msgid "Last Access"
+msgstr "Last Access"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:334
+msgid "Deleted"
+msgstr "Deleted"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:339
+msgid "MimeType"
+msgstr "MimeType"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:347
+msgid "MimeTypes"
+msgstr "MimeTypes"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:351
+msgid "Location"
+msgstr "Location"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:353
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:341
+msgid "Target"
+msgstr "Target"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:359
+msgid "Origin Location"
+msgstr "Origin Location"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:369
+msgid "Info:"
+msgstr "Info:"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:404
+msgid "Other application..."
+msgstr "Other application..."
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:428
+msgid "Open with:"
+msgstr "Open with:"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:449
+msgid "Usage:"
+msgstr "Usage:"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:454
+msgid "Device usage:"
+msgstr "Device usage:"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:600
+msgid "Read"
+msgstr "Read"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:605
+msgid "Write"
+msgstr "Write"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:610
+msgid "Execute"
+msgstr "Execute"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:828
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:841
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:346
 msgid "Owner"
 msgstr "Owner"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:833
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:845
+msgid "Group"
+msgstr "Group"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:849
+msgid "Everyone"
+msgstr "Everyone"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
+msgid "Select an aplication to open "
+msgstr "Select an application to open "
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:33
+msgid "New Window as _Administrator"
+msgstr "New Window as _Administrator"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:160
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3383
+msgid "Set as default"
+msgstr "Set as default"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:165
+msgid "Ignore"
+msgstr "Ignore"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:497
+msgid "Undo"
+msgstr "Undo"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:498
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:789
+msgid "Undo the last action"
+msgstr "Undo the last action"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:507
+msgid "Redo"
+msgstr "Redo"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:508
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:792
+msgid "Redo the last action"
+msgstr "Redo the last action"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:763
+msgid "_File"
+msgstr "_File"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:764
+msgid "_Edit"
+msgstr "_Edit"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:765
+msgid "_View"
+msgstr "_View"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:766
+msgid "_Go"
+msgstr "_Go"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:767
+msgid "_Help"
+msgstr "_Help"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:769
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "New _Window"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:770
+msgid "Open another Files window for the displayed location"
+msgstr "Open another Files window for the displayed location"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:773
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "New _Tab"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:774
+msgid "Open another tab for the displayed location"
+msgstr "Open another tab for the displayed location"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:778
+msgid "_Close"
+msgstr "_Close"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:779
+msgid "Close this folder"
+msgstr "Close this folder"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:782
+msgid "Preferences"
+msgstr "Preferences"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:783
+msgid "Change Files preferences"
+msgstr "Change Files preferences"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:788
+msgid "_Undo"
+msgstr "_Undo"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:791
+msgid "_Redo"
+msgstr "_Redo"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:794
+msgid "Open _Parent"
+msgstr "Open _Parent"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:795
+msgid "Open the parent folder"
+msgstr "Open the parent folder"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:797
+msgid "_Back"
+msgstr "_Back"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:798
+msgid "Go to the previous visited location"
+msgstr "Go to the previously visited location"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:801
+msgid "_Forward"
+msgstr "_Forward"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:802
+msgid "Go to the next visited location"
+msgstr "Go to the next visited location"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:804
+msgid "_Reload"
+msgstr "_Reload"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:805
+msgid "Reload the current location"
+msgstr "Reload the current location"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:808
+msgid "_Home Folder"
+msgstr "_Home Folder"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:809
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "Open your personal folder"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:812
+msgid "_Trash"
+msgstr "_Rubbish Bin"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:813
+msgid "Open your personal trash folder"
+msgstr "Open your personal Rubbish Bin"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:816
+msgid "_Network"
+msgstr "_Network"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:817
+msgid "Browse bookmarked and local network locations"
+msgstr "Browse bookmarked and local network locations"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:820
+msgid "Zoom _In"
+msgstr "Zoom _In"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:821
+msgid "Increase the view size"
+msgstr "Increase the view size"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:832
+msgid "Zoom _Out"
+msgstr "Zoom _Out"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:833
+msgid "Decrease the view size"
+msgstr "Decrease the view size"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:840
+msgid "Normal Si_ze"
+msgstr "Normal Si_ze"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:841
+msgid "Use the normal view size"
+msgstr "Use the normal view size"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:844
+msgid "Next Tab"
+msgstr "Next Tab"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:848
+msgid "Previous Tab"
+msgstr "Previous Tab"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:852
+msgid "Connect to _Server..."
+msgstr "Connect to _Server…"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:853
+msgid "Connect to a remote computer or shared disk"
+msgstr "Connect to a remote computer or shared disk"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:856
+msgid "_About"
+msgstr "_About"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:857
+msgid "Display credits"
+msgstr "Display credits"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:860
+msgid "Report a Problem..."
+msgstr "Report a Problem..."
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:861
+msgid "File a bug on Launchpad"
+msgstr "File a bug on Launchpad"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:864
+msgid "Get Help Online..."
+msgstr "Get Help Online..."
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:868
+msgid "Translate This Application..."
+msgstr "Translate This Application..."
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:877
+msgid "Show _Hidden Files"
+msgstr "Show _Hidden Files"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:878
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Toggle the display of hidden files in the current window"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:883
+msgid "Show _Desktop Files"
+msgstr "Show _Desktop Files"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:884
+msgid "Toggle the display of desktop files"
+msgstr "Toggle the display of desktop files"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:888
+msgid "_Context Pane"
+msgstr "_Context Pane"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:889
+msgid "Change the visibility of the context pane"
+msgstr "Change the visibility of the context pane"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:893
+msgid "_Menubar"
+msgstr "_Menubar"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:894
+msgid "Change the visibility of this window's menubar"
+msgstr "Change the visibility of this window's menubar"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:898
+msgid "_Places"
+msgstr "_Places"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:899
+msgid "Change the visibility of this window's side pane"
+msgstr "Change the visibility of this window's side pane"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:907
+msgid "Icon"
+msgstr "Icon"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:910
+msgid "List"
+msgstr "List"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:913
+msgid "Compact"
+msgstr "Compact"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:916
+msgid "Columns"
+msgstr "Columns"
+
+#: /home/david/src/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "Folder does not exist"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
+#: /home/david/src/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
 msgstr "Files can't find the folder %s"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/david/src/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "Create"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/david/src/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "Create the folder %s"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
 msgstr "Files Preferences"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
-msgid "General"
-msgstr "General"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:102
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
 msgstr "Extensions"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:207
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:207
 msgid "Single click to open:"
 msgstr "Single click to open:"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:214
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
 msgstr "Mouse auto-selection:"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:233
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
 msgstr "<small><i>Slow</i></small>"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:235
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
 msgstr "<small><i>Fast</i></small>"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:250
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
 msgstr "Date format:"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:253
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "iso"
 msgstr "iso"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:254
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:254
 msgid "locale"
 msgstr "locale"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:255
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:255
 msgid "informal"
 msgstr "informal"
 
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:141
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:324
-msgid "Home"
-msgstr "Home"
-
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:143
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:394
-msgid "File System"
-msgstr "File System"
-
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
-msgid "(as Administrator)"
-msgstr "(as Administrator)"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:33
-msgid "New Window as _Administrator"
-msgstr "New Window as _Administrator"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:160
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3383
-msgid "Set as default"
-msgstr "Set as default"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:165
-msgid "Ignore"
-msgstr "Ignore"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:497
-msgid "Undo"
-msgstr "Undo"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:498
-#: /home/codygarver/files/po/../src/View/Window.vala:789
-msgid "Undo the last action"
-msgstr "Undo the last action"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:507
-msgid "Redo"
-msgstr "Redo"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:508
-#: /home/codygarver/files/po/../src/View/Window.vala:792
-msgid "Redo the last action"
-msgstr "Redo the last action"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:763
-msgid "_File"
-msgstr "_File"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:764
-msgid "_Edit"
-msgstr "_Edit"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:765
-msgid "_View"
-msgstr "_View"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:766
-msgid "_Go"
-msgstr "_Go"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:767
-msgid "_Help"
-msgstr "_Help"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:769
-msgid "New _Window"
-msgstr "New _Window"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:770
-msgid "Open another Files window for the displayed location"
-msgstr "Open another Files window for the displayed location"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:773
-msgid "New _Tab"
-msgstr "New _Tab"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:774
-msgid "Open another tab for the displayed location"
-msgstr "Open another tab for the displayed location"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:778
-msgid "_Close"
-msgstr "_Close"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:779
-msgid "Close this folder"
-msgstr "Close this folder"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:782
-msgid "Preferences"
-msgstr "Preferences"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:783
-msgid "Change Files preferences"
-msgstr "Change Files preferences"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:788
-msgid "_Undo"
-msgstr "_Undo"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:791
-msgid "_Redo"
-msgstr "_Redo"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:794
-msgid "Open _Parent"
-msgstr "Open _Parent"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:795
-msgid "Open the parent folder"
-msgstr "Open the parent folder"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:797
-msgid "_Back"
-msgstr "_Back"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:798
-msgid "Go to the previous visited location"
-msgstr "Go to the previously visited location"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:801
-msgid "_Forward"
-msgstr "_Forward"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:802
-msgid "Go to the next visited location"
-msgstr "Go to the next visited location"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:804
-msgid "_Reload"
-msgstr "_Reload"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:805
-msgid "Reload the current location"
-msgstr "Reload the current location"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:808
-msgid "_Home Folder"
-msgstr "_Home Folder"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:809
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:329
-msgid "Open your personal folder"
-msgstr "Open your personal folder"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:812
-msgid "_Trash"
-msgstr "_Rubbish Bin"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:813
-msgid "Open your personal trash folder"
-msgstr "Open your personal Rubbish Bin"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:816
-msgid "_Network"
-msgstr "_Network"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:817
-msgid "Browse bookmarked and local network locations"
-msgstr "Browse bookmarked and local network locations"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:820
-msgid "Zoom _In"
-msgstr "Zoom _In"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:821
-msgid "Increase the view size"
-msgstr "Increase the view size"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:832
-msgid "Zoom _Out"
-msgstr "Zoom _Out"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:833
-msgid "Decrease the view size"
-msgstr "Decrease the view size"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:840
-msgid "Normal Si_ze"
-msgstr "Normal Si_ze"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:841
-msgid "Use the normal view size"
-msgstr "Use the normal view size"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:844
-msgid "Next Tab"
-msgstr "Next Tab"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:848
-msgid "Previous Tab"
-msgstr "Previous Tab"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:852
-msgid "Connect to _Server..."
-msgstr "Connect to _Server…"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:853
-msgid "Connect to a remote computer or shared disk"
-msgstr "Connect to a remote computer or shared disk"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:856
-msgid "_About"
-msgstr "_About"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:857
-msgid "Display credits"
-msgstr "Display credits"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:860
-msgid "Report a Problem..."
-msgstr "Report a Problem..."
-
-#: /home/codygarver/files/po/../src/View/Window.vala:861
-msgid "File a bug on Launchpad"
-msgstr "File a bug on Launchpad"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:864
-msgid "Get Help Online..."
-msgstr "Get Help Online..."
-
-#: /home/codygarver/files/po/../src/View/Window.vala:868
-msgid "Translate This Application..."
-msgstr "Translate This Application..."
-
-#: /home/codygarver/files/po/../src/View/Window.vala:877
-msgid "Show _Hidden Files"
-msgstr "Show _Hidden Files"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:878
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Toggle the display of hidden files in the current window"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:883
-msgid "Show _Desktop Files"
-msgstr "Show _Desktop Files"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:884
-msgid "Toggle the display of desktop files"
-msgstr "Toggle the display of desktop files"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:888
-msgid "_Context Pane"
-msgstr "_Context Pane"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:889
-msgid "Change the visibility of the context pane"
-msgstr "Change the visibility of the context pane"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:893
-msgid "_Menubar"
-msgstr "_Menubar"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:894
-msgid "Change the visibility of this window's menubar"
-msgstr "Change the visibility of this window's menubar"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:898
-msgid "_Places"
-msgstr "_Places"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:899
-msgid "Change the visibility of this window's side pane"
-msgstr "Change the visibility of this window's side pane"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:907
-msgid "Icon"
-msgstr "Icon"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:910
-msgid "List"
-msgstr "List"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:913
-msgid "Compact"
-msgstr "Compact"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:916
-msgid "Columns"
-msgstr "Columns"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "Properties"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
-msgid "More"
-msgstr "More"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
-msgid "Preview"
-msgstr "Preview"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:323
-msgid "Created"
-msgstr "Created"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:328
-msgid "Last Access"
-msgstr "Last Access"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:334
-msgid "Deleted"
-msgstr "Deleted"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:339
-msgid "MimeType"
-msgstr "MimeType"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:347
-msgid "MimeTypes"
-msgstr "MimeTypes"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:351
-msgid "Location"
-msgstr "Location"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
-msgid "Origin Location"
-msgstr "Origin Location"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
-msgid "Info:"
-msgstr "Info:"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
-msgid "Other application..."
-msgstr "Other application..."
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
-msgid "Open with:"
-msgstr "Open with:"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
-msgid "Usage:"
-msgstr "Usage:"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
-msgid "Device usage:"
-msgstr "Device usage:"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
-msgid "Read"
-msgstr "Read"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:605
-msgid "Write"
-msgstr "Write"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:610
-msgid "Execute"
-msgstr "Execute"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
-msgid "Group"
-msgstr "Group"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
-msgid "Everyone"
-msgstr "Everyone"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:1105
-msgid "Select an aplication to open "
-msgstr "Select an application to open "
-
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
+#: /home/david/src/pantheon-files/po/../src/View/LocationBar.vala:110
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:370
 msgid "Trash"
 msgstr "Rubbish Bin"
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:588
+#: /home/david/src/pantheon-files/po/../src/View/LocationBar.vala:111
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:588
 msgid "Network"
 msgstr "Network"
 
-#: /home/codygarver/files/po/../src/fm-columns-view.c:82
-#: /home/codygarver/files/po/../src/fm-list-view.c:616
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:572
-msgid "This folder is empty."
-msgstr "This folder is empty."
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:337
+msgid "Name"
+msgstr "Name"
 
-#: /home/codygarver/files/po/../src/fm-columns-view.c:186
-#: /home/codygarver/files/po/../src/fm-list-view.c:199
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:139
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Failed to rename %s to %s"
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:338
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Type"
 
-#: /home/codygarver/files/po/../src/fm-compact-view.c:86
-msgid "Compact directory listing"
-msgstr "Compact directory listing"
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:343
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Size"
 
-#: /home/codygarver/files/po/../src/fm-compact-view.c:87
-msgid "Compact view"
-msgstr "Compact view"
+#: /home/david/src/pantheon-files/po/../src/View/ViewContainer.vala:141
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "Home"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:124
-msgid "SSH"
-msgstr "SSH"
+#: /home/david/src/pantheon-files/po/../src/View/ViewContainer.vala:143
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "File System"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:127
-msgid "Public FTP"
-msgstr "Public FTP"
+#: /home/david/src/pantheon-files/po/../src/View/ViewContainer.vala:148
+msgid "(as Administrator)"
+msgstr "(as Administrator)"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:129
-msgid "FTP (with login)"
-msgstr "FTP (with login)"
+#: /home/david/src/pantheon-files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "There is nothing on the clipboard to paste"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:132
-msgid "Windows share"
-msgstr "Windows share"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:134
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:136
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Secure WebDAV (HTTPS)"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:183
-msgid "Connecting..."
-msgstr "Connecting..."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:207
-msgid ""
-"Can't load the supported server method list.\n"
-"Please check your gvfs installation."
-msgstr ""
-"Can't load the supported server method list.\n"
-"Please check your gvfs installation."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:285
-#, c-format
-msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "The folder '%s' cannot be opened on '%s'."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:295
-#, c-format
-msgid "The server at \"%s\" cannot be found."
-msgstr "The server at '%s' cannot be found."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:330
-msgid "Try Again"
-msgstr "Try Again"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:395
-msgid "Please verify your user details."
-msgstr "Please verify your user details."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:425
-msgid "Continue"
-msgstr "Continue"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:750
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1140
-msgid "C_onnect"
-msgstr "C_onnect"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:875
-msgid "Connect to Server"
-msgstr "Connect to Server"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:893
-msgid "Server Details"
-msgstr "Server Details"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:917
-msgid "_Server:"
-msgstr "_Server:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:937
-msgid "_Port:"
-msgstr "_Port:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:955
-msgid "_Type:"
-msgstr "_Type:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1024
-msgid "Sh_are:"
-msgstr "Sh_are:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1039
-msgid "_Folder:"
-msgstr "_Folder:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1057
-msgid "User Details"
-msgstr "User Details"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1080
-msgid "_Domain name:"
-msgstr "_Domain name:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1095
-msgid "_User name:"
-msgstr "_User name:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1110
-msgid "Pass_word:"
-msgstr "Pass_word:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1126
-msgid "_Remember this password"
-msgstr "_Remember this password"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1229
-msgid "Operation cancelled"
-msgstr "Operation cancelled"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Single Click"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Whether the items in the view can be activated with single clicks"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "Single Click Timeout"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1151
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1151
 msgid "Invalid filename provided by XDS drag site"
 msgstr "Invalid filename provided by XDS drag site"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1309
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1309
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "Failed to create a link for the URL '%s'"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1794
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1794
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "Use '%s' to open the selected item"
 msgstr[1] "Use '%s' to open the selected items"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1941
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1941
 #, c-format
 msgid "_Open With %s"
 msgstr "_Open With %s"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1947
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3460
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2399
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1947
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3460
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2399
 msgid "_Open"
 msgstr "_Open"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1963
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1963
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "Open in %'d New _Tabs"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1967
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3472
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2407
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1967
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3472
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2407
 msgid "Open in New _Tab"
 msgstr "Open in New _Tab"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1972
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1972
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "Open in %'d New _Windows"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1976
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2414
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1976
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2414
 msgid "Open in New _Window"
 msgstr "Open in New _Window"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3432
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3432
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr "Prepare the selected files to be moved with a Paste command"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3436
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3436
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr "Prepare the selected files to be copied with a Paste command"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3440
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3440
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr "Move or copy files previously selected by a Cut or Copy command"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3443
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3443
 msgid "Paste Into Folder"
 msgstr "Paste Into Folder"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3444
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3444
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -718,172 +568,334 @@ msgstr ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3447
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3447
 msgid "_Rename..."
 msgstr "_Rename…"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3448
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3448
 msgid "Rename selected item"
 msgstr "Rename selected item"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3451
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3451
 msgid "Create New _Folder"
 msgstr "Create New _Folder"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3452
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3452
 msgid "Create a new empty folder inside this folder"
 msgstr "Create a new empty folder inside this folder"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3454
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3454
 msgid "Create New _File"
 msgstr "Create New _File"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3456
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3456
 msgid "_Empty File"
 msgstr "_Empty File"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3457
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3457
 msgid "Create a new empty file inside this folder"
 msgstr "Create a new empty file inside this folder"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3461
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3461
 msgid "Open the selected item"
 msgstr "Open the selected item"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3468
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3468
 msgid "Open in new Window"
 msgstr "Open in new Window"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3469
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3469
 msgid "Open each selected item in a new window"
 msgstr "Open each selected item in a new window"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3473
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3473
 msgid "Open each selected item in a new tab"
 msgstr "Open each selected item in a new tab"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3475
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3475
 msgid "Open Wit_h"
 msgstr "Open Wit_h"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3476
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3476
 msgid "Choose a program with which to open the selected item"
 msgstr "Choose a program with which to open the selected item"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3478
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3478
 msgid "Other _Application..."
 msgstr "Other _Application…"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3479
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3479
 msgid "Choose another application with which to open the selected item"
 msgstr "Choose another application with which to open the selected item"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3482
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3482
 msgid "Mo_ve to Trash"
 msgstr "Mo_ve to the Rubbish Bin"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3483
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3483
 msgid "Move each selected item to the Trash"
 msgstr "Move each selected item to the Rubbish Bin"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3486
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3486
 msgid "_Delete Permanently"
 msgstr "_Delete Permanently"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3487
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3487
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "Delete each selected item, without moving to the Rubbish Bin"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3490
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3490
 msgid "_Restore"
 msgstr "_Restore"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3494
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3190
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3494
+#: /home/david/src/pantheon-files/po/../src/eel-editable-label.c:3190
 msgid "Select All"
 msgstr "Select All"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3498
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3498
 msgid "_Properties"
 msgstr "_Properties"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3499
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3499
 msgid "View or modify the properties of each selected item"
 msgstr "View or modify the properties of each selected item"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3606
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3606
 msgid "Set Color:"
 msgstr "Set Colour:"
 
-#: /home/codygarver/files/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Layout mode"
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:139
+#: /home/david/src/pantheon-files/po/../src/fm-columns-view.c:186
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:199
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "Failed to rename %s to %s"
 
-#: /home/codygarver/files/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "The layout mode"
-
-#: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "There is nothing on the clipboard to paste"
-
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Filename"
-
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Input Methods"
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
 msgstr "Arran_ge Items"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:288
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
 msgstr "Re_versed Order"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:289
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
 msgstr "Display icons in the opposite order"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
 msgstr "By _Name"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
 msgstr "Keep icons sorted by name in rows"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
 msgstr "By _Size"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
 msgstr "Keep icons sorted by size in rows"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
 msgstr "By _Type"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
 msgstr "Keep icons sorted by type in rows"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
 msgstr "By Modification _Date"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
 msgstr "Keep icons sorted by modification date in rows"
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:445
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:572
+#: /home/david/src/pantheon-files/po/../src/fm-columns-view.c:82
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:616
+msgid "This folder is empty."
+msgstr "This folder is empty."
+
+#: /home/david/src/pantheon-files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Single Click"
+
+#: /home/david/src/pantheon-files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Whether the items in the view can be activated with single clicks"
+
+#: /home/david/src/pantheon-files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "Single Click Timeout"
+
+#: /home/david/src/pantheon-files/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
+msgid "SSH"
+msgstr "SSH"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
+msgid "Public FTP"
+msgstr "Public FTP"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
+msgid "FTP (with login)"
+msgstr "FTP (with login)"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
+msgid "Windows share"
+msgstr "Windows share"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Secure WebDAV (HTTPS)"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
+msgid "Connecting..."
+msgstr "Connecting..."
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
+msgid ""
+"Can't load the supported server method list.\n"
+"Please check your gvfs installation."
+msgstr ""
+"Can't load the supported server method list.\n"
+"Please check your gvfs installation."
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
+#, c-format
+msgid "The folder \"%s\" cannot be opened on \"%s\"."
+msgstr "The folder '%s' cannot be opened on '%s'."
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
+#, c-format
+msgid "The server at \"%s\" cannot be found."
+msgstr "The server at '%s' cannot be found."
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
+msgid "Try Again"
+msgstr "Try Again"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
+msgid "Please verify your user details."
+msgstr "Please verify your user details."
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
+msgid "Continue"
+msgstr "Continue"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
+msgid "C_onnect"
+msgstr "C_onnect"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
+msgid "Connect to Server"
+msgstr "Connect to Server"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
+msgid "Server Details"
+msgstr "Server Details"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
+msgid "_Server:"
+msgstr "_Server:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
+msgid "_Port:"
+msgstr "_Port:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
+msgid "_Type:"
+msgstr "_Type:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
+msgid "Sh_are:"
+msgstr "Sh_are:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
+msgid "_Folder:"
+msgstr "_Folder:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
+msgid "User Details"
+msgstr "User Details"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
+msgid "_Domain name:"
+msgstr "_Domain name:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
+msgid "_User name:"
+msgstr "_User name:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
+msgid "Pass_word:"
+msgstr "Pass_word:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
+msgid "_Remember this password"
+msgstr "_Remember this password"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
+msgid "Operation cancelled"
+msgstr "Operation cancelled"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:421
+msgid "Show the version of the program."
+msgstr "Show the version of the program."
+
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:425
+msgid "Open uri(s) in new tab"
+msgstr "Open URI(s) in new tab"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:427
+msgid "Quit Files."
+msgstr "Quit Files."
+
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:429
+msgid "Enable debug logging"
+msgstr "Enable debug logging"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:430
+msgid "[URI...]"
+msgstr "[URI…]"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:439
+msgid ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
+msgstr ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:459
+msgid "--quit cannot be used with URIs."
+msgstr "--quit cannot be used with URIs."
+
+#: /home/david/src/pantheon-files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
 msgstr "Customise Toolbar"
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:464
+#: /home/david/src/pantheon-files/po/../src/marlin-toolbar-editor.c:464
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
@@ -891,427 +903,991 @@ msgstr ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:478
+#: /home/david/src/pantheon-files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
 msgstr "Available Items"
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:497
+#: /home/david/src/pantheon-files/po/../src/marlin-toolbar-editor.c:497
 msgid "Displayed Items"
 msgstr "Displayed Items"
 
-#: /home/codygarver/files/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Icon directory listing"
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:310
+msgid "Personal"
+msgstr "Personal"
 
-#: /home/codygarver/files/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Icon view"
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:315
+msgid "Your common places and bookmarks"
+msgstr "Your common places and bookmarks"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:103
-msgid "_Move Here"
-msgstr "_Move Here"
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:372
+msgid "Open the trash"
+msgstr "Open the Rubbish Bin"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:108
-msgid "_Copy Here"
-msgstr "_Copy Here"
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:382
+msgid "Devices"
+msgstr "Devices"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:113
-msgid "_Link Here"
-msgstr "_Link Here"
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:387
+msgid "Your local partitions and devices"
+msgstr "Your local partitions and devices"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:118
-msgid "Set as _Background"
-msgstr "Set as _Background"
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:396
+msgid "Open the contents of the File System"
+msgstr "Open the contents of the File System"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:125
-msgid "Cancel"
-msgstr "Cancel"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:217
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:455
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:480
 #, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Failed to execute file '%s'"
+msgid "Mount and open %s"
+msgstr "Mount and open %s"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:114
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:164
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:426
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:482
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:593
+msgid "Your network places"
+msgstr "Your network places"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:624
+msgid "Entire network"
+msgstr "Entire network"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:626
+msgid "Browse the contents of the network"
+msgstr "Browse the contents of the network"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1610
+msgid "_Start"
+msgstr "_Start"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1611
+msgid "_Stop"
+msgstr "_Stop"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1616
+msgid "_Power On"
+msgstr "_Power On"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1617
+msgid "_Safely Remove Drive"
+msgstr "_Safely Remove Drive"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1620
+msgid "_Connect Drive"
+msgstr "_Connect Drive"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1621
+msgid "_Disconnect Drive"
+msgstr "_Disconnect Drive"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1624
+msgid "_Start Multi-disk Device"
+msgstr "_Start Multi-disc Device"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1625
+msgid "_Stop Multi-disk Device"
+msgstr "_Stop Multi-disc Device"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1629
+msgid "_Unlock Drive"
+msgstr "_Unlock Drive"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1630
+msgid "_Lock Drive"
+msgstr "_Lock Drive"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1704
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2251
+#, c-format
+msgid "Unable to start %s"
+msgstr "Unable to start %s"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1994
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2023
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2052
+#, c-format
+msgid "Unable to eject %s"
+msgstr "Unable to eject %s"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2197
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "Unable to poll %s for media changes"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2307
+#, c-format
+msgid "Unable to stop %s"
+msgstr "Unable to stop %s"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2423
+msgid "Remove"
+msgstr "Remove"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2432
+msgid "Rename..."
+msgstr "Rename…"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2444
+msgid "_Mount"
+msgstr "_Mount"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2451
+msgid "_Unmount"
+msgstr "_Unmount"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2458
+msgid "_Eject"
+msgstr "_Eject"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2466
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1422
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2310
+msgid "Empty _Trash"
+msgstr "Empty the _Rubbish Bin"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
 msgid "File Operations"
 msgstr "File Operations"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:123
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
 msgstr "Show Details"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:158
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:180
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
 msgstr[0] "%'d file operation active"
 msgstr[1] "%'d file operations active"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:286
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
 msgstr "Show Copy Dialogue"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:298
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
 msgstr "Cancel All In-progress Actions"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:483
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
 msgstr "All file operations have been successfully completed"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:421
-msgid "Show the version of the program."
-msgstr "Show the version of the program."
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "_Move Here"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:425
-msgid "Open uri(s) in new tab"
-msgstr "Open URI(s) in new tab"
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "_Copy Here"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:427
-msgid "Quit Files."
-msgstr "Quit Files."
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "_Link Here"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:429
-msgid "Enable debug logging"
-msgstr "Enable debug logging"
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "Set as _Background"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:430
-msgid "[URI...]"
-msgstr "[URI…]"
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "Cancel"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:439
-msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Failed to execute file '%s'"
+
+#: /home/david/src/pantheon-files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Icon directory listing"
+
+#: /home/david/src/pantheon-files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Icon view"
+
+#: /home/david/src/pantheon-files/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr "Compact directory listing"
+
+#: /home/david/src/pantheon-files/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr "Compact view"
+
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Filename"
+
+#: /home/david/src/pantheon-files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Layout mode"
+
+#: /home/david/src/pantheon-files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "The layout mode"
+
+#: /home/david/src/pantheon-files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Input Methods"
+
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:6
+msgid "Browse your files"
 msgstr ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:459
-msgid "--quit cannot be used with URIs."
-msgstr "--quit cannot be used with URIs."
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:310
-msgid "Personal"
-msgstr "Personal"
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:315
-msgid "Your common places and bookmarks"
-msgstr "Your common places and bookmarks"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:372
-msgid "Open the trash"
-msgstr "Open the Rubbish Bin"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:382
-msgid "Devices"
-msgstr "Devices"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:387
-msgid "Your local partitions and devices"
-msgstr "Your local partitions and devices"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:396
-msgid "Open the contents of the File System"
-msgstr "Open the contents of the File System"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:455
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:480
-#, c-format
-msgid "Mount and open %s"
-msgstr "Mount and open %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:593
-msgid "Your network places"
-msgstr "Your network places"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:624
-msgid "Entire network"
-msgstr "Entire network"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:626
-msgid "Browse the contents of the network"
-msgstr "Browse the contents of the network"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1610
-msgid "_Start"
-msgstr "_Start"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1611
-msgid "_Stop"
-msgstr "_Stop"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1616
-msgid "_Power On"
-msgstr "_Power On"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1617
-msgid "_Safely Remove Drive"
-msgstr "_Safely Remove Drive"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1620
-msgid "_Connect Drive"
-msgstr "_Connect Drive"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1621
-msgid "_Disconnect Drive"
-msgstr "_Disconnect Drive"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1624
-msgid "_Start Multi-disk Device"
-msgstr "_Start Multi-disc Device"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1625
-msgid "_Stop Multi-disk Device"
-msgstr "_Stop Multi-disc Device"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1629
-msgid "_Unlock Drive"
-msgstr "_Unlock Drive"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1630
-msgid "_Lock Drive"
-msgstr "_Lock Drive"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1704
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2251
-#, c-format
-msgid "Unable to start %s"
-msgstr "Unable to start %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1994
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2023
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2052
-#, c-format
-msgid "Unable to eject %s"
-msgstr "Unable to eject %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2197
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Unable to poll %s for media changes"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2307
-#, c-format
-msgid "Unable to stop %s"
-msgstr "Unable to stop %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2423
-msgid "Remove"
-msgstr "Remove"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2432
-msgid "Rename..."
-msgstr "Rename…"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2444
-msgid "_Mount"
-msgstr "_Mount"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2451
-msgid "_Unmount"
-msgstr "_Unmount"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2458
-msgid "_Eject"
-msgstr "_Eject"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2466
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2310
-msgid "Empty _Trash"
-msgstr "Empty the _Rubbish Bin"
-
-#: /home/codygarver/files/po/../libcore/eel-stock-dialogs.c:35
+#: /home/david/src/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
 msgstr "Show more _details"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:119
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "link to %s"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:1702
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Failed to parse the desktop file: %s"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:1740
+msgid "No Exec field specified"
+msgstr "No Exec field specified"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:1760
+msgid "No URL field specified"
+msgstr "No URL field specified"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:1766
+msgid "Invalid desktop file"
+msgstr "Invalid desktop file"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:2056
+msgid "Slashes are not allowed in filenames"
+msgstr "Slashes are not allowed in filenames"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:2076
+msgid "Toplevel files cannot be renamed"
+msgstr "Toplevel files cannot be renamed"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Merge folder '%s'?"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "An older folder with the same name already exists in '%s'."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "A newer folder with the same name already exists in '%s'."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Another folder with the same name already exists in '%s'."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
+msgid "Replacing it will remove all files in the folder."
+msgstr "Replacing it will remove all files in the folder."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Replace folder '%s'?"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "A folder with the same name already exists in '%s'."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Replace file '%s'?"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will overwrite its content."
+msgstr "Replacing it will overwrite its content."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "An older file with the same name already exists in '%s'."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "A newer file with the same name already exists in '%s'."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Another file with the same name already exists in '%s'."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
+msgid "Original file"
+msgstr "Original file"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
+msgid "Size:"
+msgstr "Size:"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
+msgid "Type:"
+msgstr "Type:"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
+msgid "Last modified:"
+msgstr "Last modified:"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Replace with"
+msgstr "Replace with"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
+msgid "Merge"
+msgstr "Merge"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
+msgid "_Select a new name for the destination"
+msgstr "_Select a new name for the destination"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
+msgid "Reset"
+msgstr "Reset"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
+msgid "Apply this action to all files"
+msgstr "Apply this action to all files"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:200
+msgid "_Skip"
+msgstr "_Skip"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
+msgid "Re_name"
+msgstr "Re_name"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
+msgid "Replace"
+msgstr "Replace"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
+msgid "File conflict"
+msgstr "File conflict"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-progress-info.c:192
+#: /home/david/src/pantheon-files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "Preparing"
+
+#: /home/david/src/pantheon-files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Today at %-H:%M"
+
+#: /home/david/src/pantheon-files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Yesterday at %-H:%M"
+
+#: /home/david/src/pantheon-files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y at %-H:%M"
+
+#: /home/david/src/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (invalid Unicode)"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Delete %d copied items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "Delete '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Delete %d duplicated items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Move %d items back to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Move '%s' back to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Rename '%s' as '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Restore %d items from the Rubbish Bin"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Restore '%s' to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Move %d items back to the Rubbish Bin"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Move '%s' back to Rubbish Bin"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Delete links to %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Delete link to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Restore original permissions of items enclosed in '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Restore original permissions of '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Restore group of '%s' to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Restore owner of '%s' to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Copy %d items to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Copy '%s' to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Duplicate of %d items in '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Duplicate '%s' in '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Move %d items to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Move '%s' to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Create new file '%s' from template "
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Create an empty file '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Create a new folder '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Move %d items to the Rubbish Bin"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Move '%s' to the Rubbish Bin"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Restore '%s' from the Rubbish Bin"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "Create links to %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Create link to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Set permissions of items enclosed in '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Set permissions of '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Set group of '%s' to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Set owner of '%s' to '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Undo copy of %d item"
+msgstr[1] "_Undo copy of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Undo duplicate of %d item"
+msgstr[1] "_Undo duplicate of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Undo move of %d item"
+msgstr[1] "_Undo move of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Undo rename of %d item"
+msgstr[1] "_Undo rename of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "_Undo creation of an empty file"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "_Undo creation of a file from template"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Undo creation of %d folder"
+msgstr[1] "_Undo creation of %d folders"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Undo move to the Rubbish Bin of %d item"
+msgstr[1] "_Undo move to the Rubbish Bin of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Undo restore from the Rubbish Bin of %d item"
+msgstr[1] "_Undo restore from the Rubbish Bin of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Undo create link to %d item"
+msgstr[1] "_Undo create link to %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Undo delete of %d item"
+msgstr[1] "_Undo delete of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Undo recursive change permissions of %d item"
+msgstr[1] "Undo recursive change permissions of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Undo change permissions of %d item"
+msgstr[1] "Undo change permissions of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Undo change group of %d item"
+msgstr[1] "Undo change group of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Undo change owner of %d item"
+msgstr[1] "Undo change owner of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Redo copy of %d item"
+msgstr[1] "_Redo copy of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Redo duplicate of %d item"
+msgstr[1] "_Redo duplicate of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Redo move of %d item"
+msgstr[1] "_Redo move of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Redo rename of %d item"
+msgstr[1] "_Redo rename of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "_Redo creation of an empty file"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "_Redo creation of a file from template"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Redo creation of %d folder"
+msgstr[1] "_Redo creation of %d folders"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Redo move to the Rubbish Bin of %d item"
+msgstr[1] "_Redo move to the Rubbish Bin of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Redo restore from the Rubbish Bin of %d item"
+msgstr[1] "_Redo restore from the Rubbish Bin of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Redo create link to %d item"
+msgstr[1] "_Redo create link to %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Redo delete of %d item"
+msgstr[1] "_Redo delete of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Redo recursive change permissions of %d item"
+msgstr[1] "Redo recursive change permissions of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Redo change permissions of %d item"
+msgstr[1] "Redo change permissions of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Redo change group of %d item"
+msgstr[1] "Redo change group of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Redo change owner of %d item"
+msgstr[1] "Redo change owner of %d items"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Could not determine original location of '%s' "
 
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:122
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-utilities.c:122
 msgid "The item cannot be restored from trash"
 msgstr "The item cannot be restored from the Rubbish Bin"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:200
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:737
-msgid "_Skip"
-msgstr "_Skip"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:201
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "S_kip All"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:202
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "_Retry"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:203
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "Delete _All"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:204
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "_Replace"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:205
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "Replace _All"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:206
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "_Merge"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:207
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "Merge _All"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:208
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "Copy _Anyway"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:294
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d second"
 msgstr[1] "%'d seconds"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:299
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:310
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:299
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minute"
 msgstr[1] "%'d minutes"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:309
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d hour"
 msgstr[1] "%'d hours"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:317
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "approximately %'d hour"
 msgstr[1] "approximately %'d hours"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:393
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "Link to %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:397
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "Another link to %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:413
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'dst link to %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:417
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'dnd link to %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:421
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'drd link to %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:425
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'dth link to %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:463
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr " (copy)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:465
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr " (another copy)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:468
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:470
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:472
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:482
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:468
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:470
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:472
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr "th copy)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:475
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr "st copy)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:477
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr "nd copy)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:479
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr "rd copy)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:496
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (copy)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:498
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (another copy)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:501
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:503
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:505
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:519
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:501
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:503
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:505
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'dth copy)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:513
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'dst copy)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:515
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'dnd copy)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:517
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'drd copy)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:617
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:625
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1381
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
 "Are you sure you want to permanently delete '%B' from the Rubbish Bin?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1384
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1326,24 +1902,24 @@ msgstr[1] ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "Rubbish Bin?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1394
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1462
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1394
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "If you delete an item, it will be permanently lost."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1415
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "Empty all items from the Rubbish Bin?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1419
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "All items in the Rubbish Bin will be permanently deleted."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1450
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Are you sure you want to permanently delete '%B'?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1453
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1353,33 +1929,33 @@ msgstr[0] ""
 msgstr[1] ""
 "Are you sure you want to permanently delete the %'d selected items?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1478
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1510
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1478
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "Deleting files"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1504
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d file left to delete"
 msgstr[1] "%'d files left to delete"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1524
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T left"
 msgstr[1] "%T left"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1592
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1626
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1665
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1742
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2573
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1592
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1626
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1665
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1742
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
 msgstr "Error while deleting."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1596
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -1387,20 +1963,20 @@ msgstr ""
 "Files in the folder '%B' cannot be deleted because you do not have "
 "permissions to see them."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1599
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2632
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3628
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1599
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2632
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "There was an error getting information about the files in the folder '%B'."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1608
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3637
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1608
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
 msgstr "_Skip files"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1629
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
@@ -1408,37 +1984,37 @@ msgstr ""
 "The folder '%B' cannot be deleted because you do not have permissions to "
 "read it."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1632
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2671
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3673
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1632
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2671
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
 msgstr "There was an error reading the folder '%B'."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1666
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "Could not remove the folder %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1743
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "There was an error deleting %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1819
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1831
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1819
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "Moving files to the Rubbish Bin"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1833
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d files left to move to the Rubbish Bin"
 msgstr[1] "%'d file left to move to the Rubbish Bin"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1888
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr "Cannot move file to the Rubbish Bin. Delete Immediately?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1889
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1446,27 +2022,27 @@ msgstr ""
 "This file is located on an external media and cannot be moved to the the "
 "Rubbish Bin. Once deleted, it cannot be restored."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2069
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
 msgstr "Moving Files to the Rubbish Bin"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2071
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
 msgstr "Deleting Files"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2143
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
 msgstr "Unable to eject %V"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2145
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
 msgstr "Unable to unmount %V"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2300
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Do you want to empty the Rubbish Bin before you unmount?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2302
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1474,65 +2050,65 @@ msgstr ""
 "In order to regain the free space on this volume the Rubbish Bin must be "
 "emptied. All deleted items on the volume will be permanently lost."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2308
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
 msgstr "Do _not Empty the Rubbish Bin"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2363
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
 msgstr "Emptying the Rubbish Bin"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2430
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Unable to mount %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2508
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Preparing to copy %'d file (%S)"
 msgstr[1] "Preparing to copy %'d files (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2514
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Preparing to move %'d file (%S)"
 msgstr[1] "Preparing to move %'d files (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2520
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Preparing to delete %'d file (%S)"
 msgstr[1] "Preparing to delete %'d files (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2526
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Preparing to move %'d file to the Rubbish Bin"
 msgstr[1] "Preparing to move %'d files to the Rubbish Bin"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2569
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3489
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3620
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3665
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2569
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3489
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3620
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
 msgstr "Error while copying."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2571
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3618
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3663
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2571
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3618
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
 msgstr "Error while moving."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2575
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
 msgstr "Error while moving files to the Rubbish Bin."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2629
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1540,7 +2116,7 @@ msgstr ""
 "Files in the folder '%B' cannot be handled because you do not have "
 "permissions to see them."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2668
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1548,7 +2124,7 @@ msgstr ""
 "The folder '%B' cannot be handled because you do not have permissions to "
 "read it."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2745
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1556,30 +2132,30 @@ msgstr ""
 "The file '%B' cannot be handled because you do not have permissions to read "
 "it."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2748
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
 msgstr "There was an error getting information about '%B'."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2848
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2890
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2923
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2953
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2848
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2890
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2923
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
 msgstr "Error while copying to '%B'."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2852
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
 msgstr "You do not have permissions to access the destination folder."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2854
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
 msgstr "There was an error getting information about the destination."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2891
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
 msgstr "The destination is not a folder."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2924
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1587,76 +2163,76 @@ msgstr ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2926
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "There is %S available, but %S is required."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2954
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
 msgstr "The destination is read-only."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3015
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Moving '%B' to '%B'"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3016
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Copying '%B' to '%B'"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3020
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
 msgstr "Duplicating '%B'"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3024
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Moving %'d file (in '%B') to '%B'"
 msgstr[1] "Moving %'d files (in \"%B\") to \"%B\""
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3027
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Copying %'d file (in '%B') to '%B'"
 msgstr[1] "Copying %'d files (in '%B') to '%B'"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3034
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Duplicating %'d file (in '%B')"
 msgstr[1] "Duplicating %'d files (in '%B')"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3043
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Moving %'d file to '%B'"
 msgstr[1] "Moving %'d files to '%B'"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3047
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Copying %'d file to '%B'"
 msgstr[1] "Copying %'d files to '%B'"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3052
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Duplicating %'d file"
 msgstr[1] "Duplicating %'d files"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3103
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
 msgstr "%S of %S"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3114
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S of %S — %T left (%S/sec)"
 msgstr[1] "%S of %S — %T left (%S/sec)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3493
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1664,11 +2240,11 @@ msgstr ""
 "The folder '%B' cannot be copied because you do not have permissions to "
 "create it in the destination."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3496
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
 msgstr "There was an error creating the folder '%B'."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3625
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1676,7 +2252,7 @@ msgstr ""
 "Files in the folder '%B' cannot be copied because you do not have "
 "permissions to see them."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3670
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3670
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
@@ -1684,748 +2260,186 @@ msgstr ""
 "The folder '%B' cannot be copied because you do not have permissions to read "
 "it."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3715
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4416
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5004
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3715
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4416
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
 msgstr "Error while moving '%B'."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3716
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
 msgstr "Could not remove the source folder."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3801
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3842
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4418
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4489
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3801
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3842
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4418
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
 msgstr "Error while copying '%B'."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3802
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Could not remove files from the already-existing folder %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3843
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Could not remove the already-existing file %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4172
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4844
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4172
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
 msgstr "You cannot move a folder into itself."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4173
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4845
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4173
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
 msgstr "You cannot copy a folder into itself."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4174
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4846
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4174
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
 msgstr "The destination folder is inside the source folder."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4205
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
 msgstr "You cannot move a file over itself."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4206
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot copy a file over itself."
 msgstr "You cannot copy a file over itself."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4207
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4207
 msgid "The source file would be overwritten by the destination."
 msgstr "The source file would be overwritten by the destination."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4420
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "Could not remove the already-existing file with the same name in %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4490
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "There was an error copying the file into %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4718
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
 msgstr "Copying Files"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4744
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
 msgstr "Preparing to move to '%B'"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4756
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Preparing to move %'d file"
 msgstr[1] "Preparing to move %'d files"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5005
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "There was an error moving the file into %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5268
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
 msgstr "Moving Files"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5298
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
 msgstr "Creating links in '%B'"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5309
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Making link to %'d file"
 msgstr[1] "Making links to %'d files"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5444
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
 msgstr "Error while creating link to %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5446
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
 msgstr "Symbolic links only supported for local files"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5449
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
 msgstr "The target doesn't support symbolic links."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5452
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "There was an error creating the symlink in %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5780
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5783
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5780
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
 msgstr "Setting permissions"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6034
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
 msgstr "untitled folder"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6042
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
 msgstr "new file"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6213
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
 msgstr "Error while creating directory %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6215
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
 msgstr "Error while creating file %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6217
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "There was an error creating the directory in %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6534
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
 msgstr "Emptying the Rubbish Bin"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Delete %d copied items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "Delete '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Delete %d duplicated items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Move %d items back to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Move '%s' back to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Rename '%s' as '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Restore %d items from the Rubbish Bin"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Restore '%s' to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Move %d items back to the Rubbish Bin"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Move '%s' back to Rubbish Bin"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Delete links to %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Delete link to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Restore original permissions of items enclosed in '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Restore original permissions of '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Restore group of '%s' to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Restore owner of '%s' to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Copy %d items to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Copy '%s' to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Duplicate of %d items in '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Duplicate '%s' in '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Move %d items to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Move '%s' to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Create new file '%s' from template "
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Create an empty file '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Create a new folder '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Move %d items to the Rubbish Bin"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Move '%s' to the Rubbish Bin"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Restore '%s' from the Rubbish Bin"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Create links to %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Create link to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Set permissions of items enclosed in '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Set permissions of '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Set group of '%s' to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Set owner of '%s' to '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Undo copy of %d item"
-msgstr[1] "_Undo copy of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Undo duplicate of %d item"
-msgstr[1] "_Undo duplicate of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Undo move of %d item"
-msgstr[1] "_Undo move of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Undo rename of %d item"
-msgstr[1] "_Undo rename of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "_Undo creation of an empty file"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "_Undo creation of a file from template"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Undo creation of %d folder"
-msgstr[1] "_Undo creation of %d folders"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Undo move to the Rubbish Bin of %d item"
-msgstr[1] "_Undo move to the Rubbish Bin of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Undo restore from the Rubbish Bin of %d item"
-msgstr[1] "_Undo restore from the Rubbish Bin of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Undo create link to %d item"
-msgstr[1] "_Undo create link to %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Undo delete of %d item"
-msgstr[1] "_Undo delete of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Undo recursive change permissions of %d item"
-msgstr[1] "Undo recursive change permissions of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Undo change permissions of %d item"
-msgstr[1] "Undo change permissions of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Undo change group of %d item"
-msgstr[1] "Undo change group of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Undo change owner of %d item"
-msgstr[1] "Undo change owner of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Redo copy of %d item"
-msgstr[1] "_Redo copy of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Redo duplicate of %d item"
-msgstr[1] "_Redo duplicate of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Redo move of %d item"
-msgstr[1] "_Redo move of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Redo rename of %d item"
-msgstr[1] "_Redo rename of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "_Redo creation of an empty file"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "_Redo creation of a file from template"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Redo creation of %d folder"
-msgstr[1] "_Redo creation of %d folders"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Redo move to the Rubbish Bin of %d item"
-msgstr[1] "_Redo move to the Rubbish Bin of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Redo restore from the Rubbish Bin of %d item"
-msgstr[1] "_Redo restore from the Rubbish Bin of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Redo create link to %d item"
-msgstr[1] "_Redo create link to %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Redo delete of %d item"
-msgstr[1] "_Redo delete of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Redo recursive change permissions of %d item"
-msgstr[1] "Redo recursive change permissions of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Redo change permissions of %d item"
-msgstr[1] "Redo change permissions of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Redo change group of %d item"
-msgstr[1] "Redo change group of %d items"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Redo change owner of %d item"
-msgstr[1] "Redo change owner of %d items"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Today at %-H:%M"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Yesterday at %-H:%M"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-H:%M"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:252
-#, c-format
-msgid "link to %s"
-msgstr "link to %s"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1702
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Failed to parse the desktop file: %s"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1740
-msgid "No Exec field specified"
-msgstr "No Exec field specified"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1760
-msgid "No URL field specified"
-msgstr "No URL field specified"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1766
-msgid "Invalid desktop file"
-msgstr "Invalid desktop file"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2056
-msgid "Slashes are not allowed in filenames"
-msgstr "Slashes are not allowed in filenames"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2076
-msgid "Toplevel files cannot be renamed"
-msgstr "Toplevel files cannot be renamed"
-
-#: /home/codygarver/files/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (invalid Unicode)"
-
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "Preparing"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:361
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Merge folder '%s'?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:364
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "An older folder with the same name already exists in '%s'."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "A newer folder with the same name already exists in '%s'."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:377
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Another folder with the same name already exists in '%s'."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:382
-msgid "Replacing it will remove all files in the folder."
-msgstr "Replacing it will remove all files in the folder."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Replace folder '%s'?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "A folder with the same name already exists in '%s'."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:391
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Replace file '%s'?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will overwrite its content."
-msgstr "Replacing it will overwrite its content."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "An older file with the same name already exists in '%s'."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "A newer file with the same name already exists in '%s'."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:405
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Another file with the same name already exists in '%s'."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:460
-msgid "Original file"
-msgstr "Original file"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:482
-msgid "Size:"
-msgstr "Size:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:485
-msgid "Type:"
-msgstr "Type:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:488
-msgid "Last modified:"
-msgstr "Last modified:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Replace with"
-msgstr "Replace with"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:506
-msgid "Merge"
-msgstr "Merge"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
-msgid "_Select a new name for the destination"
-msgstr "_Select a new name for the destination"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:714
-msgid "Reset"
-msgstr "Reset"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:726
-msgid "Apply this action to all files"
-msgstr "Apply this action to all files"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:742
-msgid "Re_name"
-msgstr "Re_name"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:748
-msgid "Replace"
-msgstr "Replace"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:821
-msgid "File conflict"
-msgstr "File conflict"
-
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:325
+#: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
 msgstr "Cut the selected text to the clipboard"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:329
+#: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
 msgstr "Copy the selected text to the clipboard"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:333
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:337
+#: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:333
+#: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
 msgstr "Paste the text stored on the clipboard"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:813
+#: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
 msgstr "Go to %s"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:86
+#: /home/david/src/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
 msgstr "View as grid"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:89
+#: /home/david/src/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
 msgstr "View as list"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:95
+#: /home/david/src/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr "View as column"
 
-#: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
+#: /home/david/src/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
 msgstr "These items may be deleted by emptying the Rubbish Bin."
 
-#: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:47
+#: /home/david/src/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Empty the Rubbish Bin"

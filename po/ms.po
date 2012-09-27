@@ -7,712 +7,562 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-09-17 15:03-0500\n"
-"PO-Revision-Date: 2012-08-13 22:26+0000\n"
+"POT-Creation-Date: 2012-09-26 13:11+0100\n"
+"PO-Revision-Date: 2012-09-26 08:05+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-09-18 05:32+0000\n"
-"X-Generator: Launchpad (build 15966)\n"
+"X-Launchpad-Export-Date: 2012-09-27 05:04+0000\n"
+"X-Generator: Launchpad (build 16033)\n"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:337
-msgid "Name"
-msgstr "Nama"
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "Sifat"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:338
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Jenis"
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:116
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:47
+msgid "General"
+msgstr "Am"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:341
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:353
-msgid "Target"
-msgstr "Sasaran"
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:124
+msgid "More"
+msgstr "Lagi"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:343
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Saiz"
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:136
+msgid "Preview"
+msgstr "Pratonton"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:345
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:325
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:323
+msgid "Created"
+msgstr "Dicipta"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:325
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:345
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Modified"
 msgstr "Diubahsuai"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:346
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:828
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:841
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:328
+msgid "Last Access"
+msgstr "Capaian Terakhir"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:334
+msgid "Deleted"
+msgstr "Dipadam"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:339
+msgid "MimeType"
+msgstr "Jenis Mime"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:347
+msgid "MimeTypes"
+msgstr "Jenis Mime"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:351
+msgid "Location"
+msgstr "Lokasi"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:353
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:341
+msgid "Target"
+msgstr "Sasaran"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:359
+msgid "Origin Location"
+msgstr "Lokasi Asal"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:369
+msgid "Info:"
+msgstr "MaklumatL"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:404
+msgid "Other application..."
+msgstr "Aplikasi lain..."
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:428
+msgid "Open with:"
+msgstr "Buka dengan:"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:449
+msgid "Usage:"
+msgstr "Penggunaan:"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:454
+msgid "Device usage:"
+msgstr "Penggunaan peranti:"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:600
+msgid "Read"
+msgstr "Baca"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:605
+msgid "Write"
+msgstr "Tulis"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:610
+msgid "Execute"
+msgstr "Lakukan"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:828
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:841
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:346
 msgid "Owner"
 msgstr "Pemilik"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:833
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:845
+msgid "Group"
+msgstr "Kumpulan"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:849
+msgid "Everyone"
+msgstr "Semua Orang"
+
+#: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
+msgid "Select an aplication to open "
+msgstr "Pilih aplikasi untuk buka "
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:33
+msgid "New Window as _Administrator"
+msgstr "Tetingkap Baru sebagai Pent_adbir"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:160
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3383
+msgid "Set as default"
+msgstr "Tetapkan sebagai lalai"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:165
+msgid "Ignore"
+msgstr "Abai"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:497
+msgid "Undo"
+msgstr "Buat Asal"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:498
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:789
+msgid "Undo the last action"
+msgstr "Buat asal tindakan terakhir"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:507
+msgid "Redo"
+msgstr "Buat Semula"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:508
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:792
+msgid "Redo the last action"
+msgstr "Buat semula tindakan terakhir"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:763
+msgid "_File"
+msgstr "_Fail"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:764
+msgid "_Edit"
+msgstr "_Sunting"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:765
+msgid "_View"
+msgstr "_Papar"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:766
+msgid "_Go"
+msgstr "Per_gi"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:767
+msgid "_Help"
+msgstr "Bant_uan"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:769
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "_Tetingkap Baru"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:770
+msgid "Open another Files window for the displayed location"
+msgstr "Buka tetingkap FIles lain untuk loaksi dipaparkan"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:773
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "_Tab Baru"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:774
+msgid "Open another tab for the displayed location"
+msgstr "Buka tab lain untuk memaparkan lokasi"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:778
+msgid "_Close"
+msgstr "_Tutup"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:779
+msgid "Close this folder"
+msgstr "Tutup folder ini"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:782
+msgid "Preferences"
+msgstr "Keutamaan"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:783
+msgid "Change Files preferences"
+msgstr "Ubah keutamaan FIles"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:788
+msgid "_Undo"
+msgstr "Buat _Asal"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:791
+msgid "_Redo"
+msgstr "Buat _Semula"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:794
+msgid "Open _Parent"
+msgstr "Buka _Induk"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:795
+msgid "Open the parent folder"
+msgstr "Buka folder induk"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:797
+msgid "_Back"
+msgstr "_Undur"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:798
+msgid "Go to the previous visited location"
+msgstr "Pergi ke lokasi dilawati terdahulu"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:801
+msgid "_Forward"
+msgstr "Ma_ju"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:802
+msgid "Go to the next visited location"
+msgstr "Pergi ke lokasi dilawati berikutnya"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:804
+msgid "_Reload"
+msgstr "Muat Sem_ula"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:805
+msgid "Reload the current location"
+msgstr "Muat semula lokasi semasa"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:808
+msgid "_Home Folder"
+msgstr "Folder _Rumah"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:809
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "Buka folder peribadi anda"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:812
+msgid "_Trash"
+msgstr "Tong _Sampah"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:813
+msgid "Open your personal trash folder"
+msgstr "Buka folder tong sampah peribadi anda"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:816
+msgid "_Network"
+msgstr "_Rangkaian"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:817
+msgid "Browse bookmarked and local network locations"
+msgstr "Layar lokasi tanda buku dan rangkaian setempat"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:820
+msgid "Zoom _In"
+msgstr "Zum _Masuk"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:821
+msgid "Increase the view size"
+msgstr "Besarkan saiz paparan"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:832
+msgid "Zoom _Out"
+msgstr "Zum _Keluar"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:833
+msgid "Decrease the view size"
+msgstr "Kecilkan saiz paparan"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:840
+msgid "Normal Si_ze"
+msgstr "Sai_z Biasa"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:841
+msgid "Use the normal view size"
+msgstr "Guna saiz paparan biasa"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:844
+msgid "Next Tab"
+msgstr "Tab Berikutnya"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:848
+msgid "Previous Tab"
+msgstr "Tab Terdahulu"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:852
+msgid "Connect to _Server..."
+msgstr "Sambung ke _Pelayan..."
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:853
+msgid "Connect to a remote computer or shared disk"
+msgstr "Sambung ke komputer jauh atau cakera dikongsi"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:856
+msgid "_About"
+msgstr "Perih_al"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:857
+msgid "Display credits"
+msgstr "Papar penghargaan"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:860
+msgid "Report a Problem..."
+msgstr "Laporkan Masalah..."
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:861
+msgid "File a bug on Launchpad"
+msgstr "Failkan pepijat di Launchpad"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:864
+msgid "Get Help Online..."
+msgstr "Dapatkan Bantuan Atas Talian..."
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:868
+msgid "Translate This Application..."
+msgstr "Terjemahkan Aplikasi Ini..."
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:877
+msgid "Show _Hidden Files"
+msgstr "Papar Fail _Tersembunyi"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:878
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Togol paparan fail tersembunyi didalam tetigkap semasa"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:883
+msgid "Show _Desktop Files"
+msgstr "Papar Fail _Desktop"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:884
+msgid "Toggle the display of desktop files"
+msgstr "Togol paparan fail desktop"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:888
+msgid "_Context Pane"
+msgstr "Anak Tetingkap _Konteks"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:889
+msgid "Change the visibility of the context pane"
+msgstr "Ubah ketampakan anak tetingkan kandungan"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:893
+msgid "_Menubar"
+msgstr "_Palang Alat"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:894
+msgid "Change the visibility of this window's menubar"
+msgstr "Ubah ketampakan bagi palang menu tetingkap ini"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:898
+msgid "_Places"
+msgstr "_Tempat"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:899
+msgid "Change the visibility of this window's side pane"
+msgstr "Ubah kebolehtampakan bagi tetingkap anak tetingkap sisi ini"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:907
+msgid "Icon"
+msgstr "Ikon"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:910
+msgid "List"
+msgstr "Senarai"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:913
+msgid "Compact"
+msgstr "Padat"
+
+#: /home/david/src/pantheon-files/po/../src/View/Window.vala:916
+msgid "Columns"
+msgstr "Lajur"
+
+#: /home/david/src/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "Folder tidak wujud"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
+#: /home/david/src/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
 msgstr "FIles tidak dapat cari folder %s"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/david/src/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "Cipta"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/david/src/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "Cipta folder %s"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
 msgstr "Keutamaan Fail"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
-msgid "General"
-msgstr "Am"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:102
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
 msgstr "Sambungan"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:207
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:207
 msgid "Single click to open:"
 msgstr "Klik sekali untuk buka:"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:214
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
 msgstr "Pemilihan-sendiri tetikus:"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:233
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
 msgstr "<small><i>Perlahan</i></small>"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:235
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:235
 msgid "<small><i>Fast</i></small>"
 msgstr "<small><i>Laju</i></small>"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:250
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:250
 msgid "Date format:"
 msgstr "Format tarikh:"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:253
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "iso"
 msgstr "iso"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:254
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:254
 msgid "locale"
 msgstr "lokal"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:255
+#: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:255
 msgid "informal"
 msgstr "tidak formal"
 
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:141
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:324
-msgid "Home"
-msgstr "Rumah"
-
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:143
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:394
-msgid "File System"
-msgstr "Sistem Fail"
-
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
-msgid "(as Administrator)"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/Window.vala:33
-msgid "New Window as _Administrator"
-msgstr "Tetingkap Baru sebagai Pent_adbir"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:160
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3383
-msgid "Set as default"
-msgstr "Tetapkan sebagai lalai"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:165
-msgid "Ignore"
-msgstr "Abai"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:497
-msgid "Undo"
-msgstr "Buat Asal"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:498
-#: /home/codygarver/files/po/../src/View/Window.vala:789
-msgid "Undo the last action"
-msgstr "Buat asal tindakan terakhir"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:507
-msgid "Redo"
-msgstr "Buat Semula"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:508
-#: /home/codygarver/files/po/../src/View/Window.vala:792
-msgid "Redo the last action"
-msgstr "Buat semula tindakan terakhir"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:763
-msgid "_File"
-msgstr "_Fail"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:764
-msgid "_Edit"
-msgstr "_Sunting"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:765
-msgid "_View"
-msgstr "_Papar"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:766
-msgid "_Go"
-msgstr "Per_gi"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:767
-msgid "_Help"
-msgstr "Bant_uan"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:769
-msgid "New _Window"
-msgstr "_Tetingkap Baru"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:770
-msgid "Open another Files window for the displayed location"
-msgstr "Buka tetingkap FIles lain untuk loaksi dipaparkan"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:773
-msgid "New _Tab"
-msgstr "_Tab Baru"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:774
-msgid "Open another tab for the displayed location"
-msgstr "Buka tab lain untuk memaparkan lokasi"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:778
-msgid "_Close"
-msgstr "_Tutup"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:779
-msgid "Close this folder"
-msgstr "Tutup folder ini"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:782
-msgid "Preferences"
-msgstr "Keutamaan"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:783
-msgid "Change Files preferences"
-msgstr "Ubah keutamaan FIles"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:788
-msgid "_Undo"
-msgstr "Buat _Asal"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:791
-msgid "_Redo"
-msgstr "Buat _Semula"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:794
-msgid "Open _Parent"
-msgstr "Buka _Induk"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:795
-msgid "Open the parent folder"
-msgstr "Buka folder induk"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:797
-msgid "_Back"
-msgstr "_Undur"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:798
-msgid "Go to the previous visited location"
-msgstr "Pergi ke lokasi dilawati terdahulu"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:801
-msgid "_Forward"
-msgstr "Ma_ju"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:802
-msgid "Go to the next visited location"
-msgstr "Pergi ke lokasi dilawati berikutnya"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:804
-msgid "_Reload"
-msgstr "Muat Sem_ula"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:805
-msgid "Reload the current location"
-msgstr "Muat semula lokasi semasa"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:808
-msgid "_Home Folder"
-msgstr "Folder _Rumah"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:809
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:329
-msgid "Open your personal folder"
-msgstr "Buka folder peribadi anda"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:812
-msgid "_Trash"
-msgstr "Tong _Sampah"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:813
-msgid "Open your personal trash folder"
-msgstr "Buka folder tong sampah peribadi anda"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:816
-msgid "_Network"
-msgstr "_Rangkaian"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:817
-msgid "Browse bookmarked and local network locations"
-msgstr "Layar lokasi tanda buku dan rangkaian setempat"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:820
-msgid "Zoom _In"
-msgstr "Zum _Masuk"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:821
-msgid "Increase the view size"
-msgstr "Besarkan saiz paparan"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:832
-msgid "Zoom _Out"
-msgstr "Zum _Keluar"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:833
-msgid "Decrease the view size"
-msgstr "Kecilkan saiz paparan"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:840
-msgid "Normal Si_ze"
-msgstr "Sai_z Biasa"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:841
-msgid "Use the normal view size"
-msgstr "Guna saiz paparan biasa"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:844
-msgid "Next Tab"
-msgstr "Tab Berikutnya"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:848
-msgid "Previous Tab"
-msgstr "Tab Terdahulu"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:852
-msgid "Connect to _Server..."
-msgstr "Sambung ke _Pelayan..."
-
-#: /home/codygarver/files/po/../src/View/Window.vala:853
-msgid "Connect to a remote computer or shared disk"
-msgstr "Sambung ke komputer jauh atau cakera dikongsi"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:856
-msgid "_About"
-msgstr "Perih_al"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:857
-msgid "Display credits"
-msgstr "Papar penghargaan"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:860
-msgid "Report a Problem..."
-msgstr "Laporkan Masalah..."
-
-#: /home/codygarver/files/po/../src/View/Window.vala:861
-msgid "File a bug on Launchpad"
-msgstr "Failkan pepijat di Launchpad"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:864
-msgid "Get Help Online..."
-msgstr "Dapatkan Bantuan Atas Talian..."
-
-#: /home/codygarver/files/po/../src/View/Window.vala:868
-msgid "Translate This Application..."
-msgstr "Terjemahkan Aplikasi Ini..."
-
-#: /home/codygarver/files/po/../src/View/Window.vala:877
-msgid "Show _Hidden Files"
-msgstr "Papar Fail _Tersembunyi"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:878
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Togol paparan fail tersembunyi didalam tetigkap semasa"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:883
-msgid "Show _Desktop Files"
-msgstr "Papar Fail _Desktop"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:884
-msgid "Toggle the display of desktop files"
-msgstr "Togol paparan fail desktop"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:888
-msgid "_Context Pane"
-msgstr "Anak Tetingkap _Konteks"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:889
-msgid "Change the visibility of the context pane"
-msgstr "Ubah ketampakan anak tetingkan kandungan"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:893
-msgid "_Menubar"
-msgstr "_Palang Alat"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:894
-msgid "Change the visibility of this window's menubar"
-msgstr "Ubah ketampakan bagi palang menu tetingkap ini"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:898
-msgid "_Places"
-msgstr "_Tempat"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:899
-msgid "Change the visibility of this window's side pane"
-msgstr "Ubah kebolehtampakan bagi tetingkap anak tetingkap sisi ini"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:907
-msgid "Icon"
-msgstr "Ikon"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:910
-msgid "List"
-msgstr "Senarai"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:913
-msgid "Compact"
-msgstr "Padat"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:916
-msgid "Columns"
-msgstr "Lajur"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "Sifat"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
-msgid "More"
-msgstr "Lagi"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
-msgid "Preview"
-msgstr "Pratonton"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:323
-msgid "Created"
-msgstr "Dicipta"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:328
-msgid "Last Access"
-msgstr "Capaian Terakhir"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:334
-msgid "Deleted"
-msgstr "Dipadam"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:339
-msgid "MimeType"
-msgstr "Jenis Mime"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:347
-msgid "MimeTypes"
-msgstr "Jenis Mime"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:351
-msgid "Location"
-msgstr "Lokasi"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
-msgid "Origin Location"
-msgstr "Lokasi Asal"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
-msgid "Info:"
-msgstr "MaklumatL"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
-msgid "Other application..."
-msgstr "Aplikasi lain..."
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
-msgid "Open with:"
-msgstr "Buka dengan:"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
-msgid "Usage:"
-msgstr "Penggunaan:"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
-msgid "Device usage:"
-msgstr "Penggunaan peranti:"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
-msgid "Read"
-msgstr "Baca"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:605
-msgid "Write"
-msgstr "Tulis"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:610
-msgid "Execute"
-msgstr "Lakukan"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
-msgid "Group"
-msgstr "Kumpulan"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
-msgid "Everyone"
-msgstr "Semua Orang"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:1105
-msgid "Select an aplication to open "
-msgstr "Pilih aplikasi untuk buka "
-
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
+#: /home/david/src/pantheon-files/po/../src/View/LocationBar.vala:110
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:370
 msgid "Trash"
 msgstr "Tong Sampah"
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:588
+#: /home/david/src/pantheon-files/po/../src/View/LocationBar.vala:111
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:588
 msgid "Network"
 msgstr "Rangkaian"
 
-#: /home/codygarver/files/po/../src/fm-columns-view.c:82
-#: /home/codygarver/files/po/../src/fm-list-view.c:616
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:572
-msgid "This folder is empty."
-msgstr "Folder ini kosong."
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:337
+msgid "Name"
+msgstr "Nama"
 
-#: /home/codygarver/files/po/../src/fm-columns-view.c:186
-#: /home/codygarver/files/po/../src/fm-list-view.c:199
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:139
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Gagal menamakan semula %s ke %s"
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:338
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Jenis"
 
-#: /home/codygarver/files/po/../src/fm-compact-view.c:86
-msgid "Compact directory listing"
-msgstr "Penyenaraian direktori padat"
+#: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:343
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Saiz"
 
-#: /home/codygarver/files/po/../src/fm-compact-view.c:87
-msgid "Compact view"
-msgstr "Paparan padat"
+#: /home/david/src/pantheon-files/po/../src/View/ViewContainer.vala:141
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "Rumah"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:124
-msgid "SSH"
-msgstr "SSH"
+#: /home/david/src/pantheon-files/po/../src/View/ViewContainer.vala:143
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "Sistem Fail"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:127
-msgid "Public FTP"
-msgstr "FTP Awam"
+#: /home/david/src/pantheon-files/po/../src/View/ViewContainer.vala:148
+msgid "(as Administrator)"
+msgstr "(sebagai Pentadbir)"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:129
-msgid "FTP (with login)"
-msgstr "FTP (dengan daftar masuk)"
+#: /home/david/src/pantheon-files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Tiada apa pada papan keratan untuk ditampalkan"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:132
-msgid "Windows share"
-msgstr "Perkongsian Windows"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:134
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:136
-msgid "Secure WebDAV (HTTPS)"
-msgstr "WebDAV Selamat (HTTPS)"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:183
-msgid "Connecting..."
-msgstr "Menyambung..."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:207
-msgid ""
-"Can't load the supported server method list.\n"
-"Please check your gvfs installation."
-msgstr ""
-"Tidak dapat memuatkan senarai kaedah pelayan tersokong.\n"
-"Sila semak pemasangan gvfs anda."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:285
-#, c-format
-msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Folder \"%s\" tidak dapat dibuka pada \"%s\"."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:295
-#, c-format
-msgid "The server at \"%s\" cannot be found."
-msgstr "Pelayan di \"%s\" tidak ditemui."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:330
-msgid "Try Again"
-msgstr "Cuba Lagi"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:395
-msgid "Please verify your user details."
-msgstr "Sila sahkan perincian pengguna anda"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:425
-msgid "Continue"
-msgstr "Teruskan"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:750
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1140
-msgid "C_onnect"
-msgstr "Sa_mbung"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:875
-msgid "Connect to Server"
-msgstr "Sambung ke Pelayan"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:893
-msgid "Server Details"
-msgstr "Perincian Pelayan"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:917
-msgid "_Server:"
-msgstr "Pe_layan:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:937
-msgid "_Port:"
-msgstr "_Port:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:955
-msgid "_Type:"
-msgstr "_Jenis:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1024
-msgid "Sh_are:"
-msgstr "K_ongsi:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1039
-msgid "_Folder:"
-msgstr "_Folder:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1057
-msgid "User Details"
-msgstr "Perincian Pengguna"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1080
-msgid "_Domain name:"
-msgstr "Nama _domain:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1095
-msgid "_User name:"
-msgstr "_Nama pengguna:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1110
-msgid "Pass_word:"
-msgstr "Kata _Laluan:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1126
-msgid "_Remember this password"
-msgstr "_Ingat kata laluan ini"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1229
-msgid "Operation cancelled"
-msgstr "Operasi dibatalkan"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Klik Tunggal"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Sama ada item dalam paparan boleh diaktifkan dengan sekali klik"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "Had Masa Tamat Klik Tunggal"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-"Jumlah masa selepas item dibawah kursor tetikus akan dipilih secara "
-"automatik dalam mod sekali klik."
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1151
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1151
 msgid "Invalid filename provided by XDS drag site"
 msgstr "Nama fail tidak sah disediakan oleh laman seret XDS"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1309
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1309
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
 msgstr "Gagal mencipta pautan untuk URL \"%s\""
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1794
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1794
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
 msgstr[0] "Guna \"%s\" untuk membuka item dipilih"
 msgstr[1] "Guna \"%s\" untuk membuka item dipilih"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1941
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1941
 #, c-format
 msgid "_Open With %s"
 msgstr "_Buka Dengan %s"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1947
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3460
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2399
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1947
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3460
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2399
 msgid "_Open"
 msgstr "B_uka"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1963
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1963
 #, c-format
 msgid "Open in %'d New _Tabs"
 msgstr "Buka dalam %'d _Tab Baru"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1967
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3472
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2407
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1967
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3472
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2407
 msgid "Open in New _Tab"
 msgstr "Buka dalam _Tab Baru"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1972
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1972
 #, c-format
 msgid "Open in %'d New _Windows"
 msgstr "Buka dalam %'d T_etingkap Baru"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1976
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2414
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:1976
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2414
 msgid "Open in New _Window"
 msgstr "Buka dalam _Tetingkap Baru"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3432
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3432
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr "Sediakan folder pilihan untuk dialih menggunakan perintah Tampal"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3436
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3436
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr "Sediakan folder pilihan untuk disalin menggunakan perintah Tampal"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3440
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3440
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 "Alih atau salin fail terdahulu yang dipilih melalui perintah Potong atau "
 "Salin"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3443
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3443
 msgid "Paste Into Folder"
 msgstr "Tampal Ke Dalam Folder"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3444
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3444
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
@@ -720,272 +570,316 @@ msgstr ""
 "Alih atau salin fail yang terdahulu dipilih dengan perintah Potong atau "
 "Salin kedalam folder terpilih"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3447
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3447
 msgid "_Rename..."
 msgstr "_Namakan semula..."
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3448
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3448
 msgid "Rename selected item"
 msgstr "Namakan semula item dipilih"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3451
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3451
 msgid "Create New _Folder"
 msgstr "Cipta _Folder Baru"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3452
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3452
 msgid "Create a new empty folder inside this folder"
 msgstr "Cipta folder kosong baru di dalam folder ini"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3454
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3454
 msgid "Create New _File"
 msgstr "Cipta _Fail Baru"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3456
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3456
 msgid "_Empty File"
 msgstr "Fail _Kosong"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3457
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3457
 msgid "Create a new empty file inside this folder"
 msgstr "Cipta fail kosong baru di dalam folder ini"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3461
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3461
 msgid "Open the selected item"
 msgstr "Buka item terpilih"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3468
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3468
 msgid "Open in new Window"
 msgstr "Buka  dalam tetingkap baru"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3469
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3469
 msgid "Open each selected item in a new window"
 msgstr "Buka setiap item dalam tetingkap baru"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3473
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3473
 msgid "Open each selected item in a new tab"
 msgstr "Buka setiap item terpilih ke tab baru"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3475
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3475
 msgid "Open Wit_h"
 msgstr "Buka _Dengan"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3476
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3476
 msgid "Choose a program with which to open the selected item"
 msgstr "Pilih program untuk membuka item terpilih"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3478
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3478
 msgid "Other _Application..."
 msgstr "_Aplikasi Lain..."
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3479
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3479
 msgid "Choose another application with which to open the selected item"
 msgstr "Pilih aplikasi lain untuk membuka item terpilih"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3482
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3482
 msgid "Mo_ve to Trash"
 msgstr "_Alih ke Tong Sampah"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3483
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3483
 msgid "Move each selected item to the Trash"
 msgstr "Alihkan setiap item dipilih ke Tong Sampah"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3486
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3486
 msgid "_Delete Permanently"
 msgstr "_Padam secara Kekal"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3487
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3487
 msgid "Delete each selected item, without moving to the Trash"
 msgstr "Padam setiap item dipilih, tanpa memindahnya ke Tong Sampah"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3490
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3490
 msgid "_Restore"
 msgstr "_Pulih"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3494
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3190
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3494
+#: /home/david/src/pantheon-files/po/../src/eel-editable-label.c:3190
 msgid "Select All"
 msgstr "Pilih Semua"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3498
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3498
 msgid "_Properties"
 msgstr "Si_fat"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3499
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3499
 msgid "View or modify the properties of each selected item"
 msgstr "Papar atau ubahsuai ciri setiap item dipilih"
 
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3606
+#: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3606
 msgid "Set Color:"
 msgstr "Tetapkan Warna:"
 
-#: /home/codygarver/files/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Mod bentangan"
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:139
+#: /home/david/src/pantheon-files/po/../src/fm-columns-view.c:186
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:199
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "Gagal menamakan semula %s ke %s"
 
-#: /home/codygarver/files/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "Merupakan mod bentangan"
-
-#: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Tiada apa pada papan keratan untuk ditampalkan"
-
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Nama Fail"
-
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Kaedah Masukan"
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
 msgstr "_Susun Item"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:288
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
 msgstr "Tertib _songsang"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:289
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
 msgstr "Papar ikon pada tertib bertentangan"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
 msgstr "Berdasarkan _Nama"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
 msgstr "Biar ikon diisih mengikut nama dalam baris"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
 msgstr "Berdasarkan _Saiz"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
 msgstr "Biarkan ikon diisih mengikut saiz dalam baris"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
 msgstr "Berdasarkan _Jenis"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
 msgstr "Biarkan ikon diisih mengikut jenis dalam baris"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
 msgstr "Berdasarkan _Tarikh Ubahsuai"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
 msgstr "Biarkan ikon diisih mengikut tarikh ubahsuai dalam baris"
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:445
-msgid "Customize Toolbar"
-msgstr "Suaikan Palang Alat"
+#: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:572
+#: /home/david/src/pantheon-files/po/../src/fm-columns-view.c:82
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:616
+msgid "This folder is empty."
+msgstr "Folder ini kosong."
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:464
+#: /home/david/src/pantheon-files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Klik Tunggal"
+
+#: /home/david/src/pantheon-files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Sama ada item dalam paparan boleh diaktifkan dengan sekali klik"
+
+#: /home/david/src/pantheon-files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "Had Masa Tamat Klik Tunggal"
+
+#: /home/david/src/pantheon-files/po/../src/exo-tree-view.c:185
 msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
 msgstr ""
-"Pilih item yang akan dipaparkan pada palang alat. Item boleh ditertib semula "
-"dengan cara seret dan lepas."
+"Jumlah masa selepas item dibawah kursor tetikus akan dipilih secara "
+"automatik dalam mod sekali klik."
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:478
-msgid "Available Items"
-msgstr "Item Tersedia"
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
+msgid "SSH"
+msgstr "SSH"
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:497
-msgid "Displayed Items"
-msgstr "Item Dipaparkan"
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
+msgid "Public FTP"
+msgstr "FTP Awam"
 
-#: /home/codygarver/files/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Penyenaraian direktori ikon"
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
+msgid "FTP (with login)"
+msgstr "FTP (dengan daftar masuk)"
 
-#: /home/codygarver/files/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Paparan Ikon"
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
+msgid "Windows share"
+msgstr "Perkongsian Windows"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:103
-msgid "_Move Here"
-msgstr "_Alih Disini"
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:108
-msgid "_Copy Here"
-msgstr "_Salin Disini"
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
+msgid "Secure WebDAV (HTTPS)"
+msgstr "WebDAV Selamat (HTTPS)"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:113
-msgid "_Link Here"
-msgstr "_Paut Disini"
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
+msgid "Connecting..."
+msgstr "Menyambung..."
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:118
-msgid "Set as _Background"
-msgstr "Tetapkan sebagai _Latar Belakang"
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
+msgid ""
+"Can't load the supported server method list.\n"
+"Please check your gvfs installation."
+msgstr ""
+"Tidak dapat memuatkan senarai kaedah pelayan tersokong.\n"
+"Sila semak pemasangan gvfs anda."
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:125
-msgid "Cancel"
-msgstr "Batal"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:217
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Gagal melakukan fail \"%s\""
+msgid "The folder \"%s\" cannot be opened on \"%s\"."
+msgstr "Folder \"%s\" tidak dapat dibuka pada \"%s\"."
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:114
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:164
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:426
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:482
-msgid "File Operations"
-msgstr "Operasi Fail"
-
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:123
-msgid "Show Details"
-msgstr "Papar Perincian"
-
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:158
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:180
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d operasi fail aktif"
-msgstr[1] "%'d operasi fail aktif"
+msgid "The server at \"%s\" cannot be found."
+msgstr "Pelayan di \"%s\" tidak ditemui."
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:286
-msgid "Show Copy Dialog"
-msgstr "Papar Dialog Salin"
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
+msgid "Try Again"
+msgstr "Cuba Lagi"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:298
-msgid "Cancel All In-progress Actions"
-msgstr "Batal Semua TIndakan Dalam-proses"
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
+msgid "Please verify your user details."
+msgstr "Sila sahkan perincian pengguna anda"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:483
-msgid "All file operations have been successfully completed"
-msgstr "Semua operasi fail berjaya diselesaikan"
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
+msgid "Continue"
+msgstr "Teruskan"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:421
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
+msgid "C_onnect"
+msgstr "Sa_mbung"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
+msgid "Connect to Server"
+msgstr "Sambung ke Pelayan"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
+msgid "Server Details"
+msgstr "Perincian Pelayan"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
+msgid "_Server:"
+msgstr "Pe_layan:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
+msgid "_Port:"
+msgstr "_Port:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
+msgid "_Type:"
+msgstr "_Jenis:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
+msgid "Sh_are:"
+msgstr "K_ongsi:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
+msgid "_Folder:"
+msgstr "_Folder:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
+msgid "User Details"
+msgstr "Perincian Pengguna"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
+msgid "_Domain name:"
+msgstr "Nama _domain:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
+msgid "_User name:"
+msgstr "_Nama pengguna:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
+msgid "Pass_word:"
+msgstr "Kata _Laluan:"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
+msgid "_Remember this password"
+msgstr "_Ingat kata laluan ini"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
+msgid "Operation cancelled"
+msgstr "Operasi dibatalkan"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:421
 msgid "Show the version of the program."
 msgstr "Papar versi program"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:425
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:425
 msgid "Open uri(s) in new tab"
 msgstr "Buka uri dalam tab baru"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:427
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:427
 msgid "Quit Files."
 msgstr "Keluar dari FIles."
 
-#: /home/codygarver/files/po/../src/marlin-application.c:429
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
 msgstr "Benarkan pengelogan nyahpepijat"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:430
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:430
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:439
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:439
 msgid ""
 "\n"
 "\n"
@@ -995,324 +889,1006 @@ msgstr ""
 "\n"
 "Layari fail sistem menggunakan pengurus fail"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:459
+#: /home/david/src/pantheon-files/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
 msgstr "--quit tidak dapat digunakan dengan URI."
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:310
+#: /home/david/src/pantheon-files/po/../src/marlin-toolbar-editor.c:445
+msgid "Customize Toolbar"
+msgstr "Suaikan Palang Alat"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-toolbar-editor.c:464
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
+msgstr ""
+"Pilih item yang akan dipaparkan pada palang alat. Item boleh ditertib semula "
+"dengan cara seret dan lepas."
+
+#: /home/david/src/pantheon-files/po/../src/marlin-toolbar-editor.c:478
+msgid "Available Items"
+msgstr "Item Tersedia"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-toolbar-editor.c:497
+msgid "Displayed Items"
+msgstr "Item Dipaparkan"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
 msgstr "Peribadi"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:315
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
 msgstr "Tempat dan tanda buku umum anda"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:372
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:372
 msgid "Open the trash"
 msgstr "Buka tong sampah"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:382
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:382
 msgid "Devices"
 msgstr "Peranti"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:387
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:387
 msgid "Your local partitions and devices"
 msgstr "Sekaran dan peranti setempat anda"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:396
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
 msgstr "Buka kandungan Fail Sistem"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:455
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:480
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:455
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:480
 #, c-format
 msgid "Mount and open %s"
 msgstr "Lekap dan buka %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:593
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:593
 msgid "Your network places"
 msgstr "Tempat rangkaian anda"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:624
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:624
 msgid "Entire network"
 msgstr "Keseluruhan rangkaian"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:626
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
 msgstr "Layar kandungan rangkaian"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1610
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
 msgstr "_Mula"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1611
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1611
 msgid "_Stop"
 msgstr "_Henti"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1616
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1616
 msgid "_Power On"
 msgstr "_Pasang Kuasa"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1617
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1617
 msgid "_Safely Remove Drive"
 msgstr "_Tanggalkan Pemacu Secara Selamat"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1620
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1620
 msgid "_Connect Drive"
 msgstr "_Sambung Pemacu"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1621
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1621
 msgid "_Disconnect Drive"
 msgstr "_Putuskan Pemacu"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1624
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
 msgstr "_Mulakan Pemacu Berbilang-cakera"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1625
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1625
 msgid "_Stop Multi-disk Device"
 msgstr "_Henti Pemacu Berbilang-cakera"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1629
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1629
 msgid "_Unlock Drive"
 msgstr "_Buka Pemacu"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1630
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1630
 msgid "_Lock Drive"
 msgstr "_Kunci Peranti"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1704
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2251
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1704
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2251
 #, c-format
 msgid "Unable to start %s"
 msgstr "Tidak boleh mulakan %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1994
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2023
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2052
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1994
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2023
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2052
 #, c-format
 msgid "Unable to eject %s"
 msgstr "Tidak boleh lentingkan %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2197
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2197
 #, c-format
 msgid "Unable to poll %s for media changes"
 msgstr "Tidak boleh meninjau %s untuk perubahan media"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2307
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2307
 #, c-format
 msgid "Unable to stop %s"
 msgstr "Tidak boleh hentikan %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2423
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
 msgstr "Buang"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2432
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
 msgstr "Namakan Semula..."
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2444
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
 msgstr "_Lekap"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2451
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2451
 msgid "_Unmount"
 msgstr "_Nyahlekap"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2458
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2458
 msgid "_Eject"
 msgstr "_Lenting"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2466
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2310
+#: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:2466
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1422
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2310
 msgid "Empty _Trash"
 msgstr "Kosongkan Tong _Sampah"
 
-#: /home/codygarver/files/po/../libcore/eel-stock-dialogs.c:35
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
+msgid "File Operations"
+msgstr "Operasi Fail"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
+msgid "Show Details"
+msgstr "Papar Perincian"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d operasi fail aktif"
+msgstr[1] "%'d operasi fail aktif"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
+msgid "Show Copy Dialog"
+msgstr "Papar Dialog Salin"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
+msgid "Cancel All In-progress Actions"
+msgstr "Batal Semua TIndakan Dalam-proses"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
+msgid "All file operations have been successfully completed"
+msgstr "Semua operasi fail berjaya diselesaikan"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "_Alih Disini"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "_Salin Disini"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "_Paut Disini"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "Tetapkan sebagai _Latar Belakang"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "Batal"
+
+#: /home/david/src/pantheon-files/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Gagal melakukan fail \"%s\""
+
+#: /home/david/src/pantheon-files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Penyenaraian direktori ikon"
+
+#: /home/david/src/pantheon-files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Paparan Ikon"
+
+#: /home/david/src/pantheon-files/po/../src/fm-compact-view.c:86
+msgid "Compact directory listing"
+msgstr "Penyenaraian direktori padat"
+
+#: /home/david/src/pantheon-files/po/../src/fm-compact-view.c:87
+msgid "Compact view"
+msgstr "Paparan padat"
+
+#: /home/david/src/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Nama Fail"
+
+#: /home/david/src/pantheon-files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Mod bentangan"
+
+#: /home/david/src/pantheon-files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "Merupakan mod bentangan"
+
+#: /home/david/src/pantheon-files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Kaedah Masukan"
+
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr ""
+
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr ""
+
+#: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:10
+msgid "New Window As _Administrator"
+msgstr ""
+
+#: /home/david/src/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
 msgstr "Papar lebih _perician"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:119
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "paut ke %s"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:1702
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Gagal menghurai fail desktop: %s"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:1740
+msgid "No Exec field specified"
+msgstr "Tiada medan Exec dinyatakan"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:1760
+msgid "No URL field specified"
+msgstr "Tiada Ruang URL dinyatakan"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:1766
+msgid "Invalid desktop file"
+msgstr "Fail desktop tidak sah"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:2056
+msgid "Slashes are not allowed in filenames"
+msgstr "Garis miring tidak dibenarkan dalam nama fail"
+
+#: /home/david/src/pantheon-files/po/../libcore/gof-file.c:2076
+msgid "Toplevel files cannot be renamed"
+msgstr "Fail aras tinggi tidak boleh dinamakan semula"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Cantum folder \"%s\"?"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Pencantuman memerlukan pengesahan sebelum menggantikan mana-mana fail "
+"didalam folder yang mungkin mengakibatkan konflik dengan fail yang disalin."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Folder lama dengan nama yang sama sudah wujud di \"%s\"."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Folder yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Folder lain dengan nama yang sama sudah wujud di \"%s\"."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
+msgid "Replacing it will remove all files in the folder."
+msgstr "Penggantiannya akan membuang semua fail di dalam folder."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Ganti folder \"%s\"?"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Folder dengan nama yang sama sudah wujud di \"%s\"."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Ganti fail \"%s\"?"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will overwrite its content."
+msgstr "Penggantiannya akan menulisganti kandungan didalamnya."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Fail lama dengan nama yang sama sudah wujud di \"%s\"."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Fail yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Fail lain dengan nama yang sama sudah wujud di \"%s\"."
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
+msgid "Original file"
+msgstr "Fail Asal"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
+msgid "Size:"
+msgstr "Saiz:"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
+msgid "Type:"
+msgstr "Jenis:"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
+msgid "Last modified:"
+msgstr "Terakhir diubahsuai:"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Replace with"
+msgstr "Ganti dengan"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
+msgid "Merge"
+msgstr "Cantum"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
+msgid "_Select a new name for the destination"
+msgstr "_Pilih nama baru destinasi"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
+msgid "Reset"
+msgstr "Tetap semula"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
+msgid "Apply this action to all files"
+msgstr "Laksanakan tindakan ini untuk semua fail"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:200
+msgid "_Skip"
+msgstr "_Langkau"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
+msgid "Re_name"
+msgstr "_Namakan Semula"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
+msgid "Replace"
+msgstr "Ganti"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
+msgid "File conflict"
+msgstr "Fail konflik"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-progress-info.c:192
+#: /home/david/src/pantheon-files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "Menyediakan"
+
+#: /home/david/src/pantheon-files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Hari ini pada %-I:%M %p"
+
+#: /home/david/src/pantheon-files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Semalam pada %-I:%M %p"
+
+#: /home/david/src/pantheon-files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y pada %-I:%M %p"
+
+#: /home/david/src/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (unikod tidak sah)"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Padam %d item disalin"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "Padam '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Padam %d item pendua"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Alih %d item kembali ke '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Alih '%s' kembali ke '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Nama semula '%s' sebagai '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Pulih %d item dari tong sampah"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Pulih '%s' ke '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Alih %d item kembali ke tong sampah"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Alih '%s' kembali ke tong sampah"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Padam pautan ke %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Padam pautan ke '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Pulih keizinan asal item yang terkurung dalam '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Pulih keizinan asal bagi '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Pulih kumpulan bagi '%s' hingga '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Pulih pemilik bagi '%s' hingga '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Salin %d item ke '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Salin '%s' ke '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Pendua dari %d item dalam '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Duakan '%s' dalam '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Alih %d item ke '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Alih '%s' ke '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Cipta fail baru '%s' dari templat "
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Cipta fail kosong '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Cipta folder baru '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Alih %d item ke tong sampah"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Alih '%s' ke tong sampah"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Pulih '%s' dari tong sampah"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "Cipta pautan ke %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Cipta pautan ke '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Tetapkan keizinan item yang terkurung dalam '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Tetapkan keizinan bagi '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Tetapkan kumpulan bagi '%s' hingga '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Tetapkan pemilik bagi '%s' hingga '%s'"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "B_uat asal salin %d item"
+msgstr[1] "B_uat asal salin %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "B_uat asal duakan %d item"
+msgstr[1] "B_uat asal duakan %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "B_uat asal alih %d item"
+msgstr[1] "B_uat asal alih %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "B_uat asal nama semula %d item"
+msgstr[1] "B_uat asal nama semula %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "B_uat asal penciptaan fail kosong"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "B_uat asal penciptaan fail dari templat"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "B_uat asal penciptaan %d folder"
+msgstr[1] "B_uat asal penciptaan %d folder"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "B_uat asal alih ke tong sampah bagi %d item"
+msgstr[1] "B_uat asal alih ke tong sampah bagi %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "B_uat asal pulih dari tong sampah bagi %d item"
+msgstr[1] "B_uat asal pulih dari tong sampah bagi %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "B_uat asal cipta pautan ke %d item"
+msgstr[1] "B_uat asal cipta pautan ke %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "B_uat asal padam %d item"
+msgstr[1] "B_uat asal padam %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "B_uat asal perubahan rekursif keizinan %d item"
+msgstr[1] "B_uat asal perubahan rekursif keizinan %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "B_uat asal ubah keizinan %d item"
+msgstr[1] "B_uat asal keizinan %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "B_uat asal ubah kumpulan dari %d item"
+msgstr[1] "B_uat asal ubah kumpulan dari %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "B_uat asal ubah pemilik bagi %d item"
+msgstr[1] "B_uat asal ubah pemilik bagi %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "Buat se_mula salin %d item"
+msgstr[1] "Buat se_mula salin %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "Buat se_mula duakan %d item"
+msgstr[1] "Buat se_mula duakan %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "Buat se_mula alih %d item"
+msgstr[1] "Buat se_mula alih %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "Buat se_mula nama semula %d item"
+msgstr[1] "Buat se_mula nama semula %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "Buat se_mula penciptaan fail kosong"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "Buat se_mula penciptaan fail dari templat"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "Buat se_mula penciptaan %d folder"
+msgstr[1] "Buat se_mula penciptaan %d folder"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "Buat se_mula alih ke tong sampah bagi %d item"
+msgstr[1] "Buat se_mula alih ke tong sampah bagi %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "B_uat semula pulih dari tong sampah bagi %d item"
+msgstr[1] "B_uat semula pulih dari tong sampah bagi %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "B_uat semula cipta pautan ke %d item"
+msgstr[1] "B_uat semula cipta pautan ke %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "B_uat semula padam %d item"
+msgstr[1] "B_uat semula padam %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Buat semula ubah secara rekursif keizinan bagi %d item"
+msgstr[1] "Buat semula ubah secara rekursif keizinan bagi %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Buat semula ubah keizinan bagi %d item"
+msgstr[1] "Buat semula ubah keizinan bagi %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Buat semula ubah kumpulan bagi %d item"
+msgstr[1] "Buat semula ubah kumpulan bagi %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Buat semula ubah pemilik bagi %d item"
+msgstr[1] "Buat semula ubah pemilik bagi %d item"
+
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
 
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:122
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-utilities.c:122
 msgid "The item cannot be restored from trash"
 msgstr "Item tidak boleh dipulihkan kembali dari tong sampah"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:200
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:737
-msgid "_Skip"
-msgstr "_Langkau"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:201
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "Lang_kau Semua"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:202
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "_Cuba Lagi"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:203
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "Padam _Semua"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:204
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "_Ganti"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:205
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "Ganti Semu_a"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:206
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "_Cantum"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:207
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "Cantum _Semua"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:208
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "S_alin Jua"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:294
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d saat"
 msgstr[1] "%'d saat"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:299
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:310
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:299
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minit"
 msgstr[1] "%'d minit"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:309
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d jam"
 msgstr[1] "%'d jam"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:317
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "anggaran %'d jam"
 msgstr[1] "anggaran %'d jam"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:393
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "Paut ke %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:397
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "Pautan lain ke %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:413
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d dipautkan ke %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:417
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "Ke %'d dipautkan ke %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:421
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "Ke %'d dipautkan ke %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:425
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "Ke %'d dipautkan ke %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:463
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr " (salinan)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:465
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr " (salinan lain)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:468
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:470
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:472
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:482
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:468
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:470
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:472
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr "salinan)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:475
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr "salinan)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:477
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr "salinan)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:479
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr "salinan)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:496
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (salinan)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:498
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (salinan lain)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:501
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:503
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:505
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:519
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:501
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:503
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:505
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'d salinan)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:513
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'d salinan)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:515
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'d salinan)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:517
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'d salinan)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:617
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:625
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1381
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Anda pasti hendak memadam \"%B\"  dari tong sampah secara kekal?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1384
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1325,24 +1901,24 @@ msgstr[0] ""
 msgstr[1] ""
 "Anda pasti hendak memadam \"%d\" item pilihan  dari tong sampah secara kekal?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1394
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1462
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1394
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Jika anda memadamkan suatu item, item itu akan hilang secara kekal."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1415
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "Kosongkan semua item dari tong sampah?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1419
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Semua item didalam Tong Sampah akan dipadam secara kekal."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1450
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Anda pasti hendak memadam  \"%B\" secara kekal?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1453
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1350,33 +1926,33 @@ msgid_plural ""
 msgstr[0] "Anda pasti hendak memadam item %'d pilihan secara kekal?"
 msgstr[1] "Anda pasti hendak memadam  %'d item pilihan secara kekal?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1478
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1510
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1478
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "Memadam fail"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1504
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d fail lagi untuk dipadam"
 msgstr[1] "%'d fail lagi untuk dipadam"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1524
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "Tinggal %T"
 msgstr[1] "Tinggal %T"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1592
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1626
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1665
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1742
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2573
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1592
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1626
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1665
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1742
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
 msgstr "Ralat bila memadam."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1596
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -1384,20 +1960,20 @@ msgstr ""
 "Fail didalam folder \"%B\" tidak boleh dipadam kerana anda tidak mempunyai "
 "keizinan untuk melihatnya."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1599
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2632
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3628
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1599
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2632
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "Terdapat ralat mendapatkan maklumat mengenai fail didalam folder \"%B\"."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1608
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3637
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1608
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
 msgstr "_Langkau fail"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1629
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
@@ -1405,37 +1981,37 @@ msgstr ""
 "Folder  \"%B\" tidak boleh dipadam kerana anda tidak mempunyai kebenaran "
 "untuk membacanya."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1632
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2671
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3673
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1632
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2671
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Terdapat ralat semasa membaca folder \"%B\"."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1666
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "Tidak dapat buang folder %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1743
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "Terdapat ralat semasa memadam %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1819
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1831
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1819
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "Mengalih fail ke tong sampah"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1833
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "tinggal %'d fail untuk dibuang"
 msgstr[1] "tinggal %'d fail untuk dibuang"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1888
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr "Tidak dapat alih fail ke tong sampah. Padam Serta-merta?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1889
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1443,27 +2019,27 @@ msgstr ""
 "Fail ini berada dalam media luaran dan tidak dapat dialih ke dalam tong "
 "sampah. Bilamana ia dipadam, ia tidak dapat dipulihkan."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2069
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
 msgstr "Mengalih fail ke tong sampah"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2071
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
 msgstr "Memadam fail"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2143
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
 msgstr "Tidak dapat lentingkan %V"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2145
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
 msgstr "Tidak dapat nyahlekap %V"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2300
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Anda ingin mengosongkan tong sampah sebelum anda menyahlekap?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2302
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1471,65 +2047,65 @@ msgstr ""
 "Bagi mengembalikan ruang bebas pada volum ini, tong sampah mestilah "
 "dikosongkan. Semua item tong sampah dalam volum ini akan hilang secara kekal."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2308
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
 msgstr "Jangan Kosongkan Tong Sampah"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2363
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
 msgstr "Mengosongkan tong sampah"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2430
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Tidak boleh lekap  %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2508
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Bersedia untuk menyalin fail %'d (%S)"
 msgstr[1] "Bersedia untuk menyalin fail %'d (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2514
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Bersedia untuk mengalih fail %'d (%S)"
 msgstr[1] "Bersedia untuk mengalih fail %'d (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2520
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Bersedia untuk memadam fail %'d (%S)"
 msgstr[1] "Bersedia untuk memadam fail %'d (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2526
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Bersedia untuk memindah fail %'d kedalam tong sampah"
 msgstr[1] "Bersedia untuk memindah fail %'d kedalam tong sampah"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2569
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3489
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3620
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3665
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2569
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3489
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3620
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
 msgstr "Ralat semasa menyalin."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2571
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3618
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3663
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2571
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3618
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
 msgstr "Ralat semasa mengalih."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2575
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
 msgstr "Ralat semasa mengalihkan fail ke tong sampah."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2629
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1537,7 +2113,7 @@ msgstr ""
 "Fail didalam folder \"%B\" tidak boleh dikendalikan kerana anda tidak "
 "mempunyai keizinan untuk melihatnya."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2668
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1545,7 +2121,7 @@ msgstr ""
 "Folder \"%B\" tidak boleh dikendalikan kerana anda tidak mempunyai keizinan "
 "untuk membacanya."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2745
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1553,106 +2129,106 @@ msgstr ""
 "Fail \"%B\" tidak boleh dikendalikan kerana anda tidak mempunyai keizinan "
 "untuk membacanya."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2748
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
 msgstr "Terdapat ralat ketika memperoleh maklumat mengenai \"%B\"."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2848
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2890
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2923
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2953
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2848
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2890
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2923
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
 msgstr "Ralat ketika menyalin \"%B\"."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2852
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
 msgstr "Anda tidak mempunyai kebenaran untuk mencapai folder destinasi."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2854
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
 msgstr "Terdapat ralat semasa memperoleh maklumat mengenai destinasi."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2891
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
 msgstr "Destinasi bukan folder."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2924
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
 "Tidak cukup ruang didalam destinasi. Cuba buang fail untuk mendapatkan ruang."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2926
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Hanya ada %S, tetapi %S diperlukan."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2954
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
 msgstr "Destinasi hanya baca-sahaja."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3015
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Mengalih \"%B\" ke \"%B\""
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3016
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Menyalin \"%B\" ke \"%B\""
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3020
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
 msgstr "Menduakan \"%B\""
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3024
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Mengalih fail %'d (dari \"%B\") ke \"%B\""
 msgstr[1] "Mengalih fail %'d (dari \"%B\") ke \"%B\""
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3027
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Menyalin %'d fail (dalam \"%B\") ke \"%B\""
 msgstr[1] "Menyalin %'d fail (dalam \"%B\") ke \"%B\""
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3034
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Menduakan %'d fail (dalam \"%B\")"
 msgstr[1] "Menduakan %'d fail (dalam \"%B\")"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3043
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Mengalih fail %'d ke \"%B\""
 msgstr[1] "Mengalih fail %'d ke \"%B\""
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3047
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Menyalin fail %'d ke \"%B\""
 msgstr[1] "Menyalin fail %'d ke \"%B\""
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3052
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Menduakan fail %'d"
 msgstr[1] "Menduakan fail %'d"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3103
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
 msgstr "%S dari %S"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3114
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S dari %S — tinggal %T (%S/saat)"
 msgstr[1] "%S dari %S — tinggal %T (%S/saat)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3493
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1660,11 +2236,11 @@ msgstr ""
 "Folder \"%B\" tidak boleh disalin kerana anda tidak mempunyai keizinan "
 "menciptakannya didalam destinasi."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3496
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Terdapat ralat semasa mencipta folder \"%B\"."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3625
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1672,7 +2248,7 @@ msgstr ""
 "Fail \"%B\" tidak boleh disalin kerana anda tidak mempunyai keizinan "
 "melihatnya."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3670
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3670
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
@@ -1680,749 +2256,187 @@ msgstr ""
 "Folder \"%B\" tidak boleh disalin kerana anda tidak mempunyai keizinan "
 "membacanya."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3715
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4416
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5004
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3715
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4416
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
 msgstr "Ralat semasa memindah \"%B\"."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3716
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
 msgstr "Tidak dapat membuang folder sumber."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3801
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3842
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4418
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4489
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3801
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3842
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4418
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
 msgstr "Ralat semasa menyalin \"%B\"."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3802
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Tidak boleh buang fail dari folder sedia ada %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3843
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Tidak dapat membuang fail %F yang sedia ada."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4172
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4844
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4172
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
 msgstr "Anda tidak boleh alih folder ke dirinya sendiri."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4173
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4845
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4173
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
 msgstr "Anda tidak boleh salin folder ke dirinya sendiri."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4174
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4846
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4174
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
 msgstr "Folder destinasi berada dalam folder sumber."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4205
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
 msgstr "Anda tidak boleh mengalih fail keatas dirinya sendiri."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4206
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot copy a file over itself."
 msgstr "Anda tidak boleh salin fail ke atas dirinya sendiri."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4207
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4207
 msgid "The source file would be overwritten by the destination."
 msgstr "Fail sumber akan ditulis-ganti oleh destinasi."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4420
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 "Tidak dapat membuang fail yang sudah wujud dengan nama yang sama dalam %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4490
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Terdapat ralat semasa menyalin fail ke %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4718
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
 msgstr "Menyalin Fail"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4744
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
 msgstr "Bersedia mengalih ke \"%B\""
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4756
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Bersedia mengalih %'d fail"
 msgstr[1] "Bersedia mengalih %'d fail"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5005
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Terdapat ralat semasa mengalih fail kedalam %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5268
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
 msgstr "Mengalih Fail"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5298
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
 msgstr "Mencipta pautan di \"%B\""
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5309
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Membina pautan ke fail %'d"
 msgstr[1] "Membina pautan ke fail %'d"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5444
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
 msgstr "Ralat semasa mencipta pautan ke %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5446
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
 msgstr "Pautan simbolik hanya menyokong fail setempat"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5449
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
 msgstr "Sasaran tidak menyokong pautan simbolik."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5452
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Terdapat ralat semasa mencipta pautan simbolik dalam %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5780
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5783
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5780
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
 msgstr "Menetapkan keizinan"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6034
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
 msgstr "folder tidak bertajuk"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6042
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
 msgstr "fail baru"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6213
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
 msgstr "Ralat semasa mencipta direktori %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6215
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
 msgstr "Ralat semasa mencipta fail %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6217
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Terdapat ralat semasa mencipta direktori di %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6534
+#: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
 msgstr "Mengosongkan Tong Sampah"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Padam %d item disalin"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "Padam '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Padam %d item pendua"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Alih %d item kembali ke '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Alih '%s' kembali ke '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Nama semula '%s' sebagai '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Pulih %d item dari tong sampah"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Pulih '%s' ke '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Alih %d item kembali ke tong sampah"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Alih '%s' kembali ke tong sampah"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Padam pautan ke %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Padam pautan ke '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Pulih keizinan asal item yang terkurung dalam '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Pulih keizinan asal bagi '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Pulih kumpulan bagi '%s' hingga '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Pulih pemilik bagi '%s' hingga '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Salin %d item ke '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Salin '%s' ke '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Pendua dari %d item dalam '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Duakan '%s' dalam '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Alih %d item ke '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Alih '%s' ke '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Cipta fail baru '%s' dari templat "
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Cipta fail kosong '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Cipta folder baru '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Alih %d item ke tong sampah"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Alih '%s' ke tong sampah"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Pulih '%s' dari tong sampah"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Cipta pautan ke %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Cipta pautan ke '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Tetapkan keizinan item yang terkurung dalam '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Tetapkan keizinan bagi '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Tetapkan kumpulan bagi '%s' hingga '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Tetapkan pemilik bagi '%s' hingga '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "B_uat asal salin %d item"
-msgstr[1] "B_uat asal salin %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "B_uat asal duakan %d item"
-msgstr[1] "B_uat asal duakan %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "B_uat asal alih %d item"
-msgstr[1] "B_uat asal alih %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "B_uat asal nama semula %d item"
-msgstr[1] "B_uat asal nama semula %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "B_uat asal penciptaan fail kosong"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "B_uat asal penciptaan fail dari templat"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "B_uat asal penciptaan %d folder"
-msgstr[1] "B_uat asal penciptaan %d folder"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "B_uat asal alih ke tong sampah bagi %d item"
-msgstr[1] "B_uat asal alih ke tong sampah bagi %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "B_uat asal pulih dari tong sampah bagi %d item"
-msgstr[1] "B_uat asal pulih dari tong sampah bagi %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "B_uat asal cipta pautan ke %d item"
-msgstr[1] "B_uat asal cipta pautan ke %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "B_uat asal padam %d item"
-msgstr[1] "B_uat asal padam %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "B_uat asal perubahan rekursif keizinan %d item"
-msgstr[1] "B_uat asal perubahan rekursif keizinan %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "B_uat asal ubah keizinan %d item"
-msgstr[1] "B_uat asal keizinan %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "B_uat asal ubah kumpulan dari %d item"
-msgstr[1] "B_uat asal ubah kumpulan dari %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "B_uat asal ubah pemilik bagi %d item"
-msgstr[1] "B_uat asal ubah pemilik bagi %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "Buat se_mula salin %d item"
-msgstr[1] "Buat se_mula salin %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "Buat se_mula duakan %d item"
-msgstr[1] "Buat se_mula duakan %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "Buat se_mula alih %d item"
-msgstr[1] "Buat se_mula alih %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "Buat se_mula nama semula %d item"
-msgstr[1] "Buat se_mula nama semula %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "Buat se_mula penciptaan fail kosong"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "Buat se_mula penciptaan fail dari templat"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "Buat se_mula penciptaan %d folder"
-msgstr[1] "Buat se_mula penciptaan %d folder"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "Buat se_mula alih ke tong sampah bagi %d item"
-msgstr[1] "Buat se_mula alih ke tong sampah bagi %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "B_uat semula pulih dari tong sampah bagi %d item"
-msgstr[1] "B_uat semula pulih dari tong sampah bagi %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "B_uat semula cipta pautan ke %d item"
-msgstr[1] "B_uat semula cipta pautan ke %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "B_uat semula padam %d item"
-msgstr[1] "B_uat semula padam %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Buat semula ubah secara rekursif keizinan bagi %d item"
-msgstr[1] "Buat semula ubah secara rekursif keizinan bagi %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Buat semula ubah keizinan bagi %d item"
-msgstr[1] "Buat semula ubah keizinan bagi %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Buat semula ubah kumpulan bagi %d item"
-msgstr[1] "Buat semula ubah kumpulan bagi %d item"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Buat semula ubah pemilik bagi %d item"
-msgstr[1] "Buat semula ubah pemilik bagi %d item"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Hari ini pada %-I:%M %p"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Semalam pada %-I:%M %p"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y pada %-I:%M %p"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:252
-#, c-format
-msgid "link to %s"
-msgstr "paut ke %s"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1702
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Gagal menghurai fail desktop: %s"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1740
-msgid "No Exec field specified"
-msgstr "Tiada medan Exec dinyatakan"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1760
-msgid "No URL field specified"
-msgstr "Tiada Ruang URL dinyatakan"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1766
-msgid "Invalid desktop file"
-msgstr "Fail desktop tidak sah"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2056
-msgid "Slashes are not allowed in filenames"
-msgstr "Garis miring tidak dibenarkan dalam nama fail"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2076
-msgid "Toplevel files cannot be renamed"
-msgstr "Fail aras tinggi tidak boleh dinamakan semula"
-
-#: /home/codygarver/files/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (unikod tidak sah)"
-
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "Menyediakan"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:361
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Cantum folder \"%s\"?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:364
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Pencantuman memerlukan pengesahan sebelum menggantikan mana-mana fail "
-"didalam folder yang mungkin mengakibatkan konflik dengan fail yang disalin."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Folder lama dengan nama yang sama sudah wujud di \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Folder yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:377
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Folder lain dengan nama yang sama sudah wujud di \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:382
-msgid "Replacing it will remove all files in the folder."
-msgstr "Penggantiannya akan membuang semua fail di dalam folder."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Ganti folder \"%s\"?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Folder dengan nama yang sama sudah wujud di \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:391
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Ganti fail \"%s\"?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will overwrite its content."
-msgstr "Penggantiannya akan menulisganti kandungan didalamnya."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Fail lama dengan nama yang sama sudah wujud di \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Fail yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:405
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Fail lain dengan nama yang sama sudah wujud di \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:460
-msgid "Original file"
-msgstr "Fail Asal"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:482
-msgid "Size:"
-msgstr "Saiz:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:485
-msgid "Type:"
-msgstr "Jenis:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:488
-msgid "Last modified:"
-msgstr "Terakhir diubahsuai:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Replace with"
-msgstr "Ganti dengan"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:506
-msgid "Merge"
-msgstr "Cantum"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
-msgid "_Select a new name for the destination"
-msgstr "_Pilih nama baru destinasi"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:714
-msgid "Reset"
-msgstr "Tetap semula"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:726
-msgid "Apply this action to all files"
-msgstr "Laksanakan tindakan ini untuk semua fail"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:742
-msgid "Re_name"
-msgstr "_Namakan Semula"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:748
-msgid "Replace"
-msgstr "Ganti"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:821
-msgid "File conflict"
-msgstr "Fail konflik"
-
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:325
+#: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
 msgstr "Potong teks dipilih ke papan keratan"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:329
+#: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
 msgstr "Salin teks dipilih ke papan keratan"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:333
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:337
+#: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:333
+#: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
 msgstr "Tampal teks yang disimpan pada papan keratan"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:813
+#: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
 msgstr "Pergi ke %s"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:86
+#: /home/david/src/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
 msgstr "Papar sebagai grid"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:89
+#: /home/david/src/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
 msgstr "Papar sebagai senarai"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:95
+#: /home/david/src/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr "Papar sebagai lajur"
 
-#: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
+#: /home/david/src/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
 msgstr "Item ini mungkin telah dipadam dengan cara mengosongkan tong sampah."
 
-#: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:47
+#: /home/david/src/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Kosongkan Tong Sampah"
