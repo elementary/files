@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-26 13:11+0100\n"
-"PO-Revision-Date: 2012-09-09 09:56+0000\n"
+"PO-Revision-Date: 2012-09-27 15:12+0000\n"
 "Last-Translator: Rus F Adrian <adirusf@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2012-09-27 05:04+0000\n"
-"X-Generator: Launchpad (build 16033)\n"
+"X-Launchpad-Export-Date: 2012-09-28 04:55+0000\n"
+"X-Generator: Launchpad (build 16043)\n"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -60,7 +60,7 @@ msgstr "Tip MIME"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:347
 msgid "MimeTypes"
-msgstr ""
+msgstr "Tipuri MIME"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:351
 msgid "Location"
@@ -209,7 +209,7 @@ msgstr "Preferinţe"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:783
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Schimba preferintele fisierelor"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:788
 msgid "_Undo"
@@ -322,7 +322,7 @@ msgstr "_Despre"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:857
 msgid "Display credits"
-msgstr ""
+msgstr "Afiseaza merite"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:860
 msgid "Report a Problem..."
@@ -390,7 +390,7 @@ msgstr "Listă"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:913
 msgid "Compact"
-msgstr ""
+msgstr "Compact"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:916
 msgid "Columns"
@@ -429,7 +429,7 @@ msgstr "Un clic pentru a deschide"
 
 #: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:214
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Auto-selectie a mouse-ului"
 
 #: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:233
 msgid "<small><i>Slow</i></small>"
@@ -491,7 +491,7 @@ msgstr "Sistem de fișiere"
 
 #: /home/david/src/pantheon-files/po/../src/View/ViewContainer.vala:148
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(ca Administrator)"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -712,15 +712,15 @@ msgstr "După _Tip"
 
 #: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr "Păstraț icoanele sortate după tip"
+msgstr "Păstrați icoanele sortate după tip"
 
 #: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "Dupa _Data Modificarii"
 
 #: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "Pastrati in randuri icoanele sortate dupa modificare datii"
 
 #: /home/david/src/pantheon-files/po/../src/fm-abstract-icon-view.c:572
 #: /home/david/src/pantheon-files/po/../src/fm-columns-view.c:82
@@ -863,11 +863,11 @@ msgstr "Operațiune anulată"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-application.c:421
 msgid "Show the version of the program."
-msgstr ""
+msgstr "Arata versiunea programului"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-application.c:425
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "Deschide uri(le) in fila noua"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-application.c:427
 msgid "Quit Files."
@@ -879,7 +879,7 @@ msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/marlin-application.c:430
 msgid "[URI...]"
-msgstr ""
+msgstr "[URI...]"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-application.c:439
 msgid ""
@@ -1072,7 +1072,7 @@ msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Anuleaza toate actiunile in desfasurare"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
@@ -1105,7 +1105,7 @@ msgstr "Nu s-a putut executa fişierul „%s”"
 
 #: /home/david/src/pantheon-files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Listare dosar icoane"
 
 #: /home/david/src/pantheon-files/po/../src/fm-icon-view.c:87
 msgid "Icon view"
@@ -1298,7 +1298,7 @@ msgstr "Îmbină"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
-msgstr "Alegeți un nou nume pentru destinație"
+msgstr "_Alegeți un nou nume pentru destinație"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
@@ -1332,15 +1332,15 @@ msgstr "Se pregătește"
 
 #: /home/david/src/pantheon-files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Astazi la %-I:%M %p"
 
 #: /home/david/src/pantheon-files/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Ieri la %-I:%M %p"
 
 #: /home/david/src/pantheon-files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %y la %-I:%M %p"
 
 #: /home/david/src/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
@@ -1349,19 +1349,19 @@ msgstr " (invalid Unicode)"
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Sterge %d elementele copiate"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Sterge '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Sterge %d elementele dublate"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
@@ -1371,64 +1371,64 @@ msgstr ""
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Muta '%s' inapoi in '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Redenumeste '%s' ca '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Restaureaza elementele %d din cosul de gunoi"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Restaureaza '%s' in '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Muta elementele %d inapoi in cosul de gunoi"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Muta '%s' inapoi in cosul de gunoi"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Sterge legaturile catre fisierele %d"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Sterge legatuta catre '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Restaureaza permisiunile originale fisierelor anexate in '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Restaureaza permisiunile originale pentru '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Restaureaza grupul de '%s' la '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Restaureaza proprietarului de '%s' la '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
@@ -1438,87 +1438,87 @@ msgstr ""
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Copiaza '%s' la '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "dublurile %d elementelor in '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Dublurile '%s' in '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Muta fisierele %d in '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Muta '%s' in '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Creeaza fisier nou '%s' din sablon "
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Creeaza fisier gol '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "creeaza un dosar nou '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Muta elementele %d in cosul de gunoi"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Muta '%s' in gosul de gunoi"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Restaureaza '%s' din cosul de gunoi"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Creaza legaturi catre elementele %d"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Creeaza lagatura catre '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Seteaza permisiunile fisierelor anexate in '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Seteaza permisiunile de '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "Seteaza grupul de '%s' la '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Seteaza proprietarul de '%s' la '%s'"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
@@ -1825,7 +1825,7 @@ msgstr "A %'d-a legătură la %s"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
-msgstr ""
+msgstr " (copiaza)"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
@@ -1853,7 +1853,7 @@ msgstr ""
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (copiaza)%s"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
@@ -1972,6 +1972,8 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"Fisierele din dosarul \"%B\" nu pot fi sterse pentru ca nu avetipermisiunea "
+"sa le vizualizati"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1599
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2632
@@ -2024,13 +2026,15 @@ msgstr[2] "%'d de fișiere rămase de trimis la coșul de gunoi"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "Fisierul nu poate fi mutat in cosul de gunoi.Stergere imediata?"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
+"Acest fisier este stocat pe un dispozitiv extern si nu poate fi mutat in "
+"cosul de gunoiOdata sters, nu mai poate fi restaurat"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
@@ -2058,7 +2062,7 @@ msgid ""
 "All trashed items on the volume will be permanently lost."
 msgstr ""
 "Pentru a recâștiga spațiu liber pe acest volum trebuie golit coșul de gunoi. "
-"Toate fișierele din coș vor fi șterse ireversibil."
+"Toate elementele din coș vor fi șterse ireversibil."
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
@@ -2427,16 +2431,16 @@ msgstr "Se golește coșul de gunoi"
 
 #: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "Taie textul selectat in clipboard"
 
 #: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Copiaza textul selectat in clipboard"
 
 #: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:333
 #: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Lipeste textul stocat in clipboard"
 
 #: /home/david/src/pantheon-files/po/../libwidgets/LocationBar.vala:813
 #, c-format
@@ -2445,20 +2449,20 @@ msgstr "Mergi la %s"
 
 #: /home/david/src/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr ""
+msgstr "Vizualizeaza ca grila"
 
 #: /home/david/src/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "Vizualizeaza ca lista"
 
 #: /home/david/src/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
+msgstr "Vizualizeaza ca coloana"
 
 #: /home/david/src/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Aceste elemente pot fi sterse prin golirea cosului de gunoi"
 
 #: /home/david/src/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Goleste cosul de gunoi"
