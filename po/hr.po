@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2012-09-26 13:11+0100\n"
-"PO-Revision-Date: 2012-08-19 09:32+0000\n"
-"Last-Translator: Ivan <ivan-os@live.com>\n"
+"PO-Revision-Date: 2012-09-28 13:36+0000\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-09-27 05:04+0000\n"
-"X-Generator: Launchpad (build 16033)\n"
+"X-Launchpad-Export-Date: 2012-09-29 05:22+0000\n"
+"X-Generator: Launchpad (build 16049)\n"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -491,7 +491,7 @@ msgstr "Datotečni sustav"
 
 #: /home/david/src/pantheon-files/po/../src/View/ViewContainer.vala:148
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(kao administrator)"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -1139,15 +1139,15 @@ msgstr "Načini unosa"
 
 #: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "Pregledaj svoje datoteke"
 
 #: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "Upravitelj datoteka"
 
 #: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Novi prozor kao _administrator"
 
 #: /home/david/src/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
