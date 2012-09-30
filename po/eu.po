@@ -8,28 +8,28 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-26 13:11+0100\n"
-"PO-Revision-Date: 2012-08-05 10:27+0000\n"
-"Last-Translator: KombuchaMushroom <enekosar@gmail.com>\n"
+"PO-Revision-Date: 2012-09-29 19:33+0000\n"
+"Last-Translator: Asier Iturralde Sarasola <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-09-27 05:03+0000\n"
-"X-Generator: Launchpad (build 16033)\n"
+"X-Launchpad-Export-Date: 2012-09-30 05:09+0000\n"
+"X-Generator: Launchpad (build 16049)\n"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
-msgstr "Ezaugarriak"
+msgstr "Propietateak"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:116
 #: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:47
 msgid "General"
-msgstr ""
+msgstr "Orokorra"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
-msgstr ""
+msgstr "Gehiago"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:136
 msgid "Preview"
@@ -47,7 +47,7 @@ msgstr "Aldatua"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:328
 msgid "Last Access"
-msgstr "Azken Atzipena"
+msgstr "Azken atzipena"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:334
 msgid "Deleted"
@@ -72,11 +72,11 @@ msgstr "Helburua"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:359
 msgid "Origin Location"
-msgstr "Jatorrizko Kokapena"
+msgstr "Jatorrizko kokapena"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
-msgstr ""
+msgstr "Informazioa:"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
@@ -84,15 +84,15 @@ msgstr "Beste aplikazio bat..."
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:428
 msgid "Open with:"
-msgstr ""
+msgstr "Ireki honekin:"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:449
 msgid "Usage:"
-msgstr ""
+msgstr "Erabilera:"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
-msgstr ""
+msgstr "Gailuaren erabilera:"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -100,11 +100,11 @@ msgstr "Irakurri"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:605
 msgid "Write"
-msgstr ""
+msgstr "Idatzi"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:610
 msgid "Execute"
-msgstr ""
+msgstr "Exekutatu"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:828
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:841
@@ -115,28 +115,28 @@ msgstr "Jabea"
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:833
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:845
 msgid "Group"
-msgstr ""
+msgstr "Taldea"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:849
 msgid "Everyone"
-msgstr ""
+msgstr "Guztiak"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Hautatu aplikazio bat hau irekitzeko: "
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:33
 msgid "New Window as _Administrator"
-msgstr "Lehio Berria ireki _Administradore gisa"
+msgstr "Leiho berria _administratzaile bezala"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:160
 #: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3383
 msgid "Set as default"
-msgstr "Ezarri lehenetsi gisa"
+msgstr "Ezarri lehenetsi bezala"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:165
 msgid "Ignore"
-msgstr "Ezikusi"
+msgstr "Ez ikusi"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:497
 msgid "Undo"
@@ -179,11 +179,11 @@ msgstr "_Laguntza"
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:769
 #: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr "Leiho _Berria"
+msgstr "_Leiho berria"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:770
 msgid "Open another Files window for the displayed location"
-msgstr "Ireki beste Files lehio bat erakusten den helbidean"
+msgstr "Ireki beste Files leiho bat bistaratutako kokalekuarentzat"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:773
 #: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:8
@@ -192,7 +192,7 @@ msgstr "_Fitxa berria"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:774
 msgid "Open another tab for the displayed location"
-msgstr "Bistaratutako helbidearentzat beste fitxa bat ireki"
+msgstr "Ireki fitxa berri bat bistaratutako kokalekuarentzat"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:778
 msgid "_Close"
@@ -208,7 +208,7 @@ msgstr "Hobespenak"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:783
 msgid "Change Files preferences"
-msgstr "Files-en hobespenak aldatu"
+msgstr "Aldatu Files-en hobespenak"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:788
 msgid "_Undo"
@@ -353,7 +353,7 @@ msgstr "Erakutsi  _Mahaigaineko Fitxategiak"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:884
 msgid "Toggle the display of desktop files"
-msgstr "Gaitu mahaigaineko fitxategien ikuspegia"
+msgstr "Txandakatu mahaigaineko fitxategiak bistaratzea"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:888
 msgid "_Context Pane"
@@ -403,7 +403,7 @@ msgstr "Karpeta ez da existitzen"
 #: /home/david/src/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Files-ek ezin du %s karpeta aurkitu"
 
 #: /home/david/src/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -416,7 +416,7 @@ msgstr "%s karpeta sortu"
 
 #: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr ""
+msgstr "Files-en hobespenak"
 
 #: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
@@ -547,14 +547,18 @@ msgstr "Ireki leiho _berrian"
 #: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3432
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
+"Prestatu hautatutako fitxategiak Itsatsi komandoaren bidez lekuz aldatzeko"
 
 #: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3436
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
+"Prestatu hautatutako fitxategiak Itsatsi komandoaren bidez kopiatzeko"
 
 #: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3440
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
+"Aldatu lekuz edo kopiatu aurrez Ebaki edo Kopiatu komandoen bidez "
+"hautaturiko fitxategiak"
 
 #: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3443
 msgid "Paste Into Folder"
@@ -565,6 +569,8 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Aldatu lekuz edo kopiatu aurrez Ebaki edo Kopiatu komandoen bidez "
+"hautaturiko fitxategiak hautaturiko karpetara"
 
 #: /home/david/src/pantheon-files/po/../src/fm-directory-view.c:3447
 msgid "_Rename..."
@@ -865,7 +871,7 @@ msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/marlin-application.c:427
 msgid "Quit Files."
-msgstr ""
+msgstr "Irten Files-etik."
 
 #: /home/david/src/pantheon-files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
@@ -1130,7 +1136,7 @@ msgstr "Sarrera Metodoak"
 
 #: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "Arakatu zure fitxategiak"
 
 #: /home/david/src/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
@@ -1172,7 +1178,7 @@ msgstr "Barrak ez daude onartuta fitxategi-izenetan"
 
 #: /home/david/src/pantheon-files/po/../libcore/gof-file.c:2076
 msgid "Toplevel files cannot be renamed"
-msgstr "Maila goreneko fitxategiak ezin dira izenez aldatu"
+msgstr "Maila goreneko fitxategiak ezin dira berrizendatu"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
