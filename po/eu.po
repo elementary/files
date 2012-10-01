@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-26 13:11+0100\n"
-"PO-Revision-Date: 2012-09-29 19:33+0000\n"
+"PO-Revision-Date: 2012-09-30 20:38+0000\n"
 "Last-Translator: Asier Iturralde Sarasola <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-09-30 05:09+0000\n"
+"X-Launchpad-Export-Date: 2012-10-01 05:09+0000\n"
 "X-Generator: Launchpad (build 16049)\n"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:63
@@ -937,7 +937,7 @@ msgstr "Zure partizio lokalak eta gailuak"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:396
 msgid "Open the contents of the File System"
-msgstr "Ireki fitxategi-sistemako edukia"
+msgstr "Ireki fitxategi-sistemaren edukiak"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:455
 #: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:480
@@ -955,7 +955,7 @@ msgstr "Sare osoa"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:626
 msgid "Browse the contents of the network"
-msgstr "Arakatu sareko edukia"
+msgstr "Arakatu sareko edukiak"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-places-sidebar.c:1610
 msgid "_Start"
