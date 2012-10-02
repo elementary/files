@@ -369,11 +369,19 @@ void on_bus_aquired (DBusConnection conn) {
     }
 }
 
+// Exit C function to quit the loop
+extern void exit (int exit_code);
+
+void on_bus_lost (DBusConnection connection, string name) {
+    critical ("Could not aquire name.");
+    exit (-1);
+}
+
 void main () {
     Bus.own_name (BusType.SESSION, "org.elementary.marlin.db", BusNameOwnerFlags.NONE,
                   on_bus_aquired,
                   () => {},
-                  () => error ("Could not aquire name"));
+                  on_bus_lost);
 
     new MainLoop ().run ();
 }
