@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-09-26 13:11+0100\n"
-"PO-Revision-Date: 2012-06-02 07:49+0000\n"
+"PO-Revision-Date: 2012-10-02 11:16+0000\n"
 "Last-Translator: Mantas Kriaučiūnas <mantas@akl.lt>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-09-27 05:04+0000\n"
-"X-Generator: Launchpad (build 16033)\n"
+"X-Launchpad-Export-Date: 2012-10-03 05:42+0000\n"
+"X-Generator: Launchpad (build 16061)\n"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
-msgstr ""
+msgstr "Savybės"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:116
 #: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:47
@@ -30,37 +30,37 @@ msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
-msgstr ""
+msgstr "Daugiau"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:136
 msgid "Preview"
-msgstr ""
+msgstr "Peržiūra"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:323
 msgid "Created"
-msgstr ""
+msgstr "Sukurtas"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:325
 #: /home/david/src/pantheon-files/po/../src/View/ContextView.vala:345
 #: /home/david/src/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr ""
+msgstr "Pakeistas"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:328
 msgid "Last Access"
-msgstr ""
+msgstr "Paskutinis skaitymas"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:334
 msgid "Deleted"
-msgstr ""
+msgstr "Pašalintas"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:339
 msgid "MimeType"
-msgstr ""
+msgstr "MIME tipas"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:347
 msgid "MimeTypes"
-msgstr ""
+msgstr "MIME tipai"
 
 #: /home/david/src/pantheon-files/po/../src/View/PropertiesWindow.vala:351
 msgid "Location"
@@ -209,7 +209,7 @@ msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:783
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Keisti failų tvarkymo nustatymus"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:788
 msgid "_Undo"
@@ -342,7 +342,7 @@ msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:877
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Rodyti pa_slėptus failus"
 
 #: /home/david/src/pantheon-files/po/../src/View/Window.vala:878
 msgid "Toggle the display of hidden files in the current window"
@@ -417,7 +417,7 @@ msgstr "Sukurti aplanką %s"
 
 #: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr "Failų tvarkyklės nustatymai"
+msgstr "Failų tvarkymo nustatymai"
 
 #: /home/david/src/pantheon-files/po/../src/View/SettingsDialog.vala:102
 msgid "Extensions"
@@ -862,7 +862,7 @@ msgstr ""
 
 #: /home/david/src/pantheon-files/po/../src/marlin-application.c:427
 msgid "Quit Files."
-msgstr ""
+msgstr "Išjungti failų tvarkyklę"
 
 #: /home/david/src/pantheon-files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
@@ -1913,7 +1913,7 @@ msgstr[1] ""
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1478
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr ""
+msgstr "Šalinami failai"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
@@ -2284,7 +2284,7 @@ msgstr ""
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
-msgstr ""
+msgstr "Kopijuojami failai"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
@@ -2304,7 +2304,7 @@ msgstr ""
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
-msgstr ""
+msgstr "Perkeliami failai"
 
 #: /home/david/src/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
