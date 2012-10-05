@@ -196,17 +196,18 @@ namespace Marlin.View
         private Gtk.Widget get_general_box()
         {
             var grid = new Gtk.Grid();
-            grid.row_spacing = 5;
-            grid.column_spacing = 5;
+            grid.row_spacing = 6;
+            grid.column_spacing = 12;
             //grid.margin_left = 5;
             //grid.margin_right = 5;
-            grid.margin_top = 15;
-            grid.margin_bottom = 15;
+            grid.margin_top = 12;
+            grid.margin_bottom = 12;
             
             int row = 0;
 
             // Single click
             var label = new Gtk.Label(_("Single click to open:"));
+            label.set_hexpand (true);
             var checkbox = new Gtk.Switch();
             Preferences.settings.bind("single-click", checkbox , "active", SettingsBindFlags.DEFAULT);
 
@@ -217,6 +218,7 @@ namespace Marlin.View
             spi_click_speed.sensitive = swi_click_speed.active;
             spi_click_speed.set_draw_value (false);
             spi_click_speed.set_inverted (true);
+            spi_click_speed.set_hexpand (true);
 
             swi_click_speed.notify["active"].connect (use_mouse_selection_toggle);
             
@@ -227,26 +229,25 @@ namespace Marlin.View
                                        "active", SettingsBindFlags.DEFAULT);
             Preferences.settings.bind ("single-click-timeout-enabled", spi_click_speed,
                                        "sensitive", SettingsBindFlags.DEFAULT);
-
-            var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-            hbox.set_homogeneous (false);
+            
+            var click_speed_grid = new Gtk.Grid ();
             
             Gtk.Label slow = new Gtk.Label(null);
-            slow.set_markup(_("<small><i>Slow</i></small>"));
+            slow.set_markup("<small><i>%s</i></small>".printf(_("Slow")));
             Gtk.Label fast = new Gtk.Label(null);
-            fast.set_markup(_("<small><i>Fast</i></small>"));
+            fast.set_markup("<small><i>%s</i></small>".printf(_("Fast")));
             
             Preferences.settings.bind ("single-click-timeout-enabled", slow,
                                        "sensitive", SettingsBindFlags.DEFAULT);
             Preferences.settings.bind ("single-click-timeout-enabled", fast,
                                        "sensitive", SettingsBindFlags.DEFAULT);
             
-            hbox.pack_start (swi_click_speed, false, false, 0);
-            hbox.pack_start (slow, false, false, 0);
-            hbox.pack_start (spi_click_speed, true, true, 0);
-            hbox.pack_start (fast, false, false, 0);
+            click_speed_grid.attach (swi_click_speed, 0, 0, 1, 1);
+            click_speed_grid.attach (slow, 1, 0, 1, 1);
+            click_speed_grid.attach (spi_click_speed, 2, 0, 1, 1);
+            click_speed_grid.attach (fast, 3, 0, 1, 1);
             
-            add_option(grid, label, hbox, ref row);
+            add_option(grid, label, click_speed_grid, ref row);
             
             // Date format
             label = new Gtk.Label(_("Date format:"));
