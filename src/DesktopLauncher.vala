@@ -8,4 +8,5 @@ namespace DesktopLauncher {
     public const string NEW_TAB = N_("New _Tab");
     public const string NEW_WINDOW = N_("New _Window");
     public const string NEW_ROOT_WINDOW = N_("New Window As _Administrator");
+    public const string NAME = N_("Files");
 }

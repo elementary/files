@@ -458,7 +458,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
                     double used =  1.0 - (double) fs_free / (double) fs_capacity;
                     progressbar.set_fraction (used);
                     progressbar.set_show_text (true);
-                    progressbar.set_text ("%s free of %s (%d%% used)".printf (format_size_for_display ((int64) fs_free), format_size_for_display ((int64) fs_capacity), (int) (used * 100)));
+                    progressbar.set_text (_("%s free of %s (%d%% used)").printf (format_size_for_display ((int64) fs_free), format_size_for_display ((int64) fs_capacity), (int) (used * 100)));
                     information.attach_next_to (progressbar, key_label, Gtk.PositionType.RIGHT, 3, 1);
                 }
             } catch (GLib.Error e) {

@@ -22,9 +22,7 @@ main (int argc, char *argv[])
     g_type_init ();
     
     /* Initialize gettext support */
-    setlocale(LC_ALL, "" );
-    bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
-    bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+    setlocale (LC_ALL, g_get_language_names ()[0]);
     textdomain (GETTEXT_PACKAGE);
 
     g_set_application_name (APP_NAME);

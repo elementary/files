@@ -26,14 +26,6 @@ using Cairo;
 using Marlin.View.Chrome;
 using EelGtk.Window;
 
-namespace DesktopLauncher {
-    /* Translatable launcher (.desktop) strings to be added to   */
-    /* template (.pot) file. These strings MUST reflect any      */
-    /* changes in these launcher keys in .desktop file.          */
-  /* Make launcher quicklist entry translateable */  public const string OPEN_AS_ADMIN = N_("New Window as _Administrator");
-}
-
-
 namespace Marlin.View {
     public class Window : Gtk.Window
     {
@@ -126,7 +118,7 @@ namespace Marlin.View {
             }
 
             main_actions = new Gtk.ActionGroup("MainActionGroup");
-            main_actions.set_translation_domain("marlin");
+            main_actions.set_translation_domain("pantheon-files");
             main_actions.add_actions(main_entries, this);
             main_actions.add_toggle_actions(main_toggle_entries, this);
             main_actions.add_radio_actions(view_radio_entries, -1,

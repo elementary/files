@@ -332,6 +332,7 @@ fm_abstract_icon_view_merge_menus (FMDirectoryView *view)
     ui_manager = fm_directory_view_get_ui_manager (view);
 
     action_group = gtk_action_group_new ("IconViewActions");
+    gtk_action_group_set_translation_domain (action_group, GETTEXT_PACKAGE);
     icon_view->details->icon_action_group = action_group;
     gtk_action_group_add_actions (action_group,
                                   icon_view_entries, G_N_ELEMENTS (icon_view_entries),
