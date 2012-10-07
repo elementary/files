@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-05 18:55+0200\n"
-"PO-Revision-Date: 2012-09-30 13:50+0000\n"
-"Last-Translator: Alfredo Hernández <Unknown>\n"
+"PO-Revision-Date: 2012-10-06 20:27+0000\n"
+"Last-Translator: Christopher <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-10-06 05:22+0000\n"
+"X-Launchpad-Export-Date: 2012-10-07 04:55+0000\n"
 "X-Generator: Launchpad (build 16061)\n"
 "Language: es\n"
 
@@ -378,7 +378,7 @@ msgstr "Uso del dispositivo:"
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s libre de %s (%d%% usado)"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -473,12 +473,12 @@ msgstr "Selección automática con el ratón:"
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "Lento"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "Rápido"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
@@ -2460,12 +2460,3 @@ msgstr "Estos archivos pueden ser eliminados al vaciar la papelera."
 #: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Vaciar la papelera"
-
-#~ msgid "<small><i>Fast</i></small>"
-#~ msgstr "<small><i>Rápido</i></small>"
-
-#~ msgid "<small><i>Slow</i></small>"
-#~ msgstr "<small><i>Lento</i></small>"
-
-#~ msgid "New Window as _Administrator"
-#~ msgstr "Ventana como _administrador nueva"

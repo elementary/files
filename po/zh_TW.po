@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-05 18:55+0200\n"
-"PO-Revision-Date: 2012-09-23 04:39+0000\n"
-"Last-Translator: leo  <shing80333@gmail.com>\n"
+"PO-Revision-Date: 2012-10-06 09:05+0000\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-10-06 05:22+0000\n"
+"X-Launchpad-Export-Date: 2012-10-07 04:56+0000\n"
 "X-Generator: Launchpad (build 16061)\n"
 
 #: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:324
 msgid "Home"
-msgstr "家"
+msgstr "家屋"
 
 #: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:143
 #: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:394
@@ -377,7 +377,7 @@ msgstr "裝置用量："
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s 可用，共 %s (已使用 %d%% )"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -472,12 +472,12 @@ msgstr "滑鼠自動選取："
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "慢"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "快"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
@@ -1127,19 +1127,19 @@ msgstr "簡潔檢視"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "瀏覽您的檔案"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "檔案管理員"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "以管理員身分開啟新視窗(_A)"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "檔案"
 
 #: /home/noelco/pantheon-files/po/../libcore/gof-file.c:252
 #, c-format
@@ -2362,12 +2362,3 @@ msgstr "清理回收筒將會刪除這些檔案"
 #: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "清理回收筒"
-
-#~ msgid "New Window as _Administrator"
-#~ msgstr "以管理者來開啟新視窗"
-
-#~ msgid "<small><i>Slow</i></small>"
-#~ msgstr "<small><i>慢</i></small>"
-
-#~ msgid "<small><i>Fast</i></small>"
-#~ msgstr "<small><i>快</i></small>"

@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-10-06 05:22+0000\n"
+"X-Launchpad-Export-Date: 2012-10-07 04:55+0000\n"
 "X-Generator: Launchpad (build 16061)\n"
 "Language: pl\n"
 
@@ -2505,12 +2505,3 @@ msgstr "Poniższe elementy można usunąć opróżniając kosz."
 #: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Opróżnij kosz"
-
-#~ msgid "<small><i>Slow</i></small>"
-#~ msgstr "<small><i>Wolno</i></small>"
-
-#~ msgid "<small><i>Fast</i></small>"
-#~ msgstr "<small><i>Szybko</i></small>"
-
-#~ msgid "New Window as _Administrator"
-#~ msgstr "Nowe okno jako _administrator"

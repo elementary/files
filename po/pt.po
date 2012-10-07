@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-10-06 05:22+0000\n"
+"X-Launchpad-Export-Date: 2012-10-07 04:55+0000\n"
 "X-Generator: Launchpad (build 16061)\n"
 
 #: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:141
@@ -2459,12 +2459,3 @@ msgstr "Estes itens podem ser eliminados ao esvaziar o lixo."
 #: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Esvaziar lixo"
-
-#~ msgid "<small><i>Slow</i></small>"
-#~ msgstr "<small><i>Lento</i></small>"
-
-#~ msgid "<small><i>Fast</i></small>"
-#~ msgstr "<small><i>Rápido</i></small>"
-
-#~ msgid "New Window as _Administrator"
-#~ msgstr "Nova janela como _administrador"

@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-10-06 05:22+0000\n"
+"X-Launchpad-Export-Date: 2012-10-07 04:55+0000\n"
 "X-Generator: Launchpad (build 16061)\n"
 
 #: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:141
@@ -2487,12 +2487,3 @@ msgstr "Ove stavke mogu biti obrisane pražnjenjem smeća."
 #: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Isprazni smeće"
-
-#~ msgid "New Window as _Administrator"
-#~ msgstr "Novi prozor kao _Administrator"
-
-#~ msgid "<small><i>Slow</i></small>"
-#~ msgstr "<small><i>Sporo</i></small>"
-
-#~ msgid "<small><i>Fast</i></small>"
-#~ msgstr "<small><i>Brzo</i></small>"

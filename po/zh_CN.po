@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-10-06 05:22+0000\n"
+"X-Launchpad-Export-Date: 2012-10-07 04:56+0000\n"
 "X-Generator: Launchpad (build 16061)\n"
 "Language: \n"
 
@@ -2363,12 +2363,3 @@ msgstr "清空回收站可能会删除这些项目。"
 #: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "清空回收站"
-
-#~ msgid "<small><i>Slow</i></small>"
-#~ msgstr "<small><i>慢</i></small>"
-
-#~ msgid "<small><i>Fast</i></small>"
-#~ msgstr "<small><i>快</i></small>"
-
-#~ msgid "New Window as _Administrator"
-#~ msgstr "以管理员身份新建新窗口(_A)"

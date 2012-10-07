@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-05 18:55+0200\n"
-"PO-Revision-Date: 2012-09-19 06:00+0000\n"
+"PO-Revision-Date: 2012-10-06 11:16+0000\n"
 "Last-Translator: Eduard Gotwig <eduardgotwig@gmail.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-10-06 05:21+0000\n"
+"X-Launchpad-Export-Date: 2012-10-07 04:54+0000\n"
 "X-Generator: Launchpad (build 16061)\n"
 "Language: de\n"
 
@@ -379,7 +379,7 @@ msgstr "Speicherverwendung:"
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s frei von %s (%d%% werden genutzt)"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -474,12 +474,12 @@ msgstr "Automatische Auswahl (Maus):"
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "Langsam"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "Schnell"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
@@ -1145,19 +1145,19 @@ msgstr "Kompakte Ansicht"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "Durchsuchen Sie Ihre Dateien"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "Dateimanager"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Neues Fenster Als _Administrator"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "Dateien"
 
 #: /home/noelco/pantheon-files/po/../libcore/gof-file.c:252
 #, c-format
@@ -2479,12 +2479,3 @@ msgstr "Diese Elemente können durch das Leeren des Mülls gelöscht werden"
 #: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Müll leeren"
-
-#~ msgid "<small><i>Slow</i></small>"
-#~ msgstr "<small><i>Langsam</i></small>"
-
-#~ msgid "<small><i>Fast</i></small>"
-#~ msgstr "<small><i>Schnell</i></small>"
-
-#~ msgid "New Window as _Administrator"
-#~ msgstr "Neues Fenster als _Administrator"
