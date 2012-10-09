@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-05 18:55+0200\n"
-"PO-Revision-Date: 2012-08-26 09:09+0000\n"
-"Last-Translator: Homatidis Dimitris <homatidis@gmail.com>\n"
+"PO-Revision-Date: 2012-10-08 20:22+0000\n"
+"Last-Translator: adem <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-10-07 04:54+0000\n"
-"X-Generator: Launchpad (build 16061)\n"
+"X-Launchpad-Export-Date: 2012-10-09 05:29+0000\n"
+"X-Generator: Launchpad (build 16112)\n"
 
 #: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -30,7 +30,7 @@ msgstr "Σύστημα Αρχείων"
 
 #: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:148
 msgid "(as Administrator)"
-msgstr ""
+msgstr "ως Διαχειριστής"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:152
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3383
@@ -327,7 +327,7 @@ msgstr "Τροποποίηση"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:328
 msgid "Last Access"
-msgstr ""
+msgstr "Τελευταία Είσοδος"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:334
 msgid "Deleted"
@@ -352,11 +352,11 @@ msgstr "Προορισμός"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:359
 msgid "Origin Location"
-msgstr ""
+msgstr "Τοποθεσία προέλευσης"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
-msgstr ""
+msgstr "Πληροφορίες"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
@@ -377,7 +377,7 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s ελεύθερα από %s (%d%% χρησιμοποιημένα)"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -408,7 +408,7 @@ msgstr ""
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Επιλέξτε εφαρμογή για άνοιγμα "
 
 #: /home/noelco/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -418,7 +418,7 @@ msgstr "Ο φάκελος δεν υπάρχει"
 #: /home/noelco/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Το Files δεν μπορεί να εντοπίσει  τον φάκελο %s"
 
 #: /home/noelco/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -820,7 +820,7 @@ msgstr "Όλες οι ενέργειες αρχείων ολοκληρώθηκα
 
 #: /home/noelco/pantheon-files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Εικονίδια λίστας καταλόγου"
 
 #: /home/noelco/pantheon-files/po/../src/fm-icon-view.c:87
 msgid "Icon view"
@@ -850,12 +850,12 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1963
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Άνοιγμα σε %'d Νέες καρτέλες"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1972
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Άνοιγμα σε %'d Νέα παράθυρα"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3432
 msgid "Prepare the selected files to be moved with a Paste command"
@@ -878,6 +878,8 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Μετακίνηση ή αντιγραφή αρχείων που επιλέχθηκαν προηγουμένως με την εντολή "
+"Αποκοπή ή Αντιγραφή σε επιλεγμένο φάκελο"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3447
 msgid "_Rename..."
@@ -897,7 +899,7 @@ msgstr ""
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3454
 msgid "Create New _File"
-msgstr ""
+msgstr "Δημιουργία Νέου _Αρχείου"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3456
 msgid "_Empty File"
@@ -909,15 +911,15 @@ msgstr ""
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3461
 msgid "Open the selected item"
-msgstr ""
+msgstr "Άνοιγμα του επιλεγμένου στοιχείου"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3468
 msgid "Open in new Window"
-msgstr ""
+msgstr "Άνοιγμα σε νέο παράθυρο"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3469
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "Άνοιγμα κάθε επιλεγμένου στοιχείου σε ένα νέο παράθυρο"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3473
 msgid "Open each selected item in a new tab"
@@ -1091,15 +1093,15 @@ msgstr ""
 
 #: /home/noelco/pantheon-files/po/../src/marlin-application.c:425
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "Άνοιγμα uri (s) σε νέα καρτέλα"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-application.c:427
 msgid "Quit Files."
-msgstr ""
+msgstr "Έξοδος από το Files"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Ενεργοποίηση καταγραφής εντοπισμού σφαλμάτων"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-application.c:430
 msgid "[URI...]"
@@ -1133,7 +1135,7 @@ msgstr ""
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "Περιηγηθείτε στα αρχεία σας"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
@@ -1141,7 +1143,7 @@ msgstr ""
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Νέο παράθυρο ως_Διαχειριστής"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
@@ -1483,13 +1485,15 @@ msgstr[1] "%'d αρχεία απομένουν για μεταφορά στα α
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "Αδυναμία μετακίνισης των αρχείων στα απορρίματα. Διαγραφή αμέσως"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
+"Αυτό το αρχείο βρίσκεται σε ένα εξωτερικό μέσο και δεν μπορεί να μετακινηθεί "
+"στα απορρίμματα. Μόλις διαγραφεί, δεν μπορεί να αποκατασταθεί."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
@@ -1881,20 +1885,20 @@ msgstr "Άδειασμα απορριμμάτων"
 
 #: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Σήμερα στις %-I:%M %p"
 
 #: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Χθες στις %-I:%M %p"
 
 #: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Διαγραφή %d αντιγραμμένων στοιχείων"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
@@ -1906,12 +1910,12 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Διαγραφή %d διπλότυπων αντικειμένων"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Μετακίνιση %d στοιχείων πίσω στο '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
@@ -1928,7 +1932,7 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Επαναφορά %d στοιχείων από τα απορρίμματα"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
@@ -1938,7 +1942,7 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Μετακίνιση %d στοιχείων πίσω στα απορρίμματα"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
@@ -1948,7 +1952,7 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Διαγραφή συνδεσμων σε  %d στοιχεία"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
@@ -1978,7 +1982,7 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Αντιγραφή %d αστοιχείων στο '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
@@ -1998,7 +2002,7 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Μετακίνιση %d στοιχείων στο '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
@@ -2023,7 +2027,7 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Μετακίνιση %d στοιχίων στα απορρίμματα"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
@@ -2038,7 +2042,7 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Δημιουργία συνδέσμων σε %d στοιχεία"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
@@ -2069,8 +2073,8 @@ msgstr ""
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Αναίρεση αντηγραφής %d στοιχείου"
+msgstr[1] "_Αναίρεση αντιγραφής %d στοιχείων"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
@@ -2083,58 +2087,58 @@ msgstr[1] ""
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Αναίρεση μετακίνισης %d στοιχείου"
+msgstr[1] "_Αναίρεση μετακίνισης %d στοιχείων"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Αναίρεση μετονομασίας %d στοιχείου"
+msgstr[1] "_Αναίρεση μετονομασίας %d στοιχείων"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_Αναίρεση δημιουργίας κενού αρχείου"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Αναίρεση δημιουργίας αρχείου από τα πρότυπα"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Αναίρεση δημιουργίας %d φακέλου"
+msgstr[1] "_Αναίρεση δημιουργίας %d φακέλων"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Αναίρεση μετακίνισης %d στοιχείου στα απορρίμματα"
+msgstr[1] "_Αναίρεση μετακίνισης %d στοιχείων στα απορρίμματα"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Αναίρεση επαναφοράς %d στοιχείου από τα απορρίμματα"
+msgstr[1] "_Αναίρεση επαναφοράς %d στοιχείων από τα απορρίμματα"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Αναίρεση δημιουργίας συνδέσμου του %d στοιχείου"
+msgstr[1] "_Αναίρεση δημιουργίας συνδέσμου των %d στοιχείων"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Αναίρεση διαγραφής του %d στοιχείου"
+msgstr[1] "_Αναίρεση διαγραφής των %d στοιχείων"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
@@ -2147,8 +2151,8 @@ msgstr[1] ""
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Αναίρεση αλλαγής δικαιωμάτων του %d στοιχείου"
+msgstr[1] "Αναίρεση αλλαγής δικαιωμάτων των %d στοιχείων"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
