@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-05 18:55+0200\n"
-"PO-Revision-Date: 2012-09-30 20:38+0000\n"
+"PO-Revision-Date: 2012-10-09 22:43+0000\n"
 "Last-Translator: Asier Iturralde Sarasola <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-10-07 04:54+0000\n"
-"X-Generator: Launchpad (build 16061)\n"
+"X-Launchpad-Export-Date: 2012-10-10 05:35+0000\n"
+"X-Generator: Launchpad (build 16112)\n"
 
 #: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -30,7 +30,7 @@ msgstr "Fitxategi-sistema"
 
 #: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:148
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(administratzaile bezala)"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:152
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3383
@@ -135,7 +135,7 @@ msgstr "_Atzera"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:790
 msgid "Go to the previous visited location"
-msgstr "Bisitatutako aurreko helbidera joan"
+msgstr "Joan bisitatutako aurreko kokalekura"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:793
 msgid "_Forward"
@@ -143,7 +143,7 @@ msgstr "_Aurrera"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:794
 msgid "Go to the next visited location"
-msgstr "Bisitatutako hurrengo helbidera joan"
+msgstr "Joan bisitatutako hurrengo kokalekura"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:796
 msgid "_Reload"
@@ -151,16 +151,16 @@ msgstr "_Birkargatu"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:797
 msgid "Reload the current location"
-msgstr "Birkargatu uneko helbidea"
+msgstr "Birkargatu uneko kokalekua"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:800
 msgid "_Home Folder"
-msgstr "_Karpeta Nagusia"
+msgstr "_Karpeta nagusia"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:801
 #: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:329
 msgid "Open your personal folder"
-msgstr "Ireki karpeta pertsonala"
+msgstr "Ireki zure karpeta pertsonala"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:804
 msgid "_Trash"
@@ -168,7 +168,7 @@ msgstr "_Zakarrontzia"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:805
 msgid "Open your personal trash folder"
-msgstr "Ireki zakarrontziaren karpeta pertsonala"
+msgstr "Ireki zure zakarrontzi pertsonala"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:808
 msgid "_Network"
@@ -192,7 +192,7 @@ msgstr "Zooma t_xikiagotu"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:825
 msgid "Decrease the view size"
-msgstr "Gutxiagotu ikuspegiaren tamaina"
+msgstr "Txikiagotu ikuspegiaren tamaina"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:832
 msgid "Normal Si_ze"
@@ -200,15 +200,15 @@ msgstr "Tamaina _normala"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:833
 msgid "Use the normal view size"
-msgstr "Erabili ikuspegi normalaren tamaina"
+msgstr "Erabili ikuspegi-tamaina normala"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:836
 msgid "Next Tab"
-msgstr "Hurrengo Fitxa"
+msgstr "Hurrengo fitxa"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:840
 msgid "Previous Tab"
-msgstr "Aurreko Fitxa"
+msgstr "Aurreko fitxa"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:844
 msgid "Connect to _Server..."
@@ -216,7 +216,7 @@ msgstr "Konektatu _zerbitzarira..."
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:845
 msgid "Connect to a remote computer or shared disk"
-msgstr "Konektatu urruneko zerbitzari edo partekatutako disko batekin"
+msgstr "Konektatu urruneko ordenagailu edo partekatutako diskora"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:848
 msgid "_About"
@@ -224,7 +224,7 @@ msgstr "Honi _buruz"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:849
 msgid "Display credits"
-msgstr "Kredituak erakutsi"
+msgstr "Bistaratu kredituak"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:852
 msgid "Report a Problem..."
@@ -232,7 +232,7 @@ msgstr "Arazo baten berri eman..."
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:853
 msgid "File a bug on Launchpad"
-msgstr "Arazo bat erreportatu Launchpad-en"
+msgstr "Errore bat jakinarazi Launchpad-en"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:856
 msgid "Get Help Online..."
@@ -252,7 +252,7 @@ msgstr "Txandakatu fitxategi ezkutuak bistaratzea uneko leihoan"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:875
 msgid "Show _Desktop Files"
-msgstr "Erakutsi  _Mahaigaineko Fitxategiak"
+msgstr "Erakutsi  _mahaigaineko fitxategiak"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:876
 msgid "Toggle the display of desktop files"
@@ -260,11 +260,11 @@ msgstr "Txandakatu mahaigaineko fitxategiak bistaratzea"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:880
 msgid "_Context Pane"
-msgstr "_Testuinguruko panela"
+msgstr "_Testuinguru-panela"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:881
 msgid "Change the visibility of the context pane"
-msgstr "Aldatu testuinguruko panelaren ikusgaitasuna"
+msgstr "Aldatu testuinguru-panelaren ikusgaitasuna"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:885
 msgid "_Menubar"
@@ -272,7 +272,7 @@ msgstr "_Menu-barra"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:886
 msgid "Change the visibility of this window's menubar"
-msgstr ""
+msgstr "Aldatu leiho honen menu-barraren ikusgarritasuna"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:890
 msgid "_Places"
@@ -280,7 +280,7 @@ msgstr "_Lekuak"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:891
 msgid "Change the visibility of this window's side pane"
-msgstr "Leiho honetako albo-panela erakusten/ezkutatzen du"
+msgstr "Aldatu leiho honen albo-panelaren ikusgarritasuna"
 
 #: /home/noelco/pantheon-files/po/../src/View/Window.vala:899
 msgid "Icon"
@@ -343,7 +343,7 @@ msgstr "Mime motak"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:351
 msgid "Location"
-msgstr "Kokapena"
+msgstr "Kokalekua"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:353
 #: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:341
@@ -352,7 +352,7 @@ msgstr "Helburua"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:359
 msgid "Origin Location"
-msgstr "Jatorrizko kokapena"
+msgstr "Jatorrizko kokalekua"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
@@ -377,7 +377,7 @@ msgstr "Gailuaren erabilera:"
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s libre %s(e)tik (%%%d erabilita)"
 
 #: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -459,7 +459,7 @@ msgstr "Files-en hobespenak"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "Extensions"
-msgstr ""
+msgstr "Luzapenak"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:209
 msgid "Single click to open:"
@@ -467,17 +467,17 @@ msgstr "Klik batez ireki:"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:217
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Saguarekin automatikoki hautatu:"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "Motela"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "Azkarra"
 
 #: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
@@ -498,11 +498,11 @@ msgstr "informala"
 #: /home/noelco/pantheon-files/po/../src/eel-editable-label.c:3190
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3494
 msgid "Select All"
-msgstr "Hautatu Dena"
+msgstr "Hautatu dena"
 
 #: /home/noelco/pantheon-files/po/../src/eel-editable-label.c:3201
 msgid "Input Methods"
-msgstr "Sarrera Metodoak"
+msgstr "Sarrera metodoak"
 
 #: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
@@ -510,19 +510,19 @@ msgstr "Klik bakarra"
 
 #: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Honela ikuspegiko elementuak klik bakan batez aktibatu daitezke"
+msgstr "Ikuspegiko elementuak klik bakar batez aktibatu daitezkeen ala ez"
 
 #: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
-msgstr "Klik bakan denbora-muga"
+msgstr "Klik bakarraren denbora-muga"
 
 #: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
-"Klik bakaneko moduan kurtsorearen azpiko elementua automatikoki aukeratu "
-"pasa behar den denbora"
+"Klik bakarreko moduan denbora hau igarotakoan kurtsorearen azpiko elementua "
+"automatikoki hautatuko da"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -572,7 +572,7 @@ msgstr "Ezin da \"%s\" ostalariko zerbitzaria aurkitu."
 
 #: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr "Saiatu Berriro"
+msgstr "Saiatu berriro"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
@@ -593,7 +593,7 @@ msgstr "Konektatu zerbitzarira"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr "Zerbitzariaren Xehetasunak"
+msgstr "Zerbitzariaren xehetasunak"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
@@ -617,7 +617,7 @@ msgstr "_Karpeta:"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
-msgstr "Erabiltzailearen Xehetasunak"
+msgstr "Erabiltzailearen xehetasunak"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
@@ -625,7 +625,7 @@ msgstr "_Domeinu-izena:"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
-msgstr ""
+msgstr "_Erabiltzaile-izena:"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
@@ -763,7 +763,7 @@ msgstr "Ireki leiho _berrian"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2423
 msgid "Remove"
-msgstr "Ezabatu"
+msgstr "Kendu"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
@@ -785,18 +785,18 @@ msgstr "_Egotzi"
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1422
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2310
 msgid "Empty _Trash"
-msgstr "Hustu _Zakarrontzia"
+msgstr "Hustu _zakarrontzia"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
 #: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
 #: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
 #: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
 msgid "File Operations"
-msgstr "Fitxategiaren eragiketak"
+msgstr "Fitxategi-eragiketak"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
-msgstr "Erakutsi Xehetasunak"
+msgstr "Erakutsi xehetasunak"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
 #: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
@@ -808,11 +808,11 @@ msgstr[1] "Fitxategien %'d eragiketa aktibo"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Erakutsi kopiatze-leihoa"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Utzi bertan behera ekintza aktibo guztiak"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
@@ -820,42 +820,42 @@ msgstr "Fitxategien eragiketa guztiak ondo burutu dira"
 
 #: /home/noelco/pantheon-files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Ikono-direktorio zerrendatzea"
 
 #: /home/noelco/pantheon-files/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Ikono-ikuspegia"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1151
 msgid "Invalid filename provided by XDS drag site"
-msgstr "XDS herresta lekuak emandako fitxategi-izena baliogabea da"
+msgstr "XDS arrastatze lekuak emandako fitxategi-izena baliogabea da"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1309
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Huts  \"%s\" URL-rako lotura bat sortzerakoan"
+msgstr "Huts  \"%s\" URLrako lotura bat sortzerakoan"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1794
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Erabili \"%s\" hautatutako elementua irekitzeko"
+msgstr[1] "Erabili \"%s\" hautatutako elementuak irekitzeko"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1941
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "_Ireki honekin: %s"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1963
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "Ireki %'d _fitxa berritan"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1972
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "Ireki %'d _leiho berritan"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3432
 msgid "Prepare the selected files to be moved with a Paste command"
@@ -875,7 +875,7 @@ msgstr ""
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3443
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "Itsatsi karpetan"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3444
 msgid ""
@@ -887,107 +887,107 @@ msgstr ""
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3447
 msgid "_Rename..."
-msgstr ""
+msgstr "_Berrizendatu"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3448
 msgid "Rename selected item"
-msgstr ""
+msgstr "Berrizendatu hautatutako elementua"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3451
 msgid "Create New _Folder"
-msgstr ""
+msgstr "Sortu _karpeta berria"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3452
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "Sortu karpeta huts berri bat karpeta honen barruan"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3454
 msgid "Create New _File"
-msgstr ""
+msgstr "Sortu _fitxategi berria"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3456
 msgid "_Empty File"
-msgstr ""
+msgstr "Fitxategi _hutsa"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3457
 msgid "Create a new empty file inside this folder"
-msgstr ""
+msgstr "Sortu fitxategi huts berri bat karpeta honen barruan"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3461
 msgid "Open the selected item"
-msgstr ""
+msgstr "Ireki hautatutako elementua"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3468
 msgid "Open in new Window"
-msgstr ""
+msgstr "Ireki leiho berrian"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3469
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "Ireki hautatutako elementu bakoitza leiho berri batean"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3473
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "Ireki hautatutako elementu bakoitza fitxa berri batean"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3475
 msgid "Open Wit_h"
-msgstr ""
+msgstr "I_reki honekin"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3476
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "Aukeratu programa bat hautatutako elementua irekitzeko"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3478
 msgid "Other _Application..."
-msgstr ""
+msgstr "Beste _aplikazio bat..."
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3479
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "Aukeratu beste aplikazio bat hautatutako elementua irekitzeko"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3482
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "_Bota zakarrontzira"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3483
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "Bota hautatutako elementu guztiak zakarrontzira"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3486
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "_Ezabatu behin betiko"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3487
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "Ezabatu hautatutako elementu bakoitza, zakarrontzira bota gabe"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3490
 msgid "_Restore"
-msgstr ""
+msgstr "_Leheneratu"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3498
 msgid "_Properties"
-msgstr ""
+msgstr "_Propietateak"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3499
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "Ikusi edo aldatu hautatutako elementu guztien propietateak"
 
 #: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3605
 msgid "Set Color:"
-msgstr "Kolorea Aukeratu:"
+msgstr "Ezarri kolorea:"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
-msgstr "_Mugitu Hona"
+msgstr "_Mugitu hona"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:108
 msgid "_Copy Here"
-msgstr "_Kopiatu Hemen"
+msgstr "_Kopiatu hemen"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:113
 msgid "_Link Here"
-msgstr "_Estekatu Hemen"
+msgstr "_Estekatu hemen"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:118
 msgid "Set as _Background"
@@ -1000,104 +1000,104 @@ msgstr "Utzi"
 #: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:217
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "Huts \"%s\" fitxategia abiaraztean"
+msgstr "Huts \"%s\" fitxategia exekutatzean"
 
 #: /home/noelco/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "Fitxategi-izena"
 
 #: /home/noelco/pantheon-files/po/../src/fm-list-view.c:199
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:139
 #: /home/noelco/pantheon-files/po/../src/fm-columns-view.c:186
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Huts egin du %s berrizendatzean %s bezala"
 
 #: /home/noelco/pantheon-files/po/../src/fm-list-view.c:616
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:573
 #: /home/noelco/pantheon-files/po/../src/fm-columns-view.c:82
 msgid "This folder is empty."
-msgstr ""
+msgstr "Karpeta hau hutsik dago."
 
 #: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
-msgstr "Tresna-barra Aldatu"
+msgstr "Pertsonalizatu tresna-barra"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:464
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
-"Aukeratu tresna-barran erakutsiko diren elementuak. Elementuak herrestaz eta "
-"utziz berrantolatu daitezke."
+"Hautatu tresna-barran erakutsiko diren elementuak. Elementuak arrastatu eta "
+"jareginez berrantola daitezke."
 
 #: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
-msgstr "Elementu Erabilgarriak"
+msgstr "Elementu erabilgarriak"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:497
 msgid "Displayed Items"
-msgstr "Erakusten diren Elementuak"
+msgstr "Bistaratutako elementuak"
 
 #: /home/noelco/pantheon-files/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "Aurkezpen modua"
 
 #: /home/noelco/pantheon-files/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "Aurkezpen modua"
 
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "_Antolatu elementuak"
 
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "Al_derantzizko ordena"
 
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "Bistaratu ikonoak alderantzizko ordenean"
 
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "_Izenaren arabera"
 
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "Mantendu ikonoak errenkadetan izenaren arabera ordenatuta"
 
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "_Tamainaren arabera"
 
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "Mantendu ikonoak errenkadetan tamainaren arabera ordenatuta"
 
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "_Motaren arabera"
 
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "Mantendu ikonoak errenkadetan motaren arabera ordenatuta"
 
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "Aldatze-_dataren arabera"
 
 #: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "Mantendu ikonoak errenkadetan aldatze-dataren arabera ordenatuta"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-application.c:421
 msgid "Show the version of the program."
-msgstr ""
+msgstr "Erakutsi programaren bertsioa."
 
 #: /home/noelco/pantheon-files/po/../src/marlin-application.c:425
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "Ireki URIa(k) fitxa berri(et)an"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-application.c:427
 msgid "Quit Files."
@@ -1105,11 +1105,11 @@ msgstr "Irten Files-etik."
 
 #: /home/noelco/pantheon-files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Gaitu arazketa-erregistroa"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-application.c:430
 msgid "[URI...]"
-msgstr ""
+msgstr "[URI...]"
 
 #: /home/noelco/pantheon-files/po/../src/marlin-application.c:439
 msgid ""
@@ -1131,11 +1131,11 @@ msgstr "Ez dago itsasteko ezer arbelean"
 
 #: /home/noelco/pantheon-files/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
-msgstr ""
+msgstr "Direktorio-zerrenda trinkoa"
 
 #: /home/noelco/pantheon-files/po/../src/fm-compact-view.c:87
 msgid "Compact view"
-msgstr ""
+msgstr "Ikuspegi trinkoa"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -1143,41 +1143,41 @@ msgstr "Arakatu zure fitxategiak"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "Fitxategi-kudeatzailea"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Leiho berria _administratzaile bezala"
 
 #: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "Fitxategiak"
 
 #: /home/noelco/pantheon-files/po/../libcore/gof-file.c:252
 #, c-format
 msgid "link to %s"
-msgstr "%s-ra lotura"
+msgstr "%s(e)ra lotura"
 
 #: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1702
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "Ezin izan da mahaigain fitxategia aztertu: %s"
+msgstr "Ezin izan da mahaigain-fitxategia analizatu: %s"
 
 #: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1740
 msgid "No Exec field specified"
-msgstr "Ez da Exec eremua zehaztu"
+msgstr "Ez da Exec eremurik zehaztu"
 
 #: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1760
 msgid "No URL field specified"
-msgstr "Ez da URL eremua zehaztu"
+msgstr "Ez da URL eremurik zehaztu"
 
 #: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1766
 msgid "Invalid desktop file"
-msgstr "Mahaigain fitxategi baliogabea"
+msgstr "Mahaigain-fitxategi baliogabea"
 
 #: /home/noelco/pantheon-files/po/../libcore/gof-file.c:2056
 msgid "Slashes are not allowed in filenames"
-msgstr "Barrak ez daude onartuta fitxategi-izenetan"
+msgstr "Ez da onartzen barrarik fitxategi-izenetan"
 
 #: /home/noelco/pantheon-files/po/../libcore/gof-file.c:2076
 msgid "Toplevel files cannot be renamed"
@@ -1206,7 +1206,7 @@ msgstr "_Saiatu berriro"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
-msgstr "Ezabatu _Denak"
+msgstr "Ezabatu _guztiak"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
@@ -1214,7 +1214,7 @@ msgstr "_Ordeztu"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
-msgstr "Ordeztu _Guztiak"
+msgstr "Ordeztu _guztiak"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
@@ -1222,11 +1222,11 @@ msgstr "_Batu"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
-msgstr "Batu _Guztiak"
+msgstr "Batu _guztiak"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
-msgstr "Kopiatu _Dena den"
+msgstr "Kopiatu _dena den"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:294
 #, c-format
@@ -1289,40 +1289,40 @@ msgstr "%'d. esteka %s(e)rako"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
-msgstr ""
+msgstr " (kopia)"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
-msgstr ""
+msgstr " (beste kopia bat)"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:468
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:470
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:472
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
-msgstr ""
+msgstr "garren kopia)"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
-msgstr ""
+msgstr "garren kopia)"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
-msgstr ""
+msgstr "garren kopia)"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
-msgstr ""
+msgstr "garren kopia)"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (kopia)%s"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (beste kopia bat)%s"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:501
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:503
@@ -1330,22 +1330,22 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'dgarren kopia)%s"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'dgarren kopia)%s"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'dgarren kopia)%s"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'dgarren kopia)%s"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
@@ -1369,10 +1369,10 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Ziur zaude hautatutako elementu %'d zakarrontzitik betiko ezabatu nahi "
-"dizula?"
+"Ziur zaude hautatutako elementu %'d zakarrontzitik behin betiko ezabatu nahi "
+"duzula?"
 msgstr[1] ""
-"Ziur zaude hautatutako %'d elementuak zakarrontzitik betiko ezabatu nahi "
+"Ziur zaude hautatutako %'d elementu zakarrontzitik behin betiko ezabatu nahi "
 "dituzula?"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1394
@@ -1397,9 +1397,10 @@ msgstr "Ziur zaude \"%B\" behin betiko ezabatu nahi duzula?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Ziur zaude hautatutako elementu %'d betiko ezabatu nahi duzula?"
+msgstr[0] ""
+"Ziur zaude hautatutako elementu %'d behin betiko ezabatu nahi duzula?"
 msgstr[1] ""
-"Ziur zaude hautatutako %'d elementuak betiko ezabatu nahi dituzula?"
+"Ziur zaude hautatutako %'d elementu behin betiko ezabatu nahi dituzula?"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1478
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1510
@@ -1458,7 +1459,7 @@ msgstr "Ezin da \"%B\" karpeta ezabatu, irakurtzeko baimenik ez duzulako."
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2671
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
-msgstr "Huts \"%B\" karpeta irakurtzean."
+msgstr "Errore bat gertatu da \"%B\" karpeta irakurtzean."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
@@ -1466,7 +1467,7 @@ msgstr "Ezin izan da %B karpeta ezabatu."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr "Huts %B ezabatzean."
+msgstr "Errore bat gertatu da %B ezabatzean."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1819
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1831
@@ -1482,13 +1483,15 @@ msgstr[1] "%'d fitxategi zakarrontzira botatzeko"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "Ezin da fitxategia zakarrontzira bota. Berehala ezabatu nahi duzu?"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
+"Fitxategi hau kanpoko euskarri batean dago eta ezin da zakarrontzira bota. "
+"Ezabatuz gero ezingo duzu leheneratu."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
@@ -1496,7 +1499,7 @@ msgstr "Fitxategiak zakarrontzira botatzen"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
-msgstr "Fitxategiak Ezabatzen"
+msgstr "Fitxategiak ezabatzen"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
@@ -1508,14 +1511,14 @@ msgstr "Ezin da %V desmuntatu"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
-msgstr "Nahi duzu zakarrontzia hustutzea desmuntatu aurretik?"
+msgstr "Zakarrontzia hustu nahi duzu desmuntatu aurretik?"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
-"Gailuko leku erabilgarria handitzeko asmoz zakarrontzia hustu behar da. "
+"Gailu honetako leku erabilgarria handitzeko zakarrontzia hustu behar da. "
 "Bolumeneko zakarrontziko elementu guztiak betirako galduko dira."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2308
@@ -1564,17 +1567,17 @@ msgstr[1] "%'d fitxategi zakarrontzira botatzeko prestatzen"
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3620
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
-msgstr "Huts kopiatzean."
+msgstr "Errorea kopiatzean."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2571
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3618
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
-msgstr "Huts lekuz aldatzean."
+msgstr "Errorea lekuz aldatzean."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
-msgstr "Huts fitxategiak zakarrontzira botatzean."
+msgstr "Errorea fitxategiak zakarrontzira botatzean."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
@@ -1624,13 +1627,13 @@ msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
-"Ez dago nahikoa leku erabilgarri helburuan. Saiatu fitxategiak ezabatzea "
+"Ez dago nahikoa leku erabilgarri helburuan. Saiatu fitxategiak ezabatzen "
 "lekua egiteko."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr "%S erabilgarri dago, baina %S behar da."
+msgstr "%S daude erabilgarri, baina %S behar dira."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
@@ -1693,8 +1696,8 @@ msgstr "%S / %S"
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S / %S — %T falta (%S/seg)"
-msgstr[1] "%S / %S — %T falta (%S/seg)"
+msgstr[0] "%S / %S — %T faltan (%S/seg)"
+msgstr[1] "%S / %S — %T faltan (%S/seg)"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
@@ -1726,7 +1729,7 @@ msgstr "Ezin da \"%B\" karpeta kopiatu, irakurtzeko baimenik ez duzulako."
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4416
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
-msgstr "Errorea \"%B\" mugitzean."
+msgstr "Errorea \"%B\" lekuz aldatzean."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
@@ -1780,7 +1783,8 @@ msgstr "Iturburuko fitxategia helburukoarekin gainidatziko da."
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
-"Ezin izan da existitzen den fitxategia ezabatu (%F(e)n izen berdina duena)."
+"Ezin izan da %F(e)n dagoeneko existitzen den izen berdineko fitxategia "
+"ezabatu."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
@@ -1789,11 +1793,11 @@ msgstr "Errorea gertatu da fitxategia %F(e)n kopiatzean."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
-msgstr "Fitxategiak Kopiatzen"
+msgstr "Fitxategiak kopiatzen"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
-msgstr "\"%B\"(e)ra mugitzeko prestatzen"
+msgstr "\"%B\"(e)ra lekuz aldatzeko prestatzen"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
@@ -1809,7 +1813,7 @@ msgstr "Errorea gertatu da fitxategia %F(e)ra eramatean."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
-msgstr "Fitxategiak Mugitzen"
+msgstr "Fitxategiak lekuz aldatzen"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
@@ -1828,7 +1832,7 @@ msgstr "Errorea %B(e)rako esteka sortzean."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
-msgstr "Lokaleko fitxategien esteka sinbolikoak soilik onartzen dira"
+msgstr "Fitxategi lokalen esteka sinbolikoak soilik onartzen dira"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
@@ -1837,7 +1841,7 @@ msgstr "Helburuak ez du esteka sinbolikorik onartzen."
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr "Errorea gertatu da esteka sinbolikoa sortzean %F(e)n."
+msgstr "Errorea gertatu da %F(e)n esteka sinbolikoa sortzean."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5780
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5783
@@ -1863,19 +1867,19 @@ msgstr "Errorea %B fitxategia sortzean."
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Errorea gertatu da direktorioa sortzean %F(e)n."
+msgstr "Errorea gertatu da %F(e)n direktorioa sortzean."
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
-msgstr "Zakarrontzia Husten"
+msgstr "Zakarrontzia husten"
 
 #: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Gaur %-I:%M %p(e)tan"
 
 #: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Atzo %-I:%M %p(e)tan"
 
 #: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1884,275 +1888,275 @@ msgstr ""
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Ezabatu kopiatutako %d elementu"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Ezabatu '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Ezabatu bikoiztutako %d elementu"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "%d elementu lekuz aldatu berriro '%s'(e)ra"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "'%s' berriz ere '%s'(e)ra eraman"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "'%s' berrizendatu '%s' bezala"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "Berrezarri %d elementu zakarrontzitik"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "Berrezarri '%s' hona: '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Bota %d elementu berriz ere zakarrontzira"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Bota '%s' berriz ere zakarrontzira"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Ezabatu %d elementuren estekak"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Ezabatu '%s'(r)en esteka"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Berrezarri jatorrizko baimenak '%s' barneko elementuei"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Berrezarri '%s'(r)en jatorrizko baimenak"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Berrezarri '%s'(r)en taldea '%s'(e)ra"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Berrezarri '%s'(r)en jabetzat '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Kopiatu %d elementu '%s'(e)ra"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Kopiatu '%s' hona: '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Bikoiztu %d elementu '%s'(e)n"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Bikoiztu '%s' hemen: '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Lekuz aldatu %d elementu '%s'(e)ra"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Lekuz aldatu '%s' hona: '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Sortu '%s' fitxategi berria txantiloi honetatik: "
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Sortu '%s' fitxategi hutsa"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Sortu '%s' karpeta berria"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Bota %d elementu zakarrontzira"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Bota '%s' zakarrontzira"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Berrezarri '%s' zakarrontzitik"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Sortu %d elementutarako estekak"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Sortu esteka hona: '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Ezarri '%s' barneko elementuen baimenak"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Ezarri baimenak honi: '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "Ezarri '%s'(r)en taldea hona: '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Ezarri '%s'(r)en jabetzat '%s'"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Desegin elementu %den kopia"
+msgstr[1] "_Desegin %d elementuren kopia"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Desegin elementu %den bikoizketa"
+msgstr[1] "_Desegin %d elementuren kopia"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Desegin elementu %d lekuz aldatzea"
+msgstr[1] "_Desegin %d elementu lekuz aldatzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Desegin elementu %d berrizendatzea"
+msgstr[1] "_Desegin %d elementu berrizendatzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_Desegin fitxategi hutsa sortzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Desegin txantiloitik fitxategi bat sortzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Desegin karpeta %d sortzea"
+msgstr[1] "_Desegin %d karpeta sortzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Desegin elementu %d zakarrontzira botatzea"
+msgstr[1] "_Desegin %d elementu zakarrontzira botatzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Desegin elementu %d zakarrontzitik berrezartzea"
+msgstr[1] "_Desegin %d elementu zakarrontzitik berrezartzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Desegin elementu %den esteka sortzea"
+msgstr[1] "_Desegin %d elementuren esteka sortzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Desegin elementu %d ezabatzea"
+msgstr[1] "_Desegin %d elementu ezabatzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Desegin elementu %den baimenak errekurtsiboki aldatzea"
+msgstr[1] "Desegin %d elementuren baimenak errekurtsiboki aldatzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Desegin elementu %den baimenak aldatzea"
+msgstr[1] "Desegin %d elementuren baimenak aldatzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Desegin elementu %den taldea aldatzea"
+msgstr[1] "Desegin %d elementuren taldea aldatzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Desegin elementu %den jabea aldatzea"
+msgstr[1] "Desegin %d elementuren jabea aldatzea"
 
 #: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
@@ -2408,38 +2412,38 @@ msgstr "Ezin da elementua zakarrontzitik berreskuratu"
 
 #: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "Ebaki hautatutako testua arbelera"
 
 #: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Ebaki hautatutako testua arbelean"
 
 #: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:333
 #: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Itsatsi arbeleko testua"
 
 #: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
-msgstr "%s-ra joan"
+msgstr "%s(e)ra joan"
 
 #: /home/noelco/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
-msgstr ""
+msgstr "Ikusi sareta bezala"
 
 #: /home/noelco/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
-msgstr ""
+msgstr "Ikusi zerrenda bezala"
 
 #: /home/noelco/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
-msgstr ""
+msgstr "Ikusi zutabe bezala"
 
 #: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Fitxategi hauek zakarrontzia hustutzean ezabatuko dira."
 
 #: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Hustu zakarrontzia"
