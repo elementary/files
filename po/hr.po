@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
-"POT-Creation-Date: 2012-10-05 18:55+0200\n"
+"POT-Creation-Date: 2012-10-09 22:15-0400\n"
 "PO-Revision-Date: 2012-09-28 13:36+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -16,791 +16,524 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-10-07 04:55+0000\n"
-"X-Generator: Launchpad (build 16061)\n"
+"X-Launchpad-Export-Date: 2012-10-13 05:02+0000\n"
+"X-Generator: Launchpad (build 16137)\n"
 
-#: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:141
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:324
-msgid "Home"
-msgstr "Osobna mapa"
-
-#: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:143
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:394
-msgid "File System"
-msgstr "Datotečni sustav"
-
-#: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:148
-msgid "(as Administrator)"
-msgstr "(kao administrator)"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:152
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3383
-msgid "Set as default"
-msgstr "Postavi kao zadano"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:157
-msgid "Ignore"
-msgstr "Zanemari"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:489
-msgid "Undo"
-msgstr "Vrati"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:490
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:781
-msgid "Undo the last action"
-msgstr "Poništi"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:499
-msgid "Redo"
-msgstr "Ponovi"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:500
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:784
-msgid "Redo the last action"
-msgstr "Ponovi zadnju radnju"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:755
-msgid "_File"
-msgstr "_Datoteka"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:756
-msgid "_Edit"
-msgstr "_Uredi"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:757
-msgid "_View"
-msgstr "_Pogled"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:758
-msgid "_Go"
-msgstr "_Idi"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:759
-msgid "_Help"
-msgstr "_Pomoć"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:761
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "Novi _prozor"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:762
-msgid "Open another Files window for the displayed location"
-msgstr "Otvori dodatni Files prozor za prikazanu lokaciju"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:765
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Nova _kartica"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:766
-msgid "Open another tab for the displayed location"
-msgstr "Otvori novu karticu za prikazanu lokaciju."
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:770
-msgid "_Close"
-msgstr "_Zatvori"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:771
-msgid "Close this folder"
-msgstr "Zatvori ovu mapu"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:774
-msgid "Preferences"
-msgstr "Osobitosti"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:775
-msgid "Change Files preferences"
-msgstr "Promjeni Files osobitosti"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:780
-msgid "_Undo"
-msgstr "_Poništi"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:783
-msgid "_Redo"
-msgstr "_Ponovi"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:786
-msgid "Open _Parent"
-msgstr "Otvori _nadređenu"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:787
-msgid "Open the parent folder"
-msgstr "Otvori nadređenu mapu"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:789
-msgid "_Back"
-msgstr "_Natrag"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:790
-msgid "Go to the previous visited location"
-msgstr "Vrati se na prethodno posjećenu lokaciju"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:793
-msgid "_Forward"
-msgstr "_Naprijed"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:794
-msgid "Go to the next visited location"
-msgstr "Idi na sljedeću posjećenu lokaciju"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:796
-msgid "_Reload"
-msgstr "_Učitaj ponovo"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:797
-msgid "Reload the current location"
-msgstr "Učitaj ponovo trenutnu lokaciju"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:800
-msgid "_Home Folder"
-msgstr "_Osobna mapa"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:801
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:329
-msgid "Open your personal folder"
-msgstr "Otvorite svoju osobnu mapu"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:804
-msgid "_Trash"
-msgstr "_Smeće"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:805
-msgid "Open your personal trash folder"
-msgstr "Otvorite svoju mapu smeća"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:808
-msgid "_Network"
-msgstr "_Mreža"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:809
-msgid "Browse bookmarked and local network locations"
-msgstr "Pregledaj zabilježene i lokalne mrežne lokacije"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:812
-msgid "Zoom _In"
-msgstr "_Približi"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:813
-msgid "Increase the view size"
-msgstr "Povećanje veličine pogleda"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:824
-msgid "Zoom _Out"
-msgstr "_Udalji"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:825
-msgid "Decrease the view size"
-msgstr "Smanjenje veličine pogleda"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:832
-msgid "Normal Si_ze"
-msgstr "Normalna veli_čina"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:833
-msgid "Use the normal view size"
-msgstr "Koristi zadani pogled"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:836
-msgid "Next Tab"
-msgstr "Sljedeća kartica"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:840
-msgid "Previous Tab"
-msgstr "Prethodna kartica"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:844
-msgid "Connect to _Server..."
-msgstr "Spoji se na _poslužitelj..."
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:845
-msgid "Connect to a remote computer or shared disk"
-msgstr "Povežite se na udaljeno računalo ili dijeljeni disk"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:848
-msgid "_About"
-msgstr "_O programu"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:849
-msgid "Display credits"
-msgstr "Prikaži zasluge"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:852
-msgid "Report a Problem..."
-msgstr "Prijavite problem..."
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:853
-msgid "File a bug on Launchpad"
-msgstr "Prijavite grešku na Launchpadu"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:856
-msgid "Get Help Online..."
-msgstr "Potražite pomoć na Internetu..."
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:860
-msgid "Translate This Application..."
-msgstr "Prevedite ovu aplikaciju..."
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:869
-msgid "Show _Hidden Files"
-msgstr "Prikaži _skrivene datoteke"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:870
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Uključi/Iskljući prikaz skrivenih datoteka u trenutnom prozoru"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:875
-msgid "Show _Desktop Files"
-msgstr "Prikaži _datoteke na Radnoj površini"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:876
-msgid "Toggle the display of desktop files"
-msgstr "Uključi/Iskljući prikaz datoteka na Radnoj površini"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:880
-msgid "_Context Pane"
-msgstr "_Okvir sadržaja"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:881
-msgid "Change the visibility of the context pane"
-msgstr "Promijeni vidljivost okvira sadržaja"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:885
-msgid "_Menubar"
-msgstr "_Traka izbornika"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:886
-msgid "Change the visibility of this window's menubar"
-msgstr "Promijeni vidljivost trake izbornika ovog prozora"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:890
-msgid "_Places"
-msgstr "_Mjesta"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:891
-msgid "Change the visibility of this window's side pane"
-msgstr "Promijeni vidljivosti bočnog okvira ovog prozora"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:899
-msgid "Icon"
-msgstr "Ikone"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:902
-msgid "List"
-msgstr "Popis"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:905
-msgid "Compact"
-msgstr "Zbijeno"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:908
-msgid "Columns"
-msgstr "Stupci"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "Svojstva"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:116
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:47
-msgid "General"
-msgstr "Općenito"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:124
-msgid "More"
-msgstr "Više"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:136
-msgid "Preview"
-msgstr "Pretpregled"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:323
-msgid "Created"
-msgstr "Stvoreno"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:325
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:345
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "Izmijenjeno"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:328
-msgid "Last Access"
-msgstr "Pristupljeno"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:334
-msgid "Deleted"
-msgstr "Obrisano"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:339
-msgid "MimeType"
-msgstr "Mime vrsta"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:347
-msgid "MimeTypes"
-msgstr "Mime vrste"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:351
-msgid "Location"
-msgstr "Lokacija"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:353
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:341
-msgid "Target"
-msgstr "Meta"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:359
-msgid "Origin Location"
-msgstr "Izvorna lokacija"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:369
-msgid "Info:"
-msgstr "Informacija"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:404
-msgid "Other application..."
-msgstr "Druga aplikacija..."
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:428
-msgid "Open with:"
-msgstr "Otvori pomoću:"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:449
-msgid "Usage:"
-msgstr "Upotrebljeno"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:454
-msgid "Device usage:"
-msgstr "Zazuzetost uređaja:"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:461
-#, c-format
-msgid "%s free of %s (%d%% used)"
-msgstr ""
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:600
-msgid "Read"
-msgstr "Čitanje"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:605
-msgid "Write"
-msgstr "Pisanje"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:610
-msgid "Execute"
-msgstr "Izvršavanje"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:828
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:841
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:346
-msgid "Owner"
-msgstr "Vlasnik"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:833
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:845
-msgid "Group"
-msgstr "Grupa"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:849
-msgid "Everyone"
-msgstr "Ostali"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
-msgid "Select an aplication to open "
-msgstr "Odaberite aplikaciju za otvaranje "
-
-#: /home/noelco/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
-#, c-format
-msgid "Folder does not exist"
-msgstr "Mapa ne postoji"
-
-#: /home/noelco/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
-#, c-format
-msgid "Files can't find the folder %s"
-msgstr "Files ne može pronaći mapu %s"
-
-#: /home/noelco/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
-msgid "Create"
-msgstr "Napravi"
-
-#: /home/noelco/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
-#, c-format
-msgid "Create the folder %s"
-msgstr "Napravi mapu %s"
-
-#: /home/noelco/pantheon-files/po/../src/View/LocationBar.vala:110
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:370
-msgid "Trash"
-msgstr "Smeće"
-
-#: /home/noelco/pantheon-files/po/../src/View/LocationBar.vala:111
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:588
-msgid "Network"
-msgstr "Mreža"
-
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:337
-msgid "Name"
-msgstr "Ime"
-
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:338
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Vrsta"
-
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:343
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Veličina"
-
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:34
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
 msgstr "Files osobitosti"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:103
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:47
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:116
+msgid "General"
+msgstr "Općenito"
+
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "Extensions"
 msgstr "Priključci"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:209
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:209
 msgid "Single click to open:"
 msgstr "Otvaranje jednim klikom:"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:217
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:217
 msgid "Mouse auto-selection:"
 msgstr "Automatski odabir mišem:"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:236
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
 msgstr ""
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:238
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
 msgstr ""
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:253
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
 msgstr "Format datuma:"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:256
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:256
 msgid "iso"
 msgstr "iso"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:257
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:257
 msgid "locale"
 msgstr "lokalan"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:258
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:258
 msgid "informal"
 msgstr "neformalan"
 
-#: /home/noelco/pantheon-files/po/../src/eel-editable-label.c:3190
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3494
-msgid "Select All"
-msgstr "Odaberi sve"
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:337
+msgid "Name"
+msgstr "Ime"
 
-#: /home/noelco/pantheon-files/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Načini unosa"
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:338
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Vrsta"
 
-#: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Jednostruki klik"
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:341
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:353
+msgid "Target"
+msgstr "Meta"
 
-#: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Stavke u prikazu se mogu pokrenuti jednim klikom"
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:343
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Veličina"
 
-#: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "Trajanje jednog klika"
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:345
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:325
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Modified"
+msgstr "Izmijenjeno"
 
-#: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:346
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:828
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:841
+msgid "Owner"
+msgstr "Vlasnik"
+
+#: /home/pqp/pantheon-files/po/../src/View/LocationBar.vala:110
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:370
+msgid "Trash"
+msgstr "Smeće"
+
+#: /home/pqp/pantheon-files/po/../src/View/LocationBar.vala:111
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:588
+msgid "Network"
+msgstr "Mreža"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "Svojstva"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:124
+msgid "More"
+msgstr "Više"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:136
+msgid "Preview"
+msgstr "Pretpregled"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:323
+msgid "Created"
+msgstr "Stvoreno"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:328
+msgid "Last Access"
+msgstr "Pristupljeno"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:334
+msgid "Deleted"
+msgstr "Obrisano"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:339
+msgid "MimeType"
+msgstr "Mime vrsta"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:347
+msgid "MimeTypes"
+msgstr "Mime vrste"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:351
+msgid "Location"
+msgstr "Lokacija"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:359
+msgid "Origin Location"
+msgstr "Izvorna lokacija"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:369
+msgid "Info:"
+msgstr "Informacija"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:404
+msgid "Other application..."
+msgstr "Druga aplikacija..."
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:428
+msgid "Open with:"
+msgstr "Otvori pomoću:"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:449
+msgid "Usage:"
+msgstr "Upotrebljeno"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:454
+msgid "Device usage:"
+msgstr "Zazuzetost uređaja:"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
+#, c-format
+msgid "%s free of %s (%d%% used)"
 msgstr ""
-"Vrijeme nakon kojeg će stavke pod pokazivačem miša automatski biti odabrane "
-"u modu jednog klika"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
-msgid "SSH"
-msgstr "Sigurna veza (SSH)"
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
+msgid "Read"
+msgstr "Čitanje"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
-msgid "Public FTP"
-msgstr "Javni FTP"
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:605
+msgid "Write"
+msgstr "Pisanje"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
-msgid "FTP (with login)"
-msgstr "FTP (s prijavom)"
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:610
+msgid "Execute"
+msgstr "Izvršavanje"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
-msgid "Windows share"
-msgstr "Windows dijeljenje"
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:833
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:845
+msgid "Group"
+msgstr "Grupa"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:849
+msgid "Everyone"
+msgstr "Ostali"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Sigurni WebDAV (HTTPS)"
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
+msgid "Select an aplication to open "
+msgstr "Odaberite aplikaciju za otvaranje "
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
-msgid "Connecting..."
-msgstr "Povezivanje…"
+#: /home/pqp/pantheon-files/po/../src/View/ViewContainer.vala:141
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "Osobna mapa"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
-msgid ""
-"Can't load the supported server method list.\n"
-"Please check your gvfs installation."
+#: /home/pqp/pantheon-files/po/../src/View/ViewContainer.vala:143
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "Datotečni sustav"
+
+#: /home/pqp/pantheon-files/po/../src/View/ViewContainer.vala:148
+msgid "(as Administrator)"
+msgstr "(kao administrator)"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:146
+msgid "Files isn't your default file manager."
 msgstr ""
-"Nije moguće učitati popis podržanih metoda poslužitelja.\n"
-"Provjerite svoju gvfs instalaciju."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:152
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3383
+msgid "Set as default"
+msgstr "Postavi kao zadano"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:157
+msgid "Ignore"
+msgstr "Zanemari"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:489
+msgid "Undo"
+msgstr "Vrati"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:490
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:781
+msgid "Undo the last action"
+msgstr "Poništi"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:499
+msgid "Redo"
+msgstr "Ponovi"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:500
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:784
+msgid "Redo the last action"
+msgstr "Ponovi zadnju radnju"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:755
+msgid "_File"
+msgstr "_Datoteka"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:756
+msgid "_Edit"
+msgstr "_Uredi"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:757
+msgid "_View"
+msgstr "_Pogled"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:758
+msgid "_Go"
+msgstr "_Idi"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:759
+msgid "_Help"
+msgstr "_Pomoć"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:761
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "Novi _prozor"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:762
+msgid "Open another Files window for the displayed location"
+msgstr "Otvori dodatni Files prozor za prikazanu lokaciju"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:765
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Nova _kartica"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:766
+msgid "Open another tab for the displayed location"
+msgstr "Otvori novu karticu za prikazanu lokaciju."
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:770
+msgid "_Close"
+msgstr "_Zatvori"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:771
+msgid "Close this folder"
+msgstr "Zatvori ovu mapu"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:774
+msgid "Preferences"
+msgstr "Osobitosti"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:775
+msgid "Change Files preferences"
+msgstr "Promjeni Files osobitosti"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:780
+msgid "_Undo"
+msgstr "_Poništi"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:783
+msgid "_Redo"
+msgstr "_Ponovi"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:786
+msgid "Open _Parent"
+msgstr "Otvori _nadređenu"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:787
+msgid "Open the parent folder"
+msgstr "Otvori nadređenu mapu"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:789
+msgid "_Back"
+msgstr "_Natrag"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:790
+msgid "Go to the previous visited location"
+msgstr "Vrati se na prethodno posjećenu lokaciju"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:793
+msgid "_Forward"
+msgstr "_Naprijed"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:794
+msgid "Go to the next visited location"
+msgstr "Idi na sljedeću posjećenu lokaciju"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:796
+msgid "_Reload"
+msgstr "_Učitaj ponovo"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:797
+msgid "Reload the current location"
+msgstr "Učitaj ponovo trenutnu lokaciju"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:800
+msgid "_Home Folder"
+msgstr "_Osobna mapa"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:801
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "Otvorite svoju osobnu mapu"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:804
+msgid "_Trash"
+msgstr "_Smeće"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:805
+msgid "Open your personal trash folder"
+msgstr "Otvorite svoju mapu smeća"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:808
+msgid "_Network"
+msgstr "_Mreža"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:809
+msgid "Browse bookmarked and local network locations"
+msgstr "Pregledaj zabilježene i lokalne mrežne lokacije"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:812
+msgid "Zoom _In"
+msgstr "_Približi"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:813
+msgid "Increase the view size"
+msgstr "Povećanje veličine pogleda"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:824
+msgid "Zoom _Out"
+msgstr "_Udalji"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:825
+msgid "Decrease the view size"
+msgstr "Smanjenje veličine pogleda"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:832
+msgid "Normal Si_ze"
+msgstr "Normalna veli_čina"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:833
+msgid "Use the normal view size"
+msgstr "Koristi zadani pogled"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:836
+msgid "Next Tab"
+msgstr "Sljedeća kartica"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:840
+msgid "Previous Tab"
+msgstr "Prethodna kartica"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:844
+msgid "Connect to _Server..."
+msgstr "Spoji se na _poslužitelj..."
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:845
+msgid "Connect to a remote computer or shared disk"
+msgstr "Povežite se na udaljeno računalo ili dijeljeni disk"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:848
+msgid "_About"
+msgstr "_O programu"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:849
+msgid "Display credits"
+msgstr "Prikaži zasluge"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:852
+msgid "Report a Problem..."
+msgstr "Prijavite problem..."
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:853
+msgid "File a bug on Launchpad"
+msgstr "Prijavite grešku na Launchpadu"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:856
+msgid "Get Help Online..."
+msgstr "Potražite pomoć na Internetu..."
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:860
+msgid "Translate This Application..."
+msgstr "Prevedite ovu aplikaciju..."
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:869
+msgid "Show _Hidden Files"
+msgstr "Prikaži _skrivene datoteke"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:870
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Uključi/Iskljući prikaz skrivenih datoteka u trenutnom prozoru"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:875
+msgid "Show _Desktop Files"
+msgstr "Prikaži _datoteke na Radnoj površini"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:876
+msgid "Toggle the display of desktop files"
+msgstr "Uključi/Iskljući prikaz datoteka na Radnoj površini"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:880
+msgid "_Context Pane"
+msgstr "_Okvir sadržaja"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:881
+msgid "Change the visibility of the context pane"
+msgstr "Promijeni vidljivost okvira sadržaja"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:885
+msgid "_Menubar"
+msgstr "_Traka izbornika"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:886
+msgid "Change the visibility of this window's menubar"
+msgstr "Promijeni vidljivost trake izbornika ovog prozora"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:890
+msgid "_Places"
+msgstr "_Mjesta"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:891
+msgid "Change the visibility of this window's side pane"
+msgstr "Promijeni vidljivosti bočnog okvira ovog prozora"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:899
+msgid "Icon"
+msgstr "Ikone"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:902
+msgid "List"
+msgstr "Popis"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:905
+msgid "Compact"
+msgstr "Zbijeno"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:908
+msgid "Columns"
+msgstr "Stupci"
+
+#: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
-msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Mapu \"%s\" nije moguće otvoriti na \"%s\"."
+msgid "Folder does not exist"
+msgstr "Mapa ne postoji"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
+#: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
-msgid "The server at \"%s\" cannot be found."
-msgstr "Nije moguće pronaći poslužitelj pri \"%s\"."
+msgid "Files can't find the folder %s"
+msgstr "Files ne može pronaći mapu %s"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
-msgid "Try Again"
-msgstr "Pokušajte ponovo."
+#: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
+msgid "Create"
+msgstr "Napravi"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
-msgid "Please verify your user details."
-msgstr "Provjerite svoje korisničke pojedinosti."
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
-msgid "Continue"
-msgstr "Nastavi"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
-msgid "C_onnect"
-msgstr "P_oveži se"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
-msgid "Connect to Server"
-msgstr "Poveži se s poslužiteljem"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
-msgid "Server Details"
-msgstr "Pojedinosti poslužitelja"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
-msgid "_Server:"
-msgstr "_Poslužitelj:"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
-msgid "_Port:"
-msgstr "_Ulaz:"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
-msgid "_Type:"
-msgstr "_Vrsta:"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
-msgid "Sh_are:"
-msgstr "Di_jeljenje:"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
-msgid "_Folder:"
-msgstr "_Mapa:"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
-msgid "User Details"
-msgstr "Korisničke pojedinosti"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
-msgid "_Domain name:"
-msgstr "Naziv _domene:"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
-msgid "_User name:"
-msgstr "_Korisničko ime:"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
-msgid "Pass_word:"
-msgstr "Loz_inka:"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
-msgid "_Remember this password"
-msgstr "_Zapamti ovu lozinku"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
-msgid "Operation cancelled"
-msgstr "Izmjena otkazana"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:310
-msgid "Personal"
-msgstr "Osobno"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:315
-msgid "Your common places and bookmarks"
-msgstr "Vaša uobičajna mjesta i zabilješke"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:372
-msgid "Open the trash"
-msgstr "Otvori smeće"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:382
-msgid "Devices"
-msgstr "Uređaji"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:387
-msgid "Your local partitions and devices"
-msgstr "Vaše lokalne particije i uređaji"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:396
-msgid "Open the contents of the File System"
-msgstr "Otvorite sadržaj datotečnog sustava"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:455
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:480
+#: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
-msgid "Mount and open %s"
-msgstr "Montiraj i otvori %s"
+msgid "Create the folder %s"
+msgstr "Napravi mapu %s"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:593
-msgid "Your network places"
-msgstr "Vaša mrežna mjesta"
+#: /home/pqp/pantheon-files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Nema ništa u međuspremniku za zalijepiti"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:624
-msgid "Entire network"
-msgstr "Sve mreže"
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Naziv datoteke"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:626
-msgid "Browse the contents of the network"
-msgstr "Pregledavanje sadržaja mreže"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1610
-msgid "_Start"
-msgstr "_Pokreni"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1611
-msgid "_Stop"
-msgstr "_Zaustavi"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1616
-msgid "_Power On"
-msgstr "_Uključi"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1617
-msgid "_Safely Remove Drive"
-msgstr "_Sigurno uklanjanje uređaja"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1620
-msgid "_Connect Drive"
-msgstr "_Poveži uređaj"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1621
-msgid "_Disconnect Drive"
-msgstr "_Odspoji uređaj"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1624
-msgid "_Start Multi-disk Device"
-msgstr "_Pokreni uređaj s više diskova"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1625
-msgid "_Stop Multi-disk Device"
-msgstr "_Zaustavi uređaj s više diskova"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1629
-msgid "_Unlock Drive"
-msgstr "_Otključaj uređaj"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1630
-msgid "_Lock Drive"
-msgstr "_Zaključaj uređaj"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1704
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2251
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:199
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:139
+#: /home/pqp/pantheon-files/po/../src/fm-columns-view.c:186
 #, c-format
-msgid "Unable to start %s"
-msgstr "Nemoguće je pokrenuti %s"
+msgid "Failed to rename %s to %s"
+msgstr "Neuspjelo preimenovanje %s u %s"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1994
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2023
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2052
-#, c-format
-msgid "Unable to eject %s"
-msgstr "Nemoguće je izbaciti %s"
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:616
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:573
+#: /home/pqp/pantheon-files/po/../src/fm-columns-view.c:82
+msgid "This folder is empty."
+msgstr "Ova mapa je prazna."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2197
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Nemoguće je ispitati %s za promjene na mediju"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2307
-#, c-format
-msgid "Unable to stop %s"
-msgstr "Nije moguće zaustaviti %s"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2399
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1947
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3460
-msgid "_Open"
-msgstr "_Otvori"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2407
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1967
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3472
-msgid "Open in New _Tab"
-msgstr "Otvori u novoj _kartici"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2414
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1976
-msgid "Open in New _Window"
-msgstr "Otvori u novom _prozoru"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2423
-msgid "Remove"
-msgstr "Ukloni"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2432
-msgid "Rename..."
-msgstr "Preimenuj..."
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2444
-msgid "_Mount"
-msgstr "_Montiraj"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2451
-msgid "_Unmount"
-msgstr "_Odmontiraj"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2458
-msgid "_Eject"
-msgstr "_Izbaci"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2466
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1422
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2310
-msgid "Empty _Trash"
-msgstr "Isprazni _smeće"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
 msgid "File Operations"
 msgstr "Rad s datotekama"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
 msgstr "Prikaži pojedinosti"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
@@ -808,225 +541,210 @@ msgstr[0] "%'d radnja nad datotekama se izvodi"
 msgstr[1] "%'d radnje nad datotekama  se izvode"
 msgstr[2] "%'d radnja nad datotekama  se izvodi"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
 msgstr "Prikaži dijalog kopiranja"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
 msgstr "Otkaži sve radnje u tijeku"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
 msgstr "Sve radnje nad datotekama su uspješno završene"
 
-#: /home/noelco/pantheon-files/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Ikonski popis direktorija"
+#: /home/pqp/pantheon-files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Izlazni način"
 
-#: /home/noelco/pantheon-files/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Ikonski pogled"
+#: /home/pqp/pantheon-files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "Izlazni način"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1151
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Pogrešan naziv datoteke XDS stranice povlačenja"
+#: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Jednostruki klik"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1309
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Neuspjelo stvaranje poveznice za URL \"%s\""
+#: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Stavke u prikazu se mogu pokrenuti jednim klikom"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1794
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Koristi \"%s\" za otvaranje odabrane stavke"
-msgstr[1] "Koristi \"%s\" za otvaranje odabrane stavke"
-msgstr[2] "Koristi \"%s\" za otvaranje odabranih stavki"
+#: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "Trajanje jednog klika"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1941
-#, c-format
-msgid "_Open With %s"
-msgstr "_Otvori s(a) %s"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1963
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "Otvori u %'d nove(ih) _kartice(a)"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1972
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "Otvori u %'d nova(ih) _prozora"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3432
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-"Pripremi odabrane datoteke za premještanje naredbom \"Zaljepi - Ctrl+V\""
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3436
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-"Pripremi odabrane datoteke za kopiranje naredbom \"Zaljepi - Ctrl+V\""
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3440
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Premjesti ili kopiraj datoteke prethodno odabrane naredbom \"Izreži\" ili "
-"\"Kopiraj\""
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3443
-msgid "Paste Into Folder"
-msgstr "Zalijepi u mapu"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3444
+#: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:185
 msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
 msgstr ""
-"Premjesti ili kopiraj datoteke prethodno odabrane naredbom \"Izreži\" ili "
-"\"Kopiraj\" u odabranu mapu"
+"Vrijeme nakon kojeg će stavke pod pokazivačem miša automatski biti odabrane "
+"u modu jednog klika"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3447
-msgid "_Rename..."
-msgstr "_Preimenuj..."
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "Po_redaj stavke"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3448
-msgid "Rename selected item"
-msgstr "Preimenuj odabranu stavku"
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "O_brnuti poredak"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3451
-msgid "Create New _Folder"
-msgstr "Napravi novu  _mapu"
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "Prikaži ikone u obrnutom poretku"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3452
-msgid "Create a new empty folder inside this folder"
-msgstr "Stvaranje prazne mape unutar trenutne mape"
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "Prema _imenu"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3454
-msgid "Create New _File"
-msgstr "Napravi novu  _datoteku"
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "Drži ikone poredane prema imenu u retcima"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3456
-msgid "_Empty File"
-msgstr "_Prazna datoteka"
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "Prema _veličini"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3457
-msgid "Create a new empty file inside this folder"
-msgstr "Stvaranje prazne datoteke unutar trenutne mape"
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "Drži ikone poredane prema veličini u retcima"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3461
-msgid "Open the selected item"
-msgstr "Otvori odabranu stavku"
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "Prema _vrsti"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3468
-msgid "Open in new Window"
-msgstr "Otvori u novom prozoru"
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "Drži ikone poredane prema vrsti u retcima"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3469
-msgid "Open each selected item in a new window"
-msgstr "Otvori svaku odabranu stavku u novom prozoru"
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "Prema _datumu promjene"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3473
-msgid "Open each selected item in a new tab"
-msgstr "Otvori svaku odabranu stavku u novoj kartici"
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "Drži ikone poredane prema datumu izmjene u retcima"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3475
-msgid "Open Wit_h"
-msgstr "Otvori pomoć_u"
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
+msgid "SSH"
+msgstr "Sigurna veza (SSH)"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3476
-msgid "Choose a program with which to open the selected item"
-msgstr "Odaberite program za otvaranje odabrane stavke"
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
+msgid "Public FTP"
+msgstr "Javni FTP"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3478
-msgid "Other _Application..."
-msgstr "Druga _aplikacija..."
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
+msgid "FTP (with login)"
+msgstr "FTP (s prijavom)"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3479
-msgid "Choose another application with which to open the selected item"
-msgstr "Izaberite aplikaciju za otvaranje odbrane stavke"
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
+msgid "Windows share"
+msgstr "Windows dijeljenje"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3482
-msgid "Mo_ve to Trash"
-msgstr "Pre_mjesti u smeće"
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3483
-msgid "Move each selected item to the Trash"
-msgstr "Premjesti svaku odabranu stavku u smeće"
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Sigurni WebDAV (HTTPS)"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3486
-msgid "_Delete Permanently"
-msgstr "_Obriši trajno"
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
+msgid "Connecting..."
+msgstr "Povezivanje…"
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3487
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "Obriši odabranu stavku bez premještanja u smeće"
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
+msgid ""
+"Can't load the supported server method list.\n"
+"Please check your gvfs installation."
+msgstr ""
+"Nije moguće učitati popis podržanih metoda poslužitelja.\n"
+"Provjerite svoju gvfs instalaciju."
 
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3490
-msgid "_Restore"
-msgstr "_Vrati"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3498
-msgid "_Properties"
-msgstr "_Svojstva"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3499
-msgid "View or modify the properties of each selected item"
-msgstr "Pogledaj ili promijeni svojstva svake odabrane stavke"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3605
-msgid "Set Color:"
-msgstr "Postavi boju:"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:103
-msgid "_Move Here"
-msgstr "_Premjesti ovdje"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:108
-msgid "_Copy Here"
-msgstr "_Kopiraj ovdje"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:113
-msgid "_Link Here"
-msgstr "_Poveži ovdje"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:118
-msgid "Set as _Background"
-msgstr "Postavi kao _pozadinu"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:125
-msgid "Cancel"
-msgstr "Otkaži"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:217
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Neuspjelo pokretanje datoteke \"%s\""
+msgid "The folder \"%s\" cannot be opened on \"%s\"."
+msgstr "Mapu \"%s\" nije moguće otvoriti na \"%s\"."
 
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Naziv datoteke"
-
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:199
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:139
-#: /home/noelco/pantheon-files/po/../src/fm-columns-view.c:186
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Neuspjelo preimenovanje %s u %s"
+msgid "The server at \"%s\" cannot be found."
+msgstr "Nije moguće pronaći poslužitelj pri \"%s\"."
 
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:616
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:573
-#: /home/noelco/pantheon-files/po/../src/fm-columns-view.c:82
-msgid "This folder is empty."
-msgstr "Ova mapa je prazna."
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
+msgid "Try Again"
+msgstr "Pokušajte ponovo."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:445
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
+msgid "Please verify your user details."
+msgstr "Provjerite svoje korisničke pojedinosti."
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
+msgid "Continue"
+msgstr "Nastavi"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
+msgid "C_onnect"
+msgstr "P_oveži se"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
+msgid "Connect to Server"
+msgstr "Poveži se s poslužiteljem"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
+msgid "Server Details"
+msgstr "Pojedinosti poslužitelja"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
+msgid "_Server:"
+msgstr "_Poslužitelj:"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
+msgid "_Port:"
+msgstr "_Ulaz:"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
+msgid "_Type:"
+msgstr "_Vrsta:"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
+msgid "Sh_are:"
+msgstr "Di_jeljenje:"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
+msgid "_Folder:"
+msgstr "_Mapa:"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
+msgid "User Details"
+msgstr "Korisničke pojedinosti"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
+msgid "_Domain name:"
+msgstr "Naziv _domene:"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
+msgid "_User name:"
+msgstr "_Korisničko ime:"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
+msgid "Pass_word:"
+msgstr "Loz_inka:"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
+msgid "_Remember this password"
+msgstr "_Zapamti ovu lozinku"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
+msgid "Operation cancelled"
+msgstr "Izmjena otkazana"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
 msgstr "Prilagodi alatnu traku"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:464
+#: /home/pqp/pantheon-files/po/../src/marlin-toolbar-editor.c:464
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
@@ -1034,87 +752,242 @@ msgstr ""
 "Odaberite stavke za prikaz na alatnoj traci. Redoslijed stavaka se može "
 "promijeniti 'Povuci i ispusti' radnjom."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:478
+#: /home/pqp/pantheon-files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
 msgstr "Dostupne stavke"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:497
+#: /home/pqp/pantheon-files/po/../src/marlin-toolbar-editor.c:497
 msgid "Displayed Items"
 msgstr "Prikazane stavke"
 
-#: /home/noelco/pantheon-files/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Izlazni način"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "_Premjesti ovdje"
 
-#: /home/noelco/pantheon-files/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "Izlazni način"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "_Kopiraj ovdje"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "Po_redaj stavke"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "_Poveži ovdje"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "O_brnuti poredak"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "Postavi kao _pozadinu"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Prikaži ikone u obrnutom poretku"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "Otkaži"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "Prema _imenu"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Neuspjelo pokretanje datoteke \"%s\""
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Drži ikone poredane prema imenu u retcima"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1151
+msgid "Invalid filename provided by XDS drag site"
+msgstr "Pogrešan naziv datoteke XDS stranice povlačenja"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "Prema _veličini"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1309
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Neuspjelo stvaranje poveznice za URL \"%s\""
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Drži ikone poredane prema veličini u retcima"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1794
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Koristi \"%s\" za otvaranje odabrane stavke"
+msgstr[1] "Koristi \"%s\" za otvaranje odabrane stavke"
+msgstr[2] "Koristi \"%s\" za otvaranje odabranih stavki"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "Prema _vrsti"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1941
+#, c-format
+msgid "_Open With %s"
+msgstr "_Otvori s(a) %s"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Drži ikone poredane prema vrsti u retcima"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1947
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3460
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2399
+msgid "_Open"
+msgstr "_Otvori"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "Prema _datumu promjene"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1963
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "Otvori u %'d nove(ih) _kartice(a)"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "Drži ikone poredane prema datumu izmjene u retcima"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1967
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3472
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2407
+msgid "Open in New _Tab"
+msgstr "Otvori u novoj _kartici"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:421
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1972
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "Otvori u %'d nova(ih) _prozora"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1976
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2414
+msgid "Open in New _Window"
+msgstr "Otvori u novom _prozoru"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3432
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr ""
+"Pripremi odabrane datoteke za premještanje naredbom \"Zaljepi - Ctrl+V\""
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3436
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr ""
+"Pripremi odabrane datoteke za kopiranje naredbom \"Zaljepi - Ctrl+V\""
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3440
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Premjesti ili kopiraj datoteke prethodno odabrane naredbom \"Izreži\" ili "
+"\"Kopiraj\""
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3443
+msgid "Paste Into Folder"
+msgstr "Zalijepi u mapu"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3444
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Premjesti ili kopiraj datoteke prethodno odabrane naredbom \"Izreži\" ili "
+"\"Kopiraj\" u odabranu mapu"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3447
+msgid "_Rename..."
+msgstr "_Preimenuj..."
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3448
+msgid "Rename selected item"
+msgstr "Preimenuj odabranu stavku"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3451
+msgid "Create New _Folder"
+msgstr "Napravi novu  _mapu"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3452
+msgid "Create a new empty folder inside this folder"
+msgstr "Stvaranje prazne mape unutar trenutne mape"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3454
+msgid "Create New _File"
+msgstr "Napravi novu  _datoteku"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3456
+msgid "_Empty File"
+msgstr "_Prazna datoteka"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3457
+msgid "Create a new empty file inside this folder"
+msgstr "Stvaranje prazne datoteke unutar trenutne mape"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3461
+msgid "Open the selected item"
+msgstr "Otvori odabranu stavku"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3468
+msgid "Open in new Window"
+msgstr "Otvori u novom prozoru"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3469
+msgid "Open each selected item in a new window"
+msgstr "Otvori svaku odabranu stavku u novom prozoru"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3473
+msgid "Open each selected item in a new tab"
+msgstr "Otvori svaku odabranu stavku u novoj kartici"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3475
+msgid "Open Wit_h"
+msgstr "Otvori pomoć_u"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3476
+msgid "Choose a program with which to open the selected item"
+msgstr "Odaberite program za otvaranje odabrane stavke"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3478
+msgid "Other _Application..."
+msgstr "Druga _aplikacija..."
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3479
+msgid "Choose another application with which to open the selected item"
+msgstr "Izaberite aplikaciju za otvaranje odbrane stavke"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3482
+msgid "Mo_ve to Trash"
+msgstr "Pre_mjesti u smeće"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3483
+msgid "Move each selected item to the Trash"
+msgstr "Premjesti svaku odabranu stavku u smeće"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3486
+msgid "_Delete Permanently"
+msgstr "_Obriši trajno"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3487
+msgid "Delete each selected item, without moving to the Trash"
+msgstr "Obriši odabranu stavku bez premještanja u smeće"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3490
+msgid "_Restore"
+msgstr "_Vrati"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3494
+#: /home/pqp/pantheon-files/po/../src/eel-editable-label.c:3190
+msgid "Select All"
+msgstr "Odaberi sve"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3498
+msgid "_Properties"
+msgstr "_Svojstva"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3499
+msgid "View or modify the properties of each selected item"
+msgstr "Pogledaj ili promijeni svojstva svake odabrane stavke"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3605
+msgid "Set Color:"
+msgstr "Postavi boju:"
+
+#: /home/pqp/pantheon-files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Ikonski popis direktorija"
+
+#: /home/pqp/pantheon-files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Ikonski pogled"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:421
 msgid "Show the version of the program."
 msgstr "Prikaži inačicu programa."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:425
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:425
 msgid "Open uri(s) in new tab"
 msgstr "Ovori uri(e) u novoj kartici"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:427
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:427
 msgid "Quit Files."
 msgstr "Zatvori Files."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:429
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
 msgstr "Omogući zapis grešaka"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:430
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:430
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:439
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:439
 msgid ""
 "\n"
 "\n"
@@ -1124,114 +997,748 @@ msgstr ""
 "\n"
 "Pregledaj datotečni sustav s upraviteljem datoteka"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:459
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nije moguće koristiti s URI-jima."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Nema ništa u međuspremniku za zalijepiti"
-
-#: /home/noelco/pantheon-files/po/../src/fm-compact-view.c:86
+#: /home/pqp/pantheon-files/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
 msgstr "Zbijen popis direktorija"
 
-#: /home/noelco/pantheon-files/po/../src/fm-compact-view.c:87
+#: /home/pqp/pantheon-files/po/../src/fm-compact-view.c:87
 msgid "Compact view"
 msgstr "Zbijen pogled"
 
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:6
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:310
+msgid "Personal"
+msgstr "Osobno"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:315
+msgid "Your common places and bookmarks"
+msgstr "Vaša uobičajna mjesta i zabilješke"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:372
+msgid "Open the trash"
+msgstr "Otvori smeće"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:382
+msgid "Devices"
+msgstr "Uređaji"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:387
+msgid "Your local partitions and devices"
+msgstr "Vaše lokalne particije i uređaji"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:396
+msgid "Open the contents of the File System"
+msgstr "Otvorite sadržaj datotečnog sustava"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:455
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:480
+#, c-format
+msgid "Mount and open %s"
+msgstr "Montiraj i otvori %s"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:593
+msgid "Your network places"
+msgstr "Vaša mrežna mjesta"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:624
+msgid "Entire network"
+msgstr "Sve mreže"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:626
+msgid "Browse the contents of the network"
+msgstr "Pregledavanje sadržaja mreže"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1610
+msgid "_Start"
+msgstr "_Pokreni"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1611
+msgid "_Stop"
+msgstr "_Zaustavi"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1616
+msgid "_Power On"
+msgstr "_Uključi"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1617
+msgid "_Safely Remove Drive"
+msgstr "_Sigurno uklanjanje uređaja"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1620
+msgid "_Connect Drive"
+msgstr "_Poveži uređaj"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1621
+msgid "_Disconnect Drive"
+msgstr "_Odspoji uređaj"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1624
+msgid "_Start Multi-disk Device"
+msgstr "_Pokreni uređaj s više diskova"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1625
+msgid "_Stop Multi-disk Device"
+msgstr "_Zaustavi uređaj s više diskova"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1629
+msgid "_Unlock Drive"
+msgstr "_Otključaj uređaj"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1630
+msgid "_Lock Drive"
+msgstr "_Zaključaj uređaj"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1704
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2251
+#, c-format
+msgid "Unable to start %s"
+msgstr "Nemoguće je pokrenuti %s"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1994
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2023
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2052
+#, c-format
+msgid "Unable to eject %s"
+msgstr "Nemoguće je izbaciti %s"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2197
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "Nemoguće je ispitati %s za promjene na mediju"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2307
+#, c-format
+msgid "Unable to stop %s"
+msgstr "Nije moguće zaustaviti %s"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2423
+msgid "Remove"
+msgstr "Ukloni"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2432
+msgid "Rename..."
+msgstr "Preimenuj..."
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2444
+msgid "_Mount"
+msgstr "_Montiraj"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2451
+msgid "_Unmount"
+msgstr "_Odmontiraj"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2458
+msgid "_Eject"
+msgstr "_Izbaci"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2466
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1422
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2310
+msgid "Empty _Trash"
+msgstr "Isprazni _smeće"
+
+#: /home/pqp/pantheon-files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Načini unosa"
+
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "Pregledaj svoje datoteke"
 
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:7
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
 msgstr "Upravitelj datoteka"
 
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:10
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
 msgstr "Novi prozor kao _administrator"
 
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:11
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
 msgstr ""
 
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:252
-#, c-format
-msgid "link to %s"
-msgstr "poveznica na %s"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1702
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Nemoguće je obraditi datoteku radne površine: %s"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1740
-msgid "No Exec field specified"
-msgstr "Izvršno polje nije definirano"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1760
-msgid "No URL field specified"
-msgstr "URL polje nije definirano"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1766
-msgid "Invalid desktop file"
-msgstr "Neispravna datoteka radne površine"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:2056
-msgid "Slashes are not allowed in filenames"
-msgstr "Kose crte nisu dopuštene u imenima datoteka"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:2076
-msgid "Toplevel files cannot be renamed"
-msgstr "Datoteke najviše razine se ne mogu preimenovati"
-
-#: /home/noelco/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
+#: /home/pqp/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
 msgstr "Prikaži više _pojedinosti"
 
-#: /home/noelco/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (neispravan unicode)"
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Obriši %d kopiranih stavki"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:200
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "'%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Obriši %d dupliciranih stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Premjesti %d stavki natrag u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Premjesti '%s' natrag u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Preimenuj '%s' kao '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Vrati %d stavki iz smeća"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Vrati '%s' u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Premjesti %d stavki natrag u smeće"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Premjesti '%s' natrag u smeće"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Obriši poveznice na %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Obriši poveznicu na '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Obnovi izvorne dozvole stavki sadržanih u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Obnovi izvorne dozvole '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Obnovi grupu '%s' u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Obnovi vlasnika '%s' u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Kopiraj %d stavki u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Kopiraj '%s' u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Duplikati od %d stavki u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Udvostruči '%s' u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Premjesti %d stavki u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Premjesti '%s' u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Stvori novu datoteku '%s' iz predloška "
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Stvori praznu datoteku '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Stvori novu mapu '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Premjesti %d stavki u smeće"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Premjesti '%s' u smeće"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Vrati '%s' iz smeća"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "Napravi poveznicu na %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Napravi poveznicu na '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Postavi dozvole stavki sadržanih u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Postavi dozvole '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Postavi grupu '%s' u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Postavi vlasnika '%s' u '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Poništi kopiranje %d stavke"
+msgstr[1] "_Poništi kopiranje %d stavke"
+msgstr[2] "_Poništi kopiranje %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Poništi udvostručenje %d stavke"
+msgstr[1] "_Poništi udvostručenje %d stavke"
+msgstr[2] "_Poništi udvostručenje %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Poništi premještanje %d stavke"
+msgstr[1] "_Poništi premještanje %d stavke"
+msgstr[2] "_Poništi premještanje %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Poništi preimenovanje %d stavke"
+msgstr[1] "_Poništi preimenovanje %d stavke"
+msgstr[2] "_Poništi preimenovanje %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "_Poništi stvaranje prazne datoteke"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "_Poništi stvaranje datoteke iz predloška"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Poništi stvaranje %d mape"
+msgstr[1] "_Poništi stvaranje %d mape"
+msgstr[2] "_Poništi stvaranje %d mapa"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Poništi premještanje u smeće %d stavke"
+msgstr[1] "_Poništi premještanje u smeće %d stavke"
+msgstr[2] "_Poništi premještanje u smeće %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Poništi vraćanje iz smeće %d stavke"
+msgstr[1] "_Poništi vraćanje iz smeće %d stavke"
+msgstr[2] "_Poništi vraćanje iz smeće %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Poništi stvaranje poveznice na %d stavku"
+msgstr[1] "_Poništi stvaranje poveznice na %d stavke"
+msgstr[2] "_Poništi stvaranje poveznice na %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Poništi brisanje %d stavke"
+msgstr[1] "_Poništi brisanje %d stavke"
+msgstr[2] "_Poništi brisanje %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Poništi promjenu rekruzivne dozvole za %d stavku"
+msgstr[1] "Poništi promjenu rekruzivne dozvole za %d stavke"
+msgstr[2] "Poništi promjenu rekruzivne dozvole za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Poništi promjenu dozvole za %d stavku"
+msgstr[1] "Poništi promjenu dozvole za %d stavke"
+msgstr[2] "Poništi promjenu dozvole za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Poništi promjenu grupe za %d stavku"
+msgstr[1] "Poništi promjenu grupe za %d stavke"
+msgstr[2] "Poništi promjenu grupe za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Poništi promjenu vlasnika za %d stavku"
+msgstr[1] "Poništi promjenu vlasnika za %d stavke"
+msgstr[2] "Poništi promjenu vlasnika za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Ponovi kopiranje za %d stavku"
+msgstr[1] "_Ponovi kopiranje za %d stavke"
+msgstr[2] "_Ponovi kopiranje za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Ponovi udvostručenje za %d stavku"
+msgstr[1] "_Ponovi udvostručenje za %d stavke"
+msgstr[2] "_Ponovi udvostručenje za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Ponovi premještanje za %d stavku"
+msgstr[1] "_Ponovi premještanje za %d stavke"
+msgstr[2] "_Ponovi premještanje za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Ponovi preimenovanje za %d stavku"
+msgstr[1] "_Ponovi preimenovanje za %d stavke"
+msgstr[2] "_Ponovi preimenovanje za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "_Ponovi stvaranje prazne datoteke"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "_Ponovi stvaranje datoteke iz predloška"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Ponovi stvaranje za %d mapu"
+msgstr[1] "_Ponovi stvaranje za %d mape"
+msgstr[2] "_Ponovi stvaranje za %d mapa"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Ponovi premještanje u smeće za %d stavku"
+msgstr[1] "_Ponovi premještanje u smeće za %d stavke"
+msgstr[2] "_Ponovi premještanje u smeće za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Ponovi vraćanje iz smeća za %d stavku"
+msgstr[1] "_Ponovi vraćanje iz smeća za %d stavke"
+msgstr[2] "_Ponovi vraćanje iz smeća za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Ponovi stvaranje poveznice za %d stavku"
+msgstr[1] "_Ponovi stvaranje poveznice za %d stavke"
+msgstr[2] "_Ponovi stvaranje poveznice za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Ponovi brisanje za %d stavku"
+msgstr[1] "_Ponovi brisanje za %d stavke"
+msgstr[2] "_Ponovi brisanje za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Ponovi promjenu rekruzivne dozvole za %d stavku"
+msgstr[1] "Ponovi promjenu rekruzivne dozvole za %d stavke"
+msgstr[2] "Ponovi promjenu rekruzivne dozvole za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Ponovi promjenu dozvole za %d stavku"
+msgstr[1] "Ponovi promjenu dozvole za %d stavke"
+msgstr[2] "Ponovi promjenu dozvole za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Ponovi promjenu grupe za %d stavku"
+msgstr[1] "Ponovi promjenu grupe za %d stavke"
+msgstr[2] "Ponovi promjenu grupe za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Ponovi promjenu vlasnika za %d stavku"
+msgstr[1] "Ponovi promjenu vlasnika za %d stavke"
+msgstr[2] "Ponovi promjenu vlasnika za %d stavki"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Spojiti mapu \"%s\"?"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Spajanje će tražiti potvrdu prije zamjene svake datoteke unutar mape, koja "
+"je u sukobu s datotekama koje se kopiraju."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Starija mapa s istim nazivom već postoji u \"%s\"."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Novija mapa s istim nazivom već postoji u \"%s\"."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Druga mapa s istim nazivom već postoji u \"%s\"."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
+msgid "Replacing it will remove all files in the folder."
+msgstr "Zamjena će obrisati sve datoteke u mapi."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Zamijeniti mapu \"%s\"?"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Mapa s istim nazivom već postoji u \"%s\"."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Zamijeniti datoteku \"%s\"?"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will overwrite its content."
+msgstr "Zamjena će obrisati stari sadržaj."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Starija datoteka s istim nazivom već postoji u \"%s\"."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Već postoji novija datoteka istog naziva u \"%s\"."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Druga datoteka s istim nazivom postoji u \"%s\"."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
+msgid "Original file"
+msgstr "Izvorna datoteka"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
+msgid "Size:"
+msgstr "Veličina:"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
+msgid "Type:"
+msgstr "Vrsta:"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
+msgid "Last modified:"
+msgstr "Posljednja izmjena:"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Replace with"
+msgstr "Zamijeni sa"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
+msgid "Merge"
+msgstr "Spoji"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
+msgid "_Select a new name for the destination"
+msgstr "_Odaberi novo ime za odredište"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
+msgid "Reset"
+msgstr "Vrati izvorno"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
+msgid "Apply this action to all files"
+msgstr "Primjeni radnju na sve datoteke"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:200
 msgid "_Skip"
 msgstr "_Preskoči"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:201
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
+msgid "Re_name"
+msgstr "Pre_imenuj"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
+msgid "Replace"
+msgstr "Zamijeni"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
+msgid "File conflict"
+msgstr "Sukob datoteka"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "P_reskoči sve"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:202
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "_Pokušaj ponovo"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:203
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "Obriši _sve"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:204
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "_Zamijeni"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:205
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "Zamjeni _sve"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:206
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "_Spoji"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:207
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "Spoji _sve"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:208
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "Svejedno _kopiraj"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:294
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -1239,8 +1746,8 @@ msgstr[0] "%'d sekunda"
 msgstr[1] "%'d sekunde"
 msgstr[2] "%'d sekundi"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:299
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:310
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:299
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -1248,7 +1755,7 @@ msgstr[0] "%'d minuta"
 msgstr[1] "%'d minute"
 msgstr[2] "%'d minuta"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:309
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -1256,7 +1763,7 @@ msgstr[0] "%'d sat"
 msgstr[1] "%'d sata"
 msgstr[2] "%'d sati"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:317
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -1264,110 +1771,110 @@ msgstr[0] "približno %'d sat"
 msgstr[1] "približno %'d sata"
 msgstr[2] "približno %'d sati"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:393
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "Poveznica na %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:397
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "Još jedna poveznica na %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:413
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'dst poveznica na %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:417
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'dnd poveznica na %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:421
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'drd poveznica na %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:425
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'dth poveznica na %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:463
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr " (kopija)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:465
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr " (dodatna kopija)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:468
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:470
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:472
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:482
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:468
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:470
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:472
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr ". kopija)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:475
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr ". kopija)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:477
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr ". kopija)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:479
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr ". kopija)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:496
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (kopija)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:498
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (dodatna kopija)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:501
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:503
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:505
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:519
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:501
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:503
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:505
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (kopija %'d)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:513
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (kopija %'d)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:515
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (kopija %'d)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:517
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (kopija %'d)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:617
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:625
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1381
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Sigurno želite trajno obrisati \"%B\" iz smeća?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1384
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1379,24 +1886,24 @@ msgstr[0] "Sigurno želite trajno obrisati %'d odabranu stavku iz smeća?"
 msgstr[1] "Sigurno želite trajno obrisati %'d odabrane stavke iz smeća?"
 msgstr[2] "Sigurno želite trajno obrisati %'d odabranih stavki iz smeća?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1394
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1462
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1394
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Ako obrišete stavku, biti će trajno izgubljena."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1415
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "Isprazniti sve stavke iz smeća?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1419
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Sve stavke u smeću bit će trajno obrisane."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1450
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Sigurno želite trajno obrisati \"%B\"?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1453
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1405,12 +1912,12 @@ msgstr[0] "Sigurno želite trajno obrisati %'d izabranu stavku?"
 msgstr[1] "Sigurno želite trajno obrisati %'d odabrane stavke?"
 msgstr[2] "Sigurno želite trajno obrisati %'d odabranih stavki?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1478
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1510
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1478
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "Brisanje datoteka"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1504
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
@@ -1418,67 +1925,67 @@ msgstr[0] "%'d datoteka preostala za brisanje"
 msgstr[1] "%'d datoteke preostale za brisanje"
 msgstr[2] "%'d datoteka preostalo za brisanje"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1524
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T preostala"
 msgstr[1] "%T preostale"
 msgstr[2] "%T preostalo"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1592
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1626
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1665
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1742
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2573
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1592
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1626
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1665
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1742
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
 msgstr "Greška pri brisanju."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1596
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
 "Datoteke u mapi \"%B\" ne mogu biti obrisane jer nemate dozvole da ih vidite."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1599
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2632
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3628
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1599
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2632
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "Pojavila se greška pri dobivanju informacija o datotekama u mapi \"%B\"."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1608
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3637
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1608
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
 msgstr "_Preskoči datoteke"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1629
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "Mapa \"%B\" ne može biti obrisana jer nemate dozvole za čitanje."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1632
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2671
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3673
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1632
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2671
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Pojavila se greška pri čitanju mape \"%B\"."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1666
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "Nemoguće je ukloniti mapu %B."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1743
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "Pojavila se greška pri brisanju %B."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1819
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1831
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1819
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "Premještanje datoteka u smeće"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1833
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
@@ -1486,11 +1993,11 @@ msgstr[0] "%'d datoteka preostala za baciti u smeće"
 msgstr[1] "%'d datoteke preostale za baciti u smeće"
 msgstr[2] "%'d datoteka preostalo za baciti u smeće"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1888
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr "Nemoguće premještanje datoteke u smeće. Obriši odmah?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1889
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1498,27 +2005,27 @@ msgstr ""
 "Ova datoteka je locirana na vanjskom mediju i ne može se premjestiti u "
 "smeće. Jednom kada se obriše, ne može se vratiti."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2069
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
 msgstr "Bacanje datoteka u smeće"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2071
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
 msgstr "Brisanje datoteka"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2143
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
 msgstr "Nemoguće je izbaciti %V"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2145
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
 msgstr "Nemoguće je odmontirati %V"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2300
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Želite li obrisati smeće prije odmontiranja?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2302
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1526,20 +2033,20 @@ msgstr ""
 "Kako bi oslobodili prostor na ovom disku morate isprazniti smeće. Sve "
 "datoteke u smeću će biti bespovratno izgubljene."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2308
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
 msgstr "_Nemoj  prazniti smeće"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2363
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
 msgstr "Pražnjenje smeća"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2430
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Nemoguće je montirati %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2508
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
@@ -1547,7 +2054,7 @@ msgstr[0] "Priprema za kopiranje %'d datoteke (%S)"
 msgstr[1] "Priprema za kopiranje %'d datoteke (%S)"
 msgstr[2] "Priprema za kopiranje %'d datoteka (%S)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2514
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
@@ -1555,7 +2062,7 @@ msgstr[0] "Priprema za premještanje %'d datoteke (%S)"
 msgstr[1] "Priprema za premještanje %'d datoteke (%S)"
 msgstr[2] "Priprema za premještanje %'d datoteka (%S)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2520
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
@@ -1563,7 +2070,7 @@ msgstr[0] "Priprema za brisanje %'d datoteke (%S)"
 msgstr[1] "Priprema za brisanje %'d datoteke (%S)"
 msgstr[2] "Priprema za brisanje %'d datoteka (%S)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2526
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
@@ -1571,66 +2078,66 @@ msgstr[0] "Priprema za bacanje u smeće %'d datoteke"
 msgstr[1] "Priprema za bacanje u smeće %'d datoteke"
 msgstr[2] "Priprema za bacanje u smeće %'d datoteka"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2569
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3489
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3620
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3665
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2569
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3489
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3620
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
 msgstr "Greška pri kopiranju."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2571
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3618
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3663
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2571
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3618
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
 msgstr "Greška pri premještanju."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2575
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
 msgstr "Greška prilikom premještanja datoteka u smeće."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2629
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
 "Ne možete rukovati datotekama u mapi \"%B\" jer nemate dozvole da ih vidite."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2668
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "Ne možete rukovati mapom \"%B\" jer nemate dozvole da ju čitate."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2745
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "Ne možete rukovati datotekom \"%B\" jer nemate dozvole da ju čitate."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2748
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
 msgstr "Pojavila se greška pri dobivanju informacija o \"%B\"."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2848
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2890
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2923
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2953
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2848
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2890
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2923
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
 msgstr "Greška pri kopiranju na \"%B\"."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2852
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
 msgstr "Nemate dozvole za pristup odredišnoj mapi."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2854
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
 msgstr "Pojavila se greška pri dobivanju informacije o odredištu."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2891
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
 msgstr "Odredište nije mapa."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2924
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1638,63 +2145,63 @@ msgstr ""
 "Nema dovoljno slobodnog prostora na odredištu. Probajte ukloniti datoteke da "
 "oslobodite prostor."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2926
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Samo je %S dostupno, ali je %S potrebno."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2954
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
 msgstr "Odredište je samo za čitanje."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3015
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Premještanje \"%B\" na \"%B\""
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3016
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Kopiranje \"%B\" na \"%B\""
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3020
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
 msgstr "Udvostručavanje \"%B\""
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3024
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Premještanje %'d datoteke (iz \"%B\") na \"%B\""
 msgstr[1] "Premještanje %'d datoteke (iz \"%B\") na \"%B\""
 msgstr[2] "Premještanje %'d datoteka (iz \"%B\") na \"%B\""
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3027
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Kopiranje %'d datoteke (iz \"%B\") na \"%B\""
 msgstr[1] "Kopiranje %'d datoteke (iz \"%B\") na \"%B\""
 msgstr[2] "Kopiranje %'d datoteka (iz \"%B\") na \"%B\""
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3034
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Udvostručavanje %'d datoteke (iz \"%B\")"
 msgstr[1] "Udvostručavanje %'d datoteke (iz \"%B\")"
 msgstr[2] "Udvostručavanje %'d datoteka (iz \"%B\")"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3043
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Premještanje %'d datoteke na \"%B\""
 msgstr[1] "Premještanje %'d datoteke na \"%B\""
 msgstr[2] "Premještanje %'d datoteka na \"%B\""
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3047
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Kopiranje %'d datoteke na \"%B\""
 msgstr[1] "Kopiranje %'d datoteke na \"%B\""
 msgstr[2] "Kopiranje %'d datoteka na \"%B\""
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3052
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -1702,19 +2209,19 @@ msgstr[0] "Udvostručavanje %'d datoteke"
 msgstr[1] "Udvostručavanje %'d datoteke"
 msgstr[2] "Udvostručavanje %'d datoteka"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3103
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
 msgstr "%S od %S"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3114
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S od %S — %T preostao (%S/sec)"
 msgstr[1] "%S od %S — %T preostala (%S/sec)"
 msgstr[2] "%S od %S — %T preostalo (%S/sec)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3493
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1722,96 +2229,96 @@ msgstr ""
 "Mapa \"%B\" se ne može kopirati jer nemate dozvole da ju stvorite na "
 "odredištu."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3496
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Pojavila se greška pri stvaranju mape \"%B\"."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3625
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
 "Datoteke u mapi \"%B\" ne mogu biti kopirane jer nemate dozvole da ih vidite."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3670
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3670
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "Mapa \"%B\" se ne može kopirati jer nemate dozvole da ju čitate."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3715
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4416
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5004
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3715
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4416
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
 msgstr "Greška pri premještanju \"%B\"."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3716
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
 msgstr "Nemoguće je ukloniti izvorišnu mapu."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3801
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3842
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4418
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4489
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3801
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3842
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4418
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
 msgstr "Greška pri kopiranju \"%B\"."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3802
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Nemoguće je ukloniti datoteke iz postojeće mape %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3843
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Nemoguće je ukloniti postojeću datoteku %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4172
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4844
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4172
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
 msgstr "Ne možete premjestiti mapu u samu sebe."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4173
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4845
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4173
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
 msgstr "Ne možete kopirati mapu u samu sebe."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4174
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4846
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4174
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
 msgstr "Odredišna mapa je unutar izvorišne mape."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4205
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
 msgstr "Ne možete premjestiti datoteku preko nje same."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4206
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot copy a file over itself."
 msgstr "Ne možete kopirati datoteku preko nje same."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4207
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4207
 msgid "The source file would be overwritten by the destination."
 msgstr "Odredišna datoteka bit će prepisana preko izvorišne datoteke"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4420
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "Nemoguće je ukloniti postojeću datoteku s istim imenom u %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4490
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Pojavila se greška pri kopiranju datoteke u %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4718
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
 msgstr "Kopiranje datoteka"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4744
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
 msgstr "Priprema za premještanje \"%B\""
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4756
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -1819,20 +2326,20 @@ msgstr[0] "Priprema za premještanje %'d datoteke"
 msgstr[1] "Priprema za premještanje %'d datoteke"
 msgstr[2] "Priprema za premještanje %'d datoteka"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5005
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Pojavila se greška pri premještanju datoteke u %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5268
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
 msgstr "Premještanje datoteka"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5298
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
 msgstr "Stvaranje poveznica u \"%B\""
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5309
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -1840,650 +2347,147 @@ msgstr[0] "Stvaranje poveznice na %'d datoteku"
 msgstr[1] "Stvaranje poveznica na %'d datoteke"
 msgstr[2] "Stvaranje poveznica na %'d datoteka"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5444
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
 msgstr "Greška pri stvaranju poveznice na %B"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5446
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
 msgstr "Simboličke poveznice su podržane samo za lokalne datoteke"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5449
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
 msgstr "Meta ne podržava simboličku poveznicu."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5452
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Dogodila se greška pri stvaranju simboličke poveznice u %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5780
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5783
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5780
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
 msgstr "Postavljanje dozvola"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6034
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
 msgstr "bezimena mapa"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6042
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
 msgstr "nova datoteka"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6213
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
 msgstr "Greška pri stvaranju direktorija %B."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6215
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
 msgstr "Greška pri stvaranju datoteke %B."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6217
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Pojavila se greška pri stvaranju direktorija u %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6534
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
 msgstr "Pražnjenje smeća"
 
-#: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Danas u %-I:%M %p"
-
-#: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Jučer u %-I:%M %p"
-
-#: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y u %-I:%M %p"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Obriši %d kopiranih stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "'%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Obriši %d dupliciranih stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Premjesti %d stavki natrag u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Premjesti '%s' natrag u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Preimenuj '%s' kao '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Vrati %d stavki iz smeća"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Vrati '%s' u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Premjesti %d stavki natrag u smeće"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Premjesti '%s' natrag u smeće"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Obriši poveznice na %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Obriši poveznicu na '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Obnovi izvorne dozvole stavki sadržanih u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Obnovi izvorne dozvole '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Obnovi grupu '%s' u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Obnovi vlasnika '%s' u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Kopiraj %d stavki u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Kopiraj '%s' u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Duplikati od %d stavki u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Udvostruči '%s' u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Premjesti %d stavki u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Premjesti '%s' u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Stvori novu datoteku '%s' iz predloška "
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Stvori praznu datoteku '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Stvori novu mapu '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Premjesti %d stavki u smeće"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Premjesti '%s' u smeće"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Vrati '%s' iz smeća"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Napravi poveznicu na %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Napravi poveznicu na '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Postavi dozvole stavki sadržanih u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Postavi dozvole '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Postavi grupu '%s' u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Postavi vlasnika '%s' u '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Poništi kopiranje %d stavke"
-msgstr[1] "_Poništi kopiranje %d stavke"
-msgstr[2] "_Poništi kopiranje %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Poništi udvostručenje %d stavke"
-msgstr[1] "_Poništi udvostručenje %d stavke"
-msgstr[2] "_Poništi udvostručenje %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Poništi premještanje %d stavke"
-msgstr[1] "_Poništi premještanje %d stavke"
-msgstr[2] "_Poništi premještanje %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Poništi preimenovanje %d stavke"
-msgstr[1] "_Poništi preimenovanje %d stavke"
-msgstr[2] "_Poništi preimenovanje %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "_Poništi stvaranje prazne datoteke"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "_Poništi stvaranje datoteke iz predloška"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Poništi stvaranje %d mape"
-msgstr[1] "_Poništi stvaranje %d mape"
-msgstr[2] "_Poništi stvaranje %d mapa"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Poništi premještanje u smeće %d stavke"
-msgstr[1] "_Poništi premještanje u smeće %d stavke"
-msgstr[2] "_Poništi premještanje u smeće %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Poništi vraćanje iz smeće %d stavke"
-msgstr[1] "_Poništi vraćanje iz smeće %d stavke"
-msgstr[2] "_Poništi vraćanje iz smeće %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Poništi stvaranje poveznice na %d stavku"
-msgstr[1] "_Poništi stvaranje poveznice na %d stavke"
-msgstr[2] "_Poništi stvaranje poveznice na %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Poništi brisanje %d stavke"
-msgstr[1] "_Poništi brisanje %d stavke"
-msgstr[2] "_Poništi brisanje %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Poništi promjenu rekruzivne dozvole za %d stavku"
-msgstr[1] "Poništi promjenu rekruzivne dozvole za %d stavke"
-msgstr[2] "Poništi promjenu rekruzivne dozvole za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Poništi promjenu dozvole za %d stavku"
-msgstr[1] "Poništi promjenu dozvole za %d stavke"
-msgstr[2] "Poništi promjenu dozvole za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Poništi promjenu grupe za %d stavku"
-msgstr[1] "Poništi promjenu grupe za %d stavke"
-msgstr[2] "Poništi promjenu grupe za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Poništi promjenu vlasnika za %d stavku"
-msgstr[1] "Poništi promjenu vlasnika za %d stavke"
-msgstr[2] "Poništi promjenu vlasnika za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Ponovi kopiranje za %d stavku"
-msgstr[1] "_Ponovi kopiranje za %d stavke"
-msgstr[2] "_Ponovi kopiranje za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Ponovi udvostručenje za %d stavku"
-msgstr[1] "_Ponovi udvostručenje za %d stavke"
-msgstr[2] "_Ponovi udvostručenje za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Ponovi premještanje za %d stavku"
-msgstr[1] "_Ponovi premještanje za %d stavke"
-msgstr[2] "_Ponovi premještanje za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Ponovi preimenovanje za %d stavku"
-msgstr[1] "_Ponovi preimenovanje za %d stavke"
-msgstr[2] "_Ponovi preimenovanje za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "_Ponovi stvaranje prazne datoteke"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "_Ponovi stvaranje datoteke iz predloška"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Ponovi stvaranje za %d mapu"
-msgstr[1] "_Ponovi stvaranje za %d mape"
-msgstr[2] "_Ponovi stvaranje za %d mapa"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Ponovi premještanje u smeće za %d stavku"
-msgstr[1] "_Ponovi premještanje u smeće za %d stavke"
-msgstr[2] "_Ponovi premještanje u smeće za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Ponovi vraćanje iz smeća za %d stavku"
-msgstr[1] "_Ponovi vraćanje iz smeća za %d stavke"
-msgstr[2] "_Ponovi vraćanje iz smeća za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Ponovi stvaranje poveznice za %d stavku"
-msgstr[1] "_Ponovi stvaranje poveznice za %d stavke"
-msgstr[2] "_Ponovi stvaranje poveznice za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Ponovi brisanje za %d stavku"
-msgstr[1] "_Ponovi brisanje za %d stavke"
-msgstr[2] "_Ponovi brisanje za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Ponovi promjenu rekruzivne dozvole za %d stavku"
-msgstr[1] "Ponovi promjenu rekruzivne dozvole za %d stavke"
-msgstr[2] "Ponovi promjenu rekruzivne dozvole za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Ponovi promjenu dozvole za %d stavku"
-msgstr[1] "Ponovi promjenu dozvole za %d stavke"
-msgstr[2] "Ponovi promjenu dozvole za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Ponovi promjenu grupe za %d stavku"
-msgstr[1] "Ponovi promjenu grupe za %d stavke"
-msgstr[2] "Ponovi promjenu grupe za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Ponovi promjenu vlasnika za %d stavku"
-msgstr[1] "Ponovi promjenu vlasnika za %d stavke"
-msgstr[2] "Ponovi promjenu vlasnika za %d stavki"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Spojiti mapu \"%s\"?"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Spajanje će tražiti potvrdu prije zamjene svake datoteke unutar mape, koja "
-"je u sukobu s datotekama koje se kopiraju."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Starija mapa s istim nazivom već postoji u \"%s\"."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Novija mapa s istim nazivom već postoji u \"%s\"."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Druga mapa s istim nazivom već postoji u \"%s\"."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
-msgid "Replacing it will remove all files in the folder."
-msgstr "Zamjena će obrisati sve datoteke u mapi."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Zamijeniti mapu \"%s\"?"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Mapa s istim nazivom već postoji u \"%s\"."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Zamijeniti datoteku \"%s\"?"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will overwrite its content."
-msgstr "Zamjena će obrisati stari sadržaj."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Starija datoteka s istim nazivom već postoji u \"%s\"."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Već postoji novija datoteka istog naziva u \"%s\"."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Druga datoteka s istim nazivom postoji u \"%s\"."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
-msgid "Original file"
-msgstr "Izvorna datoteka"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
-msgid "Size:"
-msgstr "Veličina:"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
-msgid "Type:"
-msgstr "Vrsta:"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
-msgid "Last modified:"
-msgstr "Posljednja izmjena:"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Replace with"
-msgstr "Zamijeni sa"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
-msgid "Merge"
-msgstr "Spoji"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
-msgid "_Select a new name for the destination"
-msgstr "_Odaberi novo ime za odredište"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
-msgid "Reset"
-msgstr "Vrati izvorno"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
-msgid "Apply this action to all files"
-msgstr "Primjeni radnju na sve datoteke"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
-msgid "Re_name"
-msgstr "Pre_imenuj"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
-msgid "Replace"
-msgstr "Zamijeni"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
-msgid "File conflict"
-msgstr "Sukob datoteka"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-progress-info.c:192
-#: /home/noelco/pantheon-files/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "Priprema"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-utilities.c:119
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Početnu lokaciju \"%s\" nije moguće odrediti "
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-utilities.c:122
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-utilities.c:122
 msgid "The item cannot be restored from trash"
 msgstr "Stavka iz smeća ne može biti vraćena na izvornu lokaciju."
 
-#: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:325
+#: /home/pqp/pantheon-files/po/../libcore/marlin-progress-info.c:192
+#: /home/pqp/pantheon-files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "Priprema"
+
+#: /home/pqp/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (neispravan unicode)"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "poveznica na %s"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:1702
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Nemoguće je obraditi datoteku radne površine: %s"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:1740
+msgid "No Exec field specified"
+msgstr "Izvršno polje nije definirano"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:1760
+msgid "No URL field specified"
+msgstr "URL polje nije definirano"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:1766
+msgid "Invalid desktop file"
+msgstr "Neispravna datoteka radne površine"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:2056
+msgid "Slashes are not allowed in filenames"
+msgstr "Kose crte nisu dopuštene u imenima datoteka"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:2076
+msgid "Toplevel files cannot be renamed"
+msgstr "Datoteke najviše razine se ne mogu preimenovati"
+
+#: /home/pqp/pantheon-files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Danas u %-I:%M %p"
+
+#: /home/pqp/pantheon-files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Jučer u %-I:%M %p"
+
+#: /home/pqp/pantheon-files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y u %-I:%M %p"
+
+#: /home/pqp/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
 msgstr "Izreži odabrani tekst i smijesti ga u međuspremnik"
 
-#: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:329
+#: /home/pqp/pantheon-files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
 msgstr "Kopiraj odabrani tekst u međuspremnik"
 
-#: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:333
-#: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:337
+#: /home/pqp/pantheon-files/po/../libwidgets/LocationBar.vala:333
+#: /home/pqp/pantheon-files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
 msgstr "Zalijepi tekst iz međuspremnika"
 
-#: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:813
+#: /home/pqp/pantheon-files/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
 msgstr "Idi na %s"
 
-#: /home/noelco/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
+#: /home/pqp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
 msgstr "Pogled mreže"
 
-#: /home/noelco/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
+#: /home/pqp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
 msgstr "Pogled popisa"
 
-#: /home/noelco/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
+#: /home/pqp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr "Pogled u stupcu"
 
-#: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
+#: /home/pqp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
 msgstr "Ove stavke mogu biti obrisane pražnjenjem smeća."
 
-#: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
+#: /home/pqp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Isprazni smeće"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-05 18:55+0200\n"
+"POT-Creation-Date: 2012-10-09 22:15-0400\n"
 "PO-Revision-Date: 2012-10-06 04:46+0000\n"
 "Last-Translator: Corentin Noël <tintou@mailoo.org>\n"
 "Language-Team: Fr <LL@li.org>\n"
@@ -15,511 +15,566 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-10-07 04:54+0000\n"
-"X-Generator: Launchpad (build 16061)\n"
+"X-Launchpad-Export-Date: 2012-10-13 05:02+0000\n"
+"X-Generator: Launchpad (build 16137)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:141
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:324
-msgid "Home"
-msgstr "Dossier personnel"
-
-#: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:143
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:394
-msgid "File System"
-msgstr "Système de fichier"
-
-#: /home/noelco/pantheon-files/po/../src/View/ViewContainer.vala:148
-msgid "(as Administrator)"
-msgstr "(en tant qu'administrateur)"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:152
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3383
-msgid "Set as default"
-msgstr "Définir comme valeur par défaut"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:157
-msgid "Ignore"
-msgstr "Ignorer"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:489
-msgid "Undo"
-msgstr "Annuler"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:490
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:781
-msgid "Undo the last action"
-msgstr "Annuler la dernière action"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:499
-msgid "Redo"
-msgstr "Rétablir"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:500
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:784
-msgid "Redo the last action"
-msgstr "Rétablir la dernière action"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:755
-msgid "_File"
-msgstr "_Fichier"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:756
-msgid "_Edit"
-msgstr "_Éditer"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:757
-msgid "_View"
-msgstr "_Vue"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:758
-msgid "_Go"
-msgstr "Aller"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:759
-msgid "_Help"
-msgstr "Aide"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:761
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "Nouvelle fenêtre"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:762
-msgid "Open another Files window for the displayed location"
-msgstr "Ouvrir une nouvelle fenêtre Files de l'emplacement actuel"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:765
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Nouvel ongle_t"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:766
-msgid "Open another tab for the displayed location"
-msgstr "Ouvre un nouvel onglet pour l'emplacement actuel"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:770
-msgid "_Close"
-msgstr "Fermer"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:771
-msgid "Close this folder"
-msgstr "Fermer ce dossier"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:774
-msgid "Preferences"
-msgstr "Préférences"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:775
-msgid "Change Files preferences"
-msgstr "Changer les préférences de Files"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:780
-msgid "_Undo"
-msgstr "Ann_uler"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:783
-msgid "_Redo"
-msgstr "_Rétablir"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:786
-msgid "Open _Parent"
-msgstr "Ouvrir le dossier _parent"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:787
-msgid "Open the parent folder"
-msgstr "Ouvrir le dossier parent"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:789
-msgid "_Back"
-msgstr "_Précédent"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:790
-msgid "Go to the previous visited location"
-msgstr "Aller à l'emplacement précédent"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:793
-msgid "_Forward"
-msgstr "_Suivant"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:794
-msgid "Go to the next visited location"
-msgstr "Aller à l'emplacement visité"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:796
-msgid "_Reload"
-msgstr "Actualise_r"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:797
-msgid "Reload the current location"
-msgstr "Actualise l'emplacement actuel"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:800
-msgid "_Home Folder"
-msgstr "_Dossier personnel"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:801
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:329
-msgid "Open your personal folder"
-msgstr "Ouvrir votre dossier personnel"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:804
-msgid "_Trash"
-msgstr "_Corbeille"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:805
-msgid "Open your personal trash folder"
-msgstr "Ouvrir votre dossier de corbeille personnel"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:808
-msgid "_Network"
-msgstr "Réseau"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:809
-msgid "Browse bookmarked and local network locations"
-msgstr "Parcourir les emplacements mis en signets et ceux du réseau local"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:812
-msgid "Zoom _In"
-msgstr "Zoom avant"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:813
-msgid "Increase the view size"
-msgstr "Agrandir l'affichage"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:824
-msgid "Zoom _Out"
-msgstr "Zoom arrière"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:825
-msgid "Decrease the view size"
-msgstr "Diminue l'affichage"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:832
-msgid "Normal Si_ze"
-msgstr "Taille normale"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:833
-msgid "Use the normal view size"
-msgstr "Affiche les éléments avec la taille standard"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:836
-msgid "Next Tab"
-msgstr "Onglet suivant"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:840
-msgid "Previous Tab"
-msgstr "Onglet précédent"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:844
-msgid "Connect to _Server..."
-msgstr "Se connecter au _serveur..."
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:845
-msgid "Connect to a remote computer or shared disk"
-msgstr "Se connecter à un ordinateur distant ou à un disque partagé"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:848
-msgid "_About"
-msgstr "_À propos"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:849
-msgid "Display credits"
-msgstr "Afficher les crédits"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:852
-msgid "Report a Problem..."
-msgstr "Signaler un bogue…"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:853
-msgid "File a bug on Launchpad"
-msgstr "Rapporter un bogue sur Launchpad"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:856
-msgid "Get Help Online..."
-msgstr "Obtenir de l'aide en ligne…"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:860
-msgid "Translate This Application..."
-msgstr "Traduire cette application…"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:869
-msgid "Show _Hidden Files"
-msgstr "Afficher les fichiers cac_hés"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:870
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Affiche ou non les fichiers cachés dans la fenêtre actuelle"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:875
-msgid "Show _Desktop Files"
-msgstr "Afficher les fichier _Desktop"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:876
-msgid "Toggle the display of desktop files"
-msgstr "Active l'affichage des fichiers desktop"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:880
-msgid "_Context Pane"
-msgstr "Volet _contextuel"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:881
-msgid "Change the visibility of the context pane"
-msgstr "Modifie la visibilité du panneau contextuel"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:885
-msgid "_Menubar"
-msgstr "Barre de _menu"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:886
-msgid "Change the visibility of this window's menubar"
-msgstr "Afficher/Masquer le menu de cette fenêtre"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:890
-msgid "_Places"
-msgstr "_Raccourcis"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:891
-msgid "Change the visibility of this window's side pane"
-msgstr "Afficher/Masquer le panneau latéral de cette fenêtre"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:899
-msgid "Icon"
-msgstr "Icône"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:902
-msgid "List"
-msgstr "Liste"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:905
-msgid "Compact"
-msgstr "Compact"
-
-#: /home/noelco/pantheon-files/po/../src/View/Window.vala:908
-msgid "Columns"
-msgstr "Colonnes"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "Propriétés"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:116
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:47
-msgid "General"
-msgstr "Général"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:124
-msgid "More"
-msgstr "Plus"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:136
-msgid "Preview"
-msgstr "Aperçu"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:323
-msgid "Created"
-msgstr "Créé"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:325
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:345
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "Modifié"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:328
-msgid "Last Access"
-msgstr "Dernier accès"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:334
-msgid "Deleted"
-msgstr "Supprimé"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:339
-msgid "MimeType"
-msgstr "Type Mime"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:347
-msgid "MimeTypes"
-msgstr "Types Mime"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:351
-msgid "Location"
-msgstr "Emplacement"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:353
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:341
-msgid "Target"
-msgstr "Cible"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:359
-msgid "Origin Location"
-msgstr "Emplacement d'origine"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:369
-msgid "Info:"
-msgstr "Info :"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:404
-msgid "Other application..."
-msgstr "Autre application…"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:428
-msgid "Open with:"
-msgstr "Ouvrir avec :"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:449
-msgid "Usage:"
-msgstr "Utilisation :"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:454
-msgid "Device usage:"
-msgstr "Utilisation du périphérique :"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:461
-#, c-format
-msgid "%s free of %s (%d%% used)"
-msgstr "%s libres sur %s (%d%% utilisé)"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:600
-msgid "Read"
-msgstr "Lire"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:605
-msgid "Write"
-msgstr "Écriture"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:610
-msgid "Execute"
-msgstr "Exécutable"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:828
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:841
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:346
-msgid "Owner"
-msgstr "Propriétaire"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:833
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:845
-msgid "Group"
-msgstr "Groupe"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:849
-msgid "Everyone"
-msgstr "Tout le monde"
-
-#: /home/noelco/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
-msgid "Select an aplication to open "
-msgstr "Sélectionnez une application pour ouvrir "
-
-#: /home/noelco/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
-#, c-format
-msgid "Folder does not exist"
-msgstr "Le dossier n'existe pas"
-
-#: /home/noelco/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
-#, c-format
-msgid "Files can't find the folder %s"
-msgstr "Files ne peut pas trouver le dossier %s"
-
-#: /home/noelco/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
-msgid "Create"
-msgstr "Créer"
-
-#: /home/noelco/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
-#, c-format
-msgid "Create the folder %s"
-msgstr "Créer le dossier %s"
-
-#: /home/noelco/pantheon-files/po/../src/View/LocationBar.vala:110
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:370
-msgid "Trash"
-msgstr "Corbeille"
-
-#: /home/noelco/pantheon-files/po/../src/View/LocationBar.vala:111
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:588
-msgid "Network"
-msgstr "Réseau"
-
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:337
-msgid "Name"
-msgstr "Nom"
-
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:338
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Type"
-
-#: /home/noelco/pantheon-files/po/../src/View/ContextView.vala:343
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Taille"
-
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:34
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
 msgstr "Préférences pour Fichiers"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:103
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:47
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:116
+msgid "General"
+msgstr "Général"
+
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "Extensions"
 msgstr "Extensions"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:209
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:209
 msgid "Single click to open:"
 msgstr "Un seul clic pour ouvrir :"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:217
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:217
 msgid "Mouse auto-selection:"
 msgstr "Selection automatique par souris :"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:236
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
 msgstr "Lent"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:238
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
 msgstr "Rapide"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:253
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
 msgstr "Format de la date :"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:256
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:256
 msgid "iso"
 msgstr "International"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:257
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:257
 msgid "locale"
 msgstr "Système"
 
-#: /home/noelco/pantheon-files/po/../src/View/SettingsDialog.vala:258
+#: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:258
 msgid "informal"
 msgstr "informelle"
 
-#: /home/noelco/pantheon-files/po/../src/eel-editable-label.c:3190
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3494
-msgid "Select All"
-msgstr "Tout sélectionner"
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:337
+msgid "Name"
+msgstr "Nom"
 
-#: /home/noelco/pantheon-files/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Méthodes de saisie"
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:338
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Type"
 
-#: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:167
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:341
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:353
+msgid "Target"
+msgstr "Cible"
+
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:343
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Taille"
+
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:345
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:325
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Modified"
+msgstr "Modifié"
+
+#: /home/pqp/pantheon-files/po/../src/View/ContextView.vala:346
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:828
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:841
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: /home/pqp/pantheon-files/po/../src/View/LocationBar.vala:110
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:370
+msgid "Trash"
+msgstr "Corbeille"
+
+#: /home/pqp/pantheon-files/po/../src/View/LocationBar.vala:111
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:588
+msgid "Network"
+msgstr "Réseau"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "Propriétés"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:124
+msgid "More"
+msgstr "Plus"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:136
+msgid "Preview"
+msgstr "Aperçu"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:323
+msgid "Created"
+msgstr "Créé"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:328
+msgid "Last Access"
+msgstr "Dernier accès"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:334
+msgid "Deleted"
+msgstr "Supprimé"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:339
+msgid "MimeType"
+msgstr "Type Mime"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:347
+msgid "MimeTypes"
+msgstr "Types Mime"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:351
+msgid "Location"
+msgstr "Emplacement"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:359
+msgid "Origin Location"
+msgstr "Emplacement d'origine"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:369
+msgid "Info:"
+msgstr "Info :"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:404
+msgid "Other application..."
+msgstr "Autre application…"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:428
+msgid "Open with:"
+msgstr "Ouvrir avec :"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:449
+msgid "Usage:"
+msgstr "Utilisation :"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:454
+msgid "Device usage:"
+msgstr "Utilisation du périphérique :"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
+#, c-format
+msgid "%s free of %s (%d%% used)"
+msgstr "%s libres sur %s (%d%% utilisé)"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
+msgid "Read"
+msgstr "Lire"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:605
+msgid "Write"
+msgstr "Écriture"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:610
+msgid "Execute"
+msgstr "Exécutable"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:833
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:845
+msgid "Group"
+msgstr "Groupe"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:849
+msgid "Everyone"
+msgstr "Tout le monde"
+
+#: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
+msgid "Select an aplication to open "
+msgstr "Sélectionnez une application pour ouvrir "
+
+#: /home/pqp/pantheon-files/po/../src/View/ViewContainer.vala:141
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:324
+msgid "Home"
+msgstr "Dossier personnel"
+
+#: /home/pqp/pantheon-files/po/../src/View/ViewContainer.vala:143
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:394
+msgid "File System"
+msgstr "Système de fichier"
+
+#: /home/pqp/pantheon-files/po/../src/View/ViewContainer.vala:148
+msgid "(as Administrator)"
+msgstr "(en tant qu'administrateur)"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:146
+msgid "Files isn't your default file manager."
+msgstr ""
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:152
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3383
+msgid "Set as default"
+msgstr "Définir comme valeur par défaut"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:157
+msgid "Ignore"
+msgstr "Ignorer"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:489
+msgid "Undo"
+msgstr "Annuler"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:490
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:781
+msgid "Undo the last action"
+msgstr "Annuler la dernière action"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:499
+msgid "Redo"
+msgstr "Rétablir"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:500
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:784
+msgid "Redo the last action"
+msgstr "Rétablir la dernière action"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:755
+msgid "_File"
+msgstr "_Fichier"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:756
+msgid "_Edit"
+msgstr "_Éditer"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:757
+msgid "_View"
+msgstr "_Vue"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:758
+msgid "_Go"
+msgstr "Aller"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:759
+msgid "_Help"
+msgstr "Aide"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:761
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "Nouvelle fenêtre"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:762
+msgid "Open another Files window for the displayed location"
+msgstr "Ouvrir une nouvelle fenêtre Files de l'emplacement actuel"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:765
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Nouvel ongle_t"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:766
+msgid "Open another tab for the displayed location"
+msgstr "Ouvre un nouvel onglet pour l'emplacement actuel"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:770
+msgid "_Close"
+msgstr "Fermer"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:771
+msgid "Close this folder"
+msgstr "Fermer ce dossier"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:774
+msgid "Preferences"
+msgstr "Préférences"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:775
+msgid "Change Files preferences"
+msgstr "Changer les préférences de Files"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:780
+msgid "_Undo"
+msgstr "Ann_uler"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:783
+msgid "_Redo"
+msgstr "_Rétablir"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:786
+msgid "Open _Parent"
+msgstr "Ouvrir le dossier _parent"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:787
+msgid "Open the parent folder"
+msgstr "Ouvrir le dossier parent"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:789
+msgid "_Back"
+msgstr "_Précédent"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:790
+msgid "Go to the previous visited location"
+msgstr "Aller à l'emplacement précédent"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:793
+msgid "_Forward"
+msgstr "_Suivant"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:794
+msgid "Go to the next visited location"
+msgstr "Aller à l'emplacement visité"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:796
+msgid "_Reload"
+msgstr "Actualise_r"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:797
+msgid "Reload the current location"
+msgstr "Actualise l'emplacement actuel"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:800
+msgid "_Home Folder"
+msgstr "_Dossier personnel"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:801
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:329
+msgid "Open your personal folder"
+msgstr "Ouvrir votre dossier personnel"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:804
+msgid "_Trash"
+msgstr "_Corbeille"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:805
+msgid "Open your personal trash folder"
+msgstr "Ouvrir votre dossier de corbeille personnel"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:808
+msgid "_Network"
+msgstr "Réseau"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:809
+msgid "Browse bookmarked and local network locations"
+msgstr "Parcourir les emplacements mis en signets et ceux du réseau local"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:812
+msgid "Zoom _In"
+msgstr "Zoom avant"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:813
+msgid "Increase the view size"
+msgstr "Agrandir l'affichage"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:824
+msgid "Zoom _Out"
+msgstr "Zoom arrière"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:825
+msgid "Decrease the view size"
+msgstr "Diminue l'affichage"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:832
+msgid "Normal Si_ze"
+msgstr "Taille normale"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:833
+msgid "Use the normal view size"
+msgstr "Affiche les éléments avec la taille standard"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:836
+msgid "Next Tab"
+msgstr "Onglet suivant"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:840
+msgid "Previous Tab"
+msgstr "Onglet précédent"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:844
+msgid "Connect to _Server..."
+msgstr "Se connecter au _serveur..."
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:845
+msgid "Connect to a remote computer or shared disk"
+msgstr "Se connecter à un ordinateur distant ou à un disque partagé"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:848
+msgid "_About"
+msgstr "_À propos"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:849
+msgid "Display credits"
+msgstr "Afficher les crédits"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:852
+msgid "Report a Problem..."
+msgstr "Signaler un bogue…"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:853
+msgid "File a bug on Launchpad"
+msgstr "Rapporter un bogue sur Launchpad"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:856
+msgid "Get Help Online..."
+msgstr "Obtenir de l'aide en ligne…"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:860
+msgid "Translate This Application..."
+msgstr "Traduire cette application…"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:869
+msgid "Show _Hidden Files"
+msgstr "Afficher les fichiers cac_hés"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:870
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Affiche ou non les fichiers cachés dans la fenêtre actuelle"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:875
+msgid "Show _Desktop Files"
+msgstr "Afficher les fichier _Desktop"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:876
+msgid "Toggle the display of desktop files"
+msgstr "Active l'affichage des fichiers desktop"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:880
+msgid "_Context Pane"
+msgstr "Volet _contextuel"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:881
+msgid "Change the visibility of the context pane"
+msgstr "Modifie la visibilité du panneau contextuel"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:885
+msgid "_Menubar"
+msgstr "Barre de _menu"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:886
+msgid "Change the visibility of this window's menubar"
+msgstr "Afficher/Masquer le menu de cette fenêtre"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:890
+msgid "_Places"
+msgstr "_Raccourcis"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:891
+msgid "Change the visibility of this window's side pane"
+msgstr "Afficher/Masquer le panneau latéral de cette fenêtre"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:899
+msgid "Icon"
+msgstr "Icône"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:902
+msgid "List"
+msgstr "Liste"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:905
+msgid "Compact"
+msgstr "Compact"
+
+#: /home/pqp/pantheon-files/po/../src/View/Window.vala:908
+msgid "Columns"
+msgstr "Colonnes"
+
+#: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
+#, c-format
+msgid "Folder does not exist"
+msgstr "Le dossier n'existe pas"
+
+#: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
+#, c-format
+msgid "Files can't find the folder %s"
+msgstr "Files ne peut pas trouver le dossier %s"
+
+#: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
+msgid "Create"
+msgstr "Créer"
+
+#: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
+#, c-format
+msgid "Create the folder %s"
+msgstr "Créer le dossier %s"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Il n'y a rien à coller dans le presse-papier"
+
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Nom du fichier"
+
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:199
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:139
+#: /home/pqp/pantheon-files/po/../src/fm-columns-view.c:186
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr "Impossible de renommer %s en %s"
+
+#: /home/pqp/pantheon-files/po/../src/fm-list-view.c:616
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:573
+#: /home/pqp/pantheon-files/po/../src/fm-columns-view.c:82
+msgid "This folder is empty."
+msgstr "Ce dossier est vide."
+
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
+msgid "File Operations"
+msgstr "Opérations sur les fichiers"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
+msgid "Show Details"
+msgstr "Afficher les détails"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d opération de fichier active"
+msgstr[1] "%'d opérations de fichier actives"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
+msgid "Show Copy Dialog"
+msgstr "Afficher la fenêtre de copie"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
+msgid "Cancel All In-progress Actions"
+msgstr "Annuler toutes les actions en cours"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
+msgid "All file operations have been successfully completed"
+msgstr "Toutes les opérations de fichier ont terminé avec succès"
+
+#: /home/pqp/pantheon-files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Mode de disposition"
+
+#: /home/pqp/pantheon-files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "Le mode de disposition"
+
+#: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
 msgstr "Simple Clic"
 
-#: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:168
+#: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
 msgstr ""
 "Si les éléments dans la vue peuvent être activés ou non avec un simple clic"
 
-#: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:184
+#: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
 msgstr "Expiration du simple clic"
 
-#: /home/noelco/pantheon-files/po/../src/exo-tree-view.c:185
+#: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
@@ -527,35 +582,79 @@ msgstr ""
 "Durée après laquelle l'élément sous le pointeur sera automatiquement "
 "sélectionné en mode simple clic"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "Ran_ger les éléments"
+
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "_Ordre inversé"
+
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "Affiche les éléments dans l'ordre inverse"
+
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "Par _nom"
+
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "Ranger en lignes les icônes triées par nom"
+
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "Par _taille"
+
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "Ranger en lignes les icônes triées par taille"
+
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "Par _type"
+
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "Ranger en lignes les icônes triées par type"
+
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "Par _date de modification"
+
+#: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "Ranger en lignes les icônes triées par date de modification"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
 msgstr "FTP publique"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
 msgstr "FTP (avec identification)"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
 msgstr "Partage Windows"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV sécurisé (HTTPS)"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
 msgstr "Connexion en cours..."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -564,471 +663,90 @@ msgstr ""
 "serveur.\n"
 "Veuillez vérifier votre installation de gvfs."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "Impossible d'ouvrir le dossier \"%s\" sur \"%s\"."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "Le serveur sur \"%s\" n'a pas été trouvé."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
 msgstr "Essayer à nouveau"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
 msgstr "Veuillez vérifier vos paramètres utilisateur."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
 msgstr "Continuer"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
 msgstr "Se connecter"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
 msgstr "Se connecter au serveur"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
 msgstr "Détails du serveur"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
 msgstr "_Serveur :"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
 msgstr "_Port :"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
 msgstr "_Type :"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
 msgstr "P_artage :"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
 msgstr "_Dossier :"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
 msgstr "Détails relatifs à l'utilisateur"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
 msgstr "Nom de _domaine :"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
 msgstr "Nom d'_utilisateur :"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
 msgstr "Mot de passe :"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
 msgstr "Se souvenir du mot de passe :"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
+#: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
 msgstr "Opération annulée"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:310
-msgid "Personal"
-msgstr "Personnel"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:315
-msgid "Your common places and bookmarks"
-msgstr "Vos emplacements et vos signets"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:372
-msgid "Open the trash"
-msgstr "Ouvrir la corbeille"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:382
-msgid "Devices"
-msgstr "Périphériques"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:387
-msgid "Your local partitions and devices"
-msgstr "Vos partitions et périphériques locaux"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:396
-msgid "Open the contents of the File System"
-msgstr "Ouvrir le contenu du système de fichiers"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:455
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:480
-#, c-format
-msgid "Mount and open %s"
-msgstr "Monter et ouvrir %s"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:593
-msgid "Your network places"
-msgstr "Vos emplacements réseau"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:624
-msgid "Entire network"
-msgstr "Tout le réseau"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:626
-msgid "Browse the contents of the network"
-msgstr "Parcourir le réseau"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1610
-msgid "_Start"
-msgstr "_Démarrer"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1611
-msgid "_Stop"
-msgstr "_Arrêter"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1616
-msgid "_Power On"
-msgstr "_Allumer"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1617
-msgid "_Safely Remove Drive"
-msgstr "_Retirer le volume sans risque"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1620
-msgid "_Connect Drive"
-msgstr "_Connecter le volume"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1621
-msgid "_Disconnect Drive"
-msgstr "_Déconnecter le volume"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1624
-msgid "_Start Multi-disk Device"
-msgstr "_Démarrer le périphérique multidisque"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1625
-msgid "_Stop Multi-disk Device"
-msgstr "_Arrêter le périphérique multidisque"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1629
-msgid "_Unlock Drive"
-msgstr "Déverro_uiller le volume"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1630
-msgid "_Lock Drive"
-msgstr "Verroui_ller le volume"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1704
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2251
-#, c-format
-msgid "Unable to start %s"
-msgstr "Impossible de démarrer %s"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:1994
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2023
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2052
-#, c-format
-msgid "Unable to eject %s"
-msgstr "Impossible d'éjecter %s"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2197
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Impossible de vérifier des changements sur le support %s"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2307
-#, c-format
-msgid "Unable to stop %s"
-msgstr "Impossible d'arrêter %s"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2399
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1947
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3460
-msgid "_Open"
-msgstr "_Ouvrir"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2407
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1967
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3472
-msgid "Open in New _Tab"
-msgstr "Ouvrir dans un nouvel _onglet"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2414
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1976
-msgid "Open in New _Window"
-msgstr "Ouvrir dans une nouvelle _fenêtre"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2423
-msgid "Remove"
-msgstr "Retirer"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2432
-msgid "Rename..."
-msgstr "Renommer…"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2444
-msgid "_Mount"
-msgstr "_Monter"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2451
-msgid "_Unmount"
-msgstr "_Démonter"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2458
-msgid "_Eject"
-msgstr "É_jecter"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-places-sidebar.c:2466
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1422
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2310
-msgid "Empty _Trash"
-msgstr "_Vider la corbeille"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
-msgid "File Operations"
-msgstr "Opérations sur les fichiers"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
-msgid "Show Details"
-msgstr "Afficher les détails"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d opération de fichier active"
-msgstr[1] "%'d opérations de fichier actives"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
-msgid "Show Copy Dialog"
-msgstr "Afficher la fenêtre de copie"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
-msgid "Cancel All In-progress Actions"
-msgstr "Annuler toutes les actions en cours"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
-msgid "All file operations have been successfully completed"
-msgstr "Toutes les opérations de fichier ont terminé avec succès"
-
-#: /home/noelco/pantheon-files/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "lister les répertoires en icônes"
-
-#: /home/noelco/pantheon-files/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Vue en icônes"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1151
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Nom de fichier invalide fourni par le glisser du site XDS"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1309
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Échec lors de la création du lien pour \"%s\""
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1794
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Utiliser « %s » pour ouvrir l'élément sélectionné"
-msgstr[1] "Utiliser « %s » pour ouvrir les éléments sélectionnés"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1941
-#, c-format
-msgid "_Open With %s"
-msgstr "_Ouvrir avec %s"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1963
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "Ouvrir dans %'d Nouveaux_Onglets"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:1972
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "Ouvrir dans %'d Nouvelles _Fenêtres"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3432
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-"Prépare le déplacement des fichiers sélectionnés avec la commande « Coller »"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3436
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-"Prépare la copie des fichiers sélectionnés avec la commande « Coller »"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3440
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Déplace ou copie les fichiers précédemment sélectionnés avec la commande "
-"« Couper » ou « Copier »"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3443
-msgid "Paste Into Folder"
-msgstr "Coller dans le dossier"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3444
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Déplace ou copie les fichiers précédemment sélectionnés avec la commande "
-"« Couper » ou « Copier » dans le dossier sélectionné"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3447
-msgid "_Rename..."
-msgstr "_Renommer…"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3448
-msgid "Rename selected item"
-msgstr "Renommer l'élément sélectionné"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3451
-msgid "Create New _Folder"
-msgstr "Créer un nouveau dossier"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3452
-msgid "Create a new empty folder inside this folder"
-msgstr "Créer un nouveau dossier vide dans ce dossier"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3454
-msgid "Create New _File"
-msgstr "Créer un nouveau _fichier"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3456
-msgid "_Empty File"
-msgstr "_Fichier Vide"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3457
-msgid "Create a new empty file inside this folder"
-msgstr "Créer un nouveau fichier vide dans ce dossier"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3461
-msgid "Open the selected item"
-msgstr "Ouvrir l'élément sélectionné"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3468
-msgid "Open in new Window"
-msgstr "Ouvrir dans une nouvelle fenêtre"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3469
-msgid "Open each selected item in a new window"
-msgstr "Ouvrir chaque élément sélectionné dans une nouvelle fenêtre"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3473
-msgid "Open each selected item in a new tab"
-msgstr "Ouvre chaque élément sélectionné dans un nouvel onglet"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3475
-msgid "Open Wit_h"
-msgstr "Ouvrir avec"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3476
-msgid "Choose a program with which to open the selected item"
-msgstr "Choisir une application avec laquelle ouvrir l'élément sélectionné"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3478
-msgid "Other _Application..."
-msgstr "Autre _application..."
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3479
-msgid "Choose another application with which to open the selected item"
-msgstr "Choisir une autre application pour ouvrir l'élément sélectionné"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3482
-msgid "Mo_ve to Trash"
-msgstr "_Mettre dans la corbeille"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3483
-msgid "Move each selected item to the Trash"
-msgstr "Déplace chaque élément sélectionné dans la corbeille"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3486
-msgid "_Delete Permanently"
-msgstr "Supprimer _définitivement"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3487
-msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
-"Supprime tous les éléments sélectionnés, sans les mettre dans la corbeille"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3490
-msgid "_Restore"
-msgstr "_Restaurer"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3498
-msgid "_Properties"
-msgstr "_Propriétés"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3499
-msgid "View or modify the properties of each selected item"
-msgstr "Affiche ou modifie les propriétés de chaque élément sélectionné"
-
-#: /home/noelco/pantheon-files/po/../src/fm-directory-view.c:3605
-msgid "Set Color:"
-msgstr "Définir la couleur :"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:103
-msgid "_Move Here"
-msgstr "_Déplacer ici"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:108
-msgid "_Copy Here"
-msgstr "_Copier ici"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:113
-msgid "_Link Here"
-msgstr "Créer un lien ici"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:118
-msgid "Set as _Background"
-msgstr "Définir comme _arrière-plan"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:125
-msgid "Cancel"
-msgstr "Annuler"
-
-#: /home/noelco/pantheon-files/po/../src/marlin-dnd.c:217
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Échec d'exécution du fichier \"%s\""
-
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Nom du fichier"
-
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:199
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:139
-#: /home/noelco/pantheon-files/po/../src/fm-columns-view.c:186
-#, c-format
-msgid "Failed to rename %s to %s"
-msgstr "Impossible de renommer %s en %s"
-
-#: /home/noelco/pantheon-files/po/../src/fm-list-view.c:616
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:573
-#: /home/noelco/pantheon-files/po/../src/fm-columns-view.c:82
-msgid "This folder is empty."
-msgstr "Ce dossier est vide."
-
-#: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:445
+#: /home/pqp/pantheon-files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
 msgstr "Personnaliser la barre d'outils"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:464
+#: /home/pqp/pantheon-files/po/../src/marlin-toolbar-editor.c:464
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
@@ -1036,87 +754,242 @@ msgstr ""
 "Sélectionnez les éléments à afficher dans la barre d'outils. Les éléments "
 "peuvent être réordonnés par glisser-déposer."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:478
+#: /home/pqp/pantheon-files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
 msgstr "Éléments disponibles"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-toolbar-editor.c:497
+#: /home/pqp/pantheon-files/po/../src/marlin-toolbar-editor.c:497
 msgid "Displayed Items"
 msgstr "Éléments affichés"
 
-#: /home/noelco/pantheon-files/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Mode de disposition"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "_Déplacer ici"
 
-#: /home/noelco/pantheon-files/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "Le mode de disposition"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "_Copier ici"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "Ran_ger les éléments"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "Créer un lien ici"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "_Ordre inversé"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "Définir comme _arrière-plan"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Affiche les éléments dans l'ordre inverse"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "Annuler"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "Par _nom"
+#: /home/pqp/pantheon-files/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Échec d'exécution du fichier \"%s\""
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Ranger en lignes les icônes triées par nom"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1151
+msgid "Invalid filename provided by XDS drag site"
+msgstr "Nom de fichier invalide fourni par le glisser du site XDS"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "Par _taille"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1309
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Échec lors de la création du lien pour \"%s\""
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Ranger en lignes les icônes triées par taille"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1794
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Utiliser « %s » pour ouvrir l'élément sélectionné"
+msgstr[1] "Utiliser « %s » pour ouvrir les éléments sélectionnés"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "Par _type"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1941
+#, c-format
+msgid "_Open With %s"
+msgstr "_Ouvrir avec %s"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Ranger en lignes les icônes triées par type"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1947
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3460
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2399
+msgid "_Open"
+msgstr "_Ouvrir"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "Par _date de modification"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1963
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "Ouvrir dans %'d Nouveaux_Onglets"
 
-#: /home/noelco/pantheon-files/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "Ranger en lignes les icônes triées par date de modification"
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1967
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3472
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2407
+msgid "Open in New _Tab"
+msgstr "Ouvrir dans un nouvel _onglet"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:421
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1972
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "Ouvrir dans %'d Nouvelles _Fenêtres"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1976
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2414
+msgid "Open in New _Window"
+msgstr "Ouvrir dans une nouvelle _fenêtre"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3432
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr ""
+"Prépare le déplacement des fichiers sélectionnés avec la commande « Coller »"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3436
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr ""
+"Prépare la copie des fichiers sélectionnés avec la commande « Coller »"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3440
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Déplace ou copie les fichiers précédemment sélectionnés avec la commande "
+"« Couper » ou « Copier »"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3443
+msgid "Paste Into Folder"
+msgstr "Coller dans le dossier"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3444
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Déplace ou copie les fichiers précédemment sélectionnés avec la commande "
+"« Couper » ou « Copier » dans le dossier sélectionné"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3447
+msgid "_Rename..."
+msgstr "_Renommer…"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3448
+msgid "Rename selected item"
+msgstr "Renommer l'élément sélectionné"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3451
+msgid "Create New _Folder"
+msgstr "Créer un nouveau dossier"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3452
+msgid "Create a new empty folder inside this folder"
+msgstr "Créer un nouveau dossier vide dans ce dossier"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3454
+msgid "Create New _File"
+msgstr "Créer un nouveau _fichier"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3456
+msgid "_Empty File"
+msgstr "_Fichier Vide"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3457
+msgid "Create a new empty file inside this folder"
+msgstr "Créer un nouveau fichier vide dans ce dossier"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3461
+msgid "Open the selected item"
+msgstr "Ouvrir l'élément sélectionné"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3468
+msgid "Open in new Window"
+msgstr "Ouvrir dans une nouvelle fenêtre"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3469
+msgid "Open each selected item in a new window"
+msgstr "Ouvrir chaque élément sélectionné dans une nouvelle fenêtre"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3473
+msgid "Open each selected item in a new tab"
+msgstr "Ouvre chaque élément sélectionné dans un nouvel onglet"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3475
+msgid "Open Wit_h"
+msgstr "Ouvrir avec"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3476
+msgid "Choose a program with which to open the selected item"
+msgstr "Choisir une application avec laquelle ouvrir l'élément sélectionné"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3478
+msgid "Other _Application..."
+msgstr "Autre _application..."
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3479
+msgid "Choose another application with which to open the selected item"
+msgstr "Choisir une autre application pour ouvrir l'élément sélectionné"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3482
+msgid "Mo_ve to Trash"
+msgstr "_Mettre dans la corbeille"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3483
+msgid "Move each selected item to the Trash"
+msgstr "Déplace chaque élément sélectionné dans la corbeille"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3486
+msgid "_Delete Permanently"
+msgstr "Supprimer _définitivement"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3487
+msgid "Delete each selected item, without moving to the Trash"
+msgstr ""
+"Supprime tous les éléments sélectionnés, sans les mettre dans la corbeille"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3490
+msgid "_Restore"
+msgstr "_Restaurer"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3494
+#: /home/pqp/pantheon-files/po/../src/eel-editable-label.c:3190
+msgid "Select All"
+msgstr "Tout sélectionner"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3498
+msgid "_Properties"
+msgstr "_Propriétés"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3499
+msgid "View or modify the properties of each selected item"
+msgstr "Affiche ou modifie les propriétés de chaque élément sélectionné"
+
+#: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3605
+msgid "Set Color:"
+msgstr "Définir la couleur :"
+
+#: /home/pqp/pantheon-files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "lister les répertoires en icônes"
+
+#: /home/pqp/pantheon-files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Vue en icônes"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:421
 msgid "Show the version of the program."
 msgstr "Afficher la version du programme."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:425
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:425
 msgid "Open uri(s) in new tab"
 msgstr "Ouvrir le(s) uri(s) dans un nouvel onglet"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:427
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:427
 msgid "Quit Files."
 msgstr "Quiter Files"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:429
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
 msgstr "Activer le débogage"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:430
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:430
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:439
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:439
 msgid ""
 "\n"
 "\n"
@@ -1126,247 +999,855 @@ msgstr ""
 "\n"
 "Parcourt le système de fichiers avec le gestionnaire de fichiers"
 
-#: /home/noelco/pantheon-files/po/../src/marlin-application.c:459
+#: /home/pqp/pantheon-files/po/../src/marlin-application.c:459
 msgid "--quit cannot be used with URIs."
 msgstr "--quit ne peut pas être utilisé avec des URI."
 
-#: /home/noelco/pantheon-files/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Il n'y a rien à coller dans le presse-papier"
-
-#: /home/noelco/pantheon-files/po/../src/fm-compact-view.c:86
+#: /home/pqp/pantheon-files/po/../src/fm-compact-view.c:86
 msgid "Compact directory listing"
 msgstr "Liste compacte des répertoires"
 
-#: /home/noelco/pantheon-files/po/../src/fm-compact-view.c:87
+#: /home/pqp/pantheon-files/po/../src/fm-compact-view.c:87
 msgid "Compact view"
 msgstr "Vue compacte"
 
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:6
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:310
+msgid "Personal"
+msgstr "Personnel"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:315
+msgid "Your common places and bookmarks"
+msgstr "Vos emplacements et vos signets"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:372
+msgid "Open the trash"
+msgstr "Ouvrir la corbeille"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:382
+msgid "Devices"
+msgstr "Périphériques"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:387
+msgid "Your local partitions and devices"
+msgstr "Vos partitions et périphériques locaux"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:396
+msgid "Open the contents of the File System"
+msgstr "Ouvrir le contenu du système de fichiers"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:455
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:480
+#, c-format
+msgid "Mount and open %s"
+msgstr "Monter et ouvrir %s"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:593
+msgid "Your network places"
+msgstr "Vos emplacements réseau"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:624
+msgid "Entire network"
+msgstr "Tout le réseau"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:626
+msgid "Browse the contents of the network"
+msgstr "Parcourir le réseau"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1610
+msgid "_Start"
+msgstr "_Démarrer"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1611
+msgid "_Stop"
+msgstr "_Arrêter"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1616
+msgid "_Power On"
+msgstr "_Allumer"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1617
+msgid "_Safely Remove Drive"
+msgstr "_Retirer le volume sans risque"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1620
+msgid "_Connect Drive"
+msgstr "_Connecter le volume"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1621
+msgid "_Disconnect Drive"
+msgstr "_Déconnecter le volume"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1624
+msgid "_Start Multi-disk Device"
+msgstr "_Démarrer le périphérique multidisque"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1625
+msgid "_Stop Multi-disk Device"
+msgstr "_Arrêter le périphérique multidisque"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1629
+msgid "_Unlock Drive"
+msgstr "Déverro_uiller le volume"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1630
+msgid "_Lock Drive"
+msgstr "Verroui_ller le volume"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1704
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2251
+#, c-format
+msgid "Unable to start %s"
+msgstr "Impossible de démarrer %s"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1994
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2023
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2052
+#, c-format
+msgid "Unable to eject %s"
+msgstr "Impossible d'éjecter %s"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2197
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "Impossible de vérifier des changements sur le support %s"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2307
+#, c-format
+msgid "Unable to stop %s"
+msgstr "Impossible d'arrêter %s"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2423
+msgid "Remove"
+msgstr "Retirer"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2432
+msgid "Rename..."
+msgstr "Renommer…"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2444
+msgid "_Mount"
+msgstr "_Monter"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2451
+msgid "_Unmount"
+msgstr "_Démonter"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2458
+msgid "_Eject"
+msgstr "É_jecter"
+
+#: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2466
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1422
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2310
+msgid "Empty _Trash"
+msgstr "_Vider la corbeille"
+
+#: /home/pqp/pantheon-files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Méthodes de saisie"
+
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "Explorez vos fichiers"
 
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:7
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
 msgstr "Gestionnaire de fichiers"
 
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:10
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
 msgstr "Nouvelle fenêtre en tant qu'_administrateur"
 
-#: /home/noelco/pantheon-files/po/../src/DesktopLauncher.vala:11
+#: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
 msgstr "Fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:252
-#, c-format
-msgid "link to %s"
-msgstr "lien vers %s"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1702
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Échec d'analyse du fichier bureau : %s"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1740
-msgid "No Exec field specified"
-msgstr "Aucun champ Exec spécifié"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1760
-msgid "No URL field specified"
-msgstr "Aucune URL spécifiée"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:1766
-msgid "Invalid desktop file"
-msgstr "Fichier de bureau non valide"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:2056
-msgid "Slashes are not allowed in filenames"
-msgstr "Les barres obliques ne sont pas autorisées dans les noms de fichiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/gof-file.c:2076
-msgid "Toplevel files cannot be renamed"
-msgstr "Impossible de renommer les fichiers racines"
-
-#: /home/noelco/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
+#: /home/pqp/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
 msgstr "Afficher plus de _détails"
 
-#: /home/noelco/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (Unicode non valide)"
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Supprimer %d fichiers copiés"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:200
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "Supprimer « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Supprimer %d doublons"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Restaurer %d éléments vers '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Restaurer « %s » vers « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Renommer « %s » en « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Restaurer %d éléments de la corbeille"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Restaurer « %s » vers « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Restaurer %d éléments vers la corbeille"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Restaure « %s » vers la corbeille"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Supprimer les liens vers %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Supprime le lien vers « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Restaure les permissions d'origine des éléments inclus dans « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Restaure les permissions d'origine de « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Restaure le groupe de « %s » à « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Restaure le propriétaire de « %s » à « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Copie de %d éléments vers '%s'"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Copie de « %s » vers « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Duplication de %d éléments dans « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Dupliquer « %s » vers « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Déplacement de %d éléments dans « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Déplacer « %s » vers « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Créer un nouveau fichier « %s » à partir d'un modèle "
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Créer un fichier vide « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Créer un nouveau dossier « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Déplacer %d objets vers la corbeille"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Mettre « %s » à la corbeille"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Restaure « %s » depuis la corbeille"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "Créer des liens vers %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Créer le lien vers « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Définir les permissions des éléments inclus dans « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Définir les permissions de « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Définir le groupe de « %s » à « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Définir le propriétaire de « %s » à « %s »"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Annuler la copie de %d élément"
+msgstr[1] "_Annuler la copie de %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Annuler la duplication de %d élément"
+msgstr[1] "_Annuler la duplication de %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Annuler le déplacement de %d élément"
+msgstr[1] "_Annuler le déplacement de %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Annuler le renommage de %d élément"
+msgstr[1] "_Annuler le renommage de %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "_Annuler la création d'un fichier vide"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "_Annuler la création d'un fichier créé à partir d'un modèle"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Annuler la création de %d dossier"
+msgstr[1] "_Annuler la création de %d dossiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Annuler le déplacement vers la corbeille de %d élément"
+msgstr[1] "_Annuler le déplacement vers la corbeille de %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Annuler la restauration de la corbeille de %d élément"
+msgstr[1] "_Annuler la restauration de la corbeille de %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Annuler la création du lien vers %d élément"
+msgstr[1] "_Annuler la création du lien vers %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Annuler la suppression de %d élément"
+msgstr[1] "_Annuler la suppression de %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Annuler le changement récursif des permissions de %d fichier"
+msgstr[1] "Annuler le changement récursif des permissions de %d fichiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Annuler le changement des permissions de %d fichier"
+msgstr[1] "Annuler le changement des permissions de %d fichiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Annuler le changement de groupe de %d fichier"
+msgstr[1] "Annuler le changement de groupe de %d fichiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Annuler le changement de propriétaire de %d fichier"
+msgstr[1] "Annuler le changement de propriétaire de %d fichiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Rétablir la copie de %d élément"
+msgstr[1] "_Rétablir la copie de %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Rétablir la duplication de %d élément"
+msgstr[1] "_Rétablir la duplication de %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Rétablir le déplacement de %d l'élément"
+msgstr[1] "_Rétablir le déplacement des %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Rétablir le renommage de %d élément"
+msgstr[1] "_Rétablir le renommage de %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "_Rétablir la création d'un fichier vide"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "_Rétablir la création d'un fichier à partir d'un modèle"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Rétablir la création de %d dossier"
+msgstr[1] "_Rétablir la création de %d dossiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Rétablir la mise à la corbeille de %d l'élément"
+msgstr[1] "_Rétablir la mise à la corbeille des %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Rétablir la restauration depuis la corbeille de %d l'élément"
+msgstr[1] "_Rétablir la restauration depuis la corbeille des %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Rétablir la création de raccourçi vers %d élément"
+msgstr[1] "_Rétablir la création de raccourçi vers %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Rétablir la suppression de %d élément"
+msgstr[1] "_Rétablir la suppression de %d éléments"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Rétablir le changement récursif des permissions de %d fichier"
+msgstr[1] "Rétablir le changement récursif des permissions de %d fichiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Rétablir le changement des permissions de %d fichier"
+msgstr[1] "Rétablir le changement des permissions de %d fichiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Rétablir le changement de groupe de %d fichier"
+msgstr[1] "Rétablir le changement de groupe de %d fichiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Rétablir le changement de propriétaire de %d fichier"
+msgstr[1] "Rétablir le changement de propriétaire de %d fichiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Fusionner le dossier « %s » ?"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"La fusion demandera une confirmation avant chaque remplacement de fichier du "
+"dossier qui entre en conflit avec les fichiers en cours de copie."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Un répertoire plus ancien avec ce nom existe déjà dans \"%s\""
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Un dossier plus récent portant le même nom existe déjà dans « %s »."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Un autre dossier portant le même nom existe déjà dans « %s »."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
+msgid "Replacing it will remove all files in the folder."
+msgstr "Le remplacement va effacer tous les fichiers dans ce répertoire"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Remplacer le dossier « %s » ?"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Un dossier portant le même nom existe déjà dans « %s »."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Remplacer le fichier « %s » ?"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will overwrite its content."
+msgstr "Le remplacer va écraser son contenu"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Un fichier plus ancien portant le même nom existe déjà dans « %s »."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Un fichier plus récent portant le même nom existe déjà dans « %s »."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Un autre fichier portant le même nom existe déjà dans « %s »."
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
+msgid "Original file"
+msgstr "Fichier original"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
+msgid "Size:"
+msgstr "Taille :"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
+msgid "Type:"
+msgstr "Type :"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
+msgid "Last modified:"
+msgstr "Dernière modification :"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Replace with"
+msgstr "Remplacer par"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
+msgid "Merge"
+msgstr "Fusionner"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
+msgid "_Select a new name for the destination"
+msgstr "Choi_sissez un nouveau nom pour la destination"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
+msgid "Apply this action to all files"
+msgstr "Appliquer cette action pour tous les fichiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:200
 msgid "_Skip"
 msgstr "_Ignorer"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:201
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
+msgid "Re_name"
+msgstr "Re_nommer"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
+msgid "Replace"
+msgstr "Remplacer"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
+msgid "File conflict"
+msgstr "Conflit de fichier"
+
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "Tout i_gnorer"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:202
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "_Réessayer"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:203
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "Tout _supprimer"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:204
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "_Remplacer"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:205
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "_Tout remplacer"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:206
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "_Fusionner"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:207
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "_Tout fusionner"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:208
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "Copier _quand même"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:294
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d seconde"
 msgstr[1] "%'d secondes"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:299
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:310
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:299
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minute"
 msgstr[1] "%'d minutes"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:309
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d heure"
 msgstr[1] "%'d heures"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:317
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "environ %'d heure"
 msgstr[1] "environ %'d heures"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:393
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "Lien vers %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:397
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "Un autre lien vers %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:413
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'der lien vers %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:417
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'de lien vers %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:421
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'de lien vers %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:425
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'de lien vers %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:463
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr " (copie)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:465
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr " (autre copie)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:468
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:470
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:472
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:482
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:468
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:470
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:472
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr "ème copie)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:475
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr "ère copie)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:477
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr "ème copie)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:479
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr "ème copie)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:496
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (copie)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:498
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (autre copie)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:501
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:503
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:505
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:519
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:501
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:503
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:505
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'dème copie)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:513
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'dère copie)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:515
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'dème copie)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:517
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'dème copie)%s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:617
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:625
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1381
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
 "Souhaitez-vous vraiment supprimer définitivement « %B » de la corbeille ?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1384
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1381,24 +1862,24 @@ msgstr[1] ""
 "Souhaitez-vous vraiment supprimer définitivement les %'d éléments "
 "sélectionnés de la corbeille ?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1394
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1462
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1394
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Si vous supprimez un élément, il sera définitivement perdu."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1415
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "Supprimer tous les éléments de la corbeille ?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1419
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Tout les éléments dans la corbeille seront définitivement supprimés."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1450
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Souhaitez-vous vraiment supprimer définitivement « %B » ?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1453
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1409,33 +1890,33 @@ msgstr[1] ""
 "Souhaitez-vous vraiment supprimer définitivement les %'d éléments "
 "sélectionnés ?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1478
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1510
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1478
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "Suppression de fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1504
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "Encore %'d fichier à supprimer"
 msgstr[1] "Encore %'d fichiers à supprimer"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1524
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T restante"
 msgstr[1] "%T restantes"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1592
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1626
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1665
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1742
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2573
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1592
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1626
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1665
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1742
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
 msgstr "Erreur lors de la suppression."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1596
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -1443,21 +1924,21 @@ msgstr ""
 "Les fichiers dans le dossier « %B » ne peuvent être supprimés car vous "
 "n'avez pas la permission de les lire."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1599
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2632
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3628
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1599
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2632
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "Une erreur est survenue lors de l'obtention des informations concernant les "
 "fichiers dans le dossier « %B »."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1608
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3637
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1608
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
 msgstr "_Ignorer les fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1629
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
@@ -1465,39 +1946,39 @@ msgstr ""
 "Le dossier « %B » ne peut être supprimé car vous n'avez pas la permission de "
 "le lire."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1632
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2671
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3673
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1632
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2671
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Une erreur s'est produite lors de la lecture du dossier « %B »."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1666
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "Impossible de supprimer le dossier %B."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1743
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "Une erreur s'est produite lors de la suppression de %B."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1819
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1831
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1819
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "Mise à la corbeille des fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1833
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "Encore %'d fichier à mettre à la corbeille"
 msgstr[1] "Encore %'d fichiers à mettre à la corbeille"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1888
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr ""
 "Impossible de déplacer le fichier vers la corbeille. Le supprimer "
 "immédiatement ?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:1889
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1505,27 +1986,27 @@ msgstr ""
 "Ce fichier est situé sur un périphérique externe et ne peut pas être déplacé "
 "vers la corbeille. Après suppression, celui-ci ne pourra pas être restauré."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2069
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
 msgstr "Mise à la corbeille des fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2071
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
 msgstr "Suppression des fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2143
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
 msgstr "Impossible d'éjecter %V"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2145
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
 msgstr "Impossible de démonter %V"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2300
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Souhaitez-vous vider la corbeille avant de démonter ?"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2302
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1534,65 +2015,65 @@ msgstr ""
 "être vidée. Tous les éléments dans la corbeille seront définitivement "
 "supprimés."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2308
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
 msgstr "Ne _pas vider la corbeille"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2363
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
 msgstr "Vidage de la corbeille"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2430
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Impossible de monter %s"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2508
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Préparation de la copie de %'d fichier (%S)"
 msgstr[1] "Préparation de la copie de %'d fichiers (%S)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2514
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Préparation du déplacement de %'d fichier (%S)"
 msgstr[1] "Préparation du déplacement de %'d fichiers (%S)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2520
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Préparation de la suppression de %'d fichier (%S)"
 msgstr[1] "Préparation de la suppression de %'d fichiers (%S)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2526
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Préparation de la mise à la corbeille de %'d fichier"
 msgstr[1] "Préparation de la mise à la corbeille de %'d fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2569
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3489
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3620
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3665
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2569
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3489
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3620
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
 msgstr "Erreur lors de la copie."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2571
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3618
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3663
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2571
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3618
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
 msgstr "Erreur lors du déplacement."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2575
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
 msgstr "Erreur lors de la mise à la corbeille des fichiers."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2629
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1600,7 +2081,7 @@ msgstr ""
 "Impossible de traiter les fichiers du dossier « %B » car vous n'avez pas la "
 "permission de les lire."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2668
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1608,7 +2089,7 @@ msgstr ""
 "Impossible de traiter le dossier « %B » car vous n'avez pas la permission de "
 "le lire."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2745
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -1616,30 +2097,30 @@ msgstr ""
 "Impossible de traiter le fichier \"%B\" car vous n'avez pas la permission de "
 "le lire."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2748
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
 msgstr "Erreur lors de l'obtention d'informations concernant « %B »."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2848
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2890
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2923
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2953
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2848
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2890
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2923
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
 msgstr "Erreur lors de la copie vers « %B »."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2852
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
 msgstr "Vous n'avez pas la permission d'accéder au dossier de destination."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2854
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
 msgstr "Erreur lors de l'obtention d'informations concernant la destination."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2891
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
 msgstr "La destination n'est pas un dossier."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2924
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1647,76 +2128,76 @@ msgstr ""
 "La destination n'a plus assez d'espace libre. Essayez de supprimer des "
 "fichiers pour libérer de l'espace."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2926
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "%S est disponible, mais %S est requis."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:2954
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
 msgstr "La destination est en lecture seule."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3015
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Déplacement de « %B » vers « %B »"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3016
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Copie de « %B » vers « %B »"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3020
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
 msgstr "Duplication de « %B »"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3024
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Déplacement de %'d fichier (de « %B ») vers « %B »"
 msgstr[1] "Déplacement de %'d fichiers (de « %B ») vers « %B »"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3027
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Copie de %'d fichier (de « %B ») vers « %B »"
 msgstr[1] "Copie de %'d fichiers (de « %B ») vers « %B »"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3034
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Duplication de %'d fichier (de « %B »)"
 msgstr[1] "Duplication de %'d fichiers (de « %B »)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3043
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Déplacement de %'d fichier vers « %B »"
 msgstr[1] "Déplacement de %'d fichiers vers « %B »"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3047
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Copie %'d fichier vers «%B»"
 msgstr[1] "Copie %'d fichiers vers «%B»"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3052
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "Duplication de %'d fichier"
 msgstr[1] "Duplication de %'d fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3103
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
 msgstr "%S sur %S"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3114
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S sur %S—%T restante (%S/s)"
 msgstr[1] "%S sur %S—%T restantes (%S/s)"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3493
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1724,11 +2205,11 @@ msgstr ""
 "Impossible de copier le dossier « %B » car vous n'avez pas la permission de "
 "le créer dans la destination."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3496
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Une erreur s'est produite lors de la création du dossier « %B »."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3625
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1736,7 +2217,7 @@ msgstr ""
 "Impossible de copier les fichiers du dossier « %B » car vous n'avez pas la "
 "permission de les lire."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3670
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3670
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
@@ -1744,725 +2225,248 @@ msgstr ""
 "Impossible de copier le dossier « %B » car vous n'avez pas la permission de "
 "le lire."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3715
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4416
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5004
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3715
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4416
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
 msgstr "Erreur lors du déplacement de « %B »."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3716
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
 msgstr "Impossible de supprimer le dossier source."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3801
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3842
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4418
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4489
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3801
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3842
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4418
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
 msgstr "Erreur lors de la copie de « %B »."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3802
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Impossible de supprimer les fichiers du dossier préexistant %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:3843
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Impossible de supprimer le fichier préexistant « %F »."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4172
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4844
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4172
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
 msgstr "Impossible de déplacer un dossier vers lui-même."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4173
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4845
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4173
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
 msgstr "Impossible de copier un dossier vers lui-même."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4174
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4846
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4174
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
 msgstr "Le dossier de destination se trouve à l'intérieur du dossier source."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4205
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
 msgstr "Impossible de déplacer un fichier sur lui-même."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4206
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot copy a file over itself."
 msgstr "Impossible de copier un fichier sur lui-même."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4207
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4207
 msgid "The source file would be overwritten by the destination."
 msgstr "Le fichier source serait écrasé par la destination."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4420
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 "Impossible de supprimer le fichier préexistant portant le même nom dans %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4490
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Erreur lors de la copie du fichier dans %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4718
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
 msgstr "Copie des fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4744
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
 msgstr "Préparation pour se déplacer vers « %B »"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:4756
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Préparation du déplacement de %'d fichier"
 msgstr[1] "Préparation du déplacement de %'d fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5005
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Erreur lors du déplacement du fichier dans %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5268
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
 msgstr "Déplacement des fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5298
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
 msgstr "Création des liens dans « %B »"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5309
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Création d'un lien vers %'d fichier"
 msgstr[1] "Création des liens vers %'d fichiers"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5444
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
 msgstr "Erreur lors de la création du lien vers %B."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5446
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
 msgstr ""
 "Les liens symboliques ne sont pris en charge que pour des fichiers locaux."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5449
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
 msgstr "La cible ne prend pas en charge les liens symboliques."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5452
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Erreur lors de la création du lien symbolique dans %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5780
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:5783
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5780
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
 msgstr "Définition des permissions"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6034
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
 msgstr "nouveau dossier"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6042
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
 msgstr "nouveau fichier"
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6213
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
 msgstr "Erreur lors de la création du répertoire %B."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6215
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
 msgstr "Erreur lors de la création du fichier %B."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6217
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Erreur lors de la création du répertoire dans %F."
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-operations.c:6534
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
 msgstr "Vidage de la corbeille"
 
-#: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Aujourd'hui à %-kh%M"
-
-#: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Hier à %-kh%M"
-
-#: /home/noelco/pantheon-files/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y à %-I:%M %p"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Supprimer %d fichiers copiés"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "Supprimer « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Supprimer %d doublons"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Restaurer %d éléments vers '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Restaurer « %s » vers « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Renommer « %s » en « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Restaurer %d éléments de la corbeille"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Restaurer « %s » vers « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Restaurer %d éléments vers la corbeille"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Restaure « %s » vers la corbeille"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Supprimer les liens vers %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Supprime le lien vers « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Restaure les permissions d'origine des éléments inclus dans « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Restaure les permissions d'origine de « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Restaure le groupe de « %s » à « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Restaure le propriétaire de « %s » à « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Copie de %d éléments vers '%s'"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Copie de « %s » vers « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Duplication de %d éléments dans « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Dupliquer « %s » vers « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Déplacement de %d éléments dans « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Déplacer « %s » vers « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Créer un nouveau fichier « %s » à partir d'un modèle "
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Créer un fichier vide « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Créer un nouveau dossier « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Déplacer %d objets vers la corbeille"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Mettre « %s » à la corbeille"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Restaure « %s » depuis la corbeille"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "Créer des liens vers %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Créer le lien vers « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Définir les permissions des éléments inclus dans « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Définir les permissions de « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Définir le groupe de « %s » à « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Définir le propriétaire de « %s » à « %s »"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Annuler la copie de %d élément"
-msgstr[1] "_Annuler la copie de %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Annuler la duplication de %d élément"
-msgstr[1] "_Annuler la duplication de %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Annuler le déplacement de %d élément"
-msgstr[1] "_Annuler le déplacement de %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Annuler le renommage de %d élément"
-msgstr[1] "_Annuler le renommage de %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "_Annuler la création d'un fichier vide"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "_Annuler la création d'un fichier créé à partir d'un modèle"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Annuler la création de %d dossier"
-msgstr[1] "_Annuler la création de %d dossiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Annuler le déplacement vers la corbeille de %d élément"
-msgstr[1] "_Annuler le déplacement vers la corbeille de %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Annuler la restauration de la corbeille de %d élément"
-msgstr[1] "_Annuler la restauration de la corbeille de %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Annuler la création du lien vers %d élément"
-msgstr[1] "_Annuler la création du lien vers %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Annuler la suppression de %d élément"
-msgstr[1] "_Annuler la suppression de %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Annuler le changement récursif des permissions de %d fichier"
-msgstr[1] "Annuler le changement récursif des permissions de %d fichiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Annuler le changement des permissions de %d fichier"
-msgstr[1] "Annuler le changement des permissions de %d fichiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Annuler le changement de groupe de %d fichier"
-msgstr[1] "Annuler le changement de groupe de %d fichiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Annuler le changement de propriétaire de %d fichier"
-msgstr[1] "Annuler le changement de propriétaire de %d fichiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Rétablir la copie de %d élément"
-msgstr[1] "_Rétablir la copie de %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Rétablir la duplication de %d élément"
-msgstr[1] "_Rétablir la duplication de %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Rétablir le déplacement de %d l'élément"
-msgstr[1] "_Rétablir le déplacement des %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Rétablir le renommage de %d élément"
-msgstr[1] "_Rétablir le renommage de %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "_Rétablir la création d'un fichier vide"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "_Rétablir la création d'un fichier à partir d'un modèle"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Rétablir la création de %d dossier"
-msgstr[1] "_Rétablir la création de %d dossiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Rétablir la mise à la corbeille de %d l'élément"
-msgstr[1] "_Rétablir la mise à la corbeille des %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Rétablir la restauration depuis la corbeille de %d l'élément"
-msgstr[1] "_Rétablir la restauration depuis la corbeille des %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Rétablir la création de raccourçi vers %d élément"
-msgstr[1] "_Rétablir la création de raccourçi vers %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Rétablir la suppression de %d élément"
-msgstr[1] "_Rétablir la suppression de %d éléments"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Rétablir le changement récursif des permissions de %d fichier"
-msgstr[1] "Rétablir le changement récursif des permissions de %d fichiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Rétablir le changement des permissions de %d fichier"
-msgstr[1] "Rétablir le changement des permissions de %d fichiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Rétablir le changement de groupe de %d fichier"
-msgstr[1] "Rétablir le changement de groupe de %d fichiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Rétablir le changement de propriétaire de %d fichier"
-msgstr[1] "Rétablir le changement de propriétaire de %d fichiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Fusionner le dossier « %s » ?"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"La fusion demandera une confirmation avant chaque remplacement de fichier du "
-"dossier qui entre en conflit avec les fichiers en cours de copie."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Un répertoire plus ancien avec ce nom existe déjà dans \"%s\""
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Un dossier plus récent portant le même nom existe déjà dans « %s »."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Un autre dossier portant le même nom existe déjà dans « %s »."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
-msgid "Replacing it will remove all files in the folder."
-msgstr "Le remplacement va effacer tous les fichiers dans ce répertoire"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Remplacer le dossier « %s » ?"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Un dossier portant le même nom existe déjà dans « %s »."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Remplacer le fichier « %s » ?"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will overwrite its content."
-msgstr "Le remplacer va écraser son contenu"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Un fichier plus ancien portant le même nom existe déjà dans « %s »."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Un fichier plus récent portant le même nom existe déjà dans « %s »."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Un autre fichier portant le même nom existe déjà dans « %s »."
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
-msgid "Original file"
-msgstr "Fichier original"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
-msgid "Size:"
-msgstr "Taille :"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
-msgid "Type:"
-msgstr "Type :"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
-msgid "Last modified:"
-msgstr "Dernière modification :"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Replace with"
-msgstr "Remplacer par"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
-msgid "Merge"
-msgstr "Fusionner"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
-msgid "_Select a new name for the destination"
-msgstr "Choi_sissez un nouveau nom pour la destination"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
-msgid "Reset"
-msgstr "Réinitialiser"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
-msgid "Apply this action to all files"
-msgstr "Appliquer cette action pour tous les fichiers"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
-msgid "Re_name"
-msgstr "Re_nommer"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
-msgid "Replace"
-msgstr "Remplacer"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
-msgid "File conflict"
-msgstr "Conflit de fichier"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-progress-info.c:192
-#: /home/noelco/pantheon-files/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "En préparation"
-
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-utilities.c:119
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Impossible de déterminer l'emplacement d'origine de « %s » "
 
-#: /home/noelco/pantheon-files/po/../libcore/marlin-file-utilities.c:122
+#: /home/pqp/pantheon-files/po/../libcore/marlin-file-utilities.c:122
 msgid "The item cannot be restored from trash"
 msgstr "Impossible de restaurer l'élément depuis la corbeille"
 
-#: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:325
+#: /home/pqp/pantheon-files/po/../libcore/marlin-progress-info.c:192
+#: /home/pqp/pantheon-files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "En préparation"
+
+#: /home/pqp/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (Unicode non valide)"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "lien vers %s"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:1702
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Échec d'analyse du fichier bureau : %s"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:1740
+msgid "No Exec field specified"
+msgstr "Aucun champ Exec spécifié"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:1760
+msgid "No URL field specified"
+msgstr "Aucune URL spécifiée"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:1766
+msgid "Invalid desktop file"
+msgstr "Fichier de bureau non valide"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:2056
+msgid "Slashes are not allowed in filenames"
+msgstr "Les barres obliques ne sont pas autorisées dans les noms de fichiers"
+
+#: /home/pqp/pantheon-files/po/../libcore/gof-file.c:2076
+msgid "Toplevel files cannot be renamed"
+msgstr "Impossible de renommer les fichiers racines"
+
+#: /home/pqp/pantheon-files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Aujourd'hui à %-kh%M"
+
+#: /home/pqp/pantheon-files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Hier à %-kh%M"
+
+#: /home/pqp/pantheon-files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y à %-I:%M %p"
+
+#: /home/pqp/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
 msgstr "Coupe le texte sélectionné dans le presse-papiers"
 
-#: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:329
+#: /home/pqp/pantheon-files/po/../libwidgets/LocationBar.vala:329
 msgid "Copy the selected text to the clipboard"
 msgstr "Copie le texte sélectionné dans le presse-papiers"
 
-#: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:333
-#: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:337
+#: /home/pqp/pantheon-files/po/../libwidgets/LocationBar.vala:333
+#: /home/pqp/pantheon-files/po/../libwidgets/LocationBar.vala:337
 msgid "Paste the text stored on the clipboard"
 msgstr "Colle le texte contenu dans le presse-papiers"
 
-#: /home/noelco/pantheon-files/po/../libwidgets/LocationBar.vala:813
+#: /home/pqp/pantheon-files/po/../libwidgets/LocationBar.vala:813
 #, c-format
 msgid "Go to %s"
 msgstr "Aller à %s"
 
-#: /home/noelco/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
+#: /home/pqp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:86
 msgid "View as grid"
 msgstr "Afficher en grille"
 
-#: /home/noelco/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
+#: /home/pqp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:89
 msgid "View as list"
 msgstr "Afficher en liste"
 
-#: /home/noelco/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
+#: /home/pqp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:95
 msgid "View as column"
 msgstr "Afficher en colonnes"
 
-#: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
+#: /home/pqp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
 msgstr "Ces éléments peuvent étre supprimés par vider la Corbeille"
 
-#: /home/noelco/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
+#: /home/pqp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Vider la Corbeille"
