@@ -143,7 +143,7 @@ namespace Marlin.View {
             /* Info Bar */
             info_bar = new Gtk.InfoBar ();
             
-            var label = new Gtk.Label ("Files isn't your default file manager.");
+            var label = new Gtk.Label (_("Files isn't your default file manager."));
             label.set_line_wrap (true);
             
             var expander = new Label ("");
