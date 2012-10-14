@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-09-22 12:57+0000\n"
+"PO-Revision-Date: 2012-10-13 20:13+0000\n"
 "Last-Translator: Ebubekir KARUL <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-10-13 05:03+0000\n"
+"X-Launchpad-Export-Date: 2012-10-14 04:52+0000\n"
 "X-Generator: Launchpad (build 16137)\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
@@ -42,12 +42,12 @@ msgstr "Fare oto-seçim:"
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "Yavaş"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "Hızlı"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
@@ -169,7 +169,7 @@ msgstr "Aygıt kullanımı:"
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s, %s'den muaf (%d%% kullanıldı)"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -212,7 +212,7 @@ msgstr "(yönetici olarak)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:146
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Files sizin varsayılan dosya yöneticiniz değil."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:152
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3383
@@ -612,7 +612,7 @@ msgstr "_Türe Göre"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "Simgeleri türlerine göre sırala"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
@@ -942,7 +942,7 @@ msgstr "Tümünü Seç"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3498
 msgid "_Properties"
-msgstr "_Tercihler"
+msgstr "_Özellikler"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3499
 msgid "View or modify the properties of each selected item"
@@ -974,7 +974,7 @@ msgstr "Files'dan çık."
 
 #: /home/pqp/pantheon-files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Hata ayıklama günlüğünü etkin kıl"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-application.c:430
 msgid "[URI...]"
@@ -1139,19 +1139,19 @@ msgstr "Girdi Yöntemleri"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "Dosyalarınızı tarayın"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "Dosya Yöneticisi"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "_Yönetici Olarak Yeni Pencere"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "Dosyalar"
 
 #: /home/pqp/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
@@ -1324,7 +1324,7 @@ msgstr "'%s''in izinlerini belirle"
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "'%s' grubunu '%s' e ayarla"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
@@ -1335,15 +1335,13 @@ msgstr "Sahibini belirle: '%s' > '%s'"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d öğesinin kopyasını _Geri al"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d öğesinin çoğaltılmasını _Geri al"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
@@ -1429,8 +1427,7 @@ msgstr[0] "%d öğenin kopyalanmasını _yinele"
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d öğesinin çoğaltılmasını _Yinele"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
@@ -1931,6 +1928,8 @@ msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
+"Bu dosya harici bir ortamda bulunuyor ve çöpe taşınamaz. Bir kez silindi mi, "
+"geri getirilemez."
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
@@ -2358,7 +2357,7 @@ msgstr "Dün %-I:%M %p"
 
 #: /home/pqp/pantheon-files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: /home/pqp/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Cut the selected text to the clipboard"
@@ -2392,7 +2391,7 @@ msgstr "Sütun olarak göster"
 
 #: /home/pqp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Bu öğeler çöpü boşaltığınızda silinebilir."
 
 #: /home/pqp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
