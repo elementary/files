@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-09-20 09:19+0000\n"
-"Last-Translator: Sergey Koptev <Unknown>\n"
+"PO-Revision-Date: 2012-10-18 22:34+0000\n"
+"Last-Translator: Sho0ter <Sho0ter@mail.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-10-14 04:52+0000\n"
-"X-Generator: Launchpad (build 16137)\n"
+"X-Launchpad-Export-Date: 2012-10-19 06:11+0000\n"
+"X-Generator: Launchpad (build 16165)\n"
 "Language: uk\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
@@ -44,12 +44,12 @@ msgstr "Атовибір мишкою:"
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "Повільно"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "Швидко"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
@@ -171,7 +171,7 @@ msgstr "Використання пристрою:"
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s із %s вільно (%d%% використано)"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -214,7 +214,7 @@ msgstr "(як Адміністратор)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:146
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Ця програма не являється файловим менеджером по-замовчуванню."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:152
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3383
@@ -1147,19 +1147,19 @@ msgstr "Способи вводу"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "Переглянути свої файли"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "Файловий менеджер"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Нове вікно від імені адміністратора"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "Файли"
 
 #: /home/pqp/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
