@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-09-29 15:36+0000\n"
+"PO-Revision-Date: 2012-10-21 17:30+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-10-14 04:51+0000\n"
-"X-Generator: Launchpad (build 16137)\n"
+"X-Launchpad-Export-Date: 2012-10-22 04:58+0000\n"
+"X-Generator: Launchpad (build 16165)\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -42,12 +42,12 @@ msgstr "አይጥ በራሱ - መምረጫ :"
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "በዝግታ"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "በፍጥነት"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
@@ -169,7 +169,7 @@ msgstr "የአካሎች አጠቃቀም :"
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s ነፃ ከ %s (%d%% የተጠቀሙት)"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -561,7 +561,7 @@ msgstr "የእቅዱ ዘዴ"
 
 #: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
-msgstr ""
+msgstr "አንድ ጊዜ ይጫኑ"
 
 #: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
@@ -569,7 +569,7 @@ msgstr ""
 
 #: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
-msgstr ""
+msgstr "አንድ ጊዜ መጫን ጊዜው አልቋል"
 
 #: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:185
 msgid ""
@@ -654,6 +654,8 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"የተደገፉ የሰርቨር ዘዴዎችን ዝርዝር መጫን አልተቻለም\n"
+"እባክዎን የ gvfs አገጣጠሞን ይመርምሩ"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
@@ -1062,11 +1064,11 @@ msgstr "አካሉን _መለያያ"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1624
 msgid "_Start Multi-disk Device"
-msgstr ""
+msgstr "የበርካታ - ዲስክ አካሎችን _ማስጀመሪያ"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1625
 msgid "_Stop Multi-disk Device"
-msgstr ""
+msgstr "የበርካታ - ዲስክ አካሎችን _ማስቆሚያ"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:1629
 msgid "_Unlock Drive"
@@ -1092,7 +1094,7 @@ msgstr "ማውጣት አልተቻለም %s"
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2197
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "መመዝገብ አልተቻለም %s የመገናኛውን ለውጦች"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2307
 #, c-format
@@ -1131,19 +1133,19 @@ msgstr "የማስገቢያ ዘዴዎች"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "ፋይሎችን መቃኛ"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "የፋይል አስተዳዳሪ"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "አዲስ መስኮት እንደ _አስተዳዳሪ"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "ፋይሎች"
 
 #: /home/pqp/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
@@ -1201,17 +1203,17 @@ msgstr "ማንቀሳቀሻ %d እቃዎቹን ወደ ቆሻሻ ማጠራቀሚ�
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "ማንቀሳቀሻ '%s' ወደ ቆሻሻ ማጠራቀሚያው ውስጥ"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "ማጥፊያ አገናኞችን ወደ %d እቃዎች"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "ማጥፊያ አገናኞችን ወደ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
@@ -1221,27 +1223,27 @@ msgstr ""
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "እንደ ነበር መመለሻ ፍቃዶችን ወደ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "እንደ ነበር መመለሻ ቡድኑን ከ '%s' ወደ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "እንደነበር መመለሻ ባለቤቱን ከ '%s' ወደ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "ኮፒ %d እቃዎችን ወደ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "ኮፒ ማድረጊያ '%s' ወደ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
@@ -1251,27 +1253,27 @@ msgstr ""
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "ማባዛት '%s' በ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "ማንቀሳቀሻ %d እቃዎችን ወደ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "ማንቀሳቀሻ '%s' ወደ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "አዲስ ፋይል መፍጠሪያ '%s' ከ ቴምፕሌትስ "
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "ባዶ ፋይል መፍጠሪያ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
@@ -1281,7 +1283,7 @@ msgstr "አዲስ ፎልደር መፍጠሪያ '%s'"
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "ማንቀሳቀሻ %d እቃዎችን ወደ ቆሻሻ"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
@@ -1296,12 +1298,12 @@ msgstr "እንደ ነበር መመለሻ '%s' ከቆሻሻ ማጠራቀሚያ �
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "መፍጠሪያ አገናኝ ወደ %d እቃዎች"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "መፍጠሪያ አገናኝ ወደ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format

@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-10-20 20:36+0000\n"
+"PO-Revision-Date: 2012-10-21 22:30+0000\n"
 "Last-Translator: Hlobil Vaclav <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-10-21 05:12+0000\n"
+"X-Launchpad-Export-Date: 2012-10-22 04:58+0000\n"
 "X-Generator: Launchpad (build 16165)\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
@@ -1340,6 +1340,7 @@ msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "_Vrátit kopírování %d položky"
 msgstr[1] "_Vrátit kopírování %d položek"
+msgstr[2] "_Vrátit kopírování %d položek"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
@@ -1686,7 +1687,7 @@ msgstr "Z_novu"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
-msgstr "Odstranit _vše"
+msgstr "Smazat _vše"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
@@ -1842,7 +1843,7 @@ msgstr " (%'d"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Jste si jisti, že chcete z koše trvale odstranit \"%B\"?"
+msgstr "Opravdu chcete \"%B\" nenávratně smazat z koše?"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -1852,17 +1853,14 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-"Jste si jisti, že chcete z koše trvale odstranit %'d vybranou položku?"
-msgstr[1] ""
-"Jste si jisti, že chcete z koše trvale odstranit %'d vybrané položky?"
-msgstr[2] ""
-"Jste si jisti, že chcete z koše trvale odstranit %'d vybraných položek?"
+msgstr[0] "Opravdu chcete z koše nenávratně smazat %'d vybranou položku?"
+msgstr[1] "Opravdu chcete z koše nenávratně smazat %'d vybrané položky?"
+msgstr[2] "Opravdu chcete z koše nenávratně smazat %'d vybraných položek?"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1394
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Pokud odstraníte položku, bude natrvalo ztracena."
+msgstr "Pokud položku smažete, bude nenávratně ztracena."
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
@@ -1870,25 +1868,25 @@ msgstr "Vyprázdnit koš?"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Všechny položky v koši budou trvale odstraněny."
+msgstr "Všechny položky v koši budou nenávratně smazány."
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Jste si jisti, že chcete trvale odstranit \"%B\"?"
+msgstr "Opravdu chcete \"%B\" nenávratně smazat?"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Jste si jisti, že chcete trvale odstranit %'d vybranou položku?"
-msgstr[1] "Jste si jisti, že chcete trvale odstranit %'d vybrané položky?"
-msgstr[2] "Jste si jisti, že chcete trvale odstranit %'d vybraných položek?"
+msgstr[0] "Opravdu chcete nenávratně smazat %'d vybranou položku?"
+msgstr[1] "Opravdu chcete nenávratně smazat %'d vybrané položky?"
+msgstr[2] "Opravdu chcete nenávratně smazat %'d vybraných položek?"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1478
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr "Soubory se odstraňují"
+msgstr "Mazání souborů"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
@@ -1911,14 +1909,14 @@ msgstr[2] "zbývá %T"
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1742
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
-msgstr "Chyba při odstraňování."
+msgstr "Chyba během mazání."
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Soubory ve složce \"%B\" nelze odstranit, protože nemáte oprávnění na jejich "
+"Soubory ve složce \"%B\" nelze smazat, protože nemáte oprávnění na jejich "
 "zobrazení."
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1599
@@ -1938,7 +1936,7 @@ msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"Složku \"%B\" nelze odstranit, protože nemáte oprávnění na její zobrazení."
+"Složku \"%B\" nelze smazat, protože nemáte oprávnění na její zobrazení."
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1632
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2671
@@ -1952,7 +1950,7 @@ msgstr "Nelze odstranit složku %B."
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr "Došlo k chybě při odstraňování %B."
+msgstr "Při mazání %B došlo k chybě."
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1819
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1831
@@ -1983,7 +1981,7 @@ msgstr "Soubory se přesouvají do koše"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
-msgstr "Soubory se odstraňují"
+msgstr "Mazání souborů"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
@@ -2038,9 +2036,9 @@ msgstr[2] "Připravuje se přesun %'d souborů (%S)"
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Připravuje se odstranění %'d souboru (%S)"
-msgstr[1] "Připravuje se odstranění %'d souborů (%S)"
-msgstr[2] "Připravuje se odstranění %'d souborů (%S)"
+msgstr[0] "Připravuje se smazání %'d souboru (%S)"
+msgstr[1] "Připravuje se smazání %'d souborů (%S)"
+msgstr[2] "Připravuje se smazání %'d souborů (%S)"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
@@ -2278,7 +2276,7 @@ msgstr "Zdrojový soubor by byl přepsán cílovým."
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr "Nelze odstranit již existující soubor stejného názvu v %F."
+msgstr "Nelze odstranit již existující soubor se stejným názvem v %F."
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
