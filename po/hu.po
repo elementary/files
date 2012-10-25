@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-10-14 11:59+0000\n"
-"Last-Translator: Mark Lutring <marcus@elitemail.hu>\n"
+"PO-Revision-Date: 2012-10-24 11:50+0000\n"
+"Last-Translator: Bence Lukács <Unknown>\n"
 "Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-10-15 05:31+0000\n"
-"X-Generator: Launchpad (build 16137)\n"
+"X-Launchpad-Export-Date: 2012-10-25 06:14+0000\n"
+"X-Generator: Launchpad (build 16179)\n"
 "Language: hu\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
@@ -214,7 +214,7 @@ msgstr "(Adminisztrátorként)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:146
 msgid "Files isn't your default file manager."
-msgstr "Files nem az alapértelmezett fájlkezelője"
+msgstr "A Fájlkezelő nem az alapértelmezett fájlkezelője"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:152
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3383
@@ -270,7 +270,7 @@ msgstr "Új _ablak"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:762
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Egy új fájlkezelő ablak nyitása a megjelenített helyen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:765
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:8
@@ -295,7 +295,7 @@ msgstr "Beállítások"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:775
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Változtatás a fájlkezelő beállításain"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:780
 msgid "_Undo"
@@ -490,7 +490,7 @@ msgstr "A mappa nem létezik"
 #: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "A fájlkezelő nem találja ezt a mappát: %s"
 
 #: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -1158,7 +1158,7 @@ msgstr "Új ablak nyitása _adminisztátorként"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr "Files"
+msgstr "Fájlkezelő"
 
 #: /home/pqp/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
@@ -1886,7 +1886,7 @@ msgstr[1] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet?"
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1478
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr "Fájlok törlése folyamatban"
+msgstr "Fájlok törlése"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format

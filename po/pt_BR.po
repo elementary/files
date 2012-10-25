@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-09-26 20:39+0000\n"
-"Last-Translator: Leonardo Lemos <leonardolemos@live.com>\n"
+"PO-Revision-Date: 2012-10-24 21:40+0000\n"
+"Last-Translator: Rafael Leandro <crf-rafa@live.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-10-14 04:52+0000\n"
-"X-Generator: Launchpad (build 16137)\n"
+"X-Launchpad-Export-Date: 2012-10-25 06:14+0000\n"
+"X-Generator: Launchpad (build 16179)\n"
 "Language: pt_BR\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
@@ -43,12 +43,12 @@ msgstr "Auto-seleção de mouse:"
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "Lento"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "Rápido"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
@@ -170,7 +170,7 @@ msgstr "Utilização do dispositivo:"
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s livre de %s (%d%% usado)"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -213,7 +213,7 @@ msgstr "(como administrador)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:146
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Files não é o seu gerenciador de arquivos padrão."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:152
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3383
@@ -1156,7 +1156,7 @@ msgstr "Nova janela como _administrador"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "Arquivos"
 
 #: /home/pqp/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"

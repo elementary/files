@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-10-13 18:33+0000\n"
+"PO-Revision-Date: 2012-10-24 23:51+0000\n"
 "Last-Translator: Kristjan Vool <Unknown>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-10-14 04:51+0000\n"
-"X-Generator: Launchpad (build 16137)\n"
+"X-Launchpad-Export-Date: 2012-10-25 06:14+0000\n"
+"X-Generator: Launchpad (build 16179)\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -858,7 +858,7 @@ msgstr ""
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3447
 msgid "_Rename..."
-msgstr "Muuda _nime..."
+msgstr "_Nimeta ümber..."
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3448
 msgid "Rename selected item"
@@ -878,7 +878,7 @@ msgstr "Loo uus _fail"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3456
 msgid "_Empty File"
-msgstr "_Fail"
+msgstr "_Tühi fail"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3457
 msgid "Create a new empty file inside this folder"
@@ -1005,7 +1005,7 @@ msgstr "Kompaktne vaade"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:310
 msgid "Personal"
-msgstr "Personaalne"
+msgstr "Isiklik"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:315
 msgid "Your common places and bookmarks"
@@ -1114,7 +1114,7 @@ msgstr "Eemalda"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2432
 msgid "Rename..."
-msgstr "Muuda nime..."
+msgstr "Nimeta ümber"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2444
 msgid "_Mount"
