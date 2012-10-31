@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-10-15 01:09+0000\n"
+"PO-Revision-Date: 2012-10-31 00:19+0000\n"
 "Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-10-16 05:04+0000\n"
-"X-Generator: Launchpad (build 16137)\n"
+"X-Launchpad-Export-Date: 2012-10-31 05:23+0000\n"
+"X-Generator: Launchpad (build 16218)\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -160,41 +160,41 @@ msgstr "다음으로 열기:"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:449
 msgid "Usage:"
-msgstr ""
+msgstr "사용법:"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
-msgstr ""
+msgstr "장치 사용량:"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s가 %s중에서 사용가능함 (%d%%사용됨)"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
-msgstr ""
+msgstr "읽기"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:605
 msgid "Write"
-msgstr ""
+msgstr "쓰기"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:610
 msgid "Execute"
-msgstr ""
+msgstr "실행"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:833
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:845
 msgid "Group"
-msgstr ""
+msgstr "그룹"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:849
 msgid "Everyone"
-msgstr ""
+msgstr "모든 사람"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "이 파일을 열 때 사용할 프로그램을 선택하세요 "
 
 #: /home/pqp/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -212,7 +212,7 @@ msgstr "(관리자 권한으로)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:146
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Files가 기본 파일 관리자가 아닙니다."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:152
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3383
@@ -239,7 +239,7 @@ msgstr "다시 실행"
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:500
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:784
 msgid "Redo the last action"
-msgstr ""
+msgstr "마지막 작업을 다시 실행합니다"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:755
 msgid "_File"
@@ -358,127 +358,127 @@ msgstr "네트워크(_N)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:809
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "책갈피와 로컬 네트워크를 찾아봅니다"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:812
 msgid "Zoom _In"
-msgstr ""
+msgstr "확대(_I)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:813
 msgid "Increase the view size"
-msgstr ""
+msgstr "확대합니다."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:824
 msgid "Zoom _Out"
-msgstr ""
+msgstr "축소(_O)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:825
 msgid "Decrease the view size"
-msgstr ""
+msgstr "축소합니다."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:832
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "기본값 크기 (_z)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:833
 msgid "Use the normal view size"
-msgstr ""
+msgstr "보통 보기크기를 사용합니다"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:836
 msgid "Next Tab"
-msgstr ""
+msgstr "다음 탭"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:840
 msgid "Previous Tab"
-msgstr ""
+msgstr "이전 탭"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:844
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "서버에 연결...(_S)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:845
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "원격 컴퓨터나 공유 디스크에 연결합니다"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:848
 msgid "_About"
-msgstr ""
+msgstr "Files에 대하여(_A)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:849
 msgid "Display credits"
-msgstr ""
+msgstr "기여자 목록을 표시합니다."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:852
 msgid "Report a Problem..."
-msgstr ""
+msgstr "문제점 보고..."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:853
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "런치패드에 버그를 등록합니다."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:856
 msgid "Get Help Online..."
-msgstr ""
+msgstr "온라인으로 도움받기..."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:860
 msgid "Translate This Application..."
-msgstr ""
+msgstr "이 프로그램 번역하기..."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:869
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "숨긴 파일 표시(_H)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:870
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "현재 창의 숨긴 파일을 표시할 지를 바꿉니다."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:875
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "바탕화면 파일 보여주기 (_D)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:876
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "바탕화면 파일을 보여줄 지 바꿉니다."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:880
 msgid "_Context Pane"
-msgstr ""
+msgstr "내용 패널(_C)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:881
 msgid "Change the visibility of the context pane"
-msgstr ""
+msgstr "내용 패널을 볼 지 바꿉니다."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:885
 msgid "_Menubar"
-msgstr ""
+msgstr "메뉴 바 (_M)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:886
 msgid "Change the visibility of this window's menubar"
-msgstr ""
+msgstr "이 메뉴바의 보이는 정도를 바꿉니다."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:890
 msgid "_Places"
-msgstr ""
+msgstr "위치(_P)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:891
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "가장자리 패널의 투명도를 바꿉니다."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:899
 msgid "Icon"
-msgstr ""
+msgstr "아이콘"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:902
 msgid "List"
-msgstr ""
+msgstr "목록"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:905
 msgid "Compact"
-msgstr ""
+msgstr "간단히"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:908
 msgid "Columns"
-msgstr ""
+msgstr "열"
 
 #: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -501,242 +501,243 @@ msgstr "폴더 %s를 생성하기"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "클립보드에서 붙여넣을 자료가 없습니다."
 
 #: /home/pqp/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "파일 이름"
 
 #: /home/pqp/pantheon-files/po/../src/fm-list-view.c:199
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:139
 #: /home/pqp/pantheon-files/po/../src/fm-columns-view.c:186
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "%s 파일의 이름을 %s(으)로 바꾸는데 실패했습니다"
 
 #: /home/pqp/pantheon-files/po/../src/fm-list-view.c:616
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:573
 #: /home/pqp/pantheon-files/po/../src/fm-columns-view.c:82
 msgid "This folder is empty."
-msgstr ""
+msgstr "폴더가 비어 있습니다."
 
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
 msgid "File Operations"
-msgstr ""
+msgstr "파일 작업"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
-msgstr ""
+msgstr "자세히 보이기"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d개 파일 작업이 진행중입니다."
 
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "복사 대화 상자 보이기"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "진행 중인 모든 작업 취소"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
-msgstr ""
+msgstr "모든 파일 작업을 성공적으로 수행하였습니다."
 
 #: /home/pqp/pantheon-files/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "레이아웃"
 
 #: /home/pqp/pantheon-files/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "레이아웃"
 
 #: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
-msgstr ""
+msgstr "한 번 클릭"
 
 #: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
+msgstr "한 번 클릭하여 보고 있는 항목을 활성화시킬 지를 정합니다."
 
 #: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
-msgstr ""
+msgstr "단일 클릭 타임 아웃"
 
 #: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
-msgstr ""
+msgstr "단일클릭 모드에서 항목을 선택하기까지 시간을 설정합니다."
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "항목 정렬(_G)"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "거꾸로(_V)"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "아이콘을 반대 순서로 표시합니다"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "이름 순서(_N)"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "이름 순서로 아이콘을 정렬합니다"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "크기 순서(_S)"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "크기 순서로 아이콘을 정렬합니다"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "형식 순서(_T)"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "파일형식순으로 아이콘을 정렬합니다"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "내용이 바뀐 날짜 순서(_D)"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "바뀐 날짜 순서로 아이콘을 정렬합니다"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "공개 FTP"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (로그인)"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "Windows 공유"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "보안된 WebDAV (HTTPS)"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr ""
+msgstr "접속중..."
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"지원하는 서버 방식 목록을 읽어들일 수 없습니다.\n"
+"gvfs가 제대로 설치되었는지 확인하십시오."
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "\"%s\" 폴더를 \"%s\"에서 열 수 없습니다."
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "\"%s\" 위치의 서버를 찾을 수 없습니다."
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr ""
+msgstr "다시 시도"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr ""
+msgstr "사용자 상세 정보를 확인하십시오."
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr ""
+msgstr "계속"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
-msgstr ""
+msgstr "연결(_C)"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr ""
+msgstr "서버에 연결"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr ""
+msgstr "서버 상세 정보"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
-msgstr ""
+msgstr "서버(_S):"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
-msgstr ""
+msgstr "포트(_P):"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
-msgstr ""
+msgstr "종류(_T):"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
-msgstr ""
+msgstr "공유(_A):"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
-msgstr ""
+msgstr "폴더(_F):"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
-msgstr ""
+msgstr "사용자 정보"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
-msgstr ""
+msgstr "도메인 이름(_D):"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
-msgstr ""
+msgstr "사용자 이름(_U):"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
-msgstr ""
+msgstr "암호(_W):"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
-msgstr ""
+msgstr "이 암호 기억(_R)"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
-msgstr ""
+msgstr "작업이 취소되었습니다"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
-msgstr ""
+msgstr "도구 모음 사용자 설정"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-toolbar-editor.c:464
 msgid ""
