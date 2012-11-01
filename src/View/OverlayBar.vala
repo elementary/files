@@ -80,9 +80,11 @@ namespace Marlin.View {
 
         private void set_default_style ()
         {
+            get_style_context ().add_class ("files-overlay-bar");
+
             var provider = new Gtk.CssProvider();
             try {
-                provider.load_from_data ("""MarlinViewOverlayBar {
+                provider.load_from_data (""".files-overlay-bar {
                                          background-color: #cecfcd;
                                          border-radius: 2px 2px 0px 0px;
                                          border-style: solid;
@@ -93,7 +95,7 @@ namespace Marlin.View {
                                          -unico-border-gradient: none;
                                          }""", -1);
 
-                get_style_context ().add_provider (provider, 600);
+                get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
             } catch (Error e) {
                 stderr.printf("Error style context add_provider: %s\n", e.message);
             }
