@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-10-24 21:40+0000\n"
-"Last-Translator: Rafael Leandro <crf-rafa@live.com>\n"
+"PO-Revision-Date: 2012-10-31 20:15+0000\n"
+"Last-Translator: Renato Melo <renatinho.smelo@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-10-25 06:14+0000\n"
-"X-Generator: Launchpad (build 16179)\n"
+"X-Launchpad-Export-Date: 2012-11-01 05:18+0000\n"
+"X-Generator: Launchpad (build 16218)\n"
 "Language: pt_BR\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
@@ -56,7 +56,7 @@ msgstr "Formato da data:"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:256
 msgid "iso"
-msgstr "padrão"
+msgstr "iso"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:257
 msgid "locale"
