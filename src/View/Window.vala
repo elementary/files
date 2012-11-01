@@ -186,11 +186,14 @@ namespace Marlin.View {
             main_box = new Granite.Widgets.CollapsiblePaned (Orientation.VERTICAL);
             main_box.show();
 
-            var lside_pane = new Granite.Widgets.SidebarPaned ();
+            var lside_pane = new Granite.Widgets.ThinPaned ();
             lside_pane.show();
 
             lside_pane.pack1(sidebar, false, false);
             lside_pane.pack2(main_box, true, true);
+
+            sidebar.show ();
+            main_box.show ();
 
             main_box.pack1(tabs, true, true);
 
