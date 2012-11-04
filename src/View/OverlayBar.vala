@@ -19,7 +19,7 @@
 using Gtk;
 
 namespace Marlin.View {
-    public class OverlayBar : Box {
+    public class OverlayBar : Gtk.EventBox {
 
         public Label status;
         private Marlin.View.Window window;
@@ -41,10 +41,6 @@ namespace Marlin.View {
 
             status = new Label (null);
             status.set_ellipsize (Pango.EllipsizeMode.END);
-            status.set_margin_top (1);
-            status.set_margin_bottom (1);
-            status.set_margin_left (5);
-            status.set_margin_right (5);
             add (status);
             status.show ();
 
@@ -52,6 +48,10 @@ namespace Marlin.View {
             set_valign (Align.END);
 
             //cancellable = new Cancellable ();
+
+            var ctx = get_style_context ();
+            ctx.changed.connect (queue_resize);
+            ctx.add_class ("files-overlay-bar");
 
             set_default_style ();
 
@@ -78,21 +78,58 @@ namespace Marlin.View {
             return base.draw (cr);
         }
 
+        public override Gtk.SizeRequestMode get_request_mode () {
+            return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
+        }
+
+        public override void get_preferred_width (out int minimum_width, out int natural_width) {
+            var ctx = get_style_context ();
+            var state = ctx.get_state ();
+
+            var padding = ctx.get_padding (state);
+            status.margin_left = padding.left;
+            status.margin_right = padding.right;
+
+            Gtk.Requisition label_min_size, label_natural_size;
+            status.get_preferred_size (out label_min_size, out label_natural_size);
+
+            var border = ctx.get_border (state);
+
+            int extra_allocation = border.left + border.right;
+            minimum_width = extra_allocation + label_min_size.width;
+            natural_width = extra_allocation + label_natural_size.width;
+        }
+
+        public override void get_preferred_height_for_width (int width, out int minimum_height,
+                                                             out int natural_height) {
+            var ctx = get_style_context ();
+            var state = ctx.get_state ();
+
+            var padding = ctx.get_padding (state);
+            status.margin_top = padding.top;
+            status.margin_bottom = padding.bottom;
+
+            Gtk.Requisition label_min_size, label_natural_size;
+            status.get_preferred_size (out label_min_size, out label_natural_size);
+
+            var border = ctx.get_border (state);
+
+            int extra_allocation = border.top + border.bottom;
+            minimum_height = extra_allocation + label_min_size.height;
+            natural_height = extra_allocation + label_natural_size.height;
+        }
+
         private void set_default_style ()
         {
-            get_style_context ().add_class ("files-overlay-bar");
-
             var provider = new Gtk.CssProvider();
             try {
                 provider.load_from_data (""".files-overlay-bar {
-                                         background-color: #cecfcd;
-                                         border-radius: 2px 2px 0px 0px;
+                                         background-color: @info_bg_color;
+                                         border-radius: 3px 3px 0 0;
+                                         padding: 3px;
                                          border-style: solid;
                                          border-width: 1px;
-                                         border-color: darker (#cecfcd);
-                                         border-bottom-color: @transparent;
-                                         
-                                         -unico-border-gradient: none;
+                                         border-color: darker (@info_bg_color);
                                          }""", -1);
 
                 get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
@@ -205,16 +242,10 @@ namespace Marlin.View {
             }
         }
 
-        private void scan_list (GLib.List<GOF.File> files) 
+        private void scan_list (List<GOF.File> files) 
         {
-            /*sub_files_size = 0;
-              sub_count = 0;
-              sub_folders_count = 0;
-              cancellable.reset ();*/
-
             foreach (var gof in files) {
                 if (gof.is_folder ()) {
-                    //if (gof.info.get_file_type () == FileType.DIRECTORY) {
                     folders_count++;
                     //scan_folder (gof.location);
                 } else {
@@ -222,41 +253,7 @@ namespace Marlin.View {
                     files_size += gof.size;
                 }
                 count++;
-                }
             }
-
-            /*private Cancellable cancellable;
-              private uint64 sub_files_size = 0;
-              private uint sub_count = 0;
-              private uint sub_folders_count = 0;
-
-              private async void scan_folder (File directory)
-              {
-              var attrs = FILE_ATTRIBUTE_STANDARD_NAME + "," + FILE_ATTRIBUTE_STANDARD_TYPE + "," + FILE_ATTRIBUTE_STANDARD_SIZE;
-
-              try {
-              var e = yield directory.enumerate_children_async (attrs, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, Priority.LOW, cancellable);
-
-              while (true) {
-              var files = yield e.next_files_async (1024, Priority.LOW, cancellable);
-              if (files == null)
-              break;
-
-              foreach (var f in files)
-              {
-              if (f.get_file_type () == FileType.DIRECTORY) {
-              sub_folders_count++;
-              } else {
-              sub_files_size += f.get_size();
-              }
-              sub_count++;
-              }
-              }
-              update_status ();
-              } catch (Error err) {
-              warning ("%s", err.message);
-              }
-              }*/
-
         }
     }
+}
