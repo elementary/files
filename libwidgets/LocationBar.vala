@@ -112,6 +112,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         button_context.add_class("button");
         button_context.add_class("raised");
         button_context.add_class("marlin-pathbar");
+        button_context.add_class("pathbar");
 
 #if VALA_0_14
         Gtk.Border border = button_context.get_padding(Gtk.StateFlags.NORMAL);
