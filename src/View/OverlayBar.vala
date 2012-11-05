@@ -39,6 +39,8 @@ namespace Marlin.View {
         {
             window = win;
 
+            visible_window = false;
+
             status = new Label (null);
             status.set_ellipsize (Pango.EllipsizeMode.END);
             add (status);
@@ -54,6 +56,8 @@ namespace Marlin.View {
             ctx.add_class ("files-overlay-bar");
 
             set_default_style ();
+            update_spacing ();
+            get_style_context ().changed.connect (update_spacing);
 
             window.selection_changed.connect (update);
             window.item_hovered.connect (update_hovered);
@@ -83,16 +87,11 @@ namespace Marlin.View {
         }
 
         public override void get_preferred_width (out int minimum_width, out int natural_width) {
-            var ctx = get_style_context ();
-            var state = ctx.get_state ();
-
-            var padding = ctx.get_padding (state);
-            status.margin_left = padding.left;
-            status.margin_right = padding.right;
-
             Gtk.Requisition label_min_size, label_natural_size;
             status.get_preferred_size (out label_min_size, out label_natural_size);
 
+            var ctx = get_style_context ();
+            var state = ctx.get_state ();
             var border = ctx.get_border (state);
 
             int extra_allocation = border.left + border.right;
@@ -102,21 +101,33 @@ namespace Marlin.View {
 
         public override void get_preferred_height_for_width (int width, out int minimum_height,
                                                              out int natural_height) {
+            Gtk.Requisition label_min_size, label_natural_size;
+            status.get_preferred_size (out label_min_size, out label_natural_size);
+
+            var ctx = get_style_context ();
+            var state = ctx.get_state ();
+            var border = ctx.get_border (state);
+
+            int extra_allocation = border.top + border.bottom;
+            minimum_height = extra_allocation + label_min_size.height;
+            natural_height = extra_allocation + label_natural_size.height;
+        }
+
+        private void update_spacing () {
             var ctx = get_style_context ();
             var state = ctx.get_state ();
 
             var padding = ctx.get_padding (state);
             status.margin_top = padding.top;
             status.margin_bottom = padding.bottom;
+            status.margin_left = padding.left;
+            status.margin_right = padding.right;
 
-            Gtk.Requisition label_min_size, label_natural_size;
-            status.get_preferred_size (out label_min_size, out label_natural_size);
-
-            var border = ctx.get_border (state);
-
-            int extra_allocation = border.top + border.bottom;
-            minimum_height = extra_allocation + label_min_size.height;
-            natural_height = extra_allocation + label_natural_size.height;
+            var margin = ctx.get_margin (state);
+            margin_top = margin.top;
+            margin_bottom = margin.bottom;
+            margin_left = margin.left;
+            margin_right = margin.right;
         }
 
         private void set_default_style ()
@@ -127,6 +138,7 @@ namespace Marlin.View {
                                          background-color: @info_bg_color;
                                          border-radius: 3px 3px 0 0;
                                          padding: 3px;
+                                         margin: 0 0 1px 0;
                                          border-style: solid;
                                          border-width: 1px;
                                          border-color: darker (@info_bg_color);
