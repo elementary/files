@@ -25,7 +25,6 @@
 
 #include "eel-fcts.h"
 #include "eel-gtk-extensions.h"
-#include "eel-gdk-pixbuf-extensions.h"
 #include "eel-gio-extensions.h"
 #include "gossip-cell-renderer-expander.h"
 #include <gdk/gdkkeysyms.h>
@@ -103,39 +102,14 @@ static const GtkTargetEntry marlin_shortcuts_drop_targets [] = {
 G_DEFINE_TYPE (MarlinPlacesSidebar, marlin_places_sidebar, MARLIN_TYPE_ABSTRACT_SIDEBAR);
 #define parent_class marlin_places_sidebar_parent_class
 
-static GdkPixbuf *
-get_eject_icon (MarlinPlacesSidebar *sidebar, gboolean highlighted)
+static GIcon *
+get_eject_icon (MarlinPlacesSidebar *sidebar)
 {
-	GdkPixbuf *eject;
-    VarkaIconFactory *icon_factory;
-	GtkStyleContext *style;
-	GtkStateFlags state;
+    if (sidebar->eject_icon == NULL)
+        sidebar->eject_icon = g_themed_icon_new_with_default_fallbacks ("media-eject-symbolic");
 
-    icon_factory = varka_icon_factory_get_default ();
-	style = gtk_widget_get_style_context (GTK_WIDGET (sidebar));
-
-    /* if we want to play with css... */
-	/*gtk_style_context_save (style);
-	gtk_style_context_add_class (style, "enter_class_here");
-
-    if (highlighted) {
-        state |= GTK_STATE_FLAG_PRELIGHT;
-        gtk_style_context_set_state (style, state);
-    }*/
-
-    eject = varka_icon_factory_load_symbolic_icon (icon_factory, style, "media-eject-symbolic", 16);
-
-    if (highlighted) {
-        GdkPixbuf *high;
-        high =  eel_create_spotlight_pixbuf (eject);
-        g_object_unref (eject);
-        eject = high;
-    }
-	//gtk_style_context_restore (style);
-
-	return eject;
+    return sidebar->eject_icon;
 }
-
 
 static void
 category_renderer_func (GtkTreeViewColumn *column,
@@ -173,21 +147,23 @@ add_place (MarlinPlacesSidebar *sidebar,
            const int index,
            const char *tooltip)
 {
-    GdkPixbuf           *pixbuf;
     GtkTreeIter          iter, child_iter;
-    GdkPixbuf	        *eject;
+    GdkPixbuf           *pixbuf;
+    GIcon    	        *eject;
     MarlinIconInfo      *icon_info;
     MarlinZoomLevel     zoom;
     gboolean show_eject, show_unmount;
     gboolean show_eject_button;
 
-    pixbuf = NULL;
     g_object_get (sidebar, "zoom-level", &zoom, NULL);
-    int icon_size = marlin_zoom_level_to_icon_size (zoom);
 
+    GtkIconSize stock_size = marlin_zoom_level_to_stock_icon_size (zoom);
+    g_object_set (sidebar->eject_icon_cell_renderer, "stock-size", stock_size, NULL);
+
+    pixbuf = NULL;
     if (icon) {
+        int icon_size = marlin_zoom_level_to_icon_size (zoom);
         icon_info = marlin_icon_info_lookup (icon, icon_size);
-
         pixbuf = g_object_ref (marlin_icon_info_get_pixbuf_nodefault (icon_info));
         g_object_unref (icon_info);
     }
@@ -206,7 +182,7 @@ add_place (MarlinPlacesSidebar *sidebar,
     }
 
     if (show_eject_button) {
-        eject = get_eject_icon (sidebar, FALSE);
+        eject = get_eject_icon (sidebar);
     } else {
         eject = NULL;
     }
@@ -229,9 +205,6 @@ add_place (MarlinPlacesSidebar *sidebar,
                         PLACES_SIDEBAR_COLUMN_FREE_SPACE, 0,
                         PLACES_SIDEBAR_COLUMN_DISK_SIZE, 0,
                         -1, -1);
-
-    /*if (pixbuf != NULL)
-        g_object_unref (pixbuf);*/
     
     return iter;
 }
@@ -2612,103 +2585,6 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
 }
 
 static void
-update_eject_buttons (MarlinPlacesSidebar   *sidebar,
-                      GtkTreePath 	    *path)
-{
-    GtkTreeIter iter;
-    gboolean icon_visible, path_same;
-
-    icon_visible = TRUE;
-    if (path == NULL && sidebar->eject_highlight_path == NULL) {
-        /* Both are null - highlight up to date */
-        return;
-    }
-
-    path_same = (path != NULL) &&
-        (sidebar->eject_highlight_path != NULL) &&
-        (gtk_tree_path_compare (sidebar->eject_highlight_path, path) == 0);
-
-    if (path_same) {
-        /* Same path - highlight up to date */
-        return;
-    }
-
-    if (path) {
-        gtk_tree_model_get_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
-                                 &iter,
-                                 path);
-
-        gtk_tree_model_get (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
-                            &iter,
-                            PLACES_SIDEBAR_COLUMN_EJECT, &icon_visible,
-                            -1);
-    }
-
-    if (!icon_visible || path == NULL || !path_same) {
-        /* remove highlighting and reset the saved path, as we are leaving
-         * an eject button area.
-         */
-        if (sidebar->eject_highlight_path) {
-            gtk_tree_model_get_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
-                                     &iter,
-                                     sidebar->eject_highlight_path);
-
-            gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store,
-                                &iter,
-                                PLACES_SIDEBAR_COLUMN_EJECT_ICON, get_eject_icon (sidebar, FALSE),
-                                -1);
-            //gtk_tree_model_row_changed (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), path, &iter);
-
-            gtk_tree_path_free (sidebar->eject_highlight_path);
-            sidebar->eject_highlight_path = NULL;
-        }
-
-        if (!icon_visible) {
-            return;
-        }
-    }
-
-    if (path != NULL) {
-        /* add highlighting to the selected path, as the icon is visible and
-         * we're hovering it.
-         */
-        gtk_tree_model_get_iter (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store),
-                                 &iter,
-                                 path);
-        gtk_tree_store_set (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store,
-                            &iter,
-                            PLACES_SIDEBAR_COLUMN_EJECT_ICON, get_eject_icon (sidebar, TRUE),
-                            -1);
-        //gtk_tree_model_row_changed (GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), path, &iter);
-
-        sidebar->eject_highlight_path = gtk_tree_path_copy (path);
-    }
-}
-
-static gboolean
-bookmarks_motion_event_cb (GtkWidget            *widget,
-                           GdkEventMotion       *event,
-                           MarlinPlacesSidebar  *sidebar)
-{
-    GtkTreePath *path;
-    GtkTreeModel *model;
-
-    model = GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store);
-    path = NULL;
-
-    if (over_eject_button (sidebar, event->x, event->y, &path)) {
-        update_eject_buttons (sidebar, path);
-        gtk_tree_path_free (path);
-
-        return TRUE;
-    }
-
-    update_eject_buttons (sidebar, NULL);
-
-    return FALSE;
-}
-
-static void
 bookmarks_edited (GtkCellRenderer       *cell,
                   gchar                 *path_string,
                   gchar                 *new_text,
@@ -2976,9 +2852,11 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
 
     cell = gtk_cell_renderer_pixbuf_new ();
     sidebar->icon_cell_renderer = cell;
+    g_object_set (cell, "follow-state", TRUE, "stock-size", GTK_ICON_SIZE_MENU, NULL);
+
     gtk_tree_view_column_pack_start (col, cell, FALSE);
     gtk_tree_view_column_set_attributes (col, cell,
-                                         "pixbuf", PLACES_SIDEBAR_COLUMN_ICON,
+                                         "gicon", PLACES_SIDEBAR_COLUMN_ICON,
                                          NULL);
     gtk_tree_view_column_set_cell_data_func (col, cell,
                                              (GtkTreeCellDataFunc) icon_cell_data_func,
@@ -3004,14 +2882,15 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     sidebar->eject_icon_cell_renderer = cell;
     g_object_set (cell,
                   "mode", GTK_CELL_RENDERER_MODE_ACTIVATABLE,
-                  "stock-size", 16,
+                  "stock-size", GTK_ICON_SIZE_MENU,
+                  "follow-state", TRUE,
                   "xpad", EJECT_BUTTON_XPAD,
                   "xalign", 1.0,
                   NULL);
     gtk_tree_view_column_pack_start (col, cell, FALSE);
     gtk_tree_view_column_set_attributes (col, cell,
                                          "visible", PLACES_SIDEBAR_COLUMN_EJECT,
-                                         "pixbuf", PLACES_SIDEBAR_COLUMN_EJECT_ICON,
+                                         "gicon", PLACES_SIDEBAR_COLUMN_EJECT_ICON,
                                          NULL);
 
     cell = gtk_cell_renderer_text_new ();
@@ -3044,7 +2923,7 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     /* align expander with eject buttons */
     gint exp_size;
     g_object_get (cell, "expander-size", &exp_size, NULL);
-    g_object_set (cell, "xpad", ABS (16 - exp_size) + EJECT_BUTTON_XPAD, "xalign", 1.0, NULL);
+    g_object_set (cell, "xpad", ABS (16 - exp_size) + EJECT_BUTTON_XPAD - 2, "xalign", 1.0, NULL);
     gtk_tree_view_column_pack_end (col, cell, FALSE);
     gtk_tree_view_column_set_cell_data_func (col, 
                                              cell, 
@@ -3109,8 +2988,6 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
                       G_CALLBACK (bookmarks_button_press_event_cb), sidebar);
     g_signal_connect (tree_view, "button-release-event",
                       G_CALLBACK (bookmarks_button_release_event_cb), sidebar);
-    g_signal_connect (tree_view, "motion-notify-event",
-                      G_CALLBACK (bookmarks_motion_event_cb), sidebar);
     g_signal_connect (tree_view, "row-expanded",
                       G_CALLBACK (category_row_expanded_event_cb), sidebar);
     g_signal_connect (tree_view, "row-collapsed",
@@ -3154,9 +3031,6 @@ marlin_places_sidebar_dispose (GObject *object)
 
     free_drag_data (sidebar);
 
-    gtk_tree_path_free (sidebar->eject_highlight_path);
-    sidebar->eject_highlight_path = NULL;
-
     if (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store != NULL) {
         g_object_unref (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store);
         MARLIN_ABSTRACT_SIDEBAR(sidebar)->store = NULL;
@@ -3170,6 +3044,11 @@ marlin_places_sidebar_dispose (GObject *object)
     if (sidebar->bookmarks != NULL) {
         g_object_unref (sidebar->bookmarks);
         sidebar->bookmarks = NULL;
+    }
+
+    if (sidebar->eject_icon != NULL) {
+        g_object_unref (sidebar->eject_icon);
+        sidebar->eject_icon = NULL;
     }
 
     eel_remove_weak_pointer (&(sidebar->go_to_after_mount_slot));

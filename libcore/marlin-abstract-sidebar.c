@@ -66,13 +66,13 @@ static void marlin_abstract_sidebar_init (MarlinAbstractSidebar *self)
                                       G_TYPE_VOLUME,
                                       G_TYPE_MOUNT,
                                       G_TYPE_STRING,
-                                      GDK_TYPE_PIXBUF,
+                                      G_TYPE_ICON,    /* Primary icon */
                                       G_TYPE_INT,
                                       G_TYPE_BOOLEAN,
                                       G_TYPE_BOOLEAN,
                                       G_TYPE_BOOLEAN,
                                       G_TYPE_STRING,
-                                      GDK_TYPE_PIXBUF,
-                                      G_TYPE_UINT64, /* Free space */
+                                      G_TYPE_ICON,    /* Action icon (e.g. eject button) */
+                                      G_TYPE_UINT64,  /* Free space */
                                       G_TYPE_UINT64); /* For disks, total size */
 }

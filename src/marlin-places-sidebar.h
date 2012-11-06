@@ -87,7 +87,7 @@ typedef struct {
     GOFWindowSlot *go_to_after_mount_slot;
     MarlinViewWindowOpenFlags go_to_after_mount_flags;
 
-    GtkTreePath *eject_highlight_path;
+    GIcon *eject_icon;
 } MarlinPlacesSidebar;
 
 typedef struct {

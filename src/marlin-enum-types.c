@@ -107,6 +107,37 @@ marlin_zoom_level_to_icon_size (MarlinZoomLevel zoom_level)
     }
 }
 
+/**
+ * marlin_zoom_level_to_stock_icon_size:
+ * @zoom_level : a #MarlinZoomLevel.
+ *
+ * Returns: the #GtkIconSize for @zoom_level.
+**/
+GtkIconSize
+marlin_zoom_level_to_stock_icon_size (MarlinZoomLevel zoom_level)
+{
+    switch (zoom_level)
+    {
+    case MARLIN_ZOOM_LEVEL_SMALLEST:
+        return GTK_ICON_SIZE_MENU;
+
+    case MARLIN_ZOOM_LEVEL_SMALLER:
+        return GTK_ICON_SIZE_SMALL_TOOLBAR;
+
+    case MARLIN_ZOOM_LEVEL_SMALL:
+        return GTK_ICON_SIZE_LARGE_TOOLBAR;
+
+    case MARLIN_ZOOM_LEVEL_NORMAL:
+    case MARLIN_ZOOM_LEVEL_LARGE:
+    case MARLIN_ZOOM_LEVEL_LARGER:
+    case MARLIN_ZOOM_LEVEL_LARGEST:
+        return GTK_ICON_SIZE_DIALOG;
+
+    default:
+        g_assert_not_reached ();
+    }
+}
+
 MarlinZoomLevel
 marlin_zoom_level_get_nearest_from_value (int size)
 {

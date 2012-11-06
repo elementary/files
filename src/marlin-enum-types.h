@@ -22,6 +22,7 @@
 
 #include <glib.h>
 #include <glib-object.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS;
 
@@ -58,6 +59,7 @@ typedef enum
 
 GType           marlin_zoom_level_get_type     (void) G_GNUC_CONST;
 MarlinIconSize  marlin_zoom_level_to_icon_size (MarlinZoomLevel zoom_level) G_GNUC_CONST;
+GtkIconSize     marlin_zoom_level_to_stock_icon_size (MarlinZoomLevel zoom_level);
 MarlinZoomLevel marlin_zoom_level_get_nearest_from_value (int size);
 
 G_END_DECLS;
