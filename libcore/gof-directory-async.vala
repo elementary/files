@@ -148,14 +148,14 @@ public class GOF.Directory.Async : Object
             if (state == State.LOADING) 
                 clear_directory_info ();
             if (!file.is_mounted) {
-                mount_mountable ();
+                mount_mountable.begin ();
                 return;
             }
 
             /*if (launch_id != 0)
                 Source.remove (launch_id);
             launch_id = Idle.add (() => { list_directory (location); return false; });*/
-            list_directory (location);
+            list_directory.begin (location);
             try {
                 monitor = location.monitor_directory (0);
                 monitor.changed.connect (directory_changed);  
@@ -215,7 +215,7 @@ public class GOF.Directory.Async : Object
                 yield location.mount_mountable (0, mount_op, cancellable);
             }
             file.is_mounted = true;
-            query_info_async (file, file_info_available);
+            yield query_info_async (file, file_info_available);
             load ();
         } catch (Error e) {
             warning ("mount_mountable failed: %s %s", e.message, file.uri);
@@ -332,12 +332,12 @@ public class GOF.Directory.Async : Object
     }
 
     private void notify_file_changed (GOF.File gof) {
-        query_info_async (gof, changed_and_refresh);
+        query_info_async.begin (gof, changed_and_refresh);
     }
 
     private void notify_file_added (GOF.File gof) {
         add_to_hash_cache (gof);
-        query_info_async (gof, add_and_refresh);
+        query_info_async.begin (gof, add_and_refresh);
     }
 
     private void notify_file_removed (GOF.File gof) {

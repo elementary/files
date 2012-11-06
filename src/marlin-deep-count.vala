@@ -39,7 +39,7 @@ public class Marlin.DeepCount : Object
         deep_count_attrs = FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE + "," + FileAttribute.STANDARD_SIZE;
         cancellable = new Cancellable ();
 
-        process_directory (file);
+        process_directory.begin (file);
     }
 
     private Mutex mutex;

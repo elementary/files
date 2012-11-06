@@ -158,7 +158,7 @@ namespace Marlin.View.Chrome {
             default:
             case "fill":
                 Gdk.RGBA rgba = Gdk.RGBA();
-                rgba.parse (GOF.Preferences.get_default ().TAGS_COLORS[color]);
+                rgba.parse (GOF.Preferences.TAGS_COLORS[color]);
                 //rgba.alpha = 0.7;
                 cairo_set_source_rgba (cr, rgba);
                 cr.fill(); 

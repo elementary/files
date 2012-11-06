@@ -742,7 +742,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
                         if (n<1)
                             l_perm.set_text(goffile.get_permissions_as_string());
                         /* real update permissions */
-                        file_set_attributes (gof, FileAttribute.UNIX_MODE, perm, cancellable);
+                        file_set_attributes.begin (gof, FileAttribute.UNIX_MODE, perm, cancellable);
                         n++;
                     } else {
                         //TODO add a list of permissions set errors in the property dialog.
@@ -781,7 +781,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
             return;
 
         foreach (GOF.File gof in files)
-            file_set_attributes (gof, FileAttribute.UNIX_UID, uid);
+            file_set_attributes.begin (gof, FileAttribute.UNIX_UID, uid);
     }
 
     private void combo_group_changed (Gtk.ComboBox combo) {
@@ -815,7 +815,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
             return;
 
         foreach (GOF.File gof in files)
-            file_set_attributes (gof, FileAttribute.UNIX_GID, gid);
+            file_set_attributes.begin (gof, FileAttribute.UNIX_GID, gid);
     }
 
     private void construct_perm_panel (Box box) {

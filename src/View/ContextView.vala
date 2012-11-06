@@ -40,9 +40,9 @@ namespace Marlin.View {
         public int panel_size{
             get{
                 switch (orientation){
-                case orientation.HORIZONTAL:
+                case Gtk.Orientation.HORIZONTAL:
                     return height;
-                case orientation.VERTICAL:
+                case Gtk.Orientation.VERTICAL:
                 default:
                     return width;
                 }
@@ -70,7 +70,7 @@ namespace Marlin.View {
         private ulong icon_changed_callback = 0;
         private unowned GLib.List<GOF.File>? last_selection = null;
 
-        private Orientation _orientation = Orientation.HORIZONTAL;
+        private Orientation _orientation = Gtk.Orientation.HORIZONTAL;
         public Orientation orientation {
             set{
                 if(timeout != 0){
@@ -99,11 +99,11 @@ namespace Marlin.View {
 
         private Orientation convert_parent_orientation (Orientation o) {
             switch (o){
-            case Orientation.HORIZONTAL:
-                return orientation.VERTICAL;
-            case Orientation.VERTICAL:
+            case Gtk.Orientation.HORIZONTAL:
+                return Gtk.Orientation.VERTICAL;
+            case Gtk.Orientation.VERTICAL:
             default:
-                return orientation.HORIZONTAL;
+                return Gtk.Orientation.HORIZONTAL;
             }
         }
 
@@ -124,7 +124,7 @@ namespace Marlin.View {
             label = new Label("");
             var font_style = new Pango.FontDescription();
             font_style.set_size(14 * 1000);
-            label.modify_font(font_style);
+            label.override_font(font_style);
             //label.ellipsize = Pango.EllipsizeMode.MIDDLE;
             label.set_line_wrap (true);
             label.set_line_wrap_mode (Pango.WrapMode.CHAR);
@@ -352,14 +352,14 @@ namespace Marlin.View {
         }
 
         public void update_info_panel(){
-            if(orientation == Orientation.HORIZONTAL)
+            if(orientation == Gtk.Orientation.HORIZONTAL)
                 construct_info_panel_horizontal(info);
             else
                 construct_info_panel_vertical(info);
         }
 
         private void construct_info_panel_vertical(Gee.List<Pair<string, string>> item_info){
-            var box = new Box (Orientation.VERTICAL, 0);
+            var box = new Box (Gtk.Orientation.VERTICAL, 0);
             
             set_size_request (width, -1);
 
@@ -381,7 +381,7 @@ namespace Marlin.View {
                 box.pack_start(label, false, false);
             }
             
-            var sep = new Gtk.Separator(Orientation.HORIZONTAL);
+            var sep = new Gtk.Separator(Gtk.Orientation.HORIZONTAL);
             sep.set_margin_top (4);
             sep.set_margin_bottom (10);
             box.pack_start(sep, false, false);
@@ -418,7 +418,7 @@ namespace Marlin.View {
         }
 
         private void construct_info_panel_horizontal(Gee.List<Pair<string, string>> item_info){
-            var box = new Box (Orientation.HORIZONTAL, 0);
+            var box = new Box (Gtk.Orientation.HORIZONTAL, 0);
 
             set_size_request (-1, height);
             if (evbox != null) {
@@ -430,7 +430,7 @@ namespace Marlin.View {
 
             var alignment = new Gtk.Alignment(0, 0.5f, 0, 0);
             var grid = new Grid ();
-            grid.set_orientation (Orientation.HORIZONTAL);
+            grid.set_orientation (Gtk.Orientation.HORIZONTAL);
             alignment.add (grid);
             box.add (alignment);
 
@@ -440,9 +440,9 @@ namespace Marlin.View {
                 var top = i % 2;
                 //warning ("left %d top %d", left, top);
             
-                var lkey = new Label (pair.key);
+                var lkey = new Gtk.Label (pair.key);
                 //lkey.set_size_request (65, -1);
-                lkey.set_state(StateType.INSENSITIVE);
+                lkey.set_state_flags (Gtk.StateFlags.INSENSITIVE, false);
                 //lkey.set_justify(Justification.RIGHT);
                 lkey.set_alignment(1, 0);
                 grid.attach (lkey, left, top, 1, 1);

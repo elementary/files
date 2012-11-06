@@ -109,8 +109,8 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
             cr.clip();
             button_context.save();
             button_context.set_state(Gtk.StateFlags.ACTIVE);
-            Gtk.render_background(button_context, cr, x - height/2 - estimated_border_size, y, text_width + 2*height/2 + 4*estimated_border_size, height);
-            Gtk.render_frame(button_context, cr, 0, y, widget.get_allocated_width(), height );
+            button_context.render_background (cr, x - height/2 - estimated_border_size, y, text_width + 2*height/2 + 4*estimated_border_size, height);
+            button_context.render_frame (cr, 0, y, widget.get_allocated_width(), height );
             button_context.restore();
             cr.restore();
         }
@@ -120,7 +120,7 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
         x -= Math.sin(offset*Math.PI/2)*width;
         if(icon == null)
         {
-            Gtk.render_layout(button_context, cr, x,
+            button_context.render_layout (cr, x,
                         y + height/2 - text_height/2, layout);
         }
         else if(!display_text)
@@ -134,7 +134,7 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
             Gdk.cairo_set_source_pixbuf(cr, icon, x,
                        y + height/2 - icon.get_height()/2);
             cr.paint();
-            Gtk.render_layout(button_context, cr, x + icon.get_width() + 5,
+            button_context.render_layout (cr, x + icon.get_width() + 5,
                         y + height/2 - text_height/2, layout);
         }
 
@@ -173,7 +173,7 @@ public class Marlin.View.Chrome.BreadcrumbsElement : GLib.Object
         cr.rotate(Math.PI/4);
         button_context.save();
         button_context.add_class("noradius-button");
-        Gtk.render_frame(button_context, cr, -height/2, -height/2, Math.sqrt(height*height), Math.sqrt(height*height));
+        button_context.render_frame (cr, -height/2, -height/2, Math.sqrt(height*height), Math.sqrt(height*height));
         button_context.restore();
         cr.restore();
 

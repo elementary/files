@@ -78,7 +78,7 @@ namespace Marlin.View
             box.pack_start(label, true, true);
 
             var create_button = new ImageButton(_("Create"), _("Create the folder %s").printf(dir.location.get_basename()), "folder-new");
-            create_button.pressed.connect( () => {
+            create_button.clicked.connect( () => {
                 Marlin.FileOperations.new_folder_with_name(null, null,
                                                            dir_saved.location.get_parent(),
                                                            dir_saved.location.get_basename(),

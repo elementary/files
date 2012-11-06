@@ -441,7 +441,7 @@ public class Marlin.View.Chrome.BreadcrumbsEntry : GLib.Object
 
         Pango.Layout layout = widget.create_pango_layout(text);
         computetext_width(layout);
-        Gtk.render_layout(button_context, cr, x, height/2 - text_height/2, layout);
+        button_context.render_layout (cr, x, height/2 - text_height/2, layout);
 
         layout.set_text(text.slice(0, cursor), -1);
         if(blink && focus)
