@@ -34,7 +34,7 @@
 		<separator/>
         <placeholder name="Dangerous File Actions"/>
 		<separator/>
-		<menuitem name="ToolbarEditor" 	  action="ToolbarEditor"/>
+		<!--<menuitem name="ToolbarEditor" 	  action="ToolbarEditor"/>-->
 		<menuitem name="MarlinSettings"   action="MarlinSettings"/>
                 <!--<menu action="ColorMenu">-->
                 <!--    <menuitem action="set-color-clear" />
@@ -135,7 +135,7 @@
     <menuitem name="Show Hide Menubar" action="Show Hide Menubar"/>
     <menuitem name="Show Hide Sidebar" action="Show Hide Sidebar"/>
 	<separator/>
-	<menuitem name="ToolbarEditor" action="ToolbarEditor"/>
+	<!--<menuitem name="ToolbarEditor" action="ToolbarEditor"/>-->
 </popup>
 
 <popup name="CompactMenu" accelerators="false">

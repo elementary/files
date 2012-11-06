@@ -550,9 +550,11 @@ namespace Marlin.View {
             top_menu.setup_items();
         }
 
+        /*
         private void action_toolbar_editor_callback (Gtk.Action action) {
             marlin_toolbar_editor_dialog_show (this);
         }
+        */
 
         private void action_go_up () {
             current_tab.up();
