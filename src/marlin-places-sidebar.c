@@ -225,7 +225,7 @@ add_place (MarlinPlacesSidebar *sidebar,
                         PLACES_SIDEBAR_COLUMN_EJECT_ICON, eject,
                         PLACES_SIDEBAR_COLUMN_FREE_SPACE, 0,
                         PLACES_SIDEBAR_COLUMN_DISK_SIZE, 0,
-                        -1);
+                        -1, -1);
 
     /*if (pixbuf != NULL)
         g_object_unref (pixbuf);*/

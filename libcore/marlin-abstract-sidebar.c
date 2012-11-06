@@ -59,7 +59,7 @@ static void marlin_abstract_sidebar_class_init (MarlinAbstractSidebarClass *klas
 static void marlin_abstract_sidebar_init (MarlinAbstractSidebar *self)
 {
     /* this is required to set the category cells to bold and higher than the other ones */
-    self->store = gtk_tree_store_new (PLACES_SIDEBAR_COLUMN_COUNT,
+    self->store = gtk_tree_store_new ((gint) PLACES_SIDEBAR_COLUMN_COUNT,
                                       G_TYPE_INT, 
                                       G_TYPE_STRING,
                                       G_TYPE_DRIVE,
@@ -73,9 +73,6 @@ static void marlin_abstract_sidebar_init (MarlinAbstractSidebar *self)
                                       G_TYPE_BOOLEAN,
                                       G_TYPE_STRING,
                                       GDK_TYPE_PIXBUF,
-                                      G_TYPE_UINT64, /* For disks, total size */
                                       G_TYPE_UINT64, /* Free space */
-                                      -1
-                                     );
-
+                                      G_TYPE_UINT64); /* For disks, total size */
 }
