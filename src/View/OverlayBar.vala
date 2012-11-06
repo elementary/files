@@ -145,7 +145,7 @@ namespace Marlin.View {
 
         private void set_default_style ()
         {
-            const int priority = Gtk.STYLE_PROVIDER_PRIORITY_THEME;
+            const int priority = Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK;
             Granite.Widgets.Utils.set_theming (this, FALLBACK_THEME, "files-overlay-bar", priority);
         }
 
