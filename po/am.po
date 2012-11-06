@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-10-21 17:30+0000\n"
+"PO-Revision-Date: 2012-11-06 00:23+0000\n"
 "Last-Translator: samson <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-10-22 04:58+0000\n"
-"X-Generator: Launchpad (build 16165)\n"
+"X-Launchpad-Export-Date: 2012-11-06 05:23+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -837,7 +837,7 @@ msgstr "የተመረጡትን ፋይሎች በመለጠፊያ ትእዛዝ  ኮ�
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3440
 msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
+msgstr "ማንቀሳቀሻ ወይንም ኮፒ ማድረጊያ ቀደም ብለው የተመረጡትን ፋይሎች በመቁረጫ ወይንም በመለጠፊያ ትእዛዝ"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3443
 msgid "Paste Into Folder"
@@ -1248,7 +1248,7 @@ msgstr "ኮፒ ማድረጊያ '%s' ወደ '%s'"
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "ማባዥ %d እቃዎችን ከ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
@@ -1308,22 +1308,22 @@ msgstr "መፍጠሪያ አገናኝ ወደ '%s'"
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "ፍቃድ ማሰናጃ ተያይዘው ለሚገኙ እቃዎች በ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "ፍቃዶችን ማሰናጃ ከ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "ቡድን ማሰናጃ ከ '%s' ወደ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "ባለቤት ማሰናጃ ከ '%s' ወደ '%s'"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
