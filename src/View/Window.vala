@@ -138,8 +138,6 @@ namespace Marlin.View {
             /* Topmenu */
             top_menu = new Chrome.TopMenu(this);
 
-            menu_bar.button_press_event.connect(top_menu.right_click);
-
             /* Info Bar */
             info_bar = new Gtk.InfoBar ();
             

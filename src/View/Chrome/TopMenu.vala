@@ -36,8 +36,7 @@ namespace Marlin.View.Chrome
         {
             win = window;
             if (Preferences.settings.get_boolean("toolbar-primary-css-style"))
-	            get_style_context().add_class ("primary-toolbar");
-            //set_icon_size (Gtk.IconSize.SMALL_TOOLBAR);
+	            get_style_context().add_class (Gtk.STYLE_CLASS_PRIMARY_TOOLBAR);
 
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             toolbar_menu = (Gtk.Menu) win.ui.get_widget("/ToolbarMenu");
@@ -45,31 +44,21 @@ namespace Marlin.View.Chrome
             app_menu = new Granite.Widgets.AppMenu (compact_menu);
             setup_items();
             show();
-            
-            button_press_event.connect(right_click);
         }
-        
-        public bool right_click(Gdk.EventButton event)
-        {
-            if(event.button == 3)
-            {
-                right_click_extern(event);
-                return true;
-            }
-            return false;
-        }
-        
-        public void right_click_extern(Gdk.EventButton event)
-        {
-            Eel.pop_up_context_menu(toolbar_menu, 0, 0, event);
+
+        public override bool popup_context_menu (int x, int y, int button) {
+            toolbar_menu.popup (null, null, null, button, Gtk.get_current_event_time ());
+            return true;
         }
 
         public void setup_items ()
         {
             if (compact_menu != null)
                 compact_menu.ref();
+
             @foreach (toolitems_destroy);
             string[]? toolbar_items = Preferences.settings.get_strv("toolbar-items");
+
             foreach (string name in toolbar_items) {
                 if (name == "Separator")
                 {
@@ -82,6 +71,9 @@ namespace Marlin.View.Chrome
                 if (name == "LocationEntry")
                 {
                     location_bar = new LocationBar (win.ui, win);
+                    location_bar.halign = Gtk.Align.FILL;
+                    location_bar.valign = Gtk.Align.FILL;
+                    location_bar.margin_left = location_bar.margin_right = 6;
 
                     /* init the path if we got a curent tab with a valid slot
                        and a valid directory loaded */
@@ -94,10 +86,6 @@ namespace Marlin.View.Chrome
                     location_bar.escape.connect( () => { ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); });
                     location_bar.activate.connect(() => { win.current_tab.path_changed(File.new_for_commandline_arg(location_bar.path)); });
                     location_bar.activate_alternate.connect((a) => { win.add_tab(File.new_for_commandline_arg(a)); });
-                    if (get_icon_size () == Gtk.IconSize.LARGE_TOOLBAR) {
-                        location_bar.margin_top = 6;
-                        location_bar.margin_bottom = 6;
-                    } 
                     location_bar.show_all();
                     insert(location_bar, -1);
                     continue;
@@ -106,6 +94,7 @@ namespace Marlin.View.Chrome
                 {
                     view_switcher = new ViewSwitcher (win.main_actions);
                     view_switcher.show_all();
+                    view_switcher.margin_left = view_switcher.margin_right = 6;
                     insert(view_switcher, -1);
                     continue;
                 }
@@ -124,16 +113,25 @@ namespace Marlin.View.Chrome
                         win.button_back = new Granite.Widgets.ToolButtonWithMenu.from_action(main_action);
                         win.button_back.show_all();
                         insert(win.button_back, -1);
-                    }else{
+                    } else{
                         item = (ToolItem) main_action.create_tool_item();
                         insert(item, -1);
                     }
-
                 }
             }
 
-            insert(app_menu, -1);
-            app_menu.right_click.connect(right_click_extern);
+            insert (app_menu, -1);
+            app_menu.right_click.connect (on_item_popup_menu);
+        }
+
+        private void on_item_popup_menu () {
+            Gdk.Event? event = Gtk.get_current_event ();
+            Gdk.EventButton? button_event = event.button;
+
+            int button = -1;
+            if (button_event != null)
+                button = (int) button_event.button;
+            popup_context_menu (0, 0, button);
         }
 
         private void toolitems_destroy (Gtk.Widget? w) {

@@ -76,9 +76,10 @@ namespace Marlin.View.Chrome
         public ViewSwitcher (Gtk.ActionGroup action_group)
         {
             main_actions = action_group;
-            margin = 3;
 
             switcher = new ModeButton ();
+            switcher.halign = switcher.valign = Gtk.Align.CENTER;
+
             Varka.IconFactory icon_factory = Varka.IconFactory.get_default ();
             Gtk.StyleContext style = get_style_context ();
 
