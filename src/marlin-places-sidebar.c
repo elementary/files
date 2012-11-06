@@ -81,6 +81,8 @@ static void  check_unmount_and_eject                   (GMount *mount,
 static void bookmarks_check_popup_sensitivity          (MarlinPlacesSidebar *sidebar);
 static void expander_init_pref_state                   (GtkTreeView *tree_view);
 
+static gboolean category_at_path                       (GtkTreePath *path);
+
 /* Identifiers for target types */
 enum {
     GTK_TREE_MODEL_ROW,
@@ -2582,7 +2584,7 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
             /* If the user clicked over a category, toggle expansion. The entire row
              * is a valid area.
              */
-            if (path != NULL && gtk_tree_path_get_depth (path) == 1) {
+            if (path != NULL && category_at_path (path)) {
                 if (gtk_tree_view_row_expanded (tree_view, path))
                     gtk_tree_view_collapse_row (tree_view, path);
                 else
@@ -2900,6 +2902,19 @@ category_row_collapsed_event_cb (GtkTreeView             *tree,
     expander_update_pref_state (type, FALSE);
 }
 
+/**
+ * Checks whether a tree path points to a main category.
+ */
+static gboolean
+category_at_path (GtkTreePath *path)
+{
+     /* We determine whether an item is a category based on its level indentation.
+      * According to the current implementation, a level of 1 (i.e. root) necessarily
+      * means that the item is a category.
+      */
+    return gtk_tree_path_get_depth (path) == 1;
+}
+
 static gboolean
 tree_selection_func (GtkTreeSelection *selection,
                      GtkTreeModel *model,
@@ -2907,12 +2922,8 @@ tree_selection_func (GtkTreeSelection *selection,
                      gboolean path_currently_selected,
                      MarlinPlacesSidebar *sidebar)
 {
-     /* Don't allow categories to be selected. We determine whether an item
-      * is a category based on its level indentation. According to the current
-      * implementation, a level of 1 (i.e. root) necessarily means that the item
-      * is a category.
-      */
-    return gtk_tree_path_get_depth (path) > 1;
+     /* Don't allow categories to be selected. */
+     return !category_at_path (path);
 }
 
 static void

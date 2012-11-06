@@ -193,7 +193,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         }
         update_header_desc ();
     }
-
+/*
     private void selection_size_cancel () {
         foreach (var d in deep_count_directories) {
             mutex.lock ();
@@ -203,7 +203,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         }
         deep_count_directories = null;
     }
-
+*/
     private void add_header_box (Box vbox, Box content) {
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
         var file_img = new Image.from_pixbuf (file_pix);
