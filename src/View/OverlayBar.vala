@@ -19,7 +19,19 @@
 using Gtk;
 
 namespace Marlin.View {
+
     public class OverlayBar : Gtk.EventBox {
+
+        private const string FALLBACK_THEME = """
+       .files-overlay-bar {
+           background-color: @bg_color;
+           border-radius: 3px 3px 0 0;
+           padding: 3px 6px 3px 6px;
+           margin: 1px;
+           border-style: solid;
+           border-width: 1px;
+           border-color: darker (@bg_color);
+       }""";
 
         public Label status;
         private Marlin.View.Window window;
@@ -49,15 +61,13 @@ namespace Marlin.View {
             set_halign (Align.END);
             set_valign (Align.END);
 
-            //cancellable = new Cancellable ();
+            set_default_style ();
 
             var ctx = get_style_context ();
-            ctx.changed.connect (queue_resize);
-            ctx.add_class ("files-overlay-bar");
+            ctx.changed.connect (update_spacing);
+            ctx.changed.connect_after (queue_resize);
 
-            set_default_style ();
             update_spacing ();
-            get_style_context ().changed.connect (update_spacing);
 
             window.selection_changed.connect (update);
             window.item_hovered.connect (update_hovered);
@@ -78,15 +88,16 @@ namespace Marlin.View {
             var ctx = get_style_context ();
             render_background (ctx, cr, 0, 0, get_allocated_width (), get_allocated_height ());
             render_frame (ctx, cr, 0, 0, get_allocated_width (), get_allocated_height ());
-
             return base.draw (cr);
         }
 
-        public override Gtk.SizeRequestMode get_request_mode () {
+        public override Gtk.SizeRequestMode get_request_mode ()
+        {
             return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
         }
 
-        public override void get_preferred_width (out int minimum_width, out int natural_width) {
+        public override void get_preferred_width (out int minimum_width, out int natural_width)
+        {
             Gtk.Requisition label_min_size, label_natural_size;
             status.get_preferred_size (out label_min_size, out label_natural_size);
 
@@ -100,7 +111,8 @@ namespace Marlin.View {
         }
 
         public override void get_preferred_height_for_width (int width, out int minimum_height,
-                                                             out int natural_height) {
+                                                             out int natural_height)
+        {
             Gtk.Requisition label_min_size, label_natural_size;
             status.get_preferred_size (out label_min_size, out label_natural_size);
 
@@ -113,7 +125,8 @@ namespace Marlin.View {
             natural_height = extra_allocation + label_natural_size.height;
         }
 
-        private void update_spacing () {
+        private void update_spacing ()
+        {
             var ctx = get_style_context ();
             var state = ctx.get_state ();
 
@@ -132,23 +145,8 @@ namespace Marlin.View {
 
         private void set_default_style ()
         {
-            var provider = new Gtk.CssProvider();
-            try {
-                provider.load_from_data (""".files-overlay-bar {
-                                         background-color: @info_bg_color;
-                                         border-radius: 3px 3px 0 0;
-                                         padding: 3px;
-                                         margin: 0 0 1px 0;
-                                         border-style: solid;
-                                         border-width: 1px;
-                                         border-color: darker (@info_bg_color);
-                                         }""", -1);
-
-                get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK);
-            } catch (Error e) {
-                stderr.printf("Error style context add_provider: %s\n", e.message);
-            }
-
+            const int priority = Gtk.STYLE_PROVIDER_PRIORITY_THEME;
+            Granite.Widgets.Utils.set_theming (this, FALLBACK_THEME, "files-overlay-bar", priority);
         }
 
         private bool enter_notify_callback (Gdk.EventCrossing event)
