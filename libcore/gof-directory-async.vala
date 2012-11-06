@@ -17,8 +17,6 @@
  * Author: ammonkey <am.monkeyd@gmail.com>
  */
 
-using GLib;
-
 public HashTable<GLib.File,GOF.Directory.Async> directory_cache;
 //extern HashTable<GLib.File,GOF.Directory.Async> directory_cache;
 /*  Mutex mutex = new Mutex ();*/
@@ -89,7 +87,7 @@ public class GOF.Directory.Async : Object
         //warning ("dir ref_count %u", this.ref_count);
         this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
         this.unref ();
-        warning ("dir %s ref_count %u", this.file.uri, this.ref_count);
+        debug ("dir %s ref_count %u", this.file.uri, this.ref_count);
         file_hash = new HashTable<GLib.File,GOF.File> (GLib.file_hash, GLib.file_equal);
 
         uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
@@ -109,7 +107,7 @@ public class GOF.Directory.Async : Object
 
         if (is_last) {
             Async dir = (Async) object;
-            warning ("Async toggle_ref_notify %s", dir.file.uri);
+            debug ("Async toggle_ref_notify %s", dir.file.uri);
          
             if (!dir.removed_from_cache) 
                 dir.remove_dir_from_cache ();
