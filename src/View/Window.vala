@@ -904,11 +904,8 @@ namespace Marlin.View {
             { "view-as-detailed-list", null,
               N_("List"), "<control>2", null,
               ViewMode.LIST },
-            { "view-as-compact", null,
-              N_("Compact"), "<control>3", null,
-              ViewMode.COMPACT },
             { "view-as-columns", null,
-              N_("Columns"), "<control>4", null,
+              N_("Columns"), "<control>3", null,
               ViewMode.MILLER }
         };
 

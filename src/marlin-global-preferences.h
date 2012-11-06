@@ -4,7 +4,6 @@
 GSettings  *settings;
 GSettings  *marlin_icon_view_settings;
 GSettings  *marlin_list_view_settings;
-GSettings  *marlin_compact_view_settings;
 GSettings  *marlin_column_view_settings;
 
 #define MARLIN_PREFERENCES_RGBA_COLORMAP                    "rgba-colormap"

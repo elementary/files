@@ -109,7 +109,6 @@ add_executable(pantheon-files
     fm-abstract-icon-view.c
     fm-icon-view.c
     fm-list-view.c
-    fm-compact-view.c
     fm-columns-view.c
     marlin-toolbar-editor.c
     marlin-connect-server-dialog.c

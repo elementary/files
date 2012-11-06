@@ -74,7 +74,6 @@ void            gof_window_columns_add_location (GOFWindowSlot *slot, GFile *loc
 
 void            gof_window_slot_make_icon_view (GOFWindowSlot *slot);
 void            gof_window_slot_make_list_view (GOFWindowSlot *slot);
-void            gof_window_slot_make_compact_view (GOFWindowSlot *slot);
 void            gof_window_slot_make_column_view (GOFWindowSlot *slot);
 
 void            gof_window_slot_active (GOFWindowSlot *slot);

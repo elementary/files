@@ -42,13 +42,9 @@ namespace Marlin.View.Chrome
                     target = list;
                     active_index = 1;
                     break;
-                case ViewMode.COMPACT:
-                    target = compact;
-                    active_index = 2;
-                    break;
                 case ViewMode.MILLER:
                     target = miller;
-                    active_index = 3;
+                    active_index = 2;
                     break;
                 default:
                     target = icon;
@@ -70,7 +66,6 @@ namespace Marlin.View.Chrome
 
         private Image icon;
         private Image list;
-        private Image compact;
         private Image miller;
 
         public ViewSwitcher (Gtk.ActionGroup action_group)
@@ -89,9 +84,6 @@ namespace Marlin.View.Chrome
             list = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-symbolic", 16));
             list.set_tooltip_text (_("View as list"));
             switcher.append(list);
-            //compact = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-compact-symbolic", 16));
-            //compact.set_tooltip_text (_("View as compact list"));
-            //switcher.append(compact);
             miller = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-column-symbolic", 16));
             miller.set_tooltip_text(_("View as column"));
             switcher.append(miller);
@@ -105,9 +97,6 @@ namespace Marlin.View.Chrome
                 if (mode == list){
                     action = main_actions.get_action("view-as-detailed-list");
                     action.activate();
-                } else if (mode == compact){
-                    action = main_actions.get_action("view-as-compact");
-                    action.activate();
                 } else if (mode == miller){
                     action = main_actions.get_action("view-as-columns");
                     action.activate();
@@ -115,7 +104,6 @@ namespace Marlin.View.Chrome
                     action = main_actions.get_action("view-as-icons");
                     action.activate();
                 }
-                
             });
 
             switcher.sensitive = true;

@@ -231,9 +231,6 @@ namespace Marlin.View {
             case ViewMode.LIST:
                 slot.make_list_view();
                 break;
-            case ViewMode.COMPACT:
-                slot.make_compact_view();
-                break;
             case ViewMode.MILLER:
                 mwcol.make_view();
                 break;
