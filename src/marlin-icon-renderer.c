@@ -438,7 +438,9 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     GtkStateFlags state;
     MarlinIconInfo *nicon;
 
-    g_return_if_fail (priv->file && priv->pixbuf && GDK_IS_PIXBUF (priv->pixbuf));
+    g_return_if_fail (priv->file);
+    g_return_if_fail (priv->pixbuf);
+    g_return_if_fail (GDK_IS_PIXBUF (priv->pixbuf));
     /*if (!(priv->file && priv->pixbuf))
       return;*/
 
