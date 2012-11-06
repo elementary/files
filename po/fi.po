@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-10-14 09:33+0000\n"
+"PO-Revision-Date: 2012-11-04 13:51+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-10-15 05:31+0000\n"
-"X-Generator: Launchpad (build 16137)\n"
+"X-Launchpad-Export-Date: 2012-11-05 04:56+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -406,7 +406,7 @@ msgstr "_Tietoja"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:849
 msgid "Display credits"
-msgstr ""
+msgstr "Näytä tekijätiedot"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:852
 msgid "Report a Problem..."
@@ -1303,7 +1303,7 @@ msgstr "Palauta \"%s\" roskakorista"
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Luo linkit %d kohteeseen"
 
 #: /home/pqp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
