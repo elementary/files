@@ -44,7 +44,7 @@ namespace Marlin.View {
             char* ptr_arr[4];
             ptr_arr[0] = gof.uri;
             ptr_arr[1] = gof.get_ftype ();
-            ptr_arr[2] = gof.info.get_attribute_uint64 (FILE_ATTRIBUTE_TIME_MODIFIED).to_string ();
+            ptr_arr[2] = gof.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED).to_string ();
             ptr_arr[3] = gof.color.to_string ();
 
             return new Variant.strv ((string[]) ptr_arr);

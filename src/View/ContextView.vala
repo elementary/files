@@ -222,8 +222,8 @@ namespace Marlin.View {
             /* fixing a minimum and maximum value */
             if (orientation == Orientation.VERTICAL) {
                 /* add a little 16px padding for normal icons */
-                if (last_gof.info.has_attribute (FILE_ATTRIBUTE_THUMBNAIL_PATH) &&
-                    last_gof.info.get_attribute_byte_string (FILE_ATTRIBUTE_THUMBNAIL_PATH) != null) {
+                if (last_gof.info.has_attribute (FileAttribute.THUMBNAIL_PATH) &&
+                    last_gof.info.get_attribute_byte_string (FileAttribute.THUMBNAIL_PATH) != null) {
                     icon_size_req = alloc.width.clamp (height, 256);
                 } else {
                     icon_size_req = alloc.width.clamp (height, width-16);
@@ -343,7 +343,7 @@ namespace Marlin.View {
                 info.add(new Pair<string, string>(_("Size") + (": "), last_gof.format_size));
             /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
             info.add(new Pair<string, string>(_("Modified") + (": "), last_gof.formated_modified));
-            info.add(new Pair<string, string>(_("Owner") + (": "), last_gof.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER_REAL)));
+            info.add(new Pair<string, string>(_("Owner") + (": "), last_gof.info.get_attribute_string(FileAttribute.OWNER_USER_REAL)));
 
             label.label = last_gof.info.get_name ();
 

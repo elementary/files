@@ -83,6 +83,7 @@ GENERATE_HEADER
 OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
     --vapidir=${CMAKE_BINARY_DIR}/libcore/
+    --target-glib=2.32 # Needed for new thread API
     --thread)
 add_executable(pantheon-files
     eel-editable-label.c

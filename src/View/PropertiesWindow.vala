@@ -159,14 +159,14 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         string header_desc_str;
 
         //header_desc_str = Eel.format_size (total_size);
-        header_desc_str = format_size_for_display ((int64) total_size);
+        header_desc_str = format_size ((int64) total_size);
         if (ftype != null) {
             header_desc_str += ", " + goffile.formated_type;
         }
         header_desc.set_markup (span_weight_light(header_desc_str));
     }
 
-    private Mutex mutex = new Mutex ();
+    private Mutex mutex;
     private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
 
     private void selection_size_update () {
@@ -298,10 +298,10 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         foreach (GOF.File gof in files)
         {
             if (loc == null && gof != null) {
-                loc = get_parent_loc (gof.info.get_attribute_byte_string (FILE_ATTRIBUTE_TRASH_ORIG_PATH));
+                loc = get_parent_loc (gof.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH));
                 continue;
             }
-            if (!loc.equal (get_parent_loc (gof.info.get_attribute_byte_string (FILE_ATTRIBUTE_TRASH_ORIG_PATH))))
+            if (!loc.equal (get_parent_loc (gof.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH))))
                 return null;
         }
 
@@ -318,12 +318,12 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
 
         /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
         if (count == 1) {
-            var time_created = file.get_formated_time (FILE_ATTRIBUTE_TIME_CREATED);
+            var time_created = file.get_formated_time (FileAttribute.TIME_CREATED);
             if (time_created != null)
                 info.add(new Pair<string, string>(_("Created") + (": "), time_created));
             if (file.formated_modified != null)
                 info.add(new Pair<string, string>(_("Modified") + (": "), file.formated_modified));
-            var time_last_access = file.get_formated_time (FILE_ATTRIBUTE_TIME_ACCESS);
+            var time_last_access = file.get_formated_time (FileAttribute.TIME_ACCESS);
             if (time_last_access != null)
                 info.add(new Pair<string, string>(_("Last Access") + (": "), time_last_access));
             /* print deletion date if trashed file */
@@ -353,10 +353,10 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
             info.add(new Pair<string, string>(_("Target") + (": "), file.info.get_symlink_target()));
 
         /* print orig location of trashed files */
-        if (file.is_trashed() && file.info.get_attribute_byte_string (FILE_ATTRIBUTE_TRASH_ORIG_PATH) != null) {
+        if (file.is_trashed() && file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
             var trash_orig_loc = get_common_trash_orig();
             if (trash_orig_loc != null)
-                info.add(new Pair<string, string>(_("Origin Location") + (": "), "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FILE_ATTRIBUTE_TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>"));
+                info.add(new Pair<string, string>(_("Origin Location") + (": "), "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>"));
         }
     }
 
@@ -436,10 +436,10 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         if (should_show_device_usage ()) {
             try {
                 var info = goffile.get_target_location ().query_filesystem_info ("filesystem::*");
-                if (info.has_attribute (FILE_ATTRIBUTE_FILESYSTEM_SIZE) &&
-                    info.has_attribute (FILE_ATTRIBUTE_FILESYSTEM_FREE)) {
-                    uint64 fs_capacity = info.get_attribute_uint64 (FILE_ATTRIBUTE_FILESYSTEM_SIZE);
-                    uint64 fs_free = info.get_attribute_uint64 (FILE_ATTRIBUTE_FILESYSTEM_FREE);
+                if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
+                    info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
+                    uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
+                    uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
 
                     n++;
                     
@@ -458,7 +458,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
                     double used =  1.0 - (double) fs_free / (double) fs_capacity;
                     progressbar.set_fraction (used);
                     progressbar.set_show_text (true);
-                    progressbar.set_text (_("%s free of %s (%d%% used)").printf (format_size_for_display ((int64) fs_free), format_size_for_display ((int64) fs_capacity), (int) (used * 100)));
+                    progressbar.set_text (_("%s free of %s (%d%% used)").printf (format_size ((int64) fs_free), format_size ((int64) fs_capacity), (int) (used * 100)));
                     information.attach_next_to (progressbar, key_label, Gtk.PositionType.RIGHT, 3, 1);
                 }
             } catch (GLib.Error e) {
@@ -742,7 +742,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
                         if (n<1)
                             l_perm.set_text(goffile.get_permissions_as_string());
                         /* real update permissions */
-                        file_set_attributes (gof, FILE_ATTRIBUTE_UNIX_MODE, perm, cancellable);
+                        file_set_attributes (gof, FileAttribute.UNIX_MODE, perm, cancellable);
                         n++;
                     } else {
                         //TODO add a list of permissions set errors in the property dialog.
@@ -781,7 +781,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
             return;
 
         foreach (GOF.File gof in files)
-            file_set_attributes (gof, FILE_ATTRIBUTE_UNIX_UID, uid);
+            file_set_attributes (gof, FileAttribute.UNIX_UID, uid);
     }
 
     private void combo_group_changed (Gtk.ComboBox combo) {
@@ -815,7 +815,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
             return;
 
         foreach (GOF.File gof in files)
-            file_set_attributes (gof, FILE_ATTRIBUTE_UNIX_GID, gid);
+            file_set_attributes (gof, FileAttribute.UNIX_GID, gid);
     }
 
     private void construct_perm_panel (Box box) {
@@ -915,7 +915,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
                 return null;
         }
 
-        return goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER);
+        return goffile.info.get_attribute_string(FileAttribute.OWNER_USER);
     }
 
     private bool selection_can_set_group () {
@@ -941,7 +941,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
                 return null;
         }
 
-        return goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_GROUP);
+        return goffile.info.get_attribute_string(FileAttribute.OWNER_GROUP);
     }
 
     private Gtk.Widget create_owner_choice() {
@@ -988,7 +988,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
 
             choice = (Gtk.Widget) combo;
         } else {
-            //choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_USER));
+            //choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FileAttribute.OWNER_USER));
             string? common_owner = get_common_owner ();
             if (common_owner == null)
                 common_owner = "--";
@@ -1045,7 +1045,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
 
             choice = (Gtk.Widget) combo;
         } else {
-            //choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FILE_ATTRIBUTE_OWNER_GROUP));
+            //choice = (Gtk.Widget) new Gtk.Label (goffile.info.get_attribute_string(FileAttribute.OWNER_GROUP));
             string? common_group = get_common_group ();
             if (common_group == null)
                 common_group = "--";

@@ -588,11 +588,10 @@ public class GOF.Directory.Async : Object
         try {
             icon_size = size;
             thumbs_stop = false;
-            //unowned Thread<void*> th = Thread.create<void*> (load_thumbnails_func, false);
             this.ref ();
-            Thread.create<void*> (load_thumbnails_func, false);
-        } catch (ThreadError e) {
-            stderr.printf ("%s\n", e.message);
+            new Thread<void*>.try ("load_thumbnails_func", load_thumbnails_func);
+        } catch (Error e) {
+            critical ("Could not start loading thumbnails: %s", e.message);
             return;
         }
     }

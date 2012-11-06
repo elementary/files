@@ -86,8 +86,8 @@ namespace Marlin.View {
         public override bool draw (Cairo.Context cr)
         {
             var ctx = get_style_context ();
-            render_background (ctx, cr, 0, 0, get_allocated_width (), get_allocated_height ());
-            render_frame (ctx, cr, 0, 0, get_allocated_width (), get_allocated_height ());
+            ctx.render_background (cr, 0, 0, get_allocated_width (), get_allocated_height ());
+            ctx.render_frame (cr, 0, 0, get_allocated_width (), get_allocated_height ());
             return base.draw (cr);
         }
 
@@ -228,9 +228,9 @@ namespace Marlin.View {
                     /*if (sub_folders_count > 0)
                       str += " (containing %u items)".printf (sub_count);
                       else
-                      str += " (%s)".printf (format_size_for_display ((int64) sub_files_size));*/
+                      str += " (%s)".printf (format_size ((int64) sub_files_size));*/
                     if (files_count > 0)
-                        str += " and %u other items (%s) selected".printf (files_count, format_size_for_display ((int64) files_size));
+                        str += " and %u other items (%s) selected".printf (files_count, format_size ((int64) files_size));
                     else
                         str += " selected";
                 } else if (folders_count == 1) {
@@ -238,13 +238,13 @@ namespace Marlin.View {
                     /*if (sub_folders_count > 0)
                       str += " (containing %u items)".printf (sub_count);
                       else
-                      str += " (%s)".printf (format_size_for_display ((int64) sub_files_size));*/
+                      str += " (%s)".printf (format_size ((int64) sub_files_size));*/
                     if (files_count > 0)
-                        str += " and %u other items (%s) selected".printf (files_count, format_size_for_display ((int64) files_size));
+                        str += " and %u other items (%s) selected".printf (files_count, format_size ((int64) files_size));
                     else
                         str += " selected";
                 } else {
-                    str = "%u items selected (%s)".printf (count, format_size_for_display ((int64) files_size));
+                    str = "%u items selected (%s)".printf (count, format_size ((int64) files_size));
                 }
 
                 status.set_label (str);

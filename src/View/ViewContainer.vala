@@ -146,7 +146,7 @@ namespace Marlin.View {
             else if (slot_path == "/")
                 tab_name = _("File System");
             else
-                tab_name = aslot.directory.file.info.get_attribute_string(FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
+                tab_name = aslot.directory.file.info.get_attribute_string(FileAttribute.STANDARD_DISPLAY_NAME);
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");

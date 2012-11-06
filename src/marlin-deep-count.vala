@@ -36,13 +36,13 @@ public class Marlin.DeepCount : Object
     public DeepCount (File _file)
     {
         file = _file;
-        deep_count_attrs = FILE_ATTRIBUTE_STANDARD_NAME + "," + FILE_ATTRIBUTE_STANDARD_TYPE + "," + FILE_ATTRIBUTE_STANDARD_SIZE;
+        deep_count_attrs = FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE + "," + FileAttribute.STANDARD_SIZE;
         cancellable = new Cancellable ();
 
         process_directory (file);
     }
 
-    private Mutex mutex = new Mutex ();
+    private Mutex mutex;
 
     private async void process_directory (File directory)
     {

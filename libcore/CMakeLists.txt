@@ -30,6 +30,7 @@ PACKAGES
     gmodule-2.0
 OPTIONS
     --thread
+    --target-glib=2.32 # Needed for new thread API
 GENERATE_VAPI
     marlincore
 GENERATE_HEADER
