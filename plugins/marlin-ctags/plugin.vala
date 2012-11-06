@@ -144,7 +144,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
         char* ptr_arr[4];
         ptr_arr[0] = gof.uri;
         ptr_arr[1] = gof.get_ftype ();
-        ptr_arr[2] = gof.info.get_attribute_uint64 (FILE_ATTRIBUTE_TIME_MODIFIED).to_string ();
+        ptr_arr[2] = gof.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED).to_string ();
         ptr_arr[3] = gof.color.to_string ();
 
         return new Variant.strv ((string[]) ptr_arr);
@@ -179,7 +179,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
             /* query info the whole dir, we can clear the whole unknowns queue */
             unknowns.clear ();
             try {
-                var e = yield directory.location.enumerate_children_async (FILE_ATTRIBUTE_STANDARD_NAME+","+ FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE, 0, 0, cancellable);
+                var e = yield directory.location.enumerate_children_async (FileAttribute.STANDARD_NAME+","+ FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
                 while (true) {
                     var files = yield e.next_files_async (200, 0, cancellable);
                     if (files == null)
@@ -200,8 +200,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
             while ((gof = unknowns.pop_head ()) != null) {
                 //warning ("--- unknown %s", gof.name);
                 try {
-                    //var info = gof.location.query_info (FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE, 0);
-                    var info = yield gof.location.query_info_async (FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE, 0, 0, cancellable);
+                    //var info = gof.location.query_info (FileAttribute.STANDARD_CONTENT_TYPE, 0);
+                    var info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
                     warning ("--- unknown query_info %s", gof.info.get_name ());
                     add_to_knowns_queue (gof, info);
                 } catch (Error err2) {
@@ -254,13 +254,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base
 
             if (row_iter.n_children () == 3) {
                 uint64 modified = int64.parse (row_iter.next_value ().get_string ());
-                //message ("%s %d %d", file.name, (int) file.info.get_attribute_uint64 (FILE_ATTRIBUTE_TIME_MODIFIED), (int) modified);
+                //message ("%s %d %d", file.name, (int) file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED), (int) modified);
                 unowned string type = row_iter.next_value ().get_string ();
                 file.color = int.parse (row_iter.next_value ().get_string ());
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
                 if (is_user_dir &&
-                    file.info.get_attribute_uint64 (FILE_ATTRIBUTE_TIME_MODIFIED) > modified) {
+                    file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified) {
                     add_to_unknowns_queue (file);
                     return;
                 }
