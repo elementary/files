@@ -43,6 +43,7 @@
 #include "marlin-dnd.h"
 #include "marlincore.h"
 
+#define ROOT_INDENTATION_XPAD 2
 #define EJECT_BUTTON_XPAD 4
 #define TEXT_XPAD 5
 #define ICON_XPAD 6
@@ -2556,15 +2557,18 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
         return TRUE;
     }
 
+    GtkTreeView *tree_view;
+    tree_view = GTK_TREE_VIEW (widget);
+    g_assert (tree_view == sidebar->tree_view);
+
+    if (event->window != gtk_tree_view_get_bin_window (tree_view))
+        return TRUE;
+
     if (event->button == 3) {
         bookmarks_popup_menu (sidebar, event);
-    } else if (event->button == 2) {
+    } else {
         GtkTreeModel *model;
         GtkTreePath *path;
-        GtkTreeView *tree_view;
-
-        tree_view = GTK_TREE_VIEW (widget);
-        g_assert (tree_view == sidebar->tree_view);
 
         model = gtk_tree_view_get_model (tree_view);
 
@@ -2572,15 +2576,34 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
                                        &path, NULL, NULL, NULL);
         //printf ("selected path %s\n", gtk_tree_path_to_string (path));
         //printf ("%s open_selected_bookmark ...\n", G_STRFUNC);
-        open_selected_bookmark (sidebar, model, path,
-                                event->state & GDK_CONTROL_MASK ?
-                                MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW :
-                                MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
 
-        if (path != NULL) {
-            gtk_tree_path_free (path);
-            return TRUE;
+        switch (event->button) {
+        case GDK_BUTTON_PRIMARY:
+            /* If the user clicked over a category, toggle expansion. The entire row
+             * is a valid area.
+             */
+            if (path != NULL && gtk_tree_path_get_depth (path) == 1) {
+                if (gtk_tree_view_row_expanded (tree_view, path))
+                    gtk_tree_view_collapse_row (tree_view, path);
+                else
+                    gtk_tree_view_expand_row (tree_view, path, FALSE);
+
+                gtk_tree_path_free (path);
+                return TRUE;
+            }
+
+            break;
+
+        case GDK_BUTTON_SECONDARY:
+            open_selected_bookmark (sidebar, model, path,
+                                    event->state & GDK_CONTROL_MASK ?
+                                    MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW :
+                                    MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+            break;
         }
+
+        if (path != NULL)
+            gtk_tree_path_free (path);
     }
 
     return FALSE;
@@ -2748,6 +2771,20 @@ icon_cell_data_func (GtkTreeViewColumn *tree_column,
 }
 
 static void
+root_indent_cell_data_func (GtkTreeViewColumn *tree_column,
+                            GtkCellRenderer *cell,
+                            GtkTreeModel *model,
+                            GtkTreeIter *iter,
+                            MarlinPlacesSidebar *sidebar)
+{
+    g_object_set (cell,
+                  "visible", TRUE,
+                  "xpad", ROOT_INDENTATION_XPAD,
+                  NULL);
+
+}
+
+static void
 indent_cell_data_func (GtkTreeViewColumn *tree_column,
                        GtkCellRenderer *cell,
                        GtkTreeModel *model,
@@ -2863,6 +2900,21 @@ category_row_collapsed_event_cb (GtkTreeView             *tree,
     expander_update_pref_state (type, FALSE);
 }
 
+static gboolean
+tree_selection_func (GtkTreeSelection *selection,
+                     GtkTreeModel *model,
+                     GtkTreePath *path,
+                     gboolean path_currently_selected,
+                     MarlinPlacesSidebar *sidebar)
+{
+     /* Don't allow categories to be selected. We determine whether an item
+      * is a category based on its level indentation. According to the current
+      * implementation, a level of 1 (i.e. root) necessarily means that the item
+      * is a category.
+      */
+    return gtk_tree_path_get_depth (path) > 1;
+}
+
 static void
 icon_theme_changed_callback (GtkIconTheme *icon_theme,
                              MarlinPlacesSidebar *sidebar)
@@ -2894,6 +2946,14 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     gtk_tree_view_set_headers_visible (tree_view, FALSE);
 
     col = GTK_TREE_VIEW_COLUMN (gtk_tree_view_column_new ());
+
+    /* Root-level indentation */
+    cell = gtk_cell_renderer_text_new ();
+    gtk_tree_view_column_pack_start (col, cell, FALSE);
+    gtk_tree_view_column_set_cell_data_func (col, cell,
+                                             (GtkTreeCellDataFunc) root_indent_cell_data_func,
+                                             sidebar,
+                                             NULL);
 
     cell = gtk_cell_renderer_text_new ();
     sidebar->indent_renderer = cell;
@@ -3001,7 +3061,8 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
 
     gtk_tree_view_set_search_column (tree_view, PLACES_SIDEBAR_COLUMN_NAME);
     selection = gtk_tree_view_get_selection (tree_view);
-    gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
+    gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
+    gtk_tree_selection_set_select_function (selection, tree_selection_func, sidebar, NULL);
 
     g_signal_connect_object (tree_view, "row_activated", 
                              G_CALLBACK (row_activated_callback), sidebar, 0);
