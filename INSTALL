@@ -17,3 +17,7 @@ Options:
 
     Different prefix:
         cmake .. -DCMAKE_INSTALL_PREFIX=/opt
+    
+    Note that if you want to install libcore and libwidgets only
+    you have to use the following command:
+        cmake .. -DLIB_ONLY=true
