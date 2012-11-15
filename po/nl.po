@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-10-12 17:28+0000\n"
-"Last-Translator: Emiel Beinema <Unknown>\n"
+"PO-Revision-Date: 2012-11-14 19:39+0000\n"
+"Last-Translator: Thomas Berends <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-10-14 04:51+0000\n"
-"X-Generator: Launchpad (build 16137)\n"
+"X-Launchpad-Export-Date: 2012-11-15 05:18+0000\n"
+"X-Generator: Launchpad (build 16265)\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -25,11 +25,11 @@ msgstr "Files Voorkeuren"
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:47
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:116
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "Extensions"
-msgstr "Extensies"
+msgstr "Uitbreidingen"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:209
 msgid "Single click to open:"
@@ -37,17 +37,17 @@ msgstr "Enkel klikken om te openen:"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:217
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Muis auto-selectie"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "Traag"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "Snel"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
@@ -59,7 +59,7 @@ msgstr "iso"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:257
 msgid "locale"
-msgstr "lokalisatie"
+msgstr "lokaal"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:258
 msgid "informal"
@@ -112,7 +112,7 @@ msgstr "Eigenschappen"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
-msgstr ""
+msgstr "Meer"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:136
 msgid "Preview"
@@ -132,11 +132,11 @@ msgstr "Verwijderd"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:339
 msgid "MimeType"
-msgstr "Mimetype"
+msgstr "Bestandstype"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:347
 msgid "MimeTypes"
-msgstr ""
+msgstr "Bestandstypes"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:351
 msgid "Location"
@@ -148,36 +148,36 @@ msgstr "Oorspronkelijke lokatie"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
-msgstr ""
+msgstr "Info:"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
-msgstr ""
+msgstr "Andere toepassing…"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:428
 msgid "Open with:"
-msgstr ""
+msgstr "Openen met:"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:449
 msgid "Usage:"
-msgstr ""
+msgstr "Gebruik:"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
-msgstr ""
+msgstr "Apparaatgebruik:"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s vrij van %s (%d%% gebruikt)"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
-msgstr "Lees"
+msgstr "Lezen"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:605
 msgid "Write"
-msgstr "Schrijf"
+msgstr "Schrijven"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:610
 msgid "Execute"
@@ -194,7 +194,7 @@ msgstr "Iedereen"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Selecteer een toepassing om   te openen "
 
 #: /home/pqp/pantheon-files/po/../src/View/ViewContainer.vala:141
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:324
@@ -208,20 +208,20 @@ msgstr "Bestandssysteem"
 
 #: /home/pqp/pantheon-files/po/../src/View/ViewContainer.vala:148
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(als beheerder)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:146
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Files is niet je standaard bestandsbeheerder."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:152
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3383
 msgid "Set as default"
-msgstr "Stel als standaard in"
+msgstr "Instellen als standaard"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:157
 msgid "Ignore"
-msgstr "Negeer"
+msgstr "Negeren"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:489
 msgid "Undo"
@@ -268,7 +268,7 @@ msgstr "Nieuw _venster"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:762
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Open een nieuw Files-venster voor de weergegeven locatie"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:765
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:8
@@ -277,7 +277,7 @@ msgstr "Nieuw _tabblad"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:766
 msgid "Open another tab for the displayed location"
-msgstr "Nog een tabblad openen voor de weergegeven locatie"
+msgstr "Open een nieuwe tab voor de weergegeven locatie"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:770
 msgid "_Close"
@@ -293,51 +293,51 @@ msgstr "Voorkeuren"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:775
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Files voorkeuren aanpassen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:780
 msgid "_Undo"
-msgstr ""
+msgstr "_Ongedaan maken"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:783
 msgid "_Redo"
-msgstr ""
+msgstr "Op_nieuw uitvoeren"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:786
 msgid "Open _Parent"
-msgstr ""
+msgstr "_Bovenliggende map openen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:787
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Bovenliggende map openen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:789
 msgid "_Back"
-msgstr ""
+msgstr "V_orige"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:790
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Ga naar de laatst bezochte locatie"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:793
 msgid "_Forward"
-msgstr ""
+msgstr "_Volgende"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:794
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Ga naar de volgende bezochte locatie"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:796
 msgid "_Reload"
-msgstr ""
+msgstr "_Herladen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:797
 msgid "Reload the current location"
-msgstr ""
+msgstr "De huidige locatie herladen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:800
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Persoonlijke map"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:801
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:329
@@ -346,51 +346,51 @@ msgstr "Open uw persoonlijke map"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:804
 msgid "_Trash"
-msgstr ""
+msgstr "_Prullenbak"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:805
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Open uw persoonlijke prullenpak"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:808
 msgid "_Network"
-msgstr ""
+msgstr "_Netwerk"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:809
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "Bladeren door opgeslagen en lokale netwerklocaties"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:812
 msgid "Zoom _In"
-msgstr ""
+msgstr "_Inzoomen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:813
 msgid "Increase the view size"
-msgstr ""
+msgstr "Het beeld vergroten"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:824
 msgid "Zoom _Out"
-msgstr ""
+msgstr "_Uitzoomen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:825
 msgid "Decrease the view size"
-msgstr ""
+msgstr "Het beeld verkleinen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:832
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "Normale _grootte"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:833
 msgid "Use the normal view size"
-msgstr ""
+msgstr "De normale beeldgrootte gebruiken"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:836
 msgid "Next Tab"
-msgstr "Volgende tabblad"
+msgstr "Volgende Tab"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:840
 msgid "Previous Tab"
-msgstr "Vorige tabblad"
+msgstr "Vorige Tab"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:844
 msgid "Connect to _Server..."
@@ -398,87 +398,88 @@ msgstr "Verbinden met _server..."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:845
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "Verbinding maken met een andere computer of een gedeelde schijf"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:848
 msgid "_About"
-msgstr ""
+msgstr "_Over Files"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:849
 msgid "Display credits"
-msgstr ""
+msgstr "Dankbetuiging weergeven"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:852
 msgid "Report a Problem..."
-msgstr "Een probleem melden…"
+msgstr "Meld een probleem..."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:853
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Rapporteer een probleem op Launchpad"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:856
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Online hulp verkrijgen…"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:860
 msgid "Translate This Application..."
-msgstr ""
+msgstr "Vertaal dit programma..."
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:869
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Verbo_rgen bestanden tonen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:870
 msgid "Toggle the display of hidden files in the current window"
 msgstr ""
+"De weergave van verborgen bestanden in het huidige venster in-/uitschakelen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:875
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "_Bureaubladbestanden tonen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:876
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "Bureaubladbestanden tonen/verbergen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:880
 msgid "_Context Pane"
-msgstr ""
+msgstr "_Contextpaneel"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:881
 msgid "Change the visibility of the context pane"
-msgstr ""
+msgstr "Weergave van contextpaneel wijzigen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:885
 msgid "_Menubar"
-msgstr ""
+msgstr "_Menubalk"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:886
 msgid "Change the visibility of this window's menubar"
-msgstr ""
+msgstr "Verander de zichtbaarheid van de menubalk van dit venster"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:890
 msgid "_Places"
-msgstr ""
+msgstr "_Locaties"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:891
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "Zichtbaarheid van het zijpaneel van dit venster veranderen"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:899
 msgid "Icon"
-msgstr ""
+msgstr "Icoon"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:902
 msgid "List"
-msgstr ""
+msgstr "Lijst"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:905
 msgid "Compact"
-msgstr ""
+msgstr "Compact"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:908
 msgid "Columns"
-msgstr ""
+msgstr "Kolommen"
 
 #: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -488,11 +489,11 @@ msgstr "Map bestaat niet"
 #: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Files kan de map %s niet vinden"
 
 #: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr "Maken"
+msgstr "Aanmaken"
 
 #: /home/pqp/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
@@ -501,18 +502,18 @@ msgstr "De map %s aanmaken"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
-msgstr "Er is niets op het klmebord om te plakken"
+msgstr "Er is niets op het klembord om te plakken"
 
 #: /home/pqp/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "Bestandsnaam"
 
 #: /home/pqp/pantheon-files/po/../src/fm-list-view.c:199
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:139
 #: /home/pqp/pantheon-files/po/../src/fm-columns-view.c:186
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Kon %s niet naar %s hernoemen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-list-view.c:616
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:573
@@ -541,23 +542,23 @@ msgstr[1] "%'d bestandsbewerkingen actief"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Kopieer-dialoogvenster tonen"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Alle actieve acties annuleren"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
-msgstr "Alle bestandsoperaties zijn succesvol voltooid"
+msgstr "Alle bestandsbewerkingen zijn succesvol voltooid"
 
 #: /home/pqp/pantheon-files/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "Weergave-modus"
 
 #: /home/pqp/pantheon-files/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "De weergave-modus"
 
 #: /home/pqp/pantheon-files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
@@ -621,7 +622,7 @@ msgstr ""
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "Houd iconen gesorteerd op wijzigingsdatum in rijen"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -629,11 +630,11 @@ msgstr "SSH"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr "Publieke FTP"
+msgstr "Openbare FTP"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr "FTP (met aanmelding)"
+msgstr "FTP (met aanmelden)"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
@@ -645,7 +646,7 @@ msgstr "WebDAV (HTTP)"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr "Beveiligde WebDAV (HTTPS)"
+msgstr "Beveiligd WebDAV (HTTPS)"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
@@ -656,7 +657,7 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"Kon de lijst met ondersteunde servermethoden niet laden.\n"
+"Kon de lijst met ondersteunde server-methoden niet laden.\n"
 "Controleer de installatie van gvfs."
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
@@ -667,7 +668,7 @@ msgstr "De map \"%s\" kan niet worden geopend op \"%s\"."
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "De server ‘%s’ kan niet gevonden worden."
+msgstr "De server op \"%s\" kon niet gevonden worden."
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
@@ -724,7 +725,7 @@ msgstr "_Domeinnaam:"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
-msgstr ""
+msgstr "_Gebruikersnaam:"
 
 #: /home/pqp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
@@ -813,7 +814,7 @@ msgstr "_Open"
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1963
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr ""
+msgstr "In %'d nieuwe _tabbladen openen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1967
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3472
@@ -824,7 +825,7 @@ msgstr "Open in Nieuwe _Tab"
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1972
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr ""
+msgstr "In %'d nieuwe _vensters openen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:1976
 #: /home/pqp/pantheon-files/po/../src/marlin-places-sidebar.c:2414
@@ -834,96 +835,104 @@ msgstr "Open in Nieuw _Venster"
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3432
 msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
+"Geselecteerde bestanden klaarmaken om verplaatst te worden met de Plakken-"
+"opdracht"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3436
 msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
+"Geselecteerde bestanden klaarmaken om gekopieerd te worden met de Plakken-"
+"opdracht"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3440
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
+"Bestanden verplaatsen of kopiëren die eerder bij een Knippen- of Kopiëren-"
+"opdracht zijn geselecteerd"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3443
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "In deze map plakken"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3444
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"Verplaats of kopieer bestanden die eerder door een Knippen- of Kopiëren-"
+"opdracht zijn geselecteerd"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3447
 msgid "_Rename..."
-msgstr ""
+msgstr "He_rnoemen…"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3448
 msgid "Rename selected item"
-msgstr ""
+msgstr "Geselecteerde item hernoemen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3451
 msgid "Create New _Folder"
-msgstr ""
+msgstr "Nieuwe _map aanmaken"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3452
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "Nieuwe lege map aanmaken in deze map"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3454
 msgid "Create New _File"
-msgstr ""
+msgstr "Nieuw _bestand aanmaken"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3456
 msgid "_Empty File"
-msgstr ""
+msgstr "_Leeg bestand"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3457
 msgid "Create a new empty file inside this folder"
-msgstr ""
+msgstr "Nieuw leeg bestand aanmaken in deze map"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3461
 msgid "Open the selected item"
-msgstr ""
+msgstr "Geselecteerd item openen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3468
 msgid "Open in new Window"
-msgstr ""
+msgstr "Open in een nieuw Venster"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3469
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "Elk geselecteerd item in een nieuw venster openen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3473
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "Elk geselecteerd item in een nieuw tabblad openen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3475
 msgid "Open Wit_h"
-msgstr ""
+msgstr "Openen _met"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3476
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "Kies een toepassing om het geselecteerde item mee te openen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3478
 msgid "Other _Application..."
-msgstr ""
+msgstr "Andere _toepassing…"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3479
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "Andere toepassing kiezen om het geselecteerde item mee te openen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3482
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "Naar prullenbak _verplaatsen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3483
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "Alle geselecteerde items in de prullenbak gooien"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3486
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "Permanent verwij_deren"
 
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3487
 msgid "Delete each selected item, without moving to the Trash"
