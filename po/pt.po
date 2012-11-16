@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-08-19 14:29+0000\n"
+"PO-Revision-Date: 2012-11-15 10:06+0000\n"
 "Last-Translator: Sérgio Marques <Unknown>\n"
 "Language-Team: Português <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-10-14 04:52+0000\n"
-"X-Generator: Launchpad (build 16137)\n"
+"X-Launchpad-Export-Date: 2012-11-16 04:58+0000\n"
+"X-Generator: Launchpad (build 16272)\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -43,12 +43,12 @@ msgstr "Seleção automática com o rato:"
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "Lenta"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "Rápida"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
@@ -170,7 +170,7 @@ msgstr "Utilização do dispositivo:"
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s livre de %s (%d%% utilzado)"
 
 #: /home/pqp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -209,11 +209,11 @@ msgstr "Sistema de ficheiros"
 
 #: /home/pqp/pantheon-files/po/../src/View/ViewContainer.vala:148
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(como administrador)"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:146
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "O Files não é o gestor de ficheiros do sistema"
 
 #: /home/pqp/pantheon-files/po/../src/View/Window.vala:152
 #: /home/pqp/pantheon-files/po/../src/fm-directory-view.c:3383
@@ -1144,19 +1144,19 @@ msgstr "Métodos de inserção"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "Gestão de ficheiros"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "Gestor de ficheiros"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Nova janela como _administrador"
 
 #: /home/pqp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "Ficheiros"
 
 #: /home/pqp/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
