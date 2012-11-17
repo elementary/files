@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-10-09 22:15-0400\n"
-"PO-Revision-Date: 2012-11-14 19:39+0000\n"
-"Last-Translator: Thomas Berends <Unknown>\n"
+"PO-Revision-Date: 2012-11-16 15:29+0000\n"
+"Last-Translator: Jaap Broekhuizen <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-15 05:18+0000\n"
-"X-Generator: Launchpad (build 16265)\n"
+"X-Launchpad-Export-Date: 2012-11-17 05:07+0000\n"
+"X-Generator: Launchpad (build 16278)\n"
 
 #: /home/pqp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -582,43 +582,43 @@ msgstr ""
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "Items sor_teren"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "Omgekeerde _volgorde"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "Pictogrammen in omgekeerde volgorde tonen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "Op _naam"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "Houd pictogrammen gesorteerd op naam in rijen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "Op _grootte"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "Houd pictogrammen gesorteerd op grootte in rijen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "Op _type"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "Houd pictogrammen gesorteerd op type in rijen"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "Op wijzigings_datum"
 
 #: /home/pqp/pantheon-files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
