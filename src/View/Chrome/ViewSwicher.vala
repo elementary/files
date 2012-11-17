@@ -79,13 +79,13 @@ namespace Marlin.View.Chrome
             Gtk.StyleContext style = get_style_context ();
 
             icon = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-grid-symbolic", 16));
-            icon.set_tooltip_text (_("View as grid"));
+            icon.set_tooltip_text (_("View as Grid"));
             switcher.append(icon);
             list = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-list-symbolic", 16));
-            list.set_tooltip_text (_("View as list"));
+            list.set_tooltip_text (_("View as List"));
             switcher.append(list);
             miller = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-column-symbolic", 16));
-            miller.set_tooltip_text(_("View as column"));
+            miller.set_tooltip_text(_("View in Columns"));
             switcher.append(miller);
             
             mode = (ViewMode)Preferences.settings.get_enum("default-viewmode");
