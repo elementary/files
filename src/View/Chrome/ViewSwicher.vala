@@ -85,7 +85,7 @@ namespace Marlin.View.Chrome
             list.set_tooltip_text (_("View as List"));
             switcher.append(list);
             miller = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-column-symbolic", 16));
-            miller.set_tooltip_text(_("View as Column"));
+            miller.set_tooltip_text(_("View in Columns"));
             switcher.append(miller);
             
             mode = (ViewMode)Preferences.settings.get_enum("default-viewmode");
