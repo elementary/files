@@ -177,7 +177,7 @@ namespace Marlin.View {
             tabs.show();
 
             /* Sidebar */
-            sidebar = new Marlin.Places.Sidebar ((Gtk.Widget) this);
+            sidebar = new Marlin.Places.Sidebar (this);
             Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.DEFAULT);
 
             /* Devide main views into sidebars */
@@ -187,7 +187,7 @@ namespace Marlin.View {
             var lside_pane = new Granite.Widgets.ThinPaned ();
             lside_pane.show();
 
-            lside_pane.pack1(sidebar, true, false);
+            lside_pane.pack1(sidebar, false, false);
             lside_pane.pack2(main_box, true, true);
 
             sidebar.show ();
