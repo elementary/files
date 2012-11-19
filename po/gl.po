@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-10-23 10:43+0000\n"
+"PO-Revision-Date: 2012-11-18 14:29+0000\n"
 "Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician <gl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-18 04:57+0000\n"
+"X-Launchpad-Export-Date: 2012-11-19 05:01+0000\n"
 "X-Generator: Launchpad (build 16278)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -2430,15 +2430,15 @@ msgstr "Ir a %s"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
-msgstr ""
+msgstr "Ver como grade"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "Ver como lista"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
-msgstr ""
+msgstr "Ver en columnas"
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
