@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-11-16 15:29+0000\n"
-"Last-Translator: Jaap Broekhuizen <Unknown>\n"
+"PO-Revision-Date: 2012-11-19 16:56+0000\n"
+"Last-Translator: rob <linuxned@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-18 04:57+0000\n"
-"X-Generator: Launchpad (build 16278)\n"
+"X-Launchpad-Export-Date: 2012-11-20 05:17+0000\n"
+"X-Generator: Launchpad (build 16286)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -131,7 +131,7 @@ msgstr "(als beheerder)"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
-msgstr "Files is niet je standaard bestandsbeheerder."
+msgstr "Files is niet uw standaard bestandsbeheerder."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:150
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3386
@@ -797,10 +797,12 @@ msgstr "Permanent verwij_deren"
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3490
 msgid "Delete each selected item, without moving to the Trash"
 msgstr ""
+"Elk geselecteerd item verwijderen, zonder het naar de prullenbak te "
+"verplaatsen."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3493
 msgid "_Restore"
-msgstr ""
+msgstr "He_rstellen"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3497
 #: /home/codygarver/files/po/../src/eel-editable-label.c:3190
@@ -809,11 +811,11 @@ msgstr "Alles Selecteren"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3501
 msgid "_Properties"
-msgstr ""
+msgstr "Eigenscha_ppen"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3502
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "De eigenschappen van elk geselecteerd item bekijken of wijzigen"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3608
 msgid "Set Color:"

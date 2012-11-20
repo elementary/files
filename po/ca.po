@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-10-28 12:22+0000\n"
+"PO-Revision-Date: 2012-11-19 06:38+0000\n"
 "Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-18 04:57+0000\n"
-"X-Generator: Launchpad (build 16278)\n"
+"X-Launchpad-Export-Date: 2012-11-20 05:17+0000\n"
+"X-Generator: Launchpad (build 16286)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -2428,15 +2428,15 @@ msgstr "Vés a %s"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
-msgstr ""
+msgstr "Visualitza com a graella"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "Visualitza com a llista"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
-msgstr ""
+msgstr "Visualitza en columnes"
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
