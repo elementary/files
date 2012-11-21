@@ -8,65 +8,65 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-06-04 08:11+0000\n"
+"PO-Revision-Date: 2012-11-20 12:21+0000\n"
 "Last-Translator: Martin Myrvold <Unknown>\n"
 "Language-Team: Norwegian Nynorsk <nn@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-18 04:58+0000\n"
-"X-Generator: Launchpad (build 16278)\n"
+"X-Launchpad-Export-Date: 2012-11-21 05:13+0000\n"
+"X-Generator: Launchpad (build 16293)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:338
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:341
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:353
 msgid "Target"
-msgstr ""
+msgstr "Mål"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:343
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Size"
-msgstr ""
+msgstr "Storleik"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:345
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:325
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr ""
+msgstr "Sist endra"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:346
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:828
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:841
 msgid "Owner"
-msgstr ""
+msgstr "Eigar"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr ""
+msgstr "Mappa finst ikkje"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Filar finn ikkje mappa %s"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr ""
+msgstr "Lag ny"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr ""
+msgstr "Lag mappa %s"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -75,11 +75,11 @@ msgstr "Instillingar"
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:103
 msgid "Extensions"
-msgstr ""
+msgstr "Utvidingar"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:209
 msgid "Single click to open:"
@@ -87,205 +87,205 @@ msgstr "Eit klikk for å åpna:"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:217
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "Mus gjer automatisk val:"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "Treig"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "Rask"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
-msgstr ""
+msgstr "Datoformat:"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:256
 msgid "iso"
-msgstr ""
+msgstr "iso"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:257
 msgid "locale"
-msgstr ""
+msgstr "lokaltilpassing"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:258
 msgid "informal"
-msgstr ""
+msgstr "uformell"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:145
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:300
 msgid "Home"
-msgstr ""
+msgstr "Heim"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:147
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
 msgid "File System"
-msgstr ""
+msgstr "Filsystem"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:152
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(som Administrator)"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Filar er ikkje standard for filhandsaming"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:150
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3386
 msgid "Set as default"
-msgstr ""
+msgstr "Set som standard"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:155
 msgid "Ignore"
-msgstr ""
+msgstr "Oversjå"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:490
 msgid "Undo"
-msgstr ""
+msgstr "Gjer om"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:491
 #: /home/codygarver/files/po/../src/View/Window.vala:784
 msgid "Undo the last action"
-msgstr ""
+msgstr "Gjer om siste handling"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:500
 msgid "Redo"
-msgstr ""
+msgstr "Gjenopprett"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:501
 #: /home/codygarver/files/po/../src/View/Window.vala:787
 msgid "Redo the last action"
-msgstr ""
+msgstr "Gjenopprett siste handling"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:758
 msgid "_File"
-msgstr ""
+msgstr "_Fil"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:759
 msgid "_Edit"
-msgstr ""
+msgstr "_Endre"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:760
 msgid "_View"
-msgstr ""
+msgstr "_Vis"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:761
 msgid "_Go"
-msgstr ""
+msgstr "_Køyr"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:762
 msgid "_Help"
-msgstr ""
+msgstr "_Hjelp"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:764
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr ""
+msgstr "Nytt _vindauge"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:765
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Opna eit nytt vindauge med same plassering"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:768
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr ""
+msgstr "Ny _fane"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:769
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Opna ei ny fane med same plassering"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:773
 msgid "_Close"
-msgstr ""
+msgstr "_Lukk"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:774
 msgid "Close this folder"
-msgstr ""
+msgstr "Lukk denne mappa"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:777
 msgid "Preferences"
-msgstr ""
+msgstr "Innstillingar"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:778
 msgid "Change Files preferences"
-msgstr ""
+msgstr "Endre innstillingane for Filar"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:783
 msgid "_Undo"
-msgstr ""
+msgstr "_Angra"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:786
 msgid "_Redo"
-msgstr ""
+msgstr "_Gjer om"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:789
 msgid "Open _Parent"
-msgstr ""
+msgstr "Opna _opphav"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:790
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Opna opphavsmappa"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:792
 msgid "_Back"
-msgstr ""
+msgstr "_Tilbake"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:793
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Gå til den førre vitja staden"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:796
 msgid "_Forward"
-msgstr ""
+msgstr "_Framover"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:797
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Gå til den neste vitja staden"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:799
 msgid "_Reload"
-msgstr ""
+msgstr "_Last på nytt"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:800
 msgid "Reload the current location"
-msgstr ""
+msgstr "Last denne staden på nytt"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:803
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Heimemappe"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:804
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:305
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Opna di personlige mappe"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:807
 msgid "_Trash"
-msgstr ""
+msgstr "_Papirkorg"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:808
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Opna papirkorga di"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:811
 msgid "_Network"
-msgstr ""
+msgstr "_Nettverk"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:812
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "Sjå gjennom nettverkslokasjonar i bokmerka og lokalt"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:815
 msgid "Zoom _In"
-msgstr ""
+msgstr "_Forstørr"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:816
 msgid "Increase the view size"
-msgstr ""
+msgstr "Auk visingsstorleiken"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:827
 msgid "Zoom _Out"

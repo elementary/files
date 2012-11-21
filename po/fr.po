@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-11-19 00:00+0000\n"
+"PO-Revision-Date: 2012-11-21 01:46+0000\n"
 "Last-Translator: Simon <Unknown>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-11-20 05:17+0000\n"
-"X-Generator: Launchpad (build 16286)\n"
+"X-Launchpad-Export-Date: 2012-11-21 05:13+0000\n"
+"X-Generator: Launchpad (build 16293)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -2453,7 +2453,7 @@ msgstr "Vue en colonnes"
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr "Ces éléments peuvent étre supprimés par vider la Corbeille"
+msgstr "Ces éléments peuvent être supprimés en vidant la Corbeille"
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
