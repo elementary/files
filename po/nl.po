@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-11-19 16:56+0000\n"
-"Last-Translator: rob <linuxned@gmail.com>\n"
+"PO-Revision-Date: 2012-11-21 09:47+0000\n"
+"Last-Translator: Thomas Berends <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-20 05:17+0000\n"
-"X-Generator: Launchpad (build 16286)\n"
+"X-Launchpad-Export-Date: 2012-11-22 05:28+0000\n"
+"X-Generator: Launchpad (build 16293)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -101,7 +101,7 @@ msgstr "Snel"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
-msgstr "Datumformaat:"
+msgstr "Datumnotatie:"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:256
 msgid "iso"
@@ -979,7 +979,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/marlin-application.c:427
 msgid "Quit Files."
-msgstr ""
+msgstr "Files afsluiten."
 
 #: /home/codygarver/files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
