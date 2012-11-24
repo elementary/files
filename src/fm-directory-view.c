@@ -2644,10 +2644,15 @@ trash_or_delete_files (FMDirectoryView *view,
 
     locations = g_list_reverse (locations);
 
-    marlin_file_operations_trash_or_delete (locations,
-                                            GTK_WINDOW (view->details->window),
-                                            (MarlinDeleteCallback) trash_or_delete_done_cb,
-                                            view);
+    if (locations != NULL) { 
+        marlin_file_operations_trash_or_delete (locations,
+                                                GTK_WINDOW (view->details->window),
+                                                (MarlinDeleteCallback) trash_or_delete_done_cb,
+                                                view);
+    } 
+    else
+        return;
+
     g_list_free_full (locations, g_object_unref);
 }
 
@@ -2662,9 +2667,13 @@ trash_or_delete_selected_files (FMDirectoryView *view)
      */
     if (!view->details->selection_was_removed) {
         selection = fm_directory_view_get_selection_for_file_transfer (view);
-        trash_or_delete_files (view, selection, TRUE);
-        gof_file_list_free (selection);
-        view->details->selection_was_removed = TRUE;
+        if (selection != NULL) {
+            trash_or_delete_files (view, selection, TRUE);
+            gof_file_list_free (selection);
+            view->details->selection_was_removed = TRUE;
+        } 
+        else 
+            return;
     }
 }
 
