@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-11-19 21:26+0000\n"
-"Last-Translator: Larsson <Unknown>\n"
+"PO-Revision-Date: 2012-11-23 11:14+0000\n"
+"Last-Translator: Benjamin Bultman <bultman.ben@gmail.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-20 05:17+0000\n"
-"X-Generator: Launchpad (build 16286)\n"
+"X-Launchpad-Export-Date: 2012-11-24 07:39+0000\n"
+"X-Generator: Launchpad (build 16293)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -92,7 +92,7 @@ msgstr "Automatisk markering:"
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "Långsam"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:238
 #, c-format
@@ -357,7 +357,7 @@ msgstr "Visa _Skrivbordsfiler"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:879
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "Växla synlighet för skrivbortsfiler"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:883
 msgid "_Context Pane"
@@ -2217,11 +2217,11 @@ msgstr[1] ""
 
 #: /home/codygarver/files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "I dag vid %-I:%M %p"
 
 #: /home/codygarver/files/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "I går vid %-I:%M %p"
 
 #: /home/codygarver/files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -2407,16 +2407,16 @@ msgstr "Filkonflikt"
 
 #: /home/codygarver/files/po/../libwidgets/LocationBar.vala:320
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "Klipp ut den markerade texten till urklipp"
 
 #: /home/codygarver/files/po/../libwidgets/LocationBar.vala:324
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "Kopiera den markerade texten till urklipp"
 
 #: /home/codygarver/files/po/../libwidgets/LocationBar.vala:328
 #: /home/codygarver/files/po/../libwidgets/LocationBar.vala:332
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "Klistra in text sparad i urklipp"
 
 #: /home/codygarver/files/po/../libwidgets/LocationBar.vala:808
 #, c-format
