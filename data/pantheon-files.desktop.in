@@ -1,13 +1,14 @@
 [Desktop Entry]
 Name=Files
 Comment=Browse your files
+Keywords=folder;manager;explore;disk;filesystem;
 GenericName=File Manager
 Exec=pantheon-files %U
 Icon=system-file-manager
 Terminal=false
 StartupNotify=true
 Type=Application
-MimeType=x-directory/gnome-default-handler;x-directory/normal;inode/directory;
+MimeType=inode/directory;
 Categories=System;Utility;Core;GTK;FileTools;FileManager;
 X-GNOME-Gettext-Domain=pantheon-files
 
