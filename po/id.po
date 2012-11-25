@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-11-10 06:25+0000\n"
-"Last-Translator: Dani Pratomo <Unknown>\n"
+"PO-Revision-Date: 2012-11-24 11:11+0000\n"
+"Last-Translator: Viko Adi Rahmawan <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-11-18 04:57+0000\n"
-"X-Generator: Launchpad (build 16278)\n"
+"X-Launchpad-Export-Date: 2012-11-25 06:51+0000\n"
+"X-Generator: Launchpad (build 16293)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -2370,15 +2370,15 @@ msgstr "Pergi ke %s"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
-msgstr ""
+msgstr "Tampilkan dalam ikon"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "Tampilkan sebagai daftar"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
-msgstr ""
+msgstr "Tampilkan dalam kolom"
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."

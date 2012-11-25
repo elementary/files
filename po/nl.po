@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-11-22 14:32+0000\n"
-"Last-Translator: Thomas Berends <Unknown>\n"
+"PO-Revision-Date: 2012-11-24 21:16+0000\n"
+"Last-Translator: OrangeTux <orangetux24@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-23 05:26+0000\n"
+"X-Launchpad-Export-Date: 2012-11-25 06:51+0000\n"
 "X-Generator: Launchpad (build 16293)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -25,7 +25,7 @@ msgstr "Naam"
 #: /home/codygarver/files/po/../src/View/ContextView.vala:338
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Type"
-msgstr "Soort"
+msgstr "Type"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:341
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:353
@@ -70,7 +70,7 @@ msgstr "De map %s aanmaken"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr "Files Voorkeuren"
+msgstr "Bestandsvoorkeuren"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
@@ -83,7 +83,7 @@ msgstr "Uitbreidingen"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:209
 msgid "Single click to open:"
-msgstr "Enkel klikken om te openen:"
+msgstr "Eén klik om te openen:"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:217
 msgid "Mouse auto-selection:"
@@ -92,7 +92,7 @@ msgstr "Muis auto-selectie"
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr "Traag"
+msgstr "Langzaam"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:238
 #, c-format
@@ -118,7 +118,7 @@ msgstr "informeel"
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:145
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:300
 msgid "Home"
-msgstr "Home"
+msgstr "Persoonlijke map"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:147
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
@@ -127,7 +127,7 @@ msgstr "Bestandssysteem"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:152
 msgid "(as Administrator)"
-msgstr "(als beheerder)"
+msgstr "(als Beheerder)"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
@@ -166,7 +166,7 @@ msgstr "_Bestand"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:759
 msgid "_Edit"
-msgstr "Be_werken"
+msgstr "_Bewerken"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:760
 msgid "_View"
@@ -192,11 +192,11 @@ msgstr "Open een nieuw Files-venster voor de weergegeven locatie"
 #: /home/codygarver/files/po/../src/View/Window.vala:768
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr "Nieuw _tabblad"
+msgstr "Nieuw _Tabblad"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:769
 msgid "Open another tab for the displayed location"
-msgstr "Open een nieuwe tab voor de weergegeven locatie"
+msgstr "Open een nieuw tabblad voor de weergegeven locatie"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:773
 msgid "_Close"
