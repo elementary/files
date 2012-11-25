@@ -554,8 +554,10 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
                                              mount.get_icon(),
                                              null, mount.get_root().get_path().split("/"),
                                              true, mount.get_name() };
-            icon_directory.exploded[0] = "/";
-            add_icon(icon_directory);
+            if (mount.get_root().get_path() != null) {
+                icon_directory.exploded[0] = "/";
+                add_icon(icon_directory);
+            }
         }
 
 
