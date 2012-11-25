@@ -4,6 +4,7 @@ cmake_minimum_required (VERSION 2.6)
 cmake_policy(VERSION 2.6)
 project(Marlin)
 enable_testing()
+
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
 set(GETTEXT_PACKAGE "pantheon-files")
 set(PIXMAP_DIR "${CMAKE_INSTALL_PREFIX}/share/pixmaps/marlin/")
@@ -15,6 +16,11 @@ configure_file (${CMAKE_SOURCE_DIR}/config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 configure_file (${CMAKE_SOURCE_DIR}/config.vala.cmake ${CMAKE_BINARY_DIR}/src/config.vala)
 
 option (LIB_ONLY "Build libcore and libwidgets only" FALSE)
+
+find_package(Vala REQUIRED)
+include(ValaVersion)
+ensure_vala_version("0.16.0" MINIMUM)
+include(ValaPrecompile)
 
 IF (LIB_ONLY)
     add_subdirectory (libcore)

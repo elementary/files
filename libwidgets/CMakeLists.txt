@@ -33,12 +33,7 @@ set(LIB_PATHS
 	${DEPS_LIBRARY_DIRS}
 )
 link_directories(${LIB_PATHS})
-#VALA stuff
 
-find_package(Vala REQUIRED)
-include(ValaVersion)
-ensure_vala_version("0.12.0" MINIMUM)
-include(ValaPrecompile)
 vala_precompile(VALA_C
     LocationBar.vala
     BreadcrumbsElements.vala

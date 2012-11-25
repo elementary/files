@@ -2796,7 +2796,7 @@ tree_selection_func (GtkTreeSelection *selection,
                      GtkTreeModel *model,
                      GtkTreePath *path,
                      gboolean path_currently_selected,
-                     MarlinPlacesSidebar *sidebar)
+                     gpointer data)
 {
      /* Don't allow categories to be selected. */
      return !category_at_path (path);

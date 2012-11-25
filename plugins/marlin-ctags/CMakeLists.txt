@@ -11,12 +11,7 @@ set(CFLAGS
 )
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 include_directories(${CMAKE_BINARY_DIR}/libcore/)
-# Vala
 
-find_package(Vala REQUIRED)
-include(ValaVersion)
-ensure_vala_version("0.12.0" MINIMUM)
-include(ValaPrecompile)
 vala_precompile(VALA_C
     plugin.vala
 PACKAGES

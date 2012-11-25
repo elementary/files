@@ -1,11 +1,5 @@
 # Vala stuff
 
-find_package(Vala REQUIRED)
-include(ValaVersion)
-ensure_vala_version("0.11.3" MINIMUM)
-include(ValaPrecompile)
-# pkgconfig, real C code
-
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
