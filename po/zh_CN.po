@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-11-20 12:13+0000\n"
+"PO-Revision-Date: 2012-11-25 09:13+0000\n"
 "Last-Translator: Yangyu Huang <Unknown>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-11-21 05:13+0000\n"
+"X-Launchpad-Export-Date: 2012-11-26 05:03+0000\n"
 "X-Generator: Launchpad (build 16293)\n"
 "Language: \n"
 
@@ -88,7 +88,7 @@ msgstr "单击打开："
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:217
 msgid "Mouse auto-selection:"
-msgstr "鼠标自动选定"
+msgstr "鼠标自动选定："
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:236
 #, c-format
@@ -197,7 +197,7 @@ msgstr "新建标签(_T)"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:769
 msgid "Open another tab for the displayed location"
-msgstr "为显示的位置打开另外一个标签"
+msgstr "在另一个标签中打开显示的位置"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:773
 msgid "_Close"
@@ -278,7 +278,7 @@ msgstr "网络(_N)"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:812
 msgid "Browse bookmarked and local network locations"
-msgstr "浏览书签和局域网中的位置"
+msgstr "浏览书签和局域网"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:815
 msgid "Zoom _In"

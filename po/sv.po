@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-11-23 11:14+0000\n"
-"Last-Translator: Benjamin Bultman <bultman.ben@gmail.com>\n"
+"PO-Revision-Date: 2012-11-25 23:14+0000\n"
+"Last-Translator: Larsson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-24 07:39+0000\n"
+"X-Launchpad-Export-Date: 2012-11-26 05:03+0000\n"
 "X-Generator: Launchpad (build 16293)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -475,7 +475,7 @@ msgstr "Exekvera"
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
 msgid "Group"
-msgstr "Gruppera"
+msgstr "Grupp"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
 msgid "Everyone"
@@ -2120,33 +2120,33 @@ msgstr[1] "Ångra ägarändringar för %d objekt"
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gör om kopiering av %d objekt"
+msgstr[1] "_Gör om kopiering av %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gör om duplicering av %d objekt"
+msgstr[1] "_Gör om duplicering av %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gör om flytt av %d objekt"
+msgstr[1] "_Gör om flytt av %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gör om namnbyte på %d objekt"
+msgstr[1] "_Gör om namnbyte på %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Gör om skapandet av en tom fil"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
@@ -2156,64 +2156,64 @@ msgstr ""
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gör om skapandet av %d mapp"
+msgstr[1] "_Gör om skapandet av %d mappar"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gör om flytt av %d objekt till papperskorgen"
+msgstr[1] "_Gör om flytt av %d objekt till papperskorgen"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gör om återställning av %d objekt från papperskorgen"
+msgstr[1] "_Gör om återställning av %d objekt från papperskorgen"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gör om skapandet av länk till %d objekt"
+msgstr[1] "_Gör om skapandet av länk till %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Gör om borttagning av %d objekt"
+msgstr[1] "_Gör om borttagning av %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gör om rekursiv ändring av rättigheter för %d objekt"
+msgstr[1] "Gör om rekursiv ändring av rättigheter för %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gör om ändring av rättigheter för %d objekt"
+msgstr[1] "Gör om ändring av rättigheter för %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gör om ändring av grupp för %d objekt"
+msgstr[1] "Gör om ändring av grupp för %d objekt"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gör om ändring av ägare för %d objekt"
+msgstr[1] "Gör om ändring av ägare för %d objekt"
 
 #: /home/codygarver/files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
@@ -2425,15 +2425,15 @@ msgstr "Gå till %s"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
-msgstr ""
+msgstr "Visa som Rutnät"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "Visa som Lista"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
-msgstr ""
+msgstr "Visa i Kolumner"
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
