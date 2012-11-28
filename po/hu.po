@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-10-24 11:50+0000\n"
+"PO-Revision-Date: 2012-11-27 16:34+0000\n"
 "Last-Translator: Bence Lukács <Unknown>\n"
 "Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-18 04:57+0000\n"
-"X-Generator: Launchpad (build 16278)\n"
+"X-Launchpad-Export-Date: 2012-11-28 05:08+0000\n"
+"X-Generator: Launchpad (build 16309)\n"
 "Language: hu\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -403,7 +403,7 @@ msgstr "Beállítások"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
-msgstr ""
+msgstr "Továbbiak"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
 msgid "Preview"
@@ -451,7 +451,7 @@ msgstr "Megnyitás ezzel:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
 msgid "Usage:"
-msgstr ""
+msgstr "Használat:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
@@ -977,7 +977,7 @@ msgstr "URI cím(ek) megjelenítése új lapon"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:427
 msgid "Quit Files."
-msgstr ""
+msgstr "Kilépés a fájlkezelőből."
 
 #: /home/codygarver/files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
@@ -2218,7 +2218,7 @@ msgstr "Tegnap %-k.%M-kor"
 
 #: /home/codygarver/files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%Y. %b %d. %a. %H%M-kor"
 
 #: /home/codygarver/files/po/../libcore/gof-file.c:252
 #, c-format
@@ -2418,20 +2418,20 @@ msgstr "Ugrás ide: %s"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
-msgstr ""
+msgstr "Rácsnézet"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "Listanézet"
 
 #: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
-msgstr ""
+msgstr "Oszlop nézet"
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "Ezek az elemek törlődhetnek a Kuka ürítésével."
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Kuka ürítése"
