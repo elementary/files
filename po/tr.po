@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-11-17 15:57+0000\n"
-"Last-Translator: Ebubekir KARUL <Unknown>\n"
+"PO-Revision-Date: 2012-11-30 12:44+0000\n"
+"Last-Translator: kulkke <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-11-18 04:58+0000\n"
-"X-Generator: Launchpad (build 16278)\n"
+"X-Launchpad-Export-Date: 2012-12-01 05:46+0000\n"
+"X-Generator: Launchpad (build 16319)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
-msgstr "İsim"
+msgstr "Ad"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:338
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
@@ -52,12 +52,12 @@ msgstr "Sahibi"
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "Klasör mevcut değil"
+msgstr "Dizin mevcut değil"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr "Files %s klasörünü bulamıyor"
+msgstr "Files %s dizinini bulamıyor"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -66,7 +66,7 @@ msgstr "Oluştur"
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "%s klasörünü oluştur"
+msgstr "%s dizinini oluştur"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -204,7 +204,7 @@ msgstr "_Kapat"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:774
 msgid "Close this folder"
-msgstr "Bu klasörü kapat"
+msgstr "Bu dizini kapat"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:777
 msgid "Preferences"
@@ -261,7 +261,7 @@ msgstr "_Başlangıç Dizini"
 #: /home/codygarver/files/po/../src/View/Window.vala:804
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:305
 msgid "Open your personal folder"
-msgstr "Kişisel klasörünüzü açın"
+msgstr "Kişisel dizininizi açın"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:807
 msgid "_Trash"
@@ -499,7 +499,7 @@ msgstr "Ağ"
 #: /home/codygarver/files/po/../src/fm-list-view.c:616
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:573
 msgid "This folder is empty."
-msgstr "Bu klasör boş."
+msgstr "Bu dizin boş."
 
 #: /home/codygarver/files/po/../src/fm-columns-view.c:186
 #: /home/codygarver/files/po/../src/fm-list-view.c:199
@@ -547,7 +547,7 @@ msgstr ""
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "\"%s\" klasörü \"%s\" üzerinde açılamıyor."
+msgstr "\"%s\" dizini \"%s\" üzerinde açılamıyor."
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
@@ -597,7 +597,7 @@ msgstr "P_aylaş:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
-msgstr "_Klasör:"
+msgstr "_Dizin:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
@@ -713,7 +713,7 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
-"Daha önce bir Kes veya Kopyala komutuyla seçilmiş dosyaları seçilen dosyaya "
+"Daha önce bir Kes veya Kopyala komutuyla seçilmiş dosyaları seçilen dizine "
 "taşı veya kopyala"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3450
@@ -742,7 +742,7 @@ msgstr "_Boş Dosya"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3460
 msgid "Create a new empty file inside this folder"
-msgstr "Bu klasör içinde boş bir dosya oluştur"
+msgstr "Bu dizin içinde boş bir dosya oluştur"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3464
 msgid "Open the selected item"
@@ -847,11 +847,11 @@ msgstr "Simgeleri ters sıra ile göster"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr "İ_sme Göre"
+msgstr "_Ada Göre"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr "Simgeleri isimlerine göre sırala"
+msgstr "Simgeleri adlarına göre sırala"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
@@ -1384,7 +1384,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"\"%B\" klasöründeki dosyalar silinemiyor çünkü onları görmek için yeterli "
+"\"%B\" dizinindeki dosyalar silinemiyor çünkü onları görmek için yeterli "
 "erişim hakkınız yok."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1599
@@ -1392,7 +1392,7 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr "\"%B\" klasöründeki dosyalar hakkında bilgi alınırken hata oluştu."
+msgstr "\"%B\" dizinindeki dosyalar hakkında bilgi alınırken hata oluştu."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1608
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3637
@@ -1404,17 +1404,17 @@ msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"\"%B\" klasörü silinemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
+"\"%B\" dizini silinemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1632
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2671
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
-msgstr "\"%B\" klasörü okunurken hata oluştu."
+msgstr "\"%B\" dizini okunurken hata oluştu."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
-msgstr "%B klasörü silinemedi."
+msgstr "%B dizini silinemedi."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
@@ -1530,7 +1530,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"\"%B\" klasöründeki dosyalar işlenemiyor çünkü onları okumak için yeterli "
+"\"%B\" dizinindeki dosyalar işlenemiyor çünkü onları okumak için yeterli "
 "erişim hakkınız yok."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2668
@@ -1538,7 +1538,7 @@ msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"\"%B\" klasörü işlenemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
+"\"%B\" dizini işlenemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
@@ -1560,7 +1560,7 @@ msgstr "\"%B\" hedefine kopyalanırken hata."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
-msgstr "Hedef klasöre erişim için yeterli izne sahip değilsiniz."
+msgstr "Hedef dizine erişim için yeterli izne sahip değilsiniz."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
@@ -1568,7 +1568,7 @@ msgstr "Hedef hakkında bilgi alırken bir hata oluştu."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
-msgstr "Hedef bir klasör değil."
+msgstr "Hedef bir dizin değil."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
@@ -1644,19 +1644,19 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"\"%B\" klasörü kopyalanamıyor çünkü onu hedefte oluşturmak için yeterli "
+"\"%B\" dizini kopyalanamıyor çünkü onu hedefte oluşturmak için yeterli "
 "erişim hakkınız yok."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
-msgstr "\"%B\" klasörü oluşturulurken hata oluştu."
+msgstr "\"%B\" dizinini oluşturulurken hata oluştu."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"\"%B\" klasörü içerisindeki dosyalar kopyalanamıyor çünkü onları görmek için "
+"\"%B\" dizini içerisindeki dosyalar kopyalanamıyor çünkü onları görmek için "
 "yeterli erişim hakkınız yok."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3670
@@ -1664,7 +1664,7 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"\"%B\" klasörü kopyalanamıyor çünkü onu okumak için yeterli erişim hakkınız "
+"\"%B\" dizini kopyalanamıyor çünkü onu okumak için yeterli erişim hakkınız "
 "yok."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3715
@@ -1675,7 +1675,7 @@ msgstr "\"%B\" taşınırken hata oluştu."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
-msgstr "Hedef klasör silinemedi."
+msgstr "Kaynak dizin silinemedi."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3801
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3842
@@ -1687,7 +1687,7 @@ msgstr "\"%B\" kopyalanırken hata."
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr "Zaten mevcut olan %F klasöründen dosyalar silinemedi."
+msgstr "Zaten mevcut olan %F dizininden dosyalar silinemedi."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
@@ -1697,17 +1697,17 @@ msgstr "Zaten mevcut olan %F dosyası silinemedi."
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4172
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
-msgstr "Bir klasörü kendi üzerine taşıyamazsınız."
+msgstr "Bir dizini kendi üzerine taşıyamazsınız."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4173
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
-msgstr "Bir klasörü kendi üzerine kopyalayamazsınız."
+msgstr "Bir dizini kendi üzerine kopyalayamazsınız."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4174
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
-msgstr "Hedef klasör kaynak klasörünün içerisinde."
+msgstr "Hedef dizin kaynak dizinin içerisinde."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
@@ -1724,7 +1724,7 @@ msgstr "Kaynak dosya hedef tarafından kendi üzerine yazılabilir."
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr "%F içerisinde aynı isimde zaten mevcut olan dosya silinemedi."
+msgstr "%F içerisinde aynı adda zaten mevcut olan dosya silinemedi."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
@@ -1788,7 +1788,7 @@ msgstr "İzinler atanıyor"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
-msgstr "isimsiz klasör"
+msgstr "adsız dizin"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
@@ -1842,7 +1842,7 @@ msgstr "'%s' '%s''e geri taşı"
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "'%s'in adını '%s' olarak değiştir"
+msgstr "'%s' öğesinin adını '%s' olarak değiştir"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1450
@@ -2193,7 +2193,7 @@ msgstr "Geçersiz masaüstü dosyası"
 
 #: /home/codygarver/files/po/../libcore/gof-file.c:2056
 msgid "Slashes are not allowed in filenames"
-msgstr "Dosya isimlerinde taksim işareti kullanılamaz"
+msgstr "Dosya adlarında taksim işareti kullanılamaz"
 
 #: /home/codygarver/files/po/../libcore/gof-file.c:2076
 msgid "Toplevel files cannot be renamed"
@@ -2212,7 +2212,7 @@ msgstr "Hazırlanıyor"
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "\"%s\" klasörü birleştirilsin mi?"
+msgstr "%s dizini birleştirilsin mi?"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:364
@@ -2220,26 +2220,26 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"Birleştirme işlemi klasörde kopyalanan dosyalarla çakışan dosyaların üzerine "
-"yazılacağı zaman onay için soracak."
+"Birleştirme işlemi, dizindeki kopyalanan dosyalarla çakışan herhangi bir "
+"dosya değiştirilmeden önce onay isteyecek."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip daha eski bir klasör mevcut."
+msgstr "\"%s\" içinde aynı adlı daha eski bir dizin zaten var."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:159
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip daha yeni bir klasör mevcut."
+msgstr "\"%s\" içinde aynı adlı daha yeni bir dizin zaten var."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:163
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip bir klasör mevcut."
+msgstr "\"%s\" içinde aynı isimde başka bir dizin zaten var."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:382
@@ -2256,7 +2256,7 @@ msgstr "%s dizinini yenisi ile değiştir?"
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip başka bir klasör mevcut."
+msgstr "\"%s\" içinde aynı adlı başka bir dizin zaten var."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:177
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:391
@@ -2273,19 +2273,19 @@ msgstr "Yerine koymak, var olan içeriğin üzerine yazılmasına neden olacak."
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip daha eski bir dosya mevcut."
+msgstr "\"%s\" içinde aynı adlı daha eski bir dosya zaten var."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde zaten aynı isimde daha yeni bir dosya var."
+msgstr "\"%s\" içinde aynı adlı daha yeni bir dosya zaten var."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı isme sahip başka bir dosya mevcut."
+msgstr "\"%s\" içinde aynı adlı başka bir dosya zaten var."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:460
@@ -2325,7 +2325,7 @@ msgstr "Birleştir"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
-msgstr "Hedef için yeni bir isim _seçin"
+msgstr "Hedef için yeni bir ad _seçin"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
