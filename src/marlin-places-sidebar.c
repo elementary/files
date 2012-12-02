@@ -754,14 +754,14 @@ over_eject_button (MarlinPlacesSidebar *sidebar,
                               NULL);
 
         /* Reload cell attributes for this particular row */
-		/*gtk_tree_view_column_cell_set_cell_data (column,
-							 GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter, FALSE, FALSE);*/
+		gtk_tree_view_column_cell_set_cell_data (column,
+							 GTK_TREE_MODEL (MARLIN_ABSTRACT_SIDEBAR(sidebar)->store), &iter, FALSE, FALSE);
 
 		gtk_tree_view_column_cell_get_position (column,
 							sidebar->eject_icon_cell_renderer,
 							&x_offset, &width);
 
-        eject_button_size = 16;
+        eject_button_size = 20;
         x_offset += width - hseparator - EJECT_BUTTON_XPAD - eject_button_size;
 
         if (x - x_offset >= 0 && x - x_offset <= eject_button_size) {
