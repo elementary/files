@@ -396,6 +396,8 @@ marlin_application_open_location (GApplication *app, GFile **files, gint n_files
         open_tabs (self, files, n_files, gdk_screen_get_default ());
     else
         open_windows (self, files, n_files, gdk_screen_get_default ());
+        
+    self->priv->open_intab = FALSE;
 }
 
 void
