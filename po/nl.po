@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-11-24 21:16+0000\n"
-"Last-Translator: OrangeTux <orangetux24@gmail.com>\n"
+"PO-Revision-Date: 2012-12-06 14:23+0000\n"
+"Last-Translator: rob <linuxned@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-11-25 06:51+0000\n"
-"X-Generator: Launchpad (build 16293)\n"
+"X-Launchpad-Export-Date: 2012-12-07 04:57+0000\n"
+"X-Generator: Launchpad (build 16341)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -83,11 +83,11 @@ msgstr "Uitbreidingen"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:209
 msgid "Single click to open:"
-msgstr "Eén klik om te openen:"
+msgstr "Enkel klikken om te openen:"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:217
 msgid "Mouse auto-selection:"
-msgstr "Muis auto-selectie"
+msgstr "Muis autoselectie"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:236
 #, c-format
@@ -911,7 +911,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "Pictogramweergave"
 
 #: /home/codygarver/files/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
@@ -971,11 +971,11 @@ msgstr "Alle bestandsbewerkingen zijn succesvol voltooid"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:421
 msgid "Show the version of the program."
-msgstr ""
+msgstr "Toon programmaversie"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:425
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "URI('s) in nieuwe tab openen"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:427
 msgid "Quit Files."
@@ -983,11 +983,11 @@ msgstr "Files afsluiten."
 
 #: /home/codygarver/files/po/../src/marlin-application.c:429
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Debuglogging inschakelen"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:430
 msgid "[URI...]"
-msgstr ""
+msgstr "[URI…]"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:439
 msgid ""
@@ -1140,11 +1140,11 @@ msgstr "Bestanden doorbladeren"
 
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "Bestandsbeheer"
 
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Nieuw venster als _Administrator"
 
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
@@ -1261,11 +1261,11 @@ msgstr "%'de verwijzing naar %s"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
-msgstr ""
+msgstr " (kopie)"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
-msgstr ""
+msgstr " (nog een kopie)"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:468
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:470
@@ -1859,14 +1859,14 @@ msgstr "Bezig met prullenbak legen"
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "%d gekopieerde items verwijderen"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "‘%s’ _verwijderen"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
@@ -1876,24 +1876,24 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "%d items terugplaatsen naar ‘%s’"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "‘%s’ terugplaatsen naar ‘%s’"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "'%s' hernoemen naar '%s'"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "%d items terugzetten uit prullenbak"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
