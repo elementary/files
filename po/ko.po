@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-12-06 04:18+0000\n"
-"Last-Translator: MinSik CHO <Unknown>\n"
+"PO-Revision-Date: 2012-12-16 10:39+0000\n"
+"Last-Translator: Ahn Nyeoung <compiztab@naver.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-12-07 04:58+0000\n"
-"X-Generator: Launchpad (build 16341)\n"
+"X-Launchpad-Export-Date: 2012-12-17 05:08+0000\n"
+"X-Generator: Launchpad (build 16372)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -690,11 +690,11 @@ msgstr "새 창에서 열기(_W)"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3435
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
+msgstr "파일 붙여넣기 명령으로 선택한 파일을 옮길 준비를 합니다"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3439
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
+msgstr "파일 붙여넣기 명령으로 선택한 파일을 복사할 준비를 합니다"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3443
 msgid "Move or copy files previously selected by a Cut or Copy command"
@@ -702,7 +702,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3446
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "폴더에 붙여넣기"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3447
 msgid ""
@@ -712,19 +712,19 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3450
 msgid "_Rename..."
-msgstr ""
+msgstr "이름 바꾸기(_R)..."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3451
 msgid "Rename selected item"
-msgstr ""
+msgstr "선택한 항목의 이름을 바꿉니다"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3454
 msgid "Create New _Folder"
-msgstr ""
+msgstr "새 폴더 만들기(_F)"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3455
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "이 폴더 안에 빈 폴더를 새로 만듭니다"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3457
 msgid "Create New _File"
@@ -732,7 +732,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3459
 msgid "_Empty File"
-msgstr ""
+msgstr "빈 문서(_E)"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3460
 msgid "Create a new empty file inside this folder"
@@ -740,11 +740,11 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3464
 msgid "Open the selected item"
-msgstr ""
+msgstr "선택한 항목을 엽니다"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3471
 msgid "Open in new Window"
-msgstr ""
+msgstr "새 창에서 열기"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3472
 msgid "Open each selected item in a new window"
