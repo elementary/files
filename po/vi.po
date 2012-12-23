@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-08-08 15:09+0000\n"
-"Last-Translator: Ngô Trung <ndtrung4419@gmail.com>\n"
+"PO-Revision-Date: 2012-12-22 07:21+0000\n"
+"Last-Translator: Minh Danh <r00t3rvn@gmail.com>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-11-18 04:58+0000\n"
-"X-Generator: Launchpad (build 16278)\n"
+"X-Launchpad-Export-Date: 2012-12-23 04:57+0000\n"
+"X-Generator: Launchpad (build 16378)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -93,12 +93,12 @@ msgstr "Di chuột để chọn"
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:236
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "Chậm"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:238
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "Nhanh"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:253
 msgid "Date format:"
@@ -132,7 +132,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Files chưa phải là trình quản lí tập tin mặc định"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:150
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3386
@@ -402,7 +402,7 @@ msgstr "Thuộc tính"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
-msgstr ""
+msgstr "Xem thêm"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
 msgid "Preview"
@@ -438,7 +438,7 @@ msgstr "Vị trí ban đầu"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
-msgstr ""
+msgstr "Thông tin:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
@@ -446,11 +446,11 @@ msgstr "Ứng dụng khác"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
 msgid "Open with:"
-msgstr ""
+msgstr "Mở bằng:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
 msgid "Usage:"
-msgstr ""
+msgstr "Mức sử dụng:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
