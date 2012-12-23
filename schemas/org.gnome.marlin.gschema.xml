@@ -72,7 +72,7 @@
       <description>Whether items are activated by single clicks instead of dubble clicks</description>
     </key>
     <key type="b" name="single-click-timeout-enabled">
-      <default>true</default>
+      <default>false</default>
       <summary>single click timeout enabled</summary>
       <description>Whether mouse auto-selection should be used</description>
     </key>
