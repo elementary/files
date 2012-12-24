@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-12-22 21:23+0000\n"
+"PO-Revision-Date: 2012-12-24 00:29+0000\n"
 "Last-Translator: Marek Suchánek <suchm@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-12-23 04:56+0000\n"
+"X-Launchpad-Export-Date: 2012-12-24 04:58+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -70,7 +70,7 @@ msgstr "Vytvořit složku %s"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr "Nastavení Souborů"
+msgstr "Předvolby Správce souborů"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
@@ -131,7 +131,7 @@ msgstr "(jako Administrátor)"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
-msgstr "Pantheon není váš výchozí správce souborů."
+msgstr "Tento Správce souborů není váš výchozí"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:150
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3386
@@ -208,11 +208,11 @@ msgstr "Zavřít složku"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:777
 msgid "Preferences"
-msgstr "Nastavení"
+msgstr "Předvolby"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:778
 msgid "Change Files preferences"
-msgstr "Změnit vlastnosti Správce souborů"
+msgstr "Změnit předvolby Správce souborů"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:783
 msgid "_Undo"
@@ -329,7 +329,7 @@ msgstr "Ukázat zásluhy"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:855
 msgid "Report a Problem..."
-msgstr "Nahlásit problém..."
+msgstr "Nahlásit problém…"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:856
 msgid "File a bug on Launchpad"
@@ -337,11 +337,11 @@ msgstr "Nahlásit na Launchpad chybu"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:859
 msgid "Get Help Online..."
-msgstr "Získat online nápovědu..."
+msgstr "Získat online nápovědu…"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:863
 msgid "Translate This Application..."
-msgstr "Přeložte tuto aplikaci..."
+msgstr "Přeložte tuto aplikaci…"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:872
 msgid "Show _Hidden Files"
@@ -441,7 +441,7 @@ msgstr "Info:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
-msgstr "Jiná aplikace..."
+msgstr "Jiná aplikace…"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
 msgid "Open with:"
@@ -534,7 +534,7 @@ msgstr "Zabezpečený WebDAV (HTTPS)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr "Připojuji se..."
+msgstr "Připojuji se…"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
@@ -547,12 +547,12 @@ msgstr ""
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Složku \"%s\" se nepodařilo otevřít na \"%s\"."
+msgstr "Složku „%s“ se nepodařilo otevřít na „%s“."
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Server \"%s\" nelze nalézt."
+msgstr "Server „%s“ nelze nalézt."
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
@@ -621,7 +621,7 @@ msgstr "_Zapamatovat si heslo"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
-msgstr "Operace byla zrušena"
+msgstr "Operace zrušena"
 
 #: /home/codygarver/files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
@@ -629,36 +629,36 @@ msgstr "Jednoduché kliknutí"
 
 #: /home/codygarver/files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Zda mohou být zobrazené položky aktivovány jednoduchým kliknutím"
+msgstr "Zda mohou být položky aktivovány jednoduchým kliknutím"
 
 #: /home/codygarver/files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
-msgstr "Vypršení limitu pro jednoduché kliknutí"
+msgstr "Časový limit pro jednoduché kliknutí"
 
 #: /home/codygarver/files/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
-"Množství času, po kterém se položka pod kurzorem myši v módu jednoduchého "
-"kliknutí sama označí"
+"Čas, po kterém se v módu jednoduchého kliknutí položka pod kurzorem sama "
+"označí"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1151
 msgid "Invalid filename provided by XDS drag site"
-msgstr "Neplatné jméno souboru bzlo poskytnuto službou XDG"
+msgstr "Služba XDG poskytla neplatné jméno souboru"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1309
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Nepodařilo se vytvořit odkaz pro adresu URL \"%s\""
+msgstr "Nepodařilo se vytvořit odkaz pro adresu URL „%s“"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1794
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Použít \"%s\" k otevření vybrané položky"
-msgstr[1] "Použít \"%s\" k otevření vybraných položek"
-msgstr[2] "Použít \"%s\" k otevření vybraných položek"
+msgstr[0] "Použít „%s“ k otevření vybrané položky"
+msgstr[1] "Použít „%s“ k otevření vybraných položek"
+msgstr[2] "Použít „%s“ k otevření vybraných položek"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1941
 #, c-format
@@ -719,7 +719,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3450
 msgid "_Rename..."
-msgstr "_Přejmenovat…"
+msgstr "Pře_jmenovat…"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3451
 msgid "Rename selected item"
@@ -727,7 +727,7 @@ msgstr "Přejmenovat vybranou položku"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3454
 msgid "Create New _Folder"
-msgstr "Vytvořit novou _složku"
+msgstr "Vytvořit _novou složku"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3455
 msgid "Create a new empty folder inside this folder"
@@ -735,7 +735,7 @@ msgstr "Vytvořit v této složce novou prázdnou složku"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3457
 msgid "Create New _File"
-msgstr "Vytvořit nový _soubor"
+msgstr "Vytvořit n_ový soubor"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3459
 msgid "_Empty File"
@@ -771,7 +771,7 @@ msgstr "Vyberte, kterým programem otevřít položku"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3481
 msgid "Other _Application..."
-msgstr "Jiná _aplikace..."
+msgstr "Jiná _aplikace…"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3482
 msgid "Choose another application with which to open the selected item"
@@ -787,7 +787,7 @@ msgstr "Přesunout všechny vybrané položky do koše"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3489
 msgid "_Delete Permanently"
-msgstr "Nenávratně smazat"
+msgstr "_Nenávratně smazat"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3490
 msgid "Delete each selected item, without moving to the Trash"
@@ -804,7 +804,7 @@ msgstr "Vybrat vše"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3501
 msgid "_Properties"
-msgstr "_Vlastnosti"
+msgstr "V_lastnosti"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3502
 msgid "View or modify the properties of each selected item"
@@ -929,7 +929,7 @@ msgstr "Zrušit"
 #: /home/codygarver/files/po/../src/marlin-dnd.c:217
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "Nepodařilo se spustit soubor \"%s\""
+msgstr "Nepodařilo se spustit soubor „%s“"
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:114
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:164
@@ -969,7 +969,7 @@ msgstr "Zobrazit verzi programu."
 
 #: /home/codygarver/files/po/../src/marlin-application.c:425
 msgid "Open uri(s) in new tab"
-msgstr "Otevřít adresu(y) v nové kartě"
+msgstr "Otevřít adresu(-y) v nové kartě"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:427
 msgid "Quit Files."
@@ -981,7 +981,7 @@ msgstr "Vypisovat ladicí zprávy"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:430
 msgid "[URI...]"
-msgstr "[URI...]"
+msgstr "[URI…]"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:439
 msgid ""
@@ -1138,7 +1138,7 @@ msgstr "Správce souborů"
 
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr "Nové okno jako _Administrator"
+msgstr "Nové _administrátorské okno"
 
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
@@ -1864,7 +1864,7 @@ msgstr "Smazat %d zkopírovaných položek"
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr "Smazat '%s'"
+msgstr "Smazat „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
@@ -1874,18 +1874,18 @@ msgstr "Smazat %d duplikátních položek"
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "Přesunout %d položek zpět do '%s'"
+msgstr "Přesunout %d položek zpět do „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr "Přesunout '%s' zpět do '%s'"
+msgstr "Přesunout „%s“ zpět do „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "Přejmenovat '%s' na '%s'"
+msgstr "Přejmenovat „%s“ na „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1450
@@ -1896,7 +1896,7 @@ msgstr "Obnovit %d položek z koše"
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr "Obnovit '%s' do '%s'"
+msgstr "Obnovit „%s“ do „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
@@ -1906,7 +1906,7 @@ msgstr "Přesunout %d položek zpět do koše"
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "Přesunout '%s' zpět do koše"
+msgstr "Přesunout „%s“ zpět do koše"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
@@ -1916,42 +1916,42 @@ msgstr "Smazat odkazy na %d položek"
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr "Smazat odkaz k '%s'"
+msgstr "Smazat odkaz k „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Obnovit původní oprávnění položek v '%s'"
+msgstr "Obnovit původní oprávnění položek v „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr "Vrátit původní oprávnění '%s'"
+msgstr "Vrátit původní oprávnění „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "Obnovit skupinu položky '%s' na '%s'"
+msgstr "Obnovit skupinu položky „%s“ na „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr "Obnovit vlastníka '%s' na '%s'"
+msgstr "Obnovit vlastníka „%s“ na „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr "Kopírovat %d položek do '%s'"
+msgstr "Kopírovat %d položek do „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr "Kopírovat '%s' do '%s'"
+msgstr "Kopírovat „%s“ do „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "Zdvojení %d položek v '%s'"
+msgstr "Zdvojení %d položek v „%s“"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
@@ -1971,7 +1971,7 @@ msgstr "Přesunout '%s' do '%s'"
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr "Vytvořit nový soubor '%s' ze šablony "
+msgstr "Vytvořit nový soubor „%s“ ze šablony "
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
