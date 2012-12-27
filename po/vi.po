@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-12-22 07:21+0000\n"
-"Last-Translator: Minh Danh <r00t3rvn@gmail.com>\n"
+"PO-Revision-Date: 2012-12-26 12:10+0000\n"
+"Last-Translator: Dam Tien Long <Unknown>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2012-12-23 04:57+0000\n"
+"X-Launchpad-Export-Date: 2012-12-27 05:35+0000\n"
 "X-Generator: Launchpad (build 16378)\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -454,12 +454,12 @@ msgstr "Mức sử dụng:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
-msgstr ""
+msgstr "Mức sử dụng"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "còn trống %s / %s  (đã dùng %d%%)"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -655,8 +655,7 @@ msgstr "Không thể tạo liên kết cho URL \"%s\""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Dùng \"%s\" để mở mục được chọn"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1941
 #, c-format
@@ -688,7 +687,7 @@ msgstr "Mở trong %'d _cửa sổ mới"
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1976
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2390
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Mở trong _cửa sổ mới"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3435
 msgid "Prepare the selected files to be moved with a Paste command"
