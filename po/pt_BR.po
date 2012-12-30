@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-11-22 05:09+0000\n"
-"Last-Translator: Otto Robba <Unknown>\n"
+"PO-Revision-Date: 2012-12-29 13:34+0000\n"
+"Last-Translator: Belenos Govannnon <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-11-23 05:26+0000\n"
-"X-Generator: Launchpad (build 16293)\n"
+"X-Launchpad-Export-Date: 2012-12-30 05:33+0000\n"
+"X-Generator: Launchpad (build 16378)\n"
 "Language: pt_BR\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -58,7 +58,7 @@ msgstr "A pasta não existe"
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr "O Files não consegue encontrar a pasta %s"
+msgstr "O aplicativo Arquivos não consegue encontrar a pasta %s"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -132,7 +132,7 @@ msgstr "(como administrador)"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
-msgstr "Files não é o seu gerenciador de arquivos padrão."
+msgstr "Arquivos não é o seu gerenciador de arquivos padrão."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:150
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3386
@@ -184,16 +184,16 @@ msgstr "_Ajuda"
 #: /home/codygarver/files/po/../src/View/Window.vala:764
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr "Nova _Janela"
+msgstr "Nova _janela"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:765
 msgid "Open another Files window for the displayed location"
-msgstr "Abrir outra janela do Files na localização demonstrada"
+msgstr "Abrir outra janela do Arquivos na localização demonstrada"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:768
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr "Nova _Aba"
+msgstr "Nova _aba"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:769
 msgid "Open another tab for the displayed location"
@@ -286,7 +286,7 @@ msgstr "_Ampliar"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:816
 msgid "Increase the view size"
-msgstr "Aumenta o tamanho de visão"
+msgstr "Aumenta o tamanho da visualização"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:827
 msgid "Zoom _Out"
@@ -294,7 +294,7 @@ msgstr "_Reduzir"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:828
 msgid "Decrease the view size"
-msgstr "Diminui o tamanho de visão"
+msgstr "Diminui o tamanho da visualização"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:835
 msgid "Normal Si_ze"
@@ -302,19 +302,19 @@ msgstr "Tamanho _Normal"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:836
 msgid "Use the normal view size"
-msgstr "Usar o tamanho de visão normal"
+msgstr "Usar o tamanho normal da visualização"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:839
 msgid "Next Tab"
-msgstr "Próxima Aba"
+msgstr "Próxima aba"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:843
 msgid "Previous Tab"
-msgstr "Aba Anterior"
+msgstr "Aba anterior"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:847
 msgid "Connect to _Server..."
-msgstr "Conectar ao _Servidor..."
+msgstr "Conectar ao _servidor..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:848
 msgid "Connect to a remote computer or shared disk"
@@ -330,7 +330,7 @@ msgstr "Mostrar créditos"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:855
 msgid "Report a Problem..."
-msgstr "Reportar um Problema..."
+msgstr "Reportar um problema..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:856
 msgid "File a bug on Launchpad"
@@ -338,15 +338,15 @@ msgstr "Reportar erro ao Launchpad"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:859
 msgid "Get Help Online..."
-msgstr "Obter Ajuda Online..."
+msgstr "Obter ajuda online..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:863
 msgid "Translate This Application..."
-msgstr "Traduzir Este Aplicativo..."
+msgstr "Traduzir este aplicativo..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:872
 msgid "Show _Hidden Files"
-msgstr "Exibir Arquivos _Ocultos"
+msgstr "Mostrar arquivos _ocultos"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:873
 msgid "Toggle the display of hidden files in the current window"
@@ -354,7 +354,7 @@ msgstr "Alterna a exibição de arquivos ocultos na janela atual"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:878
 msgid "Show _Desktop Files"
-msgstr "Mostrar Arquivos da Área de Trabalho"
+msgstr "Mostrar arquivos da área de trabalho"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:879
 msgid "Toggle the display of desktop files"
@@ -370,7 +370,7 @@ msgstr "Alterar a visibilidade do painel de contexto"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:888
 msgid "_Menubar"
-msgstr "Barra de _Menu"
+msgstr "Barra de _menu"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:889
 msgid "Change the visibility of this window's menubar"
