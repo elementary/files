@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-12-22 15:47+0000\n"
-"Last-Translator: Adolfo Jayme Barrientos <fitoschido@gmail.com>\n"
+"PO-Revision-Date: 2013-01-07 12:07+0000\n"
+"Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2012-12-23 04:57+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-08 05:28+0000\n"
+"X-Generator: Launchpad (build 16402)\n"
 "Language: es\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -2235,7 +2235,7 @@ msgstr "Ayer a las %-H:%M"
 
 #: /home/codygarver/files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d de %b del %Y a las %-H:%M"
+msgstr "%a %-d de %b de %Y a las %-H:%M"
 
 #: /home/codygarver/files/po/../libcore/gof-file.c:252
 #, c-format
