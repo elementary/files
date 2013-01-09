@@ -2410,7 +2410,8 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
     g_signal_connect (item, "activate",
                       G_CALLBACK (rename_shortcut_cb), sidebar);
     gtk_widget_show (item);
-    gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
+    // Omit broken "Rename..." from the sidebar
+    // gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
 
     /* Mount/Unmount/Eject menu items */
 
