@@ -284,11 +284,9 @@ namespace Marlin.View.Chrome
         {
             // First the "Open in new tab" menuitem is added to the menu.
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
-            menuitem_newtab.set_data ("location", current_right_click_path);
             menu.append (menuitem_newtab);
-            menuitem_newtab.activate.connect ( () => {
-                var location = File.new_for_uri (menuitem_newtab.get_data ("location"));
-                win.add_tab (location);
+            menuitem_newtab.activate.connect (() => {
+                win.add_tab (File.new_for_uri (current_right_click_path));
             });
             
             menu.append (new Gtk.SeparatorMenuItem ());
