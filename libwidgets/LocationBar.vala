@@ -39,7 +39,7 @@ public struct Marlin.View.Chrome.IconDirectory
 
 public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 {
-	public string current_right_click_path;
+    public string current_right_click_path;
     public string current_right_click_root;
     //double right_click_root;
 
