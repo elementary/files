@@ -283,9 +283,8 @@ namespace Marlin.View.Chrome
         private void on_files_loaded_menu()
         {
         	// First the "Open in new tab" menuitem is added to the menu.
-        	stdout.printf ("Directory: %s\n", current_right_click); //TODO: remove
         	var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
-        	menuitem_newtab.set_data ("location", current_right_click);
+        	menuitem_newtab.set_data ("location", current_right_click_path);
         	menu.append (menuitem_newtab);
         	menuitem_newtab.activate.connect ( () => {
 			var location = File.new_for_uri (menuitem_newtab.get_data ("location"));
