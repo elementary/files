@@ -282,6 +282,15 @@ namespace Marlin.View.Chrome
         
         private void on_files_loaded_menu()
         {
+            // First the "Open in new tab" menuitem is added to the menu.
+            var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
+            menu.append (menuitem_newtab);
+            menuitem_newtab.activate.connect (() => {
+                win.add_tab (File.new_for_uri (current_right_click_path));
+            });
+            
+            menu.append (new Gtk.SeparatorMenuItem ());
+            
             unowned List<GOF.File>? sorted_dirs = files_menu.get_sorted_dirs ();
             foreach (var gof in sorted_dirs) {
                 var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());

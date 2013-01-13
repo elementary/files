@@ -39,6 +39,7 @@ public struct Marlin.View.Chrome.IconDirectory
 
 public abstract class Marlin.View.Chrome.BasePathBar : EventBox
 {
+    public string current_right_click_path;
     public string current_right_click_root;
     //double right_click_root;
 
@@ -391,6 +392,7 @@ public abstract class Marlin.View.Chrome.BasePathBar : EventBox
         var el = get_element_from_coordinates ((int) event.x, (int) event.y);
         if (el != null) {
             var newpath = get_path_from_element (el);
+            current_right_click_path = newpath;
             current_right_click_root = Marlin.Utils.get_parent(newpath);
             double menu_x_root;
             if (el.x - space_breads < 0)
