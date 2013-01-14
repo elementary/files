@@ -244,7 +244,7 @@ namespace Marlin.View {
                     else
                         str += " selected";
                 } else {
-                    str = "%u items selected (%s)".printf (count, format_size ((int64) files_size));
+                    str = _("%u items selected (%s)").printf (count, format_size ((int64) files_size));
                 }
 
                 status.set_label (str);
