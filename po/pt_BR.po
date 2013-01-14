@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-16 23:49-0600\n"
-"PO-Revision-Date: 2012-12-29 13:34+0000\n"
-"Last-Translator: Belenos Govannnon <Unknown>\n"
+"PO-Revision-Date: 2013-01-13 07:21+0000\n"
+"Last-Translator: Leonardo Lemos <leonardolemos@live.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2012-12-30 05:33+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-01-14 04:48+0000\n"
+"X-Generator: Launchpad (build 16420)\n"
 "Language: pt_BR\n"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
@@ -2443,7 +2443,7 @@ msgstr "Visualizar em Colunas"
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr "Estes itens podem ser detetados esvaziando a lixeira."
+msgstr "Estes itens podem ser deletados esvaziando a lixeira."
 
 #: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
