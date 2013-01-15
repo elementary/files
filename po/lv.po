@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-11-16 23:49-0600\n"
+"POT-Creation-Date: 2013-01-14 14:39-0600\n"
 "PO-Revision-Date: 2012-05-07 02:57+0000\n"
 "Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Latvian <lv@li.org>\n"
@@ -15,8 +15,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-11-18 04:58+0000\n"
-"X-Generator: Launchpad (build 16278)\n"
+"X-Launchpad-Export-Date: 2013-01-15 05:09+0000\n"
+"X-Generator: Launchpad (build 16420)\n"
+
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
+#, c-format
+msgid "Folder does not exist"
+msgstr "Mape neeksistē"
+
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
+#, c-format
+msgid "Files can't find the folder %s"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+msgid "Create"
+msgstr "Izveidot"
+
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+#, c-format
+msgid "Create the folder %s"
+msgstr "Izveidot mapi %s"
+
+#: /home/codygarver/files/po/../src/View/OverlayBar.vala:247
+#, c-format
+msgid "%u items selected (%s)"
+msgstr ""
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -49,32 +73,131 @@ msgstr "Mainīts"
 msgid "Owner"
 msgstr "Īpašnieks"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
-#, c-format
-msgid "Folder does not exist"
-msgstr "Mape neeksistē"
+#: /home/codygarver/files/po/../src/View/ViewContainer.vala:145
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:300
+msgid "Home"
+msgstr "Mājas mape"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
-#, c-format
-msgid "Files can't find the folder %s"
+#: /home/codygarver/files/po/../src/View/ViewContainer.vala:147
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
+msgid "File System"
+msgstr "Failu sistēma"
+
+#: /home/codygarver/files/po/../src/View/ViewContainer.vala:152
+msgid "(as Administrator)"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
-msgid "Create"
-msgstr "Izveidot"
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
+msgid "General"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
+msgid "More"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
+msgid "Preview"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:323
+msgid "Created"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:328
+msgid "Last Access"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:334
+msgid "Deleted"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:339
+msgid "MimeType"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:347
+msgid "MimeTypes"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:351
+msgid "Location"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
+msgid "Origin Location"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
+msgid "Info:"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
+msgid "Other application..."
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
+msgid "Open with:"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
+msgid "Usage:"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
+msgid "Device usage:"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
-msgid "Create the folder %s"
-msgstr "Izveidot mapi %s"
+msgid "%s free of %s (%d%% used)"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
+msgid "Read"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:605
+msgid "Write"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:610
+msgid "Execute"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
+msgid "Group"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
+msgid "Everyone"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:1105
+msgid "Select an aplication to open "
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:110
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:346
+msgid "Trash"
+msgstr "Miskaste"
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:111
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:564
+msgid "Network"
+msgstr "Tīkls"
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:286
+msgid "Open in New Tab"
+msgstr ""
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
-msgid "General"
 msgstr ""
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:103
@@ -115,26 +238,12 @@ msgstr "lokās"
 msgid "informal"
 msgstr "informātisks"
 
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:145
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:300
-msgid "Home"
-msgstr "Mājas mape"
-
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:147
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
-msgid "File System"
-msgstr "Failu sistēma"
-
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:152
-msgid "(as Administrator)"
-msgstr ""
-
 #: /home/codygarver/files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
 msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:150
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3386
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3395
 msgid "Set as default"
 msgstr "Iestatīt kā noklusēto"
 
@@ -395,117 +504,428 @@ msgstr ""
 msgid "Columns"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr ""
+#: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Starpliktuvē nav nekā, ko ielīmēt"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
-msgid "More"
-msgstr ""
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1151
+msgid "Invalid filename provided by XDS drag site"
+msgstr "XDS norādītais faila nosaukums ir nepareizs"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
-msgid "Preview"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:323
-msgid "Created"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:328
-msgid "Last Access"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:334
-msgid "Deleted"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:339
-msgid "MimeType"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:347
-msgid "MimeTypes"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:351
-msgid "Location"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
-msgid "Origin Location"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
-msgid "Info:"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
-msgid "Other application..."
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
-msgid "Open with:"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
-msgid "Usage:"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
-msgid "Device usage:"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:461
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1309
 #, c-format
-msgid "%s free of %s (%d%% used)"
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Neizdevās izveidot saiti uz URL \"%s\""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1794
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1941
+#, c-format
+msgid "_Open With %s"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
-msgid "Read"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1947
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3472
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2375
+msgid "_Open"
+msgstr "At_vērt"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1963
+#, c-format
+msgid "Open in %'d New _Tabs"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:605
-msgid "Write"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1967
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3484
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2383
+msgid "Open in New _Tab"
+msgstr "Atvēr_t jaunā cilnē"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1972
+#, c-format
+msgid "Open in %'d New _Windows"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:610
-msgid "Execute"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1976
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2390
+msgid "Open in New _Window"
+msgstr "Atvērt jaunā _logā"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3444
+msgid "Prepare the selected files to be moved with a Paste command"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
-msgid "Group"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3448
+msgid "Prepare the selected files to be copied with a Paste command"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
-msgid "Everyone"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3452
+msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:1105
-msgid "Select an aplication to open "
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3455
+msgid "Paste Into Folder"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:346
-msgid "Trash"
-msgstr "Miskaste"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3456
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:564
-msgid "Network"
-msgstr "Tīkls"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3459
+msgid "_Rename..."
+msgstr ""
 
-#: /home/codygarver/files/po/../src/fm-columns-view.c:82
-#: /home/codygarver/files/po/../src/fm-list-view.c:616
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3460
+msgid "Rename selected item"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3463
+msgid "Create New _Folder"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3464
+msgid "Create a new empty folder inside this folder"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3466
+msgid "Create New _File"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3468
+msgid "_Empty File"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3469
+msgid "Create a new empty file inside this folder"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3473
+msgid "Open the selected item"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3480
+msgid "Open in new Window"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3481
+msgid "Open each selected item in a new window"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3485
+msgid "Open each selected item in a new tab"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3487
+msgid "Open Wit_h"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3488
+msgid "Choose a program with which to open the selected item"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3490
+msgid "Other _Application..."
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3491
+msgid "Choose another application with which to open the selected item"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3494
+msgid "Mo_ve to Trash"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3495
+msgid "Move each selected item to the Trash"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3498
+msgid "_Delete Permanently"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3499
+msgid "Delete each selected item, without moving to the Trash"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3502
+msgid "_Restore"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3506
+#: /home/codygarver/files/po/../src/eel-editable-label.c:3190
+msgid "Select All"
+msgstr "Izvēlēties visus"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3510
+msgid "_Properties"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3511
+msgid "View or modify the properties of each selected item"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3617
+msgid "Set Color:"
+msgstr "Iestatīt krāsu:"
+
+#: /home/codygarver/files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Ievades metodes"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "_Pārvietot šeit"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "_Kopēt šeit"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "_Saitēt šeit"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "Ielikt kā _fona attēlu"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "Atcelt"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Neizdevās izpildīt failu \"%s\""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:139
+#: /home/codygarver/files/po/../src/fm-list-view.c:199
+#: /home/codygarver/files/po/../src/fm-columns-view.c:186
+#, c-format
+msgid "Failed to rename %s to %s"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr ""
+
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:573
+#: /home/codygarver/files/po/../src/fm-list-view.c:616
+#: /home/codygarver/files/po/../src/fm-columns-view.c:82
 msgid "This folder is empty."
 msgstr ""
 
-#: /home/codygarver/files/po/../src/fm-columns-view.c:186
-#: /home/codygarver/files/po/../src/fm-list-view.c:199
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:139
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:445
+msgid "Customize Toolbar"
+msgstr "Rediģēt rīkjoslu."
+
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:464
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
+msgstr ""
+"Izvēlieties vienumus, kurus rādīt rīkjoslā. Vienumus var pārkārtot ar "
+"vilkšanu un nomešanu."
+
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:478
+msgid "Available Items"
+msgstr "Pieejamie Vienumi"
+
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:497
+msgid "Displayed Items"
+msgstr "Parādītie vienumi"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:286
+msgid "Personal"
+msgstr "Personisks"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:291
+msgid "Your common places and bookmarks"
+msgstr "Jūsu ierastās vietas un grāmatzīmes"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:348
+msgid "Open the trash"
+msgstr "Atvērt miskasti"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:358
+msgid "Devices"
+msgstr "Iekārtas"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:363
+msgid "Your local partitions and devices"
+msgstr "Jūsu lokālās partīcijas un iekārtas"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:372
+msgid "Open the contents of the File System"
+msgstr "Atvērt failu sistēmas saturu"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:431
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:456
 #, c-format
-msgid "Failed to rename %s to %s"
+msgid "Mount and open %s"
+msgstr "Montēt un atvērt %s"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:569
+msgid "Your network places"
+msgstr "Jūsu tīkla vietas"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:600
+msgid "Entire network"
+msgstr "Viss tīkls"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:602
+msgid "Browse the contents of the network"
+msgstr "Pārlūkot tīkla saturu"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1586
+msgid "_Start"
+msgstr "_Startēt"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1587
+msgid "_Stop"
+msgstr "_Apstādināt"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1592
+msgid "_Power On"
+msgstr "_Ieslēgt"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1593
+msgid "_Safely Remove Drive"
+msgstr "_Droši izņemt dzini"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1596
+msgid "_Connect Drive"
+msgstr "_Savienoties ar dzini"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1597
+msgid "_Disconnect Drive"
+msgstr "_Atvienot dzini"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1600
+msgid "_Start Multi-disk Device"
+msgstr "__Startēt vairākdisku ierīci"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1601
+msgid "_Stop Multi-disk Device"
+msgstr "_Apstādināt vairākdisku ierīci"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1605
+msgid "_Unlock Drive"
+msgstr "_Atslēgt dzini"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1606
+msgid "_Lock Drive"
+msgstr "_Slēgt dzini"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1680
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2227
+#, c-format
+msgid "Unable to start %s"
+msgstr "Neizdevās startēt %s"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1970
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1999
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2028
+#, c-format
+msgid "Unable to eject %s"
+msgstr "Neizdevās izgrūst %s"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2173
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "Neizdevās aptaujāt %s par datu nesēju izmaiņām"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2283
+#, c-format
+msgid "Unable to stop %s"
+msgstr "Neizdevās apstādināt %s"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2399
+msgid "Remove"
+msgstr "Izņemt"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2408
+msgid "Rename..."
+msgstr "Pārsaukt..."
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2421
+msgid "_Mount"
+msgstr "_Montēt"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2428
+msgid "_Unmount"
+msgstr "_Atmontēt"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2435
+msgid "_Eject"
+msgstr "_Izgrūst"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2443
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2310
+msgid "Empty _Trash"
+msgstr "Iztukšot _miskasti"
+
+#: /home/codygarver/files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
 msgstr ""
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:124
@@ -623,307 +1043,43 @@ msgstr "_Atcerēties šo paroli"
 msgid "Operation cancelled"
 msgstr "Darbība atcelta"
 
-#: /home/codygarver/files/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Viens klikšķis"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1151
-msgid "Invalid filename provided by XDS drag site"
-msgstr "XDS norādītais faila nosaukums ir nepareizs"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1309
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Neizdevās izveidot saiti uz URL \"%s\""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1794
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1941
-#, c-format
-msgid "_Open With %s"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1947
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3463
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2375
-msgid "_Open"
-msgstr "At_vērt"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1963
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1967
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3475
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2383
-msgid "Open in New _Tab"
-msgstr "Atvēr_t jaunā cilnē"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1972
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1976
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2390
-msgid "Open in New _Window"
-msgstr "Atvērt jaunā _logā"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3435
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3439
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3443
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3446
-msgid "Paste Into Folder"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3447
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3450
-msgid "_Rename..."
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3451
-msgid "Rename selected item"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3454
-msgid "Create New _Folder"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3455
-msgid "Create a new empty folder inside this folder"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3457
-msgid "Create New _File"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3459
-msgid "_Empty File"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3460
-msgid "Create a new empty file inside this folder"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3464
-msgid "Open the selected item"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3471
-msgid "Open in new Window"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3472
-msgid "Open each selected item in a new window"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3476
-msgid "Open each selected item in a new tab"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3478
-msgid "Open Wit_h"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3479
-msgid "Choose a program with which to open the selected item"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3481
-msgid "Other _Application..."
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3482
-msgid "Choose another application with which to open the selected item"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3485
-msgid "Mo_ve to Trash"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3486
-msgid "Move each selected item to the Trash"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3489
-msgid "_Delete Permanently"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3490
-msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3493
-msgid "_Restore"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3497
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3190
-msgid "Select All"
-msgstr "Izvēlēties visus"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3501
-msgid "_Properties"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3502
-msgid "View or modify the properties of each selected item"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3608
-msgid "Set Color:"
-msgstr "Iestatīt krāsu:"
-
-#: /home/codygarver/files/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Starpliktuvē nav nekā, ko ielīmēt"
-
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Filename"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Ievades metodes"
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
+#: /home/codygarver/files/po/../src/marlin-application.c:423
+msgid "Show the version of the program."
 msgstr ""
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
+#: /home/codygarver/files/po/../src/marlin-application.c:427
+msgid "Open uri(s) in new tab"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
+#: /home/codygarver/files/po/../src/marlin-application.c:429
+msgid "Quit Files."
 msgstr ""
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
+#: /home/codygarver/files/po/../src/marlin-application.c:431
+msgid "Enable debug logging"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
+#: /home/codygarver/files/po/../src/marlin-application.c:432
+msgid "[URI...]"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:445
-msgid "Customize Toolbar"
-msgstr "Rediģēt rīkjoslu."
-
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:464
+#: /home/codygarver/files/po/../src/marlin-application.c:441
 msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
+"\n"
+"\n"
+"Browse the file system with the file manager"
 msgstr ""
-"Izvēlieties vienumus, kurus rādīt rīkjoslā. Vienumus var pārkārtot ar "
-"vilkšanu un nomešanu."
+"\n"
+"\n"
+"Pārlūkot failu sistēmu ar failu pārvaldnieku"
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:478
-msgid "Available Items"
-msgstr "Pieejamie Vienumi"
-
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:497
-msgid "Displayed Items"
-msgstr "Parādītie vienumi"
-
-#: /home/codygarver/files/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:103
-msgid "_Move Here"
-msgstr "_Pārvietot šeit"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:108
-msgid "_Copy Here"
-msgstr "_Kopēt šeit"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:113
-msgid "_Link Here"
-msgstr "_Saitēt šeit"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:118
-msgid "Set as _Background"
-msgstr "Ielikt kā _fona attēlu"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:125
-msgid "Cancel"
-msgstr "Atcelt"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:217
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Neizdevās izpildīt failu \"%s\""
+#: /home/codygarver/files/po/../src/marlin-application.c:461
+msgid "--quit cannot be used with URIs."
+msgstr "--quit nevar lietot ar URI."
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:114
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:164
@@ -957,170 +1113,23 @@ msgstr ""
 msgid "All file operations have been successfully completed"
 msgstr "Visas failu darbības ir veiksmīgi pabeigtas"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:421
-msgid "Show the version of the program."
+#: /home/codygarver/files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Viens klikšķis"
+
+#: /home/codygarver/files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/marlin-application.c:425
-msgid "Open uri(s) in new tab"
+#: /home/codygarver/files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/marlin-application.c:427
-msgid "Quit Files."
-msgstr ""
-
-#: /home/codygarver/files/po/../src/marlin-application.c:429
-msgid "Enable debug logging"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/marlin-application.c:430
-msgid "[URI...]"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/marlin-application.c:439
+#: /home/codygarver/files/po/../src/exo-tree-view.c:185
 msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
 msgstr ""
-"\n"
-"\n"
-"Pārlūkot failu sistēmu ar failu pārvaldnieku"
-
-#: /home/codygarver/files/po/../src/marlin-application.c:459
-msgid "--quit cannot be used with URIs."
-msgstr "--quit nevar lietot ar URI."
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:286
-msgid "Personal"
-msgstr "Personisks"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:291
-msgid "Your common places and bookmarks"
-msgstr "Jūsu ierastās vietas un grāmatzīmes"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:348
-msgid "Open the trash"
-msgstr "Atvērt miskasti"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:358
-msgid "Devices"
-msgstr "Iekārtas"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:363
-msgid "Your local partitions and devices"
-msgstr "Jūsu lokālās partīcijas un iekārtas"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:372
-msgid "Open the contents of the File System"
-msgstr "Atvērt failu sistēmas saturu"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:431
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:456
-#, c-format
-msgid "Mount and open %s"
-msgstr "Montēt un atvērt %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:569
-msgid "Your network places"
-msgstr "Jūsu tīkla vietas"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:600
-msgid "Entire network"
-msgstr "Viss tīkls"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:602
-msgid "Browse the contents of the network"
-msgstr "Pārlūkot tīkla saturu"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1586
-msgid "_Start"
-msgstr "_Startēt"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1587
-msgid "_Stop"
-msgstr "_Apstādināt"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1592
-msgid "_Power On"
-msgstr "_Ieslēgt"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1593
-msgid "_Safely Remove Drive"
-msgstr "_Droši izņemt dzini"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1596
-msgid "_Connect Drive"
-msgstr "_Savienoties ar dzini"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1597
-msgid "_Disconnect Drive"
-msgstr "_Atvienot dzini"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1600
-msgid "_Start Multi-disk Device"
-msgstr "__Startēt vairākdisku ierīci"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1601
-msgid "_Stop Multi-disk Device"
-msgstr "_Apstādināt vairākdisku ierīci"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1605
-msgid "_Unlock Drive"
-msgstr "_Atslēgt dzini"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1606
-msgid "_Lock Drive"
-msgstr "_Slēgt dzini"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1680
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2227
-#, c-format
-msgid "Unable to start %s"
-msgstr "Neizdevās startēt %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1970
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1999
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2028
-#, c-format
-msgid "Unable to eject %s"
-msgstr "Neizdevās izgrūst %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2173
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Neizdevās aptaujāt %s par datu nesēju izmaiņām"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2283
-#, c-format
-msgid "Unable to stop %s"
-msgstr "Neizdevās apstādināt %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2399
-msgid "Remove"
-msgstr "Izņemt"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2408
-msgid "Rename..."
-msgstr "Pārsaukt..."
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2420
-msgid "_Mount"
-msgstr "_Montēt"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2427
-msgid "_Unmount"
-msgstr "_Atmontēt"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2434
-msgid "_Eject"
-msgstr "_Izgrūst"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2442
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2310
-msgid "Empty _Trash"
-msgstr "Iztukšot _miskasti"
 
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -1141,15 +1150,6 @@ msgstr ""
 #: /home/codygarver/files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
 msgstr "Rādīt _sīkāku informāciju"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:119
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Neizdevās noteikt sākotnējo \"%s\" atrašanās vietu "
-
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:122
-msgid "The item cannot be restored from trash"
-msgstr "Vienību nevar atjaunot no miskastes"
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:200
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:737
@@ -1859,6 +1859,196 @@ msgstr "Gadījās kļūda veidojot direktoriju %F."
 msgid "Emptying Trash"
 msgstr "Iztukšo miskasti"
 
+#: /home/codygarver/files/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "saite uz %s"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:1702
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Nevarēja saprast darba virsmas failu: %s"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:1740
+msgid "No Exec field specified"
+msgstr "Nav norādīts Exec lauks"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:1760
+msgid "No URL field specified"
+msgstr "Nav norādīts URL lauks"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:1766
+msgid "Invalid desktop file"
+msgstr "Nederīgs darbavirsmas fails"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:2056
+msgid "Slashes are not allowed in filenames"
+msgstr "Slīpsvītras nav atļautas failu nosaukumos"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:2076
+msgid "Toplevel files cannot be renamed"
+msgstr "Nevar pārsaukt augstākā līmeņa failus"
+
+#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:192
+#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "Sagatavo"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:361
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Apvienot mapes \"%s\"?"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:364
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Apvienošanas laikā tiks vaicāts pēc apstiprinājuma pirms jebkādu esošu failu "
+"pārrakstīšanas, ja tie konfliktēs ar jaunajiem failiem."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Vecāka mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Jaunāka mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:377
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Cita mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:382
+msgid "Replacing it will remove all files in the folder."
+msgstr "Aizvietošana izdzēsīs visus failus mapē."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Aizvietot mapi \"%s\"?"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:391
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Aizvietot failu \"%s\"?"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will overwrite its content."
+msgstr "Tā aizvietošana pārrakstīs visu tā saturu."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Vecāks fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Jaunāks fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:405
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Cits fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:460
+msgid "Original file"
+msgstr "Sākotnējais fails"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:482
+msgid "Size:"
+msgstr "Izmērs:"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:485
+msgid "Type:"
+msgstr "Tips:"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:488
+msgid "Last modified:"
+msgstr "Pēdējo reizi mainīts:"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Replace with"
+msgstr "Aizvietot ar"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:506
+msgid "Merge"
+msgstr "Apvienot"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
+msgid "_Select a new name for the destination"
+msgstr "Izvēlētie_s jaunu nosaukumu galamērķim:"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:714
+msgid "Reset"
+msgstr "Atiestatīt"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:726
+msgid "Apply this action to all files"
+msgstr "Veikt šo darbību visiem failiem"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:742
+msgid "Re_name"
+msgstr "Pā_rsaukt"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:748
+msgid "Replace"
+msgstr "Aizvietot"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:821
+msgid "File conflict"
+msgstr "Failu konflikts"
+
+#: /home/codygarver/files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr ""
+
+#: /home/codygarver/files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (nederīgs unikods)"
+
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
@@ -2231,210 +2421,29 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr ""
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr ""
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:252
+#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
-msgid "link to %s"
-msgstr "saite uz %s"
+msgid "Could not determine original location of \"%s\" "
+msgstr "Neizdevās noteikt sākotnējo \"%s\" atrašanās vietu "
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1702
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Nevarēja saprast darba virsmas failu: %s"
+#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "Vienību nevar atjaunot no miskastes"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1740
-msgid "No Exec field specified"
-msgstr "Nav norādīts Exec lauks"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1760
-msgid "No URL field specified"
-msgstr "Nav norādīts URL lauks"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1766
-msgid "Invalid desktop file"
-msgstr "Nederīgs darbavirsmas fails"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2056
-msgid "Slashes are not allowed in filenames"
-msgstr "Slīpsvītras nav atļautas failu nosaukumos"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2076
-msgid "Toplevel files cannot be renamed"
-msgstr "Nevar pārsaukt augstākā līmeņa failus"
-
-#: /home/codygarver/files/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (nederīgs unikods)"
-
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "Sagatavo"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:361
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Apvienot mapes \"%s\"?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:364
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Apvienošanas laikā tiks vaicāts pēc apstiprinājuma pirms jebkādu esošu failu "
-"pārrakstīšanas, ja tie konfliktēs ar jaunajiem failiem."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Vecāka mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Jaunāka mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:377
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Cita mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:382
-msgid "Replacing it will remove all files in the folder."
-msgstr "Aizvietošana izdzēsīs visus failus mapē."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Aizvietot mapi \"%s\"?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Mape ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:391
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Aizvietot failu \"%s\"?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will overwrite its content."
-msgstr "Tā aizvietošana pārrakstīs visu tā saturu."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Vecāks fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Jaunāks fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:405
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Cits fails ar tādu pašu nosaukumu jau eksistē mapē \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:460
-msgid "Original file"
-msgstr "Sākotnējais fails"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:482
-msgid "Size:"
-msgstr "Izmērs:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:485
-msgid "Type:"
-msgstr "Tips:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:488
-msgid "Last modified:"
-msgstr "Pēdējo reizi mainīts:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Replace with"
-msgstr "Aizvietot ar"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:506
-msgid "Merge"
-msgstr "Apvienot"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
-msgid "_Select a new name for the destination"
-msgstr "Izvēlētie_s jaunu nosaukumu galamērķim:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:714
-msgid "Reset"
-msgstr "Atiestatīt"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:726
-msgid "Apply this action to all files"
-msgstr "Veikt šo darbību visiem failiem"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:742
-msgid "Re_name"
-msgstr "Pā_rsaukt"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:748
-msgid "Replace"
-msgstr "Aizvietot"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:821
-msgid "File conflict"
-msgstr "Failu konflikts"
-
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:320
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:321
 msgid "Cut the selected text to the clipboard"
 msgstr ""
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:324
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:325
 msgid "Copy the selected text to the clipboard"
 msgstr ""
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:328
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:332
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:329
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:333
 msgid "Paste the text stored on the clipboard"
 msgstr ""
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:808
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:812
 #, c-format
 msgid "Go to %s"
 msgstr "Doties uz %s"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
-"POT-Creation-Date: 2012-11-16 23:49-0600\n"
+"POT-Creation-Date: 2013-01-14 14:39-0600\n"
 "PO-Revision-Date: 2012-11-28 19:57+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -16,8 +16,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2012-11-29 05:32+0000\n"
-"X-Generator: Launchpad (build 16319)\n"
+"X-Launchpad-Export-Date: 2013-01-15 05:10+0000\n"
+"X-Generator: Launchpad (build 16420)\n"
+
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
+#, c-format
+msgid "Folder does not exist"
+msgstr "Mapa ne postoji"
+
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
+#, c-format
+msgid "Files can't find the folder %s"
+msgstr "Files ne može pronaći mapu %s"
+
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+msgid "Create"
+msgstr "Napravi"
+
+#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+#, c-format
+msgid "Create the folder %s"
+msgstr "Napravi mapu %s"
+
+#: /home/codygarver/files/po/../src/View/OverlayBar.vala:247
+#, c-format
+msgid "%u items selected (%s)"
+msgstr ""
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -50,33 +74,132 @@ msgstr "Izmijenjeno"
 msgid "Owner"
 msgstr "Vlasnik"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
-#, c-format
-msgid "Folder does not exist"
-msgstr "Mapa ne postoji"
+#: /home/codygarver/files/po/../src/View/ViewContainer.vala:145
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:300
+msgid "Home"
+msgstr "Osobna mapa"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
-#, c-format
-msgid "Files can't find the folder %s"
-msgstr "Files ne može pronaći mapu %s"
+#: /home/codygarver/files/po/../src/View/ViewContainer.vala:147
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
+msgid "File System"
+msgstr "Datotečni sustav"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
-msgid "Create"
-msgstr "Napravi"
+#: /home/codygarver/files/po/../src/View/ViewContainer.vala:152
+msgid "(as Administrator)"
+msgstr "(kao administrator)"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
+msgid "Properties"
+msgstr "Svojstva"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
+#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
+msgid "General"
+msgstr "Općenito"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
+msgid "More"
+msgstr "Više"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
+msgid "Preview"
+msgstr "Pretpregled"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:323
+msgid "Created"
+msgstr "Stvoreno"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:328
+msgid "Last Access"
+msgstr "Pristupljeno"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:334
+msgid "Deleted"
+msgstr "Obrisano"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:339
+msgid "MimeType"
+msgstr "Mime vrsta"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:347
+msgid "MimeTypes"
+msgstr "Mime vrste"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:351
+msgid "Location"
+msgstr "Lokacija"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
+msgid "Origin Location"
+msgstr "Izvorna lokacija"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
+msgid "Info:"
+msgstr "Informacija"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
+msgid "Other application..."
+msgstr "Druga aplikacija..."
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
+msgid "Open with:"
+msgstr "Otvori pomoću:"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
+msgid "Usage:"
+msgstr "Upotrebljeno"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
+msgid "Device usage:"
+msgstr "Zazuzetost uređaja:"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
-msgid "Create the folder %s"
-msgstr "Napravi mapu %s"
+msgid "%s free of %s (%d%% used)"
+msgstr "%s slobodno od %s (%d%% iskorišteno)"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
+msgid "Read"
+msgstr "Čitanje"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:605
+msgid "Write"
+msgstr "Pisanje"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:610
+msgid "Execute"
+msgstr "Izvršavanje"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
+msgid "Group"
+msgstr "Grupa"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
+msgid "Everyone"
+msgstr "Ostali"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:1105
+msgid "Select an aplication to open "
+msgstr "Odaberite aplikaciju za otvaranje "
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:110
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:346
+msgid "Trash"
+msgstr "Smeće"
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:111
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:564
+msgid "Network"
+msgstr "Mreža"
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:286
+msgid "Open in New Tab"
+msgstr ""
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
 msgstr "Files osobitosti"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
-msgid "General"
-msgstr "Općenito"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:103
 msgid "Extensions"
@@ -116,26 +239,12 @@ msgstr "lokalan"
 msgid "informal"
 msgstr "neformalan"
 
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:145
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:300
-msgid "Home"
-msgstr "Osobna mapa"
-
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:147
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
-msgid "File System"
-msgstr "Datotečni sustav"
-
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:152
-msgid "(as Administrator)"
-msgstr "(kao administrator)"
-
 #: /home/codygarver/files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
 msgstr "Datoteke nisu vaš zadani upravitelj datoteka."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:150
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3386
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3395
 msgid "Set as default"
 msgstr "Postavi kao zadano"
 
@@ -396,118 +505,436 @@ msgstr "Popis"
 msgid "Columns"
 msgstr "Stupci"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
-msgid "Properties"
-msgstr "Svojstva"
+#: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Nema ništa u međuspremniku za zalijepiti"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
-msgid "More"
-msgstr "Više"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1151
+msgid "Invalid filename provided by XDS drag site"
+msgstr "Pogrešan naziv datoteke XDS stranice povlačenja"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
-msgid "Preview"
-msgstr "Pretpregled"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:323
-msgid "Created"
-msgstr "Stvoreno"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:328
-msgid "Last Access"
-msgstr "Pristupljeno"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:334
-msgid "Deleted"
-msgstr "Obrisano"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:339
-msgid "MimeType"
-msgstr "Mime vrsta"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:347
-msgid "MimeTypes"
-msgstr "Mime vrste"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:351
-msgid "Location"
-msgstr "Lokacija"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
-msgid "Origin Location"
-msgstr "Izvorna lokacija"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
-msgid "Info:"
-msgstr "Informacija"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
-msgid "Other application..."
-msgstr "Druga aplikacija..."
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
-msgid "Open with:"
-msgstr "Otvori pomoću:"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
-msgid "Usage:"
-msgstr "Upotrebljeno"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
-msgid "Device usage:"
-msgstr "Zazuzetost uređaja:"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:461
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1309
 #, c-format
-msgid "%s free of %s (%d%% used)"
-msgstr "%s slobodno od %s (%d%% iskorišteno)"
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "Neuspjelo stvaranje poveznice za URL \"%s\""
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
-msgid "Read"
-msgstr "Čitanje"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1794
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Koristi \"%s\" za otvaranje odabrane stavke"
+msgstr[1] "Koristi \"%s\" za otvaranje odabrane stavke"
+msgstr[2] "Koristi \"%s\" za otvaranje odabranih stavki"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:605
-msgid "Write"
-msgstr "Pisanje"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1941
+#, c-format
+msgid "_Open With %s"
+msgstr "_Otvori s(a) %s"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:610
-msgid "Execute"
-msgstr "Izvršavanje"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1947
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3472
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2375
+msgid "_Open"
+msgstr "_Otvori"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
-msgid "Group"
-msgstr "Grupa"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1963
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "Otvori u %'d nove(ih) _kartice(a)"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
-msgid "Everyone"
-msgstr "Ostali"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1967
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3484
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2383
+msgid "Open in New _Tab"
+msgstr "Otvori u novoj _kartici"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:1105
-msgid "Select an aplication to open "
-msgstr "Odaberite aplikaciju za otvaranje "
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1972
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "Otvori u %'d nova(ih) _prozora"
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:346
-msgid "Trash"
-msgstr "Smeće"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:1976
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2390
+msgid "Open in New _Window"
+msgstr "Otvori u novom _prozoru"
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:564
-msgid "Network"
-msgstr "Mreža"
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3444
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr ""
+"Pripremi odabrane datoteke za premještanje naredbom \"Zaljepi - Ctrl+V\""
 
-#: /home/codygarver/files/po/../src/fm-columns-view.c:82
-#: /home/codygarver/files/po/../src/fm-list-view.c:616
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:573
-msgid "This folder is empty."
-msgstr "Ova mapa je prazna."
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3448
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr ""
+"Pripremi odabrane datoteke za kopiranje naredbom \"Zaljepi - Ctrl+V\""
 
-#: /home/codygarver/files/po/../src/fm-columns-view.c:186
-#: /home/codygarver/files/po/../src/fm-list-view.c:199
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3452
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Premjesti ili kopiraj datoteke prethodno odabrane naredbom \"Izreži\" ili "
+"\"Kopiraj\""
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3455
+msgid "Paste Into Folder"
+msgstr "Zalijepi u mapu"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3456
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Premjesti ili kopiraj datoteke prethodno odabrane naredbom \"Izreži\" ili "
+"\"Kopiraj\" u odabranu mapu"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3459
+msgid "_Rename..."
+msgstr "_Preimenuj..."
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3460
+msgid "Rename selected item"
+msgstr "Preimenuj odabranu stavku"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3463
+msgid "Create New _Folder"
+msgstr "Napravi novu  _mapu"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3464
+msgid "Create a new empty folder inside this folder"
+msgstr "Stvaranje prazne mape unutar trenutne mape"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3466
+msgid "Create New _File"
+msgstr "Napravi novu  _datoteku"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3468
+msgid "_Empty File"
+msgstr "_Prazna datoteka"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3469
+msgid "Create a new empty file inside this folder"
+msgstr "Stvaranje prazne datoteke unutar trenutne mape"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3473
+msgid "Open the selected item"
+msgstr "Otvori odabranu stavku"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3480
+msgid "Open in new Window"
+msgstr "Otvori u novom prozoru"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3481
+msgid "Open each selected item in a new window"
+msgstr "Otvori svaku odabranu stavku u novom prozoru"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3485
+msgid "Open each selected item in a new tab"
+msgstr "Otvori svaku odabranu stavku u novoj kartici"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3487
+msgid "Open Wit_h"
+msgstr "Otvori pomoć_u"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3488
+msgid "Choose a program with which to open the selected item"
+msgstr "Odaberite program za otvaranje odabrane stavke"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3490
+msgid "Other _Application..."
+msgstr "Druga _aplikacija..."
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3491
+msgid "Choose another application with which to open the selected item"
+msgstr "Izaberite aplikaciju za otvaranje odbrane stavke"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3494
+msgid "Mo_ve to Trash"
+msgstr "Pre_mjesti u smeće"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3495
+msgid "Move each selected item to the Trash"
+msgstr "Premjesti svaku odabranu stavku u smeće"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3498
+msgid "_Delete Permanently"
+msgstr "_Obriši trajno"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3499
+msgid "Delete each selected item, without moving to the Trash"
+msgstr "Obriši odabranu stavku bez premještanja u smeće"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3502
+msgid "_Restore"
+msgstr "_Vrati"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3506
+#: /home/codygarver/files/po/../src/eel-editable-label.c:3190
+msgid "Select All"
+msgstr "Odaberi sve"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3510
+msgid "_Properties"
+msgstr "_Svojstva"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3511
+msgid "View or modify the properties of each selected item"
+msgstr "Pogledaj ili promijeni svojstva svake odabrane stavke"
+
+#: /home/codygarver/files/po/../src/fm-directory-view.c:3617
+msgid "Set Color:"
+msgstr "Postavi boju:"
+
+#: /home/codygarver/files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Načini unosa"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "_Premjesti ovdje"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "_Kopiraj ovdje"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "_Poveži ovdje"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "Postavi kao _pozadinu"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "Otkaži"
+
+#: /home/codygarver/files/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "Neuspjelo pokretanje datoteke \"%s\""
+
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:139
+#: /home/codygarver/files/po/../src/fm-list-view.c:199
+#: /home/codygarver/files/po/../src/fm-columns-view.c:186
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "Neuspjelo preimenovanje %s u %s"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
+msgid "Arran_ge Items"
+msgstr "Po_redaj stavke"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:288
+msgid "Re_versed Order"
+msgstr "O_brnuti poredak"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:289
+msgid "Display icons in the opposite order"
+msgstr "Prikaži ikone u obrnutom poretku"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
+msgid "By _Name"
+msgstr "Prema _imenu"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
+msgid "Keep icons sorted by name in rows"
+msgstr "Drži ikone poredane prema imenu u retcima"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
+msgid "By _Size"
+msgstr "Prema _veličini"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
+msgid "Keep icons sorted by size in rows"
+msgstr "Drži ikone poredane prema veličini u retcima"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
+msgid "By _Type"
+msgstr "Prema _vrsti"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
+msgid "Keep icons sorted by type in rows"
+msgstr "Drži ikone poredane prema vrsti u retcima"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
+msgid "By Modification _Date"
+msgstr "Prema _datumu promjene"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
+msgid "Keep icons sorted by modification date in rows"
+msgstr "Drži ikone poredane prema datumu izmjene u retcima"
+
+#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:573
+#: /home/codygarver/files/po/../src/fm-list-view.c:616
+#: /home/codygarver/files/po/../src/fm-columns-view.c:82
+msgid "This folder is empty."
+msgstr "Ova mapa je prazna."
+
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:445
+msgid "Customize Toolbar"
+msgstr "Prilagodi alatnu traku"
+
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:464
+msgid ""
+"Select items to be displayed on the toolbar. Items can be reordered by drag "
+"and drop."
+msgstr ""
+"Odaberite stavke za prikaz na alatnoj traci. Redoslijed stavaka se može "
+"promijeniti 'Povuci i ispusti' radnjom."
+
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:478
+msgid "Available Items"
+msgstr "Dostupne stavke"
+
+#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:497
+msgid "Displayed Items"
+msgstr "Prikazane stavke"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:286
+msgid "Personal"
+msgstr "Osobno"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:291
+msgid "Your common places and bookmarks"
+msgstr "Vaša uobičajna mjesta i zabilješke"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:348
+msgid "Open the trash"
+msgstr "Otvori smeće"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:358
+msgid "Devices"
+msgstr "Uređaji"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:363
+msgid "Your local partitions and devices"
+msgstr "Vaše lokalne particije i uređaji"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:372
+msgid "Open the contents of the File System"
+msgstr "Otvorite sadržaj datotečnog sustava"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:431
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:456
+#, c-format
+msgid "Mount and open %s"
+msgstr "Montiraj i otvori %s"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:569
+msgid "Your network places"
+msgstr "Vaša mrežna mjesta"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:600
+msgid "Entire network"
+msgstr "Sve mreže"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:602
+msgid "Browse the contents of the network"
+msgstr "Pregledavanje sadržaja mreže"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1586
+msgid "_Start"
+msgstr "_Pokreni"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1587
+msgid "_Stop"
+msgstr "_Zaustavi"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1592
+msgid "_Power On"
+msgstr "_Uključi"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1593
+msgid "_Safely Remove Drive"
+msgstr "_Sigurno uklanjanje uređaja"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1596
+msgid "_Connect Drive"
+msgstr "_Poveži uređaj"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1597
+msgid "_Disconnect Drive"
+msgstr "_Odspoji uređaj"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1600
+msgid "_Start Multi-disk Device"
+msgstr "_Pokreni uređaj s više diskova"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1601
+msgid "_Stop Multi-disk Device"
+msgstr "_Zaustavi uređaj s više diskova"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1605
+msgid "_Unlock Drive"
+msgstr "_Otključaj uređaj"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1606
+msgid "_Lock Drive"
+msgstr "_Zaključaj uređaj"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1680
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2227
+#, c-format
+msgid "Unable to start %s"
+msgstr "Nemoguće je pokrenuti %s"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1970
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1999
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2028
+#, c-format
+msgid "Unable to eject %s"
+msgstr "Nemoguće je izbaciti %s"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2173
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "Nemoguće je ispitati %s za promjene na mediju"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2283
+#, c-format
+msgid "Unable to stop %s"
+msgstr "Nije moguće zaustaviti %s"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2399
+msgid "Remove"
+msgstr "Ukloni"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2408
+msgid "Rename..."
+msgstr "Preimenuj..."
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2421
+msgid "_Mount"
+msgstr "_Montiraj"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2428
+msgid "_Unmount"
+msgstr "_Odmontiraj"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2435
+msgid "_Eject"
+msgstr "_Izbaci"
+
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2443
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
+#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2310
+msgid "Empty _Trash"
+msgstr "Isprazni _smeće"
+
+#: /home/codygarver/files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Izlazni način"
+
+#: /home/codygarver/files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "Izlazni način"
+
+#: /home/codygarver/files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Ikonski popis direktorija"
+
+#: /home/codygarver/files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Ikonski pogled"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -624,316 +1051,43 @@ msgstr "_Zapamti ovu lozinku"
 msgid "Operation cancelled"
 msgstr "Izmjena otkazana"
 
-#: /home/codygarver/files/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Jednostruki klik"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Stavke u prikazu se mogu pokrenuti jednim klikom"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "Trajanje jednog klika"
-
-#: /home/codygarver/files/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-"Vrijeme nakon kojeg će stavke pod pokazivačem miša automatski biti odabrane "
-"u modu jednog klika"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1151
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Pogrešan naziv datoteke XDS stranice povlačenja"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1309
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "Neuspjelo stvaranje poveznice za URL \"%s\""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1794
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Koristi \"%s\" za otvaranje odabrane stavke"
-msgstr[1] "Koristi \"%s\" za otvaranje odabrane stavke"
-msgstr[2] "Koristi \"%s\" za otvaranje odabranih stavki"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1941
-#, c-format
-msgid "_Open With %s"
-msgstr "_Otvori s(a) %s"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1947
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3463
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2375
-msgid "_Open"
-msgstr "_Otvori"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1963
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "Otvori u %'d nove(ih) _kartice(a)"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1967
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3475
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2383
-msgid "Open in New _Tab"
-msgstr "Otvori u novoj _kartici"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1972
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "Otvori u %'d nova(ih) _prozora"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1976
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2390
-msgid "Open in New _Window"
-msgstr "Otvori u novom _prozoru"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3435
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-"Pripremi odabrane datoteke za premještanje naredbom \"Zaljepi - Ctrl+V\""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3439
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-"Pripremi odabrane datoteke za kopiranje naredbom \"Zaljepi - Ctrl+V\""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3443
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Premjesti ili kopiraj datoteke prethodno odabrane naredbom \"Izreži\" ili "
-"\"Kopiraj\""
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3446
-msgid "Paste Into Folder"
-msgstr "Zalijepi u mapu"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3447
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Premjesti ili kopiraj datoteke prethodno odabrane naredbom \"Izreži\" ili "
-"\"Kopiraj\" u odabranu mapu"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3450
-msgid "_Rename..."
-msgstr "_Preimenuj..."
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3451
-msgid "Rename selected item"
-msgstr "Preimenuj odabranu stavku"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3454
-msgid "Create New _Folder"
-msgstr "Napravi novu  _mapu"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3455
-msgid "Create a new empty folder inside this folder"
-msgstr "Stvaranje prazne mape unutar trenutne mape"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3457
-msgid "Create New _File"
-msgstr "Napravi novu  _datoteku"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3459
-msgid "_Empty File"
-msgstr "_Prazna datoteka"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3460
-msgid "Create a new empty file inside this folder"
-msgstr "Stvaranje prazne datoteke unutar trenutne mape"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3464
-msgid "Open the selected item"
-msgstr "Otvori odabranu stavku"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3471
-msgid "Open in new Window"
-msgstr "Otvori u novom prozoru"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3472
-msgid "Open each selected item in a new window"
-msgstr "Otvori svaku odabranu stavku u novom prozoru"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3476
-msgid "Open each selected item in a new tab"
-msgstr "Otvori svaku odabranu stavku u novoj kartici"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3478
-msgid "Open Wit_h"
-msgstr "Otvori pomoć_u"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3479
-msgid "Choose a program with which to open the selected item"
-msgstr "Odaberite program za otvaranje odabrane stavke"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3481
-msgid "Other _Application..."
-msgstr "Druga _aplikacija..."
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3482
-msgid "Choose another application with which to open the selected item"
-msgstr "Izaberite aplikaciju za otvaranje odbrane stavke"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3485
-msgid "Mo_ve to Trash"
-msgstr "Pre_mjesti u smeće"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3486
-msgid "Move each selected item to the Trash"
-msgstr "Premjesti svaku odabranu stavku u smeće"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3489
-msgid "_Delete Permanently"
-msgstr "_Obriši trajno"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3490
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "Obriši odabranu stavku bez premještanja u smeće"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3493
-msgid "_Restore"
-msgstr "_Vrati"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3497
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3190
-msgid "Select All"
-msgstr "Odaberi sve"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3501
-msgid "_Properties"
-msgstr "_Svojstva"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3502
-msgid "View or modify the properties of each selected item"
-msgstr "Pogledaj ili promijeni svojstva svake odabrane stavke"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3608
-msgid "Set Color:"
-msgstr "Postavi boju:"
-
-#: /home/codygarver/files/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Izlazni način"
-
-#: /home/codygarver/files/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "Izlazni način"
-
-#: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Nema ništa u međuspremniku za zalijepiti"
-
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Filename"
 msgstr "Naziv datoteke"
 
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Načini unosa"
+#: /home/codygarver/files/po/../src/marlin-application.c:423
+msgid "Show the version of the program."
+msgstr "Prikaži inačicu programa."
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
-msgid "Arran_ge Items"
-msgstr "Po_redaj stavke"
+#: /home/codygarver/files/po/../src/marlin-application.c:427
+msgid "Open uri(s) in new tab"
+msgstr "Ovori uri(e) u novoj kartici"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:288
-msgid "Re_versed Order"
-msgstr "O_brnuti poredak"
+#: /home/codygarver/files/po/../src/marlin-application.c:429
+msgid "Quit Files."
+msgstr "Zatvori Files."
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:289
-msgid "Display icons in the opposite order"
-msgstr "Prikaži ikone u obrnutom poretku"
+#: /home/codygarver/files/po/../src/marlin-application.c:431
+msgid "Enable debug logging"
+msgstr "Omogući zapis grešaka"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
-msgid "By _Name"
-msgstr "Prema _imenu"
+#: /home/codygarver/files/po/../src/marlin-application.c:432
+msgid "[URI...]"
+msgstr "[URI...]"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
-msgid "Keep icons sorted by name in rows"
-msgstr "Drži ikone poredane prema imenu u retcima"
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
-msgid "By _Size"
-msgstr "Prema _veličini"
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
-msgid "Keep icons sorted by size in rows"
-msgstr "Drži ikone poredane prema veličini u retcima"
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
-msgid "By _Type"
-msgstr "Prema _vrsti"
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
-msgid "Keep icons sorted by type in rows"
-msgstr "Drži ikone poredane prema vrsti u retcima"
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
-msgid "By Modification _Date"
-msgstr "Prema _datumu promjene"
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
-msgid "Keep icons sorted by modification date in rows"
-msgstr "Drži ikone poredane prema datumu izmjene u retcima"
-
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:445
-msgid "Customize Toolbar"
-msgstr "Prilagodi alatnu traku"
-
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:464
+#: /home/codygarver/files/po/../src/marlin-application.c:441
 msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
+"\n"
+"\n"
+"Browse the file system with the file manager"
 msgstr ""
-"Odaberite stavke za prikaz na alatnoj traci. Redoslijed stavaka se može "
-"promijeniti 'Povuci i ispusti' radnjom."
+"\n"
+"\n"
+"Pregledaj datotečni sustav s upraviteljem datoteka"
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:478
-msgid "Available Items"
-msgstr "Dostupne stavke"
-
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:497
-msgid "Displayed Items"
-msgstr "Prikazane stavke"
-
-#: /home/codygarver/files/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Ikonski popis direktorija"
-
-#: /home/codygarver/files/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Ikonski pogled"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:103
-msgid "_Move Here"
-msgstr "_Premjesti ovdje"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:108
-msgid "_Copy Here"
-msgstr "_Kopiraj ovdje"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:113
-msgid "_Link Here"
-msgstr "_Poveži ovdje"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:118
-msgid "Set as _Background"
-msgstr "Postavi kao _pozadinu"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:125
-msgid "Cancel"
-msgstr "Otkaži"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:217
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "Neuspjelo pokretanje datoteke \"%s\""
+#: /home/codygarver/files/po/../src/marlin-application.c:461
+msgid "--quit cannot be used with URIs."
+msgstr "--quit nije moguće koristiti s URI-jima."
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:114
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:164
@@ -967,170 +1121,25 @@ msgstr "Otkaži sve radnje u tijeku"
 msgid "All file operations have been successfully completed"
 msgstr "Sve radnje nad datotekama su uspješno završene"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:421
-msgid "Show the version of the program."
-msgstr "Prikaži inačicu programa."
+#: /home/codygarver/files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Jednostruki klik"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:425
-msgid "Open uri(s) in new tab"
-msgstr "Ovori uri(e) u novoj kartici"
+#: /home/codygarver/files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Stavke u prikazu se mogu pokrenuti jednim klikom"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:427
-msgid "Quit Files."
-msgstr "Zatvori Files."
+#: /home/codygarver/files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "Trajanje jednog klika"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:429
-msgid "Enable debug logging"
-msgstr "Omogući zapis grešaka"
-
-#: /home/codygarver/files/po/../src/marlin-application.c:430
-msgid "[URI...]"
-msgstr "[URI...]"
-
-#: /home/codygarver/files/po/../src/marlin-application.c:439
+#: /home/codygarver/files/po/../src/exo-tree-view.c:185
 msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
 msgstr ""
-"\n"
-"\n"
-"Pregledaj datotečni sustav s upraviteljem datoteka"
-
-#: /home/codygarver/files/po/../src/marlin-application.c:459
-msgid "--quit cannot be used with URIs."
-msgstr "--quit nije moguće koristiti s URI-jima."
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:286
-msgid "Personal"
-msgstr "Osobno"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:291
-msgid "Your common places and bookmarks"
-msgstr "Vaša uobičajna mjesta i zabilješke"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:348
-msgid "Open the trash"
-msgstr "Otvori smeće"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:358
-msgid "Devices"
-msgstr "Uređaji"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:363
-msgid "Your local partitions and devices"
-msgstr "Vaše lokalne particije i uređaji"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:372
-msgid "Open the contents of the File System"
-msgstr "Otvorite sadržaj datotečnog sustava"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:431
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:456
-#, c-format
-msgid "Mount and open %s"
-msgstr "Montiraj i otvori %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:569
-msgid "Your network places"
-msgstr "Vaša mrežna mjesta"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:600
-msgid "Entire network"
-msgstr "Sve mreže"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:602
-msgid "Browse the contents of the network"
-msgstr "Pregledavanje sadržaja mreže"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1586
-msgid "_Start"
-msgstr "_Pokreni"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1587
-msgid "_Stop"
-msgstr "_Zaustavi"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1592
-msgid "_Power On"
-msgstr "_Uključi"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1593
-msgid "_Safely Remove Drive"
-msgstr "_Sigurno uklanjanje uređaja"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1596
-msgid "_Connect Drive"
-msgstr "_Poveži uređaj"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1597
-msgid "_Disconnect Drive"
-msgstr "_Odspoji uređaj"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1600
-msgid "_Start Multi-disk Device"
-msgstr "_Pokreni uređaj s više diskova"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1601
-msgid "_Stop Multi-disk Device"
-msgstr "_Zaustavi uređaj s više diskova"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1605
-msgid "_Unlock Drive"
-msgstr "_Otključaj uređaj"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1606
-msgid "_Lock Drive"
-msgstr "_Zaključaj uređaj"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1680
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2227
-#, c-format
-msgid "Unable to start %s"
-msgstr "Nemoguće je pokrenuti %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1970
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1999
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2028
-#, c-format
-msgid "Unable to eject %s"
-msgstr "Nemoguće je izbaciti %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2173
-#, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Nemoguće je ispitati %s za promjene na mediju"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2283
-#, c-format
-msgid "Unable to stop %s"
-msgstr "Nije moguće zaustaviti %s"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2399
-msgid "Remove"
-msgstr "Ukloni"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2408
-msgid "Rename..."
-msgstr "Preimenuj..."
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2420
-msgid "_Mount"
-msgstr "_Montiraj"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2427
-msgid "_Unmount"
-msgstr "_Odmontiraj"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2434
-msgid "_Eject"
-msgstr "_Izbaci"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2442
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2310
-msgid "Empty _Trash"
-msgstr "Isprazni _smeće"
+"Vrijeme nakon kojeg će stavke pod pokazivačem miša automatski biti odabrane "
+"u modu jednog klika"
 
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -1151,15 +1160,6 @@ msgstr "Datoteke"
 #: /home/codygarver/files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
 msgstr "Prikaži više _pojedinosti"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:119
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Početnu lokaciju \"%s\" nije moguće odrediti "
-
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:122
-msgid "The item cannot be restored from trash"
-msgstr "Stavka iz smeća ne može biti vraćena na izvornu lokaciju."
 
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:200
 #: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:737
@@ -1854,6 +1854,196 @@ msgstr "Pojavila se greška pri stvaranju direktorija u %F."
 msgid "Emptying Trash"
 msgstr "Pražnjenje smeća"
 
+#: /home/codygarver/files/po/../libcore/gof-file.c:252
+#, c-format
+msgid "link to %s"
+msgstr "poveznica na %s"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:1702
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Nemoguće je obraditi datoteku radne površine: %s"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:1740
+msgid "No Exec field specified"
+msgstr "Izvršno polje nije definirano"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:1760
+msgid "No URL field specified"
+msgstr "URL polje nije definirano"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:1766
+msgid "Invalid desktop file"
+msgstr "Neispravna datoteka radne površine"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:2056
+msgid "Slashes are not allowed in filenames"
+msgstr "Kose crte nisu dopuštene u imenima datoteka"
+
+#: /home/codygarver/files/po/../libcore/gof-file.c:2076
+msgid "Toplevel files cannot be renamed"
+msgstr "Datoteke najviše razine se ne mogu preimenovati"
+
+#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:192
+#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "Priprema"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:361
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Spojiti mapu \"%s\"?"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:364
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Spajanje će tražiti potvrdu prije zamjene svake datoteke unutar mape, koja "
+"je u sukobu s datotekama koje se kopiraju."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Starija mapa s istim nazivom već postoji u \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Novija mapa s istim nazivom već postoji u \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:377
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Druga mapa s istim nazivom već postoji u \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:382
+msgid "Replacing it will remove all files in the folder."
+msgstr "Zamjena će obrisati sve datoteke u mapi."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Zamijeniti mapu \"%s\"?"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Mapa s istim nazivom već postoji u \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:391
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Zamijeniti datoteku \"%s\"?"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will overwrite its content."
+msgstr "Zamjena će obrisati stari sadržaj."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Starija datoteka s istim nazivom već postoji u \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Već postoji novija datoteka istog naziva u \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:405
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Druga datoteka s istim nazivom postoji u \"%s\"."
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:460
+msgid "Original file"
+msgstr "Izvorna datoteka"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:482
+msgid "Size:"
+msgstr "Veličina:"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:485
+msgid "Type:"
+msgstr "Vrsta:"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:488
+msgid "Last modified:"
+msgstr "Posljednja izmjena:"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Replace with"
+msgstr "Zamijeni sa"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:506
+msgid "Merge"
+msgstr "Spoji"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
+msgid "_Select a new name for the destination"
+msgstr "_Odaberi novo ime za odredište"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:714
+msgid "Reset"
+msgstr "Vrati izvorno"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:726
+msgid "Apply this action to all files"
+msgstr "Primjeni radnju na sve datoteke"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:742
+msgid "Re_name"
+msgstr "Pre_imenuj"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:748
+msgid "Replace"
+msgstr "Zamijeni"
+
+#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:821
+msgid "File conflict"
+msgstr "Sukob datoteka"
+
+#: /home/codygarver/files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Danas u %-I:%M %p"
+
+#: /home/codygarver/files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Jučer u %-I:%M %p"
+
+#: /home/codygarver/files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y u %-I:%M %p"
+
+#: /home/codygarver/files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (neispravan unicode)"
+
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
@@ -2252,210 +2442,29 @@ msgstr[0] "Ponovi promjenu vlasnika za %d stavku"
 msgstr[1] "Ponovi promjenu vlasnika za %d stavke"
 msgstr[2] "Ponovi promjenu vlasnika za %d stavki"
 
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Danas u %-I:%M %p"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Jučer u %-I:%M %p"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y u %-I:%M %p"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:252
+#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
-msgid "link to %s"
-msgstr "poveznica na %s"
+msgid "Could not determine original location of \"%s\" "
+msgstr "Početnu lokaciju \"%s\" nije moguće odrediti "
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1702
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Nemoguće je obraditi datoteku radne površine: %s"
+#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "Stavka iz smeća ne može biti vraćena na izvornu lokaciju."
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1740
-msgid "No Exec field specified"
-msgstr "Izvršno polje nije definirano"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1760
-msgid "No URL field specified"
-msgstr "URL polje nije definirano"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1766
-msgid "Invalid desktop file"
-msgstr "Neispravna datoteka radne površine"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2056
-msgid "Slashes are not allowed in filenames"
-msgstr "Kose crte nisu dopuštene u imenima datoteka"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2076
-msgid "Toplevel files cannot be renamed"
-msgstr "Datoteke najviše razine se ne mogu preimenovati"
-
-#: /home/codygarver/files/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (neispravan unicode)"
-
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "Priprema"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:361
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Spojiti mapu \"%s\"?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:364
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Spajanje će tražiti potvrdu prije zamjene svake datoteke unutar mape, koja "
-"je u sukobu s datotekama koje se kopiraju."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Starija mapa s istim nazivom već postoji u \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Novija mapa s istim nazivom već postoji u \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:377
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Druga mapa s istim nazivom već postoji u \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:382
-msgid "Replacing it will remove all files in the folder."
-msgstr "Zamjena će obrisati sve datoteke u mapi."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Zamijeniti mapu \"%s\"?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Mapa s istim nazivom već postoji u \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:391
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Zamijeniti datoteku \"%s\"?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will overwrite its content."
-msgstr "Zamjena će obrisati stari sadržaj."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Starija datoteka s istim nazivom već postoji u \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Već postoji novija datoteka istog naziva u \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:405
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Druga datoteka s istim nazivom postoji u \"%s\"."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:460
-msgid "Original file"
-msgstr "Izvorna datoteka"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:482
-msgid "Size:"
-msgstr "Veličina:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:485
-msgid "Type:"
-msgstr "Vrsta:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:488
-msgid "Last modified:"
-msgstr "Posljednja izmjena:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Replace with"
-msgstr "Zamijeni sa"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:506
-msgid "Merge"
-msgstr "Spoji"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
-msgid "_Select a new name for the destination"
-msgstr "_Odaberi novo ime za odredište"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:714
-msgid "Reset"
-msgstr "Vrati izvorno"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:726
-msgid "Apply this action to all files"
-msgstr "Primjeni radnju na sve datoteke"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:742
-msgid "Re_name"
-msgstr "Pre_imenuj"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:748
-msgid "Replace"
-msgstr "Zamijeni"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:821
-msgid "File conflict"
-msgstr "Sukob datoteka"
-
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:320
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:321
 msgid "Cut the selected text to the clipboard"
 msgstr "Izreži odabrani tekst i smijesti ga u međuspremnik"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:324
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:325
 msgid "Copy the selected text to the clipboard"
 msgstr "Kopiraj odabrani tekst u međuspremnik"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:328
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:332
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:329
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:333
 msgid "Paste the text stored on the clipboard"
 msgstr "Zalijepi tekst iz međuspremnika"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:808
+#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:812
 #, c-format
 msgid "Go to %s"
 msgstr "Idi na %s"
