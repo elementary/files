@@ -25,7 +25,6 @@ using Gdk;
 using Cairo;
 using Gee;
 using Granite.Widgets;
-using Granite.Widgets;
 
 namespace Marlin.View {
 

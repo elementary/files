@@ -2540,9 +2540,6 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
     if (event->window != gtk_tree_view_get_bin_window (tree_view))
         return TRUE;
 
-    if (event->button == 3) {
-        bookmarks_popup_menu (sidebar, event);
-    } else {
         GtkTreeModel *model;
         GtkTreePath *path;
 
@@ -2571,16 +2568,14 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
             break;
 
         case GDK_BUTTON_SECONDARY:
-            open_selected_bookmark (sidebar, model, path,
-                                    event->state & GDK_CONTROL_MASK ?
-                                    MARLIN_WINDOW_OPEN_FLAG_NEW_WINDOW :
-                                    MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+            if (path != NULL)
+                if (!category_at_path (path))   
+                    bookmarks_popup_menu (sidebar, event);
             break;
         }
 
         if (path != NULL)
             gtk_tree_path_free (path);
-    }
 
     return FALSE;
 }
