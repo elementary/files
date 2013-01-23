@@ -1356,6 +1356,11 @@ drag_data_received_callback (GtkWidget *widget,
         }
     }
     else {
+        model = gtk_tree_view_get_model (tree_view);
+        gtk_tree_model_get_iter (model, &iter, tree_path);
+        gtk_tree_model_get (model, &iter,
+                            PLACES_SIDEBAR_COLUMN_URI, &drop_uri,
+                            -1);
         GdkDragAction real_action;
 
         /* file transfer requested */
@@ -1364,17 +1369,12 @@ drag_data_received_callback (GtkWidget *widget,
         if (real_action == GDK_ACTION_ASK) {
             real_action =
                 marlin_drag_drop_action_ask (GTK_WIDGET (tree_view),
-                                             gdk_drag_context_get_actions (context));
+                                             (strncmp (drop_uri, "trash:///", 10) == 0) ?
+                                                gdk_drag_context_get_actions (context) & GDK_ACTION_MOVE :
+                                                gdk_drag_context_get_actions (context));
         }
 
         if (real_action > 0) {
-            model = gtk_tree_view_get_model (tree_view);
-
-            gtk_tree_model_get_iter (model, &iter, tree_path);
-            gtk_tree_model_get (model, &iter,
-                                PLACES_SIDEBAR_COLUMN_URI, &drop_uri,
-                                -1);
-
             switch (info) {
             case TEXT_URI_LIST:
                 printf ("file_operation_copy_move: drop_uri %s action %d\n", drop_uri, real_action);
@@ -1397,9 +1397,9 @@ drag_data_received_callback (GtkWidget *widget,
                 g_assert_not_reached ();
                 break;
             }
-
-            g_free (drop_uri);
         }
+        
+        g_free (drop_uri);
     }
 
 out:
