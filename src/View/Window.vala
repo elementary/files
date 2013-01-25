@@ -784,7 +784,7 @@ namespace Marlin.View {
                                  "<control>Z", N_("Undo the last action"),
                                  action_undo_callback },
                                { "Redo", Stock.REDO, N_("_Redo"),
-                                 "<control>Y", N_("Redo the last action"),
+                                 "<control><shift>Z", N_("Redo the last action"),
                                  action_redo_callback },
                                { "Up", Stock.GO_UP, N_("Open _Parent"),
                                  "<alt>Up", N_("Open the parent folder"),
