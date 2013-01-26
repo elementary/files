@@ -1157,7 +1157,7 @@ gof_file_is_writable (GOFFile *file)
         return gof_file_is_writable (file->target_gof);
     if (file->info == NULL)
         return FALSE;
-    if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)){
+    if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
         /* For some reason, the trash folder doesn't have this attribute defined.
          * The function must be forced to return TRUE if the folder in question
          * is the trash folder (since it is writable). */
