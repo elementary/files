@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-14 14:39-0600\n"
-"PO-Revision-Date: 2012-11-18 10:39+0000\n"
+"PO-Revision-Date: 2013-01-25 17:18+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-01-15 05:09+0000\n"
-"X-Generator: Launchpad (build 16420)\n"
+"X-Launchpad-Export-Date: 2013-01-26 05:25+0000\n"
+"X-Generator: Launchpad (build 16451)\n"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -40,7 +40,7 @@ msgstr "Luo kansio %s"
 #: /home/codygarver/files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u kohdetta valittu (%s)"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -194,7 +194,7 @@ msgstr "Verkko"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:286
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Avaa uudessa välilehdessä"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
