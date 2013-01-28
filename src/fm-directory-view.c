@@ -3432,6 +3432,7 @@ action_properties_callback (GtkAction *action, FMDirectoryView *view)
         GList *file_list = NULL;
         file_list = g_list_prepend (file_list, view->details->slot->directory->file);
         marlin_view_properties_window_new (file_list, view, GTK_WINDOW (view->details->window));
+        g_list_free (file_list);
     }
 }
 
