@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-14 14:39-0600\n"
-"PO-Revision-Date: 2012-11-21 19:28+0000\n"
+"PO-Revision-Date: 2013-01-28 14:41+0000\n"
 "Last-Translator: Adrian Widerski <Unknown>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-01-15 05:09+0000\n"
-"X-Generator: Launchpad (build 16420)\n"
+"X-Launchpad-Export-Date: 2013-01-29 05:45+0000\n"
+"X-Generator: Launchpad (build 16451)\n"
 "Language: pl\n"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
@@ -42,7 +42,7 @@ msgstr "Tworzy katalog „%s”"
 #: /home/codygarver/files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "Zaznaczono %u elementów (%s)"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -196,7 +196,7 @@ msgstr "Sieć"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:286
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Otwórz w nowej karcie"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
