@@ -35,7 +35,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
     private Gtk.ListStore store_apps;
 
     private uint count;
-    private unowned GLib.List<GOF.File> files;
+    private GLib.List<GOF.File> files;
     private GOF.File goffile;
     private FM.Directory.View view;
 
@@ -83,7 +83,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         content_vbox.margin_left = 5;
 
         view = _view;
-        files = _files;
+        files = _files.copy ();
         count = files.length();
         goffile = (GOF.File) files.data;
 
