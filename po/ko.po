@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-14 14:39-0600\n"
-"PO-Revision-Date: 2013-01-19 12:54+0000\n"
-"Last-Translator: Ahn Nyeoung <compiztab@naver.com>\n"
+"PO-Revision-Date: 2013-02-01 10:30+0000\n"
+"Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-01-20 04:58+0000\n"
-"X-Generator: Launchpad (build 16430)\n"
+"X-Launchpad-Export-Date: 2013-02-02 05:41+0000\n"
+"X-Generator: Launchpad (build 16462)\n"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -40,7 +40,7 @@ msgstr "폴더 %s를 생성하기"
 #: /home/codygarver/files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u개 항목이 선택되었습니다. (%s)"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -194,7 +194,7 @@ msgstr "네트워크"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:286
 msgid "Open in New Tab"
-msgstr ""
+msgstr "새 탭에서 열기"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -236,7 +236,7 @@ msgstr "로케일"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:258
 msgid "informal"
-msgstr ""
+msgstr "비공식적"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
@@ -510,7 +510,7 @@ msgstr "클립보드에서 붙여넣을 자료가 없습니다."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1151
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "XDS 드래그 위치에서 잘못된 파일 이름이 제공되었습니다."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1309
 #, c-format
@@ -565,7 +565,7 @@ msgstr "파일 붙여넣기 명령으로 선택한 파일을 복사할 준비를
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3452
 msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
+msgstr "이전에 잘라내기 또는 복사 명령으로 선택된 파일을 옮기거나 복사합니다"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3455
 msgid "Paste Into Folder"
@@ -575,7 +575,7 @@ msgstr "폴더에 붙여넣기"
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
-msgstr ""
+msgstr "이전에 잘라내기 또는 복사 명령으로 선택된 파일을 선택한 폴더로 옮기거나 복사합니다"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3459
 msgid "_Rename..."
@@ -615,11 +615,11 @@ msgstr "새 창에서 열기"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3481
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "선택한 항목들을 새 창에서 엽니다."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3485
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "선택한 항목들을 새 탭에서 엽니다."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3487
 msgid "Open Wit_h"
@@ -631,52 +631,52 @@ msgstr "선택한 항목을 열 프로그램을 선택합니다"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3490
 msgid "Other _Application..."
-msgstr ""
+msgstr "다른 프로그램(_A)..."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3491
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "선택한 항목을 열 다른 프로그램을 선택합니다"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3494
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "휴지통으로 옮기기(_V)"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3495
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "선택한 항목들을 휴지통으로 옮깁니다."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3498
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "완전히 삭제하기(_D)"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3499
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "선택한 항목을 휴지통으로 보내지 않고 삭제"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3502
 msgid "_Restore"
-msgstr ""
+msgstr "복원(_R)"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3506
 #: /home/codygarver/files/po/../src/eel-editable-label.c:3190
 msgid "Select All"
-msgstr ""
+msgstr "모두 고르기"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3510
 msgid "_Properties"
-msgstr ""
+msgstr "속성(_P)"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3511
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "각각 선택한 항목의 속성을 보거나 고칩니다"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3617
 msgid "Set Color:"
-msgstr ""
+msgstr "색상 설정:"
 
 #: /home/codygarver/files/po/../src/eel-editable-label.c:3201
 msgid "Input Methods"
-msgstr ""
+msgstr "입력기"
 
 #: /home/codygarver/files/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
