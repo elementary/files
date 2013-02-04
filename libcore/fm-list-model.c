@@ -418,8 +418,6 @@ lookup_file (FMListModel *model, GOFFile *file, GOFDirectoryAsync *directory)
     }
 
     if (parent_ptr) {
-        if (gof_file_is_folder (file))
-            return parent_ptr;
         file_entry = g_sequence_get (parent_ptr);
         ptr = g_hash_table_lookup (file_entry->reverse_map, file);
     } else {
