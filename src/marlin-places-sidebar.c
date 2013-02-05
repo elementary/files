@@ -2572,6 +2572,12 @@ bookmarks_button_press_event_cb (GtkWidget             *widget,
                 if (!category_at_path (path))   
                     bookmarks_popup_menu (sidebar, event);
             break;
+        
+        case GDK_BUTTON_MIDDLE:
+            if (path!= NULL && !category_at_path (path))
+                open_selected_bookmark (sidebar, model, path, MARLIN_WINDOW_OPEN_FLAG_NEW_TAB);
+                
+            break;
         }
 
         if (path != NULL)
