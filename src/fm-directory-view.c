@@ -3427,6 +3427,9 @@ action_properties_callback (GtkAction *action, FMDirectoryView *view)
     GList *selection = fm_directory_view_get_selection (view);
     
     if (selection != NULL) {
+        /* The reference counts of the selection list's members are incremented,
+         * so that the members aren't freed by the properties window. */
+        g_list_foreach (selection, (GFunc) g_object_ref, NULL);
         marlin_view_properties_window_new (selection, view, GTK_WINDOW (view->details->window));
     } else {
         GList *file_list = NULL;
