@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-01-14 14:39-0600\n"
-"PO-Revision-Date: 2012-12-16 14:19+0000\n"
+"PO-Revision-Date: 2013-02-05 17:53+0000\n"
 "Last-Translator: Damir Jerovsek <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2013-01-15 05:10+0000\n"
-"X-Generator: Launchpad (build 16420)\n"
+"X-Launchpad-Export-Date: 2013-02-06 05:36+0000\n"
+"X-Generator: Launchpad (build 16468)\n"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
@@ -36,12 +36,12 @@ msgstr "Ustvari"
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr ""
+msgstr "Ustvari mapo %s"
 
 #: /home/codygarver/files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u predmetov je izbranih (%s)"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 msgid "Name"
@@ -195,7 +195,7 @@ msgstr "Omrežje"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:286
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Odpri v novem zavihku"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -443,7 +443,7 @@ msgstr "Prijavi težavo ..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:856
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Poročaj hrošča na Launchpad"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:859
 msgid "Get Help Online..."
