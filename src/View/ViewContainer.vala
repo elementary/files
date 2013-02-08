@@ -221,7 +221,7 @@ namespace Marlin.View {
                 window.top_menu.view_switcher.mode = (ViewMode) view_mode;
 
             connect_available_info();
-            if (slot != null && slot.directory.file.exists) {
+            if (slot != null) {
                 slot.directory.done_loading.connect (directory_done_loading);
                 slot.directory.need_reload.connect (reload);
             }
