@@ -6325,6 +6325,57 @@ marlin_file_operations_new_folder_with_name (GtkWidget *parent_view,
                              job->common.cancellable);
 }
 
+typedef struct {
+    GtkWidget *parent_view;
+    GdkPoint *target_point;
+    GFile *parent_dir;
+    gchar* folder_name;
+    MarlinCreateCallback done_callback;
+    gpointer done_callback_data;
+} NewFolderWithNameArgs;
+
+void new_folder_with_name_callback (GFile *new_folder, gpointer user_data) {
+    if (new_folder != NULL) {
+        NewFolderWithNameArgs *args = user_data;
+        marlin_file_operations_new_folder_with_name (args->parent_view, args->target_point,
+                                                     args->parent_dir, args->folder_name,
+                                                     args->done_callback, args->done_callback_data);
+    }
+}
+
+/* marlin_file_operations_new_folder_with_name_recursive:
+ * Creates a folder with the desired folder_name at location parent_dir.
+ * If parent_dir and any of its ancestors don't exist, they are created. */
+void marlin_file_operations_new_folder_with_name_recursive (GtkWidget *parent_view, 
+                                                            GdkPoint *target_point,
+                                                            GFile *parent_dir,
+                                                            gchar* folder_name,
+                                                            MarlinCreateCallback done_callback,
+                                                            gpointer done_callback_data) {
+    if (g_file_query_exists (parent_dir, NULL)) {
+        marlin_file_operations_new_folder_with_name (parent_view, target_point,
+                                                     parent_dir, folder_name,
+                                                     done_callback, done_callback_data);
+    } else {
+        NewFolderWithNameArgs *args;
+        args = g_malloc (sizeof (NewFolderWithNameArgs));
+        
+        args->parent_view = parent_view;
+        args->target_point = target_point;
+        args->parent_dir = g_object_ref (parent_dir);
+        args->folder_name = g_strdup (folder_name);
+        args->done_callback = done_callback;
+        args->done_callback_data = done_callback_data;
+        
+        marlin_file_operations_new_folder_with_name_recursive (NULL, NULL,
+                                                               g_file_get_parent (parent_dir), 
+                                                               g_file_get_basename (parent_dir),
+                                                               (gpointer) new_folder_with_name_callback,
+                                                               args);
+    }
+}
+
+
 #if 0
 void 
 marlin_file_operations_new_file_from_template (GtkWidget *parent_view, 
