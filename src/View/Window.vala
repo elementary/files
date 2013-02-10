@@ -330,7 +330,8 @@ namespace Marlin.View {
         }
 
         public void colorize_current_tab_selection (int n) {
-            ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
+            if (current_tab.slot.directory.file.exists)
+                ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
         }
 
 
@@ -366,7 +367,7 @@ namespace Marlin.View {
                     /* sync ContextView */
                     current_tab.sync_contextview();
                     /* sync selection */
-                    if (cur_slot.view_box != null)
+                    if (cur_slot.view_box != null && cur_slot.directory.file.exists)
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
                     /* sync sidebar selection */
                     loading_uri (current_tab.slot.directory.file.uri, sidebar);
@@ -643,7 +644,8 @@ namespace Marlin.View {
         private void action_show_hide_contextview (Gtk.Action action) {
             if (((Gtk.ToggleAction)action).get_active()) {
                 current_tab.sync_contextview();
-                ((FM.Directory.View) current_tab.slot.view_box).sync_selection();
+                if (current_tab.slot.directory.file.exists)
+                    ((FM.Directory.View) current_tab.slot.view_box).sync_selection();
             } else {
                  //main_box.remove (contextview);
                 if (contextview != null) {

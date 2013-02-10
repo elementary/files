@@ -165,7 +165,7 @@ namespace Marlin.View {
             if (!slot.directory.file.exists) {
                 content = new DirectoryNotFound (slot.directory, this);
             } else {
-                if (select_childs != null) 
+                if (select_childs != null && slot.directory.file.exists) 
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
             }
             sync_contextview();
@@ -186,7 +186,7 @@ namespace Marlin.View {
                 /* we re just changing view keep the same location */
                 location = get_active_slot ().location;
                 /* store the old selection to restore it */
-                if (slot != null) {
+                if (slot != null && slot.directory.file.exists) {
                     unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
                     foreach (var elem in list)
                         select_childs.prepend (elem.location);
