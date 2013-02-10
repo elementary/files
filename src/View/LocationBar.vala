@@ -68,10 +68,13 @@ namespace Marlin.View.Chrome
             add(bread);
         }
         
-        private void on_bread_changed(string changed)
-        {
+        private void on_bread_changed (string changed) {
             /* focus back the view */
-            ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); 
+            if (win.current_tab.slot.directory.file.exists)
+                win.current_tab.slot.view_box.grab_focus();
+            else
+                win.current_tab.content.grab_focus();
+            
             //_path = changed;
             path = changed;
             activate();
@@ -178,9 +181,14 @@ namespace Marlin.View.Chrome
             icon.exploded = {"/"};
             add_icon(icon);
 
-            entry.down.connect(() => {
-                ((FM.Directory.View) win.current_tab.slot.view_box).grab_focus(); 
+            entry.down.connect (() => {
+                /* focus back the view */
+                if (win.current_tab.slot.directory.file.exists)
+                    win.current_tab.slot.view_box.grab_focus();
+                else
+                    win.current_tab.content.grab_focus();
             });
+            
             entry.completed.connect(() => {
                 string path = get_elements_path ();
                 update_breadcrumbs (entry.text, path);
