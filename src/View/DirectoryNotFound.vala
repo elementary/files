@@ -26,9 +26,9 @@ namespace Marlin.View
         public ViewContainer ctab;
 
         public DirectoryNotFound(GOF.Directory.Async dir, ViewContainer tab) {
-            base(_("Folder does not exist"), _("Files can't find the folder \"%s\"").printf (dir.location.get_basename ()));           
+            base (_("Folder does not exist"), _("Files can't find the folder \"%s\"").printf (dir.location.get_basename ()));           
             
-            append("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
+            append ("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
             
             dir_saved = dir;
             ctab = tab;
@@ -40,7 +40,7 @@ namespace Marlin.View
                                                                (void *) jump_to_new_dir, ctab);
             });
 
-            show_all();
+            show_all ();
         }
         
         static void jump_to_new_dir (File? new_folder, void *user_data) {

@@ -165,7 +165,7 @@ namespace Marlin.View {
             if (!slot.directory.file.exists) {
                 content = new DirectoryNotFound (slot.directory, this);
             } else {
-                if (select_childs != null && slot.directory.file.exists) 
+                if (select_childs != null) 
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
             }
             sync_contextview();
