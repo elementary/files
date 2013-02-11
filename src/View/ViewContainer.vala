@@ -145,8 +145,10 @@ namespace Marlin.View {
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
+            else if (slot.directory.file.exists)
+                tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
             else
-                tab_name = aslot.directory.file.info.get_attribute_string(FileAttribute.STANDARD_DISPLAY_NAME);
+                tab_name = "Directory not found";
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
