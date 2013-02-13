@@ -486,8 +486,13 @@ public class GOF.Directory.Async : Object
        
         if (directory_cache != null)
             cached_dir = directory_cache.lookup (file);
-        if (cached_dir != null)
+        if (cached_dir != null) {
             debug ("found cached dir %s", cached_dir.file.uri);
+            if (cached_dir.file.info == null) {
+                cached_dir.clear_directory_info ();
+                cached_dir.file.query_update ();
+            }
+        }
 
         return cached_dir;
     }
