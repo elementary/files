@@ -511,8 +511,20 @@ public class GOF.Directory.Async : Object
     {
         /* we got to increment the dir ref to remove the toggle_ref */
         this.ref ();
+        
+        var removed = directory_cache.remove (location);
+        
+        /* We have to remove the dir's subfolders from cache too */
+        if (removed) {
+            foreach (var gfile in file_hash.get_keys ()) {
+                var dir = cache_lookup (gfile);
+                if (dir != null)
+                    dir.remove_dir_from_cache ();
+            }
+        }
+        
         removed_from_cache = true;
-        return directory_cache.remove (location);
+        return removed;
     }
     
     public bool has_parent ()
