@@ -97,11 +97,12 @@ namespace Marlin.View
                 listmodel.set (iter, 0, plugin_name, 1, plugin_name in Preferences.settings.get_strv("plugins-enabled"));
             }
 
-            if (plugins.get_available_plugins().size > 0) // Don't append Extensions page if there are no extensions available
-            {
+            if (plugins.get_available_plugins().size > 0)
                 first_vbox.pack_start(view);
-                mai_notebook.append_page(first_vbox, new Gtk.Label(_("Extensions")));
-            }
+            else
+                first_vbox.pack_start (new Gtk.Label(_("There are no extensions currently installed.")));
+
+            mai_notebook.append_page(first_vbox, new Gtk.Label(_("Extensions")));
             
             ((Gtk.Box)get_content_area()).pack_start(mai_notebook);
 
