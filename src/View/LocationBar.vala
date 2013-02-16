@@ -71,13 +71,18 @@ namespace Marlin.View.Chrome
         private void on_bread_changed (string changed) {
             /* focus back the view */
             if (win.current_tab.slot.directory.file.exists)
-                win.current_tab.slot.view_box.grab_focus();
+                win.current_tab.slot.view_box.grab_focus ();
             else
-                win.current_tab.content.grab_focus();
+                win.current_tab.content.grab_focus ();
             
             //_path = changed;
             path = changed;
             activate();
+            
+            /* This prevents that the location bar is left in a weird state
+             * when going from a non-existent folder to another one underneath. */
+            bread.entry.reset ();
+            bread.change_breadcrumbs (changed);
         }
     }
 
@@ -184,9 +189,9 @@ namespace Marlin.View.Chrome
             entry.down.connect (() => {
                 /* focus back the view */
                 if (win.current_tab.slot.directory.file.exists)
-                    win.current_tab.slot.view_box.grab_focus();
+                    win.current_tab.slot.view_box.grab_focus ();
                 else
-                    win.current_tab.content.grab_focus();
+                    win.current_tab.content.grab_focus ();
             });
             
             entry.completed.connect(() => {
