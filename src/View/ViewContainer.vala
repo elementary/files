@@ -69,9 +69,10 @@ namespace Marlin.View {
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             overlay_statusbar = new OverlayBar (win);
             add_overlay (overlay_statusbar);
-            var action_showhide_context_pane = (Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane");
+            /*var action_showhide_context_pane = (Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane");
             overlay_statusbar.showbar = !action_showhide_context_pane.get_active ();
-            action_showhide_context_pane.bind_property ("active", overlay_statusbar, "showbar", BindingFlags.INVERT_BOOLEAN);
+            action_showhide_context_pane.bind_property ("active", overlay_statusbar, "showbar", BindingFlags.INVERT_BOOLEAN);*/
+            overlay_statusbar.showbar = view_mode != ViewMode.LIST;
 
             path_changed.connect((myfile) => {
                 /* location didn't change, do nothing */
@@ -239,6 +240,7 @@ namespace Marlin.View {
                 break;
             }
 
+            overlay_statusbar.showbar = nview != ViewMode.LIST;
         }
 
         public void sync_contextview(){
