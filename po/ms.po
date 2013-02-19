@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-01-15 07:18+0000\n"
+"PO-Revision-Date: 2013-02-18 11:14+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-02-17 05:03+0000\n"
+"X-Launchpad-Export-Date: 2013-02-19 05:21+0000\n"
 "X-Generator: Launchpad (build 16491)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
@@ -449,7 +449,7 @@ msgstr "Keutamaan Fail"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "There are no extensions currently installed."
-msgstr ""
+msgstr "Tiada sambungan dipasang buat masa ini."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:105
 msgid "Extensions"
