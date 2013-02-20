@@ -171,13 +171,6 @@ unity_bookmarks_handler_update_bookmarks (MarlinBookmarkList *bookmarks, UnityQu
 
             dbusmenu_menuitem_child_add_position (ql, menuitem, index);
             lentry->bookmark_quicklists = g_list_prepend (lentry->bookmark_quicklists, menuitem);
-
-            if (index == bookmark_count - 1) {
-                menuitem = dbusmenu_menuitem_new();
-                dbusmenu_menuitem_property_set (menuitem, DBUSMENU_MENUITEM_PROP_TYPE, DBUSMENU_CLIENT_TYPES_SEPARATOR);
-                dbusmenu_menuitem_child_add_position (ql, menuitem, index+1);
-                lentry->bookmark_quicklists = g_list_prepend (lentry->bookmark_quicklists, menuitem);
-            }
         }
     }
 }
