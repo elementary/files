@@ -46,6 +46,11 @@ namespace Marlin.View.Chrome
             show();
         }
 
+        public override bool popup_context_menu (int x, int y, int button) {
+            toolbar_menu.popup (null, null, null, button, Gtk.get_current_event_time ());
+            return true;
+        }
+
         public void setup_items ()
         {
             if (compact_menu != null)

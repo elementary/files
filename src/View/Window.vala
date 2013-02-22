@@ -31,6 +31,7 @@ namespace Marlin.View {
     {
         public UIManager ui;
         private UndoManager undo_manager;
+        public Widget menu_bar;
         public Chrome.TopMenu top_menu;
         public Gtk.InfoBar info_bar;
         public Notebook tabs;
@@ -130,6 +131,10 @@ namespace Marlin.View {
             ui.insert_action_group(main_actions, 0);
             ui.ensure_update();
 
+            /* Menubar */
+            menu_bar = ui.get_widget("/MenuBar");
+            menu_bar.hide ();
+
             /* Topmenu */
             top_menu = new Chrome.TopMenu(this);
 
@@ -200,6 +205,7 @@ namespace Marlin.View {
 
             Box window_box = new Box(Gtk.Orientation.VERTICAL, 0);
             window_box.show();
+            window_box.pack_start(menu_bar, false, false, 0);
             window_box.pack_start(top_menu, false, false, 0);
             window_box.pack_start(info_bar, false, false, 0);
             window_box.pack_start(lside_pane, true, true, 0);
@@ -224,6 +230,8 @@ namespace Marlin.View {
             }
             show();
 
+            Preferences.settings.bind("show-menubar", menu_bar, "visible", 0);
+            Preferences.settings.bind("show-menubar", main_actions.get_action("Show Hide Menubar"), "active", 0);
             //Preferences.settings.bind("show-menubar", top_menu.compact_menu_button, "visible", SettingsBindFlags.INVERT_BOOLEAN);
             Preferences.settings.bind("show-hiddenfiles", main_actions.get_action("Show Hidden Files"), "active", 0);
             Preferences.settings.bind("interpret-desktop-files", main_actions.get_action("Show Desktop Files"), "active", SettingsBindFlags.INVERT_BOOLEAN);
@@ -645,6 +653,16 @@ namespace Marlin.View {
             }
         }
 
+
+        private void action_show_hide_menubar (Gtk.Action action) {
+            bool vis = true;
+            menu_bar.get("visible", &vis);
+            if (vis)
+                top_menu.app_menu.hide();
+            else
+                top_menu.app_menu.show_all();
+            }
+
         /*private void action_show_hide_sidebar (Gtk.Action action) {
             stdout.printf ("TODO\n");
         }*/
@@ -866,6 +884,16 @@ namespace Marlin.View {
   /* label, accelerator */       N_("_Context Pane"), "F7",
   /* tooltip */                  N_("Change the visibility of the context pane"),
                                  action_show_hide_contextview,
+  /* is_active */                true },
+  /* name, stock id */         { "Show Hide Menubar", null,
+  /* label, accelerator */       N_("_Menubar"), "F8",
+  /* tooltip */                  N_("Change the visibility of this window's menubar"),
+                                 action_show_hide_menubar,
+  /* is_active */                true },
+  /* name, stock id */         { "Show Hide Sidebar", null,
+  /* label, accelerator */       N_("_Places"), "F9",
+  /* tooltip */                  N_("Change the visibility of this window's side pane"),
+                                 null,
   /* is_active */                true }
 
         };
