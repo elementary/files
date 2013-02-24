@@ -1904,6 +1904,11 @@ update_menus_selection (FMDirectoryView *view)
     selection = fm_directory_view_get_selection (view);
     selection_count = g_list_length (selection);
     file = GOF_FILE (selection->data);
+    
+    if (file == NULL) {
+        update_menus_empty_selection (view);
+        return;
+    }
 
     dir_action_set_sensitive (view, "Cut", TRUE);
     dir_action_set_sensitive (view, "Copy", TRUE);
