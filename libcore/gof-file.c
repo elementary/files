@@ -777,13 +777,11 @@ void gof_file_remove_from_caches (GOFFile *file)
     }
     
     /* Remove from gof-directory-async cache */
-    if (gof_file_is_folder (file)) {
-        dir = gof_directory_async_cache_lookup (file->location);
-        if (dir != NULL) {
-            if (gof_directory_async_delete_dir_from_cache (dir))
-                g_debug ("Remove from gof-directory-async cache %s\n", file->uri);
-            g_object_unref (dir);
-        }
+    dir = gof_directory_async_cache_lookup (file->location);
+    if (dir != NULL) {
+        if (gof_directory_async_remove_dir_from_cache (dir))
+            g_debug ("Remove from gof-directory-async cache %s\n", file->uri);
+        g_object_unref (dir);
     }
     
     file->is_gone = TRUE;
