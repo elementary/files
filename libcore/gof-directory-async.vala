@@ -486,13 +486,8 @@ public class GOF.Directory.Async : Object
        
         if (directory_cache != null)
             cached_dir = directory_cache.lookup (file);
-        if (cached_dir != null) {
+        if (cached_dir != null)
             debug ("found cached dir %s", cached_dir.file.uri);
-            if (cached_dir.file.info == null) {
-                cached_dir.clear_directory_info ();
-                cached_dir.file.query_update ();
-            }
-        }
 
         return cached_dir;
     }
@@ -512,19 +507,8 @@ public class GOF.Directory.Async : Object
         /* we got to increment the dir ref to remove the toggle_ref */
         this.ref ();
         
-        var removed = directory_cache.remove (location);
-        
-        /* We have to remove the dir's subfolders from cache too */
-        if (removed) {
-            foreach (var gfile in file_hash.get_keys ()) {
-                var dir = cache_lookup (gfile);
-                if (dir != null)
-                    dir.remove_dir_from_cache ();
-            }
-        }
-        
         removed_from_cache = true;
-        return removed;
+        return directory_cache.remove (location);
     }
     
     public bool has_parent ()
