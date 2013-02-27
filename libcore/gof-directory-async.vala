@@ -515,7 +515,7 @@ public class GOF.Directory.Async : Object
         return directory_cache.remove (location);
     }
     
-    public bool delete_dir_from_cache () {
+    public bool purge_dir_from_cache () {
         var removed = remove_dir_from_cache ();
         
         /* We have to remove the dir's subfolders from cache too */
