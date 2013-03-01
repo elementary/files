@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-01-17 10:52+0000\n"
+"PO-Revision-Date: 2013-02-28 19:45+0000\n"
 "Last-Translator: Thomas Berends <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-02-17 05:02+0000\n"
-"X-Generator: Launchpad (build 16491)\n"
+"X-Launchpad-Export-Date: 2013-03-01 05:19+0000\n"
+"X-Generator: Launchpad (build 16514)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -428,7 +428,7 @@ msgstr "Netwerk"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/LocationBar.vala:286
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Openen in nieuw tabblad"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ViewContainer.vala:145
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:300
@@ -450,7 +450,7 @@ msgstr "Bestandsvoorkeuren"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "There are no extensions currently installed."
-msgstr ""
+msgstr "Er zijn momenteel geen extenties geïnstalleerd"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:105
 msgid "Extensions"
@@ -507,7 +507,7 @@ msgstr "Grootte"
 #: /home/pqp/lp/pantheon-files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u items geselecteerd (%s)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
@@ -1463,12 +1463,12 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (kopie)%s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (nog een kopie)%s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:501
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:503
@@ -1634,12 +1634,15 @@ msgstr[1] "%'d bestanden over om in de prullenbak te gooien"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr ""
+"Kan bestand niet naar de prullenbak verplaatsen. Bestand direct verwijderen?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
+"Het bestand bevindt zich op een extern medium en kan niet naar de prullenbak "
+"worden verplaatst. Als u een item verwijdert, zal het voorgoed verloren gaan."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
@@ -2075,7 +2078,7 @@ msgstr "‘%s’ _verwijderen"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Verwijder %d dubbele items"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
@@ -2107,67 +2110,67 @@ msgstr "'%s' terugzetten naar '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Verplaats %d items terug naar de prullenbak"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Verplaats '%s' terug naar de prullenbak"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Verwijder verwijzingen naar %d items"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Verwijder verwijzing naar '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Herstel oorspronkelijke rechten van items in '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Herstel oorspronkelijke rechten van '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Herstel groep van '%s' naar '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Herstel eigenaar van '%s' naar '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Kopieer %d items naar '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Kopieer ‘%s’ naar ‘%s’"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Kopie van %d items in '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Kopieer '%s' in '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Verplaats %d items naar '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format

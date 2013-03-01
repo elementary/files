@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-02-10 13:32+0000\n"
+"PO-Revision-Date: 2013-02-28 14:10+0000\n"
 "Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-02-17 05:03+0000\n"
-"X-Generator: Launchpad (build 16491)\n"
+"X-Launchpad-Export-Date: 2013-03-01 05:19+0000\n"
+"X-Generator: Launchpad (build 16514)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -449,7 +449,7 @@ msgstr "파일 관리자 설정"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "There are no extensions currently installed."
-msgstr ""
+msgstr "현재 설치된 추가기능이 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:105
 msgid "Extensions"
@@ -510,11 +510,11 @@ msgstr "%u개 항목이 선택되었습니다. (%s)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "아이콘 디렉토리 목록"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "아이콘 보기"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
@@ -530,74 +530,74 @@ msgstr "여기로 옮기기(_M)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:108
 msgid "_Copy Here"
-msgstr ""
+msgstr "여기로 복사(_C)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:113
 msgid "_Link Here"
-msgstr ""
+msgstr "여기에 링크 만들기(_L)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:118
 msgid "Set as _Background"
-msgstr ""
+msgstr "배경 화면으로 설정(_B)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:125
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:217
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr ""
+msgstr "\"%s\"을(를) 실행하는데 실패했습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:286
 msgid "Personal"
-msgstr ""
+msgstr "개인"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:291
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "사용자의 개인 폴더 및 즐겨찾기"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:348
 msgid "Open the trash"
-msgstr ""
+msgstr "휴지통 열기"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:358
 msgid "Devices"
-msgstr ""
+msgstr "장치"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:363
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "로컬 파티션과 장치"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:372
 msgid "Open the contents of the File System"
-msgstr ""
+msgstr "파일 시스템을 열니다"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:431
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:456
 #, c-format
 msgid "Mount and open %s"
-msgstr ""
+msgstr "%s을(를) 마운트하고 엽니다"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:569
 msgid "Your network places"
-msgstr ""
+msgstr "네트워크 위치"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:600
 msgid "Entire network"
-msgstr ""
+msgstr "모든 네트워크"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:602
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "네트워크를 탐색합니다"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1586
 msgid "_Start"
-msgstr ""
+msgstr "시작(_S)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1587
 msgid "_Stop"
-msgstr ""
+msgstr "중지(_S)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1592
 msgid "_Power On"
