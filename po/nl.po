@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-02-28 19:45+0000\n"
+"PO-Revision-Date: 2013-03-01 18:08+0000\n"
 "Last-Translator: Thomas Berends <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-03-01 05:19+0000\n"
+"X-Launchpad-Export-Date: 2013-03-02 05:10+0000\n"
 "X-Generator: Launchpad (build 16514)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
@@ -1446,19 +1446,19 @@ msgstr " (nog een kopie)"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:472
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
-msgstr ""
+msgstr "e kopie)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
-msgstr ""
+msgstr "e kopie)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
-msgstr ""
+msgstr "e kopie)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
-msgstr ""
+msgstr "e kopie)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
@@ -2175,57 +2175,57 @@ msgstr "Verplaats %d items naar '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Verplaats ‘%s’ naar ‘%s’"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Nieuw bestand ‘%s’ aanmaken vanaf sjabloon "
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Maak een leeg bestand '%s' aan"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Maak een nieuwe map '%s' aan"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Verplaats %d items naar de prullenbak"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Verplaats ‘%s’ naar de prullenbak"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Herstel '%s' uit de prullenbak"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Maak verwijzingen naar '%d' items aan"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Maak verwijzing naar '%s' aan"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Stel rechten van items in '%s' in"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Stel rechten van ‘%s’ in"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
