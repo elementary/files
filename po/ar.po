@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2012-09-29 19:29+0000\n"
-"Last-Translator: Ibrahim Saed <ibraheem5000@gmail.com>\n"
+"PO-Revision-Date: 2013-03-04 18:42+0000\n"
+"Last-Translator: Fathallah Wael <fathallahwael80@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2013-02-17 05:02+0000\n"
-"X-Generator: Launchpad (build 16491)\n"
+"X-Launchpad-Export-Date: 2013-03-05 05:27+0000\n"
+"X-Generator: Launchpad (build 16514)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -26,11 +26,11 @@ msgstr "الخصائص"
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:116
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:47
 msgid "General"
-msgstr ""
+msgstr "عامّ"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
-msgstr ""
+msgstr "المزيد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:136
 msgid "Preview"
@@ -77,7 +77,7 @@ msgstr "المكان الأصلي"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
-msgstr ""
+msgstr "معلومات:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
@@ -85,20 +85,20 @@ msgstr "تطبيق آخر..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:428
 msgid "Open with:"
-msgstr ""
+msgstr "افتح باستخدام:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:449
 msgid "Usage:"
-msgstr ""
+msgstr "الإستخدام:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
-msgstr ""
+msgstr "استخدام الجهاز:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s حرة من %s (%d%% مستعملة("
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -139,7 +139,7 @@ msgstr "المجلّد عير موجود"
 #: /home/pqp/lp/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "الملفات لم تتمكن من العثور على مجلد %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -152,7 +152,7 @@ msgstr "أنشئ المجلد %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "الملفات ليست من مدير الملف الافتراضي."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:150
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3407
@@ -208,16 +208,16 @@ msgstr "نافذة _جديدة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:765
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "فتح نافذة ملفات أخرى للمسار المحدد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:768
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr ""
+msgstr "_علامة تبويب جديد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:769
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "افتح علامة تبويب جديد للمكان المعروض"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:773
 msgid "_Close"
@@ -233,7 +233,7 @@ msgstr "الخيارات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:778
 msgid "Change Files preferences"
-msgstr ""
+msgstr "تغيير خيارات ملفات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:783
 msgid "_Undo"
@@ -298,7 +298,7 @@ msgstr "ال_شبكة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:812
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "تصفح مواقع الشبكة والمحلّية المعلّمة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:815
 msgid "Zoom _In"
@@ -346,7 +346,7 @@ msgstr "_حوْل"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:852
 msgid "Display credits"
-msgstr ""
+msgstr "عرض الرصيد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:855
 msgid "Report a Problem..."
@@ -354,7 +354,7 @@ msgstr "أرسل تقرير عن مشكلة ما"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:856
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "الإبلاغ عن خطأ في لنشباد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:859
 msgid "Get Help Online..."
@@ -374,15 +374,15 @@ msgstr "بدّل عرض الملفّات المخفيّة في النّافذة 
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:878
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "إظهار الملفات سطح المكتب"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:879
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "تبديل عرض ملفات سطح المكتب"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:883
 msgid "_Context Pane"
-msgstr ""
+msgstr "_ جزء السياق"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:884
 msgid "Change the visibility of the context pane"
@@ -406,7 +406,7 @@ msgstr "إظهار/إخفاء اللوح الجانبي لهذه النافذة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:902
 msgid "Icon"
-msgstr ""
+msgstr "الأيقونة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:905
 msgid "List"
@@ -428,7 +428,7 @@ msgstr "الشبكة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/LocationBar.vala:286
 msgid "Open in New Tab"
-msgstr ""
+msgstr "فتح في علامة تبويب جديدة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ViewContainer.vala:145
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:300
@@ -442,15 +442,15 @@ msgstr "نظام ملفات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ViewContainer.vala:152
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(كمسؤول)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr ""
+msgstr "تفضيلات الملفات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "There are no extensions currently installed."
-msgstr ""
+msgstr "لا توجد ملحقات مثبتة حاليا."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:105
 msgid "Extensions"
@@ -462,17 +462,17 @@ msgstr "الفتح بنقرة واحدة:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:218
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "الفأرة تحديد-تلقائي"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:237
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "بطيء"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:239
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "سريع"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:254
 msgid "Date format:"
@@ -480,15 +480,15 @@ msgstr "هيئة التاريخ:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:257
 msgid "iso"
-msgstr ""
+msgstr "عالمي"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:258
 msgid "locale"
-msgstr ""
+msgstr "محلي"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:259
 msgid "informal"
-msgstr ""
+msgstr "عامي"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ContextView.vala:336
 msgid "Name"
@@ -507,15 +507,15 @@ msgstr "الحجم"
 #: /home/pqp/lp/pantheon-files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u العناصر المحددة (%s)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "قائمة دليل الأيقونات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "عرض أيقونات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
@@ -704,17 +704,19 @@ msgstr "نقرة واحدة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
+msgstr "كيفما كانت العناصر في العرض يمكن أن تعمل بنقره واحدة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
-msgstr ""
+msgstr "مهلة النقرة الواحدة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
+"مقدار الوقت الذي ينتظره العنصر لكي يتم تظليله تلقائيًا عند وضع مؤشر الفأرة "
+"عليه في وضع الفتح بنقرة واحدة."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
@@ -725,6 +727,8 @@ msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
+"حدد عناصر ليتم عرضها في شريط الأدوات. يمكن إعادة ترتيب العناصر عن طريق السحب "
+"والإفلات."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
@@ -772,11 +776,11 @@ msgstr[5] "%'d عمليات ملفات نشطة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "اظهر نافذة النسخ"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "ألغ كل الإجراءات قيد التنفيذ"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
@@ -784,7 +788,7 @@ msgstr "اكتملت جميع عمليات الملفات بنجاح"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "اسم ملف"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1163
 msgid "Invalid filename provided by XDS drag site"
@@ -823,19 +827,19 @@ msgstr "فتح في %'d _نوافذ جديدة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3459
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
+msgstr "جَهّز الملفات المنتقاة ليتم نقلها بأمر لصق"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3463
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
+msgstr "جَهّز الملفات المنتقاة ليتم نسخها بأمر لصق"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3467
 msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
+msgstr "انقل أو انسخ الملفات المختارة سابقا بأمر قص أو نسخ"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3470
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "ألصق في مجلد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3471
 msgid ""
@@ -845,19 +849,19 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3474
 msgid "_Rename..."
-msgstr ""
+msgstr "_غيّر التسمية..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3475
 msgid "Rename selected item"
-msgstr ""
+msgstr "إعادة تسمية العنصر المنتقى"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3478
 msgid "Create New _Folder"
-msgstr ""
+msgstr "أنشئ _مجلدا جديدا"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3479
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "انشاء مجلد جديد فارغ داخل هذا المجلد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3481
 msgid "Create New _File"
@@ -865,11 +869,11 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3483
 msgid "_Empty File"
-msgstr ""
+msgstr "_ملف فارغ"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3484
 msgid "Create a new empty file inside this folder"
-msgstr ""
+msgstr "انشاء مجلد جديد فارغ داخل هذا المجلد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3488
 msgid "Open the selected item"
@@ -889,39 +893,39 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3502
 msgid "Open Wit_h"
-msgstr ""
+msgstr "افتح با_ستخدام"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3503
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "اختر برنامجا لفتح العنصر المنتقى به"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3505
 msgid "Other _Application..."
-msgstr ""
+msgstr "_تطبيق آخر..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3506
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "اختر تطبيقا آخر لفتح العنصر المختار به"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3509
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "ا_نقل إلى المهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3510
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "نقل كل عنصر منتقى إلى سلة المهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3513
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "ا_حذف نهائيا"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3514
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "حذف كل عنصر منتقى، دون نقله إلى سلة المهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3517
 msgid "_Restore"
-msgstr ""
+msgstr "ا_سترجع"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3521
 #: /home/pqp/lp/pantheon-files/po/../src/eel-editable-label.c:3190
@@ -930,11 +934,11 @@ msgstr "حدد الكل"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3525
 msgid "_Properties"
-msgstr ""
+msgstr "_خصائص"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3526
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "عرض أوتعديل خصائص كل عنصر منتقى"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3632
 msgid "Set Color:"
@@ -942,51 +946,51 @@ msgstr "عيّن اللّون:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "ترت_يب العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "ترتيب _عكسي"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "عرض الأيقونات في ترتيب عكسي"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "بحسب الإ_سم"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "حافظ على الأيقونات مرتبة في صفوف حسب الاسم"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "بحسب ال_حجم"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "حافظ على الأيقونات مرتبة في صفوف حسب الحجم"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "بحسب ال_نوع"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "حافظ على اﻷيقونات مرتبة في صفوف بحسب النوع"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "بجسب _تاريخ التعديل"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "حافظ على اﻷيقونات مرتبة في صفوف بحسب تاريخ التعديل"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr ""
+msgstr "آس آس أش"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
@@ -1085,7 +1089,7 @@ msgstr "اسم ال_نطاق:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
-msgstr ""
+msgstr "ا_سم المستخدم:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
@@ -1109,7 +1113,7 @@ msgstr "ﻻ يوجد شئ في الحافظة لنسخه"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:423
 msgid "Show the version of the program."
-msgstr ""
+msgstr "اعرض إصدارة البرنامج."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:427
 msgid "Open uri(s) in new tab"
@@ -1125,7 +1129,7 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:432
 msgid "[URI...]"
-msgstr ""
+msgstr "[العنوان...]"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:441
 msgid ""
@@ -1139,15 +1143,15 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:461
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "لا يمكن استخدام ‪%s‬ مع المسارات."
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "تصفح ملفاتك"
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "مدير الملفات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
@@ -1155,7 +1159,7 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "الملفات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-progress-info.c:192
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-progress-info.c:210
@@ -1444,40 +1448,40 @@ msgstr "الوصلة %'d إلى %s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
-msgstr ""
+msgstr " (نسخ)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
-msgstr ""
+msgstr " (نسخة أخرى)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:468
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:470
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:472
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
-msgstr ""
+msgstr "نسخة)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
-msgstr ""
+msgstr "نسخة)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
-msgstr ""
+msgstr "نسخة)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
-msgstr ""
+msgstr "نسخة)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (نسخة)%s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (نسخة أخرى)%s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:501
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:503
@@ -1485,22 +1489,22 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (نسخة %'d)%s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (نسخة %'d)%s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (نسخة %'d)%s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (نسخة %'d)%s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
@@ -1705,25 +1709,33 @@ msgstr "تعذّر وصْل %s"
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "يُحضر لنسخ %'d ملف (%S)"
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] "يُحضر لنسخ %'d ملفات (%S)"
-msgstr[4] "يُحضر لنسخ %'d ملفاً (%S)"
-msgstr[5] "يُحضر لنسخ %'d ملف (%S)"
+msgstr[1] "يجري التحضير لنسخ %'d ملفات (%S)"
+msgstr[2] "يجري التحضير لنسخ %'d ملفات (%S)"
+msgstr[3] "يجري التحضير لنسخ %'d ملفات (%S)"
+msgstr[4] "يجري التحضير لنسخ %'d ملفات (%S)"
+msgstr[5] "يجري التحضير لنسخ %'d ملفات (%S)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "يجري التحضير لنقل %I'd ملف (%S)"
+msgstr[1] "يجري التحضير لنقل %I'd ملفات (%S)"
+msgstr[2] "يجري التحضير لنقل %I'd ملفات (%S)"
+msgstr[3] "يجري التحضير لنقل %I'd ملفات (%S)"
+msgstr[4] "يجري التحضير لنقل %I'd ملفات (%S)"
+msgstr[5] "يجري التحضير لنقل %I'd ملفات (%S)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "يجري التحضير لحذف %I'd ملف (%S)"
+msgstr[1] "يجري التحضير لحذف %I'd ملفات (%S)"
+msgstr[2] "يجري التحضير لحذف %I'd ملفات (%S)"
+msgstr[3] "يجري التحضير لحذف %I'd ملفات (%S)"
+msgstr[4] "يجري التحضير لحذف %I'd ملفات (%S)"
+msgstr[5] "يجري التحضير لحذف %I'd ملفات (%S)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
@@ -2142,7 +2154,7 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "غيّر اسم '%s' كـ '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
@@ -2153,7 +2165,7 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "استعد '%s' إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
@@ -2163,7 +2175,7 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "انقل '%s' مرة أخرى إلى المُهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
@@ -2173,27 +2185,27 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "إحذف الرابط إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "استعد التصاريح الأصلية للعناصر المُضمنة في '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "استعد تصاريح '%s' الأصلية"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "استعد مجموعة '%s' إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "استعدالمالك '%s' إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
