@@ -284,6 +284,16 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 {
     g_debug ("%s %s", G_STRFUNC, file->uri); 
     fm_list_model_remove_file (view->model, file, directory);
+    /* Remove from gof-directory-async cache */
+    if (gof_file_is_folder (file)) {
+        GOFDirectoryAsync *dir = NULL;
+        dir = gof_directory_async_cache_lookup (file->location);
+        if (dir != NULL) {
+            if (gof_directory_async_purge_dir_from_cache (dir))
+                g_debug ("Remove from gof-directory-async cache %s\n", file->uri);
+            g_object_unref (dir);
+        }
+    }
 }
 
 static void
