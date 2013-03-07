@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-03-04 18:42+0000\n"
+"PO-Revision-Date: 2013-03-06 19:03+0000\n"
 "Last-Translator: Fathallah Wael <fathallahwael80@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2013-03-05 05:27+0000\n"
+"X-Launchpad-Export-Date: 2013-03-07 05:36+0000\n"
 "X-Generator: Launchpad (build 16514)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
@@ -889,7 +889,7 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3500
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "افتح كل عنصر مختار في علامة التبويب الجديدة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3502
 msgid "Open Wit_h"
@@ -2240,17 +2240,17 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "أنشئ ملفا جديدا '%s' من قالب "
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "أنشئ ملف فارغ '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "أنشئ مجلد جديد '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format

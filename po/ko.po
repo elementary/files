@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-02-28 14:10+0000\n"
+"PO-Revision-Date: 2013-03-07 03:58+0000\n"
 "Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-03-01 05:19+0000\n"
+"X-Launchpad-Export-Date: 2013-03-07 05:36+0000\n"
 "X-Generator: Launchpad (build 16514)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
@@ -601,58 +601,58 @@ msgstr "중지(_S)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1592
 msgid "_Power On"
-msgstr ""
+msgstr "전원 켜기(_P)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1593
 msgid "_Safely Remove Drive"
-msgstr ""
+msgstr "안전하게 드라이브 제거(_S)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1596
 msgid "_Connect Drive"
-msgstr ""
+msgstr "드라이브 연결(_C)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1597
 msgid "_Disconnect Drive"
-msgstr ""
+msgstr "드라이브 연결 끊기(_D)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1600
 msgid "_Start Multi-disk Device"
-msgstr ""
+msgstr "멀티 디스크 장치 시작(_S)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1601
 msgid "_Stop Multi-disk Device"
-msgstr ""
+msgstr "멀티 디스크 장치 중지(_S)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1605
 msgid "_Unlock Drive"
-msgstr ""
+msgstr "드라이브 잠금 해제(_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1606
 msgid "_Lock Drive"
-msgstr ""
+msgstr "드라이브 잠그기(_L)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1680
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2227
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "'%s'을(를) 시작할 수 없습니다"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1970
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1999
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2028
 #, c-format
 msgid "Unable to eject %s"
-msgstr ""
+msgstr "%s을(를) 꺼낼 수 없습니다"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2173
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr ""
+msgstr "%s의 미디어가 바뀌었는지 확인할 수 없습니다"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2283
 #, c-format
 msgid "Unable to stop %s"
-msgstr ""
+msgstr "'%s'을(를) 중지할 수 없습니다"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2375
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1959
@@ -673,29 +673,29 @@ msgstr "새 창에서 열기(_W)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2399
 msgid "Remove"
-msgstr ""
+msgstr "제거"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2408
 msgid "Rename..."
-msgstr ""
+msgstr "이름 바꾸기..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2421
 msgid "_Mount"
-msgstr ""
+msgstr "마운트(_M)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2428
 msgid "_Unmount"
-msgstr ""
+msgstr "마운트 해제(_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2435
 msgid "_Eject"
-msgstr ""
+msgstr "꺼내기(_E)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2443
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1422
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2310
 msgid "Empty _Trash"
-msgstr ""
+msgstr "휴지통 비우기(_T)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
@@ -723,15 +723,15 @@ msgstr "도구 모음 사용자 설정"
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
-msgstr ""
+msgstr "도구 모음에 표시할 항목을 선택합니다. 드래그 앤 드롭으로 순서를 바꿀 수 있습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
-msgstr ""
+msgstr "사용가능한 항목"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:497
 msgid "Displayed Items"
-msgstr ""
+msgstr "표시한 항목"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-columns-view.c:82
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:616
@@ -1098,23 +1098,23 @@ msgstr "클립보드에서 붙여넣을 자료가 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:423
 msgid "Show the version of the program."
-msgstr ""
+msgstr "프로그램의 버전을 표시합니다."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:427
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "새 탭에서 URL을 엽니다."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:429
 msgid "Quit Files."
-msgstr ""
+msgstr "닫기"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:431
 msgid "Enable debug logging"
-msgstr ""
+msgstr "디버그 로깅 사용"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:432
 msgid "[URI...]"
-msgstr ""
+msgstr "[URI...]"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:441
 msgid ""
@@ -1122,39 +1122,42 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"파일 관리자로 파일 시스템을 찾아봅니다"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:461
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit 옵션은 URI와 같이 사용할 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "파일 찾아보기"
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr ""
+msgstr "파일 관리자"
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "관리자 권한으로 새 창 열기"
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr ""
+msgstr "파일"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-progress-info.c:192
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr ""
+msgstr "준비하는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "오늘 %-l:%M %p"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "어제 %-l:%M %p"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
@@ -1163,78 +1166,78 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "\"%s\"의 원래 위치를 알 수 없습니다 "
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-utilities.c:122
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "항목을 휴지통에서 되살릴 수 없습니다"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr ""
+msgstr "자세히 표시(_D)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr ""
+msgstr " (잘못된 유니코드)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "폴더 \"%s\"을(를) 합치시겠습니까?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
-msgstr ""
+msgstr "폴더를 합치면, 폴더 안에 복사하려는 파일과 겹치는 파일이 있는 경우에 이를 덮어쓸 지 물어봅니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\"에 같은 이름을 가진 오래된 폴더가 이미 존재합니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\"에 같은 이름을 가진 새로운 폴더가 이미 존재합니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\"에 같은 이름을 가진 다른 폴더가 이미 존재합니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "바꾸시면 폴더 안의 모든 파일을 제거하게 됩니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "폴더 \"%s\"을(를) 바꾸시겠습니까?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\"에 같은 이름을 가진 폴더가 이미 존재합니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "\"%s\" 파일을 바꾸시겠습니까?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "바꾸시면 내용을 덮어쓰게 됩니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
