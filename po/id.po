@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-02-26 06:15+0000\n"
-"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
+"PO-Revision-Date: 2013-03-07 10:57+0000\n"
+"Last-Translator: Dani Pratomo <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-02-27 05:00+0000\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Launchpad-Export-Date: 2013-03-08 05:13+0000\n"
+"X-Generator: Launchpad (build 16523)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
-msgstr "Properti"
+msgstr "Keterangan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:116
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:47
@@ -29,7 +29,7 @@ msgstr "Umum"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
-msgstr "Lainnya"
+msgstr "Lanjut"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:136
 msgid "Preview"
@@ -43,7 +43,7 @@ msgstr "Dibuat"
 #: /home/pqp/lp/pantheon-files/po/../src/View/ContextView.vala:344
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr "Telah dimodifikasi."
+msgstr "Diubah"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:328
 msgid "Last Access"
@@ -55,11 +55,11 @@ msgstr "Dihapus"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:339
 msgid "MimeType"
-msgstr "MimeType"
+msgstr "Tipe Mime"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:347
 msgid "MimeTypes"
-msgstr "MimeTypes"
+msgstr "Tipe Mime"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:351
 msgid "Location"
