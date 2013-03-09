@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-03-06 19:03+0000\n"
+"PO-Revision-Date: 2013-03-08 11:46+0000\n"
 "Last-Translator: Fathallah Wael <fathallahwael80@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2013-03-07 05:36+0000\n"
-"X-Generator: Launchpad (build 16514)\n"
+"X-Launchpad-Export-Date: 2013-03-09 05:28+0000\n"
+"X-Generator: Launchpad (build 16523)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -519,11 +519,11 @@ msgstr "عرض أيقونات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr ""
+msgstr "وضع تصميم"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr ""
+msgstr "التصميم الموضوع"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
@@ -792,7 +792,7 @@ msgstr "اسم ملف"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1163
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "أسم ملف خاطأ مدعوم من موقع السحب XDS"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1321
 #, c-format
@@ -846,6 +846,8 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"نقل أو نسخ الملفات المحددة مسبقا من قبل المقصوصة أو المنسوخة إلى المجلد "
+"المحدد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3474
 msgid "_Rename..."
@@ -865,7 +867,7 @@ msgstr "انشاء مجلد جديد فارغ داخل هذا المجلد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3481
 msgid "Create New _File"
-msgstr ""
+msgstr "أنشء _ملف جديد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3483
 msgid "_Empty File"
@@ -877,15 +879,15 @@ msgstr "انشاء مجلد جديد فارغ داخل هذا المجلد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3488
 msgid "Open the selected item"
-msgstr ""
+msgstr "إفتح الخيارات المحدد"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3495
 msgid "Open in new Window"
-msgstr ""
+msgstr "إفتح في نافذة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3496
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "إفتح كل من الخيارات المحدد في نافذة جديدة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3500
 msgid "Open each selected item in a new tab"
@@ -1117,15 +1119,15 @@ msgstr "اعرض إصدارة البرنامج."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:427
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "إفتح الروابط في علامة تبويب جديدة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:429
 msgid "Quit Files."
-msgstr ""
+msgstr "الخروج من فيلز."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:431
 msgid "Enable debug logging"
-msgstr ""
+msgstr "تمكين تسجيل التصحيح"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:432
 msgid "[URI...]"
@@ -1155,7 +1157,7 @@ msgstr "مدير الملفات"
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "نافذة جديدة كمسؤول"
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
@@ -1168,15 +1170,15 @@ msgstr "يحضّر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "اليوم في %-I:%M %p"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-fcts.c:85
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "أمس في %-I:%M %p"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-fcts.c:89
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y في %-I:%M %p"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-utilities.c:119
 #, c-format
@@ -1655,13 +1657,15 @@ msgstr[5] "تبقى %'d ملف لنقلها إلى المهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "لا يمكن نقل الملف إلى سلة المهملات. حذف فورا؟"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
+"تم تحديد هذا الملف وسائط خارجية والتي لا يمكن نقلها إلى سلة المهملات. عند "
+"حذف، لا يمكن استعادة."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
@@ -2126,29 +2130,29 @@ msgstr "لا يمكن تغيير اسم ملفات المستوى الأول"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "حذف  %d العناصر المنسوخة"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "احذف '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "حذف  %d العناصر المتكررة"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "أرجع %d العناصر إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "أرجع '%s' إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
@@ -2160,7 +2164,7 @@ msgstr "غيّر اسم '%s' كـ '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr ""
+msgstr "أعد %d العناصر الموجودة في سلة المهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
@@ -2170,7 +2174,7 @@ msgstr "استعد '%s' إلى '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "أعد %d العناصر إلى سلة المهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
@@ -2180,7 +2184,7 @@ msgstr "انقل '%s' مرة أخرى إلى المُهملات"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "حذف روابط ل %d عناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
@@ -2210,32 +2214,32 @@ msgstr "استعدالمالك '%s' إلى '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "أنسخ %d العناصر إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "انسخ '%s' إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "ضاعِف %d العناصر في '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "ضاعِف '%s' في '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "إنقل %d العناصر إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "انقل '%s' إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
@@ -2255,258 +2259,362 @@ msgstr "أنشئ مجلد جديد '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "أنقل %d العناصر إلى سلة المهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "انقل '%s' إلى المُهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "استعد '%s' من المُهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "أنشئ رابط إلى عناصر  %d"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "أنشئ رابط إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "اضبط التصاريح للعناصر المضمنة في '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "اضبط التصاريح لـ '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "اضبط مجموعة '%s' إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "اضبط مالك '%s' إلى '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_ألغي النسخ %d العنصر"
+msgstr[1] "_ألغي النسخ %d العناصر"
+msgstr[2] "_ألغي النسخ %d العناصر"
+msgstr[3] "_ألغي النسخ %d العناصر"
+msgstr[4] "_ألغي النسخ %d العناصر"
+msgstr[5] "_ألغي النسخ %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_ألغي تكرير %d العنصر"
+msgstr[1] "_ألغي تكرير %d العناصر"
+msgstr[2] "_ألغي تكرير %d العناصر"
+msgstr[3] "_ألغي تكرير %d العناصر"
+msgstr[4] "_ألغي تكرير %d العناصر"
+msgstr[5] "_ألغي تكرير %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_ألغي نقل %d العنصر"
+msgstr[1] "_ألغي نقل %d العناصر"
+msgstr[2] "_ألغي نقل %d العناصر"
+msgstr[3] "_ألغي نقل %d العناصر"
+msgstr[4] "_ألغي نقل %d العناصر"
+msgstr[5] "_ألغي نقل %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_ألغي إعادة التسمية %d العنصر"
+msgstr[1] "_ألغي إعادة التسمية %d العناصر"
+msgstr[2] "_ألغي إعادة التسمية %d العناصر"
+msgstr[3] "_ألغي إعادة التسمية %d العناصر"
+msgstr[4] "_ألغي إعادة التسمية %d العناصر"
+msgstr[5] "_ألغي إعادة التسمية %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_ألغي إنشاء ملف خالي"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_ألغي إنشاء ملف قالب"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_ألغي إنشاء %d ملف"
+msgstr[1] "_ألغي إنشاء %d ملفات"
+msgstr[2] "_ألغي إنشاء %d ملفات"
+msgstr[3] "_ألغي إنشاء %d ملفات"
+msgstr[4] "_ألغي إنشاء %d ملفات"
+msgstr[5] "_ألغي إنشاء %d ملفات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_ألغي نقل العنصر %d إلى سلة المهملات"
+msgstr[1] "_ألغي نقل العناصر %d إلى سلة المهملات"
+msgstr[2] "_ألغي نقل العناصر %d إلى سلة المهملات"
+msgstr[3] "_ألغي نقل العناصر %d إلى سلة المهملات"
+msgstr[4] "_ألغي نقل العناصر %d إلى سلة المهملات"
+msgstr[5] "_ألغي نقل العناصر %d إلى سلة المهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_ألغي إعادة العنصر %d من سلة المهملات"
+msgstr[1] "_ألغي إعادة العناصر %d من سلة المهملات"
+msgstr[2] "_ألغي إعادة العناصر %d من سلة المهملات"
+msgstr[3] "_ألغي إعادة العناصر %d من سلة المهملات"
+msgstr[4] "_ألغي إعادة العناصر %d من سلة المهملات"
+msgstr[5] "_ألغي إعادة العناصر %d من سلة المهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_التراجع عن إنشاء رابط %d للعنصر"
+msgstr[1] "_التراجع عن إنشاء رابط %d للعناصر"
+msgstr[2] "_التراجع عن إنشاء رابط %d للعناصر"
+msgstr[3] "_التراجع عن إنشاء رابط %d للعناصر"
+msgstr[4] "_التراجع عن إنشاء رابط %d للعناصر"
+msgstr[5] "_التراجع عن إنشاء رابط %d للعناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_التراجع عن حذف %d العنصر"
+msgstr[1] "_التراجع عن حذف %d العناصر"
+msgstr[2] "_التراجع عن حذف %d العناصر"
+msgstr[3] "_التراجع عن حذف %d العناصر"
+msgstr[4] "_التراجع عن حذف %d العناصر"
+msgstr[5] "_التراجع عن حذف %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العنصر"
+msgstr[1] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
+msgstr[2] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
+msgstr[3] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
+msgstr[4] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
+msgstr[5] "التراجع عن تغير قونين الدخول لجميع محتوى  %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "التراجع عن تغير قونين الدخول  %d العنصر"
+msgstr[1] "التراجع عن تغير قونين الدخول  %d العناصر"
+msgstr[2] "التراجع عن تغير قونين الدخول  %d العناصر"
+msgstr[3] "التراجع عن تغير قونين الدخول  %d العناصر"
+msgstr[4] "التراجع عن تغير قونين الدخول  %d العناصر"
+msgstr[5] "التراجع عن تغير قونين الدخول  %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العنصر"
+msgstr[1] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
+msgstr[2] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
+msgstr[3] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
+msgstr[4] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
+msgstr[5] "التراجع عن تغير قونين الدخول خاصة بالمجموعة  %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "التراجع عن تغير المالك  %d العنصر"
+msgstr[1] "التراجع عن تغير المالك  %d العناصر"
+msgstr[2] "التراجع عن تغير المالك  %d العناصر"
+msgstr[3] "التراجع عن تغير المالك  %d العناصر"
+msgstr[4] "التراجع عن تغير المالك  %d العناصر"
+msgstr[5] "التراجع عن تغير المالك  %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_أعد نسخ %d العنصر"
+msgstr[1] "_أعد نسخ %d العناصر"
+msgstr[2] "_أعد نسخ %d العناصر"
+msgstr[3] "_أعد نسخ %d العناصر"
+msgstr[4] "_أعد نسخ %d العناصر"
+msgstr[5] "_أعد نسخ %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_أعد مضعفة %d العنصر"
+msgstr[1] "_أعد مضعفة %d العناصر"
+msgstr[2] "_أعد مضعفة %d العناصر"
+msgstr[3] "_أعد مضعفة %d العناصر"
+msgstr[4] "_أعد مضعفة %d العناصر"
+msgstr[5] "_أعد مضعفة %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_أعد نقل %d العنصر"
+msgstr[1] "_أعد نقل %d العناصر"
+msgstr[2] "_أعد نقل %d العناصر"
+msgstr[3] "_أعد نقل %d العناصر"
+msgstr[4] "_أعد نقل %d العناصر"
+msgstr[5] "_أعد نقل %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_أعد تسمية %d العنصر"
+msgstr[1] "_أعد تسمية %d العناصر"
+msgstr[2] "_أعد تسمية %d العناصر"
+msgstr[3] "_أعد تسمية %d العناصر"
+msgstr[4] "_أعد تسمية %d العناصر"
+msgstr[5] "_أعد تسمية %d العناصر"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_أعد إنشاء ملف غارغ"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_أعد إنشاء ملف قالب"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_أعد إنشاء %d حافظة"
+msgstr[1] "_أعد إنشاء %d حوافظ"
+msgstr[2] "_أعد إنشاء %d حوافظ"
+msgstr[3] "_أعد إنشاء %d حوافظ"
+msgstr[4] "_أعد إنشاء %d حوافظ"
+msgstr[5] "_أعد إنشاء %d حوافظ"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_أعد نقل %d عنصر إلى سلة المهملات"
+msgstr[1] "_أعد نقل %d عناصر إلى سلة المهملات"
+msgstr[2] "_أعد نقل %d عناصر إلى سلة المهملات"
+msgstr[3] "_أعد نقل %d عناصر إلى سلة المهملات"
+msgstr[4] "_أعد نقل %d عناصر إلى سلة المهملات"
+msgstr[5] "_أعد نقل %d عناصر إلى سلة المهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_أعد جلب %d عنصر من سلة المهملات"
+msgstr[1] "_أعد جلب %d عناصر من سلة المهملات"
+msgstr[2] "_أعد جلب %d عناصر من سلة المهملات"
+msgstr[3] "_أعد جلب %d عناصر من سلة المهملات"
+msgstr[4] "_أعد جلب %d عناصر من سلة المهملات"
+msgstr[5] "_أعد جلب %d عناصر من سلة المهملات"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_أعد إنشاء رابط للعنصر %d"
+msgstr[1] "_أعد إنشاء رابط للعناصر %d"
+msgstr[2] "_أعد إنشاء رابط للعناصر %d"
+msgstr[3] "_أعد إنشاء رابط للعناصر %d"
+msgstr[4] "_أعد إنشاء رابط للعناصر %d"
+msgstr[5] "_أعد إنشاء رابط للعناصر %d"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_أعد حذف للعنصر %d"
+msgstr[1] "_أعد حذف للعناصر %d"
+msgstr[2] "_أعد حذف للعناصر %d"
+msgstr[3] "_أعد حذف للعناصر %d"
+msgstr[4] "_أعد حذف للعناصر %d"
+msgstr[5] "_أعد حذف للعناصر %d"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "أعد تغير قوانين الدخول لجميع المحتوى للعنصر %d"
+msgstr[1] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
+msgstr[2] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
+msgstr[3] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
+msgstr[4] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
+msgstr[5] "أعد تغير قوانين الدخول لجميع المحتوى للعناصر %d"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "أعد تغير قوانين الدخول للعنصر %d"
+msgstr[1] "أعد تغير قوانين الدخول للعناصر %d"
+msgstr[2] "أعد تغير قوانين الدخول للعناصر %d"
+msgstr[3] "أعد تغير قوانين الدخول للعناصر %d"
+msgstr[4] "أعد تغير قوانين الدخول للعناصر %d"
+msgstr[5] "أعد تغير قوانين الدخول للعناصر %d"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "أعد تغير قوانين الدخول للمجموعة للعنصر %d"
+msgstr[1] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
+msgstr[2] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
+msgstr[3] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
+msgstr[4] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
+msgstr[5] "أعد تغير قوانين الدخول للمجموعة للعناصر %d"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "أعد تغير المالك للعنصر %d"
+msgstr[1] "أعد تغير المالك للعناصر %d"
+msgstr[2] "أعد تغير المالك للعناصر %d"
+msgstr[3] "أعد تغير المالك للعناصر %d"
+msgstr[4] "أعد تغير المالك للعناصر %d"
+msgstr[5] "أعد تغير المالك للعناصر %d"
 
 #: /home/pqp/lp/pantheon-files/po/../libwidgets/LocationBar.vala:321
 msgid "Cut the selected text to the clipboard"
-msgstr ""
+msgstr "قص النص المحدد إلى الحافظة"
 
 #: /home/pqp/lp/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Copy the selected text to the clipboard"
-msgstr ""
+msgstr "نسخ النص المحدد إلى الحافظة"
 
 #: /home/pqp/lp/pantheon-files/po/../libwidgets/LocationBar.vala:329
 #: /home/pqp/lp/pantheon-files/po/../libwidgets/LocationBar.vala:333
 msgid "Paste the text stored on the clipboard"
-msgstr ""
+msgstr "الصق النص المخزن في الحافظة"
 
 #: /home/pqp/lp/pantheon-files/po/../libwidgets/LocationBar.vala:812
 #, c-format
@@ -2515,20 +2623,20 @@ msgstr "إذهب إلى %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
-msgstr ""
+msgstr "عرض كشبكة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "اعرض كقائمة"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
-msgstr ""
+msgstr "العرض في الأعمدة"
 
 #: /home/pqp/lp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "قد يتم حذف هذه البنود عند إفراغ سلة المهملات."
 
 #: /home/pqp/lp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "أفرغ سلة المهملات"

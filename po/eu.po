@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2012-12-11 23:24+0000\n"
-"Last-Translator: KombuchaMushroom <enekosar@gmail.com>\n"
+"PO-Revision-Date: 2013-03-08 22:56+0000\n"
+"Last-Translator: Ibai Oihanguren <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-02-17 05:02+0000\n"
-"X-Generator: Launchpad (build 16491)\n"
+"X-Launchpad-Export-Date: 2013-03-09 05:28+0000\n"
+"X-Generator: Launchpad (build 16523)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -427,7 +427,7 @@ msgstr "Sarea"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/LocationBar.vala:286
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Ireki fitxa berrian"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ViewContainer.vala:145
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:300
@@ -449,7 +449,7 @@ msgstr "Files-en hobespenak"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "There are no extensions currently installed."
-msgstr ""
+msgstr "Une honetan ez dago hedapenik instalaturik."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:105
 msgid "Extensions"
@@ -506,7 +506,7 @@ msgstr "Tamaina"
 #: /home/pqp/lp/pantheon-files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u elementu hautatuta (%s)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
