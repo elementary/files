@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-03-09 15:55+0000\n"
+"PO-Revision-Date: 2013-03-11 04:44+0000\n"
 "Last-Translator: Dani Pratomo <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-03-10 05:04+0000\n"
+"X-Launchpad-Export-Date: 2013-03-11 05:09+0000\n"
 "X-Generator: Launchpad (build 16523)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
@@ -138,7 +138,7 @@ msgstr "Folder tidak ada"
 #: /home/pqp/lp/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr "Berkas tidak dapat menemukan folder %s"
+msgstr "Pengelola Berkas tidak dapat menemukan folder %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -151,7 +151,7 @@ msgstr "Buat folder %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
-msgstr "'Berkas' bukan pegelola berkas bawaan."
+msgstr "'Pengelola Berkas' bukan aplikasi utama anda dalam mengelola berkas."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:150
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3407
@@ -207,7 +207,7 @@ msgstr "Jendela Baru (_W)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:765
 msgid "Open another Files window for the displayed location"
-msgstr "Buka jendela 'Berkas' baru untuk lokasi ini"
+msgstr "Buka jendela Pengelola Berkas baru untuk lokasi ini"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:768
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:8
@@ -232,7 +232,7 @@ msgstr "Pengaturan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:778
 msgid "Change Files preferences"
-msgstr "Ganti Pengaturan Berkas"
+msgstr "Ubah Pengaturan Pengelola Berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:783
 msgid "_Undo"
@@ -365,19 +365,19 @@ msgstr "Terjemahkan Aplikasi Ini..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:872
 msgid "Show _Hidden Files"
-msgstr "_Tampilkan Berkas Tersembunyi"
+msgstr "Tampilkan Berkas Tersembunyi (_H)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:873
 msgid "Toggle the display of hidden files in the current window"
-msgstr "Ubah penampakan berkas tersembunyi pada jendela yang aktif"
+msgstr "Ubah tampilan berkas tersembunyi pada jendela yang aktif"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:878
 msgid "Show _Desktop Files"
-msgstr "Tampilkan berkas di Desktop"
+msgstr "Tampilkan Berkas _Desktop"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:879
 msgid "Toggle the display of desktop files"
-msgstr "Ubah kemunculan berkas desktop"
+msgstr "Ubah tampilan berkas desktop"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:883
 msgid "_Context Pane"
@@ -445,7 +445,7 @@ msgstr "sebagai Administrator"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr "Pengaturan Berkas"
+msgstr "Pengaturan Pengelola Berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "There are no extensions currently installed."
@@ -816,16 +816,16 @@ msgstr "Buka di %d Jendela Baru (_W)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3459
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "Siapkan berkas yang dipilih untuk dipindah dengan fungsi Tempel"
+msgstr "Siapkan berkas yang dipilih untuk dipindah dengan perintah Tempel"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3463
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "Siapkan berkas yang dipilih untuk disalin dengan fungsi Tempel"
+msgstr "Siapkan berkas yang dipilih untuk disalin dengan perintah Tempel"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3467
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
-"Pindahkan atau salin berkas yang sebelumnya dipilih dengan menu Potong atau "
+"Pindahkan atau salin berkas yang telah dipilih dengan perintah Potong atau "
 "Salin"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3470
@@ -837,7 +837,7 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
-"Pindahkan atau salin berkas yang sebelumnya dipilih dengan menu Potong atau "
+"Pindahkan atau salin berkas yang telah dipilih dengan perintah Potong atau "
 "Salin ke dalam folder yang dipilih"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3474
@@ -1114,7 +1114,7 @@ msgstr "Buka URI di tab baru"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:429
 msgid "Quit Files."
-msgstr "Keluar Berkas."
+msgstr "Keluar Pengelola Berkas."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:431
 msgid "Enable debug logging"
@@ -1140,7 +1140,7 @@ msgstr "--quit tidak dapat digunakan dengan URI."
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr "Rambah berkas-berkas Anda"
+msgstr "Jelajahi berkas Anda"
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
@@ -1152,7 +1152,7 @@ msgstr "Jendela Baru Sebagai _Administrator"
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
-msgstr "Berkas"
+msgstr "Pengelola Berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-progress-info.c:192
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-progress-info.c:210
@@ -1200,8 +1200,8 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"Penggabungan akan meminta konfirmasi sebelum menggantikan berkas di dalam "
-"folder yang konflik dengan berkas yang sedang disalin."
+"Proses penggabungan minta konfirmasi sebelum menimpa berkas yang konflik "
+"dengan berkas yang sedang disalin."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
@@ -1224,7 +1224,7 @@ msgstr "Folder lain dengan nama sama telah ada di \"%s\"."
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
-msgstr "Mengganti ini akan menghilangkan semua file pada folder."
+msgstr "Proses menimpa akan menghilangkan semua berkas dalam folder."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:170
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
@@ -1313,7 +1313,7 @@ msgstr "Atur Ulang"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
-msgstr "Terapkan aksi ini untuk semua berkas"
+msgstr "Terapkan aksi ini pada semua berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:200
@@ -1564,12 +1564,13 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr "Galat sewaktu mengambil informasi berkas pada folder \"%B\"."
+msgstr ""
+"Terjadi kesalahan sewaktu mengambil informasi berkas pada folder \"%B\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1608
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
-msgstr "_Lewatkan berkas"
+msgstr "Lewati berka_s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
@@ -1595,7 +1596,7 @@ msgstr "Galat sewaktu membuang %B."
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1819
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
-msgstr "Memindahkan berkas ke tong sampah"
+msgstr "Membuang berkas ke tong sampah"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
@@ -1695,7 +1696,7 @@ msgstr "Galat sewaktu memindahkan."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
-msgstr "Galat sewaktu memindahkan berkas ke tong sampah."
+msgstr "Terjadi kesalahan sewaktu membuang berkas ke tong sampah."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
@@ -1944,7 +1945,7 @@ msgstr "Galat sewaktu membuat taut menuju %B."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
-msgstr "Taut simbolik hanya didukung untuk berkas lokal"
+msgstr "Tautan simbolik hanya didukung untuk berkas lokal"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
