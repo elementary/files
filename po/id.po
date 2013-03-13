@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-03-11 15:40+0000\n"
+"PO-Revision-Date: 2013-03-13 00:34+0000\n"
 "Last-Translator: Dani Pratomo <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-03-12 05:04+0000\n"
-"X-Generator: Launchpad (build 16524)\n"
+"X-Launchpad-Export-Date: 2013-03-13 04:52+0000\n"
+"X-Generator: Launchpad (build 16532)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -37,13 +37,13 @@ msgstr "Pratinjau"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:323
 msgid "Created"
-msgstr "Dibuat"
+msgstr "Dibuat pada"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:325
 #: /home/pqp/lp/pantheon-files/po/../src/View/ContextView.vala:344
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr "Diubah"
+msgstr "Diubah pada"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:328
 msgid "Last Access"
@@ -51,7 +51,7 @@ msgstr "Akses Terakhir"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:334
 msgid "Deleted"
-msgstr "Dihapus"
+msgstr "Dibuang pada"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:339
 msgid "MimeType"
@@ -76,7 +76,7 @@ msgstr "Lokasi Asal"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
-msgstr "Info:"
+msgstr "Informasi:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
@@ -92,7 +92,7 @@ msgstr "Penggunaan:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
-msgstr "Penggunaan perangkat:"
+msgstr "Ruang terpakai:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
@@ -109,7 +109,7 @@ msgstr "Tulis"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:610
 msgid "Execute"
-msgstr "Jalankan"
+msgstr "Menjalankan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:828
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:841
@@ -124,7 +124,7 @@ msgstr "Kelompok"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:849
 msgid "Everyone"
-msgstr "Semua orang"
+msgstr "Semua Pengguna"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
 msgid "Select an aplication to open "
@@ -156,7 +156,7 @@ msgstr "'Pengelola Berkas' bukan aplikasi utama anda dalam mengelola berkas."
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:150
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3407
 msgid "Set as default"
-msgstr "Jadikan bawaan"
+msgstr "Sebagai aplikasi utama"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:155
 msgid "Ignore"
@@ -164,7 +164,7 @@ msgstr "Abaikan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:490
 msgid "Undo"
-msgstr "Tak jadi"
+msgstr "Batal"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:491
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:784
@@ -173,32 +173,32 @@ msgstr "Batalkan aksi terakhir"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:500
 msgid "Redo"
-msgstr "Jadi Lagi"
+msgstr "Ulangi"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:501
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:787
 msgid "Redo the last action"
-msgstr "Ulangi langkah terakhir"
+msgstr "Ulangi aksi terakhir"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:758
 msgid "_File"
-msgstr "_Berkas"
+msgstr "Berkas (_F)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:759
 msgid "_Edit"
-msgstr "_Ubah"
+msgstr "Sunting (_E)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:760
 msgid "_View"
-msgstr "_Tampilan"
+msgstr "Lihat (_V)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:761
 msgid "_Go"
-msgstr "_Ke"
+msgstr "Tuju (_G)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:762
 msgid "_Help"
-msgstr "_Bantuan"
+msgstr "Bantuan (_H)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:764
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:9
@@ -220,7 +220,7 @@ msgstr "Buka tab lain untuk lokasi yang ditampilkan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:773
 msgid "_Close"
-msgstr "_Tutup"
+msgstr "Tutup (_C)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:774
 msgid "Close this folder"
@@ -236,19 +236,19 @@ msgstr "Ubah Pengaturan Pengelola Berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:783
 msgid "_Undo"
-msgstr "_Batalkan"
+msgstr "Batal (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:786
 msgid "_Redo"
-msgstr "_Ulangi"
+msgstr "Ulangi (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:789
 msgid "Open _Parent"
-msgstr "_Naik"
+msgstr "Buka Folder Induk (_P)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:790
 msgid "Open the parent folder"
-msgstr "Buka folder atas"
+msgstr "Buka folder induk"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:792
 msgid "_Back"
@@ -260,7 +260,7 @@ msgstr "Buka lokasi yang terakhir dibuka"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:796
 msgid "_Forward"
-msgstr "_Maju"
+msgstr "Maju (_F)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:797
 msgid "Go to the next visited location"
@@ -268,7 +268,7 @@ msgstr "Buka lokasi yang pernah dikunjungi berikutnya"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:799
 msgid "_Reload"
-msgstr "Muat _Ulang"
+msgstr "Muat Ulang (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:800
 msgid "Reload the current location"
@@ -276,7 +276,7 @@ msgstr "Memuat ulang lokasi yang sekarang"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:803
 msgid "_Home Folder"
-msgstr "Folder _Rumah"
+msgstr "Folder Beranda (_H)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:804
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:305
@@ -285,11 +285,11 @@ msgstr "Buka folder pribadi anda"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:807
 msgid "_Trash"
-msgstr "_Tempat Sampah"
+msgstr "_Tong Sampah"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:808
 msgid "Open your personal trash folder"
-msgstr "Buka folder tempat sampah pribadi"
+msgstr "Buka folder tong sampah pribadi"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:811
 msgid "_Network"
@@ -297,7 +297,7 @@ msgstr "Jari_ngan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:812
 msgid "Browse bookmarked and local network locations"
-msgstr "Menelusuri jaringan lokal maupun yang telah ditandai"
+msgstr "Jelajahi jaringan lokal dan yang telah ditandai"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:815
 msgid "Zoom _In"
@@ -305,39 +305,39 @@ msgstr "Perbesar Tamp_ilan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:816
 msgid "Increase the view size"
-msgstr "Memperbesar tampilan"
+msgstr "Perbesar ukuran tampilan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:827
 msgid "Zoom _Out"
-msgstr "P_erkecil Tampilan"
+msgstr "Perkecil Tampilan (_O)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:828
 msgid "Decrease the view size"
-msgstr "Perkecil tampilan"
+msgstr "Perkecil ukuran tampilan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:835
 msgid "Normal Si_ze"
-msgstr "Ukuran _Normal"
+msgstr "Ukuran Normal (_Z)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:836
 msgid "Use the normal view size"
-msgstr "Tampilan normal"
+msgstr "Pakai tampilan ukuran normal"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:839
 msgid "Next Tab"
-msgstr "Tab berikutnya"
+msgstr "Tab Berikutnya"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:843
 msgid "Previous Tab"
-msgstr "Tab sebelumnya"
+msgstr "Tab Sebelumnya"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:847
 msgid "Connect to _Server..."
-msgstr "Sambungkan ke _Server..."
+msgstr "Hubungkan ke _Server..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:848
 msgid "Connect to a remote computer or shared disk"
-msgstr "Menyambung ke komputer lain atau disk yang dipakai bersama"
+msgstr "Terhubung ke komputer lain atau disk yang dipakai bersama"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:851
 msgid "_About"
@@ -353,11 +353,11 @@ msgstr "Laporkan Masalah..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:856
 msgid "File a bug on Launchpad"
-msgstr "Tulis permasalahan program di Launchpad"
+msgstr "Laporkan masalah aplikasi di Launchpad"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:859
 msgid "Get Help Online..."
-msgstr "Dapatkan Bantuan Online ..."
+msgstr "Dapatkan Bantuan Online..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:863
 msgid "Translate This Application..."
@@ -381,7 +381,7 @@ msgstr "Ubah tampilan berkas desktop"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:883
 msgid "_Context Pane"
-msgstr "Panel Keterangan"
+msgstr "Panel Keterangan (_C)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:884
 msgid "Change the visibility of the context pane"
@@ -389,7 +389,7 @@ msgstr "Ubah kemunculan panel keterangan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:888
 msgid "_Menubar"
-msgstr "_Batang menu"
+msgstr "Bilah _Menu"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:889
 msgid "Change the visibility of this window's menubar"
@@ -397,7 +397,7 @@ msgstr "Ubah penampakan bilah menu di jendela ini"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:893
 msgid "_Places"
-msgstr "_Lokasi"
+msgstr "Lokasi (_P)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:894
 msgid "Change the visibility of this window's side pane"
@@ -441,7 +441,7 @@ msgstr "Sistem Berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ViewContainer.vala:152
 msgid "(as Administrator)"
-msgstr "sebagai Administrator"
+msgstr "(sebagai Administrator)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -449,7 +449,7 @@ msgstr "Pengaturan Pengelola Berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "There are no extensions currently installed."
-msgstr "Tak ada ekstensi yang terinstall"
+msgstr "Tak ada ekstensi yang terpasang."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:105
 msgid "Extensions"
@@ -510,7 +510,7 @@ msgstr "%u item terpilih (%s)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr "daftr direktori ikon"
+msgstr "Daftar direktori ikon"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-icon-view.c:87
 msgid "Icon view"
@@ -522,11 +522,11 @@ msgstr "Mode tata letak"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr "Mode tata letak-nya"
+msgstr "Mode tata letak"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
-msgstr "_Pindahkan ke Sini"
+msgstr "Pindah ke Sini (_M)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:108
 msgid "_Copy Here"
@@ -534,7 +534,7 @@ msgstr "Salin di Sini (_C)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:113
 msgid "_Link Here"
-msgstr "_Tautkan ke sini"
+msgstr "Tautkan ke Sini (_L)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:118
 msgid "Set as _Background"
@@ -555,7 +555,7 @@ msgstr "Pribadi"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:291
 msgid "Your common places and bookmarks"
-msgstr "Tempat umum dan Penanda Anda"
+msgstr "Tempat umum dan penanda Anda"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:348
 msgid "Open the trash"
@@ -581,7 +581,7 @@ msgstr "Muat dan buka %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:569
 msgid "Your network places"
-msgstr "Jaringan Anda."
+msgstr "Jaringan Anda"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:600
 msgid "Entire network"
@@ -589,19 +589,19 @@ msgstr "Seluruh jaringan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:602
 msgid "Browse the contents of the network"
-msgstr "Ramban isi dari jaringan"
+msgstr "Jelajahi isi dari jaringan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1586
 msgid "_Start"
-msgstr "_Mulai"
+msgstr "Mulai (_S)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1587
 msgid "_Stop"
-msgstr "_Hentikan"
+msgstr "Hentikan (_S)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1592
 msgid "_Power On"
-msgstr "_Nyalakan"
+msgstr "Nyalakan (_P)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1593
 msgid "_Safely Remove Drive"
@@ -609,11 +609,11 @@ msgstr "Lepa_s Media dengan Aman"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1596
 msgid "_Connect Drive"
-msgstr "_Pasang Media"
+msgstr "Pasang Media (_C)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1597
 msgid "_Disconnect Drive"
-msgstr "Lepaskan _Drive"
+msgstr "Lepaskan Me_dia"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1600
 msgid "_Start Multi-disk Device"
@@ -621,15 +621,15 @@ msgstr "Jalankan Perangkat Multidi_ska"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1601
 msgid "_Stop Multi-disk Device"
-msgstr "_Hentikan Perangkat Multidiska"
+msgstr "Hentikan Perangkat Multidi_ska"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1605
 msgid "_Unlock Drive"
-msgstr "Buka K_unci Drive"
+msgstr "Buka K_unci Media"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1606
 msgid "_Lock Drive"
-msgstr "_Kunci Drive"
+msgstr "Kunci Media (_L)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1680
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2227
@@ -647,18 +647,18 @@ msgstr "Tidak dapat melepas %s"
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2173
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr "Tak bisa poll %s untuk pergantian media"
+msgstr "Tak bisa menyelediki %s untuk pergantian media"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2283
 #, c-format
 msgid "Unable to stop %s"
-msgstr "Tidak dapat menghentikan %s"
+msgstr "Tidak bisa menghentikan %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2375
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1959
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3487
 msgid "_Open"
-msgstr "Buk_a"
+msgstr "Buka (_O)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2383
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1979
@@ -673,7 +673,7 @@ msgstr "Buka di Jendela Baru (_W)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2399
 msgid "Remove"
-msgstr "Hapus"
+msgstr "Buang"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2408
 msgid "Rename..."
@@ -681,15 +681,15 @@ msgstr "Ubah Nama..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2421
 msgid "_Mount"
-msgstr "_Kait"
+msgstr "Kaitkan (_M)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2428
 msgid "_Unmount"
-msgstr "_Lepas"
+msgstr "Lepas Kaitan (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2435
 msgid "_Eject"
-msgstr "_Keluarkan"
+msgstr "Keluarkan (_E)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2443
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1422
@@ -703,39 +703,40 @@ msgstr "Klik Tunggal"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Apakah item yang tampil dapat diaktifkan dengan klik tunggal"
+msgstr ""
+"Apakah objek tertampil dapat diaktifkan dengan klik tunggal atau tidak"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
-msgstr "Batas waktu klik tunggal"
+msgstr "Batas Waktu Klik Tunggal"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
-"Batasan waktu ketika item dibawah kursor tetikus akan dipilih otomatis "
-"dengan moda klik tunggal"
+"Lamanya untuk objek dibawah kursor tetikus dipilih otomatis dengan mode klik "
+"tunggal"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
-msgstr "Atur Toolbar"
+msgstr "Sesuaikan Bilah Alat"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:464
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
-"Pilih item untuk ditampilkan pada toolbar. Item dapat diatur kembali dengan "
-"seret dan taruh."
+"Pilih objek untuk ditampilkan pada bilah alat. Objek dapat diatur kembali "
+"dengan seret dan taruh."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
-msgstr "Butir Tersedia"
+msgstr "Objek yang Tersedia"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:497
 msgid "Displayed Items"
-msgstr "Item ditampilkan"
+msgstr "Item yang Ditampilkan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-columns-view.c:82
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:616
@@ -759,7 +760,7 @@ msgstr "Operasi Berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
-msgstr "Tampilkan rincian"
+msgstr "Tampilkan Rincian"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
@@ -786,7 +787,7 @@ msgstr "Nama berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1163
 msgid "Invalid filename provided by XDS drag site"
-msgstr "Nama berkas yang disediakan oleh XDS drag site salah"
+msgstr "Nama berkas yang disediakan oleh 'XDS drag site' salah"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1321
 #, c-format
@@ -797,12 +798,12 @@ msgstr "Gagal membuat tautan untuk URL \"%s\""
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Gunakan \"%s\" untuk membuka butir terpilih"
+msgstr[0] "Gunakan \"%s\" untuk membuka objek terpilih"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1953
 #, c-format
 msgid "_Open With %s"
-msgstr "_Buka Dengan %s"
+msgstr "Buka Dengan (_O) %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1975
 #, c-format

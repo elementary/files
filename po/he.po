@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-02-26 16:56+0000\n"
-"Last-Translator: Danny Damsky <dannydamsky99@gmail.com>\n"
+"PO-Revision-Date: 2013-03-12 10:34+0000\n"
+"Last-Translator: Megolas <ofeklavie@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-02-27 05:00+0000\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Launchpad-Export-Date: 2013-03-13 04:52+0000\n"
+"X-Generator: Launchpad (build 16532)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -63,12 +63,12 @@ msgstr "טיפוסי Mime"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:351
 msgid "Location"
-msgstr ""
+msgstr "מיקום"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:353
 #: /home/pqp/lp/pantheon-files/po/../src/View/ContextView.vala:340
 msgid "Target"
-msgstr ""
+msgstr "מטרה"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:359
 msgid "Origin Location"
@@ -76,23 +76,23 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
-msgstr ""
+msgstr "מידע:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
-msgstr ""
+msgstr "יישום אחר..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:428
 msgid "Open with:"
-msgstr ""
+msgstr "פתח באמצעות:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:449
 msgid "Usage:"
-msgstr ""
+msgstr "שימוש:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
-msgstr ""
+msgstr "שימוש בהתקן:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
@@ -101,7 +101,7 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
-msgstr ""
+msgstr "קרא"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:605
 msgid "Write"
