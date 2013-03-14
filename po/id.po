@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-03-13 00:34+0000\n"
+"PO-Revision-Date: 2013-03-13 15:59+0000\n"
 "Last-Translator: Dani Pratomo <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-03-13 04:52+0000\n"
+"X-Launchpad-Export-Date: 2013-03-14 05:11+0000\n"
 "X-Generator: Launchpad (build 16532)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
-msgstr "Keterangan"
+msgstr "Properti"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:116
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:47
@@ -120,7 +120,7 @@ msgstr "Pemilik"
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:833
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:845
 msgid "Group"
-msgstr "Kelompok"
+msgstr "Grup"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:849
 msgid "Everyone"
@@ -333,11 +333,11 @@ msgstr "Tab Sebelumnya"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:847
 msgid "Connect to _Server..."
-msgstr "Hubungkan ke _Server..."
+msgstr "Sambung ke _Server..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:848
 msgid "Connect to a remote computer or shared disk"
-msgstr "Terhubung ke komputer lain atau disk yang dipakai bersama"
+msgstr "Sambung ke komputer lain atau disk yang dipakai bersama"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:851
 msgid "_About"
@@ -449,7 +449,7 @@ msgstr "Pengaturan Pengelola Berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "There are no extensions currently installed."
-msgstr "Tak ada ekstensi yang terpasang."
+msgstr "Tak ada ekstensi yang terinstal."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:105
 msgid "Extensions"
@@ -506,7 +506,7 @@ msgstr "Ukuran"
 #: /home/pqp/lp/pantheon-files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr "%u item terpilih (%s)"
+msgstr "%u objek terpilih (%s)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
@@ -779,7 +779,7 @@ msgstr "Batalkan Semua Aksi Berjalan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
-msgstr "Semua operasi berkas telah selesai"
+msgstr "Semua operasi berkas selesai dilakukan dengan sukses"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Filename"
@@ -787,7 +787,7 @@ msgstr "Nama berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1163
 msgid "Invalid filename provided by XDS drag site"
-msgstr "Nama berkas yang disediakan oleh 'XDS drag site' salah"
+msgstr "Nama berkas yang disediakan oleh 'XDS drag site' tidak sah"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1321
 #, c-format
@@ -808,12 +808,12 @@ msgstr "Buka Dengan (_O) %s"
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1975
 #, c-format
 msgid "Open in %'d New _Tabs"
-msgstr "Buka di %d _Tab Baru"
+msgstr "Buka di %'d _Tab Baru"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1984
 #, c-format
 msgid "Open in %'d New _Windows"
-msgstr "Buka di %d Jendela Baru (_W)"
+msgstr "Buka di %'d Jendela Baru (_W)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3459
 msgid "Prepare the selected files to be moved with a Paste command"
@@ -821,13 +821,11 @@ msgstr "Siapkan berkas yang dipilih untuk dipindah dengan perintah Tempel"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3463
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "Siapkan berkas yang dipilih untuk disalin dengan perintah Tempel"
+msgstr "Siapkan berkas terpilih untuk disalin dengan perintah Tempel"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3467
 msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Pindahkan atau salin berkas yang telah dipilih dengan perintah Potong atau "
-"Salin"
+msgstr "Pindah atau salin berkas terpilih dengan perintah Potong atau Salin"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3470
 msgid "Paste Into Folder"
@@ -838,16 +836,16 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
-"Pindahkan atau salin berkas yang telah dipilih dengan perintah Potong atau "
-"Salin ke dalam folder yang dipilih"
+"Pindah atau salin berkas terpilih dengan perintah Potong atau Salin ke dalam "
+"folder yang dipilih"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3474
 msgid "_Rename..."
-msgstr "_Ubah Nama..."
+msgstr "Ubah Nama... (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3475
 msgid "Rename selected item"
-msgstr "Ubah nama objek yang dipilih"
+msgstr "Ubah nama objek terpilih"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3478
 msgid "Create New _Folder"
@@ -855,15 +853,15 @@ msgstr "Buat _Folder Baru"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3479
 msgid "Create a new empty folder inside this folder"
-msgstr "Buat satu folder kosong"
+msgstr "Buat folder kosong di dalam folder ini"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3481
 msgid "Create New _File"
-msgstr "Buat _Berkas Baru"
+msgstr "Buat Berkas Baru (_F)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3483
 msgid "_Empty File"
-msgstr "_Berkas Kosong"
+msgstr "B_erkas Kosong"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3484
 msgid "Create a new empty file inside this folder"
@@ -871,7 +869,7 @@ msgstr "Buat berkas kosong baru dalam folder ini"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3488
 msgid "Open the selected item"
-msgstr "Buka object yang dipilih"
+msgstr "Buka objek terpilih"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3495
 msgid "Open in new Window"
@@ -879,19 +877,19 @@ msgstr "Buka dalam Jendela baru"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3496
 msgid "Open each selected item in a new window"
-msgstr "Buka object yang terpilih di dalam jendela baru"
+msgstr "Buka objek terpilih di jendela baru"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3500
 msgid "Open each selected item in a new tab"
-msgstr "Buka objek yang dipilih pada tab yang baru"
+msgstr "Buka objek terpilih di tab baru"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3502
 msgid "Open Wit_h"
-msgstr "Buka _Dengan"
+msgstr "Buka Dengan (_H)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3503
 msgid "Choose a program with which to open the selected item"
-msgstr "Pilih program untuk membuka objek yang dipilih"
+msgstr "Pilih program untuk membuka objek terpilih"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3505
 msgid "Other _Application..."
@@ -899,7 +897,7 @@ msgstr "_Aplikasi Lain..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3506
 msgid "Choose another application with which to open the selected item"
-msgstr "Pilih aplikasi lain untuk membuka objek yang dipilih"
+msgstr "Pilih aplikasi lain untuk membuka objek terpilih"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3509
 msgid "Mo_ve to Trash"
@@ -907,19 +905,19 @@ msgstr "Buang ke Tong Sampah (_V)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3510
 msgid "Move each selected item to the Trash"
-msgstr "Pindahkan objek yang dipilih ke Tempat Sampah"
+msgstr "Pindahkan tiap objek terpilih ke Tong Sampah"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3513
 msgid "_Delete Permanently"
-msgstr "Ha_pus Selamanya"
+msgstr "Buang Selamanya (_D)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3514
 msgid "Delete each selected item, without moving to the Trash"
-msgstr "Buang selamanya objek terpilih, tanpa melalui Tong Sampah"
+msgstr "Buang selamanya tiap objek terpilih, tanpa melalui Tong Sampah"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3517
 msgid "_Restore"
-msgstr "_Kembalikan"
+msgstr "Kembalikan (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3521
 #: /home/pqp/lp/pantheon-files/po/../src/eel-editable-label.c:3190
@@ -932,7 +930,7 @@ msgstr "_Properti"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3526
 msgid "View or modify the properties of each selected item"
-msgstr "Lihat atau ubah properti objek yang dipilih"
+msgstr "Lihat atau ubah properti tiap objek terpilih"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3632
 msgid "Set Color:"
@@ -940,11 +938,11 @@ msgstr "Tentukan Warna:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr "_Susun Objek"
+msgstr "Susun Objek (_G)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr "Urutan Ter_balik"
+msgstr "Urutan Terbalik (_V)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
@@ -956,7 +954,7 @@ msgstr "Berdasarkan _Nama"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr "Urutkan ikon berdasarkan namanya perbaris"
+msgstr "Urutkan ikon berdasarkan namanya dalam baris"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
@@ -964,15 +962,15 @@ msgstr "Berda_sarkan Ukuran"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr "Urutkan ikon berdasarkan ukurannya per baris"
+msgstr "Urutkan ikon berdasarkan ukurannya dalam baris"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr "Berdasarkan _Jenis"
+msgstr "Berdasarkan _Tipe"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr "Urutkan ikon berdasarkan tipenya per baris"
+msgstr "Urutkan ikon berdasarkan tipenya dalam baris"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
@@ -980,7 +978,7 @@ msgstr "Ber_dasarkan Tanggal Diubah"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr "Urutkan ikon berdasarkan tanggal diubah"
+msgstr "Urutkan ikon berdasarkan tanggal diubah dalam baris"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
@@ -1043,11 +1041,11 @@ msgstr "Lanjutkan"
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
-msgstr "_Sambung"
+msgstr "Sambung (_O)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr "Sambungkan ke Server"
+msgstr "Sambung ke Server"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
@@ -1067,7 +1065,7 @@ msgstr "_Tipe"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
-msgstr "N_ama Berbagi:"
+msgstr "Berb_agi:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
@@ -1087,11 +1085,11 @@ msgstr "Nama pengg_una:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
-msgstr "_Sandi:"
+msgstr "Kata kunci (_W):"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
-msgstr "_Ingat sandi ini"
+msgstr "Ingat kata kunci ini (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
@@ -1103,7 +1101,7 @@ msgstr "Metode Masukan"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
-msgstr "Tidak ada yang dapat direkatkan dari dalam clipboard"
+msgstr "Tidak ada yang dapat ditempelkan dari papan klip"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:423
 msgid "Show the version of the program."
@@ -1133,7 +1131,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Rambah sistem berkas dengan pengelola berkas"
+"Jelajahi sistem berkas dengan pengelola berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:461
 msgid "--quit cannot be used with URIs."
@@ -1145,7 +1143,7 @@ msgstr "Jelajahi berkas Anda"
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr "Manajer Berkas"
+msgstr "Pengelola Berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
@@ -1179,21 +1177,21 @@ msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-utilities.c:122
 msgid "The item cannot be restored from trash"
-msgstr "Butir tidak bisa dipulihkan dari tong sampah"
+msgstr "Objek tidak bisa dikembalikan dari tong sampah"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Tampilkan _rinciannya"
+msgstr "Tampilkan lebih banyak rincian (_D)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr " (unicode tidak benar)"
+msgstr " (unicode tidak sah)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Gabungkan folder \"%s\"?"
+msgstr "Gabung folder \"%s\"?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
@@ -1208,13 +1206,13 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Sebuah folder dengan nama sama telah ada pada \"%s\"."
+msgstr "Sebuah folder yang lebih lama dengan nama sama telah ada di \"%s\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Sebuah folder baru dengan nama sama telah ada di \"%s\"."
+msgstr "Sebuah folder yang lebih baru dengan nama sama telah ada di \"%s\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
@@ -1231,42 +1229,42 @@ msgstr "Proses menimpa akan menghilangkan semua berkas dalam folder."
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Timpa map \"%s\"?"
+msgstr "Timpa folder \"%s\"?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:172
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Sebuah folder dengan nama yang sama telah ada di \"%s\"."
+msgstr "Sebuah folder dengan nama sama telah ada di \"%s\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:177
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "Gantikan berkas \"%s\"?"
+msgstr "Timpa berkas \"%s\"?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:179
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will overwrite its content."
-msgstr "Menggantinya akan menimpa isinya."
+msgstr "Menimpa objek ini akan menimpa isinya."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:183
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Sebuah berkas lebih tua dengan nama sama telah ada di \"%s\"."
+msgstr "Sebuah berkas yang lebih lama dengan nama sama telah ada di \"%s\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Sebuah file baru dengan nama yang sama telah berada di \"%s\"."
+msgstr "Sebuah berkas yang lebih baru dengan nama sama telah ada di \"%s\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "File lain dengan nama yang sama berada di \"%s\"."
+msgstr "Berkas lain dengan nama sama telah ada di \"%s\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
@@ -1297,16 +1295,16 @@ msgstr "Terakhir diubah:"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
-msgstr "Ganti dengan"
+msgstr "Timpa dengan"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
-msgstr "Gabungkan"
+msgstr "Gabung"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
-msgstr "_Pilih nama baru"
+msgstr "Pilih nama baru untuk tujuan (_S)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
@@ -1319,27 +1317,27 @@ msgstr "Terapkan aksi ini pada semua berkas"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:737
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:200
 msgid "_Skip"
-msgstr "_Lewati"
+msgstr "Lewati (_S)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:742
 msgid "Re_name"
-msgstr "Ganti_nama"
+msgstr "Ubah _nama"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
-msgstr "Gantikan"
+msgstr "Timpa"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
-msgstr "Konflik pada berkas"
+msgstr "Berkas bermasalah"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
-msgstr "L_ewati Semua"
+msgstr "Lewati Semua (_K)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
-msgstr "_Ulangi"
+msgstr "Coba Lagi (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
@@ -1347,15 +1345,15 @@ msgstr "Buang Semu_a"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
-msgstr "_Gantikan"
+msgstr "Timpa (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
-msgstr "Ganti Semu_a"
+msgstr "Timpa Semu_a"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
-msgstr "_Digabung"
+msgstr "Gabung (_M)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
@@ -1403,22 +1401,22 @@ msgstr "Tautan lain ke %s"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
-msgstr "link %'d ke %s"
+msgstr "Tautan ke-%'d menuju %s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
-msgstr "Tautan ke-%'d ke %s"
+msgstr "Tautan ke-%'d menuju %s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
-msgstr "link %'d ke %s"
+msgstr "Tautan ke-%'d menuju %s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
-msgstr "link %'d ke %s"
+msgstr "Tautan ke-%'d menuju %s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
@@ -1502,12 +1500,12 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Yakin akan menghapus permanen %'d butir terpilih dari tong sampah?"
+"Yakin akan membuang selamanya %'d objek terpilih dari tong sampah?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1394
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Jika anda membuang sebuah objek, maka hilang selamanya."
+msgstr "Jika anda membuang sebuah objek, maka akan hilang selamanya."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
@@ -1526,7 +1524,7 @@ msgstr "Yakin akan membuang \"%B\" selamanya?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Anda yakin akan menghapus %'d secara permanen?"
+msgstr[0] "Anda yakin akan membuang %'d objek terpilih selamanya?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1478
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1510
@@ -1537,7 +1535,7 @@ msgstr "Membuang berkas"
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "%'d berkas lagi akan dihapus"
+msgstr[0] "tinggal %'d berkas yang akan dibuang"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
@@ -1550,7 +1548,7 @@ msgstr[0] "tersisa %T"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1742
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
-msgstr "Galat sewaktu membuang."
+msgstr "Error saat membuang."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
@@ -1566,7 +1564,7 @@ msgstr ""
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
-"Terjadi kesalahan sewaktu mengambil informasi berkas pada folder \"%B\"."
+"Terjadi error sewaktu mendapatkan informasi berkas pada folder \"%B\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1608
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3637
@@ -1584,7 +1582,7 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2671
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
-msgstr "Galat sewaktu membaca folder \"%B\"."
+msgstr "Terjadi error sewaktu membaca folder \"%B\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
@@ -1592,7 +1590,7 @@ msgstr "Tidak dapat membuang folder %B."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr "Galat sewaktu membuang %B."
+msgstr "Terjadi error sewaktu membuang %B."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1819
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1831
@@ -1642,8 +1640,8 @@ msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
-"Untuk memperoleh kembali ruang bebas pada volume ini, maka tempat sampah "
-"harus dikosongkan. Semua objek yang tersimpan di sana akan hilang permanen."
+"Agar volume ini lega, maka tong sampah harus dikosongkan. Semua sampah akan "
+"hilang selamanya."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
@@ -1687,17 +1685,17 @@ msgstr[0] "Bersiap memindahkan %'d berkas ke tong sampah"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3620
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
-msgstr "Galat sewaktu menyalin."
+msgstr "Error saat menyalin."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2571
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3618
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
-msgstr "Galat sewaktu memindahkan."
+msgstr "Error saat memindahkan."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
-msgstr "Terjadi kesalahan sewaktu membuang berkas ke tong sampah."
+msgstr "Terjadi error saat membuang berkas ke tong sampah."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
@@ -1725,22 +1723,22 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
-msgstr "Galat sewaktu mengambil informasi tentang \"%B\"."
+msgstr "Galat sewaktu mendapatkan informasi tentang \"%B\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2848
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2890
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2923
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
-msgstr "Galat sewaktu menyalin ke \"%B\"."
+msgstr "Error saat menyalin ke \"%B\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
-msgstr "Anda tidak berhak untuk mengakses folder yang dituju."
+msgstr "Anda tidak berhak untuk mengakses folder tujuan."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
-msgstr "Galat sewaktu mengambil informasi tujuan."
+msgstr "Terjadi error sewaktu mendapatkan informasi tentang tujuan."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
@@ -1821,11 +1819,11 @@ msgid ""
 "create it in the destination."
 msgstr ""
 "Folder \"%B\" tidak dapat disalin, karena Anda tidak berhak untuk membuatnya "
-"pada lokasi yang dituju."
+"pada lokasi tujuan."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
-msgstr "Galat sewaktu membuat folder \"%B\"."
+msgstr "Terjadi error sewaktu membuat folder \"%B\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
@@ -1846,7 +1844,7 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4416
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
-msgstr "Galat sewaktu memindahkan \"%B\"."
+msgstr "Error saat memindahkan \"%B\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
@@ -1857,7 +1855,7 @@ msgstr "Folder sumber tidak dapat dibuang."
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4418
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
-msgstr "Galat sewaktu menyalin \"%B\"."
+msgstr "Error saat menyalin \"%B\"."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
@@ -1905,7 +1903,7 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr "Galat sewaktu menyalin berkas ke %F."
+msgstr "Terjadi error sewaktu menyalin berkas ke %F."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
@@ -1924,7 +1922,7 @@ msgstr[0] "Bersiap memindahkan %'d berkas"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr "Galat sewaktu memindahkan berkas ke %F."
+msgstr "Terjadi error sewaktu memindahkan berkas ke %F."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
@@ -1932,17 +1930,17 @@ msgstr "Memindahkan Berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
-msgstr "Membuat taut di \"%B\""
+msgstr "Membuat tautan di \"%B\""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5309
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] "Membuat taut menuju %'d berkas"
+msgstr[0] "Membuat tautan menuju %'d berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
-msgstr "Galat sewaktu membuat taut menuju %B."
+msgstr "Error saat membuat tautan menuju %B."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
@@ -1950,21 +1948,21 @@ msgstr "Tautan simbolik hanya didukung untuk berkas lokal"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5449
 msgid "The target doesn't support symbolic links."
-msgstr "Target tidak mendukung taut simbolik."
+msgstr "Target tidak mendukung tautan simbolik."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5452
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr "Galat sewaktu membuat taut simbolik pada %F."
+msgstr "Terjadi error sewaktu membuat tautan simbolik pada %F."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5780
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5783
 msgid "Setting permissions"
-msgstr "Menyetel hak akses"
+msgstr "Mengatur hak akses"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
-msgstr "folder tak berjudul"
+msgstr "folder tanpa judul"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
@@ -1972,16 +1970,16 @@ msgstr "berkas baru"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
-msgstr "Galat sewaktu membuat direktori %B."
+msgstr "Error saat membuat direktori %B."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
-msgstr "Galat sewaktu membuat berkas %B."
+msgstr "Error saat membuat berkas %B."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Galat sewaktu membuat direktori pada %F."
+msgstr "Terjadi error sewaktu membuat direktori di %F."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
@@ -1995,23 +1993,23 @@ msgstr "taut ke %s"
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:1708
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "Gagal untuk mendapatkan berkas desktop: %s"
+msgstr "Gagal untuk mengurai berkas desktop: %s"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:1746
 msgid "No Exec field specified"
-msgstr "Kolom exec tidak disebutkan"
+msgstr "Isian exec tidak disebutkan"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:1766
 msgid "No URL field specified"
-msgstr "Kolom URL tidak disebutkan"
+msgstr "Isian URL tidak disebutkan"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:1772
 msgid "Invalid desktop file"
-msgstr "Bukan berkas desktop yang benar"
+msgstr "Berkas desktop tidak sah"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:2062
 msgid "Slashes are not allowed in filenames"
-msgstr "Tidak boleh ada garis miring dalam nama berkas"
+msgstr "Garis miring tidak boleh ada dalam nama berkas"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:2082
 msgid "Toplevel files cannot be renamed"
@@ -2032,12 +2030,12 @@ msgstr "Buang '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr "Buang %d object yang terduplikasi"
+msgstr "Buang %d objek yang tergandakan"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "Pindahkan %d berkas kembali ke '%s'"
+msgstr "Pindahkan %d objek kembali ke '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
@@ -2054,7 +2052,7 @@ msgstr "Ubah nama '%s' menjadi '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr "Kembalikan %d ke Tempat Sampah"
+msgstr "Kembalikan %d objek dari Tong Sampah"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
@@ -2064,17 +2062,17 @@ msgstr "Kembalikan '%s' ke '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "buang %d item ke sampah"
+msgstr "Buang %d objek ke sampah"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "buang '%s' ke sampah lagi"
+msgstr "Buang '%s' ke sampah lagi"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
-msgstr "Hapus tautan ke %d item"
+msgstr "Hapus tautan ke %d objek"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
@@ -2084,17 +2082,17 @@ msgstr "Hapus tautan ke '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Pulihkan izin asli dari item di folder '%s'"
+msgstr "Kembalikan izin asli dari objek dalam folder '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr "Pulihkan izin asli dari '%s\""
+msgstr "Kembalikan izin asli dari '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "Kembalikan kelompok '%s' to '%s'"
+msgstr "Kembalikan grup '%s' to '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
@@ -2114,7 +2112,7 @@ msgstr "Salin '%s' ke '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "%d item ganda di '%s'"
+msgstr "%d objek ganda di '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
@@ -2124,7 +2122,7 @@ msgstr "Gandakan '%s' di '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr "Pindah %d item ke '%s'"
+msgstr "Pindah %d objek ke '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
@@ -2134,7 +2132,7 @@ msgstr "Pindah '%s' ke '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr "Buat berkas baru '%s' dari palet "
+msgstr "Buat berkas baru '%s' dari cetakan "
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
@@ -2149,22 +2147,22 @@ msgstr "Buat folder baru '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr "Pindah %d item ke sampah"
+msgstr "Pindah %d objek ke tong sampah"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "Pindah '%s' ke sampah"
+msgstr "Pindah '%s' ke tong sampah"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr "Ambil '%s' dari sampah"
+msgstr "Kembalikan '%s' dari tong sampah"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
-msgstr "Buat tautan ke %d item"
+msgstr "Buat tautan ke %d objek"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
@@ -2174,7 +2172,7 @@ msgstr "Buat tautan ke '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "Atur izin dari item dalam folder '%s'"
+msgstr "Atur izin dari objek dalam folder '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
@@ -2184,7 +2182,7 @@ msgstr "Atur izin folder '%s'"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr "Atur kelompok '%s' ke '%s'"
+msgstr "Atur grup '%s' ke '%s'"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
@@ -2201,81 +2199,81 @@ msgstr[0] "Batal salin %d objek (_U)"
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Batal gandakan %d item"
+msgstr[0] "Batal gandakan %d objek (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] "_Batal pindah %d item"
+msgstr[0] "Batal pindah %d objek (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Batal ubah-nama %d item"
+msgstr[0] "Batal ubah nama %d objek (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr "_Batal buat berkas kosong"
+msgstr "Batal buat berkas kosong (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr "_Batal buat berkas dari palet"
+msgstr "Batal buat berkas dari cetakan (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Batal buat %d folder"
+msgstr[0] "Batal buat %d folder (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Batal buang %d item"
+msgstr[0] "Batal buang %d objek (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Batal ambil %d item dari sampah"
+msgstr[0] "Batal kembalikan %d objek dari tong sampah (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Batal buat tautan ke %d item"
+msgstr[0] "Batal buat tautan ke %d objek (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] "Batal b_uang %d objek"
+msgstr[0] "Batal buang %d objek (_U)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Batalkan perubahan rekursif izin %d item"
+msgstr[0] "Batal ubah izin %d objek secara rekursif"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Batal ubah izin %d item"
+msgstr[0] "Batal ubah izin %d objek"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] "Batal ubah kelompok dari %d item"
+msgstr[0] "Batal ubah grup %d objek"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] "Batal ubah pemilik dari %d item"
+msgstr[0] "Batal ubah pemilik %d objek"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
@@ -2287,51 +2285,51 @@ msgstr[0] "Salin lagi %d objek (_R)"
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Gandakan lagi %d item"
+msgstr[0] "Gandakan lagi %d objek (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] "_Pindah lagi %d item"
+msgstr[0] "Pindah lagi %d objek (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Ubah lagi nama %d item"
+msgstr[0] "Ubah lagi nama %d objek (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
-msgstr "_Buat lagi berkas kosong"
+msgstr "Buat lagi berkas kosong (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
-msgstr "_Buat lagi berkas dari palet"
+msgstr "Buat lagi berkas dari cetakan (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Buat lagi %d folder"
+msgstr[0] "Buat lagi %d folder (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Buang lagi %d item"
+msgstr[0] "Buang lagi %d objek (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Ambil lagi %d item dari sampah"
+msgstr[0] "Kembalikan lagi %d objek dari tong sampah (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] "Buat lagi tautan ke %d item"
+msgstr[0] "Buat lagi tautan ke %d objek (_R)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
@@ -2343,59 +2341,59 @@ msgstr[0] "Buang lagi %d objek (_R)"
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "_Ubah lagi izin rekursif %d item"
+msgstr[0] "Ubah lagi izin %d objek secara rekursif"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "_Ubah lagi izin %d item"
+msgstr[0] "Ubah lagi izin %d objek"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] "Ubah lagi kelompok %d item"
+msgstr[0] "Ubah lagi grup %d objek"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] "Ubah lagi pemilik %d item"
+msgstr[0] "Ubah lagi pemilik %d objek"
 
 #: /home/pqp/lp/pantheon-files/po/../libwidgets/LocationBar.vala:321
 msgid "Cut the selected text to the clipboard"
-msgstr "Potong teks terpilih ke papan tempel"
+msgstr "Potong teks terpilih ke papan klip"
 
 #: /home/pqp/lp/pantheon-files/po/../libwidgets/LocationBar.vala:325
 msgid "Copy the selected text to the clipboard"
-msgstr "Salin teks terpilih ke papan tempel"
+msgstr "Salin teks terpilih ke papan klip"
 
 #: /home/pqp/lp/pantheon-files/po/../libwidgets/LocationBar.vala:329
 #: /home/pqp/lp/pantheon-files/po/../libwidgets/LocationBar.vala:333
 msgid "Paste the text stored on the clipboard"
-msgstr "Tempel teks dari papan tempel"
+msgstr "Tempel teks yang tersimpan di papan klip"
 
 #: /home/pqp/lp/pantheon-files/po/../libwidgets/LocationBar.vala:812
 #, c-format
 msgid "Go to %s"
-msgstr "Pergi ke %s"
+msgstr "Tuju %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
-msgstr "Tampilkan dalam ikon"
+msgstr "Tampilan Kisi"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
-msgstr "Tampilkan sebagai daftar"
+msgstr "Tampilan Daftar"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
-msgstr "Tampilkan dalam kolom"
+msgstr "Tampilan Kolom"
 
 #: /home/pqp/lp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr "Objek ini boleh dibuang selamanya dengan mengosongkan tong sampah."
+msgstr "Objek ini bisa dibuang selamanya dengan mengosongkan tong sampah."
 
 #: /home/pqp/lp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"

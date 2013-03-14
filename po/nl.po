@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-03-01 18:08+0000\n"
+"PO-Revision-Date: 2013-03-13 13:40+0000\n"
 "Last-Translator: Thomas Berends <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-03-02 05:10+0000\n"
-"X-Generator: Launchpad (build 16514)\n"
+"X-Launchpad-Export-Date: 2013-03-14 05:11+0000\n"
+"X-Generator: Launchpad (build 16532)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -2455,20 +2455,21 @@ msgstr "Ga naar %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
-msgstr ""
+msgstr "Als rooster weergeven"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "Als lijst weergeven"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
-msgstr ""
+msgstr "Als kolommen weergeven"
 
 #: /home/pqp/lp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
 msgstr ""
+"Deze items kunnen verwijderd worden door de prullenbak leeg te maken."
 
 #: /home/pqp/lp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Maak de prullenbak leeg"
