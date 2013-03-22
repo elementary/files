@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-03-19 22:49+0000\n"
+"PO-Revision-Date: 2013-03-21 22:55+0000\n"
 "Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-03-20 04:59+0000\n"
+"X-Launchpad-Export-Date: 2013-03-22 05:11+0000\n"
 "X-Generator: Launchpad (build 16532)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
@@ -1490,51 +1490,47 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "정말로 휴지통에서 선택한 항목 %'d 개를 완전히 삭제하시겠습니까?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1394
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "휴지통을 비우면 항목들이 완전히 지워지게 됩니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr ""
+msgstr "휴지통의 모든 항목을 비우시겠습니까?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr ""
+msgstr "휴지통의 모든 항목을 완전히 삭제합니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "정말로 \"%B\"을(를) 완전히 삭제하시겠습니까?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "정말로 선택한 항목 %'d개를 완전히 삭제하시겠습니까?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1478
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr ""
+msgstr "파일 삭제하는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "지울 파일 %'d 개 남음"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%T 남음"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1592
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1626
@@ -1542,57 +1538,56 @@ msgstr[1] ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1742
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
-msgstr ""
+msgstr "삭제하는 중 오류 발생"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
-msgstr ""
+msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\"을(를) 복사할 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1599
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2632
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3628
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "\"%B\" 폴더의 파일에 대한 정보를 가져오는 데 오류가 발생했습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1608
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
-msgstr ""
+msgstr "건너 뛰기(_S)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 지울 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1632
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2671
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "\"%B\" 폴더를 읽는 데 오류가 발생했습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "%B 폴더를 지울 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "%B을(를) 삭제하는 데 오류가 발생했습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1819
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
-msgstr ""
+msgstr "파일을 휴지통으로 보내는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "휴지통에 파일 %'d 개 남음"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
