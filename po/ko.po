@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-03-21 22:55+0000\n"
+"PO-Revision-Date: 2013-03-24 23:05+0000\n"
 "Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-03-22 05:11+0000\n"
-"X-Generator: Launchpad (build 16532)\n"
+"X-Launchpad-Export-Date: 2013-03-25 05:04+0000\n"
+"X-Generator: Launchpad (build 16540)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -1591,207 +1591,197 @@ msgstr[0] "휴지통에 파일 %'d 개 남음"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr ""
+msgstr "휴지통으로 이동시킬 수 없습니다. 완전히 삭제할까요?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
-msgstr ""
+msgstr "이 파일은 이동식 미디어 장치에 있어 휴지통으로 옮길 수 없습니다. 삭제하면 완전히 삭제되어 복구할 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
-msgstr ""
+msgstr "파일을 휴지통에 버리는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
-msgstr ""
+msgstr "파일 삭제하는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "%V을(를) 꺼낼 수 없음"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "%V의 마운트를 해제할 수 없음"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "마운트를 해제하기 전에 휴지통을 비우겠습니까?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
-msgstr ""
+msgstr "이 볼륨에서 빈 공간을 확보하려면 휴지통을 비워야 합니다. 휴지통의 모든 항목은 완전히 사라지게 됩니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "휴지통 비우지 않기(_N)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
-msgstr ""
+msgstr "휴지통을 비우는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "%s 장치를 마운트할 수 없습니다"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "파일 %'d개(%S) 복사 준비 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "파일 %'d개(%S) 옮길 준비 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "파일 %'d개(%S) 삭제 준비 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "파일 %'d개 휴지통에 버릴 준비 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2569
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3489
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3620
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
-msgstr ""
+msgstr "복사 중 오류."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2571
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3618
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
-msgstr ""
+msgstr "옮기는 중 오류."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "휴지통에 파일을 버리는 중 오류."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
-msgstr ""
+msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더 안의 파일을 처리할 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 처리할 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 파일을 처리할 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "\"%B\"에 대한 정보를 가져오는 데 오류가 발생했습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2848
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2890
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2923
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "\"%B\"(으)로 복사중 오류."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "대상 폴더에 접근할 권한이 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "대상에 대한 정보를 가져오는 데 오류가 발생했습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "대상이 폴더가 아닙니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr ""
+msgstr "대상에 남은 공간이 없습니다. 공간을 확보하려면 파일을 지워보십시오."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "%S을(를) 이용할 수 있지만, %S이(가) 필요합니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
-msgstr ""
+msgstr "대상이 읽기 전용입니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "\"%B\"을(를) \"%B\"(으)로 옮기는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+msgstr "\"%B\"을(를) \"%B\"(으)로 복사하는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "\"%B\"을(를) 복제하는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d 개의 파일을 (\"%B\"에서) \"%B\"(으)로 옮기는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d 개의 파일을 (\"%B\"에서) \"%B\"(으)로 복사하는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(\"%B\" 내의) %'d 개의 파일을 복제하는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d 개의 파일을 \"%B\"(으)로 옮기는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d 개의 파일을 \"%B\"(으)로 복사하는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d 개의 파일을 복제하는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
-msgstr ""
+msgstr "%S / %S"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
