@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-03-12 10:34+0000\n"
+"PO-Revision-Date: 2013-03-29 07:27+0000\n"
 "Last-Translator: Megolas <ofeklavie@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-03-13 04:52+0000\n"
-"X-Generator: Launchpad (build 16532)\n"
+"X-Launchpad-Export-Date: 2013-03-30 05:51+0000\n"
+"X-Generator: Launchpad (build 16546)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
-msgstr "מאפיין"
+msgstr "מאפיינים"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:116
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:47
@@ -33,7 +33,7 @@ msgstr "עוד"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:136
 msgid "Preview"
-msgstr "תצוגת מקדימה"
+msgstr "תצוגה מקדימה"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:323
 msgid "Created"
@@ -43,11 +43,11 @@ msgstr "נוצר"
 #: /home/pqp/lp/pantheon-files/po/../src/View/ContextView.vala:344
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr "השתנה"
+msgstr "שונה"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:328
 msgid "Last Access"
-msgstr "פעם אחרונה שנכנס"
+msgstr "גישה אחרונה"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:334
 msgid "Deleted"
@@ -2408,12 +2408,12 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
-msgstr ""
+msgstr "הצג בטורים"
 
 #: /home/pqp/lp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
-msgstr ""
+msgstr "פריטים אלו יכולים להמחק על ידי ריקון פח האשפה."
 
 #: /home/pqp/lp/pantheon-files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
-msgstr ""
+msgstr "רוקן את האשפה"
