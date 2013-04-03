@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-03-24 23:05+0000\n"
+"PO-Revision-Date: 2013-04-02 22:49+0000\n"
 "Last-Translator: MinSik CHO <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-03-26 05:05+0000\n"
-"X-Generator: Launchpad (build 16540)\n"
+"X-Launchpad-Export-Date: 2013-04-03 05:39+0000\n"
+"X-Generator: Launchpad (build 16546)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -1786,52 +1786,51 @@ msgstr "%S / %S"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%S / %S — %T 남음 (%S/초)"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
-msgstr ""
+msgstr "대상 안에 파일이나 폴더를 만들 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 복사할 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
-msgstr ""
+msgstr "\"%B\" 폴더를 만드는 데 오류가 발생했습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
-msgstr ""
+msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더 내의 파일을 복사할 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3670
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 복사할 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3715
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4416
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
-msgstr ""
+msgstr "\"%B\"을(를) 옮기는 중 오류가 발생하였습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
-msgstr ""
+msgstr "원본 폴더를 지울 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3801
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3842
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4418
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
-msgstr ""
+msgstr "\"%B\"을(를) 복사하는 중 오류가 발생하였습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr ""
+msgstr "기존의 폴더 %F의 파일을 지울 수 없습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
