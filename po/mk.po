@@ -1,481 +1,481 @@
-# Norwegian Bokmal translation for marlin
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the marlin package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# Macedonian translation for pantheon-files
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the pantheon-files package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: marlin\n"
+"Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-04-06 04:57+0000\n"
-"Last-Translator: kingu <comradekingu@gmail.com>\n"
-"Language-Team: Norwegian Bokmal <nb@li.org>\n"
+"PO-Revision-Date: 2013-04-06 17:24+0000\n"
+"Last-Translator: Marko Mancev <marko.manchev@gmail.com>\n"
+"Language-Team: Macedonian <mk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;\n"
 "X-Launchpad-Export-Date: 2013-04-07 05:25+0000\n"
 "X-Generator: Launchpad (build 16550)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
-msgstr "Egenskaper"
+msgstr "Својства"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:116
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:47
 msgid "General"
-msgstr "Generelt"
+msgstr "Општи"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
-msgstr "Mer"
+msgstr "Повеќе"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:136
 msgid "Preview"
-msgstr "Forhåndsvisning"
+msgstr "Преглед"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:323
 msgid "Created"
-msgstr "Opprettet"
+msgstr "Создадено"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:325
 #: /home/pqp/lp/pantheon-files/po/../src/View/ContextView.vala:344
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr "Endret"
+msgstr "Променето"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:328
 msgid "Last Access"
-msgstr "Siste Tilgang"
+msgstr "Последен пристап"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:334
 msgid "Deleted"
-msgstr "Slettet"
+msgstr "Избришано"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:339
 msgid "MimeType"
-msgstr "Mime-type"
+msgstr "MIME-тип"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:347
 msgid "MimeTypes"
-msgstr "Mime-typer"
+msgstr "MIME-типови"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:351
 msgid "Location"
-msgstr "Sted."
+msgstr "Локација"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:353
 #: /home/pqp/lp/pantheon-files/po/../src/View/ContextView.vala:340
 msgid "Target"
-msgstr "Mål"
+msgstr "Цел"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:359
 msgid "Origin Location"
-msgstr "Opphavssted"
+msgstr "Почетна локација"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
-msgstr "Info:"
+msgstr "Информации:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
-msgstr "Annet program..."
+msgstr "Друга апликација..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:428
 msgid "Open with:"
-msgstr "Åpne med:"
+msgstr "Отвори со:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:449
 msgid "Usage:"
-msgstr "Diskforbruk:"
+msgstr "Употреба:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:454
 msgid "Device usage:"
-msgstr "Enhetsbruk:"
+msgstr "Искористеност на уред:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr "%s tilgjengelig av %s (%d%% brukt)"
+msgstr "%s слободно од %s (%d%% искористено)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
-msgstr "Lest"
+msgstr "Читај"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:605
 msgid "Write"
-msgstr "Skriv"
+msgstr "Запишување"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:610
 msgid "Execute"
-msgstr "Kjør"
+msgstr "Извршување"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:828
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:841
 #: /home/pqp/lp/pantheon-files/po/../src/View/ContextView.vala:345
 msgid "Owner"
-msgstr "Eier"
+msgstr "Сопственик"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:833
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:845
 msgid "Group"
-msgstr "Grupper."
+msgstr "Група"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:849
 msgid "Everyone"
-msgstr "Alle"
+msgstr "Секој"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:1105
 msgid "Select an aplication to open "
-msgstr "Velg et program til å åpne "
+msgstr "Одбери апликација за отворање "
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr "Mappen eksisterer ikke"
+msgstr "Папката не постои"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr "Filer kan ikke finne mappen %s"
+msgstr "Фајловите не можат да ја најдат папката %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr "Opprett."
+msgstr "Создади"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr "Opprett mappen %s"
+msgstr "Создади папка %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
-msgstr "Filer ikke er din standard filbehandler."
+msgstr "Files не е вашиот основен менаџер на фајлови."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:150
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3407
 msgid "Set as default"
-msgstr "Bruk som standard"
+msgstr "Постави како стандардно"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:155
 msgid "Ignore"
-msgstr "Ignorer"
+msgstr "Игнорирај"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:490
 msgid "Undo"
-msgstr "Angre"
+msgstr "Поништи"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:491
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:784
 msgid "Undo the last action"
-msgstr "Angre siste handling"
+msgstr "Поништи ја последната промена"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:500
 msgid "Redo"
-msgstr "Gjenta"
+msgstr "Повтори"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:501
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:787
 msgid "Redo the last action"
-msgstr "Gjenopprett siste handling"
+msgstr "Повтори ја последната промена"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:758
 msgid "_File"
-msgstr "_Fil"
+msgstr "_Фајл"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:759
 msgid "_Edit"
-msgstr "_Rediger"
+msgstr "_Уреди"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:760
 msgid "_View"
-msgstr "_Vis"
+msgstr "_Преглед"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:761
 msgid "_Go"
-msgstr "_Gå til"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:762
 msgid "_Help"
-msgstr "_Hjelp"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:764
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr "Nytt _vindu"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:765
 msgid "Open another Files window for the displayed location"
-msgstr "Åpne annet Filer-vindu for vist plassering"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:768
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr "Ny _Fane"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:769
 msgid "Open another tab for the displayed location"
-msgstr "Åpne en ny fane for denne plasseringen"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:773
 msgid "_Close"
-msgstr "_Lukk"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:774
 msgid "Close this folder"
-msgstr "Lukk denne mappen"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:777
 msgid "Preferences"
-msgstr "Brukervalg"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:778
 msgid "Change Files preferences"
-msgstr "Endre innstillingene for Filer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:783
 msgid "_Undo"
-msgstr "_Angre"
+msgstr "_Поништи"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:786
 msgid "_Redo"
-msgstr "_Gjør om"
+msgstr "_Повтори"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:789
 msgid "Open _Parent"
-msgstr "Åpne_overnevnt"
+msgstr "Отвори почетна_папка"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:790
 msgid "Open the parent folder"
-msgstr "Åpne opphavsmappen"
+msgstr "Отвори ја почетната папка"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:792
 msgid "_Back"
-msgstr "_Tilbake"
+msgstr "_Назад"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:793
 msgid "Go to the previous visited location"
-msgstr "Gå til forrige adresselokasjon"
+msgstr "Оди на претходната локација"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:796
 msgid "_Forward"
-msgstr "_Framover"
+msgstr "_Напред"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:797
 msgid "Go to the next visited location"
-msgstr "Gå til neste besøkte adresse"
+msgstr "Оди на следната локација"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:799
 msgid "_Reload"
-msgstr "_Oppdatér"
+msgstr "_Освежи"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:800
 msgid "Reload the current location"
-msgstr "Last aktiv lokasjon på nytt"
+msgstr "Освежи ја оваа локација"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:803
 msgid "_Home Folder"
-msgstr "_Hjemmemappe"
+msgstr "_Дома"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:804
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:305
 msgid "Open your personal folder"
-msgstr "Åpne din personlige mappe"
+msgstr "Отвори ја твојата папка"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:807
 msgid "_Trash"
-msgstr "_Papirkurv"
+msgstr "_Ѓубре"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:808
 msgid "Open your personal trash folder"
-msgstr "Åpne din personlige papirkurv"
+msgstr "Отвори ја папката со ѓубре"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:811
 msgid "_Network"
-msgstr "_Nettverk"
+msgstr "_Мрежа"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:812
 msgid "Browse bookmarked and local network locations"
-msgstr "Bla gjennom lokale nettverkslokasjoner og bokmerker"
+msgstr "Разгледај ги букмаркираните и локациите од локалната мрежа"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:815
 msgid "Zoom _In"
-msgstr "_Forstørr"
+msgstr "_Зголеми"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:816
 msgid "Increase the view size"
-msgstr "Øk visningsstørrelse"
+msgstr "Зголеми ја големината на прегледот"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:827
 msgid "Zoom _Out"
-msgstr "For_minsk"
+msgstr "_Намали"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:828
 msgid "Decrease the view size"
-msgstr "Mindre visningsstørrelse"
+msgstr "Намали ја големината на прегледот"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:835
 msgid "Normal Si_ze"
-msgstr "Normal st_ørrelse"
+msgstr "Врати на_нормално"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:836
 msgid "Use the normal view size"
-msgstr "Bruk normal visningsstørrelse"
+msgstr "Употреби ја нормалната големина"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:839
 msgid "Next Tab"
-msgstr "Neste Fane"
+msgstr "Следно јазиче"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:843
 msgid "Previous Tab"
-msgstr "Forrige Fane"
+msgstr "Претходно јазиче"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:847
 msgid "Connect to _Server..."
-msgstr "Koble til _Tjener …"
+msgstr "Врзи се на  _сервер..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:848
 msgid "Connect to a remote computer or shared disk"
-msgstr "Koble til en ekstern datamaskin eller delt disk"
+msgstr "Врзи се на оддалечен компјутер или на споделен диск"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:851
 msgid "_About"
-msgstr "_Om"
+msgstr "За_апликацијата"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:852
 msgid "Display credits"
-msgstr "Vis rulletekst"
+msgstr "Прикажи заслуги"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:855
 msgid "Report a Problem..."
-msgstr "Rapporter et Problem"
+msgstr "Пријави проблем..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:856
 msgid "File a bug on Launchpad"
-msgstr "Sende inn en feilrapport på Launchpad"
+msgstr "Поднеси грешка на Launchpad"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:859
 msgid "Get Help Online..."
-msgstr "Få hjelp på nettet …"
+msgstr "Побарај помош онлајн..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:863
 msgid "Translate This Application..."
-msgstr "Oversett Dette Programmet..."
+msgstr "Преведи ја апликацијава..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:872
 msgid "Show _Hidden Files"
-msgstr "Vis _skjulte filer"
+msgstr "Прикажи_скриени датотеки"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:873
 msgid "Toggle the display of hidden files in the current window"
-msgstr "Slå av/på visning av skjulte filer i dette vinduet"
+msgstr "Вкл./Искл. прикажување скриени датотеки во овој прозорец"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:878
 msgid "Show _Desktop Files"
-msgstr "Vis_skrivebordsfiler"
+msgstr "Прикажи_фајлови на десктоп"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:879
 msgid "Toggle the display of desktop files"
-msgstr "Alterner visning av skrivebordsfiler"
+msgstr "Вкл./Искл прикажување фајлови на декстоп"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:883
 msgid "_Context Pane"
-msgstr "_Side Panel"
+msgstr "_Контекст панел"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:884
 msgid "Change the visibility of the context pane"
-msgstr "Endre synlighet for kontekstområdet"
+msgstr "Промени видливост на контекст панелот"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:888
 msgid "_Menubar"
-msgstr "_Menylinje"
+msgstr "_Мени лента"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:889
 msgid "Change the visibility of this window's menubar"
-msgstr "Forandre synligheten for dette vinduets menylinje"
+msgstr "Промени видливост на мени лентата за овој прозорец"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:893
 msgid "_Places"
-msgstr "_Steder"
+msgstr "_Локации"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:894
 msgid "Change the visibility of this window's side pane"
-msgstr "Endre synligheten for dette vinduets sidelinje"
+msgstr "Промени видливост на страничната лента на овој прозорец"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:902
 msgid "Icon"
-msgstr "Ikon"
+msgstr "Икона"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:905
 msgid "List"
-msgstr "Liste"
+msgstr "Листа"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:908
 msgid "Columns"
-msgstr "Kolonner"
+msgstr "Колони"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/LocationBar.vala:110
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:346
 msgid "Trash"
-msgstr "Papirkurv"
+msgstr "Корпа"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/LocationBar.vala:111
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:564
 msgid "Network"
-msgstr "Nettverk"
+msgstr "Мрежа"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/LocationBar.vala:286
 msgid "Open in New Tab"
-msgstr "Åpne i ny fane"
+msgstr "Отвори во ново јазиче"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ViewContainer.vala:145
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:300
 msgid "Home"
-msgstr "Hjem"
+msgstr "Дома"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ViewContainer.vala:147
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:370
 msgid "File System"
-msgstr "Filsystem"
+msgstr "Системска партиција"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ViewContainer.vala:152
 msgid "(as Administrator)"
-msgstr "(som Administrator)"
+msgstr "(како Администратор)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr "Files instillinger"
+msgstr "(Својства на Files)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "There are no extensions currently installed."
-msgstr "Det er foreløpig ingen tillegg installert."
+msgstr "Нема инсталирани екстензии"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:105
 msgid "Extensions"
-msgstr "Utvidelser"
+msgstr "Екстензии"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:210
 msgid "Single click to open:"
-msgstr "Klikk en gang for å åpne"
+msgstr "Отворај со еден клик"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:218
 msgid "Mouse auto-selection:"
-msgstr "Mus auto-valg:"
+msgstr "Автоматско одбирање со маус:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:237
 #, c-format
 msgid "Slow"
-msgstr "Treg"
+msgstr "Бавно"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:239
 #, c-format
 msgid "Fast"
-msgstr "Rask"
+msgstr "Брзо"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:254
 msgid "Date format:"
-msgstr "Datoformat"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:257
 msgid "iso"
@@ -483,283 +483,283 @@ msgstr "iso"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:258
 msgid "locale"
-msgstr "lokale"
+msgstr "locale"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:259
 msgid "informal"
-msgstr "uformelt"
+msgstr "informal"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ContextView.vala:336
 msgid "Name"
-msgstr "Navn"
+msgstr "Име"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ContextView.vala:337
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Type"
-msgstr ""
+msgstr "Вид"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/ContextView.vala:342
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Size"
-msgstr "Størrelse"
+msgstr "Големина"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr "%u elementer valgt (%s)"
+msgstr "%u одбрани елементи (%s)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "Разгледувај според икона на папка"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr "Ikonvisning"
+msgstr "Преглед според икони"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-icon-view.c:887
 msgid "Layout mode"
-msgstr "Oppsettetmodus"
+msgstr "Според поставеност"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-icon-view.c:888
 msgid "The layout mode"
-msgstr "Oppsettsmodus"
+msgstr "Поставеност"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
-msgstr "_Flytt hit"
+msgstr "_Помести овде"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:108
 msgid "_Copy Here"
-msgstr "_Kopier hit"
+msgstr "_Копирај овде"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:113
 msgid "_Link Here"
-msgstr "_Lag lenke her"
+msgstr "_Линкувај овде"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:118
 msgid "Set as _Background"
-msgstr "Sett som _Bakgrunn"
+msgstr "Постави како _позадина"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:125
 msgid "Cancel"
-msgstr "Avbryt"
+msgstr "Откажи"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-dnd.c:217
 #, c-format
 msgid "Failed to execute file \"%s\""
-msgstr "Klarte ikke å kjøre fil \"%s\""
+msgstr "Неуспех во извршување на \"%s\""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:286
 msgid "Personal"
-msgstr "Personlig"
+msgstr "Лично"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:291
 msgid "Your common places and bookmarks"
-msgstr "Dine vanlige steder og bokmerker"
+msgstr "Твои често посетувани и букмаркирани локации"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:348
 msgid "Open the trash"
-msgstr "Åpne papirkurven"
+msgstr "Отвори ја корпата"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:358
 msgid "Devices"
-msgstr "Enheter"
+msgstr "Уред"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:363
 msgid "Your local partitions and devices"
-msgstr "Din lokale partisjoner og enheter"
+msgstr "Твои локални партиции и уреди"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:372
 msgid "Open the contents of the File System"
-msgstr "Åpne innholdet i Filsystemet"
+msgstr "Отвори ја Системската партиција"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:431
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:456
 #, c-format
 msgid "Mount and open %s"
-msgstr "Monter og åpne %s"
+msgstr "Монтирај и отвори %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:569
 msgid "Your network places"
-msgstr "Dine nettverkssteder"
+msgstr "Твои места на мрежа"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:600
 msgid "Entire network"
-msgstr "Hele nettverket"
+msgstr "Цела мрежа"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:602
 msgid "Browse the contents of the network"
-msgstr "Bla gjennom innholdet på nettverket"
+msgstr "Прегледај ја содржината на мрежата"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1586
 msgid "_Start"
-msgstr "_Start"
+msgstr "_Започни"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1587
 msgid "_Stop"
-msgstr "_Stopp"
+msgstr "_Запри"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1592
 msgid "_Power On"
-msgstr "_Slå på"
+msgstr "_Вклучи"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1593
 msgid "_Safely Remove Drive"
-msgstr "_Trygg fjerning av lagringsenhet"
+msgstr "_Безбедно отстранување на уред"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1596
 msgid "_Connect Drive"
-msgstr "_Koble til Stasjon"
+msgstr "_Поврзи уред"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1597
 msgid "_Disconnect Drive"
-msgstr "_Koble fra Stasjon"
+msgstr "_Исклучи уред"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1600
 msgid "_Start Multi-disk Device"
-msgstr "_Start Multidisk Enhet"
+msgstr "_Стартувај уред со повеќе дискови"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1601
 msgid "_Stop Multi-disk Device"
-msgstr "_Stopp Multidisk Enhet"
+msgstr "Стопирај уред со повеќе дискови"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1605
 msgid "_Unlock Drive"
-msgstr "Lås _opp Stasjon"
+msgstr "_Отклучи уред"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1606
 msgid "_Lock Drive"
-msgstr "_Lås Stasjon"
+msgstr "_Заклучи уред"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1680
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2227
 #, c-format
 msgid "Unable to start %s"
-msgstr "Kan ikke starte %s"
+msgstr "Не може да се стартува %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1970
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:1999
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2028
 #, c-format
 msgid "Unable to eject %s"
-msgstr "Kan ikke løse ut %s"
+msgstr "Не може да се исфрли %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2173
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr "Kan ikke sjekke %s for bytte av medie"
+msgstr "Не може да се дознае од %s за промени со медиумот"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2283
 #, c-format
 msgid "Unable to stop %s"
-msgstr "Kan ikke stoppe %s"
+msgstr "Не може да се стопира %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2375
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1959
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3487
 msgid "_Open"
-msgstr "_Åpne"
+msgstr "_Отвори"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2383
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1979
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3499
 msgid "Open in New _Tab"
-msgstr "Åpne i ny _fane"
+msgstr "Отвори во ново_јазиче"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2390
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1988
 msgid "Open in New _Window"
-msgstr "Åpne i Nytt _vindu"
+msgstr "Отвори во нов_прозорец"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2399
 msgid "Remove"
-msgstr "Fjern"
+msgstr "Отстрани"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2408
 msgid "Rename..."
-msgstr "Gi nytt navn…"
+msgstr "Промени име..."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2421
 msgid "_Mount"
-msgstr "_Monter"
+msgstr "_Монтирај"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2428
 msgid "_Unmount"
-msgstr "_Avmonter"
+msgstr "_Демонтирај"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2435
 msgid "_Eject"
-msgstr "_Løs ut"
+msgstr "_Исфрли"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:2443
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1422
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2310
 msgid "Empty _Trash"
-msgstr "Tøm _Papirkurven"
+msgstr "Испразни _корпа"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
-msgstr "Enkeltklikk"
+msgstr "Еден клик"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Hvorvidt elementene i denne visningen kan aktiveres med enkeltklikk"
+msgstr "Вкл./Искл. активирање на одбраните елементи со единечен клик"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
-msgstr "Tidsvalør for enkeltklikk"
+msgstr "Потребно време за еден клик"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
 msgstr ""
-"Tiden før elementet under musepekeren vil bli automatiskt valgt i "
-"enkeltklikksmodus."
+"Потребното време по кое одбраниот елемент би бил автоматски отворен при "
+"режим на единечен клик"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
-msgstr "Tilpass Verktøylinjen"
+msgstr "Прилагоди алатник"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:464
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
-"Velg elementer for visning på verktøylinjen. Elementer kan rearrangeres med "
-"dra og slipp."
+"ОДбери елементи кои ќе бидат прикажани на алатникот. Елементите можат да се "
+"преуредуваат со влечење и пуштање."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
-msgstr "Tilgjengelige elementer"
+msgstr "Елементи на располагање"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-toolbar-editor.c:497
 msgid "Displayed Items"
-msgstr "Viste elementer"
+msgstr "Прикажани елементи"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-columns-view.c:82
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:616
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:573
 msgid "This folder is empty."
-msgstr "Denne mappen er tom."
+msgstr "Оваа папка е празна"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-columns-view.c:186
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:199
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:139
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr "Klarte ikke å endre navnet på %s til %s"
+msgstr "Неуспех во промената на името од %s во %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:114
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:164
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:426
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:482
 msgid "File Operations"
-msgstr "Filoperasjoner"
+msgstr "Операции со фајлови"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
-msgstr "Vis detaljer"
+msgstr "Детали"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:158
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:180
@@ -771,40 +771,40 @@ msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr "Vis kopieringsdialog"
+msgstr "Прикажи дијалог за копирање"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr "Avbryt alle pågående handlinger"
+msgstr "Откажи ги сите моментални дејства дејства"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-progress-ui-handler.c:483
 msgid "All file operations have been successfully completed"
-msgstr "Alle filoperasjoner er fullført"
+msgstr "Успешно завршени сите операции со фајлови"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr "Filnavn"
+msgstr "Име на фајл"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1163
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "Невалидно име на фајл според местото на влечење"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1321
 #, c-format
 msgid "Failed to create a link for the URL \"%s\""
-msgstr "Kunne ikke opprette lenke for URL-en «%s»"
+msgstr "Неуспех во создавање линк за \"%s\" URL-та."
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1806
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Bruk «%s» til å åpne valgt oppføring"
-msgstr[1] "Bruk «%s» til å åpne valgte oppføringer"
+msgstr[0] "За да го отвориш, искористи \"%s\""
+msgstr[1] "За да го отвориш, искористи \"%s\""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1953
 #, c-format
 msgid "_Open With %s"
-msgstr "_Åpne med %s"
+msgstr "_Отвори со %s"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:1975
 #, c-format
@@ -818,45 +818,41 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3459
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "Gjør klar valgte filer for flytting med kommandoen «Lim inn filer»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3463
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "Gjør klar valgte filer for kopiering med kommandoen «Lim inn filer»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3467
 msgid "Move or copy files previously selected by a Cut or Copy command"
 msgstr ""
-"Flytt eller kopier filer som er valgt tidligere med kommandoene «Klipp ut "
-"filer» eller «Kopier filer»"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3470
 msgid "Paste Into Folder"
-msgstr "Lim inn i mappe"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3471
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
-"Flytt eller kopier filer tidligere valgt av klipp ut eller kopier til valgt "
-"mappe"
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3474
 msgid "_Rename..."
-msgstr "_Gi nytt navn..."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3475
 msgid "Rename selected item"
-msgstr "Endre navn på valgt oppføring"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3478
 msgid "Create New _Folder"
-msgstr "Lag ny _mappe"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3479
 msgid "Create a new empty folder inside this folder"
-msgstr "Lag en ny tom mappe i denne mappen"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3481
 msgid "Create New _File"
@@ -864,11 +860,11 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3483
 msgid "_Empty File"
-msgstr "_Tom fil"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3484
 msgid "Create a new empty file inside this folder"
-msgstr "Lag en ny tom fil i denne mappen"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3488
 msgid "Open the selected item"
@@ -876,15 +872,15 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3495
 msgid "Open in new Window"
-msgstr "Åpne i et nytt vindu"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3496
 msgid "Open each selected item in a new window"
-msgstr "Åpne hver valgte oppføring i nytt vindu"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3500
 msgid "Open each selected item in a new tab"
-msgstr "Åpne hver valgt oppføring i ny fane"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3502
 msgid "Open Wit_h"
@@ -892,52 +888,52 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3503
 msgid "Choose a program with which to open the selected item"
-msgstr "Velg et program du vil åpne valgte oppføring med"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3505
 msgid "Other _Application..."
-msgstr "Annet _program…"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3506
 msgid "Choose another application with which to open the selected item"
-msgstr "Velg et annet program du vil åpne valgt oppføring med"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3509
 msgid "Mo_ve to Trash"
-msgstr "Fl_ytt til papirkurven"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3510
 msgid "Move each selected item to the Trash"
-msgstr "Flytt hver valgt oppføring til papirkurven"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3513
 msgid "_Delete Permanently"
-msgstr "_Slett permanent"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3514
 msgid "Delete each selected item, without moving to the Trash"
-msgstr "Slett hver valgt oppføring, uten å flytte dem til Papirkurven"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3517
 msgid "_Restore"
-msgstr "_Gjenopprett"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3521
 #: /home/pqp/lp/pantheon-files/po/../src/eel-editable-label.c:3190
 msgid "Select All"
-msgstr "Velg Alle"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3525
 msgid "_Properties"
-msgstr "_Egenskaper"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3526
 msgid "View or modify the properties of each selected item"
-msgstr "Vis eller modifiser egenskapene for hver av de valgte oppføringene"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-directory-view.c:3632
 msgid "Set Color:"
-msgstr "Angi farge:"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
@@ -945,122 +941,120 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr "Om_vendt Rekkefølge"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr "Vis ikoner i omvendt rekkefølge"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr "Etter _navn"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr "Behold ikoner sortert etter navn i rader"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr "Etter _Størrelse"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr "Behold ikoner sortert etter størrelse i rader"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr "Etter _Type"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr "Behold ikoner sortert etter type i rader"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr "Etter endrings_dato"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr "Behold ikoner sortert etter endringsdato i rader"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr "SSH"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr "Offentlig FTP"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr "FTP (med innlogging)"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr "Delt Windows-ressurs"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr "Sikker WebDAV (HTTPS)"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr "Kobler til..."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"Kan ikke laste liste med støttede tjenermetoder.\n"
-"Vennligst sjekk din gvfs-installasjon."
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Mappen «%s» kan ikke åpnes på «%s»."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Finner ikke tjeneren på «%s»."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr "Prøv Igjen"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr "Kontroller brukardata."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr "Forsett"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:750
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
-msgstr "K_oble til"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr "Koble til tjener"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr "Tjenerdetaljer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
-msgstr "_Tjener:"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
-msgstr "_Port:"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
@@ -1068,7 +1062,7 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
-msgstr "_Del:"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
@@ -1076,7 +1070,7 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
-msgstr "Brukerdetaljer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
@@ -1096,19 +1090,19 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
-msgstr "Operasjon avbrutt"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/eel-editable-label.c:3201
 msgid "Input Methods"
-msgstr "Inndatametoder"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
-msgstr "Utklippstavlen har ingenting å lime inn"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:423
 msgid "Show the version of the program."
-msgstr "Vis programversjon"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:427
 msgid "Open uri(s) in new tab"
@@ -1116,11 +1110,11 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:429
 msgid "Quit Files."
-msgstr "Lukk program."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:431
 msgid "Enable debug logging"
-msgstr "Aktiver feilsøkingslogg"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:432
 msgid "[URI...]"
@@ -1132,9 +1126,6 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
-"\n"
-"\n"
-"Bla gjennom filsystemet med filbehandleren"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-application.c:461
 msgid "--quit cannot be used with URIs."
@@ -1142,11 +1133,11 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr "Bla gjennom filer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr "Filbehandler"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
@@ -1159,7 +1150,7 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-progress-info.c:192
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
-msgstr "Forbereder"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-fcts.c:81
 msgid "Today at %-I:%M %p"
@@ -1180,46 +1171,46 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-utilities.c:122
 msgid "The item cannot be restored from trash"
-msgstr "Oppføringen kan ikke gjenopprettes fra papirkurven"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-stock-dialogs.c:35
 msgid "Show more _details"
-msgstr "Vis flere _detaljer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/eel-vfs-extensions.c:72
 msgid " (invalid Unicode)"
-msgstr " (ugyldig Unicode)"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:146
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Flett mappe «%s»?"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:150
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:364
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
-msgstr "Fletting vil be om bekreftelse før konflikterende filer overskrives"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "En eldre mappe med samme navn eksisterer allerede i \"%s\"."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:159
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "En nyere mappe med samme navn eksisterer allerede i \"%s\"."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:163
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "En annen mappe med samme navn eksisterer allerede i \"%s\"."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:168
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:382
@@ -1253,55 +1244,55 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "En eldre fil med samme navn eksisterer allerede i \"%s\"."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:187
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "En nyere fil med samme navn eksisterer allerede i \"%s\"."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:191
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "En annen fil med samme navn eksisterer allerede i \"%s\"."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:253
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:460
 msgid "Original file"
-msgstr "Originalfil"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:254
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:285
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:461
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:482
 msgid "Size:"
-msgstr "Størrelse:"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:257
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:288
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:464
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:485
 msgid "Type:"
-msgstr "Type:"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:260
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:291
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:467
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:488
 msgid "Last modified:"
-msgstr "Sist endret:"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:284
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
-msgstr "Erstatt med"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:313
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
-msgstr "Sammenføy"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
@@ -1309,7 +1300,7 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
-msgstr "Nullstill"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
@@ -1326,11 +1317,11 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
-msgstr "Erstatt"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
-msgstr "Filkonflikt"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
@@ -1368,43 +1359,45 @@ msgstr ""
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] "%'d sekund"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:299
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] "%'d minutt"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] "%'d time"
-msgstr[1] "%'d timer"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] "omtrent %'d time"
-msgstr[1] "omtrent %'d timer"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
-msgstr "Lenke til %s"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
-msgstr "En annen lenke til %s"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
-msgstr "%'dste lenke til %s"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:417
 #, c-format
@@ -1492,7 +1485,7 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Er du sikker på at du vil slette «%B» fra papirkurven permanent?"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
@@ -1503,54 +1496,50 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Er du sikker på at du vil slette %'d valgt oppføring i papirkurven permanent?"
 msgstr[1] ""
-"Er du sikker på at du vil slette %'d valgte oppføringer i papirkurven "
-"permanent?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1394
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Hvis du sletter en oppføring vil den bli borte for godt."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr "Tøm papirkurven?"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Alle oppføringer i papirkurven vil fjernes for godt."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Er du sikker på at du vil slette «%B» permanent?"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Er du sikker på at du vil slette %'d valgt oppføring permanent?"
+msgstr[0] ""
 msgstr[1] ""
-"Er du sikker på at du vil slette %'d valgte oppføringer permanent?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1478
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
-msgstr "Sletter filer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "%'d fil igjen å slette"
-msgstr[1] "%'d filer igjen å slette"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] "%T gjenstår"
-msgstr[1] "%T gjenstår"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1592
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1626
@@ -1558,15 +1547,13 @@ msgstr[1] "%T gjenstår"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1742
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2573
 msgid "Error while deleting."
-msgstr "Feil under sletting."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Filer i mappen «%B» kan ikke slettes fordi du ikke har rettigheter til å se "
-"dem."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1599
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2632
@@ -1574,85 +1561,79 @@ msgstr ""
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
-"Det oppsto en feil under henting av informasjon om filene i mappe «%B»."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1608
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3637
 msgid "_Skip files"
-msgstr "_Hopp over filer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"Mappen «%B» kan ikke slettes fordi du ikke har rettigheter til å lese den."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1632
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2671
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3673
 msgid "There was an error reading the folder \"%B\"."
-msgstr "Det oppsto en feil under lesing av mappe «%B»."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
-msgstr "Kunne ikke fjerne mappen %B."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
-msgstr "Det oppsto en feil under sletting av %B."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1819
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
-msgstr "Flytter filer til papirkurv"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "%'d fil igjen å slette"
-msgstr[1] "%'d filer igjen å slette"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
-msgstr "Kan ikke hive fil i papirkurven. Slette umiddelbart?"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
 msgstr ""
-"Filen befinner seg på eksternt lagringsmedium og kan ikke hives i "
-"papirkurven. Når den først er slettet kan den ikke gjenopprettes."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2069
 msgid "Trashing Files"
-msgstr "Hiver filer i papirkurven"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2071
 msgid "Deleting Files"
-msgstr "Sletter filer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2143
 msgid "Unable to eject %V"
-msgstr "Kan ikke løse ut %V"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to unmount %V"
-msgstr "Kan ikke avmontere %V"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2300
 msgid "Do you want to empty the trash before you unmount?"
-msgstr "Vil du tømme papirkurven før du avmonterer?"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2302
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
-"Papirkurven må tømmes for å få tilbake ledig plass på dette volumet. Alle "
-"oppføringer i papirkurven vil bli borte permanent."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2308
 msgid "Do _not Empty Trash"
@@ -1660,197 +1641,189 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
-msgstr "Tømmer papirkurven"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
 msgid "Unable to mount %s"
-msgstr "Kan ikke montere %s"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2508
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "Forbereder kopiering av %'d fil (%S) …"
-msgstr[1] "Forbereder kopiering av %'d filer (%S)..."
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2514
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "Forbereder flytting av %'d fil (%S) …"
-msgstr[1] "Forbereder flytting av %'d filer (%S)..."
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2520
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Forbereder sletting av %'d fil (%S) …"
-msgstr[1] "Forbereder sletting av %'d filer (%S)..."
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2526
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Forbereder kasting av %'d fil"
-msgstr[1] "Forbereder kasting av %'d filer"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2569
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3489
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3620
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while copying."
-msgstr "Feil under kopiering."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2571
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3618
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3663
 msgid "Error while moving."
-msgstr "Feil under flytting."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while moving files to trash."
-msgstr "Feil oppsto ved kasting av filer i papirkurv."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2629
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Filer i mappeb «%B» kan ikke håndteres fordi du ikke har rettigheter til å "
-"se dem."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2668
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Mappe «%B» kan ikke håndteres fordi du ikke har rettigheter til å lese den."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2745
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Filen «%B» kan ikke håndteres fordi du ikke har rettigheter til å lese den."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2748
 msgid "There was an error getting information about \"%B\"."
-msgstr "Det oppsto en feil under henting av informasjon om «%B»."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2848
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2890
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2923
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2953
 msgid "Error while copying to \"%B\"."
-msgstr "Feil under kopiering til «%B»."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2852
 msgid "You do not have permissions to access the destination folder."
-msgstr "Du har ikke rettigheter til å apne målmappen."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2854
 msgid "There was an error getting information about the destination."
-msgstr "Det oppsto en feil under henting av informsjon om målkatalog."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2891
 msgid "The destination is not a folder."
-msgstr "Målet er ikke en mappe."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2924
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr "Ikke nok plass på målet. Prøve å fjerne filer for å frigjøre plass."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2926
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr "%S tilgjengelig, men %S kreves."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2954
 msgid "The destination is read-only."
-msgstr "Målet er skrivebeskyttet."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3015
 msgid "Moving \"%B\" to \"%B\""
-msgstr "Flytter «%B» til «%B»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3016
 msgid "Copying \"%B\" to \"%B\""
-msgstr "Kopierer «%B» til «%B»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3020
 msgid "Duplicating \"%B\""
-msgstr "Dupliserer «%B»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3024
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Flytter %'d fil (i «%B») til «%B»"
-msgstr[1] "Flytter %'d filer (i «%B») til «%B»"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3027
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Kopierer %'d fil (i «%B») til «%B»"
-msgstr[1] "Kopierer %'d filer (i «%B») til «%B»"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3034
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Dupliserer %'d fil (i «%B»)"
-msgstr[1] "Dupliserer %'d filer (i «%B»)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3043
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "Flytter %'d fil til «%B»"
-msgstr[1] "Flytter %'d filer til «%B»"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3047
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "Kopierer %'d fil til «%B»"
-msgstr[1] "Kopierer %'d filer til «%B»"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3052
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "Dupliserer %'d fil"
-msgstr[1] "Dupliserer %'d filer"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3103
 #, c-format
 msgid "%S of %S"
-msgstr "%S av %S"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3114
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S av %S -- %T igjen (%S/sek)"
-msgstr[1] "%S av %S -- %T igjen (%S/sek)"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3493
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Mappen «%B» kan ikke kopieres fordi du ikke har rettigheter til å opprette "
-"den på målet."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3496
 msgid "There was an error creating the folder \"%B\"."
-msgstr "Det oppsto en feil under oppretting av mappe «%B»."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3625
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Filer i mappe «%B» kan ikke kopieres fordi du ikke har rettigheter til å se "
-"dem."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3670
 msgid ""
@@ -1862,89 +1835,89 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4416
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5004
 msgid "Error while moving \"%B\"."
-msgstr "Feil under flytting av «%B»."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3716
 msgid "Could not remove the source folder."
-msgstr "Kunne ikke fjerne kildemappen."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3801
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3842
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4418
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4489
 msgid "Error while copying \"%B\"."
-msgstr "Feil under kopiering av «%B»."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3802
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr "Kunne ikke fjerne filer fra allerede eksisterende mappe %F."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:3843
 #, c-format
 msgid "Could not remove the already existing file %F."
-msgstr "Kunne ikke fjerne allerede eksisterende fil %F."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4172
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4844
 msgid "You cannot move a folder into itself."
-msgstr "Du kan ikke flytte en mappe til seg selv."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4173
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4845
 msgid "You cannot copy a folder into itself."
-msgstr "Du kan ikke kopiere en mappe til seg selv."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4174
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4846
 msgid "The destination folder is inside the source folder."
-msgstr "Målmappen er inne i kildemappen."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4205
 msgid "You cannot move a file over itself."
-msgstr "Du kan ikke flytte en fil over seg selv."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4206
 msgid "You cannot copy a file over itself."
-msgstr "Du kan ikke kopiere en fil over seg selv."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4207
 msgid "The source file would be overwritten by the destination."
-msgstr "Kildefilen ville blitt overskrevet av målet."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4420
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr "Kunne ikke fjerne eksisterende fil med samme navn i %F."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4490
 #, c-format
 msgid "There was an error copying the file into %F."
-msgstr "En feil oppsto under kopiering av filen til %F."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
-msgstr "Kopierer filer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
-msgstr "Forbereder flytting til \"%B\""
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4756
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] "Forbereder flytting av %'d fil"
-msgstr[1] "Forbereder flytting av %'d filer"
+msgstr[0] ""
+msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5005
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr "Det oppsto en feil ved flytting av filen til %F."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5268
 msgid "Moving Files"
-msgstr "Flytter filer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5298
 msgid "Creating links in \"%B\""
@@ -1959,7 +1932,7 @@ msgstr[1] ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5444
 msgid "Error while creating link to %B."
-msgstr "Feil under oppretting av lenke til «%B»."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:5446
 msgid "Symbolic links only supported for local files"
@@ -1981,112 +1954,112 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6034
 msgid "untitled folder"
-msgstr "mappe uten navn"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
-msgstr "ny fil"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
-msgstr "Feil under oppretting av katalog %B."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating file %B."
-msgstr "Feil under oppretting av fil «%B»."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6217
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Det oppsto en feil under oppretting av katalog i %F."
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
-msgstr "Tømmer papirkurv"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:252
 #, c-format
 msgid "link to %s"
-msgstr "lenke til %s"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:1708
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "Kunne ikke tolke skrivebordsfil:%s"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:1746
 msgid "No Exec field specified"
-msgstr "Exec-feltet er ikke spesifisert"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:1766
 msgid "No URL field specified"
-msgstr "URL-feltet er ikke spesifisert"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:1772
 msgid "Invalid desktop file"
-msgstr "Ugyldig skrivebords-fil"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:2062
 msgid "Slashes are not allowed in filenames"
-msgstr "Skråstrek er ikke tillatt i filnavn"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:2082
 msgid "Toplevel files cannot be renamed"
-msgstr "Kan ikke endre navn for filer på toppnivå"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
-msgstr "Slett %d kopierte oppføringer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1205
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1215
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
-msgstr "Slett «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr "Slett %d duplikerte oppføringer"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "Flytt %d oppføringer tilbake til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr "Flytt «%s» tilbake til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1236
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "Endre navn på «%s» til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1255
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
-msgstr "Gjenopprett %d oppføringer fra papirkurven"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr "Gjenopprett «%s» til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "Flytt %d oppføringer tilbake til papirkurven"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "Flytt «%s» tilbake til papirkurv"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
@@ -2096,23 +2069,22 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
-msgstr "Slett lenke til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr ""
-"Gjenopprett opprinnelige rettigheter på oppføringene som ligger i «%s»"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr "Gjenopprett opprinnelige rettigheter på «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "Gjenopprett gruppe for «%s» til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
@@ -2122,62 +2094,62 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr "Kopier %d oppføringer til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr "Kopier «%s» til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "Duplikat av %d oppføringer i «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr "Dupliserer «%s» i «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr "Flytt %d oppføringer til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr "Flytt «%s» til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr "Lag en ny fil «%s» fra mal "
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr "Lag en tom fil «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr "Lag en ny mappe «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
-msgstr "Flytt %d oppføringer til papirkurven"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "Flytt «%s» til papirkurv"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr "Gjenopprett «%s» fra papirkurven"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
@@ -2192,22 +2164,22 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "Sett rettigheter på oppføringer som ligger i «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr "Sett rettigheter på «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr "Sett gruppe for «%s» til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr "Sett eier av «%s» til «%s»"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
@@ -2423,7 +2395,7 @@ msgstr ""
 #: /home/pqp/lp/pantheon-files/po/../libwidgets/LocationBar.vala:812
 #, c-format
 msgid "Go to %s"
-msgstr "Gå til %s"
+msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
