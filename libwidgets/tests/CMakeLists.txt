@@ -1,7 +1,7 @@
 include_directories(../../libcore/)
 find_package(Vala REQUIRED)
 include(ValaPrecompile)
-vala_precompile(VALA_C
+vala_precompile(VALA_C widgets-test
     tests-pathbar.vala
 PACKAGES
     gtk+-3.0

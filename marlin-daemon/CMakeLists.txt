@@ -28,7 +28,7 @@ add_definitions(${CFLAGS}
     "-DGETTEXT_PACKAGE=\"marlin\""
      -O2
     )
-vala_precompile(VALA_C
+vala_precompile(VALA_C marlin-daemon
     marlind-tagging.vala
 PACKAGES
     gtk+-3.0

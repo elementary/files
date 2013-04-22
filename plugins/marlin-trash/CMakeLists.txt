@@ -11,7 +11,7 @@ set(CFLAGS
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 include_directories(${CMAKE_BINARY_DIR}/libcore/)
 
-vala_precompile(VALA_C
+vala_precompile(VALA_C marlintrash
     plugin.vala
 PACKAGES
     gtk+-3.0
