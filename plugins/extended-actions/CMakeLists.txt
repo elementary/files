@@ -10,7 +10,7 @@ include_directories(${CMAKE_BINARY_DIR}/libcore/)
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
-vala_precompile(VALA_C
+vala_precompile(VALA_C marlin-extended-actions
     plugin.vala
 CUSTOM_VAPIS
     ${CMAKE_BINARY_DIR}/libcore/marlincore.vapi

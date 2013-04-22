@@ -38,7 +38,7 @@ add_definitions(${CFLAGS}
     "-DUI_DIR=\"${CMAKE_INSTALL_PREFIX}/share/pantheon-files/ui/\""
      -O2
     )
-vala_precompile(VALA_C
+vala_precompile(VALA_C pantheon-files
     ${CMAKE_BINARY_DIR}/src/config.vala
 
     marlin-deep-count.vala
@@ -81,6 +81,7 @@ OPTIONS
     --vapidir=${CMAKE_BINARY_DIR}/libcore/
     --target-glib=2.32 # Needed for new thread API
     --thread)
+
 add_executable(pantheon-files
     eel-editable-label.c
     marlin-application.c

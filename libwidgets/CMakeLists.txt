@@ -34,7 +34,7 @@ set(LIB_PATHS
 )
 link_directories(${LIB_PATHS})
 
-vala_precompile(VALA_C
+vala_precompile(VALA_C ${PKGNAME}
     LocationBar.vala
     BreadcrumbsElements.vala
     BreadcrumbsEntry.vala
@@ -50,22 +50,12 @@ GENERATE_VAPI
 GENERATE_HEADER
     marlinwidgets
 )
-add_library (${PKGNAME} SHARED
-    ${VALA_C}
-)
-if(BUILD_STATIC MATCHES "Yes")
-ADD_LIBRARY(${PKGNAME}-static STATIC ${VALA_C})
-# The library target "foo" already has a default OUTPUT_NAME of "foo", so we don't need to change it.
+add_library (${PKGNAME} SHARED ${VALA_C})
 
-# The library target "foo-static" has a default OUTPUT_NAME of "foo-static", so change it.
-
-SET_TARGET_PROPERTIES(${PKGNAME}-static PROPERTIES OUTPUT_NAME ${PKGNAME})
-install (TARGETS ${PKGNAME}-static DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
-endif(BUILD_STATIC MATCHES "Yes")
 set_target_properties (${PKGNAME} PROPERTIES
     VERSION ${MARLINWIDGETS_VERSION}
-    SOVERSION ${MARLINWIDGETS_SOVERSION}
-                       )
+    SOVERSION ${MARLINWIDGETS_SOVERSION})
+
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
+target_link_libraries(${PKGNAME} ${DEPS_LIBRARIES})
 add_subdirectory(tests)
-target_link_libraries(marlinwidgets ${DEPS_LIBRARIES})
