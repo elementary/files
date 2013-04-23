@@ -81,9 +81,8 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
             assert (files != null);
             assert (contracts != null);
 
-            uint i = 0;
-
-            foreach (var contract in contracts) {
+            for (int i = 0; i < contracts.size; i++) {
+                var contract = contracts.get (i);
                 Gtk.MenuItem menu_item;
 
                 // insert separator if we got at least 1 contract
@@ -94,8 +93,6 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
 
                 menu_item = new ContractMenuItem (contract, files);
                 add_menuitem (menu, menu_item);
-
-                i++;
             }
         } catch (Error e) {
             warning (e.message);
@@ -118,19 +115,16 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     }
 
     private static string[] get_mimetypes (List<GOF.File> files) {
-        string[] mimetypes = new string[0];
+        string[] mimetypes = new string[files.length ()];
 
-        foreach (var file in files) {
-            var ftype = file.get_ftype ();
-            if (ftype != null)
-                mimetypes += ftype;
-        }
+        foreach (var file in files)
+            mimetypes += file.get_ftype () ?? "";
 
         return mimetypes;
     }
 
     private static File[] get_file_array (List<GOF.File> files) {
-        File[] file_array = new File[0];
+        File[] file_array = new File[files.length ()];
 
         foreach (var file in files)
             file_array += file.location;
