@@ -28,7 +28,12 @@ public class Marlin.Plugins.ContractMenuItem : Gtk.MenuItem {
     public ContractMenuItem (Granite.Services.Contract contract, File[] files) {
         this.contract = contract;
         this.files = files;
-        label = contract.get_description ();
+        label = contract.get_description ().dup ();
+    }
+
+    ~ContractMenuItem () {
+        message ("Destroying item for %s", contract.get_description ());
+        contract = null;
     }
 
     public override void activate () {
@@ -111,7 +116,7 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
         menu.append (menu_item);
         menu_item.show ();
-        plugins.menus.prepend (menu_item);
+        plugins.menuitem_references.add (menu_item);
     }
 
     private static string[] get_mimetypes (List<GOF.File> files) {
@@ -124,10 +129,12 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     }
 
     private static File[] get_file_array (List<GOF.File> files) {
-        File[] file_array = new File[files.length ()];
+        File[] file_array = new File[0];
 
-        foreach (var file in files)
-            file_array += file.location;
+        foreach (var file in files) {
+            if (file.location != null)
+                file_array += file.location;
+        }
 
         return file_array;
     }
