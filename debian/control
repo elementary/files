@@ -3,8 +3,8 @@ Section: x11
 Priority: optional
 Maintainer: Cody Garver <cody@elementaryos.org>
 Vcs-Bzr: https://code.launchpad.net/~elementary-apps/pantheon-files/trunk
-Build-Depends: cmake,
-               debhelper (>= 7),
+Build-Depends: cmake (>= 2.6),
+               debhelper (>= 7.0.50~),
                gnome-common,
                libdbus-glib-1-dev,
                libgail-3-dev,
@@ -17,14 +17,14 @@ Build-Depends: cmake,
                libpango1.0-dev (>= 1.1.2),
                libsqlite3-dev,
                libunity-dev (>= 4.0.0),
-               pkg-config,
                valac-0.16 | valac (>= 0.16)
 Homepage: https://launchpad.net/pantheon-files
 Standards-Version: 3.8.4
 
 Package: pantheon-files
 Architecture: any
-Depends: contractor, tumbler, ${misc:Depends}, ${shlibs:Depends}
+Depends: tumbler, ${misc:Depends}, ${shlibs:Depends}
+Recommends: contractor
 Pre-Depends: dpkg (>= 1.15.6)
 Suggests: tumbler-plugins-extra
 Conflicts: marlin
