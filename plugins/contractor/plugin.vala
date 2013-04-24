@@ -2,8 +2,10 @@
  * Authors:
  *      Lucas Baudin <xapantu@gmail.com>
  *      ammonkey <am.monkeyd@gmail.com>
- *      
+ *      Victor Martinez <victoreduardm@gmail.com>
+ *
  * Copyright (C) Lucas Baudin 2011 <xapantu@gmail.com>
+ * Copyright (C) 2013 elementary
  * 
  * Marlin is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -19,138 +21,122 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using Gtk;
-using Gee;
+public class Marlin.Plugins.ContractMenuItem : Gtk.MenuItem {
+    private Granite.Services.Contract contract;
+    private File[] files;
 
-[DBus (name = "org.elementary.contractor")]
-public interface ContractorService : Object
-{
-    //public abstract GLib.HashTable<string,string>[] GetServicesByMime (string mime) throws IOError;
-    public abstract GLib.HashTable<string,string>[] GetServicesByLocation (string strlocation, string? file_mime="")    throws IOError;
-    public abstract GLib.HashTable<string,string>[] GetServicesByLocationsList (GLib.HashTable<string, string>[] locations)  throws IOError;
+    public ContractMenuItem (Granite.Services.Contract contract, File[] files) {
+        this.contract = contract;
+        this.files = files;
+
+        label = contract.get_display_name ();
+        tooltip_text = contract.get_description ();
+    }
+
+    public override void activate () {
+        try {
+            if (files.length == 1)
+                contract.execute_with_file (files[0]);
+            else
+                contract.execute_with_files (files);
+        } catch (Error err) {
+            warning (err.message);
+        }
+    }
 }
 
-public class Marlin.Plugins.Contractor : Marlin.Plugins.Base
-{
-    UIManager ui_manager;
-    Gtk.Menu menu;
-    GOF.File current_directory = null;
-    unowned GLib.List<GOF.File> selection;
-    GLib.HashTable<string,string>[] services = null;
-    
-    private ContractorService service_eactions;
-    
-    public Contractor ()
-    {
-        try {
-            service_eactions = Bus.get_proxy_sync (BusType.SESSION,
-                                                   "org.elementary.contractor",
-                                                   "/org/elementary/contractor");
-        } catch (IOError e) {
-            stderr.printf ("%s\n", e.message);
-        }
+public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
+    private Gtk.UIManager ui_manager;
+    private Gtk.Menu menu;
+    private GOF.File current_directory = null;
+
+    public Contractor () {
     }
 
-    private string get_app_display_name (GLib.HashTable<string,string> app__)
-    {
-        return app__.lookup ("Description");
-    }
-
-    private GLib.HashTable<string,string> add_location_entry (GOF.File file)
-    {
-        GLib.HashTable<string,string> entry;
-                
-        entry = new GLib.HashTable<string,string> (str_hash, str_equal);
-        entry.insert ("uri", file.uri);
-        var ftype = file.get_ftype ();
-        if (ftype == "application/octet-stream" || ftype == null)
-            entry.insert ("mimetype", "");
-        else
-            entry.insert ("mimetype", ftype);
-
-        return entry;
-    }
-
-    private GLib.HashTable<string, string>[] build_hash_from_list_selection ()
-    {
-        GLib.HashTable<string,string>[] locations = null;
-
-        foreach (GOF.File file in selection) {
-            if (file != null)
-                locations += add_location_entry (file);
-            //message ("file %s", file.name);
-        }
-        if (selection == null && current_directory != null) {
-            locations += add_location_entry (current_directory);
-        }
-
-        return locations;
-    }
-
-    public void action_activated ()
-    {
-        Gtk.MenuItem menuitem;
-        GLib.HashTable<string,string> app__;
-                
-        menuitem = (Gtk.MenuItem) menu.get_active ();
-        app__ = menuitem.get_data<GLib.HashTable<string,string>> ("app");
-
-        if (app__ != null) {
-            var cmd = app__.lookup ("Exec");
-            //message ("test exec %s", cmd);
-            try {
-                GLib.Process.spawn_command_line_async (cmd);
-            } catch (SpawnError e) {
-                stderr.printf ("error spawn command line %s: %s", cmd, e.message);
-            }
-        }
-    }
-
-    public override void context_menu (Gtk.Widget? widget, GLib.List<GOF.File> files)
-    {
+    public override void context_menu (Gtk.Widget? widget, List<GOF.File> gof_files) {
         menu = widget as Gtk.Menu;
-        
-        selection = files;
+        return_if_fail (menu != null);
+
+        File[] files = null;
+        Gee.List<Granite.Services.Contract> contracts = null;
+
         try {
-            services = service_eactions.GetServicesByLocationsList (build_hash_from_list_selection ());
-        
-            uint i = 0;
-            foreach(var app__ in services)
-            {
-                /* insert separator if we got at least 1 action */
-                if (i == 0) {
-                    var item = new Gtk.SeparatorMenuItem ();
-                    menu.append (item);
-                    item.show ();
-                    plugins.menus.prepend (item);
-                }
-                var menuitem = new Gtk.MenuItem.with_label(get_app_display_name(app__));
-                menu.append (menuitem);
-                menuitem.set_data<GLib.HashTable<string,string>> ("app", app__);
-                menuitem.show ();
-                menuitem.activate.connect (action_activated);
-                plugins.menus.prepend (menuitem);
-                i++;
+            if (gof_files == null) {
+                if (current_directory == null)
+                    return;
+
+                files = new File[0];
+                files += current_directory.location;
+
+                string? mimetype = current_directory.get_ftype ();
+
+                if (mimetype == null)
+                    return;
+
+                contracts = Granite.Services.ContractorProxy.get_contracts_by_mime (mimetype);
+            } else {
+                files = get_file_array (gof_files);
+                var mimetypes = get_mimetypes (gof_files);
+                contracts = Granite.Services.ContractorProxy.get_contracts_by_mimelist (mimetypes);
             }
-        } catch (IOError e) {
-            stderr.printf ("%s\n", e.message);
+
+            assert (files != null);
+            assert (contracts != null);
+
+            for (int i = 0; i < contracts.size; i++) {
+                var contract = contracts.get (i);
+                Gtk.MenuItem menu_item;
+
+                // insert separator if we got at least 1 contract
+                if (i == 0) {
+                    menu_item = new Gtk.SeparatorMenuItem ();
+                    add_menuitem (menu, menu_item);
+                }
+
+                menu_item = new ContractMenuItem (contract, files);
+                add_menuitem (menu, menu_item);
+            }
+        } catch (Error e) {
+            warning (e.message);
         }
     }
 
-    public override void ui (Gtk.UIManager? widget)
-    {
+    public override void ui (Gtk.UIManager? widget) {
         ui_manager = widget;
-        menu = (Gtk.Menu)ui_manager.get_widget("/selection");
+        menu = (Gtk.Menu) ui_manager.get_widget ("/selection");
     }
-    
-    public override void directory_loaded (void* user_data)
-    {
-        current_directory = ((Object[])user_data)[2] as GOF.File;
+
+    public override void directory_loaded (void* user_data) {
+        current_directory = ((Object[]) user_data)[2] as GOF.File;
+    }
+
+    private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
+        menu.append (menu_item);
+        menu_item.show ();
+        plugins.menuitem_references.add (menu_item);
+    }
+
+    private static string[] get_mimetypes (List<GOF.File> files) {
+        string[] mimetypes = new string[files.length ()];
+
+        foreach (var file in files)
+            mimetypes += file.get_ftype () ?? "";
+
+        return mimetypes;
+    }
+
+    private static File[] get_file_array (List<GOF.File> files) {
+        File[] file_array = new File[0];
+
+        foreach (var file in files) {
+            if (file.location != null)
+                file_array += file.location;
+        }
+
+        return file_array;
     }
 }
 
-public Marlin.Plugins.Base module_init ()
-{
+public Marlin.Plugins.Base module_init () {
     return new Marlin.Plugins.Contractor ();
 }
-

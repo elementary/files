@@ -30,7 +30,11 @@ public class Marlin.PluginManager : GLib.Object
     string plugin_dir;
     Gee.List<string> names;
     bool in_available = false;
-    public GLib.List<Gtk.Widget>? menus;
+
+    [Deprecated (replacement = "Marlin.PluginManager.menuitem_references")]
+    public GLib.List<Gtk.Widget>? menus; // this doesn't manage GObject references properly
+
+    public Gee.List<Gtk.Widget> menuitem_references { get; private set; }
 
     public PluginManager(Settings settings, string field, string plugin_dir)
     {
@@ -39,6 +43,8 @@ public class Marlin.PluginManager : GLib.Object
         this.plugin_dir = plugin_dir;
         plugin_hash = new Gee.HashMap<string,Plugins.Base>();
         names = new Gee.ArrayList<string>();
+
+        menuitem_references = new Gee.LinkedList<Gtk.Widget> ();
     }
     
     public void load_plugins()
@@ -147,10 +153,36 @@ public class Marlin.PluginManager : GLib.Object
     
     public void hook_context_menu(Gtk.Widget menu, List<GOF.File> files)
     {
+        drop_menu_references (menu);
+
+        if (menu is Gtk.Menu)
+            drop_plugin_menuitems (menu as Gtk.Menu);
+
+
+        foreach (var plugin in plugin_hash.values)
+            plugin.context_menu (menu, files);
+    }
+
+    private void drop_plugin_menuitems (Gtk.Menu menu) {
+        var plugin_menu = menu as Gtk.Menu;
+
+        assert (plugin_menu != null);
+
+        foreach (var menu_item in menuitem_references)
+            menu_item.parent.remove (menu_item);
+
+        menuitem_references.clear ();
+    }
+
+    [Deprecated (replacement = "Marlin.PluginManager.drop_plugin_menuitems")]
+    private void drop_menu_references (Gtk.Widget menu) {
+        if (menus == null)
+            return;
+
         foreach (var item in menus)
             item.destroy ();
+
         menus = null;
-        foreach(var plugin in plugin_hash.values) plugin.context_menu (menu, files);
     }
     
     public void ui(Gtk.UIManager data)
