@@ -158,6 +158,7 @@ public class Marlin.PluginManager : GLib.Object
         if (menu is Gtk.Menu)
             drop_plugin_menuitems (menu as Gtk.Menu);
 
+
         foreach (var plugin in plugin_hash.values)
             plugin.context_menu (menu, files);
     }
@@ -165,16 +166,22 @@ public class Marlin.PluginManager : GLib.Object
     private void drop_plugin_menuitems (Gtk.Menu menu) {
         var plugin_menu = menu as Gtk.Menu;
 
+        assert (plugin_menu != null);
+
         foreach (var menu_item in menuitem_references)
-            plugin_menu.remove (menu_item);
+            menu_item.parent.remove (menu_item);
 
         menuitem_references.clear ();
     }
 
     [Deprecated (replacement = "Marlin.PluginManager.drop_plugin_menuitems")]
     private void drop_menu_references (Gtk.Widget menu) {
+        if (menus == null)
+            return;
+
         foreach (var item in menus)
             item.destroy ();
+
         menus = null;
     }
     

@@ -28,12 +28,9 @@ public class Marlin.Plugins.ContractMenuItem : Gtk.MenuItem {
     public ContractMenuItem (Granite.Services.Contract contract, File[] files) {
         this.contract = contract;
         this.files = files;
-        label = contract.get_description ().dup ();
-    }
 
-    ~ContractMenuItem () {
-        message ("Destroying item for %s", contract.get_description ());
-        contract = null;
+        label = contract.get_display_name ();
+        tooltip_text = contract.get_description ();
     }
 
     public override void activate () {
@@ -140,7 +137,6 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     }
 }
 
-public Marlin.Plugins.Base module_init ()
-{
+public Marlin.Plugins.Base module_init () {
     return new Marlin.Plugins.Contractor ();
 }
