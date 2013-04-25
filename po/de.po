@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-02-23 10:14+0000\n"
-"Last-Translator: Otto Hakstetter <Ravertiny@gmail.com>\n"
+"PO-Revision-Date: 2013-04-24 18:44+0000\n"
+"Last-Translator: Phillip Sz <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-02-24 05:01+0000\n"
-"X-Generator: Launchpad (build 16506)\n"
+"X-Launchpad-Export-Date: 2013-04-25 05:48+0000\n"
+"X-Generator: Launchpad (build 16580)\n"
 "Language: de\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
@@ -286,11 +286,11 @@ msgstr "Persönlichen Ordner öffnen"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:807
 msgid "_Trash"
-msgstr "_Papierkorb"
+msgstr "_Müll"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:808
 msgid "Open your personal trash folder"
-msgstr "Papierkorb öffnen"
+msgstr "Ihren persönlichen Müll-Ordner öffnen"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:811
 msgid "_Network"
@@ -561,7 +561,7 @@ msgstr "Ihre normalen Orte und Lesezeichen"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:348
 msgid "Open the trash"
-msgstr "Mülleimer öffnen"
+msgstr "Müll öffnen"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-places-sidebar.c:358
 msgid "Devices"
@@ -697,7 +697,7 @@ msgstr "Aus_werfen"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1422
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2310
 msgid "Empty _Trash"
-msgstr "_Mülleimer leeren"
+msgstr "_Müll leeren"
 
 #: /home/pqp/lp/pantheon-files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
@@ -1529,11 +1529,11 @@ msgstr "Sobald Sie ein Objekt entfernen, geht es dauerhaft verloren."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
-msgstr "Alle Objekte aus dem Mülleimer entfernen?"
+msgstr "Sollen alle Objekte aus dem Müll gelöscht werden?"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
-msgstr "Alle Objekte im Mülleimer werden dauerhaft entfernt werden."
+msgstr "Alle Objekte im Müll werden dauerhaft gelöscht."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1681,7 +1681,7 @@ msgstr "Müll _nicht leeren"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2363
 msgid "Emptying the trash"
-msgstr "Mülleimer wird geleert"
+msgstr "Müll wird geleert"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:2430
 #, c-format
@@ -2041,7 +2041,7 @@ msgstr "Beim Erstellen des Ordners in »%F« ist ein Fehler aufgetreten."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6534
 msgid "Emptying Trash"
-msgstr "Papierkorb wird geleert"
+msgstr "Müll wird geleert"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/gof-file.c:252
 #, c-format
@@ -2120,7 +2120,7 @@ msgstr "'%s' nach '%s' wiederherstellen"
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "Verschiebe %d Dateien zurück in den Mülleimer"
+msgstr "Verschiebe %d Dateine zurück in den Müll"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
