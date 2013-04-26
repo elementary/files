@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-02-10 21:15+0000\n"
+"PO-Revision-Date: 2013-04-25 15:42+0000\n"
 "Last-Translator: Sergey \"Shnatsel\" Davidoff <Shnatsel@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-02-17 05:03+0000\n"
-"X-Generator: Launchpad (build 16491)\n"
+"X-Launchpad-Export-Date: 2013-04-26 05:54+0000\n"
+"X-Generator: Launchpad (build 16580)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -342,7 +342,7 @@ msgstr "Соединиться с удалённым компьютером ил
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:851
 msgid "_About"
-msgstr "_Сведения"
+msgstr "_О программе"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:852
 msgid "Display credits"
