@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-04-11 11:08+0000\n"
-"Last-Translator: MinSik CHO <Unknown>\n"
+"PO-Revision-Date: 2013-05-01 10:54+0000\n"
+"Last-Translator: LeeHoseok <neochain@naver.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-04-12 05:40+0000\n"
-"X-Generator: Launchpad (build 16564)\n"
+"X-Launchpad-Export-Date: 2013-05-02 05:44+0000\n"
+"X-Generator: Launchpad (build 16580)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -1876,7 +1876,7 @@ msgstr "파일을 %F(으로) 복사하는 데 오류가 발생했습니다."
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4718
 msgid "Copying Files"
-msgstr ""
+msgstr "파일을 복사하는 중"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:4744
 msgid "Preparing to move to \"%B\""
@@ -1937,7 +1937,7 @@ msgstr ""
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6042
 msgid "new file"
-msgstr ""
+msgstr "새 파일"
 
 #: /home/pqp/lp/pantheon-files/po/../libcore/marlin-file-operations.c:6213
 msgid "Error while creating directory %B."
