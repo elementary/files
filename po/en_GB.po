@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-02-19 21:25+0000\n"
+"PO-Revision-Date: 2013-05-07 21:17+0000\n"
 "Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-02-20 05:17+0000\n"
-"X-Generator: Launchpad (build 16491)\n"
+"X-Launchpad-Export-Date: 2013-05-08 05:47+0000\n"
+"X-Generator: Launchpad (build 16598)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -80,7 +80,7 @@ msgstr "Info:"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
-msgstr "Other application..."
+msgstr "Other application…"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:428
 msgid "Open with:"
@@ -349,7 +349,7 @@ msgstr "Display credits"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:855
 msgid "Report a Problem..."
-msgstr "Report a Problem..."
+msgstr "Report a Problem…"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:856
 msgid "File a bug on Launchpad"
@@ -357,11 +357,11 @@ msgstr "File a bug on Launchpad"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:859
 msgid "Get Help Online..."
-msgstr "Get Help Online..."
+msgstr "Get Help Online…"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:863
 msgid "Translate This Application..."
-msgstr "Translate This Application..."
+msgstr "Translate This Application…"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/Window.vala:872
 msgid "Show _Hidden Files"
@@ -1007,7 +1007,7 @@ msgstr "Secure WebDAV (HTTPS)"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr "Connecting..."
+msgstr "Connecting…"
 
 #: /home/pqp/lp/pantheon-files/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
