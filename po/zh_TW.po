@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-02-15 16:52-0500\n"
-"PO-Revision-Date: 2013-01-23 07:48+0000\n"
+"PO-Revision-Date: 2013-05-09 02:20+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-02-17 05:04+0000\n"
-"X-Generator: Launchpad (build 16491)\n"
+"X-Launchpad-Export-Date: 2013-05-09 05:41+0000\n"
+"X-Generator: Launchpad (build 16598)\n"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -449,7 +449,7 @@ msgstr "檔案偏好設定"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:103
 msgid "There are no extensions currently installed."
-msgstr ""
+msgstr "目前未安裝任何擴充套件。"
 
 #: /home/pqp/lp/pantheon-files/po/../src/View/SettingsDialog.vala:105
 msgid "Extensions"
