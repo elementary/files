@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-09 15:24-0500\n"
-"PO-Revision-Date: 2013-03-09 16:05+0000\n"
-"Last-Translator: David Gomes <david@elementaryos.org>\n"
+"PO-Revision-Date: 2013-05-10 22:35+0000\n"
+"Last-Translator: Cody Garver <cody@elementaryos.org>\n"
 "Language-Team: Português <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-10 06:24+0000\n"
+"X-Launchpad-Export-Date: 2013-05-11 05:55+0000\n"
 "X-Generator: Launchpad (build 16598)\n"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
@@ -704,7 +704,7 @@ msgstr "Abrir em %'d novos separadores"
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3514
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2383
 msgid "Open in New _Tab"
-msgstr "Abrir em novo _separador"
+msgstr "Abrir num Novo _Separador"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1999
 #, c-format
@@ -714,7 +714,7 @@ msgstr "Abrir em %'d novas janelas"
 #: /home/codygarver/files/po/../src/fm-directory-view.c:2003
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2390
 msgid "Open in New _Window"
-msgstr "Abrir em nova _janela"
+msgstr "Abrir numa Nova _Janela"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3474
 msgid "Prepare the selected files to be moved with a Paste command"
@@ -778,7 +778,7 @@ msgstr "Abrir o item selecionado"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3510
 msgid "Open in new Window"
-msgstr "Abrir em nova janela"
+msgstr "Abrir numa nova Janela"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3511
 msgid "Open each selected item in a new window"
@@ -951,7 +951,7 @@ msgstr "Mostrar a versão da aplicação."
 
 #: /home/codygarver/files/po/../src/marlin-application.c:427
 msgid "Open uri(s) in new tab"
-msgstr "Abrir URI em novo separador"
+msgstr "Abrir URI num novo separador"
 
 #: /home/codygarver/files/po/../src/marlin-application.c:429
 msgid "Quit Files."
