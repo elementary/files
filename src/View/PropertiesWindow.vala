@@ -24,6 +24,16 @@ using Granite.Widgets;
 
 public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
 {
+    private class Pair<F, G> {
+        public F key;
+        public G value;
+
+        public Pair (F key, G value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
     private Gee.LinkedList<Pair<string, string>> info;
     private Granite.Widgets.ImgEventBox evbox;
     private Granite.Widgets.XsEntry perm_code;
@@ -70,10 +80,10 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         Box action_area = new Box (Orientation.VERTICAL, 12);
         border_width = 5;
         sg = new SizeGroup (SizeGroupMode.HORIZONTAL);
-        
+
         add (content_area);
         add (action_area);
-        
+
         Box content_vbox = new Box (Gtk.Orientation.VERTICAL, 0);
         //var content_vbox = new VBox(false, 12);
         content_area.pack_start (content_vbox);
@@ -135,16 +145,16 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
             construct_preview_panel (preview_box);
             add_section (notebook, _("Preview"), PanelType.PREVIEW, preview_box);
         }
-        
+
         set_transient_for (parent);
         set_position (WindowPosition.CENTER_ALWAYS);
         set_destroy_with_parent (true);
-        
+
         content_vbox.show();
 
         content_area.show_all();
         show_all();
-        
+
         present ();
     }
 
@@ -363,7 +373,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
     private void construct_info_panel (Box box, Gee.LinkedList<Pair<string, string>> item_info) {
         var information = new Grid();
         information.row_spacing = 3;
-        
+
         var label = new Label ("");
         label.use_markup = true;
         label.set_markup ("<b>" + _("Info:") + "\t\t\t</b>"); //FIXME: find a better solution for this
@@ -426,7 +436,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
             combo.changed.connect (combo_open_with_changed);
 
             var key_label = create_label_key (_("Open with:"), Align.CENTER);
-            
+
             information.attach (key_label, 0, n, 1, 1);
             information.attach (hcombo, 1, n, 1, 1);
 
@@ -442,15 +452,15 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
                     uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
 
                     n++;
-                    
+
                     debug ("%d", n);
                     label = new Label ("");
                     label.use_markup = true;
                     label.set_markup ("<b>" + _("Usage:") + "\t\t\t</b>"); //FIXME: find a better solution for this
                     information.attach (label, 0, n, 1, 1);
-                    
+
                     n++;
-                    
+
                     var key_label = create_label_key (_("Device usage:"), Align.CENTER);
                     information.attach (key_label, 0, n, 1, 1);
                     debug ("%d", n);

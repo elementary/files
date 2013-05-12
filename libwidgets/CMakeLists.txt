@@ -35,6 +35,7 @@ set(LIB_PATHS
 link_directories(${LIB_PATHS})
 
 vala_precompile(VALA_C ${PKGNAME}
+    Animations.vala
     LocationBar.vala
     BreadcrumbsElements.vala
     BreadcrumbsEntry.vala

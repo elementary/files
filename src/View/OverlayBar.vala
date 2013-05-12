@@ -1,20 +1,20 @@
-/*  
+/*
  * Copyright (C) 2012 ammonkey <am.monkeyd@gmail.com>
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- */ 
+ */
 
 using Gtk;
 
@@ -40,14 +40,14 @@ namespace Marlin.View {
         public bool showbar {
             set {
                 _showbar = value;
-                visible = count > 0 && value;
+                visible = value && count > 0;
             }
             get {
                 return _showbar;
             }
         }
 
-        public OverlayBar (Marlin.View.Window win) 
+        public OverlayBar (Marlin.View.Window win)
         {
             window = win;
 
@@ -166,13 +166,13 @@ namespace Marlin.View {
         private GOF.File? goffile = null;
         //private unowned GLib.List<GOF.File>? last_selection = null;
 
-        private void update (GLib.List<GOF.File>? files = null) 
+        private void update (GLib.List<GOF.File>? files = null)
         {
             //last_selection = files;
             real_update (files);
         }
 
-        private void update_hovered (GOF.File? file) 
+        private void update_hovered (GOF.File? file)
         {
             if (file != null) {
                 GLib.List<GOF.File> list = null;
@@ -187,7 +187,7 @@ namespace Marlin.View {
             }
         }
 
-        private void real_update (GLib.List<GOF.File>? files = null) 
+        private void real_update (GLib.List<GOF.File>? files = null)
         {
             count = 0;
             folders_count = 0;
@@ -202,7 +202,7 @@ namespace Marlin.View {
                 /* list contain only one element */
                 if (files.next == null) {
                     goffile = files.data;
-                } 
+                }
                 scan_list (files);
                 update_status ();
 
@@ -212,7 +212,7 @@ namespace Marlin.View {
             }
         }
 
-        private void update_status () 
+        private void update_status ()
         {
             if (count == 1) {
                 if (!goffile.is_folder ()) {
@@ -252,7 +252,7 @@ namespace Marlin.View {
             }
         }
 
-        private void scan_list (List<GOF.File> files) 
+        private void scan_list (List<GOF.File> files)
         {
             foreach (var gof in files) {
                 if (gof.is_folder ()) {

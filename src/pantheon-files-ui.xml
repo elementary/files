@@ -56,11 +56,8 @@
 		<menuitem name="Reload" action="Reload"/>
 		<separator/>
         <!--<menuitem name="Show Hide Toolbar" action="Show Hide Toolbar"/>-->
-	        <menuitem name="Show Hide Menubar" action="Show Hide Menubar"/>
             <menuitem name="Show Hide Sidebar" action="Show Hide Sidebar"/>
             <separator/>
-
-            <menuitem name="Show Desktop Files" action="Show Desktop Files"/>
 		<placeholder name="View Preferences Placeholder"/>
 		<!--<separator/>-->
 		<placeholder name="View Items Placeholder"/>
@@ -130,8 +127,6 @@
 </popup>-->
 
 <popup name="ToolbarMenu" accelerators="false">
-    <!--<menuitem name="Show Hide Context Pane" action="Show Hide Context Pane"/>-->
-    <menuitem name="Show Hide Menubar" action="Show Hide Menubar"/>
     <menuitem name="Show Hide Sidebar" action="Show Hide Sidebar"/>
 	<separator/>
 	<!--<menuitem name="ToolbarEditor" action="ToolbarEditor"/>-->

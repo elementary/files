@@ -35,8 +35,6 @@ namespace Marlin.View.Chrome
         public TopMenu (Window window)
         {
             win = window;
-            if (Preferences.settings.get_boolean("toolbar-primary-css-style"))
-	            get_style_context().add_class (Gtk.STYLE_CLASS_PRIMARY_TOOLBAR);
 
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             toolbar_menu = (Gtk.Menu) win.ui.get_widget("/ToolbarMenu");
@@ -44,6 +42,8 @@ namespace Marlin.View.Chrome
             app_menu = new Granite.Widgets.AppMenu (compact_menu);
             setup_items();
             show();
+
+            app_menu.show_all ();
         }
 
         public override bool popup_context_menu (int x, int y, int button) {
