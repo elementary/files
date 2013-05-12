@@ -42,7 +42,6 @@ vala_precompile(VALA_C pantheon-files
     ${CMAKE_BINARY_DIR}/src/config.vala
 
     marlin-deep-count.vala
-    View/SettingsDialog.vala
     View/DiskRenderer.vala
     View/DirectoryNotFound.vala
     View/Window.vala
