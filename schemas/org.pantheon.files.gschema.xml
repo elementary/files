@@ -36,11 +36,6 @@
       <summary>Show the menubar</summary>
       <description>Show the menubar</description>
     </key>
-    <key type="as" name="plugins-enabled">
-      <default>[]</default>
-      <summary>Enabled Plugins</summary>
-      <description>Enabled Plugins</description>
-    </key>
     <key type="b" name="show-sidebar">
       <default>true</default>
       <summary>Show the sidebar</summary>
