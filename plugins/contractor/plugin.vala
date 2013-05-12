@@ -6,17 +6,17 @@
  *
  * Copyright (C) Lucas Baudin 2011 <xapantu@gmail.com>
  * Copyright (C) 2013 elementary
- * 
+ *
  * Marlin is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * Marlin is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -30,15 +30,11 @@ public class Marlin.Plugins.ContractMenuItem : Gtk.MenuItem {
         this.files = files;
 
         label = contract.get_display_name ();
-        tooltip_text = contract.get_description ();
     }
 
     public override void activate () {
         try {
-            if (files.length == 1)
-                contract.execute_with_file (files[0]);
-            else
-                contract.execute_with_files (files);
+            contract.execute_with_files (files);
         } catch (Error err) {
             warning (err.message);
         }
@@ -117,10 +113,14 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     }
 
     private static string[] get_mimetypes (List<GOF.File> files) {
-        string[] mimetypes = new string[files.length ()];
+        string[] mimetypes = new string[0];
 
-        foreach (var file in files)
-            mimetypes += file.get_ftype () ?? "";
+        foreach (var file in files) {
+            var ftype = file.get_ftype ();
+
+            if (ftype != null)
+                mimetypes += ftype;
+        }
 
         return mimetypes;
     }
