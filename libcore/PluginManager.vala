@@ -25,8 +25,6 @@ public class Marlin.PluginManager : GLib.Object
 {
     delegate Plugins.Base ModuleInitFunc ();
     Gee.HashMap<string,Plugins.Base> plugin_hash;
-    Settings settings;
-    string settings_field;
     string plugin_dir;
     Gee.List<string> names;
     bool in_available = false;
@@ -36,26 +34,24 @@ public class Marlin.PluginManager : GLib.Object
 
     public Gee.List<Gtk.Widget> menuitem_references { get; private set; }
 
-    public PluginManager(Settings settings, string field, string plugin_dir)
+    public PluginManager(string plugin_dir)
     {
-        settings_field = field;
-        this.settings = settings;
         this.plugin_dir = plugin_dir;
         plugin_hash = new Gee.HashMap<string,Plugins.Base>();
         names = new Gee.ArrayList<string>();
 
         menuitem_references = new Gee.LinkedList<Gtk.Widget> ();
     }
-    
+
     public void load_plugins()
     {
-        load_modules_from_dir(plugin_dir + "/core/", true);
+        load_modules_from_dir(plugin_dir + "/core/");
         in_available = true;
         load_modules_from_dir(plugin_dir);
         in_available = false;
     } 
     
-    private void load_modules_from_dir (string path, bool force = false)
+    private void load_modules_from_dir (string path)
     {
         File dir = File.new_for_path(path);
 
@@ -79,9 +75,8 @@ public class Marlin.PluginManager : GLib.Object
                 string file_path = Path.build_filename (dir.get_path (), file_name);
 
                 if(file_name.has_suffix(".plug"))
-                {
-                    load_plugin_keyfile(file_path, dir.get_path (), force);
-                }
+                    load_plugin_keyfile(file_path, dir.get_path ());
+
                 info = enumerator.next_file ();
             }
         }
@@ -129,7 +124,7 @@ public class Marlin.PluginManager : GLib.Object
             plugin_hash.set (file_path, plug);
     }
     
-    void load_plugin_keyfile(string path, string parent, bool force)
+    void load_plugin_keyfile(string path, string parent)
     {
         var keyfile = new KeyFile();
         try
@@ -140,10 +135,8 @@ public class Marlin.PluginManager : GLib.Object
             {
                 names.add(name);
             }
-            if(force || name in settings.get_strv(settings_field))
-            {
-                load_module(Path.build_filename(parent, keyfile.get_string("Plugin", "File")));
-            }
+
+            load_module(Path.build_filename(parent, keyfile.get_string("Plugin", "File")));
         }
         catch(Error e)
         {
@@ -225,24 +218,5 @@ public class Marlin.PluginManager : GLib.Object
     public Gee.List<string> get_available_plugins()
     {
         return names;
-    }
-    
-    public bool disable_plugin(string path)
-    {
-        string[] plugs = settings.get_strv(settings_field);
-        string[] plugs_ = new string[plugs.length - 1];
-        bool found = false;
-        int i = 0;
-        foreach(var name in plugs)
-        {
-            if(name != path)
-            {
-                plugs[i] = name;
-            }
-            else found = true;
-            i++;
-        }
-        if(found) settings.set_strv(settings_field, plugs_);
-        return found;
     }
 }
