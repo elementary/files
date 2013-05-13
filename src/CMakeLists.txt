@@ -85,7 +85,6 @@ OPTIONS
 add_executable(pantheon-files
     eel-editable-label.c
     marlin-application.c
-    gossip-cell-renderer-expander.c
     marlin-enum-types.c
     marlin-bookmark.c
     marlin-bookmark-list.c
