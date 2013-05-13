@@ -36,6 +36,8 @@ namespace Marlin.View.Chrome
         {
             win = window;
 
+            get_style_context ().add_class (Gtk.STYLE_CLASS_PRIMARY_TOOLBAR);
+
             compact_menu = (Gtk.Menu) win.ui.get_widget("/CompactMenu");
             toolbar_menu = (Gtk.Menu) win.ui.get_widget("/ToolbarMenu");
 

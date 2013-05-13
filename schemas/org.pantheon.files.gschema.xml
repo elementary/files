@@ -21,11 +21,6 @@
   </enum>
 
   <schema path="/org/pantheon/files/preferences/" id="org.pantheon.files.preferences">
-    <key type="b" name="auto-theme">
-      <default>false</default>
-      <summary>Auto-theme</summary>
-      <description>Automatically theme specific widgets</description>
-    </key>
     <key type="as" name="plugins-enabled">
       <default>[]</default>
       <summary>Enabled Plugins</summary>

@@ -45,21 +45,6 @@ namespace Marlin.View {
         public Granite.Widgets.ToolButtonWithMenu button_forward;
         public Granite.Widgets.ToolButtonWithMenu button_back;
 
-        private Gtk.CssProvider css_provider = null;
-        private bool _auto_theme;
-        public bool auto_theme {
-            set {
-                _auto_theme = value;
-                if (value)
-                    load_css_style ();
-                else
-                    unload_css_style ();
-            }
-            get {
-                return _auto_theme;
-            }
-        }
-
         public bool can_go_up{
             set{
                 main_actions.get_action("Up").set_sensitive(value);
@@ -219,9 +204,6 @@ namespace Marlin.View {
             Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
             Preferences.settings.bind("show-sidebar", main_actions.get_action("Show Hide Sidebar"), "active", 0);
 
-            /* auto-theme Marlin's specific widgets. */
-            Preferences.settings.bind("auto-theme", this, "auto-theme", SettingsBindFlags.DEFAULT);
-
             /*/
             /* Connect and abstract signals to local ones
             /*/
@@ -273,21 +255,6 @@ namespace Marlin.View {
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
             undo_actions_set_insensitive ();
 
-        }
-
-        private void load_css_style () {
-            css_provider = new Gtk.CssProvider();
-            try {
-                css_provider.load_from_data (CSS_STYLE, -1);
-                StyleContext.add_provider_for_screen (screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            } catch (Error e) {
-                warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
-            }
-        }
-
-        private void unload_css_style () {
-            if (css_provider != null)
-                StyleContext.remove_provider_for_screen (screen, css_provider);
         }
 
         private void show_infobar (bool val) {
@@ -346,10 +313,6 @@ namespace Marlin.View {
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
                     /* sync sidebar selection */
                     loading_uri (current_tab.slot.directory.file.uri, sidebar);
-
-                    /* focus the main view */
-                    //((FM.Directory.View) current_tab.slot.view_box).grab_focus();
-                    //current_tab.content.grab_focus();
                 }
             }
         }
@@ -491,18 +454,11 @@ namespace Marlin.View {
             top_menu.setup_items();
         }
 
-        /*
-        private void action_toolbar_editor_callback (Gtk.Action action) {
-            marlin_toolbar_editor_dialog_show (this);
-        }
-        */
-
         private void action_go_up () {
             current_tab.up();
         }
 
         private void action_edit_path () {
-            //top_menu.location_bar.state = false;
             top_menu.location_bar.get_child ().grab_focus ();
         }
 
@@ -523,7 +479,6 @@ namespace Marlin.View {
         }
 
         private bool is_close_first () {
-
             string path = "/apps/metacity/general/button_layout";
             GConf.Client cl = GConf.Client.get_default ();
             string key;
@@ -809,80 +764,7 @@ namespace Marlin.View {
             { "view-as-columns", null,
               N_("Columns"), "<control>3", null,
               ViewMode.MILLER }
+     
         };
-
-        /*enum RowColor {
-            NONE,
-            BUTTER,
-            ORANGE,
-            CHOCOLATE,
-            CHAMELEON,
-            SKYBLUE,
-            PLUM,
-            RED,
-            LIGHTGRAY,
-            DARKGRAY,
-        }
-
-        static const Gtk.RadioActionEntry color_radio_entries[] = {
-            { "set-color-clear", null,
-              N_("None"), null, null,
-              RowColor.NONE },
-            { "set-color-butter", null,
-              N_("Butter"), null, null,
-              RowColor.BUTTER },
-            { "set-color-orange", null,
-              N_("Orange"), null, null,
-              RowColor.ORANGE },
-            { "set-color-chocolate", null,
-              N_("Chocolate"), null, null,
-              RowColor.CHOCOLATE },
-            { "set-color-chameleon", null,
-              N_("Green"), null, null,
-              RowColor.CHAMELEON },
-            { "set-color-skyblue", null,
-              N_("Sky Blue"), null, null,
-              RowColor.SKYBLUE },
-            { "set-color-plum", null,
-              N_("Plum"), null, null,
-              RowColor.PLUM },
-            { "set-color-red", null,
-              N_("Scarlet Red"), null, null,
-              RowColor.RED },
-            { "set-color-lightgray", null,
-              N_("Light Gray"), null, null,
-              RowColor.LIGHTGRAY },
-            { "set-color-darkgray", null,
-              N_("Dark Gray"), null, null,
-              RowColor.DARKGRAY }
-        };*/
-
-        private const string CSS_STYLE = """
-            ExoIconView.view {
-                 background-color: @base_color;
-            }
-
-            .sidebar,
-            .sidebar .view {
-                background-color: @bg_color;
-            }
-
-            MarlinViewWindow * {
-                -GtkPaned-handle-size: 1;
-            }
-
-            /*MarlinViewWindow .pane-separator {*/
-            VarkaWidgetsCollapsiblePaned,
-            VarkaWidgetsCollapsiblePaned.pane-separator {
-                -GtkPaned-handle-size: 1;
-                background-color: shade (@bg_color, 0.95);
-                border-color: @dark_bg_color;
-                border-style: solid;
-                border-width: 0;
-            }
-
-        """;
-
     }
 }
-
