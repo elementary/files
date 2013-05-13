@@ -42,7 +42,6 @@ vala_precompile(VALA_C pantheon-files
     ${CMAKE_BINARY_DIR}/src/config.vala
 
     marlin-deep-count.vala
-    View/SettingsDialog.vala
     View/DiskRenderer.vala
     View/DirectoryNotFound.vala
     View/Window.vala
@@ -83,7 +82,6 @@ OPTIONS
 add_executable(pantheon-files
     eel-editable-label.c
     marlin-application.c
-    gossip-cell-renderer-expander.c
     marlin-enum-types.c
     marlin-bookmark.c
     marlin-bookmark-list.c

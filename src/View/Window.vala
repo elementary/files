@@ -416,10 +416,6 @@ namespace Marlin.View {
             update_undo_actions (data);
         }
 
-        private void action_marlin_settings_callback (Gtk.Action action) {
-            new SettingsDialog(this);
-        }
-
         private void action_new_window (Gtk.Action action) {
             var location = File.new_for_commandline_arg(Environment.get_home_dir());
             ((Marlin.Application) application).create_window (location, screen);
@@ -645,10 +641,6 @@ namespace Marlin.View {
   /* label, accelerator */       N_("_Close"), "<control>W",
   /* tooltip */                  N_("Close this folder"),
                                  action_remove_tab },
-                               { "MarlinSettings", Stock.PREFERENCES,
-                                 N_("Preferences"),
-                                 null, N_("Change Files preferences"),
-                                 action_marlin_settings_callback },
                              /*{ Chrome.ColorAction, null, "ColorAction"),
                                  null, null,
                                  null },*/

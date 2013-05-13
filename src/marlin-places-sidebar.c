@@ -26,7 +26,6 @@
 #include "eel-fcts.h"
 #include "eel-gtk-extensions.h"
 #include "eel-gio-extensions.h"
-#include "gossip-cell-renderer-expander.h"
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
@@ -2749,10 +2748,7 @@ expander_cell_data_func (GtkTreeViewColumn *tree_column,
         row_expanded = gtk_tree_view_row_expanded (GTK_TREE_VIEW (gtk_tree_view_column_get_tree_view (tree_column)), path);
         gtk_tree_path_free (path);
 
-        g_object_set (sidebar->expander_renderer,
-                      "visible", TRUE,
-                      "expander-style", row_expanded ? GTK_EXPANDER_EXPANDED : GTK_EXPANDER_COLLAPSED,
-                      NULL);
+        g_object_set (sidebar->expander_renderer, "visible", TRUE, NULL);
     } else {
         g_object_set (sidebar->expander_renderer, "visible", FALSE, NULL);
     }
@@ -2819,6 +2815,8 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     GtkTreeViewColumn *expcol;
     GtkCellRenderer   *cell;
     GtkTreeSelection  *selection;
+    GtkStyleContext   *style_context;
+    GraniteWidgetsCellRendererExpander *expander_renderer;
 
     sidebar->uri = NULL;
     sidebar->volume_monitor = g_volume_monitor_get ();
@@ -2919,12 +2917,18 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     g_object_set (tree_view, "show-expanders", FALSE, NULL);
 
     /* Expander */
+    expander_renderer = granite_widgets_cell_renderer_expander_new ();
 
-    cell = gossip_cell_renderer_expander_new ();
-    sidebar->expander_renderer = cell;
     /* align expander with eject buttons */
     gint exp_size;
-    g_object_get (cell, "expander-size", &exp_size, NULL);
+    exp_size = GRANITE_WIDGETS_CELL_RENDERER_EXPANDER_GET_CLASS (expander_renderer)->get_arrow_size (expander_renderer,
+                                                                                                     GTK_WIDGET (tree_view));
+
+    granite_widgets_cell_renderer_expander_set_is_category_expander (expander_renderer, TRUE);
+
+    cell = GTK_CELL_RENDERER (expander_renderer);
+    sidebar->expander_renderer = cell;
+
     g_object_set (cell, "xpad", ABS (16 - exp_size) + EJECT_BUTTON_XPAD - 2, "xalign", 1.0, NULL);
     gtk_tree_view_column_pack_end (col, cell, FALSE);
     gtk_tree_view_column_set_cell_data_func (col, 
@@ -2945,7 +2949,9 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
 
     gtk_container_add (GTK_CONTAINER (sidebar), GTK_WIDGET (tree_view));
 
-    gtk_style_context_add_class(gtk_widget_get_style_context(GTK_WIDGET(tree_view)), "sidebar");
+    style_context = gtk_widget_get_style_context (GTK_WIDGET (tree_view));
+    gtk_style_context_add_class (style_context, GTK_STYLE_CLASS_SIDEBAR);
+    gtk_style_context_add_class (style_context, GRANITE_STYLE_CLASS_SOURCE_LIST);
 
     gtk_widget_show (GTK_WIDGET (tree_view));
     gtk_widget_show (GTK_WIDGET (sidebar));
