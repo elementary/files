@@ -409,8 +409,12 @@ gof_file_update (GOFFile *file)
     file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
     /* icon */
-    if (file->is_directory && g_file_is_native (file->location)) {
+    // if (file->is_directory && g_file_is_native (file->location)) { 
+    if (file->is_directory) { /* 1177087 : Doesn't matter if is native as long as is a directory */
         gof_file_get_folder_icon_from_uri_or_path (file);
+    } else if (g_file_info_get_file_type(file->info) == G_FILE_TYPE_MOUNTABLE) { /* 1177087:Show remote icon for 'afp' connections */
+        //file->icon = g_themed_icon_new_with_default_fallbacks ("network-server");
+        file->icon = g_themed_icon_new_with_default_fallbacks ("folder-remote-symbolic");
     } else {
         const gchar *ftype = gof_file_get_ftype (file);
         if (ftype != NULL && file->icon == NULL)
@@ -458,6 +462,7 @@ gof_file_update (GOFFile *file)
 static MarlinIconInfo *
 gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 {
+
     if (file->custom_icon_name != NULL) {
         if (g_path_is_absolute (file->custom_icon_name)) 
             return marlin_icon_info_lookup_from_path (file->custom_icon_name, size);
@@ -472,6 +477,7 @@ gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
         if (thumb_path != NULL) {
             //g_message ("show thumb %s %s %d\n", file->uri, thumb_path, size);
             //return marlin_icon_info_lookup_from_path (thumb_path, size * 1.33);
+
             return marlin_icon_info_lookup_from_path (thumb_path, size);
         }
     }
@@ -488,7 +494,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     g_return_val_if_fail (file, NULL);
 
     icon = gof_file_get_special_icon (file, size, flags);
-    if (icon != NULL && !marlin_icon_info_is_fallback (icon))
+    if (icon != NULL && !marlin_icon_info_is_fallback (icon)) 
         return icon;
     _g_object_unref0 (icon);
 
@@ -2321,7 +2327,7 @@ gof_file_get_ftype (GOFFile *file)
     g_return_val_if_fail (file->info != NULL, NULL);
 
     const char *ftype = NULL;
-    
+
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
         return g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE))
