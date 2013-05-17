@@ -12,11 +12,12 @@ Build-Depends: cmake,
                pantheon-files,
                pkg-config
 Homepage: https://launchpad.net/pantheon-files
-Standards-Version: 3.9.1
+Standards-Version: 3.9.3
 
 Package: pantheon-files-plugin-dropbox
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Enhances: pantheon-files
 Pre-Depends: dpkg (>= 1.15.6)
 Description: Dropbox integration for Files
  Files Plugin Dropbox is an extension that integrates the Dropbox web service with your Desktop.
