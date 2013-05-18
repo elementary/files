@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2013-05-17 05:46+0000\n"
+"X-Launchpad-Export-Date: 2013-05-18 05:48+0000\n"
 "X-Generator: Launchpad (build 16626)\n"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
