@@ -180,36 +180,13 @@ gof_file_is_remote_uri_scheme (GOFFile *file)
     /* try to determinate what appear to be remote. This is quite hazardous but gio doesn't offer any better option */
     char *scheme = g_file_get_uri_scheme (file->location);
 
-    //g_message ("%s %s", G_STRFUNC, scheme);
-    if (!strcmp (scheme, "trash")) {
-        g_free (scheme);
-        return FALSE;
-    }
-    if (!strcmp (scheme, "archive")) {
-        g_free (scheme);
-        return FALSE;
-    }
-    if (!strcmp (scheme, "afp")) { /* g_vfs does not have a function to know if a supported protocol is remote */
-        g_free (scheme);
-        return TRUE;
-    }
-    if (!strcmp (scheme, "dav")) {
-        g_free (scheme);
-        return TRUE;
-    }
-    if (!strcmp (scheme, "davs")) {
-        g_free (scheme);
-        return TRUE;
-    }
-    if (!strcmp (scheme, "ftp")) {
-        g_free (scheme);
-        return TRUE;
-    }
-    if (!strcmp (scheme, "sftp")) {
-        g_free (scheme);
-        return TRUE;
-    }
-    if (!strcmp (scheme, "smb")) {
+    /* g_vfs does not have a function to know if a supported protocol is remote */
+    if (!strcmp (scheme, "afp")
+     || !strcmp (scheme, "dav")
+     || !strcmp (scheme, "davs")
+     || !strcmp (scheme, "ftp")
+     || !strcmp (scheme, "sftp")
+     || !strcmp (scheme, "smb")) { 
         g_free (scheme);
         return TRUE;
     }
