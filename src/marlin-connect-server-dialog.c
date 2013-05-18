@@ -110,7 +110,7 @@ static struct MethodInfo methods[] = {
     { "sftp",  SHOW_PORT | SHOW_USER, 22 },
     { "ftp",  SHOW_PORT | SHOW_USER, 21 },
     { "ftp",  DEFAULT_METHOD | IS_ANONYMOUS | SHOW_PORT, 21 },
-    { "afp",  SHOW_PORT | SHOW_USER, 548 }, /* 1177087 : Show AFP server connection */
+    { "afp",  SHOW_PORT | SHOW_USER, 548 },
     { "smb",  SHOW_SHARE | SHOW_USER | SHOW_DOMAIN, 0 },
     { "dav",  SHOW_PORT | SHOW_USER, 80 },
     /* FIXME: hrm, shouldn't it work? */
@@ -130,7 +130,7 @@ get_method_description (struct MethodInfo *meth)
             return _("FTP (with login)");
         }
     } else if (strcmp (meth->scheme, "afp") == 0) {
-        return _("AFP (Apple Filing Protocol)"); /* 1177087 : Show AFP server connection  */
+        return _("AFP (Apple Filing Protocol)");
     } else if (strcmp (meth->scheme, "smb") == 0) {
         return _("Windows share");
     } else if (strcmp (meth->scheme, "dav") == 0) {
