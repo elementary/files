@@ -209,6 +209,10 @@ gof_file_is_remote_uri_scheme (GOFFile *file)
         g_free (scheme);
         return TRUE;
     }
+    if (!strcmp (scheme, "smb")) {
+        g_free (scheme);
+        return TRUE;
+    }
 
     g_free (scheme);
     return FALSE;
