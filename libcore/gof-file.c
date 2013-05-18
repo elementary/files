@@ -189,9 +189,29 @@ gof_file_is_remote_uri_scheme (GOFFile *file)
         g_free (scheme);
         return FALSE;
     }
+    if (!strcmp (scheme, "afp")) { /* g_vfs does not have a function to know if a supported protocol is remote */
+        g_free (scheme);
+        return TRUE;
+    }
+    if (!strcmp (scheme, "dav")) {
+        g_free (scheme);
+        return TRUE;
+    }
+    if (!strcmp (scheme, "davs")) {
+        g_free (scheme);
+        return TRUE;
+    }
+    if (!strcmp (scheme, "ftp")) {
+        g_free (scheme);
+        return TRUE;
+    }
+    if (!strcmp (scheme, "sftp")) {
+        g_free (scheme);
+        return TRUE;
+    }
 
     g_free (scheme);
-    return TRUE;
+    return FALSE;
 }
 
 void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file) 
