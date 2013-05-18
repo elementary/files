@@ -129,7 +129,7 @@ get_method_description (struct MethodInfo *meth)
         } else {
             return _("FTP (with login)");
         }
-    } else if (strcmp (meth->scheme, "afp") == 0) {
+    } else if (strcmp (meth->scheme, "afp") == 0) { 
         return _("AFP (Apple Filing Protocol)");
     } else if (strcmp (meth->scheme, "smb") == 0) {
         return _("Windows share");
