@@ -32,7 +32,7 @@ set(LIB_PATHS
 )
 
 link_directories(${LIB_PATHS})
-add_definitions(${CFLAGS})
+add_definitions(${CFLAGS} -O2)
 
 vala_precompile(VALA_C pantheon-files
     marlin-deep-count.vala

@@ -7,7 +7,7 @@ enable_testing()
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
 set(GETTEXT_PACKAGE "pantheon-files")
-set(PIXMAP_DIR "${CMAKE_INSTALL_PREFIX}/share/pixmaps/marlin/")
+set(PIXMAP_DIR "${CMAKE_INSTALL_PREFIX}/share/pixmaps/pantheon-files/")
 set(GNOMELOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
 set(PLUGIN_DIR "${CMAKE_INSTALL_PREFIX}/lib/pantheon-files/plugins/")
 set(UI_DIR "${CMAKE_INSTALL_PREFIX}/share/pantheon-files/ui/")

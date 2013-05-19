@@ -44,7 +44,7 @@ public class Marlin.PluginManager : GLib.Object
         menuitem_references = new Gee.LinkedList<Gtk.Widget> ();
 
         plugin_dirs = new string[0];
-        plugin_dirs += plugin_dir + "/core";
+        plugin_dirs += Path.build_filename (plugin_dir, "/core");
         plugin_dirs += plugin_dir;
 
         load_plugins ();
