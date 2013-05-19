@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-09 15:24-0500\n"
-"PO-Revision-Date: 2013-04-12 22:43+0000\n"
-"Last-Translator: Kristjan Vool <Unknown>\n"
+"PO-Revision-Date: 2013-05-18 14:13+0000\n"
+"Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-10 06:23+0000\n"
-"X-Generator: Launchpad (build 16598)\n"
+"X-Launchpad-Export-Date: 2013-05-19 05:31+0000\n"
+"X-Generator: Launchpad (build 16626)\n"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
@@ -387,7 +387,7 @@ msgstr "Võrgus oleva arvutiga või jagatud kaustaga ühendumine"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:852
 msgid "_About"
-msgstr "Programmist lähemalt..."
+msgstr "Rakendusest..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:853
 msgid "Display credits"

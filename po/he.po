@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-09 15:24-0500\n"
-"PO-Revision-Date: 2013-03-29 07:27+0000\n"
-"Last-Translator: Megolas <ofeklavie@gmail.com>\n"
+"PO-Revision-Date: 2013-05-19 05:26+0000\n"
+"Last-Translator: uri damsker <ud1955@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-10 06:23+0000\n"
-"X-Generator: Launchpad (build 16598)\n"
+"X-Launchpad-Export-Date: 2013-05-19 05:31+0000\n"
+"X-Generator: Launchpad (build 16626)\n"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
 msgid "Files Preferences"
-msgstr ""
+msgstr "העדפות קבצים"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
@@ -29,64 +29,64 @@ msgstr "כללי"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:103
 msgid "There are no extensions currently installed."
-msgstr ""
+msgstr "אין הרחבות מותקנות כעת"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:105
 msgid "Extensions"
-msgstr ""
+msgstr "הרחבות"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:210
 msgid "Single click to open:"
-msgstr ""
+msgstr "פתח בלחיצה אחת"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:218
 msgid "Mouse auto-selection:"
-msgstr ""
+msgstr "בחירה אוטומטית"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:237
 #, c-format
 msgid "Slow"
-msgstr ""
+msgstr "איטי"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:239
 #, c-format
 msgid "Fast"
-msgstr ""
+msgstr "מהיר"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:254
 msgid "Date format:"
-msgstr ""
+msgstr "הגדרת תאריך"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:257
 msgid "iso"
-msgstr ""
+msgstr "דמות ISO"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:258
 msgid "locale"
-msgstr ""
+msgstr "הגדרות מקומיות"
 
 #: /home/codygarver/files/po/../src/View/SettingsDialog.vala:259
 msgid "informal"
-msgstr ""
+msgstr "לא רשמי"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:110
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:346
 msgid "Trash"
-msgstr ""
+msgstr "סל מחזור"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:111
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:564
 msgid "Network"
-msgstr ""
+msgstr "רשת"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:286
 msgid "Open in New Tab"
-msgstr ""
+msgstr "פתיחה בלשונית חדשה"
 
 #: /home/codygarver/files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u פריטים שנבחרו (%s)"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -137,7 +137,7 @@ msgstr "מטרה"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
 msgid "Origin Location"
-msgstr ""
+msgstr "מיקום מקור"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
@@ -162,7 +162,7 @@ msgstr "שימוש בהתקן:"
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s חופשי מתוך %s  (%d%% בשימוש)"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -170,319 +170,319 @@ msgstr "קרא"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:605
 msgid "Write"
-msgstr ""
+msgstr "כתיבה"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:610
 msgid "Execute"
-msgstr ""
+msgstr "הפעלה"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:828
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:841
 #: /home/codygarver/files/po/../src/View/ContextView.vala:345
 msgid "Owner"
-msgstr ""
+msgstr "בעלים"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
 msgid "Group"
-msgstr ""
+msgstr "קבוצה"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
 msgid "Everyone"
-msgstr ""
+msgstr "כל אחד"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:1105
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "פתח באמצעות "
 
 #: /home/codygarver/files/po/../src/View/Window.vala:144
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "קבצים אינו דפדפן ברירת המחדל"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:150
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3422
 msgid "Set as default"
-msgstr ""
+msgstr "הגדרה כבררת מחדל"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:155
 msgid "Ignore"
-msgstr ""
+msgstr "התעלמות"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:490
 msgid "Undo"
-msgstr ""
+msgstr "ביטול פעולה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:491
 #: /home/codygarver/files/po/../src/View/Window.vala:785
 msgid "Undo the last action"
-msgstr ""
+msgstr "ביטול הפעולה האחרונה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:500
 msgid "Redo"
-msgstr ""
+msgstr "שחזור פעולה אחרונה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:501
 #: /home/codygarver/files/po/../src/View/Window.vala:788
 msgid "Redo the last action"
-msgstr ""
+msgstr "שחזור פעולה האחרונה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:759
 msgid "_File"
-msgstr ""
+msgstr "_קובץ"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:760
 msgid "_Edit"
-msgstr ""
+msgstr "עריכה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:761
 msgid "_View"
-msgstr ""
+msgstr "צפייה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:762
 msgid "_Go"
-msgstr ""
+msgstr "מעבר"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:763
 msgid "_Help"
-msgstr ""
+msgstr "עזרה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:765
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr ""
+msgstr "חלון חדש"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:766
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "פתיחת חלון חדש להצגת מיקום"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:769
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr ""
+msgstr "לשונית חדשה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:770
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "פתיחת לשונית נוספת להצגת המיקום"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:774
 msgid "_Close"
-msgstr ""
+msgstr "סגירה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:775
 msgid "Close this folder"
-msgstr ""
+msgstr "סגירת תיקייה זו"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:778
 msgid "Preferences"
-msgstr ""
+msgstr "מאפיינים"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:779
 msgid "Change Files preferences"
-msgstr ""
+msgstr "שינוי העדפות קובץ"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:784
 msgid "_Undo"
-msgstr ""
+msgstr "ביטול פעולה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:787
 msgid "_Redo"
-msgstr ""
+msgstr "שחזור פעולה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:790
 msgid "Open _Parent"
-msgstr ""
+msgstr "פתיחת מקור"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:791
 msgid "Open the parent folder"
-msgstr ""
+msgstr "פתיחת תיקיית מקור"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:793
 msgid "_Back"
-msgstr ""
+msgstr "חזרה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:794
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "חזרה למיקום הקודם"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:797
 msgid "_Forward"
-msgstr ""
+msgstr "קדימה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:798
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "מעבר למיקום הבא בו בקרת"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:800
 msgid "_Reload"
-msgstr ""
+msgstr "רענון"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:801
 msgid "Reload the current location"
-msgstr ""
+msgstr "טעינה מחדש של המיקום הנוכחי"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:804
 msgid "_Home Folder"
-msgstr ""
+msgstr "תיקיית הבית"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:805
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:305
 msgid "Open your personal folder"
-msgstr ""
+msgstr "פתיחת התיקייה האישית"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:808
 msgid "_Trash"
-msgstr ""
+msgstr "סל המחזור"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:809
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "פתיחת תיקיית סל המחזור"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:812
 msgid "_Network"
-msgstr ""
+msgstr "רשת"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:813
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "עיון במיקומי רשת מסומנים ומקומיים"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:816
 msgid "Zoom _In"
-msgstr ""
+msgstr "התקרבות"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:817
 msgid "Increase the view size"
-msgstr ""
+msgstr "הגדלת גודל התצוגה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:828
 msgid "Zoom _Out"
-msgstr ""
+msgstr "התרחקות"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:829
 msgid "Decrease the view size"
-msgstr ""
+msgstr "הקטנת גודל התצוגה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:836
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "גודל רגיל"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:837
 msgid "Use the normal view size"
-msgstr ""
+msgstr "שימוש בגודל תצוגה רגיל"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:840
 msgid "Next Tab"
-msgstr ""
+msgstr "הלשונית הבאה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:844
 msgid "Previous Tab"
-msgstr ""
+msgstr "הלשונית הקודמת"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:848
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "התחברות לשרת"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:849
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "התחברות למחשב מרוחק או לכונן משותף"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:852
 msgid "_About"
-msgstr ""
+msgstr "אודות"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:853
 msgid "Display credits"
-msgstr ""
+msgstr "הצגת זכויות"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:856
 msgid "Report a Problem..."
-msgstr ""
+msgstr "דיווח על בעייה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:857
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "דיווח על בעייה ל: Launchpad"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:860
 msgid "Get Help Online..."
-msgstr ""
+msgstr "סיוע בעזרה מקוונת"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:864
 msgid "Translate This Application..."
-msgstr ""
+msgstr "תרגום יישום נוכחי"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:873
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "הצגת קסצים נסתרים"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:874
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "שינוי התצוגה של קבצים מוסתרים בחלון הנוכחי"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:879
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "תצוגת קבצי שולחן העבודה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:880
 msgid "Toggle the display of desktop files"
-msgstr ""
+msgstr "שינוי התצוגה של קבצי שולחן העבודה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:884
 msgid "_Context Pane"
-msgstr ""
+msgstr "חלונית ההקשר"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:885
 msgid "Change the visibility of the context pane"
-msgstr ""
+msgstr "שינוי מראה של חלונית ההקשר"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:889
 msgid "_Menubar"
-msgstr ""
+msgstr "סרגל תפריט"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:890
 msgid "Change the visibility of this window's menubar"
-msgstr ""
+msgstr "שינוי מראה סרגל התפריט בחלון זה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:894
 msgid "_Places"
-msgstr ""
+msgstr "מיקומים"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:895
 msgid "Change the visibility of this window's side pane"
-msgstr ""
+msgstr "שינוי מצב התצוגה של לוח הצד"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:903
 msgid "Icon"
-msgstr ""
+msgstr "סמל"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:906
 msgid "List"
-msgstr ""
+msgstr "הצגה"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:909
 msgid "Columns"
-msgstr ""
+msgstr "עמודות"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr ""
+msgstr "התיקייה אינה קיימת"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "הדפדפן אינו מוצא תיקיית  %s"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr ""
+msgstr "יצירה"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr ""
+msgstr "יצירת תיקיית %s"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:336
 msgid "Name"
-msgstr ""
+msgstr "שם"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
@@ -497,177 +497,179 @@ msgstr "גודל"
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:146
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:300
 msgid "Home"
-msgstr ""
+msgstr "תיקיית הבית"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
 msgid "File System"
-msgstr ""
+msgstr "מערכת קבצים"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:153
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(כמנהל)"
 
 #: /home/codygarver/files/po/../src/fm-columns-view.c:82
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:573
 #: /home/codygarver/files/po/../src/fm-list-view.c:616
 msgid "This folder is empty."
-msgstr ""
+msgstr "התיקייה הנוכחית ריקה"
 
 #: /home/codygarver/files/po/../src/fm-columns-view.c:186
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:139
 #: /home/codygarver/files/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "נכשל בשינוי השם  %s ל  %s"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:124
 msgid "SSH"
-msgstr ""
+msgstr "פרוטוקול SSH"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:127
 msgid "Public FTP"
-msgstr ""
+msgstr "שרת FTP ציבורי"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:129
 msgid "FTP (with login)"
-msgstr ""
+msgstr "שרת FTP עם הרשמה"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:132
 msgid "Windows share"
-msgstr ""
+msgstr "שיתוף קבצי חלונות"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:134
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:136
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "WebDAV מאובטח (HTTPS)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:183
 msgid "Connecting..."
-msgstr ""
+msgstr "בהליך חיבור"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:207
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"רשימת שיטות השרת הנתמכות לא נטענה.\n"
+"נא לבדוק את התקנת ה־gvfs שלך."
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:285
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "לא ניתן לפתוח תיקיית \"%s\" במיקום \"%s\""
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:295
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "לא ניתן לאתר את השרת בכתובת „%s“"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:330
 msgid "Try Again"
-msgstr ""
+msgstr "נסיון חוזר"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:395
 msgid "Please verify your user details."
-msgstr ""
+msgstr "אנא וודא את פרטי המשתמש שלך."
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:425
 msgid "Continue"
-msgstr ""
+msgstr "הבא"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:750
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
-msgstr ""
+msgstr "חיבור"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
-msgstr ""
+msgstr "חיבור לשרת"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
-msgstr ""
+msgstr "פרטי שרת"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
-msgstr ""
+msgstr "_שרת:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
-msgstr ""
+msgstr "שער:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
-msgstr ""
+msgstr "סוג:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
-msgstr ""
+msgstr "שיתוף"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
-msgstr ""
+msgstr "תיקייה"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
-msgstr ""
+msgstr "פרטי המשתמש"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
-msgstr ""
+msgstr "שם מתחם:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
-msgstr ""
+msgstr "שם משתמש:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
-msgstr ""
+msgstr "סיסמא:"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
-msgstr ""
+msgstr "שמירת סיסמא זו"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
-msgstr ""
+msgstr "הפעולה בוטלה"
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:114
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:164
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:419
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:475
 msgid "File Operations"
-msgstr ""
+msgstr "פעולות קבצים"
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
-msgstr ""
+msgstr "הצגת פרטים"
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:158
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:180
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "פעולת קבצים אחת פעילה"
+msgstr[1] "%'d פעולות קבצים פעילות"
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "הצגת דו-שיח העתקה"
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "ביטול כל הפעולות מתבצעות"
 
 #: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:476
 msgid "All file operations have been successfully completed"
-msgstr ""
+msgstr "כל פעילויות הקבצים הושלמו בהצלחה"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1173
 msgid "Invalid filename provided by XDS drag site"
-msgstr ""
+msgstr "שם קובץ לא חוקי המסופק ע\"י אתר גרירת XDS"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1331
 #, c-format
@@ -678,19 +680,19 @@ msgstr "יצירת קישור עבור הכתובת \"%s\" נכשלה"
 #, c-format
 msgid "Use \"%s\" to open the selected item"
 msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "שימוש ב־„%s“ לפתיחת הפריט הנבחר"
+msgstr[1] "שימוש ב־„%s“ לפתיחת הפריטים הנבחרים"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1968
 #, c-format
 msgid "_Open With %s"
-msgstr ""
+msgstr "פתיחה באמצעות %s"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1974
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3502
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2375
 msgid "_Open"
-msgstr ""
+msgstr "פתיחה"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1990
 #, c-format
@@ -701,7 +703,7 @@ msgstr ""
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3514
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2383
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "פתיחה בלשונית חדשה"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1999
 #, c-format
@@ -711,122 +713,123 @@ msgstr ""
 #: /home/codygarver/files/po/../src/fm-directory-view.c:2003
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2390
 msgid "Open in New _Window"
-msgstr ""
+msgstr "פתיחה בחלון חדש"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3474
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
+msgstr "הכנת הקבצים הנבחרים להעברה באמצעות פקודת הדבקה"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3478
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
+msgstr "הכנת הקבצים הנבחרים להעתקה באמצעות פקודת הדבקה"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3482
 msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
+msgstr "העברה או העתקה של קבצים מבחירה קודמת באמצעות פקודת גזירה או העתקה"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3485
 msgid "Paste Into Folder"
-msgstr ""
+msgstr "הדבקה לתיקייה"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3486
 msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
+"העברת או העתקת קבצים לתיקייה הנבחרת מבחירה קודמת על ידי פקודת גזירה או העתקה"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3489
 msgid "_Rename..."
-msgstr ""
+msgstr "שינוי"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3490
 msgid "Rename selected item"
-msgstr ""
+msgstr "שינוי שם הפריט הנבחר"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3493
 msgid "Create New _Folder"
-msgstr ""
+msgstr "יצירת תיקייה חדשה"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3494
 msgid "Create a new empty folder inside this folder"
-msgstr ""
+msgstr "יצירת תיקייה ריקה חדשה בתוך תיקייה זו"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3496
 msgid "Create New _File"
-msgstr ""
+msgstr "יצירת קובץ חדש"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3498
 msgid "_Empty File"
-msgstr ""
+msgstr "קובץ ריק"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3499
 msgid "Create a new empty file inside this folder"
-msgstr ""
+msgstr "יצירת קובץ ריק בתוך תיקייה זו"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3503
 msgid "Open the selected item"
-msgstr ""
+msgstr "פתיחת הפריט הנבחר"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3510
 msgid "Open in new Window"
-msgstr ""
+msgstr "פתיחה בחלון חדש"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3511
 msgid "Open each selected item in a new window"
-msgstr ""
+msgstr "פתיחת כל פריט נבחר בחלון חדש"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3515
 msgid "Open each selected item in a new tab"
-msgstr ""
+msgstr "פתיחת כל פריט נבחר בלשונית חדשה"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3517
 msgid "Open Wit_h"
-msgstr ""
+msgstr "פתיחה באמצעות"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3518
 msgid "Choose a program with which to open the selected item"
-msgstr ""
+msgstr "בחירת תוכנית לפתיחת הפריט הנבחר"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3520
 msgid "Other _Application..."
-msgstr ""
+msgstr "יישום אחר..."
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3521
 msgid "Choose another application with which to open the selected item"
-msgstr ""
+msgstr "בחירת יישום אחר להצגת הפריט הנבחר"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3524
 msgid "Mo_ve to Trash"
-msgstr ""
+msgstr "העברה לסל המחזור"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3525
 msgid "Move each selected item to the Trash"
-msgstr ""
+msgstr "העברה לסל המחזור של כל אחד מהפריטים הנבחרים"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3528
 msgid "_Delete Permanently"
-msgstr ""
+msgstr "מחיקה לצמיתות"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3529
 msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
+msgstr "מחק כל אחד מהפריטים הנבחרים ללא העברה לסל המחזור"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3532
 msgid "_Restore"
-msgstr ""
+msgstr "שחזור לתיקיית המקור"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3536
 #: /home/codygarver/files/po/../src/eel-editable-label.c:3190
 msgid "Select All"
-msgstr ""
+msgstr "בחירת הכל"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3540
 msgid "_Properties"
-msgstr ""
+msgstr "מאפיינים"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3541
 msgid "View or modify the properties of each selected item"
-msgstr ""
+msgstr "הצגה או שינוי של מאפייני כל אחד מהפריטים הנבחרים"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3647
 msgid "Set Color:"
@@ -834,11 +837,11 @@ msgstr "הגדרת צבע:"
 
 #: /home/codygarver/files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr ""
+msgstr "הצגת תיקיית סמלים"
 
 #: /home/codygarver/files/po/../src/fm-icon-view.c:87
 msgid "Icon view"
-msgstr ""
+msgstr "תצוגת סמלים"
 
 #: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
 msgid "There is nothing on the clipboard to paste"
@@ -846,85 +849,86 @@ msgstr "אין שום דבר בלוח כדי להדביק"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr ""
+msgstr "אירגון פריטים"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
-msgstr ""
+msgstr "ארגון בסדר הפוך"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr ""
+msgstr "הצגת סמלים בסדר הפוך"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr ""
+msgstr "הצגה לפי שם"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr ""
+msgstr "הצגת סמלים בשורות ממויינים על פי שם"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
-msgstr ""
+msgstr "לפי גודל"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
-msgstr ""
+msgstr "שמירת סמלים בשורות  ממויינים לפי גודל"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
-msgstr ""
+msgstr "לפי סוג"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
-msgstr ""
+msgstr "שמירה על סמלים בשורות ממויינים לפי סוג"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr ""
+msgstr "בהתאם לתאריך השינוי"
 
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
-msgstr ""
+msgstr "שמירת סמלים בשורות על מיון תאריך השינוי"
 
 #: /home/codygarver/files/po/../src/eel-editable-label.c:3201
 msgid "Input Methods"
-msgstr ""
+msgstr "שיטות קלט"
 
 #: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
-msgstr ""
+msgstr "התאמת סרגל הכלים"
 
 #: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:464
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
 msgstr ""
+"בחירת פריטים לתצוגה בסרגל הכלים. ניתן לארגן פריטים מחדש על ידי גרירתם"
 
 #: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
-msgstr ""
+msgstr "פריטים זמינים"
 
 #: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:497
 msgid "Displayed Items"
-msgstr ""
+msgstr "פריטים בתצוגה"
 
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Filename"
-msgstr ""
+msgstr "שם קובץ"
 
 #: /home/codygarver/files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
-msgstr ""
+msgstr "לחיצה בודדת"
 
 #: /home/codygarver/files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
+msgstr "האם לאפשר הצגת פריט באמצעות לחיצה בודדת"
 
 #: /home/codygarver/files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
-msgstr ""
+msgstr "פסק זמן לחיצה בודדת"
 
 #: /home/codygarver/files/po/../src/exo-tree-view.c:185
 msgid ""
