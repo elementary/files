@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-19 00:40-0500\n"
+"POT-Creation-Date: 2013-05-19 14:09-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,31 @@ msgstr ""
 msgid "Network"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:286
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:112
+msgid "AFP"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:113
+msgid "DAV"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:114
+msgid "DAVS"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:115
+msgid "FTP"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:116
+msgid "SFTP"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:117
+msgid "SMB"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:292
 msgid "Open in New Tab"
 msgstr ""
 
