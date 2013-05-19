@@ -100,7 +100,6 @@ add_executable(pantheon-files
     fm-icon-view.c
     fm-list-view.c
     fm-columns-view.c
-    marlin-toolbar-editor.c
     marlin-connect-server-dialog.c
     marlin-connect-server-operation.c
     marlin-progress-ui-handler.c
