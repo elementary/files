@@ -15,19 +15,18 @@ set (DOLLAR "$")
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED gtk+-3.0 gee-1.0)
 
-IF (LIB_ONLY)
-    pkg_check_modules (GRANITE REQUIRED "granite")
-    add_definitions (${GRANITE_CFLAGS})
-    link_libraries (${GRANITE_LIBRARIES})
-    link_directories (${GRANITE_LIBRARY_DIRS})
-ENDIF (LIB_ONLY)
+pkg_check_modules (GRANITE REQUIRED "granite")
+add_definitions (${GRANITE_CFLAGS})
+link_libraries (${GRANITE_LIBRARIES})
+link_directories (${GRANITE_LIBRARY_DIRS})
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
-add_definitions(${CFLAGS} "-DGETTEXT_PACKAGE=\"${PKGNAME_}\"")
 set(LIBS
 	${DEP_LIBRARIES}
 )
+add_definitions(${CFLAGS})
+
 link_libraries(${LIBS})
 set(LIB_PATHS
 	${DEPS_LIBRARY_DIRS}
