@@ -410,8 +410,10 @@ gof_file_update (GOFFile *file)
     file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
     /* icon */
-    if (file->is_directory && g_file_is_native (file->location)) {
+    if (file->is_directory) { 
         gof_file_get_folder_icon_from_uri_or_path (file);
+    } else if (g_file_info_get_file_type(file->info) == G_FILE_TYPE_MOUNTABLE) { 
+        file->icon = g_themed_icon_new_with_default_fallbacks ("folder-remote-symbolic");
     } else {
         const gchar *ftype = gof_file_get_ftype (file);
         if (ftype != NULL && file->icon == NULL)
@@ -2322,7 +2324,6 @@ gof_file_get_ftype (GOFFile *file)
     g_return_val_if_fail (file->info != NULL, NULL);
 
     const char *ftype = NULL;
-    
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
         return g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE))
