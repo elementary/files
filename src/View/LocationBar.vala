@@ -109,6 +109,14 @@ namespace Marlin.View.Chrome
             /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
             add_icon({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, _("Trash")});
             add_icon({ "network://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("Network")});
+            add_icon({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, _("Trash")});
+            add_icon({ "network://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("Network")});
+            add_icon({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("AFP")});
+            add_icon({ "dav://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("DAV")});
+            add_icon({ "davs://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("DAVS")});
+            add_icon({ "ftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("FTP")});
+            add_icon({ "sftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("SFTP")});
+            add_icon({ "smb://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("SMB")});
 
             /* music */
             string dir;
@@ -165,6 +173,7 @@ namespace Marlin.View.Chrome
                 add_icon(icon);
             }
 
+            /* home */
             dir = Environment.get_home_dir();
             if(dir.contains("/"))
             {
@@ -173,7 +182,16 @@ namespace Marlin.View.Chrome
                 add_icon(icon);
             }
 
-            
+            /* media mounted volumes */
+            dir = "/media";
+            if(dir.contains("/"))
+            {
+                IconDirectory icon = {dir, Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, dir.split("/"), true, null};
+                icon.exploded[0] = "/";
+                add_icon(icon);
+            }
+
+            /* filesystem */
             IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, null, false, null};
             icon.exploded = {"/"};
             add_icon(icon);
