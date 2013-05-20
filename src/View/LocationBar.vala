@@ -104,20 +104,15 @@ namespace Marlin.View.Chrome
             /* grab the UIManager */
             this.ui = ui;
             this.win = win;
-            /*add_icon({ Marlin.TRASH_URI, Marlin.ICON_TRASH, true, null, null, true, N_("Trash")});
-            add_icon({ Marlin.NETWORK_URI, Marlin.ICON_NETWORK, true, null, null, true, N_("Network")});*/
             /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
-            add_icon({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, _("Trash")});
-            add_icon({ "network://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("Network")});
-            add_icon({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, _("Trash")});
-            add_icon({ "network://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("Network")});
             add_icon({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("AFP")});
             add_icon({ "dav://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("DAV")});
             add_icon({ "davs://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("DAVS")});
             add_icon({ "ftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("FTP")});
+            add_icon({ "network://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("Network")});
             add_icon({ "sftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("SFTP")});
             add_icon({ "smb://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, _("SMB")});
-
+            add_icon({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, _("Trash")});
             /* music */
             string dir;
             dir = Environment.get_user_special_dir(UserDirectory.MUSIC);
@@ -127,7 +122,6 @@ namespace Marlin.View.Chrome
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
-    
             /* image */
             dir = Environment.get_user_special_dir(UserDirectory.PICTURES);
             if(dir.contains("/"))
@@ -136,7 +130,6 @@ namespace Marlin.View.Chrome
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
-
             /* movie */
             dir = Environment.get_user_special_dir(UserDirectory.VIDEOS);
             if(dir.contains("/"))
@@ -145,7 +138,6 @@ namespace Marlin.View.Chrome
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
-    
             /* downloads */
             dir = Environment.get_user_special_dir(UserDirectory.DOWNLOAD);
             if(dir.contains("/"))
@@ -154,7 +146,6 @@ namespace Marlin.View.Chrome
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
-    
             /* documents */
             dir = Environment.get_user_special_dir(UserDirectory.DOCUMENTS);
             if(dir.contains("/"))
@@ -163,7 +154,6 @@ namespace Marlin.View.Chrome
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
-            
             /* templates */
             dir = Environment.get_user_special_dir(UserDirectory.TEMPLATES);
             if(dir.contains("/"))
@@ -172,7 +162,6 @@ namespace Marlin.View.Chrome
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
-
             /* home */
             dir = Environment.get_home_dir();
             if(dir.contains("/"))
@@ -181,7 +170,6 @@ namespace Marlin.View.Chrome
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
-
             /* media mounted volumes */
             dir = "/media";
             if(dir.contains("/"))
@@ -190,7 +178,6 @@ namespace Marlin.View.Chrome
                 icon.exploded[0] = "/";
                 add_icon(icon);
             }
-
             /* filesystem */
             IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, null, false, null};
             icon.exploded = {"/"};
@@ -209,10 +196,7 @@ namespace Marlin.View.Chrome
             menu.show_all();
             
             need_completion.connect(on_need_completion);
-
-
         }
-        
 
         protected void merge_in_clipboard_actions ()
         {
