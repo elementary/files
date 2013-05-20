@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-05-09 15:24-0500\n"
+"POT-Creation-Date: 2013-05-19 14:09-0500\n"
 "PO-Revision-Date: 2012-11-30 12:44+0000\n"
 "Last-Translator: kulkke <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -15,71 +15,44 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-10 06:24+0000\n"
-"X-Generator: Launchpad (build 16598)\n"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
-msgid "Files Preferences"
-msgstr "Dosya Tercihleri"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
-msgid "General"
-msgstr "Genel"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:103
-msgid "There are no extensions currently installed."
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:105
-msgid "Extensions"
-msgstr "Eklentiler"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:210
-msgid "Single click to open:"
-msgstr "Açmak için bir kez tıklayın:"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:218
-msgid "Mouse auto-selection:"
-msgstr "Fare oto-seçim:"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:237
-#, c-format
-msgid "Slow"
-msgstr "Yavaş"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:239
-#, c-format
-msgid "Fast"
-msgstr "Hızlı"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:254
-msgid "Date format:"
-msgstr "Tarih biçimi:"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:257
-msgid "iso"
-msgstr "iso"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:258
-msgid "locale"
-msgstr "yerel"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:259
-msgid "informal"
-msgstr "gayri resmi"
+"X-Launchpad-Export-Date: 2013-05-20 05:52+0000\n"
+"X-Generator: Launchpad (build 16626)\n"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:346
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:345
 msgid "Trash"
 msgstr "Çöp"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:564
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:563
 msgid "Network"
 msgstr "Ağ"
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:286
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:112
+msgid "AFP"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:113
+msgid "DAV"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:114
+msgid "DAVS"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:115
+msgid "FTP"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:116
+msgid "SFTP"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:117
+msgid "SMB"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:292
 msgid "Open in New Tab"
 msgstr ""
 
@@ -91,6 +64,10 @@ msgstr ""
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
 msgstr "Özellikler"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
+msgid "General"
+msgstr "Genel"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
@@ -213,7 +190,7 @@ msgid "Undo"
 msgstr "Geri Al"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:491
-#: /home/codygarver/files/po/../src/View/Window.vala:785
+#: /home/codygarver/files/po/../src/View/Window.vala:777
 msgid "Undo the last action"
 msgstr "Son eylemi geri al"
 
@@ -222,242 +199,234 @@ msgid "Redo"
 msgstr "Yinele"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:501
-#: /home/codygarver/files/po/../src/View/Window.vala:788
+#: /home/codygarver/files/po/../src/View/Window.vala:780
 msgid "Redo the last action"
 msgstr "En son eylemi yeniden yap"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:759
+#: /home/codygarver/files/po/../src/View/Window.vala:755
 msgid "_File"
 msgstr "_Dosya"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:760
+#: /home/codygarver/files/po/../src/View/Window.vala:756
 msgid "_Edit"
 msgstr "_Düzenle"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:761
+#: /home/codygarver/files/po/../src/View/Window.vala:757
 msgid "_View"
 msgstr "_Görünüm"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:762
+#: /home/codygarver/files/po/../src/View/Window.vala:758
 msgid "_Go"
 msgstr "_Git"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:763
+#: /home/codygarver/files/po/../src/View/Window.vala:759
 msgid "_Help"
 msgstr "_Yardım"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:765
+#: /home/codygarver/files/po/../src/View/Window.vala:761
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "Yeni _Pencere"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:766
+#: /home/codygarver/files/po/../src/View/Window.vala:762
 msgid "Open another Files window for the displayed location"
 msgstr "Gösterilen konum için başka bir Files penceresi aç"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:769
+#: /home/codygarver/files/po/../src/View/Window.vala:765
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "Yeni _Sekme"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:770
+#: /home/codygarver/files/po/../src/View/Window.vala:766
 msgid "Open another tab for the displayed location"
 msgstr "Gösterilen konum için başka bir sekme aç"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:774
+#: /home/codygarver/files/po/../src/View/Window.vala:770
 msgid "_Close"
 msgstr "_Kapat"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:775
+#: /home/codygarver/files/po/../src/View/Window.vala:771
 msgid "Close this folder"
 msgstr "Bu dizini kapat"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:778
-msgid "Preferences"
-msgstr "Tercihler"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:779
-msgid "Change Files preferences"
-msgstr "Files ayarlarını değiştir"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:784
+#: /home/codygarver/files/po/../src/View/Window.vala:776
 msgid "_Undo"
 msgstr "_Geri al"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:787
+#: /home/codygarver/files/po/../src/View/Window.vala:779
 msgid "_Redo"
 msgstr "_Yinele"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:790
+#: /home/codygarver/files/po/../src/View/Window.vala:782
 msgid "Open _Parent"
 msgstr "Üst _dizini aç"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:791
+#: /home/codygarver/files/po/../src/View/Window.vala:783
 msgid "Open the parent folder"
 msgstr "Üst dizini aç"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:793
+#: /home/codygarver/files/po/../src/View/Window.vala:785
 msgid "_Back"
 msgstr "_Geri"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:794
+#: /home/codygarver/files/po/../src/View/Window.vala:786
 msgid "Go to the previous visited location"
 msgstr "Önceki ziyaret edilen konuma git"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:797
+#: /home/codygarver/files/po/../src/View/Window.vala:789
 msgid "_Forward"
 msgstr "_İleri"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:798
+#: /home/codygarver/files/po/../src/View/Window.vala:790
 msgid "Go to the next visited location"
 msgstr "Sonraki ziyaret edilen konuma git"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:800
+#: /home/codygarver/files/po/../src/View/Window.vala:792
 msgid "_Reload"
 msgstr "_Yenile"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:801
+#: /home/codygarver/files/po/../src/View/Window.vala:793
 msgid "Reload the current location"
 msgstr "Mevcut konumu yeniden yükle"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:804
+#: /home/codygarver/files/po/../src/View/Window.vala:796
 msgid "_Home Folder"
 msgstr "_Başlangıç Dizini"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:805
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:305
+#: /home/codygarver/files/po/../src/View/Window.vala:797
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:304
 msgid "Open your personal folder"
 msgstr "Kişisel dizininizi açın"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:808
+#: /home/codygarver/files/po/../src/View/Window.vala:800
 msgid "_Trash"
 msgstr "_Çöp"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:809
+#: /home/codygarver/files/po/../src/View/Window.vala:801
 msgid "Open your personal trash folder"
 msgstr "Kişisel çöp dizininizi açın"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:812
+#: /home/codygarver/files/po/../src/View/Window.vala:804
 msgid "_Network"
 msgstr "_Ağ"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:813
+#: /home/codygarver/files/po/../src/View/Window.vala:805
 msgid "Browse bookmarked and local network locations"
 msgstr "Yer imi oluşturulmuş ve yerel ağ konumlarını göz at"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:816
+#: /home/codygarver/files/po/../src/View/Window.vala:808
 msgid "Zoom _In"
 msgstr "_Yakınlaş"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:817
+#: /home/codygarver/files/po/../src/View/Window.vala:809
 msgid "Increase the view size"
 msgstr "Görünüm boyutunu arttır"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:828
+#: /home/codygarver/files/po/../src/View/Window.vala:820
 msgid "Zoom _Out"
 msgstr "_Uzaklaştır"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:829
+#: /home/codygarver/files/po/../src/View/Window.vala:821
 msgid "Decrease the view size"
 msgstr "Görünüm boyutunu azalt"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:836
+#: /home/codygarver/files/po/../src/View/Window.vala:828
 msgid "Normal Si_ze"
 msgstr "Normal _Boyut"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:837
+#: /home/codygarver/files/po/../src/View/Window.vala:829
 msgid "Use the normal view size"
 msgstr "Normal görünüm boyutunu kullan"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:840
+#: /home/codygarver/files/po/../src/View/Window.vala:832
 msgid "Next Tab"
 msgstr "Sonraki Sekme"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:844
+#: /home/codygarver/files/po/../src/View/Window.vala:836
 msgid "Previous Tab"
 msgstr "Önceki Sekme"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:848
+#: /home/codygarver/files/po/../src/View/Window.vala:840
 msgid "Connect to _Server..."
 msgstr "_Sunucuya Bağlan..."
 
-#: /home/codygarver/files/po/../src/View/Window.vala:849
+#: /home/codygarver/files/po/../src/View/Window.vala:841
 msgid "Connect to a remote computer or shared disk"
 msgstr "Uzaktaki bilgisayara ya da paylaşılan diske bağlan"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:852
+#: /home/codygarver/files/po/../src/View/Window.vala:844
 msgid "_About"
 msgstr "_Hakkında"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:853
+#: /home/codygarver/files/po/../src/View/Window.vala:845
 msgid "Display credits"
 msgstr "Hazırlayanları göster"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:856
+#: /home/codygarver/files/po/../src/View/Window.vala:848
 msgid "Report a Problem..."
 msgstr "Bir problem bildir..."
 
-#: /home/codygarver/files/po/../src/View/Window.vala:857
+#: /home/codygarver/files/po/../src/View/Window.vala:849
 msgid "File a bug on Launchpad"
 msgstr "Launchpad'de sorun bildirin"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:860
+#: /home/codygarver/files/po/../src/View/Window.vala:852
 msgid "Get Help Online..."
 msgstr "Çevrimiçi Yardım Alın..."
 
-#: /home/codygarver/files/po/../src/View/Window.vala:864
+#: /home/codygarver/files/po/../src/View/Window.vala:856
 msgid "Translate This Application..."
 msgstr "Bu Uygulamayı Tercüme Edin..."
 
-#: /home/codygarver/files/po/../src/View/Window.vala:873
+#: /home/codygarver/files/po/../src/View/Window.vala:865
 msgid "Show _Hidden Files"
 msgstr "_Gizli Dosyaları Göster"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:874
+#: /home/codygarver/files/po/../src/View/Window.vala:866
 msgid "Toggle the display of hidden files in the current window"
 msgstr "Mevcut pencerede gizli dosyaların gösterilip gösterilmemesini seç"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:879
+#: /home/codygarver/files/po/../src/View/Window.vala:871
 msgid "Show _Desktop Files"
 msgstr "_Masaüstü Dosyalarını Göster"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:880
+#: /home/codygarver/files/po/../src/View/Window.vala:872
 msgid "Toggle the display of desktop files"
 msgstr "Masaüstü dosyalarının gösterimini aç/kapa"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:884
+#: /home/codygarver/files/po/../src/View/Window.vala:876
 msgid "_Context Pane"
 msgstr "_Bağlam Paneli"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:885
+#: /home/codygarver/files/po/../src/View/Window.vala:877
 msgid "Change the visibility of the context pane"
 msgstr "İçerik çerçevesinin görünürlüğünü değiştir"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:889
+#: /home/codygarver/files/po/../src/View/Window.vala:881
 msgid "_Menubar"
 msgstr "_Menü Çubuğu"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:890
+#: /home/codygarver/files/po/../src/View/Window.vala:882
 msgid "Change the visibility of this window's menubar"
 msgstr "Menü çubuğunun saydamlığını değiştir"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:894
+#: /home/codygarver/files/po/../src/View/Window.vala:886
 msgid "_Places"
 msgstr "_Yerler"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:895
+#: /home/codygarver/files/po/../src/View/Window.vala:887
 msgid "Change the visibility of this window's side pane"
 msgstr "Bu pencerenin yan çubuğunun görünürlüğünü değiştir"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:903
+#: /home/codygarver/files/po/../src/View/Window.vala:895
 msgid "Icon"
 msgstr "Simge"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:906
+#: /home/codygarver/files/po/../src/View/Window.vala:898
 msgid "List"
 msgstr "Liste"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:909
+#: /home/codygarver/files/po/../src/View/Window.vala:901
 msgid "Columns"
 msgstr "Sütunlar"
 
@@ -495,12 +464,12 @@ msgid "Size"
 msgstr "Boyut"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:146
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:300
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:299
 msgid "Home"
 msgstr "Ana Sayfa"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:369
 msgid "File System"
 msgstr "Dosya Sistemi"
 
@@ -521,35 +490,39 @@ msgstr "Bu dizin boş."
 msgid "Failed to rename %s to %s"
 msgstr "%s, %s olarak yeniden adlandırılamadı"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:124
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:127
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:128
 msgid "Public FTP"
 msgstr "Halka Açık FTP"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:129
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:130
 msgid "FTP (with login)"
 msgstr "FTP (giriş gerektiren)"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:132
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:133
+msgid "AFP (Apple Filing Protocol)"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"
 msgstr "Windows paylaşımı"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:134
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:137
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:136
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:139
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Güvenli WebDAV (HTTPS)"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:183
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:186
 msgid "Connecting..."
 msgstr "Bağlanıyor..."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:207
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:210
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -557,82 +530,82 @@ msgstr ""
 "Desteklenen sunucu yöntem listesi yüklenemiyor.\n"
 "Lütfen gvfs kurulumunuzu kontrol edin."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:285
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:288
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "\"%s\" dizini \"%s\" üzerinde açılamıyor."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:295
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:298
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "\"%s\" konumundaki sunucu bulunamıyor."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:330
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:333
 msgid "Try Again"
 msgstr "Tekrar Dene"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:395
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:398
 msgid "Please verify your user details."
 msgstr "Lütfen kullanıcı ayrıntılarınızı doğrulayın."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:425
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:428
 msgid "Continue"
 msgstr "Devam Et"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:750
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1140
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:753
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1143
 msgid "C_onnect"
 msgstr "_Bağlan"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:875
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:878
 msgid "Connect to Server"
 msgstr "Sunucuya Bağlan"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:893
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:896
 msgid "Server Details"
 msgstr "Sunucu Ayrıntıları"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:917
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:920
 msgid "_Server:"
 msgstr "_Sunucu:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:937
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:940
 msgid "_Port:"
 msgstr "_Port:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:955
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:958
 msgid "_Type:"
 msgstr "_Tür:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1024
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1027
 msgid "Sh_are:"
 msgstr "P_aylaş:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1039
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1042
 msgid "_Folder:"
 msgstr "_Dizin:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1057
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1060
 msgid "User Details"
 msgstr "Kullanıcı Ayrıntıları"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1080
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1083
 msgid "_Domain name:"
 msgstr "Alan a_dı:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1095
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1098
 msgid "_User name:"
 msgstr "_Kullanıcı adı:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1110
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1113
 msgid "Pass_word:"
 msgstr "Par_ola:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1126
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1129
 msgid "_Remember this password"
 msgstr "Bu parolayı hatı_rla"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1229
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1232
 msgid "Operation cancelled"
 msgstr "İşlem iptal edildi"
 
@@ -688,7 +661,7 @@ msgstr "%s İle _Aç"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1974
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3502
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2375
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2374
 msgid "_Open"
 msgstr "_Aç"
 
@@ -699,7 +672,7 @@ msgstr "Yeni %'d _Sekmede Aç"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1994
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3514
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2383
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2382
 msgid "Open in New _Tab"
 msgstr "Yeni S_ekmede Aç"
 
@@ -709,7 +682,7 @@ msgid "Open in %'d New _Windows"
 msgstr "Yeni %'d _Pencerede Aç"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:2003
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2390
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2389
 msgid "Open in New _Window"
 msgstr "Yeni _Pencerede Aç"
 
@@ -982,132 +955,132 @@ msgstr "Görünüş modu"
 msgid "The layout mode"
 msgstr "Görünüş modu"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:286
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:285
 msgid "Personal"
 msgstr "Kişisel"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:291
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:290
 msgid "Your common places and bookmarks"
 msgstr "Ortak yerler ve yer imleriniz."
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:348
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:347
 msgid "Open the trash"
 msgstr "Çöpü aç"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:358
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:357
 msgid "Devices"
 msgstr "Aygıtlar"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:363
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:362
 msgid "Your local partitions and devices"
 msgstr "Yerel bölüm ve aygıtlarınız"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:372
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:371
 msgid "Open the contents of the File System"
 msgstr "Dosya Sisteminin içeriğini aç"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:431
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:456
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:430
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:455
 #, c-format
 msgid "Mount and open %s"
 msgstr "%s'i bağla ve aç"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:569
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:568
 msgid "Your network places"
 msgstr "Ağ bağlantılarım"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:600
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:599
 msgid "Entire network"
 msgstr "Tüm ağ"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:602
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:601
 msgid "Browse the contents of the network"
 msgstr "Ağ içeriğine gözat"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1586
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1585
 msgid "_Start"
 msgstr "_Başlat"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1587
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1586
 msgid "_Stop"
 msgstr "_Durdur"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1592
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1591
 msgid "_Power On"
 msgstr "_Güç Açık"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1593
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1592
 msgid "_Safely Remove Drive"
 msgstr "_Sürücüyü Güvenle Kaldır"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1596
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1595
 msgid "_Connect Drive"
 msgstr "Sürücüyü _Bağla"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1597
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1596
 msgid "_Disconnect Drive"
 msgstr "Sürücünün Bağlantısını _Kes"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1600
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1599
 msgid "_Start Multi-disk Device"
 msgstr "_Çoklu-disk Aygıtını Başlat"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1601
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1600
 msgid "_Stop Multi-disk Device"
 msgstr "Çoklu-disk Aygıtını _Durdur"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1605
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1604
 msgid "_Unlock Drive"
 msgstr "Sürücü Kilidini K_aldır"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1606
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1605
 msgid "_Lock Drive"
 msgstr "Sürücüyü K_ilitle"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1680
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2227
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1679
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2226
 #, c-format
 msgid "Unable to start %s"
 msgstr "%s başlatılamadı"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1970
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1999
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2028
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1969
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1998
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2027
 #, c-format
 msgid "Unable to eject %s"
 msgstr "%s çıkartılamadı"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2173
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2172
 #, c-format
 msgid "Unable to poll %s for media changes"
 msgstr "Ortam değişikliği için %s yoklanamadı"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2283
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2282
 #, c-format
 msgid "Unable to stop %s"
 msgstr "%s durdurulamadı"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2399
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2398
 msgid "Remove"
 msgstr "Sil"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2408
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2407
 msgid "Rename..."
 msgstr "Yeniden Adlandır..."
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2421
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2420
 msgid "_Mount"
 msgstr "_Bağla"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2428
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2427
 msgid "_Unmount"
 msgstr "Bağı Ka_ldır"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2435
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2434
 msgid "_Eject"
 msgstr "_Çıkart"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2443
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2442
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2312
 msgid "Empty _Trash"
@@ -1504,33 +1477,33 @@ msgstr[0] "%d öğe sahibinin değiştirilmesini yinele"
 msgid " (invalid Unicode)"
 msgstr " (geçersiz Unikod)"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:252
+#: /home/codygarver/files/po/../libcore/gof-file.c:253
 #, c-format
 msgid "link to %s"
 msgstr "%s'e bağla"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1709
+#: /home/codygarver/files/po/../libcore/gof-file.c:1712
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1747
+#: /home/codygarver/files/po/../libcore/gof-file.c:1750
 msgid "No Exec field specified"
 msgstr "Exec alanı belirtilmemiş"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1767
+#: /home/codygarver/files/po/../libcore/gof-file.c:1770
 msgid "No URL field specified"
 msgstr "URL alanı belirtilmemiş"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1773
+#: /home/codygarver/files/po/../libcore/gof-file.c:1776
 msgid "Invalid desktop file"
 msgstr "Geçersiz masaüstü dosyası"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:2063
+#: /home/codygarver/files/po/../libcore/gof-file.c:2066
 msgid "Slashes are not allowed in filenames"
 msgstr "Dosya adlarında taksim işareti kullanılamaz"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:2083
+#: /home/codygarver/files/po/../libcore/gof-file.c:2086
 msgid "Toplevel files cannot be renamed"
 msgstr "Üst düzey dosyalar yeniden adlandırılamıyor"
 

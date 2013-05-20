@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-05-09 15:24-0500\n"
+"POT-Creation-Date: 2013-05-19 14:09-0500\n"
 "PO-Revision-Date: 2012-05-07 02:55+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
@@ -15,71 +15,44 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2013-05-10 06:24+0000\n"
-"X-Generator: Launchpad (build 16598)\n"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
-msgid "Files Preferences"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
-msgid "General"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:103
-msgid "There are no extensions currently installed."
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:105
-msgid "Extensions"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:210
-msgid "Single click to open:"
-msgstr "Un sol clic per dobrir :"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:218
-msgid "Mouse auto-selection:"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:237
-#, c-format
-msgid "Slow"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:239
-#, c-format
-msgid "Fast"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:254
-msgid "Date format:"
-msgstr "Format de la data :"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:257
-msgid "iso"
-msgstr "iso"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:258
-msgid "locale"
-msgstr "locala"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:259
-msgid "informal"
-msgstr "informal"
+"X-Launchpad-Export-Date: 2013-05-20 05:52+0000\n"
+"X-Generator: Launchpad (build 16626)\n"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:346
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:345
 msgid "Trash"
 msgstr "Escobilhièr"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:564
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:563
 msgid "Network"
 msgstr "Ret"
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:286
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:112
+msgid "AFP"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:113
+msgid "DAV"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:114
+msgid "DAVS"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:115
+msgid "FTP"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:116
+msgid "SFTP"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:117
+msgid "SMB"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/View/LocationBar.vala:292
 msgid "Open in New Tab"
 msgstr ""
 
@@ -91,6 +64,10 @@ msgstr ""
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
 msgstr "Caracteristicas"
+
+#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
+msgid "General"
+msgstr ""
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
 msgid "More"
@@ -213,7 +190,7 @@ msgid "Undo"
 msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:491
-#: /home/codygarver/files/po/../src/View/Window.vala:785
+#: /home/codygarver/files/po/../src/View/Window.vala:777
 msgid "Undo the last action"
 msgstr ""
 
@@ -222,242 +199,234 @@ msgid "Redo"
 msgstr ""
 
 #: /home/codygarver/files/po/../src/View/Window.vala:501
-#: /home/codygarver/files/po/../src/View/Window.vala:788
+#: /home/codygarver/files/po/../src/View/Window.vala:780
 msgid "Redo the last action"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:759
+#: /home/codygarver/files/po/../src/View/Window.vala:755
 msgid "_File"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:760
+#: /home/codygarver/files/po/../src/View/Window.vala:756
 msgid "_Edit"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:761
+#: /home/codygarver/files/po/../src/View/Window.vala:757
 msgid "_View"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:762
+#: /home/codygarver/files/po/../src/View/Window.vala:758
 msgid "_Go"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:763
+#: /home/codygarver/files/po/../src/View/Window.vala:759
 msgid "_Help"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:765
+#: /home/codygarver/files/po/../src/View/Window.vala:761
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:766
+#: /home/codygarver/files/po/../src/View/Window.vala:762
 msgid "Open another Files window for the displayed location"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:769
+#: /home/codygarver/files/po/../src/View/Window.vala:765
 #: /home/codygarver/files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:770
+#: /home/codygarver/files/po/../src/View/Window.vala:766
 msgid "Open another tab for the displayed location"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:774
+#: /home/codygarver/files/po/../src/View/Window.vala:770
 msgid "_Close"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:775
+#: /home/codygarver/files/po/../src/View/Window.vala:771
 msgid "Close this folder"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:778
-msgid "Preferences"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/Window.vala:779
-msgid "Change Files preferences"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/Window.vala:784
+#: /home/codygarver/files/po/../src/View/Window.vala:776
 msgid "_Undo"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:787
+#: /home/codygarver/files/po/../src/View/Window.vala:779
 msgid "_Redo"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:790
+#: /home/codygarver/files/po/../src/View/Window.vala:782
 msgid "Open _Parent"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:791
+#: /home/codygarver/files/po/../src/View/Window.vala:783
 msgid "Open the parent folder"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:793
+#: /home/codygarver/files/po/../src/View/Window.vala:785
 msgid "_Back"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:794
+#: /home/codygarver/files/po/../src/View/Window.vala:786
 msgid "Go to the previous visited location"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:797
+#: /home/codygarver/files/po/../src/View/Window.vala:789
 msgid "_Forward"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:798
+#: /home/codygarver/files/po/../src/View/Window.vala:790
 msgid "Go to the next visited location"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:800
+#: /home/codygarver/files/po/../src/View/Window.vala:792
 msgid "_Reload"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:801
+#: /home/codygarver/files/po/../src/View/Window.vala:793
 msgid "Reload the current location"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:804
+#: /home/codygarver/files/po/../src/View/Window.vala:796
 msgid "_Home Folder"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:805
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:305
+#: /home/codygarver/files/po/../src/View/Window.vala:797
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:304
 msgid "Open your personal folder"
 msgstr "Dobrir vòstre dorsièr personal"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:808
+#: /home/codygarver/files/po/../src/View/Window.vala:800
 msgid "_Trash"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:809
+#: /home/codygarver/files/po/../src/View/Window.vala:801
 msgid "Open your personal trash folder"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:812
+#: /home/codygarver/files/po/../src/View/Window.vala:804
 msgid "_Network"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:813
+#: /home/codygarver/files/po/../src/View/Window.vala:805
 msgid "Browse bookmarked and local network locations"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:816
+#: /home/codygarver/files/po/../src/View/Window.vala:808
 msgid "Zoom _In"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:817
+#: /home/codygarver/files/po/../src/View/Window.vala:809
 msgid "Increase the view size"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:828
+#: /home/codygarver/files/po/../src/View/Window.vala:820
 msgid "Zoom _Out"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:829
+#: /home/codygarver/files/po/../src/View/Window.vala:821
 msgid "Decrease the view size"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:836
+#: /home/codygarver/files/po/../src/View/Window.vala:828
 msgid "Normal Si_ze"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:837
+#: /home/codygarver/files/po/../src/View/Window.vala:829
 msgid "Use the normal view size"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:840
+#: /home/codygarver/files/po/../src/View/Window.vala:832
 msgid "Next Tab"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:844
+#: /home/codygarver/files/po/../src/View/Window.vala:836
 msgid "Previous Tab"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:848
+#: /home/codygarver/files/po/../src/View/Window.vala:840
 msgid "Connect to _Server..."
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:849
+#: /home/codygarver/files/po/../src/View/Window.vala:841
 msgid "Connect to a remote computer or shared disk"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:852
+#: /home/codygarver/files/po/../src/View/Window.vala:844
 msgid "_About"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:853
+#: /home/codygarver/files/po/../src/View/Window.vala:845
 msgid "Display credits"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:856
+#: /home/codygarver/files/po/../src/View/Window.vala:848
 msgid "Report a Problem..."
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:857
+#: /home/codygarver/files/po/../src/View/Window.vala:849
 msgid "File a bug on Launchpad"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:860
+#: /home/codygarver/files/po/../src/View/Window.vala:852
 msgid "Get Help Online..."
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:864
+#: /home/codygarver/files/po/../src/View/Window.vala:856
 msgid "Translate This Application..."
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:873
+#: /home/codygarver/files/po/../src/View/Window.vala:865
 msgid "Show _Hidden Files"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:874
+#: /home/codygarver/files/po/../src/View/Window.vala:866
 msgid "Toggle the display of hidden files in the current window"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:879
+#: /home/codygarver/files/po/../src/View/Window.vala:871
 msgid "Show _Desktop Files"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:880
+#: /home/codygarver/files/po/../src/View/Window.vala:872
 msgid "Toggle the display of desktop files"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:884
+#: /home/codygarver/files/po/../src/View/Window.vala:876
 msgid "_Context Pane"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:885
+#: /home/codygarver/files/po/../src/View/Window.vala:877
 msgid "Change the visibility of the context pane"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:889
+#: /home/codygarver/files/po/../src/View/Window.vala:881
 msgid "_Menubar"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:890
+#: /home/codygarver/files/po/../src/View/Window.vala:882
 msgid "Change the visibility of this window's menubar"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:894
+#: /home/codygarver/files/po/../src/View/Window.vala:886
 msgid "_Places"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:895
+#: /home/codygarver/files/po/../src/View/Window.vala:887
 msgid "Change the visibility of this window's side pane"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:903
+#: /home/codygarver/files/po/../src/View/Window.vala:895
 msgid "Icon"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:906
+#: /home/codygarver/files/po/../src/View/Window.vala:898
 msgid "List"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:909
+#: /home/codygarver/files/po/../src/View/Window.vala:901
 msgid "Columns"
 msgstr ""
 
@@ -495,12 +464,12 @@ msgid "Size"
 msgstr "Talha"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:146
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:300
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:299
 msgid "Home"
 msgstr "Dorsièr personal"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:369
 msgid "File System"
 msgstr "Sistèma de fichièrs"
 
@@ -521,35 +490,39 @@ msgstr "Aqueste dorsièr es void"
 msgid "Failed to rename %s to %s"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:124
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:127
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:128
 msgid "Public FTP"
 msgstr "FTP public"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:129
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:130
 msgid "FTP (with login)"
 msgstr "FTP (amb identificacion)"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:132
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:133
+msgid "AFP (Apple Filing Protocol)"
+msgstr ""
+
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"
 msgstr "Partiment Windows"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:134
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:137
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:136
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:139
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV securizat (HTTPS)"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:183
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:186
 msgid "Connecting..."
 msgstr "Connexion en cors..."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:207
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:210
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -557,82 +530,82 @@ msgstr ""
 "Impossible de cargar la lista dels metòdes preses en carga pel servidor.\n"
 "Verificatz vòstra installacion de gvfs."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:285
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:288
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "Impossible de dobrir lo dorsièr « %s » sus « %s »."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:295
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:298
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "Lo servidor sus « %s » demòra introbable."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:330
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:333
 msgid "Try Again"
 msgstr "Tornar ensajar"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:395
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:398
 msgid "Please verify your user details."
 msgstr "Verificatz vòstres paramètres d'utilizaire."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:425
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:428
 msgid "Continue"
 msgstr "Contunhar"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:750
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1140
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:753
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1143
 msgid "C_onnect"
 msgstr "Se c_onnectar"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:875
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:878
 msgid "Connect to Server"
 msgstr "Se connectar al servidor"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:893
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:896
 msgid "Server Details"
 msgstr "Detalhs relatius al servidor"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:917
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:920
 msgid "_Server:"
 msgstr "_Servidor :"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:937
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:940
 msgid "_Port:"
 msgstr "_Pòrt :"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:955
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:958
 msgid "_Type:"
 msgstr "_Tipe :"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1024
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1027
 msgid "Sh_are:"
 msgstr "P_artiment :"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1039
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1042
 msgid "_Folder:"
 msgstr "_Dorsièr :"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1057
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1060
 msgid "User Details"
 msgstr "Detalhs relatius a l'utilizaire"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1080
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1083
 msgid "_Domain name:"
 msgstr "Nom de do_meni :"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1095
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1098
 msgid "_User name:"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1110
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1113
 msgid "Pass_word:"
 msgstr "_Senhal :"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1126
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1129
 msgid "_Remember this password"
 msgstr "_Memorizar aqueste senhal"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1229
+#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1232
 msgid "Operation cancelled"
 msgstr "Operacion anullada"
 
@@ -690,7 +663,7 @@ msgstr "D_obrir amb %s"
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1974
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3502
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2375
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2374
 msgid "_Open"
 msgstr "D_obrir"
 
@@ -701,7 +674,7 @@ msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:1994
 #: /home/codygarver/files/po/../src/fm-directory-view.c:3514
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2383
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2382
 msgid "Open in New _Tab"
 msgstr "Dobrir dins un ongle_t novèl"
 
@@ -711,7 +684,7 @@ msgid "Open in %'d New _Windows"
 msgstr ""
 
 #: /home/codygarver/files/po/../src/fm-directory-view.c:2003
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2390
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2389
 msgid "Open in New _Window"
 msgstr "Dobrir dins una fenèstra novèla"
 
@@ -976,132 +949,132 @@ msgstr ""
 msgid "The layout mode"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:286
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:285
 msgid "Personal"
 msgstr "Informacions personalas"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:291
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:290
 msgid "Your common places and bookmarks"
 msgstr ""
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:348
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:347
 msgid "Open the trash"
 msgstr "Dobrir l'escobilhièr"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:358
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:357
 msgid "Devices"
 msgstr "Periferics"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:363
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:362
 msgid "Your local partitions and devices"
 msgstr "Vòstras particions e periferics locals"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:372
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:371
 msgid "Open the contents of the File System"
 msgstr "Dobrir lo contengut del sistèma de fichièrs"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:431
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:456
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:430
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:455
 #, c-format
 msgid "Mount and open %s"
 msgstr "Montar e dobrir %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:569
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:568
 msgid "Your network places"
 msgstr "Vòstres emplaçaments ret"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:600
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:599
 msgid "Entire network"
 msgstr "Tota la ret"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:602
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:601
 msgid "Browse the contents of the network"
 msgstr "Percor lo contengut de la ret"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1586
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1585
 msgid "_Start"
 msgstr "_Aviar"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1587
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1586
 msgid "_Stop"
 msgstr "_Arrestar"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1592
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1591
 msgid "_Power On"
 msgstr "_Alucar"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1593
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1592
 msgid "_Safely Remove Drive"
 msgstr "Levar lo volum d'un biais _segur"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1596
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1595
 msgid "_Connect Drive"
 msgstr "_Connectar lo volum"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1597
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1596
 msgid "_Disconnect Drive"
 msgstr "_Desconnectar lo volum"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1600
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1599
 msgid "_Start Multi-disk Device"
 msgstr "Aviar lo periferic _multidisc"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1601
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1600
 msgid "_Stop Multi-disk Device"
 msgstr "Arrestar lo periferic _multidisc"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1605
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1604
 msgid "_Unlock Drive"
 msgstr "Desvarr_olhar lo volum"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1606
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1605
 msgid "_Lock Drive"
 msgstr "Varro_lhar lo volum"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1680
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2227
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1679
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2226
 #, c-format
 msgid "Unable to start %s"
 msgstr "Impossible d'aviar %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1970
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1999
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2028
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1969
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1998
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2027
 #, c-format
 msgid "Unable to eject %s"
 msgstr "Impossible d'ejectar %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2173
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2172
 #, c-format
 msgid "Unable to poll %s for media changes"
 msgstr "Impossible de verificar de modificacions sul supòrt %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2283
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2282
 #, c-format
 msgid "Unable to stop %s"
 msgstr "Impossible d'arrestar %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2399
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2398
 msgid "Remove"
 msgstr "Suprimir"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2408
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2407
 msgid "Rename..."
 msgstr "Tornar nomenar..."
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2421
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2420
 msgid "_Mount"
 msgstr "_Montar"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2428
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2427
 msgid "_Unmount"
 msgstr "_Desmontar"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2435
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2434
 msgid "_Eject"
 msgstr "_Ejectar"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2443
+#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2442
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
 #: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2312
 msgid "Empty _Trash"
@@ -1524,33 +1497,33 @@ msgstr[1] ""
 msgid " (invalid Unicode)"
 msgstr " (Unicode invalid)"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:252
+#: /home/codygarver/files/po/../libcore/gof-file.c:253
 #, c-format
 msgid "link to %s"
 msgstr "ligam cap a %s"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1709
+#: /home/codygarver/files/po/../libcore/gof-file.c:1712
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Fracàs d'analisi del fichièr burèu : %s"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1747
+#: /home/codygarver/files/po/../libcore/gof-file.c:1750
 msgid "No Exec field specified"
 msgstr "Cap de camp Exec pas especificat"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1767
+#: /home/codygarver/files/po/../libcore/gof-file.c:1770
 msgid "No URL field specified"
 msgstr "Cap d'URL pas especificada"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1773
+#: /home/codygarver/files/po/../libcore/gof-file.c:1776
 msgid "Invalid desktop file"
 msgstr "Fichièr de burèu invalid"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:2063
+#: /home/codygarver/files/po/../libcore/gof-file.c:2066
 msgid "Slashes are not allowed in filenames"
 msgstr "Las barras oblicas son pas permesas dins los noms de fichièrs"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:2083
+#: /home/codygarver/files/po/../libcore/gof-file.c:2086
 msgid "Toplevel files cannot be renamed"
 msgstr "Impossible de tornar nomenar los fichièrs raices"
 
