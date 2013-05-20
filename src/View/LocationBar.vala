@@ -171,6 +171,7 @@ namespace Marlin.View.Chrome
                 add_icon(icon);
             }
 
+            /* home */
             dir = Environment.get_home_dir();
             if(dir.contains("/"))
             {
@@ -179,7 +180,16 @@ namespace Marlin.View.Chrome
                 add_icon(icon);
             }
 
-            
+            /* media mounted volumes */
+            dir = "/media";
+            if(dir.contains("/"))
+            {
+                IconDirectory icon = {dir, Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, dir.split("/"), true, null};
+                icon.exploded[0] = "/";
+                add_icon(icon);
+            }
+
+            /* filesystem */
             IconDirectory icon = {"/", Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, null, false, null};
             icon.exploded = {"/"};
             add_icon(icon);
