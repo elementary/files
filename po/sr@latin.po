@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-19 14:09-0500\n"
-"PO-Revision-Date: 2013-05-16 23:44+0000\n"
+"PO-Revision-Date: 2013-05-20 22:06+0000\n"
 "Last-Translator: nadrimajstor <ipejic@gmail.com>\n"
 "Language-Team: Serbian Latin <sr@latin@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2013-05-20 05:52+0000\n"
+"X-Launchpad-Export-Date: 2013-05-21 05:06+0000\n"
 "X-Generator: Launchpad (build 16626)\n"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:110
@@ -31,27 +31,27 @@ msgstr "Mreža"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:112
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:113
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:114
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:115
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:116
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:117
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:292
 msgid "Open in New Tab"
@@ -252,317 +252,321 @@ msgstr "Zatvori ovu fasciklu"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:776
 msgid "_Undo"
-msgstr ""
+msgstr "_Poništi"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:779
 msgid "_Redo"
-msgstr ""
+msgstr "_Ponovi"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:782
 msgid "Open _Parent"
-msgstr ""
+msgstr "Otvori _nadfasciklu"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:783
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Otvori nadfasciklu"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:785
 msgid "_Back"
-msgstr ""
+msgstr "_Nazad"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:786
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Vrati se na prethodno posećenu lokaciju"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:789
 msgid "_Forward"
-msgstr ""
+msgstr "_Sledeće"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:790
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Pređi na sledeću već posećnu lokaciju"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:792
 msgid "_Reload"
-msgstr ""
+msgstr "_Osveži"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:793
 msgid "Reload the current location"
-msgstr ""
+msgstr "Osveži trenutnu lokaciju"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:796
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Lična fascikla"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:797
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:304
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Otvori ličnu fasciklu"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:800
 msgid "_Trash"
-msgstr ""
+msgstr "_Smeće"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:801
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Otvori fasciklu sa smećem"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:804
 msgid "_Network"
-msgstr ""
+msgstr "_Mreža"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:805
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "Prelistaj markirane i lokalne mrežne lokacije"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:808
 msgid "Zoom _In"
-msgstr ""
+msgstr "U_većaj"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:809
 msgid "Increase the view size"
-msgstr ""
+msgstr "Proširi vidokrug"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:820
 msgid "Zoom _Out"
-msgstr ""
+msgstr "U_manji"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:821
 msgid "Decrease the view size"
-msgstr ""
+msgstr "Umanji vidokrug"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:828
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "Normalna veličin_a"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:829
 msgid "Use the normal view size"
-msgstr ""
+msgstr "Normalni vidokrug"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:832
 msgid "Next Tab"
-msgstr ""
+msgstr "Sledeća pregrada"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:836
 msgid "Previous Tab"
-msgstr ""
+msgstr "Prethodna pregrada"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:840
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "Priključi se Server-u..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:841
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "Poveži se na udaljeni računar ili zajednički disk"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:844
 msgid "_About"
-msgstr ""
+msgstr "Ukr_atko"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:845
 msgid "Display credits"
-msgstr ""
+msgstr "Prikaži zahvalnice"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:848
 msgid "Report a Problem..."
-msgstr ""
+msgstr "Prijavi problem..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:849
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Ubeleži grešku na Launchpad-u"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:852
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Potraži pomoć na mreži..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:856
 msgid "Translate This Application..."
-msgstr ""
+msgstr "Prevedi ovu aplikaciju..."
 
 #: /home/codygarver/files/po/../src/View/Window.vala:865
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Prikaz sakrivenih fajlova"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:866
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "Uključuje i isključuje prikaz sakrivenih fajlova u trenutnom prozoru"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:871
 msgid "Show _Desktop Files"
-msgstr ""
+msgstr "Prikaz fajlova sa ra_dne površine"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:872
 msgid "Toggle the display of desktop files"
 msgstr ""
+"Uključuje i isključuje prikaz fajlova koji se nalaze na radnoj površini"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:876
 msgid "_Context Pane"
-msgstr ""
+msgstr "Kontekst-panel"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:877
 msgid "Change the visibility of the context pane"
-msgstr ""
+msgstr "Uključuje i isključuje prikaz dodatne površine sa kontekstom"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:881
 msgid "_Menubar"
-msgstr ""
+msgstr "_Meni"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:882
 msgid "Change the visibility of this window's menubar"
-msgstr ""
+msgstr "Uključuje i isključuje prikaz trake sa menijima"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:886
 msgid "_Places"
-msgstr ""
+msgstr "_Pozicije"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:887
 msgid "Change the visibility of this window's side pane"
 msgstr ""
+"Uključuje i isključuje prikaz dodatne površine sa često posećenim mestima"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:895
 msgid "Icon"
-msgstr ""
+msgstr "Sličica"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:898
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 #: /home/codygarver/files/po/../src/View/Window.vala:901
 msgid "Columns"
-msgstr ""
+msgstr "Kolone"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr ""
+msgstr "Fascikla ne postoji"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Files nije uspeo da nađe fasciklu sa nazivom %s"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr ""
+msgstr "Napravi"
 
 #: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr ""
+msgstr "Napravi fasciklu sa nazivom %s"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:336
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:337
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #: /home/codygarver/files/po/../src/View/ContextView.vala:342
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Size"
-msgstr ""
+msgstr "Veličina"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:146
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:299
 msgid "Home"
-msgstr ""
+msgstr "Početak"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
 #: /home/codygarver/files/po/../src/marlin-places-sidebar.c:369
 msgid "File System"
-msgstr ""
+msgstr "Sistem fajlova"
 
 #: /home/codygarver/files/po/../src/View/ViewContainer.vala:153
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(kao Administrator)"
 
 #: /home/codygarver/files/po/../src/fm-columns-view.c:82
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:573
 #: /home/codygarver/files/po/../src/fm-list-view.c:616
 msgid "This folder is empty."
-msgstr ""
+msgstr "Ova fascikla je prazna."
 
 #: /home/codygarver/files/po/../src/fm-columns-view.c:186
 #: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:139
 #: /home/codygarver/files/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Neuspešna promena naziva %s u %s"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:128
 msgid "Public FTP"
-msgstr ""
+msgstr "Javni FTP"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:130
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (sa prijavom)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:133
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"
-msgstr ""
+msgstr "Windows share"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:137
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:139
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Secure WebDAV (HTTPS)"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:186
 msgid "Connecting..."
-msgstr ""
+msgstr "Povezivanje..."
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:210
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Nije dostupan spisak mogućnosti koje server može da pruži.\n"
+"Proveriti stanje/instalaciju \"gvfs\" podsistema."
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:288
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "Ne može da se otvori fascikla \"%s\" na \"%s\"."
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:298
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "Nije nađen server na lokaciji \"%s\""
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:333
 msgid "Try Again"
-msgstr ""
+msgstr "Pokušaj ponovo"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:398
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Proverite tačnost unesenih podataka za prijavu"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:428
 msgid "Continue"
-msgstr ""
+msgstr "Nastavi"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:753
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1143
 msgid "C_onnect"
-msgstr ""
+msgstr "Uspostavi ve_zu"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:878
 msgid "Connect to Server"
-msgstr ""
+msgstr "Veza do servera"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:896
 msgid "Server Details"
-msgstr ""
+msgstr "Detaljno o serveru"
 
 #: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:920
 msgid "_Server:"
