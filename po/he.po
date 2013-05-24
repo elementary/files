@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-19 14:09-0500\n"
-"PO-Revision-Date: 2013-05-23 03:54+0000\n"
+"PO-Revision-Date: 2013-05-24 03:02+0000\n"
 "Last-Translator: Uri Damsker <ud1955@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-23 05:49+0000\n"
+"X-Launchpad-Export-Date: 2013-05-24 06:08+0000\n"
 "X-Generator: Launchpad (build 16640)\n"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:110
@@ -30,29 +30,27 @@ msgstr "רשת"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:112
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:113
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:114
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:115
 msgid "FTP"
-msgstr "פרוטוקול התקשורת FTP"
+msgstr "FTP"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:116
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:117
 msgid "SMB"
-msgstr ""
-"פרוטוקול SMB - גישה משותפת אל קבצים, מדפסות, יציאות טוריות, ותקשורת בין "
-"מחשבים ברשת."
+msgstr "SMB"
 
 #: /home/codygarver/files/po/../src/View/LocationBar.vala:292
 msgid "Open in New Tab"
@@ -61,7 +59,7 @@ msgstr "פתיחה בלשונית חדשה"
 #: /home/codygarver/files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr "%u פריטים שנבחרו (%s)"
+msgstr "נבחרו %u פריטים (%s)"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
 msgid "Properties"
@@ -81,13 +79,13 @@ msgstr "תצוגה מקדימה"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:323
 msgid "Created"
-msgstr "נוצר"
+msgstr "מועד היצירה"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:325
 #: /home/codygarver/files/po/../src/View/ContextView.vala:344
 #: /home/codygarver/files/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr "שונה"
+msgstr "מועד השינוי"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:328
 msgid "Last Access"
@@ -120,7 +118,7 @@ msgstr "מיקום מקור"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
 msgid "Info:"
-msgstr "מידע:"
+msgstr "פרטים:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
 msgid "Other application..."
@@ -128,7 +126,7 @@ msgstr "יישום אחר..."
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
 msgid "Open with:"
-msgstr "פתח באמצעות:"
+msgstr "פתיחה באמצעות:"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
 msgid "Usage:"
@@ -141,7 +139,7 @@ msgstr "שימוש בהתקן:"
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:461
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr "%s חופשי מתוך %s  (%d%% בשימוש)"
+msgstr "%s פנויים מתוך %s  ‏(%d%% בשימוש)"
 
 #: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
 msgid "Read"
@@ -1338,6 +1336,7 @@ msgstr "ביטול יצירת קובץ ריק מתבנית"
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "ביטול יצירת תיקייה של %d"
+msgstr[1] "ביטול יצירת תיקיות של %d"
 
 #: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
