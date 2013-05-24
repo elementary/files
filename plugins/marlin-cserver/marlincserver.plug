@@ -1,0 +1,3 @@
+[Plugin]
+Name=Connect to server!
+File=libmarlincserver.so

@@ -54,6 +54,7 @@ GType marlin_connect_server_dialog_get_type (void);
 
 MarlinConnectServerDialog *marlin_connect_server_dialog_new (GtkWindow *window);
 
+void marlin_connect_server_dialog_show_connect_server_dialog (GtkWidget *widget);
 void marlin_connect_server_dialog_display_location_async (MarlinConnectServerDialog *self,
                                                           GFile *location,
                                                           GAsyncReadyCallback callback,

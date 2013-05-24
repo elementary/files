@@ -441,6 +441,16 @@ connect_dialog_request_additional_details (MarlinConnectServerDialog *self,
 static GSimpleAsyncResult *display_location_res = NULL;
 
 void
+marlin_connect_server_dialog_show_connect_server_dialog (GtkWidget *widget)
+{
+    GtkWidget *toplevel = gtk_widget_get_toplevel(widget);
+    if (gtk_widget_is_toplevel (toplevel)) {
+        MarlinConnectServerDialog *dialog = marlin_connect_server_dialog_new(toplevel);
+        gtk_widget_show(dialog);
+    }
+}
+
+void
 marlin_connect_server_dialog_display_location_async (MarlinConnectServerDialog *self,
                                                      GFile *location,
                                                      GAsyncReadyCallback callback,
