@@ -38,32 +38,12 @@ namespace Marlin.View {
         public Marlin.Places.Sidebar sidebar;
 
         public ViewContainer? current_tab;
-        public Granite.Widgets.CollapsiblePaned main_box;
-        public ContextView? contextview = null;
 
         public Gtk.ActionGroup main_actions;
         public Gtk.AccelGroup accel_group;
 
         public Granite.Widgets.ToolButtonWithMenu button_forward;
         public Granite.Widgets.ToolButtonWithMenu button_back;
-
-        private const int horizontal_contextplane_max_width = 910;
-        private const int horizontal_contextplane_max_height = 380; // after which we will go vertical
-
-        private Gtk.CssProvider css_provider = null;
-        private bool _auto_theme;
-        public bool auto_theme {
-            set {
-                _auto_theme = value;
-                if (value)
-                    load_css_style ();
-                else
-                    unload_css_style ();
-            }
-            get {
-                return _auto_theme;
-            }
-        }
 
         public bool can_go_up{
             set{
@@ -82,7 +62,7 @@ namespace Marlin.View {
                 main_actions.get_action("Back").set_sensitive(value);
             }
         }
-        
+
         public signal void item_hovered (GOF.File gof_file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
@@ -131,8 +111,10 @@ namespace Marlin.View {
             ui.insert_action_group(main_actions, 0);
             ui.ensure_update();
 
-            /* Menubar */
+            /* Menubar. We only need a menubar for special cases like global menus or HUD.
+               We don't need to show it in any other case */
             menu_bar = ui.get_widget("/MenuBar");
+            menu_bar.no_show_all = true;
             menu_bar.hide ();
 
             /* Topmenu */
@@ -140,10 +122,10 @@ namespace Marlin.View {
 
             /* Info Bar */
             info_bar = new Gtk.InfoBar ();
-            
+
             var label = new Gtk.Label (_("Files isn't your default file manager."));
             label.set_line_wrap (true);
-            
+
             var expander = new Label ("");
             expander.hexpand = true;
 
@@ -157,18 +139,18 @@ namespace Marlin.View {
                 make_marlin_default_fm (false);
                 show_infobar (false);
             });
-            
+
             var bbox = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
             bbox.set_spacing (3);
             bbox.pack_start (make_default, true, true, 5);
             bbox.pack_start (ignore, true, true, 5);
-            
+
             ((Box)info_bar.get_content_area ()).add (label);
             ((Box)info_bar.get_content_area ()).add (expander);
             ((Box)info_bar.get_content_area ()).add (bbox);
-            
+
             show_infobar (!is_marlin_mydefault_fm ());
-            
+
             /* Contents */
             tabs = new Notebook();
             tabs.show_border = false;
@@ -180,24 +162,13 @@ namespace Marlin.View {
             sidebar = new Marlin.Places.Sidebar (this);
             Preferences.settings.bind("sidebar-zoom-level", sidebar, "zoom-level", SettingsBindFlags.DEFAULT);
 
-            /* Devide main views into sidebars */
-            main_box = new Granite.Widgets.CollapsiblePaned (Orientation.VERTICAL);
-            main_box.show();
-
             var lside_pane = new Granite.Widgets.ThinPaned ();
             lside_pane.show();
 
             lside_pane.pack1(sidebar, false, false);
-            lside_pane.pack2(main_box, true, true);
+            lside_pane.pack2(tabs, true, true);
 
             sidebar.show ();
-            main_box.show ();
-
-            main_box.pack1(tabs, true, true);
-
-            ((Gtk.ToggleAction) main_actions.get_action("Show Hide Context Pane")).set_active(Preferences.settings.get_boolean("start-with-contextview"));
-
-            main_box.collapse_mode = Granite.CollapseMode.BOTTOM;
 
             /*/
             /* Pack up all the view
@@ -230,16 +201,8 @@ namespace Marlin.View {
             }
             show();
 
-            Preferences.settings.bind("show-menubar", menu_bar, "visible", 0);
-            Preferences.settings.bind("show-menubar", main_actions.get_action("Show Hide Menubar"), "active", 0);
-            //Preferences.settings.bind("show-menubar", top_menu.compact_menu_button, "visible", SettingsBindFlags.INVERT_BOOLEAN);
-            Preferences.settings.bind("show-hiddenfiles", main_actions.get_action("Show Hidden Files"), "active", 0);
-            Preferences.settings.bind("interpret-desktop-files", main_actions.get_action("Show Desktop Files"), "active", SettingsBindFlags.INVERT_BOOLEAN);
             Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
             Preferences.settings.bind("show-sidebar", main_actions.get_action("Show Hide Sidebar"), "active", 0);
-
-            /* auto-theme Marlin's specific widgets. */
-            Preferences.settings.bind("auto-theme", this, "auto-theme", SettingsBindFlags.DEFAULT);
 
             /*/
             /* Connect and abstract signals to local ones
@@ -247,7 +210,7 @@ namespace Marlin.View {
 
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
-                    Preferences.settings.set_boolean("maximized", 
+                    Preferences.settings.set_boolean("maximized",
                                                      (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED);
                 }
                 return false;
@@ -279,9 +242,6 @@ namespace Marlin.View {
 
             Gtk.Allocation win_alloc;
             get_allocation (out win_alloc);
-            resized (win_alloc);
-            
-            size_allocate.connect(resized);
 
             /* keyboard shortcuts bindings */
             if (app.is_first_window ((Gtk.Window) this)) {
@@ -297,21 +257,6 @@ namespace Marlin.View {
 
         }
 
-        private void load_css_style () {
-            css_provider = new Gtk.CssProvider();
-            try {
-                css_provider.load_from_data (CSS_STYLE, -1);
-                StyleContext.add_provider_for_screen (screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            } catch (Error e) {
-                warning ("Could not add css provider. Some widgets will not look as intended. %s", e.message);
-            }
-        }
-        
-        private void unload_css_style () {
-            if (css_provider != null)
-                StyleContext.remove_provider_for_screen (screen, css_provider);
-        }
-
         private void show_infobar (bool val) {
             if (val)
                 info_bar.show_all ();
@@ -323,7 +268,7 @@ namespace Marlin.View {
         public virtual signal void go_up () {
             action_go_up ();
         }
-        
+
         [Signal (action=true)]
         public virtual signal void edit_path () {
             action_edit_path ();
@@ -335,7 +280,7 @@ namespace Marlin.View {
 
 
         public GOF.Window.Slot? get_active_slot() {
-            if (current_tab != null) 
+            if (current_tab != null)
                 return current_tab.get_active_slot ();
             return null;
         }
@@ -363,17 +308,11 @@ namespace Marlin.View {
                     current_tab.update_location_state(false);
                     /* update radio action view state */
                     update_action_radio_view(current_tab.view_mode);
-                    /* sync ContextView */
-                    current_tab.sync_contextview();
                     /* sync selection */
                     if (cur_slot.view_box != null)
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
                     /* sync sidebar selection */
                     loading_uri (current_tab.slot.directory.file.uri, sidebar);
-
-                    /* focus the main view */
-                    //((FM.Directory.View) current_tab.slot.view_box).grab_focus();
-                    //current_tab.content.grab_focus();
                 }
             }
         }
@@ -391,7 +330,7 @@ namespace Marlin.View {
             button.clicked.connect(() => {
                 remove_tab(content);
             });
-            
+
             if (is_close_first ()) {
                 hbox.pack_start (button, false, false, 0);
                 hbox.pack_start (content.label, false, false, 0);
@@ -401,7 +340,7 @@ namespace Marlin.View {
             }
 
             hbox.show_all();
-            
+
             var eventbox = new EventBox();
             eventbox.add(hbox);
             eventbox.set_visible_window(false);
@@ -435,41 +374,11 @@ namespace Marlin.View {
 
             tabs.remove(view_container);
         }
-        
+
         public void add_window(File location){
             ((Marlin.Application) application).create_window (location, screen);
         }
 
-#if VALA_0_14
-        private void resized(Gtk.Allocation allocation){
-#else
-        private void resized(Gdk.Rectangle allocation){
-#endif
-            Orientation current_state = main_box.orientation;
-
-            int ctxview_orientation = Preferences.settings.get_enum("contextview-orientation");
-
-            Orientation future_state = Orientation.VERTICAL; // Because how Paned class works, this is inverted
-            switch (ctxview_orientation) {
-            case 0:
-                future_state = Orientation.VERTICAL;
-                break;
-            case 1:
-                future_state = Orientation.HORIZONTAL;
-                break;
-            case 2:
-                if(allocation.width  > horizontal_contextplane_max_width &&
-                   allocation.height > horizontal_contextplane_max_height){
-                    future_state = Orientation.HORIZONTAL;
-                }
-                break;
-            }
-
-            if(current_state != future_state){
-                main_box.orientation = future_state;
-            }
-        }
-       
         private void undo_actions_set_insensitive () {
             Gtk.Action action;
 
@@ -491,7 +400,7 @@ namespace Marlin.View {
                 action.set_tooltip (_("Undo the last action"));
             }
             action.set_sensitive (data != null && data.undo_label != null);
-            
+
             action = main_actions.get_action ("Redo");
             if (data != null && data.redo_label != null && sensitive) {
                 action.set_label (data.redo_label);
@@ -531,9 +440,6 @@ namespace Marlin.View {
             if (is_maximized == false)
                 Preferences.settings.set_string("geometry", geometry);
             Preferences.settings.set_boolean("maximized", is_maximized);
-
-            Preferences.settings.set_boolean("start-with-contextview",
-                ((Gtk.ToggleAction) main_actions.get_action("Show Hide Context Pane")).get_active());
         }
 
         public Gtk.ActionGroup get_actiongroup () {
@@ -544,18 +450,11 @@ namespace Marlin.View {
             top_menu.setup_items();
         }
 
-        /*
-        private void action_toolbar_editor_callback (Gtk.Action action) {
-            marlin_toolbar_editor_dialog_show (this);
-        }
-        */
-
         private void action_go_up () {
             current_tab.up();
         }
 
         private void action_edit_path () {
-            //top_menu.location_bar.state = false;
             top_menu.location_bar.get_child ().grab_focus ();
         }
 
@@ -566,17 +465,16 @@ namespace Marlin.View {
         private void action_go_forward (Gtk.Action action) {
             current_tab.forward();
         }
-       
+
         private uint t_reload_cb = 0;
-        
+
         private bool real_reload_callback () {
             current_tab.reload ();
             t_reload_cb = 0;
             return false;
         }
-        
-        private bool is_close_first () {
 
+        private bool is_close_first () {
             string path = "/apps/metacity/general/button_layout";
             GConf.Client cl = GConf.Client.get_default ();
             string key;
@@ -597,7 +495,7 @@ namespace Marlin.View {
                 return false;
 
         }
-        
+
         private bool is_marlin_mydefault_fm ()
         {
             bool trash_uri_is_default = false;
@@ -608,7 +506,7 @@ namespace Marlin.View {
 
             return foldertype_is_default && trash_uri_is_default;
         }
-        
+
         private void make_marlin_default_fm (bool active)
         {
             if (active) {
@@ -623,7 +521,7 @@ namespace Marlin.View {
                 }
             } else {
                 AppInfo.reset_type_associations ("inode/directory");
-                AppInfo.reset_type_associations ("x-scheme-handler/trash");            
+                AppInfo.reset_type_associations ("x-scheme-handler/trash");
             }
         }
 
@@ -636,43 +534,16 @@ namespace Marlin.View {
         /*private void action_show_hidden_files (Gtk.Action action) {
         }*/
 
-        private void action_show_hide_contextview (Gtk.Action action) {
-            if (((Gtk.ToggleAction)action).get_active()) {
-                current_tab.sync_contextview();
-                ((FM.Directory.View) current_tab.slot.view_box).sync_selection();
-            } else {
-                 //main_box.remove (contextview);
-                if (contextview != null) {
-                    contextview.destroy();
-                    contextview = null;
-                }
-            }
-        }
-
-
-        private void action_show_hide_menubar (Gtk.Action action) {
-            bool vis = true;
-            menu_bar.get("visible", &vis);
-            if (vis)
-                top_menu.app_menu.hide();
-            else
-                top_menu.app_menu.show_all();
-            }
-
-        /*private void action_show_hide_sidebar (Gtk.Action action) {
-            stdout.printf ("TODO\n");
-        }*/
-
         private void action_undo_callback (Gtk.Action action) {
             update_undo_actions ();
             undo_manager.undo (null);
         }
-        
+
         private void action_redo_callback (Gtk.Action action) {
             update_undo_actions ();
             undo_manager.redo (null);
         }
-        
+
         private void action_home_callback (Gtk.Action action) {
                 current_tab.path_changed(File.new_for_commandline_arg(Environment.get_home_dir()));
         }
@@ -684,17 +555,17 @@ namespace Marlin.View {
         private void action_go_to_network_callback (Gtk.Action action) {
                 current_tab.path_changed(File.new_for_commandline_arg(Marlin.NETWORK_URI));
         }
-        
+
         private void action_zoom_in_callback (Gtk.Action action) {
-            if (current_tab != null && current_tab.slot != null) 
+            if (current_tab != null && current_tab.slot != null)
                 ((FM.Directory.View) current_tab.slot.view_box).zoom_in ();
         }
-        
+
         private void action_zoom_out_callback (Gtk.Action action) {
-            if (current_tab != null && current_tab.slot != null) 
+            if (current_tab != null && current_tab.slot != null)
                 ((FM.Directory.View) current_tab.slot.view_box).zoom_out ();
         }
-        
+
         void action_next_tab()
         {
             if(tabs.page == tabs.get_n_pages() - 1)
@@ -708,7 +579,7 @@ namespace Marlin.View {
         }
 
         private void action_zoom_normal_callback (Gtk.Action action) {
-            if (current_tab != null && current_tab.slot != null) 
+            if (current_tab != null && current_tab.slot != null)
                 ((FM.Directory.View) current_tab.slot.view_box).zoom_normal ();
         }
 
@@ -735,7 +606,7 @@ namespace Marlin.View {
                 "translate", Marlin.TRANSLATE_URL,
                 "bug", Marlin.BUG_URL);
         }
-        
+
         void show_report() {
             try { Gtk.show_uri (screen, Marlin.BUG_URL, -1); }
             catch (Error e) { critical("Can't open the link"); }
@@ -836,7 +707,7 @@ namespace Marlin.View {
   /* label, accelerator */       N_("Previous Tab"), "<control>Page_Up",
   /* tooltip */                  "",
                                  action_previous_tab },
-  /* name, stock id */         { "Connect to Server", null, 
+  /* name, stock id */         { "Connect to Server", null,
   /* label, accelerator */       N_("Connect to _Server..."), null,
   /* tooltip */                  N_("Connect to a remote computer or shared disk"),
                                  action_connect_to_server_callback },
@@ -867,21 +738,6 @@ namespace Marlin.View {
                                  null,
                                  //action_show_hidden_files,
                                  true },
-  /* name, stock id */         { "Show Desktop Files", null,
-  /* label, accelerator */       N_("Show _Desktop Files"), "<control>D",
-  /* tooltip */                  N_("Toggle the display of desktop files"),
-                                 null,
-                                 true },
-  /* name, stock id */         { "Show Hide Context Pane", null,
-  /* label, accelerator */       N_("_Context Pane"), "F7",
-  /* tooltip */                  N_("Change the visibility of the context pane"),
-                                 action_show_hide_contextview,
-  /* is_active */                true },
-  /* name, stock id */         { "Show Hide Menubar", null,
-  /* label, accelerator */       N_("_Menubar"), "F8",
-  /* tooltip */                  N_("Change the visibility of this window's menubar"),
-                                 action_show_hide_menubar,
-  /* is_active */                true },
   /* name, stock id */         { "Show Hide Sidebar", null,
   /* label, accelerator */       N_("_Places"), "F9",
   /* tooltip */                  N_("Change the visibility of this window's side pane"),
@@ -900,80 +756,7 @@ namespace Marlin.View {
             { "view-as-columns", null,
               N_("Columns"), "<control>3", null,
               ViewMode.MILLER }
+     
         };
-
-        /*enum RowColor {
-            NONE,
-            BUTTER,
-            ORANGE,
-            CHOCOLATE,
-            CHAMELEON,
-            SKYBLUE,
-            PLUM,
-            RED,
-            LIGHTGRAY,
-            DARKGRAY,
-        }
-
-        static const Gtk.RadioActionEntry color_radio_entries[] = {
-            { "set-color-clear", null,
-              N_("None"), null, null,
-              RowColor.NONE },
-            { "set-color-butter", null,
-              N_("Butter"), null, null,
-              RowColor.BUTTER },
-            { "set-color-orange", null,
-              N_("Orange"), null, null,
-              RowColor.ORANGE },
-            { "set-color-chocolate", null,
-              N_("Chocolate"), null, null,
-              RowColor.CHOCOLATE },
-            { "set-color-chameleon", null,
-              N_("Green"), null, null,
-              RowColor.CHAMELEON },
-            { "set-color-skyblue", null,
-              N_("Sky Blue"), null, null,
-              RowColor.SKYBLUE },
-            { "set-color-plum", null,
-              N_("Plum"), null, null,
-              RowColor.PLUM },
-            { "set-color-red", null,
-              N_("Scarlet Red"), null, null,
-              RowColor.RED },
-            { "set-color-lightgray", null,
-              N_("Light Gray"), null, null,
-              RowColor.LIGHTGRAY },
-            { "set-color-darkgray", null,
-              N_("Dark Gray"), null, null,
-              RowColor.DARKGRAY }
-        };*/
-
-        private const string CSS_STYLE = """
-            ExoIconView.view {
-                 background-color: @base_color;
-            }
-
-            .sidebar,
-            .sidebar .view {
-                background-color: @bg_color;
-            }
-
-            MarlinViewWindow * {
-                -GtkPaned-handle-size: 1;
-            }
-
-            /*MarlinViewWindow .pane-separator {*/
-            VarkaWidgetsCollapsiblePaned,
-            VarkaWidgetsCollapsiblePaned.pane-separator {
-                -GtkPaned-handle-size: 1;
-                background-color: shade (@bg_color, 0.95);
-                border-color: @dark_bg_color;
-                border-style: solid;
-                border-width: 0;
-            }
-
-        """;
-
     }
 }
-
