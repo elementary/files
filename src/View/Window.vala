@@ -203,6 +203,7 @@ namespace Marlin.View {
 
             Preferences.settings.bind("show-sidebar", sidebar, "visible", 0);
             Preferences.settings.bind("show-sidebar", main_actions.get_action("Show Hide Sidebar"), "active", 0);
+            Preferences.settings.bind("show-hiddenfiles", main_actions.get_action("Show Hidden Files"), "active", 0);
 
             /*/
             /* Connect and abstract signals to local ones
@@ -531,9 +532,6 @@ namespace Marlin.View {
                 t_reload_cb = Timeout.add (90, real_reload_callback );
         }
 
-        /*private void action_show_hidden_files (Gtk.Action action) {
-        }*/
-
         private void action_undo_callback (Gtk.Action action) {
             update_undo_actions ();
             undo_manager.undo (null);
@@ -736,7 +734,6 @@ namespace Marlin.View {
   /* label, accelerator */       N_("Show _Hidden Files"), "<control>H",
   /* tooltip */                  N_("Toggle the display of hidden files in the current window"),
                                  null,
-                                 //action_show_hidden_files,
                                  true },
   /* name, stock id */         { "Show Hide Sidebar", null,
   /* label, accelerator */       N_("_Places"), "F9",
