@@ -35,7 +35,7 @@ public class Marlin.Plugins.Cserver : Marlin.Plugins.Base
             GOF.AbstractSlot slot = ((Object[])user_data)[1] as GOF.AbstractSlot;
 
             infobar = new InfoBar();
-            infobar.add_button(_("Connecto to Server..."), 0);
+            infobar.add_button(_("Connect to Server..."), 0);
             infobar.response.connect( (self, response) => {
                     Marlin.ConnectServerDialog.show_connect_server_dialog (self);
                 });
