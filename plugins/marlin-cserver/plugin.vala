@@ -17,20 +17,15 @@
 using Gtk;
 using Marlin;
 
-
 public class Marlin.Plugins.Cserver : Marlin.Plugins.Base
 {
     private InfoBar? infobar = null;
 
-    public Cserver()
-    {
-    }
+    public Cserver() {}
 
-    public override void directory_loaded(void* user_data)
-    {
+    public override void directory_loaded(void* user_data) {
         GOF.File file = ((Object[])user_data)[2] as GOF.File;
-        if (file.location.get_uri_scheme () == "network")
-        {
+        if (file.location.get_uri_scheme () == "network") {
             assert(((Object[])user_data)[1] is GOF.AbstractSlot);
             GOF.AbstractSlot slot = ((Object[])user_data)[1] as GOF.AbstractSlot;
 
@@ -48,7 +43,6 @@ public class Marlin.Plugins.Cserver : Marlin.Plugins.Base
 }
 
 
-public Marlin.Plugins.Base module_init()
-{
+public Marlin.Plugins.Base module_init() {
     return new Marlin.Plugins.Cserver();
 }
