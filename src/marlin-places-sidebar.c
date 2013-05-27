@@ -2331,9 +2331,9 @@ empty_trash_cb (GtkMenuItem           *item,
 }
 static void
 connect_server_cb (GtkMenuItem      *item,
-                MarlinPlacesSidebar *sidebar)
+                   MarlinPlacesSidebar *sidebar)
 {
-    marlin_connect_server_dialog_show_connect_server_dialog(GTK_WIDGET (sidebar->window));
+    marlin_connect_server_dialog_show(GTK_WIDGET (sidebar->window));
 }
 
 /* Handler for GtkWidget::key-press-event on the shortcuts list */

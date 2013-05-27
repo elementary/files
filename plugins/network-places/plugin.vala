@@ -15,7 +15,7 @@
  */
 
 // See src/marlin-connect-server-dialog.c
-extern void marlin_connect_server_dialog_show_connect_server_dialog (Gtk.Widget widget);
+extern void marlin_connect_server_dialog_show (Gtk.Widget widget);
 
 public class Files.Plugins.NetworkInfobar : Gtk.InfoBar {
     public NetworkInfobar () {
@@ -24,7 +24,7 @@ public class Files.Plugins.NetworkInfobar : Gtk.InfoBar {
     }
 
     public override void response (int response_id) {
-        marlin_connect_server_dialog_show_connect_server_dialog (this);
+        marlin_connect_server_dialog_show (this);
     }
 }
 

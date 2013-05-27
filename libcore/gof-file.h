@@ -153,7 +153,7 @@ typedef struct {
 	GOFFileOperationCallback callback;
 	gpointer callback_data;
 	gboolean is_rename;
-	
+
 	gpointer data;
 	GDestroyNotify free_data;
 } GOFFileOperation;
@@ -253,6 +253,8 @@ void            gof_file_query_thumbnail_update (GOFFile *file);
 gboolean        gof_file_can_unmount (GOFFile *file);
 
 gboolean        gof_file_is_remote_uri_scheme (GOFFile *file);
+gboolean        gof_file_is_network_uri_scheme (GOFFile *file);
+gboolean        gof_file_is_smb_uri_scheme (GOFFile *file);
 gboolean        gof_file_thumb_can_frame (GOFFile *file);
 
 G_END_DECLS
