@@ -2324,14 +2324,14 @@ stop_shortcut_cb (GtkMenuItem           *item,
 #endif
 
 static void
-empty_trash_cb (GtkMenuItem           *item,
-                MarlinPlacesSidebar *sidebar)
+empty_trash_cb (GtkMenuItem             *item,
+                MarlinPlacesSidebar     *sidebar)
 {
     marlin_file_operations_empty_trash (GTK_WIDGET (sidebar->window));
 }
 static void
-connect_server_cb (GtkMenuItem      *item,
-                   MarlinPlacesSidebar *sidebar)
+connect_server_cb (GtkMenuItem          *item,
+                   MarlinPlacesSidebar  *sidebar)
 {
     marlin_connect_server_dialog_show(GTK_WIDGET (sidebar->window));
 }
@@ -2460,7 +2460,7 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
     bookmarks_check_popup_sensitivity (sidebar);
 
     /* Connect to server menu item */
-    item = gtk_menu_item_new_with_mnemonic (_("Connect to Server..."));
+    item = gtk_menu_item_new_with_mnemonic (_("Connect to Server…"));
     sidebar->popup_menu_connect_server_item = item;
     g_signal_connect (item, "activate",
                       G_CALLBACK (connect_server_cb), sidebar);

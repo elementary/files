@@ -194,11 +194,18 @@ gof_file_compare_uri_schemes (GOFFile *file, const char **schemes)
 gboolean
 gof_file_is_remote_uri_scheme (GOFFile *file)
 {
-    if (gof_file_is_network_uri_scheme (file) || gof_file_is_smb_uri_scheme (file))
+    if (gof_file_is_root_network_folder (file))
         return TRUE;
 
     const char* SCHEMES[] = { "afp", "dav", "davs", "ftp", "sftp" };
     return gof_file_compare_uri_schemes (file, SCHEMES);
+}
+
+gboolean
+gof_file_is_root_network_folder (GOFFile *file)
+{
+    if (gof_file_is_network_uri_scheme (file) || gof_file_is_smb_uri_scheme (file))
+        return TRUE;
 }
 
 gboolean

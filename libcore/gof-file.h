@@ -253,6 +253,7 @@ void            gof_file_query_thumbnail_update (GOFFile *file);
 gboolean        gof_file_can_unmount (GOFFile *file);
 
 gboolean        gof_file_is_remote_uri_scheme (GOFFile *file);
+gboolean        gof_file_is_root_network_folder (GOFFile *file);
 gboolean        gof_file_is_network_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_smb_uri_scheme (GOFFile *file);
 gboolean        gof_file_thumb_can_frame (GOFFile *file);

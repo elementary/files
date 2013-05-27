@@ -693,7 +693,7 @@ fm_directory_view_activate_single_file (FMDirectoryView *view,
             break;
         }
     } else {
-        if (gof_file_is_network_uri_scheme(file) || gof_file_is_smb_uri_scheme(file)) {
+        if (gof_file_is_root_network_folder (file)) {
             fm_directory_view_load_location (view, file->target_location);
         } else {
             gof_file_open_single (file, screen, view->details->default_app);
