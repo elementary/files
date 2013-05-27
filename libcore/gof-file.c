@@ -174,25 +174,52 @@ gof_file_clear_info (GOFFile *file)
     file->can_unmount = FALSE;
 }
 
-gboolean
-gof_file_is_remote_uri_scheme (GOFFile *file)
+static gboolean
+gof_file_compare_uri_schemes (GOFFile *file, const char **schemes)
 {
-    /* try to determinate what appear to be remote. This is quite hazardous but gio doesn't offer any better option */
+    int iterator;
     char *scheme = g_file_get_uri_scheme (file->location);
 
-    /* g_vfs does not have a function to know if a supported protocol is remote */
-    if (!strcmp (scheme, "afp")
-     || !strcmp (scheme, "dav")
-     || !strcmp (scheme, "davs")
-     || !strcmp (scheme, "ftp")
-     || !strcmp (scheme, "sftp")
-     || !strcmp (scheme, "smb")) { 
-        g_free (scheme);
-        return TRUE;
+    for (iterator = 0; iterator < G_N_ELEMENTS (schemes); iterator++) {
+        if (!strcmp (scheme, schemes[iterator])) {
+            g_free (scheme);
+            return TRUE;
+        }
     }
 
     g_free (scheme);
     return FALSE;
+}
+
+gboolean
+gof_file_is_remote_uri_scheme (GOFFile *file)
+{
+    if (gof_file_is_root_network_folder (file))
+        return TRUE;
+
+    const char* SCHEMES[] = { "afp", "dav", "davs", "ftp", "sftp" };
+    return gof_file_compare_uri_schemes (file, SCHEMES);
+}
+
+gboolean
+gof_file_is_root_network_folder (GOFFile *file)
+{
+    if (gof_file_is_network_uri_scheme (file) || gof_file_is_smb_uri_scheme (file))
+        return TRUE;
+}
+
+gboolean
+gof_file_is_network_uri_scheme (GOFFile *file)
+{
+    const char* SCHEMES[] = { "network" };
+    return gof_file_compare_uri_schemes (file, SCHEMES);
+}
+
+gboolean
+gof_file_is_smb_uri_scheme (GOFFile *file)
+{
+    const char* SCHEMES[] = { "smb" };
+    return gof_file_compare_uri_schemes (file, SCHEMES);
 }
 
 void    gof_file_get_folder_icon_from_uri_or_path (GOFFile *file) 
@@ -413,7 +440,7 @@ gof_file_update (GOFFile *file)
     if (file->is_directory) { 
         gof_file_get_folder_icon_from_uri_or_path (file);
     } else if (g_file_info_get_file_type(file->info) == G_FILE_TYPE_MOUNTABLE) { 
-        file->icon = g_themed_icon_new_with_default_fallbacks ("folder-remote-symbolic");
+        file->icon = g_themed_icon_new_with_default_fallbacks ("folder-remote");
     } else {
         const gchar *ftype = gof_file_get_ftype (file);
         if (ftype != NULL && file->icon == NULL)
