@@ -347,7 +347,7 @@ gof_file_update (GOFFile *file)
         const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
         /*g_message ("%s target uri: %s", G_STRFUNC, target_uri);*/
         if (target_uri != NULL) {
-            file->target_location_uri = g_strdup (target_urimak);
+            file->target_location_uri = g_strdup (target_uri);
             file->target_location = g_file_new_for_uri (target_uri);
             gof_file_target_location_update (file);
             
