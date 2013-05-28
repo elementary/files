@@ -205,8 +205,20 @@ gof_file_is_remote_uri_scheme (GOFFile *file)
 gboolean
 gof_file_is_root_network_folder (GOFFile *file)
 {
-    return (gof_file_is_network_uri_scheme (file)
-       || (file->target_location_uri != NULL && !strcmp ("smb:///", file->target_location_uri)));
+    if (gof_file_is_network_uri_scheme (file))
+        return TRUE;
+
+    if (gof_file_is_smb_uri_scheme(file) && file->target_location_uri != NULL) {
+        gchar **split = g_strsplit(file->target_location_uri,"/",4);
+        if (split[3]==NULL || !strcmp(split[3],"")) {
+            g_strfreev(split);
+            return TRUE;
+        } else {
+            g_strfreev(split);
+        }
+    }
+
+    return FALSE;
 }
 
 gboolean
