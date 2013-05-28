@@ -156,6 +156,7 @@ gof_file_clear_info (GOFFile *file)
     g_return_if_fail (file != NULL);
 
     _g_object_unref0 (file->target_location);
+    _g_free0 (file->target_location_uri);
     _g_object_unref0 (file->mount);
     _g_free0(file->utf8_collation_key);
     _g_free0(file->formated_type);
@@ -204,8 +205,8 @@ gof_file_is_remote_uri_scheme (GOFFile *file)
 gboolean
 gof_file_is_root_network_folder (GOFFile *file)
 {
-    return gof_file_is_network_uri_scheme (file)
-        || gof_file_is_smb_uri_scheme (file);
+    return (gof_file_is_network_uri_scheme (file)
+       || (file->target_location_uri != NULL && !strcmp ("smb:///", file->target_location_uri)));
 }
 
 gboolean
@@ -336,6 +337,8 @@ gof_file_update (GOFFile *file)
         const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
         /*g_message ("%s target uri: %s", G_STRFUNC, target_uri);*/
         if (target_uri != NULL) {
+            int uri_size = strlen (target_uri)+1;
+            file->target_location_uri = g_memdup (target_uri, uri_size);
             file->target_location = g_file_new_for_uri (target_uri);
             gof_file_target_location_update (file);
             
@@ -816,6 +819,7 @@ static void gof_file_init (GOFFile *file) {
     file->info = NULL;
     file->location = NULL;
     file->target_location = NULL;
+    file->target_location_uri = NULL;
     file->icon = NULL;
     file->pix = NULL;
     file->color = 0;
@@ -874,6 +878,7 @@ static void gof_file_finalize (GObject* obj) {
     _g_free0 (file->custom_icon_name);
 
     _g_object_unref0 (file->target_location);
+    _g_free0 (file->target_location_uri);
     _g_object_unref0 (file->mount);
     /* TODO remove the target_gof */
     _g_free0 (file->thumbnail_path);

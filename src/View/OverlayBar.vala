@@ -215,7 +215,9 @@ namespace Marlin.View {
         private void update_status ()
         {
             if (count == 1) {
-                if (!goffile.is_folder ()) {
+                if (goffile.is_network_uri_scheme ()) {
+                    status.set_label (goffile.target_location_uri);
+                } else if (!goffile.is_folder ()) {
                     status.set_label ("%s - %s (%s)".printf (goffile.info.get_name (), goffile.formated_type, goffile.format_size));
                 } else {
                     status.set_label ("%s - %s".printf (goffile.info.get_name (), goffile.formated_type));

@@ -70,6 +70,7 @@ struct _GOFFile {
     GFileInfo       *info;
     GFile           *location;
     GFile           *target_location;
+    gchar           *target_location_uri;
     GOFFile         *target_gof;
     GFile           *directory;
     gchar           *custom_display_name;

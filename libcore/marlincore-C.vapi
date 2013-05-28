@@ -136,6 +136,7 @@ namespace GOF {
         public void remove_from_caches ();
         public bool is_gone;
         public GLib.File location;
+        public string target_location_uri;
         public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;
         public GLib.FileInfo? info;
@@ -196,6 +197,7 @@ namespace GOF {
         public static int compare_by_display_name (File file1, File file2);
 
         public bool is_remote_uri_scheme ();
+        public bool is_root_network_folder ();
         public bool is_network_uri_scheme ();
         public bool is_smb_uri_scheme ();
     }
