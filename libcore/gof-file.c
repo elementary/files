@@ -221,7 +221,6 @@ gof_file_is_location_uri_default (GOFFile *file)
             return TRUE;
         }
         g_strfreev(split);
-        return FALSE;
     }
     return FALSE;
 }
