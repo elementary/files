@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-05-19 14:09-0500\n"
+"POT-Creation-Date: 2013-05-27 23:24+0000\n"
 "PO-Revision-Date: 2012-11-30 12:44+0000\n"
 "Last-Translator: kulkke <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
@@ -15,865 +15,489 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-20 05:52+0000\n"
-"X-Generator: Launchpad (build 16626)\n"
+"X-Launchpad-Export-Date: 2013-05-28 05:56+0000\n"
+"X-Generator: Launchpad (build 16640)\n"
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:345
-msgid "Trash"
-msgstr "Çöp"
-
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:563
-msgid "Network"
-msgstr "Ağ"
-
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:112
-msgid "AFP"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:113
-msgid "DAV"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:114
-msgid "DAVS"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:115
-msgid "FTP"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:116
-msgid "SFTP"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:117
-msgid "SMB"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:292
-msgid "Open in New Tab"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/OverlayBar.vala:247
-#, c-format
-msgid "%u items selected (%s)"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
 msgstr "Özellikler"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:126
 msgid "General"
 msgstr "Genel"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:134
 msgid "More"
 msgstr "Daha fazla"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:146
 msgid "Preview"
 msgstr "Önizleme"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:323
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:333
 msgid "Created"
 msgstr "Oluşturuldu"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:325
-#: /home/codygarver/files/po/../src/View/ContextView.vala:344
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:335
+#: /home/cody/files/po/../src/fm-list-view.c:59
 msgid "Modified"
 msgstr "Değiştirildi"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:328
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:338
 msgid "Last Access"
 msgstr "Son Erişim"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:334
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:344
 msgid "Deleted"
 msgstr "Silindi"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:339
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:349
 msgid "MimeType"
 msgstr "MimeTürü"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:347
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:357
 msgid "MimeTypes"
 msgstr "Mime Türleri"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:351
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:361
 msgid "Location"
 msgstr "Konum"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:353
-#: /home/codygarver/files/po/../src/View/ContextView.vala:340
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:363
 msgid "Target"
 msgstr "Hedef"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:369
 msgid "Origin Location"
 msgstr "Kaynak Konum"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:379
 msgid "Info:"
 msgstr "Bilgi:"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:414
 msgid "Other application..."
 msgstr "Dİğer uygulama..."
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:438
 msgid "Open with:"
 msgstr "Birlikte aç:"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:459
 msgid "Usage:"
 msgstr "Kullanım:"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:464
 msgid "Device usage:"
 msgstr "Aygıt kullanımı:"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:461
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:471
 #, c-format
 msgid "%s free of %s (%d%% used)"
 msgstr "%s, %s'den muaf (%d%% kullanıldı)"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:610
 msgid "Read"
 msgstr "Oku"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:605
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:615
 msgid "Write"
 msgstr "Yaz"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:610
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:620
 msgid "Execute"
 msgstr "Çalıştır"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:828
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:841
-#: /home/codygarver/files/po/../src/View/ContextView.vala:345
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:838
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:851
 msgid "Owner"
 msgstr "Sahibi"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:843
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:855
 msgid "Group"
 msgstr "Grup"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:859
 msgid "Everyone"
 msgstr "Herkes"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:1105
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:1115
 msgid "Select an aplication to open "
 msgstr "Açmak için bir uygulama seçin "
 
-#: /home/codygarver/files/po/../src/View/Window.vala:144
-msgid "Files isn't your default file manager."
-msgstr "Files sizin varsayılan dosya yöneticiniz değil."
+#: /home/cody/files/po/../src/View/OverlayBar.vala:247
+#, c-format
+msgid "%u items selected (%s)"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/View/Window.vala:150
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3422
-msgid "Set as default"
-msgstr "Varsayılan olarak ayarla"
+#: /home/cody/files/po/../src/View/ViewContainer.vala:144
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:300
+msgid "Home"
+msgstr "Ana Sayfa"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:155
-msgid "Ignore"
-msgstr "Yoksay"
+#: /home/cody/files/po/../src/View/ViewContainer.vala:146
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:370
+msgid "File System"
+msgstr "Dosya Sistemi"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:490
-msgid "Undo"
-msgstr "Geri Al"
+#: /home/cody/files/po/../src/View/ViewContainer.vala:151
+msgid "(as Administrator)"
+msgstr "(yönetici olarak)"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:491
-#: /home/codygarver/files/po/../src/View/Window.vala:777
-msgid "Undo the last action"
-msgstr "Son eylemi geri al"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:500
-msgid "Redo"
-msgstr "Yinele"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:501
-#: /home/codygarver/files/po/../src/View/Window.vala:780
-msgid "Redo the last action"
-msgstr "En son eylemi yeniden yap"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:755
-msgid "_File"
-msgstr "_Dosya"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:756
-msgid "_Edit"
-msgstr "_Düzenle"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:757
-msgid "_View"
-msgstr "_Görünüm"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:758
-msgid "_Go"
-msgstr "_Git"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:759
-msgid "_Help"
-msgstr "_Yardım"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:761
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:9
-msgid "New _Window"
-msgstr "Yeni _Pencere"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:762
-msgid "Open another Files window for the displayed location"
-msgstr "Gösterilen konum için başka bir Files penceresi aç"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:765
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:8
-msgid "New _Tab"
-msgstr "Yeni _Sekme"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:766
-msgid "Open another tab for the displayed location"
-msgstr "Gösterilen konum için başka bir sekme aç"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:770
-msgid "_Close"
-msgstr "_Kapat"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:771
-msgid "Close this folder"
-msgstr "Bu dizini kapat"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:776
-msgid "_Undo"
-msgstr "_Geri al"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:779
-msgid "_Redo"
-msgstr "_Yinele"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:782
-msgid "Open _Parent"
-msgstr "Üst _dizini aç"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:783
-msgid "Open the parent folder"
-msgstr "Üst dizini aç"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:785
-msgid "_Back"
-msgstr "_Geri"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:786
-msgid "Go to the previous visited location"
-msgstr "Önceki ziyaret edilen konuma git"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:789
-msgid "_Forward"
-msgstr "_İleri"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:790
-msgid "Go to the next visited location"
-msgstr "Sonraki ziyaret edilen konuma git"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:792
-msgid "_Reload"
-msgstr "_Yenile"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:793
-msgid "Reload the current location"
-msgstr "Mevcut konumu yeniden yükle"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:796
-msgid "_Home Folder"
-msgstr "_Başlangıç Dizini"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:797
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:304
-msgid "Open your personal folder"
-msgstr "Kişisel dizininizi açın"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:800
-msgid "_Trash"
-msgstr "_Çöp"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:801
-msgid "Open your personal trash folder"
-msgstr "Kişisel çöp dizininizi açın"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:804
-msgid "_Network"
-msgstr "_Ağ"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:805
-msgid "Browse bookmarked and local network locations"
-msgstr "Yer imi oluşturulmuş ve yerel ağ konumlarını göz at"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:808
-msgid "Zoom _In"
-msgstr "_Yakınlaş"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:809
-msgid "Increase the view size"
-msgstr "Görünüm boyutunu arttır"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:820
-msgid "Zoom _Out"
-msgstr "_Uzaklaştır"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:821
-msgid "Decrease the view size"
-msgstr "Görünüm boyutunu azalt"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:828
-msgid "Normal Si_ze"
-msgstr "Normal _Boyut"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:829
-msgid "Use the normal view size"
-msgstr "Normal görünüm boyutunu kullan"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:832
-msgid "Next Tab"
-msgstr "Sonraki Sekme"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:836
-msgid "Previous Tab"
-msgstr "Önceki Sekme"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:840
-msgid "Connect to _Server..."
-msgstr "_Sunucuya Bağlan..."
-
-#: /home/codygarver/files/po/../src/View/Window.vala:841
-msgid "Connect to a remote computer or shared disk"
-msgstr "Uzaktaki bilgisayara ya da paylaşılan diske bağlan"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:844
-msgid "_About"
-msgstr "_Hakkında"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:845
-msgid "Display credits"
-msgstr "Hazırlayanları göster"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:848
-msgid "Report a Problem..."
-msgstr "Bir problem bildir..."
-
-#: /home/codygarver/files/po/../src/View/Window.vala:849
-msgid "File a bug on Launchpad"
-msgstr "Launchpad'de sorun bildirin"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:852
-msgid "Get Help Online..."
-msgstr "Çevrimiçi Yardım Alın..."
-
-#: /home/codygarver/files/po/../src/View/Window.vala:856
-msgid "Translate This Application..."
-msgstr "Bu Uygulamayı Tercüme Edin..."
-
-#: /home/codygarver/files/po/../src/View/Window.vala:865
-msgid "Show _Hidden Files"
-msgstr "_Gizli Dosyaları Göster"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:866
-msgid "Toggle the display of hidden files in the current window"
-msgstr "Mevcut pencerede gizli dosyaların gösterilip gösterilmemesini seç"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:871
-msgid "Show _Desktop Files"
-msgstr "_Masaüstü Dosyalarını Göster"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:872
-msgid "Toggle the display of desktop files"
-msgstr "Masaüstü dosyalarının gösterimini aç/kapa"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:876
-msgid "_Context Pane"
-msgstr "_Bağlam Paneli"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:877
-msgid "Change the visibility of the context pane"
-msgstr "İçerik çerçevesinin görünürlüğünü değiştir"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:881
-msgid "_Menubar"
-msgstr "_Menü Çubuğu"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:882
-msgid "Change the visibility of this window's menubar"
-msgstr "Menü çubuğunun saydamlığını değiştir"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:886
-msgid "_Places"
-msgstr "_Yerler"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:887
-msgid "Change the visibility of this window's side pane"
-msgstr "Bu pencerenin yan çubuğunun görünürlüğünü değiştir"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:895
-msgid "Icon"
-msgstr "Simge"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:898
-msgid "List"
-msgstr "Liste"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:901
-msgid "Columns"
-msgstr "Sütunlar"
-
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
+#: /home/cody/files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
 msgstr "Dizin mevcut değil"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
+#: /home/cody/files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
 msgstr "Files %s dizinini bulamıyor"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/cody/files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
 msgstr "Oluştur"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
+#: /home/cody/files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
 msgstr "%s dizinini oluştur"
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:336
-msgid "Name"
-msgstr "Ad"
+#: /home/cody/files/po/../src/View/LocationBar.vala:108
+msgid "AFP"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:337
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Tür"
+#: /home/cody/files/po/../src/View/LocationBar.vala:109
+msgid "DAV"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/View/ContextView.vala:342
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Boyut"
+#: /home/cody/files/po/../src/View/LocationBar.vala:110
+msgid "DAVS"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:146
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:299
-msgid "Home"
-msgstr "Ana Sayfa"
+#: /home/cody/files/po/../src/View/LocationBar.vala:111
+msgid "FTP"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:148
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:369
-msgid "File System"
-msgstr "Dosya Sistemi"
+#: /home/cody/files/po/../src/View/LocationBar.vala:112
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:564
+msgid "Network"
+msgstr "Ağ"
 
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:153
-msgid "(as Administrator)"
-msgstr "(yönetici olarak)"
+#: /home/cody/files/po/../src/View/LocationBar.vala:113
+msgid "SFTP"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/fm-columns-view.c:82
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:573
-#: /home/codygarver/files/po/../src/fm-list-view.c:616
-msgid "This folder is empty."
-msgstr "Bu dizin boş."
+#: /home/cody/files/po/../src/View/LocationBar.vala:114
+msgid "SMB"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/fm-columns-view.c:186
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:139
-#: /home/codygarver/files/po/../src/fm-list-view.c:199
+#: /home/cody/files/po/../src/View/LocationBar.vala:115
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:346
+msgid "Trash"
+msgstr "Çöp"
+
+#: /home/cody/files/po/../src/View/LocationBar.vala:289
+msgid "Open in New Tab"
+msgstr ""
+
+#: /home/cody/files/po/../src/View/Window.vala:126
+msgid "Files isn't your default file manager."
+msgstr "Files sizin varsayılan dosya yöneticiniz değil."
+
+#: /home/cody/files/po/../src/View/Window.vala:132
+#: /home/cody/files/po/../src/fm-directory-view.c:3426
+msgid "Set as default"
+msgstr "Varsayılan olarak ayarla"
+
+#: /home/cody/files/po/../src/View/Window.vala:137
+msgid "Ignore"
+msgstr "Yoksay"
+
+#: /home/cody/files/po/../src/View/Window.vala:400
+msgid "Undo"
+msgstr "Geri Al"
+
+#: /home/cody/files/po/../src/View/Window.vala:401
+#: /home/cody/files/po/../src/View/Window.vala:646
+msgid "Undo the last action"
+msgstr "Son eylemi geri al"
+
+#: /home/cody/files/po/../src/View/Window.vala:410
+msgid "Redo"
+msgstr "Yinele"
+
+#: /home/cody/files/po/../src/View/Window.vala:411
+#: /home/cody/files/po/../src/View/Window.vala:649
+msgid "Redo the last action"
+msgstr "En son eylemi yeniden yap"
+
+#: /home/cody/files/po/../src/View/Window.vala:624
+msgid "_File"
+msgstr "_Dosya"
+
+#: /home/cody/files/po/../src/View/Window.vala:625
+msgid "_Edit"
+msgstr "_Düzenle"
+
+#: /home/cody/files/po/../src/View/Window.vala:626
+msgid "_View"
+msgstr "_Görünüm"
+
+#: /home/cody/files/po/../src/View/Window.vala:627
+msgid "_Go"
+msgstr "_Git"
+
+#: /home/cody/files/po/../src/View/Window.vala:628
+msgid "_Help"
+msgstr "_Yardım"
+
+#: /home/cody/files/po/../src/View/Window.vala:630
+#: /home/cody/files/po/../src/DesktopLauncher.vala:9
+msgid "New _Window"
+msgstr "Yeni _Pencere"
+
+#: /home/cody/files/po/../src/View/Window.vala:631
+msgid "Open another Files window for the displayed location"
+msgstr "Gösterilen konum için başka bir Files penceresi aç"
+
+#: /home/cody/files/po/../src/View/Window.vala:634
+#: /home/cody/files/po/../src/DesktopLauncher.vala:8
+msgid "New _Tab"
+msgstr "Yeni _Sekme"
+
+#: /home/cody/files/po/../src/View/Window.vala:635
+msgid "Open another tab for the displayed location"
+msgstr "Gösterilen konum için başka bir sekme aç"
+
+#: /home/cody/files/po/../src/View/Window.vala:639
+msgid "_Close"
+msgstr "_Kapat"
+
+#: /home/cody/files/po/../src/View/Window.vala:640
+msgid "Close this folder"
+msgstr "Bu dizini kapat"
+
+#: /home/cody/files/po/../src/View/Window.vala:645
+msgid "_Undo"
+msgstr "_Geri al"
+
+#: /home/cody/files/po/../src/View/Window.vala:648
+msgid "_Redo"
+msgstr "_Yinele"
+
+#: /home/cody/files/po/../src/View/Window.vala:651
+msgid "Open _Parent"
+msgstr "Üst _dizini aç"
+
+#: /home/cody/files/po/../src/View/Window.vala:652
+msgid "Open the parent folder"
+msgstr "Üst dizini aç"
+
+#: /home/cody/files/po/../src/View/Window.vala:654
+msgid "_Back"
+msgstr "_Geri"
+
+#: /home/cody/files/po/../src/View/Window.vala:655
+msgid "Go to the previous visited location"
+msgstr "Önceki ziyaret edilen konuma git"
+
+#: /home/cody/files/po/../src/View/Window.vala:658
+msgid "_Forward"
+msgstr "_İleri"
+
+#: /home/cody/files/po/../src/View/Window.vala:659
+msgid "Go to the next visited location"
+msgstr "Sonraki ziyaret edilen konuma git"
+
+#: /home/cody/files/po/../src/View/Window.vala:661
+msgid "_Reload"
+msgstr "_Yenile"
+
+#: /home/cody/files/po/../src/View/Window.vala:662
+msgid "Reload the current location"
+msgstr "Mevcut konumu yeniden yükle"
+
+#: /home/cody/files/po/../src/View/Window.vala:665
+msgid "_Home Folder"
+msgstr "_Başlangıç Dizini"
+
+#: /home/cody/files/po/../src/View/Window.vala:666
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:305
+msgid "Open your personal folder"
+msgstr "Kişisel dizininizi açın"
+
+#: /home/cody/files/po/../src/View/Window.vala:669
+msgid "_Trash"
+msgstr "_Çöp"
+
+#: /home/cody/files/po/../src/View/Window.vala:670
+msgid "Open your personal trash folder"
+msgstr "Kişisel çöp dizininizi açın"
+
+#: /home/cody/files/po/../src/View/Window.vala:673
+msgid "_Network"
+msgstr "_Ağ"
+
+#: /home/cody/files/po/../src/View/Window.vala:674
+msgid "Browse bookmarked and local network locations"
+msgstr "Yer imi oluşturulmuş ve yerel ağ konumlarını göz at"
+
+#: /home/cody/files/po/../src/View/Window.vala:677
+msgid "Zoom _In"
+msgstr "_Yakınlaş"
+
+#: /home/cody/files/po/../src/View/Window.vala:678
+msgid "Increase the view size"
+msgstr "Görünüm boyutunu arttır"
+
+#: /home/cody/files/po/../src/View/Window.vala:689
+msgid "Zoom _Out"
+msgstr "_Uzaklaştır"
+
+#: /home/cody/files/po/../src/View/Window.vala:690
+msgid "Decrease the view size"
+msgstr "Görünüm boyutunu azalt"
+
+#: /home/cody/files/po/../src/View/Window.vala:697
+msgid "Normal Si_ze"
+msgstr "Normal _Boyut"
+
+#: /home/cody/files/po/../src/View/Window.vala:698
+msgid "Use the normal view size"
+msgstr "Normal görünüm boyutunu kullan"
+
+#: /home/cody/files/po/../src/View/Window.vala:701
+msgid "Next Tab"
+msgstr "Sonraki Sekme"
+
+#: /home/cody/files/po/../src/View/Window.vala:705
+msgid "Previous Tab"
+msgstr "Önceki Sekme"
+
+#: /home/cody/files/po/../src/View/Window.vala:709
+msgid "Connect to _Server..."
+msgstr "_Sunucuya Bağlan..."
+
+#: /home/cody/files/po/../src/View/Window.vala:710
+msgid "Connect to a remote computer or shared disk"
+msgstr "Uzaktaki bilgisayara ya da paylaşılan diske bağlan"
+
+#: /home/cody/files/po/../src/View/Window.vala:713
+msgid "_About"
+msgstr "_Hakkında"
+
+#: /home/cody/files/po/../src/View/Window.vala:714
+msgid "Display credits"
+msgstr "Hazırlayanları göster"
+
+#: /home/cody/files/po/../src/View/Window.vala:717
+msgid "Report a Problem..."
+msgstr "Bir problem bildir..."
+
+#: /home/cody/files/po/../src/View/Window.vala:718
+msgid "File a bug on Launchpad"
+msgstr "Launchpad'de sorun bildirin"
+
+#: /home/cody/files/po/../src/View/Window.vala:721
+msgid "Get Help Online..."
+msgstr "Çevrimiçi Yardım Alın..."
+
+#: /home/cody/files/po/../src/View/Window.vala:725
+msgid "Translate This Application..."
+msgstr "Bu Uygulamayı Tercüme Edin..."
+
+#: /home/cody/files/po/../src/View/Window.vala:734
+msgid "Show _Hidden Files"
+msgstr "_Gizli Dosyaları Göster"
+
+#: /home/cody/files/po/../src/View/Window.vala:735
+msgid "Toggle the display of hidden files in the current window"
+msgstr "Mevcut pencerede gizli dosyaların gösterilip gösterilmemesini seç"
+
+#: /home/cody/files/po/../src/View/Window.vala:739
+msgid "_Places"
+msgstr "_Yerler"
+
+#: /home/cody/files/po/../src/View/Window.vala:740
+msgid "Change the visibility of this window's side pane"
+msgstr "Bu pencerenin yan çubuğunun görünürlüğünü değiştir"
+
+#: /home/cody/files/po/../src/View/Window.vala:748
+msgid "Icon"
+msgstr "Simge"
+
+#: /home/cody/files/po/../src/View/Window.vala:751
+msgid "List"
+msgstr "Liste"
+
+#: /home/cody/files/po/../src/View/Window.vala:754
+msgid "Columns"
+msgstr "Sütunlar"
+
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:139
+#: /home/cody/files/po/../src/fm-columns-view.c:186
+#: /home/cody/files/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "%s, %s olarak yeniden adlandırılamadı"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:125
-msgid "SSH"
-msgstr "SSH"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:128
-msgid "Public FTP"
-msgstr "Halka Açık FTP"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:130
-msgid "FTP (with login)"
-msgstr "FTP (giriş gerektiren)"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:133
-msgid "AFP (Apple Filing Protocol)"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:135
-msgid "Windows share"
-msgstr "Windows paylaşımı"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:137
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:139
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Güvenli WebDAV (HTTPS)"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:186
-msgid "Connecting..."
-msgstr "Bağlanıyor..."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:210
-msgid ""
-"Can't load the supported server method list.\n"
-"Please check your gvfs installation."
-msgstr ""
-"Desteklenen sunucu yöntem listesi yüklenemiyor.\n"
-"Lütfen gvfs kurulumunuzu kontrol edin."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:288
-#, c-format
-msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "\"%s\" dizini \"%s\" üzerinde açılamıyor."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:298
-#, c-format
-msgid "The server at \"%s\" cannot be found."
-msgstr "\"%s\" konumundaki sunucu bulunamıyor."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:333
-msgid "Try Again"
-msgstr "Tekrar Dene"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:398
-msgid "Please verify your user details."
-msgstr "Lütfen kullanıcı ayrıntılarınızı doğrulayın."
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:428
-msgid "Continue"
-msgstr "Devam Et"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:753
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1143
-msgid "C_onnect"
-msgstr "_Bağlan"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:878
-msgid "Connect to Server"
-msgstr "Sunucuya Bağlan"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:896
-msgid "Server Details"
-msgstr "Sunucu Ayrıntıları"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:920
-msgid "_Server:"
-msgstr "_Sunucu:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:940
-msgid "_Port:"
-msgstr "_Port:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:958
-msgid "_Type:"
-msgstr "_Tür:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1027
-msgid "Sh_are:"
-msgstr "P_aylaş:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1042
-msgid "_Folder:"
-msgstr "_Dizin:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1060
-msgid "User Details"
-msgstr "Kullanıcı Ayrıntıları"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1083
-msgid "_Domain name:"
-msgstr "Alan a_dı:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1098
-msgid "_User name:"
-msgstr "_Kullanıcı adı:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1113
-msgid "Pass_word:"
-msgstr "Par_ola:"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1129
-msgid "_Remember this password"
-msgstr "Bu parolayı hatı_rla"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1232
-msgid "Operation cancelled"
-msgstr "İşlem iptal edildi"
-
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:114
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:164
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:419
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:475
-msgid "File Operations"
-msgstr "Dosya İşlemleri"
-
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:123
-msgid "Show Details"
-msgstr "Ayrıntıları Göster"
-
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:158
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:180
-#, c-format
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "%'d dosya işlemi etkin"
-
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:286
-msgid "Show Copy Dialog"
-msgstr "Kopyalama Diyaloğunu Göster"
-
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:298
-msgid "Cancel All In-progress Actions"
-msgstr "Devam Eden Tüm Eylemleri İptal Et"
-
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:476
-msgid "All file operations have been successfully completed"
-msgstr "Tüm dosya işlemleri başarıyla tamamlandı"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1173
-msgid "Invalid filename provided by XDS drag site"
-msgstr "XDS sürükleme alanından sağlanan dosya adı geçersiz."
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1331
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "\"%s\" URL'i için bir bağ oluşturulamadı"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1816
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Seçili öğeyi açmak için \"%s\" kullan"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1968
-#, c-format
-msgid "_Open With %s"
-msgstr "%s İle _Aç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1974
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3502
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2374
-msgid "_Open"
-msgstr "_Aç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1990
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "Yeni %'d _Sekmede Aç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1994
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3514
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2382
-msgid "Open in New _Tab"
-msgstr "Yeni S_ekmede Aç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1999
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "Yeni %'d _Pencerede Aç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:2003
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2389
-msgid "Open in New _Window"
-msgstr "Yeni _Pencerede Aç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3474
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr "Seçili dosyaları Yapıştır komutuyla taşımaya hazırla"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3478
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr "Seçili dosyaları Yapıştır komutuyla kopyalamaya hazırla"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3482
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Daha önce Kes ya da Kopyala komutu yardımıyla seçilen dosyaları taşı ya da "
-"kopyala"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3485
-msgid "Paste Into Folder"
-msgstr "Dizine Yapıştır"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3486
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Daha önce bir Kes veya Kopyala komutuyla seçilmiş dosyaları seçilen dizine "
-"taşı veya kopyala"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3489
-msgid "_Rename..."
-msgstr "_Yeniden Adlandır..."
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3490
-msgid "Rename selected item"
-msgstr "Seçili öğeyi yeniden adlandır"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3493
-msgid "Create New _Folder"
-msgstr "Yeni _Dizin Oluştur"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3494
-msgid "Create a new empty folder inside this folder"
-msgstr "Bu dizin içinde boş bir dizin oluştur"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3496
-msgid "Create New _File"
-msgstr "Yeni _Dosya Oluştur"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3498
-msgid "_Empty File"
-msgstr "_Boş Dosya"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3499
-msgid "Create a new empty file inside this folder"
-msgstr "Bu dizin içinde boş bir dosya oluştur"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3503
-msgid "Open the selected item"
-msgstr "Seçili öğeyi aç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3510
-msgid "Open in new Window"
-msgstr "Yeni pencerede aç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3511
-msgid "Open each selected item in a new window"
-msgstr "Her seçili öğeyi yeni pencerede aç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3515
-msgid "Open each selected item in a new tab"
-msgstr "Her seçili öğeyi yeni bir sekmede aç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3517
-msgid "Open Wit_h"
-msgstr "_Birlikte Aç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3518
-msgid "Choose a program with which to open the selected item"
-msgstr "Seçili dosyayı açacak uygulamayı seç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3520
-msgid "Other _Application..."
-msgstr "Başka _Uygulama..."
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3521
-msgid "Choose another application with which to open the selected item"
-msgstr "Seçili dosyayı açacak başka bir uygulamayı seç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3524
-msgid "Mo_ve to Trash"
-msgstr "Çöpe _Taşı"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3525
-msgid "Move each selected item to the Trash"
-msgstr "Tüm seçilen öğeleri Çöpe taşı"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3528
-msgid "_Delete Permanently"
-msgstr "_Kalıcı Olarak Sil"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3529
-msgid "Delete each selected item, without moving to the Trash"
-msgstr "Tüm seçilen öğeleri Çöpe göndermeden sil"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3532
-msgid "_Restore"
-msgstr "_Geri Getir"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3536
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3190
-msgid "Select All"
-msgstr "Tümünü Seç"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3540
-msgid "_Properties"
-msgstr "_Özellikler"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3541
-msgid "View or modify the properties of each selected item"
-msgstr "Seçili her öğenin özelliklerini göster ya da değiştir"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3647
-msgid "Set Color:"
-msgstr "Rengi Ayarla"
-
-#: /home/codygarver/files/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Simge dizinini listeleme"
-
-#: /home/codygarver/files/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Simge görünümü"
-
-#: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "Panoda yapıştırılacak birşey yok"
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
 msgstr "Öğ_eleri Düzenle"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:288
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
 msgstr "_Ters Sıra"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:289
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
 msgstr "Simgeleri ters sıra ile göster"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
 msgstr "_Ada Göre"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
 msgstr "Simgeleri adlarına göre sırala"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
 msgstr "_Büyüklüğe Göre"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
 msgstr "Simgeleri büyüklüklerine göre sırala"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
 msgstr "_Türe Göre"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
 msgstr "Simgeleri türlerine göre sırala"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
 msgstr "_Değişim Tarihine Göre"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
 msgstr "Simgeleri değişim tarihlerine göre sırala"
 
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Girdi Yöntemleri"
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:573
+#: /home/cody/files/po/../src/fm-columns-view.c:82
+#: /home/cody/files/po/../src/fm-list-view.c:616
+msgid "This folder is empty."
+msgstr "Bu dizin boş."
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:445
+#: /home/cody/files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
 msgstr "Araç Çubuğunu Özelleştir"
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:464
+#: /home/cody/files/po/../src/marlin-toolbar-editor.c:464
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
@@ -881,31 +505,307 @@ msgstr ""
 "Araç çubuğunda gösterilecek öğeleri seçin. Öğeler sürükle bırak ile "
 "düzenlenebilir."
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:478
+#: /home/cody/files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
 msgstr "Kullanılabilir Öğeler"
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:497
+#: /home/cody/files/po/../src/marlin-toolbar-editor.c:497
 msgid "Displayed Items"
 msgstr "Gösterilen Öğeler"
 
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Dosya adı"
+#: /home/cody/files/po/../src/eel-editable-label.c:3190
+#: /home/cody/files/po/../src/fm-directory-view.c:3540
+msgid "Select All"
+msgstr "Tümünü Seç"
 
-#: /home/codygarver/files/po/../src/exo-tree-view.c:167
+#: /home/cody/files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Girdi Yöntemleri"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:286
+msgid "Personal"
+msgstr "Kişisel"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:291
+msgid "Your common places and bookmarks"
+msgstr "Ortak yerler ve yer imleriniz."
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:348
+msgid "Open the trash"
+msgstr "Çöpü aç"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:358
+msgid "Devices"
+msgstr "Aygıtlar"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:363
+msgid "Your local partitions and devices"
+msgstr "Yerel bölüm ve aygıtlarınız"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:372
+msgid "Open the contents of the File System"
+msgstr "Dosya Sisteminin içeriğini aç"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:431
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:456
+#, c-format
+msgid "Mount and open %s"
+msgstr "%s'i bağla ve aç"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:569
+msgid "Your network places"
+msgstr "Ağ bağlantılarım"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:600
+msgid "Entire network"
+msgstr "Tüm ağ"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:602
+msgid "Browse the contents of the network"
+msgstr "Ağ içeriğine gözat"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1590
+msgid "_Start"
+msgstr "_Başlat"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1591
+msgid "_Stop"
+msgstr "_Durdur"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1596
+msgid "_Power On"
+msgstr "_Güç Açık"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1597
+msgid "_Safely Remove Drive"
+msgstr "_Sürücüyü Güvenle Kaldır"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1600
+msgid "_Connect Drive"
+msgstr "Sürücüyü _Bağla"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1601
+msgid "_Disconnect Drive"
+msgstr "Sürücünün Bağlantısını _Kes"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1604
+msgid "_Start Multi-disk Device"
+msgstr "_Çoklu-disk Aygıtını Başlat"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1605
+msgid "_Stop Multi-disk Device"
+msgstr "Çoklu-disk Aygıtını _Durdur"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1609
+msgid "_Unlock Drive"
+msgstr "Sürücü Kilidini K_aldır"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1610
+msgid "_Lock Drive"
+msgstr "Sürücüyü K_ilitle"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1684
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2231
+#, c-format
+msgid "Unable to start %s"
+msgstr "%s başlatılamadı"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1974
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2003
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2032
+#, c-format
+msgid "Unable to eject %s"
+msgstr "%s çıkartılamadı"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2177
+#, c-format
+msgid "Unable to poll %s for media changes"
+msgstr "Ortam değişikliği için %s yoklanamadı"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2287
+#, c-format
+msgid "Unable to stop %s"
+msgstr "%s durdurulamadı"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2385
+#: /home/cody/files/po/../src/fm-directory-view.c:1978
+#: /home/cody/files/po/../src/fm-directory-view.c:3506
+msgid "_Open"
+msgstr "_Aç"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2393
+#: /home/cody/files/po/../src/fm-directory-view.c:1998
+#: /home/cody/files/po/../src/fm-directory-view.c:3518
+msgid "Open in New _Tab"
+msgstr "Yeni S_ekmede Aç"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2400
+#: /home/cody/files/po/../src/fm-directory-view.c:2007
+msgid "Open in New _Window"
+msgstr "Yeni _Pencerede Aç"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2409
+msgid "Remove"
+msgstr "Sil"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2418
+msgid "Rename..."
+msgstr "Yeniden Adlandır..."
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2431
+msgid "_Mount"
+msgstr "_Bağla"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2438
+msgid "_Unmount"
+msgstr "Bağı Ka_ldır"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2445
+msgid "_Eject"
+msgstr "_Çıkart"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2453
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1422
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2312
+msgid "Empty _Trash"
+msgstr "Çöpü _Boşalt"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2463
+msgid "Connect to Server…"
+msgstr ""
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:125
+msgid "SSH"
+msgstr "SSH"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:128
+msgid "Public FTP"
+msgstr "Halka Açık FTP"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:130
+msgid "FTP (with login)"
+msgstr "FTP (giriş gerektiren)"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:133
+msgid "AFP (Apple Filing Protocol)"
+msgstr ""
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:135
+msgid "Windows share"
+msgstr "Windows paylaşımı"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:137
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:139
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Güvenli WebDAV (HTTPS)"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:186
+msgid "Connecting..."
+msgstr "Bağlanıyor..."
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:210
+msgid ""
+"Can't load the supported server method list.\n"
+"Please check your gvfs installation."
+msgstr ""
+"Desteklenen sunucu yöntem listesi yüklenemiyor.\n"
+"Lütfen gvfs kurulumunuzu kontrol edin."
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:288
+#, c-format
+msgid "The folder \"%s\" cannot be opened on \"%s\"."
+msgstr "\"%s\" dizini \"%s\" üzerinde açılamıyor."
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:298
+#, c-format
+msgid "The server at \"%s\" cannot be found."
+msgstr "\"%s\" konumundaki sunucu bulunamıyor."
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:333
+msgid "Try Again"
+msgstr "Tekrar Dene"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:398
+msgid "Please verify your user details."
+msgstr "Lütfen kullanıcı ayrıntılarınızı doğrulayın."
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:428
+msgid "Continue"
+msgstr "Devam Et"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:766
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1156
+msgid "C_onnect"
+msgstr "_Bağlan"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:891
+msgid "Connect to Server"
+msgstr "Sunucuya Bağlan"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:909
+msgid "Server Details"
+msgstr "Sunucu Ayrıntıları"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:933
+msgid "_Server:"
+msgstr "_Sunucu:"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:953
+msgid "_Port:"
+msgstr "_Port:"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:971
+msgid "_Type:"
+msgstr "_Tür:"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1040
+msgid "Sh_are:"
+msgstr "P_aylaş:"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1055
+msgid "_Folder:"
+msgstr "_Dizin:"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1073
+msgid "User Details"
+msgstr "Kullanıcı Ayrıntıları"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1096
+msgid "_Domain name:"
+msgstr "Alan a_dı:"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1111
+msgid "_User name:"
+msgstr "_Kullanıcı adı:"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1126
+msgid "Pass_word:"
+msgstr "Par_ola:"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1142
+msgid "_Remember this password"
+msgstr "Bu parolayı hatı_rla"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1245
+msgid "Operation cancelled"
+msgstr "İşlem iptal edildi"
+
+#: /home/cody/files/po/../src/exo-tree-view.c:167
 msgid "Single Click"
 msgstr "Tek Tıklama"
 
-#: /home/codygarver/files/po/../src/exo-tree-view.c:168
+#: /home/cody/files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
 msgstr "Görünümde öğelerin tek tıklama ile aktive edilebilirliği"
 
-#: /home/codygarver/files/po/../src/exo-tree-view.c:184
+#: /home/cody/files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
 msgstr "Tek Tıklama Zaman Aşımı"
 
-#: /home/codygarver/files/po/../src/exo-tree-view.c:185
+#: /home/cody/files/po/../src/exo-tree-view.c:185
 msgid ""
 "The amount of time after which the item under the mouse cursor will be "
 "selected automatically in single click mode"
@@ -913,27 +813,35 @@ msgstr ""
 "Tek tıklama modunda bir süre geçtikten sonra fare altındaki öğe otomatik "
 "olarak seçilecektir."
 
-#: /home/codygarver/files/po/../src/marlin-application.c:423
+#: /home/cody/files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Görünüş modu"
+
+#: /home/cody/files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "Görünüş modu"
+
+#: /home/cody/files/po/../src/marlin-application.c:423
 msgid "Show the version of the program."
 msgstr "Uygulamanın sürümünü göster."
 
-#: /home/codygarver/files/po/../src/marlin-application.c:427
+#: /home/cody/files/po/../src/marlin-application.c:427
 msgid "Open uri(s) in new tab"
 msgstr "Adres(ler)i yeni sekmede aç"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:429
+#: /home/cody/files/po/../src/marlin-application.c:429
 msgid "Quit Files."
 msgstr "Files'dan çık."
 
-#: /home/codygarver/files/po/../src/marlin-application.c:431
+#: /home/cody/files/po/../src/marlin-application.c:431
 msgid "Enable debug logging"
 msgstr "Hata ayıklama günlüğünü etkin kıl"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:432
+#: /home/cody/files/po/../src/marlin-application.c:432
 msgid "[URI...]"
 msgstr "[Adres...]"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:441
+#: /home/cody/files/po/../src/marlin-application.c:441
 msgid ""
 "\n"
 "\n"
@@ -943,608 +851,261 @@ msgstr ""
 "\n"
 "Dosya yöneticisi ile dosya sistemine gözat"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:461
+#: /home/cody/files/po/../src/marlin-application.c:461
 msgid "--quit cannot be used with URIs."
 msgstr "--quit URI adresleriyle birlikte kullanılamaz."
 
-#: /home/codygarver/files/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Görünüş modu"
+#: /home/cody/files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "Panoda yapıştırılacak birşey yok"
 
-#: /home/codygarver/files/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "Görünüş modu"
+#: /home/cody/files/po/../src/fm-directory-view.c:1177
+msgid "Invalid filename provided by XDS drag site"
+msgstr "XDS sürükleme alanından sağlanan dosya adı geçersiz."
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:285
-msgid "Personal"
-msgstr "Kişisel"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:290
-msgid "Your common places and bookmarks"
-msgstr "Ortak yerler ve yer imleriniz."
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:347
-msgid "Open the trash"
-msgstr "Çöpü aç"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:357
-msgid "Devices"
-msgstr "Aygıtlar"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:362
-msgid "Your local partitions and devices"
-msgstr "Yerel bölüm ve aygıtlarınız"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:371
-msgid "Open the contents of the File System"
-msgstr "Dosya Sisteminin içeriğini aç"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:430
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:455
+#: /home/cody/files/po/../src/fm-directory-view.c:1335
 #, c-format
-msgid "Mount and open %s"
-msgstr "%s'i bağla ve aç"
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "\"%s\" URL'i için bir bağ oluşturulamadı"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:568
-msgid "Your network places"
-msgstr "Ağ bağlantılarım"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:599
-msgid "Entire network"
-msgstr "Tüm ağ"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:601
-msgid "Browse the contents of the network"
-msgstr "Ağ içeriğine gözat"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1585
-msgid "_Start"
-msgstr "_Başlat"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1586
-msgid "_Stop"
-msgstr "_Durdur"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1591
-msgid "_Power On"
-msgstr "_Güç Açık"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1592
-msgid "_Safely Remove Drive"
-msgstr "_Sürücüyü Güvenle Kaldır"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1595
-msgid "_Connect Drive"
-msgstr "Sürücüyü _Bağla"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1596
-msgid "_Disconnect Drive"
-msgstr "Sürücünün Bağlantısını _Kes"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1599
-msgid "_Start Multi-disk Device"
-msgstr "_Çoklu-disk Aygıtını Başlat"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1600
-msgid "_Stop Multi-disk Device"
-msgstr "Çoklu-disk Aygıtını _Durdur"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1604
-msgid "_Unlock Drive"
-msgstr "Sürücü Kilidini K_aldır"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1605
-msgid "_Lock Drive"
-msgstr "Sürücüyü K_ilitle"
-
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1679
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2226
+#: /home/cody/files/po/../src/fm-directory-view.c:1820
 #, c-format
-msgid "Unable to start %s"
-msgstr "%s başlatılamadı"
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Seçili öğeyi açmak için \"%s\" kullan"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1969
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1998
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2027
+#: /home/cody/files/po/../src/fm-directory-view.c:1972
 #, c-format
-msgid "Unable to eject %s"
-msgstr "%s çıkartılamadı"
+msgid "_Open With %s"
+msgstr "%s İle _Aç"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2172
+#: /home/cody/files/po/../src/fm-directory-view.c:1994
 #, c-format
-msgid "Unable to poll %s for media changes"
-msgstr "Ortam değişikliği için %s yoklanamadı"
+msgid "Open in %'d New _Tabs"
+msgstr "Yeni %'d _Sekmede Aç"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2282
+#: /home/cody/files/po/../src/fm-directory-view.c:2003
 #, c-format
-msgid "Unable to stop %s"
-msgstr "%s durdurulamadı"
+msgid "Open in %'d New _Windows"
+msgstr "Yeni %'d _Pencerede Aç"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2398
-msgid "Remove"
-msgstr "Sil"
+#: /home/cody/files/po/../src/fm-directory-view.c:3478
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr "Seçili dosyaları Yapıştır komutuyla taşımaya hazırla"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2407
-msgid "Rename..."
-msgstr "Yeniden Adlandır..."
+#: /home/cody/files/po/../src/fm-directory-view.c:3482
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr "Seçili dosyaları Yapıştır komutuyla kopyalamaya hazırla"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2420
-msgid "_Mount"
-msgstr "_Bağla"
+#: /home/cody/files/po/../src/fm-directory-view.c:3486
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Daha önce Kes ya da Kopyala komutu yardımıyla seçilen dosyaları taşı ya da "
+"kopyala"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2427
-msgid "_Unmount"
-msgstr "Bağı Ka_ldır"
+#: /home/cody/files/po/../src/fm-directory-view.c:3489
+msgid "Paste Into Folder"
+msgstr "Dizine Yapıştır"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2434
-msgid "_Eject"
-msgstr "_Çıkart"
+#: /home/cody/files/po/../src/fm-directory-view.c:3490
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Daha önce bir Kes veya Kopyala komutuyla seçilmiş dosyaları seçilen dizine "
+"taşı veya kopyala"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2442
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2312
-msgid "Empty _Trash"
-msgstr "Çöpü _Boşalt"
+#: /home/cody/files/po/../src/fm-directory-view.c:3493
+msgid "_Rename..."
+msgstr "_Yeniden Adlandır..."
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:103
+#: /home/cody/files/po/../src/fm-directory-view.c:3494
+msgid "Rename selected item"
+msgstr "Seçili öğeyi yeniden adlandır"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3497
+msgid "Create New _Folder"
+msgstr "Yeni _Dizin Oluştur"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3498
+msgid "Create a new empty folder inside this folder"
+msgstr "Bu dizin içinde boş bir dizin oluştur"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3500
+msgid "Create New _File"
+msgstr "Yeni _Dosya Oluştur"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3502
+msgid "_Empty File"
+msgstr "_Boş Dosya"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3503
+msgid "Create a new empty file inside this folder"
+msgstr "Bu dizin içinde boş bir dosya oluştur"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3507
+msgid "Open the selected item"
+msgstr "Seçili öğeyi aç"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3514
+msgid "Open in new Window"
+msgstr "Yeni pencerede aç"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3515
+msgid "Open each selected item in a new window"
+msgstr "Her seçili öğeyi yeni pencerede aç"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3519
+msgid "Open each selected item in a new tab"
+msgstr "Her seçili öğeyi yeni bir sekmede aç"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3521
+msgid "Open Wit_h"
+msgstr "_Birlikte Aç"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3522
+msgid "Choose a program with which to open the selected item"
+msgstr "Seçili dosyayı açacak uygulamayı seç"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3524
+msgid "Other _Application..."
+msgstr "Başka _Uygulama..."
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3525
+msgid "Choose another application with which to open the selected item"
+msgstr "Seçili dosyayı açacak başka bir uygulamayı seç"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3528
+msgid "Mo_ve to Trash"
+msgstr "Çöpe _Taşı"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3529
+msgid "Move each selected item to the Trash"
+msgstr "Tüm seçilen öğeleri Çöpe taşı"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3532
+msgid "_Delete Permanently"
+msgstr "_Kalıcı Olarak Sil"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3533
+msgid "Delete each selected item, without moving to the Trash"
+msgstr "Tüm seçilen öğeleri Çöpe göndermeden sil"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3536
+msgid "_Restore"
+msgstr "_Geri Getir"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3544
+msgid "_Properties"
+msgstr "_Özellikler"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3545
+msgid "View or modify the properties of each selected item"
+msgstr "Seçili her öğenin özelliklerini göster ya da değiştir"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3651
+msgid "Set Color:"
+msgstr "Rengi Ayarla"
+
+#: /home/cody/files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Dosya adı"
+
+#: /home/cody/files/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Boyut"
+
+#: /home/cody/files/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Tür"
+
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:419
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:475
+msgid "File Operations"
+msgstr "Dosya İşlemleri"
+
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:123
+msgid "Show Details"
+msgstr "Ayrıntıları Göster"
+
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:180
+#, c-format
+msgid "%'d file operation active"
+msgid_plural "%'d file operations active"
+msgstr[0] "%'d dosya işlemi etkin"
+
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:286
+msgid "Show Copy Dialog"
+msgstr "Kopyalama Diyaloğunu Göster"
+
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:298
+msgid "Cancel All In-progress Actions"
+msgstr "Devam Eden Tüm Eylemleri İptal Et"
+
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:476
+msgid "All file operations have been successfully completed"
+msgstr "Tüm dosya işlemleri başarıyla tamamlandı"
+
+#: /home/cody/files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Simge dizinini listeleme"
+
+#: /home/cody/files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Simge görünümü"
+
+#: /home/cody/files/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
 msgstr "Buraya _Taşı"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:108
+#: /home/cody/files/po/../src/marlin-dnd.c:108
 msgid "_Copy Here"
 msgstr "Buraya _Kopyala"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:113
+#: /home/cody/files/po/../src/marlin-dnd.c:113
 msgid "_Link Here"
 msgstr "Buraya _Bağ Koy"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:118
+#: /home/cody/files/po/../src/marlin-dnd.c:118
 msgid "Set as _Background"
 msgstr "_Arkaplan Olarak Ayarla"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:125
+#: /home/cody/files/po/../src/marlin-dnd.c:125
 msgid "Cancel"
 msgstr "İptal"
 
-#: /home/codygarver/files/po/../src/marlin-dnd.c:217
+#: /home/cody/files/po/../src/marlin-dnd.c:217
 #, c-format
 msgid "Failed to execute file \"%s\""
 msgstr "\"%s\" dosyası çalıştırılamadı"
 
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:6
+#: /home/cody/files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "Dosyalarınızı tarayın"
 
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:7
+#: /home/cody/files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
 msgstr "Dosya Yöneticisi"
 
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:10
+#: /home/cody/files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
 msgstr "_Yönetici Olarak Yeni Pencere"
 
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:11
+#: /home/cody/files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
 msgstr "Dosyalar"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1202
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Kopyalanmış %d öğeyi sil"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete '%s'"
-msgstr "Sil: '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1212
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Kopyalanmış %d öğeyi sil"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1223
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "%d öğeyi geri taşı: '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1227
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "'%s' '%s''e geri taşı"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "'%s' öğesinin adını '%s' olarak değiştir"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1450
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "%d öğeyi çöpten geri yükle"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1263
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Geri yükle: '%s' > '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1274
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "%d öğeyi çöpe geri taşı"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1277
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "'%s'i çöpe geri taşı"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Delete links to %d items"
-msgstr "%d öğeye olan bağlantıyı sil"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1289
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "'%s'in bağlantısını sil"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1299
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "'%s' içine eklenmiş öğelerin özgün izinlerini geri yükle"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1307
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "'%s''nin özgün izinlerini geri yükle"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1316
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "'%s''nin grubunu '%s''ye geri yükle"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1326
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "'%s''nin sahibini '%s''ye geri yükle"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1365
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "%d öğeyi şuraya kopyala: '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1369
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "'%s''i '%s''e kopyala"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1377
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "%d öğenin eşi '%s' içinde"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1382
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "'%s' öğesinin eşi '%s' içinde"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1390
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "%d öğeyi şuraya taşı: '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1394
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "'%s''i '%s''e taşı"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1412
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Şablondan yeni bir '%s' dosya oluştur; "
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1419
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Boş bir dosya oluştur: '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Yeni bir dizin oluştur: '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1434
-#, c-format
-msgid "Move %d items to trash"
-msgstr "%d öğeyi çöpe taşı"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1440
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "'%s''i çöpe taşı"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Çöpten geri yükle: '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1462
-#, c-format
-msgid "Create links to %d items"
-msgstr "%d öğeye bağlantı oluştur"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1465
-#, c-format
-msgid "Create link to '%s'"
-msgstr "'%s''e bağlantı oluştur"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "'%s' içerisine konulu öğelerin izinlerini ayarla"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1482
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "'%s''in izinlerini belirle"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1491
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "'%s' grubunu '%s' e ayarla"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1501
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Sahibini belirle: '%s' > '%s'"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1533
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "%d öğesinin kopyasını _Geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1538
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "%d öğesinin çoğaltılmasını _Geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1543
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "%d öğenin taşınmasını _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1548
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "%d öğenin yeniden adlandırılmasını _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1552
-msgid "_Undo creation of an empty file"
-msgstr "Boş bir dosya oluşturulmasını _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1555
-msgid "_Undo creation of a file from template"
-msgstr "Şablondan bir dosya oluşturulmasını _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1559
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "%d dizinin oluşturulmasını _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1564
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "%d öğenin çöpe taşınmasını _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1569
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "%d öğenin çöpten geri yüklenmesini _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1574
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "%d öğeye bağlantı oluşturulmasını _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1579
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "%d öğenin silinmesini _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1584
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "%d öğenin özyineli izin değişikliğini _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1590
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "%d öğenin izin değişikliğini _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1595
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "%d öğenin grup değişikliğini _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1600
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "%d öğe sahibinin değişikliğini _geri al"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1628
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "%d öğenin kopyalanmasını _yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1633
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "%d öğesinin çoğaltılmasını _Yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1638
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "%d öğenin taşınmasını _yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1643
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "%d öğenin yeniden adlandırılmasını _yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1647
-msgid "_Redo creation of an empty file"
-msgstr "Boş bir dosya oluşturulmasını _yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1650
-msgid "_Redo creation of a file from template"
-msgstr "Şablondan boş bir dosya oluşturulmasını _yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1654
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "%d dizin oluşturulmasını _yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1659
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "%d öğenin çöpe taşınmasını _yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1664
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "%d öğenin çöpten geri yüklenmesini _yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1669
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "%d öğeye bağlantı oluşturulmasını _yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1674
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "%d öğenin silinmesini _yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1679
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "%d öğenin özyineli izin değişikliğini _yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1685
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "%d öğenin izinlerinin değiştirilmesini yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1690
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "%d öğenin grup değişikliğini yinele"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1695
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "%d öğe sahibinin değiştirilmesini yinele"
-
-#: /home/codygarver/files/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (geçersiz Unikod)"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:253
-#, c-format
-msgid "link to %s"
-msgstr "%s'e bağla"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1712
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1750
-msgid "No Exec field specified"
-msgstr "Exec alanı belirtilmemiş"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1770
-msgid "No URL field specified"
-msgstr "URL alanı belirtilmemiş"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1776
-msgid "Invalid desktop file"
-msgstr "Geçersiz masaüstü dosyası"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2066
-msgid "Slashes are not allowed in filenames"
-msgstr "Dosya adlarında taksim işareti kullanılamaz"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2086
-msgid "Toplevel files cannot be renamed"
-msgstr "Üst düzey dosyalar yeniden adlandırılamıyor"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Bügün %-I:%M %p"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Dün %-I:%M %p"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:119
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "\"%s\" özgün konumu belirlenemedi "
-
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:122
-msgid "The item cannot be restored from trash"
-msgstr "Öge çöpten geri getirilemedi"
-
-#: /home/codygarver/files/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr "Daha _fazla ayrıntı göster"
-
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:210
-msgid "Preparing"
-msgstr "Hazırlanıyor"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:361
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:361
 #, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "%s dizini birleştirilsin mi?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:364
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:364
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -1552,297 +1113,352 @@ msgstr ""
 "Birleştirme işlemi, dizindeki kopyalanan dosyalarla çakışan herhangi bir "
 "dosya değiştirilmeden önce onay isteyecek."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:369
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:369
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı adlı daha eski bir dizin zaten var."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:373
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:373
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı adlı daha yeni bir dizin zaten var."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:377
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:377
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı isimde başka bir dizin zaten var."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:382
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:382
 msgid "Replacing it will remove all files in the folder."
 msgstr "Değiştirdiğinizde dizindeki tüm dosyalar kaldırılacak."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:384
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "%s dizinini yenisi ile değiştir?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:386
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:386
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı adlı başka bir dizin zaten var."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:391
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:391
 #, c-format
 msgid "Replace file \"%s\"?"
 msgstr "%s dosyasını yenisiyle değiştir?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:393
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will overwrite its content."
 msgstr "Yerine koymak, var olan içeriğin üzerine yazılmasına neden olacak."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:397
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı adlı daha eski bir dosya zaten var."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:401
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:401
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı adlı daha yeni bir dosya zaten var."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:405
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:405
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "\"%s\" içinde aynı adlı başka bir dosya zaten var."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:460
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:460
 msgid "Original file"
 msgstr "Özgün dosya"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:482
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:482
 msgid "Size:"
 msgstr "Boyut:"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:485
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:485
 msgid "Type:"
 msgstr "Tür:"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:488
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:488
 msgid "Last modified:"
 msgstr "Son düzenlenme tarihi:"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:481
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:481
 msgid "Replace with"
 msgstr "Bununla değiştir"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:506
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:506
 msgid "Merge"
 msgstr "Birleştir"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:700
 msgid "_Select a new name for the destination"
 msgstr "Hedef için yeni bir ad _seçin"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:714
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:714
 msgid "Reset"
 msgstr "Sıfırla"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:726
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
 msgstr "Bu eylemi tüm dosyalara uygula"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:737
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:200
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:200
 msgid "_Skip"
 msgstr "_Atla"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:742
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:742
 msgid "Re_name"
 msgstr "Ye_niden Adlandır"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:748
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:748
 msgid "Replace"
 msgstr "Yerine Koy"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:821
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:821
 msgid "File conflict"
 msgstr "Dosya çakışması"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:201
+#: /home/cody/files/po/../libcore/gof-file.c:280
+#, c-format
+msgid "link to %s"
+msgstr "%s'e bağla"
+
+#: /home/cody/files/po/../libcore/gof-file.c:1739
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
+
+#: /home/cody/files/po/../libcore/gof-file.c:1777
+msgid "No Exec field specified"
+msgstr "Exec alanı belirtilmemiş"
+
+#: /home/cody/files/po/../libcore/gof-file.c:1797
+msgid "No URL field specified"
+msgstr "URL alanı belirtilmemiş"
+
+#: /home/cody/files/po/../libcore/gof-file.c:1803
+msgid "Invalid desktop file"
+msgstr "Geçersiz masaüstü dosyası"
+
+#: /home/cody/files/po/../libcore/gof-file.c:2093
+msgid "Slashes are not allowed in filenames"
+msgstr "Dosya adlarında taksim işareti kullanılamaz"
+
+#: /home/cody/files/po/../libcore/gof-file.c:2113
+msgid "Toplevel files cannot be renamed"
+msgstr "Üst düzey dosyalar yeniden adlandırılamıyor"
+
+#: /home/cody/files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Bügün %-I:%M %p"
+
+#: /home/cody/files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Dün %-I:%M %p"
+
+#: /home/cody/files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y at %-I:%M %p"
+
+#: /home/cody/files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (geçersiz Unikod)"
+
+#: /home/cody/files/po/../libcore/marlin-file-utilities.c:119
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "\"%s\" özgün konumu belirlenemedi "
+
+#: /home/cody/files/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "Öge çöpten geri getirilemedi"
+
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "Tü_münü Atla"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:202
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "_Tekrar Dene"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:203
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "Hepsini _Sil"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:204
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "_Değiştir"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:205
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "_Tümünü Değiştir"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:206
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "_Birleştir"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:207
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "_Hepsini Birleştir"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:208
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "Yine de _Kopyala"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:294
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d saniye"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:299
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:310
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:299
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d dakika"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:309
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d saat"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:317
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "yaklaşık %'d saat"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:393
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "%s öğesine bağlantı"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:397
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "%s öğesine bir diğer bağlantı"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:413
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d. %s bağlantısı"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:417
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d. %s bağlantısı"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:421
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d. %s bağlantısı"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:425
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d. %s bağlantısı"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:463
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr " (kopya)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:465
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr " (başka kopya)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:468
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:470
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:472
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:482
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:468
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:470
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:472
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr ". kopya)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:475
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr ". kopya)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:477
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr ". kopya)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:479
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr ". kopya)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:496
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (kopya)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:498
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (başka kopya)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:501
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:503
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:505
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:519
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:501
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:503
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:505
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'d. kopya)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:513
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'d. kopya)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:515
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'d. kopya)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:517
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'d. kopya)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:617
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:625
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1381
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
 "\"%B\" dosyasını çöpten kalıcı olarak silmek istediğinize emin misiniz?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1384
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1853,55 +1469,55 @@ msgid_plural ""
 msgstr[0] ""
 "%'d seçili öğeyi kalıcı olarak çöpten silmek istediğinizden emin misiniz?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1394
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1462
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1394
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Eğer bir öğeyi silerseniz, o kalıcı olarak kaybolur."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1415
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "Çöpteki bütün öğeler boşaltılsın mı?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1419
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Çöp Kutusu'ndaki tüm öğeler kalıcı olarak silinecek."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1450
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "\"%B\" dosyasını kalıcı olarak silmek istediğinize emin misiniz?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1453
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "%'d seçili öğeyi kalıcı olarak silmek istediğinize emin misiniz?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1478
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1510
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1478
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "Dosyalar siliniyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1504
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d dosya silinmek için bekliyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1524
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T kaldı"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1592
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1626
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1665
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1742
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2575
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1592
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1626
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1665
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1742
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while deleting."
 msgstr "Silinirken hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1596
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -1909,55 +1525,55 @@ msgstr ""
 "\"%B\" dizinindeki dosyalar silinemiyor çünkü onları görmek için yeterli "
 "erişim hakkınız yok."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1599
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2634
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3630
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1599
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2634
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3630
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "\"%B\" dizinindeki dosyalar hakkında bilgi alınırken hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1608
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3639
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1608
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3639
 msgid "_Skip files"
 msgstr "Dosyaları _atla"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1629
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
 "\"%B\" dizini silinemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1632
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2673
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3675
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1632
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2673
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3675
 msgid "There was an error reading the folder \"%B\"."
 msgstr "\"%B\" dizini okunurken hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1666
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "%B dizini silinemedi."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1743
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "%B silinirken bir hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1819
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1831
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1819
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "Dosyalar çöpe taşınıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1833
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d dosya çöpe gönderilmeyi bekliyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1888
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr "Dosya çöpe taşınamıyor. Doğrudan silinsin mi?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1889
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1965,27 +1581,27 @@ msgstr ""
 "Bu dosya harici bir ortamda bulunuyor ve çöpe taşınamaz. Bir kez silindi mi, "
 "geri getirilemez."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2071
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2071
 msgid "Trashing Files"
 msgstr "Dosyalar Çöpe Atılıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2073
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2073
 msgid "Deleting Files"
 msgstr "Dosyalar Siliniyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2145
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to eject %V"
 msgstr "%V çıkartılamadı"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2147
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2147
 msgid "Unable to unmount %V"
 msgstr "%V bağı kaldırılamadı"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2302
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2302
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Bağı kaldırmadan önce çöpü boşaltmak istiyor musunuz?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2304
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2304
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1993,61 +1609,61 @@ msgstr ""
 "Bu birimde boş alan kazanmak için çöp boşaltılmak zorunda. Birimdeki tüm "
 "çöpe atılmış öğeler kalıcı olarak kaybolacak."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2310
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2310
 msgid "Do _not Empty Trash"
 msgstr "Çöpü _Boşaltma"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2365
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2365
 msgid "Emptying the trash"
 msgstr "Çöp boşaltılıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2432
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2432
 #, c-format
 msgid "Unable to mount %s"
 msgstr "%s bağlanamıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2510
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2510
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "%'d dosya kopyalanmak için hazırlanıyor (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2516
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2516
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "%'d dosya taşınmak için hazırlanıyor (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2522
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2522
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "%'d dosya silinmek için hazırlanıyor (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2528
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2528
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "%'d dosya çöpe atılmak için hazırlanıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2571
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3491
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3622
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3667
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2571
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3491
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3622
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3667
 msgid "Error while copying."
 msgstr "Kopyalarken hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2573
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3620
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3665
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2573
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3620
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while moving."
 msgstr "Taşınırken hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2577
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2577
 msgid "Error while moving files to trash."
 msgstr "Dosyalar çöpe taşınırken hata."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2631
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2631
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -2055,113 +1671,113 @@ msgstr ""
 "\"%B\" dizinindeki dosyalar işlenemiyor çünkü onları okumak için yeterli "
 "erişim hakkınız yok."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2670
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2670
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "\"%B\" dizini işlenemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2747
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2747
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "\"%B\" dosyası işlenemiyor çünkü onu okumak için yeterli erişim hakkınız yok."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2750
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2750
 msgid "There was an error getting information about \"%B\"."
 msgstr "\"%B\" hakkında bilgi alırken bir hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2850
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2892
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2925
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2955
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2850
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2892
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2925
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2955
 msgid "Error while copying to \"%B\"."
 msgstr "\"%B\" hedefine kopyalanırken hata."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2854
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2854
 msgid "You do not have permissions to access the destination folder."
 msgstr "Hedef dizine erişim için yeterli izne sahip değilsiniz."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2856
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2856
 msgid "There was an error getting information about the destination."
 msgstr "Hedef hakkında bilgi alırken bir hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2893
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2893
 msgid "The destination is not a folder."
 msgstr "Hedef bir dizin değil."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2926
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2926
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
 "Hedefte yeterli boş alan yok. Dosyaları silerek boş alan açmayı deneyin."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2928
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2928
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "%S kullanılabilir alan var, ancak %S gerekli."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2956
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2956
 msgid "The destination is read-only."
 msgstr "Hedef salt okunur."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3017
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3017
 msgid "Moving \"%B\" to \"%B\""
 msgstr "\"%B\", \"%B\" hedefine taşınıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3018
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3018
 msgid "Copying \"%B\" to \"%B\""
 msgstr "\"%B\", \"%B\" hedefine kopyalanıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3022
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3022
 msgid "Duplicating \"%B\""
 msgstr "\"%B\" çoğaltılıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3026
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3026
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d dosya (\"%B\" içerisinde) \"%B\" hedefine taşınıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3029
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3029
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d dosya (\"%B\" içerisinde) \"%B\" hedefine kopyalanıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3036
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3036
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "%'d dosya (\"%B\" içerisinde) çoğaltılıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3045
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3045
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "%'d dosya \"%B\" hedefine taşınıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3049
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3049
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "%'d dosya \"%B\" hedefine kopyalanıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3054
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3054
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "%'d dosya çoğaltılıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3105
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3105
 #, c-format
 msgid "%S of %S"
 msgstr "%S / %S"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3116
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3116
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S / %S — %T kaldı (%S/sn)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3495
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3495
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -2169,11 +1785,11 @@ msgstr ""
 "\"%B\" dizini kopyalanamıyor çünkü onu hedefte oluşturmak için yeterli "
 "erişim hakkınız yok."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3498
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3498
 msgid "There was an error creating the folder \"%B\"."
 msgstr "\"%B\" dizinini oluşturulurken hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3627
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3627
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -2181,7 +1797,7 @@ msgstr ""
 "\"%B\" dizini içerisindeki dosyalar kopyalanamıyor çünkü onları görmek için "
 "yeterli erişim hakkınız yok."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3672
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3672
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
@@ -2189,184 +1805,539 @@ msgstr ""
 "\"%B\" dizini kopyalanamıyor çünkü onu okumak için yeterli erişim hakkınız "
 "yok."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3717
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4418
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5006
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3717
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4418
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5006
 msgid "Error while moving \"%B\"."
 msgstr "\"%B\" taşınırken hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3718
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3718
 msgid "Could not remove the source folder."
 msgstr "Kaynak dizin silinemedi."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3803
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3844
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4420
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4491
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3803
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3844
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4420
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4491
 msgid "Error while copying \"%B\"."
 msgstr "\"%B\" kopyalanırken hata."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3804
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3804
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Zaten mevcut olan %F dizininden dosyalar silinemedi."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3845
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3845
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Zaten mevcut olan %F dosyası silinemedi."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4174
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4846
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4174
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4846
 msgid "You cannot move a folder into itself."
 msgstr "Bir dizini kendi üzerine taşıyamazsınız."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4175
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4847
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4175
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4847
 msgid "You cannot copy a folder into itself."
 msgstr "Bir dizini kendi üzerine kopyalayamazsınız."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4176
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4848
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4176
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4848
 msgid "The destination folder is inside the source folder."
 msgstr "Hedef dizin kaynak dizinin içerisinde."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4207
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4207
 msgid "You cannot move a file over itself."
 msgstr "Bir dosyayı kendi üzerine taşıyamazsınız."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4208
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4208
 msgid "You cannot copy a file over itself."
 msgstr "Bir dosyayı kendi üzerine kopyalayamazsınız."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4209
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4209
 msgid "The source file would be overwritten by the destination."
 msgstr "Kaynak dosya hedef tarafından kendi üzerine yazılabilir."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4422
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4422
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "%F içerisinde aynı adda zaten mevcut olan dosya silinemedi."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4492
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4492
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "Dosya %F içerisine kopyalanırken bir hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4720
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4720
 msgid "Copying Files"
 msgstr "Dosyalar Kopyalanıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4746
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4746
 msgid "Preparing to move to \"%B\""
 msgstr "\"%B\" içerisine taşımaya hazırlanıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4758
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4758
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "%'d dosya taşınmak için hazırlanıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5007
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5007
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Dosya %F içerisine taşınırken hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5270
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5270
 msgid "Moving Files"
 msgstr "Dosyalar Taşınıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5300
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5300
 msgid "Creating links in \"%B\""
 msgstr "\"%B\" içerisinde bağlar oluşturuluyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5311
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5311
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "%'d dosyaya bağ yapılıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5446
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5446
 msgid "Error while creating link to %B."
 msgstr "%B bağı oluşturulurken hata."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5448
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5448
 msgid "Symbolic links only supported for local files"
 msgstr "Sembolik bağlar sadece yerel dosyalar için desteklenir"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5451
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5451
 msgid "The target doesn't support symbolic links."
 msgstr "Hedef sembolik bağları desteklemiyor."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5454
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5454
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "%F içerisinde sembolik bağ oluştururken hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5782
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5785
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5782
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5785
 msgid "Setting permissions"
 msgstr "İzinler atanıyor"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6036
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6036
 msgid "untitled folder"
 msgstr "adsız dizin"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6044
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6044
 msgid "new file"
 msgstr "yeni dosya"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6215
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating directory %B."
 msgstr "%B dizini oluştururken hata."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6217
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6217
 msgid "Error while creating file %B."
 msgstr "%B dosyası oluştururken hata."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6219
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6219
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "%F içerisinde dizin oluştururken bir hata oluştu."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6536
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6536
 msgid "Emptying Trash"
 msgstr "Çöp Boşaltılıyor"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:321
+#: /home/cody/files/po/../libcore/eel-stock-dialogs.c:35
+msgid "Show more _details"
+msgstr "Daha _fazla ayrıntı göster"
+
+#: /home/cody/files/po/../libcore/marlin-progress-info.c:192
+#: /home/cody/files/po/../libcore/marlin-progress-info.c:210
+msgid "Preparing"
+msgstr "Hazırlanıyor"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Kopyalanmış %d öğeyi sil"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Delete '%s'"
+msgstr "Sil: '%s'"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1212
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Kopyalanmış %d öğeyi sil"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "%d öğeyi geri taşı: '%s'"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1227
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "'%s' '%s''e geri taşı"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1403
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "'%s' öğesinin adını '%s' olarak değiştir"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1450
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "%d öğeyi çöpten geri yükle"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1263
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Geri yükle: '%s' > '%s'"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1274
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "%d öğeyi çöpe geri taşı"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1277
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "'%s'i çöpe geri taşı"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Delete links to %d items"
+msgstr "%d öğeye olan bağlantıyı sil"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1289
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "'%s'in bağlantısını sil"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1299
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "'%s' içine eklenmiş öğelerin özgün izinlerini geri yükle"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1307
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "'%s''nin özgün izinlerini geri yükle"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1316
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "'%s''nin grubunu '%s''ye geri yükle"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1326
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "'%s''nin sahibini '%s''ye geri yükle"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1365
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "%d öğeyi şuraya kopyala: '%s'"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "'%s''i '%s''e kopyala"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1377
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "%d öğenin eşi '%s' içinde"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1382
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "'%s' öğesinin eşi '%s' içinde"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "%d öğeyi şuraya taşı: '%s'"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1394
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "'%s''i '%s''e taşı"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1412
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Şablondan yeni bir '%s' dosya oluştur; "
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1419
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Boş bir dosya oluştur: '%s'"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Yeni bir dizin oluştur: '%s'"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1434
+#, c-format
+msgid "Move %d items to trash"
+msgstr "%d öğeyi çöpe taşı"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1440
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "'%s''i çöpe taşı"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1453
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Çöpten geri yükle: '%s'"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1462
+#, c-format
+msgid "Create links to %d items"
+msgstr "%d öğeye bağlantı oluştur"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1465
+#, c-format
+msgid "Create link to '%s'"
+msgstr "'%s''e bağlantı oluştur"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1474
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "'%s' içerisine konulu öğelerin izinlerini ayarla"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1482
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "'%s''in izinlerini belirle"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1491
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "'%s' grubunu '%s' e ayarla"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1501
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Sahibini belirle: '%s' > '%s'"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1533
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "%d öğesinin kopyasını _Geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1538
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "%d öğesinin çoğaltılmasını _Geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1543
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "%d öğenin taşınmasını _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1548
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "%d öğenin yeniden adlandırılmasını _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1552
+msgid "_Undo creation of an empty file"
+msgstr "Boş bir dosya oluşturulmasını _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1555
+msgid "_Undo creation of a file from template"
+msgstr "Şablondan bir dosya oluşturulmasını _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "%d dizinin oluşturulmasını _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1564
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "%d öğenin çöpe taşınmasını _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1569
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "%d öğenin çöpten geri yüklenmesini _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1574
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "%d öğeye bağlantı oluşturulmasını _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1579
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "%d öğenin silinmesini _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1584
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "%d öğenin özyineli izin değişikliğini _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "%d öğenin izin değişikliğini _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "%d öğenin grup değişikliğini _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1600
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "%d öğe sahibinin değişikliğini _geri al"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1628
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "%d öğenin kopyalanmasını _yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1633
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "%d öğesinin çoğaltılmasını _Yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1638
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "%d öğenin taşınmasını _yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1643
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "%d öğenin yeniden adlandırılmasını _yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1647
+msgid "_Redo creation of an empty file"
+msgstr "Boş bir dosya oluşturulmasını _yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1650
+msgid "_Redo creation of a file from template"
+msgstr "Şablondan boş bir dosya oluşturulmasını _yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1654
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "%d dizin oluşturulmasını _yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1659
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "%d öğenin çöpe taşınmasını _yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1664
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "%d öğenin çöpten geri yüklenmesini _yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1669
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "%d öğeye bağlantı oluşturulmasını _yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1674
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "%d öğenin silinmesini _yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1679
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "%d öğenin özyineli izin değişikliğini _yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1685
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "%d öğenin izinlerinin değiştirilmesini yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1690
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "%d öğenin grup değişikliğini yinele"
+
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1695
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "%d öğe sahibinin değiştirilmesini yinele"
+
+#: /home/cody/files/po/../libwidgets/LocationBar.vala:321
 msgid "Cut the selected text to the clipboard"
 msgstr "Seçili metni kes ve panoya kopyala"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:325
+#: /home/cody/files/po/../libwidgets/LocationBar.vala:325
 msgid "Copy the selected text to the clipboard"
 msgstr "Seçili metni panoya kopyala"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:329
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:333
+#: /home/cody/files/po/../libwidgets/LocationBar.vala:329
+#: /home/cody/files/po/../libwidgets/LocationBar.vala:333
 msgid "Paste the text stored on the clipboard"
 msgstr "Panoda kayıtlı olan metini yapıştır"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:812
+#: /home/cody/files/po/../libwidgets/LocationBar.vala:812
 #, c-format
 msgid "Go to %s"
 msgstr "%s git"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:82
+#: /home/cody/files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
 msgstr "Izgara olarak görüntüle"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:85
+#: /home/cody/files/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
 msgstr "Liste Olarak Görüntüle"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:88
+#: /home/cody/files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
 msgstr "Sütun Olarak Görüntüle"
 
-#: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
+#: /home/cody/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
 msgstr "Bu öğeler çöpü boşaltığınızda silinebilir."
 
-#: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:47
+#: /home/cody/files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Çöpü boşalt"
