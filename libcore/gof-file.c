@@ -208,19 +208,19 @@ gof_file_is_root_network_folder (GOFFile *file)
     if (gof_file_is_network_uri_scheme (file))
         return TRUE;
 
-    return (gof_file_is_smb_uri_scheme(file) && gof_file_is_location_uri_default(file));
+    return (gof_file_is_smb_uri_scheme (file) && gof_file_is_location_uri_default (file));
 }
 
 gboolean /* returns true if it is an uri at "/", example: afp://server.local:123/ */
 gof_file_is_location_uri_default (GOFFile *file)
 {
     if (file->target_location_uri != NULL) {
-        gchar **split = g_strsplit(file->target_location_uri,"/",4);
-        if (split[3]==NULL || !strcmp(split[3],"")) {
-            g_strfreev(split);
+        gchar **split = g_strsplit (file->target_location_uri, "/", 4);
+        if (split[3] == NULL || !strcmp (split[3], "")) {
+            g_strfreev (split);
             return TRUE;
         }
-        g_strfreev(split);
+        g_strfreev (split);
     }
     return FALSE;
 }
