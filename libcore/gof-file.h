@@ -255,6 +255,7 @@ gboolean        gof_file_can_unmount (GOFFile *file);
 
 gboolean        gof_file_is_remote_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_root_network_folder (GOFFile *file);
+gboolean        gof_file_is_location_uri_default (GOFFile *file);
 gboolean        gof_file_is_network_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_smb_uri_scheme (GOFFile *file);
 gboolean        gof_file_thumb_can_frame (GOFFile *file);
