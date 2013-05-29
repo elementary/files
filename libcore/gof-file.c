@@ -178,16 +178,12 @@ static gboolean
 gof_file_compare_uri_schemes (GOFFile *file, const char **schemes)
 {
     int iterator;
-    char *scheme = g_file_get_uri_scheme (file->location);
 
     for (iterator = 0; iterator < G_N_ELEMENTS (schemes); iterator++) {
-        if (!strcmp (scheme, schemes[iterator])) {
-            g_free (scheme);
+        if (g_file_has_uri_scheme (file->location, schemes[iterator]))
             return TRUE;
-        }
     }
 
-    g_free (scheme);
     return FALSE;
 }
 
