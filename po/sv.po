@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-27 23:24+0000\n"
-"PO-Revision-Date: 2013-05-19 20:28+0000\n"
-"Last-Translator: Larsson <Unknown>\n"
+"PO-Revision-Date: 2013-05-28 20:22+0000\n"
+"Last-Translator: Marcus Lundgren <lp@gaoth.org>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-28 05:56+0000\n"
+"X-Launchpad-Export-Date: 2013-05-29 07:28+0000\n"
 "X-Generator: Launchpad (build 16640)\n"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:73
@@ -406,7 +406,7 @@ msgstr "Få hjälp online..."
 
 #: /home/cody/files/po/../src/View/Window.vala:725
 msgid "Translate This Application..."
-msgstr "Översätt den här applikationen"
+msgstr "Översätt det här programmet..."
 
 #: /home/cody/files/po/../src/View/Window.vala:734
 msgid "Show _Hidden Files"
@@ -823,7 +823,7 @@ msgstr "Layoutläget"
 
 #: /home/cody/files/po/../src/marlin-application.c:423
 msgid "Show the version of the program."
-msgstr "Visa versionen för programmet."
+msgstr "Visa programversionen."
 
 #: /home/cody/files/po/../src/marlin-application.c:427
 msgid "Open uri(s) in new tab"
@@ -1425,7 +1425,7 @@ msgstr "%s (kopia)%s"
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
-msgstr "%s (ytterligare en kopia)%s"
+msgstr "%s (ytterligare kopia)%s"
 
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:501
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:503
@@ -1472,8 +1472,8 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "Vill du permanent radera det markerade objektet?"
-msgstr[1] "Vill du permanent radera de markerade objekten?"
+msgstr[0] "Vill du radera det markerade objektet permanent?"
+msgstr[1] "Vill du radera de markerade objekten permanent?"
 
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:1394
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:1462
@@ -1662,7 +1662,7 @@ msgstr[1] "Förbereder att ta bort %'d filer (%S)"
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Förbereder att kasta %'d fil"
+msgstr[0] "Förbereder att flytta %'d fil till papperskorgen"
 msgstr[1] "Förbereder att kasta %'d filer"
 
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:2571

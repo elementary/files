@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-27 23:24+0000\n"
-"PO-Revision-Date: 2013-05-24 03:02+0000\n"
+"PO-Revision-Date: 2013-05-28 16:55+0000\n"
 "Last-Translator: Uri Damsker <ud1955@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-28 05:55+0000\n"
+"X-Launchpad-Export-Date: 2013-05-29 07:28+0000\n"
 "X-Generator: Launchpad (build 16640)\n"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:73
@@ -61,7 +61,7 @@ msgstr "טיפוסי Mime"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:361
 msgid "Location"
-msgstr "מיקום"
+msgstr "מִקוּם"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:363
 msgid "Target"
@@ -69,7 +69,7 @@ msgstr "יעד"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:369
 msgid "Origin Location"
-msgstr "מיקום מקור"
+msgstr "מִקוּם מקור"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:379
 msgid "Info:"
@@ -85,11 +85,11 @@ msgstr "פתיחה באמצעות:"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:459
 msgid "Usage:"
-msgstr "שימוש:"
+msgstr "שִׁימוּשׁ"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:464
 msgid "Device usage:"
-msgstr "שימוש בהתקן:"
+msgstr "שִׁימוּשׁ בהתקן:"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:471
 #, c-format
@@ -111,7 +111,7 @@ msgstr "הפעלה"
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:838
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:851
 msgid "Owner"
-msgstr "בעלים"
+msgstr "בְּעָלִים"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:843
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:855
@@ -124,7 +124,7 @@ msgstr "כל אחד"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:1115
 msgid "Select an aplication to open "
-msgstr "פתח באמצעות "
+msgstr "בחירת יישום פתיחה "
 
 #: /home/cody/files/po/../src/View/OverlayBar.vala:247
 #, c-format
@@ -134,7 +134,7 @@ msgstr "נבחרו %u פריטים (%s)"
 #: /home/cody/files/po/../src/View/ViewContainer.vala:144
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:300
 msgid "Home"
-msgstr "תיקיית הבית"
+msgstr "בית"
 
 #: /home/cody/files/po/../src/View/ViewContainer.vala:146
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:370
@@ -153,7 +153,7 @@ msgstr "התיקייה אינה קיימת"
 #: /home/cody/files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr "הדפדפן אינו מוצא תיקיית  %s"
+msgstr "דפדפן הקבצים אינו מוצא תיקיית  %s"
 
 #: /home/cody/files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
