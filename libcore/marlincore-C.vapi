@@ -183,7 +183,6 @@ namespace GOF {
         public void update_desktop_file ();
         public void query_update ();
         public void query_thumbnail_update ();
-        public string get_standard_target_uri ();
         public unowned string? get_thumbnail_path();
         public string? get_preview_path();
         public bool can_set_owner ();
@@ -200,6 +199,8 @@ namespace GOF {
         public bool is_root_network_folder ();
         public bool is_network_uri_scheme ();
         public bool is_smb_uri_scheme ();
+
+        public string get_standard_target_uri ();
     }
 
     [CCode (cheader_filename = "gof-file.h")]
