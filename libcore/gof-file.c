@@ -192,7 +192,6 @@ gof_file_compare_uri_schemes (GOFFile *file, const char **schemes)
 }
 
 /**
- *
  * gof_file_is_location_uri_default:
  *
  * Returns true if it is an uri at "/"
@@ -202,7 +201,7 @@ gof_file_compare_uri_schemes (GOFFile *file, const char **schemes)
 static gboolean
 gof_file_is_location_uri_default (GOFFile *file)
 {
-    char* target_location_uri = gof_file_get_standard_target_uri (file);
+    char* target_location_uri = gof_file_get_display_target_uri (file);
     if (target_location_uri != NULL) {
         gchar **split = g_strsplit (target_location_uri, "/", 4);
         if (split[3] == NULL || !strcmp (split[3], "")) {
@@ -360,7 +359,7 @@ gof_file_update (GOFFile *file)
         file->icon = (GIcon *) g_file_info_get_attribute_object (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON);
 
     if (file->file_type == G_FILE_TYPE_SHORTCUT || file->file_type == G_FILE_TYPE_MOUNTABLE) {
-        const char *target_uri = gof_file_get_standard_target_uri (file);
+        const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
         /*g_message ("%s target uri: %s", G_STRFUNC, target_uri);*/
         if (target_uri != NULL) {
             file->target_location = g_file_new_for_uri (target_uri);
@@ -2404,9 +2403,9 @@ gof_file_get_thumbnail_path (GOFFile *file)
 }
 
 char *
-gof_file_get_standard_target_uri(GOFFile* file)
+gof_file_get_display_target_uri (GOFFile* file)
 {
-    return g_strdup (g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI));
+    return g_file_info_get_attribute_as_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
 }
 
 

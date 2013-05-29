@@ -200,7 +200,7 @@ namespace GOF {
         public bool is_network_uri_scheme ();
         public bool is_smb_uri_scheme ();
 
-        public string get_standard_target_uri ();
+        public unowned string get_display_target_uri ();
     }
 
     [CCode (cheader_filename = "gof-file.h")]
