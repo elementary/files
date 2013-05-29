@@ -233,7 +233,6 @@ void            gof_file_add_emblem(GOFFile* file, const gchar* emblem);
  * Return value: the #GOFFileThumbState for @file.
  **/
 #define gof_file_get_thumb_state(file) (GOF_FILE ((file))->flags & GOF_FILE_THUMB_STATE_MASK)
-char            *gof_file_get_standard_target_uri (GOFFile* file);
 const gchar* gof_file_get_thumbnail_path (GOFFile *file);
 const gchar* gof_file_get_preview_path (GOFFile *file);
 gboolean        gof_file_can_set_owner (GOFFile *file);
@@ -258,6 +257,7 @@ gboolean        gof_file_is_network_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_smb_uri_scheme (GOFFile *file);
 gboolean        gof_file_thumb_can_frame (GOFFile *file);
 
+char            *gof_file_get_standard_target_uri (GOFFile* file);
 G_END_DECLS
 
 #endif /* GOF_DIRECTORY_ASYNC_H */
