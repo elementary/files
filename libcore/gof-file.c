@@ -225,12 +225,12 @@ gof_file_is_location_uri_default (GOFFile *file)
         gchar **split = g_strsplit (target_location_uri, "/", 4);
         if (split[3] == NULL || !strcmp (split[3], "")) {
             g_strfreev (split);
-            g_free(target_location_uri);
+            g_free (target_location_uri);
             return TRUE;
         }
         g_strfreev (split);
     }
-    g_free(target_location_uri);
+    g_free (target_location_uri);
     return FALSE;
 }
 
@@ -359,7 +359,7 @@ gof_file_update (GOFFile *file)
         file->icon = (GIcon *) g_file_info_get_attribute_object (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON);
 
     if (file->file_type == G_FILE_TYPE_SHORTCUT || file->file_type == G_FILE_TYPE_MOUNTABLE) {
-        const char *target_uri = gof_file_get_standard_target_uri(file);
+        const char *target_uri = gof_file_get_standard_target_uri (file);
         /*g_message ("%s target uri: %s", G_STRFUNC, target_uri);*/
         if (target_uri != NULL) {
             file->target_location = g_file_new_for_uri (target_uri);

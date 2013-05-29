@@ -136,7 +136,6 @@ namespace GOF {
         public void remove_from_caches ();
         public bool is_gone;
         public GLib.File location;
-        public string target_location_uri;
         public GLib.File directory; /* parent directory location */
         public GLib.Icon? icon;
         public GLib.FileInfo? info;
