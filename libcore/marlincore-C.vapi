@@ -184,6 +184,7 @@ namespace GOF {
         public void update_desktop_file ();
         public void query_update ();
         public void query_thumbnail_update ();
+        public string get_standard_target_uri ();
         public unowned string? get_thumbnail_path();
         public string? get_preview_path();
         public bool can_set_owner ();

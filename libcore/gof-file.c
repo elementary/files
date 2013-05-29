@@ -156,7 +156,6 @@ gof_file_clear_info (GOFFile *file)
     g_return_if_fail (file != NULL);
 
     _g_object_unref0 (file->target_location);
-    _g_free0 (file->target_location_uri);
     _g_object_unref0 (file->mount);
     _g_free0(file->utf8_collation_key);
     _g_free0(file->formated_type);
@@ -210,18 +209,28 @@ gof_file_is_root_network_folder (GOFFile *file)
 
     return (gof_file_is_smb_uri_scheme (file) && gof_file_is_location_uri_default (file));
 }
-
-gboolean /* returns true if it is an uri at "/", example: afp://server.local:123/ */
+/*
+*
+* gof_file_is_location_uri_default:
+*
+* returns true if it is an uri at "/"
+* example: afp://server.local:123/
+*
+*/
+gboolean 
 gof_file_is_location_uri_default (GOFFile *file)
 {
-    if (file->target_location_uri != NULL) {
-        gchar **split = g_strsplit (file->target_location_uri, "/", 4);
+    char* target_location_uri = gof_file_get_standard_target_uri (file);
+    if (target_location_uri != NULL) {
+        gchar **split = g_strsplit (target_location_uri, "/", 4);
         if (split[3] == NULL || !strcmp (split[3], "")) {
             g_strfreev (split);
+            g_free(target_location_uri);
             return TRUE;
         }
         g_strfreev (split);
     }
+    g_free(target_location_uri);
     return FALSE;
 }
 
@@ -350,10 +359,9 @@ gof_file_update (GOFFile *file)
         file->icon = (GIcon *) g_file_info_get_attribute_object (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON);
 
     if (file->file_type == G_FILE_TYPE_SHORTCUT || file->file_type == G_FILE_TYPE_MOUNTABLE) {
-        const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+        const char *target_uri = gof_file_get_standard_target_uri(file);
         /*g_message ("%s target uri: %s", G_STRFUNC, target_uri);*/
         if (target_uri != NULL) {
-            file->target_location_uri = g_strdup (target_uri);
             file->target_location = g_file_new_for_uri (target_uri);
             gof_file_target_location_update (file);
             
@@ -834,7 +842,6 @@ static void gof_file_init (GOFFile *file) {
     file->info = NULL;
     file->location = NULL;
     file->target_location = NULL;
-    file->target_location_uri = NULL;
     file->icon = NULL;
     file->pix = NULL;
     file->color = 0;
@@ -893,7 +900,6 @@ static void gof_file_finalize (GObject* obj) {
     _g_free0 (file->custom_icon_name);
 
     _g_object_unref0 (file->target_location);
-    _g_free0 (file->target_location_uri);
     _g_object_unref0 (file->mount);
     /* TODO remove the target_gof */
     _g_free0 (file->thumbnail_path);
@@ -2395,6 +2401,13 @@ gof_file_get_thumbnail_path (GOFFile *file)
 
     return NULL;
 }
+
+char *
+gof_file_get_standard_target_uri(GOFFile* file)
+{
+    return g_strdup(g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI));
+}
+
 
 const gchar *
 gof_file_get_preview_path(GOFFile* file)

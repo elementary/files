@@ -70,7 +70,6 @@ struct _GOFFile {
     GFileInfo       *info;
     GFile           *location;
     GFile           *target_location;
-    gchar           *target_location_uri;
     GOFFile         *target_gof;
     GFile           *directory;
     gchar           *custom_display_name;
@@ -234,7 +233,7 @@ void            gof_file_add_emblem(GOFFile* file, const gchar* emblem);
  * Return value: the #GOFFileThumbState for @file.
  **/
 #define gof_file_get_thumb_state(file) (GOF_FILE ((file))->flags & GOF_FILE_THUMB_STATE_MASK)
-
+char            *gof_file_get_standard_target_uri(GOFFile* file);
 const gchar* gof_file_get_thumbnail_path (GOFFile *file);
 const gchar* gof_file_get_preview_path (GOFFile *file);
 gboolean        gof_file_can_set_owner (GOFFile *file);
