@@ -196,8 +196,11 @@ namespace GOF {
         public static int compare_by_display_name (File file1, File file2);
 
         public bool is_remote_uri_scheme ();
+        public bool is_root_network_folder ();
         public bool is_network_uri_scheme ();
         public bool is_smb_uri_scheme ();
+
+        public unowned string get_display_target_uri ();
     }
 
     [CCode (cheader_filename = "gof-file.h")]
