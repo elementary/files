@@ -2405,7 +2405,7 @@ gof_file_get_thumbnail_path (GOFFile *file)
 char *
 gof_file_get_standard_target_uri(GOFFile* file)
 {
-    return g_strdup(g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI));
+    return g_strdup (g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI));
 }
 
 
