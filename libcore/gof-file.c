@@ -191,6 +191,31 @@ gof_file_compare_uri_schemes (GOFFile *file, const char **schemes)
     return FALSE;
 }
 
+/**
+ *
+ * gof_file_is_location_uri_default:
+ *
+ * Returns true if it is an uri at "/"
+ * (example: afp://server.local:123/)
+ *
+**/
+static gboolean
+gof_file_is_location_uri_default (GOFFile *file)
+{
+    char* target_location_uri = gof_file_get_standard_target_uri (file);
+    if (target_location_uri != NULL) {
+        gchar **split = g_strsplit (target_location_uri, "/", 4);
+        if (split[3] == NULL || !strcmp (split[3], "")) {
+            g_strfreev (split);
+            g_free (target_location_uri);
+            return TRUE;
+        }
+        g_strfreev (split);
+    }
+    g_free (target_location_uri);
+    return FALSE;
+}
+
 gboolean
 gof_file_is_remote_uri_scheme (GOFFile *file)
 {
@@ -208,30 +233,6 @@ gof_file_is_root_network_folder (GOFFile *file)
         return TRUE;
 
     return (gof_file_is_smb_uri_scheme (file) && gof_file_is_location_uri_default (file));
-}
-/*
-*
-* gof_file_is_location_uri_default:
-*
-* returns true if it is an uri at "/"
-* example: afp://server.local:123/
-*
-*/
-gboolean 
-gof_file_is_location_uri_default (GOFFile *file)
-{
-    char* target_location_uri = gof_file_get_standard_target_uri (file);
-    if (target_location_uri != NULL) {
-        gchar **split = g_strsplit (target_location_uri, "/", 4);
-        if (split[3] == NULL || !strcmp (split[3], "")) {
-            g_strfreev (split);
-            g_free (target_location_uri);
-            return TRUE;
-        }
-        g_strfreev (split);
-    }
-    g_free (target_location_uri);
-    return FALSE;
 }
 
 gboolean
