@@ -42,12 +42,10 @@ vala_precompile(VALA_C pantheon-files
     View/Resources.vala
     View/DbusTags.vala
     View/ViewContainer.vala
-    View/ContextView.vala
     View/OverlayBar.vala
     View/PropertiesWindow.vala
     View/Browser.vala
     View/ViewMode.vala
-    View/Animations.vala
     View/LocationBar.vala
     View/Chrome/TopMenu.vala
     View/Chrome/ViewSwicher.vala

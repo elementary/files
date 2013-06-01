@@ -114,7 +114,7 @@ namespace MarlinFile {
 namespace GOF {
 
     [CCode (cheader_filename = "gof-file.h")]
-    public class File : GLib.Object { 
+    public class File : GLib.Object {
         [CCode (cheader_filename = "gof-file.h")]
         enum ThumbState {
             READY
@@ -155,7 +155,7 @@ namespace GOF {
         public bool is_trashed();
         public bool link_known_target;
         public uint flags;
-        
+
         public unowned string get_display_name ();
         public unowned GLib.File get_target_location ();
         public unowned string get_ftype ();
@@ -192,6 +192,11 @@ namespace GOF {
         public static int compare_by_display_name (File file1, File file2);
 
         public bool is_remote_uri_scheme ();
+        public bool is_root_network_folder ();
+        public bool is_network_uri_scheme ();
+        public bool is_smb_uri_scheme ();
+
+        public unowned string get_display_target_uri ();
     }
 
     [CCode (cheader_filename = "gof-file.h")]
@@ -200,7 +205,7 @@ namespace GOF {
         NONE,
         USE_THUMBNAILS
     }
-    
+
     [CCode (cheader_filename = "gof-abstract-slot.h")]
     public class AbstractSlot : GLib.Object {
         public void add_extra_widget(Gtk.Widget widget);
