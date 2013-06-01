@@ -41,27 +41,6 @@
       <summary>single click</summary>
       <description>Whether items are activated by single clicks instead of dubble clicks</description>
     </key>
-    <key type="b" name="single-click-timeout-enabled">
-      <default>false</default>
-      <summary>single click timeout enabled</summary>
-      <description>Whether mouse auto-selection should be used</description>
-    </key>
-    <key type="i" name="single-click-timeout">
-      <default>0</default>
-      <range min="0" max="1000"/>
-      <summary>single click timeout</summary>
-      <description>
-        The amount of time which the item under the mouse cursor will be selected automatically in single click mode. A value of 0 disables the automatic selection.
-      </description>
-    </key>
-    <key type="i" name="single-click-timeout-old">
-      <default>1</default>
-      <range min="1" max="1000"/>
-      <summary>single click timeout old value</summary>
-      <description>
-        The old value of single-click-timeout which is stored when enabling/disabling auto-selection.
-      </description>
-    </key>
     <key type="b" name="interpret-desktop-files">
       <default>true</default>
       <summary>interpret desktop files</summary>

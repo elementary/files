@@ -905,8 +905,6 @@ fm_list_view_init (FMListView *view)
 
     g_settings_bind (settings, "single-click", 
                      EXO_TREE_VIEW (view->tree), "single-click", 0);
-    g_settings_bind (settings, "single-click-timeout", 
-                     EXO_TREE_VIEW (view->tree), "single-click-timeout", 0);
     g_settings_bind (marlin_list_view_settings, "zoom-level", 
                      view, "zoom-level", 0);
 }

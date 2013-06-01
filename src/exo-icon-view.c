@@ -195,15 +195,8 @@ struct _ExoIconViewPrivate
 
     guint doing_rubberband : 1;
 
-    /* Single-click support
-   * The single_click_timeout is the timeout after which the
-   * prelited item will be automatically selected in single
-   * click mode (0 to disable).
-   */
+    /* Single-click support */
     guint single_click : 1;
-    guint single_click_timeout;
-    guint single_click_timeout_id;
-    guint single_click_timeout_state;
 
     /* Interactive search */
     gint selected_iter;
@@ -274,8 +267,7 @@ enum
     PROP_VSCROLL_POLICY,
 
     /* single click */
-    PROP_SINGLE_CLICK,
-    PROP_SINGLE_CLICK_TIMEOUT
+    PROP_SINGLE_CLICK
 };
 
 GType
@@ -497,10 +489,6 @@ static gboolean exo_icon_view_maybe_begin_drag   (ExoIconView             *icon_
 
 static void     remove_scroll_timeout            (ExoIconView *icon_view);
 
-/* single-click autoselection support */
-static gboolean exo_icon_view_single_click_timeout          (gpointer user_data);
-static void     exo_icon_view_single_click_timeout_destroy  (gpointer user_data);
-
 /* interactive search */
 static void     exo_icon_view_ensure_interactive_directory (ExoIconView *icon_view);
 static void     exo_icon_view_search_dialog_hide        (GtkWidget        *search_dialog,
@@ -688,24 +676,6 @@ exo_icon_view_class_init (ExoIconViewClass *klass)
                                                            P_("Whether the items in the view can be activated with single clicks"),
                                                            FALSE,
                                                            EXO_PARAM_READWRITE));
-
-    /**
-     * ExoIconView:single-click-timeout:
-     *
-     * The amount of time in milliseconds after which a prelited item (an item
-     * which is hovered by the mouse cursor) will be selected automatically in
-     * single click mode. A value of %0 disables the automatic selection.
-     *
-     * Since: 0.3.1.5
-    **/
-    g_object_class_install_property (gobject_class,
-                                     PROP_SINGLE_CLICK_TIMEOUT,
-                                     g_param_spec_uint ("single-click-timeout",
-                                                        P_("Single Click Timeout"),
-                                                        P_("The amount of time after which the item under the mouse cursor will be selected automatically in single click mode"),
-                                                        0, G_MAXUINT, 0,
-                                                        EXO_PARAM_READWRITE));
-
 
     /**
      * ExoIconView:pixbuf-column:
@@ -1416,9 +1386,6 @@ exo_icon_view_set_property (GObject      *object,
     case PROP_SINGLE_CLICK:
         exo_icon_view_set_single_click (icon_view, g_value_get_boolean (value));
         break;
-    case PROP_SINGLE_CLICK_TIMEOUT:
-        exo_icon_view_set_single_click_timeout (icon_view, g_value_get_uint (value));
-        break;
     case PROP_PIXBUF_COLUMN:
         exo_icon_view_set_pixbuf_column (icon_view, g_value_get_int (value));
         break;
@@ -1527,9 +1494,6 @@ exo_icon_view_get_property (GObject      *object,
         break;
     case PROP_SINGLE_CLICK:
         g_value_set_boolean (value, icon_view->priv->single_click);
-        break;
-    case PROP_SINGLE_CLICK_TIMEOUT:
-        g_value_set_uint (value, icon_view->priv->single_click_timeout);
         break;
     case PROP_PIXBUF_COLUMN:
         g_value_set_int (value, icon_view->priv->pixbuf_column);
@@ -2081,22 +2045,6 @@ exo_icon_view_motion (GtkWidget      *widget,
                     /* reset the cursor */
                     gdk_window_set_cursor (event->window, NULL);
                 }
-
-                /* check if autoselection is enabled */
-                if (G_LIKELY (icon_view->priv->single_click_timeout > 0))
-                {
-                    /* drop any running timeout */
-                    if (G_LIKELY (icon_view->priv->single_click_timeout_id != 0))
-                        g_source_remove (icon_view->priv->single_click_timeout_id);
-
-                    /* remember the current event state */
-                    icon_view->priv->single_click_timeout_state = event->state;
-
-                    /* schedule a new timeout */
-                    icon_view->priv->single_click_timeout_id = g_timeout_add_full (G_PRIORITY_LOW, icon_view->priv->single_click_timeout,
-                                                                                   exo_icon_view_single_click_timeout, icon_view,
-                                                                                   exo_icon_view_single_click_timeout_destroy);
-                }
             }
         }
     }
@@ -2356,10 +2304,6 @@ exo_icon_view_button_press (GtkWidget      *widget,
 
     if (event->window != icon_view->priv->bin_window)
         return FALSE;
-
-    /* stop any pending "single-click-timeout" */
-    if (G_UNLIKELY (icon_view->priv->single_click_timeout_id != 0))
-        g_source_remove (icon_view->priv->single_click_timeout_id);
 
     if (!gtk_widget_has_focus (widget))
         gtk_widget_grab_focus (widget);
@@ -4291,10 +4235,6 @@ exo_icon_view_row_deleted (GtkTreeModel *model,
         /* reset the prelit item */
         icon_view->priv->prelit_item = NULL;
         exo_icon_view_item_hovered (icon_view, path);
-
-        /* cancel any pending single click timer */
-        if (G_UNLIKELY (icon_view->priv->single_click_timeout_id != 0))
-            g_source_remove (icon_view->priv->single_click_timeout_id);
 
         /* in single click mode, we also reset the cursor when realized */
         if (G_UNLIKELY (icon_view->priv->single_click && 
@@ -8117,166 +8057,6 @@ exo_icon_view_set_single_click (ExoIconView *icon_view,
       icon_view->priv->single_click = single_click;
       g_object_notify (G_OBJECT (icon_view), "single-click");
     }
-}
-
-
-
-/**
- * exo_icon_view_get_single_click_timeout:
- * @icon_view : a #ExoIconView.
- *
- * Returns the amount of time in milliseconds after which the
- * item under the mouse cursor will be selected automatically
- * in single click mode. A value of %0 means that the behavior
- * is disabled and the user must alter the selection manually.
- *
- * Returns: the single click autoselect timeout or %0 if
- *          the behavior is disabled.
- *
- * Since: 0.3.1.5
- **/
-guint
-exo_icon_view_get_single_click_timeout (ExoIconView *icon_view)
-{
-  g_return_val_if_fail (EXO_IS_ICON_VIEW (icon_view), 0u);
-  return icon_view->priv->single_click_timeout;
-}
-
-
-
-/**
- * exo_icon_view_set_single_click_timeout:
- * @icon_view            : a #ExoIconView.
- * @single_click_timeout : the new timeout or %0 to disable.
- *
- * If @single_click_timeout is a value greater than zero, it specifies
- * the amount of time in milliseconds after which the item under the
- * mouse cursor will be selected automatically in single click mode.
- * A value of %0 for @single_click_timeout disables the autoselection
- * for @icon_view.
- *
- * This setting does not have any effect unless the @icon_view is in
- * single-click mode, see exo_icon_view_set_single_click().
- *
- * Since: 0.3.1.5
- **/
-void
-exo_icon_view_set_single_click_timeout (ExoIconView *icon_view,
-                                        guint        single_click_timeout)
-{
-  g_return_if_fail (EXO_IS_ICON_VIEW (icon_view));
-
-  /* check if we have a new setting */
-  if (icon_view->priv->single_click_timeout != single_click_timeout)
-    {
-      /* apply the new setting */
-      icon_view->priv->single_click_timeout = single_click_timeout;
-
-      /* be sure to cancel any pending single click timeout */
-      if (G_UNLIKELY (icon_view->priv->single_click_timeout_id != 0))
-        g_source_remove (icon_view->priv->single_click_timeout_id);
-
-      /* notify listeners */
-      g_object_notify (G_OBJECT (icon_view), "single-click-timeout");
-    }
-}
-
-
-
-static gboolean
-exo_icon_view_single_click_timeout (gpointer user_data)
-{
-  ExoIconViewItem *item;
-  gboolean         dirty = FALSE;
-  ExoIconView     *icon_view = EXO_ICON_VIEW (user_data);
-
-  GDK_THREADS_ENTER ();
-
-  /* verify that we are in single-click mode, have focus and a prelit item */
-  if (gtk_widget_has_focus (GTK_WIDGET (icon_view)) && icon_view->priv->single_click && icon_view->priv->prelit_item != NULL)
-    {
-      /* work on the prelit item */
-      item = icon_view->priv->prelit_item;
-
-      /* be sure the item is fully visible */
-      exo_icon_view_scroll_to_item (icon_view, item);
-
-      /* change the selection appropriately */
-      if (G_UNLIKELY (icon_view->priv->selection_mode == GTK_SELECTION_NONE))
-        {
-          exo_icon_view_set_cursor_item (icon_view, item, NULL);
-        }
-      else if ((icon_view->priv->single_click_timeout_state & GDK_SHIFT_MASK) != 0
-            && icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE)
-        {
-          if (!(icon_view->priv->single_click_timeout_state & GDK_CONTROL_MASK))
-            /* unselect all previously selected items */
-            exo_icon_view_unselect_all_internal (icon_view);
-
-          /* select all items between the anchor and the prelit item */
-          exo_icon_view_set_cursor_item (icon_view, item, NULL);
-          if (icon_view->priv->anchor_item == NULL)
-            icon_view->priv->anchor_item = item;
-          else
-            exo_icon_view_select_all_between (icon_view, icon_view->priv->anchor_item, item);
-
-          /* selection was changed */
-          dirty = TRUE;
-        }
-      else
-        {
-          if ((icon_view->priv->selection_mode == GTK_SELECTION_MULTIPLE ||
-              ((icon_view->priv->selection_mode == GTK_SELECTION_SINGLE) && item->selected)) &&
-              (icon_view->priv->single_click_timeout_state & GDK_CONTROL_MASK) != 0)
-            {
-              item->selected = !item->selected;
-              exo_icon_view_queue_draw_item (icon_view, item);
-              dirty = TRUE;
-            }
-          //else if (!item->selected)
-          else
-            {
-              //amtest
-                if (!icon_view->priv->add_remove_helper) {
-                    exo_icon_view_unselect_all_internal (icon_view);
-                    item->selected = TRUE;
-                } else {
-                    item->selected = !item->selected;
-                }
-
-              //item->selected = TRUE;
-              exo_icon_view_queue_draw_item (icon_view, item);
-              dirty = TRUE;
-            }
-          exo_icon_view_set_cursor_item (icon_view, item, NULL);
-          icon_view->priv->anchor_item = item;
-        }
-    }
-
-  /* emit "selection-changed" and stop drawing keyboard
-   * focus indicator if the selection was altered
-   */
-  if (G_LIKELY (dirty))
-    {
-      //TODO
-      /* reset "draw keyfocus" flag */
-      //EXO_ICON_VIEW_UNSET_FLAG (icon_view, EXO_ICON_VIEW_DRAW_KEYFOCUS);
-
-      /* emit "selection-changed" */
-      g_signal_emit (G_OBJECT (icon_view), icon_view_signals[SELECTION_CHANGED], 0);
-    }
-
-  GDK_THREADS_LEAVE ();
-
-  return FALSE;
-}
-
-
-
-static void
-exo_icon_view_single_click_timeout_destroy (gpointer user_data)
-{
-  EXO_ICON_VIEW (user_data)->priv->single_click_timeout_id = 0;
 }
 
 
