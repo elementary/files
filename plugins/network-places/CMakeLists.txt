@@ -10,6 +10,7 @@ pkg_check_modules(DEPS REQUIRED
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
 
+add_definitions(${CFLAGS})
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 include_directories(${CMAKE_BINARY_DIR}/libcore/)
 

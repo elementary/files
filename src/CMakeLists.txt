@@ -51,7 +51,6 @@ vala_precompile(VALA_C pantheon-files
     View/Chrome/ViewSwicher.vala
     View/Chrome/ColorWidget.vala
     View/Chrome/XsEntry.vala
-    View/Chrome/IconFactory.vala
     View/Chrome/ImgEventBox.vala
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
