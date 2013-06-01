@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-27 23:24+0000\n"
-"PO-Revision-Date: 2013-05-31 04:04+0000\n"
+"PO-Revision-Date: 2013-06-01 05:24+0000\n"
 "Last-Translator: Uri Damsker <ud1955@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-31 06:16+0000\n"
+"X-Launchpad-Export-Date: 2013-06-01 05:40+0000\n"
 "X-Generator: Launchpad (build 16660)\n"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:73
@@ -28,7 +28,7 @@ msgstr "כללי"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:134
 msgid "More"
-msgstr "עוד"
+msgstr "פרטים נוספים"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:146
 msgid "Preview"
@@ -153,7 +153,7 @@ msgstr "התיקייה אינה קיימת"
 #: /home/cody/files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr "דפדפן הקבצים אינו מוצא תיקיית  %s"
+msgstr "מנהל הקבצים אינו מוצא תיקיית  %s"
 
 #: /home/cody/files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
@@ -204,7 +204,7 @@ msgstr "פתיחה בלשונית חדשה"
 
 #: /home/cody/files/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
-msgstr "קבצים אינו דפדפן ברירת המחדל"
+msgstr "מנהל הקבצים Files  אינו  ברירת המחדל"
 
 #: /home/cody/files/po/../src/View/Window.vala:132
 #: /home/cody/files/po/../src/fm-directory-view.c:3426
@@ -217,7 +217,7 @@ msgstr "התעלמות"
 
 #: /home/cody/files/po/../src/View/Window.vala:400
 msgid "Undo"
-msgstr "החזרה"
+msgstr "החזרה למצב הקודם"
 
 #: /home/cody/files/po/../src/View/Window.vala:401
 #: /home/cody/files/po/../src/View/Window.vala:646
@@ -226,7 +226,7 @@ msgstr "ביטול השינוי האחרון"
 
 #: /home/cody/files/po/../src/View/Window.vala:410
 msgid "Redo"
-msgstr "ביצוע שוב"
+msgstr "ביצוע חוזר"
 
 #: /home/cody/files/po/../src/View/Window.vala:411
 #: /home/cody/files/po/../src/View/Window.vala:649
@@ -251,29 +251,29 @@ msgstr "מעבר"
 
 #: /home/cody/files/po/../src/View/Window.vala:628
 msgid "_Help"
-msgstr "עזרה"
+msgstr "_עזרה"
 
 #: /home/cody/files/po/../src/View/Window.vala:630
 #: /home/cody/files/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr "חלון חדש"
+msgstr "_חלון חדש"
 
 #: /home/cody/files/po/../src/View/Window.vala:631
 msgid "Open another Files window for the displayed location"
-msgstr "פתיחת חלון חדש להצגת מיקום"
+msgstr "פתיחת חלון נוסף של מנהל הקבצים  להצגת המיקם"
 
 #: /home/cody/files/po/../src/View/Window.vala:634
 #: /home/cody/files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr "לשונית חדשה"
+msgstr "_לשונית חדשה"
 
 #: /home/cody/files/po/../src/View/Window.vala:635
 msgid "Open another tab for the displayed location"
-msgstr "פתיחת לשונית נוספת להצגת המיקום"
+msgstr "פתיחת לשונית נוספת למיקום המוצג"
 
 #: /home/cody/files/po/../src/View/Window.vala:639
 msgid "_Close"
-msgstr "סגירה"
+msgstr "_סגירה"
 
 #: /home/cody/files/po/../src/View/Window.vala:640
 msgid "Close this folder"
@@ -281,7 +281,7 @@ msgstr "סגירת תיקייה זו"
 
 #: /home/cody/files/po/../src/View/Window.vala:645
 msgid "_Undo"
-msgstr "ביטול פעולה"
+msgstr "_החזרה למצב הקודם"
 
 #: /home/cody/files/po/../src/View/Window.vala:648
 msgid "_Redo"
@@ -410,7 +410,7 @@ msgstr "תרגום יישום נוכחי"
 
 #: /home/cody/files/po/../src/View/Window.vala:734
 msgid "Show _Hidden Files"
-msgstr "הצגת קסצים נסתרים"
+msgstr "הצגת קבצים _נסתרים"
 
 #: /home/cody/files/po/../src/View/Window.vala:735
 msgid "Toggle the display of hidden files in the current window"
@@ -453,7 +453,7 @@ msgstr "ארגון בסדר הפוך"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
-msgstr "הצגת סמלים בסדר הפוך"
+msgstr "הצגת סמלים לפי סדר הפוך"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
@@ -461,7 +461,7 @@ msgstr "הצגה לפי שם"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
-msgstr "הצגת סמלים בשורות ממויינים על פי שם"
+msgstr "שמירת הסמלים ממוינים לפי שם בשורות"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
@@ -798,7 +798,7 @@ msgstr "לחיצה בודדת"
 
 #: /home/cody/files/po/../src/exo-tree-view.c:168
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr "האם לאפשר הצגת פריט באמצעות לחיצה בודדת"
+msgstr "האם לאפשר הצגת פריטים באמצעות לחיצה בודדת"
 
 #: /home/cody/files/po/../src/exo-tree-view.c:184
 msgid "Single Click Timeout"
@@ -969,7 +969,7 @@ msgstr "יישום אחר..."
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3525
 msgid "Choose another application with which to open the selected item"
-msgstr "בחירת יישום אחר להצגת הפריט הנבחר"
+msgstr "בחירת יישום אחר אתו יש להציג את הפריט הנבחר"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3528
 msgid "Mo_ve to Trash"
@@ -1036,7 +1036,7 @@ msgstr[1] "%'d פעולות קבצים פעילות"
 
 #: /home/cody/files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
-msgstr "הצגת דו-שיח העתקה"
+msgstr "הצגת דו־שיח ההעתקה"
 
 #: /home/cody/files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
@@ -1048,7 +1048,7 @@ msgstr "כל פעילויות הקבצים הושלמו בהצלחה"
 
 #: /home/cody/files/po/../src/fm-icon-view.c:86
 msgid "Icon directory listing"
-msgstr "הצגת תיקיית סמלים"
+msgstr ""
 
 #: /home/cody/files/po/../src/fm-icon-view.c:87
 msgid "Icon view"
@@ -2141,72 +2141,72 @@ msgstr "הגדרת הבעלים של %s'  ל'%s'"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] "ביטול העתקה של פריט  %d"
+msgstr[0] "_ביטול העתקה של פריט  %d"
 msgstr[1] "ביטול העתקה של פריטי  %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "ביטול כפילות של פריט  %d"
+msgstr[0] "_ביטול כפילות של פריט  %d"
 msgstr[1] "ביטול כפילות של פריטי  %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] "ביטול העברת פריט %d"
-msgstr[1] "ביטול העברת פריטי %d"
+msgstr[0] "_ביטול העברת פריט %d"
+msgstr[1] "_ביטול העברת פריטי %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] "ביטול שינוי שם של פריט %d"
-msgstr[1] "ביטול שינוי שמות של פריטי %d"
+msgstr[0] "_ביטול שינוי שם של פריט %d"
+msgstr[1] "_ביטול שינוי שמות של פריטי %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
-msgstr "ביטול יצירת קובץ ריק"
+msgstr "_ביטול יצירת קובץ ריק"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
-msgstr "ביטול יצירת קובץ ריק מתבנית"
+msgstr "_ביטול יצירת קובץ ריק מתבנית"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] "ביטול יצירת תיקייה של %d"
-msgstr[1] "ביטול יצירת תיקיות של %d"
+msgstr[0] "_ביטול יצירת תיקייה של %d"
+msgstr[1] "_ביטול יצירת תיקיות של %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "ביטול העברה לסל המיחזור של פריט %d"
-msgstr[1] "ביטול העברה לסל המיחזור של פריטי %d"
+msgstr[0] "_ביטול העברה לסל המיחזור של פריט %d"
+msgstr[1] "_ביטול העברה לסל המיחזור של פריטי %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "ביטול שיחזור מסל המחזור של פריט  %d"
-msgstr[1] "ביטול שיחזור מסל המחזור של פריטי  %d"
+msgstr[0] "_ביטול שיחזור מסל המחזור של פריט  %d"
+msgstr[1] "_ביטול שיחזור מסל המחזור של פריטי  %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] "ביטול יצירת קישור לפריט  %d"
-msgstr[1] "ביטול יצירת קישורים לפריטי  %d"
+msgstr[0] "_ביטול יצירת קישור לפריט  %d"
+msgstr[1] "_ביטול יצירת קישורים לפריטי  %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] "ביטול מחיקת פריט  %d"
-msgstr[1] "ביטול מחיקת פריטי  %d"
+msgstr[0] "_ביטול מחיקת פריט  %d"
+msgstr[1] "_ביטול מחיקת פריטי  %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
@@ -2219,21 +2219,22 @@ msgstr[1] "ביטול הרשאות נסוגות של פריטי %d"
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] "ביטול שינויי הרשאות של פריטי %d"
+msgstr[0] "ביטול שינוי הרשאות של פריט  %d"
+msgstr[1] "ביטול שינוי הרשאות של פריטי  %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] "ביטול שינוי של פריט %d"
-msgstr[1] "ביטול שינויים של פריטי %d"
+msgstr[0] "ביטול שינוי קבוצה פריט %d"
+msgstr[1] "ביטול שינוי קבוצות פריט  %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] "ביטול שינוי בעלות של פריט %d"
+msgstr[0] "ביטול שינוי בעלים של פריט %d"
+msgstr[1] "ביטול שינוי בעלות של פריטי  %d"
 
 #: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
@@ -2353,11 +2354,11 @@ msgstr ""
 
 #: /home/cody/files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
-msgstr ""
+msgstr "פריסה"
 
 #: /home/cody/files/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "רשימה"
 
 #: /home/cody/files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
