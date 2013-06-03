@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-27 23:24+0000\n"
-"PO-Revision-Date: 2013-03-08 11:46+0000\n"
+"PO-Revision-Date: 2013-06-02 19:23+0000\n"
 "Last-Translator: Fathallah Wael <fathallahwael80@gmail.com>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2013-05-28 05:54+0000\n"
-"X-Generator: Launchpad (build 16640)\n"
+"X-Launchpad-Export-Date: 2013-06-03 06:19+0000\n"
+"X-Generator: Launchpad (build 16660)\n"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
@@ -167,19 +167,19 @@ msgstr "أنشئ المجلد %s"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:108
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:109
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:110
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:111
 msgid "FTP"
-msgstr ""
+msgstr "بروتوكول نقل الملفّات (FTP)"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:112
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:564
@@ -188,11 +188,11 @@ msgstr "الشبكة"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:113
 msgid "SFTP"
-msgstr ""
+msgstr "روتوكول نقل الملفّات المشفر (SFTP)"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:114
 msgid "SMB"
-msgstr ""
+msgstr "كتلة رسائل النّظام (SMB)"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:115
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:346
@@ -673,7 +673,7 @@ msgstr "أفرغ ال_مهملات"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2463
 msgid "Connect to Server…"
-msgstr ""
+msgstr "جاري الاتصال بالخادم..."
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
@@ -689,7 +689,7 @@ msgstr "‏FTP (بتسجيل دخول)"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:133
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "بروتوكول أبل للإيداع"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"

@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-27 23:24+0000\n"
-"PO-Revision-Date: 2013-05-28 20:22+0000\n"
-"Last-Translator: Marcus Lundgren <lp@gaoth.org>\n"
+"PO-Revision-Date: 2013-06-02 17:40+0000\n"
+"Last-Translator: Larsson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-29 07:28+0000\n"
-"X-Generator: Launchpad (build 16640)\n"
+"X-Launchpad-Export-Date: 2013-06-03 06:19+0000\n"
+"X-Generator: Launchpad (build 16660)\n"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
@@ -77,7 +77,7 @@ msgstr "Info:"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:414
 msgid "Other application..."
-msgstr "Andra applikationer..."
+msgstr "Annan applikation..."
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:438
 msgid "Open with:"
@@ -166,19 +166,19 @@ msgstr "Skapa mappen %s"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:108
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:109
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:110
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:111
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:112
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:564
@@ -187,11 +187,11 @@ msgstr "Nätverk"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:113
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:114
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:115
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:346
@@ -672,7 +672,7 @@ msgstr "Töm _papperskorgen"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2463
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Anslut till server..."
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
@@ -688,7 +688,7 @@ msgstr "FTP (med inloggning)"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:133
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"
@@ -892,13 +892,11 @@ msgstr "Öppna i %'d Nya fönster"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3478
 msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-"Förbered för de markerade filerna att flyttas med kommandot Klistra in"
+msgstr "Förbered de markerade filerna att flyttas med kommandot Klistra in"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3482
 msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-"Förbered för de markerade filerna att kopieras med kommandot Klistra in"
+msgstr "Förbered de markerade filerna att kopieras med kommandot Klistra in"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3486
 msgid "Move or copy files previously selected by a Cut or Copy command"
@@ -1114,6 +1112,8 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Sammanfogning kommer att fråga dig om bekräftelse innan några filer ersätts "
+"i mappen som är i konflikt med de filer som kopieras."
 
 #: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:155
 #: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:369
@@ -1225,7 +1225,7 @@ msgstr "Återställ"
 
 #: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:726
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Verkställ denna åtgärd på alla filer"
 
 #: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:737
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:200
@@ -1396,7 +1396,7 @@ msgstr " (kopia)"
 
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
-msgstr " (ytterligare en kopia)"
+msgstr " (ytterligare kopia)"
 
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:468
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:470
