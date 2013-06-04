@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-27 23:24+0000\n"
-"PO-Revision-Date: 2013-06-01 05:24+0000\n"
+"PO-Revision-Date: 2013-06-04 03:15+0000\n"
 "Last-Translator: Uri Damsker <ud1955@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-06-02 05:52+0000\n"
+"X-Launchpad-Export-Date: 2013-06-04 05:51+0000\n"
 "X-Generator: Launchpad (build 16660)\n"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:73
@@ -330,11 +330,11 @@ msgstr "פתיחת התיקייה האישית"
 
 #: /home/cody/files/po/../src/View/Window.vala:669
 msgid "_Trash"
-msgstr "סל המחזור"
+msgstr "סל המיחזור"
 
 #: /home/cody/files/po/../src/View/Window.vala:670
 msgid "Open your personal trash folder"
-msgstr "פתיחת תיקיית סל המחזור"
+msgstr "פתיחת תיקיית סל המיחזור"
 
 #: /home/cody/files/po/../src/View/Window.vala:673
 msgid "_Network"
@@ -362,7 +362,7 @@ msgstr "הקטנת גודל התצוגה"
 
 #: /home/cody/files/po/../src/View/Window.vala:697
 msgid "Normal Si_ze"
-msgstr "גודל רגיל"
+msgstr "גודל ר_גיל"
 
 #: /home/cody/files/po/../src/View/Window.vala:698
 msgid "Use the normal view size"
@@ -402,7 +402,7 @@ msgstr "דיווח על בעייה ל: Launchpad"
 
 #: /home/cody/files/po/../src/View/Window.vala:721
 msgid "Get Help Online..."
-msgstr "סיוע בעזרה מקוונת"
+msgstr "קבלת עזרה מקוונת..."
 
 #: /home/cody/files/po/../src/View/Window.vala:725
 msgid "Translate This Application..."
@@ -414,15 +414,15 @@ msgstr "הצגת קבצים _נסתרים"
 
 #: /home/cody/files/po/../src/View/Window.vala:735
 msgid "Toggle the display of hidden files in the current window"
-msgstr "שינוי התצוגה של קבצים מוסתרים בחלון הנוכחי"
+msgstr "הצגת / אי הצגת קבצים נסתרים בחלון הנוכחי"
 
 #: /home/cody/files/po/../src/View/Window.vala:739
 msgid "_Places"
-msgstr "מיקומים"
+msgstr "_מקומות"
 
 #: /home/cody/files/po/../src/View/Window.vala:740
 msgid "Change the visibility of this window's side pane"
-msgstr "שינוי מצב התצוגה של לוח הצד"
+msgstr "הצגת / הסתרת לוח הצד של חלון זה"
 
 #: /home/cody/files/po/../src/View/Window.vala:748
 msgid "Icon"
@@ -441,11 +441,11 @@ msgstr "עמודות"
 #: /home/cody/files/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr "נכשל בשינוי השם  %s ל  %s"
+msgstr "כשלון בשינוי השם %s ל-%s"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
-msgstr "אירגון פריטים"
+msgstr "_אירגון פריטים"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
@@ -457,7 +457,7 @@ msgstr "הצגת סמלים לפי סדר הפוך"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
-msgstr "הצגה לפי שם"
+msgstr "לפי _שם"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
@@ -481,7 +481,7 @@ msgstr "שמירה על סמלים בשורות ממויינים לפי סוג"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
-msgstr "בהתאם לתאריך השינוי"
+msgstr "בהתאם ל_תאריך השינוי"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
@@ -527,7 +527,7 @@ msgstr "הגדרות אישיות"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:291
 msgid "Your common places and bookmarks"
-msgstr "סימניות והמקומות הנפוצים שלך"
+msgstr "המקומות הנפוצים שלך וסימניות"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:348
 msgid "Open the trash"
@@ -569,39 +569,39 @@ msgstr "התחל"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:1591
 msgid "_Stop"
-msgstr "עצור"
+msgstr "_עצירה"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:1596
 msgid "_Power On"
-msgstr "הפעלה"
+msgstr "_הדלקה"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:1597
 msgid "_Safely Remove Drive"
-msgstr "הסרת כונן בבטחה"
+msgstr "_הסרת הכונן בבטחה"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:1600
 msgid "_Connect Drive"
-msgstr "חיבור כונן"
+msgstr "_חיבור כונן"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:1601
 msgid "_Disconnect Drive"
-msgstr "ניתוק כונן"
+msgstr "_ניתוק כונן"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:1604
 msgid "_Start Multi-disk Device"
-msgstr "התחלת התקן רב כוננים"
+msgstr "_התחל התקן רב כוננים"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:1605
 msgid "_Stop Multi-disk Device"
-msgstr "עצירת התקן רב כוננים"
+msgstr "_עצירת התקן רב כוננים"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:1609
 msgid "_Unlock Drive"
-msgstr "הצבת כונן"
+msgstr "_שחרור כונן"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:1610
 msgid "_Lock Drive"
-msgstr "נעילת כונן"
+msgstr "_נעילת כונן"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:1684
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2231
@@ -619,7 +619,7 @@ msgstr "לא ניתן לשלוף את %s"
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2177
 #, c-format
 msgid "Unable to poll %s for media changes"
-msgstr "לא ניתן לבדוק את %s עבור שינויי מדיה"
+msgstr "לא ניתן לתשאל את %s עבור שינויי מדיה"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2287
 #, c-format
@@ -630,18 +630,18 @@ msgstr "לא ניתן לעצור את %s"
 #: /home/cody/files/po/../src/fm-directory-view.c:1978
 #: /home/cody/files/po/../src/fm-directory-view.c:3506
 msgid "_Open"
-msgstr "פתיחה"
+msgstr "_פתיחה"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2393
 #: /home/cody/files/po/../src/fm-directory-view.c:1998
 #: /home/cody/files/po/../src/fm-directory-view.c:3518
 msgid "Open in New _Tab"
-msgstr "פתיחה בלשונית חדשה"
+msgstr "פתיחה ב_לשונית חדשה"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2400
 #: /home/cody/files/po/../src/fm-directory-view.c:2007
 msgid "Open in New _Window"
-msgstr "פתיחה בחלון חדש"
+msgstr "פתיחה ב_חלון חדש"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2409
 msgid "Remove"
@@ -653,21 +653,21 @@ msgstr "שינוי..."
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2431
 msgid "_Mount"
-msgstr "עיגון"
+msgstr "_עיגון"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2438
 msgid "_Unmount"
-msgstr "ניתוק עיגון"
+msgstr "_ניתוק עיגון"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2445
 msgid "_Eject"
-msgstr "שליפה"
+msgstr "_שליפה"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2453
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:1422
 #: /home/cody/files/po/../libcore/marlin-file-operations.c:2312
 msgid "Empty _Trash"
-msgstr "ריקון סל המיחזור"
+msgstr "ריקון_סל המיחזור"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2463
 msgid "Connect to Server…"
@@ -729,7 +729,7 @@ msgstr "נסיון חוזר"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:398
 msgid "Please verify your user details."
-msgstr "אנא וודא את פרטי המשתמש שלך."
+msgstr "נא לוודא את פרטי המשתמש שלך."
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:428
 msgid "Continue"
@@ -738,11 +738,11 @@ msgstr "הבא"
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:766
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1156
 msgid "C_onnect"
-msgstr "חיבור"
+msgstr "הת_חברות"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:891
 msgid "Connect to Server"
-msgstr "חיבור לשרת"
+msgstr "התחברות לשרת"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:909
 msgid "Server Details"
@@ -754,19 +754,19 @@ msgstr "_שרת:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:953
 msgid "_Port:"
-msgstr "שער:"
+msgstr "_פתחה:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:971
 msgid "_Type:"
-msgstr "סוג:"
+msgstr "_סוג:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1040
 msgid "Sh_are:"
-msgstr "שיתוף"
+msgstr "שיתו_ף:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1055
 msgid "_Folder:"
-msgstr "תיקייה"
+msgstr "_תיקייה:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
@@ -774,19 +774,19 @@ msgstr "פרטי המשתמש"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1096
 msgid "_Domain name:"
-msgstr "שם מתחם:"
+msgstr "שם _מתחם:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1111
 msgid "_User name:"
-msgstr "שם משתמש:"
+msgstr "שם _משתמש:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "Pass_word:"
-msgstr "סיסמא:"
+msgstr "_סיסמא:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1142
 msgid "_Remember this password"
-msgstr "שמירת סיסמא זו"
+msgstr "_שמירת סיסמא זו"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1245
 msgid "Operation cancelled"
@@ -821,7 +821,7 @@ msgstr "מצב הפריסה"
 
 #: /home/cody/files/po/../src/marlin-application.c:423
 msgid "Show the version of the program."
-msgstr "הצג גירסת תוכנה."
+msgstr "הצגת גירסת תוכנה."
 
 #: /home/cody/files/po/../src/marlin-application.c:427
 msgid "Open uri(s) in new tab"
@@ -829,11 +829,11 @@ msgstr "פתיחת כתובת / כתובות URL בלשונית חדשה"
 
 #: /home/cody/files/po/../src/marlin-application.c:429
 msgid "Quit Files."
-msgstr "צא מדפדפן הקבצים."
+msgstr "יציאה ממנהל הקבצים"
 
 #: /home/cody/files/po/../src/marlin-application.c:431
 msgid "Enable debug logging"
-msgstr "אפשר ניפוי שגיאות"
+msgstr "אפשרת ניפוי שגיאות"
 
 #: /home/cody/files/po/../src/marlin-application.c:432
 msgid "[URI...]"
@@ -876,7 +876,7 @@ msgstr[1] "שימוש ב־„%s“ לפתיחת הפריטים הנבחרים"
 #: /home/cody/files/po/../src/fm-directory-view.c:1972
 #, c-format
 msgid "_Open With %s"
-msgstr "פתיחה באמצעות %s"
+msgstr "_פתיחה באמצעות %s"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:1994
 #, c-format
@@ -898,7 +898,7 @@ msgstr "הכנת הקבצים הנבחרים להעתקה באמצעות פקו�
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3486
 msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr "העברה או העתקה של קבצים מבחירה קודמת באמצעות פקודת גזירה או העתקה"
+msgstr "העברה או העתקה של קבצים מבחירה מוקדמת באמצעות פקודת גזירה או העתקה"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3489
 msgid "Paste Into Folder"
@@ -909,11 +909,12 @@ msgid ""
 "Move or copy files previously selected by a Cut or Copy command into "
 "selected folder"
 msgstr ""
-"העברת או העתקת קבצים לתיקייה הנבחרת מבחירה קודמת על ידי פקודת גזירה או העתקה"
+"העברה או העתקה של קבצים שנבחרו קודם לכן על ידי פקודת גזירה או פקודת העתקה "
+"לתוך תיקייה שנבחרה"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3493
 msgid "_Rename..."
-msgstr "שינוי"
+msgstr "_שינוי שם..."
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3494
 msgid "Rename selected item"
@@ -921,7 +922,7 @@ msgstr "שינוי שם הפריט הנבחר"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3497
 msgid "Create New _Folder"
-msgstr "יצירת תיקייה חדשה"
+msgstr "יצירת _תיקייה חדשה"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3498
 msgid "Create a new empty folder inside this folder"
@@ -929,15 +930,15 @@ msgstr "יצירת תיקייה ריקה חדשה בתוך תיקייה זו"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3500
 msgid "Create New _File"
-msgstr "יצירת קובץ חדש"
+msgstr "יצירת קובץ_חדש"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3502
 msgid "_Empty File"
-msgstr "קובץ ריק"
+msgstr "קובץ _ריק"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3503
 msgid "Create a new empty file inside this folder"
-msgstr "יצירת קובץ ריק בתוך תיקייה זו"
+msgstr "יצירת קובץ חדש וריק בתוך תיקייה זו"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3507
 msgid "Open the selected item"
@@ -949,15 +950,15 @@ msgstr "פתיחה בחלון חדש"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3515
 msgid "Open each selected item in a new window"
-msgstr "פתיחת כל פריט נבחר בחלון חדש"
+msgstr "פתיחת כל פריט שנבחר בחלון חדש"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3519
 msgid "Open each selected item in a new tab"
-msgstr "פתיחת כל פריט נבחר בלשונית חדשה"
+msgstr "פתיחת כל פריט שנבחר בלשונית חדשה"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3521
 msgid "Open Wit_h"
-msgstr "פתיחה באמצעות"
+msgstr "פתיחה ב_אמצעות"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3522
 msgid "Choose a program with which to open the selected item"
@@ -965,7 +966,7 @@ msgstr "בחירת תוכנית לפתיחת הפריט הנבחר"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3524
 msgid "Other _Application..."
-msgstr "יישום אחר..."
+msgstr "_יישום אחר..."
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3525
 msgid "Choose another application with which to open the selected item"
@@ -973,15 +974,15 @@ msgstr "בחירת יישום אחר אתו יש להציג את הפריט הנ
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3528
 msgid "Mo_ve to Trash"
-msgstr "העברה לסל המחזור"
+msgstr "ה_עברה לסל המחזור"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3529
 msgid "Move each selected item to the Trash"
-msgstr "העברה לסל המחזור של כל אחד מהפריטים הנבחרים"
+msgstr "העברה לסל המיחזור של כל אחד מהפריטים הנבחרים"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3532
 msgid "_Delete Permanently"
-msgstr "מחיקה לצמיתות"
+msgstr "מחיקה _לצמיתות"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3533
 msgid "Delete each selected item, without moving to the Trash"
@@ -989,11 +990,11 @@ msgstr "מחק כל אחד מהפריטים הנבחרים ללא העברה ל�
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3536
 msgid "_Restore"
-msgstr "שחזור לתיקיית המקור"
+msgstr "_שחזור"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3544
 msgid "_Properties"
-msgstr "מאפיינים"
+msgstr "מ_אפיינים"
 
 #: /home/cody/files/po/../src/fm-directory-view.c:3545
 msgid "View or modify the properties of each selected item"

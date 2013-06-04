@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-27 23:24+0000\n"
-"PO-Revision-Date: 2013-05-10 22:35+0000\n"
-"Last-Translator: Cody Garver <cody@elementaryos.org>\n"
+"PO-Revision-Date: 2013-06-03 23:04+0000\n"
+"Last-Translator: Pedro Monteiro <Unknown>\n"
 "Language-Team: Português <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-28 05:55+0000\n"
-"X-Generator: Launchpad (build 16640)\n"
+"X-Launchpad-Export-Date: 2013-06-04 05:51+0000\n"
+"X-Generator: Launchpad (build 16660)\n"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
@@ -167,19 +167,19 @@ msgstr "Criar a pasta %s"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:108
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:109
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:110
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:111
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:112
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:564
@@ -188,11 +188,11 @@ msgstr "Rede"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:113
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:114
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:115
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:346
@@ -673,7 +673,7 @@ msgstr "Esvaziar _lixo"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2463
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Ligar ao Servidor..."
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
@@ -689,7 +689,7 @@ msgstr "FTP (com autenticação)"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:133
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"
