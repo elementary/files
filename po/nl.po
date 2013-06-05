@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-27 23:24+0000\n"
-"PO-Revision-Date: 2013-04-30 16:03+0000\n"
+"PO-Revision-Date: 2013-06-04 08:45+0000\n"
 "Last-Translator: Thomas Berends <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-05-28 05:54+0000\n"
-"X-Generator: Launchpad (build 16640)\n"
+"X-Launchpad-Export-Date: 2013-06-05 05:53+0000\n"
+"X-Generator: Launchpad (build 16660)\n"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
@@ -166,19 +166,19 @@ msgstr "De map %s aanmaken"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:108
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:109
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:110
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:111
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:112
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:564
@@ -187,11 +187,11 @@ msgstr "Netwerk"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:113
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:114
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:115
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:346
@@ -673,7 +673,7 @@ msgstr "Leeg _Prullenbak"
 
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:2463
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Verbind met server..."
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
@@ -689,7 +689,7 @@ msgstr "FTP (met aanmelden)"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:133
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"
@@ -1068,15 +1068,15 @@ msgstr "Pictogramweergave"
 
 #: /home/cody/files/po/../src/marlin-dnd.c:103
 msgid "_Move Here"
-msgstr "Hierheen _Verplaatsen"
+msgstr "_Verplaats hierheen"
 
 #: /home/cody/files/po/../src/marlin-dnd.c:108
 msgid "_Copy Here"
-msgstr "Hierheen _Kopiëren"
+msgstr "_Kopiëer hierheen"
 
 #: /home/cody/files/po/../src/marlin-dnd.c:113
 msgid "_Link Here"
-msgstr "Hierheen Ver_wijzen"
+msgstr "_Link hierheen"
 
 #: /home/cody/files/po/../src/marlin-dnd.c:118
 msgid "Set as _Background"
