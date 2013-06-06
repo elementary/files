@@ -147,16 +147,16 @@ namespace Marlin.View {
             else if (slot.directory.file.exists)
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
             else
-                tab_name = "Directory not found";
+                tab_name = _("Directory not found");
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
 
             /* update window title */
-            if(window.current_tab == this) {
-                window.set_title(tab_name);
+            if (window.current_tab == this) {
+                window.set_title (tab_name);
                 if (window.top_menu.location_bar != null)
-                    window.top_menu.location_bar.path = aslot.directory.file.location.get_parse_name();
+                    window.top_menu.location_bar.path = aslot.directory.file.location.get_parse_name ();
             }
 
         }
