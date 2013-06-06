@@ -1,447 +1,449 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Serbian Latin translation for pantheon-files
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the pantheon-files package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: pantheon-files\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2013-05-27 23:24+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2013-05-27 20:25+0000\n"
+"Last-Translator: nadrimajstor <ipejic@gmail.com>\n"
+"Language-Team: Serbian Latin <sr@latin@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Launchpad-Export-Date: 2013-05-28 05:56+0000\n"
+"X-Generator: Launchpad (build 16640)\n"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
-msgstr ""
+msgstr "Osobine"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:126
 msgid "General"
-msgstr ""
+msgstr "Opšte"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:134
 msgid "More"
-msgstr ""
+msgstr "Više"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:146
 msgid "Preview"
-msgstr ""
+msgstr "Pregled"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:333
 msgid "Created"
-msgstr ""
+msgstr "Napravljeno"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:335
 #: /home/cody/files/po/../src/fm-list-view.c:59
 msgid "Modified"
-msgstr ""
+msgstr "Izmenjeno"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:338
 msgid "Last Access"
-msgstr ""
+msgstr "Poslednji pristup"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:344
 msgid "Deleted"
-msgstr ""
+msgstr "Obrisano"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:349
 msgid "MimeType"
-msgstr ""
+msgstr "MIME tip"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:357
 msgid "MimeTypes"
-msgstr ""
+msgstr "MIME tipovi"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:361
 msgid "Location"
-msgstr ""
+msgstr "Lokacija"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:363
 msgid "Target"
-msgstr ""
+msgstr "Cilj"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:369
 msgid "Origin Location"
-msgstr ""
+msgstr "Polazna lokacija"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:379
 msgid "Info:"
-msgstr ""
+msgstr "Info:"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:414
 msgid "Other application..."
-msgstr ""
+msgstr "Drugačija aplikacija..."
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:438
 msgid "Open with:"
-msgstr ""
+msgstr "Otvara se u:"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:459
 msgid "Usage:"
-msgstr ""
+msgstr "Zauzeće:"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:464
 msgid "Device usage:"
-msgstr ""
+msgstr "Popunjenost uređaja:"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:471
 #, c-format
 msgid "%s free of %s (%d%% used)"
-msgstr ""
+msgstr "%s slobodno od dostupnih %s (zauzeto %d%%)"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:610
 msgid "Read"
-msgstr ""
+msgstr "Čitanje"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:615
 msgid "Write"
-msgstr ""
+msgstr "Upis"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:620
 msgid "Execute"
-msgstr ""
+msgstr "Izvršavanje"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:838
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:851
 msgid "Owner"
-msgstr ""
+msgstr "Vlasnik"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:843
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:855
 msgid "Group"
-msgstr ""
+msgstr "Grupa"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:859
 msgid "Everyone"
-msgstr ""
+msgstr "Svi"
 
 #: /home/cody/files/po/../src/View/PropertiesWindow.vala:1115
 msgid "Select an aplication to open "
-msgstr ""
+msgstr "Izaberi aplikaciju za otvaranje "
 
 #: /home/cody/files/po/../src/View/OverlayBar.vala:247
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "Izabrano %u stvari (%s)"
 
 #: /home/cody/files/po/../src/View/ViewContainer.vala:144
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:300
 msgid "Home"
-msgstr ""
+msgstr "Početak"
 
 #: /home/cody/files/po/../src/View/ViewContainer.vala:146
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:370
 msgid "File System"
-msgstr ""
+msgstr "Sistem fajlova"
 
 #: /home/cody/files/po/../src/View/ViewContainer.vala:151
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(kao Administrator)"
 
 #: /home/cody/files/po/../src/View/DirectoryNotFound.vala:72
 #, c-format
 msgid "Folder does not exist"
-msgstr ""
+msgstr "Fascikla ne postoji"
 
 #: /home/cody/files/po/../src/View/DirectoryNotFound.vala:75
 #, c-format
 msgid "Files can't find the folder %s"
-msgstr ""
+msgstr "Files nije uspeo da nađe fasciklu sa nazivom %s"
 
 #: /home/cody/files/po/../src/View/DirectoryNotFound.vala:80
 msgid "Create"
-msgstr ""
+msgstr "Napravi"
 
 #: /home/cody/files/po/../src/View/DirectoryNotFound.vala:80
 #, c-format
 msgid "Create the folder %s"
-msgstr ""
+msgstr "Napravi fasciklu sa nazivom %s"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:108
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:109
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:110
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:111
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:112
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:564
 msgid "Network"
-msgstr ""
+msgstr "Mreža"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:113
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:114
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:115
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:346
 msgid "Trash"
-msgstr ""
+msgstr "Kanta"
 
 #: /home/cody/files/po/../src/View/LocationBar.vala:289
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Otvori u novoj pregradi"
 
 #: /home/cody/files/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Files nije postavljen kao podrazumevani fajl menadžer."
 
 #: /home/cody/files/po/../src/View/Window.vala:132
 #: /home/cody/files/po/../src/fm-directory-view.c:3426
 msgid "Set as default"
-msgstr ""
+msgstr "Postavi za podrazumevano"
 
 #: /home/cody/files/po/../src/View/Window.vala:137
 msgid "Ignore"
-msgstr ""
+msgstr "Zanemari"
 
 #: /home/cody/files/po/../src/View/Window.vala:400
 msgid "Undo"
-msgstr ""
+msgstr "Poništi zadnju izmenu"
 
 #: /home/cody/files/po/../src/View/Window.vala:401
 #: /home/cody/files/po/../src/View/Window.vala:646
 msgid "Undo the last action"
-msgstr ""
+msgstr "Poništi zadnju radnju"
 
 #: /home/cody/files/po/../src/View/Window.vala:410
 msgid "Redo"
-msgstr ""
+msgstr "Povrati poništenu izmenu"
 
 #: /home/cody/files/po/../src/View/Window.vala:411
 #: /home/cody/files/po/../src/View/Window.vala:649
 msgid "Redo the last action"
-msgstr ""
+msgstr "Povrati poništenu radnju"
 
 #: /home/cody/files/po/../src/View/Window.vala:624
 msgid "_File"
-msgstr ""
+msgstr "_Fajl"
 
 #: /home/cody/files/po/../src/View/Window.vala:625
 msgid "_Edit"
-msgstr ""
+msgstr "Izm_eni"
 
 #: /home/cody/files/po/../src/View/Window.vala:626
 msgid "_View"
-msgstr ""
+msgstr "_Vidokrug"
 
 #: /home/cody/files/po/../src/View/Window.vala:627
 msgid "_Go"
-msgstr ""
+msgstr "Po_kreni"
 
 #: /home/cody/files/po/../src/View/Window.vala:628
 msgid "_Help"
-msgstr ""
+msgstr "Po_moć"
 
 #: /home/cody/files/po/../src/View/Window.vala:630
 #: /home/cody/files/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
-msgstr ""
+msgstr "_Novi prozor"
 
 #: /home/cody/files/po/../src/View/Window.vala:631
 msgid "Open another Files window for the displayed location"
-msgstr ""
+msgstr "Otvori drugi Files prozor za prikazanu lokaciju"
 
 #: /home/cody/files/po/../src/View/Window.vala:634
 #: /home/cody/files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
-msgstr ""
+msgstr "Nova _pregrada"
 
 #: /home/cody/files/po/../src/View/Window.vala:635
 msgid "Open another tab for the displayed location"
-msgstr ""
+msgstr "Otvori drugu pregradu za prikazanu lokaciju"
 
 #: /home/cody/files/po/../src/View/Window.vala:639
 msgid "_Close"
-msgstr ""
+msgstr "_Zatvori"
 
 #: /home/cody/files/po/../src/View/Window.vala:640
 msgid "Close this folder"
-msgstr ""
+msgstr "Zatvori ovu fasciklu"
 
 #: /home/cody/files/po/../src/View/Window.vala:645
 msgid "_Undo"
-msgstr ""
+msgstr "_Poništi"
 
 #: /home/cody/files/po/../src/View/Window.vala:648
 msgid "_Redo"
-msgstr ""
+msgstr "_Ponovi"
 
 #: /home/cody/files/po/../src/View/Window.vala:651
 msgid "Open _Parent"
-msgstr ""
+msgstr "Otvori _nadfasciklu"
 
 #: /home/cody/files/po/../src/View/Window.vala:652
 msgid "Open the parent folder"
-msgstr ""
+msgstr "Otvori nadfasciklu"
 
 #: /home/cody/files/po/../src/View/Window.vala:654
 msgid "_Back"
-msgstr ""
+msgstr "_Nazad"
 
 #: /home/cody/files/po/../src/View/Window.vala:655
 msgid "Go to the previous visited location"
-msgstr ""
+msgstr "Vrati se na prethodno posećenu lokaciju"
 
 #: /home/cody/files/po/../src/View/Window.vala:658
 msgid "_Forward"
-msgstr ""
+msgstr "_Sledeće"
 
 #: /home/cody/files/po/../src/View/Window.vala:659
 msgid "Go to the next visited location"
-msgstr ""
+msgstr "Pređi na sledeću već posećnu lokaciju"
 
 #: /home/cody/files/po/../src/View/Window.vala:661
 msgid "_Reload"
-msgstr ""
+msgstr "_Osveži"
 
 #: /home/cody/files/po/../src/View/Window.vala:662
 msgid "Reload the current location"
-msgstr ""
+msgstr "Osveži trenutnu lokaciju"
 
 #: /home/cody/files/po/../src/View/Window.vala:665
 msgid "_Home Folder"
-msgstr ""
+msgstr "_Lična fascikla"
 
 #: /home/cody/files/po/../src/View/Window.vala:666
 #: /home/cody/files/po/../src/marlin-places-sidebar.c:305
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Otvori ličnu fasciklu"
 
 #: /home/cody/files/po/../src/View/Window.vala:669
 msgid "_Trash"
-msgstr ""
+msgstr "_Smeće"
 
 #: /home/cody/files/po/../src/View/Window.vala:670
 msgid "Open your personal trash folder"
-msgstr ""
+msgstr "Otvori fasciklu sa smećem"
 
 #: /home/cody/files/po/../src/View/Window.vala:673
 msgid "_Network"
-msgstr ""
+msgstr "_Mreža"
 
 #: /home/cody/files/po/../src/View/Window.vala:674
 msgid "Browse bookmarked and local network locations"
-msgstr ""
+msgstr "Prelistaj markirane i lokalne mrežne lokacije"
 
 #: /home/cody/files/po/../src/View/Window.vala:677
 msgid "Zoom _In"
-msgstr ""
+msgstr "U_većaj"
 
 #: /home/cody/files/po/../src/View/Window.vala:678
 msgid "Increase the view size"
-msgstr ""
+msgstr "Proširi vidokrug"
 
 #: /home/cody/files/po/../src/View/Window.vala:689
 msgid "Zoom _Out"
-msgstr ""
+msgstr "U_manji"
 
 #: /home/cody/files/po/../src/View/Window.vala:690
 msgid "Decrease the view size"
-msgstr ""
+msgstr "Umanji vidokrug"
 
 #: /home/cody/files/po/../src/View/Window.vala:697
 msgid "Normal Si_ze"
-msgstr ""
+msgstr "Normalna veličin_a"
 
 #: /home/cody/files/po/../src/View/Window.vala:698
 msgid "Use the normal view size"
-msgstr ""
+msgstr "Normalni vidokrug"
 
 #: /home/cody/files/po/../src/View/Window.vala:701
 msgid "Next Tab"
-msgstr ""
+msgstr "Sledeća pregrada"
 
 #: /home/cody/files/po/../src/View/Window.vala:705
 msgid "Previous Tab"
-msgstr ""
+msgstr "Prethodna pregrada"
 
 #: /home/cody/files/po/../src/View/Window.vala:709
 msgid "Connect to _Server..."
-msgstr ""
+msgstr "Priključi se Server-u..."
 
 #: /home/cody/files/po/../src/View/Window.vala:710
 msgid "Connect to a remote computer or shared disk"
-msgstr ""
+msgstr "Poveži se na udaljeni računar ili zajednički disk"
 
 #: /home/cody/files/po/../src/View/Window.vala:713
 msgid "_About"
-msgstr ""
+msgstr "Ukr_atko"
 
 #: /home/cody/files/po/../src/View/Window.vala:714
 msgid "Display credits"
-msgstr ""
+msgstr "Prikaži zahvalnice"
 
 #: /home/cody/files/po/../src/View/Window.vala:717
 msgid "Report a Problem..."
-msgstr ""
+msgstr "Prijavi problem..."
 
 #: /home/cody/files/po/../src/View/Window.vala:718
 msgid "File a bug on Launchpad"
-msgstr ""
+msgstr "Ubeleži grešku na Launchpad-u"
 
 #: /home/cody/files/po/../src/View/Window.vala:721
 msgid "Get Help Online..."
-msgstr ""
+msgstr "Potraži pomoć na mreži..."
 
 #: /home/cody/files/po/../src/View/Window.vala:725
 msgid "Translate This Application..."
-msgstr ""
+msgstr "Prevedi ovu aplikaciju..."
 
 #: /home/cody/files/po/../src/View/Window.vala:734
 msgid "Show _Hidden Files"
-msgstr ""
+msgstr "Prikaz sakrivenih fajlova"
 
 #: /home/cody/files/po/../src/View/Window.vala:735
 msgid "Toggle the display of hidden files in the current window"
-msgstr ""
+msgstr "Uključuje i isključuje prikaz sakrivenih fajlova u trenutnom prozoru"
 
 #: /home/cody/files/po/../src/View/Window.vala:739
 msgid "_Places"
-msgstr ""
+msgstr "_Pozicije"
 
 #: /home/cody/files/po/../src/View/Window.vala:740
 msgid "Change the visibility of this window's side pane"
 msgstr ""
+"Uključuje i isključuje prikaz dodatne površine sa često posećenim mestima"
 
 #: /home/cody/files/po/../src/View/Window.vala:748
 msgid "Icon"
-msgstr ""
+msgstr "Sličica"
 
 #: /home/cody/files/po/../src/View/Window.vala:751
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 #: /home/cody/files/po/../src/View/Window.vala:754
 msgid "Columns"
-msgstr ""
+msgstr "Kolone"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:139
 #: /home/cody/files/po/../src/fm-columns-view.c:186
 #: /home/cody/files/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
-msgstr ""
+msgstr "Neuspešna promena naziva %s u %s"
 
 #: /home/cody/files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
@@ -491,7 +493,7 @@ msgstr ""
 #: /home/cody/files/po/../src/fm-columns-view.c:82
 #: /home/cody/files/po/../src/fm-list-view.c:616
 msgid "This folder is empty."
-msgstr ""
+msgstr "Ova fascikla je prazna."
 
 #: /home/cody/files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
@@ -674,116 +676,118 @@ msgstr ""
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:128
 msgid "Public FTP"
-msgstr ""
+msgstr "Javni FTP"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:130
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (sa prijavom)"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:133
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"
-msgstr ""
+msgstr "Windows share"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:137
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:139
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Secure WebDAV (HTTPS)"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:186
 msgid "Connecting..."
-msgstr ""
+msgstr "Povezivanje..."
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:210
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"Nije dostupan spisak mogućnosti koje server može da pruži.\n"
+"Proveriti stanje/instalaciju \"gvfs\" podsistema."
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:288
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "Ne može da se otvori fascikla \"%s\" na \"%s\"."
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:298
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "Nije nađen server na lokaciji \"%s\""
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:333
 msgid "Try Again"
-msgstr ""
+msgstr "Pokušaj ponovo"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:398
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Proverite tačnost unesenih podataka za prijavu"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:428
 msgid "Continue"
-msgstr ""
+msgstr "Nastavi"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:766
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1156
 msgid "C_onnect"
-msgstr ""
+msgstr "Uspostavi ve_zu"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:891
 msgid "Connect to Server"
-msgstr ""
+msgstr "Veza do servera"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:909
 msgid "Server Details"
-msgstr ""
+msgstr "Detaljno o serveru"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:933
 msgid "_Server:"
-msgstr ""
+msgstr "_Server:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:953
 msgid "_Port:"
-msgstr ""
+msgstr "_Port:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:971
 msgid "_Type:"
-msgstr ""
+msgstr "_Tip:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1040
 msgid "Sh_are:"
-msgstr ""
+msgstr "Sh_are:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1055
 msgid "_Folder:"
-msgstr ""
+msgstr "_Fascikla:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
-msgstr ""
+msgstr "Detalji o korisniku"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1096
 msgid "_Domain name:"
-msgstr ""
+msgstr "I_me domena:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1111
 msgid "_User name:"
-msgstr ""
+msgstr "_Korisničko ime:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "Pass_word:"
-msgstr ""
+msgstr "_Lozinka:"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1142
 msgid "_Remember this password"
-msgstr ""
+msgstr "_Zapamti ovu lozinku"
 
 #: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1245
 msgid "Operation cancelled"
@@ -1001,11 +1005,11 @@ msgstr ""
 
 #: /home/cody/files/po/../src/fm-list-view.c:59
 msgid "Size"
-msgstr ""
+msgstr "Veličina"
 
 #: /home/cody/files/po/../src/fm-list-view.c:59
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #: /home/cody/files/po/../src/marlin-progress-ui-handler.c:114
 #: /home/cody/files/po/../src/marlin-progress-ui-handler.c:164

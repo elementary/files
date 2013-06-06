@@ -42,6 +42,7 @@
 typedef struct FMDirectoryView FMDirectoryView;
 typedef struct FMDirectoryViewClass FMDirectoryViewClass;
 
+#define FM_DIRECTORY_TYPE_VIEW fm_directory_view_get_type()
 #define FM_TYPE_DIRECTORY_VIEW fm_directory_view_get_type()
 #define FM_DIRECTORY_VIEW(obj) \
     (G_TYPE_CHECK_INSTANCE_CAST ((obj), FM_TYPE_DIRECTORY_VIEW, FMDirectoryView))

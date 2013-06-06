@@ -2054,6 +2054,8 @@ trash_or_delete_internal (GList                  *files,
                           MarlinDeleteCallback  done_callback,
                           gpointer                done_callback_data)
 {
+    g_return_if_fail (files != NULL);
+    
     DeleteJob *job;
 
     /* TODO: special case desktop icon link files ... */

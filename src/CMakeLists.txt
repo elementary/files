@@ -38,23 +38,20 @@ add_definitions(${CFLAGS}
     "-DUI_DIR=\"${CMAKE_INSTALL_PREFIX}/share/pantheon-files/ui/\""
      -O2
     )
-vala_precompile(VALA_C
+vala_precompile(VALA_C pantheon-files
     ${CMAKE_BINARY_DIR}/src/config.vala
 
     marlin-deep-count.vala
-    View/SettingsDialog.vala
     View/DiskRenderer.vala
     View/DirectoryNotFound.vala
     View/Window.vala
     View/Resources.vala
     View/DbusTags.vala
     View/ViewContainer.vala
-    View/ContextView.vala
     View/OverlayBar.vala
     View/PropertiesWindow.vala
     View/Browser.vala
     View/ViewMode.vala
-    View/Animations.vala
     View/LocationBar.vala
     View/Chrome/TopMenu.vala
     View/Chrome/ViewSwicher.vala
@@ -81,10 +78,10 @@ OPTIONS
     --vapidir=${CMAKE_BINARY_DIR}/libcore/
     --target-glib=2.32 # Needed for new thread API
     --thread)
+
 add_executable(pantheon-files
     eel-editable-label.c
     marlin-application.c
-    gossip-cell-renderer-expander.c
     marlin-enum-types.c
     marlin-bookmark.c
     marlin-bookmark-list.c

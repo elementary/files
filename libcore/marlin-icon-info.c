@@ -524,11 +524,19 @@ marlin_icon_info_lookup (GIcon *icon, int size)
                                                         icon,
                                                         size,
                                                         GTK_ICON_LOOKUP_GENERIC_FALLBACK);
+        
+        GError *error;
+        error = NULL;
+        
         if (gtk_icon_info != NULL) {
-            pixbuf = gtk_icon_info_load_icon (gtk_icon_info, NULL);
+            pixbuf = gtk_icon_info_load_icon (gtk_icon_info, &error);
             gtk_icon_info_free (gtk_icon_info);
         }
-        icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
+        
+        if (error == NULL)
+            icon_info = marlin_icon_info_new_for_pixbuf (pixbuf);
+        else
+            return marlin_icon_info_new_for_pixbuf (NULL);
 
         /*if (pixbuf != NULL)
           g_object_unref (pixbuf);*/

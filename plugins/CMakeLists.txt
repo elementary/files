@@ -1,4 +1,4 @@
-add_subdirectory(extended-actions)
 add_subdirectory(contractor)
 add_subdirectory(marlin-trash)
 add_subdirectory(marlin-ctags)
+add_subdirectory(network-places)

@@ -110,6 +110,7 @@ static struct MethodInfo methods[] = {
     { "sftp",  SHOW_PORT | SHOW_USER, 22 },
     { "ftp",  SHOW_PORT | SHOW_USER, 21 },
     { "ftp",  DEFAULT_METHOD | IS_ANONYMOUS | SHOW_PORT, 21 },
+    { "afp",  SHOW_PORT | SHOW_USER, 548 },
     { "smb",  SHOW_SHARE | SHOW_USER | SHOW_DOMAIN, 0 },
     { "dav",  SHOW_PORT | SHOW_USER, 80 },
     /* FIXME: hrm, shouldn't it work? */
@@ -128,6 +129,8 @@ get_method_description (struct MethodInfo *meth)
         } else {
             return _("FTP (with login)");
         }
+    } else if (strcmp (meth->scheme, "afp") == 0) { 
+        return _("AFP (Apple Filing Protocol)");
     } else if (strcmp (meth->scheme, "smb") == 0) {
         return _("Windows share");
     } else if (strcmp (meth->scheme, "dav") == 0) {
@@ -436,6 +439,19 @@ connect_dialog_request_additional_details (MarlinConnectServerDialog *self,
 }
 
 static GSimpleAsyncResult *display_location_res = NULL;
+
+void
+marlin_connect_server_dialog_show (GtkWidget *widget)
+{
+    GtkWidget *toplevel = gtk_widget_get_toplevel (widget);
+    if (gtk_widget_is_toplevel (toplevel)) {
+        GtkWindow *window = GTK_WINDOW (toplevel);
+        g_return_if_fail (window != NULL);
+
+        MarlinConnectServerDialog *dialog = marlin_connect_server_dialog_new (window);
+        gtk_widget_show (GTK_WIDGET (dialog));
+    }
+}
 
 void
 marlin_connect_server_dialog_display_location_async (MarlinConnectServerDialog *self,

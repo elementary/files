@@ -284,6 +284,16 @@ file_deleted_callback (GOFDirectoryAsync *directory, GOFFile *file, FMDirectoryV
 {
     g_debug ("%s %s", G_STRFUNC, file->uri); 
     fm_list_model_remove_file (view->model, file, directory);
+    /* Remove from gof-directory-async cache */
+    if (gof_file_is_folder (file)) {
+        GOFDirectoryAsync *dir = NULL;
+        dir = gof_directory_async_cache_lookup (file->location);
+        if (dir != NULL) {
+            if (gof_directory_async_purge_dir_from_cache (dir))
+                g_debug ("Remove from gof-directory-async cache %s\n", file->uri);
+            g_object_unref (dir);
+        }
+    }
 }
 
 static void
@@ -683,7 +693,11 @@ fm_directory_view_activate_single_file (FMDirectoryView *view,
             break;
         }
     } else {
-        gof_file_open_single (file, screen, view->details->default_app);
+        if (gof_file_is_root_network_folder (file)) {
+            fm_directory_view_load_location (view, file->target_location);
+        } else {
+            gof_file_open_single (file, screen, view->details->default_app);
+        }
     }
 }
 
@@ -992,6 +1006,18 @@ fm_directory_view_get_drop_file (FMDirectoryView    *view,
         //printf ("%s path %s\n", G_STRFUNC, gtk_tree_path_to_string (path));
         /* determine the file for the path */
         file = fm_list_model_file_for_path (view->model, path);
+        
+        /* If file == NULL, it means that the path in question is a blank path,
+         * which can only exist under an expanded empty folder.
+         * In this case, we set the destination target to that folder. */
+         if (file == NULL) {
+            /* The original path isn't modified. The graphical results are
+             * more pleasant in this way. */
+            GtkTreePath *folder_path = gtk_tree_path_copy (path);
+            gtk_tree_path_up (folder_path);
+            file = fm_list_model_file_for_path (view->model, folder_path);
+         }
+
         printf ("%s %s\n", G_STRFUNC, file->uri);
 
         /* we can only drop to directories and executable files */
@@ -1892,6 +1918,11 @@ update_menus_selection (FMDirectoryView *view)
     selection = fm_directory_view_get_selection (view);
     selection_count = g_list_length (selection);
     file = GOF_FILE (selection->data);
+    
+    if (file == NULL) {
+        update_menus_empty_selection (view);
+        return;
+    }
 
     dir_action_set_sensitive (view, "Cut", TRUE);
     dir_action_set_sensitive (view, "Copy", TRUE);

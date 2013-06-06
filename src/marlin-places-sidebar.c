@@ -26,7 +26,6 @@
 #include "eel-fcts.h"
 #include "eel-gtk-extensions.h"
 #include "eel-gio-extensions.h"
-#include "gossip-cell-renderer-expander.h"
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
 #include <gio/gio.h>
@@ -41,6 +40,7 @@
 #include "marlin-trash-monitor.h"
 #include "marlin-dnd.h"
 #include "marlincore.h"
+#include "marlin-connect-server-dialog.h"
 
 #define ROOT_INDENTATION_XPAD 2
 #define EJECT_BUTTON_XPAD 4
@@ -1451,6 +1451,7 @@ bookmarks_popup_menu_detach_cb (GtkWidget *attach_widget,
     sidebar->popup_menu_start_item = NULL;
     sidebar->popup_menu_stop_item = NULL;
     sidebar->popup_menu_empty_trash_item = NULL;
+    sidebar->popup_menu_connect_server_item = NULL;
 }
 
 static void
@@ -1531,6 +1532,7 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
     gboolean show_start;
     gboolean show_stop;
     gboolean show_empty_trash;
+    gboolean show_connect_server;
     char *uri = NULL;
 
     type = PLACES_BUILT_IN;
@@ -1568,9 +1570,10 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
      */
 
     show_empty_trash = (uri != NULL) && (!strcmp (uri, MARLIN_TRASH_URI));
+    show_connect_server = (uri != NULL) && (!strcmp (uri, MARLIN_NETWORK_URI));
 
     eel_gtk_widget_set_shown (sidebar->popup_menu_separator_item2,
-            show_eject || show_unmount || show_mount || show_empty_trash);
+            show_eject || show_unmount || show_mount || show_empty_trash || show_connect_server);
     eel_gtk_widget_set_shown (sidebar->popup_menu_mount_item, show_mount);
     eel_gtk_widget_set_shown (sidebar->popup_menu_unmount_item, show_unmount);
     eel_gtk_widget_set_shown (sidebar->popup_menu_eject_item, show_eject);
@@ -1579,6 +1582,7 @@ bookmarks_check_popup_sensitivity (MarlinPlacesSidebar *sidebar)
           eel_gtk_widget_set_shown (sidebar->popup_menu_start_item, show_start);
           eel_gtk_widget_set_shown (sidebar->popup_menu_stop_item, show_stop);*/
     eel_gtk_widget_set_shown (sidebar->popup_menu_empty_trash_item, show_empty_trash);
+    eel_gtk_widget_set_shown (sidebar->popup_menu_connect_server_item, show_connect_server);
 
     //TODO check this
 #if 0
@@ -2320,10 +2324,16 @@ stop_shortcut_cb (GtkMenuItem           *item,
 #endif
 
 static void
-empty_trash_cb (GtkMenuItem           *item,
-                MarlinPlacesSidebar *sidebar)
+empty_trash_cb (GtkMenuItem             *item,
+                MarlinPlacesSidebar     *sidebar)
 {
     marlin_file_operations_empty_trash (GTK_WIDGET (sidebar->window));
+}
+static void
+connect_server_cb (GtkMenuItem          *item,
+                   MarlinPlacesSidebar  *sidebar)
+{
+    marlin_connect_server_dialog_show(GTK_WIDGET (sidebar->window));
 }
 
 /* Handler for GtkWidget::key-press-event on the shortcuts list */
@@ -2444,6 +2454,16 @@ bookmarks_build_popup_menu (MarlinPlacesSidebar *sidebar)
     sidebar->popup_menu_empty_trash_item = item;
     g_signal_connect (item, "activate",
                       G_CALLBACK (empty_trash_cb), sidebar);
+    gtk_widget_show (item);
+    gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
+
+    bookmarks_check_popup_sensitivity (sidebar);
+
+    /* Connect to server menu item */
+    item = gtk_menu_item_new_with_mnemonic (_("Connect to Server…"));
+    sidebar->popup_menu_connect_server_item = item;
+    g_signal_connect (item, "activate",
+                      G_CALLBACK (connect_server_cb), sidebar);
     gtk_widget_show (item);
     gtk_menu_shell_append (GTK_MENU_SHELL (sidebar->popup_menu), item);
 
@@ -2749,10 +2769,7 @@ expander_cell_data_func (GtkTreeViewColumn *tree_column,
         row_expanded = gtk_tree_view_row_expanded (GTK_TREE_VIEW (gtk_tree_view_column_get_tree_view (tree_column)), path);
         gtk_tree_path_free (path);
 
-        g_object_set (sidebar->expander_renderer,
-                      "visible", TRUE,
-                      "expander-style", row_expanded ? GTK_EXPANDER_EXPANDED : GTK_EXPANDER_COLLAPSED,
-                      NULL);
+        g_object_set (sidebar->expander_renderer, "visible", TRUE, NULL);
     } else {
         g_object_set (sidebar->expander_renderer, "visible", FALSE, NULL);
     }
@@ -2819,6 +2836,8 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     GtkTreeViewColumn *expcol;
     GtkCellRenderer   *cell;
     GtkTreeSelection  *selection;
+    GtkStyleContext   *style_context;
+    GraniteWidgetsCellRendererExpander *expander_renderer;
 
     sidebar->uri = NULL;
     sidebar->volume_monitor = g_volume_monitor_get ();
@@ -2919,12 +2938,18 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
     g_object_set (tree_view, "show-expanders", FALSE, NULL);
 
     /* Expander */
+    expander_renderer = granite_widgets_cell_renderer_expander_new ();
 
-    cell = gossip_cell_renderer_expander_new ();
-    sidebar->expander_renderer = cell;
     /* align expander with eject buttons */
     gint exp_size;
-    g_object_get (cell, "expander-size", &exp_size, NULL);
+    exp_size = GRANITE_WIDGETS_CELL_RENDERER_EXPANDER_GET_CLASS (expander_renderer)->get_arrow_size (expander_renderer,
+                                                                                                     GTK_WIDGET (tree_view));
+
+    granite_widgets_cell_renderer_expander_set_is_category_expander (expander_renderer, TRUE);
+
+    cell = GTK_CELL_RENDERER (expander_renderer);
+    sidebar->expander_renderer = cell;
+
     g_object_set (cell, "xpad", ABS (16 - exp_size) + EJECT_BUTTON_XPAD - 2, "xalign", 1.0, NULL);
     gtk_tree_view_column_pack_end (col, cell, FALSE);
     gtk_tree_view_column_set_cell_data_func (col, 
@@ -2945,7 +2970,9 @@ marlin_places_sidebar_init (MarlinPlacesSidebar *sidebar)
 
     gtk_container_add (GTK_CONTAINER (sidebar), GTK_WIDGET (tree_view));
 
-    gtk_style_context_add_class(gtk_widget_get_style_context(GTK_WIDGET(tree_view)), "sidebar");
+    style_context = gtk_widget_get_style_context (GTK_WIDGET (tree_view));
+    gtk_style_context_add_class (style_context, GTK_STYLE_CLASS_SIDEBAR);
+    gtk_style_context_add_class (style_context, GRANITE_STYLE_CLASS_SOURCE_LIST);
 
     gtk_widget_show (GTK_WIDGET (tree_view));
     gtk_widget_show (GTK_WIDGET (sidebar));
