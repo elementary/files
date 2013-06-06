@@ -144,7 +144,7 @@ namespace Marlin.View {
                 tab_name = _("Home");
             else if (slot_path == "/")
                 tab_name = _("File System");
-            else if (slot.directory.file.exists)
+            else if (slot.directory.file.exists && (aslot.directory.file.info is FileInfo))
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
             else
                 tab_name = _("Directory not found");
