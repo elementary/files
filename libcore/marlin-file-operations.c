@@ -6342,6 +6342,7 @@ void new_folder_with_name_callback (GFile *new_folder, gpointer user_data) {
         marlin_file_operations_new_folder_with_name (args->parent_view, args->target_point,
                                                      args->parent_dir, args->folder_name,
                                                      args->done_callback, args->done_callback_data);
+        g_free (args);
     }
 }
 
