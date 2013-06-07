@@ -513,6 +513,7 @@ mount_removed_callback (GVolumeMonitor *monitor,
 {
     GList *window_list, *node;
     MarlinViewWindow *window;
+    MarlinViewViewContainer *view_container;
     GOFWindowSlot *slot;
     GFile *root, *location, *home;
 
@@ -534,19 +535,21 @@ mount_removed_callback (GVolumeMonitor *monitor,
             GFile *location;
 
             tabs = gtk_container_get_children (GTK_CONTAINER (window->tabs));
+            tabs = gtk_container_get_children (GTK_CONTAINER (tabs->data));
             for (l = tabs; l != NULL; l = l->next) {
-                slot = MARLIN_VIEW_VIEW_CONTAINER (l->data)->slot;
+                view_container = MARLIN_VIEW_VIEW_CONTAINER (gtk_bin_get_child (GTK_BIN (l->data)));            
+                slot = view_container -> slot;
                 location = slot->location;
                 if (location == NULL ||
                     g_file_has_prefix (location, root) ||
                     g_file_equal (location, root)) 
                 {
                     //g_warning ("%s %s", G_STRFUNC, g_file_get_uri (location));
-                    if (l->data == window->current_tab) {
-                         g_signal_emit_by_name (l->data, "path-changed", home);
+                    if (view_container == window->current_tab) {
+                         g_signal_emit_by_name (view_container, "path-changed", home);
                         //g_debug ("DON T close %s", g_file_get_uri (location));
                     } else {
-                        marlin_view_window_remove_tab (window, l->data);
+                        marlin_view_window_remove_tab (window, view_container);
                     }
                 }
             }

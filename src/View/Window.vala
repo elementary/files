@@ -319,15 +319,10 @@ namespace Marlin.View {
             //current_tab = content;
         }
 
-        public void remove_tab(ViewContainer view_container){
-            if(tabs.get_children().length() == 2){
-                tabs.show_tabs = false;
-            }else if(tabs.get_children().length() == 1){
-                save_geometries();
-                destroy();
-            }
-
-            tabs.remove(view_container);
+        public void remove_tab (ViewContainer view_container){
+            var tab = tabs.get_tab_by_widget (view_container as Gtk.Widget);
+            if (tab != null)
+                tabs.remove_tab (tab);
         }
 
         public void add_window(File location){
