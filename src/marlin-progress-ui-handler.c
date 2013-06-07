@@ -336,13 +336,6 @@ progress_ui_handler_update_unity_launcher_entry (MarlinProgressUIHandler *self,
         unity_launcher_entry_set_progress_visible (entry, TRUE);
         progress_ui_handler_show_unity_quicklist (self, lentry, TRUE);
         progress_ui_handler_unity_progress_changed (NULL, self);
-
-        if (self->priv->active_infos > 1) {
-            unity_launcher_entry_set_count (entry, self->priv->active_infos);
-            unity_launcher_entry_set_count_visible (entry, TRUE);
-        } else {
-            unity_launcher_entry_set_count_visible (entry, FALSE);
-        }
     } else {
         unity_launcher_entry_set_progress_visible (entry, FALSE);
         unity_launcher_entry_set_progress (entry, 0.0);

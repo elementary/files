@@ -7,772 +7,497 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2013-01-14 14:39-0600\n"
-"PO-Revision-Date: 2013-01-07 12:07+0000\n"
+"POT-Creation-Date: 2013-05-27 23:24+0000\n"
+"PO-Revision-Date: 2013-05-21 14:42+0000\n"
 "Last-Translator: Alfredo Hernández <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2013-01-15 05:08+0000\n"
-"X-Generator: Launchpad (build 16420)\n"
+"X-Launchpad-Export-Date: 2013-05-28 05:54+0000\n"
+"X-Generator: Launchpad (build 16640)\n"
 
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:72
-#, c-format
-msgid "Folder does not exist"
-msgstr "La carpeta no existeix"
-
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:75
-#, c-format
-msgid "Files can't find the folder %s"
-msgstr "No s'ha pogut trobar la carpeta %s"
-
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
-msgid "Create"
-msgstr "Crea"
-
-#: /home/codygarver/files/po/../src/View/DirectoryNotFound.vala:80
-#, c-format
-msgid "Create the folder %s"
-msgstr "Crea la carpeta %s"
-
-#: /home/codygarver/files/po/../src/View/OverlayBar.vala:247
-#, c-format
-msgid "%u items selected (%s)"
-msgstr ""
-
-#: /home/codygarver/files/po/../src/View/ContextView.vala:337
-msgid "Name"
-msgstr "Nom"
-
-#: /home/codygarver/files/po/../src/View/ContextView.vala:338
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Type"
-msgstr "Tipus"
-
-#: /home/codygarver/files/po/../src/View/ContextView.vala:341
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:353
-msgid "Target"
-msgstr "Objectiu"
-
-#: /home/codygarver/files/po/../src/View/ContextView.vala:343
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Size"
-msgstr "Mida"
-
-#: /home/codygarver/files/po/../src/View/ContextView.vala:345
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:325
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Modified"
-msgstr "Modificat"
-
-#: /home/codygarver/files/po/../src/View/ContextView.vala:346
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:828
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:841
-msgid "Owner"
-msgstr "Propietari"
-
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:145
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:300
-msgid "Home"
-msgstr "Carpeta de l'usuari"
-
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:147
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:370
-msgid "File System"
-msgstr "Sistema de fitxers"
-
-#: /home/codygarver/files/po/../src/View/ViewContainer.vala:152
-msgid "(as Administrator)"
-msgstr "(com a Administrador)"
-
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:63
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:73
 msgid "Properties"
 msgstr "Propietats"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:116
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:47
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:126
 msgid "General"
 msgstr "General"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:124
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:134
 msgid "More"
 msgstr "Més"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:136
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:146
 msgid "Preview"
 msgstr "Previsualització"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:323
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:333
 msgid "Created"
 msgstr "Creat"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:328
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:335
+#: /home/cody/files/po/../src/fm-list-view.c:59
+msgid "Modified"
+msgstr "Modificat"
+
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:338
 msgid "Last Access"
 msgstr "Darrer accés"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:334
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:344
 msgid "Deleted"
 msgstr "S'ha suprimit"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:339
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:349
 msgid "MimeType"
 msgstr "Tipus MIME"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:347
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:357
 msgid "MimeTypes"
 msgstr "Tipus MIME"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:351
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:361
 msgid "Location"
 msgstr "Ubicació"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:359
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:363
+msgid "Target"
+msgstr "Objectiu"
+
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:369
 msgid "Origin Location"
 msgstr "Ubicació original"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:369
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:379
 msgid "Info:"
 msgstr "Informació:"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:404
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:414
 msgid "Other application..."
-msgstr "Una altra aplicació..."
+msgstr "Una altra aplicació…"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:428
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:438
 msgid "Open with:"
 msgstr "Obre amb:"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:449
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:459
 msgid "Usage:"
 msgstr "Ús:"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:454
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:464
 msgid "Device usage:"
 msgstr "Ús del dispositiu:"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:461
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:471
 #, c-format
 msgid "%s free of %s (%d%% used)"
 msgstr "%s lliure de %s (%d%% usat)"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:600
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:610
 msgid "Read"
 msgstr "Llegir"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:605
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:615
 msgid "Write"
 msgstr "Escriure"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:610
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:620
 msgid "Execute"
 msgstr "Execució"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:833
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:845
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:838
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:851
+msgid "Owner"
+msgstr "Propietari"
+
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:843
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:855
 msgid "Group"
 msgstr "Grup"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:849
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:859
 msgid "Everyone"
 msgstr "Tothom"
 
-#: /home/codygarver/files/po/../src/View/PropertiesWindow.vala:1105
+#: /home/cody/files/po/../src/View/PropertiesWindow.vala:1115
 msgid "Select an aplication to open "
 msgstr "Selecciona una aplicació per a obrir "
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:110
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:346
-msgid "Trash"
-msgstr "Paperera"
+#: /home/cody/files/po/../src/View/OverlayBar.vala:247
+#, c-format
+msgid "%u items selected (%s)"
+msgstr "%u elements seleccionats (%s)"
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:111
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:564
+#: /home/cody/files/po/../src/View/ViewContainer.vala:144
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:300
+msgid "Home"
+msgstr "Carpeta de l'usuari"
+
+#: /home/cody/files/po/../src/View/ViewContainer.vala:146
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:370
+msgid "File System"
+msgstr "Sistema de fitxers"
+
+#: /home/cody/files/po/../src/View/ViewContainer.vala:151
+msgid "(as Administrator)"
+msgstr "(com a Administrador)"
+
+#: /home/cody/files/po/../src/View/DirectoryNotFound.vala:72
+#, c-format
+msgid "Folder does not exist"
+msgstr "La carpeta no existeix"
+
+#: /home/cody/files/po/../src/View/DirectoryNotFound.vala:75
+#, c-format
+msgid "Files can't find the folder %s"
+msgstr "No s'ha pogut trobar la carpeta %s"
+
+#: /home/cody/files/po/../src/View/DirectoryNotFound.vala:80
+msgid "Create"
+msgstr "Crea"
+
+#: /home/cody/files/po/../src/View/DirectoryNotFound.vala:80
+#, c-format
+msgid "Create the folder %s"
+msgstr "Crea la carpeta %s"
+
+#: /home/cody/files/po/../src/View/LocationBar.vala:108
+msgid "AFP"
+msgstr "AFP"
+
+#: /home/cody/files/po/../src/View/LocationBar.vala:109
+msgid "DAV"
+msgstr "DAV"
+
+#: /home/cody/files/po/../src/View/LocationBar.vala:110
+msgid "DAVS"
+msgstr "DAVS"
+
+#: /home/cody/files/po/../src/View/LocationBar.vala:111
+msgid "FTP"
+msgstr "FTP"
+
+#: /home/cody/files/po/../src/View/LocationBar.vala:112
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:564
 msgid "Network"
 msgstr "Xarxa"
 
-#: /home/codygarver/files/po/../src/View/LocationBar.vala:286
+#: /home/cody/files/po/../src/View/LocationBar.vala:113
+msgid "SFTP"
+msgstr "SFTP"
+
+#: /home/cody/files/po/../src/View/LocationBar.vala:114
+msgid "SMB"
+msgstr "SMB"
+
+#: /home/cody/files/po/../src/View/LocationBar.vala:115
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:346
+msgid "Trash"
+msgstr "Paperera"
+
+#: /home/cody/files/po/../src/View/LocationBar.vala:289
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Obre en una pestanya nova"
 
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:34
-msgid "Files Preferences"
-msgstr "Preferències"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:103
-msgid "Extensions"
-msgstr "Extensions"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:209
-msgid "Single click to open:"
-msgstr "Un sol clic per obrir:"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:217
-msgid "Mouse auto-selection:"
-msgstr "Selecció automàtica amb el ratolí:"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:236
-#, c-format
-msgid "Slow"
-msgstr "Lent"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:238
-#, c-format
-msgid "Fast"
-msgstr "Ràpid"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:253
-msgid "Date format:"
-msgstr "Format de la data:"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:256
-msgid "iso"
-msgstr "iso"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:257
-msgid "locale"
-msgstr "localització"
-
-#: /home/codygarver/files/po/../src/View/SettingsDialog.vala:258
-msgid "informal"
-msgstr "informal"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:144
+#: /home/cody/files/po/../src/View/Window.vala:126
 msgid "Files isn't your default file manager."
 msgstr "El Fitxers no és el vostre gestor de fitxers predeterminat."
 
-#: /home/codygarver/files/po/../src/View/Window.vala:150
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3395
+#: /home/cody/files/po/../src/View/Window.vala:132
+#: /home/cody/files/po/../src/fm-directory-view.c:3426
 msgid "Set as default"
 msgstr "Estableix com a predeterminada"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:155
+#: /home/cody/files/po/../src/View/Window.vala:137
 msgid "Ignore"
 msgstr "Ignora"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:490
+#: /home/cody/files/po/../src/View/Window.vala:400
 msgid "Undo"
 msgstr "Desfés"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:491
-#: /home/codygarver/files/po/../src/View/Window.vala:784
+#: /home/cody/files/po/../src/View/Window.vala:401
+#: /home/cody/files/po/../src/View/Window.vala:646
 msgid "Undo the last action"
 msgstr "Desfés la darrera acció"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:500
+#: /home/cody/files/po/../src/View/Window.vala:410
 msgid "Redo"
 msgstr "Refés"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:501
-#: /home/codygarver/files/po/../src/View/Window.vala:787
+#: /home/cody/files/po/../src/View/Window.vala:411
+#: /home/cody/files/po/../src/View/Window.vala:649
 msgid "Redo the last action"
 msgstr "Refés la darrera acció"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:758
+#: /home/cody/files/po/../src/View/Window.vala:624
 msgid "_File"
 msgstr "_Fitxer"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:759
+#: /home/cody/files/po/../src/View/Window.vala:625
 msgid "_Edit"
 msgstr "_Edita"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:760
+#: /home/cody/files/po/../src/View/Window.vala:626
 msgid "_View"
 msgstr "Vi_sualitza"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:761
+#: /home/cody/files/po/../src/View/Window.vala:627
 msgid "_Go"
 msgstr "_Vés"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:762
+#: /home/cody/files/po/../src/View/Window.vala:628
 msgid "_Help"
 msgstr "A_juda"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:764
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:9
+#: /home/cody/files/po/../src/View/Window.vala:630
+#: /home/cody/files/po/../src/DesktopLauncher.vala:9
 msgid "New _Window"
 msgstr "_Finestra nova"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:765
+#: /home/cody/files/po/../src/View/Window.vala:631
 msgid "Open another Files window for the displayed location"
 msgstr "Obre una finestra nova per a aquesta ubicació"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:768
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:8
+#: /home/cody/files/po/../src/View/Window.vala:634
+#: /home/cody/files/po/../src/DesktopLauncher.vala:8
 msgid "New _Tab"
 msgstr "Pes_tanya nova"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:769
+#: /home/cody/files/po/../src/View/Window.vala:635
 msgid "Open another tab for the displayed location"
 msgstr "Obre una altra pestanya per a la ubicació mostrada"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:773
+#: /home/cody/files/po/../src/View/Window.vala:639
 msgid "_Close"
 msgstr "_Tanca"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:774
+#: /home/cody/files/po/../src/View/Window.vala:640
 msgid "Close this folder"
 msgstr "Tanca aquesta carpeta"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:777
-msgid "Preferences"
-msgstr "Preferències"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:778
-msgid "Change Files preferences"
-msgstr "Canvia les preferències"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:783
+#: /home/cody/files/po/../src/View/Window.vala:645
 msgid "_Undo"
 msgstr "_Desfés"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:786
+#: /home/cody/files/po/../src/View/Window.vala:648
 msgid "_Redo"
 msgstr "_Refés"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:789
+#: /home/cody/files/po/../src/View/Window.vala:651
 msgid "Open _Parent"
 msgstr "Obre el _pare"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:790
+#: /home/cody/files/po/../src/View/Window.vala:652
 msgid "Open the parent folder"
 msgstr "Obre la carpeta pare"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:792
+#: /home/cody/files/po/../src/View/Window.vala:654
 msgid "_Back"
 msgstr "_Enrere"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:793
+#: /home/cody/files/po/../src/View/Window.vala:655
 msgid "Go to the previous visited location"
 msgstr "Vés a la ubicació visitada anterior"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:796
+#: /home/cody/files/po/../src/View/Window.vala:658
 msgid "_Forward"
 msgstr "E_ndavant"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:797
+#: /home/cody/files/po/../src/View/Window.vala:659
 msgid "Go to the next visited location"
 msgstr "Vés a la ubicació visitada següent"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:799
+#: /home/cody/files/po/../src/View/Window.vala:661
 msgid "_Reload"
 msgstr "_Torna a carregar"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:800
+#: /home/cody/files/po/../src/View/Window.vala:662
 msgid "Reload the current location"
 msgstr "Actualitza la ubicació actual"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:803
+#: /home/cody/files/po/../src/View/Window.vala:665
 msgid "_Home Folder"
 msgstr "Carpeta de l'_usuari"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:804
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:305
+#: /home/cody/files/po/../src/View/Window.vala:666
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:305
 msgid "Open your personal folder"
 msgstr "Obriu la vostra carpeta personal"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:807
+#: /home/cody/files/po/../src/View/Window.vala:669
 msgid "_Trash"
 msgstr "_Paperera"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:808
+#: /home/cody/files/po/../src/View/Window.vala:670
 msgid "Open your personal trash folder"
 msgstr "Obriu la carpeta de la paperera"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:811
+#: /home/cody/files/po/../src/View/Window.vala:673
 msgid "_Network"
 msgstr "_Xarxa"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:812
+#: /home/cody/files/po/../src/View/Window.vala:674
 msgid "Browse bookmarked and local network locations"
 msgstr "Navegueu per les adreces d'interès i ubicacions de xarxa locals"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:815
+#: /home/cody/files/po/../src/View/Window.vala:677
 msgid "Zoom _In"
 msgstr "_Amplia"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:816
+#: /home/cody/files/po/../src/View/Window.vala:678
 msgid "Increase the view size"
 msgstr "Augmenta la mida de la vista"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:827
+#: /home/cody/files/po/../src/View/Window.vala:689
 msgid "Zoom _Out"
 msgstr "_Redueix"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:828
+#: /home/cody/files/po/../src/View/Window.vala:690
 msgid "Decrease the view size"
 msgstr "Redueix la mida de la vista"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:835
+#: /home/cody/files/po/../src/View/Window.vala:697
 msgid "Normal Si_ze"
 msgstr "_Mida normal"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:836
+#: /home/cody/files/po/../src/View/Window.vala:698
 msgid "Use the normal view size"
 msgstr "Utilitza la mida normal de la vista"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:839
+#: /home/cody/files/po/../src/View/Window.vala:701
 msgid "Next Tab"
 msgstr "Pestanya següent"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:843
+#: /home/cody/files/po/../src/View/Window.vala:705
 msgid "Previous Tab"
 msgstr "Pestanya anterior"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:847
+#: /home/cody/files/po/../src/View/Window.vala:709
 msgid "Connect to _Server..."
-msgstr "Connecta't a un _servidor..."
+msgstr "Connecta't a un _servidor…"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:848
+#: /home/cody/files/po/../src/View/Window.vala:710
 msgid "Connect to a remote computer or shared disk"
 msgstr "Connecta't a un servidor remot o a un disc compartit"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:851
+#: /home/cody/files/po/../src/View/Window.vala:713
 msgid "_About"
 msgstr "_Quant a"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:852
+#: /home/cody/files/po/../src/View/Window.vala:714
 msgid "Display credits"
 msgstr "Mostar els crèdits"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:855
+#: /home/cody/files/po/../src/View/Window.vala:717
 msgid "Report a Problem..."
-msgstr "Informeu d'un problema..."
+msgstr "Informeu d'un problema…"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:856
+#: /home/cody/files/po/../src/View/Window.vala:718
 msgid "File a bug on Launchpad"
 msgstr "Reporta un error a Launchpad"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:859
+#: /home/cody/files/po/../src/View/Window.vala:721
 msgid "Get Help Online..."
-msgstr "Obteniu ajuda en línia..."
+msgstr "Obteniu ajuda en línia…"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:863
+#: /home/cody/files/po/../src/View/Window.vala:725
 msgid "Translate This Application..."
-msgstr "Traduïu aquesta aplicació..."
+msgstr "Traduïu aquesta aplicació…"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:872
+#: /home/cody/files/po/../src/View/Window.vala:734
 msgid "Show _Hidden Files"
 msgstr "Mostra els fitxers _ocults"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:873
+#: /home/cody/files/po/../src/View/Window.vala:735
 msgid "Toggle the display of hidden files in the current window"
 msgstr "Activa la visualització de fitxers ocults en la finestra actual"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:878
-msgid "Show _Desktop Files"
-msgstr "Mostra els fitxers d'_escriptori"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:879
-msgid "Toggle the display of desktop files"
-msgstr "Activa la visualització de fitxers d'escriptori"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:883
-msgid "_Context Pane"
-msgstr "_Subfinestra de context"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:884
-msgid "Change the visibility of the context pane"
-msgstr "Canvia la visibilitat de la subfinestra contextual"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:888
-msgid "_Menubar"
-msgstr "Barra de _menú"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:889
-msgid "Change the visibility of this window's menubar"
-msgstr "Canvia la visibilitat de la barra de menú d'aquesta finestra"
-
-#: /home/codygarver/files/po/../src/View/Window.vala:893
+#: /home/cody/files/po/../src/View/Window.vala:739
 msgid "_Places"
 msgstr "_Llocs"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:894
+#: /home/cody/files/po/../src/View/Window.vala:740
 msgid "Change the visibility of this window's side pane"
 msgstr "Canvia la visibilitat de la subfinestra lateral d'aquesta finestra"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:902
+#: /home/cody/files/po/../src/View/Window.vala:748
 msgid "Icon"
 msgstr "Icona"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:905
+#: /home/cody/files/po/../src/View/Window.vala:751
 msgid "List"
 msgstr "Llista"
 
-#: /home/codygarver/files/po/../src/View/Window.vala:908
+#: /home/cody/files/po/../src/View/Window.vala:754
 msgid "Columns"
 msgstr "Columnes"
 
-#: /home/codygarver/files/po/../src/marlin-clipboard-manager.c:369
-msgid "There is nothing on the clipboard to paste"
-msgstr "El porta-retalls no té res per enganxar"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1151
-msgid "Invalid filename provided by XDS drag site"
-msgstr "Nom invàlid per al fitxer provist pel lloc de rastreig de l'XDS"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1309
-#, c-format
-msgid "Failed to create a link for the URL \"%s\""
-msgstr "No s'ha pogut crear l'enllaç per l'URL «%s»"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1794
-#, c-format
-msgid "Use \"%s\" to open the selected item"
-msgid_plural "Use \"%s\" to open the selected items"
-msgstr[0] "Utilitza «%s» per obrir l'element seleccionat"
-msgstr[1] "Utilitza «%s» per obrir els elements seleccionats"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1941
-#, c-format
-msgid "_Open With %s"
-msgstr "_Obre amb %s"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1947
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3472
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2375
-msgid "_Open"
-msgstr "_Obre"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1963
-#, c-format
-msgid "Open in %'d New _Tabs"
-msgstr "Obrir en %' d Nova _Pestanya"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1967
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3484
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2383
-msgid "Open in New _Tab"
-msgstr "Obre en una _pestanya nova"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1972
-#, c-format
-msgid "Open in %'d New _Windows"
-msgstr "Obrir en %'d Nova _Finestra"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:1976
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2390
-msgid "Open in New _Window"
-msgstr "Obre en una _finestra nova"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3444
-msgid "Prepare the selected files to be moved with a Paste command"
-msgstr ""
-"Prepara els fitxers seleccionats per moure'ls amb una ordre «Enganxa»"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3448
-msgid "Prepare the selected files to be copied with a Paste command"
-msgstr ""
-"Prepara els fitxers seleccionats per copiar-los amb una ordre «Enganxa»"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3452
-msgid "Move or copy files previously selected by a Cut or Copy command"
-msgstr ""
-"Mou o copia els fitxers prèviament seleccionats mitjançant l'ordre de "
-"«Retalla» o «Copia»"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3455
-msgid "Paste Into Folder"
-msgstr "Enganxa dins la carpeta"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3456
-msgid ""
-"Move or copy files previously selected by a Cut or Copy command into "
-"selected folder"
-msgstr ""
-"Mou o copia fitxers prèviament seleccionats per una ordre «Retalla» o "
-"«Copia» a la carpeta seleccionada"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3459
-msgid "_Rename..."
-msgstr "_Canvia el nom..."
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3460
-msgid "Rename selected item"
-msgstr "Canvia el nom de l'element seleccionat"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3463
-msgid "Create New _Folder"
-msgstr "Crea una _carpeta nova"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3464
-msgid "Create a new empty folder inside this folder"
-msgstr "Crea una carpeta buida nova dins d'aquesta carpeta"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3466
-msgid "Create New _File"
-msgstr "Crea un nou _fitxer"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3468
-msgid "_Empty File"
-msgstr "Fitxer _buit"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3469
-msgid "Create a new empty file inside this folder"
-msgstr "Crea un fitxer buit nou dins la carpeta"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3473
-msgid "Open the selected item"
-msgstr "Obre els elements seleccionats"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3480
-msgid "Open in new Window"
-msgstr "Obre en una finesta nova"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3481
-msgid "Open each selected item in a new window"
-msgstr "Obre cada element seleccionat en una finestra nova"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3485
-msgid "Open each selected item in a new tab"
-msgstr "Obre cada element seleccionat en una pestanya nova"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3487
-msgid "Open Wit_h"
-msgstr "Obre am_b"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3488
-msgid "Choose a program with which to open the selected item"
-msgstr "Trieu un programa amb què s'obrirà l'element seleccionat"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3490
-msgid "Other _Application..."
-msgstr "Una altra _aplicació..."
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3491
-msgid "Choose another application with which to open the selected item"
-msgstr "Trieu una altra aplicació amb què obrir l'element seleccionat"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3494
-msgid "Mo_ve to Trash"
-msgstr "Mo_u a la paperera"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3495
-msgid "Move each selected item to the Trash"
-msgstr "Mou tots els elements seleccionats a la paperera"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3498
-msgid "_Delete Permanently"
-msgstr "_Suprimeix permanentment"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3499
-msgid "Delete each selected item, without moving to the Trash"
-msgstr ""
-"Suprimeix tots els elements seleccionats sense moure'ls a la paperera"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3502
-msgid "_Restore"
-msgstr "_Restaura"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3506
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3190
-msgid "Select All"
-msgstr "Selecciona-ho tot"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3510
-msgid "_Properties"
-msgstr "_Propietats"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3511
-msgid "View or modify the properties of each selected item"
-msgstr "Visualitza o modifica les propietats de cada element seleccionat"
-
-#: /home/codygarver/files/po/../src/fm-directory-view.c:3617
-msgid "Set Color:"
-msgstr "Defineix el color:"
-
-#: /home/codygarver/files/po/../src/eel-editable-label.c:3201
-msgid "Input Methods"
-msgstr "Mètodes d'entrada"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:103
-msgid "_Move Here"
-msgstr "_Mou aquí"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:108
-msgid "_Copy Here"
-msgstr "_Copia aquí"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:113
-msgid "_Link Here"
-msgstr "_Enllaça aquí"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:118
-msgid "Set as _Background"
-msgstr "Estableix com a _fons"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:125
-msgid "Cancel"
-msgstr "Canceŀla"
-
-#: /home/codygarver/files/po/../src/marlin-dnd.c:217
-#, c-format
-msgid "Failed to execute file \"%s\""
-msgstr "No s’ha pogut executar el fitxer «%s»"
-
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:139
-#: /home/codygarver/files/po/../src/fm-list-view.c:199
-#: /home/codygarver/files/po/../src/fm-columns-view.c:186
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:139
+#: /home/cody/files/po/../src/fm-columns-view.c:186
+#: /home/cody/files/po/../src/fm-list-view.c:199
 #, c-format
 msgid "Failed to rename %s to %s"
 msgstr "No s'ha pogut canviar el nom de %s a %s"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:283
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:283
 msgid "Arran_ge Items"
 msgstr "Or_ganitza els elements"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:288
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:288
 msgid "Re_versed Order"
 msgstr "Ordre in_vers"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:289
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:289
 msgid "Display icons in the opposite order"
 msgstr "Mostra les icones en l'ordre invers"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:296
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:296
 msgid "By _Name"
 msgstr "Per _nom"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:297
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:297
 msgid "Keep icons sorted by name in rows"
 msgstr "Conserva les icones ordenades pel nom en files"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:300
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:300
 msgid "By _Size"
 msgstr "Per _mida"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:301
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:301
 msgid "Keep icons sorted by size in rows"
 msgstr "Conserva les icones ordenades per la mida en files"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:304
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:304
 msgid "By _Type"
 msgstr "Per _tipus"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:305
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:305
 msgid "Keep icons sorted by type in rows"
 msgstr "Conserva les icones ordenades pel tipus en files"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:308
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:308
 msgid "By Modification _Date"
 msgstr "Per _data de modificació"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:309
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:309
 msgid "Keep icons sorted by modification date in rows"
 msgstr "Conserva les icones ordenades per la data de modificació en files"
 
-#: /home/codygarver/files/po/../src/fm-abstract-icon-view.c:573
-#: /home/codygarver/files/po/../src/fm-list-view.c:616
-#: /home/codygarver/files/po/../src/fm-columns-view.c:82
+#: /home/cody/files/po/../src/fm-abstract-icon-view.c:573
+#: /home/cody/files/po/../src/fm-columns-view.c:82
+#: /home/cody/files/po/../src/fm-list-view.c:616
 msgid "This folder is empty."
 msgstr "Aquesta carpeta és buida."
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:445
+#: /home/cody/files/po/../src/marlin-toolbar-editor.c:445
 msgid "Customize Toolbar"
 msgstr "Personalitza la barra d'eines"
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:464
+#: /home/cody/files/po/../src/marlin-toolbar-editor.c:464
 msgid ""
 "Select items to be displayed on the toolbar. Items can be reordered by drag "
 "and drop."
@@ -780,190 +505,208 @@ msgstr ""
 "Seleccioneu els elements mostrats a la barra d'eines. Els elements poden ser "
 "ordenats arrossegant-los."
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:478
+#: /home/cody/files/po/../src/marlin-toolbar-editor.c:478
 msgid "Available Items"
 msgstr "Elements disponibles"
 
-#: /home/codygarver/files/po/../src/marlin-toolbar-editor.c:497
+#: /home/cody/files/po/../src/marlin-toolbar-editor.c:497
 msgid "Displayed Items"
 msgstr "Elements mostrats"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:286
+#: /home/cody/files/po/../src/eel-editable-label.c:3190
+#: /home/cody/files/po/../src/fm-directory-view.c:3540
+msgid "Select All"
+msgstr "Selecciona-ho tot"
+
+#: /home/cody/files/po/../src/eel-editable-label.c:3201
+msgid "Input Methods"
+msgstr "Mètodes d'entrada"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:286
 msgid "Personal"
 msgstr "Personal"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:291
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:291
 msgid "Your common places and bookmarks"
 msgstr "Els vostres llocs comuns i adreces d'interès"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:348
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:348
 msgid "Open the trash"
 msgstr "Obre la paperera"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:358
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:358
 msgid "Devices"
 msgstr "Dispositius"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:363
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:363
 msgid "Your local partitions and devices"
 msgstr "Dispositius y particions locals"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:372
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:372
 msgid "Open the contents of the File System"
 msgstr "Obre el contingut del sistema de fitxers"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:431
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:456
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:431
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:456
 #, c-format
 msgid "Mount and open %s"
 msgstr "Munta i obre %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:569
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:569
 msgid "Your network places"
 msgstr "Llocs a la xarxa"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:600
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:600
 msgid "Entire network"
 msgstr "Tota la xarxa"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:602
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:602
 msgid "Browse the contents of the network"
 msgstr "Navega pel contingut de la xarxa"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1586
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1590
 msgid "_Start"
 msgstr "_Inicia"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1587
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1591
 msgid "_Stop"
 msgstr "_Atura"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1592
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1596
 msgid "_Power On"
 msgstr "_Encén"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1593
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1597
 msgid "_Safely Remove Drive"
 msgstr "_Treu la unitat de forma segura"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1596
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1600
 msgid "_Connect Drive"
 msgstr "_Connecta la unitat"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1597
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1601
 msgid "_Disconnect Drive"
 msgstr "_Desconnecta la unitat"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1600
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1604
 msgid "_Start Multi-disk Device"
 msgstr "_Inicia la unitat multi disc"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1601
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1605
 msgid "_Stop Multi-disk Device"
 msgstr "_Atura la unitat multi disc"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1605
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1609
 msgid "_Unlock Drive"
 msgstr "_Desbloca la unitat"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1606
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1610
 msgid "_Lock Drive"
 msgstr "_Bloca la unitat"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1680
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2227
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1684
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2231
 #, c-format
 msgid "Unable to start %s"
 msgstr "No s'ha pogut iniciar %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1970
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:1999
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2028
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:1974
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2003
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2032
 #, c-format
 msgid "Unable to eject %s"
 msgstr "No s'ha pogut expulsar %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2173
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2177
 #, c-format
 msgid "Unable to poll %s for media changes"
 msgstr "No s'ha pogut sondejar %s per canvis en el suport"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2283
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2287
 #, c-format
 msgid "Unable to stop %s"
 msgstr "No s'ha pogut aturar %s"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2399
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2385
+#: /home/cody/files/po/../src/fm-directory-view.c:1978
+#: /home/cody/files/po/../src/fm-directory-view.c:3506
+msgid "_Open"
+msgstr "_Obre"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2393
+#: /home/cody/files/po/../src/fm-directory-view.c:1998
+#: /home/cody/files/po/../src/fm-directory-view.c:3518
+msgid "Open in New _Tab"
+msgstr "Obre en una _pestanya nova"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2400
+#: /home/cody/files/po/../src/fm-directory-view.c:2007
+msgid "Open in New _Window"
+msgstr "Obre en una _finestra nova"
+
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2409
 msgid "Remove"
 msgstr "Elimina"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2408
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2418
 msgid "Rename..."
-msgstr "Canvia el nom..."
+msgstr "Canvia el nom…"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2421
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2431
 msgid "_Mount"
 msgstr "_Munta"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2428
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2438
 msgid "_Unmount"
 msgstr "_Desmunta"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2435
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2445
 msgid "_Eject"
 msgstr "_Expulsa"
 
-#: /home/codygarver/files/po/../src/marlin-places-sidebar.c:2443
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1422
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2310
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2453
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1422
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2312
 msgid "Empty _Trash"
 msgstr "Buida la _paperera"
 
-#: /home/codygarver/files/po/../src/exo-icon-view.c:887
-msgid "Layout mode"
-msgstr "Mode del format"
+#: /home/cody/files/po/../src/marlin-places-sidebar.c:2463
+msgid "Connect to Server…"
+msgstr ""
 
-#: /home/codygarver/files/po/../src/exo-icon-view.c:888
-msgid "The layout mode"
-msgstr "El mode de distribució"
-
-#: /home/codygarver/files/po/../src/fm-icon-view.c:86
-msgid "Icon directory listing"
-msgstr "Icona del llistat de directori"
-
-#: /home/codygarver/files/po/../src/fm-icon-view.c:87
-msgid "Icon view"
-msgstr "Visualització per icones"
-
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:124
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:125
 msgid "SSH"
 msgstr "SSH"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:127
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:128
 msgid "Public FTP"
 msgstr "FTP públic"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:129
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:130
 msgid "FTP (with login)"
 msgstr "FTP (amb usuari)"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:132
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:133
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple Filing Protocol)"
+
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:135
 msgid "Windows share"
 msgstr "Recurs compartit de Windows"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:134
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:137
 msgid "WebDAV (HTTP)"
 msgstr "WebDAV (HTTP)"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:136
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:139
 msgid "Secure WebDAV (HTTPS)"
 msgstr "WebDAV segur (HTTPS)"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:183
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:186
 msgid "Connecting..."
-msgstr "S'està connectant..."
+msgstr "S'està connectant…"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:207
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:210
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
@@ -971,110 +714,134 @@ msgstr ""
 "No es pot carregar la llista de mètodes compatibles del servidor.\n"
 "Comproveu la instal·lació del Gvfs."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:285
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:288
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
 msgstr "No es pot obrir la carpeta «%s» a «%s»."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:295
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:298
 #, c-format
 msgid "The server at \"%s\" cannot be found."
 msgstr "No es pot trobar el servidor a «%s»."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:330
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:333
 msgid "Try Again"
 msgstr "Torneu-ho a provar"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:395
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:398
 msgid "Please verify your user details."
 msgstr "Verifiqueu els detalls d'usuari."
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:425
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:428
 msgid "Continue"
 msgstr "Continua"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:750
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1140
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:766
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1156
 msgid "C_onnect"
 msgstr "C_onnecta"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:875
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:891
 msgid "Connect to Server"
 msgstr "Connecta't al servidor"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:893
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:909
 msgid "Server Details"
 msgstr "Detalls del servidor"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:917
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:933
 msgid "_Server:"
 msgstr "_Servidor:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:937
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:953
 msgid "_Port:"
 msgstr "_Port:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:955
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:971
 msgid "_Type:"
 msgstr "_Tipus:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1024
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1040
 msgid "Sh_are:"
 msgstr "_Recurs compartit:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1039
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1055
 msgid "_Folder:"
 msgstr "_Carpeta:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1057
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1073
 msgid "User Details"
 msgstr "Detalls de l'usuari"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1080
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1096
 msgid "_Domain name:"
 msgstr "_Nom de domini:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1095
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1111
 msgid "_User name:"
 msgstr "Nom d'_usuari:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1110
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1126
 msgid "Pass_word:"
 msgstr "_Contrasenya:"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1126
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1142
 msgid "_Remember this password"
 msgstr "_Recorda aquesta contrasenya"
 
-#: /home/codygarver/files/po/../src/marlin-connect-server-dialog.c:1229
+#: /home/cody/files/po/../src/marlin-connect-server-dialog.c:1245
 msgid "Operation cancelled"
 msgstr "S'ha cancel·lat l'operació"
 
-#: /home/codygarver/files/po/../src/fm-list-view.c:59
-msgid "Filename"
-msgstr "Nom del fitxer"
+#: /home/cody/files/po/../src/exo-tree-view.c:167
+msgid "Single Click"
+msgstr "Un sol clic"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:423
+#: /home/cody/files/po/../src/exo-tree-view.c:168
+msgid "Whether the items in the view can be activated with single clicks"
+msgstr "Si els elements de la vista poden ser activats amb un sol clic"
+
+#: /home/cody/files/po/../src/exo-tree-view.c:184
+msgid "Single Click Timeout"
+msgstr "Temps d’espera per a un sol clic"
+
+#: /home/cody/files/po/../src/exo-tree-view.c:185
+msgid ""
+"The amount of time after which the item under the mouse cursor will be "
+"selected automatically in single click mode"
+msgstr ""
+"El temps que transcorrerà perquè un element sigui seleccionat automàticament "
+"al mode d'un sol clic quan el cursor estigui a sobre."
+
+#: /home/cody/files/po/../src/exo-icon-view.c:887
+msgid "Layout mode"
+msgstr "Mode del format"
+
+#: /home/cody/files/po/../src/exo-icon-view.c:888
+msgid "The layout mode"
+msgstr "El mode de distribució"
+
+#: /home/cody/files/po/../src/marlin-application.c:423
 msgid "Show the version of the program."
 msgstr "Mostra la versió del programa."
 
-#: /home/codygarver/files/po/../src/marlin-application.c:427
+#: /home/cody/files/po/../src/marlin-application.c:427
 msgid "Open uri(s) in new tab"
 msgstr "Obre els URI(s) en una pestanya nova"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:429
+#: /home/cody/files/po/../src/marlin-application.c:429
 msgid "Quit Files."
 msgstr "Surt."
 
-#: /home/codygarver/files/po/../src/marlin-application.c:431
+#: /home/cody/files/po/../src/marlin-application.c:431
 msgid "Enable debug logging"
 msgstr "Activa el registre de depuració"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:432
+#: /home/cody/files/po/../src/marlin-application.c:432
 msgid "[URI...]"
-msgstr "[URI...]"
+msgstr "[URI…]"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:441
+#: /home/cody/files/po/../src/marlin-application.c:441
 msgid ""
 "\n"
 "\n"
@@ -1084,251 +851,622 @@ msgstr ""
 "\n"
 "Navegueu pel sistema de fitxers amb el gestor de fitxers"
 
-#: /home/codygarver/files/po/../src/marlin-application.c:461
+#: /home/cody/files/po/../src/marlin-application.c:461
 msgid "--quit cannot be used with URIs."
 msgstr "--quit no es pot utilitzar amb els URI."
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:114
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:164
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:426
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:482
+#: /home/cody/files/po/../src/marlin-clipboard-manager.c:369
+msgid "There is nothing on the clipboard to paste"
+msgstr "El porta-retalls no té res per enganxar"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:1177
+msgid "Invalid filename provided by XDS drag site"
+msgstr "Nom invàlid per al fitxer provist pel lloc de rastreig de l'XDS"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:1335
+#, c-format
+msgid "Failed to create a link for the URL \"%s\""
+msgstr "No s'ha pogut crear l'enllaç per l'URL «%s»"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:1820
+#, c-format
+msgid "Use \"%s\" to open the selected item"
+msgid_plural "Use \"%s\" to open the selected items"
+msgstr[0] "Utilitza «%s» per obrir l'element seleccionat"
+msgstr[1] "Utilitza «%s» per obrir els elements seleccionats"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:1972
+#, c-format
+msgid "_Open With %s"
+msgstr "_Obre amb %s"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:1994
+#, c-format
+msgid "Open in %'d New _Tabs"
+msgstr "Obrir en %' d Nova _Pestanya"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:2003
+#, c-format
+msgid "Open in %'d New _Windows"
+msgstr "Obrir en %'d Nova _Finestra"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3478
+msgid "Prepare the selected files to be moved with a Paste command"
+msgstr ""
+"Prepara els fitxers seleccionats per moure'ls amb una ordre «Enganxa»"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3482
+msgid "Prepare the selected files to be copied with a Paste command"
+msgstr ""
+"Prepara els fitxers seleccionats per copiar-los amb una ordre «Enganxa»"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3486
+msgid "Move or copy files previously selected by a Cut or Copy command"
+msgstr ""
+"Mou o copia els fitxers prèviament seleccionats mitjançant l'ordre de "
+"«Retalla» o «Copia»"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3489
+msgid "Paste Into Folder"
+msgstr "Enganxa dins la carpeta"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3490
+msgid ""
+"Move or copy files previously selected by a Cut or Copy command into "
+"selected folder"
+msgstr ""
+"Mou o copia fitxers prèviament seleccionats per una ordre «Retalla» o "
+"«Copia» a la carpeta seleccionada"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3493
+msgid "_Rename..."
+msgstr "_Canvia el nom…"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3494
+msgid "Rename selected item"
+msgstr "Canvia el nom de l'element seleccionat"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3497
+msgid "Create New _Folder"
+msgstr "Crea una _carpeta nova"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3498
+msgid "Create a new empty folder inside this folder"
+msgstr "Crea una carpeta buida nova dins d'aquesta carpeta"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3500
+msgid "Create New _File"
+msgstr "Crea un nou _fitxer"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3502
+msgid "_Empty File"
+msgstr "Fitxer _buit"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3503
+msgid "Create a new empty file inside this folder"
+msgstr "Crea un fitxer buit nou dins la carpeta"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3507
+msgid "Open the selected item"
+msgstr "Obre els elements seleccionats"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3514
+msgid "Open in new Window"
+msgstr "Obre en una finesta nova"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3515
+msgid "Open each selected item in a new window"
+msgstr "Obre cada element seleccionat en una finestra nova"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3519
+msgid "Open each selected item in a new tab"
+msgstr "Obre cada element seleccionat en una pestanya nova"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3521
+msgid "Open Wit_h"
+msgstr "Obre am_b"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3522
+msgid "Choose a program with which to open the selected item"
+msgstr "Trieu un programa amb què s'obrirà l'element seleccionat"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3524
+msgid "Other _Application..."
+msgstr "Una altra _aplicació…"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3525
+msgid "Choose another application with which to open the selected item"
+msgstr "Trieu una altra aplicació amb què obrir l'element seleccionat"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3528
+msgid "Mo_ve to Trash"
+msgstr "Mo_u a la paperera"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3529
+msgid "Move each selected item to the Trash"
+msgstr "Mou tots els elements seleccionats a la paperera"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3532
+msgid "_Delete Permanently"
+msgstr "_Suprimeix permanentment"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3533
+msgid "Delete each selected item, without moving to the Trash"
+msgstr ""
+"Suprimeix tots els elements seleccionats sense moure'ls a la paperera"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3536
+msgid "_Restore"
+msgstr "_Restaura"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3544
+msgid "_Properties"
+msgstr "_Propietats"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3545
+msgid "View or modify the properties of each selected item"
+msgstr "Visualitza o modifica les propietats de cada element seleccionat"
+
+#: /home/cody/files/po/../src/fm-directory-view.c:3651
+msgid "Set Color:"
+msgstr "Defineix el color:"
+
+#: /home/cody/files/po/../src/fm-list-view.c:59
+msgid "Filename"
+msgstr "Nom del fitxer"
+
+#: /home/cody/files/po/../src/fm-list-view.c:59
+msgid "Size"
+msgstr "Mida"
+
+#: /home/cody/files/po/../src/fm-list-view.c:59
+msgid "Type"
+msgstr "Tipus"
+
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:114
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:164
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:419
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:475
 msgid "File Operations"
 msgstr "Operacions sobre fitxers"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:123
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:123
 msgid "Show Details"
 msgstr "Mostra els detalls"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:158
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:180
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:158
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:180
 #, c-format
 msgid "%'d file operation active"
 msgid_plural "%'d file operations active"
 msgstr[0] "%'d operació sobre fitxers activa"
 msgstr[1] "%'d operacions sobre fitxers actives"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:286
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:286
 msgid "Show Copy Dialog"
 msgstr "Mostra el diàleg de còpia"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:298
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:298
 msgid "Cancel All In-progress Actions"
 msgstr "Cancel·la totes les accions en progrés"
 
-#: /home/codygarver/files/po/../src/marlin-progress-ui-handler.c:483
+#: /home/cody/files/po/../src/marlin-progress-ui-handler.c:476
 msgid "All file operations have been successfully completed"
 msgstr "Totes les operacions sobre els fitxers s'han completat correctament"
 
-#: /home/codygarver/files/po/../src/exo-tree-view.c:167
-msgid "Single Click"
-msgstr "Un sol clic"
+#: /home/cody/files/po/../src/fm-icon-view.c:86
+msgid "Icon directory listing"
+msgstr "Icona del llistat de directori"
 
-#: /home/codygarver/files/po/../src/exo-tree-view.c:168
-msgid "Whether the items in the view can be activated with single clicks"
-msgstr "Si els elements de la vista poden ser activats amb un sol clic"
+#: /home/cody/files/po/../src/fm-icon-view.c:87
+msgid "Icon view"
+msgstr "Visualització per icones"
 
-#: /home/codygarver/files/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr "Temps d’espera per a un sol clic"
+#: /home/cody/files/po/../src/marlin-dnd.c:103
+msgid "_Move Here"
+msgstr "_Mou aquí"
 
-#: /home/codygarver/files/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
-msgstr ""
-"El temps que transcorrerà perquè un element sigui seleccionat automàticament "
-"al mode d'un sol clic quan el cursor estigui a sobre."
+#: /home/cody/files/po/../src/marlin-dnd.c:108
+msgid "_Copy Here"
+msgstr "_Copia aquí"
 
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:6
+#: /home/cody/files/po/../src/marlin-dnd.c:113
+msgid "_Link Here"
+msgstr "_Enllaça aquí"
+
+#: /home/cody/files/po/../src/marlin-dnd.c:118
+msgid "Set as _Background"
+msgstr "Estableix com a _fons"
+
+#: /home/cody/files/po/../src/marlin-dnd.c:125
+msgid "Cancel"
+msgstr "Canceŀla"
+
+#: /home/cody/files/po/../src/marlin-dnd.c:217
+#, c-format
+msgid "Failed to execute file \"%s\""
+msgstr "No s’ha pogut executar el fitxer «%s»"
+
+#: /home/cody/files/po/../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "Navegueu pels vostres fitxers"
 
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:7
+#: /home/cody/files/po/../src/DesktopLauncher.vala:7
 msgid "File Manager"
 msgstr "Gestor de fitxers"
 
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:10
+#: /home/cody/files/po/../src/DesktopLauncher.vala:10
 msgid "New Window As _Administrator"
 msgstr "Finestra com a _administrador nova"
 
-#: /home/codygarver/files/po/../src/DesktopLauncher.vala:11
+#: /home/cody/files/po/../src/DesktopLauncher.vala:11
 msgid "Files"
 msgstr "Fitxers"
 
-#: /home/codygarver/files/po/../libcore/eel-stock-dialogs.c:35
-msgid "Show more _details"
-msgstr "Mostra més _detalls"
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:146
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:361
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Voleu combinar la carpeta «%s»?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:200
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:150
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:364
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"En combinar-la es demanarà confirmació abans de reemplaçar-hi cap fitxer que "
+"entri en conflicte amb els que s'estiguin copiant."
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:155
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:369
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una carpeta més antiga amb el mateix nom a «%s»."
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:159
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:373
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una carpeta més nova amb el mateix nom a «%s»."
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:163
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:377
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una altra carpeta amb el mateix nom a «%s»."
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:168
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:382
+msgid "Replacing it will remove all files in the folder."
+msgstr "En reemplaçar-la se'n suprimiran tots els fitxers."
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:170
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Voleu reemplaçar la carpeta «%s»?"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:172
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:386
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una carpeta amb el mateix nom a «%s»."
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:177
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:391
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Voleu reemplaçar el fitxer «%s»?"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:179
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will overwrite its content."
+msgstr "En reemplaçar-la se sobreescriuran els continguts."
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:183
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Ja existeix un fitxer més antic amb el mateix nom a «%s»."
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:187
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:401
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Ja existeix un fitxer més nou amb el mateix nom a «%s»."
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:191
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:405
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Ja existeix un altre fitxer amb el mateix nom a «%s»."
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:253
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:460
+msgid "Original file"
+msgstr "Fitxer original"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:254
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:285
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:461
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:482
+msgid "Size:"
+msgstr "Mida:"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:257
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:288
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:464
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:485
+msgid "Type:"
+msgstr "Tipus:"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:260
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:291
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:467
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:488
+msgid "Last modified:"
+msgstr "Darrera modificació:"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:284
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:481
+msgid "Replace with"
+msgstr "Reemplaça amb"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:313
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:506
+msgid "Merge"
+msgstr "Combina"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:700
+msgid "_Select a new name for the destination"
+msgstr "_Seleccioneu un nom nou per a la destinació"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:714
+msgid "Reset"
+msgstr "Reinicia"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:726
+msgid "Apply this action to all files"
+msgstr "Aplica aquesta acció a tots els fitxers"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:737
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:200
 msgid "_Skip"
 msgstr "_Omet"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:201
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:742
+msgid "Re_name"
+msgstr "Canvia el _nom"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:748
+msgid "Replace"
+msgstr "Substitueix"
+
+#: /home/cody/files/po/../libcore/marlin-file-conflict-dialog.c:821
+msgid "File conflict"
+msgstr "Conflicte de fitxers"
+
+#: /home/cody/files/po/../libcore/gof-file.c:280
+#, c-format
+msgid "link to %s"
+msgstr "enllaç a %s"
+
+#: /home/cody/files/po/../libcore/gof-file.c:1739
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "No s'ha pogut analitzar el fitxer d'escriptori: %s"
+
+#: /home/cody/files/po/../libcore/gof-file.c:1777
+msgid "No Exec field specified"
+msgstr "No s'ha especificat el camp Exec"
+
+#: /home/cody/files/po/../libcore/gof-file.c:1797
+msgid "No URL field specified"
+msgstr "No s'ha especificat el camp URL"
+
+#: /home/cody/files/po/../libcore/gof-file.c:1803
+msgid "Invalid desktop file"
+msgstr "El nom del fitxer d'escriptori no és vàlid"
+
+#: /home/cody/files/po/../libcore/gof-file.c:2093
+msgid "Slashes are not allowed in filenames"
+msgstr "No es permeten barres en els noms dels fitxers"
+
+#: /home/cody/files/po/../libcore/gof-file.c:2113
+msgid "Toplevel files cannot be renamed"
+msgstr "No es pot canviar el nom dels fitxers de nivell superior"
+
+#: /home/cody/files/po/../libcore/eel-fcts.c:81
+msgid "Today at %-I:%M %p"
+msgstr "Avui a les %-H:%M"
+
+#: /home/cody/files/po/../libcore/eel-fcts.c:85
+msgid "Yesterday at %-I:%M %p"
+msgstr "Ahir a les %-H:%M"
+
+#: /home/cody/files/po/../libcore/eel-fcts.c:89
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d de %b de %Y a les %-H:%M"
+
+#: /home/cody/files/po/../libcore/eel-vfs-extensions.c:72
+msgid " (invalid Unicode)"
+msgstr " (Unicode no vàlid)"
+
+#: /home/cody/files/po/../libcore/marlin-file-utilities.c:119
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "No s'ha pogut determinar la ubicació original de «%s» "
+
+#: /home/cody/files/po/../libcore/marlin-file-utilities.c:122
+msgid "The item cannot be restored from trash"
+msgstr "No es pot restaurar l'element des de la paperera"
+
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:201
 msgid "S_kip All"
 msgstr "O_met-los tots"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:202
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:202
 msgid "_Retry"
 msgstr "_Torna-ho a intentar"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:203
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:203
 msgid "Delete _All"
 msgstr "Suprimeix-ho _tot"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:204
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:204
 msgid "_Replace"
 msgstr "_Reemplaça"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:205
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:205
 msgid "Replace _All"
 msgstr "Reempl_aça'ls tots"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:206
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:206
 msgid "_Merge"
 msgstr "_Combina"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:207
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:207
 msgid "Merge _All"
 msgstr "Combina-ho _tot"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:208
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:208
 msgid "Copy _Anyway"
 msgstr "Copia _igualment"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:294
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:294
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d segon"
 msgstr[1] "%'d segons"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:299
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:310
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:299
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:310
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minut"
 msgstr[1] "%'d minuts"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:309
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:309
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d hora"
 msgstr[1] "%'d hores"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:317
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:317
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "aproximadament %'d hora"
 msgstr[1] "aproximadament %'d hores"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:393
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:393
 #, c-format
 msgid "Link to %s"
 msgstr "Enllaç a %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:397
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:397
 #, c-format
 msgid "Another link to %s"
 msgstr "Un altre enllaç a %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:413
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:413
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'dr enllaç a %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:417
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:417
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'dn enllaç a %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:421
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:421
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'der enllaç a %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:425
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:425
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'dè enllaç a %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:463
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:463
 msgid " (copy)"
 msgstr " (còpia)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:465
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:465
 msgid " (another copy)"
 msgstr " (una altra còpia)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:468
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:470
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:472
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:482
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:468
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:470
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:472
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:482
 msgid "th copy)"
 msgstr "a còpia)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:475
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:475
 msgid "st copy)"
 msgstr "a còpia)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:477
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:477
 msgid "nd copy)"
 msgstr "a còpia)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:479
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:479
 msgid "rd copy)"
 msgstr "a còpia)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:496
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:496
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (còpia)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:498
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (una altra còpia)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:501
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:503
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:505
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:519
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:501
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:503
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:505
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'da còpia)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:513
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:513
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'da còpia)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:515
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'da còpia)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:517
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'da còpia)%s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:617
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:617
 msgid " ("
 msgstr " ("
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:625
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:625
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1381
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1381
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Esteu segur que voleu suprimir permanentment «%B» de la paperera?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1384
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1384
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -1343,24 +1481,24 @@ msgstr[1] ""
 "Segur que voleu suprimir permanentment els %'d elements seleccionats de la "
 "paperera?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1394
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1462
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1394
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1462
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Si suprimiu un element, es perdrà permanentment."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1415
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1415
 msgid "Empty all items from Trash?"
 msgstr "Voleu suprimir tots els elements de la paperera?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1419
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1419
 msgid "All items in the Trash will be permanently deleted."
 msgstr "Se suprimiran de forma permanent tots els elements de la paperera."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1450
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1450
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Esteu segur que voleu esborrrar «%B» permanentment?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1453
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1453
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -1370,33 +1508,33 @@ msgstr[0] ""
 msgstr[1] ""
 "Esteu segur que voleu suprimir permanentment els %'d elements seleccionats?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1478
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1510
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1478
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1510
 msgid "Deleting files"
 msgstr "S'estan suprimint els fitxers"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1504
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1504
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "queda %'d fitxer per suprimir"
 msgstr[1] "queden %'d fitxers per suprimir"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1524
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1524
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "queda %T"
 msgstr[1] "queden %T"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1592
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1626
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1665
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1742
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2573
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1592
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1626
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1665
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1742
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2575
 msgid "Error while deleting."
 msgstr "S'ha produït un error en suprimir."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1596
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1596
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -1404,59 +1542,59 @@ msgstr ""
 "No es poden suprimir els fitxers de la carpeta «%B» perquè no teniu permís "
 "per veure'ls."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1599
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2632
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3628
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1599
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2634
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3630
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "S'ha produït un error en obtenir informació sobre els fitxers de la carpeta "
 "«%B»."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1608
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3637
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1608
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3639
 msgid "_Skip files"
 msgstr "_Omet els fitxers"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1629
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1629
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
 "No s'ha pogut suprimir la carpeta «%B» perquè no teniu permís per llegir-la."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1632
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2671
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3673
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1632
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2673
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3675
 msgid "There was an error reading the folder \"%B\"."
 msgstr "S'ha produït un error en llegir la carpeta «%B»."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1666
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1666
 msgid "Could not remove the folder %B."
 msgstr "No s'ha pogut suprimir la carpeta %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1743
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1743
 msgid "There was an error deleting %B."
 msgstr "S'ha produït un error en suprimir %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1819
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1831
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1819
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1831
 msgid "Moving files to trash"
 msgstr "S'estan movent els fitxers a la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1833
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1833
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "Queda %'d fitxer per moure a la paperera"
 msgstr[1] "Queden %'d fitxers per moure a la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1888
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1888
 msgid "Cannot move file to trash. Delete Immediately?"
 msgstr ""
 "No s'ha pogut moure el fitxer a la paperera. Voleu suprimir-lo immediatament?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:1889
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:1889
 msgid ""
 "This file is located on an external media and cannot be moved to the trash. "
 "Once deleted, it cannot be restored."
@@ -1464,27 +1602,27 @@ msgstr ""
 "Aquest fitxer és a un dispositiu extern i no es pot moure a la paperera. Un "
 "cop suprimit no es podrà recuperar."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2069
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2071
 msgid "Trashing Files"
 msgstr "S'estan movent els fitxers a la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2071
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2073
 msgid "Deleting Files"
 msgstr "S'estan suprimint els fitxers"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2143
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2145
 msgid "Unable to eject %V"
 msgstr "No s'ha pogut expulsar %V"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2145
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2147
 msgid "Unable to unmount %V"
 msgstr "No s'ha pogut desmuntar %V"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2300
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2302
 msgid "Do you want to empty the trash before you unmount?"
 msgstr "Voleu buidar la paperera abans de desmuntar?"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2302
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2304
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
@@ -1493,65 +1631,65 @@ msgstr ""
 "la paperera. Tots els elements de la paperera del dispositiu es perdran per "
 "sempre."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2308
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2310
 msgid "Do _not Empty Trash"
 msgstr "_No buidis la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2363
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2365
 msgid "Emptying the trash"
 msgstr "S'està buidant la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2430
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2432
 #, c-format
 msgid "Unable to mount %s"
 msgstr "No s'ha pogut muntar %s"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2508
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2510
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "S'està preparant per copiar %'d fitxer (%S)"
 msgstr[1] "S'està preparant per copiar %'d fitxers (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2514
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2516
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "S'està preparant per moure %'d fitxer (%S)"
 msgstr[1] "S'està preparant per moure %'d fitxers (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2520
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2522
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "S'està preparant per suprimir %'d fitxer (%S)"
 msgstr[1] "S'està preparant per suprimir %'d fitxers (%S)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2526
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2528
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "S'està preparant per moure a la paperera %'d fitxer"
 msgstr[1] "S'està preparant per moure a la paperera %'d fitxers"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2569
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3489
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3620
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3665
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2571
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3491
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3622
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3667
 msgid "Error while copying."
 msgstr "S'ha produït un error en copiar."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2571
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3618
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3663
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2573
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3620
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3665
 msgid "Error while moving."
 msgstr "S'ha produït un error en moure."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2575
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2577
 msgid "Error while moving files to trash."
 msgstr "S'ha produït un error en moure els fitxers a la paperera."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2629
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2631
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -1559,44 +1697,44 @@ msgstr ""
 "No es poden gestionar els fitxers en la carpeta «%B» perquè no teniu permís "
 "per veure'ls."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2668
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2670
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "No es pot gestionar la carpeta «%B» perquè no teniu permís per llegir-la."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2745
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2747
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "No es pot gestionar el fitxer «%B» perquè no teniu permís per llegir-lo."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2748
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2750
 msgid "There was an error getting information about \"%B\"."
 msgstr "S'ha produït un error en obtenir informació sobre «%B»."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2848
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2890
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2923
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2953
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2850
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2892
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2925
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2955
 msgid "Error while copying to \"%B\"."
 msgstr "S'ha produït un error en copiar a «%B»."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2852
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2854
 msgid "You do not have permissions to access the destination folder."
 msgstr "No teniu permís per accedir a la carpeta de destinació."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2854
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2856
 msgid "There was an error getting information about the destination."
 msgstr "S'ha produït un error en obtenir informació sobre la destinació."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2891
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2893
 msgid "The destination is not a folder."
 msgstr "La destinació no és una carpeta."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2924
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2926
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -1604,76 +1742,76 @@ msgstr ""
 "No hi ha prou espai a la destinació. Intenteu suprimir alguns fitxers per "
 "obtenir espai."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2926
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2928
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Hi ha %S disponible, però es necessita %S."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:2954
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:2956
 msgid "The destination is read-only."
 msgstr "La destinació només és de lectura."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3015
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3017
 msgid "Moving \"%B\" to \"%B\""
 msgstr "S'està movent «%B» a «%B»"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3016
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3018
 msgid "Copying \"%B\" to \"%B\""
 msgstr "S'està copiant «%B» a «%B»"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3020
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3022
 msgid "Duplicating \"%B\""
 msgstr "S'està duplicant «%B»"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3024
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3026
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "S'està movent %'d fitxer (des de «%B») a «%B»"
 msgstr[1] "S'estan movent %'d fitxers (des de «%B») a «%B»"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3027
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3029
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "S'està copiant %'d fitxer (des de «%B») a «%B»"
 msgstr[1] "S'estan copiant %'d fitxers (des de «%B») a «%B»"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3034
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3036
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "S'està duplicant %'d fitxer (des de «%B»)"
 msgstr[1] "S'estan duplicant %'d fitxers (des de «%B»)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3043
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3045
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "S'està movent %'d fitxer a «%B»"
 msgstr[1] "S'estan movent %'d fitxers a «%B»"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3047
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3049
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "S'està copiant %'d fitxer a «%B»"
 msgstr[1] "S'estan copiant %'d fitxers a «%B»"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3052
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3054
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] "S'està duplicant %'d fitxer"
 msgstr[1] "S'estan duplicant %'d fitxers"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3103
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3105
 #, c-format
 msgid "%S of %S"
 msgstr "%S de %S"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3114
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3116
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S de %S — queda %T (%S/seg)"
 msgstr[1] "%S de %S — queden %T (%S/seg)"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3493
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3495
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -1681,11 +1819,11 @@ msgstr ""
 "No es pot copiar la carpeta «%B» perquè no teniu permís per crear-la en la "
 "destinació."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3496
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3498
 msgid "There was an error creating the folder \"%B\"."
 msgstr "S'ha produït un error en crear la carpeta «%B»."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3625
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3627
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -1693,764 +1831,574 @@ msgstr ""
 "No es poden copiar els fitxers de la carpeta «%B» perquè no teniu permís per "
 "veure'ls."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3670
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3672
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 "No es pot copiar la carpeta «%B» perquè no teniu permís per llegir-la."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3715
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4416
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5004
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3717
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4418
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5006
 msgid "Error while moving \"%B\"."
 msgstr "S'ha produït un error en moure «%B»."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3716
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3718
 msgid "Could not remove the source folder."
 msgstr "No s'ha pogut suprimir la carpeta d'origen."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3801
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3842
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4418
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4489
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3803
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3844
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4420
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4491
 msgid "Error while copying \"%B\"."
 msgstr "S'ha produït un error en copiar «%B»."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3802
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3804
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "No s'han pogut suprimir els fitxers de la carpeta %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:3843
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:3845
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "No s'ha pogut suprimir el fitxer %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4172
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4844
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4174
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4846
 msgid "You cannot move a folder into itself."
 msgstr "No podeu moure una carpeta dins d'ella mateixa."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4173
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4845
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4175
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4847
 msgid "You cannot copy a folder into itself."
 msgstr "No podeu copiar una carpeta dins d'ella mateixa."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4174
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4846
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4176
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4848
 msgid "The destination folder is inside the source folder."
 msgstr "La carpeta destí és dins la carpeta origen."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4205
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4207
 msgid "You cannot move a file over itself."
 msgstr "No podeu moure un fitxer sobre ell mateix."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4206
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4208
 msgid "You cannot copy a file over itself."
 msgstr "No podeu copiar un fitxer sobre ell mateix."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4207
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4209
 msgid "The source file would be overwritten by the destination."
 msgstr "El fitxer d'origen seria sobreescrit pel de destinació."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4420
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4422
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "No s'ha pogut suprimir el fitxer amb el mateix nom a %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4490
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4492
 #, c-format
 msgid "There was an error copying the file into %F."
 msgstr "S'ha produït un error en copiar el fitxer a %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4718
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4720
 msgid "Copying Files"
 msgstr "S'estan copiant els fitxers"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4744
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4746
 msgid "Preparing to move to \"%B\""
 msgstr "S'està preparant per moure a «B»"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:4756
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:4758
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "S'està preparant per moure %'d fitxer"
 msgstr[1] "S'està preparant per moure %'d fitxers"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5005
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5007
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "S'ha produït un error en moure el fitxer a %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5268
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5270
 msgid "Moving Files"
 msgstr "S'estan movent els fitxers"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5298
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5300
 msgid "Creating links in \"%B\""
 msgstr "S'estan creant els enllaços a «%B»"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5309
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5311
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "S'està creant l'enllaç a %'d fitxer"
 msgstr[1] "S'estan creant els enllaços a %'d fitxers"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5444
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5446
 msgid "Error while creating link to %B."
 msgstr "S'ha produït un error en crear l'enllaç a %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5446
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5448
 msgid "Symbolic links only supported for local files"
 msgstr "Els enllaços simbòlics només permeten fitxers locals"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5449
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5451
 msgid "The target doesn't support symbolic links."
 msgstr "La destinació no permet enllaços simbòlics."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5452
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5454
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "S'ha produït un error en crear l'enllaç simbòlic a %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5780
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:5783
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5782
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:5785
 msgid "Setting permissions"
 msgstr "S'estan establint els permisos"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6034
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6036
 msgid "untitled folder"
 msgstr "carpeta nova"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6042
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6044
 msgid "new file"
 msgstr "fitxer nou"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6213
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6215
 msgid "Error while creating directory %B."
 msgstr "S'ha produït un error en crear el directori %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6215
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6217
 msgid "Error while creating file %B."
 msgstr "S'ha produït un error en crear el fitxer %B."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6217
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6219
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "S'ha produït un error en crear el directori a %F."
 
-#: /home/codygarver/files/po/../libcore/marlin-file-operations.c:6534
+#: /home/cody/files/po/../libcore/marlin-file-operations.c:6536
 msgid "Emptying Trash"
 msgstr "S'està buidant la paperera"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:252
-#, c-format
-msgid "link to %s"
-msgstr "enllaç a %s"
+#: /home/cody/files/po/../libcore/eel-stock-dialogs.c:35
+msgid "Show more _details"
+msgstr "Mostra més _detalls"
 
-#: /home/codygarver/files/po/../libcore/gof-file.c:1702
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "No s'ha pogut analitzar el fitxer d'escriptori: %s"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1740
-msgid "No Exec field specified"
-msgstr "No s'ha especificat el camp Exec"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1760
-msgid "No URL field specified"
-msgstr "No s'ha especificat el camp URL"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:1766
-msgid "Invalid desktop file"
-msgstr "El nom del fitxer d'escriptori no és vàlid"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2056
-msgid "Slashes are not allowed in filenames"
-msgstr "No es permeten barres en els noms dels fitxers"
-
-#: /home/codygarver/files/po/../libcore/gof-file.c:2076
-msgid "Toplevel files cannot be renamed"
-msgstr "No es pot canviar el nom dels fitxers de nivell superior"
-
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:192
-#: /home/codygarver/files/po/../libcore/marlin-progress-info.c:210
+#: /home/cody/files/po/../libcore/marlin-progress-info.c:192
+#: /home/cody/files/po/../libcore/marlin-progress-info.c:210
 msgid "Preparing"
 msgstr "S'està preparant"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:146
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:361
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Voleu combinar la carpeta «%s»?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:150
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:364
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"En combinar-la es demanarà confirmació abans de reemplaçar-hi cap fitxer que "
-"entri en conflicte amb els que s'estiguin copiant."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:155
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:369
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una carpeta més antiga amb el mateix nom a «%s»."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:159
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:373
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una carpeta més nova amb el mateix nom a «%s»."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:163
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:377
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una altra carpeta amb el mateix nom a «%s»."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:168
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:382
-msgid "Replacing it will remove all files in the folder."
-msgstr "En reemplaçar-la se'n suprimiran tots els fitxers."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:170
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Voleu reemplaçar la carpeta «%s»?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:172
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:386
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una carpeta amb el mateix nom a «%s»."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:177
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:391
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Voleu reemplaçar el fitxer «%s»?"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:179
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will overwrite its content."
-msgstr "En reemplaçar-la se sobreescriuran els continguts."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:183
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Ja existeix un fitxer més antic amb el mateix nom a «%s»."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:187
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:401
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Ja existeix un fitxer més nou amb el mateix nom a «%s»."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:191
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:405
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Ja existeix un altre fitxer amb el mateix nom a «%s»."
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:253
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:460
-msgid "Original file"
-msgstr "Fitxer original"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:254
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:285
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:461
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:482
-msgid "Size:"
-msgstr "Mida:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:257
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:288
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:464
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:485
-msgid "Type:"
-msgstr "Tipus:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:260
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:291
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:467
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:488
-msgid "Last modified:"
-msgstr "Darrera modificació:"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:284
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:481
-msgid "Replace with"
-msgstr "Reemplaça amb"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:313
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:506
-msgid "Merge"
-msgstr "Combina"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:700
-msgid "_Select a new name for the destination"
-msgstr "_Seleccioneu un nom nou per a la destinació"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:714
-msgid "Reset"
-msgstr "Reinicia"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:726
-msgid "Apply this action to all files"
-msgstr "Aplica aquesta acció a tots els fitxers"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:742
-msgid "Re_name"
-msgstr "Canvia el _nom"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:748
-msgid "Replace"
-msgstr "Substitueix"
-
-#: /home/codygarver/files/po/../libcore/marlin-file-conflict-dialog.c:821
-msgid "File conflict"
-msgstr "Conflicte de fitxers"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:81
-msgid "Today at %-I:%M %p"
-msgstr "Avui a les %-H:%M"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:85
-msgid "Yesterday at %-I:%M %p"
-msgstr "Ahir a les %-H:%M"
-
-#: /home/codygarver/files/po/../libcore/eel-fcts.c:89
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d de %b de %Y a les %-H:%M"
-
-#: /home/codygarver/files/po/../libcore/eel-vfs-extensions.c:72
-msgid " (invalid Unicode)"
-msgstr " (Unicode no vàlid)"
-
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1202
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete %d copied items"
 msgstr "Elimina els %d elements copiats"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1205
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1215
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1246
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1205
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1215
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete '%s'"
 msgstr "Suprimeix «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1212
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1212
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "Elimina els %d elements duplicats"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1223
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "Retorna %d elements a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1227
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1227
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "Retorna «%s» a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1236
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1403
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1236
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "Canvia el nom de «%s» a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1255
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1450
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1255
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1450
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "Restaura %d elements de la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1263
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1263
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "Restaura «%s» a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1274
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1274
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "Mou %d elements de nou a la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1277
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1277
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "Retorna «%s» a la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1286
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Delete links to %d items"
 msgstr "Elimina els enllaços de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1289
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1289
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "Suprimeix l'enllaç a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1299
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1299
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "Restaura els permisos originals dels fitxers continguts a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1307
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1307
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "Restaura els permisos originals de «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1316
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1316
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "Restaura el grup de «%s» a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1326
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1326
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "Restaura el propietari de «%s» a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1365
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "Copia %d elements a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1369
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "Copia «%s» a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1377
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "Duplica %d elements a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1382
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1382
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "Duplica «%s» a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1390
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "Mou %d elements a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1394
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1394
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "Mou «%s» a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1412
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1412
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "Crea un fitxer nou «%s» a partir d'una plantilla "
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1419
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1419
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "Crea un fitxer «%s» buit"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1426
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "Crea una carpeta «%s» nova"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1434
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1434
 #, c-format
 msgid "Move %d items to trash"
 msgstr "Mou %d elements a la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1440
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1440
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "Mou «%s» a la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1453
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "Restaura «%s» de la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1462
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1462
 #, c-format
 msgid "Create links to %d items"
 msgstr "Crea enllaços a %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1465
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1465
 #, c-format
 msgid "Create link to '%s'"
 msgstr "Crea un enllaç a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1474
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "Estableix els permisos dels fitxers continguts a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1482
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1482
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "Estableix els permisos de «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1491
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1491
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "Estableix el grup de «%s» a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1501
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1501
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "Estableix el propietari de «%s» a «%s»"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1533
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1533
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "_Desfés la còpia d'%d element"
 msgstr[1] "_Desfés la còpia de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1538
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1538
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] "_Desfés el duplicat d'%d element"
 msgstr[1] "_Desfés el duplicat de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1543
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "_Desfés el moviment d'%d element"
 msgstr[1] "_Desfés el moviment de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1548
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "_Desfés el canvi de nom d'%d element"
 msgstr[1] "_Desfés el canvi de nom de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1552
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1552
 msgid "_Undo creation of an empty file"
 msgstr "_Desfés la creació d'un fitxer nou"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1555
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1555
 msgid "_Undo creation of a file from template"
 msgstr "_Desfés la creació d'un fitxer a partir d'una plantilla"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1559
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "_Desfés la creació d'%d carpeta"
 msgstr[1] "_Desfés la creació de %d carpetes"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1564
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1564
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "_Desfés l'enviament d'%d element a la paperera"
 msgstr[1] "_Desfés l'enviament de %d elements a la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1569
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] "_Desfés la restauració d'%d element"
 msgstr[1] "_Desfés la restauració de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1574
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "_Desfés la creació d'un enllaç a %d element"
 msgstr[1] "_Desfés la creació d'enllaços a %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1579
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "_Desfés l'eliminació d'%d element"
 msgstr[1] "_Desfés l'eliminació de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1584
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] "Desfés el canvi de permisos recursiu d'%d element"
 msgstr[1] "Desfés el canvi de permisos recursiu de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1590
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] "Desfés el canvi de permisos d'%d element"
 msgstr[1] "Desfés el canvi de permisos de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1595
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] "Desfés el canvi de grup d'%d element"
 msgstr[1] "Desfés el canvi de grup de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1600
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] "Desfés el canvi de propietari d'%d element"
 msgstr[1] "Desfés el canvi de propietari de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1628
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1628
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] "_Refés la còpia d'%d element"
 msgstr[1] "_Refés la còpia de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1633
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1633
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] "_Refés la duplicació d'%d element"
 msgstr[1] "_Refés la duplicació de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1638
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1638
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] "_Refés el moviment d'%d element"
 msgstr[1] "_Refés el moviment de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1643
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1643
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] "_Refés el canvi de nom d'%d element"
 msgstr[1] "_Refés el canvi de nom de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1647
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1647
 msgid "_Redo creation of an empty file"
 msgstr "_Refés la creació d'un fitxer nou"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1650
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1650
 msgid "_Redo creation of a file from template"
 msgstr "_Refés la creació d'un fitxer a partir d'una plantilla"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1654
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1654
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "_Refés la creació d'%d carpeta"
 msgstr[1] "_Refés la creació de %d carpetes"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1659
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1659
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "_Refés el moviment d'%d element a la paperera"
 msgstr[1] "_Refés el moviment de %d elements a la paperera"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1664
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1664
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] "_Refés la restauració d'%d element"
 msgstr[1] "_Refés la restauració de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1669
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1669
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] "_Refés la creació d'un enllaç a %d element"
 msgstr[1] "_Refés la creació d'enllaços a %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1674
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1674
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] "_Refés l'eliminació d'%d element"
 msgstr[1] "_Refés l'eliminació de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1679
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1679
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] "Refés el canvi de permisos recursiu d'%d element"
 msgstr[1] "Refés el canvi de permisos recursiu de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1685
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1685
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] "Refés el canvi de permisos d'%d element"
 msgstr[1] "Refés el canvi de permisos de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1690
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1690
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] "Refés el canvi de grup d'%d element"
 msgstr[1] "Refés el canvi de grup de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-undostack-manager.c:1695
+#: /home/cody/files/po/../libcore/marlin-undostack-manager.c:1695
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "Refés el canvi de propietari d'%d element"
 msgstr[1] "Refés el canvi de propietari de %d elements"
 
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:119
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "No s'ha pogut determinar la ubicació original de «%s» "
-
-#: /home/codygarver/files/po/../libcore/marlin-file-utilities.c:122
-msgid "The item cannot be restored from trash"
-msgstr "No es pot restaurar l'element des de la paperera"
-
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:321
+#: /home/cody/files/po/../libwidgets/LocationBar.vala:321
 msgid "Cut the selected text to the clipboard"
 msgstr "Retalla el text seleccionat al porta-retalls"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:325
+#: /home/cody/files/po/../libwidgets/LocationBar.vala:325
 msgid "Copy the selected text to the clipboard"
 msgstr "Copia el text seleccionat al porta-retalls"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:329
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:333
+#: /home/cody/files/po/../libwidgets/LocationBar.vala:329
+#: /home/cody/files/po/../libwidgets/LocationBar.vala:333
 msgid "Paste the text stored on the clipboard"
 msgstr "Enganxa el text emmagatzemat al porta-retalls"
 
-#: /home/codygarver/files/po/../libwidgets/LocationBar.vala:812
+#: /home/cody/files/po/../libwidgets/LocationBar.vala:812
 #, c-format
 msgid "Go to %s"
 msgstr "Vés a %s"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:82
+#: /home/cody/files/po/../src/View/Chrome/ViewSwicher.vala:82
 msgid "View as Grid"
 msgstr "Visualitza com a graella"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:85
+#: /home/cody/files/po/../src/View/Chrome/ViewSwicher.vala:85
 msgid "View as List"
 msgstr "Visualitza com a llista"
 
-#: /home/codygarver/files/po/../src/View/Chrome/ViewSwicher.vala:88
+#: /home/cody/files/po/../src/View/Chrome/ViewSwicher.vala:88
 msgid "View in Columns"
 msgstr "Visualitza en columnes"
 
-#: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:46
+#: /home/cody/files/po/../plugins/marlin-trash/plugin.vala:46
 msgid "These items may be deleted by emptying the trash."
 msgstr "Aquests fitxers poden ser suprimits en buidar la paperera."
 
-#: /home/codygarver/files/po/../plugins/marlin-trash/plugin.vala:47
+#: /home/cody/files/po/../plugins/marlin-trash/plugin.vala:47
 msgid "Empty the Trash"
 msgstr "Buida la paperera"

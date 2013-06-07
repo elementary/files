@@ -45,7 +45,9 @@ namespace Marlin.View {
         public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0)
         {
             window = win;
+            overlay_statusbar = new OverlayBar (win);
             view_mode = _view_mode;
+
             /* set active tab */
             browser = new Browser ();
             label = new Gtk.Label("Loading...");
@@ -67,11 +69,8 @@ namespace Marlin.View {
 
             /* overlay statusbar */
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
-            overlay_statusbar = new OverlayBar (win);
             add_overlay (overlay_statusbar);
-            var action_showhide_context_pane = (Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane");
-            overlay_statusbar.showbar = !action_showhide_context_pane.get_active ();
-            action_showhide_context_pane.bind_property ("active", overlay_statusbar, "showbar", BindingFlags.INVERT_BOOLEAN);
+            overlay_statusbar.showbar = view_mode != ViewMode.LIST;
 
             path_changed.connect((myfile) => {
                 /* location didn't change, do nothing */
@@ -119,7 +118,7 @@ namespace Marlin.View {
             }
         }
 
-        private void plugin_directory_loaded () 
+        private void plugin_directory_loaded ()
         {
             Object[] data = new Object[2];
             data[0] = window;
@@ -133,7 +132,7 @@ namespace Marlin.View {
             //file_info_callback = slot.directory.file.info_available.connect((gof) => {
                 if(window.current_tab == this)
                     window.loading_uri (slot.directory.file.uri, window.sidebar);
-                
+
                 /*Source.remove((uint) file_info_callback);
             });*/
         }
@@ -150,31 +149,27 @@ namespace Marlin.View {
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
-           
+
             /* update window title */
             if(window.current_tab == this) {
                 window.set_title(tab_name);
                 if (window.top_menu.location_bar != null)
-                    window.top_menu.location_bar.path = aslot.directory.file.location.get_parse_name(); 
+                    window.top_menu.location_bar.path = aslot.directory.file.location.get_parse_name();
             }
 
         }
 
-        /* handle directory not found, contextview */
+        /* handle directory not found */
         public void directory_done_loading () {
             if (!slot.directory.file.exists) {
                 content = new DirectoryNotFound (slot.directory, this);
             } else {
-                if (select_childs != null) 
+                if (select_childs != null)
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
             }
-            sync_contextview();
 
             warning ("directory done loading");
-            //coltest  TODO remove
-            /*if (window.contextview != null)
-                window.contextview.update ();*/
-            
+
             slot.directory.done_loading.disconnect (directory_done_loading);
         }
 
@@ -195,7 +190,7 @@ namespace Marlin.View {
                 /* check if the requested location is a parent of the previous one */
                 if (slot != null) {
                     var parent = slot.location.get_parent ();
-                    if (parent != null && parent.equal (location)) 
+                    if (parent != null && parent.equal (location))
                         select_childs.prepend (slot.directory.file.location);
                 }
             }
@@ -239,29 +234,7 @@ namespace Marlin.View {
                 break;
             }
 
-        }
-
-        public void sync_contextview(){
-            if (!slot.directory.file.exists) {
-                if (window.contextview != null) {
-                    window.main_box.remove (window.contextview);
-                    window.contextview = null;
-                }
-                return;
-            } 
-                
-            if (window.contextview == null &&
-                ((Gtk.ToggleAction) window.main_actions.get_action("Show Hide Context Pane")).get_active())
-            {
-                window.contextview = new ContextView(window, true, window.main_box.orientation);
-                    
-                window.main_box.notify.connect((prop) => {
-                    if(window.contextview != null && prop.name == "orientation")
-                        window.contextview.parent_orientation = window.main_box.orientation;
-                });
-                window.main_box.pack2(window.contextview, false, true);
-                window.contextview.show ();
-            }
+            overlay_statusbar.showbar = nview != ViewMode.LIST;
         }
 
         public GOF.Window.Slot? get_active_slot () {
@@ -304,7 +277,7 @@ namespace Marlin.View {
                               // You see if I would just use back(n) the reference to n would be passed
                               // in the clusure, restulting in a value of n which would always be n=1. So
                               // by introducting a new variable I can bypass this anoyance.
-                var item = new Gtk.MenuItem.with_label (path); 
+                var item = new Gtk.MenuItem.with_label (path);
                 item.activate.connect(() => { back(cn); });
                 back_menu.insert(item, -1);
             }
@@ -320,7 +293,7 @@ namespace Marlin.View {
             var n = 1;
             foreach(var path in list){
                 int cn = n++; // For explenation look up
-                var item = new Gtk.MenuItem.with_label (path); 
+                var item = new Gtk.MenuItem.with_label (path);
                 item.activate.connect(() => forward(cn));
                 forward_menu.insert(item, -1);
             }

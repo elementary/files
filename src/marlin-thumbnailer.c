@@ -846,8 +846,9 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
      * processed (and awaiting to be refreshed) */
     for (lp = g_list_last (files); lp != NULL; lp = lp->prev)
     {
-        if (marlin_thumbnailer_file_is_supported (thumbnailer, lp->data))
-            supported_files = g_list_prepend (supported_files, lp->data);
+        /* 1067061 - Do not thumbnail network files */
+        if (!gof_file_is_remote_uri_scheme(lp->data) && marlin_thumbnailer_file_is_supported (thumbnailer, lp->data))
+                supported_files = g_list_prepend (supported_files, lp->data);
     }
 
     /* determine how many URIs are in the wait queue */

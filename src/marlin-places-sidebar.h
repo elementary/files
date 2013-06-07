@@ -79,6 +79,7 @@ typedef struct {
     GtkWidget *popup_menu_rescan_item;
     GtkWidget *popup_menu_format_item;
     GtkWidget *popup_menu_empty_trash_item;
+    GtkWidget *popup_menu_connect_server_item;
     GtkWidget *popup_menu_start_item;
     GtkWidget *popup_menu_stop_item;
 

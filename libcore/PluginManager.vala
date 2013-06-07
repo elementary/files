@@ -25,34 +25,75 @@ public class Marlin.PluginManager : GLib.Object
 {
     delegate Plugins.Base ModuleInitFunc ();
     Gee.HashMap<string,Plugins.Base> plugin_hash;
-    Settings settings;
-    string settings_field;
-    string plugin_dir;
     Gee.List<string> names;
     bool in_available = false;
-    public GLib.List<Gtk.Widget>? menus;
+    bool update_queued = false;
 
-    public PluginManager(Settings settings, string field, string plugin_dir)
+    [Deprecated (replacement = "Marlin.PluginManager.menuitem_references")]
+    public GLib.List<Gtk.Widget>? menus; // this doesn't manage GObject references properly
+
+    public Gee.List<Gtk.Widget> menuitem_references { get; private set; }
+
+    private string[] plugin_dirs;
+
+    public PluginManager(string plugin_dir)
     {
-        settings_field = field;
-        this.settings = settings;
-        this.plugin_dir = plugin_dir;
         plugin_hash = new Gee.HashMap<string,Plugins.Base>();
         names = new Gee.ArrayList<string>();
+
+        menuitem_references = new Gee.LinkedList<Gtk.Widget> ();
+
+        plugin_dirs = new string[0];
+        plugin_dirs += plugin_dir + "/core";
+        plugin_dirs += plugin_dir;
+
+        load_plugins ();
+
+        // Monitor plugin dirs
+        foreach (string path in plugin_dirs)
+            set_directory_monitor (path);
     }
-    
+
     public void load_plugins()
     {
-        load_modules_from_dir(plugin_dir + "/core/", true);
+        load_modules_from_dir(plugin_dirs[0]);
         in_available = true;
-        load_modules_from_dir(plugin_dir);
+        load_modules_from_dir(plugin_dirs[1]);
         in_available = false;
     } 
-    
-    private void load_modules_from_dir (string path, bool force = false)
-    {
-        File dir = File.new_for_path(path);
 
+    private void set_directory_monitor (string path)
+    {
+        var dir = File.new_for_path (path);
+
+        try
+        {
+            var monitor = dir.monitor_directory (FileMonitorFlags.NONE, null);
+            monitor.changed.connect (on_plugin_directory_change);
+            monitor.ref (); // keep alive
+        }
+        catch (IOError e)
+        {
+            critical ("Could not setup monitor for '%s': %s", dir.get_path (), e.message);
+        }
+    }
+
+    private async void on_plugin_directory_change (File file, File? other_file, FileMonitorEvent event)
+    {
+        if (update_queued)
+            return;
+
+        update_queued = true;
+
+        Idle.add_full (Priority.LOW, on_plugin_directory_change.callback);
+        yield;
+
+        load_plugins ();
+        update_queued = false;
+    }
+
+    private void load_modules_from_dir (string path)
+    {
         string attributes = FileAttribute.STANDARD_NAME + "," +
                             FileAttribute.STANDARD_TYPE;
 
@@ -61,6 +102,8 @@ public class Marlin.PluginManager : GLib.Object
 
         try
         {
+            var dir = File.new_for_path (path);
+
             enumerator = dir.enumerate_children
                                         (attributes,
                                          FileQueryInfoFlags.NONE);
@@ -70,26 +113,29 @@ public class Marlin.PluginManager : GLib.Object
             while(info != null)
             {
                 string file_name = info.get_name ();
-                string file_path = Path.build_filename (dir.get_path (), file_name);
+                var plugin_file = dir.get_child_for_display_name (file_name);
 
-                if(file_name.has_suffix(".plug"))
-                {
-                    load_plugin_keyfile(file_path, dir.get_path (), force);
-                }
+                if (file_name.has_suffix (".plug"))
+                    load_plugin_keyfile (plugin_file.get_path (), path);
+
                 info = enumerator.next_file ();
             }
         }
         catch(Error error)
         {
-            critical ("Error listing contents of folder '%s': %s",
-                      dir.get_path (),
-                      error.message);
-
+            critical ("Error listing contents of folder '%s': %s", path, error.message);
         }
     }
 
-    void load_module(string file_path)
+    void load_module(string file_path, string name)
     {
+        if (plugin_hash.has_key (file_path)) {
+            debug ("plugin for %s already loaded. Not adding again", file_path);
+            return;
+        }
+
+        message ("Loading plugin for %s", file_path);
+
         Module module = Module.open (file_path, ModuleFlags.BIND_LOCAL);
         if (module == null)
         {
@@ -121,23 +167,20 @@ public class Marlin.PluginManager : GLib.Object
         
         if(plug != null)
             plugin_hash.set (file_path, plug);
+
+        if(in_available)
+            names.add(name);
     }
     
-    void load_plugin_keyfile(string path, string parent, bool force)
+    void load_plugin_keyfile(string path, string parent)
     {
         var keyfile = new KeyFile();
         try
         {
             keyfile.load_from_file(path, KeyFileFlags.NONE);
             string name = keyfile.get_string("Plugin", "Name");
-            if(in_available)
-            {
-                names.add(name);
-            }
-            if(force || name in settings.get_strv(settings_field))
-            {
-                load_module(Path.build_filename(parent, keyfile.get_string("Plugin", "File")));
-            }
+
+            load_module(Path.build_filename(parent, keyfile.get_string("Plugin", "File")), name);
         }
         catch(Error e)
         {
@@ -147,10 +190,38 @@ public class Marlin.PluginManager : GLib.Object
     
     public void hook_context_menu(Gtk.Widget menu, List<GOF.File> files)
     {
+        drop_menu_references (menu);
+
+        if (menu is Gtk.Menu)
+            drop_plugin_menuitems (menu as Gtk.Menu);
+
+
+        foreach (var plugin in plugin_hash.values)
+            plugin.context_menu (menu, files);
+    }
+
+    private void drop_plugin_menuitems (Gtk.Menu menu)
+    {
+        var plugin_menu = menu as Gtk.Menu;
+
+        assert (plugin_menu != null);
+
+        foreach (var menu_item in menuitem_references)
+            menu_item.parent.remove (menu_item);
+
+        menuitem_references.clear ();
+    }
+
+    [Deprecated (replacement = "Marlin.PluginManager.drop_plugin_menuitems")]
+    private void drop_menu_references (Gtk.Widget menu)
+    {
+        if (menus == null)
+            return;
+
         foreach (var item in menus)
             item.destroy ();
+
         menus = null;
-        foreach(var plugin in plugin_hash.values) plugin.context_menu (menu, files);
     }
     
     public void ui(Gtk.UIManager data)
@@ -181,36 +252,9 @@ public class Marlin.PluginManager : GLib.Object
                 /*return false;
             });*/
     }
-
-    public void add_plugin(string path)
-    {
-    }
-    
-    public void load_plugin(string path)
-    {
-    }
     
     public Gee.List<string> get_available_plugins()
     {
         return names;
-    }
-    
-    public bool disable_plugin(string path)
-    {
-        string[] plugs = settings.get_strv(settings_field);
-        string[] plugs_ = new string[plugs.length - 1];
-        bool found = false;
-        int i = 0;
-        foreach(var name in plugs)
-        {
-            if(name != path)
-            {
-                plugs[i] = name;
-            }
-            else found = true;
-            i++;
-        }
-        if(found) settings.set_strv(settings_field, plugs_);
-        return found;
     }
 }

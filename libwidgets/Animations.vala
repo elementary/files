@@ -1,6 +1,6 @@
 namespace Marlin.Animation {
-    
-    static void smooth_adjustment_to (Gtk.Adjustment adj, int final) 
+
+    public static void smooth_adjustment_to (Gtk.Adjustment adj, int final)
     {
         var initial = adj.value;
         var to_do = final - initial;
