@@ -45,7 +45,7 @@ namespace Marlin.View {
          */
         public void record_uri (string uri)
         {
-            if (current_uri != null)
+            if (current_uri != null && current_uri != uri)
             {
                 back_stack.push (current_uri);
                 forward_stack.clear ();
