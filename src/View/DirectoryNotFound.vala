@@ -45,7 +45,7 @@ namespace Marlin.View
             
             append ("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
             
-            this.append ("cancel", _("Cancel"), _("Go back to existing parent folder %s").printf (existing_parent.get_path ()));
+            this.append ("cancel", _("Cancel"), _("Go back to existing parent folder %s").printf (existing_parent.get_basename ()));
             
             dir_saved = dir;
             ctab = tab;
