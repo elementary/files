@@ -227,6 +227,13 @@ namespace Marlin.View {
                 add_tab (null);
             });
             
+            tabs.tab_removed.connect ((tab) => {
+                if (tabs.n_tabs == 1) {
+                    add_tab (null);
+                }
+                return true;
+            });
+            
             tabs.tab_switched.connect ((old_tab, new_tab) => {
                 change_tab (tabs.get_tab_position (new_tab));
             });
