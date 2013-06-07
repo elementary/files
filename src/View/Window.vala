@@ -220,7 +220,13 @@ namespace Marlin.View {
                 destroy();
             	return false;
             });
-
+            
+            tabs.tab_added.connect ((tab) => {
+                if (tab != null)
+                    tabs.remove_tab (tab);
+                add_tab (File.new_for_commandline_arg(Environment.get_home_dir ()));
+            });
+            
             tabs.tab_switched.connect ((old_tab, new_tab) => {
                 change_tab (tabs.get_tab_position (new_tab));
             });
@@ -302,7 +308,7 @@ namespace Marlin.View {
             }
         }
 
-        public void add_tab(File location){
+        public void add_tab (File location) {
             ViewContainer content = new View.ViewContainer(this, location,
                 current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
 
