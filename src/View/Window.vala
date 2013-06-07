@@ -381,7 +381,7 @@ namespace Marlin.View {
         }
 
         private void action_remove_tab (Gtk.Action action) {
-            remove_tab(current_tab);
+            tabs.remove_tab (tabs.current);
         }
 
     	private void save_geometries () {
