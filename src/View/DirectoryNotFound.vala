@@ -18,26 +18,50 @@
  *
  */
 
-using Gtk;
 namespace Marlin.View
 {
+
+    static File get_existing_parent(File location) {
+        File current = location;
+        File existing_parent = null;
+        
+        do {
+            existing_parent = current.get_parent();
+            current = existing_parent;
+        }
+        while (! existing_parent.query_exists ());
+        
+        return existing_parent;
+    }
+    
     public class DirectoryNotFound : Granite.Widgets.Welcome {
         public GOF.Directory.Async dir_saved;
         public ViewContainer ctab;
+        public File existing_parent;
 
         public DirectoryNotFound(GOF.Directory.Async dir, ViewContainer tab) {
             base (_("Folder does not exist"), _("Files can't find the folder \"%s\"").printf (dir.location.get_basename ()));           
+            existing_parent = get_existing_parent (dir.location);
             
             append ("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
+            
+            this.append ("cancel", _("Cancel"), _("Go back to existing parent folder %s").printf (existing_parent.get_path ()));
             
             dir_saved = dir;
             ctab = tab;
 
             this.activated.connect ((index) => {
-                Marlin.FileOperations.new_folder_with_name_recursive(null, null,
-                                                               dir_saved.location.get_parent (),
-                                                               dir_saved.location.get_basename (),
-                                                               (void *) jump_to_new_dir, ctab);
+                switch (index) {
+                    case 0:
+                        Marlin.FileOperations.new_folder_with_name_recursive(null, null,
+                                                                      dir_saved.location.get_parent (),
+                                                                       dir_saved.location.get_basename (),
+                                                                     (void *) jump_to_new_dir, ctab);
+                        break;
+                    case 1:
+                        tab.path_changed (existing_parent);
+                        break;
+                    }
             });
 
             show_all ();
