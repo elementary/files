@@ -34,7 +34,7 @@ namespace Marlin.View {
         public Widget menu_bar;
         public Chrome.TopMenu top_menu;
         public Gtk.InfoBar info_bar;
-        public Notebook tabs;
+        public Granite.Widgets.DynamicNotebook tabs;
         public Marlin.Places.Sidebar sidebar;
 
         public ViewContainer? current_tab;
@@ -152,11 +152,9 @@ namespace Marlin.View {
             show_infobar (!is_marlin_mydefault_fm ());
 
             /* Contents */
-            tabs = new Notebook();
-            tabs.show_border = false;
-            tabs.show_tabs = false;
-            tabs.set_scrollable(true);
-            tabs.show();
+            tabs = new Granite.Widgets.DynamicNotebook ();
+            tabs.show_tabs = true;
+            tabs.show ();
 
             /* Sidebar */
             sidebar = new Marlin.Places.Sidebar (this);
@@ -223,22 +221,8 @@ namespace Marlin.View {
             	return false;
             });
 
-            tabs.switch_page.connect((page, offset) => {
-                change_tab(offset);
-            });
-
-            tabs.scroll_event.connect((scroll) => {
-                int offset = tabs.get_current_page();
-
-                if(scroll.direction == ScrollDirection.UP)
-                    offset++;
-                else if(scroll.direction == ScrollDirection.DOWN)
-                    offset--;
-
-                if(offset >= 0 && offset <= tabs.get_children().length()-1)
-                    tabs.set_current_page(offset);
-
-                return true;
+            tabs.tab_switched.connect ((old_tab, new_tab) => {
+                change_tab (tabs.get_tab_position (new_tab));
             });
 
             Gtk.Allocation win_alloc;
@@ -322,46 +306,10 @@ namespace Marlin.View {
             ViewContainer content = new View.ViewContainer(this, location,
                 current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
 
-            var hbox = new Box(Gtk.Orientation.HORIZONTAL, 0);
-            var button = new Button();
-            button.set_image(new Image.from_stock(Stock.CLOSE, IconSize.MENU));
-            button.set_relief(ReliefStyle.NONE);
-            button.set_focus_on_click(false);
+            var new_tab = new Granite.Widgets.Tab ("", null, content);
+            tabs.insert_tab (new_tab, -1);
 
-            button.clicked.connect(() => {
-                remove_tab(content);
-            });
-
-            if (is_close_first ()) {
-                hbox.pack_start (button, false, false, 0);
-                hbox.pack_start (content.label, false, false, 0);
-            } else {
-                hbox.pack_start (content.label, false, false, 0);
-                hbox.pack_start (button, false, false, 0);
-            }
-
-            hbox.show_all();
-
-            var eventbox = new EventBox();
-            eventbox.add(hbox);
-            eventbox.set_visible_window(false);
-            eventbox.events |= EventMask.BUTTON_PRESS_MASK;
-            eventbox.button_release_event.connect((click) => {
-                if(click.button == 2){
-                    remove_tab(content);
-                }
-
-                return false;
-            });
-
-            tabs.append_page(content, eventbox);
-            tabs.child_set (content, "tab-expand", true, null );
-
-            tabs.set_tab_reorderable(content, true);
-            tabs.show_tabs = tabs.get_children().length() > 1;
-
-            /* jump to that new tab */
-            tabs.set_current_page(tabs.get_n_pages()-1);
+            tabs.current = new_tab;
             //current_tab = content;
         }
 
@@ -564,16 +512,13 @@ namespace Marlin.View {
                 ((FM.Directory.View) current_tab.slot.view_box).zoom_out ();
         }
 
-        void action_next_tab()
+        void action_next_tab ()
         {
-            if(tabs.page == tabs.get_n_pages() - 1)
-                tabs.page = 0;
-            else
-                tabs.page++;
+            tabs.next_page ();
         }
-        void action_previous_tab()
+        void action_previous_tab ()
         {
-            tabs.page --;
+            tabs.previous_page ();
         }
 
         private void action_zoom_normal_callback (Gtk.Action action) {
