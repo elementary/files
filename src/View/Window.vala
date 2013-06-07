@@ -274,9 +274,9 @@ namespace Marlin.View {
             this.title = title;
         }
 
-        public void change_tab(uint offset){
+        public void change_tab (int offset) {
             ViewContainer old_tab = current_tab;
-            current_tab = (ViewContainer) tabs.get_children().nth_data(offset);
+            current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
             if (old_tab == current_tab) {
                 return;
             }
