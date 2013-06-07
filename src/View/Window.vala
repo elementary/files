@@ -320,7 +320,12 @@ namespace Marlin.View {
                                     location ?? File.new_for_commandline_arg (Environment.get_home_dir ()),
                                     current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
 
-            var new_tab = new Granite.Widgets.Tab ("", null, content);
+            var new_tab = new Granite.Widgets.Tab (content.tab_name, null, content);
+            
+            content.tab_name_changed.connect ((tab_name) => {
+                new_tab.label = tab_name;
+            });
+            
             tabs.insert_tab (new_tab, -1);
 
             tabs.current = new_tab;

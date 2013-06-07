@@ -41,6 +41,7 @@ namespace Marlin.View {
         public signal void up();
         public signal void back(int n=1);
         public signal void forward(int n=1);
+        public signal void tab_name_changed (string tab_name);
 
         public ViewContainer (Marlin.View.Window win, GLib.File location, int _view_mode = 0)
         {
@@ -112,6 +113,7 @@ namespace Marlin.View {
         public string tab_name{
             set{
                 label.label = value;
+                tab_name_changed (value);
             }
             get{
                 return label.label;
