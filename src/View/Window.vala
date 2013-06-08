@@ -224,12 +224,12 @@ namespace Marlin.View {
             tabs.tab_added.connect ((tab) => {
                 if (tab != null)
                     tabs.remove_tab (tab);
-                add_tab (null);
+                add_tab ();
             });
             
             tabs.tab_removed.connect ((tab) => {
                 if (tabs.n_tabs == 1) {
-                    add_tab (null);
+                    add_tab ();
                 }
                 return true;
             });
@@ -315,9 +315,9 @@ namespace Marlin.View {
             }
         }
 
-        public void add_tab (File? location) {
-            ViewContainer content = new View.ViewContainer(this,
-                                    location ?? File.new_for_commandline_arg (Environment.get_home_dir ()),
+        public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ())) {
+        
+            ViewContainer content = new View.ViewContainer(this, location,
                                     current_tab != null ? current_tab.view_mode : Preferences.settings.get_enum("default-viewmode"));
 
             var new_tab = new Granite.Widgets.Tab ("", null, content);
@@ -385,7 +385,7 @@ namespace Marlin.View {
         }
 
         private void action_new_tab (Gtk.Action action) {
-            add_tab (null);
+            add_tab ();
         }
 
         private void action_remove_tab (Gtk.Action action) {
