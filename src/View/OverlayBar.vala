@@ -180,7 +180,7 @@ namespace Marlin.View {
                 real_update (list);
             } else {
                 GOF.Window.Slot slot = window.current_tab.slot;
-                if (slot != null && window.current_tab.content == null) {
+                if (slot != null) {
                     unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
                     real_update (list);
                 }

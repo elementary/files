@@ -70,11 +70,11 @@ namespace Marlin.View.Chrome
         
         private void on_bread_changed (string changed) {
             /* focus back the view */
-            if (win.current_tab.content == null)
-                win.current_tab.slot.view_box.grab_focus ();
-            else
+            if (win.current_tab.content_shown)
                 win.current_tab.content.grab_focus ();
-            
+            else
+                win.current_tab.slot.view_box.grab_focus ();
+
             //_path = changed;
             path = changed;
             activate();
@@ -194,10 +194,10 @@ namespace Marlin.View.Chrome
 
             entry.down.connect (() => {
                 /* focus back the view */
-                if (win.current_tab.content == null)
-                    win.current_tab.slot.view_box.grab_focus ();
-                else
+                if (win.current_tab.content_shown)
                     win.current_tab.content.grab_focus ();
+                else
+                    win.current_tab.slot.view_box.grab_focus ();
             });
             
             entry.completed.connect(() => {

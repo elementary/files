@@ -276,7 +276,7 @@ namespace Marlin.View {
         }
 
         public void colorize_current_tab_selection (int n) {
-            if (current_tab.slot.directory.file.exists)
+            if (!current_tab.content_shown)
                 ((FM.Directory.View) current_tab.slot.view_box).colorize_selection(n);
         }
 
@@ -311,7 +311,7 @@ namespace Marlin.View {
                     /* update radio action view state */
                     update_action_radio_view(current_tab.view_mode);
                     /* sync selection */
-                    if (cur_slot.view_box != null && cur_slot.directory.file.exists)
+                    if (cur_slot.view_box != null && !current_tab.content_shown)
                         ((FM.Directory.View) cur_slot.view_box).sync_selection();
                     /* sync sidebar selection */
                     loading_uri (current_tab.slot.directory.file.uri, sidebar);
