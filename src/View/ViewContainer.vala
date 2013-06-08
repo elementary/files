@@ -47,6 +47,7 @@ namespace Marlin.View {
             window = win;
             overlay_statusbar = new OverlayBar (win);
             view_mode = _view_mode;
+            content_item = null;
 
             /* set active tab */
             browser = new Browser ();
@@ -60,7 +61,6 @@ namespace Marlin.View {
             window.button_back.fetcher = get_back_menu;
             window.button_forward.fetcher = get_forward_menu;
 
-            //add(content_item);
             this.show_all();
 
             // Override background color to support transparency on overlay widgets
@@ -169,8 +169,7 @@ namespace Marlin.View {
                 content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                        _("You don't have permission to view this folder."));
                 content.show_all ();
-            } else {
-                if (select_childs != null)
+            } else if (select_childs != null) {
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
             }
 
