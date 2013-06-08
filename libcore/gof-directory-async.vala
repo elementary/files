@@ -267,6 +267,8 @@ public class GOF.Directory.Async : Object
             state = State.NOT_LOADED;
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)
                 file.exists = false;
+            if (err is IOError.PERMISSION_DENIED)
+                file.has_permissions = false;
             if (err is IOError.NOT_MOUNTED) {
                 file.is_mounted = false;
                 /* try again this time it shoould be mounted */

@@ -70,10 +70,10 @@ namespace Marlin.View.Chrome
         
         private void on_bread_changed (string changed) {
             /* focus back the view */
-            if (win.current_tab.slot.directory.file.exists)
-                win.current_tab.slot.view_box.grab_focus ();
+            if (win.current_tab.content != null)
+                win.current_tab.content.grab_focus ();                
             else
-                win.current_tab.content.grab_focus ();
+                win.current_tab.slot.view_box.grab_focus ();
             
             //_path = changed;
             path = changed;
