@@ -39,8 +39,6 @@ namespace Marlin.View
                                                                     dir_saved.location.get_basename (),
                                                                     (void *) jump_to_new_dir, ctab);
             });
-
-            show_all ();
         }
         
         static void jump_to_new_dir (File? new_folder, void *user_data) {

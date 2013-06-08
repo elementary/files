@@ -168,7 +168,6 @@ namespace Marlin.View {
             } else if (!slot.directory.file.has_permissions) {
                 content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                        _("You don't have permission to view this folder."));
-                content.show_all ();
             } else if (select_childs != null) {
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
             }
