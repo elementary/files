@@ -103,6 +103,7 @@ namespace Marlin.View {
                 add(value);
                 content_item = value;
                 content_item.show_all ();
+                content_shown = true;
             }
             get{
                 return content_item;
@@ -165,11 +166,9 @@ namespace Marlin.View {
         public void directory_done_loading () {
             if (!slot.directory.file.exists) {
                 content = new DirectoryNotFound (slot.directory, this);
-                content_shown = true;
             } else if (slot.directory.permission_denied) {
                 content = new Granite.Widgets.Welcome (_("This does not belong to you."),
                                                        _("You don't have permission to view this folder."));
-                content_shown = true;
             } else {
                 content_shown = false;
                 if (select_childs != null)
