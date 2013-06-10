@@ -141,10 +141,10 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         /* Preview */
         //message ("flag %d", (int) goffile.flags);
         if (count == 1 && goffile.flags != 0) {
+            Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true);
             var preview_box = new Box(Gtk.Orientation.VERTICAL, 0);
-            var success = construct_preview_panel (preview_box);
-            if (success)
-                add_section (notebook, _("Preview"), PanelType.PREVIEW, preview_box);
+            construct_preview_panel (preview_box);
+            add_section (notebook, _("Preview"), PanelType.PREVIEW, preview_box);
         }
 
         set_transient_for (parent);
@@ -1069,18 +1069,20 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         return choice;
     }
 
-    private bool construct_preview_panel (Box box) {
+    private void construct_preview_panel (Box box) {
         evbox = new Granite.Widgets.ImgEventBox (Orientation.HORIZONTAL);
-        try {
-            var pix = new Gdk.Pixbuf.from_file_at_size (goffile.location.get_path (), 245, 256);
-            evbox.set_from_pixbuf (pix);
-        } catch (Error e) {
-            warning (e.message);
-            return false;
-        }
-
         box.pack_start (evbox, false, true, 0);
-        return true;
+                
+        goffile.icon_changed.connect (() => {
+            var path = goffile.get_preview_path ();
+            if (path != null)
+                try {
+                    var pixbuf = new Gdk.Pixbuf.from_file (path);
+                    evbox.set_from_pixbuf (pixbuf);
+                } catch (Error e) {
+                    warning (e.message);
+                }
+        });
     }
 
     private enum AppsColumn {
