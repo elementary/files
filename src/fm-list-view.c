@@ -99,6 +99,10 @@ unload_file_timeout (gpointer data)
             if (!gtk_tree_view_row_expanded (unload_data->view->tree,
                                              path)) {
                 fm_list_model_unload_subdirectory (model, &iter);
+                //Remove the unloaded subdirectory from the subdirectories list.
+                unload_data->view->loaded_subdirectories = g_list_remove (
+                                                                unload_data->view->loaded_subdirectories,
+                                                                unload_data->directory);
             }
             gtk_tree_path_free (path);
         }
@@ -119,6 +123,8 @@ row_expanded_callback (GtkTreeView *treeview, GtkTreeIter *iter, GtkTreePath *pa
 
     if (fm_list_model_load_subdirectory (view->model, path, &directory)) {
         fm_directory_view_add_subdirectory (FM_DIRECTORY_VIEW (view), directory);
+        //Add the subdirectory to the loaded subdirectories list.
+        view->loaded_subdirectories = g_list_append (view->loaded_subdirectories, directory);
     }
 }
 
@@ -885,6 +891,16 @@ fm_list_view_finalize (GObject *object)
 
     g_debug ("%s\n", G_STRFUNC);
 
+    //Unload all the subdirectories in the loaded subdirectories list.
+    GList *l = NULL;
+    for (l = view->loaded_subdirectories; l != NULL; l = l->next) {
+        GOFDirectoryAsync *directory = GOF_DIRECTORY_ASYNC (l->data);
+        fm_directory_view_remove_subdirectory (FM_DIRECTORY_VIEW (view), directory);
+    }
+    g_list_free (l);
+    g_list_free (view->loaded_subdirectories);
+    
+
     g_free (view->details->original_name);
 	view->details->original_name = NULL;
 
@@ -900,6 +916,7 @@ fm_list_view_init (FMListView *view)
 {
     view->details = g_new0 (FMListViewDetails, 1);
     view->details->selection = NULL;
+    view->loaded_subdirectories = NULL;
 
     create_and_set_up_tree_view (view);
 
