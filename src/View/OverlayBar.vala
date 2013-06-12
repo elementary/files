@@ -24,7 +24,7 @@ namespace Marlin.View {
 
         private const string FALLBACK_THEME = """
        .files-overlay-bar {
-           background-color: #bg_color;
+           background-color: @bg_color;
            border-radius: 3px 3px 0 0;
            padding: 3px 6px 3px 6px;
            margin: 1px;
