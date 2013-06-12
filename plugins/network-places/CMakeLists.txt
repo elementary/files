@@ -10,6 +10,7 @@ pkg_check_modules(DEPS REQUIRED
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
 
+add_definitions(${CFLAGS})
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 include_directories(${CMAKE_BINARY_DIR}/libcore/)
 
@@ -26,7 +27,6 @@ OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/plugins/marlin-cserver/
     --vapidir=${CMAKE_BINARY_DIR}/libcore/
 )
-add_definitions(${CFLAGS} "-DGETTEXT_PACKAGE=\"pantheon-files\"")
 
 link_directories(${LIB_PATHS})
 
