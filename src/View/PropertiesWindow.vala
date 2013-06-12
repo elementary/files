@@ -141,23 +141,16 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         /* Preview */
         //message ("flag %d", (int) goffile.flags);
         if (count == 1 && goffile.flags != 0) {
-            /* For some reason, tumbler likes to tell us that
-                .doc's, .ppt's and .xls's are previewable.
-                So we check if a thumbnail of the file exists
-                to work around this quirk. */
-            var path = goffile.get_preview_path ();
-            if (path != null) {
-                /* Retrieve the low quality (existent) thumbnail.
-               This will be shown to prevent resizing the properties window
-               when the large preview is retrieved. */
-                var small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
-                /* Request the creation of the large thumbnail */
-                Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true); 
-                var preview_box = new Box(Gtk.Orientation.VERTICAL, 0);
+            /* Retrieve the low quality (existent) thumbnail.
+            This will be shown to prevent resizing the properties window
+            when the large preview is retrieved. */
+            var small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
+            /* Request the creation of the large thumbnail */
+            Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true); 
+            var preview_box = new Box(Gtk.Orientation.VERTICAL, 0);
             
-                construct_preview_panel (preview_box, small_preview);
-                add_section (notebook, _("Preview"), PanelType.PREVIEW, preview_box);
-            }
+            construct_preview_panel (preview_box, small_preview);
+            add_section (notebook, _("Preview"), PanelType.PREVIEW, preview_box);
         }
 
         set_transient_for (parent);
