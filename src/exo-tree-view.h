@@ -84,10 +84,6 @@ gboolean   exo_tree_view_get_single_click         (ExoTreeView *tree_view);
 void       exo_tree_view_set_single_click         (ExoTreeView       *tree_view,
                                                    gboolean           single_click);
 
-guint      exo_tree_view_get_single_click_timeout (ExoTreeView *tree_view);
-void       exo_tree_view_set_single_click_timeout (ExoTreeView       *tree_view,
-                                                   guint              single_click_timeout);
-
 GtkTreePath *exo_tree_view_get_hover_path         (ExoTreeView *tree_view);
 
 G_END_DECLS
