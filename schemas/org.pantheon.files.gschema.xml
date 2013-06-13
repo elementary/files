@@ -31,11 +31,6 @@
       <summary>Show hidden files</summary>
       <description>If set to true, hidden files will also be shown (files starting with a "." for example)</description>
     </key>
-    <key type="b" name="rgba-colormap">
-      <default>false</default>
-      <summary>enable rgba window</summary>
-      <description>If set to true, rgba will be enabled, you'll need a gtk engine supporting rgba, like murrine. Compiz can have some problems like drawings shadows ...</description>
-    </key>
     <key name="date-format" enum="dateformatmode">
       <default>'locale'</default>
       <summary>Date Format</summary>
@@ -45,27 +40,6 @@
       <default>true</default>
       <summary>single click</summary>
       <description>Whether items are activated by single clicks instead of dubble clicks</description>
-    </key>
-    <key type="b" name="single-click-timeout-enabled">
-      <default>false</default>
-      <summary>single click timeout enabled</summary>
-      <description>Whether mouse auto-selection should be used</description>
-    </key>
-    <key type="i" name="single-click-timeout">
-      <default>0</default>
-      <range min="0" max="1000"/>
-      <summary>single click timeout</summary>
-      <description>
-        The amount of time which the item under the mouse cursor will be selected automatically in single click mode. A value of 0 disables the automatic selection.
-      </description>
-    </key>
-    <key type="i" name="single-click-timeout-old">
-      <default>1</default>
-      <range min="1" max="1000"/>
-      <summary>single click timeout old value</summary>
-      <description>
-        The old value of single-click-timeout which is stored when enabling/disabling auto-selection.
-      </description>
     </key>
     <key type="b" name="interpret-desktop-files">
       <default>true</default>
@@ -105,21 +79,6 @@
       <default>true</default>
       <summary>Categorie Network expander</summary>
       <description>Expand/Collapse categorie Network</description>
-    </key>
-    <key type="b" name="properties-dlg-info">
-      <default>true</default>
-      <summary>Properties Info expander</summary>
-      <description>Expand/collapse Info panel</description>
-    </key>
-    <key type="b" name="properties-dlg-permissions">
-      <default>true</default>
-      <summary>Properties Permissions expander</summary>
-      <description>Expand/collapse Permissions panel</description>
-    </key>
-    <key type="b" name="properties-dlg-preview">
-      <default>true</default>
-      <summary>Properties Preview expander</summary>
-      <description>Expand/collapse Preview panel</description>
     </key>
     <key type="s" name="geometry">
       <default>''</default>
