@@ -32,11 +32,6 @@ namespace Marlin.View {
            border-width: 1px;
            border-color: darker (@bg_color);
        }""";
-       
-       private const string FALLBACK_TEXT_COLOR = """
-       .files-overlay-bar-text {
-           color: #ffffff;
-       }""";
 
         public Label status;
         private Marlin.View.Window window;
@@ -152,8 +147,6 @@ namespace Marlin.View {
         {
             int priority = Gtk.STYLE_PROVIDER_PRIORITY_FALLBACK;
             Granite.Widgets.Utils.set_theming (this, FALLBACK_THEME, "files-overlay-bar", priority);
-            priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;            
-            Granite.Widgets.Utils.set_theming (this.status, FALLBACK_TEXT_COLOR, "files-overlay-bar-text", priority);
         }
 
         private bool enter_notify_callback (Gdk.EventCrossing event)
