@@ -897,9 +897,8 @@ fm_list_view_finalize (GObject *object)
         GOFDirectoryAsync *directory = GOF_DIRECTORY_ASYNC (l->data);
         fm_directory_view_remove_subdirectory (FM_DIRECTORY_VIEW (view), directory);
     }
-    g_list_free (l);
-    g_list_free (view->loaded_subdirectories);
     
+    g_list_free (view->loaded_subdirectories);
 
     g_free (view->details->original_name);
 	view->details->original_name = NULL;
