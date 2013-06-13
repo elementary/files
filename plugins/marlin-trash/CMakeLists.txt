@@ -23,9 +23,7 @@ OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
     --vapidir=${CMAKE_BINARY_DIR}/libcore/
 )
-add_definitions(${CFLAGS}
-    "-DGETTEXT_PACKAGE=\"pantheon-files\""
-    )
+add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
 add_library(marlintrash SHARED 
     ${VALA_C})

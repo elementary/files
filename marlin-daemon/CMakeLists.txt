@@ -24,10 +24,8 @@ set(LIB_PATHS
 	${DEPS_LIBRARY_DIRS}
 )
 link_directories(${LIB_PATHS})
-add_definitions(${CFLAGS}
-    "-DGETTEXT_PACKAGE=\"marlin\""
-     -O2
-    )
+add_definitions(${CFLAGS})
+
 vala_precompile(VALA_C marlin-daemon
     marlind-tagging.vala
 PACKAGES
