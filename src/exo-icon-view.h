@@ -232,9 +232,6 @@ void                  exo_icon_view_set_layout_mode     (ExoIconView            
 gboolean         exo_icon_view_get_single_click (ExoIconView *icon_view);
 void             exo_icon_view_set_single_click (ExoIconView *icon_view,
                                                  gboolean     single_click);
-guint            exo_icon_view_get_single_click_timeout (ExoIconView *icon_view);
-void             exo_icon_view_set_single_click_timeout (ExoIconView *icon_view,
-                                                         guint  single_click_timeout);
 void             exo_icon_view_select_path        (ExoIconView            *icon_view,
                                                    GtkTreePath            *path);
 void             exo_icon_view_unselect_path      (ExoIconView            *icon_view,

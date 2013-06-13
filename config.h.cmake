@@ -7,6 +7,7 @@
 #cmakedefine PACKAGE_VERSION "@PACKAGE_VERSION@"
 #cmakedefine VERSION "@VERSION@"
 #cmakedefine GNOMELOCALEDIR "@GNOMELOCALEDIR@"
+#cmakedefine PLUGIN_DIR "@PLUGIN_DIR@"
 
 #define HAVE_DBUS
 #endif
