@@ -32,15 +32,9 @@ set(LIB_PATHS
 )
 
 link_directories(${LIB_PATHS})
-add_definitions(${CFLAGS}
-    "-DGETTEXT_PACKAGE=\"pantheon-files\""
-    "-DPIXMAP_DIR=\"${CMAKE_INSTALL_PREFIX}/share/pixmaps/pantheon-files/\""
-    "-DUI_DIR=\"${CMAKE_INSTALL_PREFIX}/share/pantheon-files/ui/\""
-     -O2
-    )
-vala_precompile(VALA_C pantheon-files
-    ${CMAKE_BINARY_DIR}/src/config.vala
+add_definitions(${CFLAGS} -O2)
 
+vala_precompile(VALA_C pantheon-files
     marlin-deep-count.vala
     View/DiskRenderer.vala
     View/DirectoryNotFound.vala
@@ -57,7 +51,6 @@ vala_precompile(VALA_C pantheon-files
     View/Chrome/ViewSwicher.vala
     View/Chrome/ColorWidget.vala
     View/Chrome/XsEntry.vala
-    View/Chrome/IconFactory.vala
     View/Chrome/ImgEventBox.vala
 CUSTOM_VAPIS
     ${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/marlinwidgets.vapi
@@ -104,14 +97,12 @@ add_executable(pantheon-files
     fm-icon-view.c
     fm-list-view.c
     fm-columns-view.c
-    marlin-toolbar-editor.c
     marlin-connect-server-dialog.c
     marlin-connect-server-operation.c
     marlin-progress-ui-handler.c
     marlin-progress-info-widget.c
     ${VALA_C} )
 
-add_definitions("-DPLUGIN_DIR=\"${CMAKE_INSTALL_PREFIX}/lib/pantheon-files/plugins/\"")
 target_link_libraries(pantheon-files m marlincore marlinwidgets ${DEPS_LIBRARIES})
 
 OPTION(WITH_UNITY "Add Unity launcher support" ON)
@@ -124,6 +115,5 @@ IF(WITH_UNITY AND UNITY_FOUND)
 ENDIF(WITH_UNITY AND UNITY_FOUND)
 
 install(TARGETS pantheon-files RUNTIME DESTINATION bin)
-install(FILES pantheon-files-ui.xml DESTINATION share/pantheon-files/ui/)
-install(FILES fm-directory-view-ui.xml fm-icon-view-ui.xml DESTINATION share/pantheon-files/ui/)
+install(FILES pantheon-files-ui.xml fm-directory-view-ui.xml fm-icon-view-ui.xml DESTINATION ${UI_DIR})
 include(Tests)

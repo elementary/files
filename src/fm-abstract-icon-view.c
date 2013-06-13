@@ -766,8 +766,6 @@ fm_abstract_icon_view_init (FMAbstractIconView *view)
 
     g_settings_bind (settings, "single-click", 
                      view->icons, "single-click", 0);
-    g_settings_bind (settings, "single-click-timeout", 
-                     view->icons, "single-click-timeout", 0);
     g_settings_bind (settings, "single-click", 
                      FM_DIRECTORY_VIEW (view)->name_renderer, "follow-prelit", 0); 
     g_settings_bind (settings, "single-click", 

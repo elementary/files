@@ -7,13 +7,15 @@ enable_testing()
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake )
 set(GETTEXT_PACKAGE "pantheon-files")
-set(PIXMAP_DIR "${CMAKE_INSTALL_PREFIX}/share/pixmaps/marlin/")
+set(PIXMAP_DIR "${CMAKE_INSTALL_PREFIX}/share/pixmaps/pantheon-files/")
 set(GNOMELOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
+set(PLUGIN_DIR "${CMAKE_INSTALL_PREFIX}/lib/pantheon-files/plugins/")
 set(UI_DIR "${CMAKE_INSTALL_PREFIX}/share/pantheon-files/ui/")
 set(PACKAGE_VERSION 0.1)
 set(VERSION 0.1)
 configure_file (${CMAKE_SOURCE_DIR}/config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
-configure_file (${CMAKE_SOURCE_DIR}/config.vala.cmake ${CMAKE_BINARY_DIR}/src/config.vala)
+
+add_definitions("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
 
 option (LIB_ONLY "Build libcore and libwidgets only" FALSE)
 
