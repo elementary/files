@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-08 23:03-0300\n"
+"POT-Creation-Date: 2013-06-13 12:12-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -257,22 +257,30 @@ msgstr ""
 msgid "%u items selected (%s)"
 msgstr ""
 
-#: /home/julian/elementary-projects/fix-1022934/po/../src/View/DirectoryNotFound.vala:29
-msgid "Folder does not exist."
+#: /home/julian/elementary-projects/fix-1022934/po/../src/View/DirectoryNotFound.vala:39
+msgid "This folder does not exist."
 msgstr ""
 
-#: /home/julian/elementary-projects/fix-1022934/po/../src/View/DirectoryNotFound.vala:29
+#: /home/julian/elementary-projects/fix-1022934/po/../src/View/DirectoryNotFound.vala:39
 #, c-format
 msgid "The folder \"%s\" can't be found."
 msgstr ""
 
-#: /home/julian/elementary-projects/fix-1022934/po/../src/View/DirectoryNotFound.vala:31
+#: /home/julian/elementary-projects/fix-1022934/po/../src/View/DirectoryNotFound.vala:41
 msgid "Create"
 msgstr ""
 
-#: /home/julian/elementary-projects/fix-1022934/po/../src/View/DirectoryNotFound.vala:31
+#: /home/julian/elementary-projects/fix-1022934/po/../src/View/DirectoryNotFound.vala:41
 #, c-format
 msgid "Create the folder \"%s\""
+msgstr ""
+
+#: /home/julian/elementary-projects/fix-1022934/po/../src/View/DirectoryNotFound.vala:55
+#, c-format
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
 msgstr ""
 
 #: /home/julian/elementary-projects/fix-1022934/po/../src/View/ViewContainer.vala:144
@@ -286,7 +294,7 @@ msgid "File System"
 msgstr ""
 
 #: /home/julian/elementary-projects/fix-1022934/po/../src/View/ViewContainer.vala:150
-msgid "Folder does not exist"
+msgid "This folder does not exist"
 msgstr ""
 
 #: /home/julian/elementary-projects/fix-1022934/po/../src/View/ViewContainer.vala:153
@@ -802,22 +810,12 @@ msgstr ""
 msgid "Input Methods"
 msgstr ""
 
-#: /home/julian/elementary-projects/fix-1022934/po/../src/exo-tree-view.c:167
+#: /home/julian/elementary-projects/fix-1022934/po/../src/exo-tree-view.c:159
 msgid "Single Click"
 msgstr ""
 
-#: /home/julian/elementary-projects/fix-1022934/po/../src/exo-tree-view.c:168
+#: /home/julian/elementary-projects/fix-1022934/po/../src/exo-tree-view.c:160
 msgid "Whether the items in the view can be activated with single clicks"
-msgstr ""
-
-#: /home/julian/elementary-projects/fix-1022934/po/../src/exo-tree-view.c:184
-msgid "Single Click Timeout"
-msgstr ""
-
-#: /home/julian/elementary-projects/fix-1022934/po/../src/exo-tree-view.c:185
-msgid ""
-"The amount of time after which the item under the mouse cursor will be "
-"selected automatically in single click mode"
 msgstr ""
 
 #: /home/julian/elementary-projects/fix-1022934/po/../src/marlin-places-sidebar.c:286
@@ -992,24 +990,6 @@ msgstr ""
 msgid "Failed to execute file \"%s\""
 msgstr ""
 
-#: /home/julian/elementary-projects/fix-1022934/po/../src/marlin-toolbar-editor.c:445
-msgid "Customize Toolbar"
-msgstr ""
-
-#: /home/julian/elementary-projects/fix-1022934/po/../src/marlin-toolbar-editor.c:464
-msgid ""
-"Select items to be displayed on the toolbar. Items can be reordered by drag "
-"and drop."
-msgstr ""
-
-#: /home/julian/elementary-projects/fix-1022934/po/../src/marlin-toolbar-editor.c:478
-msgid "Available Items"
-msgstr ""
-
-#: /home/julian/elementary-projects/fix-1022934/po/../src/marlin-toolbar-editor.c:497
-msgid "Displayed Items"
-msgstr ""
-
 #: /home/julian/elementary-projects/fix-1022934/po/../src/fm-list-view.c:59
 msgid "Filename"
 msgstr ""
@@ -1022,11 +1002,11 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: /home/julian/elementary-projects/fix-1022934/po/../src/exo-icon-view.c:887
+#: /home/julian/elementary-projects/fix-1022934/po/../src/exo-icon-view.c:857
 msgid "Layout mode"
 msgstr ""
 
-#: /home/julian/elementary-projects/fix-1022934/po/../src/exo-icon-view.c:888
+#: /home/julian/elementary-projects/fix-1022934/po/../src/exo-icon-view.c:858
 msgid "The layout mode"
 msgstr ""
 
@@ -2272,7 +2252,7 @@ msgstr ""
 msgid "There was an error creating the directory in %F."
 msgstr ""
 
-#: /home/julian/elementary-projects/fix-1022934/po/../libcore/marlin-file-operations.c:6588
+#: /home/julian/elementary-projects/fix-1022934/po/../libcore/marlin-file-operations.c:6536
 msgid "Emptying Trash"
 msgstr ""
 

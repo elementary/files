@@ -147,7 +147,7 @@ namespace Marlin.View {
             else if (slot.directory.file.exists && (aslot.directory.file.info is FileInfo))
                 tab_name = aslot.directory.file.info.get_attribute_string (FileAttribute.STANDARD_DISPLAY_NAME);
             else
-                tab_name = _("Folder does not exist");
+                tab_name = _("This folder does not exist");
 
             if (Posix.getuid() == 0)
                 tab_name = tab_name + " " + _("(as Administrator)");
