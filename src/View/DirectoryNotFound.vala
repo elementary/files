@@ -21,12 +21,22 @@
 namespace Marlin.View
 {
     
+    public static int show_dialog (string message, Gtk.MessageType type, Gtk.ButtonsType buttons) {
+        var dialog = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL,
+                                            type, buttons, "%s", message);
+                                            
+        dialog.set_position (Gtk.WindowPosition.MOUSE);
+        var response = dialog.run ();
+        dialog.destroy ();
+        return response;
+    }
+    
     public class DirectoryNotFound : Granite.Widgets.Welcome {
         public GOF.Directory.Async dir_saved;
         public ViewContainer ctab;
 
         public DirectoryNotFound(GOF.Directory.Async dir, ViewContainer tab) {
-            base (_("Folder does not exist."), _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));           
+            base (_("This folder does not exist."), _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));           
             
             append ("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
             
@@ -34,18 +44,23 @@ namespace Marlin.View
             ctab = tab;
 
             this.activated.connect ((index) => {
-                Marlin.FileOperations.new_folder_with_name_recursive(null, null,
-                                                                    dir_saved.location.get_parent (),
-                                                                    dir_saved.location.get_basename (),
-                                                                    (void *) jump_to_new_dir, ctab);
+                bool success = false;
+                
+                try {
+                    success = dir.location.make_directory_with_parents (null);
+                } catch (Error e) {
+                    if (e is IOError.EXISTS)
+                        success = true;
+                    else
+                        show_dialog (_("Failed to create the folder\n\n%s").printf (e.message),
+                                     Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE);
+                }
+                
+                if (success)
+                    ctab.path_changed (dir_saved.location);
             });
-        }
-        
-        static void jump_to_new_dir (File? new_folder, void *user_data) {
-            if (new_folder != null) {
-                ViewContainer tab = (ViewContainer) user_data;
-                tab.path_changed (new_folder);
-            }
+
+            show_all ();
         }
     }
 }
