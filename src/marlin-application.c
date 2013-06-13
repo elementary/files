@@ -534,10 +534,9 @@ mount_removed_callback (GVolumeMonitor *monitor,
             GList *tabs, *l;
             GFile *location;
 
-            tabs = gtk_container_get_children (GTK_CONTAINER (window->tabs));
-            tabs = gtk_container_get_children (GTK_CONTAINER (tabs->data));
+            tabs = granite_widgets_dynamic_notebook_get_children (window->tabs);
             for (l = tabs; l != NULL; l = l->next) {
-                view_container = MARLIN_VIEW_VIEW_CONTAINER (gtk_bin_get_child (GTK_BIN (l->data)));            
+                view_container = MARLIN_VIEW_VIEW_CONTAINER (l->data);
                 slot = view_container -> slot;
                 location = slot->location;
                 if (location == NULL ||
@@ -553,6 +552,8 @@ mount_removed_callback (GVolumeMonitor *monitor,
                     }
                 }
             }
+            
+            g_list_free (tabs);
         }
     }
 
