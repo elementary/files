@@ -75,7 +75,7 @@ namespace Marlin.View.Chrome
             switcher = new ModeButton ();
             switcher.halign = switcher.valign = Gtk.Align.CENTER;
 
-            Varka.IconFactory icon_factory = Varka.IconFactory.get_default ();
+            var icon_factory = Granite.Services.IconFactory.get_default ();
             Gtk.StyleContext style = get_style_context ();
 
             icon = new Image.from_pixbuf (icon_factory.load_symbolic_icon (style, "view-grid-symbolic", 16));
