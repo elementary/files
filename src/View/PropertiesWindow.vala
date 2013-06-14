@@ -201,7 +201,6 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
             total_size += gof.size;
             mutex.unlock ();
         }
-        update_header_desc ();
     }
 /*
     private void selection_size_cancel () {
@@ -234,8 +233,9 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
         header_desc.set_use_markup(true);
 
         if (ftype != null) {
-            header_desc.set_markup(span_weight_light(goffile.formated_type));
+            header_desc.set_markup(span_weight_light(_("Calculating size..., ") + goffile.formated_type));
         }
+        
         selection_size_update();
 
         /*var font_style = new Pango.FontDescription();
