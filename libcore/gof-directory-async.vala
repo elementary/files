@@ -40,6 +40,8 @@ public class GOF.Directory.Async : Object
     public HashTable<GLib.File,GOF.File> file_hash;
     
     public uint files_count = 0;
+    
+    public bool permission_denied = false;
 
     private Cancellable cancellable;
     private FileMonitor? monitor = null;
@@ -267,6 +269,8 @@ public class GOF.Directory.Async : Object
             state = State.NOT_LOADED;
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY)
                 file.exists = false;
+            if (err is IOError.PERMISSION_DENIED)
+                permission_denied = true;
             if (err is IOError.NOT_MOUNTED) {
                 file.is_mounted = false;
                 /* try again this time it shoould be mounted */

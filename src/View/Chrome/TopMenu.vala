@@ -79,10 +79,10 @@ namespace Marlin.View.Chrome
                     }
 
                     location_bar.escape.connect( () => {
-                        if (win.current_tab.slot.directory.file.exists)
-                            win.current_tab.slot.view_box.grab_focus();
+                        if (win.current_tab.content_shown)
+                            win.current_tab.content.grab_focus ();
                         else
-                            win.current_tab.content.grab_focus();
+                            win.current_tab.slot.view_box.grab_focus ();
                     });
                     location_bar.activate.connect(() => { win.current_tab.path_changed(File.new_for_commandline_arg(location_bar.path)); });
                     location_bar.activate_alternate.connect((a) => { win.add_tab(File.new_for_commandline_arg(a)); });

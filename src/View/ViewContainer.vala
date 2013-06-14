@@ -26,6 +26,7 @@ using Gtk;
 namespace Marlin.View {
     public class ViewContainer : Gtk.Overlay {
         public Gtk.Widget? content_item;
+        public bool content_shown = false;
         public Gtk.Label label;
         private Marlin.View.Window window;
         public GOF.Window.Slot? slot = null;
@@ -104,6 +105,7 @@ namespace Marlin.View {
                 add(value);
                 content_item = value;
                 content_item.show_all ();
+                content_shown = true;
             }
             get{
                 return content_item;
@@ -167,7 +169,11 @@ namespace Marlin.View {
         public void directory_done_loading () {
             if (!slot.directory.file.exists) {
                 content = new DirectoryNotFound (slot.directory, this);
+            } else if (slot.directory.permission_denied) {
+                content = new Granite.Widgets.Welcome (_("This does not belong to you."),
+                                                       _("You don't have permission to view this folder."));
             } else {
+                content_shown = false;
                 if (select_childs != null)
                     ((FM.Directory.View) slot.view_box).select_glib_files (select_childs);
             }
@@ -185,7 +191,7 @@ namespace Marlin.View {
                 /* we re just changing view keep the same location */
                 location = get_active_slot ().location;
                 /* store the old selection to restore it */
-                if (slot != null && slot.directory.file.exists) {
+                if (slot != null && !content_shown) {
                     unowned List<GOF.File> list = ((FM.Directory.View) slot.view_box).get_selection ();
                     foreach (var elem in list)
                         select_childs.prepend (elem.location);
