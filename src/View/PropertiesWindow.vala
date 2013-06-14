@@ -232,7 +232,7 @@ public class Marlin.View.PropertiesWindow : Granite.Widgets.LightWindow
 
         header_title = new Granite.Widgets.WrapLabel ();
         if (count > 1)
-            header_title.set_markup ("<span weight='semibold' size='large'>" + "%u selected items".printf(count) + "</span>");
+            header_title.set_markup ("<span weight='semibold' size='large'>" + _("%u selected items").printf(count) + "</span>");
         else
             header_title.set_markup ("<span weight='semibold' size='large'>" + goffile.info.get_name () + "</span>");
 
